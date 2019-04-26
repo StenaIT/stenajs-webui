@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-storybook": "start-storybook -p 6006",
+    "build-storybook": "rimraf build && build-storybook -o build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StenaIT/stenajs-webui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StenaIT/stenajs-webui/issues"
+  },
+  "homepage": "https://github.com/StenaIT/stenajs-webui#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@storybook/addon-info": "^5.0.10",
+    "@storybook/addon-knobs": "^5.0.10",
+    "@storybook/react": "^5.0.10",
+    "babel-loader": "^8.0.5",
+    "react-docgen-typescript-loader": "^3.1.0"
+  },
+  "dependencies": {}
+}
