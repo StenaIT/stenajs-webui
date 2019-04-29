@@ -1,60 +1,55 @@
-import { FontWeightProperty } from 'csstype';
-import { defaultFonts } from '../../../themes/default-values/DefaultFonts';
-import { defaultFontSizes } from '../../../themes/default-values/DefaultFontSizes';
+import { FontWeightField } from '../../theme/default-values/DefaultFontWeights';
+import { ThemeColorField } from '../../theme/theme-types/ThemeColors';
+import { ThemeFonts } from '../../theme/theme-types/ThemeFonts';
+import { ThemeFontSizeField } from '../../theme/theme-types/ThemeFontSizes';
 
 export interface TextTheme {
-  fontSize: string;
-  fontFamily: string;
-  fontWeightBold: FontWeightProperty;
-  fontWeightNormal?: FontWeightProperty;
-  fontWeightLight: FontWeightProperty;
+  color: ThemeColorField;
+  fontSize: ThemeFontSizeField;
+  fontFamily: keyof ThemeFonts;
+  fontWeightBold: FontWeightField;
+  fontWeightNormal?: FontWeightField;
+  fontWeightLight: FontWeightField;
 }
 
 export const defaultHeaderTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.huge,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'huge',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };
 
 export const defaultSectionHeaderTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.large,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'large',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };
 
 export const defaultLargeTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.large,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
-};
-
-export const defaultDefaultTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.normal,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'large',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };
 
 export const defaultSmallTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.small,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'small',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };
 
 export const defaultSmallerTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.smaller,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'smaller',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };
 
 export const defaultTinyTextTheme: TextTheme = {
-  fontSize: defaultFontSizes.tiny,
-  fontFamily: defaultFonts.primary,
-  fontWeightBold: 600,
-  fontWeightLight: 100,
+  fontSize: 'tiny',
+  fontFamily: 'primary',
+  fontWeightBold: 'bold',
+  fontWeightLight: 'light',
 };

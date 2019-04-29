@@ -1,68 +1,62 @@
 import styled from '@emotion/styled';
-import { FontWeightProperty } from 'csstype';
+import { FontWeightProperty, TextDecorationProperty, UserSelectProperty, WhiteSpaceProperty } from 'csstype';
 import * as React from 'react';
+import {
+  fontFamily,
+  FontFamilyProps,
+  fontSize,
+  FontSizeProps,
+  fontWeight,
+  FontWeightProps,
+  textColor,
+} from 'styled-system';
+import { ThemeFontField } from '../../theme/theme-types/ThemeFonts';
+import { ThemeFontSizeField } from '../../theme/theme-types/ThemeFontSizes';
+import { ThemeFontWeightField } from '../../theme/theme-types/ThemeFontWeights';
 
-export interface TextBaseProps {
-  /** The font size of the text. */
-  fontSize: string;
-  /** The font family of the text. */
-  fontFamily: string;
-  /** The normal font weight of the text. */
-  fontWeightNormal?: FontWeightProperty;
-  /** The bold font weight of the text. */
-  fontWeightBold: FontWeightProperty;
-  /** The light font weight of the text. */
-  fontWeightLight: FontWeightProperty;
 
-  /** The color family of the text. */
-  color?: string;
-  /** Disables wrapping of text. */
-  nowrap?: boolean;
+export interface TextProps extends TextThemeProps, TextBasePropsBase {
+}
+
+export interface TextThemeProps {
+  fontSize?: ThemeFontSizeField | string;
+  fontFamily?: ThemeFontField | string;
+  fontWeight?: ThemeFontWeightField | FontWeightProperty;
+}
+
+export type TextBaseProps = TextBasePropsBase & TextBaseInternalProps & StyledProps
+
+export interface TextBasePropsBase {
+  whiteSpace?: WhiteSpaceProperty;
   /** Adds underline to text. */
-  underline?: boolean;
-  /**
-   * Makes text bold.
-   * @deprecated Use prop weight instead.
-   */
-  bold?: boolean;
-  /** Font weight to use. */
-  weight?: TextBaseWeight;
+  textDecoration?: TextDecorationProperty;
   /** Adds underline when mouse hovers over text. */
   hoverUnderline?: boolean;
   /** Makes text italic. */
   italic?: boolean;
   /** Disables the ability to select the text. */
-  disableSelect?: boolean;
+  userSelect?: UserSelectProperty;
 }
 
-export type TextBaseWeight = 'bold' | 'normal' | 'light';
+interface TextBaseInternalProps {
+  /** Font weight to use. */
+  fontWeight?: FontWeightProperty;
+}
+
+type StyledProps = FontWeightProps & FontFamilyProps & FontSizeProps;
 
 const SpanWithHover = styled.span<TextBaseProps>`
-  fontSize: ${(fontSize) => fontSize}
-  fontFamily: ${(fontFamily) => fontFamily}
-  color: ${(color) => color}
-  fontWeight: ${(props) => props.bold ? 'bold' : getWeight(props.weight, props)};
-  userSelect: ${({ disableSelect }) => disableSelect ? 'none' : ''};
-  textDecoration: ${({ underline }) => underline ? 'underline' : ''};
-  whiteSpace: ${({ nowrap }) => nowrap ? 'nowrap' : ''};
-  fontStyle: ${({ italic }) => italic ? 'italic' : ''};
+  ${fontSize};
+  ${fontFamily};
+  ${textColor};
+  ${fontWeight};
+  user-select: ${({ userSelect }) => userSelect};
+  text-decoration: ${({ textDecoration }) => textDecoration};
+  white-space: ${({ whiteSpace }) => whiteSpace};
+  font-style: ${({ italic }) => italic ? 'italic' : ''};
   :hover {
     ${({ hoverUnderline }) => (hoverUnderline ? 'text-decoration: underline;' : '')};
   }
 `;
 
 export const TextBase: React.FC<TextBaseProps> = SpanWithHover;
-
-const getWeight = (
-  weight: TextBaseWeight | undefined,
-  props: TextBaseProps,
-): FontWeightProperty | undefined => {
-  switch (weight) {
-    case 'bold':
-      return props.fontWeightBold;
-    case 'light':
-      return props.fontWeightLight;
-    default:
-      return props.fontWeightNormal;
-  }
-};
