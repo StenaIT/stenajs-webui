@@ -1,10 +1,13 @@
+import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { StandardText } from "./variants/StandardText";
 
 storiesOf("Text/StandardText", module)
   .add("standard", () => (
-    <StandardText>That is some nice text, right there!</StandardText>
+    <StandardText>
+      {text("Text", "That is some nice text, right there!")}
+    </StandardText>
   ))
   .add("with underline", () => (
     <StandardText textDecoration={"underline"}>

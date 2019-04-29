@@ -6,8 +6,11 @@ export const useTextTheme = ({
   fontSize,
   fontWeight
 }: TextThemeProps) =>
-  useThemeSelector<Partial<TextBaseProps>>(theme => ({
-    fontSize: (fontSize && theme.fontSizes[fontSize]) || fontSize,
-    fontFamily: (fontFamily && theme.fonts[fontFamily]) || fontFamily,
-    fontWeight: (fontWeight && theme.fontWeights[fontWeight]) || fontWeight
-  }));
+  useThemeSelector<Partial<TextBaseProps>>(
+    theme => ({
+      fontSize: (fontSize && theme.fontSizes[fontSize]) || fontSize,
+      fontFamily: (fontFamily && theme.fonts[fontFamily]) || fontFamily,
+      fontWeight: (fontWeight && theme.fontWeights[fontWeight]) || fontWeight
+    }),
+    [fontFamily, fontSize, fontWeight]
+  );
