@@ -1,4 +1,4 @@
-import { number } from "@storybook/addon-knobs";
+import { color, number } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { Box } from "./Box";
@@ -27,11 +27,32 @@ storiesOf("core/Box/Box", module)
       <div>world</div>
     </Box>
   ))
+  .add("with DOM attributes", () => (
+    <Box id={"id123"} className={"aNiceClass"}>
+      I have id and class.
+    </Box>
+  ))
   .add("background", () => (
+    <Box background={"primaryBg"} indent spacing>
+      <div>hello</div>
+      <div>world</div>
+    </Box>
+  ))
+  .add("custom background", () => (
     <Box
       background={"linear-gradient(to right, #e66465, #9198e5)"}
-      indent={number("Indent", 1)}
-      spacing={number("Spacing", 1)}
+      indent
+      spacing
+    >
+      <div>hello</div>
+      <div>world</div>
+    </Box>
+  ))
+  .add("indent and spacing", () => (
+    <Box
+      background={"#DFCD59"}
+      indent={number("Indent", 1, { range: true, min: 0, max: 10, step: 1 })}
+      spacing={number("Spacing", 1, { range: true, min: 0, max: 10, step: 1 })}
     >
       <div>hello</div>
       <div>world</div>
@@ -45,6 +66,16 @@ storiesOf("core/Box/Box", module)
   ))
   .add("modal shadow", () => (
     <Box shadow={"modal"} indent spacing>
+      <div>hello</div>
+      <div>world</div>
+    </Box>
+  ))
+  .add("custom shadow", () => (
+    <Box
+      shadow={`${color("Shadow color", "red")} 0px 0px 10px 4px;`}
+      indent
+      spacing
+    >
       <div>hello</div>
       <div>world</div>
     </Box>

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { BackgroundProperty, BoxShadowProperty } from "csstype";
 import * as React from "react";
-import { useMemo } from "react";
+import { PropsWithChildren } from "react";
 import {
   alignItems,
   AlignItemsProps,
@@ -27,17 +28,17 @@ import {
   minHeight,
   MinHeightProps,
   MinWidthProps,
+  TLengthStyledSystem,
   width,
   WidthProps
 } from "styled-system";
-import { useTheme } from "../../theme/hooks/UseTheme";
+import { useThemeSelector } from "../../theme/hooks/UseThemeSelector";
+import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
 import { ThemeShadows } from "../../theme/theme-types/ThemeShadows";
-
-// tslint:disable:no-shadowed-variable
+import { Omit } from "../../types/Omit";
 
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
-  BackgroundProps &
   BorderProps &
   FlexDirectionProps &
   FlexProps &
@@ -54,16 +55,19 @@ type FlexBoxProps = BoxProps;
 
 type ShadowType = keyof ThemeShadows;
 
-export interface BoxProps extends StyledSystemProps {
+type Div = JSX.IntrinsicElements["div"];
+
+export interface BoxProps extends StyledSystemProps, Div {
   innerRef?: React.Ref<HTMLDivElement>;
   row?: boolean;
   spacing?: boolean | number;
   indent?: boolean | number;
   style?: React.CSSProperties;
-  shadow?: ShadowType;
+  shadow?: ShadowType | BoxShadowProperty;
+  background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
 }
 
-const FlexBox = styled.div<FlexBoxProps & BoxShadowProps>`
+const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   display: ${props => props.display || "flex"};
   ${alignItems};
   ${background};
@@ -83,11 +87,26 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps>`
   ${width};
 `;
 
-export const Box: React.FC<BoxProps> = ({ innerRef, shadow, ...props }) => {
-  const { shadows } = useTheme();
-  const boxShadow = useMemo(() => shadow && shadows[shadow], [shadows, shadow]);
-  return <FlexBox ref={innerRef} {...props} boxShadow={boxShadow} />;
+const InnerRefBox: React.FC<BoxProps> = ({
+  innerRef,
+  shadow,
+  background,
+  ...props
+}) => {
+  const boxProps = useThemeSelector(
+    ({ shadows, colors }) => ({
+      boxShadow: (shadow && shadows[shadow]) || shadow,
+      background: (background && colors[background]) || background
+    }),
+    [shadow, background]
+  );
+  return <FlexBox ref={innerRef} {...boxProps} {...props} />;
 };
+
+export const Box = React.forwardRef<
+  HTMLDivElement,
+  Omit<PropsWithChildren<BoxProps>, "innerRef">
+>((props, ref) => <InnerRefBox innerRef={ref} {...props} />);
 
 const numberOrZero = (num: number | boolean | undefined): number =>
   (num as number) || 0;

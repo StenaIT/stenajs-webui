@@ -2,9 +2,9 @@ import { DependencyList, useMemo } from "react";
 import { Theme } from "../Theme";
 import { useTheme } from "./UseTheme";
 
-type ThemeSelectorFunction<T extends {}> = (theme: Theme) => T;
+type ThemeSelectorFunction<T> = (theme: Theme) => T;
 
-export const useThemeSelector = <T extends {}>(
+export const useThemeSelector = <T>(
   fn: ThemeSelectorFunction<T>,
   deps: DependencyList | undefined
 ) => {
