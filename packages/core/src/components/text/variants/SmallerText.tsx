@@ -11,3 +11,6 @@ export const SmallerText: React.FC<TextProps> = ({
   const themeTextProps = useTextTheme({ fontSize, fontWeight, fontFamily });
   return <TextBase {...themeTextProps} {...textProps} />;
 };
+
+
+const e = <Button color={'#ffffff'}/>
