@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { StandardText } from "./variants/StandardText";
 
-storiesOf("Text/StandardText", module)
+storiesOf("core/Text/StandardText", module)
   .add("standard", () => (
     <StandardText>
       {text("Text", "That is some nice text, right there!")}
