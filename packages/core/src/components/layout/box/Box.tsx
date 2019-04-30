@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { BackgroundProperty, BoxShadowProperty } from "csstype";
 import * as React from "react";
-import { PropsWithChildren } from "react";
 import {
   alignItems,
   AlignItemsProps,
@@ -32,10 +31,9 @@ import {
   width,
   WidthProps
 } from "styled-system";
-import { useThemeSelector } from "../../theme/hooks/UseThemeSelector";
-import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
-import { ThemeShadows } from "../../theme/theme-types/ThemeShadows";
-import { Omit } from "../../types/Omit";
+import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
+import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
+import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
@@ -87,7 +85,7 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${width};
 `;
 
-const InnerRefBox: React.FC<BoxProps> = ({
+export const Box: React.FC<BoxProps> = ({
   innerRef,
   shadow,
   background,
@@ -102,11 +100,6 @@ const InnerRefBox: React.FC<BoxProps> = ({
   );
   return <FlexBox ref={innerRef} {...boxProps} {...props} />;
 };
-
-export const Box = React.forwardRef<
-  HTMLDivElement,
-  Omit<PropsWithChildren<BoxProps>, "innerRef">
->((props, ref) => <InnerRefBox innerRef={ref} {...props} />);
 
 const numberOrZero = (num: number | boolean | undefined): number =>
   (num as number) || 0;
