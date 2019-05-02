@@ -8,6 +8,10 @@ import {
   BackgroundProps,
   border,
   BorderProps,
+  borderWidth,
+  BorderWidthProps,
+  borderRadius,
+  BorderRadiusProps,
   boxShadow,
   BoxShadowProps,
   DisplayProps,
@@ -27,6 +31,8 @@ import {
   minHeight,
   MinHeightProps,
   MinWidthProps,
+  overflow,
+  OverflowProps,
   TLengthStyledSystem,
   width,
   WidthProps
@@ -38,6 +44,8 @@ import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
   BorderProps &
+  BorderRadiusProps &
+  BorderWidthProps &
   FlexDirectionProps &
   FlexProps &
   FlexWrapProps &
@@ -47,6 +55,7 @@ type StyledSystemProps = AlignItemsProps &
   MaxHeightProps &
   MinWidthProps &
   MaxWidthProps &
+  OverflowProps &
   WidthProps;
 
 type FlexBoxProps = BoxProps;
@@ -70,6 +79,8 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${alignItems};
   ${background};
   ${border};
+  ${borderRadius};
+  ${borderWidth};
   ${boxShadow};
   ${flex};
   flex-direction: ${props =>
@@ -80,6 +91,7 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${minHeight};
   ${maxHeight};
   ${maxWidth};
+  ${overflow};
   padding: ${props => numberOrZero(props.spacing) * 10}px
     ${props => numberOrZero(props.indent) * 10}px;
   ${width};

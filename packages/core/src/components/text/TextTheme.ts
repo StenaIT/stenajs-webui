@@ -1,55 +1,55 @@
-import { FontWeightField } from '../../theme/default-values/DefaultFontWeights';
-import { ThemeColorField } from '../../theme/theme-types/ThemeColors';
-import { ThemeFonts } from '../../theme/theme-types/ThemeFonts';
-import { ThemeFontSizeField } from '../../theme/theme-types/ThemeFontSizes';
+import { ThemeFontWeightField } from "../..";
+import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
+import { ThemeFonts } from "../../theme/theme-types/ThemeFonts";
+import { ThemeFontSizeField } from "../../theme/theme-types/ThemeFontSizes";
 
 export interface TextTheme {
-  color: ThemeColorField;
+  color?: ThemeColorField;
   fontSize: ThemeFontSizeField;
   fontFamily: keyof ThemeFonts;
-  fontWeightBold: FontWeightField;
-  fontWeightNormal?: FontWeightField;
-  fontWeightLight: FontWeightField;
+  fontWeightBold: ThemeFontWeightField;
+  fontWeightNormal?: ThemeFontWeightField;
+  fontWeightLight: ThemeFontWeightField;
 }
 
 export const defaultHeaderTextTheme: TextTheme = {
-  fontSize: 'huge',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "huge",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
 
 export const defaultSectionHeaderTextTheme: TextTheme = {
-  fontSize: 'large',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "large",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
 
 export const defaultLargeTextTheme: TextTheme = {
-  fontSize: 'large',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "large",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
 
 export const defaultSmallTextTheme: TextTheme = {
-  fontSize: 'small',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "small",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
 
 export const defaultSmallerTextTheme: TextTheme = {
-  fontSize: 'smaller',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "smaller",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
 
 export const defaultTinyTextTheme: TextTheme = {
-  fontSize: 'tiny',
-  fontFamily: 'primary',
-  fontWeightBold: 'bold',
-  fontWeightLight: 'light',
+  fontSize: "tiny",
+  fontFamily: "primary",
+  fontWeightBold: "bold",
+  fontWeightLight: "light"
 };
