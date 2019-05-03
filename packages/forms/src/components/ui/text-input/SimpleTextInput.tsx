@@ -94,7 +94,7 @@ const StyledInput = styled("input")<
   }) => ({
     "&::placeholder": {
       color:
-        placeholderColor || theme.components.SimpleTextInput.placeholderColor
+        placeholderColor || theme.placeholderColor
     },
     "&::-webkit-outer-spin-button": {
       webkitAppearance: "none",
@@ -105,19 +105,19 @@ const StyledInput = styled("input")<
       margin: 0
     },
     backgroundColor:
-      backgroundColor || theme.components.SimpleTextInput.backgroundColor,
-    color: textColor || theme.components.SimpleTextInput.textColor,
+      backgroundColor || theme.backgroundColor,
+    color: textColor || theme.textColor,
     "&:disabled": {
       backgroundColor: `${
-        theme.components.SimpleTextInput.disabledBackgroundColor
+        theme.disabledBackgroundColor
       }`,
-      color: `${theme.components.SimpleTextInput.disabledTextColor}`
+      color: `${theme.disabledTextColor}`
     },
-    height: height || theme.components.SimpleTextInput.height,
+    height: height || theme.height,
     mozAppearance: "textfield",
     width: width || "100%",
-    fontSize: fontSize || theme.components.SimpleTextInput.fontSize,
-    fontFamily: theme.components.SimpleTextInput.fontFamily,
+    fontSize: fontSize || theme.fontSize,
+    fontFamily: theme.fontFamily,
     ...outerStyle
   })
 );
