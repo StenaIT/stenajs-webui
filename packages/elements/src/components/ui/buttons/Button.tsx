@@ -2,8 +2,13 @@ import styled from "@emotion/styled";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Clickable, Row, Space } from "@stenajs-webui/core";
-import { useThemeColorSelector } from "@stenajs-webui/core/src";
+import {
+  Box,
+  Clickable,
+  Row,
+  Space,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { Progress } from "../progress/Progress";
@@ -70,7 +75,7 @@ export const Button: React.FC<ButtonProps> = ({
   loadingLabel,
   buttonTheme = defaultButtonTheme
 }) => {
-  const { colors, fonts, fontSizes } = useThemeColorSelector({
+  const { colors, fonts, fontSizes } = useThemeFields({
     colors: {
       textColor: buttonTheme.textColor,
       textColorDisabled: buttonTheme.textColorDisabled,

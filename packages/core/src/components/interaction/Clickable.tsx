@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import * as React from "react";
-import { CSSProperties, MouseEventHandler, useCallback, useState } from "react";
+import { CSSProperties, MouseEventHandler } from "react";
 
 export interface ClickableProps {
   /** Callback function called when clicking on click area. */
@@ -22,13 +22,18 @@ export interface ClickableProps {
 }
 
 interface ClickableElementProps {
-  opacityOnHover: boolean | undefined;
+  disableOpacityOnClick?: boolean;
+  opacityOnHover?: boolean;
   disableFocusHighlight?: boolean;
 }
 
 const ClickableElement = styled.button<ClickableElementProps>`
   :hover {
     ${props => (props.opacityOnHover ? "opacity: 0.7;" : "")};
+  }
+  :active {
+    ${({ disableOpacityOnClick }) =>
+      !disableOpacityOnClick ? "opacity: 0.5;" : ""}
   }
   :focus {
     outline: 0;
@@ -52,20 +57,7 @@ export const Clickable: React.FC<ClickableProps> = ({
   style,
   children
 }) => {
-  const [mouseIsDown, setMouseIsDown] = useState(false);
-
-  const onMouseDown = useCallback(() => {
-    setMouseIsDown(true);
-  }, [setMouseIsDown]);
-  const onMouseUp = useCallback(() => {
-    setMouseIsDown(false);
-  }, [setMouseIsDown]);
-  const onMouseOut = useCallback(() => {
-    setMouseIsDown(false);
-  }, [setMouseIsDown]);
-
   const hasClickHandler = !!(onClick || onDblClick);
-  const opacity = !disableOpacityOnClick && mouseIsDown ? 0.5 : undefined;
   return (
     <ClickableElement
       opacityOnHover={opacityOnHover}
@@ -74,14 +66,11 @@ export const Clickable: React.FC<ClickableProps> = ({
         cursor: hasClickHandler && !disablePointer ? "pointer" : undefined,
         display: "inline-block",
         userSelect: "none",
-        opacity,
         ...style
       }}
+      disableOpacityOnClick={disableOpacityOnClick}
       onClick={onClick}
       onDoubleClick={onDblClick}
-      onMouseDown={hasClickHandler ? onMouseDown : undefined}
-      onMouseUp={hasClickHandler ? onMouseUp : undefined}
-      onMouseOut={hasClickHandler ? onMouseOut : undefined}
       disableFocusHighlight={disableFocusHighlight}
     >
       {children}
