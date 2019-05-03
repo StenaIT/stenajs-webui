@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled, { CreateStyled } from "@emotion/styled";
 import * as React from "react";
 import {
   ChangeEvent,
@@ -14,6 +14,8 @@ import {
 } from "react";
 import { defaultSimpleCheckboxTheme } from "../checkbox/SimpleCheckboxTheme";
 import { SimpleTextInputTheme } from "./SimpleTextInputTheme";
+
+const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 
 // tslint:disable:no-any
 
@@ -71,7 +73,7 @@ export interface SimpleTextInputState {
   wasCancelled: boolean;
 }
 
-const StyledInput = styled("input")<
+const StyledInput = styledWithTheme("input")<
   Pick<
     SimpleTextInputProps,
     | "backgroundColor"
@@ -93,8 +95,7 @@ const StyledInput = styled("input")<
     width
   }) => ({
     "&::placeholder": {
-      color:
-        placeholderColor || theme.placeholderColor
+      color: placeholderColor || theme.placeholderColor
     },
     "&::-webkit-outer-spin-button": {
       webkitAppearance: "none",
@@ -104,13 +105,10 @@ const StyledInput = styled("input")<
       webkitAppearance: "none",
       margin: 0
     },
-    backgroundColor:
-      backgroundColor || theme.backgroundColor,
+    backgroundColor: backgroundColor || theme.backgroundColor,
     color: textColor || theme.textColor,
     "&:disabled": {
-      backgroundColor: `${
-        theme.disabledBackgroundColor
-      }`,
+      backgroundColor: `${theme.disabledBackgroundColor}`,
       color: `${theme.disabledTextColor}`
     },
     height: height || theme.height,
