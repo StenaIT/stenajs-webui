@@ -24,5 +24,7 @@ export * from "./components/text/variants/LargeText";
 export * from "./theme/ThemeContext";
 export * from "./theme/DefaultTheme";
 export * from "./theme/Theme";
+
+export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
 export * from "./types/Omit";

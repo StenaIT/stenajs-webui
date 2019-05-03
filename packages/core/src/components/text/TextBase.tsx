@@ -1,22 +1,26 @@
-import styled from '@emotion/styled';
-import { FontWeightProperty, TextDecorationProperty, UserSelectProperty, WhiteSpaceProperty } from 'csstype';
-import * as React from 'react';
+import styled from "@emotion/styled";
+import {
+  FontWeightProperty,
+  TextDecorationProperty,
+  UserSelectProperty,
+  WhiteSpaceProperty
+} from "csstype";
+import * as React from "react";
 import {
   fontFamily,
   FontFamilyProps,
   fontSize,
   FontSizeProps,
   fontWeight,
-  FontWeightProps,
-  textColor,
-} from 'styled-system';
-import { ThemeFontField } from '../../theme/theme-types/ThemeFonts';
-import { ThemeFontSizeField } from '../../theme/theme-types/ThemeFontSizes';
-import { ThemeFontWeightField } from '../../theme/theme-types/ThemeFontWeights';
+  FontWeightProps
+} from "styled-system";
+import { ThemeFontField } from "../../theme/theme-types/ThemeFonts";
+import { ThemeFontSizeField } from "../../theme/theme-types/ThemeFontSizes";
+import { ThemeFontWeightField } from "../../theme/theme-types/ThemeFontWeights";
 
+export interface TextProps extends TextThemeProps, TextBasePropsBase, SpanProps {}
 
-export interface TextProps extends TextThemeProps, TextBasePropsBase {
-}
+type SpanProps = JSX.IntrinsicElements["span"];
 
 export interface TextThemeProps {
   fontSize?: ThemeFontSizeField | string;
@@ -24,7 +28,10 @@ export interface TextThemeProps {
   fontWeight?: ThemeFontWeightField | FontWeightProperty;
 }
 
-export type TextBaseProps = TextBasePropsBase & TextBaseInternalProps & StyledProps
+export type TextBaseProps = TextBasePropsBase &
+  SpanProps &
+  TextBaseInternalProps &
+  StyledSystemProps;
 
 export interface TextBasePropsBase {
   whiteSpace?: WhiteSpaceProperty;
@@ -43,19 +50,23 @@ interface TextBaseInternalProps {
   fontWeight?: FontWeightProperty;
 }
 
-type StyledProps = FontWeightProps & FontFamilyProps & FontSizeProps;
+type StyledSystemProps = FontWeightProps & FontFamilyProps & FontSizeProps;
 
+/**
+ * NOTE:
+ * Do not add color here, span already includes color.
+ */
 const SpanWithHover = styled.span<TextBaseProps>`
   ${fontSize};
   ${fontFamily};
-  ${textColor};
   ${fontWeight};
   user-select: ${({ userSelect }) => userSelect};
   text-decoration: ${({ textDecoration }) => textDecoration};
   white-space: ${({ whiteSpace }) => whiteSpace};
-  font-style: ${({ italic }) => italic ? 'italic' : ''};
+  font-style: ${({ italic }) => (italic ? "italic" : "")};
   :hover {
-    ${({ hoverUnderline }) => (hoverUnderline ? 'text-decoration: underline;' : '')};
+    ${({ hoverUnderline }) =>
+      hoverUnderline ? "text-decoration: underline;" : ""};
   }
 `;
 

@@ -7,11 +7,23 @@ import {
   background,
   BackgroundProps,
   border,
+  borderBottom,
+  BorderBottomProps,
+  borderColor,
+  BorderColorProps,
+  borderLeft,
+  BorderLeftProps,
   BorderProps,
-  borderWidth,
-  BorderWidthProps,
   borderRadius,
   BorderRadiusProps,
+  borderRight,
+  BorderRightProps,
+  borderStyle,
+  BorderStyleProps,
+  borderTop,
+  BorderTopProps,
+  borderWidth,
+  BorderWidthProps,
   boxShadow,
   BoxShadowProps,
   DisplayProps,
@@ -44,8 +56,14 @@ import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
   BorderProps &
+  BorderColorProps &
   BorderRadiusProps &
+  BorderStyleProps &
   BorderWidthProps &
+  BorderLeftProps &
+  BorderRightProps &
+  BorderTopProps &
+  BorderBottomProps &
   FlexDirectionProps &
   FlexProps &
   FlexWrapProps &
@@ -62,9 +80,9 @@ type FlexBoxProps = BoxProps;
 
 type ShadowType = keyof ThemeShadows;
 
-type Div = JSX.IntrinsicElements["div"];
+type DivProps = JSX.IntrinsicElements["div"];
 
-export interface BoxProps extends StyledSystemProps, Div {
+export interface BoxProps extends StyledSystemProps, DivProps {
   innerRef?: React.Ref<HTMLDivElement>;
   row?: boolean;
   spacing?: boolean | number;
@@ -79,7 +97,13 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${alignItems};
   ${background};
   ${border};
+  ${borderRight};
+  ${borderLeft};
+  ${borderTop};
+  ${borderBottom};
+  ${borderColor};
   ${borderRadius};
+  ${borderStyle};
   ${borderWidth};
   ${boxShadow};
   ${flex};
