@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-storybook": "start-storybook -p 6006",
-    "build-storybook": "rimraf build && build-storybook -o build"
+    "build-storybook": "rimraf build && build-storybook -o build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -19,16 +20,25 @@
   },
   "homepage": "https://github.com/StenaIT/stenajs-webui#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@storybook/addon-info": "^5.0.10",
-    "@storybook/addon-knobs": "^5.0.10",
-    "@storybook/react": "^5.0.10",
+    "@babel/core": "^7.4.4",
+    "@storybook/addon-info": "^5.0.11",
+    "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "@svgr/rollup": "^4.2.0",
     "@types/storybook__addon-info": "^4.1.1",
     "@types/storybook__addon-knobs": "^5.0.0",
     "@types/storybook__react": "^4.0.1",
     "babel-loader": "^8.0.5",
+    "gh-pages": "^2.0.1",
     "prettier": "^1.17.0",
     "react-docgen-typescript-loader": "^3.1.0",
+    "rollup": "^1.11.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.21.0",
+    "rollup-plugin-url": "^2.2.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {}
