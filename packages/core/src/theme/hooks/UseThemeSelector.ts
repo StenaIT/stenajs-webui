@@ -21,87 +21,51 @@ type ColorFields = ThemeFieldRecord<ThemeColorField>;
 type FontFields = ThemeFieldRecord<ThemeFontField>;
 type FontSizesFields = ThemeFieldRecord<ThemeFontSizeField>;
 
-export const useThemeColorSelector = <
+export const useThemeFields = <
   TFields extends {
     colors?: ColorFields;
     fontSizes?: FontFields;
     fonts?: FontSizesFields;
   }
 >(
-  themeFields: TFields
+  themeFields: TFields,
+  deps: DependencyList
 ): TFields => {
   const theme = useTheme();
+  const fields = useMemo(() => themeFields, deps);
 
-  const colors = useMemo(() => {
-    if (!themeFields.colors) {
-      return undefined;
-    }
-    const fields = Object.keys(themeFields.colors) as Array<
-      keyof ThemeColors | string
-    >;
-    return fields.reduce<ColorFields>(
-      (sum, field) => ({
-        ...sum,
-        [field]: (field && theme.colors[field]) || fields[field]
-      }),
-      {} as ColorFields
+  return useMemo(() => {
+    const colors = getFieldsFromPartOfTheme(theme.colors, fields.colors);
+    const fonts = getFieldsFromPartOfTheme(theme.fonts, fields.fonts);
+    const fontSizes = getFieldsFromPartOfTheme(
+      theme.fontSizes,
+      fields.fontSizes
     );
-  }, [themeFields.colors, theme]);
-  const fonts = useMemo(() => {
-    if (!themeFields.fonts) {
-      return undefined;
-    }
-    const fields = Object.keys(themeFields.fonts) as Array<
-      keyof ThemeFonts | string
-    >;
-    return fields.reduce<FontFields>(
-      (sum, field) => ({
-        ...sum,
-        [field]: (field && theme.fonts[field]) || fields[field]
-      }),
-      {} as FontFields
-    );
-  }, [themeFields.fonts, theme]);
-  const fontSizes = useMemo(() => {
-    if (!themeFields.fontSizes) {
-      return undefined;
-    }
-    const fields = Object.keys(themeFields.fontSizes) as Array<
-      keyof ThemeFontSizes | string
-    >;
-    return fields.reduce<FontSizesFields>(
-      (sum, field) => ({
-        ...sum,
-        [field]: (field && theme.fontSizes[field]) || fields[field]
-      }),
-      {} as FontSizesFields
-    );
-  }, [themeFields.fontSizes, theme]);
-  return {
-    colors,
-    fonts,
-    fontSizes
-  } as TFields;
+    return {
+      colors,
+      fonts,
+      fontSizes
+    } as TFields;
+  }, [theme, fields]);
 };
 
-const useFieldsFromPartOfTheme = <TThemePart extends keyof Theme>(
-  theme: Theme,
+const getFieldsFromPartOfTheme = <
+  TThemePart extends ThemeColors | ThemeFonts | ThemeFontSizes,
+  TFields extends ThemeFieldRecord<keyof TThemePart>
+>(
   themePart: TThemePart,
-  partFields: ThemeFieldRecord<keyof Theme[TThemePart]> | undefined,
-) => {
-  return useMemo(() => {
-    if (!partFields) {
-      return undefined;
-    }
-    const fields = Object.keys(partFields) as Array<
-      keyof ThemeFontSizes | string
-    >;
-    return fields.reduce<FontSizesFields>(
-      (sum, field) => ({
-        ...sum,
-        [field]: (field && theme[themePart][field]) || fields[field]
-      }),
-      {} as FontSizesFields
-    );
-  }, [partFields, theme]);
+  partFields: TFields | undefined
+): TFields | undefined | {} => {
+  if (!partFields) {
+    return undefined;
+  }
+  const fieldNames = Object.keys(partFields);
+  return fieldNames.reduce((sum, fieldName) => {
+    const fieldValue = partFields[fieldName];
+    return {
+      ...sum,
+      [fieldName]:
+        (fieldValue && themePart[fieldValue as keyof TThemePart]) || fieldValue
+    };
+  }, {});
 };

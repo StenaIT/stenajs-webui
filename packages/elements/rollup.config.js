@@ -35,7 +35,8 @@ export default {
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
-      clean: true
+      clean: true,
+      typescript: require("typescript")
     }),
     commonjs()
   ]

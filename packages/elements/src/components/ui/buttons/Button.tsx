@@ -75,22 +75,25 @@ export const Button: React.FC<ButtonProps> = ({
   loadingLabel,
   buttonTheme = defaultButtonTheme
 }) => {
-  const { colors, fonts, fontSizes } = useThemeFields({
-    colors: {
-      textColor: buttonTheme.textColor,
-      textColorDisabled: buttonTheme.textColorDisabled,
-      bgColor: buttonTheme.bgColor,
-      bgColorDisabled: buttonTheme.bgColorDisabled,
-      successIconColor: buttonTheme.successIconColor,
-      progressSpinnerColor: buttonTheme.progressSpinnerColor
+  const { colors, fonts, fontSizes } = useThemeFields(
+    {
+      colors: {
+        textColor: buttonTheme.textColor,
+        textColorDisabled: buttonTheme.textColorDisabled,
+        bgColor: buttonTheme.bgColor,
+        bgColorDisabled: buttonTheme.bgColorDisabled,
+        successIconColor: buttonTheme.successIconColor,
+        progressSpinnerColor: buttonTheme.progressSpinnerColor
+      },
+      fontSizes: {
+        fontSize: buttonTheme.fontSize
+      },
+      fonts: {
+        font: buttonTheme.font
+      }
     },
-    fontSizes: {
-      fontSize: buttonTheme.fontSize
-    },
-    fonts: {
-      font: buttonTheme.font
-    }
-  });
+    [buttonTheme]
+  );
 
   const showUserButton = !loading && !success;
   const labelToUse = success ? successLabel : loading ? loadingLabel : label;
