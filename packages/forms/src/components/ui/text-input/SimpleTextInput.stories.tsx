@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { SimpleTextInput } from "@stenajs-webui/forms";
 
-storiesOf("Form/TextInput/SimpleTextInput", module)
+storiesOf("forms/TextInput/SimpleTextInput", module)
   .addDecorator(withInfo())
   .add("standard", () => <SimpleTextInput value={"some entered text"} />)
   .add("empty", () => <SimpleTextInput value={""} />)

@@ -13,7 +13,7 @@ interface State {
   value: number;
 }
 
-storiesOf("Form/TextInput/NumericTextInput", module)
+storiesOf("forms/TextInput/NumericTextInput", module)
   .addDecorator(withInfo())
   .add(
     "standard",

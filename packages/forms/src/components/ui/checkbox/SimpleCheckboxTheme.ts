@@ -3,15 +3,15 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 
 export interface SimpleCheckboxTheme {
   borderColor: string;
-  backgroundColor: string;
-  iconColor: string;
   borderColorDisabled: string;
-  backgroundColorDisabled: string;
-  iconColorDisabled: string;
-  borderColorChecked: string;
-  backgroundColorChecked: string;
-  iconColorChecked: string;
   borderColorFocused: string;
+  borderColorChecked: string;
+  backgroundColor: string;
+  backgroundColorDisabled: string;
+  backgroundColorChecked: string;
+  iconColor: string;
+  iconColorDisabled: string;
+  iconColorChecked: string;
   checkIcon: IconProp;
   width: string;
   height: string;

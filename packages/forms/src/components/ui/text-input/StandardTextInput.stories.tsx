@@ -9,7 +9,7 @@ import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("Form/TextInput/StandardTextInput", module)
+storiesOf("forms/TextInput/StandardTextInput", module)
   .addDecorator(withInfo())
   .add("standard", () => <StandardTextInput value={"some entered text"} />)
   .add("with dark theme", () => (
