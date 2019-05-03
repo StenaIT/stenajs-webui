@@ -2,7 +2,7 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
 import {
-  defaultTextInputThemeDark,
+  defaultStandardTextInputThemeDark,
   StandardTextInput
 } from "@stenajs-webui/forms";
 import { withInfo } from "@storybook/addon-info";
@@ -16,7 +16,7 @@ storiesOf("forms/TextInput/StandardTextInput", module)
     <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
       <StandardTextInput
         value={"some entered text"}
-        theme={defaultTextInputThemeDark}
+        theme={defaultStandardTextInputThemeDark}
       />
     </Box>
   ))
@@ -25,7 +25,7 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       <StandardTextInput
         value={"some entered text"}
         iconLeft={faCoffee}
-        theme={defaultTextInputThemeDark}
+        theme={defaultStandardTextInputThemeDark}
       />
     </Box>
   ))
