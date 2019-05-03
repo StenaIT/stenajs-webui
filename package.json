@@ -25,6 +25,7 @@
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/react": "^5.0.11",
+    "@storybook/theming": "^5.0.11",
     "@svgr/rollup": "^4.2.0",
     "@types/storybook__addon-info": "^4.1.1",
     "@types/storybook__addon-knobs": "^5.0.0",
