@@ -12,8 +12,10 @@ import {
   useRef,
   useState
 } from "react";
-import { defaultSimpleCheckboxTheme } from "../checkbox/SimpleCheckboxTheme";
-import { SimpleTextInputTheme } from "./SimpleTextInputTheme";
+import {
+  defaultSimpleTextInputTheme,
+  SimpleTextInputTheme
+} from "./SimpleTextInputTheme";
 
 const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 
@@ -141,7 +143,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   disabled = false,
   style,
   className,
-  theme = defaultSimpleCheckboxTheme,
+  theme = defaultSimpleTextInputTheme,
   onFocus,
   placeholderColor,
   focusOnMount,
