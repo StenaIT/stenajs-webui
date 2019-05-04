@@ -1,23 +1,13 @@
-import {
-  separator,
-  separatorHighlighted,
-  white,
-} from '../../../../themes/default-values/Colors';
-import {
-  CalendarTheme,
-  defaultCalendarTheme,
-} from '../calendar/components/CalendarTheme';
+import { ThemeColorField } from "@stenajs-webui/core";
 
 export interface DateRangeInputTheme {
-  borderColor: string;
-  backgroundColor: string;
-  highlightBorder: string;
-  calendar: CalendarTheme;
+  borderColor: ThemeColorField;
+  backgroundColor: ThemeColorField;
+  highlightBorderColor: ThemeColorField;
 }
 
 export const defaultDateRangeInputTheme: DateRangeInputTheme = {
-  backgroundColor: white,
-  borderColor: separator,
-  highlightBorder: `1px solid ${separatorHighlighted}`,
-  calendar: defaultCalendarTheme,
+  backgroundColor: "white",
+  borderColor: "separator",
+  highlightBorderColor: "separatorHighlighted"
 };

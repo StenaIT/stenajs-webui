@@ -1,39 +1,40 @@
-import { eachDayOfInterval, isAfter, isSameDay } from 'date-fns';
+import { Omit } from "@stenajs-webui/core";
+import { eachDayOfInterval, isAfter, isSameDay } from "date-fns";
 import {
   ComponentEnhancer,
   compose,
   pure,
   withHandlers,
   withProps,
-  withState,
-} from 'recompose';
-import { Omit } from '../../../../../types/Omit';
-import { CalendarProps } from '../types/CalendarTypes';
-import { CalendarUserData, DayState } from '../types/CalendarTypes';
-import { WithCalendarTheme } from '../types/WithCalendarTheme';
-import { DayData } from '../util/CalendarDataFactory';
-import { ensureStartIsFirst } from '../util/CalendarIntervalValidator';
-import { addDayStateHighlights } from '../util/StateModifier';
-import { WithMonthSwitcherProps } from './month-switcher/MonthSwitcher';
-import { MonthSwitcherLogicOuterProps } from './month-switcher/MonthSwitcherLogic';
+  withState
+} from "recompose";
+
+import {
+  CalendarProps,
+  CalendarUserData,
+  DayState
+} from "../types/CalendarTypes";
+import { DayData } from "../util/CalendarDataFactory";
+import { ensureStartIsFirst } from "../util/CalendarIntervalValidator";
+import { addDayStateHighlights } from "../util/StateModifier";
+import { WithMonthSwitcherProps } from "./month-switcher/MonthSwitcher";
+import { MonthSwitcherLogicOuterProps } from "./month-switcher/MonthSwitcherLogic";
 
 export type __C359813518 = ComponentEnhancer<{}, {}>;
 
-export type DateRangeFocusedInput = 'startDate' | 'endDate' | undefined;
+export type DateRangeFocusedInput = "startDate" | "endDate" | undefined;
 
-export type DateRangeCalendarProps<T> = Omit<CalendarProps<T>, 'theme'> &
+export type DateRangeCalendarProps<T> = Omit<CalendarProps<T>, "theme"> &
   MonthSwitcherLogicOuterProps &
   DateRangeCalendarState &
   OnChangePropsDateRangeSelection &
-  WithCalendarTheme &
   WithMonthSwitcherProps;
 
 export type DateRangeCalendarPropsWithStateProps<T> = Omit<
   CalendarProps<T>,
-  'theme'
+  "theme"
 > &
   OnChangePropsDateRangeSelection &
-  WithCalendarTheme &
   WithMonthSwitcherProps;
 
 export interface DateRangeCalendarState {
@@ -71,9 +72,9 @@ const withOnClickDayHandler = withHandlers<InnerProps<{}>, OnClickHandlers>({
     setStartDate,
     setEndDate,
     onChange,
-    setFocusedInput,
+    setFocusedInput
   }) => (day: DayData) => {
-    if (focusedInput === 'startDate') {
+    if (focusedInput === "startDate") {
       if (endDate && isAfter(day.date, endDate)) {
         setStartDate(endDate);
         setEndDate(day.date);
@@ -82,17 +83,17 @@ const withOnClickDayHandler = withHandlers<InnerProps<{}>, OnClickHandlers>({
         }
       } else {
         setStartDate(day.date);
-        setFocusedInput('endDate');
+        setFocusedInput("endDate");
         if (onChange) {
           onChange(
             ensureStartIsFirst({
               startDate: day.date,
-              endDate: endDate,
-            }),
+              endDate: endDate
+            })
           );
         }
       }
-    } else if (focusedInput === 'endDate') {
+    } else if (focusedInput === "endDate") {
       if (startDate && isAfter(startDate, day.date)) {
         setStartDate(day.date);
         setEndDate(startDate);
@@ -101,18 +102,18 @@ const withOnClickDayHandler = withHandlers<InnerProps<{}>, OnClickHandlers>({
         }
       } else {
         setEndDate(day.date);
-        setFocusedInput('startDate');
+        setFocusedInput("startDate");
         if (onChange) {
           onChange(
             ensureStartIsFirst({
               startDate: startDate,
-              endDate: day.date,
-            }),
+              endDate: day.date
+            })
           );
         }
       }
     }
-  },
+  }
 });
 
 const toggleDatesIfEndIsEarlierThanStart = withProps(
@@ -120,11 +121,11 @@ const toggleDatesIfEndIsEarlierThanStart = withProps(
     if (startDate && endDate && isAfter(startDate, endDate)) {
       return {
         startDate: endDate,
-        endDate: startDate,
+        endDate: startDate
       };
     }
     return {};
-  },
+  }
 );
 
 interface WithStatePerMonth {
@@ -133,14 +134,14 @@ interface WithStatePerMonth {
 
 const withStatePerMonth = withProps<WithStatePerMonth, InnerProps<{}>>(
   ({ startDate, endDate, statePerMonth }) => ({
-    statePerMonth: buildDayState(statePerMonth, startDate, endDate),
-  }),
+    statePerMonth: buildDayState(statePerMonth, startDate, endDate)
+  })
 );
 
 export const buildDayState = (
   statePerMonth: CalendarUserData<DayState> = {},
   start?: Date,
-  end?: Date,
+  end?: Date
 ): CalendarUserData<DayState> | undefined => {
   if (start && end) {
     return eachDayOfInterval({ start, end }).reduce(
@@ -150,30 +151,30 @@ export const buildDayState = (
         return addDayStateHighlights(
           result,
           date,
-          isFirstInRange || isLastInRange ? ['selected', 'range'] : ['range'],
+          isFirstInRange || isLastInRange ? ["selected", "range"] : ["range"]
         );
       },
-      statePerMonth,
+      statePerMonth
     );
   }
   if (start) {
-    return addDayStateHighlights(statePerMonth, start, ['selected']);
+    return addDayStateHighlights(statePerMonth, start, ["selected"]);
   }
   if (end) {
-    return addDayStateHighlights(statePerMonth, end, ['selected']);
+    return addDayStateHighlights(statePerMonth, end, ["selected"]);
   }
   return statePerMonth;
 };
 
 export const withDateRangeSelectionState = compose(
-  withState('startDate', 'setStartDate', undefined),
-  withState('endDate', 'setEndDate', undefined),
-  withState('focusedInput', 'setFocusedInput', 'startDate'),
+  withState("startDate", "setStartDate", undefined),
+  withState("endDate", "setEndDate", undefined),
+  withState("focusedInput", "setFocusedInput", "startDate")
 );
 
 export const withDateRangeSelection = compose(
   withOnClickDayHandler,
   toggleDatesIfEndIsEarlierThanStart,
   pure,
-  withStatePerMonth,
+  withStatePerMonth
 );

@@ -1,17 +1,17 @@
-import { separator, white } from '../../../../themes/default-values/Colors';
+import { ThemeColorField } from '@stenajs-webui/core';
 import {
   CalendarTheme,
   defaultCalendarTheme,
 } from '../calendar/components/CalendarTheme';
 
 export interface DateInputTheme {
-  backgroundColor: string;
-  borderColor: string;
+  backgroundColor: ThemeColorField;
+  borderColor: ThemeColorField;
   calendar: CalendarTheme;
 }
 
 export const defaultDateInputTheme: DateInputTheme = {
-  backgroundColor: white,
-  borderColor: separator,
+  backgroundColor: 'white',
+  borderColor: 'separator',
   calendar: defaultCalendarTheme,
 };

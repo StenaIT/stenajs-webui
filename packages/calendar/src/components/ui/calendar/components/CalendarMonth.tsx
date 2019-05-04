@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { Column, Row } from '../../../layout';
-import { DefaultText } from '../../../text/DefaultText';
-import { SectionHeaderText } from '../../../text/SectionHeaderText';
+import { Column, Row, StandardText } from "@stenajs-webui/core";
+import * as React from "react";
+import { SectionHeaderText } from "../../../text/SectionHeaderText";
 import {
   CalendarDayProps,
   CalendarOnClicks,
@@ -9,12 +8,12 @@ import {
   DayState,
   DayStateHighlight,
   ExtraDayContentProps,
-  Renderers,
-} from '../types/CalendarTypes';
-import { DayData, MonthData, WeekData } from '../util/CalendarDataFactory';
-import { CalendarTheme } from './CalendarTheme';
-import { CalendarWeek } from './CalendarWeek';
-import { WeekDayCell } from './renderers/WeekDayCell';
+  Renderers
+} from "../types/CalendarTypes";
+import { DayData, MonthData, WeekData } from "../util/CalendarDataFactory";
+import { CalendarTheme } from "./CalendarTheme";
+import { CalendarWeek } from "./CalendarWeek";
+import { WeekDayCell } from "./renderers/WeekDayCell";
 
 export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   month: MonthData;
@@ -44,22 +43,22 @@ export class CalendarMonth<T> extends React.Component<CalendarMonthProps<T>> {
       headerRightContent,
       theme,
       extraDayContent,
-      defaultHighlights,
+      defaultHighlights
     } = this.props;
 
     return (
       <>
-        <Column alignItems={'center'}>
-          <table style={{ borderSpacing: 0, borderCollapse: 'collapse' }}>
+        <Column alignItems={"center"}>
+          <table style={{ borderSpacing: 0, borderCollapse: "collapse" }}>
             <tbody>
               <tr>
                 <td>
-                  <Column justifyContent={'center'} alignItems={'center'}>
+                  <Column justifyContent={"center"} alignItems={"center"}>
                     {headerLeftContent}
                   </Column>
                 </td>
                 <td colSpan={6}>
-                  <Row justifyContent={'center'} alignItems={'center'}>
+                  <Row justifyContent={"center"} alignItems={"center"}>
                     <SectionHeaderText
                       color={theme.CalendarMonth.headerTextColor}
                     >
@@ -68,7 +67,7 @@ export class CalendarMonth<T> extends React.Component<CalendarMonthProps<T>> {
                   </Row>
                 </td>
                 <td>
-                  <Column justifyContent={'center'} alignItems={'center'}>
+                  <Column justifyContent={"center"} alignItems={"center"}>
                     {headerRightContent}
                   </Column>
                 </td>
@@ -78,13 +77,15 @@ export class CalendarMonth<T> extends React.Component<CalendarMonthProps<T>> {
                   <Column
                     width={theme.width}
                     height={theme.height}
-                    justifyContent={'center'}
-                    alignItems={'center'}
+                    justifyContent={"center"}
+                    alignItems={"center"}
                   >
-                    <DefaultText color={theme.WeekDay.textColor}>W</DefaultText>
+                    <StandardText color={theme.WeekDay.textColor}>
+                      W
+                    </StandardText>
                   </Column>
                 </td>
-                {month.weeks[0].days.map((day: DayData, index: number) => (
+                {month.weeks[0].days.map((day: DayData) => (
                   <td key={day.name}>
                     {renderWeekDay ? (
                       renderWeekDay(day.name, theme, onClickWeekDay)

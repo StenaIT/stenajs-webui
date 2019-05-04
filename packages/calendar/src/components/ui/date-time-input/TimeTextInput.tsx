@@ -1,14 +1,17 @@
-import { faClock } from '@fortawesome/free-regular-svg-icons/faClock';
-import * as React from 'react';
-import { useCallback, useState } from 'react';
-import { formatTimeString, validUserInput } from '../../../../util/time';
-import { useTheme } from '../../../theme/UseThemeHook';
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
+import { useTheme } from "@stenajs-webui/core";
 import {
-  DefaultTextInput,
-  DefaultTextInputProps,
-} from '../text-input/StandardTextInput';
+  StandardTextInput,
+  StandardTextInputProps
+} from "@stenajs-webui/forms";
+import * as React from "react";
+import { useCallback, useState } from "react";
+import {
+  formatTimeString,
+  validUserInput
+} from "../../../util/time/TimeStringFormatValidator";
 
-interface TimeTextInputProps extends DefaultTextInputProps {
+interface TimeTextInputProps extends StandardTextInputProps {
   /** Show placeholder when true */
   showPlaceholder?: boolean;
   /** Show icon when true */
@@ -20,29 +23,26 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   showPlaceholder = true,
   useIcon = true,
   value,
-  width = '85px',
+  width = "85px",
   ...props
 }) => {
   const [valid, setValid] = useState(() => validUserInput(value));
 
-  const timeFormat = 'hh:mm';
+  const timeFormat = "hh:mm";
 
   const theme = useTheme();
 
-  const onBlur = useCallback(
-    () => {
-      if (value) {
-        const formattedResult = formatTimeString(value);
-        setValid(formattedResult.success);
-        if (formattedResult.success) {
-          if (onChange) {
-            onChange(formattedResult.time);
-          }
+  const onBlur = useCallback(() => {
+    if (value) {
+      const formattedResult = formatTimeString(value);
+      setValid(formattedResult.success);
+      if (formattedResult.success) {
+        if (onChange) {
+          onChange(formattedResult.time);
         }
       }
-    },
-    [value, onChange, setValid],
-  );
+    }
+  }, [value, onChange, setValid]);
 
   const updateValue = useCallback(
     (time: string) => {
@@ -54,11 +54,11 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
         onChange(time);
       }
     },
-    [onChange, setValid],
+    [onChange, setValid]
   );
 
   return (
-    <DefaultTextInput
+    <StandardTextInput
       {...props}
       backgroundColor={valid ? undefined : theme.colors.errorBgLight}
       iconLeft={useIcon ? faClock : undefined}

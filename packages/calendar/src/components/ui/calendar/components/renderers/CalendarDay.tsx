@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { Clickable } from '../../../../interaction';
-import { Column } from '../../../../layout';
-import { DefaultText } from '../../../../text';
-import { DayState, DayStateHighlight } from '../../types/CalendarTypes';
-import { dayHighlightSelect } from '../../util/StateHelper';
-import { CalendarDayProps } from '../../types/CalendarTypes';
+import { Box, Clickable, StandardText } from "@stenajs-webui/core";
+import * as React from "react";
+import {
+  CalendarDayProps,
+  DayState,
+  DayStateHighlight
+} from "../../types/CalendarTypes";
+import { dayHighlightSelect } from "../../util/StateHelper";
 
 export const CalendarDay = <T extends {}>({
   day,
@@ -15,7 +16,7 @@ export const CalendarDay = <T extends {}>({
   onClickDay,
   theme,
   extraDayContent: ExtraDayContent,
-  defaultHighlights,
+  defaultHighlights
 }: CalendarDayProps<T>) => {
   return (
     <td
@@ -27,10 +28,10 @@ export const CalendarDay = <T extends {}>({
             day,
             week,
             month,
-            userData,
+            userData
           )),
         width: theme.width,
-        height: theme.height,
+        height: theme.height
       }}
     >
       <div
@@ -42,10 +43,10 @@ export const CalendarDay = <T extends {}>({
               day,
               week,
               month,
-              userData,
+              userData
             )),
-          width: '100%',
-          height: '100%',
+          width: "100%",
+          height: "100%"
         }}
       >
         <div
@@ -57,11 +58,11 @@ export const CalendarDay = <T extends {}>({
                 day,
                 week,
                 month,
-                userData,
+                userData
               )),
-            width: '100%',
-            height: '100%',
-            position: 'relative',
+            width: "100%",
+            height: "100%",
+            position: "relative"
           }}
         >
           {ExtraDayContent && (
@@ -82,15 +83,15 @@ export const CalendarDay = <T extends {}>({
                 ? () => onClickDay(day, userData)
                 : undefined
             }
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: "100%", height: "100%" }}
           >
-            <Column
-              width={'100%'}
-              height={'100%'}
-              justifyContent={'center'}
-              alignItems={'center'}
+            <Box
+              width={"100%"}
+              height={"100%"}
+              justifyContent={"center"}
+              alignItems={"center"}
             >
-              <DefaultText
+              <StandardText
                 {...theme.CalendarDay.textProps &&
                   theme.CalendarDay.textProps(
                     defaultHighlights,
@@ -98,12 +99,12 @@ export const CalendarDay = <T extends {}>({
                     day,
                     week,
                     month,
-                    userData,
+                    userData
                   )}
               >
                 {day.dayOfMonth}
-              </DefaultText>
-            </Column>
+              </StandardText>
+            </Box>
           </Clickable>
         </div>
       </div>
@@ -113,12 +114,12 @@ export const CalendarDay = <T extends {}>({
 
 const isClickable = (
   defaultHighlights: Array<DayStateHighlight> | undefined,
-  dayState: DayState | undefined,
+  dayState: DayState | undefined
 ): boolean =>
   !!dayHighlightSelect<boolean>(
     dayState,
     defaultHighlights,
-    ['enabled', 'disabled'],
+    ["enabled", "disabled"],
     [true, false],
-    true,
+    true
   );

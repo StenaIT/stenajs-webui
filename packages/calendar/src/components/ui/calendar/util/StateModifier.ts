@@ -1,18 +1,18 @@
-import { format, getDate, getISOWeek } from 'date-fns';
-import { DateFormats } from '../../../../../util/date/DateFormats';
-import { DayStateHighlight } from '../types/CalendarTypes';
+import { format, getDate, getISOWeek } from "date-fns";
+import { DateFormats } from "../../../../util/date/DateFormats";
 import {
   CalendarState,
   CalendarUserData,
   DayState,
-  StateForWeek,
-} from '../types/CalendarTypes';
-import { WeekData } from './CalendarDataFactory';
+  DayStateHighlight,
+  StateForWeek
+} from "../types/CalendarTypes";
+import { WeekData } from "./CalendarDataFactory";
 
 export const setDayStateValue = (
   state: CalendarUserData<DayState> | undefined,
   date: Date,
-  values: Partial<DayState>,
+  values: Partial<DayState>
 ): CalendarUserData<DayState> => {
   const monthString = format(date, DateFormats.yearAndMonth);
   const weekNumber = getISOWeek(date);
@@ -28,17 +28,17 @@ export const setDayStateValue = (
             state[monthString] &&
             state[monthString][weekNumber] &&
             state[monthString][weekNumber][dayInMonth]),
-          ...values,
-        },
-      },
-    },
+          ...values
+        }
+      }
+    }
   };
 };
 
 export const setDayStateValueFunction = (
   state: CalendarUserData<DayState> | undefined,
   date: Date,
-  setter: (dayState: DayState | undefined) => Partial<DayState>,
+  setter: (dayState: DayState | undefined) => Partial<DayState>
 ): CalendarUserData<DayState> => {
   const monthString = format(date, DateFormats.yearAndMonth);
   const weekNumber = getISOWeek(date);
@@ -58,21 +58,21 @@ export const setDayStateValueFunction = (
             state &&
               state[monthString] &&
               state[monthString][weekNumber] &&
-              state[monthString][weekNumber][dayInMonth],
-          ),
-        },
-      },
-    },
+              state[monthString][weekNumber][dayInMonth]
+          )
+        }
+      }
+    }
   };
 };
 
 export const addDayStateHighlights = (
   calendarState: CalendarState | undefined,
   date: Date,
-  highlights: Array<DayStateHighlight>,
+  highlights: Array<DayStateHighlight>
 ): CalendarUserData<DayState> => {
   const month = date.getMonth() + 1;
-  const monthString = `${date.getFullYear()}-${month < 10 ? '0' : ''}${month}`;
+  const monthString = `${date.getFullYear()}-${month < 10 ? "0" : ""}${month}`;
   const weekNumber = getISOWeek(date);
   const dayInMonth = getDate(date);
   const dayState: DayState | undefined =
@@ -96,21 +96,21 @@ export const addDayStateHighlights = (
           calendarState[monthString][weekNumber]),
         [dayInMonth]: {
           ...dayState,
-          highlights: newHighlights,
-        },
-      },
-    },
+          highlights: newHighlights
+        }
+      }
+    }
   };
 };
 
 export const addWeekStateHighlights = (
   calendarState: CalendarState | undefined,
   week: WeekData,
-  highlights: Array<DayStateHighlight>,
+  highlights: Array<DayStateHighlight>
 ): CalendarUserData<DayState> => {
   const date = week.days[0].date;
   const month = date.getMonth() + 1;
-  const monthString = `${date.getFullYear()}-${month < 10 ? '0' : ''}${month}`;
+  const monthString = `${date.getFullYear()}-${month < 10 ? "0" : ""}${month}`;
   const weekNumber = week.weekNumber;
 
   let state = calendarState;
@@ -128,14 +128,14 @@ export const addWeekStateHighlights = (
 
   const newWeekState: StateForWeek = {
     ...weekState,
-    highlights: newHighlights,
+    highlights: newHighlights
   };
 
   return {
     ...state,
     [monthString]: {
       ...(calendarState && calendarState[monthString]),
-      [weekNumber]: newWeekState,
-    },
+      [weekNumber]: newWeekState
+    }
   };
 };

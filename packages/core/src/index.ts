@@ -12,6 +12,8 @@ export * from "./components/interaction/Clickable";
 export * from "./components/layout/space/Space";
 export * from "./components/layout/box/Box";
 export * from "./components/layout/row/Row";
+export * from "./components/layout/indent/Indent";
+export * from "./components/layout/spacing/Spacing";
 
 export * from "./components/text/TextTheme";
 
@@ -28,3 +30,5 @@ export * from "./theme/Theme";
 export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
 export * from "./types/Omit";
+
+export * from "./hooks/UseOnClickOutside";

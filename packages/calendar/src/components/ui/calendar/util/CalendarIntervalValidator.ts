@@ -1,5 +1,5 @@
 import { format, isAfter, parse } from 'date-fns';
-import { DateFormats } from '../../../../../util/date/DateFormats';
+import { DateFormats } from '../../../../util/date/DateFormats';
 
 export interface DateInterval {
   startDate?: Date;

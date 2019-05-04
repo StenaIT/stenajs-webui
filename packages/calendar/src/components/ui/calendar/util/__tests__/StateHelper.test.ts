@@ -1,87 +1,86 @@
-import { defaultColors } from '../../../../../../themes/default-values/DefaultColors';
-import { DayState } from '../../types/CalendarTypes';
-import { dayHighlightSelect } from '../StateHelper';
+import { DayState } from "../../types/CalendarTypes";
+import { dayHighlightSelect } from "../StateHelper";
 
-describe('StateHelper', () => {
-  describe('dayHighlightSelect', () => {
-    it('returns value if boolean is true', () => {
+describe("StateHelper", () => {
+  describe("dayHighlightSelect", () => {
+    it("returns value if boolean is true", () => {
       const dayState: DayState = {};
       const selected = dayHighlightSelect(
         dayState,
         undefined,
         [true],
-        ['transparent'],
+        ["transparent"]
       );
-      expect(selected).toBe('transparent');
+      expect(selected).toBe("transparent");
     });
-    it('returns fallback if boolean is false', () => {
+    it("returns fallback if boolean is false", () => {
       const dayState: DayState = {};
       const selected = dayHighlightSelect(
         dayState,
         undefined,
         [false],
-        ['transparent'],
+        ["transparent"]
       );
       expect(selected).toBe(undefined);
     });
-    it('returns value if highlight is set', () => {
+    it("returns value if highlight is set", () => {
       const dayState: DayState = {
-        highlights: ['disabled'],
+        highlights: ["disabled"]
       };
       const selected = dayHighlightSelect(
         dayState,
         undefined,
-        ['disabled'],
-        ['transparent'],
+        ["disabled"],
+        ["transparent"]
       );
-      expect(selected).toBe('transparent');
+      expect(selected).toBe("transparent");
     });
-    it('returns value if defaultHighlight is set', () => {
+    it("returns value if defaultHighlight is set", () => {
       const dayState: DayState = {
-        highlights: ['disabled'],
+        highlights: ["disabled"]
       };
       const selected = dayHighlightSelect(
         dayState,
-        ['enabled'],
-        ['enabled'],
-        ['transparent'],
+        ["enabled"],
+        ["enabled"],
+        ["transparent"]
       );
-      expect(selected).toBe('transparent');
+      expect(selected).toBe("transparent");
     });
   });
-  it('returns fallback if there is no match', () => {
+  it("returns fallback if there is no match", () => {
     const dayState: DayState = {
-      highlights: ['selected'],
+      highlights: ["selected"]
     };
     const selected = dayHighlightSelect(
       dayState,
       undefined,
-      [false, false, 'disabled'],
-      ['a', 'b', 'c'],
-      'fallback',
+      [false, false, "disabled"],
+      ["a", "b", "c"],
+      "fallback"
     );
-    expect(selected).toBe('fallback');
+    expect(selected).toBe("fallback");
   });
-  it('returns fallback if list is empty', () => {
+  it("returns fallback if list is empty", () => {
     const dayState: DayState = {};
     const selected = dayHighlightSelect<string>(
       dayState,
       undefined,
       [],
       [],
-      'fallback',
+      "fallback"
     );
-    expect(selected).toBe('fallback');
+    expect(selected).toBe("fallback");
   });
-  it('returns value if true even when dayState is undefined', () => {
+  it("returns value if true even when dayState is undefined", () => {
     const dayState = undefined;
     const selected = dayHighlightSelect(
       dayState,
       undefined,
-      [true, 'selected', 'disabled'],
-      ['transparent', defaultColors.white, defaultColors.disabledText],
+      [true, "selected", "disabled"],
+      ["transparent", "white", "grey"]
     );
 
-    expect(selected).toBe('transparent');
+    expect(selected).toBe("transparent");
   });
 });

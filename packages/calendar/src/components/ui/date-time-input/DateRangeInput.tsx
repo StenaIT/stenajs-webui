@@ -1,27 +1,31 @@
-import { format } from 'date-fns';
-import * as React from 'react';
+import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
+import { useOnClickOutside } from "@stenajs-webui/core/dist";
+import { StandardTextInput } from "@stenajs-webui/forms";
+import { format } from "date-fns";
+import * as React from "react";
+import { useRef } from "react";
 import {
   compose,
   defaultProps,
   setDisplayName,
   withHandlers,
-  withState,
-} from 'recompose';
-import { DateFormats } from '../../../../util/date/DateFormats';
-import { withTheme, WithThemeProps } from '../../../util/enhancers';
-import { Background } from '../../colors';
-import { Border } from '../../decorations';
-import { Column, Indent, Row, Space } from '../../layout';
-import { Overlay } from '../../overlay';
-import { Absolute, Relative } from '../../positioning';
-import { DefaultText } from '../../text';
-import { DateRangeCalendar } from '../calendar/DateRangeCalendar';
+  withState
+} from "recompose";
+import { DateFormats } from "../../../util/date/DateFormats";
+import {
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../calendar/components/CalendarTheme";
+import { DateRangeCalendar } from "../calendar/DateRangeCalendar";
 import {
   DateRangeCalendarOnChangeValue,
   DateRangeFocusedInput,
-  OnChangePropsDateRangeSelection,
-} from '../calendar/features/DateRangeSelection';
-import { DefaultTextInput } from '../text-input';
+  OnChangePropsDateRangeSelection
+} from "../calendar/features/DateRangeSelection";
+import {
+  DateRangeInputTheme,
+  defaultDateRangeInputTheme
+} from "./DateRangeInputTheme";
 
 export interface DateRangeInputProps extends OnChangePropsDateRangeSelection {
   /** The current date range value */
@@ -56,6 +60,16 @@ export interface DateRangeInputProps extends OnChangePropsDateRangeSelection {
    * @default to
    */
   toText?: string;
+
+  /**
+   * The theme to use.
+   */
+  theme?: DateRangeInputTheme;
+
+  /**
+   * The calendar theme to use.
+   */
+  calendarTheme?: CalendarTheme;
 }
 
 export interface DateRangeInputPropsWithDefaultProps {
@@ -72,8 +86,7 @@ type InnerProps = DateRangeInputProps &
   WithShowCalendarHandlers &
   WithOnSelectDateHandler &
   WithFocusedInputStateProps &
-  DateRangeInputPropsWithDefaultProps &
-  WithThemeProps;
+  DateRangeInputPropsWithDefaultProps;
 
 const DateRangeInputComponent = ({
   showCalendarStartDate,
@@ -91,67 +104,73 @@ const DateRangeInputComponent = ({
   setEndDate,
   focusedInput,
   setFocusedInput,
-  toText = 'to',
-  theme,
-}: InnerProps) => (
-  <Column>
-    <Row alignItems={'center'}>
-      <DefaultTextInput
-        iconLeft={'calendar-alt'}
-        onFocus={showCalendarStartDate}
-        forceFocusHighlight={
-          focusedInput === 'startDate' && showingFocusHighlight
-        }
-        value={value.startDate ? format(value.startDate, displayFormat) : ''}
-        placeholder={placeholderStartDate}
-        onChange={noop}
-        size={9}
-      />
-      <Space />
-      <DefaultText>{toText}</DefaultText>
-      <Space />
-      <DefaultTextInput
-        iconLeft={'calendar-alt'}
-        onFocus={showCalendarEndDate}
-        forceFocusHighlight={
-          focusedInput === 'endDate' && showingFocusHighlight
-        }
-        value={value.endDate ? format(value.endDate, displayFormat) : ''}
-        placeholder={placeholderEndDate}
-        onChange={noop}
-        size={9}
-      />
-    </Row>
-    {showingCalendar && (
-      <Relative>
-        <Overlay onClickOutside={hideCalendar} backgroundOpacity={0} />
-        <Absolute zIndex={zIndex}>
-          <Border color={theme.components.DateRangeInput.borderColor}>
-            <Background color={theme.components.DateRangeInput.backgroundColor}>
-              <Indent>
-                <DateRangeCalendar
-                  startDateInFocus={
-                    focusedInput === 'startDate' || focusedInput === 'endDate'
-                      ? value[focusedInput]
-                      : undefined
-                  }
-                  onChange={onSelectDateRange}
-                  startDate={value.startDate}
-                  endDate={value.endDate}
-                  setStartDate={setStartDate}
-                  setEndDate={setEndDate}
-                  focusedInput={focusedInput}
-                  setFocusedInput={setFocusedInput}
-                  theme={theme.components.DateRangeInput.calendar}
-                />
-              </Indent>
-            </Background>
-          </Border>
-        </Absolute>
-      </Relative>
-    )}
-  </Column>
-);
+  toText = "to",
+  theme = defaultDateRangeInputTheme,
+  calendarTheme = defaultCalendarTheme
+}: InnerProps) => {
+  const ref = useRef(null);
+  useOnClickOutside(ref, hideCalendar);
+
+  return (
+    <Box>
+      <Row alignItems={"center"}>
+        <StandardTextInput
+          iconLeft={"calendar-alt"}
+          onFocus={showCalendarStartDate}
+          forceFocusHighlight={
+            focusedInput === "startDate" && showingFocusHighlight
+          }
+          value={value.startDate ? format(value.startDate, displayFormat) : ""}
+          placeholder={placeholderStartDate}
+          onChange={noop}
+          size={9}
+        />
+        <Space />
+        <StandardText>{toText}</StandardText>
+        <Space />
+        <StandardTextInput
+          iconLeft={"calendar-alt"}
+          onFocus={showCalendarEndDate}
+          forceFocusHighlight={
+            focusedInput === "endDate" && showingFocusHighlight
+          }
+          value={value.endDate ? format(value.endDate, displayFormat) : ""}
+          placeholder={placeholderEndDate}
+          onChange={noop}
+          size={9}
+        />
+      </Row>
+      {showingCalendar && (
+        <Box position={"relative"}>
+          <Box
+            position={"absolute"}
+            zIndex={zIndex}
+            background={theme.borderColor}
+            borderColor={theme.borderColor}
+            borderWidth={1}
+            indent
+          >
+            <DateRangeCalendar
+              startDateInFocus={
+                focusedInput === "startDate" || focusedInput === "endDate"
+                  ? value[focusedInput]
+                  : undefined
+              }
+              onChange={onSelectDateRange}
+              startDate={value.startDate}
+              endDate={value.endDate}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              focusedInput={focusedInput}
+              setFocusedInput={setFocusedInput}
+              theme={calendarTheme}
+            />
+          </Box>
+        </Box>
+      )}
+    </Box>
+  );
+};
 
 interface WithShowingCalendarStateProps {
   showingCalendar: boolean;
@@ -161,8 +180,8 @@ interface WithShowingCalendarStateProps {
 }
 
 const withShowingCalendarState = compose(
-  withState('showingCalendar', 'setShowingCalendar', false),
-  withState('showingFocusHighlight', 'setShowingFocusHighlight', false),
+  withState("showingCalendar", "setShowingCalendar", false),
+  withState("showingFocusHighlight", "setShowingFocusHighlight", false)
 );
 
 interface WithFocusedInputStateProps {
@@ -171,9 +190,9 @@ interface WithFocusedInputStateProps {
 }
 
 const withFocusedInputState = withState(
-  'focusedInput',
-  'setFocusedInput',
-  undefined,
+  "focusedInput",
+  "setFocusedInput",
+  undefined
 );
 
 interface WithShowCalendarHandlers {
@@ -193,9 +212,9 @@ const withShowCalendarHandlers = withHandlers<
   showCalendarStartDate: ({
     setShowingCalendar,
     setShowingFocusHighlight,
-    setFocusedInput,
+    setFocusedInput
   }) => () => {
-    setFocusedInput('startDate');
+    setFocusedInput("startDate");
     setShowingCalendar(true);
     setShowingFocusHighlight(true);
     return true;
@@ -203,9 +222,9 @@ const withShowCalendarHandlers = withHandlers<
   showCalendarEndDate: ({
     setShowingCalendar,
     setShowingFocusHighlight,
-    setFocusedInput,
+    setFocusedInput
   }) => () => {
-    setFocusedInput('endDate');
+    setFocusedInput("endDate");
     setShowingCalendar(true);
     setShowingFocusHighlight(true);
     return true;
@@ -219,12 +238,12 @@ const withShowCalendarHandlers = withHandlers<
     onChange,
     setShowingCalendar,
     setShowingFocusHighlight,
-    focusedInput,
+    focusedInput
   }) => (startDate: Date) => {
     if (onChange) {
       onChange({ startDate, endDate: value.endDate });
     }
-    if (focusedInput === 'endDate') {
+    if (focusedInput === "endDate") {
       setShowingFocusHighlight(false);
       setTimeout(() => setShowingCalendar(false), 150);
     }
@@ -234,16 +253,16 @@ const withShowCalendarHandlers = withHandlers<
     onChange,
     setShowingCalendar,
     setShowingFocusHighlight,
-    focusedInput,
+    focusedInput
   }) => (endDate: Date) => {
     if (onChange) {
       onChange({ startDate: value.startDate, endDate });
     }
-    if (focusedInput === 'endDate') {
+    if (focusedInput === "endDate") {
       setShowingFocusHighlight(false);
       setTimeout(() => setShowingCalendar(false), 150);
     }
-  },
+  }
 });
 
 interface WithOnSelectDateHandler {
@@ -256,31 +275,28 @@ const withOnSelectDateHandler = withHandlers<
     WithShowCalendarHandlers,
   WithOnSelectDateHandler
 >({
-  onSelectDateRange: ({ setShowingCalendar, onChange, hideCalendar }) => (
-    dateRange: DateRangeCalendarOnChangeValue,
+  onSelectDateRange: ({ onChange }) => (
+    dateRange: DateRangeCalendarOnChangeValue
   ) => {
     if (onChange) {
       onChange(dateRange);
     }
-  },
+  }
 });
 
 const withDefaultProps = defaultProps<Partial<DateRangeInputProps>>({
   displayFormat: DateFormats.fullDate,
-  placeholderStartDate: 'Start date',
-  placeholderEndDate: 'End date',
-  zIndex: 100,
+  placeholderStartDate: "Start date",
+  placeholderEndDate: "End date",
+  zIndex: 100
 });
 
-export const DateRangeInput = setDisplayName<DateRangeInputProps>(
-  'DateRangeInput',
-)(
+export const DateRangeInput = setDisplayName("DateRangeInput")(
   compose<InnerProps, DateRangeInputProps>(
     withDefaultProps,
     withShowingCalendarState,
     withFocusedInputState,
     withShowCalendarHandlers,
-    withOnSelectDateHandler,
-    withTheme,
-  )(DateRangeInputComponent),
+    withOnSelectDateHandler
+  )(DateRangeInputComponent)
 );

@@ -12,9 +12,9 @@ import {
   getYear,
   isSameDay,
   startOfISOWeek,
-  startOfMonth,
-} from 'date-fns';
-import { DateFormats } from '../../../../../util/date/DateFormats';
+  startOfMonth
+} from "date-fns";
+import { DateFormats } from "../../../../util/date/DateFormats";
 
 export enum Months {
   JANUARY = 0,
@@ -28,7 +28,7 @@ export enum Months {
   SEPTEMBER,
   OCTOBER,
   NOVEMBER,
-  DECEMBER,
+  DECEMBER
 }
 
 export enum WeekDays {
@@ -38,7 +38,7 @@ export enum WeekDays {
   WEDNESDAY,
   THURSDAY,
   FRIDAY,
-  SATURDAY,
+  SATURDAY
 }
 
 export interface DayData {
@@ -77,7 +77,7 @@ export interface MonthData {
 export const getMonthsInYear = (
   year: number,
   startMonth: number,
-  numMonths: number,
+  numMonths: number
 ): Array<MonthData> => {
   const months = [];
   for (let i = 0; i < numMonths; i++) {
@@ -95,14 +95,14 @@ export const getMonthInYear = (year: number, month: number): MonthData => {
     name: format(firstDayOfMonth, DateFormats.fullMonthName),
     year: yearToUse,
     monthInYear: monthToUse,
-    weeks: getWeeksForMonth(yearToUse, monthToUse),
+    weeks: getWeeksForMonth(yearToUse, monthToUse)
   };
 };
 
 export const getWeeksForMonth = (
   year: number,
   month: number,
-  forceSixWeeks: boolean = true,
+  forceSixWeeks: boolean = true
 ): Array<WeekData> => {
   const firstDayOfMonth = new Date(year, month, 1);
   const firstDayOfFirstWeek = startOfISOWeek(firstDayOfMonth);
@@ -127,7 +127,7 @@ export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
     endMonth: getMonth(addDays(firstDayOfWeek, 6)),
     endYear: getYear(addDays(firstDayOfWeek, 6)),
     days: getDaysForWeekForDate(firstDayOfWeek),
-    isLastWeekOfMonth,
+    isLastWeekOfMonth
   };
 };
 
@@ -135,7 +135,7 @@ export const createDay = (date: Date): DayData => {
   const dayOfWeek = getISODay(date);
   return {
     date,
-    name: format(date, 'EEE'),
+    name: format(date, "EEE"),
     dateString: format(addHours(date, 12), DateFormats.fullDate),
     weekNumber: getISOWeek(date),
     year: getYear(date),
@@ -145,20 +145,20 @@ export const createDay = (date: Date): DayData => {
     isFirstDayOfWeek: dayOfWeek === 1,
     isLastDayOfWeek: dayOfWeek === 7,
     isFirstDayOfMonth: isSameDay(startOfMonth(date), date),
-    isLastDayOfMonth: isSameDay(endOfMonth(date), date),
+    isLastDayOfMonth: isSameDay(endOfMonth(date), date)
   };
 };
 
 export const getDaysForWeekForDate = (firstDayOfWeek: Date): Array<DayData> => {
   return eachDayOfInterval({
     start: firstDayOfWeek,
-    end: addDays(firstDayOfWeek, 6),
+    end: addDays(firstDayOfWeek, 6)
   }).map(createDay);
 };
 
 export const getStartDateOfISOWeek = (
   weekNumber: number,
-  year: number,
+  year: number
 ): Date => {
   const simple = new Date(year, 0, 1 + (weekNumber - 1) * 7);
   const dayOfWeek = simple.getDay();
@@ -173,7 +173,7 @@ export const getStartDateOfISOWeek = (
 
 export const calculateOverflowingMonth = (
   year: number,
-  month: number,
+  month: number
 ): { year: number; month: number } => {
   if (month > Months.DECEMBER) {
     return { year: year + Math.floor(month / 12), month: month % 12 };

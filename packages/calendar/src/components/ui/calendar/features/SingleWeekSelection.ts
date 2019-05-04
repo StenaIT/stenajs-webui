@@ -1,31 +1,29 @@
+import { Omit } from "@stenajs-webui/core";
 import {
   ComponentEnhancer,
   compose,
   pure,
   withHandlers,
-  withProps,
-} from 'recompose';
-import { Omit } from '../../../../../types/Omit';
-import { CalendarProps } from '../types/CalendarTypes';
-import { WithCalendarTheme } from '../types/WithCalendarTheme';
+  withProps
+} from "recompose";
+import { CalendarProps } from "../types/CalendarTypes";
 import {
   DayData,
   getStartDateOfISOWeek,
   getWeekForDate,
-  WeekData,
-} from '../util/CalendarDataFactory';
-import { addWeekStateHighlights } from '../util/StateModifier';
-import { WithMonthSwitcherProps } from './month-switcher/MonthSwitcher';
-import { MonthSwitcherLogicOuterProps } from './month-switcher/MonthSwitcherLogic';
+  WeekData
+} from "../util/CalendarDataFactory";
+import { addWeekStateHighlights } from "../util/StateModifier";
+import { WithMonthSwitcherProps } from "./month-switcher/MonthSwitcher";
+import { MonthSwitcherLogicOuterProps } from "./month-switcher/MonthSwitcherLogic";
 
 export type __C35981231312518 = ComponentEnhancer<{}, {}>;
 
 export type SingleWeekValue = string;
 
-export type SingleWeekCalendarProps<T> = Omit<CalendarProps<T>, 'theme'> &
+export type SingleWeekCalendarProps<T> = Omit<CalendarProps<T>, "theme"> &
   MonthSwitcherLogicOuterProps &
   OnChangePropsSingleWeekSelection &
-  WithCalendarTheme &
   WithMonthSwitcherProps;
 
 export interface OnChangePropsSingleWeekSelection {
@@ -51,25 +49,25 @@ const addSelectionLogic = withHandlers<
     if (onChange) {
       onChange(getWeekStringFromWeekData(week));
     }
-  },
+  }
 });
 
 const buildSelectionState = withProps<
-  Pick<CalendarProps<{}>, 'statePerMonth'>,
+  Pick<CalendarProps<{}>, "statePerMonth">,
   SingleWeekCalendarProps<{}>
 >(({ value, statePerMonth }) => {
   const weekData = getWeekDataFromWeekString(value);
   return {
     statePerMonth: weekData
-      ? addWeekStateHighlights(statePerMonth, weekData, ['selected'])
+      ? addWeekStateHighlights(statePerMonth, weekData, ["selected"])
       : statePerMonth,
     date: value,
-    startDateInFocus: value,
+    startDateInFocus: value
   };
 });
 
 const getWeekStringFromWeekData = (
-  week: WeekData | undefined,
+  week: WeekData | undefined
 ): string | undefined => {
   if (!week) {
     return undefined;
@@ -78,12 +76,12 @@ const getWeekStringFromWeekData = (
 };
 
 const getWeekDataFromWeekString = (
-  week: string | undefined,
+  week: string | undefined
 ): WeekData | undefined => {
   if (!week) {
     return undefined;
   }
-  const parts = week.split('-');
+  const parts = week.split("-");
   const weekNumber = parseInt(parts[1], 10);
   const year = parseInt(parts[0], 10);
   return getWeekForDate(getStartDateOfISOWeek(weekNumber, year));
@@ -92,5 +90,5 @@ const getWeekDataFromWeekString = (
 export const withSingleWeekSelection = compose(
   addSelectionLogic,
   pure,
-  buildSelectionState,
+  buildSelectionState
 );

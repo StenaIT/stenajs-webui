@@ -1,30 +1,30 @@
-import { getMonth, getYear } from 'date-fns';
-import * as _ from 'lodash';
-import * as React from 'react';
+import { Row, Space, Spacing } from "@stenajs-webui/core";
+import { getMonth, getYear } from "date-fns";
+import * as _ from "lodash";
+import * as React from "react";
 import {
   compose,
   InferableComponentEnhancerWithProps,
   mapProps,
-  withProps,
-} from 'recompose';
-import { Row, Space, Spacing } from '../../../layout';
+  withProps
+} from "recompose";
 import {
   CalendarOnClicks,
   CalendarProps,
   CalendarPropsWithDateSet,
   CalendarUserData,
   DayState,
-  Renderers,
-} from '../types/CalendarTypes';
+  Renderers
+} from "../types/CalendarTypes";
 import {
   calculateOverflowingMonth,
   getMonthInYear,
   getMonthsInYear,
-  MonthData,
-} from '../util/CalendarDataFactory';
-import { CalendarMonth } from './CalendarMonth';
-import { CalendarTheme, defaultCalendarTheme } from './CalendarTheme';
-import { CalendarDay } from './renderers/CalendarDay';
+  MonthData
+} from "../util/CalendarDataFactory";
+import { CalendarMonth } from "./CalendarMonth";
+import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
+import { CalendarDay } from "./renderers/CalendarDay";
 
 export type __C13581358 = InferableComponentEnhancerWithProps<{}, {}>;
 
@@ -43,7 +43,6 @@ interface InnerProps<T>
 }
 
 const CalendarComponent = <T extends {}>({
-  year,
   monthRows,
   dayComponent = CalendarDay,
   userDataPerMonth,
@@ -57,7 +56,7 @@ const CalendarComponent = <T extends {}>({
   headerRightContent,
   extraDayContent,
   defaultHighlights,
-  theme = defaultCalendarTheme,
+  theme = defaultCalendarTheme
 }: InnerProps<T>) => (
   <div>
     {monthRows.map((monthRow, rowIndex) => (
@@ -99,27 +98,27 @@ const applyDefaultDates = <T extends {}>() =>
       return {
         ...props,
         month,
-        year,
+        year
       };
     }
     if (date) {
       return {
         ...props,
         month: getMonth(date),
-        year: getYear(date),
+        year: getYear(date)
       };
     }
     const now = new Date();
     return {
       ...props,
       month: getMonth(now),
-      year: getYear(now),
+      year: getYear(now)
     };
   });
 
 const handleOverflowingMonth = <T extends {}>() =>
   withProps(({ month, year }: InnerProps<T>) =>
-    calculateOverflowingMonth(year, month),
+    calculateOverflowingMonth(year, month)
   );
 
 const createCalendarMonths = <T extends {}>() =>
@@ -127,26 +126,26 @@ const createCalendarMonths = <T extends {}>() =>
     ({ numMonths, monthsPerRow, year, month }) => {
       if (numMonths == null) {
         return {
-          monthRows: [[getMonthInYear(year, month)]],
+          monthRows: [[getMonthInYear(year, month)]]
         };
       }
       if (monthsPerRow == null) {
         return {
-          monthRows: [getMonthsInYear(year, month, numMonths)],
+          monthRows: [getMonthsInYear(year, month, numMonths)]
         };
       }
       return {
         monthRows: _.chunk(
           getMonthsInYear(year, month, numMonths),
-          monthsPerRow,
-        ),
+          monthsPerRow
+        )
       };
-    },
+    }
   );
 
 export const createCalendar = <T extends {}>() =>
   compose<InnerProps<T>, CalendarProps<T>>(
     applyDefaultDates(),
     handleOverflowingMonth(),
-    createCalendarMonths(),
+    createCalendarMonths()
   )(CalendarComponent);

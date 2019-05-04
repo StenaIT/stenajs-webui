@@ -19,7 +19,7 @@ const StyledSimpleTextInput = styled(SimpleTextInput)`
   }
 `;
 
-export interface DefaultTextInputProps
+export interface StandardTextInputProps
   extends Omit<SimpleTextInputProps, "theme"> {
   /** React node to put to the left. Left icon is ignored if this is set. */
   contentLeft?: React.ReactNode;
@@ -105,7 +105,7 @@ const TextInputIcon = ({
   );
 };
 
-export const StandardTextInput: React.FC<DefaultTextInputProps> = ({
+export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   textColor,
   contentLeft,
   contentRight,

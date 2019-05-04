@@ -1,12 +1,8 @@
-import * as React from 'react';
-import { Background } from '../../../../colors';
-import { ClickableSwitcher } from '../../../../interaction/ClickableSwitcher';
-import { Column } from '../../../../layout';
-import { Absolute, Relative } from '../../../../positioning';
-import { SmallText } from '../../../../text';
-import { WeekData } from '../../util/CalendarDataFactory';
-import { OnClickWeek } from '../../types/CalendarTypes';
-import { CalendarTheme } from '../CalendarTheme';
+import { Box, Clickable, SmallText } from "@stenajs-webui/core";
+import * as React from "react";
+import { OnClickWeek } from "../../types/CalendarTypes";
+import { WeekData } from "../../util/CalendarDataFactory";
+import { CalendarTheme } from "../CalendarTheme";
 
 export interface WeekNumberCellProps {
   week: WeekData;
@@ -23,28 +19,27 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
   week,
   background,
   backgroundColor,
-  prefix,
+  prefix
 }) => (
-  <Background color={backgroundColor || theme.WeekNumber.backgroundColor}>
-    <Relative>
-      <ClickableSwitcher
-        onClick={onClickWeek ? () => onClickWeek(week) : undefined}
+  <Box
+    background={backgroundColor || theme.WeekNumber.backgroundColor}
+    position={"relative"}
+  >
+    <Clickable onClick={onClickWeek ? () => onClickWeek(week) : undefined}>
+      <Box
+        width={theme.width}
+        height={theme.height}
+        justifyContent={"center"}
+        alignItems={"center"}
       >
-        <Column
-          width={theme.width}
-          height={theme.height}
-          justifyContent={'center'}
-          alignItems={'center'}
-        >
-          {background && <Absolute>{background}</Absolute>}
-          <Absolute>
-            <SmallText color={theme.WeekNumber.textColor}>
-              {prefix}
-              {week.weekNumber}
-            </SmallText>
-          </Absolute>
-        </Column>
-      </ClickableSwitcher>
-    </Relative>
-  </Background>
+        {background && <Box position={"absolute"}>{background}</Box>}
+        <Box position={"absolute"}>
+          <SmallText color={theme.WeekNumber.textColor}>
+            {prefix}
+            {week.weekNumber}
+          </SmallText>
+        </Box>
+      </Box>
+    </Clickable>
+  </Box>
 );

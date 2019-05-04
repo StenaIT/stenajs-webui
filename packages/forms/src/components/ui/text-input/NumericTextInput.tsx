@@ -2,14 +2,14 @@ import { Box, Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
-import { StandardTextInput, DefaultTextInputProps } from "./StandardTextInput";
+import { StandardTextInput, StandardTextInputProps } from "./StandardTextInput";
 import {
   defaultNumericTextInputTheme,
   NumericTextInputTheme
 } from "./NumericTextInputTheme";
 
 interface NumericTextInputProps
-  extends Omit<DefaultTextInputProps, "value" | "onChange" | "theme"> {
+  extends Omit<StandardTextInputProps, "value" | "onChange" | "theme"> {
   value: number | undefined;
   onChange: (value: number | undefined) => void;
   max?: number;

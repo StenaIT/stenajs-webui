@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Column } from '../../../../layout';
-import { DefaultText } from '../../../../text';
-import { DayData } from '../../util/CalendarDataFactory';
-import { OnClickWeekDay } from '../../types/CalendarTypes';
-import { CalendarTheme } from '../CalendarTheme';
+import { Box, StandardText } from "@stenajs-webui/core";
+import * as React from "react";
+import { OnClickWeekDay } from "../../types/CalendarTypes";
+import { DayData } from "../../util/CalendarDataFactory";
+import { CalendarTheme } from "../CalendarTheme";
 
 export interface WeekDayCellProps {
   onClickWeekDay?: OnClickWeekDay;
@@ -14,18 +13,18 @@ export interface WeekDayCellProps {
 export const WeekDayCell = ({
   onClickWeekDay,
   day,
-  theme,
+  theme
 }: WeekDayCellProps) => (
   <div
     onClick={onClickWeekDay ? () => onClickWeekDay(day.dayOfWeek) : undefined}
   >
-    <Column
+    <Box
       width={theme.width}
       height={theme.height}
-      justifyContent={'center'}
-      alignItems={'center'}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
-      <DefaultText color={theme.WeekDay.textColor}>{day.name}</DefaultText>
-    </Column>
+      <StandardText color={theme.WeekDay.textColor}>{day.name}</StandardText>
+    </Box>
   </div>
 );

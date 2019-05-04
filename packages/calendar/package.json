@@ -27,6 +27,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
+    "@types/recompose": "^0.30.6",
     "recompose": "^0.30.0",
     "styled-system": "^4.1.0"
   },

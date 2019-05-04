@@ -45,9 +45,13 @@ import {
   MinWidthProps,
   overflow,
   OverflowProps,
+  position,
+  PositionProps,
   TLengthStyledSystem,
   width,
-  WidthProps
+  WidthProps,
+  zIndex,
+  ZIndexProps
 } from "styled-system";
 import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
 import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
@@ -74,7 +78,9 @@ type StyledSystemProps = AlignItemsProps &
   MinWidthProps &
   MaxWidthProps &
   OverflowProps &
-  WidthProps;
+  PositionProps &
+  WidthProps &
+  ZIndexProps;
 
 type FlexBoxProps = BoxProps;
 
@@ -118,7 +124,9 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${overflow};
   padding: ${props => numberOrZero(props.spacing) * 10}px
     ${props => numberOrZero(props.indent) * 10}px;
+  ${position}
   ${width};
+  ${zIndex}
 `;
 
 export const Box: React.FC<BoxProps> = ({

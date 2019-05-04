@@ -1,21 +1,23 @@
-import { format } from 'date-fns';
-import * as React from 'react';
+import { useOnClickOutside } from "@stenajs-webui/core";
+import { Box } from "@stenajs-webui/core/dist";
+import { StandardTextInput } from "@stenajs-webui/forms";
+import { format } from "date-fns";
+import * as React from "react";
+import { useRef } from "react";
 import {
   compose,
   defaultProps,
   setDisplayName,
   withHandlers,
-  withState,
-} from 'recompose';
-import { DateFormats } from '../../../../util/date/DateFormats';
-import { withTheme, WithThemeProps } from '../../../util/enhancers';
-import { Background } from '../../colors';
-import { Border } from '../../decorations';
-import { Indent } from '../../layout/Indent';
-import { Overlay } from '../../overlay';
-import { Absolute, Relative } from '../../positioning';
-import { createSingleDateCalendar } from '../calendar/SingleDateCalendar';
-import { DefaultTextInput } from '../text-input';
+  withState
+} from "recompose";
+import { DateFormats } from "../../../util/date/DateFormats";
+import {
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../calendar/components/CalendarTheme";
+import { createSingleDateCalendar } from "../calendar/SingleDateCalendar";
+import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
 
 export interface DateInputProps {
   /** The current value */
@@ -41,6 +43,14 @@ export interface DateInputProps {
    * @default 100
    */
   zIndex?: number;
+  /**
+   * The theme to use.
+   */
+  theme?: DateInputTheme;
+  /**
+   * The calendar theme to use.
+   */
+  calendarTheme?: CalendarTheme;
 }
 
 export interface DateInputPropsWithDefaultProps {
@@ -55,12 +65,11 @@ type InnerProps = DateInputProps &
   WithShowingCalendarStateProps &
   WithShowCalendarHandlers &
   WithOnSelectDateHandler &
-  DateInputPropsWithDefaultProps &
-  WithThemeProps;
+  DateInputPropsWithDefaultProps;
 
 const SingleDateCalendar = createSingleDateCalendar();
 
-const DateInputComponent = ({
+const DateInputComponent: React.FC<InnerProps> = ({
   showCalendar,
   hideCalendar,
   displayFormat,
@@ -69,40 +78,45 @@ const DateInputComponent = ({
   onSelectDate,
   value,
   zIndex,
-  theme,
-  openOnMount,
-}: InnerProps) => (
-  <>
-    <DefaultTextInput
-      iconLeft={'calendar-alt'}
-      onFocus={showCalendar}
-      value={value ? format(value, displayFormat) : ''}
-      placeholder={placeholder}
-      onChange={noop}
-      size={9}
-      forceFocusHighlight={showingCalendar}
-      focusOnMount={openOnMount}
-    />
-    {showingCalendar && (
-      <Relative>
-        <Overlay onClickOutside={hideCalendar} backgroundOpacity={0} />
-        <Absolute zIndex={zIndex}>
-          <Border color={theme.components.DateInput.borderColor}>
-            <Background color={theme.components.DateInput.backgroundColor}>
-              <Indent>
-                <SingleDateCalendar
-                  onChange={onSelectDate}
-                  value={value}
-                  theme={theme.components.DateInput.calendar}
-                />
-              </Indent>
-            </Background>
-          </Border>
-        </Absolute>
-      </Relative>
-    )}
-  </>
-);
+  theme = defaultDateInputTheme,
+  calendarTheme = defaultCalendarTheme,
+  openOnMount
+}) => {
+  const ref = useRef(null);
+  useOnClickOutside(ref, hideCalendar);
+
+  return (
+    <>
+      <StandardTextInput
+        iconLeft={"calendar-alt"}
+        onFocus={showCalendar}
+        value={value ? format(value, displayFormat) : ""}
+        placeholder={placeholder}
+        onChange={noop}
+        size={9}
+        forceFocusHighlight={showingCalendar}
+        focusOnMount={openOnMount}
+      />
+      {showingCalendar && (
+        <Box position={"relative"}>
+          <Box position={"absolute"} zIndex={zIndex} innerRef={ref}>
+            <Box
+              background={theme.backgroundColor}
+              borderColor={theme.borderColor}
+              indent
+            >
+              <SingleDateCalendar
+                onChange={onSelectDate}
+                value={value}
+                theme={calendarTheme}
+              />
+            </Box>
+          </Box>
+        </Box>
+      )}
+    </>
+  );
+};
 
 interface WithShowingCalendarStateProps {
   showingCalendar: boolean;
@@ -110,9 +124,9 @@ interface WithShowingCalendarStateProps {
 }
 
 const withShowingCalendarState = withState(
-  'showingCalendar',
-  'setShowingCalendar',
-  ({ openOnMount }: DateInputProps) => openOnMount,
+  "showingCalendar",
+  "setShowingCalendar",
+  ({ openOnMount }: DateInputProps) => openOnMount
 );
 
 interface WithShowCalendarHandlers {
@@ -133,7 +147,7 @@ const withShowCalendarHandlers = withHandlers<
     if (onClose) {
       onClose();
     }
-  },
+  }
 });
 
 interface WithOnSelectDateHandler {
@@ -144,28 +158,25 @@ const withOnSelectDateHandler = withHandlers<
   WithShowingCalendarStateProps & DateInputProps & WithShowCalendarHandlers,
   WithOnSelectDateHandler
 >({
-  onSelectDate: ({ setShowingCalendar, onChange, hideCalendar }) => (
-    date: Date | undefined,
-  ) => {
+  onSelectDate: ({ onChange, hideCalendar }) => (date: Date | undefined) => {
     if (onChange) {
       onChange(date);
     }
     setTimeout(hideCalendar, 150);
-  },
+  }
 });
 
 const withDefaultProps = defaultProps<Partial<DateInputProps>>({
   displayFormat: DateFormats.fullDate,
-  placeholder: 'Enter date',
-  zIndex: 100,
+  placeholder: "Enter date",
+  zIndex: 100
 });
 
-export const DateInput = setDisplayName<DateInputProps>('DateInput')(
+export const DateInput = setDisplayName("DateInput")(
   compose<InnerProps, DateInputProps>(
     withDefaultProps,
     withShowingCalendarState,
     withShowCalendarHandlers,
-    withOnSelectDateHandler,
-    withTheme,
-  )(DateInputComponent),
+    withOnSelectDateHandler
+  )(DateInputComponent)
 );
