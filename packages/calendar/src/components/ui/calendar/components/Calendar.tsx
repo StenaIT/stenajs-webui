@@ -1,6 +1,6 @@
 import { Row, Space, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear } from "date-fns";
-import * as _ from "lodash";
+import { chunk } from "lodash-es";
 import * as React from "react";
 import {
   compose,
@@ -135,10 +135,7 @@ const createCalendarMonths = <T extends {}>() =>
         };
       }
       return {
-        monthRows: _.chunk(
-          getMonthsInYear(year, month, numMonths),
-          monthsPerRow
-        )
+        monthRows: chunk(getMonthsInYear(year, month, numMonths), monthsPerRow)
       };
     }
   );

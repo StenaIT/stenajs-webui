@@ -1,5 +1,6 @@
 import { Box, Clickable, SmallText } from "@stenajs-webui/core";
 import * as React from "react";
+import { useThemeFields } from "@stenajs-webui/core";
 import { OnClickWeek } from "../../types/CalendarTypes";
 import { WeekData } from "../../util/CalendarDataFactory";
 import { CalendarTheme } from "../CalendarTheme";
@@ -20,26 +21,38 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
   background,
   backgroundColor,
   prefix
-}) => (
-  <Box
-    background={backgroundColor || theme.WeekNumber.backgroundColor}
-    position={"relative"}
-  >
-    <Clickable onClick={onClickWeek ? () => onClickWeek(week) : undefined}>
-      <Box
-        width={theme.width}
-        height={theme.height}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        {background && <Box position={"absolute"}>{background}</Box>}
-        <Box position={"absolute"}>
-          <SmallText color={theme.WeekNumber.textColor}>
-            {prefix}
-            {week.weekNumber}
-          </SmallText>
+}) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        backgroundColor: theme.WeekNumber.backgroundColor,
+        textColor: theme.WeekNumber.textColor
+      }
+    },
+    [theme]
+  );
+
+  return (
+    <Box
+      background={backgroundColor || colors.backgroundColor}
+      position={"relative"}
+    >
+      <Clickable onClick={onClickWeek ? () => onClickWeek(week) : undefined} disableFocusHighlight>
+        <Box
+          width={theme.width}
+          height={theme.height}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          {background && <Box position={"absolute"}>{background}</Box>}
+          <Box position={"absolute"}>
+            <SmallText color={colors.textColor}>
+              {prefix}
+              {week.weekNumber}
+            </SmallText>
+          </Box>
         </Box>
-      </Box>
-    </Clickable>
-  </Box>
-);
+      </Clickable>
+    </Box>
+  );
+};

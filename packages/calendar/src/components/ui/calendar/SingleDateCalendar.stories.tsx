@@ -4,9 +4,6 @@ import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
-import { UseTheme } from "../../../src/components/theme";
-import { defaultButtonTheme } from "../../../src/components/ui/buttons";
-import { Icon } from "../../../src/components/ui/icon";
 import { Row, Space, Box } from "@stenajs-webui/core";
 import {
   CalendarTheme,
@@ -17,6 +14,7 @@ import { SingleDateCalendar } from './SingleDateCalendar';
 import { OnClickWeek, RenderWeekNumber } from './types/CalendarTypes';
 import { WeekData } from './util/CalendarDataFactory';
 import { setDayStateValue } from './util/StateModifier';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface State {
   value?: Date;
@@ -46,7 +44,7 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-storiesOf("Form/Calendar/SingleDateCalendar", module)
+storiesOf("calendar/calendar/SingleDateCalendar", module)
   .addDecorator(withInfo())
   .add(
     "standard",
@@ -152,7 +150,7 @@ storiesOf("Form/Calendar/SingleDateCalendar", module)
             background={
               week.startYear === now.getFullYear() &&
               week.weekNumber === getISOWeek(now) ? (
-                <Icon name={faCoffee} color={"blue"} size={30} />
+                <FontAwesomeIcon icon={faCoffee} color={"blue"} style={{fontSize:30}} />
               ) : (
                 undefined
               )
@@ -180,39 +178,10 @@ storiesOf("Form/Calendar/SingleDateCalendar", module)
         value={store.state.value}
         extraDayContent={() => (
           <Box position={'absolute'} top={"-10px"} right={"-10px"}>
-            <Icon name={faCoffee} />
+            <FontAwesomeIcon icon={faCoffee} />
           </Box>
         )}
       />
-    ))
-  )
-  .add(
-    "with global custom theme",
-    withState<State>({
-      value: undefined
-    })(({ store }: { store: Store<State> }) => (
-      <UseTheme
-        theme={{
-          components: {
-            Calendar: {
-              ...extranetCalendarTheme,
-              CalendarMonth: {
-                ...extranetCalendarTheme.CalendarMonth,
-                SwitchButton: {
-                  ...defaultButtonTheme,
-                  bgColor: "pink",
-                  height: "50px"
-                }
-              }
-            }
-          }
-        }}
-      >
-        <SingleDateCalendar
-          onChange={value => store.set({ value })}
-          value={store.state.value}
-        />
-      </UseTheme>
     ))
   )
   .add(

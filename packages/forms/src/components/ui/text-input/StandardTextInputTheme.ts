@@ -4,7 +4,7 @@ import { BorderColorProperty, BorderStyleProperty } from "csstype";
 export interface StandardTextInputTheme {
   borderRadius: string;
   borderColor: ThemeColorField | BorderColorProperty;
-  borderColorFocused: ThemeColorField;
+  borderColorFocused: ThemeColorField | string;
   borderStyle: BorderStyleProperty;
   borderWidth: number;
   disabledBackgroundColor: string;
@@ -13,8 +13,8 @@ export interface StandardTextInputTheme {
   paddingLeft: string;
   paddingRight: string;
   iconSize: number;
-  backgroundColor: ThemeColorField;
-  textColor: ThemeColorField;
+  backgroundColor: ThemeColorField | string;
+  textColor: ThemeColorField | string;
 }
 
 export const defaultStandardTextInputTheme: StandardTextInputTheme = {
@@ -24,7 +24,7 @@ export const defaultStandardTextInputTheme: StandardTextInputTheme = {
   borderStyle: "solid",
   borderWidth: 1,
   disabledBackgroundColor: "disabledBackground",
-  fontSize: "13px",
+  fontSize: "input",
   height: "34px",
   paddingLeft: "8px",
   paddingRight: "8px",
@@ -40,11 +40,11 @@ export const defaultStandardTextInputThemeDark: StandardTextInputTheme = {
   borderStyle: "solid",
   borderWidth: 1,
   disabledBackgroundColor: "disabledBackground",
-  fontSize: "normal",
+  fontSize: "input",
   height: "34px",
   paddingLeft: "8px",
   paddingRight: "8px",
   iconSize: 13,
-  backgroundColor: "primaryBg",
+  backgroundColor: "#4a5d73",
   textColor: "white"
 };

@@ -17,8 +17,12 @@ import {
 import { ThemeFontField } from "../../theme/theme-types/ThemeFonts";
 import { ThemeFontSizeField } from "../../theme/theme-types/ThemeFontSizes";
 import { ThemeFontWeightField } from "../../theme/theme-types/ThemeFontWeights";
+import { Omit } from "../../types/Omit";
 
-export interface TextProps extends TextThemeProps, TextBasePropsBase, SpanProps {}
+export interface TextProps
+  extends TextThemeProps,
+    TextBasePropsBase,
+    Omit<SpanProps, "color"> {}
 
 type SpanProps = JSX.IntrinsicElements["span"];
 
@@ -34,6 +38,8 @@ export type TextBaseProps = TextBasePropsBase &
   StyledSystemProps;
 
 export interface TextBasePropsBase {
+  /** The color of the text. */
+  color?: string;
   whiteSpace?: WhiteSpaceProperty;
   /** Adds underline to text. */
   textDecoration?: TextDecorationProperty;
@@ -57,6 +63,7 @@ type StyledSystemProps = FontWeightProps & FontFamilyProps & FontSizeProps;
  * Do not add color here, span already includes color.
  */
 const SpanWithHover = styled.span<TextBaseProps>`
+  ${({ color }) => (color ? `color: ${color};` : "")};
   ${fontSize};
   ${fontFamily};
   ${fontWeight};

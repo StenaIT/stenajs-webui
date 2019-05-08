@@ -1,8 +1,12 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Clickable, Omit } from "@stenajs-webui/core";
-import { useOnClickOutside } from "@stenajs-webui/core/dist";
-import { Box } from "@stenajs-webui/core/src";
+import {
+  Absolute,
+  Border,
+  Omit,
+  Relative,
+  useOnClickOutside,
+  useThemeFields
+} from "@stenajs-webui/core";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -10,6 +14,7 @@ import {
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
+import { DateFormats } from '../../../util/date/DateFormats';
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -46,44 +51,47 @@ export interface DateTextInputProps<T> extends StandardTextInputProps {
   calendarTheme?: CalendarTheme;
 }
 
-export const DateTextInput = <T extends {}>({
+export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   calendarProps,
   closeOnCalendarSelectDate = true,
-  dateFormat = "yyyy-MM-dd",
+  dateFormat = DateFormats.fullDate,
   disableCalender = false,
   useCalenderIcon = true,
   onChange,
-  placeholder = "YYYY-MM-DD",
+  placeholder = "yyyy-mm-dd",
   value,
   width = "125px",
   zIndex = 100,
   dateInputTheme = defaultDateInputTheme,
   calendarTheme = defaultCalendarTheme,
   ...props
-}: DateTextInputProps<T>) => {
+}) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        backgroundColor: dateInputTheme.backgroundColor,
+        borderColor: dateInputTheme.borderColor
+      }
+    },
+    []
+  );
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
   }, [setOpen, open]);
 
-  useOnClickOutside(ref, toggleCalendar);
+  const closeCalendar = useCallback(() => {
+    setOpen(false);
+  }, [setOpen]);
+
+  useOnClickOutside(ref, closeCalendar);
 
   const updateValue = (date: string) => {
     onChange(date);
   };
-
-  const calendar =
-    disableCalender || props.disabled ? (
-      <FontAwesomeIcon icon={faCalendarAlt} />
-    ) : (
-      useCalenderIcon && (
-        <Clickable onClick={toggleCalendar}>
-          <FontAwesomeIcon icon={faCalendarAlt} />
-        </Clickable>
-      )
-    );
 
   const onCalendarSelectDate = (date: Date | undefined) => {
     if (date) {
@@ -109,34 +117,35 @@ export const DateTextInput = <T extends {}>({
             ? "red" // TODO Use color from theme. errorBgLight
             : undefined
         }
-        contentLeft={calendar}
+        iconLeft={faCalendarAlt}
+        onClickLeft={toggleCalendar}
         onChange={updateValue}
         placeholder={placeholder}
         value={value}
         width={width}
       />
       {open && (
-        <Box position={"relative"}>
-          <Box
-            position={"absolute"}
-            zIndex={zIndex}
-            borderWidth={1}
-            borderColor={dateInputTheme.borderColor}
-            background={dateInputTheme.backgroundColor}
-            indent
-          >
-            <SingleDateCalendar
-              {...calendarProps}
-              onChange={onCalendarSelectDate}
-              value={
-                value && dateIsValid
-                  ? parse(value, dateFormat, new Date())
-                  : undefined
-              }
-              theme={calendarTheme}
-            />
-          </Box>
-        </Box>
+        <Relative>
+          <Absolute zIndex={zIndex} innerRef={ref}>
+            <Border
+              borderColor={colors.borderColor}
+              background={colors.backgroundColor}
+              indent
+              spacing
+            >
+              <SingleDateCalendar
+                {...calendarProps}
+                onChange={onCalendarSelectDate}
+                value={
+                  value && dateIsValid
+                    ? parse(value, dateFormat, new Date())
+                    : undefined
+                }
+                theme={calendarTheme}
+              />
+            </Border>
+          </Absolute>
+        </Relative>
       )}
     </>
   );

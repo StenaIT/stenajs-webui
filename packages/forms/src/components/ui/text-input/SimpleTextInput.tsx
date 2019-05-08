@@ -1,4 +1,5 @@
 import styled, { CreateStyled } from "@emotion/styled";
+import { useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   ChangeEvent,
@@ -75,29 +76,34 @@ export interface SimpleTextInputState {
   wasCancelled: boolean;
 }
 
-const StyledInput = styledWithTheme("input")<
-  Pick<
-    SimpleTextInputProps,
-    | "backgroundColor"
-    | "fontSize"
-    | "height"
-    | "placeholderColor"
-    | "textColor"
-    | "width"
-  > & { outerStyle?: CSSProperties }
->(
+interface StyledInputProps {
+  placeholderColor: string;
+  backgroundColor: string;
+  backgroundColorDisabled: string;
+  textColor: string;
+  textColorDisabled: string;
+  fontSize: string;
+  fontFamily: string;
+  height?: string;
+  width?: string;
+  outerStyle?: CSSProperties;
+}
+
+const StyledInput = styledWithTheme("input")<StyledInputProps>(
   ({
     backgroundColor,
-    fontSize,
-    height,
-    outerStyle,
+    backgroundColorDisabled,
     placeholderColor,
     textColor,
-    theme,
+    textColorDisabled,
+    fontSize,
+    fontFamily,
+    height,
+    outerStyle,
     width
   }) => ({
     "&::placeholder": {
-      color: placeholderColor || theme.placeholderColor
+      color: placeholderColor
     },
     "&::-webkit-outer-spin-button": {
       webkitAppearance: "none",
@@ -107,17 +113,17 @@ const StyledInput = styledWithTheme("input")<
       webkitAppearance: "none",
       margin: 0
     },
-    backgroundColor: backgroundColor || theme.backgroundColor,
-    color: textColor || theme.textColor,
+    backgroundColor: backgroundColor,
+    color: textColor,
     "&:disabled": {
-      backgroundColor: `${theme.disabledBackgroundColor}`,
-      color: `${theme.disabledTextColor}`
+      backgroundColor: `${backgroundColorDisabled}`,
+      color: `${textColorDisabled}`
     },
-    height: height || theme.height,
+    height: height,
     mozAppearance: "textfield",
     width: width || "100%",
-    fontSize: fontSize || theme.fontSize,
-    fontFamily: theme.fontFamily,
+    fontSize: fontSize,
+    fontFamily: fontFamily,
     ...outerStyle
   })
 );
@@ -251,15 +257,35 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
     [onBlur, onDone, wasCancelled]
   );
 
+  const { colors, fontSizes, fonts } = useThemeFields(
+    {
+      colors: {
+        backgroundColor: theme.backgroundColor,
+        backgroundColorDisabled: theme.backgroundColorDisabled,
+        placeholderColor: theme.placeholderColor,
+        textColor: theme.textColor,
+        textColorDisabled: theme.textColorDisabled
+      },
+      fonts: {
+        fontFamily: theme.fontFamily
+      },
+      fontSizes: {
+        fontSize: theme.fontSize
+      }
+    },
+    [theme]
+  );
   return (
     <StyledInput
-      theme={theme}
-      placeholderColor={placeholderColor}
-      backgroundColor={backgroundColor}
-      textColor={textColor}
+      placeholderColor={placeholderColor || colors.placeholderColor}
+      backgroundColor={backgroundColor || colors.backgroundColor}
+      backgroundColorDisabled={colors.backgroundColorDisabled}
+      textColor={textColor || colors.textColor}
+      textColorDisabled={colors.textColorDisabled}
       width={width}
       height={height}
-      fontSize={fontSize}
+      fontSize={fontSize || fontSizes.fontSize}
+      fontFamily={fonts.fontFamily}
       outerStyle={style}
       className={className}
       type={inputType}

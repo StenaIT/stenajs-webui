@@ -1,4 +1,4 @@
-import { Box, Clickable, StandardText } from "@stenajs-webui/core";
+import { Box, Clickable, StandardText, useTheme } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -18,11 +18,13 @@ export const CalendarDay = <T extends {}>({
   extraDayContent: ExtraDayContent,
   defaultHighlights
 }: CalendarDayProps<T>) => {
+  const fullTheme = useTheme();
   return (
     <td
       style={{
         ...(theme.CalendarDay.wrapperStyle &&
           theme.CalendarDay.wrapperStyle(
+            fullTheme,
             defaultHighlights,
             dayState,
             day,
@@ -38,6 +40,7 @@ export const CalendarDay = <T extends {}>({
         style={{
           ...(theme.CalendarDay.innerWrapperStyle &&
             theme.CalendarDay.innerWrapperStyle(
+              fullTheme,
               defaultHighlights,
               dayState,
               day,
@@ -53,6 +56,7 @@ export const CalendarDay = <T extends {}>({
           style={{
             ...(theme.CalendarDay.cellWrapperStyle &&
               theme.CalendarDay.cellWrapperStyle(
+                fullTheme,
                 defaultHighlights,
                 dayState,
                 day,
@@ -94,6 +98,7 @@ export const CalendarDay = <T extends {}>({
               <StandardText
                 {...theme.CalendarDay.textProps &&
                   theme.CalendarDay.textProps(
+                    fullTheme,
                     defaultHighlights,
                     dayState,
                     day,

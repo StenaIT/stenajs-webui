@@ -24,6 +24,8 @@ import {
   BorderTopProps,
   borderWidth,
   BorderWidthProps,
+  bottom,
+  BottomProps,
   boxShadow,
   BoxShadowProps,
   DisplayProps,
@@ -36,6 +38,8 @@ import {
   HeightProps,
   justifyContent,
   JustifyContentProps,
+  left,
+  LeftProps,
   maxHeight,
   MaxHeightProps,
   maxWidth,
@@ -47,7 +51,11 @@ import {
   OverflowProps,
   position,
   PositionProps,
+  right,
+  RightProps,
   TLengthStyledSystem,
+  top,
+  TopProps,
   width,
   WidthProps,
   zIndex,
@@ -80,7 +88,11 @@ type StyledSystemProps = AlignItemsProps &
   OverflowProps &
   PositionProps &
   WidthProps &
-  ZIndexProps;
+  ZIndexProps &
+  LeftProps &
+  RightProps &
+  TopProps &
+  BottomProps;
 
 type FlexBoxProps = BoxProps;
 
@@ -127,6 +139,10 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${position}
   ${width};
   ${zIndex}
+  ${left}
+  ${right}
+  ${top}
+  ${bottom}
 `;
 
 export const Box: React.FC<BoxProps> = ({

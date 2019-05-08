@@ -3,6 +3,7 @@ import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import { addMonths } from "date-fns";
 import * as React from "react";
+import { Inline } from "@stenajs-webui/core";
 import { DateInput } from "./DateInput";
 
 interface DateInputState {
@@ -16,13 +17,21 @@ storiesOf("calendar/input/DateInput", module)
     withState<DateInputState>({
       value: undefined
     })(({ store }: { store: Store<DateInputState> }) => (
-      <DateInput
-        value={store.state.value}
-        onChange={value => store.set({ value })}
-      />
+      <Inline>
+        <DateInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+        />
+      </Inline>
     ))
   )
-  .add("empty", () => <DateInput value={undefined} />)
+  .add("empty", () => (
+    <Inline>
+      <DateInput value={undefined} />
+    </Inline>
+  ))
   .add("with preselected value", () => (
-    <DateInput value={addMonths(new Date(), 2)} />
+    <Inline>
+      <DateInput value={addMonths(new Date(), 2)} />
+    </Inline>
   ));

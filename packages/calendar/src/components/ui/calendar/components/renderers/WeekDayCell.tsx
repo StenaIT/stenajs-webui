@@ -1,5 +1,6 @@
 import { Box, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
+import { useThemeFields } from "@stenajs-webui/core";
 import { OnClickWeekDay } from "../../types/CalendarTypes";
 import { DayData } from "../../util/CalendarDataFactory";
 import { CalendarTheme } from "../CalendarTheme";
@@ -14,17 +15,28 @@ export const WeekDayCell = ({
   onClickWeekDay,
   day,
   theme
-}: WeekDayCellProps) => (
-  <div
-    onClick={onClickWeekDay ? () => onClickWeekDay(day.dayOfWeek) : undefined}
-  >
-    <Box
-      width={theme.width}
-      height={theme.height}
-      justifyContent={"center"}
-      alignItems={"center"}
+}: WeekDayCellProps) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        textColor: theme.WeekDay.textColor
+      }
+    },
+    [theme]
+  );
+
+  return (
+    <div
+      onClick={onClickWeekDay ? () => onClickWeekDay(day.dayOfWeek) : undefined}
     >
-      <StandardText color={theme.WeekDay.textColor}>{day.name}</StandardText>
-    </Box>
-  </div>
-);
+      <Box
+        width={theme.width}
+        height={theme.height}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <StandardText color={colors.textColor}>{day.name}</StandardText>
+      </Box>
+    </div>
+  );
+};

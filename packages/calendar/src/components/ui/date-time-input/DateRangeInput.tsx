@@ -1,5 +1,14 @@
-import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
-import { useOnClickOutside } from "@stenajs-webui/core/dist";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
+import {
+  Absolute,
+  Box,
+  Relative,
+  Row,
+  Space,
+  StandardText,
+  useOnClickOutside,
+  useThemeFields
+} from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
@@ -11,6 +20,7 @@ import {
   withHandlers,
   withState
 } from "recompose";
+import { Border } from "@stenajs-webui/core";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   CalendarTheme,
@@ -111,11 +121,21 @@ const DateRangeInputComponent = ({
   const ref = useRef(null);
   useOnClickOutside(ref, hideCalendar);
 
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        backgroundColor: theme.backgroundColor,
+        borderColor: theme.borderColor
+      }
+    },
+    []
+  );
+
   return (
     <Box>
       <Row alignItems={"center"}>
         <StandardTextInput
-          iconLeft={"calendar-alt"}
+          iconLeft={faCalendarAlt}
           onFocus={showCalendarStartDate}
           forceFocusHighlight={
             focusedInput === "startDate" && showingFocusHighlight
@@ -129,7 +149,7 @@ const DateRangeInputComponent = ({
         <StandardText>{toText}</StandardText>
         <Space />
         <StandardTextInput
-          iconLeft={"calendar-alt"}
+          iconLeft={faCalendarAlt}
           onFocus={showCalendarEndDate}
           forceFocusHighlight={
             focusedInput === "endDate" && showingFocusHighlight
@@ -141,32 +161,32 @@ const DateRangeInputComponent = ({
         />
       </Row>
       {showingCalendar && (
-        <Box position={"relative"}>
-          <Box
-            position={"absolute"}
-            zIndex={zIndex}
-            background={theme.borderColor}
-            borderColor={theme.borderColor}
-            borderWidth={1}
-            indent
-          >
-            <DateRangeCalendar
-              startDateInFocus={
-                focusedInput === "startDate" || focusedInput === "endDate"
-                  ? value[focusedInput]
-                  : undefined
-              }
-              onChange={onSelectDateRange}
-              startDate={value.startDate}
-              endDate={value.endDate}
-              setStartDate={setStartDate}
-              setEndDate={setEndDate}
-              focusedInput={focusedInput}
-              setFocusedInput={setFocusedInput}
-              theme={calendarTheme}
-            />
-          </Box>
-        </Box>
+        <Relative>
+          <Absolute zIndex={zIndex} innerRef={ref}>
+            <Border
+              background={colors.backgroundColor}
+              borderColor={colors.borderColor}
+              indent
+              spacing
+            >
+              <DateRangeCalendar
+                startDateInFocus={
+                  focusedInput === "startDate" || focusedInput === "endDate"
+                    ? value[focusedInput]
+                    : undefined
+                }
+                onChange={onSelectDateRange}
+                startDate={value.startDate}
+                endDate={value.endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+                focusedInput={focusedInput}
+                setFocusedInput={setFocusedInput}
+                theme={calendarTheme}
+              />
+            </Border>
+          </Absolute>
+        </Relative>
       )}
     </Box>
   );

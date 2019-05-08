@@ -44,6 +44,7 @@ const ClickableElement = styled.button<ClickableElementProps>`
   }
   border: 0;
   padding: 0;
+  background-color: transparent;
 `;
 
 export const Clickable: React.FC<ClickableProps> = ({

@@ -71,7 +71,7 @@ storiesOf("core/Layout/Box", module)
     <Box
       background={"#DFCD59"}
       indent={number("Indent", 1, { range: true, min: 0, max: 10, step: 1 })}
-      spacing={number("Spacing", 1, { range: true, min: 0, max: 10, step: 1 })}
+      spacing={number("Absolute", 1, { range: true, min: 0, max: 10, step: 1 })}
     >
       <div>hello</div>
       <div>world</div>

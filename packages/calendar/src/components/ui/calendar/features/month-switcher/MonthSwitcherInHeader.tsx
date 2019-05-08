@@ -1,17 +1,17 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
-import * as React from 'react';
-import { ComponentEnhancer, compose, withProps } from 'recompose';
-import { Button, defaultStandardButtonTheme } from '../../../../buttons';
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { StandardButton } from "@stenajs-webui/elements";
+import * as React from "react";
+import { ComponentEnhancer, compose, withProps } from "recompose";
 import {
   CalendarHeaderContentProps,
-  CalendarProps,
-} from '../../types/CalendarTypes';
+  CalendarProps
+} from "../../types/CalendarTypes";
 import {
   MonthSwitcherHandlerProps,
   MonthSwitcherStateProps,
-  withMonthSwitcherLogic,
-} from './MonthSwitcherLogic';
+  withMonthSwitcherLogic
+} from "./MonthSwitcherLogic";
 
 export type __C3135136785123518 = ComponentEnhancer<{}, {}>;
 
@@ -24,17 +24,10 @@ const withSwitchButtonsLeftRight = withProps<
   InnerProps
 >(({ prevMonth, nextMonth, theme }) => ({
   headerLeftContent: (
-    <Button
-      height={
-        theme &&
-        theme.CalendarMonth.SwitchButton &&
-        theme.CalendarMonth.SwitchButton.height
-          ? theme.CalendarMonth.SwitchButton.height
-          : defaultStandardButtonTheme.height
-      }
+    <StandardButton
       onClick={prevMonth}
       leftIcon={faChevronLeft}
-      theme={
+      buttonTheme={
         theme && theme.CalendarMonth.SwitchButton
           ? theme.CalendarMonth.SwitchButton
           : undefined
@@ -47,17 +40,10 @@ const withSwitchButtonsLeftRight = withProps<
     />
   ),
   headerRightContent: (
-    <Button
-      height={
-        theme &&
-        theme.CalendarMonth.SwitchButton &&
-        theme.CalendarMonth.SwitchButton.height
-          ? theme.CalendarMonth.SwitchButton.height
-          : defaultStandardButtonTheme.height
-      }
+    <StandardButton
       onClick={nextMonth}
       leftIcon={faChevronRight}
-      theme={
+      buttonTheme={
         theme && theme.CalendarMonth.SwitchButton
           ? theme.CalendarMonth.SwitchButton
           : undefined
@@ -68,10 +54,10 @@ const withSwitchButtonsLeftRight = withProps<
           : undefined
       }
     />
-  ),
+  )
 }));
 
 export const withMonthSwitcherInHeader = compose(
   withMonthSwitcherLogic,
-  withSwitchButtonsLeftRight,
+  withSwitchButtonsLeftRight
 );

@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import {
+  Box,
+  Clickable,
+  Omit,
+  Row,
+  Space,
+  useThemeFields
+} from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Box, Row, Space, Omit } from "@stenajs-webui/core";
+import { useTheme } from '@stenajs-webui/core';
+import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 import {
   defaultStandardTextInputTheme,
   StandardTextInputTheme
 } from "./StandardTextInputTheme";
-import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 
 // TODO Move to theme.
 
@@ -32,9 +40,13 @@ export interface StandardTextInputProps
   /** If true, there will be no padding between contentRight and the border. */
   disableContentPaddingRight?: boolean;
   /** Icon on the left side. */
-  iconLeft?: IconProp;
+  iconLeft?: IconDefinition;
   /** Icon on the right side. */
-  iconRight?: IconProp;
+  iconRight?: IconDefinition;
+  /** On click left. */
+  onClickLeft?: () => void;
+  /** On click right. */
+  onClickRight?: () => void;
   /** Color of the icon on the left side. */
   iconColorLeft?: string;
   /** Color of the icon on the right side. */
@@ -51,7 +63,7 @@ export interface StandardTextInputProps
 
 interface TextInputIconProps {
   content?: React.ReactNode;
-  icon?: IconProp;
+  icon?: IconDefinition;
   iconSize?: number;
   iconColor?: string;
   theme: StandardTextInputTheme;
@@ -60,9 +72,10 @@ interface TextInputIconProps {
   disableContentPadding?: boolean;
   disableContentPaddingLeft?: boolean;
   disableContentPaddingRight?: boolean;
+  onClick?: () => void;
 }
 
-const TextInputIcon = ({
+const TextInputIcon: React.FC<TextInputIconProps> = ({
   icon,
   content,
   iconColor,
@@ -72,8 +85,9 @@ const TextInputIcon = ({
   spaceOnRight,
   disableContentPadding,
   disableContentPaddingLeft,
-  disableContentPaddingRight
-}: TextInputIconProps) => {
+  disableContentPaddingRight,
+  onClick
+}) => {
   if (!content && !icon) {
     return null;
   }
@@ -83,22 +97,37 @@ const TextInputIcon = ({
       <>
         {spaceOnLeft &&
           !(disableContentPadding || disableContentPaddingLeft) && <Space />}
-        {content}
+        {onClick ? (
+          <Clickable onClick={onClick} disableFocusHighlight>
+            {content}
+          </Clickable>
+        ) : (
+          <>{content}</>
+        )}
+
         {spaceOnRight &&
           !(disableContentPadding || disableContentPaddingRight) && <Space />}
       </>
     );
   }
 
+  const iconNode = icon && (
+    <Icon name={icon} color={iconColor} size={iconSize || theme.iconSize} />
+  );
+
   return (
     <>
       {spaceOnLeft && <Space />}
-      {icon && (
-        <FontAwesomeIcon
-          icon={icon}
-          color={iconColor}
-          style={{ fontSize: iconSize || theme.iconSize }}
-        />
+      {iconNode && (
+        <>
+          {onClick ? (
+            <Clickable onClick={onClick} disableFocusHighlight>
+              {iconNode}
+            </Clickable>
+          ) : (
+            <>{iconNode}</>
+          )}
+        </>
       )}
       {spaceOnRight && <Space />}
     </>
@@ -124,6 +153,8 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   disabled,
   onBlur,
   onFocus,
+  onClickRight,
+  onClickLeft,
   ...inputProps
 }) => {
   const [focused, setFocused] = useState(false);
@@ -145,24 +176,44 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   }, [onFocus, setFocused]);
 
+  const theme2 = useTheme();
+  console.log("------------------");
+  console.log("theme", theme);
+  console.log("theme2", theme2);
+  console.log("theme.backgroundColor", theme.backgroundColor);
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        disabledBackgroundColor: theme.disabledBackgroundColor,
+        backgroundColor: theme.backgroundColor,
+        borderColorFocused: theme.borderColorFocused,
+        borderColor: theme.borderColor,
+        textColor: theme.textColor
+      }
+    },
+    [theme]
+  );
+
+  console.log("colors.backgroundColor", colors.backgroundColor);
   return (
     <Box
       background={
         disabled
-          ? theme.disabledBackgroundColor
-          : backgroundColor || theme.backgroundColor
+          ? colors.disabledBackgroundColor
+          : backgroundColor || colors.backgroundColor
       }
       borderRadius={theme.borderRadius}
       borderColor={
         forceFocusHighlight || focused
-          ? theme.borderColorFocused
-          : theme.borderColor
+          ? colors.borderColorFocused
+          : colors.borderColor
       }
       borderStyle={theme.borderStyle}
-      width={theme.borderWidth}
-      style={{ width: inputProps.width || "100%" }}
+      borderWidth={theme.borderWidth}
+      width={inputProps.width || "100%"}
+      overflow={"hidden"}
     >
-      <Row alignItems={"center"} style={{ width: inputProps.width || "100%" }}>
+      <Row alignItems={"center"} width={inputProps.width || "100%"}>
         <TextInputIcon
           content={contentLeft}
           disableContentPadding={disableContentPadding}
@@ -173,6 +224,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
           iconSize={iconSizeLeft}
           spaceOnLeft
           theme={theme}
+          onClick={onClickLeft}
         />
         <div style={{ width: "100%" }}>
           <StyledSimpleTextInput
@@ -189,7 +241,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
               boxSizing: "border-box",
               ...inputProps.style
             }}
-            textColor={textColor || theme.textColor}
+            textColor={textColor || colors.textColor}
             width={"100%"}
           />
         </div>
@@ -203,6 +255,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
           iconSize={iconSizeRight}
           spaceOnRight
           theme={theme}
+          onClick={onClickRight}
         />
       </Row>
     </Box>

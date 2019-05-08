@@ -52,6 +52,7 @@ export const defaultTheme: Theme = {
     larger: "18px",
     large: "16px",
     normal: "14px",
+    input: "13px",
     small: "12px",
     smaller: "11px",
     tiny: "9px"

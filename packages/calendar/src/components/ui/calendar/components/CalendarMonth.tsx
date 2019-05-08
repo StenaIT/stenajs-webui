@@ -1,6 +1,5 @@
-import { Column, Row, StandardText } from "@stenajs-webui/core";
+import { Box, Row, StandardText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
-import { SectionHeaderText } from "../../../text/SectionHeaderText";
 import {
   CalendarDayProps,
   CalendarOnClicks,
@@ -27,102 +26,105 @@ export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   defaultHighlights?: Array<DayStateHighlight>;
 }
 
-export class CalendarMonth<T> extends React.Component<CalendarMonthProps<T>> {
-  render() {
-    const {
-      month,
-      dayComponent,
-      statePerWeek,
-      userDataPerWeek,
-      onClickDay,
-      onClickWeek,
-      onClickWeekDay,
-      renderWeekNumber,
-      renderWeekDay,
-      headerLeftContent,
-      headerRightContent,
-      theme,
-      extraDayContent,
-      defaultHighlights
-    } = this.props;
+export const CalendarMonth = <T extends {}>({
+  month,
+  dayComponent,
+  statePerWeek,
+  userDataPerWeek,
+  onClickDay,
+  onClickWeek,
+  onClickWeekDay,
+  renderWeekNumber,
+  renderWeekDay,
+  headerLeftContent,
+  headerRightContent,
+  theme,
+  extraDayContent,
+  defaultHighlights
+}: CalendarMonthProps<T>) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        headerTextColor: theme.CalendarMonth.headerTextColor,
+        weekDayTextColor: theme.WeekDay.textColor
+      }
+    },
+    [theme]
+  );
 
-    return (
-      <>
-        <Column alignItems={"center"}>
-          <table style={{ borderSpacing: 0, borderCollapse: "collapse" }}>
-            <tbody>
-              <tr>
-                <td>
-                  <Column justifyContent={"center"} alignItems={"center"}>
-                    {headerLeftContent}
-                  </Column>
-                </td>
-                <td colSpan={6}>
-                  <Row justifyContent={"center"} alignItems={"center"}>
-                    <SectionHeaderText
-                      color={theme.CalendarMonth.headerTextColor}
-                    >
-                      {month.name} {month.year}
-                    </SectionHeaderText>
-                  </Row>
-                </td>
-                <td>
-                  <Column justifyContent={"center"} alignItems={"center"}>
-                    {headerRightContent}
-                  </Column>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Column
-                    width={theme.width}
-                    height={theme.height}
-                    justifyContent={"center"}
-                    alignItems={"center"}
+  return (
+    <>
+      <Box alignItems={"center"}>
+        <table style={{ borderSpacing: 0, borderCollapse: "collapse" }}>
+          <tbody>
+            <tr>
+              <td style={{ maxWidth: theme.width }}>
+                <Box justifyContent={"center"} alignItems={"center"}>
+                  {headerLeftContent}
+                </Box>
+              </td>
+              <td colSpan={6}>
+                <Row justifyContent={"center"} alignItems={"center"}>
+                  <StandardText
+                    color={colors.headerTextColor}
+                    fontSize={"large"}
                   >
-                    <StandardText color={theme.WeekDay.textColor}>
-                      W
-                    </StandardText>
-                  </Column>
+                    {month.name} {month.year}
+                  </StandardText>
+                </Row>
+              </td>
+              <td style={{ maxWidth: theme.width }}>
+                <Box justifyContent={"center"} alignItems={"center"}>
+                  {headerRightContent}
+                </Box>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Box
+                  width={theme.width}
+                  height={theme.height}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <StandardText color={colors.weekDayTextColor}>W</StandardText>
+                </Box>
+              </td>
+              {month.weeks[0].days.map((day: DayData) => (
+                <td key={day.name}>
+                  {renderWeekDay ? (
+                    renderWeekDay(day.name, theme, onClickWeekDay)
+                  ) : (
+                    <WeekDayCell
+                      day={day}
+                      onClickWeekDay={onClickWeekDay}
+                      theme={theme}
+                    />
+                  )}
                 </td>
-                {month.weeks[0].days.map((day: DayData) => (
-                  <td key={day.name}>
-                    {renderWeekDay ? (
-                      renderWeekDay(day.name, theme, onClickWeekDay)
-                    ) : (
-                      <WeekDayCell
-                        day={day}
-                        onClickWeekDay={onClickWeekDay}
-                        theme={theme}
-                      />
-                    )}
-                  </td>
-                ))}
-              </tr>
-              {month.weeks.map((week: WeekData) => (
-                <CalendarWeek
-                  key={week.weekNumber}
-                  month={month}
-                  week={week}
-                  dayComponent={dayComponent}
-                  statePerWeekDay={
-                    statePerWeek && statePerWeek[week.weekNumber]
-                  }
-                  userDataPerWeekDay={
-                    userDataPerWeek && userDataPerWeek[week.weekNumber]
-                  }
-                  onClickDay={onClickDay}
-                  onClickWeek={onClickWeek}
-                  theme={theme}
-                  renderWeekNumber={renderWeekNumber}
-                  extraDayContent={extraDayContent}
-                  defaultHighlights={defaultHighlights}
-                />
               ))}
-            </tbody>
-          </table>
-        </Column>
-      </>
-    );
-  }
-}
+            </tr>
+            {month.weeks.map((week: WeekData) => (
+              <CalendarWeek
+                key={week.weekNumber}
+                month={month}
+                week={week}
+                dayComponent={dayComponent}
+                statePerWeekDay={statePerWeek && statePerWeek[week.weekNumber]}
+                userDataPerWeekDay={
+                  userDataPerWeek && userDataPerWeek[week.weekNumber]
+                }
+                onClickDay={onClickDay}
+                onClickWeek={onClickWeek}
+                theme={theme}
+                renderWeekNumber={renderWeekNumber}
+                extraDayContent={extraDayContent}
+                defaultHighlights={defaultHighlights}
+              />
+            ))}
+          </tbody>
+        </table>
+      </Box>
+    </>
+  );
+};

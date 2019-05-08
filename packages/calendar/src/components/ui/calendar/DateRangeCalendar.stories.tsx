@@ -1,14 +1,8 @@
 import { Store, withState } from "@dump247/storybook-state";
-import {
-  defaultButtonTheme,
-  defaultStandardButtonTheme
-} from "@stenajs-webui/core";
 import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
-import { UseTheme } from "../../../src/components/theme";
-import { extranetCalendarTheme } from "./components/CalendarTheme";
 import { DateRangeCalendar } from "./DateRangeCalendar";
 import { DateRangeFocusedInput } from "./features/DateRangeSelection";
 import { setDayStateValue } from "./util/StateModifier";
@@ -39,7 +33,7 @@ interface State {
   focusedInput: DateRangeFocusedInput;
 }
 
-storiesOf("Form/Calendar/DateRangeCalendar", module)
+storiesOf("calendar/calendar/DateRangeCalendar", module)
   .addDecorator(withInfo())
   .add(
     "standard",
@@ -132,40 +126,5 @@ storiesOf("Form/Calendar/DateRangeCalendar", module)
         setEndDate={endDate => store.set({ endDate })}
         setFocusedInput={focusedInput => store.set({ focusedInput })}
       />
-    ))
-  )
-  .add(
-    "with custom theme",
-    withState<State>({
-      startDate: undefined,
-      endDate: undefined,
-      focusedInput: "startDate"
-    })(({ store }: { store: Store<State> }) => (
-      <UseTheme
-        theme={{
-          components: {
-            Button: {
-              ...defaultButtonTheme,
-              bgColor: "#2A7EC5"
-            },
-            StandardButton: {
-              ...defaultStandardButtonTheme,
-              height: "26px"
-            },
-            Calendar: extranetCalendarTheme
-          }
-        }}
-      >
-        <DateRangeCalendar
-          numMonths={6}
-          monthsPerRow={3}
-          startDate={store.state.startDate}
-          endDate={store.state.endDate}
-          focusedInput={store.state.focusedInput}
-          setStartDate={startDate => store.set({ startDate })}
-          setEndDate={endDate => store.set({ endDate })}
-          setFocusedInput={focusedInput => store.set({ focusedInput })}
-        />
-      </UseTheme>
     ))
   );

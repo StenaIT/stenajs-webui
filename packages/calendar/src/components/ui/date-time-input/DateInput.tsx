@@ -1,5 +1,11 @@
-import { useOnClickOutside } from "@stenajs-webui/core";
-import { Box } from "@stenajs-webui/core/dist";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
+import {
+  Absolute,
+  Border,
+  Relative,
+  useOnClickOutside,
+  useThemeFields
+} from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
@@ -85,10 +91,20 @@ const DateInputComponent: React.FC<InnerProps> = ({
   const ref = useRef(null);
   useOnClickOutside(ref, hideCalendar);
 
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        backgroundColor: theme.backgroundColor,
+        borderColor: theme.borderColor
+      }
+    },
+    []
+  );
+
   return (
     <>
       <StandardTextInput
-        iconLeft={"calendar-alt"}
+        iconLeft={faCalendarAlt}
         onFocus={showCalendar}
         value={value ? format(value, displayFormat) : ""}
         placeholder={placeholder}
@@ -98,21 +114,22 @@ const DateInputComponent: React.FC<InnerProps> = ({
         focusOnMount={openOnMount}
       />
       {showingCalendar && (
-        <Box position={"relative"}>
-          <Box position={"absolute"} zIndex={zIndex} innerRef={ref}>
-            <Box
-              background={theme.backgroundColor}
-              borderColor={theme.borderColor}
+        <Relative>
+          <Absolute zIndex={zIndex} innerRef={ref}>
+            <Border
+              background={colors.backgroundColor}
+              borderColor={colors.borderColor}
               indent
+              spacing
             >
               <SingleDateCalendar
                 onChange={onSelectDate}
                 value={value}
                 theme={calendarTheme}
               />
-            </Box>
-          </Box>
-        </Box>
+            </Border>
+          </Absolute>
+        </Relative>
       )}
     </>
   );

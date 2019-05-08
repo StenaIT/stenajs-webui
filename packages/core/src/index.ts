@@ -7,15 +7,22 @@ export * from "./theme/theme-types/ThemeFontWeights";
 export * from "./theme/theme-types/ThemeMetrics";
 export * from "./theme/theme-types/ThemeShadows";
 
+export * from "./components/decorators/border/Border";
+
 export * from "./components/interaction/Clickable";
 
-export * from "./components/layout/space/Space";
+export * from "./components/layout/absolute/Absolute";
+export * from "./components/layout/relative/Relative";
+export * from "./components/layout/column/Column";
 export * from "./components/layout/box/Box";
 export * from "./components/layout/row/Row";
 export * from "./components/layout/indent/Indent";
 export * from "./components/layout/spacing/Spacing";
+export * from "./components/layout/space/Space";
+export * from "./components/layout/inline/Inline";
 
 export * from "./components/text/TextTheme";
+export { TextProps } from "./components/text/TextBase";
 
 export * from "./components/text/variants/TinyText";
 export * from "./components/text/variants/SmallText";

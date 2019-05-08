@@ -6,6 +6,7 @@ export interface ThemeFontSizes {
   small: string;
   smaller: string;
   tiny: string;
+  input: string;
 }
 
 export type ThemeFontSizeField = keyof ThemeFontSizes;

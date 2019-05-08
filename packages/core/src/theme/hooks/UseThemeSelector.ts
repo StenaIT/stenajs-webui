@@ -16,7 +16,7 @@ export const useThemeSelector = <T>(
   return useMemo(() => memoizedSelector(theme), [theme, memoizedSelector]);
 };
 
-type ThemeFieldRecord<T> = Record<string, T | string>;
+type ThemeFieldRecord<T> = Record<string, T | string | undefined>;
 type ColorFields = ThemeFieldRecord<ThemeColorField>;
 type FontFields = ThemeFieldRecord<ThemeFontField>;
 type FontSizesFields = ThemeFieldRecord<ThemeFontSizeField>;

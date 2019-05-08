@@ -7,7 +7,7 @@ interface State {
   week: string | undefined;
 }
 
-storiesOf("Form/Calendar/SingleWeekCalendar", module).add(
+storiesOf("calendar/calendar/SingleWeekCalendar", module).add(
   "standard",
   withState<State>({
     week: undefined

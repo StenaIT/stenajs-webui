@@ -3,6 +3,7 @@ import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
+import { Inline } from "@stenajs-webui/core";
 import { DateRangeCalendarOnChangeValue } from "../calendar/features/DateRangeSelection";
 import { DateRangeInput } from "./DateRangeInput";
 
@@ -20,15 +21,23 @@ storiesOf("calendar/input/DateRangeInput", module)
         startDate: undefined
       }
     })(({ store }: { store: Store<DateRangeState> }) => (
-      <DateRangeInput
-        value={store.state.value}
-        onChange={value => store.set({ value })}
-      />
+      <Inline>
+        <DateRangeInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+        />
+      </Inline>
     ))
   )
-  .add("empty", () => <DateRangeInput value={{}} />)
+  .add("empty", () => (
+    <Inline>
+      <DateRangeInput value={{}} />
+    </Inline>
+  ))
   .add("with preselected value", () => (
-    <DateRangeInput
-      value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
-    />
+    <Inline>
+      <DateRangeInput
+        value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
+      />
+    </Inline>
   ));
