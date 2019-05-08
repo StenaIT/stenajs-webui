@@ -7,7 +7,7 @@ interface State {
   week: string | undefined;
 }
 
-storiesOf("calendar/calendar/SingleWeekCalendar", module).add(
+storiesOf("calendar/Calendar/SingleWeekCalendar", module).add(
   "standard",
   withState<State>({
     week: undefined

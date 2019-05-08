@@ -11,7 +11,6 @@ import {
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { useTheme } from '@stenajs-webui/core';
 import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 import {
   defaultStandardTextInputTheme,
@@ -176,31 +175,22 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   }, [onFocus, setFocused]);
 
-  const theme2 = useTheme();
-  console.log("------------------");
-  console.log("theme", theme);
-  console.log("theme2", theme2);
-  console.log("theme.backgroundColor", theme.backgroundColor);
   const { colors } = useThemeFields(
     {
       colors: {
         disabledBackgroundColor: theme.disabledBackgroundColor,
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: backgroundColor || theme.backgroundColor,
         borderColorFocused: theme.borderColorFocused,
-        borderColor: theme.borderColor,
-        textColor: theme.textColor
+        borderColor: theme.borderColor
       }
     },
     [theme]
   );
 
-  console.log("colors.backgroundColor", colors.backgroundColor);
   return (
     <Box
       background={
-        disabled
-          ? colors.disabledBackgroundColor
-          : backgroundColor || colors.backgroundColor
+        disabled ? colors.disabledBackgroundColor : colors.backgroundColor
       }
       borderRadius={theme.borderRadius}
       borderColor={
@@ -231,7 +221,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
             {...inputProps}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
-            backgroundColor={backgroundColor || theme.backgroundColor}
+            backgroundColor={colors.backgroundColor}
             disabled={disabled}
             fontSize={theme.fontSize}
             height={theme.height}
@@ -241,7 +231,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
               boxSizing: "border-box",
               ...inputProps.style
             }}
-            textColor={textColor || colors.textColor}
+            textColor={theme.textColor}
             width={"100%"}
           />
         </div>

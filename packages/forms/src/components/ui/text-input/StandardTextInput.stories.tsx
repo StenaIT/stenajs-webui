@@ -133,13 +133,6 @@ storiesOf("forms/TextInput/StandardTextInput", module)
   .add("disabled", () => (
     <StandardTextInput value={""} placeholder={"Enter name"} disabled={true} />
   ))
-  .add("without border", () => (
-    <StandardTextInput
-      value={"Value"}
-      placeholder={"Enter name"}
-      theme={{ borderStyle: "none" }}
-    />
-  ))
   .add("disabled with content", () => (
     <StandardTextInput
       disabled={true}

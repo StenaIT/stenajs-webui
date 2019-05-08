@@ -260,31 +260,31 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   const { colors, fontSizes, fonts } = useThemeFields(
     {
       colors: {
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: backgroundColor || theme.backgroundColor,
         backgroundColorDisabled: theme.backgroundColorDisabled,
-        placeholderColor: theme.placeholderColor,
-        textColor: theme.textColor,
+        placeholderColor: placeholderColor || theme.placeholderColor,
+        textColor: textColor || theme.textColor,
         textColorDisabled: theme.textColorDisabled
       },
       fonts: {
         fontFamily: theme.fontFamily
       },
       fontSizes: {
-        fontSize: theme.fontSize
+        fontSize: fontSize || theme.fontSize
       }
     },
     [theme]
   );
   return (
     <StyledInput
-      placeholderColor={placeholderColor || colors.placeholderColor}
-      backgroundColor={backgroundColor || colors.backgroundColor}
+      placeholderColor={colors.placeholderColor}
+      backgroundColor={colors.backgroundColor}
       backgroundColorDisabled={colors.backgroundColorDisabled}
-      textColor={textColor || colors.textColor}
+      textColor={colors.textColor}
       textColorDisabled={colors.textColorDisabled}
       width={width}
       height={height}
-      fontSize={fontSize || fontSizes.fontSize}
+      fontSize={fontSizes.fontSize}
       fontFamily={fonts.fontFamily}
       outerStyle={style}
       className={className}

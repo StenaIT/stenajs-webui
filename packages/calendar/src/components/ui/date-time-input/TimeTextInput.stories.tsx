@@ -8,7 +8,7 @@ interface TimeTextInputState {
   value?: string;
 }
 
-storiesOf("calendar/input/TimeTextInput", module)
+storiesOf("calendar/Input/TimeTextInput", module)
   .addDecorator(withInfo())
   .add(
     "standard",

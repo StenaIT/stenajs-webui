@@ -11,7 +11,7 @@ interface DateRangeState {
   value: DateRangeCalendarOnChangeValue;
 }
 
-storiesOf("calendar/input/DateRangeInput", module)
+storiesOf("calendar/Input/DateRangeInput", module)
   .addDecorator(withInfo())
   .add(
     "standard",

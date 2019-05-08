@@ -28,7 +28,7 @@ for (let i = 10; i < 14; i++) {
 // tslint:disable-next-line
 const noop = () => {};
 
-storiesOf("calendar/calendar/DateRangeCalendarWithState", module)
+storiesOf("calendar/Calendar/DateRangeCalendarWithState", module)
   .addDecorator(withInfo())
   .add("standard", () => <DateRangeCalendarWithState onChange={noop} />)
   .add("with today highlighted", () => (

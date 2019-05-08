@@ -10,7 +10,7 @@ interface DateInputState {
   value?: Date;
 }
 
-storiesOf("calendar/input/DateInput", module)
+storiesOf("calendar/Input/DateInput", module)
   .addDecorator(withInfo())
   .add(
     "standard",

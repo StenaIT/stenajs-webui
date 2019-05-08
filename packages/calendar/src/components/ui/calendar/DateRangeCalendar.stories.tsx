@@ -33,7 +33,7 @@ interface State {
   focusedInput: DateRangeFocusedInput;
 }
 
-storiesOf("calendar/calendar/DateRangeCalendar", module)
+storiesOf("calendar/Calendar/DateRangeCalendar", module)
   .addDecorator(withInfo())
   .add(
     "standard",

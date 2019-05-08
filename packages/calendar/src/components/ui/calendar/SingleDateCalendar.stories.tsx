@@ -44,7 +44,7 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-storiesOf("calendar/calendar/SingleDateCalendar", module)
+storiesOf("calendar/Calendar/SingleDateCalendar", module)
   .addDecorator(withInfo())
   .add(
     "standard",

@@ -5,13 +5,13 @@ import {
 } from "@stenajs-webui/core";
 
 export interface SimpleTextInputTheme {
-  textColor: ThemeColorField;
-  textColorDisabled: ThemeColorField;
-  backgroundColor: ThemeColorField;
-  backgroundColorDisabled: ThemeColorField;
-  placeholderColor: ThemeColorField;
-  fontSize: ThemeFontSizeField;
-  fontFamily: ThemeFontField;
+  textColor: ThemeColorField | string;
+  textColorDisabled: ThemeColorField | string;
+  backgroundColor: ThemeColorField | string;
+  backgroundColorDisabled: ThemeColorField | string;
+  placeholderColor: ThemeColorField | string;
+  fontSize: ThemeFontSizeField | string;
+  fontFamily: ThemeFontField | string;
   height: string | undefined;
 }
 
@@ -21,7 +21,7 @@ export const defaultSimpleTextInputTheme: SimpleTextInputTheme = {
   backgroundColor: "white",
   backgroundColorDisabled: "disabledBackground",
   placeholderColor: "separator",
-  fontSize: "normal",
+  fontSize: "input",
   fontFamily: "input",
   height: undefined
 };
