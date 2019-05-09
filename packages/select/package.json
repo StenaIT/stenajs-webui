@@ -1,0 +1,48 @@
+{
+  "name": "@stenajs-webui/select",
+  "version": "1.0.0",
+  "description": "",
+  "author": "mattias800",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StenaIT/stenajs-webui.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
+    "test:watch": "react-scripts-ts test --env=jsdom",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "prepare": "yarn run build",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.124",
+    "@types/react-select": "^2.0.17",
+    "@types/recompose": "^0.30.6",
+    "lodash-es": "^4.17.11",
+    "react-select": "^2.4.3",
+    "recompose": "^0.30.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.4",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.5",
+    "@types/react": "^16.3.13",
+    "react": "^16.4.1"
+  },
+  "files": [
+    "dist"
+  ]
+}
