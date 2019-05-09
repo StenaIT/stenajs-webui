@@ -5,7 +5,7 @@ import * as React from "react";
 import { selectThemeDark } from "../../SelectTheme";
 import { AsyncSelect } from "./AsyncSelect";
 
-storiesOf("select/Select", module)
+storiesOf("select/AsyncSelect", module)
   .addDecorator(withInfo())
   .add("async select", () => (
     <AsyncSelect
@@ -17,7 +17,7 @@ storiesOf("select/Select", module)
   ))
   .add("async select dark", () => (
     <div style={{ width: "600px" }}>
-      <Box color={"#2e4662"}>
+      <Box background={"#2e4662"}>
         <Indent num={4}>
           <Spacing num={4}>
             <AsyncSelect

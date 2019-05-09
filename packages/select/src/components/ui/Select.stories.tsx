@@ -50,7 +50,7 @@ storiesOf("select/Select", module)
   ))
   .add("standard dark", () => (
     <div style={{ width: "400px" }}>
-      <Box color={"#2e4662"}>
+      <Box background={"#2e4662"}>
         <Indent num={4}>
           <Spacing num={4}>
             <Select
@@ -77,7 +77,7 @@ storiesOf("select/Select", module)
   ))
   .add("multiselect dark", () => (
     <div style={{ width: "600px" }}>
-      <Box color={"#2e4662"}>
+      <Box background={"#2e4662"}>
         <Indent num={4}>
           <Spacing num={4}>
             <Select
