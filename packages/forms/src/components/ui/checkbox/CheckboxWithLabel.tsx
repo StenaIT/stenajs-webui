@@ -1,10 +1,10 @@
 import { Clickable, Row, Space, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
-import { SimpleCheckbox, SimpleCheckboxProps } from "./SimpleCheckbox";
-import { defaultSimpleCheckboxTheme } from "./SimpleCheckboxTheme";
+import { Checkbox, CheckboxProps } from "./Checkbox";
+import { defaultCheckboxTheme } from "./CheckboxTheme";
 
-export interface CheckboxWithLabelProps extends SimpleCheckboxProps {
+export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
   textColor?: string;
   disabled?: boolean;
@@ -16,11 +16,11 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
     children,
     disabled,
     label,
-    onChange, // Do not pass to SimpleCheckbox
+    onChange, // Do not pass to Checkbox
     innerRef,
     textColor,
     value,
-    theme = defaultSimpleCheckboxTheme,
+    theme = defaultCheckboxTheme,
     ...propsToCheckbox
   } = props;
   return (
@@ -29,7 +29,7 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
         onClick={disabled || !onChange ? undefined : () => onChange(!value)}
       >
         <Row alignItems={"center"}>
-          <SimpleCheckbox
+          <Checkbox
             {...propsToCheckbox}
             disabled={disabled}
             value={value}

@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 
-export interface SimpleCheckboxTheme {
+export interface CheckboxTheme {
   borderColor: string;
   borderColorDisabled: string;
   borderColorFocused: string;
@@ -19,7 +19,7 @@ export interface SimpleCheckboxTheme {
   iconSize: number;
 }
 
-export const defaultSimpleCheckboxTheme: SimpleCheckboxTheme = {
+export const defaultCheckboxTheme: CheckboxTheme = {
   backgroundColor: "white",
   borderColor: "inputBorder",
   iconColor: "primaryText",
@@ -37,7 +37,7 @@ export const defaultSimpleCheckboxTheme: SimpleCheckboxTheme = {
   iconSize: 10
 };
 
-export const defaultSimpleCheckboxThemeDark: SimpleCheckboxTheme = {
+export const defaultCheckboxThemeDark: CheckboxTheme = {
   backgroundColor: "#b7d1d9",
   borderColor: "transparent",
   iconColor: "#4d7989",

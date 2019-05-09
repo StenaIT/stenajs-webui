@@ -1,21 +1,20 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { defaultTheme } from '../../../../../themes/DefaultTheme';
-import { Icon } from '../../../icon/Icon';
-import { Clickable } from '../../../interaction/Clickable';
-import { SimpleCheckboxComponent } from '../SimpleCheckbox';
+import { Clickable } from '@stenajs-webui/core';
+import { defaultTheme } from '@stenajs-webui/core';
+import { Icon } from '@stenajs-webui/elements';
+import { Checkbox } from '../Checkbox';
 
-describe('SimpleCheckbox', () => {
+describe('Checkbox', () => {
   const props = {
     onChange: jest.fn(),
-    theme: defaultTheme.components.SimpleCheckbox,
   };
 
   describe('disabled', () => {
     describe('when disabled is true', () => {
       it('sets onClick to undefined', () => {
         const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} disabled />,
+          <Checkbox {...props} disabled />,
         );
         expect(wrapper.find(Clickable).prop('onClick')).toBe(undefined);
       });
@@ -23,12 +22,14 @@ describe('SimpleCheckbox', () => {
 
     describe('when disabled is false', () => {
       it('sets onClick to specified onClick', () => {
-        const value = true;
-        const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} value={value} />,
-        );
-        wrapper.find(Clickable).prop('onClick')();
-        expect(props.onChange).toHaveBeenCalledWith(!value);
+        // TODO
+        // const value = true;
+        // const wrapper = shallow(
+        //   <Checkbox {...props} value={value} />,
+        // );
+        // wrapper.find(Clickable).prop('onClick')();
+        // expect(props.onChange).toHaveBeenCalledWith(!value);
+        expect(true).toBe(false);
       });
     });
   });
@@ -37,10 +38,10 @@ describe('SimpleCheckbox', () => {
     describe('when checked', () => {
       it('uses specified icon from theme', () => {
         const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} value={true} />,
+          <Checkbox {...props} value={true} />,
         );
         expect(wrapper.find(Icon).prop('name')).toBe(
-          defaultTheme.components.SimpleCheckbox.checkIcon,
+          undefined // TODO
         );
       });
     });
@@ -48,7 +49,7 @@ describe('SimpleCheckbox', () => {
     describe('when not checked', () => {
       it('has no icon', () => {
         const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} value={false} />,
+          <Checkbox {...props} value={false} />,
         );
         expect(wrapper.find(Icon).length).toBe(0);
       });
@@ -59,10 +60,10 @@ describe('SimpleCheckbox', () => {
     describe('when disabled', () => {
       it('uses specified color from theme even if value is true', () => {
         const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} value={true} disabled />,
+          <Checkbox {...props} value={true} disabled />,
         );
         expect(wrapper.find(Icon).prop('color')).toBe(
-          defaultTheme.components.SimpleCheckbox.disabledColors.iconColor,
+          defaultTheme.colors.errorText, // TODO
         );
       });
     });
@@ -70,10 +71,10 @@ describe('SimpleCheckbox', () => {
     describe('when checked', () => {
       it('uses specified color from theme', () => {
         const wrapper = shallow(
-          <SimpleCheckboxComponent {...props} value={true} />,
+          <Checkbox {...props} value={true} />,
         );
         expect(wrapper.find(Icon).prop('color')).toBe(
-          defaultTheme.components.SimpleCheckbox.colors.iconColor,
+          defaultTheme.colors.errorText, // TODO
         );
       });
     });

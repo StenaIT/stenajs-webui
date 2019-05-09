@@ -4,16 +4,11 @@ import { Clickable, InputProps, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback } from "react";
 import { ValueOnChangeProps } from "../types";
-import {
-  defaultSimpleCheckboxTheme,
-  SimpleCheckboxTheme
-} from "./SimpleCheckboxTheme";
+import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
-export interface SimpleCheckboxProps
-  extends ValueOnChangeProps<boolean>,
-    InputProps {
+export interface CheckboxProps extends ValueOnChangeProps<boolean>, InputProps {
   disabled?: boolean;
-  theme?: SimpleCheckboxTheme;
+  theme?: CheckboxTheme;
 }
 
 const InvisibleInput = styled.input`
@@ -30,7 +25,7 @@ const InvisibleInput = styled.input`
 
 const Wrapper = styled("div")<{
   disabled: boolean | undefined;
-  theme: SimpleCheckboxTheme;
+  theme: CheckboxTheme;
   value: boolean | undefined;
 }>`
   background-color: ${({ disabled, theme, value }) =>
@@ -50,7 +45,7 @@ const Wrapper = styled("div")<{
   overflow: hidden;
 `;
 
-const StyledSimpleCheckboxWrapper = styled.div<{ theme: SimpleCheckboxTheme }>`
+const StyledCheckboxWrapper = styled.div<{ theme: CheckboxTheme }>`
   height: ${({ theme }) => theme.height};
   position: relative;
   width: ${({ theme }) => theme.width};
@@ -60,12 +55,12 @@ const StyledSimpleCheckboxWrapper = styled.div<{ theme: SimpleCheckboxTheme }>`
   }
 `;
 
-export const SimpleCheckbox: React.FC<SimpleCheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled,
   inputRef,
   onChange,
-  theme = defaultSimpleCheckboxTheme,
+  theme = defaultCheckboxTheme,
   value
 }) => {
   const onClick = useCallback(() => {
@@ -86,11 +81,7 @@ export const SimpleCheckbox: React.FC<SimpleCheckboxProps> = ({
   );
 
   return (
-    <StyledSimpleCheckboxWrapper
-      className={className}
-      ref={inputRef}
-      theme={theme}
-    >
+    <StyledCheckboxWrapper className={className} ref={inputRef} theme={theme}>
       <Clickable onClick={disabled ? undefined : onClick}>
         <InvisibleInput
           disabled={disabled}
@@ -116,6 +107,6 @@ export const SimpleCheckbox: React.FC<SimpleCheckboxProps> = ({
           </Row>
         </Wrapper>
       </Clickable>
-    </StyledSimpleCheckboxWrapper>
+    </StyledCheckboxWrapper>
   );
 };
