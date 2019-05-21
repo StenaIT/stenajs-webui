@@ -10,7 +10,8 @@
     "build": "lerna run build",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build && yarn test",
-    "test": "lerna run test",
+    "test": "jest --config=jest.config.js",
+    "test-old": "lerna run test",
     "deploy": "gh-pages -d build",
     "check-deps-match": "node check-dep-versions.js"
   },
@@ -25,13 +26,13 @@
   },
   "homepage": "https://github.com/StenaIT/stenajs-webui#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
     "@dump247/storybook-state": "^1.5.2",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/react": "^5.0.11",
     "@storybook/theming": "^5.0.11",
     "@svgr/rollup": "^4.2.0",
+    "@types/jest": "^24.0.13",
     "@types/node": "^12.0.0",
     "@types/storybook__addon-info": "^4.1.1",
     "@types/storybook__addon-knobs": "^5.0.0",
@@ -39,7 +40,9 @@
     "babel-loader": "^8.0.5",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
+    "enzyme-adapter-react-16": "^1.13.1",
     "gh-pages": "^2.0.1",
+    "jest": "^24.8.0",
     "lerna": "^3.13.4",
     "prettier": "^1.17.0",
     "react-docgen-typescript-loader": "^3.1.0",
@@ -50,6 +53,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-typescript2": "^0.21.0",
     "rollup-plugin-url": "^2.2.1",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   }
 }
