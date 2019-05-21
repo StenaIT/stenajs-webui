@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -9,6 +9,7 @@
     "url": "git+https://github.com/StenaIT/stenajs-webui.git"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
@@ -25,22 +26,26 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
-    "@fortawesome/fontawesome-common-types": "^0.2.18",
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/lodash-es": "^4.17.3",
+    "@types/recompose": "^0.30.6",
+    "@types/lodash": "^4.14.124",
     "date-fns": "2.0.0-alpha.27",
     "lodash-es": "^4.17.11",
-    "recompose": "^0.30.0",
-    "styled-system": "^4.1.0"
+    "recompose": "^0.30.0"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "@emotion/core": ">=10.0.10",
+    "@emotion/styled": ">=10.0.10",
+    "@fortawesome/fontawesome-common-types": ">=0.2.18",
+    "@fortawesome/fontawesome-svg-core": ">=1.2.18",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
+    "@fortawesome/react-fontawesome": ">=0.1.4",
+    "@types/lodash-es": ">=4.17.3",
+    "@types/react": ">=16.8.18",
+    "@types/react-dom": ">=16.8.4",
+    "@types/styled-system": ">=4.1.0",
+    "prop-types": ">=15.5.4",
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.1",

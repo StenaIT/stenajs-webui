@@ -11,7 +11,8 @@
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build && yarn test",
     "test": "lerna run test",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "check-deps-match": "node check-dep-versions.js"
   },
   "repository": {
     "type": "git",
