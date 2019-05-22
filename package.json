@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
@@ -8,8 +8,6 @@
     "build-storybook": "rimraf build && build-storybook -o build",
     "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
     "build": "lerna run build",
-    "lerna-publish": "lerna publish",
-    "lerna-version": "lerna publish",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build && yarn test",
     "test": "jest --config=jest.config.js",
