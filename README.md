@@ -17,8 +17,8 @@ All documentation uses `yarn`.
 
 `stenajs-webui` is built with `emotion` and `styled-system`.
 
-`stenajs-webui` use Font Awesome for icons. `@stenajs-webui/core` does not use any icons, 
-but most other packages require Font Awesome.
+`stenajs-webui` use Font Awesome for icons. 
+`@stenajs-webui/core` does not use any icons, but most other packages require Font Awesome.
 
 ### Typescript
 
@@ -51,7 +51,7 @@ $ yarn add @emotion/core \
            styled-system
 ```
 
-If you are using Typescript, you need to add the following:
+If you are using Typescript, you must also add the following dependencies:
 
 ```
 $ yarn add typescript
@@ -60,7 +60,9 @@ $ yarn add typescript
            @types/react-dom
 ```
 
-If you are also using `@stenajs-webui/elements`, you need to add the following dependencies:
+`typescript` is required by `create-react-app` when using Typescript, `stenajs-webui` does not require it.
+
+If you are also using `@stenajs-webui/elements`, you must also add the following dependencies:
 
 ```
 $ yarn add @fortawesome/fontawesome-svg-core \
@@ -69,3 +71,17 @@ $ yarn add @fortawesome/fontawesome-svg-core \
 ```
 
 See the `package.json` file for each package to see what dependencies are required.
+
+## Storybook
+
+There is a global storybook, which showcases the components from all packages.
+
+https://stenait.github.io/stenajs-webui
+
+You can start it locally:
+
+```
+$ cd <repo-root>/
+$ yarn
+$ yarn start-storybook
+```
