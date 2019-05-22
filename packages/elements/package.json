@@ -26,13 +26,11 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {
-  },
   "peerDependencies": {
-    "@stenajs-webui/core": "0.0.1",
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
+    "@stenajs-webui/core": "0.0.1",
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
     "@types/styled-system": ">=4.1.0",

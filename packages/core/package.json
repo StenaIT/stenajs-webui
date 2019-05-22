@@ -26,7 +26,6 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",
     "@emotion/styled": ">=10.0.10",

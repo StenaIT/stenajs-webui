@@ -25,7 +25,6 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
   "peerDependencies": {
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
