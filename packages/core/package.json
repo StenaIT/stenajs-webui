@@ -31,6 +31,7 @@
     "@emotion/styled": ">=10.0.10",
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
+    "@types/styled-system": ">=4.1.0",
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6",

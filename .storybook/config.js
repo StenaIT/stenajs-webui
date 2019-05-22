@@ -4,7 +4,7 @@ import { addDecorator, addParameters, configure } from "@storybook/react";
 import { StenaTheme } from "./stena-theme";
 
 function loadStories() {
-  const req = require.context("../packages", true, /\.stories\.tsx$/);
+  const req = require.context("../", true, /\.stories\.tsx$/);
   req.keys().forEach(filename => req(filename));
   // You can require as many stories as you need.
 }
