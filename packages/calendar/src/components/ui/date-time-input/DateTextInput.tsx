@@ -14,7 +14,7 @@ import {
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
-import { DateFormats } from '../../../util/date/DateFormats';
+import { DateFormats } from "../../../util/date/DateFormats";
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -39,8 +39,6 @@ export interface DateTextInputProps<T> extends StandardTextInputProps {
   disableCalender?: boolean;
   /** Show or hide the calender icon, @default true */
   useCalenderIcon?: boolean;
-  /** Onchange callback, returns the current value */
-  onChange: (value: string) => void;
   /** Placeholder for the input, @default YYYY-MM-DD */
   placeholder?: string;
   /**  Z-index of the calendar overlay, @default 100 */
@@ -58,6 +56,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   disableCalender = false,
   useCalenderIcon = true,
   onChange,
+  onValueChange,
   placeholder = "yyyy-mm-dd",
   value,
   width = "125px",
@@ -89,13 +88,21 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
 
   useOnClickOutside(ref, closeCalendar);
 
-  const updateValue = (date: string) => {
-    onChange(date);
-  };
+  const onChangeHandler = useCallback(
+    ev => {
+      if (onChange) {
+        onChange(ev);
+      }
+      if (onValueChange) {
+        onValueChange(ev.target.value);
+      }
+    },
+    [onChange, onValueChange]
+  );
 
   const onCalendarSelectDate = (date: Date | undefined) => {
     if (date) {
-      updateValue(format(date, dateFormat));
+      onChangeHandler(format(date, dateFormat));
       if (closeOnCalendarSelectDate) {
         setTimeout(() => setOpen(!open), 200);
       }
@@ -119,7 +126,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         }
         iconLeft={faCalendarAlt}
         onClickLeft={toggleCalendar}
-        onChange={updateValue}
+        onChange={onChangeHandler}
         placeholder={placeholder}
         value={value}
         width={width}

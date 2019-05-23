@@ -1,17 +1,18 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
-import {
-  defaultStandardTextInputThemeDark,
-  StandardTextInput
-} from "@stenajs-webui/forms";
 import { withInfo } from "@storybook/addon-info";
+import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { StandardTextInput } from "./StandardTextInput";
+import { defaultStandardTextInputThemeDark } from "./StandardTextInputTheme";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
   .addDecorator(withInfo())
-  .add("standard", () => <StandardTextInput value={"some entered text"} />)
+  .add("standard", () => (
+    <StandardTextInput value={knobs.text("Text", "Some nice text.")} />
+  ))
   .add("with dark theme", () => (
     <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
       <StandardTextInput

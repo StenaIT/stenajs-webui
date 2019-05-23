@@ -10,14 +10,15 @@ import {
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useCallback, useState } from "react";
+import { FullOnChangeProps } from "../types";
 import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 import {
   defaultStandardTextInputTheme,
   StandardTextInputTheme
 } from "./StandardTextInputTheme";
 
-// TODO Move to theme.
+// TODO Move to theme?
 
 const StyledSimpleTextInput = styled(SimpleTextInput)`
   border: 0;
@@ -26,8 +27,9 @@ const StyledSimpleTextInput = styled(SimpleTextInput)`
   }
 `;
 
-export interface StandardTextInputProps
-  extends Omit<SimpleTextInputProps, "theme"> {
+export interface StandardTextInputProps<TValue = string>
+  extends Omit<SimpleTextInputProps<TValue>, "theme">,
+    FullOnChangeProps<TValue, ChangeEvent<HTMLInputElement>> {
   /** React node to put to the left. Left icon is ignored if this is set. */
   contentLeft?: React.ReactNode;
   /** React node to put to the right. Right icon is ignored if this is set. */
@@ -154,9 +156,23 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   onFocus,
   onClickRight,
   onClickLeft,
+  onChange,
+  onValueChange,
   ...inputProps
 }) => {
   const [focused, setFocused] = useState(false);
+
+  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
+    ev => {
+      if (onValueChange) {
+        onValueChange(ev.target.value || "");
+      }
+      if (onChange) {
+        onChange(ev);
+      }
+    },
+    [onChange, onValueChange]
+  );
 
   const onBlurHandler = useCallback(() => {
     if (onBlur) {
@@ -219,6 +235,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
         <div style={{ width: "100%" }}>
           <StyledSimpleTextInput
             {...inputProps}
+            onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
             backgroundColor={colors.backgroundColor}

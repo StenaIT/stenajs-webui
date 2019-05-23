@@ -3,10 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Clickable, InputProps, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback } from "react";
-import { ValueOnChangeProps } from "../types";
+import { useThemeFields } from "../../../../../core/src/theme/hooks/UseThemeSelector";
+import { FullOnChangeProps } from "../types";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
-export interface CheckboxProps extends ValueOnChangeProps<boolean>, InputProps {
+export interface CheckboxProps
+  extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
+    InputProps {
   disabled?: boolean;
   theme?: CheckboxTheme;
 }
@@ -60,20 +63,40 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   disabled,
   inputRef,
   onChange,
+  onValueChange,
   theme = defaultCheckboxTheme,
   value
 }) => {
-  const onClick = useCallback(() => {
-    if (onChange) {
-      onChange(!value);
-    }
-  }, [onChange, value]);
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        iconColorDisabled: theme.iconColorDisabled,
+        iconColor: theme.iconColor
+      }
+    },
+    [theme]
+  );
+
+  const onClick = useCallback(
+    ev => {
+      if (onChange) {
+        onChange(ev);
+      }
+      if (onValueChange) {
+        onValueChange(!value);
+      }
+    },
+    [onChange, onValueChange, value]
+  );
 
   const handleInputChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    (ev: ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {
         if (onChange) {
-          onChange(e.target.checked);
+          onChange(ev);
+        }
+        if (onValueChange) {
+          onValueChange(ev.target.checked);
         }
       }
     },
@@ -100,7 +123,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             {value && (
               <FontAwesomeIcon
                 icon={theme.checkIcon}
-                color={disabled ? theme.iconColorDisabled : theme.iconColor}
+                color={disabled ? colors.iconColorDisabled : colors.iconColor}
                 style={{ fontSize: theme.iconSize }}
               />
             )}

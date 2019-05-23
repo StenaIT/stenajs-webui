@@ -6,7 +6,6 @@ export * from "./components/ui/checkbox/CheckboxTheme";
 export * from "./components/ui/radio/RadioButton";
 export * from "./components/ui/radio/RadioButtonTheme";
 export * from "./components/ui/radio/RadioButtonWithLabel";
-export * from "./components/ui/text-input/DebouncedTextInput";
 export * from "./components/ui/text-input/NumericTextInput";
 export * from "./components/ui/text-input/NumericTextInputTheme";
 export * from "./components/ui/text-input/SimpleTextInput";

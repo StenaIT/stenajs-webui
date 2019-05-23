@@ -1,6 +1,12 @@
-import { Clickable, Row, Space, StandardText } from "@stenajs-webui/core";
+import {
+  Clickable,
+  Row,
+  Space,
+  StandardText,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
-import { Ref } from "react";
+import { Ref, useCallback } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 import { defaultCheckboxTheme } from "./CheckboxTheme";
 
@@ -17,17 +23,38 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
     disabled,
     label,
     onChange, // Do not pass to Checkbox
+    onValueChange, // Do not pass to Checkbox
     innerRef,
     textColor,
     value,
     theme = defaultCheckboxTheme,
     ...propsToCheckbox
   } = props;
+
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        iconColorDisabled: theme.iconColorDisabled
+      }
+    },
+    [theme]
+  );
+
+  const onClickHandler = useCallback(
+    ev => {
+      if (onChange) {
+        onChange(ev);
+      }
+      if (onValueChange) {
+        onValueChange(!value);
+      }
+    },
+    [onChange, onValueChange, value]
+  );
+
   return (
     <div ref={innerRef}>
-      <Clickable
-        onClick={disabled || !onChange ? undefined : () => onChange(!value)}
-      >
+      <Clickable onClick={onClickHandler}>
         <Row alignItems={"center"}>
           <Checkbox
             {...propsToCheckbox}
@@ -38,7 +65,7 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
           <Space />
           {label && (
             <StandardText
-              color={disabled ? theme.iconColorDisabled : textColor}
+              color={disabled ? colors.iconColorDisabled : textColor}
             >
               {label}
             </StandardText>

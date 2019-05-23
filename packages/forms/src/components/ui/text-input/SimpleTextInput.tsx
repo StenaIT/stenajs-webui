@@ -3,7 +3,6 @@ import { useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   ChangeEvent,
-  ChangeEventHandler,
   CSSProperties,
   KeyboardEvent,
   KeyboardEventHandler,
@@ -13,6 +12,7 @@ import {
   useRef,
   useState
 } from "react";
+import { ValueAndOnChangeProps } from "../types";
 import {
   defaultSimpleTextInputTheme,
   SimpleTextInputTheme
@@ -24,13 +24,10 @@ const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 
 type MoveDirection = "right" | "left" | "down" | "up";
 
-export interface SimpleTextInputProps {
-  /** The current value shown in the text input. */
-  value?: string;
+export interface SimpleTextInputProps<TValue = string>
+  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>> {
   /** CSS class name applied to the input element. */
   className?: string;
-  /** onChange callback, called when user triggers a value change in the field. */
-  onChange?: (value: string) => void;
   /** onDone callback, triggered by blur, if the blur was not triggered by esc key. */
   onDone?: (value: string) => void;
   /** onEsc callback, called user presses the escape key. */
@@ -177,15 +174,6 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
     }
   }, []);
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev.target.value || "");
-      }
-    },
-    [onChange]
-  );
-
   const blurMoveAndCancel = useCallback(
     (direction: MoveDirection, e: KeyboardEvent<HTMLInputElement>) => {
       refToUse.current!.blur();
@@ -291,7 +279,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       type={inputType}
       ref={refToUse}
       onKeyDown={onKeyDownHandler}
-      onChange={onChangeHandler}
+      onChange={onChange}
       onBlur={onBlurHandler}
       onFocus={onFocus}
       autoFocus={focusOnMount || selectAllOnMount}

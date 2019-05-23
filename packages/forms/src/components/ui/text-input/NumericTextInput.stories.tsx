@@ -1,13 +1,11 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Box, StandardText } from "@stenajs-webui/core";
-import {
-  defaultNumericTextInputThemeDark,
-  NumericTextInput
-} from "@stenajs-webui/forms";
 import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { NumericTextInput } from "./NumericTextInput";
+import { defaultNumericTextInputThemeDark } from "./NumericTextInputTheme";
 
 interface State {
   value: number;
@@ -22,7 +20,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     })(({ store }: { store: Store<State> }) => (
       <NumericTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -34,7 +32,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
         <NumericTextInput
           value={store.state.value}
-          onChange={value => store.set({ value })}
+          onValueChange={value => store.set({ value })}
           theme={defaultNumericTextInputThemeDark}
         />
       </Box>
@@ -48,7 +46,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       <NumericTextInput
         disabled
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -60,7 +58,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       <NumericTextInput
         hideButtons
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -74,7 +72,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         value={store.state.value}
         min={1}
         max={8}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -92,7 +90,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
             <StandardText>sec</StandardText>
           </div>
         }
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -105,7 +103,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         min={3}
         max={8}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   );

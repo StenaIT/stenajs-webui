@@ -1,4 +1,4 @@
-import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
+import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { useTheme } from "@stenajs-webui/core";
 import {
   StandardTextInput,
@@ -6,12 +6,13 @@ import {
 } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
+import { Omit } from "../../../../../core/src/types/Omit";
 import {
   formatTimeString,
   validUserInput
 } from "../../../util/time/TimeStringFormatValidator";
 
-interface TimeTextInputProps extends StandardTextInputProps {
+interface TimeTextInputProps extends Omit<StandardTextInputProps, "onChange"> {
   /** Show placeholder when true */
   showPlaceholder?: boolean;
   /** Show icon when true */
@@ -19,7 +20,7 @@ interface TimeTextInputProps extends StandardTextInputProps {
 }
 
 export const TimeTextInput: React.FC<TimeTextInputProps> = ({
-  onChange,
+  onValueChange,
   showPlaceholder = true,
   useIcon = true,
   value,
@@ -37,24 +38,25 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
       const formattedResult = formatTimeString(value);
       setValid(formattedResult.success);
       if (formattedResult.success) {
-        if (onChange) {
-          onChange(formattedResult.time);
+        if (onValueChange) {
+          onValueChange(formattedResult.time);
         }
       }
     }
-  }, [value, onChange, setValid]);
+  }, [value, onValueChange, setValid]);
 
-  const updateValue = useCallback(
-    (time: string) => {
+  const onChangeHandler = useCallback(
+    ev => {
+      const time = ev.target.value;
       const validInput = validUserInput(time);
 
       setValid(validInput && time.length <= timeFormat.length);
 
-      if (onChange) {
-        onChange(time);
+      if (onValueChange) {
+        onValueChange(time);
       }
     },
-    [onChange, setValid]
+    [onValueChange, setValid]
   );
 
   return (
@@ -64,7 +66,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
       iconLeft={useIcon ? faClock : undefined}
       value={value}
       placeholder={showPlaceholder ? timeFormat : undefined}
-      onChange={updateValue}
+      onChange={onChangeHandler}
       onBlur={onBlur}
       width={width}
     />

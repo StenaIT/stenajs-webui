@@ -2,16 +2,17 @@ import { Box, Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
-import { StandardTextInput, StandardTextInputProps } from "./StandardTextInput";
 import {
   defaultNumericTextInputTheme,
   NumericTextInputTheme
 } from "./NumericTextInputTheme";
+import { StandardTextInput, StandardTextInputProps } from "./StandardTextInput";
 
 interface NumericTextInputProps
-  extends Omit<StandardTextInputProps, "value" | "onChange" | "theme"> {
-  value: number | undefined;
-  onChange: (value: number | undefined) => void;
+  extends Omit<
+    StandardTextInputProps<number | undefined>,
+    "theme" | "onChange" // Omit onChange, since up down buttons don't generate HTMLInput event.
+  > {
   max?: number;
   min?: number;
   step?: number;
@@ -21,7 +22,7 @@ interface NumericTextInputProps
 
 export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   value = 0,
-  onChange,
+  onValueChange,
   max,
   min,
   step = 1,
@@ -31,27 +32,33 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   ...restProps
 }) => {
   const onClickDown = useCallback(() => {
-    if (onChange) {
+    if (onValueChange) {
       const newValue = value - step;
-      onChange(min != null ? Math.max(min, newValue) : newValue);
+      onValueChange(min != null ? Math.max(min, newValue) : newValue);
     }
-  }, [value, onChange, max, min, step]);
+  }, [value, max, min, step, onValueChange]);
 
   const onClickUp = useCallback(() => {
-    if (onChange) {
+    if (onValueChange) {
       const newValue = value + step;
-      onChange(max != null ? Math.min(max, newValue) : newValue);
+      onValueChange(max != null ? Math.min(max, newValue) : newValue);
     }
-  }, [value, onChange, max, min, step]);
+  }, [value, max, min, step, onValueChange]);
 
   const onChangeHandler = useCallback(
-    value => {
-      const n = parseIntOrFloat(value);
-      if (n != null && !isNaN(n)) {
-        onChange(n);
+    ev => {
+      if (onValueChange) {
+        if (ev.target.value === "") {
+          onValueChange(undefined);
+        } else {
+          const n = parseIntOrFloat(ev.target.value);
+          if (n != null && !isNaN(n)) {
+            onValueChange(n);
+          }
+        }
       }
     },
-    [value, onChange, max, min, step]
+    [value, onValueChange, max, min, step]
   );
 
   const contentRightToUse = (

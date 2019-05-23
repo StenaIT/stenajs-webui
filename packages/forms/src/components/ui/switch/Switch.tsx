@@ -1,21 +1,18 @@
 import styled from "@emotion/styled";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Omit, useThemeFields } from "@stenajs-webui/core";
+import { InputProps, Omit, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
-import { Ref, useCallback } from "react";
-import { ValueOnChangeProps } from "../types";
+import { ChangeEvent, Ref, useCallback } from "react";
+import { FullOnChangeProps } from "../types";
 import { defaultSwitchTheme, SwitchTheme } from "./SwitchTheme";
-
-type InputProps = JSX.IntrinsicElements["input"];
 
 export interface SwitchProps
   extends Omit<InputProps, "value" | "onChange">,
-    ValueOnChangeProps<boolean> {
+    FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>> {
   innerRef?: Ref<HTMLInputElement>;
   inputRef?: Ref<HTMLInputElement>;
   disabled?: boolean;
-  onChange: (value: boolean) => void;
   theme?: SwitchTheme;
 }
 
@@ -101,6 +98,7 @@ export const Switch: React.FC<SwitchProps> = ({
   inputRef,
   innerRef,
   onChange,
+  onValueChange,
   value = false,
   theme = defaultSwitchTheme
 }) => {
@@ -121,20 +119,33 @@ export const Switch: React.FC<SwitchProps> = ({
     [theme]
   );
 
-  const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler = useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {
-        onChange(e.target.checked);
+        if (onValueChange) {
+          onValueChange(ev.target.checked);
+        }
+        if (onChange) {
+          onChange(ev);
+        }
       }
     },
-    [disabled, onChange]
+    [disabled, onChange, onValueChange]
   );
 
-  const handleSwitchClick = useCallback(() => {
-    if (!disabled) {
-      onChange(!value);
-    }
-  }, [disabled, onChange, value]);
+  const switchClickHandler = useCallback(
+    ev => {
+      if (!disabled) {
+        if (onValueChange) {
+          onValueChange(!value);
+        }
+        if (onChange) {
+          onChange(ev);
+        }
+      }
+    },
+    [disabled, onChange, onValueChange, value]
+  );
 
   return (
     <div ref={innerRef}>
@@ -142,13 +153,13 @@ export const Switch: React.FC<SwitchProps> = ({
         value={value}
         className={className}
         disabled={disabled}
-        onClick={handleSwitchClick}
+        onClick={switchClickHandler}
         theme={theme}
         themeFields={themeFields}
       >
         <InvisibleInput
           checked={value}
-          onChange={handleInputChange}
+          onChange={inputChangeHandler}
           ref={inputRef}
           type={"checkbox"}
         />

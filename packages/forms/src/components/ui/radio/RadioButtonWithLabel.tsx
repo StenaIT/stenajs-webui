@@ -1,10 +1,16 @@
-import { Box, Clickable, Space, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  Clickable,
+  Space,
+  StandardText,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
-import { ValueOnChangeProps } from "../types";
-import { RadioButton } from "./RadioButton";
+import { useCallback } from "react";
+import { RadioButton, RadioButtonProps } from "./RadioButton";
 import { defaultRadioButtonTheme, RadioButtonTheme } from "./RadioButtonTheme";
 
-export interface RadioButtonWithLabelProps extends ValueOnChangeProps<boolean> {
+export interface RadioButtonWithLabelProps extends RadioButtonProps {
   disabled?: boolean;
   label: string;
   theme?: RadioButtonTheme;
@@ -15,17 +21,38 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
   label,
   theme = defaultRadioButtonTheme,
   value,
-  onChange
+  onChange,
+  onValueChange
 }) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        textColorDisabled: theme.textColorDisabled,
+        textColor: theme.textColor
+      }
+    },
+    [theme]
+  );
+
+  const onClickHandler = useCallback(
+    ev => {
+      if (onChange) {
+        onChange(ev);
+      }
+      if (onValueChange) {
+        onValueChange(!value);
+      }
+    },
+    [onChange, onValueChange, value]
+  );
+
   return (
-    <Clickable
-      onClick={disabled || !onChange ? undefined : () => onChange(!value)}
-    >
+    <Clickable onClick={onClickHandler}>
       <Box row alignItems={"center"}>
         <RadioButton {...{ theme }} value={value} />
         <Space />
         <StandardText
-          color={disabled ? theme.textColorDisabled : theme.textColor}
+          color={disabled ? colors.textColorDisabled : colors.textColor}
           fontSize={theme.textSize}
         >
           {label}

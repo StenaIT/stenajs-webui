@@ -16,14 +16,14 @@ export interface RadioButtonTheme {
 }
 
 export const defaultRadioButtonTheme: RadioButtonTheme = {
+  iconColor: "primaryText",
+  iconColorDisabled: "disabledText",
+  iconColorNotChecked: "primaryText",
   iconChecked: faDotCircle,
   iconNotChecked: faCircle,
-  iconColorNotChecked: "primaryText",
-  iconColorDisabled: "disabledText",
-  textColorDisabled: "disabledText",
-  iconColor: "primaryText",
-  iconSize: 20,
   textColor: "primaryText",
+  textColorDisabled: "disabledText",
+  iconSize: 20,
   textSize: "normal"
 };
 
