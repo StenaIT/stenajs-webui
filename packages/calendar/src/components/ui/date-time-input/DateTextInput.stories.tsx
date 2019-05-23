@@ -17,7 +17,7 @@ storiesOf("calendar/Input/DateTextInput", module)
     })(({ store }: { store: Store<DateTextInputState> }) => (
       <DateTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -30,7 +30,7 @@ storiesOf("calendar/Input/DateTextInput", module)
         dateFormat={"dd/MM/yyyy"}
         placeholder={"DD/MM/YYYY"}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -43,7 +43,7 @@ storiesOf("calendar/Input/DateTextInput", module)
         dateFormat={"dd-MM-yyyy"}
         placeholder={"DD-MM-YYYY"}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -55,7 +55,7 @@ storiesOf("calendar/Input/DateTextInput", module)
       <DateTextInput
         useCalenderIcon={false}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -67,7 +67,7 @@ storiesOf("calendar/Input/DateTextInput", module)
       <DateTextInput
         disableCalender={true}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -78,7 +78,7 @@ storiesOf("calendar/Input/DateTextInput", module)
     })(({ store }: { store: Store<DateTextInputState> }) => (
       <DateTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
         disabled={true}
       />
     ))
@@ -94,7 +94,7 @@ storiesOf("calendar/Input/DateTextInput", module)
           highlightToday: true
         }}
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   );

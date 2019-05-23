@@ -17,7 +17,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -28,7 +28,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -39,7 +39,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -50,7 +50,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
       />
     ))
   )
@@ -61,7 +61,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
         useIcon={false}
       />
     ))
@@ -73,7 +73,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
         showPlaceholder={false}
       />
     ))
@@ -85,7 +85,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
     })(({ store }: { store: Store<TimeTextInputState> }) => (
       <TimeTextInput
         value={store.state.value}
-        onChange={value => store.set({ value })}
+        onValueChange={value => store.set({ value })}
         disabled={true}
       />
     ))
