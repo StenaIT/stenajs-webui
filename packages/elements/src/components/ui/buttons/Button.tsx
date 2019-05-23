@@ -99,7 +99,11 @@ export const Button: React.FC<ButtonProps> = ({
   const labelToUse = success ? successLabel : loading ? loadingLabel : label;
 
   return (
-    <Clickable onClick={disabled ? undefined : onClick} opacityOnHover>
+    <Clickable
+      onClick={disabled ? undefined : onClick}
+      opacityOnHover
+      disabled={disabled}
+    >
       <Box
         borderRadius={buttonTheme.borderRadius}
         borderWidth={0}
@@ -144,7 +148,7 @@ export const Button: React.FC<ButtonProps> = ({
 
           {labelToUse && (
             <ButtonText
-              color={colors.textColor}
+              color={disabled ? colors.textColorDisabled : colors.textColor}
               fontSize={fontSizes.fontSize}
               fontFamily={fonts.font}
             >

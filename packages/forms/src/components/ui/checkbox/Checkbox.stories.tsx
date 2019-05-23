@@ -15,7 +15,7 @@ interface State {
   value: boolean;
 }
 
-storiesOf("forms/Checkbox/Checkbox", module)
+storiesOf("forms/Checkbox", module)
   .addDecorator(withInfo())
   .add(
     "standard",

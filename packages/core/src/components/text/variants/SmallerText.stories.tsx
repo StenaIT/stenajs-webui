@@ -1,39 +1,39 @@
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardText } from "./variants/StandardText";
+import { SmallerText } from "../variants/SmallerText";
 
-storiesOf("core/Text/StandardText", module)
+storiesOf("core/Text/SmallerText", module)
   .add("standard", () => (
-    <StandardText>
+    <SmallerText>
       {text("Text", "That is some nice text, right there!")}
-    </StandardText>
+    </SmallerText>
   ))
   .add("with underline", () => (
-    <StandardText textDecoration={"underline"}>
+    <SmallerText textDecoration={"underline"}>
       That is some nice text, right there!
-    </StandardText>
+    </SmallerText>
   ))
   .add("with underline on hover", () => (
-    <StandardText hoverUnderline>
+    <SmallerText hoverUnderline>
       That is some nice text, right there!
-    </StandardText>
+    </SmallerText>
   ))
   .add("with selection disabled", () => (
-    <StandardText userSelect={"none"}>
+    <SmallerText userSelect={"none"}>
       This text can not be selected
-    </StandardText>
+    </SmallerText>
   ))
   .add("with font weights", () => (
     <div>
       <div>
-        <StandardText fontWeight={"normal"}>This text is normal.</StandardText>
+        <SmallerText fontWeight={"normal"}>This text is normal.</SmallerText>
       </div>
       <div>
-        <StandardText fontWeight={"bold"}>This text is bold.</StandardText>
+        <SmallerText fontWeight={"bold"}>This text is bold.</SmallerText>
       </div>
       <div>
-        <StandardText fontWeight={"light"}>This text is light.</StandardText>
+        <SmallerText fontWeight={"light"}>This text is light.</SmallerText>
       </div>
     </div>
   ));

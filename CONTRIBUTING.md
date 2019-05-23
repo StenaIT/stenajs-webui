@@ -2,9 +2,9 @@
 
 ## Libraries of choice
 
-* `emotion` and `styled-system` is used for all styling.
-* Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
-* Font Awesome is used for all icons.
+- `emotion` and `styled-system` is used for all styling.
+- Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
+- Font Awesome is used for all icons.
 
 ## Dependencies
 
@@ -16,19 +16,21 @@ See `@stenajs-webui/select`, which uses `react-select` as a dependency.
 
 ## Code style
 
-* Typescript, strict, no any.
-* Prettier.
-* No default exports. All exports should be named.
-* Use args destructuring.
+- Typescript, strict, no any.
+- Prettier.
+- No default exports. All exports should be named.
+- Use args destructuring.
 
 ## Components
 
-* Typed components, instead of typed props-argument.
-* As little logic in components as possible, use hooks instead.
-* No class components
-* Use React.FC<Props> type for components.
+- Typed components, instead of typed props-argument.
+- As little logic in components as possible, use hooks instead.
+- No class components
+- Use React.FC<Props> type for components.
+- Add JSDocs to your props interface. If it is optional with default value, specify `@default`.
 
 Example:
+
 ```
 export interface NiceButtonProps {
     /**
@@ -47,33 +49,33 @@ export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
 
 ## Naming
 
-* Folder names use `kebab-case`.
-* Files and components use `CamelCase` with first letter capitalized.
-* Module scoped constants use `UPPER_CASE_SNAKE_CASE`.
-* All other variables (included locally scoped constants) use `camelCase`.
+- Folder names use `kebab-case`.
+- Files and components use `CamelCase` with first letter capitalized.
+- Module scoped constants use `UPPER_CASE_SNAKE_CASE`.
+- All other variables (included locally scoped constants) use `camelCase`.
 
 ## Folder and files structure
 
-* All source code in `<package>/src/`.
-* Components with UI should be placed in `<package>/src/components/ui/<component-folder>/<Component>.tsx`.
-* Components with no UI should be placed in `<package>/src/components/util/` (with sub folder where appropriate).
-* Shared util functions should be placed in `<package>/src/util/` (with sub folder where appropriate).
-* Each type of component has own folder.
-* All unit tests in `__tests__/<Component>.test.tsx` next to `<Component>.tsx`.
-* All stories in `<Component>.stories.tsx` next to `<Component>.tsx` (no sub folder).
-* Put hooks in own sub folder `hooks`.
-* Put other util functions in sub folder `utils`.
+- All source code in `<package>/src/`.
+- Components with UI should be placed in `<package>/src/components/ui/<component-folder>/<Component>.tsx`.
+- Components with no UI should be placed in `<package>/src/components/util/` (with sub folder where appropriate).
+- Shared util functions should be placed in `<package>/src/util/` (with sub folder where appropriate).
+- Each type of component has own folder.
+- All unit tests in `__tests__/<Component>.test.tsx` next to `<Component>.tsx`.
+- All stories in `<Component>.stories.tsx` next to `<Component>.tsx` (no sub folder).
+- Put hooks in own sub folder `hooks`.
+- Put other util functions in sub folder `utils`.
 
 ## Themes
 
-* If your component has a theme, add `<Component>Theme.ts` next to `<Component>.tsx`.
-* The theme file should include an interface with same name as the file.
-* It should also include a default theme, named `default<Component>Theme`;
-* Passing a theme to a component should always be done with a prop named `theme`.
-* The `theme` prop should always be optional, falling back to a default theme.
-* If the users might need to set theme globally, add a context provider that uses the default theme as default value.
-* Theme fields should allow for lookup in theme if color, font, font-size or font-weight.
-* Theme interface and default theme should be exported and available to use.
+- If your component has a theme, add `<Component>Theme.ts` next to `<Component>.tsx`.
+- The theme file should include an interface with same name as the file.
+- It should also include a default theme, named `default<Component>Theme`;
+- Passing a theme to a component should always be done with a prop named `theme`.
+- The `theme` prop should always be optional, falling back to a default theme.
+- If the users might need to set theme globally, add a context provider that uses the default theme as default value.
+- Theme fields should allow for lookup in theme if color, font, font-size or font-weight.
+- Theme interface and default theme should be exported and available to use.
 
 Example:
 
@@ -138,7 +140,7 @@ Chrome, Firefox, Edge, Safari.
 ### 8) Export your component
 
 In `<package>/src/index.ts`, make sure that you export at least your component and the props interface.
-Do not export everything, only the things that should be available to the users (developers). 
+Do not export everything, only the things that should be available to the users (developers).
 
 ### 9) Create a pull request in Github
 

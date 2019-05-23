@@ -1,5 +1,5 @@
 {
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -28,6 +28,7 @@
     "@dump247/storybook-state": "^1.5.2",
     "@storybook/addon-info": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
+    "@storybook/addon-viewport": "^5.0.11",
     "@storybook/react": "^5.0.11",
     "@storybook/theming": "^5.0.11",
     "@svgr/rollup": "^4.2.0",

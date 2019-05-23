@@ -13,7 +13,7 @@ interface State {
   value: boolean;
 }
 
-storiesOf("forms/RadioButton/RadioButton", module)
+storiesOf("forms/RadioButton", module)
   .addDecorator(withInfo())
   .add(
     "standard",
