@@ -110,7 +110,11 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
 }
 
-const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
+const FlexBox = styled.div<
+  FlexBoxProps &
+    BoxShadowProps &
+    BackgroundProps & { themeSpacing: number; themeIndent: number }
+>`
   display: ${props => props.display || "flex"};
   ${alignItems};
   ${background};
@@ -134,8 +138,8 @@ const FlexBox = styled.div<FlexBoxProps & BoxShadowProps & BackgroundProps>`
   ${maxHeight};
   ${maxWidth};
   ${overflow};
-  padding: ${props => numberOrZero(props.spacing) * 10}px
-    ${props => numberOrZero(props.indent) * 10}px;
+  padding: ${props => numberOrZero(props.spacing) * props.themeSpacing}px
+    ${props => numberOrZero(props.indent) * props.themeIndent}px;
   ${position}
   ${width};
   ${zIndex}
@@ -152,9 +156,11 @@ export const Box: React.FC<BoxProps> = ({
   ...props
 }) => {
   const boxProps = useThemeSelector(
-    ({ shadows, colors }) => ({
+    ({ shadows, colors, metrics }) => ({
       boxShadow: (shadow && shadows[shadow]) || shadow,
-      background: (background && colors[background]) || background
+      background: (background && colors[background]) || background,
+      themeSpacing: metrics.spacing,
+      themeIndent: metrics.indent
     }),
     [shadow, background]
   );

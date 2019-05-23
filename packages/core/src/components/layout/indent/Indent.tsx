@@ -5,6 +5,6 @@ interface IndentProps extends BoxProps {
   num?: number | boolean;
 }
 
-export const Indent: React.FC<IndentProps> = ({ num, ...props }) => {
+export const Indent: React.FC<IndentProps> = ({ num = 1, ...props }) => {
   return <Box indent={num} {...props} />;
 };

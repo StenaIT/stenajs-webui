@@ -16,18 +16,18 @@ export const useThemeSelector = <T>(
   return useMemo(() => memoizedSelector(theme), [theme, memoizedSelector]);
 };
 
-type ThemeFieldRecord<T> = Record<string, T | string | undefined>;
+type ThemeFieldRecord<T> = Record<string, T | string | undefined>;
 type ColorFields = ThemeFieldRecord<ThemeColorField>;
 type FontFields = ThemeFieldRecord<ThemeFontField>;
 type FontSizesFields = ThemeFieldRecord<ThemeFontSizeField>;
 
-export const useThemeFields = <
-  TFields extends {
-    colors?: ColorFields;
-    fontSizes?: FontFields;
-    fonts?: FontSizesFields;
-  }
->(
+export type ThemeSelectorFields = {
+  colors?: ColorFields;
+  fontSizes?: FontFields;
+  fonts?: FontSizesFields;
+};
+
+export const useThemeFields = <TFields extends ThemeSelectorFields>(
   themeFields: TFields,
   deps: DependencyList
 ): TFields => {

@@ -5,6 +5,6 @@ interface SpacingProps extends BoxProps {
   num?: number | boolean;
 }
 
-export const Spacing: React.FC<SpacingProps> = ({ num, ...props }) => {
+export const Spacing: React.FC<SpacingProps> = ({ num = 1, ...props }) => {
   return <Box spacing={num} {...props} />;
 };
