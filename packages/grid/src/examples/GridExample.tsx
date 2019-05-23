@@ -13,7 +13,7 @@ import {
 export const list10 = createIndexArray(10);
 
 export const GridExample = () => {
-  const [rows, setRows] = useState(createRows());
+  const [rows, setRows] = useState(() => createRows());
 
   const updateCell = useCallback(
     (rowIndex: number, colIndex: number, value: string | undefined) => {
@@ -101,7 +101,7 @@ const GridCell: React.FC<GridCellProps> = ({
     <FocusedBox {...requiredProps}>
       {isEditing ? (
         <StandardTextInput
-          onChange={setEditorValue}
+          onValueChange={setEditorValue}
           value={editorValue}
           onDone={stopEditing}
           onEsc={stopEditingAndRevert}

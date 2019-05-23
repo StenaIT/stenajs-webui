@@ -69,10 +69,6 @@ export interface SimpleTextInputProps<TValue = string>
   theme?: SimpleTextInputTheme;
 }
 
-export interface SimpleTextInputState {
-  wasCancelled: boolean;
-}
-
 interface StyledInputProps {
   placeholderColor: string;
   backgroundColor: string;
@@ -196,7 +192,10 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
         }
       } else if (onEsc && key === "Escape") {
         setWasCancelled(true);
-        onEsc(); // TODO Do this after set state is done.
+        setTimeout(() => {
+          onEsc(); // Do this after set state is done. Is there a better way?
+        }, 100);
+
         ev.preventDefault();
         ev.stopPropagation();
       } else if (onMove) {

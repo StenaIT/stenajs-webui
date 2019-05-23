@@ -116,7 +116,7 @@ const GridCell: React.FC<GridCellProps> = ({
     <FocusedBox {...requiredProps}>
       {isEditing ? (
         <StandardTextInput
-          onChange={onChange}
+          onValueChange={onChange}
           value={editorValue.name}
           onDone={stopEditing}
           onEsc={stopEditingAndRevert}
