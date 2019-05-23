@@ -1,9 +1,13 @@
 import styled from "@emotion/styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Clickable, InputProps, Row } from "@stenajs-webui/core";
+import {
+  Clickable,
+  InputProps,
+  Row,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback } from "react";
-import { useThemeFields } from "../../../../../core/src/theme/hooks/UseThemeSelector";
 import { FullOnChangeProps } from "../types";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 

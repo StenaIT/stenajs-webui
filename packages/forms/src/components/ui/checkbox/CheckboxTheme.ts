@@ -24,7 +24,7 @@ export const defaultCheckboxTheme: CheckboxTheme = {
   backgroundColorDisabled: "#f1f1f1",
   backgroundColorChecked: "white",
   borderColor: "inputBorder",
-  borderColorDisabled: "inputBorder",
+  borderColorDisabled: "transparent",
   borderColorChecked: "inputBorder",
   borderColorFocused: "inputBorderFocused",
   iconColor: "primaryText",
