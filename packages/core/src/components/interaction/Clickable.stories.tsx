@@ -4,7 +4,7 @@ import * as React from "react";
 import { StandardText } from "../text/variants/StandardText";
 import { Clickable } from "./Clickable";
 
-storiesOf("Interaction/Clickable", module)
+storiesOf("core/Interaction/Clickable", module)
   .addDecorator(withInfo())
   .add("default", () => (
     <Clickable onClick={() => alert("Clicked!")}>

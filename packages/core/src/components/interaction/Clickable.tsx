@@ -19,6 +19,8 @@ export interface ClickableProps {
   style?: CSSProperties;
   /** Disables shadow when element is focused. */
   disableFocusHighlight?: boolean;
+  /** Disables the HTML button element. */
+  disabled?: boolean;
 }
 
 interface ClickableElementProps {
@@ -56,6 +58,7 @@ export const Clickable: React.FC<ClickableProps> = ({
   disablePointer,
   opacityOnHover,
   style,
+  disabled,
   children
 }) => {
   const hasClickHandler = !!(onClick || onDblClick);
@@ -69,6 +72,7 @@ export const Clickable: React.FC<ClickableProps> = ({
         userSelect: "none",
         ...style
       }}
+      disabled={disabled}
       disableOpacityOnClick={disableOpacityOnClick}
       onClick={onClick}
       onDoubleClick={onDblClick}

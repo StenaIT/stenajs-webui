@@ -58,6 +58,9 @@ const getInvalidDepVersion = (packages, depsType) => {
 };
 
 const ensureDepsMatch = (deps1, deps2) => {
+  if (!deps1 || !deps2) {
+    return;
+  }
   return (
     ensureKeysAreSameOrUndefined(deps1, deps2) &&
     ensureKeysAreSameOrUndefined(deps2, deps1)

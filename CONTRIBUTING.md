@@ -14,6 +14,10 @@ If your component requires a specific library as a dependency, create a separate
 
 See `@stenajs-webui/select`, which uses `react-select` as a dependency.
 
+## Adding new packages
+
+TODO
+
 ## Code style
 
 - Typescript, strict, no any.
@@ -62,7 +66,7 @@ export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
 - Shared util functions should be placed in `<package>/src/util/` (with sub folder where appropriate).
 - Each type of component has own folder.
 - All unit tests in `__tests__/<Component>.test.tsx` next to `<Component>.tsx`.
-- All stories in `<Component>.stories.tsx` next to `<Component>.tsx` (no sub folder).
+- Add stories in `<Component>.stories.tsx` next to `<Component>.tsx` (no sub folder).
 - Put hooks in own sub folder `hooks`.
 - Put other util functions in sub folder `utils`.
 

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Omit } from "@stenajs-webui/core";
+import { Omit, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref, useCallback } from "react";
 import { ValueOnChangeProps } from "../types";
@@ -31,17 +31,32 @@ const InvisibleInput = styled.input`
   position: absolute;
 `;
 
-const Back = styled("div")<Pick<SwitchProps, "value" | "disabled" | "theme">>`
+interface WithThemeFields {
+  themeFields: {
+    colors: {
+      backgroundColorChecked: string;
+      backgroundColor: string;
+      backgroundColorDisabled: string;
+      iconBackgroundColor: string;
+      iconBackgroundColorDisabled: string;
+      iconBackgroundColorChecked: string;
+    };
+  };
+}
+
+const Back = styled("div")<
+  Required<Pick<SwitchProps, "value" | "disabled" | "theme">> & WithThemeFields
+>`
   cursor: ${({ disabled }) => (disabled ? "inherit" : "pointer")};
   width: ${({ theme }) => theme.width}px;
   height: ${({ theme }) => theme.height}px;
   border-radius: ${({ theme }) => theme.borderRadius}px;
-  background-color: ${({ value, disabled, theme }) =>
+  background-color: ${({ value, disabled, themeFields }) =>
     disabled
-      ? theme.disabledColors.backgroundColor
+      ? themeFields.colors.backgroundColorDisabled
       : value
-      ? theme.checkedColors.backgroundColor
-      : theme.colors.backgroundColor};
+      ? themeFields.colors.backgroundColorChecked
+      : themeFields.colors.backgroundColor};
   position: relative;
 
   :hover {
@@ -49,13 +64,15 @@ const Back = styled("div")<Pick<SwitchProps, "value" | "disabled" | "theme">>`
   }
 `;
 
-const Front = styled("div")<Pick<SwitchProps, "disabled" | "theme" | "value">>`
-  background-color: ${({ value, disabled, theme }) =>
+const Front = styled("div")<
+  Required<Pick<SwitchProps, "disabled" | "value" | "theme">> & WithThemeFields
+>`
+  background-color: ${({ value, disabled, themeFields }) =>
     disabled
-      ? theme.disabledColors.iconBackgroundColor
+      ? themeFields.colors.iconBackgroundColorDisabled
       : value
-      ? theme.checkedColors.iconBackgroundColor
-      : theme.colors.iconBackgroundColor};
+      ? themeFields.colors.iconBackgroundColorChecked
+      : themeFields.colors.iconBackgroundColor};
   border-radius: ${({ theme }) => theme.borderRadius - 1}px;
   height: ${({ theme }) => theme.height - 4}px;
   position: absolute;
@@ -66,7 +83,9 @@ const Front = styled("div")<Pick<SwitchProps, "disabled" | "theme" | "value">>`
   width: ${({ theme }) => theme.height - 4}px; 
 `;
 
-const IconWrapper = styled("div")<Pick<SwitchProps, "theme" | "value">>`
+const IconWrapper = styled("div")<
+  Required<Pick<SwitchProps, "value" | "theme">>
+>`
   align-items: center;
   display: flex;
   height: ${({ theme }) => theme.height - 4}px;
@@ -82,9 +101,26 @@ export const Switch: React.FC<SwitchProps> = ({
   inputRef,
   innerRef,
   onChange,
-  value,
+  value = false,
   theme = defaultSwitchTheme
 }) => {
+  const themeFields = useThemeFields(
+    {
+      colors: {
+        backgroundColorChecked: theme.backgroundColorChecked,
+        backgroundColor: theme.backgroundColor,
+        backgroundColorDisabled: theme.backgroundColorDisabled,
+        iconBackgroundColor: theme.iconBackgroundColor,
+        iconBackgroundColorDisabled: theme.iconBackgroundColorDisabled,
+        iconBackgroundColorChecked: theme.iconBackgroundColorChecked,
+        iconColorDisabled: theme.iconColorDisabled,
+        iconColorChecked: theme.iconColorChecked,
+        iconColor: theme.iconColor
+      }
+    },
+    [theme]
+  );
+
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {
@@ -108,6 +144,7 @@ export const Switch: React.FC<SwitchProps> = ({
         disabled={disabled}
         onClick={handleSwitchClick}
         theme={theme}
+        themeFields={themeFields}
       >
         <InvisibleInput
           checked={value}
@@ -116,16 +153,21 @@ export const Switch: React.FC<SwitchProps> = ({
           type={"checkbox"}
         />
 
-        <Front value={value} disabled={disabled} theme={theme}>
+        <Front
+          value={value}
+          disabled={disabled}
+          theme={theme}
+          themeFields={themeFields}
+        >
           <IconWrapper theme={theme} value={value}>
             <div style={{ fontSize: theme.height - 8 }}>
               <FontAwesomeIcon
                 color={
                   disabled
-                    ? theme.iconColorDisabled
+                    ? themeFields.colors.iconColorDisabled
                     : value
-                    ? theme.iconColorChecked
-                    : theme.iconColor
+                    ? themeFields.colors.iconColorChecked
+                    : themeFields.colors.iconColor
                 }
                 icon={faCheck}
               />

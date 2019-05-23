@@ -30,13 +30,13 @@ export const defaultSwitchTheme: SwitchTheme = {
 
 export const defaultSwitchThemeDark: SwitchTheme = {
   backgroundColor: "#b7d1d9",
-  iconBackgroundColor: "white",
-  iconColor: "#4d7989",
-  backgroundColorDisabled: "inputBorder",
-  iconBackgroundColorDisabled: "white",
-  iconColorDisabled: "disabledText",
   backgroundColorChecked: "#b7d1d9",
+  backgroundColorDisabled: "inputBorder",
+  iconBackgroundColor: "white",
+  iconBackgroundColorDisabled: "white",
   iconBackgroundColorChecked: "white",
+  iconColor: "#4d7989",
+  iconColorDisabled: "disabledText",
   iconColorChecked: "primaryText",
   width: 40,
   height: 21,
