@@ -9,6 +9,12 @@ module.exports = ({ config, mode }) => {
       presets: [["react-app", { flow: false, typescript: true }]]
     }
   });
+  config.module.rules.push({
+    test: /\.stories\.tsx?$/,
+    loaders: [{ loader: storysource, options: { parser: "typescript" } }],
+    include: path.resolve(__dirname, "../"),
+    enforce: "pre"
+  });
   config.resolve.extensions.push(".ts", ".tsx");
   return config;
 };
