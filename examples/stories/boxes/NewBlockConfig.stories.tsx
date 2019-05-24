@@ -10,6 +10,7 @@ import {
 } from "@stenajs-webui/core";
 import { StandardButton } from "@stenajs-webui/elements";
 import { StandardTextInput } from "@stenajs-webui/forms";
+import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -44,9 +45,9 @@ storiesOf("examples/Boxes", module)
             </Column>
           </Row>
 
-          <Space num={2}/>
+          <Space num={2} />
           <Row justifyContent={"flex-end"}>
-            <StandardButton label={"Send"} onClick={() => alert("send")} />
+            <StandardButton label={"Send"} onClick={action("Submit clicked")} />
           </Row>
         </Indent>
       </Spacing>

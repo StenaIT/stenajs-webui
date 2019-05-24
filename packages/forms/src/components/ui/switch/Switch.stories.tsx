@@ -4,6 +4,7 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { Switch } from "./Switch";
 import { defaultSwitchTheme } from "./SwitchTheme";
+import { SwitchWithLabel } from "./SwitchWithLabel";
 
 storiesOf("forms/Switch", module)
   .addDecorator(withInfo())
@@ -26,4 +27,14 @@ storiesOf("forms/Switch", module)
   ))
   .add("disabled", () => (
     <Switch value={knobs.boolean("Toggled", false)} disabled />
+  ));
+
+storiesOf("forms/Switch/SwitchWithLabel", module)
+  .addDecorator(withInfo())
+  .add("standard", () => (
+    <SwitchWithLabel
+      label={knobs.text("Label", "Enable something")}
+      value={knobs.boolean("Toggled", false)}
+      disabled={knobs.boolean("Disabled", false)}
+    />
   ));

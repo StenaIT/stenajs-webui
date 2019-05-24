@@ -1,23 +1,21 @@
 import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
-import { Ref } from "react";
 import { ThemeColorField } from "../../../../../core/src/theme/theme-types/ThemeColors";
-import { RadioButton, RadioButtonProps } from "./RadioButton";
-import { defaultRadioButtonTheme } from "./RadioButtonTheme";
+import { Switch, SwitchProps } from "./Switch";
+import { defaultSwitchTheme } from "./SwitchTheme";
 
-export interface RadioButtonWithLabelProps extends RadioButtonProps {
+export interface SwitchWithLabelProps extends SwitchProps {
   label: string;
   textColor?: ThemeColorField | string;
-  innerRef?: Ref<HTMLDivElement>;
 }
 
-export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
+export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
   label,
-  theme = defaultRadioButtonTheme,
+  theme = defaultSwitchTheme,
   disabled,
   innerRef,
   textColor,
-  ...radioButtonProps
+  ...switchProps
 }) => {
   const { colors } = useThemeFields(
     {
@@ -33,11 +31,7 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
     <div ref={innerRef}>
       <label>
         <Box row alignItems={"center"}>
-          <RadioButton
-            theme={theme}
-            disabled={disabled}
-            {...radioButtonProps}
-          />
+          <Switch theme={theme} disabled={disabled} {...switchProps} />
           <Space />
           <StandardText
             userSelect={"none"}

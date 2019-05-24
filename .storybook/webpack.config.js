@@ -1,3 +1,6 @@
+const storysource = require.resolve("@storybook/addon-storysource/loader");
+const path = require("path");
+
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,

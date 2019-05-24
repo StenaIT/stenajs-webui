@@ -24,6 +24,7 @@ storiesOf("forms/Checkbox", module)
   .add("with dark theme", () => (
     <Checkbox
       value={knobs.boolean("Checked", false)}
+      disabled={knobs.boolean("Disabled", false)}
       theme={defaultCheckboxThemeDark}
     />
   ))

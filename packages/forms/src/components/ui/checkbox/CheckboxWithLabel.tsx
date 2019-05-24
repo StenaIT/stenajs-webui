@@ -1,19 +1,13 @@
-import {
-  Clickable,
-  Row,
-  Space,
-  StandardText,
-  useThemeFields
-} from "@stenajs-webui/core";
+import { Row, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
-import { Ref, useCallback } from "react";
+import { Ref } from "react";
+import { ThemeColorField } from '../../../../../core/src/theme/theme-types/ThemeColors';
 import { Checkbox, CheckboxProps } from "./Checkbox";
 import { defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
-  textColor?: string;
-  disabled?: boolean;
+  textColor?: ThemeColorField | string;
   innerRef?: Ref<HTMLDivElement>;
 }
 
@@ -22,11 +16,8 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
     children,
     disabled,
     label,
-    onChange, // Do not pass to Checkbox
-    onValueChange, // Do not pass to Checkbox
     innerRef,
     textColor,
-    value,
     theme = defaultCheckboxTheme,
     ...propsToCheckbox
   } = props;
@@ -34,45 +25,29 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
   const { colors } = useThemeFields(
     {
       colors: {
+        textColor: textColor,
         iconColorDisabled: theme.iconColorDisabled
       }
     },
-    [theme]
-  );
-
-  const onClickHandler = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(!value);
-      }
-    },
-    [onChange, onValueChange, value]
+    [theme, textColor]
   );
 
   return (
     <div ref={innerRef}>
-      <Clickable onClick={onClickHandler}>
+      <label>
         <Row alignItems={"center"}>
-          <Checkbox
-            {...propsToCheckbox}
-            disabled={disabled}
-            value={value}
-            theme={theme}
-          />
+          <Checkbox {...propsToCheckbox} disabled={disabled} theme={theme} />
           <Space />
           {label && (
             <StandardText
-              color={disabled ? colors.iconColorDisabled : textColor}
+              color={disabled ? colors.iconColorDisabled : colors.textColor}
             >
               {label}
             </StandardText>
           )}
           {children}
         </Row>
-      </Clickable>
+      </label>
     </div>
   );
 };
