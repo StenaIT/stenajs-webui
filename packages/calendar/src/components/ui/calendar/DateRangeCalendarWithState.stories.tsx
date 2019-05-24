@@ -29,7 +29,6 @@ for (let i = 10; i < 14; i++) {
 const noop = () => {};
 
 storiesOf("calendar/Calendar/DateRangeCalendarWithState", module)
-  .addDecorator(withInfo())
   .add("standard", () => <DateRangeCalendarWithState onChange={noop} />)
   .add("with today highlighted", () => (
     <DateRangeCalendarWithState onChange={noop} highlightToday />

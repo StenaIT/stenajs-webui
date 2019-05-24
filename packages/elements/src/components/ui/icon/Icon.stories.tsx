@@ -11,7 +11,6 @@ import * as React from "react";
 import { Icon } from "./Icon";
 
 storiesOf("elements/Icon", module)
-  .addDecorator(withInfo())
   .add("default", () => <Icon name={faCog} />)
   .add("with color", () => <Icon name={faCog} color={"#abcdef"} />)
   .add("with spin", () => <Icon name={faSpinner} spin={true} />)

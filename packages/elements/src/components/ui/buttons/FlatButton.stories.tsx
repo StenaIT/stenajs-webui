@@ -6,7 +6,6 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("elements/Buttons/FlatButton", module)
-  .addDecorator(withInfo())
   .add("default", () => (
     <FlatButton label={"Submit"} onClick={action("Button clicked")} />
   ))

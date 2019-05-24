@@ -7,7 +7,6 @@ import { defaultSwitchTheme } from "./SwitchTheme";
 import { SwitchWithLabel } from "./SwitchWithLabel";
 
 storiesOf("forms/Switch", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <Switch
       value={knobs.boolean("Toggled", false)}
@@ -30,7 +29,6 @@ storiesOf("forms/Switch", module)
   ));
 
 storiesOf("forms/Switch/SwitchWithLabel", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <SwitchWithLabel
       label={knobs.text("Label", "Enable something")}

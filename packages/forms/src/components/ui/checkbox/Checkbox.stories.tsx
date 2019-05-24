@@ -12,7 +12,6 @@ import {
 import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 storiesOf("forms/Checkbox", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <Checkbox
       value={knobs.boolean("Checked", false)}
@@ -47,7 +46,6 @@ storiesOf("forms/Checkbox", module)
   });
 
 storiesOf("forms/Checkbox/CheckboxWithLabel", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <CheckboxWithLabel
       label={"Add cake"}

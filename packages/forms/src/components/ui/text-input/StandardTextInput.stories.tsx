@@ -9,7 +9,6 @@ import { StandardTextInput } from "./StandardTextInput";
 import { defaultStandardTextInputThemeDark } from "./StandardTextInputTheme";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <StandardTextInput value={knobs.text("Text", "Some nice text.")} />
   ))

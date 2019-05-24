@@ -6,7 +6,6 @@ import { selectThemeDark } from "../../SelectTheme";
 import { Select } from "./Select";
 
 storiesOf("select/Select", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <div style={{ width: "400px" }}>
       <Select

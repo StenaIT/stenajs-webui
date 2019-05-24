@@ -6,7 +6,6 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("elements/Buttons/SmallButton", module)
-  .addDecorator(withInfo())
   .add("default", () => (
     <SmallButton label={"Submit"} onClick={action("Button clicked")} />
   ))

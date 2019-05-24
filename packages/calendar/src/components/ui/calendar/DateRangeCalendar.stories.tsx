@@ -1,5 +1,4 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
@@ -34,7 +33,6 @@ interface State {
 }
 
 storiesOf("calendar/Calendar/DateRangeCalendar", module)
-  .addDecorator(withInfo())
   .add(
     "standard",
     withState<State>({

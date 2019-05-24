@@ -10,7 +10,6 @@ import {
 import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
 
 storiesOf("forms/RadioButton", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <RadioButton
       value={knobs.boolean("Checked", false)}
@@ -38,7 +37,6 @@ storiesOf("forms/RadioButton", module)
   ));
 
 storiesOf("forms/RadioButton/RadioButtonWithLabel", module)
-  .addDecorator(withInfo())
   .add("standard", () => (
     <RadioButtonWithLabel
       label={"Add cake"}

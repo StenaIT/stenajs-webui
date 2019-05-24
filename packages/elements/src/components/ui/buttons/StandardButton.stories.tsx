@@ -6,7 +6,6 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("elements/Buttons/StandardButton", module)
-  .addDecorator(withInfo())
   .add("default", () => (
     <StandardButton label={"Submit"} onClick={action("Button clicked")} />
   ))

@@ -12,7 +12,6 @@ interface State {
 }
 
 storiesOf("forms/TextInput/NumericTextInput", module)
-  .addDecorator(withInfo())
   .add(
     "standard",
     withState<State>({

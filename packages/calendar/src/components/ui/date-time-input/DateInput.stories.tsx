@@ -1,9 +1,8 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { withInfo } from "@storybook/addon-info";
+import { Inline } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addMonths } from "date-fns";
 import * as React from "react";
-import { Inline } from "@stenajs-webui/core";
 import { DateInput } from "./DateInput";
 
 interface DateInputState {
@@ -11,7 +10,6 @@ interface DateInputState {
 }
 
 storiesOf("calendar/Input/DateInput", module)
-  .addDecorator(withInfo())
   .add(
     "standard",
     withState<DateInputState>({

@@ -1,9 +1,8 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { withInfo } from "@storybook/addon-info";
+import { Inline } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
-import { Inline } from "@stenajs-webui/core";
 import { DateRangeCalendarOnChangeValue } from "../calendar/features/DateRangeSelection";
 import { DateRangeInput } from "./DateRangeInput";
 
@@ -12,7 +11,6 @@ interface DateRangeState {
 }
 
 storiesOf("calendar/Input/DateRangeInput", module)
-  .addDecorator(withInfo())
   .add(
     "standard",
     withState<DateRangeState>({

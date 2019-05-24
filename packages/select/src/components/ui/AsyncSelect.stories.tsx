@@ -6,7 +6,6 @@ import { selectThemeDark } from "../../SelectTheme";
 import { AsyncSelect } from "./AsyncSelect";
 
 storiesOf("select/AsyncSelect", module)
-  .addDecorator(withInfo())
   .add("async select", () => (
     <AsyncSelect
       loadOptions={getOptions}
