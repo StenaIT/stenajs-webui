@@ -1,20 +1,19 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { withInfo } from "@storybook/addon-info";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Box, Row, Space } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
-import { Row, Space, Box } from "@stenajs-webui/core";
 import {
   CalendarTheme,
-  extranetCalendarTheme,
-} from './components/CalendarTheme';
-import { WeekNumberCell } from './components/renderers/WeekNumberCell';
-import { SingleDateCalendar } from './SingleDateCalendar';
-import { OnClickWeek, RenderWeekNumber } from './types/CalendarTypes';
-import { WeekData } from './util/CalendarDataFactory';
-import { setDayStateValue } from './util/StateModifier';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  extranetCalendarTheme
+} from "./components/CalendarTheme";
+import { WeekNumberCell } from "./components/renderers/WeekNumberCell";
+import { SingleDateCalendar } from "./SingleDateCalendar";
+import { OnClickWeek, RenderWeekNumber } from "./types/CalendarTypes";
+import { WeekData } from "./util/CalendarDataFactory";
+import { setDayStateValue } from "./util/StateModifier";
 
 interface State {
   value?: Date;
@@ -149,7 +148,11 @@ storiesOf("calendar/Calendar/SingleDateCalendar", module)
             background={
               week.startYear === now.getFullYear() &&
               week.weekNumber === getISOWeek(now) ? (
-                <FontAwesomeIcon icon={faCoffee} color={"blue"} style={{fontSize:30}} />
+                <FontAwesomeIcon
+                  icon={faCoffee}
+                  color={"blue"}
+                  style={{ fontSize: 30 }}
+                />
               ) : (
                 undefined
               )
@@ -176,7 +179,7 @@ storiesOf("calendar/Calendar/SingleDateCalendar", module)
         onChange={value => store.set({ value })}
         value={store.state.value}
         extraDayContent={() => (
-          <Box position={'absolute'} top={"-10px"} right={"-10px"}>
+          <Box position={"absolute"} top={"-10px"} right={"-10px"}>
             <FontAwesomeIcon icon={faCoffee} />
           </Box>
         )}

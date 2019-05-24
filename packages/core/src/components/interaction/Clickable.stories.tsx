@@ -1,11 +1,9 @@
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { StandardText } from "../text/variants/StandardText";
 import { Clickable } from "./Clickable";
 
 storiesOf("core/Interaction/Clickable", module)
-  .addDecorator(withInfo())
   .add("default", () => (
     <Clickable onClick={() => alert("Clicked!")}>
       <StandardText>Click me!</StandardText>
