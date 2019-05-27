@@ -26,8 +26,8 @@ export interface SelectTheme {
     disabledBackgroundColor: string;
     fontFamily: string;
     fontSize: string;
-    height: string;
-    minHeight: string;
+    height?: string;
+    minHeight?: string;
     placeholderColor: string;
     textColor: string;
   };
@@ -84,8 +84,6 @@ export const defaultSelectTheme: SelectTheme = {
     disabledBackgroundColor: defaultTheme.colors.disabledBackground,
     fontFamily: defaultTheme.fonts.primary,
     fontSize: defaultTheme.fontSizes.normal,
-    height: "34px",
-    minHeight: "34px",
     placeholderColor: defaultTheme.colors.separator,
     textColor: defaultTheme.colors.primaryText,
     borderRadius: "4px"

@@ -79,6 +79,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
   }),
   clearIndicator: base => ({
     ...base,
+    padding: '6px',
     color: selectTheme.clearButtonColor.standard,
     "&:hover": {
       color: selectTheme.clearButtonColor.hover
@@ -95,6 +96,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
   }),
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
+    padding: '6px',
     color: isFocused
       ? selectTheme.arrowColor.focused.standard
       : selectTheme.arrowColor.closed.standard,
