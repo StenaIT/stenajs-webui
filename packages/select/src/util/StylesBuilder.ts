@@ -1,7 +1,9 @@
-import { StylesConfig } from 'react-select/lib/styles';
-import { SelectTheme } from '../SelectTheme';
+import { StylesConfig } from "react-select/lib/styles";
+import { SelectTheme } from "../SelectTheme";
 
-export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig => ({
+export const createStylesFromTheme = (
+  selectTheme: SelectTheme
+): StylesConfig => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
     fontFamily: selectTheme.input.fontFamily,
@@ -9,17 +11,17 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
     backgroundColor: isDisabled
       ? selectTheme.menu.disabledBackgroundColor
       : isSelected
-        ? selectTheme.menu.selectedItemBackgroundColor
-        : isFocused
-          ? selectTheme.menu.hoverBackgroundColor
-          : undefined,
+      ? selectTheme.menu.selectedItemBackgroundColor
+      : isFocused
+      ? selectTheme.menu.hoverBackgroundColor
+      : undefined,
     color: isDisabled
       ? selectTheme.menu.disabledTextColor
       : isSelected
-        ? selectTheme.menu.selectedItemTextColor
-        : isFocused
-          ? selectTheme.menu.hoverTextColor
-          : undefined,
+      ? selectTheme.menu.selectedItemTextColor
+      : isFocused
+      ? selectTheme.menu.hoverTextColor
+      : undefined,
     cursor: isDisabled ? "not-allowed" : "default",
     whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace
   }),
@@ -69,6 +71,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
   }),
   multiValueLabel: base => ({
     ...base,
+    paddingTop: "2px",
     fontFamily: selectTheme.input.fontFamily,
     fontSize: selectTheme.input.fontSize,
     backgroundColor: selectTheme.multiSelect.backgroundColor
@@ -79,7 +82,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
   }),
   clearIndicator: base => ({
     ...base,
-    padding: '6px',
+    padding: "6px",
     color: selectTheme.clearButtonColor.standard,
     "&:hover": {
       color: selectTheme.clearButtonColor.hover
@@ -96,7 +99,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
   }),
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
-    padding: '6px',
+    padding: "6px",
     color: isFocused
       ? selectTheme.arrowColor.focused.standard
       : selectTheme.arrowColor.closed.standard,
@@ -118,7 +121,7 @@ export const createStylesFromTheme = (selectTheme: SelectTheme): StylesConfig =>
     ...base,
     zIndex: selectTheme.menuPortal.zIndex
   }),
-  multiValueRemove: (styles) => ({
+  multiValueRemove: styles => ({
     ...styles,
     margin: "3px",
     color: selectTheme.multiSelect.removeButtonTextColor,
