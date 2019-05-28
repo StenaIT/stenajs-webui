@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "clean": "rm -rf dist",
-    "prepare": "yarn run build",
+    "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
