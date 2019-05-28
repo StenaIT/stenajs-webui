@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "clean": "rm -rf dist",
-    "prepare": "yarn run build",
+    "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
@@ -30,7 +30,7 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
-    "@stenajs-webui/core": "0.0.1",
+    "@stenajs-webui/core": "0.0.7",
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
     "@types/styled-system": ">=4.1.0",
