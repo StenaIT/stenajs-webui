@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { BackgroundProperty, BoxShadowProperty } from "csstype";
+import { BackgroundProperty, BorderProperty, BoxShadowProperty } from "csstype";
 import * as React from "react";
 import {
   alignItems,
@@ -102,12 +102,35 @@ type DivProps = JSX.IntrinsicElements["div"];
 
 export interface BoxProps extends StyledSystemProps, DivProps {
   innerRef?: React.Ref<HTMLDivElement>;
+  /**
+   * If true, children are placed in a row.
+   */
   row?: boolean;
+  /**
+   * Adds spacing over and under content.
+   */
   spacing?: boolean | number;
+  /**
+   * Adds spacing left and right of content.
+   */
   indent?: boolean | number;
   style?: React.CSSProperties;
+  /**
+   * Adds a shadow around the box.
+   */
   shadow?: ShadowType | BoxShadowProperty;
+  /**
+   * Sets the background of the box.
+   */
   background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the background of the box when hovering with mouse.
+   */
+  hoverBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box when hovering with mouse.
+   */
+  hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
 }
 
 const FlexBox = styled.div<
@@ -147,6 +170,10 @@ const FlexBox = styled.div<
   ${right}
   ${top}
   ${bottom}
+  :hover {
+    background: ${({ hoverBackground }) => hoverBackground};
+    border: ${({ hoverBorder }) => hoverBorder};
+  }
 `;
 
 export const Box: React.FC<BoxProps> = ({

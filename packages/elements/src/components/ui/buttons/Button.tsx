@@ -11,10 +11,19 @@ import {
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
+import { ThemeColorField } from "../../../../../core/src/theme/theme-types/ThemeColors";
 import { Progress } from "../progress/Progress";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
 
 export interface ButtonProps {
+  /**
+   * The text color of the label. Also applied to leftIcon and rightIcon.
+   * @default The color specified in the theme.
+   * */
+  textColor?: ThemeColorField | string;
+  /** The theme to use.
+   * @default defaultButtonTheme
+   */
   buttonTheme?: ButtonTheme;
   /** The text on the button. */
   label?: string;
@@ -61,6 +70,7 @@ const ButtonText = styled.span<ButtonTextProps>`
 
 export const Button: React.FC<ButtonProps> = ({
   onClick,
+  textColor,
   label,
   left,
   right,
@@ -78,7 +88,7 @@ export const Button: React.FC<ButtonProps> = ({
   const { colors, fonts, fontSizes } = useThemeFields(
     {
       colors: {
-        textColor: buttonTheme.textColor,
+        textColor: textColor || buttonTheme.textColor,
         textColorDisabled: buttonTheme.textColorDisabled,
         bgColor: buttonTheme.bgColor,
         bgColorDisabled: buttonTheme.bgColorDisabled,
@@ -92,7 +102,7 @@ export const Button: React.FC<ButtonProps> = ({
         font: buttonTheme.font
       }
     },
-    [buttonTheme]
+    [buttonTheme, textColor]
   );
 
   const showUserButton = !loading && !success;
