@@ -1,7 +1,6 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { FlatButton } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 

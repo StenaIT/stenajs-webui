@@ -1,5 +1,4 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { withInfo } from "@storybook/addon-info";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -45,11 +44,10 @@ storiesOf("forms/Checkbox", module)
     return <Checkbox value={knobs.boolean("Checked", false)} theme={theme} />;
   });
 
-storiesOf("forms/Checkbox/CheckboxWithLabel", module)
-  .add("standard", () => (
-    <CheckboxWithLabel
-      label={"Add cake"}
-      value={knobs.boolean("Checked", false)}
-      disabled={knobs.boolean("Disabled", false)}
-    />
-  ));
+storiesOf("forms/Checkbox/CheckboxWithLabel", module).add("standard", () => (
+  <CheckboxWithLabel
+    label={"Add cake"}
+    value={knobs.boolean("Checked", false)}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+));

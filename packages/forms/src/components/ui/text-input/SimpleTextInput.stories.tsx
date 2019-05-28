@@ -1,7 +1,6 @@
-import { withInfo } from "@storybook/addon-info";
+import { SimpleTextInput } from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { SimpleTextInput } from "@stenajs-webui/forms";
 
 storiesOf("forms/TextInput/SimpleTextInput", module)
   .add("standard", () => <SimpleTextInput value={"some entered text"} />)

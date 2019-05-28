@@ -1,4 +1,3 @@
-import { withInfo } from "@storybook/addon-info";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -28,11 +27,10 @@ storiesOf("forms/Switch", module)
     <Switch value={knobs.boolean("Toggled", false)} disabled />
   ));
 
-storiesOf("forms/Switch/SwitchWithLabel", module)
-  .add("standard", () => (
-    <SwitchWithLabel
-      label={knobs.text("Label", "Enable something")}
-      value={knobs.boolean("Toggled", false)}
-      disabled={knobs.boolean("Disabled", false)}
-    />
-  ));
+storiesOf("forms/Switch/SwitchWithLabel", module).add("standard", () => (
+  <SwitchWithLabel
+    label={knobs.text("Label", "Enable something")}
+    value={knobs.boolean("Toggled", false)}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+));

@@ -1,5 +1,4 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { selectThemeDark } from "../../SelectTheme";

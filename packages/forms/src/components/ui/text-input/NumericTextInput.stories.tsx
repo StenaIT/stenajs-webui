@@ -1,7 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Box, StandardText } from "@stenajs-webui/core";
-import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { NumericTextInput } from "./NumericTextInput";

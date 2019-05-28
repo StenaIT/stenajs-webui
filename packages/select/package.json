@@ -34,6 +34,7 @@
     "recompose": "^0.30.0"
   },
   "peerDependencies": {
+    "@stenajs-webui/core": "0.0.7",
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
     "prop-types": ">=15.5.4",
