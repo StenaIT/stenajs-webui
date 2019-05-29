@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/select",
-  "version": "0.0.7",
+  "version": "0.0.10",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -21,12 +21,12 @@
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
+    "clean": "rm -rf dist",
     "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.124",
     "@types/react-select": "^2.0.17",
     "@types/recompose": "^0.30.6",
     "react-select": "^2.4.3",
@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "@stenajs-webui/core": "0.0.10",
-    "@types/lodash": ">=4.14.124",
+    "@types/lodash-es": ">=4.17.3",
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
     "lodash-es": ">=4.17.11",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
-    "@types/lodash": "^4.14.124",
+    "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "lodash-es": "^4.17.11",
