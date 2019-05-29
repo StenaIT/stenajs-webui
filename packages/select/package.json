@@ -29,14 +29,15 @@
     "@types/lodash": "^4.14.124",
     "@types/react-select": "^2.0.17",
     "@types/recompose": "^0.30.6",
-    "lodash-es": "^4.17.11",
     "react-select": "^2.4.3",
     "recompose": "^0.30.0"
   },
   "peerDependencies": {
     "@stenajs-webui/core": "0.0.7",
+    "@types/lodash": "^4.14.124",
     "@types/react": ">=16.8.18",
     "@types/react-dom": ">=16.8.4",
+    "lodash-es": "^4.17.11",
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
