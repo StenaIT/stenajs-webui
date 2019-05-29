@@ -30,8 +30,8 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
-    "@stenajs-webui/core": "0.0.9",
-    "@types/react": ">=16.8.18",
+    "@stenajs-webui/core": "0.0.10",
+    "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
     "@types/styled-system": ">=4.1.0",
     "react": ">=16.8.6",
@@ -39,12 +39,16 @@
     "styled-system": ">=4.1.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/jest": "^23.1.5",
-    "@types/react": "^16.3.13",
-    "@types/react-dom": "^16.0.5",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
     "@types/styled-system": "^4.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-system": "^4.1.0"
   },
   "files": [
     "dist"

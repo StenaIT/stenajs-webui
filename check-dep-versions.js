@@ -44,11 +44,11 @@ const getInvalidDepVersion = (packages, depsType) => {
           dep: e.message,
           packageA: {
             name: packages[i].name,
-            depVersion: packages[i].peerDependencies[e.message]
+            depVersion: packages[i][depsType][e.message]
           },
           packageB: {
             name: packages[j].name,
-            depVersion: packages[j].peerDependencies[e.message]
+            depVersion: packages[j][depsType][e.message]
           }
         });
       }
@@ -77,7 +77,69 @@ const ensureKeysAreSameOrUndefined = (obj, containsSame) => {
   }
 };
 
+const getInvalidDevDeps = packages => {
+  let success = true;
+  packages.forEach(packageJson => {
+    try {
+      ensureDevDepsIncludesAllPeerDeps(packageJson);
+    } catch (e) {
+      console.error(packageJson.name + ": " + e.message);
+      success = false;
+    }
+  });
+  return success;
+};
+
+const ensureDevDepsIncludesAllPeerDeps = packageJson => {
+  const peerDepKeys = Object.keys(packageJson.peerDependencies);
+  for (let i = 0; i < peerDepKeys.length; i++) {
+    const peerDepKey = peerDepKeys[i];
+    if (peerDepKey.startsWith("@stenajs-webui")) {
+      continue;
+    }
+    if (!packageJson.devDependencies[peerDepKey]) {
+      throw new Error("Missing devDependency: " + peerDepKey);
+    }
+
+    if (!packageJson.devDependencies[peerDepKey].startsWith("^")) {
+      throw new Error("devDependency does not start with ^");
+    }
+    if (!packageJson.peerDependencies[peerDepKey].startsWith(">=")) {
+      throw new Error("peerDependency does not start with >=");
+    }
+
+    const devVersion = reduceToVersion(packageJson.devDependencies[peerDepKey]);
+    const peerVersion = reduceToVersion(
+      packageJson.peerDependencies[peerDepKey]
+    );
+
+    if (devVersion !== peerVersion) {
+      throw new Error(
+        "devDependency mismatch: " +
+          peerDepKey +
+          " " +
+          devVersion +
+          " vs " +
+          peerVersion
+      );
+    }
+  }
+};
+
+const reduceToVersion = dep => {
+  const chars = [];
+  for (let i = 0; i < dep.length; i++) {
+    const ch = dep[i];
+    const parsed = parseInt(ch);
+    if (ch === "." || (typeof parsed === "number" && !isNaN(parsed))) {
+      chars.push(ch);
+    }
+  }
+  return chars.join("");
+};
+
 getPackageJsons().then(packages => {
+  let success = true;
   const errors = [
     ...getInvalidDepVersion(packages, "peerDependencies"),
     ...getInvalidDepVersion(packages, "dependencies"),
@@ -97,8 +159,18 @@ getPackageJsons().then(packages => {
         } ${error.packageB.name} is @${error.packageB.depVersion}`
       );
     });
-    process.exit(1);
-  } else {
+    success = false;
+  }
+
+  const invalidDevDeps = getInvalidDevDeps(packages);
+
+  if (!invalidDevDeps) {
+    success = false;
+  }
+
+  if (success) {
     console.log("Everything OK!");
+  } else {
+    process.exit(1);
   }
 });
