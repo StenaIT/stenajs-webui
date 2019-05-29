@@ -1,17 +1,18 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { ThemeColorField } from '../../../../../core/src/theme/theme-types/ThemeColors';
 
 export interface CheckboxTheme {
-  borderColor: string;
-  borderColorDisabled: string;
-  borderColorFocused: string;
-  borderColorChecked: string;
-  backgroundColor: string;
-  backgroundColorDisabled: string;
-  backgroundColorChecked: string;
-  iconColor: string;
-  iconColorDisabled: string;
-  iconColorChecked: string;
+  borderColor: ThemeColorField | string;
+  borderColorDisabled: ThemeColorField | string;
+  borderColorFocused: ThemeColorField | string;
+  borderColorChecked: ThemeColorField | string;
+  backgroundColor: ThemeColorField | string;
+  backgroundColorDisabled: ThemeColorField | string;
+  backgroundColorChecked: ThemeColorField | string;
+  iconColor: ThemeColorField | string;
+  iconColorDisabled: ThemeColorField | string;
+  iconColorChecked: ThemeColorField | string;
   checkIcon: IconProp;
   width: string;
   height: string;
