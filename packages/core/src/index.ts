@@ -7,7 +7,6 @@ export * from "./theme/theme-types/ThemeFontWeights";
 export * from "./theme/theme-types/ThemeMetrics";
 export * from "./theme/theme-types/ThemeShadows";
 
-export * from "./components/decorators/border/Border";
 export * from "./components/decorators/separatorline/SeparatorLine";
 
 export * from "./components/interaction/Clickable";

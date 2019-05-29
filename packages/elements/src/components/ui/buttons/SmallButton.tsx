@@ -7,7 +7,7 @@ export const SmallButton: React.FC<ButtonProps> = ({
   ...buttonProps
 }) => <Button buttonTheme={buttonTheme} {...buttonProps} />;
 
-const defaultSmallButtonTheme: ButtonTheme = {
+export const defaultSmallButtonTheme: ButtonTheme = {
   ...defaultButtonTheme,
   height: "28px",
   borderRadius: "3px"
