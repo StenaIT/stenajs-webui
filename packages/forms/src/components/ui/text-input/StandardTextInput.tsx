@@ -113,7 +113,7 @@ const TextInputIcon: React.FC<TextInputIconProps> = ({
   }
 
   const iconNode = icon && (
-    <Icon name={icon} color={iconColor} size={iconSize || theme.iconSize} />
+    <Icon icon={icon} color={iconColor} size={iconSize || theme.iconSize} />
   );
 
   return (

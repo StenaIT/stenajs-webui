@@ -1,12 +1,11 @@
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
-import { useTheme } from "@stenajs-webui/core";
+import { Omit, useTheme } from "@stenajs-webui/core";
 import {
   StandardTextInput,
   StandardTextInputProps
 } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Omit } from "../../../../../core/src/types/Omit";
 import {
   formatTimeString,
   validUserInput

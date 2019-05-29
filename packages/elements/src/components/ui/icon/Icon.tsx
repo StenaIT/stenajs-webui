@@ -8,7 +8,7 @@ import * as React from "react";
 
 export interface IconProps
   extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
-  name: IconDefinition;
+  icon?: IconDefinition;
   color?: ThemeColorField | string;
   size?: number;
 }
@@ -17,7 +17,7 @@ export const Icon: React.FC<IconProps> = ({
   className,
   color = "primaryTextLight",
   flip,
-  name,
+  icon,
   pulse,
   rotation,
   size = 20,
@@ -34,12 +34,16 @@ export const Icon: React.FC<IconProps> = ({
     []
   );
 
+  if (!icon) {
+    return null;
+  }
+
   return (
     <FontAwesomeIcon
       className={className}
       color={colors.iconColor}
       flip={flip}
-      icon={name}
+      icon={icon}
       pulse={pulse}
       rotation={rotation}
       spin={spin}

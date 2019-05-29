@@ -1,7 +1,7 @@
 import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
-import { ThemeColorField } from "../../../../../core/src/theme/theme-types/ThemeColors";
+import { ThemeColorField } from "@stenajs-webui/core";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
 import { defaultRadioButtonTheme } from "./RadioButtonTheme";
 

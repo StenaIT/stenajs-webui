@@ -11,7 +11,7 @@ import {
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
-import { ThemeColorField } from "../../../../../core/src/theme/theme-types/ThemeColors";
+import { ThemeColorField } from "@stenajs-webui/core";
 import { Progress } from "../progress/Progress";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
 

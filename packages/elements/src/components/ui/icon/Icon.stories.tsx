@@ -10,20 +10,20 @@ import * as React from "react";
 import { Icon } from "./Icon";
 
 storiesOf("elements/Icon", module)
-  .add("default", () => <Icon name={faCog} />)
-  .add("with color", () => <Icon name={faCog} color={"#abcdef"} />)
-  .add("with spin", () => <Icon name={faSpinner} spin={true} />)
-  .add("with pulse", () => <Icon name={faSpinner} pulse={true} />)
+  .add("default", () => <Icon icon={faCog} />)
+  .add("with color", () => <Icon icon={faCog} color={"#abcdef"} />)
+  .add("with spin", () => <Icon icon={faSpinner} spin={true} />)
+  .add("with pulse", () => <Icon icon={faSpinner} pulse={true} />)
   .add("horizontal flip", () => (
     <>
       <Row>
         <StandardText>Normal</StandardText>
         <Space />
-        <Icon name={faBicycle} />
+        <Icon icon={faBicycle} />
       </Row>
       <Row>
         <StandardText>Flipped</StandardText> <Space />
-        <Icon name={faBicycle} flip={"horizontal"} />
+        <Icon icon={faBicycle} flip={"horizontal"} />
       </Row>
     </>
   ))
@@ -32,11 +32,11 @@ storiesOf("elements/Icon", module)
       <Row>
         <StandardText>Normal</StandardText>
         <Space />
-        <Icon name={faBicycle} />
+        <Icon icon={faBicycle} />
       </Row>
       <Row>
         <StandardText>Flipped</StandardText> <Space />
-        <Icon name={faBicycle} flip={"vertical"} />
+        <Icon icon={faBicycle} flip={"vertical"} />
       </Row>
     </>
   ))
@@ -45,18 +45,18 @@ storiesOf("elements/Icon", module)
       <Indent>
         <StandardText>90</StandardText>
         <Space />
-        <Icon name={faShip} rotation={90} />
+        <Icon icon={faShip} rotation={90} />
       </Indent>
       <Indent>
         <StandardText>180</StandardText> <Space />
-        <Icon name={faShip} rotation={180} />
+        <Icon icon={faShip} rotation={180} />
       </Indent>
       <Indent>
         <StandardText>270</StandardText> <Space />
-        <Icon name={faShip} rotation={270} />
+        <Icon icon={faShip} rotation={270} />
       </Indent>
     </Row>
   ))
   .add("with transform", () => (
-    <Icon name={faBicycle} transform={{ flipX: true, rotate: 90 }} />
+    <Icon icon={faBicycle} transform={{ flipX: true, rotate: 90 }} />
   ));
