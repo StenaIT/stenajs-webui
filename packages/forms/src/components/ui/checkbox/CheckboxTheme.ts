@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { ThemeColorField } from '../../../../../core/src/theme/theme-types/ThemeColors';
+import { ThemeColorField } from "@stenajs-webui/core";
 
 export interface CheckboxTheme {
   borderColor: ThemeColorField | string;

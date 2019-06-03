@@ -20,7 +20,6 @@ import {
   withHandlers,
   withState
 } from "recompose";
-import { Border } from "@stenajs-webui/core";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   CalendarTheme,
@@ -163,7 +162,7 @@ const DateRangeInputComponent = ({
       {showingCalendar && (
         <Relative>
           <Absolute zIndex={zIndex} innerRef={ref}>
-            <Border
+            <Box
               background={colors.backgroundColor}
               borderColor={colors.borderColor}
               indent
@@ -184,7 +183,7 @@ const DateRangeInputComponent = ({
                 setFocusedInput={setFocusedInput}
                 theme={calendarTheme}
               />
-            </Border>
+            </Box>
           </Absolute>
         </Relative>
       )}

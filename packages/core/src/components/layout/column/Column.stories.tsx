@@ -1,7 +1,8 @@
-import { Border, Column, Space } from "@stenajs-webui/core";
+import { Column, Space } from "@stenajs-webui/core";
 import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { Box } from "../box/Box";
 
 storiesOf("core/Layout/Column", module)
   .addDecorator(withInfo({ propTables: false }))
@@ -36,7 +37,7 @@ storiesOf("core/Layout/Column", module)
   ))
   .add("with justifyContent=flex-start", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column justifyContent={"flex-start"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -62,12 +63,12 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ))
   .add("with justifyContent=center", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column justifyContent={"center"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -93,12 +94,12 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ))
   .add("with justifyContent=flex-end", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column justifyContent={"flex-end"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -124,12 +125,12 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ))
   .add("with alignItems=flex-start", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column alignItems={"flex-start"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -155,12 +156,12 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ))
   .add("with alignItems=center", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column alignItems={"center"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -186,12 +187,12 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ))
   .add("with alignItems=flex-end", () => (
     <div style={{ display: "table" }}>
-      <Border>
+      <Box borderWidth={"1px"} borderColor={"primaryText"}>
         <Column alignItems={"flex-end"} width={"150px"} height={"150px"}>
           <div
             style={{
@@ -217,6 +218,6 @@ storiesOf("core/Layout/Column", module)
             }}
           />
         </Column>
-      </Border>
+      </Box>
     </div>
   ));

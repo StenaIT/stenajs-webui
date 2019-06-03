@@ -94,18 +94,25 @@ const ensureDevDepsIncludesAllPeerDeps = packageJson => {
   const peerDepKeys = Object.keys(packageJson.peerDependencies);
   for (let i = 0; i < peerDepKeys.length; i++) {
     const peerDepKey = peerDepKeys[i];
-    if (peerDepKey.startsWith("@stenajs-webui")) {
-      continue;
-    }
+    const isWebUiDep = peerDepKey.startsWith("@stenajs-webui");
     if (!packageJson.devDependencies[peerDepKey]) {
       throw new Error("Missing devDependency: " + peerDepKey);
     }
 
-    if (!packageJson.devDependencies[peerDepKey].startsWith("^")) {
-      throw new Error("devDependency does not start with ^");
-    }
-    if (!packageJson.peerDependencies[peerDepKey].startsWith(">=")) {
-      throw new Error("peerDependency does not start with >=");
+    if (isWebUiDep) {
+      if (packageJson.devDependencies[peerDepKey].startsWith("^")) {
+        throw new Error("stenajs-webui devDependency must not start with ^");
+      }
+      if (packageJson.devDependencies[peerDepKey].startsWith(">")) {
+        throw new Error("stenajs-webui devDependency must not start with >");
+      }
+    } else {
+      if (!packageJson.devDependencies[peerDepKey].startsWith("^")) {
+        throw new Error("devDependency does not start with ^");
+      }
+      if (!packageJson.peerDependencies[peerDepKey].startsWith(">=")) {
+        throw new Error("peerDependency does not start with >=");
+      }
     }
 
     const devVersion = reduceToVersion(packageJson.devDependencies[peerDepKey]);

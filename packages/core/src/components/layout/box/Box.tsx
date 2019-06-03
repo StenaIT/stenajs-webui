@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
-import { BackgroundProperty, BorderProperty, BoxShadowProperty } from "csstype";
+import {
+  BackgroundProperty,
+  BorderColorProperty,
+  BorderProperty,
+  BoxShadowProperty
+} from "csstype";
 import * as React from "react";
 import {
   alignItems,
@@ -10,10 +15,8 @@ import {
   borderBottom,
   BorderBottomProps,
   borderColor,
-  BorderColorProps,
   borderLeft,
   BorderLeftProps,
-  BorderProps,
   borderRadius,
   BorderRadiusProps,
   borderRight,
@@ -67,8 +70,6 @@ import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
-  BorderProps &
-  BorderColorProps &
   BorderRadiusProps &
   BorderStyleProps &
   BorderWidthProps &
@@ -123,6 +124,14 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    * Sets the background of the box.
    */
   background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box.
+   */
+  border?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border color of the box.
+   */
+  borderColor?: ThemeColorField | BorderColorProperty;
   /**
    * Sets the background of the box when hovering with mouse.
    */
@@ -180,6 +189,8 @@ export const Box: React.FC<BoxProps> = ({
   innerRef,
   shadow,
   background,
+  border,
+  borderColor,
   ...props
 }) => {
   const boxProps = useThemeSelector(
@@ -187,9 +198,11 @@ export const Box: React.FC<BoxProps> = ({
       boxShadow: (shadow && shadows[shadow]) || shadow,
       background: (background && colors[background]) || background,
       themeSpacing: metrics.spacing,
-      themeIndent: metrics.indent
+      themeIndent: metrics.indent,
+      border: (border && colors[border]) || border,
+      borderColor: (borderColor && colors[borderColor]) || borderColor
     }),
-    [shadow, background]
+    [shadow, background, border, borderColor]
   );
   return <FlexBox ref={innerRef} {...boxProps} {...props} />;
 };

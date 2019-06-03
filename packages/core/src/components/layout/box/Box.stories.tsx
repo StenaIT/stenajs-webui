@@ -2,6 +2,7 @@ import { color, number, select } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { defaultTheme } from "../../../theme/DefaultTheme";
+import { StandardText } from "../../text/variants/StandardText";
 
 import { Box } from "./Box";
 import markdown from "./Box.md";
@@ -82,17 +83,51 @@ storiesOf("core/Layout/Box", module)
       <div>world</div>
     </Box>
   ))
+  .add("border", () => (
+    <div style={{ display: "inline-block" }}>
+      <Box
+        borderWidth={number("Width", 1, { range: true, min: 0, max: 10, step: 1 })}
+        borderColor={select(
+          "Color",
+          Object.keys(defaultTheme.colors),
+          "primaryBg"
+        )}
+        borderStyle={select(
+          "Style",
+          ["solid", "dashed", "dotted", "double", "groove", "ridge"],
+          "solid"
+        )}
+        indent
+        spacing
+      >
+        <div>hello</div>
+        <div>world</div>
+      </Box>
+    </div>
+  ))
+  .add("custom border", () => (
+    <div style={{ display: "inline-block" }}>
+      <Box border={"1px solid #676767"} indent spacing>
+        <div>hello</div>
+        <div>world</div>
+      </Box>
+    </div>
+  ))
   .add("box shadow", () => (
-    <Box shadow={"box"} indent spacing>
-      <div>hello</div>
-      <div>world</div>
-    </Box>
+    <div style={{ display: "inline-block" }}>
+      <Box shadow={"box"} indent spacing>
+        <StandardText>
+          This shadow is primarily used for cards, not modals.
+        </StandardText>
+      </Box>
+    </div>
   ))
   .add("modal shadow", () => (
-    <Box shadow={"modal"} indent spacing>
-      <div>hello</div>
-      <div>world</div>
-    </Box>
+    <div style={{ display: "inline-block" }}>
+      <Box shadow={"modal"} indent spacing>
+        <StandardText>This shadow is primarily used for modals.</StandardText>
+      </Box>
+    </div>
   ))
   .add("custom shadow", () => (
     <Box

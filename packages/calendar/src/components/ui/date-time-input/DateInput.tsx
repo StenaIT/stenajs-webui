@@ -1,7 +1,7 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
   Absolute,
-  Border,
+  Box,
   Relative,
   useOnClickOutside,
   useThemeFields
@@ -116,7 +116,7 @@ const DateInputComponent: React.FC<InnerProps> = ({
       {showingCalendar && (
         <Relative>
           <Absolute zIndex={zIndex} innerRef={ref}>
-            <Border
+            <Box
               background={colors.backgroundColor}
               borderColor={colors.borderColor}
               indent
@@ -127,7 +127,7 @@ const DateInputComponent: React.FC<InnerProps> = ({
                 value={value}
                 theme={calendarTheme}
               />
-            </Border>
+            </Box>
           </Absolute>
         </Relative>
       )}

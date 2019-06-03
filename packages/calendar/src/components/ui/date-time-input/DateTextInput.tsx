@@ -1,7 +1,7 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
   Absolute,
-  Border,
+  Box,
   Omit,
   Relative,
   useOnClickOutside,
@@ -134,7 +134,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
       {open && (
         <Relative>
           <Absolute zIndex={zIndex} innerRef={ref}>
-            <Border
+            <Box
               borderColor={colors.borderColor}
               background={colors.backgroundColor}
               indent
@@ -150,7 +150,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 }
                 theme={calendarTheme}
               />
-            </Border>
+            </Box>
           </Absolute>
         </Relative>
       )}

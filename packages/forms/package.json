@@ -57,6 +57,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@stenajs-webui/core": "0.0.11",
+    "@stenajs-webui/elements": "0.0.11",
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.1.5",
     "@types/lodash-es": "^4.17.3",
