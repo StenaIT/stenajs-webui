@@ -3,7 +3,8 @@ import {
   BackgroundProperty,
   BorderColorProperty,
   BorderProperty,
-  BoxShadowProperty
+  BoxShadowProperty,
+  ColorProperty
 } from "csstype";
 import * as React from "react";
 import {
@@ -104,6 +105,10 @@ type DivProps = JSX.IntrinsicElements["div"];
 export interface BoxProps extends StyledSystemProps, DivProps {
   innerRef?: React.Ref<HTMLDivElement>;
   /**
+   * Sets the text color of the box.
+   */
+  color?: ThemeColorField | ColorProperty;
+  /**
    * If true, children are placed in a row.
    */
   row?: boolean;
@@ -160,6 +165,7 @@ const FlexBox = styled.div<
   ${borderStyle};
   ${borderWidth};
   ${boxShadow};
+  ${({ color }) => (color ? `color: ${color};` : "")}
   ${flex};
   flex-direction: ${props =>
     (props.row && "row") || props.flexDirection || "column"};
@@ -191,6 +197,7 @@ export const Box: React.FC<BoxProps> = ({
   background,
   border,
   borderColor,
+  color,
   ...props
 }) => {
   const boxProps = useThemeSelector(
@@ -199,10 +206,11 @@ export const Box: React.FC<BoxProps> = ({
       background: (background && colors[background]) || background,
       themeSpacing: metrics.spacing,
       themeIndent: metrics.indent,
+      color: (color && colors[color]) || color,
       border: (border && colors[border]) || border,
       borderColor: (borderColor && colors[borderColor]) || borderColor
     }),
-    [shadow, background, border, borderColor]
+    [shadow, background, border, borderColor, color]
   );
   return <FlexBox ref={innerRef} {...boxProps} {...props} />;
 };
