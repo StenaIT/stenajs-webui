@@ -1,23 +1,22 @@
-import { defaultDateInputTheme } from "@stenajs-webui/calendar";
+import { DateInputTheme, defaultDateInputTheme } from "@stenajs-webui/calendar";
 import {
+  ButtonTheme,
   defaultFlatButtonTheme,
   defaultSmallButtonTheme,
   defaultStandardButtonTheme
 } from "@stenajs-webui/elements";
 import {
+  CheckboxTheme,
   defaultCheckboxTheme,
   defaultNumericTextInputTheme,
   defaultRadioButtonTheme,
   defaultStandardTextInputTheme,
-  defaultSwitchTheme
+  defaultSwitchTheme,
+  NumericTextInputTheme,
+  RadioButtonTheme,
+  StandardTextInputTheme,
+  SwitchTheme
 } from "@stenajs-webui/forms";
-import { DateInputTheme } from "../../../../calendar/src/components/ui/date-time-input/DateInputTheme";
-import { ButtonTheme } from "../../../../elements/src/components/ui/buttons/ButtonTheme";
-import { CheckboxTheme } from "../../../../forms/src/components/ui/checkbox/CheckboxTheme";
-import { RadioButtonTheme } from "../../../../forms/src/components/ui/radio/RadioButtonTheme";
-import { SwitchTheme } from "../../../../forms/src/components/ui/switch/SwitchTheme";
-import { NumericTextInputTheme } from "../../../../forms/src/components/ui/text-input/NumericTextInputTheme";
-import { StandardTextInputTheme } from "../../../../forms/src/components/ui/text-input/StandardTextInputTheme";
 
 const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
   overridingThemeOrFunc: Partial<TTheme> | ThemeFactoryFunc<TTheme>
