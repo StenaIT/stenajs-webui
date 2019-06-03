@@ -16,10 +16,12 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   )
   .add(
@@ -27,13 +29,15 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
-        <NumericTextInput
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-          theme={defaultNumericTextInputThemeDark}
-        />
-      </Box>
+      <div style={{ display: "inline-block" }}>
+        <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
+          <NumericTextInput
+            value={store.state.value}
+            onValueChange={value => store.set({ value })}
+            theme={defaultNumericTextInputThemeDark}
+          />
+        </Box>
+      </div>
     ))
   )
   .add(
@@ -41,11 +45,13 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        disabled
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          disabled
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   )
   .add(
@@ -53,11 +59,13 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        hideButtons
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          hideButtons
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   )
   .add(
@@ -65,13 +73,15 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        iconLeft={faCoffee}
-        value={store.state.value}
-        min={1}
-        max={8}
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          iconLeft={faCoffee}
+          value={store.state.value}
+          min={1}
+          max={8}
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   )
   .add(
@@ -79,17 +89,19 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        value={store.state.value}
-        min={1}
-        max={8}
-        contentRight={
-          <div style={{ color: "grey" }}>
-            <StandardText>sec</StandardText>
-          </div>
-        }
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          value={store.state.value}
+          min={1}
+          max={8}
+          contentRight={
+            <div style={{ color: "grey" }}>
+              <StandardText>sec</StandardText>
+            </div>
+          }
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   )
   .add(
@@ -97,11 +109,13 @@ storiesOf("forms/TextInput/NumericTextInput", module)
     withState<State>({
       value: 5
     })(({ store }: { store: Store<State> }) => (
-      <NumericTextInput
-        min={3}
-        max={8}
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
+      <div style={{ display: "inline-block" }}>
+        <NumericTextInput
+          min={3}
+          max={8}
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+      </div>
     ))
   );

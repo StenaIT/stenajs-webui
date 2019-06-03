@@ -21,7 +21,7 @@ interface NumericTextInputProps
 }
 
 export const NumericTextInput: React.FC<NumericTextInputProps> = ({
-  value = 0,
+  value,
   onValueChange,
   max,
   min,
@@ -33,14 +33,14 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
 }) => {
   const onClickDown = useCallback(() => {
     if (onValueChange) {
-      const newValue = value - step;
+      const newValue = (value || 0) - step;
       onValueChange(min != null ? Math.max(min, newValue) : newValue);
     }
   }, [value, max, min, step, onValueChange]);
 
   const onClickUp = useCallback(() => {
     if (onValueChange) {
-      const newValue = value + step;
+      const newValue = (value || 0) + step;
       onValueChange(max != null ? Math.min(max, newValue) : newValue);
     }
   }, [value, max, min, step, onValueChange]);
@@ -48,7 +48,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   const onChangeHandler = useCallback(
     ev => {
       if (onValueChange) {
-        if (ev.target.value === "") {
+        if (!ev.target.value) {
           onValueChange(undefined);
         } else {
           const n = parseIntOrFloat(ev.target.value);
@@ -83,7 +83,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   return (
     <StandardTextInput
       contentRight={contentRightToUse}
-      value={String(value)}
+      value={value === undefined ? "" : String(value)}
       onChange={onChangeHandler}
       disableContentPaddingRight
       inputType={"number"}
