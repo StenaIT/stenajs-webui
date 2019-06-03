@@ -4,14 +4,19 @@ import * as React from "react";
 import { defaultTheme } from "../../../theme/DefaultTheme";
 
 import { Box } from "./Box";
+import markdown from "./Box.md";
 
 storiesOf("core/Layout/Box", module)
-  .add("standard", () => (
-    <Box>
-      <div>hello</div>
-      <div>world</div>
-    </Box>
-  ))
+  .add(
+    "standard",
+    () => (
+      <Box>
+        <div>hello</div>
+        <div>world</div>
+      </Box>
+    ),
+    { notes: { markdown } }
+  )
   .add("row", () => (
     <Box row>
       <div>hello</div>
