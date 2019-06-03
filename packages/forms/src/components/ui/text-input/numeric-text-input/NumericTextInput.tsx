@@ -3,14 +3,18 @@ import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import {
+  StandardTextInput,
+  StandardTextInputProps
+} from "../StandardTextInput";
+import {
   defaultNumericTextInputTheme,
   NumericTextInputTheme
 } from "./NumericTextInputTheme";
-import { StandardTextInput, StandardTextInputProps } from "./StandardTextInput";
+import { parseFloatElseUndefined } from './util/NumericTextInputUtil';
 
-interface NumericTextInputProps
+export interface NumericTextInputProps
   extends Omit<
-    StandardTextInputProps<number | undefined>,
+    StandardTextInputProps,
     "theme" | "onChange" // Omit onChange, since up down buttons don't generate HTMLInput event.
   > {
   max?: number;
@@ -31,34 +35,21 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   disabled,
   ...restProps
 }) => {
-  const onClickDown = useCallback(() => {
-    if (onValueChange) {
-      const newValue = (value || 0) - step;
-      onValueChange(min != null ? Math.max(min, newValue) : newValue);
-    }
-  }, [value, max, min, step, onValueChange]);
-
-  const onClickUp = useCallback(() => {
-    if (onValueChange) {
-      const newValue = (value || 0) + step;
-      onValueChange(max != null ? Math.min(max, newValue) : newValue);
-    }
-  }, [value, max, min, step, onValueChange]);
-
-  const onChangeHandler = useCallback(
-    ev => {
+  const onClick = useCallback(
+    (numSteps: number) => {
       if (onValueChange) {
-        if (!ev.target.value) {
-          onValueChange(undefined);
+        if (!value) {
+          onValueChange(String(numSteps));
         } else {
-          const n = parseIntOrFloat(ev.target.value);
-          if (n != null && !isNaN(n)) {
-            onValueChange(n);
-          }
+          const parsedValue = parseFloatElseUndefined(value);
+          const newValue = (parsedValue || 0) + numSteps;
+          onValueChange(
+            String(min != null ? Math.max(min, newValue) : newValue)
+          );
         }
       }
     },
-    [value, onValueChange, max, min, step]
+    [value, max, min, onValueChange]
   );
 
   const contentRightToUse = (
@@ -71,8 +62,8 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       )}
       <Box borderLeft={`1px solid ${theme.borderColor}`}>
         <UpDownButtons
-          onClickUp={disabled ? undefined : onClickUp}
-          onClickDown={disabled ? undefined : onClickDown}
+          onClickUp={disabled ? undefined : () => onClick(step)}
+          onClickDown={disabled ? undefined : () => onClick(-step)}
           buttonHeight={theme.buttonHeight}
           iconColor={theme.textColor}
         />
@@ -80,11 +71,12 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     </>
   );
 
+  console.log("value", value, typeof value);
   return (
     <StandardTextInput
       contentRight={contentRightToUse}
-      value={value === undefined ? "" : String(value)}
-      onChange={onChangeHandler}
+      value={value}
+      onValueChange={onValueChange}
       disableContentPaddingRight
       inputType={"number"}
       min={min}
@@ -95,8 +87,3 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   );
 };
 
-const parseIntOrFloat = (s: string): number =>
-  hasDecimal(s) ? parseFloat(s) : parseInt(s, 10);
-
-const hasDecimal = (s: string): boolean =>
-  s.indexOf(".") >= 0 || s.indexOf(",") >= 0;

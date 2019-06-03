@@ -3,21 +3,58 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Box, StandardText } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import {
+  NumericInputValueProps,
+  useNumericInputValue
+} from "./hooks/UseNumericInputValue";
 import { NumericTextInput } from "./NumericTextInput";
 import { defaultNumericTextInputThemeDark } from "./NumericTextInputTheme";
+import markdown from "./NumericTextInput.md";
 
 interface State {
-  value: number;
+  value: string;
 }
+
+interface StateNumber {
+  value: number | undefined;
+}
+
+const NumericInput: React.FC<NumericInputValueProps> = ({
+  value,
+  onValueChange
+}) => {
+  const numericProps = useNumericInputValue(value, onValueChange);
+  return (
+    <div style={{ display: "inline-block" }}>
+      <NumericTextInput {...numericProps} />
+      <StandardText>Value: {value}</StandardText>
+    </div>
+  );
+};
 
 storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "standard",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+        <StandardText>Value: {store.state.value}</StandardText>
+      </div>
+    )),
+    { notes: { markdown } }
+  )
+  .add(
+    "with number data type",
+    withState<StateNumber>({
+      value: 5
+    })(({ store }: { store: Store<StateNumber> }) => (
+      <div style={{ display: "inline-block" }}>
+        <NumericInput
           value={store.state.value}
           onValueChange={value => store.set({ value })}
         />
@@ -27,7 +64,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "with dark theme",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
@@ -43,7 +80,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "disabled",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
@@ -57,7 +94,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "hidden buttons",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
@@ -71,7 +108,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "with left icon",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
@@ -87,7 +124,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "with content right",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
@@ -107,7 +144,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
   .add(
     "with min and max",
     withState<State>({
-      value: 5
+      value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
