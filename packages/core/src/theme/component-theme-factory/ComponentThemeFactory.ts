@@ -9,11 +9,18 @@ import { defaultNumericTextInputTheme } from "../../../../forms/src/components/u
 import { defaultStandardTextInputTheme } from "../../../../forms/src/components/ui/text-input/StandardTextInputTheme";
 
 const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
-  overridingTheme: Partial<TTheme>
-): TTheme => ({
-  ...defaultTheme,
-  ...overridingTheme
-});
+  overridingThemeOrFunc: Partial<TTheme> | ThemeFactoryFunc<TTheme>
+): TTheme => {
+  if (typeof overridingThemeOrFunc === "function") {
+    return overridingThemeOrFunc(defaultTheme);
+  }
+  return {
+    ...defaultTheme,
+    ...overridingThemeOrFunc
+  };
+};
+
+type ThemeFactoryFunc<TTheme> = (defaultTheme: TTheme) => TTheme;
 
 export const createFlatButtonTheme = createThemeFactory(defaultFlatButtonTheme);
 export const createStandardButtonTheme = createThemeFactory(
