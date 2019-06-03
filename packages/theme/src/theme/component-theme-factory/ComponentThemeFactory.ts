@@ -1,12 +1,23 @@
-import { defaultDateInputTheme } from "../../../../calendar/src/components/ui/date-time-input/DateInputTheme";
-import { defaultFlatButtonTheme } from "../../../../elements/src/components/ui/buttons/FlatButton";
-import { defaultSmallButtonTheme } from "../../../../elements/src/components/ui/buttons/SmallButton";
-import { defaultStandardButtonTheme } from "../../../../elements/src/components/ui/buttons/StandardButton";
-import { defaultCheckboxTheme } from "../../../../forms/src/components/ui/checkbox/CheckboxTheme";
-import { defaultRadioButtonTheme } from "../../../../forms/src/components/ui/radio/RadioButtonTheme";
-import { defaultSwitchTheme } from "../../../../forms/src/components/ui/switch/SwitchTheme";
-import { defaultNumericTextInputTheme } from "../../../../forms/src/components/ui/text-input/NumericTextInputTheme";
-import { defaultStandardTextInputTheme } from "../../../../forms/src/components/ui/text-input/StandardTextInputTheme";
+import { defaultDateInputTheme } from "@stenajs-webui/calendar";
+import {
+  defaultFlatButtonTheme,
+  defaultSmallButtonTheme,
+  defaultStandardButtonTheme
+} from "@stenajs-webui/elements";
+import {
+  defaultCheckboxTheme,
+  defaultNumericTextInputTheme,
+  defaultRadioButtonTheme,
+  defaultStandardTextInputTheme,
+  defaultSwitchTheme
+} from "@stenajs-webui/forms";
+import { DateInputTheme } from "../../../../calendar/src/components/ui/date-time-input/DateInputTheme";
+import { ButtonTheme } from "../../../../elements/src/components/ui/buttons/ButtonTheme";
+import { CheckboxTheme } from "../../../../forms/src/components/ui/checkbox/CheckboxTheme";
+import { RadioButtonTheme } from "../../../../forms/src/components/ui/radio/RadioButtonTheme";
+import { SwitchTheme } from "../../../../forms/src/components/ui/switch/SwitchTheme";
+import { NumericTextInputTheme } from "../../../../forms/src/components/ui/text-input/NumericTextInputTheme";
+import { StandardTextInputTheme } from "../../../../forms/src/components/ui/text-input/StandardTextInputTheme";
 
 const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
   overridingThemeOrFunc: Partial<TTheme> | ThemeFactoryFunc<TTheme>
@@ -22,22 +33,38 @@ const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
 
 type ThemeFactoryFunc<TTheme> = (defaultTheme: TTheme) => TTheme;
 
-export const createFlatButtonTheme = createThemeFactory(defaultFlatButtonTheme);
-export const createStandardButtonTheme = createThemeFactory(
+export const createFlatButtonTheme = createThemeFactory<ButtonTheme>(
+  defaultFlatButtonTheme
+);
+
+export const createStandardButtonTheme = createThemeFactory(<ButtonTheme>(
   defaultStandardButtonTheme
-);
-export const createSmallButtonTheme = createThemeFactory(
+));
+
+export const createSmallButtonTheme = createThemeFactory(<ButtonTheme>(
   defaultSmallButtonTheme
+));
+
+export const createStandardTextInputTheme = createThemeFactory(<
+  StandardTextInputTheme
+>defaultStandardTextInputTheme);
+
+export const createNumericTextInputTheme = createThemeFactory(<
+  NumericTextInputTheme
+>defaultNumericTextInputTheme);
+
+export const createDateInputTheme = createThemeFactory<DateInputTheme>(
+  defaultDateInputTheme
 );
-export const createStandardTextInputTheme = createThemeFactory(
-  defaultStandardTextInputTheme
+
+export const createCheckboxTheme = createThemeFactory<CheckboxTheme>(
+  defaultCheckboxTheme
 );
-export const createNumericTextInputTheme = createThemeFactory(
-  defaultNumericTextInputTheme
+
+export const createSwitchTheme = createThemeFactory<SwitchTheme>(
+  defaultSwitchTheme
 );
-export const createDateInputTheme = createThemeFactory(defaultDateInputTheme);
-export const createCheckboxTheme = createThemeFactory(defaultCheckboxTheme);
-export const createSwitchTheme = createThemeFactory(defaultSwitchTheme);
-export const createRadioButtonTheme = createThemeFactory(
+
+export const createRadioButtonTheme = createThemeFactory(<RadioButtonTheme>(
   defaultRadioButtonTheme
-);
+));
