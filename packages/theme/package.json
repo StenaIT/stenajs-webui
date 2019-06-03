@@ -1,5 +1,5 @@
 {
-  "name": "@stenajs-webui/elements",
+  "name": "@stenajs-webui/theme",
   "version": "0.0.12",
   "description": "",
   "author": "mattias800",
@@ -17,7 +17,7 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
+    "test": "jest",
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
@@ -27,26 +27,34 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "@fortawesome/fontawesome-svg-core": ">=1.2.18",
-    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
-    "@fortawesome/react-fontawesome": ">=0.1.4",
-    "@stenajs-webui/core": "0.0.12",
+    "@emotion/core": ">=10.0.10",
+    "@emotion/styled": ">=10.0.10",
+    "@stenajs-webui/calendar": "0.0.11",
+    "@stenajs-webui/elements": "0.0.11",
+    "@stenajs-webui/forms": "0.0.11",
+    "@types/lodash-es": ">=4.17.3",
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
     "@types/styled-system": ">=4.1.0",
+    "lodash-es": ">=4.17.11",
+    "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6",
     "styled-system": ">=4.1.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "@stenajs-webui/core": "0.0.12",
+    "@stenajs-webui/calendar": "0.0.11",
+    "@stenajs-webui/elements": "0.0.11",
+    "@stenajs-webui/forms": "0.0.11",
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
     "@types/jest": "^23.1.5",
+    "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/styled-system": "^4.1.0",
+    "lodash-es": "^4.17.11",
+    "prop-types": "^15.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-system": "^4.1.0"
