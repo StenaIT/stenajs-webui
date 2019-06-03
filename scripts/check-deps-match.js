@@ -1,36 +1,4 @@
-//requiring path and fs modules
-const path = require("path");
-const fs = require("fs");
-//joining path of directory
-const directoryPath = path.join(__dirname, "packages");
-
-const getPackageJsonList = async () => {
-  return new Promise((resolve, reject) => {
-    const list = [];
-    fs.readdir(directoryPath, function(err, files) {
-      //handling error
-      if (err) {
-        return console.log("Unable to scan directory: " + err);
-      }
-      //listing all files using forEach
-      files.forEach(function(file) {
-        const filePath = path.join(directoryPath, file);
-        const isDir = fs.lstatSync(filePath).isDirectory();
-        // Do whatever you want to do with the file
-        if (isDir) {
-          list.push(path.join(filePath, "package.json"));
-        }
-      });
-      resolve(list);
-    });
-  });
-};
-
-const getPackageJsons = async () => {
-  return getPackageJsonList().then(list => {
-    return list.map(require);
-  });
-};
+const { getPackageJsons } = require("./util/package-json-fetcher");
 
 const getInvalidDepVersion = (packages, depsType) => {
   const errors = [];
@@ -176,7 +144,7 @@ getPackageJsons().then(packages => {
   }
 
   if (success) {
-    console.log("Everything OK!");
+    console.log("OK! All dependencies match.");
   } else {
     process.exit(1);
   }

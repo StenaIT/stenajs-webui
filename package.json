@@ -9,11 +9,12 @@
     "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
     "deploy-storybook": "yarn build && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
-    "build": "lerna run build",
+    "build": "yarn check-deps-match && lerna run build && yarn check-builds",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build && yarn test && yarn check-deps-match",
     "test": "jest --config=jest.config.js",
-    "check-deps-match": "node check-dep-versions.js"
+    "check-deps-match": "node scripts/check-deps-match.js",
+    "check-builds": "node scripts/check-builds.js"
   },
   "repository": {
     "type": "git",
