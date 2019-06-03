@@ -42,7 +42,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@stenajs-webui/core": "0.0.13",
+    "@stenajs-webui/core": "^0.0.13",
     "@types/jest": "^23.1.5",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
