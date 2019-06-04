@@ -2,7 +2,7 @@ import { ClassNames } from "@emotion/core";
 import { Box, Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -75,13 +75,6 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       </Box>
     </>
   );
-
-  const classNameToUse = useMemo(() => {
-    if (className) {
-      return className + " ";
-    }
-    return "";
-  }, [className]);
 
   return (
     <ClassNames>

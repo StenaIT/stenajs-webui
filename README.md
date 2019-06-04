@@ -83,5 +83,6 @@ You can start it locally:
 ```
 $ cd <repo-root>/
 $ yarn
+$ yarn lerna link
 $ yarn start-storybook
 ```
