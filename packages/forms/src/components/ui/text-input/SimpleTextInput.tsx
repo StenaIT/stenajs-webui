@@ -6,12 +6,12 @@ import {
   CSSProperties,
   KeyboardEvent,
   KeyboardEventHandler,
-  MutableRefObject,
   useCallback,
   useEffect,
   useRef,
   useState
 } from "react";
+import { InputProps } from "../../../../../core/src/types/ElementProps";
 import { ValueAndOnChangeProps } from "../types";
 import {
   defaultSimpleTextInputTheme,
@@ -25,7 +25,8 @@ const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 type MoveDirection = "right" | "left" | "down" | "up";
 
 export interface SimpleTextInputProps<TValue = string>
-  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>> {
+  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>>,
+    InputProps {
   /** CSS class name applied to the input element. */
   className?: string;
   /** onDone callback, triggered by blur, if the blur was not triggered by esc key. */
@@ -44,8 +45,6 @@ export interface SimpleTextInputProps<TValue = string>
   selectAllOnMount?: boolean;
   /** If true, cursor will move to the end of the entered text on mount. */
   moveCursorToEndOnMount?: boolean;
-  /** Input ref to use. If omitted, an internal ref will be used. */
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
 
   /** Type of input */
   inputType?: string;

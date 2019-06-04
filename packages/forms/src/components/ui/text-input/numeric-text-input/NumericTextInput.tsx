@@ -1,7 +1,8 @@
+import { ClassNames } from "@emotion/core";
 import { Box, Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -10,12 +11,15 @@ import {
   defaultNumericTextInputTheme,
   NumericTextInputTheme
 } from "./NumericTextInputTheme";
-import { parseFloatElseUndefined } from './util/NumericTextInputUtil';
+import { parseFloatElseUndefined } from "./util/NumericTextInputUtil";
 
 export interface NumericTextInputProps
   extends Omit<
     StandardTextInputProps,
-    "theme" | "onChange" // Omit onChange, since up down buttons don't generate HTMLInput event.
+    | "theme"
+    | "onChange" // Omit onChange, since up down buttons don't generate HTMLInput event.
+    | "selectAllOnMount" // Not supported by browser when input type='number'
+    | "moveCursorToEndOnMount" // Not supported by browser when input type='number'
   > {
   max?: number;
   min?: number;
@@ -33,6 +37,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   contentRight,
   theme = defaultNumericTextInputTheme,
   disabled,
+  className,
   ...restProps
 }) => {
   const onClick = useCallback(
@@ -71,19 +76,39 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     </>
   );
 
-  console.log("value", value, typeof value);
+  const classNameToUse = useMemo(() => {
+    if (className) {
+      return className + " ";
+    }
+    return "";
+  }, [className]);
+
   return (
-    <StandardTextInput
-      contentRight={contentRightToUse}
-      value={value}
-      onValueChange={onValueChange}
-      disableContentPaddingRight
-      inputType={"number"}
-      min={min}
-      max={max}
-      step={step}
-      {...restProps}
-    />
+    <ClassNames>
+      {({ css, cx }) => (
+        <StandardTextInput
+          contentRight={contentRightToUse}
+          value={value}
+          onValueChange={onValueChange}
+          disableContentPaddingRight
+          inputType={"number"}
+          min={min}
+          max={max}
+          step={step}
+          className={cx([
+            className,
+            css`
+              &::-webkit-outer-spin-button,
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+                margin: 0;
+              }
+            `
+          ])}
+          {...restProps}
+        />
+      )}
+    </ClassNames>
   );
 };
-

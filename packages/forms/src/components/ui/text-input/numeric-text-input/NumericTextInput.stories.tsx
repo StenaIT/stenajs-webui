@@ -8,8 +8,8 @@ import {
   useNumericInputValue
 } from "./hooks/UseNumericInputValue";
 import { NumericTextInput } from "./NumericTextInput";
-import { defaultNumericTextInputThemeDark } from "./NumericTextInputTheme";
 import markdown from "./NumericTextInput.md";
+import { defaultNumericTextInputThemeDark } from "./NumericTextInputTheme";
 
 interface State {
   value: string;
@@ -24,12 +24,7 @@ const NumericInput: React.FC<NumericInputValueProps> = ({
   onValueChange
 }) => {
   const numericProps = useNumericInputValue(value, onValueChange);
-  return (
-    <div style={{ display: "inline-block" }}>
-      <NumericTextInput {...numericProps} />
-      <StandardText>Value: {value}</StandardText>
-    </div>
-  );
+  return <NumericTextInput {...numericProps} />;
 };
 
 storiesOf("forms/TextInput/NumericTextInput", module)
@@ -42,8 +37,9 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         <NumericTextInput
           value={store.state.value}
           onValueChange={value => store.set({ value })}
+          className={"the-super-class"}
         />
-        <StandardText>Value: {store.state.value}</StandardText>
+        <StandardText>String value: {store.state.value}</StandardText>
       </div>
     )),
     { notes: { markdown } }
@@ -58,6 +54,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
           value={store.state.value}
           onValueChange={value => store.set({ value })}
         />
+        <StandardText>Number value: {store.state.value}</StandardText>
       </div>
     ))
   )

@@ -1,5 +1,4 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { Inline } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addMonths } from "date-fns";
 import * as React from "react";
@@ -15,21 +14,26 @@ storiesOf("calendar/Input/DateInput", module)
     withState<DateInputState>({
       value: undefined
     })(({ store }: { store: Store<DateInputState> }) => (
-      <Inline>
+      <div style={{ display: "inline-block" }}>
         <DateInput
           value={store.state.value}
           onChange={value => store.set({ value })}
         />
-      </Inline>
+      </div>
     ))
   )
   .add("empty", () => (
-    <Inline>
+    <div style={{ display: "inline-block" }}>
       <DateInput value={undefined} />
-    </Inline>
+    </div>
+  ))
+  .add("custom date format", () => (
+    <div style={{ display: "inline-block" }}>
+      <DateInput value={new Date()} displayFormat={"dd/MM/yyyy"} />
+    </div>
   ))
   .add("with preselected value", () => (
-    <Inline>
+    <div style={{ display: "inline-block" }}>
       <DateInput value={addMonths(new Date(), 2)} />
-    </Inline>
+    </div>
   ));

@@ -19,23 +19,23 @@ storiesOf("calendar/Input/DateRangeInput", module)
         startDate: undefined
       }
     })(({ store }: { store: Store<DateRangeState> }) => (
-      <Inline>
+      <div style={{ display: 'inline-block'}}>
         <DateRangeInput
           value={store.state.value}
           onChange={value => store.set({ value })}
         />
-      </Inline>
+      </div>
     ))
   )
   .add("empty", () => (
-    <Inline>
+    <div style={{ display: 'inline-block'}}>
       <DateRangeInput value={{}} />
-    </Inline>
+    </div>
   ))
   .add("with preselected value", () => (
-    <Inline>
+    <div style={{ display: 'inline-block'}}>
       <DateRangeInput
         value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
       />
-    </Inline>
+    </div>
   ));

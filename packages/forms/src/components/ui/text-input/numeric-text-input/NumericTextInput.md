@@ -16,9 +16,9 @@ with new `value` and `onValueChange` fields.
 
 You can use it like this:
 
-```
-  const numericProps = useNumericInputValue(value, onValueChange);
-  return <NumericTextInput {...numericProps} />;
+```jsx
+const numericProps = useNumericInputValue(value, onValueChange);
+return <NumericTextInput {...numericProps} />;
 ```
 
 ## No onChange
