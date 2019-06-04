@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { InputProps, useThemeFields } from "@stenajs-webui/core";
+import { InputProps, useThemeFields, WithInnerRef } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback } from "react";
-import { WithInnerRef } from "../../../../../core/src/types/ElementProps";
 import { FullOnChangeProps } from "../types";
 import { defaultSwitchTheme, SwitchTheme } from "./SwitchTheme";
 

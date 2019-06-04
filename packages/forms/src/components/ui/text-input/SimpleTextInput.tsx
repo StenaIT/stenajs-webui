@@ -1,5 +1,5 @@
 import styled, { CreateStyled } from "@emotion/styled";
-import { useThemeFields } from "@stenajs-webui/core";
+import { InputProps, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   ChangeEvent,
@@ -11,7 +11,6 @@ import {
   useRef,
   useState
 } from "react";
-import { InputProps } from "../../../../../core/src/types/ElementProps";
 import { ValueAndOnChangeProps } from "../types";
 import {
   defaultSimpleTextInputTheme,
