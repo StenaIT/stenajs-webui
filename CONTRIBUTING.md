@@ -5,7 +5,7 @@
 ```
 $ yarn
 $ yarn lerna link
-$ yarn build
+$ yarn build-all
 ```
 
 ## Libraries of choice
