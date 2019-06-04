@@ -19,7 +19,6 @@ export * from "./components/layout/row/Row";
 export * from "./components/layout/indent/Indent";
 export * from "./components/layout/spacing/Spacing";
 export * from "./components/layout/space/Space";
-export * from "./components/layout/inline/Inline";
 
 export * from "./components/text/TextTheme";
 export { TextProps } from "./components/text/TextBase";
