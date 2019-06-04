@@ -27,6 +27,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
+    "@stenajs-webui/core": "0.0.15",
+    "@stenajs-webui/elements": "0.0.15",
+    "@stenajs-webui/forms": "0.0.15",
     "@types/recompose": "^0.30.6",
     "recompose": "^0.30.0"
   },
@@ -34,9 +37,6 @@
     "@emotion/core": ">=10.0.10",
     "@emotion/styled": ">=10.0.10",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
-    "@stenajs-webui/core": "0.0.15",
-    "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
     "@types/lodash-es": ">=4.17.3",
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
@@ -51,9 +51,6 @@
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@stenajs-webui/core": "0.0.15",
-    "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
     "@types/jest": "^23.1.5",
     "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.8.19",

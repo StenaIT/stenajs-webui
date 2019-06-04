@@ -26,10 +26,12 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@stenajs-webui/core": "0.0.15",
     "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
+    "@stenajs-webui/forms": "0.0.15"
+  },
+  "peerDependencies": {
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
     "prop-types": ">=15.5.4",

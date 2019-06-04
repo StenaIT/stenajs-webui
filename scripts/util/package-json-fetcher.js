@@ -37,8 +37,17 @@ const getPackageJsons = async () => {
   });
 };
 
+const getPackageVersion = (packages, packageName) => {
+  const packageJson = packages.find(package => package.name === packageName);
+  if (!packageJson) {
+    throw new Error("Could not find package: " + packageName);
+  }
+  return packageJson.version;
+};
+
 module.exports = {
   getPackageFolderList,
   getPackageJsons,
+  getPackageVersion,
   packagesPath
 };

@@ -26,38 +26,13 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "peerDependencies": {
-    "@emotion/core": ">=10.0.10",
-    "@emotion/styled": ">=10.0.10",
+  "dependencies": {
     "@stenajs-webui/calendar": "0.0.15",
     "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
-    "@types/lodash-es": ">=4.17.3",
-    "@types/react": ">=16.8.19",
-    "@types/react-dom": ">=16.8.4",
-    "@types/styled-system": ">=4.1.0",
-    "lodash-es": ">=4.17.11",
-    "prop-types": ">=15.5.4",
-    "react": ">=16.8.6",
-    "react-dom": ">=16.8.6",
-    "styled-system": ">=4.1.0"
+    "@stenajs-webui/forms": "0.0.15"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
-    "@stenajs-webui/calendar": "0.0.15",
-    "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
-    "@types/jest": "^23.1.5",
-    "@types/lodash-es": "^4.17.3",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "@types/styled-system": "^4.1.0",
-    "lodash-es": "^4.17.11",
-    "prop-types": "^15.5.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-system": "^4.1.0"
+    "@types/jest": "^23.1.5"
   },
   "files": [
     "dist"

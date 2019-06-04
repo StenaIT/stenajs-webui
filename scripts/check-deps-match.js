@@ -1,4 +1,7 @@
-const { getPackageJsons } = require("./util/package-json-fetcher");
+const {
+  getPackageJsons,
+  getPackageVersion
+} = require("./util/package-json-fetcher");
 
 const getInvalidDepVersion = (packages, depsType) => {
   const errors = [];
@@ -58,7 +61,41 @@ const getInvalidDevDeps = packages => {
   return success;
 };
 
+const getInvalidInternalDeps = packages => {
+  let success = true;
+  packages.forEach(packageJson => {
+    if (packageJson.dependencies) {
+      const deps = Object.keys(packageJson.dependencies);
+      deps.forEach(dep => {
+        if (dep.startsWith("@stenajs-webui/")) {
+          const version = packageJson.dependencies[dep];
+          const expectedVersion = getPackageVersion(packages, dep);
+          if (expectedVersion !== version) {
+            console.error(
+              packageJson.name +
+                ": has invalid version to " +
+                dep +
+                ". Is: " +
+                version +
+                ", expected: " +
+                expectedVersion
+            );
+            success = false;
+          }
+        }
+      });
+    }
+    try {
+      ensureDevDepsIncludesAllPeerDeps(packageJson);
+    } catch (e) {}
+  });
+  return success;
+};
+
 const ensureDevDepsIncludesAllPeerDeps = packageJson => {
+  if (!packageJson.peerDependencies) {
+    return;
+  }
   const peerDepKeys = Object.keys(packageJson.peerDependencies);
   for (let i = 0; i < peerDepKeys.length; i++) {
     const peerDepKey = peerDepKeys[i];
@@ -140,6 +177,12 @@ getPackageJsons().then(packages => {
   const invalidDevDeps = getInvalidDevDeps(packages);
 
   if (!invalidDevDeps) {
+    success = false;
+  }
+
+  const invalidInternalDeps = getInvalidInternalDeps(packages);
+
+  if (!invalidInternalDeps) {
     success = false;
   }
 
