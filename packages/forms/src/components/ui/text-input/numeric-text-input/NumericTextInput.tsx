@@ -3,6 +3,7 @@ import { Box, Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
+import { useThemeFields } from "../../../../../../core/src/theme/hooks/UseThemeSelector";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -38,8 +39,17 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   theme = defaultNumericTextInputTheme,
   disabled,
   className,
+  hideButtons,
   ...restProps
 }) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        textColor: theme.textColor
+      }
+    },
+    [theme]
+  );
   const onClick = useCallback(
     (numSteps: number) => {
       if (onValueChange) {
@@ -48,9 +58,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
         } else {
           const parsedValue = parseFloatElseUndefined(value);
           const newValue = (parsedValue || 0) + numSteps;
-          onValueChange(
-            String(min != null ? Math.max(min, newValue) : newValue)
-          );
+          onValueChange(String(limitWithinRange(newValue, min, max)));
         }
       }
     },
@@ -70,7 +78,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
           onClickUp={disabled ? undefined : () => onClick(step)}
           onClickDown={disabled ? undefined : () => onClick(-step)}
           buttonHeight={theme.buttonHeight}
-          iconColor={theme.textColor}
+          iconColor={colors.textColor}
         />
       </Box>
     </>
@@ -80,7 +88,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     <ClassNames>
       {({ css, cx }) => (
         <StandardTextInput
-          contentRight={contentRightToUse}
+          contentRight={!hideButtons && contentRightToUse}
           value={value}
           onValueChange={onValueChange}
           disableContentPaddingRight
@@ -99,9 +107,25 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
               }
             `
           ])}
+          theme={theme}
           {...restProps}
         />
       )}
     </ClassNames>
   );
+};
+
+const limitWithinRange = (
+  value: number,
+  min?: number,
+  max?: number
+): number => {
+  let v = value;
+  if (min != null) {
+    v = Math.max(min, v);
+  }
+  if (max != null) {
+    v = Math.min(max, v);
+  }
+  return v;
 };
