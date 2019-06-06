@@ -1,9 +1,8 @@
 import { ClassNames } from "@emotion/core";
-import { Box, Omit, Space } from "@stenajs-webui/core";
+import { Box, Omit, Space, useThemeFields } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
-import { useThemeFields } from "../../../../../../core/src/theme/hooks/UseThemeSelector";
 import {
   StandardTextInput,
   StandardTextInputProps
