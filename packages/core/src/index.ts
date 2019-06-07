@@ -39,6 +39,8 @@ export * from "./types/Omit";
 
 export * from "./hooks/UseBoolean";
 export * from "./hooks/UseDebounce";
+export * from "./hooks/UseEventListener";
+export * from "./hooks/UseMouseIsOver";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";

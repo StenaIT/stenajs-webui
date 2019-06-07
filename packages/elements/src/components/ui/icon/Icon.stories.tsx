@@ -12,6 +12,9 @@ import { Icon } from "./Icon";
 storiesOf("elements/Icon", module)
   .add("default", () => <Icon icon={faCog} />)
   .add("with color", () => <Icon icon={faCog} color={"#abcdef"} />)
+  .add("with hover color", () => (
+    <Icon icon={faCog} color={"#abcdef"} hoverColor={"#efcdab"} />
+  ))
   .add("with spin", () => <Icon icon={faSpinner} spin={true} />)
   .add("with pulse", () => <Icon icon={faSpinner} pulse={true} />)
   .add("horizontal flip", () => (
