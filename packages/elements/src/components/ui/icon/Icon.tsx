@@ -15,6 +15,7 @@ import { useRef } from "react";
 export interface IconProps
   extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
+  hoverIcon?: IconDefinition;
   color?: ThemeColorField | string;
   hoverColor?: ThemeColorField | string;
   size?: number;
@@ -25,6 +26,7 @@ export const Icon: React.FC<IconProps> = ({
   color = "primaryTextLight",
   flip,
   icon,
+  hoverIcon,
   pulse,
   rotation,
   hoverColor,
@@ -55,9 +57,9 @@ export const Icon: React.FC<IconProps> = ({
     <div ref={ref}>
       <FontAwesomeIcon
         className={className}
-        color={mouseIsOver ? colors.iconColorHover : colors.iconColor}
+        color={mouseIsOver && colors.iconColorHover || colors.iconColor}
         flip={flip}
-        icon={icon}
+        icon={(mouseIsOver && hoverIcon) || icon}
         pulse={pulse}
         rotation={rotation}
         spin={spin}

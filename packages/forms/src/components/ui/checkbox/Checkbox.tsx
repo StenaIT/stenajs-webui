@@ -69,7 +69,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   onChange,
   onValueChange,
   theme = defaultCheckboxTheme,
-  value
+  value,
+  name
 }) => {
   const { colors } = useThemeFields(
     {
@@ -116,6 +117,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           ref={inputRef}
           onChange={handleInputChange}
           type={"checkbox"}
+          name={name}
         />
         <Wrapper disabled={disabled} theme={theme} value={value}>
           <Row

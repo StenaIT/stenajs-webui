@@ -15,6 +15,13 @@ storiesOf("forms/RadioButton", module)
       disabled={knobs.boolean("Disabled", false)}
     />
   ))
+  .add("with DOM name", () => (
+    <RadioButton
+      value={knobs.boolean("Checked", false)}
+      disabled={knobs.boolean("Disabled", false)}
+      name={knobs.text("Name", "agree")}
+    />
+  ))
   .add("checked and disabled", () => <RadioButton value={true} disabled />)
   .add("not checked and disabled", () => <RadioButton value={false} disabled />)
   .add("with dark theme", () => (
