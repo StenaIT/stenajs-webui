@@ -27,9 +27,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "^0.0.18",
-    "@stenajs-webui/elements": "^0.0.18",
-    "@stenajs-webui/forms": "^0.0.18"
+    "@stenajs-webui/core": "0.0.18",
+    "@stenajs-webui/elements": "0.0.18",
+    "@stenajs-webui/forms": "0.0.18"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.19",
