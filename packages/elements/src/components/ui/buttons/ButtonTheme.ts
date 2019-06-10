@@ -25,10 +25,14 @@ export interface ButtonTheme {
   height: string;
   /** Color of success icon */
   successIconColor: ThemeColorField | string;
+  /** Size of success icon */
+  successIconSize: number;
   /** Color of success text */
   successTextColor: ThemeColorField | string;
   /** Color of progress spinner */
   loadingSpinnerColor: ThemeColorField | string;
+  /** Color of progress spinner */
+  loadingSpinnerSize: string;
   /** Color of loading text */
   loadingTextColor: ThemeColorField | string;
 }
@@ -45,6 +49,8 @@ export const defaultButtonTheme: ButtonTheme = {
   height: "40px",
   successIconColor: "white",
   successTextColor: "white",
+  successIconSize: 20,
   loadingSpinnerColor: "white",
-  loadingTextColor: "white"
+  loadingTextColor: "white",
+  loadingSpinnerSize: "24px"
 };

@@ -1,4 +1,5 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { StandardButton } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
@@ -31,6 +32,21 @@ storiesOf("elements/Buttons/StandardButton", module)
   .add("with icon right", () => (
     <StandardButton
       label={"Submit"}
+      rightIcon={faCoffee}
+      onClick={action("Button clicked")}
+    />
+  ))
+  .add("with icon left and right", () => (
+    <StandardButton
+      label={"Submit"}
+      leftIcon={faCheck}
+      rightIcon={faCoffee}
+      onClick={action("Button clicked")}
+    />
+  ))
+  .add("with icon left and right, no label", () => (
+    <StandardButton
+      leftIcon={faCheck}
       rightIcon={faCoffee}
       onClick={action("Button clicked")}
     />
