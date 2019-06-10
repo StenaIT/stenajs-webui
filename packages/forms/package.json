@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,8 +27,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.17",
-    "@stenajs-webui/elements": "0.0.17",
+    "@stenajs-webui/core": "^0.0.18",
+    "@stenajs-webui/elements": "^0.0.18",
     "@types/recompose": "^0.30.6",
     "date-fns": "2.0.0-alpha.27",
     "recompose": "^0.30.0"
@@ -38,8 +38,8 @@
     "@emotion/styled": ">=10.0.10",
     "@fortawesome/fontawesome-common-types": ">=0.2.18",
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
-    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/free-regular-svg-icons": ">=5.8.2",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
     "@types/lodash-es": ">=4.17.3",
     "@types/react": ">=16.8.19",
@@ -56,8 +56,8 @@
     "@emotion/styled": "^10.0.10",
     "@fortawesome/fontawesome-common-types": "^0.2.18",
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/free-regular-svg-icons": "^5.8.2",
+    "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.1.5",

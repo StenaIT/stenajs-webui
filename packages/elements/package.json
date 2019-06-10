@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.17"
+    "@stenajs-webui/core": "^0.0.18"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
