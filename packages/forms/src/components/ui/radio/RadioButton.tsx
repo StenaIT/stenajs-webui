@@ -32,6 +32,7 @@ const InvisibleInput = styled.input`
 `;
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
+  className,
   disabled = false,
   onChange,
   onValueChange,
@@ -101,6 +102,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         onChange={handleInputChange}
         type={"radio"}
         name={name}
+        className={className}
       />
     </Clickable>
   );

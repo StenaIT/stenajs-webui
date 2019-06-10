@@ -1,19 +1,22 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { ThemeColorField } from "@stenajs-webui/core";
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { ThemeColorField } from '@stenajs-webui/core';
 
 export interface CheckboxTheme {
-  borderColor: ThemeColorField | string;
-  borderColorDisabled: ThemeColorField | string;
   borderColorFocused: ThemeColorField | string;
   borderColorChecked: ThemeColorField | string;
-  backgroundColor: ThemeColorField | string;
+  borderColorNotChecked: ThemeColorField | string;
+  borderColorNotCheckedHover: ThemeColorField | string;
+  borderColorDisabled: ThemeColorField | string;
+  backgroundColorNotChecked: ThemeColorField | string;
+  backgroundColorNotCheckedHover: ThemeColorField | string;
   backgroundColorDisabled: ThemeColorField | string;
   backgroundColorChecked: ThemeColorField | string;
-  iconColor: ThemeColorField | string;
-  iconColorDisabled: ThemeColorField | string;
   iconColorChecked: ThemeColorField | string;
-  checkIcon: IconProp;
+  iconColorNotChecked: ThemeColorField | string;
+  iconColorNotCheckedHover: ThemeColorField | string;
+  iconColorDisabled: ThemeColorField | string;
+  checkIcon: IconDefinition;
   width: string;
   height: string;
   borderRadius: string;
@@ -21,16 +24,19 @@ export interface CheckboxTheme {
 }
 
 export const defaultCheckboxTheme: CheckboxTheme = {
-  backgroundColor: "white",
+  backgroundColorChecked: "primaryText",
+  backgroundColorNotChecked: "white",
+  backgroundColorNotCheckedHover: "white",
   backgroundColorDisabled: "#f1f1f1",
-  backgroundColorChecked: "white",
-  borderColor: "inputBorder",
+  borderColorNotChecked: "primaryText",
+  borderColorNotCheckedHover: "primaryText",
   borderColorDisabled: "transparent",
-  borderColorChecked: "inputBorder",
-  borderColorFocused: "inputBorderFocused",
-  iconColor: "primaryText",
+  borderColorChecked: "primaryText",
+  borderColorFocused: "primaryText",
+  iconColorNotChecked: "primaryText",
+  iconColorNotCheckedHover: 'primaryTextLight',
   iconColorDisabled: "disabledText",
-  iconColorChecked: "primaryText",
+  iconColorChecked: "white",
   checkIcon: faCheck,
   width: "22px",
   height: "22px",
@@ -39,16 +45,21 @@ export const defaultCheckboxTheme: CheckboxTheme = {
 };
 
 export const defaultCheckboxThemeDark: CheckboxTheme = {
-  backgroundColor: "#b7d1d9",
-  borderColor: "transparent",
-  iconColor: "#4d7989",
-  backgroundColorDisabled: "#f1f1f1",
-  borderColorDisabled: "transparent",
-  iconColorDisabled: "disabledText",
   backgroundColorChecked: "#b7d1d9",
-  borderColorChecked: "inputBorder",
+  backgroundColorNotChecked: "#b7d1d9",
+  backgroundColorNotCheckedHover: "#b7d1d9",
+  backgroundColorDisabled: "#f1f1f1",
+
+  borderColorChecked: "transparent",
+  borderColorNotChecked: "transparent",
+  borderColorNotCheckedHover: "transparent",
+  borderColorDisabled: "transparent",
+  borderColorFocused: "transparent",
+
   iconColorChecked: "primaryText",
-  borderColorFocused: "inputBorderFocused",
+  iconColorNotChecked: "#4d7989",
+  iconColorNotCheckedHover: 'primaryTextLight',
+  iconColorDisabled: "disabledText",
   checkIcon: faCheck,
   width: "22px",
   height: "22px",

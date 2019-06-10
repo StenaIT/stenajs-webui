@@ -13,7 +13,7 @@
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact",
     "watch": "lerna exec --parallel -- rollup -c -w",
-    "prerelease": "yarn build-all && yarn test",
+    "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "test": "jest --config=jest.config.js",
     "check-deps-match": "node scripts/check-deps-match.js",
     "check-builds": "node scripts/check-builds.js"

@@ -17,6 +17,13 @@ storiesOf("forms/Checkbox", module)
       disabled={knobs.boolean("Disabled", false)}
     />
   ))
+  .add("with DOM name", () => (
+    <Checkbox
+      value={knobs.boolean("Checked", false)}
+      disabled={knobs.boolean("Disabled", false)}
+      name={knobs.text("Name", 'agree')}
+    />
+  ))
   .add("checked and disabled", () => <Checkbox value={true} disabled />)
   .add("not checked and disabled", () => <Checkbox value={false} disabled />)
   .add("with dark theme", () => (
@@ -29,9 +36,9 @@ storiesOf("forms/Checkbox", module)
   .add("with custom theme", () => {
     const theme: CheckboxTheme = {
       ...defaultCheckboxTheme,
-      backgroundColor: "lightgray",
-      borderColor: "black",
-      iconColor: "white",
+      backgroundColorNotChecked: "lightgray",
+      borderColorNotChecked: "black",
+      iconColorNotChecked: "white",
       backgroundColorDisabled: "lightgray",
       borderColorDisabled: "black",
       iconColorDisabled: "white",
