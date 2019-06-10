@@ -1,7 +1,7 @@
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons/faCaretDown";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Clickable, Row } from "@stenajs-webui/core";
+import { Box, Clickable, Column, Row } from "@stenajs-webui/core";
 import * as React from "react";
 
 export interface UpDownButtonsProps {
@@ -17,7 +17,7 @@ export const UpDownButtons: React.FC<UpDownButtonsProps> = ({
   buttonHeight,
   iconColor
 }) => (
-  <Box>
+  <Column>
     <Clickable onClick={onClickUp}>
       <Row
         height={buttonHeight}
@@ -40,5 +40,5 @@ export const UpDownButtons: React.FC<UpDownButtonsProps> = ({
         </Box>
       </Row>
     </Clickable>
-  </Box>
+  </Column>
 );

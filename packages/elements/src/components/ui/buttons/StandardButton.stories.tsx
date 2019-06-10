@@ -15,7 +15,10 @@ storiesOf("elements/Buttons/StandardButton", module)
       onClick={action("Button clicked")}
     />
   ))
-  .add("with icon and no text", () => (
+  .add("with no content", () => (
+    <StandardButton onClick={action("Button clicked")} />
+  ))
+  .add("with icon only", () => (
     <StandardButton leftIcon={faCoffee} onClick={action("Button clicked")} />
   ))
   .add("with icon left", () => (

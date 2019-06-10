@@ -14,6 +14,11 @@ $ yarn build-all
 - Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
 - Font Awesome is used for all icons.
 
+### Resources
+
+* https://emotion.sh/docs/introduction
+* https://styled-system.com/
+
 ## Dependencies
 
 We try to avoid adding more dependencies as much as possible.
@@ -40,7 +45,7 @@ See `@stenajs-webui/select`, which uses `react-select` as a dependency.
 - No default exports. All exports should be named.
 - Use args destructuring.
 
-## Imports from other packages
+## Imports from other stenajs-webui packages
 
 When you import code from other packages, you must do it from package name.
 
@@ -78,10 +83,12 @@ export interface NiceButtonProps {
 }
 
 export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
-    // ... hooks eventually.
+    // maybe hooks.
     return (
-        ...
-    )
+        <div>
+            Hello
+        </div>
+    );
 }
 ```
 

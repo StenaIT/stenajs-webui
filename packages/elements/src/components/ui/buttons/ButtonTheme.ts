@@ -28,7 +28,9 @@ export interface ButtonTheme {
   /** Color of success text */
   successTextColor: ThemeColorField | string;
   /** Color of progress spinner */
-  progressSpinnerColor: ThemeColorField | string;
+  loadingSpinnerColor: ThemeColorField | string;
+  /** Color of loading text */
+  loadingTextColor: ThemeColorField | string;
 }
 
 export const defaultButtonTheme: ButtonTheme = {
@@ -40,8 +42,9 @@ export const defaultButtonTheme: ButtonTheme = {
   fontSize: "normal",
   borderRadius: "3px",
   numSpacing: 2,
-  height: "34px",
+  height: "40px",
   successIconColor: "white",
   successTextColor: "white",
-  progressSpinnerColor: "white"
+  loadingSpinnerColor: "white",
+  loadingTextColor: "white"
 };
