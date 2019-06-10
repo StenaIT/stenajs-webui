@@ -11,6 +11,7 @@
     "deploy-built-storybook": "gh-pages -d build",
     "build-all": "yarn clean-all && yarn check-deps-match && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
+    "publish-all": "lerna publish --exact",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build-all && yarn test",
     "test": "jest --config=jest.config.js",
