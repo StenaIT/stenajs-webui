@@ -9,7 +9,7 @@
     "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
-    "build-all": "yarn clean-all && yarn check-deps-match && lerna run build && yarn check-builds",
+    "build-all": "yarn clean-all && yarn check-deps-match && lerna run build && yarn check-builds && yarn bundlesize",
     "build-all-no-clean": "yarn check-deps-match && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact",
@@ -54,6 +54,7 @@
     "@types/storybook__addon-knobs": "^5.0.0",
     "@types/storybook__react": "^4.0.1",
     "babel-loader": "^8.0.5",
+    "bundlesize": "^0.17.2",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "enzyme-adapter-react-16": "^1.13.1",
@@ -73,5 +74,39 @@
     "rollup-plugin-url": "^2.2.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.1"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./packages/core/dist/*.js",
+      "maxSize": "6 kB"
+    },
+    {
+      "path": "./packages/calendar/dist/*.js",
+      "maxSize": "45 kB"
+    },
+    {
+      "path": "./packages/elements/dist/*.js",
+      "maxSize": "25 kB"
+    },
+    {
+      "path": "./packages/forms/dist/*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "./packages/grid/dist/*.js",
+      "maxSize": "30 kB"
+    },
+    {
+      "path": "./packages/panels/dist/*.js",
+      "maxSize": "1 kB"
+    },
+    {
+      "path": "./packages/select/dist/*.js",
+      "maxSize": "3 kB"
+    },
+    {
+      "path": "./packages/theme/dist/*.js",
+      "maxSize": "2 kB"
+    }
+  ]
 }
