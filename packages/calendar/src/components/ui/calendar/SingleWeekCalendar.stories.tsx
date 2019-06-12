@@ -1,7 +1,7 @@
 import { Store, withState } from "@dump247/storybook-state";
+import { SingleWeekCalendar } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { SingleWeekCalendar } from "./SingleWeekCalendar";
 
 interface State {
   week: string | undefined;

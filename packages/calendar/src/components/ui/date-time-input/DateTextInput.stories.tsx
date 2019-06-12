@@ -1,7 +1,7 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { DateTextInput } from "./DateTextInput";
+import { DateTextInput } from "@stenajs-webui/calendar";
 
 interface DateTextInputState {
   value?: string;

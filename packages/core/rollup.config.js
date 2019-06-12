@@ -23,8 +23,13 @@ export default {
       sourcemap: true
     }
   ],
+  watch: {
+    clearScreen: false
+  },
   plugins: [
-    external(),
+        external({
+      includeDependencies: true
+    }),
     url(),
     svgr(),
     resolve(),

@@ -24,7 +24,9 @@ export default {
     }
   ],
   plugins: [
-    external(),
+        external({
+      includeDependencies: true
+    }),
     url(),
     svgr(),
     resolve(),

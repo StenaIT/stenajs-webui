@@ -1,8 +1,10 @@
+import {
+  DateRangeCalendarWithState,
+  setDayStateValue
+} from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
-import { DateRangeCalendarWithState } from "./DateRangeCalendar";
-import { setDayStateValue } from "./util/StateModifier";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {

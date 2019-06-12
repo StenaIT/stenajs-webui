@@ -100,16 +100,21 @@ const ensureDevDepsIncludesAllPeerDeps = packageJson => {
   for (let i = 0; i < peerDepKeys.length; i++) {
     const peerDepKey = peerDepKeys[i];
     const isWebUiDep = peerDepKey.startsWith("@stenajs-webui");
+    const isFontAwesomeDep = peerDepKey.startsWith("@fortawesome");
     if (!packageJson.devDependencies[peerDepKey]) {
       throw new Error("Missing devDependency: " + peerDepKey);
     }
 
-    if (isWebUiDep) {
-      if (packageJson.devDependencies[peerDepKey].startsWith("^")) {
-        throw new Error("stenajs-webui devDependency must not start with ^");
-      }
-      if (packageJson.devDependencies[peerDepKey].startsWith(">")) {
-        throw new Error("stenajs-webui devDependency must not start with >");
+    const mustBeExactVersion = isWebUiDep || isFontAwesomeDep;
+
+    if (mustBeExactVersion) {
+      if (
+        packageJson.devDependencies[peerDepKey].startsWith(">") ||
+        packageJson.devDependencies[peerDepKey].startsWith("^")
+      ) {
+        throw new Error(
+          `devDependency on ${peerDepKey} must have exact version.`
+        );
       }
     } else {
       if (!packageJson.devDependencies[peerDepKey].startsWith("^")) {

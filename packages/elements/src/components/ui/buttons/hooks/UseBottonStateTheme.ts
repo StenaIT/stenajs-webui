@@ -26,7 +26,6 @@ export const useButtonStateTheme = (
     },
     [buttonTheme]
   );
-
   return {
     textColor: disabled ? colors.textColorDisabled : colors.textColor,
     bgColor: disabled ? colors.bgColorDisabled : colors.bgColor,

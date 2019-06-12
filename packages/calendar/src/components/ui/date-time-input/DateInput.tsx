@@ -64,9 +64,6 @@ export interface DateInputPropsWithDefaultProps {
   placeholder: string;
 }
 
-// tslint:disable:no-empty
-const noop = () => {};
-
 type InnerProps = DateInputProps &
   WithShowingCalendarStateProps &
   WithShowCalendarHandlers &
@@ -98,7 +95,7 @@ const DateInputComponent: React.FC<InnerProps> = ({
         borderColor: theme.borderColor
       }
     },
-    []
+    [theme]
   );
 
   return (
@@ -108,7 +105,6 @@ const DateInputComponent: React.FC<InnerProps> = ({
         onFocus={showCalendar}
         value={value ? format(value, displayFormat) : ""}
         placeholder={placeholder}
-        onChange={noop}
         size={9}
         forceFocusHighlight={showingCalendar}
         focusOnMount={openOnMount}

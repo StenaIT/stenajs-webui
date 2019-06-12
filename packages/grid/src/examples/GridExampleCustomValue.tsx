@@ -2,7 +2,7 @@ import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { useGridCell } from "../hooks/UseGridCell";
+import { useGridCell } from '../hooks/UseGridCell';
 import {
   createCustomValueRows,
   createIndexArray,
@@ -10,7 +10,7 @@ import {
   FocusedBox
 } from "./util/GridHooksExampleUtils";
 
-export const list10 = createIndexArray(10);
+const list10 = createIndexArray(10);
 
 export const GridExampleCustomValue = () => {
   const [rows, setRows] = useState(createCustomValueRows());

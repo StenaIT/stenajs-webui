@@ -167,11 +167,11 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
           {list.length === 0 && <Space num={buttonTheme.numSpacing} />}
           {list.length === 1 && <Space num={buttonTheme.numSpacing} />}
           <Space num={buttonTheme.numSpacing} />
-          {list.map(item => (
-            <>
+          {list.map((item, index) => (
+            <React.Fragment key={index}>
               {item}
               <Space num={buttonTheme.numSpacing} />
-            </>
+            </React.Fragment>
           ))}
           {list.length === 1 && <Space num={buttonTheme.numSpacing} />}
         </Row>

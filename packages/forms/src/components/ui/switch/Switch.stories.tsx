@@ -1,9 +1,11 @@
+import {
+  defaultSwitchTheme,
+  Switch,
+  SwitchWithLabel
+} from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Switch } from "./Switch";
-import { defaultSwitchTheme } from "./SwitchTheme";
-import { SwitchWithLabel } from "./SwitchWithLabel";
 
 storiesOf("forms/Switch", module)
   .add("standard", () => (

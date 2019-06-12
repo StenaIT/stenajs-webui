@@ -8,12 +8,12 @@ import * as React from "react";
 import {
   CalendarTheme,
   extranetCalendarTheme
-} from "./components/CalendarTheme";
-import { WeekNumberCell } from "./components/renderers/WeekNumberCell";
-import { SingleDateCalendar } from "./SingleDateCalendar";
-import { OnClickWeek, RenderWeekNumber } from "./types/CalendarTypes";
-import { WeekData } from "./util/CalendarDataFactory";
-import { setDayStateValue } from "./util/StateModifier";
+} from "@stenajs-webui/calendar";
+import { WeekNumberCell } from "@stenajs-webui/calendar";
+import { SingleDateCalendar } from "@stenajs-webui/calendar";
+import { OnClickWeek, RenderWeekNumber } from "@stenajs-webui/calendar";
+import { WeekData } from "@stenajs-webui/calendar";
+import { setDayStateValue } from "@stenajs-webui/calendar";
 
 interface State {
   value?: Date;

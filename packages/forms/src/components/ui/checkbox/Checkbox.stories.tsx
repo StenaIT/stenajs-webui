@@ -1,14 +1,14 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import {
+  Checkbox,
+  CheckboxTheme,
+  CheckboxWithLabel,
+  defaultCheckboxTheme,
+  defaultCheckboxThemeDark
+} from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Checkbox } from "./Checkbox";
-import {
-  CheckboxTheme,
-  defaultCheckboxTheme,
-  defaultCheckboxThemeDark
-} from "./CheckboxTheme";
-import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 storiesOf("forms/Checkbox", module)
   .add("standard", () => (
@@ -21,7 +21,7 @@ storiesOf("forms/Checkbox", module)
     <Checkbox
       value={knobs.boolean("Checked", false)}
       disabled={knobs.boolean("Disabled", false)}
-      name={knobs.text("Name", 'agree')}
+      name={knobs.text("Name", "agree")}
     />
   ))
   .add("checked and disabled", () => <Checkbox value={true} disabled />)

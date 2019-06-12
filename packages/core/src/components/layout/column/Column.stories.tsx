@@ -1,8 +1,7 @@
-import { Column, Space } from "@stenajs-webui/core";
+import { Box, Column, Space } from "@stenajs-webui/core";
 import { withInfo } from "@storybook/addon-info";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Box } from "../box/Box";
 
 storiesOf("core/Layout/Column", module)
   .addDecorator(withInfo({ propTables: false }))

@@ -10,7 +10,7 @@ import {
   FocusedBox
 } from "./util/GridHooksExampleUtils";
 
-export const list10 = createIndexArray(10);
+const list10 = createIndexArray(10);
 
 export const GridExampleWithContext = () => {
   const [rows, setRows] = useState(createRows());

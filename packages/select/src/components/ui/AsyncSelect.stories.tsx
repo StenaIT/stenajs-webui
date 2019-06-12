@@ -1,8 +1,7 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
+import { AsyncSelect, selectThemeDark } from "@stenajs-webui/select";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { selectThemeDark } from "../../SelectTheme";
-import { AsyncSelect } from "./AsyncSelect";
 
 storiesOf("select/AsyncSelect", module)
   .add("async select", () => (

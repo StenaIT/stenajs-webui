@@ -2,7 +2,7 @@ import { Store, withState } from "@dump247/storybook-state";
 import { storiesOf } from "@storybook/react";
 import { addMonths } from "date-fns";
 import * as React from "react";
-import { DateInput } from "./DateInput";
+import { DateInput } from "@stenajs-webui/calendar";
 
 interface DateInputState {
   value?: Date;

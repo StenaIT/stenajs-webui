@@ -1,15 +1,15 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Box, StandardText } from "@stenajs-webui/core";
+import {
+  defaultNumericTextInputThemeDark,
+  NumericInputValueProps,
+  NumericTextInput,
+  useNumericInputValue
+} from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import {
-  NumericInputValueProps,
-  useNumericInputValue
-} from "./hooks/UseNumericInputValue";
-import { NumericTextInput } from "./NumericTextInput";
 import markdown from "./NumericTextInput.md";
-import { defaultNumericTextInputThemeDark } from "./NumericTextInputTheme";
 
 interface State {
   value: string;
