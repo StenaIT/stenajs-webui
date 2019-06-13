@@ -1,25 +1,5 @@
-import styled from "@emotion/styled";
-
 export const createIndexArray = (length: number) =>
   Array.from(Array(length).keys());
-
-export const FocusedBox = styled.div<FocusedBoxProps>`
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '90px',
-    height: '34px',
-    :focus {
-      outline: ${({ isEditable }) =>
-        isEditable ? "#605988" : "#cbcbcb"} solid 2px;
-    }
-  })
-  `;
-
-interface FocusedBoxProps {
-  isEditable?: boolean;
-}
 
 const names = ["mattias", "dennis", "johan", "anna", "chris"];
 

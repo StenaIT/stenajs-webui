@@ -1,16 +1,31 @@
+import styled from "@emotion/styled";
 import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import { GridHooksTable } from "../components/GridHooksTable";
 import { useGridCell } from "../hooks/UseGridCell";
-import {
-  createIndexArray,
-  createRows,
-  FocusedBox
-} from "./util/GridHooksExampleUtils";
+import { createIndexArray, createRows } from "./util/GridHooksExampleUtils";
 
 const list10 = createIndexArray(10);
+
+const FocusedBox = styled.div<FocusedBoxProps>`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 34px;
+    :focus {
+      outline: ${({ isEditable }) =>
+        isEditable ? "#605988" : "#cbcbcb"} solid 2px;
+    }
+  })
+  `;
+
+interface FocusedBoxProps {
+  isEditable?: boolean;
+}
 
 export const GridExampleWithContext = () => {
   const [rows, setRows] = useState(createRows());
