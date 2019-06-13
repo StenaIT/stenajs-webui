@@ -43,7 +43,7 @@ import {
   maxWidth,
   MaxWidthProps,
   minHeight,
-  MinHeightProps,
+  MinHeightProps, minWidth,
   MinWidthProps,
   overflow,
   OverflowProps,
@@ -167,6 +167,7 @@ const FlexBox = styled.div<
   ${height};
   ${justifyContent};
   ${minHeight};
+  ${minWidth};
   ${maxHeight};
   ${maxWidth};
   ${overflow};
