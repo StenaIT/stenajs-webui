@@ -23,91 +23,85 @@ storiesOf("examples/Tables", module).add("Simple table", () => {
 
   return (
     <div style={{ display: "inline-block" }}>
-      <Box spacing indent>
-        <Box shadow={"box"} background={"#fff"}>
-          <Spacing>
-            <table cellPadding={0} cellSpacing={0} style={{ width: "1200px" }}>
-              <tbody>
+      <Box shadow={"box"} background={"#fff"}>
+        <Spacing>
+          <table cellPadding={0} cellSpacing={0} style={{ width: "1200px" }}>
+            <tbody>
+              <tr>
+                <td style={tdStyle}>
+                  <Indent>
+                    <StandardText fontWeight={"bold"}>Name</StandardText>
+                  </Indent>
+                </td>
+                <td style={tdStyle}>
+                  <Indent>
+                    <StandardText fontWeight={"bold"}>Description</StandardText>
+                  </Indent>
+                </td>
+                <td style={tdStyle}>
+                  <Indent>
+                    <StandardText fontWeight={"bold"}>Routes</StandardText>
+                  </Indent>
+                </td>
+                <td style={tdStyle}>
+                  <Indent>
+                    <StandardText fontWeight={"bold"}>Event type</StandardText>
+                  </Indent>
+                </td>
+                <td style={tdStyle}>
+                  <Indent>
+                    <StandardText fontWeight={"bold"}>Results</StandardText>
+                  </Indent>
+                </td>
+                <td style={tdStyle} />
+              </tr>
+
+              {list.map(name => (
                 <tr>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText fontWeight={"bold"}>Name</StandardText>
+                      <Clickable disableFocusHighlight onClick={() => {}}>
+                        <Row alignItems={"center"}>
+                          <StandardText hoverUnderline>{name}</StandardText>
+                          <Space num={2} />
+                        </Row>
+                      </Clickable>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText fontWeight={"bold"}>
-                        Description
-                      </StandardText>
+                      <StandardText>A great duck.</StandardText>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText fontWeight={"bold"}>Routes</StandardText>
+                      <StandardText>GOFR, FRGO</StandardText>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText fontWeight={"bold"}>
-                        Event type
-                      </StandardText>
+                      <Row>
+                        <StandardText>Boarded ship</StandardText>
+                      </Row>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText fontWeight={"bold"}>Results</StandardText>
+                      <Row>
+                        <StandardText>Big success</StandardText>
+                      </Row>
                     </Indent>
                   </td>
                   <td style={tdStyle} />
                 </tr>
-
-                {list.map(name => (
-                  <tr>
-                    <td style={tdStyle}>
-                      <Indent>
-                        <Clickable disableFocusHighlight onClick={() => {}}>
-                          <Row alignItems={"center"}>
-                            <StandardText hoverUnderline>{name}</StandardText>
-                            <Space num={2} />
-                          </Row>
-                        </Clickable>
-                      </Indent>
-                    </td>
-                    <td style={tdStyle}>
-                      <Indent>
-                        <StandardText>A great duck.</StandardText>
-                      </Indent>
-                    </td>
-                    <td style={tdStyle}>
-                      <Indent>
-                        <StandardText>GOFR, FRGO</StandardText>
-                      </Indent>
-                    </td>
-                    <td style={tdStyle}>
-                      <Indent>
-                        <Row>
-                          <StandardText>Boarded ship</StandardText>
-                        </Row>
-                      </Indent>
-                    </td>
-                    <td style={tdStyle}>
-                      <Indent>
-                        <Row>
-                          <StandardText>Big success</StandardText>
-                        </Row>
-                      </Indent>
-                    </td>
-                    <td style={tdStyle} />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <Space />
-            <Row indent justifyContent={"flex-start"}>
-              <StandardButton leftIcon={faPlus} />
-            </Row>
-          </Spacing>
-        </Box>
+              ))}
+            </tbody>
+          </table>
+          <Space />
+          <Row indent justifyContent={"flex-start"}>
+            <StandardButton leftIcon={faPlus} />
+          </Row>
+        </Spacing>
       </Box>
     </div>
   );
