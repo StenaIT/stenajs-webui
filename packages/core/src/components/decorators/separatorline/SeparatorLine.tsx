@@ -20,6 +20,7 @@ const SeparatorLineComponent = styled.hr<{
   display: flex;
   background-color: ${props => props.color};
   border: 0;
+  margin: 0;
   height: ${props =>
     props.vertical ? props.size || "100%" : props.width || "1px"};
   width: ${props =>
