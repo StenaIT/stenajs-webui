@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/select",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.20",
+    "@stenajs-webui/core": "0.0.21",
     "@types/react-select": "^2.0.17",
     "@types/recompose": "^0.30.6",
     "react-select": "^2.4.3",
