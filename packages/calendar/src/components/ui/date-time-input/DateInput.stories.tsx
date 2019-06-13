@@ -1,12 +1,16 @@
 import { Store, withState } from "@dump247/storybook-state";
+import { DateInput, setDayStateValue } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
-import { addMonths } from "date-fns";
+import { addDays, addMonths } from "date-fns";
 import * as React from "react";
-import { DateInput } from "@stenajs-webui/calendar";
 
 interface DateInputState {
   value?: Date;
 }
+
+const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
+  highlights: ["disabled"]
+});
 
 storiesOf("calendar/Input/DateInput", module)
   .add(
@@ -18,6 +22,20 @@ storiesOf("calendar/Input/DateInput", module)
         <DateInput
           value={store.state.value}
           onChange={value => store.set({ value })}
+        />
+      </div>
+    ))
+  )
+  .add(
+    "with disabled date tomorrow",
+    withState<DateInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateInputState> }) => (
+      <div style={{ display: "inline-block" }}>
+        <DateInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+          calendarProps={{ statePerMonth: disabledTomorrow }}
         />
       </div>
     ))

@@ -181,7 +181,8 @@ export const defaultCalendarTheme: CalendarTheme = {
   },
   CalendarMonth: {
     SwitchButton: {
-      ...defaultButtonTheme
+      ...defaultButtonTheme,
+      width: '40px'
     }
   }
 };

@@ -19,6 +19,31 @@ export const CalendarDay = <T extends {}>({
   defaultHighlights
 }: CalendarDayProps<T>) => {
   const fullTheme = useTheme();
+
+  const content = (
+    <Box
+      width={"100%"}
+      height={"100%"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <StandardText
+        {...theme.CalendarDay.textProps &&
+          theme.CalendarDay.textProps(
+            fullTheme,
+            defaultHighlights,
+            dayState,
+            day,
+            week,
+            month,
+            userData
+          )}
+      >
+        {day.dayOfMonth}
+      </StandardText>
+    </Box>
+  );
+
   return (
     <td
       style={{
@@ -69,48 +94,30 @@ export const CalendarDay = <T extends {}>({
             position: "relative"
           }}
         >
-          {ExtraDayContent && (
-            <ExtraDayContent
-              week={week}
-              month={month}
-              day={day}
-              dayState={dayState}
-              theme={theme}
-              userData={userData}
-            />
+          {day.month === month.monthInYear && (
+            <>
+              {ExtraDayContent && (
+                <ExtraDayContent
+                  week={week}
+                  month={month}
+                  day={day}
+                  dayState={dayState}
+                  theme={theme}
+                  userData={userData}
+                />
+              )}
+              {onClickDay && isClickable(defaultHighlights, dayState) ? (
+                <Clickable
+                  onClick={() => onClickDay(day, userData)}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  {content}
+                </Clickable>
+              ) : (
+                <>{content}</>
+              )}
+            </>
           )}
-          <Clickable
-            onClick={
-              onClickDay &&
-              day.month === month.monthInYear &&
-              isClickable(defaultHighlights, dayState)
-                ? () => onClickDay(day, userData)
-                : undefined
-            }
-            style={{ width: "100%", height: "100%" }}
-          >
-            <Box
-              width={"100%"}
-              height={"100%"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <StandardText
-                {...theme.CalendarDay.textProps &&
-                  theme.CalendarDay.textProps(
-                    fullTheme,
-                    defaultHighlights,
-                    dayState,
-                    day,
-                    week,
-                    month,
-                    userData
-                  )}
-              >
-                {day.dayOfMonth}
-              </StandardText>
-            </Box>
-          </Clickable>
         </div>
       </div>
     </td>

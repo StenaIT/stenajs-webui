@@ -5,13 +5,15 @@ import {
 } from '../calendar/components/CalendarTheme';
 
 export interface DateInputTheme {
-  backgroundColor: ThemeColorField;
-  borderColor: ThemeColorField;
+  backgroundColor: ThemeColorField | string;
+  backgroundColorInvalidDate: ThemeColorField | string;
+  borderColor: ThemeColorField | string;
   calendar: CalendarTheme;
 }
 
 export const defaultDateInputTheme: DateInputTheme = {
   backgroundColor: 'white',
+  backgroundColorInvalidDate: 'errorBgLight',
   borderColor: 'separator',
   calendar: defaultCalendarTheme,
 };
