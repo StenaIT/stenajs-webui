@@ -182,7 +182,7 @@ export const defaultCalendarTheme: CalendarTheme = {
   CalendarMonth: {
     SwitchButton: {
       ...defaultButtonTheme,
-      width: '40px'
+      width: "40px"
     }
   }
 };
@@ -217,7 +217,7 @@ export const extranetCalendarTheme: CalendarTheme = {
       bgColor: "#2A7EC5",
       textColor: "#FFFFFF",
       borderRadius: "4px",
-      width: "26px"
+      width: "40px"
     }
   }
 };
