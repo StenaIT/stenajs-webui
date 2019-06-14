@@ -28,6 +28,7 @@ import {
 import { DateRangeCalendar } from "../calendar/DateRangeCalendar";
 import {
   DateRangeCalendarOnChangeValue,
+  DateRangeCalendarProps,
   DateRangeFocusedInput,
   OnChangePropsDateRangeSelection
 } from "../calendar/features/DateRangeSelection";
@@ -79,6 +80,9 @@ export interface DateRangeInputProps extends OnChangePropsDateRangeSelection {
    * The calendar theme to use.
    */
   calendarTheme?: CalendarTheme;
+
+  /** Props to be passed to DateRangeCalendar, see DateRangeCalendar. */
+  calendarProps?: DateRangeCalendarProps<{}>;
 }
 
 export interface DateRangeInputPropsWithDefaultProps {
@@ -115,7 +119,8 @@ const DateRangeInputComponent = ({
   setFocusedInput,
   toText = "to",
   theme = defaultDateRangeInputTheme,
-  calendarTheme = defaultCalendarTheme
+  calendarTheme = defaultCalendarTheme,
+  calendarProps
 }: InnerProps) => {
   const ref = useRef(null);
   useOnClickOutside(ref, hideCalendar);
@@ -169,6 +174,7 @@ const DateRangeInputComponent = ({
               spacing
             >
               <DateRangeCalendar
+                {...calendarProps}
                 startDateInFocus={
                   focusedInput === "startDate" || focusedInput === "endDate"
                     ? value[focusedInput]

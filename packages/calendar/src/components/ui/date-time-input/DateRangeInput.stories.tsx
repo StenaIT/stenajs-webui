@@ -39,4 +39,21 @@ storiesOf("calendar/Input/DateRangeInput", module)
         value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
       />
     </div>
-  ));
+  ))
+  .add(
+    "with today highlighted",
+    withState<DateRangeState>({
+      value: {
+        endDate: undefined,
+        startDate: undefined
+      }
+    })(({ store }: { store: Store<DateRangeState> }) => (
+      <div style={{ display: "inline-block" }}>
+        <DateRangeInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+          calendarProps={{ highlightToday: true }}
+        />
+      </div>
+    ))
+  );
