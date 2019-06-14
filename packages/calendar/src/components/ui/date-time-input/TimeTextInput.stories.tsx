@@ -1,4 +1,5 @@
 import { Store, withState } from "@dump247/storybook-state";
+import { color } from '@storybook/addon-knobs';
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { TimeTextInput } from "@stenajs-webui/calendar";
@@ -85,6 +86,18 @@ storiesOf("calendar/Input/TimeTextInput", module)
         value={store.state.value}
         onValueChange={value => store.set({ value })}
         disabled={true}
+      />
+    ))
+  )
+  .add(
+    "with background color",
+    withState<TimeTextInputState>({
+      value: undefined
+    })(({ store }: { store: Store<TimeTextInputState> }) => (
+      <TimeTextInput
+        value={store.state.value}
+        onValueChange={value => store.set({ value })}
+        backgroundColor={color('Background', '#f0f060')}
       />
     ))
   );

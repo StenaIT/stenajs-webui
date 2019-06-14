@@ -1,5 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { DateInput, setDayStateValue } from "@stenajs-webui/calendar";
+import { color } from '@storybook/addon-knobs';
 import { storiesOf } from "@storybook/react";
 import { addDays, addMonths } from "date-fns";
 import * as React from "react";
@@ -53,5 +54,13 @@ storiesOf("calendar/Input/DateInput", module)
   .add("with preselected value", () => (
     <div style={{ display: "inline-block" }}>
       <DateInput value={addMonths(new Date(), 2)} />
+    </div>
+  ))
+  .add("with background color", () => (
+    <div style={{ display: "inline-block" }}>
+      <DateInput
+        value={addMonths(new Date(), 2)}
+        backgroundColor={color("Background", "#f0f060")}
+      />
     </div>
   ));

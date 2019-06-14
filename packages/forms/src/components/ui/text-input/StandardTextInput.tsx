@@ -167,6 +167,19 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 }) => {
   const [focused, setFocused] = useState(false);
 
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        disabledBackgroundColor: theme.disabledBackgroundColor,
+        backgroundColor: backgroundColor || theme.backgroundColor,
+        borderColorFocused: theme.borderColorFocused,
+        borderColor: theme.borderColor,
+        textColor: textColor || theme.textColor
+      }
+    },
+    [theme, backgroundColor, textColor]
+  );
+
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = ev => {
     if (onValueChange) {
       onValueChange(ev.target.value || "");
@@ -189,19 +202,6 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     }
     setFocused(true);
   };
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        disabledBackgroundColor: theme.disabledBackgroundColor,
-        backgroundColor: backgroundColor || theme.backgroundColor,
-        borderColorFocused: theme.borderColorFocused,
-        borderColor: theme.borderColor,
-        textColor: textColor || theme.textColor
-      }
-    },
-    [theme]
-  );
 
   const activeBgColor = disabled
     ? colors.disabledBackgroundColor

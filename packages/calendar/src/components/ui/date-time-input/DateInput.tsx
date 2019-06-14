@@ -26,6 +26,8 @@ export interface DateInputProps<T = {}> {
   value?: Date;
   /** onChange handler for when the user selects a date. */
   onChange?: (date: Date | undefined) => void;
+  /** Background color of the input field. */
+  backgroundColor?: string;
   /** If true, calendar will be open when component mounts. */
   openOnMount?: boolean;
   /** Is invoked when user closes the calendar popup. */
@@ -73,7 +75,7 @@ const SingleDateCalendar = createSingleDateCalendar();
 const DateInputComponent: React.FC<InnerProps> = ({
   showCalendar,
   hideCalendar,
-
+  backgroundColor,
   displayFormat,
   showingCalendar,
   placeholder,
@@ -101,6 +103,7 @@ const DateInputComponent: React.FC<InnerProps> = ({
   return (
     <>
       <StandardTextInput
+        backgroundColor={backgroundColor}
         iconLeft={faCalendarAlt}
         onFocus={showCalendar}
         onClickLeft={showCalendar}

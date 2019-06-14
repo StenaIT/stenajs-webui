@@ -22,7 +22,8 @@ export type DateTextInputCalendarProps<T> = Omit<
   "value" | "onChange" | "theme"
 >;
 
-export interface DateTextInputProps<T> extends StandardTextInputProps {
+export interface DateTextInputProps<T>
+  extends Omit<StandardTextInputProps, "onChange"> {
   /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
   /** Close calendar when date is selected, @default true */
@@ -43,7 +44,6 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   calendarProps,
   closeOnCalendarSelectDate = true,
   dateFormat = DateFormats.fullDate,
-  onChange,
   onValueChange,
   placeholder = "yyyy-mm-dd",
   value,
@@ -77,21 +77,18 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
 
   useOnClickOutside(ref, closeCalendar);
 
-  const onChangeHandler = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev);
-      }
+  const onValueChangeHandler = useCallback(
+    value => {
       if (onValueChange) {
-        onValueChange(ev.target.value);
+        onValueChange(value);
       }
     },
-    [onChange, onValueChange]
+    [onValueChange]
   );
 
   const onCalendarSelectDate = (date: Date | undefined) => {
     if (date) {
-      onChangeHandler(format(date, dateFormat));
+      onValueChangeHandler(format(date, dateFormat));
       if (closeOnCalendarSelectDate) {
         setTimeout(() => setOpen(!open), 200);
       }
@@ -111,11 +108,11 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         backgroundColor={
           (userInputCorrectLength && !dateIsValid) || validInput
             ? colors.backgroundColorInvalidDate
-            : undefined
+            : props.backgroundColor
         }
         iconLeft={faCalendarAlt}
         onClickLeft={toggleCalendar}
-        onChange={onChangeHandler}
+        onValueChange={onValueChangeHandler}
         placeholder={placeholder}
         value={value}
         width={width}

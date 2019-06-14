@@ -270,7 +270,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
         fontSize: fontSize || theme.fontSize
       }
     },
-    [theme]
+    [theme, backgroundColor, textColor]
   );
   return (
     <StyledInput

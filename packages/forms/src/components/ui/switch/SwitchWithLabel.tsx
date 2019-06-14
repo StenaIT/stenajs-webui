@@ -24,7 +24,7 @@ export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
         textColor: textColor
       }
     },
-    [theme]
+    [theme, textColor]
   );
 
   return (
