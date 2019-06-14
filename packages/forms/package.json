@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "0.2.18",
-    "@stenajs-webui/core": "0.0.22",
-    "@stenajs-webui/elements": "0.0.22",
+    "@stenajs-webui/core": "0.0.23",
+    "@stenajs-webui/elements": "0.0.23",
     "@types/recompose": "^0.30.6",
     "date-fns": "2.0.0-alpha.27",
     "recompose": "^0.30.0"
