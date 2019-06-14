@@ -13,7 +13,7 @@
     "build-all-no-clean": "yarn check-deps-match && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact",
-    "check-all": "yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-builds && yarn bundlesize",
+    "check-all": "yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn test && yarn bundlesize && yarn check-builds",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "test": "jest --config=jest.config.js",
