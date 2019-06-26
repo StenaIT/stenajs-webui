@@ -12,7 +12,9 @@ import {
   fontSize,
   FontSizeProps,
   fontWeight,
-  FontWeightProps
+  FontWeightProps,
+  textAlign,
+  TextAlignProps
 } from "styled-system";
 import { ThemeFontField } from "../../theme/theme-types/ThemeFonts";
 import { ThemeFontSizeField } from "../../theme/theme-types/ThemeFontSizes";
@@ -55,7 +57,10 @@ interface TextBaseInternalProps {
   fontWeight?: FontWeightProperty;
 }
 
-type StyledSystemProps = FontWeightProps & FontFamilyProps & FontSizeProps;
+type StyledSystemProps = FontWeightProps &
+  FontFamilyProps &
+  FontSizeProps &
+  TextAlignProps;
 
 /**
  * NOTE:
@@ -66,6 +71,7 @@ const SpanWithHover = styled.span<TextBaseProps>`
   ${fontSize};
   ${fontFamily};
   ${fontWeight};
+  ${textAlign}
   user-select: ${({ userSelect }) => userSelect};
   text-decoration: ${({ textDecoration }) => textDecoration};
   white-space: ${({ whiteSpace }) => whiteSpace};
