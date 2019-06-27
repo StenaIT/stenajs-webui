@@ -10,7 +10,7 @@
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
     "build-all": "yarn clean-all && lerna run build && yarn check-all",
-    "build-all-no-clean": "yarn check-deps-match && lerna run build && yarn check-builds",
+    "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact && yarn build-storybook && yarn deploy-built-storybook",
     "check-all": "yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn bundlesize && yarn check-builds",

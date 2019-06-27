@@ -5,3 +5,5 @@ export * from "./components/ui/buttons/SmallButton";
 export * from "./components/ui/buttons/StandardButton";
 export * from "./components/ui/buttons/UpDownButtons";
 export * from "./components/ui/icon/Icon";
+export * from "./components/ui/badge/Badge";
+export * from "./components/ui/badge/WithBadge";

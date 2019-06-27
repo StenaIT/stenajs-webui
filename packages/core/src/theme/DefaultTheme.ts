@@ -21,6 +21,7 @@ export const defaultTheme: Theme = {
     errorTextLight: "#ffbfc6",
     errorBgLight: "#ffbfc6",
     errorBgDark: "#a8171c",
+    badgeBg: "#a84842",
     alertText: "#dbdb51",
     alertTextLight: "#edec8a",
     info: "#7a77c3",

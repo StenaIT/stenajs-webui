@@ -18,6 +18,7 @@ export interface ThemeColors {
   errorTextLight: string;
   errorBgLight: string;
   errorBgDark: string;
+  badgeBg: string;
   alertText: string;
   alertTextLight: string;
   info: string;
