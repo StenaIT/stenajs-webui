@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/panels",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,9 +27,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.23",
-    "@stenajs-webui/elements": "0.0.23",
-    "@stenajs-webui/forms": "0.0.23"
+    "@stenajs-webui/core": "0.0.24",
+    "@stenajs-webui/elements": "0.0.24",
+    "@stenajs-webui/forms": "0.0.24"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.19",
