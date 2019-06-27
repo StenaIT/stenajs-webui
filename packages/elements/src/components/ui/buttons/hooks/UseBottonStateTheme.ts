@@ -1,14 +1,15 @@
-import { useThemeFields } from "@stenajs-webui/core";
+import { ThemeColorField, useThemeFields } from "@stenajs-webui/core";
 import { ButtonTheme } from "../ButtonTheme";
 
 export const useButtonStateTheme = (
   buttonTheme: ButtonTheme,
+  textColor: ThemeColorField | string | undefined,
   disabled: boolean
 ) => {
   const { colors, fontSizes, fonts } = useThemeFields(
     {
       colors: {
-        textColor: buttonTheme.textColor,
+        textColor: textColor || buttonTheme.textColor,
         textColorDisabled: buttonTheme.textColorDisabled,
         bgColor: buttonTheme.bgColor,
         bgColorDisabled: buttonTheme.bgColorDisabled,

@@ -2,7 +2,13 @@ import styled from "@emotion/styled";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Clickable, Row, Space } from "@stenajs-webui/core";
+import {
+  Box,
+  Clickable,
+  Row,
+  Space,
+  ThemeColorField
+} from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { Progress } from "../progress/Progress";
@@ -16,6 +22,10 @@ export interface ButtonProps {
   buttonTheme?: ButtonTheme;
   /** The text on the button. */
   label?: string;
+  /** Color of the text.
+   * @default The textColor specified in theme.
+   */
+  textColor?: ThemeColorField | string;
   /** React element to place to the left of the text. */
   left?: ReactNode;
   /** React element to place to the right of the text. */
@@ -74,7 +84,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     loadingTextColor,
     font,
     fontSize
-  } = useButtonStateTheme(buttonTheme, disabled);
+  } = useButtonStateTheme(buttonTheme, props.textColor, disabled);
 
   const list = [];
 
