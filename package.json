@@ -98,7 +98,7 @@
     },
     {
       "path": "./packages/panels/dist/*.js",
-      "maxSize": "30 kB"
+      "maxSize": "6 kB"
     },
     {
       "path": "./packages/select/dist/*.js",

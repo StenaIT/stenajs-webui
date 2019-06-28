@@ -19,7 +19,7 @@ export interface RadioButtonProps
   theme?: RadioButtonTheme;
 }
 
-const InvisibleInput = styled.input`
+const InvisibleRadioButton = styled.input`
   top: 0;
   left: 0;
   width: 100%;
@@ -95,7 +95,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         hoverColor={"red"}
         size={theme.iconSize}
       />
-      <InvisibleInput
+      <InvisibleRadioButton
         disabled={disabled}
         checked={value}
         ref={innerRefToUse}

@@ -14,7 +14,7 @@ export interface SwitchProps
   theme?: SwitchTheme;
 }
 
-const InvisibleInput = styled.input`
+const InvisibleSwitch = styled.input`
   top: 0;
   left: 0;
   width: 100%;
@@ -155,7 +155,7 @@ export const Switch: React.FC<SwitchProps> = ({
         theme={theme}
         themeFields={themeFields}
       >
-        <InvisibleInput
+        <InvisibleSwitch
           checked={value}
           onChange={inputChangeHandler}
           ref={inputRef}

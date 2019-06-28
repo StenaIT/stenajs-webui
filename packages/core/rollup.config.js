@@ -1,9 +1,8 @@
-import typescript from "rollup-plugin-typescript2";
+import svgr from "@svgr/rollup";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
-import resolve from "rollup-plugin-node-resolve";
+import typescript from "rollup-plugin-typescript2";
 import url from "rollup-plugin-url";
-import svgr from "@svgr/rollup";
 
 import pkg from "./package.json";
 
@@ -23,17 +22,13 @@ export default {
       sourcemap: true
     }
   ],
-  watch: {
-    clearScreen: false
-  },
   plugins: [
-        external({
+    external({
       includeDependencies: true
     }),
     url(),
     svgr(),
-    resolve(),
-    typescript({
+typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
       typescript: require("typescript")

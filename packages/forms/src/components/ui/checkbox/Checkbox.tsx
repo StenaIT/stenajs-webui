@@ -20,7 +20,7 @@ export interface CheckboxProps
   theme?: CheckboxTheme;
 }
 
-const InvisibleInput = styled.input`
+const InvisibleCheckbox = styled.input`
   top: 0;
   left: 0;
   width: 26px;
@@ -121,7 +121,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           )}
         </Box>
       </Box>
-      <InvisibleInput
+      <InvisibleCheckbox
         disabled={disabled}
         checked={value}
         ref={innerRefToUse}
