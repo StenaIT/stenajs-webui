@@ -62,10 +62,6 @@ type StyledSystemProps = FontWeightProps &
   FontSizeProps &
   TextAlignProps;
 
-/**
- * NOTE:
- * Do not add color here, span already includes color.
- */
 const SpanWithHover = styled.span<TextBaseProps>`
   ${({ color }) => (color ? `color: ${color};` : "")};
   ${fontSize};
