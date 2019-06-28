@@ -5,7 +5,6 @@ import {
   UserSelectProperty,
   WhiteSpaceProperty
 } from "csstype";
-import * as React from "react";
 import {
   fontFamily,
   FontFamilyProps,
@@ -78,4 +77,4 @@ const SpanWithHover = styled.span<TextBaseProps>`
   }
 `;
 
-export const TextBase: React.FC<TextBaseProps> = SpanWithHover;
+export const TextBase = SpanWithHover;
