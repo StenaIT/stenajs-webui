@@ -4,8 +4,16 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("panels/Loading/LoadingPanel", module)
-  .add("standard", () => <LoadingPanel />)
-  .add("with text", () => <LoadingPanel text={"Loading your booking..."} />);
+  .add("standard", () => (
+    <div style={{ display: "inline-block" }}>
+      <LoadingPanel />
+    </div>
+  ))
+  .add("with text", () => (
+    <div style={{ display: "inline-block" }}>
+      <LoadingPanel text={"Loading your booking..."} />
+    </div>
+  ));
 
 storiesOf("panels/Loading/LoadingScreen", module)
   .add("standard", () => (
