@@ -22,13 +22,14 @@ export default {
       sourcemap: true
     }
   ],
+  external: ["@emotion/styled", "date-fns"],
   plugins: [
     external({
       includeDependencies: true
     }),
     url(),
     svgr(),
-typescript({
+    typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
       typescript: require("typescript")
