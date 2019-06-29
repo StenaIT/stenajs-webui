@@ -1,15 +1,10 @@
-import styled from "@emotion/styled";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Clickable,
-  InputProps,
-  Row,
-  useThemeFields
-} from "@stenajs-webui/core";
-import * as React from "react";
-import { ChangeEvent, useCallback } from "react";
-import { FullOnChangeProps } from "../types";
-import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
+import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Clickable, InputProps, Row, useThemeFields } from '@stenajs-webui/core';
+import * as React from 'react';
+import { ChangeEvent, useCallback } from 'react';
+import { FullOnChangeProps } from '../types';
+import { CheckboxTheme, defaultCheckboxTheme } from './CheckboxTheme';
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
@@ -31,24 +26,25 @@ const InvisibleInput = styled.input`
 `;
 
 const Wrapper = styled("div")<{
+  borderRadius: string;
   disabled: boolean | undefined;
-  theme: CheckboxTheme;
+  themeFields: ThemeFields;
   value: boolean | undefined;
 }>`
-  background-color: ${({ disabled, theme, value }) =>
+  background-color: ${({ disabled, themeFields, value }) =>
     disabled
-      ? theme.backgroundColorDisabled
+      ? themeFields.colors.backgroundColorDisabled
       : value
-      ? theme.backgroundColorChecked
-      : theme.backgroundColor};
+      ? themeFields.colors.backgroundColorChecked
+      : themeFields.colors.backgroundColor};
   border: 1px solid;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  border-color: ${({ disabled, theme, value }) =>
+  border-radius: ${({ borderRadius }) => borderRadius};
+  border-color: ${({ disabled, themeFields, value }) =>
     disabled
-      ? theme.borderColorDisabled
+      ? themeFields.colors.borderColorDisabled
       : value
-      ? theme.borderColorChecked
-      : theme.borderColor};
+      ? themeFields.colors.borderColorChecked
+      : themeFields.colors.borderColor};
   overflow: hidden;
 `;
 
@@ -62,78 +58,111 @@ const StyledCheckboxWrapper = styled.div<{ theme: CheckboxTheme }>`
   }
 `;
 
-export const Checkbox: React.FC<CheckboxProps> = ({
-  className,
-  disabled,
-  inputRef,
-  onChange,
-  onValueChange,
-  theme = defaultCheckboxTheme,
-  value
-}) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        iconColorDisabled: theme.iconColorDisabled,
-        iconColor: theme.iconColor
-      }
-    },
-    [theme]
-  );
-
-  const onClick = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(!value);
-      }
-    },
-    [onChange, onValueChange, value]
-  );
-
-  const handleInputChange = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => {
-      if (!disabled) {
-        if (onChange) {
-          onChange(ev);
-        }
-        if (onValueChange) {
-          onValueChange(ev.target.checked);
-        }
-      }
-    },
-    [disabled, onChange]
-  );
-
-  return (
-    <StyledCheckboxWrapper className={className} ref={inputRef} theme={theme}>
-      <Clickable onClick={disabled ? undefined : onClick}>
-        <InvisibleInput
-          disabled={disabled}
-          checked={value}
-          ref={inputRef}
-          onChange={handleInputChange}
-          type={"checkbox"}
-        />
-        <Wrapper disabled={disabled} theme={theme} value={value}>
-          <Row
-            justifyContent={"center"}
-            alignItems={"center"}
-            width={theme.width}
-            height={theme.height}
-          >
-            {value && (
-              <FontAwesomeIcon
-                icon={theme.checkIcon}
-                color={disabled ? colors.iconColorDisabled : colors.iconColor}
-                style={{ fontSize: theme.iconSize }}
-              />
-            )}
-          </Row>
-        </Wrapper>
-      </Clickable>
-    </StyledCheckboxWrapper>
-  );
+type ThemeFields = {
+  colors: {
+    backgroundColor: string;
+    backgroundColorChecked: string;
+    backgroundColorDisabled: string;
+    borderColor: string;
+    borderColorChecked: string;
+    borderColorDisabled: string;
+    iconColorDisabled: string;
+    iconColor: string;
+  };
 };
+
+export const Checkbox: React.FC<CheckboxProps> = ({
+         className,
+         disabled,
+         innerRef,
+         inputRef,
+         onChange,
+         onValueChange,
+         theme = defaultCheckboxTheme,
+         value
+       }) => {
+         const themeFields = useThemeFields<ThemeFields>(
+           {
+             colors: {
+               backgroundColor: theme.backgroundColor,
+               backgroundColorChecked: theme.backgroundColorChecked,
+               backgroundColorDisabled: theme.backgroundColorDisabled,
+               borderColor: theme.borderColor,
+               borderColorChecked: theme.borderColorChecked,
+               borderColorDisabled: theme.borderColorDisabled,
+               iconColorDisabled: theme.iconColorDisabled,
+               iconColor: theme.iconColor
+             }
+           },
+           [theme]
+         );
+
+         const onClick = useCallback(
+           ev => {
+             if (onChange) {
+               onChange(ev);
+             }
+             if (onValueChange) {
+               onValueChange(!value);
+             }
+           },
+           [onChange, onValueChange, value]
+         );
+
+         const handleInputChange = useCallback(
+           (ev: ChangeEvent<HTMLInputElement>) => {
+             if (!disabled) {
+               if (onChange) {
+                 onChange(ev);
+               }
+               if (onValueChange) {
+                 onValueChange(ev.target.checked);
+               }
+             }
+           },
+           [disabled, onChange]
+         );
+
+         return (
+           <StyledCheckboxWrapper
+             className={className}
+             ref={innerRef}
+             theme={theme}
+           >
+             <Clickable onClick={disabled ? undefined : onClick}>
+               <InvisibleInput
+                 disabled={disabled}
+                 checked={value}
+                 ref={inputRef}
+                 onChange={handleInputChange}
+                 type={"checkbox"}
+               />
+               <Wrapper
+                 borderRadius={theme.borderRadius}
+                 disabled={disabled}
+                 themeFields={themeFields}
+                 value={value}
+               >
+                 <Row
+                   justifyContent={"center"}
+                   alignItems={"center"}
+                   width={theme.width}
+                   height={theme.height}
+                 >
+                   {value && (
+                     <FontAwesomeIcon
+                       icon={theme.checkIcon}
+                       color={
+                         disabled
+                           ? themeFields.colors.iconColorDisabled
+                           : themeFields.colors.iconColor
+                       }
+                       style={{ fontSize: theme.iconSize }}
+                     />
+                   )}
+                 </Row>
+               </Wrapper>
+             </Clickable>
+           </StyledCheckboxWrapper>
+         );
+       };
