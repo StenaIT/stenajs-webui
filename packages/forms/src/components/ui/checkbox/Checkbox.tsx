@@ -38,7 +38,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
-                                                    wrapperRef,
+  wrapperRef,
   indeterminate = false,
   onChange,
   onValueChange,
@@ -51,13 +51,16 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       colors: {
         iconColorDisabled: theme.iconColorDisabled,
         iconColorChecked: theme.iconColorChecked,
+        iconColorIndeterminate: theme.iconColorIndeterminate,
         iconColorNotChecked: theme.iconColorNotChecked,
         iconColorNotCheckedHover: theme.iconColorNotCheckedHover,
         backgroundColorNotChecked: theme.backgroundColorNotChecked,
         backgroundColorNotCheckedHover: theme.backgroundColorNotCheckedHover,
         backgroundColorDisabled: theme.backgroundColorDisabled,
         backgroundColorChecked: theme.backgroundColorChecked,
+        backgroundColorIndeterminate: theme.backgroundColorIndeterminate,
         borderColorChecked: theme.borderColorChecked,
+        borderColorIndeterminate: theme.borderColorIndeterminate,
         borderColorNotChecked: theme.borderColorNotChecked,
         borderColorNotCheckedHover: theme.borderColorNotCheckedHover,
         borderColorDisabled: theme.borderColorDisabled
@@ -165,13 +168,16 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 interface IconColors {
   iconColorDisabled: string;
   iconColorChecked: string;
+  iconColorIndeterminate: string;
   iconColorNotChecked: string;
   iconColorNotCheckedHover: string;
   backgroundColorNotChecked: string;
   backgroundColorNotCheckedHover: string;
   backgroundColorDisabled: string;
   backgroundColorChecked: string;
+  backgroundColorIndeterminate: string;
   borderColorChecked: string;
+  borderColorIndeterminate: string;
   borderColorNotChecked: string;
   borderColorNotCheckedHover: string;
   borderColorDisabled: string;
@@ -186,7 +192,9 @@ const getIconColor = (
 ): string => {
   if (disabled) {
     return colors.iconColorDisabled;
-  } else if (value || indeterminate) {
+  } else if (indeterminate) {
+    return colors.iconColorIndeterminate;
+  } else if (value) {
     return colors.iconColorChecked;
   } else {
     if (mouseIsOver) {
@@ -205,7 +213,9 @@ const getBorderColor = (
 ): string => {
   if (disabled) {
     return colors.borderColorDisabled;
-  } else if (value || indeterminate) {
+  } else if (indeterminate) {
+    return colors.borderColorIndeterminate;
+  } else if (value) {
     return colors.borderColorChecked;
   } else {
     if (mouseIsOver) {
@@ -224,7 +234,9 @@ const getBackgroundColor = (
 ): string => {
   if (disabled) {
     return colors.backgroundColorDisabled;
-  } else if (value || indeterminate) {
+  } else if (indeterminate) {
+    return colors.backgroundColorIndeterminate;
+  } else if (value) {
     return colors.backgroundColorChecked;
   } else {
     if (mouseIsOver) {

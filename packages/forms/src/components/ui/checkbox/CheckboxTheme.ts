@@ -5,6 +5,7 @@ import { ThemeColorField } from '@stenajs-webui/core';
 export interface CheckboxTheme {
   borderColorFocused: ThemeColorField | string;
   borderColorChecked: ThemeColorField | string;
+  borderColorIndeterminate: ThemeColorField | string;
   borderColorNotChecked: ThemeColorField | string;
   borderColorNotCheckedHover: ThemeColorField | string;
   borderColorDisabled: ThemeColorField | string;
@@ -12,7 +13,9 @@ export interface CheckboxTheme {
   backgroundColorNotCheckedHover: ThemeColorField | string;
   backgroundColorDisabled: ThemeColorField | string;
   backgroundColorChecked: ThemeColorField | string;
+  backgroundColorIndeterminate: ThemeColorField | string;
   iconColorChecked: ThemeColorField | string;
+  iconColorIndeterminate: ThemeColorField | string;
   iconColorNotChecked: ThemeColorField | string;
   iconColorNotCheckedHover: ThemeColorField | string;
   iconColorDisabled: ThemeColorField | string;
@@ -25,6 +28,7 @@ export interface CheckboxTheme {
 
 export const defaultCheckboxTheme: CheckboxTheme = {
   backgroundColorChecked: "primaryText",
+  backgroundColorIndeterminate: "primaryText",
   backgroundColorNotChecked: "white",
   backgroundColorNotCheckedHover: "white",
   backgroundColorDisabled: "#f1f1f1",
@@ -32,11 +36,13 @@ export const defaultCheckboxTheme: CheckboxTheme = {
   borderColorNotCheckedHover: "primaryText",
   borderColorDisabled: "transparent",
   borderColorChecked: "primaryText",
+  borderColorIndeterminate: "primaryText",
   borderColorFocused: "primaryText",
   iconColorNotChecked: "primaryText",
   iconColorNotCheckedHover: 'primaryTextLight',
   iconColorDisabled: "disabledText",
   iconColorChecked: "white",
+  iconColorIndeterminate: "white",
   checkIcon: faCheck,
   width: "22px",
   height: "22px",
@@ -46,17 +52,20 @@ export const defaultCheckboxTheme: CheckboxTheme = {
 
 export const defaultCheckboxThemeDark: CheckboxTheme = {
   backgroundColorChecked: "#b7d1d9",
+  backgroundColorIndeterminate: "#b7d1d9",
   backgroundColorNotChecked: "#b7d1d9",
   backgroundColorNotCheckedHover: "#b7d1d9",
   backgroundColorDisabled: "#f1f1f1",
 
   borderColorChecked: "transparent",
+  borderColorIndeterminate: "transparent",
   borderColorNotChecked: "transparent",
   borderColorNotCheckedHover: "transparent",
   borderColorDisabled: "transparent",
   borderColorFocused: "transparent",
 
   iconColorChecked: "primaryText",
+  iconColorIndeterminate: "primaryText",
   iconColorNotChecked: "#4d7989",
   iconColorNotCheckedHover: 'primaryTextLight',
   iconColorDisabled: "disabledText",
