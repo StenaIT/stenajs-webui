@@ -1,6 +1,7 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { ThemeColorField } from '@stenajs-webui/core';
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
+import { ThemeColorField } from "@stenajs-webui/core";
 
 export interface CheckboxTheme {
   borderColorFocused: ThemeColorField | string;
@@ -20,6 +21,7 @@ export interface CheckboxTheme {
   iconColorNotCheckedHover: ThemeColorField | string;
   iconColorDisabled: ThemeColorField | string;
   checkIcon: IconDefinition;
+  indeterminateIcon: IconDefinition;
   width: string;
   height: string;
   borderRadius: string;
@@ -39,11 +41,12 @@ export const defaultCheckboxTheme: CheckboxTheme = {
   borderColorIndeterminate: "primaryText",
   borderColorFocused: "primaryText",
   iconColorNotChecked: "primaryText",
-  iconColorNotCheckedHover: 'primaryTextLight',
+  iconColorNotCheckedHover: "primaryTextLight",
   iconColorDisabled: "disabledText",
   iconColorChecked: "white",
   iconColorIndeterminate: "white",
   checkIcon: faCheck,
+  indeterminateIcon: faMinus,
   width: "22px",
   height: "22px",
   borderRadius: "4px",
@@ -67,9 +70,10 @@ export const defaultCheckboxThemeDark: CheckboxTheme = {
   iconColorChecked: "primaryText",
   iconColorIndeterminate: "primaryText",
   iconColorNotChecked: "#4d7989",
-  iconColorNotCheckedHover: 'primaryTextLight',
+  iconColorNotCheckedHover: "primaryTextLight",
   iconColorDisabled: "disabledText",
   checkIcon: faCheck,
+  indeterminateIcon: faMinus,
   width: "22px",
   height: "22px",
   borderRadius: "4px",

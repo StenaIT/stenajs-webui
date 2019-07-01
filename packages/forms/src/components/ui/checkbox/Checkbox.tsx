@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import {
   Box,
   Clickable,
@@ -257,7 +256,7 @@ const getIcon = (
     return theme.checkIcon;
   }
   if (indeterminate) {
-    return faMinus;
+    return theme.indeterminateIcon;
   }
   if (value) {
     return theme.checkIcon;
