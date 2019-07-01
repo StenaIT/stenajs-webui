@@ -16,6 +16,11 @@ export interface SpanProps extends Omit<JSX.IntrinsicElements["span"], "ref"> {
   innerRef?: MutableRefObject<HTMLInputElement>;
 }
 
+export interface ButtonProps extends Omit<JSX.IntrinsicElements["button"], "ref"> {
+  /** Input ref to use. If omitted, an internal ref will be used. */
+  innerRef?: MutableRefObject<HTMLButtonElement>;
+}
+
 export interface WithInnerRef<TInputElement> {
   innerRef?: MutableRefObject<TInputElement>;
 }
