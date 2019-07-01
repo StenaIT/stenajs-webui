@@ -1,4 +1,5 @@
 import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
+import { Ref } from 'react';
 import * as React from "react";
 import { ThemeColorField } from "@stenajs-webui/core";
 import { Switch, SwitchProps } from "./Switch";
@@ -7,6 +8,7 @@ import { defaultSwitchTheme } from "./SwitchTheme";
 export interface SwitchWithLabelProps extends SwitchProps {
   label: string;
   textColor?: ThemeColorField | string;
+  innerRef?: Ref<HTMLDivElement>;
 }
 
 export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({

@@ -9,14 +9,15 @@ import {
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ChangeEvent, useCallback, useRef } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import { FullOnChangeProps } from "../types";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps {
+    InputProps<HTMLButtonElement> {
   disabled?: boolean;
+  indeterminate?: boolean;
   theme?: CheckboxTheme;
 }
 
@@ -36,6 +37,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
+  wrapperRef,
+  indeterminate = false,
   onChange,
   onValueChange,
   theme = defaultCheckboxTheme,
@@ -47,13 +50,16 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       colors: {
         iconColorDisabled: theme.iconColorDisabled,
         iconColorChecked: theme.iconColorChecked,
+        iconColorIndeterminate: theme.iconColorIndeterminate,
         iconColorNotChecked: theme.iconColorNotChecked,
         iconColorNotCheckedHover: theme.iconColorNotCheckedHover,
         backgroundColorNotChecked: theme.backgroundColorNotChecked,
         backgroundColorNotCheckedHover: theme.backgroundColorNotCheckedHover,
         backgroundColorDisabled: theme.backgroundColorDisabled,
         backgroundColorChecked: theme.backgroundColorChecked,
+        backgroundColorIndeterminate: theme.backgroundColorIndeterminate,
         borderColorChecked: theme.borderColorChecked,
+        borderColorIndeterminate: theme.borderColorIndeterminate,
         borderColorNotChecked: theme.borderColorNotChecked,
         borderColorNotCheckedHover: theme.borderColorNotCheckedHover,
         borderColorDisabled: theme.borderColorDisabled
@@ -64,11 +70,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   const innerInputRef = useRef(null);
 
-  const innerRefToUse = inputRef || innerInputRef;
+  const inputRefToUse = inputRef || innerInputRef;
 
-  const mouseIsOver = useMouseIsOver(innerRefToUse);
+  const mouseIsOver = useMouseIsOver(inputRefToUse);
 
-  const icon = getIcon(value, disabled, mouseIsOver, theme);
+  const icon = getIcon(value, disabled, indeterminate, mouseIsOver, theme);
 
   const onClick = useCallback(
     ev => {
@@ -96,10 +102,22 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     [disabled, onChange]
   );
 
+  useEffect(() => {
+    if (inputRefToUse.current) {
+      inputRefToUse.current.indeterminate = Boolean(indeterminate);
+    }
+  }, [indeterminate, inputRefToUse]);
+
   return (
-    <Clickable onClick={disabled ? undefined : onClick}>
+    <Clickable onClick={disabled ? undefined : onClick} innerRef={wrapperRef}>
       <Box
-        borderColor={getBorderColor(value, disabled, mouseIsOver, colors)}
+        borderColor={getBorderColor(
+          value,
+          disabled,
+          indeterminate,
+          mouseIsOver,
+          colors
+        )}
         borderStyle={"solid"}
         borderWidth={"1px"}
         overflow={"hidden"}
@@ -108,14 +126,26 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <Box
           width={theme.width}
           height={theme.height}
-          background={getBackgroundColor(value, disabled, mouseIsOver, colors)}
+          background={getBackgroundColor(
+            value,
+            disabled,
+            indeterminate,
+            mouseIsOver,
+            colors
+          )}
           justifyContent={"center"}
           alignItems={"center"}
         >
           {icon && (
             <Icon
               icon={icon}
-              color={getIconColor(value, disabled, mouseIsOver, colors)}
+              color={getIconColor(
+                value,
+                disabled,
+                indeterminate,
+                mouseIsOver,
+                colors
+              )}
               size={theme.iconSize}
             />
           )}
@@ -124,7 +154,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       <InvisibleCheckbox
         disabled={disabled}
         checked={value}
-        ref={innerRefToUse}
+        ref={inputRefToUse}
         onChange={handleInputChange}
         type={"checkbox"}
         name={name}
@@ -137,13 +167,16 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 interface IconColors {
   iconColorDisabled: string;
   iconColorChecked: string;
+  iconColorIndeterminate: string;
   iconColorNotChecked: string;
   iconColorNotCheckedHover: string;
   backgroundColorNotChecked: string;
   backgroundColorNotCheckedHover: string;
   backgroundColorDisabled: string;
   backgroundColorChecked: string;
+  backgroundColorIndeterminate: string;
   borderColorChecked: string;
+  borderColorIndeterminate: string;
   borderColorNotChecked: string;
   borderColorNotCheckedHover: string;
   borderColorDisabled: string;
@@ -152,11 +185,14 @@ interface IconColors {
 const getIconColor = (
   value: boolean,
   disabled: boolean,
+  indeterminate: boolean,
   mouseIsOver: boolean,
   colors: IconColors
 ): string => {
   if (disabled) {
     return colors.iconColorDisabled;
+  } else if (indeterminate) {
+    return colors.iconColorIndeterminate;
   } else if (value) {
     return colors.iconColorChecked;
   } else {
@@ -170,11 +206,14 @@ const getIconColor = (
 const getBorderColor = (
   value: boolean,
   disabled: boolean,
+  indeterminate: boolean,
   mouseIsOver: boolean,
   colors: IconColors
 ): string => {
   if (disabled) {
     return colors.borderColorDisabled;
+  } else if (indeterminate) {
+    return colors.borderColorIndeterminate;
   } else if (value) {
     return colors.borderColorChecked;
   } else {
@@ -188,11 +227,14 @@ const getBorderColor = (
 const getBackgroundColor = (
   value: boolean,
   disabled: boolean,
+  indeterminate: boolean,
   mouseIsOver: boolean,
   colors: IconColors
 ): string => {
   if (disabled) {
     return colors.backgroundColorDisabled;
+  } else if (indeterminate) {
+    return colors.backgroundColorIndeterminate;
   } else if (value) {
     return colors.backgroundColorChecked;
   } else {
@@ -206,11 +248,15 @@ const getBackgroundColor = (
 const getIcon = (
   value: boolean,
   disabled: boolean,
+  indeterminate: boolean,
   mouseIsOver: boolean,
   theme: CheckboxTheme
 ): IconDefinition | undefined => {
   if (!value && !disabled && mouseIsOver) {
     return theme.checkIcon;
+  }
+  if (indeterminate) {
+    return theme.indeterminateIcon;
   }
   if (value) {
     return theme.checkIcon;
