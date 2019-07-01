@@ -19,6 +19,19 @@ storiesOf("forms/Checkbox", module)
   ))
   .add("checked and disabled", () => <Checkbox value={true} disabled />)
   .add("not checked and disabled", () => <Checkbox value={false} disabled />)
+  .add("indeterminate", () => (
+    <Checkbox
+      value={knobs.boolean("Checked", false)}
+      indeterminate={knobs.boolean("Indeterminate", false)}
+    />
+  ))
+  .add("indeterminate with dark theme", () => (
+    <Checkbox
+      value={knobs.boolean("Checked", false)}
+      indeterminate={knobs.boolean("Indeterminate", false)}
+      theme={defaultCheckboxThemeDark}
+    />
+  ))
   .add("with dark theme", () => (
     <Checkbox
       value={knobs.boolean("Checked", false)}

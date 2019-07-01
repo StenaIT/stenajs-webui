@@ -1,4 +1,4 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { ThemeColorField } from "@stenajs-webui/core";
 
@@ -13,7 +13,7 @@ export interface CheckboxTheme {
   iconColor: ThemeColorField | string;
   iconColorDisabled: ThemeColorField | string;
   iconColorChecked: ThemeColorField | string;
-  checkIcon: IconProp;
+  checkIcon: IconDefinition;
   width: string;
   height: string;
   borderRadius: string;
