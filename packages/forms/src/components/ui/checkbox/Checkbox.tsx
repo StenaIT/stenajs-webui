@@ -6,7 +6,8 @@ import {
   Clickable,
   InputProps,
   useMouseIsOver,
-  useThemeFields
+  useThemeFields,
+  WithInnerRef
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -16,7 +17,8 @@ import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps {
+    InputProps,
+    WithInnerRef<HTMLButtonElement> {
   disabled?: boolean;
   indeterminate?: boolean;
   theme?: CheckboxTheme;
@@ -38,8 +40,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
-                                                    innerRef,
-  indeterminate,
+  innerRef,
+  indeterminate = false,
   onChange,
   onValueChange,
   theme = defaultCheckboxTheme,
@@ -109,7 +111,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <Clickable onClick={disabled ? undefined : onClick} ref={innerRef}>
       <Box
-        borderColor={getBorderColor(value, disabled, indeterminate, mouseIsOver, colors)}
+        borderColor={getBorderColor(
+          value,
+          disabled,
+          indeterminate,
+          mouseIsOver,
+          colors
+        )}
         borderStyle={"solid"}
         borderWidth={"1px"}
         overflow={"hidden"}
@@ -118,14 +126,26 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         <Box
           width={theme.width}
           height={theme.height}
-          background={getBackgroundColor(value, disabled, indeterminate, mouseIsOver, colors)}
+          background={getBackgroundColor(
+            value,
+            disabled,
+            indeterminate,
+            mouseIsOver,
+            colors
+          )}
           justifyContent={"center"}
           alignItems={"center"}
         >
           {icon && (
             <Icon
               icon={icon}
-              color={getIconColor(value, disabled, indeterminate, mouseIsOver, colors)}
+              color={getIconColor(
+                value,
+                disabled,
+                indeterminate,
+                mouseIsOver,
+                colors
+              )}
               size={theme.iconSize}
             />
           )}

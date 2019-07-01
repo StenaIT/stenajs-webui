@@ -29,7 +29,8 @@
   "dependencies": {
     "@stenajs-webui/core": "0.0.25",
     "@stenajs-webui/elements": "0.0.25",
-    "@stenajs-webui/forms": "0.0.25"
+    "@stenajs-webui/forms": "0.0.25",
+    "date-fns": "2.0.0-alpha.27"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.19",

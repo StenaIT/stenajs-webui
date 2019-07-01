@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import * as React from "react";
-import { CSSProperties, MouseEventHandler } from "react";
+import { CSSProperties, MouseEventHandler, MutableRefObject } from "react";
 
 export interface ClickableProps {
   /** Callback function called when clicking on click area. */
@@ -21,6 +21,8 @@ export interface ClickableProps {
   disableFocusHighlight?: boolean;
   /** Disables the HTML button element. */
   disabled?: boolean;
+  /** Input ref to use. */
+  ref?: MutableRefObject<HTMLButtonElement>;
 }
 
 interface ClickableElementProps {
@@ -57,6 +59,7 @@ export const Clickable: React.FC<ClickableProps> = ({
   disableOpacityOnClick,
   disablePointer,
   opacityOnHover,
+  ref,
   style,
   disabled,
   children
@@ -77,6 +80,7 @@ export const Clickable: React.FC<ClickableProps> = ({
       onClick={onClick}
       onDoubleClick={onDblClick}
       disableFocusHighlight={disableFocusHighlight}
+      ref={ref}
     >
       {children}
     </ClickableElement>
