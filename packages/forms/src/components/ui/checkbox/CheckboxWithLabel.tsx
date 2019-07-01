@@ -5,6 +5,7 @@ import {
   ThemeColorField,
   useThemeFields
 } from "@stenajs-webui/core";
+import { Ref } from 'react';
 import * as React from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 import { defaultCheckboxTheme } from "./CheckboxTheme";
@@ -12,6 +13,7 @@ import { defaultCheckboxTheme } from "./CheckboxTheme";
 export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
   textColor?: ThemeColorField | string;
+  innerRef?: Ref<HTMLDivElement>;
 }
 
 export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {

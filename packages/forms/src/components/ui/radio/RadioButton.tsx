@@ -14,7 +14,7 @@ import { defaultRadioButtonTheme, RadioButtonTheme } from "./RadioButtonTheme";
 
 export interface RadioButtonProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps {
+    InputProps<HTMLButtonElement> {
   disabled?: boolean;
   theme?: RadioButtonTheme;
 }
@@ -39,7 +39,8 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   theme = defaultRadioButtonTheme,
   value = false,
   inputRef,
-  name
+  name,
+  wrapperRef
 }) => {
   const { colors } = useThemeFields(
     {
@@ -55,9 +56,9 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
   const innerInputRef = useRef(null);
 
-  const innerRefToUse = inputRef || innerInputRef;
+  const inputRefToUse = inputRef || innerInputRef;
 
-  const mouseIsOver = useMouseIsOver(innerRefToUse);
+  const mouseIsOver = useMouseIsOver(inputRefToUse);
 
   const icon = getIcon(value, disabled, mouseIsOver, theme);
 
@@ -88,7 +89,10 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   );
 
   return (
-    <Clickable onClick={disabled ? undefined : onClickHandler}>
+    <Clickable
+      onClick={disabled ? undefined : onClickHandler}
+      innerRef={wrapperRef}
+    >
       <Icon
         color={getIconColor(value, disabled, mouseIsOver, colors)}
         icon={icon}
@@ -98,7 +102,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
       <InvisibleRadioButton
         disabled={disabled}
         checked={value}
-        ref={innerRefToUse}
+        ref={inputRefToUse}
         onChange={handleInputChange}
         type={"radio"}
         name={name}

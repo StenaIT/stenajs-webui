@@ -6,8 +6,7 @@ import {
   Clickable,
   InputProps,
   useMouseIsOver,
-  useThemeFields,
-  WithInnerRef
+  useThemeFields
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -17,8 +16,7 @@ import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps,
-    WithInnerRef<HTMLButtonElement> {
+    InputProps<HTMLButtonElement> {
   disabled?: boolean;
   indeterminate?: boolean;
   theme?: CheckboxTheme;
@@ -40,7 +38,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
-  innerRef,
+                                                    wrapperRef,
   indeterminate = false,
   onChange,
   onValueChange,
@@ -70,9 +68,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
   const innerInputRef = useRef(null);
 
-  const innerRefToUse = inputRef || innerInputRef;
+  const inputRefToUse = inputRef || innerInputRef;
 
-  const mouseIsOver = useMouseIsOver(innerRefToUse);
+  const mouseIsOver = useMouseIsOver(inputRefToUse);
 
   const icon = getIcon(value, disabled, indeterminate, mouseIsOver, theme);
 
@@ -103,13 +101,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 
   useEffect(() => {
-    if (innerRefToUse.current) {
-      innerRefToUse.current.indeterminate = Boolean(indeterminate);
+    if (inputRefToUse.current) {
+      inputRefToUse.current.indeterminate = Boolean(indeterminate);
     }
-  }, [indeterminate, innerRefToUse]);
+  }, [indeterminate, inputRefToUse]);
 
   return (
-    <Clickable onClick={disabled ? undefined : onClick} ref={innerRef}>
+    <Clickable onClick={disabled ? undefined : onClick} innerRef={wrapperRef}>
       <Box
         borderColor={getBorderColor(
           value,
@@ -154,7 +152,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       <InvisibleCheckbox
         disabled={disabled}
         checked={value}
-        ref={innerRefToUse}
+        ref={inputRefToUse}
         onChange={handleInputChange}
         type={"checkbox"}
         name={name}
