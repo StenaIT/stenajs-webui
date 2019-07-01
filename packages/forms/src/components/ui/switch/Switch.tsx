@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { InputProps, Omit, useThemeFields } from '@stenajs-webui/core';
-import * as React from 'react';
-import { ChangeEvent, useCallback } from 'react';
-import { FullOnChangeProps } from '../types';
-import { defaultSwitchTheme, SwitchTheme } from './SwitchTheme';
+import styled from "@emotion/styled";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { InputProps, Omit, useThemeFields } from "@stenajs-webui/core";
+import * as React from "react";
+import { ChangeEvent, useCallback } from "react";
+import { FullOnChangeProps } from "../types";
+import { defaultSwitchTheme, SwitchTheme } from "./SwitchTheme";
 
 export interface SwitchProps
   extends Omit<InputProps, "value" | "onChange">,
