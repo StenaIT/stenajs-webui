@@ -36,7 +36,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       <div style={{ display: "inline-block" }}>
         <NumericTextInput
           value={store.state.value}
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
           className={"the-super-class"}
         />
         <StandardText>String value: {store.state.value}</StandardText>
@@ -52,7 +52,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       <div style={{ display: "inline-block" }}>
         <NumericInput
           value={store.state.value}
-          onValueChange={(value: number) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
         <StandardText>Number value: {store.state.value}</StandardText>
       </div>
@@ -67,7 +67,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
           <NumericTextInput
             value={store.state.value}
-            onValueChange={(value: string) => store.set({ value })}
+            onValueChange={value => store.set({ value })}
             theme={defaultNumericTextInputThemeDark}
           />
         </Box>
@@ -83,7 +83,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         <NumericTextInput
           disabled
           value={store.state.value}
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
       </div>
     ))
@@ -97,7 +97,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
         <NumericTextInput
           hideButtons
           value={store.state.value}
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
       </div>
     ))
@@ -113,7 +113,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
           value={store.state.value}
           min={1}
           max={8}
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
       </div>
     ))
@@ -133,7 +133,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
               <StandardText>sec</StandardText>
             </div>
           }
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
       </div>
     ))
@@ -148,7 +148,7 @@ storiesOf("forms/TextInput/NumericTextInput", module)
           min={3}
           max={8}
           value={store.state.value}
-          onValueChange={(value: string) => store.set({ value })}
+          onValueChange={value => store.set({ value })}
         />
       </div>
     ))
