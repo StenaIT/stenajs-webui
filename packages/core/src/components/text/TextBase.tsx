@@ -5,26 +5,26 @@ import {
   UserSelectProperty,
   WhiteSpaceProperty
 } from "csstype";
-import * as React from "react";
 import {
   fontFamily,
   FontFamilyProps,
   fontSize,
   FontSizeProps,
   fontWeight,
-  FontWeightProps
+  FontWeightProps,
+  textAlign,
+  TextAlignProps
 } from "styled-system";
 import { ThemeFontField } from "../../theme/theme-types/ThemeFonts";
 import { ThemeFontSizeField } from "../../theme/theme-types/ThemeFontSizes";
 import { ThemeFontWeightField } from "../../theme/theme-types/ThemeFontWeights";
+import { SpanProps } from "../../types/ElementProps";
 import { Omit } from "../../types/Omit";
 
 export interface TextProps
   extends TextThemeProps,
     TextBasePropsBase,
     Omit<SpanProps, "color"> {}
-
-type SpanProps = JSX.IntrinsicElements["span"];
 
 export interface TextThemeProps {
   fontSize?: ThemeFontSizeField | string;
@@ -56,17 +56,17 @@ interface TextBaseInternalProps {
   fontWeight?: FontWeightProperty;
 }
 
-type StyledSystemProps = FontWeightProps & FontFamilyProps & FontSizeProps;
+type StyledSystemProps = FontWeightProps &
+  FontFamilyProps &
+  FontSizeProps &
+  TextAlignProps;
 
-/**
- * NOTE:
- * Do not add color here, span already includes color.
- */
 const SpanWithHover = styled.span<TextBaseProps>`
   ${({ color }) => (color ? `color: ${color};` : "")};
   ${fontSize};
   ${fontFamily};
   ${fontWeight};
+  ${textAlign}
   user-select: ${({ userSelect }) => userSelect};
   text-decoration: ${({ textDecoration }) => textDecoration};
   white-space: ${({ whiteSpace }) => whiteSpace};
@@ -77,4 +77,4 @@ const SpanWithHover = styled.span<TextBaseProps>`
   }
 `;
 
-export const TextBase: React.FC<TextBaseProps> = SpanWithHover;
+export const TextBase = SpanWithHover;

@@ -1,5 +1,5 @@
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
-import { Omit, useTheme } from "@stenajs-webui/core";
+import { Omit } from "@stenajs-webui/core";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -24,13 +24,12 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   useIcon = true,
   value,
   width = "85px",
+  backgroundColor,
   ...props
 }) => {
   const [valid, setValid] = useState(() => validUserInput(value));
 
   const timeFormat = "hh:mm";
-
-  const theme = useTheme();
 
   const onBlur = useCallback(() => {
     if (value) {
@@ -61,7 +60,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   return (
     <StandardTextInput
       {...props}
-      backgroundColor={valid ? undefined : theme.colors.errorBgLight}
+      backgroundColor={valid ? backgroundColor : "errorBgLight"}
       iconLeft={useIcon ? faClock : undefined}
       value={value}
       placeholder={showPlaceholder ? timeFormat : undefined}

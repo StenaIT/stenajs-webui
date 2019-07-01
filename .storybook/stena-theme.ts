@@ -38,7 +38,7 @@ const color = {
   inverseText: "#FFFFFF"
 };
 
-export const background = {
+const background = {
   app: "#F6F9FC",
   content: color.lightest,
   hoverable: "rgba(0,0,0,.05)", // hover state for items in a list

@@ -28,6 +28,17 @@ storiesOf("elements/Buttons/SmallButton", module)
   .add("with loading", () => (
     <SmallButton label={"Submit"} loading onClick={action("Button clicked")} />
   ))
+  .add("with loading label", () => (
+    <SmallButton
+      label={"Submit"}
+      loading
+      loadingLabel={"Loading..."}
+      onClick={action("Button clicked")}
+    />
+  ))
   .add("with success", () => (
     <SmallButton label={"Submit"} success onClick={action("Button clicked")} />
+  ))
+  .add("with success label", () => (
+    <SmallButton label={"Submit"} success successLabel={"Done!"} />
   ));

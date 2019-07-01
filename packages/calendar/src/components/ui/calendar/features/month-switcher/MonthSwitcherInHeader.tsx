@@ -3,6 +3,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight
 import { StandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ComponentEnhancer, compose, withProps } from "recompose";
+import { defaultCalendarTheme } from "../../components/CalendarTheme";
 import {
   CalendarHeaderContentProps,
   CalendarProps
@@ -22,20 +23,15 @@ type InnerProps = CalendarProps<{}> &
 const withSwitchButtonsLeftRight = withProps<
   CalendarHeaderContentProps,
   InnerProps
->(({ prevMonth, nextMonth, theme }) => ({
+>(({ prevMonth, nextMonth, theme = defaultCalendarTheme }) => ({
   headerLeftContent: (
     <StandardButton
       onClick={prevMonth}
       leftIcon={faChevronLeft}
-      buttonTheme={
-        theme && theme.CalendarMonth.SwitchButton
-          ? theme.CalendarMonth.SwitchButton
-          : undefined
-      }
+      buttonTheme={theme.CalendarMonth.SwitchButton}
       width={
-        theme && theme.CalendarMonth.SwitchButton
-          ? theme.CalendarMonth.SwitchButton.width
-          : undefined
+        theme.CalendarMonth.SwitchButton &&
+        theme.CalendarMonth.SwitchButton.width
       }
     />
   ),
@@ -43,15 +39,10 @@ const withSwitchButtonsLeftRight = withProps<
     <StandardButton
       onClick={nextMonth}
       leftIcon={faChevronRight}
-      buttonTheme={
-        theme && theme.CalendarMonth.SwitchButton
-          ? theme.CalendarMonth.SwitchButton
-          : undefined
-      }
+      buttonTheme={theme.CalendarMonth.SwitchButton}
       width={
-        theme && theme.CalendarMonth.SwitchButton
-          ? theme.CalendarMonth.SwitchButton.width
-          : undefined
+        theme.CalendarMonth.SwitchButton &&
+        theme.CalendarMonth.SwitchButton.width
       }
     />
   )

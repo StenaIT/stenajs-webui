@@ -1,7 +1,7 @@
+import { SmallerText } from "@stenajs-webui/core";
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { SmallerText } from "../variants/SmallerText";
 
 storiesOf("core/Text/SmallerText", module)
   .add("standard", () => (
@@ -20,9 +20,7 @@ storiesOf("core/Text/SmallerText", module)
     </SmallerText>
   ))
   .add("with selection disabled", () => (
-    <SmallerText userSelect={"none"}>
-      This text can not be selected
-    </SmallerText>
+    <SmallerText userSelect={"none"}>This text can not be selected</SmallerText>
   ))
   .add("with font weights", () => (
     <div>

@@ -13,7 +13,8 @@ export const defaultFlatButtonTheme: ButtonTheme = {
   bgColorDisabled: "transparent",
   textColor: "primaryText",
   textColorDisabled: "disabledText",
-  progressSpinnerColor: "primaryText",
+  loadingTextColor: "primaryText",
+  loadingSpinnerColor: "primaryText",
   successIconColor: "primaryText",
   successTextColor: "primaryText"
 };

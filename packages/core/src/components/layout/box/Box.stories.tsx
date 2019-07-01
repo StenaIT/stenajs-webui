@@ -1,11 +1,8 @@
+import { Box, defaultTheme, StandardText } from "@stenajs-webui/core";
 import { color, number, select } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as CSS from "csstype";
 import * as React from "react";
-import { defaultTheme } from "../../../theme/DefaultTheme";
-import { StandardText } from "../../text/variants/StandardText";
-
-import { Box } from "./Box";
 import markdown from "./Box.md";
 
 storiesOf("core/Layout/Box", module)

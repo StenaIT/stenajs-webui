@@ -1,11 +1,5 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import {
-  Absolute,
-  Box,
-  Relative,
-  useOnClickOutside,
-  useThemeFields
-} from "@stenajs-webui/core";
+import { useOnClickOutside, useThemeFields } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
@@ -23,13 +17,17 @@ import {
   defaultCalendarTheme
 } from "../calendar/components/CalendarTheme";
 import { createSingleDateCalendar } from "../calendar/SingleDateCalendar";
+import { CalendarPopupBox } from "./CalendarPopupBox";
 import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
+import { DateTextInputCalendarProps } from "./DateTextInput";
 
-export interface DateInputProps {
+export interface DateInputProps<T = {}> {
   /** The current value */
   value?: Date;
   /** onChange handler for when the user selects a date. */
   onChange?: (date: Date | undefined) => void;
+  /** Background color of the input field. */
+  backgroundColor?: string;
   /** If true, calendar will be open when component mounts. */
   openOnMount?: boolean;
   /** Is invoked when user closes the calendar popup. */
@@ -57,15 +55,14 @@ export interface DateInputProps {
    * The calendar theme to use.
    */
   calendarTheme?: CalendarTheme;
+  /** Props to be passed to Calendar, see SingleDateCalendar. */
+  calendarProps?: DateTextInputCalendarProps<T>;
 }
 
 export interface DateInputPropsWithDefaultProps {
   displayFormat: string;
   placeholder: string;
 }
-
-// tslint:disable:no-empty
-const noop = () => {};
 
 type InnerProps = DateInputProps &
   WithShowingCalendarStateProps &
@@ -78,6 +75,7 @@ const SingleDateCalendar = createSingleDateCalendar();
 const DateInputComponent: React.FC<InnerProps> = ({
   showCalendar,
   hideCalendar,
+  backgroundColor,
   displayFormat,
   showingCalendar,
   placeholder,
@@ -86,6 +84,7 @@ const DateInputComponent: React.FC<InnerProps> = ({
   zIndex,
   theme = defaultDateInputTheme,
   calendarTheme = defaultCalendarTheme,
+  calendarProps,
   openOnMount
 }) => {
   const ref = useRef(null);
@@ -98,38 +97,36 @@ const DateInputComponent: React.FC<InnerProps> = ({
         borderColor: theme.borderColor
       }
     },
-    []
+    [theme]
   );
 
   return (
     <>
       <StandardTextInput
+        backgroundColor={backgroundColor}
         iconLeft={faCalendarAlt}
         onFocus={showCalendar}
+        onClickLeft={showCalendar}
         value={value ? format(value, displayFormat) : ""}
         placeholder={placeholder}
-        onChange={noop}
         size={9}
         forceFocusHighlight={showingCalendar}
         focusOnMount={openOnMount}
       />
       {showingCalendar && (
-        <Relative>
-          <Absolute zIndex={zIndex} innerRef={ref}>
-            <Box
-              background={colors.backgroundColor}
-              borderColor={colors.borderColor}
-              indent
-              spacing
-            >
-              <SingleDateCalendar
-                onChange={onSelectDate}
-                value={value}
-                theme={calendarTheme}
-              />
-            </Box>
-          </Absolute>
-        </Relative>
+        <CalendarPopupBox
+          innerRef={ref}
+          background={colors.backgroundColor}
+          borderColor={colors.borderColor}
+          zIndex={zIndex}
+        >
+          <SingleDateCalendar
+            {...calendarProps}
+            onChange={onSelectDate}
+            value={value}
+            theme={calendarTheme}
+          />
+        </CalendarPopupBox>
       )}
     </>
   );

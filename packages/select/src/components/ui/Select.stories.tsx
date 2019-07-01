@@ -1,8 +1,7 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
+import { Select, selectThemeDark } from "@stenajs-webui/select";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { selectThemeDark } from "../../SelectTheme";
-import { Select } from "./Select";
 
 storiesOf("select/Select", module)
   .add("standard", () => (

@@ -3,7 +3,7 @@ import {
   defaultStandardTextInputTheme,
   StandardTextInputTheme,
   defaultStandardTextInputThemeDark
-} from "./StandardTextInputTheme";
+} from "../StandardTextInputTheme";
 
 export interface NumericTextInputTheme extends StandardTextInputTheme {
   borderColor: ThemeColorField | string;

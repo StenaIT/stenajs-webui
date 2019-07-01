@@ -1,15 +1,28 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
+import {
+  defaultStandardTextInputThemeDark,
+  StandardTextInput
+} from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardTextInput } from "./StandardTextInput";
-import { defaultStandardTextInputThemeDark } from "./StandardTextInputTheme";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
   .add("standard", () => (
-    <StandardTextInput value={knobs.text("Text", "Some nice text.")} />
+    <Box width={"400px"}>
+      <StandardTextInput value={knobs.text("Text", "Some nice text.")} />
+    </Box>
+  ))
+  .add("with background and text color", () => (
+    <Box width={"400px"}>
+      <StandardTextInput
+        value={knobs.text("Text", "Some nice text.")}
+        backgroundColor={knobs.color("Background color", "#5f4860")}
+        textColor={knobs.color("Text color", "#fffb9f")}
+      />
+    </Box>
   ))
   .add("with dark theme", () => (
     <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
@@ -122,34 +135,48 @@ storiesOf("forms/TextInput/StandardTextInput", module)
     <StandardTextInput value={""} placeholder={"Enter name"} />
   ))
   .add("with custom styling", () => (
-    <div style={{ width: 200 }}>
+    <Box width={"400px"}>
       <StandardTextInput
         value={"some input text"}
         style={{ fontStyle: "italic", fontWeight: "bold", color: "orange" }}
       />
-    </div>
+    </Box>
+  ))
+  .add("with select all on mount", () => (
+    <Box width={"400px"}>
+      <StandardTextInput value={"Donald Duck"} selectAllOnMount />
+    </Box>
+  ))
+  .add("with select all on focus", () => (
+    <Box width={"400px"}>
+      <StandardTextInput value={"Donald Duck"} selectAllOnFocus />
+    </Box>
   ))
   .add("disabled", () => (
-    <StandardTextInput value={""} placeholder={"Enter name"} disabled={true} />
+    <Box width={"400px"}>
+      <StandardTextInput
+        value={""}
+        placeholder={"Enter name"}
+        disabled={true}
+      />
+    </Box>
   ))
   .add("disabled with content", () => (
-    <StandardTextInput
-      disabled={true}
-      value={"some entered text"}
-      contentRight={<StandardText>ms</StandardText>}
-      iconLeft={faCoffee}
-    />
+    <Box width={"400px"}>
+      <StandardTextInput
+        disabled={true}
+        value={"some entered text"}
+        contentRight={<StandardText>ms</StandardText>}
+        iconLeft={faCoffee}
+      />
+    </Box>
   ))
   .add("with dynamic width", () => (
     <div>
       <StandardTextInput value={"120px"} width={"120px"} />
-
       <Space />
-
       <StandardTextInput value={"24em"} width={"24em"} />
-
       <Space />
-
       <StandardTextInput value={"100%"} width={"100%"} />
     </div>
   ));

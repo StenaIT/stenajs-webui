@@ -18,6 +18,10 @@ export interface ThemeColors {
   errorTextLight: string;
   errorBgLight: string;
   errorBgDark: string;
+  badgeBg: string;
+  navBarBg: string;
+  navBarBgButtonText: string;
+  navBarBgButtonTextFaded: string;
   alertText: string;
   alertTextLight: string;
   info: string;
@@ -30,4 +34,4 @@ export interface ThemeColors {
   highlightBoxBorder: string;
 }
 
-export type ThemeColorField = keyof ThemeColors;  // TODO Add CSS color type.
+export type ThemeColorField = keyof ThemeColors; // TODO Add CSS color type.

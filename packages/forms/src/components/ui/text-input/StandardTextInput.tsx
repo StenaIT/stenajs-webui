@@ -10,7 +10,12 @@ import {
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ChangeEvent, ChangeEventHandler, useCallback, useState } from "react";
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  FocusEventHandler,
+  useState
+} from "react";
 import { FullOnChangeProps } from "../types";
 import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 import {
@@ -162,58 +167,56 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 }) => {
   const [focused, setFocused] = useState(false);
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
-    ev => {
-      if (onValueChange) {
-        onValueChange(ev.target.value || "");
-      }
-      if (onChange) {
-        onChange(ev);
-      }
-    },
-    [onChange, onValueChange]
-  );
-
-  const onBlurHandler = useCallback(() => {
-    if (onBlur) {
-      onBlur();
-    }
-    setFocused(false);
-    return {
-      focused: false
-    };
-  }, [onBlur, setFocused]);
-
-  const onFocusHandler = useCallback(() => {
-    if (onFocus) {
-      onFocus();
-    }
-    setFocused(true);
-  }, [onFocus, setFocused]);
-
   const { colors } = useThemeFields(
     {
       colors: {
         disabledBackgroundColor: theme.disabledBackgroundColor,
         backgroundColor: backgroundColor || theme.backgroundColor,
         borderColorFocused: theme.borderColorFocused,
-        borderColor: theme.borderColor
+        borderColor: theme.borderColor,
+        textColor: textColor || theme.textColor
       }
     },
-    [theme]
+    [theme, backgroundColor, textColor]
   );
+
+  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = ev => {
+    if (onValueChange) {
+      onValueChange(ev.target.value || "");
+    }
+    if (onChange) {
+      onChange(ev);
+    }
+  };
+
+  const onBlurHandler: FocusEventHandler<HTMLInputElement> = ev => {
+    if (onBlur) {
+      onBlur(ev);
+    }
+    setFocused(false);
+  };
+
+  const onFocusHandler: FocusEventHandler<HTMLInputElement> = ev => {
+    if (onFocus) {
+      onFocus(ev);
+    }
+    setFocused(true);
+  };
+
+  const activeBgColor = disabled
+    ? colors.disabledBackgroundColor
+    : colors.backgroundColor;
+
+  const activeBorderColor =
+    forceFocusHighlight || focused
+      ? colors.borderColorFocused
+      : colors.borderColor;
 
   return (
     <Box
-      background={
-        disabled ? colors.disabledBackgroundColor : colors.backgroundColor
-      }
+      background={activeBgColor}
       borderRadius={theme.borderRadius}
-      borderColor={
-        forceFocusHighlight || focused
-          ? colors.borderColorFocused
-          : colors.borderColor
-      }
+      borderColor={activeBorderColor}
       borderStyle={theme.borderStyle}
       borderWidth={theme.borderWidth}
       width={inputProps.width || "100%"}
@@ -238,7 +241,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
-            backgroundColor={colors.backgroundColor}
+            backgroundColor={activeBgColor}
             disabled={disabled}
             fontSize={theme.fontSize}
             height={theme.height}
@@ -248,7 +251,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
               boxSizing: "border-box",
               ...inputProps.style
             }}
-            textColor={theme.textColor}
+            textColor={colors.textColor}
             width={"100%"}
           />
         </div>

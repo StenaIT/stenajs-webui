@@ -1,18 +1,25 @@
+import {
+  defaultRadioButtonTheme,
+  defaultRadioButtonThemeDark,
+  RadioButton,
+  RadioButtonWithLabel
+} from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { RadioButton } from "./RadioButton";
-import {
-  defaultRadioButtonTheme,
-  defaultRadioButtonThemeDark
-} from "./RadioButtonTheme";
-import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
 
 storiesOf("forms/RadioButton", module)
   .add("standard", () => (
     <RadioButton
       value={knobs.boolean("Checked", false)}
       disabled={knobs.boolean("Disabled", false)}
+    />
+  ))
+  .add("with DOM name", () => (
+    <RadioButton
+      value={knobs.boolean("Checked", false)}
+      disabled={knobs.boolean("Disabled", false)}
+      name={knobs.text("Name", "agree")}
     />
   ))
   .add("checked and disabled", () => <RadioButton value={true} disabled />)

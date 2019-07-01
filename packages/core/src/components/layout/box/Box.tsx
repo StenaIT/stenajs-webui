@@ -1,12 +1,6 @@
-import styled from "@emotion/styled";
-import {
-  BackgroundProperty,
-  BorderColorProperty,
-  BorderProperty,
-  BoxShadowProperty,
-  ColorProperty
-} from "csstype";
-import * as React from "react";
+import styled from '@emotion/styled';
+import { BackgroundProperty, BorderColorProperty, BorderProperty, BoxShadowProperty, ColorProperty } from 'csstype';
+import * as React from 'react';
 import {
   alignItems,
   AlignItemsProps,
@@ -49,7 +43,7 @@ import {
   maxWidth,
   MaxWidthProps,
   minHeight,
-  MinHeightProps,
+  MinHeightProps, minWidth,
   MinWidthProps,
   overflow,
   OverflowProps,
@@ -63,11 +57,11 @@ import {
   width,
   WidthProps,
   zIndex,
-  ZIndexProps
-} from "styled-system";
-import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
-import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
-import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
+  ZIndexProps,
+} from 'styled-system';
+import { useThemeSelector } from '../../../theme/hooks/UseThemeSelector';
+import { ThemeColorField } from '../../../theme/theme-types/ThemeColors';
+import { ThemeShadows } from '../../../theme/theme-types/ThemeShadows';
 
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &
@@ -173,11 +167,13 @@ const FlexBox = styled.div<
   ${height};
   ${justifyContent};
   ${minHeight};
+  ${minWidth};
   ${maxHeight};
   ${maxWidth};
   ${overflow};
-  padding: ${props => numberOrZero(props.spacing) * props.themeSpacing}px
-    ${props => numberOrZero(props.indent) * props.themeIndent}px;
+  padding: ${props =>
+    numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
+    ${props => numberOrZero(props.indent) * (props.themeIndent || 10)}px;
   ${position}
   ${width};
   ${zIndex}
@@ -215,5 +211,12 @@ export const Box: React.FC<BoxProps> = ({
   return <FlexBox ref={innerRef} {...boxProps} {...props} />;
 };
 
-const numberOrZero = (num: number | boolean | undefined): number =>
-  (num as number) || 0;
+const numberOrZero = (num: number | boolean | undefined): number => {
+  if (num == null) {
+    return 0;
+  }
+  if (typeof num === "boolean") {
+    return num ? 1 : 0;
+  }
+  return num;
+};

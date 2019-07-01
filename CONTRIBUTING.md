@@ -1,10 +1,23 @@
 # How to contribute
 
+## Building the library
+
+```
+$ yarn
+$ yarn lerna link
+$ yarn build-all
+```
+
 ## Libraries of choice
 
 - `emotion` and `styled-system` is used for all styling.
 - Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
 - Font Awesome is used for all icons.
+
+### Resources
+
+* https://emotion.sh/docs/introduction
+* https://styled-system.com/
 
 ## Dependencies
 
@@ -16,7 +29,14 @@ See `@stenajs-webui/select`, which uses `react-select` as a dependency.
 
 ## Adding new packages
 
-TODO
+- Copy `<git-root>/template` to `<git-root>/packages/` and rename it.
+- Update name and version in `package.json`.
+- Update dependency versions in `package.json`.
+- Run `yarn check-deps-match` in git-root to check that dependencies are correct.
+- Write code.
+- Export code in index.ts.
+- Run `yarn build` in package folder.
+- Run `yarn check-builds` in git-root to check that the build is correct.
 
 ## Code style
 
@@ -24,6 +44,25 @@ TODO
 - Prettier.
 - No default exports. All exports should be named.
 - Use args destructuring.
+
+## Imports from other stenajs-webui packages
+
+When you import code from other packages, you must do it from package name.
+
+```js
+import { Box } from "@stenajs-webui/core";
+```
+
+This is incorrect:
+
+```js
+import { Box } from "../../../core/src/etc";
+```
+
+This will cause the build to get an incorrect folder structure,
+and importing your package from other projects will fail.
+
+You can verify that the build is correct by running `yarn check-builds` in git-root after you build your package.
 
 ## Components
 
@@ -44,10 +83,12 @@ export interface NiceButtonProps {
 }
 
 export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
-    // ... hooks eventually.
+    // maybe hooks.
     return (
-        ...
-    )
+        <div>
+            Hello
+        </div>
+    );
 }
 ```
 

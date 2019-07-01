@@ -19,7 +19,6 @@ export * from "./components/layout/row/Row";
 export * from "./components/layout/indent/Indent";
 export * from "./components/layout/spacing/Spacing";
 export * from "./components/layout/space/Space";
-export * from "./components/layout/inline/Inline";
 
 export * from "./components/text/TextTheme";
 export { TextProps } from "./components/text/TextBase";
@@ -29,6 +28,7 @@ export * from "./components/text/variants/SmallText";
 export * from "./components/text/variants/SmallerText";
 export * from "./components/text/variants/StandardText";
 export * from "./components/text/variants/LargeText";
+export * from "./components/text/variants/HeaderText";
 
 export * from "./theme/ThemeContext";
 export * from "./theme/DefaultTheme";
@@ -40,6 +40,8 @@ export * from "./types/Omit";
 
 export * from "./hooks/UseBoolean";
 export * from "./hooks/UseDebounce";
+export * from "./hooks/UseEventListener";
+export * from "./hooks/UseMouseIsOver";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";

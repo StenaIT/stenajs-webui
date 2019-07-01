@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,12 +7,13 @@ import {
   Clickable,
   Row,
   Space,
-  useThemeFields
+  ThemeColorField
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { Progress } from "../progress/Progress";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
+import { useButtonStateTheme } from "./hooks/UseBottonStateTheme";
 
 export interface ButtonProps {
   /** The theme to use.
@@ -21,14 +22,18 @@ export interface ButtonProps {
   buttonTheme?: ButtonTheme;
   /** The text on the button. */
   label?: string;
+  /** Color of the text.
+   * @default The textColor specified in theme.
+   */
+  textColor?: ThemeColorField | string;
   /** React element to place to the left of the text. */
   left?: ReactNode;
   /** React element to place to the right of the text. */
   right?: ReactNode;
   /** FontAwesome icon to place to the left of the text. */
-  leftIcon?: IconProp;
+  leftIcon?: IconDefinition;
   /** FontAwesome icon to place to the right of the text. */
-  rightIcon?: IconProp;
+  rightIcon?: IconDefinition;
   /** The width of the button */
   width?: string;
   /** onClick callback, called when button is clicked. */
@@ -39,11 +44,11 @@ export interface ButtonProps {
   iconSize?: number;
   /** Render loading spinner instead of button. */
   loading?: boolean;
-  /** The label to show when loading. */
+  /** The content to show when loading. */
   loadingLabel?: string;
   /** Render success check icon instead of button. */
   success?: boolean;
-  /** The label to show on success. */
+  /** The content to show on success. */
   successLabel?: string;
 }
 
@@ -52,6 +57,138 @@ export interface ButtonTextProps {
   fontFamily: string;
   fontSize: string;
 }
+
+export const Button: React.FC<ButtonProps> = React.memo(props => {
+  const {
+    onClick,
+    width,
+    disabled = false,
+    loading = false,
+    loadingLabel,
+    success = false,
+    successLabel,
+    buttonTheme = defaultButtonTheme,
+    iconSize = 14,
+    left,
+    leftIcon,
+    label,
+    right,
+    rightIcon
+  } = props;
+  const {
+    textColor,
+    bgColor,
+    successIconColor,
+    successTextColor,
+    loadingSpinnerColor,
+    loadingTextColor,
+    font,
+    fontSize
+  } = useButtonStateTheme(buttonTheme, props.textColor, disabled);
+
+  const list = [];
+
+  if (success) {
+    list.push(
+      <FontAwesomeIcon
+        icon={faCheck}
+        color={successIconColor}
+        style={{ fontSize: buttonTheme.successIconSize }}
+      />
+    );
+    if (successLabel) {
+      list.push(
+        <ButtonText
+          color={successTextColor}
+          fontSize={fontSize}
+          fontFamily={font}
+        >
+          {successLabel}
+        </ButtonText>
+      );
+    }
+  } else if (loading) {
+    list.push(
+      <Progress
+        size={buttonTheme.loadingSpinnerSize}
+        trackColor={loadingSpinnerColor}
+      />
+    );
+    if (loadingLabel) {
+      list.push(
+        <ButtonText
+          color={loadingTextColor}
+          fontSize={fontSize}
+          fontFamily={font}
+        >
+          {loadingLabel}
+        </ButtonText>
+      );
+    }
+  } else {
+    if (left || leftIcon) {
+      list.push(
+        <SideContent
+          icon={leftIcon}
+          customContent={left}
+          iconSize={iconSize}
+          iconColor={textColor}
+        />
+      );
+    }
+    if (label) {
+      list.push(
+        <ButtonText color={textColor} fontSize={fontSize} fontFamily={font}>
+          {label}
+        </ButtonText>
+      );
+    }
+    if (right || rightIcon) {
+      list.push(
+        <SideContent
+          icon={rightIcon}
+          customContent={right}
+          iconSize={iconSize}
+          iconColor={textColor}
+        />
+      );
+    }
+  }
+
+  return (
+    <Clickable
+      onClick={disabled || success || loading ? undefined : onClick}
+      opacityOnHover
+      disabled={disabled || success || loading}
+    >
+      <Box
+        borderRadius={buttonTheme.borderRadius}
+        borderWidth={0}
+        overflow={"hidden"}
+        background={bgColor}
+        height={buttonTheme.height}
+      >
+        <Row
+          width={width}
+          height={"100%"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          {list.length === 0 && <Space num={buttonTheme.numSpacing} />}
+          {list.length === 1 && <Space num={buttonTheme.numSpacing} />}
+          <Space num={buttonTheme.numSpacing} />
+          {list.map((item, index) => (
+            <React.Fragment key={index}>
+              {item}
+              <Space num={buttonTheme.numSpacing} />
+            </React.Fragment>
+          ))}
+          {list.length === 1 && <Space num={buttonTheme.numSpacing} />}
+        </Row>
+      </Box>
+    </Clickable>
+  );
+});
 
 const ButtonText = styled.span<ButtonTextProps>`
   font-size: ${({ fontSize }) => fontSize};
@@ -62,119 +199,30 @@ const ButtonText = styled.span<ButtonTextProps>`
   margin-top: -2px;
 `;
 
-export const Button: React.FC<ButtonProps> = ({
-  onClick,
-  label,
-  left,
-  right,
-  leftIcon,
-  rightIcon,
-  width,
-  disabled = false,
-  loading = false,
-  success = false,
-  iconSize = 14,
-  successLabel,
-  loadingLabel,
-  buttonTheme = defaultButtonTheme
+interface SideContentProps {
+  customContent?: ReactNode;
+  icon?: IconDefinition;
+  iconColor: string;
+  iconSize: number;
+}
+
+const SideContent: React.FC<SideContentProps> = ({
+  icon,
+  customContent,
+  iconColor,
+  iconSize
 }) => {
-  const { colors, fonts, fontSizes } = useThemeFields(
-    {
-      colors: {
-        textColor: buttonTheme.textColor,
-        textColorDisabled: buttonTheme.textColorDisabled,
-        bgColor: buttonTheme.bgColor,
-        bgColorDisabled: buttonTheme.bgColorDisabled,
-        successIconColor: buttonTheme.successIconColor,
-        progressSpinnerColor: buttonTheme.progressSpinnerColor
-      },
-      fontSizes: {
-        fontSize: buttonTheme.fontSize
-      },
-      fonts: {
-        font: buttonTheme.font
-      }
-    },
-    [buttonTheme]
-  );
-
-  const showUserButton = !loading && !success;
-  const labelToUse = success ? successLabel : loading ? loadingLabel : label;
-
   return (
-    <Clickable
-      onClick={disabled ? undefined : onClick}
-      opacityOnHover
-      disabled={disabled}
-    >
-      <Box
-        borderRadius={buttonTheme.borderRadius}
-        borderWidth={0}
-        overflow={"hidden"}
-        background={disabled ? colors.bgColorDisabled : colors.bgColor}
-        height={buttonTheme.height}
-      >
-        <Row
-          width={width}
-          height={"100%"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Space num={buttonTheme.numSpacing} />
-          {showUserButton && (leftIcon || left) && (
-            <>
-              {leftIcon && (
-                <FontAwesomeIcon
-                  icon={leftIcon}
-                  color={colors.textColor}
-                  style={{ fontSize: iconSize }}
-                />
-              )}
-              {left}
-              {label && <Space num={2} />}
-            </>
-          )}
-
-          {success && (
-            <FontAwesomeIcon
-              icon={faCheck}
-              color={colors.successIconColor}
-              style={{ fontSize: 20 }}
-            />
-          )}
-
-          {loading && (
-            <Progress size={"24px"} trackColor={colors.progressSpinnerColor} />
-          )}
-
-          {(success || loading) && labelToUse && <Space num={2} />}
-
-          {labelToUse && (
-            <ButtonText
-              color={disabled ? colors.textColorDisabled : colors.textColor}
-              fontSize={fontSizes.fontSize}
-              fontFamily={fonts.font}
-            >
-              {labelToUse}
-            </ButtonText>
-          )}
-
-          {showUserButton && (right || rightIcon) && (
-            <>
-              {label && <Space num={2} />}
-              {right}
-              {rightIcon && (
-                <FontAwesomeIcon
-                  icon={rightIcon}
-                  color={colors.textColor}
-                  style={{ fontSize: iconSize }}
-                />
-              )}
-            </>
-          )}
-          <Space num={buttonTheme.numSpacing} />
-        </Row>
-      </Box>
-    </Clickable>
+    <>
+      {icon ? (
+        <FontAwesomeIcon
+          icon={icon}
+          color={iconColor}
+          style={{ fontSize: iconSize }}
+        />
+      ) : (
+        customContent
+      )}
+    </>
   );
 };

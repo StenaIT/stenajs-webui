@@ -3,14 +3,14 @@ import { StandardTextInput } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import { useGridCell } from "../hooks/UseGridCell";
+import { FocusedBox } from "./FocusedBox";
 import {
   createCustomValueRows,
   createIndexArray,
-  CustomValueCell,
-  FocusedBox
+  CustomValueCell
 } from "./util/GridHooksExampleUtils";
 
-export const list10 = createIndexArray(10);
+const list10 = createIndexArray(10);
 
 export const GridExampleCustomValue = () => {
   const [rows, setRows] = useState(createCustomValueRows());

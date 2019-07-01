@@ -1,6 +1,7 @@
 import { DateInputTheme, defaultDateInputTheme } from "@stenajs-webui/calendar";
 import {
   ButtonTheme,
+  defaultButtonTheme,
   defaultFlatButtonTheme,
   defaultSmallButtonTheme,
   defaultStandardButtonTheme
@@ -35,6 +36,10 @@ type ThemeFactoryFunc<TTheme> = (defaultTheme: TTheme) => TTheme;
 export const createFlatButtonTheme = createThemeFactory<ButtonTheme>(
   defaultFlatButtonTheme
 );
+
+export const createButtonTheme = createThemeFactory(<ButtonTheme>(
+  defaultButtonTheme
+));
 
 export const createStandardButtonTheme = createThemeFactory(<ButtonTheme>(
   defaultStandardButtonTheme

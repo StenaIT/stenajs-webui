@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import {
+  Box,
   Clickable,
   InputProps,
-  Row,
+  useMouseIsOver,
   useThemeFields
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
@@ -20,129 +22,57 @@ export interface CheckboxProps
   theme?: CheckboxTheme;
 }
 
-const InvisibleInput = styled.input`
+const InvisibleCheckbox = styled.input`
   top: 0;
   left: 0;
-  width: 100%;
+  width: 26px;
   cursor: inherit;
-  height: 100%;
+  height: 26px;
   margin: 0;
   opacity: 0;
   padding: 0;
   position: absolute;
 `;
 
-interface WrapperProps {
-  disabled: boolean | undefined;
-  value: boolean | undefined;
-  indeterminate: boolean | undefined;
-  themeFields: ThemeFields;
-  theme?: CheckboxTheme;
-}
-
-const resolveBackgroundColor = ({
-  disabled,
-  indeterminate,
-  themeFields,
-  value
-}: WrapperProps) => {
-  if (disabled) {
-    return themeFields.colors.backgroundColorDisabled;
-  } else if (value || indeterminate) {
-    return themeFields.colors.backgroundColorChecked;
-  } else {
-    return themeFields.colors.backgroundColor;
-  }
-};
-
-const resolveBorderColor = ({
-  disabled,
-  indeterminate,
-  themeFields,
-  value
-}: WrapperProps) => {
-  if (disabled) {
-    return themeFields.colors.borderColorDisabled;
-  } else if (value || indeterminate) {
-    return themeFields.colors.borderColorChecked;
-  } else {
-    return themeFields.colors.borderColor;
-  }
-};
-
-const resolveIconColor = ({
-  disabled,
-  indeterminate,
-  themeFields,
-  value
-}: WrapperProps) => {
-  if (disabled) {
-    return themeFields.colors.iconColorDisabled;
-  } else if (value || indeterminate) {
-    return themeFields.colors.iconColor;
-  } else {
-    return themeFields.colors.iconColor;
-  }
-};
-
-const Wrapper = styled("div")<WrapperProps>`
-  background-color: ${props => resolveBackgroundColor(props)};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid ${props => resolveBorderColor(props)};
-  overflow: hidden;
-`;
-
-const StyledCheckboxWrapper = styled.div<{ theme: CheckboxTheme }>`
-  height: ${({ theme }) => theme.height};
-  position: relative;
-  width: ${({ theme }) => theme.width};
-
-  input:focus + div {
-    border-color: ${({ theme }) => theme.borderColorFocused};
-  }
-`;
-
-type ThemeFields = {
-  colors: {
-    backgroundColor: string;
-    backgroundColorChecked: string;
-    backgroundColorDisabled: string;
-    borderColor: string;
-    borderColorChecked: string;
-    borderColorDisabled: string;
-    iconColorDisabled: string;
-    iconColor: string;
-  };
-};
-
 export const Checkbox: React.FC<CheckboxProps> = ({
   className,
-  disabled,
-  innerRef,
+  disabled = false,
   inputRef,
+                                                    innerRef,
   indeterminate,
   onChange,
   onValueChange,
   theme = defaultCheckboxTheme,
-  value
+  value = false,
+  name
 }) => {
-  const ref = useRef<HTMLInputElement>(null);
-
-  const themeFields = useThemeFields<ThemeFields>(
+  const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: theme.backgroundColor,
-        backgroundColorChecked: theme.backgroundColorChecked,
-        backgroundColorDisabled: theme.backgroundColorDisabled,
-        borderColor: theme.borderColor,
-        borderColorChecked: theme.borderColorChecked,
-        borderColorDisabled: theme.borderColorDisabled,
         iconColorDisabled: theme.iconColorDisabled,
-        iconColor: theme.iconColor
+        iconColorChecked: theme.iconColorChecked,
+        iconColorNotChecked: theme.iconColorNotChecked,
+        iconColorNotCheckedHover: theme.iconColorNotCheckedHover,
+        backgroundColorNotChecked: theme.backgroundColorNotChecked,
+        backgroundColorNotCheckedHover: theme.backgroundColorNotCheckedHover,
+        backgroundColorDisabled: theme.backgroundColorDisabled,
+        backgroundColorChecked: theme.backgroundColorChecked,
+        borderColorChecked: theme.borderColorChecked,
+        borderColorNotChecked: theme.borderColorNotChecked,
+        borderColorNotCheckedHover: theme.borderColorNotCheckedHover,
+        borderColorDisabled: theme.borderColorDisabled
       }
     },
     [theme]
   );
+
+  const innerInputRef = useRef(null);
+
+  const innerRefToUse = inputRef || innerInputRef;
+
+  const mouseIsOver = useMouseIsOver(innerRefToUse);
+
+  const icon = getIcon(value, disabled, indeterminate, mouseIsOver, theme);
 
   const onClick = useCallback(
     ev => {
@@ -171,51 +101,136 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 
   useEffect(() => {
-    const checkboxRef = inputRef || ref;
-    if (checkboxRef.current) {
-      checkboxRef.current.indeterminate = Boolean(indeterminate);
+    if (innerRefToUse.current) {
+      innerRefToUse.current.indeterminate = Boolean(indeterminate);
     }
-  }, [indeterminate, inputRef]);
+  }, [indeterminate, innerRefToUse]);
 
   return (
-    <StyledCheckboxWrapper className={className} ref={innerRef} theme={theme}>
-      <Clickable onClick={disabled ? undefined : onClick}>
-        <InvisibleInput
-          disabled={disabled}
-          checked={value}
-          ref={inputRef || ref}
-          onChange={handleInputChange}
-          type={"checkbox"}
-        />
-        <Wrapper
-          disabled={disabled}
-          theme={theme}
-          themeFields={themeFields}
-          indeterminate={indeterminate}
-          value={value}
+    <Clickable onClick={disabled ? undefined : onClick} ref={innerRef}>
+      <Box
+        borderColor={getBorderColor(value, disabled, indeterminate, mouseIsOver, colors)}
+        borderStyle={"solid"}
+        borderWidth={"1px"}
+        overflow={"hidden"}
+        borderRadius={theme.borderRadius}
+      >
+        <Box
+          width={theme.width}
+          height={theme.height}
+          background={getBackgroundColor(value, disabled, indeterminate, mouseIsOver, colors)}
+          justifyContent={"center"}
+          alignItems={"center"}
         >
-          <Row
-            justifyContent={"center"}
-            alignItems={"center"}
-            width={theme.width}
-            height={theme.height}
-          >
-            {(value || indeterminate) && (
-              <Icon
-                icon={indeterminate ? faMinus : theme.checkIcon}
-                color={resolveIconColor({
-                  disabled,
-                  indeterminate,
-                  theme,
-                  themeFields,
-                  value
-                })}
-                size={theme.iconSize}
-              />
-            )}
-          </Row>
-        </Wrapper>
-      </Clickable>
-    </StyledCheckboxWrapper>
+          {icon && (
+            <Icon
+              icon={icon}
+              color={getIconColor(value, disabled, indeterminate, mouseIsOver, colors)}
+              size={theme.iconSize}
+            />
+          )}
+        </Box>
+      </Box>
+      <InvisibleCheckbox
+        disabled={disabled}
+        checked={value}
+        ref={innerRefToUse}
+        onChange={handleInputChange}
+        type={"checkbox"}
+        name={name}
+        className={className}
+      />
+    </Clickable>
   );
+};
+
+interface IconColors {
+  iconColorDisabled: string;
+  iconColorChecked: string;
+  iconColorNotChecked: string;
+  iconColorNotCheckedHover: string;
+  backgroundColorNotChecked: string;
+  backgroundColorNotCheckedHover: string;
+  backgroundColorDisabled: string;
+  backgroundColorChecked: string;
+  borderColorChecked: string;
+  borderColorNotChecked: string;
+  borderColorNotCheckedHover: string;
+  borderColorDisabled: string;
+}
+
+const getIconColor = (
+  value: boolean,
+  disabled: boolean,
+  indeterminate: boolean,
+  mouseIsOver: boolean,
+  colors: IconColors
+): string => {
+  if (disabled) {
+    return colors.iconColorDisabled;
+  } else if (value || indeterminate) {
+    return colors.iconColorChecked;
+  } else {
+    if (mouseIsOver) {
+      return colors.iconColorNotCheckedHover;
+    }
+    return colors.iconColorNotChecked;
+  }
+};
+
+const getBorderColor = (
+  value: boolean,
+  disabled: boolean,
+  indeterminate: boolean,
+  mouseIsOver: boolean,
+  colors: IconColors
+): string => {
+  if (disabled) {
+    return colors.borderColorDisabled;
+  } else if (value || indeterminate) {
+    return colors.borderColorChecked;
+  } else {
+    if (mouseIsOver) {
+      return colors.borderColorNotCheckedHover;
+    }
+    return colors.borderColorNotChecked;
+  }
+};
+
+const getBackgroundColor = (
+  value: boolean,
+  disabled: boolean,
+  indeterminate: boolean,
+  mouseIsOver: boolean,
+  colors: IconColors
+): string => {
+  if (disabled) {
+    return colors.backgroundColorDisabled;
+  } else if (value || indeterminate) {
+    return colors.backgroundColorChecked;
+  } else {
+    if (mouseIsOver) {
+      return colors.backgroundColorNotCheckedHover;
+    }
+    return colors.backgroundColorNotChecked;
+  }
+};
+
+const getIcon = (
+  value: boolean,
+  disabled: boolean,
+  indeterminate: boolean,
+  mouseIsOver: boolean,
+  theme: CheckboxTheme
+): IconDefinition | undefined => {
+  if (!value && !disabled && mouseIsOver) {
+    return theme.checkIcon;
+  }
+  if (indeterminate) {
+    return faMinus;
+  }
+  if (value) {
+    return theme.checkIcon;
+  }
+  return undefined;
 };

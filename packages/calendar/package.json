@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/calendar",
-  "version": "0.0.15",
+  "version": "0.0.25",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,6 +27,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
+    "@stenajs-webui/core": "0.0.25",
+    "@stenajs-webui/elements": "0.0.25",
+    "@stenajs-webui/forms": "0.0.25",
     "@types/recompose": "^0.30.6",
     "recompose": "^0.30.0"
   },
@@ -34,9 +37,6 @@
     "@emotion/core": ">=10.0.10",
     "@emotion/styled": ">=10.0.10",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
-    "@stenajs-webui/core": "0.0.15",
-    "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
     "@types/lodash-es": ">=4.17.3",
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
@@ -50,10 +50,7 @@
   "devDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@stenajs-webui/core": "0.0.15",
-    "@stenajs-webui/elements": "0.0.15",
-    "@stenajs-webui/forms": "0.0.15",
+    "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@types/jest": "^23.1.5",
     "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.8.19",
@@ -68,5 +65,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "40f790050c2dabfcec39a1f69965ea9ae7777b81"
+  "gitHead": "9bb0e2e3037e5377dbb13880e41e85e77d04cd80"
 }

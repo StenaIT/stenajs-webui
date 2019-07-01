@@ -3,13 +3,21 @@ import {
   FontAwesomeIcon,
   Props as FontAwesomeProps
 } from "@fortawesome/react-fontawesome";
-import { Omit, ThemeColorField, useThemeFields } from "@stenajs-webui/core";
+import {
+  Omit,
+  ThemeColorField,
+  useMouseIsOver,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
+import { useRef } from "react";
 
 export interface IconProps
   extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
+  hoverIcon?: IconDefinition;
   color?: ThemeColorField | string;
+  hoverColor?: ThemeColorField | string;
   size?: number;
 }
 
@@ -18,8 +26,10 @@ export const Icon: React.FC<IconProps> = ({
   color = "primaryTextLight",
   flip,
   icon,
+  hoverIcon,
   pulse,
   rotation,
+  hoverColor,
   size = 20,
   spin,
   style,
@@ -28,27 +38,34 @@ export const Icon: React.FC<IconProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        iconColor: color
+        iconColor: color,
+        iconColorHover: hoverColor
       }
     },
-    []
+    [color, hoverColor]
   );
+
+  const ref = useRef(null);
+
+  const mouseIsOver = useMouseIsOver(ref);
 
   if (!icon) {
     return null;
   }
 
   return (
-    <FontAwesomeIcon
-      className={className}
-      color={colors.iconColor}
-      flip={flip}
-      icon={icon}
-      pulse={pulse}
-      rotation={rotation}
-      spin={spin}
-      style={{ fontSize: size, ...style }}
-      transform={transform}
-    />
+    <div ref={ref}>
+      <FontAwesomeIcon
+        className={className}
+        color={mouseIsOver && colors.iconColorHover || colors.iconColor}
+        flip={flip}
+        icon={(mouseIsOver && hoverIcon) || icon}
+        pulse={pulse}
+        rotation={rotation}
+        spin={spin}
+        style={{ fontSize: size, ...style }}
+        transform={transform}
+      />
+    </div>
   );
 };

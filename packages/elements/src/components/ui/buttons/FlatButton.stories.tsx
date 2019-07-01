@@ -28,6 +28,17 @@ storiesOf("elements/Buttons/FlatButton", module)
   .add("with loading", () => (
     <FlatButton label={"Submit"} loading onClick={action("Button clicked")} />
   ))
+  .add("with loading label", () => (
+    <FlatButton
+      label={"Submit"}
+      loading
+      loadingLabel={"Loading..."}
+      onClick={action("Button clicked")}
+    />
+  ))
   .add("with success", () => (
     <FlatButton label={"Submit"} success onClick={action("Button clicked")} />
+  ))
+  .add("with success label", () => (
+    <FlatButton label={"Submit"} success successLabel={"Done!"} />
   ));

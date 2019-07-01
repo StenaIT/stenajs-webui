@@ -1,12 +1,12 @@
 import styled, { CreateStyled } from "@emotion/styled";
-import { useThemeFields } from "@stenajs-webui/core";
+import { InputProps, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   ChangeEvent,
   CSSProperties,
+  FocusEventHandler,
   KeyboardEvent,
   KeyboardEventHandler,
-  MutableRefObject,
   useCallback,
   useEffect,
   useRef,
@@ -25,7 +25,8 @@ const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 type MoveDirection = "right" | "left" | "down" | "up";
 
 export interface SimpleTextInputProps<TValue = string>
-  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>> {
+  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>>,
+    InputProps {
   /** CSS class name applied to the input element. */
   className?: string;
   /** onDone callback, triggered by blur, if the blur was not triggered by esc key. */
@@ -42,10 +43,10 @@ export interface SimpleTextInputProps<TValue = string>
   focusOnMount?: boolean;
   /** If true, all text in the input field will be selected on mount. */
   selectAllOnMount?: boolean;
+  /** If true, all text in the input field will be selected when field is focused. */
+  selectAllOnFocus?: boolean;
   /** If true, cursor will move to the end of the entered text on mount. */
   moveCursorToEndOnMount?: boolean;
-  /** Input ref to use. If omitted, an internal ref will be used. */
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
 
   /** Type of input */
   inputType?: string;
@@ -64,8 +65,8 @@ export interface SimpleTextInputProps<TValue = string>
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
   onMove?: (direction: MoveDirection) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onFocus?: FocusEventHandler<HTMLInputElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement>;
   theme?: SimpleTextInputTheme;
 }
 
@@ -147,6 +148,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   placeholderColor,
   focusOnMount,
   selectAllOnMount,
+  selectAllOnFocus,
   inputType = "text",
   min,
   max,
@@ -232,17 +234,25 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
     [refToUse, onKeyDown, blurMoveAndCancel]
   );
 
-  const onBlurHandler = useCallback(
-    (ev: ChangeEvent<any>) => {
-      if (onDone && !wasCancelled) {
-        onDone(ev.target.value || "");
+  const onBlurHandler: FocusEventHandler<HTMLInputElement> = ev => {
+    if (onDone && !wasCancelled) {
+      onDone(ev.target.value || "");
+    }
+    if (onBlur) {
+      onBlur(ev);
+    }
+  };
+
+  const onFocusHandler: FocusEventHandler<HTMLInputElement> = ev => {
+    if (refToUse.current) {
+      if (selectAllOnFocus) {
+        refToUse.current!.setSelectionRange(0, refToUse.current!.value.length);
       }
-      if (onBlur) {
-        onBlur();
-      }
-    },
-    [onBlur, onDone, wasCancelled]
-  );
+    }
+    if (onFocus) {
+      onFocus(ev);
+    }
+  };
 
   const { colors, fontSizes, fonts } = useThemeFields(
     {
@@ -260,7 +270,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
         fontSize: fontSize || theme.fontSize
       }
     },
-    [theme]
+    [theme, backgroundColor, textColor]
   );
   return (
     <StyledInput
@@ -280,7 +290,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       onKeyDown={onKeyDownHandler}
       onChange={onChange}
       onBlur={onBlurHandler}
-      onFocus={onFocus}
+      onFocus={onFocusHandler}
       autoFocus={focusOnMount || selectAllOnMount}
       value={value}
       maxLength={maxLength}

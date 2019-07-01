@@ -1,36 +1,7 @@
-//requiring path and fs modules
-const path = require("path");
-const fs = require("fs");
-//joining path of directory
-const directoryPath = path.join(__dirname, "packages");
-
-const getPackageJsonList = async () => {
-  return new Promise((resolve, reject) => {
-    const list = [];
-    fs.readdir(directoryPath, function(err, files) {
-      //handling error
-      if (err) {
-        return console.log("Unable to scan directory: " + err);
-      }
-      //listing all files using forEach
-      files.forEach(function(file) {
-        const filePath = path.join(directoryPath, file);
-        const isDir = fs.lstatSync(filePath).isDirectory();
-        // Do whatever you want to do with the file
-        if (isDir) {
-          list.push(path.join(filePath, "package.json"));
-        }
-      });
-      resolve(list);
-    });
-  });
-};
-
-const getPackageJsons = async () => {
-  return getPackageJsonList().then(list => {
-    return list.map(require);
-  });
-};
+const {
+  getPackageJsons,
+  getPackageVersion
+} = require("./util/package-json-fetcher");
 
 const getInvalidDepVersion = (packages, depsType) => {
   const errors = [];
@@ -90,21 +61,60 @@ const getInvalidDevDeps = packages => {
   return success;
 };
 
+const getInvalidInternalDeps = packages => {
+  let success = true;
+  packages.forEach(packageJson => {
+    if (packageJson.dependencies) {
+      const deps = Object.keys(packageJson.dependencies);
+      deps.forEach(dep => {
+        if (dep.startsWith("@stenajs-webui/")) {
+          const version = packageJson.dependencies[dep];
+          const expectedVersion = getPackageVersion(packages, dep);
+          if (expectedVersion !== version) {
+            console.error(
+              packageJson.name +
+                ": has invalid version to " +
+                dep +
+                ". Is: " +
+                version +
+                ", expected: " +
+                expectedVersion
+            );
+            success = false;
+          }
+        }
+      });
+    }
+    try {
+      ensureDevDepsIncludesAllPeerDeps(packageJson);
+    } catch (e) {}
+  });
+  return success;
+};
+
 const ensureDevDepsIncludesAllPeerDeps = packageJson => {
+  if (!packageJson.peerDependencies) {
+    return;
+  }
   const peerDepKeys = Object.keys(packageJson.peerDependencies);
   for (let i = 0; i < peerDepKeys.length; i++) {
     const peerDepKey = peerDepKeys[i];
     const isWebUiDep = peerDepKey.startsWith("@stenajs-webui");
+    const isFontAwesomeDep = peerDepKey.startsWith("@fortawesome");
     if (!packageJson.devDependencies[peerDepKey]) {
       throw new Error("Missing devDependency: " + peerDepKey);
     }
 
-    if (isWebUiDep) {
-      if (packageJson.devDependencies[peerDepKey].startsWith("^")) {
-        throw new Error("stenajs-webui devDependency must not start with ^");
-      }
-      if (packageJson.devDependencies[peerDepKey].startsWith(">")) {
-        throw new Error("stenajs-webui devDependency must not start with >");
+    const mustBeExactVersion = isWebUiDep || isFontAwesomeDep;
+
+    if (mustBeExactVersion) {
+      if (
+        packageJson.devDependencies[peerDepKey].startsWith(">") ||
+        packageJson.devDependencies[peerDepKey].startsWith("^")
+      ) {
+        throw new Error(
+          `devDependency on ${peerDepKey} must have exact version.`
+        );
       }
     } else {
       if (!packageJson.devDependencies[peerDepKey].startsWith("^")) {
@@ -175,8 +185,14 @@ getPackageJsons().then(packages => {
     success = false;
   }
 
+  const invalidInternalDeps = getInvalidInternalDeps(packages);
+
+  if (!invalidInternalDeps) {
+    success = false;
+  }
+
   if (success) {
-    console.log("Everything OK!");
+    console.log("OK! All dependencies match.");
   } else {
     process.exit(1);
   }

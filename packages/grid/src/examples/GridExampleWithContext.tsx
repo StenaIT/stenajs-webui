@@ -4,13 +4,10 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { GridHooksTable } from "../components/GridHooksTable";
 import { useGridCell } from "../hooks/UseGridCell";
-import {
-  createIndexArray,
-  createRows,
-  FocusedBox
-} from "./util/GridHooksExampleUtils";
+import { FocusedBox } from "./FocusedBox";
+import { createIndexArray, createRows } from "./util/GridHooksExampleUtils";
 
-export const list10 = createIndexArray(10);
+const list10 = createIndexArray(10);
 
 export const GridExampleWithContext = () => {
   const [rows, setRows] = useState(createRows());

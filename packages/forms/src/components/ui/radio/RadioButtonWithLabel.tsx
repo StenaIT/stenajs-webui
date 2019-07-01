@@ -26,7 +26,7 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
         textColor: textColor
       }
     },
-    [theme]
+    [theme, textColor]
   );
 
   return (

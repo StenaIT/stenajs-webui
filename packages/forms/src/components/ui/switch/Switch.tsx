@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { InputProps, Omit, useThemeFields } from "@stenajs-webui/core";
+import { InputProps, useThemeFields, WithInnerRef } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback } from "react";
 import { FullOnChangeProps } from "../types";
 import { defaultSwitchTheme, SwitchTheme } from "./SwitchTheme";
 
 export interface SwitchProps
-  extends Omit<InputProps, "value" | "onChange">,
+  extends InputProps,
+    WithInnerRef<HTMLInputElement>,
     FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>> {
-  disabled?: boolean;
   theme?: SwitchTheme;
 }
 
-const InvisibleInput = styled.input`
+const InvisibleSwitch = styled.input`
   top: 0;
   left: 0;
   width: 100%;
@@ -155,7 +155,7 @@ export const Switch: React.FC<SwitchProps> = ({
         theme={theme}
         themeFields={themeFields}
       >
-        <InvisibleInput
+        <InvisibleSwitch
           checked={value}
           onChange={inputChangeHandler}
           ref={inputRef}

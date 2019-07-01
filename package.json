@@ -7,13 +7,21 @@
     "start-storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf build && build-storybook -o build",
     "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
-    "deploy-storybook": "yarn build && yarn build-storybook && yarn deploy-built-storybook",
+    "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
-    "build": "lerna run build",
+    "build-all": "yarn clean-all && lerna run build && yarn check-all",
+    "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
+    "clean-all": "lerna run clean",
+    "publish-all": "lerna publish --exact && yarn build-storybook && yarn deploy-built-storybook",
+    "check-all": "yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn bundlesize && yarn check-builds",
     "watch": "lerna exec --parallel -- rollup -c -w",
-    "prerelease": "yarn build && yarn test && yarn check-deps-match",
+    "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "test": "jest --config=jest.config.js",
-    "check-deps-match": "node check-dep-versions.js"
+    "check-deps-match": "node scripts/check-deps-match.js",
+    "check-builds": "node scripts/check-builds.js",
+    "check-imports": "node scripts/check-imports.js",
+    "check-circular-deps": "find ./packages -type d -name dist | xargs yarn madge --circular --extensions js",
+    "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn madge --circular --extensions tsx"
   },
   "repository": {
     "type": "git",
@@ -46,12 +54,15 @@
     "@types/storybook__addon-knobs": "^5.0.0",
     "@types/storybook__react": "^4.0.1",
     "babel-loader": "^8.0.5",
+    "bundlesize": "^0.17.2",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "gh-pages": "^2.0.1",
+    "glob": "^7.1.4",
     "jest": "^24.8.0",
     "lerna": "^3.13.4",
+    "madge": "^3.4.4",
     "prettier": "^1.17.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "rollup": "^1.11.0",
@@ -62,6 +73,40 @@
     "rollup-plugin-typescript2": "^0.21.0",
     "rollup-plugin-url": "^2.2.1",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.4.5"
-  }
+    "typescript": "^3.5.1"
+  },
+  "bundlesize": [
+    {
+      "path": "./packages/core/dist/*.js",
+      "maxSize": "6 kB"
+    },
+    {
+      "path": "./packages/calendar/dist/*.js",
+      "maxSize": "45 kB"
+    },
+    {
+      "path": "./packages/elements/dist/*.js",
+      "maxSize": "25 kB"
+    },
+    {
+      "path": "./packages/forms/dist/*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "./packages/grid/dist/*.js",
+      "maxSize": "30 kB"
+    },
+    {
+      "path": "./packages/panels/dist/*.js",
+      "maxSize": "6 kB"
+    },
+    {
+      "path": "./packages/select/dist/*.js",
+      "maxSize": "3 kB"
+    },
+    {
+      "path": "./packages/theme/dist/*.js",
+      "maxSize": "2 kB"
+    }
+  ]
 }

@@ -1,12 +1,5 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import {
-  Absolute,
-  Box,
-  Omit,
-  Relative,
-  useOnClickOutside,
-  useThemeFields
-} from "@stenajs-webui/core";
+import { Omit, useOnClickOutside, useThemeFields } from "@stenajs-webui/core";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -21,6 +14,7 @@ import {
 } from "../calendar/components/CalendarTheme";
 import { SingleDateCalendarProps } from "../calendar/features/SingleDateSelection";
 import { SingleDateCalendar } from "../calendar/SingleDateCalendar";
+import { CalendarPopupBox } from "./CalendarPopupBox";
 import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
@@ -28,17 +22,14 @@ export type DateTextInputCalendarProps<T> = Omit<
   "value" | "onChange" | "theme"
 >;
 
-export interface DateTextInputProps<T> extends StandardTextInputProps {
-  /** Props to be passed to Calendar, see SingleDateCalendar for sage */
+export interface DateTextInputProps<T>
+  extends Omit<StandardTextInputProps, "onChange"> {
+  /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
   /** Close calendar when date is selected, @default true */
   closeOnCalendarSelectDate?: boolean;
   /** Valid date format, @default YYYY-MM-DD */
   dateFormat?: string;
-  /** Make the icon not clickable, @default false */
-  disableCalender?: boolean;
-  /** Show or hide the calender icon, @default true */
-  useCalenderIcon?: boolean;
   /** Placeholder for the input, @default YYYY-MM-DD */
   placeholder?: string;
   /**  Z-index of the calendar overlay, @default 100 */
@@ -53,9 +44,6 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   calendarProps,
   closeOnCalendarSelectDate = true,
   dateFormat = DateFormats.fullDate,
-  disableCalender = false,
-  useCalenderIcon = true,
-  onChange,
   onValueChange,
   placeholder = "yyyy-mm-dd",
   value,
@@ -72,7 +60,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     {
       colors: {
         backgroundColor: dateInputTheme.backgroundColor,
-        borderColor: dateInputTheme.borderColor
+        borderColor: dateInputTheme.borderColor,
+        backgroundColorInvalidDate: dateInputTheme.backgroundColorInvalidDate
       }
     },
     []
@@ -88,28 +77,25 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
 
   useOnClickOutside(ref, closeCalendar);
 
-  const onChangeHandler = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev);
-      }
+  const onValueChangeHandler = useCallback(
+    value => {
       if (onValueChange) {
-        onValueChange(ev.target.value);
+        onValueChange(value);
       }
     },
-    [onChange, onValueChange]
+    [onValueChange]
   );
 
   const onCalendarSelectDate = (date: Date | undefined) => {
     if (date) {
-      onChangeHandler(format(date, dateFormat));
+      onValueChangeHandler(format(date, dateFormat));
       if (closeOnCalendarSelectDate) {
         setTimeout(() => setOpen(!open), 200);
       }
     }
   };
 
-  const validInput = value && !/^[-/0-9]+$/.test(value);
+  const validInput = value && !/^[-/\\.0-9]+$/.test(value);
 
   const dateIsValid = value && isValid(parse(value, dateFormat, new Date()));
 
@@ -121,38 +107,34 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         {...props}
         backgroundColor={
           (userInputCorrectLength && !dateIsValid) || validInput
-            ? "red" // TODO Use color from theme. errorBgLight
-            : undefined
+            ? colors.backgroundColorInvalidDate
+            : props.backgroundColor
         }
         iconLeft={faCalendarAlt}
         onClickLeft={toggleCalendar}
-        onChange={onChangeHandler}
+        onValueChange={onValueChangeHandler}
         placeholder={placeholder}
         value={value}
         width={width}
       />
       {open && (
-        <Relative>
-          <Absolute zIndex={zIndex} innerRef={ref}>
-            <Box
-              borderColor={colors.borderColor}
-              background={colors.backgroundColor}
-              indent
-              spacing
-            >
-              <SingleDateCalendar
-                {...calendarProps}
-                onChange={onCalendarSelectDate}
-                value={
-                  value && dateIsValid
-                    ? parse(value, dateFormat, new Date())
-                    : undefined
-                }
-                theme={calendarTheme}
-              />
-            </Box>
-          </Absolute>
-        </Relative>
+        <CalendarPopupBox
+          innerRef={ref}
+          background={colors.backgroundColor}
+          borderColor={colors.borderColor}
+          zIndex={zIndex}
+        >
+          <SingleDateCalendar
+            {...calendarProps}
+            onChange={onCalendarSelectDate}
+            value={
+              value && dateIsValid
+                ? parse(value, dateFormat, new Date())
+                : undefined
+            }
+            theme={calendarTheme}
+          />
+        </CalendarPopupBox>
       )}
     </>
   );

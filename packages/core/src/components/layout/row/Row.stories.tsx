@@ -1,10 +1,6 @@
+import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardText } from "../../text/variants/StandardText";
-import { Box } from "../box/Box";
-import { Space } from "../space/Space";
-
-import { Row } from "./Row";
 
 storiesOf("core/Layout/Row", module)
   .add("standard", () => (

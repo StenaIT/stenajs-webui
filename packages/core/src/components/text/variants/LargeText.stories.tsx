@@ -1,7 +1,7 @@
+import { LargeText } from "@stenajs-webui/core";
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { LargeText } from "../variants/LargeText";
 
 storiesOf("core/Text/LargeText", module)
   .add("standard", () => (
@@ -15,14 +15,10 @@ storiesOf("core/Text/LargeText", module)
     </LargeText>
   ))
   .add("with underline on hover", () => (
-    <LargeText hoverUnderline>
-      That is some nice text, right there!
-    </LargeText>
+    <LargeText hoverUnderline>That is some nice text, right there!</LargeText>
   ))
   .add("with selection disabled", () => (
-    <LargeText userSelect={"none"}>
-      This text can not be selected
-    </LargeText>
+    <LargeText userSelect={"none"}>This text can not be selected</LargeText>
   ))
   .add("with font weights", () => (
     <div>

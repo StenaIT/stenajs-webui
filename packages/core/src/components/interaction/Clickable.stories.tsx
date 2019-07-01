@@ -1,7 +1,6 @@
+import { Clickable, StandardText } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardText } from "../text/variants/StandardText";
-import { Clickable } from "./Clickable";
 
 storiesOf("core/Interaction/Clickable", module)
   .add("default", () => (

@@ -1,7 +1,7 @@
+import { StandardText } from "@stenajs-webui/core";
 import { text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardText } from "../variants/StandardText";
 
 storiesOf("core/Text/StandardText", module)
   .add("standard", () => (

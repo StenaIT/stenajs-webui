@@ -1,4 +1,5 @@
 export * from "./components/ui/switch/Switch";
+export * from "./components/ui/switch/SwitchWithLabel";
 export * from "./components/ui/switch/SwitchTheme";
 export * from "./components/ui/checkbox/CheckboxWithLabel";
 export * from "./components/ui/checkbox/Checkbox";
@@ -6,8 +7,9 @@ export * from "./components/ui/checkbox/CheckboxTheme";
 export * from "./components/ui/radio/RadioButton";
 export * from "./components/ui/radio/RadioButtonTheme";
 export * from "./components/ui/radio/RadioButtonWithLabel";
-export * from "./components/ui/text-input/NumericTextInput";
-export * from "./components/ui/text-input/NumericTextInputTheme";
+export * from "./components/ui/text-input/numeric-text-input/NumericTextInput";
+export * from "./components/ui/text-input/numeric-text-input/NumericTextInputTheme";
+export * from "./components/ui/text-input/numeric-text-input/hooks/UseNumericInputValue";
 export * from "./components/ui/text-input/SimpleTextInput";
 export * from "./components/ui/text-input/SimpleTextInputTheme";
 export * from "./components/ui/text-input/StandardTextInput";

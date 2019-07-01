@@ -1,20 +1,27 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import {
+  Checkbox,
+  CheckboxTheme,
+  CheckboxWithLabel,
+  defaultCheckboxTheme,
+  defaultCheckboxThemeDark
+} from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Checkbox } from "./Checkbox";
-import {
-  CheckboxTheme,
-  defaultCheckboxTheme,
-  defaultCheckboxThemeDark
-} from "./CheckboxTheme";
-import { CheckboxWithLabel } from "./CheckboxWithLabel";
 
 storiesOf("forms/Checkbox", module)
   .add("standard", () => (
     <Checkbox
       value={knobs.boolean("Checked", false)}
       disabled={knobs.boolean("Disabled", false)}
+    />
+  ))
+  .add("with DOM name", () => (
+    <Checkbox
+      value={knobs.boolean("Checked", false)}
+      disabled={knobs.boolean("Disabled", false)}
+      name={knobs.text("Name", "agree")}
     />
   ))
   .add("checked and disabled", () => <Checkbox value={true} disabled />)
@@ -42,9 +49,9 @@ storiesOf("forms/Checkbox", module)
   .add("with custom theme", () => {
     const theme: CheckboxTheme = {
       ...defaultCheckboxTheme,
-      backgroundColor: "lightgray",
-      borderColor: "black",
-      iconColor: "white",
+      backgroundColorNotChecked: "lightgray",
+      borderColorNotChecked: "black",
+      iconColorNotChecked: "white",
       backgroundColorDisabled: "lightgray",
       borderColorDisabled: "black",
       iconColorDisabled: "white",
