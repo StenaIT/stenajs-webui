@@ -95,7 +95,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     }
   };
 
-  const validInput = value && !/^[-/0-9]+$/.test(value);
+  const validInput = value && !/^[-/\\.0-9]+$/.test(value);
 
   const dateIsValid = value && isValid(parse(value, dateFormat, new Date()));
 
