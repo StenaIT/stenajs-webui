@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
 export interface RevertableValue<TValue> {
   value: TValue;
@@ -9,26 +9,20 @@ export interface RevertableValue<TValue> {
 }
 
 export const useRevertableValue = <TValue>(
-  initialValue: TValue,
+  initialValue: TValue
 ): RevertableValue<TValue> => {
   const [value, setValue] = useState<TValue>(initialValue);
   const [revertValue, setRevertValue] = useState<TValue>(initialValue);
 
-  useEffect(
-    () => {
-      setValue(initialValue);
-    },
-    [setValue, initialValue],
-  );
+  useEffect(() => {
+    setValue(initialValue);
+  }, [setValue, initialValue]);
 
-  const revert = useCallback(
-    () => {
-      if (revertValue) {
-        setValue(revertValue);
-      }
-    },
-    [setValue, revertValue],
-  );
+  const revert = useCallback(() => {
+    if (revertValue) {
+      setValue(revertValue);
+    }
+  }, [setValue, revertValue]);
 
   const commit = useCallback(
     (commitValue?: TValue) => {
@@ -37,7 +31,7 @@ export const useRevertableValue = <TValue>(
         setValue(commitValue);
       }
     },
-    [value, setValue],
+    [value, setValue]
   );
 
   return {
@@ -45,6 +39,6 @@ export const useRevertableValue = <TValue>(
     setValue,
     setRevertValue,
     revert,
-    commit,
+    commit
   };
 };

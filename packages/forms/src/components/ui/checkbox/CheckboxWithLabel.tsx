@@ -5,8 +5,8 @@ import {
   ThemeColorField,
   useThemeFields
 } from "@stenajs-webui/core";
-import { Ref } from 'react';
 import * as React from "react";
+import { Ref } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 import { defaultCheckboxTheme } from "./CheckboxTheme";
 

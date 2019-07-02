@@ -57,7 +57,7 @@ export const Icon: React.FC<IconProps> = ({
     <div ref={ref}>
       <FontAwesomeIcon
         className={className}
-        color={mouseIsOver && colors.iconColorHover || colors.iconColor}
+        color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}
         flip={flip}
         icon={(mouseIsOver && hoverIcon) || icon}
         pulse={pulse}

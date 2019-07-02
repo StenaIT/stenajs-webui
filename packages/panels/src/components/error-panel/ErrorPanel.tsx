@@ -29,7 +29,7 @@ export const ErrorPanel: React.FC<ErrorPanelProps> = ({
       alignItems={"center"}
       background={colors.backgroundColor}
     >
-      <Icon icon={faExclamation} size={42}/>
+      <Icon icon={faExclamation} size={42} />
       <Space num={4} />
       <StandardText>{text}</StandardText>
     </Box>

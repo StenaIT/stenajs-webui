@@ -1,6 +1,12 @@
-import styled from '@emotion/styled';
-import { BackgroundProperty, BorderColorProperty, BorderProperty, BoxShadowProperty, ColorProperty } from 'csstype';
-import * as React from 'react';
+import styled from "@emotion/styled";
+import {
+  BackgroundProperty,
+  BorderColorProperty,
+  BorderProperty,
+  BoxShadowProperty,
+  ColorProperty
+} from "csstype";
+import * as React from "react";
 import {
   alignItems,
   AlignItemsProps,
@@ -43,7 +49,8 @@ import {
   maxWidth,
   MaxWidthProps,
   minHeight,
-  MinHeightProps, minWidth,
+  MinHeightProps,
+  minWidth,
   MinWidthProps,
   overflow,
   OverflowProps,
@@ -57,11 +64,11 @@ import {
   width,
   WidthProps,
   zIndex,
-  ZIndexProps,
-} from 'styled-system';
-import { useThemeSelector } from '../../../theme/hooks/UseThemeSelector';
-import { ThemeColorField } from '../../../theme/theme-types/ThemeColors';
-import { ThemeShadows } from '../../../theme/theme-types/ThemeShadows';
+  ZIndexProps
+} from "styled-system";
+import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
+import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
+import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 
 type StyledSystemProps = AlignItemsProps &
   DisplayProps &

@@ -13,8 +13,8 @@ export interface StandardTextInputTheme {
   paddingLeft: string;
   paddingRight: string;
   iconSize: number;
-  backgroundColor: ThemeColorField | string;
-  textColor: ThemeColorField | string;
+  backgroundColor: ThemeColorField | string;
+  textColor: ThemeColorField | string;
 }
 
 export const defaultStandardTextInputTheme: StandardTextInputTheme = {

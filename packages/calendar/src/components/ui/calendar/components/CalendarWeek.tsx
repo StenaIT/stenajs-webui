@@ -1,17 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 import {
+  CalendarDayProps,
   CalendarUserWeekData,
   DayState,
   DayStateHighlight,
   ExtraDayContentProps,
   OnClickDay,
   OnClickWeek,
-  RenderWeekNumber,
-} from '../types/CalendarTypes';
-import { MonthData, WeekData } from '../util/CalendarDataFactory';
-import { CalendarDayProps } from '../types/CalendarTypes';
-import { CalendarTheme } from './CalendarTheme';
-import { WeekNumberCell } from './renderers/WeekNumberCell';
+  RenderWeekNumber
+} from "../types/CalendarTypes";
+import { MonthData, WeekData } from "../util/CalendarDataFactory";
+import { CalendarTheme } from "./CalendarTheme";
+import { WeekNumberCell } from "./renderers/WeekNumberCell";
 
 export interface CalendarWeekProps<T> {
   dayComponent: React.ComponentType<CalendarDayProps<T>>;
@@ -38,7 +38,7 @@ export const CalendarWeek = <T extends {}>({
   theme,
   renderWeekNumber,
   extraDayContent,
-  defaultHighlights,
+  defaultHighlights
 }: CalendarWeekProps<T>) => (
   <tr key={week.weekNumber}>
     <td>

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { CalendarTheme } from '../components/CalendarTheme';
-import { DayData, MonthData, WeekData } from '../util/CalendarDataFactory';
+import * as React from "react";
+import { CalendarTheme } from "../components/CalendarTheme";
+import { DayData, MonthData, WeekData } from "../util/CalendarDataFactory";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
@@ -29,12 +29,12 @@ export interface CalendarOnClicks<T> {
 export type RenderWeekNumber = (
   week: WeekData,
   theme: CalendarTheme,
-  onClick?: OnClickWeek,
+  onClick?: OnClickWeek
 ) => JSX.Element;
 export type RenderWeekDay = (
   weekDayName: string,
   theme: CalendarTheme,
-  onClick?: OnClickWeekDay,
+  onClick?: OnClickWeekDay
 ) => JSX.Element;
 
 export interface Renderers {
@@ -103,11 +103,11 @@ export interface CalendarPropsWithDateSet<T> {
 }
 
 export type DayStateHighlight =
-  | 'selected'
-  | 'range'
-  | 'today'
-  | 'error'
-  | 'disabled'
+  | "selected"
+  | "range"
+  | "today"
+  | "error"
+  | "disabled"
   | string;
 
 export interface HighlightsState {

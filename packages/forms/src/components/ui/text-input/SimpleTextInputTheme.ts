@@ -5,13 +5,13 @@ import {
 } from "@stenajs-webui/core";
 
 export interface SimpleTextInputTheme {
-  textColor: ThemeColorField | string;
-  textColorDisabled: ThemeColorField | string;
-  backgroundColor: ThemeColorField | string;
-  backgroundColorDisabled: ThemeColorField | string;
+  textColor: ThemeColorField | string;
+  textColorDisabled: ThemeColorField | string;
+  backgroundColor: ThemeColorField | string;
+  backgroundColorDisabled: ThemeColorField | string;
   placeholderColor: ThemeColorField | string;
-  fontSize: ThemeFontSizeField | string;
-  fontFamily: ThemeFontField | string;
+  fontSize: ThemeFontSizeField | string;
+  fontFamily: ThemeFontField | string;
   height: string | undefined;
 }
 

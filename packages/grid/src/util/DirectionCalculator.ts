@@ -1,6 +1,6 @@
-import { clampPos, wrapPos } from './NumberBoundsWrapper';
+import { clampPos, wrapPos } from "./NumberBoundsWrapper";
 
-export type MoveDirection = 'right' | 'left' | 'down' | 'up';
+export type MoveDirection = "right" | "left" | "down" | "up";
 
 export interface CellIndices {
   rowIndex: number;
@@ -13,7 +13,7 @@ export const getNextPositionWrappedOrClamped = (
   numRows: number,
   numCols: number,
   direction: MoveDirection,
-  wrap: boolean,
+  wrap: boolean
 ): CellIndices => {
   const posNotWrapped = getNextPosition(rowIndex, colIndex, direction);
   return wrap
@@ -24,34 +24,34 @@ export const getNextPositionWrappedOrClamped = (
 export const getNextPosition = (
   rowIndex: number,
   colIndex: number,
-  direction: MoveDirection,
+  direction: MoveDirection
 ): CellIndices => {
-  if (direction === 'up') {
+  if (direction === "up") {
     return {
       rowIndex: rowIndex - 1,
-      colIndex,
+      colIndex
     };
   }
-  if (direction === 'down') {
+  if (direction === "down") {
     return {
       rowIndex: rowIndex + 1,
-      colIndex,
+      colIndex
     };
   }
-  if (direction === 'left') {
+  if (direction === "left") {
     return {
       rowIndex,
-      colIndex: colIndex - 1,
+      colIndex: colIndex - 1
     };
   }
-  if (direction === 'right') {
+  if (direction === "right") {
     return {
       rowIndex,
-      colIndex: colIndex + 1,
+      colIndex: colIndex + 1
     };
   }
   return {
     rowIndex,
-    colIndex,
+    colIndex
   };
 };

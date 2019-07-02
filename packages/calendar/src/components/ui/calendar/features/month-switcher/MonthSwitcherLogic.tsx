@@ -1,6 +1,6 @@
-import { addMonths, subMonths } from 'date-fns';
-import { ComponentEnhancer, compose, withHandlers, withState } from 'recompose';
-import { CalendarProps } from '../../types/CalendarTypes';
+import { addMonths, subMonths } from "date-fns";
+import { ComponentEnhancer, compose, withHandlers, withState } from "recompose";
+import { CalendarProps } from "../../types/CalendarTypes";
 
 export type __C31235123518 = ComponentEnhancer<{}, {}>;
 
@@ -31,17 +31,17 @@ const withClickHandlers = withHandlers<
   },
   prevMonth: ({ setDate, date, monthsPerRow, numMonths }) => () => {
     setDate(subMonths(date, monthsPerRow || numMonths || 1));
-  },
+  }
 });
 
 const withDateInFocusState = withState(
-  'date',
-  'setDate',
+  "date",
+  "setDate",
   ({ startDateInFocus }: MonthSwitcherLogicOuterProps) =>
-    startDateInFocus || new Date(),
+    startDateInFocus || new Date()
 );
 
 export const withMonthSwitcherLogic = compose(
   withDateInFocusState,
-  withClickHandlers,
+  withClickHandlers
 );

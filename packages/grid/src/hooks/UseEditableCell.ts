@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useCallback, useMemo, useState } from 'react';
-import { RevertableValue, useRevertableValue } from './UseRevertableValue';
+import * as React from "react";
+import { useCallback, useMemo, useState } from "react";
+import { RevertableValue, useRevertableValue } from "./UseRevertableValue";
 
-export type AllowedInputType = 'all' | 'numeric' | 'alphanumeric' | 'letters';
+export type AllowedInputType = "all" | "numeric" | "alphanumeric" | "letters";
 
 type OnStartEditingFunc = (keyEvent?: KeyDownEvent) => void;
 type TransformEnteredValueFunc<TValue> = (value?: string) => TValue;
@@ -73,7 +73,7 @@ const createKeyDownEvent = (event: React.KeyboardEvent): KeyDownEvent => ({
   metaKey: event.metaKey,
   repeat: event.repeat,
   shiftKey: event.shiftKey,
-  which: event.which,
+  which: event.which
 });
 
 // tslint:disable-next-line:no-any
@@ -83,16 +83,16 @@ export const useEditableCell = <TValue>(
   value: TValue,
   {
     isEditable = false,
-    allowedInputType = 'all',
+    allowedInputType = "all",
     onChange,
     onStartEditing,
     onStopEditing,
-    transformEnteredValue = defaultTransformEnteredValue,
-  }: UseEditableCellOptions<TValue>,
+    transformEnteredValue = defaultTransformEnteredValue
+  }: UseEditableCellOptions<TValue>
 ): UseEditableCellResult<TValue> => {
   const [isEditing, setIsEditing] = useState(false);
   const [lastKeyEvent, setLastKeyEvent] = useState<KeyDownEvent | undefined>(
-    undefined,
+    undefined
   );
   const revertableValue = useRevertableValue<TValue>(value);
 
@@ -105,36 +105,30 @@ export const useEditableCell = <TValue>(
         }
       }
     },
-    [isEditable, onStartEditing, setIsEditing],
+    [isEditable, onStartEditing, setIsEditing]
   );
 
-  const stopEditing = useCallback(
-    () => {
-      if (isEditable) {
-        setIsEditing(false);
-        if (onStopEditing) {
-          onStopEditing();
-        }
-        if (onChange) {
-          onChange(revertableValue.value);
-        }
+  const stopEditing = useCallback(() => {
+    if (isEditable) {
+      setIsEditing(false);
+      if (onStopEditing) {
+        onStopEditing();
       }
-    },
-    [isEditable, onChange, onStopEditing, revertableValue, setIsEditing],
-  );
+      if (onChange) {
+        onChange(revertableValue.value);
+      }
+    }
+  }, [isEditable, onChange, onStopEditing, revertableValue, setIsEditing]);
 
-  const stopEditingAndRevert = useCallback(
-    () => {
-      if (isEditable) {
-        setIsEditing(false);
-        if (onStopEditing) {
-          onStopEditing();
-        }
-        revertableValue.revert();
+  const stopEditingAndRevert = useCallback(() => {
+    if (isEditable) {
+      setIsEditing(false);
+      if (onStopEditing) {
+        onStopEditing();
       }
-    },
-    [isEditable, onStopEditing, revertableValue, setIsEditing],
-  );
+      revertableValue.revert();
+    }
+  }, [isEditable, onStopEditing, revertableValue, setIsEditing]);
 
   const onKeyDown = useMemo(
     () =>
@@ -145,7 +139,7 @@ export const useEditableCell = <TValue>(
         setLastKeyEvent,
         allowedInputType,
         transformEnteredValue,
-        revertableValue,
+        revertableValue
       ),
     [
       isEditing,
@@ -154,8 +148,8 @@ export const useEditableCell = <TValue>(
       setLastKeyEvent,
       allowedInputType,
       transformEnteredValue,
-      revertableValue,
-    ],
+      revertableValue
+    ]
   );
 
   return {
@@ -166,7 +160,7 @@ export const useEditableCell = <TValue>(
     startEditing,
     stopEditing,
     stopEditingAndRevert,
-    onDoubleClick: startEditing,
+    onDoubleClick: startEditing
   };
 };
 
@@ -177,9 +171,9 @@ const createKeyDownHandler = <TValue>(
   setLastKeyEvent: (lastKeyEvent: KeyDownEvent | undefined) => void,
   allowedInputType: AllowedInputType,
   transformEnteredValue: TransformEnteredValueFunc<TValue>,
-  revertableValue: RevertableValue<TValue>,
+  revertableValue: RevertableValue<TValue>
 ): React.KeyboardEventHandler => e => {
-  if (e.key === 'Enter' && isEditable) {
+  if (e.key === "Enter" && isEditable) {
     setLastKeyEvent(undefined);
     startEditing();
     revertableValue.commit();
@@ -196,9 +190,9 @@ const createKeyDownHandler = <TValue>(
     const lastKeyEvent = createKeyDownEvent(e);
     if (!isNaN(num)) {
       if (
-        allowedInputType === 'all' ||
-        allowedInputType === 'numeric' ||
-        allowedInputType === 'alphanumeric'
+        allowedInputType === "all" ||
+        allowedInputType === "numeric" ||
+        allowedInputType === "alphanumeric"
       ) {
         startEditing(lastKeyEvent);
         setLastKeyEvent(lastKeyEvent);
@@ -208,9 +202,9 @@ const createKeyDownHandler = <TValue>(
         e.stopPropagation();
       }
     } else if (
-      allowedInputType === 'all' ||
-      allowedInputType === 'alphanumeric' ||
-      allowedInputType === 'letters'
+      allowedInputType === "all" ||
+      allowedInputType === "alphanumeric" ||
+      allowedInputType === "letters"
     ) {
       startEditing(lastKeyEvent);
       setLastKeyEvent(lastKeyEvent);
