@@ -4,18 +4,18 @@ export interface FormatTimeStringResult {
 }
 
 export const formatHours = (hours: string): string => {
-  if (hours === '') {
-    return '00';
+  if (hours === "") {
+    return "00";
   }
 
   const h = parseInt(hours, 10);
 
   if (isNaN(h)) {
-    throw new Error('Hours is not a number');
+    throw new Error("Hours is not a number");
   }
 
   if (h < 0 || h > 23) {
-    throw new Error('Hours is an invalid number');
+    throw new Error("Hours is an invalid number");
   }
 
   switch (hours.length) {
@@ -24,25 +24,25 @@ export const formatHours = (hours: string): string => {
     case 2:
       return hours;
     default:
-      throw new Error('Invalid hour string');
+      throw new Error("Invalid hour string");
   }
 
   return hours;
 };
 
 export const formatMinutes = (minutes: string): string => {
-  if (minutes === '') {
-    return '00';
+  if (minutes === "") {
+    return "00";
   }
 
   const m = parseInt(minutes, 10);
 
   if (isNaN(m)) {
-    throw new Error('Minutes is not a number');
+    throw new Error("Minutes is not a number");
   }
 
   if (m < 0 || m > 59) {
-    throw new Error('Minutes is an invalid number');
+    throw new Error("Minutes is an invalid number");
   }
 
   switch (minutes.length) {
@@ -51,7 +51,7 @@ export const formatMinutes = (minutes: string): string => {
     case 2:
       return minutes;
     default:
-      throw new Error('Invalid minute string');
+      throw new Error("Invalid minute string");
   }
   return minutes;
 };
@@ -89,7 +89,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
         if (minutes >= 0 && minutes <= 59) {
           return {
             time: `0${time.substr(0, 1)}:${time.substr(1, 2)}`,
-            success: true,
+            success: true
           };
         }
         return { time, success: false };
@@ -104,7 +104,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
         }
         return {
           time: `${time.substr(0, 2)}:${time.substr(2, 2)}`,
-          success: true,
+          success: true
         };
       default:
         return { time, success: false };

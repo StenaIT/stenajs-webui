@@ -1,16 +1,16 @@
-import { KeyboardEventHandler, useCallback, useMemo } from 'react';
-import { MoveDirection } from '../util/DirectionCalculator';
+import { KeyboardEventHandler, useCallback, useMemo } from "react";
+import { MoveDirection } from "../util/DirectionCalculator";
 import {
   KeyDownEvent,
   useEditableCell,
-  UseEditableCellOptions,
-} from './UseEditableCell';
+  UseEditableCellOptions
+} from "./UseEditableCell";
 import {
   GridNavigationRequiredProps,
   useGridNavigation,
-  UseGridNavigationOptions,
-} from './UseGridNavigation';
-import { useGridNavigationOptionsFromContext } from './UseGridNavigationOptionsFromContext';
+  UseGridNavigationOptions
+} from "./UseGridNavigation";
+import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
 
 export type UseGridCellOptions<TValue> = UseGridNavigationOptions &
   UseEditableCellOptions<TValue>;
@@ -61,7 +61,7 @@ export interface UseGridCellResult<TValue> {
 }
 
 export interface GridCellRequiredProps
-  extends Pick<GridNavigationRequiredProps, 'tabIndex' | 'id'> {
+  extends Pick<GridNavigationRequiredProps, "tabIndex" | "id"> {
   onKeyDown: KeyboardEventHandler;
   onDoubleClick: () => void;
 }
@@ -74,7 +74,7 @@ export interface GridCellRequiredProps
  */
 export const useGridCell = <TValue>(
   value: TValue,
-  options: UseGridCellOptions<TValue>,
+  options: UseGridCellOptions<TValue>
 ): UseGridCellResult<TValue> => {
   const { tableId } = useGridNavigationOptionsFromContext(options);
   const nav = useGridNavigation(options);
@@ -83,41 +83,32 @@ export const useGridCell = <TValue>(
   const cellCoordinates = useMemo(
     () => ({
       rowIndex: options.rowIndex,
-      colIndex: options.colIndex,
+      colIndex: options.colIndex
     }),
-    [options.rowIndex, options.colIndex],
+    [options.rowIndex, options.colIndex]
   );
 
-  const startEditing = useCallback(
-    () => {
-      edit.startEditing();
-      nav.focusOnCell(tableId, cellCoordinates);
-    },
-    [edit, nav, tableId, cellCoordinates],
-  );
+  const startEditing = useCallback(() => {
+    edit.startEditing();
+    nav.focusOnCell(tableId, cellCoordinates);
+  }, [edit, nav, tableId, cellCoordinates]);
 
-  const stopEditing = useCallback(
-    () => {
-      edit.stopEditing();
-      nav.focusOnCell(tableId, cellCoordinates);
-    },
-    [edit, nav, tableId, cellCoordinates],
-  );
+  const stopEditing = useCallback(() => {
+    edit.stopEditing();
+    nav.focusOnCell(tableId, cellCoordinates);
+  }, [edit, nav, tableId, cellCoordinates]);
 
-  const stopEditingAndRevert = useCallback(
-    () => {
-      edit.stopEditingAndRevert();
-      nav.focusOnCell(tableId, cellCoordinates);
-    },
-    [edit, nav, tableId, cellCoordinates],
-  );
+  const stopEditingAndRevert = useCallback(() => {
+    edit.stopEditingAndRevert();
+    nav.focusOnCell(tableId, cellCoordinates);
+  }, [edit, nav, tableId, cellCoordinates]);
 
   const stopEditingAndMove = useCallback(
     (direction: MoveDirection) => {
       edit.stopEditing();
       nav.moveHandler(direction);
     },
-    [edit, nav],
+    [edit, nav]
   );
 
   const onKeyDown = useCallback<KeyboardEventHandler>(
@@ -129,7 +120,7 @@ export const useGridCell = <TValue>(
         }
       }
     },
-    [edit, nav.requiredProps],
+    [edit, nav.requiredProps]
   );
 
   return {
@@ -141,11 +132,11 @@ export const useGridCell = <TValue>(
     requiredProps: {
       ...nav.requiredProps,
       onKeyDown,
-      onDoubleClick: edit.onDoubleClick,
+      onDoubleClick: edit.onDoubleClick
     },
     startEditing,
     stopEditing,
     stopEditingAndRevert,
-    stopEditingAndMove,
+    stopEditingAndMove
   };
 };

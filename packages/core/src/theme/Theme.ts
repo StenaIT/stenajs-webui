@@ -3,7 +3,7 @@ import { ThemeFonts } from "./theme-types/ThemeFonts";
 import { ThemeFontSizes } from "./theme-types/ThemeFontSizes";
 import { ThemeFontWeights } from "./theme-types/ThemeFontWeights";
 import { ThemeMetrics } from "./theme-types/ThemeMetrics";
-import { ThemeShadows } from './theme-types/ThemeShadows';
+import { ThemeShadows } from "./theme-types/ThemeShadows";
 
 export interface Theme {
   colors: ThemeColors;

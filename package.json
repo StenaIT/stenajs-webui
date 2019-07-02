@@ -20,6 +20,7 @@
     "check-deps-match": "node scripts/check-deps-match.js",
     "check-builds": "node scripts/check-builds.js",
     "check-imports": "node scripts/check-imports.js",
+    "prettier": "prettier --write 'packages/**/src/**/*.ts?(x)' --ignore-path .gitignore",
     "check-circular-deps": "find ./packages -type d -name dist | xargs yarn madge --circular --extensions js",
     "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn madge --circular --extensions tsx"
   },
@@ -60,8 +61,10 @@
     "enzyme-adapter-react-16": "^1.13.1",
     "gh-pages": "^2.0.1",
     "glob": "^7.1.4",
+    "husky": "^3.0.0",
     "jest": "^24.8.0",
     "lerna": "^3.13.4",
+    "lint-staged": "^9.0.0",
     "madge": "^3.4.4",
     "prettier": "^1.17.0",
     "react-docgen-typescript-loader": "^3.1.0",
@@ -108,5 +111,16 @@
       "path": "./packages/theme/dist/*.js",
       "maxSize": "2 kB"
     }
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }

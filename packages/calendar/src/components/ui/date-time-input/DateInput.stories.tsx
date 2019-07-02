@@ -1,6 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { DateInput, setDayStateValue } from "@stenajs-webui/calendar";
-import { color } from '@storybook/addon-knobs';
+import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import { addDays, addMonths } from "date-fns";
 import * as React from "react";

@@ -8,6 +8,17 @@ $ yarn lerna link
 $ yarn build-all
 ```
 
+## Developing using story-book
+
+Terminal 1
+```
+$ yarn start-storybook
+```
+Terminal 2
+```
+$ yarn watch
+```
+
 ## Libraries of choice
 
 - `emotion` and `styled-system` is used for all styling.

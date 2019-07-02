@@ -1,4 +1,3 @@
-
 export const parseFloatElseUndefined = (s: string): number | undefined => {
   try {
     const f = parseFloat(s);

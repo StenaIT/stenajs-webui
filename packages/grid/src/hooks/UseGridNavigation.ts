@@ -1,11 +1,11 @@
-import { KeyboardEvent, useMemo } from 'react';
+import { KeyboardEvent, useMemo } from "react";
 import {
   CellIndices,
   getNextPositionWrappedOrClamped,
-  MoveDirection,
-} from '../util/DirectionCalculator';
-import { ensureDomIdIsCorrect } from '../util/DomIdValidator';
-import { useGridNavigationOptionsFromContext } from './UseGridNavigationOptionsFromContext';
+  MoveDirection
+} from "../util/DirectionCalculator";
+import { ensureDomIdIsCorrect } from "../util/DomIdValidator";
+import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
 
 export interface UseGridNavigationOptions {
   /**
@@ -86,7 +86,7 @@ export interface OnCellNavigationEvent extends OnCellMoveEvent {
 }
 
 export const useGridNavigation = (
-  options: UseGridNavigationOptions,
+  options: UseGridNavigationOptions
 ): UseGridNavigationResult => {
   const {
     rowIndex,
@@ -96,7 +96,7 @@ export const useGridNavigation = (
     tableId,
     wrap = false,
     onCellMove,
-    onCellNavigation,
+    onCellNavigation
   } = useGridNavigationOptionsFromContext(options);
 
   const moveHandler = useMemo(
@@ -109,7 +109,7 @@ export const useGridNavigation = (
         numCols,
         wrap,
         onCellMove,
-        onCellNavigation,
+        onCellNavigation
       ),
     [
       tableId,
@@ -119,18 +119,18 @@ export const useGridNavigation = (
       numCols,
       wrap,
       onCellMove,
-      onCellNavigation,
-    ],
+      onCellNavigation
+    ]
   );
 
   const onKeyDown = useMemo(() => createKeyDownHandler(moveHandler), [
-    moveHandler,
+    moveHandler
   ]);
 
   const id = useMemo(() => createCellId(tableId, rowIndex, colIndex), [
     tableId,
     rowIndex,
-    colIndex,
+    colIndex
   ]);
 
   return {
@@ -139,8 +139,8 @@ export const useGridNavigation = (
     requiredProps: {
       tabIndex: 0,
       onKeyDown,
-      id,
-    },
+      id
+    }
   };
 };
 
@@ -154,7 +154,7 @@ const createMoveHandler = (
   numCols: number,
   wrap: boolean,
   onCellMove?: CellMoveHandler,
-  onCellNavigation?: CellNavigationHandler,
+  onCellNavigation?: CellNavigationHandler
 ): MoveHandler => direction => {
   const pos = getNextPositionWrappedOrClamped(
     rowIndex,
@@ -162,7 +162,7 @@ const createMoveHandler = (
     numRows,
     numCols,
     direction,
-    wrap,
+    wrap
   );
 
   const colDidChange = colIndex !== pos.colIndex;
@@ -177,7 +177,7 @@ const createMoveHandler = (
         rowIndex: pos.rowIndex,
         colIndex: pos.colIndex,
         colDidChange,
-        rowDidChange,
+        rowDidChange
       });
     }
     focusOnCell(tableId, pos);
@@ -192,7 +192,7 @@ const createMoveHandler = (
       colIndex: pos.colIndex,
       colDidChange,
       rowDidChange,
-      cellDidChange: colDidChange || rowDidChange,
+      cellDidChange: colDidChange || rowDidChange
     });
   }
 };
@@ -200,29 +200,29 @@ const createMoveHandler = (
 const createCellId = (
   tableId: string,
   rowIndex: number,
-  colIndex: number,
+  colIndex: number
 ): string => ensureDomIdIsCorrect(`table-${tableId}-${rowIndex}-${colIndex}`);
 
 const createKeyDownHandler = (moveHandler: MoveHandler) => (
-  e: KeyboardEvent,
+  e: KeyboardEvent
 ): boolean => {
-  if (e.key === 'ArrowLeft') {
-    moveHandler('left');
+  if (e.key === "ArrowLeft") {
+    moveHandler("left");
     e.preventDefault();
     e.stopPropagation();
     return true;
-  } else if (e.key === 'ArrowUp') {
-    moveHandler('up');
+  } else if (e.key === "ArrowUp") {
+    moveHandler("up");
     e.preventDefault();
     e.stopPropagation();
     return true;
-  } else if (e.key === 'ArrowRight') {
-    moveHandler('right');
+  } else if (e.key === "ArrowRight") {
+    moveHandler("right");
     e.preventDefault();
     e.stopPropagation();
     return true;
-  } else if (e.key === 'ArrowDown') {
-    moveHandler('down');
+  } else if (e.key === "ArrowDown") {
+    moveHandler("down");
     e.preventDefault();
     e.stopPropagation();
     return true;
@@ -235,10 +235,10 @@ type FocusOnCellFunc = (tableId: string, pos: CellIndices) => void;
 
 export const focusOnCell: FocusOnCellFunc = (tableId, pos) => {
   const el = (document.querySelector(
-    `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`,
+    `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`
   ) ||
     document.querySelector(
-      `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`,
+      `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`
     )) as HTMLElement;
   if (el) {
     el.focus();

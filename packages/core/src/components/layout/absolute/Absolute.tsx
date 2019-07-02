@@ -6,5 +6,5 @@ interface AbsoluteProps extends BoxProps {
 }
 
 export const Absolute: React.FC<AbsoluteProps> = ({ num, ...props }) => {
-  return <Box position={'absolute'} {...props} />;
+  return <Box position={"absolute"} {...props} />;
 };

@@ -1,8 +1,8 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { color } from '@storybook/addon-knobs';
+import { TimeTextInput } from "@stenajs-webui/calendar";
+import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { TimeTextInput } from "@stenajs-webui/calendar";
 
 interface TimeTextInputState {
   value?: string;
@@ -97,7 +97,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
       <TimeTextInput
         value={store.state.value}
         onValueChange={value => store.set({ value })}
-        backgroundColor={color('Background', '#f0f060')}
+        backgroundColor={color("Background", "#f0f060")}
       />
     ))
   );

@@ -1,19 +1,20 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  CalendarTheme,
+  extranetCalendarTheme,
+  OnClickWeek,
+  RenderWeekNumber,
+  setDayStateValue,
+  SingleDateCalendar,
+  WeekData,
+  WeekNumberCell
+} from "@stenajs-webui/calendar";
 import { Box, Row, Space } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
-import {
-  CalendarTheme,
-  extranetCalendarTheme
-} from "@stenajs-webui/calendar";
-import { WeekNumberCell } from "@stenajs-webui/calendar";
-import { SingleDateCalendar } from "@stenajs-webui/calendar";
-import { OnClickWeek, RenderWeekNumber } from "@stenajs-webui/calendar";
-import { WeekData } from "@stenajs-webui/calendar";
-import { setDayStateValue } from "@stenajs-webui/calendar";
 
 interface State {
   value?: Date;

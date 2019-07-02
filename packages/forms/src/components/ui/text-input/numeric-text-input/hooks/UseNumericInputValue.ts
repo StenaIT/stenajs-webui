@@ -1,9 +1,11 @@
 import { useCallback, useMemo } from "react";
-import { ValueAndOnValueChangeProps } from '../../../types';
+import { ValueAndOnValueChangeProps } from "../../../types";
 import { NumericTextInputProps } from "../NumericTextInput";
 import { parseFloatElseUndefined } from "../util/NumericTextInputUtil";
 
-export type NumericInputValueProps = ValueAndOnValueChangeProps<number | undefined>;
+export type NumericInputValueProps = ValueAndOnValueChangeProps<
+  number | undefined
+>;
 
 export const useNumericInputValue = (
   value: number | undefined,

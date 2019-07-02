@@ -1,7 +1,12 @@
-import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
-import { Ref } from 'react';
+import {
+  Box,
+  Space,
+  StandardText,
+  ThemeColorField,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
-import { ThemeColorField } from "@stenajs-webui/core";
+import { Ref } from "react";
 import { Switch, SwitchProps } from "./Switch";
 import { defaultSwitchTheme } from "./SwitchTheme";
 
