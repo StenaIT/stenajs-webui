@@ -33,7 +33,7 @@ export interface DateTextInputProps<T>
   /** Make the icon not clickable, @default false */
   disableCalender?: boolean;
   /** Show or hide the calender icon, @default true */
-  useCalenderIcon?: boolean;
+  showCalenderIcon?: boolean;
   /** Placeholder for the input, @default YYYY-MM-DD */
   placeholder?: string;
   /**  Z-index of the calendar overlay, @default 100 */
@@ -56,7 +56,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   zIndex = 100,
   dateInputTheme = defaultDateInputTheme,
   calendarTheme = defaultCalendarTheme,
-  useCalenderIcon = true,
+  showCalenderIcon = true,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -116,9 +116,9 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
             ? colors.backgroundColorInvalidDate
             : props.backgroundColor
         }
-        iconLeft={useCalenderIcon ? faCalendarAlt : undefined}
+        iconLeft={showCalenderIcon ? faCalendarAlt : undefined}
         onClickLeft={
-          disableCalender || !useCalenderIcon ? undefined : toggleCalendar
+          showCalenderIcon && !disableCalender ? toggleCalendar : undefined
         }
         onValueChange={onValueChangeHandler}
         placeholder={placeholder}
