@@ -122,6 +122,29 @@ export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
 - Put hooks in own sub folder `hooks`.
 - Put other util functions in sub folder `utils`.
 
+## Props
+
+### Default props
+
+#### Boolean
+
+Boolean props with default value that toggle something, should always default to false.
+
+For example:
+```
+<SomeComp />
+<SomeComp showProfile />
+```
+In this example `showProfile` defaults to `true` when omitted.
+It should be changed to this instead:
+
+```
+<SomeComp />
+<SomeComp hideProfile />
+```
+
+Where `hideProfile` have default value of `false`.
+
 ## Themes
 
 - If your component has a theme, add `<Component>Theme.ts` next to `<Component>.tsx`.
