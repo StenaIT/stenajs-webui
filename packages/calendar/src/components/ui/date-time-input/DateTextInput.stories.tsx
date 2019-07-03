@@ -59,6 +59,30 @@ storiesOf("calendar/Input/DateTextInput", module)
     ))
   )
   .add(
+    "with no icon",
+    withState<DateTextInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateTextInputState> }) => (
+      <DateTextInput
+        value={store.state.value}
+        onValueChange={value => store.set({ value })}
+        useCalenderIcon={false}
+      />
+    ))
+  )
+  .add(
+    "with disabled calendar",
+    withState<DateTextInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateTextInputState> }) => (
+      <DateTextInput
+        value={store.state.value}
+        onValueChange={value => store.set({ value })}
+        disableCalender={true}
+      />
+    ))
+  )
+  .add(
     "with background color",
     withState<DateTextInputState>({
       value: undefined
