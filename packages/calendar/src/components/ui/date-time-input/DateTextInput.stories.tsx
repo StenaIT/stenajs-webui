@@ -66,7 +66,7 @@ storiesOf("calendar/Input/DateTextInput", module)
       <DateTextInput
         value={store.state.value}
         onValueChange={value => store.set({ value })}
-        showCalenderIcon={false}
+        hideCalenderIcon={true}
       />
     ))
   )
