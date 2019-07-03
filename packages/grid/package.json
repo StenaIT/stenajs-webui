@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,9 +27,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.25",
-    "@stenajs-webui/elements": "0.0.25",
-    "@stenajs-webui/forms": "0.0.25"
+    "@stenajs-webui/core": "0.0.26",
+    "@stenajs-webui/elements": "0.0.26",
+    "@stenajs-webui/forms": "0.0.26"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.19",
