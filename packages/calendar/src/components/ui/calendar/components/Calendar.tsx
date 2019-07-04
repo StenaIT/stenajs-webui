@@ -1,6 +1,6 @@
 import { Row, Space, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear } from "date-fns";
-import { chunk } from "lodash-es";
+import { chunk } from "lodash";
 import * as React from "react";
 import {
   compose,

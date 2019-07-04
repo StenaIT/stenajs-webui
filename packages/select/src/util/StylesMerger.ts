@@ -1,5 +1,5 @@
-import { merge } from 'lodash-es';
-import { StylesConfig } from 'react-select/lib/styles';
+import { merge } from "lodash";
+import { StylesConfig } from "react-select/lib/styles";
 
 export const mergeStyles = (
   themeStyle: StylesConfig,
