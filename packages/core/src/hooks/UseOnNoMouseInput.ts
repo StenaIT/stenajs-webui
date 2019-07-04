@@ -1,4 +1,4 @@
-import { debounce } from "lodash-es";
+import { debounce } from "lodash";
 import { useEffect, useRef } from "react";
 
 const events = ["mousemove", "mousedown", "keydown", "touchstart", "scroll"];
