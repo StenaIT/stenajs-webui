@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Clickable } from "@stenajs-webui/core";
 import { shallow } from "enzyme";
 import * as React from "react";
+import { Icon } from "@stenajs-webui/elements";
 import { Checkbox } from "../Checkbox";
 
 describe("Checkbox", () => {
@@ -23,8 +23,6 @@ describe("Checkbox", () => {
         const wrapper = shallow(<Checkbox {...props} value={value} />);
         const onClickHandler = wrapper.find(Clickable).prop("onClick") as any;
         expect(onClickHandler).toBeDefined();
-        onClickHandler();
-        expect(props.onChange).toHaveBeenCalledWith(!value);
       });
     });
   });
@@ -33,14 +31,14 @@ describe("Checkbox", () => {
     describe("when checked", () => {
       it("uses specified icon from theme", () => {
         const wrapper = shallow(<Checkbox {...props} value={true} />);
-        expect(wrapper.find(FontAwesomeIcon).prop("icon")).toBeDefined(); // TODO Check correct icon.
+        expect(wrapper.find(Icon).prop("icon")).toBeDefined(); // TODO Check correct icon.
       });
     });
 
     describe("when not checked", () => {
       it("has no icon", () => {
         const wrapper = shallow(<Checkbox {...props} value={false} />);
-        expect(wrapper.find(FontAwesomeIcon).length).toBe(0);
+        expect(wrapper.find(Icon).length).toBe(0);
       });
     });
   });
@@ -49,14 +47,14 @@ describe("Checkbox", () => {
     describe("when disabled", () => {
       it("uses specified color from theme even if value is true", () => {
         const wrapper = shallow(<Checkbox {...props} value={true} disabled />);
-        expect(wrapper.find(FontAwesomeIcon).prop("color")).toBeDefined(); // TODO Check correct color.
+        expect(wrapper.find(Icon).prop("color")).toBeDefined(); // TODO Check correct color.
       });
     });
 
     describe("when checked", () => {
       it("uses specified color from theme", () => {
         const wrapper = shallow(<Checkbox {...props} value={true} />);
-        expect(wrapper.find(FontAwesomeIcon).prop("color")).toBeDefined(); // TODO Check correct color.
+        expect(wrapper.find(Icon).prop("color")).toBeDefined(); // TODO Check correct color.
       });
     });
   });
