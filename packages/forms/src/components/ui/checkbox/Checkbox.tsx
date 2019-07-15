@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import {
   Box,
-  Clickable,
   InputProps,
   useMouseIsOver,
   useThemeFields
@@ -11,36 +10,46 @@ import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import { FullOnChangeProps } from "../types";
+import { useId } from "../utils/UseId";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps<HTMLButtonElement> {
+    InputProps<HTMLLabelElement> {
   disabled?: boolean;
   indeterminate?: boolean;
+  id?: string;
   theme?: CheckboxTheme;
 }
 
 const InvisibleCheckbox = styled.input`
   top: 0;
   left: 0;
-  width: 26px;
   cursor: inherit;
-  height: 26px;
   margin: 0;
   opacity: 0;
   padding: 0;
   position: absolute;
 `;
 
+const CheckboxLabel = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${InvisibleCheckbox}:focus + & {
+    box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);
+  }
+`;
+
 export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
-  wrapperRef,
   indeterminate = false,
   onChange,
   onValueChange,
+  id: outerId,
   theme = defaultCheckboxTheme,
   value = false,
   name
@@ -67,6 +76,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     },
     [theme]
   );
+  const innerId = "swui-checkbox-" + useId();
+
+  const id = outerId || innerId;
 
   const innerInputRef = useRef(null);
 
@@ -75,18 +87,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const mouseIsOver = useMouseIsOver(inputRefToUse);
 
   const icon = getIcon(value, disabled, indeterminate, mouseIsOver, theme);
-
-  const onClick = useCallback(
-    ev => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(!value);
-      }
-    },
-    [onChange, onValueChange, value]
-  );
 
   const handleInputChange = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -109,48 +109,28 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   }, [indeterminate, inputRefToUse]);
 
   return (
-    <Clickable onClick={disabled ? undefined : onClick} innerRef={wrapperRef}>
-      <Box
-        borderColor={getBorderColor(
-          value,
-          disabled,
-          indeterminate,
-          mouseIsOver,
-          colors
-        )}
-        borderStyle={"solid"}
-        borderWidth={"1px"}
-        overflow={"hidden"}
-        borderRadius={theme.borderRadius}
-      >
-        <Box
-          width={theme.width}
-          height={theme.height}
-          background={getBackgroundColor(
-            value,
-            disabled,
-            indeterminate,
-            mouseIsOver,
-            colors
-          )}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          {icon && (
-            <Icon
-              icon={icon}
-              color={getIconColor(
-                value,
-                disabled,
-                indeterminate,
-                mouseIsOver,
-                colors
-              )}
-              size={theme.iconSize}
-            />
-          )}
-        </Box>
-      </Box>
+    <Box
+      width={theme.width}
+      height={theme.height}
+      borderColor={getBorderColor(
+        value,
+        disabled,
+        indeterminate,
+        mouseIsOver,
+        colors
+      )}
+      background={getBackgroundColor(
+        value,
+        disabled,
+        indeterminate,
+        mouseIsOver,
+        colors
+      )}
+      borderStyle={"solid"}
+      borderWidth={"1px"}
+      position={"relative"}
+      borderRadius={theme.borderRadius}
+    >
       <InvisibleCheckbox
         disabled={disabled}
         checked={value}
@@ -158,9 +138,33 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         onChange={handleInputChange}
         type={"checkbox"}
         name={name}
+        id={id}
         className={className}
+        style={{ width: theme.width, height: theme.height }}
       />
-    </Clickable>
+      <CheckboxLabel
+        style={{
+          borderRadius: theme.borderRadius,
+          width: theme.width,
+          height: theme.height
+        }}
+        htmlFor={id}
+      >
+        {icon && (
+          <Icon
+            icon={icon}
+            color={getIconColor(
+              value,
+              disabled,
+              indeterminate,
+              mouseIsOver,
+              colors
+            )}
+            size={theme.iconSize}
+          />
+        )}
+      </CheckboxLabel>
+    </Box>
   );
 };
 
