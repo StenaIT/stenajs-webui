@@ -1,31 +1,12 @@
-import { Clickable } from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
 import { shallow } from "enzyme";
 import * as React from "react";
-import { Icon } from "@stenajs-webui/elements";
 import { Checkbox } from "../Checkbox";
 
 describe("Checkbox", () => {
   const props = {
     onChange: jest.fn()
   };
-
-  describe("disabled", () => {
-    describe("when disabled is true", () => {
-      it("sets onClick to undefined", () => {
-        const wrapper = shallow(<Checkbox {...props} disabled />);
-        expect(wrapper.find(Clickable).prop("onClick")).toBe(undefined);
-      });
-    });
-
-    describe("when disabled is false", () => {
-      it("sets onClick to specified onClick", () => {
-        const value = true;
-        const wrapper = shallow(<Checkbox {...props} value={value} />);
-        const onClickHandler = wrapper.find(Clickable).prop("onClick") as any;
-        expect(onClickHandler).toBeDefined();
-      });
-    });
-  });
 
   describe("icon", () => {
     describe("when checked", () => {
