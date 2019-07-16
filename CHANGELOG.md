@@ -1,5 +1,9 @@
 # Changelog
 
+#### 0.0.28
+
+* Fix a bug in `Checkbox` that caused `onChange`/`onValueChange` to be called twice
+
 #### 0.0.27
 
 * Replace `lodash-es` with `lodash`
