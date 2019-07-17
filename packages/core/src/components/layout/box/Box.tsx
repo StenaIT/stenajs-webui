@@ -153,6 +153,7 @@ const FlexBox = styled.div<
     BoxShadowProps &
     BackgroundProps & { themeSpacing: number; themeIndent: number }
 >`
+  box-sizing: border-box;
   display: ${props => props.display || "flex"};
   ${alignItems};
   ${background};

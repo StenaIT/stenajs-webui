@@ -30,12 +30,16 @@ const InvisibleCheckbox = styled.input`
   opacity: 0;
   padding: 0;
   position: absolute;
+  width: 100%;
+  height: 100%;
 `;
 
 const CheckboxLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 
   input[type="checkbox"]:focus + & {
     box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);
@@ -140,13 +144,10 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         name={name}
         id={id}
         className={className}
-        style={{ width: theme.width, height: theme.height }}
       />
       <CheckboxLabel
         style={{
-          borderRadius: theme.borderRadius,
-          width: theme.width,
-          height: theme.height
+          borderRadius: theme.borderRadius
         }}
         htmlFor={id}
       >

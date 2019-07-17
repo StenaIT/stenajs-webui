@@ -4,6 +4,7 @@ import {
   Props as FontAwesomeProps
 } from "@fortawesome/react-fontawesome";
 import {
+  Box,
   Omit,
   ThemeColorField,
   useMouseIsOver,
@@ -54,7 +55,7 @@ export const Icon: React.FC<IconProps> = ({
   }
 
   return (
-    <div ref={ref}>
+    <Box justifyContent={"center"} alignItems={"center"} innerRef={ref}>
       <FontAwesomeIcon
         className={className}
         color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}
@@ -66,6 +67,6 @@ export const Icon: React.FC<IconProps> = ({
         style={{ fontSize: size, ...style }}
         transform={transform}
       />
-    </div>
+    </Box>
   );
 };
