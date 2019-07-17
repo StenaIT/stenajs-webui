@@ -37,7 +37,7 @@ const CheckboxLabel = styled.label`
   justify-content: center;
   align-items: center;
 
-  ${InvisibleCheckbox}:focus + & {
+  input[type="checkbox"]:focus + & {
     box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);
   }
 `;
