@@ -1,5 +1,16 @@
 # Changelog
 
+#### 0.0.30
+
+* Set `box-sizing: border-box` on `Box`
+* Fix centering for `Icon`
+    * This also centers `Checkbox` icon
+
+#### 0.0.29
+
+* Fix hard dependency on `fontawesome-common-types`
+* Fix warning for babel emotion plugin
+
 #### 0.0.28
 
 * Fix a bug in `Checkbox` that caused `onChange`/`onValueChange` to be called twice
