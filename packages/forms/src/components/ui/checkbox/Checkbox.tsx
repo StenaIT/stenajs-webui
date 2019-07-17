@@ -140,13 +140,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         name={name}
         id={id}
         className={className}
-        style={{ width: theme.width, height: theme.height }}
+        style={{ width: "100%", height: "100%" }}
       />
       <CheckboxLabel
         style={{
           borderRadius: theme.borderRadius,
-          width: theme.width,
-          height: theme.height
+          width: "100%",
+          height: "100%"
         }}
         htmlFor={id}
       >

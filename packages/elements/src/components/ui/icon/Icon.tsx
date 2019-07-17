@@ -11,6 +11,7 @@ import {
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useRef } from "react";
+import styled from "@emotion/styled";
 
 export interface IconProps
   extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
@@ -20,6 +21,12 @@ export interface IconProps
   hoverColor?: ThemeColorField | string;
   size?: number;
 }
+
+const IconBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const Icon: React.FC<IconProps> = ({
   className,
@@ -54,7 +61,7 @@ export const Icon: React.FC<IconProps> = ({
   }
 
   return (
-    <div ref={ref}>
+    <IconBox ref={ref}>
       <FontAwesomeIcon
         className={className}
         color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}
@@ -66,6 +73,6 @@ export const Icon: React.FC<IconProps> = ({
         style={{ fontSize: size, ...style }}
         transform={transform}
       />
-    </div>
+    </IconBox>
   );
 };
