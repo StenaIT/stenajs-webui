@@ -1,6 +1,6 @@
 const shared = {
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>../../../setupTests.js"],
   globals: {
     "ts-jest": {
