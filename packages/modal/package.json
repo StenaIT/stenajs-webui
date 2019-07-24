@@ -1,0 +1,60 @@
+{
+  "name": "@stenajs-webui/modal",
+  "version": "0.0.30",
+  "description": "",
+  "author": "mattias800",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StenaIT/stenajs-webui.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
+    "test:watch": "react-scripts-ts test --env=jsdom",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "clean": "rm -rf dist",
+    "prepare": "yarn clean && yarn run build",
+    "predeploy": "cd example && yarn install && yarn run build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "dependencies": {
+    "@stenajs-webui/core": "0.0.30",
+    "@stenajs-webui/elements": "0.0.30",
+    "@stenajs-webui/theme": "0.0.30",
+    "@types/react-modal": "^3.8.2",
+    "react-modal": "^3.9.1"
+  },
+  "peerDependencies": {
+    "@emotion/core": ">=10.0.10",
+    "@fortawesome/fontawesome-svg-core": ">=1.2.18",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
+    "@fortawesome/react-fontawesome": ">=0.1.4",
+    "@types/react": ">=16.8.19",
+    "@types/react-dom": ">=16.8.4",
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  },
+  "devDependencies": {
+    "@emotion/core": "^10.0.10",
+    "@fortawesome/fontawesome-svg-core": "1.2.18",
+    "@fortawesome/free-solid-svg-icons": "5.8.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
+    "@types/jest": "^23.1.5",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "files": [
+    "dist"
+  ]
+}
