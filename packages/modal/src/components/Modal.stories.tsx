@@ -2,7 +2,7 @@ import { Store, withState } from "@dump247/storybook-state";
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import { Box, Row, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Row, Space, Spacing, StandardText } from "@stenajs-webui/core";
 import { Icon, StandardButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";
@@ -27,8 +27,34 @@ storiesOf("modal/Modal", module)
           label={"Open modal"}
         />
         <Modal
-          title={
-            <StandardText fontWeight={"bold"}>Modal title here</StandardText>
+          headerText={"Modal title here"}
+          isOpen={store.state.isOpen}
+          onRequestClose={() => store.set({ isOpen: false })}
+        >
+          {loremIpsumSampleText}
+        </Modal>
+      </>
+    ))
+  )
+  .add(
+    "modal with custom header component",
+    withState<State>({
+      isOpen: false
+    })(({ store }: { store: Store<State> }) => (
+      <>
+        <StandardButton
+          onClick={() => store.set({ isOpen: true })}
+          label={"Open modal"}
+        />
+        <Modal
+          header={
+            <Row justifyContent={"flex-start"}>
+              <Icon icon={faLeaf} />
+              <Space />
+              <StandardText fontWeight={"bold"}>
+                Custom modal title
+              </StandardText>
+            </Row>
           }
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
@@ -50,9 +76,7 @@ storiesOf("modal/Modal", module)
         />
         <Modal
           width={"300px"}
-          title={
-            <StandardText fontWeight={"bold"}>Modal title here</StandardText>
-          }
+          headerText={"Modal title here"}
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
         >
@@ -72,9 +96,7 @@ storiesOf("modal/Modal", module)
           label={"Open modal"}
         />
         <Modal
-          title={
-            <StandardText fontWeight={"bold"}>Modal title here</StandardText>
-          }
+          headerText={"Modal title here"}
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
         >
