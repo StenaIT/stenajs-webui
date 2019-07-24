@@ -1,9 +1,10 @@
-import { Theme, ThemeProvider } from "@stenajs-webui/core";
+import { Column, ThemeProvider } from "@stenajs-webui/core";
 import { StandardButton } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { PartialTheme } from "./Theme";
 
-export const customTheme: Theme = {
+export const customTheme: PartialTheme = {
   colors: {
     primaryText: "#1b2e47",
     primaryTextLight: "#bcbabd",
@@ -66,6 +67,12 @@ export const customTheme: Theme = {
   }
 };
 
+const overridingTheme: PartialTheme = {
+  colors: {
+    interactionBgPrimary: "#a8171c"
+  }
+};
+
 storiesOf("theme/ThemeContext", module)
   .add("standard theme", () => (
     <>
@@ -78,4 +85,19 @@ storiesOf("theme/ThemeContext", module)
         <StandardButton label={"Button"} />
       </ThemeProvider>
     </>
+  ))
+  .add("merged custom theme", () => (
+    <Column
+      alignItems={"flex-start"}
+      height={"150px"}
+      justifyContent={"space-between"}
+    >
+      <StandardButton label={"Default theme button"} />
+      <ThemeProvider value={customTheme}>
+        <StandardButton label={"Custom theme button"} />
+        <ThemeProvider value={overridingTheme}>
+          <StandardButton label={"Custom theme button with different color"} />
+        </ThemeProvider>
+      </ThemeProvider>
+    </Column>
   ));

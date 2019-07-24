@@ -134,6 +134,31 @@ storiesOf("modal/Modal", module)
     ))
   )
   .add(
+    "modal with close button color",
+    withState<State>({
+      isOpen: false
+    })(({ store }: { store: Store<State> }) => (
+      <>
+        <StandardButton
+          onClick={() => store.set({ isOpen: true })}
+          label={"Open modal"}
+        />
+        <ThemeProvider value={{ colors: { interactionBgPrimary: "#2378cd" } }}>
+          <Modal
+            width={"300px"}
+            title={
+              <StandardText fontWeight={"bold"}>Modal title here</StandardText>
+            }
+            isOpen={store.state.isOpen}
+            onRequestClose={() => store.set({ isOpen: false })}
+          >
+            <Box spacing={2}>{loremIpsumSampleText}</Box>
+          </Modal>
+        </ThemeProvider>
+      </>
+    ))
+  )
+  .add(
     "base modal",
     withState<State>({
       isOpen: false

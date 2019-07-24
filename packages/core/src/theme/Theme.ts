@@ -13,3 +13,12 @@ export interface Theme {
   fontWeights: ThemeFontWeights;
   shadows: ThemeShadows;
 }
+
+export interface PartialTheme {
+  colors?: Partial<ThemeColors>;
+  metrics?: Partial<ThemeMetrics>;
+  fonts?: Partial<ThemeFonts>;
+  fontSizes?: Partial<ThemeFontSizes>;
+  fontWeights?: Partial<ThemeFontWeights>;
+  shadows?: Partial<ThemeShadows>;
+}
