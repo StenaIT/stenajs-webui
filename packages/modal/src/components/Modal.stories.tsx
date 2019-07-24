@@ -7,10 +7,13 @@ import { Icon, StandardButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import * as ReactModal from "react-modal";
 
 interface State {
   isOpen: boolean;
 }
+
+ReactModal.setAppElement("#root");
 
 storiesOf("modal/Modal", module)
   .add(
@@ -24,13 +27,36 @@ storiesOf("modal/Modal", module)
           label={"Open modal"}
         />
         <Modal
-          modalTitle={
+          title={
             <StandardText fontWeight={"bold"}>Modal title here</StandardText>
           }
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
         >
-          modal contents
+          {loremIpsumSampleText}
+        </Modal>
+      </>
+    ))
+  )
+  .add(
+    "modal with fixed width",
+    withState<State>({
+      isOpen: false
+    })(({ store }: { store: Store<State> }) => (
+      <>
+        <StandardButton
+          onClick={() => store.set({ isOpen: true })}
+          label={"Open modal"}
+        />
+        <Modal
+          width={"300px"}
+          title={
+            <StandardText fontWeight={"bold"}>Modal title here</StandardText>
+          }
+          isOpen={store.state.isOpen}
+          onRequestClose={() => store.set({ isOpen: false })}
+        >
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
         </Modal>
       </>
     ))
@@ -46,134 +72,41 @@ storiesOf("modal/Modal", module)
           label={"Open modal"}
         />
         <Modal
-          modalTitle={
+          title={
             <StandardText fontWeight={"bold"}>Modal title here</StandardText>
           }
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
         >
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faCoffee} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faLeaf} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem? Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Doloribus earum eius excepturi nam nemo numquam
-            repellat sit velit. Ab architecto dolorum maiores numquam officia
-            perspiciatis repellendus repudiandae tempore veritatis, voluptatem?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faAddressBook} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faLeaf} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem? Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Doloribus earum eius excepturi nam nemo numquam
-            repellat sit velit. Ab architecto dolorum maiores numquam officia
-            perspiciatis repellendus repudiandae tempore veritatis, voluptatem?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faAddressBook} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faLeaf} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem? Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Doloribus earum eius excepturi nam nemo numquam
-            repellat sit velit. Ab architecto dolorum maiores numquam officia
-            perspiciatis repellendus repudiandae tempore veritatis, voluptatem?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
           <Row justifyContent={"center"} alignItems={"center"}>
             <Icon size={20} icon={faAddressBook} />
           </Row>
-          <Box spacing={2}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            earum eius excepturi nam nemo numquam repellat sit velit. Ab
-            architecto dolorum maiores numquam officia perspiciatis repellendus
-            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
-            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
-            numquam officia perspiciatis repellendus repudiandae tempore
-            veritatis, voluptatem?
-          </Box>
+          <Box spacing={2}>{loremIpsumSampleText}</Box>
         </Modal>
       </>
     ))
@@ -197,3 +130,12 @@ storiesOf("modal/Modal", module)
       </>
     ))
   );
+
+const loremIpsumSampleText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
+            earum eius excepturi nam nemo numquam repellat sit velit. Ab
+            architecto dolorum maiores numquam officia perspiciatis repellendus
+            repudiandae tempore veritatis, voluptatem? Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Doloribus earum eius excepturi
+            nam nemo numquam repellat sit velit. Ab architecto dolorum maiores
+            numquam officia perspiciatis repellendus repudiandae tempore
+            veritatis, voluptatem?`;
