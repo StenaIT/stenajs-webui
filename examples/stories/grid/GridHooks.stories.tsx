@@ -1,10 +1,9 @@
-import {
-  GridExample,
-  GridExampleCustomValue,
-  GridExampleWithContext
-} from "@stenajs-webui/grid";
+
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { GridExample } from './GridExample';
+import { GridExampleCustomValue } from './GridExampleCustomValue';
+import { GridExampleWithContext } from './GridExampleWithContext';
 
 storiesOf("examples/Grid/GridHooks", module)
   .add("standard", () => <GridExample />)

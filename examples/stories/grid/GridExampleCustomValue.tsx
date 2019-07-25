@@ -1,8 +1,8 @@
 import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
+import { useGridCell } from "@stenajs-webui/grid";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { useGridCell } from "@stenajs-webui/grid/build/src/hooks/UseGridCell";
 import { FocusedBox } from "./FocusedBox";
 import {
   createCustomValueRows,
