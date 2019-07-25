@@ -4,6 +4,7 @@
 
 * Add first version of `@stenajs-webui/modal`
 * `ThemeProvider` now merges the provided theme with the theme from parent context
+* Add missing dependency for `useCallback` in `Checkbox` causing `onValueChange` to become outdated
 
 #### 0.0.30
 
