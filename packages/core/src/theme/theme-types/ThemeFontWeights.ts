@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { FontWeightProperty } from "csstype";
 
 export interface ThemeFontWeights {
   bold: FontWeightProperty;
