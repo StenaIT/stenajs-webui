@@ -33,14 +33,18 @@ export const useEventListener = <TEventName extends keyof HTMLElementEventMap>(
     };
 
     // Add event listener
-    if (ref.current) {
-      ref.current.addEventListener(eventName, eventListener);
+    if (!ref.current) {
+      return;
     }
+
+    const element = ref.current;
+    element.addEventListener(eventName, eventListener);
+
     // Remove event listener on cleanup
     return () => {
-      if (ref.current) {
-        ref.current.removeEventListener(eventName, eventListener);
+      if (element) {
+        element.removeEventListener(eventName, eventListener);
       }
     };
-  }, [eventName, ref.current]); // Re-run if eventName or element changes
+  }, [eventName, ref]); // Re-run if eventName or element changes
 };

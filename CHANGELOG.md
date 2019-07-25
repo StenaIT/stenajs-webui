@@ -1,5 +1,10 @@
 # Changelog
 
+#### 0.0.31
+
+* Add first version of `@stenajs-webui/modal`
+* `ThemeProvider` now merges the provided theme with the theme from parent context
+
 #### 0.0.30
 
 * Set `box-sizing: border-box` on `Box`
