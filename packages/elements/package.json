@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,7 +27,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.30"
+    "@stenajs-webui/core": "0.0.31"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
@@ -55,5 +55,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "9bb0e2e3037e5377dbb13880e41e85e77d04cd80"
+  "gitHead": "90b632f7993d6bed34eee4d35dcb13f131494be1"
 }
