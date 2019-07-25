@@ -2,7 +2,14 @@ import { Store, withState } from "@dump247/storybook-state";
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import { Box, Row, Space, Spacing, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  Row,
+  Space,
+  Spacing,
+  StandardText,
+  ThemeProvider
+} from "@stenajs-webui/core";
 import { Icon, StandardButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";

@@ -103,7 +103,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         }
       }
     },
-    [disabled, onChange]
+    [disabled, onChange, onValueChange]
   );
 
   useEffect(() => {
