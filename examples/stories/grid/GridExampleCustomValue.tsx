@@ -1,19 +1,22 @@
 import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
+import { useGridCell } from "@stenajs-webui/grid";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { useGridCell } from "../hooks/UseGridCell";
 import { FocusedBox } from "./FocusedBox";
-
-import { createIndexArray, createRows } from "./util/GridHooksExampleUtils";
+import {
+  createCustomValueRows,
+  createIndexArray,
+  CustomValueCell
+} from "./util/GridHooksExampleUtils";
 
 const list10 = createIndexArray(10);
 
-export const GridExample = () => {
-  const [rows, setRows] = useState(() => createRows());
+export const GridExampleCustomValue = () => {
+  const [rows, setRows] = useState(createCustomValueRows());
 
   const updateCell = useCallback(
-    (rowIndex: number, colIndex: number, value: string | undefined) => {
+    (rowIndex: number, colIndex: number, value?: CustomValueCell) => {
       const copy = rows.map((row, iRow) => {
         if (iRow !== rowIndex) {
           return row;
@@ -22,7 +25,7 @@ export const GridExample = () => {
           if (iCol !== colIndex) {
             return cell;
           }
-          return value || "";
+          return value || { col: 0, row: 0, name: "" };
         });
       });
       setRows(copy);
@@ -62,8 +65,8 @@ interface GridCellProps {
   colIndex: number;
   numRows: number;
   numCols: number;
-  value: string;
-  updateCell: (row: number, col: number, value: string | undefined) => void;
+  value: CustomValueCell;
+  updateCell: (row: number, col: number, value?: CustomValueCell) => void;
 }
 
 const GridCell: React.FC<GridCellProps> = ({
@@ -83,7 +86,7 @@ const GridCell: React.FC<GridCellProps> = ({
     stopEditingAndMove,
     editorValue,
     setEditorValue
-  } = useGridCell(value, {
+  } = useGridCell<CustomValueCell>(value, {
     rowIndex,
     colIndex,
     numRows,
@@ -91,15 +94,30 @@ const GridCell: React.FC<GridCellProps> = ({
     onChange: v => updateCell(rowIndex, colIndex, v),
     tableId: "test",
     isEditable: true,
-    wrap: false
+    wrap: false,
+    transformEnteredValue: enteredValue => ({
+      col: colIndex,
+      row: rowIndex,
+      name: enteredValue || ""
+    })
   });
+
+  const onChange = useCallback(
+    (input: string) => {
+      setEditorValue({
+        ...value,
+        name: input
+      });
+    },
+    [setEditorValue, value]
+  );
 
   return (
     <FocusedBox {...requiredProps}>
       {isEditing ? (
         <StandardTextInput
-          onValueChange={setEditorValue}
-          value={editorValue}
+          onValueChange={onChange}
+          value={editorValue.name}
           onDone={stopEditing}
           onEsc={stopEditingAndRevert}
           focusOnMount
@@ -107,7 +125,9 @@ const GridCell: React.FC<GridCellProps> = ({
           onMove={stopEditingAndMove}
         />
       ) : (
-        <StandardText>{value}</StandardText>
+        <StandardText>{`${value.name}, ${value.row}, ${
+          value.col
+        }`}</StandardText>
       )}
     </FocusedBox>
   );

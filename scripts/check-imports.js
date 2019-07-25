@@ -11,29 +11,39 @@ let success = true;
 
 getPackageFolderList().then(packageFolders => {
   success = true;
-  packageFolders.forEach(packageFolder => {
-    const packagesPath = path.join(packageFolder, "package.json");
-    const packageFolderNameParts = packageFolder.split(path.sep);
-    const packageFolderName =
-      packageFolderNameParts[packageFolderNameParts.length - 1];
+  Promise.all(
+    packageFolders.map(packageFolder => {
+      const packagesPath = path.join(packageFolder, "package.json");
+      const packageFolderNameParts = packageFolder.split(path.sep);
+      const packageFolderName =
+        packageFolderNameParts[packageFolderNameParts.length - 1];
 
-    const packageJson = require(packagesPath);
-    // options is optional
-    glob(packageFolder + "/src/**/*.ts*", {}, function(er, files) {
-      // files is an array of filenames.
-      // If the `nonull` option is set, and nothing
-      // was found, then files is ["**/*.js"]
-      // er is an error object or null.
-      files.forEach(filePath => {
-        checkSourceFilesImports(
-          packageJson,
-          packageFolder,
-          packageFolderName,
-          packageFolders,
-          filePath
-        );
+      const packageJson = require(packagesPath);
+      // options is optional
+
+      return new Promise(resolve => {
+        glob(packageFolder + "/src/**/*.ts*", {}, function(er, files) {
+          // files is an array of filenames.
+          // If the `nonull` option is set, and nothing
+          // was found, then files is ["**/*.js"]
+          // er is an error object or null.
+          files.forEach(filePath => {
+            checkSourceFilesImports(
+              packageJson,
+              packageFolder,
+              packageFolderName,
+              packageFolders,
+              filePath
+            );
+          });
+          resolve();
+        });
       });
-    });
+    })
+  ).then(() => {
+    if (!success) {
+      process.exit(1);
+    }
   });
 });
 

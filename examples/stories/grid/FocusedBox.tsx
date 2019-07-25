@@ -1,10 +1,16 @@
-import styled from "@emotion/styled";
+import styled, { StyledComponent } from "@emotion/styled";
 
 interface FocusedBoxProps {
   isEditable?: boolean;
 }
 
-export const FocusedBox = styled.div<FocusedBoxProps>`
+type FocusedBoxComponent = StyledComponent<
+  JSX.IntrinsicElements["div"],
+  FocusedBoxProps,
+  any
+>;
+
+export const FocusedBox: FocusedBoxComponent = styled.div<FocusedBoxProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;

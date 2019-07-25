@@ -1,8 +1,7 @@
-import { Column, ThemeProvider } from "@stenajs-webui/core";
+import { Column, PartialTheme, ThemeProvider } from "@stenajs-webui/core";
 import { StandardButton } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { PartialTheme } from "./Theme";
 
 export const customTheme: PartialTheme = {
   colors: {
