@@ -13,7 +13,7 @@
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact && yarn build-storybook && yarn deploy-built-storybook",
-    "check-all": "yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn bundlesize && yarn check-builds && yarn check-prettier && yarn test",
+    "check-all": "yarn lint && yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn bundlesize && yarn check-builds && yarn check-prettier && yarn test",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "lint": "eslint --ignore-path .gitignore packages/**/src/**/*.ts*",
