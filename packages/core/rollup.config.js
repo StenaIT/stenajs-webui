@@ -28,7 +28,7 @@ export default {
     }),
     url(),
     svgr(),
-typescript({
+    typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
       typescript: require("typescript")

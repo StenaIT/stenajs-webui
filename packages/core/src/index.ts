@@ -31,6 +31,7 @@ export * from "./components/text/variants/LargeText";
 export * from "./components/text/variants/HeaderText";
 
 export * from "./theme/ThemeContext";
+export * from "./theme/ThemeProvider";
 export * from "./theme/DefaultTheme";
 export * from "./theme/Theme";
 
