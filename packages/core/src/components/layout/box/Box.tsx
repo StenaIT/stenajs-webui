@@ -1,3 +1,4 @@
+import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
 import {
   BackgroundProperty,
@@ -38,19 +39,15 @@ import {
   FlexProps,
   flexWrap,
   FlexWrapProps,
-  height,
   HeightProps,
   justifyContent,
   JustifyContentProps,
+  layout,
   left,
   LeftProps,
-  maxHeight,
   MaxHeightProps,
-  maxWidth,
   MaxWidthProps,
-  minHeight,
   MinHeightProps,
-  minWidth,
   MinWidthProps,
   overflow,
   OverflowProps,
@@ -61,7 +58,6 @@ import {
   TLengthStyledSystem,
   top,
   TopProps,
-  width,
   WidthProps,
   zIndex,
   ZIndexProps
@@ -148,7 +144,15 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
 }
 
-const FlexBox = styled.div<
+const excludedProps = ["spacing", "indent", "width", "color"];
+
+const isExcludedWebuiProp = (propName: string) =>
+  excludedProps.indexOf(propName) !== -1;
+
+const FlexBox = styled("div", {
+  shouldForwardProp: propName =>
+    isExcludedWebuiProp(propName) ? false : isPropValid(propName)
+})<
   FlexBoxProps &
     BoxShadowProps &
     BackgroundProps & { themeSpacing: number; themeIndent: number }
@@ -172,18 +176,13 @@ const FlexBox = styled.div<
   flex-direction: ${props =>
     (props.row && "row") || props.flexDirection || "column"};
   ${flexWrap};
-  ${height};
   ${justifyContent};
-  ${minHeight};
-  ${minWidth};
-  ${maxHeight};
-  ${maxWidth};
   ${overflow};
   padding: ${props =>
     numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
     ${props => numberOrZero(props.indent) * (props.themeIndent || 10)}px;
   ${position}
-  ${width};
+  ${layout}
   ${zIndex}
   ${left}
   ${right}

@@ -217,4 +217,18 @@ storiesOf("core/Layout/Box", module)
         no flex
       </Box>
     </Box>
+  ))
+  .add("with aria label", () => (
+    <>
+      <StandardText>This blue box has an aria label.</StandardText>
+      <Box indent spacing>
+        <Box
+          aria-label={"This is a blue box."}
+          tabIndex={0}
+          width={"100px"}
+          height={"100px"}
+          background={"blue"}
+        />
+      </Box>
+    </>
   ));

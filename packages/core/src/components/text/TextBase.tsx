@@ -1,3 +1,4 @@
+import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
 import {
   FontWeightProperty,
@@ -61,7 +62,21 @@ type StyledSystemProps = FontWeightProps &
   FontSizeProps &
   TextAlignProps;
 
-const SpanWithHover = styled.span<TextBaseProps>`
+const excludedProps = [
+  "fontSize",
+  "fontWeight",
+  "fontFamily",
+  "color",
+  "textAlign"
+];
+
+const isExcludedWebuiProp = (propName: string) =>
+  excludedProps.indexOf(propName) !== -1;
+
+const SpanWithHover = styled("span", {
+  shouldForwardProp: propName =>
+    isExcludedWebuiProp(propName) ? false : isPropValid(propName)
+})<TextBaseProps>`
   ${({ color }) => (color ? `color: ${color};` : "")};
   ${fontSize};
   ${fontFamily};
