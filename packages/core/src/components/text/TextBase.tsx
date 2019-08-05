@@ -81,7 +81,7 @@ const SpanWithHover = styled("span", {
   ${fontSize};
   ${fontFamily};
   ${fontWeight};
-  ${textAlign}
+  ${textAlign};
   user-select: ${({ userSelect }) => userSelect};
   text-decoration: ${({ textDecoration }) => textDecoration};
   white-space: ${({ whiteSpace }) => whiteSpace};

@@ -179,15 +179,15 @@ const FlexBox = styled("div", {
   ${justifyContent};
   ${overflow};
   padding: ${props =>
-    numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
+      numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
     ${props => numberOrZero(props.indent) * (props.themeIndent || 10)}px;
-  ${position}
-  ${layout}
-  ${zIndex}
-  ${left}
-  ${right}
-  ${top}
-  ${bottom}
+  ${position};
+  ${layout};
+  ${zIndex};
+  ${left};
+  ${right};
+  ${top};
+  ${bottom};
   :hover {
     background: ${({ hoverBackground }) => hoverBackground};
     border: ${({ hoverBorder }) => hoverBorder};
