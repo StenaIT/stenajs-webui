@@ -11,8 +11,7 @@ import {
   InputMaskProvider
 } from "../masks/InputMask";
 
-export interface MaskedStandardTextInputProps
-  extends Omit<StandardTextInputProps, "onValueChange"> {
+export interface MaskedStandardTextInputProps extends StandardTextInputProps {
   mask: InputMask | InputMaskProvider;
   pipe?: InputMaskPipe;
   guide?: boolean;
@@ -27,6 +26,7 @@ export const MaskedStandardTextInput: React.FC<
   mask,
   pipe,
   onChange,
+  onValueChange,
   value,
   guide,
   keepCharPositions,
@@ -38,6 +38,7 @@ export const MaskedStandardTextInput: React.FC<
   const { onChange: maskedOnChange } = useMaskedInput(
     inputRef,
     onChange,
+    onValueChange,
     mask,
     pipe,
     value,

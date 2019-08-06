@@ -9,6 +9,7 @@ import {
 export const useMaskedInput = (
   inputRef: RefObject<HTMLInputElement>,
   onChange: ((ev: ChangeEvent<HTMLInputElement>) => void) | undefined,
+  onValueChange: ((value: string) => void) | undefined,
   mask: InputMask | InputMaskProvider,
   pipe?: InputMaskPipe,
   initialValue: string = "",
@@ -52,6 +53,9 @@ export const useMaskedInput = (
 
       if (typeof onChange === "function") {
         onChange(event);
+      }
+      if (typeof onValueChange === "function") {
+        onValueChange(event.target.value);
       }
     }
   };

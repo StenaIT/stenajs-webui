@@ -64,4 +64,22 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
         </div>
       );
     })
+  )
+  .add(
+    "with onValueChange prop",
+    withState<State>({
+      creditcard: "123456789",
+      time: "",
+      date: ""
+    })(({ store }: { store: Store<State> }) => {
+      return (
+        <div style={{ display: "inline-block" }}>
+          <MaskedStandardTextInput
+            mask={InputMasks.CREDIT_CARD}
+            onValueChange={creditcard => store.set({ creditcard })}
+            value={store.state.creditcard}
+          />
+        </div>
+      );
+    })
   );
