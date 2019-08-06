@@ -146,17 +146,23 @@ export interface BoxProps extends StyledSystemProps, DivProps {
 
 const excludedProps = ["spacing", "indent", "width", "color"];
 
-const isExcludedWebuiProp = (propName: string) =>
+const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
+
+const getPaddingRule = (props: InnerProps) =>
+  props.spacing || props.indent
+    ? `padding: ${numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
+    ${numberOrZero(props.indent) * (props.themeIndent || 10)}px;`
+    : "";
+
+type InnerProps = FlexBoxProps &
+  BoxShadowProps &
+  BackgroundProps & { themeSpacing: number; themeIndent: number };
 
 const FlexBox = styled("div", {
   shouldForwardProp: propName =>
-    isExcludedWebuiProp(propName) ? false : isPropValid(propName)
-})<
-  FlexBoxProps &
-    BoxShadowProps &
-    BackgroundProps & { themeSpacing: number; themeIndent: number }
->`
+    isExcludedWebUiProp(propName) ? false : isPropValid(propName)
+})<InnerProps>`
   box-sizing: border-box;
   display: ${props => props.display || "flex"};
   ${alignItems};
@@ -178,9 +184,7 @@ const FlexBox = styled("div", {
   ${flexWrap};
   ${justifyContent};
   ${overflow};
-  padding: ${props =>
-      numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
-    ${props => numberOrZero(props.indent) * (props.themeIndent || 10)}px;
+  ${getPaddingRule}
   ${position};
   ${layout};
   ${zIndex};
