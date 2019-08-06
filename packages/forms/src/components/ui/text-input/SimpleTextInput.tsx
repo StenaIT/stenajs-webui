@@ -22,7 +22,7 @@ const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 
 // tslint:disable:no-any
 
-type MoveDirection = "right" | "left" | "down" | "up";
+export type MoveDirection = "right" | "left" | "down" | "up";
 
 export interface SimpleTextInputProps<TValue = string>
   extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>>,

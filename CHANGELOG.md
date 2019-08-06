@@ -2,6 +2,8 @@
 
 #### Upcoming 0.0.32
 
+* Add first version of `@stenajs-webui/input-mask`.
+* Add `MaskedStandardTextInput` component, and `useMaskedInput` hook.
 * `Box` is now responsive. `width` and `height` props can take array of values.
     * See https://styled-system.com/responsive-styles for more info.
 * `padding` CSS rule is no longer set on `Box` div element, when spacing and indent are not set.
