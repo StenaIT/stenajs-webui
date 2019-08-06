@@ -2126,29 +2126,6 @@
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
   integrity sha512-vTCdPp/T/Q3oSqwHmZ5Kpa9oI7iLtGl3RQaA/NyLHikvcrPxACkkKVr/XzkSPJWXHRhKGzVvb0urJsbMlRxi1Q==
 
-"@stenajs-webui/core@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@stenajs-webui/core/-/core-0.0.16.tgz#59b6e48bef51abd8896e0486622240cb12161e25"
-  integrity sha512-B+hXFZInFeHjbQpzgYdBB/P4lFuTp6IDm6O6k0gdzp0chz5RP1MBlGEukaMs1RMJTGa2YVyd+rnwI5Y+aigF7g==
-
-"@stenajs-webui/elements@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@stenajs-webui/elements/-/elements-0.0.16.tgz#603d1847b41039f1767c85f08930d9f0b9b849d0"
-  integrity sha512-EfF6aQFU6ZOS7GTOPfVE5lHlm1NKlQV65FEi0t9nddS9BVIakpaLNVCf+wEYKHby3sd4JjPEqFIvL/BuL7q9fw==
-  dependencies:
-    "@stenajs-webui/core" "0.0.16"
-
-"@stenajs-webui/forms@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@stenajs-webui/forms/-/forms-0.0.16.tgz#ac59fc63e0bf58c5b161f39840feeb6a9cc0c8a4"
-  integrity sha512-74WHJqHjA1exenMN5SPzsv+86OZpBS6b0O6468XDL9E+ydbzzFw3ZoioinX2/EiLBG28Jo+M9Br1RlMIGWcACA==
-  dependencies:
-    "@stenajs-webui/core" "0.0.16"
-    "@stenajs-webui/elements" "0.0.16"
-    "@types/recompose" "^0.30.6"
-    date-fns "2.0.0-alpha.27"
-    recompose "^0.30.0"
-
 "@storybook/addon-a11y@^5.0.11":
   version "5.0.11"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-5.0.11.tgz#b045a99c2582722db8b34e2edee11aa5521eba26"
@@ -2950,7 +2927,7 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
 
-"@types/react-dom@*", "@types/react-dom@^16.8.4":
+"@types/react-dom@*", "@types/react-dom@16.8.4", "@types/react-dom@^16.8.4":
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
   integrity sha512-eIRpEW73DCzPIMaNBDP5pPIpK1KXyZwNgfxiVagb5iGiz6da+9A5hslSX6GAQKdO7SayVCS/Fr2kjqprgAvkfA==
