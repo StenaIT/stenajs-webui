@@ -135,5 +135,9 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "resolutions": {
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4"
   }
 }
