@@ -144,7 +144,7 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
 }
 
-const excludedProps = ["spacing", "indent", "width", "color"];
+const excludedProps = ["spacing", "indent", "width", "height", "color"];
 
 const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
