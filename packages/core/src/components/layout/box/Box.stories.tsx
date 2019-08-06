@@ -78,8 +78,8 @@ storiesOf("core/Layout/Box", module)
   )
   .add("row", () => (
     <Box row>
-      <div>hello</div>
-      <div>world</div>
+      <Box width={"25px"} height={"25px"} background={"#8e7e7e"} />
+      <Box width={"25px"} height={"25px"} background={"#3e7e7e"} />
     </Box>
   ))
   .add("row with justifyContent", () => (
@@ -89,8 +89,8 @@ storiesOf("core/Layout/Box", module)
       width={"500px"}
       border={"1px solid grey"}
     >
-      <div>hello</div>
-      <div>world</div>
+      <Box width={"25px"} height={"25px"} background={"#8e7e7e"} />
+      <Box width={"25px"} height={"25px"} background={"#3e7e7e"} />
     </Box>
   ))
   .add("with DOM attributes", () => (
@@ -217,4 +217,18 @@ storiesOf("core/Layout/Box", module)
         no flex
       </Box>
     </Box>
+  ))
+  .add("with aria label", () => (
+    <>
+      <StandardText>This blue box has an aria label.</StandardText>
+      <Box indent spacing>
+        <Box
+          aria-label={"This is a blue box."}
+          tabIndex={0}
+          width={"100px"}
+          height={"100px"}
+          background={"blue"}
+        />
+      </Box>
+    </>
   ));
