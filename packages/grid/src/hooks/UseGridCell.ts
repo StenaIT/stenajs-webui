@@ -34,6 +34,11 @@ export interface UseGridCellResult<TValue> {
    */
   requiredProps: GridCellRequiredProps;
   /**
+   * Moves focus to a new cell in the specified direction.
+   * @param direction
+   */
+  move: (direction: MoveDirection) => void;
+  /**
    * Opens the editor. invokes onStartEdit if provided.
    */
   startEditing: () => void;
@@ -46,7 +51,7 @@ export interface UseGridCellResult<TValue> {
    */
   stopEditingAndRevert: () => void;
   /**
-   * Closes the editor and moves focus the a new cell in the specified direction. Invokes onChange with editor value.
+   * Closes the editor and moves focus to a new cell in the specified direction. Invokes onChange with editor value.
    * @param direction
    */
   stopEditingAndMove: (direction: MoveDirection) => void;
@@ -111,6 +116,13 @@ export const useGridCell = <TValue>(
     [edit, nav]
   );
 
+  const move = useCallback(
+    (direction: MoveDirection) => {
+      nav.moveHandler(direction);
+    },
+    [nav]
+  );
+
   const onKeyDown = useCallback<KeyboardEventHandler>(
     e => {
       if (!edit.isEditing) {
@@ -134,6 +146,7 @@ export const useGridCell = <TValue>(
       onKeyDown,
       onDoubleClick: edit.onDoubleClick
     },
+    move,
     startEditing,
     stopEditing,
     stopEditingAndRevert,
