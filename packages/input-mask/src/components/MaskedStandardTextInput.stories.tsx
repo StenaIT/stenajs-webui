@@ -18,7 +18,6 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
       time: "",
       date: ""
     })(({ store }: { store: Store<State> }) => {
-      console.log("store", store);
       return (
         <Column width={"150px"}>
           <StandardText>Credit card</StandardText>
@@ -55,7 +54,6 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
       time: "",
       date: ""
     })(({ store }: { store: Store<State> }) => {
-      console.log("store", store);
       return (
         <div style={{ display: "inline-block" }}>
           <MaskedStandardTextInput
