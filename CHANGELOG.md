@@ -1,6 +1,6 @@
 # Changelog
 
-#### Upcoming 0.0.33
+#### Next release
 
 * Clickable forwards DOM attribute props, such as id and className.
 * Build process includes imports checker, that checks that imported modules are specified as dependency in package.json.
