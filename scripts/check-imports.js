@@ -117,6 +117,8 @@ const checkImport = (
     }
     if (imported.startsWith(".")) {
       checkIfImportGoesToPackagesFolder(filePath, packageJson, imported);
+    } else {
+      checkIfImportIsPackageJsonDependency(filePath, packageJson, imported);
     }
   }
 };
@@ -139,4 +141,31 @@ const checkIfImportGoesToPackagesFolder = (filePath, packageJson, imported) => {
       success = false;
     }
   });
+};
+
+const checkIfImportIsPackageJsonDependency = (
+  filePath,
+  packageJson,
+  imported
+) => {
+  const parts = imported.split("/");
+  const size = parts.length;
+  for (let i = 0; i < size; i++) {
+    const moduleNameToCheck = parts.join("/");
+    if (
+      packageJson.dependencies[moduleNameToCheck] ||
+      packageJson.peerDependencies[moduleNameToCheck]
+    ) {
+      return;
+    }
+    parts.pop();
+  }
+
+  console.log(
+    `ERROR: '${
+      packageJson.name
+    }' must specify '${imported}' as dependency or peerDependency.`
+  );
+  console.log(filePath);
+  success = false;
 };
