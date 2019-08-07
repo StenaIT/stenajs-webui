@@ -15,7 +15,10 @@ import {
 import { SingleDateCalendarProps } from "../calendar/features/SingleDateSelection";
 import { SingleDateCalendar } from "../calendar/SingleDateCalendar";
 import { CalendarPopupBox } from "./CalendarPopupBox";
-import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
+import {
+  DateTextInputTheme,
+  defaultDateTextInputTheme
+} from "./DateTextInputTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -38,8 +41,8 @@ export interface DateTextInputProps<T>
   placeholder?: string;
   /**  Z-index of the calendar overlay, @default 100 */
   zIndex?: number;
-  /** The theme to use. */
-  dateInputTheme?: DateInputTheme;
+  /** The text input theme to use. */
+  textInputTheme?: DateTextInputTheme;
   /** The calendar theme to use. */
   calendarTheme?: CalendarTheme;
 }
@@ -54,7 +57,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   value,
   width = "125px",
   zIndex = 100,
-  dateInputTheme = defaultDateInputTheme,
+  textInputTheme = defaultDateTextInputTheme,
   calendarTheme = defaultCalendarTheme,
   hideCalenderIcon = false,
   ...props
@@ -65,9 +68,9 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: dateInputTheme.backgroundColor,
-        borderColor: dateInputTheme.borderColor,
-        backgroundColorInvalidDate: dateInputTheme.backgroundColorInvalidDate
+        backgroundColor: textInputTheme.backgroundColor,
+        borderColor: textInputTheme.borderColor,
+        backgroundColorInvalidDate: textInputTheme.backgroundColorInvalidDate
       }
     },
     []
@@ -111,6 +114,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     <>
       <StandardTextInput
         {...props}
+        theme={textInputTheme}
         backgroundColor={
           (userInputCorrectLength && !dateIsValid) || validInput
             ? colors.backgroundColorInvalidDate
