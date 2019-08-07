@@ -7,7 +7,7 @@ import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
 
-interface SelectProps<T> extends Omit<Props<T>, "theme"> {
+export interface SelectProps<T> extends Omit<Props<T>, "theme"> {
   theme?: SelectTheme;
 }
 
