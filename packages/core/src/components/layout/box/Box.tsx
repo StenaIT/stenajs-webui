@@ -33,22 +33,17 @@ import {
   BottomProps,
   boxShadow,
   BoxShadowProps,
-  DisplayProps,
   flex,
   FlexDirectionProps,
   FlexProps,
   flexWrap,
   FlexWrapProps,
-  HeightProps,
   justifyContent,
   JustifyContentProps,
   layout,
+  LayoutProps,
   left,
   LeftProps,
-  MaxHeightProps,
-  MaxWidthProps,
-  MinHeightProps,
-  MinWidthProps,
   overflow,
   OverflowProps,
   position,
@@ -58,7 +53,6 @@ import {
   TLengthStyledSystem,
   top,
   TopProps,
-  WidthProps,
   zIndex,
   ZIndexProps
 } from "styled-system";
@@ -67,7 +61,6 @@ import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
 import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 
 type StyledSystemProps = AlignItemsProps &
-  DisplayProps &
   BorderRadiusProps &
   BorderStyleProps &
   BorderWidthProps &
@@ -78,15 +71,10 @@ type StyledSystemProps = AlignItemsProps &
   FlexDirectionProps &
   FlexProps &
   FlexWrapProps &
-  HeightProps &
+  LayoutProps &
   JustifyContentProps &
-  MinHeightProps &
-  MaxHeightProps &
-  MinWidthProps &
-  MaxWidthProps &
   OverflowProps &
   PositionProps &
-  WidthProps &
   ZIndexProps &
   LeftProps &
   RightProps &

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   Box,
   Clickable,

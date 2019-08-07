@@ -1,6 +1,12 @@
 # @stenajs-webui hooks
 
-## useBoolean
+## Overview
+
+All hook names are prefixed with `use`, as per React conventions.
+
+## Hooks
+
+### useBoolean
 
 Wraps a state, but returns setTrue, setFalse, toggle methods, instead of normal setter.
 
@@ -10,7 +16,7 @@ Returns: [value, setTrue, setFalse, toggle]
 const [mouseIsOver, setMouseIsOver, setMouseIsNotOver] = useBoolean(false);
 ```
 
-## useDebounce
+### useDebounce
 
 Debounced the changes of a value.
 Pass the value you want to debounce as only argument.
@@ -23,7 +29,21 @@ Returns: The debounced value.
 const searchQueryToApi = useDebounce(searchQuery);
 ```
 
-## useEventListener
+### useDomId
+
+Creates a string that is unique and guaranteed to persist through component lifecycle.
+Can take an optional string argument which is included in the id. It must be a valid id token.
+
+Returns: The id as a string.
+
+#### Example
+
+```js
+const id = useDomId();
+const idForCheckbox = useDomId("checkbox");
+```
+
+### useEventListener
 
 Adds event listeners to DOM elements, using refs.
 
@@ -36,7 +56,7 @@ useEventListener(ref, "mouseover", setMouseIsOver);
 useEventListener(ref, "mouseout", setMouseIsNotOver);
 ```
 
-## useMouseIsOver
+### useMouseIsOver
 
 Returns true if mouse is over DOM element passed by ref.
 
@@ -48,7 +68,7 @@ Returns: Boolean, true if mouse is over.
 const mouseIsOver = useMouseIsOver(ref);
 ```
 
-## useMultiOnClickOutside
+### useMultiOnClickOutside
 
 Executes a function when a click outside of all refs happens.
 
@@ -60,7 +80,7 @@ Returns: Nothing.
 useOnClickOutside([modalRef, otherRef], closeModal);
 ```
 
-## useOnClickOutside
+### useOnClickOutside
 
 Executes a function when a click outside of ref happens.
 
@@ -72,7 +92,7 @@ Returns: Nothing.
 useOnClickOutside(ref, closeModal);
 ```
 
-## useOnNoMouseInput
+### useOnNoMouseInput
 
 Calls a callback function is mouse was not used for a period of time.
 
