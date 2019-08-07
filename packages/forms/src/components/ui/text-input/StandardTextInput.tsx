@@ -171,8 +171,6 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        disagledBackgroundColor: theme.backgroundColorDisabled,
-        invalidBackgroundColor: theme.backgroundColorInvalid,
         backgroundColor: backgroundColor || theme.backgroundColor,
         borderColorFocused: theme.borderColorFocused,
         borderColor: theme.borderColor
@@ -204,11 +202,11 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   };
 
-  const bgColor = disabled
-    ? colors.disagledBackgroundColor
+  const bgColorTheme = disabled
+    ? theme.backgroundColorDisabled
     : invalid
-    ? colors.invalidBackgroundColor
-    : colors.backgroundColor;
+    ? theme.backgroundColorInvalid
+    : theme.backgroundColor;
 
   const activeBorderColor =
     forceFocusHighlight || focused
@@ -217,7 +215,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 
   return (
     <Box
-      background={bgColor}
+      background={bgColorTheme}
       borderRadius={theme.borderRadius}
       borderColor={activeBorderColor}
       borderStyle={theme.borderStyle}
@@ -244,7 +242,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
-            backgroundColor={bgColor}
+            backgroundColor={bgColorTheme}
             disabled={disabled}
             fontSize={theme.fontSize}
             height={theme.height}

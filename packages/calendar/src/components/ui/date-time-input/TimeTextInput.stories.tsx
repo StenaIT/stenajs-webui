@@ -89,6 +89,7 @@ storiesOf("calendar/Input/TimeTextInput", module)
       />
     ))
   )
+  .add("invalid", () => <TimeTextInput value={"invalid"} invalid={true} />)
   .add(
     "with background color",
     withState<TimeTextInputState>({

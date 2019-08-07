@@ -3,8 +3,8 @@ import { BorderColorProperty, BorderStyleProperty } from "csstype";
 
 export interface StandardTextInputTheme {
   backgroundColor: ThemeColorField | string;
-  backgroundColorDisabled: string;
-  backgroundColorInvalid: string;
+  backgroundColorDisabled: ThemeColorField | string;
+  backgroundColorInvalid: ThemeColorField | string;
   borderRadius: string;
   borderColor: ThemeColorField | BorderColorProperty;
   borderColorFocused: ThemeColorField | string;
