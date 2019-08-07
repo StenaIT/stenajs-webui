@@ -6,6 +6,6 @@ const genId = (componentName?: string) =>
 
 export const useDomId = (componentName?: string): string => {
   const [id, setId] = useState<string | null>(null);
-  useEffect(() => setId(genId(componentName)), []);
+  useEffect(() => setId(genId(componentName)), [componentName]);
   return id!;
 };
