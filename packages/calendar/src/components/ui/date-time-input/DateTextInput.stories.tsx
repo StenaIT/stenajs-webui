@@ -1,5 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { DateTextInput } from "@stenajs-webui/calendar";
+import { createDateTextInputTheme } from "@stenajs-webui/theme";
 import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -106,6 +107,21 @@ storiesOf("calendar/Input/DateTextInput", module)
         }}
         value={store.state.value}
         onValueChange={value => store.set({ value })}
+      />
+    ))
+  )
+  .add(
+    "custom theme props",
+    withState<DateTextInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateTextInputState> }) => (
+      <DateTextInput
+        value={store.state.value}
+        onValueChange={value => store.set({ value })}
+        textInputTheme={createDateTextInputTheme({
+          backgroundColor: "lightgoldenrodyellow",
+          backgroundColorInvalidDate: "lightcoral"
+        })}
       />
     ))
   );
