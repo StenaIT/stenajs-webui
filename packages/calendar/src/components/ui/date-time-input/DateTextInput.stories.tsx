@@ -47,18 +47,10 @@ storiesOf("calendar/Input/DateTextInput", module)
       />
     ))
   )
-  .add(
-    "disabled",
-    withState<DateTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<DateTextInputState> }) => (
-      <DateTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-        disabled={true}
-      />
-    ))
-  )
+  .add("disabled", () => <DateTextInput value={""} disabled={true} />)
+  .add("invalid", () => (
+    <DateTextInput value={"invalid input"} invalid={true} />
+  ))
   .add(
     "with no icon",
     withState<DateTextInputState>({

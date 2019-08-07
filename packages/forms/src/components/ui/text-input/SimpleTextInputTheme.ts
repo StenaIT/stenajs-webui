@@ -20,7 +20,7 @@ export interface SimpleTextInputTheme {
 export const defaultSimpleTextInputTheme: SimpleTextInputTheme = {
   textColor: "primaryText",
   textColorDisabled: "disabledText",
-  textColorInvalid: "errorTextLight",
+  textColorInvalid: "primaryText",
   backgroundColor: "white",
   backgroundColorDisabled: "disabledBackground",
   backgroundColorInvalid: "errorBgLight",

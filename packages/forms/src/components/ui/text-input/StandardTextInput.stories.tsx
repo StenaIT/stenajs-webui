@@ -171,6 +171,25 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       />
     </Box>
   ))
+  .add("invalid", () => (
+    <Box width={"400px"}>
+      <StandardTextInput
+        value={"invalid input"}
+        placeholder={"Enter name"}
+        invalid={true}
+      />
+    </Box>
+  ))
+  .add("invalid with content", () => (
+    <Box width={"400px"}>
+      <StandardTextInput
+        invalid={true}
+        value={"invalid input"}
+        contentRight={<StandardText>ms</StandardText>}
+        iconLeft={faCoffee}
+      />
+    </Box>
+  ))
   .add("with dynamic width", () => (
     <div>
       <StandardTextInput value={"120px"} width={"120px"} />
