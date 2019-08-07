@@ -157,6 +157,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   disableContentPaddingRight = false,
   theme = defaultStandardTextInputTheme,
   disabled,
+  invalid,
   onBlur,
   onFocus,
   onClickRight,
@@ -170,14 +171,14 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        disabledBackgroundColor: theme.disabledBackgroundColor,
+        disagledBackgroundColor: theme.backgroundColorDisabled,
+        invalidBackgroundColor: theme.backgroundColorInvalid,
         backgroundColor: backgroundColor || theme.backgroundColor,
         borderColorFocused: theme.borderColorFocused,
-        borderColor: theme.borderColor,
-        textColor: textColor || theme.textColor
+        borderColor: theme.borderColor
       }
     },
-    [theme, backgroundColor, textColor]
+    [theme, backgroundColor]
   );
 
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = ev => {
@@ -203,8 +204,10 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   };
 
-  const activeBgColor = disabled
-    ? colors.disabledBackgroundColor
+  const bgColor = disabled
+    ? colors.disagledBackgroundColor
+    : invalid
+    ? colors.invalidBackgroundColor
     : colors.backgroundColor;
 
   const activeBorderColor =
@@ -214,7 +217,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 
   return (
     <Box
-      background={activeBgColor}
+      background={bgColor}
       borderRadius={theme.borderRadius}
       borderColor={activeBorderColor}
       borderStyle={theme.borderStyle}
@@ -241,7 +244,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
-            backgroundColor={activeBgColor}
+            backgroundColor={bgColor}
             disabled={disabled}
             fontSize={theme.fontSize}
             height={theme.height}
@@ -251,7 +254,6 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
               boxSizing: "border-box",
               ...inputProps.style
             }}
-            textColor={colors.textColor}
             width={"100%"}
           />
         </div>

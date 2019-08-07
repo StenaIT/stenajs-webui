@@ -70,7 +70,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
       colors: {
         backgroundColor: textInputTheme.backgroundColor,
         borderColor: textInputTheme.borderColor,
-        backgroundColorInvalidDate: textInputTheme.backgroundColorInvalidDate
+        backgroundColorInvalidDate: textInputTheme.backgroundColorInvalid
       }
     },
     []
@@ -104,22 +104,21 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     }
   };
 
-  const validInput = value && !/^[-/\\.0-9]+$/.test(value);
+  const inValidInput = !!value && !/^[-/\\.0-9]+$/.test(value);
 
-  const dateIsValid = value && isValid(parse(value, dateFormat, new Date()));
+  const dateIsValid = !!value && isValid(parse(value, dateFormat, new Date()));
 
-  const userInputCorrectLength = value && value.length >= dateFormat.length;
+  const userInputCorrectLength = !!value && value.length >= dateFormat.length;
+
+  const invalid: boolean =
+    (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   return (
     <>
       <StandardTextInput
         {...props}
         theme={textInputTheme}
-        backgroundColor={
-          (userInputCorrectLength && !dateIsValid) || validInput
-            ? colors.backgroundColorInvalidDate
-            : props.backgroundColor
-        }
+        invalid={invalid}
         iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
         onClickLeft={
           !hideCalenderIcon && !disableCalender ? toggleCalendar : undefined

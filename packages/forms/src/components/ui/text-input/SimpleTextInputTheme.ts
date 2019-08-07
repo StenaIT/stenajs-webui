@@ -7,8 +7,10 @@ import {
 export interface SimpleTextInputTheme {
   textColor: ThemeColorField | string;
   textColorDisabled: ThemeColorField | string;
+  textColorInvalid: ThemeColorField | string;
   backgroundColor: ThemeColorField | string;
   backgroundColorDisabled: ThemeColorField | string;
+  backgroundColorInvalid: ThemeColorField | string;
   placeholderColor: ThemeColorField | string;
   fontSize: ThemeFontSizeField | string;
   fontFamily: ThemeFontField | string;
@@ -18,8 +20,10 @@ export interface SimpleTextInputTheme {
 export const defaultSimpleTextInputTheme: SimpleTextInputTheme = {
   textColor: "primaryText",
   textColorDisabled: "disabledText",
+  textColorInvalid: "errorTextLight",
   backgroundColor: "white",
   backgroundColorDisabled: "disabledBackground",
+  backgroundColorInvalid: "errorBgLight",
   placeholderColor: "separator",
   fontSize: "input",
   fontFamily: "input",
