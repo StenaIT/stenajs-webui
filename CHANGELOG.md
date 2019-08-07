@@ -1,6 +1,6 @@
 # Changelog
 
-#### Upcoming 0.0.32
+#### 0.0.32
 
 * Add first version of `@stenajs-webui/input-mask`.
 * Add `MaskedStandardTextInput` component, and `useMaskedInput` hook.
