@@ -8,6 +8,15 @@ storiesOf("core/Interaction/Clickable", module)
       <StandardText>Click me!</StandardText>
     </Clickable>
   ))
+  .add("with DOM id and class name", () => (
+    <Clickable
+      onClick={() => alert("Clicked!")}
+      id={"nice-clickable"}
+      className={"nice-classname"}
+    >
+      <StandardText>I have id and class!</StandardText>
+    </Clickable>
+  ))
   .add("with opacity when mouse hovers over clickable", () => (
     <Clickable opacityOnHover onClick={() => alert("Clicked!")}>
       <StandardText>Hover over me!</StandardText>

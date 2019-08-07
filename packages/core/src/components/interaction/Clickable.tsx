@@ -28,9 +28,17 @@ interface ClickableElementProps {
   disableOpacityOnClick?: boolean;
   opacityOnHover?: boolean;
   disableFocusHighlight?: boolean;
+  pointer?: boolean;
 }
 
 const ClickableElement = styled.button<ClickableElementProps>`
+  display: inline-block;
+  user-select: none;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  ${({ pointer }) => (pointer ? "cursor: pointer;" : "")}
+
   :hover {
     ${props => (props.opacityOnHover ? "opacity: 0.7;" : "")};
   }
@@ -45,9 +53,6 @@ const ClickableElement = styled.button<ClickableElementProps>`
         ? ""
         : "box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);"}
   }
-  border: 0;
-  padding: 0;
-  background-color: transparent;
 `;
 
 export const Clickable: React.FC<ClickableProps> = ({
@@ -61,25 +66,22 @@ export const Clickable: React.FC<ClickableProps> = ({
   innerRef,
   style,
   disabled,
-  children
+  children,
+  ...restProps
 }) => {
   const hasClickHandler = !!(onClick || onDblClick);
   return (
     <ClickableElement
       opacityOnHover={opacityOnHover}
       title={tooltip}
-      style={{
-        cursor: hasClickHandler && !disablePointer ? "pointer" : undefined,
-        display: "inline-block",
-        userSelect: "none",
-        ...style
-      }}
       disabled={disabled}
       disableOpacityOnClick={disableOpacityOnClick}
       onClick={onClick}
       onDoubleClick={onDblClick}
       disableFocusHighlight={disableFocusHighlight}
+      pointer={hasClickHandler && !disablePointer}
       ref={innerRef}
+      {...restProps}
     >
       {children}
     </ClickableElement>
