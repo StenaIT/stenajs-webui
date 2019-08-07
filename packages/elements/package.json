@@ -30,6 +30,7 @@
     "@stenajs-webui/core": "0.0.32"
   },
   "peerDependencies": {
+    "@emotion/styled": ">=10.0.10",
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
@@ -41,6 +42,7 @@
     "styled-system": ">=5.0.18"
   },
   "devDependencies": {
+    "@emotion/styled": "^10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@fortawesome/react-fontawesome": "0.1.4",

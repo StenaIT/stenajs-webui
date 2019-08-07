@@ -162,11 +162,10 @@ const checkIfImportIsPackageJsonDependency = (
   }
 
   console.log(
-    `ERROR: ${
+    `ERROR: '${
       packageJson.name
-    } import error: Trying to import module that is not specified as dependency:`
+    }' must specify '${imported}' as dependency or peerDependency.`
   );
   console.log(filePath);
-  console.log(`import from '${imported}'`);
   success = false;
 };
