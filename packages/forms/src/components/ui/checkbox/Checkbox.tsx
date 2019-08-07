@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   Box,
   InputProps,
+  useDomId,
   useMouseIsOver,
   useThemeFields
 } from "@stenajs-webui/core";
@@ -10,7 +11,6 @@ import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import { FullOnChangeProps } from "../types";
-import { useId } from "../utils/UseId";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxProps
@@ -50,6 +50,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   disabled = false,
   inputRef,
+  tabIndex,
   indeterminate = false,
   onChange,
   onValueChange,
@@ -80,7 +81,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     },
     [theme]
   );
-  const innerId = "swui-checkbox-" + useId();
+  const innerId = useDomId("checkbox");
 
   const id = outerId || innerId;
 
@@ -144,6 +145,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         name={name}
         id={id}
         className={className}
+        tabIndex={tabIndex}
       />
       <CheckboxLabel
         style={{
