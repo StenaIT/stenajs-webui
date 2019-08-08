@@ -12,7 +12,7 @@ import {
   useRef,
   useState
 } from "react";
-import { ValueAndOnChangeProps } from "../types";
+import { FullOnChangeProps } from "../types";
 import {
   defaultSimpleTextInputTheme,
   SimpleTextInputTheme
@@ -25,7 +25,7 @@ const styledWithTheme = styled as CreateStyled<SimpleTextInputTheme>;
 export type MoveDirection = "right" | "left" | "down" | "up";
 
 export interface SimpleTextInputProps<TValue = string>
-  extends ValueAndOnChangeProps<TValue, ChangeEvent<HTMLInputElement>>,
+  extends FullOnChangeProps<TValue, ChangeEvent<HTMLInputElement>>,
     InputProps {
   /** CSS class name applied to the input element. */
   className?: string;
@@ -125,6 +125,7 @@ const StyledInput = styledWithTheme("input")<StyledInputProps>(
 export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   moveCursorToEndOnMount,
   onChange,
+  onValueChange,
   onEsc,
   onEnter,
   onKeyDown,
@@ -272,6 +273,19 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
     },
     [theme, backgroundColor, textColor]
   );
+
+  const onChangeHandler = useCallback(
+    ev => {
+      if (onChange) {
+        onChange(ev);
+      }
+      if (onValueChange) {
+        onValueChange(ev.target.value);
+      }
+    },
+    [onChange, onValueChange]
+  );
+
   return (
     <StyledInput
       placeholderColor={colors.placeholderColor}
@@ -288,7 +302,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       type={inputType}
       ref={refToUse}
       onKeyDown={onKeyDownHandler}
-      onChange={onChange}
+      onChange={onChangeHandler}
       onBlur={onBlurHandler}
       onFocus={onFocusHandler}
       autoFocus={focusOnMount || selectAllOnMount}
