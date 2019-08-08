@@ -151,6 +151,7 @@ Where `hideProfile` have default value of `false`.
 - The theme file should include an interface with same name as the file.
 - It should also include a default theme, named `default<Component>Theme`;
 - Passing a theme to a component should always be done with a prop named `theme`.
+- If your component has sub-components with different themes, each sub-component should have it's corresponding theme set in the prop `theme`.
 - The `theme` prop should always be optional, falling back to a default theme.
 - If the users might need to set theme globally, add a context provider that uses the default theme as default value.
 - Theme fields should allow for lookup in theme if color, font, font-size or font-weight.
