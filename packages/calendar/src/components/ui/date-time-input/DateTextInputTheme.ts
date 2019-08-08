@@ -2,9 +2,17 @@ import {
   defaultStandardTextInputTheme,
   StandardTextInputTheme
 } from "@stenajs-webui/forms";
+import {
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../calendar/components/CalendarTheme";
 
-export interface DateTextInputTheme extends StandardTextInputTheme {}
+export interface DateTextInputTheme {
+  calendar: CalendarTheme;
+  textInput: StandardTextInputTheme;
+}
 
 export const defaultDateTextInputTheme: DateTextInputTheme = {
-  ...defaultStandardTextInputTheme
+  calendar: defaultCalendarTheme,
+  textInput: defaultStandardTextInputTheme
 };

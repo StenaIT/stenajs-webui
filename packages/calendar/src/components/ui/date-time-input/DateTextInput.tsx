@@ -8,10 +8,6 @@ import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
 import { DateFormats } from "../../../util/date/DateFormats";
-import {
-  CalendarTheme,
-  defaultCalendarTheme
-} from "../calendar/components/CalendarTheme";
 import { SingleDateCalendarProps } from "../calendar/features/SingleDateSelection";
 import { SingleDateCalendar } from "../calendar/SingleDateCalendar";
 import { CalendarPopupBox } from "./CalendarPopupBox";
@@ -26,7 +22,7 @@ export type DateTextInputCalendarProps<T> = Omit<
 >;
 
 export interface DateTextInputProps<T>
-  extends Omit<StandardTextInputProps, "onChange"> {
+  extends Omit<StandardTextInputProps, "onChange" | "theme"> {
   /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
   /** Close calendar when date is selected, @default true */
@@ -42,9 +38,7 @@ export interface DateTextInputProps<T>
   /**  Z-index of the calendar overlay, @default 100 */
   zIndex?: number;
   /** The text input theme to use. */
-  textInputTheme?: DateTextInputTheme;
-  /** The calendar theme to use. */
-  calendarTheme?: CalendarTheme;
+  theme?: DateTextInputTheme;
 }
 
 export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
@@ -57,8 +51,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   value,
   width = "125px",
   zIndex = 100,
-  textInputTheme = defaultDateTextInputTheme,
-  calendarTheme = defaultCalendarTheme,
+  theme = defaultDateTextInputTheme,
   hideCalenderIcon = false,
   ...props
 }) => {
@@ -68,9 +61,9 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: textInputTheme.backgroundColor,
-        borderColor: textInputTheme.borderColor,
-        backgroundColorInvalidDate: textInputTheme.backgroundColorInvalid
+        backgroundColor: theme.textInput.backgroundColor,
+        borderColor: theme.textInput.borderColor,
+        backgroundColorInvalidDate: theme.textInput.backgroundColorInvalid
       }
     },
     []
@@ -117,7 +110,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     <>
       <StandardTextInput
         {...props}
-        theme={textInputTheme}
+        theme={theme.textInput}
         invalid={invalid}
         iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
         onClickLeft={
@@ -143,7 +136,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 ? parse(value, dateFormat, new Date())
                 : undefined
             }
-            theme={calendarTheme}
+            theme={theme.calendar}
           />
         </CalendarPopupBox>
       )}

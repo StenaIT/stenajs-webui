@@ -1,5 +1,9 @@
 # Changelog
 
+#### Next Release
+
+* Add prop invalid to `StandardTextInput`, `SimpleTextInput`, `DateTextInput` and `TimeTextInput`
+
 #### 0.0.32
 
 * Add first version of `@stenajs-webui/input-mask`.
