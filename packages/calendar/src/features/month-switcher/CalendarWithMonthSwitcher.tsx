@@ -1,8 +1,10 @@
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import * as React from "react";
+import { StandardButton } from "../../../../elements/src/components/ui/buttons/StandardButton";
 import { Calendar } from "../../components/calendar/Calendar";
 import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
 import { CalendarProps } from "../../types/CalendarTypes";
-import { useMonthSwitcherInHeader } from "./hooks/UseMonthSwitcherInHeader";
 import { useMonthSwitcherLogic } from "./hooks/UseMonthSwitcherLogic";
 import { WithMonthSwitcherBelow } from "./MonthSwitcherBelow";
 
@@ -30,12 +32,6 @@ export function CalendarWithMonthSwitcher<T>({
     calendarProps.numMonths
   );
 
-  const headerProps = useMonthSwitcherInHeader<T>(
-    placement === "header",
-    theme,
-    prevMonth,
-    nextMonth
-  );
   switch (placement) {
     case "below": {
       return (
@@ -52,9 +48,30 @@ export function CalendarWithMonthSwitcher<T>({
       return (
         <Calendar<T>
           {...calendarProps}
-          {...headerProps}
           theme={theme}
           date={date}
+          headerLeftContent={
+            <StandardButton
+              onClick={prevMonth}
+              leftIcon={faChevronLeft}
+              buttonTheme={theme.CalendarMonth.SwitchButton}
+              width={
+                theme.CalendarMonth.SwitchButton &&
+                theme.CalendarMonth.SwitchButton.width
+              }
+            />
+          }
+          headerRightContent={
+            <StandardButton
+              onClick={nextMonth}
+              leftIcon={faChevronRight}
+              buttonTheme={theme.CalendarMonth.SwitchButton}
+              width={
+                theme.CalendarMonth.SwitchButton &&
+                theme.CalendarMonth.SwitchButton.width
+              }
+            />
+          }
         />
       );
     }
