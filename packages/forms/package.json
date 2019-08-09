@@ -29,9 +29,7 @@
   "dependencies": {
     "@stenajs-webui/core": "0.0.32",
     "@stenajs-webui/elements": "0.0.32",
-    "@types/recompose": "^0.30.6",
-    "date-fns": "2.0.0-alpha.27",
-    "recompose": "^0.30.0"
+    "date-fns": "2.0.0-alpha.27"
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",
