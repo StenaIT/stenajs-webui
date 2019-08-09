@@ -1,7 +1,7 @@
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { StandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import { StandardButton } from "../../../../elements/src/components/ui/buttons/StandardButton";
 import { Calendar } from "../../components/calendar/Calendar";
 import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
 import { CalendarProps } from "../../types/CalendarTypes";
