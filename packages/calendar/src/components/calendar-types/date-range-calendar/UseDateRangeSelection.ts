@@ -1,6 +1,5 @@
 import { isAfter } from "date-fns";
 import { useCallback, useMemo } from "react";
-import { useHighlightToday } from "../../../features/today-state/UseHighlightToday";
 import { CalendarProps } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
 import { ensureStartIsFirst } from "../../../util/calendar/CalendarIntervalValidator";
@@ -16,7 +15,6 @@ export const useDateRangeSelection = <T>({
   setEndDate,
   onChange,
   setFocusedInput,
-  highlightToday,
   statePerMonth
 }: DateRangeCalendarProps<T>): CalendarProps<T> => {
   const onClickDay = useCallback(
@@ -82,13 +80,8 @@ export const useDateRangeSelection = <T>({
     [statePerMonth, dates]
   );
 
-  const statePerMonthWithToday = useMemo(
-    () => useHighlightToday(highlightToday, statePerMonthWithSelection),
-    [highlightToday, statePerMonthWithSelection]
-  );
-
   return {
     onClickDay,
-    statePerMonth: statePerMonthWithToday
+    statePerMonth: statePerMonthWithSelection
   };
 };

@@ -1,8 +1,8 @@
-import { Box, StandardText, useThemeFields } from '@stenajs-webui/core';
-import * as React from 'react';
-import { OnClickWeekDay } from '../../../types/CalendarTypes';
-import { DayData } from '../../../util/calendar/CalendarDataFactory';
-import { CalendarTheme } from '../CalendarTheme';
+import { Box, StandardText, useThemeFields } from "@stenajs-webui/core";
+import * as React from "react";
+import { OnClickWeekDay } from "../../../types/CalendarTypes";
+import { DayData } from "../../../util/calendar/CalendarDataFactory";
+import { CalendarTheme } from "../CalendarTheme";
 
 export interface WeekDayCellProps {
   onClickWeekDay?: OnClickWeekDay;

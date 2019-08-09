@@ -1,7 +1,13 @@
-import { format, getDate, getISOWeek } from 'date-fns';
-import { CalendarState, CalendarUserData, DayState, DayStateHighlight, StateForWeek } from '../../types/CalendarTypes';
-import { DateFormats } from '../date/DateFormats';
-import { WeekData } from './CalendarDataFactory';
+import { format, getDate, getISOWeek } from "date-fns";
+import {
+  CalendarState,
+  CalendarUserData,
+  DayState,
+  DayStateHighlight,
+  StateForWeek
+} from "../../types/CalendarTypes";
+import { DateFormats } from "../date/DateFormats";
+import { WeekData } from "./CalendarDataFactory";
 
 export const setDayStateValue = (
   state: CalendarUserData<DayState> | undefined,

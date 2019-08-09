@@ -12,9 +12,9 @@ import {
   getYear,
   isSameDay,
   startOfISOWeek,
-  startOfMonth,
-} from 'date-fns';
-import { DateFormats } from '../date/DateFormats';
+  startOfMonth
+} from "date-fns";
+import { DateFormats } from "../date/DateFormats";
 
 export enum Months {
   JANUARY = 0,

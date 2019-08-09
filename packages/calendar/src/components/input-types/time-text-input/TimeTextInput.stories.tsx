@@ -1,8 +1,8 @@
-import { Store, withState } from '@dump247/storybook-state';
-import { TimeTextInput } from '@stenajs-webui/calendar';
-import { color } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import { Store, withState } from "@dump247/storybook-state";
+import { TimeTextInput } from "@stenajs-webui/calendar";
+import { color } from "@storybook/addon-knobs";
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
 
 interface TimeTextInputState {
   value?: string;

@@ -1,4 +1,4 @@
-import { addDayStateHighlights } from '../StateModifier';
+import { addDayStateHighlights } from "../StateModifier";
 
 describe("StateModifier", () => {
   describe("addDayStateHighlights", () => {

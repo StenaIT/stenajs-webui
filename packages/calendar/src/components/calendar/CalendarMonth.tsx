@@ -1,5 +1,5 @@
-import { Box, Row, StandardText, useThemeFields } from '@stenajs-webui/core';
-import * as React from 'react';
+import { Box, Row, StandardText, useThemeFields } from "@stenajs-webui/core";
+import * as React from "react";
 import {
   CalendarDayProps,
   CalendarOnClicks,
@@ -7,13 +7,17 @@ import {
   DayState,
   DayStateHighlight,
   ExtraDayContentProps,
-  Renderers,
-} from '../../types/CalendarTypes';
-import { DayData, MonthData, WeekData } from '../../util/calendar/CalendarDataFactory';
+  Renderers
+} from "../../types/CalendarTypes";
+import {
+  DayData,
+  MonthData,
+  WeekData
+} from "../../util/calendar/CalendarDataFactory";
 
-import { CalendarTheme } from './CalendarTheme';
-import { CalendarWeek } from './CalendarWeek';
-import { WeekDayCell } from './renderers/WeekDayCell';
+import { CalendarTheme } from "./CalendarTheme";
+import { CalendarWeek } from "./CalendarWeek";
+import { WeekDayCell } from "./renderers/WeekDayCell";
 
 export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   month: MonthData;

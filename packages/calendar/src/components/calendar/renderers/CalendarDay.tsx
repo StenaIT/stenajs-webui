@@ -1,7 +1,11 @@
-import { Box, Clickable, StandardText, useTheme } from '@stenajs-webui/core';
-import * as React from 'react';
-import { CalendarDayProps, DayState, DayStateHighlight } from '../../../types/CalendarTypes';
-import { dayHighlightSelect } from '../../../util/calendar/StateHelper';
+import { Box, Clickable, StandardText, useTheme } from "@stenajs-webui/core";
+import * as React from "react";
+import {
+  CalendarDayProps,
+  DayState,
+  DayStateHighlight
+} from "../../../types/CalendarTypes";
+import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
 
 export const CalendarDay = <T extends {}>({
   day,

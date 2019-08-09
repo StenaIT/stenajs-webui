@@ -1,6 +1,6 @@
-import { Absolute, Box, Relative } from '@stenajs-webui/core';
-import * as React from 'react';
-import { Ref } from 'react';
+import { Absolute, Box, Relative } from "@stenajs-webui/core";
+import * as React from "react";
+import { Ref } from "react";
 
 interface Props {
   background?: string;

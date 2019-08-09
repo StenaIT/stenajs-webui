@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from "react";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
-import { useHighlightToday } from "../../../features/today-state/UseHighlightToday";
 import {
   getStartDateOfISOWeek,
   getWeekForDate,
@@ -13,8 +12,7 @@ import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
-  statePerMonth,
-  highlightToday
+  statePerMonth
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const onClickDay = useCallback(day => {
     if (onChange) {
@@ -34,11 +32,6 @@ export const useSingleWeekSelection = <T>({
       : statePerMonth;
   }, [value, statePerMonth]);
 
-  const statePerMonthWithToday = useHighlightToday(
-    highlightToday,
-    statePerMonthWithSelection
-  );
-
   const date = useMemo(() => {
     const week = getWeekDataFromWeekString(value);
     if (!week) {
@@ -48,7 +41,7 @@ export const useSingleWeekSelection = <T>({
   }, [value]);
 
   return {
-    statePerMonth: statePerMonthWithToday,
+    statePerMonth: statePerMonthWithSelection,
     date,
     startDateInFocus: date,
     onClickDay,

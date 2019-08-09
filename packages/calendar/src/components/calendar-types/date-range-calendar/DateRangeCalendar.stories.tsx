@@ -1,8 +1,12 @@
-import { Store, withState } from '@dump247/storybook-state';
-import { DateRangeCalendar, DateRangeFocusedInput, setDayStateValue } from '@stenajs-webui/calendar';
-import { storiesOf } from '@storybook/react';
-import { addDays } from 'date-fns';
-import * as React from 'react';
+import { Store, withState } from "@dump247/storybook-state";
+import {
+  DateRangeCalendar,
+  DateRangeFocusedInput,
+  setDayStateValue
+} from "@stenajs-webui/calendar";
+import { storiesOf } from "@storybook/react";
+import { addDays } from "date-fns";
+import * as React from "react";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {

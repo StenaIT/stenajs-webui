@@ -1,9 +1,15 @@
-import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
-import { Omit } from '@stenajs-webui/core';
-import { StandardTextInput, StandardTextInputProps } from '@stenajs-webui/forms';
-import * as React from 'react';
-import { useCallback, useState } from 'react';
-import { formatTimeString, validUserInput } from '../../../util/time/TimeStringFormatValidator';
+import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
+import { Omit } from "@stenajs-webui/core";
+import {
+  StandardTextInput,
+  StandardTextInputProps
+} from "@stenajs-webui/forms";
+import * as React from "react";
+import { useCallback, useState } from "react";
+import {
+  formatTimeString,
+  validUserInput
+} from "../../../util/time/TimeStringFormatValidator";
 
 interface TimeTextInputProps extends Omit<StandardTextInputProps, "onChange"> {
   /** Show placeholder when true */

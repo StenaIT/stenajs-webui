@@ -2,6 +2,7 @@ import { Row, Space, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear } from "date-fns";
 import { chunk } from "lodash";
 import * as React from "react";
+import { useHighlightToday } from "../../features/today-state/UseHighlightToday";
 import {
   CalendarOnClicks,
   CalendarProps,
@@ -99,7 +100,21 @@ export function Calendar<T extends {}>(props: CalendarProps<T>) {
     props.numMonths,
     props.monthsPerRow
   );
-  return <CalendarPanel<T> year={year} month={month} monthRows={monthRows} />;
+
+  const statePerMonth = useHighlightToday(
+    props.highlightToday,
+    props.statePerMonth
+  );
+
+  return (
+    <CalendarPanel<T>
+      year={year}
+      month={month}
+      monthRows={monthRows}
+      {...props}
+      statePerMonth={statePerMonth}
+    />
+  );
 }
 
 const getInitialDate = (year?: number, month?: number, date?: Date) => {

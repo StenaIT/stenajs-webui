@@ -24,13 +24,19 @@ export function CalendarWithMonthSwitcher<T>({
     calendarProps.monthsPerRow,
     calendarProps.numMonths
   );
+
+  const placement = fallbackIfNoPlacement(
+    monthSwitcherPlacement,
+    calendarProps.numMonths
+  );
+
   const headerProps = useMonthSwitcherInHeader<T>(
-    monthSwitcherPlacement === "header",
+    placement === "header",
     theme,
     prevMonth,
     nextMonth
   );
-  switch (monthSwitcherPlacement) {
+  switch (placement) {
     case "below": {
       return (
         <WithMonthSwitcherBelow
@@ -57,3 +63,10 @@ export function CalendarWithMonthSwitcher<T>({
     }
   }
 }
+
+const fallbackIfNoPlacement = (
+  monthSwitcherPlacement: MonthSwitcherPlacement | undefined,
+  numMonths: number | undefined
+): MonthSwitcherPlacement => {
+  return monthSwitcherPlacement || (numMonths || 1) > 1 ? "below" : "header";
+};

@@ -1,4 +1,4 @@
-import { buildDayState } from '../DayStateFactory';
+import { buildDayState } from "../DayStateFactory";
 
 describe("DayStateFactory", () => {
   describe("buildDayState", () => {

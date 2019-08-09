@@ -1,4 +1,4 @@
-import { ThemeColorField } from '@stenajs-webui/core';
+import { ThemeColorField } from "@stenajs-webui/core";
 
 export interface DateRangeInputTheme {
   borderColor: ThemeColorField;

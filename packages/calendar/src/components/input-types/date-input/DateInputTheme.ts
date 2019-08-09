@@ -1,5 +1,8 @@
-import { ThemeColorField } from '@stenajs-webui/core';
-import { CalendarTheme, defaultCalendarTheme } from '../../calendar/CalendarTheme';
+import { ThemeColorField } from "@stenajs-webui/core";
+import {
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../../calendar/CalendarTheme";
 
 export interface DateInputTheme {
   backgroundColor: ThemeColorField | string;

@@ -1,5 +1,5 @@
-import { DayState } from '../../types/CalendarTypes';
-import { dayHighlightSelect } from '../StateHelper';
+import { DayState } from "../../types/CalendarTypes";
+import { dayHighlightSelect } from "../StateHelper";
 
 describe("StateHelper", () => {
   describe("dayHighlightSelect", () => {

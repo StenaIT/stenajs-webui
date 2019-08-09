@@ -1,17 +1,26 @@
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons/faCalendarAlt';
-import { Omit, useOnClickOutside, useThemeFields } from '@stenajs-webui/core';
-import { StandardTextInput, StandardTextInputProps } from '@stenajs-webui/forms';
-import { format, isValid, parse } from 'date-fns';
-import * as React from 'react';
-import { useCallback, useRef, useState } from 'react';
-import { DateFormats } from '../../../util/date/DateFormats';
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
+import { Omit, useOnClickOutside, useThemeFields } from "@stenajs-webui/core";
+import {
+  StandardTextInput,
+  StandardTextInputProps
+} from "@stenajs-webui/forms";
+import { format, isValid, parse } from "date-fns";
+import * as React from "react";
+import { useCallback, useRef, useState } from "react";
+import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
-  SingleDateCalendarProps,
-} from '../../calendar-types/single-date-calendar/SingleDateCalendar';
-import { CalendarPopupBox } from '../../calendar/CalendarPopupBox';
-import { CalendarTheme, defaultCalendarTheme } from '../../calendar/CalendarTheme';
-import { DateTextInputTheme, defaultDateTextInputTheme } from '../date-input/DateTextInputTheme';
+  SingleDateCalendarProps
+} from "../../calendar-types/single-date-calendar/SingleDateCalendar";
+import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
+import {
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../../calendar/CalendarTheme";
+import {
+  DateInputTheme,
+  defaultDateInputTheme
+} from "../date-input/DateInputTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,

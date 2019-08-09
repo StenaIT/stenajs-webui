@@ -1,9 +1,16 @@
-import { TextProps, Theme, ThemeColorField } from '@stenajs-webui/core';
-import { ButtonTheme, defaultButtonTheme } from '@stenajs-webui/elements';
-import { CSSProperties } from 'react';
-import { DayState, DayStateHighlight } from '../../types/CalendarTypes';
-import { DayData, MonthData, WeekData } from '../../util/calendar/CalendarDataFactory';
-import { dayHasHighlight, dayHighlightSelect } from '../../util/calendar/StateHelper';
+import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
+import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
+import { CSSProperties } from "react";
+import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
+import {
+  DayData,
+  MonthData,
+  WeekData
+} from "../../util/calendar/CalendarDataFactory";
+import {
+  dayHasHighlight,
+  dayHighlightSelect
+} from "../../util/calendar/StateHelper";
 
 export interface CalendarTheme<TUserData = {}> {
   width: string;
