@@ -119,9 +119,19 @@ export interface HighlightsState {
 }
 
 export type DayState = HighlightsState;
-export type OnClickDay<T> = (day: DayData, data?: T) => void;
-export type OnClickWeekDay = (weekDay: number) => void;
-export type OnClickWeek = (week: WeekData) => void;
+export type OnClickDay<T> = (
+  day: DayData,
+  data: T | undefined,
+  ev: React.MouseEvent<HTMLButtonElement>
+) => void;
+export type OnClickWeekDay = (
+  weekDay: number,
+  ev: React.MouseEvent<HTMLButtonElement>
+) => void;
+export type OnClickWeek = (
+  week: WeekData,
+  ev: React.MouseEvent<HTMLButtonElement>
+) => void;
 export type CalendarUserData<T> = { [key: string]: CalendarUserMonthData<T> };
 export type CalendarUserMonthData<T> = {
   [key: number]: CalendarUserWeekData<T>;

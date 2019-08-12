@@ -108,7 +108,7 @@ export const CalendarDay = <T extends {}>({
               )}
               {onClickDay && isClickable(defaultHighlights, dayState) ? (
                 <Clickable
-                  onClick={() => onClickDay(day, userData)}
+                  onClick={ev => onClickDay(day, userData, ev)}
                   style={{ width: "100%", height: "100%" }}
                 >
                   {content}
