@@ -1,4 +1,9 @@
-import { DateInputTheme, defaultDateInputTheme } from "@stenajs-webui/calendar";
+import {
+  DateInputTheme,
+  DateTextInputTheme,
+  defaultDateInputTheme,
+  defaultDateTextInputTheme
+} from "@stenajs-webui/calendar";
 import {
   ButtonTheme,
   defaultButtonTheme,
@@ -59,6 +64,10 @@ export const createNumericTextInputTheme = createThemeFactory(<
 
 export const createDateInputTheme = createThemeFactory<DateInputTheme>(
   defaultDateInputTheme
+);
+
+export const createDateTextInputTheme = createThemeFactory<DateTextInputTheme>(
+  defaultDateTextInputTheme
 );
 
 export const createCheckboxTheme = createThemeFactory<CheckboxTheme>(

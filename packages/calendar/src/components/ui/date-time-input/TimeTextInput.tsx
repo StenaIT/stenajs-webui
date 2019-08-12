@@ -62,6 +62,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
       {...props}
       backgroundColor={valid ? backgroundColor : "errorBgLight"}
       iconLeft={useIcon ? faClock : undefined}
+      invalid={props.invalid || !valid}
       value={value}
       placeholder={showPlaceholder ? timeFormat : undefined}
       onChange={onChangeHandler}

@@ -21,4 +21,11 @@ storiesOf("forms/TextInput/SimpleTextInput", module)
   ))
   .add("disabled", () => (
     <SimpleTextInput value={""} placeholder={"Enter name"} disabled={true} />
+  ))
+  .add("invalid", () => (
+    <SimpleTextInput
+      value={"invalid input"}
+      placeholder={"Enter name"}
+      invalid={true}
+    />
   ));

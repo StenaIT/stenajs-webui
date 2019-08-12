@@ -59,6 +59,7 @@ export interface SimpleTextInputProps<TValue = string>
   backgroundColor?: string;
   textColor?: string;
   disabled?: boolean;
+  invalid?: boolean;
   placeholder?: string;
   placeholderColor?: string;
   style?: CSSProperties;
@@ -74,11 +75,14 @@ interface StyledInputProps {
   placeholderColor: string;
   backgroundColor: string;
   backgroundColorDisabled: string;
+  backgroundColorInvalid: string;
   textColor: string;
   textColorDisabled: string;
+  textColorInvalid: string;
   fontSize: string;
   fontFamily: string;
   height?: string;
+  invalid: boolean;
   width?: string;
   outerStyle?: CSSProperties;
 }
@@ -87,12 +91,15 @@ const StyledInput = styledWithTheme("input")<StyledInputProps>(
   ({
     backgroundColor,
     backgroundColorDisabled,
+    backgroundColorInvalid,
     placeholderColor,
     textColor,
     textColorDisabled,
+    textColorInvalid,
     fontSize,
     fontFamily,
     height,
+    invalid,
     outerStyle,
     width
   }) => ({
@@ -107,8 +114,8 @@ const StyledInput = styledWithTheme("input")<StyledInputProps>(
       webkitAppearance: "none",
       margin: 0
     },
-    backgroundColor: backgroundColor,
-    color: textColor,
+    backgroundColor: invalid ? backgroundColorInvalid : backgroundColor,
+    color: invalid ? textColorInvalid : textColor,
     "&:disabled": {
       backgroundColor: `${backgroundColorDisabled}`,
       color: `${textColorDisabled}`
@@ -142,6 +149,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   textColor,
   placeholder,
   disabled = false,
+  invalid = false,
   style,
   className,
   theme = defaultSimpleTextInputTheme,
@@ -260,9 +268,11 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       colors: {
         backgroundColor: backgroundColor || theme.backgroundColor,
         backgroundColorDisabled: theme.backgroundColorDisabled,
+        backgroundColorInvalid: theme.backgroundColorInvalid,
         placeholderColor: placeholderColor || theme.placeholderColor,
         textColor: textColor || theme.textColor,
-        textColorDisabled: theme.textColorDisabled
+        textColorDisabled: theme.textColorDisabled,
+        textColorInvalid: theme.textColorInvalid
       },
       fonts: {
         fontFamily: theme.fontFamily
@@ -291,8 +301,10 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       placeholderColor={colors.placeholderColor}
       backgroundColor={colors.backgroundColor}
       backgroundColorDisabled={colors.backgroundColorDisabled}
+      backgroundColorInvalid={colors.backgroundColorInvalid}
       textColor={colors.textColor}
       textColorDisabled={colors.textColorDisabled}
+      textColorInvalid={colors.textColorInvalid}
       width={width}
       height={height}
       fontSize={fontSizes.fontSize}
@@ -311,6 +323,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
       placeholder={placeholder}
       size={size}
       disabled={disabled}
+      invalid={invalid}
       min={min}
       max={max}
       step={step}
