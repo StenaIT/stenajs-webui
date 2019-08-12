@@ -1,6 +1,10 @@
 import * as React from "react";
-import { CalendarTheme } from "../components/CalendarTheme";
-import { DayData, MonthData, WeekData } from "../util/CalendarDataFactory";
+import { CalendarTheme } from "../components/calendar/CalendarTheme";
+import {
+  DayData,
+  MonthData,
+  WeekData
+} from "../util/calendar/CalendarDataFactory";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
