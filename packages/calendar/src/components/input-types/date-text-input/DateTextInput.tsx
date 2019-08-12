@@ -18,9 +18,9 @@ import {
   defaultCalendarTheme
 } from "../../calendar/CalendarTheme";
 import {
-  DateInputTheme,
-  defaultDateInputTheme
-} from "../date-input/DateInputTheme";
+  DateTextInputTheme,
+  defaultDateTextInputTheme
+} from "./DateTextInputTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,

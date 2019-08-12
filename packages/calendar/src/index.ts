@@ -9,6 +9,7 @@ export * from "./components/input-types/date-input/DateInputTheme";
 export * from "./components/input-types/date-range-input/DateRangeInput";
 export * from "./components/input-types/date-range-input/DateRangeInputTheme";
 export * from "./components/input-types/date-text-input/DateTextInput";
+export * from "./components/input-types/date-text-input/DateTextInputTheme";
 export * from "./components/input-types/time-text-input/TimeTextInput";
 export * from "./components/calendar/Calendar";
 export * from "./components/calendar/CalendarTheme";
