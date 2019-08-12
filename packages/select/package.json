@@ -29,9 +29,7 @@
   "dependencies": {
     "@stenajs-webui/core": "0.0.32",
     "@types/react-select": "^2.0.17",
-    "@types/recompose": "^0.30.6",
-    "react-select": "^2.4.3",
-    "recompose": "^0.30.0"
+    "react-select": "^2.4.3"
   },
   "peerDependencies": {
     "@types/lodash": ">=4.14.135",
