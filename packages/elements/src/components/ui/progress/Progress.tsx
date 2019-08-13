@@ -20,16 +20,11 @@ export const Progress: React.FC<ProgressProps> = ({
 }) => {
   const sizeToUse = (sizes[size] as string | undefined) || size;
   return (
-    <div
+    <Spinner
+      height={sizeToUse}
+      width={sizeToUse}
+      stroke={trackColor}
       style={{ width: sizeToUse, height: sizeToUse }}
-      className={"mattias-hejsan"}
-    >
-      <Spinner
-        height={sizeToUse}
-        width={sizeToUse}
-        stroke={trackColor}
-        style={{ width: sizeToUse, height: sizeToUse }}
-      />
-    </div>
+    />
   );
 };

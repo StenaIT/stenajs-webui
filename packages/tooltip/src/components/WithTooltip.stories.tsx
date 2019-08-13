@@ -14,7 +14,7 @@ const ActionPromptWithLogic: React.FC = () => {
     setTimeout(() => {
       setDeleting(false);
       onDone();
-    }, 100000);
+    }, 2000);
   };
 
   return (
