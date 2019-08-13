@@ -76,7 +76,7 @@ storiesOf("tooltip/WithTooltip", module)
   )
   .add("click trigger", () => (
     <WithTooltip
-      content={<StandardText>Nice content on bottom</StandardText>}
+      content={<StandardText>Way to go!</StandardText>}
       trigger={"click"}
     >
       <StandardText>Click me</StandardText>
@@ -84,10 +84,10 @@ storiesOf("tooltip/WithTooltip", module)
   ))
   .add("with button", () => (
     <WithTooltip
-      content={<StandardText>Nice content on bottom</StandardText>}
+      content={<StandardText>Big success!</StandardText>}
       trigger={"click"}
     >
-      {({ show }) => <StandardButton onClick={show}>Click me</StandardButton>}
+      {({ show }) => <StandardButton onClick={show} label={"Click me"} />}
     </WithTooltip>
   ))
   .add("action prompt", () => (
