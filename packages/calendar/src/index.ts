@@ -1,5 +1,6 @@
 export * from "./components/calendar-types/date-range-calendar/DateRangeCalendar";
-export * from "./components/calendar-types/date-range-calendar/UseDateRangeSelection";
+export * from "./components/calendar-types/date-range-calendar/hooks/UseDateRangeSelection";
+export * from "./components/calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
 export * from "./components/calendar-types/single-date-calendar/SingleDateCalendar";
 export * from "./components/calendar-types/single-date-calendar/UseSingleDateSelection";
 export * from "./components/calendar-types/single-week-calendar/SingleWeekCalendar";
