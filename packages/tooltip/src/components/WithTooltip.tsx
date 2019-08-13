@@ -24,6 +24,7 @@ interface WithTooltipProps {
   placement?: PopperJS.Placement;
   trigger?: PopupTriggerType;
   content?: ReactNode | TooltipContentFunc;
+  children?: ReactNode | TooltipContentFunc;
 }
 
 export const PopperBox = styled("div")`
@@ -40,12 +41,12 @@ export const PopperBox = styled("div")`
   ${(props: any) => props.popperStyle};
 `;
 
-export const WithTooltip: React.FC<WithTooltipProps> = ({
+export function WithTooltip({
   placement,
   trigger = "hover",
   content,
   children
-}) => {
+}: WithTooltipProps) {
   const [showing, show, hide] = useBoolean(false);
   const outerRef = useRef(null);
   useOnClickOutside(outerRef, () => {
@@ -70,7 +71,9 @@ export const WithTooltip: React.FC<WithTooltipProps> = ({
         <Reference>
           {({ ref }) => (
             <div ref={ref}>
-              {trigger === "click" ? (
+              {typeof children === "function" ? (
+                children({ show, hide })
+              ) : trigger === "click" ? (
                 <Clickable onClick={show}>{children}</Clickable>
               ) : (
                 children
@@ -99,4 +102,4 @@ export const WithTooltip: React.FC<WithTooltipProps> = ({
       </Manager>
     </Box>
   );
-};
+}
