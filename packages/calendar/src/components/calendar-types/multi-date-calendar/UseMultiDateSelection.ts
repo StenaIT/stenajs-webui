@@ -1,4 +1,6 @@
-import { useCallback, useMemo } from "react";
+import { eachDayOfInterval } from "date-fns";
+import { useCallback, useMemo, useState } from "react";
+import { useDateRangeOnClickDayHandler } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
 import {
   CalendarProps,
   CalendarState,
@@ -9,6 +11,10 @@ import {
   listContainsDate,
   removeDateIfExist
 } from "../../../util/date/DateListTools";
+import {
+  DateRangeCalendarOnChangeValue,
+  DateRangeFocusedInput
+} from "../date-range-calendar/DateRangeCalendar";
 import { MultiDateCalendarProps } from "./MultiDateCalendar";
 
 export const useMultiDateSelection = <T>({
@@ -16,15 +22,52 @@ export const useMultiDateSelection = <T>({
   value,
   statePerMonth
 }: MultiDateCalendarProps<T>): Partial<CalendarProps<T>> => {
-  const onClickDay: OnClickDay<T> = useCallback(
-    day => {
+  const [startDate, setStartDate] = useState<Date | undefined>();
+  const [endDate, setEndDate] = useState<Date | undefined>();
+  const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
+    "startDate"
+  );
+
+  const onChangeHandler = useCallback(
+    (value: DateRangeCalendarOnChangeValue) => {
+      const { startDate, endDate } = value;
       if (onChange) {
-        if (!value) {
-          onChange([day.date]);
-        } else if (listContainsDate(value, day.date)) {
-          onChange(removeDateIfExist(value, day.date));
+        if (startDate && endDate) {
+          const dates = eachDayOfInterval({ start: startDate, end: endDate });
+          onChange(dates);
+        } else if (startDate) {
+          onChange([startDate]);
+        } else if (endDate) {
+          onChange([endDate]);
+        }
+      }
+    },
+    [onChange]
+  );
+
+  const onClickDayRange = useDateRangeOnClickDayHandler(
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    focusedInput,
+    setFocusedInput,
+    onChangeHandler
+  );
+
+  const onClickDay: OnClickDay<T> = useCallback(
+    (day, userData, ev) => {
+      if (onChange) {
+        if (ev.ctrlKey || ev.metaKey) {
+          if (!value) {
+            onChange([day.date]);
+          } else if (listContainsDate(value, day.date)) {
+            onChange(removeDateIfExist(value, day.date));
+          } else {
+            onChange([...value, day.date]);
+          }
         } else {
-          onChange([...value, day.date]);
+          onClickDayRange(day, userData, ev);
         }
       }
     },

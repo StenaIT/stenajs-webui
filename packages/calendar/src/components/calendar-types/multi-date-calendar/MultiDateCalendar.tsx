@@ -9,7 +9,7 @@ import { useMultiDateSelection } from "./UseMultiDateSelection";
 export interface MultiDateCalendarProps<T>
   extends CalendarWithMonthSwitcherProps<T> {
   value: Array<Date> | undefined;
-  onChange: (value: Array<Date>) => void;
+  onChange?: (value: Array<Date>) => void;
 }
 
 export function MultiDateCalendar<T extends {}>(
