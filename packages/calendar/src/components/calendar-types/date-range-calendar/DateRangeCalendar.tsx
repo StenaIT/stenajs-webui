@@ -4,7 +4,7 @@ import {
   CalendarWithMonthSwitcherProps
 } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
-import { useDateRangeSelection } from "./UseDateRangeSelection";
+import { useDateRangeSelection } from "./hooks/UseDateRangeSelection";
 
 export type DateRangeFocusedInput = "startDate" | "endDate" | undefined;
 

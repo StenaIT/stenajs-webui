@@ -37,8 +37,8 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
       position={"relative"}
     >
       <Clickable
-        onClick={onClickWeek ? () => onClickWeek(week) : undefined}
-        disableFocusHighlight
+        onClick={onClickWeek ? ev => onClickWeek(week, ev) : undefined}
+        disableFocusHighlight={!onClickWeek}
       >
         <Box
           width={theme.width}

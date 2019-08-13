@@ -1,12 +1,15 @@
 import { Store, withState } from "@dump247/storybook-state";
 import {
   DateRangeCalendar,
+  DateRangeCalendarProps,
   DateRangeFocusedInput,
-  setDayStateValue
+  setDayStateValue,
+  useDateRangeCalendarState
 } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
+import markdown from "./DateRangeCalendar.md";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {
@@ -34,6 +37,13 @@ interface State {
   focusedInput: DateRangeFocusedInput;
 }
 
+function DateRangeCalendarWithState<T>({
+  onChange
+}: Pick<DateRangeCalendarProps<T>, "onChange">) {
+  const calendarProps = useDateRangeCalendarState();
+  return <DateRangeCalendar {...calendarProps} onChange={onChange} />;
+}
+
 storiesOf("calendar/Calendar/DateRangeCalendar", module)
   .add(
     "standard",
@@ -50,8 +60,12 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
         setEndDate={endDate => store.set({ endDate })}
         setFocusedInput={focusedInput => store.set({ focusedInput })}
       />
-    ))
+    )),
+    {
+      notes: { markdown }
+    }
   )
+  .add("with state hook", () => <DateRangeCalendarWithState />)
   .add(
     "with today highlighted",
     withState<State>({

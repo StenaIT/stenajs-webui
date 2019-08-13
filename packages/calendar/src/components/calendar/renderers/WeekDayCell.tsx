@@ -1,5 +1,6 @@
 import { Box, StandardText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
+import { Clickable } from "@stenajs-webui/core";
 import { OnClickWeekDay } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
 import { CalendarTheme } from "../CalendarTheme";
@@ -25,8 +26,11 @@ export const WeekDayCell = ({
   );
 
   return (
-    <div
-      onClick={onClickWeekDay ? () => onClickWeekDay(day.dayOfWeek) : undefined}
+    <Clickable
+      onClick={
+        onClickWeekDay ? ev => onClickWeekDay(day.dayOfWeek, ev) : undefined
+      }
+      disableFocusHighlight={!onClickWeekDay}
     >
       <Box
         width={theme.width}
@@ -36,6 +40,6 @@ export const WeekDayCell = ({
       >
         <StandardText color={colors.textColor}>{day.name}</StandardText>
       </Box>
-    </div>
+    </Clickable>
   );
 };

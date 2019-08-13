@@ -1,23 +1,25 @@
 import { isAfter } from "date-fns";
-import { useCallback, useMemo } from "react";
-import { CalendarProps } from "../../../types/CalendarTypes";
+import { useCallback } from "react";
+import { DateRangeFocusedInput } from "../../../components/calendar-types/date-range-calendar/DateRangeCalendar";
+import { OnClickDay } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
 import { ensureStartIsFirst } from "../../../util/calendar/CalendarIntervalValidator";
-import { DateRangeCalendarProps } from "./DateRangeCalendar";
-import { buildDayState } from "./util/DayStateFactory";
-import { toggleDatesIfEndIsEarlierThanStart } from "./util/IntervalSwitcher";
 
-export const useDateRangeSelection = <T>({
-  focusedInput,
-  endDate,
-  startDate,
-  setStartDate,
-  setEndDate,
-  onChange,
-  setFocusedInput,
-  statePerMonth
-}: DateRangeCalendarProps<T>): CalendarProps<T> => {
-  const onClickDay = useCallback(
+export interface DateRangeOnChangeValue {
+  startDate?: Date;
+  endDate?: Date;
+}
+
+export const useDateRangeOnClickDayHandler = <T>(
+  startDate: Date | undefined,
+  setStartDate: (startDate: Date) => void,
+  endDate: Date | undefined,
+  setEndDate: (endDate: Date) => void,
+  focusedInput: DateRangeFocusedInput,
+  setFocusedInput: (focusedInput: DateRangeFocusedInput) => void,
+  onChange?: (value: DateRangeOnChangeValue) => void
+): OnClickDay<T> => {
+  return useCallback(
     (day: DayData) => {
       if (focusedInput === "startDate") {
         if (endDate && isAfter(day.date, endDate)) {
@@ -69,19 +71,4 @@ export const useDateRangeSelection = <T>({
       setFocusedInput
     ]
   );
-
-  const dates = useMemo(
-    () => toggleDatesIfEndIsEarlierThanStart(startDate, endDate),
-    [startDate, endDate]
-  );
-
-  const statePerMonthWithSelection = useMemo(
-    () => buildDayState(statePerMonth, dates.startDate, dates.endDate),
-    [statePerMonth, dates]
-  );
-
-  return {
-    onClickDay,
-    statePerMonth: statePerMonthWithSelection
-  };
 };
