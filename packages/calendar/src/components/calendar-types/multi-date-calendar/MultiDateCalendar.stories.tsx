@@ -11,7 +11,7 @@ import {
   WeekData,
   WeekNumberCell
 } from "@stenajs-webui/calendar";
-import { Box, Row, Space } from "@stenajs-webui/core";
+import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
@@ -50,10 +50,20 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
-        onChange={value => store.set({ value })}
-        value={store.state.value}
-      />
+      <>
+        <MultiDateCalendar
+          onChange={value => store.set({ value })}
+          value={store.state.value}
+        />
+        <Space />
+        <Box background={"#eee"} spacing={2} indent={2}>
+          <StandardText>Click to select date range.</StandardText>
+          <Space />
+          <StandardText>
+            Hold ctrl (or cmd) and click to toggle individual dates.
+          </StandardText>
+        </Box>
+      </>
     ))
   )
   .add(
