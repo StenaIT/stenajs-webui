@@ -5,19 +5,21 @@ export interface ChipTheme {
   backgroundHover: ThemeColorField | string;
   iconColor: ThemeColorField | string;
   iconColorHover: ThemeColorField | string;
-  removeIconBackground: ThemeColorField | string;
   removeIconBackgroundHover: ThemeColorField | string;
+  textColor: ThemeColorField | string;
+  textColorHover: ThemeColorField | string;
   borderRadius: string;
   height: string;
 }
 
 export const defaultChipTheme: ChipTheme = {
-  background: "primaryBg",
-  backgroundHover: "primaryBgLight",
-  iconColor: "disabledText",
-  iconColorHover: "primaryText",
-  removeIconBackground: "primaryBg",
-  removeIconBackgroundHover: "primaryBgDark",
+  background: "interactionBgPrimary",
+  backgroundHover: "interactionBgHover",
+  iconColor: "primaryTextLight",
+  iconColorHover: "white",
+  removeIconBackgroundHover: "interactionBgHover",
+  textColor: "white",
+  textColorHover: "primaryBgLight",
   borderRadius: "3px",
   height: "24px"
 };

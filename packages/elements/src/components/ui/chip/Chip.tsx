@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import {
   Box,
@@ -6,9 +5,11 @@ import {
   Indent,
   Row,
   SmallText,
+  useBoolean,
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
+import { Nest } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import { ChipTheme, defaultChipTheme } from "./ChipTheme";
 
@@ -25,6 +26,11 @@ export const Chip: React.FC<ChipProps> = ({
   onClickRemove,
   theme = defaultChipTheme
 }) => {
+  const [labelHovering, setLabelHovering, setLabelNotHovering] = useBoolean(
+    false
+  );
+  const [iconHovering, setIconHovering, setIconNotHovering] = useBoolean(false);
+
   const { colors } = useThemeFields(
     {
       colors: {
@@ -32,8 +38,9 @@ export const Chip: React.FC<ChipProps> = ({
         backgroundHover: theme.backgroundHover,
         iconColor: theme.iconColor,
         iconColorHover: theme.iconColorHover,
-        removeIconBackground: theme.removeIconBackground,
-        removeIconBackgroundHover: theme.removeIconBackgroundHover
+        removeIconBackgroundHover: theme.removeIconBackgroundHover,
+        textColor: theme.textColor,
+        textColorHover: theme.textColorHover
       }
     },
     [theme]
@@ -43,62 +50,68 @@ export const Chip: React.FC<ChipProps> = ({
     <Box display={"inline-block"}>
       <Row
         role={"button"}
-        background={colors.background}
+        background={
+          onClickLabel && labelHovering
+            ? colors.backgroundHover
+            : colors.background
+        }
         borderRadius={theme.borderRadius}
         height={theme.height}
         alignItems={"center"}
-        hoverBackground={onClickLabel ? colors.backgroundHover : undefined}
+        overflow={"hidden"}
       >
-        <Clickable onClick={onClickLabel}>
-          <Indent height={theme.height} justifyContent={"center"}>
+        <Nest
+          nest={!!onClickLabel}
+          render={children => (
+            <Clickable onClick={onClickLabel}>{children}</Clickable>
+          )}
+        >
+          <Indent
+            height={theme.height}
+            justifyContent={"center"}
+            onMouseEnter={setLabelHovering}
+            onMouseLeave={setLabelNotHovering}
+          >
             <SmallText
-              hoverUnderline={!!onClickLabel}
               lineHeight={theme.height}
+              color={
+                onClickLabel && labelHovering
+                  ? colors.textColorHover
+                  : colors.textColor
+              }
             >
               {label}
             </SmallText>
           </Indent>
-        </Clickable>
+        </Nest>
         {onClickRemove && (
-          <Clickable onClick={onClickRemove}>
-            <CloseWrapper
-              iconColor={colors.iconColor}
-              iconColorHover={colors.iconColorHover}
-              background={colors.removeIconBackground}
-              backgroundHover={colors.removeIconBackgroundHover}
+          <Clickable onClick={onClickRemove} disableOpacityOnClick>
+            <Box
               borderRadius={theme.borderRadius}
+              background={
+                (labelHovering && onClickLabel) || iconHovering
+                  ? colors.backgroundHover
+                  : colors.background
+              }
+              height={theme.height}
+              alignItems={"center"}
+              justifyContent={"center"}
+              onMouseEnter={setIconHovering}
+              onMouseLeave={setIconNotHovering}
             >
               <Indent num={0.5}>
-                <Icon icon={faTimes} size={10} />
+                <Icon
+                  icon={faTimes}
+                  size={10}
+                  color={
+                    iconHovering ? colors.iconColorHover : colors.iconColor
+                  }
+                />
               </Indent>
-            </CloseWrapper>
+            </Box>
           </Clickable>
         )}
       </Row>
     </Box>
   );
 };
-
-const CloseWrapper = styled(Box)<{
-  iconColor: string;
-  iconColorHover: string;
-  background: string;
-  backgroundHover: string;
-  borderRadius: string;
-}>`
-  height: 24px;
-  border-radius: ${({ borderRadius }) => borderRadius};
-  justify-content: center;
-  align-items: center;
-  background: ${({ background }) => background};
-  color: ${({ iconColor }) => iconColor};
-
-  &:hover {
-    background: ${({ backgroundHover }) => backgroundHover} !important;
-    color: ${({ iconColorHover }) => iconColorHover} !important;
-
-    svg {
-      color: ${({ iconColorHover }) => iconColorHover} !important;
-    }
-  }
-`;

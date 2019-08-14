@@ -72,6 +72,18 @@ $ yarn add @fortawesome/fontawesome-svg-core \
 
 See the `package.json` file for each package to see what dependencies are required.
 
+### Add fonts
+
+The default font is `Open Sans`. You must make sure that it is available in your browser.
+An easy way is to add the following snippet to your applications HTML head.
+
+```
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
+  rel="stylesheet"
+/>
+```
+
 ## Storybook
 
 There is a global storybook, which showcases the components from all packages.
