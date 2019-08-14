@@ -1,9 +1,10 @@
-import styled from "@emotion/styled";
 import {
   Box,
   Clickable,
+  ThemeColorField,
   useBoolean,
-  useOnClickOutside
+  useOnClickOutside,
+  useThemeFields
 } from "@stenajs-webui/core";
 import * as PopperJS from "popper.js";
 import * as React from "react";
@@ -11,42 +12,32 @@ import { ReactNode, useMemo, useRef } from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { Arrow } from "./Arrow";
 
-export type PopupTriggerType = "hover" | "click";
+export type PopoverTriggerType = "hover" | "click";
 
-type TooltipContentFunc = (args: TooltipContentFuncArgs) => ReactNode;
+type PopoverContentFunc = (args: PopoverContentFuncArgs) => ReactNode;
 
-interface TooltipContentFuncArgs {
+interface PopoverContentFuncArgs {
   show: () => void;
   hide: () => void;
 }
 
-interface WithTooltipProps {
+export interface PopoverProps {
   placement?: PopperJS.Placement;
-  trigger?: PopupTriggerType;
-  content?: ReactNode | TooltipContentFunc;
-  children?: ReactNode | TooltipContentFunc;
+  trigger?: PopoverTriggerType;
+  content?: ReactNode | PopoverContentFunc;
+  children?: ReactNode | PopoverContentFunc;
+  background?: ThemeColorField | string;
+  zIndex?: number;
 }
 
-export const PopperBox = styled("div")`
-  background-color: white;
-  border-radius: 3px;
-  border: 1px solid silver;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
-  display: flex;
-  flex-direction: column;
-  margin: 0.4rem;
-  padding: 0.4rem;
-  transition: opacity 0.3s;
-  z-index: 2147483647;
-  ${(props: any) => props.popperStyle};
-`;
-
-export function WithTooltip({
+export function Popover({
   placement,
   trigger = "hover",
   content,
-  children
-}: WithTooltipProps) {
+  children,
+  background = "white",
+  zIndex = 2147483647
+}: PopoverProps) {
   const [showing, show, hide] = useBoolean(false);
   const outerRef = useRef(null);
   useOnClickOutside(outerRef, () => {
@@ -54,6 +45,15 @@ export function WithTooltip({
       hide();
     }
   });
+
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        background: background
+      }
+    },
+    [background]
+  );
 
   const triggerProps = useMemo(() => {
     if (trigger === "hover") {
@@ -85,16 +85,33 @@ export function WithTooltip({
           <Popper placement={placement}>
             {({ ref, style, placement, arrowProps }) => {
               return (
-                <PopperBox ref={ref} style={style}>
+                <Box
+                  zIndex={zIndex}
+                  innerRef={ref}
+                  style={{
+                    ...style,
+                    transition: "opacity 0.3s",
+                    margin: "0.4rem"
+                  }}
+                  background={colors.background}
+                  borderRadius={"4px"}
+                  borderWidth={"1px"}
+                  borderStyle={"solid"}
+                  borderColor={colors.background}
+                  shadow={"modal"}
+                  spacing
+                  indent
+                >
                   {typeof content === "function"
                     ? content({ show, hide })
                     : content}
                   <Arrow
+                    background={colors.background}
                     ref={arrowProps.ref}
                     data-placement={placement}
                     style={arrowProps.style}
                   />
-                </PopperBox>
+                </Box>
               );
             }}
           </Popper>

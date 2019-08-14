@@ -1,21 +1,21 @@
-# WithTooltip
+# Popover
 
-`WithTooltip` can add a tooltip to any component.
+`Popover` can add a popover to any component.
 
 ```
-<WithTooltip
+<Popover
   placement={"bottom"}
   content={<StandardText>Nice content on bottom</StandardText>}
 >
   <StandardText>Hover me</StandardText>
-</WithTooltip>
+</Popover>
 ```
 
-This uses popper.js to position the tooltip.
+This uses popper.js to position the popover.
 
 ## `placement` prop
 
-Specifies which side of `children` the tooltip should be positioned.
+Specifies which side of `children` the popover should be positioned.
 This is optional. Can be `"bottom"`, `"top"`, `"left"` or `"right"`.
 
 ## `trigger` prop
@@ -24,21 +24,21 @@ This is optional. Can be `"bottom"`, `"top"`, `"left"` or `"right"`.
 
 ### Hover trigger
 
-When `hover`, the tooltip is displayed when mouse hovers over `children`.
-When the mouse no longer hovers, the tooltip is hidden again.
+When `hover`, the popover is displayed when mouse hovers over `children`.
+When the mouse no longer hovers, the popover is hidden again.
 
 ### Click trigger
 
-When `click`, the tooltip is displayed when the user clicks on `children`.
+When `click`, the popover is displayed when the user clicks on `children`.
 
 If `children` is a React node, it is automatically wrapped in `Clickable`.
 
 If you are using a component that has it's own click listener (`StandardButton` for example),
-you can use functional children to programmatically show the tooltip.
+you can use functional children to programmatically show the popover.
 
 See `render props` section below.
 
-Whenever using `click` trigger, `WithTooltip` will hide the tooltip when clicking
+Whenever using `click` trigger, `Popover` will hide the popover when clicking
 outside of it.
 
 ## Render props
@@ -47,13 +47,13 @@ Both `content` and `children` props accept render functions.
 
 These functions receive one argument, an object `{ hide, show }`.
 
-You can use `hide` and `show` to programmatically show or hide the tooltip.
+You can use `hide` and `show` to programmatically show or hide the popover.
 
 ```
-<WithTooltip
+<Popover
   content={<StandardText>Nice content on bottom</StandardText>}
   trigger={"click"}
 >
   {({ show }) => <StandardButton onClick={show}>Click me</StandardButton>}
-</WithTooltip>
+</Popover>
 ```

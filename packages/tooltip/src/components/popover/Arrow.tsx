@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Arrow = styled("div")`
+export const Arrow = styled("div")<{ background: string }>`
   height: 1rem;
   position: absolute;
   width: 1rem;
@@ -12,13 +12,15 @@ export const Arrow = styled("div")`
     top: 0;
     width: 1rem;
     &::before {
-      border-color: transparent transparent silver transparent;
+      border-color: transparent transparent ${({ background }) => background}
+        transparent;
       border-width: 0 0.5rem 0.4rem 0.5rem;
       position: absolute;
       top: -1px;
     }
     &::after {
-      border-color: transparent transparent white transparent;
+      border-color: transparent transparent ${({ background }) => background}
+        transparent;
       border-width: 0 0.5rem 0.4rem 0.5rem;
     }
   }
@@ -29,13 +31,15 @@ export const Arrow = styled("div")`
     margin-bottom: -1rem;
     width: 1rem;
     &::before {
-      border-color: silver transparent transparent transparent;
+      border-color: ${({ background }) => background} transparent transparent
+        transparent;
       border-width: 0.4rem 0.5rem 0 0.5rem;
       position: absolute;
       top: 1px;
     }
     &::after {
-      border-color: white transparent transparent transparent;
+      border-color: ${({ background }) => background} transparent transparent
+        transparent;
       border-width: 0.4rem 0.5rem 0 0.5rem;
     }
   }
@@ -45,11 +49,13 @@ export const Arrow = styled("div")`
     margin-left: -0.7rem;
     width: 1rem;
     &::before {
-      border-color: transparent silver transparent transparent;
+      border-color: transparent ${({ background }) => background} transparent
+        transparent;
       border-width: 0.5rem 0.4rem 0.5rem 0;
     }
     &::after {
-      border-color: transparent white transparent transparent;
+      border-color: transparent ${({ background }) => background} transparent
+        transparent;
       border-width: 0.5rem 0.4rem 0.5rem 0;
       left: 6px;
       top: 0;
@@ -61,11 +67,13 @@ export const Arrow = styled("div")`
     right: 0;
     width: 1rem;
     &::before {
-      border-color: transparent transparent transparent silver;
+      border-color: transparent transparent transparent
+        ${({ background }) => background};
       border-width: 0.5rem 0 0.5rem 0.4em;
     }
     &::after {
-      border-color: transparent transparent transparent white;
+      border-color: transparent transparent transparent
+        ${({ background }) => background};
       border-width: 0.5rem 0 0.5rem 0.4em;
       left: 3px;
       top: 0;

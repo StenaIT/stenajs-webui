@@ -1,2 +1,4 @@
-export * from "./components/tooltip/ActionPrompt";
-export * from "./components/tooltip/WithTooltip";
+export * from "./components/popover/ActionPrompt";
+export * from "./components/popover/Popover";
+export * from "./components/tooltip/Tooltip";
+export * from "./components/tooltip/TooltipTheme";
