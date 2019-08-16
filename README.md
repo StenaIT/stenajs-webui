@@ -2,18 +2,34 @@
 
 A design system and React component framework developed at Stena Line.
 
+[CHANGELOG](CHANGELOG.md)
+
 ## Storybook
 
 All components are available to see in Storybook.
 
-https://stenait.github.io/stenajs-webui
+[https://stenait.github.io/stenajs-webui](https://stenait.github.io/stenajs-webui)
+
+## Packages
+
+- [calendar](packages/calender/README.md)
+- [core](packages/core/README.md)
+- [elements](packages/elements/README.md)
+- [forms](packages/forms/README.md)
+- [grid](packages/grid/README.md)
+- [input-mask](packages/input-mask/README.md)
+- [modal](packages/modal/README.md)
+- [panels](packages/panels/README.md)
+- [select](packages/select/README.md)
+- [theme](packages/theme/README.md)
+- [tooltip](packages/tooltip/README.md)
 
 ## Status
 
 This project is very much in development, so there may be bugs.
 If you have any issues, create an issue in Github, or submit a PR with a fix.
 
-See CONTRIBUTING.md for more information on code conventions, etc.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on code conventions, etc.
 
 ## Prerequisites
 
@@ -23,7 +39,7 @@ All documentation uses `yarn`.
 
 `stenajs-webui` is built with `emotion` and `styled-system`.
 
-`stenajs-webui` use Font Awesome for icons. 
+`stenajs-webui` use Font Awesome for icons.
 `@stenajs-webui/core` does not use any icons, but most other packages require Font Awesome.
 
 ### Typescript
@@ -67,7 +83,6 @@ $ yarn add typescript
 ```
 
 `typescript` is required by `create-react-app` when using Typescript, `stenajs-webui` does not require it.
-
 
 If you are also using `@stenajs-webui/elements`, you must also add the following dependencies:
 

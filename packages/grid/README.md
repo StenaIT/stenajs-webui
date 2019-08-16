@@ -1,6 +1,6 @@
 # @stenajs-webui/grid
 
-> 
+This package contain hooks that can help create grids that can be navigated similar to Excel.
 
 ### Hooks only
 

@@ -1,5 +1,4 @@
-# stenajs-webui/rename-me
+# stenajs-webui/input-mask
 
-> 
+This package provide components for input-masking.
 
-Some nice documentation.

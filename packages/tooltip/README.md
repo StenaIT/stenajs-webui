@@ -1,5 +1,3 @@
-# stenajs-webui/rename-me
+# stenajs-webui/tooltip
 
-> 
-
-Some nice documentation.
+This package provides components for adding tooltips and other popover functionality.
