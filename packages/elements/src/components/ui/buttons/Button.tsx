@@ -155,8 +155,6 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     }
   }
 
-  console.log("hepp");
-
   return (
     <Clickable
       onClick={disabled || success || loading ? undefined : onClick}
