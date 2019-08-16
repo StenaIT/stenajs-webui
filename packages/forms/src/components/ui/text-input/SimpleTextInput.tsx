@@ -220,19 +220,12 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
           blurMoveAndCancel("down", ev);
         } else if (key === "ArrowRight") {
           if (
-            refToUse.current!.value.length ===
-              refToUse.current!.selectionStart &&
-            refToUse.current!.selectionStart ===
-              refToUse.current!.selectionStart
+            refToUse.current!.value.length === refToUse.current!.selectionStart
           ) {
             blurMoveAndCancel("right", ev);
           }
         } else if (key === "ArrowLeft") {
-          if (
-            refToUse.current!.selectionStart === 0 &&
-            refToUse.current!.selectionStart ===
-              refToUse.current!.selectionStart
-          ) {
+          if (refToUse.current!.selectionStart === 0) {
             blurMoveAndCancel("left", ev);
           }
         }
