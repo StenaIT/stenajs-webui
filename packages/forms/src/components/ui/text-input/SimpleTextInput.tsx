@@ -179,7 +179,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
         );
       }
     }
-  }, []);
+  }, [moveCursorToEndOnMount, refToUse, selectAllOnMount]);
 
   const blurMoveAndCancel = useCallback(
     (direction: MoveDirection, e: KeyboardEvent<HTMLInputElement>) => {
@@ -240,7 +240,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
         onKeyDown(ev);
       }
     },
-    [refToUse, onKeyDown, blurMoveAndCancel]
+    [onEsc, onMove, onKeyDown, refToUse, onEnter, blurMoveAndCancel]
   );
 
   const onBlurHandler: FocusEventHandler<HTMLInputElement> = ev => {

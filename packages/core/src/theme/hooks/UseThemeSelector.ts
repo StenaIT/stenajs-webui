@@ -15,6 +15,7 @@ export const useThemeSelector = <T>(
   deps: DependencyList | undefined
 ) => {
   const theme = useTheme();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const memoizedSelector = useMemo(() => fn, deps);
   return useMemo(() => memoizedSelector(theme), [theme, memoizedSelector]);
 };
@@ -35,6 +36,7 @@ export const useThemeFields = <TFields extends ThemeSelectorFields>(
   deps: DependencyList
 ): TFields => {
   const theme = useTheme();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fields = useMemo(() => themeFields, deps);
 
   return useMemo(() => {

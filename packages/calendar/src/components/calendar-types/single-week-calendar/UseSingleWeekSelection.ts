@@ -14,16 +14,22 @@ export const useSingleWeekSelection = <T>({
   value,
   statePerMonth
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const onClickDay = useCallback(day => {
-    if (onChange) {
-      onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
-    }
-  }, []);
-  const onClickWeek = useCallback(week => {
-    if (onChange) {
-      onChange(getWeekStringFromWeekData(week));
-    }
-  }, []);
+  const onClickDay = useCallback(
+    day => {
+      if (onChange) {
+        onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
+      }
+    },
+    [onChange]
+  );
+  const onClickWeek = useCallback(
+    week => {
+      if (onChange) {
+        onChange(getWeekStringFromWeekData(week));
+      }
+    },
+    [onChange]
+  );
 
   const statePerMonthWithSelection = useMemo(() => {
     const weekData = getWeekDataFromWeekString(value);
