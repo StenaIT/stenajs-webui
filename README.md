@@ -12,7 +12,7 @@ All components are available to see in Storybook.
 
 ## Packages
 
-- [calendar](packages/calender/README.md)
+- [calendar](packages/calendar/README.md)
 - [core](packages/core/README.md)
 - [elements](packages/elements/README.md)
 - [forms](packages/forms/README.md)
