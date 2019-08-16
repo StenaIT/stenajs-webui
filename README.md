@@ -2,6 +2,10 @@
 
 A design system and React component framework developed at Stena Line.
 
+## Storybook
+
+All components are available to see in Storybook.
+
 https://stenait.github.io/stenajs-webui
 
 ## Status
