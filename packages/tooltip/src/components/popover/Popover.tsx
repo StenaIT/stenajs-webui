@@ -27,6 +27,7 @@ export interface PopoverProps {
   content?: ReactNode | PopoverContentFunc;
   children?: ReactNode | PopoverContentFunc;
   background?: ThemeColorField | string;
+  disableCloseOnClickOutside?: boolean;
   zIndex?: number;
 }
 
@@ -36,12 +37,13 @@ export function Popover({
   content,
   children,
   background = "white",
-  zIndex = 2147483647
+  zIndex = 2147483647,
+  disableCloseOnClickOutside
 }: PopoverProps) {
   const [showing, show, hide] = useBoolean(false);
   const outerRef = useRef(null);
   useOnClickOutside(outerRef, () => {
-    if (trigger === "click") {
+    if (trigger === "click" && !disableCloseOnClickOutside) {
       hide();
     }
   });
