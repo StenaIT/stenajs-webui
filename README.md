@@ -97,6 +97,7 @@ See the `package.json` file for each package to see what dependencies are requir
 ### Add fonts
 
 The default font is `Open Sans`. You must make sure that it is available in your browser.
+
 An easy way to make it work is to add the following snippet to your applications HTML head.
 
 ```
