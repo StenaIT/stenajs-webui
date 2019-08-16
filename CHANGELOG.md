@@ -2,6 +2,11 @@
 
 #### Next release
 
+* Add first version of `@stenajs-webui/tooltip`.
+* Add `WithTooltip` component.
+* Add `MultiDateCalendar` component. User can select range as well as toggle individual dates.
+* Add standardized sizes to `Progress`, `small`, `normal`, `large`.
+* `Progress` `size` prop now sets height (previously only set width).
 * `recompose` is no longer a dependency on any of the packages.
 * `calendar` package has been refactored and no longer depends on `recompose`.
 * Clickable forwards DOM attribute props, such as id and className.

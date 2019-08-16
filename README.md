@@ -2,6 +2,12 @@
 
 A design system and React component framework developed at Stena Line.
 
+## Storybook
+
+All components are available to see in Storybook.
+
+https://stenait.github.io/stenajs-webui
+
 ## Status
 
 This project is very much in development, so there may be bugs.
@@ -62,6 +68,7 @@ $ yarn add typescript
 
 `typescript` is required by `create-react-app` when using Typescript, `stenajs-webui` does not require it.
 
+
 If you are also using `@stenajs-webui/elements`, you must also add the following dependencies:
 
 ```
@@ -82,19 +89,4 @@ An easy way to make it work is to add the following snippet to your applications
   href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
   rel="stylesheet"
 />
-```
-
-## Storybook
-
-There is a global storybook, which showcases the components from all packages.
-
-https://stenait.github.io/stenajs-webui
-
-You can start it locally:
-
-```
-$ cd <repo-root>/
-$ yarn
-$ yarn lerna link
-$ yarn start-storybook
 ```

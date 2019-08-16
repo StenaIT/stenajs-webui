@@ -10,6 +10,8 @@ $ yarn build-all
 
 ## Developing using story-book
 
+First, build the library.
+
 Terminal 1
 ```
 $ yarn start-storybook
