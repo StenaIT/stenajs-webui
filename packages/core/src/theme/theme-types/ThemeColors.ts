@@ -8,6 +8,7 @@ export interface ThemeColors {
   disabledTextLight: string;
   disabledBackground: string;
   interactionBgPrimary: string;
+  interactionBgHover: string;
   white: string;
   separator: string;
   separatorLight: string;
