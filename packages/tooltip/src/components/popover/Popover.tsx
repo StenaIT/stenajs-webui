@@ -37,7 +37,7 @@ export function Popover({
   content,
   children,
   background = "white",
-  zIndex = 2147483647,
+  zIndex,
   disableCloseOnClickOutside
 }: PopoverProps) {
   const [showing, show, hide] = useBoolean(false);
