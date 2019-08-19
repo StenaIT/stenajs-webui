@@ -2,6 +2,10 @@
 
 #### Next release
 
+* Nothing yet.
+
+#### 0.0.33
+
 * Add first version of `@stenajs-webui/tooltip`.
 * Add `WithTooltip` component.
 * Add `MultiDateCalendar` component. User can select range as well as toggle individual dates.
