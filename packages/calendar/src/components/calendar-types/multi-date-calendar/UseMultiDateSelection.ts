@@ -71,7 +71,7 @@ export const useMultiDateSelection = <T>({
         }
       }
     },
-    [onChange]
+    [onChange, onClickDayRange, value]
   );
   const statePerMonthWithSelectedDate = useMemo(() => {
     return addHighlighting(statePerMonth, value);

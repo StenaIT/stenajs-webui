@@ -11,12 +11,14 @@ export interface SeparatorLineProps {
   width?: string;
 }
 
-const SeparatorLineComponent = styled.hr<{
+interface SeparatorLineComponentProps {
   color: string;
   vertical?: boolean;
   size?: string;
   width?: string;
-}>`
+}
+
+const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
   display: flex;
   background-color: ${props => props.color};
   border: 0;

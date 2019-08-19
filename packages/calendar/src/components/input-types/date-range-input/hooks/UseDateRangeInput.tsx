@@ -43,7 +43,7 @@ export const useDateRangeInput = (
         setTimeout(() => setShowingCalendar(false), 150);
       }
     },
-    [onChange, focusedInput, setShowingFocusHighlight, setShowingCalendar]
+    [onChange, focusedInput, value.endDate]
   );
 
   const setEndDate = useCallback(
@@ -56,7 +56,7 @@ export const useDateRangeInput = (
         setTimeout(() => setShowingCalendar(false), 150);
       }
     },
-    [onChange, value, setShowingFocusHighlight, setShowingCalendar]
+    [onChange, focusedInput, value.startDate]
   );
 
   const onSelectDateRange = useCallback(

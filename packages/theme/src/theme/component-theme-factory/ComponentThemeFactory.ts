@@ -42,25 +42,25 @@ export const createFlatButtonTheme = createThemeFactory<ButtonTheme>(
   defaultFlatButtonTheme
 );
 
-export const createButtonTheme = createThemeFactory(<ButtonTheme>(
+export const createButtonTheme = createThemeFactory<ButtonTheme>(
   defaultButtonTheme
-));
+);
 
-export const createStandardButtonTheme = createThemeFactory(<ButtonTheme>(
+export const createStandardButtonTheme = createThemeFactory<ButtonTheme>(
   defaultStandardButtonTheme
-));
+);
 
-export const createSmallButtonTheme = createThemeFactory(<ButtonTheme>(
+export const createSmallButtonTheme = createThemeFactory<ButtonTheme>(
   defaultSmallButtonTheme
-));
+);
 
-export const createStandardTextInputTheme = createThemeFactory(<
+export const createStandardTextInputTheme = createThemeFactory<
   StandardTextInputTheme
->defaultStandardTextInputTheme);
+>(defaultStandardTextInputTheme);
 
-export const createNumericTextInputTheme = createThemeFactory(<
+export const createNumericTextInputTheme = createThemeFactory<
   NumericTextInputTheme
->defaultNumericTextInputTheme);
+>(defaultNumericTextInputTheme);
 
 export const createDateInputTheme = createThemeFactory<DateInputTheme>(
   defaultDateInputTheme
@@ -78,6 +78,6 @@ export const createSwitchTheme = createThemeFactory<SwitchTheme>(
   defaultSwitchTheme
 );
 
-export const createRadioButtonTheme = createThemeFactory(<RadioButtonTheme>(
+export const createRadioButtonTheme = createThemeFactory<RadioButtonTheme>(
   defaultRadioButtonTheme
-));
+);

@@ -26,8 +26,6 @@ export const formatHours = (hours: string): string => {
     default:
       throw new Error("Invalid hour string");
   }
-
-  return hours;
 };
 
 export const formatMinutes = (minutes: string): string => {
@@ -53,7 +51,6 @@ export const formatMinutes = (minutes: string): string => {
     default:
       throw new Error("Invalid minute string");
   }
-  return minutes;
 };
 
 export const formatTimeString = (time: string): FormatTimeStringResult => {
