@@ -1,4 +1,5 @@
-export * from "./components/ui/progress/Progress";
+export * from "./components/ui/spinner/Spinner";
+export * from "./components/ui/spinner/InputSpinner";
 export { ButtonProps } from "./components/ui/buttons/Button";
 export * from "./components/ui/buttons/ButtonTheme";
 export * from "./components/ui/buttons/FlatButton";

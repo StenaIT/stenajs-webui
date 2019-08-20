@@ -1,5 +1,5 @@
 import { Space, StandardText } from "@stenajs-webui/core";
-import { Progress } from "@stenajs-webui/elements";
+import { Spinner } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Box } from "@stenajs-webui/core";
 
@@ -12,7 +12,7 @@ export const LoadingPanel: React.FC<LoadingPanelProps> = ({
 }) => {
   return (
     <Box alignItems={"center"}>
-      <Progress />
+      <Spinner />
       <Space num={4} />
       <StandardText>{text}</StandardText>
     </Box>
