@@ -1,21 +1,16 @@
-import { ThemeColorField, ThemeFontSizeField } from "@stenajs-webui/core";
+import { ThemeColorField } from "@stenajs-webui/core";
 import { BorderColorProperty, BorderStyleProperty } from "csstype";
+import { SimpleTextInputTheme } from "./SimpleTextInputTheme";
 
-export interface StandardTextInputTheme {
-  backgroundColor: ThemeColorField | string;
-  backgroundColorDisabled: ThemeColorField | string;
-  backgroundColorInvalid: ThemeColorField | string;
+export interface StandardTextInputTheme extends SimpleTextInputTheme {
   borderRadius: string;
   borderColor: ThemeColorField | BorderColorProperty;
   borderColorFocused: ThemeColorField | string;
   borderStyle: BorderStyleProperty;
   borderWidth: number;
-  fontSize: ThemeFontSizeField | string;
-  height: string;
   paddingLeft: string;
   paddingRight: string;
   iconSize: number;
-  textColor: ThemeColorField | string;
 }
 
 export const defaultStandardTextInputTheme: StandardTextInputTheme = {
@@ -27,12 +22,16 @@ export const defaultStandardTextInputTheme: StandardTextInputTheme = {
   borderColorFocused: "inputBorderFocused",
   borderStyle: "solid",
   borderWidth: 1,
+  fontFamily: "input",
   fontSize: "input",
   height: "34px",
+  iconSize: 13,
   paddingLeft: "8px",
   paddingRight: "8px",
-  iconSize: 13,
-  textColor: "primaryText"
+  placeholderColor: "separator",
+  textColor: "primaryText",
+  textColorDisabled: "disabledText",
+  textColorInvalid: "primaryText"
 };
 
 export const defaultStandardTextInputThemeDark: StandardTextInputTheme = {
@@ -44,10 +43,14 @@ export const defaultStandardTextInputThemeDark: StandardTextInputTheme = {
   borderColorFocused: "white",
   borderStyle: "solid",
   borderWidth: 1,
+  fontFamily: "input",
   fontSize: "input",
   height: "34px",
+  iconSize: 13,
   paddingLeft: "8px",
   paddingRight: "8px",
-  iconSize: 13,
-  textColor: "white"
+  placeholderColor: "separator",
+  textColor: "white",
+  textColorDisabled: "disabledText",
+  textColorInvalid: "white"
 };
