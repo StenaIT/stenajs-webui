@@ -33,7 +33,7 @@ export const defaultCheckboxTheme: CheckboxTheme = {
   backgroundColorIndeterminate: "primaryText",
   backgroundColorNotChecked: "white",
   backgroundColorNotCheckedHover: "white",
-  backgroundColorDisabled: "#f1f1f1",
+  backgroundColorDisabled: "disabledBackground",
   borderColorNotChecked: "primaryText",
   borderColorNotCheckedHover: "primaryText",
   borderColorDisabled: "transparent",
