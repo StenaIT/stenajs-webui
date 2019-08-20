@@ -1,7 +1,3 @@
-# stenajs-webui/core
+# stenajs-webui/theme
 
-> 
-
-The core library for @stenajs-webui.
-
-All other packages depend on core.
+This package contains methods that help create themes for components.

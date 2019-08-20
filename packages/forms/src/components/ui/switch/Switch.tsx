@@ -38,9 +38,10 @@ interface WithThemeFields {
   };
 }
 
-const Back = styled("div")<
-  Required<Pick<SwitchProps, "value" | "disabled" | "theme">> & WithThemeFields
->`
+type BackProps = Required<Pick<SwitchProps, "value" | "disabled" | "theme">> &
+  WithThemeFields;
+
+const Back = styled("div")<BackProps>`
   cursor: ${({ disabled }) => (disabled ? "inherit" : "pointer")};
   width: ${({ theme }) => theme.width}px;
   height: ${({ theme }) => theme.height}px;
@@ -58,9 +59,10 @@ const Back = styled("div")<
   }
 `;
 
-const Front = styled("div")<
-  Required<Pick<SwitchProps, "disabled" | "value" | "theme">> & WithThemeFields
->`
+type FrontProps = Required<Pick<SwitchProps, "disabled" | "value" | "theme">> &
+  WithThemeFields;
+
+const Front = styled("div")<FrontProps>`
   background-color: ${({ value, disabled, themeFields }) =>
     disabled
       ? themeFields.colors.iconBackgroundColorDisabled
@@ -77,9 +79,9 @@ const Front = styled("div")<
   width: ${({ theme }) => theme.height - 4}px; 
 `;
 
-const IconWrapper = styled("div")<
-  Required<Pick<SwitchProps, "value" | "theme">>
->`
+type IconWrapperProps = Required<Pick<SwitchProps, "value" | "theme">>;
+
+const IconWrapper = styled("div")<IconWrapperProps>`
   align-items: center;
   display: flex;
   height: ${({ theme }) => theme.height - 4}px;

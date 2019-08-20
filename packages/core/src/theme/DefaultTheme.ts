@@ -11,6 +11,7 @@ export const defaultTheme: Theme = {
     navBarBgButtonText: "#ffffff",
     navBarBgButtonTextFaded: "#b1bbc0",
     interactionBgPrimary: "#605988",
+    interactionBgHover: "#544e77",
     disabledText: "#b6b6b6",
     disabledTextLight: "#dddddd",
     disabledBackground: "#F3F3F5",
@@ -43,7 +44,7 @@ export const defaultTheme: Theme = {
   },
   fontWeights: {
     bold: 600,
-    standard: 300,
+    standard: 400,
     light: 100
   },
   fonts: {

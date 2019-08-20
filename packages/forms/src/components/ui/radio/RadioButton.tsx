@@ -85,7 +85,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         }
       }
     },
-    [disabled, onChange]
+    [disabled, onChange, onValueChange]
   );
 
   return (

@@ -64,7 +64,6 @@ export const Clickable: React.FC<ClickableProps> = ({
   disablePointer,
   opacityOnHover,
   innerRef,
-  style,
   disabled,
   children,
   ...restProps

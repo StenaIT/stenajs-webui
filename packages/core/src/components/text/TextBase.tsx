@@ -13,6 +13,8 @@ import {
   FontSizeProps,
   fontWeight,
   FontWeightProps,
+  lineHeight,
+  LineHeightProps,
   textAlign,
   TextAlignProps
 } from "styled-system";
@@ -25,6 +27,7 @@ import { Omit } from "../../types/Omit";
 export interface TextProps
   extends TextThemeProps,
     TextBasePropsBase,
+    LineHeightProps,
     Omit<SpanProps, "color"> {}
 
 export interface TextThemeProps {
@@ -60,6 +63,7 @@ interface TextBaseInternalProps {
 type StyledSystemProps = FontWeightProps &
   FontFamilyProps &
   FontSizeProps &
+  LineHeightProps &
   TextAlignProps;
 
 const excludedProps = [
@@ -73,7 +77,7 @@ const excludedProps = [
 const isExcludedWebuiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
 
-const SpanWithHover = styled("span", {
+export const TextBase = styled("span", {
   shouldForwardProp: propName =>
     isExcludedWebuiProp(propName) ? false : isPropValid(propName)
 })<TextBaseProps>`
@@ -81,6 +85,7 @@ const SpanWithHover = styled("span", {
   ${fontSize};
   ${fontFamily};
   ${fontWeight};
+  ${lineHeight};
   ${textAlign};
   user-select: ${({ userSelect }) => userSelect};
   text-decoration: ${({ textDecoration }) => textDecoration};
@@ -91,5 +96,3 @@ const SpanWithHover = styled("span", {
       hoverUnderline ? "text-decoration: underline;" : ""};
   }
 `;
-
-export const TextBase = SpanWithHover;

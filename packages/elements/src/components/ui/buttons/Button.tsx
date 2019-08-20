@@ -160,6 +160,10 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
       onClick={disabled || success || loading ? undefined : onClick}
       opacityOnHover
       disabled={disabled || success || loading}
+      style={{
+        borderRadius: buttonTheme.borderRadius,
+        backgroundColor: bgColor
+      }}
     >
       <Box
         borderRadius={buttonTheme.borderRadius}
