@@ -14,17 +14,6 @@ import {
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
 import {
-  CalendarTheme,
-  defaultCalendarTheme
-} from "../../calendar/CalendarTheme";
-import {
-  DateTextInputTheme,
-  defaultDateTextInputTheme
-} from "./DateTextInputTheme";
-import { SingleDateCalendarProps } from "../calendar/features/SingleDateSelection";
-import { SingleDateCalendar } from "../calendar/SingleDateCalendar";
-import { CalendarPopupBox } from "./CalendarPopupBox";
-import {
   DateTextInputTheme,
   defaultDateTextInputTheme
 } from "./DateTextInputTheme";

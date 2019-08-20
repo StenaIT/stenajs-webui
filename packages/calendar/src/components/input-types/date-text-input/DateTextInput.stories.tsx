@@ -79,18 +79,6 @@ storiesOf("calendar/Input/DateTextInput", module)
     ))
   )
   .add(
-    "with background color",
-    withState<DateTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<DateTextInputState> }) => (
-      <DateTextInput
-        backgroundColor={color("Background", "#f0f060")}
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
-    ))
-  )
-  .add(
     "custom calendar props",
     withState<DateTextInputState>({
       value: undefined
@@ -115,8 +103,12 @@ storiesOf("calendar/Input/DateTextInput", module)
         onValueChange={value => store.set({ value })}
         theme={createDateTextInputTheme({
           textInput: createStandardTextInputTheme({
-            backgroundColor: "lightgoldenrodyellow",
-            backgroundColorInvalid: "lightcoral"
+            backgroundColor: color("textInput-backgroundColor", "#fafad2"),
+            backgroundColorInvalid: color(
+              "textInput-backgroundColorInvalid",
+              "#f08080"
+            ),
+            textColor: color("textInput-textColor", "#1b2e47")
           })
         })}
       />

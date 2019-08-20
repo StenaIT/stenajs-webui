@@ -2,7 +2,7 @@
 
 #### Next release
 
-* Add prop invalid to `StandardTextInput`, `SimpleTextInput`, `DateTextInput` and `TimeTextInput`
+* Change theme prop for `DateTextInput`.
 
 #### 0.0.33
 
