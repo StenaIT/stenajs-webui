@@ -8,14 +8,17 @@ import { Box } from "@stenajs-webui/core";
 storiesOf("elements/Spinner", module)
   .add("standard", () => (
     <Column>
-      <StandardText>Large</StandardText>
+      <StandardText>size=large</StandardText>
       <Spinner size={"large"} />
       <Space num={4} />
-      <StandardText>Normal</StandardText>
+      <StandardText>size=normal</StandardText>
       <Spinner size={"normal"} />
       <Space num={4} />
-      <StandardText>Small</StandardText>
+      <StandardText>size=small</StandardText>
       <Spinner size={"small"} />
+      <Space num={4} />
+      <StandardText>size=tiny</StandardText>
+      <Spinner size={"tiny"} />
       <Space num={4} />
     </Column>
   ))

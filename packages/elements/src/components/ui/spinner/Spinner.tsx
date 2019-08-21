@@ -13,7 +13,8 @@ export interface SpinnerProps {
 const sizes = {
   large: "78px",
   normal: "54px",
-  small: "20px"
+  small: "34px",
+  tiny: "20px"
 };
 
 const rotator = keyframes`
@@ -67,42 +68,49 @@ const dash = keyframes`
   }
 `;
 
-export const Spinner: React.FC<SpinnerProps> = ({
-  size = "normal",
-  inverted,
-  color
-}) => {
-  const sizeToUse = (sizes[size] as string | undefined) || size;
-  return (
-    <ClassNames>
-      {({ css }) => {
-        const activeColorKeyframes = !inverted ? colors : colorsInverted;
+export const Spinner: React.FC<SpinnerProps> = React.memo(
+  ({ size = "normal", inverted, color }) => {
+    const sizeToUse = (sizes[size] as string | undefined) || size;
+    return (
+      <ClassNames>
+        {({ css }) => {
+          const activeColorKeyframes = !inverted ? colors : colorsInverted;
 
-        return (
-          <SpinnerSvg
-            className={css`
-              width: ${sizeToUse};
-              height: ${sizeToUse};
-              animation: ${rotator} 1.4s linear infinite;
+          const classNameBase = css`
+            width: ${sizeToUse};
+            height: ${sizeToUse};
+            animation: ${rotator} 1.4s linear infinite;
 
-              .spinner-large_svg__path {
-                stroke-dasharray: 187;
-                stroke-dashoffset: 0;
-                stroke-width: 6;
-                stroke-linecap: round;
-                transform-origin: center;
-                ${color
-                  ? `stroke: ${color};
-                animation: ${dash} 1.4s ease-in-out infinite;
-                `
-                  : `animation: ${dash} 1.4s ease-in-out infinite,
+            .spinner-large_svg__path {
+              stroke-dasharray: 187;
+              stroke-dashoffset: 0;
+              stroke-width: 6;
+              stroke-linecap: round;
+              transform-origin: center;
+            }
+          `;
+
+          const classNameColorProp = css`
+            .spinner-large_svg__path {
+              stroke: ${color};
+              animation: ${dash} 1.4s ease-in-out infinite;
+            }
+          `;
+
+          const classNameNoColorProp = css`
+            .spinner-large_svg__path {
+              animation: ${dash} 1.4s ease-in-out infinite,
                 ${activeColorKeyframes} 5.6s ease-in-out infinite;
-                `}
-              }
-            `}
-          />
-        );
-      }}
-    </ClassNames>
-  );
-};
+            }
+          `;
+
+          const className = `${classNameBase} ${
+            color ? classNameColorProp : classNameNoColorProp
+          }`;
+
+          return <SpinnerSvg className={className} />;
+        }}
+      </ClassNames>
+    );
+  }
+);
