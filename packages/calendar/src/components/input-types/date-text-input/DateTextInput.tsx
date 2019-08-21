@@ -63,8 +63,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: theme.textInput.backgroundColor,
-        borderColor: theme.textInput.borderColor
+        backgroundColor: theme.standardTextInput.backgroundColor,
+        borderColor: theme.standardTextInput.borderColor
       }
     },
     []
@@ -111,7 +111,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     <>
       <StandardTextInput
         {...props}
-        theme={theme.textInput}
+        theme={theme.standardTextInput}
         invalid={invalid}
         iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
         onClickLeft={

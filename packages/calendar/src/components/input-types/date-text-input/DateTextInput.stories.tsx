@@ -102,7 +102,7 @@ storiesOf("calendar/Input/DateTextInput", module)
         value={store.state.value}
         onValueChange={value => store.set({ value })}
         theme={createDateTextInputTheme({
-          textInput: createStandardTextInputTheme({
+          standardTextInput: createStandardTextInputTheme({
             backgroundColor: color(
               "Background color for text input",
               "#fafad2"

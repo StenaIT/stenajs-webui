@@ -9,10 +9,10 @@ import {
 
 export interface DateTextInputTheme {
   calendar: CalendarTheme;
-  textInput: StandardTextInputTheme;
+  standardTextInput: StandardTextInputTheme;
 }
 
 export const defaultDateTextInputTheme: DateTextInputTheme = {
   calendar: defaultCalendarTheme,
-  textInput: defaultStandardTextInputTheme
+  standardTextInput: defaultStandardTextInputTheme
 };
