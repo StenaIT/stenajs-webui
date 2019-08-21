@@ -206,7 +206,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   };
 
-  const resolvedBackgroundColor = disabled
+  const activeBackgroundColor = disabled
     ? theme.backgroundColorDisabled
     : invalid
     ? theme.backgroundColorInvalid
@@ -219,7 +219,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 
   return (
     <Box
-      background={resolvedBackgroundColor}
+      background={activeBackgroundColor}
       borderRadius={theme.borderRadius}
       borderColor={activeBorderColor}
       borderStyle={theme.borderStyle}
@@ -243,7 +243,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
         <StyledSimpleTextInputWrapper>
           <SimpleTextInput
             {...inputProps}
-            backgroundColor={resolvedBackgroundColor}
+            backgroundColor={activeBackgroundColor}
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
