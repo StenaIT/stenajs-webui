@@ -1,6 +1,9 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { DateTextInput } from "@stenajs-webui/calendar";
-import { createDateTextInputTheme } from "@stenajs-webui/theme";
+import {
+  createDateTextInputTheme,
+  createStandardTextInputTheme
+} from "@stenajs-webui/theme";
 import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -76,18 +79,6 @@ storiesOf("calendar/Input/DateTextInput", module)
     ))
   )
   .add(
-    "with background color",
-    withState<DateTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<DateTextInputState> }) => (
-      <DateTextInput
-        backgroundColor={color("Background", "#f0f060")}
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
-    ))
-  )
-  .add(
     "custom calendar props",
     withState<DateTextInputState>({
       value: undefined
@@ -110,9 +101,18 @@ storiesOf("calendar/Input/DateTextInput", module)
       <DateTextInput
         value={store.state.value}
         onValueChange={value => store.set({ value })}
-        textInputTheme={createDateTextInputTheme({
-          backgroundColor: "lightgoldenrodyellow",
-          backgroundColorInvalidDate: "lightcoral"
+        theme={createDateTextInputTheme({
+          standardTextInput: createStandardTextInputTheme({
+            backgroundColor: color(
+              "Background color for text input",
+              "#fafad2"
+            ),
+            backgroundColorInvalid: color(
+              "Background color for text input when invalid",
+              "#f08080"
+            ),
+            textColor: color("Text color for text input", "#1b2e47")
+          })
         })}
       />
     ))

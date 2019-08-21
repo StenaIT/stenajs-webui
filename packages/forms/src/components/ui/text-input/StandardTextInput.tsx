@@ -25,10 +25,14 @@ import {
 
 // TODO Move to theme?
 
-const StyledSimpleTextInput = styled(SimpleTextInput)`
-  border: 0;
-  :focus {
-    outline: 0;
+const StyledSimpleTextInputWrapper = styled("div")`
+  width: 100%;
+
+  input {
+    border: 0;
+    :focus {
+      outline: 0;
+    }
   }
 `;
 
@@ -202,7 +206,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     setFocused(true);
   };
 
-  const bgColorTheme = disabled
+  const activeBackgroundColor = disabled
     ? theme.backgroundColorDisabled
     : invalid
     ? theme.backgroundColorInvalid
@@ -215,7 +219,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
 
   return (
     <Box
-      background={bgColorTheme}
+      background={activeBackgroundColor}
       borderRadius={theme.borderRadius}
       borderColor={activeBorderColor}
       borderStyle={theme.borderStyle}
@@ -236,15 +240,14 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
           theme={theme}
           onClick={onClickLeft}
         />
-        <div style={{ width: "100%" }}>
-          <StyledSimpleTextInput
+        <StyledSimpleTextInputWrapper>
+          <SimpleTextInput
             {...inputProps}
+            backgroundColor={activeBackgroundColor}
             onChange={onChangeHandler}
             onBlur={onBlurHandler}
             onFocus={onFocusHandler}
-            backgroundColor={bgColorTheme}
             disabled={disabled}
-            fontSize={theme.fontSize}
             height={theme.height}
             style={{
               paddingLeft: theme.paddingLeft,
@@ -252,9 +255,11 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
               boxSizing: "border-box",
               ...inputProps.style
             }}
+            theme={theme}
+            textColor={textColor}
             width={"100%"}
           />
-        </div>
+        </StyledSimpleTextInputWrapper>
         <TextInputIcon
           content={contentRight}
           disableContentPadding={disableContentPadding}
