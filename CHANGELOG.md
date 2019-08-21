@@ -2,7 +2,7 @@
 
 #### Next release
 
-* Change theme prop for `DateTextInput`.
+* Merge the two individual theme prop for calendar and text input into one common theme prop for `DateTextInput`.
 
 #### 0.0.33
 

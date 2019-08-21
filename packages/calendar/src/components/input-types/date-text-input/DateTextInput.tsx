@@ -64,8 +64,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     {
       colors: {
         backgroundColor: theme.textInput.backgroundColor,
-        borderColor: theme.textInput.borderColor,
-        backgroundColorInvalidDate: theme.textInput.backgroundColorInvalid
+        borderColor: theme.textInput.borderColor
       }
     },
     []
