@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 type SlideFrom = "left" | "right";
 
 export interface DrawerProps {
   drawerRef?: React.Ref<HTMLDivElement>;
+  /* Whether the drawer should use a portal, and where it should attach */
+  portalTarget?: HTMLElement | null;
   isOpen: boolean;
   slideFrom?: SlideFrom;
   width?: string;
@@ -39,17 +42,35 @@ export const Drawer: React.FC<DrawerProps> = ({
   children,
   drawerRef,
   isOpen,
+  portalTarget,
   slideFrom = "left",
   width = "400px",
   zIndex = 1000
-}) => (
-  <DrawerWrapper
-    ref={drawerRef}
-    isOpen={isOpen}
-    slideFrom={slideFrom}
-    width={width}
-    zIndex={zIndex}
-  >
-    {children}
-  </DrawerWrapper>
-);
+}) => {
+  if (portalTarget) {
+    console.log("her");
+    return ReactDOM.createPortal(
+      <DrawerWrapper
+        ref={drawerRef}
+        isOpen={isOpen}
+        slideFrom={slideFrom}
+        width={width}
+        zIndex={zIndex}
+      >
+        {children}
+      </DrawerWrapper>,
+      portalTarget
+    );
+  }
+  return (
+    <DrawerWrapper
+      ref={drawerRef}
+      isOpen={isOpen}
+      slideFrom={slideFrom}
+      width={width}
+      zIndex={zIndex}
+    >
+      {children}
+    </DrawerWrapper>
+  );
+};
