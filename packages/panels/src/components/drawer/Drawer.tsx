@@ -14,6 +14,7 @@ export interface DrawerProps {
   /**
    * Which direction the drawer will appear from.
    * @default left
+   * @param {String('left'|'right')}
    */
   slideFrom?: SlideFrom;
   /**
@@ -33,7 +34,7 @@ type DrawerWrapperProps = Pick<
   "isOpen" | "slideFrom" | "width" | "zIndex"
 >;
 
-export const DrawerWrapper = styled("div")<DrawerWrapperProps>`
+const DrawerWrapper = styled("div")<DrawerWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
