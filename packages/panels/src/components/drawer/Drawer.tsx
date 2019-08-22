@@ -5,12 +5,26 @@ import * as ReactDOM from "react-dom";
 export type SlideFrom = "left" | "right";
 
 export interface DrawerProps {
+  /** Ref to use for drawer. */
   innerRef?: React.Ref<HTMLDivElement>;
-  /* Whether the drawer should use a portal, and where it should attach */
+
   portalTarget?: HTMLElement | null;
+  /* Whether the drawer is open or not. */
   isOpen: boolean;
+  /**
+   * Which direction the drawer will appear from.
+   * @default left
+   */
   slideFrom?: SlideFrom;
+  /**
+   * The width of the drawer.
+   * @default 400px
+   */
   width?: string;
+  /**
+   * The zIndex for the drawer.
+   * @default 1000
+   */
   zIndex?: number;
 }
 
