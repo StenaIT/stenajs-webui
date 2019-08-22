@@ -1,5 +1,5 @@
 import { Column, Row, Space, StandardText } from "@stenajs-webui/core";
-import { FlatButton, Progress, StandardButton } from "@stenajs-webui/elements";
+import { FlatButton, Spinner, StandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
 
 interface ActionPromptProps {
@@ -40,7 +40,7 @@ export const ActionPrompt: React.FC<ActionPromptProps> = ({
           height={"100%"}
           position={"absolute"}
         >
-          <Progress size={"small"} />
+          <Spinner size={"small"} />
         </Row>
       )}
     </Column>

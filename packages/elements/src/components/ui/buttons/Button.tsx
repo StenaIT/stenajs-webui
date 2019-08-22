@@ -11,7 +11,7 @@ import {
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
-import { Progress } from "../progress/Progress";
+import { InputSpinner } from "../spinner/InputSpinner";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
 import { useButtonStateTheme } from "./hooks/UseBottonStateTheme";
 
@@ -109,9 +109,9 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     }
   } else if (loading) {
     list.push(
-      <Progress
+      <InputSpinner
         size={buttonTheme.loadingSpinnerSize}
-        trackColor={loadingSpinnerColor}
+        color={loadingSpinnerColor}
       />
     );
     if (loadingLabel) {
