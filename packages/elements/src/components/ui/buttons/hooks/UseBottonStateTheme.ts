@@ -6,7 +6,7 @@ export const useButtonStateTheme = (
   textColor: ThemeColorField | string | undefined,
   disabled: boolean
 ) => {
-  const { colors, fontSizes, fonts } = useThemeFields(
+  const { colors, fontSizes, fontWeights, fonts } = useThemeFields(
     {
       colors: {
         textColor: textColor || buttonTheme.textColor,
@@ -23,6 +23,9 @@ export const useButtonStateTheme = (
       },
       fonts: {
         font: buttonTheme.font
+      },
+      fontWeights: {
+        fontWeight: buttonTheme.fontWeight
       }
     },
     [buttonTheme]
@@ -35,6 +38,7 @@ export const useButtonStateTheme = (
     loadingSpinnerColor: colors.loadingSpinnerColor,
     loadingTextColor: colors.loadingTextColor,
     fontSize: fontSizes.fontSize,
-    font: fonts.font
+    font: fonts.font,
+    fontWeight: fontWeights.fontWeight
   };
 };
