@@ -47,7 +47,7 @@ export const defaultButtonTheme: ButtonTheme = {
   bgColorDisabled: "disabledText",
   font: "buttons",
   fontSize: "normal",
-  fontWeight: "normal",
+  fontWeight: "600",
   borderRadius: "3px",
   numSpacing: 2,
   height: "40px",
