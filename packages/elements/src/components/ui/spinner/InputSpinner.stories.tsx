@@ -1,4 +1,3 @@
-import { Column, Space, StandardText } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
 import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";

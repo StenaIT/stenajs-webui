@@ -1,7 +1,8 @@
 import {
   ThemeColorField,
   ThemeFontField,
-  ThemeFontSizeField
+  ThemeFontSizeField,
+  ThemeFontWeightField
 } from "@stenajs-webui/core";
 
 export interface ButtonTheme {
@@ -17,6 +18,8 @@ export interface ButtonTheme {
   font: ThemeFontField | string;
   /** The font of the button. */
   fontSize: ThemeFontSizeField | string;
+  /** The font weight of the button. */
+  fontWeight: ThemeFontWeightField | string;
   /** Border radius of the button. */
   borderRadius: string | undefined;
   /** Size of spacing between edges, icons and text. */
@@ -44,6 +47,7 @@ export const defaultButtonTheme: ButtonTheme = {
   bgColorDisabled: "disabledText",
   font: "buttons",
   fontSize: "normal",
+  fontWeight: "600",
   borderRadius: "3px",
   numSpacing: 2,
   height: "40px",
