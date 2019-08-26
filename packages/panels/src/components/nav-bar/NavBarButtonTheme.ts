@@ -9,6 +9,8 @@ export interface NavBarButtonTheme extends ButtonTheme {
 export const defaultNavBarButtonTheme: NavBarButtonTheme = {
   ...defaultFlatButtonTheme,
   height: "50px",
+  fontSize: "16px",
+  fontWeight: "normal",
   textColorSelected: "navBarBgButtonText",
   textColorNotSelected: "navBarBgButtonTextFaded"
 };

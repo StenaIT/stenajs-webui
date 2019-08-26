@@ -1,4 +1,5 @@
 import { DependencyList, useMemo } from "react";
+import { ThemeFontWeightField, ThemeFontWeights } from "../..";
 import { Theme } from "../Theme";
 import { ThemeColorField, ThemeColors } from "../theme-types/ThemeColors";
 import { ThemeFontField, ThemeFonts } from "../theme-types/ThemeFonts";
@@ -24,10 +25,12 @@ type ThemeFieldRecord<T> = Record<string, T | string | undefined>;
 type ColorFields = ThemeFieldRecord<ThemeColorField>;
 type FontFields = ThemeFieldRecord<ThemeFontField>;
 type FontSizesFields = ThemeFieldRecord<ThemeFontSizeField>;
+type FontWeightFields = ThemeFieldRecord<ThemeFontWeightField>;
 
 export type ThemeSelectorFields = {
   colors?: ColorFields;
   fontSizes?: FontFields;
+  fontWeights?: FontWeightFields;
   fonts?: FontSizesFields;
 };
 
@@ -46,16 +49,25 @@ export const useThemeFields = <TFields extends ThemeSelectorFields>(
       theme.fontSizes,
       fields.fontSizes
     );
+    const fontWeights = getFieldsFromPartOfTheme(
+      theme.fontWeights,
+      fields.fontWeights
+    );
     return {
       colors,
       fonts,
-      fontSizes
+      fontSizes,
+      fontWeights
     } as TFields;
   }, [theme, fields]);
 };
 
 const getFieldsFromPartOfTheme = <
-  TThemePart extends ThemeColors | ThemeFonts | ThemeFontSizes,
+  TThemePart extends
+    | ThemeColors
+    | ThemeFonts
+    | ThemeFontSizes
+    | ThemeFontWeights,
   TFields extends ThemeFieldRecord<keyof TThemePart>
 >(
   themePart: TThemePart,

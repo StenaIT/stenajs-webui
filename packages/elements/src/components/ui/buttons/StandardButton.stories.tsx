@@ -1,13 +1,29 @@
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { StandardButton } from "@stenajs-webui/elements";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import {
+  defaultStandardButtonTheme,
+  StandardButton
+} from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
+const customTheme = {
+  ...defaultStandardButtonTheme,
+  fontSize: "16px",
+  fontWeight: "300"
+};
+
 storiesOf("elements/Buttons/StandardButton", module)
   .add("default", () => (
     <StandardButton label={"Submit"} onClick={action("Button clicked")} />
+  ))
+  .add("custom theme", () => (
+    <StandardButton
+      label={"Submit"}
+      onClick={action("Button clicked")}
+      buttonTheme={customTheme}
+    />
   ))
   .add("disabled", () => (
     <StandardButton

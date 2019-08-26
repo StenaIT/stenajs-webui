@@ -56,6 +56,7 @@ export interface ButtonTextProps {
   color: string;
   fontFamily: string;
   fontSize: string;
+  fontWeight: string | number;
 }
 
 export const Button: React.FC<ButtonProps> = React.memo(props => {
@@ -83,7 +84,8 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     loadingSpinnerColor,
     loadingTextColor,
     font,
-    fontSize
+    fontSize,
+    fontWeight
   } = useButtonStateTheme(buttonTheme, props.textColor, disabled);
 
   const list = [];
@@ -102,6 +104,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
           color={successTextColor}
           fontSize={fontSize}
           fontFamily={font}
+          fontWeight={fontWeight}
         >
           {successLabel}
         </ButtonText>
@@ -120,6 +123,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
           color={loadingTextColor}
           fontSize={fontSize}
           fontFamily={font}
+          fontWeight={fontWeight}
         >
           {loadingLabel}
         </ButtonText>
@@ -138,7 +142,12 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     }
     if (label) {
       list.push(
-        <ButtonText color={textColor} fontSize={fontSize} fontFamily={font}>
+        <ButtonText
+          color={textColor}
+          fontSize={fontSize}
+          fontFamily={font}
+          fontWeight={fontWeight}
+        >
           {label}
         </ButtonText>
       );
@@ -198,7 +207,7 @@ const ButtonText = styled.span<ButtonTextProps>`
   font-size: ${({ fontSize }) => fontSize};
   color: ${({ color }) => color};
   font-family: ${({ fontFamily }) => fontFamily};
-  font-weight: 600;
+  font-weight: ${({ fontWeight }) => fontWeight};
   letter-spacing: 1px;
   margin-top: -2px;
 `;
