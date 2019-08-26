@@ -46,7 +46,7 @@ const DrawerWrapper = styled("div")<DrawerWrapperProps>`
   left: ${props => (props.slideFrom === "left" ? 0 : "auto")};
   height: 100%;
   width: ${({ width }) => width};
-  transition: 0.6s all;
+  transition: 0.25s all;
   box-shadow: ${({ isOpen }) =>
     isOpen ? "2px 2px 20px 0 rgba(0, 0, 0, 0.15)" : "none"};
   z-index: ${({ zIndex }) => zIndex};
