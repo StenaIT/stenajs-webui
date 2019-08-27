@@ -2,11 +2,14 @@
 
 #### Next release
 
+* Add first version of `@stenajs-webui/redux`.
+* Add `committed` feature for Redux.
 * Add `Drawer`
 * Update design of `Spinner`.
 * Add `InputSpinner` which is used in buttons and input fields.
 * Merge the two individual theme prop for calendar and text input into one common theme prop for `DateTextInput`.
 * Add `fontWeight` to `ButtonTheme`.
+* Remove letter spacing in buttons.
 
 #### 0.0.33
 
