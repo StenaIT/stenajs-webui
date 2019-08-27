@@ -8,7 +8,7 @@ All hook names are prefixed with `use`, as per React conventions.
 
 ### useArraySet
 
-Creates methods for adding, removing and toggling element in list.
+Creates methods for adding, removing and toggling element in list, while preventing duplicates.
 Item is only added if not already in list.
 Takes `list` and `setList` methods as arguments.
 
