@@ -33,6 +33,8 @@
     "date-fns": "2.0.0-alpha.27"
   },
   "peerDependencies": {
+    "@emotion/core": ">=10.0.10",
+    "@emotion/styled": ">=10.0.10",
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@types/react": ">=16.8.19",
@@ -42,6 +44,8 @@
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
     "@fortawesome/fontawesome-svg-core": "1.2.18",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@types/jest": "^23.1.5",

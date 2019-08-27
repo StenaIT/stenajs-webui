@@ -2,6 +2,7 @@
 
 #### Next release
 
+* Add `Drawer`
 * Add `useArraySet` hook.
 * Update design of `Spinner`.
 * Add `InputSpinner` which is used in buttons and input fields.

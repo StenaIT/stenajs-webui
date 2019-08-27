@@ -208,7 +208,6 @@ const ButtonText = styled.span<ButtonTextProps>`
   color: ${({ color }) => color};
   font-family: ${({ fontFamily }) => fontFamily};
   font-weight: ${({ fontWeight }) => fontWeight};
-  letter-spacing: 1px;
   margin-top: -2px;
 `;
 
