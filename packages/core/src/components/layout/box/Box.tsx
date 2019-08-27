@@ -59,6 +59,7 @@ import {
 import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
 import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
 import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
+import { DivProps } from "../../../types/ElementProps";
 
 type StyledSystemProps = AlignItemsProps &
   BorderRadiusProps &
@@ -85,10 +86,7 @@ type FlexBoxProps = BoxProps;
 
 type ShadowType = keyof ThemeShadows;
 
-type DivProps = JSX.IntrinsicElements["div"];
-
 export interface BoxProps extends StyledSystemProps, DivProps {
-  innerRef?: React.Ref<HTMLDivElement>;
   /**
    * Sets the text color of the box.
    */

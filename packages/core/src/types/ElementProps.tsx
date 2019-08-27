@@ -9,12 +9,12 @@ export interface InputProps<T = any>
 
 export interface DivProps extends Omit<JSX.IntrinsicElements["div"], "ref"> {
   /** Input ref to use. If omitted, an internal ref will be used. */
-  innerRef?: RefObject<HTMLInputElement>;
+  innerRef?: RefObject<HTMLDivElement>;
 }
 
 export interface SpanProps extends Omit<JSX.IntrinsicElements["span"], "ref"> {
   /** Input ref to use. If omitted, an internal ref will be used. */
-  innerRef?: RefObject<HTMLInputElement>;
+  innerRef?: RefObject<HTMLSpanElement>;
 }
 
 export interface ButtonProps
