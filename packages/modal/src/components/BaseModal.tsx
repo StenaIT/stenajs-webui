@@ -1,5 +1,9 @@
 import { ClassNames, keyframes } from "@emotion/core";
-import { useThemeSelector } from "@stenajs-webui/core";
+import {
+  ThemeColorField,
+  useThemeFields,
+  useThemeSelector
+} from "@stenajs-webui/core";
 import * as React from "react";
 import * as ReactModal from "react-modal";
 
@@ -24,16 +28,25 @@ const fadeIn = keyframes`
 
 export interface BaseModalProps extends ReactModal.Props {
   width?: string;
+  background?: ThemeColorField | string;
 }
 
 export const BaseModal: React.FC<BaseModalProps> = ({
   width = "900px",
+  background = "primaryBg",
   ...props
 }) => {
-  const { modalShadow, background } = useThemeSelector(
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        background
+      }
+    },
+    [background]
+  );
+  const { modalShadow } = useThemeSelector(
     theme => ({
-      modalShadow: theme.shadows.modal,
-      background: theme.colors.primaryBg
+      modalShadow: theme.shadows.modal
     }),
     []
   );
@@ -73,7 +86,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 
             border-radius: 4px;
 
-            background-color: ${background};
+            background: ${colors.background};
             box-shadow: ${modalShadow};
 
             width: ${width};
