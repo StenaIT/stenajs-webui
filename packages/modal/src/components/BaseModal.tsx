@@ -6,6 +6,8 @@ import {
 } from "@stenajs-webui/core";
 import * as React from "react";
 import * as ReactModal from "react-modal";
+import { useThemeFields } from "../../../core/src/theme/hooks/UseThemeSelector";
+import { ThemeColorField } from "../../../core/src/theme/theme-types/ThemeColors";
 
 const modalAnimateIn = keyframes`
   0% {
