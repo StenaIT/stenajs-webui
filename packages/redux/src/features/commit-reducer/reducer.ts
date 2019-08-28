@@ -1,22 +1,18 @@
-import { CommittedAction } from "./actions";
+import { CommitReducerAction } from "./actions";
+import { CommitReducerState } from "./state";
 
-export interface CommittedState<TState> {
-  workspace: TState;
-  committed: TState;
-}
-
-export const createCommittedReducer = <TState>(
+export const createCommitReducer = <TState>(
   id: string,
-  initialState: CommittedState<TState>
+  initialState: CommitReducerState<TState>
 ) => (
-  state: CommittedState<TState> = initialState,
-  action: CommittedAction<TState>
-): CommittedState<TState> => {
+  state: CommitReducerState<TState> = initialState,
+  action: CommitReducerAction<TState>
+): CommitReducerState<TState> => {
   if (action.id !== id) {
     return state;
   }
   switch (action.type) {
-    case `COMMITTED.SET_VALUES`: {
+    case `COMMIT_REDUCER.SET_VALUES`: {
       const { values } = action;
       return {
         ...state,
@@ -27,7 +23,7 @@ export const createCommittedReducer = <TState>(
       };
     }
 
-    case `COMMITTED.CLEAR`: {
+    case `COMMIT_REDUCER.CLEAR`: {
       return {
         ...state,
         workspace: {
@@ -36,7 +32,7 @@ export const createCommittedReducer = <TState>(
       };
     }
 
-    case `COMMITTED.COMMIT_VALUES`: {
+    case `COMMIT_REDUCER.COMMIT_VALUES`: {
       return {
         ...state,
         committed: {
