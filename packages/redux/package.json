@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/redux",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -26,7 +26,6 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
   "peerDependencies": {
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
