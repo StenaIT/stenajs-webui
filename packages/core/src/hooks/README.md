@@ -6,6 +6,21 @@ All hook names are prefixed with `use`, as per React conventions.
 
 ## Hooks
 
+### useArraySet
+
+Creates methods for adding, removing and toggling element in list, while preventing duplicates.
+Item is only added if not already in list.
+Takes `list` and `setList` methods as arguments.
+
+Returns: [add, remove, toggle]
+
+```js
+const [list, setList] = useState(['world']);
+const {add, remove, toggle} = useArraySet(list, setList);
+toggle('hello');
+// Adds 'hello' to the list, if it doesn't already exist.
+```
+
 ### useBoolean
 
 Wraps a state, but returns setTrue, setFalse, toggle methods, instead of normal setter.
