@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import {
   Box,
   Clickable,
@@ -31,6 +32,10 @@ export interface PopoverProps {
   onShow?: () => void;
   onHide?: () => void;
 }
+
+const FunctionChildrenWrapper = styled("div")<{ trigger: PopoverTriggerType }>`
+  ${({ trigger }) => (trigger === "click" ? "cursor: pointer;" : "")}
+`;
 
 export function Popover({
   placement,
@@ -91,7 +96,9 @@ export function Popover({
           {({ ref }) => (
             <div ref={ref}>
               {typeof children === "function" ? (
-                children({ show, hide })
+                <FunctionChildrenWrapper trigger={trigger}>
+                  {children({ show, hide })}
+                </FunctionChildrenWrapper>
               ) : trigger === "click" ? (
                 <Clickable onClick={show}>{children}</Clickable>
               ) : (
