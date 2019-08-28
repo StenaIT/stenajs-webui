@@ -20,6 +20,7 @@ All components are available to see in Storybook.
 - [input-mask](packages/input-mask/README.md)
 - [modal](packages/modal/README.md)
 - [panels](packages/panels/README.md)
+- [redux](packages/redux/README.md)
 - [select](packages/select/README.md)
 - [theme](packages/theme/README.md)
 - [tooltip](packages/tooltip/README.md)
