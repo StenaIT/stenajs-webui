@@ -30,9 +30,14 @@ export const timeTableFilterReducer = createCommitReducer<
 #### Actions
 
 ```js
-export const timeTableActions = createCommitReducerActions<TimeTableFilterState>(
+export const { setValues, commitValues, clearValues } = createCommitReducerActions<TimeTableFilterState>(
   "timeTableFilter"
 );
+
+// In component
+const dispatch = useDispatch();
+dispatch(setValues({ email: 'tomte@nordpolen.se' }));
+
 ```
 
 * The first argument is the id of the reducer.
@@ -40,10 +45,14 @@ export const timeTableActions = createCommitReducerActions<TimeTableFilterState>
 #### Selectors
 
 ```js
-export const timeTableSelectors = createCommitReducerSelectors<
+export const { getWorkspaceValues, getCommittedValues } = createCommitReducerSelectors<
   StoreState,
   TimeTableFilterState
 >(state => state.timeTableFilter, "timeTableFilter");
+
+// In component
+const filterValues = useSelector(getWorkspaceValues);
+
 ```
 
 * First argument is the id of the reducer.

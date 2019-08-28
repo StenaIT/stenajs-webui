@@ -3,7 +3,7 @@
 #### Next release
 
 * Add first version of `@stenajs-webui/redux`.
-* Add `committed` feature for Redux.
+* Add `commit-reducer` feature for Redux.
 * Add `Drawer`
 * Update design of `Spinner`.
 * Add `InputSpinner` which is used in buttons and input fields.
