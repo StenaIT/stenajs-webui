@@ -93,12 +93,12 @@
   },
   "bundlesize": [
     {
-      "path": "./packages/core/dist/*.js",
-      "maxSize": "7 kB"
-    },
-    {
       "path": "./packages/calendar/dist/*.js",
       "maxSize": "15 kB"
+    },
+    {
+      "path": "./packages/core/dist/*.js",
+      "maxSize": "7 kB"
     },
     {
       "path": "./packages/elements/dist/*.js",
@@ -113,8 +113,20 @@
       "maxSize": "6 kB"
     },
     {
+      "path": "./packages/input-mask/dist/*.js",
+      "maxSize": "6 kB"
+    },
+    {
+      "path": "./packages/modal/dist/*.js",
+      "maxSize": "6 kB"
+    },
+    {
       "path": "./packages/panels/dist/*.js",
       "maxSize": "6 kB"
+    },
+    {
+      "path": "./packages/redux/dist/*.js",
+      "maxSize": "3 kB"
     },
     {
       "path": "./packages/select/dist/*.js",
@@ -123,6 +135,10 @@
     {
       "path": "./packages/theme/dist/*.js",
       "maxSize": "2 kB"
+    },
+    {
+      "path": "./packages/tooltip/dist/*.js",
+      "maxSize": "3 kB"
     }
   ],
   "husky": {
