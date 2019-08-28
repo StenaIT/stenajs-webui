@@ -2,6 +2,10 @@
 
 #### Next release
 
+* Soon...
+
+#### 0.0.34
+
 * Add first version of `@stenajs-webui/redux`.
 * Add `commit-reducer` feature for Redux.
 * Add `Drawer`
