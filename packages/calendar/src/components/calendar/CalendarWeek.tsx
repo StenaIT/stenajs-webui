@@ -43,13 +43,19 @@ export function CalendarWeek<T>({
 }: CalendarWeekProps<T>) {
   return (
     <tr key={week.weekNumber}>
-      <td>
-        {renderWeekNumber ? (
-          renderWeekNumber(week, theme, onClickWeek)
-        ) : (
-          <WeekNumberCell week={week} onClickWeek={onClickWeek} theme={theme} />
-        )}
-      </td>
+      {theme.WeekNumber.show && (
+        <td>
+          {renderWeekNumber ? (
+            renderWeekNumber(week, theme, onClickWeek)
+          ) : (
+            <WeekNumberCell
+              week={week}
+              onClickWeek={onClickWeek}
+              theme={theme}
+            />
+          )}
+        </td>
+      )}
       {week.days.map(day => (
         <DayComponent
           key={day.dateString}

@@ -2,7 +2,7 @@
 
 #### Next release
 
-* Soon...
+* Add `show` option to `WeekNumber` config used in `CalenderMonth`
 
 #### 0.0.34
 

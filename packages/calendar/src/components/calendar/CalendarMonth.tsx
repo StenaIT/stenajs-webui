@@ -57,6 +57,8 @@ export function CalendarMonth<T>({
     [theme]
   );
 
+  const showWeekNumber = theme.WeekNumber.show;
+
   return (
     <>
       <Box alignItems={"center"}>
@@ -68,7 +70,7 @@ export function CalendarMonth<T>({
                   {headerLeftContent}
                 </Box>
               </td>
-              <td colSpan={6}>
+              <td colSpan={showWeekNumber ? 6 : 5}>
                 <Row justifyContent={"center"} alignItems={"center"}>
                   <StandardText
                     color={colors.headerTextColor}
@@ -85,16 +87,20 @@ export function CalendarMonth<T>({
               </td>
             </tr>
             <tr>
-              <td>
-                <Box
-                  width={theme.width}
-                  height={theme.height}
-                  justifyContent={"center"}
-                  alignItems={"center"}
-                >
-                  <StandardText color={colors.weekDayTextColor}>W</StandardText>
-                </Box>
-              </td>
+              {showWeekNumber && (
+                <td>
+                  <Box
+                    width={theme.width}
+                    height={theme.height}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                  >
+                    <StandardText color={colors.weekDayTextColor}>
+                      W
+                    </StandardText>
+                  </Box>
+                </td>
+              )}
               {month.weeks[0].days.map((day: DayData) => (
                 <td key={day.name}>
                   {renderWeekDay ? (

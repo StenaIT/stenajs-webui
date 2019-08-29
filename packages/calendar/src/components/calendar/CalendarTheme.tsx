@@ -24,6 +24,7 @@ export interface CalendarTheme<TUserData = {}> {
 export interface WeekNumberTheme {
   backgroundColor: ThemeColorField | string;
   textColor?: ThemeColorField | string;
+  show?: boolean;
 }
 
 export interface SwitchButtonTheme extends ButtonTheme {
@@ -166,7 +167,8 @@ export const defaultCalendarTheme: CalendarTheme = {
   width: "40px",
   height: "40px",
   WeekNumber: {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    show: true
   },
   WeekDay: {
     textColor: "separator"
@@ -198,7 +200,8 @@ export const extranetCalendarTheme: CalendarTheme = {
   width: "37px",
   height: "37px",
   WeekNumber: {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    show: true
   },
   WeekDay: {
     textColor: "separator"
