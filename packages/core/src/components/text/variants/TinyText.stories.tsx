@@ -1,11 +1,27 @@
 import { TinyText } from "@stenajs-webui/core";
-import { text } from "@storybook/addon-knobs";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { defaultTheme } from "../../../theme/DefaultTheme";
 
 storiesOf("core/Text/TinyText", module)
   .add("standard", () => (
-    <TinyText>{text("Text", "That is some nice text, right there!")}</TinyText>
+    <TinyText
+      color={select("Color", Object.keys(defaultTheme.colors), "primaryText")}
+    >
+      {text("Text", "That is some nice text, right there!")}
+    </TinyText>
+  ))
+  .add("hover color", () => (
+    <TinyText
+      hoverColor={select(
+        "Color",
+        Object.keys(defaultTheme.colors),
+        "successGreen"
+      )}
+    >
+      {text("Text", "That is some nice text, right there!")}
+    </TinyText>
   ))
   .add("with underline", () => (
     <TinyText textDecoration={"underline"}>

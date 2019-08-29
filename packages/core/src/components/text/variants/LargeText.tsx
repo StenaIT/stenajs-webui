@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useTextTheme } from "../hooks/UseTextTheme";
 import { TextBase, TextProps } from "../TextBase";
 
 export const LargeText: React.FC<TextProps> = ({
@@ -8,6 +7,12 @@ export const LargeText: React.FC<TextProps> = ({
   fontWeight = "standard",
   ...textProps
 }) => {
-  const themeTextProps = useTextTheme({ fontSize, fontWeight, fontFamily });
-  return <TextBase {...themeTextProps} {...textProps} />;
+  return (
+    <TextBase
+      {...textProps}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      fontWeight={fontWeight}
+    />
+  );
 };

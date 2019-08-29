@@ -1,11 +1,25 @@
 import { SmallText } from "@stenajs-webui/core";
-import { text } from "@storybook/addon-knobs";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { defaultTheme } from "../../../theme/DefaultTheme";
 
 storiesOf("core/Text/SmallText", module)
   .add("standard", () => (
-    <SmallText>
+    <SmallText
+      color={select("Color", Object.keys(defaultTheme.colors), "primaryText")}
+    >
+      {text("Text", "That is some nice text, right there!")}
+    </SmallText>
+  ))
+  .add("hover color", () => (
+    <SmallText
+      hoverColor={select(
+        "Color",
+        Object.keys(defaultTheme.colors),
+        "successGreen"
+      )}
+    >
       {text("Text", "That is some nice text, right there!")}
     </SmallText>
   ))
