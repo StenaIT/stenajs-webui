@@ -1,8 +1,7 @@
-import { LargeText } from "@stenajs-webui/core";
+import { defaultTheme, LargeText } from "@stenajs-webui/core";
 import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { defaultTheme } from "../../../theme/DefaultTheme";
 
 storiesOf("core/Text/LargeText", module)
   .add("standard", () => (
