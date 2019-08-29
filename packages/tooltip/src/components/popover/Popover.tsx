@@ -28,6 +28,7 @@ export interface PopoverProps {
   children?: ReactNode | PopoverContentFunc;
   background?: ThemeColorField | string;
   disableCloseOnClickOutside?: boolean;
+  disableArrow?: boolean;
   zIndex?: number;
   onShow?: () => void;
   onHide?: () => void;
@@ -46,7 +47,8 @@ export function Popover({
   zIndex,
   onShow,
   onHide,
-  disableCloseOnClickOutside
+  disableCloseOnClickOutside,
+  disableArrow
 }: PopoverProps) {
   const [showing, setShowing] = useState(false);
   const outerRef = useRef(null);
@@ -116,8 +118,7 @@ export function Popover({
                   innerRef={ref}
                   style={{
                     ...style,
-                    transition: "opacity 0.3s",
-                    margin: "0.4rem"
+                    transition: "opacity 0.3s"
                   }}
                   background={colors.background}
                   borderRadius={"4px"}
@@ -125,18 +126,18 @@ export function Popover({
                   borderStyle={"solid"}
                   borderColor={colors.background}
                   shadow={"modal"}
-                  spacing
-                  indent
                 >
                   {typeof content === "function"
                     ? content({ show, hide })
                     : content}
-                  <Arrow
-                    background={colors.background}
-                    ref={arrowProps.ref}
-                    data-placement={placement}
-                    style={arrowProps.style}
-                  />
+                  {!disableArrow && (
+                    <Arrow
+                      background={colors.background}
+                      ref={arrowProps.ref}
+                      data-placement={placement}
+                      style={arrowProps.style}
+                    />
+                  )}
                 </Box>
               );
             }}
