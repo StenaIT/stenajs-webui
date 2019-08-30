@@ -16,7 +16,9 @@ export const useButtonStateTheme = (
         successIconColor: buttonTheme.successIconColor,
         successTextColor: buttonTheme.successTextColor,
         loadingSpinnerColor: buttonTheme.loadingSpinnerColor,
-        loadingTextColor: buttonTheme.loadingTextColor
+        loadingTextColor: buttonTheme.loadingTextColor,
+        borderColor: buttonTheme.borderColor,
+        borderColorDisabled: buttonTheme.borderColorDisabled
       },
       fontSizes: {
         fontSize: buttonTheme.fontSize
@@ -39,6 +41,7 @@ export const useButtonStateTheme = (
     loadingTextColor: colors.loadingTextColor,
     fontSize: fontSizes.fontSize,
     font: fonts.font,
-    fontWeight: fontWeights.fontWeight
+    fontWeight: fontWeights.fontWeight,
+    borderColor: disabled ? colors.borderColorDisabled : colors.borderColor
   };
 };
