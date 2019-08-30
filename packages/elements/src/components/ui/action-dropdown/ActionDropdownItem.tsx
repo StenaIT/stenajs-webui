@@ -9,31 +9,37 @@ import {
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
+import { ActionDropdownContext } from "./ActionDropdownContext";
 import {
   ActionDropdownTheme,
   defaultActionDropdownTheme
 } from "./ActionDropdownTheme";
 
-interface ActionDropdownItemProps {
+export interface ActionDropdownItemProps {
   label: string;
   text?: string;
   theme?: ActionDropdownTheme;
   icon?: IconDefinition;
+  iconRight?: IconDefinition;
   disabled?: boolean;
+  disableCloseOnClick?: boolean;
   onClick?: () => void;
 }
 
 export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   label,
   icon,
+  iconRight,
   text,
   theme = defaultActionDropdownTheme,
   disabled,
   onClick,
-  children
+  children,
+  disableCloseOnClick
 }) => {
+  const { close } = useContext(ActionDropdownContext);
   const ref = useRef(null);
   const mouseIsOver = useMouseIsEntered(ref);
   const { colors } = useThemeFields(
@@ -63,8 +69,21 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
     },
     [theme, disabled, mouseIsOver]
   );
+
+  const onClickHandler = () => {
+    if (close && !disableCloseOnClick) {
+      close();
+    }
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <Clickable onClick={disabled ? undefined : onClick} disableFocusHighlight>
+    <Clickable
+      onClick={disabled ? undefined : onClickHandler}
+      disableFocusHighlight
+    >
       <Row
         height={theme.itemHeight}
         indent
@@ -87,6 +106,12 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
           <>
             <Space />
             {children}
+          </>
+        )}
+        {iconRight && (
+          <>
+            <Space />
+            <Icon icon={iconRight} size={14} color={colors.itemLabelColor} />
           </>
         )}
       </Row>

@@ -2,11 +2,16 @@ import { ThemeColorField } from "@stenajs-webui/core";
 
 export interface ActionDropdownTheme {
   background?: ThemeColorField | string;
+  backgroundDisabled?: ThemeColorField | string;
   textColor?: ThemeColorField | string;
+  textColorDisabled?: ThemeColorField | string;
   borderColor?: ThemeColorField | string;
   borderColorHover?: ThemeColorField | string;
   borderRadius?: string;
   dropdownBackground?: ThemeColorField | string;
+  expandIconColor: ThemeColorField | string;
+  expandIconColorDisabled: ThemeColorField | string;
+  expandIconColorHover: ThemeColorField | string;
   iconColor: ThemeColorField | string;
   iconColorDisabled: ThemeColorField | string;
   iconColorHover: ThemeColorField | string;
@@ -25,11 +30,16 @@ export interface ActionDropdownTheme {
 
 export const defaultActionDropdownTheme: ActionDropdownTheme = {
   background: "white",
+  backgroundDisabled: "disabledBackground",
   textColor: "primaryText",
+  textColorDisabled: "disabledText",
   borderColor: "inputBorder",
   borderColorHover: "inputBorderFocused",
   borderRadius: "4px",
   dropdownBackground: "white",
+  expandIconColor: "disabledText",
+  expandIconColorDisabled: "disabledText",
+  expandIconColorHover: "interactionBgPrimary",
   iconColor: "primaryText",
   iconColorDisabled: "disabledText",
   iconColorHover: "white",
