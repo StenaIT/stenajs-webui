@@ -1,5 +1,3 @@
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { StandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Calendar } from "../../components/calendar/Calendar";
@@ -53,7 +51,7 @@ export function CalendarWithMonthSwitcher<T>({
           headerLeftContent={
             <StandardButton
               onClick={prevMonth}
-              leftIcon={faChevronLeft}
+              leftIcon={theme.CalendarMonth.HeaderLeftIcon}
               buttonTheme={theme.CalendarMonth.SwitchButton}
               width={
                 theme.CalendarMonth.SwitchButton &&
@@ -64,7 +62,7 @@ export function CalendarWithMonthSwitcher<T>({
           headerRightContent={
             <StandardButton
               onClick={nextMonth}
-              leftIcon={faChevronRight}
+              leftIcon={theme.CalendarMonth.HeaderRightIcon}
               buttonTheme={theme.CalendarMonth.SwitchButton}
               width={
                 theme.CalendarMonth.SwitchButton &&

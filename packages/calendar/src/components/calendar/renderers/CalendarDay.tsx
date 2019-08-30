@@ -74,7 +74,7 @@ export const CalendarDay = <T extends {}>({
               userData
             )),
           width: "100%",
-          height: "100%"
+          height: theme.height
         }}
       >
         <div

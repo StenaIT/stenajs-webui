@@ -10,6 +10,7 @@ import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
+import { travelCalendarTheme } from "../../calendar/CalendarTheme";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {
@@ -141,4 +142,27 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
         setFocusedInput={focusedInput => store.set({ focusedInput })}
       />
     ))
+  )
+  .add(
+    "travel",
+    withState<State>({
+      startDate: undefined,
+      endDate: undefined,
+      focusedInput: "startDate"
+    })(({ store }: { store: Store<State> }) => (
+      <DateRangeCalendar
+        startDate={store.state.startDate}
+        endDate={store.state.endDate}
+        focusedInput={store.state.focusedInput}
+        setStartDate={startDate => store.set({ startDate })}
+        setEndDate={endDate => store.set({ endDate })}
+        setFocusedInput={focusedInput => store.set({ focusedInput })}
+        defaultHighlights={["disabled"]}
+        theme={travelCalendarTheme}
+        statePerMonth={statePerMonthWithTwoWeeksEnabled}
+      />
+    )),
+    {
+      notes: { markdown }
+    }
   );
