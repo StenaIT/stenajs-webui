@@ -40,9 +40,9 @@ export interface SwitchButtonTheme extends ButtonTheme {
 export interface CalendarMonthTheme {
   headerTextColor?: ThemeColorField | string;
   SwitchButton?: SwitchButtonTheme;
-  CellSpacingPx?: number;
-  HeaderLeftIcon?: IconDefinition;
-  HeaderRightIcon?: IconDefinition;
+  cellSpacingPx?: number;
+  headerLeftIcon?: IconDefinition;
+  headerRightIcon?: IconDefinition;
 }
 
 export interface WeekDayTheme {
@@ -299,8 +299,8 @@ export const defaultCalendarTheme: CalendarTheme = {
       ...defaultButtonTheme,
       width: "40px"
     },
-    HeaderLeftIcon: faChevronLeft,
-    HeaderRightIcon: faChevronRight
+    headerLeftIcon: faChevronLeft,
+    headerRightIcon: faChevronRight
   }
 };
 
@@ -374,7 +374,7 @@ export const travelCalendarTheme: CalendarTheme = {
     })
   },
   CalendarMonth: {
-    CellSpacingPx: 2,
+    cellSpacingPx: 2,
     SwitchButton: {
       ...defaultButtonTheme,
       bgColor: "##FFFFFF",
@@ -387,8 +387,8 @@ export const travelCalendarTheme: CalendarTheme = {
       borderColor: "#949494",
       borderColorDisabled: "#f4f4f4"
     },
-    HeaderLeftIcon: faArrowLeft,
-    HeaderRightIcon: faArrowRight
+    headerLeftIcon: faArrowLeft,
+    headerRightIcon: faArrowRight
   }
 };
 

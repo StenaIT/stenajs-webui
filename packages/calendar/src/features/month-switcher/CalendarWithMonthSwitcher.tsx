@@ -51,7 +51,7 @@ export function CalendarWithMonthSwitcher<T>({
           headerLeftContent={
             <StandardButton
               onClick={prevMonth}
-              leftIcon={theme.CalendarMonth.HeaderLeftIcon}
+              leftIcon={theme.CalendarMonth.headerLeftIcon}
               buttonTheme={theme.CalendarMonth.SwitchButton}
               width={
                 theme.CalendarMonth.SwitchButton &&
@@ -62,7 +62,7 @@ export function CalendarWithMonthSwitcher<T>({
           headerRightContent={
             <StandardButton
               onClick={nextMonth}
-              leftIcon={theme.CalendarMonth.HeaderRightIcon}
+              leftIcon={theme.CalendarMonth.headerRightIcon}
               buttonTheme={theme.CalendarMonth.SwitchButton}
               width={
                 theme.CalendarMonth.SwitchButton &&
