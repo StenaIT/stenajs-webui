@@ -12,16 +12,13 @@ import * as React from "react";
 import { useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionDropdownContext } from "./ActionDropdownContext";
-import {
-  ActionDropdownTheme,
-  defaultActionDropdownTheme
-} from "./ActionDropdownTheme";
+import { ActionDropdownTheme } from "./ActionDropdownTheme";
 
 export interface ActionDropdownItemProps {
   label: string;
-  text?: string;
-  theme?: ActionDropdownTheme;
+  rightText?: string;
   icon?: IconDefinition;
+  theme?: ActionDropdownTheme;
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
@@ -32,14 +29,15 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   label,
   icon,
   iconRight,
-  text,
-  theme = defaultActionDropdownTheme,
+  rightText,
   disabled,
   onClick,
+  theme: themeFromProps,
   children,
   disableCloseOnClick
 }) => {
-  const { close } = useContext(ActionDropdownContext);
+  const { close, theme: themeFromContext } = useContext(ActionDropdownContext);
+  const theme = themeFromProps || themeFromContext;
   const ref = useRef(null);
   const mouseIsOver = useMouseIsEntered(ref);
   const { colors } = useThemeFields(
@@ -101,7 +99,9 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
           )}
           <StandardText color={colors.itemLabelColor}>{label}</StandardText>
         </Row>
-        {text && <SmallerText color={colors.itemTextColor}>{text}</SmallerText>}
+        {rightText && (
+          <SmallerText color={colors.itemTextColor}>{rightText}</SmallerText>
+        )}
         {children && (
           <>
             <Space />

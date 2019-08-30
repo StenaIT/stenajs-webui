@@ -49,7 +49,11 @@ storiesOf("elements/ActionDropdown", module)
           <Checkbox value={false} />
         </ActionDropdownItem>
         <ActionDropdownSeparator />
-        <ActionDropdownItem label={"Quit"} text={"cmd+q"} onClick={hello} />
+        <ActionDropdownItem
+          label={"Quit"}
+          rightText={"cmd+q"}
+          onClick={hello}
+        />
       </ActionDropdown>
     ),
     {

@@ -58,7 +58,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   const hoverBorder = `1px solid ${colors.borderColorHover}`;
 
   return (
-    <ActionDropdownContext.Provider value={{ open, close }}>
+    <ActionDropdownContext.Provider value={{ open, close, theme }}>
       <Box
         position={"relative"}
         display={"inline-block"}
