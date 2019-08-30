@@ -118,7 +118,8 @@ export function Popover({
                   innerRef={ref}
                   style={{
                     ...style,
-                    transition: "opacity 0.3s"
+                    transition: "opacity 0.3s",
+                    margin: "0.4rem"
                   }}
                   background={colors.background}
                   borderRadius={"4px"}
@@ -126,6 +127,8 @@ export function Popover({
                   borderStyle={"solid"}
                   borderColor={colors.background}
                   shadow={"modal"}
+                  spacing
+                  indent
                 >
                   {typeof content === "function"
                     ? content({ show, hide })
