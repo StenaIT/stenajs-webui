@@ -12,11 +12,12 @@ export const buildDayState = (
       (result: CalendarUserData<DayState>, date: Date) => {
         const isFirstInRange = isSameDay(date, start);
         const isLastInRange = isSameDay(date, end);
-        return addDayStateHighlights(
-          result,
-          date,
-          isFirstInRange || isLastInRange ? ["selected", "range"] : ["range"]
-        );
+        const highlights = isFirstInRange
+          ? ["selected", "selectedStart", "range"]
+          : isLastInRange
+          ? ["selected", "selectedEnd", "range"]
+          : ["range"];
+        return addDayStateHighlights(result, date, highlights);
       },
       statePerMonth
     );
