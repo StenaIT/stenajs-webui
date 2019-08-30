@@ -16,3 +16,4 @@ export * from "./components/ui/toggle-button/ToggleButton";
 export * from "./components/ui/action-dropdown/ActionDropdown";
 export * from "./components/ui/action-dropdown/ActionDropdownItem";
 export * from "./components/ui/action-dropdown/ActionDropdownTheme";
+export * from "./components/ui/action-dropdown/ActionDropdownSeparator";

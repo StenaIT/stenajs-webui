@@ -1,8 +1,15 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Row, StandardText, useThemeFields } from "@stenajs-webui/core";
+import {
+  Clickable,
+  Row,
+  SmallerText,
+  Space,
+  StandardText,
+  useMouseIsEntered,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
-import { Indent } from "../../../../../core/src/components/layout/indent/Indent";
-import { SmallText } from "../../../../../core/src/components/text/variants/SmallText";
+import { useRef } from "react";
 import { Icon } from "../icon/Icon";
 import {
   ActionDropdownTheme,
@@ -14,39 +21,75 @@ interface ActionDropdownItemProps {
   text?: string;
   theme?: ActionDropdownTheme;
   icon?: IconDefinition;
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
 export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   label,
   icon,
   text,
-  theme = defaultActionDropdownTheme
+  theme = defaultActionDropdownTheme,
+  disabled,
+  onClick,
+  children
 }) => {
+  const ref = useRef(null);
+  const mouseIsOver = useMouseIsEntered(ref);
   const { colors } = useThemeFields(
     {
       colors: {
-        textColor: theme.textColor,
-        background: theme.background
+        iconColor: disabled
+          ? theme.iconColorDisabled
+          : mouseIsOver
+          ? theme.iconColorHover
+          : theme.iconColor,
+        itemLabelColor: disabled
+          ? theme.itemLabelColorDisabled
+          : mouseIsOver
+          ? theme.itemLabelColorHover
+          : theme.itemLabelColor,
+        itemTextColor: disabled
+          ? theme.itemTextColorDisabled
+          : mouseIsOver
+          ? theme.itemTextColorHover
+          : theme.itemTextColor,
+        itemBackground: disabled
+          ? theme.itemBackgroundDisabled
+          : mouseIsOver
+          ? theme.itemBackgroundHover
+          : theme.itemBackground
       }
     },
-    [theme]
+    [theme, disabled, mouseIsOver]
   );
   return (
-    <Row
-      height={theme.itemHeight}
-      indent
-      alignItems={"center"}
-      justifyContent={"space-between"}
-    >
-      <Row height={theme.itemHeight} alignItems={"center"}>
-        {icon && (
-          <Indent>
-            <Icon icon={icon} size={16} />
-          </Indent>
+    <Clickable onClick={disabled ? undefined : onClick} disableFocusHighlight>
+      <Row
+        height={theme.itemHeight}
+        indent
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        background={colors.itemBackground}
+        innerRef={ref}
+      >
+        <Row height={theme.itemHeight} alignItems={"center"}>
+          {icon && (
+            <>
+              <Icon icon={icon} size={16} color={colors.iconColor} />
+              <Space />
+            </>
+          )}
+          <StandardText color={colors.itemLabelColor}>{label}</StandardText>
+        </Row>
+        {text && <SmallerText color={colors.itemTextColor}>{text}</SmallerText>}
+        {children && (
+          <>
+            <Space />
+            {children}
+          </>
         )}
-        <StandardText color={colors.textColor}>{label}</StandardText>
-        {text && <SmallText color={colors.textColor}>{label}</SmallText>}
       </Row>
-    </Row>
+    </Clickable>
   );
 };
