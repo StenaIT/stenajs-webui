@@ -3,6 +3,7 @@
 #### Next release
 
 * Add `ActionDropdown` component to `elements`.
+* Add `useMouseIsEntered` hook to `core`.
 
 #### 0.0.35
 
