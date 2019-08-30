@@ -1,14 +1,14 @@
+import styled from "@emotion/styled";
 import {
   Box,
   Clickable,
   ThemeColorField,
-  useBoolean,
   useOnClickOutside,
   useThemeFields
 } from "@stenajs-webui/core";
 import * as PopperJS from "popper.js";
 import * as React from "react";
-import { ReactNode, useMemo, useRef } from "react";
+import { ReactNode, useMemo, useRef, useState } from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { Arrow } from "./Arrow";
 
@@ -29,7 +29,13 @@ export interface PopoverProps {
   background?: ThemeColorField | string;
   disableCloseOnClickOutside?: boolean;
   zIndex?: number;
+  onShow?: () => void;
+  onHide?: () => void;
 }
+
+const FunctionChildrenWrapper = styled("div")<{ trigger: PopoverTriggerType }>`
+  ${({ trigger }) => (trigger === "click" ? "cursor: pointer;" : "")}
+`;
 
 export function Popover({
   placement,
@@ -38,15 +44,31 @@ export function Popover({
   children,
   background = "white",
   zIndex,
+  onShow,
+  onHide,
   disableCloseOnClickOutside
 }: PopoverProps) {
-  const [showing, show, hide] = useBoolean(false);
+  const [showing, setShowing] = useState(false);
   const outerRef = useRef(null);
   useOnClickOutside(outerRef, () => {
     if (trigger === "click" && !disableCloseOnClickOutside) {
       hide();
     }
   });
+
+  const show = () => {
+    setShowing(true);
+    if (onShow) {
+      onShow();
+    }
+  };
+
+  const hide = () => {
+    setShowing(false);
+    if (onHide) {
+      onHide();
+    }
+  };
 
   const { colors } = useThemeFields(
     {
@@ -74,7 +96,9 @@ export function Popover({
           {({ ref }) => (
             <div ref={ref}>
               {typeof children === "function" ? (
-                children({ show, hide })
+                <FunctionChildrenWrapper trigger={trigger}>
+                  {children({ show, hide })}
+                </FunctionChildrenWrapper>
               ) : trigger === "click" ? (
                 <Clickable onClick={show}>{children}</Clickable>
               ) : (
