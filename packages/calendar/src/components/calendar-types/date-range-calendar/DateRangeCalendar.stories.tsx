@@ -10,7 +10,7 @@ import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
-import { travelCalendarTheme } from "../../calendar/CalendarTheme";
+import { travelCalendarTheme } from "@stenajs-webui/calendar";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {

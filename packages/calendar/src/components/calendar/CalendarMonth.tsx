@@ -62,7 +62,7 @@ export function CalendarMonth<T>({
     borderCollapse: "collapse"
   };
 
-  const cellSpacing = theme.CalendarMonth.CellSpacingPx;
+  const cellSpacing = theme.CalendarMonth.cellSpacingPx;
 
   if (cellSpacing && cellSpacing > 0) {
     tableStyle = {
