@@ -1,8 +1,5 @@
 import * as React from "react";
-import { useTextTheme } from "../hooks/UseTextTheme";
 import { TextBase, TextProps } from "../TextBase";
-
-const H1 = TextBase.withComponent("h1");
 
 export const HeaderText: React.FC<TextProps> = ({
   fontSize = "huge",
@@ -10,6 +7,13 @@ export const HeaderText: React.FC<TextProps> = ({
   fontWeight = "standard",
   ...textProps
 }) => {
-  const themeTextProps = useTextTheme({ fontSize, fontWeight, fontFamily });
-  return <H1 {...themeTextProps} {...textProps} />;
+  return (
+    <TextBase
+      {...textProps}
+      element={"h1"}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      fontWeight={fontWeight}
+    />
+  );
 };

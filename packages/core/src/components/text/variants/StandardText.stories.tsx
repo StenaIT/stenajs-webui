@@ -1,11 +1,24 @@
-import { StandardText } from "@stenajs-webui/core";
-import { text } from "@storybook/addon-knobs";
+import { defaultTheme, StandardText } from "@stenajs-webui/core";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("core/Text/StandardText", module)
   .add("standard", () => (
-    <StandardText>
+    <StandardText
+      color={select("Color", Object.keys(defaultTheme.colors), "primaryText")}
+    >
+      {text("Text", "That is some nice text, right there!")}
+    </StandardText>
+  ))
+  .add("hover color", () => (
+    <StandardText
+      hoverColor={select(
+        "Color",
+        Object.keys(defaultTheme.colors),
+        "successGreen"
+      )}
+    >
       {text("Text", "That is some nice text, right there!")}
     </StandardText>
   ))

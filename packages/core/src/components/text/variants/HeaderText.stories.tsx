@@ -1,11 +1,24 @@
-import { HeaderText } from "@stenajs-webui/core";
-import { text } from "@storybook/addon-knobs";
+import { defaultTheme, HeaderText } from "@stenajs-webui/core";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("core/Text/HeaderText", module)
   .add("standard", () => (
-    <HeaderText>
+    <HeaderText
+      color={select("Color", Object.keys(defaultTheme.colors), "primaryText")}
+    >
+      {text("Text", "That is some nice text, right there!")}
+    </HeaderText>
+  ))
+  .add("hover color", () => (
+    <HeaderText
+      hoverColor={select(
+        "Color",
+        Object.keys(defaultTheme.colors),
+        "successGreen"
+      )}
+    >
       {text("Text", "That is some nice text, right there!")}
     </HeaderText>
   ))
