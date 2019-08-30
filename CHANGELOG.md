@@ -3,6 +3,7 @@
 #### Next release
 
 * Add `show` option to `WeekNumber` config used in `CalenderMonth`
+* Add new highlight states to `DayStateHighlight`: `selectedStart` and `selectedEnd`. For compatibility reasons the selected days hove both the old `selected` AND `selectedStart` and/or `selectedEnd` 
 
 #### 0.0.34
 
