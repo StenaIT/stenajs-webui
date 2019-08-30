@@ -85,7 +85,8 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     loadingTextColor,
     font,
     fontSize,
-    fontWeight
+    fontWeight,
+    borderColor
   } = useButtonStateTheme(buttonTheme, props.textColor, disabled);
 
   const list = [];
@@ -171,7 +172,8 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
       disabled={disabled || success || loading}
       style={{
         borderRadius: buttonTheme.borderRadius,
-        backgroundColor: bgColor
+        backgroundColor: bgColor,
+        border: borderColor ? `1px solid ${borderColor}` : undefined
       }}
     >
       <Box

@@ -38,6 +38,10 @@ export interface ButtonTheme {
   loadingSpinnerSize: string;
   /** Color of loading text */
   loadingTextColor: ThemeColorField | string;
+  /** The color of the button border. */
+  borderColor: ThemeColorField | string;
+  /** The color of the button border when disabled. */
+  borderColorDisabled: ThemeColorField | string;
 }
 
 export const defaultButtonTheme: ButtonTheme = {
@@ -56,5 +60,7 @@ export const defaultButtonTheme: ButtonTheme = {
   successIconSize: 20,
   loadingSpinnerColor: "white",
   loadingTextColor: "white",
-  loadingSpinnerSize: "24px"
+  loadingSpinnerSize: "24px",
+  borderColor: "transparent",
+  borderColorDisabled: "transparent"
 };
