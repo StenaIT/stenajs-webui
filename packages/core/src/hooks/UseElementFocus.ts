@@ -1,5 +1,5 @@
+import { RefObject, useCallback, useEffect } from "react";
 import * as ReactDOM from "react-dom";
-import { RefObject, useEffect } from "react";
 import { useBoolean } from "./UseBoolean";
 import { useEventListener } from "./UseEventListener";
 
@@ -19,17 +19,17 @@ export const useElementFocus = <TElement extends HTMLElement>(
   useEventListener(ref, "focus", setIsInFocus);
   useEventListener(ref, "blur", setIsNotInFocus);
 
-  const focus = () => {
+  const focus = useCallback(() => {
     if (ref.current) {
       ref.current.focus();
     }
-  };
+  }, [ref]);
 
-  const blur = () => {
+  const blur = useCallback(() => {
     if (ref.current) {
       ref.current.blur();
     }
-  };
+  }, [ref]);
 
   return { isInFocus, focus, blur };
 };
