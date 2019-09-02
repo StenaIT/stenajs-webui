@@ -2,7 +2,7 @@
 
 #### Next release
 
-* Add `ActionDropdown` component to `elements`.
+* Add `ActionMenu` and `ActionDropdown` component to `elements`.
 * Add `useElementFocus` hook to `core`.
 * Add `useMouseIsEntered` hook to `core`.
 
