@@ -3,7 +3,7 @@ import * as React from "react";
 
 interface ActionDropdownSeparatorProps {}
 
-export const ActionDropdownSeparator: React.FC<
+export const ActionMenuSeparator: React.FC<
   ActionDropdownSeparatorProps
 > = () => {
   return (

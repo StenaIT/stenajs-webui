@@ -199,16 +199,20 @@ const FlexBox = styled("div", {
   ${top};
   ${bottom};
   :hover {
-    background: ${({ hoverBackground }) => hoverBackground};
-    border: ${({ hoverBorder }) => hoverBorder};
+    ${({ hoverBackground }) =>
+      hoverBackground ? `background: ${hoverBackground};` : ""}
+    ${({ hoverBorder }) => (hoverBorder ? `border: ${hoverBorder};` : "")}
   }
   :focus {
-    background: ${({ focusBackground }) => focusBackground};
-    border: ${({ focusBorder }) => focusBorder};
+    ${({ focusBackground }) =>
+      focusBackground ? `background: ${focusBackground};` : ""}
+    ${({ focusBorder }) => (focusBorder ? `border: ${focusBorder};` : "")}
   }
   :focus-within {
-    background: ${({ focusWithinBackground }) => focusWithinBackground};
-    border: ${({ focusWithinBorder }) => focusWithinBorder};
+    ${({ focusWithinBackground }) =>
+      focusWithinBackground ? `background: ${focusWithinBackground};` : ""}
+    ${({ focusWithinBorder }) =>
+      focusWithinBorder ? `border: ${focusWithinBorder};` : ""}
   }
 `;
 

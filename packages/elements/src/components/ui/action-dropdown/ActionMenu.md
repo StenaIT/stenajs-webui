@@ -1,9 +1,46 @@
-# ActionDropdown
+# ActionMenu
 
-This component is a dropdown with buttons, as opposed to `select`
-which lets the user select one of several options.
+This is a menu made for actions, such as the `File` menu in a
+typical application.
 
-This can be used for menus with actions, or menus with checkboxes, etc.
+There are two main components, `ActionMenu` and `ActionDropdown`.
+
+`ActionMenu` is just the menu itself and can be used as is.
+Display it in a page, display it when the user right clicks,
+or any other way.
+
+The user can tab between items.
+
+`ActionDropdown` is the `ActionMenu` wrapped in a dropdown element.
+The menu will be displayed when the dropdown is clicked, and the
+dropdown will automatically close when an item in the menu is clicked.
+
+When dropdown is in focus, the user can press enter to open it.
+When the dropdown is open, the user can press esc to close it.
+
+## ActionMenu
+
+#### Example
+
+```js
+<ActionMenu>
+  <ActionDropdownItem label={"Open"} onClick={onOpen} />
+  <ActionDropdownItem label={"Save"} icon={faSave} onClick={onSave} />
+  <ActionDropdownSeparator />
+  <ActionDropdownItem label={"Quit"} rightText={"cmd+q"} onClick={onQuit} />
+</ActionMenu>
+```
+
+#### Props
+
+| Name   | Description                                      | Optional |  Default value |
+| ------ | ------------------------------------------------ | -------- | -------------- |
+| shadow | Shadow to use around the menu. Used by dropdown. | Yes      | No shadow      |
+| theme  | The theme to use                                 | Yes      | Default theme  |
+| top    | Content to show above items. Used by dropdown.   | Yes      | No content.    |
+| width  | The width of the dropdown.                       | Yes      | 180px          |
+
+## ActionDropdown
 
 #### Example
 
@@ -15,24 +52,25 @@ This can be used for menus with actions, or menus with checkboxes, etc.
   <ActionDropdownItem label={"Quit"} rightText={"cmd+q"} onClick={onQuit} />
 </ActionDropdown>
 ```
+
 #### Props
 
 | Name     | Description                | Optional |  Default value |
 | -------- | -------------------------- | -------- | -------------- |
-| width    | The width of the dropdown. | Yes      | 180px          |
-| label    | The label shown.           | Yes      | "Actions"      |
 | disabled | Disables the dropdown      | Yes      | false          |
+| label    | The label shown.           | Yes      | "Actions"      |
 | theme    | The theme to use           | Yes      | Default theme  |
+| width    | The width of the dropdown. | Yes      | 180px          |
 
 ## Children components
 
 Several components are available to create the content of the dropdown.
 
-### ActionDropdownItem
+### ActionMenuItem
 
 This creates a clickable item in the menu.
 
-The menu closes automatically when clicking on an item.
+When using `ActionDropdown`, the menu closes automatically when clicking on an item.
 
 #### Props
 
@@ -51,9 +89,9 @@ The menu closes automatically when clicking on an item.
 It takes an optional theme prop.
 
 This prop is usually not needed.
-When omitted, it falls back to the theme used by the parent `ActionDropdown` component.
+When omitted, it falls back to the theme used by the parent `ActionMenu` or `ActionDropdown` component.
 
-### ActionDropdownSeparator
+### ActionMenuSeparator
 
 This creates a separator in the menu.
 

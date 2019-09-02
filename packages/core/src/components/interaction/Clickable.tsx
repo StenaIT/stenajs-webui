@@ -36,6 +36,18 @@ export interface ClickableProps extends ButtonProps {
    * Sets the background of the box when hovering with mouse.
    */
   hoverBackground?: ThemeColorField | string;
+  /**
+   * The width.
+   */
+  width?: string;
+  /**
+   * The height.
+   */
+  height?: string;
+  /**
+   * Border radius
+   */
+  borderRadius?: string;
 }
 
 interface ClickableElementProps {
@@ -46,6 +58,9 @@ interface ClickableElementProps {
   background?: ThemeColorField | string;
   focusBackground?: ThemeColorField | string;
   hoverBackground?: ThemeColorField | string;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
 }
 
 const ClickableElement = styled.button<ClickableElementProps>`
@@ -72,6 +87,10 @@ const ClickableElement = styled.button<ClickableElementProps>`
         : "box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);"}
     ${({ focusBackground }) => `background: ${focusBackground};`}
   }
+  ${({ width }) => (width ? `width: ${width};` : "")}
+  ${({ height }) => (height ? `height: ${height};` : "")}
+  ${({ borderRadius }) =>
+    borderRadius ? `border-radius: ${borderRadius};` : ""}
 `;
 
 export const Clickable: React.FC<ClickableProps> = ({

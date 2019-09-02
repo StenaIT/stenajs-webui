@@ -3,7 +3,6 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import {
   Box,
   Clickable,
-  Column,
   Row,
   StandardText,
   useBoolean,
@@ -12,13 +11,14 @@ import {
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { useMemo, useRef } from "react";
+import { KeyboardEventHandler, useCallback, useMemo, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionDropdownContext } from "./ActionDropdownContext";
 import {
   ActionDropdownTheme,
   defaultActionDropdownTheme
 } from "./ActionDropdownTheme";
+import { ActionMenu } from "./ActionMenu";
+import { ActionMenuContext } from "./ActionMenuContext";
 
 interface ActionDropdownProps {
   width?: string;
@@ -36,6 +36,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
 }) => {
   const [expanded, open, close] = useBoolean(false);
   const ref = useRef(null);
+  const clickableRef = useRef<HTMLButtonElement>(null);
   const mouseIsOver = useMouseIsEntered(ref);
   useOnClickOutside(ref, close);
 
@@ -46,7 +47,6 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         background: disabled ? theme.backgroundDisabled : theme.background,
         borderColor: theme.borderColor,
         borderColorFocus: theme.borderColorFocus,
-        dropdownBackground: theme.dropdownBackground,
         expandIconColor: theme.expandIconColor,
         expandIconColorDisabled: theme.expandIconColorDisabled,
         expandIconColorFocus: theme.expandIconColorFocus
@@ -59,15 +59,53 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
     colors.borderColorFocus
   ]);
 
+  const closeAndRefocus = useCallback(() => {
+    close();
+    clickableRef.current!.focus();
+  }, [close, clickableRef]);
+
+  const onKeyDownHandler = useCallback<KeyboardEventHandler>(
+    ev => {
+      const { key } = ev;
+      if (key === "Escape") {
+        closeAndRefocus();
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+      if (key === "ArrowDown") {
+        open();
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+      if (expanded && key === "Enter") {
+        open();
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+    },
+    [close, open, clickableRef]
+  );
+
+  const contextValue = useMemo(
+    () => ({ open, close: closeAndRefocus, theme }),
+    [open, closeAndRefocus, theme]
+  );
+
   return (
-    <ActionDropdownContext.Provider value={{ open, close, theme }}>
+    <ActionMenuContext.Provider value={contextValue}>
       <Box
         position={"relative"}
         display={"inline-block"}
         width={width}
         innerRef={ref}
+        onKeyDown={onKeyDownHandler}
       >
-        <Clickable onClick={!disabled ? open : undefined}>
+        <Clickable
+          onClick={!disabled ? open : undefined}
+          disableFocusHighlight={expanded}
+          innerRef={clickableRef}
+          borderRadius={theme.borderRadius}
+        >
           <Box
             borderColor={colors.borderColor}
             hoverBorder={disabled ? undefined : hoverBorder}
@@ -101,36 +139,32 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
           </Box>
         </Clickable>
         {expanded && (
-          <Column
-            position={"absolute"}
-            top={0}
-            left={0}
-            right={0}
-            background={colors.dropdownBackground}
-            borderColor={colors.borderColorFocus}
-            borderRadius={theme.borderRadius}
-            borderWidth={1}
-            borderStyle={"solid"}
+          <ActionMenu
+            width={width}
             shadow={"modal"}
+            top={
+              <Clickable width={"100%"} onClick={closeAndRefocus}>
+                <Row
+                  width={"100%"}
+                  height={theme.height}
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                  indent
+                >
+                  <StandardText>{label}</StandardText>
+                  <Icon
+                    icon={faChevronUp}
+                    size={12}
+                    color={colors.expandIconColorFocus}
+                  />
+                </Row>
+              </Clickable>
+            }
           >
-            <Row
-              width={"100%"}
-              height={theme.height}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              indent
-            >
-              <StandardText>{label}</StandardText>
-              <Icon
-                icon={faChevronUp}
-                size={12}
-                color={colors.expandIconColorFocus}
-              />
-            </Row>
-            <Column spacing={0.5}>{children}</Column>
-          </Column>
+            {children}
+          </ActionMenu>
         )}
       </Box>
-    </ActionDropdownContext.Provider>
+    </ActionMenuContext.Provider>
   );
 };

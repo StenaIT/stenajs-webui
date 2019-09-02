@@ -6,15 +6,16 @@ import {
   Space,
   StandardText,
   useElementFocus,
-  useThemeFields
+  useMouseIsEntered,
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionDropdownContext } from "./ActionDropdownContext";
 import { ActionDropdownTheme } from "./ActionDropdownTheme";
+import { ActionMenuContext } from "./ActionMenuContext";
 
-export interface ActionDropdownItemProps {
+export interface ActionMenuItemProps {
   label: string;
   rightText?: string;
   icon?: IconDefinition;
@@ -25,7 +26,7 @@ export interface ActionDropdownItemProps {
   onClick?: () => void;
 }
 
-export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
+export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   label,
   icon,
   iconRight,
@@ -36,25 +37,32 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   children,
   disableCloseOnClick
 }) => {
-  const { close, theme: themeFromContext } = useContext(ActionDropdownContext);
+  const { close, theme: themeFromContext } = useContext(ActionMenuContext);
   const theme = themeFromProps || themeFromContext;
   const ref = useRef<HTMLButtonElement>(null);
-  const { isInFocus, focus } = useElementFocus(ref);
+  const { isInFocus } = useElementFocus(ref);
+  const mouseIsOver = useMouseIsEntered(ref);
   const { colors } = useThemeFields(
     {
       colors: {
         iconColor: disabled
           ? theme.iconColorDisabled
+          : mouseIsOver
+          ? theme.iconColorHover
           : isInFocus
           ? theme.iconColorFocus
           : theme.iconColor,
         itemLabelColor: disabled
           ? theme.itemLabelColorDisabled
+          : mouseIsOver
+          ? theme.itemLabelColorHover
           : isInFocus
           ? theme.itemLabelColorFocus
           : theme.itemLabelColor,
         itemTextColor: disabled
           ? theme.itemTextColorDisabled
+          : mouseIsOver
+          ? theme.itemTextColorHover
           : isInFocus
           ? theme.itemTextColorFocus
           : theme.itemTextColor,
@@ -63,12 +71,14 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
             ? theme.itemBackgroundDisabledFocus
             : disabled
             ? theme.itemBackgroundDisabled
+            : mouseIsOver
+            ? theme.itemBackgroundHover
             : isInFocus
             ? theme.itemBackgroundFocus
             : theme.itemBackground
       }
     },
-    [theme, disabled, isInFocus]
+    [theme, disabled, isInFocus, mouseIsOver]
   );
 
   const onClickHandler = useCallback(() => {
@@ -80,28 +90,12 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
     }
   }, [onClick, close, disableCloseOnClick]);
 
-  const onKeyHandler = useCallback(ev => {
-    const { key } = ev;
-    if (key === "ArrowUp") {
-      if (ref.current!.previousSibling) {
-        (ref.current!.previousSibling as any).focus();
-      }
-    }
-    if (key === "ArrowDown") {
-      if (ref.current!.nextSibling) {
-        (ref.current!.nextSibling as any).focus();
-      }
-    }
-  }, []);
-
   return (
     <Clickable
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
       background={colors.itemBackground}
       innerRef={ref}
-      onMouseEnter={focus}
-      onKeyDown={onKeyHandler}
     >
       <Row
         height={theme.itemHeight}
