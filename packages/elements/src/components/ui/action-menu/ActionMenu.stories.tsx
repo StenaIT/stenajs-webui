@@ -2,11 +2,14 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { TinyText } from "@stenajs-webui/core";
-import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
+import {
+  ActionMenu,
+  ActionMenuItem,
+  ActionMenuSeparator
+} from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { ActionMenu } from "./ActionMenu";
 // @ts-ignore
 import markdown from "./ActionMenu.md";
 
