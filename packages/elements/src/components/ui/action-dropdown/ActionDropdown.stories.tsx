@@ -1,12 +1,15 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { ActionDropdown, ActionDropdownItem } from "@stenajs-webui/elements";
+import {
+  ActionDropdown,
+  ActionDropdownItem,
+  ActionDropdownSeparator
+} from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import markdown from "./ActionDropdown.md";
-import { ActionDropdownSeparator } from "./ActionDropdownSeparator";
 
 const hello = () => {
   console.log("hello");

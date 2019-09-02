@@ -9,38 +9,23 @@ export const useElementFocus = <TElement extends HTMLElement>(
   const [isInFocus, setIsInFocus, setIsNotInFocus] = useBoolean(false);
 
   useEffect(() => {
-    console.log(
-      "ReactDOM.findDOMNode(ref.current)",
-      ReactDOM.findDOMNode(ref.current)
-    );
-    console.log("document.activeElement", document.activeElement);
     if (document.activeElement === ReactDOM.findDOMNode(ref.current)) {
       setIsInFocus();
     } else {
       setIsNotInFocus();
     }
-  }, [ref, setIsInFocus]);
+  }, [ref, setIsNotInFocus, setIsInFocus]);
 
-  console.log("ref", ref.current);
-
-  useEventListener(ref, "focus", () => {
-    console.log("---------------- got focus event!!!!!");
-    setIsInFocus();
-  });
-  useEventListener(ref, "blur", () => {
-    console.log("got blur event");
-    setIsNotInFocus();
-  });
+  useEventListener(ref, "focus", setIsInFocus);
+  useEventListener(ref, "blur", setIsNotInFocus);
 
   const focus = () => {
-    console.log("focusing on element");
     if (ref.current) {
       ref.current.focus();
     }
   };
 
   const blur = () => {
-    console.log("blurring element");
     if (ref.current) {
       ref.current.blur();
     }

@@ -8,7 +8,7 @@ import {
 } from "@stenajs-webui/core";
 import * as PopperJS from "popper.js";
 import * as React from "react";
-import { ReactNode, useMemo, useRef, useState } from "react";
+import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { Arrow } from "./Arrow";
 
@@ -58,19 +58,19 @@ export function Popover({
     }
   });
 
-  const show = () => {
+  const show = useCallback(() => {
     setShowing(true);
     if (onShow) {
       onShow();
     }
-  };
+  }, [onShow]);
 
-  const hide = () => {
+  const hide = useCallback(() => {
     setShowing(false);
     if (onHide) {
       onHide();
     }
-  };
+  }, [onHide]);
 
   const { colors } = useThemeFields(
     {
