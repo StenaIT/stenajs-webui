@@ -7,7 +7,7 @@ import {
   StandardText,
   useElementFocus,
   useMouseIsEntered,
-  useThemeFields,
+  useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
