@@ -1,12 +1,12 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
+import { TinyText } from "@stenajs-webui/core";
 import {
   ActionDropdown,
   ActionDropdownItem,
   ActionDropdownSeparator
 } from "@stenajs-webui/elements";
-import { Checkbox } from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import markdown from "./ActionDropdown.md";
@@ -45,11 +45,8 @@ storiesOf("elements/ActionDropdown", module)
           iconRight={faCheck}
           disabled
         />
-        <ActionDropdownItem label={"Checked"}>
-          <Checkbox value={true} />
-        </ActionDropdownItem>
-        <ActionDropdownItem label={"Not checked"}>
-          <Checkbox value={false} />
+        <ActionDropdownItem label={"Custom right"}>
+          <TinyText color={"tomato"}>So custom!</TinyText>
         </ActionDropdownItem>
         <ActionDropdownSeparator />
         <ActionDropdownItem
