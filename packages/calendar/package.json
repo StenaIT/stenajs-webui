@@ -30,7 +30,7 @@
     "@stenajs-webui/core": "0.0.34",
     "@stenajs-webui/elements": "0.0.34",
     "@stenajs-webui/forms": "0.0.34",
-    "date-fns": "2.0.0-alpha.27"
+    "date-fns": "2.0.1"
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",
