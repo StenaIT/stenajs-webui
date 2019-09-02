@@ -36,15 +36,10 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   children,
   disableCloseOnClick
 }) => {
-  const { close, theme: themeFromContext, onUpPress, onDownPress } = useContext(
-    ActionDropdownContext
-  );
+  const { close, theme: themeFromContext } = useContext(ActionDropdownContext);
   const theme = themeFromProps || themeFromContext;
   const ref = useRef<HTMLButtonElement>(null);
   const { isInFocus, focus } = useElementFocus(ref);
-  if (isInFocus) {
-    console.log("-------------------- isInFocus!!", isInFocus);
-  }
   const { colors } = useThemeFields(
     {
       colors: {
@@ -63,11 +58,14 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
           : isInFocus
           ? theme.itemTextColorFocus
           : theme.itemTextColor,
-        itemBackground: disabled
-          ? theme.itemBackgroundDisabled
-          : isInFocus
-          ? theme.itemBackgroundFocus
-          : theme.itemBackground
+        itemBackground:
+          disabled && isInFocus
+            ? theme.itemBackgroundDisabledFocus
+            : disabled
+            ? theme.itemBackgroundDisabled
+            : isInFocus
+            ? theme.itemBackgroundFocus
+            : theme.itemBackground
       }
     },
     [theme, disabled, isInFocus]
@@ -82,18 +80,19 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
     }
   }, [onClick, close, disableCloseOnClick]);
 
-  const onKeyHandler = useCallback(
-    ev => {
-      const { key } = ev;
-      if (key === "ArrowUp" && onUpPress) {
-        onUpPress();
+  const onKeyHandler = useCallback(ev => {
+    const { key } = ev;
+    if (key === "ArrowUp") {
+      if (ref.current!.previousSibling) {
+        (ref.current!.previousSibling as any).focus();
       }
-      if (key === "ArrowDown" && onDownPress) {
-        onDownPress();
+    }
+    if (key === "ArrowDown") {
+      if (ref.current!.nextSibling) {
+        (ref.current!.nextSibling as any).focus();
       }
-    },
-    [onUpPress, onDownPress]
-  );
+    }
+  }, []);
 
   return (
     <Clickable
@@ -102,7 +101,6 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
       background={colors.itemBackground}
       innerRef={ref}
       onMouseEnter={focus}
-      tabIndex={disabled ? -1 : undefined}
       onKeyDown={onKeyHandler}
     >
       <Row

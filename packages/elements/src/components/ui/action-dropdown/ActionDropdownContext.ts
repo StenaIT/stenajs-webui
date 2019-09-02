@@ -7,8 +7,6 @@ import {
 export interface ActionDropdownContextValue {
   close?: () => void;
   open?: () => void;
-  onUpPress?: () => void;
-  onDownPress?: () => void;
   theme: ActionDropdownTheme;
 }
 

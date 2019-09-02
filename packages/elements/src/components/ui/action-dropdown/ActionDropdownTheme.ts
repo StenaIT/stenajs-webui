@@ -17,6 +17,7 @@ export interface ActionDropdownTheme {
   iconColorFocus: ThemeColorField | string;
   itemBackground?: ThemeColorField | string;
   itemBackgroundDisabled?: ThemeColorField | string;
+  itemBackgroundDisabledFocus?: ThemeColorField | string;
   itemBackgroundFocus?: ThemeColorField | string;
   itemLabelColor?: ThemeColorField | string;
   itemLabelColorDisabled?: ThemeColorField | string;
@@ -46,6 +47,7 @@ export const defaultActionDropdownTheme: ActionDropdownTheme = {
   itemBackground: "white",
   itemBackgroundFocus: "interactionBgPrimary",
   itemBackgroundDisabled: "disabledBackground",
+  itemBackgroundDisabledFocus: "disabledTextLight",
   itemLabelColor: "primaryText",
   itemLabelColorDisabled: "disabledText",
   itemLabelColorFocus: "white",

@@ -170,9 +170,9 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
       onClick={disabled || success || loading ? undefined : onClick}
       opacityOnHover
       disabled={disabled || success || loading}
+      background={bgColor}
       style={{
         borderRadius: buttonTheme.borderRadius,
-        backgroundColor: bgColor,
         border: borderColor ? `1px solid ${borderColor}` : undefined
       }}
     >
