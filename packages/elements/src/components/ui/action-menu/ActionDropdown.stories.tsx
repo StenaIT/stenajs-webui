@@ -5,7 +5,7 @@ import { TinyText } from "@stenajs-webui/core";
 import {
   ActionDropdown,
   ActionMenuItem,
-  ActionMenuSeparator
+  ActionMenuSeparator,
 } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";

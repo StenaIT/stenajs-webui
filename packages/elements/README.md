@@ -6,7 +6,7 @@ These are primarly "dumb" components, with no (or very little) logic.
 
 ## Components
 
-- [ActionDropdown](src/components/ui/action-dropdown/ActionDropdown.md)
+- [ActionMenu](src/components/ui/action-menu/ActionMenu.md)
 - Badge
 - FlatButton
 - SmallButton
