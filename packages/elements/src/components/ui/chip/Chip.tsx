@@ -3,13 +3,13 @@ import {
   Box,
   Clickable,
   Indent,
+  Nest,
   Row,
   SmallText,
   useBoolean,
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { Nest } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import { ChipTheme, defaultChipTheme } from "./ChipTheme";
 
@@ -49,7 +49,7 @@ export const Chip: React.FC<ChipProps> = ({
   return (
     <Box display={"inline-block"}>
       <Row
-        role={"button"}
+        role={"group"}
         background={
           onClickLabel && labelHovering
             ? colors.backgroundHover
