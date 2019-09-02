@@ -83,7 +83,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         ev.preventDefault();
       }
     },
-    [close, open, clickableRef, closeAndRefocus, expanded]
+    [open, closeAndRefocus, expanded]
   );
 
   const contextValue = useMemo(
