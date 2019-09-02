@@ -5,11 +5,11 @@ import {
   SmallerText,
   Space,
   StandardText,
-  useMouseIsEntered,
+  useElementFocus,
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionDropdownContext } from "./ActionDropdownContext";
 import { ActionDropdownTheme } from "./ActionDropdownTheme";
@@ -36,59 +36,80 @@ export const ActionDropdownItem: React.FC<ActionDropdownItemProps> = ({
   children,
   disableCloseOnClick
 }) => {
-  const { close, theme: themeFromContext } = useContext(ActionDropdownContext);
+  const { close, theme: themeFromContext, onUpPress, onDownPress } = useContext(
+    ActionDropdownContext
+  );
   const theme = themeFromProps || themeFromContext;
-  const ref = useRef(null);
-  const mouseIsOver = useMouseIsEntered(ref);
+  const ref = useRef<HTMLButtonElement>(null);
+  const { isInFocus, focus } = useElementFocus(ref);
+  if (isInFocus) {
+    console.log("-------------------- isInFocus!!", isInFocus);
+  }
   const { colors } = useThemeFields(
     {
       colors: {
         iconColor: disabled
           ? theme.iconColorDisabled
-          : mouseIsOver
-          ? theme.iconColorHover
+          : isInFocus
+          ? theme.iconColorFocus
           : theme.iconColor,
         itemLabelColor: disabled
           ? theme.itemLabelColorDisabled
-          : mouseIsOver
-          ? theme.itemLabelColorHover
+          : isInFocus
+          ? theme.itemLabelColorFocus
           : theme.itemLabelColor,
         itemTextColor: disabled
           ? theme.itemTextColorDisabled
-          : mouseIsOver
-          ? theme.itemTextColorHover
+          : isInFocus
+          ? theme.itemTextColorFocus
           : theme.itemTextColor,
         itemBackground: disabled
           ? theme.itemBackgroundDisabled
-          : mouseIsOver
-          ? theme.itemBackgroundHover
+          : isInFocus
+          ? theme.itemBackgroundFocus
           : theme.itemBackground
       }
     },
-    [theme, disabled, mouseIsOver]
+    [theme, disabled, isInFocus]
   );
 
-  const onClickHandler = () => {
+  const onClickHandler = useCallback(() => {
     if (close && !disableCloseOnClick) {
       close();
     }
     if (onClick) {
       onClick();
     }
-  };
+  }, [onClick, close, disableCloseOnClick]);
+
+  const onKeyHandler = useCallback(
+    ev => {
+      const { key } = ev;
+      if (key === "ArrowUp" && onUpPress) {
+        onUpPress();
+      }
+      if (key === "ArrowDown" && onDownPress) {
+        onDownPress();
+      }
+    },
+    [onUpPress, onDownPress]
+  );
 
   return (
     <Clickable
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
+      background={colors.itemBackground}
+      innerRef={ref}
+      onMouseEnter={focus}
+      tabIndex={disabled ? -1 : undefined}
+      onKeyDown={onKeyHandler}
     >
       <Row
         height={theme.itemHeight}
         indent
         alignItems={"center"}
         justifyContent={"space-between"}
-        background={colors.itemBackground}
-        innerRef={ref}
       >
         <Row height={theme.itemHeight} alignItems={"center"}>
           {icon && (

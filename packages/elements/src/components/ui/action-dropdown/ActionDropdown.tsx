@@ -12,7 +12,7 @@ import {
   useThemeFields
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionDropdownContext } from "./ActionDropdownContext";
 import {
@@ -45,17 +45,19 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         textColor: disabled ? theme.textColorDisabled : theme.textColor,
         background: disabled ? theme.backgroundDisabled : theme.background,
         borderColor: theme.borderColor,
-        borderColorHover: theme.borderColorHover,
+        borderColorFocus: theme.borderColorFocus,
         dropdownBackground: theme.dropdownBackground,
         expandIconColor: theme.expandIconColor,
         expandIconColorDisabled: theme.expandIconColorDisabled,
-        expandIconColorHover: theme.expandIconColorHover
+        expandIconColorFocus: theme.expandIconColorFocus
       }
     },
     [theme, disabled]
   );
 
-  const hoverBorder = `1px solid ${colors.borderColorHover}`;
+  const hoverBorder = useMemo(() => `1px solid ${colors.borderColorFocus}`, [
+    colors.borderColorFocus
+  ]);
 
   return (
     <ActionDropdownContext.Provider value={{ open, close, theme }}>
@@ -65,37 +67,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         width={width}
         innerRef={ref}
       >
-        {expanded && (
-          <Column
-            position={"absolute"}
-            top={0}
-            left={0}
-            right={0}
-            background={colors.dropdownBackground}
-            borderColor={colors.borderColorHover}
-            borderRadius={theme.borderRadius}
-            borderWidth={1}
-            borderStyle={"solid"}
-            shadow={"modal"}
-          >
-            <Row
-              width={"100%"}
-              height={theme.height}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              indent
-            >
-              <StandardText>{label}</StandardText>
-              <Icon
-                icon={faChevronUp}
-                size={12}
-                color={colors.expandIconColorHover}
-              />
-            </Row>
-            <Column spacing={0.5}>{children}</Column>
-          </Column>
-        )}
-        <Clickable onClick={!disabled ? open : undefined} disableFocusHighlight>
+        <Clickable onClick={!disabled ? open : undefined}>
           <Box
             borderColor={colors.borderColor}
             hoverBorder={disabled ? undefined : hoverBorder}
@@ -121,13 +93,43 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
                   disabled
                     ? colors.expandIconColorDisabled
                     : mouseIsOver
-                    ? colors.expandIconColorHover
+                    ? colors.expandIconColorFocus
                     : colors.expandIconColor
                 }
               />
             </Row>
           </Box>
         </Clickable>
+        {expanded && (
+          <Column
+            position={"absolute"}
+            top={0}
+            left={0}
+            right={0}
+            background={colors.dropdownBackground}
+            borderColor={colors.borderColorFocus}
+            borderRadius={theme.borderRadius}
+            borderWidth={1}
+            borderStyle={"solid"}
+            shadow={"modal"}
+          >
+            <Row
+              width={"100%"}
+              height={theme.height}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+              indent
+            >
+              <StandardText>{label}</StandardText>
+              <Icon
+                icon={faChevronUp}
+                size={12}
+                color={colors.expandIconColorFocus}
+              />
+            </Row>
+            <Column spacing={0.5}>{children}</Column>
+          </Column>
+        )}
       </Box>
     </ActionDropdownContext.Provider>
   );

@@ -130,6 +130,24 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    * Sets the border of the box when hovering with mouse.
    */
   hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the background of the box when the box is in focus.
+   */
+  focusBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box when the box is in focus.
+   */
+  focusBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the background of the box when focus is within the box.
+   */
+  focusWithinBackground?:
+    | ThemeColorField
+    | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box when focus is within the box.
+   */
+  focusWithinBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
 }
 
 const excludedProps = ["spacing", "indent", "width", "height", "color"];
@@ -183,6 +201,14 @@ const FlexBox = styled("div", {
   :hover {
     background: ${({ hoverBackground }) => hoverBackground};
     border: ${({ hoverBorder }) => hoverBorder};
+  }
+  :focus {
+    background: ${({ focusBackground }) => focusBackground};
+    border: ${({ focusBorder }) => focusBorder};
+  }
+  :focus-within {
+    background: ${({ focusWithinBackground }) => focusWithinBackground};
+    border: ${({ focusWithinBorder }) => focusWithinBorder};
   }
 `;
 

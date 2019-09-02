@@ -44,6 +44,7 @@ export * from "./hooks/UseArraySet";
 export * from "./hooks/UseBoolean";
 export * from "./hooks/UseDebounce";
 export * from "./hooks/UseDomId";
+export * from "./hooks/UseElementFocus";
 export * from "./hooks/UseEventListener";
 export * from "./hooks/UseMouseIsOver";
 export * from "./hooks/UseMouseIsEntered";

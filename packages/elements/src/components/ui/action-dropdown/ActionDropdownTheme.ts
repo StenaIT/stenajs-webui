@@ -6,24 +6,24 @@ export interface ActionDropdownTheme {
   textColor?: ThemeColorField | string;
   textColorDisabled?: ThemeColorField | string;
   borderColor?: ThemeColorField | string;
-  borderColorHover?: ThemeColorField | string;
+  borderColorFocus?: ThemeColorField | string;
   borderRadius?: string;
   dropdownBackground?: ThemeColorField | string;
   expandIconColor: ThemeColorField | string;
   expandIconColorDisabled: ThemeColorField | string;
-  expandIconColorHover: ThemeColorField | string;
+  expandIconColorFocus: ThemeColorField | string;
   iconColor: ThemeColorField | string;
   iconColorDisabled: ThemeColorField | string;
-  iconColorHover: ThemeColorField | string;
+  iconColorFocus: ThemeColorField | string;
   itemBackground?: ThemeColorField | string;
   itemBackgroundDisabled?: ThemeColorField | string;
-  itemBackgroundHover?: ThemeColorField | string;
+  itemBackgroundFocus?: ThemeColorField | string;
   itemLabelColor?: ThemeColorField | string;
   itemLabelColorDisabled?: ThemeColorField | string;
-  itemLabelColorHover?: ThemeColorField | string;
+  itemLabelColorFocus?: ThemeColorField | string;
   itemTextColor?: ThemeColorField | string;
   itemTextColorDisabled?: ThemeColorField | string;
-  itemTextColorHover?: ThemeColorField | string;
+  itemTextColorFocus?: ThemeColorField | string;
   height: string;
   itemHeight: string;
 }
@@ -34,24 +34,24 @@ export const defaultActionDropdownTheme: ActionDropdownTheme = {
   textColor: "primaryText",
   textColorDisabled: "disabledText",
   borderColor: "inputBorder",
-  borderColorHover: "inputBorderFocused",
+  borderColorFocus: "inputBorderFocused",
   borderRadius: "4px",
   dropdownBackground: "white",
   expandIconColor: "disabledText",
   expandIconColorDisabled: "disabledText",
-  expandIconColorHover: "interactionBgPrimary",
+  expandIconColorFocus: "interactionBgPrimary",
   iconColor: "primaryText",
   iconColorDisabled: "disabledText",
-  iconColorHover: "white",
+  iconColorFocus: "white",
   itemBackground: "white",
-  itemBackgroundHover: "interactionBgPrimary",
+  itemBackgroundFocus: "interactionBgPrimary",
   itemBackgroundDisabled: "disabledBackground",
   itemLabelColor: "primaryText",
   itemLabelColorDisabled: "disabledText",
-  itemLabelColorHover: "white",
+  itemLabelColorFocus: "white",
   itemTextColor: "primaryTextLight",
   itemTextColorDisabled: "disabledTextLight",
-  itemTextColorHover: "white",
+  itemTextColorFocus: "white",
   height: "34px",
   itemHeight: "34px"
 };

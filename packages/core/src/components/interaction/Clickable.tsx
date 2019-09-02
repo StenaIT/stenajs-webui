@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import * as React from "react";
 import { CSSProperties, MouseEventHandler } from "react";
+import { useThemeFields } from "../../theme/hooks/UseThemeSelector";
+import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
 import { ButtonProps } from "../../types/ElementProps";
 
 export interface ClickableProps extends ButtonProps {
@@ -22,6 +24,18 @@ export interface ClickableProps extends ButtonProps {
   disableFocusHighlight?: boolean;
   /** Disables the HTML button element. */
   disabled?: boolean;
+  /**
+   * Sets the background of the box.
+   */
+  background?: ThemeColorField | string;
+  /**
+   * Sets the background of the box when the box is in focus.
+   */
+  focusBackground?: ThemeColorField | string;
+  /**
+   * Sets the background of the box when hovering with mouse.
+   */
+  hoverBackground?: ThemeColorField | string;
 }
 
 interface ClickableElementProps {
@@ -29,6 +43,9 @@ interface ClickableElementProps {
   opacityOnHover?: boolean;
   disableFocusHighlight?: boolean;
   pointer?: boolean;
+  background?: ThemeColorField | string;
+  focusBackground?: ThemeColorField | string;
+  hoverBackground?: ThemeColorField | string;
 }
 
 const ClickableElement = styled.button<ClickableElementProps>`
@@ -36,11 +53,12 @@ const ClickableElement = styled.button<ClickableElementProps>`
   user-select: none;
   border: 0;
   padding: 0;
-  background-color: transparent;
+  background: ${({ background }) => background};
   ${({ pointer }) => (pointer ? "cursor: pointer;" : "")}
 
   :hover {
     ${props => (props.opacityOnHover ? "opacity: 0.7;" : "")};
+    ${({ hoverBackground }) => `background: ${hoverBackground};`}
   }
   :active {
     ${({ disableOpacityOnClick }) =>
@@ -52,6 +70,7 @@ const ClickableElement = styled.button<ClickableElementProps>`
       disableFocusHighlight
         ? ""
         : "box-shadow: 0 0 3pt 2pt rgba(0, 0, 100, 0.3);"}
+    ${({ focusBackground }) => `background: ${focusBackground};`}
   }
 `;
 
@@ -66,8 +85,21 @@ export const Clickable: React.FC<ClickableProps> = ({
   innerRef,
   disabled,
   children,
+  background = "transparent",
+  hoverBackground,
+  focusBackground,
   ...restProps
 }) => {
+  const { colors } = useThemeFields(
+    {
+      colors: {
+        background: background,
+        hoverBackground: hoverBackground,
+        focusBackground: focusBackground
+      }
+    },
+    [background, hoverBackground, focusBackground]
+  );
   const hasClickHandler = !!(onClick || onDblClick);
   return (
     <ClickableElement
@@ -80,6 +112,9 @@ export const Clickable: React.FC<ClickableProps> = ({
       disableFocusHighlight={disableFocusHighlight}
       pointer={hasClickHandler && !disablePointer}
       ref={innerRef}
+      background={colors.background}
+      hoverBackground={colors.hoverBackground}
+      focusBackground={colors.focusBackground}
       {...restProps}
     >
       {children}
