@@ -77,11 +77,6 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         ev.stopPropagation();
         ev.preventDefault();
       }
-      if (expanded && key === "Enter") {
-        open();
-        ev.stopPropagation();
-        ev.preventDefault();
-      }
     },
     [open, closeAndRefocus, expanded]
   );
