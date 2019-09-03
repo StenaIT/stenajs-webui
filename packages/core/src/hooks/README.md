@@ -58,6 +58,18 @@ const id = useDomId();
 const idForCheckbox = useDomId("checkbox");
 ```
 
+### useElementFocus
+
+Helper for checking and changing focus on elements.
+
+Returns: { isInFocus: boolean, focus: () => void, blur: () => void }.
+
+#### Example
+
+```js
+const { isInFocus, focus, blur } = useElementFocus(ref);
+```
+
 ### useEventListener
 
 Adds event listeners to DOM elements, using refs.
