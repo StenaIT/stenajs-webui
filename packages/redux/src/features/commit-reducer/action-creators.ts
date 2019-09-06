@@ -4,7 +4,7 @@ import {
   SetFilterValuesActionCreator
 } from "./actions";
 
-export interface CommittedActions<TState> {
+export interface CommitReducerActions<TState> {
   setValues: SetFilterValuesActionCreator<TState>;
   commitValues: CommitFilterValuesActionCreator;
   clearValues: ClearFilterValuesActionCreator;
@@ -12,7 +12,7 @@ export interface CommittedActions<TState> {
 
 export const createCommitReducerActions = <TState>(
   id: string
-): CommittedActions<TState> => {
+): CommitReducerActions<TState> => {
   return {
     setValues: values => ({
       type: "COMMIT_REDUCER.SET_VALUES",
