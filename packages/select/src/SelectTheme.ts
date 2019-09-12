@@ -52,8 +52,8 @@ export interface SelectTheme {
     zIndex: number;
   };
   multiSelect: {
-    color: string;
     backgroundColor: string;
+    color: string;
     removeButtonBackgroundColor: string;
     removeButtonTextColor: string;
     removeButtonHoverBackgroundColor: string;
