@@ -159,7 +159,7 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
         dayHighlightSelect<JSX.Element | null>(
           dayState,
           [],
-          ["today"],
+          ["today", "enabled"],
           [
             <Box
               position={"absolute"}
@@ -171,11 +171,24 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
                 height: "6px",
                 borderRadius: "50%"
               }}
-            />
+            />,
+            null
           ],
-          null
+          <Box
+            position={"absolute"}
+            top={0}
+            left={0}
+            bottom={0}
+            right={0}
+            background="#949494"
+            width="70%"
+            height="1px"
+            style={{
+              margin: "auto",
+              transform: "rotate(-45deg)"
+            }}
+          />
         ) as JSX.Element;
-
       return (
         <DateRangeCalendar
           highlightToday
