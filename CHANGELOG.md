@@ -4,6 +4,13 @@
 
 * Coming soon...
 
+#### 0.0.37
+
+* Add `color` in theme for `multiValue` in `Select`.
+* Fix typings for `useBoolean `hook. 
+* Add innerRef to all buttons.
+* Fix a bug in textInput that caused console to log error for MozAppearance.
+
 #### 0.0.36
 
 * Add `ActionMenu` and `ActionDropdown` component to `elements`.
