@@ -9,7 +9,7 @@
 * Add `color` in theme for `multiValue` in `Select`.
 * Fix typings for `useBoolean `hook. 
 * Add innerRef to all buttons.
-* Fix a bug in textInput thast caused console to log error for MozAppearance.
+* Fix a bug in textInput that caused console to log error for MozAppearance.
 
 #### 0.0.36
 
