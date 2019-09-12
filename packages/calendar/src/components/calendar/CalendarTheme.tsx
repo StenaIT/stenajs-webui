@@ -309,7 +309,8 @@ export const extranetCalendarTheme: CalendarTheme = {
   width: "37px",
   height: "37px",
   WeekNumber: {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    show: true
   },
   WeekDay: {
     textColor: "separator"
