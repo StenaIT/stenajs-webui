@@ -1,5 +1,5 @@
-import { WhiteSpaceProperty } from "csstype";
 import { defaultTheme } from "@stenajs-webui/core";
+import { WhiteSpaceProperty } from "csstype";
 
 export interface SelectTheme {
   arrowColor: {
@@ -53,6 +53,7 @@ export interface SelectTheme {
   };
   multiSelect: {
     backgroundColor: string;
+    color: string;
     removeButtonBackgroundColor: string;
     removeButtonTextColor: string;
     removeButtonHoverBackgroundColor: string;
@@ -107,6 +108,7 @@ export const defaultSelectTheme: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
+    color: defaultTheme.colors.primaryText,
     removeButtonBackgroundColor: "#B9D8DF",
     removeButtonTextColor: defaultTheme.colors.primaryText,
     removeButtonHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
@@ -163,6 +165,7 @@ export const selectThemeDark: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
+    color: defaultTheme.colors.primaryText,
     removeButtonBackgroundColor: "#B9D8DF",
     removeButtonTextColor: defaultTheme.colors.primaryText,
     removeButtonHoverBackgroundColor: defaultTheme.colors.primaryBgDark,

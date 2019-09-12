@@ -71,10 +71,11 @@ export const createStylesFromTheme = (
   }),
   multiValueLabel: base => ({
     ...base,
-    paddingTop: "2px",
+    backgroundColor: selectTheme.multiSelect.backgroundColor,
+    color: selectTheme.multiSelect.color,
     fontFamily: selectTheme.input.fontFamily,
     fontSize: selectTheme.input.fontSize,
-    backgroundColor: selectTheme.multiSelect.backgroundColor
+    paddingTop: "2px"
   }),
   indicatorSeparator: base => ({
     ...base,
@@ -123,17 +124,18 @@ export const createStylesFromTheme = (
   }),
   multiValueRemove: styles => ({
     ...styles,
-    margin: "3px",
-    color: selectTheme.multiSelect.removeButtonTextColor,
     backgroundColor: selectTheme.multiSelect.removeButtonBackgroundColor,
     ":hover": {
       color: selectTheme.multiSelect.removeButtonHoverTextColor,
       backgroundColor: selectTheme.multiSelect.removeButtonHoverBackgroundColor
-    }
+    },
+    color: selectTheme.multiSelect.removeButtonTextColor,
+    margin: "3px"
   }),
   multiValue: base => ({
     ...base,
-    backgroundColor: selectTheme.multiSelect.backgroundColor
+    backgroundColor: selectTheme.multiSelect.backgroundColor,
+    color: selectTheme.multiSelect.color
   }),
   loadingMessage: base => ({
     ...base,

@@ -40,11 +40,14 @@ export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
 export * from "./types/Omit";
 
+export * from "./hooks/UseArraySet";
 export * from "./hooks/UseBoolean";
 export * from "./hooks/UseDebounce";
 export * from "./hooks/UseDomId";
+export * from "./hooks/UseElementFocus";
 export * from "./hooks/UseEventListener";
 export * from "./hooks/UseMouseIsOver";
+export * from "./hooks/UseMouseIsEntered";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";

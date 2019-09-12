@@ -4,6 +4,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Box,
+  ButtonProps as GenericButtonProps,
   Clickable,
   Row,
   Space,
@@ -15,7 +16,7 @@ import { InputSpinner } from "../spinner/InputSpinner";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
 import { useButtonStateTheme } from "./hooks/UseBottonStateTheme";
 
-export interface ButtonProps {
+export interface ButtonProps extends GenericButtonProps {
   /** The theme to use.
    * @default defaultButtonTheme
    */
@@ -64,6 +65,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     onClick,
     width,
     disabled = false,
+    innerRef,
     loading = false,
     loadingLabel,
     success = false,
@@ -167,12 +169,13 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
 
   return (
     <Clickable
+      innerRef={innerRef}
       onClick={disabled || success || loading ? undefined : onClick}
       opacityOnHover
       disabled={disabled || success || loading}
+      background={bgColor}
       style={{
         borderRadius: buttonTheme.borderRadius,
-        backgroundColor: bgColor,
         border: borderColor ? `1px solid ${borderColor}` : undefined
       }}
     >

@@ -30,7 +30,7 @@ export const useButtonStateTheme = (
         fontWeight: buttonTheme.fontWeight
       }
     },
-    [buttonTheme]
+    [buttonTheme, textColor]
   );
   return {
     textColor: disabled ? colors.textColorDisabled : colors.textColor,

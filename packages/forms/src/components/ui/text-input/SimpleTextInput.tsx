@@ -121,7 +121,7 @@ const StyledInput = styledWithTheme("input")<StyledInputProps>(
       color: `${textColorDisabled}`
     },
     height: height,
-    "-moz-appearance": "textfield",
+    MozAppearance: "textfield",
     width: width || "100%",
     fontSize: fontSize,
     fontFamily: fontFamily,

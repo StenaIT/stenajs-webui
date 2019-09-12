@@ -8,7 +8,7 @@ import {
 } from "@stenajs-webui/core";
 import * as PopperJS from "popper.js";
 import * as React from "react";
-import { ReactNode, useMemo, useRef, useState } from "react";
+import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
 import { Manager, Popper, Reference } from "react-popper";
 import { Arrow } from "./Arrow";
 
@@ -28,6 +28,7 @@ export interface PopoverProps {
   children?: ReactNode | PopoverContentFunc;
   background?: ThemeColorField | string;
   disableCloseOnClickOutside?: boolean;
+  disableArrow?: boolean;
   zIndex?: number;
   onShow?: () => void;
   onHide?: () => void;
@@ -46,7 +47,8 @@ export function Popover({
   zIndex,
   onShow,
   onHide,
-  disableCloseOnClickOutside
+  disableCloseOnClickOutside,
+  disableArrow
 }: PopoverProps) {
   const [showing, setShowing] = useState(false);
   const outerRef = useRef(null);
@@ -56,19 +58,19 @@ export function Popover({
     }
   });
 
-  const show = () => {
+  const show = useCallback(() => {
     setShowing(true);
     if (onShow) {
       onShow();
     }
-  };
+  }, [onShow]);
 
-  const hide = () => {
+  const hide = useCallback(() => {
     setShowing(false);
     if (onHide) {
       onHide();
     }
-  };
+  }, [onHide]);
 
   const { colors } = useThemeFields(
     {
@@ -131,12 +133,14 @@ export function Popover({
                   {typeof content === "function"
                     ? content({ show, hide })
                     : content}
-                  <Arrow
-                    background={colors.background}
-                    ref={arrowProps.ref}
-                    data-placement={placement}
-                    style={arrowProps.style}
-                  />
+                  {!disableArrow && (
+                    <Arrow
+                      background={colors.background}
+                      ref={arrowProps.ref}
+                      data-placement={placement}
+                      style={arrowProps.style}
+                    />
+                  )}
                 </Box>
               );
             }}
