@@ -1,16 +1,19 @@
+import { Box } from "@stenajs-webui/core";
 import { Store, withState } from "@dump247/storybook-state";
 import {
   DateRangeCalendar,
   DateRangeCalendarProps,
   DateRangeFocusedInput,
   setDayStateValue,
-  useDateRangeCalendarState
+  useDateRangeCalendarState,
+  travelCalendarTheme,
+  dayHighlightSelect,
+  ExtraDayContentProps
 } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
-import { travelCalendarTheme } from "@stenajs-webui/calendar";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {
@@ -149,19 +152,46 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
       startDate: undefined,
       endDate: undefined,
       focusedInput: "startDate"
-    })(({ store }: { store: Store<State> }) => (
-      <DateRangeCalendar
-        startDate={store.state.startDate}
-        endDate={store.state.endDate}
-        focusedInput={store.state.focusedInput}
-        setStartDate={startDate => store.set({ startDate })}
-        setEndDate={endDate => store.set({ endDate })}
-        setFocusedInput={focusedInput => store.set({ focusedInput })}
-        defaultHighlights={["disabled"]}
-        theme={travelCalendarTheme}
-        statePerMonth={statePerMonthWithTwoWeeksEnabled}
-      />
-    )),
+    })(({ store }: { store: Store<State> }) => {
+      const renderDayContent: React.ComponentType<ExtraDayContentProps<{}>> = ({
+        dayState
+      }) =>
+        dayHighlightSelect<JSX.Element | null>(
+          dayState,
+          [],
+          ["today"],
+          [
+            <Box
+              position={"absolute"}
+              top={"3px"}
+              left={"3px"}
+              style={{
+                backgroundColor: "#ea143d",
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%"
+              }}
+            />
+          ],
+          null
+        ) as JSX.Element;
+
+      return (
+        <DateRangeCalendar
+          highlightToday
+          startDate={store.state.startDate}
+          endDate={store.state.endDate}
+          focusedInput={store.state.focusedInput}
+          setStartDate={startDate => store.set({ startDate })}
+          setEndDate={endDate => store.set({ endDate })}
+          setFocusedInput={focusedInput => store.set({ focusedInput })}
+          defaultHighlights={["disabled"]}
+          theme={travelCalendarTheme}
+          statePerMonth={statePerMonthWithTwoWeeksEnabled}
+          extraDayContent={renderDayContent}
+        />
+      );
+    }),
     {
       notes: { markdown }
     }

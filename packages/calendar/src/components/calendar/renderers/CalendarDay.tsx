@@ -1,5 +1,6 @@
 import { Box, Clickable, StandardText, useTheme } from "@stenajs-webui/core";
 import * as React from "react";
+import styled from "@emotion/styled";
 import {
   CalendarDayProps,
   DayState,
@@ -44,56 +45,56 @@ export const CalendarDay = <T extends {}>({
     </Box>
   );
 
+  const WrapperTd = styled.td({
+    ...(theme.CalendarDay.wrapperStyle &&
+      theme.CalendarDay.wrapperStyle(
+        fullTheme,
+        defaultHighlights,
+        dayState,
+        day,
+        week,
+        month,
+        userData
+      )),
+    width: theme.width,
+    height: theme.height
+  });
+
+  const InnerWrapperDiv = styled.div({
+    ...(theme.CalendarDay.innerWrapperStyle &&
+      theme.CalendarDay.innerWrapperStyle(
+        fullTheme,
+        defaultHighlights,
+        dayState,
+        day,
+        week,
+        month,
+        userData
+      )),
+    width: "100%",
+    height: theme.height
+  });
+
+  const CellWrapperDiv = styled.div({
+    ...(theme.CalendarDay.cellWrapperStyle &&
+      theme.CalendarDay.cellWrapperStyle(
+        fullTheme,
+        defaultHighlights,
+        dayState,
+        day,
+        week,
+        month,
+        userData
+      )),
+    width: "100%",
+    height: "100%",
+    position: "relative"
+  });
+
   return (
-    <td
-      style={{
-        ...(theme.CalendarDay.wrapperStyle &&
-          theme.CalendarDay.wrapperStyle(
-            fullTheme,
-            defaultHighlights,
-            dayState,
-            day,
-            week,
-            month,
-            userData
-          )),
-        width: theme.width,
-        height: theme.height
-      }}
-    >
-      <div
-        style={{
-          ...(theme.CalendarDay.innerWrapperStyle &&
-            theme.CalendarDay.innerWrapperStyle(
-              fullTheme,
-              defaultHighlights,
-              dayState,
-              day,
-              week,
-              month,
-              userData
-            )),
-          width: "100%",
-          height: theme.height
-        }}
-      >
-        <div
-          style={{
-            ...(theme.CalendarDay.cellWrapperStyle &&
-              theme.CalendarDay.cellWrapperStyle(
-                fullTheme,
-                defaultHighlights,
-                dayState,
-                day,
-                week,
-                month,
-                userData
-              )),
-            width: "100%",
-            height: "100%",
-            position: "relative"
-          }}
-        >
+    <WrapperTd>
+      <InnerWrapperDiv>
+        <CellWrapperDiv>
           {day.month === month.monthInYear && (
             <>
               {ExtraDayContent && (
@@ -118,9 +119,9 @@ export const CalendarDay = <T extends {}>({
               )}
             </>
           )}
-        </div>
-      </div>
-    </td>
+        </CellWrapperDiv>
+      </InnerWrapperDiv>
+    </WrapperTd>
   );
 };
 

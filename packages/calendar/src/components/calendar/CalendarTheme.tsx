@@ -7,6 +7,7 @@ import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
 import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
+
 import {
   DayData,
   MonthData,
@@ -355,7 +356,7 @@ export const travelCalendarTheme: CalendarTheme = {
       selectedBackground: "#ea143d",
       rangeBorder: "#fce7eb",
       rangeBackground: "#fce7eb",
-      todayBorder: "#ea143d",
+      todayBorder: "transparent",
       todayBackground: "#FFFFFF",
       borderRadius: "6px",
       borderColor: "#f9f6f6",
