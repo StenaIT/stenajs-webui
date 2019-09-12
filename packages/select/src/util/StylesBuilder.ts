@@ -74,6 +74,7 @@ export const createStylesFromTheme = (
     paddingTop: "2px",
     fontFamily: selectTheme.input.fontFamily,
     fontSize: selectTheme.input.fontSize,
+    color: selectTheme.multiSelect.color,
     backgroundColor: selectTheme.multiSelect.backgroundColor
   }),
   indicatorSeparator: base => ({
@@ -133,6 +134,7 @@ export const createStylesFromTheme = (
   }),
   multiValue: base => ({
     ...base,
+    color: selectTheme.multiSelect.color,
     backgroundColor: selectTheme.multiSelect.backgroundColor
   }),
   loadingMessage: base => ({
