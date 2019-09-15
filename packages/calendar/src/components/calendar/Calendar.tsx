@@ -20,6 +20,7 @@ import {
 import { CalendarMonth } from "./CalendarMonth";
 import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
 import { CalendarDay } from "./renderers/CalendarDay";
+import { TranslationContext } from "../../util/date/TranslationContext";
 
 interface CalendarPanelProps<T>
   extends CalendarProps<T>,
@@ -94,9 +95,11 @@ export function Calendar<T extends {}>(props: CalendarProps<T>) {
     initialDate.year,
     initialDate.month
   );
+  const { locale } = React.useContext(TranslationContext);
   const monthRows = getMonthRows(
     year,
     month,
+    locale,
     props.numMonths,
     props.monthsPerRow
   );
@@ -140,14 +143,15 @@ const getInitialDate = (year?: number, month?: number, date?: Date) => {
 const getMonthRows = (
   year: number,
   month: number,
+  locale: Locale,
   numMonths?: number,
   monthsPerRow?: number
 ): Array<Array<MonthData>> => {
   if (numMonths == null) {
-    return [[getMonthInYear(year, month)]];
+    return [[getMonthInYear(year, month, locale)]];
   }
   if (monthsPerRow == null) {
-    return [getMonthsInYear(year, month, numMonths)];
+    return [getMonthsInYear(year, month, numMonths, locale)];
   }
-  return chunk(getMonthsInYear(year, month, numMonths), monthsPerRow);
+  return chunk(getMonthsInYear(year, month, numMonths, locale), monthsPerRow);
 };

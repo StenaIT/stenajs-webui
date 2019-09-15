@@ -77,22 +77,27 @@ export interface MonthData {
 export const getMonthsInYear = (
   year: number,
   startMonth: number,
-  numMonths: number
+  numMonths: number,
+  locale: Locale
 ): Array<MonthData> => {
   const months = [];
   for (let i = 0; i < numMonths; i++) {
-    months.push(getMonthInYear(year, startMonth + i));
+    months.push(getMonthInYear(year, startMonth + i, locale));
   }
   return months;
 };
 
-export const getMonthInYear = (year: number, month: number): MonthData => {
+export const getMonthInYear = (
+  year: number,
+  month: number,
+  locale: Locale
+): MonthData => {
   const yearToUse = year + Math.floor(month / 12);
   const monthToUse = month % 12;
   const firstDayOfMonth = new Date(yearToUse, monthToUse, 1);
   return {
-    monthString: format(firstDayOfMonth, DateFormats.yearAndMonth),
-    name: format(firstDayOfMonth, DateFormats.fullMonthName),
+    monthString: format(firstDayOfMonth, DateFormats.yearAndMonth, { locale }),
+    name: format(firstDayOfMonth, DateFormats.fullMonthName, { locale }),
     year: yearToUse,
     monthInYear: monthToUse,
     weeks: getWeeksForMonth(yearToUse, monthToUse)
