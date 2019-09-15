@@ -18,6 +18,7 @@ import {
 import { CalendarTheme } from "./CalendarTheme";
 import { CalendarWeek } from "./CalendarWeek";
 import { WeekDayCell } from "./renderers/WeekDayCell";
+import { TranslationContext } from "../../util/date/TranslationContext";
 
 export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   month: MonthData;
@@ -47,6 +48,7 @@ export function CalendarMonth<T>({
   extraDayContent,
   defaultHighlights
 }: CalendarMonthProps<T>) {
+  const { weekName } = React.useContext(TranslationContext);
   const { colors } = useThemeFields(
     {
       colors: {
@@ -96,7 +98,7 @@ export function CalendarMonth<T>({
                     alignItems={"center"}
                   >
                     <StandardText color={colors.weekDayTextColor}>
-                      W
+                      {weekName}
                     </StandardText>
                   </Box>
                 </td>

@@ -100,20 +100,21 @@ export const getMonthInYear = (
     name: format(firstDayOfMonth, DateFormats.fullMonthName, { locale }),
     year: yearToUse,
     monthInYear: monthToUse,
-    weeks: getWeeksForMonth(yearToUse, monthToUse)
+    weeks: getWeeksForMonth(yearToUse, monthToUse, locale)
   };
 };
 
 export const getWeeksForMonth = (
   year: number,
   month: number,
+  locale: Locale,
   forceSixWeeks: boolean = true
 ): Array<WeekData> => {
   const firstDayOfMonth = new Date(year, month, 1);
   const firstDayOfFirstWeek = startOfISOWeek(firstDayOfMonth);
   const weeks = [];
   for (let i = 0; i < 6; i++) {
-    const week = getWeekForDate(addWeeks(firstDayOfFirstWeek, i));
+    const week = getWeekForDate(addWeeks(firstDayOfFirstWeek, i), locale);
     if (i > 0 && week.startMonth !== month && !forceSixWeeks) {
       return weeks;
     }
@@ -122,7 +123,10 @@ export const getWeeksForMonth = (
   return weeks;
 };
 
-export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
+export const getWeekForDate = (
+  firstDayOfWeek: Date,
+  locale: Locale
+): WeekData => {
   const isLastWeekOfMonth =
     getMonth(addDays(firstDayOfWeek, 7)) !== getMonth(firstDayOfWeek);
   return {
@@ -131,17 +135,17 @@ export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
     startYear: getYear(firstDayOfWeek),
     endMonth: getMonth(addDays(firstDayOfWeek, 6)),
     endYear: getYear(addDays(firstDayOfWeek, 6)),
-    days: getDaysForWeekForDate(firstDayOfWeek),
+    days: getDaysForWeekForDate(firstDayOfWeek, locale),
     isLastWeekOfMonth
   };
 };
 
-export const createDay = (date: Date): DayData => {
+export const createDay = (date: Date, locale: Locale): DayData => {
   const dayOfWeek = getISODay(date);
   return {
     date,
-    name: format(date, "EEE"),
-    dateString: format(addHours(date, 12), DateFormats.fullDate),
+    name: format(date, "EEE", { locale }),
+    dateString: format(addHours(date, 12), DateFormats.fullDate, { locale }),
     weekNumber: getISOWeek(date),
     year: getYear(date),
     month: getMonth(date),
@@ -154,11 +158,15 @@ export const createDay = (date: Date): DayData => {
   };
 };
 
-export const getDaysForWeekForDate = (firstDayOfWeek: Date): Array<DayData> => {
+export const getDaysForWeekForDate = (
+  firstDayOfWeek: Date,
+  locale: Locale
+): Array<DayData> => {
+  const createLocalizedDay = (date: Date) => createDay(date, locale);
   return eachDayOfInterval({
     start: firstDayOfWeek,
     end: addDays(firstDayOfWeek, 6)
-  }).map(createDay);
+  }).map(createLocalizedDay);
 };
 
 export const getStartDateOfISOWeek = (

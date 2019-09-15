@@ -77,7 +77,7 @@ export interface Translations {
   weekName: string;
 }
 
-export const getTranslations = (language: Language = "sv"): Translations => {
+export const getTranslations = (language: Language = "enGB"): Translations => {
   return {
     locale: locales[language],
     weekName: weekName[language]
