@@ -4,14 +4,14 @@ import {
   DateRangeCalendarProps,
   DateRangeFocusedInput,
   setDayStateValue,
-  useDateRangeCalendarState
+  useDateRangeCalendarState,
+  TranslationContext,
+  getTranslations
 } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
-import { TranslationContext } from "../../../util/date/TranslationContext";
-import { getTranslations } from "../../../util/date/Translations";
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {
