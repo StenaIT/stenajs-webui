@@ -54,23 +54,7 @@ const weekName = {
   sv: "v"
 };
 
-export type Language =
-  | "cs"
-  | "da"
-  | "de"
-  | "enGB"
-  | "et"
-  | "es"
-  | "fi"
-  | "fr"
-  | "it"
-  | "lt"
-  | "lv"
-  | "nl"
-  | "nb"
-  | "pl"
-  | "ru"
-  | "sv";
+export type Language = keyof typeof locales;
 
 export interface Translations {
   locale: Locale;

@@ -23,6 +23,6 @@ export * from "./util/calendar/CalendarIntervalValidator";
 export * from "./util/calendar/CalendarDataFactory";
 export * from "./util/calendar/StateHelper";
 export * from "./util/calendar/StateModifier";
-export * from "./util/date/Translations";
+export * from "./util/date/translations";
 export * from "./util/date/TranslationContext";
 export * from "./types/CalendarTypes";

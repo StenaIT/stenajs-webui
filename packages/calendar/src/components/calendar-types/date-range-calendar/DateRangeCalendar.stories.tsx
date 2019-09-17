@@ -5,7 +5,7 @@ import {
   DateRangeFocusedInput,
   setDayStateValue,
   useDateRangeCalendarState,
-  TranslationContext,
+  TranslationProvider,
   getTranslations
 } from "@stenajs-webui/calendar";
 import { storiesOf } from "@storybook/react";
@@ -151,7 +151,7 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
       endDate: undefined,
       focusedInput: "startDate"
     })(({ store }: { store: Store<State> }) => (
-      <TranslationContext.Provider value={getTranslations("sv")}>
+      <TranslationProvider value={getTranslations("sv")}>
         <DateRangeCalendar
           startDate={store.state.startDate}
           endDate={store.state.endDate}
@@ -160,7 +160,7 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
           setEndDate={endDate => store.set({ endDate })}
           setFocusedInput={focusedInput => store.set({ focusedInput })}
         />
-      </TranslationContext.Provider>
+      </TranslationProvider>
     )),
     {
       notes: { markdown }

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useContext } from "react";
+import { useCallback, useMemo } from "react";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import {
   getStartDateOfISOWeek,
@@ -6,23 +6,22 @@ import {
   WeekData
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
-
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
-import { TranslationContext } from "../../../util/date/TranslationContext";
+import { useTranslation } from "../../../util/date/hooks/UseTranslation";
 
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
   statePerMonth
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const { locale } = useContext(TranslationContext);
+  const { locale } = useTranslation();
   const onClickDay = useCallback(
     day => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(getWeekForDate(day.date, locale)));
       }
     },
-    [onChange]
+    [onChange, locale]
   );
   const onClickWeek = useCallback(
     week => {
@@ -38,7 +37,7 @@ export const useSingleWeekSelection = <T>({
     return weekData
       ? addWeekStateHighlights(statePerMonth, weekData, ["selected"])
       : statePerMonth;
-  }, [value, statePerMonth]);
+  }, [value, statePerMonth, locale]);
 
   const date = useMemo(() => {
     const week = getWeekDataFromWeekString(value, locale);
@@ -46,7 +45,7 @@ export const useSingleWeekSelection = <T>({
       return new Date();
     }
     return week.days[0].date;
-  }, [value]);
+  }, [value, locale]);
 
   return {
     statePerMonth: statePerMonthWithSelection,
