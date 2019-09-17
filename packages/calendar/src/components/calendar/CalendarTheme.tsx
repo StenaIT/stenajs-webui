@@ -41,7 +41,7 @@ export interface SwitchButtonTheme extends ButtonTheme {
 export interface CalendarMonthTheme {
   headerTextColor?: ThemeColorField | string;
   SwitchButton?: SwitchButtonTheme;
-  cellSpacingPx?: number;
+  cellSpacing?: string;
   headerLeftIcon?: IconDefinition;
   headerRightIcon?: IconDefinition;
 }
@@ -376,7 +376,7 @@ export const travelCalendarTheme: CalendarTheme = {
     })
   },
   CalendarMonth: {
-    cellSpacingPx: 2,
+    cellSpacing: "2px",
     SwitchButton: {
       ...defaultButtonTheme,
       bgColor: "##FFFFFF",
