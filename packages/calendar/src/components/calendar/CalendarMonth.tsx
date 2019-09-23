@@ -57,17 +57,12 @@ export function CalendarMonth<T>({
     [theme]
   );
 
-  let tableStyle: React.CSSProperties = {
-    borderSpacing: "0",
-    borderCollapse: "collapse"
+  const tableStyle: React.CSSProperties = {
+    borderSpacing: theme.CalendarMonth.cellSpacing
+      ? theme.CalendarMonth.cellSpacing
+      : 0,
+    borderCollapse: theme.CalendarMonth.cellSpacing ? "separate" : "collapse"
   };
-
-  if (theme.CalendarMonth.cellSpacing) {
-    tableStyle = {
-      borderSpacing: theme.CalendarMonth.cellSpacing,
-      borderCollapse: "separate"
-    };
-  }
 
   const showWeekNumber = theme.WeekNumber.show;
 
