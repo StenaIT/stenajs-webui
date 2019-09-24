@@ -1,9 +1,14 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { Box, Clickable, Row, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  Clickable,
+  Row,
+  StandardText,
+  useThemeFields
+} from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
-import { useThemeFields } from "../../../core/src/theme/hooks/UseThemeSelector";
 
 interface Props {
   onRequestClose?: () => void;
