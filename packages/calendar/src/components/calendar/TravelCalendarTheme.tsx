@@ -80,11 +80,10 @@ export interface CalendarTravelWrapperColors {
 }
 
 export const travelDefaultWrapperStyleProvider = ({
-  borderColor = "separatorLight",
   borderRadius,
   rangeBorderRadius
 }: CalendarTravelWrapperColors): CalendarWrapperStyleProvider<{}> => (
-  theme,
+  _,
   defaultHighlights,
   dayState
 ) => {
@@ -124,8 +123,7 @@ export const travelDefaultWrapperStyleProvider = ({
         ["selectedStart", "selectedEnd"],
         ["0 2px 0 0", "0 0 0 2px"],
         ""
-      ),
-      border: `1px solid ${resolveThemeColor(borderColor, theme)}`
+      )
     };
   }
 
