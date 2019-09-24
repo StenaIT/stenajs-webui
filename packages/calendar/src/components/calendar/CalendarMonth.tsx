@@ -57,12 +57,19 @@ export function CalendarMonth<T>({
     [theme]
   );
 
+  const tableStyle: React.CSSProperties = {
+    borderSpacing: theme.CalendarMonth.cellSpacing
+      ? theme.CalendarMonth.cellSpacing
+      : 0,
+    borderCollapse: theme.CalendarMonth.cellSpacing ? "separate" : "collapse"
+  };
+
   const showWeekNumber = theme.WeekNumber.show;
 
   return (
     <>
       <Box alignItems={"center"}>
-        <table style={{ borderSpacing: 0, borderCollapse: "collapse" }}>
+        <table style={tableStyle}>
           <tbody>
             <tr>
               <td style={{ maxWidth: theme.width }}>
