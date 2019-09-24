@@ -1,8 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
 import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
@@ -60,7 +58,7 @@ type CalendarStyleProvider<TUserData, TResult> = (
   userData?: TUserData
 ) => TResult;
 
-type WrapperStyleProvider<TUserData> = CalendarStyleProvider<
+export type CalendarWrapperStyleProvider<TUserData> = CalendarStyleProvider<
   TUserData,
   CSSProperties | undefined
 >;
@@ -71,13 +69,13 @@ type TextPropsProvider<TUserData> = CalendarStyleProvider<
 >;
 
 export interface CalendarDayTheme<TUserData> {
-  wrapperStyle?: WrapperStyleProvider<TUserData>;
-  innerWrapperStyle?: WrapperStyleProvider<TUserData>;
-  cellWrapperStyle?: WrapperStyleProvider<TUserData>;
+  wrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
+  innerWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
+  cellWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
   textProps?: TextPropsProvider<TUserData>;
 }
 
-interface DefaultWrapperColors {
+export interface CalendarDefaultWrapperColors {
   selectedBorder: string;
   selectedBackground: string;
   rangeBorder: string;
@@ -87,12 +85,6 @@ interface DefaultWrapperColors {
   borderColor?: string;
   borderRadius?: string;
   rangeBorderRadius?: string;
-}
-
-interface DefaultInnerWrapperColors {
-  rangeBackground: string;
-  verticalExpand: string;
-  horizontalExpand: string;
 }
 
 export const defaultWrapperStyleProvider = ({
@@ -105,7 +97,7 @@ export const defaultWrapperStyleProvider = ({
   borderColor = "separatorLight",
   borderRadius,
   rangeBorderRadius
-}: DefaultWrapperColors): WrapperStyleProvider<{}> => (
+}: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
   theme,
   defaultHighlights,
   dayState,
@@ -193,47 +185,6 @@ export const defaultWrapperStyleProvider = ({
       boxSizing: "border-box"
     };
   }
-  return style;
-};
-
-export const defaultInnerWrapperStyleProvider = ({
-  rangeBackground,
-  verticalExpand,
-  horizontalExpand
-}: DefaultInnerWrapperColors): WrapperStyleProvider<{}> => (
-  theme,
-  defaultHighlights,
-  dayState
-) => {
-  let style = {};
-
-  if (rangeBackground) {
-    style = {
-      ...style,
-      padding: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selected", "range"],
-        [undefined, `${verticalExpand} ${horizontalExpand}`],
-        undefined
-      ),
-      margin: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selected", "range"],
-        [undefined, `-${verticalExpand} -${horizontalExpand}`],
-        undefined
-      ),
-      backgroundColor: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selected", "range"],
-        [undefined, resolveThemeColor(rangeBackground, theme)],
-        undefined
-      )
-    };
-  }
-
   return style;
 };
 
@@ -341,58 +292,5 @@ export const extranetCalendarTheme: CalendarTheme = {
   }
 };
 
-export const travelCalendarTheme: CalendarTheme = {
-  width: "47px",
-  height: "38px",
-  WeekNumber: {
-    backgroundColor: "transparent",
-    show: false
-  },
-  WeekDay: {
-    textColor: "#000000"
-  },
-  CalendarDay: {
-    wrapperStyle: defaultWrapperStyleProvider({
-      selectedBorder: "#ea143d",
-      selectedBackground: "#ea143d",
-      rangeBorder: "#fce7eb",
-      rangeBackground: "#fce7eb",
-      todayBorder: "transparent",
-      todayBackground: "#FFFFFF",
-      borderRadius: "6px",
-      borderColor: "#f9f6f6",
-      rangeBorderRadius: "0px"
-    }),
-    innerWrapperStyle: defaultInnerWrapperStyleProvider({
-      rangeBackground: "#fce7eb",
-      verticalExpand: "2px",
-      horizontalExpand: "3px"
-    }),
-    textProps: defaultTextPropsProvider({
-      selectedColor: "#FFFFFF",
-      disabledColor: "#949494",
-      inOtherMonthColor: "green",
-      rangeTextColor: "#d70029"
-    })
-  },
-  CalendarMonth: {
-    cellSpacing: "2px",
-    SwitchButton: {
-      ...defaultButtonTheme,
-      bgColor: "##FFFFFF",
-      textColor: "#000000",
-      borderRadius: "36px",
-      width: "36px",
-      height: "36px",
-      bgColorDisabled: "#f4f4f4",
-      textColorDisabled: "#949494",
-      borderColor: "#949494",
-      borderColorDisabled: "#f4f4f4"
-    },
-    headerLeftIcon: faArrowLeft,
-    headerRightIcon: faArrowRight
-  }
-};
-
-const resolveThemeColor = (s: string, theme: Theme): string =>
+export const resolveThemeColor = (s: string, theme: Theme): string =>
   theme.colors[s] || s;
