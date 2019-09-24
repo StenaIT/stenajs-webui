@@ -94,9 +94,7 @@ export const defaultWrapperStyleProvider = ({
   selectedBorder,
   rangeBorder,
   todayBorder,
-  borderColor = "separatorLight",
-  borderRadius,
-  rangeBorderRadius
+  borderColor = "separatorLight"
 }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
   theme,
   defaultHighlights,
@@ -106,45 +104,6 @@ export const defaultWrapperStyleProvider = ({
   month
 ) => {
   let style = {};
-
-  if (borderRadius && borderRadius !== rangeBorderRadius) {
-    style = {
-      ...style,
-      borderRadius: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "selectedEnd", "range"],
-        [
-          `${borderRadius} ${rangeBorderRadius} ${rangeBorderRadius} ${borderRadius}`,
-          `${rangeBorderRadius} ${borderRadius} ${borderRadius} ${rangeBorderRadius}`,
-          rangeBorderRadius
-        ],
-        borderRadius
-      ),
-      position: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "selectedEnd"],
-        ["relative", "relative"],
-        ""
-      ),
-      left: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "selectedEnd"],
-        ["1px", "-1px"],
-        ""
-      ),
-      padding: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "selectedEnd"],
-        ["0 2px 0 0", "0 0 0 2px"],
-        ""
-      ),
-      border: `1px solid ${resolveThemeColor(borderColor, theme)}`
-    };
-  }
 
   const backgroundColor = dayHighlightSelect(
     dayState,
