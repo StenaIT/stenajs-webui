@@ -27,6 +27,7 @@ storiesOf("select/Select", module)
   .add("multiselect", () => (
     <div style={{ width: "400px" }}>
       <Select
+        hideSelectedOptions={false}
         isMulti
         options={[
           {

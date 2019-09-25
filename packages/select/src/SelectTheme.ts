@@ -43,7 +43,9 @@ export interface SelectTheme {
     hoverBackgroundColor: string;
     minWidth?: string;
     selectedItemTextColor: string;
+    selectedItemHoverTextColor: string;
     selectedItemBackgroundColor: string;
+    selectedItemHoverBackgroundColor: string;
     zIndex: number;
     width?: string;
     whiteSpace?: WhiteSpaceProperty;
@@ -100,7 +102,9 @@ export const defaultSelectTheme: SelectTheme = {
     hoverTextColor: defaultTheme.colors.primaryText,
     hoverBackgroundColor: "#F2F3F5",
     selectedItemTextColor: defaultTheme.colors.primaryText,
+    selectedItemHoverTextColor: defaultTheme.colors.white,
     selectedItemBackgroundColor: "#B9D8DF",
+    selectedItemHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
     zIndex: 1
   },
   menuPortal: {
@@ -157,7 +161,9 @@ export const selectThemeDark: SelectTheme = {
     hoverTextColor: defaultTheme.colors.white,
     hoverBackgroundColor: "#6F7E90",
     selectedItemTextColor: "#226F81",
+    selectedItemHoverTextColor: defaultTheme.colors.white,
     selectedItemBackgroundColor: "#B9D8DF",
+    selectedItemHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
     zIndex: 1
   },
   menuPortal: {
