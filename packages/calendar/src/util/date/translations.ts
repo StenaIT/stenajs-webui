@@ -35,7 +35,10 @@ const locales = {
   ru,
   sv
 };
-const weekName = {
+
+export type Language = keyof typeof locales;
+
+const weekName: Record<Language, string> = {
   cs: "T",
   da: "u",
   de: "w",
@@ -49,12 +52,10 @@ const weekName = {
   lv: "s",
   nl: "w",
   nb: "u",
-  pr: "t",
+  pl: "t",
   ru: "н",
   sv: "v"
 };
-
-export type Language = keyof typeof locales;
 
 export interface Translations {
   locale: Locale;
