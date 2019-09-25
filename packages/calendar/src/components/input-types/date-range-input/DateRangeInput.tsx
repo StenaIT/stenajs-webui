@@ -157,7 +157,7 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
               borderColor={colors.borderColor}
               indent
               spacing
-              shadow={"box"}
+              shadow={"popover"}
             >
               <DateRangeCalendar
                 {...calendarProps}
