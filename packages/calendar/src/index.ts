@@ -16,6 +16,7 @@ export * from "./components/input-types/date-text-input/DateTextInputTheme";
 export * from "./components/input-types/time-text-input/TimeTextInput";
 export * from "./components/calendar/Calendar";
 export * from "./components/calendar/CalendarTheme";
+export * from "./components/calendar/TravelCalendarTheme";
 export * from "./components/calendar/renderers/CalendarDay";
 export * from "./components/calendar/renderers/WeekDayCell";
 export * from "./components/calendar/renderers/WeekNumberCell";

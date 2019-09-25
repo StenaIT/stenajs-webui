@@ -2,7 +2,11 @@
 
 #### Next release
 
-* Coming soon...
+* Calendar
+  * Add `cellSpacing` to `CalendarMonthTheme`
+  * Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons
+  * Add `borderColor`, `borderRadius` and `rangeBorderRadius` to `CalendarDay`'s `wrapperStyle`
+  * Add `rangeBackground`, `verticalExpand` and `horizontalExpand` to `CalendarDay`'s `innerWrapperStyle`
 
 #### 0.0.37
 
@@ -22,6 +26,7 @@
 * Upgrade `date-fns` to `2.0.1`.
 * Add `show` option to `WeekNumber` config used in `CalenderMonth`
 * Add new highlight states to `DayStateHighlight`: `selectedStart` and `selectedEnd`. For compatibility reasons the selected days hove both the old `selected` AND `selectedStart` and/or `selectedEnd`
+* Add `rangeTextColor` to `CalendarDay`'s `textProps`
 * Add `borderColor` (and `borderColorDisabled`) to `ButtonTheme`.
 
 #### 0.0.34

@@ -1,7 +1,11 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
 import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
+
 import {
   DayData,
   MonthData,
@@ -35,6 +39,9 @@ export interface SwitchButtonTheme extends ButtonTheme {
 export interface CalendarMonthTheme {
   headerTextColor?: ThemeColorField | string;
   SwitchButton?: SwitchButtonTheme;
+  cellSpacing?: string;
+  headerLeftIcon?: IconDefinition;
+  headerRightIcon?: IconDefinition;
 }
 
 export interface WeekDayTheme {
@@ -51,7 +58,7 @@ type CalendarStyleProvider<TUserData, TResult> = (
   userData?: TUserData
 ) => TResult;
 
-type WrapperStyleProvider<TUserData> = CalendarStyleProvider<
+export type CalendarWrapperStyleProvider<TUserData> = CalendarStyleProvider<
   TUserData,
   CSSProperties | undefined
 >;
@@ -62,19 +69,22 @@ type TextPropsProvider<TUserData> = CalendarStyleProvider<
 >;
 
 export interface CalendarDayTheme<TUserData> {
-  wrapperStyle?: WrapperStyleProvider<TUserData>;
-  innerWrapperStyle?: WrapperStyleProvider<TUserData>;
-  cellWrapperStyle?: WrapperStyleProvider<TUserData>;
+  wrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
+  innerWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
+  cellWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
   textProps?: TextPropsProvider<TUserData>;
 }
 
-interface DefaultWrapperColors {
+export interface CalendarDefaultWrapperColors {
   selectedBorder: string;
   selectedBackground: string;
   rangeBorder: string;
   rangeBackground: string;
   todayBorder: string;
   todayBackground: string;
+  borderColor?: string;
+  borderRadius?: string;
+  rangeBorderRadius?: string;
 }
 
 export const defaultWrapperStyleProvider = ({
@@ -83,8 +93,9 @@ export const defaultWrapperStyleProvider = ({
   rangeBackground,
   selectedBorder,
   rangeBorder,
-  todayBorder
-}: DefaultWrapperColors): WrapperStyleProvider<{}> => (
+  todayBorder,
+  borderColor = "separatorLight"
+}: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
   theme,
   defaultHighlights,
   dayState,
@@ -92,6 +103,8 @@ export const defaultWrapperStyleProvider = ({
   _,
   month
 ) => {
+  let style = {};
+
   const backgroundColor = dayHighlightSelect(
     dayState,
     defaultHighlights,
@@ -107,6 +120,7 @@ export const defaultWrapperStyleProvider = ({
 
   if (day.month === month.monthInYear) {
     return {
+      ...style,
       backgroundColor,
       borderWidth: "1px",
       borderColor: dayHighlightSelect(
@@ -118,7 +132,7 @@ export const defaultWrapperStyleProvider = ({
           resolveThemeColor(rangeBorder, theme),
           resolveThemeColor(todayBorder, theme)
         ],
-        resolveThemeColor("separatorLight", theme)
+        resolveThemeColor(borderColor, theme)
       ),
       borderCollapse: "collapse",
       borderStyle:
@@ -130,29 +144,32 @@ export const defaultWrapperStyleProvider = ({
       boxSizing: "border-box"
     };
   }
-  return undefined;
+  return style;
 };
 
 interface DefaultTextColors {
   disabledColor: string;
   inOtherMonthColor: string;
   selectedColor: string;
+  rangeTextColor?: string;
 }
 
 export const defaultTextPropsProvider = ({
   selectedColor,
   disabledColor,
-  inOtherMonthColor
+  inOtherMonthColor,
+  rangeTextColor
 }: DefaultTextColors): TextPropsProvider<{}> => {
   return (theme, defaultHighlights, dayState, day, _, month) => {
     const isOtherMonth = day.month !== month.monthInYear;
     const color = dayHighlightSelect(
       dayState,
       defaultHighlights,
-      [isOtherMonth, "selected", "enabled", "disabled"],
+      [isOtherMonth, "selected", "range", "enabled", "disabled"],
       [
         resolveThemeColor(inOtherMonthColor, theme),
         resolveThemeColor(selectedColor, theme),
+        rangeTextColor && resolveThemeColor(rangeTextColor, theme),
         undefined,
         resolveThemeColor(disabledColor, theme)
       ]
@@ -192,7 +209,9 @@ export const defaultCalendarTheme: CalendarTheme = {
     SwitchButton: {
       ...defaultButtonTheme,
       width: "40px"
-    }
+    },
+    headerLeftIcon: faChevronLeft,
+    headerRightIcon: faChevronRight
   }
 };
 
@@ -232,5 +251,5 @@ export const extranetCalendarTheme: CalendarTheme = {
   }
 };
 
-const resolveThemeColor = (s: string, theme: Theme): string =>
+export const resolveThemeColor = (s: string, theme: Theme): string =>
   theme.colors[s] || s;
