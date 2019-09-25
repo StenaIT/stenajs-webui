@@ -1,6 +1,44 @@
 import { StylesConfig } from "react-select/lib/styles";
 import { SelectTheme } from "../SelectTheme";
 
+const resolveOptionBackgroundColor = (
+  selectTheme: SelectTheme,
+  isDisabled: boolean,
+  isSelected: boolean,
+  isFocused: boolean
+): string | undefined => {
+  if (isDisabled) {
+    return selectTheme.menu.disabledBackgroundColor;
+  } else if (isSelected && isFocused) {
+    return selectTheme.menu.selectedItemHoverBackgroundColor;
+  } else if (isSelected) {
+    return selectTheme.menu.selectedItemBackgroundColor;
+  } else if (isFocused) {
+    return selectTheme.menu.hoverBackgroundColor;
+  } else {
+    return undefined;
+  }
+};
+
+const resolveOptionColor = (
+  selectTheme: SelectTheme,
+  isDisabled: boolean,
+  isSelected: boolean,
+  isFocused: boolean
+): string | undefined => {
+  if (isDisabled) {
+    return selectTheme.menu.disabledTextColor;
+  } else if (isSelected && isFocused) {
+    return selectTheme.menu.selectedItemHoverTextColor;
+  } else if (isSelected) {
+    return selectTheme.menu.selectedItemTextColor;
+  } else if (isFocused) {
+    return selectTheme.menu.hoverTextColor;
+  } else {
+    return undefined;
+  }
+};
+
 export const createStylesFromTheme = (
   selectTheme: SelectTheme
 ): StylesConfig => ({
@@ -8,20 +46,13 @@ export const createStylesFromTheme = (
     ...base,
     fontFamily: selectTheme.input.fontFamily,
     fontSize: selectTheme.input.fontSize,
-    backgroundColor: isDisabled
-      ? selectTheme.menu.disabledBackgroundColor
-      : isSelected
-      ? selectTheme.menu.selectedItemBackgroundColor
-      : isFocused
-      ? selectTheme.menu.hoverBackgroundColor
-      : undefined,
-    color: isDisabled
-      ? selectTheme.menu.disabledTextColor
-      : isSelected
-      ? selectTheme.menu.selectedItemTextColor
-      : isFocused
-      ? selectTheme.menu.hoverTextColor
-      : undefined,
+    backgroundColor: resolveOptionBackgroundColor(
+      selectTheme,
+      isDisabled,
+      isSelected,
+      isFocused
+    ),
+    color: resolveOptionColor(selectTheme, isDisabled, isSelected, isFocused),
     cursor: isDisabled ? "not-allowed" : "default",
     whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace
   }),
