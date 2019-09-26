@@ -4,6 +4,7 @@ import {
   OptionsType,
   ValueType
 } from "react-select/lib/types";
+import { DropdownOption } from "../..";
 import {
   allOptionsExists,
   convertDropdownOptionToInternalOption,
@@ -12,7 +13,6 @@ import {
   convertInternalOptionToDropdownOption,
   convertValueToInternalValue,
   createOnChange,
-  DropdownOption,
   InternalDropdownOption,
   Meta
 } from "../multiDropdownUtils";
