@@ -2,14 +2,7 @@ import { Store, withState } from "@dump247/storybook-state";
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import {
-  Box,
-  Row,
-  Space,
-  Spacing,
-  StandardText,
-  ThemeProvider
-} from "@stenajs-webui/core";
+import { Box, Row, Space, Spacing, StandardText } from "@stenajs-webui/core";
 import { Icon, StandardButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";
@@ -137,31 +130,6 @@ storiesOf("modal/Modal", module)
           </Row>
           <Box spacing={2}>{loremIpsumSampleText}</Box>
         </Modal>
-      </>
-    ))
-  )
-  .add(
-    "modal with close button color",
-    withState<State>({
-      isOpen: false
-    })(({ store }: { store: Store<State> }) => (
-      <>
-        <StandardButton
-          onClick={() => store.set({ isOpen: true })}
-          label={"Open modal"}
-        />
-        <ThemeProvider value={{ colors: { interactionBgPrimary: "#2378cd" } }}>
-          <Modal
-            width={"300px"}
-            title={
-              <StandardText fontWeight={"bold"}>Modal title here</StandardText>
-            }
-            isOpen={store.state.isOpen}
-            onRequestClose={() => store.set({ isOpen: false })}
-          >
-            <Box spacing={2}>{loremIpsumSampleText}</Box>
-          </Modal>
-        </ThemeProvider>
       </>
     ))
   )

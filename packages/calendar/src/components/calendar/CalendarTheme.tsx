@@ -48,7 +48,7 @@ export interface WeekDayTheme {
   textColor?: ThemeColorField | string;
 }
 
-type CalendarStyleProvider<TUserData, TResult> = (
+export type CalendarStyleProvider<TUserData, TResult> = (
   theme: Theme,
   defaultHighlights: Array<DayStateHighlight> | undefined,
   dayState: DayState | undefined,
