@@ -2,6 +2,16 @@
 
 #### Next release
 
+* Coming soon...
+
+#### 0.0.38
+
+* New theme for calendar `travelCalendarTheme`.
+* Add unit tests for hooks.
+* Add more flexbox props to `Box`.
+* Add intrinsic div element types to `Box` props type.
+* Add selected item hover colors in `select`.
+
 * Calendar
   * Add `cellSpacing` to `CalendarMonthTheme`
   * Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons
