@@ -5,7 +5,11 @@ import {
   GroupType,
   OptionsType
 } from "react-select/lib/types";
-import { DropdownOption } from "../components/ui/GroupedMultiSelect";
+import {
+  DropdownOption,
+  OnChange,
+  OnChangeValue
+} from "../components/ui/GroupedMultiSelect";
 
 export type InternalDropdownOption<TData> =
   | InternalChildOption<TData>
@@ -17,7 +21,7 @@ interface InternalChildOption<TData> {
   value: string;
 }
 
-export interface InternalParentDropdownOption<TData> {
+interface InternalParentDropdownOption<TData> {
   data: TData;
   label: string;
   value: string;
@@ -47,12 +51,6 @@ export type Meta<TData> =
   | SelectActionMeta<TData>
   | RemoveActionMeta<TData>
   | RestActionMeta;
-
-type OnChangeValue<TData> = OptionsType<DropdownOption<TData>> | undefined;
-export type OnChange<TData> = (
-  value: OnChangeValue<TData>,
-  action: Meta<TData>
-) => void;
 
 const removeGroupedOptions = <TData>(
   removedValue: InternalParentDropdownOption<TData>,

@@ -5,16 +5,28 @@ import * as React from "react";
 import { components } from "react-select/lib/components";
 import { MultiValueProps } from "react-select/lib/components/MultiValue";
 import { OptionProps } from "react-select/lib/components/Option";
-import { GroupedOptionsType, OptionsType } from "react-select/lib/types";
+import {
+  ActionMeta,
+  GroupedOptionsType,
+  OptionsType
+} from "react-select/lib/types";
 import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
   createOnChange,
-  InternalDropdownOption,
-  OnChange
+  InternalDropdownOption
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
+
+export type OnChangeValue<TData> =
+  | OptionsType<DropdownOption<TData>>
+  | undefined;
+
+export type OnChange<TData> = (
+  value: OnChangeValue<TData>,
+  action: ActionMeta
+) => void;
 
 export interface DropdownOption<TData> {
   data: TData;
