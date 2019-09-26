@@ -2,6 +2,7 @@
 
 #### Next release
 
+* Add GroupedMultiSelect component
 * Calendar
   * Add `cellSpacing` to `CalendarMonthTheme`
   * Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons
