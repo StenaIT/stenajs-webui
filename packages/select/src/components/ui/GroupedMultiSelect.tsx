@@ -45,7 +45,7 @@ export interface GroupedMultiSelectProps<TData>
   /**
    * Same as Select prop `component`but without MultiValue and Option since they can not be modified
    */
-  components: Omit<SelectComponentsConfig<TData>, "MultiValue" | "Option">;
+  components?: Omit<SelectComponentsConfig<TData>, "MultiValue" | "Option">;
   /**
    * Same as Select prop `options` but only with GroupOptionsType
    */
