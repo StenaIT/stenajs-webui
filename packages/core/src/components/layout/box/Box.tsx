@@ -9,8 +9,6 @@ import {
 } from "csstype";
 import * as React from "react";
 import {
-  alignItems,
-  AlignItemsProps,
   background,
   BackgroundProps,
   border,
@@ -33,13 +31,8 @@ import {
   BottomProps,
   boxShadow,
   BoxShadowProps,
-  flex,
-  FlexDirectionProps,
-  FlexProps,
-  flexWrap,
-  FlexWrapProps,
-  justifyContent,
-  JustifyContentProps,
+  flexbox,
+  FlexboxProps,
   layout,
   LayoutProps,
   left,
@@ -61,19 +54,15 @@ import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
 import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 import { DivProps } from "../../../types/ElementProps";
 
-type StyledSystemProps = AlignItemsProps &
-  BorderRadiusProps &
+type StyledSystemProps = BorderRadiusProps &
   BorderStyleProps &
   BorderWidthProps &
   BorderLeftProps &
   BorderRightProps &
   BorderTopProps &
   BorderBottomProps &
-  FlexDirectionProps &
-  FlexProps &
-  FlexWrapProps &
+  FlexboxProps &
   LayoutProps &
-  JustifyContentProps &
   OverflowProps &
   PositionProps &
   ZIndexProps &
@@ -169,7 +158,6 @@ const FlexBox = styled("div", {
 })<InnerProps>`
   box-sizing: border-box;
   display: ${props => props.display || "flex"};
-  ${alignItems};
   ${background};
   ${border};
   ${borderRight};
@@ -182,11 +170,9 @@ const FlexBox = styled("div", {
   ${borderWidth};
   ${boxShadow};
   ${({ color }) => (color ? `color: ${color};` : "")}
-  ${flex};
+  ${flexbox};
   flex-direction: ${props =>
     (props.row && "row") || props.flexDirection || "column"};
-  ${flexWrap};
-  ${justifyContent};
   ${overflow};
   ${getPaddingRule}
   ${position};
