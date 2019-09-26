@@ -42,9 +42,21 @@ export interface GroupedMultiSelectProps<TData>
     SelectProps<DropdownOption<TData>>,
     "options" | "onChange" | "value" | "components"
   > {
+  /**
+   * Same as Select prop `component`but without MultiValue and Option since they can not be modified
+   */
   components: Omit<SelectComponentsConfig<TData>, "MultiValue" | "Option">;
+  /**
+   * Same as Select prop `options` but only with GroupOptionsType
+   */
   options: GroupedOptionsType<DropdownOption<TData>>;
+  /**
+   * Same as Select prop `onChange` but only with GroupOptionsType
+   */
   onChange: OnChange<TData>;
+  /**
+   * Same as Select prop `value` but only with GroupOptionsType
+   */
   value: OptionsType<DropdownOption<TData>> | undefined;
 }
 
