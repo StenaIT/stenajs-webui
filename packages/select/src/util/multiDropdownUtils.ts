@@ -5,12 +5,7 @@ import {
   GroupType,
   OptionsType
 } from "react-select/lib/types";
-
-export interface DropdownOption<TData> {
-  data: TData;
-  label: string;
-  value: string;
-}
+import { DropdownOption } from "../components/ui/GroupedMultiSelect";
 
 export type InternalDropdownOption<TData> =
   | InternalChildOption<TData>

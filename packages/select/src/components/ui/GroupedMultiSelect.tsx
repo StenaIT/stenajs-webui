@@ -11,11 +11,16 @@ import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
   createOnChange,
-  DropdownOption,
   InternalDropdownOption,
   OnChange
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
+
+export interface DropdownOption<TData> {
+  data: TData;
+  label: string;
+  value: string;
+}
 
 export interface GroupedMultiSelectProps<TData>
   extends Omit<
