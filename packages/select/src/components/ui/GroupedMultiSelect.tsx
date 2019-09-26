@@ -6,6 +6,7 @@ import { components } from "react-select/lib/components";
 import { MultiValueProps } from "react-select/lib/components/MultiValue";
 import { OptionProps } from "react-select/lib/components/Option";
 import { GroupedOptionsType, OptionsType } from "react-select/lib/types";
+import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
@@ -26,18 +27,25 @@ export interface GroupedMultiSelectProps<TData>
   value: OptionsType<DropdownOption<TData>> | undefined;
 }
 
+const resolveIconColor = (
+  theme: SelectTheme,
+  isFocused: boolean
+): string | undefined =>
+  isFocused
+    ? theme.menu.selectedItemHoverTextColor
+    : theme.menu.selectedItemTextColor;
+
 export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
   value,
-  theme,
+  theme = defaultSelectTheme,
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
 }: GroupedMultiSelectProps<TData>): React.ReactElement<
   GroupedMultiSelectProps<TData>
 > => {
-  const iconColor = "#fff"; // TODO
   const Option = (props: OptionProps<DropdownOption<TData>>) => {
     if (props.data.internalOptions) {
       return (
@@ -51,7 +59,11 @@ export const GroupedMultiSelect = <TData extends {}>({
               {formatGroupLabel ? formatGroupLabel(props.data) : props.label}
             </StandardText>
             {props.isSelected && (
-              <Icon color={iconColor} icon={faCheck} size={12} />
+              <Icon
+                color={resolveIconColor(theme, props.isFocused)}
+                icon={faCheck}
+                size={12}
+              />
             )}
           </Box>
         </components.Option>
@@ -71,7 +83,11 @@ export const GroupedMultiSelect = <TData extends {}>({
               {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
             </SmallText>
             {props.isSelected && (
-              <Icon color={iconColor} icon={faCheck} size={12} />
+              <Icon
+                color={resolveIconColor(theme, props.isFocused)}
+                icon={faCheck}
+                size={12}
+              />
             )}
           </Box>
         </Row>
