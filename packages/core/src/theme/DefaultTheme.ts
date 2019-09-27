@@ -64,6 +64,7 @@ export const defaultTheme: Theme = {
   },
   shadows: {
     modal: "rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;",
+    popover: "rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;",
     box: "rgba(0, 0, 0, 0.15) 0 2px 4px 0;"
   }
 };

@@ -1,43 +1,37 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { Row, SeparatorLine, Spacing, StandardText } from "@stenajs-webui/core";
-import { StandardButton } from "@stenajs-webui/elements";
-import { createStandardButtonTheme } from "@stenajs-webui/theme";
+import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
+import { ModalHeader } from "./ModalHeader";
 
 export interface ModalProps extends BaseModalProps {
   header?: ReactNode;
   headerText?: string;
+  spacing?: number;
+  indent?: number;
 }
-
-const closeButtonTheme = createStandardButtonTheme({ height: "32px" });
 
 export const Modal: React.FC<ModalProps> = ({
   header,
   headerText,
   children,
+  spacing,
+  indent,
   ...props
-}) => (
-  <BaseModal {...props}>
-    <Row
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      spacing={1}
-      indent={1}
-    >
-      {headerText && (
-        <StandardText fontWeight={"bold"}>{headerText}</StandardText>
-      )}
-      {header}
-      <StandardButton
-        leftIcon={faTimes}
-        width={"32px"}
-        onClick={props.onRequestClose as any}
-        buttonTheme={closeButtonTheme}
+}) => {
+  const activeSpacing = typeof spacing === "number" ? spacing : 1;
+  const activeIndent = typeof indent === "number" ? indent : 1;
+
+  return (
+    <BaseModal {...props}>
+      <ModalHeader
+        onRequestClose={props.onRequestClose}
+        header={header}
+        headerText={headerText}
       />
-    </Row>
-    <SeparatorLine />
-    <Spacing indent={1}>{children}</Spacing>
-  </BaseModal>
-);
+      <Box spacing={activeSpacing} indent={activeIndent}>
+        {children}
+      </Box>
+    </BaseModal>
+  );
+};
