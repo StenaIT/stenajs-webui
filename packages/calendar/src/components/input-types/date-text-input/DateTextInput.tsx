@@ -13,12 +13,13 @@ import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
 import * as ReactDOM from "react-dom";
-import { Manager, Popper, Reference } from "react-popper";
+import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
   SingleDateCalendarProps
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
+import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
 import {
   DateTextInputTheme,
   defaultDateTextInputTheme
@@ -118,33 +119,24 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   const popperContent = (
-    <Popper placement={"bottom-end"}>
-      {({ ref, style }) =>
-        open && (
-          <div ref={ref} style={style}>
-            <Box
-              innerRef={popupRef}
-              background={colors.backgroundColor}
-              borderColor={colors.borderColor}
-              borderStyle={"solid"}
-              borderWidth={"1px"}
-              indent={1}
-            >
-              <SingleDateCalendar
-                {...calendarProps}
-                onChange={onCalendarSelectDate}
-                value={
-                  value && dateIsValid
-                    ? parse(value, dateFormat, new Date())
-                    : undefined
-                }
-                theme={theme.calendar}
-              />
-            </Box>
-          </div>
-        )
-      }
-    </Popper>
+    <CalendarPopupBox
+      innerRef={popupRef}
+      background={colors.backgroundColor}
+      borderColor={colors.borderColor}
+      zIndex={zIndex}
+      open={open}
+    >
+      <SingleDateCalendar
+        {...calendarProps}
+        onChange={onCalendarSelectDate}
+        value={
+          value && dateIsValid
+            ? parse(value, dateFormat, new Date())
+            : undefined
+        }
+        theme={theme.calendar}
+      />
+    </CalendarPopupBox>
   );
   return (
     <Box innerRef={outsideRef} width={width}>

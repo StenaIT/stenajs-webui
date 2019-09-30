@@ -46,6 +46,20 @@ storiesOf("calendar/Input/DateInput", module)
       <DateInput value={undefined} />
     </div>
   ))
+  .add(
+    "using portal",
+    withState<DateInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateInputState> }) => (
+      <div style={{ display: "inline-block" }}>
+        <DateInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+          portalTarget={document.body}
+        />
+      </div>
+    ))
+  )
   .add("custom date format", () => (
     <div style={{ display: "inline-block" }}>
       <DateInput value={new Date()} displayFormat={"dd/MM/yyyy"} />
