@@ -1,9 +1,9 @@
-import { Box } from "@stenajs-webui/core";
-import * as React from "react";
-import { Ref } from "react";
-import { Popper } from "react-popper";
+import { Box } from '@stenajs-webui/core';
+import * as React from 'react';
+import { Ref } from 'react';
+import { Popper } from 'react-popper';
 
-interface Props {
+interface CalendarPopperContent {
   background?: string;
   borderColor?: string;
   innerRef: Ref<HTMLDivElement>;
@@ -11,7 +11,7 @@ interface Props {
   zIndex?: number;
 }
 
-export const CalendarPopupBox: React.FC<Props> = ({
+export const CalendarPopperContent: React.FC<CalendarPopperContent> = ({
   children,
   background,
   borderColor,

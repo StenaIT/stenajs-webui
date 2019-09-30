@@ -19,7 +19,7 @@ import {
   DateRangeCalendarOnChangeValue,
   DateRangeCalendarProps
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
-import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
+import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -136,7 +136,7 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
   );
 
   const popperContent = (
-    <CalendarPopupBox
+    <CalendarPopperContent
       innerRef={popupRef}
       background={colors.backgroundColor}
       borderColor={colors.borderColor}
@@ -159,7 +159,7 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
         setFocusedInput={setFocusedInput}
         theme={calendarTheme}
       />
-    </CalendarPopupBox>
+    </CalendarPopperContent>
   );
   return (
     <Box innerRef={outsideRef}>

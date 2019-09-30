@@ -19,7 +19,7 @@ import {
   SingleDateCalendar,
   SingleDateCalendarProps
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
+import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   DateTextInputTheme,
   defaultDateTextInputTheme
@@ -119,7 +119,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   const popperContent = (
-    <CalendarPopupBox
+    <CalendarPopperContent
       innerRef={popupRef}
       background={colors.backgroundColor}
       borderColor={colors.borderColor}
@@ -136,7 +136,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         }
         theme={theme.calendar}
       />
-    </CalendarPopupBox>
+    </CalendarPopperContent>
   );
   return (
     <Box innerRef={outsideRef} width={width}>

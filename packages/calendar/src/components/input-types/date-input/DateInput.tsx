@@ -12,7 +12,7 @@ import * as ReactDOM from "react-dom";
 import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
+import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -106,7 +106,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   );
 
   const popperContent = (
-    <CalendarPopupBox
+    <CalendarPopperContent
       open={showingCalendar}
       innerRef={popupRef}
       background={colors.backgroundColor}
@@ -119,7 +119,7 @@ export const DateInput: React.FC<DateInputProps> = ({
         value={value}
         theme={calendarTheme}
       />
-    </CalendarPopupBox>
+    </CalendarPopperContent>
   );
 
   return (
