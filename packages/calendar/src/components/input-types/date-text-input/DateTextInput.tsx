@@ -157,6 +157,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 onValueChange={onValueChangeHandler}
                 placeholder={placeholder}
                 value={value}
+                size={9}
               />
             </Box>
           )}

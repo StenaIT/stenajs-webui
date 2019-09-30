@@ -1,24 +1,25 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
-  Absolute,
   Box,
-  Relative,
   Row,
   Space,
   StandardText,
-  useOnClickOutside,
+  useMultiOnClickOutside,
   useThemeFields
 } from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useRef } from "react";
+import * as ReactDOM from "react-dom";
+import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendar,
   DateRangeCalendarOnChangeValue,
   DateRangeCalendarProps
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -53,6 +54,10 @@ export interface DateRangeInputProps {
    * @default End date
    */
   placeholderEndDate?: string;
+  /**
+   * Portal target, HTML element. If not set, portal is not used.
+   */
+  portalTarget?: HTMLElement | null;
 
   /**
    * Z-index of the calendar overlay.
@@ -72,6 +77,12 @@ export interface DateRangeInputProps {
   theme?: DateRangeInputTheme;
 
   /**
+   * Width of the input element.
+   * * @default 125px
+   */
+  width?: string;
+
+  /**
    * The calendar theme to use.
    */
   calendarTheme?: CalendarTheme;
@@ -87,9 +98,11 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
   placeholderEndDate = "End date",
+  portalTarget,
   value,
   onChange,
   zIndex = 100,
+  width = "125px",
   toText = "to",
   theme = defaultDateRangeInputTheme,
   calendarTheme = defaultCalendarTheme,
@@ -107,8 +120,10 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
     setFocusedInput,
     focusedInput
   } = useDateRangeInput(value, onChange);
-  const ref = useRef(null);
-  useOnClickOutside(ref, hideCalendar);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const outsideRef = useRef<HTMLDivElement>(null);
+
+  useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
 
   const { colors } = useThemeFields(
     {
@@ -120,65 +135,80 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
     []
   );
 
+  const popperContent = (
+    <CalendarPopupBox
+      innerRef={popupRef}
+      background={colors.backgroundColor}
+      borderColor={colors.borderColor}
+      zIndex={zIndex}
+      open={showingCalendar}
+    >
+      <DateRangeCalendar
+        {...calendarProps}
+        startDateInFocus={
+          focusedInput === "startDate" || focusedInput === "endDate"
+            ? value[focusedInput]
+            : undefined
+        }
+        onChange={onSelectDateRange}
+        startDate={value.startDate}
+        endDate={value.endDate}
+        setStartDate={setStartDate}
+        setEndDate={setEndDate}
+        focusedInput={focusedInput}
+        setFocusedInput={setFocusedInput}
+        theme={calendarTheme}
+      />
+    </CalendarPopupBox>
+  );
   return (
-    <Box>
-      <Row alignItems={"center"}>
-        <StandardTextInput
-          iconLeft={faCalendarAlt}
-          onFocus={showCalendarStartDate}
-          forceFocusHighlight={
-            focusedInput === "startDate" && showingFocusHighlight
-          }
-          value={value.startDate ? format(value.startDate, displayFormat) : ""}
-          placeholder={placeholderStartDate}
-          onChange={noop}
-          size={9}
-        />
-        <Space />
-        <StandardText>{toText}</StandardText>
-        <Space />
-        <StandardTextInput
-          iconLeft={faCalendarAlt}
-          onFocus={showCalendarEndDate}
-          forceFocusHighlight={
-            focusedInput === "endDate" && showingFocusHighlight
-          }
-          value={value.endDate ? format(value.endDate, displayFormat) : ""}
-          placeholder={placeholderEndDate}
-          onChange={noop}
-          size={9}
-        />
-      </Row>
-      {showingCalendar && (
-        <Relative>
-          <Absolute zIndex={zIndex} innerRef={ref}>
-            <Box
-              background={colors.backgroundColor}
-              borderColor={colors.borderColor}
-              indent
-              spacing
-              shadow={"popover"}
-            >
-              <DateRangeCalendar
-                {...calendarProps}
-                startDateInFocus={
-                  focusedInput === "startDate" || focusedInput === "endDate"
-                    ? value[focusedInput]
-                    : undefined
-                }
-                onChange={onSelectDateRange}
-                startDate={value.startDate}
-                endDate={value.endDate}
-                setStartDate={setStartDate}
-                setEndDate={setEndDate}
-                focusedInput={focusedInput}
-                setFocusedInput={setFocusedInput}
-                theme={calendarTheme}
-              />
+    <Box innerRef={outsideRef}>
+      <Manager>
+        <Reference>
+          {({ ref }) => (
+            <Box innerRef={ref}>
+              <Row alignItems={"center"}>
+                <StandardTextInput
+                  iconLeft={faCalendarAlt}
+                  onFocus={showCalendarStartDate}
+                  forceFocusHighlight={
+                    focusedInput === "startDate" && showingFocusHighlight
+                  }
+                  value={
+                    value.startDate
+                      ? format(value.startDate, displayFormat)
+                      : ""
+                  }
+                  placeholder={placeholderStartDate}
+                  onChange={noop}
+                  width={width}
+                  size={9}
+                />
+                <Space />
+                <StandardText>{toText}</StandardText>
+                <Space />
+                <StandardTextInput
+                  iconLeft={faCalendarAlt}
+                  onFocus={showCalendarEndDate}
+                  forceFocusHighlight={
+                    focusedInput === "endDate" && showingFocusHighlight
+                  }
+                  value={
+                    value.endDate ? format(value.endDate, displayFormat) : ""
+                  }
+                  placeholder={placeholderEndDate}
+                  onChange={noop}
+                  width={width}
+                  size={9}
+                />
+              </Row>
             </Box>
-          </Absolute>
-        </Relative>
-      )}
+          )}
+        </Reference>
+        {portalTarget
+          ? ReactDOM.createPortal(popperContent, portalTarget)
+          : popperContent}
+      </Manager>
     </Box>
   );
 };

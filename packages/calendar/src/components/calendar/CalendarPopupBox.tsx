@@ -23,7 +23,7 @@ export const CalendarPopupBox: React.FC<Props> = ({
     <Popper placement={"bottom-end"}>
       {({ ref, style }) =>
         open && (
-          <div ref={ref} style={{ zIndex: zIndex, ...style }}>
+          <Box innerRef={ref} style={{ zIndex: zIndex, ...style }}>
             <Box
               innerRef={innerRef}
               background={background}
@@ -34,7 +34,7 @@ export const CalendarPopupBox: React.FC<Props> = ({
             >
               {children}
             </Box>
-          </div>
+          </Box>
         )
       }
     </Popper>

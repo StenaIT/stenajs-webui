@@ -33,6 +33,23 @@ storiesOf("calendar/Input/DateRangeInput", module)
       <DateRangeInput value={{}} />
     </div>
   ))
+  .add(
+    "using portal",
+    withState<DateRangeState>({
+      value: {
+        endDate: undefined,
+        startDate: undefined
+      }
+    })(({ store }: { store: Store<DateRangeState> }) => (
+      <div style={{ display: "inline-block" }}>
+        <DateRangeInput
+          value={store.state.value}
+          onChange={value => store.set({ value })}
+          portalTarget={document.body}
+        />
+      </div>
+    ))
+  )
   .add("with preselected value", () => (
     <div style={{ display: "inline-block" }}>
       <DateRangeInput
