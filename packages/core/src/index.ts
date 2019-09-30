@@ -10,6 +10,7 @@ export * from "./theme/theme-types/ThemeShadows";
 export * from "./components/decorators/separatorline/SeparatorLine";
 
 export * from "./components/interaction/Clickable";
+export * from "./components/interaction/hooks/UseDefaultClickable";
 
 export * from "./components/layout/absolute/Absolute";
 export * from "./components/layout/relative/Relative";

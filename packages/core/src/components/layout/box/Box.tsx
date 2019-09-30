@@ -5,7 +5,9 @@ import {
   BorderColorProperty,
   BorderProperty,
   BoxShadowProperty,
-  ColorProperty
+  ColorProperty,
+  CursorProperty,
+  OutlineProperty
 } from "csstype";
 import * as React from "react";
 import {
@@ -76,6 +78,7 @@ type FlexBoxProps = BoxProps;
 type ShadowType = keyof ThemeShadows;
 
 export interface BoxProps extends StyledSystemProps, DivProps {
+  element?: "button" | "span" | "div";
   /**
    * Sets the text color of the box.
    */
@@ -98,6 +101,10 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    */
   shadow?: ShadowType | BoxShadowProperty;
   /**
+   * Changes the cursor of the mouse.
+   */
+  cursor?: CursorProperty;
+  /**
    * Sets the background of the box.
    */
   background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
@@ -118,6 +125,26 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    */
   hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
   /**
+   * Sets the opacity of the box when hovering with mouse.
+   */
+  hoverOpacity?: number;
+  /**
+   * Sets the background of the box when active.
+   */
+  activeBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box when active.
+   */
+  activeBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the opacity of the box when active.
+   */
+  activeOpacity?: number;
+  /**
+   * Sets the shadow of the box when active.
+   */
+  activeBoxShadow?: ShadowType | BoxShadowProperty;
+  /**
    * Sets the background of the box when the box is in focus.
    */
   focusBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
@@ -125,6 +152,18 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    * Sets the border of the box when the box is in focus.
    */
   focusBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the opacity of the box when the box is in focus.
+   */
+  focusOpacity?: number;
+  /**
+   * Sets the outline of the box when the box is in focus.
+   */
+  focusOutline?: OutlineProperty<TLengthStyledSystem>;
+  /**
+   * Sets the shadow of the box when active.
+   */
+  focusBoxShadow?: ShadowType | BoxShadowProperty;
   /**
    * Sets the background of the box when focus is within the box.
    */
@@ -135,6 +174,14 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    * Sets the border of the box when focus is within the box.
    */
   focusWithinBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  /**
+   * Sets the border of the box when focus is within the box.
+   */
+  focusWithinOpacity?: number;
+  /**
+   * Sets the shadow of the box when focus is within the box.
+   */
+  focusWithinBoxShadow?: ShadowType | BoxShadowProperty;
 }
 
 const excludedProps = ["spacing", "indent", "width", "height", "color"];
@@ -143,10 +190,8 @@ const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
 
 const getPaddingRule = (props: InnerProps) =>
-  props.spacing || props.indent
-    ? `padding: ${numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
-    ${numberOrZero(props.indent) * (props.themeIndent || 10)}px;`
-    : "";
+  `padding: ${numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
+    ${numberOrZero(props.indent) * (props.themeIndent || 10)}px;`;
 
 type InnerProps = FlexBoxProps &
   BoxShadowProps &
@@ -182,26 +227,46 @@ const FlexBox = styled("div", {
   ${right};
   ${top};
   ${bottom};
+  ${({ cursor }) => (cursor ? `cursor: ${cursor};` : "")}
   :hover {
     ${({ hoverBackground }) =>
       hoverBackground ? `background: ${hoverBackground};` : ""}
     ${({ hoverBorder }) => (hoverBorder ? `border: ${hoverBorder};` : "")}
+    ${({ hoverOpacity }) => (hoverOpacity ? `opacity: ${hoverOpacity};` : "")}
+  }
+  :active {
+    ${({ activeBackground }) =>
+      activeBackground ? `background: ${activeBackground};` : ""}
+    ${({ activeBorder }) => (activeBorder ? `border: ${activeBorder};` : "")}
+    ${({ activeOpacity }) =>
+      activeOpacity ? `opacity: ${activeOpacity};` : ""}
+    ${({ activeBoxShadow }) =>
+      activeBoxShadow ? `box-shadow: ${activeBoxShadow};` : ""}
   }
   :focus {
     ${({ focusBackground }) =>
       focusBackground ? `background: ${focusBackground};` : ""}
     ${({ focusBorder }) => (focusBorder ? `border: ${focusBorder};` : "")}
+    ${({ focusOpacity }) => (focusOpacity ? `opacity: ${focusOpacity};` : "")}
+    ${({ focusOutline }) => (focusOutline ? `outline: ${focusOutline};` : "")}
+    ${({ focusBoxShadow }) =>
+      focusBoxShadow ? `box-shadow: ${focusBoxShadow};` : ""}
   }
   :focus-within {
     ${({ focusWithinBackground }) =>
       focusWithinBackground ? `background: ${focusWithinBackground};` : ""}
     ${({ focusWithinBorder }) =>
       focusWithinBorder ? `border: ${focusWithinBorder};` : ""}
+    ${({ focusWithinOpacity }) =>
+      focusWithinOpacity ? `opacity: ${focusWithinOpacity};` : ""}
+    ${({ focusWithinBoxShadow }) =>
+      focusWithinBoxShadow ? `box-shadow: ${focusWithinBoxShadow};` : ""}
   }
 `;
 
 export const Box: React.FC<BoxProps> = ({
   innerRef,
+  element,
   shadow,
   background,
   border,
@@ -221,7 +286,10 @@ export const Box: React.FC<BoxProps> = ({
     }),
     [shadow, background, border, borderColor, color]
   );
-  return <FlexBox ref={innerRef} {...boxProps} {...props} />;
+
+  const FlexBoxComponent = element ? FlexBox.withComponent(element) : FlexBox;
+
+  return <FlexBoxComponent ref={innerRef} {...boxProps} {...props} />;
 };
 
 const numberOrZero = (num: number | boolean | undefined): number => {

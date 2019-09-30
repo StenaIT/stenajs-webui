@@ -1,6 +1,20 @@
-import { Clickable, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  Clickable,
+  StandardText,
+  useDefaultClickable
+} from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+
+const ClickableHook = () => {
+  const boxProps = useDefaultClickable();
+  return (
+    <Box {...boxProps} onClick={() => alert("Click")}>
+      <StandardText>Click me!</StandardText>
+    </Box>
+  );
+};
 
 storiesOf("core/Interaction/Clickable", module)
   .add("default", () => (
@@ -8,6 +22,7 @@ storiesOf("core/Interaction/Clickable", module)
       <StandardText>Click me!</StandardText>
     </Clickable>
   ))
+  .add("Box with clickable hook", () => <ClickableHook />)
   .add("with DOM id and class name", () => (
     <Clickable
       onClick={() => alert("Clicked!")}
