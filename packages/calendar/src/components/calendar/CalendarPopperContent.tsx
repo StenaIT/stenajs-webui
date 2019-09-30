@@ -1,7 +1,7 @@
-import { Box } from '@stenajs-webui/core';
-import * as React from 'react';
-import { Ref } from 'react';
-import { Popper } from 'react-popper';
+import { Box } from "@stenajs-webui/core";
+import * as React from "react";
+import { Ref } from "react";
+import { Popper } from "react-popper";
 
 interface CalendarPopperContent {
   background?: string;
