@@ -102,9 +102,9 @@ export const defaultSelectTheme: SelectTheme = {
     hoverTextColor: defaultTheme.colors.primaryText,
     hoverBackgroundColor: "#F2F3F5",
     selectedItemTextColor: defaultTheme.colors.primaryText,
-    selectedItemHoverTextColor: defaultTheme.colors.white,
-    selectedItemBackgroundColor: "#B9D8DF",
-    selectedItemHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
+    selectedItemHoverTextColor: defaultTheme.colors.primaryText,
+    selectedItemBackgroundColor: defaultTheme.colors.white,
+    selectedItemHoverBackgroundColor: "#F2F3F5",
     zIndex: 1
   },
   menuPortal: {
@@ -160,10 +160,10 @@ export const selectThemeDark: SelectTheme = {
     textColor: defaultTheme.colors.white,
     hoverTextColor: defaultTheme.colors.white,
     hoverBackgroundColor: "#6F7E90",
-    selectedItemTextColor: "#226F81",
+    selectedItemTextColor: defaultTheme.colors.white,
     selectedItemHoverTextColor: defaultTheme.colors.white,
-    selectedItemBackgroundColor: "#B9D8DF",
-    selectedItemHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
+    selectedItemBackgroundColor: "#4a5d73",
+    selectedItemHoverBackgroundColor: "#6F7E90",
     zIndex: 1
   },
   menuPortal: {
