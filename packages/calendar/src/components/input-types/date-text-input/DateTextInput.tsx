@@ -12,7 +12,8 @@ import {
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
-import * as Popper from "react-popper";
+import * as ReactDOM from "react-dom";
+import { Manager, Popper, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -42,6 +43,8 @@ export interface DateTextInputProps<T>
   hideCalenderIcon?: boolean;
   /** Placeholder for the input, @default YYYY-MM-DD */
   placeholder?: string;
+  /** Portal target, HTML element. If not set, portal is not used. */
+  portalTarget?: HTMLElement | null;
   /**  Z-index of the calendar overlay, @default 100 */
   zIndex?: number;
   /** The date text input theme to use. */
@@ -55,6 +58,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   disableCalender = false,
   onValueChange,
   placeholder = "yyyy-mm-dd",
+  portalTarget,
   value,
   width = "125px",
   zIndex = 100,
@@ -113,10 +117,39 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const invalid: boolean =
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
+  const popperContent = (
+    <Popper placement={"bottom-end"}>
+      {({ ref, style }) =>
+        open && (
+          <div ref={ref} style={style}>
+            <Box
+              innerRef={popupRef}
+              background={colors.backgroundColor}
+              borderColor={colors.borderColor}
+              borderStyle={"solid"}
+              borderWidth={"1px"}
+              indent={1}
+            >
+              <SingleDateCalendar
+                {...calendarProps}
+                onChange={onCalendarSelectDate}
+                value={
+                  value && dateIsValid
+                    ? parse(value, dateFormat, new Date())
+                    : undefined
+                }
+                theme={theme.calendar}
+              />
+            </Box>
+          </div>
+        )
+      }
+    </Popper>
+  );
   return (
     <Box innerRef={outsideRef} width={width}>
-      <Popper.Manager>
-        <Popper.Reference>
+      <Manager>
+        <Reference>
           {({ ref }) => (
             <Box innerRef={ref}>
               <StandardTextInput
@@ -135,35 +168,11 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
               />
             </Box>
           )}
-        </Popper.Reference>
-        <Popper.Popper placement={"bottom-end"}>
-          {({ ...props }) =>
-            open && (
-              <div {...props}>
-                <Box
-                  innerRef={popupRef}
-                  background={colors.backgroundColor}
-                  borderColor={colors.borderColor}
-                  borderStyle={"solid"}
-                  borderWidth={"1px"}
-                  indent={1}
-                >
-                  <SingleDateCalendar
-                    {...calendarProps}
-                    onChange={onCalendarSelectDate}
-                    value={
-                      value && dateIsValid
-                        ? parse(value, dateFormat, new Date())
-                        : undefined
-                    }
-                    theme={theme.calendar}
-                  />
-                </Box>
-              </div>
-            )
-          }
-        </Popper.Popper>
-      </Popper.Manager>
+        </Reference>
+        {portalTarget
+          ? ReactDOM.createPortal(popperContent, portalTarget)
+          : popperContent}
+      </Manager>
     </Box>
   );
 };

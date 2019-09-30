@@ -79,6 +79,18 @@ storiesOf("calendar/Input/DateTextInput", module)
     ))
   )
   .add(
+    "using portal",
+    withState<DateTextInputState>({
+      value: undefined
+    })(({ store }: { store: Store<DateTextInputState> }) => (
+      <DateTextInput
+        value={store.state.value}
+        onValueChange={value => store.set({ value })}
+        portalTarget={document.body}
+      />
+    ))
+  )
+  .add(
     "custom calendar props",
     withState<DateTextInputState>({
       value: undefined
