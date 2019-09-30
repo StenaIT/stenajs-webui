@@ -1,5 +1,10 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { Omit, useOnClickOutside, useThemeFields } from "@stenajs-webui/core";
+import {
+  Box,
+  Omit,
+  useMultiOnClickOutside,
+  useThemeFields
+} from "@stenajs-webui/core";
 import {
   StandardTextInput,
   StandardTextInputProps
@@ -7,12 +12,12 @@ import {
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
+import * as Popper from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
   SingleDateCalendarProps
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
 import {
   DateTextInputTheme,
   defaultDateTextInputTheme
@@ -58,7 +63,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const outsideRef = useRef<HTMLDivElement>(null);
 
   const { colors } = useThemeFields(
     {
@@ -78,7 +84,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     setOpen(false);
   }, [setOpen]);
 
-  useOnClickOutside(ref, closeCalendar);
+  useMultiOnClickOutside([popupRef, outsideRef], closeCalendar);
 
   const onValueChangeHandler = useCallback(
     value => {
@@ -108,39 +114,56 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   return (
-    <>
-      <StandardTextInput
-        {...props}
-        theme={theme.standardTextInput}
-        invalid={invalid}
-        iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
-        onClickLeft={
-          !hideCalenderIcon && !disableCalender ? toggleCalendar : undefined
-        }
-        onValueChange={onValueChangeHandler}
-        placeholder={placeholder}
-        value={value}
-        width={width}
-      />
-      {open && (
-        <CalendarPopupBox
-          innerRef={ref}
-          background={colors.backgroundColor}
-          borderColor={colors.borderColor}
-          zIndex={zIndex}
-        >
-          <SingleDateCalendar
-            {...calendarProps}
-            onChange={onCalendarSelectDate}
-            value={
-              value && dateIsValid
-                ? parse(value, dateFormat, new Date())
-                : undefined
-            }
-            theme={theme.calendar}
-          />
-        </CalendarPopupBox>
-      )}
-    </>
+    <Box innerRef={outsideRef} width={width}>
+      <Popper.Manager>
+        <Popper.Reference>
+          {({ ref }) => (
+            <Box innerRef={ref}>
+              <StandardTextInput
+                {...props}
+                theme={theme.standardTextInput}
+                invalid={invalid}
+                iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
+                onClickLeft={
+                  !hideCalenderIcon && !disableCalender
+                    ? toggleCalendar
+                    : undefined
+                }
+                onValueChange={onValueChangeHandler}
+                placeholder={placeholder}
+                value={value}
+              />
+            </Box>
+          )}
+        </Popper.Reference>
+        <Popper.Popper placement={"bottom-end"}>
+          {({ ...props }) =>
+            open && (
+              <div {...props}>
+                <Box
+                  innerRef={popupRef}
+                  background={colors.backgroundColor}
+                  borderColor={colors.borderColor}
+                  borderStyle={"solid"}
+                  borderWidth={"1px"}
+                  indent={1}
+                >
+                  <SingleDateCalendar
+                    {...calendarProps}
+                    onChange={onCalendarSelectDate}
+                    value={
+                      value && dateIsValid
+                        ? parse(value, dateFormat, new Date())
+                        : undefined
+                    }
+                    theme={theme.calendar}
+                  />
+                </Box>
+              </div>
+            )
+          }
+        </Popper.Popper>
+      </Popper.Manager>
+    </Box>
   );
 };
