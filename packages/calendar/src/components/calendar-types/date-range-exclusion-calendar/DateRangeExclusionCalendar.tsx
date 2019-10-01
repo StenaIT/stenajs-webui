@@ -4,17 +4,17 @@ import {
   CalendarWithMonthSwitcherProps
 } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
-import { useMultiDateSelection } from "./UseMultiDateSelection";
+import { useDateRangeExclusionSelection } from "./UseDateRangeExclusionSelection";
 
-export interface MultiDateCalendarProps<T>
+export interface DateRangeExclusionCalendarProps<T>
   extends CalendarWithMonthSwitcherProps<T> {
   value?: Array<Date>;
   onChange?: (value: Array<Date>) => void;
 }
 
-export function MultiDateCalendar<T extends {}>(
-  props: MultiDateCalendarProps<T>
+export function DateRangeExclusionCalendar<T extends {}>(
+  props: DateRangeExclusionCalendarProps<T>
 ) {
-  const selectionProps = useMultiDateSelection(props);
+  const selectionProps = useDateRangeExclusionSelection(props);
   return <CalendarWithMonthSwitcher<T> {...props} {...selectionProps} />;
 }

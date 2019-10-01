@@ -3,10 +3,12 @@ export * from "./components/calendar-types/date-range-calendar/hooks/UseDateRang
 export * from "./components/calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
 export * from "./components/calendar-types/single-date-calendar/SingleDateCalendar";
 export * from "./components/calendar-types/single-date-calendar/UseSingleDateSelection";
-export * from "./components/calendar-types/single-week-calendar/SingleWeekCalendar";
-export * from "./components/calendar-types/single-week-calendar/UseSingleWeekSelection";
 export * from "./components/calendar-types/multi-date-calendar/MultiDateCalendar";
 export * from "./components/calendar-types/multi-date-calendar/UseMultiDateSelection";
+export * from "./components/calendar-types/single-week-calendar/SingleWeekCalendar";
+export * from "./components/calendar-types/single-week-calendar/UseSingleWeekSelection";
+export * from "./components/calendar-types/date-range-exclusion-calendar/DateRangeExclusionCalendar";
+export * from "./components/calendar-types/date-range-exclusion-calendar/UseDateRangeExclusionSelection";
 export * from "./components/input-types/date-input/DateInput";
 export * from "./components/input-types/date-input/DateInputTheme";
 export * from "./components/input-types/date-range-input/DateRangeInput";

@@ -4,20 +4,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   CalendarTheme,
   extranetCalendarTheme,
+  DateRangeExclusionCalendar,
   OnClickWeek,
   RenderWeekNumber,
   setDayStateValue,
-  MultiDateCalendar,
   WeekData,
   WeekNumberCell
 } from "@stenajs-webui/calendar";
-import { Box, Row, Space } from "@stenajs-webui/core";
+import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
 
 interface State {
-  value?: Array<Date>;
+  value: Array<Date>;
 }
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
@@ -44,27 +44,34 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-storiesOf("calendar/Calendar/MultiDateCalendar", module)
+storiesOf("calendar/Calendar/DateRangeExclusionCalendar", module)
   .add(
     "standard",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
-        onChange={value => {
-          console.log("value", value);
-          store.set({ value });
-        }}
-        value={store.state.value}
-      />
+      <>
+        <DateRangeExclusionCalendar
+          onChange={value => store.set({ value })}
+          value={store.state.value}
+        />
+        <Space />
+        <Box background={"#eee"} spacing={2} indent={2}>
+          <StandardText>Click to select date range.</StandardText>
+          <Space />
+          <StandardText>
+            Hold ctrl (or cmd) and click to toggle individual dates.
+          </StandardText>
+        </Box>
+      </>
     ))
   )
   .add(
     "today highlighted",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         highlightToday
         onChange={value => store.set({ value })}
         value={store.state.value}
@@ -74,9 +81,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with disabled date tomorrow",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         statePerMonth={disabledTomorrow}
@@ -86,9 +93,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with disabled as default",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         defaultHighlights={["disabled"]}
         onChange={value => store.set({ value })}
         value={store.state.value}
@@ -99,9 +106,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with month switcher below",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         monthSwitcherPlacement={"below"}
@@ -111,9 +118,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with multiple months",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         numMonths={3}
         value={store.state.value}
@@ -123,9 +130,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with multiple rows",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         numMonths={6}
         monthsPerRow={3}
@@ -136,7 +143,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with custom week content",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => {
       const renderWeekNumber: RenderWeekNumber = (
         week: WeekData,
@@ -166,7 +173,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
       };
 
       return (
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
           renderWeekNumber={renderWeekNumber}
@@ -177,9 +184,9 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with custom content",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         extraDayContent={() => (
@@ -193,16 +200,16 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
   .add(
     "with instance custom theme",
     withState<State>({
-      value: undefined
+      value: []
     })(({ store }: { store: Store<State> }) => (
       <Row>
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
           theme={extranetCalendarTheme}
         />
         <Space num={2} />
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
         />
