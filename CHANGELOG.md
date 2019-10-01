@@ -4,11 +4,18 @@
 
 * Coming soon...
 
+## 0.0.40
+
+### Fixes
+
+* `onRequestClose` on `Modal` and `BaseModal` props is now optional.
+
 ## 0.0.39
 
 ### Breaking changes
 
 * `MultiDateCalendar` is renamed to `DateRangeExclusionCalendar`.
+* `onRequestClose` on `Modal` and `BaseModal` props is no longer optional. Fixed in 0.0.40.
 
 ### New components
 
