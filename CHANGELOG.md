@@ -6,10 +6,15 @@
 
 * `MultiDateCalendar` is renamed to `DateRangeExclusionCalendar`.
 
-### New features
+### New components
 
 * Add new `MultiDateCalendar`.
 * Add `GroupedMultiSelect` component
+
+### New features
+
+* Add `portalTarget` to `Popover`.
+* add `portalTarget` to `DateTextInput`, `DateInput` and `DateRangeInput`.
 
 ## 0.0.38
 
