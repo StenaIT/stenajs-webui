@@ -17,9 +17,11 @@ export const useMultiOnClickOutside = (
     const listener = (event: TouchEvent | MouseEvent) => {
       // Do nothing if clicking ref's element or descendent elements
 
-      const allNotContains = refs.every(
-        ref => ref.current && !ref.current.contains(event.target)
-      );
+      const allNotContains = refs
+        .filter(ref => ref.current)
+        .every(ref => {
+          return ref.current && !ref.current.contains(event.target);
+        });
 
       if (!allNotContains) {
         return;

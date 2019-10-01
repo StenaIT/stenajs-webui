@@ -60,6 +60,9 @@ describe("useOnClickOutside", () => {
     const {
       result: { current: ref2 }
     } = renderHook(() => useRef<EventTarget | null>(button2));
+    const {
+      result: { current: nullRef }
+    } = renderHook(() => useRef<EventTarget | null>(null));
     const handler = jest.fn();
     const event = document.createEvent("MouseEvent");
     event.initMouseEvent(
@@ -79,7 +82,7 @@ describe("useOnClickOutside", () => {
       options.button,
       null
     );
-    renderHook(() => useMultiOnClickOutside([ref, ref2], handler));
+    renderHook(() => useMultiOnClickOutside([ref, ref2, nullRef], handler));
     document.body.appendChild(button);
     document.body.appendChild(button2);
     document.dispatchEvent(event);
