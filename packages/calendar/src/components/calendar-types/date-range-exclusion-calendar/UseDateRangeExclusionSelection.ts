@@ -15,13 +15,13 @@ import {
   DateRangeCalendarOnChangeValue,
   DateRangeFocusedInput
 } from "../date-range-calendar/DateRangeCalendar";
-import { DateRangeExclusionCalendar } from "./DateRangeExclusionCalendar";
+import { DateRangeExclusionCalendarProps } from "./DateRangeExclusionCalendar";
 
 export const useDateRangeExclusionSelection = <T>({
   onChange,
   value,
   statePerMonth
-}: DateRangeExclusionCalendar<T>): Partial<CalendarProps<T>> => {
+}: DateRangeExclusionCalendarProps<T>): Partial<CalendarProps<T>> => {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
