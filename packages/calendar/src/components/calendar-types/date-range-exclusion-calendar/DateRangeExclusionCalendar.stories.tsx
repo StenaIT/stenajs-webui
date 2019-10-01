@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   CalendarTheme,
   extranetCalendarTheme,
-  MultiDateCalendar,
+  DateRangeExclusionCalendar,
   OnClickWeek,
   RenderWeekNumber,
   setDayStateValue,
@@ -44,14 +44,14 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-storiesOf("calendar/Calendar/MultiDateCalendar", module)
+storiesOf("calendar/Calendar/DateRangeExclusionCalendar", module)
   .add(
     "standard",
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
       <>
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
         />
@@ -71,7 +71,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         highlightToday
         onChange={value => store.set({ value })}
         value={store.state.value}
@@ -83,7 +83,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         statePerMonth={disabledTomorrow}
@@ -95,7 +95,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         defaultHighlights={["disabled"]}
         onChange={value => store.set({ value })}
         value={store.state.value}
@@ -108,7 +108,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         monthSwitcherPlacement={"below"}
@@ -120,7 +120,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         numMonths={3}
         value={store.state.value}
@@ -132,7 +132,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         numMonths={6}
         monthsPerRow={3}
@@ -173,7 +173,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
       };
 
       return (
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
           renderWeekNumber={renderWeekNumber}
@@ -186,7 +186,7 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     withState<State>({
       value: []
     })(({ store }: { store: Store<State> }) => (
-      <MultiDateCalendar
+      <DateRangeExclusionCalendar
         onChange={value => store.set({ value })}
         value={store.state.value}
         extraDayContent={() => (
@@ -203,13 +203,13 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
       value: []
     })(({ store }: { store: Store<State> }) => (
       <Row>
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
           theme={extranetCalendarTheme}
         />
         <Space num={2} />
-        <MultiDateCalendar
+        <DateRangeExclusionCalendar
           onChange={value => store.set({ value })}
           value={store.state.value}
         />
