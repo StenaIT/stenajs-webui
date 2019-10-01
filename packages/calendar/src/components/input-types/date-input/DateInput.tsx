@@ -1,12 +1,18 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { useOnClickOutside, useThemeFields } from "@stenajs-webui/core";
+import {
+  Box,
+  useMultiOnClickOutside,
+  useThemeFields
+} from "@stenajs-webui/core";
 import { StandardTextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useRef } from "react";
+import * as ReactDOM from "react-dom";
+import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopupBox } from "../../calendar/CalendarPopupBox";
+import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
   defaultCalendarTheme
@@ -37,6 +43,10 @@ export interface DateInputProps<T = {}> {
    */
   placeholder?: string;
   /**
+   *  Portal target, HTML element. If not set, portal is not used.
+   */
+  portalTarget?: HTMLElement | null;
+  /**
    * Z-index of the calendar overlay.
    * @default 100
    */
@@ -45,6 +55,11 @@ export interface DateInputProps<T = {}> {
    * The theme to use.
    */
   theme?: DateInputTheme;
+  /**
+   * Width of the input element.
+   * * @default 125px
+   */
+  width?: string;
   /**
    * The calendar theme to use.
    */
@@ -64,7 +79,9 @@ export const DateInput: React.FC<DateInputProps> = ({
   calendarProps,
   openOnMount,
   onClose,
-  onChange
+  onChange,
+  portalTarget,
+  width = "125px"
 }) => {
   const {
     hideCalendar,
@@ -73,8 +90,10 @@ export const DateInput: React.FC<DateInputProps> = ({
     showCalendar
   } = useDateInput(onChange, onClose, openOnMount);
 
-  const ref = useRef(null);
-  useOnClickOutside(ref, hideCalendar);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const outsideRef = useRef<HTMLDivElement>(null);
+
+  useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
 
   const { colors } = useThemeFields(
     {
@@ -86,34 +105,47 @@ export const DateInput: React.FC<DateInputProps> = ({
     [theme]
   );
 
-  return (
-    <>
-      <StandardTextInput
-        backgroundColor={backgroundColor}
-        iconLeft={faCalendarAlt}
-        onFocus={showCalendar}
-        onClickLeft={showCalendar}
-        value={value ? format(value, displayFormat) : ""}
-        placeholder={placeholder}
-        size={9}
-        forceFocusHighlight={showingCalendar}
-        focusOnMount={openOnMount}
+  const popperContent = (
+    <CalendarPopperContent
+      open={showingCalendar}
+      innerRef={popupRef}
+      background={colors.backgroundColor}
+      borderColor={colors.borderColor}
+      zIndex={zIndex}
+    >
+      <SingleDateCalendar
+        {...calendarProps}
+        onChange={onSelectDate}
+        value={value}
+        theme={calendarTheme}
       />
-      {showingCalendar && (
-        <CalendarPopupBox
-          innerRef={ref}
-          background={colors.backgroundColor}
-          borderColor={colors.borderColor}
-          zIndex={zIndex}
-        >
-          <SingleDateCalendar
-            {...calendarProps}
-            onChange={onSelectDate}
-            value={value}
-            theme={calendarTheme}
-          />
-        </CalendarPopupBox>
-      )}
-    </>
+    </CalendarPopperContent>
+  );
+
+  return (
+    <Box innerRef={outsideRef} width={width}>
+      <Manager>
+        <Reference>
+          {({ ref }) => (
+            <Box innerRef={ref}>
+              <StandardTextInput
+                backgroundColor={backgroundColor}
+                iconLeft={faCalendarAlt}
+                onFocus={showCalendar}
+                onClickLeft={showCalendar}
+                value={value ? format(value, displayFormat) : ""}
+                placeholder={placeholder}
+                size={9}
+                forceFocusHighlight={showingCalendar}
+                focusOnMount={openOnMount}
+              />
+            </Box>
+          )}
+        </Reference>
+        {portalTarget
+          ? ReactDOM.createPortal(popperContent, portalTarget)
+          : popperContent}
+      </Manager>
+    </Box>
   );
 };
