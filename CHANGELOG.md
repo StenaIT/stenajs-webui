@@ -1,10 +1,17 @@
 # Changelog
 
-#### Next release
+## Next release
 
-* Add GroupedMultiSelect component
+### Breaking changes
 
-#### 0.0.38
+* `MultiDateCalendar` is renamed to `DateRangeExclusionCalendar`.
+
+### New features
+
+* Add new `MultiDateCalendar`.
+* Add `GroupedMultiSelect` component
+
+## 0.0.38
 
 * New theme for calendar `travelCalendarTheme`.
 * Add unit tests for hooks.
@@ -18,20 +25,20 @@
   * Add `borderColor`, `borderRadius` and `rangeBorderRadius` to `CalendarDay`'s `wrapperStyle`
   * Add `rangeBackground`, `verticalExpand` and `horizontalExpand` to `CalendarDay`'s `innerWrapperStyle`
 
-#### 0.0.37
+## 0.0.37
 
 * Add `color` in theme for `multiValue` in `Select`.
 * Fix typings for `useBoolean `hook. 
 * Add innerRef to all buttons.
 * Fix a bug in textInput that caused console to log error for MozAppearance.
 
-#### 0.0.36
+## 0.0.36
 
 * Add `ActionMenu` and `ActionDropdown` component to `elements`.
 * Add `useElementFocus` hook to `core`.
 * Add `useMouseIsEntered` hook to `core`.
 
-#### 0.0.35
+## 0.0.35
 
 * Upgrade `date-fns` to `2.0.1`.
 * Add `show` option to `WeekNumber` config used in `CalenderMonth`
@@ -39,7 +46,7 @@
 * Add `rangeTextColor` to `CalendarDay`'s `textProps`
 * Add `borderColor` (and `borderColorDisabled`) to `ButtonTheme`.
 
-#### 0.0.34
+## 0.0.34
 
 * Add first version of `@stenajs-webui/redux`.
 * Add `commit-reducer` feature for Redux.
@@ -51,7 +58,7 @@
 * Add `fontWeight` to `ButtonTheme`.
 * Remove letter spacing in buttons.
 
-#### 0.0.33
+## 0.0.33
 
 * Add first version of `@stenajs-webui/tooltip`.
 * Add `WithTooltip` component.
@@ -66,7 +73,7 @@
 * Add `useDomId` hook to `core`. Generates a unique id, that is guaranteed to persist through component lifecycle.
 * Fix eslint in build process.
 
-#### 0.0.32
+## 0.0.32
 
 * Add first version of `@stenajs-webui/input-mask`.
 * Add `MaskedStandardTextInput` component, and `useMaskedInput` hook.
@@ -76,38 +83,38 @@
 * Add stories for responsive `Box`.
 * Add story for aria label on `Box`.
 
-#### 0.0.31
+## 0.0.31
 
 * Add first version of `@stenajs-webui/modal`
 * `ThemeProvider` now merges the provided theme with the theme from parent context
 * Add missing dependency for `useCallback` in `Checkbox` causing `onValueChange` to become outdated
 
-#### 0.0.30
+## 0.0.30
 
 * Set `box-sizing: border-box` on `Box`
 * Fix centering for `Icon`
     * This also centers `Checkbox` icon
 
-#### 0.0.29
+## 0.0.29
 
 * Fix hard dependency on `fontawesome-common-types`
 * Fix warning for babel emotion plugin
 
-#### 0.0.28
+## 0.0.28
 
 * Fix a bug in `Checkbox` that caused `onChange`/`onValueChange` to be called twice
 
-#### 0.0.27
+## 0.0.27
 
 * Replace `lodash-es` with `lodash`
 
-#### 0.0.26
+## 0.0.26
 
 * Allow `.` and `/` in `DateTextInput`
 * Add support for `indeterminate` to `Checkbox`.
 * Add ability to hide left side icon in `DateTextInput`.
 
-#### 0.0.25
+## 0.0.25
 
 * Add `HeaderText` component.
 * Add `LoadingScreen` and `LoadingPanel` components.
@@ -115,7 +122,7 @@
 * Add `Notification` component.
 * Fix styling of grid in grid examples.
 
-#### 0.0.24
+## 0.0.24
 
 * Add `NavBar`, `NavBarButton` and `NavBarMenuButton`.
 * Add prop `textColor` to `Button`.
