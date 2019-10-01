@@ -8,6 +8,9 @@ import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
 
 export interface SelectProps<T> extends Omit<Props<T>, "theme"> {
+  /**
+   * The Select theme to use.
+   */
   theme?: SelectTheme;
 }
 

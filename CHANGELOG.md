@@ -2,7 +2,7 @@
 
 #### Next release
 
-* Coming soon...
+* Add GroupedMultiSelect component
 
 #### 0.0.38
 
