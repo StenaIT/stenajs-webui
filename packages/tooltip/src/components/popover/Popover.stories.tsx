@@ -1,3 +1,4 @@
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Box } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
@@ -43,6 +44,21 @@ storiesOf("tooltip/Popover", module)
       <Box indent={5} spacing={5} display={"inline-block"}>
         <Popover content={<ActionPrompt />} trigger={"click"}>
           <Icon icon={faTrash} />
+        </Popover>
+      </Box>
+    ),
+    { notes: { markdown } }
+  )
+  .add(
+    "using portal",
+    () => (
+      <Box indent={5} spacing={5} display={"inline-block"}>
+        <Popover
+          content={<ActionPrompt />}
+          trigger={"click"}
+          portalTarget={document.body}
+        >
+          <Icon icon={faInfo} />
         </Popover>
       </Box>
     ),
