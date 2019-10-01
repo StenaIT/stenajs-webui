@@ -29,7 +29,7 @@ const fadeIn = keyframes`
 export interface BaseModalProps extends ReactModal.Props {
   width?: string;
   background?: ThemeColorField | string;
-  onRequestClose: () => void;
+  onRequestClose?: () => void;
 }
 
 export const BaseModal: React.FC<BaseModalProps> = ({
