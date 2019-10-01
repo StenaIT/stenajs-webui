@@ -21,7 +21,7 @@ export const useMultiDateSelection = <T>({
         onChange([...(value || []), day.date]);
       }
     },
-    [onChange]
+    [onChange, value]
   );
   const statePerMonthWithSelectedDate = useMemo(() => {
     if (!value) {

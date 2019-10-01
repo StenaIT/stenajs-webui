@@ -2,6 +2,10 @@
 
 ## Next release
 
+* Coming soon...
+
+## 0.0.39
+
 ### Breaking changes
 
 * `MultiDateCalendar` is renamed to `DateRangeExclusionCalendar`.
