@@ -23,7 +23,7 @@ export const CalendarPopperContent: React.FC<CalendarPopperContent> = ({
     <Popper placement={"bottom-end"}>
       {({ ref, style }) =>
         open && (
-          <Box innerRef={ref} style={{ zIndex: zIndex, ...style }}>
+          <Box innerRef={ref} zIndex={zIndex} style={style}>
             <Box
               innerRef={innerRef}
               background={background}
