@@ -2,7 +2,9 @@
 
 ## Next release
 
-* Coming soon...
+### Fixes
+
+* Fix bug when deselecting option from `GroupedMultiSelect`.
 
 ## 0.0.40
 
@@ -20,7 +22,7 @@
 ### New components
 
 * Add new `MultiDateCalendar`.
-* Add `GroupedMultiSelect` component
+* Add `GroupedMultiSelect` component.
 
 ### New features
 
@@ -36,10 +38,10 @@
 * Add selected item hover colors in `select`.
 
 * Calendar
-  * Add `cellSpacing` to `CalendarMonthTheme`
-  * Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons
-  * Add `borderColor`, `borderRadius` and `rangeBorderRadius` to `CalendarDay`'s `wrapperStyle`
-  * Add `rangeBackground`, `verticalExpand` and `horizontalExpand` to `CalendarDay`'s `innerWrapperStyle`
+  * Add `cellSpacing` to `CalendarMonthTheme`.
+  * Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons.
+  * Add `borderColor`, `borderRadius` and `rangeBorderRadius` to `CalendarDay`'s `wrapperStyle`.
+  * Add `rangeBackground`, `verticalExpand` and `horizontalExpand` to `CalendarDay`'s `innerWrapperStyle`.
 
 ## 0.0.37
 
@@ -66,7 +68,7 @@
 
 * Add first version of `@stenajs-webui/redux`.
 * Add `commit-reducer` feature for Redux.
-* Add `Drawer`
+* Add `Drawer` component.
 * Add `useArraySet` hook.
 * Update design of `Spinner`.
 * Add `InputSpinner` which is used in buttons and input fields.

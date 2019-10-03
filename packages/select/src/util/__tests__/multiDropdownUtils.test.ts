@@ -276,9 +276,17 @@ describe("multiDropdownUtils", () => {
             const selectedOptions: OptionsType<
               InternalDropdownOption<string>
             > = convertGroupedDropdownOptionsToInternalOptions(options);
-
-            newOnChange([selectedOptions[2], selectedOptions[4]], meta);
+            newOnChange(
+              [
+                selectedOptions[0],
+                selectedOptions[1],
+                selectedOptions[2],
+                selectedOptions[4]
+              ],
+              meta
+            );
             const expected: ValueType<DropdownOption<string>> = [
+              convertDropdownOptionToInternalOption(options[0].options[0]),
               convertDropdownOptionToInternalOption(options[1].options[1])
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
