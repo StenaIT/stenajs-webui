@@ -2,6 +2,10 @@
 
 ## Next release
 
+* Coming soon...
+
+## 0.0.41
+
 ### Fixes
 
 * Fix bug when deselecting option from `GroupedMultiSelect`.
