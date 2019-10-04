@@ -122,23 +122,15 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
           meta
         );
       } else {
-        const parentOption = findParentOption(selectedInternalOptions, meta);
-        if (parentOption) {
-          onChange(
-            selectedInternalOptions
-              .filter(
-                selectedInternalOption =>
-                  !isEqual(selectedInternalOption, parentOption)
-              )
-              .map(convertInternalOptionToDropdownOption),
-            meta
-          );
-        } else {
-          onChange(
-            selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-            meta
-          );
-        }
+        onChange(
+          selectedInternalOptions
+            .filter(
+              selectedInternalOption =>
+                !("internalOptions" in selectedInternalOption)
+            )
+            .map(convertInternalOptionToDropdownOption),
+          meta
+        );
       }
       break;
     case "remove-value":
