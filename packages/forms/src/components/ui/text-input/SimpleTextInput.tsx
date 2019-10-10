@@ -162,7 +162,8 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   min,
   max,
   step,
-  inputRef
+  inputRef,
+  ...inputProps
 }) => {
   const [wasCancelled, setWasCancelled] = useState(false);
   const internalRef = useRef<HTMLInputElement | null>(null);
@@ -291,6 +292,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
 
   return (
     <StyledInput
+      {...inputProps}
       placeholderColor={colors.placeholderColor}
       backgroundColor={colors.backgroundColor}
       backgroundColorDisabled={colors.backgroundColorDisabled}
