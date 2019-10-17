@@ -2,7 +2,7 @@
 
 ## Next release
 
-* Coming soon...
+* Allow inputs `-+*<>` in grid when `allowedInputType='all'`.
 
 ## 0.0.42
 
