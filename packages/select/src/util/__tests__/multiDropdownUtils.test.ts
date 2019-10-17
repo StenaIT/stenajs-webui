@@ -231,6 +231,60 @@ describe("multiDropdownUtils", () => {
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
         });
+
+        describe("when all sub options in another is selected", () => {
+          it("works", () => {
+            const onChange = jest.fn();
+            const options: GroupedOptionsType<DropdownOption<string>> = [
+              {
+                label: "CA",
+                value: "CA",
+                options: [
+                  {
+                    value: "Mattias",
+                    label: "Mattias",
+                    data: "Mattias data"
+                  }
+                ]
+              },
+              {
+                label: "Freight",
+                value: "Freight",
+                options: [
+                  {
+                    value: "Johan",
+                    label: "Johan",
+                    data: "Johan data"
+                  },
+                  {
+                    value: "Dennis the menace",
+                    label: "Dennis the menace",
+                    data: "Dennis data"
+                  }
+                ]
+              }
+            ];
+            const newOnChange = createOnChange(onChange);
+            const selectedOptions: OptionsType<
+              InternalDropdownOption<string>
+            > = convertGroupedDropdownOptionsToInternalOptions(options);
+            const meta: Meta<string> = {
+              action: "select-option",
+              option: selectedOptions[3]
+            };
+
+            newOnChange(
+              [selectedOptions[0], selectedOptions[1], selectedOptions[3]],
+              meta
+            );
+
+            const expected: ValueType<DropdownOption<string>> = [
+              options[0].options[0],
+              options[1].options[0]
+            ];
+            expect(onChange).toHaveBeenCalledWith(expected, meta);
+          });
+        });
       });
     });
 
@@ -548,6 +602,173 @@ describe("multiDropdownUtils", () => {
           > = convertGroupedDropdownOptionsToInternalOptions(options);
           const meta: Meta<string> = {
             action: "remove-value",
+            removedValue: selectedOptions[2]
+          };
+
+          newOnChange(
+            [
+              selectedOptions[1],
+              selectedOptions[2],
+              selectedOptions[3],
+              selectedOptions[4]
+            ],
+            meta
+          );
+          const expected: ValueType<DropdownOption<string>> = [
+            options[0].options[0]
+          ];
+          expect(onChange).toHaveBeenCalledWith(expected, meta);
+        });
+      });
+    });
+
+    describe("pop-value", () => {
+      describe("when clicking option", () => {
+        describe("when option is in a selected group", () => {
+          it("works", () => {
+            const onChange = jest.fn();
+            const options: GroupedOptionsType<DropdownOption<string>> = [
+              {
+                label: "CA",
+                value: "CA",
+                options: [
+                  {
+                    value: "Mattias",
+                    label: "Mattias",
+                    data: "Mattias data"
+                  }
+                ]
+              },
+              {
+                label: "Freight",
+                value: "Freight",
+                options: [
+                  {
+                    value: "Johan",
+                    label: "Johan",
+                    data: "Johan data"
+                  },
+                  {
+                    value: "Dennis the menace",
+                    label: "Dennis the menace",
+                    data: "Dennis data"
+                  }
+                ]
+              }
+            ];
+            const newOnChange = createOnChange(onChange);
+            const meta: Meta<string> = {
+              action: "pop-value",
+              removedValue: options[1].options[0]
+            };
+            const selectedOptions: OptionsType<
+              InternalDropdownOption<string>
+            > = convertGroupedDropdownOptionsToInternalOptions(options);
+            newOnChange(
+              [
+                selectedOptions[0],
+                selectedOptions[1],
+                selectedOptions[2],
+                selectedOptions[4]
+              ],
+              meta
+            );
+            const expected: ValueType<DropdownOption<string>> = [
+              convertDropdownOptionToInternalOption(options[0].options[0]),
+              convertDropdownOptionToInternalOption(options[1].options[1])
+            ];
+            expect(onChange).toHaveBeenCalledWith(expected, meta);
+          });
+        });
+
+        describe("when option is not in a selected group", () => {
+          it("works", () => {
+            const onChange = jest.fn();
+            const options: GroupedOptionsType<DropdownOption<string>> = [
+              {
+                label: "CA",
+                value: "CA",
+                options: [
+                  {
+                    value: "Mattias",
+                    label: "Mattias",
+                    data: "Mattias data"
+                  }
+                ]
+              },
+              {
+                label: "Freight",
+                value: "Freight",
+                options: [
+                  {
+                    value: "Johan",
+                    label: "Johan",
+                    data: "Johan data"
+                  },
+                  {
+                    value: "Dennis the menace",
+                    label: "Dennis the menace",
+                    data: "Dennis data"
+                  }
+                ]
+              }
+            ];
+            const newOnChange = createOnChange(onChange);
+            const meta: Meta<string> = {
+              action: "pop-value",
+              removedValue: options[0].options[0]
+            };
+            const selectedOptions: OptionsType<
+              InternalDropdownOption<string>
+            > = convertGroupedDropdownOptionsToInternalOptions(options);
+
+            newOnChange([selectedOptions[3]], meta);
+            const expected: ValueType<DropdownOption<string>> = [
+              convertDropdownOptionToInternalOption(options[1].options[0])
+            ];
+            expect(onChange).toHaveBeenCalledWith(expected, meta);
+          });
+        });
+      });
+
+      describe("when clicking optionsHeader", () => {
+        it("works", () => {
+          const onChange = jest.fn();
+          const options: GroupedOptionsType<DropdownOption<string>> = [
+            {
+              label: "CA",
+              value: "CA",
+              options: [
+                {
+                  value: "Mattias",
+                  label: "Mattias",
+                  data: "Mattias data"
+                }
+              ]
+            },
+            {
+              label: "Freight",
+              value: "Freight",
+              options: [
+                {
+                  value: "Johan",
+                  label: "Johan",
+                  data: "Johan data"
+                },
+                {
+                  value: "Dennis the menace",
+                  label: "Dennis the menace",
+                  data: "Dennis data"
+                }
+              ]
+            }
+          ];
+          const newOnChange = createOnChange(onChange);
+          const selectedOptions: OptionsType<
+            InternalDropdownOption<string>
+          > = convertGroupedDropdownOptionsToInternalOptions(options);
+          const meta: Meta<string> = {
+            action: "pop-value",
             removedValue: selectedOptions[2]
           };
 
