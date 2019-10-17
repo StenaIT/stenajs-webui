@@ -141,7 +141,12 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
         );
       } else {
         onChange(
-          selectedInternalOptions.map(convertInternalOptionToDropdownOption),
+          selectedInternalOptions
+            .filter(
+              selectedInternalOption =>
+                !("internalOptions" in selectedInternalOption)
+            )
+            .map(convertInternalOptionToDropdownOption),
           meta
         );
       }
