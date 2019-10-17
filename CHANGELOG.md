@@ -4,6 +4,13 @@
 
 * Coming soon...
 
+## 0.0.42
+
+### Fixes
+
+* Fix bug when popping option from `GroupedMultiSelect`.
+* Fix bug when selecting option in `GroupedMultiSelect`.
+
 ## 0.0.41
 
 ### Fixes
@@ -50,7 +57,7 @@
 ## 0.0.37
 
 * Add `color` in theme for `multiValue` in `Select`.
-* Fix typings for `useBoolean `hook. 
+* Fix typings for `useBoolean `hook.
 * Add innerRef to all buttons.
 * Fix a bug in textInput that caused console to log error for MozAppearance.
 

@@ -83,6 +83,15 @@ export const findParentOption = <TData>(
       );
     });
 
+const removeOptionHeaders = <TData>(
+  selectedInternalOptions: OptionsType<InternalDropdownOption<TData>>
+): OptionsType<InternalDropdownOption<TData>> =>
+  selectedInternalOptions
+    .filter(
+      selectedInternalOption => !("internalOptions" in selectedInternalOption)
+    )
+    .map(convertInternalOptionToDropdownOption);
+
 export const createOnChange = <TData>(onChange: OnChange<TData>) => (
   selectedInternalOptions: OptionsType<InternalDropdownOption<TData>>,
   meta: Meta<TData>
@@ -109,10 +118,7 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
 
         onChange(selectedOptions, meta);
       } else {
-        onChange(
-          selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-          meta
-        );
+        onChange(removeOptionHeaders(selectedInternalOptions), meta);
       }
       break;
     case "deselect-option":
@@ -122,35 +128,19 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
           meta
         );
       } else {
-        onChange(
-          selectedInternalOptions
-            .filter(
-              selectedInternalOption =>
-                !("internalOptions" in selectedInternalOption)
-            )
-            .map(convertInternalOptionToDropdownOption),
-          meta
-        );
+        onChange(removeOptionHeaders(selectedInternalOptions), meta);
       }
       break;
     case "remove-value":
+    case "pop-value":
       if ("internalOptions" in meta.removedValue) {
         onChange(
           removeGroupedOptions(meta.removedValue, selectedInternalOptions),
           meta
         );
       } else {
-        onChange(
-          selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-          meta
-        );
+        onChange(removeOptionHeaders(selectedInternalOptions), meta);
       }
-      break;
-    case "pop-value":
-      onChange(
-        selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-        meta
-      );
       break;
     case "set-value":
       onChange(
