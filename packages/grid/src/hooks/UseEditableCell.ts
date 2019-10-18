@@ -196,21 +196,11 @@ const createKeyDownHandler = <TValue>(
   } else if (!e.ctrlKey && !e.metaKey && !e.shiftKey && isEditable) {
     // TODO Find nice way to allow full user control, while also providing simplicity.
     const lastKeyEvent = createKeyDownEvent(e);
-    if (isNumeric(e.key) && allowsNumerics(allowedInputType)) {
-      startEditing(lastKeyEvent);
-      setLastKeyEvent(lastKeyEvent);
-      revertableValue.commit();
-      revertableValue.setValue(transformEnteredValue(lastKeyEvent.key));
-      e.preventDefault();
-      e.stopPropagation();
-    } else if (isLetter(e.key) && allowsLetters(allowedInputType)) {
-      startEditing(lastKeyEvent);
-      setLastKeyEvent(lastKeyEvent);
-      revertableValue.commit();
-      revertableValue.setValue(transformEnteredValue(lastKeyEvent.key));
-      e.preventDefault();
-      e.stopPropagation();
-    } else if (isCharacter(e.key)) {
+    if (
+      (isNumeric(e.key) && allowsNumerics(allowedInputType)) ||
+      (isLetter(e.key) && allowsLetters(allowedInputType)) ||
+      isCharacter(e.key)
+    ) {
       startEditing(lastKeyEvent);
       setLastKeyEvent(lastKeyEvent);
       revertableValue.commit();
