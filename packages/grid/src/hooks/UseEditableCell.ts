@@ -164,6 +164,20 @@ export const useEditableCell = <TValue>(
   };
 };
 
+const allowsNumerics = (allowedInputType: AllowedInputType): boolean =>
+  allowedInputType === "all" ||
+  allowedInputType === "numeric" ||
+  allowedInputType === "alphanumeric";
+const allowsLetters = (allowedInputType: AllowedInputType): boolean =>
+  allowedInputType === "all" ||
+  allowedInputType === "alphanumeric" ||
+  allowedInputType === "letters";
+
+const isCharacter = (key: string): boolean =>
+  isLetter(key) || !!key.match(/^[-+*<>]$/);
+const isLetter = (key: string): boolean => !!key.match(/^[a-zA-Z0-9]$/);
+const isNumeric = (key: string): boolean => !isNaN(parseInt(key, 10));
+
 const createKeyDownHandler = <TValue>(
   _: boolean, // isEditing
   isEditable: boolean,
@@ -179,32 +193,13 @@ const createKeyDownHandler = <TValue>(
     revertableValue.commit();
     e.preventDefault();
     e.stopPropagation();
-  } else if (
-    !e.ctrlKey &&
-    !e.metaKey &&
-    e.key.match(/^[a-zA-Z0-9]$/) &&
-    isEditable
-  ) {
+  } else if (!e.ctrlKey && !e.metaKey && !e.shiftKey && isEditable) {
     // TODO Find nice way to allow full user control, while also providing simplicity.
-    const num = parseInt(e.key, 10);
     const lastKeyEvent = createKeyDownEvent(e);
-    if (!isNaN(num)) {
-      if (
-        allowedInputType === "all" ||
-        allowedInputType === "numeric" ||
-        allowedInputType === "alphanumeric"
-      ) {
-        startEditing(lastKeyEvent);
-        setLastKeyEvent(lastKeyEvent);
-        revertableValue.commit();
-        revertableValue.setValue(transformEnteredValue(lastKeyEvent.key));
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    } else if (
-      allowedInputType === "all" ||
-      allowedInputType === "alphanumeric" ||
-      allowedInputType === "letters"
+    if (
+      (isNumeric(e.key) && allowsNumerics(allowedInputType)) ||
+      (isLetter(e.key) && allowsLetters(allowedInputType)) ||
+      isCharacter(e.key)
     ) {
       startEditing(lastKeyEvent);
       setLastKeyEvent(lastKeyEvent);
