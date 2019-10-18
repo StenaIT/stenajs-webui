@@ -124,7 +124,10 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
     case "deselect-option":
       if ("internalOptions" in meta.option) {
         onChange(
-          removeGroupedOptions(meta.option, selectedInternalOptions),
+          removeGroupedOptions(
+            meta.option,
+            removeOptionHeaders(selectedInternalOptions)
+          ),
           meta
         );
       } else {
@@ -135,7 +138,10 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
     case "pop-value":
       if ("internalOptions" in meta.removedValue) {
         onChange(
-          removeGroupedOptions(meta.removedValue, selectedInternalOptions),
+          removeGroupedOptions(
+            meta.removedValue,
+            removeOptionHeaders(selectedInternalOptions)
+          ),
           meta
         );
       } else {
