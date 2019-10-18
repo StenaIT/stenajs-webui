@@ -2,7 +2,13 @@
 
 ## Next release
 
+* Coming soon...
+
+## 0.0.43
+
 * Allow inputs `-+*<>` in grid when `allowedInputType='all'`.
+* Fix bug when de-selecting option header in `GroupedMultiSelect`.
+* Spread input props in `StandardTextInput` to `input`.
 
 ## 0.0.42
 
