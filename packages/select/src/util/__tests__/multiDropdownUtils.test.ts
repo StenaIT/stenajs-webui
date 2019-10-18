@@ -440,6 +440,7 @@ describe("multiDropdownUtils", () => {
 
           newOnChange(
             [
+              selectedOptions[0],
               selectedOptions[1],
               selectedOptions[2],
               selectedOptions[3],
@@ -607,6 +608,7 @@ describe("multiDropdownUtils", () => {
 
           newOnChange(
             [
+              selectedOptions[0],
               selectedOptions[1],
               selectedOptions[2],
               selectedOptions[3],
