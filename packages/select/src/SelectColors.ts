@@ -1,0 +1,36 @@
+export interface SelectColors {
+  arrowHoverFocused: string;
+  arrowStandardFocused: string;
+  arrowHoverClosed: string;
+  arrowStandardClosed: string;
+  clearButtonColorHover: string;
+  clearButtonColorStandard: string;
+  inputBackgroundColor: string;
+  inputBorder: string;
+  inputBorderFocused: string;
+  inputBorderColor: string;
+  inputBorderColorFocused: string;
+  inputDisabledBackgroundColor: string;
+  inputFontFamily: string;
+  inputFontSize: string;
+  inputPlaceholderColor: string;
+  inputTextColor: string;
+  inputBorderRadius: string;
+  loadingIndicatorTextColor: string;
+  menuDisabledTextColor: string;
+  menuDisabledBackgroundColor: string;
+  menuTextColor: string;
+  menuBackgroundColor: string;
+  menuHoverTextColor: string;
+  menuHoverBackgroundColor: string;
+  menuSelectedItemTextColor: string;
+  menuSelectedItemHoverTextColor: string;
+  menuSelectedItemBackgroundColor: string;
+  menuSelectedItemHoverBackgroundColor: string;
+  multiSelectBackgroundColor: string;
+  multiSelectTextColor: string;
+  multiSelectRemoveButtonBackgroundColor: string;
+  multiSelectRemoveButtonTextColor: string;
+  multiSelectRemoveButtonHoverBackgroundColor: string;
+  multiSelectRemoveButtonHoverTextColor: string;
+}

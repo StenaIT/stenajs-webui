@@ -66,45 +66,45 @@ export interface SelectTheme {
 export const defaultSelectTheme: SelectTheme = {
   arrowColor: {
     focused: {
-      hover: defaultTheme.colors.primaryText,
-      standard: defaultTheme.colors.separator
+      hover: "primaryText",
+      standard: "separator"
     },
     closed: {
-      hover: defaultTheme.colors.primaryText,
-      standard: defaultTheme.colors.separator
+      hover: "primaryTet",
+      standard: "separator"
     }
   },
   clearButtonColor: {
-    hover: defaultTheme.colors.primaryText,
-    standard: defaultTheme.colors.separator
+    hover: "primaryText",
+    standard: "separator"
   },
   input: {
-    backgroundColor: defaultTheme.colors.white,
-    border: `1px solid ${defaultTheme.colors.inputBorder}`,
-    borderFocused: `1px solid ${defaultTheme.colors.inputBorderFocused}`,
-    borderColor: defaultTheme.colors.inputBorder,
-    borderColorFocused: defaultTheme.colors.inputBorderFocused,
-    disabledBackgroundColor: defaultTheme.colors.disabledBackground,
-    fontFamily: defaultTheme.fonts.primary,
-    fontSize: defaultTheme.fontSizes.normal,
-    placeholderColor: defaultTheme.colors.separator,
-    textColor: defaultTheme.colors.primaryText,
+    backgroundColor: "white",
+    border: `1px solid inputBorder`,
+    borderFocused: `1px solid inputBorderFocused`,
+    borderColor: "inputBorder",
+    borderColorFocused: "inputBorderFocused",
+    disabledBackgroundColor: "disabledBackground",
+    fontFamily: "primary",
+    fontSize: "normal",
+    placeholderColor: "separator",
+    textColor: "primaryText",
     borderRadius: "4px"
   },
   loadingIndicator: {
-    textColor: defaultTheme.colors.primaryText
+    textColor: "primaryText"
   },
   menu: {
-    disabledTextColor: defaultTheme.colors.disabledText,
-    disabledBackgroundColor: undefined,
-    textColor: defaultTheme.colors.primaryText,
-    backgroundColor: defaultTheme.colors.white,
-    hoverTextColor: defaultTheme.colors.primaryText,
-    hoverBackgroundColor: "#F2F3F5",
-    selectedItemTextColor: defaultTheme.colors.primaryText,
-    selectedItemHoverTextColor: defaultTheme.colors.primaryText,
-    selectedItemBackgroundColor: defaultTheme.colors.white,
-    selectedItemHoverBackgroundColor: "#F2F3F5",
+    disabledTextColor: "disabledText",
+    disabledBackgroundColor: "disabledBackground",
+    textColor: "primaryText",
+    backgroundColor: "white",
+    hoverTextColor: "primaryText",
+    hoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
+    selectedItemTextColor: "primaryText",
+    selectedItemHoverTextColor: "primaryText", // TODO: Remove and use opacity
+    selectedItemBackgroundColor: "white",
+    selectedItemHoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
     zIndex: 1
   },
   menuPortal: {
@@ -112,11 +112,11 @@ export const defaultSelectTheme: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
-    color: defaultTheme.colors.primaryText,
+    color: "primaryText",
     removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: defaultTheme.colors.primaryText,
-    removeButtonHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
-    removeButtonHoverTextColor: defaultTheme.colors.white
+    removeButtonTextColor: "primaryText",
+    removeButtonHoverBackgroundColor: "primaryBgDark",
+    removeButtonHoverTextColor: "white"
   }
 };
 

@@ -20,6 +20,7 @@ storiesOf("select/GroupedMultiSelect", module)
       values: undefined
     })(({ store }: { store: Store<State> }) => {
       const onChange: OnChange<string> = options => {
+        console.log("---", options, "--- options");
         store.set({ values: options });
       };
       return (
