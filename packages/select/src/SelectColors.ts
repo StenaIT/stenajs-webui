@@ -1,33 +1,39 @@
-export interface SelectColors {
-  arrowHoverFocused: string;
-  arrowStandardFocused: string;
-  arrowHoverClosed: string;
-  arrowStandardClosed: string;
-  clearButtonColorHover: string;
-  clearButtonColorStandard: string;
-  inputBackgroundColor: string;
-  inputBorder: string;
-  inputBorderFocused: string;
-  inputBorderColor: string;
-  inputBorderColorFocused: string;
-  inputDisabledBackgroundColor: string;
-  inputPlaceholderColor: string;
-  inputTextColor: string;
-  loadingIndicatorTextColor: string;
+export interface SelectThemeColors extends Record<string, string> {
   menuDisabledTextColor: string;
-  menuDisabledBackgroundColor: string;
-  menuTextColor: string;
-  menuBackgroundColor: string;
-  menuHoverTextColor: string;
-  menuHoverBackgroundColor: string;
-  menuSelectedItemTextColor: string;
-  menuSelectedItemHoverTextColor: string;
-  menuSelectedItemBackgroundColor: string;
-  menuSelectedItemHoverBackgroundColor: string;
-  multiSelectBackgroundColor: string;
+  clearButtonColorStandard: string;
+  inputBorderColorFocused: string;
+  inputBackgroundColor: string;
+  inputDisabledBackgroundColor: string;
   multiSelectTextColor: string;
+  menuSelectedItemTextColor: string;
+  multiSelectBackgroundColor: string;
+  menuDisabledBackgroundColor: string;
+  loadingIndicatorTextColor: string;
+  inputBorderFocused: string;
+  menuSelectedItemHoverBackgroundColor: string;
+  arrowHoverClosed: string;
+  clearButtonColorHover: string;
+  menuTextColor: string;
   multiSelectRemoveButtonBackgroundColor: string;
-  multiSelectRemoveButtonTextColor: string;
+  menuSelectedItemBackgroundColor: string;
+  inputTextColor: string;
+  arrowStandardClosed: string;
+  inputPlaceholderColor: string;
+  arrowHoverFocused: string;
+  menuSelectedItemHoverTextColor: string;
   multiSelectRemoveButtonHoverBackgroundColor: string;
+  arrowStandardFocused: string;
+  inputBorder: string;
+  inputBorderColor: string;
   multiSelectRemoveButtonHoverTextColor: string;
+  menuHoverBackgroundColor: string;
+  menuBackgroundColor: string;
+  multiSelectRemoveButtonTextColor: string;
+  menuHoverTextColor: string;
+}
+
+export interface SelectThemeFields {
+  colors: SelectThemeColors;
+  fontSizes: { input: string };
+  fonts: { input: string };
 }

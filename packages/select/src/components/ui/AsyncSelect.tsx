@@ -17,11 +17,11 @@ export const AsyncSelect = <T extends {}>({
   styles,
   ...selectProps
 }: AsyncSelectProps<T>) => {
-  const { colors } = useSelectTheme(theme);
+  const themeFields = useSelectTheme(theme);
 
   const selectStyles = useMemo(
-    () => mergeStyles(createStylesFromTheme(theme, colors), styles),
-    [theme, colors, styles]
+    () => mergeStyles(createStylesFromTheme(theme, themeFields), styles),
+    [theme, themeFields, styles]
   );
 
   return <AsyncComponent styles={selectStyles} {...selectProps as Props<T>} />;

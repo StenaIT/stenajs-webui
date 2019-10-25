@@ -20,11 +20,11 @@ export const Select = <T extends {}>({
   styles,
   ...selectProps
 }: SelectProps<T>) => {
-  const { colors } = useSelectTheme(theme);
+  const themeFields = useSelectTheme(theme);
 
   const selectStyles = useMemo(
-    () => mergeStyles(createStylesFromTheme(theme, colors), styles),
-    [theme, colors, styles]
+    () => mergeStyles(createStylesFromTheme(theme, themeFields), styles),
+    [theme, themeFields, styles]
   );
 
   return <SelectComponent styles={selectStyles} {...selectProps} />;

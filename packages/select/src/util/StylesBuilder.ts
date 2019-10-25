@@ -1,9 +1,9 @@
 import { StylesConfig } from "react-select/lib/styles";
-import { SelectColors } from "../SelectColors";
+import { SelectThemeColors, SelectThemeFields } from "../SelectColors";
 import { SelectTheme } from "../SelectTheme";
 
 const resolveOptionBackgroundColor = (
-  colors: SelectColors,
+  colors: SelectThemeColors,
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
@@ -22,7 +22,7 @@ const resolveOptionBackgroundColor = (
 };
 
 const resolveOptionColor = (
-  colors: SelectColors,
+  colors: SelectThemeColors,
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
@@ -42,12 +42,12 @@ const resolveOptionColor = (
 
 export const createStylesFromTheme = (
   selectTheme: SelectTheme,
-  colors: SelectColors
+  { colors, fonts, fontSizes }: SelectThemeFields
 ): StylesConfig => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     backgroundColor: resolveOptionBackgroundColor(
       colors,
       isDisabled,
@@ -61,8 +61,8 @@ export const createStylesFromTheme = (
   control: (base, { isFocused, isDisabled }) => ({
     ...base,
     // none of react-selects styles are passed to <View />
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     minHeight: selectTheme.input.minHeight,
     height: selectTheme.input.height,
     backgroundColor: isDisabled
@@ -83,27 +83,27 @@ export const createStylesFromTheme = (
   }),
   singleValue: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     color: colors.inputTextColor
   }),
   noOptionsMessage: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input
   }),
   input: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     color: colors.inputTextColor
   }),
   multiValueLabel: base => ({
     ...base,
     backgroundColor: colors.multiSelectBackgroundColor,
     color: colors.multiSelectTextColor,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     paddingTop: "2px"
   }),
   indicatorSeparator: base => ({
@@ -120,8 +120,8 @@ export const createStylesFromTheme = (
   }),
   placeholder: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     color: colors.inputPlaceholderColor
   }),
   container: base => ({
@@ -165,7 +165,7 @@ export const createStylesFromTheme = (
   loadingMessage: base => ({
     ...base,
     color: colors.loadingIndicatorTextColor,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input
   })
 });

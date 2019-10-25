@@ -1,8 +1,9 @@
 import { useThemeFields } from "@stenajs-webui/core";
+import { SelectThemeFields } from "../SelectColors";
 import { SelectTheme } from "../SelectTheme";
 
 export const useSelectTheme = (theme: SelectTheme) => {
-  return useThemeFields(
+  return useThemeFields<SelectThemeFields>(
     {
       colors: {
         arrowHoverFocused: theme.arrowColor.focused.hover,
@@ -44,6 +45,12 @@ export const useSelectTheme = (theme: SelectTheme) => {
           theme.multiSelect.removeButtonHoverBackgroundColor,
         multiSelectRemoveButtonHoverTextColor:
           theme.multiSelect.removeButtonHoverTextColor
+      },
+      fontSizes: {
+        input: theme.input.fontSize
+      },
+      fonts: {
+        input: theme.input.fontFamily
       }
     },
     []
