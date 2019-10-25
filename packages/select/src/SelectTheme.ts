@@ -36,7 +36,7 @@ export interface SelectTheme {
   };
   menu: {
     disabledTextColor: string;
-    disabledBackgroundColor: string | undefined;
+    disabledBackgroundColor: string;
     textColor: string;
     backgroundColor: string;
     hoverTextColor: string;
@@ -155,7 +155,7 @@ export const selectThemeDark: SelectTheme = {
   },
   menu: {
     disabledTextColor: defaultTheme.colors.disabledText,
-    disabledBackgroundColor: undefined,
+    disabledBackgroundColor: defaultTheme.colors.disabledBackground,
     backgroundColor: "#4a5d73",
     textColor: defaultTheme.colors.white,
     hoverTextColor: defaultTheme.colors.white,

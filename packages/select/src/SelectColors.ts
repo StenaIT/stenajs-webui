@@ -11,11 +11,8 @@ export interface SelectColors {
   inputBorderColor: string;
   inputBorderColorFocused: string;
   inputDisabledBackgroundColor: string;
-  inputFontFamily: string;
-  inputFontSize: string;
   inputPlaceholderColor: string;
   inputTextColor: string;
-  inputBorderRadius: string;
   loadingIndicatorTextColor: string;
   menuDisabledTextColor: string;
   menuDisabledBackgroundColor: string;

@@ -1,45 +1,49 @@
 import { useThemeFields } from "@stenajs-webui/core";
-export const useSelectTheme = () => {
+import { SelectTheme } from "../SelectTheme";
+
+export const useSelectTheme = (theme: SelectTheme) => {
   return useThemeFields(
     {
       colors: {
-        arrowHoverFocused: "primaryText",
-        arrowStandardFocused: "separator",
-        arrowHoverClosed: "primaryText",
-        arrowStandardClosed: "separator",
+        arrowHoverFocused: theme.arrowColor.focused.hover,
+        arrowStandardFocused: theme.arrowColor.focused.standard,
+        arrowHoverClosed: theme.arrowColor.closed.hover,
+        arrowStandardClosed: theme.arrowColor.closed.standard,
 
-        clearButtonColorHover: "primaryText",
-        clearButtonColorStandard: "separator",
+        clearButtonColorHover: theme.clearButtonColor.hover,
+        clearButtonColorStandard: theme.clearButtonColor.standard,
 
-        inputBackgroundColor: "white",
-        inputBorder: `1px solid inputBorder`,
-        inputBorderFocused: `1px solid inputBorderFocused`,
-        inputBorderColor: "inputBorder",
-        inputBorderColorFocused: "inputBorderFocused",
-        inputDisabledBackgroundColor: "disabledBackground",
-        inputFontFamily: "primary",
-        inputFontSize: "normal",
-        inputPlaceholderColor: "separator",
-        inputTextColor: "primaryText",
-        inputBorderRadius: "4px",
+        inputBackgroundColor: theme.input.backgroundColor,
+        inputBorder: theme.input.border,
+        inputBorderFocused: theme.input.borderFocused,
+        inputBorderColor: theme.input.borderColor,
+        inputBorderColorFocused: theme.input.borderColorFocused,
+        inputDisabledBackgroundColor: theme.input.disabledBackgroundColor,
+        inputPlaceholderColor: theme.input.placeholderColor,
+        inputTextColor: theme.input.textColor,
 
-        loadingIndicatorTextColor: "primaryText",
-        menuDisabledTextColor: "disabledText",
-        menuDisabledBackgroundColor: "disabledBackground",
-        menuTextColor: "primaryText",
-        menuBackgroundColor: "white",
-        menuHoverTextColor: "primaryText",
-        menuHoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
-        menuSelectedItemTextColor: "primaryText",
-        menuSelectedItemHoverTextColor: "primaryText", // TODO: Remove and use opacity
-        menuSelectedItemBackgroundColor: "white",
-        menuSelectedItemHoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
-        multiSelectBackgroundColor: "#B9D8DF",
-        multiSelectTextColor: "primaryText",
-        multiSelectRemoveButtonBackgroundColor: "#B9D8DF",
-        multiSelectRemoveButtonTextColor: "primaryText",
-        multiSelectRemoveButtonHoverBackgroundColor: "primaryBgDark",
-        multiSelectRemoveButtonHoverTextColor: "white"
+        loadingIndicatorTextColor: theme.loadingIndicator.textColor,
+        menuDisabledTextColor: theme.menu.disabledTextColor,
+        menuDisabledBackgroundColor: theme.menu.disabledBackgroundColor,
+        menuTextColor: theme.menu.textColor,
+        menuBackgroundColor: theme.menu.backgroundColor,
+        menuHoverTextColor: theme.menu.hoverTextColor,
+        menuHoverBackgroundColor: theme.menu.hoverBackgroundColor,
+        menuSelectedItemHoverTextColor: theme.menu.selectedItemHoverTextColor,
+        menuSelectedItemTextColor: theme.menu.selectedItemTextColor,
+        menuSelectedItemBackgroundColor: theme.menu.selectedItemBackgroundColor,
+        menuSelectedItemHoverBackgroundColor:
+          theme.menu.selectedItemHoverBackgroundColor,
+        multiSelectBackgroundColor: theme.multiSelect.backgroundColor,
+        multiSelectTextColor: theme.multiSelect.color,
+        multiSelectRemoveButtonBackgroundColor:
+          theme.multiSelect.removeButtonBackgroundColor,
+        multiSelectRemoveButtonTextColor:
+          theme.multiSelect.removeButtonTextColor,
+        multiSelectRemoveButtonHoverBackgroundColor:
+          theme.multiSelect.removeButtonHoverBackgroundColor,
+        multiSelectRemoveButtonHoverTextColor:
+          theme.multiSelect.removeButtonHoverTextColor
       }
     },
     []

@@ -17,7 +17,7 @@ export const AsyncSelect = <T extends {}>({
   styles,
   ...selectProps
 }: AsyncSelectProps<T>) => {
-  const { colors } = useSelectTheme();
+  const { colors } = useSelectTheme(theme);
 
   const selectStyles = useMemo(
     () => mergeStyles(createStylesFromTheme(theme, colors), styles),
