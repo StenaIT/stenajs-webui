@@ -13,11 +13,11 @@ export interface NumericTextInputTheme extends StandardTextInputTheme {
 export const defaultNumericTextInputTheme: NumericTextInputTheme = {
   ...defaultStandardTextInputTheme,
   borderColor: "inputBorder",
-  buttonHeight: "17px"
+  buttonHeight: "16px"
 };
 
 export const defaultNumericTextInputThemeDark: NumericTextInputTheme = {
   ...defaultStandardTextInputThemeDark,
   borderColor: "inputBorder",
-  buttonHeight: "17px"
+  buttonHeight: "16px"
 };

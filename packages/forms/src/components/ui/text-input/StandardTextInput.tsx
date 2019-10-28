@@ -226,6 +226,7 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
       borderWidth={theme.borderWidth}
       width={inputProps.width || "100%"}
       overflow={"hidden"}
+      height={theme.height}
     >
       <Row alignItems={"center"} width={inputProps.width || "100%"}>
         <TextInputIcon
