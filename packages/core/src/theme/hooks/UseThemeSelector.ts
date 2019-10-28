@@ -1,5 +1,8 @@
 import { DependencyList, useMemo } from "react";
-import { ThemeFontWeightField, ThemeFontWeights } from "../..";
+import {
+  ThemeFontWeightField,
+  ThemeFontWeights
+} from "../theme-types/ThemeFontWeights";
 import { Theme } from "../Theme";
 import { ThemeColorField, ThemeColors } from "../theme-types/ThemeColors";
 import { ThemeFontField, ThemeFonts } from "../theme-types/ThemeFonts";
