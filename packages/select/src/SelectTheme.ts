@@ -1,4 +1,3 @@
-import { defaultTheme } from "@stenajs-webui/core";
 import { WhiteSpaceProperty } from "csstype";
 
 export interface SelectTheme {
@@ -36,16 +35,20 @@ export interface SelectTheme {
   };
   menu: {
     disabledTextColor: string;
-    disabledBackgroundColor: string | undefined;
+    disabledBackgroundColor: string;
     textColor: string;
     backgroundColor: string;
     hoverTextColor: string;
     hoverBackgroundColor: string;
+    activeTextColor: string;
+    activeBackgroundColor: string;
     minWidth?: string;
     selectedItemTextColor: string;
-    selectedItemHoverTextColor: string;
     selectedItemBackgroundColor: string;
+    selectedItemHoverTextColor: string;
     selectedItemHoverBackgroundColor: string;
+    selectedItemActiveTextColor: string;
+    selectedItemActiveBackgroundColor: string;
     zIndex: number;
     width?: string;
     whiteSpace?: WhiteSpaceProperty;
@@ -66,44 +69,48 @@ export interface SelectTheme {
 export const defaultSelectTheme: SelectTheme = {
   arrowColor: {
     focused: {
-      hover: defaultTheme.colors.primaryText,
-      standard: defaultTheme.colors.separator
+      hover: "primaryText",
+      standard: "separator"
     },
     closed: {
-      hover: defaultTheme.colors.primaryText,
-      standard: defaultTheme.colors.separator
+      hover: "primaryTet",
+      standard: "separator"
     }
   },
   clearButtonColor: {
-    hover: defaultTheme.colors.primaryText,
-    standard: defaultTheme.colors.separator
+    hover: "primaryText",
+    standard: "separator"
   },
   input: {
-    backgroundColor: defaultTheme.colors.white,
-    border: `1px solid ${defaultTheme.colors.inputBorder}`,
-    borderFocused: `1px solid ${defaultTheme.colors.inputBorderFocused}`,
-    borderColor: defaultTheme.colors.inputBorder,
-    borderColorFocused: defaultTheme.colors.inputBorderFocused,
-    disabledBackgroundColor: defaultTheme.colors.disabledBackground,
-    fontFamily: defaultTheme.fonts.primary,
-    fontSize: defaultTheme.fontSizes.normal,
-    placeholderColor: defaultTheme.colors.separator,
-    textColor: defaultTheme.colors.primaryText,
+    backgroundColor: "white",
+    border: `1px solid inputBorder`,
+    borderFocused: `1px solid inputBorderFocused`,
+    borderColor: "inputBorder",
+    borderColorFocused: "inputBorderFocused",
+    disabledBackgroundColor: "disabledBackground",
+    fontFamily: "primary",
+    fontSize: "normal",
+    placeholderColor: "separator",
+    textColor: "primaryText",
     borderRadius: "4px"
   },
   loadingIndicator: {
-    textColor: defaultTheme.colors.primaryText
+    textColor: "primaryText"
   },
   menu: {
-    disabledTextColor: defaultTheme.colors.disabledText,
-    disabledBackgroundColor: undefined,
-    textColor: defaultTheme.colors.primaryText,
-    backgroundColor: defaultTheme.colors.white,
-    hoverTextColor: defaultTheme.colors.primaryText,
+    activeBackgroundColor: "#F2F3F5",
+    activeTextColor: "primaryText",
+    selectedItemActiveBackgroundColor: "#F2F3F5",
+    selectedItemActiveTextColor: "primaryText",
+    disabledTextColor: "disabledText",
+    disabledBackgroundColor: "disabledBackground",
+    textColor: "primaryText",
+    backgroundColor: "white",
+    hoverTextColor: "primaryText",
     hoverBackgroundColor: "#F2F3F5",
-    selectedItemTextColor: defaultTheme.colors.primaryText,
-    selectedItemHoverTextColor: defaultTheme.colors.primaryText,
-    selectedItemBackgroundColor: defaultTheme.colors.white,
+    selectedItemTextColor: "primaryText",
+    selectedItemHoverTextColor: "primaryText",
+    selectedItemBackgroundColor: "white",
     selectedItemHoverBackgroundColor: "#F2F3F5",
     zIndex: 1
   },
@@ -112,28 +119,28 @@ export const defaultSelectTheme: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
-    color: defaultTheme.colors.primaryText,
+    color: "primaryText",
     removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: defaultTheme.colors.primaryText,
-    removeButtonHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
-    removeButtonHoverTextColor: defaultTheme.colors.white
+    removeButtonTextColor: "primaryText",
+    removeButtonHoverBackgroundColor: "primaryBgDark",
+    removeButtonHoverTextColor: "white"
   }
 };
 
 export const selectThemeDark: SelectTheme = {
   arrowColor: {
     focused: {
-      hover: defaultTheme.colors.white,
-      standard: defaultTheme.colors.separator
+      hover: "white",
+      standard: "separator"
     },
     closed: {
-      hover: defaultTheme.colors.white,
-      standard: defaultTheme.colors.separator
+      hover: "white",
+      standard: "separator"
     }
   },
   clearButtonColor: {
-    standard: defaultTheme.colors.separator,
-    hover: defaultTheme.colors.white
+    standard: "separator",
+    hover: "white"
   },
   input: {
     backgroundColor: "#4a5d73",
@@ -141,27 +148,31 @@ export const selectThemeDark: SelectTheme = {
     borderFocused: `1px solid #92a3b5`,
     borderColor: "transparent",
     borderColorFocused: "#92a3b5",
-    disabledBackgroundColor: defaultTheme.colors.disabledBackground,
-    fontFamily: defaultTheme.fonts.primary,
-    fontSize: defaultTheme.fontSizes.normal,
+    disabledBackgroundColor: "disabledBackground",
+    fontFamily: "primary",
+    fontSize: "normal",
     height: "34px",
     minHeight: "34px",
-    placeholderColor: defaultTheme.colors.white,
-    textColor: defaultTheme.colors.white,
+    placeholderColor: "white",
+    textColor: "white",
     borderRadius: "4px"
   },
   loadingIndicator: {
-    textColor: defaultTheme.colors.white
+    textColor: "white"
   },
   menu: {
-    disabledTextColor: defaultTheme.colors.disabledText,
-    disabledBackgroundColor: undefined,
+    activeBackgroundColor: "#6F7E90",
+    activeTextColor: "white",
+    selectedItemActiveBackgroundColor: "#6F7E90",
+    selectedItemActiveTextColor: "white",
+    disabledTextColor: "disabledText",
+    disabledBackgroundColor: "disabledBackground",
     backgroundColor: "#4a5d73",
-    textColor: defaultTheme.colors.white,
-    hoverTextColor: defaultTheme.colors.white,
+    textColor: "white",
+    hoverTextColor: "white",
     hoverBackgroundColor: "#6F7E90",
-    selectedItemTextColor: defaultTheme.colors.white,
-    selectedItemHoverTextColor: defaultTheme.colors.white,
+    selectedItemTextColor: "white",
+    selectedItemHoverTextColor: "white",
     selectedItemBackgroundColor: "#4a5d73",
     selectedItemHoverBackgroundColor: "#6F7E90",
     zIndex: 1
@@ -171,10 +182,10 @@ export const selectThemeDark: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
-    color: defaultTheme.colors.primaryText,
+    color: "primaryText",
     removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: defaultTheme.colors.primaryText,
-    removeButtonHoverBackgroundColor: defaultTheme.colors.primaryBgDark,
-    removeButtonHoverTextColor: defaultTheme.colors.white
+    removeButtonTextColor: "primaryText",
+    removeButtonHoverBackgroundColor: "primaryBgDark",
+    removeButtonHoverTextColor: "white"
   }
 };

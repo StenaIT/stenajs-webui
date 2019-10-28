@@ -3,6 +3,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import { Async as AsyncComponent } from "react-select";
 import { Props } from "react-select/lib/Async";
+import { useSelectTheme } from "../../hooks/useSelectTheme";
 import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
@@ -16,9 +17,11 @@ export const AsyncSelect = <T extends {}>({
   styles,
   ...selectProps
 }: AsyncSelectProps<T>) => {
+  const themeFields = useSelectTheme(theme);
+
   const selectStyles = useMemo(
-    () => mergeStyles(createStylesFromTheme(theme), styles),
-    [theme, styles]
+    () => mergeStyles(createStylesFromTheme(theme, themeFields), styles),
+    [theme, themeFields, styles]
   );
 
   return <AsyncComponent styles={selectStyles} {...selectProps as Props<T>} />;

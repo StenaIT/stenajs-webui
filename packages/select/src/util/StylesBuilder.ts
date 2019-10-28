@@ -1,111 +1,121 @@
 import { StylesConfig } from "react-select/lib/styles";
+import { SelectThemeColors, SelectThemeFields } from "../SelectColors";
 import { SelectTheme } from "../SelectTheme";
 
 const resolveOptionBackgroundColor = (
-  selectTheme: SelectTheme,
+  colors: SelectThemeColors,
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
 ): string | undefined => {
   if (isDisabled) {
-    return selectTheme.menu.disabledBackgroundColor;
+    return colors.menuDisabledBackgroundColor;
   } else if (isSelected && isFocused) {
-    return selectTheme.menu.selectedItemHoverBackgroundColor;
+    return colors.menuSelectedItemHoverBackgroundColor;
   } else if (isSelected) {
-    return selectTheme.menu.selectedItemBackgroundColor;
+    return colors.menuSelectedItemBackgroundColor;
   } else if (isFocused) {
-    return selectTheme.menu.hoverBackgroundColor;
+    return colors.menuHoverBackgroundColor;
   } else {
     return undefined;
   }
 };
 
 const resolveOptionColor = (
-  selectTheme: SelectTheme,
+  colors: SelectThemeColors,
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
 ): string | undefined => {
   if (isDisabled) {
-    return selectTheme.menu.disabledTextColor;
+    return colors.menuDisabledTextColor;
   } else if (isSelected && isFocused) {
-    return selectTheme.menu.selectedItemHoverTextColor;
+    return colors.menuSelectedItemHoverTextColor;
   } else if (isSelected) {
-    return selectTheme.menu.selectedItemTextColor;
+    return colors.menuSelectedItemTextColor;
   } else if (isFocused) {
-    return selectTheme.menu.hoverTextColor;
+    return colors.menuHoverTextColor;
   } else {
     return undefined;
   }
 };
 
 export const createStylesFromTheme = (
-  selectTheme: SelectTheme
+  selectTheme: SelectTheme,
+  { colors, fonts, fontSizes }: SelectThemeFields
 ): StylesConfig => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     backgroundColor: resolveOptionBackgroundColor(
-      selectTheme,
+      colors,
       isDisabled,
       isSelected,
       isFocused
     ),
-    color: resolveOptionColor(selectTheme, isDisabled, isSelected, isFocused),
+    color: resolveOptionColor(colors, isDisabled, isSelected, isFocused),
     cursor: isDisabled ? "not-allowed" : "default",
-    whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace
+    whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace,
+    ":active": {
+      backgroundColor:
+        !isDisabled &&
+        (isSelected
+          ? colors.menuSelectedItemActiveBackgroundColor
+          : colors.menuActiveBackgroundColor),
+      color:
+        !isDisabled &&
+        (isSelected
+          ? colors.menuSelectedItemActiveTextColor
+          : colors.menuActiveTextColor)
+    }
   }),
   control: (base, { isFocused, isDisabled }) => ({
     ...base,
     // none of react-selects styles are passed to <View />
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     minHeight: selectTheme.input.minHeight,
     height: selectTheme.input.height,
     backgroundColor: isDisabled
-      ? selectTheme.input.disabledBackgroundColor
-      : selectTheme.input.backgroundColor,
+      ? colors.inputDisabledBackgroundColor
+      : colors.inputBackgroundColor,
     boxShadow: "0",
     borderRadius: selectTheme.input.borderRadius,
-    border: isFocused
-      ? selectTheme.input.borderFocused
-      : selectTheme.input.border,
+    border: isFocused ? colors.inputBorderFocused : colors.inputBorder,
     borderColor: isFocused
-      ? selectTheme.input.borderColorFocused
-      : selectTheme.input.borderColor,
+      ? colors.inputBorderColorFocused
+      : colors.inputBorderColor,
     "&:hover": {
-      border: isFocused
-        ? selectTheme.input.borderFocused
-        : selectTheme.input.border,
+      border: isFocused ? colors.inputBorderFocused : colors.inputBorder,
       borderColor: isFocused
-        ? selectTheme.input.borderColorFocused
-        : selectTheme.input.borderColor
+        ? colors.inputBorderColorFocused
+        : colors.inputBorderColor
     }
   }),
   singleValue: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
-    color: selectTheme.input.textColor
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
+    color: colors.inputTextColor
   }),
   noOptionsMessage: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input
   }),
   input: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
-    color: selectTheme.input.textColor
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
+    color: colors.inputTextColor
   }),
   multiValueLabel: base => ({
     ...base,
-    backgroundColor: selectTheme.multiSelect.backgroundColor,
-    color: selectTheme.multiSelect.color,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
+    backgroundColor: colors.multiSelectBackgroundColor,
+    color: colors.multiSelectTextColor,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
     paddingTop: "2px"
   }),
   indicatorSeparator: base => ({
@@ -115,16 +125,16 @@ export const createStylesFromTheme = (
   clearIndicator: base => ({
     ...base,
     padding: "6px",
-    color: selectTheme.clearButtonColor.standard,
+    color: colors.clearButtonColorStandard,
     "&:hover": {
-      color: selectTheme.clearButtonColor.hover
+      color: colors.clearButtonColorHover
     }
   }),
   placeholder: base => ({
     ...base,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize,
-    color: selectTheme.input.placeholderColor
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input,
+    color: colors.inputPlaceholderColor
   }),
   container: base => ({
     ...base
@@ -132,19 +142,15 @@ export const createStylesFromTheme = (
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
     padding: "6px",
-    color: isFocused
-      ? selectTheme.arrowColor.focused.standard
-      : selectTheme.arrowColor.closed.standard,
+    color: isFocused ? colors.arrowStandardFocused : colors.arrowStandardClosed,
     "&:hover": {
-      color: isFocused
-        ? selectTheme.arrowColor.focused.hover
-        : selectTheme.arrowColor.closed.hover
+      color: isFocused ? colors.arrowHoverFocused : colors.arrowHoverClosed
     }
   }),
   menu: base => ({
     ...base,
-    backgroundColor: selectTheme.menu.backgroundColor,
-    color: selectTheme.menu.textColor,
+    backgroundColor: colors.menuBackgroundColor,
+    color: colors.menuTextColor,
     minWidth: selectTheme.menu.minWidth || base.minWidth,
     zIndex: selectTheme.menu.zIndex,
     width: selectTheme.menu.width || base.width
@@ -155,23 +161,23 @@ export const createStylesFromTheme = (
   }),
   multiValueRemove: styles => ({
     ...styles,
-    backgroundColor: selectTheme.multiSelect.removeButtonBackgroundColor,
+    backgroundColor: colors.multiSelectRemoveButtonBackgroundColor,
     ":hover": {
-      color: selectTheme.multiSelect.removeButtonHoverTextColor,
-      backgroundColor: selectTheme.multiSelect.removeButtonHoverBackgroundColor
+      color: colors.multiSelectRemoveButtonHoverTextColor,
+      backgroundColor: colors.multiSelectRemoveButtonHoverBackgroundColor
     },
-    color: selectTheme.multiSelect.removeButtonTextColor,
+    color: colors.multiSelectRemoveButtonTextColor,
     margin: "3px"
   }),
   multiValue: base => ({
     ...base,
-    backgroundColor: selectTheme.multiSelect.backgroundColor,
-    color: selectTheme.multiSelect.color
+    backgroundColor: colors.multiSelectBackgroundColor,
+    color: colors.multiSelectTextColor
   }),
   loadingMessage: base => ({
     ...base,
-    color: selectTheme.loadingIndicator.textColor,
-    fontFamily: selectTheme.input.fontFamily,
-    fontSize: selectTheme.input.fontSize
+    color: colors.loadingIndicatorTextColor,
+    fontFamily: fonts.input,
+    fontSize: fontSizes.input
   })
 });

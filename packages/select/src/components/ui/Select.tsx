@@ -3,6 +3,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import SelectComponent from "react-select";
 import { Props } from "react-select/lib/Select";
+import { useSelectTheme } from "../../hooks/useSelectTheme";
 import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
@@ -19,9 +20,11 @@ export const Select = <T extends {}>({
   styles,
   ...selectProps
 }: SelectProps<T>) => {
+  const themeFields = useSelectTheme(theme);
+
   const selectStyles = useMemo(
-    () => mergeStyles(createStylesFromTheme(theme), styles),
-    [theme, styles]
+    () => mergeStyles(createStylesFromTheme(theme, themeFields), styles),
+    [theme, themeFields, styles]
   );
 
   return <SelectComponent styles={selectStyles} {...selectProps} />;
