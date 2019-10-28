@@ -56,7 +56,19 @@ export const createStylesFromTheme = (
     ),
     color: resolveOptionColor(colors, isDisabled, isSelected, isFocused),
     cursor: isDisabled ? "not-allowed" : "default",
-    whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace
+    whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace,
+    ":active": {
+      backgroundColor:
+        !isDisabled &&
+        (isSelected
+          ? colors.menuSelectedItemActiveBackgroundColor
+          : colors.menuActiveBackgroundColor),
+      color:
+        !isDisabled &&
+        (isSelected
+          ? colors.menuSelectedItemActiveTextColor
+          : colors.menuActiveTextColor)
+    }
   }),
   control: (base, { isFocused, isDisabled }) => ({
     ...base,

@@ -40,11 +40,15 @@ export interface SelectTheme {
     backgroundColor: string;
     hoverTextColor: string;
     hoverBackgroundColor: string;
+    activeTextColor: string;
+    activeBackgroundColor: string;
     minWidth?: string;
     selectedItemTextColor: string;
-    selectedItemHoverTextColor: string;
     selectedItemBackgroundColor: string;
+    selectedItemHoverTextColor: string;
     selectedItemHoverBackgroundColor: string;
+    selectedItemActiveTextColor: string;
+    selectedItemActiveBackgroundColor: string;
     zIndex: number;
     width?: string;
     whiteSpace?: WhiteSpaceProperty;
@@ -94,16 +98,20 @@ export const defaultSelectTheme: SelectTheme = {
     textColor: "primaryText"
   },
   menu: {
+    activeBackgroundColor: "#F2F3F5",
+    activeTextColor: "primaryText",
+    selectedItemActiveBackgroundColor: "#F2F3F5",
+    selectedItemActiveTextColor: "primaryText",
     disabledTextColor: "disabledText",
     disabledBackgroundColor: "disabledBackground",
     textColor: "primaryText",
     backgroundColor: "white",
     hoverTextColor: "primaryText",
-    hoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
+    hoverBackgroundColor: "#F2F3F5",
     selectedItemTextColor: "primaryText",
-    selectedItemHoverTextColor: "primaryText", // TODO: Remove and use opacity
+    selectedItemHoverTextColor: "primaryText",
     selectedItemBackgroundColor: "white",
-    selectedItemHoverBackgroundColor: "#F2F3F5", // TODO: Remove and use opacity
+    selectedItemHoverBackgroundColor: "#F2F3F5",
     zIndex: 1
   },
   menuPortal: {
@@ -153,6 +161,10 @@ export const selectThemeDark: SelectTheme = {
     textColor: "white"
   },
   menu: {
+    activeBackgroundColor: "#6F7E90",
+    activeTextColor: "white",
+    selectedItemActiveBackgroundColor: "#6F7E90",
+    selectedItemActiveTextColor: "white",
     disabledTextColor: "disabledText",
     disabledBackgroundColor: "disabledBackground",
     backgroundColor: "#4a5d73",

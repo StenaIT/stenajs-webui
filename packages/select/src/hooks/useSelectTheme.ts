@@ -30,9 +30,14 @@ export const useSelectTheme = (theme: SelectTheme) => {
         menuBackgroundColor: theme.menu.backgroundColor,
         menuHoverTextColor: theme.menu.hoverTextColor,
         menuHoverBackgroundColor: theme.menu.hoverBackgroundColor,
+        menuActiveTextColor: theme.menu.activeTextColor,
+        menuActiveBackgroundColor: theme.menu.activeBackgroundColor,
         menuSelectedItemHoverTextColor: theme.menu.selectedItemHoverTextColor,
         menuSelectedItemTextColor: theme.menu.selectedItemTextColor,
         menuSelectedItemBackgroundColor: theme.menu.selectedItemBackgroundColor,
+        menuSelectedItemActiveBackgroundColor:
+          theme.menu.selectedItemActiveBackgroundColor,
+        menuSelectedItemActiveTextColor: theme.menu.selectedItemActiveTextColor,
         menuSelectedItemHoverBackgroundColor:
           theme.menu.selectedItemHoverBackgroundColor,
         multiSelectBackgroundColor: theme.multiSelect.backgroundColor,
