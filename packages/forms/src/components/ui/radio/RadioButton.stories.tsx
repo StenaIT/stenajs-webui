@@ -54,6 +54,7 @@ storiesOf("forms/RadioButton/RadioButtonWithLabel", module)
       label={"Add cake"}
       value={knobs.boolean("Checked", false)}
       textColor="lightblue"
+      textSize={"40px"}
       theme={{
         ...defaultRadioButtonTheme,
         iconColor: "pink",
