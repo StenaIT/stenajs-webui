@@ -4,6 +4,28 @@
 
 * Coming soon...
 
+## 0.0.44
+​
+### Breaking changes
+​
+* Resolve correct theme color for `Select`.
+* Upgrade `Select` from `v2` to `v3`.
+* Uniform heights for `text input` and `select`.
+​
+### New features
+
+* Add localizations to Calendar.​
+* Add possibility to set active color for `options` in `Select menu`.
+* Add onKeyDown event for `Checkbox`.
+​
+### Storybook
+​
+* Add `all` story for `Form`-section in `storybook`.
+​
+### Internal
+​
+* Upgrade storybook to latest version, `5.2.5`.
+
 ## 0.0.43
 
 * Allow inputs `-+*<>` in grid when `allowedInputType='all'`.
