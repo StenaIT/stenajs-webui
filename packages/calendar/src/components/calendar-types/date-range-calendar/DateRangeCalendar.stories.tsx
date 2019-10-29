@@ -6,6 +6,8 @@ import {
   DateRangeFocusedInput,
   setDayStateValue,
   useDateRangeCalendarState,
+  TranslationProvider,
+  getTranslations,
   travelCalendarTheme,
   dayHighlightSelect,
   ExtraDayContentProps
@@ -145,6 +147,28 @@ storiesOf("calendar/Calendar/DateRangeCalendar", module)
         setFocusedInput={focusedInput => store.set({ focusedInput })}
       />
     ))
+  )
+  .add(
+    "standard translated",
+    withState<State>({
+      startDate: undefined,
+      endDate: undefined,
+      focusedInput: "startDate"
+    })(({ store }: { store: Store<State> }) => (
+      <TranslationProvider value={getTranslations("sv")}>
+        <DateRangeCalendar
+          startDate={store.state.startDate}
+          endDate={store.state.endDate}
+          focusedInput={store.state.focusedInput}
+          setStartDate={startDate => store.set({ startDate })}
+          setEndDate={endDate => store.set({ endDate })}
+          setFocusedInput={focusedInput => store.set({ focusedInput })}
+        />
+      </TranslationProvider>
+    )),
+    {
+      notes: { markdown }
+    }
   )
   .add(
     "travel",
