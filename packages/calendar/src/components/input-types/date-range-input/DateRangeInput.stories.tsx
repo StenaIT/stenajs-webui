@@ -30,7 +30,7 @@ storiesOf("calendar/Input/DateRangeInput", module)
   )
   .add("empty", () => (
     <div style={{ display: "inline-block" }}>
-      <DateRangeInput value={{}} />
+      <DateRangeInput onChange={() => {}} value={{}} />
     </div>
   ))
   .add(
@@ -50,13 +50,22 @@ storiesOf("calendar/Input/DateRangeInput", module)
       </div>
     ))
   )
-  .add("with preselected value", () => (
-    <div style={{ display: "inline-block" }}>
-      <DateRangeInput
-        value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
-      />
-    </div>
-  ))
+  .add(
+    "with preselected value",
+    withState<DateRangeState>({
+      value: {
+        endDate: undefined,
+        startDate: undefined
+      }
+    })(({ store }: { store: Store<DateRangeState> }) => (
+      <div style={{ display: "inline-block" }}>
+        <DateRangeInput
+          value={{ startDate: new Date(), endDate: addDays(new Date(), 5) }}
+          onChange={value => store.set({ value })}
+        />
+      </div>
+    ))
+  )
   .add(
     "with today highlighted",
     withState<DateRangeState>({

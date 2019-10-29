@@ -10,7 +10,7 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 interface State {
-  values: DropdownOption<string>[] | undefined;
+  values: readonly DropdownOption<string>[] | undefined;
 }
 
 storiesOf("select/GroupedMultiSelect", module)
@@ -19,7 +19,9 @@ storiesOf("select/GroupedMultiSelect", module)
     withState<State>({
       values: undefined
     })(({ store }: { store: Store<State> }) => {
-      const onChange: OnChange<string> = options => {
+      const onChange: OnChange<string> = (
+        options: readonly DropdownOption<string>[] | undefined
+      ) => {
         store.set({ values: options });
       };
       return (
@@ -64,7 +66,9 @@ storiesOf("select/GroupedMultiSelect", module)
     withState<State>({
       values: undefined
     })(({ store }: { store: Store<State> }) => {
-      const onChange: OnChange<string> = options => {
+      const onChange: OnChange<string> = (
+        options: readonly DropdownOption<string>[] | undefined
+      ) => {
         store.set({ values: options });
       };
       return (
@@ -114,13 +118,16 @@ storiesOf("select/GroupedMultiSelect", module)
   .add("disabled", () => (
     <div style={{ width: "400px" }}>
       <GroupedMultiSelect
+        onChange={() => {}}
+        value={undefined}
         options={[
           {
             label: "CA",
             options: [
               {
-                value: "Mattias",
-                label: "Mattias"
+                data: "Mattias",
+                label: "Mattias",
+                value: "Mattias"
               }
             ]
           },
@@ -128,12 +135,14 @@ storiesOf("select/GroupedMultiSelect", module)
             label: "Freight",
             options: [
               {
-                value: "Johan",
-                label: "Johan"
+                data: "Johan",
+                label: "Johan",
+                value: "Johan"
               },
               {
-                value: "Dennis the menace",
-                label: "Dennis the menace"
+                data: "Dennis the menace",
+                label: "Dennis the menace",
+                value: "Dennis the menace"
               }
             ]
           }

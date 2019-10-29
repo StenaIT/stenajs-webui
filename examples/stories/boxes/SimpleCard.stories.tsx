@@ -32,7 +32,7 @@ storiesOf("examples/Boxes", module).add("Event list card", () => {
                 <StandardText color={"#a8a8a8"}>{label}</StandardText>
               </Row>
 
-              {list.map(l2 => (
+              {list.map(() => (
                 <>
                   <Space />
                   <Row alignItems={"center"}>

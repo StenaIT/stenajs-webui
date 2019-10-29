@@ -15,7 +15,7 @@ storiesOf("core/Responsive/Box", module).add("standard", () => (
       </StandardText>
     </Spacing>
     <Row flexWrap={"wrap"}>
-      {items.map((color, index) => (
+      {items.map((_, index) => (
         <Box key={index} width={[1, 1 / 2, 1 / 8]} spacing indent>
           <Box
             borderColor={"#777"}

@@ -35,7 +35,7 @@ storiesOf("forms/RadioButton", module)
       value={knobs.boolean("Checked", false)}
       theme={{
         ...defaultRadioButtonTheme,
-        notCheckedColor: "magenta",
+        iconColorNotChecked: "magenta",
         iconColor: "darkgreen",
         iconSize: 40
       }}
@@ -53,12 +53,11 @@ storiesOf("forms/RadioButton/RadioButtonWithLabel", module)
     <RadioButtonWithLabel
       label={"Add cake"}
       value={knobs.boolean("Checked", false)}
+      textColor="lightblue"
       theme={{
         ...defaultRadioButtonTheme,
         iconColor: "pink",
-        iconSize: 40,
-        textColor: "lightblue",
-        textSize: "30px"
+        iconSize: 40
       }}
     />
   ));

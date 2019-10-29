@@ -28,7 +28,7 @@ interface State {
   numericInput: string;
   radio: boolean;
   select?: string;
-  groupedMultiSelect?: DropdownOption<string>[];
+  groupedMultiSelect: readonly DropdownOption<string>[] | undefined;
   switch: boolean;
 }
 
