@@ -14,7 +14,6 @@
 ​
 ### New features
 
-* Add localizations to Calendar.​
 * Add possibility to set active color for `options` in `Select menu`.
 * Add onKeyDown event for `Checkbox`.
 ​
