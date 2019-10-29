@@ -6,22 +6,21 @@ import {
   WeekData
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
+
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
-import { useTranslation } from "../../../util/date/hooks/UseTranslation";
 
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
   statePerMonth
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const { locale } = useTranslation();
   const onClickDay = useCallback(
     day => {
       if (onChange) {
-        onChange(getWeekStringFromWeekData(getWeekForDate(day.date, locale)));
+        onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
       }
     },
-    [onChange, locale]
+    [onChange]
   );
   const onClickWeek = useCallback(
     week => {
@@ -33,19 +32,19 @@ export const useSingleWeekSelection = <T>({
   );
 
   const statePerMonthWithSelection = useMemo(() => {
-    const weekData = getWeekDataFromWeekString(value, locale);
+    const weekData = getWeekDataFromWeekString(value);
     return weekData
       ? addWeekStateHighlights(statePerMonth, weekData, ["selected"])
       : statePerMonth;
-  }, [value, statePerMonth, locale]);
+  }, [value, statePerMonth]);
 
   const date = useMemo(() => {
-    const week = getWeekDataFromWeekString(value, locale);
+    const week = getWeekDataFromWeekString(value);
     if (!week) {
       return new Date();
     }
     return week.days[0].date;
-  }, [value, locale]);
+  }, [value]);
 
   return {
     statePerMonth: statePerMonthWithSelection,
@@ -66,8 +65,7 @@ const getWeekStringFromWeekData = (
 };
 
 const getWeekDataFromWeekString = (
-  week: string | undefined,
-  locale: Locale
+  week: string | undefined
 ): WeekData | undefined => {
   if (!week) {
     return undefined;
@@ -75,5 +73,5 @@ const getWeekDataFromWeekString = (
   const parts = week.split("-");
   const weekNumber = parseInt(parts[1], 10);
   const year = parseInt(parts[0], 10);
-  return getWeekForDate(getStartDateOfISOWeek(weekNumber, year), locale);
+  return getWeekForDate(getStartDateOfISOWeek(weekNumber, year));
 };
