@@ -9,7 +9,13 @@ import {
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ChangeEvent, useCallback, useEffect, useRef } from "react";
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  KeyboardEventHandler
+} from "react";
 import { FullOnChangeProps } from "../types";
 import { CheckboxTheme, defaultCheckboxTheme } from "./CheckboxTheme";
 
@@ -20,6 +26,7 @@ export interface CheckboxProps
   indeterminate?: boolean;
   id?: string;
   theme?: CheckboxTheme;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
 }
 
 const InvisibleCheckbox = styled.input`
@@ -53,6 +60,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   tabIndex,
   indeterminate = false,
   onChange,
+  onKeyDown,
   onValueChange,
   id: outerId,
   theme = defaultCheckboxTheme,
@@ -141,6 +149,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         checked={value}
         ref={inputRefToUse}
         onChange={handleInputChange}
+        onKeyDown={onKeyDown}
         type={"checkbox"}
         name={name}
         id={id}
