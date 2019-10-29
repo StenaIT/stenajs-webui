@@ -90,6 +90,8 @@ export const defaultSelectTheme: SelectTheme = {
     disabledBackgroundColor: "disabledBackground",
     fontFamily: "primary",
     fontSize: "normal",
+    height: "32px",
+    minHeight: "32px",
     placeholderColor: "separator",
     textColor: "primaryText",
     borderRadius: "4px"
@@ -151,8 +153,8 @@ export const selectThemeDark: SelectTheme = {
     disabledBackgroundColor: "disabledBackground",
     fontFamily: "primary",
     fontSize: "normal",
-    height: "34px",
-    minHeight: "34px",
+    height: "32px",
+    minHeight: "32px",
     placeholderColor: "white",
     textColor: "white",
     borderRadius: "4px"

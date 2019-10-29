@@ -76,7 +76,6 @@ export const createStylesFromTheme = (
     fontFamily: fonts.input,
     fontSize: fontSizes.input,
     minHeight: selectTheme.input.minHeight,
-    height: selectTheme.input.height,
     backgroundColor: isDisabled
       ? colors.inputDisabledBackgroundColor
       : colors.inputBackgroundColor,
@@ -115,8 +114,7 @@ export const createStylesFromTheme = (
     backgroundColor: colors.multiSelectBackgroundColor,
     color: colors.multiSelectTextColor,
     fontFamily: fonts.input,
-    fontSize: fontSizes.input,
-    paddingTop: "2px"
+    fontSize: fontSizes.input
   }),
   indicatorSeparator: base => ({
     ...base,
@@ -124,7 +122,7 @@ export const createStylesFromTheme = (
   }),
   clearIndicator: base => ({
     ...base,
-    padding: "6px",
+    padding: "5px",
     color: colors.clearButtonColorStandard,
     "&:hover": {
       color: colors.clearButtonColorHover
@@ -139,9 +137,13 @@ export const createStylesFromTheme = (
   container: base => ({
     ...base
   }),
+  valueContainer: base => ({
+    ...base,
+    padding: "0 8px"
+  }),
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
-    padding: "6px",
+    padding: "5px",
     color: isFocused ? colors.arrowStandardFocused : colors.arrowStandardClosed,
     "&:hover": {
       color: isFocused ? colors.arrowHoverFocused : colors.arrowHoverClosed
@@ -166,8 +168,7 @@ export const createStylesFromTheme = (
       color: colors.multiSelectRemoveButtonHoverTextColor,
       backgroundColor: colors.multiSelectRemoveButtonHoverBackgroundColor
     },
-    color: colors.multiSelectRemoveButtonTextColor,
-    margin: "3px"
+    color: colors.multiSelectRemoveButtonTextColor
   }),
   multiValue: base => ({
     ...base,
