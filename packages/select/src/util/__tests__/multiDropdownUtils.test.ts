@@ -3,7 +3,7 @@ import {
   GroupType,
   OptionsType,
   ValueType
-} from "react-select/lib/types";
+} from "react-select/src/types";
 import { DropdownOption } from "../..";
 import {
   allOptionsExists,

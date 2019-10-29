@@ -1,4 +1,4 @@
-import { StylesConfig } from "react-select/lib/styles";
+import { StylesConfig } from "react-select/src/styles";
 import { SelectThemeColors, SelectThemeFields } from "../SelectColors";
 import { SelectTheme } from "../SelectTheme";
 

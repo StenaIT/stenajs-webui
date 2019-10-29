@@ -29,8 +29,8 @@
   "dependencies": {
     "@stenajs-webui/core": "0.0.43",
     "@stenajs-webui/elements": "0.0.43",
-    "@types/react-select": "^2.0.17",
-    "react-select": "^2.4.3"
+    "@types/react-select": "^3.0.6",
+    "react-select": "^3.0.8"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",

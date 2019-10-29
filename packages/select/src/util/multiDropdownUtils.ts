@@ -4,7 +4,7 @@ import {
   GroupedOptionsType,
   GroupType,
   OptionsType
-} from "react-select/lib/types";
+} from "react-select/src/types";
 import {
   DropdownOption,
   OnChange,
