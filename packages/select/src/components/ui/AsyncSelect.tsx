@@ -1,8 +1,7 @@
 import { Omit } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import { Async as AsyncComponent } from "react-select";
-import { Props } from "react-select/lib/Async";
+import AsyncComponent, { Props } from "react-select/async";
 import { useSelectTheme } from "../../hooks/useSelectTheme";
 import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";

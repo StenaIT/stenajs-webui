@@ -2,17 +2,15 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import {
-  components,
-  SelectComponentsConfig
-} from "react-select/lib/components";
-import { MultiValueProps } from "react-select/lib/components/MultiValue";
-import { OptionProps } from "react-select/lib/components/Option";
+import { components } from "react-select";
+import { MultiValueProps } from "react-select/src/components/MultiValue";
+import { OptionProps } from "react-select/src/components/Option";
 import {
   ActionMeta,
   GroupedOptionsType,
   OptionsType
-} from "react-select/lib/types";
+} from "react-select/src/types";
+import { SelectComponentsConfig } from "react-select/src/components";
 import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
