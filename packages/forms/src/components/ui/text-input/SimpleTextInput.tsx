@@ -250,6 +250,11 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
     if (refToUse.current) {
       if (selectAllOnFocus) {
         refToUse.current!.setSelectionRange(0, refToUse.current!.value.length);
+      } else {
+        refToUse.current!.setSelectionRange(
+          refToUse.current!.value.length,
+          refToUse.current!.value.length
+        );
       }
     }
     if (onFocus) {
