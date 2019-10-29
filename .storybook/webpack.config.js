@@ -1,4 +1,4 @@
-const storysource = require.resolve("@storybook/addon-storysource/loader");
+const storysource = require.resolve("@storybook/source-loader");
 const path = require("path");
 
 module.exports = ({ config, mode }) => {
