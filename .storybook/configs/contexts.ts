@@ -6,7 +6,7 @@ import {
 
 export const contexts = [
   {
-    icon: "box", // a icon displayed in the Storybook toolbar to control contextual props
+    icon: "paintbrush", // a icon displayed in the Storybook toolbar to control contextual props
     title: "Themes", // an unique name of a contextual environment
     components: [
       // an array of components that is going to be injected to wrap stories
