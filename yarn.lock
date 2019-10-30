@@ -2596,6 +2596,17 @@
     react "^16.8.3"
     util-deprecate "^1.0.2"
 
+"@storybook/addon-contexts@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-contexts/-/addon-contexts-5.2.5.tgz#9ad787a809224c8e5155cc450693538525b74173"
+  integrity sha512-P3WMPHgJh4Y4s81jjbIszTgDEDCcnQQrWuNVsimGNcXZ5ecvcNVehIk6wUCNCBKopY01wpS1gSZY64d3lZALgw==
+  dependencies:
+    "@storybook/addons" "5.2.5"
+    "@storybook/api" "5.2.5"
+    "@storybook/components" "5.2.5"
+    "@storybook/core-events" "5.2.5"
+    core-js "^3.0.1"
+
 "@storybook/addon-info@^5.2.5":
   version "5.2.5"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.5.tgz#ef651bdb03282d345a4515988af544314fe6cd06"

@@ -1,8 +1,4 @@
 import { DependencyList, useMemo } from "react";
-import {
-  ThemeFontWeightField,
-  ThemeFontWeights
-} from "../theme-types/ThemeFontWeights";
 import { Theme } from "../Theme";
 import { ThemeColorField, ThemeColors } from "../theme-types/ThemeColors";
 import { ThemeFontField, ThemeFonts } from "../theme-types/ThemeFonts";
@@ -10,6 +6,10 @@ import {
   ThemeFontSizeField,
   ThemeFontSizes
 } from "../theme-types/ThemeFontSizes";
+import {
+  ThemeFontWeightField,
+  ThemeFontWeights
+} from "../theme-types/ThemeFontWeights";
 import { useTheme } from "./UseTheme";
 
 type ThemeSelectorFunction<T> = (theme: Theme) => T;

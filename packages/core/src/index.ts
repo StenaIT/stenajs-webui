@@ -34,6 +34,9 @@ export * from "./components/text/variants/HeaderText";
 export * from "./theme/ThemeContext";
 export * from "./theme/ThemeProvider";
 export * from "./theme/DefaultTheme";
+export * from "./theme/variations/externalTheme";
+export * from "./theme/variations/internalTheme";
+export * from "./theme/DefaultTheme";
 export * from "./theme/Theme";
 
 export * from "./types/ElementProps";

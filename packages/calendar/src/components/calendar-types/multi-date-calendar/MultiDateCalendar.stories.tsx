@@ -52,7 +52,6 @@ storiesOf("calendar/Calendar/MultiDateCalendar", module)
     })(({ store }: { store: Store<State> }) => (
       <MultiDateCalendar
         onChange={value => {
-          console.log("value", value);
           store.set({ value });
         }}
         value={store.state.value}
