@@ -30,7 +30,7 @@ import {
 } from "./DateRangeInputTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
 
-export interface DateRangeInputProps {
+export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
   value: DateRangeCalendarOnChangeValue;
 
@@ -88,13 +88,24 @@ export interface DateRangeInputProps {
   calendarTheme?: CalendarTheme;
 
   /** Props to be passed to DateRangeCalendar, see DateRangeCalendar. */
-  calendarProps?: DateRangeCalendarProps<{}>;
+  calendarProps?: Omit<
+    DateRangeCalendarProps<T>,
+    | "startDateInFocus"
+    | "onChange"
+    | "startDate"
+    | "endDate"
+    | "setStartDate"
+    | "setEndDate"
+    | "focusedInput"
+    | "setFocusedInput"
+    | "theme"
+  >;
 }
 
 // tslint:disable:no-empty
 const noop = () => {};
 
-export const DateRangeInput: React.FC<DateRangeInputProps> = ({
+export const DateRangeInput = <T extends {}>({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
   placeholderEndDate = "End date",
@@ -107,7 +118,7 @@ export const DateRangeInput: React.FC<DateRangeInputProps> = ({
   theme = defaultDateRangeInputTheme,
   calendarTheme = defaultCalendarTheme,
   calendarProps
-}) => {
+}: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const {
     hideCalendar,
     onSelectDateRange,

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 const events = ["mousemove", "mousedown", "keydown", "touchstart", "scroll"];
 
 export const useOnNoMouseMovement = (callback: () => void, delay: number) => {
-  const eventHandler = useRef<(event: MouseEvent) => void>(() => {
+  const eventHandler = useRef<(event: Event) => void>(() => {
     return;
   });
 

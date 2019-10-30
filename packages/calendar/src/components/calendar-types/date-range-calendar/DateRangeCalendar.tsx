@@ -27,7 +27,7 @@ export interface DateRangeCalendarProps<T>
 
 export function DateRangeCalendar<T extends {}>(
   props: DateRangeCalendarProps<T>
-) {
+): React.ReactElement<T> {
   const dateRangeSelectionProps = useDateRangeSelection(props);
   return (
     <CalendarWithMonthSwitcher<T> {...props} {...dateRangeSelectionProps} />

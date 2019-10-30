@@ -8,6 +8,7 @@ import { defaultRadioButtonTheme } from "./RadioButtonTheme";
 export interface RadioButtonWithLabelProps extends RadioButtonProps {
   label: string;
   textColor?: ThemeColorField | string;
+  textSize?: string;
   innerRef?: Ref<HTMLDivElement>;
 }
 
@@ -17,6 +18,7 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
   disabled,
   innerRef,
   textColor,
+  textSize,
   ...radioButtonProps
 }) => {
   const { colors } = useThemeFields(
@@ -42,6 +44,7 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
           <StandardText
             userSelect={"none"}
             color={disabled ? colors.textColorDisabled : colors.textColor}
+            fontSize={textSize}
           >
             {label}
           </StandardText>
