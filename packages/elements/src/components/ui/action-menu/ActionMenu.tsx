@@ -34,10 +34,6 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
 
   return (
     <Column
-      position={"absolute"}
-      top={0}
-      left={0}
-      right={0}
       background={colors.menuBackground}
       borderColor={colors.borderColor}
       hoverBorder={hoverBorder}
