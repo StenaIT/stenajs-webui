@@ -3,6 +3,7 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import {
   Box,
   Clickable,
+  Column,
   Row,
   StandardText,
   useBoolean,
@@ -25,6 +26,7 @@ interface ActionDropdownProps {
   label?: string;
   disabled?: boolean;
   theme?: ActionDropdownTheme;
+  zIndexOnMenu?: number;
 }
 
 export const ActionDropdown: React.FC<ActionDropdownProps> = ({
@@ -32,7 +34,8 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   disabled,
   width = "180px",
   label = "Actions",
-  theme = defaultActionDropdownTheme
+  theme = defaultActionDropdownTheme,
+  zIndexOnMenu
 }) => {
   const [expanded, open, close] = useBoolean(false);
   const ref = useRef(null);
@@ -134,30 +137,38 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
           </Box>
         </Clickable>
         {expanded && (
-          <ActionMenu
-            width={width}
-            shadow={"modal"}
-            top={
-              <Clickable width={"100%"} onClick={closeAndRefocus}>
-                <Row
-                  width={"100%"}
-                  height={theme.height}
-                  justifyContent={"space-between"}
-                  alignItems={"center"}
-                  indent
-                >
-                  <StandardText>{label}</StandardText>
-                  <Icon
-                    icon={faChevronUp}
-                    size={12}
-                    color={colors.expandIconColorFocus}
-                  />
-                </Row>
-              </Clickable>
-            }
+          <Column
+            position={"absolute"}
+            top={0}
+            left={0}
+            right={0}
+            zIndex={zIndexOnMenu}
           >
-            {children}
-          </ActionMenu>
+            <ActionMenu
+              width={width}
+              shadow={"modal"}
+              top={
+                <Clickable width={"100%"} onClick={closeAndRefocus}>
+                  <Row
+                    width={"100%"}
+                    height={theme.height}
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                    indent
+                  >
+                    <StandardText>{label}</StandardText>
+                    <Icon
+                      icon={faChevronUp}
+                      size={12}
+                      color={colors.expandIconColorFocus}
+                    />
+                  </Row>
+                </Clickable>
+              }
+            >
+              {children}
+            </ActionMenu>
+          </Column>
         )}
       </Box>
     </ActionMenuContext.Provider>

@@ -2,7 +2,13 @@
 
 ## Next release
 
-* Coming soon...
+### Breaking changes
+
+* ActionMenu is no longer position absolute.
+
+### New features
+
+* Add z-index prop to ActionDropdown.
 
 ## 0.0.44
 ​
