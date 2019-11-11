@@ -76,7 +76,8 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
     leftIcon,
     label,
     right,
-    rightIcon
+    rightIcon,
+    ...restProps
   } = props;
   const {
     textColor,
@@ -178,6 +179,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
         borderRadius: buttonTheme.borderRadius,
         border: borderColor ? `1px solid ${borderColor}` : undefined
       }}
+      {...restProps}
     >
       <Box
         borderRadius={buttonTheme.borderRadius}
