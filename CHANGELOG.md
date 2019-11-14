@@ -10,6 +10,10 @@
 
 * NumericTextInput correctly shows contentRight without padding when stepper buttons are hidden.
 
+### Internal
+
+* Upgrade to Typescript 3.7.2, including eslint, rollup and other dependencies.
+
 ## 0.0.45
 
 ### Breaking changes
