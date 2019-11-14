@@ -1,7 +1,8 @@
 import {
   formatDurationToString,
   formatHoursAndMinutesToString,
-  getHoursAndMinutesFromString
+  getHoursAndMinutesFromString,
+  stripAllButNumbers
 } from "../TimeStringHelper";
 
 describe("TimeStringHelper", () => {
@@ -100,6 +101,13 @@ describe("TimeStringHelper", () => {
           "2h 0min"
         );
       });
+    });
+  });
+  describe("stripAllButNumbers", () => {
+    it("keeps only numbers", () => {
+      expect(stripAllButNumbers("abcdefgzaåäö,.1234-_567890+*#!?")).toBe(
+        "1234567890"
+      );
     });
   });
 });
