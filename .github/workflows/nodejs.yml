@@ -22,3 +22,4 @@ jobs:
         yarn test
       env:
         CI: true
+        BUNDLESIZE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
