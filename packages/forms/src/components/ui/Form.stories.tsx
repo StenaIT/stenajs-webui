@@ -28,7 +28,7 @@ interface State {
 const disabled = knobs.boolean("Disabled", false);
 
 storiesOf("forms/", module).add(
-  "all",
+  "Overview",
   withState<State>({
     checkbox: false,
     input: "",
