@@ -14,13 +14,15 @@ export interface DurationTextInputValue {
 }
 
 interface Props extends ValueAndOnValueChangeProps<DurationTextInputValue> {
+  onEnter?: () => void;
   theme?: NumericTextInputTheme;
 }
 
 export const DurationTextInput: React.FC<Props> = ({
   value,
   onValueChange,
-  theme = defaultNumericTextInputTheme
+  theme = defaultNumericTextInputTheme,
+  onEnter
 }) => {
   const themeToUse = useMemo(() => {
     return {
@@ -70,6 +72,7 @@ export const DurationTextInput: React.FC<Props> = ({
           contentRight={<SmallText color={"disabledText"}>h</SmallText>}
           placeholder={"12"}
           hideButtons
+          onEnter={onEnter}
         />
       </Box>
       <Box width={"58px"}>
@@ -82,6 +85,7 @@ export const DurationTextInput: React.FC<Props> = ({
           contentRight={<SmallText color={"disabledText"}>min</SmallText>}
           placeholder={"30"}
           hideButtons
+          onEnter={onEnter}
         />
       </Box>
     </Row>
