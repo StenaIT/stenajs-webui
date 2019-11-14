@@ -1,4 +1,4 @@
-# stenajs-webui
+# stenajs-webui [![Build status badge](https://github.com/StenaIT/stenajs-webui/workflows/Node%20CI/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions?query=workflow%3A%22Node+CI%22)
 
 A design system and React component framework developed at Stena Line.
 
