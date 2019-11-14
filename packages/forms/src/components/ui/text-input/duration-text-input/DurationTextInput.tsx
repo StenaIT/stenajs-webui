@@ -1,6 +1,7 @@
 import { Box, Row, SmallText, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
+import { stripAllButNumbers } from "../../../../utils/TimeStringHelper";
 import { ValueAndOnValueChangeProps } from "../../types";
 import { NumericTextInput } from "../numeric-text-input/NumericTextInput";
 import {
@@ -67,7 +68,11 @@ export const DurationTextInput: React.FC<Props> = ({
           theme={themeToUse}
           value={hoursValue}
           onValueChange={hours =>
-            onValueChange && onValueChange({ minutes: minutesValue, hours })
+            onValueChange &&
+            onValueChange({
+              minutes: minutesValue,
+              hours: stripAllButNumbers(hours)
+            })
           }
           contentRight={<SmallText color={"disabledText"}>h</SmallText>}
           placeholder={"12"}
@@ -80,7 +85,11 @@ export const DurationTextInput: React.FC<Props> = ({
           theme={themeToUse}
           value={minutesValue}
           onValueChange={minutes =>
-            onValueChange && onValueChange({ minutes, hours: hoursValue })
+            onValueChange &&
+            onValueChange({
+              minutes: stripAllButNumbers(minutes),
+              hours: hoursValue
+            })
           }
           contentRight={<SmallText color={"disabledText"}>min</SmallText>}
           placeholder={"30"}

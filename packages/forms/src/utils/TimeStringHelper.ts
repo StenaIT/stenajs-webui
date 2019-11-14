@@ -27,4 +27,14 @@ export const getHoursAndMinutesFromString = (
 export const formatHoursAndMinutesToString = (
   time: HourAndMinutes,
   separator: string = ":"
-) => `${time.hours}${separator}${time.minutes}`;
+): string => `${time.hours}${separator}${time.minutes}`;
+
+export const formatDurationToString = (time: HourAndMinutes): string => {
+  if (time.hours > 0) {
+    return `${time.hours}h ${time.minutes}min`;
+  }
+  return `${time.minutes}min`;
+};
+
+export const stripAllButNumbers = (s: string): string =>
+  s.replace(/[^0-9]/g, "");

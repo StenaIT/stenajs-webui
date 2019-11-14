@@ -1,4 +1,5 @@
 import {
+  formatDurationToString,
   formatHoursAndMinutesToString,
   getHoursAndMinutesFromString
 } from "../TimeStringHelper";
@@ -77,6 +78,27 @@ describe("TimeStringHelper", () => {
             formatHoursAndMinutesToString({ hours: 12, minutes: 15 }, ".")
           ).toBe("12.15");
         });
+      });
+    });
+  });
+  describe("formatDurationToString", () => {
+    describe("when normal time", () => {
+      it("formats correctly", () => {
+        expect(formatDurationToString({ hours: 12, minutes: 15 })).toBe(
+          "12h 15min"
+        );
+      });
+    });
+    describe("when minutes, but no hours", () => {
+      it("formats correctly", () => {
+        expect(formatDurationToString({ hours: 0, minutes: 15 })).toBe("15min");
+      });
+    });
+    describe("when hours, but no minutes", () => {
+      it("formats correctly", () => {
+        expect(formatDurationToString({ hours: 2, minutes: 0 })).toBe(
+          "2h 0min"
+        );
       });
     });
   });
