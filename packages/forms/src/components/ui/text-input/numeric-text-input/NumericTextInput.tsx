@@ -64,7 +64,9 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     [value, max, min, onValueChange]
   );
 
-  const contentRightToUse = (
+  const contentRightToUse = hideButtons ? (
+    contentRight
+  ) : (
     <>
       {contentRight && (
         <>
@@ -87,10 +89,10 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     <ClassNames>
       {({ css, cx }) => (
         <StandardTextInput
-          contentRight={!hideButtons && contentRightToUse}
+          contentRight={contentRightToUse}
           value={value}
           onValueChange={onValueChange}
-          disableContentPaddingRight
+          disableContentPaddingRight={!hideButtons}
           inputType={"number"}
           min={min}
           max={max}
