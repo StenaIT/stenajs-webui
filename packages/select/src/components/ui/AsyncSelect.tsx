@@ -23,5 +23,7 @@ export const AsyncSelect = <T extends {}>({
     [theme, themeFields, styles]
   );
 
-  return <AsyncComponent styles={selectStyles} {...selectProps as Props<T>} />;
+  return (
+    <AsyncComponent styles={selectStyles} {...(selectProps as Props<T>)} />
+  );
 };

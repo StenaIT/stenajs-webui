@@ -39,9 +39,11 @@ export const dayHighlightSelect = <T>(
     }
     if (
       typeof highlightsOrBoolean[i] === "string" &&
-      dayHasHighlight(dayState, defaultHighlights, highlightsOrBoolean[
-        i
-      ] as string)
+      dayHasHighlight(
+        dayState,
+        defaultHighlights,
+        highlightsOrBoolean[i] as string
+      )
     ) {
       return returnValues[i];
     }

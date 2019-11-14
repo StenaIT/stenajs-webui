@@ -74,9 +74,9 @@ export const GroupedMultiSelect = <TData extends {}>({
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
-}: GroupedMultiSelectProps<TData>): React.ReactElement<
-  GroupedMultiSelectProps<TData>
-> => {
+}: GroupedMultiSelectProps<TData>): React.ReactElement<GroupedMultiSelectProps<
+  TData
+>> => {
   const Option = (props: OptionProps<DropdownOption<TData>>) => {
     if (props.data.internalOptions) {
       return (
