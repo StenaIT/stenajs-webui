@@ -1,5 +1,3 @@
 {
-  // If you have a monorepo we infer your packages from your Yarn workspaces
-  // or lerna configuration by default.
   "sandboxes": ["react-ts"]
 }
