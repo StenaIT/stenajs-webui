@@ -10,13 +10,7 @@ import {
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  FocusEventHandler,
-  useState
-} from "react";
-import { FullOnChangeProps } from "../types";
+import { ChangeEventHandler, FocusEventHandler, useState } from "react";
 import { SimpleTextInput, SimpleTextInputProps } from "./SimpleTextInput";
 import {
   defaultStandardTextInputTheme,
@@ -37,8 +31,7 @@ const StyledSimpleTextInputWrapper = styled("div")`
 `;
 
 export interface StandardTextInputProps<TValue = string>
-  extends Omit<SimpleTextInputProps<TValue>, "theme">,
-    FullOnChangeProps<TValue, ChangeEvent<HTMLInputElement>> {
+  extends Omit<SimpleTextInputProps<TValue>, "theme"> {
   /** React node to put to the left. Left icon is ignored if this is set. */
   contentLeft?: React.ReactNode;
   /** React node to put to the right. Right icon is ignored if this is set. */
