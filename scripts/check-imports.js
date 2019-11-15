@@ -119,6 +119,11 @@ const checkImport = (
       checkIfImportGoesToPackagesFolder(filePath, packageJson, imported);
     } else {
       checkIfImportIsPackageJsonDependency(filePath, packageJson, imported);
+      checkIfImportIsModuleThatRequiresExplicitFileImport(
+        filePath,
+        packageJson,
+        imported
+      );
     }
   }
 };
@@ -168,4 +173,24 @@ const checkIfImportIsPackageJsonDependency = (
   );
   console.log(filePath);
   success = false;
+};
+
+const librariesThatRequireExplicitFileImport = []; // Ex "date-fns"
+
+const checkIfImportIsModuleThatRequiresExplicitFileImport = (
+  filePath,
+  packageJson,
+  imported
+) => {
+  librariesThatRequireExplicitFileImport.forEach(libName => {
+    if (imported.startsWith(libName)) {
+      if (imported.indexOf("/") < 0) {
+        console.log(
+          `ERROR: Not allowed to import full '${libName}'. Must specify module file.`
+        );
+        console.log(filePath);
+        success = false;
+      }
+    }
+  });
 };
