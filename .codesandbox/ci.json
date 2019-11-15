@@ -1,4 +1,3 @@
 {
-  "buildCommand": "lerna run build",
   "sandboxes": ["react-ts"]
 }
