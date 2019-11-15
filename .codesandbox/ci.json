@@ -1,4 +1,4 @@
 {
-  "buildCommand": "build",
+  "buildCommand": "build-all",
   "sandboxes": ["react-ts"]
 }
