@@ -1,4 +1,4 @@
 {
-  "buildCommand": "lerna link && lerna run build",
+  "buildCommand": "link-and-build",
   "sandboxes": ["react-ts"]
 }
