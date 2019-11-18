@@ -2,6 +2,10 @@
 
 ## Next release
 
+* Coming soon...
+
+## 0.0.46
+
 ### Fixes
 
 * NumericTextInput correctly shows contentRight without padding when stepper buttons are hidden.
