@@ -9,7 +9,7 @@
     "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
-    "link-and-build": "lerna link && yarn build-all",
+    "link-and-build": "lerna link && yarn lerna run build",
     "build-all": "yarn clean-all && yarn pre-build-check && lerna run build && yarn post-build-check",
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
