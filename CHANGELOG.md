@@ -2,10 +2,6 @@
 
 ## Next release
 
-### New features
-
-* Add `DurationTextInput` component.
-
 ### Fixes
 
 * NumericTextInput correctly shows contentRight without padding when stepper buttons are hidden.
