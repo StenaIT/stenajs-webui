@@ -169,8 +169,6 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
     {
       colors: {
         backgroundColor: backgroundColor || theme.backgroundColor,
-        backgroundColorDisabled: theme.backgroundColorDisabled,
-        backgroundColorInvalid: theme.backgroundColorInvalid,
         borderColorFocused: theme.borderColorFocused,
         borderColor: theme.borderColor
       }
@@ -202,10 +200,10 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
   };
 
   const activeBackgroundColor = disabled
-    ? colors.backgroundColorDisabled
+    ? theme.backgroundColorDisabled
     : invalid
-    ? colors.backgroundColorInvalid
-    : colors.backgroundColor;
+    ? theme.backgroundColorInvalid
+    : backgroundColor || theme.backgroundColor;
 
   const activeBorderColor =
     forceFocusHighlight || focused
