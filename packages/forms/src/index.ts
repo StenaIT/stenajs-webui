@@ -14,3 +14,4 @@ export * from "./components/ui/text-input/SimpleTextInput";
 export * from "./components/ui/text-input/SimpleTextInputTheme";
 export * from "./components/ui/text-input/StandardTextInput";
 export * from "./components/ui/text-input/StandardTextInputTheme";
+export * from "./components/ui/types";

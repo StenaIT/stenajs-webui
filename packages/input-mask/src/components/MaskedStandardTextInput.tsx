@@ -20,9 +20,7 @@ export interface MaskedStandardTextInputProps extends StandardTextInputProps {
   showMask?: boolean;
 }
 
-export const MaskedStandardTextInput: React.FC<
-  MaskedStandardTextInputProps
-> = ({
+export const MaskedStandardTextInput: React.FC<MaskedStandardTextInputProps> = ({
   mask,
   pipe,
   onChange,

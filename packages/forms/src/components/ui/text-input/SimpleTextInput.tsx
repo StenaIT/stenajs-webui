@@ -247,7 +247,7 @@ export const SimpleTextInput: React.FC<SimpleTextInputProps> = ({
   };
 
   const onFocusHandler: FocusEventHandler<HTMLInputElement> = ev => {
-    if (refToUse.current) {
+    if (refToUse.current && inputType !== "number") {
       if (selectAllOnFocus) {
         refToUse.current!.setSelectionRange(0, refToUse.current!.value.length);
       } else {

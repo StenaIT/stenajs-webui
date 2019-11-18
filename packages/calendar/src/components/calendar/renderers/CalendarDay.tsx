@@ -29,7 +29,7 @@ export const CalendarDay = <T extends {}>({
       alignItems={"center"}
     >
       <StandardText
-        {...theme.CalendarDay.textProps &&
+        {...(theme.CalendarDay.textProps &&
           theme.CalendarDay.textProps(
             fullTheme,
             defaultHighlights,
@@ -38,7 +38,7 @@ export const CalendarDay = <T extends {}>({
             week,
             month,
             userData
-          )}
+          ))}
       >
         {day.dayOfMonth}
       </StandardText>
