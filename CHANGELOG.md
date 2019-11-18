@@ -9,10 +9,12 @@
 ### Fixes
 
 * NumericTextInput correctly shows contentRight without padding when stepper buttons are hidden.
+* Text inputs no longer use `setSelectionRange` when type is number.
 
 ### Internal
 
 * Upgrade to Typescript 3.7.2, including eslint, rollup and other dependencies.
+* Upgrade `madge`, now supports Typescript 3.7.
 
 ## 0.0.45
 
