@@ -1,4 +1,5 @@
 import { Box, Row, SmallText, useThemeFields } from "@stenajs-webui/core";
+import { useBoolean } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import { stripAllButNumbers } from "../../../../utils/TimeStringHelper";
@@ -25,6 +26,17 @@ export const DurationTextInput: React.FC<Props> = ({
   theme = defaultNumericTextInputTheme,
   onEnter
 }) => {
+  const [isFocusedHours, setIsFocusedHours, setIsNotFocusedHours] = useBoolean(
+    false
+  );
+  const [
+    isFocusedMinutes,
+    setIsFocusedMinutes,
+    setIsNotFocusedMinutes
+  ] = useBoolean(false);
+
+  const isFocused = isFocusedHours || isFocusedMinutes;
+
   const themeToUse = useMemo(() => {
     return {
       ...theme,
@@ -44,20 +56,17 @@ export const DurationTextInput: React.FC<Props> = ({
     [themeToUse]
   );
 
-  const focusWithinBorder = useMemo(() => {
-    return `${theme.borderWidth}px ${theme.borderStyle} ${borderColorFocused}`;
-  }, [theme, borderColorFocused]);
-
   const border = useMemo(() => {
-    return `${theme.borderWidth}px ${theme.borderStyle} ${borderColor}`;
-  }, [theme, borderColor]);
+    return `${theme.borderWidth}px ${theme.borderStyle} ${
+      isFocused ? borderColorFocused : borderColor
+    }`;
+  }, [theme, borderColor, borderColorFocused, isFocused]);
 
   const hoursValue = value?.hours ?? "";
   const minutesValue = value?.minutes ?? "";
 
   return (
     <Row
-      focusWithinBorder={focusWithinBorder}
       border={border}
       height={theme.height}
       borderRadius={theme.borderRadius}
@@ -78,6 +87,8 @@ export const DurationTextInput: React.FC<Props> = ({
           placeholder={"12"}
           hideButtons
           onEnter={onEnter}
+          onFocus={setIsFocusedHours}
+          onBlur={setIsNotFocusedHours}
         />
       </Box>
       <Box width={"58px"}>
@@ -95,6 +106,8 @@ export const DurationTextInput: React.FC<Props> = ({
           placeholder={"30"}
           hideButtons
           onEnter={onEnter}
+          onFocus={setIsFocusedMinutes}
+          onBlur={setIsNotFocusedMinutes}
         />
       </Box>
     </Row>
