@@ -109,6 +109,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
             `
           ])}
           theme={theme}
+          disabled={disabled}
           {...restProps}
         />
       )}
