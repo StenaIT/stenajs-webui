@@ -4,6 +4,13 @@
 
 * Coming soon...
 
+## 0.0.47
+
+### Fixes
+
+* `NumericTextInput` passes `disabled` prop down to child `StandardTextInput`.
+* `StandardTextInput` uses prop `backgroundColor` when getting one.
+
 ## 0.0.46
 
 ### Fixes
