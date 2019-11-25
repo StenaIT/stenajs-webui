@@ -89,6 +89,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
             box-shadow: ${modalShadow};
 
             width: ${width};
+            max-width: 100%;
 
             animation: ${modalAnimateIn} 0.3s
               cubic-bezier(0.645, 0.045, 0.355, 1) both;
