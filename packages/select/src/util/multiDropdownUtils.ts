@@ -93,32 +93,33 @@ const removeOptionHeaders = <TData>(
     .map(convertInternalOptionToDropdownOption);
 
 export const createOnChange = <TData>(onChange: OnChange<TData>) => (
-  selectedInternalOptions: OptionsType<InternalDropdownOption<TData>>,
+  selectedInternalOptions:
+    | OptionsType<InternalDropdownOption<TData>>
+    | undefined,
   meta: Meta<TData>
 ) => {
   switch (meta.action) {
     case "select-option":
       if ("internalOptions" in meta.option) {
         const selectedOptions: OnChangeValue<TData> = uniqWith(
-          selectedInternalOptions.reduce<OptionsType<DropdownOption<TData>>>(
-            (previousValue, currentValue) => {
-              if ("internalOptions" in currentValue) {
-                return [...previousValue, ...currentValue.internalOptions];
-              } else {
-                return [
-                  ...previousValue,
-                  convertInternalOptionToDropdownOption(currentValue)
-                ];
-              }
-            },
-            []
-          ),
+          (selectedInternalOptions || []).reduce<
+            OptionsType<DropdownOption<TData>>
+          >((previousValue, currentValue) => {
+            if ("internalOptions" in currentValue) {
+              return [...previousValue, ...currentValue.internalOptions];
+            } else {
+              return [
+                ...previousValue,
+                convertInternalOptionToDropdownOption(currentValue)
+              ];
+            }
+          }, []),
           isEqual
         );
 
         onChange(selectedOptions, meta);
       } else {
-        onChange(removeOptionHeaders(selectedInternalOptions), meta);
+        onChange(removeOptionHeaders(selectedInternalOptions || []), meta);
       }
       break;
     case "deselect-option":
@@ -126,12 +127,12 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
         onChange(
           removeGroupedOptions(
             meta.option,
-            removeOptionHeaders(selectedInternalOptions)
+            removeOptionHeaders(selectedInternalOptions || [])
           ),
           meta
         );
       } else {
-        onChange(removeOptionHeaders(selectedInternalOptions), meta);
+        onChange(removeOptionHeaders(selectedInternalOptions || []), meta);
       }
       break;
     case "remove-value":
@@ -140,29 +141,35 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
         onChange(
           removeGroupedOptions(
             meta.removedValue,
-            removeOptionHeaders(selectedInternalOptions)
+            removeOptionHeaders(selectedInternalOptions || [])
           ),
           meta
         );
       } else {
-        onChange(removeOptionHeaders(selectedInternalOptions), meta);
+        onChange(removeOptionHeaders(selectedInternalOptions || []), meta);
       }
       break;
     case "set-value":
       onChange(
-        selectedInternalOptions.map(convertInternalOptionToDropdownOption),
+        (selectedInternalOptions || []).map(
+          convertInternalOptionToDropdownOption
+        ),
         meta
       );
       break;
     case "clear":
       onChange(
-        selectedInternalOptions.map(convertInternalOptionToDropdownOption),
+        (selectedInternalOptions || []).map(
+          convertInternalOptionToDropdownOption
+        ),
         meta
       );
       break;
     case "create-option":
       onChange(
-        selectedInternalOptions.map(convertInternalOptionToDropdownOption),
+        (selectedInternalOptions || []).map(
+          convertInternalOptionToDropdownOption
+        ),
         meta
       );
       break;
