@@ -1,0 +1,75 @@
+:root {
+    --swui-switch-width: 50px;
+    --swui-switch-height: 24px;
+    --swui-switch-animation-time: 0.25s;
+    --swui-switch-selected-highlight-color: #696bdb;
+    --swui-switch-knob-width: calc(var(--swui-switch-height) - 2px);
+    --swui-switch-knob-bg-color-enabled: white;
+    --swui-switch-knob-border-color-enabled: #b1b1b1;
+    --swui-switch-knob-bg-color-disabled: #bebbc0;
+    --swui-switch-container-bg-color-enabled: #fff;
+    --swui-switch-container-bg-color-disabled: #e8e4ea;
+    --swui-switch-container-border-color: #dcd9de;
+    --swui-switch-container-border-color-hover: #f7f3f9;
+    --swui-switch-container-border-color-disabled: #bab6bc;
+    --swui-switch-knob-shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+.switch {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--swui-switch-container-border-color);
+    box-sizing: border-box;
+    background-color: var(--swui-switch-container-bg-color-enabled);
+    height: var(--swui-switch-height);
+    width: var(--swui-switch-width);
+    border-radius: calc(var(--swui-switch-height) / 2);
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color var(--swui-switch-animation-time);
+
+    &:focus {
+        outline: 0;
+        border: 1px solid var(--swui-switch-selected-highlight-color);
+        box-shadow: inset var(--swui-switch-selected-highlight-color) 0 0 4px 0;
+    }
+
+    &:hover {
+        border: 1px solid var(--swui-switch-selected-highlight-color);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: var(--swui-switch-container-bg-color-disabled);
+        border: 1px solid var(--swui-switch-container-border-color-disabled);
+
+        .knob {
+            background-color: var(--swui-switch-knob-bg-color-disabled)
+        }
+
+    }
+
+    .filler {
+        flex: none;
+        transition: flex var(--swui-switch-animation-time);
+    }
+
+    .knob {
+        width: var(--swui-switch-knob-width);
+        height: var(--swui-switch-knob-width);
+        border-radius: 50%;
+        background-color: var(--swui-switch-knob-bg-color-enabled);
+        box-shadow: var(--swui-switch-knob-shadow-color) 0 0 4px 1px;
+    }
+
+}
+
+.checked {
+    border: 1px solid var(--swui-switch-selected-highlight-color);
+    background-color: var(--swui-switch-selected-highlight-color);
+
+    .filler {
+        flex: 1;
+    }
+}
