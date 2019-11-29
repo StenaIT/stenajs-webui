@@ -1,28 +1,21 @@
-import { defaultSwitchTheme, Switch } from "@stenajs-webui/forms";
+import { Switch } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
+import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-export default { title: "forms/Switch" };
-
-export const standard = () => (
-  <Switch
-    value={knobs.boolean("Toggled", false)}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-);
-
-export const customSize = () => (
-  <Switch
-    value={knobs.boolean("Toggled", false)}
-    disabled={knobs.boolean("Disabled", false)}
-    theme={{
-      ...defaultSwitchTheme,
-      height: 40,
-      width: 200
-    }}
-  />
-);
-
-export const disabled = () => (
-  <Switch value={knobs.boolean("Toggled", false)} disabled />
-);
+storiesOf("forms/Switch", module)
+  .add("standard", () => (
+    <Switch
+      value={knobs.boolean("Toggled", false)}
+      disabled={knobs.boolean("Disabled", false)}
+    />
+  ))
+  .add("custom size", () => (
+    <Switch
+      value={knobs.boolean("Toggled", false)}
+      disabled={knobs.boolean("Disabled", false)}
+    />
+  ))
+  .add("disabled", () => (
+    <Switch value={knobs.boolean("Toggled", false)} disabled />
+  ));

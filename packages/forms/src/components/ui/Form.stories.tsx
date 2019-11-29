@@ -1,5 +1,5 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { Box, Column, Row, Space } from "@stenajs-webui/core";
+import { Box, Column, HeaderText, Row, Space } from "@stenajs-webui/core";
 import {
   Checkbox,
   NumericTextInput,
@@ -11,9 +11,10 @@ import {
   GroupedMultiSelect,
   Select
 } from "@stenajs-webui/select";
-import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { RadioButton } from "./radio/RadioButton";
 
 interface State {
   checkbox: boolean;
@@ -25,39 +26,208 @@ interface State {
   switch: boolean;
 }
 
-const disabled = knobs.boolean("Disabled", false);
+const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIsEnabled(!isEnabled);
+    }, 1000);
+    return () => clearInterval(t);
+  }, [[isEnabled, setIsEnabled]]);
 
-storiesOf("forms/", module).add(
-  "Overview",
-  withState<State>({
-    checkbox: false,
-    input: "",
-    numericInput: "",
-    radio: false,
-    select: undefined,
-    groupedMultiSelect: undefined,
-    switch: false
-  })(({ store }: { store: Store<State> }) => (
+  return (
     <Column>
-      <Checkbox
-        value={store.state.checkbox}
-        onValueChange={value => store.set({ checkbox: value })}
-        disabled={disabled}
-      />
+      <div>
+        <HeaderText>Checkbox</HeaderText>
+        <table cellPadding={"5px"}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Clickable</th>
+              <th>On</th>
+              <th>Off</th>
+              <th>Switching</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Enabled</td>
+              <td>
+                <Checkbox
+                  value={store.state.checkbox}
+                  onValueChange={value => store.set({ checkbox: value })}
+                />
+              </td>
+              <td>
+                <Checkbox value />
+              </td>
+              <td>
+                <Checkbox value={false} />
+              </td>
+              <td>
+                <Checkbox value={isEnabled} />
+              </td>
+            </tr>
+            <tr>
+              <td>Disabled</td>
+              <td>
+                <Checkbox
+                  value={store.state.checkbox}
+                  onValueChange={value => store.set({ checkbox: value })}
+                  disabled
+                />
+              </td>
+              <td>
+                <Checkbox value disabled />
+              </td>
+              <td>
+                <Checkbox value={false} disabled />
+              </td>
+              <td>
+                <Checkbox value={isEnabled} disabled />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <Space num={4} />
+      <div>
+        <HeaderText>RadioButton</HeaderText>
+        <table cellPadding={"5px"}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>On</th>
+              <th>Off</th>
+              <th>Switching</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Enabled</td>
+              <td>
+                <RadioButton value />
+              </td>
+              <td>
+                <RadioButton value={false} />
+              </td>
+              <td>
+                <RadioButton value={isEnabled} />
+              </td>
+            </tr>
+            <tr>
+              <td>Disabled</td>
+              <td>
+                <RadioButton value disabled />
+              </td>
+              <td>
+                <RadioButton value={false} disabled />
+              </td>
+              <td>
+                <RadioButton value={isEnabled} disabled />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <Space num={4} />
+
+      <div>
+        <HeaderText>Switch</HeaderText>
+        <table cellPadding={"5px"}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Clickable</th>
+              <th>On</th>
+              <th>Off</th>
+              <th>Switching</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Enabled</td>
+              <td>
+                <Switch
+                  onValueChange={value => store.set({ switch: value })}
+                  value={store.state.switch}
+                />
+              </td>
+              <td>
+                <Switch value />
+              </td>
+              <td>
+                <Switch value={false} />
+              </td>
+              <td>
+                <Switch value={isEnabled} />
+              </td>
+            </tr>
+            <tr>
+              <td>Disabled</td>
+              <td>
+                <Switch
+                  onValueChange={value => store.set({ switch: value })}
+                  value={store.state.switch}
+                  disabled
+                />
+              </td>
+              <td>
+                <Switch value disabled />
+              </td>
+              <td>
+                <Switch value={false} disabled />
+              </td>
+              <td>
+                <Switch value={isEnabled} disabled />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <Space num={4} />
+
+      <div>
+        <HeaderText>StandardTextInput</HeaderText>
+        <Space />
+        <Row>
+          <table cellSpacing={"5px"}>
+            <thead>
+              <th>Enabled</th>
+              <th>Disabled</th>
+              <th>Background</th>
+            </thead>
+            <tbody>
+              <td>
+                <StandardTextInput
+                  value={store.state.input}
+                  onValueChange={value => store.set({ input: value })}
+                />
+              </td>
+              <td>
+                <StandardTextInput
+                  value={store.state.input}
+                  onValueChange={value => store.set({ input: value })}
+                  disabled
+                />
+              </td>
+              <td>
+                <StandardTextInput
+                  value={store.state.input}
+                  onValueChange={value => store.set({ input: value })}
+                  backgroundColor={"#ddddff"}
+                />
+              </td>
+            </tbody>
+          </table>
+        </Row>
+      </div>
       <Space />
-      <Switch
-        onValueChange={value => store.set({ switch: value })}
-        value={store.state.switch}
-        disabled={disabled}
-      />
-      <Space />
-      <Row>
-        <Box width={"200px"}>
-          <StandardTextInput
-            value={store.state.input}
-            onValueChange={value => store.set({ input: value })}
-          />
-        </Box>
+      <div>
+        <HeaderText>Select</HeaderText>
         <Space />
         <Box width={"200px"}>
           <Select
@@ -80,10 +250,12 @@ storiesOf("forms/", module).add(
             width={"200px"}
           />
         </Box>
-      </Row>
+      </div>
       <Space />
-      <Row>
-        <Box width={"410px"}>
+      <div>
+        <HeaderText>GroupedMultiSelect</HeaderText>
+        <Space />
+        <Box width={"200px"}>
           <GroupedMultiSelect
             onChange={value => store.set({ groupedMultiSelect: value })}
             options={[
@@ -116,6 +288,10 @@ storiesOf("forms/", module).add(
             value={store.state.groupedMultiSelect}
           />
         </Box>
+      </div>
+      <Space />
+      <div>
+        <HeaderText>NumericTextInput</HeaderText>
         <Space />
         <Box width={"200px"}>
           <NumericTextInput
@@ -123,7 +299,19 @@ storiesOf("forms/", module).add(
             onValueChange={value => store.set({ numericInput: value })}
           />
         </Box>
-      </Row>
+      </div>
     </Column>
-  ))
+  );
+};
+storiesOf("forms/", module).add(
+  "Overview",
+  withState<State>({
+    checkbox: false,
+    input: "",
+    numericInput: "",
+    radio: false,
+    select: undefined,
+    groupedMultiSelect: undefined,
+    switch: false
+  })(({ store }: { store: Store<State> }) => <FormOverview store={store} />)
 );
