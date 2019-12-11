@@ -176,6 +176,7 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
       disabled={disabled || success || loading}
       background={bgColor}
       style={{
+        height: buttonTheme.height,
         borderRadius: buttonTheme.borderRadius,
         border: borderColor ? `1px solid ${borderColor}` : undefined
       }}
@@ -186,7 +187,6 @@ export const Button: React.FC<ButtonProps> = React.memo(props => {
         borderWidth={0}
         overflow={"hidden"}
         background={bgColor}
-        height={buttonTheme.height}
       >
         <Row
           width={width}
