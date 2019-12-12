@@ -3,6 +3,7 @@ import { Box, Column, HeaderText, Row, Space } from "@stenajs-webui/core";
 import {
   Checkbox,
   NumericTextInput,
+  RadioButton,
   StandardTextInput,
   Switch
 } from "@stenajs-webui/forms";
@@ -14,7 +15,6 @@ import {
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { RadioButton } from "./radio/RadioButton";
 
 interface State {
   checkbox: boolean;
@@ -30,10 +30,10 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(!isEnabled);
+      setIsEnabled(v => !v);
     }, 1000);
     return () => clearInterval(t);
-  }, [[isEnabled, setIsEnabled]]);
+  }, []);
 
   return (
     <Column>
