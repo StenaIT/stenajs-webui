@@ -4,6 +4,16 @@
 
 * Coming soon...
 
+## 0.0.48
+
+Bug fix release.
+
+### Fixes
+
+* `GroupedMultiSelect`, fix bug when removing the last item in a group.
+* `BaseModal` max width is set to 100%.
+* `Button` height is applied to wrapping `Clickable`, instead of inner `Box`.
+
 ## 0.0.47
 
 ### Fixes
