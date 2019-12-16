@@ -13,12 +13,33 @@ export const useArraySet = <T>(
     [list, setList]
   );
 
+  const addMultiple = useCallback(
+    (items: Array<T>) => {
+      setList(
+        items.reduce((list, item) => {
+          if (list.indexOf(item) < 0) {
+            return [...list, item];
+          }
+          return list;
+        }, list)
+      );
+    },
+    [list, setList]
+  );
+
   const remove = useCallback(
     (item: T) => {
       const index = list.indexOf(item);
       if (index >= 0) {
         setList(list.filter((_, i) => i !== index));
       }
+    },
+    [list, setList]
+  );
+
+  const removeMultiple = useCallback(
+    (items: Array<T>) => {
+      setList(list.filter(item => items.indexOf(item) < 0));
     },
     [list, setList]
   );
@@ -37,7 +58,9 @@ export const useArraySet = <T>(
 
   return {
     add,
+    addMultiple,
     remove,
+    removeMultiple,
     toggle
   };
 };
