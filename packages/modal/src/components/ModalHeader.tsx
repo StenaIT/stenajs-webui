@@ -41,6 +41,7 @@ export const ModalHeader: React.FC<Props> = ({
       alignItems={"center"}
       justifyContent={"space-between"}
       borderBottom={borderBottom}
+      className="handle"
     >
       {headerText && (
         <StandardText fontWeight={"bold"} fontSize={"16px"}>
