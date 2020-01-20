@@ -151,6 +151,27 @@ storiesOf("modal/Modal", module)
         </BaseModal>
       </>
     ))
+  )
+  .add(
+    "draggable modal",
+    withState<State>({
+      isOpen: false
+    })(({ store }: { store: Store<State> }) => (
+      <>
+        <StandardButton
+          onClick={() => store.set({ isOpen: true })}
+          label={"Open modal"}
+        />
+        <Modal
+          headerText={"Draggable modal title here"}
+          isOpen={store.state.isOpen}
+          onRequestClose={() => store.set({ isOpen: false })}
+          draggable
+        >
+          {loremIpsumSampleText}
+        </Modal>
+      </>
+    ))
   );
 
 const loremIpsumSampleText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
