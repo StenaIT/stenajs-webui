@@ -33,11 +33,13 @@ export interface BaseModalProps extends ReactModal.Props {
   width?: string;
   background?: ThemeColorField | string;
   onRequestClose?: () => void;
+  draggable?: boolean;
 }
 
 export const BaseModal: React.FC<BaseModalProps> = ({
   width = "900px",
   background = "primaryBg",
+  draggable = false,
   children,
   ...props
 }) => {
@@ -58,67 +60,91 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 
   return (
     <ClassNames>
-      {({ css }) => (
-        <ReactModal
-          overlayClassName={css`
-            position: fixed;
-            z-index: 10;
+      {({ css }) => {
+        const contentClassName = css`
+          position: relative;
+          display: block;
+
+          background: ${colors.background};
+          box-shadow: ${modalShadow};
+          pointer-events: all;
+
+          width: ${width};
+          max-width: 100%;
+
+          animation: ${modalAnimateIn} 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+            both;
+
+          @media print {
+            box-shadow: none;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            overflow: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 8px;
+          }
 
-            animation: ${fadeIn} 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+          :focus {
+            outline: 0;
+          }
+        `;
 
-            @media print {
-              background-color: rgba(255, 255, 255, 1);
-            }
-          `}
-          {...props}
-        >
-          <Draggable handle=".handle" bounds="body">
-            <div
-              className={css`
-                position: relative;
-                display: block;
+        const handle = css`
+          .handle {
+            cursor: move;
+          }
+        `;
 
-                flex: 0 0 auto;
+        return (
+          <ReactModal
+            overlayClassName={css`
+              position: fixed;
+              z-index: 10;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: rgba(0, 0, 0, 0.5);
+              overflow: auto;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: center;
+              padding: 8px;
 
-                background: ${colors.background};
-                box-shadow: ${modalShadow};
+              animation: ${fadeIn} 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+                both;
 
-                width: ${width};
-                max-width: 100%;
-
-                animation: ${modalAnimateIn} 0.3s
-                  cubic-bezier(0.645, 0.045, 0.355, 1) both;
-
-                @media print {
-                  box-shadow: none;
-                  top: 0;
-                }
-
-                :focus {
-                  outline: 0;
-                }
-
-                .handle {
-                  cursor: move;
-                }
-              `}
-            >
-              {children}
-            </div>
-          </Draggable>
-        </ReactModal>
-      )}
+              @media print {
+                background-color: rgba(255, 255, 255, 1);
+              }
+            `}
+            className={css`
+              max-width: 100%;
+              outline: none;
+              pointer-events: none;
+            `}
+            {...props}
+          >
+            {draggable ? (
+              <Draggable handle=".handle" bounds=".ReactModal__Overlay">
+                <div
+                  className={css`
+                    ${contentClassName}
+                    ${handle}
+                  `}
+                >
+                  {children}
+                </div>
+              </Draggable>
+            ) : (
+              <div
+                className={css`
+                  ${contentClassName}
+                `}
+              >
+                {children}
+              </div>
+            )}
+          </ReactModal>
+        );
+      }}
     </ClassNames>
   );
 };
