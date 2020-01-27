@@ -109,6 +109,10 @@ export const createStylesFromTheme = (
     fontSize: fontSizes.input,
     color: colors.inputTextColor
   }),
+  groupHeading: base => ({
+    ...base,
+    fontFamily: fonts.input
+  }),
   multiValueLabel: base => ({
     ...base,
     backgroundColor: colors.multiSelectBackgroundColor,
