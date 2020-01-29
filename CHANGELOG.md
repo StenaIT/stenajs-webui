@@ -4,6 +4,10 @@
 
 * Coming soon...
 
+## 0.0.50
+
+* Fix typescript errors in calendar package.
+
 ## 0.0.49
 
 * Modals can now be defined as draggable!
