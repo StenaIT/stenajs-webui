@@ -33,7 +33,7 @@
     "@stenajs-webui/theme": "0.0.48",
     "@types/react-modal": "^3.8.2",
     "react-draggable": "^4.2.0",
-    "react-modal": "^3.9.1"
+    "react-modal": "^3.11.1"
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",

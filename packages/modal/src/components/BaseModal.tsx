@@ -8,8 +8,6 @@ import * as React from "react";
 import * as ReactModal from "react-modal";
 import Draggable from "react-draggable";
 
-ReactModal.defaultStyles.content = { outline: "none" };
-
 const modalAnimateIn = keyframes`
   0% {
     top: -1rem;
