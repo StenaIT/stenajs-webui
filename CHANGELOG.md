@@ -4,6 +4,21 @@
 
 * Coming soon...
 
+## 0.0.49
+
+* Modals can now be defined as draggable!
+
+### Fixes
+
+* Make it possible to change height of `StandardTextInput`.
+* `GroupedMultiSelect`, add group heading font family styling.
+* `BaseModal` now has `draggable` prop and can be used by setting `DRAGGABLE_HANDLE_CLASSNAME` as className on your drag handle.
+
+### Internal
+
+* Bump react-storybook from `^5.2.5` to `^5.3.9`.
+* Add `fsevents` dependency to lower CPU usage on macOS.
+
 ## 0.0.48
 
 Bug fix release.
