@@ -58,7 +58,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 
   return (
     <ClassNames>
-      {({ css }) => {
+      {({ css, cx }) => {
         const contentClassName = css`
           position: relative;
           display: block;
@@ -120,26 +120,15 @@ export const BaseModal: React.FC<BaseModalProps> = ({
             `}
             {...props}
           >
-            {draggable ? (
-              <Draggable handle=".handle" bounds=".ReactModal__Overlay">
-                <div
-                  className={css`
-                    ${contentClassName}
-                    ${handle}
-                  `}
-                >
-                  {children}
-                </div>
-              </Draggable>
-            ) : (
-              <div
-                className={css`
-                  ${contentClassName}
-                `}
-              >
+            <Draggable
+              handle=".handle"
+              bounds=".ReactModal__Overlay"
+              disabled={!draggable}
+            >
+              <div className={cx(contentClassName, { [handle]: draggable })}>
                 {children}
               </div>
-            )}
+            </Draggable>
           </ReactModal>
         );
       }}
