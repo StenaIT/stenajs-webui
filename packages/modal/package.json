@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/modal",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,9 +28,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.50",
-    "@stenajs-webui/elements": "0.0.50",
-    "@stenajs-webui/theme": "0.0.50",
+    "@stenajs-webui/core": "0.0.51",
+    "@stenajs-webui/elements": "0.0.51",
+    "@stenajs-webui/theme": "0.0.51",
     "@types/react-modal": "^3.8.2",
     "react-draggable": "^4.2.0",
     "react-modal": "^3.11.1"
