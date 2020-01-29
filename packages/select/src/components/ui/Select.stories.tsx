@@ -73,6 +73,44 @@ storiesOf("select/Select", module)
       </Box>
     </div>
   ))
+  .add("with group headings", () => (
+    <div style={{ width: "400px" }}>
+      <Indent num={4}>
+        <Spacing num={4}>
+          <Select
+            options={[
+              {
+                label: "Group heading 1",
+                options: [
+                  {
+                    value: "Mattias",
+                    label: "Mattias"
+                  },
+                  {
+                    value: "Johan",
+                    label: "Johan"
+                  }
+                ]
+              },
+              {
+                label: "Group heading 2",
+                options: [
+                  {
+                    value: "Johan",
+                    label: "Johan"
+                  },
+                  {
+                    value: "Dennis the menace",
+                    label: "Dennis the menace"
+                  }
+                ]
+              }
+            ]}
+          />
+        </Spacing>
+      </Indent>
+    </div>
+  ))
   .add("multiselect dark", () => (
     <div style={{ width: "600px" }}>
       <Box background={"#2e4662"}>

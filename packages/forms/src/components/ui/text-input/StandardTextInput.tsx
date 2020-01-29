@@ -221,7 +221,11 @@ export const StandardTextInput: React.FC<StandardTextInputProps> = ({
       overflow={"hidden"}
       height={theme.height}
     >
-      <Row alignItems={"center"} width={inputProps.width || "100%"}>
+      <Row
+        alignItems={"center"}
+        height={theme.height}
+        width={inputProps.width || "100%"}
+      >
         <TextInputIcon
           content={contentLeft}
           disableContentPadding={disableContentPadding}
