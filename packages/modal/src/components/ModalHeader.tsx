@@ -9,6 +9,7 @@ import {
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
+import { DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
 
 interface Props {
   onRequestClose?: () => void;
@@ -41,6 +42,7 @@ export const ModalHeader: React.FC<Props> = ({
       alignItems={"center"}
       justifyContent={"space-between"}
       borderBottom={borderBottom}
+      className={DRAGGABLE_HANDLE_CLASSNAME}
     >
       {headerText && (
         <StandardText fontWeight={"bold"} fontSize={"16px"}>
