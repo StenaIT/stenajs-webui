@@ -34,6 +34,8 @@ export interface BaseModalProps extends ReactModal.Props {
   draggable?: boolean;
 }
 
+export const DRAGGABLE_HANDLE_CLASSNAME = "draggable-modal-handle";
+
 export const BaseModal: React.FC<BaseModalProps> = ({
   width = "900px",
   background = "primaryBg",
@@ -84,7 +86,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
         `;
 
         const handle = css`
-          .handle {
+          .${DRAGGABLE_HANDLE_CLASSNAME} {
             cursor: move;
           }
         `;
@@ -121,7 +123,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
             {...props}
           >
             <Draggable
-              handle=".handle"
+              handle={`.${DRAGGABLE_HANDLE_CLASSNAME}`}
               bounds=".ReactModal__Overlay"
               disabled={!draggable}
             >
