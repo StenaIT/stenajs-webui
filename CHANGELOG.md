@@ -4,6 +4,12 @@
 
 * Coming soon...
 
+## 0.0.51
+
+* Revert
+    * Bump react-storybook from `^5.2.5` to `^5.3.9`.
+    * Add `fsevents` dependency to lower CPU usage on macOS.
+
 ## 0.0.50
 
 * Fix typescript errors in calendar package.
