@@ -10,11 +10,13 @@ storiesOf("forms/Switch", module)
       disabled={knobs.boolean("Disabled", false)}
     />
   ))
-  .add("custom size", () => (
-    <Switch
-      value={knobs.boolean("Toggled", false)}
-      disabled={knobs.boolean("Disabled", false)}
-    />
+  .add("custom action color", () => (
+    <div style={{ "--swui-color-primary-action": "#41ae33" } as any}>
+      <Switch
+        value={knobs.boolean("Toggled", false)}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+    </div>
   ))
   .add("disabled", () => (
     <Switch value={knobs.boolean("Toggled", false)} disabled />

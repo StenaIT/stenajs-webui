@@ -196,9 +196,11 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         <Row>
           <table cellSpacing={"5px"}>
             <thead>
-              <th>Enabled</th>
-              <th>Disabled</th>
-              <th>Background</th>
+              <tr>
+                <th>Enabled</th>
+                <th>Disabled</th>
+                <th>Background</th>
+              </tr>
             </thead>
             <tbody>
               <td>
@@ -303,6 +305,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
     </Column>
   );
 };
+
 storiesOf("forms/", module).add(
   "Overview",
   withState<State>({
