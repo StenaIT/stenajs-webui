@@ -1,3 +1,5 @@
+import "./default-theme.css";
+
 export * from "./components/ui/spinner/Spinner";
 export * from "./components/ui/spinner/InputSpinner";
 export { ButtonProps } from "./components/ui/buttons/Button";

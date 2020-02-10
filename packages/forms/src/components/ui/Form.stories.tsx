@@ -46,7 +46,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
               <th>Clickable</th>
               <th>On</th>
               <th>Off</th>
-              <th>Switching</th>
+              <th>Transition</th>
             </tr>
           </thead>
           <tbody>
@@ -100,7 +100,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
               <th></th>
               <th>On</th>
               <th>Off</th>
-              <th>Switching</th>
+              <th>Transition</th>
             </tr>
           </thead>
           <tbody>
@@ -143,7 +143,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
               <th>Clickable</th>
               <th>On</th>
               <th>Off</th>
-              <th>Switching</th>
+              <th>Transition</th>
             </tr>
           </thead>
           <tbody>
