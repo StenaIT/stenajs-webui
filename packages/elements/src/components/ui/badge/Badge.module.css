@@ -1,0 +1,5 @@
+.badge {
+  --swui-badge-bg-color: var(--swui-error-color);
+  --swui-badge-text-color: var(--swui-white);
+  --swui-badge-size: 18px;
+}
