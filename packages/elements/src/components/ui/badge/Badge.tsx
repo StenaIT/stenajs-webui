@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./Badge.module.css";
 
 export interface BadgeProps {
-  background?: string;
+  color?: string;
   textColor?: string;
   label?: string | number;
   size?: string | number;
@@ -12,7 +12,7 @@ export interface BadgeProps {
 export const Badge: React.FC<BadgeProps> = React.memo(
   ({
     textColor = "var(--swui-badge-text-color)",
-    background = "var(--swui-badge-bg-color)",
+    color = "var(--swui-badge-bg-color)",
     size = "var(--swui-badge-size)",
     label
   }) => {
@@ -22,7 +22,7 @@ export const Badge: React.FC<BadgeProps> = React.memo(
         overflow={"hidden"}
         borderRadius={"50%"}
         borderWidth={"0px"}
-        background={background}
+        background={color}
         width={size}
         height={size}
         alignItems={"center"}

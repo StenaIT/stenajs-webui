@@ -8,7 +8,7 @@ storiesOf("elements/Badge/Badge", module)
   .add("with knobs", () => (
     <Badge
       label={number("Label", 5)}
-      background={color("Background", "red")}
+      color={color("Color", "red")}
       textColor={color("Text color", "white")}
     />
   ));
