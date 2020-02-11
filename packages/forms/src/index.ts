@@ -1,6 +1,5 @@
 export * from "./components/ui/switch/Switch";
 export * from "./components/ui/switch/SwitchWithLabel";
-export * from "./components/ui/switch/SwitchTheme";
 export * from "./components/ui/checkbox/CheckboxWithLabel";
 export * from "./components/ui/checkbox/Checkbox";
 export * from "./components/ui/checkbox/CheckboxTheme";

@@ -17,11 +17,9 @@ import {
   defaultNumericTextInputTheme,
   defaultRadioButtonTheme,
   defaultStandardTextInputTheme,
-  defaultSwitchTheme,
   NumericTextInputTheme,
   RadioButtonTheme,
-  StandardTextInputTheme,
-  SwitchTheme
+  StandardTextInputTheme
 } from "@stenajs-webui/forms";
 
 const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
@@ -72,10 +70,6 @@ export const createDateTextInputTheme = createThemeFactory<DateTextInputTheme>(
 
 export const createCheckboxTheme = createThemeFactory<CheckboxTheme>(
   defaultCheckboxTheme
-);
-
-export const createSwitchTheme = createThemeFactory<SwitchTheme>(
-  defaultSwitchTheme
 );
 
 export const createRadioButtonTheme = createThemeFactory<RadioButtonTheme>(

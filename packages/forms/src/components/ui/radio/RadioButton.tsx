@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
+  Box,
   Clickable,
   InputProps,
   useMouseIsOver,
@@ -89,26 +90,28 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   );
 
   return (
-    <Clickable
-      onClick={disabled ? undefined : onClickHandler}
-      innerRef={wrapperRef}
-    >
-      <Icon
-        color={getIconColor(value, disabled, mouseIsOver, colors)}
-        icon={icon}
-        hoverColor={"red"}
-        size={theme.iconSize}
-      />
-      <InvisibleRadioButton
-        disabled={disabled}
-        checked={value}
-        ref={inputRefToUse}
-        onChange={handleInputChange}
-        type={"radio"}
-        name={name}
-        className={className}
-      />
-    </Clickable>
+    <Box position={"relative"}>
+      <Clickable
+        onClick={disabled ? undefined : onClickHandler}
+        innerRef={wrapperRef}
+      >
+        <Icon
+          color={getIconColor(value, disabled, mouseIsOver, colors)}
+          icon={icon}
+          hoverColor={"red"}
+          size={theme.iconSize}
+        />
+        <InvisibleRadioButton
+          disabled={disabled}
+          checked={value}
+          ref={inputRefToUse}
+          onChange={handleInputChange}
+          type={"radio"}
+          name={name}
+          className={className}
+        />
+      </Clickable>
+    </Box>
   );
 };
 

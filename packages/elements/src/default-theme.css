@@ -1,0 +1,15 @@
+:root {
+  --swui-animation-time-fast: 0.1s;
+  --swui-animation-time-medium: 0.25s;
+  --swui-animation-time-slow: 0.5s;
+  --swui-color-primary-action: #696bdb;
+  --swui-color-separator: #b1b1b1;
+  --swui-field-bg-enabled: #fff;
+  --swui-field-bg-disabled: #e8e4ea;
+  --swui-handle-bg-enabled: #fff;
+  --swui-handle-bg-disabled: #bebbc0;
+  --swui-field-border-color: #dcd9de;
+  --swui-field-border-color-hover: #f7f3f9;
+  --swui-field-border-color-disabled: #bab6bc;
+  --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
+}
