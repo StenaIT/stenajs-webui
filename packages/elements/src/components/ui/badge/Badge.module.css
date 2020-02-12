@@ -7,9 +7,9 @@
 
   display: flex;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: calc(var(--swui-badge-size) / 2);
   border-width: 0;
-  width: var(--swui-badge-size);
+  min-width: var(--swui-badge-size);
   height: var(--swui-badge-size);
   align-items: center;
   justify-content: center;
@@ -24,5 +24,9 @@
 
   &.error {
     background: var(--swui-badge-error-bg-color);
+  }
+
+  .label {
+    line-height: var(--swui-badge-size);
   }
 }

@@ -1,5 +1,5 @@
-import { SmallText } from "@stenajs-webui/core";
 import * as React from "react";
+import { SmallerText } from "@stenajs-webui/core";
 import styles from "./Badge.module.css";
 
 export type BadgeType = "notification" | "warning" | "error";
@@ -15,7 +15,12 @@ export const Badge: React.FC<BadgeProps> = React.memo(
 
     return (
       <div className={className}>
-        <SmallText color={"var(--swui-badge-text-color)"}>{label}</SmallText>
+        <SmallerText
+          color={"var(--swui-badge-text-color)"}
+          className={styles.label}
+        >
+          {label}
+        </SmallerText>
       </div>
     );
   }
