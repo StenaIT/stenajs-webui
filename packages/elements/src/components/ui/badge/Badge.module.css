@@ -1,5 +1,28 @@
 .badge {
-  --swui-badge-bg-color: var(--swui-error-color);
+  --swui-badge-notification-bg-color: var(--swui-primary-action-color);
+  --swui-badge-warning-bg-color: var(--swui-alert-color);
+  --swui-badge-error-bg-color: var(--swui-error-color);
   --swui-badge-text-color: var(--swui-white);
   --swui-badge-size: 18px;
+
+  display: flex;
+  overflow: hidden;
+  border-radius: 50%;
+  border-width: 0;
+  width: var(--swui-badge-size);
+  height: var(--swui-badge-size);
+  align-items: center;
+  justify-content: center;
+
+  &.notification {
+    background: var(--swui-badge-notification-bg-color);
+  }
+
+  &.warning {
+    background: var(--swui-badge-warning-bg-color);
+  }
+
+  &.error {
+    background: var(--swui-badge-error-bg-color);
+  }
 }
