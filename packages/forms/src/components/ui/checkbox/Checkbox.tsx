@@ -5,11 +5,11 @@ import { FullOnChangeProps } from "../types";
 import styles from "./Checkbox.module.css";
 
 export type CheckboxSize = "standard" | "small";
+
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
     Omit<InputProps<HTMLLabelElement>, "size"> {
   indeterminate?: boolean;
-  id?: string;
   size?: CheckboxSize;
 }
 

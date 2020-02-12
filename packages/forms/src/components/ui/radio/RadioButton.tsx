@@ -1,163 +1,49 @@
-import styled from "@emotion/styled";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  Box,
-  Clickable,
-  InputProps,
-  useMouseIsOver,
-  useThemeFields
-} from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import { InputProps } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback, useRef } from "react";
 import { FullOnChangeProps } from "../types";
-import { defaultRadioButtonTheme, RadioButtonTheme } from "./RadioButtonTheme";
+import styles from "./RadioButton.module.css";
+
+export type RadioButtonSize = "standard" | "small";
 
 export interface RadioButtonProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    InputProps<HTMLButtonElement> {
-  disabled?: boolean;
-  theme?: RadioButtonTheme;
+    Omit<InputProps<HTMLButtonElement>, "size"> {
+  size?: RadioButtonSize;
 }
 
-const InvisibleRadioButton = styled.input`
-  top: 0;
-  left: 0;
-  width: 100%;
-  cursor: inherit;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  padding: 0;
-  position: absolute;
-`;
-
 export const RadioButton: React.FC<RadioButtonProps> = ({
-  className,
-  disabled = false,
   onChange,
   onValueChange,
-  theme = defaultRadioButtonTheme,
   value = false,
   inputRef,
-  name,
-  wrapperRef
+  size = "standard",
+  ...inputProps
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        iconColorDisabled: theme.iconColorDisabled,
-        iconColor: theme.iconColor,
-        iconColorNotChecked: theme.iconColorNotChecked,
-        iconColorNotCheckedHover: theme.iconColorNotCheckedHover
-      }
-    },
-    [theme]
-  );
-
   const innerInputRef = useRef(null);
 
   const inputRefToUse = inputRef || innerInputRef;
 
-  const mouseIsOver = useMouseIsOver(inputRefToUse);
-
-  const icon = getIcon(value, disabled, mouseIsOver, theme);
-
-  const onClickHandler = useCallback(
-    ev => {
+  const handleInputChange = useCallback(
+    (ev: ChangeEvent<HTMLInputElement>) => {
       if (onChange) {
         onChange(ev);
       }
       if (onValueChange) {
-        onValueChange(true);
+        onValueChange(ev.target.checked);
       }
     },
     [onChange, onValueChange]
   );
 
-  const handleInputChange = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => {
-      if (!disabled) {
-        if (onChange) {
-          onChange(ev);
-        }
-        if (onValueChange) {
-          onValueChange(ev.target.checked);
-        }
-      }
-    },
-    [disabled, onChange, onValueChange]
-  );
-
   return (
-    <Box position={"relative"}>
-      <Clickable
-        onClick={disabled ? undefined : onClickHandler}
-        innerRef={wrapperRef}
-      >
-        <Icon
-          color={getIconColor(value, disabled, mouseIsOver, colors)}
-          icon={icon}
-          hoverColor={"red"}
-          size={theme.iconSize}
-        />
-        <InvisibleRadioButton
-          disabled={disabled}
-          checked={value}
-          ref={inputRefToUse}
-          onChange={handleInputChange}
-          type={"radio"}
-          name={name}
-          className={className}
-        />
-      </Clickable>
-    </Box>
+    <input
+      type={"radio"}
+      className={styles.radiobutton + " " + styles[size]}
+      checked={value}
+      onChange={handleInputChange}
+      ref={inputRefToUse}
+      {...inputProps}
+    />
   );
-};
-
-interface IconColors {
-  iconColorDisabled: string;
-  iconColor: string;
-  iconColorNotChecked: string;
-  iconColorNotCheckedHover: string;
-}
-
-const getIconColor = (
-  value: boolean,
-  disabled: boolean,
-  mouseIsOver: boolean,
-  colors: IconColors
-): string => {
-  if (disabled) {
-    return colors.iconColorDisabled;
-  } else if (value) {
-    return colors.iconColor;
-  } else {
-    if (mouseIsOver) {
-      return colors.iconColorNotCheckedHover;
-    }
-    return colors.iconColorNotChecked;
-  }
-};
-
-const getIcon = (
-  value: boolean,
-  disabled: boolean,
-  mouseIsOver: boolean,
-  theme: RadioButtonTheme
-): IconDefinition => {
-  if (!value && !disabled && mouseIsOver) {
-    return theme.iconNotCheckedHover;
-  }
-  if (value) {
-    if (disabled) {
-      return theme.iconCheckedDisabled;
-    }
-    return theme.iconChecked;
-  } else {
-    if (disabled) {
-      return theme.iconNotCheckedDisabled;
-    }
-    return theme.iconNotChecked;
-  }
 };
