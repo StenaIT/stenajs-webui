@@ -1,5 +1,12 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { Box, Column, HeaderText, Row, Space } from "@stenajs-webui/core";
+import {
+  Box,
+  Column,
+  HeaderText,
+  Row,
+  SmallText,
+  Space
+} from "@stenajs-webui/core";
 import {
   Checkbox,
   NumericTextInput,
@@ -26,6 +33,237 @@ interface State {
   switch: boolean;
 }
 
+const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
+  store,
+  isEnabled
+}) => {
+  return (
+    <table cellPadding={"5px"}>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Clickable</th>
+          <th>On</th>
+          <th>Off</th>
+          <th>Transition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enabled</td>
+          <td>
+            <Switch
+              onValueChange={value => store.set({ switch: value })}
+              value={store.state.switch}
+            />
+          </td>
+          <td>
+            <Switch value />
+          </td>
+          <td>
+            <Switch value={false} />
+          </td>
+          <td>
+            <Switch value={isEnabled} />
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <Switch
+              onValueChange={value => store.set({ switch: value })}
+              value={store.state.switch}
+              disabled
+            />
+          </td>
+          <td>
+            <Switch value disabled />
+          </td>
+          <td>
+            <Switch value={false} disabled />
+          </td>
+          <td>
+            <Switch value={isEnabled} disabled />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+const RadioButtonTable: React.FC<{
+  store: Store<State>;
+  isEnabled: boolean;
+}> = ({ store, isEnabled }) => {
+  return (
+    <table cellPadding={"5px"}>
+      <thead>
+        <tr>
+          <th></th>
+          <th>On</th>
+          <th>Off</th>
+          <th>Transition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enabled</td>
+          <td>
+            <RadioButton checked />
+          </td>
+          <td>
+            <RadioButton checked={false} />
+          </td>
+          <td>
+            <RadioButton checked={isEnabled} />
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <RadioButton checked disabled />
+          </td>
+          <td>
+            <RadioButton checked={false} disabled />
+          </td>
+          <td>
+            <RadioButton checked={isEnabled} disabled />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <SmallText>Small</SmallText>
+          </td>
+        </tr>
+        <tr>
+          <td>Enabled</td>
+          <td>
+            <RadioButton size={"small"} checked />
+          </td>
+          <td>
+            <RadioButton size={"small"} checked={false} />
+          </td>
+          <td>
+            <RadioButton size={"small"} checked={isEnabled} />
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <RadioButton size={"small"} checked disabled />
+          </td>
+          <td>
+            <RadioButton size={"small"} checked={false} disabled />
+          </td>
+          <td>
+            <RadioButton size={"small"} checked={isEnabled} disabled />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
+  store,
+  isEnabled
+}) => {
+  return (
+    <table cellPadding={"5px"}>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Clickable</th>
+          <th>On</th>
+          <th>Off</th>
+          <th>Transition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Enabled</td>
+          <td>
+            <Checkbox
+              value={store.state.checkbox}
+              onValueChange={value => store.set({ checkbox: value })}
+            />
+          </td>
+          <td>
+            <Checkbox value />
+          </td>
+          <td>
+            <Checkbox value={false} />
+          </td>
+          <td>
+            <Checkbox value={isEnabled} />
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <Checkbox
+              value={store.state.checkbox}
+              onValueChange={value => store.set({ checkbox: value })}
+              disabled
+            />
+          </td>
+          <td>
+            <Checkbox value disabled />
+          </td>
+          <td>
+            <Checkbox value={false} disabled />
+          </td>
+          <td>
+            <Checkbox value={isEnabled} disabled />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <SmallText>Small</SmallText>
+          </td>
+        </tr>
+        <tr>
+          <td>Enabled</td>
+          <td>
+            <Checkbox
+              size={"small"}
+              value={store.state.checkbox}
+              onValueChange={value => store.set({ checkbox: value })}
+            />
+          </td>
+          <td>
+            <Checkbox size={"small"} value />
+          </td>
+          <td>
+            <Checkbox size={"small"} value={false} />
+          </td>
+          <td>
+            <Checkbox size={"small"} value={isEnabled} />
+          </td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td>
+            <Checkbox
+              size={"small"}
+              value={store.state.checkbox}
+              onValueChange={value => store.set({ checkbox: value })}
+              disabled
+            />
+          </td>
+          <td>
+            <Checkbox size={"small"} value disabled />
+          </td>
+          <td>
+            <Checkbox size={"small"} value={false} disabled />
+          </td>
+          <td>
+            <Checkbox size={"small"} value={isEnabled} disabled />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
 const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
@@ -37,156 +275,22 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 
   return (
     <Column>
-      <div>
-        <HeaderText>Checkbox</HeaderText>
-        <table cellPadding={"5px"}>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Clickable</th>
-              <th>On</th>
-              <th>Off</th>
-              <th>Transition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Enabled</td>
-              <td>
-                <Checkbox
-                  value={store.state.checkbox}
-                  onValueChange={value => store.set({ checkbox: value })}
-                />
-              </td>
-              <td>
-                <Checkbox value />
-              </td>
-              <td>
-                <Checkbox value={false} />
-              </td>
-              <td>
-                <Checkbox value={isEnabled} />
-              </td>
-            </tr>
-            <tr>
-              <td>Disabled</td>
-              <td>
-                <Checkbox
-                  value={store.state.checkbox}
-                  onValueChange={value => store.set({ checkbox: value })}
-                  disabled
-                />
-              </td>
-              <td>
-                <Checkbox value disabled />
-              </td>
-              <td>
-                <Checkbox value={false} disabled />
-              </td>
-              <td>
-                <Checkbox value={isEnabled} disabled />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <Space num={4} />
-      <div>
-        <HeaderText>RadioButton</HeaderText>
-        <table cellPadding={"5px"}>
-          <thead>
-            <tr>
-              <th></th>
-              <th>On</th>
-              <th>Off</th>
-              <th>Transition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Enabled</td>
-              <td>
-                <RadioButton value />
-              </td>
-              <td>
-                <RadioButton value={false} />
-              </td>
-              <td>
-                <RadioButton value={isEnabled} />
-              </td>
-            </tr>
-            <tr>
-              <td>Disabled</td>
-              <td>
-                <RadioButton value disabled />
-              </td>
-              <td>
-                <RadioButton value={false} disabled />
-              </td>
-              <td>
-                <RadioButton value={isEnabled} disabled />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <Space num={4} />
-
-      <div>
-        <HeaderText>Switch</HeaderText>
-        <table cellPadding={"5px"}>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Clickable</th>
-              <th>On</th>
-              <th>Off</th>
-              <th>Transition</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Enabled</td>
-              <td>
-                <Switch
-                  onValueChange={value => store.set({ switch: value })}
-                  value={store.state.switch}
-                />
-              </td>
-              <td>
-                <Switch value />
-              </td>
-              <td>
-                <Switch value={false} />
-              </td>
-              <td>
-                <Switch value={isEnabled} />
-              </td>
-            </tr>
-            <tr>
-              <td>Disabled</td>
-              <td>
-                <Switch
-                  onValueChange={value => store.set({ switch: value })}
-                  value={store.state.switch}
-                  disabled
-                />
-              </td>
-              <td>
-                <Switch value disabled />
-              </td>
-              <td>
-                <Switch value={false} disabled />
-              </td>
-              <td>
-                <Switch value={isEnabled} disabled />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Row>
+        <Column>
+          <HeaderText>Checkbox</HeaderText>
+          <CheckboxTable store={store} isEnabled={isEnabled} />
+        </Column>
+        <Space num={4} />
+        <Column>
+          <HeaderText>RadioButton</HeaderText>
+          <RadioButtonTable store={store} isEnabled={isEnabled} />
+        </Column>
+        <Space num={4} />
+        <Column>
+          <HeaderText>Switch</HeaderText>
+          <SwitchTable store={store} isEnabled={isEnabled} />
+        </Column>
+      </Row>
 
       <Space num={4} />
 

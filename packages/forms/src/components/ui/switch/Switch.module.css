@@ -1,17 +1,24 @@
 .switch {
   --swui-switch-width: 50px;
-  --swui-switch-height: 24px;
+  --swui-switch-height: var(--swui-field-box-size-medium);
   --swui-switch-animation-time: var(--swui-animation-time-medium);
   --swui-switch-selected-highlight-color: var(--swui-primary-action-color);
   --swui-switch-knob-width: calc(var(--swui-switch-height) - 2px);
+  /* Backgrounds */
   --swui-switch-knob-bg-color-enabled: var(--swui-handle-bg-enabled-color);
-  --swui-switch-knob-border-color-enabled: var(--swui-separator-color);
   --swui-switch-knob-bg-color-disabled: var(--swui-handle-bg-disabled-color);
   --swui-switch-container-bg-color-enabled: var(--swui-field-bg-enabled);
   --swui-switch-container-bg-color-disabled: var(--swui-field-bg-disabled);
+  /* Borders */
+  --swui-switch-knob-border-color-enabled: var(--swui-separator-color);
   --swui-switch-container-border-color: var(--swui-field-border-color);
-  --swui-switch-container-border-color-hover: var(--swui-field-border-color-hover);
-  --swui-switch-container-border-color-disabled: var(--swui-field-border-color-disabled);
+  --swui-switch-container-border-color-hover: var(
+    --swui-field-border-color-hover
+  );
+  --swui-switch-container-border-color-disabled: var(
+    --swui-field-border-color-disabled
+  );
+  /* Shadow */
   --swui-switch-knob-shadow-color: var(--swui-field-shadow-color);
 
   display: flex;

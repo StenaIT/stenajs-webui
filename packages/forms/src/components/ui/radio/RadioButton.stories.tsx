@@ -1,7 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import {
   defaultRadioButtonTheme,
-  defaultRadioButtonThemeDark,
   RadioButton,
   RadioButtonWithLabel
 } from "@stenajs-webui/forms";
@@ -84,9 +83,7 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         disabled
       />
 
-      <Space />
-
-      <Space num={2} />
+      <Space num={3} />
 
       <RadioButtonWithLabel
         size={"small"}
