@@ -40,6 +40,7 @@
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
   --swui-shadow-popover: rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;
   --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
+  --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3)
 
   /* Metrics */
   --swui-metrics-indent: 10;

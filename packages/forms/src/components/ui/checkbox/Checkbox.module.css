@@ -3,16 +3,16 @@
   --swui-checkbox-height-small: 16px;
   --swui-checkbox-border-radius: 4px;
   --swui-checkbox-animation-time: var(--swui-animation-time-medium);
-  --swui-checkbox-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
-  /* Background */
-  --swui-checkbox-bg-color: #fff;
-  --swui-checkbox-checked-bg-color: var(--swui-color-primary-action);
-  --swui-checkbox-disabled-bg-color: var(--swui-field-bg-disabled);
-  --swui-checkbox-disabled-checked-bg-color: var(--swui-field-bg-disabled);
+  --swui-checkbox-focus-shadow: var(--swui-field-focus-shadow);
   /* Icon */
   --swui-checkbox-icon-color: #fff;
   --swui-checkbox-disabled-icon-color: var(--swui-color-separator);
   --swui-checkbox-unchecked-icon-color: rgba(0, 0, 0, 0);
+  /* Background */
+  --swui-checkbox-unchecked-bg-color: #fff;
+  --swui-checkbox-checked-bg-color: var(--swui-color-primary-action);
+  --swui-checkbox-disabled-bg-color: var(--swui-field-bg-disabled);
+  --swui-checkbox-disabled-checked-bg-color: var(--swui-field-bg-disabled);
   /* Border */
   --swui-checkbox-border-color: #bbc1e1;
   --swui-checkbox-border-hover-color: #275efe;
@@ -28,11 +28,8 @@
   margin: 0;
   cursor: pointer;
   border: 1px solid
-    var(--swui-checkbox-current-border-color, var(--swui-checkbox-border-color));
-  background: var(
-    --swui-checkbox-current-bg-color,
-    var(--swui-checkbox-bg-color)
-  );
+    var(--current-border-color, var(--swui-checkbox-border-color));
+  background: var(--current-bg-color, var(--swui-checkbox-unchecked-bg-color));
   transition: background var(--swui-checkbox-animation-time),
     border-color var(--swui-checkbox-animation-time),
     box-shadow var(--swui-checkbox-animation-time);
@@ -65,61 +62,49 @@
     content: "";
     display: block;
     position: absolute;
-    transition: transform
-        var(--swui-checkbox-d-t, var(--swui-checkbox-animation-time))
-        var(--swui-checkbox-d-t-e, ease),
-      opacity var(--swui-checkbox-d-o, var(--swui-checkbox-animation-time)),
+    transition: transform var(--d-t, var(--swui-checkbox-animation-time))
+        var(--d-t-e, ease),
+      opacity var(--d-o, var(--swui-checkbox-animation-time)),
       width var(--swui-checkbox-animation-time),
       top var(--swui-checkbox-animation-time);
     border: 2px solid
-      var(
-        --swui-checkbox-current-icon-color,
-        var(--swui-checkbox-unchecked-icon-color)
-      );
+      var(--current-icon-color, var(--swui-checkbox-unchecked-icon-color));
     border-top: 0;
     border-left: 0;
-    transform: rotate(var(--swui-checkbox-rotation, 20deg));
+    transform: rotate(var(--current-check-rotation, 20deg));
   }
 
   &:checked {
-    --swui-checkbox-rotation: 43deg;
-    --swui-checkbox-current-bg-color: var(--swui-checkbox-checked-bg-color);
-    --swui-checkbox-current-border-color: var(--swui-checkbox-checked-bg-color);
-    --swui-checkbox-d-o: var(--swui-checkbox-animation-time);
-    --swui-checkbox-d-t: var(--swui-checkbox-animation-time);
-    --swui-checkbox-d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    --current-check-rotation: 43deg;
+    --current-bg-color: var(--swui-checkbox-checked-bg-color);
+    --current-border-color: var(--swui-checkbox-checked-bg-color);
+    --d-o: var(--swui-checkbox-animation-time);
+    --d-t: var(--swui-checkbox-animation-time);
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 
     &:after {
-      --swui-checkbox-current-icon-color: var(--swui-checkbox-icon-color);
+      --current-icon-color: var(--swui-checkbox-icon-color);
     }
   }
 
   &:disabled {
     &:not(:checked) {
-      --swui-checkbox-current-bg-color: var(--swui-checkbox-disabled-bg-color);
-      --swui-checkbox-current-border-color: var(
-        --swui-checkbox-disabled-border-color
-      );
+      --current-bg-color: var(--swui-checkbox-disabled-bg-color);
+      --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --swui-checkbox-current-icon-color: --swui-checkbox-unchecked-icon-color;
+        --current-icon-color: --swui-checkbox-unchecked-icon-color;
       }
     }
   }
 
   &:disabled {
     &:checked {
-      --swui-checkbox-current-bg-color: var(
-        --swui-checkbox-disabled-checked-bg-color
-      );
-      --swui-checkbox-current-border-color: var(
-        --swui-checkbox-disabled-border-color
-      );
+      --current-bg-color: var(--swui-checkbox-disabled-checked-bg-color);
+      --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --swui-checkbox-current-icon-color: var(
-          --swui-checkbox-disabled-icon-color
-        );
+        --current-icon-color: var(--swui-checkbox-disabled-icon-color);
       }
 
       & + label {
@@ -128,15 +113,15 @@
   }
 
   &:indeterminate {
-    --swui-checkbox-rotation: 43deg;
-    --swui-checkbox-current-bg-color: var(--swui-checkbox-checked-bg-color);
-    --swui-checkbox-current-border-color: var(--swui-checkbox-checked-bg-color);
-    --swui-checkbox-d-o: var(--swui-checkbox-animation-time);
-    --swui-checkbox-d-t: var(--swui-checkbox-animation-time);
-    --swui-checkbox-d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    --current-check-rotation: 43deg;
+    --current-bg-color: var(--swui-checkbox-checked-bg-color);
+    --current-border-color: var(--swui-checkbox-checked-bg-color);
+    --d-o: var(--swui-checkbox-animation-time);
+    --d-t: var(--swui-checkbox-animation-time);
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 
     &:after {
-      --swui-checkbox-current-icon-color: var(--swui-checkbox-icon-color);
+      --current-icon-color: var(--swui-checkbox-icon-color);
       border-right: 0;
       transform: rotate(0deg);
       width: 6px;
@@ -158,9 +143,7 @@
 
     &:disabled {
       &:after {
-        --swui-checkbox-current-icon-color: var(
-          --swui-checkbox-disabled-icon-color
-        );
+        --current-icon-color: var(--swui-checkbox-disabled-icon-color);
       }
     }
   }
@@ -168,9 +151,7 @@
   &:hover {
     &:not(:checked) {
       &:not(:disabled) {
-        --swui-checkbox-current-border-color: var(
-          --swui-checkbox-border-hover-color
-        );
+        --current-border-color: var(--swui-checkbox-border-hover-color);
       }
     }
   }

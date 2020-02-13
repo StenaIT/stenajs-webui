@@ -45,15 +45,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   }, [indeterminate, inputRefToUse]);
 
   return (
-    <>
-      <input
-        type={"checkbox"}
-        className={styles.checkbox + " " + styles[size]}
-        checked={value}
-        onChange={handleInputChange}
-        ref={inputRefToUse}
-        {...inputProps}
-      />
-    </>
+    <input
+      type={"checkbox"}
+      className={styles.checkbox + " " + styles[size]}
+      checked={value}
+      onChange={handleInputChange}
+      ref={inputRefToUse}
+      {...inputProps}
+    />
   );
 };

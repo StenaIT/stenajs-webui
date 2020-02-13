@@ -1,3 +1,4 @@
+import { Store, withState } from "@dump247/storybook-state";
 import {
   defaultRadioButtonTheme,
   defaultRadioButtonThemeDark,
@@ -15,7 +16,13 @@ import { HeaderText } from "../../../../../core/src/components/text/variants/Hea
 import { LargeText } from "../../../../../core/src/components/text/variants/LargeText";
 import { StandardText } from "../../../../../core/src/components/text/variants/StandardText";
 
-const RadioButtonOverview: React.FC = () => {
+interface State {
+  selected: string;
+  selectedSmall: string;
+  checked: boolean;
+}
+
+const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
@@ -23,6 +30,10 @@ const RadioButtonOverview: React.FC = () => {
     }, 1000);
     return () => clearInterval(t);
   }, []);
+
+  const onClickHandler = (selected: string) => store.set({ selected });
+  const onClickSmallHandler = (selectedSmall: string) =>
+    store.set({ selectedSmall });
 
   return (
     <Column>
@@ -34,17 +45,79 @@ const RadioButtonOverview: React.FC = () => {
 
       <Space num={2} />
 
-      <RadioButton
-        value={knobs.boolean("Checked", false)}
-        disabled={knobs.boolean("Disabled", false)}
+      <RadioButtonWithLabel
+        label={"Boat"}
+        name={"travel"}
+        value={"boat"}
+        checked={store.state.selected === "boat"}
+        onValueChange={onClickHandler}
       />
+
+      <Space />
+
+      <RadioButtonWithLabel
+        label={"Plane"}
+        name={"travel"}
+        value={"plane"}
+        checked={store.state.selected === "plane"}
+        onValueChange={onClickHandler}
+      />
+
+      <Space />
+
+      <RadioButtonWithLabel
+        label={"Car"}
+        name={"travel"}
+        value={"car"}
+        checked={store.state.selected === "car"}
+        onValueChange={onClickHandler}
+      />
+
+      <Space />
+
+      <RadioButtonWithLabel
+        label={"Walk"}
+        name={"travel"}
+        value={"walk"}
+        checked={store.state.selected === "walk"}
+        onValueChange={onClickHandler}
+        disabled
+      />
+
+      <Space />
 
       <Space num={2} />
 
-      <RadioButton
+      <RadioButtonWithLabel
         size={"small"}
-        value={knobs.boolean("Checked", false)}
-        disabled={knobs.boolean("Disabled", false)}
+        label={"Today"}
+        name={"day"}
+        value={"today"}
+        checked={store.state.selectedSmall === "today"}
+        onValueChange={onClickSmallHandler}
+      />
+
+      <Space />
+
+      <RadioButtonWithLabel
+        size={"small"}
+        label={"Tomorrow"}
+        name={"day"}
+        value={"tomorrow"}
+        checked={store.state.selectedSmall === "tomorrow"}
+        onValueChange={onClickSmallHandler}
+      />
+
+      <Space />
+
+      <RadioButtonWithLabel
+        size={"small"}
+        label={"Yesterday"}
+        name={"day"}
+        value={"yesterday"}
+        checked={store.state.selectedSmall === "yesterday"}
+        onValueChange={onClickSmallHandler}
+        disabled
       />
 
       <Space num={8} />
@@ -56,19 +129,19 @@ const RadioButtonOverview: React.FC = () => {
       <Row alignContent={"flex-start"}>
         <Column justifyContent={"flex-start"}>
           <StandardText>Checked on/off</StandardText>
-          <RadioButton value={isEnabled} />
+          <RadioButton checked={isEnabled} />
 
           <Space num={2} />
 
           <StandardText>Disabled, checked on/off</StandardText>
-          <RadioButton value={isEnabled} disabled />
+          <RadioButton checked={isEnabled} disabled />
         </Column>
 
         <Space num={8} />
 
         <Column justifyContent={"flex-start"}>
           <StandardText>Checked, disabled on/off</StandardText>
-          <RadioButton value disabled={isEnabled} />
+          <RadioButton checked disabled={isEnabled} />
 
           <Space num={2} />
 
@@ -81,51 +154,66 @@ const RadioButtonOverview: React.FC = () => {
 };
 
 storiesOf("forms/RadioButton", module)
-  .add("Overview", () => <RadioButtonOverview />)
+  .add(
+    "Overview",
+    withState<State>({
+      checked: true,
+      selectedSmall: "",
+      selected: ""
+    })(({ store }: { store: Store<State> }) => (
+      <RadioButtonOverview store={store} />
+    ))
+  )
   .add("standard", () => (
     <RadioButton
-      value={knobs.boolean("Checked", false)}
+      checked={knobs.boolean("Checked", false)}
       disabled={knobs.boolean("Disabled", false)}
     />
   ))
-  .add("with DOM name", () => (
-    <RadioButton
-      value={knobs.boolean("Checked", false)}
-      disabled={knobs.boolean("Disabled", false)}
-      name={knobs.text("Name", "agree")}
-    />
+  .add("custom action color on multiple", () => (
+    <Column style={{ "--swui-color-primary-action": "#41ae33" } as any}>
+      <RadioButton
+        name={"testing"}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+      <Space />
+      <RadioButton
+        name={"testing"}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+      <Space />
+      <RadioButton
+        name={"testing"}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+    </Column>
   ))
-  .add("checked and disabled", () => <RadioButton value={true} disabled />)
-  .add("not checked and disabled", () => <RadioButton value={false} disabled />)
-  .add("with dark theme", () => (
-    <RadioButton
-      value={knobs.boolean("Checked", false)}
-      theme={defaultRadioButtonThemeDark}
-    />
-  ))
-  .add("with custom theme", () => (
-    <RadioButton
-      value={knobs.boolean("Checked", false)}
-      theme={{
-        ...defaultRadioButtonTheme,
-        iconColorNotChecked: "magenta",
-        iconColor: "darkgreen",
-        iconSize: 40
-      }}
-    />
+  .add("custom checked bg color on single", () => (
+    <Column>
+      <RadioButton
+        name={"testing"}
+        style={{ "--swui-radiobutton-checked-bg-color": "#41ae33" } as any}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+      <Space />
+      <RadioButton
+        name={"testing"}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+    </Column>
   ));
 
 storiesOf("forms/RadioButton/RadioButtonWithLabel", module)
   .add("standard", () => (
     <RadioButtonWithLabel
       label={"Add cake"}
-      value={knobs.boolean("Checked", false)}
+      checked={knobs.boolean("Checked", false)}
     />
   ))
   .add("with custom theme", () => (
     <RadioButtonWithLabel
       label={"Add cake"}
-      value={knobs.boolean("Checked", false)}
+      checked={knobs.boolean("Checked", false)}
       textColor="lightblue"
       textSize={"40px"}
       theme={{

@@ -26,9 +26,7 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
           <Checkbox {...propsToCheckbox} disabled={disabled} />
           <Space />
           {label && (
-            <StandardText
-              color={disabled ? "--swui-checkbox-disabled" : undefined}
-            >
+            <StandardText userSelect={"none"} lineHeight={"100%"}>
               {label}
             </StandardText>
           )}

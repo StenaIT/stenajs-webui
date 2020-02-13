@@ -7,7 +7,7 @@ import styles from "./RadioButton.module.css";
 export type RadioButtonSize = "standard" | "small";
 
 export interface RadioButtonProps
-  extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
+  extends FullOnChangeProps<string, ChangeEvent<HTMLInputElement>>,
     Omit<InputProps<HTMLButtonElement>, "size"> {
   size?: RadioButtonSize;
 }
@@ -15,7 +15,6 @@ export interface RadioButtonProps
 export const RadioButton: React.FC<RadioButtonProps> = ({
   onChange,
   onValueChange,
-  value = false,
   inputRef,
   size = "standard",
   ...inputProps
@@ -30,7 +29,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         onChange(ev);
       }
       if (onValueChange) {
-        onValueChange(ev.target.checked);
+        onValueChange(ev.target.value);
       }
     },
     [onChange, onValueChange]
@@ -40,7 +39,6 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
     <input
       type={"radio"}
       className={styles.radiobutton + " " + styles[size]}
-      checked={value}
       onChange={handleInputChange}
       ref={inputRefToUse}
       {...inputProps}

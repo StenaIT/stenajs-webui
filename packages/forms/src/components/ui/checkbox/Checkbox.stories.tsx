@@ -11,7 +11,9 @@ import { HeaderText } from "../../../../../core/src/components/text/variants/Hea
 import { LargeText } from "../../../../../core/src/components/text/variants/LargeText";
 import { StandardText } from "../../../../../core/src/components/text/variants/StandardText";
 
-type State = { checked: boolean };
+interface State {
+  checked: boolean;
+}
 
 const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -156,16 +158,25 @@ storiesOf("forms/Checkbox", module)
     />
   ));
 
-storiesOf("forms/Checkbox/CheckboxWithLabel", module).add(
-  "standard",
-  withState<State>({
-    checked: true
-  })(({ store }: { store: Store<State> }) => (
-    <CheckboxWithLabel
+storiesOf("forms/Checkbox/CheckboxWithLabel", module)
+  .add(
+    "standard",
+    withState<State>({
+      checked: true
+    })(({ store }: { store: Store<State> }) => (
+      <CheckboxWithLabel
+        label={"Add cake"}
+        value={store.state.checked}
+        onValueChange={checked => store.set({ checked })}
+        disabled={knobs.boolean("Disabled", false)}
+      />
+    ))
+  )
+  .add("disabled", () => (
+    <Checkbox
       label={"Add cake"}
-      value={store.state.checked}
-      onValueChange={checked => store.set({ checked })}
-      disabled={knobs.boolean("Disabled", false)}
+      value={knobs.boolean("Checked", false)}
+      indeterminate={knobs.boolean("Indeterminate", false)}
+      disabled
     />
-  ))
-);
+  ));
