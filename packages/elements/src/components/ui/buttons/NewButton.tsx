@@ -3,7 +3,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cx from "classnames";
 import * as React from "react";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { InputSpinner } from "../../..";
 import styles from "./NewButton.module.css";
 
@@ -20,7 +20,9 @@ export interface NewButtonProps {
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   leftIcon?: IconDefinition;
+  left?: ReactNode;
   rightIcon?: IconDefinition;
+  right?: ReactNode;
 }
 
 const getButtonLabel = (
@@ -31,9 +33,9 @@ const getButtonLabel = (
   loadingLabel: string | undefined
 ): string | null => {
   if (success) {
-    return successLabel ?? null;
+    return successLabel || null;
   } else if (loading) {
-    return loadingLabel ?? null;
+    return loadingLabel || null;
   } else {
     return label;
   }
@@ -49,7 +51,9 @@ export const NewButton: React.FC<NewButtonProps> = ({
   successLabel,
   disabled,
   leftIcon,
+  left,
   rightIcon,
+  right,
   onClick
 }) => {
   const buttonLabel = getButtonLabel(
@@ -76,14 +80,18 @@ export const NewButton: React.FC<NewButtonProps> = ({
         <div className={styles.iconLeft}>
           <InputSpinner size={"100%"} />
         </div>
+      ) : left ? (
+        left
       ) : leftIcon ? (
         <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
       ) : null}
 
       {buttonLabel && <span>{buttonLabel}</span>}
-      {rightIcon && (
+      {right ? (
+        right
+      ) : rightIcon ? (
         <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
-      )}
+      ) : null}
     </button>
   );
 };

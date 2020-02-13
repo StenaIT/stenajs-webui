@@ -10,6 +10,7 @@ import { action } from "@storybook/addon-actions";
 import { boolean } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { Icon } from "../../..";
 
 const buttonSizes: ButtonSize[] = ["small", "normal", "large"];
 
@@ -126,6 +127,32 @@ storiesOf("elements/Buttons/NewButton", module)
               successLabel={"Done!"}
             />
           ))}
+        </Row>
+      ))}
+    </>
+  ))
+  .add("with right content", () => (
+    <>
+      {[NewButton, SecondaryButton].map(ButtonVariant => (
+        <Row alignItems={"flex-start"}>
+          <ButtonVariant
+            size={"large"}
+            label={"Submit"}
+            right={
+              <Row width={35} justifyContent={"flex-end"}>
+                <Column
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  background={"#fe2266"}
+                  borderRadius={"50%"}
+                  width={24}
+                  height={24}
+                >
+                  <Icon icon={faCheck} color={"white"} />
+                </Column>
+              </Row>
+            }
+          />
         </Row>
       ))}
     </>
