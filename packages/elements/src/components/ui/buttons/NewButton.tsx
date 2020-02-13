@@ -10,7 +10,7 @@ import styles from "./NewButton.module.css";
 export type ButtonSize = "normal" | "small" | "large";
 
 export interface NewButtonProps {
-  label: string;
+  label?: string;
   loadingLabel?: string;
   className?: string;
   size?: ButtonSize;
@@ -26,7 +26,7 @@ export interface NewButtonProps {
 }
 
 const getButtonLabel = (
-  label: string,
+  label: string | undefined,
   success: boolean,
   successLabel: string | undefined,
   loading: boolean,
@@ -37,7 +37,7 @@ const getButtonLabel = (
   } else if (loading) {
     return loadingLabel || null;
   } else {
-    return label;
+    return label || null;
   }
 };
 

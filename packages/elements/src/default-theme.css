@@ -59,6 +59,9 @@
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
 
+  /* Borders */
+  --swui-border-radius: 4px;
+
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
   --swui-shadow-popover: rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;

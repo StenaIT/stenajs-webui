@@ -5,30 +5,22 @@
   --swui-button-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.056),
     0 0 1px -1px rgba(0, 0, 0, 0.1);
 
-  &:hover {
-    --swui-button-background-color: #f2f8fd;
-    --swui-button-border-color: #3284de;
-    --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.16),
-      0 1px 1px -1px rgba(29, 100, 171, 0.16);
-  }
+  --swui-button-background-color-hover: #f2f8fd;
+  --swui-button-border-color-hover: #3284de;
+  --swui-button-box-shadow-hover: 0 1px 0 0 rgba(29, 100, 171, 0.16),
+    0 1px 1px -1px rgba(29, 100, 171, 0.16);
 
-  &:focus {
-    --swui-button-background-color: #fff;
-    --swui-button-box-shadow: 0 0 4px 0 #6ca9e6;
-  }
+  --swui-button-background-color-focus: #fff;
+  --swui-button-box-shadow-focus: 0 0 4px 0 #6ca9e6;
 
-  &:active {
-    --swui-button-background-color: #e1eefa;
-    --swui-button-border-color: #2378cd;
-    --swui-button-text-color: #2877cd;
-    --swui-button-box-shadow: none;
-  }
+  --swui-button-background-color-active: #e1eefa;
+  --swui-button-border-color-active: #2378cd;
+  --swui-button-text-color-active: #2877cd;
+  --swui-button-box-shadow-active: none;
 
-  &:disabled {
-    --swui-button-background-color: #e4e5e9;
-    --swui-button-border-color: #ced0d7;
-    --swui-button-text-color: #989cab;
-    --swui-button-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.056),
-      0 1px 1px -1px rgba(0, 0, 0, 0.1);
-  }
+  --swui-button-background-color-disabled: #e4e5e9;
+  --swui-button-border-color-disabled: #ced0d7;
+  --swui-button-text-color-disabled: #989cab;
+  --swui-button-box-shadow-disabled: 0 1px 0 0 rgba(0, 0, 0, 0.056),
+    0 1px 1px -1px rgba(0, 0, 0, 0.1);
 }

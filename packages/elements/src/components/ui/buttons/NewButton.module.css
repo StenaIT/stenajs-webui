@@ -8,18 +8,41 @@
   --swui-button-border-color: var(--swui-button-background-color);
   --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
     0 0 1px -1px rgba(29, 100, 171, 0.1);
+  --swui-button-border-radius: var(--swui-border-radius);
+
+  --swui-button-background-color-focus: #18518a;
+  --swui-button-border-color-focus: var(--swui-button-border-color);
+  --swui-button-text-color-focus: var(--swui-button-text-color);
+  --swui-button-box-shadow-focus: 0 0 4px 0 #6ca9e6;
+
+  --swui-button-background-color-hover: #1d64ab;
+  --swui-button-border-color-hover: var(--swui-button-border-color);
+  --swui-button-text-color-hover: var(--swui-button-text-color);
+  --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
+    0 0 1px 0 rgba(29, 100, 171, 0.16);
+
+  --swui-button-background-color-active: #143e62;
+  --swui-button-border-color-active: var(--swui-button-border-color);
+  --swui-button-text-color-active: var(--swui-button-text-color);
+  --swui-button-box-shadow-active: none;
+
+  --swui-button-background-color-disabled: #e4e5e9;
+  --swui-button-border-color-disabled: #ced0d7;
+  --swui-button-text-color-disabled: #989cab;
+  --swui-button-box-shadow-disabled: none;
+
   margin: 8px;
   padding: var(--swui-button-padding-vertical)
     var(--swui-button-padding-horizontal);
   border: 1px solid var(--swui-button-border-color);
   background-color: var(--swui-button-background-color);
-  border-radius: 4px;
+  border-radius: var(--swui-button-border-radius);
   box-shadow: var(--swui-button-box-shadow);
   color: var(--swui-button-text-color);
   font-size: var(--swui-button-text-size);
   line-height: var(--swui-button-size);
   font-weight: 400;
-  font-family: "Open Sans";
+  font-family: var(--swui-font-buttons);
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -28,27 +51,34 @@
   transition: all var(--swui-animation-time-medium);
 
   &:hover {
-    --swui-button-background-color: #1d64ab;
-    --swui-button-box-shadow: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
-      0 0 1px 0 rgba(29, 100, 171, 0.16);
+    --swui-button-background-color: var(--swui-button-background-color-hover);
+    --swui-button-border-color: var(--swui-button-border-color-hover);
+    --swui-button-text-color: var(--swui-button-text-color-hover);
+    --swui-button-box-shadow: var(--swui-button-box-shadow-hover);
   }
 
   &:focus {
     outline: 0;
-    --swui-button-background-color: #18518a;
-    --swui-button-box-shadow: 0 0 4px 0 #6ca9e6;
+    --swui-button-background-color: var(--swui-button-background-color-focus);
+    --swui-button-border-color: var(--swui-button-border-color-focus);
+    --swui-button-text-color: var(--swui-button-text-color-focus);
+    --swui-button-box-shadow: var(--swui-button-box-shadow-focus);
   }
 
   &:active {
-    --swui-button-background-color: #143e62;
-    --swui-button-box-shadow: none;
+    --swui-button-background-color: var(--swui-button-background-color-active);
+    --swui-button-border-color: var(--swui-button-border-color-active);
+    --swui-button-text-color: var(--swui-button-text-color-active);
+    --swui-button-box-shadow: var(--swui-button-box-shadow-active);
   }
 
   &:disabled {
-    --swui-button-background-color: #e4e5e9;
-    --swui-button-border-color: #ced0d7;
-    --swui-button-text-color: #989cab;
-    --swui-button-box-shadow: none;
+    --swui-button-background-color: var(
+      --swui-button-background-color-disabled
+    );
+    --swui-button-border-color: var(--swui-button-border-color-disabled);
+    --swui-button-text-color: var(--swui-button-text-color-disabled);
+    --swui-button-box-shadow: var(--swui-button-box-shadow-disabled);
     cursor: not-allowed;
   }
 
