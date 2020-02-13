@@ -53,6 +53,7 @@
 
   &.iconButton {
     padding: 8px;
+    color: var(--swui-button-text-color);
   }
 
   .iconLeft,
