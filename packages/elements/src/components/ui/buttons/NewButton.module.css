@@ -1,0 +1,85 @@
+.button {
+  --swui-button-size: 16px;
+  --swui-button-text-size: 14px;
+  --swui-button-text-color: #fff;
+  --swui-button-background-color: #2378cd;
+  --swui-button-padding-vertical: 8px;
+  --swui-button-padding-horizontal: 16px;
+  --swui-button-border-color: var(--swui-button-background-color);
+  --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
+    0 0 1px -1px rgba(29, 100, 171, 0.1);
+  margin: 8px;
+  padding: var(--swui-button-padding-vertical) var(--swui-button-padding-horizontal);
+  border: 1px solid var(--swui-button-border-color);
+  background-color: var(--swui-button-background-color);
+  border-radius: 4px;
+  box-shadow: var(--swui-button-box-shadow);
+  color: var(--swui-button-text-color);
+  font-size: var(--swui-button-text-size);
+  line-height: var(--swui-button-size);
+  font-weight: 400;
+  font-family: 'Open Sans';
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  transition: all var(--swui-animation-time-medium);
+
+  &:hover {
+    --swui-button-background-color: #1d64ab;
+    --swui-button-box-shadow: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
+      0 0 1px 0 rgba(29, 100, 171, 0.16);
+  }
+
+  &:focus {
+    outline: 0;
+    --swui-button-background-color: #18518a;
+    --swui-button-box-shadow: 0 0 4px 0 #6ca9e6;
+  }
+
+  &:active {
+    --swui-button-background-color: #143e62;
+    --swui-button-box-shadow: none;
+  }
+
+  &:disabled {
+    --swui-button-background-color: #e4e5e9;
+    --swui-button-border-color: #ced0d7;
+    --swui-button-text-color: #989cab;
+    --swui-button-box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &.iconButton {
+    padding: 8px;
+  }
+
+  .iconLeft,
+  .iconRight {
+    height: var(--swui-button-size);
+    width: var(--swui-button-size);
+  }
+
+  .iconLeft:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .iconRight:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  &.small {
+    --swui-button-size: 16px;
+    --swui-button-padding-vertical: 4px;
+    --swui-button-padding-horizontal: 8px;
+    --swui-button-text-size: 12px;
+  }
+
+  &.large {
+    --swui-button-size: 24px;
+    --swui-button-padding-vertical: 8px;
+    --swui-button-padding-horizontal: 24px;
+    --swui-button-text-size: 16px;
+  }
+}

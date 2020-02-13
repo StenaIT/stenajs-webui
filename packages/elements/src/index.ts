@@ -5,6 +5,7 @@ export * from "./components/ui/spinner/InputSpinner";
 export { ButtonProps } from "./components/ui/buttons/Button";
 export * from "./components/ui/buttons/ButtonTheme";
 export * from "./components/ui/buttons/FlatButton";
+export * from "./components/ui/buttons/NewButton";
 export * from "./components/ui/buttons/SmallButton";
 export * from "./components/ui/buttons/StandardButton";
 export * from "./components/ui/buttons/UpDownButtons";

@@ -6,7 +6,7 @@
   "scripts": {
     "start-storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf build && build-storybook -o build",
-    "watch-storybook": "concurrently \"npm:start-storybook\" \"npm:watch\"",
+    "watch-storybook": "concurrently \"yarn start-storybook\" \"yarn watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
     "build-all": "yarn clean-all && yarn pre-build-check && lerna run build && yarn post-build-check",
@@ -72,6 +72,7 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "2.2.0",
+    "fsevents": "^2.1.2",
     "gh-pages": "^2.0.1",
     "glob": "^7.1.4",
     "husky": "^3.0.0",

@@ -28,7 +28,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "0.0.51"
+    "@stenajs-webui/core": "0.0.51",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",
@@ -53,6 +54,7 @@
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/styled-system": "^5.0.1",
+    "@types/classnames": "^2.2.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-system": "^5.0.18"
