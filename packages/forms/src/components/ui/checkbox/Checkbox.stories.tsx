@@ -142,20 +142,12 @@ storiesOf("forms/Checkbox", module)
       />
     ))
   )
-  .add("with DOM name", () => (
-    <Checkbox
-      value={knobs.boolean("Checked", false)}
-      disabled={knobs.boolean("Disabled", false)}
-      name={knobs.text("Name", "agree")}
-    />
-  ))
-  .add("checked and disabled", () => <Checkbox value={true} disabled />)
-  .add("not checked and disabled", () => <Checkbox value={false} disabled />)
   .add("indeterminate", () => (
-    <Checkbox
-      value={knobs.boolean("Checked", false)}
-      indeterminate={knobs.boolean("Indeterminate", false)}
-    />
+    <Column>
+      <Checkbox indeterminate />
+      <Space />
+      <Checkbox indeterminate disabled />
+    </Column>
   ));
 
 storiesOf("forms/Checkbox/CheckboxWithLabel", module)
