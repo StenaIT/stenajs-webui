@@ -1,15 +1,48 @@
 :root {
+  /* Text colors */
+  --swui-text-primary-color: #1b2e47;
+  --swui-text-disabled-color: #b6b6b6;
+  --swui-text-darkmode-primary-color: #bcbabd;
+  --swui-text-darkmode-disabled-color: #dddddd;
+
+  /* Generic colors */
+  --swui-white: #fff;
+  --swui-primary-action-color: #696bdb;
+  --swui-separator-color: #b1b1b1;
+  --swui-error-color: #d05353;
+  --swui-error-light-color: #ffbfc6;
+  --swui-alert-color: #acac42;
+  --swui-alert-light-color: #edec8a;
+  --swui-success-color: #8bc34a;
+  --swui-success-light-color: #94f78c;
+  --swui-handle-bg-enabled-color: var(--swui-white);
+  --swui-handle-bg-disabled-color: #bebbc0;
+
+  /* Fonts */
+  --swui-font-primary: Open Sans;
+  --swui-font-buttons: var(--swui-font-primary);
+  --swui-font-input: var(--swui-font-primary);
+
+  /* Animation speeds */
   --swui-animation-time-fast: 0.1s;
   --swui-animation-time-medium: 0.25s;
   --swui-animation-time-slow: 0.5s;
-  --swui-color-primary-action: #696bdb;
-  --swui-color-separator: #b1b1b1;
-  --swui-field-bg-enabled: #fff;
+
+  /* Form fields */
+  --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
-  --swui-handle-bg-enabled: #fff;
-  --swui-handle-bg-disabled: #bebbc0;
   --swui-field-border-color: #dcd9de;
   --swui-field-border-color-hover: #f7f3f9;
   --swui-field-border-color-disabled: #bab6bc;
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
+
+  /* Shadows */
+  --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
+  --swui-shadow-popover: rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;
+  --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
+
+  /* Metrics */
+  --swui-metrics-indent: 10;
+  --swui-metrics-spacing: 10;
+  --swui-metrics-space: 1;
 }

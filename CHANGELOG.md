@@ -2,7 +2,15 @@
 
 ## Next release
 
-* Coming soon...
+### PSA
+
+* We are moving from React context based theme to CSS variables.
+* We are also starting to implement components using HTML elements and CSS modules, instead of `core` components.
+
+### Breaking changes
+
+* Badge props changed. `color` and `textColor` have been removed, and `type` has been added.
+* Badge now uses CSS vars.
 
 ## 0.0.51
 
@@ -12,11 +20,11 @@
 
 ## 0.0.50
 
-* Fix typescript errors in calendar package.
+* Fix Typescript errors in calendar package.
 
 ## 0.0.49
 
-* Modals can now be defined as draggable!
+* Modals are now draggable. Off by default, enable with prop `draggable`.
 
 ### Fixes
 

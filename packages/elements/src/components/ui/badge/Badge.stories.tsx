@@ -1,14 +1,11 @@
-import { color, number } from "@storybook/addon-knobs";
+import { Badge } from "@stenajs-webui/elements";
+import { select, text } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Badge } from "@stenajs-webui/elements";
 
-storiesOf("elements/Badge/Badge", module)
-  .add("standard", () => <Badge label={5} />)
-  .add("with knobs", () => (
-    <Badge
-      label={number("Label", 5)}
-      color={color("Color", "red")}
-      textColor={color("Text color", "white")}
-    />
-  ));
+storiesOf("elements/Badge/Badge", module).add("standard", () => (
+  <Badge
+    label={text("Label", "5")}
+    type={select("Type", ["notification", "warning", "error"], "notification")}
+  />
+));

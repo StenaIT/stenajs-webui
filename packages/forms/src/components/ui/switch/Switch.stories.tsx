@@ -11,7 +11,7 @@ storiesOf("forms/Switch", module)
     />
   ))
   .add("custom action color", () => (
-    <div style={{ "--swui-color-primary-action": "#41ae33" } as any}>
+    <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
       <Switch
         value={knobs.boolean("Toggled", false)}
         disabled={knobs.boolean("Disabled", false)}

@@ -1,46 +1,27 @@
-import {
-  Box,
-  SmallText,
-  ThemeColorField,
-  useThemeFields
-} from "@stenajs-webui/core";
 import * as React from "react";
+import { SmallerText } from "@stenajs-webui/core";
+import styles from "./Badge.module.css";
+
+export type BadgeType = "notification" | "warning" | "error";
 
 export interface BadgeProps {
-  color?: ThemeColorField | string;
-  textColor?: ThemeColorField | string;
   label?: string | number;
-  size?: string | number;
+  type?: BadgeType;
 }
 
-export const Badge: React.FC<BadgeProps> = ({
-  textColor = "white",
-  color = "badgeBg",
-  size = "18px",
-  label
-}) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColor: textColor,
-        color: color
-      }
-    },
-    [textColor, color]
-  );
+export const Badge: React.FC<BadgeProps> = React.memo(
+  ({ label, type = "notification" }) => {
+    const className = styles.badge + " " + styles[type];
 
-  return (
-    <Box
-      overflow={"hidden"}
-      borderRadius={"50%"}
-      borderWidth={"0px"}
-      background={colors.color}
-      width={size}
-      height={size}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <SmallText color={colors.textColor}>{label}</SmallText>
-    </Box>
-  );
-};
+    return (
+      <div className={className}>
+        <SmallerText
+          color={"var(--swui-badge-text-color)"}
+          className={styles.label}
+        >
+          {label}
+        </SmallerText>
+      </div>
+    );
+  }
+);
