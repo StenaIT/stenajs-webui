@@ -1,0 +1,57 @@
+.textInput {
+  --swui-textinput-height: 32px;
+  --swui-textinput-vertical-padding: var(--swui-metrics-indent);
+  --swui-textinput-font-size: var(--swui-font-size-inputs);
+  --swui-textinput-font-family: var(--swui-font-input);
+  --swui-textinput-font-weight: var(--swui-font-weight-inputs);
+  --swui-textinput-placeholder-color: #989cab;
+  --swui-animation-time: var(--swui-animation-time-medium);
+
+  /* Background */
+  --swui-textinput-bg-color: var(--swui-field-bg-enabled);
+  --swui-textinput-bg-color-disabled: var(--swui-field-bg-disabled);
+
+  /* Border */
+  --swui-textinput-border-radius: var(--swui-field-border-radius);
+  --swui-textinput-border-color: var(--swui-field-border-color);
+  --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
+  --swui-textinput-border-color-disabled: var(
+    --swui-field-border-color-disabled
+  );
+  /* Shadow */
+  --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
+
+  height: var(--swui-textinput-height);
+  padding-left: var(--swui-textinput-vertical-padding);
+  padding-right: var(--swui-textinput-vertical-padding);
+  font-size: var(--swui-textinput-font-size);
+  font-family: var(--swui-textinput-font-family);
+  font-weight: var(--swui-textinput-font-weight);
+  background: var(--current-bg, var(--swui-textinput-bg-color));
+  border: 1px solid
+    var(--current-border-color, var(--swui-textinput-border-color));
+  border-radius: var(--swui-textinput-border-radius);
+  transition: border var(--swui-animation-time),
+    box-shadow var(--swui-animation-time);
+
+  &::placeholder {
+    color: var(--swui-textinput-placeholder-color);
+  }
+
+  &:disabled {
+    --current-bg: var(--swui-textinput-bg-color-disabled);
+    --current-border-color: var(--swui-textinput-border-color-disabled);
+  }
+
+  &:hover {
+    &:not(:disabled) {
+      --current-border-color: var(--swui-textinput-border-color-hover);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--swui-textinput-focus-shadow);
+    --current-border-color: var(--swui-textinput-border-color-hover);
+  }
+}

@@ -23,6 +23,8 @@
   --swui-font-primary: Open Sans;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
+  --swui-font-size-inputs: 14px;
+  --swui-font-weight-inputs: 400;
 
   /* Animation speeds */
   --swui-animation-time-fast: 0.1s;
@@ -49,7 +51,7 @@
   --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
 
   /* Metrics */
-  --swui-metrics-indent: 10;
-  --swui-metrics-spacing: 10;
-  --swui-metrics-space: 1;
+  --swui-metrics-indent: 8px;
+  --swui-metrics-spacing: 8px;
+  --swui-metrics-space: 8px;
 }

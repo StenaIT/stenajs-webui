@@ -3,13 +3,23 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
 import {
   defaultStandardTextInputThemeDark,
-  StandardTextInput
+  StandardTextInput,
+  TextInput
 } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
+  .add("TextInput", () => (
+    <Box width={"400px"}>
+      <TextInput placeholder={"E-mail"} />
+      <Space />
+      <TextInput value={knobs.text("Text", "Some nice text.")} />
+      <Space />
+      <TextInput value={knobs.text("Text2", "Some nice text.")} disabled />
+    </Box>
+  ))
   .add("standard", () => (
     <Box width={"400px"}>
       <StandardTextInput value={knobs.text("Text", "Some nice text.")} />
