@@ -1,5 +1,5 @@
 .collapsible {
-  --swui-collapsible-animation-time: var(--swui-animation-time-medium);
+  --swui-collapsible-animation-time: var(--swui-animation-time-fast);
   --swui-collapsible-header-background-color: #fff;
   --swui-collapsible-header-background-color-hover: #f3f8fc;
   --swui-collapsible-header-border-color: #f1f2f4;
@@ -38,11 +38,6 @@
       transition: all var(--swui-collapsible-animation-time) ease-in-out;
       margin-right: 8px;
       margin-left: auto;
-      transform: rotate(0deg);
-
-      path {
-        fill: var(--swui-collapsible-header-chevron-color-collapsed);
-      }
     }
 
     &:not(:disabled):hover {
@@ -58,25 +53,29 @@
 
     &:disabled {
       cursor: not-allowed;
-
-      .chevron path {
-        fill: var(--swui-collapsible-header-chevron-color);
-      }
     }
   }
 
   .content {
     background: var(--swui-collapsible-content-background-color);
     border-bottom: 1px solid var(--swui-collapsible-content-border-color);
-  }
 
-  &[aria-expanded="true"] {
-    .header .chevron {
-      transform: rotate(-180deg);
+    &Enter {
+      opacity: 0;
+    }
 
-      path {
-        fill: var(--swui-collapsible-header-chevron-color);
-      }
+    &EnterActive {
+      opacity: 1;
+      transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
+    }
+
+    &Exit {
+      opacity: 1;
+    }
+
+    &ExitActive {
+      opacity: 0;
+      transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
     }
   }
 
