@@ -47,7 +47,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <input
       type={"checkbox"}
-      role={"checkbox"}
       className={styles.checkbox + " " + styles[size]}
       checked={value}
       onChange={handleInputChange}

@@ -1,6 +1,6 @@
 import { InputProps } from "@stenajs-webui/core";
 import * as React from "react";
-import { ChangeEvent, useCallback, useRef } from "react";
+import { ChangeEvent, useCallback } from "react";
 import { FullOnChangeProps } from "../types";
 import styles from "./RadioButton.module.css";
 
@@ -15,14 +15,9 @@ export interface RadioButtonProps
 export const RadioButton: React.FC<RadioButtonProps> = ({
   onChange,
   onValueChange,
-  inputRef,
   size = "standard",
   ...inputProps
 }) => {
-  const innerInputRef = useRef(null);
-
-  const inputRefToUse = inputRef || innerInputRef;
-
   const handleInputChange = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
       if (onChange) {
@@ -38,10 +33,8 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <input
       type={"radio"}
-      role={"radio"}
       className={styles.radiobutton + " " + styles[size]}
       onChange={handleInputChange}
-      ref={inputRefToUse}
       {...inputProps}
     />
   );
