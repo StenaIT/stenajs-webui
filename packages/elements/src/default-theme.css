@@ -38,6 +38,7 @@
   --swui-field-border-color-hover: #275efe;
   --swui-field-border-color-disabled: var(--swui-separator-color);
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
+  --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
   --swui-field-border-radius: 4px;

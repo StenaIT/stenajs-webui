@@ -1,10 +1,10 @@
 .textInput {
-  --swui-textinput-height: 32px;
+  --swui-textinput-height: var(--swui-field-box-size-large);
   --swui-textinput-vertical-padding: var(--swui-metrics-indent);
   --swui-textinput-font-size: var(--swui-font-size-inputs);
   --swui-textinput-font-family: var(--swui-font-input);
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
-  --swui-textinput-placeholder-color: #989cab;
+  --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
   --swui-animation-time: var(--swui-animation-time-medium);
 
   /* Background */
