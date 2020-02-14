@@ -38,6 +38,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <input
       type={"radio"}
+      role={"radio"}
       className={styles.radiobutton + " " + styles[size]}
       onChange={handleInputChange}
       ref={inputRefToUse}

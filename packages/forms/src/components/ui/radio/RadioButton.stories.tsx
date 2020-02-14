@@ -1,5 +1,13 @@
 import { Store, withState } from "@dump247/storybook-state";
 import {
+  Column,
+  HeaderText,
+  LargeText,
+  Row,
+  Space,
+  StandardText
+} from "@stenajs-webui/core";
+import {
   defaultRadioButtonTheme,
   RadioButton,
   RadioButtonWithLabel
@@ -8,12 +16,6 @@ import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Column } from "../../../../../core/src/components/layout/column/Column";
-import { Row } from "../../../../../core/src/components/layout/row/Row";
-import { Space } from "../../../../../core/src/components/layout/space/Space";
-import { HeaderText } from "../../../../../core/src/components/text/variants/HeaderText";
-import { LargeText } from "../../../../../core/src/components/text/variants/LargeText";
-import { StandardText } from "../../../../../core/src/components/text/variants/StandardText";
 
 interface State {
   selected: string;

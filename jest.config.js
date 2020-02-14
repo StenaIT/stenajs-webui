@@ -9,6 +9,9 @@ const shared = {
         ignoreCodes: [151001]
       }
     }
+  },
+  "moduleNameMapper": {
+    "\\.(css|less)$": "identity-obj-proxy"
   }
 };
 
@@ -35,11 +38,31 @@ module.exports = {
       ...shared
     },
     {
+      rootDir: "packages/input-mask/src",
+      ...shared
+    },
+    {
+      rootDir: "packages/modal/src",
+      ...shared
+    },
+    {
       rootDir: "packages/panels/src",
       ...shared
     },
     {
+      rootDir: "packages/redux/src",
+      ...shared
+    },
+    {
       rootDir: "packages/select/src",
+      ...shared
+    },
+    {
+      rootDir: "packages/theme/src",
+      ...shared
+    },
+    {
+      rootDir: "packages/tooltip/src",
       ...shared
     }
   ]

@@ -75,6 +75,7 @@
     "gh-pages": "^2.0.1",
     "glob": "^7.1.4",
     "husky": "^3.0.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "lerna": "^3.13.4",
     "lint-staged": "^9.0.0",
