@@ -7,6 +7,7 @@
 
   /* Generic colors */
   --swui-white: #fff;
+  --swui-hidden: rgba(0, 0, 0, 0);
   --swui-primary-action-color: #696bdb;
   --swui-separator-color: #b1b1b1;
   --swui-error-color: #d05353;
@@ -31,15 +32,21 @@
   /* Form fields */
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
-  --swui-field-border-color: #dcd9de;
-  --swui-field-border-color-hover: #f7f3f9;
-  --swui-field-border-color-disabled: #bab6bc;
+  --swui-field-border-color: #bbc1e1;
+  --swui-field-border-color-hover: #275efe;
+  --swui-field-border-color-disabled: var(--swui-separator-color);
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
+  --swui-field-box-size-medium: 24px;
+  --swui-field-box-size-small: 16px;
+  --swui-field-border-radius: 4px;
+  --swui-field-indicator-active-color: var(--swui-white);
+  --swui-field-indicator-inactive-color: var(--swui-hidden);
 
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
   --swui-shadow-popover: rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;
   --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
+  --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
 
   /* Metrics */
   --swui-metrics-indent: 10;

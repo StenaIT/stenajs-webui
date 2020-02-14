@@ -1,14 +1,7 @@
-import {
-  Row,
-  Space,
-  StandardText,
-  ThemeColorField,
-  useThemeFields
-} from "@stenajs-webui/core";
+import { Row, Space, StandardText, ThemeColorField } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
-import { defaultCheckboxTheme } from "./CheckboxTheme";
 
 export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
@@ -23,30 +16,17 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = props => {
     label,
     innerRef,
     textColor,
-    theme = defaultCheckboxTheme,
     ...propsToCheckbox
   } = props;
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColor: textColor,
-        iconColorDisabled: theme.iconColorDisabled
-      }
-    },
-    [theme, textColor]
-  );
 
   return (
     <div ref={innerRef}>
       <label>
         <Row alignItems={"center"}>
-          <Checkbox {...propsToCheckbox} disabled={disabled} theme={theme} />
+          <Checkbox {...propsToCheckbox} disabled={disabled} />
           <Space />
           {label && (
-            <StandardText
-              color={disabled ? colors.iconColorDisabled : colors.textColor}
-            >
+            <StandardText userSelect={"none"} lineHeight={"100%"}>
               {label}
             </StandardText>
           )}

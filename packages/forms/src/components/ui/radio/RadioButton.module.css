@@ -1,0 +1,138 @@
+.radiobutton {
+  /* Sizes */
+  --swui-radiobutton-size-standard: var(--swui-field-box-size-medium);
+  --swui-radiobutton-size-small: var(--swui-field-box-size-small);
+  --swui-radiobutton-animation-time: var(--swui-animation-time-medium);
+  /* Icon */
+  --swui-radiobutton-icon-color: var(--swui-field-indicator-active-color);
+  --swui-radiobutton-disabled-icon-color: var(--swui-separator-color);
+  --swui-radiobutton-unchecked-icon-color: var(
+    --swui-field-indicator-inactive-color
+  );
+  /* Background */
+  --swui-radiobutton-checked-bg-color: var(--swui-primary-action-color);
+  --swui-radiobutton-checked-disabled-bg-color: var(--swui-field-bg-disabled);
+  --swui-radiobutton-unchecked-bg-color: var(--swui-white);
+  --swui-radiobutton-unchecked-disabled-bg-color: var(--swui-field-bg-disabled);
+  /* Border */
+  --swui-radiobutton-unchecked-border-color: var(--swui-field-border-color);
+  --swui-radiobutton-unchecked-hover-border-color: var(
+    --swui-field-border-color-hover
+  );
+  --swui-radiobutton-disabled-border-color: var(--swui-field-border-color-disabled);
+  /* Shadow */
+  --swui-radiobutton-focus-shadow: var(--swui-field-focus-shadow);
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid
+    var(--current-border-color, var(--swui-radiobutton-unchecked-border-color));
+  border-radius: 50%;
+  background: var(
+    --current-bg-color,
+    var(--swui-radiobutton-unchecked-bg-color)
+  );
+  transition: background var(--swui-radiobutton-animation-time),
+    border-color var(--swui-radiobutton-animation-time),
+    box-shadow var(--swui-radiobutton-animation-time);
+
+  &.standard {
+    height: var(--swui-radiobutton-size-standard);
+    width: var(--swui-radiobutton-size-standard);
+
+    &:after {
+      left: 7px;
+      top: 7px;
+    }
+  }
+
+  &.small {
+    height: var(--swui-radiobutton-size-small);
+    width: var(--swui-radiobutton-size-small);
+
+    &:after {
+      left: 3px;
+      top: 3px;
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    transition: transform
+        var(--current-transform-time, var(--swui-radiobutton-animation-time))
+        var(--current-transform-type, ease),
+      opacity
+        var(--current-opacity-time, var(--swui-radiobutton-animation-time))
+        var(--current-transform-type, ease);
+    transform: scale(var(--current-scale, 0));
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(
+      --current-icon-color,
+      var(--swui-radiobutton-unchecked-icon-color)
+    );
+    opacity: var(--current-opacity, 0);
+  }
+
+  &:checked {
+    --current-bg-color: var(--swui-radiobutton-checked-bg-color);
+    --current-border-color: var(--swui-radiobutton-checked-bg-color);
+    --current-opacity-time: var(--swui-radiobutton-animation-time);
+    --current-transform-time: 0.6s;
+    --current-transform-type: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    --current-opacity: 1;
+    --current-scale: 1;
+
+    &:after {
+      --current-icon-color: var(--swui-radiobutton-icon-color);
+    }
+  }
+
+  &:disabled {
+    --current-bg-color: var(--swui-radiobutton-unchecked-disabled-bg-color);
+    --current-border-color: var(--swui-radiobutton-disabled-border-color);
+
+    &:checked {
+      --current-bg-color: var(--swui-radiobutton-checked-disabled-bg-color);
+
+      &:after {
+        --current-icon-color: var(--swui-radiobutton-disabled-icon-color);
+      }
+    }
+
+    & + label {
+    }
+  }
+
+  &:hover {
+    &:not(:checked) {
+      &:not(:disabled) {
+        --current-border-color: var(
+          --swui-radiobutton-unchecked-hover-border-color
+        );
+      }
+    }
+  }
+
+  &:focus {
+    box-shadow: var(--swui-radiobutton-focus-shadow);
+  }
+
+  & + label {
+    font-size: 14px;
+    line-height: var(--swui-radiobutton-size-standard);
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+}
