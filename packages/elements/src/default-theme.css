@@ -32,6 +32,8 @@
   --swui-animation-time-slow: 0.5s;
 
   /* Form fields */
+  --swui-field-text-color: #424551;
+  --swui-field-text-color-disabled: #989CAB;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
   --swui-field-border-color: #bbc1e1;

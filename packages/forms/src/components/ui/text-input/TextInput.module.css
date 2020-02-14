@@ -1,11 +1,15 @@
 .textInput {
+  --swui-textinput-text-color: var(--swui-field-text-color);
+  --swui-textinput-text-color-disabled: var(--swui-field-text-color-disabled);
   --swui-textinput-height: var(--swui-field-box-size-large);
   --swui-textinput-vertical-padding: var(--swui-metrics-indent);
   --swui-textinput-font-size: var(--swui-font-size-inputs);
   --swui-textinput-font-family: var(--swui-font-input);
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
   --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
-  --swui-animation-time: var(--swui-animation-time-medium);
+  --swui-textinput-animation-time: var(--swui-animation-time-medium);
+  --swui-textinput-icon-color: var(--swui-animation-time-medium);
+  --swui-textinput-icon-size: 13;
 
   /* Background */
   --swui-textinput-bg-color: var(--swui-field-bg-enabled);
@@ -21,37 +25,62 @@
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
 
-  height: var(--swui-textinput-height);
-  padding-left: var(--swui-textinput-vertical-padding);
-  padding-right: var(--swui-textinput-vertical-padding);
-  font-size: var(--swui-textinput-font-size);
-  font-family: var(--swui-textinput-font-family);
-  font-weight: var(--swui-textinput-font-weight);
-  background: var(--current-bg, var(--swui-textinput-bg-color));
-  border: 1px solid
-    var(--current-border-color, var(--swui-textinput-border-color));
-  border-radius: var(--swui-textinput-border-radius);
-  transition: border var(--swui-animation-time),
-    box-shadow var(--swui-animation-time);
+  &.inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: var(--current-bg, var(--swui-textinput-bg-color));
+    border: 1px solid
+      var(--current-border-color, var(--swui-textinput-border-color));
+    border-radius: var(--swui-textinput-border-radius);
+    transition: border var(--swui-textinput-animation-time),
+      box-shadow var(--swui-textinput-animation-time);
 
-  &::placeholder {
-    color: var(--swui-textinput-placeholder-color);
-  }
+    &.disabled {
+      --current-bg: var(--swui-textinput-bg-color-disabled);
+      --current-border-color: var(--swui-textinput-border-color-disabled);
+    }
 
-  &:disabled {
-    --current-bg: var(--swui-textinput-bg-color-disabled);
-    --current-border-color: var(--swui-textinput-border-color-disabled);
-  }
+    &:hover {
+      &:not(.disabled) {
+        --current-border-color: var(--swui-textinput-border-color-hover);
+      }
+    }
 
-  &:hover {
-    &:not(:disabled) {
+    &:focus-within {
+      box-shadow: var(--swui-textinput-focus-shadow);
       --current-border-color: var(--swui-textinput-border-color-hover);
     }
-  }
 
-  &:focus {
-    outline: none;
-    box-shadow: var(--swui-textinput-focus-shadow);
-    --current-border-color: var(--swui-textinput-border-color-hover);
+    .icon {
+      color: red;
+    }
+
+    .input {
+      box-sizing: border-box;
+      line-height: 100%;
+      width: 100%;
+      height: var(--swui-textinput-height);
+      color: var(--swui-textinput-text-color);
+      padding-left: var(--swui-textinput-vertical-padding);
+      padding-right: var(--swui-textinput-vertical-padding);
+      font-size: var(--swui-textinput-font-size);
+      font-family: var(--swui-textinput-font-family);
+      font-weight: var(--swui-textinput-font-weight);
+      background: var(--swui-hidden);
+      border: none;
+
+      &.disabled {
+        color: var(--swui-textinput-text-color-disabled);
+      }
+
+      &::placeholder {
+        color: var(--swui-textinput-placeholder-color);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

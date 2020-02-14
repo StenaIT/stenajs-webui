@@ -1,6 +1,7 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
 import {
   defaultStandardTextInputThemeDark,
   StandardTextInput,
@@ -15,6 +16,9 @@ storiesOf("forms/TextInput/StandardTextInput", module)
     <Box width={"400px"}>
       <StandardText>Standard</StandardText>
       <TextInput value={knobs.text("Text", "Some nice text.")} />
+      <Space />
+      <StandardText>Icon left</StandardText>
+      <TextInput value={"Some text"} iconLeft={faCoffee} />
       <Space />
       <StandardText>Placeholder</StandardText>
       <TextInput placeholder={"E-mail"} />
