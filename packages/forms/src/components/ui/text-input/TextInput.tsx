@@ -1,9 +1,10 @@
+import { InputProps } from "@stenajs-webui/core";
+import cx from "classnames";
 import * as React from "react";
 import { ChangeEvent, useRef } from "react";
-import { InputProps } from "@stenajs-webui/core";
-import { useSelectAllOnFocus } from "../../../hooks/UseSelectAllOnFocus";
-import { useSelectAllOnMount } from "../../../hooks/UseSelectAllOnMount";
+import { useTextInput } from "../../../hooks/UseTextInput";
 import { FullOnChangeProps } from "../types";
+import { MoveDirection } from "./SimpleTextInput";
 import styles from "./TextInput.module.css";
 
 export interface TextInputProps
@@ -12,32 +13,27 @@ export interface TextInputProps
   selectAllOnFocus?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
+  onDone?: (value: string) => void;
+  onEnter?: () => void;
+  onEsc?: () => void;
+  /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
+  onMove?: (direction: MoveDirection) => void;
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
   inputRef,
-  onFocus,
-  selectAllOnFocus,
-  selectAllOnMount,
-  moveCursorToEndOnMount,
+  className,
   ...inputProps
 }) => {
   const internalRef = useRef(null);
   const refToUse = inputRef || internalRef;
-
-  const { onFocusHandler } = useSelectAllOnFocus(
-    refToUse,
-    onFocus,
-    selectAllOnFocus
-  );
-  useSelectAllOnMount(refToUse, !!moveCursorToEndOnMount, !!selectAllOnMount);
-
+  const hookProps = useTextInput(refToUse, inputProps);
   return (
     <input
-      className={styles.textInput}
+      className={cx(className, styles.textInput)}
       type={"text"}
       ref={refToUse}
-      onFocus={onFocusHandler}
+      {...hookProps}
       {...inputProps}
     />
   );

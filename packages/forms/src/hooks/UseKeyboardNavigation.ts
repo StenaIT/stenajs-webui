@@ -12,7 +12,7 @@ export const useKeyboardNavigation = (
   /**
    * User-provided onKeyDown. Internal handler should forward calls to this.
    * */
-  onKeyDown: KeyboardEventHandler<HTMLInputElement>,
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>,
   onEnter?: () => void,
   onEsc?: () => void,
   /**
