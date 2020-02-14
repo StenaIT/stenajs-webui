@@ -2,8 +2,8 @@ import { FocusEventHandler, RefObject } from "react";
 
 export const useSelectAllOnFocus = (
   ref: RefObject<HTMLInputElement>,
-  onFocus: FocusEventHandler<HTMLInputElement>,
-  enabled: boolean
+  onFocus?: FocusEventHandler<HTMLInputElement>,
+  enabled?: boolean
 ) => {
   const onFocusHandler: FocusEventHandler<HTMLInputElement> = ev => {
     if (ref.current && ref.current.type !== "number") {

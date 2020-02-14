@@ -13,11 +13,27 @@ import * as React from "react";
 storiesOf("forms/TextInput/StandardTextInput", module)
   .add("TextInput", () => (
     <Box width={"400px"}>
-      <TextInput placeholder={"E-mail"} />
-      <Space />
+      <StandardText>Standard</StandardText>
       <TextInput value={knobs.text("Text", "Some nice text.")} />
       <Space />
+      <StandardText>Placeholder</StandardText>
+      <TextInput placeholder={"E-mail"} />
+      <Space />
+      <StandardText>Disabled</StandardText>
       <TextInput value={knobs.text("Text2", "Some nice text.")} disabled />
+      <Space />
+      <StandardText>Select all on focus</StandardText>
+      <TextInput
+        value={knobs.text("Text2", "Some nice text.")}
+        selectAllOnFocus
+      />
+      <Space />
+      <StandardText>Autofocus and select all on mount</StandardText>
+      <TextInput
+        autoFocus
+        value={knobs.text("Text2", "Some nice text.")}
+        selectAllOnMount
+      />
     </Box>
   ))
   .add("standard", () => (
