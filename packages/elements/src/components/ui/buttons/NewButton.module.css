@@ -34,13 +34,16 @@
   margin: 8px;
   padding: var(--swui-button-padding-vertical)
     var(--swui-button-padding-horizontal);
-  border: 1px solid var(--swui-button-border-color);
-  background-color: var(--swui-button-background-color);
+  border: 1px solid var(--current-border-color, var(--swui-button-border-color));
+  background-color: var(
+    --current-background-color,
+    var(--swui-button-background-color)
+  );
   border-radius: var(--swui-button-border-radius);
-  box-shadow: var(--swui-button-box-shadow);
-  color: var(--swui-button-text-color);
-  font-size: var(--swui-button-text-size);
-  line-height: var(--swui-button-size);
+  box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
+  color: var(--current-text-color, var(--swui-button-text-color));
+  font-size: var(--current-text-size, var(--swui-button-text-size));
+  line-height: var(--current-size, var(--swui-button-size));
   font-weight: 400;
   font-family: var(--swui-font-buttons);
   cursor: pointer;
@@ -51,46 +54,44 @@
   transition: all var(--swui-animation-time-medium);
 
   &:hover {
-    --swui-button-background-color: var(--swui-button-background-color-hover);
-    --swui-button-border-color: var(--swui-button-border-color-hover);
-    --swui-button-text-color: var(--swui-button-text-color-hover);
-    --swui-button-box-shadow: var(--swui-button-box-shadow-hover);
+    --current-background-color: var(--swui-button-background-color-hover);
+    --current-border-color: var(--swui-button-border-color-hover);
+    --current-text-color: var(--swui-button-text-color-hover);
+    --current-box-shadow: var(--swui-button-box-shadow-hover);
   }
 
   &:focus {
     outline: 0;
-    --swui-button-background-color: var(--swui-button-background-color-focus);
-    --swui-button-border-color: var(--swui-button-border-color-focus);
-    --swui-button-text-color: var(--swui-button-text-color-focus);
-    --swui-button-box-shadow: var(--swui-button-box-shadow-focus);
+    --current-background-color: var(--swui-button-background-color-focus);
+    --current-border-color: var(--swui-button-border-color-focus);
+    --current-text-color: var(--swui-button-text-color-focus);
+    --current-box-shadow: var(--swui-button-box-shadow-focus);
   }
 
   &:active {
-    --swui-button-background-color: var(--swui-button-background-color-active);
-    --swui-button-border-color: var(--swui-button-border-color-active);
-    --swui-button-text-color: var(--swui-button-text-color-active);
-    --swui-button-box-shadow: var(--swui-button-box-shadow-active);
+    --current-background-color: var(--swui-button-background-color-active);
+    --current-border-color: var(--swui-button-border-color-active);
+    --current-text-color: var(--swui-button-text-color-active);
+    --current-box-shadow: var(--swui-button-box-shadow-active);
   }
 
   &:disabled {
-    --swui-button-background-color: var(
-      --swui-button-background-color-disabled
-    );
-    --swui-button-border-color: var(--swui-button-border-color-disabled);
-    --swui-button-text-color: var(--swui-button-text-color-disabled);
-    --swui-button-box-shadow: var(--swui-button-box-shadow-disabled);
+    --current-background-color: var(--swui-button-background-color-disabled);
+    --current-border-color: var(--swui-button-border-color-disabled);
+    --current-text-color: var(--swui-button-text-color-disabled);
+    --current-box-shadow: var(--swui-button-box-shadow-disabled);
     cursor: not-allowed;
   }
 
   &.iconButton {
     padding: 8px;
-    color: var(--swui-button-text-color);
+    color: var(--current-text-color, var(--swui-button-text-color));
   }
 
   .iconLeft,
   .iconRight {
-    height: var(--swui-button-size);
-    width: var(--swui-button-size);
+    height: var(--current-size, var(--swui-button-size));
+    width: var(--current-size, var(--swui-button-size));
   }
 
   .iconLeft:not(:last-child) {
@@ -102,16 +103,16 @@
   }
 
   &.small {
-    --swui-button-size: 16px;
+    --current-size: 16px;
     --swui-button-padding-vertical: 4px;
     --swui-button-padding-horizontal: 8px;
-    --swui-button-text-size: 12px;
+    --current-text-size: 12px;
   }
 
   &.large {
-    --swui-button-size: 24px;
+    --current-size: 24px;
     --swui-button-padding-vertical: 8px;
     --swui-button-padding-horizontal: 24px;
-    --swui-button-text-size: 16px;
+    --current-text-size: 16px;
   }
 }

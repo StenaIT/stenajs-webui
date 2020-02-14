@@ -131,7 +131,7 @@ storiesOf("elements/Buttons/NewButton", module)
       ))}
     </>
   ))
-  .add("with right content", () => (
+  .add("with generic content to right", () => (
     <>
       {[NewButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>

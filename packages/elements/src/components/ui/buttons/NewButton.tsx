@@ -1,6 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ButtonProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { MouseEventHandler, ReactNode } from "react";
@@ -9,7 +10,7 @@ import styles from "./NewButton.module.css";
 
 export type ButtonSize = "normal" | "small" | "large";
 
-export interface NewButtonProps {
+export interface NewButtonProps extends ButtonProps {
   label?: string;
   loadingLabel?: string;
   className?: string;
@@ -54,7 +55,9 @@ export const NewButton: React.FC<NewButtonProps> = ({
   left,
   rightIcon,
   right,
-  onClick
+  onClick,
+  innerRef,
+  ...props
 }) => {
   const buttonLabel = getButtonLabel(
     label,
@@ -65,7 +68,8 @@ export const NewButton: React.FC<NewButtonProps> = ({
   );
   return (
     <button
-      onClick={onClick}
+      ref={innerRef}
+      onClick={disabled || success || loading ? undefined : onClick}
       className={cx(
         styles.button,
         styles[size],
@@ -73,6 +77,7 @@ export const NewButton: React.FC<NewButtonProps> = ({
         className
       )}
       disabled={disabled}
+      {...props}
     >
       {success ? (
         <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
