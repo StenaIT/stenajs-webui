@@ -10,7 +10,7 @@ import * as React from "react";
 const ClickableHook = () => {
   const boxProps = useDefaultClickable();
   return (
-    <Box {...boxProps} onClick={() => alert("Click")}>
+    <Box element={"button"} {...boxProps} onClick={() => alert("Click")}>
       <StandardText>Click me!</StandardText>
     </Box>
   );
