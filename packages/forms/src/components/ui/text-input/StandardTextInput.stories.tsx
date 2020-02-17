@@ -4,12 +4,12 @@ import { Box, Space, StandardText } from "@stenajs-webui/core";
 import {
   defaultStandardTextInputThemeDark,
   StandardTextInput,
-  TextInput
+  TextInput,
+  TextInputVariant
 } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { TextInputVariant } from "./TextInput";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
   .add("TextInput", () => (
