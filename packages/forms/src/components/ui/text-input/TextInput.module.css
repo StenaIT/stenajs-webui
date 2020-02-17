@@ -1,8 +1,9 @@
 .textInput {
   --swui-textinput-text-color: var(--swui-field-text-color);
   --swui-textinput-text-color-disabled: var(--swui-field-text-color-disabled);
-  --swui-textinput-height: var(--swui-field-box-size-large);
-  --swui-textinput-vertical-padding: var(--swui-metrics-indent);
+  --swui-textinput-line-height: var(--swui-field-text-line-height);
+  --swui-textinput-indent: var(--swui-metrics-indent);
+  --swui-textinput-spacing: calc(var(--swui-field-text-spacing) - 1px);
   --swui-textinput-font-size: var(--swui-font-size-inputs);
   --swui-textinput-font-family: var(--swui-font-input);
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
@@ -48,8 +49,7 @@
     border: 1px solid
       var(--current-border-color, var(--swui-textinput-border-color));
     border-radius: var(--swui-textinput-border-radius);
-    transition: border var(--swui-textinput-animation-time),
-      box-shadow var(--swui-textinput-animation-time);
+    transition: all var(--swui-textinput-animation-time);
     --current-icon-color: var(--swui-textinput-icon-color);
 
     &.success {
@@ -95,13 +95,11 @@
     }
 
     .input {
-      box-sizing: border-box;
-      line-height: 100%;
+      letter-spacing: -0.34px;
+      line-height: var(--swui-textinput-line-height);
       width: 100%;
-      height: var(--swui-textinput-height);
+      padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
       color: var(--swui-textinput-text-color);
-      padding-left: var(--swui-textinput-vertical-padding);
-      padding-right: var(--swui-textinput-vertical-padding);
       font-size: var(--swui-textinput-font-size);
       font-family: var(--swui-textinput-font-family);
       font-weight: var(--swui-textinput-font-weight);
