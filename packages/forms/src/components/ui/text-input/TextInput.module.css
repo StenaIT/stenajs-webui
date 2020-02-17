@@ -12,15 +12,19 @@
   --swui-textinput-icon-size: var(--swui-field-icon-size);
 
   /* States */
-  --swui-text-input-icon-color-success: #60bd2f;
-  --swui-text-input-bg-loading: #fafafb;
-  --swui-text-input-border-color-loading: #ced0d7;
-  --swui-text-input-bg-modified: #e2edf7;
-  --swui-text-input-border-color-modified: #2378cd;
-  --swui-text-input-bg-warning: #fff8eb;
-  --swui-text-input-border-color-warning: #ffa400;
-  --swui-text-input-bg-error: #fff1f4;
-  --swui-text-input-border-color-error: #d05353;
+  --swui-text-input-icon-color-success: var(--swui-state-success-color);
+
+  --swui-text-input-bg-loading: var(--swui-state-loading-light-color);
+  --swui-text-input-border-color-loading: var(--swui-state-loading-color);
+
+  --swui-text-input-bg-modified: var(--swui-state-modified-light-color);
+  --swui-text-input-border-color-modified: var(--swui-state-modified-color);
+
+  --swui-text-input-bg-warning: var(--swui-state-alert-light-color);
+  --swui-text-input-border-color-warning: var(--swui-state-alert-color);
+
+  --swui-text-input-bg-error: var(--swui-state-error-light-color);
+  --swui-text-input-border-color-error: var(--swui-state-error-color);
 
   /* Background */
   --swui-textinput-bg-color: var(--swui-field-bg-enabled);
