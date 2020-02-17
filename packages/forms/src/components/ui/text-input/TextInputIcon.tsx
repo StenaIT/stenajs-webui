@@ -1,14 +1,14 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Clickable, Space } from "@stenajs-webui/core";
-import styles from "./TextInput.module.css";
+import cx from "classnames";
 import * as React from "react";
+import styles from "./TextInput.module.css";
 
 export interface TextInputIconProps {
+  iconClassName?: string;
   content?: React.ReactNode;
   icon?: IconDefinition;
-  iconSize?: string;
-  iconColor?: string;
   spaceOnRight?: boolean;
   spaceOnLeft?: boolean;
   disableContentPadding?: boolean;
@@ -19,6 +19,7 @@ export interface TextInputIconProps {
 
 export const TextInputIcon: React.FC<TextInputIconProps> = ({
   icon,
+  iconClassName,
   content,
   spaceOnLeft,
   spaceOnRight,
@@ -35,42 +36,44 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
     return (
       <>
         {spaceOnLeft &&
-          !(disableContentPadding || disableContentPaddingLeft) && <Space />}
+        !(disableContentPadding || disableContentPaddingLeft) ? (
+          <Space />
+        ) : null}
         {onClick ? (
           <Clickable onClick={onClick} disableFocusHighlight>
-            {content}
+            {content || null}
           </Clickable>
         ) : (
-          <>{content}</>
+          <>{content || null}</>
         )}
 
         {spaceOnRight &&
-          !(disableContentPadding || disableContentPaddingRight) && <Space />}
+        !(disableContentPadding || disableContentPaddingRight) ? (
+          <Space />
+        ) : null}
       </>
     );
   }
 
   const iconNode = icon && (
-    <FontAwesomeIcon icon={icon} className={styles.icon} />
+    <FontAwesomeIcon icon={icon} className={cx(styles.icon, iconClassName)} />
   );
-
-  //     <Icon icon={icon} color={iconColor} size={iconSize} />
 
   return (
     <>
-      {spaceOnLeft && <Space />}
+      {spaceOnLeft ? <Space /> : null}
       {iconNode && (
         <>
           {onClick ? (
             <Clickable onClick={onClick} disableFocusHighlight>
-              {iconNode}
+              {iconNode || null}
             </Clickable>
           ) : (
-            <>{iconNode}</>
+            <>{iconNode || null}</>
           )}
         </>
       )}
-      {spaceOnRight && <Space />}
+      {spaceOnRight ? <Space /> : null}
     </>
   );
 };

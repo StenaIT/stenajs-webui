@@ -1,7 +1,6 @@
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
 import {
   defaultStandardTextInputThemeDark,
   StandardTextInput,
@@ -17,8 +16,45 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       <StandardText>Standard</StandardText>
       <TextInput value={knobs.text("Text", "Some nice text.")} />
       <Space />
+      <StandardText>Variant=success</StandardText>
+      <TextInput value={"Some text"} variant={"success"} />
+      <Space />
+      <StandardText>Variant=error</StandardText>
+      <TextInput value={"Some text"} variant={"error"} />
+      <Space />
+      <StandardText>Variant=warning</StandardText>
+      <TextInput value={"Some text"} variant={"warning"} />
+      <Space />
+      <StandardText>Variant=loading</StandardText>
+      <TextInput value={"Some text"} variant={"loading"} />
+      <Space />
+      <StandardText>Variant=modified</StandardText>
+      <TextInput value={"Some text"} variant={"modified"} />
+      <Space />
       <StandardText>Icon left</StandardText>
       <TextInput value={"Some text"} iconLeft={faCoffee} />
+      <Space />
+      <StandardText>Icon left color</StandardText>
+      <TextInput
+        value={"Some text"}
+        iconLeft={faCoffee}
+        iconColorLeft={"red"}
+      />
+      <Space />
+      <StandardText>Icon right</StandardText>
+      <TextInput value={"Some text"} iconRight={faCoffee} />
+      <Space />
+      <StandardText>Content left</StandardText>
+      <TextInput
+        value={"Some text"}
+        contentLeft={<StandardText>ms</StandardText>}
+      />
+      <Space />
+      <StandardText>Content right</StandardText>
+      <TextInput
+        value={"Some text"}
+        contentRight={<StandardText>ms</StandardText>}
+      />
       <Space />
       <StandardText>Placeholder</StandardText>
       <TextInput placeholder={"E-mail"} />

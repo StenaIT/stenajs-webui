@@ -1,5 +1,8 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { InputProps } from "@stenajs-webui/core";
+import { InputSpinner } from "@stenajs-webui/elements";
 import classNames from "classnames/bind";
 import * as React from "react";
 import { ChangeEvent, useRef } from "react";
@@ -9,7 +12,15 @@ import { MoveDirection } from "./SimpleTextInput";
 import styles from "./TextInput.module.css";
 import { TextInputIcon } from "./TextInputIcon";
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
+
+type TextInputVariant =
+  | "standard"
+  | "loading"
+  | "warning"
+  | "error"
+  | "modified"
+  | "success";
 
 interface ExtraContent {
   /** React node to put to the left. Left icon is ignored if this is set. */
@@ -30,16 +41,14 @@ interface ExtraContent {
   onClickLeft?: () => void;
   /** On click right. */
   onClickRight?: () => void;
-  /** Color of the icon on the left side. */
-  iconColorLeft?: string;
-  /** Color of the icon on the right side. */
-  iconColorRight?: string;
 }
 
 export interface TextInputProps
   extends FullOnChangeProps<string, ChangeEvent<HTMLInputElement>>,
     InputProps,
     ExtraContent {
+  variant?: TextInputVariant;
+  background?: string;
   selectAllOnFocus?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
@@ -51,7 +60,9 @@ export interface TextInputProps
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
+  variant = "standard",
   inputRef,
+  background,
   className,
   disabled,
   contentLeft,
@@ -61,8 +72,6 @@ export const TextInput: React.FC<TextInputProps> = ({
   disableContentPaddingRight,
   iconLeft,
   iconRight,
-  iconColorLeft = "var(--swui-textinput-icon-color)",
-  iconColorRight = "var(--swui-textinput-icon-color)",
   onClickLeft,
   onClickRight,
   ...inputProps
@@ -70,20 +79,33 @@ export const TextInput: React.FC<TextInputProps> = ({
   const internalRef = useRef(null);
   const refToUse = inputRef || internalRef;
   const hookProps = useTextInput(refToUse, inputProps);
+
+  const currentIconRight =
+    variant === "success"
+      ? faCheck
+      : variant === "warning" || variant === "error"
+      ? faExclamationTriangle
+      : iconRight;
+
+  const currentContentRight =
+    variant === "loading" ? <InputSpinner /> : contentRight;
+
   return (
-    <div className={cx(styles.textInput, styles.inputContainer, { disabled })}>
+    <div
+      className={cx(styles.textInput, styles.inputContainer, styles[variant], {
+        disabled
+      })}
+      style={background ? { background } : undefined}
+    >
       <TextInputIcon
         content={contentLeft}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
         icon={iconLeft}
-        iconColor={iconColorLeft}
-        iconSize={"var(--swui-textinput-icon-size)"}
         spaceOnLeft
         onClick={onClickLeft}
       />
-
       <input
         className={cx(className, styles.textInput, styles.input)}
         type={"text"}
@@ -93,12 +115,11 @@ export const TextInput: React.FC<TextInputProps> = ({
         {...inputProps}
       />
       <TextInputIcon
-        content={contentRight}
+        content={currentContentRight}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
-        icon={iconRight}
-        iconColor={iconColorRight}
+        icon={currentIconRight}
         spaceOnRight
         onClick={onClickRight}
       />

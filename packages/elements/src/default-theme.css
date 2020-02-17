@@ -33,7 +33,7 @@
 
   /* Form fields */
   --swui-field-text-color: #424551;
-  --swui-field-text-color-disabled: #989CAB;
+  --swui-field-text-color-disabled: #989cab;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
   --swui-field-border-color: #bbc1e1;
@@ -44,6 +44,8 @@
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
   --swui-field-border-radius: 4px;
+  --swui-field-icon-color: var(--swui-text-primary-color);
+  --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
 

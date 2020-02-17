@@ -8,8 +8,19 @@
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
   --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
   --swui-textinput-animation-time: var(--swui-animation-time-medium);
-  --swui-textinput-icon-color: var(--swui-animation-time-medium);
-  --swui-textinput-icon-size: 13;
+  --swui-textinput-icon-color: var(--swui-field-border-color-disabled);
+  --swui-textinput-icon-size: var(--swui-field-icon-size);
+
+  /* States */
+  --swui-text-input-icon-color-success: #60bd2f;
+  --swui-text-input-bg-loading: #fafafb;
+  --swui-text-input-border-color-loading: #ced0d7;
+  --swui-text-input-bg-modified: #e2edf7;
+  --swui-text-input-border-color-modified: #2378cd;
+  --swui-text-input-bg-warning: #fff8eb;
+  --swui-text-input-border-color-warning: #ffa400;
+  --swui-text-input-bg-error: #fff1f4;
+  --swui-text-input-border-color-error: #d05353;
 
   /* Background */
   --swui-textinput-bg-color: var(--swui-field-bg-enabled);
@@ -35,6 +46,33 @@
     border-radius: var(--swui-textinput-border-radius);
     transition: border var(--swui-textinput-animation-time),
       box-shadow var(--swui-textinput-animation-time);
+    --current-icon-color: var(--swui-textinput-icon-color);
+
+    &.success {
+      --current-icon-color: var(--swui-text-input-icon-color-success);
+    }
+
+    &.loading {
+      --current-bg: var(--swui-text-input-bg-loading);
+      --current-border-color: var(--swui-text-input-border-color-loading);
+    }
+
+    &.modified {
+      --current-bg: var(--swui-text-input-bg-modified);
+      --current-border-color: var(--swui-text-input-border-color-modified);
+    }
+
+    &.error {
+      --current-bg: var(--swui-text-input-bg-error);
+      --current-border-color: var(--swui-text-input-border-color-error);
+      --current-icon-color: var(--swui-text-input-border-color-error);
+    }
+
+    &.warning {
+      --current-bg: var(--swui-text-input-bg-warning);
+      --current-border-color: var(--swui-text-input-border-color-warning);
+      --current-icon-color: var(--swui-text-input-border-color-warning);
+    }
 
     &.disabled {
       --current-bg: var(--swui-textinput-bg-color-disabled);
@@ -50,10 +88,6 @@
     &:focus-within {
       box-shadow: var(--swui-textinput-focus-shadow);
       --current-border-color: var(--swui-textinput-border-color-hover);
-    }
-
-    .icon {
-      color: red;
     }
 
     .input {
@@ -82,5 +116,10 @@
         outline: none;
       }
     }
+  }
+
+  .icon {
+    color: var(--current-icon-color);
+    font-size: var(--swui-textinput-icon-size);
   }
 }
