@@ -3,13 +3,8 @@ import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
-import { Store, withState } from "@dump247/storybook-state";
 import { Column, Row } from "@stenajs-webui/core";
 import { Switch } from "@stenajs-webui/forms";
-
-interface State {
-  expanded: number;
-}
 
 storiesOf("elements/Collapsible", module)
   .add("single", () => {
@@ -29,28 +24,32 @@ storiesOf("elements/Collapsible", module)
       </Column>
     );
   })
-  .add(
-    "multiple",
-    withState<State>({
-      expanded: 0
-    })(({ store }: { store: Store<State> }) => (
+  .add("multiple", () => {
+    const [expanded, setExpanded] = useState<number[]>([]);
+
+    const onClick = (index: number) => () =>
+      setExpanded(expanded => {
+        if (expanded.includes(index)) {
+          return expanded.filter(i => i !== index);
+        } else {
+          return [...expanded, index];
+        }
+      });
+
+    return (
       <Column width={300}>
         <Collapsible
-          label={"First label (expanded by default)"}
-          collapsed={store.state.expanded !== 0}
-          onClick={() =>
-            store.set({ expanded: store.state.expanded === 0 ? -1 : 0 })
-          }
+          label={"First label"}
+          collapsed={!expanded.includes(0)}
+          onClick={onClick(0)}
         >
           <div style={{ padding: 8 }}>I'm a child</div>
         </Collapsible>
         <Collapsible
           label={"Second label"}
           contentRight={<Badge label={7} />}
-          collapsed={store.state.expanded !== 1}
-          onClick={() =>
-            store.set({ expanded: store.state.expanded === 1 ? -1 : 1 })
-          }
+          collapsed={!expanded.includes(1)}
+          onClick={onClick(1)}
         >
           <div style={{ padding: 8 }}>
             <Row
@@ -66,11 +65,11 @@ storiesOf("elements/Collapsible", module)
         <Collapsible
           disabled={true}
           label={"Disabled third label"}
-          collapsed={store.state.expanded !== 2}
-          onClick={() => store.set({ expanded: 2 })}
+          collapsed={!expanded.includes(2)}
+          onClick={onClick(2)}
         >
           <div style={{ padding: 8 }}>I'm another child</div>
         </Collapsible>
       </Column>
-    ))
-  );
+    );
+  });
