@@ -14,7 +14,7 @@ import { TextInputIcon } from "./TextInputIcon";
 
 const cx = classNames.bind(styles);
 
-type TextInputVariant =
+export type TextInputVariant =
   | "standard"
   | "loading"
   | "warning"

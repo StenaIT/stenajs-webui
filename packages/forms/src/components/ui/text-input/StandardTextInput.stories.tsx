@@ -9,6 +9,7 @@ import {
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { TextInputVariant } from "./TextInput";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
   .add("TextInput", () => (
@@ -16,33 +17,27 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       <StandardText>Standard</StandardText>
       <TextInput value={knobs.text("Text", "Some nice text.")} />
       <Space />
-      <StandardText>Variant=success</StandardText>
-      <TextInput value={"Some text"} variant={"success"} />
-      <Space />
-      <StandardText>Variant=error</StandardText>
-      <TextInput value={"Some text"} variant={"error"} />
-      <Space />
-      <StandardText>Variant=warning</StandardText>
-      <TextInput value={"Some text"} variant={"warning"} />
-      <Space />
-      <StandardText>Variant=loading</StandardText>
-      <TextInput value={"Some text"} variant={"loading"} />
-      <Space />
-      <StandardText>Variant=modified</StandardText>
-      <TextInput value={"Some text"} variant={"modified"} />
-      <Space />
+      {(["success", "error", "warning", "loading", "modified"] as Array<
+        TextInputVariant
+      >).map(variant => (
+        <>
+          <StandardText>Variant={variant}</StandardText>
+          <TextInput value={"Some text"} variant={variant} />
+          <Space />
+        </>
+      ))}
       <StandardText>Icon left</StandardText>
       <TextInput value={"Some text"} iconLeft={faCoffee} />
       <Space />
-      <StandardText>Icon left color</StandardText>
+      <StandardText>Icon right</StandardText>
+      <TextInput value={"Some text"} iconRight={faCoffee} />
+      <Space />
+      <StandardText>Icon clickable</StandardText>
       <TextInput
         value={"Some text"}
         iconLeft={faCoffee}
-        iconColorLeft={"red"}
+        onClickLeft={() => alert("click")}
       />
-      <Space />
-      <StandardText>Icon right</StandardText>
-      <TextInput value={"Some text"} iconRight={faCoffee} />
       <Space />
       <StandardText>Content left</StandardText>
       <TextInput
