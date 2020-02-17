@@ -103,7 +103,7 @@
     },
     {
       "path": "./packages/core/dist/*.js",
-      "maxSize": "8 kB"
+      "maxSize": "9 kB"
     },
     {
       "path": "./packages/elements/dist/*.js",

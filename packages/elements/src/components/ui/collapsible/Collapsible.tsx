@@ -13,23 +13,17 @@ export interface CollapsibleProps {
   disabled?: boolean;
 }
 
-const chevronColor = (
-  ref: HTMLElement | null,
-  collapsed: boolean,
-  disabled: boolean
-) => {
-  if (!ref) {
-    return undefined;
-  }
+export const mapCSSTime = (value: string): number => {
+  const num = parseFloat(value);
+  const match = value.match(/m?s/);
 
-  if (!collapsed || disabled) {
-    return getComputedStyle(ref).getPropertyValue(
-      "--swui-collapsible-header-chevron-color"
-    );
-  } else {
-    return getComputedStyle(ref).getPropertyValue(
-      "--swui-collapsible-header-chevron-color-collapsed"
-    );
+  switch (match?.[0]) {
+    case "s":
+      return num * 1000;
+    case "ms":
+      return num;
+    default:
+      return 0;
   }
 };
 
@@ -43,6 +37,22 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
+  const chevronColor = ref.current
+    ? getComputedStyle(ref.current).getPropertyValue(
+        !collapsed || disabled
+          ? "--swui-collapsible-header-chevron-color"
+          : "--swui-collapsible-header-chevron-color-collapsed"
+      )
+    : undefined;
+
+  const timeout = ref.current
+    ? mapCSSTime(
+        getComputedStyle(ref.current).getPropertyValue(
+          "--swui-collapsible-animation-time"
+        )
+      )
+    : undefined;
+
   return (
     <div className={styles.collapsible} aria-expanded={!collapsed} ref={ref}>
       <button className={styles.header} onClick={onClick} disabled={disabled}>
@@ -53,17 +63,17 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           className={styles.chevron}
           size={8}
           rotation={collapsed ? undefined : 180}
-          color={chevronColor(ref.current, collapsed, disabled)}
+          color={chevronColor}
         />
       </button>
       <CSSTransition
         in={!collapsed}
-        timeout={250}
+        timeout={{
+          enter: timeout
+        }}
         classNames={{
           enter: styles.contentEnter,
-          enterActive: styles.contentEnterActive,
-          exit: styles.contentExit,
-          exitActive: styles.contentExitActive
+          enterActive: styles.contentEnterActive
         }}
         unmountOnExit={true}
       >

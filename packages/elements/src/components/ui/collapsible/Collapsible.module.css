@@ -1,13 +1,13 @@
 .collapsible {
   --swui-collapsible-animation-time: var(--swui-animation-time-fast);
-  --swui-collapsible-header-background-color: #fff;
-  --swui-collapsible-header-background-color-hover: #f3f8fc;
+  --swui-collapsible-header-bg-color: #fff;
+  --swui-collapsible-header-bg-color-hover: #f3f8fc;
   --swui-collapsible-header-border-color: #f1f2f4;
   --swui-collapsible-header-border-color-focus: #3872c5;
   --swui-collapsible-header-chevron-color: #919296;
   --swui-collapsible-header-chevron-color-collapsed: #3872c5;
   --swui-collapsible-header-padding: 8px;
-  --swui-collapsible-content-background-color: #fbfbfc;
+  --swui-collapsible-content-bg-color: #fbfbfc;
   --swui-collapsible-content-border-color: #f1f2f4;
   --swui-collapsible-border-radius: 4px;
   --swui-collapsible-header-content-right-margin: 8px;
@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--swui-collapsible-header-background-color);
+    background-color: var(--swui-collapsible-header-bg-color);
     border: none;
     width: 100%;
     border-bottom: 1px solid var(--swui-collapsible-header-border-color);
@@ -41,13 +41,13 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--swui-collapsible-header-background-color-hover);
+      background-color: var(--swui-collapsible-header-bg-color-hover);
     }
 
     &:focus {
       outline: none;
       border-right: 2px solid var(--swui-collapsible-header-border-color-focus);
-      background-color: var(--swui-collapsible-header-background-color-hover);
+      background-color: var(--swui-collapsible-header-bg-color-hover);
       padding-right: calc(var(--swui-collapsible-header-padding) - 2px);
     }
 
@@ -57,7 +57,7 @@
   }
 
   .content {
-    background: var(--swui-collapsible-content-background-color);
+    background: var(--swui-collapsible-content-bg-color);
     border-bottom: 1px solid var(--swui-collapsible-content-border-color);
 
     &Enter {
@@ -66,15 +66,6 @@
 
     &EnterActive {
       opacity: 1;
-      transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
-    }
-
-    &Exit {
-      opacity: 1;
-    }
-
-    &ExitActive {
-      opacity: 0;
       transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
     }
   }

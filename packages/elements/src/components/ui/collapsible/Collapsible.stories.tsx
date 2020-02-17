@@ -2,7 +2,7 @@ import { Badge, Collapsible } from "@stenajs-webui/elements";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Store, withState } from "@dump247/storybook-state";
 import { Column, Row } from "@stenajs-webui/core";
 import { Switch } from "@stenajs-webui/forms";
@@ -12,29 +12,25 @@ interface State {
 }
 
 storiesOf("elements/Collapsible", module)
-  .add("standard", () => {
+  .add("single", () => {
     const [collapsed, setCollapsed] = useState(false);
-
-    useEffect(() => {
-      const t = setInterval(() => {
-        setCollapsed(c => !c);
-      }, 2000);
-      return () => clearInterval(t);
-    }, []);
 
     return (
       <Column width={300}>
         <Collapsible
           label={knobs.text("Label", "Label goes here")}
+          onClick={() => setCollapsed(!collapsed)}
           collapsed={collapsed}
         >
-          <div style={{ padding: 8 }}>I'm a child</div>
+          <Row indent={1} spacing={1}>
+            I'm a child
+          </Row>
         </Collapsible>
       </Column>
     );
   })
   .add(
-    "accordion",
+    "multiple",
     withState<State>({
       expanded: 0
     })(({ store }: { store: Store<State> }) => (
@@ -42,7 +38,9 @@ storiesOf("elements/Collapsible", module)
         <Collapsible
           label={"First label (expanded by default)"}
           collapsed={store.state.expanded !== 0}
-          onClick={() => store.set({ expanded: 0 })}
+          onClick={() =>
+            store.set({ expanded: store.state.expanded === 0 ? -1 : 0 })
+          }
         >
           <div style={{ padding: 8 }}>I'm a child</div>
         </Collapsible>
@@ -50,7 +48,9 @@ storiesOf("elements/Collapsible", module)
           label={"Second label"}
           contentRight={<Badge label={7} />}
           collapsed={store.state.expanded !== 1}
-          onClick={() => store.set({ expanded: 1 })}
+          onClick={() =>
+            store.set({ expanded: store.state.expanded === 1 ? -1 : 1 })
+          }
         >
           <div style={{ padding: 8 }}>
             <Row
