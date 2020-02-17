@@ -108,7 +108,7 @@
       background: var(--swui-hidden);
       border: none;
 
-      &.disabled {
+      &:disabled {
         color: var(--swui-textinput-text-color-disabled);
       }
 
