@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
 
 import styles from "./Modal.module.css";
+import { Clickable } from "@stenajs-webui/core";
 
 interface Props {
   onRequestClose?: () => void;
@@ -21,9 +22,9 @@ export const ModalHeader: React.FC<Props> = ({
     <div className={styles.Header + " " + DRAGGABLE_HANDLE_CLASSNAME}>
       {headerText}
       {header}
-      <button className={styles.HeaderCloseButton} onClick={onRequestClose}>
+      <Clickable className={styles.HeaderCloseButton} onClick={onRequestClose}>
         <Icon icon={faTimes} size={16} />
-      </button>
+      </Clickable>
     </div>
   );
 };

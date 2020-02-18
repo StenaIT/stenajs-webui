@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactModal from "react-modal";
 import Draggable from "react-draggable";
-import cs from "classnames";
+import cx from "classnames";
 
 import styles from "./Modal.module.css";
 
@@ -32,7 +32,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
       >
         <div
           style={{ "--swui-modal-width": width } as any}
-          className={cs(styles.Content, {
+          className={cx(styles.Content, {
             [styles.isDraggable]: draggable
           })}
         >

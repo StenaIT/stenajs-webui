@@ -95,9 +95,7 @@
   }
 
   .HeaderCloseButton {
-    background: transparent;
     padding: 4px;
-    border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 24px;
