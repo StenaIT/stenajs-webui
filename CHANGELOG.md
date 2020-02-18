@@ -7,7 +7,9 @@
 * We are moving from React context based theme to CSS variables.
 * We are also starting to implement components using HTML elements and CSS modules, instead of `core` components.
 
-### Update components
+### Updated components
+
+These components have new implementations, built with HTML and CSS modules.
 
 * TextInput
 * Badge
