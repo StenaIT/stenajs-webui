@@ -1,8 +1,8 @@
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { FlatButton } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faCoffee } from "@fortawesome/pro-light-svg-icons/faCoffee";
 
 storiesOf("elements/Buttons/FlatButton", module)
   .add("default", () => (

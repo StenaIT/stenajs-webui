@@ -1,4 +1,3 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import {
   Box,
   Clickable,
@@ -10,6 +9,7 @@ import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
 import { DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
+import { faTimes } from "@fortawesome/pro-light-svg-icons/faTimes";
 
 interface Props {
   onRequestClose?: () => void;

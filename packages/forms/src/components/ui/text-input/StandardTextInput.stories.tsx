@@ -1,5 +1,3 @@
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
 import {
   defaultStandardTextInputThemeDark,
@@ -8,6 +6,8 @@ import {
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faCoffee } from "@fortawesome/pro-light-svg-icons/faCoffee";
+import { faPaw } from "@fortawesome/pro-light-svg-icons/faPaw";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
   .add("standard", () => (

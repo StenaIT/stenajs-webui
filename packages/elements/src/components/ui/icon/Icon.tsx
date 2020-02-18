@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   FontAwesomeIcon,
-  Props as FontAwesomeProps
+  FontAwesomeIconProps
 } from "@fortawesome/react-fontawesome";
 import {
   Box,
@@ -14,7 +14,7 @@ import * as React from "react";
 import { useRef } from "react";
 
 export interface IconProps
-  extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
+  extends Omit<FontAwesomeIconProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
   hoverIcon?: IconDefinition;
   color?: ThemeColorField | string;

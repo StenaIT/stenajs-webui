@@ -1,4 +1,3 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
   Box,
   useMultiOnClickOutside,
@@ -20,6 +19,7 @@ import {
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
 import { useDateInput } from "./UseDateInput";
+import { faCalendarAlt } from "@fortawesome/pro-light-svg-icons/faCalendarAlt";
 
 export interface DateInputProps<T = {}> {
   /** The current value */

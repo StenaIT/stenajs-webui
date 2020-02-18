@@ -1,5 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import {
   defaultStandardButtonTheme,
   StandardButton
@@ -7,6 +5,8 @@ import {
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faCoffee } from "@fortawesome/pro-light-svg-icons/faCoffee";
+import { faCheck } from "@fortawesome/pro-light-svg-icons/faCheck";
 
 const customTheme = {
   ...defaultStandardButtonTheme,

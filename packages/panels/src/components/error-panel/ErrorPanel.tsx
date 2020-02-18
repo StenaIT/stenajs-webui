@@ -1,8 +1,8 @@
-import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
 import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { defaultErrorPanelTheme, ErrorPanelTheme } from "./ErrorPanelTheme";
+import { faExclamation } from "@fortawesome/pro-light-svg-icons/faExclamation";
 
 export interface ErrorPanelProps {
   text?: string;

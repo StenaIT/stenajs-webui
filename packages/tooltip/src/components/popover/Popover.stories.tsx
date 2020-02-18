@@ -1,12 +1,13 @@
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Box } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
+// @ts-ignore
 import markdown from "./Popover.md";
+import { faTrash } from "@fortawesome/pro-light-svg-icons/faTrash";
+import { faInfo } from "@fortawesome/pro-light-svg-icons/faInfo";
 
 const ActionPromptWithLogic: React.FC = () => {
   const [deleting, setDeleting] = useState(false);

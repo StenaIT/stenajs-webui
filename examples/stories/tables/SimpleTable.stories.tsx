@@ -1,4 +1,3 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import {
   Box,
   Clickable,
@@ -11,6 +10,7 @@ import {
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { StandardButton } from "../../../packages/elements/src/components/ui/buttons/StandardButton";
+import { faPlus } from "@fortawesome/pro-light-svg-icons/faPlus";
 
 storiesOf("examples/Tables", module).add("Simple table", () => {
   const list = ["Donald Duck", "Daisy", "Howard the duck", "A duck"];

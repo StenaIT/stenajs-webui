@@ -89,7 +89,7 @@ If you are also using `@stenajs-webui/elements`, you must also add the following
 
 ```
 $ yarn add @fortawesome/fontawesome-svg-core \
-           @fortawesome/free-solid-svg-icons \
+           @fortawesome/pro-light-svg-icons \
            @fortawesome/react-fontawesome
 ```
 

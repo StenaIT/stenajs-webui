@@ -1,6 +1,4 @@
 import { Store, withState } from "@dump247/storybook-state";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   CalendarTheme,
   extranetCalendarTheme,
@@ -15,6 +13,8 @@ import { Box, Row, Space } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
+import { faCoffee } from "@fortawesome/pro-light-svg-icons/faCoffee";
+import { Icon } from "@stenajs-webui/elements";
 
 interface State {
   value?: Date;
@@ -149,11 +149,7 @@ storiesOf("calendar/Calendar/SingleDateCalendar", module)
             background={
               week.startYear === now.getFullYear() &&
               week.weekNumber === getISOWeek(now) ? (
-                <FontAwesomeIcon
-                  icon={faCoffee}
-                  color={"blue"}
-                  style={{ fontSize: 30 }}
-                />
+                <Icon icon={faCoffee} color={"blue"} style={{ fontSize: 30 }} />
               ) : (
                 undefined
               )
@@ -181,7 +177,7 @@ storiesOf("calendar/Calendar/SingleDateCalendar", module)
         value={store.state.value}
         extraDayContent={() => (
           <Box position={"absolute"} top={"-10px"} right={"-10px"}>
-            <FontAwesomeIcon icon={faCoffee} />
+            <Icon icon={faCoffee} />
           </Box>
         )}
       />

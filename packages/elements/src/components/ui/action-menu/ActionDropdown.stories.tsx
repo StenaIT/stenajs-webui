@@ -1,6 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { TinyText } from "@stenajs-webui/core";
 import {
   ActionDropdown,
@@ -10,6 +7,9 @@ import {
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faFire } from "@fortawesome/pro-light-svg-icons/faFire";
+import { faCheck } from "@fortawesome/pro-light-svg-icons/faCheck";
+import { faSave } from "@fortawesome/pro-light-svg-icons/faSave";
 
 storiesOf("elements/ActionMenu/ActionDropdown", module)
   .add("standard", () => (

@@ -1,9 +1,9 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { Indent, Row, Space } from "@stenajs-webui/core";
 import { StandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { CalendarTheme } from "../../components/calendar/CalendarTheme";
+import { faChevronUp } from "@fortawesome/pro-light-svg-icons/faChevronUp";
+import { faChevronDown } from "@fortawesome/pro-light-svg-icons/faChevronDown";
 
 export interface WithMonthSwitcherBelowProps {
   theme: CalendarTheme;

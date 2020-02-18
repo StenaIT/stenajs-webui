@@ -1,9 +1,7 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCircle } from "@fortawesome/free-regular-svg-icons/faCircle";
-import { faCircle as faCircleSolid } from "@fortawesome/free-solid-svg-icons/faCircle";
-import { faDotCircle } from "@fortawesome/free-solid-svg-icons/faDotCircle";
-import { faDotCircle as faDotCircleRegular } from "@fortawesome/free-regular-svg-icons/faDotCircle";
 import { ThemeColorField } from "@stenajs-webui/core";
+import { faCircle } from "@fortawesome/pro-light-svg-icons/faCircle";
+import { faDotCircle } from "@fortawesome/pro-light-svg-icons/faDotCircle";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface RadioButtonTheme {
   iconColorDisabled: ThemeColorField | string;
@@ -26,8 +24,8 @@ export const defaultRadioButtonTheme: RadioButtonTheme = {
   iconChecked: faDotCircle,
   iconCheckedDisabled: faDotCircle,
   iconNotChecked: faCircle,
-  iconNotCheckedHover: faDotCircleRegular,
-  iconNotCheckedDisabled: faCircleSolid,
+  iconNotCheckedHover: faDotCircle,
+  iconNotCheckedDisabled: faCircle,
   iconSize: 20
 };
 
@@ -39,7 +37,7 @@ export const defaultRadioButtonThemeDark: RadioButtonTheme = {
   iconChecked: faDotCircle,
   iconCheckedDisabled: faDotCircle,
   iconNotChecked: faCircle,
-  iconNotCheckedHover: faDotCircleRegular,
-  iconNotCheckedDisabled: faCircleSolid,
+  iconNotCheckedHover: faDotCircle,
+  iconNotCheckedDisabled: faCircle,
   iconSize: 20
 };

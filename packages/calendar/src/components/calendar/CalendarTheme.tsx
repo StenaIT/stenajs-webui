@@ -1,6 +1,4 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
 import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
@@ -15,6 +13,8 @@ import {
   dayHasHighlight,
   dayHighlightSelect
 } from "../../util/calendar/StateHelper";
+import { faChevronLeft } from "@fortawesome/pro-light-svg-icons/faChevronLeft";
+import { faChevronRight } from "@fortawesome/pro-light-svg-icons/faChevronRight";
 
 export interface CalendarTheme<TUserData = {}> {
   width: string;

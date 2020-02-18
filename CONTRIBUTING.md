@@ -1,5 +1,15 @@
 # How to contribute
 
+## Prerequisites
+
+Because the library uses Font Awesome Pro, you must set the environment variable `FONTAWESOME_NPM_AUTH_TOKEN` like so:
+
+```
+export FONTAWESOME_NPM_AUTH_TOKEN="217479AA-65C7-43AC-B5F8-FC61BD598803"
+```
+
+For convenience it can be added to your `.bash_profile` / `.zsh_profile`.
+
 ## Building the library
 
 ```
@@ -13,10 +23,13 @@ $ yarn build-all
 First, build the library.
 
 Terminal 1
+
 ```
 $ yarn start-storybook
 ```
+
 Terminal 2
+
 ```
 $ yarn watch
 ```
@@ -25,12 +38,12 @@ $ yarn watch
 
 - `emotion` and `styled-system` is used for all styling.
 - Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
-- Font Awesome is used for all icons.
+- Font Awesome Pro is used for all icons.
 
 ### Resources
 
-* https://emotion.sh/docs/introduction
-* https://styled-system.com/
+- https://emotion.sh/docs/introduction
+- https://styled-system.com/
 
 ## Dependencies
 
@@ -133,10 +146,12 @@ export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
 Boolean props with default value that toggle something, should always default to false.
 
 For example:
+
 ```
 <SomeComp />
 <SomeComp showProfile />
 ```
+
 In this example `showProfile` defaults to `true` when omitted.
 It should be changed to this instead:
 

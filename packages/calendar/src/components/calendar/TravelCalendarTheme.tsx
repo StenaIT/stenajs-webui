@@ -1,15 +1,15 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { defaultButtonTheme } from "@stenajs-webui/elements";
 import {
+  CalendarTheme,
+  CalendarWrapperStyleProvider,
   defaultTextPropsProvider,
   defaultWrapperStyleProvider,
-  CalendarTheme,
-  resolveThemeColor,
-  CalendarWrapperStyleProvider
+  resolveThemeColor
 } from "./CalendarTheme";
 
 import { dayHighlightSelect } from "../../util/calendar/StateHelper";
+import { faArrowLeft } from "@fortawesome/pro-light-svg-icons/faArrowLeft";
+import { faArrowRight } from "@fortawesome/pro-light-svg-icons/faArrowRight";
 
 interface DefaultInnerWrapperColors {
   rangeBackground: string;

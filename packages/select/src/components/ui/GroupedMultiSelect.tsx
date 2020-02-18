@@ -1,4 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -19,6 +18,7 @@ import {
   InternalDropdownOption
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
+import { faCheck } from "@fortawesome/pro-light-svg-icons/faCheck";
 
 export type OnChangeValue<TData> =
   | OptionsType<DropdownOption<TData>>

@@ -1,4 +1,3 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import {
   Box,
   Clickable,
@@ -12,6 +11,7 @@ import {
 import * as React from "react";
 import { Icon } from "../icon/Icon";
 import { ChipTheme, defaultChipTheme } from "./ChipTheme";
+import { faTimes } from "@fortawesome/pro-light-svg-icons/faTimes";
 
 export interface ChipProps {
   label: string;
