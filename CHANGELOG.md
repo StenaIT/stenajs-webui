@@ -7,10 +7,29 @@
 * We are moving from React context based theme to CSS variables.
 * We are also starting to implement components using HTML elements and CSS modules, instead of `core` components.
 
+### Update components
+
+* TextInput
+* Badge
+* Checkbox
+* RadioButton
+
 ### Breaking changes
+
+#### RadioButton
+
+* `RadioButton` no longer extends value/onChange interface. Instead, it is a normal HTML input field with type `radio`.
+
+#### Badge
 
 * Badge props changed. `color` and `textColor` have been removed, and `type` has been added.
 * Badge now uses CSS vars.
+
+#### TextInput
+
+* `focusOnMount` prop removed. Use `autoFocus` instead.
+* `selectAllOnMount` no longer autofocuses field. Add `autoFocus` as well.
+* Icon colors and background can no longer be set. Use `variant` prop instead.
 
 ## 0.0.51
 

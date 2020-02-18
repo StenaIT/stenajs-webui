@@ -26,7 +26,7 @@
   --swui-state-loading-light-color: #fafafb;
 
   /* Fonts */
-  --swui-font-primary: Open Sans;
+  --swui-font-primary: "Open Sans", system-ui;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-font-size-inputs: 14px;

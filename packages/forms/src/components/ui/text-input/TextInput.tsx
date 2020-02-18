@@ -59,26 +59,31 @@ export interface TextInputProps
   onMove?: (direction: MoveDirection) => void;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({
-  variant = "standard",
-  inputRef,
-  background,
-  className,
-  disabled,
-  contentLeft,
-  contentRight,
-  disableContentPadding,
-  disableContentPaddingLeft,
-  disableContentPaddingRight,
-  iconLeft,
-  iconRight,
-  onClickLeft,
-  onClickRight,
-  ...inputProps
-}) => {
+export const TextInput: React.FC<TextInputProps> = props => {
+  const {
+    variant = "standard",
+    inputRef,
+    background,
+    className,
+    disabled,
+    contentLeft,
+    contentRight,
+    disableContentPadding,
+    disableContentPaddingLeft,
+    disableContentPaddingRight,
+    iconLeft,
+    iconRight,
+    onClickLeft,
+    onClickRight,
+    selectAllOnFocus,
+    moveCursorToEndOnMount,
+    selectAllOnMount,
+    autoFocus,
+    ...inputProps
+  } = props;
   const internalRef = useRef(null);
   const refToUse = inputRef || internalRef;
-  const hookProps = useTextInput(refToUse, inputProps);
+  const hookProps = useTextInput(refToUse, props);
 
   const currentIconRight =
     variant === "success"

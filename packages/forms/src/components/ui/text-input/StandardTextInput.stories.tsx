@@ -20,11 +20,11 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       {(["success", "error", "warning", "loading", "modified"] as Array<
         TextInputVariant
       >).map(variant => (
-        <>
+        <React.Fragment key={variant}>
           <StandardText>Variant={variant}</StandardText>
           <TextInput value={"Some text"} variant={variant} />
           <Space />
-        </>
+        </React.Fragment>
       ))}
       <StandardText>Icon left</StandardText>
       <TextInput value={"Some text"} iconLeft={faCoffee} />
@@ -42,13 +42,21 @@ storiesOf("forms/TextInput/StandardTextInput", module)
       <StandardText>Content left</StandardText>
       <TextInput
         value={"Some text"}
-        contentLeft={<StandardText>ms</StandardText>}
+        contentLeft={
+          <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
+            ms
+          </StandardText>
+        }
       />
       <Space />
       <StandardText>Content right</StandardText>
       <TextInput
         value={"Some text"}
-        contentRight={<StandardText>ms</StandardText>}
+        contentRight={
+          <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
+            ms
+          </StandardText>
+        }
       />
       <Space />
       <StandardText>Placeholder</StandardText>
