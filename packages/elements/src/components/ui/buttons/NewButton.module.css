@@ -1,5 +1,5 @@
 .button {
-  --swui-button-size: 16px;
+  --swui-button-line-height: 16px;
   --swui-button-text-size: 14px;
   --swui-button-text-color: #fff;
   --swui-button-background-color: #2378cd;
@@ -11,18 +11,27 @@
   --swui-button-border-radius: var(--swui-border-radius);
 
   --swui-button-background-color-focus: #18518a;
-  --swui-button-border-color-focus: var(--swui-button-border-color);
+  --swui-button-border-color-focus: var(
+    --current-background-color,
+    var(--swui-button-background-color)
+  );
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-box-shadow-focus: 0 0 4px 0 #6ca9e6;
 
   --swui-button-background-color-hover: #1d64ab;
-  --swui-button-border-color-hover: var(--swui-button-border-color);
+  --swui-button-border-color-hover: var(
+    --current-background-color,
+    var(--swui-button-background-color)
+  );
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
     0 0 1px 0 rgba(29, 100, 171, 0.16);
 
   --swui-button-background-color-active: #143e62;
-  --swui-button-border-color-active: var(--swui-button-border-color);
+  --swui-button-border-color-active: var(
+    --current-background-color,
+    var(--swui-button-background-color)
+  );
   --swui-button-text-color-active: var(--swui-button-text-color);
   --swui-button-box-shadow-active: none;
 
@@ -32,6 +41,7 @@
   --swui-button-box-shadow-disabled: none;
 
   margin: 8px;
+  letter-spacing: -0.32px;
   padding: var(--swui-button-padding-vertical)
     var(--swui-button-padding-horizontal);
   border: 1px solid var(--current-border-color, var(--swui-button-border-color));
@@ -43,15 +53,13 @@
   box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
   color: var(--current-text-color, var(--swui-button-text-color));
   font-size: var(--current-text-size, var(--swui-button-text-size));
-  line-height: var(--current-size, var(--swui-button-size));
+  line-height: var(--current-line-height, var(--swui-button-line-height));
   font-weight: 400;
   font-family: var(--swui-font-buttons);
   cursor: pointer;
   user-select: none;
   display: flex;
   align-items: center;
-
-  transition: all var(--swui-animation-time-medium);
 
   &:hover {
     --current-background-color: var(--swui-button-background-color-hover);
@@ -84,14 +92,14 @@
   }
 
   &.iconButton {
-    padding: 8px;
+    padding: var(--swui-button-padding-vertical);
     color: var(--current-text-color, var(--swui-button-text-color));
-  }
 
-  .iconLeft,
-  .iconRight {
-    height: var(--current-size, var(--swui-button-size));
-    width: var(--current-size, var(--swui-button-size));
+    .iconLeft,
+    .iconRight {
+      height: var(--current-line-height, var(--swui-button-line-height));
+      width: var(--current-line-height, var(--swui-button-line-height));
+    }
   }
 
   .iconLeft:not(:last-child) {
@@ -103,14 +111,14 @@
   }
 
   &.small {
-    --current-size: 16px;
+    --current-line-height: 16px;
     --swui-button-padding-vertical: 4px;
     --swui-button-padding-horizontal: 8px;
     --current-text-size: 12px;
   }
 
   &.large {
-    --current-size: 24px;
+    --current-line-height: 24px;
     --swui-button-padding-vertical: 8px;
     --swui-button-padding-horizontal: 24px;
     --current-text-size: 16px;

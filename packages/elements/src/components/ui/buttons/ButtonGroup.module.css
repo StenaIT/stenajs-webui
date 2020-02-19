@@ -4,9 +4,15 @@
 
   & > button {
     margin: 0;
+    position: relative;
 
     &:not(:only-child):not(:last-child) {
-      border-right: 0;
+      margin-right: -1px;
+    }
+
+    &:hover,
+    &:focus {
+      z-index: 1;
     }
 
     &:not(:first-child) {

@@ -21,40 +21,20 @@ storiesOf("elements/Buttons/NewButton", module)
         <Column alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <Row key={size}>
-              <ButtonVariant
-                size={size}
-                label={"Submit"}
-                onClick={action("Button clicked")}
-              />
-              <ButtonVariant
-                size={size}
-                label={"Submit"}
-                disabled
-                onClick={action("Button clicked")}
-              />
-              <ButtonVariant
-                size={size}
-                leftIcon={faCoffee}
-                onClick={action("Button clicked")}
-              />
-              <ButtonVariant
-                size={size}
-                label={"Submit"}
-                leftIcon={faCoffee}
-                onClick={action("Button clicked")}
-              />
+              <ButtonVariant size={size} label={"Submit"} />
+              <ButtonVariant size={size} label={"Submit"} disabled />
+              <ButtonVariant size={size} leftIcon={faCoffee} />
+              <ButtonVariant size={size} label={"Submit"} leftIcon={faCoffee} />
               <ButtonVariant
                 size={size}
                 label={"Submit"}
                 rightIcon={faCoffee}
-                onClick={action("Button clicked")}
               />
               <ButtonVariant
                 size={size}
                 label={"Submit"}
                 leftIcon={faCheck}
                 rightIcon={faCoffee}
-                onClick={action("Button clicked")}
               />
             </Row>
           ))}
@@ -72,7 +52,6 @@ storiesOf("elements/Buttons/NewButton", module)
               size={size}
               label={"Submit"}
               loading={boolean("Loading", true)}
-              onClick={action("Button clicked")}
             />
           ))}
         </Row>
@@ -90,7 +69,6 @@ storiesOf("elements/Buttons/NewButton", module)
               label={"Submit"}
               loading={boolean("Loading", true)}
               loadingLabel={"Loading..."}
-              onClick={action("Button clicked")}
             />
           ))}
         </Row>
@@ -107,7 +85,6 @@ storiesOf("elements/Buttons/NewButton", module)
               size={size}
               label={"Submit"}
               success={boolean("Success", true)}
-              onClick={action("Button clicked")}
             />
           ))}
         </Row>

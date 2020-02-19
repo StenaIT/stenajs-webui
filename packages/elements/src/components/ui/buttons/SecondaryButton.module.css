@@ -11,6 +11,7 @@
     0 1px 1px -1px rgba(29, 100, 171, 0.16);
 
   --swui-button-background-color-focus: #fff;
+  --swui-button-border-color-focus: #2378cd;
   --swui-button-box-shadow-focus: 0 0 4px 0 #6ca9e6;
 
   --swui-button-background-color-active: #e1eefa;

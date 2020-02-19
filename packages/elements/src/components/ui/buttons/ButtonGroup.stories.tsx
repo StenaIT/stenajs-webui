@@ -20,6 +20,14 @@ storiesOf("elements/Buttons/ButtonGroup", module).add("default", () => (
     </Row>
     <Row>
       <ButtonGroup>
+        <SecondaryButton leftIcon={faRecycle} />
+        <SecondaryButton leftIcon={faAddressBook} />
+        <SecondaryButton leftIcon={faAnchor} />
+      </ButtonGroup>
+    </Row>
+    <Row>
+      <ButtonGroup>
+        <SecondaryButton leftIcon={faEraser} />
         <SecondaryButton leftIcon={faEraser} />
       </ButtonGroup>
     </Row>

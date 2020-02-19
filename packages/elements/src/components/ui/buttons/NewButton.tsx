@@ -57,7 +57,7 @@ export const NewButton: React.FC<NewButtonProps> = ({
   right,
   onClick,
   innerRef,
-  ...props
+  ...buttonProps
 }) => {
   const buttonLabel = getButtonLabel(
     label,
@@ -77,7 +77,7 @@ export const NewButton: React.FC<NewButtonProps> = ({
         className
       )}
       disabled={disabled}
-      {...props}
+      {...buttonProps}
     >
       {success ? (
         <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
