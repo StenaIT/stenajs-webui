@@ -160,8 +160,5 @@
     "react": "16.11.0",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4"
-  },
-  "dependencies": {
-    "babel-preset-react-app": "^9.1.1"
   }
 }
