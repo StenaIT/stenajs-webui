@@ -2,6 +2,7 @@ import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
 import {
   FontWeightProperty,
+  Globals,
   TextDecorationProperty,
   UserSelectProperty,
   WhiteSpaceProperty
@@ -51,7 +52,7 @@ export interface TextBasePropsBase {
   hoverColor?: string;
   whiteSpace?: WhiteSpaceProperty;
   /** Adds underline to text. */
-  textDecoration?: TextDecorationProperty;
+  textDecoration?: TextDecorationProperty<Globals>;
   /** Adds underline when mouse hovers over text. */
   hoverUnderline?: boolean;
   /** Makes text italic. */

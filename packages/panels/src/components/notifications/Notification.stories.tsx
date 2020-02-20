@@ -1,10 +1,9 @@
-import { Column } from "@stenajs-webui/core";
+import { Column, SeparatorLine } from "@stenajs-webui/core";
 import { Notification } from "@stenajs-webui/panels";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
-import { SeparatorLine } from "@stenajs-webui/core";
 import { subHours } from "date-fns";
+import { faUser } from "@fortawesome/pro-light-svg-icons/faUser";
 
 storiesOf("panels/Notification", module).add("standard", () => (
   <Column

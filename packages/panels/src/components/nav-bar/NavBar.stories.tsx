@@ -1,11 +1,11 @@
-import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { Box, Row, StandardText } from "@stenajs-webui/core";
 import { Icon, WithBadge } from "@stenajs-webui/elements";
 import { NavBar, NavBarButton, NavBarMenuButton } from "@stenajs-webui/panels";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faFire } from "@fortawesome/pro-light-svg-icons/faFire";
+import { faCoffee } from "@fortawesome/pro-light-svg-icons/faCoffee";
+import { faAddressCard } from "@fortawesome/pro-light-svg-icons/faAddressCard";
 
 storiesOf("panels/NavBar", module)
   .add("standard", () => (

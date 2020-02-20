@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Box,
@@ -15,6 +14,7 @@ import { ReactNode } from "react";
 import { InputSpinner } from "../spinner/InputSpinner";
 import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
 import { useButtonStateTheme } from "./hooks/UseBottonStateTheme";
+import { faCheck } from "@fortawesome/pro-light-svg-icons/faCheck";
 
 export interface ButtonProps extends GenericButtonProps {
   /** The theme to use.

@@ -1,13 +1,11 @@
-import {
-  faBicycle,
-  faCog,
-  faShip,
-  faSpinner
-} from "@fortawesome/free-solid-svg-icons";
 import { Indent, Row, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { faCog } from "@fortawesome/pro-light-svg-icons/faCog";
+import { faSpinner } from "@fortawesome/pro-light-svg-icons/faSpinner";
+import { faBicycle } from "@fortawesome/pro-light-svg-icons/faBicycle";
+import { faShip } from "@fortawesome/pro-light-svg-icons/faShip";
 
 storiesOf("elements/Icon", module)
   .add("default", () => <Icon icon={faCog} />)

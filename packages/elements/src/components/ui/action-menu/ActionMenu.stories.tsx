@@ -1,6 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { TinyText } from "@stenajs-webui/core";
 import {
   ActionMenu,
@@ -12,6 +9,9 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 // @ts-ignore
 import markdown from "./ActionMenu.md";
+import { faSave } from "@fortawesome/pro-light-svg-icons/faSave";
+import { faFire } from "@fortawesome/pro-light-svg-icons/faFire";
+import { faCheck } from "@fortawesome/pro-light-svg-icons/faCheck";
 
 storiesOf("elements/ActionMenu/ActionMenu", module).add(
   "standard",

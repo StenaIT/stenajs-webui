@@ -1,4 +1,3 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
   Box,
   Omit,
@@ -24,6 +23,7 @@ import {
   DateTextInputTheme,
   defaultDateTextInputTheme
 } from "./DateTextInputTheme";
+import { faCalendarAlt } from "@fortawesome/pro-light-svg-icons/faCalendarAlt";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,

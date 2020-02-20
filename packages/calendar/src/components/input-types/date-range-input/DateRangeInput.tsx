@@ -1,4 +1,3 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import {
   Box,
   Row,
@@ -29,6 +28,7 @@ import {
   defaultDateRangeInputTheme
 } from "./DateRangeInputTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
+import { faCalendarAlt } from "@fortawesome/pro-light-svg-icons";
 
 export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
