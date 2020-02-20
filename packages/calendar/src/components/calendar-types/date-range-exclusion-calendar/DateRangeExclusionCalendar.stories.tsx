@@ -159,7 +159,7 @@ storiesOf("calendar/Calendar/DateRangeExclusionCalendar", module)
             background={
               week.startYear === now.getFullYear() &&
               week.weekNumber === getISOWeek(now) ? (
-                <Icon icon={faCoffee} color={"blue"} style={{ fontSize: 30 }} />
+                <Icon icon={faCoffee} color={"blue"} size={30} />
               ) : (
                 undefined
               )
