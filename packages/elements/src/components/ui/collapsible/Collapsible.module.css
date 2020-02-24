@@ -12,7 +12,7 @@
 
   --swui-collapsible-header-padding-step: 8px;
   --swui-collapsible-header-padding: 16px;
-  --swui-collapsible-header-content-margin: 8px;
+  --swui-collapsible-header-content-margin: 16px;
   --swui-collapsible-header-font-weight: 600;
 
   --swui-collapsible-content-bg-color: #fbfbfc;
@@ -20,6 +20,9 @@
   --swui-collapsible-content-padding-step: 8px;
   --swui-collapsible-content-padding-vertical: 8px;
   --swui-collapsible-content-padding-horizontal: 16px;
+
+  --swui-collapsible-groupheading-font-size: 10px;
+  --swui-collapsible-groupheading-color: #9b9eab;
 
   .header {
     background-color: var(--swui-collapsible-header-bg-color);
@@ -83,6 +86,8 @@
     border-bottom: 1px solid var(--swui-collapsible-content-border-color);
     padding: var(--swui-collapsible-content-padding-vertical)
       var(--swui-collapsible-content-padding-horizontal);
+    height: 40px;
+    box-sizing: border-box;
 
     &Enter {
       opacity: 0;
@@ -96,6 +101,15 @@
     &ExitDone {
       display: none;
     }
+  }
+
+  .groupHeading {
+    border: none;
+    font-size: var(--swui-collapsible-groupheading-font-size);
+    color: var(--swui-collapsible-groupheading-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   /** Recursive padding for children */

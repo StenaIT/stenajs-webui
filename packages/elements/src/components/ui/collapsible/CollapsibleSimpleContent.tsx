@@ -1,21 +1,23 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
+import * as React from "react";
+import { ReactNode } from "react";
 
-import styles from './Collapsible.module.css';
+import styles from "./Collapsible.module.css";
 
-export interface CollapsibleContentProps {
+export interface CollapsibleSimpleContentProps {
   contentLeft?: ReactNode;
   label: string;
   contentRight?: ReactNode;
+  className?: string;
 }
 
-export const CollapsibleSimpleContent: React.FC<CollapsibleContentProps> = ({
+export const CollapsibleSimpleContent: React.FC<CollapsibleSimpleContentProps> = ({
   contentLeft,
   label,
-  contentRight
+  contentRight,
+  className
 }) => {
   return (
-    <div className={styles.content}>
+    <div className={styles.content + (className ? ` ${className}` : "")}>
       {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
       <div className={styles.label}>{label}</div>
       {contentRight && (
@@ -24,3 +26,7 @@ export const CollapsibleSimpleContent: React.FC<CollapsibleContentProps> = ({
     </div>
   );
 };
+
+export const CollapsibleGroupHeading: React.FC<CollapsibleSimpleContentProps> = props => (
+  <CollapsibleSimpleContent className={styles.groupHeading} {...props} />
+);

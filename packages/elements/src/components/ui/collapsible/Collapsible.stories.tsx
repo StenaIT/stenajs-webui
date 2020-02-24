@@ -1,5 +1,6 @@
 import {
   Collapsible,
+  CollapsibleGroupHeading,
   CollapsibleProps,
   CollapsibleSimpleContent
 } from "@stenajs-webui/elements";
@@ -8,12 +9,7 @@ import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { Column } from "@stenajs-webui/core";
-import {
-  Checkbox,
-  CheckboxProps,
-  RadioButton,
-  Switch
-} from "@stenajs-webui/forms";
+import { Checkbox, CheckboxProps, Switch } from "@stenajs-webui/forms";
 
 const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
@@ -59,23 +55,22 @@ storiesOf("elements/Collapsible", module)
         contentLeft={<StatefulCheckbox />}
         label={"Header with contentLeft"}
       >
+        <CollapsibleGroupHeading label={"Checkboxes"} />
         <CollapsibleSimpleContent
           contentLeft={<StatefulCheckbox />}
-          label={"I'm content"}
+          label={"Checkbox"}
         />
         <CollapsibleSimpleContent
           contentLeft={<StatefulCheckbox />}
-          label={"I'm content"}
+          label={"Checkbox with switch"}
           contentRight={<Switch />}
         />
       </StatefulCollapsible>
       <StatefulCollapsible label={"So"}>
         <StatefulCollapsible label={"many"}>
           <StatefulCollapsible label={"levels"}>
-            <CollapsibleSimpleContent
-              label={"deep"}
-              contentLeft={<RadioButton />}
-            />
+            <CollapsibleGroupHeading label={"deep"} />
+            <CollapsibleSimpleContent label={"down"} />
           </StatefulCollapsible>
         </StatefulCollapsible>
       </StatefulCollapsible>
