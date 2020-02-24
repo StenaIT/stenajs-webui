@@ -4,9 +4,11 @@ import styles from "./Collapsible.module.css";
 import { Icon } from "../../..";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import CSSTransition from "react-transition-group/CSSTransition";
+import { Clickable } from "@stenajs-webui/core";
 
 export interface CollapsibleProps {
   label: string;
+  contentLeft?: ReactNode;
   contentRight?: ReactNode;
   collapsed?: boolean;
   onClick?: () => void;
@@ -29,6 +31,7 @@ export const mapCSSTime = (value: string): number => {
 
 export const Collapsible: React.FC<CollapsibleProps> = ({
   label,
+  contentLeft,
   contentRight,
   collapsed = false,
   onClick,
@@ -55,9 +58,17 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 
   return (
     <div className={styles.collapsible} aria-expanded={!collapsed} ref={ref}>
-      <button className={styles.header} onClick={onClick} disabled={disabled}>
-        <div className={styles.headerText}>{label}</div>
-        <div className={styles.contentRight}>{contentRight}</div>
+      <Clickable
+        disableFocusHighlight
+        className={styles.header}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
+        <div className={styles.label}>{label}</div>
+        {contentRight && (
+          <div className={styles.contentRight}>{contentRight}</div>
+        )}
         <Icon
           icon={faChevronDown}
           className={styles.chevron}
@@ -65,7 +76,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           rotation={collapsed ? undefined : 180}
           color={chevronColor}
         />
-      </button>
+      </Clickable>
       <CSSTransition
         in={!collapsed}
         timeout={{
@@ -77,9 +88,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         }}
         unmountOnExit={true}
       >
-        <div role={"region"} className={styles.content}>
-          {children}
-        </div>
+        <div role={"region"}>{children}</div>
       </CSSTransition>
     </div>
   );

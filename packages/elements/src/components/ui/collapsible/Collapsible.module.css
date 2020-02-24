@@ -11,16 +11,49 @@
   --swui-collapsible-header-chevron-color-collapsed: #3872c5;
   --swui-collapsible-header-chevron-margin: 8px;
 
-  --swui-collapsible-header-padding: 8px;
-  --swui-collapsible-header-content-right-margin: 8px;
+  --swui-collapsible-header-padding-step: 8px;
+  --swui-collapsible-header-padding: 16px;
+  --swui-collapsible-header-content-margin: 8px;
   --swui-collapsible-header-font-weight: 600;
 
   --swui-collapsible-content-bg-color: #fbfbfc;
   --swui-collapsible-content-border-color: #f1f2f4;
+  --swui-collapsible-content-padding: 8px 16px;
 
-  --swui-collapsible-border-radius: 4px;
+  & & {
+    --swui-collapsible-header-bg-color: var(
+      --swui-collapsible-content-bg-color
+    );
+  }
 
-  button.header {
+  & & .header {
+    padding: 0
+      calc(
+        var(--swui-collapsible-header-padding) +
+          var(--swui-collapsible-header-padding-step)
+      )
+      0;
+  }
+
+  & & & .header {
+    padding: 0
+      calc(
+        var(--swui-collapsible-header-padding) +
+          calc(var(--swui-collapsible-header-padding-step) * 2)
+      )
+      0;
+  }
+
+  & & & & .header {
+    padding: 0
+      calc(
+        var(--swui-collapsible-header-padding) +
+          calc(var(--swui-collapsible-header-padding-step) * 3)
+      )
+      0;
+  }
+
+  .header {
     background-color: var(--swui-collapsible-header-bg-color);
     border: none;
     width: 100%;
@@ -29,23 +62,16 @@
     font-family: var(--swui-font-primary);
     font-weight: var(--swui-collapsible-header-font-weight);
 
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--swui-collapsible-header-border-color);
-    padding: var(--swui-collapsible-header-padding);
-
-    .headerText {
-      margin-right: auto;
-    }
-
-    .contentRight {
-      margin-right: var(--swui-collapsible-header-content-right-margin);
-    }
+    padding: 0 var(--swui-collapsible-header-padding) 0;
 
     .chevron {
       transition: all var(--swui-collapsible-animation-time) ease-in-out;
-      margin-right: var(--swui-collapsible-header-chevron-margin);
+      //margin-right: var(--swui-collapsible-header-chevron-margin);
       margin-left: auto;
     }
 
@@ -65,9 +91,24 @@
     }
   }
 
+  .label {
+    margin-right: auto;
+  }
+
+  .contentLeft {
+    margin-right: var(--swui-collapsible-header-content-margin);
+  }
+
+  .contentRight {
+    margin-right: var(--swui-collapsible-header-content-margin);
+  }
+
   .content {
+    display: flex;
+    align-items: center;
     background: var(--swui-collapsible-content-bg-color);
     border-bottom: 1px solid var(--swui-collapsible-content-border-color);
+    padding: var(--swui-collapsible-content-padding);
 
     &Enter {
       opacity: 0;
@@ -76,31 +117,6 @@
     &EnterActive {
       opacity: 1;
       transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
-    }
-  }
-
-  &:first-of-type {
-    button.header {
-      border-top-left-radius: var(--swui-collapsible-border-radius);
-      border-top-right-radius: var(--swui-collapsible-border-radius);
-    }
-  }
-
-  &:last-of-type {
-    &[aria-expanded="true"] {
-      button.header {
-        border-radius: 0;
-      }
-
-      .content {
-        border-bottom-left-radius: var(--swui-collapsible-border-radius);
-        border-bottom-right-radius: var(--swui-collapsible-border-radius);
-      }
-    }
-
-    button.header {
-      border-bottom-left-radius: var(--swui-collapsible-border-radius);
-      border-bottom-right-radius: var(--swui-collapsible-border-radius);
     }
   }
 }

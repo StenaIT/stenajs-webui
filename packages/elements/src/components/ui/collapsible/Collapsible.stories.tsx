@@ -1,26 +1,58 @@
-import { Badge, Collapsible } from "@stenajs-webui/elements";
+import {
+  Badge,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleProps
+} from "@stenajs-webui/elements";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { Column, Row } from "@stenajs-webui/core";
-import { Switch } from "@stenajs-webui/forms";
+import { Checkbox, RadioButton, Switch } from "@stenajs-webui/forms";
+
+const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
+  const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
+
+  return (
+    <Collapsible
+      {...props}
+      onClick={() => setCollapsed(!collapsed)}
+      collapsed={collapsed}
+    />
+  );
+};
 
 storiesOf("elements/Collapsible", module)
   .add("single", () => {
-    const [collapsed, setCollapsed] = useState(false);
-
     return (
       <Column width={300}>
-        <Collapsible
-          label={knobs.text("Label", "Label goes here")}
-          onClick={() => setCollapsed(!collapsed)}
-          collapsed={collapsed}
-        >
-          <Row indent={1} spacing={1}>
-            I'm a child
-          </Row>
-        </Collapsible>
+        <StatefulCollapsible label={knobs.text("Label", "Label goes here")}>
+          <StatefulCollapsible
+            contentLeft={<Checkbox />}
+            label={knobs.text("Child label", "Another label goes here")}
+            collapsed={false}
+          >
+            <CollapsibleContent
+              contentLeft={<Checkbox />}
+              label={"I'm content"}
+            />
+            <CollapsibleContent
+              contentLeft={<Checkbox />}
+              label={"I'm content"}
+            />
+          </StatefulCollapsible>
+          <StatefulCollapsible label={"So"}>
+            <StatefulCollapsible label={"many"}>
+              <StatefulCollapsible label={"levels"}>
+                <CollapsibleContent
+                  label={"deep"}
+                  contentLeft={<RadioButton />}
+                />
+              </StatefulCollapsible>
+            </StatefulCollapsible>
+          </StatefulCollapsible>
+        </StatefulCollapsible>
       </Column>
     );
   })
