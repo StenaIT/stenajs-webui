@@ -13,6 +13,7 @@ export interface CollapsibleProps {
   collapsed?: boolean;
   onClick?: () => void;
   disabled?: boolean;
+  unmountOnCollapse?: boolean;
 }
 
 export const mapCSSTime = (value: string): number => {
@@ -36,6 +37,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   collapsed = false,
   onClick,
   disabled = false,
+  unmountOnCollapse = false,
   children
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -60,6 +62,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
     <div className={styles.collapsible} aria-expanded={!collapsed} ref={ref}>
       <Clickable
         disableFocusHighlight
+        disableOpacityOnClick
         className={styles.header}
         onClick={onClick}
         disabled={disabled}
@@ -84,9 +87,12 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         }}
         classNames={{
           enter: styles.contentEnter,
-          enterActive: styles.contentEnterActive
+          enterActive: styles.contentEnterActive,
+          exit: styles.contentExit,
+          exitActive: styles.contentExitActive,
+          exitDone: styles.contentExitDone
         }}
-        unmountOnExit={true}
+        unmountOnExit={unmountOnCollapse}
       >
         <div role={"region"}>{children}</div>
       </CSSTransition>
