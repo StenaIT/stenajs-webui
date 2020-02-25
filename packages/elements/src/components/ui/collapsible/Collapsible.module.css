@@ -47,7 +47,7 @@
 
     .chevron {
       transition: all var(--swui-collapsible-animation-time) ease-in-out;
-      margin-left: auto;
+      margin-left: var(--swui-collapsible-header-content-margin);
     }
 
     &:not(:disabled):hover {
