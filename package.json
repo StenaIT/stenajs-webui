@@ -107,7 +107,7 @@
     },
     {
       "path": "./packages/elements/dist/*.js",
-      "maxSize": "11 kB"
+      "maxSize": "10 kB"
     },
     {
       "path": "./packages/forms/dist/*.js",
