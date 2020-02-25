@@ -10,19 +10,24 @@
   --swui-collapsible-header-chevron-color: #919296;
   --swui-collapsible-header-chevron-color-collapsed: #3872c5;
 
-  --swui-collapsible-header-padding-step: 8px;
-  --swui-collapsible-header-padding: 16px;
+  --swui-collapsible-header-padding: 0 16px 0;
   --swui-collapsible-header-content-margin: 16px;
   --swui-collapsible-header-font-weight: 600;
 
   --swui-collapsible-content-bg-color: #fbfbfc;
   --swui-collapsible-content-border-color: #f1f2f4;
-  --swui-collapsible-content-padding-step: 8px;
-  --swui-collapsible-content-padding-vertical: 8px;
-  --swui-collapsible-content-padding-horizontal: 16px;
+  --swui-collapsible-content-padding: 8px 16px;
 
   --swui-collapsible-groupheading-font-size: 10px;
   --swui-collapsible-groupheading-color: #9b9eab;
+
+  /** Remove header background color if not at the highest level */
+  & & {
+    --swui-collapsible-header-bg-color: var(
+      --swui-collapsible-content-bg-color
+    );
+    --swui-collapsible-header-font-weight: normal;
+  }
 
   .header {
     background-color: var(--swui-collapsible-header-bg-color);
@@ -33,11 +38,12 @@
     position: relative;
 
     height: 40px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--swui-collapsible-header-border-color);
-    padding: 0 var(--swui-collapsible-header-padding) 0;
+    padding: var(--swui-collapsible-header-padding);
 
     .chevron {
       transition: all var(--swui-collapsible-animation-time) ease-in-out;
@@ -84,10 +90,18 @@
     justify-content: space-between;
     background: var(--swui-collapsible-content-bg-color);
     border-bottom: 1px solid var(--swui-collapsible-content-border-color);
-    padding: var(--swui-collapsible-content-padding-vertical)
-      var(--swui-collapsible-content-padding-horizontal);
+    padding: var(--swui-collapsible-content-padding);
     height: 40px;
     box-sizing: border-box;
+
+    &.groupHeading {
+      border: none;
+      font-size: var(--swui-collapsible-groupheading-font-size);
+      color: var(--swui-collapsible-groupheading-color);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
     &Enter {
       opacity: 0;
@@ -100,81 +114,6 @@
 
     &ExitDone {
       display: none;
-    }
-  }
-
-  .groupHeading {
-    border: none;
-    font-size: var(--swui-collapsible-groupheading-font-size);
-    color: var(--swui-collapsible-groupheading-color);
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  /** Recursive padding for children */
-
-  & & {
-    --swui-collapsible-header-bg-color: var(
-      --swui-collapsible-content-bg-color
-    );
-    --swui-collapsible-header-font-weight: normal;
-  }
-
-  & & {
-    .header {
-      padding: 0
-        calc(
-          var(--swui-collapsible-header-padding) +
-            calc(var(--swui-collapsible-header-padding-step) * 1)
-        )
-        0;
-    }
-
-    .content {
-      padding: var(--swui-collapsible-content-padding-vertical)
-        calc(
-          var(--swui-collapsible-content-padding-horizontal) +
-            calc(var(--swui-collapsible-content-padding-step) * 1)
-        );
-    }
-  }
-
-  & & & {
-    .header {
-      padding: 0
-        calc(
-          var(--swui-collapsible-header-padding) +
-            calc(var(--swui-collapsible-header-padding-step) * 2)
-        )
-        0;
-    }
-
-    .content {
-      padding: var(--swui-collapsible-content-padding-vertical)
-        calc(
-          var(--swui-collapsible-content-padding-horizontal) +
-            calc(var(--swui-collapsible-content-padding-step) * 2)
-        );
-    }
-  }
-
-  & & & & {
-    .header {
-      padding: 0
-        calc(
-          var(--swui-collapsible-header-padding) +
-            calc(var(--swui-collapsible-header-padding-step) * 3)
-        )
-        0;
-    }
-
-    .content {
-      padding: var(--swui-collapsible-content-padding-vertical)
-        calc(
-          var(--swui-collapsible-content-padding-horizontal) +
-            calc(var(--swui-collapsible-content-padding-step) * 3)
-        );
     }
   }
 }
