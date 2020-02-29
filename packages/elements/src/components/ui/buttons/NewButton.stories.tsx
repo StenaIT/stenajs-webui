@@ -3,11 +3,10 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Column, Row } from "@stenajs-webui/core";
 import {
   ButtonSize,
-  NewButton,
   Icon,
+  NewButton,
   SecondaryButton
 } from "@stenajs-webui/elements";
-import { action } from "@storybook/addon-actions";
 import { boolean } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";

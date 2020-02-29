@@ -4,25 +4,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 import { InputSpinner } from "../../..";
 import styles from "./NewButton.module.css";
 
 export type ButtonSize = "normal" | "small" | "large";
 
 export interface NewButtonProps extends ButtonProps {
+  /** The text on the button. */
   label?: string;
+  /** The content to show when loading. */
   loadingLabel?: string;
-  className?: string;
+  /** The size of the button, can be 'small', 'normal' or 'large' */
   size?: ButtonSize;
+  /** Render loading spinner instead of button. */
   loading?: boolean;
+  /** Render success check icon instead of button. */
   success?: boolean;
+  /** The content to show on success. */
   successLabel?: string;
+  /** Disables the button. Changes to disabled color and clicks are disabled. */
   disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  /** onClick callback, called when button is clicked. */
+  onClick?: () => void;
+  /** FontAwesome icon to place to the left of the text. */
   leftIcon?: IconDefinition;
+  /** React element to place to the left of the text. */
   left?: ReactNode;
+  /** FontAwesome icon to place to the right of the text. */
   rightIcon?: IconDefinition;
+  /** React element to place to the right of the text. */
   right?: ReactNode;
 }
 

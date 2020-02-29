@@ -1,4 +1,82 @@
 :root {
+  /* Colors */
+  --swui-color-blue-100: #e1eefa;
+  --swui-color-blue-200: #afd0f1;
+  --swui-color-blue-300: #6ca9e6;
+  --swui-color-blue-400: #3a8cdd;
+  --swui-color-blue-50: #f2f8fd;
+  --swui-color-blue-500: #2378cd;
+  --swui-color-blue-600: #1d64ab;
+  --swui-color-blue-700: #18518a;
+  --swui-color-blue-800: #143e62;
+  --swui-color-blue-900: #0f304d;
+
+  --swui-color-green-100: #d1efc1;
+  --swui-color-green-200: #aee492;
+  --swui-color-green-300: #8ad861;
+  --swui-color-green-400: #6cce38;
+  --swui-color-green-50: #f4fbf0;
+  --swui-color-green-500: #60bd2f;
+  --swui-color-green-600: #509e27;
+  --swui-color-green-700: #407e1f;
+  --swui-color-green-800: #305f18;
+  --swui-color-green-900: #284f14;
+
+  --swui-color-orange-100: #ffeac4;
+  --swui-color-orange-200: #ffd589;
+  --swui-color-orange-300: #ffc04e;
+  --swui-color-orange-400: #ffb633;
+  --swui-color-orange-50: #fff8eb;
+  --swui-color-orange-500: #ffa400;
+  --swui-color-orange-600: #eb9700;
+  --swui-color-orange-700: #d88b00;
+  --swui-color-orange-800: #b17200;
+  --swui-color-orange-900: #895800;
+
+  --swui-color-purple-100: #f5d6e9;
+  --swui-color-purple-200: #edb6d8;
+  --swui-color-purple-300: #e287be;
+  --swui-color-purple-400: #d758a5;
+  --swui-color-purple-50: #fdf6fa;
+  --swui-color-purple-500: #cf3894;
+  --swui-color-purple-600: #a42874;
+  --swui-color-purple-700: #85205d;
+  --swui-color-purple-800: #651847;
+  --swui-color-purple-900: #58153e;
+
+  --swui-color-red-100: #ffdde4;
+  --swui-color-red-200: #ff899f;
+  --swui-color-red-300: #ff4e70;
+  --swui-color-red-400: #f1002e;
+  --swui-color-red-50: #fff1f4;
+  --swui-color-red-500: #d70029;
+  --swui-color-red-600: #b00022;
+  --swui-color-red-700: #8a0019;
+  --swui-color-red-800: #710015;
+  --swui-color-red-900: #570010;
+
+  --swui-color-turquoise-100: #daf8f4;
+  --swui-color-turquoise-200: #b9f2e9;
+  --swui-color-turquoise-300: #87e8da;
+  --swui-color-turquoise-400: #46dcc6;
+  --swui-color-turquoise-50: #eafbf9;
+  --swui-color-turquoise-500: #28d2b9;
+  --swui-color-turquoise-600: #24bda6;
+  --swui-color-turquoise-700: #1c9280;
+  --swui-color-turquoise-800: #156f62;
+  --swui-color-turquoise-900: #125f53;
+
+  --swui-color-ui-100: #fafafb;
+  --swui-color-ui-200: #efeff2;
+  --swui-color-ui-300-border: #e4e5e9;
+  --swui-color-ui-400: #ced0d7;
+  --swui-color-ui-50: #ffffff;
+  --swui-color-ui-500: #989cab;
+  --swui-color-ui-600: #5c6171;
+  --swui-color-ui-700-icon: #424551;
+  --swui-color-ui-800: #282931;
+  --swui-color-ui-900: #0d0e10;
+
   /* Text colors */
   --swui-text-primary-color: #1b2e47;
   --swui-text-disabled-color: #b6b6b6;
