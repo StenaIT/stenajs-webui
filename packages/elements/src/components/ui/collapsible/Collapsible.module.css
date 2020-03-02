@@ -116,4 +116,24 @@
       display: none;
     }
   }
+
+  & & {
+    --swui-collapsible-header-padding: 0 16px 0 24px;
+    --swui-collapsible-content-padding: 8px 16px 8px 24px;
+  }
+
+  & & & {
+    --swui-collapsible-header-padding: 0 16px 0 32px;
+    --swui-collapsible-content-padding: 8px 16px 8px 32px;
+  }
+
+  & & & & {
+    --swui-collapsible-header-padding: 0 16px 0 40px;
+    --swui-collapsible-content-padding: 8px 16px 8px 40px;
+  }
+
+  & & & & & {
+    --swui-collapsible-header-padding: 0 16px 0 48px;
+    --swui-collapsible-content-padding: 8px 16px 8px 48px;
+  }
 }
