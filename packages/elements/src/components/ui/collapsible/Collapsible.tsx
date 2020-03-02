@@ -5,6 +5,8 @@ import { Icon } from "../../..";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { Clickable } from "@stenajs-webui/core";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 export interface CollapsibleProps {
   label: string;
@@ -14,6 +16,9 @@ export interface CollapsibleProps {
   onClick?: () => void;
   disabled?: boolean;
   unmountOnCollapse?: boolean;
+  icon?: IconDefinition;
+  iconCollapsed?: IconDefinition;
+  iconSize?: number;
 }
 
 export const mapCSSTime = (value: string): number => {
@@ -38,17 +43,12 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   onClick,
   disabled = false,
   unmountOnCollapse = false,
+  icon = faChevronDown,
+  iconCollapsed = faChevronUp,
+  iconSize = 8,
   children
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-
-  const chevronColor = ref.current
-    ? getComputedStyle(ref.current).getPropertyValue(
-        !collapsed || disabled
-          ? "--swui-collapsible-header-chevron-color"
-          : "--swui-collapsible-header-chevron-color-collapsed"
-      )
-    : undefined;
 
   const timeout = ref.current
     ? mapCSSTime(
@@ -73,11 +73,9 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           <div className={styles.contentRight}>{contentRight}</div>
         )}
         <Icon
-          icon={faChevronDown}
-          className={styles.chevron}
-          size={8}
-          rotation={collapsed ? undefined : 180}
-          color={chevronColor}
+          icon={collapsed ? iconCollapsed : icon}
+          className={styles.indicator}
+          size={iconSize}
         />
       </Clickable>
       <CSSTransition

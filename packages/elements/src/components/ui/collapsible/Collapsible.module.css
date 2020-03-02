@@ -7,8 +7,9 @@
   --swui-collapsible-header-border-color: #f1f2f4;
   --swui-collapsible-header-border-color-focus: #3872c5;
 
-  --swui-collapsible-header-chevron-color: #919296;
-  --swui-collapsible-header-chevron-color-collapsed: #3872c5;
+  --swui-collapsible-header-indicator-color: #3872c5;
+  --swui-collapsible-header-indicator-color-collapsed: #919296;
+  --swui-collapsible-header-indicator-color-hover: #3872c5;
 
   --swui-collapsible-header-padding: 0 16px 0;
   --swui-collapsible-header-content-margin: 16px;
@@ -35,6 +36,8 @@
     font-size: inherit;
     font-family: var(--swui-font-primary);
     font-weight: var(--swui-collapsible-header-font-weight);
+
+    /** Needed for ::after focus element */
     position: relative;
 
     height: 40px;
@@ -45,13 +48,18 @@
     border-bottom: 1px solid var(--swui-collapsible-header-border-color);
     padding: var(--swui-collapsible-header-padding);
 
-    .chevron {
+    .indicator {
       transition: all var(--swui-collapsible-animation-time) ease-in-out;
       margin-left: var(--swui-collapsible-header-content-margin);
+      color: var(--swui-collapsible-header-indicator-color);
     }
 
     &:not(:disabled):hover {
       background-color: var(--swui-collapsible-header-bg-color-hover);
+
+      .indicator {
+        color: var(--swui-collapsible-header-indicator-color-hover);
+      }
     }
 
     &:focus {
@@ -72,27 +80,42 @@
     }
   }
 
+  &[aria-expanded="false"] {
+    .indicator {
+      color: var(--swui-collapsible-header-indicator-color-collapsed);
+    }
+  }
+
   .label {
     margin-right: auto;
   }
 
   .contentLeft {
+    display: flex;
     margin-right: var(--swui-collapsible-header-content-margin);
   }
 
   .contentRight {
-    margin-left: var(--swui-collapsible-header-content-margin);
+    display: flex;
+    margin-left: auto;
+
+    button {
+      cursor: pointer;
+    }
   }
 
   .content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
     background: var(--swui-collapsible-content-bg-color);
-    border-bottom: 1px solid var(--swui-collapsible-content-border-color);
     padding: var(--swui-collapsible-content-padding);
     height: 40px;
     box-sizing: border-box;
+
+    &:last-child {
+      border-bottom: 1px solid var(--swui-collapsible-content-border-color);
+    }
 
     &.groupHeading {
       border: none;
@@ -101,6 +124,10 @@
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 1px;
+
+      &:not(:first-child) {
+        border-top: 1px solid var(--swui-collapsible-content-border-color);
+      }
     }
 
     &Enter {
@@ -115,11 +142,63 @@
     &ExitDone {
       display: none;
     }
+
+    [data-hidden="true"] {
+      display: none;
+    }
+
+    &:hover {
+      [data-hidden="true"] {
+        display: inherit;
+      }
+
+      [data-hover="true"] {
+        color: var(--swui-collapsible-header-indicator-color-hover);
+      }
+    }
   }
 
+  /** Clickable content */
+  button.content {
+    font-size: inherit;
+    width: 100%;
+
+    /** Needed for ::after focus element */
+    position: relative;
+
+    &:focus {
+      background: var(--swui-collapsible-header-bg-color-hover);
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background: var(--swui-collapsible-header-border-color-focus);
+        right: 0;
+      }
+    }
+
+    &:not(:disabled):hover {
+      background-color: var(--swui-collapsible-header-bg-color-hover);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:focus-within {
+      [data-hidden="true"] {
+        display: inherit;
+      }
+    }
+  }
+
+  /** Increase padding with depth */
+
   & & {
-    --swui-collapsible-header-padding: 0 16px 0 24px;
-    --swui-collapsible-content-padding: 8px 16px 8px 24px;
+    --swui-collapsible-header-padding: 0 16px 0 16px;
+    --swui-collapsible-content-padding: 8px 16px 8px 32px;
   }
 
   & & & {
