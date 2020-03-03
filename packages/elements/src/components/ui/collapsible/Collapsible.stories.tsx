@@ -2,6 +2,7 @@ import {
   Badge,
   Collapsible,
   CollapsibleClickableContent,
+  CollapsibleContent,
   CollapsibleGroupHeading,
   CollapsibleProps,
   Icon
@@ -15,6 +16,15 @@ import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
+import { faInbox } from "@fortawesome/free-solid-svg-icons/faInbox";
+
+function xor(...values: boolean[]) {
+  const sum = values.reduce(
+    (acc: number, value: boolean) => acc + Number(value),
+    0
+  );
+  return sum > 0 && sum < values.length;
+}
 
 const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
@@ -38,7 +48,20 @@ storiesOf("elements/Collapsible", module)
         <Row indent={2} spacing={2}>
           <LargeText>Spaceship parts</LargeText>
         </Row>
-        <StatefulCollapsible label={"Engines"} />
+        <StatefulCollapsible label={"Engines"} collapsed={true}>
+          <CollapsibleContent>
+            <Column
+              indent={1}
+              spacing={1}
+              flex={1}
+              alignItems={"center"}
+              style={{ opacity: 0.5 }}
+            >
+              <Icon icon={faInbox} />
+              <span>No content</span>
+            </Column>
+          </CollapsibleContent>
+        </StatefulCollapsible>
         <StatefulCollapsible label={"Boosters"}>
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={boosters.new} />}
@@ -65,9 +88,7 @@ storiesOf("elements/Collapsible", module)
             contentLeft={
               <Checkbox
                 value={thrusters.semi && thrusters.multi}
-                indeterminate={
-                  thrusters.semi ? !thrusters.multi : thrusters.multi
-                }
+                indeterminate={xor(thrusters.semi, thrusters.multi)}
                 onClick={event => {
                   event.stopPropagation();
                   const value = thrusters.semi || thrusters.multi;
@@ -82,7 +103,7 @@ storiesOf("elements/Collapsible", module)
             contentRight={
               thrusters.semi || thrusters.multi ? (
                 <Badge
-                  label={(thrusters.semi ? 1 : 0) + (thrusters.multi ? 1 : 0)}
+                  label={Number(thrusters.semi) + Number(thrusters.multi)}
                 />
               ) : (
                 undefined
@@ -117,7 +138,11 @@ storiesOf("elements/Collapsible", module)
     );
   })
   .add("Alternative icons", () => {
-    const [bb8, setBb8] = useState({ engine: false, motivator: false });
+    const [state, setState] = useState({
+      r2d2: false,
+      c3po: false,
+      bb8: { engine: false, motivator: false }
+    });
 
     return (
       <Column width={300}>
@@ -126,11 +151,46 @@ storiesOf("elements/Collapsible", module)
         </Row>
         <StatefulCollapsible
           label={"Astromech droids"}
-          contentLeft={<Checkbox />}
+          contentLeft={
+            <Checkbox
+              checked={
+                state.r2d2 &&
+                state.c3po &&
+                state.bb8.engine &&
+                state.bb8.motivator
+              }
+              indeterminate={xor(
+                state.r2d2,
+                state.c3po,
+                state.bb8.engine && state.bb8.motivator
+              )}
+              onClick={event => {
+                event.stopPropagation();
+                const value =
+                  state.r2d2 ||
+                  state.c3po ||
+                  state.bb8.engine ||
+                  state.bb8.motivator;
+                setState({
+                  ...state,
+                  c3po: !value,
+                  r2d2: !value,
+                  bb8: { ...state.bb8, engine: !value, motivator: !value }
+                });
+              }}
+            />
+          }
         >
           <Collapsible
             label={"R2D2"}
-            contentLeft={<Checkbox />}
+            contentLeft={
+              <Checkbox
+                checked={state.r2d2}
+                onClick={() =>
+                  setState(state => ({ ...state, r2d2: !state.r2d2 }))
+                }
+              />
+            }
             icon={faFolderOpen}
             iconCollapsed={faFolderPlus}
             iconSize={16}
@@ -138,7 +198,14 @@ storiesOf("elements/Collapsible", module)
           />
           <Collapsible
             label={"C3PO"}
-            contentLeft={<Checkbox />}
+            contentLeft={
+              <Checkbox
+                checked={state.c3po}
+                onClick={() =>
+                  setState(state => ({ ...state, c3po: !state.c3po }))
+                }
+              />
+            }
             icon={faFolderOpen}
             iconCollapsed={faFolderPlus}
             iconSize={16}
@@ -148,14 +215,14 @@ storiesOf("elements/Collapsible", module)
             label={"BB-8"}
             contentLeft={
               <Checkbox
-                value={bb8.engine && bb8.motivator}
-                indeterminate={bb8.engine ? !bb8.motivator : bb8.motivator}
+                value={state.bb8.engine && state.bb8.motivator}
+                indeterminate={xor(state.bb8.engine, state.bb8.motivator)}
                 onClick={event => {
                   event.stopPropagation();
-                  const value = bb8.engine || bb8.motivator;
-                  setBb8({
-                    engine: !value,
-                    motivator: !value
+                  const value = state.bb8.engine || state.bb8.motivator;
+                  setState({
+                    ...state,
+                    bb8: { ...state.bb8, engine: !value, motivator: !value }
                   });
                 }}
               />
@@ -166,15 +233,23 @@ storiesOf("elements/Collapsible", module)
             iconSize={16}
           >
             <CollapsibleClickableContent
-              contentLeft={<Checkbox value={bb8.engine} />}
-              onClick={() => setBb8(bb8 => ({ ...bb8, engine: !bb8.engine }))}
+              contentLeft={<Checkbox value={state.bb8.engine} />}
+              onClick={() =>
+                setState(state => ({
+                  ...state,
+                  bb8: { ...state.bb8, engine: !state.bb8.engine }
+                }))
+              }
             >
               Engine
             </CollapsibleClickableContent>
             <CollapsibleClickableContent
-              contentLeft={<Checkbox value={bb8.motivator} />}
+              contentLeft={<Checkbox value={state.bb8.motivator} />}
               onClick={() =>
-                setBb8(bb8 => ({ ...bb8, motivator: !bb8.motivator }))
+                setState(state => ({
+                  ...state,
+                  bb8: { ...state.bb8, motivator: !state.bb8.motivator }
+                }))
               }
             >
               Motivator
@@ -185,6 +260,13 @@ storiesOf("elements/Collapsible", module)
     );
   })
   .add("Group headers", () => {
+    const [state, setState] = useState({
+      0: false,
+      1: false,
+      2: false,
+      3: false
+    });
+
     return (
       <Column width={300}>
         <Row indent={2} spacing={2}>
@@ -192,17 +274,29 @@ storiesOf("elements/Collapsible", module)
         </Row>
         <StatefulCollapsible label={"Jedis"}>
           <CollapsibleGroupHeading>Dark side</CollapsibleGroupHeading>
-          <CollapsibleClickableContent contentLeft={<Checkbox />}>
+          <CollapsibleClickableContent
+            contentLeft={<Checkbox checked={state[0]} />}
+            onClick={() => setState(state => ({ ...state, 0: !state[0] }))}
+          >
             Darth Vader
           </CollapsibleClickableContent>
-          <CollapsibleClickableContent contentLeft={<Checkbox />}>
+          <CollapsibleClickableContent
+            contentLeft={<Checkbox checked={state[1]} />}
+            onClick={() => setState(state => ({ ...state, 1: !state[1] }))}
+          >
             Darth Maul
           </CollapsibleClickableContent>
           <CollapsibleGroupHeading>Light side</CollapsibleGroupHeading>
-          <CollapsibleClickableContent contentLeft={<Checkbox />}>
+          <CollapsibleClickableContent
+            contentLeft={<Checkbox checked={state[2]} />}
+            onClick={() => setState(state => ({ ...state, 2: !state[2] }))}
+          >
             Master Yoda
           </CollapsibleClickableContent>
-          <CollapsibleClickableContent contentLeft={<Checkbox />}>
+          <CollapsibleClickableContent
+            contentLeft={<Checkbox checked={state[3]} />}
+            onClick={() => setState(state => ({ ...state, 3: !state[3] }))}
+          >
             Ozcar-One SoNoobie
           </CollapsibleClickableContent>
         </StatefulCollapsible>

@@ -110,7 +110,7 @@
     justify-content: stretch;
     background: var(--swui-collapsible-content-bg-color);
     padding: var(--swui-collapsible-content-padding);
-    height: 40px;
+    min-height: 40px;
     box-sizing: border-box;
 
     &:last-child {

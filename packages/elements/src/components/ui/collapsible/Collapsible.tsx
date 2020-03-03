@@ -16,6 +16,7 @@ export interface CollapsibleProps {
   onClick?: () => void;
   disabled?: boolean;
   unmountOnCollapse?: boolean;
+  mountOnEnter?: boolean;
   icon?: IconDefinition;
   iconCollapsed?: IconDefinition;
   iconSize?: number;
@@ -43,6 +44,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   onClick,
   disabled = false,
   unmountOnCollapse = false,
+  mountOnEnter = true,
   icon = faChevronDown,
   iconCollapsed = faChevronUp,
   iconSize = 8,
@@ -90,6 +92,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
           exitActive: styles.contentExitActive,
           exitDone: styles.contentExitDone
         }}
+        mountOnEnter={mountOnEnter}
         unmountOnExit={unmountOnCollapse}
       >
         <div role={"region"}>{children}</div>
