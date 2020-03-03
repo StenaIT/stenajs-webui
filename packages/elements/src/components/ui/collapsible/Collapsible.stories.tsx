@@ -68,7 +68,7 @@ storiesOf("elements/Collapsible", module)
                 indeterminate={
                   thrusters.semi ? !thrusters.multi : thrusters.multi
                 }
-                onClickCapture={event => {
+                onClick={event => {
                   event.stopPropagation();
                   const value = thrusters.semi || thrusters.multi;
                   setThrusters({
@@ -150,7 +150,7 @@ storiesOf("elements/Collapsible", module)
               <Checkbox
                 value={bb8.engine && bb8.motivator}
                 indeterminate={bb8.engine ? !bb8.motivator : bb8.motivator}
-                onClickCapture={event => {
+                onClick={event => {
                   event.stopPropagation();
                   const value = bb8.engine || bb8.motivator;
                   setBb8({
