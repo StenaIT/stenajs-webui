@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { Clickable } from "@stenajs-webui/core";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
-import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface CollapsibleProps {
   label: string;
