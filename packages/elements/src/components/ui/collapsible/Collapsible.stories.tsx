@@ -162,7 +162,8 @@ storiesOf("elements/Collapsible", module)
               indeterminate={xor(
                 state.r2d2,
                 state.c3po,
-                state.bb8.engine && state.bb8.motivator
+                state.bb8.engine,
+                state.bb8.motivator
               )}
               onClick={event => {
                 event.stopPropagation();
