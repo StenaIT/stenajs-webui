@@ -9,7 +9,7 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface CollapsibleProps {
-  label: string;
+  label: ReactNode;
   contentLeft?: ReactNode;
   contentRight?: ReactNode;
   collapsed?: boolean;
