@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
+import * as React from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-import styles from './Collapsible.module.css';
-import { Clickable } from '@stenajs-webui/core';
+import styles from "./Collapsible.module.css";
+import { Clickable } from "@stenajs-webui/core";
 
 export interface CollapsibleSimpleContentProps {
   contentLeft?: ReactNode;
