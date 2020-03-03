@@ -1,13 +1,16 @@
 import * as React from "react";
 import { Button, ButtonProps } from "./Button";
-import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
+import {
+  DepricatedButtonTheme,
+  defaultButtonTheme
+} from "./DepricatedButtonTheme";
 
 export const FlatButton: React.FC<ButtonProps> = ({
   buttonTheme = defaultFlatButtonTheme,
   ...buttonProps
 }) => <Button buttonTheme={buttonTheme} {...buttonProps} />;
 
-export const defaultFlatButtonTheme: ButtonTheme = {
+export const defaultFlatButtonTheme: DepricatedButtonTheme = {
   ...defaultButtonTheme,
   bgColor: "transparent",
   bgColorDisabled: "transparent",

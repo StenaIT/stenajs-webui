@@ -1,7 +1,7 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { Indent, Row, Space } from "@stenajs-webui/core";
-import { StandardButton } from "@stenajs-webui/elements";
+import { DepricatedStandardButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { CalendarTheme } from "../../components/calendar/CalendarTheme";
 
@@ -21,7 +21,7 @@ export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({
     {children}
     <Indent>
       <Row>
-        <StandardButton
+        <DepricatedStandardButton
           onClick={prevMonth}
           leftIcon={faChevronUp}
           buttonTheme={
@@ -36,7 +36,7 @@ export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({
           }
         />
         <Space />
-        <StandardButton
+        <DepricatedStandardButton
           onClick={nextMonth}
           leftIcon={faChevronDown}
           buttonTheme={

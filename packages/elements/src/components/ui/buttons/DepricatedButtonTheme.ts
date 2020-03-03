@@ -5,7 +5,7 @@ import {
   ThemeFontWeightField
 } from "@stenajs-webui/core";
 
-export interface ButtonTheme {
+export interface DepricatedButtonTheme {
   /** The color of the text on the button. */
   textColor: ThemeColorField | string;
   /** The color of the text on the button when disabled. */
@@ -44,7 +44,7 @@ export interface ButtonTheme {
   borderColorDisabled: ThemeColorField | string;
 }
 
-export const defaultButtonTheme: ButtonTheme = {
+export const defaultButtonTheme: DepricatedButtonTheme = {
   textColor: "white",
   bgColor: "interactionBgPrimary",
   textColorDisabled: "white",

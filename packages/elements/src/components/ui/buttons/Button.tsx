@@ -13,14 +13,17 @@ import {
 import * as React from "react";
 import { ReactNode } from "react";
 import { InputSpinner } from "../spinner/InputSpinner";
-import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
+import {
+  DepricatedButtonTheme,
+  defaultButtonTheme
+} from "./DepricatedButtonTheme";
 import { useButtonStateTheme } from "./hooks/UseBottonStateTheme";
 
 export interface ButtonProps extends GenericButtonProps {
   /** The theme to use.
    * @default defaultButtonTheme
    */
-  buttonTheme?: ButtonTheme;
+  buttonTheme?: DepricatedButtonTheme;
   /** The text on the button. */
   label?: string;
   /** Color of the text.

@@ -1,7 +1,10 @@
 import { ThemeColorField } from "@stenajs-webui/core";
-import { ButtonTheme, defaultFlatButtonTheme } from "@stenajs-webui/elements";
+import {
+  DepricatedButtonTheme,
+  defaultFlatButtonTheme
+} from "@stenajs-webui/elements";
 
-export interface NavBarButtonTheme extends ButtonTheme {
+export interface NavBarButtonTheme extends DepricatedButtonTheme {
   textColorSelected: ThemeColorField | string;
   textColorNotSelected: ThemeColorField | string;
 }

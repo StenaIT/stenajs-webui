@@ -4,7 +4,7 @@ import { Column, Row } from "@stenajs-webui/core";
 import {
   ButtonSize,
   Icon,
-  NewButton,
+  PrimaryButton,
   SecondaryButton
 } from "@stenajs-webui/elements";
 import { boolean } from "@storybook/addon-knobs";
@@ -16,24 +16,40 @@ const buttonSizes: ButtonSize[] = ["small", "normal", "large"];
 storiesOf("elements/Buttons/PrimaryButton", module)
   .add("default", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Column alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <Row key={size}>
-              <ButtonVariant size={size} label={"Submit"} />
-              <ButtonVariant size={size} label={"Submit"} disabled />
-              <ButtonVariant size={size} leftIcon={faCoffee} />
-              <ButtonVariant size={size} label={"Submit"} leftIcon={faCoffee} />
+              <ButtonVariant size={size} label={"Submit"} indent spacing />
+              <ButtonVariant
+                size={size}
+                label={"Submit"}
+                disabled
+                indent
+                spacing
+              />
+              <ButtonVariant size={size} leftIcon={faCoffee} indent spacing />
+              <ButtonVariant
+                size={size}
+                label={"Submit"}
+                leftIcon={faCoffee}
+                indent
+                spacing
+              />
               <ButtonVariant
                 size={size}
                 label={"Submit"}
                 rightIcon={faCoffee}
+                indent
+                spacing
               />
               <ButtonVariant
                 size={size}
                 label={"Submit"}
                 leftIcon={faCheck}
                 rightIcon={faCoffee}
+                indent
+                spacing
               />
             </Row>
           ))}
@@ -43,7 +59,7 @@ storiesOf("elements/Buttons/PrimaryButton", module)
   ))
   .add("with loading", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <ButtonVariant
@@ -51,6 +67,8 @@ storiesOf("elements/Buttons/PrimaryButton", module)
               size={size}
               label={"Submit"}
               loading={boolean("Loading", true)}
+              indent
+              spacing
             />
           ))}
         </Row>
@@ -59,7 +77,7 @@ storiesOf("elements/Buttons/PrimaryButton", module)
   ))
   .add("with loading label", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <ButtonVariant
@@ -68,6 +86,8 @@ storiesOf("elements/Buttons/PrimaryButton", module)
               label={"Submit"}
               loading={boolean("Loading", true)}
               loadingLabel={"Loading..."}
+              indent
+              spacing
             />
           ))}
         </Row>
@@ -76,7 +96,7 @@ storiesOf("elements/Buttons/PrimaryButton", module)
   ))
   .add("with success", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <ButtonVariant
@@ -84,6 +104,8 @@ storiesOf("elements/Buttons/PrimaryButton", module)
               size={size}
               label={"Submit"}
               success={boolean("Success", true)}
+              indent
+              spacing
             />
           ))}
         </Row>
@@ -92,7 +114,7 @@ storiesOf("elements/Buttons/PrimaryButton", module)
   ))
   .add("with success label", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>
           {buttonSizes.map(size => (
             <ButtonVariant
@@ -101,6 +123,8 @@ storiesOf("elements/Buttons/PrimaryButton", module)
               label={"Submit"}
               success={boolean("Success", true)}
               successLabel={"Done!"}
+              indent
+              spacing
             />
           ))}
         </Row>
@@ -109,9 +133,11 @@ storiesOf("elements/Buttons/PrimaryButton", module)
   ))
   .add("with generic content to right", () => (
     <>
-      {[NewButton, SecondaryButton].map(ButtonVariant => (
+      {[PrimaryButton, SecondaryButton].map(ButtonVariant => (
         <Row alignItems={"flex-start"}>
           <ButtonVariant
+            indent
+            spacing
             size={"large"}
             label={"Submit"}
             right={

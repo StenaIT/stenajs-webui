@@ -2,7 +2,10 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
-import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
+import {
+  DepricatedButtonTheme,
+  defaultButtonTheme
+} from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 
@@ -31,7 +34,7 @@ export interface WeekNumberTheme {
   show?: boolean;
 }
 
-export interface SwitchButtonTheme extends ButtonTheme {
+export interface SwitchButtonTheme extends DepricatedButtonTheme {
   height: string;
   width?: string;
 }
