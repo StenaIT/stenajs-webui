@@ -1,12 +1,12 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ButtonProps } from '@stenajs-webui/core';
-import cx from 'classnames';
-import * as React from 'react';
-import { ReactNode } from 'react';
-import { InputSpinner } from '../../..';
-import styles from './PrimaryButton.module.css';
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ButtonProps } from "@stenajs-webui/core";
+import cx from "classnames";
+import * as React from "react";
+import { ReactNode } from "react";
+import { InputSpinner } from "../../..";
+import styles from "./PrimaryButton.module.css";
 
 export type ButtonSize = "normal" | "small" | "large";
 
