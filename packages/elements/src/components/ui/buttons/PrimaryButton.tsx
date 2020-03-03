@@ -1,16 +1,16 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ButtonProps } from "@stenajs-webui/core";
-import cx from "classnames";
-import * as React from "react";
-import { ReactNode } from "react";
-import { InputSpinner } from "../../..";
-import styles from "./NewButton.module.css";
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ButtonProps } from '@stenajs-webui/core';
+import cx from 'classnames';
+import * as React from 'react';
+import { ReactNode } from 'react';
+import { InputSpinner } from '../../..';
+import styles from './PrimaryButton.module.css';
 
 export type ButtonSize = "normal" | "small" | "large";
 
-export interface NewButtonProps extends ButtonProps {
+export interface PrimaryButtonProps extends ButtonProps {
   /** The text on the button. */
   label?: string;
   /** The content to show when loading. */
@@ -53,7 +53,7 @@ const getButtonLabel = (
   }
 };
 
-export const NewButton: React.FC<NewButtonProps> = ({
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   label,
   className,
   size = "normal",

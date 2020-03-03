@@ -1,13 +1,3 @@
-import * as React from "react";
-import { Button, ButtonProps } from "./Button";
-import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
+import { PrimaryButton } from "./PrimaryButton";
 
-export const StandardButton: React.FC<ButtonProps> = ({
-  buttonTheme = defaultStandardButtonTheme,
-  ...buttonProps
-}) => <Button buttonTheme={buttonTheme} {...buttonProps} />;
-
-export const defaultStandardButtonTheme: ButtonTheme = {
-  ...defaultButtonTheme,
-  borderRadius: "5px"
-};
+export const StandardButton = PrimaryButton;

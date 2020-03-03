@@ -1,19 +1,14 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { Column, Row } from "@stenajs-webui/core";
-import {
-  ButtonSize,
-  Icon,
-  NewButton,
-  SecondaryButton
-} from "@stenajs-webui/elements";
-import { boolean } from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
-import * as React from "react";
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';
+import { Column, Row } from '@stenajs-webui/core';
+import { ButtonSize, Icon, NewButton, SecondaryButton } from '@stenajs-webui/elements';
+import { boolean } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 
 const buttonSizes: ButtonSize[] = ["small", "normal", "large"];
 
-storiesOf("elements/Buttons/NewButton", module)
+storiesOf("elements/Buttons/PrimaryButton", module)
   .add("default", () => (
     <>
       {[NewButton, SecondaryButton].map(ButtonVariant => (

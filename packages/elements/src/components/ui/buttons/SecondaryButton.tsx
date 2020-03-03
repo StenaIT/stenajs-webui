@@ -1,11 +1,11 @@
 import cx from "classnames";
 import * as React from "react";
-import { NewButton, NewButtonProps } from "./NewButton";
+import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
 import styles from "./SecondaryButton.module.css";
 
-export const SecondaryButton: React.FC<NewButtonProps> = ({
+export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
   className,
   ...props
 }) => (
-  <NewButton className={cx(className, styles.secondaryButton)} {...props} />
+  <PrimaryButton className={cx(className, styles.secondaryButton)} {...props} />
 );
