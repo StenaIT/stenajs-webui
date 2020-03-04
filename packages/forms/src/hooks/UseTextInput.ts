@@ -38,7 +38,7 @@ export const useTextInput = (
 
   const onBlurHandler: FocusEventHandler<HTMLInputElement> = ev => {
     if (onDone && !wasCancelled) {
-      onDone(ev.target.value || "");
+      onDone(ev.target.value ?? "");
     }
     if (onBlur) {
       onBlur(ev);
