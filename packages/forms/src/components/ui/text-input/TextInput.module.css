@@ -43,7 +43,6 @@
 
   &.inputContainer {
     display: flex;
-    flex-direction: row;
     align-items: center;
     background: var(--current-bg, var(--swui-textinput-bg-color));
     border: 1px solid
