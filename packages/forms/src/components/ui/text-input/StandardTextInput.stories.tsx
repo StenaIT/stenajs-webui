@@ -3,13 +3,82 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, StandardText } from "@stenajs-webui/core";
 import {
   defaultStandardTextInputThemeDark,
-  StandardTextInput
+  StandardTextInput,
+  TextInput,
+  TextInputVariant
 } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 storiesOf("forms/TextInput/StandardTextInput", module)
+  .add("TextInput", () => (
+    <Box width={"400px"}>
+      <StandardText>Standard</StandardText>
+      <TextInput value={knobs.text("Text", "Some nice text.")} />
+      <Space />
+      {(["success", "error", "warning", "loading", "modified"] as Array<
+        TextInputVariant
+      >).map(variant => (
+        <React.Fragment key={variant}>
+          <StandardText>Variant={variant}</StandardText>
+          <TextInput value={"Some text"} variant={variant} />
+          <Space />
+        </React.Fragment>
+      ))}
+      <StandardText>Icon left</StandardText>
+      <TextInput value={"Some text"} iconLeft={faCoffee} />
+      <Space />
+      <StandardText>Icon right</StandardText>
+      <TextInput value={"Some text"} iconRight={faCoffee} />
+      <Space />
+      <StandardText>Icon clickable</StandardText>
+      <TextInput
+        value={"Some text"}
+        iconLeft={faCoffee}
+        onClickLeft={() => alert("click")}
+      />
+      <Space />
+      <StandardText>Content left</StandardText>
+      <TextInput
+        value={"Some text"}
+        contentLeft={
+          <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
+            ms
+          </StandardText>
+        }
+      />
+      <Space />
+      <StandardText>Content right</StandardText>
+      <TextInput
+        value={"Some text"}
+        contentRight={
+          <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
+            ms
+          </StandardText>
+        }
+      />
+      <Space />
+      <StandardText>Placeholder</StandardText>
+      <TextInput placeholder={"E-mail"} />
+      <Space />
+      <StandardText>Disabled</StandardText>
+      <TextInput value={knobs.text("Text2", "Some nice text.")} disabled />
+      <Space />
+      <StandardText>Select all on focus</StandardText>
+      <TextInput
+        value={knobs.text("Text2", "Some nice text.")}
+        selectAllOnFocus
+      />
+      <Space />
+      <StandardText>Autofocus and select all on mount</StandardText>
+      <TextInput
+        autoFocus
+        value={knobs.text("Text2", "Some nice text.")}
+        selectAllOnMount
+      />
+    </Box>
+  ))
   .add("standard", () => (
     <Box width={"400px"}>
       <StandardTextInput value={knobs.text("Text", "Some nice text.")} />

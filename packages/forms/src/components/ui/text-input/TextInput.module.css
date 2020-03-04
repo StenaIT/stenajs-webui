@@ -1,0 +1,127 @@
+.textInput {
+  --swui-textinput-text-color: var(--swui-field-text-color);
+  --swui-textinput-text-color-disabled: var(--swui-field-text-color-disabled);
+  --swui-textinput-letter-spacing: var(--swui-field-letter-spacing);
+  --swui-textinput-line-height: var(--swui-field-text-line-height);
+  --swui-textinput-indent: var(--swui-metrics-indent);
+  --swui-textinput-spacing: calc(var(--swui-field-text-spacing) - 1px);
+  --swui-textinput-font-size: var(--swui-font-size-inputs);
+  --swui-textinput-font-family: var(--swui-font-input);
+  --swui-textinput-font-weight: var(--swui-font-weight-inputs);
+  --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
+  --swui-textinput-animation-time: var(--swui-animation-time-medium);
+  --swui-textinput-icon-color: var(--swui-field-border-color-disabled);
+  --swui-textinput-icon-size: var(--swui-field-icon-size);
+
+  /* States */
+  --swui-text-input-icon-color-success: var(--swui-state-success-color);
+
+  --swui-text-input-bg-loading: var(--swui-state-loading-light-color);
+  --swui-text-input-border-color-loading: var(--swui-state-loading-color);
+
+  --swui-text-input-bg-modified: var(--swui-state-modified-light-color);
+  --swui-text-input-border-color-modified: var(--swui-state-modified-color);
+
+  --swui-text-input-bg-warning: var(--swui-state-alert-light-color);
+  --swui-text-input-border-color-warning: var(--swui-state-alert-color);
+
+  --swui-text-input-bg-error: var(--swui-state-error-light-color);
+  --swui-text-input-border-color-error: var(--swui-state-error-color);
+
+  /* Background */
+  --swui-textinput-bg-color: var(--swui-field-bg-enabled);
+  --swui-textinput-bg-color-disabled: var(--swui-field-bg-disabled);
+
+  /* Border */
+  --swui-textinput-border-radius: var(--swui-field-border-radius);
+  --swui-textinput-border-color: var(--swui-field-border-color);
+  --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
+  --swui-textinput-border-color-disabled: var(
+    --swui-field-border-color-disabled
+  );
+  /* Shadow */
+  --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
+
+  &.inputContainer {
+    display: flex;
+    align-items: center;
+    background: var(--current-bg, var(--swui-textinput-bg-color));
+    border: 1px solid
+      var(--current-border-color, var(--swui-textinput-border-color));
+    border-radius: var(--swui-textinput-border-radius);
+    transition: all var(--swui-textinput-animation-time);
+    --current-icon-color: var(--swui-textinput-icon-color);
+
+    &.success {
+      --current-icon-color: var(--swui-text-input-icon-color-success);
+    }
+
+    &.loading {
+      --current-bg: var(--swui-text-input-bg-loading);
+      --current-border-color: var(--swui-text-input-border-color-loading);
+    }
+
+    &.modified {
+      --current-bg: var(--swui-text-input-bg-modified);
+      --current-border-color: var(--swui-text-input-border-color-modified);
+    }
+
+    &.error {
+      --current-bg: var(--swui-text-input-bg-error);
+      --current-border-color: var(--swui-text-input-border-color-error);
+      --current-icon-color: var(--swui-text-input-border-color-error);
+    }
+
+    &.warning {
+      --current-bg: var(--swui-text-input-bg-warning);
+      --current-border-color: var(--swui-text-input-border-color-warning);
+      --current-icon-color: var(--swui-text-input-border-color-warning);
+    }
+
+    &.disabled {
+      --current-bg: var(--swui-textinput-bg-color-disabled);
+      --current-border-color: var(--swui-textinput-border-color-disabled);
+    }
+
+    &:hover {
+      &:not(.disabled) {
+        --current-border-color: var(--swui-textinput-border-color-hover);
+      }
+    }
+
+    &:focus-within {
+      box-shadow: var(--swui-textinput-focus-shadow);
+      --current-border-color: var(--swui-textinput-border-color-hover);
+    }
+
+    .input {
+      letter-spacing: var(--swui-textinput-letter-spacing);
+      line-height: var(--swui-textinput-line-height);
+      width: 100%;
+      padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
+      color: var(--swui-textinput-text-color);
+      font-size: var(--swui-textinput-font-size);
+      font-family: var(--swui-textinput-font-family);
+      font-weight: var(--swui-textinput-font-weight);
+      background: var(--swui-hidden);
+      border: none;
+
+      &:disabled {
+        color: var(--swui-textinput-text-color-disabled);
+      }
+
+      &::placeholder {
+        color: var(--swui-textinput-placeholder-color);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .icon {
+    color: var(--current-icon-color);
+    font-size: var(--swui-textinput-icon-size);
+  }
+}

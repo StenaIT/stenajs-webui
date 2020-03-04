@@ -10,19 +10,27 @@
   --swui-hidden: rgba(0, 0, 0, 0);
   --swui-primary-action-color: #696bdb;
   --swui-separator-color: #b1b1b1;
-  --swui-error-color: #d05353;
-  --swui-error-light-color: #ffbfc6;
-  --swui-alert-color: #acac42;
-  --swui-alert-light-color: #edec8a;
-  --swui-success-color: #8bc34a;
-  --swui-success-light-color: #94f78c;
   --swui-handle-bg-enabled-color: var(--swui-white);
   --swui-handle-bg-disabled-color: #bebbc0;
 
+  /* State colors */
+  --swui-state-error-color: #d05353;
+  --swui-state-error-light-color: #fff1f4;
+  --swui-state-alert-color: #ffa400;
+  --swui-state-alert-light-color: #fff8eb;
+  --swui-state-success-color: #60bd2f;
+  --swui-state-success-light-color: #94f78c;
+  --swui-state-modified-color: #2378cd;
+  --swui-state-modified-light-color: #e2edf7;
+  --swui-state-loading-color: #ced0d7;
+  --swui-state-loading-light-color: #fafafb;
+
   /* Fonts */
-  --swui-font-primary: Open Sans;
+  --swui-font-primary: "Open Sans", system-ui;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
+  --swui-font-size-inputs: 14px;
+  --swui-font-weight-inputs: 400;
 
   /* Animation speeds */
   --swui-animation-time-fast: 0.1s;
@@ -30,15 +38,23 @@
   --swui-animation-time-slow: 0.5s;
 
   /* Form fields */
+  --swui-field-text-color: #424551;
+  --swui-field-text-color-disabled: #989cab;
+  --swui-field-text-spacing: 6px;
+  --swui-field-letter-spacing: -0.34px;
+  --swui-field-text-line-height: 20px;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
   --swui-field-border-color: #bbc1e1;
   --swui-field-border-color-hover: #275efe;
   --swui-field-border-color-disabled: var(--swui-separator-color);
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
+  --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
   --swui-field-border-radius: 4px;
+  --swui-field-icon-color: var(--swui-text-primary-color);
+  --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
 
@@ -49,7 +65,7 @@
   --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
 
   /* Metrics */
-  --swui-metrics-indent: 10;
-  --swui-metrics-spacing: 10;
-  --swui-metrics-space: 1;
+  --swui-metrics-indent: 8px;
+  --swui-metrics-spacing: 8px;
+  --swui-metrics-space: 8px;
 }
