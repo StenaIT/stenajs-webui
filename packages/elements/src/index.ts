@@ -1,3 +1,4 @@
+import "./default-colors.css";
 import "./default-theme.css";
 
 export * from "./components/ui/spinner/Spinner";
