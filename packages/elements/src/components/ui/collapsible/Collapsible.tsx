@@ -1,17 +1,17 @@
 import * as React from "react";
-import { ReactNode, useRef } from "react";
 import styles from "./Collapsible.module.css";
-import { Icon } from "../../..";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import CSSTransition from "react-transition-group/CSSTransition";
 import { Clickable } from "@stenajs-webui/core";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+// noinspection TypeScriptPreferShortImport
+import { Icon } from "../icon/Icon";
 
 export interface CollapsibleProps {
-  label: ReactNode;
-  contentLeft?: ReactNode;
-  contentRight?: ReactNode;
+  label: React.ReactNode;
+  contentLeft?: React.ReactNode;
+  contentRight?: React.ReactNode;
   collapsed?: boolean;
   onClick?: () => void;
   disabled?: boolean;
@@ -50,7 +50,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   iconSize = 8,
   children
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement>(null);
 
   const timeout = ref.current
     ? mapCSSTime(

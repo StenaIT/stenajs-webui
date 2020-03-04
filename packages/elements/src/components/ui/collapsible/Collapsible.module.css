@@ -1,37 +1,37 @@
 .collapsible {
   --swui-collapsible-animation-time: var(--swui-animation-time-fast);
 
-  --swui-collapsible-header-bg-color: var(--swui-white);
-  --swui-collapsible-header-bg-color-hover: #f3f8fc;
-
+  --swui-collapsible-header-background-color: var(--swui-white);
+  --swui-collapsible-header-background-color-hover: #f3f8fc;
   --swui-collapsible-header-border-color: #f1f2f4;
-  --swui-collapsible-header-border-color-focus: #3872c5;
-
-  --swui-collapsible-header-indicator-color: #3872c5;
-  --swui-collapsible-header-indicator-color-collapsed: #919296;
-  --swui-collapsible-header-indicator-color-hover: #3872c5;
-
-  --swui-collapsible-header-padding: 0 16px 0;
-  --swui-collapsible-header-content-margin: 16px;
+  --swui-collapsible-header-border-color-focus: var(
+    --swui-primary-action-color
+  );
+  --swui-collapsible-header-content-margin: calc(
+    var(--swui-metrics-indent) * 2
+  );
   --swui-collapsible-header-font-weight: 600;
+  --swui-collapsible-header-indicator-color: var(--swui-primary-action-color);
+  --swui-collapsible-header-indicator-color-collapsed: #919296;
+  --swui-collapsible-header-indicator-color-hover: var(
+    --swui-primary-action-color
+  );
+  --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0;
 
-  --swui-collapsible-content-bg-color: #fbfbfc;
+  --swui-collapsible-content-background-color: #fbfbfc;
   --swui-collapsible-content-border-color: #f1f2f4;
-  --swui-collapsible-content-padding: 8px 16px;
+  --swui-collapsible-content-padding: var(--swui-metrics-indent)
+    calc(var(--swui-metrics-indent) * 2);
 
-  --swui-collapsible-groupheading-font-size: 10px;
+  --swui-collapsible-groupheading-font-size: var(--swui-font-size-small);
   --swui-collapsible-groupheading-color: #9b9eab;
 
-  /** Remove header background color if not at the highest level */
-  & & {
-    --swui-collapsible-header-bg-color: var(
-      --swui-collapsible-content-bg-color
-    );
-    --swui-collapsible-header-font-weight: normal;
-  }
+  --swui-collapsible-min-height: 40px;
+
+  /* Header */
 
   .header {
-    background-color: var(--swui-collapsible-header-bg-color);
+    background-color: var(--swui-collapsible-header-background-color);
     width: 100%;
     font-size: inherit;
     font-family: var(--swui-font-primary);
@@ -40,7 +40,7 @@
     /** Needed for ::after focus element */
     position: relative;
 
-    height: 40px;
+    min-height: var(--swui-collapsible-min-height);
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -55,7 +55,7 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--swui-collapsible-header-bg-color-hover);
+      background-color: var(--swui-collapsible-header-background-color-hover);
 
       .indicator {
         color: var(--swui-collapsible-header-indicator-color-hover);
@@ -63,7 +63,7 @@
     }
 
     &:focus {
-      background: var(--swui-collapsible-header-bg-color-hover);
+      background: var(--swui-collapsible-header-background-color-hover);
 
       &::after {
         content: "";
@@ -90,27 +90,32 @@
     margin-right: auto;
   }
 
-  .contentLeft {
-    display: flex;
-    margin-right: var(--swui-collapsible-header-content-margin);
-  }
-
+  .contentLeft,
   .contentRight {
     display: flex;
-    margin-left: auto;
 
     button {
       cursor: pointer;
     }
   }
 
+  .contentLeft {
+    margin-right: var(--swui-collapsible-header-content-margin);
+  }
+
+  .contentRight {
+    margin-left: auto;
+  }
+
+  /* Content */
+
   .content {
     display: flex;
     align-items: center;
     justify-content: stretch;
-    background: var(--swui-collapsible-content-bg-color);
+    background: var(--swui-collapsible-content-background-color);
     padding: var(--swui-collapsible-content-padding);
-    min-height: 40px;
+    min-height: var(--swui-collapsible-min-height);
     box-sizing: border-box;
 
     &:last-child {
@@ -167,7 +172,7 @@
     position: relative;
 
     &:focus {
-      background: var(--swui-collapsible-header-bg-color-hover);
+      background: var(--swui-collapsible-header-background-color-hover);
 
       &::after {
         content: "";
@@ -180,7 +185,7 @@
     }
 
     &:not(:disabled):hover {
-      background-color: var(--swui-collapsible-header-bg-color-hover);
+      background-color: var(--swui-collapsible-header-background-color-hover);
     }
 
     &:disabled {
@@ -194,25 +199,43 @@
     }
   }
 
-  /** Increase padding with depth */
+  /* Remove header background color if not at the highest level */
+  & & {
+    --swui-collapsible-header-background-color: var(
+      --swui-collapsible-content-background-color
+    );
+    --swui-collapsible-header-font-weight: normal;
+  }
+
+  /* Increase padding with depth */
 
   & & {
-    --swui-collapsible-header-padding: 0 16px 0 16px;
-    --swui-collapsible-content-padding: 8px 16px 8px 32px;
+    --swui-collapsible-content-padding: var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 4);
   }
 
   & & & {
-    --swui-collapsible-header-padding: 0 16px 0 32px;
-    --swui-collapsible-content-padding: 8px 16px 8px 32px;
+    --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0
+      calc(var(--swui-metrics-indent) * 4);
+    --swui-collapsible-content-padding: var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 6);
   }
 
   & & & & {
-    --swui-collapsible-header-padding: 0 16px 0 40px;
-    --swui-collapsible-content-padding: 8px 16px 8px 40px;
+    --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0
+      calc(var(--swui-metrics-indent) * 6);
+    --swui-collapsible-content-padding: var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 8);
   }
 
   & & & & & {
-    --swui-collapsible-header-padding: 0 16px 0 48px;
-    --swui-collapsible-content-padding: 8px 16px 8px 48px;
+    --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0
+      calc(var(--swui-metrics-indent) * 8);
+    --swui-collapsible-content-padding: var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
+      calc(var(--swui-metrics-indent) * 10);
   }
 }

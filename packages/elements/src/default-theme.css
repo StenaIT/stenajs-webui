@@ -36,6 +36,7 @@
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-font-size-inputs: 14px;
+  --swui-font-size-small: 10px;
   --swui-font-weight-inputs: 400;
 
   /* Animation speeds */
