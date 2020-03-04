@@ -1,6 +1,7 @@
 .textInput {
   --swui-textinput-text-color: var(--swui-field-text-color);
   --swui-textinput-text-color-disabled: var(--swui-field-text-color-disabled);
+  --swui-textinput-letter-spacing: var(--swui-field-letter-spacing);
   --swui-textinput-line-height: var(--swui-field-text-line-height);
   --swui-textinput-indent: var(--swui-metrics-indent);
   --swui-textinput-spacing: calc(var(--swui-field-text-spacing) - 1px);
@@ -94,7 +95,7 @@
     }
 
     .input {
-      letter-spacing: -0.34px;
+      letter-spacing: var(--swui-textinput-letter-spacing);
       line-height: var(--swui-textinput-line-height);
       width: 100%;
       padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
