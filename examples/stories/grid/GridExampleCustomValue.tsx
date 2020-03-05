@@ -1,5 +1,5 @@
 import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
-import { StandardTextInput } from "@stenajs-webui/forms";
+import { TextInput } from "@stenajs-webui/forms";
 import { useGridCell } from "@stenajs-webui/grid";
 import * as React from "react";
 import { useCallback, useState } from "react";
@@ -115,19 +115,17 @@ const GridCell: React.FC<GridCellProps> = ({
   return (
     <FocusedBox {...requiredProps}>
       {isEditing ? (
-        <StandardTextInput
+        <TextInput
           onValueChange={onChange}
           value={editorValue.name}
           onDone={stopEditing}
           onEsc={stopEditingAndRevert}
-          focusOnMount
+          autoFocus
           selectAllOnMount={!lastKeyEvent}
           onMove={stopEditingAndMove}
         />
       ) : (
-        <StandardText>{`${value.name}, ${value.row}, ${
-          value.col
-        }`}</StandardText>
+        <StandardText>{`${value.name}, ${value.row}, ${value.col}`}</StandardText>
       )}
     </FocusedBox>
   );

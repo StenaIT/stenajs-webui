@@ -1,14 +1,14 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { Box, StandardText } from "@stenajs-webui/core";
+import { StandardText } from "@stenajs-webui/core";
 import {
-  defaultNumericTextInputThemeDark,
   NumericInputValueProps,
   NumericTextInput,
   useNumericInputValue
 } from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { Space } from "../../../../../../core/src/components/layout/space/Space";
 import markdown from "./NumericTextInput.md";
 
 interface State {
@@ -55,22 +55,6 @@ storiesOf("forms/TextInput/NumericTextInput", module)
           onValueChange={value => store.set({ value })}
         />
         <StandardText>Number value: {store.state.value}</StandardText>
-      </div>
-    ))
-  )
-  .add(
-    "with dark theme",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <Box width={"400px"} background={"#2e4662"} indent={4} spacing={4}>
-          <NumericTextInput
-            value={store.state.value}
-            onValueChange={value => store.set({ value })}
-            theme={defaultNumericTextInputThemeDark}
-          />
-        </Box>
       </div>
     ))
   )
@@ -144,6 +128,8 @@ storiesOf("forms/TextInput/NumericTextInput", module)
       value: "5"
     })(({ store }: { store: Store<State> }) => (
       <div style={{ display: "inline-block" }}>
+        <StandardText>Minimum 3, maximum 8</StandardText>
+        <Space />
         <NumericTextInput
           min={3}
           max={8}

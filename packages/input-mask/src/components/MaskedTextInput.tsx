@@ -1,6 +1,6 @@
 import {
-  StandardTextInput,
-  StandardTextInputProps
+  TextInput,
+  TextInputProps
 } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useRef } from "react";
@@ -11,7 +11,7 @@ import {
   InputMaskProvider
 } from "../masks/InputMask";
 
-export interface MaskedStandardTextInputProps extends StandardTextInputProps {
+export interface MaskedTextInputProps extends TextInputProps {
   mask: InputMask | InputMaskProvider;
   pipe?: InputMaskPipe;
   guide?: boolean;
@@ -20,7 +20,7 @@ export interface MaskedStandardTextInputProps extends StandardTextInputProps {
   showMask?: boolean;
 }
 
-export const MaskedStandardTextInput: React.FC<MaskedStandardTextInputProps> = ({
+export const MaskedTextInput: React.FC<MaskedTextInputProps> = ({
   mask,
   pipe,
   onChange,
@@ -30,7 +30,7 @@ export const MaskedStandardTextInput: React.FC<MaskedStandardTextInputProps> = (
   keepCharPositions,
   placeholderChar,
   showMask,
-  ...standardTextInputProps
+  ...textInputProps
 }) => {
   const inputRef = useRef(null);
   const { onChange: maskedOnChange } = useMaskedInput(
@@ -47,8 +47,8 @@ export const MaskedStandardTextInput: React.FC<MaskedStandardTextInputProps> = (
   );
 
   return (
-    <StandardTextInput
-      {...standardTextInputProps}
+    <TextInput
+      {...textInputProps}
       onChange={maskedOnChange}
       value={value}
       inputRef={inputRef}

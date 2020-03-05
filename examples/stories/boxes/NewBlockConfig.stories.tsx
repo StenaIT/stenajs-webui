@@ -9,7 +9,7 @@ import {
   StandardText
 } from "@stenajs-webui/core";
 import { StandardButton } from "@stenajs-webui/elements";
-import { StandardTextInput } from "@stenajs-webui/forms";
+import { TextInput } from "@stenajs-webui/forms";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -23,7 +23,7 @@ storiesOf("examples/Boxes", module).add("New block config", () => (
           <Space num={2} />
           <Column>
             <StandardText>Name</StandardText>
-            <StandardTextInput />
+            <TextInput />
           </Column>
         </Indent>
         <Space num={2} />
@@ -34,12 +34,12 @@ storiesOf("examples/Boxes", module).add("New block config", () => (
           <Row>
             <Column>
               <StandardText>Customer</StandardText>
-              <StandardTextInput />
+              <TextInput />
             </Column>
             <Space num={2} />
             <Column>
               <StandardText>Vehicle type</StandardText>
-              <StandardTextInput />
+              <TextInput />
             </Column>
           </Row>
 

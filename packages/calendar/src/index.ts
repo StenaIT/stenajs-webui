@@ -10,11 +10,8 @@ export * from "./components/calendar-types/single-week-calendar/UseSingleWeekSel
 export * from "./components/calendar-types/date-range-exclusion-calendar/DateRangeExclusionCalendar";
 export * from "./components/calendar-types/date-range-exclusion-calendar/UseDateRangeExclusionSelection";
 export * from "./components/input-types/date-input/DateInput";
-export * from "./components/input-types/date-input/DateInputTheme";
 export * from "./components/input-types/date-range-input/DateRangeInput";
-export * from "./components/input-types/date-range-input/DateRangeInputTheme";
 export * from "./components/input-types/date-text-input/DateTextInput";
-export * from "./components/input-types/date-text-input/DateTextInputTheme";
 export * from "./components/input-types/time-text-input/TimeTextInput";
 export * from "./components/calendar/Calendar";
 export * from "./components/calendar/CalendarTheme";

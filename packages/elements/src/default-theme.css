@@ -8,10 +8,11 @@
   /* Generic colors */
   --swui-white: #fff;
   --swui-hidden: rgba(0, 0, 0, 0);
-  --swui-primary-action-color: #696bdb;
+  --swui-primary-action-color: #2378cd;
   --swui-separator-color: #b1b1b1;
   --swui-handle-bg-enabled-color: var(--swui-white);
   --swui-handle-bg-disabled-color: #bebbc0;
+  --swui-modal-border-color: #bebbc0;
 
   /* State colors */
   --swui-state-error-color: #d05353;
@@ -20,7 +21,7 @@
   --swui-state-alert-light-color: #fff8eb;
   --swui-state-success-color: #60bd2f;
   --swui-state-success-light-color: #94f78c;
-  --swui-state-modified-color: #2378cd;
+  --swui-state-modified-color: var(--swui-primary-action-color);
   --swui-state-modified-light-color: #e2edf7;
   --swui-state-loading-color: #ced0d7;
   --swui-state-loading-light-color: #fafafb;

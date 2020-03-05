@@ -1,9 +1,6 @@
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { Omit } from "@stenajs-webui/core";
-import {
-  StandardTextInput,
-  StandardTextInputProps
-} from "@stenajs-webui/forms";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import {
@@ -11,7 +8,7 @@ import {
   validUserInput
 } from "../../../util/time/TimeStringFormatValidator";
 
-interface TimeTextInputProps extends Omit<StandardTextInputProps, "onChange"> {
+interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
   /** Show placeholder when true */
   showPlaceholder?: boolean;
   /** Show icon when true */
@@ -24,7 +21,6 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   useIcon = true,
   value,
   width = "85px",
-  backgroundColor,
   ...props
 }) => {
   const [valid, setValid] = useState(() => validUserInput(value));
@@ -58,11 +54,10 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   );
 
   return (
-    <StandardTextInput
+    <TextInput
       {...props}
-      backgroundColor={valid ? backgroundColor : "errorBgLight"}
+      variant={valid ? "standard" : "error"}
       iconLeft={useIcon ? faClock : undefined}
-      invalid={props.invalid || !valid}
       value={value}
       placeholder={showPlaceholder ? timeFormat : undefined}
       onChange={onChangeHandler}

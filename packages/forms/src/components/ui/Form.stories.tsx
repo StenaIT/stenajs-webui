@@ -11,8 +11,8 @@ import {
   Checkbox,
   NumericTextInput,
   RadioButton,
-  StandardTextInput,
-  Switch
+  Switch,
+  TextInput
 } from "@stenajs-webui/forms";
 import {
   DropdownOption,
@@ -295,7 +295,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
       <Space num={4} />
 
       <div>
-        <HeaderText>StandardTextInput</HeaderText>
+        <HeaderText>TextInput</HeaderText>
         <Space />
         <Row>
           <table cellSpacing={"5px"}>
@@ -303,28 +303,28 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
               <tr>
                 <th>Enabled</th>
                 <th>Disabled</th>
-                <th>Background</th>
+                <th>Variant</th>
               </tr>
             </thead>
             <tbody>
               <td>
-                <StandardTextInput
+                <TextInput
                   value={store.state.input}
                   onValueChange={value => store.set({ input: value })}
                 />
               </td>
               <td>
-                <StandardTextInput
+                <TextInput
                   value={store.state.input}
                   onValueChange={value => store.set({ input: value })}
                   disabled
                 />
               </td>
               <td>
-                <StandardTextInput
+                <TextInput
                   value={store.state.input}
                   onValueChange={value => store.set({ input: value })}
-                  backgroundColor={"#ddddff"}
+                  variant={"error"}
                 />
               </td>
             </tbody>

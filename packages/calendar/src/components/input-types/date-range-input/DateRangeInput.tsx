@@ -4,10 +4,9 @@ import {
   Row,
   Space,
   StandardText,
-  useMultiOnClickOutside,
-  useThemeFields
+  useMultiOnClickOutside
 } from "@stenajs-webui/core";
-import { StandardTextInput } from "@stenajs-webui/forms";
+import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useRef } from "react";
@@ -24,10 +23,6 @@ import {
   CalendarTheme,
   defaultCalendarTheme
 } from "../../calendar/CalendarTheme";
-import {
-  DateRangeInputTheme,
-  defaultDateRangeInputTheme
-} from "./DateRangeInputTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
 
 export interface DateRangeInputProps<T extends {}> {
@@ -72,11 +67,6 @@ export interface DateRangeInputProps<T extends {}> {
   toText?: string;
 
   /**
-   * The theme to use.
-   */
-  theme?: DateRangeInputTheme;
-
-  /**
    * Width of the input element.
    * * @default 125px
    */
@@ -102,9 +92,6 @@ export interface DateRangeInputProps<T extends {}> {
   >;
 }
 
-// tslint:disable:no-empty
-const noop = () => {};
-
 export const DateRangeInput = <T extends {}>({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
@@ -115,10 +102,11 @@ export const DateRangeInput = <T extends {}>({
   zIndex = 100,
   width = "125px",
   toText = "to",
-  theme = defaultDateRangeInputTheme,
   calendarTheme = defaultCalendarTheme,
   calendarProps
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
+  const popupRef = useRef<HTMLDivElement>(null);
+  const outsideRef = useRef<HTMLDivElement>(null);
   const {
     hideCalendar,
     onSelectDateRange,
@@ -127,30 +115,19 @@ export const DateRangeInput = <T extends {}>({
     showCalendarEndDate,
     showCalendarStartDate,
     showingCalendar,
-    showingFocusHighlight,
     setFocusedInput,
-    focusedInput
+    focusedInput,
+    startDateInputRef,
+    endDateInputRef
   } = useDateRangeInput(value, onChange);
-  const popupRef = useRef<HTMLDivElement>(null);
-  const outsideRef = useRef<HTMLDivElement>(null);
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        backgroundColor: theme.backgroundColor,
-        borderColor: theme.borderColor
-      }
-    },
-    []
-  );
 
   const popperContent = (
     <CalendarPopperContent
       innerRef={popupRef}
-      background={colors.backgroundColor}
-      borderColor={colors.borderColor}
+      background={"var(--swui-textinput-bg-color)"}
+      borderColor={"var(--swui-modal-border-color)"}
       zIndex={zIndex}
       open={showingCalendar}
     >
@@ -179,37 +156,31 @@ export const DateRangeInput = <T extends {}>({
           {({ ref }) => (
             <Box innerRef={ref}>
               <Row alignItems={"center"}>
-                <StandardTextInput
+                <TextInput
                   iconLeft={faCalendarAlt}
                   onFocus={showCalendarStartDate}
-                  forceFocusHighlight={
-                    focusedInput === "startDate" && showingFocusHighlight
-                  }
                   value={
                     value.startDate
                       ? format(value.startDate, displayFormat)
                       : ""
                   }
                   placeholder={placeholderStartDate}
-                  onChange={noop}
                   width={width}
+                  inputRef={startDateInputRef}
                   size={9}
                 />
                 <Space />
                 <StandardText>{toText}</StandardText>
                 <Space />
-                <StandardTextInput
+                <TextInput
                   iconLeft={faCalendarAlt}
                   onFocus={showCalendarEndDate}
-                  forceFocusHighlight={
-                    focusedInput === "endDate" && showingFocusHighlight
-                  }
                   value={
                     value.endDate ? format(value.endDate, displayFormat) : ""
                   }
                   placeholder={placeholderEndDate}
-                  onChange={noop}
                   width={width}
+                  inputRef={endDateInputRef}
                   size={9}
                 />
               </Row>

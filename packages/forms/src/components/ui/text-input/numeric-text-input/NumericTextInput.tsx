@@ -1,22 +1,14 @@
 import { ClassNames } from "@emotion/core";
-import { Box, Omit, Space, useThemeFields } from "@stenajs-webui/core";
+import { Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
-import {
-  StandardTextInput,
-  StandardTextInputProps
-} from "../StandardTextInput";
-import {
-  defaultNumericTextInputTheme,
-  NumericTextInputTheme
-} from "./NumericTextInputTheme";
+import { TextInput, TextInputProps } from "../TextInput";
 import { parseFloatElseUndefined } from "./util/NumericTextInputUtil";
 
 export interface NumericTextInputProps
   extends Omit<
-    StandardTextInputProps,
-    | "theme"
+    TextInputProps,
     | "onChange" // Omit onChange, since up down buttons don't generate HTMLInput event.
     | "selectAllOnMount" // Not supported by browser when input type='number'
     | "moveCursorToEndOnMount" // Not supported by browser when input type='number'
@@ -25,7 +17,6 @@ export interface NumericTextInputProps
   min?: number;
   step?: number;
   hideButtons?: boolean;
-  theme?: NumericTextInputTheme;
 }
 
 export const NumericTextInput: React.FC<NumericTextInputProps> = ({
@@ -35,20 +26,11 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   min,
   step = 1,
   contentRight,
-  theme = defaultNumericTextInputTheme,
   disabled,
   className,
   hideButtons,
   ...restProps
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColor: theme.textColor
-      }
-    },
-    [theme]
-  );
   const onClick = useCallback(
     (numSteps: number) => {
       if (onValueChange) {
@@ -74,26 +56,25 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
           <Space />
         </>
       )}
-      <Box borderLeft={`1px solid ${theme.borderColor}`}>
-        <UpDownButtons
-          onClickUp={disabled ? undefined : () => onClick(step)}
-          onClickDown={disabled ? undefined : () => onClick(-step)}
-          buttonHeight={theme.buttonHeight}
-          iconColor={colors.textColor}
-        />
-      </Box>
+      <UpDownButtons
+        onClickUp={disabled ? undefined : () => onClick(step)}
+        onClickDown={disabled ? undefined : () => onClick(-step)}
+        buttonHeight={"100%"}
+        iconColor={"var(--swui-textinput-text-color)"}
+        disabled={disabled}
+      />
     </>
   );
 
   return (
     <ClassNames>
       {({ css, cx }) => (
-        <StandardTextInput
+        <TextInput
           contentRight={contentRightToUse}
           value={value}
           onValueChange={onValueChange}
           disableContentPaddingRight={!hideButtons}
-          inputType={"number"}
+          type={"number"}
           min={min}
           max={max}
           step={step}
@@ -108,7 +89,6 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
               }
             `
           ])}
-          theme={theme}
           disabled={disabled}
           {...restProps}
         />
