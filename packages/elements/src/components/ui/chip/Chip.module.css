@@ -1,0 +1,66 @@
+.chip {
+  --swui-chip-background-color: #e1eefa;
+  --swui-chip-border-color: #6ca9e6;
+  --swui-chip-border-radius: var(
+    --swui-field-border-radius
+  ); /* TODO: Change to correct border radius variable */
+  --swui-chip-color: #143e62;
+  --swui-chip-padding: calc(var(--swui-metrics-space) / 2)
+    var(--swui-metrics-space);
+  --swui-chip-font-size: 12px;
+
+  --swui-chip-button-color: var(--swui-white);
+  --swui-chip-button-padding: calc(var(--swui-metrics-space) / 2);
+
+  background-color: var(--swui-chip-background-color);
+  border: 1px solid var(--swui-chip-border-color);
+  border-radius: var(--swui-chip-border-radius);
+  display: inline-flex;
+  overflow: hidden;
+  height: 24px;
+
+  .label {
+    color: var(--swui-chip-color);
+    font-size: var(--swui-chip-font-size);
+    padding: var(--swui-chip-padding);
+    letter-spacing: -0.2px;
+  }
+
+  .close {
+    color: var(--swui-chip-button-color);
+    flex-grow: 1;
+    padding: var(--swui-chip-button-padding);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    svg {
+      color: var(--swui-chip-color);
+    }
+  }
+
+  &.success {
+    --swui-chip-background-color: var(--swui-state-success-color);
+    --swui-chip-color: var(--swui-state-success-light-color);
+  }
+
+  &.alert {
+    --swui-chip-background-color: var(--swui-state-alert-color);
+  }
+
+  &.modified {
+    --swui-chip-background-color: var(--swui-text-input-bg-modified);
+  }
+
+  &.error {
+    --swui-chip-background-color: var(--swui-state-error-color);
+    --swui-chip-color: var(--swui-state-error-light-color);
+  }
+
+  &.warning {
+    --swui-chip-background-color: var(--swui-text-input-border-color-warning);
+  }
+}

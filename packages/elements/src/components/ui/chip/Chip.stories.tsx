@@ -1,19 +1,28 @@
 import { Chip } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { Column } from "@stenajs-webui/core";
 
-storiesOf("elements/Chip", module)
-  .add("standard", () => <Chip label={"Some text"} />)
-  .add("clickable label", () => (
-    <Chip label={"Some text"} onClickLabel={() => alert("hello world")} />
-  ))
-  .add("removable", () => (
-    <Chip label={"Some text"} onClickRemove={() => alert("remove")} />
-  ))
-  .add("clickable label and removable", () => (
+storiesOf("elements/Chip", module).add("standard", () => (
+  <Column alignItems={"flex-start"}>
+    <Chip label={"Default"} style={{ margin: "8px" }} />
+    <Chip label={"Error"} style={{ margin: "8px" }} variant={"error"} />
+    <Chip label={"Success"} style={{ margin: "8px" }} variant={"success"} />
     <Chip
-      label={"Some text"}
+      label={"With onClickLabel"}
+      style={{ margin: "8px" }}
+      onClickLabel={() => alert("hello world")}
+    />
+    <Chip
+      label={"With onClickRemove"}
+      style={{ margin: "8px" }}
+      onClickRemove={() => alert("remove")}
+    />
+    <Chip
+      label={"With both"}
+      style={{ margin: "8px" }}
       onClickLabel={() => alert("hello world")}
       onClickRemove={() => alert("remove")}
     />
-  ));
+  </Column>
+));
