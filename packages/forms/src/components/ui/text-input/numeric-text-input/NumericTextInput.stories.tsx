@@ -1,6 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { StandardText } from "@stenajs-webui/core";
+import { Space, StandardText } from "@stenajs-webui/core";
 import {
   NumericInputValueProps,
   NumericTextInput,
@@ -8,7 +8,6 @@ import {
 } from "@stenajs-webui/forms";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { Space } from "../../../../../../core/src/components/layout/space/Space";
 import markdown from "./NumericTextInput.md";
 
 interface State {
