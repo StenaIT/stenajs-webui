@@ -1,7 +1,4 @@
-import {
-  TextInput,
-  TextInputProps
-} from "@stenajs-webui/forms";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useRef } from "react";
 import { useMaskedInput } from "../hooks/UseInputMask";
