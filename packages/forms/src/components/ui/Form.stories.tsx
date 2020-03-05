@@ -90,10 +90,11 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
     </table>
   );
 };
+
 const RadioButtonTable: React.FC<{
   store: Store<State>;
   isEnabled: boolean;
-}> = ({ store, isEnabled }) => {
+}> = ({ isEnabled }) => {
   return (
     <table cellPadding={"5px"}>
       <thead>
@@ -307,26 +308,28 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
               </tr>
             </thead>
             <tbody>
-              <td>
-                <TextInput
-                  value={store.state.input}
-                  onValueChange={value => store.set({ input: value })}
-                />
-              </td>
-              <td>
-                <TextInput
-                  value={store.state.input}
-                  onValueChange={value => store.set({ input: value })}
-                  disabled
-                />
-              </td>
-              <td>
-                <TextInput
-                  value={store.state.input}
-                  onValueChange={value => store.set({ input: value })}
-                  variant={"error"}
-                />
-              </td>
+              <tr>
+                <td>
+                  <TextInput
+                    value={store.state.input}
+                    onValueChange={value => store.set({ input: value })}
+                  />
+                </td>
+                <td>
+                  <TextInput
+                    value={store.state.input}
+                    onValueChange={value => store.set({ input: value })}
+                    disabled
+                  />
+                </td>
+                <td>
+                  <TextInput
+                    value={store.state.input}
+                    onValueChange={value => store.set({ input: value })}
+                    variant={"error"}
+                  />
+                </td>
+              </tr>
             </tbody>
           </table>
         </Row>
