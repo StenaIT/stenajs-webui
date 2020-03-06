@@ -4,15 +4,12 @@ import * as React from "react";
 
 storiesOf("elements/Chip", module).add("standard", () => (
   <div className={"margin-wrapper"}>
-    <Chip text={"Default"} />
+    <Chip label={"Default"} />
+    <Chip label={"With onClickLabel"} onClick={() => alert("hello world")} />
+    <Chip label={"With onClickRemove"} onClickRemove={() => alert("remove")} />
     <Chip
-      text={"With onClickLabel"}
-      onClickLabel={() => alert("hello world")}
-    />
-    <Chip text={"With onClickRemove"} onClickRemove={() => alert("remove")} />
-    <Chip
-      text={"With both"}
-      onClickLabel={() => alert("hello world")}
+      label={"With both"}
+      onClick={() => alert("hello world")}
       onClickRemove={() => alert("remove")}
     />
   </div>

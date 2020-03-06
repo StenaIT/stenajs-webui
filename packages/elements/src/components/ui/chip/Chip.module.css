@@ -3,30 +3,34 @@
   --swui-chip-close-size: calc(var(--swui-metrics-space) * 2);
   --swui-chip-close-margin: calc(var(--swui-metrics-space) / 4);
 
-  padding-right: 0;
+  --swui-button-text-size: 12px;
+  --swui-button-padding-vertical: 3px;
+  --swui-button-padding-horizontal: 0;
+
+  .label {
+    padding-left: 8px;
+
+    &:last-child {
+      padding-right: 8px;
+    }
+  }
 
   .label {
     color: inherit;
   }
 
-  .close {
-    color: var(--swui-chip-close-color);
+  /* Specifying the class twice gives the css rule more specificity which
+    makes it possible to override properties without having to use !important
+   */
+  .close.close {
+    --swui-button-padding-vertical: 0;
+    --swui-button-text-color: var(--swui-chip-close-color);
+    --current-icon-height: 8px;
+    --current-line-height: 8px;
+    --swui-button-background-color-hover: var(--lhds-color-blue-100);
+    --swui-button-text-color-hover: var(--lhds-color-blue-500);
     width: var(--swui-chip-close-size);
     height: var(--swui-chip-close-size);
     margin: 0 var(--swui-chip-close-margin);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    svg {
-      color: inherit;
-    }
   }
 }

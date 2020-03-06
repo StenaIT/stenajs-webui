@@ -1,33 +1,42 @@
 import * as React from "react";
-import { Clickable } from "@stenajs-webui/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { Icon } from "../icon/Icon";
-import { Label, LabelProps } from "../label/Label";
 import cx from "classnames";
 
 import styles from "./Chip.module.css";
+import {
+  FlatButton,
+  PrimaryButton,
+  PrimaryButtonProps
+} from "@stenajs-webui/elements";
 
-export interface ChipProps extends LabelProps {
-  text: string;
-  onClickLabel?: () => void;
+export interface ChipProps extends PrimaryButtonProps {
   onClickRemove?: () => void;
 }
 
 export const Chip: React.FC<ChipProps> = ({
-  text,
-  onClickLabel,
   onClickRemove,
   className,
+  label,
+  onClick,
   ...props
 }) => {
   return (
-    <Label className={cx(styles.chip, className)} {...props}>
-      <Clickable onClick={onClickLabel} className={styles.label}>
-        {text}
-      </Clickable>
-      <Clickable onClick={onClickRemove} className={styles.close}>
-        <Icon icon={faTimes} size={8} />
-      </Clickable>
-    </Label>
+    <PrimaryButton
+      className={cx(styles.chip, className)}
+      label={
+        <>
+          <div className={styles.label}>{label}</div>
+          {onClickRemove && (
+            <FlatButton
+              onClick={onClickRemove}
+              leftIcon={faTimes}
+              size={"small"}
+              className={styles.close}
+            />
+          )}
+        </>
+      }
+      {...props}
+    />
   );
 };
