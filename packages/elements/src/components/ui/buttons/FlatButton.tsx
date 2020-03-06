@@ -1,20 +1,19 @@
+import cx from "classnames";
 import * as React from "react";
-import { Button, ButtonProps } from "./Button";
-import { ButtonTheme, defaultButtonTheme } from "./ButtonTheme";
+import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
+import styles from "./FlatButton.module.css";
 
-export const FlatButton: React.FC<ButtonProps> = ({
-  buttonTheme = defaultFlatButtonTheme,
-  ...buttonProps
-}) => <Button buttonTheme={buttonTheme} {...buttonProps} />;
+export interface FlatButtonProps extends PrimaryButtonProps {
+  inverted?: boolean;
+}
 
-export const defaultFlatButtonTheme: ButtonTheme = {
-  ...defaultButtonTheme,
-  bgColor: "transparent",
-  bgColorDisabled: "transparent",
-  textColor: "primaryText",
-  textColorDisabled: "disabledText",
-  loadingTextColor: "primaryText",
-  loadingSpinnerColor: "primaryText",
-  successIconColor: "primaryText",
-  successTextColor: "primaryText"
-};
+export const FlatButton: React.FC<FlatButtonProps> = ({
+  className,
+  inverted,
+  ...props
+}) => (
+  <PrimaryButton
+    className={cx(className, styles.flatButton, inverted && styles.inverted)}
+    {...props}
+  />
+);

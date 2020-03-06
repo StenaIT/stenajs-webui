@@ -2,7 +2,6 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
-import { ButtonTheme, defaultButtonTheme } from "@stenajs-webui/elements";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 
@@ -31,14 +30,8 @@ export interface WeekNumberTheme {
   show?: boolean;
 }
 
-export interface SwitchButtonTheme extends ButtonTheme {
-  height: string;
-  width?: string;
-}
-
 export interface CalendarMonthTheme {
   headerTextColor?: ThemeColorField | string;
-  SwitchButton?: SwitchButtonTheme;
   cellSpacing?: string;
   headerLeftIcon?: IconDefinition;
   headerRightIcon?: IconDefinition;
@@ -206,10 +199,6 @@ export const defaultCalendarTheme: CalendarTheme = {
     })
   },
   CalendarMonth: {
-    SwitchButton: {
-      ...defaultButtonTheme,
-      width: "40px"
-    },
     headerLeftIcon: faChevronLeft,
     headerRightIcon: faChevronRight
   }
@@ -240,15 +229,7 @@ export const extranetCalendarTheme: CalendarTheme = {
       inOtherMonthColor: "transparent"
     })
   },
-  CalendarMonth: {
-    SwitchButton: {
-      ...defaultButtonTheme,
-      bgColor: "#2A7EC5",
-      textColor: "#FFFFFF",
-      borderRadius: "4px",
-      width: "40px"
-    }
-  }
+  CalendarMonth: {}
 };
 
 export const resolveThemeColor = (s: string, theme: Theme): string =>

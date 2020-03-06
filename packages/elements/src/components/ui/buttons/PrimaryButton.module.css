@@ -1,0 +1,209 @@
+.button {
+  --swui-button-line-height: 16px;
+  --swui-button-font-weight: 400;
+  --swui-button-text-size: 14px;
+  --swui-button-text-color: #fff;
+  --swui-button-text-decoration: none;
+  --swui-button-letter-spacing: var(--swui-field-letter-spacing);
+  --swui-button-padding-vertical: var(--swui-metrics-spacing);
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2);
+
+  /* Text */
+  --swui-button-text-color-focus: var(--swui-button-text-color);
+  --swui-button-text-color-hover: var(--swui-button-text-color);
+  --swui-button-text-color-active: var(--swui-button-text-color);
+  --swui-button-text-color-disabled: var(--swui-field-text-color-disabled);
+
+  /* Background */
+  --swui-button-background-color: var(--swui-primary-action-color);
+  --swui-button-background-color-active: var(
+    --swui-primary-action-color-active
+  );
+  --swui-button-background-color-focus: var(--swui-primary-action-color-focus);
+  --swui-button-background-color-hover: var(--swui-primary-action-color-hover);
+  --swui-button-background-color-disabled: var(
+    --swui-primary-action-color-disabled
+  );
+
+  /* Border */
+  --swui-button-border-color: var(--swui-button-background-color);
+  --swui-button-border-radius: var(--swui-border-radius);
+  --swui-button-border-radius-icon-only: var(--swui-border-radius);
+  --swui-button-border-color-focus: var(--swui-button-background-color);
+  --swui-button-border-color-hover: var(--swui-button-background-color);
+  --swui-button-border-color-active: var(--swui-button-background-color);
+  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
+
+  /* Shadow */
+  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+  --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
+    0 0 1px 0 rgba(29, 100, 171, 0.16);
+  --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
+    0 0 1px -1px rgba(29, 100, 171, 0.1);
+  --swui-button-box-shadow-active: none;
+  --swui-button-box-shadow-disabled: none;
+
+  /*
+   * Styling
+   */
+
+  --current-icon-height: 16px;
+  --current-text-color: var(--swui-button-text-color);
+  --current-border-color: var(--swui-button-border-color);
+
+  letter-spacing: var(--swui-button-letter-spacing);
+  text-decoration: var(--swui-button-text-decoration);
+  padding: var(--swui-button-padding-vertical)
+    var(--swui-button-padding-horizontal);
+  border: 1px solid var(--current-border-color);
+  background-color: var(
+    --current-background-color,
+    var(--swui-button-background-color)
+  );
+  border-radius: var(--swui-button-border-radius);
+  box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
+  color: var(--current-text-color);
+  font-size: var(--current-text-size, var(--swui-button-text-size));
+  line-height: var(--current-line-height, var(--swui-button-line-height));
+  font-weight: var(--swui-button-font-weight);
+  font-family: var(--swui-font-buttons);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  &.iconButton {
+    padding: var(--swui-button-padding-vertical);
+    color: var(--current-text-color);
+
+    border-radius: var(--swui-button-border-radius-icon-only);
+
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    &.small  {
+      width: 24px;
+      height: 24px;
+    }
+
+    &.large  {
+      width: 40px;
+      height: 40px;
+    }
+
+    .iconLeft,
+    .iconRight {
+      height: var(--current-line-height);
+    }
+  }
+
+  .iconLeft,
+  .iconRight {
+    height: var(--current-icon-height);
+  }
+
+  .iconLeft:not(:last-child) {
+    margin-right: var(--swui-metrics-indent);
+  }
+
+  .iconRight:not(:first-child) {
+    margin-left: var(--swui-metrics-indent);
+  }
+
+  /*
+   * State and variants
+   */
+
+  &.small {
+    --current-line-height: 16px;
+    --swui-button-padding-vertical: 4px;
+    --swui-button-padding-horizontal: 8px;
+    --current-text-size: 12px;
+  }
+
+  &.large {
+    --current-line-height: 24px;
+    --swui-button-padding-vertical: 8px;
+    --swui-button-padding-horizontal: 24px;
+    --current-text-size: 16px;
+
+    &.iconButton {
+      --current-icon-height: 24px;
+    }
+  }
+
+  &:hover {
+    --current-background-color: var(--swui-button-background-color-hover);
+    --current-border-color: var(--swui-button-border-color-hover);
+    --current-text-color: var(--swui-button-text-color-hover);
+    --current-box-shadow: var(--swui-button-box-shadow-hover);
+  }
+
+  &:focus {
+    outline: 0;
+    --current-border-color: var(--swui-button-border-color-focus);
+    --current-text-color: var(--swui-button-text-color-focus);
+    --current-box-shadow: var(--swui-button-box-shadow-focus);
+  }
+
+  &:active {
+    --current-background-color: var(--swui-button-background-color-active);
+    --current-border-color: var(--swui-button-border-color-active);
+    --current-text-color: var(--swui-button-text-color-active);
+    --current-box-shadow: var(--swui-button-box-shadow-active);
+  }
+
+  &:disabled {
+    --current-background-color: var(--swui-button-background-color-disabled);
+    --current-border-color: var(--swui-button-border-color-disabled);
+    --current-text-color: var(--swui-button-text-color-disabled);
+    --current-box-shadow: var(--swui-button-box-shadow-disabled);
+    cursor: not-allowed;
+  }
+
+  &.normal {
+  }
+
+  &.danger {
+    --current-background-color: var(--lhds-color-red-500);
+    --current-border-color: var(--lhds-color-red-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-red-700);
+      --current-border-color: var(--lhds-color-red-700);
+    }
+
+    &:focus {
+      outline: 0;
+      --current-border-color: var(--lhds-color-red-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-red-900);
+      --current-border-color: var(--lhds-color-red-900);
+    }
+  }
+
+  &.success {
+    --current-background-color: var(--lhds-color-green-500);
+    --current-border-color: var(--lhds-color-green-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-green-700);
+      --current-border-color: var(--lhds-color-green-700);
+    }
+
+    &:focus {
+      outline: 0;
+      --current-border-color: var(--lhds-color-green-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-green-900);
+      --current-border-color: var(--lhds-color-green-900);
+    }
+  }
+}

@@ -1,36 +1,22 @@
-import { useThemeFields } from "@stenajs-webui/core";
-import { ButtonProps, FlatButton } from "@stenajs-webui/elements";
+import { FlatButtonProps, FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import {
-  defaultNavBarButtonTheme,
-  NavBarButtonTheme
-} from "./NavBarButtonTheme";
+import styles from "./NavBarButton.module.css";
+import cx from "classnames";
 
-export interface NavBarButtonProps extends ButtonProps {
+export interface NavBarButtonProps extends FlatButtonProps {
   selected?: boolean;
-  theme?: NavBarButtonTheme;
 }
 
 export const NavBarButton: React.FC<NavBarButtonProps> = ({
   selected,
-  theme = defaultNavBarButtonTheme,
+  className,
   ...buttonProps
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColorSelected: theme.textColorSelected,
-        textColorNotSelected: theme.textColorNotSelected
-      }
-    },
-    [theme]
-  );
-
-  const textColor = selected
-    ? colors.textColorSelected
-    : colors.textColorNotSelected;
-
   return (
-    <FlatButton buttonTheme={theme} textColor={textColor} {...buttonProps} />
+    <FlatButton
+      {...buttonProps}
+      className={cx(className, selected && styles.selected)}
+      inverted
+    />
   );
 };

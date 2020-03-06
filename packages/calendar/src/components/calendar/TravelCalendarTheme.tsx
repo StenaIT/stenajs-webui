@@ -1,15 +1,14 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
-import { defaultButtonTheme } from "@stenajs-webui/elements";
-import {
-  defaultTextPropsProvider,
-  defaultWrapperStyleProvider,
-  CalendarTheme,
-  resolveThemeColor,
-  CalendarWrapperStyleProvider
-} from "./CalendarTheme";
 
 import { dayHighlightSelect } from "../../util/calendar/StateHelper";
+import {
+  CalendarTheme,
+  CalendarWrapperStyleProvider,
+  defaultTextPropsProvider,
+  defaultWrapperStyleProvider,
+  resolveThemeColor
+} from "./CalendarTheme";
 
 interface DefaultInnerWrapperColors {
   rangeBackground: string;
@@ -173,18 +172,6 @@ export const travelCalendarTheme: CalendarTheme = {
   },
   CalendarMonth: {
     cellSpacing: "2px",
-    SwitchButton: {
-      ...defaultButtonTheme,
-      bgColor: "##FFFFFF",
-      textColor: "#000000",
-      borderRadius: "36px",
-      width: "36px",
-      height: "36px",
-      bgColorDisabled: "#f4f4f4",
-      textColorDisabled: "#949494",
-      borderColor: "#949494",
-      borderColorDisabled: "#f4f4f4"
-    },
     headerLeftIcon: faArrowLeft,
     headerRightIcon: faArrowRight
   }

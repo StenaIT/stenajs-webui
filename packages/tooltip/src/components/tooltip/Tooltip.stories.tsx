@@ -1,5 +1,5 @@
 import { Row, StandardText } from "@stenajs-webui/core";
-import { StandardButton } from "@stenajs-webui/elements";
+import { PrimaryButton } from "@stenajs-webui/elements";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -33,6 +33,6 @@ storiesOf("tooltip/Tooltip", module)
   ))
   .add("with button", () => (
     <Tooltip label={"Big success!"} trigger={"click"}>
-      {({ show }) => <StandardButton onClick={show} label={"Click me"} />}
+      {({ show }) => <PrimaryButton onClick={show} label={"Click me"} />}
     </Tooltip>
   ));

@@ -1,5 +1,5 @@
 import { Column, PartialTheme, ThemeProvider } from "@stenajs-webui/core";
-import { StandardButton } from "@stenajs-webui/elements";
+import { PrimaryButton } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
@@ -75,13 +75,13 @@ const overridingTheme: PartialTheme = {
 storiesOf("theme/ThemeContext", module)
   .add("standard theme", () => (
     <>
-      <StandardButton label={"Button"} />
+      <PrimaryButton label={"Button"} />
     </>
   ))
   .add("custom theme", () => (
     <>
       <ThemeProvider value={customTheme}>
-        <StandardButton label={"Button"} />
+        <PrimaryButton label={"Button"} />
       </ThemeProvider>
     </>
   ))
@@ -91,11 +91,11 @@ storiesOf("theme/ThemeContext", module)
       height={"150px"}
       justifyContent={"space-between"}
     >
-      <StandardButton label={"Default theme button"} />
+      <PrimaryButton label={"Default theme button"} />
       <ThemeProvider value={customTheme}>
-        <StandardButton label={"Custom theme button"} />
+        <PrimaryButton label={"Custom theme button"} />
         <ThemeProvider value={overridingTheme}>
-          <StandardButton label={"Custom theme button with different color"} />
+          <PrimaryButton label={"Custom theme button with different color"} />
         </ThemeProvider>
       </ThemeProvider>
     </Column>

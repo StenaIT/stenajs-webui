@@ -1,11 +1,12 @@
+import "./default-colors.css";
 import "./default-theme.css";
 
 export * from "./components/ui/spinner/Spinner";
 export * from "./components/ui/spinner/InputSpinner";
-export { ButtonProps } from "./components/ui/buttons/Button";
-export * from "./components/ui/buttons/ButtonTheme";
 export * from "./components/ui/buttons/FlatButton";
-export * from "./components/ui/buttons/SmallButton";
+export * from "./components/ui/buttons/PrimaryButton";
+export * from "./components/ui/buttons/SecondaryButton";
+export * from "./components/ui/buttons/ButtonGroup";
 export * from "./components/ui/buttons/StandardButton";
 export * from "./components/ui/buttons/UpDownButtons";
 export * from "./components/ui/icon/Icon";

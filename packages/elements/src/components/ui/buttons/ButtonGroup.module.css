@@ -1,0 +1,27 @@
+.buttonGroup {
+  display: flex;
+  margin: 8px;
+
+  & > button {
+    margin: 0;
+    position: relative;
+
+    &:not(:only-child):not(:last-child) {
+      margin-right: -1px;
+    }
+
+    &:hover,
+    &:focus {
+      z-index: 1;
+    }
+
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

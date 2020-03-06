@@ -10,7 +10,7 @@ import {
 } from "@stenajs-webui/core";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { StandardButton } from "../../../packages/elements/src/components/ui/buttons/StandardButton";
+import { PrimaryButton } from "@stenajs-webui/elements";
 
 storiesOf("examples/Tables", module).add("Simple table", () => {
   const list = ["Donald Duck", "Daisy", "Howard the duck", "A duck"];
@@ -99,7 +99,7 @@ storiesOf("examples/Tables", module).add("Simple table", () => {
           </table>
           <Space />
           <Row indent justifyContent={"flex-start"}>
-            <StandardButton leftIcon={faPlus} />
+            <PrimaryButton leftIcon={faPlus} />
           </Row>
         </Spacing>
       </Box>

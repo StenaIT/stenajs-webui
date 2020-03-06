@@ -1,44 +1,36 @@
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { FlatButton } from "@stenajs-webui/elements";
-import { action } from "@storybook/addon-actions";
+import { Column, LargeText, Space } from "@stenajs-webui/core";
+import { ButtonSize, FlatButton } from "@stenajs-webui/elements";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
+const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
+
 storiesOf("elements/Buttons/FlatButton", module)
-  .add("default", () => (
-    <FlatButton label={"Submit"} onClick={action("Button clicked")} />
+  .add("standard", () => (
+    <Column spacing indent>
+      <LargeText>FlatButton</LargeText>
+      <Space num={4} />
+      <div style={{ display: "inline-block" }}>
+        {buttonSizes.map(size => (
+          <>
+            <FlatButton key={size} size={size} label={size} />
+            <Space />
+          </>
+        ))}
+      </div>
+    </Column>
   ))
-  .add("disabled", () => (
-    <FlatButton label={"Submit"} disabled onClick={action("Button clicked")} />
-  ))
-  .add("with icon left", () => (
-    <FlatButton
-      label={"Submit"}
-      leftIcon={faCoffee}
-      onClick={action("Button clicked")}
-    />
-  ))
-  .add("with icon right", () => (
-    <FlatButton
-      label={"Submit"}
-      rightIcon={faCoffee}
-      onClick={action("Button clicked")}
-    />
-  ))
-  .add("with loading", () => (
-    <FlatButton label={"Submit"} loading onClick={action("Button clicked")} />
-  ))
-  .add("with loading label", () => (
-    <FlatButton
-      label={"Submit"}
-      loading
-      loadingLabel={"Loading..."}
-      onClick={action("Button clicked")}
-    />
-  ))
-  .add("with success", () => (
-    <FlatButton label={"Submit"} success onClick={action("Button clicked")} />
-  ))
-  .add("with success label", () => (
-    <FlatButton label={"Submit"} success successLabel={"Done!"} />
+  .add("inverted", () => (
+    <Column background={"#0f304d"} spacing indent>
+      <LargeText color={"#fff"}>FlatButton inverted</LargeText>
+      <Space num={4} />
+      <div style={{ display: "inline-block" }}>
+        {buttonSizes.map(size => (
+          <>
+            <FlatButton key={size} size={size} label={size} inverted />
+            <Space />
+          </>
+        ))}
+      </div>
+    </Column>
   ));

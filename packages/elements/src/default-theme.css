@@ -1,5 +1,5 @@
 :root {
-  /* Text colors */
+    /* Text colors */
   --swui-text-primary-color: #1b2e47;
   --swui-text-disabled-color: #b6b6b6;
   --swui-text-darkmode-primary-color: #bcbabd;
@@ -8,7 +8,11 @@
   /* Generic colors */
   --swui-white: #fff;
   --swui-hidden: rgba(0, 0, 0, 0);
-  --swui-primary-action-color: #2378cd;
+  --swui-primary-action-color: var(--lhds-color-blue-500);
+  --swui-primary-action-color-active: var(--lhds-color-blue-800);
+  --swui-primary-action-color-focus: var(--lhds-color-blue-700);
+  --swui-primary-action-color-hover: var(--lhds-color-blue-600);
+  --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
   --swui-separator-color: #b1b1b1;
   --swui-handle-bg-enabled-color: var(--swui-white);
   --swui-handle-bg-disabled-color: #bebbc0;
@@ -58,6 +62,9 @@
   --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
+
+  /* Borders */
+  --swui-border-radius: 4px;
 
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;

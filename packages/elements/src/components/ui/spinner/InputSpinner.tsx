@@ -5,6 +5,7 @@ import { ReactComponent as SpinnerSvg } from "./spinner-small.svg";
 export interface InputSpinnerProps {
   color?: string;
   size?: string;
+  className?: string;
 }
 
 const loadingCircle = keyframes`
@@ -13,17 +14,25 @@ const loadingCircle = keyframes`
   }
 `;
 
-export const InputSpinner: React.FC<InputSpinnerProps> = ({ color, size }) => {
+export const InputSpinner: React.FC<InputSpinnerProps> = ({
+  className,
+  color,
+  size
+}) => {
   return (
     <ClassNames>
-      {({ css }) => (
+      {({ css, cx }) => (
         <SpinnerSvg
-          className={css`
-            width: ${size};
-            height: ${size};
-            fill: ${color};
-            animation: ${loadingCircle} 1s infinite linear;
-          `}
+          className={cx(
+            className,
+            css`
+              color: ${color};
+              width: ${size};
+              height: ${size};
+              fill: currentColor;
+              animation: ${loadingCircle} 1s infinite linear;
+            `
+          )}
         />
       )}
     </ClassNames>

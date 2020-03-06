@@ -1,0 +1,42 @@
+.flatButton {
+  /* Text */
+  --swui-button-font-weight: 600;
+  --swui-button-text-color: var(--swui-primary-action-color);
+  --swui-button-text-color-active: var(--swui-primary-action-color);
+  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+
+  /* Background */
+  --swui-button-background-color: transparent;
+  --swui-button-background-color-hover: var(--lhds-color-blue-50);
+  --swui-button-background-color-focus: transparent;
+  --swui-button-background-color-active: var(--lhds-color-blue-100);
+  --swui-button-background-color-disabled: transparent;
+
+  /* Border */
+  --swui-button-border-color: transparent;
+  --swui-button-border-color-hover: transparent;
+  --swui-button-border-color-focus: transparent;
+  --swui-button-border-color-active: transparent;
+  --swui-button-border-color-disabled: transparent;
+  --swui-button-border-radius-icon-only: 50%;
+
+  /* Shadow */
+  --swui-button-box-shadow: none;
+  --swui-button-box-shadow-hover: none;
+  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+  --swui-button-box-shadow-active: none;
+  --swui-button-box-shadow-disabled: none;
+
+  &.inverted {
+    --swui-button-text-color: var(--lhds-color-blue-200);
+    --swui-button-text-color-active: var(--lhds-color-blue-200);
+    --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+
+    /* Background */
+    --swui-button-background-color: transparent;
+    --swui-button-background-color-hover: var(--lhds-color-blue-800);
+    --swui-button-background-color-focus: transparent;
+    --swui-button-background-color-active: var(--lhds-color-blue-700);
+    --swui-button-background-color-disabled: transparent;
+  }
+}

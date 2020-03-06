@@ -1,4 +1,4 @@
-import { StandardButton } from "@stenajs-webui/elements";
+import { PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Calendar } from "../../components/calendar/Calendar";
 import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
@@ -49,25 +49,15 @@ export function CalendarWithMonthSwitcher<T>({
           theme={theme}
           date={date}
           headerLeftContent={
-            <StandardButton
+            <PrimaryButton
               onClick={prevMonth}
               leftIcon={theme.CalendarMonth.headerLeftIcon}
-              buttonTheme={theme.CalendarMonth.SwitchButton}
-              width={
-                theme.CalendarMonth.SwitchButton &&
-                theme.CalendarMonth.SwitchButton.width
-              }
             />
           }
           headerRightContent={
-            <StandardButton
+            <PrimaryButton
               onClick={nextMonth}
               leftIcon={theme.CalendarMonth.headerRightIcon}
-              buttonTheme={theme.CalendarMonth.SwitchButton}
-              width={
-                theme.CalendarMonth.SwitchButton &&
-                theme.CalendarMonth.SwitchButton.width
-              }
             />
           }
         />
