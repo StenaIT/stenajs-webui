@@ -5,14 +5,17 @@ import { ButtonProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
-import { InputSpinner } from "../../..";
+import { InputSpinner } from "../spinner/InputSpinner";
 import styles from "./PrimaryButton.module.css";
 
 export type ButtonSize = "normal" | "small" | "large";
+export type ButtonVariant = "normal" | "danger" | "success";
 
 export interface PrimaryButtonProps extends ButtonProps {
   /** The text on the button. */
   label?: string;
+  /** The variant to use. */
+  variant?: ButtonVariant;
   /** The content to show when loading. */
   loadingLabel?: string;
   /** The size of the button, can be 'small', 'normal' or 'large' */
@@ -68,6 +71,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   right,
   onClick,
   innerRef,
+  variant = "normal",
   ...buttonProps
 }) => {
   const buttonLabel = getButtonLabel(
@@ -77,6 +81,13 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     loading,
     loadingLabel
   );
+
+  const hasLabel = Boolean(
+    (label && !success && !loading) ||
+      (success && successLabel) ||
+      (loading && loadingLabel)
+  );
+
   return (
     <button
       ref={innerRef}
@@ -84,7 +95,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       className={cx(
         styles.button,
         styles[size],
-        !label && styles.iconButton,
+        styles[variant],
+        !hasLabel && styles.iconButton,
         className
       )}
       disabled={disabled}

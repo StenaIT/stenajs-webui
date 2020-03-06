@@ -54,6 +54,6 @@ You can use `hide` and `show` to programmatically show or hide the popover.
   content={<StandardText>Nice content on bottom</StandardText>}
   trigger={"click"}
 >
-  {({ show }) => <StandardButton onClick={show}>Click me</StandardButton>}
+  {({ show }) => <PrimaryButton onClick={show}>Click me</PrimaryButton>}
 </Popover>
 ```

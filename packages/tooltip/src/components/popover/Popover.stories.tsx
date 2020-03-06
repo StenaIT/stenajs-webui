@@ -1,7 +1,7 @@
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Box } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import { FlatButton } from "@stenajs-webui/elements";
 import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -31,7 +31,7 @@ const ActionPromptWithLogic: React.FC = () => {
         )}
         trigger={"click"}
       >
-        <Icon icon={faTrash} />
+        {({ show }) => <FlatButton leftIcon={faTrash} onClick={show} />}
       </Popover>
     </Box>
   );
@@ -43,7 +43,7 @@ storiesOf("tooltip/Popover", module)
     () => (
       <Box indent={5} spacing={5} display={"inline-block"}>
         <Popover content={<ActionPrompt />} trigger={"click"}>
-          <Icon icon={faTrash} />
+          {({ show }) => <FlatButton leftIcon={faTrash} onClick={show} />}
         </Popover>
       </Box>
     ),
@@ -58,7 +58,7 @@ storiesOf("tooltip/Popover", module)
           trigger={"click"}
           portalTarget={document.body}
         >
-          <Icon icon={faInfo} />
+          {({ show }) => <FlatButton leftIcon={faInfo} onClick={show} />}
         </Popover>
       </Box>
     ),

@@ -8,7 +8,7 @@ import {
   Spacing,
   StandardText
 } from "@stenajs-webui/core";
-import { StandardButton } from "@stenajs-webui/elements";
+import { PrimaryButton } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
@@ -45,7 +45,7 @@ storiesOf("examples/Boxes", module).add("New block config", () => (
 
           <Space num={2} />
           <Row justifyContent={"flex-end"}>
-            <StandardButton label={"Send"} onClick={action("Submit clicked")} />
+            <PrimaryButton label={"Send"} onClick={action("Submit clicked")} />
           </Row>
         </Indent>
       </Spacing>

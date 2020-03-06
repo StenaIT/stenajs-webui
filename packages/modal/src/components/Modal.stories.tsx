@@ -3,7 +3,7 @@ import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
 import { Box, Row, Space, Spacing, StandardText } from "@stenajs-webui/core";
-import { Icon, StandardButton } from "@stenajs-webui/elements";
+import { Icon, PrimaryButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -22,7 +22,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />
@@ -42,7 +42,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />
@@ -70,7 +70,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />
@@ -91,7 +91,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />
@@ -139,7 +139,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />
@@ -158,7 +158,7 @@ storiesOf("modal/Modal", module)
       isOpen: false
     })(({ store }: { store: Store<State> }) => (
       <>
-        <StandardButton
+        <PrimaryButton
           onClick={() => store.set({ isOpen: true })}
           label={"Open modal"}
         />

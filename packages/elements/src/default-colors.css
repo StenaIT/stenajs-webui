@@ -68,12 +68,12 @@
 
   --lhds-color-ui-100: #fafafb;
   --lhds-color-ui-200: #efeff2;
-  --lhds-color-ui-300-border: #e4e5e9;
+  --lhds-color-ui-300: #e4e5e9;
   --lhds-color-ui-400: #ced0d7;
   --lhds-color-ui-50: #ffffff;
   --lhds-color-ui-500: #989cab;
   --lhds-color-ui-600: #5c6171;
-  --lhds-color-ui-700-icon: #424551;
+  --lhds-color-ui-700: #424551;
   --lhds-color-ui-800: #282931;
   --lhds-color-ui-900: #0d0e10;
 }
