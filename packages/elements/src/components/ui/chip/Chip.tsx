@@ -1,36 +1,33 @@
 import * as React from "react";
-import { HTMLAttributes } from "react";
-import styles from "./Chip.module.css";
 import { Clickable } from "@stenajs-webui/core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { Icon } from "../icon/Icon";
+import { Label, LabelProps } from "../label/Label";
 import cx from "classnames";
 
-export interface ChipProps {
-  label: string;
+import styles from "./Chip.module.css";
+
+export interface ChipProps extends LabelProps {
+  text: string;
   onClickLabel?: () => void;
   onClickRemove?: () => void;
-  variant?: string;
 }
 
-export const Chip: React.FC<ChipProps & HTMLAttributes<HTMLDivElement>> = ({
-  label,
+export const Chip: React.FC<ChipProps> = ({
+  text,
   onClickLabel,
   onClickRemove,
   className,
-  variant = "default",
   ...props
 }) => {
   return (
-    <div className={cx(styles.chip, styles[variant])} {...props}>
+    <Label className={cx(styles.chip, className)} {...props}>
       <Clickable onClick={onClickLabel} className={styles.label}>
-        {label}
+        {text}
       </Clickable>
-      {onClickRemove && (
-        <Clickable className={styles.close} onClick={onClickRemove}>
-          <Icon icon={faTimes} size={8} />
-        </Clickable>
-      )}
-    </div>
+      <Clickable onClick={onClickRemove} className={styles.close}>
+        <Icon icon={faTimes} size={8} />
+      </Clickable>
+    </Label>
   );
 };
