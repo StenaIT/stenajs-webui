@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   DateRangeCalendarOnChangeValue,
   DateRangeFocusedInput
@@ -8,6 +8,9 @@ export const useDateRangeInput = (
   value: DateRangeCalendarOnChangeValue,
   onChange: (dateRange: DateRangeCalendarOnChangeValue) => void
 ) => {
+  const startDateInputRef = useRef<HTMLInputElement>(null);
+  const endDateInputRef = useRef<HTMLInputElement>(null);
+
   const [showingCalendar, setShowingCalendar] = useState(false);
   const [showingFocusHighlight, setShowingFocusHighlight] = useState(false);
   const [focusedInput, setFocusedInput] = useState<
@@ -41,6 +44,8 @@ export const useDateRangeInput = (
       if (focusedInput === "endDate") {
         setShowingFocusHighlight(false);
         setTimeout(() => setShowingCalendar(false), 150);
+      } else if (endDateInputRef.current) {
+        endDateInputRef.current.focus();
       }
     },
     [onChange, focusedInput, value.endDate]
@@ -78,6 +83,8 @@ export const useDateRangeInput = (
     showCalendarStartDate,
     onSelectDateRange,
     focusedInput,
-    setFocusedInput
+    setFocusedInput,
+    startDateInputRef,
+    endDateInputRef
   };
 };

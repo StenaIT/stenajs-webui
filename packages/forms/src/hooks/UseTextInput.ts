@@ -18,7 +18,8 @@ export const useTextInput = (
     onMove,
     onFocus,
     onBlur,
-    onKeyDown
+    onKeyDown,
+    autoFocus
   }: TextInputProps
 ) => {
   const { onFocusHandler } = useSelectAllOnFocus(
@@ -61,6 +62,7 @@ export const useTextInput = (
     onBlur: onBlurHandler,
     onChange: onChangeHandler,
     onFocus: onFocusHandler,
-    onKeyDown: onKeyDownHandler
+    onKeyDown: onKeyDownHandler,
+    autoFocus: selectAllOnMount || autoFocus
   };
 };

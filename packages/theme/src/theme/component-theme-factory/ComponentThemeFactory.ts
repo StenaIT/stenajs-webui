@@ -1,26 +1,10 @@
 import {
-  DateInputTheme,
-  DateTextInputTheme,
-  defaultDateInputTheme,
-  defaultDateTextInputTheme
-} from "@stenajs-webui/calendar";
-import {
   ButtonTheme,
   defaultButtonTheme,
   defaultFlatButtonTheme,
   defaultSmallButtonTheme,
   defaultStandardButtonTheme
 } from "@stenajs-webui/elements";
-import {
-  CheckboxTheme,
-  defaultCheckboxTheme,
-  defaultNumericTextInputTheme,
-  defaultRadioButtonTheme,
-  defaultStandardTextInputTheme,
-  NumericTextInputTheme,
-  RadioButtonTheme,
-  StandardTextInputTheme
-} from "@stenajs-webui/forms";
 
 const createThemeFactory = <TTheme>(defaultTheme: TTheme) => (
   overridingThemeOrFunc: Partial<TTheme> | ThemeFactoryFunc<TTheme>
@@ -50,28 +34,4 @@ export const createStandardButtonTheme = createThemeFactory<ButtonTheme>(
 
 export const createSmallButtonTheme = createThemeFactory<ButtonTheme>(
   defaultSmallButtonTheme
-);
-
-export const createStandardTextInputTheme = createThemeFactory<
-  StandardTextInputTheme
->(defaultStandardTextInputTheme);
-
-export const createNumericTextInputTheme = createThemeFactory<
-  NumericTextInputTheme
->(defaultNumericTextInputTheme);
-
-export const createDateInputTheme = createThemeFactory<DateInputTheme>(
-  defaultDateInputTheme
-);
-
-export const createDateTextInputTheme = createThemeFactory<DateTextInputTheme>(
-  defaultDateTextInputTheme
-);
-
-export const createCheckboxTheme = createThemeFactory<CheckboxTheme>(
-  defaultCheckboxTheme
-);
-
-export const createRadioButtonTheme = createThemeFactory<RadioButtonTheme>(
-  defaultRadioButtonTheme
 );

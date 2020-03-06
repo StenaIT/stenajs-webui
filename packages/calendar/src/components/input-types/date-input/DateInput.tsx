@@ -1,10 +1,6 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import {
-  Box,
-  useMultiOnClickOutside,
-  useThemeFields
-} from "@stenajs-webui/core";
-import { StandardTextInput } from "@stenajs-webui/forms";
+import { Box, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useRef } from "react";
@@ -18,7 +14,6 @@ import {
   defaultCalendarTheme
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
-import { DateInputTheme, defaultDateInputTheme } from "./DateInputTheme";
 import { useDateInput } from "./UseDateInput";
 
 export interface DateInputProps<T = {}> {
@@ -52,10 +47,6 @@ export interface DateInputProps<T = {}> {
    */
   zIndex?: number;
   /**
-   * The theme to use.
-   */
-  theme?: DateInputTheme;
-  /**
    * Width of the input element.
    * * @default 125px
    */
@@ -69,12 +60,10 @@ export interface DateInputProps<T = {}> {
 }
 
 export const DateInput: React.FC<DateInputProps> = ({
-  backgroundColor,
   displayFormat = DateFormats.fullDate,
   placeholder = "Enter date",
   value,
   zIndex = 100,
-  theme = defaultDateInputTheme,
   calendarTheme = defaultCalendarTheme,
   calendarProps,
   openOnMount,
@@ -95,22 +84,12 @@ export const DateInput: React.FC<DateInputProps> = ({
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
 
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        backgroundColor: theme.backgroundColor,
-        borderColor: theme.borderColor
-      }
-    },
-    [theme]
-  );
-
   const popperContent = (
     <CalendarPopperContent
       open={showingCalendar}
       innerRef={popupRef}
-      background={colors.backgroundColor}
-      borderColor={colors.borderColor}
+      background={"var(--swui-textinput-bg-color)"}
+      borderColor={"var(--swui-modal-border-color)"}
       zIndex={zIndex}
     >
       <SingleDateCalendar
@@ -128,16 +107,14 @@ export const DateInput: React.FC<DateInputProps> = ({
         <Reference>
           {({ ref }) => (
             <Box innerRef={ref}>
-              <StandardTextInput
-                backgroundColor={backgroundColor}
+              <TextInput
                 iconLeft={faCalendarAlt}
                 onFocus={showCalendar}
                 onClickLeft={showCalendar}
                 value={value ? format(value, displayFormat) : ""}
                 placeholder={placeholder}
                 size={9}
-                forceFocusHighlight={showingCalendar}
-                focusOnMount={openOnMount}
+                autoFocus={openOnMount}
               />
             </Box>
           )}

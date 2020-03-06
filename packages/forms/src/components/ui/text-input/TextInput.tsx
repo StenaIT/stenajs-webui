@@ -6,9 +6,9 @@ import { InputSpinner } from "@stenajs-webui/elements";
 import classNames from "classnames/bind";
 import * as React from "react";
 import { ChangeEvent, useRef } from "react";
+import { MoveDirection } from "../../../hooks/UseKeyboardNavigation";
 import { useTextInput } from "../../../hooks/UseTextInput";
 import { FullOnChangeProps } from "../types";
-import { MoveDirection } from "./SimpleTextInput";
 import styles from "./TextInput.module.css";
 import { TextInputIcon } from "./TextInputIcon";
 
@@ -79,6 +79,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
     moveCursorToEndOnMount,
     selectAllOnMount,
     autoFocus,
+    onValueChange,
     ...inputProps
   } = props;
   const internalRef = useRef(null);
@@ -98,7 +99,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
   return (
     <div
       className={cx(styles.textInput, styles.inputContainer, styles[variant], {
-        disabled
+        [styles.disabled]: disabled
       })}
       style={background ? { background } : undefined}
     >

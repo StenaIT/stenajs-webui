@@ -1,14 +1,6 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import {
-  Box,
-  Omit,
-  useMultiOnClickOutside,
-  useThemeFields
-} from "@stenajs-webui/core";
-import {
-  StandardTextInput,
-  StandardTextInputProps
-} from "@stenajs-webui/forms";
+import { Box, Omit, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
@@ -21,9 +13,9 @@ import {
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
-  DateTextInputTheme,
-  defaultDateTextInputTheme
-} from "./DateTextInputTheme";
+  CalendarTheme,
+  defaultCalendarTheme
+} from "../../calendar/CalendarTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -31,7 +23,7 @@ export type DateTextInputCalendarProps<T> = Omit<
 >;
 
 export interface DateTextInputProps<T>
-  extends Omit<StandardTextInputProps, "onChange" | "theme"> {
+  extends Omit<TextInputProps, "onChange" | "theme"> {
   /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
   /** Close calendar when date is selected, @default true */
@@ -49,7 +41,7 @@ export interface DateTextInputProps<T>
   /**  Z-index of the calendar overlay, @default 100 */
   zIndex?: number;
   /** The date text input theme to use. */
-  theme?: DateTextInputTheme;
+  calendarTheme?: CalendarTheme;
 }
 
 export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
@@ -63,23 +55,13 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   value,
   width = "125px",
   zIndex = 100,
-  theme = defaultDateTextInputTheme,
+  calendarTheme = defaultCalendarTheme,
   hideCalenderIcon = false,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        backgroundColor: theme.standardTextInput.backgroundColor,
-        borderColor: theme.standardTextInput.borderColor
-      }
-    },
-    []
-  );
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
@@ -100,14 +82,17 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     [onValueChange]
   );
 
-  const onCalendarSelectDate = (date: Date | undefined) => {
-    if (date) {
-      onValueChangeHandler(format(date, dateFormat));
-      if (closeOnCalendarSelectDate) {
-        setTimeout(() => setOpen(!open), 200);
+  const onCalendarSelectDate = useCallback(
+    (date: Date | undefined) => {
+      if (date) {
+        onValueChangeHandler(format(date, dateFormat));
+        if (closeOnCalendarSelectDate) {
+          setTimeout(() => setOpen(!open), 200);
+        }
       }
-    }
-  };
+    },
+    [onValueChangeHandler, dateFormat, closeOnCalendarSelectDate, setOpen, open]
+  );
 
   const inValidInput = !!value && !/^[-/\\.0-9]+$/.test(value);
 
@@ -121,8 +106,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const popperContent = (
     <CalendarPopperContent
       innerRef={popupRef}
-      background={colors.backgroundColor}
-      borderColor={colors.borderColor}
+      background={"var(--swui-textinput-bg-color)"}
+      borderColor={"var(--swui-modal-border-color)"}
       zIndex={zIndex}
       open={open}
     >
@@ -134,7 +119,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
             ? parse(value, dateFormat, new Date())
             : undefined
         }
-        theme={theme.calendar}
+        theme={calendarTheme}
       />
     </CalendarPopperContent>
   );
@@ -144,10 +129,9 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         <Reference>
           {({ ref }) => (
             <Box innerRef={ref}>
-              <StandardTextInput
+              <TextInput
                 {...props}
-                theme={theme.standardTextInput}
-                invalid={invalid}
+                variant={invalid ? "error" : "standard"}
                 iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
                 onClickLeft={
                   !hideCalenderIcon && !disableCalender
@@ -156,7 +140,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 }
                 onValueChange={onValueChangeHandler}
                 placeholder={placeholder}
-                value={value}
+                value={value || ""}
                 size={9}
               />
             </Box>

@@ -5,7 +5,8 @@ import {
   useCallback,
   useState
 } from "react";
-import { MoveDirection } from "../components/ui/text-input/SimpleTextInput";
+
+export type MoveDirection = "right" | "left" | "down" | "up";
 
 export const useKeyboardNavigation = (
   ref: RefObject<HTMLInputElement>,

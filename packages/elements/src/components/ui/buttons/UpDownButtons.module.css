@@ -1,0 +1,19 @@
+.upDownButtons {
+  --swui-stepper-button-focus-shadow: var(--swui-field-focus-shadow);
+  --swui-stepper-button-width: 25px;
+
+  .button {
+    width: var(--swui-stepper-button-width);
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      box-shadow: var(--swui-stepper-button-focus-shadow);
+    }
+
+    &:disabled {
+      background-color: var(--swui-textinput-bg-color-disabled);
+    }
+  }
+}

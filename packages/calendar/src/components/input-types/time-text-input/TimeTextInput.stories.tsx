@@ -1,5 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { TimeTextInput } from "@stenajs-webui/calendar";
+import { Box } from "@stenajs-webui/core";
 import { color } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -14,10 +15,12 @@ storiesOf("calendar/Input/TimeTextInput", module)
     withState<TimeTextInputState>({
       value: undefined
     })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
+      <Box width={"125px"}>
+        <TimeTextInput
+          value={store.state.value}
+          onValueChange={value => store.set({ value })}
+        />
+      </Box>
     ))
   )
   .add(

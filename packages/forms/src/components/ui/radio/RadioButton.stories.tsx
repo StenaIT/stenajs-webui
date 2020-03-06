@@ -7,11 +7,7 @@ import {
   Space,
   StandardText
 } from "@stenajs-webui/core";
-import {
-  defaultRadioButtonTheme,
-  RadioButton,
-  RadioButtonWithLabel
-} from "@stenajs-webui/forms";
+import { RadioButton, RadioButtonWithLabel } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -202,23 +198,12 @@ storiesOf("forms/RadioButton", module)
     </Column>
   ));
 
-storiesOf("forms/RadioButton/RadioButtonWithLabel", module)
-  .add("standard", () => (
+storiesOf("forms/RadioButton/RadioButtonWithLabel", module).add(
+  "standard",
+  () => (
     <RadioButtonWithLabel
       label={"Add cake"}
       checked={knobs.boolean("Checked", false)}
     />
-  ))
-  .add("with custom theme", () => (
-    <RadioButtonWithLabel
-      label={"Add cake"}
-      checked={knobs.boolean("Checked", false)}
-      textColor="lightblue"
-      textSize={"40px"}
-      theme={{
-        ...defaultRadioButtonTheme,
-        iconColor: "pink",
-        iconSize: 40
-      }}
-    />
-  ));
+  )
+);

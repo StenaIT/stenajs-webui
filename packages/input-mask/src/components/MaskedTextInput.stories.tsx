@@ -1,6 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { Column, Space, StandardText } from "@stenajs-webui/core";
-import { InputMasks, MaskedStandardTextInput } from "@stenajs-webui/input-mask";
+import { InputMasks, MaskedTextInput } from "@stenajs-webui/input-mask";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
@@ -10,7 +10,7 @@ interface State {
   date: string;
 }
 
-storiesOf("input-mask/MaskedStandardTextInput", module)
+storiesOf("input-mask/MaskedTextInput", module)
   .add(
     "standard",
     withState<State>({
@@ -21,7 +21,7 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
       return (
         <Column width={"150px"}>
           <StandardText>Credit card</StandardText>
-          <MaskedStandardTextInput
+          <MaskedTextInput
             mask={InputMasks.CREDIT_CARD}
             onChange={ev => store.set({ creditcard: ev.target.value })}
             value={store.state.creditcard}
@@ -29,7 +29,7 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
           />
           <Space num={2} />
           <StandardText>Time</StandardText>
-          <MaskedStandardTextInput
+          <MaskedTextInput
             mask={InputMasks.TIME}
             onChange={ev => store.set({ time: ev.target.value })}
             value={store.state.time}
@@ -37,7 +37,7 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
           />
           <Space num={2} />
           <StandardText>Date</StandardText>
-          <MaskedStandardTextInput
+          <MaskedTextInput
             mask={InputMasks.ISO_DATE}
             onChange={ev => store.set({ date: ev.target.value })}
             value={store.state.date}
@@ -56,7 +56,7 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
     })(({ store }: { store: Store<State> }) => {
       return (
         <div style={{ display: "inline-block" }}>
-          <MaskedStandardTextInput
+          <MaskedTextInput
             mask={InputMasks.CREDIT_CARD}
             onChange={ev => store.set({ creditcard: ev.target.value })}
             value={store.state.creditcard}
@@ -74,7 +74,7 @@ storiesOf("input-mask/MaskedStandardTextInput", module)
     })(({ store }: { store: Store<State> }) => {
       return (
         <div style={{ display: "inline-block" }}>
-          <MaskedStandardTextInput
+          <MaskedTextInput
             mask={InputMasks.CREDIT_CARD}
             onValueChange={creditcard => store.set({ creditcard })}
             value={store.state.creditcard}
