@@ -147,38 +147,30 @@ storiesOf("panels/Collapsible", module)
         <Row indent={2} spacing={2}>
           <LargeText>Parts</LargeText>
         </Row>
-        <StatefulCollapsible
+        <StatefulCollapsibleWithCheckbox
           label={"Astromech droids"}
-          contentLeft={
-            <Checkbox
-              checked={
-                state.r2d2 &&
-                state.c3po &&
-                state.bb8.engine &&
-                state.bb8.motivator
-              }
-              indeterminate={xor(
-                state.r2d2,
-                state.c3po,
-                state.bb8.engine,
-                state.bb8.motivator
-              )}
-              onClick={event => {
-                event.stopPropagation();
-                const value =
-                  state.r2d2 ||
-                  state.c3po ||
-                  state.bb8.engine ||
-                  state.bb8.motivator;
-                setState({
-                  ...state,
-                  c3po: !value,
-                  r2d2: !value,
-                  bb8: { ...state.bb8, engine: !value, motivator: !value }
-                });
-              }}
-            />
+          value={
+            state.r2d2 && state.c3po && state.bb8.engine && state.bb8.motivator
           }
+          indeterminate={xor(
+            state.r2d2,
+            state.c3po,
+            state.bb8.engine,
+            state.bb8.motivator
+          )}
+          onChange={() => {
+            const value =
+              state.r2d2 ||
+              state.c3po ||
+              state.bb8.engine ||
+              state.bb8.motivator;
+            setState({
+              ...state,
+              c3po: !value,
+              r2d2: !value,
+              bb8: { ...state.bb8, engine: !value, motivator: !value }
+            });
+          }}
         >
           <Collapsible
             label={"R2D2"}
@@ -254,7 +246,7 @@ storiesOf("panels/Collapsible", module)
               Motivator
             </CollapsibleClickableContent>
           </StatefulCollapsible>
-        </StatefulCollapsible>
+        </StatefulCollapsibleWithCheckbox>
       </Column>
     );
   })
