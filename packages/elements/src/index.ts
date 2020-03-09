@@ -12,8 +12,6 @@ export * from "./components/ui/buttons/UpDownButtons";
 export * from "./components/ui/icon/Icon";
 export * from "./components/ui/chip/Chip";
 export * from "./components/ui/chip/ChipTheme";
-export * from "./components/ui/collapsible/Collapsible";
-export * from "./components/ui/collapsible/CollapsibleContent";
 export * from "./components/ui/badge/Badge";
 export * from "./components/ui/badge/WithBadge";
 export * from "./components/ui/toggle-button/ToggleButtonTheme";

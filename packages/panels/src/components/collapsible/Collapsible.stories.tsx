@@ -1,22 +1,22 @@
+import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
+import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
+import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
+import { Clickable, Column, LargeText, Row } from "@stenajs-webui/core";
+import { Badge, Icon } from "@stenajs-webui/elements";
+import { Checkbox, RadioButton } from "@stenajs-webui/forms";
 import {
-  Badge,
   Collapsible,
   CollapsibleClickableContent,
   CollapsibleContent,
   CollapsibleGroupHeading,
   CollapsibleProps,
-  Icon
-} from "@stenajs-webui/elements";
+  CollapsibleWithCheckbox,
+  CollapsibleWithCheckboxProps
+} from "@stenajs-webui/panels";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
-import { Clickable, Column, LargeText, Row } from "@stenajs-webui/core";
-import { Checkbox, RadioButton } from "@stenajs-webui/forms";
-import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
-import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
-import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
-import { faInbox } from "@fortawesome/free-solid-svg-icons/faInbox";
 
 function xor(...values: boolean[]) {
   const sum = values.reduce(
@@ -26,6 +26,17 @@ function xor(...values: boolean[]) {
   return sum > 0 && sum < values.length;
 }
 
+const StatefulCollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = props => {
+  const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
+
+  return (
+    <CollapsibleWithCheckbox
+      {...props}
+      onClick={() => setCollapsed(!collapsed)}
+      collapsed={collapsed}
+    />
+  );
+};
 const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
 
@@ -38,29 +49,19 @@ const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
   );
 };
 
-storiesOf("elements/Collapsible", module)
-  .add("Default", () => {
+storiesOf("panels/Collapsible", module)
+  .add("Overview", () => {
     const [boosters, setBoosters] = useState({ new: false, secondHand: false });
     const [thrusters, setThrusters] = useState({ semi: true, multi: false });
 
     return (
       <Column width={300}>
+        <StatefulCollapsible label={"Engines"} collapsed={true} />
         <Row indent={2} spacing={2}>
           <LargeText>Spaceship parts</LargeText>
         </Row>
         <StatefulCollapsible label={"Engines"} collapsed={true}>
-          <CollapsibleContent>
-            <Column
-              indent={1}
-              spacing={1}
-              flex={1}
-              alignItems={"center"}
-              style={{ opacity: 0.5 }}
-            >
-              <Icon icon={faInbox} />
-              <span>No content</span>
-            </Column>
-          </CollapsibleContent>
+          <CollapsibleContent />
         </StatefulCollapsible>
         <StatefulCollapsible label={"Boosters"}>
           <CollapsibleClickableContent
@@ -84,29 +85,22 @@ storiesOf("elements/Collapsible", module)
           </CollapsibleClickableContent>
         </StatefulCollapsible>
         <StatefulCollapsible label={"Thrusters"}>
-          <StatefulCollapsible
-            contentLeft={
-              <Checkbox
-                value={thrusters.semi && thrusters.multi}
-                indeterminate={xor(thrusters.semi, thrusters.multi)}
-                onClick={event => {
-                  event.stopPropagation();
-                  const value = thrusters.semi || thrusters.multi;
-                  setThrusters({
-                    semi: !value,
-                    multi: !value
-                  });
-                }}
-              />
-            }
+          <StatefulCollapsibleWithCheckbox
+            value={thrusters.semi && thrusters.multi}
+            indeterminate={xor(thrusters.semi, thrusters.multi)}
+            onChange={() => {
+              const value = thrusters.semi || thrusters.multi;
+              setThrusters({
+                semi: !value,
+                multi: !value
+              });
+            }}
             label={"FF-12"}
             contentRight={
-              thrusters.semi || thrusters.multi ? (
+              (thrusters.semi || thrusters.multi) && (
                 <Badge
                   label={Number(thrusters.semi) + Number(thrusters.multi)}
                 />
-              ) : (
-                undefined
               )
             }
           >
@@ -132,7 +126,7 @@ storiesOf("elements/Collapsible", module)
             >
               Multi
             </CollapsibleClickableContent>
-          </StatefulCollapsible>
+          </StatefulCollapsibleWithCheckbox>
         </StatefulCollapsible>
       </Column>
     );

@@ -1,19 +1,27 @@
-import * as React from "react";
-import styles from "./Collapsible.module.css";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import CSSTransition from "react-transition-group/CSSTransition";
-import { Clickable } from "@stenajs-webui/core";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-// noinspection TypeScriptPreferShortImport
-import { Icon } from "../icon/Icon";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import {
+  Clickable,
+  ClickableProps,
+  DivProps,
+  StandardText
+} from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
+import cx from "classnames";
+import * as React from "react";
+import { CSSTransition } from "react-transition-group";
+import styles from "./Collapsible.module.css";
+import { CollapsibleContent } from "./CollapsibleContent";
+import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
-export interface CollapsibleProps {
-  label: React.ReactNode;
+export interface CollapsibleProps
+  extends Omit<DivProps, "onClick">,
+    Pick<ClickableProps, "onClick"> {
+  label: string;
   contentLeft?: React.ReactNode;
   contentRight?: React.ReactNode;
   collapsed?: boolean;
-  onClick?: () => void;
   disabled?: boolean;
   unmountOnCollapse?: boolean;
   mountOnEnter?: boolean;
@@ -42,13 +50,15 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   contentRight,
   collapsed = false,
   onClick,
+  className,
   disabled = false,
   unmountOnCollapse = false,
   mountOnEnter = true,
   icon = faChevronDown,
   iconCollapsed = faChevronUp,
   iconSize = 8,
-  children
+  children,
+  ...divProps
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -61,7 +71,12 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
     : undefined;
 
   return (
-    <div className={styles.collapsible} aria-expanded={!collapsed} ref={ref}>
+    <div
+      className={cx(styles.collapsible, className)}
+      aria-expanded={!collapsed}
+      ref={ref}
+      {...divProps}
+    >
       <Clickable
         disableFocusHighlight
         disableOpacityOnClick
@@ -70,7 +85,9 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         disabled={disabled}
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
-        <div className={styles.label}>{label}</div>
+        <div className={styles.label}>
+          <StandardText>{label}</StandardText>
+        </div>
         {contentRight && (
           <div className={styles.contentRight}>{contentRight}</div>
         )}
@@ -95,7 +112,13 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         mountOnEnter={mountOnEnter}
         unmountOnExit={unmountOnCollapse}
       >
-        <div role={"region"}>{children}</div>
+        <div role={"region"}>
+          {children ?? (
+            <CollapsibleContent>
+              <CollapsibleEmptyContent />
+            </CollapsibleContent>
+          )}
+        </div>
       </CSSTransition>
     </div>
   );
