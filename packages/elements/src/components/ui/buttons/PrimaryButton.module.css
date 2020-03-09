@@ -2,7 +2,7 @@
   --swui-button-line-height: 16px;
   --swui-button-font-weight: 400;
   --swui-button-text-size: 14px;
-  --swui-button-text-color: #fff;
+  --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
   --swui-button-letter-spacing: var(--swui-field-letter-spacing);
   --swui-button-padding-vertical: var(--swui-metrics-spacing);

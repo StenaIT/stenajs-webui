@@ -34,7 +34,8 @@ export const Icon: React.FC<IconProps> = ({
   size = 20,
   spin,
   style,
-  transform
+  transform,
+  ...props
 }) => {
   const { colors } = useThemeFields(
     {
@@ -66,6 +67,7 @@ export const Icon: React.FC<IconProps> = ({
         spin={spin}
         style={{ fontSize: size, ...style }}
         transform={transform}
+        {...props}
       />
     </Box>
   );

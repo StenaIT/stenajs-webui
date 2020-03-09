@@ -1,6 +1,7 @@
 :root {
     /* Text colors */
   --swui-text-primary-color: #1b2e47;
+  --swui-text-primary-color-light: #bcbabd;
   --swui-text-disabled-color: #b6b6b6;
   --swui-text-darkmode-primary-color: #bcbabd;
   --swui-text-darkmode-disabled-color: #dddddd;
@@ -36,6 +37,7 @@
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-font-size-inputs: 14px;
+  --swui-font-size-small: 10px;
   --swui-font-weight-inputs: 400;
 
   /* Animation speeds */
