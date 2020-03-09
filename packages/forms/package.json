@@ -30,7 +30,7 @@
   "dependencies": {
     "@stenajs-webui/core": "0.0.51",
     "@stenajs-webui/elements": "0.0.51",
-    "@types/classnames": "^2.2.9",
+    "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
     "date-fns": "2.0.1"
   },
