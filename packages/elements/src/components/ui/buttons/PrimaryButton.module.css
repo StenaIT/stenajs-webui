@@ -5,8 +5,8 @@
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
   --swui-button-letter-spacing: var(--swui-field-letter-spacing);
-  --swui-button-padding-vertical: var(--swui-metrics-spacing);
-  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2);
+  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 1px);
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
 
   /* Text */
   --swui-button-text-color-focus: var(--swui-button-text-color);
@@ -51,6 +51,7 @@
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
 
+  box-sizing: border-box;
   letter-spacing: var(--swui-button-letter-spacing);
   text-decoration: var(--swui-button-text-decoration);
   padding: var(--swui-button-padding-vertical)
@@ -119,15 +120,15 @@
 
   &.small {
     --current-line-height: 16px;
-    --swui-button-padding-vertical: 4px;
-    --swui-button-padding-horizontal: 8px;
+    --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2 - 1px);
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
     --current-text-size: 12px;
   }
 
   &.large {
     --current-line-height: 24px;
-    --swui-button-padding-vertical: 8px;
-    --swui-button-padding-horizontal: 24px;
+    --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
     --current-text-size: 16px;
 
     &.iconButton {

@@ -13,11 +13,11 @@ export type ButtonVariant = "normal" | "danger" | "success";
 
 export interface PrimaryButtonProps extends ButtonProps {
   /** The text on the button. */
-  label?: React.ReactNode;
+  label?: string;
   /** The variant to use. */
   variant?: ButtonVariant;
   /** The content to show when loading. */
-  loadingLabel?: React.ReactNode;
+  loadingLabel?: string;
   /** The size of the button, can be 'small', 'normal' or 'large' */
   size?: ButtonSize;
   /** Render loading spinner instead of button. */
@@ -25,7 +25,7 @@ export interface PrimaryButtonProps extends ButtonProps {
   /** Render success check icon instead of button. */
   success?: boolean;
   /** The content to show on success. */
-  successLabel?: React.ReactNode;
+  successLabel?: string;
   /** Disables the button. Changes to disabled color and clicks are disabled. */
   disabled?: boolean;
   /** onClick callback, called when button is clicked. */
@@ -41,12 +41,12 @@ export interface PrimaryButtonProps extends ButtonProps {
 }
 
 const getButtonLabel = (
-  label: React.ReactNode | undefined,
+  label: string | undefined,
   success: boolean,
-  successLabel: React.ReactNode | undefined,
+  successLabel: string | undefined,
   loading: boolean,
-  loadingLabel: React.ReactNode | undefined
-): React.ReactNode | null => {
+  loadingLabel: string | undefined
+): string | null => {
   if (success) {
     return successLabel || null;
   } else if (loading) {
@@ -114,7 +114,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
       ) : null}
 
-      {buttonLabel}
+      {buttonLabel && <span>{buttonLabel}</span>}
+
       {right ? (
         right
       ) : rightIcon ? (
