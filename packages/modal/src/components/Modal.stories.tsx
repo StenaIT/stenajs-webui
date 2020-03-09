@@ -6,6 +6,7 @@ import { Box, Row, Space, Spacing, StandardText } from "@stenajs-webui/core";
 import { Icon, PrimaryButton } from "@stenajs-webui/elements";
 import { BaseModal, Modal } from "@stenajs-webui/modal";
 import { storiesOf } from "@storybook/react";
+import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 import * as ReactModal from "react-modal";
 
@@ -75,7 +76,7 @@ storiesOf("modal/Modal", module)
           label={"Open modal"}
         />
         <Modal
-          width={"300px"}
+          width={knobs.number("Width", 300) + "px"}
           headerText={"Modal title here"}
           isOpen={store.state.isOpen}
           onRequestClose={() => store.set({ isOpen: false })}
