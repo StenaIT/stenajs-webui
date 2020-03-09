@@ -5,7 +5,7 @@ import { InputProps } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
 import classNames from "classnames/bind";
 import * as React from "react";
-import { ChangeEvent, useRef } from "react";
+import { ChangeEvent, CSSProperties, useRef } from "react";
 import { MoveDirection } from "../../../hooks/UseKeyboardNavigation";
 import { useTextInput } from "../../../hooks/UseTextInput";
 import { FullOnChangeProps } from "../types";
@@ -47,8 +47,9 @@ export interface TextInputProps
   extends FullOnChangeProps<string, ChangeEvent<HTMLInputElement>>,
     InputProps,
     ExtraContent {
+  wrapperStyle?: CSSProperties;
+  wrapperClassName?: string;
   variant?: TextInputVariant;
-  background?: string;
   selectAllOnFocus?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
@@ -63,9 +64,8 @@ export const TextInput: React.FC<TextInputProps> = props => {
   const {
     variant = "standard",
     inputRef,
-    background,
-    className,
     disabled,
+    className,
     contentLeft,
     contentRight,
     disableContentPadding,
@@ -80,6 +80,8 @@ export const TextInput: React.FC<TextInputProps> = props => {
     selectAllOnMount,
     autoFocus,
     onValueChange,
+    wrapperClassName,
+    wrapperStyle,
     ...inputProps
   } = props;
   const internalRef = useRef(null);
@@ -98,10 +100,16 @@ export const TextInput: React.FC<TextInputProps> = props => {
 
   return (
     <div
-      className={cx(styles.textInput, styles.inputContainer, styles[variant], {
-        [styles.disabled]: disabled
-      })}
-      style={background ? { background } : undefined}
+      className={cx(
+        styles.textInput,
+        styles.inputContainer,
+        styles[variant],
+        {
+          [styles.disabled]: disabled
+        },
+        wrapperClassName
+      )}
+      style={wrapperStyle}
     >
       <TextInputIcon
         content={contentLeft}
