@@ -17,13 +17,13 @@ export const BaseModal: React.FC<BaseModalProps> = ({
   width,
   draggable = false,
   children,
-  ...props
+  ...reactModalProps
 }) => {
   return (
     <ReactModal
-      overlayClassName={styles.Overlay}
-      className={styles.Modal}
-      {...props}
+      overlayClassName={styles.overlay}
+      className={styles.modal}
+      {...reactModalProps}
     >
       <Draggable
         handle={`.${DRAGGABLE_HANDLE_CLASSNAME}`}
@@ -32,7 +32,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
       >
         <div
           style={{ ["--swui-modal-width" as string]: width }}
-          className={cx(styles.Content, {
+          className={cx(styles.content, {
             [styles.isDraggable]: draggable
           })}
         >

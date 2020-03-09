@@ -1,33 +1,12 @@
-@keyframes fadeIn {
-  0% {
-    background-color: var(--swui-hidden);
-  }
-  100% {
-    background-color: var(--swui-modal-overlay-bg-color);
-  }
-}
-
-@keyframes appear {
-  0% {
-    top: -8px;
-    opacity: 0;
-  }
-  100% {
-    top: 8px;
-    opacity: 1;
-  }
-}
-
-.Modal {
-  max-width: 100%;
-  outline: none;
-  pointer-events: none;
-}
-
-.Overlay {
+.overlay {
   --swui-modal-animation-time: var(--swui-animation-time-fast);
-  --swui-modal-overlay-bg-color: rgba(0, 0, 0, 0.5);
-  --swui-modal-padding: 8px;
+  --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
+  --swui-modal-padding: var(--swui-metrics-space);
+  --swui-modal-animation-time: var(--swui-animation-time-fast);
+  --swui-modal-content-bg-color: var(--swui-white);
+  --swui-modal-width: 960px;
+  --swui-modal-header-border-color: var(--lhds-color-ui-300);
+  --swui-modal-shadow: var(--swui-shadow-modal);
 
   position: fixed;
   z-index: 10;
@@ -49,60 +28,71 @@
   @media print {
     background-color: rgba(255, 255, 255, 1);
   }
+
+  .modal {
+    max-width: 100%;
+    outline: none;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    display: block;
+
+    background: var(--swui-modal-content-bg-color);
+    box-shadow: var(--swui-modal-shadow);
+    pointer-events: all;
+
+    width: var(--swui-modal-width);
+    max-width: 100%;
+
+    animation: appear var(--swui-animation-time-fast)
+      cubic-bezier(0.645, 0.045, 0.355, 1) both;
+
+    @media print {
+      box-shadow: none;
+      top: 0;
+    }
+
+    :focus {
+      outline: 0;
+    }
+
+    &.isDraggable {
+      :global(.draggable-modal-handle) {
+        cursor: move;
+      }
+    }
+
+    .header {
+      padding: calc(var(--swui-metrics-space) * 2)
+        calc(var(--swui-metrics-space) * 2) calc(var(--swui-metrics-space) * 2)
+        calc(var(--swui-metrics-space) * 3);
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      align-items: center;
+      border-bottom: 1px solid var(--swui-modal-header-border-color);
+    }
+  }
 }
 
-.Content {
-  --swui-modal-animation-time: var(--swui-animation-time-fast);
-  --swui-modal-content-bg-color: var(--swui-white);
-  --swui-modal-width: 960px;
-  --swui-modal-header-border-color: #e4e5e9;
-
-  position: relative;
-  display: block;
-
-  background: var(--swui-modal-content-bg-color);
-  box-shadow: var(--swui-shadow-modal);
-  pointer-events: all;
-
-  width: var(--swui-modal-width);
-  max-width: 100%;
-
-  animation: appear var(--swui-animation-time-fast)
-    cubic-bezier(0.645, 0.045, 0.355, 1) both;
-
-  @media print {
-    box-shadow: none;
-    top: 0;
+@keyframes fadeIn {
+  0% {
+    background-color: var(--swui-hidden);
   }
-
-  :focus {
-    outline: 0;
+  100% {
+    background-color: var(--swui-modal-overlay-bg-color);
   }
+}
 
-  &.isDraggable {
-    :global(.draggable-modal-handle) {
-      cursor: move;
-    }
+@keyframes appear {
+  0% {
+    top: calc(0 - var(--swui-metrics-space));
+    opacity: 0;
   }
-
-  .Header {
-    padding: 16px 16px 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 16px;
-    align-items: center;
-    border-bottom: 1px solid var(--swui-modal-header-border-color);
-  }
-
-  .HeaderCloseButton {
-    padding: 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-
-    &:hover {
-      background-color: #f3f8fc;
-    }
+  100% {
+    top: var(--swui-metrics-space);
+    opacity: 1;
   }
 }
