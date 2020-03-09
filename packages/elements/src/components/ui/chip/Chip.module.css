@@ -1,30 +1,120 @@
 .chip {
-  --swui-chip-close-color: var(--swui-white);
-  --swui-chip-close-size: calc(var(--swui-metrics-space) * 2);
-  --swui-chip-close-margin: calc(var(--swui-metrics-space) / 4);
+  --swui-button-line-height: 16px;
+  --swui-button-font-weight: 400;
+  --swui-button-text-size: 14px;
+  --swui-button-text-color: var(--swui-white);
+  --swui-button-text-decoration: none;
+  --swui-button-letter-spacing: var(--swui-field-letter-spacing);
+  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 1px);
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
 
-  :hover {
-    --current-background-color: red;
-  }
+  /* Text */
+  --swui-button-text-color-focus: var(--swui-button-text-color);
+  --swui-button-text-color-hover: var(--swui-button-text-color);
+  --swui-button-text-color-active: var(--swui-button-text-color);
+  --swui-button-text-color-disabled: var(--swui-field-text-color-disabled);
 
-  .label {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-left: 8px;
-    padding-right: 4px;
-    font-size: 12px;
-    letter-spacing: -0.2px;
+  /* Background */
+  --swui-button-background-color: var(--swui-primary-action-color);
+  --swui-button-background-color-active: var(
+    --swui-primary-action-color-active
+  );
+  --swui-button-background-color-focus: var(--swui-primary-action-color-focus);
+  --swui-button-background-color-hover: var(--swui-primary-action-color-hover);
+  --swui-button-background-color-disabled: var(
+    --swui-primary-action-color-disabled
+  );
+
+  /* Border */
+  --swui-button-border-color: var(--swui-button-background-color);
+  --swui-button-border-radius: var(--swui-border-radius);
+  --swui-button-border-radius-icon-only: var(--swui-border-radius);
+  --swui-button-border-color-focus: var(--swui-button-background-color);
+  --swui-button-border-color-hover: var(--swui-button-background-color);
+  --swui-button-border-color-active: var(--swui-button-background-color);
+  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
+
+  /* Shadow */
+  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+  --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
+    0 0 1px 0 rgba(29, 100, 171, 0.16);
+  --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
+    0 0 1px -1px rgba(29, 100, 171, 0.1);
+  --swui-button-box-shadow-active: none;
+  --swui-button-box-shadow-disabled: none;
+
+  display: inline-flex;
+  flex-direction: row;
+
+  box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
+  border-radius: var(--swui-button-border-radius);
+
+  & {
+    &:hover {
+      --current-background-color: var(--swui-primary-action-color-hover);
+      --current-border-color: var(--swui-button-border-color-hover);
+      --current-text-color: var(--swui-button-text-color-hover);
+      --current-box-shadow: var(--swui-button-box-shadow-hover);
+
+      .label,
+      .close {
+        --current-box-shadow: none;
+      }
+    }
+
+    &:focus-within {
+      --current-border-color: var(--swui-button-border-color-focus);
+      --current-text-color: var(--swui-button-text-color-focus);
+      --current-box-shadow: var(--swui-button-box-shadow-focus);
+
+      .label,
+      .close {
+        --current-box-shadow: none;
+      }
+    }
   }
 
   /* Specifying the class twice gives the css rule more specificity which
     makes it possible to override properties without having to use !important
    */
-  .close.close {
-    --swui-button-text-color: var(--swui-chip-close-color);
-    --swui-button-background-color-hover: var(--lhds-color-blue-100);
-    --swui-button-text-color-hover: var(--lhds-color-blue-500);
 
+  .label.label {
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-left: 8px;
+      border-right: none;
+      padding-right: 4px;
+    }
+
+    font-size: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .close.close {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    width: 20px;
+    height: 24px;
+    border-left: none;
+    position: relative;
+
+    &:hover {
+      &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 3px;
+        left: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+      }
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
   }
 }
