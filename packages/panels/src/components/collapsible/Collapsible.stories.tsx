@@ -1,10 +1,11 @@
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Clickable, Column, LargeText, Row } from "@stenajs-webui/core";
 import { Badge, Icon } from "@stenajs-webui/elements";
-import { Checkbox, RadioButton } from "@stenajs-webui/forms";
+import { Checkbox, RadioButton, TextInput } from "@stenajs-webui/forms";
 import {
   Collapsible,
   CollapsibleClickableContent,
@@ -56,7 +57,6 @@ storiesOf("panels/Collapsible", module)
 
     return (
       <Column width={300}>
-        <StatefulCollapsible label={"Engines"} collapsed={true} />
         <Row indent={2} spacing={2}>
           <LargeText>Spaceship parts</LargeText>
         </Row>
@@ -64,6 +64,10 @@ storiesOf("panels/Collapsible", module)
           <CollapsibleContent />
         </StatefulCollapsible>
         <StatefulCollapsible label={"Boosters"}>
+          <CollapsibleGroupHeading>Search boosters</CollapsibleGroupHeading>
+          <CollapsibleContent>
+            <TextInput iconRight={faSearch} />
+          </CollapsibleContent>
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={boosters.new} />}
             onClick={() =>
