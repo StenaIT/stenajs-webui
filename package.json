@@ -99,7 +99,7 @@
   "bundlesize": [
     {
       "path": "./packages/calendar/dist/*.js",
-      "maxSize": "15 kB"
+      "maxSize": "13 kB"
     },
     {
       "path": "./packages/core/dist/*.js",
@@ -107,7 +107,7 @@
     },
     {
       "path": "./packages/elements/dist/*.js",
-      "maxSize": "11 kB"
+      "maxSize": "12 kB"
     },
     {
       "path": "./packages/forms/dist/*.js",
@@ -115,15 +115,15 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "6 kB"
+      "maxSize": "4 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",
-      "maxSize": "6 kB"
+      "maxSize": "2 kB"
     },
     {
       "path": "./packages/modal/dist/*.js",
-      "maxSize": "6 kB"
+      "maxSize": "3 kB"
     },
     {
       "path": "./packages/panels/dist/*.js",
@@ -139,7 +139,7 @@
     },
     {
       "path": "./packages/theme/dist/*.js",
-      "maxSize": "2 kB"
+      "maxSize": "1 kB"
     },
     {
       "path": "./packages/tooltip/dist/*.js",

@@ -1,120 +1,114 @@
 .chip {
-  --swui-button-line-height: 16px;
-  --swui-button-font-weight: 400;
-  --swui-button-text-size: 14px;
-  --swui-button-text-color: var(--swui-white);
-  --swui-button-text-decoration: none;
-  --swui-button-letter-spacing: var(--swui-field-letter-spacing);
-  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 1px);
-  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
-
-  /* Text */
-  --swui-button-text-color-focus: var(--swui-button-text-color);
-  --swui-button-text-color-hover: var(--swui-button-text-color);
-  --swui-button-text-color-active: var(--swui-button-text-color);
-  --swui-button-text-color-disabled: var(--swui-field-text-color-disabled);
-
-  /* Background */
-  --swui-button-background-color: var(--swui-primary-action-color);
-  --swui-button-background-color-active: var(
-    --swui-primary-action-color-active
-  );
-  --swui-button-background-color-focus: var(--swui-primary-action-color-focus);
-  --swui-button-background-color-hover: var(--swui-primary-action-color-hover);
-  --swui-button-background-color-disabled: var(
-    --swui-primary-action-color-disabled
-  );
+  --swui-chip-line-height: 16px;
+  --swui-chip-font-size: 12px;
+  --swui-chip-letter-spacing: -0.2px;
+  --swui-chip-height: 24px;
+  --swui-chip-bg-color: var(--swui-primary-action-color);
+  --swui-chip-text-color-primary: var(--swui-white);
+  --swui-chip-text-color-secondary: var(--lhds-color-blue-800);
+  --swui-chip-border-radius: var(--swui-border-radius);
+  --swui-chip-shadow: var(--swui-border-radius);
 
   /* Border */
-  --swui-button-border-color: var(--swui-button-background-color);
-  --swui-button-border-radius: var(--swui-border-radius);
-  --swui-button-border-radius-icon-only: var(--swui-border-radius);
-  --swui-button-border-color-focus: var(--swui-button-background-color);
-  --swui-button-border-color-hover: var(--swui-button-background-color);
-  --swui-button-border-color-active: var(--swui-button-background-color);
-  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
+  --swui-chip-border-color-primary: var(--swui-primary-action-color);
+  --swui-chip-border-color-secondary: var(--lhds-color-blue-300);
 
-  /* Shadow */
-  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
-  --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
-    0 0 1px 0 rgba(29, 100, 171, 0.16);
-  --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
-    0 0 1px -1px rgba(29, 100, 171, 0.1);
-  --swui-button-box-shadow-active: none;
-  --swui-button-box-shadow-disabled: none;
+  --current-icon-color: var(--swui-chip-bg-color);
+  --current-bg-color: var(--lhds-color-blue-50);
 
+  /*
+   * Styling
+   */
+  box-sizing: border-box;
   display: inline-flex;
   flex-direction: row;
+  align-items: center;
+  height: var(--swui-chip-height);
 
-  box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
-  border-radius: var(--swui-button-border-radius);
+  box-shadow: var(--swui-chip-shadow);
+  border-radius: var(--swui-chip-border-radius);
+  padding-left: var(--swui-metrics-space);
+  padding-right: calc(var(--swui-metrics-space) / 2);
+  background-color: var(--current-bg-color);
 
-  & {
-    &:hover {
-      --current-background-color: var(--swui-primary-action-color-hover);
-      --current-border-color: var(--swui-button-border-color-hover);
-      --current-text-color: var(--swui-button-text-color-hover);
-      --current-box-shadow: var(--swui-button-box-shadow-hover);
+  &.primary {
+    border: 1px solid var(--swui-chip-border-color-primary);
+    --current-bg-color: var(--swui-chip-bg-color);
+    --current-icon-color: var(--swui-white);
 
-      .label,
-      .close {
-        --current-box-shadow: none;
-      }
+    .label {
+      --swui-link-color: var(--swui-chip-text-color-primary);
+      --swui-link-color-hover: var(--swui-chip-text-color-primary);
+      --swui-link-color-active: var(--swui-chip-text-color-primary);
+      --swui-link-color-focus: var(--swui-chip-text-color-primary);
+      --swui-link-color-disabled: var(--swui-chip-text-color-primary);
     }
 
-    &:focus-within {
-      --current-border-color: var(--swui-button-border-color-focus);
-      --current-text-color: var(--swui-button-text-color-focus);
-      --current-box-shadow: var(--swui-button-box-shadow-focus);
-
-      .label,
-      .close {
-        --current-box-shadow: none;
-      }
+    .close {
+      --swui-button-background-color-hover: var(
+        --swui-primary-action-color-hover
+      );
+      --swui-button-background-color-focus: var(
+        --swui-primary-action-color-focus
+      );
+      --swui-button-background-color-active: var(
+        --swui-primary-action-color-active
+      );
     }
   }
 
-  /* Specifying the class twice gives the css rule more specificity which
-    makes it possible to override properties without having to use !important
-   */
+  &.secondary {
+    border: 1px solid var(--swui-chip-border-color-secondary);
+    --current-bg-color: var(--lhds-color-blue-50);
+    --current-icon-color: var(--swui-chip-text-color-secondary);
 
-  .label.label {
-    &:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      padding-left: 8px;
-      border-right: none;
-      padding-right: 4px;
+    .label {
+      --swui-link-color: var(--swui-chip-text-color-secondary);
+      --swui-link-color-active: var(--swui-chip-text-color-secondary);
+      --swui-link-color-hover: var(--swui-chip-text-color-secondary);
+      --swui-link-color-focus: var(--swui-chip-text-color-secondary);
+      --swui-link-color-disabled: var(--swui-chip-text-color-secondary);
     }
 
-    font-size: 12px;
-    letter-spacing: -0.2px;
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-blue-400);
+      --swui-button-background-color-focus: var(--lhds-color-blue-300);
+      --swui-button-background-color-hover: var(--lhds-color-blue-200);
+    }
+  }
+
+  &.removable {
+    padding-right: calc(var(--swui-metrics-space) / 2);
+  }
+
+  /*
+   * Specifying the class twice gives the css rule more specificity which
+   * makes it possible to override properties without having to use !important
+   */
+  .label.label {
+    font-size: var(--swui-chip-font-size);
+    letter-spacing: var(--swui-chip-letter-spacing);
+    line-height: var(--swui-chip-line-height);
+    padding-right: calc(var(--swui-metrics-space) / 2);
+
+    &.clickable {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .close.close {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    width: 20px;
-    height: 24px;
-    border-left: none;
-    position: relative;
-
-    &:hover {
-      &::before {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 3px;
-        left: 2px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-      }
-    }
+    width: 16px;
+    height: 16px;
 
     svg {
-      width: 12px;
-      height: 12px;
+      color: var(--current-icon-color);
+      margin-top: -1px;
+      width: 10px;
+      height: 10px;
     }
   }
 }

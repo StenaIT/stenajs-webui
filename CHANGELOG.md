@@ -7,6 +7,12 @@
 - We are moving from React context based theme to CSS variables.
 - We are also starting to implement components using HTML elements and CSS modules, instead of `core` components.
 
+### New components
+
+- Link
+- PrimaryButton
+- Collapsible
+
 ### Updated components
 
 These components have new implementations, built with HTML and CSS modules.
@@ -15,6 +21,8 @@ These components have new implementations, built with HTML and CSS modules.
 - Badge
 - Checkbox
 - RadioButton
+- Chip
+- Modal
 
 ### Breaking changes
 
