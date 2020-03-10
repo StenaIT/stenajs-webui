@@ -2,6 +2,10 @@
 
 ## Next release
 
+- Coming soon...
+
+## 1.0.0-beta-1
+
 ### PSA
 
 - We are moving from React context based theme to CSS variables.
