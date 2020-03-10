@@ -1,117 +1,54 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import {
-  Box,
-  Clickable,
-  Indent,
-  Nest,
-  Row,
-  SmallText,
-  useBoolean,
-  useThemeFields
-} from "@stenajs-webui/core";
+import cx from "classnames";
+import { MouseEventHandler } from "react";
 import * as React from "react";
-import { Icon } from "../icon/Icon";
-import { ChipTheme, defaultChipTheme } from "./ChipTheme";
+import { FlatButton, FlatButtonProps } from "../buttons/FlatButton";
+import { Link } from "../link/Link";
+import styles from "./Chip.module.css";
 
-export interface ChipProps {
-  label: string;
-  onClickLabel?: () => void;
+export type ChipVariant = "primary" | "secondary";
+
+export interface ChipProps extends Omit<FlatButtonProps, "variant"> {
   onClickRemove?: () => void;
-  theme?: ChipTheme;
+  variant?: ChipVariant;
 }
 
 export const Chip: React.FC<ChipProps> = ({
-  label,
-  onClickLabel,
   onClickRemove,
-  theme = defaultChipTheme
+  onClick,
+  label,
+  variant = "primary"
 }) => {
-  const [labelHovering, setLabelHovering, setLabelNotHovering] = useBoolean(
-    false
-  );
-  const [iconHovering, setIconHovering, setIconNotHovering] = useBoolean(false);
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        background: theme.background,
-        backgroundHover: theme.backgroundHover,
-        iconColor: theme.iconColor,
-        iconColorHover: theme.iconColorHover,
-        removeIconBackgroundHover: theme.removeIconBackgroundHover,
-        textColor: theme.textColor,
-        textColorHover: theme.textColorHover
-      }
-    },
-    [theme]
-  );
-
+  const onClickHandler: MouseEventHandler<HTMLSpanElement> = ev => {
+    ev.stopPropagation();
+    ev.preventDefault();
+    if (onClick) {
+      onClick();
+    }
+  };
   return (
-    <Box display={"inline-block"}>
-      <Row
-        role={"group"}
-        background={
-          onClickLabel && labelHovering
-            ? colors.backgroundHover
-            : colors.background
-        }
-        borderRadius={theme.borderRadius}
-        height={theme.height}
-        alignItems={"center"}
-        overflow={"hidden"}
+    <div
+      className={cx(
+        styles.chip,
+        styles[variant],
+        onClickRemove ? styles.removable : undefined
+      )}
+    >
+      <Link
+        disabled={!onClick}
+        onClick={onClickHandler}
+        className={cx(styles.label, onClick ? styles.clickable : undefined)}
       >
-        <Nest
-          nest={!!onClickLabel}
-          render={children => (
-            <Clickable onClick={onClickLabel}>{children}</Clickable>
-          )}
-        >
-          <Indent
-            height={theme.height}
-            justifyContent={"center"}
-            onMouseEnter={setLabelHovering}
-            onMouseLeave={setLabelNotHovering}
-          >
-            <SmallText
-              lineHeight={theme.height}
-              color={
-                onClickLabel && labelHovering
-                  ? colors.textColorHover
-                  : colors.textColor
-              }
-            >
-              {label}
-            </SmallText>
-          </Indent>
-        </Nest>
-        {onClickRemove && (
-          <Clickable onClick={onClickRemove} disableOpacityOnClick>
-            <Box
-              borderRadius={theme.borderRadius}
-              background={
-                (labelHovering && onClickLabel) || iconHovering
-                  ? colors.backgroundHover
-                  : colors.background
-              }
-              height={theme.height}
-              alignItems={"center"}
-              justifyContent={"center"}
-              onMouseEnter={setIconHovering}
-              onMouseLeave={setIconNotHovering}
-            >
-              <Indent num={0.5}>
-                <Icon
-                  icon={faTimes}
-                  size={10}
-                  color={
-                    iconHovering ? colors.iconColorHover : colors.iconColor
-                  }
-                />
-              </Indent>
-            </Box>
-          </Clickable>
-        )}
-      </Row>
-    </Box>
+        {label}
+      </Link>
+      {onClickRemove && (
+        <FlatButton
+          leftIcon={faTimes}
+          size={"small"}
+          className={styles.close}
+          onClick={onClickRemove}
+        />
+      )}
+    </div>
   );
 };

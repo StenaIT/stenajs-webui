@@ -1,0 +1,114 @@
+.chip {
+  --swui-chip-line-height: 16px;
+  --swui-chip-font-size: 12px;
+  --swui-chip-letter-spacing: -0.2px;
+  --swui-chip-height: 24px;
+  --swui-chip-bg-color: var(--swui-primary-action-color);
+  --swui-chip-text-color-primary: var(--swui-white);
+  --swui-chip-text-color-secondary: var(--lhds-color-blue-800);
+  --swui-chip-border-radius: var(--swui-border-radius);
+  --swui-chip-shadow: var(--swui-border-radius);
+
+  /* Border */
+  --swui-chip-border-color-primary: var(--swui-primary-action-color);
+  --swui-chip-border-color-secondary: var(--lhds-color-blue-300);
+
+  --current-icon-color: var(--swui-chip-bg-color);
+  --current-bg-color: var(--lhds-color-blue-50);
+
+  /*
+   * Styling
+   */
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--swui-chip-height);
+
+  box-shadow: var(--swui-chip-shadow);
+  border-radius: var(--swui-chip-border-radius);
+  padding-left: var(--swui-metrics-space);
+  padding-right: calc(var(--swui-metrics-space) / 2);
+  background-color: var(--current-bg-color);
+
+  &.primary {
+    border: 1px solid var(--swui-chip-border-color-primary);
+    --current-bg-color: var(--swui-chip-bg-color);
+    --current-icon-color: var(--swui-white);
+
+    .label {
+      --swui-link-color: var(--swui-chip-text-color-primary);
+      --swui-link-color-hover: var(--swui-chip-text-color-primary);
+      --swui-link-color-active: var(--swui-chip-text-color-primary);
+      --swui-link-color-focus: var(--swui-chip-text-color-primary);
+      --swui-link-color-disabled: var(--swui-chip-text-color-primary);
+    }
+
+    .close {
+      --swui-button-background-color-hover: var(
+        --swui-primary-action-color-hover
+      );
+      --swui-button-background-color-focus: var(
+        --swui-primary-action-color-focus
+      );
+      --swui-button-background-color-active: var(
+        --swui-primary-action-color-active
+      );
+    }
+  }
+
+  &.secondary {
+    border: 1px solid var(--swui-chip-border-color-secondary);
+    --current-bg-color: var(--lhds-color-blue-50);
+    --current-icon-color: var(--swui-chip-text-color-secondary);
+
+    .label {
+      --swui-link-color: var(--swui-chip-text-color-secondary);
+      --swui-link-color-active: var(--swui-chip-text-color-secondary);
+      --swui-link-color-hover: var(--swui-chip-text-color-secondary);
+      --swui-link-color-focus: var(--swui-chip-text-color-secondary);
+      --swui-link-color-disabled: var(--swui-chip-text-color-secondary);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-blue-400);
+      --swui-button-background-color-focus: var(--lhds-color-blue-300);
+      --swui-button-background-color-hover: var(--lhds-color-blue-200);
+    }
+  }
+
+  &.removable {
+    padding-right: calc(var(--swui-metrics-space) / 2);
+  }
+
+  /*
+   * Specifying the class twice gives the css rule more specificity which
+   * makes it possible to override properties without having to use !important
+   */
+  .label.label {
+    font-size: var(--swui-chip-font-size);
+    letter-spacing: var(--swui-chip-letter-spacing);
+    line-height: var(--swui-chip-line-height);
+    padding-right: calc(var(--swui-metrics-space) / 2);
+
+    &.clickable {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .close.close {
+    width: 16px;
+    height: 16px;
+
+    svg {
+      color: var(--current-icon-color);
+      margin-top: -1px;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

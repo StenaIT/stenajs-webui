@@ -115,6 +115,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       ) : null}
 
       {buttonLabel && <span>{buttonLabel}</span>}
+
       {right ? (
         right
       ) : rightIcon ? (

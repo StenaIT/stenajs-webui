@@ -1,0 +1,39 @@
+.link {
+  --swui-link-color: var(--swui-primary-action-color);
+  --swui-link-color-hover: var(--swui-primary-action-color-hover);
+  --swui-link-color-active: var(--swui-primary-action-color-active);
+  --swui-link-color-focus: var(--swui-primary-action-color);
+  --swui-link-color-disabled: var(--swui-text-disabled-color);
+
+  /*
+   * Styling
+   */
+  color: var(--swui-link-color);
+
+  &:not(.disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  &:hover {
+    color: var(--swui-link-color-hover);
+  }
+
+  &:active {
+    color: var(--swui-link-color-active);
+  }
+
+  &.disabled {
+    color: var(--swui-link-color-disabled);
+  }
+
+  &:focus {
+    outline: none;
+    color: var(--swui-link-color-focus);
+  }
+}
