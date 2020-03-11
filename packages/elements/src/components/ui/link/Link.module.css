@@ -1,39 +1,58 @@
 .link {
+  --swui-link-font-family: var(--swui-font-primary);
+  --swui-link-text-decoration: underline;
+  --swui-link-font-weight: var(--swui-font-weight-link);
   --swui-link-color: var(--swui-primary-action-color);
   --swui-link-color-hover: var(--swui-primary-action-color-hover);
   --swui-link-color-active: var(--swui-primary-action-color-active);
-  --swui-link-color-focus: var(--swui-primary-action-color);
+  --swui-link-color-focus: var(--swui-primary-action-color-focus);
   --swui-link-color-disabled: var(--swui-text-disabled-color);
+  --swui-link-focus-highlight-color: var(--lhds-color-blue-300);
+  --swui-link-focus-highlight-color-disabled: var(--swui-link-color-disabled);
+
+  /*
+   * Private vars
+   */
+  --current-text-color: var(--swui-link-color);
+  --current-focus-highlight-color: transparent;
 
   /*
    * Styling
    */
-  color: var(--swui-link-color);
+  color: var(--current-text-color);
+  font-family: var(--swui-link-font-family);
+  font-weight: var(--swui-link-font-weight);
+  box-sizing: border-box;
+  border: 1px solid var(--current-focus-highlight-color);
+  text-decoration: var(--swui-link-text-decoration);
 
   &:not(.disabled) {
     cursor: pointer;
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-
-  &:hover {
-    color: var(--swui-link-color-hover);
-  }
-
-  &:active {
-    color: var(--swui-link-color-active);
-  }
-
-  &.disabled {
-    color: var(--swui-link-color-disabled);
   }
 
   &:focus {
     outline: none;
-    color: var(--swui-link-color-focus);
+    &:not(:active) {
+      --current-focus-highlight-color: var(--swui-link-focus-highlight-color);
+      cursor: pointer;
+    }
+    &.disabled {
+      --current-focus-highlight-color: var(
+        --swui-link-focus-highlight-color-disabled
+      );
+      cursor: default;
+    }
+  }
+
+  &:hover {
+    --current-text-color: var(--swui-link-color-hover);
+  }
+
+  &:active {
+    --current-text-color: var(--swui-link-color-active);
+  }
+
+  &.disabled {
+    --current-text-color: var(--swui-link-color-disabled);
   }
 }

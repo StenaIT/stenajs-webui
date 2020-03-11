@@ -42,6 +42,7 @@
       --swui-link-color-active: var(--swui-chip-text-color-primary);
       --swui-link-color-focus: var(--swui-chip-text-color-primary);
       --swui-link-color-disabled: var(--swui-chip-text-color-primary);
+      --swui-link-focus-highlight-color: var(--swui-chip-text-color-primary);
     }
 
     .close {
@@ -54,6 +55,10 @@
       --swui-button-background-color-active: var(
         --swui-primary-action-color-active
       );
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px var(--swui-white);
+      }
     }
   }
 
@@ -68,12 +73,18 @@
       --swui-link-color-hover: var(--swui-chip-text-color-secondary);
       --swui-link-color-focus: var(--swui-chip-text-color-secondary);
       --swui-link-color-disabled: var(--swui-chip-text-color-secondary);
+      --swui-link-focus-highlight-color: var(--swui-chip-text-color-secondary);
     }
 
     .close {
       --swui-button-background-color-active: var(--lhds-color-blue-400);
       --swui-button-background-color-focus: var(--lhds-color-blue-300);
       --swui-button-background-color-hover: var(--lhds-color-blue-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px
+          var(--swui-chip-text-color-secondary);
+      }
     }
   }
 
@@ -90,11 +101,14 @@
     letter-spacing: var(--swui-chip-letter-spacing);
     line-height: var(--swui-chip-line-height);
     padding-right: calc(var(--swui-metrics-space) / 2);
+    --swui-link-text-decoration: none;
+    --swui-link-focus-highlight-color-disabled: transparent;
 
     &.clickable {
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: underline;
       }
     }

@@ -7,6 +7,7 @@ import styles from "./Link.module.css";
 interface Props extends SpanProps {
   children?: string;
   disabled?: boolean;
+  disableTabIndex?: boolean;
 }
 
 export const Link: React.FC<Props> = ({
@@ -14,6 +15,7 @@ export const Link: React.FC<Props> = ({
   className,
   onClick,
   tabIndex = 0,
+  disableTabIndex,
   disabled,
   ...spanProps
 }) => {
@@ -26,10 +28,10 @@ export const Link: React.FC<Props> = ({
   return (
     <span
       role={"link"}
-      tabIndex={tabIndex}
+      tabIndex={!disableTabIndex ? tabIndex : undefined}
       className={cx(styles.link, disabled && styles.disabled, className)}
       onClick={!disabled ? onClick : undefined}
-      onKeyDown={onKeyDown}
+      onKeyDown={!disabled ? onKeyDown : undefined}
       {...spanProps}
     >
       {children}
