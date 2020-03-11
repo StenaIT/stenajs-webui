@@ -4,6 +4,12 @@
 
 - Coming soon...
 
+## 1.0.0-alpha.1
+
+- Hover and focus combined with variants in `TextInput` have been updated according to design system.
+- Added Link focus highlight.
+- Improved focus highlight on Chip.
+
 ## 1.0.0-alpha.0
 
 ### PSA
