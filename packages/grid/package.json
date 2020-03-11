@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@stenajs-webui/core": "1.0.0-alpha.0",
-    "@stenajs-webui/elements": "1.0.0-alpha.0",
-    "@stenajs-webui/forms": "1.0.0-alpha.0"
+    "@stenajs-webui/elements": "1.0.0-alpha.1",
+    "@stenajs-webui/forms": "1.0.0-alpha.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.19",

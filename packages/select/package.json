@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/select",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@stenajs-webui/core": "1.0.0-alpha.0",
-    "@stenajs-webui/elements": "1.0.0-alpha.0",
+    "@stenajs-webui/elements": "1.0.0-alpha.1",
     "@types/react-select": "^3.0.6",
     "react-select": "^3.0.8"
   },
