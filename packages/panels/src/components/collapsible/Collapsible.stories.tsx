@@ -66,7 +66,7 @@ storiesOf("panels/Collapsible", module)
         <StatefulCollapsible label={"Boosters"}>
           <CollapsibleGroupHeading>Search boosters</CollapsibleGroupHeading>
           <CollapsibleContent>
-            <TextInput iconRight={faSearch} wrapperStyle={{ width: "100%" }} />
+            <TextInput iconRight={faSearch} />
           </CollapsibleContent>
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={boosters.new} />}

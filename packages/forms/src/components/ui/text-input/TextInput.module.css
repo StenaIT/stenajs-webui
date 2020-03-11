@@ -44,6 +44,7 @@
 
   &.inputContainer {
     display: flex;
+    width: 100%;
     align-items: center;
     background: var(--current-bg, var(--swui-textinput-bg-color));
     border: 1px solid
@@ -51,6 +52,23 @@
     border-radius: var(--swui-textinput-border-radius);
     transition: all var(--swui-textinput-animation-time);
     --current-icon-color: var(--swui-textinput-icon-color);
+
+    &&:focus-within {
+      box-shadow: var(--swui-textinput-focus-shadow);
+      --current-border-color: var(--swui-textinput-border-color-hover);
+      --current-bg: var(--swui-textinput-bg-color);
+    }
+
+    /*
+     * States
+     */
+    &.standard, &.success {
+      &:hover {
+        &:not(.disabled) {
+          --current-border-color: var(--swui-textinput-border-color-hover);
+        }
+      }
+    }
 
     &.success {
       --current-icon-color: var(--swui-text-input-icon-color-success);
@@ -81,17 +99,6 @@
     &.disabled {
       --current-bg: var(--swui-textinput-bg-color-disabled);
       --current-border-color: var(--swui-textinput-border-color-disabled);
-    }
-
-    &:hover {
-      &:not(.disabled) {
-        --current-border-color: var(--swui-textinput-border-color-hover);
-      }
-    }
-
-    &:focus-within {
-      box-shadow: var(--swui-textinput-focus-shadow);
-      --current-border-color: var(--swui-textinput-border-color-hover);
     }
 
     .input {
