@@ -37,6 +37,7 @@ export const Chip: React.FC<ChipProps> = ({
       <Link
         disabled={!onClick}
         onClick={onClickHandler}
+        disableTabIndex={!onClick}
         className={cx(styles.label, onClick ? styles.clickable : undefined)}
       >
         {label}
