@@ -2,7 +2,15 @@
 
 ## Next release
 
-- Coming soon...
+### Bug fixes
+
+- TextInput onChange and onKeyDown props no longer overwrite internal handlers.
+
+#### TextInput onKeyDown prop
+
+`onKeyDown` was not receiving enter or escape.
+All other calls were also disabled when `onMove` was set.
+This has changed. `onKeyDown` now always receives all key down events.
 
 ## 1.0.0-alpha.1
 

@@ -69,7 +69,9 @@ export const useKeyboardNavigation = (
             blurMoveAndCancel("left", ev);
           }
         }
-      } else if (onKeyDown) {
+      }
+
+      if (onKeyDown) {
         onKeyDown(ev);
       }
     },

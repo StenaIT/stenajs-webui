@@ -131,8 +131,8 @@ export const TextInput: React.FC<TextInputProps> = props => {
         type={"text"}
         disabled={disabled}
         ref={refToUse}
-        {...hookProps}
         {...inputProps}
+        {...hookProps}
       />
       <TextInputIcon
         content={currentContentRight}
