@@ -82,6 +82,12 @@ export const TextInput: React.FC<TextInputProps> = props => {
     onValueChange,
     wrapperClassName,
     wrapperStyle,
+    onDone,
+    onEnter,
+    onEsc,
+    onMove,
+    onChange,
+    onKeyDown,
     ...inputProps
   } = props;
   const internalRef = useRef(null);
