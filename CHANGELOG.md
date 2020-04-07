@@ -2,6 +2,10 @@
 
 ## Next release
 
+- Coming soon...
+
+## ## 1.0.0-alpha.2
+
 ### Bug fixes
 
 - TextInput onChange and onKeyDown props no longer overwrite internal handlers.
