@@ -4,17 +4,21 @@ import * as React from "react";
 import { TextInput } from "../TextInput";
 
 describe("TextInput", () => {
-  const alt = "Some input";
+  const ariaLabel = "Some input";
 
-  describe("alt prop", () => {
+  describe("ariaLabel prop", () => {
     describe("is set on input DOM element", () => {
       it("works", async () => {
         const setValueMock = jest.fn();
-        const { getByAltText } = render(
-          <TextInput value={""} onValueChange={setValueMock} alt={alt} />
+        const { getByLabelText } = render(
+          <TextInput
+            value={""}
+            onValueChange={setValueMock}
+            aria-label={ariaLabel}
+          />
         );
 
-        const input = getByAltText(alt);
+        const input = getByLabelText(ariaLabel);
         expect(input.tagName.toUpperCase()).toBe("INPUT");
       });
     });
@@ -23,11 +27,15 @@ describe("TextInput", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
         const setValueMock = jest.fn();
-        const { getByAltText } = render(
-          <TextInput value={""} onValueChange={setValueMock} alt={alt} />
+        const { getByLabelText } = render(
+          <TextInput
+            value={""}
+            onValueChange={setValueMock}
+            aria-label={ariaLabel}
+          />
         );
 
-        const input = getByAltText(alt);
+        const input = getByLabelText(ariaLabel);
 
         await userEvent.type(input, "12");
         await userEvent.type(input, "34567");
@@ -40,16 +48,16 @@ describe("TextInput", () => {
       describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
           const setValueMock = jest.fn();
-          const { getByAltText } = render(
+          const { getByLabelText } = render(
             <TextInput
               value={""}
               onValueChange={setValueMock}
               onChange={() => {}}
-              alt={alt}
+              aria-label={ariaLabel}
             />
           );
 
-          const input = getByAltText(alt);
+          const input = getByLabelText(ariaLabel);
 
           await userEvent.type(input, "13");
           await userEvent.type(input, "7890");
@@ -64,16 +72,16 @@ describe("TextInput", () => {
       describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
           const setValueMock = jest.fn();
-          const { getByAltText } = render(
+          const { getByLabelText } = render(
             <TextInput
               value={""}
               onValueChange={setValueMock}
               onKeyDown={() => {}}
-              alt={alt}
+              aria-label={ariaLabel}
             />
           );
 
-          const input = getByAltText(alt);
+          const input = getByLabelText(ariaLabel);
 
           await userEvent.type(input, "13");
           await userEvent.type(input, "987");
@@ -88,11 +96,15 @@ describe("TextInput", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
         const setValueMock = jest.fn();
-        const { getByAltText } = render(
-          <TextInput value={""} onChange={setValueMock} alt={alt} />
+        const { getByLabelText } = render(
+          <TextInput
+            value={""}
+            onChange={setValueMock}
+            aria-label={ariaLabel}
+          />
         );
 
-        const input = getByAltText(alt);
+        const input = getByLabelText(ariaLabel);
 
         await userEvent.type(input, "12");
         await userEvent.type(input, "34567");
@@ -105,11 +117,15 @@ describe("TextInput", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
         const setValueMock = jest.fn();
-        const { getByAltText } = render(
-          <TextInput value={""} onKeyDown={setValueMock} alt={alt} />
+        const { getByLabelText } = render(
+          <TextInput
+            value={""}
+            onKeyDown={setValueMock}
+            aria-label={ariaLabel}
+          />
         );
 
-        const input = getByAltText(alt);
+        const input = getByLabelText(ariaLabel);
 
         await userEvent.type(input, "12");
         await userEvent.type(input, "34567");
@@ -123,16 +139,16 @@ describe("TextInput", () => {
       it("works", async () => {
         const setValueMock = jest.fn();
         const setValueMock2 = jest.fn();
-        const { getByAltText } = render(
+        const { getByLabelText } = render(
           <TextInput
             value={""}
             onChange={setValueMock2}
             onKeyDown={setValueMock}
-            alt={alt}
+            aria-label={ariaLabel}
           />
         );
 
-        const input = getByAltText(alt);
+        const input = getByLabelText(ariaLabel);
 
         await userEvent.type(input, "12");
         await userEvent.type(input, "34567");
