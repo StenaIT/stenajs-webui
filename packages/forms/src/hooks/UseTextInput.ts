@@ -1,5 +1,11 @@
-import { FocusEventHandler, RefObject, useCallback } from "react";
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  RefObject,
+  useCallback
+} from "react";
 import { TextInputProps } from "../components/ui/text-input/TextInput";
+
 import { useKeyboardNavigation } from "./UseKeyboardNavigation";
 import { useSelectAllOnFocus } from "./UseSelectAllOnFocus";
 import { useSelectAllOnMount } from "./UseSelectAllOnMount";
@@ -21,7 +27,7 @@ export const useTextInput = (
     onKeyDown,
     autoFocus
   }: TextInputProps
-) => {
+): JSX.IntrinsicElements["input"] => {
   const { onFocusHandler } = useSelectAllOnFocus(
     ref,
     onFocus,
@@ -46,7 +52,7 @@ export const useTextInput = (
     }
   };
 
-  const onChangeHandler = useCallback(
+  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
     ev => {
       if (onChange) {
         onChange(ev);
