@@ -21,8 +21,8 @@ describe("TextInput", () => {
         expect(setValueMock).toBeCalledWith("34567");
       });
     });
-    describe("onChange is used", () => {
-      describe("gets called when text is entered", () => {
+    describe("when onChange is used", () => {
+      describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
           const setValueMock = jest.fn();
           const { container } = render(
@@ -44,8 +44,8 @@ describe("TextInput", () => {
       });
     });
 
-    describe("onKeyDown is used", () => {
-      describe("gets called when text is entered", () => {
+    describe("when onKeyDown is used", () => {
+      describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
           const setValueMock = jest.fn();
           const { container } = render(
@@ -64,6 +64,63 @@ describe("TextInput", () => {
           expect(setValueMock).toBeCalledTimes(5);
           expect(setValueMock).toBeCalledWith("987");
         });
+      });
+    });
+  });
+  describe("onChange prop", () => {
+    describe("gets called when text is entered", () => {
+      it("works", async () => {
+        const setValueMock = jest.fn();
+        const { container } = render(
+          <TextInput value={""} onChange={setValueMock} />
+        );
+
+        const input = container.querySelector<HTMLInputElement>("input")!;
+
+        await userEvent.type(input, "12");
+        await userEvent.type(input, "34567");
+
+        expect(setValueMock).toBeCalledTimes(7);
+      });
+    });
+  });
+  describe("onKeyDown prop", () => {
+    describe("gets called when text is entered", () => {
+      it("works", async () => {
+        const setValueMock = jest.fn();
+        const { container } = render(
+          <TextInput value={""} onKeyDown={setValueMock} />
+        );
+
+        const input = container.querySelector<HTMLInputElement>("input")!;
+
+        await userEvent.type(input, "12");
+        await userEvent.type(input, "34567");
+
+        expect(setValueMock).toBeCalledTimes(7);
+      });
+    });
+  });
+  describe("onChange and onKeyDown prop combined", () => {
+    describe("both gets called when text is entered", () => {
+      it("works", async () => {
+        const setValueMock = jest.fn();
+        const setValueMock2 = jest.fn();
+        const { container } = render(
+          <TextInput
+            value={""}
+            onChange={setValueMock2}
+            onKeyDown={setValueMock}
+          />
+        );
+
+        const input = container.querySelector<HTMLInputElement>("input")!;
+
+        await userEvent.type(input, "12");
+        await userEvent.type(input, "34567");
+
+        expect(setValueMock).toBeCalledTimes(7);
+        expect(setValueMock2).toBeCalledTimes(7);
       });
     });
   });
