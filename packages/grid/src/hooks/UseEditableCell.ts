@@ -173,8 +173,7 @@ const allowsLetters = (allowedInputType: AllowedInputType): boolean =>
   allowedInputType === "alphanumeric" ||
   allowedInputType === "letters";
 
-const isCharacter = (key: string): boolean =>
-  isLetter(key) || !!key.match(/^[-+*<>]$/);
+const isCharacter = (key: string): boolean => !!key.match(/^[-+*<>]$/);
 const isLetter = (key: string): boolean => !!key.match(/^[a-zA-Z0-9]$/);
 const isNumeric = (key: string): boolean => !isNaN(parseInt(key, 10));
 
