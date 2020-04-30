@@ -1,8 +1,9 @@
 :root {
-    /* Text colors */
-  --swui-text-primary-color: #1b2e47;
+  /* Text colors */
+  --swui-text-primary-color: var(--lhds-color-ui-800);
   --swui-text-primary-color-light: #bcbabd;
   --swui-text-disabled-color: #b6b6b6;
+  --swui-text-disabled-color-light: #dddddd;
   --swui-text-darkmode-primary-color: #bcbabd;
   --swui-text-darkmode-disabled-color: #dddddd;
 

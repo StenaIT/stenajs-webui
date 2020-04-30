@@ -1,7 +1,7 @@
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Box } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { ActionMenuItem, FlatButton } from "@stenajs-webui/elements";
 import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -43,6 +43,27 @@ storiesOf("tooltip/Popover", module)
     () => (
       <Box indent={5} spacing={5} display={"inline-block"}>
         <Popover content={<ActionPrompt />} trigger={"click"}>
+          {({ show }) => <FlatButton leftIcon={faTrash} onClick={show} />}
+        </Popover>
+      </Box>
+    ),
+    { notes: { markdown } }
+  )
+  .add(
+    "with no padding",
+    () => (
+      <Box indent={5} spacing={5} display={"inline-block"}>
+        <Popover
+          disablePadding
+          arrowColorHover={"var(--swui-primary-action-color)"}
+          content={
+            <Box width={"120px"}>
+              <ActionMenuItem label={"Save"} />
+              <ActionMenuItem label={"Delete"} />
+            </Box>
+          }
+          trigger={"click"}
+        >
           {({ show }) => <FlatButton leftIcon={faTrash} onClick={show} />}
         </Popover>
       </Box>
