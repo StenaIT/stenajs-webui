@@ -133,11 +133,12 @@ export function Popover({
                 shadow={"modal"}
                 spacing={disablePadding ? 0 : 1}
                 indent={disablePadding ? 0 : 1}
-                overflow={"hidden"}
               >
-                {typeof content === "function"
-                  ? content({ show, hide })
-                  : content}
+                <Box borderRadius={"4px"} overflow={"hidden"}>
+                  {typeof content === "function"
+                    ? content({ show, hide })
+                    : content}
+                </Box>
                 {!disableArrow && (
                   <Arrow
                     background={colors.background}
