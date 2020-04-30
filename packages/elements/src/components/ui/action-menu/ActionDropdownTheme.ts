@@ -18,8 +18,8 @@ export const defaultActionDropdownTheme: ActionDropdownTheme = {
   backgroundDisabled: "var(--swui-field-bg-disabled)",
   textColor: "var(--swui-text-primary-color)",
   textColorDisabled: "var(--swui-text-disabled-color)",
-  expandIconColor: "var(--swui-primary-action-color)",
+  expandIconColor: "var(--swui-field-border-color)",
   expandIconColorDisabled: "var(--swui-text-disabled-color)",
-  expandIconColorFocus: "var(--swui-primary-action-color-focus)",
+  expandIconColorFocus: "var(--swui-field-border-color-hover)",
   height: "34px"
 };
