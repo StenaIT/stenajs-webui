@@ -2,7 +2,9 @@
 
 ## Next release
 
-- Coming soon...
+### New features
+
+- Add more higher order reducers.
 
 ## 1.0.0-alpha.2
 
