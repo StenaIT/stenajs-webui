@@ -21,7 +21,9 @@ export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
         <Box row alignItems={"center"}>
           <Switch disabled={disabled} {...switchProps} />
           <Space />
-          <StandardText userSelect={"none"}>{label}</StandardText>
+          <StandardText userSelect={"none"} color={textColor}>
+            {label}
+          </StandardText>
         </Box>
       </label>
     </div>

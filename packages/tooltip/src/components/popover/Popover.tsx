@@ -36,6 +36,7 @@ export interface PopoverProps {
   children?: ReactNode | PopoverContentFunc;
   background?: ThemeColorField | string;
   innerRef?: RefObject<HTMLDivElement>;
+  disablePadding?: boolean;
   /**
    * Portal target, HTML element. If not set, portal is not used.
    */
@@ -63,11 +64,13 @@ export function Popover({
   onShow,
   onHide,
   disableCloseOnClickOutside,
-  disableArrow
+  disableArrow,
+  disablePadding
 }: PopoverProps) {
   const [showing, setShowing] = useState(false);
   const outerRef = useRef<HTMLDivElement>(null);
   const portalRef = useRef<HTMLDivElement>(null);
+
   const refToUse = innerRef || outerRef;
   useMultiOnClickOutside([refToUse, portalRef], () => {
     if (trigger === "click" && !disableCloseOnClickOutside) {
@@ -128,12 +131,14 @@ export function Popover({
                 borderStyle={"solid"}
                 borderColor={colors.background}
                 shadow={"modal"}
-                spacing
-                indent
+                spacing={disablePadding ? 0 : 1}
+                indent={disablePadding ? 0 : 1}
               >
-                {typeof content === "function"
-                  ? content({ show, hide })
-                  : content}
+                <Box borderRadius={"4px"} overflow={"hidden"}>
+                  {typeof content === "function"
+                    ? content({ show, hide })
+                    : content}
+                </Box>
                 {!disableArrow && (
                   <Arrow
                     background={colors.background}

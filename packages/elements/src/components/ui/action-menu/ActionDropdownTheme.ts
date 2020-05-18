@@ -14,12 +14,12 @@ export interface ActionDropdownTheme extends ActionMenuTheme {
 
 export const defaultActionDropdownTheme: ActionDropdownTheme = {
   ...defaultActionMenuTheme,
-  background: "white",
-  backgroundDisabled: "disabledBackground",
-  textColor: "primaryText",
-  textColorDisabled: "disabledText",
-  expandIconColor: "disabledText",
-  expandIconColorDisabled: "disabledText",
-  expandIconColorFocus: "interactionBgPrimary",
+  background: "var(--swui-white)",
+  backgroundDisabled: "var(--swui-field-bg-disabled)",
+  textColor: "var(--swui-text-primary-color)",
+  textColorDisabled: "var(--swui-text-disabled-color)",
+  expandIconColor: "var(--swui-field-border-color)",
+  expandIconColorDisabled: "var(--swui-text-disabled-color)",
+  expandIconColorFocus: "var(--swui-field-border-color-hover)",
   height: "34px"
 };
