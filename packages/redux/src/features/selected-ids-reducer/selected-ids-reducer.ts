@@ -5,7 +5,7 @@ export interface SelectedIdsState {
   selectedIds: Array<string>;
 }
 
-const INITIAL_STATE: SelectedIdsState = {
+export const selectedIdsReducerInitialState: SelectedIdsState = {
   selectedIds: []
 };
 
@@ -13,7 +13,7 @@ export type SelectedIdsReducer = Reducer<SelectedIdsState, SelectedIdsAction>;
 
 export const createSelectedIdsReducer = (
   reducerId: string
-): SelectedIdsReducer => (state = INITIAL_STATE, action) => {
+): SelectedIdsReducer => (state = selectedIdsReducerInitialState, action) => {
   if (action.reducerId !== reducerId) {
     return state;
   }

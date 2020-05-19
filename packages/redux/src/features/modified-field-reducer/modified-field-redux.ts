@@ -38,6 +38,11 @@ type ModifiedStateReducer = Reducer<
   EntityByIdAction<ModifiedFieldItemState>
 >;
 
+export interface ModifiedFieldsStateAndActions {
+  state: ModifiedFieldState;
+  actions: EntityByIdAction<ModifiedFieldItemState>;
+}
+
 export interface ModifiedFieldsRedux<TStoreState> {
   reducer: ModifiedStateReducer;
   selectors: ModifiedFieldsSelectors<TStoreState>;

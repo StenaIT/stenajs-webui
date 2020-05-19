@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useStandardTableContext } from "./UseStandardTableContext";
 
 export const useTableHeadCheckbox = <TItem>(
@@ -9,17 +8,14 @@ export const useTableHeadCheckbox = <TItem>(
     config: { keyResolver }
   } = useStandardTableContext();
   const {
-    selectors: {
-      selectedIds: { getState }
-    },
     actions: {
       selectedIds: { setSelectedIds, clearSelectedIds }
-    }
+    },
+    state: {
+      selectedIds: { selectedIds }
+    },
+    dispatch
   } = useStandardTableContext();
-
-  const dispatch = useDispatch();
-
-  const { selectedIds } = useSelector(getState);
 
   const allItemsAreSelected = useMemo(() => {
     if (!items) {

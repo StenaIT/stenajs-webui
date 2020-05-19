@@ -1,15 +1,18 @@
-import { createContext } from "react";
+import { createContext, Dispatch } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
-import { StandardTableActionsAndSelectors } from "../redux/StandardTableActionsAndSelectors";
+import {
+  StandardTableAction,
+  StandardTableActions
+} from "../redux/StandardTableActionsAndSelectors";
+import { StandardTableState } from "../redux/StandardTableReducer";
 
-export interface StandardValueContextValue<
-  TStoreState,
-  TItem,
-  TColumnKeys extends string
-> extends StandardTableActionsAndSelectors<TStoreState, TColumnKeys> {
+export interface StandardValueContextValue<TItem, TColumnKeys extends string> {
   config: StandardTableConfig<TItem, TColumnKeys>;
+  dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
+  state: StandardTableState<TColumnKeys>;
+  actions: StandardTableActions<TColumnKeys>;
 }
 
 export const StandardTableContext = createContext<
-  StandardValueContextValue<any, any, any> | undefined
+  StandardValueContextValue<any, any> | undefined
 >(undefined);

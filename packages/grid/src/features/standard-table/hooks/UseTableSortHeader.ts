@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { ArrowType } from "../../../components/ui/table/TableHead";
 import { useStandardTableContext } from "./UseStandardTableContext";
 
@@ -11,9 +10,13 @@ interface Result {
 }
 
 export const useTableSortHeader = (columnId: string): Result => {
-  const { selectors, actions } = useStandardTableContext();
-  const { sortBy, desc } = useSelector(selectors.sortOrder.getState);
-  const dispatch = useDispatch();
+  const {
+    dispatch,
+    state: {
+      sortOrder: { desc, sortBy }
+    },
+    actions
+  } = useStandardTableContext();
 
   return useMemo(() => {
     const selected = columnId === sortBy;

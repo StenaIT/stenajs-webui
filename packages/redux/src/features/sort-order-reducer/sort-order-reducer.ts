@@ -6,7 +6,7 @@ export interface SortOrderState<TSortBy> {
   desc: boolean;
 }
 
-const INITIAL_STATE = {
+export const sortOrderReducerInitialState = {
   sortBy: undefined,
   desc: false
 };
@@ -18,7 +18,10 @@ export type SortOrderReducer<TSortBy> = Reducer<
 
 export const createSortOrderReducer = <TSortBy>(
   reducerId: string
-): SortOrderReducer<TSortBy> => (state = INITIAL_STATE, action) => {
+): SortOrderReducer<TSortBy> => (
+  state = sortOrderReducerInitialState,
+  action
+) => {
   if (action.reducerId !== reducerId) {
     return state;
   }

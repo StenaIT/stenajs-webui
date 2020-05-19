@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
 import { InfiniteList } from "../../../components/ui/table/InfiniteList";
 import { tableRowHeightPixels } from "../../../config/TableConfig";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
@@ -17,9 +16,11 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 >({ items }: StandardTableContentProps<TItem>) {
   const {
     config: { keyResolver, enableGridCell },
-    selectors
+    state: {
+      sortOrder: { sortBy, desc }
+    }
   } = useStandardTableContext();
-  const { sortBy, desc } = useSelector(selectors.sortOrder.getState);
+
   const valueResolver = useColumnValueResolver(sortBy);
 
   const sortedItems = useMemo(() => {

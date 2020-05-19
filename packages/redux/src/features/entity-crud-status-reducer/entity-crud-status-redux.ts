@@ -30,6 +30,11 @@ export interface CrudStatus {
   errorMessage?: string;
 }
 
+export interface EntityCrudStatusStateAndActions {
+  state: EntityCrudStatusReducerState;
+  actions: EntityCrudStatusActions;
+}
+
 export interface EntityCrudStatusRedux<TStoreState> {
   reducer: EntityCrudStatusReducer;
   actions: EntityCrudStatusActions;

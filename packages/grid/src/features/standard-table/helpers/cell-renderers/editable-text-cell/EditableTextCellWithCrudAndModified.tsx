@@ -10,6 +10,8 @@ import { KeyboardEventHandler, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { EntityCrudStatusRedux } from "@stenajs-webui/redux";
 import { ModifiedFieldsRedux } from "@stenajs-webui/redux";
+import { EntityCrudStatusStateAndActions } from "../../../../../../../redux/src/features/entity-crud-status-reducer/entity-crud-status-redux";
+import { ModifiedFieldsStateAndActions } from "../../../../../../../redux/src/features/modified-field-reducer/modified-field-redux";
 import { tableBorder, tableRowHeight } from "../../../../../config/TableConfig";
 import {
   useGridCell,
@@ -27,7 +29,9 @@ interface Props<TStoreState> {
   rowIndent?: boolean;
   allowedInputType: UseGridCellOptions<string>["allowedInputType"];
   modifiedFieldsRedux: ModifiedFieldsRedux<TStoreState>;
+  modifiedFieldsStateAndActions?: ModifiedFieldsStateAndActions;
   crudStatusRedux: EntityCrudStatusRedux<TStoreState>;
+  crudStatusStateAndActions?: EntityCrudStatusStateAndActions;
   rowIndex: number;
   colIndex: number;
   numRows: number;
