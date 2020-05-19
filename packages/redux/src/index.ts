@@ -6,6 +6,10 @@ export * from "./features/commit-reducer/reducer";
 export * from "./features/commit-reducer/selectors";
 export * from "./features/commit-reducer/state";
 
+export * from "./features/entity-reducer/entity-actions";
+export * from "./features/entity-reducer/entity-reducer";
+export * from "./features/entity-reducer/entity-selectors";
+
 export * from "./features/entity-by-id-reducer/entity-by-id-reducer";
 export * from "./features/entity-by-id-reducer/entity-by-id-actions";
 export * from "./features/entity-by-id-reducer/entity-by-id-selectors";
