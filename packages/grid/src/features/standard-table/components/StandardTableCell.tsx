@@ -24,7 +24,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   numRows
 }: StandardTableCellProps<TItem>) {
   const {
-    config: { columnOrder, tableId, enableGridCell }
+    config: { columnOrder, tableId, enableGridCell, showRowCheckbox }
   } = useStandardTableContext();
 
   const {
@@ -63,7 +63,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     colIndex,
     rowIndex,
     numRows,
-    numCols: columnOrder.length,
+    numCols: columnOrder.length + (showRowCheckbox ? 1 : 0),
     tableId,
     isEditable:
       typeof isEditable === "boolean"

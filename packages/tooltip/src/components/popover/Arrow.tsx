@@ -4,6 +4,7 @@ export const Arrow = styled("div")<{ background: string }>`
   height: 1rem;
   position: absolute;
   width: 1rem;
+  shadow: var(--swui-shadow-popover);
 
   &[data-placement*="bottom"] {
     height: 1rem;

@@ -3,8 +3,8 @@ import {
   CellIndices,
   getNextPositionWrappedOrClamped,
   MoveDirection
-} from "../util/DirectionCalculator";
-import { ensureDomIdIsCorrect } from "../util/DomIdValidator";
+} from "../../../util/DirectionCalculator";
+import { ensureDomIdIsCorrect } from "../../../util/DomIdValidator";
 import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
 
 export interface UseGridNavigationOptions {

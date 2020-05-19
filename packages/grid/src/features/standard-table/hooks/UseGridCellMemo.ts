@@ -3,7 +3,7 @@ import {
   useGridCell,
   UseGridCellOptions,
   UseGridCellResult
-} from "../../../hooks/UseGridCell";
+} from "../../grid-cell/hooks/UseGridCell";
 
 export const useGridCellMemo = <TValue>(
   value: TValue,

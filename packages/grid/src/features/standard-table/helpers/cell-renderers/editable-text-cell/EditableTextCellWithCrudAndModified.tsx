@@ -3,35 +3,40 @@ import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExcla
 import { Indent, Row, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
+import {
+  EntityCrudStatusAction,
+  EntityCrudStatusActions,
+  EntityCrudStatusState,
+  ModifiedFieldAction,
+  ModifiedFieldActions,
+  ModifiedFieldState
+} from "@stenajs-webui/redux";
 
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { KeyboardEventHandler, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { EntityCrudStatusRedux } from "@stenajs-webui/redux";
-import { ModifiedFieldsRedux } from "@stenajs-webui/redux";
-import { EntityCrudStatusStateAndActions } from "../../../../../../../redux/src/features/entity-crud-status-reducer/entity-crud-status-redux";
-import { ModifiedFieldsStateAndActions } from "../../../../../../../redux/src/features/modified-field-reducer/modified-field-redux";
+import { Dispatch, KeyboardEventHandler, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { tableBorder, tableRowHeight } from "../../../../../config/TableConfig";
 import {
   useGridCell,
   UseGridCellOptions
-} from "../../../../../hooks/UseGridCell";
+} from "../../../../grid-cell/hooks/UseGridCell";
 import {
   CrudStatusIndicator,
   hasIndicatorContent
 } from "../../components/CrudStatusIndicator";
 
-interface Props<TStoreState> {
+interface Props {
   value?: string;
   entityId: string;
   isEditable?: boolean;
   rowIndent?: boolean;
   allowedInputType: UseGridCellOptions<string>["allowedInputType"];
-  modifiedFieldsRedux: ModifiedFieldsRedux<TStoreState>;
-  modifiedFieldsStateAndActions?: ModifiedFieldsStateAndActions;
-  crudStatusRedux: EntityCrudStatusRedux<TStoreState>;
-  crudStatusStateAndActions?: EntityCrudStatusStateAndActions;
+  modifiedFieldsState: ModifiedFieldState;
+  modifiedFieldsActions: ModifiedFieldActions;
+  crudStatusState: EntityCrudStatusState;
+  crudStatusActions: EntityCrudStatusActions;
+  dispatch: Dispatch<ModifiedFieldAction | EntityCrudStatusAction>;
   rowIndex: number;
   colIndex: number;
   numRows: number;
@@ -39,30 +44,25 @@ interface Props<TStoreState> {
   warningOnEmpty?: string;
 }
 
-export const EditableTextCellWithCrudAndModified = function EditableTextCellWithCrudAndModified<
-  TStoreState
->({
+export const EditableTextCellWithCrudAndModified = function EditableTextCellWithCrudAndModified({
   allowedInputType,
   value = "",
   entityId,
   isEditable,
   rowIndent,
-  crudStatusRedux,
-  modifiedFieldsRedux,
+  crudStatusActions,
+  crudStatusState,
+  modifiedFieldsActions,
+  modifiedFieldsState,
   colIndex,
   rowIndex,
   numCols,
   numRows,
   warningOnEmpty
-}: Props<TStoreState>) {
+}: Props) {
   const enableGridCell = true;
 
   const dispatch = useDispatch();
-
-  const modifiedFieldsState = useSelector(
-    modifiedFieldsRedux.selectors.getState
-  );
-  const crudStatusState = useSelector(crudStatusRedux.selectors.getState);
 
   const modifiedField = modifiedFieldsState.entities[entityId];
   const crudStatus = crudStatusState.entities[entityId];
@@ -70,10 +70,10 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
   const onChangeHandler = useCallback(
     (newValue: string | undefined = "") => {
       if (newValue === value) {
-        dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
+        dispatch(modifiedFieldsActions.clearEntity(entityId));
       } else {
         dispatch(
-          modifiedFieldsRedux.actions.setEntity({
+          modifiedFieldsActions.setEntity({
             id: entityId,
             originalValue: value,
             newValue,
@@ -82,7 +82,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
         );
       }
     },
-    [dispatch, entityId, modifiedFieldsRedux.actions, value]
+    [dispatch, entityId, modifiedFieldsActions, value]
   );
 
   const {
@@ -108,9 +108,9 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
   const onKeyDownHandler = useCallback<KeyboardEventHandler>(
     ev => {
       if (ev.key === "Delete") {
-        dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
+        dispatch(modifiedFieldsActions.clearEntity(entityId));
         dispatch(
-          crudStatusRedux.actions.setEntityFields(entityId, {
+          crudStatusActions.setEntityFields(entityId, {
             hasError: false,
             errorMessage: undefined
           })
@@ -119,13 +119,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
         onKeyDown(ev);
       }
     },
-    [
-      onKeyDown,
-      entityId,
-      dispatch,
-      modifiedFieldsRedux.actions,
-      crudStatusRedux.actions
-    ]
+    [onKeyDown, entityId, dispatch, modifiedFieldsActions, crudStatusActions]
   );
 
   return (
@@ -133,7 +127,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
       height={tableRowHeight}
       width={"100%"}
       borderBottom={tableBorder}
-      hoverBackground={"var(--ui7)"}
+      hoverBackground={"var(--lhds-color-ui-100)"}
       alignItems={"center"}
     >
       {rowIndent && <Indent num={rowIndent} />}
@@ -150,7 +144,9 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
             : undefined
         }
         hoverBorder={
-          enableGridCell && !isEditing ? "var(--ui5) solid 1px;" : undefined
+          enableGridCell && !isEditing
+            ? "var(--lhds-color-ui-300) solid 1px;"
+            : undefined
         }
         onKeyDown={onKeyDownHandler}
         {...(enableGridCell ? requiredProps : undefined)}
@@ -196,7 +192,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
                 <Tooltip label={warningOnEmpty} zIndex={100}>
                   <Icon
                     icon={faExclamationTriangle}
-                    color={"var(--ui-alert1)"}
+                    color={"var(--lhds-color-orange-600)"}
                     size={14}
                   />
                 </Tooltip>

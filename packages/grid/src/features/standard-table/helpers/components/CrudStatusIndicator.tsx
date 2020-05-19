@@ -32,12 +32,16 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
   } = crudStatus;
 
   if (loading || creating || deleting || updating) {
-    return <InputSpinner color={"var(--ui3)"} />;
+    return <InputSpinner color={"var(--lhds-color-ui-500)"} />;
   }
 
   if (hasError) {
     const icon = (
-      <Icon icon={faExclamationTriangle} color={"var(--ui-alert1)"} size={14} />
+      <Icon
+        icon={faExclamationTriangle}
+        color={"var(--lhds-color-orange-600)"}
+        size={14}
+      />
     );
     return (
       <>

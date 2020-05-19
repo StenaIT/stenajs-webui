@@ -1,13 +1,13 @@
 export * from "./components/GridHooksTable";
 
-export * from "./components/ui/table/InfiniteList";
-export * from "./components/ui/table/SmallTableCell";
-export * from "./components/ui/table/SmallTableHead";
-export * from "./components/ui/table/TableCell";
-export * from "./components/ui/table/TableColumnGroupHead";
-export * from "./components/ui/table/TableHead";
-export * from "./components/ui/table/TableHeadRow";
-export * from "./components/ui/table/TableRow";
+export * from "./features/table-ui/components/InfiniteList";
+export * from "./features/table-ui/components/SmallTableCell";
+export * from "./features/table-ui/components/SmallTableHead";
+export * from "./features/table-ui/components/TableCell";
+export * from "./features/table-ui/components/TableColumnGroupHead";
+export * from "./features/table-ui/components/TableHead";
+export * from "./features/table-ui/components/TableHeadRow";
+export * from "./features/table-ui/components/TableRow";
 
 export * from "./config/TableConfig";
 
@@ -46,8 +46,8 @@ export * from "./features/standard-table/hooks/UseTableSortHeader";
 export * from "./features/standard-table/util/LabelFormatter";
 export * from "./features/standard-table/util/MultitypeComparator";
 
-export * from "./hooks/UseEditableCell";
-export * from "./hooks/UseGridCell";
-export * from "./hooks/UseGridNavigation";
-export * from "./hooks/UseGridNavigationOptionsFromContext";
-export * from "./hooks/UseRevertableValue";
+export * from "./features/grid-cell/hooks/UseEditableCell";
+export * from "./features/grid-cell/hooks/UseGridCell";
+export * from "./features/grid-cell/hooks/UseGridNavigation";
+export * from "./features/grid-cell/hooks/UseGridNavigationOptionsFromContext";
+export * from "./features/grid-cell/hooks/UseRevertableValue";

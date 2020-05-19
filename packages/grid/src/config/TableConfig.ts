@@ -1,4 +1,4 @@
-export const tableBorderColor = "var(--ui5)";
+export const tableBorderColor = "var(--lhds-color-ui-300)";
 export const tableBorder = `1px solid ${tableBorderColor}`;
 export const tableRowHeight = "40px";
 export const tableHeadRowHeight = "40px";

@@ -1,8 +1,7 @@
+import { SortOrderActions, SortOrderState } from "@stenajs-webui/redux";
 import { useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { ArrowType } from "../../../../features/table/components/TableHead";
-import { SortOrderActions } from "../sort-order-actions";
-import { SortOrderState } from "../sort-order-reducer";
+import { useStandardTableContext } from "../../standard-table/hooks/UseStandardTableContext";
+import { ArrowType } from "../components/TableHead";
 
 interface Result {
   selected: boolean;
@@ -11,12 +10,12 @@ interface Result {
   onClickColumnHead: () => void;
 }
 
-export const useSortOrderColumnHead = <TSortBy>(
+export const useSortOrderColumnHead = <TSortBy extends string>(
   state: SortOrderState<TSortBy>,
   actions: SortOrderActions<TSortBy>,
   sortByForColumn: TSortBy
 ): Result => {
-  const dispatch = useDispatch();
+  const { dispatch } = useStandardTableContext<unknown, TSortBy>();
   return useMemo(() => {
     const selected = state.sortBy === sortByForColumn;
     const desc = !!state.desc;

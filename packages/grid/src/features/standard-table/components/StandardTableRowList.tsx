@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { InfiniteList } from "../../../components/ui/table/InfiniteList";
+import { InfiniteList } from "../../table-ui/components/InfiniteList";
 import { tableRowHeightPixels } from "../../../config/TableConfig";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import { useStandardTableContext } from "../hooks/UseStandardTableContext";

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import {
   UseGridCellOptions,
   UseGridCellResult
-} from "../../../hooks/UseGridCell";
+} from "../../grid-cell/hooks/UseGridCell";
 
 export interface StandardTableConfig<TItem, TColumnKeys extends string> {
   columns: Record<TColumnKeys, StandardTableColumnConfig<TItem, any>>;

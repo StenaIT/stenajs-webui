@@ -1,12 +1,12 @@
 import {
   createSelectedIdsReducer,
   createSortOrderReducer,
+  selectedIdsReducerInitialState,
   SelectedIdsState,
+  sortOrderReducerInitialState,
   SortOrderState
 } from "@stenajs-webui/redux";
 import { combineReducers, Reducer } from "redux";
-import { selectedIdsReducerInitialState } from "../../../../../redux/src/features/selected-ids-reducer/selected-ids-reducer";
-import { sortOrderReducerInitialState } from "../../../../../redux/src/features/sort-order-reducer/sort-order-reducer";
 import { StandardTableAction } from "./StandardTableActionsAndSelectors";
 
 export interface StandardTableState<TColumnKey> {

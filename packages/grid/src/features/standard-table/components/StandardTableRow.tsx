@@ -64,7 +64,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       width={"100%"}
       borderBottom={tableBorder}
       background={background}
-      hoverBackground={"var(--ui7)"}
+      hoverBackground={"var(--lhds-color-ui-100)"}
     >
       {rowIndent && (
         <Indent num={rowIndent} background={firstColumnBackground} />

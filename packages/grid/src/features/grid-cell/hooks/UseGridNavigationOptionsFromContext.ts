@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
-import { GridHooksContext } from "../components/GridHooksTable";
-import { validateGridHookOptions } from "../util/GridHookOptionsValidator";
+import { GridHooksContext } from "../../../components/GridHooksTable";
+import { validateGridHookOptions } from "../../../util/GridHookOptionsValidator";
 import {
   UseGridNavigationOptions,
   ValidatedUseGridNavigationOptions

@@ -1,5 +1,5 @@
 import { KeyboardEventHandler, useCallback, useMemo } from "react";
-import { MoveDirection } from "../util/DirectionCalculator";
+import { MoveDirection } from "../../../util/DirectionCalculator";
 import {
   KeyDownEvent,
   useEditableCell,

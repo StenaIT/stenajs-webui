@@ -14,45 +14,37 @@ import {
   EntityByIdSelectors
 } from "../entity-by-id-reducer/entity-by-id-selectors";
 
-export type ModifiedFieldState = EntityByIdState<ModifiedFieldItemState>;
-
 export interface ModifiedFieldItemState extends EntityWithId {
   modified?: boolean;
   originalValue?: string;
   newValue?: string;
 }
 
-export type ModifiedFieldsActions = EntityByIdActions<ModifiedFieldItemState>;
+export type ModifiedFieldState = EntityByIdState<ModifiedFieldItemState>;
+export type ModifiedFieldAction = EntityByIdAction<ModifiedFieldItemState>;
+export type ModifiedFieldActions = EntityByIdActions<ModifiedFieldItemState>;
 
 export type ModifiedFieldsSelectors<TStoreState> = EntityByIdSelectors<
   TStoreState,
   ModifiedFieldItemState
 >;
 
-export type ModifiedStateSelector<TStoreState> = (
+export type ModifiedFieldStateSelector<TStoreState> = (
   state: TStoreState
 ) => ModifiedFieldState;
 
-type ModifiedStateReducer = Reducer<
-  ModifiedFieldState,
-  EntityByIdAction<ModifiedFieldItemState>
->;
+type ModifiedStateReducer = Reducer<ModifiedFieldState, ModifiedFieldAction>;
 
-export interface ModifiedFieldsStateAndActions {
-  state: ModifiedFieldState;
-  actions: EntityByIdAction<ModifiedFieldItemState>;
-}
-
-export interface ModifiedFieldsRedux<TStoreState> {
+export interface ModifiedFieldRedux<TStoreState> {
   reducer: ModifiedStateReducer;
   selectors: ModifiedFieldsSelectors<TStoreState>;
-  actions: ModifiedFieldsActions;
+  actions: ModifiedFieldActions;
 }
 
-export const createModifiedStateRedux = <TStoreState>(
+export const createModifiedFieldRedux = <TStoreState>(
   reducerId: string,
-  stateSelector: ModifiedStateSelector<TStoreState>
-): ModifiedFieldsRedux<TStoreState> => {
+  stateSelector: ModifiedFieldStateSelector<TStoreState>
+): ModifiedFieldRedux<TStoreState> => {
   const reducer = createEntityByIdReducer<ModifiedFieldItemState>(reducerId);
 
   const selectors: ModifiedFieldsSelectors<TStoreState> = createEntityByIdSelectors<

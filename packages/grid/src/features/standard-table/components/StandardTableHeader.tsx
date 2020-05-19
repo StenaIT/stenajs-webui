@@ -3,7 +3,7 @@ import { Indent, Row } from "@stenajs-webui/core";
 import { lowerCase, upperFirst } from "lodash";
 import * as React from "react";
 import { tableBorder, tableHeadRowHeight } from "../../../config/TableConfig";
-import { TableHead } from "../../../components/ui/table/TableHead";
+import { TableHead } from "../../table-ui/components/TableHead";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import { useStandardTableContext } from "../hooks/UseStandardTableContext";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
