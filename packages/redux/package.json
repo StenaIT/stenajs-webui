@@ -30,7 +30,9 @@
   "peerDependencies": {
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
-    "react-dom": ">=16.8.6"
+    "react-dom": ">=16.8.6",
+    "react-redux": ">=7.2.0",
+    "redux": ">=4.0.5"
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
@@ -38,7 +40,10 @@
     "@types/react-dom": "^16.8.4",
     "prop-types": "^15.5.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
+
   },
   "files": [
     "dist"

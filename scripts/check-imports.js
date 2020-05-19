@@ -95,9 +95,7 @@ const checkImport = (
   if (isStory) {
     if (imported.startsWith(".") && !isMdImport) {
       console.log(
-        `ERROR: ${
-          packageJson.name
-        } import error: Story trying to import module relatively:`
+        `ERROR: ${packageJson.name} import error: Story trying to import module relatively:`
       );
       console.log(filePath);
       console.log(`import from '${imported}'`);
@@ -107,9 +105,7 @@ const checkImport = (
   } else {
     if (imported === packageJson.name) {
       console.log(
-        `ERROR: ${
-          packageJson.name
-        } import error: Trying to import own module from node_modules:`
+        `ERROR: ${packageJson.name} import error: Trying to import own module from node_modules:`
       );
       console.log(filePath);
       console.log(`import from '${imported}'`);
@@ -137,9 +133,7 @@ const checkIfImportGoesToPackagesFolder = (filePath, packageJson, imported) => {
     currentFolder = path.join(currentFolder, part);
     if (currentFolder === packagesPath) {
       console.log(
-        `ERROR: ${
-          packageJson.name
-        } import error: Trying to import relatively from outside of own package:`
+        `ERROR: ${packageJson.name} import error: Trying to import relatively from outside of own package:`
       );
       console.log(filePath);
       console.log(`import from '${imported}'`);
@@ -158,8 +152,8 @@ const checkIfImportIsPackageJsonDependency = (
   for (let i = 0; i < size; i++) {
     const moduleNameToCheck = parts.join("/");
     if (
-      packageJson.dependencies[moduleNameToCheck] ||
-      packageJson.peerDependencies[moduleNameToCheck]
+      (packageJson.dependencies && packageJson.dependencies[moduleNameToCheck]) ||
+      (packageJson.peerDependencies && packageJson.peerDependencies[moduleNameToCheck])
     ) {
       return;
     }
@@ -167,9 +161,7 @@ const checkIfImportIsPackageJsonDependency = (
   }
 
   console.log(
-    `ERROR: '${
-      packageJson.name
-    }' must specify '${imported}' as dependency or peerDependency.`
+    `ERROR: '${packageJson.name}' must specify '${imported}' as dependency or peerDependency.`
   );
   console.log(filePath);
   success = false;
