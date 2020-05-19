@@ -11,6 +11,10 @@ Changes can be made to workspace, which can then be committed.
 
 This reducer stores entities by id. Entities can be added, removed and updated.
 
+### entity-reducer
+
+This reducer stores a single entity. It can be replaced and partially updated.
+
 ### entity-crud-status-reducer
 
 This reducer uses entity-by-id-reducer to store information about current
