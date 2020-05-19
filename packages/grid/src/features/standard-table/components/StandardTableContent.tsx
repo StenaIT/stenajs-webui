@@ -4,17 +4,22 @@ import * as React from "react";
 import { StandardTableProps } from "./StandardTable";
 import { StandardTableRowList } from "./StandardTableRowList";
 
-interface Props<TItem> extends StandardTableProps<TItem> {}
+interface Props<TItem, TColumnKey extends string>
+  extends Omit<
+    StandardTableProps<TItem, TColumnKey>,
+    "tableContext" | "config"
+  > {}
 
 export const StandardTableContent = React.memo(function StandardTableContent<
-  TItem
+  TItem,
+  TColumnKey extends string
 >({
   error,
   errorLabel,
   loading,
   items,
   noItemsLabel = "There is no data available."
-}: Props<TItem>) {
+}: Props<TItem, TColumnKey>) {
   if (error) {
     return (
       <Spacing num={10}>

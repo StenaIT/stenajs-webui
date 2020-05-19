@@ -42,6 +42,7 @@ export * from "./features/standard-table/hooks/UseStandardTableContext";
 export * from "./features/standard-table/hooks/UseTableHeadCheckbox";
 export * from "./features/standard-table/hooks/UseTableResetWhenNewData";
 export * from "./features/standard-table/hooks/UseTableSortHeader";
+export * from "./features/standard-table/hooks/UseLocalStateTableContext";
 
 export * from "./features/standard-table/util/LabelFormatter";
 export * from "./features/standard-table/util/MultitypeComparator";

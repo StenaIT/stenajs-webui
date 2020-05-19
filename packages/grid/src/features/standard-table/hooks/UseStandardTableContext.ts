@@ -1,16 +1,15 @@
 import { useContext } from "react";
 import {
   StandardTableContext,
-  StandardValueContextValue
+  StandardTableInternalContext
 } from "../context/StandardTableContext";
 
 export const useStandardTableContext = <
   TItem,
   TColumnKeys extends string
->(): StandardValueContextValue<TItem, TColumnKeys> => {
-  const context = useContext(StandardTableContext) as StandardValueContextValue<
-    TItem,
-    TColumnKeys
-  >;
+>(): StandardTableInternalContext<TItem, TColumnKeys> => {
+  const context = useContext(
+    StandardTableContext
+  ) as StandardTableInternalContext<TItem, TColumnKeys>;
   return context;
 };

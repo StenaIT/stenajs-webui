@@ -1,19 +1,12 @@
 import { Indent, StandardText } from "@stenajs-webui/core";
 import {
   createColumnConfig,
-  createStandardTableActions,
-  createStandardTableReducer,
   StandardTable,
-  StandardTableConfig,
-  StandardTableContext,
-  standardTableInitialState,
-  StandardTableReducer,
-  StandardValueContextValue
+  StandardTableConfig
 } from "@stenajs-webui/grid";
 import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import { useMemo, useReducer } from "react";
 
 interface ListItem {
   id: string;
@@ -59,10 +52,6 @@ const createConfig = (
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"]
 });
 
-interface StandardTableExampleProps {
-  tableId: string;
-}
-
 const items: Array<ListItem> = [
   {
     id: "123",
@@ -106,39 +95,16 @@ const items: Array<ListItem> = [
   }
 ];
 
-const StandardTableExample: React.FC<StandardTableExampleProps> = ({
-  tableId
-}) => {
-  const [state, dispatch] = useReducer<StandardTableReducer<keyof ListItem>>(
-    createStandardTableReducer(tableId),
-    standardTableInitialState
-  );
+const config = createConfig("123");
 
-  const actions = useMemo(
-    () => createStandardTableActions<keyof ListItem>(tableId),
-    [tableId]
-  );
-  const config = useMemo(() => createConfig(tableId), [tableId]);
-
-  const contextValue = useMemo<
-    StandardValueContextValue<ListItem, keyof ListItem>
-  >(
-    () => ({
-      dispatch,
-      actions,
-      state,
-      config
-    }),
-    [state, actions, dispatch, config]
-  );
-
-  return (
-    <StandardTableContext.Provider value={contextValue}>
-      <StandardTable items={items} />
-    </StandardTableContext.Provider>
-  );
-};
-
-storiesOf("grid/StandardTable", module).add("standard", () => (
-  <StandardTableExample tableId={"123"} />
-));
+storiesOf("grid/StandardTable", module)
+  .add("standard", () => <StandardTable items={items} config={config} />)
+  .add("missing items", () => <StandardTable items={[]} config={config} />)
+  .add("loading", () => <StandardTable items={items} config={config} loading />)
+  .add("error", () => (
+    <StandardTable
+      items={items}
+      config={config}
+      error={new Error("Could not fetch users")}
+    />
+  ));

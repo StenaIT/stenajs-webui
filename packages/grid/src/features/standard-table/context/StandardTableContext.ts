@@ -6,13 +6,23 @@ import {
 } from "../redux/StandardTableActionsAndSelectors";
 import { StandardTableState } from "../redux/StandardTableReducer";
 
-export interface StandardValueContextValue<TItem, TColumnKeys extends string> {
+export interface StandardTableInternalContext<
+  TItem,
+  TColumnKeys extends string
+> extends TableContext<TColumnKeys> {
   config: StandardTableConfig<TItem, TColumnKeys>;
+}
+
+/**
+ * A combination of dispatch, state and actions. This is used to
+ * connect the table to a state.
+ */
+export interface TableContext<TColumnKeys extends string> {
   dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
   state: StandardTableState<TColumnKeys>;
   actions: StandardTableActions<TColumnKeys>;
 }
 
 export const StandardTableContext = createContext<
-  StandardValueContextValue<any, any> | undefined
+  StandardTableInternalContext<any, any> | undefined
 >(undefined);
