@@ -3,8 +3,10 @@ import {
   createSelectedIdsSelectors,
   createSortOrderActions,
   createSortOrderSelectors,
+  SelectedIdsAction,
   SelectedIdsActions,
   SelectedIdsSelectors,
+  SortOrderAction,
   SortOrderActions,
   SortOrderSelectors
 } from "@stenajs-webui/redux";
@@ -20,6 +22,10 @@ export interface StandardTableActionsAndSelectors<TStoreState, TColumnKey> {
     selectedIds: SelectedIdsSelectors<TStoreState>;
   };
 }
+
+export type StandardTableAction<TColumnKey> =
+  | SortOrderAction<TColumnKey>
+  | SelectedIdsAction;
 
 export type StandardTableStateSelector<TStoreState, TColumnKey> = (
   state: TStoreState

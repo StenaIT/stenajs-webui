@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import { SelectedIdsAction } from "./selected-ids-actions";
 
 export interface SelectedIdsState {
@@ -8,10 +9,11 @@ const INITIAL_STATE: SelectedIdsState = {
   selectedIds: []
 };
 
-export const createSelectedIdsReducer = (reducerId: string) => (
-  state: SelectedIdsState = INITIAL_STATE,
-  action: SelectedIdsAction
-): SelectedIdsState => {
+export type SelectedIdsReducer = Reducer<SelectedIdsState, SelectedIdsAction>;
+
+export const createSelectedIdsReducer = (
+  reducerId: string
+): SelectedIdsReducer => (state = INITIAL_STATE, action) => {
   if (action.reducerId !== reducerId) {
     return state;
   }
