@@ -96,7 +96,7 @@
     "rollup-plugin-typescript2": "^0.25.2",
     "rollup-plugin-url": "^3.0.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.2"
   },
   "bundlesize": [
     {

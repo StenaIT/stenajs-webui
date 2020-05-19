@@ -1037,11 +1037,6 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.18.tgz#c0d8f073a5116b2de0a2c8a7aba66093a6956ce7"
   integrity sha512-834DrzO2Ne3upCW+mJJPC/E6BsFcj+2Z1HmPIhbpbj8UaKmXWum4NClqLpUiMetugRlHuG4jbIHNdv2/lc3c1Q==
 
-"@fortawesome/fontawesome-common-types@^0.2.28":
-  version "0.2.28"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.28.tgz#1091bdfe63b3f139441e9cba27aa022bff97d8b2"
-  integrity sha512-gtis2/5yLdfI6n0ia0jH7NJs5i/Z/8M/ZbQL6jXQhCthEOe5Cr5NcQPhgTvFxNOtURE03/ZqUcEskdn2M+QaBg==
-
 "@fortawesome/fontawesome-svg-core@1.2.18":
   version "1.2.18"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.18.tgz#c26cbded461895ebe260f0dea771ca29d8cb3517"
@@ -1062,13 +1057,6 @@
   integrity sha512-5tF6WOFlqqO95zY5ukSB6jliDa3jnk1p5L4K/a58ccDFsbjSkhfGuvZkRkeWxH8uMms81pZd6yQTwQrkedeJmg==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.18"
-
-"@fortawesome/free-solid-svg-icons@^5.8.2":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.13.0.tgz#44d9118668ad96b4fd5c9434a43efc5903525739"
-  integrity sha512-IHUgDJdomv6YtG4p3zl1B5wWf9ffinHIvebqQOmV3U+3SLw4fC+LUCCgwfETkbTtjy5/Qws2VoVf6z/ETQpFpg==
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.28"
 
 "@fortawesome/react-fontawesome@0.1.4":
   version "0.1.4"
@@ -2822,6 +2810,13 @@
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
   integrity sha512-eIRpEW73DCzPIMaNBDP5pPIpK1KXyZwNgfxiVagb5iGiz6da+9A5hslSX6GAQKdO7SayVCS/Fr2kjqprgAvkfA==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-infinite@^0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@types/react-infinite/-/react-infinite-0.0.35.tgz#0199474dcafe4a41c30d22a19ccafd8901634fb6"
+  integrity sha512-NQB2qfrs6Q4RBpfmKNzAH9KYO/kbYybQ5H6rsj7pYbwtXtBDsWSlf7OiTs7Hp2ZA+F3tfEzvx6UfVdjhRareyw==
   dependencies:
     "@types/react" "*"
 
