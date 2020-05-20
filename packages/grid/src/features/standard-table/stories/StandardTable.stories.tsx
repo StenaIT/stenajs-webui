@@ -108,19 +108,26 @@ const createConfig = (
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"]
 });
 
-const config = createConfig("123");
+const config = createConfig("123", () => {});
 const items = createItemsMocks();
 
 storiesOf("grid/StandardTable", module)
   .add(
     "standard",
     withState({ items })(({ store }) => {
-      const onChange = () =>
-        setListItemFields(item.id, {
+      const onChangeNumPassengers = (
+        item: ListItem,
+        numPassengers: string | undefined
+      ) => {
+        const items = setListItemFields(store.state.items, item.id, {
           numPassengers: numPassengers ? parseInt(numPassengers) : 0
         });
-
-      return <StandardTable items={items} config={config} />;
+        return store.set({
+          items
+        });
+      };
+      const config = createConfig("123", onChangeNumPassengers);
+      return <StandardTable items={store.state.items} config={config} />;
     })
   )
   .add("missing items", () => <StandardTable items={[]} config={config} />)

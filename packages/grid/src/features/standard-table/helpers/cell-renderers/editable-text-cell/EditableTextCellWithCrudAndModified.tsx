@@ -21,10 +21,46 @@ import {
   useGridCell,
   UseGridCellOptions
 } from "../../../../grid-cell/hooks/UseGridCell";
+import { StandardTableCellRenderer } from "../../../config/StandardTableConfig";
 import {
   CrudStatusIndicator,
   hasIndicatorContent
 } from "../../components/CrudStatusIndicator";
+
+export const createEditableTextCellWithCrudAndModified = <
+  TItemValue,
+  TItem
+>(): StandardTableCellRenderer<TItemValue, TItem> => (
+  label,
+  _itemValue,
+  _item,
+  {
+    editorValue,
+    isEditing,
+    setEditorValue,
+    stopEditingAndRevert,
+    lastKeyEvent,
+    stopEditing,
+    stopEditingAndMove
+  }
+) =>
+  isEditing ? (
+    <TextInput
+      onValueChange={setEditorValue}
+      value={editorValue}
+      onDone={stopEditing}
+      onEsc={stopEditingAndRevert}
+      autoFocus
+      selectAllOnMount={!lastKeyEvent}
+      onMove={stopEditingAndMove}
+    />
+  ) : (
+    <Indent>
+      <StandardText color={"var(--swui-primary-action-color)"}>
+        {label}
+      </StandardText>
+    </Indent>
+  );
 
 interface Props {
   value?: string;
@@ -58,11 +94,10 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
   rowIndex,
   numCols,
   numRows,
+  dispatch,
   warningOnEmpty
 }: Props) {
   const enableGridCell = true;
-
-  const dispatch = useDispatch();
 
   const modifiedField = modifiedFieldsState.entities[entityId];
   const crudStatus = crudStatusState.entities[entityId];
@@ -140,7 +175,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
         borderRadius={enableGridCell ? "4px" : undefined}
         focusBorder={
           enableGridCell && !isEditing
-            ? "1px solid var(--primary-action-color)"
+            ? "1px solid var(--swui-primary-action-color)"
             : undefined
         }
         hoverBorder={
@@ -165,7 +200,9 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
           ) : (
             <>
               <StandardText
-                color={isEditable ? "var(--primary-action-color)" : undefined}
+                color={
+                  isEditable ? "var(--swui-primary-action-color)" : undefined
+                }
                 fontWeight={modifiedField?.modified ? "bold" : undefined}
               >
                 {value}
@@ -176,7 +213,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
                     <Icon icon={faArrowRight} size={12} />
                   </Indent>
                   <StandardText
-                    color={"var(--primary-action-color)"}
+                    color={"var(--swui-primary-action-color)"}
                     fontWeight={"bold"}
                   >
                     {modifiedField.newValue}

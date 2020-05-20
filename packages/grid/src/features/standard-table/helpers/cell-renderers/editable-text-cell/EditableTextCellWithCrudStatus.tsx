@@ -37,7 +37,9 @@ export const createEditableTextCellWithCrudStatus = <TItemValue, TItem>(
     />
   ) : (
     <Indent row alignItems={"center"}>
-      <StandardText color={"var(--primary-action-color)"}>{label}</StandardText>
+      <StandardText color={"var(--swui-primary-action-color)"}>
+        {label}
+      </StandardText>
       {crudStatus && hasIndicatorContent(crudStatus) && <Space num={2} />}
       <CrudStatusIndicator crudStatus={crudStatus} />
     </Indent>

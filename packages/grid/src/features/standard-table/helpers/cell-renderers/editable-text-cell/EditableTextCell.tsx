@@ -1,19 +1,7 @@
 import { Indent, StandardText } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
-import {
-  StandardTableCellRenderer,
-  StandardTableColumnOptions
-} from "../../../config/StandardTableConfig";
-
-export const createStandardEditableTextCellOptions = <TItem, TItemValue>(
-  options?: StandardTableColumnOptions<TItem, TItemValue>
-) => {
-  return {
-    renderCell: createStandardEditableTextCell(),
-    ...options
-  };
-};
+import { StandardTableCellRenderer } from "../../../config/StandardTableConfig";
 
 export const createStandardEditableTextCell = <
   TItemValue,
@@ -44,6 +32,8 @@ export const createStandardEditableTextCell = <
     />
   ) : (
     <Indent>
-      <StandardText color={"var(--primary-action-color)"}>{label}</StandardText>
+      <StandardText color={"var(--swui-primary-action-color)"}>
+        {label}
+      </StandardText>
     </Indent>
   );
