@@ -1,16 +1,11 @@
-import { Indent, Space, StandardText } from "@stenajs-webui/core";
+import { Indent } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
-import { EntityCrudStatus } from "@stenajs-webui/redux";
+import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import * as React from "react";
-import { ModifiedFieldItemState } from "../../../../../../../redux/src/features/modified-field-reducer/modified-field-redux";
 import { StandardTableCellRenderer } from "../../../config/StandardTableConfig";
-import {
-  CrudStatusIndicator,
-  hasIndicatorContent
-} from "../../components/CrudStatusIndicator";
 import { ModifiedField } from "../../components/ModifiedField";
 
-export const createEditableTextCellWithCrudStatus = <TItemValue, TItem>(
+export const createEditableTextCellWithStatus = <TItemValue, TItem>(
   warningOnEmpty?: string | ((item: TItem) => string),
   crudStatusProvider?: (item: TItem) => EntityCrudStatus | undefined,
   modifiedFieldProvider?: (item: TItem) => ModifiedFieldItemState | undefined
@@ -27,16 +22,16 @@ export const createEditableTextCellWithCrudStatus = <TItemValue, TItem>(
     stopEditing,
     stopEditingAndMove
   },
-  { isEditable }
+  isEditable
 ) => {
   const warnOnEmpty =
-    typeof warningOnEmpty === "function" ? warningOnEmpty(_item) : undefined;
+    typeof warningOnEmpty === "function" ? warningOnEmpty(_item) : warningOnEmpty;
+
   const crudStatus = crudStatusProvider ? crudStatusProvider(_item) : undefined;
+
   const modifiedField = modifiedFieldProvider
     ? modifiedFieldProvider(_item)
     : undefined;
-  const editable =
-    typeof isEditable === "function" ? isEditable(_item) : isEditable;
 
   return isEditable && isEditing ? (
     <TextInput
@@ -54,17 +49,9 @@ export const createEditableTextCellWithCrudStatus = <TItemValue, TItem>(
         value={label}
         modifiedField={modifiedField}
         crudStatus={crudStatus}
-        isEditable={editable}
+        isEditable={isEditable}
         warningOnEmpty={warnOnEmpty}
       />
-
-      <StandardText
-        color={isEditable ? "var(--swui-primary-action-color)" : undefined}
-      >
-        {label}
-      </StandardText>
-      {crudStatus && hasIndicatorContent(crudStatus) && <Space num={2} />}
-      <CrudStatusIndicator crudStatus={crudStatus} />
     </Indent>
   );
 };

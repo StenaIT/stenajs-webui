@@ -1,14 +1,12 @@
-import { Checkbox } from "@stenajs-webui/forms";
 import { Indent, Row } from "@stenajs-webui/core";
-import { lowerCase, upperFirst } from "lodash";
+import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
 import { tableBorder, tableHeadRowHeight } from "../../../config/TableConfig";
 import { TableHead } from "../../table-ui/components/TableHead";
-import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import { useStandardTableContext } from "../hooks/UseStandardTableContext";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
 import { useTableResetWhenNewData } from "../hooks/UseTableResetWhenNewData";
-import { useTableSortHeader } from "../hooks/UseTableSortHeader";
+import { StandardTableHeaderItem } from "./StandardTableHeaderItem";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -51,41 +49,5 @@ export const StandardTableHeader = React.memo(function StandardTableHeader<
       ))}
       {rowIndent && <Indent num={rowIndent} />}
     </Row>
-  );
-});
-
-interface StandardTableHeaderItemProps {
-  columnId: string;
-}
-
-const StandardTableHeaderItem = React.memo(function({
-  columnId
-}: StandardTableHeaderItemProps) {
-  const {
-    width,
-    flex = 1,
-    justifyContentHeader,
-    columnLabel,
-    borderLeft,
-    infoIconTooltipText
-  } = useColumnFromConfig(columnId);
-  const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
-
-  const label =
-    typeof columnLabel === "string"
-      ? columnLabel
-      : upperFirst(lowerCase(columnId));
-  return (
-    <TableHead
-      arrow={label ? arrow : undefined}
-      onClick={onClickColumnHead}
-      width={width}
-      minWidth={width}
-      borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
-      flex={width ? undefined : flex}
-      justifyContent={justifyContentHeader}
-      label={label}
-      infoIconTooltipText={infoIconTooltipText}
-    />
   );
 });

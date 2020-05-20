@@ -30,8 +30,7 @@ export * from "./features/standard-table/components/TextCell";
 
 export * from "./features/standard-table/helpers/components/CrudStatusIndicator";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";
-export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithCrudAndModified";
-export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithCrudStatus";
+export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
 export * from "./features/standard-table/hooks/UseGridCellMemo";
 export * from "./features/standard-table/hooks/UseCellBackground";

@@ -59,18 +59,20 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     [itemValue, itemLabelFormatter]
   );
 
+  const editable =
+    typeof isEditable === "boolean"
+      ? isEditable
+      : isEditable
+      ? isEditable(item)
+      : undefined;
+
   const gridCell = useGridCellMemo<string>(label, {
     colIndex,
     rowIndex,
     numRows,
     numCols: columnOrder.length + (showRowCheckbox ? 1 : 0),
     tableId,
-    isEditable:
-      typeof isEditable === "boolean"
-        ? isEditable
-        : isEditable
-        ? isEditable(item)
-        : undefined,
+    isEditable: editable,
     onChange: onChange
       ? (value: string | undefined) => onChange(item, value)
       : undefined,
@@ -82,11 +84,11 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const content = useMemo(
     () =>
       renderCell ? (
-        renderCell(label, itemValue, item, gridCell)
+        renderCell(label, itemValue, item, gridCell, editable)
       ) : (
         <TextCell label={label} />
       ),
-    [label, itemValue, item, gridCell, renderCell]
+    [label, itemValue, item, gridCell, renderCell, editable]
   );
 
   return (

@@ -1,21 +1,22 @@
-import { withState } from "@dump247/storybook-state";
-import { Indent, StandardText } from "@stenajs-webui/core";
+import { Store, withState } from "@dump247/storybook-state";
 import {
   createColumnConfig,
+  createEditableTextCellWithStatus,
+  createStandardEditableTextCell,
   StandardTable,
+  StandardTableCellRenderer,
   StandardTableConfig
 } from "@stenajs-webui/grid";
 import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
 
 interface ListItem {
   id: string;
   active: boolean;
   name: string;
   ship: string;
-  numPassengers: number;
+  numPassengers?: number;
   departure: Date;
 }
 
@@ -70,10 +71,14 @@ const setListItemFields = (
 
 const createConfig = (
   tableId: string,
-  onChangeNumPassengers: (
+  onChangeNumPassengers?: (
     item: ListItem,
     numPassengersString: string | undefined
-  ) => void
+  ) => void,
+  numPassengersCellRenderer?: StandardTableCellRenderer<
+    number | undefined,
+    ListItem
+  >
 ): StandardTableConfig<ListItem, keyof ListItem> => ({
   tableId,
   keyResolver: item => item.id,
@@ -81,24 +86,19 @@ const createConfig = (
   showRowCheckbox: true,
   enableGridCell: true,
   columns: {
-    id: createColumnConfig(item => item.id, {
-      renderCell: value => (
-        <Indent>
-          <StandardText color={"var(--swui-primary-action-color)"}>
-            {value}
-          </StandardText>
-        </Indent>
-      )
-    }),
+    id: createColumnConfig(item => item.id),
     active: createColumnConfig(item => item.active, {
+      itemLabelFormatter: value => (value ? "Y" : ""),
       infoIconTooltipText: "Active means out on the sea."
     }),
     name: createColumnConfig(item => item.name),
     ship: createColumnConfig(item => item.ship),
     numPassengers: createColumnConfig(item => item.numPassengers, {
-      renderCell: createStandardEditableTextCell(),
+      renderCell: numPassengersCellRenderer,
       isEditable: true,
-      onChange: onChangeNumPassengers
+      onChange: onChangeNumPassengers,
+      justifyContentHeader: "flex-end",
+      justifyContentCell: "flex-end"
     }),
     departure: createColumnConfig(item => item.departure, {
       itemLabelFormatter: value => format(value, "yyyy-MM-dd"),
@@ -111,23 +111,100 @@ const createConfig = (
 const config = createConfig("123", () => {});
 const items = createItemsMocks();
 
+const createOnChangeNumPassengers = (
+  store: Store<{ items: Array<ListItem> }>
+) => (item: ListItem, numPassengers: string | undefined) => {
+  const items = setListItemFields(store.state.items, item.id, {
+    numPassengers: numPassengers ? parseInt(numPassengers) : undefined
+  });
+  return store.set({
+    items
+  });
+};
+
 storiesOf("grid/StandardTable", module)
   .add(
     "standard",
     withState({ items })(({ store }) => {
-      const onChangeNumPassengers = (
-        item: ListItem,
-        numPassengers: string | undefined
-      ) => {
-        const items = setListItemFields(store.state.items, item.id, {
-          numPassengers: numPassengers ? parseInt(numPassengers) : 0
-        });
-        return store.set({
-          items
-        });
-      };
-      const config = createConfig("123", onChangeNumPassengers);
+      const config = createConfig(
+        "123",
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell()
+      );
       return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
+    "with field error",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        "123",
+        createOnChangeNumPassengers(store),
+        createEditableTextCellWithStatus<number | undefined, ListItem>(
+          undefined,
+          item => ({
+            hasError: true,
+            errorMessage: "Something failed.",
+            id: item.id
+          })
+        )
+      );
+      return <StandardTable items={items} config={config} />;
+    })
+  )
+  .add(
+    "with field loading",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        "124",
+        createOnChangeNumPassengers(store),
+        createEditableTextCellWithStatus<number | undefined, ListItem>(
+          undefined,
+          item => ({
+            id: item.id,
+            loading: true
+          })
+        )
+      );
+      return <StandardTable items={items} config={config} />;
+    })
+  )
+  .add(
+    "with modified fields",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        "125",
+        createOnChangeNumPassengers(store),
+        createEditableTextCellWithStatus<number | undefined, ListItem>(
+          "Passengers cannot be empty.",
+          () => undefined,
+          item => ({
+            id: item.id,
+            modified: true,
+            newValue: "789"
+          })
+        )
+      );
+      return <StandardTable items={items} config={config} />;
+    })
+  )
+  .add(
+    "with warning when modified field is empty",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        "125",
+        createOnChangeNumPassengers(store),
+        createEditableTextCellWithStatus<number | undefined, ListItem>(
+          "Passengers cannot be empty.",
+          () => undefined,
+          item => ({
+            id: item.id,
+            modified: true,
+            newValue: ""
+          })
+        )
+      );
+      return <StandardTable items={items} config={config} />;
     })
   )
   .add("missing items", () => <StandardTable items={[]} config={config} />)

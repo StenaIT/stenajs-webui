@@ -101,18 +101,24 @@ export const TableHead: React.FC<TableHeadProps> = React.memo(
           </Row>
         )}
         {arrow === "up" && (
-          <Icon
-            icon={faCaretUp}
-            size={14}
-            color={"var(--swui-primary-action-color-active)"}
-          />
+          <>
+            <Icon
+              icon={faCaretUp}
+              size={14}
+              color={"var(--swui-primary-action-color-active)"}
+            />
+            <Space />
+          </>
         )}
         {arrow === "down" && (
-          <Icon
-            icon={faCaretDown}
-            size={14}
-            color={"var(--swui-primary-action-color-active)"}
-          />
+          <>
+            <Icon
+              icon={faCaretDown}
+              size={14}
+              color={"var(--swui-primary-action-color-active)"}
+            />
+            <Space />
+          </>
         )}
       </Row>
     );

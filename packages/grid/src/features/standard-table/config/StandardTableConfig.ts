@@ -64,7 +64,7 @@ export type StandardTableCellRenderer<TItemValue, TItem> = (
   value: TItemValue,
   item: TItem,
   gridCell: UseGridCellResult<string>,
-  config: StandardTableColumnConfig<TItem, TItemValue>
+  isEditable?: boolean
 ) => ReactNode;
 
 export interface StandardTableColumnOptions<TItem, TItemValue> {

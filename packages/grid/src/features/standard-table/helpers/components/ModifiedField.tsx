@@ -1,13 +1,10 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { EntityCrudStatus } from "@stenajs-webui/redux";
+import { Indent, Space, StandardText } from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
+import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { Indent } from "../../../../../../core/src/components/layout/indent/Indent";
-import { Space } from "../../../../../../core/src/components/layout/space/Space";
-import { StandardText } from "../../../../../../core/src/components/text/variants/StandardText";
-import { Icon } from "../../../../../../elements/src/components/ui/icon/Icon";
-import { ModifiedFieldItemState } from "../../../../../../redux/src/features/modified-field-reducer/modified-field-redux";
 import {
   CrudStatusIndicator,
   hasIndicatorContent
