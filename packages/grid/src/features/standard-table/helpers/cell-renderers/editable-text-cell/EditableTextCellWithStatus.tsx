@@ -25,7 +25,9 @@ export const createEditableTextCellWithStatus = <TItemValue, TItem>(
   isEditable
 ) => {
   const warnOnEmpty =
-    typeof warningOnEmpty === "function" ? warningOnEmpty(_item) : warningOnEmpty;
+    typeof warningOnEmpty === "function"
+      ? warningOnEmpty(_item)
+      : warningOnEmpty;
 
   const crudStatus = crudStatusProvider ? crudStatusProvider(_item) : undefined;
 
