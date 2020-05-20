@@ -63,7 +63,8 @@ export type StandardTableCellRenderer<TItemValue, TItem> = (
   label: string,
   value: TItemValue,
   item: TItem,
-  gridCell: UseGridCellResult<string>
+  gridCell: UseGridCellResult<string>,
+  config: StandardTableColumnConfig<TItem, TItemValue>
 ) => ReactNode;
 
 export interface StandardTableColumnOptions<TItem, TItemValue> {

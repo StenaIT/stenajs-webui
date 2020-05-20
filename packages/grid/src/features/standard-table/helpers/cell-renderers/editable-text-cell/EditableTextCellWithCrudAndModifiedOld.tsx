@@ -43,7 +43,24 @@ export const createEditableTextCellWithCrudAndModified = <
     stopEditing,
     stopEditingAndMove
   }
-) => <EditableTextCellWithCrudAndModified />;
+) =>
+  isEditing ? (
+    <TextInput
+      onValueChange={setEditorValue}
+      value={editorValue}
+      onDone={stopEditing}
+      onEsc={stopEditingAndRevert}
+      autoFocus
+      selectAllOnMount={!lastKeyEvent}
+      onMove={stopEditingAndMove}
+    />
+  ) : (
+    <Indent>
+      <StandardText color={"var(--swui-primary-action-color)"}>
+        {label}
+      </StandardText>
+    </Indent>
+  );
 
 interface Props {
   value?: string;
