@@ -1,13 +1,16 @@
 export * from "./components/GridHooksTable";
 
 export * from "./features/table-ui/components/InfiniteList";
-export * from "./features/table-ui/components/SmallTableCell";
-export * from "./features/table-ui/components/SmallTableHead";
-export * from "./features/table-ui/components/TableCell";
-export * from "./features/table-ui/components/TableColumnGroupHead";
-export * from "./features/table-ui/components/TableHead";
-export * from "./features/table-ui/components/TableHeadRow";
-export * from "./features/table-ui/components/TableRow";
+export * from "./features/table-ui/components/CrudStatusIndicator";
+export * from "./features/table-ui/components/ModifiedField";
+export * from "./features/table-ui/components/table/SmallTableCell";
+export * from "./features/table-ui/components/table/SmallTableHead";
+export * from "./features/table-ui/components/table/TableCell";
+export * from "./features/table-ui/components/table/TableColumnGroupHead";
+export * from "./features/table-ui/components/table/TableHeadItem";
+export * from "./features/table-ui/components/table/TableHeadRow";
+export * from "./features/table-ui/components/table/TableRow";
+export * from "./features/table-ui/components/cells/EditableTextCellWithCrudAndModified";
 
 export * from "./config/TableConfig";
 
@@ -22,13 +25,12 @@ export * from "./features/standard-table/components/StandardTable";
 export * from "./features/standard-table/components/StandardTableCell";
 export * from "./features/standard-table/components/StandardTableCellUi";
 export * from "./features/standard-table/components/StandardTableContent";
-export * from "./features/standard-table/components/StandardTableHeader";
+export * from "./features/standard-table/components/StandardTableHeadRow";
 export * from "./features/standard-table/components/StandardTableRow";
 export * from "./features/standard-table/components/StandardTableRowCheckbox";
 export * from "./features/standard-table/components/StandardTableRowList";
 export * from "./features/standard-table/components/TextCell";
 
-export * from "./features/standard-table/helpers/components/CrudStatusIndicator";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 

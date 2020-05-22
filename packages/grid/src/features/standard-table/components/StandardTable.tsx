@@ -10,7 +10,7 @@ import {
 } from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
-import { StandardTableHeader } from "./StandardTableHeader";
+import { StandardTableHeadRow } from "./StandardTableHeadRow";
 
 export interface StandardTableProps<TItem, TColumnKey extends string> {
   /**
@@ -60,7 +60,7 @@ export const StandardTable = function StandardTable<
       <StandardTableStateContext.Provider value={state}>
         <StandardTableActionsContext.Provider value={actionsContext}>
           <StandardTableConfigContext.Provider value={config}>
-            <StandardTableHeader items={props.items} />
+            <StandardTableHeadRow items={props.items} />
             <StandardTableContent {...props} />
           </StandardTableConfigContext.Provider>
         </StandardTableActionsContext.Provider>

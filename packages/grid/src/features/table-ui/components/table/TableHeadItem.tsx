@@ -32,7 +32,7 @@ export interface TableHeadProps extends BoxProps {
   selected?: boolean;
 }
 
-export const TableHead: React.FC<TableHeadProps> = React.memo(
+export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
   ({
     label,
     arrow,

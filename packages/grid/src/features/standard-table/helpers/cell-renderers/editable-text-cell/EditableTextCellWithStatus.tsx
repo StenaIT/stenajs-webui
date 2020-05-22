@@ -3,7 +3,7 @@ import { TextInput } from "@stenajs-webui/forms";
 import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import * as React from "react";
 import { StandardTableCellRenderer } from "../../../config/StandardTableConfig";
-import { ModifiedField } from "../../components/ModifiedField";
+import { ModifiedField } from "../../../../table-ui/components/ModifiedField";
 
 export const createEditableTextCellWithStatus = <TItemValue, TItem>(
   warningOnEmpty?: string | ((item: TItem) => string),

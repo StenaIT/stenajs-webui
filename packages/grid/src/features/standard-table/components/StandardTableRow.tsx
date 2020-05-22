@@ -1,7 +1,8 @@
-import { Indent, Row } from "@stenajs-webui/core";
+import { Indent } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import { tableBorder, tableRowHeight } from "../../../config/TableConfig";
+import { TableRow } from "../../table-ui/components/table/TableRow";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
   useFirstColumnFromConfig,
@@ -57,7 +58,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   );
 
   return (
-    <Row
+    <TableRow
       height={tableRowHeight}
       width={"100%"}
       borderBottom={tableBorder}
@@ -90,6 +91,6 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       {rowIndent && (
         <Indent num={rowIndent} background={lastColumnBackground} />
       )}
-    </Row>
+    </TableRow>
   );
 });

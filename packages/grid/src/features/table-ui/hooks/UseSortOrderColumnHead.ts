@@ -1,7 +1,7 @@
 import { SortOrderActions, SortOrderState } from "@stenajs-webui/redux";
 import { useMemo } from "react";
 import { useStandardTableActions } from "../../standard-table/hooks/UseStandardTableConfig";
-import { ArrowType } from "../components/TableHead";
+import { ArrowType } from "../components/table/TableHeadItem";
 
 interface Result {
   selected: boolean;

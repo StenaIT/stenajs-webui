@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ArrowType } from "../../table-ui/components/TableHead";
+import { ArrowType } from "../../table-ui/components/table/TableHeadItem";
 import {
   useStandardTableActions,
   useStandardTableState

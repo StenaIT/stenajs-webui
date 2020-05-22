@@ -1,6 +1,6 @@
 import { Box, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
-import { TableHead } from "./TableHead";
+import { TableHeadItem } from "./TableHeadItem";
 
 interface Props {
   label?: string;
@@ -16,10 +16,10 @@ export const TableColumnGroupHead: React.FC<Props> = ({
   indent = 1
 }) => {
   return (
-    <TableHead width={width} flex={flex} height={"50px"}>
+    <TableHeadItem width={width} flex={flex} height={"50px"}>
       <Box indent={indent} spacing>
         <StandardText fontWeight={"bold"}>{label}</StandardText>
       </Box>
-    </TableHead>
+    </TableHeadItem>
   );
 };

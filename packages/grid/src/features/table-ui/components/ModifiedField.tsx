@@ -53,7 +53,7 @@ export const ModifiedField: React.FC<Props> = ({
           </StandardText>
         </>
       )}
-      {hasRightIcon && <Space num={2} />}
+      {hasRightIcon && <Space />}
       {showEmptyFieldWarning ? (
         <Tooltip label={warningOnEmpty!} zIndex={100}>
           <Icon

@@ -1,18 +1,18 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
-import { tableBorder, tableHeadRowHeight } from "../../../config/TableConfig";
-import { TableHead } from "../../table-ui/components/TableHead";
+import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
+import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
 import { useTableResetWhenNewData } from "../hooks/UseTableResetWhenNewData";
-import { StandardTableHeaderItem } from "./StandardTableHeaderItem";
+import { StandardTableHeadItem } from "./StandardTableHeadItem";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
 }
 
-export const StandardTableHeader = React.memo(function StandardTableHeader<
+export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   TItem
 >({ items }: StandardTableHeaderProps<TItem>) {
   const {
@@ -31,10 +31,14 @@ export const StandardTableHeader = React.memo(function StandardTableHeader<
   const checkboxDisabled = !items || items.length === 0;
 
   return (
-    <Row height={tableHeadRowHeight} width={"100%"} borderBottom={tableBorder}>
+    <TableHeadRow>
       {rowIndent && <Indent num={rowIndent} />}
       {showHeaderCheckbox && (
-        <TableHead width={"90px"} minWidth={"90px"} justifyContent={"center"}>
+        <TableHeadItem
+          width={"90px"}
+          minWidth={"90px"}
+          justifyContent={"center"}
+        >
           <Row alignItems={"center"}>
             <Checkbox
               size={"small"}
@@ -44,12 +48,12 @@ export const StandardTableHeader = React.memo(function StandardTableHeader<
               onValueChange={onClickCheckbox}
             />
           </Row>
-        </TableHead>
+        </TableHeadItem>
       )}
       {columnOrder.map(columnId => (
-        <StandardTableHeaderItem columnId={columnId} key={columnId} />
+        <StandardTableHeadItem columnId={columnId} key={columnId} />
       ))}
       {rowIndent && <Indent num={rowIndent} />}
-    </Row>
+    </TableHeadRow>
   );
 });

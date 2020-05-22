@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TableCell, TableCellProps } from "./TableCell";
-import { smallTableRowWidth } from "../../../config/TableConfig";
+import { smallTableRowWidth } from "../../../../config/TableConfig";
 
 interface Props extends TableCellProps {}
 
