@@ -1,18 +1,22 @@
 import { useArraySet } from "@stenajs-webui/core";
 import { useCallback, useMemo } from "react";
-import { useStandardTableContext } from "./UseStandardTableContext";
+import {
+  useStandardTableActions,
+  useStandardTableConfig,
+  useStandardTableState
+} from "./UseStandardTableConfig";
 
 export const useRowCheckbox = <TItem>(item: TItem) => {
+  const { keyResolver } = useStandardTableConfig();
   const {
-    config: { keyResolver },
-    state: {
-      selectedIds: { selectedIds }
-    },
+    selectedIds: { selectedIds }
+  } = useStandardTableState();
+  const {
     actions: {
       selectedIds: { setSelectedIds }
     },
     dispatch
-  } = useStandardTableContext();
+  } = useStandardTableActions();
 
   const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
 

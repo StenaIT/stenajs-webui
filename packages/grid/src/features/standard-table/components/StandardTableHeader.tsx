@@ -3,7 +3,7 @@ import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
 import { tableBorder, tableHeadRowHeight } from "../../../config/TableConfig";
 import { TableHead } from "../../table-ui/components/TableHead";
-import { useStandardTableContext } from "../hooks/UseStandardTableContext";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
 import { useTableResetWhenNewData } from "../hooks/UseTableResetWhenNewData";
 import { StandardTableHeaderItem } from "./StandardTableHeaderItem";
@@ -16,8 +16,10 @@ export const StandardTableHeader = React.memo(function StandardTableHeader<
   TItem
 >({ items }: StandardTableHeaderProps<TItem>) {
   const {
-    config: { showHeaderCheckbox, columnOrder, rowIndent }
-  } = useStandardTableContext();
+    showHeaderCheckbox,
+    columnOrder,
+    rowIndent
+  } = useStandardTableConfig();
   const {
     allItemsAreSelected,
     onClickCheckbox,

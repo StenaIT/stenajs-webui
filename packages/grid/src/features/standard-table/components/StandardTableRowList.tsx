@@ -3,7 +3,10 @@ import { useMemo } from "react";
 import { InfiniteList } from "../../table-ui/components/InfiniteList";
 import { tableRowHeightPixels } from "../../../config/TableConfig";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
-import { useStandardTableContext } from "../hooks/UseStandardTableContext";
+import {
+  useStandardTableConfig,
+  useStandardTableState
+} from "../hooks/UseStandardTableConfig";
 import { multitypeComparator } from "../util/MultitypeComparator";
 import { StandardTableRow } from "./StandardTableRow";
 
@@ -14,12 +17,10 @@ interface StandardTableContentProps<TItem> {
 export const StandardTableRowList = React.memo(function StandardTableRowList<
   TItem
 >({ items }: StandardTableContentProps<TItem>) {
+  const { keyResolver, enableGridCell } = useStandardTableConfig();
   const {
-    config: { keyResolver, enableGridCell },
-    state: {
-      sortOrder: { sortBy, desc }
-    }
-  } = useStandardTableContext();
+    sortOrder: { sortBy, desc }
+  } = useStandardTableState();
 
   const valueResolver = useColumnValueResolver(sortBy);
 

@@ -8,7 +8,7 @@ import {
   useLastColumnFromConfig
 } from "../hooks/UseColumnFromConfig";
 import { useRowCheckbox } from "../hooks/UseRowCheckbox";
-import { useStandardTableContext } from "../hooks/UseStandardTableContext";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { StandardTableCell } from "./StandardTableCell";
 import { StandardTableRowCheckbox } from "./StandardTableRowCheckbox";
 
@@ -24,15 +24,13 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   numRows
 }: StandardTableItemProps<TItem>) {
   const {
-    config: {
-      columnOrder,
-      showRowCheckbox,
-      rowBackgroundResolver,
-      checkboxDisabledResolver,
-      enableGridCell,
-      rowIndent
-    }
-  } = useStandardTableContext();
+    columnOrder,
+    showRowCheckbox,
+    rowBackgroundResolver,
+    checkboxDisabledResolver,
+    enableGridCell,
+    rowIndent
+  } = useStandardTableConfig();
 
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 

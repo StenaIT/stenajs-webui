@@ -6,11 +6,11 @@ import {
 } from "../redux/StandardTableActionsAndSelectors";
 import { StandardTableState } from "../redux/StandardTableReducer";
 
-export interface StandardTableInternalContext<
-  TItem,
+export interface StandardTableInternalActionsContext<
   TColumnKeys extends string
-> extends TableContext<TColumnKeys> {
-  config: StandardTableConfig<TItem, TColumnKeys>;
+> {
+  dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
+  actions: StandardTableActions<TColumnKeys>;
 }
 
 /**
@@ -23,6 +23,14 @@ export interface TableContext<TColumnKeys extends string> {
   actions: StandardTableActions<TColumnKeys>;
 }
 
-export const StandardTableContext = createContext<
-  StandardTableInternalContext<any, any> | undefined
+export const StandardTableStateContext = createContext<
+  StandardTableState<any> | undefined
+>(undefined);
+
+export const StandardTableActionsContext = createContext<
+  StandardTableInternalActionsContext<any> | undefined
+>(undefined);
+
+export const StandardTableConfigContext = createContext<
+  StandardTableConfig<any, any> | undefined
 >(undefined);

@@ -3,9 +3,11 @@ import * as React from "react";
 import { useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import {
-  StandardTableContext,
+  StandardTableActionsContext,
+  StandardTableConfigContext,
+  StandardTableStateContext,
   TableContext
-} from "../context/StandardTableContext";
+} from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeader } from "./StandardTableHeader";
@@ -42,22 +44,27 @@ export const StandardTable = function StandardTable<
 >({ tableContext, config, ...props }: StandardTableProps<TItem, TColumnKey>) {
   const { tableContext: localTableContext } = useLocalStateTableContext();
 
-  const contextValue = useMemo(() => {
-    const { actions, dispatch, state } = tableContext || localTableContext;
+  const currentTableContext = tableContext || localTableContext;
+
+  const { state, actions, dispatch } = currentTableContext;
+
+  const actionsContext = useMemo(() => {
     return {
       actions,
-      dispatch,
-      state,
-      config
+      dispatch
     };
-  }, [tableContext, localTableContext, config]);
+  }, [actions, dispatch]);
 
   return (
     <Box>
-      <StandardTableContext.Provider value={contextValue}>
-        <StandardTableHeader items={props.items} />
-        <StandardTableContent {...props} />
-      </StandardTableContext.Provider>
+      <StandardTableStateContext.Provider value={state}>
+        <StandardTableActionsContext.Provider value={actionsContext}>
+          <StandardTableConfigContext.Provider value={config}>
+            <StandardTableHeader items={props.items} />
+            <StandardTableContent {...props} />
+          </StandardTableConfigContext.Provider>
+        </StandardTableActionsContext.Provider>
+      </StandardTableStateContext.Provider>
     </Box>
   );
 };

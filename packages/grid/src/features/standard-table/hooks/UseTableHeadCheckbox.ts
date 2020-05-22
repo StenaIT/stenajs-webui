@@ -1,21 +1,23 @@
 import { useCallback, useMemo } from "react";
-import { useStandardTableContext } from "./UseStandardTableContext";
+import {
+  useStandardTableActions,
+  useStandardTableConfig,
+  useStandardTableState
+} from "./UseStandardTableConfig";
 
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
 ) => {
+  const { keyResolver } = useStandardTableConfig();
   const {
-    config: { keyResolver }
-  } = useStandardTableContext();
+    selectedIds: { selectedIds }
+  } = useStandardTableState();
   const {
     actions: {
       selectedIds: { setSelectedIds, clearSelectedIds }
     },
-    state: {
-      selectedIds: { selectedIds }
-    },
     dispatch
-  } = useStandardTableContext();
+  } = useStandardTableActions();
 
   const allItemsAreSelected = useMemo(() => {
     if (!items) {

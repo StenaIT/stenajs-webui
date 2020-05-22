@@ -1,6 +1,6 @@
 import { useMemo, useReducer } from "react";
 import { useDomId } from "@stenajs-webui/core";
-import { TableContext } from "../context/StandardTableContext";
+import { TableContext } from "../context/StandardTableStateContext";
 import { createStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
   createStandardTableReducer,

@@ -13,7 +13,7 @@ export * from "./config/TableConfig";
 
 export * from "./features/standard-table/config/StandardTableConfig";
 
-export * from "./features/standard-table/context/StandardTableContext";
+export * from "./features/standard-table/context/StandardTableStateContext";
 
 export * from "./features/standard-table/redux/StandardTableActionsAndSelectors";
 export * from "./features/standard-table/redux/StandardTableReducer";
@@ -37,7 +37,7 @@ export * from "./features/standard-table/hooks/UseCellBackground";
 export * from "./features/standard-table/hooks/UseColumnFromConfig";
 export * from "./features/standard-table/hooks/UseColumnValueResolver";
 export * from "./features/standard-table/hooks/UseRowCheckbox";
-export * from "./features/standard-table/hooks/UseStandardTableContext";
+export * from "./features/standard-table/hooks/UseStandardTableConfig";
 export * from "./features/standard-table/hooks/UseTableHeadCheckbox";
 export * from "./features/standard-table/hooks/UseTableResetWhenNewData";
 export * from "./features/standard-table/hooks/UseTableSortHeader";

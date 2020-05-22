@@ -1,9 +1,7 @@
-import { useStandardTableContext } from "./UseStandardTableContext";
+import { useStandardTableConfig } from "./UseStandardTableConfig";
 
 export const useColumnValueResolver = (columnId: string | undefined) => {
-  const {
-    config: { columns }
-  } = useStandardTableContext();
+  const { columns } = useStandardTableConfig();
   if (!columnId) {
     return undefined;
   }

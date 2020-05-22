@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useStandardTableContext } from "./UseStandardTableContext";
+import { useStandardTableActions } from "./UseStandardTableConfig";
 
 export const useTableResetWhenNewData = <TItem>(
   items: Array<TItem> | undefined
@@ -9,7 +9,7 @@ export const useTableResetWhenNewData = <TItem>(
       selectedIds: { clearSelectedIds }
     },
     dispatch
-  } = useStandardTableContext();
+  } = useStandardTableActions();
 
   useEffect(() => {
     dispatch(clearSelectedIds());

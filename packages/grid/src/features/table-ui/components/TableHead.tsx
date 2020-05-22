@@ -61,7 +61,7 @@ export const TableHead: React.FC<TableHeadProps> = React.memo(
         onClick={onClick}
         height={"100%"}
         alignItems={"center"}
-        style={onClick ? { cursor: "pointer" } : undefined}
+        style={onClick ? { cursor: "pointer", userSelect: "none" } : undefined}
         innerRef={ref}
         {...boxProps}
       >

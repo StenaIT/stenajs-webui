@@ -1,6 +1,9 @@
 import { useMemo } from "react";
 import { ArrowType } from "../../table-ui/components/TableHead";
-import { useStandardTableContext } from "./UseStandardTableContext";
+import {
+  useStandardTableActions,
+  useStandardTableState
+} from "./UseStandardTableConfig";
 
 interface Result {
   selected: boolean;
@@ -10,13 +13,10 @@ interface Result {
 }
 
 export const useTableSortHeader = (columnId: string): Result => {
+  const { dispatch, actions } = useStandardTableActions();
   const {
-    dispatch,
-    state: {
-      sortOrder: { desc, sortBy }
-    },
-    actions
-  } = useStandardTableContext();
+    sortOrder: { desc, sortBy }
+  } = useStandardTableState();
 
   return useMemo(() => {
     const selected = columnId === sortBy;

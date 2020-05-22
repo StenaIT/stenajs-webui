@@ -2,7 +2,7 @@ import { Row } from "@stenajs-webui/core";
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useGridCellMemo } from "../hooks/UseGridCellMemo";
-import { useStandardTableContext } from "../hooks/UseStandardTableContext";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 
 interface Props extends Pick<CheckboxProps, "value" | "onValueChange"> {
   colIndex: number;
@@ -20,9 +20,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     numRows,
     disabled
   }) {
-    const {
-      config: { tableId, columnOrder }
-    } = useStandardTableContext();
+    const { tableId, columnOrder } = useStandardTableConfig();
     const gridCell = useGridCellMemo<boolean>(!!value, {
       colIndex,
       numCols: columnOrder.length,

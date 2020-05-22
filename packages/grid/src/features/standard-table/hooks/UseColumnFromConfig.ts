@@ -1,12 +1,10 @@
 import { StandardTableColumnConfig } from "../config/StandardTableConfig";
-import { useStandardTableContext } from "./UseStandardTableContext";
+import { useStandardTableConfig } from "./UseStandardTableConfig";
 
 export const useColumnFromConfig = <TItem, TItemValue = any>(
   columnId: string
 ): StandardTableColumnConfig<TItem, TItemValue> => {
-  const {
-    config: { columns }
-  } = useStandardTableContext();
+  const { columns } = useStandardTableConfig();
   const column = columns[columnId];
   if (!column) {
     throw new Error("No config for column with id=" + columnId);
@@ -15,9 +13,7 @@ export const useColumnFromConfig = <TItem, TItemValue = any>(
 };
 
 export const useColumnFromConfigByIndex = (columnIndex: number) => {
-  const {
-    config: { columnOrder }
-  } = useStandardTableContext();
+  const { columnOrder } = useStandardTableConfig();
   if (columnIndex >= columnOrder.length) {
     throw new Error("Column index is larger than number of columns.");
   }
@@ -34,9 +30,7 @@ export const useFirstColumnFromConfig = () => {
 };
 
 export const useLastColumnFromConfig = () => {
-  const {
-    config: { columnOrder }
-  } = useStandardTableContext();
+  const { columnOrder } = useStandardTableConfig();
 
   return useColumnFromConfigByIndex(columnOrder.length - 1);
 };

@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useCellBackgroundByColumnId } from "../hooks/UseCellBackground";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import { useGridCellMemo } from "../hooks/UseGridCellMemo";
-import { useStandardTableContext } from "../hooks/UseStandardTableContext";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
@@ -24,8 +24,11 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   numRows
 }: StandardTableCellProps<TItem>) {
   const {
-    config: { columnOrder, tableId, enableGridCell, showRowCheckbox }
-  } = useStandardTableContext();
+    columnOrder,
+    tableId,
+    enableGridCell,
+    showRowCheckbox
+  } = useStandardTableConfig();
 
   const {
     itemValueResolver,
