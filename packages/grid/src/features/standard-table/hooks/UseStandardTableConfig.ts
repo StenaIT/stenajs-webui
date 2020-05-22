@@ -4,9 +4,14 @@ import {
   StandardTableActionsContext,
   StandardTableConfigContext,
   StandardTableInternalActionsContext,
-  StandardTableStateContext
+  StandardTableStateContext,
+  StandardTableTableIdContext
 } from "../context/StandardTableStateContext";
 import { StandardTableState } from "../redux/StandardTableReducer";
+
+export const useStandardTableId = (): string => {
+  return useContext(StandardTableTableIdContext) as string;
+};
 
 export const useStandardTableConfig = <
   TItem,

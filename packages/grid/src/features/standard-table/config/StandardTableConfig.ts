@@ -30,10 +30,6 @@ export interface StandardTableConfig<TItem, TColumnKeys extends string> {
    */
   checkboxDisabledResolver?: (item: TItem) => boolean;
   /**
-   * An id for the table. This is required since it is used by the useGridCell hooks.
-   */
-  tableId: string;
-  /**
    * Enable or disables the useGridCell hooks. The hook is always running, but this controls
    * if it is applied to the DOM or not.
    */

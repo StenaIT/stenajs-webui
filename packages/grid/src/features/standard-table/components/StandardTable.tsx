@@ -1,12 +1,14 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
+import { useDomId } from "@stenajs-webui/core";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import {
   StandardTableActionsContext,
   StandardTableConfigContext,
   StandardTableStateContext,
-  TableContext
+  TableContext,
+  StandardTableTableIdContext
 } from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
@@ -42,7 +44,10 @@ export const StandardTable = function StandardTable<
   TItem,
   TColumnKey extends string
 >({ tableContext, config, ...props }: StandardTableProps<TItem, TColumnKey>) {
-  const { tableContext: localTableContext } = useLocalStateTableContext();
+  const tableId = useDomId();
+  const { tableContext: localTableContext } = useLocalStateTableContext(
+    tableId
+  );
 
   const currentTableContext = tableContext || localTableContext;
 
@@ -57,14 +62,16 @@ export const StandardTable = function StandardTable<
 
   return (
     <Box>
-      <StandardTableStateContext.Provider value={state}>
-        <StandardTableActionsContext.Provider value={actionsContext}>
-          <StandardTableConfigContext.Provider value={config}>
-            <StandardTableHeadRow items={props.items} />
-            <StandardTableContent {...props} />
-          </StandardTableConfigContext.Provider>
-        </StandardTableActionsContext.Provider>
-      </StandardTableStateContext.Provider>
+      <StandardTableTableIdContext.Provider value={tableId}>
+        <StandardTableStateContext.Provider value={state}>
+          <StandardTableActionsContext.Provider value={actionsContext}>
+            <StandardTableConfigContext.Provider value={config}>
+              <StandardTableHeadRow items={props.items} />
+              <StandardTableContent {...props} />
+            </StandardTableConfigContext.Provider>
+          </StandardTableActionsContext.Provider>
+        </StandardTableStateContext.Provider>
+      </StandardTableTableIdContext.Provider>
     </Box>
   );
 };

@@ -23,6 +23,10 @@ export interface TableContext<TColumnKeys extends string> {
   actions: StandardTableActions<TColumnKeys>;
 }
 
+export const StandardTableTableIdContext = createContext<string | undefined>(
+  undefined
+);
+
 export const StandardTableStateContext = createContext<
   StandardTableState<any> | undefined
 >(undefined);

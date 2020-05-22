@@ -1,5 +1,4 @@
 import { useMemo, useReducer } from "react";
-import { useDomId } from "@stenajs-webui/core";
 import { TableContext } from "../context/StandardTableStateContext";
 import { createStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
@@ -8,9 +7,9 @@ import {
   StandardTableReducer
 } from "../redux/StandardTableReducer";
 
-export const useLocalStateTableContext = <TColumnKeys extends string>() => {
-  const tableId = useDomId();
-
+export const useLocalStateTableContext = <TColumnKeys extends string>(
+  tableId: string
+) => {
   const reducer = useMemo(
     () => createStandardTableReducer<TColumnKeys>(tableId),
     [tableId]
