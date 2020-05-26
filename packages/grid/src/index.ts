@@ -34,7 +34,6 @@ export * from "./features/standard-table/components/TextCell";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
-export * from "./features/standard-table/hooks/UseGridCellMemo";
 export * from "./features/standard-table/hooks/UseCellBackground";
 export * from "./features/standard-table/hooks/UseColumnFromConfig";
 export * from "./features/standard-table/hooks/UseColumnValueResolver";
