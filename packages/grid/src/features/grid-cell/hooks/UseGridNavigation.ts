@@ -133,14 +133,19 @@ export const useGridNavigation = (
     colIndex
   ]);
 
-  return {
-    focusOnCell,
-    moveHandler,
-    requiredProps: {
+  const requiredProps = useMemo(
+    () => ({
       tabIndex: 0,
       onKeyDown,
       id
-    }
+    }),
+    [onKeyDown, id]
+  );
+
+  return {
+    focusOnCell,
+    moveHandler,
+    requiredProps
   };
 };
 
