@@ -10,13 +10,8 @@ import {
 export const useLocalStateTableContext = <TColumnKeys extends string>(
   tableId: string
 ) => {
-  const reducer = useMemo(
-    () => createStandardTableReducer<TColumnKeys>(tableId),
-    [tableId]
-  );
-
   const [state, dispatch] = useReducer<StandardTableReducer<TColumnKeys>>(
-    reducer,
+    createStandardTableReducer<TColumnKeys>(tableId),
     standardTableInitialState
   );
 
