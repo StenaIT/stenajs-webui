@@ -14,11 +14,7 @@ export const hasIndicatorContent = (status: CrudStatus): boolean => {
 };
 
 export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
-  if (!crudStatus) {
-    return null;
-  }
-
-  if (!hasIndicatorContent(crudStatus)) {
+  if (!crudStatus || !hasIndicatorContent(crudStatus)) {
     return null;
   }
 
