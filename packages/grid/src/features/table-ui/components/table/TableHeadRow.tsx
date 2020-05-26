@@ -13,7 +13,6 @@ export const TableHeadRow: React.FC<TableHeadRowProps> = React.memo(
       <Row
         borderBottom={tableBorder}
         height={tableHeadRowHeight}
-        width={"100%"}
         {...boxProps}
       />
     );
