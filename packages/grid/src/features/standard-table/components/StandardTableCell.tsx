@@ -2,7 +2,6 @@ import * as React from "react";
 import { useMemo } from "react";
 import { useCellBackgroundByColumnId } from "../hooks/UseCellBackground";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
-import { useGridCellMemo } from "../hooks/UseGridCellMemo";
 import {
   useStandardTableConfig,
   useStandardTableId
@@ -10,6 +9,7 @@ import {
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
+import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 
 export interface StandardTableCellProps<TItem> {
   columnId: string;
@@ -72,7 +72,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       ? isEditable(item)
       : undefined;
 
-  const gridCell = useGridCellMemo<string>(label, {
+  const gridCell = useGridCell<string>(label, {
     colIndex,
     rowIndex,
     numRows,

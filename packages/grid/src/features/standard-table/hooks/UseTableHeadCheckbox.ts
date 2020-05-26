@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import {
   useStandardTableActions,
   useStandardTableConfig,
@@ -19,12 +19,9 @@ export const useTableHeadCheckbox = <TItem>(
     dispatch
   } = useStandardTableActions();
 
-  const allItemsAreSelected = useMemo(() => {
-    if (!items) {
-      return false;
-    }
-    return items.length > 0 && selectedIds.length === items.length;
-  }, [items, selectedIds]);
+  const allItemsAreSelected = !items
+    ? false
+    : items.length > 0 && selectedIds.length === items.length;
 
   const onClickCheckbox = useCallback(() => {
     if (items) {

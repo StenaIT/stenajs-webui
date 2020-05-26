@@ -78,16 +78,19 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
           numRows={enableGridCell ? numRows : 0}
         />
       )}
-      {columnOrder.map((columnId, index) => (
-        <StandardTableCell
-          key={columnId}
-          columnId={columnId}
-          item={item}
-          colIndex={enableGridCell ? (showRowCheckbox ? 1 : 0) + index : 0}
-          rowIndex={enableGridCell ? rowIndex : 0}
-          numRows={numRows}
-        />
-      ))}
+      {columnOrder.map((columnId, index) => {
+        const colIndexOffset = showRowCheckbox ? 1 : 0;
+        return (
+          <StandardTableCell
+            key={columnId}
+            columnId={columnId}
+            item={item}
+            colIndex={enableGridCell ? colIndexOffset + index : 0}
+            rowIndex={enableGridCell ? rowIndex : 0}
+            numRows={numRows}
+          />
+        );
+      })}
       {rowIndent && (
         <Indent num={rowIndent} background={lastColumnBackground} />
       )}

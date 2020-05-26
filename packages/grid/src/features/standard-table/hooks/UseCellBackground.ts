@@ -1,13 +1,22 @@
 import { useMemo } from "react";
-import { StandardTableColumnConfig } from "../config/StandardTableConfig";
+import {
+  BackgroundResolver,
+  StandardTableColumnConfig
+} from "../config/StandardTableConfig";
 import { useColumnFromConfig } from "./UseColumnFromConfig";
 
+const getBackgroundColor = <TItem>(
+  backgroundResolver: BackgroundResolver<TItem> | undefined,
+  item: TItem,
+  background: string | undefined
+) => (backgroundResolver ? backgroundResolver(item) : background);
+
 const useBackground = <TItem>(
-  backgroundResolver: ((item: TItem) => string | undefined) | undefined,
+  backgroundResolver: BackgroundResolver<TItem> | undefined,
   item: TItem,
   background: string | undefined
 ) =>
-  useMemo(() => (backgroundResolver ? backgroundResolver(item) : background), [
+  useMemo(() => getBackgroundColor(backgroundResolver, item, background), [
     backgroundResolver,
     item,
     background

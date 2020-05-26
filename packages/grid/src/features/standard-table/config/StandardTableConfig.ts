@@ -63,6 +63,8 @@ export type StandardTableCellRenderer<TItemValue, TItem> = (
   isEditable?: boolean
 ) => ReactNode;
 
+export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
+
 export interface StandardTableColumnOptions<TItem, TItemValue> {
   /**
    * The header label of the column.
@@ -91,7 +93,7 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   /**
    * Adds a dynamic background color to the column, based on the item.
    */
-  backgroundResolver?: (item: TItem) => string | undefined;
+  backgroundResolver?: BackgroundResolver<TItem>;
   /**
    * Adds a border on the left side of the column. Can be a boolean, is a border CSS value.
    */
