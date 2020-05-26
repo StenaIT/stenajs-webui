@@ -10,13 +10,13 @@ export const multitypeComparator = (
   if (a == null && b) {
     return 1;
   }
-  if (isTypeOrUndefined(a, b, "number")) {
+  if (isBothOfType(a, b, "number")) {
     return Number(a) - Number(b);
   }
-  if (isTypeOrUndefined(a, b, "boolean")) {
+  if (isBothOfType(a, b, "boolean")) {
     return Number(b) - Number(a);
   }
-  if (isTypeOrUndefined(a, b, "string")) {
+  if (isBothOfType(a, b, "string")) {
     return String(a).localeCompare(String(b));
   }
   if (a instanceof Date && b instanceof Date) {
@@ -25,15 +25,8 @@ export const multitypeComparator = (
   return 0;
 };
 
-const isTypeOrUndefined = (a: any, b: any, type: string): boolean => {
-  if (typeof a === type && typeof b === type) {
-    return true;
-  }
-  if (typeof a === type && b == null) {
-    return true;
-  }
-  if (a === null && typeof b == type) {
-    return true;
-  }
-  return false;
-};
+const isBothOfType = (
+  a: ComparableType,
+  b: ComparableType,
+  type: string
+): boolean => typeof a === type && typeof b === type;
