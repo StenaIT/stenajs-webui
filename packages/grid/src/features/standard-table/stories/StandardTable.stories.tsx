@@ -70,7 +70,6 @@ const setListItemFields = (
 ) => items.map(item => (item.id === id ? { ...item, ...fields } : item));
 
 const createConfig = (
-  tableId: string,
   onChangeNumPassengers?: (
     item: ListItem,
     numPassengersString: string | undefined
@@ -80,7 +79,6 @@ const createConfig = (
     ListItem
   >
 ): StandardTableConfig<ListItem, keyof ListItem> => ({
-  tableId,
   keyResolver: item => item.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
@@ -108,7 +106,7 @@ const createConfig = (
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"]
 });
 
-const config = createConfig("123", () => {});
+const config = createConfig(() => {});
 const items = createItemsMocks();
 
 const createOnChangeNumPassengers = (
@@ -127,7 +125,6 @@ storiesOf("grid/StandardTable", module)
     "standard",
     withState({ items })(({ store }) => {
       const config = createConfig(
-        "123",
         createOnChangeNumPassengers(store),
         createStandardEditableTextCell()
       );
@@ -138,7 +135,6 @@ storiesOf("grid/StandardTable", module)
     "with field error",
     withState({ items })(({ store }) => {
       const config = createConfig(
-        "123",
         createOnChangeNumPassengers(store),
         createEditableTextCellWithStatus<number | undefined, ListItem>(
           undefined,
@@ -156,7 +152,6 @@ storiesOf("grid/StandardTable", module)
     "with field loading",
     withState({ items })(({ store }) => {
       const config = createConfig(
-        "124",
         createOnChangeNumPassengers(store),
         createEditableTextCellWithStatus<number | undefined, ListItem>(
           undefined,
@@ -173,7 +168,6 @@ storiesOf("grid/StandardTable", module)
     "with modified fields",
     withState({ items })(({ store }) => {
       const config = createConfig(
-        "125",
         createOnChangeNumPassengers(store),
         createEditableTextCellWithStatus<number | undefined, ListItem>(
           "Passengers cannot be empty.",
@@ -192,7 +186,6 @@ storiesOf("grid/StandardTable", module)
     "with warning when modified field is empty",
     withState({ items })(({ store }) => {
       const config = createConfig(
-        "125",
         createOnChangeNumPassengers(store),
         createEditableTextCellWithStatus<number | undefined, ListItem>(
           "Passengers cannot be empty.",
