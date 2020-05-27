@@ -2,6 +2,10 @@
 
 ## Next release
 
+- Coming soon...
+
+## 1.0.0-beta.1
+
 ### New components
 
 - StandardTable
