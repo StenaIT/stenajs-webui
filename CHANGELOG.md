@@ -2,6 +2,15 @@
 
 ## Next release
 
+### New components
+
+- StandardTable
+
+A table component with support for sorting, selecting rows,
+custom cell renderers, support for grid navigation, etc.
+
+Can be used with Redux state, or internal state.
+
 ### New features
 
 - Add more higher order reducers.
