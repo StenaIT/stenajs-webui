@@ -130,7 +130,7 @@ export function Popover({
                 borderWidth={"1px"}
                 borderStyle={"solid"}
                 borderColor={colors.background}
-                shadow={"modal"}
+                shadow={"var(--swui-shadow-popover)"}
                 spacing={disablePadding ? 0 : 1}
                 indent={disablePadding ? 0 : 1}
               >

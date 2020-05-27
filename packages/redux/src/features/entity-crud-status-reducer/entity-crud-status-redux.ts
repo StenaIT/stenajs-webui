@@ -14,8 +14,6 @@ import {
   EntityByIdStateSelector
 } from "../entity-by-id-reducer/entity-by-id-selectors";
 
-export type EntityCrudStatusReducerState = EntityByIdState<EntityCrudStatus>;
-
 export interface EntityCrudStatus extends CrudStatus {
   id: string;
 }
@@ -30,6 +28,10 @@ export interface CrudStatus {
   errorMessage?: string;
 }
 
+export type EntityCrudStatusState = EntityByIdState<EntityCrudStatus>;
+export type EntityCrudStatusAction = EntityByIdAction<EntityCrudStatus>;
+export type EntityCrudStatusActions = EntityByIdActions<EntityCrudStatus>;
+
 export interface EntityCrudStatusRedux<TStoreState> {
   reducer: EntityCrudStatusReducer;
   actions: EntityCrudStatusActions;
@@ -37,14 +39,12 @@ export interface EntityCrudStatusRedux<TStoreState> {
 }
 
 export type EntityCrudStatusReducer = Reducer<
-  EntityCrudStatusReducerState,
+  EntityCrudStatusState,
   EntityByIdAction<EntityCrudStatus>
 >;
 
 export const createEntityCrudStatusReducer = (reducerId: string) =>
   createEntityByIdReducer<EntityCrudStatus>(reducerId);
-
-export type EntityCrudStatusActions = EntityByIdActions<EntityCrudStatus>;
 
 export const createEntityCrudStatusActions = (
   reducerId: string

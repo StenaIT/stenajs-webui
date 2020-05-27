@@ -5,7 +5,7 @@ const genId = (componentName?: string) =>
   `webui-${componentName ? componentName + "-" : ""}${++id}`;
 
 export const useDomId = (componentName?: string): string => {
-  const [id, setId] = useState<string | null>(null);
+  const [id, setId] = useState<string | null>(() => genId(componentName));
   useEffect(() => setId(genId(componentName)), [componentName]);
   return id!;
 };

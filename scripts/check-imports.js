@@ -152,17 +152,25 @@ const checkIfImportIsPackageJsonDependency = (
   for (let i = 0; i < size; i++) {
     const moduleNameToCheck = parts.join("/");
     if (
-      (packageJson.dependencies && packageJson.dependencies[moduleNameToCheck]) ||
-      (packageJson.peerDependencies && packageJson.peerDependencies[moduleNameToCheck])
+      (packageJson.dependencies &&
+        packageJson.dependencies[moduleNameToCheck]) ||
+      (packageJson.peerDependencies &&
+        packageJson.peerDependencies[moduleNameToCheck])
     ) {
       return;
     }
     parts.pop();
   }
 
-  console.log(
-    `ERROR: '${packageJson.name}' must specify '${imported}' as dependency or peerDependency.`
-  );
+  if (packageJson.name === imported) {
+    console.log(
+      `ERROR: '${packageJson.name}' is importing from itself by package name.`
+    );
+  } else {
+    console.log(
+      `ERROR: '${packageJson.name}' must specify '${imported}' as dependency or peerDependency.`
+    );
+  }
   console.log(filePath);
   success = false;
 };

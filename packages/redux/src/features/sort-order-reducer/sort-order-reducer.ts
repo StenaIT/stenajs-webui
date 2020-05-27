@@ -1,3 +1,4 @@
+import { Reducer } from "redux";
 import { SortOrderAction } from "./sort-order-actions";
 
 export interface SortOrderState<TSortBy> {
@@ -5,15 +6,22 @@ export interface SortOrderState<TSortBy> {
   desc: boolean;
 }
 
-const INITIAL_STATE = {
+export const sortOrderReducerInitialState = {
   sortBy: undefined,
   desc: false
 };
 
-export const createSortOrderReducer = <TSortBy>(reducerId: string) => (
-  state: SortOrderState<TSortBy> = INITIAL_STATE,
-  action: SortOrderAction<TSortBy>
-): SortOrderState<TSortBy> => {
+export type SortOrderReducer<TSortBy> = Reducer<
+  SortOrderState<TSortBy>,
+  SortOrderAction<TSortBy>
+>;
+
+export const createSortOrderReducer = <TSortBy>(
+  reducerId: string
+): SortOrderReducer<TSortBy> => (
+  state = sortOrderReducerInitialState,
+  action
+) => {
   if (action.reducerId !== reducerId) {
     return state;
   }

@@ -1,5 +1,5 @@
 import { KeyboardEventHandler, useCallback, useMemo } from "react";
-import { MoveDirection } from "../util/DirectionCalculator";
+import { MoveDirection } from "../../../util/DirectionCalculator";
 import {
   KeyDownEvent,
   useEditableCell,
@@ -135,17 +135,22 @@ export const useGridCell = <TValue>(
     [edit, nav.requiredProps]
   );
 
+  const requiredProps = useMemo(
+    () => ({
+      ...nav.requiredProps,
+      onKeyDown,
+      onDoubleClick: edit.onDoubleClick
+    }),
+    [onKeyDown, edit.onDoubleClick, nav.requiredProps]
+  );
+
   return {
     isEditing: edit.isEditing,
     lastKeyEvent: edit.lastKeyEvent,
     editorValue: edit.revertableValue.value,
     setEditorValue: edit.revertableValue.setValue,
     revertEditorValue: edit.revertableValue.revert,
-    requiredProps: {
-      ...nav.requiredProps,
-      onKeyDown,
-      onDoubleClick: edit.onDoubleClick
-    },
+    requiredProps,
     move,
     startEditing,
     stopEditing,

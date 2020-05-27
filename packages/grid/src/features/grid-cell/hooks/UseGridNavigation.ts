@@ -3,8 +3,8 @@ import {
   CellIndices,
   getNextPositionWrappedOrClamped,
   MoveDirection
-} from "../util/DirectionCalculator";
-import { ensureDomIdIsCorrect } from "../util/DomIdValidator";
+} from "../../../util/DirectionCalculator";
+import { ensureDomIdIsCorrect } from "../../../util/DomIdValidator";
 import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
 
 export interface UseGridNavigationOptions {
@@ -133,14 +133,19 @@ export const useGridNavigation = (
     colIndex
   ]);
 
-  return {
-    focusOnCell,
-    moveHandler,
-    requiredProps: {
+  const requiredProps = useMemo(
+    () => ({
       tabIndex: 0,
       onKeyDown,
       id
-    }
+    }),
+    [onKeyDown, id]
+  );
+
+  return {
+    focusOnCell,
+    moveHandler,
+    requiredProps
   };
 };
 

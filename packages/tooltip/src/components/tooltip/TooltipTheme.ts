@@ -10,10 +10,10 @@ export interface TooltipTheme {
 }
 
 export const defaultTooltipTheme: TooltipTheme = {
-  textColor: "white",
+  textColor: "var(--swui-text-primary-color)",
   textColorWarning: "white",
   textColorError: "white",
-  background: "primaryBgDark",
+  background: "var(--swui-white)",
   backgroundWarning: "alertTextLight",
   backgroundError: "errorBgLight"
 };

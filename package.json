@@ -9,12 +9,12 @@
     "watch-storybook": "concurrently \"yarn start-storybook\" \"yarn watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
-    "build-all": "yarn clean-all && yarn pre-build-check && lerna run build && yarn post-build-check",
+    "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact && yarn build-storybook && yarn deploy-built-storybook",
     "check-all": "yarn lint && yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-bundle-size && yarn check-builds && yarn check-prettier && yarn test",
-    "pre-build-check": "yarn lint && yarn check-deps-match && yarn check-imports && yarn check-prettier",
+    "pre-build-check": "yarn check-deps-match && yarn check-imports && yarn lint && yarn check-prettier",
     "post-build-check": "yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-bundle-size && yarn test && yarn check-builds",
     "watch": "lerna exec --parallel -- rollup -c -w",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
@@ -96,7 +96,7 @@
     "rollup-plugin-typescript2": "^0.25.2",
     "rollup-plugin-url": "^3.0.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.2"
   },
   "bundlesize": [
     {
@@ -117,7 +117,7 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "4 kB"
+      "maxSize": "12 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",

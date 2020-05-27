@@ -30,22 +30,39 @@
   "dependencies": {
     "@stenajs-webui/core": "1.0.0-alpha.2",
     "@stenajs-webui/elements": "1.0.0-alpha.2",
-    "@stenajs-webui/forms": "1.0.0-alpha.2"
+    "@stenajs-webui/forms": "1.0.0-alpha.2",
+    "@stenajs-webui/panels": "1.0.0-alpha.2",
+    "@stenajs-webui/redux": "1.0.0-alpha.2",
+    "@stenajs-webui/tooltip": "1.0.0-alpha.2",
+    "react-infinite": "0.13.0"
   },
   "peerDependencies": {
+    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
+    "@types/lodash": ">=4.14.135",
     "@types/react": ">=16.8.19",
     "@types/react-dom": ">=16.8.4",
+    "@types/react-redux": ">=7.1.8",
+    "lodash": ">=4.17.11",
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
-    "react-dom": ">=16.8.6"
+    "react-dom": ">=16.8.6",
+    "react-redux": ">=7.2.0",
+    "redux": ">=4.0.5"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@types/jest": "^23.1.5",
+    "@types/lodash": "^4.14.135",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@types/react-infinite": "^0.0.35",
+    "@types/react-redux": "^7.1.8",
+    "lodash": "^4.17.11",
     "prop-types": "^15.5.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "files": [
     "dist"
