@@ -20,7 +20,7 @@ export const useRowCheckbox = <TItem>(item: TItem) => {
 
   const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
 
-  const isSelected = useMemo(() => selectedIds.indexOf(itemKey) >= 0, [
+  const isSelected = useMemo(() => selectedIds.includes(itemKey), [
     selectedIds,
     itemKey
   ]);
