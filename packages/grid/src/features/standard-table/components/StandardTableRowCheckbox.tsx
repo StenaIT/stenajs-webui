@@ -38,8 +38,8 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
       <Row
         alignItems={"center"}
         justifyContent={"center"}
-        width={"90px"}
-        minWidth={"90px"}
+        width={"45px"}
+        minWidth={"45px"}
         indent
       >
         <Checkbox

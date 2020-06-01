@@ -17,7 +17,11 @@ interface StandardTableContentProps<TItem> {
 export const StandardTableRowList = React.memo(function StandardTableRowList<
   TItem
 >({ items }: StandardTableContentProps<TItem>) {
-  const { keyResolver, enableGridCell } = useStandardTableConfig();
+  const {
+    keyResolver,
+    enableGridCell,
+    disableInfiniteList
+  } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc }
   } = useStandardTableState();
@@ -44,6 +48,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   return (
     <InfiniteList
+      disabled={disableInfiniteList}
       length={sortedItems.length}
       elementHeight={tableRowHeightPixels}
       threshold={30}

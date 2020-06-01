@@ -12,6 +12,8 @@ import { useRowCheckbox } from "../hooks/UseRowCheckbox";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { StandardTableCell } from "./StandardTableCell";
 import { StandardTableRowCheckbox } from "./StandardTableRowCheckbox";
+import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
+import { StandardTableRowExpandButton } from "./StandardTableRowExpandButton";
 
 interface StandardTableItemProps<TItem> {
   item: TItem;
@@ -30,9 +32,15 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     rowBackgroundResolver,
     checkboxDisabledResolver,
     enableGridCell,
-    rowIndent
+    rowIndent,
+    renderRowExpansion,
+    enableExpandCollapse,
+    keyResolver
   } = useStandardTableConfig();
 
+  const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(
+    keyResolver(item)
+  );
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
   const background = useMemo(
@@ -58,42 +66,57 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   );
 
   return (
-    <TableRow
-      height={tableRowHeight}
-      width={"100%"}
-      borderBottom={tableBorder}
-      background={background}
-      hoverBackground={"var(--lhds-color-ui-100)"}
-    >
-      {rowIndent && (
-        <Indent num={rowIndent} background={firstColumnBackground} />
-      )}
-      {showRowCheckbox && (
-        <StandardTableRowCheckbox
-          disabled={disabled}
-          value={isSelected}
-          onValueChange={toggleSelected}
-          colIndex={0}
-          rowIndex={enableGridCell ? rowIndex : 0}
-          numRows={enableGridCell ? numRows : 0}
-        />
-      )}
-      {columnOrder.map((columnId, index) => {
-        const colIndexOffset = showRowCheckbox ? 1 : 0;
-        return (
-          <StandardTableCell
-            key={columnId}
-            columnId={columnId}
-            item={item}
-            colIndex={enableGridCell ? colIndexOffset + index : 0}
+    <>
+      <TableRow
+        height={tableRowHeight}
+        width={"100%"}
+        borderBottom={tableBorder}
+        background={background}
+        hoverBackground={"var(--lhds-color-ui-100)"}
+      >
+        {rowIndent && (
+          <Indent num={rowIndent} background={firstColumnBackground} />
+        )}
+        {enableExpandCollapse && (
+          <StandardTableRowExpandButton
+            colIndex={showRowCheckbox ? 1 : 0}
             rowIndex={enableGridCell ? rowIndex : 0}
-            numRows={numRows}
+            numRows={enableGridCell ? numRows : 0}
+            item={item}
           />
-        );
-      })}
-      {rowIndent && (
-        <Indent num={rowIndent} background={lastColumnBackground} />
-      )}
-    </TableRow>
+        )}
+        {showRowCheckbox && (
+          <StandardTableRowCheckbox
+            disabled={disabled}
+            value={isSelected}
+            onValueChange={toggleSelected}
+            colIndex={0}
+            rowIndex={enableGridCell ? rowIndex : 0}
+            numRows={enableGridCell ? numRows : 0}
+          />
+        )}
+        {columnOrder.map((columnId, index) => {
+          const colIndexOffset =
+            (showRowCheckbox ? 1 : 0) + (enableExpandCollapse ? 1 : 0);
+          return (
+            <StandardTableCell
+              key={columnId}
+              columnId={columnId}
+              item={item}
+              colIndex={enableGridCell ? colIndexOffset + index : 0}
+              rowIndex={enableGridCell ? rowIndex : 0}
+              numRows={numRows}
+            />
+          );
+        })}
+        {rowIndent && (
+          <Indent num={rowIndent} background={lastColumnBackground} />
+        )}
+      </TableRow>
+      {enableExpandCollapse &&
+        renderRowExpansion &&
+        isExpanded &&
+        renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
+    </>
   );
 });
