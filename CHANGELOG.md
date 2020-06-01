@@ -4,6 +4,10 @@
 
 - Coming soon...
 
+## 1.0.0-beta.2
+
+- Hot fix, fixes invalid peer dependencies.
+
 ## 1.0.0-beta.1
 
 - StandardTable supports expandable rows.
