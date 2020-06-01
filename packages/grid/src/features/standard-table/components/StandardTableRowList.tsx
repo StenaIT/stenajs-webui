@@ -20,7 +20,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   const {
     keyResolver,
     enableGridCell,
-    disableInfiniteList
+    disableInfiniteList,
+    enableExpandCollapse
   } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc }
@@ -48,7 +49,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   return (
     <InfiniteList
-      disabled={disableInfiniteList}
+      disabled={disableInfiniteList || enableExpandCollapse}
       length={sortedItems.length}
       elementHeight={tableRowHeightPixels}
       threshold={30}
