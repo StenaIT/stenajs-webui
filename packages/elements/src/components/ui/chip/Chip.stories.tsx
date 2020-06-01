@@ -5,7 +5,15 @@ import * as React from "react";
 
 storiesOf("elements/Chip", module).add("standard", () => (
   <Column>
-    {(["primary", "secondary"] as Array<ChipVariant>).map(variant => (
+    {([
+      "primary",
+      "secondary",
+      "error",
+      "warning",
+      "success",
+      "passive",
+      "turquoise"
+    ] as Array<ChipVariant>).map(variant => (
       <>
         <LargeText>{variant}</LargeText>
         <Space />

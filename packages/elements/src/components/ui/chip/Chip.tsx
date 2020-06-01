@@ -6,7 +6,14 @@ import { FlatButton, FlatButtonProps } from "../buttons/FlatButton";
 import { Link } from "../link/Link";
 import styles from "./Chip.module.css";
 
-export type ChipVariant = "primary" | "secondary";
+export type ChipVariant =
+  | "primary"
+  | "secondary"
+  | "error"
+  | "warning"
+  | "success"
+  | "passive"
+  | "turquoise";
 
 export interface ChipProps extends Omit<FlatButtonProps, "variant"> {
   onClickRemove?: () => void;

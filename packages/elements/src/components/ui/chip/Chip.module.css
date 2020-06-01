@@ -84,6 +84,132 @@
     }
   }
 
+  &.error {
+    --current-border-color: var(--lhds-color-red-300);
+    --current-bg-color: var(--lhds-color-red-50);
+    --current-icon-color: var(--lhds-color-red-800);
+
+    .label {
+      --swui-link-color: var(--lhds-color-red-800);
+      --swui-link-color-active: var(--lhds-color-red-800);
+      --swui-link-color-hover: var(--lhds-color-red-800);
+      --swui-link-color-focus: var(--lhds-color-red-800);
+      --swui-link-color-disabled: var(--lhds-color-red-800);
+      --swui-link-focus-highlight-color: var(--lhds-color-red-800);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-red-400);
+      --swui-button-background-color-focus: var(--lhds-color-red-300);
+      --swui-button-background-color-hover: var(--lhds-color-red-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-red-800);
+      }
+    }
+  }
+
+  &.warning {
+    --current-border-color: var(--lhds-color-orange-300);
+    --current-bg-color: var(--lhds-color-orange-50);
+    --current-icon-color: var(--lhds-color-orange-800);
+
+    .label {
+      --swui-link-color: var(--lhds-color-orange-800);
+      --swui-link-color-active: var(--lhds-color-orange-800);
+      --swui-link-color-hover: var(--lhds-color-orange-800);
+      --swui-link-color-focus: var(--lhds-color-orange-800);
+      --swui-link-color-disabled: var(--lhds-color-orange-800);
+      --swui-link-focus-highlight-color: var(--lhds-color-orange-800);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-orange-400);
+      --swui-button-background-color-focus: var(--lhds-color-orange-300);
+      --swui-button-background-color-hover: var(--lhds-color-orange-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-orange-800);
+      }
+    }
+  }
+
+  &.success {
+    --current-border-color: var(--lhds-color-green-300);
+    --current-bg-color: var(--lhds-color-green-50);
+    --current-icon-color: var(--lhds-color-green-800);
+
+    .label {
+      --swui-link-color: var(--lhds-color-green-800);
+      --swui-link-color-active: var(--lhds-color-green-800);
+      --swui-link-color-hover: var(--lhds-color-green-800);
+      --swui-link-color-focus: var(--lhds-color-green-800);
+      --swui-link-color-disabled: var(--lhds-color-green-800);
+      --swui-link-focus-highlight-color: var(--lhds-color-green-800);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-green-400);
+      --swui-button-background-color-focus: var(--lhds-color-green-300);
+      --swui-button-background-color-hover: var(--lhds-color-green-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-green-800);
+      }
+    }
+  }
+
+  &.passive {
+    --current-border-color: var(--lhds-color-ui-300);
+    --current-bg-color: var(--lhds-color-ui-50);
+    --current-icon-color: var(--lhds-color-ui-800);
+
+    .label {
+      --swui-link-color: var(--lhds-color-ui-800);
+      --swui-link-color-active: var(--lhds-color-ui-800);
+      --swui-link-color-hover: var(--lhds-color-ui-800);
+      --swui-link-color-focus: var(--lhds-color-ui-800);
+      --swui-link-color-disabled: var(--lhds-color-ui-800);
+      --swui-link-focus-highlight-color: var(--lhds-color-ui-800);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-ui-400);
+      --swui-button-background-color-focus: var(--lhds-color-ui-300);
+      --swui-button-background-color-hover: var(--lhds-color-ui-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-ui-800);
+      }
+    }
+  }
+
+  &.turquoise {
+    --current-border-color: var(--lhds-color-turquoise-300);
+    --current-bg-color: var(--lhds-color-turquoise-50);
+    --current-icon-color: var(--lhds-color-turquoise-800);
+
+    .label {
+      --swui-link-color: var(--lhds-color-turquoise-800);
+      --swui-link-color-active: var(--lhds-color-turquoise-800);
+      --swui-link-color-hover: var(--lhds-color-turquoise-800);
+      --swui-link-color-focus: var(--lhds-color-turquoise-800);
+      --swui-link-color-disabled: var(--lhds-color-turquoise-800);
+      --swui-link-focus-highlight-color: var(--lhds-color-turquoise-800);
+    }
+
+    .close {
+      --swui-button-background-color-active: var(--lhds-color-turquoise-400);
+      --swui-button-background-color-focus: var(--lhds-color-turquoise-300);
+      --swui-button-background-color-hover: var(--lhds-color-turquoise-200);
+
+      &:focus {
+        --swui-button-box-shadow-focus: 0 0 3px 1px
+          var(--lhds-color-turquoise-800);
+      }
+    }
+  }
+
   &.removable {
     padding-right: calc(var(--swui-metrics-space) / 2);
   }
