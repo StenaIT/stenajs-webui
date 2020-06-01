@@ -7,9 +7,9 @@ import {
   useStandardTableId
 } from "../hooks/UseStandardTableConfig";
 import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons/faCaretDown";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 
 interface Props<TItem> {
   item: TItem;
@@ -24,7 +24,7 @@ export const StandardTableRowExpandButton = function<TItem>({
   numRows,
   rowIndex
 }: Props<TItem>) {
-  const { columnOrder, keyResolver } = useStandardTableConfig();
+  const { columnOrder } = useStandardTableConfig();
   const tableId = useStandardTableId();
   const gridCell = useGridCell<boolean>(true, {
     colIndex,
@@ -36,9 +36,7 @@ export const StandardTableRowExpandButton = function<TItem>({
   const { requiredProps } = gridCell;
 
   const { expandCollapseDisableResolver } = useStandardTableConfig();
-  const { toggleRowExpanded, isExpanded } = useExpandCollapseActions(
-    keyResolver(item)
-  );
+  const { toggleRowExpanded, isExpanded } = useExpandCollapseActions(item);
 
   const buttonDisabled = useMemo(() => {
     if (!expandCollapseDisableResolver) {
@@ -57,7 +55,7 @@ export const StandardTableRowExpandButton = function<TItem>({
       {!buttonDisabled && (
         <FlatButton
           size={"small"}
-          leftIcon={isExpanded ? faCaretDown : faCaretUp}
+          leftIcon={isExpanded ? faChevronUp : faChevronDown}
           onClick={toggleRowExpanded}
           {...requiredProps}
         />

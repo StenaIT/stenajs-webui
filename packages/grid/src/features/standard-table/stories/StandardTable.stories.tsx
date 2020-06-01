@@ -218,7 +218,7 @@ storiesOf("grid/StandardTable", module)
       enableExpandCollapse: true,
       renderRowExpansion: item => (
         <Box spacing indent>
-          <StandardText>Active: {item.active}</StandardText>
+          <StandardText>Name: {item.name}</StandardText>
         </Box>
       )
     });

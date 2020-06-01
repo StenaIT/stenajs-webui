@@ -1,13 +1,8 @@
 import {
-  createEntityByIdActions,
-  createEntityByIdSelectors,
   createSelectedIdsActions,
   createSelectedIdsSelectors,
   createSortOrderActions,
   createSortOrderSelectors,
-  EntityByIdAction,
-  EntityByIdActions,
-  EntityByIdSelectors,
   SelectedIdsAction,
   SelectedIdsActions,
   SelectedIdsSelectors,
@@ -15,21 +10,19 @@ import {
   SortOrderActions,
   SortOrderSelectors
 } from "@stenajs-webui/redux";
-import {
-  ExpandedRowsStateItem,
-  StandardTableState
-} from "./StandardTableReducer";
+import { StandardTableState } from "./StandardTableReducer";
+import { getReducerIdFor } from "./ReducerIdFactory";
 
 export interface StandardTableActions<TColumnKey> {
   sortOrder: SortOrderActions<TColumnKey>;
   selectedIds: SelectedIdsActions;
-  expandedRows: EntityByIdActions<ExpandedRowsStateItem>;
+  expandedRows: SelectedIdsActions;
 }
 
 export interface StandardTableSelectors<TStoreState, TColumnKey> {
   sortOrder: SortOrderSelectors<TStoreState, TColumnKey>;
   selectedIds: SelectedIdsSelectors<TStoreState>;
-  expandedRows: EntityByIdSelectors<TStoreState, ExpandedRowsStateItem>;
+  expandedRows: SelectedIdsSelectors<TStoreState>;
 }
 
 export interface StandardTableActionsAndSelectors<TStoreState, TColumnKey> {
@@ -39,8 +32,7 @@ export interface StandardTableActionsAndSelectors<TStoreState, TColumnKey> {
 
 export type StandardTableAction<TColumnKey> =
   | SortOrderAction<TColumnKey>
-  | SelectedIdsAction
-  | EntityByIdAction<ExpandedRowsStateItem>;
+  | SelectedIdsAction;
 
 export type StandardTableStateSelector<TStoreState, TColumnKey> = (
   state: TStoreState
@@ -49,9 +41,15 @@ export type StandardTableStateSelector<TStoreState, TColumnKey> = (
 export const createStandardTableActions = <TColumnKey>(
   reducerId: string
 ): StandardTableActions<TColumnKey> => ({
-  sortOrder: createSortOrderActions<TColumnKey>(reducerId),
-  selectedIds: createSelectedIdsActions(reducerId),
-  expandedRows: createEntityByIdActions<ExpandedRowsStateItem>(reducerId)
+  sortOrder: createSortOrderActions<TColumnKey>(
+    getReducerIdFor(reducerId, "sortOrder")
+  ),
+  selectedIds: createSelectedIdsActions(
+    getReducerIdFor(reducerId, "selectedIds")
+  ),
+  expandedRows: createSelectedIdsActions(
+    getReducerIdFor(reducerId, "expandedRows")
+  )
 });
 
 const createStandardTableSelectors = <TStoreState, TColumnKey>(
@@ -63,7 +61,7 @@ const createStandardTableSelectors = <TStoreState, TColumnKey>(
   selectedIds: createSelectedIdsSelectors<TStoreState>(
     state => stateSelector(state).selectedIds
   ),
-  expandedRows: createEntityByIdSelectors<TStoreState, ExpandedRowsStateItem>(
+  expandedRows: createSelectedIdsSelectors<TStoreState>(
     state => stateSelector(state).expandedRows
   )
 });

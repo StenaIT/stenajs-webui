@@ -34,13 +34,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     enableGridCell,
     rowIndent,
     renderRowExpansion,
-    enableExpandCollapse,
-    keyResolver
+    enableExpandCollapse
   } = useStandardTableConfig();
 
-  const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(
-    keyResolver(item)
-  );
+  const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
   const background = useMemo(

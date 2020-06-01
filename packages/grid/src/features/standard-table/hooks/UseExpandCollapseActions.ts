@@ -1,25 +1,37 @@
 import {
   useStandardTableActions,
+  useStandardTableConfig,
   useStandardTableState
 } from "./UseStandardTableConfig";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
+import { useArraySet } from "@stenajs-webui/core";
 
-export const useExpandCollapseActions = (entityId: string) => {
+export const useExpandCollapseActions = <TItem>(item: TItem) => {
+  const { keyResolver } = useStandardTableConfig();
+  const {
+    expandedRows: { selectedIds }
+  } = useStandardTableState();
   const {
     actions: {
-      expandedRows: { setEntityFields }
+      expandedRows: { setSelectedIds }
     },
     dispatch
   } = useStandardTableActions();
-  const {
-    expandedRows: { entities }
-  } = useStandardTableState();
 
-  const isExpanded = entities[entityId]?.expanded ?? false;
+  const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
+
+  const isExpanded = useMemo(() => selectedIds.includes(itemKey), [
+    selectedIds,
+    itemKey
+  ]);
+
+  const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
+    dispatch(setSelectedIds(ids))
+  );
 
   const toggleRowExpanded = useCallback(() => {
-    dispatch(setEntityFields(entityId, { expanded: !isExpanded }));
-  }, [entityId, isExpanded, dispatch]);
+    toggle(itemKey);
+  }, [toggle, itemKey]);
 
   return {
     toggleRowExpanded,
