@@ -1,11 +1,10 @@
 import cx from "classnames";
-import { KeyboardEventHandler } from "react";
 import * as React from "react";
+import { KeyboardEventHandler } from "react";
 import { SpanProps } from "@stenajs-webui/core";
 import styles from "./Link.module.css";
 
 interface Props extends SpanProps {
-  children?: string;
   disabled?: boolean;
   disableTabIndex?: boolean;
 }

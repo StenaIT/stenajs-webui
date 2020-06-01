@@ -4,45 +4,87 @@ import {
   UseGridCellResult
 } from "../../grid-cell/hooks/UseGridCell";
 
+export interface RowExpansionArgs {
+  onRequestCollapse?: () => void;
+}
+
 export interface StandardTableConfig<TItem, TColumnKeys extends string> {
   /**
    * Configs for the columns available in the table.
    */
   columns: Record<TColumnKeys, StandardTableColumnConfig<TItem, any>>;
+
   /**
    * The order of the columns. This is a list of keys from `columns`.
    * If a column is not added, it is not displayed.
    */
   columnOrder: Array<TColumnKeys>;
+
   /**
    * A key resolver for an item in the list. This is needed for React key props in the components.
    * @param item
    */
   keyResolver: (item: TItem) => string;
+
+  /**
+   * When enabled, a column is added to the left side for a button.
+   * The button visibility is controlled by `expandCollapseDisableResolver`.
+   */
+  enableExpandCollapse?: boolean;
+
+  /**
+   * If specified, return true to remove the expand collapse button from a row.
+   * Only applies if `enableExpandCollapse` is true. Default is visible.
+   * @param item
+   */
+  expandCollapseDisableResolver?: (item: TItem) => boolean;
+
+  /**
+   * Provide a custom renderer for a row. If undefined, or returns undefined, nothing will
+   * happen when the user tries to expand the row.
+   * @param item
+   */
+  renderRowExpansion?: (
+    item: TItem,
+    args: RowExpansionArgs
+  ) => ReactNode | undefined;
+
+  /**
+   * Disables react-infinite, which only renders visible rows.
+   * This is usable when using expandable rows, since infinite list requires
+   * fixed height.
+   */
+  disableInfiniteList?: boolean;
+
   /**
    * Add this to create a background color for the row, based on the item displayed.
    * @param item
    */
   rowBackgroundResolver?: (item: TItem) => string | undefined;
+
   /**
    * This makes it possible to disable the checkbox for a row, based in the item.
    * @param item
    */
   checkboxDisabledResolver?: (item: TItem) => boolean;
+
   /**
    * Enable or disables the useGridCell hooks. The hook is always running, but this controls
    * if it is applied to the DOM or not.
    */
   enableGridCell?: boolean;
+
   /**
    * Shows a checkbox in the header. The checkbox state is a function of the item checkboxes
    * and cannot be controlled.
    */
   showHeaderCheckbox?: boolean;
+
   /**
    * Shows a checkbox on the left side of each row. The state is controller by the tableContext.
    */
   showRowCheckbox?: boolean;
+
   /**
    * Add indent to the row itself.
    */
