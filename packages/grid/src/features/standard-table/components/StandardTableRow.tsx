@@ -1,7 +1,11 @@
-import { Indent } from "@stenajs-webui/core";
+import { Box, Indent } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import { tableBorder, tableRowHeight } from "../../../config/TableConfig";
+import {
+  tableBorder,
+  tableBorderExpanded,
+  tableRowHeight
+} from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
@@ -63,11 +67,11 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   );
 
   return (
-    <>
+    <Box borderBottom={rowIndex === numRows - 1 ? tableBorder : undefined}>
       <TableRow
         height={tableRowHeight}
         width={"100%"}
-        borderBottom={tableBorder}
+        borderTop={isExpanded ? tableBorderExpanded : tableBorder}
         background={background}
         hoverBackground={"var(--lhds-color-ui-100)"}
       >
@@ -110,10 +114,11 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
           <Indent num={rowIndent} background={lastColumnBackground} />
         )}
       </TableRow>
-      {enableExpandCollapse &&
-        renderRowExpansion &&
-        isExpanded &&
-        renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
-    </>
+      {enableExpandCollapse && renderRowExpansion && isExpanded && (
+        <Box borderTop={tableBorder}>
+          {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
+        </Box>
+      )}
+    </Box>
   );
 });
