@@ -17,6 +17,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
 >({ items }: StandardTableHeaderProps<TItem>) {
   const {
     showHeaderCheckbox,
+    enableExpandCollapse,
     columnOrder,
     rowIndent
   } = useStandardTableConfig();
@@ -33,10 +34,17 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   return (
     <TableHeadRow>
       {rowIndent && <Indent num={rowIndent} />}
+      {enableExpandCollapse && (
+        <TableHeadItem
+          width={"45px"}
+          minWidth={"45px"}
+          justifyContent={"center"}
+        />
+      )}
       {showHeaderCheckbox && (
         <TableHeadItem
-          width={"90px"}
-          minWidth={"90px"}
+          width={"45px"}
+          minWidth={"45px"}
           justifyContent={"center"}
         >
           <Row alignItems={"center"}>

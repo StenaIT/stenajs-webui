@@ -10,6 +10,7 @@ import {
 import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
+import { Box, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
   id: string;
@@ -77,8 +78,10 @@ const createConfig = (
   numPassengersCellRenderer?: StandardTableCellRenderer<
     number | undefined,
     ListItem
-  >
+  >,
+  options?: Partial<StandardTableConfig<ListItem, keyof ListItem>>
 ): StandardTableConfig<ListItem, keyof ListItem> => ({
+  ...options,
   keyResolver: item => item.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
@@ -208,4 +211,28 @@ storiesOf("grid/StandardTable", module)
       config={config}
       error={new Error("Could not fetch users")}
     />
-  ));
+  ))
+  .add("expandable rows", () => {
+    const config = createConfig(undefined, undefined, {
+      enableExpandCollapse: true,
+      renderRowExpansion: item => (
+        <Box spacing indent>
+          <StandardText>Name: {item.name}</StandardText>
+        </Box>
+      )
+    });
+    return <StandardTable items={items} config={config} />;
+  })
+  .add("some expandable rows", () => {
+    const config = createConfig(undefined, undefined, {
+      enableExpandCollapse: true,
+      expandCollapseDisableResolver: item =>
+        item.numPassengers != null && item.numPassengers > 500,
+      renderRowExpansion: item => (
+        <Box spacing indent>
+          <StandardText>Name: {item.name}</StandardText>
+        </Box>
+      )
+    });
+    return <StandardTable items={items} config={config} />;
+  });
