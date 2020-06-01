@@ -60,9 +60,7 @@ is triggered when the commit occurs, instead of on every keystroke.
 
 ```js
 export const timeTableFilterReducer =
-  createCommitReducer <
-  TimeTableFilterState >
-  ("timeTableFilter",
+  createCommitReducer<TimeTableFilterState>("timeTableFilter",
   {
     workspace: INITIAL_STATE,
     committed: INITIAL_STATE
@@ -77,7 +75,7 @@ export const timeTableFilterReducer =
 
 ```js
 export const { setValues, commitValues, clearValues } =
-  createCommitReducerActions < TimeTableFilterState > "timeTableFilter";
+  createCommitReducerActions<TimeTableFilterState>("timeTableFilter");
 
 // In component
 const dispatch = useDispatch();
@@ -92,7 +90,7 @@ dispatch(setValues({ email: "tomte@nordpolen.se" }));
 export const { getWorkspaceValues, getCommittedValues } = createCommitReducerSelectors<
   StoreState,
   TimeTableFilterState
->(state => state.timeTableFilter, "timeTableFilter");
+>("timeTableFilter", state => state.timeTableFilter);
 
 // In component
 const filterValues = useSelector(getWorkspaceValues);
