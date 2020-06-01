@@ -223,4 +223,17 @@ storiesOf("grid/StandardTable", module)
       )
     });
     return <StandardTable items={items} config={config} />;
+  })
+  .add("some expandable rows", () => {
+    const config = createConfig(undefined, undefined, {
+      enableExpandCollapse: true,
+      expandCollapseDisableResolver: item =>
+        item.numPassengers != null && item.numPassengers > 500,
+      renderRowExpansion: item => (
+        <Box spacing indent>
+          <StandardText>Name: {item.name}</StandardText>
+        </Box>
+      )
+    });
+    return <StandardTable items={items} config={config} />;
   });
