@@ -76,7 +76,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         )}
         {enableExpandCollapse && (
           <StandardTableRowExpandButton
-            colIndex={showRowCheckbox ? 1 : 0}
+            colIndex={0}
             rowIndex={enableGridCell ? rowIndex : 0}
             numRows={enableGridCell ? numRows : 0}
             item={item}
@@ -87,7 +87,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
             disabled={disabled}
             value={isSelected}
             onValueChange={toggleSelected}
-            colIndex={0}
+            colIndex={showRowCheckbox ? 1 : 0}
             rowIndex={enableGridCell ? rowIndex : 0}
             numRows={enableGridCell ? numRows : 0}
           />
