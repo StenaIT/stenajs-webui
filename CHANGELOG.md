@@ -4,6 +4,11 @@
 
 - Coming soon...
 
+## 1.0.0-beta.1
+
+- StandardTable supports expandable rows.
+- Chip has more variants.
+
 ## 1.0.0-beta.0
 
 ### New components
