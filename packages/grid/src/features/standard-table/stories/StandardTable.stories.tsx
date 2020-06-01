@@ -10,8 +10,7 @@ import {
 import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import { StandardText } from "../../../../../core/src/components/text/variants/StandardText";
-import { Box } from "@stenajs-webui/core";
+import { Box, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
   id: string;
