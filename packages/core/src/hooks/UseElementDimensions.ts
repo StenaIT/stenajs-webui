@@ -66,11 +66,11 @@ export const useElementDimensions = (
         setDimensions(newDimensions);
       }
     });
-  }, [ref.current, dimensions, setDimensions, onResizeElement]);
+  }, [ref, ref.current, dimensions, setDimensions, onResizeElement]);
 
   useLayoutEffect(() => {
     updateDimensions();
-  }, [ref.current, updateDimensions]);
+  }, [updateDimensions]);
 
   return {
     dimensions
