@@ -59,7 +59,6 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       <UpDownButtons
         onClickUp={disabled ? undefined : () => onClick(step)}
         onClickDown={disabled ? undefined : () => onClick(-step)}
-        buttonHeight={"100%"}
         iconColor={"var(--swui-textinput-text-color)"}
         disabled={disabled}
       />
@@ -81,10 +80,10 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
           className={cx([
             className,
             css`
+              -moz-appearance: textfield;
               &::-webkit-outer-spin-button,
               &::-webkit-inner-spin-button {
                 -webkit-appearance: none;
-                -moz-appearance: textfield;
                 margin: 0;
               }
             `
