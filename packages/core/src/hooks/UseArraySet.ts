@@ -1,59 +1,64 @@
 import { useCallback } from "react";
 
+type ArrayItemEqualsComparator<T> = (a: T, b: T) => boolean;
+
+const defaultComparator = <T>(a: T, b: T) => a === b;
+
 export const useArraySet = <T>(
   list: Array<T>,
-  setList: (list: Array<T>) => void
+  setList: (list: Array<T>) => void,
+  comparator: ArrayItemEqualsComparator<T> = defaultComparator
 ) => {
   const add = useCallback(
     (item: T) => {
-      if (list.indexOf(item) < 0) {
+      if (!list.find(l => comparator(l, item))) {
         setList([...list, item]);
       }
     },
-    [list, setList]
+    [list, setList, comparator]
   );
 
   const addMultiple = useCallback(
     (items: Array<T>) => {
       setList(
         items.reduce((list, item) => {
-          if (list.indexOf(item) < 0) {
+          if (!list.find(l => comparator(l, item))) {
             return [...list, item];
           }
           return list;
         }, list)
       );
     },
-    [list, setList]
+    [list, setList, comparator]
   );
 
   const remove = useCallback(
     (item: T) => {
-      const index = list.indexOf(item);
+      const index = list.findIndex(l => comparator(l, item));
       if (index >= 0) {
         setList(list.filter((_, i) => i !== index));
       }
     },
-    [list, setList]
+    [list, setList, comparator]
   );
 
   const removeMultiple = useCallback(
     (items: Array<T>) => {
-      setList(list.filter(item => items.indexOf(item) < 0));
+      setList(list.filter(item => !items.find(l => comparator(l, item))));
     },
-    [list, setList]
+    [list, setList, comparator]
   );
 
   const toggle = useCallback(
     (item: T) => {
-      const index = list.indexOf(item);
-      if (index >= 0) {
+      const found = !!list.find(l => comparator(l, item));
+      if (found) {
         remove(item);
       } else {
         add(item);
       }
     },
-    [list, add, remove]
+    [list, add, remove, comparator]
   );
 
   return {
