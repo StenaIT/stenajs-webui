@@ -4,6 +4,24 @@
 
 - Coming soon...
 
+## 1.0.0-beta.3
+
+### New components
+
+- New TextArea component in forms package.
+
+### New features
+
+- useArraySet now supports custom comparator.
+
+Use custom comparator to use useArraySet with objects.
+
+- Popover now automatically resizes and moves when content resizes.
+
+### Fixes
+
+- Fix styling of UpDownButtons in Firefox.
+
 ## 1.0.0-beta.2
 
 - Hot fix, fixes invalid peer dependencies.
