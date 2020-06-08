@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {
   Box,
   Clickable,
+  ResizeAwareBox,
   ThemeColorField,
   useMultiOnClickOutside,
   useThemeFields
@@ -115,7 +116,7 @@ export function Popover({
     <>
       {showing && (
         <Popper placement={placement}>
-          {({ ref, style, placement, arrowProps }) => {
+          {({ ref, style, placement, arrowProps, scheduleUpdate }) => {
             return (
               <Box
                 zIndex={zIndex}
@@ -134,11 +135,15 @@ export function Popover({
                 spacing={disablePadding ? 0 : 1}
                 indent={disablePadding ? 0 : 1}
               >
-                <Box borderRadius={"4px"} overflow={"hidden"}>
+                <ResizeAwareBox
+                  borderRadius={"4px"}
+                  overflow={"hidden"}
+                  onResize={scheduleUpdate}
+                >
                   {typeof content === "function"
                     ? content({ show, hide })
                     : content}
-                </Box>
+                </ResizeAwareBox>
                 {!disableArrow && (
                   <Arrow
                     background={colors.background}
