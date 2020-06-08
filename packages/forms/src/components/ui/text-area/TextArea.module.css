@@ -1,0 +1,76 @@
+.textArea {
+  --swui-textarea-text-color: var(--swui-field-text-color);
+  --swui-textarea-text-color-disabled: var(--swui-field-text-color-disabled);
+  --swui-textarea-letter-spacing: var(--swui-field-letter-spacing);
+  --swui-textarea-line-height: var(--swui-field-text-line-height);
+  --swui-textarea-indent: var(--swui-metrics-indent);
+  --swui-textarea-spacing: calc(var(--swui-field-text-spacing) - 1px);
+  --swui-textarea-font-size: var(--swui-font-size-inputs);
+  --swui-textarea-font-family: var(--swui-font-input);
+  --swui-textarea-font-weight: var(--swui-font-weight-inputs);
+  --swui-textarea-placeholder-color: var(--swui-text-disabled-color);
+  --swui-textarea-animation-time: var(--swui-animation-time-medium);
+  --swui-textarea-icon-color: var(--swui-field-border-color-disabled);
+  --swui-textarea-icon-size: var(--swui-field-icon-size);
+
+  /* States */
+  --swui-textarea-icon-color-success: var(--swui-state-success-color);
+
+  --swui-textarea-bg-loading: var(--swui-state-loading-light-color);
+  --swui-textarea-border-color-loading: var(--swui-state-loading-color);
+
+  --swui-textarea-bg-modified: var(--swui-state-modified-light-color);
+  --swui-textarea-border-color-modified: var(--swui-state-modified-color);
+
+  --swui-textarea-bg-warning: var(--swui-state-alert-light-color);
+  --swui-textarea-border-color-warning: var(--swui-state-alert-color);
+
+  --swui-textarea-bg-error: var(--swui-state-error-light-color);
+  --swui-textarea-border-color-error: var(--swui-state-error-color);
+
+  /* Background */
+  --swui-textarea-bg-color: var(--swui-field-bg-enabled);
+  --swui-textarea-bg-color-disabled: var(--swui-field-bg-disabled);
+
+  /* Border */
+  --swui-textarea-border-radius: var(--swui-field-border-radius);
+  --swui-textarea-border-color: var(--swui-field-border-color);
+  --swui-textarea-border-color-hover: var(--swui-field-border-color-hover);
+  --swui-textarea-border-color-disabled: var(
+    --swui-field-border-color-disabled
+  );
+  /* Shadow */
+  --swui-textarea-focus-shadow: var(--swui-field-focus-shadow);
+
+  /*
+   * Styling
+   */
+  max-width: 100%;
+  letter-spacing: var(--swui-textarea-letter-spacing);
+  line-height: var(--swui-textarea-line-height);
+  padding: var(--swui-textarea-spacing) var(--swui-textarea-indent);
+  color: var(--swui-textarea-text-color);
+  font-size: var(--swui-textarea-font-size);
+  font-family: var(--swui-textarea-font-family);
+  font-weight: var(--swui-textarea-font-weight);
+
+  background: var(--current-bg, var(--swui-textarea-bg-color));
+  border: 1px solid
+    var(--current-border-color, var(--swui-textarea-border-color));
+  border-radius: var(--swui-textarea-border-radius);
+  transition: border var(--swui-textarea-animation-time);
+  --current-icon-color: var(--swui-textarea-icon-color);
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--swui-textarea-focus-shadow);
+    --current-border-color: var(--swui-textarea-border-color-hover);
+    --current-bg: var(--swui-textarea-bg-color);
+  }
+
+  &:disabled {
+    color: var(--swui-textarea-text-color-disabled);
+    --current-bg: var(--swui-textarea-bg-color-disabled);
+    --current-border-color: var(--swui-textarea-border-color-disabled);
+  }
+}

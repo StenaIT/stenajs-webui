@@ -7,6 +7,15 @@ export interface InputProps<T = any>
   wrapperRef?: Ref<T>;
 }
 
+export interface TextAreaElementProps
+  extends Omit<
+    JSX.IntrinsicElements["textarea"],
+    "ref" | "value" | "onChange"
+  > {
+  /** This is a RefObject since the input components use ref.current which Ref type doesn't have. */
+  inputRef?: RefObject<HTMLTextAreaElement>;
+}
+
 export interface DivProps extends Omit<JSX.IntrinsicElements["div"], "ref"> {
   innerRef?: Ref<HTMLDivElement>;
 }

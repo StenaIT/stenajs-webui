@@ -14,19 +14,19 @@
   --swui-textinput-icon-size: var(--swui-field-icon-size);
 
   /* States */
-  --swui-text-input-icon-color-success: var(--swui-state-success-color);
+  --swui-textinput-icon-color-success: var(--swui-state-success-color);
 
-  --swui-text-input-bg-loading: var(--swui-state-loading-light-color);
-  --swui-text-input-border-color-loading: var(--swui-state-loading-color);
+  --swui-textinput-bg-loading: var(--swui-state-loading-light-color);
+  --swui-textinput-border-color-loading: var(--swui-state-loading-color);
 
-  --swui-text-input-bg-modified: var(--swui-state-modified-light-color);
-  --swui-text-input-border-color-modified: var(--swui-state-modified-color);
+  --swui-textinput-bg-modified: var(--swui-state-modified-light-color);
+  --swui-textinput-border-color-modified: var(--swui-state-modified-color);
 
-  --swui-text-input-bg-warning: var(--swui-state-alert-light-color);
-  --swui-text-input-border-color-warning: var(--swui-state-alert-color);
+  --swui-textinput-bg-warning: var(--swui-state-alert-light-color);
+  --swui-textinput-border-color-warning: var(--swui-state-alert-color);
 
-  --swui-text-input-bg-error: var(--swui-state-error-light-color);
-  --swui-text-input-border-color-error: var(--swui-state-error-color);
+  --swui-textinput-bg-error: var(--swui-state-error-light-color);
+  --swui-textinput-border-color-error: var(--swui-state-error-color);
 
   /* Background */
   --swui-textinput-bg-color: var(--swui-field-bg-enabled);
@@ -71,29 +71,29 @@
     }
 
     &.success {
-      --current-icon-color: var(--swui-text-input-icon-color-success);
+      --current-icon-color: var(--swui-textinput-icon-color-success);
     }
 
     &.loading {
-      --current-bg: var(--swui-text-input-bg-loading);
-      --current-border-color: var(--swui-text-input-border-color-loading);
+      --current-bg: var(--swui-textinput-bg-loading);
+      --current-border-color: var(--swui-textinput-border-color-loading);
     }
 
     &.modified {
-      --current-bg: var(--swui-text-input-bg-modified);
-      --current-border-color: var(--swui-text-input-border-color-modified);
+      --current-bg: var(--swui-textinput-bg-modified);
+      --current-border-color: var(--swui-textinput-border-color-modified);
     }
 
     &.error {
-      --current-bg: var(--swui-text-input-bg-error);
-      --current-border-color: var(--swui-text-input-border-color-error);
-      --current-icon-color: var(--swui-text-input-border-color-error);
+      --current-bg: var(--swui-textinput-bg-error);
+      --current-border-color: var(--swui-textinput-border-color-error);
+      --current-icon-color: var(--swui-textinput-border-color-error);
     }
 
     &.warning {
-      --current-bg: var(--swui-text-input-bg-warning);
-      --current-border-color: var(--swui-text-input-border-color-warning);
-      --current-icon-color: var(--swui-text-input-border-color-warning);
+      --current-bg: var(--swui-textinput-bg-warning);
+      --current-border-color: var(--swui-textinput-border-color-warning);
+      --current-icon-color: var(--swui-textinput-border-color-warning);
     }
 
     &.disabled {
