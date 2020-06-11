@@ -37,6 +37,7 @@ export const StandardTableCellUi = React.memo<Props>(
         height={"100%"}
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
+        overflow={"hidden"}
       >
         <Row
           className={styles.standardTableCell}

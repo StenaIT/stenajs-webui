@@ -42,6 +42,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     popoverContent,
     popoverButtonLoading,
     infoIconTooltipText,
+    overflow = "hidden",
     ...boxProps
   }) => {
     const ref = useRef(null);
@@ -63,6 +64,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         alignItems={"center"}
         style={onClick ? { cursor: "pointer", userSelect: "none" } : undefined}
         innerRef={ref}
+        overflow={overflow}
         {...boxProps}
       >
         {infoIconTooltipText && (

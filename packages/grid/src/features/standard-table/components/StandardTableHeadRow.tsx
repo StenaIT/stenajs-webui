@@ -46,6 +46,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
           width={"45px"}
           minWidth={"45px"}
           justifyContent={"center"}
+          overflow={"hidden"}
         >
           <Row alignItems={"center"}>
             <Checkbox
