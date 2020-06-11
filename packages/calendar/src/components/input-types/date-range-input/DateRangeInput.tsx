@@ -1,11 +1,5 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import {
-  Box,
-  Row,
-  Space,
-  StandardText,
-  useMultiOnClickOutside
-} from "@stenajs-webui/core";
+import { Box, Row, Space, useMultiOnClickOutside } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
@@ -24,6 +18,8 @@ import {
   defaultCalendarTheme
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
+import { Icon } from "@stenajs-webui/elements";
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 
 export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
@@ -61,12 +57,6 @@ export interface DateRangeInputProps<T extends {}> {
   zIndex?: number;
 
   /**
-   * Text between the inputs.
-   * @default to
-   */
-  toText?: string;
-
-  /**
    * Width of the input element.
    * * @default 125px
    */
@@ -101,7 +91,6 @@ export const DateRangeInput = <T extends {}>({
   onChange,
   zIndex = 100,
   width = "125px",
-  toText = "to",
   calendarTheme = defaultCalendarTheme,
   calendarProps
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
@@ -170,7 +159,11 @@ export const DateRangeInput = <T extends {}>({
                   size={9}
                 />
                 <Space />
-                <StandardText>{toText}</StandardText>
+                <Icon
+                  icon={faLongArrowAltRight}
+                  color={"var(--lhds-color-ui-500)"}
+                  size={14}
+                />
                 <Space />
                 <TextInput
                   iconLeft={faCalendarAlt}
