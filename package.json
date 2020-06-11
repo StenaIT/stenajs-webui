@@ -9,6 +9,8 @@
     "watch-storybook": "concurrently \"yarn start-storybook\" \"yarn watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
+    "build-packages": "lerna run build",
+    "build-packages-and-storybook": "lerna run build && build-storybook",
     "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
