@@ -106,7 +106,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const popperContent = (
     <CalendarPopperContent
       innerRef={popupRef}
-      background={"var(--swui-textinput-bg-color)"}
+      background={"var(--swui-field-bg-enabled)"}
       borderColor={"var(--swui-modal-border-color)"}
       zIndex={zIndex}
       open={open}
