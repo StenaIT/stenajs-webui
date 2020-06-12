@@ -4,6 +4,17 @@
 
 - Coming soon...
 
+## 1.0.0-beta.4
+
+### Changes
+
+- DateRangePicker now has an arrow between fields, instead of text "to".
+
+### Fixes
+
+- DateRangePicker calendar background is now white instead of transparent.
+- DateRangePicker cell content could break column alignment if it was too big. This has been fixed.
+
 ## 1.0.0-beta.3
 
 ### New components
