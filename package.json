@@ -14,7 +14,7 @@
     "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
-    "publish-all": "lerna publish --exact && yarn build-storybook && yarn deploy-built-storybook",
+    "publish-all": "lerna publish --exact --force-publish && yarn build-storybook && yarn deploy-built-storybook",
     "check-all": "yarn lint && yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-bundle-size && yarn check-builds && yarn check-prettier && yarn test",
     "pre-build-check": "yarn check-deps-match && yarn check-imports && yarn lint && yarn check-prettier",
     "post-build-check": "yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-bundle-size && yarn test && yarn check-builds",
