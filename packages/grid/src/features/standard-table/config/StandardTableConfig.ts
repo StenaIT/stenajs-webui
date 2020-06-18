@@ -16,11 +16,13 @@ export interface StandardTableConfig<TItem, TColumnKeys extends string> {
 
   /**
    * Table will be sorted by specified column key as default.
+   * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
   initialSortOrder?: TColumnKeys;
 
   /**
    * Initial sorting will be desc. Does nothing if initialSortOrder is not specified.
+   * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
   initialSortOrderDesc?: boolean;
 

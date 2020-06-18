@@ -5,15 +5,17 @@ export interface SelectedIdsState {
   selectedIds: Array<string>;
 }
 
-export const selectedIdsReducerInitialState: SelectedIdsState = {
+export const createSelectedIdsReducerInitialState = (): SelectedIdsState => ({
   selectedIds: []
-};
+});
+
+const INITIAL_STATE = createSelectedIdsReducerInitialState();
 
 export type SelectedIdsReducer = Reducer<SelectedIdsState, SelectedIdsAction>;
 
 export const createSelectedIdsReducer = (
   reducerId: string
-): SelectedIdsReducer => (state = selectedIdsReducerInitialState, action) => {
+): SelectedIdsReducer => (state = INITIAL_STATE, action) => {
   if (action.reducerId !== reducerId) {
     return state;
   }

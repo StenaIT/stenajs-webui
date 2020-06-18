@@ -1,14 +1,13 @@
-import { Box } from "@stenajs-webui/core";
+import { Box, useDomId } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import { useDomId } from "@stenajs-webui/core";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import {
   StandardTableActionsContext,
   StandardTableConfigContext,
   StandardTableStateContext,
-  TableContext,
-  StandardTableTableIdContext
+  StandardTableTableIdContext,
+  TableContext
 } from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
@@ -70,8 +69,12 @@ export const StandardTable = function StandardTable<
   ...props
 }: StandardTableProps<TItem, TColumnKey>) {
   const generatedTableId = useDomId();
+  const { initialSortOrderDesc, initialSortOrder } = config;
+
   const { tableContext: localTableContext } = useLocalStateTableContext(
-    tableId ?? generatedTableId
+    tableId ?? generatedTableId,
+    initialSortOrder,
+    initialSortOrderDesc
   );
 
   const currentTableContext = tableContext || localTableContext;

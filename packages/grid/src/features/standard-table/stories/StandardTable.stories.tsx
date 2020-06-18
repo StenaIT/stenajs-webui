@@ -146,6 +146,17 @@ storiesOf("grid/StandardTable", module)
     })
   )
   .add(
+    "with sorting disabled and sort by name",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell(),
+        { disableSorting: true, initialSortOrder: "name" }
+      );
+      return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
     "with field error",
     withState({ items })(({ store }) => {
       const config = createConfig(
