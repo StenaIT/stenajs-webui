@@ -157,6 +157,20 @@ storiesOf("grid/StandardTable", module)
     })
   )
   .add(
+    "with sorting enabled and sort by name desc",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell(),
+        {
+          initialSortOrder: "name",
+          initialSortOrderDesc: true
+        }
+      );
+      return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
     "with field error",
     withState({ items })(({ store }) => {
       const config = createConfig(
