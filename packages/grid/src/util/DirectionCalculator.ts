@@ -7,18 +7,24 @@ export interface CellIndices {
   colIndex: number;
 }
 
+export type TableEdgeMoveMode = "clamped" | "wrapped" | "unlimited";
+
 export const getNextPositionWrappedOrClamped = (
   rowIndex: number,
   colIndex: number,
   numRows: number,
   numCols: number,
   direction: MoveDirection,
-  wrap: boolean
+  edgeMode: TableEdgeMoveMode = "clamped"
 ): CellIndices => {
   const posNotWrapped = getNextPosition(rowIndex, colIndex, direction);
-  return wrap
-    ? wrapPos(posNotWrapped, numRows - 1, numCols - 1)
-    : clampPos(posNotWrapped, numRows - 1, numCols - 1);
+  if (edgeMode === "clamped") {
+    return clampPos(posNotWrapped, numRows - 1, numCols - 1);
+  }
+  if (edgeMode === "wrapped") {
+    return wrapPos(posNotWrapped, numRows - 1, numCols - 1);
+  }
+  return posNotWrapped;
 };
 
 export const getNextPosition = (

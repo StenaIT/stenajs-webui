@@ -18,7 +18,9 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   errorLabel,
   loading,
   items,
-  noItemsLabel = "There is no data available."
+  noItemsLabel = "There is no data available.",
+  colIndexOffset,
+  rowIndexOffset
 }: Props<TItem, TColumnKey>) {
   if (error) {
     return (
@@ -44,5 +46,11 @@ export const StandardTableContent = React.memo(function StandardTableContent<
     );
   }
 
-  return <StandardTableRowList items={items} />;
+  return (
+    <StandardTableRowList
+      items={items}
+      colIndexOffset={colIndexOffset}
+      rowIndexOffset={rowIndexOffset}
+    />
+  );
 });

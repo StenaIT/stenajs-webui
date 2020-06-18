@@ -10,6 +10,21 @@ export interface RowExpansionArgs {
 
 export interface StandardTableConfig<TItem, TColumnKeys extends string> {
   /**
+   * If true, click on table headers does not change sort order.
+   */
+  disableSorting?: boolean;
+
+  /**
+   * Table will be sorted by specified column key as default.
+   */
+  initialSortOrder?: TColumnKeys;
+
+  /**
+   * Initial sorting will be desc. Does nothing if initialSortOrder is not specified.
+   */
+  initialSortOrderDesc?: boolean;
+
+  /**
    * Configs for the columns available in the table.
    */
   columns: Record<TColumnKeys, StandardTableColumnConfig<TItem, any>>;
@@ -73,6 +88,22 @@ export interface StandardTableConfig<TItem, TColumnKeys extends string> {
    * if it is applied to the DOM or not.
    */
   enableGridCell?: boolean;
+
+  /**
+   * Grid cell options, if you need custom behaviour.
+   * Not all options are available, since it is controlled by StandardTable.
+   * This is applied on all columns, and settings may be overridden by per-column gridCellOptions.
+   */
+  gridCellOptions?: Omit<
+    UseGridCellOptions<string>,
+    | "colIndex"
+    | "rowIndex"
+    | "numRows"
+    | "numCols"
+    | "tableId"
+    | "isEditable"
+    | "onChange"
+  >;
 
   /**
    * Shows a checkbox in the header. The checkbox state is a function of the item checkboxes

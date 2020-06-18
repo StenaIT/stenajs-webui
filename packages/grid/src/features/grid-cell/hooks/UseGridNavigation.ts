@@ -2,7 +2,8 @@ import { KeyboardEvent, useMemo } from "react";
 import {
   CellIndices,
   getNextPositionWrappedOrClamped,
-  MoveDirection
+  MoveDirection,
+  TableEdgeMoveMode
 } from "../../../util/DirectionCalculator";
 import { ensureDomIdIsCorrect } from "../../../util/DomIdValidator";
 import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
@@ -29,9 +30,13 @@ export interface UseGridNavigationOptions {
    */
   tableId?: string;
   /**
-   * If true, navigation will wrap around the table. If false, navigation stops at table edge.
+   * Edge mode. Defines how to behave when user tries to navigate outside of the table.
+   * Can be 'wrapped', 'clamped' or 'unlimited'.
+   * wrapped = focuses on other side of table.
+   * clamped = focus stays on same cell
+   * unlimited = focus is not controlled, it will try to focus on next item.
    */
-  wrap?: boolean;
+  edgeMode?: TableEdgeMoveMode;
   /**
    * Callback that is invoked when user navigates to new cell by keyboard.
    */
@@ -48,7 +53,7 @@ export interface ValidatedUseGridNavigationOptions {
   numRows: number;
   numCols: number;
   tableId: string;
-  wrap?: boolean;
+  edgeMode?: TableEdgeMoveMode;
   onCellMove?: CellMoveHandler;
   onCellNavigation?: CellNavigationHandler;
 }
@@ -94,7 +99,7 @@ export const useGridNavigation = (
     numRows,
     numCols,
     tableId,
-    wrap = false,
+    edgeMode,
     onCellMove,
     onCellNavigation
   } = useGridNavigationOptionsFromContext(options);
@@ -107,7 +112,7 @@ export const useGridNavigation = (
         colIndex,
         numRows,
         numCols,
-        wrap,
+        edgeMode,
         onCellMove,
         onCellNavigation
       ),
@@ -117,7 +122,7 @@ export const useGridNavigation = (
       colIndex,
       numRows,
       numCols,
-      wrap,
+      edgeMode,
       onCellMove,
       onCellNavigation
     ]
@@ -157,7 +162,7 @@ const createMoveHandler = (
   colIndex: number,
   numRows: number,
   numCols: number,
-  wrap: boolean,
+  edgeMode?: TableEdgeMoveMode,
   onCellMove?: CellMoveHandler,
   onCellNavigation?: CellNavigationHandler
 ): MoveHandler => direction => {
@@ -167,7 +172,7 @@ const createMoveHandler = (
     numRows,
     numCols,
     direction,
-    wrap
+    edgeMode
   );
 
   const colDidChange = colIndex !== pos.colIndex;

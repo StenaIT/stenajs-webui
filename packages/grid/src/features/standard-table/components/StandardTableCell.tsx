@@ -29,7 +29,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const {
     columnOrder,
     enableGridCell,
-    showRowCheckbox
+    showRowCheckbox,
+    gridCellOptions: gridCellOptionsForTable
   } = useStandardTableConfig();
   const tableId = useStandardTableId();
 
@@ -41,7 +42,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     justifyContentCell = "flex-start",
     borderLeft,
     renderCell,
-    gridCellOptions,
+    gridCellOptions: gridCellOptionsForColumn,
     isEditable,
     onChange,
     disableGridCell
@@ -82,7 +83,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     onChange: onChange
       ? (value: string | undefined) => onChange(item, value)
       : undefined,
-    ...gridCellOptions
+    ...gridCellOptionsForTable,
+    ...gridCellOptionsForColumn
   });
 
   const currentBackground = useCellBackgroundByColumnId(columnId, item);

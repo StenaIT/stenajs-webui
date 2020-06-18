@@ -22,6 +22,20 @@ export interface StandardTableProps<TItem, TColumnKey extends string> {
   tableId?: string;
 
   /**
+   * Number that is added to rowIndex in useGridCell.
+   * This makes it possible to navigate between two tables, when used in combination
+   * with tableId.
+   */
+  rowIndexOffset?: number;
+
+  /**
+   * Number that is added to colIndex in useGridCell.
+   * This makes it possible to navigate between two tables, when used in combination
+   * with tableId.
+   */
+  colIndexOffset?: number;
+
+  /**
    * Config for the table. Required.
    */
   config: StandardTableConfig<TItem, TColumnKey>;

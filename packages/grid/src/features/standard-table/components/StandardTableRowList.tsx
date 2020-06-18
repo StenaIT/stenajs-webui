@@ -12,11 +12,17 @@ import { StandardTableRow } from "./StandardTableRow";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
+  colIndexOffset?: number;
+  rowIndexOffset?: number;
 }
 
 export const StandardTableRowList = React.memo(function StandardTableRowList<
   TItem
->({ items }: StandardTableContentProps<TItem>) {
+>({
+  items,
+  colIndexOffset = 0,
+  rowIndexOffset = 0
+}: StandardTableContentProps<TItem>) {
   const {
     keyResolver,
     disableInfiniteList,
@@ -57,7 +63,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
         <StandardTableRow
           item={item}
           key={keyResolver(item)}
-          rowIndex={index}
+          colIndexOffset={colIndexOffset}
+          rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}
         />
       ))}
