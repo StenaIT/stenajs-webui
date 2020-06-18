@@ -19,7 +19,6 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 >({ items }: StandardTableContentProps<TItem>) {
   const {
     keyResolver,
-    enableGridCell,
     disableInfiniteList,
     enableExpandCollapse
   } = useStandardTableConfig();
@@ -58,8 +57,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
         <StandardTableRow
           item={item}
           key={keyResolver(item)}
-          rowIndex={enableGridCell ? index : 0}
-          numRows={enableGridCell ? sortedItems.length : 0}
+          rowIndex={index}
+          numRows={sortedItems.length}
         />
       ))}
     </InfiniteList>

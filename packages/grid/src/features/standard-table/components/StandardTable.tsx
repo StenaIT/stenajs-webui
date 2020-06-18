@@ -16,6 +16,12 @@ import { StandardTableHeadRow } from "./StandardTableHeadRow";
 
 export interface StandardTableProps<TItem, TColumnKey extends string> {
   /**
+   * The tableId, which is passed to useGridCell.
+   * Optional, defaults to generated id.
+   */
+  tableId?: string;
+
+  /**
    * Config for the table. Required.
    */
   config: StandardTableConfig<TItem, TColumnKey>;
@@ -43,10 +49,15 @@ export interface StandardTableProps<TItem, TColumnKey extends string> {
 export const StandardTable = function StandardTable<
   TItem,
   TColumnKey extends string
->({ tableContext, config, ...props }: StandardTableProps<TItem, TColumnKey>) {
-  const tableId = useDomId();
+>({
+  tableContext,
+  config,
+  tableId,
+  ...props
+}: StandardTableProps<TItem, TColumnKey>) {
+  const generatedTableId = useDomId();
   const { tableContext: localTableContext } = useLocalStateTableContext(
-    tableId
+    tableId ?? generatedTableId
   );
 
   const currentTableContext = tableContext || localTableContext;
@@ -62,7 +73,7 @@ export const StandardTable = function StandardTable<
 
   return (
     <Box>
-      <StandardTableTableIdContext.Provider value={tableId}>
+      <StandardTableTableIdContext.Provider value={tableId ?? generatedTableId}>
         <StandardTableStateContext.Provider value={state}>
           <StandardTableActionsContext.Provider value={actionsContext}>
             <StandardTableConfigContext.Provider value={config}>
