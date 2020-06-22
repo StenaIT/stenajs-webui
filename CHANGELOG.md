@@ -4,7 +4,23 @@
 
 - Coming soon...
 
-## 1.0.0-beta.4
+## 1.0.1
+
+### Improvements
+
+#### useGridNavigation/useGridCell hook
+
+- Now has new setting, `edgeMode`, which defines how to behave when user tries to navigate outside of table.
+
+#### StandardTable has new options.
+
+- tableId can now be set, but is optional.
+- rowIndexOffset and colIndexOffset.
+- Now possible to navigate between tables, when combining edgeMode, shared tableId and index offsets.
+- initialSortOrder.
+- disableSorting. Disables onClicks on table heads, only initialSortOrder is applied.
+
+## 1.0.0
 
 ### Changes
 
