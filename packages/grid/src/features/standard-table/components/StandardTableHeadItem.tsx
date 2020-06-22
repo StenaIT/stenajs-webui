@@ -4,6 +4,7 @@ import { tableBorder } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import { useTableSortHeader } from "../hooks/UseTableSortHeader";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -19,6 +20,8 @@ export const StandardTableHeadItem = React.memo(
       borderLeft,
       infoIconTooltipText
     } = useColumnFromConfig(columnId);
+    const { disableSorting } = useStandardTableConfig();
+
     const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
 
     const label =
@@ -28,8 +31,8 @@ export const StandardTableHeadItem = React.memo(
 
     return (
       <TableHeadItem
-        arrow={label ? arrow : undefined}
-        onClick={onClickColumnHead}
+        arrow={!disableSorting && label ? arrow : undefined}
+        onClick={!disableSorting ? onClickColumnHead : undefined}
         width={width}
         minWidth={width}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}

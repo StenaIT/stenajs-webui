@@ -10,7 +10,7 @@ import {
 import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import { Box, StandardText } from "@stenajs-webui/core";
+import { Box, Column, Spacing, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
   id: string;
@@ -135,6 +135,42 @@ storiesOf("grid/StandardTable", module)
     })
   )
   .add(
+    "with sorting disabled",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell(),
+        { disableSorting: true }
+      );
+      return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
+    "with sorting disabled and sort by name",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell(),
+        { disableSorting: true, initialSortOrder: "name" }
+      );
+      return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
+    "with sorting enabled and sort by name desc",
+    withState({ items })(({ store }) => {
+      const config = createConfig(
+        createOnChangeNumPassengers(store),
+        createStandardEditableTextCell(),
+        {
+          initialSortOrder: "name",
+          initialSortOrderDesc: true
+        }
+      );
+      return <StandardTable items={store.state.items} config={config} />;
+    })
+  )
+  .add(
     "with field error",
     withState({ items })(({ store }) => {
       const config = createConfig(
@@ -204,6 +240,27 @@ storiesOf("grid/StandardTable", module)
     })
   )
   .add("missing items", () => <StandardTable items={[]} config={config} />)
+  .add("navigation between tables", () => {
+    const config = createConfig(undefined, undefined, {
+      gridCellOptions: {
+        edgeMode: "unlimited"
+      }
+    });
+
+    return (
+      <Column>
+        <StandardTable items={items} config={config} tableId={"table123"} />
+        <Spacing />
+        <StandardTable
+          items={items}
+          config={config}
+          tableId={"table123"}
+          rowIndexOffset={items.length}
+        />
+        7
+      </Column>
+    );
+  })
   .add("loading", () => <StandardTable items={items} config={config} loading />)
   .add("error", () => (
     <StandardTable

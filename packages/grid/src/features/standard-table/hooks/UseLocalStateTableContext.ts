@@ -2,17 +2,19 @@ import { useMemo, useReducer } from "react";
 import { TableContext } from "../context/StandardTableStateContext";
 import { createStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
+  createStandardTableInitialState,
   createStandardTableReducer,
-  standardTableInitialState,
   StandardTableReducer
 } from "../redux/StandardTableReducer";
 
 export const useLocalStateTableContext = <TColumnKeys extends string>(
-  tableId: string
+  tableId: string,
+  initialSortOrder?: TColumnKeys,
+  initialSortOrderDesc?: boolean
 ) => {
   const [state, dispatch] = useReducer<StandardTableReducer<TColumnKeys>>(
     createStandardTableReducer<TColumnKeys>(tableId),
-    standardTableInitialState
+    createStandardTableInitialState(initialSortOrder, initialSortOrderDesc)
   );
 
   const actions = useMemo(

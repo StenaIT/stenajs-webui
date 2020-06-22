@@ -23,12 +23,14 @@ interface StandardTableItemProps<TItem> {
   item: TItem;
   rowIndex: number;
   numRows: number;
+  colIndexOffset: number;
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
   rowIndex,
-  numRows
+  numRows,
+  colIndexOffset
 }: StandardTableItemProps<TItem>) {
   const {
     columnOrder,
@@ -80,7 +82,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         )}
         {enableExpandCollapse && (
           <StandardTableRowExpandButton
-            colIndex={0}
+            colIndex={colIndexOffset}
             rowIndex={enableGridCell ? rowIndex : 0}
             numRows={enableGridCell ? numRows : 0}
             item={item}
@@ -91,21 +93,23 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
             disabled={disabled}
             value={isSelected}
             onValueChange={toggleSelected}
-            colIndex={showRowCheckbox ? 1 : 0}
-            rowIndex={enableGridCell ? rowIndex : 0}
-            numRows={enableGridCell ? numRows : 0}
+            colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
+            rowIndex={rowIndex}
+            numRows={numRows}
           />
         )}
         {columnOrder.map((columnId, index) => {
-          const colIndexOffset =
-            (showRowCheckbox ? 1 : 0) + (enableExpandCollapse ? 1 : 0);
+          const localColIndexOffset =
+            colIndexOffset +
+            (showRowCheckbox ? 1 : 0) +
+            (enableExpandCollapse ? 1 : 0);
           return (
             <StandardTableCell
               key={columnId}
               columnId={columnId}
               item={item}
-              colIndex={enableGridCell ? colIndexOffset + index : 0}
-              rowIndex={enableGridCell ? rowIndex : 0}
+              colIndex={localColIndexOffset + index}
+              rowIndex={rowIndex}
               numRows={numRows}
             />
           );
