@@ -2,7 +2,7 @@
 
 ## Next release
 
-- Coming soon...
+- Add support for center content in NavBar
 
 ## 1.0.1
 
