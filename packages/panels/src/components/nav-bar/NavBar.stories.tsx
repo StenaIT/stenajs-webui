@@ -1,7 +1,8 @@
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { Box, Row, StandardText } from "@stenajs-webui/core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
+import { Box, Clickable, Row, StandardText } from "@stenajs-webui/core";
 import { Icon, WithBadge } from "@stenajs-webui/elements";
 import { NavBar, NavBarButton, NavBarMenuButton } from "@stenajs-webui/panels";
 import { storiesOf } from "@storybook/react";
@@ -37,12 +38,19 @@ storiesOf("panels/NavBar", module)
                   rgba(255, 255, 255, 0.3);
                 --swui-field-border-color-hover: var(--lhds-color-ui-300);
                 --swui-field-text-color: var(--lhds-color-ui-50);
+                --swui-textinput-placeholder-color: var(--lhds-color-ui-50);
 
                 &:focus-within {
                   --swui-field-text-color: var(--swui-field-text-color);
                   --swui-textinput-bg-color: var(--lhds-color-ui-50);
                 }
               `}
+              placeholder={"Search..."}
+              contentRight={
+                <Clickable>
+                  <Icon icon={faSearch} />
+                </Clickable>
+              }
             />
           )}
         </ClassNames>
