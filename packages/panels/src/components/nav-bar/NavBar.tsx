@@ -1,46 +1,43 @@
-import { Box, Row, useThemeFields } from "@stenajs-webui/core";
+import { Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
-import { Indent } from "@stenajs-webui/core";
-import { defaultNavBarTheme, NavBarTheme } from "./NavBarTheme";
 
 export interface NavBarProps {
-  theme?: NavBarTheme;
   right?: ReactNode;
+  center?: ReactNode;
+  height?: number | string;
 }
 
 export const NavBar: React.FC<NavBarProps> = ({
-  theme = defaultNavBarTheme,
   children,
-  right
+  right,
+  center,
+  height = "50px"
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        backgroundColor: theme.backgroundColor
-      }
-    },
-    [theme]
-  );
   return (
-    <Box
-      width={"100%"}
-      height={theme.height}
-      background={colors.backgroundColor}
+    <Row
+      height={height}
+      background={
+        "var(--swui-navbar-background-color, var(--lhds-color-blue-800))"
+      }
+      flex={1}
+      indent={3}
     >
-      <Box
-        height={theme.height}
-        row
-        indent={3}
-        justifyContent={"space-between"}
-      >
-        <Row alignItems={"center"}>
+      <Row justifyContent={"center"} alignItems={"center"} flex={1}>
+        <Row style={{ marginRight: "auto" }}>
           {React.Children.map(children, child => (
             <Indent num={0.5}>{child}</Indent>
           ))}
         </Row>
-        <Row alignItems={"center"}>{right}</Row>
-      </Box>
-    </Box>
+      </Row>
+      {center && (
+        <Row justifyContent={"center"} alignItems={"center"} flex={1}>
+          {center}
+        </Row>
+      )}
+      <Row justifyContent={"center"} alignItems={"center"} flex={1}>
+        <Row style={{ marginLeft: "auto" }}>{right}</Row>
+      </Row>
+    </Row>
   );
 };
