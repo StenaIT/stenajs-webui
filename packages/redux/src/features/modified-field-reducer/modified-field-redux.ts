@@ -33,7 +33,10 @@ export type ModifiedFieldStateSelector<TStoreState> = (
   state: TStoreState
 ) => ModifiedFieldState;
 
-type ModifiedStateReducer = Reducer<ModifiedFieldState, ModifiedFieldAction>;
+export type ModifiedStateReducer = Reducer<
+  ModifiedFieldState,
+  ModifiedFieldAction
+>;
 
 export interface ModifiedFieldRedux<TStoreState> {
   reducer: ModifiedStateReducer;
