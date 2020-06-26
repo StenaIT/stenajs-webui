@@ -2,6 +2,19 @@
 
 This package contains utilities that can help create Redux features.
 
+## Higher order reducers
+
+### reducerIdGate
+
+Creates a reducer that requires action.reducerId to match specified reducerId.
+
+### recordObjectReducer
+
+Creates a reducer that applies the inner reducer to a `state[action.recordId]` instead
+of directly to `state`.
+
+## Reducer factories
+
 ### commit-reducer
 
 This reducer keeps a workspace state and a committed state.

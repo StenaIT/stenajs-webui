@@ -1,4 +1,4 @@
-import { EntityWithId } from "../../common/EntityWithId";
+import { EntityWithId } from "../../../common/EntityWithId";
 
 export type EntityByIdAction<T extends EntityWithId> =
   | EntityByIdSetEntityAction<T>

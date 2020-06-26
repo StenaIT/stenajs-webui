@@ -1,4 +1,4 @@
-import { EntityWithId } from "../../../common/EntityWithId";
+import { EntityWithId } from "../../../../common/EntityWithId";
 import { createEntityByIdActions } from "../entity-by-id-actions";
 import { createEntityByIdReducer } from "../entity-by-id-reducer";
 

@@ -1,4 +1,4 @@
-import { EntityWithId } from "../../common/EntityWithId";
+import { EntityWithId } from "../../../common/EntityWithId";
 import { EntityByIdState } from "./entity-by-id-reducer";
 
 export interface EntityByIdSelectors<
