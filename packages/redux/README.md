@@ -15,6 +15,10 @@ This reducer stores entities by id. Entities can be added, removed and updated.
 
 This reducer stores a single entity. It can be replaced and partially updated.
 
+### entity-list-reducer
+
+This reducer stores a list and provides actions for manipulating the items in the list.
+
 ### entity-crud-status-reducer
 
 This reducer uses entity-by-id-reducer to store information about current

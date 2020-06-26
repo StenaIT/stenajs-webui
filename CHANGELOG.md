@@ -2,6 +2,11 @@
 
 ## Next release
 
+## 1.0.2
+
+# New features
+
+- Add new generic reducer entity-list-reducer.
 - Add support for center content in NavBar
 
 ## 1.0.1
