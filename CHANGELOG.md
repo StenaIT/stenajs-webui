@@ -1,10 +1,16 @@
 # Changelog
 
+## Upcoming
+
 ## 1.0.3
 
 ### New features
 
 - Add higher order reducers `recordObjectReducer` and `reducerIdGate`.
+
+### Bug fixes
+
+- NavBar in a Column would expand the NavBar to be higher than 50px.
 
 ## 1.0.2
 
