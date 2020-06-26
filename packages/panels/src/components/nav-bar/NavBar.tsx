@@ -20,11 +20,10 @@ export const NavBar: React.FC<NavBarProps> = ({
       background={
         "var(--swui-navbar-background-color, var(--lhds-color-blue-800))"
       }
-      flex={1}
       indent={3}
     >
       <Row justifyContent={"center"} alignItems={"center"} flex={1}>
-        <Row style={{ marginRight: "auto" }}>
+        <Row style={{ marginRight: "auto" }} alignItems={"center"}>
           {React.Children.map(children, child => (
             <Indent num={0.5}>{child}</Indent>
           ))}

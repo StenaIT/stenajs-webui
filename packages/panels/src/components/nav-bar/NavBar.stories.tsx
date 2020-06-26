@@ -2,7 +2,14 @@ import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
-import { Box, Clickable, Row, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  Clickable,
+  Column,
+  LargeText,
+  Row,
+  StandardText
+} from "@stenajs-webui/core";
 import { Icon, WithBadge } from "@stenajs-webui/elements";
 import { NavBar, NavBarButton, NavBarMenuButton } from "@stenajs-webui/panels";
 import { storiesOf } from "@storybook/react";
@@ -19,11 +26,13 @@ storiesOf("panels/NavBar", module)
     </NavBar>
   ))
   .add("with icons", () => (
-    <NavBar>
-      <NavBarButton label={"Customers"} leftIcon={faFire} selected />
-      <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
-      <NavBarButton label={"Events"} leftIcon={faAddressCard} />
-    </NavBar>
+    <Column height={"500px"}>
+      <NavBar>
+        <NavBarButton label={"Customers"} leftIcon={faFire} selected />
+        <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
+        <NavBarButton label={"Events"} leftIcon={faAddressCard} />
+      </NavBar>
+    </Column>
   ))
   .add("with buttons and centered content", () => (
     <NavBar
@@ -74,6 +83,21 @@ storiesOf("panels/NavBar", module)
       <NavBarButton label={"Bookings"} />
       <NavBarButton label={"Events"} />
     </NavBar>
+  ))
+  .add("with title to left", () => (
+    <Column height={"500px"}>
+      <NavBar
+        height={100}
+        right={
+          <Row>
+            <NavBarButton label={"Profile"} selected />
+            <NavBarButton label={"Settings"} />
+          </Row>
+        }
+      >
+        <LargeText color={"#fff"}>NavBar Title</LargeText>
+      </NavBar>
+    </Column>
   ))
   .add("with right icon", () => (
     <NavBar right={<Icon icon={faFire} />}>
