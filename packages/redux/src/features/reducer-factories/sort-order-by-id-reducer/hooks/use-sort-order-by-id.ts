@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { EntityWithId } from "../../../common/EntityWithId";
+import { EntityWithId } from "../../../../common/EntityWithId";
 import { SortOrderByIdState } from "../sort-order-by-id-reducer";
 
 export const useSortOrderById = <TItem extends EntityWithId>(

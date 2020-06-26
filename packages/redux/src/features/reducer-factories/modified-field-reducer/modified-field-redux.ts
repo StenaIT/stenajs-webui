@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { EntityWithId } from "../../common/EntityWithId";
+import { EntityWithId } from "../../../common/EntityWithId";
 import {
   createEntityByIdActions,
   EntityByIdAction,

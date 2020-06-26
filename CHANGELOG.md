@@ -1,10 +1,14 @@
 # Changelog
 
-## Next release
+## 1.0.3
+
+### New features
+
+- Add higher order reducers `recordObjectReducer` and `reducerIdGate`.
 
 ## 1.0.2
 
-# New features
+### New features
 
 - Add new generic reducer entity-list-reducer.
 - Add support for center content in NavBar

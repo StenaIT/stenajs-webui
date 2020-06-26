@@ -1,4 +1,4 @@
-import { EntityWithId } from "../../common/EntityWithId";
+import { EntityWithId } from "../../../common/EntityWithId";
 import { EntityByIdAction } from "./entity-by-id-actions";
 
 export interface EntityByIdState<T extends EntityWithId> {
