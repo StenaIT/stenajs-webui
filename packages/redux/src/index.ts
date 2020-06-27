@@ -42,3 +42,4 @@ export * from "./features/reducer-factories/sort-order-reducer/sort-order-reduce
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-actions";
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-action-creators";
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-selectors";
+export { RecordObjectKey } from "./features/higher-order-reducers/record-object-reducer/record-object-actions";

@@ -1,14 +1,14 @@
-import { createEntityActions } from "../entity-actions";
+import { createEntityActions } from "../entity-action-creators";
 import { createEntityReducer } from "../entity-reducer";
 
-interface Entity {
+interface TestUser {
   username: string;
   email?: string;
 }
 
 describe("entity-reducer", () => {
-  const reduce = createEntityReducer<Entity>({ username: "mat" });
-  const actions = createEntityActions<Entity>();
+  const reduce = createEntityReducer<TestUser>({ username: "mat" });
+  const actions = createEntityActions<TestUser>();
 
   describe("setEntity", () => {
     it("overwrites the entity", () => {
