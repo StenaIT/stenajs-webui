@@ -14,24 +14,26 @@ describe("entity-reducer", () => {
     it("overwrites the entity", () => {
       const s = reduce(
         {
-          entity: { username: "lolo", email: "hejsan" }
+          username: "lolo",
+          email: "hejsan"
         },
         actions.setEntity({ username: "lala" })
       );
-      expect(s.entity.username).toBe("lala");
-      expect(s.entity.email).toBeUndefined();
+      expect(s.username).toBe("lala");
+      expect(s.email).toBeUndefined();
     });
   });
   describe("setEntityFields", () => {
     it("it merges the the new entity into the old entity", () => {
       const s = reduce(
         {
-          entity: { username: "lolo", email: "hejsan" }
+          username: "lolo",
+          email: "hejsan"
         },
         actions.setEntityFields({ username: "lala" })
       );
-      expect(s.entity.username).toBe("lala");
-      expect(s.entity.email).toBe("hejsan");
+      expect(s.username).toBe("lala");
+      expect(s.email).toBe("hejsan");
     });
   });
 });

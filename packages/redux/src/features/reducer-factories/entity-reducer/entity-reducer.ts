@@ -1,11 +1,9 @@
 import { EntityAction } from "./entity-actions";
 
-export interface EntityState<T> {
-  entity: T;
-}
+export type EntityState<T> = T;
 
 export const createEntityReducer = <T>(initialEntity: T) => {
-  const INITIAL_STATE = { entity: initialEntity };
+  const INITIAL_STATE = initialEntity;
 
   return (
     state: EntityState<T> = INITIAL_STATE,
@@ -14,20 +12,14 @@ export const createEntityReducer = <T>(initialEntity: T) => {
     switch (action.type) {
       case "ENTITY:SET_ENTITY": {
         const { entity } = action;
-        return {
-          ...state,
-          entity
-        };
+        return entity;
       }
 
       case "ENTITY:SET_ENTITY_FIELDS": {
         const { fields } = action;
         return {
           ...state,
-          entity: {
-            ...state.entity,
-            ...fields
-          }
+          ...fields
         };
       }
 

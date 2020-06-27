@@ -35,7 +35,7 @@ describe("record-object-reducer", () => {
           )
         );
 
-        expect(r.id1.entity.email).toBe("johan");
+        expect(r.id1.email).toBe("johan");
       });
     });
     describe("clearRecord", () => {
@@ -48,7 +48,7 @@ describe("record-object-reducer", () => {
           )
         );
 
-        expect(r.id1.entity.email).toBe("johan");
+        expect(r.id1.email).toBe("johan");
 
         const s = reducer(r, actions.clearRecord("id1"));
         expect(s.id1).toBe(undefined);
@@ -72,7 +72,7 @@ describe("record-object-reducer", () => {
           )
         );
         expect(Object.keys(r).length).toBe(2);
-        expect(r.id1.entity.email).toBe("johan");
+        expect(r.id1.email).toBe("johan");
         r = reducer(r, actions.clearAllRecords());
         expect(Object.keys(r).length).toBe(0);
       });
