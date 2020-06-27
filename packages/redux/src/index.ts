@@ -9,10 +9,10 @@ export * from "./features/reducer-factories/commit-reducer/reducer";
 export * from "./features/reducer-factories/commit-reducer/selectors";
 export * from "./features/reducer-factories/commit-reducer/state";
 
-export * from "./features/reducer-factories/entity-list-reducer/entity-list-actions";
-export * from "./features/reducer-factories/entity-list-reducer/entity-list-action-creators";
-export * from "./features/reducer-factories/entity-list-reducer/entity-list-reducer";
-export * from "./features/reducer-factories/entity-list-reducer/entity-list-selectors";
+export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-actions";
+export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-action-creators";
+export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-reducer";
+export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-selectors";
 
 export * from "./features/reducer-factories/entity-by-id-reducer/entity-by-id-reducer";
 export * from "./features/reducer-factories/entity-by-id-reducer/entity-by-id-actions";

@@ -1,4 +1,6 @@
 import {
+  EntityListActionByFieldsMatchAction,
+  EntityListActionByIndexAction,
   EntityListAddAtEndAction,
   EntityListAddAtStartAction,
   EntityListClearListAction,
@@ -11,7 +13,7 @@ import {
   EntityListToggleAction
 } from "./entity-list-actions";
 
-export interface EntityListActions<T> {
+export interface EntityListActions<T, TInnerAction> {
   addAtEnd: (entity: T) => EntityListAddAtEndAction<T>;
   addAtStart: (entity: T) => EntityListAddAtStartAction<T>;
   clearList: () => EntityListClearListAction;
@@ -24,9 +26,20 @@ export interface EntityListActions<T> {
   remove: (entity: T) => EntityListRemoveAction<T>;
   setList: (list: Array<T>) => EntityListSetListAction<T>;
   toggle: (entity: T) => EntityListToggleAction<T>;
+  actionByFieldsMatch: (
+    fields: Partial<T>,
+    action: TInnerAction
+  ) => EntityListActionByFieldsMatchAction<T, TInnerAction>;
+  actionByIndex: (
+    index: number,
+    action: TInnerAction
+  ) => EntityListActionByIndexAction<TInnerAction>;
 }
 
-export const createEntityListActions = <T>(): EntityListActions<T> => {
+export const createEntityListActions = <
+  T,
+  TInnerAction = unknown
+>(): EntityListActions<T, TInnerAction> => {
   return {
     addAtEnd: entity => ({ type: "ENTITY_LIST:ADD_AT_END", entity }),
     addAtStart: entity => ({
@@ -46,6 +59,16 @@ export const createEntityListActions = <T>(): EntityListActions<T> => {
     }),
     remove: entity => ({ type: "ENTITY_LIST:REMOVE", entity }),
     setList: list => ({ type: "ENTITY_LIST:SET_LIST", list }),
-    toggle: entity => ({ type: "ENTITY_LIST:TOGGLE", entity })
+    toggle: entity => ({ type: "ENTITY_LIST:TOGGLE", entity }),
+    actionByFieldsMatch: (fields, action) => ({
+      type: "ENTITY_LIST:ACTION_BY_FIELDS_MATCH",
+      fields,
+      action
+    }),
+    actionByIndex: (index, action) => ({
+      type: "ENTITY_LIST:ACTION_BY_INDEX",
+      index,
+      action
+    })
   };
 };

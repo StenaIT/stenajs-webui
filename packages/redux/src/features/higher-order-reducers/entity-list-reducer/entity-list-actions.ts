@@ -1,4 +1,4 @@
-export type EntityListAction<T> =
+export type EntityListAction<T, TInnerAction> =
   | EntityListSetListAction<T>
   | EntityListAddAtEndAction<T>
   | EntityListAddAtStartAction<T>
@@ -8,7 +8,9 @@ export type EntityListAction<T> =
   | EntityListRemoveAtIndexAction
   | EntityListRemoveByFieldMatchAction<T>
   | EntityListRemoveAction<T>
-  | EntityListToggleAction<T>;
+  | EntityListToggleAction<T>
+  | EntityListActionByFieldsMatchAction<T, TInnerAction>
+  | EntityListActionByIndexAction<TInnerAction>;
 
 export interface EntityListSetListAction<T> {
   type: "ENTITY_LIST:SET_LIST";
@@ -55,4 +57,16 @@ export interface EntityListRemoveAction<T> {
 export interface EntityListToggleAction<T> {
   type: "ENTITY_LIST:TOGGLE";
   entity: T;
+}
+
+export interface EntityListActionByFieldsMatchAction<T, TInnerAction> {
+  type: "ENTITY_LIST:ACTION_BY_FIELDS_MATCH";
+  fields: Partial<T>;
+  action: TInnerAction;
+}
+
+export interface EntityListActionByIndexAction<TInnerAction> {
+  type: "ENTITY_LIST:ACTION_BY_INDEX";
+  index: number;
+  action: TInnerAction;
 }

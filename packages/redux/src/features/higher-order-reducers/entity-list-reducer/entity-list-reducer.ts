@@ -1,12 +1,15 @@
 import { EntityListAction } from "./entity-list-actions";
-import { fieldsMatch } from "./field-matcher";
+import { fieldsMatch } from "../../../common/util/field-matcher";
+import { Reducer } from "react";
 
-export type EntityListState<T> = Array<T>;
+export type EntityListState<TListItem> = Array<TListItem>;
 
-export const createEntityListReducer = <T>() => (
-  state: EntityListState<T> = [],
-  action: EntityListAction<T>
-): EntityListState<T> => {
+export const createEntityListReducer = <TListItem, TListItemAction = unknown>(
+  reducer?: Reducer<TListItem, TListItemAction>
+) => (
+  state: EntityListState<TListItem> = [],
+  action: EntityListAction<TListItem, TListItemAction>
+): EntityListState<TListItem> => {
   switch (action.type) {
     case "ENTITY_LIST:SET_LIST": {
       const { list } = action;
@@ -77,6 +80,26 @@ export const createEntityListReducer = <T>() => (
       } else {
         return [...state, entity];
       }
+    }
+
+    case "ENTITY_LIST:ACTION_BY_FIELDS_MATCH": {
+      const { fields, action: innerAction } = action;
+      if (!reducer) {
+        throw "No reducer specified, unable to handle 'actionByFieldsMatch'.";
+      }
+      return state.map(item =>
+        fieldsMatch(item, fields) ? reducer(item, innerAction) : item
+      );
+    }
+
+    case "ENTITY_LIST:ACTION_BY_INDEX": {
+      const { index, action: innerAction } = action;
+      if (!reducer) {
+        throw "No reducer specified, unable to handle 'actionByIndex'.";
+      }
+      return state.map((item, i) =>
+        index === i ? reducer(item, innerAction) : item
+      );
     }
 
     default:
