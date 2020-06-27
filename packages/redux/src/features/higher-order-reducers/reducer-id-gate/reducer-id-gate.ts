@@ -5,14 +5,15 @@ export interface ReducerIdGateAction<TInnerAction> {
   action: TInnerAction;
 }
 
-export const reducerIdGate = <
+export type ReducerIdGateReducer<TState, TInnerAction> = Reducer<
   TState,
-  TInnerAction,
-  TOuterAction extends ReducerIdGateAction<TInnerAction>
->(
+  ReducerIdGateAction<TInnerAction>
+>;
+
+export const reducerIdGate = <TState, TInnerAction>(
   reducerId: string,
   reducer: Reducer<TState, TInnerAction>
-): Reducer<TState, TOuterAction> => (state, action) => {
+): ReducerIdGateReducer<TState, TInnerAction> => (state, action) => {
   if (reducerId !== action.reducerId) {
     return state;
   }

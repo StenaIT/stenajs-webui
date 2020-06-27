@@ -17,10 +17,7 @@ export const useLocalStateTableContext = <TColumnKeys extends string>(
     createStandardTableInitialState(initialSortOrder, initialSortOrderDesc)
   );
 
-  const actions = useMemo(
-    () => createStandardTableActions<TColumnKeys>(tableId),
-    [tableId]
-  );
+  const actions = useMemo(() => createStandardTableActions<TColumnKeys>(), []);
 
   const tableContext = useMemo<TableContext<TColumnKeys>>(
     () => ({

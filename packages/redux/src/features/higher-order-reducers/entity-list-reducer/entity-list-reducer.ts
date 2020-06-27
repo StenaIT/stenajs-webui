@@ -85,7 +85,9 @@ export const createEntityListReducer = <TListItem, TListItemAction = unknown>(
     case "ENTITY_LIST:ACTION_BY_FIELDS_MATCH": {
       const { fields, action: innerAction } = action;
       if (!reducer) {
-        throw "No reducer specified, unable to handle 'actionByFieldsMatch'.";
+        throw new Error(
+          "No reducer specified, unable to handle 'actionByFieldsMatch'."
+        );
       }
       return state.map(item =>
         fieldsMatch(item, fields) ? reducer(item, innerAction) : item
@@ -95,7 +97,9 @@ export const createEntityListReducer = <TListItem, TListItemAction = unknown>(
     case "ENTITY_LIST:ACTION_BY_INDEX": {
       const { index, action: innerAction } = action;
       if (!reducer) {
-        throw "No reducer specified, unable to handle 'actionByIndex'.";
+        throw new Error(
+          "No reducer specified, unable to handle 'actionByIndex'."
+        );
       }
       return state.map((item, i) =>
         index === i ? reducer(item, innerAction) : item
