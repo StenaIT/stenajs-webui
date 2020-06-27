@@ -120,7 +120,7 @@ describe("entity-list-reducer", () => {
       });
     });
     describe("addAtStart", () => {
-      it("adds entity at end", () => {
+      it("adds entity at start of list", () => {
         const r = reducer(
           [{ a: "a1", b: "b1" }],
           addAtStart({ a: "a2", b: "b2" })
@@ -131,7 +131,7 @@ describe("entity-list-reducer", () => {
       });
     });
     describe("addAtEnd", () => {
-      it("adds entity at beginning", () => {
+      it("adds entity at end of list", () => {
         const r = reducer(
           [{ a: "a1", b: "b1" }],
           addAtEnd({ a: "a2", b: "b2" })
