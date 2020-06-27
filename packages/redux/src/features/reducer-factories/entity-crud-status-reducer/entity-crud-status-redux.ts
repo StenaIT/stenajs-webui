@@ -1,9 +1,5 @@
 import { Reducer } from "redux";
-import {
-  createEntityByIdActions,
-  EntityByIdAction,
-  EntityByIdActions
-} from "../entity-by-id-reducer/entity-by-id-actions";
+import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdReducer,
   EntityByIdState
@@ -13,6 +9,10 @@ import {
   EntityByIdSelectors,
   EntityByIdStateSelector
 } from "../entity-by-id-reducer/entity-by-id-selectors";
+import {
+  createEntityByIdActions,
+  EntityByIdActions
+} from "../entity-by-id-reducer/entity-by-id-action-creators";
 
 export interface EntityCrudStatus extends CrudStatus {
   id: string;

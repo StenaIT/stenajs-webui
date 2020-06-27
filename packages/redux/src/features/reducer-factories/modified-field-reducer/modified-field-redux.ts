@@ -1,10 +1,10 @@
 import { Reducer } from "redux";
 import { EntityWithId } from "../../../common/EntityWithId";
+import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdActions,
-  EntityByIdAction,
   EntityByIdActions
-} from "../entity-by-id-reducer/entity-by-id-actions";
+} from "../entity-by-id-reducer/entity-by-id-action-creators";
 import {
   createEntityByIdReducer,
   EntityByIdState
