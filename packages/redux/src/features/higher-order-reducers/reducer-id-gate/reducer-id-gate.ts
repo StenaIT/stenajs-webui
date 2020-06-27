@@ -18,3 +18,8 @@ export const reducerIdGate = <
   }
   return reducer(state, action.action);
 };
+
+export const reducerIdGateAction = <TInnerAction>(
+  reducerId: string,
+  action: TInnerAction
+): ReducerIdGateAction<TInnerAction> => ({ action, reducerId });

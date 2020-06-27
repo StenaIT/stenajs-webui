@@ -18,3 +18,8 @@ export const recordObjectReducer = <
   ...state,
   [recordId]: reducer(state[recordId], action)
 });
+
+export const recordObjectAction = <TInnerAction>(
+  recordId: RecordObjectKey,
+  action: TInnerAction
+): RecordObjectAction<TInnerAction> => ({ action, recordId });
