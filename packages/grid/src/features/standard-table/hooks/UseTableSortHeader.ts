@@ -5,6 +5,7 @@ import {
   useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
+import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 interface Result {
   selected: boolean;
@@ -29,12 +30,12 @@ export const useTableSortHeader = (columnId: string): Result => {
       onClickColumnHead: () => {
         if (selected) {
           dispatch({
-            reducerId: tableId,
+            reducerId: getReducerIdFor(tableId, "sortOrder"),
             action: actions.sortOrder.sortBy(columnId, !desc)
           });
         } else {
           dispatch({
-            reducerId: tableId,
+            reducerId: getReducerIdFor(tableId, "sortOrder"),
             action: actions.sortOrder.sortBy(columnId, false)
           });
         }

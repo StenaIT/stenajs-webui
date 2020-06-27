@@ -3,6 +3,7 @@ import {
   useStandardTableActions,
   useStandardTableId
 } from "./UseStandardTableConfig";
+import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useTableResetWhenNewData = <TItem>(
   items: Array<TItem> | undefined
@@ -16,6 +17,9 @@ export const useTableResetWhenNewData = <TItem>(
   } = useStandardTableActions();
 
   useEffect(() => {
-    dispatch({ reducerId: tableId, action: clearSelectedIds() });
+    dispatch({
+      reducerId: getReducerIdFor(tableId, "selectedIds"),
+      action: clearSelectedIds()
+    });
   }, [items, dispatch, clearSelectedIds, tableId]);
 };

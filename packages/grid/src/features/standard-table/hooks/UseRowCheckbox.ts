@@ -6,6 +6,7 @@ import {
   useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
+import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useRowCheckbox = <TItem>(item: TItem) => {
   const { keyResolver } = useStandardTableConfig();
@@ -28,7 +29,10 @@ export const useRowCheckbox = <TItem>(item: TItem) => {
   ]);
 
   const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
-    dispatch({ reducerId: tableId, action: setSelectedIds(ids) })
+    dispatch({
+      reducerId: getReducerIdFor(tableId, "selectedIds"),
+      action: setSelectedIds(ids)
+    })
   );
 
   const toggleSelected = useCallback(() => {

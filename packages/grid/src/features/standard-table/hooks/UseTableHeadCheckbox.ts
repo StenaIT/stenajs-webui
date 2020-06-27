@@ -5,6 +5,7 @@ import {
   useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
+import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
@@ -28,10 +29,13 @@ export const useTableHeadCheckbox = <TItem>(
   const onClickCheckbox = useCallback(() => {
     if (items) {
       if (allItemsAreSelected) {
-        dispatch({ reducerId: tableId, action: clearSelectedIds() });
+        dispatch({
+          reducerId: getReducerIdFor(tableId, "selectedIds"),
+          action: clearSelectedIds()
+        });
       } else {
         dispatch({
-          reducerId: tableId,
+          reducerId: getReducerIdFor(tableId, "selectedIds"),
           action: setSelectedIds(items.map(item => keyResolver(item)))
         });
       }
