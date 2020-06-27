@@ -1,5 +1,5 @@
 import { recordObjectReducer } from "../record-object-reducer";
-import { createEntityReducer } from "../../../reducer-factories/entity-reducer/entity-reducer";
+import { createEntityReducer } from "../../../reducer-factories-with-reducer-id/entity-reducer/entity-reducer";
 
 describe("record-object-reducer", () => {
   describe("recordObjectReducer", () => {

@@ -9,13 +9,10 @@ const INITIAL_STATE = {
   list: []
 };
 
-export const createEntityListReducer = <T>(reducerId: string) => (
+export const createEntityListReducer = <T>() => (
   state: EntityListState<T> = INITIAL_STATE,
   action: EntityListAction<T>
 ): EntityListState<T> => {
-  if (action.reducerId !== reducerId) {
-    return state;
-  }
   switch (action.type) {
     case "ENTITY_LIST:SET_LIST": {
       const { list } = action;

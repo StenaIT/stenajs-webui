@@ -26,31 +26,26 @@ export interface EntityListActions<T> {
   toggle: (entity: T) => EntityListToggleAction<T>;
 }
 
-export const createEntityListActions = <T>(
-  reducerId: string
-): EntityListActions<T> => {
+export const createEntityListActions = <T>(): EntityListActions<T> => {
   return {
-    addAtEnd: entity => ({ type: "ENTITY_LIST:ADD_AT_END", reducerId, entity }),
+    addAtEnd: entity => ({ type: "ENTITY_LIST:ADD_AT_END", entity }),
     addAtStart: entity => ({
       entity,
-      reducerId,
       type: "ENTITY_LIST:ADD_AT_START"
     }),
-    clearList: () => ({ type: "ENTITY_LIST:CLEAR_LIST", reducerId }),
-    removeFirst: () => ({ type: "ENTITY_LIST:REMOVE_FIRST", reducerId }),
-    removeLast: () => ({ type: "ENTITY_LIST:REMOVE_LAST", reducerId }),
+    clearList: () => ({ type: "ENTITY_LIST:CLEAR_LIST" }),
+    removeFirst: () => ({ type: "ENTITY_LIST:REMOVE_FIRST" }),
+    removeLast: () => ({ type: "ENTITY_LIST:REMOVE_LAST" }),
     removeAtIndex: index => ({
       type: "ENTITY_LIST:REMOVE_AT_INDEX",
-      index,
-      reducerId
+      index
     }),
     removeByFieldMatch: fields => ({
       type: "ENTITY_LIST:REMOVE_BY_FIELD_MATCH",
-      fields,
-      reducerId
+      fields
     }),
-    remove: entity => ({ type: "ENTITY_LIST:REMOVE", reducerId, entity }),
-    setList: list => ({ type: "ENTITY_LIST:SET_LIST", reducerId, list }),
-    toggle: entity => ({ type: "ENTITY_LIST:TOGGLE", reducerId, entity })
+    remove: entity => ({ type: "ENTITY_LIST:REMOVE", entity }),
+    setList: list => ({ type: "ENTITY_LIST:SET_LIST", list }),
+    toggle: entity => ({ type: "ENTITY_LIST:TOGGLE", entity })
   };
 };
