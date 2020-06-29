@@ -1,10 +1,10 @@
 import { Reducer } from "redux";
 import { EntityWithId } from "../../../common/EntityWithId";
+import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdActions,
-  EntityByIdAction,
   EntityByIdActions
-} from "../entity-by-id-reducer/entity-by-id-actions";
+} from "../entity-by-id-reducer/entity-by-id-action-creators";
 import {
   createEntityByIdReducer,
   EntityByIdState
@@ -45,17 +45,16 @@ export interface ModifiedFieldRedux<TStoreState> {
 }
 
 export const createModifiedFieldRedux = <TStoreState>(
-  reducerId: string,
   stateSelector: ModifiedFieldStateSelector<TStoreState>
 ): ModifiedFieldRedux<TStoreState> => {
-  const reducer = createEntityByIdReducer<ModifiedFieldItemState>(reducerId);
+  const reducer = createEntityByIdReducer<ModifiedFieldItemState>();
 
   const selectors: ModifiedFieldsSelectors<TStoreState> = createEntityByIdSelectors<
     TStoreState,
     ModifiedFieldItemState
   >(stateSelector);
 
-  const actions = createEntityByIdActions<ModifiedFieldItemState>(reducerId);
+  const actions = createEntityByIdActions<ModifiedFieldItemState>();
 
   return {
     reducer,

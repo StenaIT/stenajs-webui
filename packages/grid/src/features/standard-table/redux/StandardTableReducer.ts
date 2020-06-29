@@ -3,10 +3,11 @@ import {
   createSelectedIdsReducerInitialState,
   createSortOrderReducer,
   createSortOrderReducerInitialState,
+  reducerIdGate,
+  ReducerIdGateReducer,
   SelectedIdsState,
   SortOrderState
 } from "@stenajs-webui/redux";
-import { combineReducers, Reducer } from "redux";
 import { StandardTableAction } from "./StandardTableActionsAndSelectors";
 import { getReducerIdFor } from "./ReducerIdFactory";
 
@@ -25,7 +26,9 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
   expandedRows: createSelectedIdsReducerInitialState()
 });
 
-export type StandardTableReducer<TColumnKey extends string> = Reducer<
+export type StandardTableReducer<
+  TColumnKey extends string
+> = ReducerIdGateReducer<
   StandardTableState<TColumnKey>,
   StandardTableAction<TColumnKey>
 >;
@@ -33,19 +36,25 @@ export type StandardTableReducer<TColumnKey extends string> = Reducer<
 export const createStandardTableReducer = <TColumnKey extends string>(
   reducerId: string
 ): StandardTableReducer<TColumnKey> => {
-  const sortOrder = createSortOrderReducer<TColumnKey>(
-    getReducerIdFor(reducerId, "sortOrder")
+  const sortOrder = reducerIdGate(
+    getReducerIdFor(reducerId, "sortOrder"),
+    createSortOrderReducer<TColumnKey>()
   );
-  const selectedIds = createSelectedIdsReducer(
-    getReducerIdFor(reducerId, "selectedIds")
+  const selectedIds = reducerIdGate(
+    getReducerIdFor(reducerId, "selectedIds"),
+    createSelectedIdsReducer()
   );
-  const expandedRows = createSelectedIdsReducer(
-    getReducerIdFor(reducerId, "expandedRows")
+  const expandedRows = reducerIdGate(
+    getReducerIdFor(reducerId, "expandedRows"),
+    createSelectedIdsReducer()
   );
 
-  return combineReducers({
-    sortOrder,
-    selectedIds,
-    expandedRows
-  });
+  return (state, action) => {
+    return {
+      ...state,
+      sortOrder: sortOrder(state.sortOrder, action as any),
+      selectedIds: selectedIds(state.selectedIds, action as any),
+      expandedRows: expandedRows(state.expandedRows, action as any)
+    };
+  };
 };

@@ -1,12 +1,15 @@
 import {
   useStandardTableActions,
   useStandardTableConfig,
+  useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
 import { useCallback, useMemo } from "react";
 import { useArraySet } from "@stenajs-webui/core";
+import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useExpandCollapseActions = <TItem>(item: TItem) => {
+  const tableId = useStandardTableId();
   const { keyResolver } = useStandardTableConfig();
   const {
     expandedRows: { selectedIds }
@@ -26,7 +29,10 @@ export const useExpandCollapseActions = <TItem>(item: TItem) => {
   ]);
 
   const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
-    dispatch(setSelectedIds(ids))
+    dispatch({
+      reducerId: getReducerIdFor(tableId, "expandedRows"),
+      action: setSelectedIds(ids)
+    })
   );
 
   const toggleRowExpanded = useCallback(() => {

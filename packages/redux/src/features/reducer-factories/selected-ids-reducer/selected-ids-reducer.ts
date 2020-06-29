@@ -13,12 +13,10 @@ const INITIAL_STATE = createSelectedIdsReducerInitialState();
 
 export type SelectedIdsReducer = Reducer<SelectedIdsState, SelectedIdsAction>;
 
-export const createSelectedIdsReducer = (
-  reducerId: string
-): SelectedIdsReducer => (state = INITIAL_STATE, action) => {
-  if (action.reducerId !== reducerId) {
-    return state;
-  }
+export const createSelectedIdsReducer = (): SelectedIdsReducer => (
+  state = INITIAL_STATE,
+  action
+) => {
   switch (action.type) {
     case "SELECTED_IDS:SET_SELECTED_IDS": {
       const { selectedIds } = action;
@@ -37,3 +35,5 @@ export const createSelectedIdsReducer = (
       return state;
   }
 };
+
+export const selectedIdsReducer = createSelectedIdsReducer();

@@ -5,11 +5,12 @@ import {
   StandardTableActions
 } from "../redux/StandardTableActionsAndSelectors";
 import { StandardTableState } from "../redux/StandardTableReducer";
+import { ReducerIdGateAction } from "@stenajs-webui/redux";
 
 export interface StandardTableInternalActionsContext<
   TColumnKeys extends string
 > {
-  dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
+  dispatch: Dispatch<ReducerIdGateAction<StandardTableAction<TColumnKeys>>>;
   actions: StandardTableActions<TColumnKeys>;
 }
 
@@ -18,7 +19,7 @@ export interface StandardTableInternalActionsContext<
  * connect the table to a state.
  */
 export interface TableContext<TColumnKeys extends string> {
-  dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
+  dispatch: Dispatch<ReducerIdGateAction<StandardTableAction<TColumnKeys>>>;
   state: StandardTableState<TColumnKeys>;
   actions: StandardTableActions<TColumnKeys>;
 }

@@ -1,5 +1,5 @@
 import { EntityWithId } from "../../../../common/EntityWithId";
-import { createEntityByIdActions } from "../entity-by-id-actions";
+import { createEntityByIdActions } from "../entity-by-id-action-creators";
 import { createEntityByIdReducer } from "../entity-by-id-reducer";
 
 interface Entity extends EntityWithId {
@@ -9,8 +9,8 @@ interface Entity extends EntityWithId {
 }
 
 describe("entity-by-id-reducer", () => {
-  const reduce = createEntityByIdReducer<Entity>("test");
-  const actions = createEntityByIdActions<Entity>("test");
+  const reduce = createEntityByIdReducer<Entity>();
+  const actions = createEntityByIdActions<Entity>();
 
   describe("setEntity", () => {
     describe("when entity does not exist", () => {

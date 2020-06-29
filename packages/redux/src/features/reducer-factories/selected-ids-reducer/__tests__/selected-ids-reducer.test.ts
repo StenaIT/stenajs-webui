@@ -1,25 +1,22 @@
-import { createSelectedIdsActions } from "../selected-ids-actions";
-import { createSelectedIdsReducer } from "../selected-ids-reducer";
+import { selectedIdsActions } from "../selected-ids-action-creators";
+import { selectedIdsReducer } from "../selected-ids-reducer";
 
 describe("selected-ids-reducer", () => {
-  const reduce = createSelectedIdsReducer("test");
-  const actions = createSelectedIdsActions("test");
-
   describe("setSelectedIds", () => {
     describe("there are no selected ids", () => {
       it("sets the selected ids", () => {
-        const s = reduce(
+        const s = selectedIdsReducer(
           { selectedIds: [] },
-          actions.setSelectedIds(["1", "2"])
+          selectedIdsActions.setSelectedIds(["1", "2"])
         );
         expect(s.selectedIds).toStrictEqual(["1", "2"]);
       });
     });
     describe("there are selected ids", () => {
       it("replaces the old selection with the new", () => {
-        const s = reduce(
+        const s = selectedIdsReducer(
           { selectedIds: ["3", "4"] },
-          actions.setSelectedIds(["1", "2"])
+          selectedIdsActions.setSelectedIds(["1", "2"])
         );
         expect(s.selectedIds).toStrictEqual(["1", "2"]);
       });
@@ -27,7 +24,10 @@ describe("selected-ids-reducer", () => {
   });
   describe("clearSelectedIds", () => {
     it("clears the selected ids", () => {
-      const s = reduce({ selectedIds: ["1", "2"] }, actions.clearSelectedIds());
+      const s = selectedIdsReducer(
+        { selectedIds: ["1", "2"] },
+        selectedIdsActions.clearSelectedIds()
+      );
       expect(s.selectedIds).toStrictEqual([]);
     });
   });

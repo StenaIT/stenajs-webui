@@ -8,13 +8,10 @@ const INITIAL_STATE: SortOrderByIdState = {
   ids: undefined
 };
 
-export const createSortOrderByIdReducer = (reducerId: string) => (
+export const createSortOrderByIdReducer = () => (
   state: SortOrderByIdState = INITIAL_STATE,
   action: SortOrderByIdAction
 ): SortOrderByIdState => {
-  if (action.reducerId !== reducerId) {
-    return state;
-  }
   switch (action.type) {
     case "SORT_ORDER_BY_ID:SET_SORT_ORDER":
       return {
@@ -32,3 +29,5 @@ export const createSortOrderByIdReducer = (reducerId: string) => (
       return state;
   }
 };
+
+export const sortOrderByIdReducer = createSortOrderByIdReducer();

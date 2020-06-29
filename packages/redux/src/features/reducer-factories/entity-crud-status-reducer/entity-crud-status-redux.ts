@@ -1,9 +1,5 @@
 import { Reducer } from "redux";
-import {
-  createEntityByIdActions,
-  EntityByIdAction,
-  EntityByIdActions
-} from "../entity-by-id-reducer/entity-by-id-actions";
+import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdReducer,
   EntityByIdState
@@ -13,6 +9,10 @@ import {
   EntityByIdSelectors,
   EntityByIdStateSelector
 } from "../entity-by-id-reducer/entity-by-id-selectors";
+import {
+  createEntityByIdActions,
+  EntityByIdActions
+} from "../entity-by-id-reducer/entity-by-id-action-creators";
 
 export interface EntityCrudStatus extends CrudStatus {
   id: string;
@@ -43,13 +43,11 @@ export type EntityCrudStatusReducer = Reducer<
   EntityByIdAction<EntityCrudStatus>
 >;
 
-export const createEntityCrudStatusReducer = (reducerId: string) =>
-  createEntityByIdReducer<EntityCrudStatus>(reducerId);
+export const createEntityCrudStatusReducer = () =>
+  createEntityByIdReducer<EntityCrudStatus>();
 
-export const createEntityCrudStatusActions = (
-  reducerId: string
-): EntityCrudStatusActions =>
-  createEntityByIdActions<EntityCrudStatus>(reducerId);
+export const createEntityCrudStatusActions = (): EntityCrudStatusActions =>
+  createEntityByIdActions<EntityCrudStatus>();
 
 export type EntityCrudStatusSelectors<TStoreState> = EntityByIdSelectors<
   TStoreState,
@@ -61,11 +59,10 @@ export const createEntityCrudStatusSelectors = <TStoreState>(
 ) => createEntityByIdSelectors<TStoreState, EntityCrudStatus>(stateSelector);
 
 export const createEntityCrudStatusRedux = <TStoreState>(
-  reducerId: string,
   stateSelector: EntityByIdStateSelector<TStoreState, EntityCrudStatus>
 ): EntityCrudStatusRedux<TStoreState> => {
-  const reducer = createEntityCrudStatusReducer(reducerId);
-  const actions = createEntityCrudStatusActions(reducerId);
+  const reducer = createEntityCrudStatusReducer();
+  const actions = createEntityCrudStatusActions();
   const selectors = createEntityCrudStatusSelectors(stateSelector);
   return {
     reducer,

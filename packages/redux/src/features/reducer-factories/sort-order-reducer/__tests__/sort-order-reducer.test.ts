@@ -1,11 +1,11 @@
-import { createSortOrderActions } from "../sort-order-actions";
+import { createSortOrderActions } from "../sort-order-action-creators";
 import { createSortOrderReducer } from "../sort-order-reducer";
 
 type TColumns = "username" | "email";
 
 describe("sort-order-reducer", () => {
-  const reduce = createSortOrderReducer<TColumns>("test");
-  const actions = createSortOrderActions<TColumns>("test");
+  const reduce = createSortOrderReducer<TColumns>();
+  const actions = createSortOrderActions<TColumns>();
   describe("sortBy", () => {
     describe("desc is true", () => {
       it("sets sort order with desc true", () => {

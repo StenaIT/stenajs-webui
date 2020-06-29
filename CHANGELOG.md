@@ -2,6 +2,15 @@
 
 ## Upcoming
 
+### Breaking changes
+
+#### Changes to reducer factories.
+
+All reducer factories have been updated to no longer accept reducerId.
+The reason for this is the new reducerIdGate higher order reducer.
+
+Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
+
 ## 1.0.3
 
 ### New features

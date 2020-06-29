@@ -7,17 +7,11 @@ export interface EntityByIdState<T extends EntityWithId> {
 
 export const entityByIdInitialState = { entities: {} };
 
-export const createEntityByIdReducer = <T extends EntityWithId>(
-  reducerId: string
-) => {
+export const createEntityByIdReducer = <T extends EntityWithId>() => {
   return (
     state: EntityByIdState<T> = entityByIdInitialState,
     action: EntityByIdAction<T>
   ): EntityByIdState<T> => {
-    if (action.reducerId !== reducerId) {
-      return state;
-    }
-
     switch (action.type) {
       case "ENTITY_BY_ID:SET_ENTITY": {
         const { entity } = action;

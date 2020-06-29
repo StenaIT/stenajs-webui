@@ -1,4 +1,4 @@
-import { reducerIdGate } from "../reducer-id-gate";
+import { reducerIdGate, reducerIdGateAction } from "../reducer-id-gate";
 
 describe("reducer-id-gate", () => {
   describe("reducerIdGate", () => {
@@ -6,7 +6,7 @@ describe("reducer-id-gate", () => {
       it("runs the specified reducer", () => {
         const innerReducer = () => "hello";
         const reducer = reducerIdGate("test", innerReducer);
-        const r = reducer("", { reducerId: "test", action: {} });
+        const r = reducer("", reducerIdGateAction("test", {}));
         expect(r).toBe("hello");
       });
     });
@@ -14,7 +14,7 @@ describe("reducer-id-gate", () => {
       it("does not run the specified reducer", () => {
         const innerReducer = () => "hello";
         const reducer = reducerIdGate("test", innerReducer);
-        const r = reducer("", { reducerId: "notTest", action: {} });
+        const r = reducer("", reducerIdGateAction("notTest", {}));
         expect(r === "hello").toBe(false);
       });
     });
