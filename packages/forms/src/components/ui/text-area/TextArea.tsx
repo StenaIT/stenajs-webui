@@ -44,12 +44,11 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
   return (
     <textarea
+      {...textAreaProps}
       className={cx(className, styles.textArea)}
       style={{ resize }}
       onChange={onChangeHandler}
-      {...textAreaProps}
-    >
-      {value}
-    </textarea>
+      value={value}
+    />
   );
 };
