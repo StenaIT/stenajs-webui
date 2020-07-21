@@ -28,6 +28,7 @@ export interface CollapsibleProps
   icon?: IconDefinition;
   iconCollapsed?: IconDefinition;
   iconSize?: number;
+  autoFocus?: boolean;
 }
 
 export const mapCSSTime = (value: string): number => {
@@ -58,6 +59,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   iconCollapsed = faChevronUp,
   iconSize = 8,
   children,
+  autoFocus = false,
   ...divProps
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -83,6 +85,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         className={styles.header}
         onClick={onClick}
         disabled={disabled}
+        autoFocus={autoFocus}
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
         <div className={styles.label}>
