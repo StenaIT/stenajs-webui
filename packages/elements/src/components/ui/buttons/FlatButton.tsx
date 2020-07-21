@@ -3,9 +3,9 @@ import * as React from "react";
 import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
 import styles from "./FlatButton.module.css";
 
-export interface FlatButtonProps extends PrimaryButtonProps {
+export type FlatButtonProps = PrimaryButtonProps & {
   inverted?: boolean;
-}
+};
 
 export const FlatButton: React.FC<FlatButtonProps> = ({
   className,

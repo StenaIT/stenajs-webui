@@ -1,8 +1,8 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import cx from "classnames";
-import { MouseEventHandler } from "react";
 import * as React from "react";
-import { FlatButton, FlatButtonProps } from "../buttons/FlatButton";
+import { MouseEventHandler } from "react";
+import { FlatButton } from "../buttons/FlatButton";
 import { Link } from "../link/Link";
 import styles from "./Chip.module.css";
 
@@ -15,9 +15,11 @@ export type ChipVariant =
   | "passive"
   | "turquoise";
 
-export interface ChipProps extends Omit<FlatButtonProps, "variant"> {
-  onClickRemove?: () => void;
+export interface ChipProps {
+  label?: string;
   variant?: ChipVariant;
+  onClick?: () => void;
+  onClickRemove?: () => void;
 }
 
 export const Chip: React.FC<ChipProps> = ({

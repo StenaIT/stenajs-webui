@@ -29,6 +29,10 @@ export interface ButtonProps
   innerRef?: Ref<HTMLButtonElement>;
 }
 
+export interface AnchorProps extends Omit<JSX.IntrinsicElements["a"], "ref"> {
+  innerRef?: Ref<HTMLAnchorElement>;
+}
+
 export interface WithInnerRef<TInputElement> {
   innerRef?: Ref<TInputElement>;
 }
