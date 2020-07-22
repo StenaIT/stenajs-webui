@@ -243,7 +243,6 @@
 
     svg {
       color: var(--current-icon-color);
-      margin-top: -1px;
       width: 10px;
       height: 10px;
     }
