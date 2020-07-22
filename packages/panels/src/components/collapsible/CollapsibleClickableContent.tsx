@@ -14,8 +14,8 @@ export const CollapsibleClickableContent: React.FC<CollapsibleClickableContentPr
   contentRight,
   className,
   onClick,
-  disabled,
-  children
+  children,
+  ...props
 }) => {
   return (
     <Clickable
@@ -23,7 +23,7 @@ export const CollapsibleClickableContent: React.FC<CollapsibleClickableContentPr
       disableOpacityOnClick
       className={cx(styles.content, className)}
       onClick={onClick}
-      disabled={disabled}
+      {...props}
     >
       {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
       {children ?? <CollapsibleEmptyContent />}
