@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./NavBarButton.module.css";
 import cx from "classnames";
 
-export type NavBarButtonProps = FlatButtonProps & {
+export type NavBarButtonProps = Extract<FlatButtonProps, { as?: "button" }> & {
   selected?: boolean;
 };
 
