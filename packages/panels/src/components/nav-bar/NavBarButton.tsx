@@ -1,11 +1,11 @@
-import { FlatButtonProps, FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import * as React from "react";
 import styles from "./NavBarButton.module.css";
 import cx from "classnames";
 
-export interface NavBarButtonProps extends FlatButtonProps {
+export type NavBarButtonProps = Extract<FlatButtonProps, { as?: "button" }> & {
   selected?: boolean;
-}
+};
 
 export const NavBarButton: React.FC<NavBarButtonProps> = ({
   selected,

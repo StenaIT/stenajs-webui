@@ -2,12 +2,15 @@ import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Popover, PopoverProps } from "../popover/Popover";
 
-export interface ButtonWithPopoverProps extends FlatButtonProps {
+export type ButtonWithPopoverProps = Extract<
+  FlatButtonProps,
+  { as?: "button" }
+> & {
   children?: PopoverProps["children"];
   visible?: boolean;
   onShow?: () => void;
   onHide?: () => void;
-}
+};
 
 export const ButtonWithPopover: React.FC<ButtonWithPopoverProps> = ({
   children,

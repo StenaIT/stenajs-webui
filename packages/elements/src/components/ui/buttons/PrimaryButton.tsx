@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ButtonProps } from "@stenajs-webui/core";
+import { AnchorProps, ButtonProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
@@ -11,7 +11,7 @@ import styles from "./PrimaryButton.module.css";
 export type ButtonSize = "normal" | "small" | "large";
 export type ButtonVariant = "normal" | "danger" | "success";
 
-export interface PrimaryButtonProps extends ButtonProps {
+interface CommonPrimaryButtonProps {
   /** The text on the button. */
   label?: string;
   /** The variant to use. */
@@ -26,10 +26,6 @@ export interface PrimaryButtonProps extends ButtonProps {
   success?: boolean;
   /** The content to show on success. */
   successLabel?: string;
-  /** Disables the button. Changes to disabled color and clicks are disabled. */
-  disabled?: boolean;
-  /** onClick callback, called when button is clicked. */
-  onClick?: () => void;
   /** FontAwesome icon to place to the left of the text. */
   leftIcon?: IconDefinition;
   /** React element to place to the left of the text. */
@@ -39,6 +35,26 @@ export interface PrimaryButtonProps extends ButtonProps {
   /** React element to place to the right of the text. */
   right?: ReactNode;
 }
+
+interface PrimaryButtonButtonProps
+  extends CommonPrimaryButtonProps,
+    ButtonProps {
+  /** Disables the button. Changes to disabled color and clicks are disabled. */
+  disabled?: boolean;
+  /** onClick callback, called when button is clicked. */
+  onClick?: () => void;
+  as?: "button";
+}
+
+interface PrimaryButtonAnchorProps
+  extends CommonPrimaryButtonProps,
+    Omit<AnchorProps, "onClick"> {
+  as: "a";
+}
+
+export type PrimaryButtonProps =
+  | PrimaryButtonButtonProps
+  | PrimaryButtonAnchorProps;
 
 const getButtonLabel = (
   label: string | undefined,
@@ -64,13 +80,10 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   loading = false,
   success = false,
   successLabel,
-  disabled,
   leftIcon,
   left,
   rightIcon,
   right,
-  onClick,
-  innerRef,
   variant = "normal",
   ...buttonProps
 }) => {
@@ -88,10 +101,54 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       (loading && loadingLabel)
   );
 
+  if (buttonProps.as === "a") {
+    const { as, ...restProps } = buttonProps;
+
+    return (
+      <a
+        ref={buttonProps.innerRef}
+        className={cx(
+          styles.button,
+          styles[size],
+          styles[variant],
+          !hasLabel && styles.iconButton,
+          className
+        )}
+        {...restProps}
+      >
+        {success ? (
+          <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
+        ) : loading ? (
+          <div className={styles.iconLeft}>
+            <InputSpinner size={"100%"} />
+          </div>
+        ) : left ? (
+          left
+        ) : leftIcon ? (
+          <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
+        ) : null}
+
+        {buttonLabel && <span>{buttonLabel}</span>}
+
+        {right ? (
+          right
+        ) : rightIcon ? (
+          <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
+        ) : null}
+      </a>
+    );
+  }
+
+  const { as, ...restProps } = buttonProps;
+
   return (
     <button
-      ref={innerRef}
-      onClick={disabled || success || loading ? undefined : onClick}
+      ref={buttonProps.innerRef}
+      onClick={
+        buttonProps.disabled || success || loading
+          ? undefined
+          : buttonProps.onClick
+      }
       className={cx(
         styles.button,
         styles[size],
@@ -99,8 +156,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         !hasLabel && styles.iconButton,
         className
       )}
-      disabled={disabled}
-      {...buttonProps}
+      disabled={buttonProps.disabled}
+      {...restProps}
     >
       {success ? (
         <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
