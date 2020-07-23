@@ -23,7 +23,8 @@ export const Space: React.FC<SpaceProps> = ({
     <div
       style={{
         width: vertical ? "1px" : `${size * space}px`,
-        height: horizontal ? "1px" : `${size * space}px`
+        height: horizontal ? "1px" : `${size * space}px`,
+        flex: "none"
       }}
     >
       {children}
