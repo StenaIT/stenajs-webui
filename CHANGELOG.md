@@ -11,6 +11,22 @@ The reason for this is the new reducerIdGate higher order reducer.
 
 Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
 
+## 1.0.4
+
+### Improvements
+
+- `Collapsible` now supports the button `autoFocus` property.
+- `PrimaryButton` now has an `as` property to allow it to be rendered as an anchor instead of a button.
+  This also affects `SecondaryButton` and `FlatButton`.
+- `CollapsibleClickableContent` now passes it's remaining properties to its `Clickable`.
+- `@types/react-modal` has been bumped to allow setting an `id` property to the modal element.
+
+### Fixes
+
+- `Chip` close button negative margin of 1px removed.
+- `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark. 
+- `Space` now doesn't flex, making it keep its size in a flexbox context.
+
 ## 1.0.3
 
 ### New features
