@@ -15,7 +15,7 @@ Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAc
 
 ### Improvements
 
-- `Collapsible` now supports the button `autoFocus` property.
+- `Collapsible` now has `autoFocus` and `innerRef` property.
 - `PrimaryButton` now has an `as` property to allow it to be rendered as an anchor instead of a button.
   This also affects `SecondaryButton` and `FlatButton`.
 - `CollapsibleClickableContent` now passes it's remaining properties to its `Clickable`.
@@ -26,6 +26,7 @@ Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAc
 - `Chip` close button negative margin of 1px removed.
 - `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark. 
 - `Space` now doesn't flex, making it keep its size in a flexbox context.
+- `ModalHeader` now uses the primary font.
 
 ## 1.0.3
 
