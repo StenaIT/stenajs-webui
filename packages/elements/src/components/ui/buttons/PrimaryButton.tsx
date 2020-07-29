@@ -102,11 +102,11 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   );
 
   if (buttonProps.as === "a") {
-    const { as, ...restProps } = buttonProps;
+    const { as, innerRef, ...restProps } = buttonProps;
 
     return (
       <a
-        ref={buttonProps.innerRef}
+        ref={innerRef}
         className={cx(
           styles.button,
           styles[size],
@@ -139,11 +139,11 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
     );
   }
 
-  const { as, ...restProps } = buttonProps;
+  const { as, innerRef, ...restProps } = buttonProps;
 
   return (
     <button
-      ref={buttonProps.innerRef}
+      ref={innerRef}
       onClick={
         buttonProps.disabled || success || loading
           ? undefined
