@@ -112,6 +112,7 @@
       font-weight: var(--swui-textinput-font-weight);
       background: var(--swui-hidden);
       border: none;
+      min-width: 0; /* https://stackoverflow.com/a/43361500 */
 
       &:disabled {
         color: var(--swui-textinput-text-color-disabled);
