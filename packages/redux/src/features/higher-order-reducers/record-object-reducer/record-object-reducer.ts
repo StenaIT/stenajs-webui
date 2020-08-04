@@ -20,7 +20,7 @@ export const createRecordObjectReducer = <
 ): Reducer<
   RecordObjectState<TInnerState>,
   RecordObjectAction<TInnerAction>
-> => (state, action) => {
+> => (state = {}, action) => {
   switch (action.type) {
     case "RECORD_OBJECT:CLEAR_RECORD": {
       const { recordId } = action as RecordObjectClearRecordAction;
