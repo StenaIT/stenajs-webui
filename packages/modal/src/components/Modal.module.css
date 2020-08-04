@@ -71,6 +71,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 16px;
+      font-family: var(--swui-font-primary);
       align-items: center;
       border-bottom: 1px solid var(--swui-modal-header-border-color);
     }

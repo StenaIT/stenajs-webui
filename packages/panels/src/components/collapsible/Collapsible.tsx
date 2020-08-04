@@ -16,8 +16,8 @@ import { CollapsibleContent } from "./CollapsibleContent";
 import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
 export interface CollapsibleProps
-  extends Omit<DivProps, "onClick">,
-    Pick<ClickableProps, "onClick"> {
+  extends Omit<DivProps, "onClick" | "innerRef">,
+    Pick<ClickableProps, "onClick" | "innerRef"> {
   label: string;
   contentLeft?: React.ReactNode;
   contentRight?: React.ReactNode;
@@ -60,6 +60,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
   iconSize = 8,
   children,
   autoFocus = false,
+  innerRef,
   ...divProps
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -86,6 +87,7 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
         onClick={onClick}
         disabled={disabled}
         autoFocus={autoFocus}
+        innerRef={innerRef}
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
         <div className={styles.label}>
