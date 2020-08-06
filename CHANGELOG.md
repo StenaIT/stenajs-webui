@@ -4,6 +4,7 @@
 
 ### Improvements
 - `StandardTableConfig` now infers column names from row object automatically.
+- `StandardTableConfig` now supports expand collapse button in header row (set `showHeaderExpandCollapse` to `true`)
 
 ### Breaking changes
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
