@@ -79,8 +79,8 @@ const createConfig = (
     number | undefined,
     ListItem
   >,
-  options?: Partial<StandardTableConfig<ListItem, keyof ListItem>>
-): StandardTableConfig<ListItem, keyof ListItem> => ({
+  options?: Partial<StandardTableConfig<ListItem>>
+): StandardTableConfig<ListItem> => ({
   ...options,
   keyResolver: item => item.id,
   showHeaderCheckbox: true,
