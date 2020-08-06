@@ -16,7 +16,7 @@
 - `Collapsible` now has `autoFocus` and `innerRef` properties.
 - `PrimaryButton` now has an `as` property to allow it to be rendered as an anchor instead of a button.
   This also affects `SecondaryButton` and `FlatButton`.
-- `CollapsibleClickableContent` now passes it's remaining properties to its `Clickable`.
+- `CollapsibleClickableContent` now passes its remaining properties to its `Clickable`.
 - `@types/react-modal` has been bumped to allow setting an `id` property to the modal element.
 
 ### Fixes
