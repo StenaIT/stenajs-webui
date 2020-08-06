@@ -8,7 +8,10 @@ export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
 }
 
-export interface StandardTableConfig<TItem, TColumnKeys extends string> {
+export interface StandardTableConfig<
+  TItem,
+  TColumnKeys extends string | number | symbol = keyof TItem
+> {
   /**
    * If true, click on table headers does not change sort order.
    */
