@@ -272,6 +272,7 @@ storiesOf("grid/StandardTable", module)
   .add("expandable rows", () => {
     const config = createConfig(undefined, undefined, {
       enableExpandCollapse: true,
+      showHeaderExpandCollapse: true,
       renderRowExpansion: item => (
         <Box spacing indent>
           <StandardText>Name: {item.name}</StandardText>
