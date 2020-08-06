@@ -5,8 +5,10 @@ export interface SelectedIdsState {
   selectedIds: Array<string>;
 }
 
-export const createSelectedIdsReducerInitialState = (): SelectedIdsState => ({
-  selectedIds: []
+export const createSelectedIdsReducerInitialState = (
+  initialSelection: string[] = []
+): SelectedIdsState => ({
+  selectedIds: initialSelection
 });
 
 const INITIAL_STATE = createSelectedIdsReducerInitialState();
