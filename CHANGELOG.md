@@ -2,6 +2,13 @@
 
 ## Upcoming
 
+### Improvements
+- `StandardTableConfig` now infers column names from row object automatically.
+
+### Breaking changes
+- `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
+    - Use `createStandardTableInitialState` to maintain compatibility.
+
 ## 1.0.4
 
 ### Improvements
