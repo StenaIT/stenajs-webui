@@ -2,15 +2,6 @@
 
 ## Upcoming
 
-### Breaking changes
-
-#### Changes to reducer factories.
-
-All reducer factories have been updated to no longer accept reducerId.
-The reason for this is the new reducerIdGate higher order reducer.
-
-Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
-
 ## 1.0.4
 
 ### Improvements
@@ -24,11 +15,21 @@ Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAc
 ### Fixes
 
 - `Chip` close button negative margin of 1px removed.
-- `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark. 
+- `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark.
 - `Space` now doesn't flex, making it keep its size in a flexbox context.
 - `ModalHeader` now uses the primary font.
 
 ## 1.0.3
+
+### Breaking changes
+
+#### Changes to reducer factories.
+
+All reducer factories have been updated to no longer accept reducerId.
+The reason for this is the new reducerIdGate higher order reducer.
+
+Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
+
 
 ### New features
 
