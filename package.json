@@ -119,7 +119,7 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "12 kB"
+      "maxSize": "13 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",

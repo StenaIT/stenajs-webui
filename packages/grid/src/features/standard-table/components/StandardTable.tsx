@@ -12,6 +12,7 @@ import {
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
+import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 
 export interface StandardTableProps<TItem, TColumnKey extends string> {
   /**
@@ -73,8 +74,7 @@ export const StandardTable = function StandardTable<
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
     tableId ?? generatedTableId,
-    initialSortOrder,
-    initialSortOrderDesc
+    createStandardTableInitialState(initialSortOrder, initialSortOrderDesc)
   );
 
   const currentTableContext = tableContext || localTableContext;

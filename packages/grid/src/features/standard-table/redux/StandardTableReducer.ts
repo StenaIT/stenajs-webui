@@ -19,11 +19,13 @@ export interface StandardTableState<TColumnKey extends string> {
 
 export const createStandardTableInitialState = <TColumnKey extends string>(
   sortBy: TColumnKey | undefined = undefined,
-  desc: boolean = false
+  desc: boolean = false,
+  selectedIds: string[] = [],
+  expandedRows: string[] = []
 ): StandardTableState<TColumnKey> => ({
   sortOrder: createSortOrderReducerInitialState(sortBy, desc),
-  selectedIds: createSelectedIdsReducerInitialState(),
-  expandedRows: createSelectedIdsReducerInitialState()
+  selectedIds: createSelectedIdsReducerInitialState(selectedIds),
+  expandedRows: createSelectedIdsReducerInitialState(expandedRows)
 });
 
 export type StandardTableReducer<
