@@ -7,6 +7,10 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
 import { useTableResetWhenNewData } from "../hooks/UseTableResetWhenNewData";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
+import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse";
+import { FlatButton } from "@stenajs-webui/elements";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -17,10 +21,14 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
 >({ items }: StandardTableHeaderProps<TItem>) {
   const {
     showHeaderCheckbox,
+    showHeaderExpandCollapse,
     enableExpandCollapse,
     columnOrder,
     rowIndent
   } = useStandardTableConfig();
+  const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
+    items
+  );
   const {
     allItemsAreSelected,
     onClickCheckbox,
@@ -35,11 +43,21 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     <TableHeadRow>
       {rowIndent && <Indent num={rowIndent} />}
       {enableExpandCollapse && (
-        <TableHeadItem
+        <Row
+          alignItems={"center"}
+          justifyContent={"center"}
           width={"45px"}
           minWidth={"45px"}
-          justifyContent={"center"}
-        />
+          indent
+        >
+          {showHeaderExpandCollapse && (
+            <FlatButton
+              size={"small"}
+              leftIcon={allItemsAreExpanded ? faChevronUp : faChevronDown}
+              onClick={toggleExpanded}
+            />
+          )}
+        </Row>
       )}
       {showHeaderCheckbox && (
         <TableHeadItem

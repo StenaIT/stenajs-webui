@@ -47,6 +47,11 @@ export interface StandardTableConfig<
   keyResolver: (item: TItem) => string;
 
   /**
+   * Shows an expand collapse button in the header.
+   */
+  showHeaderExpandCollapse?: boolean;
+
+  /**
    * When enabled, a column is added to the left side for a button.
    * The button visibility is controlled by `expandCollapseDisableResolver`.
    */
