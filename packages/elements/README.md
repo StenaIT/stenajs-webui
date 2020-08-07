@@ -8,11 +8,15 @@ These are primarly "dumb" components, with no (or very little) logic.
 
 - [ActionMenu](src/components/ui/action-menu/ActionMenu.md)
 - Badge
-- FlatButton
-- SmallButton
-- StandardButton
-- UpDownButtons
+- Buttons
+  - FlatButton
+  - PrimaryButton
+  - SecondaryButton
+  - ButtonGroup
+  - StandardButton (deprecated)
+  - UpDownButtons
 - Chip
 - Icon
+- Link
 - Spinner
 - ToggleButton
