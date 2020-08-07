@@ -43,6 +43,11 @@ All documentation uses `yarn`.
 `stenajs-webui` use Font Awesome for icons.
 `@stenajs-webui/core` does not use any icons, but most other packages require Font Awesome.
 
+### Styling
+
+New and converted `stenajs-webui` components use [CSS variables](packages/elements/default-theme.css).
+They can be styled by changing the CSS variables defined in their corresponding `.module.css` file.
+
 ### Typescript
 
 `stenajs-webui` is built with Typescript, and all types are included in the npm package.

@@ -96,7 +96,7 @@ export const { setValues, commitValues, clearValues } =
 
 // In component
 const dispatch = useDispatch();
-dispatch(setValues({ email: "tomte@nordpolen.se" }));
+dispatch(setValues({ email: "user@example.com" }));
 ```
 
 - The first argument is the id of the reducer.
