@@ -23,7 +23,7 @@
   font-family: var(--swui-link-font-family);
   font-weight: var(--swui-link-font-weight);
   box-sizing: border-box;
-  border: 1px solid var(--current-focus-highlight-color);
+  outline: 1px solid var(--current-focus-highlight-color);
   text-decoration: var(--swui-link-text-decoration);
 
   &:not(.disabled) {
@@ -31,7 +31,6 @@
   }
 
   &:focus {
-    outline: none;
     &:not(:active) {
       --current-focus-highlight-color: var(--swui-link-focus-highlight-color);
       cursor: pointer;
