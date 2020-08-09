@@ -77,6 +77,7 @@ export const externalTheme: Theme = {
     inputBorderFocused: Colors.Freight2,
     inputBorderFocusedAlt: Colors.Freight2Alt,
     inputBorderFocusedLight: Colors.Freight3,
+    inputBoxShadowFocused: "inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3)",
     highlightBoxBg: "#E8F4FA",
     highlightBoxBorder: "#7498AD"
   },
