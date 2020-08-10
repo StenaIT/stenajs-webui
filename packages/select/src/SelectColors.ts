@@ -13,6 +13,7 @@ export interface SelectThemeColors extends Record<string, string> {
   inputDisabledBackgroundColor: string;
   inputPlaceholderColor: string;
   inputTextColor: string;
+  inputBoxShadowFocused: string;
   loadingIndicatorTextColor: string;
   menuActiveBackgroundColor: string;
   menuActiveTextColor: string;

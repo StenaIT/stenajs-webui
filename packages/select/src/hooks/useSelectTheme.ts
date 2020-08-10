@@ -19,6 +19,7 @@ export const useSelectTheme = (theme: SelectTheme) => {
         inputBorderFocused: theme.input.borderFocused,
         inputBorderColor: theme.input.borderColor,
         inputBorderColorFocused: theme.input.borderColorFocused,
+        inputBoxShadowFocused: theme.input.boxShadowFocused,
         inputDisabledBackgroundColor: theme.input.disabledBackgroundColor,
         inputPlaceholderColor: theme.input.placeholderColor,
         inputTextColor: theme.input.textColor,

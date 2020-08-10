@@ -34,6 +34,7 @@ export const internalTheme: Theme = {
     inputBorderFocused: "#605988",
     inputBorderFocusedAlt: "#C7C3D8",
     inputBorderFocusedLight: "#E1DEEC",
+    inputBoxShadowFocused: "inset 0px 0px 3pt 0pt rgba(96, 89, 136, 0.3)",
     highlightBoxBg: "#E8F4FA",
     highlightBoxBorder: "#7498AD"
   },

@@ -31,6 +31,7 @@ export interface ThemeColors {
   inputBorderFocused: string;
   inputBorderFocusedAlt: string;
   inputBorderFocusedLight: string;
+  inputBoxShadowFocused: string;
   highlightBoxBg: string;
   highlightBoxBorder: string;
 }

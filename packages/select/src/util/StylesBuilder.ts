@@ -79,17 +79,15 @@ export const createStylesFromTheme = (
     backgroundColor: isDisabled
       ? colors.inputDisabledBackgroundColor
       : colors.inputBackgroundColor,
-    boxShadow: "0",
     borderRadius: selectTheme.input.borderRadius,
     border: isFocused ? colors.inputBorderFocused : colors.inputBorder,
     borderColor: isFocused
       ? colors.inputBorderColorFocused
       : colors.inputBorderColor,
+    boxShadow: isFocused ? colors.inputBoxShadowFocused : undefined,
     "&:hover": {
-      border: isFocused ? colors.inputBorderFocused : colors.inputBorder,
-      borderColor: isFocused
-        ? colors.inputBorderColorFocused
-        : colors.inputBorderColor
+      border: colors.inputBorderFocused,
+      borderColor: colors.inputBorderColorFocused
     }
   }),
   singleValue: base => ({
