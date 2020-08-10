@@ -10,6 +10,13 @@
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
     - Use `createStandardTableInitialState` to maintain compatibility.
 
+## 1.0.5
+
+### Fixes
+
+- `Select` component now has the same focused box shadow that is used in input fields.
+- `Link` component now uses an 1px outline instead of border.
+
 ## 1.0.4
 
 ### Improvements
