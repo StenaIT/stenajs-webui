@@ -91,7 +91,16 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
         <div className={styles.label}>
-          <StandardText>{label}</StandardText>
+          <StandardText
+            title={label}
+            style={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap"
+            }}
+          >
+            {label}
+          </StandardText>
         </div>
         {contentRight && (
           <div className={styles.contentRight}>{contentRight}</div>
