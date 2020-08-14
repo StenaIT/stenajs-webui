@@ -46,6 +46,7 @@ export * from "./features/standard-table/hooks/UseLocalStateTableContext";
 
 export * from "./features/standard-table/util/LabelFormatter";
 export * from "./features/standard-table/util/MultitypeComparator";
+export * from "./features/standard-table/util/ActionsFactory";
 
 export * from "./features/grid-cell/hooks/UseEditableCell";
 export * from "./features/grid-cell/hooks/UseGridCell";

@@ -4,18 +4,31 @@
 
 ## 1.0.5
 
-### Fixes
+### Improvements
 
 - `Select` component now has the same focused box shadow that is used in input fields.
 - `Link` component now uses an 1px outline instead of border.
-
-### Improvements
-
 - `StandardTableConfig` now infers column names from row object automatically.
 - `StandardTableConfig` now supports expand collapse button in header row (set `showHeaderExpandCollapse` to `true`)
 
+#### New actions for `StandardTable`
+
+  `StandardTable` is now using new higher order reducers, which require composing nested actions.
+  This made it harder to create actions in the apps, and these new actions help.
+
+  - selectByIds(ids)
+  - clearSelection()
+  - expandByIds(ids)
+  - collapseAll()
+  - sortBy(columnId, desc?)
+  - clearSortOrder()
+
+New actions are exposed by `useLocalStateTableContext` hook,
+and can be created manually using `createStandardTableActions` function.
+
 ### Breaking changes
 
+- New actions are breaking, if the app is using them via `useLocalStateTableContext`.
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
     - Use `createStandardTableInitialState` to maintain compatibility.
 
