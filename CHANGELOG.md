@@ -4,13 +4,10 @@
 
 ## 1.0.5
 
-### Fixes
+### Improvements
 
 - `Select` component now has the same focused box shadow that is used in input fields.
 - `Link` component now uses an 1px outline instead of border.
-
-### Improvements
-
 - `StandardTableConfig` now infers column names from row object automatically.
 - `StandardTableConfig` now supports expand collapse button in header row (set `showHeaderExpandCollapse` to `true`)
 
