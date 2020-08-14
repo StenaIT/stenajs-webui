@@ -31,6 +31,7 @@ and can be created manually using `createStandardTableActions` function.
 
 ### Breaking changes
 
+- New actions are breaking, if the app is using them via `useLocalStateTableContext`.
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
     - Use `createStandardTableInitialState` to maintain compatibility.
 
