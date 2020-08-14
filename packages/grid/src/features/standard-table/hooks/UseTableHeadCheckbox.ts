@@ -2,23 +2,18 @@ import { useCallback } from "react";
 import {
   useStandardTableActions,
   useStandardTableConfig,
-  useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
-import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
 ) => {
-  const tableId = useStandardTableId();
   const { keyResolver } = useStandardTableConfig();
   const {
     selectedIds: { selectedIds }
   } = useStandardTableState();
   const {
-    actions: {
-      selectedIds: { setSelectedIds, clearSelectedIds }
-    },
+    actions: { selectByIds, clearSelection },
     dispatch
   } = useStandardTableActions();
 
@@ -29,25 +24,18 @@ export const useTableHeadCheckbox = <TItem>(
   const onClickCheckbox = useCallback(() => {
     if (items) {
       if (allItemsAreSelected) {
-        dispatch({
-          reducerId: getReducerIdFor(tableId, "selectedIds"),
-          action: clearSelectedIds()
-        });
+        dispatch(clearSelection());
       } else {
-        dispatch({
-          reducerId: getReducerIdFor(tableId, "selectedIds"),
-          action: setSelectedIds(items.map(item => keyResolver(item)))
-        });
+        dispatch(selectByIds(items.map(item => keyResolver(item))));
       }
     }
   }, [
-    tableId,
     allItemsAreSelected,
-    clearSelectedIds,
+    clearSelection,
     dispatch,
     items,
     keyResolver,
-    setSelectedIds
+    selectByIds
   ]);
 
   return {
