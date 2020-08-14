@@ -6,6 +6,8 @@ import {
   createEntityReducer,
   EntityState
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
+import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
+import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
 
 interface User {
   id?: string;
@@ -39,7 +41,28 @@ describe("reducer-id-gate", () => {
           you: reducerIdGate("you", createEntityReducer<User>({})),
           me: reducerIdGate("me", createEntityReducer<User>({}))
         });
+
+        const sortOrder = reducerIdGate(
+          "sortOrder",
+          createSortOrderReducer<"a">()
+        );
+        const selectedIds = reducerIdGate(
+          "selectedIds",
+          createSelectedIdsReducer()
+        );
+        const expandedRows = reducerIdGate(
+          "expandedRows",
+          createSelectedIdsReducer()
+        );
+
+        const y = combineReducers({
+          sortOrder,
+          selectedIds,
+          expandedRows
+        });
+
         expect(x).toBeDefined();
+        expect(y).toBeDefined();
       });
     });
     describe("with useReducer", () => {

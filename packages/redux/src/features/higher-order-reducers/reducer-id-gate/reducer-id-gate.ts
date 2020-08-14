@@ -1,4 +1,4 @@
-import { Action, Reducer } from "redux";
+import { Action, AnyAction, Reducer } from "redux";
 
 export interface ReducerIdGateAction<TInnerAction> {
   type: "REDUCER_ID_GATE:ACTION";
@@ -6,12 +6,12 @@ export interface ReducerIdGateAction<TInnerAction> {
   action: TInnerAction;
 }
 
-export type ReducerIdGateReducer<TState, TInnerAction> = (
-  state: TState | undefined,
-  action: ReducerIdGateAction<TInnerAction>
-) => TState;
+export type ReducerIdGateReducer<
+  TState,
+  TInnerAction extends Action = AnyAction
+> = Reducer<TState, ReducerIdGateAction<TInnerAction>>;
 
-export const reducerIdGate = <TState, TInnerAction extends Action>(
+export const reducerIdGate = <TState, TInnerAction extends Action = AnyAction>(
   reducerId: string,
   reducer: Reducer<TState, TInnerAction>
 ): ReducerIdGateReducer<TState, TInnerAction> => (state, action) => {

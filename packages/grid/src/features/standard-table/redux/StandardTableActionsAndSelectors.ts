@@ -1,6 +1,7 @@
 import {
   createSelectedIdsActions,
   createSortOrderActions,
+  ReducerIdGateAction,
   SelectedIdsAction,
   SelectedIdsActions,
   SelectedIdsSelectors,
@@ -34,8 +35,8 @@ export interface StandardTableActionsAndSelectors<
 }
 
 export type InternalStandardTableAction<TColumnKey extends string> =
-  | SortOrderAction<TColumnKey>
-  | SelectedIdsAction;
+  | ReducerIdGateAction<SortOrderAction<TColumnKey>>
+  | ReducerIdGateAction<SelectedIdsAction>;
 
 export type StandardTableStateSelector<
   TStoreState,
