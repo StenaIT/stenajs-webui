@@ -28,26 +28,32 @@ export const createStandardTableActions = <TColumnKey extends string>(
 ): StandardTableActions<TColumnKey> => {
   return {
     selectByIds: ids => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "selectedIds"),
       action: actions.selectedIds.setSelectedIds(ids)
     }),
     clearSelection: () => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "selectedIds"),
       action: actions.selectedIds.clearSelectedIds()
     }),
     expandByIds: ids => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "expandedRows"),
       action: actions.expandedRows.setSelectedIds(ids)
     }),
     collapseAll: () => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "expandedRows"),
       action: actions.expandedRows.clearSelectedIds()
     }),
     sortBy: (columnId: TColumnKey, desc?: boolean) => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "sortOrder"),
       action: actions.sortOrder.sortBy(columnId, desc ?? false)
     }),
     clearSortOrder: () => ({
+      type: "REDUCER_ID_GATE:ACTION",
       reducerId: getReducerIdFor(tableId, "sortOrder"),
       action: actions.sortOrder.clearSortOrder()
     })
