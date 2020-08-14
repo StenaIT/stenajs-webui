@@ -14,6 +14,21 @@
 - `StandardTableConfig` now infers column names from row object automatically.
 - `StandardTableConfig` now supports expand collapse button in header row (set `showHeaderExpandCollapse` to `true`)
 
+#### New actions for `StandardTable`
+
+  `StandardTable` is now using new higher order reducers, which require composing nested actions.
+  This made it harder to create actions in the apps, and these new actions help.
+
+  - selectByIds(ids)
+  - clearSelection()
+  - expandByIds(ids)
+  - collapseAll()
+  - sortBy(columnId, desc?)
+  - clearSortOrder()
+
+New actions are exposed by `useLocalStateTableContext` hook,
+and can be created manually using `createStandardTableActions` function.
+
 ### Breaking changes
 
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
