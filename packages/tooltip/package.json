@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/tooltip",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "1.0.4",
-    "@stenajs-webui/elements": "1.0.4",
+    "@stenajs-webui/core": "1.0.5",
+    "@stenajs-webui/elements": "1.0.5",
     "popper.js": "^1.15.0",
     "react-popper": "^1.3.3"
   },
