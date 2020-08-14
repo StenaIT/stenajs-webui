@@ -9,7 +9,7 @@ import {
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "./ReducerIdFactory";
 import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
-import { Reducer } from "redux";
+import { combineReducers, Reducer } from "redux";
 
 export interface StandardTableState<TColumnKey extends string> {
   sortOrder: SortOrderState<TColumnKey>;
@@ -49,11 +49,9 @@ export const createStandardTableReducer = <TColumnKey extends string>(
     createSelectedIdsReducer()
   );
 
-  return (state, action) => {
-    return {
-      sortOrder: sortOrder(state?.sortOrder, action as any),
-      selectedIds: selectedIds(state?.selectedIds, action as any),
-      expandedRows: expandedRows(state?.expandedRows, action as any)
-    };
-  };
+  return combineReducers({
+    sortOrder,
+    selectedIds,
+    expandedRows
+  });
 };
