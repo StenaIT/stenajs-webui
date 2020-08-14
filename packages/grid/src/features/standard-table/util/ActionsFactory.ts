@@ -1,5 +1,6 @@
 import { InternalStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
+  reducerIdGateAction,
   ReducerIdGateAction,
   SelectedIdsAction,
   SortOrderAction
@@ -27,35 +28,35 @@ export const createStandardTableActions = <TColumnKey extends string>(
   actions: InternalStandardTableActions<TColumnKey>
 ): StandardTableActions<TColumnKey> => {
   return {
-    selectByIds: ids => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "selectedIds"),
-      action: actions.selectedIds.setSelectedIds(ids)
-    }),
-    clearSelection: () => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "selectedIds"),
-      action: actions.selectedIds.clearSelectedIds()
-    }),
-    expandByIds: ids => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "expandedRows"),
-      action: actions.expandedRows.setSelectedIds(ids)
-    }),
-    collapseAll: () => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "expandedRows"),
-      action: actions.expandedRows.clearSelectedIds()
-    }),
-    sortBy: (columnId: TColumnKey, desc?: boolean) => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "sortOrder"),
-      action: actions.sortOrder.sortBy(columnId, desc ?? false)
-    }),
-    clearSortOrder: () => ({
-      type: "REDUCER_ID_GATE:ACTION",
-      reducerId: getReducerIdFor(tableId, "sortOrder"),
-      action: actions.sortOrder.clearSortOrder()
-    })
+    selectByIds: ids =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "selectedIds"),
+        actions.selectedIds.setSelectedIds(ids)
+      ),
+    clearSelection: () =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "selectedIds"),
+        actions.selectedIds.clearSelectedIds()
+      ),
+    expandByIds: ids =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "expandedRows"),
+        actions.expandedRows.setSelectedIds(ids)
+      ),
+    collapseAll: () =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "expandedRows"),
+        actions.expandedRows.clearSelectedIds()
+      ),
+    sortBy: (columnId: TColumnKey, desc?: boolean) =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "sortOrder"),
+        actions.sortOrder.sortBy(columnId, desc ?? false)
+      ),
+    clearSortOrder: () =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "sortOrder"),
+        actions.sortOrder.clearSortOrder()
+      )
   };
 };

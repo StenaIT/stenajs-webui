@@ -1,8 +1,11 @@
 import { EntityAction } from "./entity-actions";
+import { Reducer } from "redux";
 
 export type EntityState<T> = T;
 
-export const createEntityReducer = <T>(initialEntity: T) => {
+export const createEntityReducer = <T>(
+  initialEntity: T
+): Reducer<EntityState<T>, EntityAction<T>> => {
   const INITIAL_STATE = initialEntity;
 
   return (
