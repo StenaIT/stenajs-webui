@@ -8,6 +8,7 @@ import {
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
+import fn = jest.fn;
 
 interface User {
   id?: string;
@@ -30,6 +31,26 @@ describe("reducer-id-gate", () => {
         const reducer = reducerIdGate("test", innerReducer);
         const r = reducer("", reducerIdGateAction("notTest", { type: "" }));
         expect(r).not.toBe("hello");
+      });
+    });
+    describe("when receiving other actions", () => {
+      describe("and state is not set", () => {
+        it("calls internal reducer with empty action", () => {
+          const innerReducer = fn();
+          const reducer = reducerIdGate("test", innerReducer);
+          reducer(undefined, { type: "@@INIT" } as any);
+          expect(innerReducer).toHaveBeenCalledWith(undefined, {});
+        });
+      });
+      describe("and state is set", () => {
+        it("just returns state", () => {
+          const innerReducer = fn();
+          const state = { hello: "world" };
+          const reducer = reducerIdGate("test", innerReducer);
+          const r = reducer(state, { type: "@@INIT" } as any);
+          expect(innerReducer).not.toHaveBeenCalled();
+          expect(r === state).toBe(true);
+        });
       });
     });
     describe("with combineReducers", () => {
