@@ -2,10 +2,8 @@ import { useMemo } from "react";
 import { ArrowType } from "../../table-ui/components/table/TableHeadItem";
 import {
   useStandardTableActions,
-  useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
-import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 interface Result {
   selected: boolean;
@@ -15,7 +13,6 @@ interface Result {
 }
 
 export const useTableSortHeader = (columnId: string): Result => {
-  const tableId = useStandardTableId();
   const { dispatch, actions } = useStandardTableActions();
   const {
     sortOrder: { desc, sortBy }
@@ -28,18 +25,8 @@ export const useTableSortHeader = (columnId: string): Result => {
       selected,
       desc,
       onClickColumnHead: () => {
-        if (selected) {
-          dispatch({
-            reducerId: getReducerIdFor(tableId, "sortOrder"),
-            action: actions.sortOrder.sortBy(columnId, !desc)
-          });
-        } else {
-          dispatch({
-            reducerId: getReducerIdFor(tableId, "sortOrder"),
-            action: actions.sortOrder.sortBy(columnId, false)
-          });
-        }
+        dispatch(actions.sortBy(columnId, selected ? !desc : false));
       }
     };
-  }, [sortBy, desc, actions, columnId, dispatch, tableId]);
+  }, [sortBy, desc, actions, columnId, dispatch]);
 };

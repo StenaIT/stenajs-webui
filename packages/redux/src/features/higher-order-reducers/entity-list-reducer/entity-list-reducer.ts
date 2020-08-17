@@ -1,10 +1,13 @@
 import { EntityListAction } from "./entity-list-actions";
 import { fieldsMatch } from "../../../common/util/field-matcher";
-import { Reducer } from "react";
+import { Action, AnyAction, Reducer } from "redux";
 
 export type EntityListState<TListItem> = Array<TListItem>;
 
-export const createEntityListReducer = <TListItem, TListItemAction = unknown>(
+export const createEntityListReducer = <
+  TListItem,
+  TListItemAction extends Action = AnyAction
+>(
   reducer?: Reducer<TListItem, TListItemAction>
 ) => (
   state: EntityListState<TListItem> = [],

@@ -4,12 +4,12 @@ import {
   createSortOrderReducer,
   createSortOrderReducerInitialState,
   reducerIdGate,
-  ReducerIdGateReducer,
   SelectedIdsState,
   SortOrderState
 } from "@stenajs-webui/redux";
-import { StandardTableAction } from "./StandardTableActionsAndSelectors";
 import { getReducerIdFor } from "./ReducerIdFactory";
+import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
+import { combineReducers, Reducer } from "redux";
 
 export interface StandardTableState<TColumnKey extends string> {
   sortOrder: SortOrderState<TColumnKey>;
@@ -28,11 +28,9 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
   expandedRows: createSelectedIdsReducerInitialState(expandedRows)
 });
 
-export type StandardTableReducer<
-  TColumnKey extends string
-> = ReducerIdGateReducer<
+export type StandardTableReducer<TColumnKey extends string> = Reducer<
   StandardTableState<TColumnKey>,
-  StandardTableAction<TColumnKey>
+  InternalStandardTableAction<TColumnKey>
 >;
 
 export const createStandardTableReducer = <TColumnKey extends string>(
@@ -51,12 +49,9 @@ export const createStandardTableReducer = <TColumnKey extends string>(
     createSelectedIdsReducer()
   );
 
-  return (state, action) => {
-    return {
-      ...state,
-      sortOrder: sortOrder(state.sortOrder, action as any),
-      selectedIds: selectedIds(state.selectedIds, action as any),
-      expandedRows: expandedRows(state.expandedRows, action as any)
-    };
-  };
+  return combineReducers({
+    sortOrder,
+    selectedIds,
+    expandedRows
+  });
 };

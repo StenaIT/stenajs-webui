@@ -1,12 +1,13 @@
 import { useMemo, useReducer } from "react";
 import { TableContext } from "../context/StandardTableStateContext";
-import { createStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
+import { createInternalStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
   createStandardTableInitialState,
   createStandardTableReducer,
   StandardTableReducer,
   StandardTableState
 } from "../redux/StandardTableReducer";
+import { createStandardTableActions } from "../util/ActionsFactory";
 
 export const useLocalStateTableContext = <TColumnKeys extends string>(
   tableId: string,
@@ -19,7 +20,14 @@ export const useLocalStateTableContext = <TColumnKeys extends string>(
     initialState
   );
 
-  const actions = useMemo(() => createStandardTableActions<TColumnKeys>(), []);
+  const actions = useMemo(
+    () =>
+      createStandardTableActions(
+        tableId,
+        createInternalStandardTableActions<TColumnKeys>()
+      ),
+    [tableId]
+  );
 
   const tableContext = useMemo<TableContext<TColumnKeys>>(
     () => ({

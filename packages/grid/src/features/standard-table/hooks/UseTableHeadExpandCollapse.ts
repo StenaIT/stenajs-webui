@@ -2,23 +2,18 @@ import { useCallback } from "react";
 import {
   useStandardTableActions,
   useStandardTableConfig,
-  useStandardTableId,
   useStandardTableState
 } from "./UseStandardTableConfig";
-import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
 export const useTableHeadExpandCollapse = <TItem>(
   items: Array<TItem> | undefined
 ) => {
-  const tableId = useStandardTableId();
   const { keyResolver } = useStandardTableConfig();
   const {
     expandedRows: { selectedIds }
   } = useStandardTableState();
   const {
-    actions: {
-      expandedRows: { setSelectedIds, clearSelectedIds }
-    },
+    actions: { collapseAll, expandByIds },
     dispatch
   } = useStandardTableActions();
 
@@ -29,25 +24,18 @@ export const useTableHeadExpandCollapse = <TItem>(
   const toggleExpanded = useCallback(() => {
     if (items) {
       if (allItemsAreExpanded) {
-        dispatch({
-          reducerId: getReducerIdFor(tableId, "expandedRows"),
-          action: clearSelectedIds()
-        });
+        dispatch(collapseAll());
       } else {
-        dispatch({
-          reducerId: getReducerIdFor(tableId, "expandedRows"),
-          action: setSelectedIds(items.map(item => keyResolver(item)))
-        });
+        dispatch(expandByIds(items.map(item => keyResolver(item))));
       }
     }
   }, [
-    tableId,
     allItemsAreExpanded,
-    clearSelectedIds,
+    collapseAll,
     dispatch,
     items,
     keyResolver,
-    setSelectedIds
+    expandByIds
   ]);
 
   return {

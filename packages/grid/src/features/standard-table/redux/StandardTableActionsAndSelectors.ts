@@ -1,6 +1,7 @@
 import {
   createSelectedIdsActions,
   createSortOrderActions,
+  ReducerIdGateAction,
   SelectedIdsAction,
   SelectedIdsActions,
   SelectedIdsSelectors,
@@ -10,7 +11,7 @@ import {
 } from "@stenajs-webui/redux";
 import { StandardTableState } from "./StandardTableReducer";
 
-export interface StandardTableActions<TColumnKey extends string> {
+export interface InternalStandardTableActions<TColumnKey extends string> {
   sortOrder: SortOrderActions<TColumnKey>;
   selectedIds: SelectedIdsActions;
   expandedRows: SelectedIdsActions;
@@ -29,22 +30,22 @@ export interface StandardTableActionsAndSelectors<
   TStoreState,
   TColumnKey extends string
 > {
-  actions: StandardTableActions<TColumnKey>;
+  actions: InternalStandardTableActions<TColumnKey>;
   selectors: StandardTableSelectors<TStoreState, TColumnKey>;
 }
 
-export type StandardTableAction<TColumnKey extends string> =
-  | SortOrderAction<TColumnKey>
-  | SelectedIdsAction;
+export type InternalStandardTableAction<TColumnKey extends string> =
+  | ReducerIdGateAction<SortOrderAction<TColumnKey>>
+  | ReducerIdGateAction<SelectedIdsAction>;
 
 export type StandardTableStateSelector<
   TStoreState,
   TColumnKey extends string
 > = (state: TStoreState) => StandardTableState<TColumnKey>;
 
-export const createStandardTableActions = <
+export const createInternalStandardTableActions = <
   TColumnKey extends string
->(): StandardTableActions<TColumnKey> => ({
+>(): InternalStandardTableActions<TColumnKey> => ({
   sortOrder: createSortOrderActions<TColumnKey>(),
   selectedIds: createSelectedIdsActions(),
   expandedRows: createSelectedIdsActions()

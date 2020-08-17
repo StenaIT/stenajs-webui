@@ -5,6 +5,7 @@ import { StandardTableConfig } from "../config/StandardTableConfig";
 import {
   StandardTableActionsContext,
   StandardTableConfigContext,
+  StandardTableInternalActionsContext,
   StandardTableStateContext,
   StandardTableTableIdContext,
   TableContext
@@ -81,7 +82,9 @@ export const StandardTable = function StandardTable<
 
   const { state, actions, dispatch } = currentTableContext;
 
-  const actionsContext = useMemo(() => {
+  const actionsContext = useMemo<
+    StandardTableInternalActionsContext<TColumnKey>
+  >(() => {
     return {
       actions,
       dispatch

@@ -2,20 +2,49 @@
 
 ## Upcoming
 
+## 1.0.7
+
+### Hotfix
+
+`reducerIdGate` did not handle actions with unexpected form.
+Such actions can be dispatched by Redux itself, or middlewares.
+Such actions are now just passed down to the internal reducer,
+which can handle the actions as they see fit.
+
+## 1.0.6
+
+#### Redux package types updated
+
+It now use type `Reducer` type from `redux` instead of `react`.
+This makes it compatible with `combineReducers` from Redux.
+
 ## 1.0.5
-
-### Fixes
-
-- `Select` component now has the same focused box shadow that is used in input fields.
-- `Link` component now uses an 1px outline instead of border.
 
 ### Improvements
 
+- `Select` component now has the same focused box shadow that is used in input fields.
+- `Link` component now uses an 1px outline instead of border.
 - `StandardTableConfig` now infers column names from row object automatically.
 - `StandardTableConfig` now supports expand collapse button in header row (set `showHeaderExpandCollapse` to `true`)
 
+#### New actions for `StandardTable`
+
+  `StandardTable` is now using new higher order reducers, which require composing nested actions.
+  This made it harder to create actions in the apps, and these new actions help.
+
+  - selectByIds(ids)
+  - clearSelection()
+  - expandByIds(ids)
+  - collapseAll()
+  - sortBy(columnId, desc?)
+  - clearSortOrder()
+
+New actions are exposed by `useLocalStateTableContext` hook,
+and can be created manually using `createStandardTableActions` function.
+
 ### Breaking changes
 
+- New actions are breaking, if the app is using them via `useLocalStateTableContext`.
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
     - Use `createStandardTableInitialState` to maintain compatibility.
 
