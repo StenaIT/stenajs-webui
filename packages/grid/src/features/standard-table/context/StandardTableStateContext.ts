@@ -1,7 +1,6 @@
 import { createContext, Dispatch } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { StandardTableState } from "../redux/StandardTableReducer";
-import { ReducerIdGateAction } from "@stenajs-webui/redux";
 import {
   StandardTableAction,
   StandardTableActions
@@ -20,9 +19,7 @@ export interface StandardTableInternalActionsContext<
  * connect the table to a state.
  */
 export interface TableContext<TColumnKeys extends string> {
-  dispatch: Dispatch<
-    ReducerIdGateAction<InternalStandardTableAction<TColumnKeys>>
-  >;
+  dispatch: Dispatch<InternalStandardTableAction<TColumnKeys>>;
   state: StandardTableState<TColumnKeys>;
   actions: StandardTableActions<TColumnKeys>;
 }
