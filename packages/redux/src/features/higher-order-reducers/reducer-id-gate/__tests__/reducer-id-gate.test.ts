@@ -43,11 +43,13 @@ describe("reducer-id-gate", () => {
         });
       });
       describe("and state is set", () => {
-        it("does not call internal reducer", () => {
+        it("just returns state", () => {
           const innerReducer = fn();
+          const state = { hello: "world" };
           const reducer = reducerIdGate("test", innerReducer);
-          reducer({}, { type: "@@INIT" } as any);
+          const r = reducer(state, { type: "@@INIT" } as any);
           expect(innerReducer).not.toHaveBeenCalled();
+          expect(r === state).toBe(true);
         });
       });
     });
