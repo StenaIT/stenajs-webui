@@ -1,5 +1,5 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
-import { Select, selectThemeDark } from "@stenajs-webui/select";
+import { Select } from "@stenajs-webui/select";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
@@ -66,7 +66,7 @@ storiesOf("select/Select", module)
                   label: "Dennis the menace"
                 }
               ]}
-              theme={selectThemeDark}
+              variant={"dark"}
             />
           </Spacing>
         </Indent>
@@ -96,8 +96,8 @@ storiesOf("select/Select", module)
                 label: "Group heading 2",
                 options: [
                   {
-                    value: "Johan",
-                    label: "Johan"
+                    value: "Niklas",
+                    label: "Niklas"
                   },
                   {
                     value: "Dennis the menace",
@@ -132,7 +132,7 @@ storiesOf("select/Select", module)
                   label: "Dennis the menace"
                 }
               ]}
-              theme={selectThemeDark}
+              variant={"dark"}
             />
           </Spacing>
         </Indent>

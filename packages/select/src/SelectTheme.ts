@@ -59,7 +59,7 @@ export interface SelectTheme {
   };
   multiSelect: {
     backgroundColor: string;
-    color: string;
+    textColor: string;
     removeButtonBackgroundColor: string;
     removeButtonTextColor: string;
     removeButtonHoverBackgroundColor: string;
@@ -70,64 +70,64 @@ export interface SelectTheme {
 export const defaultSelectTheme: SelectTheme = {
   arrowColor: {
     focused: {
-      hover: "primaryText",
-      standard: "separator"
+      hover: "var(--lhds-color-ui-500)",
+      standard: "var(--lhds-color-ui-500)"
     },
     closed: {
-      hover: "primaryTet",
-      standard: "separator"
+      hover: "var(--lhds-color-ui-500)",
+      standard: "var(--lhds-color-ui-500)"
     }
   },
   clearButtonColor: {
-    hover: "primaryText",
-    standard: "separator"
+    hover: "var(--lhds-color-ui-500)",
+    standard: "var(--lhds-color-ui-500)"
   },
   input: {
-    backgroundColor: "white",
-    border: `1px solid inputBorder`,
-    borderFocused: `1px solid inputBorderFocused`,
-    borderColor: "inputBorder",
-    borderColorFocused: "inputBorderFocused",
-    disabledBackgroundColor: "disabledBackground",
-    boxShadowFocused: "inputBoxShadowFocused",
-    fontFamily: "primary",
-    fontSize: "normal",
+    backgroundColor: "var(--swui-field-bg-enabled)",
+    border: `1px solid var(--swui-field-border-color)`,
+    borderFocused: `1px solid var(--swui-field-border-color-hover)`,
+    borderColor: "var(--swui-field-border-color)",
+    borderColorFocused: "var(--swui-field-border-color-hover)",
+    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    boxShadowFocused: "var(--swui-field-focus-shadow)",
+    fontFamily: "var(--swui-font-primary)",
+    fontSize: "var(--swui-font-size-inputs)",
     height: "32px",
     minHeight: "32px",
-    placeholderColor: "separator",
-    textColor: "primaryText",
-    borderRadius: "4px"
+    placeholderColor: "var(--swui-field-border-color-disabled)",
+    textColor: "var(--swui-field-text-color)",
+    borderRadius: "var(--swui-field-border-radius)"
   },
   loadingIndicator: {
-    textColor: "primaryText"
+    textColor: "var(--swui-field-text-color)"
   },
   menu: {
-    activeBackgroundColor: "#F2F3F5",
-    activeTextColor: "primaryText",
-    selectedItemActiveBackgroundColor: "#F2F3F5",
-    selectedItemActiveTextColor: "primaryText",
-    disabledTextColor: "disabledText",
-    disabledBackgroundColor: "disabledBackground",
-    textColor: "primaryText",
-    backgroundColor: "white",
-    hoverTextColor: "primaryText",
-    hoverBackgroundColor: "#F2F3F5",
-    selectedItemTextColor: "primaryText",
-    selectedItemHoverTextColor: "primaryText",
-    selectedItemBackgroundColor: "white",
-    selectedItemHoverBackgroundColor: "#F2F3F5",
+    activeBackgroundColor: "var(--lhds-color-blue-50)",
+    activeTextColor: "var(--swui-field-text-color)",
+    selectedItemActiveBackgroundColor: "var(--lhds-color-blue-500)",
+    selectedItemActiveTextColor: "var(--lhds-color-blue-50)",
+    disabledTextColor: "var(--swui-field-text-color-disabled)",
+    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    textColor: "var(--swui-field-text-color)",
+    backgroundColor: "var(--swui-field-bg-enabled)",
+    hoverTextColor: "var(--swui-field-text-color)",
+    hoverBackgroundColor: "var(--lhds-color-blue-50)",
+    selectedItemTextColor: "var(--swui-field-text-color)",
+    selectedItemHoverTextColor: "var(--swui-field-text-color)",
+    selectedItemBackgroundColor: "var(--lhds-color-blue-50)",
+    selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
     zIndex: 1
   },
   menuPortal: {
     zIndex: 1
   },
   multiSelect: {
-    backgroundColor: "#B9D8DF",
-    color: "primaryText",
-    removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: "primaryText",
-    removeButtonHoverBackgroundColor: "primaryBgDark",
-    removeButtonHoverTextColor: "white"
+    backgroundColor: "var(--swui-primary-action-color)",
+    textColor: "var(--lhds-color-blue-50)",
+    removeButtonBackgroundColor: "transparent",
+    removeButtonTextColor: "var(--swui-white)",
+    removeButtonHoverBackgroundColor: "var(--swui-primary-action-color-hover)",
+    removeButtonHoverTextColor: "var(--swui-white)"
   }
 };
 
@@ -135,15 +135,15 @@ export const selectThemeDark: SelectTheme = {
   arrowColor: {
     focused: {
       hover: "white",
-      standard: "separator"
+      standard: "var(--lhds-color-ui-500)"
     },
     closed: {
       hover: "white",
-      standard: "separator"
+      standard: "var(--lhds-color-ui-500)"
     }
   },
   clearButtonColor: {
-    standard: "separator",
+    standard: "var(--lhds-color-ui-500)",
     hover: "white"
   },
   input: {
@@ -152,10 +152,10 @@ export const selectThemeDark: SelectTheme = {
     borderFocused: `1px solid #92a3b5`,
     borderColor: "transparent",
     borderColorFocused: "#92a3b5",
-    disabledBackgroundColor: "disabledBackground",
-    boxShadowFocused: "inputBoxShadowFocused",
-    fontFamily: "primary",
-    fontSize: "normal",
+    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    boxShadowFocused: "var(--swui-field-focus-shadow)",
+    fontFamily: "var(--swui-font-primary)",
+    fontSize: "var(--swui-font-size-inputs)",
     height: "32px",
     minHeight: "32px",
     placeholderColor: "white",
@@ -170,8 +170,8 @@ export const selectThemeDark: SelectTheme = {
     activeTextColor: "white",
     selectedItemActiveBackgroundColor: "#6F7E90",
     selectedItemActiveTextColor: "white",
-    disabledTextColor: "disabledText",
-    disabledBackgroundColor: "disabledBackground",
+    disabledTextColor: "var(--swui-text-disabled-color)",
+    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
     backgroundColor: "#4a5d73",
     textColor: "white",
     hoverTextColor: "white",
@@ -187,10 +187,10 @@ export const selectThemeDark: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
-    color: "primaryText",
+    textColor: "var(--lhds-color-ui-500)",
     removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: "primaryText",
-    removeButtonHoverBackgroundColor: "primaryBgDark",
+    removeButtonTextColor: "var(--lhds-color-ui-500)",
+    removeButtonHoverBackgroundColor: "#226F81",
     removeButtonHoverTextColor: "white"
   }
 };

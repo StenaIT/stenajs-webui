@@ -1,29 +1,38 @@
-import { Omit } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import AsyncComponent, { Props } from "react-select/async";
-import { useSelectTheme } from "../../hooks/useSelectTheme";
-import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
+import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
+import { ClearIndicator, MultiValue, VariantContext } from "../..";
 
-interface AsyncSelectProps<T> extends Omit<Props<T>, "theme"> {
-  theme?: SelectTheme;
+interface AsyncSelectProps<T> extends Props<T> {
+  variant?: "dark" | "light";
 }
 
 export const AsyncSelect = <T extends {}>({
-  theme = defaultSelectTheme,
+  variant = "light",
   styles,
   ...selectProps
 }: AsyncSelectProps<T>) => {
-  const themeFields = useSelectTheme(theme);
-
   const selectStyles = useMemo(
-    () => mergeStyles(createStylesFromTheme(theme, themeFields), styles),
-    [theme, themeFields, styles]
+    () =>
+      mergeStyles(
+        createStylesFromTheme(
+          variant === "light" ? defaultSelectTheme : selectThemeDark
+        ),
+        styles
+      ),
+    [variant, styles]
   );
 
   return (
-    <AsyncComponent styles={selectStyles} {...(selectProps as Props<T>)} />
+    <VariantContext.Provider value={variant}>
+      <AsyncComponent
+        styles={selectStyles}
+        components={{ ...selectProps.components, MultiValue, ClearIndicator }}
+        {...selectProps}
+      />
+    </VariantContext.Provider>
   );
 };

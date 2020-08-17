@@ -6,12 +6,10 @@ import { components } from "react-select";
 import { MultiValueProps } from "react-select/src/components/MultiValue";
 import { OptionProps } from "react-select/src/components/Option";
 import {
-  ActionMeta,
-  GroupedOptionsType,
-  OptionsType
-} from "react-select/src/types";
-import { SelectComponentsConfig } from "react-select/src/components";
-import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
+  defaultSelectTheme,
+  SelectTheme,
+  selectThemeDark
+} from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
@@ -19,6 +17,12 @@ import {
   InternalDropdownOption
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
+import {
+  ActionMeta,
+  GroupedOptionsType,
+  OptionsType
+} from "react-select/src/types";
+import { SelectComponentsConfig } from "react-select/src/components";
 
 export type OnChangeValue<TData> =
   | OptionsType<DropdownOption<TData>>
@@ -73,13 +77,15 @@ export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
   value,
-  theme = defaultSelectTheme,
+  variant = "light",
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
 }: GroupedMultiSelectProps<TData>): React.ReactElement<GroupedMultiSelectProps<
   TData
 >> => {
+  const theme = variant === "light" ? defaultSelectTheme : selectThemeDark;
+
   const Option = (props: OptionProps<DropdownOption<TData>>) => {
     if (props.data.internalOptions) {
       return (
@@ -145,13 +151,18 @@ export const GroupedMultiSelect = <TData extends {}>({
   return (
     <Select
       {...selectProps}
+      // @ts-ignore
       onChange={createOnChange(onChange)}
       hideSelectedOptions={false}
-      components={{ ...selectProps.components, MultiValue, Option }}
+      components={{
+        ...selectProps.components,
+        MultiValue,
+        Option
+      }}
       isMulti={true}
       options={internalOptions}
       value={internalValue}
-      theme={theme}
+      variant={variant}
     />
   );
 };

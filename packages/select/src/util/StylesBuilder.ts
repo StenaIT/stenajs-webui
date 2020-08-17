@@ -1,122 +1,122 @@
-import { StylesConfig } from "react-select/src/styles";
-import { SelectThemeColors, SelectThemeFields } from "../SelectColors";
 import { SelectTheme } from "../SelectTheme";
+import { StylesConfig } from "react-select/src/styles";
 
 const resolveOptionBackgroundColor = (
-  colors: SelectThemeColors,
+  colors: SelectTheme["menu"],
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
 ): string | undefined => {
   if (isDisabled) {
-    return colors.menuDisabledBackgroundColor;
+    return colors.disabledBackgroundColor;
   } else if (isSelected && isFocused) {
-    return colors.menuSelectedItemHoverBackgroundColor;
+    return colors.selectedItemHoverBackgroundColor;
   } else if (isSelected) {
-    return colors.menuSelectedItemBackgroundColor;
+    return colors.selectedItemBackgroundColor;
   } else if (isFocused) {
-    return colors.menuHoverBackgroundColor;
+    return colors.hoverBackgroundColor;
   } else {
     return undefined;
   }
 };
 
 const resolveOptionColor = (
-  colors: SelectThemeColors,
+  colors: SelectTheme["menu"],
   isDisabled: boolean,
   isSelected: boolean,
   isFocused: boolean
 ): string | undefined => {
   if (isDisabled) {
-    return colors.menuDisabledTextColor;
+    return colors.disabledTextColor;
   } else if (isSelected && isFocused) {
-    return colors.menuSelectedItemHoverTextColor;
+    return colors.selectedItemHoverTextColor;
   } else if (isSelected) {
-    return colors.menuSelectedItemTextColor;
+    return colors.selectedItemTextColor;
   } else if (isFocused) {
-    return colors.menuHoverTextColor;
+    return colors.hoverTextColor;
   } else {
     return undefined;
   }
 };
 
-export const createStylesFromTheme = (
-  selectTheme: SelectTheme,
-  { colors, fonts, fontSizes }: SelectThemeFields
-): StylesConfig => ({
+export const createStylesFromTheme = ({
+  menu,
+  menuPortal,
+  input,
+  multiSelect,
+  clearButtonColor,
+  arrowColor,
+  loadingIndicator
+}: SelectTheme): StylesConfig => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input,
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
     backgroundColor: resolveOptionBackgroundColor(
-      colors,
+      menu,
       isDisabled,
       isSelected,
       isFocused
     ),
-    color: resolveOptionColor(colors, isDisabled, isSelected, isFocused),
+    color: resolveOptionColor(menu, isDisabled, isSelected, isFocused),
     cursor: isDisabled ? "not-allowed" : "default",
-    whiteSpace: selectTheme.menu.whiteSpace || base.whiteSpace,
+    whiteSpace: menu.whiteSpace || base.whiteSpace,
     ":active": {
       backgroundColor:
         !isDisabled &&
         (isSelected
-          ? colors.menuSelectedItemActiveBackgroundColor
-          : colors.menuActiveBackgroundColor),
+          ? menu.selectedItemActiveBackgroundColor
+          : menu.activeBackgroundColor),
       color:
         !isDisabled &&
-        (isSelected
-          ? colors.menuSelectedItemActiveTextColor
-          : colors.menuActiveTextColor)
+        (isSelected ? menu.selectedItemActiveTextColor : menu.activeTextColor)
     }
   }),
   control: (base, { isFocused, isDisabled }) => ({
     ...base,
     // none of react-selects styles are passed to <View />
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input,
-    minHeight: selectTheme.input.minHeight,
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
+    minHeight: input.minHeight,
     backgroundColor: isDisabled
-      ? colors.inputDisabledBackgroundColor
-      : colors.inputBackgroundColor,
-    borderRadius: selectTheme.input.borderRadius,
-    border: isFocused ? colors.inputBorderFocused : colors.inputBorder,
-    borderColor: isFocused
-      ? colors.inputBorderColorFocused
-      : colors.inputBorderColor,
-    boxShadow: isFocused ? colors.inputBoxShadowFocused : undefined,
+      ? input.disabledBackgroundColor
+      : input.backgroundColor,
+    borderRadius: input.borderRadius,
+    border: isFocused ? input.borderFocused : input.border,
+    borderColor: isFocused ? input.borderColorFocused : input.borderColor,
+    boxShadow: isFocused ? input.boxShadowFocused : undefined,
     "&:hover": {
-      border: colors.inputBorderFocused,
-      borderColor: colors.inputBorderColorFocused
+      border: input.borderFocused,
+      borderColor: input.borderColorFocused
     }
   }),
   singleValue: base => ({
     ...base,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input,
-    color: colors.inputTextColor
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
+    color: input.textColor
   }),
   noOptionsMessage: base => ({
     ...base,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize
   }),
   input: base => ({
     ...base,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input,
-    color: colors.inputTextColor
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
+    color: input.textColor
   }),
   groupHeading: base => ({
     ...base,
-    fontFamily: fonts.input
+    fontFamily: input.fontFamily
   }),
   multiValueLabel: base => ({
     ...base,
-    backgroundColor: colors.multiSelectBackgroundColor,
-    color: colors.multiSelectTextColor,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input
+    backgroundColor: multiSelect.backgroundColor,
+    color: multiSelect.textColor,
+    fontFamily: input.fontFamily,
+    fontSize: "12px"
   }),
   indicatorSeparator: base => ({
     ...base,
@@ -125,16 +125,16 @@ export const createStylesFromTheme = (
   clearIndicator: base => ({
     ...base,
     padding: "5px",
-    color: colors.clearButtonColorStandard,
+    color: clearButtonColor.standard,
     "&:hover": {
-      color: colors.clearButtonColorHover
+      color: clearButtonColor.hover
     }
   }),
   placeholder: base => ({
     ...base,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input,
-    color: colors.inputPlaceholderColor
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
+    color: input.placeholderColor
   }),
   container: base => ({
     ...base
@@ -146,41 +146,53 @@ export const createStylesFromTheme = (
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
     padding: "5px",
-    color: isFocused ? colors.arrowStandardFocused : colors.arrowStandardClosed,
+    color: isFocused ? arrowColor.focused.standard : arrowColor.closed.standard,
     "&:hover": {
-      color: isFocused ? colors.arrowHoverFocused : colors.arrowHoverClosed
+      color: isFocused ? arrowColor.focused.hover : arrowColor.closed.hover
+    },
+    svg: {
+      width: 14,
+      height: 14
     }
   }),
   menu: base => ({
     ...base,
-    backgroundColor: colors.menuBackgroundColor,
-    color: colors.menuTextColor,
-    minWidth: selectTheme.menu.minWidth || base.minWidth,
-    zIndex: selectTheme.menu.zIndex,
-    width: selectTheme.menu.width || base.width
+    backgroundColor: menu.backgroundColor,
+    color: menu.textColor,
+    minWidth: menu.minWidth || base.minWidth,
+    zIndex: menu.zIndex,
+    width: menu.width || base.width,
+    border: input.borderFocused
   }),
   menuPortal: base => ({
     ...base,
-    zIndex: selectTheme.menuPortal.zIndex
+    zIndex: menuPortal.zIndex
   }),
   multiValueRemove: styles => ({
     ...styles,
-    backgroundColor: colors.multiSelectRemoveButtonBackgroundColor,
+    backgroundColor: multiSelect.removeButtonBackgroundColor,
     ":hover": {
-      color: colors.multiSelectRemoveButtonHoverTextColor,
-      backgroundColor: colors.multiSelectRemoveButtonHoverBackgroundColor
+      color: multiSelect.removeButtonHoverTextColor,
+      backgroundColor: multiSelect.removeButtonHoverBackgroundColor
     },
-    color: colors.multiSelectRemoveButtonTextColor
+    color: multiSelect.removeButtonTextColor,
+    borderRadius: "50%",
+    width: 20,
+    height: 20,
+    padding: 4
   }),
   multiValue: base => ({
     ...base,
-    backgroundColor: colors.multiSelectBackgroundColor,
-    color: colors.multiSelectTextColor
+    backgroundColor: multiSelect.backgroundColor,
+    color: multiSelect.textColor,
+    fontFamily: input.fontFamily,
+    fontSize: "12px",
+    alignItems: "center"
   }),
   loadingMessage: base => ({
     ...base,
-    color: colors.loadingIndicatorTextColor,
-    fontFamily: fonts.input,
-    fontSize: fontSizes.input
+    color: loadingIndicator.textColor,
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize
   })
 });
