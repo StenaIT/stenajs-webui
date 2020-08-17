@@ -16,7 +16,11 @@ export const reducerIdGate = <TState, TInnerAction extends Action = AnyAction>(
   reducer: Reducer<TState, TInnerAction>
 ): ReducerIdGateReducer<TState, TInnerAction> => (state, action) => {
   if (!isValidReducerIdGateAction(action)) {
-    return reducer(state, action as any);
+    if (state === undefined) {
+      return reducer(undefined, {} as any);
+    } else {
+      return state;
+    }
   }
   if (state === undefined) {
     return reducer(state, action.action);
