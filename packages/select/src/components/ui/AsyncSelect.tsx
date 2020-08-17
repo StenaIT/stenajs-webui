@@ -4,7 +4,9 @@ import AsyncComponent, { Props } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
-import { ClearIndicator, MultiValue, VariantContext } from "../..";
+import { VariantContext } from "../../util/variantContext";
+import { MultiValue } from "./MultiValue";
+import { ClearIndicator } from "./ClearIndicator";
 
 interface AsyncSelectProps<T> extends Props<T> {
   variant?: "dark" | "light";

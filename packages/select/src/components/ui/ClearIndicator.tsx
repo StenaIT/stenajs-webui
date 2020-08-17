@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useContext } from "react";
 import { IndicatorProps } from "react-select/src/components/indicators";
-import { VariantContext } from "../..";
 import { FlatButton } from "@stenajs-webui/elements";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
+import { VariantContext } from "../../util/variantContext";
 
 export const ClearIndicator: React.FC<IndicatorProps<any>> = ({
   innerProps: { onMouseDown }
