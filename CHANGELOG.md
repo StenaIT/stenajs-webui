@@ -2,6 +2,15 @@
 
 ## Upcoming
 
+## 1.0.7
+
+### Hotfix
+
+`reducerIdGate` did not handle actions with unexpected form.
+Such actions can be dispatched by Redux itself, or middlewares.
+Such actions are now just passed down to the internal reducer,
+which can handle the actions as they see fit.
+
 ## 1.0.6
 
 #### Redux package types updated
