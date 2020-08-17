@@ -2,6 +2,13 @@
 
 ## Upcoming
 
+## 1.0.6
+
+#### Redux package types updated
+
+It now use type `Reducer` type from `redux` instead of `react`.
+This makes it compatible with `combineReducers` from Redux.
+
 ## 1.0.5
 
 ### Improvements
