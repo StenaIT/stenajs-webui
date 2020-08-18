@@ -4,7 +4,7 @@ import AsyncComponent, { Props } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
-import { VariantContext } from "../../util/variantContext";
+import { VariantContext } from "../../util/VariantContext";
 import { MultiValue } from "./MultiValue";
 import { ClearIndicator } from "./ClearIndicator";
 

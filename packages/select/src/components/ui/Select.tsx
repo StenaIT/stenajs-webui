@@ -5,9 +5,9 @@ import { Props } from "react-select/src/Select";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "../../util/StylesMerger";
-import { VariantContext } from "../../util/variantContext";
 import { MultiValue } from "./MultiValue";
 import { ClearIndicator } from "./ClearIndicator";
+import { VariantContext } from "../../util/VariantContext";
 
 export interface SelectProps<T> extends Props<T> {
   variant?: "dark" | "light";

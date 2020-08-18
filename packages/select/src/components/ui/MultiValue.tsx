@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { MultiValueProps } from "react-select/src/components/MultiValue";
 import { Chip } from "@stenajs-webui/elements";
 import { Space } from "@stenajs-webui/core";
-import { VariantContext } from "../../util/variantContext";
+import { VariantContext } from "../../util/VariantContext";
 
 export const MultiValue: React.FC<MultiValueProps<any>> = ({
   removeProps,
