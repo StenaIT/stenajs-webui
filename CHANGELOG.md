@@ -2,6 +2,12 @@
 
 ## Upcoming
 
+## 1.0.8
+
+### Bug fix
+
+onChange did not properly use latest value in editor cells.
+
 ## 1.0.7
 
 ### Hotfix
