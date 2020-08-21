@@ -95,6 +95,7 @@ export const useEditableCell = <TValue>(
     undefined
   );
   const revertableValue = useRevertableValue<TValue>(value);
+  const { getValue, revert } = revertableValue;
 
   const startEditing = useCallback(
     (keyEvent?: KeyDownEvent) => {
@@ -115,10 +116,10 @@ export const useEditableCell = <TValue>(
         onStopEditing();
       }
       if (onChange) {
-        onChange(revertableValue.value);
+        onChange(getValue());
       }
     }
-  }, [isEditable, onChange, onStopEditing, revertableValue, setIsEditing]);
+  }, [isEditable, onChange, onStopEditing, getValue, setIsEditing]);
 
   const stopEditingAndRevert = useCallback(() => {
     if (isEditable) {
@@ -126,9 +127,9 @@ export const useEditableCell = <TValue>(
       if (onStopEditing) {
         onStopEditing();
       }
-      revertableValue.revert();
+      revert();
     }
-  }, [isEditable, onStopEditing, revertableValue, setIsEditing]);
+  }, [isEditable, onStopEditing, revert, setIsEditing]);
 
   const onKeyDown = useMemo(
     () =>
