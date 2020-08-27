@@ -5,7 +5,6 @@ import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
-import { useTableResetWhenNewData } from "../hooks/UseTableResetWhenNewData";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse";
 import { FlatButton } from "@stenajs-webui/elements";
@@ -34,8 +33,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     onClickCheckbox,
     selectionIsEmpty
   } = useTableHeadCheckbox(items);
-
-  useTableResetWhenNewData(items);
 
   const checkboxDisabled = !items || items.length === 0;
 
