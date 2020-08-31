@@ -40,7 +40,6 @@ export * from "./features/standard-table/hooks/UseColumnValueResolver";
 export * from "./features/standard-table/hooks/UseRowCheckbox";
 export * from "./features/standard-table/hooks/UseStandardTableConfig";
 export * from "./features/standard-table/hooks/UseTableHeadCheckbox";
-export * from "./features/standard-table/hooks/UseTableResetWhenNewData";
 export * from "./features/standard-table/hooks/UseTableSortHeader";
 export * from "./features/standard-table/hooks/UseLocalStateTableContext";
 
