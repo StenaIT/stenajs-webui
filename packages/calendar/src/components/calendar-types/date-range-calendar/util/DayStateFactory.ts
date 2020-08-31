@@ -22,11 +22,16 @@ export const buildDayState = (
       statePerMonth
     );
   }
+
+  let state = statePerMonth;
+
   if (start) {
-    return addDayStateHighlights(statePerMonth, start, ["selected"]);
+    state = addDayStateHighlights(state, start, ["selected"]);
   }
+
   if (end) {
-    return addDayStateHighlights(statePerMonth, end, ["selected"]);
+    state = addDayStateHighlights(state, end, ["selected"]);
   }
-  return statePerMonth;
+
+  return state;
 };
