@@ -1,8 +1,10 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import {
   DateRangeCalendarOnChangeValue,
   DateRangeFocusedInput
 } from "../../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { DayData } from "../../../../util/calendar/CalendarDataFactory";
+import { isAfter } from "date-fns";
 
 export const useDateRangeInput = (
   value: DateRangeCalendarOnChangeValue,
@@ -36,55 +38,59 @@ export const useDateRangeInput = (
     setShowingFocusHighlight(false);
   }, [setShowingCalendar, setShowingFocusHighlight]);
 
-  const setStartDate = useCallback(
-    (startDate: Date) => {
-      if (onChange) {
-        onChange({ startDate, endDate: value.endDate });
-      }
-      if (focusedInput === "endDate") {
-        setShowingFocusHighlight(false);
-        setTimeout(() => setShowingCalendar(false), 150);
-      } else if (endDateInputRef.current) {
-        endDateInputRef.current.focus();
+  const onClickDay = useCallback(
+    (day: DayData) => {
+      if (focusedInput === "startDate") {
+        onChange({
+          startDate: day.date,
+          endDate: value.endDate
+        });
+        if (!value.endDate) {
+          setFocusedInput("endDate");
+        } else {
+          setTimeout(hideCalendar, 150);
+        }
+      } else if (focusedInput === "endDate") {
+        onChange({
+          startDate: value.startDate,
+          endDate: day.date
+        });
+        if (!value.startDate) {
+          setFocusedInput("startDate");
+        } else {
+          setTimeout(hideCalendar, 150);
+        }
       }
     },
-    [onChange, focusedInput, value.endDate]
+    [
+      focusedInput,
+      onChange,
+      setFocusedInput,
+      hideCalendar,
+      value.startDate,
+      value.endDate
+    ]
   );
 
-  const setEndDate = useCallback(
-    (endDate: Date) => {
-      if (onChange) {
-        onChange({ startDate: value.startDate, endDate });
-      }
-      if (focusedInput === "endDate") {
-        setShowingFocusHighlight(false);
-        setTimeout(() => setShowingCalendar(false), 150);
-      }
-    },
-    [onChange, focusedInput, value.startDate]
-  );
-
-  const onSelectDateRange = useCallback(
-    (dateRange: DateRangeCalendarOnChangeValue) => {
-      if (onChange) {
-        onChange(dateRange);
-      }
-    },
-    [onChange]
+  const startDateIsAfterEnd = useMemo(
+    () =>
+      value.startDate &&
+      value.endDate &&
+      isAfter(value.startDate, value.endDate),
+    [value.startDate, value.endDate]
   );
 
   return {
     showingCalendar,
     showingFocusHighlight,
-    setStartDate,
-    setEndDate,
     hideCalendar,
     showCalendarEndDate,
     showCalendarStartDate,
-    onSelectDateRange,
     focusedInput,
     setFocusedInput,
     startDateInputRef,
-    endDateInputRef
+    endDateInputRef,
+    onClickDay,
+    startDateIsAfterEnd
   };
 };
