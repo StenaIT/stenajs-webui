@@ -2,6 +2,12 @@
 
 ## Upcoming
 
+## 1.1.1
+
+### Hotfix
+
+- Fix focus on DateRangeInput when moving from start date to end date.
+
 ## 1.1.0
 
 ### Breaking changes
