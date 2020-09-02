@@ -23,7 +23,6 @@ import {
   OptionsType
 } from "react-select/src/types";
 import { SelectComponentsConfig } from "react-select/src/components";
-import { MultiValue as MultiValueComponent } from "./MultiValue";
 
 export type OnChangeValue<TData> =
   | OptionsType<DropdownOption<TData>>
@@ -140,7 +139,7 @@ export const GroupedMultiSelect = <TData extends {}>({
     option: MultiValueProps<InternalDropdownOption<TData>>
   ) => {
     return !("internalOptions" in option.data) ? (
-      <MultiValueComponent {...option} />
+      <components.MultiValue {...option} />
     ) : null;
   };
 

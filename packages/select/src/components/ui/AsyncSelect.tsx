@@ -4,8 +4,6 @@ import AsyncComponent, { Props } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { VariantContext } from "../../util/VariantContext";
-import { MultiValue } from "./MultiValue";
-import { ClearIndicator } from "./ClearIndicator";
 import { mergeStyles } from "react-select";
 
 interface AsyncSelectProps<T> extends Props<T> {
@@ -32,11 +30,7 @@ export const AsyncSelect = <T extends {}>({
 
   return (
     <VariantContext.Provider value={variant}>
-      <AsyncComponent
-        styles={selectStyles}
-        components={{ ...components, MultiValue, ClearIndicator }}
-        {...selectProps}
-      />
+      <AsyncComponent styles={selectStyles} {...selectProps} />
     </VariantContext.Provider>
   );
 };

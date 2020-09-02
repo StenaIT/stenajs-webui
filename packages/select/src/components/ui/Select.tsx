@@ -4,8 +4,6 @@ import SelectComponent, { mergeStyles } from "react-select";
 import { Props } from "react-select/src/Select";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
-import { MultiValue } from "./MultiValue";
-import { ClearIndicator } from "./ClearIndicator";
 import { VariantContext } from "../../util/VariantContext";
 
 export interface SelectProps<T> extends Props<T> {
@@ -32,11 +30,7 @@ export const Select = <T extends {}>({
 
   return (
     <VariantContext.Provider value={variant}>
-      <SelectComponent
-        styles={selectStyles}
-        components={{ ...components, MultiValue, ClearIndicator }}
-        {...selectProps}
-      />
+      <SelectComponent styles={selectStyles} {...selectProps} />
     </VariantContext.Provider>
   );
 };
