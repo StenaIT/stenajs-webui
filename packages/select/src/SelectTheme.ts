@@ -79,7 +79,7 @@ export const defaultSelectTheme: SelectTheme = {
     }
   },
   clearButtonColor: {
-    hover: "var(--lhds-color-ui-500)",
+    hover: "var(--lhds-color-ui-600)",
     standard: "var(--lhds-color-ui-500)"
   },
   input: {

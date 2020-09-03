@@ -128,7 +128,8 @@ export const createStylesFromTheme = ({
     color: clearButtonColor.standard,
     "&:hover": {
       color: clearButtonColor.hover
-    }
+    },
+    cursor: "pointer"
   }),
   placeholder: base => ({
     ...base,
@@ -179,7 +180,12 @@ export const createStylesFromTheme = ({
     borderRadius: "50%",
     width: 20,
     height: 20,
-    padding: 4
+    padding: 2,
+    margin: 2,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer"
   }),
   multiValue: base => ({
     ...base,
@@ -187,7 +193,9 @@ export const createStylesFromTheme = ({
     color: multiSelect.textColor,
     fontFamily: input.fontFamily,
     fontSize: "12px",
-    alignItems: "center"
+    alignItems: "center",
+    margin: 0,
+    marginRight: 2
   }),
   loadingMessage: base => ({
     ...base,

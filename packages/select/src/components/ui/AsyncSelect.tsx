@@ -13,20 +13,15 @@ interface AsyncSelectProps<T> extends Props<T> {
 export const AsyncSelect = <T extends {}>({
   variant = "light",
   styles,
-  components,
   ...selectProps
 }: AsyncSelectProps<T>) => {
-  const selectStyles = useMemo(
-    () =>
-      styles &&
-      mergeStyles(
-        createStylesFromTheme(
-          variant === "light" ? defaultSelectTheme : selectThemeDark
-        ),
-        styles
-      ),
-    [variant, styles]
-  );
+  const selectStyles = useMemo(() => {
+    const sourceStyles = createStylesFromTheme(
+      variant === "light" ? defaultSelectTheme : selectThemeDark
+    );
+
+    return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
+  }, [variant, styles]);
 
   return (
     <VariantContext.Provider value={variant}>
