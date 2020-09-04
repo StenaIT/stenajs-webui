@@ -4,7 +4,7 @@
 
 ### Breaking changes
 
-- `Select` has been updated according to design system. Resulting in removal of its theme.
+- `Select` has been updated according to design system. Resulting in removal of its theme property.
 - `Select` now has a variant property that can be either light or dark.
 
 ## 1.1.1
