@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import AsyncComponent, { Props } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
-import { VariantContext } from "../../util/VariantContext";
 import { mergeStyles } from "react-select";
 
 interface AsyncSelectProps<T> extends Props<T> {
@@ -23,9 +22,5 @@ export const AsyncSelect = <T extends {}>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
-  return (
-    <VariantContext.Provider value={variant}>
-      <AsyncComponent styles={selectStyles} {...selectProps} />
-    </VariantContext.Provider>
-  );
+  return <AsyncComponent styles={selectStyles} {...selectProps} />;
 };
