@@ -1,5 +1,5 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
-import { AsyncSelect, selectThemeDark } from "@stenajs-webui/select";
+import { AsyncSelect } from "@stenajs-webui/select";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
@@ -22,7 +22,7 @@ storiesOf("select/AsyncSelect", module)
               defaultOptions={[]}
               cacheOptions
               isSearchable
-              theme={selectThemeDark}
+              variant={"dark"}
             />
           </Spacing>
         </Indent>

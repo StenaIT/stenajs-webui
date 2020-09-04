@@ -3,8 +3,7 @@ import { Box, Indent, Spacing } from "@stenajs-webui/core";
 import {
   DropdownOption,
   GroupedMultiSelect,
-  OnChange,
-  selectThemeDark
+  OnChange
 } from "@stenajs-webui/select";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
@@ -105,7 +104,7 @@ storiesOf("select/GroupedMultiSelect", module)
                       ]
                     }
                   ]}
-                  theme={selectThemeDark}
+                  variant={"dark"}
                   value={store.state.values}
                 />
               </Spacing>

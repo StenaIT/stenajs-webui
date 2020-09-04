@@ -2,6 +2,11 @@
 
 ## Upcoming
 
+### Breaking changes
+
+- `Select` has been updated according to design system. Resulting in removal of its theme property.
+- `Select` now has a variant property that can be either light or dark.
+
 ## 1.1.1
 
 ### Hotfix
@@ -59,15 +64,15 @@ This makes it compatible with `combineReducers` from Redux.
 
 #### New actions for `StandardTable`
 
-  `StandardTable` is now using new higher order reducers, which require composing nested actions.
-  This made it harder to create actions in the apps, and these new actions help.
+`StandardTable` is now using new higher order reducers, which require composing nested actions.
+This made it harder to create actions in the apps, and these new actions help.
 
-  - selectByIds(ids)
-  - clearSelection()
-  - expandByIds(ids)
-  - collapseAll()
-  - sortBy(columnId, desc?)
-  - clearSortOrder()
+- selectByIds(ids)
+- clearSelection()
+- expandByIds(ids)
+- collapseAll()
+- sortBy(columnId, desc?)
+- clearSortOrder()
 
 New actions are exposed by `useLocalStateTableContext` hook,
 and can be created manually using `createStandardTableActions` function.
@@ -76,7 +81,7 @@ and can be created manually using `createStandardTableActions` function.
 
 - New actions are breaking, if the app is using them via `useLocalStateTableContext`.
 - `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
-    - Use `createStandardTableInitialState` to maintain compatibility.
+  - Use `createStandardTableInitialState` to maintain compatibility.
 
 ## 1.0.4
 
@@ -105,7 +110,6 @@ All reducer factories have been updated to no longer accept reducerId.
 The reason for this is the new reducerIdGate higher order reducer.
 
 Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
-
 
 ### New features
 
