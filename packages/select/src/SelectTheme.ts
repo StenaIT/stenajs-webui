@@ -114,7 +114,7 @@ export const defaultSelectTheme: SelectTheme = {
     hoverBackgroundColor: "var(--lhds-color-blue-50)",
     selectedItemTextColor: "var(--swui-field-text-color)",
     selectedItemHoverTextColor: "var(--swui-field-text-color)",
-    selectedItemBackgroundColor: "var(--lhds-color-blue-50)",
+    selectedItemBackgroundColor: "var(--swui-field-bg-enabled)",
     selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
     zIndex: 1
   },
@@ -143,7 +143,7 @@ export const selectThemeDark: SelectTheme = {
     }
   },
   clearButtonColor: {
-    standard: "var(--lhds-color-ui-500)",
+    standard: "var(--lhds-color-ui-400)",
     hover: "white"
   },
   input: {
@@ -187,9 +187,9 @@ export const selectThemeDark: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
-    textColor: "var(--lhds-color-ui-500)",
+    textColor: "var(--lhds-color-ui-700)",
     removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: "var(--lhds-color-ui-500)",
+    removeButtonTextColor: "var(--lhds-color-ui-700)",
     removeButtonHoverBackgroundColor: "#226F81",
     removeButtonHoverTextColor: "white"
   }
