@@ -3,12 +3,11 @@ import { Box, Row, Space, useMultiOnClickOutside } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import * as ReactDOM from "react-dom";
 import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
-  DateRangeCalendar,
   DateRangeCalendarOnChangeValue,
   DateRangeCalendarProps
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
@@ -20,6 +19,8 @@ import {
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
 import { Icon } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
+import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { buildDayState } from "../../calendar-types/date-range-calendar/util/DayStateFactory";
 
 export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
@@ -98,19 +99,22 @@ export const DateRangeInput = <T extends {}>({
   const outsideRef = useRef<HTMLDivElement>(null);
   const {
     hideCalendar,
-    onSelectDateRange,
-    setEndDate,
-    setStartDate,
     showCalendarEndDate,
     showCalendarStartDate,
     showingCalendar,
-    setFocusedInput,
     focusedInput,
     startDateInputRef,
-    endDateInputRef
+    endDateInputRef,
+    onClickDay,
+    startDateIsAfterEnd
   } = useDateRangeInput(value, onChange);
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
+
+  const statePerMonth = useMemo(
+    () => buildDayState(undefined, value.startDate, value.endDate),
+    [value]
+  );
 
   const popperContent = (
     <CalendarPopperContent
@@ -120,21 +124,16 @@ export const DateRangeInput = <T extends {}>({
       zIndex={zIndex}
       open={showingCalendar}
     >
-      <DateRangeCalendar
+      <CalendarWithMonthSwitcher
         {...calendarProps}
         startDateInFocus={
           focusedInput === "startDate" || focusedInput === "endDate"
             ? value[focusedInput]
             : undefined
         }
-        onChange={onSelectDateRange}
-        startDate={value.startDate}
-        endDate={value.endDate}
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-        focusedInput={focusedInput}
-        setFocusedInput={setFocusedInput}
+        statePerMonth={statePerMonth}
         theme={calendarTheme}
+        onClickDay={onClickDay}
       />
     </CalendarPopperContent>
   );
@@ -157,6 +156,7 @@ export const DateRangeInput = <T extends {}>({
                   width={width}
                   inputRef={startDateInputRef}
                   size={9}
+                  variant={startDateIsAfterEnd ? "error" : undefined}
                 />
                 <Space />
                 <Icon
@@ -175,6 +175,7 @@ export const DateRangeInput = <T extends {}>({
                   width={width}
                   inputRef={endDateInputRef}
                   size={9}
+                  variant={startDateIsAfterEnd ? "error" : undefined}
                 />
               </Row>
             </Box>

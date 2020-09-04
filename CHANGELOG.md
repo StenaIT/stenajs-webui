@@ -2,6 +2,36 @@
 
 ## Upcoming
 
+## 1.1.1
+
+### Hotfix
+
+- Fix focus on DateRangeInput when moving from start date to end date.
+
+## 1.1.0
+
+### Breaking changes
+
+- No longer clearing `StandardTable` state when new data is fetched.
+
+This caused prefilled checkboxes to be cleared.
+
+This must now be handled manually when there is new data in the table without it being
+unmounted between renders.
+
+- DateRangeInput now allows invalid date range.
+
+Previously, it would switch start date and end date if start date was after end date.
+Instead, it now highlights the inputs with error highlight.
+
+This means that you are no longer guaranteed that the range is valid.
+
+## 1.0.8
+
+### Bug fix
+
+onChange did not properly use latest value in editor cells.
+
 ## 1.0.7
 
 ### Hotfix
