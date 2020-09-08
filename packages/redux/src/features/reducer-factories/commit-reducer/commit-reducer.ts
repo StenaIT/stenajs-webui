@@ -1,5 +1,5 @@
-import { CommitReducerAction } from "./actions";
-import { CommitReducerState } from "./state";
+import { CommitReducerAction } from "./commit-actions";
+import { CommitReducerState } from "./commit-state";
 
 export const createCommitReducer = <TState>(
   id: string,

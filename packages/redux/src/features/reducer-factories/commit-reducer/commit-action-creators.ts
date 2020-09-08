@@ -2,7 +2,7 @@ import {
   ClearFilterValuesActionCreator,
   CommitFilterValuesActionCreator,
   SetFilterValuesActionCreator
-} from "./actions";
+} from "./commit-actions";
 
 export interface CommitReducerActions<TState> {
   setValues: SetFilterValuesActionCreator<TState>;

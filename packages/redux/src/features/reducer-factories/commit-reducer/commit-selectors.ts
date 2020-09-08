@@ -1,4 +1,4 @@
-import { CommitReducerState } from "./state";
+import { CommitReducerState } from "./commit-state";
 
 export type CommitReducerStateSelector<TStoreState, TState> = (
   state: TStoreState,

@@ -109,6 +109,16 @@ export const createEntityListReducer = <
       );
     }
 
+    case "ENTITY_LIST:ACTION_ON_ALL": {
+      const { action: innerAction } = action;
+      if (!reducer) {
+        throw new Error(
+          "No reducer specified, unable to handle 'actionByIndex'."
+        );
+      }
+      return state.map(item => reducer(item, innerAction));
+    }
+
     default:
       return state;
   }
