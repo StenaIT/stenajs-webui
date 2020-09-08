@@ -1,6 +1,12 @@
 # Changelog
 
-## Upcoming
+## 1.2.0
+
+### New features
+
+* `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
+* New reducer factory `editable-entity-reducer` which contains persisted and editable instances
+of entity.
 
 ### Breaking changes
 
