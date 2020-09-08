@@ -1,6 +1,7 @@
 import {
   EntityListActionByFieldsMatchAction,
   EntityListActionByIndexAction,
+  EntityListActionOnAllAction,
   EntityListAddAtEndAction,
   EntityListAddAtStartAction,
   EntityListClearListAction,
@@ -34,6 +35,9 @@ export interface EntityListActions<T, TInnerAction> {
     index: number,
     action: TInnerAction
   ) => EntityListActionByIndexAction<TInnerAction>;
+  actionOnAll: (
+    action: TInnerAction
+  ) => EntityListActionOnAllAction<TInnerAction>;
 }
 
 export const createEntityListActions = <
@@ -68,6 +72,10 @@ export const createEntityListActions = <
     actionByIndex: (index, action) => ({
       type: "ENTITY_LIST:ACTION_BY_INDEX",
       index,
+      action
+    }),
+    actionOnAll: action => ({
+      type: "ENTITY_LIST:ACTION_ON_ALL",
       action
     })
   };

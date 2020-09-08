@@ -6,11 +6,11 @@ export * from "./features/higher-order-reducers/record-object-reducer/record-obj
 
 export * from "./features/higher-order-reducers/reducer-id-gate/reducer-id-gate";
 
-export * from "./features/reducer-factories/commit-reducer/action-creators";
-export * from "./features/reducer-factories/commit-reducer/actions";
-export * from "./features/reducer-factories/commit-reducer/reducer";
-export * from "./features/reducer-factories/commit-reducer/selectors";
-export * from "./features/reducer-factories/commit-reducer/state";
+export * from "./features/reducer-factories/commit-reducer/commit-action-creators";
+export * from "./features/reducer-factories/commit-reducer/commit-actions";
+export * from "./features/reducer-factories/commit-reducer/commit-reducer";
+export * from "./features/reducer-factories/commit-reducer/commit-selectors";
+export * from "./features/reducer-factories/commit-reducer/commit-state";
 
 export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-actions";
 export * from "./features/higher-order-reducers/entity-list-reducer/entity-list-action-creators";
@@ -30,6 +30,10 @@ export * from "./features/reducer-factories/entity-reducer/entity-selectors";
 export * from "./features/reducer-factories/entity-crud-status-reducer/entity-crud-status-redux";
 
 export * from "./features/reducer-factories/modified-field-reducer/modified-field-redux";
+
+export * from "./features/reducer-factories/editable-entity-reducer/editable-entity-reducer";
+export * from "./features/reducer-factories/editable-entity-reducer/editable-entity-action-creators";
+export * from "./features/reducer-factories/editable-entity-reducer/editable-entity-actions";
 
 export * from "./features/reducer-factories/selected-ids-reducer/selected-ids-reducer";
 export * from "./features/reducer-factories/selected-ids-reducer/selected-ids-actions";

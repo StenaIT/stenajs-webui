@@ -10,7 +10,8 @@ export type EntityListAction<T, TInnerAction> =
   | EntityListRemoveAction<T>
   | EntityListToggleAction<T>
   | EntityListActionByFieldsMatchAction<T, TInnerAction>
-  | EntityListActionByIndexAction<TInnerAction>;
+  | EntityListActionByIndexAction<TInnerAction>
+  | EntityListActionOnAllAction<TInnerAction>;
 
 export interface EntityListSetListAction<T> {
   type: "ENTITY_LIST:SET_LIST";
@@ -68,5 +69,10 @@ export interface EntityListActionByFieldsMatchAction<T, TInnerAction> {
 export interface EntityListActionByIndexAction<TInnerAction> {
   type: "ENTITY_LIST:ACTION_BY_INDEX";
   index: number;
+  action: TInnerAction;
+}
+
+export interface EntityListActionOnAllAction<TInnerAction> {
+  type: "ENTITY_LIST:ACTION_ON_ALL";
   action: TInnerAction;
 }
