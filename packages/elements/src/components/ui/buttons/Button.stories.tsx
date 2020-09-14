@@ -160,6 +160,27 @@ storiesOf("elements/Buttons", module)
           </Column>
         )
       )}
+      {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
+        variant => (
+          <Column>
+            <LargeText>{variant} (disabled)</LargeText>
+            <Space />
+            <Row alignItems={"flex-start"} indent spacing>
+              {buttonSizes.map(size => (
+                <Indent>
+                  <PrimaryButton
+                    key={size}
+                    size={size}
+                    variant={variant}
+                    label={"Submit"}
+                    disabled
+                  />
+                </Indent>
+              ))}
+            </Row>
+          </Column>
+        )
+      )}
     </>
   ))
   .add("with generic content to right", () => (

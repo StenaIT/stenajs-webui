@@ -168,7 +168,7 @@
   &.normal {
   }
 
-  &.danger {
+  &.danger:not(:disabled) {
     --current-background-color: var(--lhds-color-red-500);
     --current-border-color: var(--lhds-color-red-500);
 
@@ -188,7 +188,7 @@
     }
   }
 
-  &.success {
+  &.success:not(:disabled) {
     --current-background-color: var(--lhds-color-green-500);
     --current-border-color: var(--lhds-color-green-500);
 
