@@ -103,7 +103,7 @@
   "bundlesize": [
     {
       "path": "./packages/calendar/dist/*.js",
-      "maxSize": "13 kB"
+      "maxSize": "14 kB"
     },
     {
       "path": "./packages/core/dist/*.js",

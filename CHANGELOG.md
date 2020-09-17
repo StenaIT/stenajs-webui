@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0
+
+### Breaking change
+
+#### `Popover`
+
+`Popover` now uses Tippy, and uses Tippy's props.
+This means that some props have changed.
+
+Most importantly, content and children can no longer be functions.
+If you need the hide and show functions, implement them using local state and `visible` props.
+
 ## 1.2.0
 
 ### New features

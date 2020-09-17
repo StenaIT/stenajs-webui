@@ -1,191 +1,54 @@
-import styled from "@emotion/styled";
-import {
-  Box,
-  Clickable,
-  ResizeAwareBox,
-  ThemeColorField,
-  useMultiOnClickOutside,
-  useThemeFields
-} from "@stenajs-webui/core";
-import * as PopperJS from "popper.js";
+import TippyComponent, {
+  TippyProps as TippyComponentProps
+} from "@tippyjs/react";
 import * as React from "react";
-import {
-  ReactNode,
-  RefObject,
-  useCallback,
-  useMemo,
-  useRef,
-  useState
-} from "react";
-import * as ReactDOM from "react-dom";
-import { Manager, Popper, Reference } from "react-popper";
-import { Arrow } from "./Arrow";
+import styles from "./Popover.module.css";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light.css";
+import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
+import { Box } from "@stenajs-webui/core";
 
-export type PopoverTriggerType = "hover" | "click";
+export type PopoverVariant = "standard" | "info" | "warning" | "error";
 
-type PopoverContentFunc = (args: PopoverContentFuncArgs) => ReactNode;
-
-interface PopoverContentFuncArgs {
-  show: () => void;
-  hide: () => void;
-}
-
-export interface PopoverProps {
-  placement?: PopperJS.Placement;
-  trigger?: PopoverTriggerType;
-  content?: ReactNode | PopoverContentFunc;
-  children?: ReactNode | PopoverContentFunc;
-  background?: ThemeColorField | string;
-  innerRef?: RefObject<HTMLDivElement>;
+export interface PopoverProps extends Omit<TippyComponentProps, "theme"> {
+  tippyRef?: TippyCallbackRef<HTMLDivElement>;
   disablePadding?: boolean;
-  /**
-   * Portal target, HTML element. If not set, portal is not used.
-   */
-  portalTarget?: HTMLElement | null;
-  disableCloseOnClickOutside?: boolean;
-  disableArrow?: boolean;
-  zIndex?: number;
-  onShow?: () => void;
-  onHide?: () => void;
+  variant?: PopoverVariant;
 }
 
-const FunctionChildrenWrapper = styled("div")<{ trigger: PopoverTriggerType }>`
-  ${({ trigger }) => (trigger === "click" ? "cursor: pointer;" : "")}
-`;
+export const tippyStyles = {
+  noPadding: styles.noPadding
+};
 
-export function Popover({
-  placement,
-  trigger = "hover",
-  content,
+const variantToTheme: Record<PopoverVariant, string> = {
+  standard: "light",
+  info: "info",
+  warning: "warning",
+  error: "error"
+};
+
+export const Popover: React.FC<PopoverProps> = ({
+  trigger = "mouseenter",
   children,
-  innerRef,
-  portalTarget,
-  background = "white",
-  zIndex,
-  onShow,
-  onHide,
-  disableCloseOnClickOutside,
-  disableArrow,
-  disablePadding
-}: PopoverProps) {
-  const [showing, setShowing] = useState(false);
-  const outerRef = useRef<HTMLDivElement>(null);
-  const portalRef = useRef<HTMLDivElement>(null);
-
-  const refToUse = innerRef || outerRef;
-  useMultiOnClickOutside([refToUse, portalRef], () => {
-    if (trigger === "click" && !disableCloseOnClickOutside) {
-      hide();
+  tippyRef,
+  variant = "standard",
+  disablePadding,
+  content,
+  ...tippyProps
+}) => (
+  <TippyComponent
+    interactive
+    className={tippyStyles.noPadding}
+    trigger={trigger}
+    theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
+    delay={0}
+    content={
+      <Box spacing={!disablePadding && 1} indent={!disablePadding && 1}>
+        {content}
+      </Box>
     }
-  });
-
-  const show = useCallback(() => {
-    setShowing(true);
-    if (onShow) {
-      onShow();
-    }
-  }, [onShow]);
-
-  const hide = useCallback(() => {
-    setShowing(false);
-    if (onHide) {
-      onHide();
-    }
-  }, [onHide]);
-
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        background: background
-      }
-    },
-    [background]
-  );
-
-  const triggerProps = useMemo(() => {
-    if (trigger === "hover") {
-      return {
-        onMouseEnter: show,
-        onMouseLeave: hide
-      };
-    }
-    return {};
-  }, [trigger, show, hide]);
-
-  const popperContent = (
-    <>
-      {showing && (
-        <Popper placement={placement}>
-          {({ ref, style, placement, arrowProps, scheduleUpdate }) => {
-            return (
-              <Box
-                zIndex={zIndex}
-                innerRef={ref}
-                style={{
-                  ...style,
-                  transition: "opacity 0.3s",
-                  margin: "0.4rem"
-                }}
-                background={colors.background}
-                borderRadius={"4px"}
-                borderWidth={"1px"}
-                borderStyle={"solid"}
-                borderColor={colors.background}
-                shadow={"var(--swui-shadow-popover)"}
-                spacing={disablePadding ? 0 : 1}
-                indent={disablePadding ? 0 : 1}
-              >
-                <ResizeAwareBox
-                  borderRadius={"4px"}
-                  overflow={"hidden"}
-                  onResize={scheduleUpdate}
-                >
-                  {typeof content === "function"
-                    ? content({ show, hide })
-                    : content}
-                </ResizeAwareBox>
-                {!disableArrow && (
-                  <Arrow
-                    background={colors.background}
-                    ref={arrowProps.ref}
-                    data-placement={placement}
-                    style={arrowProps.style}
-                  />
-                )}
-              </Box>
-            );
-          }}
-        </Popper>
-      )}
-    </>
-  );
-  return (
-    <Box display={"inline-block"} innerRef={refToUse} {...triggerProps}>
-      <Manager>
-        {
-          <Reference>
-            {({ ref }) => (
-              <div ref={ref}>
-                {typeof children === "function" ? (
-                  <FunctionChildrenWrapper trigger={trigger}>
-                    {children({ show, hide })}
-                  </FunctionChildrenWrapper>
-                ) : trigger === "click" ? (
-                  <Clickable onClick={show}>{children}</Clickable>
-                ) : (
-                  children
-                )}
-              </div>
-            )}
-          </Reference>
-        }
-        {portalTarget
-          ? ReactDOM.createPortal(
-              <Box innerRef={portalRef}>{popperContent}</Box>,
-              portalTarget
-            )
-          : popperContent}
-      </Manager>
-    </Box>
-  );
-}
+    {...tippyProps}
+  >
+    <div ref={tippyRef}>{children}</div>
+  </TippyComponent>
+);

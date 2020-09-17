@@ -23,11 +23,10 @@ export const ButtonWithPopover: React.FC<ButtonWithPopoverProps> = ({
       content={children}
       trigger={"click"}
       zIndex={1000}
-      portalTarget={document.body}
       onShow={onShow}
       onHide={onHide}
     >
-      {({ show }) => <FlatButton {...buttonProps} onClick={show} />}
+      <FlatButton {...buttonProps} />
     </Popover>
   );
 };
