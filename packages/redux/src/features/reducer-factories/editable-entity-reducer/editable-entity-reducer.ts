@@ -55,6 +55,13 @@ export const createEditableEntityReducer = <T>(
         };
       }
 
+      case "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY": {
+        return {
+          ...state,
+          editable: state.persisted
+        };
+      }
+
       default:
         return state;
     }

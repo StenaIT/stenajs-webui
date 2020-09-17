@@ -1,4 +1,5 @@
 import {
+  EditableEntityRevertEditableEntityAction,
   EditableEntitySetEditableEntityAction,
   EditableEntitySetEditableEntityFieldsAction,
   EditableEntitySetEntityAction,
@@ -16,6 +17,7 @@ export interface EditableEntityActions<T> {
   setEditableEntityFields: (
     fields: Partial<T>
   ) => EditableEntitySetEditableEntityFieldsAction<T>;
+  revertEditableEntity: () => EditableEntityRevertEditableEntityAction;
 }
 
 export const createEditableEntityActions = <T>(): EditableEntityActions<T> => ({
@@ -35,5 +37,8 @@ export const createEditableEntityActions = <T>(): EditableEntityActions<T> => ({
   setEditableEntityFields: fields => ({
     type: "EDITABLE_ENTITY:SET_EDITABLE_ENTITY_FIELDS",
     fields
+  }),
+  revertEditableEntity: () => ({
+    type: "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY"
   })
 });

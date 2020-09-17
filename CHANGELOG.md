@@ -2,6 +2,10 @@
 
 ## 1.3.0
 
+### Improvements
+
+#### Add `revertEditableEntity` action to `editable-entity-reducer`.
+
 ### Breaking change
 
 #### `Popover`
