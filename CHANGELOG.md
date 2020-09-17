@@ -4,9 +4,13 @@
 
 ### Improvements
 
-#### Add `revertEditableEntity` action to `editable-entity-reducer`.
+- Add `revertEditableEntity` action to `editable-entity-reducer`.
 
-### Breaking change
+### Design changes
+
+- Disabled `ActionMenuItem` now has white background.
+
+### Breaking changes
 
 #### `Popover`
 
@@ -20,9 +24,9 @@ If you need the hide and show functions, implement them using local state and `v
 
 ### New features
 
-* `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
-* New reducer factory `editable-entity-reducer` which contains persisted and editable instances
-of entity.
+- `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
+- New reducer factory `editable-entity-reducer` which contains persisted and editable instances
+  of entity.
 
 ### Breaking changes
 
@@ -72,7 +76,7 @@ which can handle the actions as they see fit.
 
 #### Redux package types updated
 
-It now use type `Reducer` type from `redux` instead of `react`.
+It now uses type `Reducer` type from `redux` instead of `react`.
 This makes it compatible with `combineReducers` from Redux.
 
 ## 1.0.5

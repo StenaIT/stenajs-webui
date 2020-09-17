@@ -37,7 +37,7 @@ export const defaultActionMenuTheme: ActionMenuTheme = {
   itemBackground: "var(--swui-white)",
   itemBackgroundFocus: "var(--swui-primary-action-color-focus)",
   itemBackgroundHover: "var(--swui-primary-action-color-hover)",
-  itemBackgroundDisabled: "var(--swui-primary-action-color-disabled)",
+  itemBackgroundDisabled: "var(--swui-white)",
   itemBackgroundDisabledFocus: "var(--swui-text-disabled-color-light)",
   itemLabelColor: "var(--swui-text-primary-color)",
   itemLabelColorDisabled: "var(--swui-text-disabled-color)",
