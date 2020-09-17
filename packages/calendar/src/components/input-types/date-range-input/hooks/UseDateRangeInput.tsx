@@ -14,7 +14,6 @@ export const useDateRangeInput = (
   const endDateInputRef = useRef<HTMLInputElement>(null);
 
   const [showingCalendar, setShowingCalendar] = useState(false);
-  const [showingFocusHighlight, setShowingFocusHighlight] = useState(false);
   const [focusedInput, setFocusedInput] = useState<
     DateRangeFocusedInput | undefined
   >(undefined);
@@ -22,21 +21,18 @@ export const useDateRangeInput = (
   const showCalendarStartDate = useCallback(() => {
     setFocusedInput("startDate");
     setShowingCalendar(true);
-    setShowingFocusHighlight(true);
     return true;
-  }, [setFocusedInput, setShowingCalendar, setShowingFocusHighlight]);
+  }, [setFocusedInput, setShowingCalendar]);
 
   const showCalendarEndDate = useCallback(() => {
     setFocusedInput("endDate");
     setShowingCalendar(true);
-    setShowingFocusHighlight(true);
     return true;
-  }, [setFocusedInput, setShowingCalendar, setShowingFocusHighlight]);
+  }, [setFocusedInput, setShowingCalendar]);
 
   const hideCalendar = useCallback(() => {
     setShowingCalendar(false);
-    setShowingFocusHighlight(false);
-  }, [setShowingCalendar, setShowingFocusHighlight]);
+  }, [setShowingCalendar]);
 
   const onClickDay = useCallback(
     (day: DayData) => {
@@ -64,14 +60,7 @@ export const useDateRangeInput = (
         }
       }
     },
-    [
-      focusedInput,
-      onChange,
-      setFocusedInput,
-      hideCalendar,
-      value.startDate,
-      value.endDate
-    ]
+    [focusedInput, onChange, setFocusedInput, hideCalendar, value]
   );
 
   const startDateIsAfterEnd = useMemo(
@@ -84,7 +73,6 @@ export const useDateRangeInput = (
 
   return {
     showingCalendar,
-    showingFocusHighlight,
     hideCalendar,
     showCalendarEndDate,
     showCalendarStartDate,

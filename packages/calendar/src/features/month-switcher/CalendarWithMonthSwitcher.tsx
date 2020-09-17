@@ -5,6 +5,7 @@ import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
 import { CalendarProps } from "../../types/CalendarTypes";
 import { useMonthSwitcherLogic } from "./hooks/UseMonthSwitcherLogic";
 import { WithMonthSwitcherBelow } from "./MonthSwitcherBelow";
+import { CalendarWithMonthYearPickers } from "../calendar-with-month-year-pickers/CalendarWithMonthYearPickers";
 
 export type MonthSwitcherPlacement = "header" | "below";
 
@@ -44,7 +45,7 @@ export function CalendarWithMonthSwitcher<T>({
     }
     case "header": {
       return (
-        <Calendar<T>
+        <CalendarWithMonthYearPickers<T>
           {...calendarProps}
           theme={theme}
           date={date}

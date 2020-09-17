@@ -50,6 +50,7 @@ export interface TextInputProps
   wrapperStyle?: CSSProperties;
   wrapperClassName?: string;
   variant?: TextInputVariant;
+  hideBorder?: boolean;
   selectAllOnFocus?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
@@ -88,6 +89,7 @@ export const TextInput: React.FC<TextInputProps> = props => {
     onMove,
     onChange,
     onKeyDown,
+    hideBorder,
     ...inputProps
   } = props;
   const internalRef = useRef(null);
@@ -112,6 +114,9 @@ export const TextInput: React.FC<TextInputProps> = props => {
         styles[variant],
         {
           [styles.disabled]: disabled
+        },
+        {
+          [styles.hideBorder]: hideBorder
         },
         wrapperClassName
       )}

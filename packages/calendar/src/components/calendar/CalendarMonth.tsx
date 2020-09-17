@@ -1,4 +1,10 @@
-import { Box, Row, StandardText, useThemeFields } from "@stenajs-webui/core";
+import {
+  Box,
+  Row,
+  Space,
+  StandardText,
+  useThemeFields
+} from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -18,6 +24,7 @@ import {
 import { CalendarTheme } from "./CalendarTheme";
 import { CalendarWeek } from "./CalendarWeek";
 import { WeekDayCell } from "./renderers/WeekDayCell";
+import { FlatButton } from "@stenajs-webui/elements";
 
 export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   month: MonthData;
@@ -39,6 +46,8 @@ export function CalendarMonth<T>({
   onClickDay,
   onClickWeek,
   onClickWeekDay,
+  onClickMonth,
+  onClickYear,
   renderWeekNumber,
   renderWeekDay,
   headerLeftContent,
@@ -79,12 +88,19 @@ export function CalendarMonth<T>({
               </td>
               <td colSpan={showWeekNumber ? 6 : 5}>
                 <Row justifyContent={"center"} alignItems={"center"}>
-                  <StandardText
-                    color={colors.headerTextColor}
-                    fontSize={"large"}
-                  >
-                    {month.name} {month.year}
-                  </StandardText>
+                  <FlatButton
+                    onClick={
+                      onClickMonth ? () => onClickMonth(month) : undefined
+                    }
+                    label={month.name}
+                  />
+                  <Space />
+                  <FlatButton
+                    onClick={
+                      onClickYear ? () => onClickYear(month.year) : undefined
+                    }
+                    label={String(month.year)}
+                  />
                 </Row>
               </td>
               <td style={{ maxWidth: theme.width }}>
