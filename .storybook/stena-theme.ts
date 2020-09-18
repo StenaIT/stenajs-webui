@@ -207,4 +207,4 @@ const RawStenaTheme: ThemeVars = {
   inputBorderRadius: 4
 };
 
-export const StenaTheme = create(RawStenaTheme);
+export const stenaTheme = create(RawStenaTheme);
