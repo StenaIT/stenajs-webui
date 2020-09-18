@@ -3,7 +3,7 @@ import { Box, Indent, Spacing } from "@stenajs-webui/core";
 import {
   DropdownOption,
   GroupedMultiSelect,
-  OnChange
+  OnChange,
 } from "@stenajs-webui/select";
 import * as React from "react";
 
@@ -12,11 +12,11 @@ interface State {
 }
 
 export default {
-  title: "select/GroupedMultiSelect"
+  title: "select/GroupedMultiSelect",
 };
 
 export const Standard = withState<State>({
-  values: undefined
+  values: undefined,
 })(({ store }: { store: Store<State> }) => {
   const onChange: OnChange<string> = (
     options: readonly DropdownOption<string>[] | undefined
@@ -34,9 +34,9 @@ export const Standard = withState<State>({
               {
                 value: "Mattias",
                 label: "Mattias",
-                data: "Mattias"
-              }
-            ]
+                data: "Mattias",
+              },
+            ],
           },
           {
             label: "Freight",
@@ -44,15 +44,15 @@ export const Standard = withState<State>({
               {
                 value: "Johan",
                 label: "Johan",
-                data: "Johan"
+                data: "Johan",
               },
               {
                 value: "Dennis the menace",
                 label: "Dennis the menace",
-                data: "Dennis the menace"
-              }
-            ]
-          }
+                data: "Dennis the menace",
+              },
+            ],
+          },
         ]}
         value={store.state.values}
       />
@@ -63,7 +63,7 @@ export const Standard = withState<State>({
 Standard.storyName = "standard";
 
 export const StandardDark = withState<State>({
-  values: undefined
+  values: undefined,
 })(({ store }: { store: Store<State> }) => {
   const onChange: OnChange<string> = (
     options: readonly DropdownOption<string>[] | undefined
@@ -84,9 +84,9 @@ export const StandardDark = withState<State>({
                     {
                       value: "Mattias",
                       label: "Mattias",
-                      data: "Mattias"
-                    }
-                  ]
+                      data: "Mattias",
+                    },
+                  ],
                 },
                 {
                   label: "Freight",
@@ -94,15 +94,15 @@ export const StandardDark = withState<State>({
                     {
                       value: "Johan",
                       label: "Johan",
-                      data: "Johan"
+                      data: "Johan",
                     },
                     {
                       value: "Dennis the menace",
                       label: "Dennis the menace",
-                      data: "Dennis the menace"
-                    }
-                  ]
-                }
+                      data: "Dennis the menace",
+                    },
+                  ],
+                },
               ]}
               variant={"dark"}
               value={store.state.values}
@@ -128,9 +128,9 @@ export const Disabled = () => (
             {
               data: "Mattias",
               label: "Mattias",
-              value: "Mattias"
-            }
-          ]
+              value: "Mattias",
+            },
+          ],
         },
         {
           label: "Freight",
@@ -138,15 +138,15 @@ export const Disabled = () => (
             {
               data: "Johan",
               label: "Johan",
-              value: "Johan"
+              value: "Johan",
             },
             {
               data: "Dennis the menace",
               label: "Dennis the menace",
-              value: "Dennis the menace"
-            }
-          ]
-        }
+              value: "Dennis the menace",
+            },
+          ],
+        },
       ]}
       isDisabled={true}
     />

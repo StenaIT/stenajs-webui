@@ -7,7 +7,7 @@ import {
   ExtraDayContentProps,
   OnClickDay,
   OnClickWeek,
-  RenderWeekNumber
+  RenderWeekNumber,
 } from "../../types/CalendarTypes";
 import { MonthData, WeekData } from "../../util/calendar/CalendarDataFactory";
 
@@ -39,7 +39,7 @@ export function CalendarWeek<T>({
   theme,
   renderWeekNumber,
   extraDayContent,
-  defaultHighlights
+  defaultHighlights,
 }: CalendarWeekProps<T>) {
   return (
     <tr key={week.weekNumber}>
@@ -56,7 +56,7 @@ export function CalendarWeek<T>({
           )}
         </td>
       )}
-      {week.days.map(day => (
+      {week.days.map((day) => (
         <DayComponent
           key={day.dateString}
           day={day}

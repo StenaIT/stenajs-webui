@@ -5,7 +5,7 @@ import * as React from "react";
 const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
 
 export default {
-  title: "elements/Buttons/FlatButton"
+  title: "elements/Buttons/FlatButton",
 };
 
 export const Standard = () => (
@@ -13,7 +13,7 @@ export const Standard = () => (
     <LargeText>FlatButton</LargeText>
     <Space num={4} />
     <div style={{ display: "inline-block" }}>
-      {buttonSizes.map(size => (
+      {buttonSizes.map((size) => (
         <>
           <FlatButton key={size} size={size} label={size} />
           <Space />
@@ -30,7 +30,7 @@ export const Inverted = () => (
     <LargeText color={"#fff"}>FlatButton inverted</LargeText>
     <Space num={4} />
     <div style={{ display: "inline-block" }}>
-      {buttonSizes.map(size => (
+      {buttonSizes.map((size) => (
         <>
           <FlatButton key={size} size={size} label={size} inverted />
           <Space />

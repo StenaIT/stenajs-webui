@@ -4,7 +4,7 @@ import { DateRangeDualTextField } from "./DateRangeDualTextField";
 import { Popover } from "@stenajs-webui/tooltip";
 import {
   TextInputProps,
-  ValueAndOnValueChangeProps
+  ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
 import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
 import { Column, StandardText } from "@stenajs-webui/core";
@@ -20,7 +20,7 @@ type ModalMode = "calendar" | "presets";
 
 export const DateRangeDualTextInput: React.FC<Props> = ({
   value,
-  onValueChange
+  onValueChange,
 }) => {
   const [leftText, setLeftText] = useState("");
   const [rightText, setRightText] = useState("");
@@ -53,7 +53,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
       if (focusedInput === "startDate") {
         onValueChange?.({
           startDate: day.date,
-          endDate: value?.endDate
+          endDate: value?.endDate,
         });
         if (!value || !value.endDate) {
           setFocusedInput("endDate");
@@ -64,7 +64,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
       } else if (focusedInput === "endDate") {
         onValueChange?.({
           startDate: value?.startDate,
-          endDate: day.date
+          endDate: day.date,
         });
         if (!value || value.startDate) {
           setFocusedInput("startDate");

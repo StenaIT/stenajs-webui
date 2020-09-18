@@ -14,13 +14,13 @@ export interface WeekDayCellProps {
 export const WeekDayCell = ({
   onClickWeekDay,
   day,
-  theme
+  theme,
 }: WeekDayCellProps) => {
   const { colors } = useThemeFields(
     {
       colors: {
-        textColor: theme.WeekDay.textColor
-      }
+        textColor: theme.WeekDay.textColor,
+      },
     },
     [theme]
   );
@@ -28,7 +28,7 @@ export const WeekDayCell = ({
   return (
     <Clickable
       onClick={
-        onClickWeekDay ? ev => onClickWeekDay(day.dayOfWeek, ev) : undefined
+        onClickWeekDay ? (ev) => onClickWeekDay(day.dayOfWeek, ev) : undefined
       }
       disableFocusHighlight={!onClickWeekDay}
     >

@@ -4,7 +4,7 @@ import {
   EditableEntitySetEditableEntityFieldsAction,
   EditableEntitySetEntityAction,
   EditableEntitySetEntityIdAction,
-  EditableEntitySetPersistedEntityAction
+  EditableEntitySetPersistedEntityAction,
 } from "./editable-entity-actions";
 
 export interface EditableEntityActions<T> {
@@ -23,22 +23,22 @@ export interface EditableEntityActions<T> {
 export const createEditableEntityActions = <T>(): EditableEntityActions<T> => ({
   setEntityId: (id: string | undefined) => ({
     type: "EDITABLE_ENTITY:SET_ENTITY_ID",
-    id
+    id,
   }),
-  setEntity: entity => ({ type: "EDITABLE_ENTITY:SET_ENTITY", entity }),
-  setPersistedEntity: entity => ({
+  setEntity: (entity) => ({ type: "EDITABLE_ENTITY:SET_ENTITY", entity }),
+  setPersistedEntity: (entity) => ({
     type: "EDITABLE_ENTITY:SET_PERSISTED_ENTITY",
-    entity
+    entity,
   }),
-  setEditableEntity: entity => ({
+  setEditableEntity: (entity) => ({
     type: "EDITABLE_ENTITY:SET_EDITABLE_ENTITY",
-    entity
+    entity,
   }),
-  setEditableEntityFields: fields => ({
+  setEditableEntityFields: (fields) => ({
     type: "EDITABLE_ENTITY:SET_EDITABLE_ENTITY_FIELDS",
-    fields
+    fields,
   }),
   revertEditableEntity: () => ({
-    type: "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY"
-  })
+    type: "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY",
+  }),
 });

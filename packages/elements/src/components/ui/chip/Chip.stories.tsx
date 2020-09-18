@@ -3,7 +3,7 @@ import { Chip, ChipVariant } from "@stenajs-webui/elements";
 import * as React from "react";
 
 export default {
-  title: "elements/Chip"
+  title: "elements/Chip",
 };
 
 export const Standard = () => (
@@ -15,8 +15,8 @@ export const Standard = () => (
       "warning",
       "success",
       "passive",
-      "turquoise"
-    ] as Array<ChipVariant>).map(variant => (
+      "turquoise",
+    ] as Array<ChipVariant>).map((variant) => (
       <>
         <LargeText>{variant}</LargeText>
         <Space />

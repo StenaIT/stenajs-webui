@@ -14,7 +14,7 @@ const sizes = {
   large: "78px",
   normal: "54px",
   small: "34px",
-  tiny: "20px"
+  tiny: "20px",
 };
 
 const rotator = keyframes`

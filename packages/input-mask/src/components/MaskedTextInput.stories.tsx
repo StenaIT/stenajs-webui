@@ -10,20 +10,20 @@ interface State {
 }
 
 export default {
-  title: "input-mask/MaskedTextInput"
+  title: "input-mask/MaskedTextInput",
 };
 
 export const Standard = withState<State>({
   creditcard: "",
   time: "",
-  date: ""
+  date: "",
 })(({ store }: { store: Store<State> }) => {
   return (
     <Column width={"150px"}>
       <StandardText>Credit card</StandardText>
       <MaskedTextInput
         mask={InputMasks.CREDIT_CARD}
-        onChange={ev => store.set({ creditcard: ev.target.value })}
+        onChange={(ev) => store.set({ creditcard: ev.target.value })}
         value={store.state.creditcard}
         placeholder={"1234 1234 1234 1234"}
       />
@@ -31,7 +31,7 @@ export const Standard = withState<State>({
       <StandardText>Time</StandardText>
       <MaskedTextInput
         mask={InputMasks.TIME}
-        onChange={ev => store.set({ time: ev.target.value })}
+        onChange={(ev) => store.set({ time: ev.target.value })}
         value={store.state.time}
         placeholder={"12:59"}
       />
@@ -39,7 +39,7 @@ export const Standard = withState<State>({
       <StandardText>Date</StandardText>
       <MaskedTextInput
         mask={InputMasks.ISO_DATE}
-        onChange={ev => store.set({ date: ev.target.value })}
+        onChange={(ev) => store.set({ date: ev.target.value })}
         value={store.state.date}
         placeholder={"2019-12-24"}
       />
@@ -52,13 +52,13 @@ Standard.storyName = "standard";
 export const WithPrefilledValue = withState<State>({
   creditcard: "123456789",
   time: "",
-  date: ""
+  date: "",
 })(({ store }: { store: Store<State> }) => {
   return (
     <div style={{ display: "inline-block" }}>
       <MaskedTextInput
         mask={InputMasks.CREDIT_CARD}
-        onChange={ev => store.set({ creditcard: ev.target.value })}
+        onChange={(ev) => store.set({ creditcard: ev.target.value })}
         value={store.state.creditcard}
       />
     </div>
@@ -70,13 +70,13 @@ WithPrefilledValue.storyName = "with prefilled value";
 export const WithOnValueChangeProp = withState<State>({
   creditcard: "123456789",
   time: "",
-  date: ""
+  date: "",
 })(({ store }: { store: Store<State> }) => {
   return (
     <div style={{ display: "inline-block" }}>
       <MaskedTextInput
         mask={InputMasks.CREDIT_CARD}
-        onValueChange={creditcard => store.set({ creditcard })}
+        onValueChange={(creditcard) => store.set({ creditcard })}
         value={store.state.creditcard}
       />
     </div>

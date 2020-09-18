@@ -2,14 +2,14 @@ import {
   faBicycle,
   faCog,
   faShip,
-  faSpinner
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { Indent, Row, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 
 export default {
-  title: "elements/Icon"
+  title: "elements/Icon",
 };
 
 export const Default = () => <Icon icon={faCog} />;

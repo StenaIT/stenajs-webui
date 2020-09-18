@@ -8,7 +8,7 @@ const items = createIndexArray(30);
 
 export default {
   title: "core/Responsive/Box",
-  excludeStories: ["createIndexArray"]
+  excludeStories: ["createIndexArray"],
 };
 
 export const Standard = () => (

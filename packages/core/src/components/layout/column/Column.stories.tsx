@@ -4,7 +4,7 @@ import * as React from "react";
 
 export default {
   title: "core/Layout/Column",
-  decorators: [withInfo({ propTables: false })]
+  decorators: [withInfo({ propTables: false })],
 };
 
 export const Standard = () => (
@@ -14,7 +14,7 @@ export const Standard = () => (
         style={{
           backgroundColor: "red",
           width: "50px",
-          height: "20px"
+          height: "20px",
         }}
       />
       <Space />
@@ -22,7 +22,7 @@ export const Standard = () => (
         style={{
           backgroundColor: "red",
           width: "50px",
-          height: "20px"
+          height: "20px",
         }}
       />
       <Space />
@@ -30,7 +30,7 @@ export const Standard = () => (
         style={{
           backgroundColor: "red",
           width: "50px",
-          height: "20px"
+          height: "20px",
         }}
       />
     </Column>
@@ -47,7 +47,7 @@ export const WithJustifyContentFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -55,7 +55,7 @@ export const WithJustifyContentFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -63,7 +63,7 @@ export const WithJustifyContentFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>
@@ -81,7 +81,7 @@ export const WithJustifyContentCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -89,7 +89,7 @@ export const WithJustifyContentCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -97,7 +97,7 @@ export const WithJustifyContentCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>
@@ -115,7 +115,7 @@ export const WithJustifyContentFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -123,7 +123,7 @@ export const WithJustifyContentFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -131,7 +131,7 @@ export const WithJustifyContentFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>
@@ -149,7 +149,7 @@ export const WithAlignItemsFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -157,7 +157,7 @@ export const WithAlignItemsFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -165,7 +165,7 @@ export const WithAlignItemsFlexStart = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>
@@ -183,7 +183,7 @@ export const WithAlignItemsCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -191,7 +191,7 @@ export const WithAlignItemsCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -199,7 +199,7 @@ export const WithAlignItemsCenter = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>
@@ -217,7 +217,7 @@ export const WithAlignItemsFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -225,7 +225,7 @@ export const WithAlignItemsFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Space />
@@ -233,7 +233,7 @@ export const WithAlignItemsFlexEnd = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Column>

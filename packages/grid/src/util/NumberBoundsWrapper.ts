@@ -8,7 +8,7 @@ export const clampPos = (
 ): CellIndices => {
   return {
     rowIndex: limitRange(pos.rowIndex, 0, numRows),
-    colIndex: limitRange(pos.colIndex, 0, numCols)
+    colIndex: limitRange(pos.colIndex, 0, numCols),
   };
 };
 
@@ -20,6 +20,6 @@ export const wrapPos = (
   const wrapped = wrapBounds(pos.colIndex, pos.rowIndex, numCols, numRows);
   return {
     rowIndex: wrapped.realY,
-    colIndex: wrapped.realX
+    colIndex: wrapped.realX,
   };
 };

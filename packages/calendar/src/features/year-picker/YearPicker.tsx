@@ -15,7 +15,7 @@ interface Props extends ValueAndOnValueChangeProps<number> {
 export const YearPicker: React.FC<Props> = ({
   value,
   onValueChange,
-  initialLastYear
+  initialLastYear,
 }) => {
   const [lastYear, setLastYear] = useState(
     () => initialLastYear || new Date().getFullYear()
@@ -39,9 +39,9 @@ export const YearPicker: React.FC<Props> = ({
         />
       </Column>
       <Column>
-        {yearRows.map(yearRow => (
+        {yearRows.map((yearRow) => (
           <Row>
-            {yearRow.map(year => (
+            {yearRow.map((year) => (
               <YearPickerCell
                 year={year}
                 onValueChange={onValueChange}

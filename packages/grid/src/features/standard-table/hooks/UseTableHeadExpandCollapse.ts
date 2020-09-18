@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import {
   useStandardTableActions,
   useStandardTableConfig,
-  useStandardTableState
+  useStandardTableState,
 } from "./UseStandardTableConfig";
 
 export const useTableHeadExpandCollapse = <TItem>(
@@ -10,11 +10,11 @@ export const useTableHeadExpandCollapse = <TItem>(
 ) => {
   const { keyResolver } = useStandardTableConfig();
   const {
-    expandedRows: { selectedIds }
+    expandedRows: { selectedIds },
   } = useStandardTableState();
   const {
     actions: { collapseAll, expandByIds },
-    dispatch
+    dispatch,
   } = useStandardTableActions();
 
   const allItemsAreExpanded = !items
@@ -26,7 +26,7 @@ export const useTableHeadExpandCollapse = <TItem>(
       if (allItemsAreExpanded) {
         dispatch(collapseAll());
       } else {
-        dispatch(expandByIds(items.map(item => keyResolver(item))));
+        dispatch(expandByIds(items.map((item) => keyResolver(item))));
       }
     }
   }, [
@@ -35,11 +35,11 @@ export const useTableHeadExpandCollapse = <TItem>(
     dispatch,
     items,
     keyResolver,
-    expandByIds
+    expandByIds,
   ]);
 
   return {
     allItemsAreExpanded,
-    toggleExpanded: toggleExpanded
+    toggleExpanded: toggleExpanded,
   };
 };

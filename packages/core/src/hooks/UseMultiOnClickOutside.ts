@@ -18,8 +18,8 @@ export const useMultiOnClickOutside = (
       // Do nothing if clicking ref's element or descendent elements
 
       const allNotContains = refs
-        .filter(ref => ref.current)
-        .every(ref => {
+        .filter((ref) => ref.current)
+        .every((ref) => {
           return ref.current && !ref.current.contains(event.target);
         });
 

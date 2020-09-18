@@ -3,7 +3,7 @@ import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "forms/Switch/SwitchWithLabel"
+  title: "forms/Switch/SwitchWithLabel",
 };
 
 export const Standard = () => (

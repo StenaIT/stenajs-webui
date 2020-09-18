@@ -5,7 +5,7 @@ import * as React from "react";
 import markdown from "./Box.md";
 
 export default {
-  title: "core/Layout/Box"
+  title: "core/Layout/Box",
 };
 
 export const Standard = () => (
@@ -14,13 +14,13 @@ export const Standard = () => (
       range: true,
       min: 100,
       max: 500,
-      step: 1
+      step: 1,
     })}px`}
     height={`${number("height", 100, {
       range: true,
       min: 100,
       max: 500,
-      step: 1
+      step: 1,
     })}px`}
     background={select(
       "background",
@@ -33,13 +33,13 @@ export const Standard = () => (
       range: true,
       min: 0,
       max: 10,
-      step: 1
+      step: 1,
     })}
     borderWidth={number("borderWidth", 1, {
       range: true,
       min: 0,
       max: 10,
-      step: 1
+      step: 1,
     })}
     borderColor={select(
       "borderColor",
@@ -171,7 +171,7 @@ export const Border = () => (
         range: true,
         min: 0,
         max: 10,
-        step: 1
+        step: 1,
       })}
       borderColor={select(
         "borderColor",
@@ -242,16 +242,16 @@ CustomShadow.storyName = "custom shadow";
 
 export const FlexGrowChildren = () => (
   <Box row width={"500px"}>
-    <Box background="#DFCD59" indent spacing>
+    <Box background={"#DFCD59"} indent spacing>
       no flex
     </Box>
-    <Box background="#D9419C" flex={1} indent spacing>
+    <Box background={"#D9419C"} flex={1} indent spacing>
       flex 1
     </Box>
-    <Box background="#219CA6" flex={2} indent spacing>
+    <Box background={"#219CA6"} flex={2} indent spacing>
       flex 2
     </Box>
-    <Box background="#23858C" indent spacing>
+    <Box background={"#23858C"} indent spacing>
       no flex
     </Box>
   </Box>

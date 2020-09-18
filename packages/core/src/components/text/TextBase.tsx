@@ -4,7 +4,7 @@ import {
   FontWeightProperty,
   TextDecorationProperty,
   UserSelectProperty,
-  WhiteSpaceProperty
+  WhiteSpaceProperty,
 } from "csstype";
 import * as React from "react";
 import {
@@ -17,7 +17,7 @@ import {
   lineHeight,
   LineHeightProps,
   textAlign,
-  TextAlignProps
+  TextAlignProps,
 } from "styled-system";
 import { useThemeFields } from "../../theme/hooks/UseThemeSelector";
 import { ThemeFontField } from "../../theme/theme-types/ThemeFonts";
@@ -76,15 +76,15 @@ const excludedProps = [
   "fontWeight",
   "fontFamily",
   "color",
-  "textAlign"
+  "textAlign",
 ];
 
 const isExcludedWebuiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
 
 const StyledText = styled("span", {
-  shouldForwardProp: propName =>
-    isExcludedWebuiProp(propName) ? false : isPropValid(propName)
+  shouldForwardProp: (propName) =>
+    isExcludedWebuiProp(propName) ? false : isPropValid(propName),
 })<TextBaseProps>`
   ${({ color }) => (color ? `color: ${color};` : "")};
   ${fontSize};
@@ -117,8 +117,8 @@ export const TextBase: React.FC<TextProps & { element?: "h1" }> = ({
     {
       colors: {
         color,
-        hoverColor
-      }
+        hoverColor,
+      },
     },
     [color, hoverColor]
   );

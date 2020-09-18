@@ -17,7 +17,7 @@ const loadingCircle = keyframes`
 export const InputSpinner: React.FC<InputSpinnerProps> = ({
   className,
   color,
-  size
+  size,
 }) => {
   return (
     <ClassNames>

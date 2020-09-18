@@ -3,7 +3,7 @@ import { Select } from "@stenajs-webui/select";
 import * as React from "react";
 
 export default {
-  title: "select/Select"
+  title: "select/Select",
 };
 
 export const Standard = () => (
@@ -12,16 +12,16 @@ export const Standard = () => (
       options={[
         {
           value: "Mattias",
-          label: "Mattias"
+          label: "Mattias",
         },
         {
           value: "Johan",
-          label: "Johan"
+          label: "Johan",
         },
         {
           value: "Dennis the menace",
-          label: "Dennis the menace"
-        }
+          label: "Dennis the menace",
+        },
       ]}
     />
   </div>
@@ -37,16 +37,16 @@ export const Multiselect = () => (
       options={[
         {
           value: "Mattias",
-          label: "Mattias"
+          label: "Mattias",
         },
         {
           value: "Johan",
-          label: "Johan"
+          label: "Johan",
         },
         {
           value: "Dennis the menace",
-          label: "Dennis the menace"
-        }
+          label: "Dennis the menace",
+        },
       ]}
     />
   </div>
@@ -63,16 +63,16 @@ export const StandardDark = () => (
             options={[
               {
                 value: "Mattias",
-                label: "Mattias"
+                label: "Mattias",
               },
               {
                 value: "Johan",
-                label: "Johan"
+                label: "Johan",
               },
               {
                 value: "Dennis the menace",
-                label: "Dennis the menace"
-              }
+                label: "Dennis the menace",
+              },
             ]}
             variant={"dark"}
           />
@@ -95,27 +95,27 @@ export const WithGroupHeadings = () => (
               options: [
                 {
                   value: "Mattias",
-                  label: "Mattias"
+                  label: "Mattias",
                 },
                 {
                   value: "Johan",
-                  label: "Johan"
-                }
-              ]
+                  label: "Johan",
+                },
+              ],
             },
             {
               label: "Group heading 2",
               options: [
                 {
                   value: "Niklas",
-                  label: "Niklas"
+                  label: "Niklas",
                 },
                 {
                   value: "Dennis the menace",
-                  label: "Dennis the menace"
-                }
-              ]
-            }
+                  label: "Dennis the menace",
+                },
+              ],
+            },
           ]}
         />
       </Spacing>
@@ -135,16 +135,16 @@ export const MultiselectDark = () => (
             options={[
               {
                 value: "Mattias",
-                label: "Mattias"
+                label: "Mattias",
               },
               {
                 value: "Johan",
-                label: "Johan"
+                label: "Johan",
               },
               {
                 value: "Dennis the menace",
-                label: "Dennis the menace"
-              }
+                label: "Dennis the menace",
+              },
             ]}
             variant={"dark"}
           />
@@ -162,16 +162,16 @@ export const Disabled = () => (
       options={[
         {
           value: "Mattias",
-          label: "Mattias"
+          label: "Mattias",
         },
         {
           value: "Johan",
-          label: "Johan"
+          label: "Johan",
         },
         {
           value: "Dennis the menace",
-          label: "Dennis the menace"
-        }
+          label: "Dennis the menace",
+        },
       ]}
       isDisabled={true}
     />

@@ -6,14 +6,14 @@ import {
   Row,
   SeparatorLine,
   Spacing,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon } from "@stenajs-webui/elements";
 import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
 import * as React from "react";
 
 export default {
-  title: "tooltip/Popover"
+  title: "tooltip/Popover",
 };
 
 export const Standard = () => (

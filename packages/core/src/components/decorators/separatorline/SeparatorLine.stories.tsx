@@ -3,7 +3,7 @@ import { color, select } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "core/Decorators/SeparatorLine"
+  title: "core/Decorators/SeparatorLine",
 };
 
 export const Standard = () => <SeparatorLine />;

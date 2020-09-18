@@ -9,7 +9,7 @@ import {
   RenderWeekNumber,
   setDayStateValue,
   WeekData,
-  WeekNumberCell
+  WeekNumberCell,
 } from "@stenajs-webui/calendar";
 import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
 import { addDays, getISOWeek } from "date-fns";
@@ -20,7 +20,7 @@ interface State {
 }
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
-  highlights: ["disabled"]
+  highlights: ["disabled"],
 });
 
 let statePerMonthWithTwoWeeksEnabled = {};
@@ -29,7 +29,7 @@ for (let i = 1; i < 7; i++) {
     statePerMonthWithTwoWeeksEnabled,
     addDays(new Date(), i),
     {
-      highlights: ["enabled"]
+      highlights: ["enabled"],
     }
   );
 }
@@ -38,21 +38,21 @@ for (let i = 10; i < 14; i++) {
     statePerMonthWithTwoWeeksEnabled,
     addDays(new Date(), i),
     {
-      highlights: ["enabled"]
+      highlights: ["enabled"],
     }
   );
 }
 
 export default {
-  title: "calendar/Calendar/DateRangeExclusionCalendar"
+  title: "calendar/Calendar/DateRangeExclusionCalendar",
 };
 
 export const Standard = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <>
     <DateRangeExclusionCalendar
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       value={store.state.value}
     />
     <Space />
@@ -69,11 +69,11 @@ export const Standard = withState<State>({
 Standard.storyName = "standard";
 
 export const TodayHighlighted = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
     highlightToday
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     value={store.state.value}
   />
 ));
@@ -81,10 +81,10 @@ export const TodayHighlighted = withState<State>({
 TodayHighlighted.storyName = "today highlighted";
 
 export const WithDisabledDateTomorrow = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     value={store.state.value}
     statePerMonth={disabledTomorrow}
   />
@@ -93,11 +93,11 @@ export const WithDisabledDateTomorrow = withState<State>({
 WithDisabledDateTomorrow.storyName = "with disabled date tomorrow";
 
 export const WithDisabledAsDefault = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
     defaultHighlights={["disabled"]}
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     value={store.state.value}
     statePerMonth={statePerMonthWithTwoWeeksEnabled}
   />
@@ -106,10 +106,10 @@ export const WithDisabledAsDefault = withState<State>({
 WithDisabledAsDefault.storyName = "with disabled as default";
 
 export const WithMonthSwitcherBelow = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     value={store.state.value}
     monthSwitcherPlacement={"below"}
   />
@@ -118,10 +118,10 @@ export const WithMonthSwitcherBelow = withState<State>({
 WithMonthSwitcherBelow.storyName = "with month switcher below";
 
 export const WithMultipleMonths = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     numMonths={3}
     value={store.state.value}
   />
@@ -130,10 +130,10 @@ export const WithMultipleMonths = withState<State>({
 WithMultipleMonths.storyName = "with multiple months";
 
 export const WithMultipleRows = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     numMonths={6}
     monthsPerRow={3}
     value={store.state.value}
@@ -143,7 +143,7 @@ export const WithMultipleRows = withState<State>({
 WithMultipleRows.storyName = "with multiple rows";
 
 export const WithCustomWeekContent = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => {
   const renderWeekNumber: RenderWeekNumber = (
     week: WeekData,
@@ -164,9 +164,7 @@ export const WithCustomWeekContent = withState<State>({
               color={"blue"}
               style={{ fontSize: 30 }}
             />
-          ) : (
-            undefined
-          )
+          ) : undefined
         }
       />
     );
@@ -174,7 +172,7 @@ export const WithCustomWeekContent = withState<State>({
 
   return (
     <DateRangeExclusionCalendar
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       value={store.state.value}
       renderWeekNumber={renderWeekNumber}
     />
@@ -184,10 +182,10 @@ export const WithCustomWeekContent = withState<State>({
 WithCustomWeekContent.storyName = "with custom week content";
 
 export const WithCustomContent = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <DateRangeExclusionCalendar
-    onChange={value => store.set({ value })}
+    onChange={(value) => store.set({ value })}
     value={store.state.value}
     extraDayContent={() => (
       <Box position={"absolute"} top={"-10px"} right={"-10px"}>
@@ -200,17 +198,17 @@ export const WithCustomContent = withState<State>({
 WithCustomContent.storyName = "with custom content";
 
 export const WithInstanceCustomTheme = withState<State>({
-  value: []
+  value: [],
 })(({ store }: { store: Store<State> }) => (
   <Row>
     <DateRangeExclusionCalendar
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       value={store.state.value}
       theme={extranetCalendarTheme}
     />
     <Space num={2} />
     <DateRangeExclusionCalendar
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       value={store.state.value}
     />
   </Row>

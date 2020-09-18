@@ -7,11 +7,11 @@ export const toggleDatesIfEndIsEarlierThanStart = (
   if (startDate && endDate && isAfter(startDate, endDate)) {
     return {
       startDate: endDate,
-      endDate: startDate
+      endDate: startDate,
     };
   }
   return {
     startDate,
-    endDate
+    endDate,
   };
 };

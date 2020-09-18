@@ -36,22 +36,22 @@ export const internalTheme: Theme = {
     inputBorderFocusedLight: "#E1DEEC",
     inputBoxShadowFocused: "inset 0px 0px 3pt 0pt rgba(96, 89, 136, 0.3)",
     highlightBoxBg: "#E8F4FA",
-    highlightBoxBorder: "#7498AD"
+    highlightBoxBorder: "#7498AD",
   },
   metrics: {
     indent: 10,
     spacing: 10,
-    space: 10
+    space: 10,
   },
   fontWeights: {
     bold: 600,
     standard: 400,
-    light: 100
+    light: 100,
   },
   fonts: {
     primary: "Open Sans",
     buttons: "Open Sans",
-    input: "Open Sans"
+    input: "Open Sans",
   },
   fontSizes: {
     huge: "22px",
@@ -61,11 +61,11 @@ export const internalTheme: Theme = {
     input: "13px",
     small: "12px",
     smaller: "11px",
-    tiny: "9px"
+    tiny: "9px",
   },
   shadows: {
     modal: "rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;",
     popover: "rgba(0, 0, 0, 0.2) 0px 0px 6px 4px;",
-    box: "rgba(0, 0, 0, 0.15) 0 2px 4px 0;"
-  }
+    box: "rgba(0, 0, 0, 0.15) 0 2px 4px 0;",
+  },
 };

@@ -9,14 +9,14 @@ import {
   useBoolean,
   useMouseIsEntered,
   useOnClickOutside,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { KeyboardEventHandler, useCallback, useMemo, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import {
   ActionDropdownTheme,
-  defaultActionDropdownTheme
+  defaultActionDropdownTheme,
 } from "./ActionDropdownTheme";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuContext } from "./ActionMenuContext";
@@ -35,7 +35,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   width = "180px",
   label = "Actions",
   theme = defaultActionDropdownTheme,
-  zIndexOnMenu
+  zIndexOnMenu,
 }) => {
   const [expanded, open, close] = useBoolean(false);
   const ref = useRef(null);
@@ -52,14 +52,14 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         borderColorFocus: theme.borderColorFocus,
         expandIconColor: theme.expandIconColor,
         expandIconColorDisabled: theme.expandIconColorDisabled,
-        expandIconColorFocus: theme.expandIconColorFocus
-      }
+        expandIconColorFocus: theme.expandIconColorFocus,
+      },
     },
     [theme, disabled]
   );
 
   const hoverBorder = useMemo(() => `1px solid ${colors.borderColorFocus}`, [
-    colors.borderColorFocus
+    colors.borderColorFocus,
   ]);
 
   const closeAndRefocus = useCallback(() => {
@@ -68,7 +68,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   }, [close, clickableRef]);
 
   const onKeyDownHandler = useCallback<KeyboardEventHandler>(
-    ev => {
+    (ev) => {
       const { key } = ev;
       if (key === "Escape") {
         closeAndRefocus();

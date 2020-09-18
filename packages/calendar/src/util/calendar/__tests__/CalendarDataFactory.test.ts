@@ -5,7 +5,7 @@ import {
   getMonthsInYear,
   getWeeksForMonth,
   Months,
-  WeekDays
+  WeekDays,
 } from "../CalendarDataFactory";
 
 describe("CalendarDataFactory", () => {

@@ -5,7 +5,7 @@ import {
   ButtonProps,
   Indent,
   Row,
-  SeparatorLine
+  SeparatorLine,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon } from "@stenajs-webui/elements";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
@@ -41,7 +41,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
   onFocusLeft,
   onFocusRight,
   inputRefLeft,
-  inputRefRight
+  inputRefRight,
 }) => {
   return (
     <Box width={"250px"}>

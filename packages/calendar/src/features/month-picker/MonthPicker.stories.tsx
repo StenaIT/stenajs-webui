@@ -8,16 +8,16 @@ interface DateRangeState {
 }
 
 export default {
-  title: "calendar/Pickers/MonthPicker"
+  title: "calendar/Pickers/MonthPicker",
 };
 
 export const Standard = withState<DateRangeState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateRangeState> }) => (
   <div style={{ display: "inline-block" }}>
     <MonthPicker
       value={store.state.value}
-      onValueChange={value => store.set({ value })}
+      onValueChange={(value) => store.set({ value })}
     />
   </div>
 ));
@@ -25,12 +25,12 @@ export const Standard = withState<DateRangeState>({
 Standard.storyName = "standard";
 
 export const TestarLite = withState<DateRangeState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateRangeState> }) => (
   <div style={{ display: "inline-block" }}>
     <MonthPicker
       value={store.state.value}
-      onValueChange={value => store.set({ value })}
+      onValueChange={(value) => store.set({ value })}
     />
   </div>
 ));

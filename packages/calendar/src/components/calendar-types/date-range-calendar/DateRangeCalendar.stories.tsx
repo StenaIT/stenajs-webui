@@ -8,7 +8,7 @@ import {
   useDateRangeCalendarState,
   travelCalendarTheme,
   dayHighlightSelect,
-  ExtraDayContentProps
+  ExtraDayContentProps,
 } from "@stenajs-webui/calendar";
 import { addDays } from "date-fns";
 import * as React from "react";
@@ -20,7 +20,7 @@ for (let i = 1; i < 7; i++) {
     statePerMonthWithTwoWeeksEnabled,
     addDays(new Date(), i),
     {
-      highlights: ["enabled"]
+      highlights: ["enabled"],
     }
   );
 }
@@ -29,7 +29,7 @@ for (let i = 10; i < 14; i++) {
     statePerMonthWithTwoWeeksEnabled,
     addDays(new Date(), i),
     {
-      highlights: ["enabled"]
+      highlights: ["enabled"],
     }
   );
 }
@@ -41,35 +41,35 @@ interface State {
 }
 
 function DateRangeCalendarWithState<T>({
-  onChange
+  onChange,
 }: Pick<DateRangeCalendarProps<T>, "onChange">) {
   const calendarProps = useDateRangeCalendarState();
   return <DateRangeCalendar {...calendarProps} onChange={onChange} />;
 }
 
 export default {
-  title: "calendar/Calendar/DateRangeCalendar"
+  title: "calendar/Calendar/DateRangeCalendar",
 };
 
 export const Standard = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => (
   <DateRangeCalendar
     startDate={store.state.startDate}
     endDate={store.state.endDate}
     focusedInput={store.state.focusedInput}
-    setStartDate={startDate => store.set({ startDate })}
-    setEndDate={endDate => store.set({ endDate })}
-    setFocusedInput={focusedInput => store.set({ focusedInput })}
+    setStartDate={(startDate) => store.set({ startDate })}
+    setEndDate={(endDate) => store.set({ endDate })}
+    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
   />
 ));
 
 Standard.storyName = "standard";
 
 Standard.parameters = {
-  notes: { markdown }
+  notes: { markdown },
 };
 
 export const WithStateHook = () => <DateRangeCalendarWithState />;
@@ -79,16 +79,16 @@ WithStateHook.storyName = "with state hook";
 export const WithTodayHighlighted = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => (
   <DateRangeCalendar
     highlightToday
     startDate={store.state.startDate}
     endDate={store.state.endDate}
     focusedInput={store.state.focusedInput}
-    setStartDate={startDate => store.set({ startDate })}
-    setEndDate={endDate => store.set({ endDate })}
-    setFocusedInput={focusedInput => store.set({ focusedInput })}
+    setStartDate={(startDate) => store.set({ startDate })}
+    setEndDate={(endDate) => store.set({ endDate })}
+    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
   />
 ));
 
@@ -97,16 +97,16 @@ WithTodayHighlighted.storyName = "with today highlighted";
 export const WithDefaultHighlights = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => {
   return (
     <DateRangeCalendar
       startDate={store.state.startDate}
       endDate={store.state.endDate}
       focusedInput={store.state.focusedInput}
-      setStartDate={startDate => store.set({ startDate })}
-      setEndDate={endDate => store.set({ endDate })}
-      setFocusedInput={focusedInput => store.set({ focusedInput })}
+      setStartDate={(startDate) => store.set({ startDate })}
+      setEndDate={(endDate) => store.set({ endDate })}
+      setFocusedInput={(focusedInput) => store.set({ focusedInput })}
       defaultHighlights={["disabled"]}
       statePerMonth={statePerMonthWithTwoWeeksEnabled}
     />
@@ -118,16 +118,16 @@ WithDefaultHighlights.storyName = "with default highlights";
 export const WithMultipleMonths = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => (
   <DateRangeCalendar
     numMonths={3}
     startDate={store.state.startDate}
     endDate={store.state.endDate}
     focusedInput={store.state.focusedInput}
-    setStartDate={startDate => store.set({ startDate })}
-    setEndDate={endDate => store.set({ endDate })}
-    setFocusedInput={focusedInput => store.set({ focusedInput })}
+    setStartDate={(startDate) => store.set({ startDate })}
+    setEndDate={(endDate) => store.set({ endDate })}
+    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
   />
 ));
 
@@ -136,7 +136,7 @@ WithMultipleMonths.storyName = "with multiple months";
 export const WithMultipleRows = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => (
   <DateRangeCalendar
     numMonths={6}
@@ -144,9 +144,9 @@ export const WithMultipleRows = withState<State>({
     startDate={store.state.startDate}
     endDate={store.state.endDate}
     focusedInput={store.state.focusedInput}
-    setStartDate={startDate => store.set({ startDate })}
-    setEndDate={endDate => store.set({ endDate })}
-    setFocusedInput={focusedInput => store.set({ focusedInput })}
+    setStartDate={(startDate) => store.set({ startDate })}
+    setEndDate={(endDate) => store.set({ endDate })}
+    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
   />
 ));
 
@@ -155,10 +155,10 @@ WithMultipleRows.storyName = "with multiple rows";
 export const Travel = withState<State>({
   startDate: undefined,
   endDate: undefined,
-  focusedInput: "startDate"
+  focusedInput: "startDate",
 })(({ store }: { store: Store<State> }) => {
   const renderDayContent: React.ComponentType<ExtraDayContentProps<{}>> = ({
-    dayState
+    dayState,
   }) =>
     dayHighlightSelect<JSX.Element | null>(
       dayState,
@@ -173,10 +173,10 @@ export const Travel = withState<State>({
             backgroundColor: "#ea143d",
             width: "6px",
             height: "6px",
-            borderRadius: "50%"
+            borderRadius: "50%",
           }}
         />,
-        null
+        null,
       ],
       <Box
         position={"absolute"}
@@ -189,7 +189,7 @@ export const Travel = withState<State>({
         height="1px"
         style={{
           margin: "auto",
-          transform: "rotate(-45deg)"
+          transform: "rotate(-45deg)",
         }}
       />
     ) as JSX.Element;
@@ -199,9 +199,9 @@ export const Travel = withState<State>({
       startDate={store.state.startDate}
       endDate={store.state.endDate}
       focusedInput={store.state.focusedInput}
-      setStartDate={startDate => store.set({ startDate })}
-      setEndDate={endDate => store.set({ endDate })}
-      setFocusedInput={focusedInput => store.set({ focusedInput })}
+      setStartDate={(startDate) => store.set({ startDate })}
+      setEndDate={(endDate) => store.set({ endDate })}
+      setFocusedInput={(focusedInput) => store.set({ focusedInput })}
       defaultHighlights={["disabled"]}
       theme={travelCalendarTheme}
       statePerMonth={statePerMonthWithTwoWeeksEnabled}
@@ -213,5 +213,5 @@ export const Travel = withState<State>({
 Travel.storyName = "travel";
 
 Travel.parameters = {
-  notes: { markdown }
+  notes: { markdown },
 };

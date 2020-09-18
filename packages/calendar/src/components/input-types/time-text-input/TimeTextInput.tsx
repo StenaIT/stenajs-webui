@@ -5,7 +5,7 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import {
   formatTimeString,
-  validUserInput
+  validUserInput,
 } from "../../../util/time/TimeStringFormatValidator";
 
 interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
@@ -40,7 +40,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   }, [value, onValueChange, setValid]);
 
   const onChangeHandler = useCallback(
-    ev => {
+    (ev) => {
       const time = ev.target.value;
       const validInput = validUserInput(time);
 

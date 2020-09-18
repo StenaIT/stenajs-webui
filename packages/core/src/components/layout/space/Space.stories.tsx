@@ -2,7 +2,7 @@ import { Box, Row, Space } from "@stenajs-webui/core";
 import * as React from "react";
 
 export default {
-  title: "core/Layout/Space"
+  title: "core/Layout/Space",
 };
 
 export const Standard = () => (

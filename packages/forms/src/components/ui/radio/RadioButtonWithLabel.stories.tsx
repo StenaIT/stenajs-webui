@@ -3,7 +3,7 @@ import * as React from "react";
 import { RadioButtonWithLabel } from "@stenajs-webui/forms";
 
 export default {
-  title: "forms/RadioButton/RadioButtonWithLabel"
+  title: "forms/RadioButton/RadioButtonWithLabel",
 };
 
 export const Standard = () => (

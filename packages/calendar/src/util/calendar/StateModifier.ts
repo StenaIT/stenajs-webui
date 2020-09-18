@@ -4,7 +4,7 @@ import {
   CalendarUserData,
   DayState,
   DayStateHighlight,
-  StateForWeek
+  StateForWeek,
 } from "../../types/CalendarTypes";
 import { DateFormats } from "../date/DateFormats";
 import { WeekData } from "./CalendarDataFactory";
@@ -28,10 +28,10 @@ export const setDayStateValue = (
             state[monthString] &&
             state[monthString][weekNumber] &&
             state[monthString][weekNumber][dayInMonth]),
-          ...values
-        }
-      }
-    }
+          ...values,
+        },
+      },
+    },
   };
 };
 
@@ -59,10 +59,10 @@ export const setDayStateValueFunction = (
               state[monthString] &&
               state[monthString][weekNumber] &&
               state[monthString][weekNumber][dayInMonth]
-          )
-        }
-      }
-    }
+          ),
+        },
+      },
+    },
   };
 };
 
@@ -96,10 +96,10 @@ export const addDayStateHighlights = (
           calendarState[monthString][weekNumber]),
         [dayInMonth]: {
           ...dayState,
-          highlights: newHighlights
-        }
-      }
-    }
+          highlights: newHighlights,
+        },
+      },
+    },
   };
 };
 
@@ -114,7 +114,7 @@ export const addWeekStateHighlights = (
   const weekNumber = week.weekNumber;
 
   let state = calendarState;
-  week.days.forEach(day => {
+  week.days.forEach((day) => {
     state = addDayStateHighlights(state, day.date, highlights);
   });
 
@@ -128,14 +128,14 @@ export const addWeekStateHighlights = (
 
   const newWeekState: StateForWeek = {
     ...weekState,
-    highlights: newHighlights
+    highlights: newHighlights,
   };
 
   return {
     ...state,
     [monthString]: {
       ...(calendarState && calendarState[monthString]),
-      [weekNumber]: newWeekState
-    }
+      [weekNumber]: newWeekState,
+    },
   };
 };

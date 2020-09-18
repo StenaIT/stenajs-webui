@@ -47,5 +47,5 @@ export const defaultActionMenuTheme: ActionMenuTheme = {
   itemTextColorDisabled: "var(--swui-text-disabled-color-light)",
   itemTextColorFocus: "var(--swui-white)",
   itemTextColorHover: "var(--swui-white)",
-  itemHeight: "34px"
+  itemHeight: "34px",
 };

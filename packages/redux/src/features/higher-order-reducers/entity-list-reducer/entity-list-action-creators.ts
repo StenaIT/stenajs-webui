@@ -11,7 +11,7 @@ import {
   EntityListRemoveFirstAction,
   EntityListRemoveLastAction,
   EntityListSetListAction,
-  EntityListToggleAction
+  EntityListToggleAction,
 } from "./entity-list-actions";
 
 export interface EntityListActions<T, TInnerAction> {
@@ -45,38 +45,38 @@ export const createEntityListActions = <
   TInnerAction = unknown
 >(): EntityListActions<T, TInnerAction> => {
   return {
-    addAtEnd: entity => ({ type: "ENTITY_LIST:ADD_AT_END", entity }),
-    addAtStart: entity => ({
+    addAtEnd: (entity) => ({ type: "ENTITY_LIST:ADD_AT_END", entity }),
+    addAtStart: (entity) => ({
       entity,
-      type: "ENTITY_LIST:ADD_AT_START"
+      type: "ENTITY_LIST:ADD_AT_START",
     }),
     clearList: () => ({ type: "ENTITY_LIST:CLEAR_LIST" }),
     removeFirst: () => ({ type: "ENTITY_LIST:REMOVE_FIRST" }),
     removeLast: () => ({ type: "ENTITY_LIST:REMOVE_LAST" }),
-    removeAtIndex: index => ({
+    removeAtIndex: (index) => ({
       type: "ENTITY_LIST:REMOVE_AT_INDEX",
-      index
+      index,
     }),
-    removeByFieldMatch: fields => ({
+    removeByFieldMatch: (fields) => ({
       type: "ENTITY_LIST:REMOVE_BY_FIELD_MATCH",
-      fields
+      fields,
     }),
-    remove: entity => ({ type: "ENTITY_LIST:REMOVE", entity }),
-    setList: list => ({ type: "ENTITY_LIST:SET_LIST", list }),
-    toggle: entity => ({ type: "ENTITY_LIST:TOGGLE", entity }),
+    remove: (entity) => ({ type: "ENTITY_LIST:REMOVE", entity }),
+    setList: (list) => ({ type: "ENTITY_LIST:SET_LIST", list }),
+    toggle: (entity) => ({ type: "ENTITY_LIST:TOGGLE", entity }),
     actionByFieldsMatch: (fields, action) => ({
       type: "ENTITY_LIST:ACTION_BY_FIELDS_MATCH",
       fields,
-      action
+      action,
     }),
     actionByIndex: (index, action) => ({
       type: "ENTITY_LIST:ACTION_BY_INDEX",
       index,
-      action
+      action,
     }),
-    actionOnAll: action => ({
+    actionOnAll: (action) => ({
       type: "ENTITY_LIST:ACTION_ON_ALL",
-      action
-    })
+      action,
+    }),
   };
 };

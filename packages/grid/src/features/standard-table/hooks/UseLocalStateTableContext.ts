@@ -5,7 +5,7 @@ import {
   createStandardTableInitialState,
   createStandardTableReducer,
   StandardTableReducer,
-  StandardTableState
+  StandardTableState,
 } from "../redux/StandardTableReducer";
 import { createStandardTableActions } from "../util/ActionsFactory";
 
@@ -33,12 +33,12 @@ export const useLocalStateTableContext = <TColumnKeys extends string>(
     () => ({
       dispatch,
       actions,
-      state
+      state,
     }),
     [state, actions, dispatch]
   );
 
   return {
-    tableContext
+    tableContext,
   };
 };

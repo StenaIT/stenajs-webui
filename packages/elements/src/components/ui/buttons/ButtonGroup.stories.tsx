@@ -7,7 +7,7 @@ import { ButtonGroup, SecondaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 
 export default {
-  title: "elements/Buttons/ButtonGroup"
+  title: "elements/Buttons/ButtonGroup",
 };
 
 export const Default = () => (

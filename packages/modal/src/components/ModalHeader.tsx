@@ -16,7 +16,7 @@ interface Props {
 export const ModalHeader: React.FC<Props> = ({
   onRequestClose,
   header,
-  headerText
+  headerText,
 }) => {
   return (
     <div className={cx(styles.header, DRAGGABLE_HANDLE_CLASSNAME)}>

@@ -18,8 +18,8 @@ export const useSortOrderById = <TItem extends EntityWithId>(
       return list;
     }
 
-    return sortOrderByIdState.ids.map(id => {
-      const item = list.find(l => l.id === id);
+    return sortOrderByIdState.ids.map((id) => {
+      const item = list.find((l) => l.id === id);
       if (!item) {
         throw new Error(
           "Trying to order list, but id was not found in data set."

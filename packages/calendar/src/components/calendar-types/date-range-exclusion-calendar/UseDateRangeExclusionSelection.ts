@@ -4,23 +4,23 @@ import { useDateRangeOnClickDayHandler } from "../../../features/date-range/hook
 import {
   CalendarProps,
   CalendarState,
-  OnClickDay
+  OnClickDay,
 } from "../../../types/CalendarTypes";
 import { addDayStateHighlights } from "../../../util/calendar/StateModifier";
 import {
   listContainsDate,
-  removeDateIfExist
+  removeDateIfExist,
 } from "../../../util/date/DateListTools";
 import {
   DateRangeCalendarOnChangeValue,
-  DateRangeFocusedInput
+  DateRangeFocusedInput,
 } from "../date-range-calendar/DateRangeCalendar";
 import { DateRangeExclusionCalendarProps } from "./DateRangeExclusionCalendar";
 
 export const useDateRangeExclusionSelection = <T>({
   onChange,
   value,
-  statePerMonth
+  statePerMonth,
 }: DateRangeExclusionCalendarProps<T>): Partial<CalendarProps<T>> => {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
@@ -79,7 +79,7 @@ export const useDateRangeExclusionSelection = <T>({
 
   return {
     onClickDay,
-    statePerMonth: statePerMonthWithSelectedDate
+    statePerMonth: statePerMonthWithSelectedDate,
   };
 };
 

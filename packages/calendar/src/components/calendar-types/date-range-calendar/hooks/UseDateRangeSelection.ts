@@ -13,7 +13,7 @@ export const useDateRangeSelection = <T>({
   setEndDate,
   onChange,
   setFocusedInput,
-  statePerMonth
+  statePerMonth,
 }: DateRangeCalendarProps<T>): CalendarProps<T> => {
   const onClickDay = useDateRangeOnClickDayHandler(
     startDate,
@@ -37,6 +37,6 @@ export const useDateRangeSelection = <T>({
 
   return {
     onClickDay,
-    statePerMonth: statePerMonthWithSelection
+    statePerMonth: statePerMonthWithSelection,
   };
 };

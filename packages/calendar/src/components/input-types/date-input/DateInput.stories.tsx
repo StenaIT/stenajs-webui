@@ -9,20 +9,20 @@ interface DateInputState {
 }
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
-  highlights: ["disabled"]
+  highlights: ["disabled"],
 });
 
 export default {
-  title: "calendar/Input/DateInput"
+  title: "calendar/Input/DateInput",
 };
 
 export const Standard = withState<DateInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateInputState> }) => (
   <div style={{ display: "inline-block" }}>
     <DateInput
       value={store.state.value}
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
     />
   </div>
 ));
@@ -30,12 +30,12 @@ export const Standard = withState<DateInputState>({
 Standard.storyName = "standard";
 
 export const WithDisabledDateTomorrow = withState<DateInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateInputState> }) => (
   <div style={{ display: "inline-block" }}>
     <DateInput
       value={store.state.value}
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       calendarProps={{ statePerMonth: disabledTomorrow }}
     />
   </div>
@@ -52,12 +52,12 @@ export const Empty = () => (
 Empty.storyName = "empty";
 
 export const UsingPortal = withState<DateInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateInputState> }) => (
   <div style={{ display: "inline-block" }}>
     <DateInput
       value={store.state.value}
-      onChange={value => store.set({ value })}
+      onChange={(value) => store.set({ value })}
       portalTarget={document.body}
     />
   </div>

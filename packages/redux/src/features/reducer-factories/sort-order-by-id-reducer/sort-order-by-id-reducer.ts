@@ -5,7 +5,7 @@ export interface SortOrderByIdState {
 }
 
 const INITIAL_STATE: SortOrderByIdState = {
-  ids: undefined
+  ids: undefined,
 };
 
 export const createSortOrderByIdReducer = () => (
@@ -16,13 +16,13 @@ export const createSortOrderByIdReducer = () => (
     case "SORT_ORDER_BY_ID:SET_SORT_ORDER":
       return {
         ...state,
-        ids: action.ids
+        ids: action.ids,
       };
 
     case "SORT_ORDER_BY_ID:CLEAR_SORT_ORDER":
       return {
         ...state,
-        ids: undefined
+        ids: undefined,
       };
 
     default:

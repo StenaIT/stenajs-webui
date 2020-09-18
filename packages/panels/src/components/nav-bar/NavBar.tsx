@@ -12,7 +12,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   children,
   right,
   center,
-  height = "50px"
+  height = "50px",
 }) => {
   return (
     <Row
@@ -24,7 +24,7 @@ export const NavBar: React.FC<NavBarProps> = ({
     >
       <Row justifyContent={"center"} alignItems={"center"} flex={1}>
         <Row style={{ marginRight: "auto" }} alignItems={"center"}>
-          {React.Children.map(children, child => (
+          {React.Children.map(children, (child) => (
             <Indent num={0.5}>{child}</Indent>
           ))}
         </Row>

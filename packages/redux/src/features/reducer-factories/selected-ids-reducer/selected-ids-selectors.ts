@@ -11,5 +11,5 @@ export type SelectedIdsStateSelector<TStoreState> = (
 export const createSelectedIdsSelectors = <TStoreState>(
   stateSelector: SelectedIdsStateSelector<TStoreState>
 ): SelectedIdsSelectors<TStoreState> => ({
-  getState: stateSelector
+  getState: stateSelector,
 });

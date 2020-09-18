@@ -4,7 +4,7 @@ import { Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import {
   useStandardTableConfig,
-  useStandardTableId
+  useStandardTableId,
 } from "../hooks/UseStandardTableConfig";
 import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
@@ -18,11 +18,11 @@ interface Props<TItem> {
   numRows: number;
 }
 
-export const StandardTableRowExpandButton = function<TItem>({
+export const StandardTableRowExpandButton = function <TItem>({
   item,
   colIndex,
   numRows,
-  rowIndex
+  rowIndex,
 }: Props<TItem>) {
   const { columnOrder } = useStandardTableConfig();
   const tableId = useStandardTableId();
@@ -31,7 +31,7 @@ export const StandardTableRowExpandButton = function<TItem>({
     numCols: columnOrder.length,
     numRows,
     rowIndex,
-    tableId
+    tableId,
   });
   const { requiredProps } = gridCell;
 

@@ -4,7 +4,7 @@ import { select, text } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "elements/Badge/WithBadge"
+  title: "elements/Badge/WithBadge",
 };
 
 export const IconWithBadge = () => (

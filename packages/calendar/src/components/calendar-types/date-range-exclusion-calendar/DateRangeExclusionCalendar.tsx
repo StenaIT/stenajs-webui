@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   CalendarWithMonthSwitcher,
-  CalendarWithMonthSwitcherProps
+  CalendarWithMonthSwitcherProps,
 } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
 import { useDateRangeExclusionSelection } from "./UseDateRangeExclusionSelection";

@@ -3,7 +3,7 @@ import { CalendarTheme } from "../components/calendar/CalendarTheme";
 import {
   DayData,
   MonthData,
-  WeekData
+  WeekData,
 } from "../util/calendar/CalendarDataFactory";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {

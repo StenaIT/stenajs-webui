@@ -13,7 +13,7 @@ interface Props extends ValueAndOnValueChangeProps<Months> {
 export const MonthPickerCell: React.FC<Props> = ({
   value,
   onValueChange,
-  month
+  month,
 }) => {
   const label = useMemo(() => {
     const now = new Date();

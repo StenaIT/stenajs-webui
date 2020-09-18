@@ -3,7 +3,7 @@ import * as React from "react";
 import { ErrorScreen } from "./ErrorScreen";
 
 export default {
-  title: "panels/Error/ErrorScreen"
+  title: "panels/Error/ErrorScreen",
 };
 
 export const Standard = () => (

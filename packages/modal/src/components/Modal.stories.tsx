@@ -16,11 +16,11 @@ interface State {
 ReactModal.setAppElement("#root");
 
 export default {
-  title: "modal/Modal"
+  title: "modal/Modal",
 };
 
 export const ModalWithHeader = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton
@@ -40,7 +40,7 @@ export const ModalWithHeader = withState<State>({
 ModalWithHeader.storyName = "modal with header";
 
 export const ModalWithCustomHeaderComponent = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton
@@ -66,7 +66,7 @@ export const ModalWithCustomHeaderComponent = withState<State>({
 ModalWithCustomHeaderComponent.storyName = "modal with custom header component";
 
 export const ModalWithFixedWidth = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton
@@ -87,7 +87,7 @@ export const ModalWithFixedWidth = withState<State>({
 ModalWithFixedWidth.storyName = "modal with fixed width";
 
 export const ModalWithScroll = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton
@@ -135,7 +135,7 @@ export const ModalWithScroll = withState<State>({
 ModalWithScroll.storyName = "modal with scroll";
 
 export const _BaseModal = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton
@@ -154,7 +154,7 @@ export const _BaseModal = withState<State>({
 _BaseModal.storyName = "base modal";
 
 export const DraggableModal = withState<State>({
-  isOpen: false
+  isOpen: false,
 })(({ store }: { store: Store<State> }) => (
   <>
     <PrimaryButton

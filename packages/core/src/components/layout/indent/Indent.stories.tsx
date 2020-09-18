@@ -4,7 +4,7 @@ import * as React from "react";
 
 export default {
   title: "core/Layout/Indent",
-  decorators: [withInfo({ propTables: false })]
+  decorators: [withInfo({ propTables: false })],
 };
 
 export const Standard = () => (
@@ -15,7 +15,7 @@ export const Standard = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Indent>
@@ -33,7 +33,7 @@ export const WithNum2 = () => (
           style={{
             backgroundColor: "red",
             width: "50px",
-            height: "20px"
+            height: "20px",
           }}
         />
       </Indent>

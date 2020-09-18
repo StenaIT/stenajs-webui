@@ -35,29 +35,29 @@ export const getNextPosition = (
   if (direction === "up") {
     return {
       rowIndex: rowIndex - 1,
-      colIndex
+      colIndex,
     };
   }
   if (direction === "down") {
     return {
       rowIndex: rowIndex + 1,
-      colIndex
+      colIndex,
     };
   }
   if (direction === "left") {
     return {
       rowIndex,
-      colIndex: colIndex - 1
+      colIndex: colIndex - 1,
     };
   }
   if (direction === "right") {
     return {
       rowIndex,
-      colIndex: colIndex + 1
+      colIndex: colIndex + 1,
     };
   }
   return {
     rowIndex,
-    colIndex
+    colIndex,
   };
 };

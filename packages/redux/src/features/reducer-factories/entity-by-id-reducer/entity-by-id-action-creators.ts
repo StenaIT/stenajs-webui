@@ -3,7 +3,7 @@ import {
   EntityByIdClearAllEntitiesAction,
   EntityByIdClearEntityAction,
   EntityByIdSetEntityAction,
-  EntityByIdSetEntityFieldsAction
+  EntityByIdSetEntityFieldsAction,
 } from "./entity-by-id-actions";
 
 export interface EntityByIdActions<T extends EntityWithId> {
@@ -19,20 +19,20 @@ export interface EntityByIdActions<T extends EntityWithId> {
 export const createEntityByIdActions = <
   T extends EntityWithId
 >(): EntityByIdActions<T> => ({
-  setEntity: entity => ({
+  setEntity: (entity) => ({
     type: "ENTITY_BY_ID:SET_ENTITY",
-    entity
+    entity,
   }),
   setEntityFields: (id, fields) => ({
     type: "ENTITY_BY_ID:SET_ENTITY_FIELDS",
     id,
-    fields
+    fields,
   }),
-  clearEntity: id => ({
+  clearEntity: (id) => ({
     type: "ENTITY_BY_ID:CLEAR_ENTITY",
-    id
+    id,
   }),
   clearAllEntities: () => ({
-    type: "ENTITY_BY_ID:CLEAR_ALL_ENTITIES"
-  })
+    type: "ENTITY_BY_ID:CLEAR_ALL_ENTITIES",
+  }),
 });

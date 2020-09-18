@@ -17,7 +17,7 @@ export const CalendarPopperContent: React.FC<CalendarPopperContent> = ({
   borderColor,
   innerRef,
   open,
-  zIndex
+  zIndex,
 }) => {
   return (
     <Popper placement={"bottom-end"}>

@@ -16,40 +16,40 @@ export const defaultHeaderTextTheme: TextTheme = {
   fontSize: "huge",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };
 
 export const defaultSectionHeaderTextTheme: TextTheme = {
   fontSize: "large",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };
 
 export const defaultLargeTextTheme: TextTheme = {
   fontSize: "large",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };
 
 export const defaultSmallTextTheme: TextTheme = {
   fontSize: "small",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };
 
 export const defaultSmallerTextTheme: TextTheme = {
   fontSize: "smaller",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };
 
 export const defaultTinyTextTheme: TextTheme = {
   fontSize: "tiny",
   fontFamily: "primary",
   fontWeightBold: "bold",
-  fontWeightLight: "light"
+  fontWeightLight: "light",
 };

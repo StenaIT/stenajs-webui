@@ -11,12 +11,12 @@ describe("useMultiDateSelection", () => {
         const onChange = jest.fn();
         const {
           result: {
-            current: { onClickDay }
-          }
+            current: { onClickDay },
+          },
         } = renderHook(() =>
           useMultiDateSelection({
             value: [],
-            onChange
+            onChange,
           })
         );
         onClickDay!(createDay(now), undefined, undefined as any);
@@ -30,12 +30,12 @@ describe("useMultiDateSelection", () => {
           const onChange = jest.fn();
           const {
             result: {
-              current: { onClickDay }
-            }
+              current: { onClickDay },
+            },
           } = renderHook(() =>
             useMultiDateSelection({
               value: [],
-              onChange
+              onChange,
             })
           );
           const clickedDay = createDay(now);
@@ -52,12 +52,12 @@ describe("useMultiDateSelection", () => {
           const onChange = jest.fn();
           const {
             result: {
-              current: { onClickDay }
-            }
+              current: { onClickDay },
+            },
           } = renderHook(() =>
             useMultiDateSelection({
               value: [now, tomorrow],
-              onChange
+              onChange,
             })
           );
           const clickedDay = createDay(now);

@@ -18,7 +18,7 @@ export const StandardTableHeadItem = React.memo(
       justifyContentHeader,
       columnLabel,
       borderLeft,
-      infoIconTooltipText
+      infoIconTooltipText,
     } = useColumnFromConfig(columnId);
     const { disableSorting } = useStandardTableConfig();
 

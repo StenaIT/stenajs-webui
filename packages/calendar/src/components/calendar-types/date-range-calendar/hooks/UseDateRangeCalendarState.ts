@@ -13,6 +13,6 @@ export const useDateRangeCalendarState = () => {
     endDate,
     setEndDate,
     focusedInput,
-    setFocusedInput
+    setFocusedInput,
   };
 };

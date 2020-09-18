@@ -11,7 +11,7 @@ import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/Si
 import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
-  defaultCalendarTheme
+  defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
@@ -70,13 +70,13 @@ export const DateInput: React.FC<DateInputProps> = ({
   onClose,
   onChange,
   portalTarget,
-  width = "125px"
+  width = "125px",
 }) => {
   const {
     hideCalendar,
     showingCalendar,
     onSelectDate,
-    showCalendar
+    showCalendar,
   } = useDateInput(onChange, onClose, openOnMount);
 
   const popupRef = useRef<HTMLDivElement>(null);

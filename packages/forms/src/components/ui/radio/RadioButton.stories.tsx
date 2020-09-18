@@ -5,7 +5,7 @@ import {
   LargeText,
   Row,
   Space,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { RadioButton, RadioButtonWithLabel } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
@@ -22,7 +22,7 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(v => !v);
+      setIsEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
@@ -148,13 +148,13 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 };
 
 export default {
-  title: "forms/RadioButton"
+  title: "forms/RadioButton",
 };
 
 export const Overview = withState<State>({
   checked: true,
   selectedSmall: "",
-  selected: ""
+  selected: "",
 })(({ store }: { store: Store<State> }) => (
   <RadioButtonOverview store={store} />
 ));

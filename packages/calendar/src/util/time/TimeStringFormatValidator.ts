@@ -86,7 +86,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
         if (minutes >= 0 && minutes <= 59) {
           return {
             time: `0${time.substr(0, 1)}:${time.substr(1, 2)}`,
-            success: true
+            success: true,
           };
         }
         return { time, success: false };
@@ -101,7 +101,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
         }
         return {
           time: `${time.substr(0, 2)}:${time.substr(2, 2)}`,
-          success: true
+          success: true,
         };
       default:
         return { time, success: false };

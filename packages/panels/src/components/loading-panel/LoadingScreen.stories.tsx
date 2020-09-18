@@ -3,7 +3,7 @@ import * as React from "react";
 import { LoadingScreen } from "@stenajs-webui/panels";
 
 export default {
-  title: "panels/Loading/LoadingScreen"
+  title: "panels/Loading/LoadingScreen",
 };
 
 export const Standard = () => (

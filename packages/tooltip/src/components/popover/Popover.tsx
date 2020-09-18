@@ -1,5 +1,5 @@
 import TippyComponent, {
-  TippyProps as TippyComponentProps
+  TippyProps as TippyComponentProps,
 } from "@tippyjs/react";
 import * as React from "react";
 import styles from "./Popover.module.css";
@@ -17,14 +17,14 @@ export interface PopoverProps extends Omit<TippyComponentProps, "theme"> {
 }
 
 export const tippyStyles = {
-  noPadding: styles.noPadding
+  noPadding: styles.noPadding,
 };
 
 const variantToTheme: Record<PopoverVariant, string> = {
   standard: "light",
   info: "info",
   warning: "warning",
-  error: "error"
+  error: "error",
 };
 
 export const Popover: React.FC<PopoverProps> = ({

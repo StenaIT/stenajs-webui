@@ -5,14 +5,14 @@ import { TinyText } from "@stenajs-webui/core";
 import {
   ActionMenu,
   ActionMenuItem,
-  ActionMenuSeparator
+  ActionMenuSeparator,
 } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import * as React from "react";
 import markdown from "./ActionMenu.md";
 
 export default {
-  title: "elements/ActionMenu/ActionMenu"
+  title: "elements/ActionMenu/ActionMenu",
 };
 
 export const Standard = () => (
@@ -64,5 +64,5 @@ export const Standard = () => (
 Standard.storyName = "standard";
 
 Standard.parameters = {
-  notes: { markdown }
+  notes: { markdown },
 };

@@ -3,7 +3,7 @@ import {
   reducerIdGateAction,
   ReducerIdGateAction,
   SelectedIdsAction,
-  SortOrderAction
+  SortOrderAction,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "../redux/ReducerIdFactory";
 
@@ -28,7 +28,7 @@ export const createStandardTableActions = <TColumnKey extends string>(
   actions: InternalStandardTableActions<TColumnKey>
 ): StandardTableActions<TColumnKey> => {
   return {
-    selectByIds: ids =>
+    selectByIds: (ids) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "selectedIds"),
         actions.selectedIds.setSelectedIds(ids)
@@ -38,7 +38,7 @@ export const createStandardTableActions = <TColumnKey extends string>(
         getReducerIdFor(tableId, "selectedIds"),
         actions.selectedIds.clearSelectedIds()
       ),
-    expandByIds: ids =>
+    expandByIds: (ids) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "expandedRows"),
         actions.expandedRows.setSelectedIds(ids)
@@ -57,6 +57,6 @@ export const createStandardTableActions = <TColumnKey extends string>(
       reducerIdGateAction(
         getReducerIdFor(tableId, "sortOrder"),
         actions.sortOrder.clearSortOrder()
-      )
+      ),
   };
 };

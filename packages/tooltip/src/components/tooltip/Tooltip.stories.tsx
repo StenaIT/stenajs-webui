@@ -4,7 +4,7 @@ import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
 
 export default {
-  title: "tooltip/Tooltip"
+  title: "tooltip/Tooltip",
 };
 
 export const Standard = () => (

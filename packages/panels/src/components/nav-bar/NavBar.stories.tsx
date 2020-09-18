@@ -8,7 +8,7 @@ import {
   Column,
   LargeText,
   Row,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { Icon, WithBadge } from "@stenajs-webui/elements";
 import { NavBar, NavBarButton, NavBarMenuButton } from "@stenajs-webui/panels";
@@ -17,7 +17,7 @@ import { TextInput } from "@stenajs-webui/forms";
 import { ClassNames } from "@emotion/core";
 
 export default {
-  title: "panels/NavBar"
+  title: "panels/NavBar",
 };
 
 export const Standard = () => (

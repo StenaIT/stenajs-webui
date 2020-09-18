@@ -35,7 +35,7 @@ export const useDateRangeOnClickDayHandler = <T>(
             onChange(
               ensureStartIsFirst({
                 startDate: day.date,
-                endDate: endDate
+                endDate: endDate,
               })
             );
           }
@@ -54,7 +54,7 @@ export const useDateRangeOnClickDayHandler = <T>(
             onChange(
               ensureStartIsFirst({
                 startDate: startDate,
-                endDate: day.date
+                endDate: day.date,
               })
             );
           }
@@ -68,7 +68,7 @@ export const useDateRangeOnClickDayHandler = <T>(
       setStartDate,
       setEndDate,
       onChange,
-      setFocusedInput
+      setFocusedInput,
     ]
   );
 };

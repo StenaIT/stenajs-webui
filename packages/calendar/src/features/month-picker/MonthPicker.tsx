@@ -10,7 +10,7 @@ const monthMatrix = [
   [Months.JANUARY, Months.FEBRUARY, Months.MARCH],
   [Months.APRIL, Months.MAY, Months.JUNE],
   [Months.JULY, Months.AUGUST, Months.SEPTEMBER],
-  [Months.OCTOBER, Months.NOVEMBER, Months.DECEMBER]
+  [Months.OCTOBER, Months.NOVEMBER, Months.DECEMBER],
 ];
 
 export const MonthPicker: React.FC<Props> = ({ value, onValueChange }) => {
@@ -18,7 +18,7 @@ export const MonthPicker: React.FC<Props> = ({ value, onValueChange }) => {
     <Column>
       {monthMatrix.map((monthRow, i) => (
         <Row key={i}>
-          {monthRow.map(month => (
+          {monthRow.map((month) => (
             <MonthPickerCell
               key={month}
               month={month}

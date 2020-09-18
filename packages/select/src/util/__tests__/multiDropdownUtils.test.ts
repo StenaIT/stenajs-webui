@@ -2,7 +2,7 @@ import {
   GroupedOptionsType,
   GroupType,
   OptionsType,
-  ValueType
+  ValueType,
 } from "react-select/src/types";
 import { DropdownOption } from "../..";
 import {
@@ -14,7 +14,7 @@ import {
   convertValueToInternalValue,
   createOnChange,
   InternalDropdownOption,
-  Meta
+  Meta,
 } from "../multiDropdownUtils";
 
 describe("multiDropdownUtils", () => {
@@ -31,9 +31,9 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Mattias",
                   label: "Mattias",
-                  data: "Mattias data"
-                }
-              ]
+                  data: "Mattias data",
+                },
+              ],
             },
             {
               label: "Freight",
@@ -42,20 +42,20 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Johan",
                   label: "Johan",
-                  data: "Johan data"
+                  data: "Johan data",
                 },
                 {
                   value: "Dennis the menace",
                   label: "Dennis the menace",
-                  data: "Dennis data"
-                }
-              ]
-            }
+                  data: "Dennis data",
+                },
+              ],
+            },
           ];
           const newOnChange = createOnChange(onChange);
           const meta: Meta<string> = {
             action: "select-option",
-            option: options[0].options[0]
+            option: options[0].options[0],
           };
           const selectedOptions: OptionsType<InternalDropdownOption<
             string
@@ -64,7 +64,7 @@ describe("multiDropdownUtils", () => {
           newOnChange([selectedOptions[1], selectedOptions[3]], meta);
           const expected: ValueType<DropdownOption<string>> = [
             convertDropdownOptionToInternalOption(options[0].options[0]),
-            convertDropdownOptionToInternalOption(options[1].options[0])
+            convertDropdownOptionToInternalOption(options[1].options[0]),
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
         });
@@ -82,9 +82,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -93,15 +93,15 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const selectedOptions: OptionsType<InternalDropdownOption<
@@ -109,13 +109,13 @@ describe("multiDropdownUtils", () => {
             >> = convertGroupedDropdownOptionsToInternalOptions(options);
             const meta: Meta<string> = {
               action: "select-option",
-              option: selectedOptions[2]
+              option: selectedOptions[2],
             };
 
             newOnChange([selectedOptions[1], selectedOptions[2]], meta);
             const expected: ValueType<DropdownOption<string>> = [
               options[0].options[0],
-              ...options[1].options
+              ...options[1].options,
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -132,9 +132,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -143,15 +143,15 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const selectedOptions: OptionsType<InternalDropdownOption<
@@ -159,7 +159,7 @@ describe("multiDropdownUtils", () => {
             >> = convertGroupedDropdownOptionsToInternalOptions(options);
             const meta: Meta<string> = {
               action: "select-option",
-              option: selectedOptions[2]
+              option: selectedOptions[2],
             };
 
             newOnChange(
@@ -168,7 +168,7 @@ describe("multiDropdownUtils", () => {
             );
             const expected: ValueType<DropdownOption<string>> = [
               options[0].options[0],
-              ...options[1].options
+              ...options[1].options,
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -185,9 +185,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -196,15 +196,15 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const selectedOptions: OptionsType<InternalDropdownOption<
@@ -212,7 +212,7 @@ describe("multiDropdownUtils", () => {
             >> = convertGroupedDropdownOptionsToInternalOptions(options);
             const meta: Meta<string> = {
               action: "select-option",
-              option: selectedOptions[2]
+              option: selectedOptions[2],
             };
 
             newOnChange(
@@ -220,13 +220,13 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[1],
                 selectedOptions[2],
                 selectedOptions[3],
-                selectedOptions[4]
+                selectedOptions[4],
               ],
               meta
             );
             const expected: ValueType<DropdownOption<string>> = [
               options[0].options[0],
-              ...options[1].options
+              ...options[1].options,
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -243,9 +243,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -254,15 +254,15 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const selectedOptions: OptionsType<InternalDropdownOption<
@@ -270,7 +270,7 @@ describe("multiDropdownUtils", () => {
             >> = convertGroupedDropdownOptionsToInternalOptions(options);
             const meta: Meta<string> = {
               action: "select-option",
-              option: selectedOptions[3]
+              option: selectedOptions[3],
             };
 
             newOnChange(
@@ -280,7 +280,7 @@ describe("multiDropdownUtils", () => {
 
             const expected: ValueType<DropdownOption<string>> = [
               options[0].options[0],
-              options[1].options[0]
+              options[1].options[0],
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -301,9 +301,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -312,20 +312,20 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const meta: Meta<string> = {
               action: "deselect-option",
-              option: options[1].options[0]
+              option: options[1].options[0],
             };
             const selectedOptions: OptionsType<InternalDropdownOption<
               string
@@ -335,13 +335,13 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[0],
                 selectedOptions[1],
                 selectedOptions[2],
-                selectedOptions[4]
+                selectedOptions[4],
               ],
               meta
             );
             const expected: ValueType<DropdownOption<string>> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
-              convertDropdownOptionToInternalOption(options[1].options[1])
+              convertDropdownOptionToInternalOption(options[1].options[1]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -358,9 +358,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -369,20 +369,20 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const meta: Meta<string> = {
               action: "deselect-option",
-              option: options[0].options[0]
+              option: options[0].options[0],
             };
             const selectedOptions: OptionsType<InternalDropdownOption<
               string
@@ -390,7 +390,7 @@ describe("multiDropdownUtils", () => {
 
             newOnChange([selectedOptions[3]], meta);
             const expected: ValueType<DropdownOption<string>> = [
-              convertDropdownOptionToInternalOption(options[1].options[0])
+              convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -408,9 +408,9 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Mattias",
                   label: "Mattias",
-                  data: "Mattias data"
-                }
-              ]
+                  data: "Mattias data",
+                },
+              ],
             },
             {
               label: "Freight",
@@ -419,15 +419,15 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Johan",
                   label: "Johan",
-                  data: "Johan data"
+                  data: "Johan data",
                 },
                 {
                   value: "Dennis the menace",
                   label: "Dennis the menace",
-                  data: "Dennis data"
-                }
-              ]
-            }
+                  data: "Dennis data",
+                },
+              ],
+            },
           ];
           const newOnChange = createOnChange(onChange);
           const selectedOptions: OptionsType<InternalDropdownOption<
@@ -435,7 +435,7 @@ describe("multiDropdownUtils", () => {
           >> = convertGroupedDropdownOptionsToInternalOptions(options);
           const meta: Meta<string> = {
             action: "deselect-option",
-            option: selectedOptions[2]
+            option: selectedOptions[2],
           };
 
           newOnChange(
@@ -444,12 +444,12 @@ describe("multiDropdownUtils", () => {
               selectedOptions[1],
               selectedOptions[2],
               selectedOptions[3],
-              selectedOptions[4]
+              selectedOptions[4],
             ],
             meta
           );
           const expected: ValueType<DropdownOption<string>> = [
-            options[0].options[0]
+            options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
         });
@@ -470,9 +470,9 @@ describe("multiDropdownUtils", () => {
                     {
                       value: "Mattias",
                       label: "Mattias",
-                      data: "Mattias data"
-                    }
-                  ]
+                      data: "Mattias data",
+                    },
+                  ],
                 },
                 {
                   label: "Freight",
@@ -481,20 +481,20 @@ describe("multiDropdownUtils", () => {
                     {
                       value: "Johan",
                       label: "Johan",
-                      data: "Johan data"
+                      data: "Johan data",
                     },
                     {
                       value: "Dennis the menace",
                       label: "Dennis the menace",
-                      data: "Dennis data"
-                    }
-                  ]
-                }
+                      data: "Dennis data",
+                    },
+                  ],
+                },
               ];
               const newOnChange = createOnChange(onChange);
               const meta: Meta<string> = {
                 action: "remove-value",
-                removedValue: options[1].options[0]
+                removedValue: options[1].options[0],
               };
               const selectedOptions: OptionsType<InternalDropdownOption<
                 string
@@ -505,13 +505,13 @@ describe("multiDropdownUtils", () => {
                   selectedOptions[0],
                   selectedOptions[1],
                   selectedOptions[2],
-                  selectedOptions[4]
+                  selectedOptions[4],
                 ],
                 meta
               );
               const expected: ValueType<DropdownOption<string>> = [
                 convertDropdownOptionToInternalOption(options[0].options[0]),
-                convertDropdownOptionToInternalOption(options[1].options[1])
+                convertDropdownOptionToInternalOption(options[1].options[1]),
               ];
               expect(onChange).toHaveBeenCalledWith(expected, meta);
             });
@@ -528,9 +528,9 @@ describe("multiDropdownUtils", () => {
                     {
                       value: "Mattias",
                       label: "Mattias",
-                      data: "Mattias data"
-                    }
-                  ]
+                      data: "Mattias data",
+                    },
+                  ],
                 },
                 {
                   label: "Freight",
@@ -539,20 +539,20 @@ describe("multiDropdownUtils", () => {
                     {
                       value: "Johan",
                       label: "Johan",
-                      data: "Johan data"
+                      data: "Johan data",
                     },
                     {
                       value: "Dennis the menace",
                       label: "Dennis the menace",
-                      data: "Dennis data"
-                    }
-                  ]
-                }
+                      data: "Dennis data",
+                    },
+                  ],
+                },
               ];
               const newOnChange = createOnChange(onChange);
               const meta: Meta<string> = {
                 action: "remove-value",
-                removedValue: options[1].options[0]
+                removedValue: options[1].options[0],
               };
 
               newOnChange(undefined, meta);
@@ -573,9 +573,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -584,20 +584,20 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const meta: Meta<string> = {
               action: "remove-value",
-              removedValue: options[0].options[0]
+              removedValue: options[0].options[0],
             };
             const selectedOptions: OptionsType<InternalDropdownOption<
               string
@@ -605,7 +605,7 @@ describe("multiDropdownUtils", () => {
 
             newOnChange([selectedOptions[3]], meta);
             const expected: ValueType<DropdownOption<string>> = [
-              convertDropdownOptionToInternalOption(options[1].options[0])
+              convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -623,9 +623,9 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Mattias",
                   label: "Mattias",
-                  data: "Mattias data"
-                }
-              ]
+                  data: "Mattias data",
+                },
+              ],
             },
             {
               label: "Freight",
@@ -634,15 +634,15 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Johan",
                   label: "Johan",
-                  data: "Johan data"
+                  data: "Johan data",
                 },
                 {
                   value: "Dennis the menace",
                   label: "Dennis the menace",
-                  data: "Dennis data"
-                }
-              ]
-            }
+                  data: "Dennis data",
+                },
+              ],
+            },
           ];
           const newOnChange = createOnChange(onChange);
           const selectedOptions: OptionsType<InternalDropdownOption<
@@ -650,7 +650,7 @@ describe("multiDropdownUtils", () => {
           >> = convertGroupedDropdownOptionsToInternalOptions(options);
           const meta: Meta<string> = {
             action: "remove-value",
-            removedValue: selectedOptions[2]
+            removedValue: selectedOptions[2],
           };
 
           newOnChange(
@@ -659,12 +659,12 @@ describe("multiDropdownUtils", () => {
               selectedOptions[1],
               selectedOptions[2],
               selectedOptions[3],
-              selectedOptions[4]
+              selectedOptions[4],
             ],
             meta
           );
           const expected: ValueType<DropdownOption<string>> = [
-            options[0].options[0]
+            options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
         });
@@ -684,9 +684,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -695,20 +695,20 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const meta: Meta<string> = {
               action: "pop-value",
-              removedValue: options[1].options[0]
+              removedValue: options[1].options[0],
             };
             const selectedOptions: OptionsType<InternalDropdownOption<
               string
@@ -718,13 +718,13 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[0],
                 selectedOptions[1],
                 selectedOptions[2],
-                selectedOptions[4]
+                selectedOptions[4],
               ],
               meta
             );
             const expected: ValueType<DropdownOption<string>> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
-              convertDropdownOptionToInternalOption(options[1].options[1])
+              convertDropdownOptionToInternalOption(options[1].options[1]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -741,9 +741,9 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias data"
-                  }
-                ]
+                    data: "Mattias data",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -752,20 +752,20 @@ describe("multiDropdownUtils", () => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan data"
+                    data: "Johan data",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis data"
-                  }
-                ]
-              }
+                    data: "Dennis data",
+                  },
+                ],
+              },
             ];
             const newOnChange = createOnChange(onChange);
             const meta: Meta<string> = {
               action: "pop-value",
-              removedValue: options[0].options[0]
+              removedValue: options[0].options[0],
             };
             const selectedOptions: OptionsType<InternalDropdownOption<
               string
@@ -773,7 +773,7 @@ describe("multiDropdownUtils", () => {
 
             newOnChange([selectedOptions[3]], meta);
             const expected: ValueType<DropdownOption<string>> = [
-              convertDropdownOptionToInternalOption(options[1].options[0])
+              convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
           });
@@ -791,9 +791,9 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Mattias",
                   label: "Mattias",
-                  data: "Mattias data"
-                }
-              ]
+                  data: "Mattias data",
+                },
+              ],
             },
             {
               label: "Freight",
@@ -802,15 +802,15 @@ describe("multiDropdownUtils", () => {
                 {
                   value: "Johan",
                   label: "Johan",
-                  data: "Johan data"
+                  data: "Johan data",
                 },
                 {
                   value: "Dennis the menace",
                   label: "Dennis the menace",
-                  data: "Dennis data"
-                }
-              ]
-            }
+                  data: "Dennis data",
+                },
+              ],
+            },
           ];
           const newOnChange = createOnChange(onChange);
           const selectedOptions: OptionsType<InternalDropdownOption<
@@ -818,7 +818,7 @@ describe("multiDropdownUtils", () => {
           >> = convertGroupedDropdownOptionsToInternalOptions(options);
           const meta: Meta<string> = {
             action: "pop-value",
-            removedValue: selectedOptions[2]
+            removedValue: selectedOptions[2],
           };
 
           newOnChange(
@@ -826,12 +826,12 @@ describe("multiDropdownUtils", () => {
               selectedOptions[1],
               selectedOptions[2],
               selectedOptions[3],
-              selectedOptions[4]
+              selectedOptions[4],
             ],
             meta
           );
           const expected: ValueType<DropdownOption<string>> = [
-            options[0].options[0]
+            options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
         });
@@ -849,9 +849,9 @@ describe("multiDropdownUtils", () => {
             {
               value: "Mattias",
               label: "Mattias",
-              data: "Mattias data"
-            }
-          ]
+              data: "Mattias data",
+            },
+          ],
         },
         {
           label: "Freight",
@@ -860,44 +860,44 @@ describe("multiDropdownUtils", () => {
             {
               value: "Johan",
               label: "Johan",
-              data: "Johan data"
+              data: "Johan data",
             },
             {
               value: "Dennis the menace",
               label: "Dennis the menace",
-              data: "Dennis data"
-            }
-          ]
-        }
+              data: "Dennis data",
+            },
+          ],
+        },
       ];
       let expected: InternalDropdownOption<string>[] = [
         {
           value: "CA",
           label: "CA",
           data: "CA",
-          internalOptions: input[0].options
+          internalOptions: input[0].options,
         },
         {
           value: "Mattias",
           label: "Mattias",
-          data: "Mattias data"
+          data: "Mattias data",
         },
         {
           value: "Freight",
           label: "Freight",
           data: "Freight",
-          internalOptions: input[1].options
+          internalOptions: input[1].options,
         },
         {
           value: "Johan",
           label: "Johan",
-          data: "Johan data"
+          data: "Johan data",
         },
         {
           value: "Dennis the menace",
           label: "Dennis the menace",
-          data: "Dennis data"
-        }
+          data: "Dennis data",
+        },
       ];
 
       expect(convertGroupedDropdownOptionsToInternalOptions(input)).toEqual(
@@ -915,9 +915,9 @@ describe("multiDropdownUtils", () => {
           {
             value: "Mattias",
             label: "Mattias",
-            data: "Mattias data"
-          }
-        ]
+            data: "Mattias data",
+          },
+        ],
       },
       {
         label: "Freight",
@@ -926,15 +926,15 @@ describe("multiDropdownUtils", () => {
           {
             value: "Johan",
             label: "Johan",
-            data: "Johan data"
+            data: "Johan data",
           },
           {
             value: "Dennis the menace",
             label: "Dennis the menace",
-            data: "Dennis data"
-          }
-        ]
-      }
+            data: "Dennis data",
+          },
+        ],
+      },
     ];
 
     describe("when value is undefined", () => {
@@ -953,18 +953,18 @@ describe("multiDropdownUtils", () => {
             value: "Freight",
             label: "Freight",
             data: "Freight",
-            internalOptions: groupOptions[1].options
+            internalOptions: groupOptions[1].options,
           },
           {
             value: "Johan",
             label: "Johan",
-            data: "Johan data"
+            data: "Johan data",
           },
           {
             value: "Dennis the menace",
             label: "Dennis the menace",
-            data: "Dennis data"
-          }
+            data: "Dennis data",
+          },
         ];
         expect(convertValueToInternalValue(groupOptions, selected)).toEqual(
           expected
@@ -979,8 +979,8 @@ describe("multiDropdownUtils", () => {
           {
             value: "Johan",
             label: "Johan",
-            data: "Johan data"
-          }
+            data: "Johan data",
+          },
         ];
         expect(convertValueToInternalValue(groupOptions, selected)).toEqual(
           expected
@@ -1001,12 +1001,12 @@ describe("multiDropdownUtils", () => {
         const selectedOption = {
           value: "value 1",
           label: "label 1",
-          data: "data 1"
+          data: "data 1",
         };
         const notSelectedOption = {
           value: "value 2",
           label: "label 2",
-          data: "data 2"
+          data: "data 2",
         };
         expect(
           allOptionsExists(
@@ -1022,12 +1022,12 @@ describe("multiDropdownUtils", () => {
         const selectedOption = {
           value: "value 1",
           label: "label 1",
-          data: "data 1"
+          data: "data 1",
         };
         const selectedOption2 = {
           value: "value 2",
           label: "label 2",
-          data: "data 2"
+          data: "data 2",
         };
         expect(
           allOptionsExists(
@@ -1044,13 +1044,13 @@ describe("multiDropdownUtils", () => {
       const option: DropdownOption<string> = {
         data: "data",
         label: "label",
-        value: "string"
+        value: "string",
       };
 
       const internalOption: InternalDropdownOption<string> = {
         data: "data",
         label: "label",
-        value: "string"
+        value: "string",
       };
 
       expect(convertDropdownOptionToInternalOption(option)).toEqual(
@@ -1065,20 +1065,20 @@ describe("multiDropdownUtils", () => {
         {
           data: "data 1",
           label: "label 1",
-          value: "string 1"
-        }
+          value: "string 1",
+        },
       ];
       const option: GroupType<DropdownOption<string>> = {
         label: "label",
         value: "string",
-        options
+        options,
       };
 
       const internalOption: InternalDropdownOption<string> = {
         data: "label",
         label: "label",
         value: "label",
-        internalOptions: options
+        internalOptions: options,
       };
 
       expect(convertGroupedDropdownOptionToInternalOption(option)).toEqual(
@@ -1092,14 +1092,14 @@ describe("multiDropdownUtils", () => {
       const option: DropdownOption<string> = {
         data: "data",
         label: "label",
-        value: "string"
+        value: "string",
       };
 
       const internalOption: InternalDropdownOption<string> = {
         data: "data",
         label: "label",
         value: "string",
-        internalOptions: []
+        internalOptions: [],
       };
 
       expect(convertInternalOptionToDropdownOption(internalOption)).toEqual(

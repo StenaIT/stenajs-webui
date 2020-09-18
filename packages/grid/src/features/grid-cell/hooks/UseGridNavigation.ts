@@ -3,7 +3,7 @@ import {
   CellIndices,
   getNextPositionWrappedOrClamped,
   MoveDirection,
-  TableEdgeMoveMode
+  TableEdgeMoveMode,
 } from "../../../util/DirectionCalculator";
 import { ensureDomIdIsCorrect } from "../../../util/DomIdValidator";
 import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
@@ -101,7 +101,7 @@ export const useGridNavigation = (
     tableId,
     edgeMode,
     onCellMove,
-    onCellNavigation
+    onCellNavigation,
   } = useGridNavigationOptionsFromContext(options);
 
   const moveHandler = useMemo(
@@ -124,25 +124,25 @@ export const useGridNavigation = (
       numCols,
       edgeMode,
       onCellMove,
-      onCellNavigation
+      onCellNavigation,
     ]
   );
 
   const onKeyDown = useMemo(() => createKeyDownHandler(moveHandler), [
-    moveHandler
+    moveHandler,
   ]);
 
   const id = useMemo(() => createCellId(tableId, rowIndex, colIndex), [
     tableId,
     rowIndex,
-    colIndex
+    colIndex,
   ]);
 
   const requiredProps = useMemo(
     () => ({
       tabIndex: 0,
       onKeyDown,
-      id
+      id,
     }),
     [onKeyDown, id]
   );
@@ -150,7 +150,7 @@ export const useGridNavigation = (
   return {
     focusOnCell,
     moveHandler,
-    requiredProps
+    requiredProps,
   };
 };
 
@@ -165,7 +165,7 @@ const createMoveHandler = (
   edgeMode?: TableEdgeMoveMode,
   onCellMove?: CellMoveHandler,
   onCellNavigation?: CellNavigationHandler
-): MoveHandler => direction => {
+): MoveHandler => (direction) => {
   const pos = getNextPositionWrappedOrClamped(
     rowIndex,
     colIndex,
@@ -187,7 +187,7 @@ const createMoveHandler = (
         rowIndex: pos.rowIndex,
         colIndex: pos.colIndex,
         colDidChange,
-        rowDidChange
+        rowDidChange,
       });
     }
     focusOnCell(tableId, pos);
@@ -202,7 +202,7 @@ const createMoveHandler = (
       colIndex: pos.colIndex,
       colDidChange,
       rowDidChange,
-      cellDidChange: colDidChange || rowDidChange
+      cellDidChange: colDidChange || rowDidChange,
     });
   }
 };

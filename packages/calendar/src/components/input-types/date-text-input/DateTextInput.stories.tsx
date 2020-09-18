@@ -7,41 +7,41 @@ interface DateTextInputState {
 }
 
 export default {
-  title: "calendar/Input/DateTextInput"
+  title: "calendar/Input/DateTextInput",
 };
 
 export const Standard = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
 Standard.storyName = "standard";
 
 export const EnglishDateFormat = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     dateFormat={"dd/MM/yyyy"}
     placeholder={"DD/MM/YYYY"}
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
 EnglishDateFormat.storyName = "english date format";
 
 export const DutchDateFormat = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     dateFormat={"dd-MM-yyyy"}
     placeholder={"DD-MM-YYYY"}
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
@@ -58,11 +58,11 @@ export const Invalid = () => (
 Invalid.storyName = "invalid";
 
 export const WithNoIcon = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     hideCalenderIcon={true}
   />
 ));
@@ -70,11 +70,11 @@ export const WithNoIcon = withState<DateTextInputState>({
 WithNoIcon.storyName = "with no icon";
 
 export const WithDisabledCalendar = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     disableCalender={true}
   />
 ));
@@ -82,11 +82,11 @@ export const WithDisabledCalendar = withState<DateTextInputState>({
 WithDisabledCalendar.storyName = "with disabled calendar";
 
 export const UsingPortal = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     portalTarget={document.body}
   />
 ));
@@ -94,15 +94,15 @@ export const UsingPortal = withState<DateTextInputState>({
 UsingPortal.storyName = "using portal";
 
 export const CustomCalendarProps = withState<DateTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
   <DateTextInput
     calendarProps={{
       defaultHighlights: ["disabled"],
-      highlightToday: true
+      highlightToday: true,
     }}
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 

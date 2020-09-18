@@ -1,11 +1,11 @@
 import {
   createEntityReducer,
-  EntityState
+  EntityState,
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { createEntityActions } from "../../../reducer-factories/entity-reducer/entity-action-creators";
 import {
   createRecordObjectReducer,
-  RecordObjectState
+  RecordObjectState,
 } from "../record-object-reducer";
 import { createRecordObjectActions } from "../record-object-action-creators";
 import { EntityAction } from "../../../reducer-factories/entity-reducer/entity-actions";
@@ -18,7 +18,7 @@ type TestUser = {
 const innerActions = createEntityActions<TestUser>();
 const innerReducer = createEntityReducer<TestUser>({
   id: "",
-  email: ""
+  email: "",
 });
 const actions = createRecordObjectActions<EntityAction<TestUser>>();
 const reducer = createRecordObjectReducer(innerReducer);

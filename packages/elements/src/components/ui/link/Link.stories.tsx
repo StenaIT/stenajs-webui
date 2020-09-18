@@ -3,7 +3,7 @@ import { Link } from "@stenajs-webui/elements";
 import { StandardText } from "@stenajs-webui/core";
 
 export default {
-  title: "elements/Link"
+  title: "elements/Link",
 };
 
 export const Standard = () => (

@@ -16,7 +16,7 @@ export const UpDownButtons: React.FC<UpDownButtonsProps> = ({
   onClickDown,
   onClickUp,
   iconColor,
-  disabled
+  disabled,
 }) => (
   <Column className={styles.upDownButtons}>
     <button onClick={onClickUp} className={styles.button} disabled={disabled}>

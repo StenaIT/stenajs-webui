@@ -3,7 +3,7 @@ import { StandardTableConfig } from "../config/StandardTableConfig";
 import { StandardTableState } from "../redux/StandardTableReducer";
 import {
   StandardTableAction,
-  StandardTableActions
+  StandardTableActions,
 } from "../util/ActionsFactory";
 import { InternalStandardTableAction } from "../redux/StandardTableActionsAndSelectors";
 

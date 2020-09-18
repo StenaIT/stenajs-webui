@@ -61,7 +61,7 @@ export interface TextInputProps
   onMove?: (direction: MoveDirection) => void;
 }
 
-export const TextInput: React.FC<TextInputProps> = props => {
+export const TextInput: React.FC<TextInputProps> = (props) => {
   const {
     variant = "standard",
     inputRef,
@@ -113,10 +113,10 @@ export const TextInput: React.FC<TextInputProps> = props => {
         styles.inputContainer,
         styles[variant],
         {
-          [styles.disabled]: disabled
+          [styles.disabled]: disabled,
         },
         {
-          [styles.hideBorder]: hideBorder
+          [styles.hideBorder]: hideBorder,
         },
         wrapperClassName
       )}

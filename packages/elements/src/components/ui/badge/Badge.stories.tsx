@@ -3,7 +3,7 @@ import { select, text } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "elements/Badge/Badge"
+  title: "elements/Badge/Badge",
 };
 
 export const Standard = () => (

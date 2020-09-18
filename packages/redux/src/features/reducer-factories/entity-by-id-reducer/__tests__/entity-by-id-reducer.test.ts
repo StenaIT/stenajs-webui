@@ -28,8 +28,8 @@ describe("entity-by-id-reducer", () => {
         const s = reduce(
           {
             entities: {
-              "1": { id: "1", username: "lolo", password: "123" }
-            }
+              "1": { id: "1", username: "lolo", password: "123" },
+            },
           },
           actions.setEntity({ id: "1", username: "lala" })
         );
@@ -54,8 +54,8 @@ describe("entity-by-id-reducer", () => {
         const s = reduce(
           {
             entities: {
-              "1": { id: "1", username: "lolo", password: "123" }
-            }
+              "1": { id: "1", username: "lolo", password: "123" },
+            },
           },
           actions.setEntityFields("1", { id: "1", username: "lala" })
         );
@@ -77,8 +77,8 @@ describe("entity-by-id-reducer", () => {
         const s = reduce(
           {
             entities: {
-              "1": { id: "1", username: "lolo", password: "123" }
-            }
+              "1": { id: "1", username: "lolo", password: "123" },
+            },
           },
           actions.clearAllEntities()
         );
@@ -93,8 +93,8 @@ describe("entity-by-id-reducer", () => {
         const s = reduce(
           {
             entities: {
-              "1": { id: "1", username: "lolo", password: "123" }
-            }
+              "1": { id: "1", username: "lolo", password: "123" },
+            },
           },
           actions.clearEntity("2")
         );
@@ -106,8 +106,8 @@ describe("entity-by-id-reducer", () => {
         const s = reduce(
           {
             entities: {
-              "1": { id: "1", username: "lolo", password: "123" }
-            }
+              "1": { id: "1", username: "lolo", password: "123" },
+            },
           },
           actions.clearEntity("1")
         );

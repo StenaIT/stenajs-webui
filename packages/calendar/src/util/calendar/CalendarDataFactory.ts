@@ -12,7 +12,7 @@ import {
   getYear,
   isSameDay,
   startOfISOWeek,
-  startOfMonth
+  startOfMonth,
 } from "date-fns";
 import { DateFormats } from "../date/DateFormats";
 
@@ -28,7 +28,7 @@ export enum Months {
   SEPTEMBER,
   OCTOBER,
   NOVEMBER,
-  DECEMBER
+  DECEMBER,
 }
 
 export enum WeekDays {
@@ -38,7 +38,7 @@ export enum WeekDays {
   WEDNESDAY,
   THURSDAY,
   FRIDAY,
-  SATURDAY
+  SATURDAY,
 }
 
 export interface DayData {
@@ -95,7 +95,7 @@ export const getMonthInYear = (year: number, month: number): MonthData => {
     name: format(firstDayOfMonth, DateFormats.fullMonthName),
     year: yearToUse,
     monthInYear: monthToUse,
-    weeks: getWeeksForMonth(yearToUse, monthToUse)
+    weeks: getWeeksForMonth(yearToUse, monthToUse),
   };
 };
 
@@ -127,7 +127,7 @@ export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
     endMonth: getMonth(addDays(firstDayOfWeek, 6)),
     endYear: getYear(addDays(firstDayOfWeek, 6)),
     days: getDaysForWeekForDate(firstDayOfWeek),
-    isLastWeekOfMonth
+    isLastWeekOfMonth,
   };
 };
 
@@ -145,14 +145,14 @@ export const createDay = (date: Date): DayData => {
     isFirstDayOfWeek: dayOfWeek === 1,
     isLastDayOfWeek: dayOfWeek === 7,
     isFirstDayOfMonth: isSameDay(startOfMonth(date), date),
-    isLastDayOfMonth: isSameDay(endOfMonth(date), date)
+    isLastDayOfMonth: isSameDay(endOfMonth(date), date),
   };
 };
 
 export const getDaysForWeekForDate = (firstDayOfWeek: Date): Array<DayData> => {
   return eachDayOfInterval({
     start: firstDayOfWeek,
-    end: addDays(firstDayOfWeek, 6)
+    end: addDays(firstDayOfWeek, 6),
   }).map(createDay);
 };
 

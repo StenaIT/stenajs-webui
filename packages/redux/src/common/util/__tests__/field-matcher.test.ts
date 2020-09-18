@@ -7,7 +7,7 @@ interface User {
 
 const u = (a: string, b: string): User => ({
   a,
-  b
+  b,
 });
 
 describe("field-matcher", () => {

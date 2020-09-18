@@ -19,6 +19,6 @@ export const useMonthSwitcherLogic = (
   return {
     nextMonth,
     prevMonth,
-    date
+    date,
   };
 };

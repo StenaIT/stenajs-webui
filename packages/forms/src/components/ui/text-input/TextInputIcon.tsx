@@ -26,7 +26,7 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
   disableContentPadding,
   disableContentPaddingLeft,
   disableContentPaddingRight,
-  onClick
+  onClick,
 }) => {
   if (!content && !icon) {
     return null;

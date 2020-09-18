@@ -17,7 +17,7 @@ export const createStandardEditableTextCell = <
     stopEditingAndRevert,
     lastKeyEvent,
     stopEditing,
-    stopEditingAndMove
+    stopEditingAndMove,
   }
 ) =>
   isEditing ? (

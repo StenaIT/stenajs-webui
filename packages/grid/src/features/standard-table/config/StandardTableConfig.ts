@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import {
   UseGridCellOptions,
-  UseGridCellResult
+  UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";
 
 export interface RowExpansionArgs {
@@ -236,6 +236,6 @@ export const createColumnConfig = <TItem, TItemValue>(
 ): StandardTableColumnConfig<TItem, TItemValue> => {
   return {
     ...options,
-    itemValueResolver
+    itemValueResolver,
   };
 };

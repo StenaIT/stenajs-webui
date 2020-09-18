@@ -25,7 +25,7 @@ describe("StateHelper", () => {
     });
     it("returns value if highlight is set", () => {
       const dayState: DayState = {
-        highlights: ["disabled"]
+        highlights: ["disabled"],
       };
       const selected = dayHighlightSelect(
         dayState,
@@ -37,7 +37,7 @@ describe("StateHelper", () => {
     });
     it("returns value if defaultHighlight is set", () => {
       const dayState: DayState = {
-        highlights: ["disabled"]
+        highlights: ["disabled"],
       };
       const selected = dayHighlightSelect(
         dayState,
@@ -50,7 +50,7 @@ describe("StateHelper", () => {
   });
   it("returns fallback if there is no match", () => {
     const dayState: DayState = {
-      highlights: ["selected"]
+      highlights: ["selected"],
     };
     const selected = dayHighlightSelect(
       dayState,

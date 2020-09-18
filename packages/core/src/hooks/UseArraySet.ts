@@ -11,7 +11,7 @@ export const useArraySet = <T>(
 ) => {
   const add = useCallback(
     (item: T) => {
-      if (!list.some(l => comparator(l, item))) {
+      if (!list.some((l) => comparator(l, item))) {
         setList([...list, item]);
       }
     },
@@ -22,7 +22,7 @@ export const useArraySet = <T>(
     (items: Array<T>) => {
       setList(
         items.reduce((list, item) => {
-          if (!list.some(l => comparator(l, item))) {
+          if (!list.some((l) => comparator(l, item))) {
             return [...list, item];
           }
           return list;
@@ -34,7 +34,7 @@ export const useArraySet = <T>(
 
   const remove = useCallback(
     (item: T) => {
-      const index = list.findIndex(l => comparator(l, item));
+      const index = list.findIndex((l) => comparator(l, item));
       if (index >= 0) {
         setList(list.filter((_, i) => i !== index));
       }
@@ -44,14 +44,14 @@ export const useArraySet = <T>(
 
   const removeMultiple = useCallback(
     (items: Array<T>) => {
-      setList(list.filter(item => !items.some(l => comparator(l, item))));
+      setList(list.filter((item) => !items.some((l) => comparator(l, item))));
     },
     [list, setList, comparator]
   );
 
   const toggle = useCallback(
     (item: T) => {
-      const found = list.some(l => comparator(l, item));
+      const found = list.some((l) => comparator(l, item));
       if (found) {
         remove(item);
       } else {
@@ -66,6 +66,6 @@ export const useArraySet = <T>(
     addMultiple,
     remove,
     removeMultiple,
-    toggle
+    toggle,
   };
 };

@@ -3,7 +3,7 @@ import { AsyncSelect } from "@stenajs-webui/select";
 import * as React from "react";
 
 export default {
-  title: "select/AsyncSelect"
+  title: "select/AsyncSelect",
 };
 
 export const _AsyncSelect = () => (
@@ -38,21 +38,21 @@ export const AsyncSelectDark = () => (
 AsyncSelectDark.storyName = "async select dark";
 
 const getOptions = (): Promise<Array<{ value: string; label: string }>> =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve([
         {
           value: "Mattias",
-          label: "Mattias"
+          label: "Mattias",
         },
         {
           value: "Johan",
-          label: "Johan"
+          label: "Johan",
         },
         {
           value: "Dennis the menace",
-          label: "Dennis the menace"
-        }
+          label: "Dennis the menace",
+        },
       ]);
     }, 1500);
   });

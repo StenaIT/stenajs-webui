@@ -6,10 +6,10 @@ import { SingleDateCalendarProps } from "./SingleDateCalendar";
 export const useSingleDateSelection = <T>({
   onChange,
   value,
-  statePerMonth
+  statePerMonth,
 }: SingleDateCalendarProps<T>): Partial<CalendarProps<T>> => {
   const onClickDay: OnClickDay<T> = useCallback(
-    day => {
+    (day) => {
       if (onChange) {
         onChange(day.date);
       }
@@ -27,6 +27,6 @@ export const useSingleDateSelection = <T>({
   return {
     onClickDay,
     statePerMonth: statePerMonthWithSelectedDate,
-    date: value
+    date: value,
   };
 };

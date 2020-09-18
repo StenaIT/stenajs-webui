@@ -9,12 +9,12 @@ import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
-  SingleDateCalendarProps
+  SingleDateCalendarProps,
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
-  defaultCalendarTheme
+  defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 
 export type DateTextInputCalendarProps<T> = Omit<
@@ -74,7 +74,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   useMultiOnClickOutside([popupRef, outsideRef], closeCalendar);
 
   const onValueChangeHandler = useCallback(
-    value => {
+    (value) => {
       if (onValueChange) {
         onValueChange(value);
       }

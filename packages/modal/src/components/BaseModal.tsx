@@ -33,7 +33,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
         <div
           style={{ ["--swui-modal-width" as string]: width }}
           className={cx(styles.content, {
-            [styles.isDraggable]: draggable
+            [styles.isDraggable]: draggable,
           })}
         >
           {children}

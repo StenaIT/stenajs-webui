@@ -5,13 +5,13 @@ import { TinyText } from "@stenajs-webui/core";
 import {
   ActionDropdown,
   ActionMenuItem,
-  ActionMenuSeparator
+  ActionMenuSeparator,
 } from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
 import * as React from "react";
 
 export default {
-  title: "elements/ActionMenu/ActionDropdown"
+  title: "elements/ActionMenu/ActionDropdown",
 };
 
 export const Standard = () => (

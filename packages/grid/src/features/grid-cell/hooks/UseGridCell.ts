@@ -3,12 +3,12 @@ import { MoveDirection } from "../../../util/DirectionCalculator";
 import {
   KeyDownEvent,
   useEditableCell,
-  UseEditableCellOptions
+  UseEditableCellOptions,
 } from "./UseEditableCell";
 import {
   GridNavigationRequiredProps,
   useGridNavigation,
-  UseGridNavigationOptions
+  UseGridNavigationOptions,
 } from "./UseGridNavigation";
 import { useGridNavigationOptionsFromContext } from "./UseGridNavigationOptionsFromContext";
 
@@ -88,7 +88,7 @@ export const useGridCell = <TValue>(
   const cellCoordinates = useMemo(
     () => ({
       rowIndex: options.rowIndex,
-      colIndex: options.colIndex
+      colIndex: options.colIndex,
     }),
     [options.rowIndex, options.colIndex]
   );
@@ -124,7 +124,7 @@ export const useGridCell = <TValue>(
   );
 
   const onKeyDown = useCallback<KeyboardEventHandler>(
-    e => {
+    (e) => {
       if (!edit.isEditing) {
         const consumed = nav.requiredProps.onKeyDown(e);
         if (!consumed) {
@@ -139,7 +139,7 @@ export const useGridCell = <TValue>(
     () => ({
       ...nav.requiredProps,
       onKeyDown,
-      onDoubleClick: edit.onDoubleClick
+      onDoubleClick: edit.onDoubleClick,
     }),
     [onKeyDown, edit.onDoubleClick, nav.requiredProps]
   );
@@ -155,6 +155,6 @@ export const useGridCell = <TValue>(
     startEditing,
     stopEditing,
     stopEditingAndRevert,
-    stopEditingAndMove
+    stopEditingAndMove,
   };
 };

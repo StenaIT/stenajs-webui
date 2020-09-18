@@ -5,7 +5,7 @@ import {
   createStandardEditableTextCell,
   StandardTable,
   StandardTableCellRenderer,
-  StandardTableConfig
+  StandardTableConfig,
 } from "@stenajs-webui/grid";
 import { addDays, format } from "date-fns";
 import * as React from "react";
@@ -27,7 +27,7 @@ const createItemsMocks = (): Array<ListItem> => [
     name: "Postnord",
     ship: "McBoat",
     numPassengers: 1241,
-    departure: addDays(new Date(), 1)
+    departure: addDays(new Date(), 1),
   },
   {
     id: "124",
@@ -35,7 +35,7 @@ const createItemsMocks = (): Array<ListItem> => [
     name: "Schenker",
     ship: "Boatface",
     numPassengers: 31,
-    departure: addDays(new Date(), 21)
+    departure: addDays(new Date(), 21),
   },
   {
     id: "125",
@@ -43,7 +43,7 @@ const createItemsMocks = (): Array<ListItem> => [
     name: "Fedex",
     ship: "RoboBoat",
     numPassengers: 534,
-    departure: addDays(new Date(), 14)
+    departure: addDays(new Date(), 14),
   },
   {
     id: "126",
@@ -51,7 +51,7 @@ const createItemsMocks = (): Array<ListItem> => [
     name: "UPS",
     ship: "Boatinator",
     numPassengers: 213,
-    departure: addDays(new Date(), 63)
+    departure: addDays(new Date(), 63),
   },
   {
     id: "127",
@@ -59,15 +59,15 @@ const createItemsMocks = (): Array<ListItem> => [
     name: "DHL",
     ship: "Airplane",
     numPassengers: 821,
-    departure: addDays(new Date(), 18)
-  }
+    departure: addDays(new Date(), 18),
+  },
 ];
 
 const setListItemFields = (
   items: Array<ListItem>,
   id: string,
   fields: Partial<ListItem>
-) => items.map(item => (item.id === id ? { ...item, ...fields } : item));
+) => items.map((item) => (item.id === id ? { ...item, ...fields } : item));
 
 const createConfig = (
   onChangeNumPassengers?: (
@@ -81,31 +81,31 @@ const createConfig = (
   options?: Partial<StandardTableConfig<ListItem>>
 ): StandardTableConfig<ListItem> => ({
   ...options,
-  keyResolver: item => item.id,
+  keyResolver: (item) => item.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
   enableGridCell: true,
   columns: {
-    id: createColumnConfig(item => item.id),
-    active: createColumnConfig(item => item.active, {
-      itemLabelFormatter: value => (value ? "Y" : ""),
-      infoIconTooltipText: "Active means out on the sea."
+    id: createColumnConfig((item) => item.id),
+    active: createColumnConfig((item) => item.active, {
+      itemLabelFormatter: (value) => (value ? "Y" : ""),
+      infoIconTooltipText: "Active means out on the sea.",
     }),
-    name: createColumnConfig(item => item.name),
-    ship: createColumnConfig(item => item.ship),
-    numPassengers: createColumnConfig(item => item.numPassengers, {
+    name: createColumnConfig((item) => item.name),
+    ship: createColumnConfig((item) => item.ship),
+    numPassengers: createColumnConfig((item) => item.numPassengers, {
       renderCell: numPassengersCellRenderer,
       isEditable: true,
       onChange: onChangeNumPassengers,
       justifyContentHeader: "flex-end",
-      justifyContentCell: "flex-end"
+      justifyContentCell: "flex-end",
     }),
-    departure: createColumnConfig(item => item.departure, {
-      itemLabelFormatter: value => format(value, "yyyy-MM-dd"),
-      borderLeft: true
-    })
+    departure: createColumnConfig((item) => item.departure, {
+      itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),
+      borderLeft: true,
+    }),
   },
-  columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"]
+  columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
 });
 
 const config = createConfig(() => {});
@@ -115,15 +115,15 @@ const createOnChangeNumPassengers = (
   store: Store<{ items: Array<ListItem> }>
 ) => (item: ListItem, numPassengers: string | undefined) => {
   const items = setListItemFields(store.state.items, item.id, {
-    numPassengers: numPassengers ? parseInt(numPassengers) : undefined
+    numPassengers: numPassengers ? parseInt(numPassengers) : undefined,
   });
   return store.set({
-    items
+    items,
   });
 };
 
 export default {
-  title: "grid/StandardTable"
+  title: "grid/StandardTable",
 };
 
 export const Standard = withState({ items })(({ store }) => {
@@ -168,7 +168,7 @@ export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
       createStandardEditableTextCell(),
       {
         initialSortOrder: "name",
-        initialSortOrderDesc: true
+        initialSortOrderDesc: true,
       }
     );
     return <StandardTable items={store.state.items} config={config} />;
@@ -183,10 +183,10 @@ export const WithFieldError = withState({ items })(({ store }) => {
     createOnChangeNumPassengers(store),
     createEditableTextCellWithStatus<number | undefined, ListItem>(
       undefined,
-      item => ({
+      (item) => ({
         hasError: true,
         errorMessage: "Something failed.",
-        id: item.id
+        id: item.id,
       })
     )
   );
@@ -200,9 +200,9 @@ export const WithFieldLoading = withState({ items })(({ store }) => {
     createOnChangeNumPassengers(store),
     createEditableTextCellWithStatus<number | undefined, ListItem>(
       undefined,
-      item => ({
+      (item) => ({
         id: item.id,
-        loading: true
+        loading: true,
       })
     )
   );
@@ -217,10 +217,10 @@ export const WithModifiedFields = withState({ items })(({ store }) => {
     createEditableTextCellWithStatus<number | undefined, ListItem>(
       "Passengers cannot be empty.",
       () => undefined,
-      item => ({
+      (item) => ({
         id: item.id,
         modified: true,
-        newValue: "789"
+        newValue: "789",
       })
     )
   );
@@ -236,10 +236,10 @@ export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
       createEditableTextCellWithStatus<number | undefined, ListItem>(
         "Passengers cannot be empty.",
         () => undefined,
-        item => ({
+        (item) => ({
           id: item.id,
           modified: true,
-          newValue: ""
+          newValue: "",
         })
       )
     );
@@ -257,8 +257,8 @@ MissingItems.storyName = "missing items";
 export const NavigationBetweenTables = () => {
   const config = createConfig(undefined, undefined, {
     gridCellOptions: {
-      edgeMode: "unlimited"
-    }
+      edgeMode: "unlimited",
+    },
   });
 
   return (
@@ -298,11 +298,11 @@ export const ExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
     enableExpandCollapse: true,
     showHeaderExpandCollapse: true,
-    renderRowExpansion: item => (
+    renderRowExpansion: (item) => (
       <Box spacing indent>
         <StandardText>Name: {item.name}</StandardText>
       </Box>
-    )
+    ),
   });
   return <StandardTable items={items} config={config} />;
 };
@@ -312,13 +312,13 @@ ExpandableRows.storyName = "expandable rows";
 export const SomeExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
     enableExpandCollapse: true,
-    expandCollapseDisableResolver: item =>
+    expandCollapseDisableResolver: (item) =>
       item.numPassengers != null && item.numPassengers > 500,
-    renderRowExpansion: item => (
+    renderRowExpansion: (item) => (
       <Box spacing indent>
         <StandardText>Name: {item.name}</StandardText>
       </Box>
-    )
+    ),
   });
   return <StandardTable items={items} config={config} />;
 };

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import {
   DateRangeCalendarOnChangeValue,
-  DateRangeFocusedInput
+  DateRangeFocusedInput,
 } from "../../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { DayData } from "../../../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
@@ -39,7 +39,7 @@ export const useDateRangeInput = (
       if (focusedInput === "startDate") {
         onChange({
           startDate: day.date,
-          endDate: value.endDate
+          endDate: value.endDate,
         });
         if (!value.endDate) {
           setFocusedInput("endDate");
@@ -50,7 +50,7 @@ export const useDateRangeInput = (
       } else if (focusedInput === "endDate") {
         onChange({
           startDate: value.startDate,
-          endDate: day.date
+          endDate: day.date,
         });
         if (!value.startDate) {
           setFocusedInput("startDate");
@@ -81,6 +81,6 @@ export const useDateRangeInput = (
     startDateInputRef,
     endDateInputRef,
     onClickDay,
-    startDateIsAfterEnd
+    startDateIsAfterEnd,
   };
 };

@@ -10,7 +10,7 @@ interface Props extends ValueAndOnValueChangeProps<number> {
 export const YearPickerCell: React.FC<Props> = ({
   value,
   onValueChange,
-  year
+  year,
 }) => {
   const label = String(year);
   return (

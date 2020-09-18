@@ -7,7 +7,7 @@ import {
   StandardText,
   useElementFocus,
   useMouseIsEntered,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
@@ -35,7 +35,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   onClick,
   theme: themeFromProps,
   children,
-  disableCloseOnClick
+  disableCloseOnClick,
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
   const theme = themeFromProps || themeFromContext;
@@ -75,8 +75,8 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
             ? theme.itemBackgroundHover
             : isInFocus
             ? theme.itemBackgroundFocus
-            : theme.itemBackground
-      }
+            : theme.itemBackground,
+      },
     },
     [theme, disabled, isInFocus, mouseIsOver]
   );

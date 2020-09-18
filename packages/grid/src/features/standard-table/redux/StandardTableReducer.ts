@@ -5,7 +5,7 @@ import {
   createSortOrderReducerInitialState,
   reducerIdGate,
   SelectedIdsState,
-  SortOrderState
+  SortOrderState,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "./ReducerIdFactory";
 import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
@@ -25,7 +25,7 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
 ): StandardTableState<TColumnKey> => ({
   sortOrder: createSortOrderReducerInitialState(sortBy, desc),
   selectedIds: createSelectedIdsReducerInitialState(selectedIds),
-  expandedRows: createSelectedIdsReducerInitialState(expandedRows)
+  expandedRows: createSelectedIdsReducerInitialState(expandedRows),
 });
 
 export type StandardTableReducer<TColumnKey extends string> = Reducer<
@@ -52,6 +52,6 @@ export const createStandardTableReducer = <TColumnKey extends string>(
   return combineReducers({
     sortOrder,
     selectedIds,
-    expandedRows
+    expandedRows,
   });
 };

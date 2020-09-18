@@ -3,7 +3,7 @@ import { createTextMaskInputElement } from "text-mask-core";
 import {
   InputMask,
   InputMaskPipe,
-  InputMaskProvider
+  InputMaskProvider,
 } from "../masks/InputMask";
 
 export const useMaskedInput = (
@@ -30,7 +30,7 @@ export const useMaskedInput = (
       mask,
       pipe,
       placeholderChar,
-      showMask
+      showMask,
     });
 
     (textMask.current as any).update(initialValue);
@@ -42,7 +42,7 @@ export const useMaskedInput = (
     pipe,
     placeholderChar,
     showMask,
-    initialValue
+    initialValue,
   ]);
 
   return {
@@ -57,6 +57,6 @@ export const useMaskedInput = (
       if (typeof onValueChange === "function") {
         onValueChange(event.target.value);
       }
-    }
+    },
   };
 };

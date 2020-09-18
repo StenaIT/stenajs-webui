@@ -27,7 +27,7 @@ export const useSortOrderColumnHead = <TSortBy extends string>(
         dispatch(
           actions.sortBy(sortByForColumn, selected ? !state.desc : false)
         );
-      }
+      },
     };
   }, [state, actions, sortByForColumn, dispatch]);
 };

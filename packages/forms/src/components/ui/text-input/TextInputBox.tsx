@@ -42,7 +42,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
   iconLeft,
   onClickLeft,
   onClickRight,
-  children
+  children,
 }) => {
   const currentIconRight =
     variant === "success"
@@ -61,7 +61,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         styles.inputContainer,
         styles[variant],
         {
-          [styles.disabled]: disabled
+          [styles.disabled]: disabled,
         },
         wrapperClassName
       )}

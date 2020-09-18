@@ -5,7 +5,7 @@ import * as React from "react";
 import { Box } from "@stenajs-webui/core";
 
 export default {
-  title: "elements/Spinner"
+  title: "elements/Spinner",
 };
 
 export const Standard = () => (

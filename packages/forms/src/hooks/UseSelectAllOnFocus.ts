@@ -5,7 +5,7 @@ export const useSelectAllOnFocus = (
   onFocus?: FocusEventHandler<HTMLInputElement>,
   enabled?: boolean
 ) => {
-  const onFocusHandler: FocusEventHandler<HTMLInputElement> = ev => {
+  const onFocusHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
     if (ref.current && ref.current.type !== "number") {
       if (enabled) {
         ref.current!.setSelectionRange(0, ref.current!.value.length);
@@ -22,6 +22,6 @@ export const useSelectAllOnFocus = (
   };
 
   return {
-    onFocusHandler
+    onFocusHandler,
   };
 };

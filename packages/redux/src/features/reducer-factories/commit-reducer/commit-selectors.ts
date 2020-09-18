@@ -15,7 +15,7 @@ export const createCommitReducerSelectors = <TStoreState, TState>(
   stateSelector: CommitReducerStateSelector<TStoreState, TState>
 ): CommitReducerSelectors<TStoreState, TState> => {
   return {
-    getWorkspaceValues: state => stateSelector(state, id).workspace,
-    getCommittedValues: state => stateSelector(state, id).committed
+    getWorkspaceValues: (state) => stateSelector(state, id).workspace,
+    getCommittedValues: (state) => stateSelector(state, id).committed,
   };
 };

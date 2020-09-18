@@ -7,14 +7,14 @@ interface State {
 }
 
 export default {
-  title: "calendar/Calendar/SingleWeekCalendar"
+  title: "calendar/Calendar/SingleWeekCalendar",
 };
 
 export const Standard = withState<State>({
-  week: undefined
+  week: undefined,
 })(({ store }: { store: Store<State> }) => (
   <SingleWeekCalendar
-    onChange={week => store.set({ week })}
+    onChange={(week) => store.set({ week })}
     value={store.state.week}
   />
 ));

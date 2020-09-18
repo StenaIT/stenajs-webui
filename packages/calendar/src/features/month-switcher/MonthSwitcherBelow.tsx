@@ -14,7 +14,7 @@ export interface WithMonthSwitcherBelowProps {
 export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({
   children,
   prevMonth,
-  nextMonth
+  nextMonth,
 }) => (
   <div>
     {children}

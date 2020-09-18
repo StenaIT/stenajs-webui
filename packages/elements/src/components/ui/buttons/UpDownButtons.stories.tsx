@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import * as React from "react";
 
 export default {
-  title: "elements/Buttons/UpDownButtons"
+  title: "elements/Buttons/UpDownButtons",
 };
 
 export const Standard = () => (

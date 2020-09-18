@@ -7,16 +7,16 @@ interface DateRangeState {
 }
 
 export default {
-  title: "calendar/Pickers/YearPicker"
+  title: "calendar/Pickers/YearPicker",
 };
 
 export const Standard = withState<DateRangeState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<DateRangeState> }) => (
   <div style={{ display: "inline-block" }}>
     <YearPicker
       value={store.state.value}
-      onValueChange={value => store.set({ value })}
+      onValueChange={(value) => store.set({ value })}
     />
   </div>
 ));

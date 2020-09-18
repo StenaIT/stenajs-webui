@@ -11,7 +11,7 @@ describe("DayStateFactory", () => {
       expect(state!["2018-12"][52][29].highlights).toEqual([
         "selected",
         "selectedStart",
-        "range"
+        "range",
       ]);
       expect(state!["2018-12"][52][30].highlights).toEqual(["range"]);
       expect(state!["2018-12"][1][31].highlights).toEqual(["range"]);
@@ -19,7 +19,7 @@ describe("DayStateFactory", () => {
       expect(state!["2019-01"][1][2].highlights).toEqual([
         "selected",
         "selectedEnd",
-        "range"
+        "range",
       ]);
     });
   });

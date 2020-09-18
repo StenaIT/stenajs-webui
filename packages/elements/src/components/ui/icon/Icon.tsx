@@ -1,14 +1,14 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   FontAwesomeIcon,
-  Props as FontAwesomeProps
+  Props as FontAwesomeProps,
 } from "@fortawesome/react-fontawesome";
 import {
   Box,
   Omit,
   ThemeColorField,
   useMouseIsOver,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useRef } from "react";
@@ -41,8 +41,8 @@ export const Icon: React.FC<IconProps> = ({
     {
       colors: {
         iconColor: color,
-        iconColorHover: hoverColor
-      }
+        iconColorHover: hoverColor,
+      },
     },
     [color, hoverColor]
   );

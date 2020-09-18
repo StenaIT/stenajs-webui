@@ -3,7 +3,7 @@ import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher
 import {
   getStartDateOfISOWeek,
   getWeekForDate,
-  WeekData
+  WeekData,
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
 
@@ -12,10 +12,10 @@ import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
-  statePerMonth
+  statePerMonth,
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const onClickDay = useCallback(
-    day => {
+    (day) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
       }
@@ -23,7 +23,7 @@ export const useSingleWeekSelection = <T>({
     [onChange]
   );
   const onClickWeek = useCallback(
-    week => {
+    (week) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(week));
       }
@@ -51,7 +51,7 @@ export const useSingleWeekSelection = <T>({
     date,
     startDateInFocus: date,
     onClickDay,
-    onClickWeek
+    onClickWeek,
   };
 };
 

@@ -3,7 +3,7 @@ import {
   Row,
   Space,
   StandardText,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import {
@@ -13,12 +13,12 @@ import {
   DayState,
   DayStateHighlight,
   ExtraDayContentProps,
-  Renderers
+  Renderers,
 } from "../../types/CalendarTypes";
 import {
   DayData,
   MonthData,
-  WeekData
+  WeekData,
 } from "../../util/calendar/CalendarDataFactory";
 
 import { CalendarTheme } from "./CalendarTheme";
@@ -54,14 +54,14 @@ export function CalendarMonth<T>({
   headerRightContent,
   theme,
   extraDayContent,
-  defaultHighlights
+  defaultHighlights,
 }: CalendarMonthProps<T>) {
   const { colors } = useThemeFields(
     {
       colors: {
         headerTextColor: theme.CalendarMonth.headerTextColor,
-        weekDayTextColor: theme.WeekDay.textColor
-      }
+        weekDayTextColor: theme.WeekDay.textColor,
+      },
     },
     [theme]
   );
@@ -70,7 +70,7 @@ export function CalendarMonth<T>({
     borderSpacing: theme.CalendarMonth.cellSpacing
       ? theme.CalendarMonth.cellSpacing
       : 0,
-    borderCollapse: theme.CalendarMonth.cellSpacing ? "separate" : "collapse"
+    borderCollapse: theme.CalendarMonth.cellSpacing ? "separate" : "collapse",
   };
 
   const showWeekNumber = theme.WeekNumber.show;

@@ -4,7 +4,7 @@ import * as React from "react";
 import { TextArea } from "@stenajs-webui/forms";
 
 export default {
-  title: "forms/TextInput/TextArea"
+  title: "forms/TextInput/TextArea",
 };
 
 export const Standard = () => (

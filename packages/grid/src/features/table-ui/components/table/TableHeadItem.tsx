@@ -9,13 +9,13 @@ import {
   SmallText,
   Space,
   useBoolean,
-  useMouseIsEntered
+  useMouseIsEntered,
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import {
   ButtonWithPopover,
   ButtonWithPopoverProps,
-  Tooltip
+  Tooltip,
 } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useRef } from "react";
@@ -50,7 +50,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     const [
       dialogueIsOpen,
       setDialogueIsOpen,
-      setDialogueIsNotOpen
+      setDialogueIsNotOpen,
     ] = useBoolean(false);
 
     const popoverVisible =
@@ -68,7 +68,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         {...boxProps}
       >
         {infoIconTooltipText && (
-          <div onClick={ev => ev.stopPropagation()}>
+          <div onClick={(ev) => ev.stopPropagation()}>
             <Tooltip label={infoIconTooltipText} zIndex={10}>
               <Icon
                 icon={faInfoCircle}

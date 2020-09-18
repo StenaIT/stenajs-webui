@@ -13,9 +13,9 @@ export const Space: React.FC<SpaceProps> = ({
   half = false,
   horizontal,
   num = 1,
-  vertical
+  vertical,
 }) => {
-  const space = useThemeSelector(theme => theme.metrics.space, []);
+  const space = useThemeSelector((theme) => theme.metrics.space, []);
 
   const halfMod = half ? 0.5 : 1.0;
   const size = num * halfMod;
@@ -24,7 +24,7 @@ export const Space: React.FC<SpaceProps> = ({
       style={{
         width: vertical ? "1px" : `${size * space}px`,
         height: horizontal ? "1px" : `${size * space}px`,
-        flex: "none"
+        flex: "none",
       }}
     >
       {children}

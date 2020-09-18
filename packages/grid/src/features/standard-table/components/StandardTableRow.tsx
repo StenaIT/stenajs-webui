@@ -4,13 +4,13 @@ import { useMemo } from "react";
 import {
   tableBorder,
   tableBorderExpanded,
-  tableRowHeight
+  tableRowHeight,
 } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
   useFirstColumnFromConfig,
-  useLastColumnFromConfig
+  useLastColumnFromConfig,
 } from "../hooks/UseColumnFromConfig";
 import { useRowCheckbox } from "../hooks/UseRowCheckbox";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
@@ -30,7 +30,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
   rowIndex,
   numRows,
-  colIndexOffset
+  colIndexOffset,
 }: StandardTableItemProps<TItem>) {
   const {
     columnOrder,
@@ -40,7 +40,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     enableGridCell,
     rowIndent,
     renderRowExpansion,
-    enableExpandCollapse
+    enableExpandCollapse,
   } = useStandardTableConfig();
 
   const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);

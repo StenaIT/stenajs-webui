@@ -14,7 +14,7 @@ export const createEditableEntityReducer = <T>(
   const initialState: EditableEntityState<T> = {
     id: initialId,
     editable: initialEntity,
-    persisted: initialEntity
+    persisted: initialEntity,
   };
 
   return (state = initialState, action) => {
@@ -24,7 +24,7 @@ export const createEditableEntityReducer = <T>(
         return {
           ...state,
           persisted: entity,
-          editable: entity
+          editable: entity,
         };
       }
 
@@ -32,7 +32,7 @@ export const createEditableEntityReducer = <T>(
         const { entity } = action;
         return {
           ...state,
-          persisted: entity
+          persisted: entity,
         };
       }
 
@@ -40,7 +40,7 @@ export const createEditableEntityReducer = <T>(
         const { entity } = action;
         return {
           ...state,
-          editable: entity
+          editable: entity,
         };
       }
 
@@ -50,15 +50,15 @@ export const createEditableEntityReducer = <T>(
           ...state,
           editable: {
             ...state.editable,
-            ...fields
-          }
+            ...fields,
+          },
         };
       }
 
       case "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY": {
         return {
           ...state,
-          editable: state.persisted
+          editable: state.persisted,
         };
       }
 

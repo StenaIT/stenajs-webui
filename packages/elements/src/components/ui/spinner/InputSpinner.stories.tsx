@@ -3,7 +3,7 @@ import { color } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "elements/InputSpinner"
+  title: "elements/InputSpinner",
 };
 
 export const Standard = () => <InputSpinner />;

@@ -15,21 +15,21 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
   top,
   children,
   width = "200px",
-  shadow
+  shadow,
 }) => {
   const { colors } = useThemeFields(
     {
       colors: {
         borderColor: theme.borderColor,
         borderColorFocus: theme.borderColorFocus,
-        menuBackground: theme.menuBackground
-      }
+        menuBackground: theme.menuBackground,
+      },
     },
     [theme]
   );
 
   const hoverBorder = useMemo(() => `1px solid ${colors.borderColorFocus}`, [
-    colors.borderColorFocus
+    colors.borderColorFocus,
   ]);
 
   return (

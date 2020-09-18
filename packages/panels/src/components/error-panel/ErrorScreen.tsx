@@ -2,7 +2,7 @@ import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { ErrorPanel, ErrorPanelProps } from "./ErrorPanel";
 
-export const ErrorScreen: React.FC<ErrorPanelProps> = props => {
+export const ErrorScreen: React.FC<ErrorPanelProps> = (props) => {
   return (
     <Box
       width={"100%"}

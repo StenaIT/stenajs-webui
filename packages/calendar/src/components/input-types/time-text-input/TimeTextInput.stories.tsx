@@ -9,16 +9,16 @@ interface TimeTextInputState {
 }
 
 export default {
-  title: "calendar/Input/TimeTextInput"
+  title: "calendar/Input/TimeTextInput",
 };
 
 export const Standard = withState<TimeTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <Box width={"125px"}>
     <TimeTextInput
       value={store.state.value}
-      onValueChange={value => store.set({ value })}
+      onValueChange={(value) => store.set({ value })}
     />
   </Box>
 ));
@@ -26,44 +26,44 @@ export const Standard = withState<TimeTextInputState>({
 Standard.storyName = "standard";
 
 export const Empty = withState<TimeTextInputState>({
-  value: ""
+  value: "",
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
 Empty.storyName = "empty";
 
 export const WithTime = withState<TimeTextInputState>({
-  value: "23:59"
+  value: "23:59",
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
 WithTime.storyName = "with time";
 
 export const WithInvalidTime = withState<TimeTextInputState>({
-  value: "9:xx"
+  value: "9:xx",
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
   />
 ));
 
 WithInvalidTime.storyName = "with invalid time";
 
 export const WithoutIcon = withState<TimeTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     useIcon={false}
   />
 ));
@@ -71,11 +71,11 @@ export const WithoutIcon = withState<TimeTextInputState>({
 WithoutIcon.storyName = "without icon";
 
 export const WithoutPlaceholder = withState<TimeTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     showPlaceholder={false}
   />
 ));
@@ -83,11 +83,11 @@ export const WithoutPlaceholder = withState<TimeTextInputState>({
 WithoutPlaceholder.storyName = "without placeholder";
 
 export const Disabled = withState<TimeTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     disabled={true}
   />
 ));
@@ -99,11 +99,11 @@ export const Invalid = () => <TimeTextInput value={"invalid"} invalid={true} />;
 Invalid.storyName = "invalid";
 
 export const WithBackgroundColor = withState<TimeTextInputState>({
-  value: undefined
+  value: undefined,
 })(({ store }: { store: Store<TimeTextInputState> }) => (
   <TimeTextInput
     value={store.state.value}
-    onValueChange={value => store.set({ value })}
+    onValueChange={(value) => store.set({ value })}
     backgroundColor={color("Background", "#f0f060")}
   />
 ));

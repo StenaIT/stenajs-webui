@@ -4,7 +4,7 @@ import {
   RecordObjectClearRecordAction,
   RecordObjectRecordAction,
   RecordObjectKey,
-  RecordObjectWrappedAction
+  RecordObjectWrappedAction,
 } from "./record-object-actions";
 
 export type RecordObjectState<TInnerState> = Record<
@@ -37,11 +37,11 @@ export const createRecordObjectReducer = <
   if ("recordId" in action && "action" in action) {
     const {
       recordId,
-      action: innerAction
+      action: innerAction,
     } = action as RecordObjectRecordAction<TInnerAction>;
     return {
       ...state,
-      [recordId]: reducer(state[recordId], innerAction)
+      [recordId]: reducer(state[recordId], innerAction),
     };
   }
 

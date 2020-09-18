@@ -1,6 +1,6 @@
 import {
   SortOrderByIdClearSortOrderAction,
-  SortOrderByIdSetSortOrderAction
+  SortOrderByIdSetSortOrderAction,
 } from "./sort-order-by-id-actions";
 
 export interface SortOrderByIdActions {
@@ -10,13 +10,13 @@ export interface SortOrderByIdActions {
 
 export const createSortOrderByIdActions = (): SortOrderByIdActions => {
   return {
-    setSortOrder: ids => ({
+    setSortOrder: (ids) => ({
       ids,
-      type: "SORT_ORDER_BY_ID:SET_SORT_ORDER"
+      type: "SORT_ORDER_BY_ID:SET_SORT_ORDER",
     }),
     clearSortOrder: () => ({
-      type: "SORT_ORDER_BY_ID:CLEAR_SORT_ORDER"
-    })
+      type: "SORT_ORDER_BY_ID:CLEAR_SORT_ORDER",
+    }),
   };
 };
 

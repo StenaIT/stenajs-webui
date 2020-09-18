@@ -8,7 +8,7 @@ interface ButtonGroupProps {
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   className,
-  children
+  children,
 }) => {
   return <div className={cx(styles.buttonGroup, className)}>{children}</div>;
 };

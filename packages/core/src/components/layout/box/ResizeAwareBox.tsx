@@ -3,7 +3,7 @@ import { RefObject, useRef } from "react";
 import { Box, BoxProps } from "./Box";
 import {
   ElementDimensions,
-  useElementDimensions
+  useElementDimensions,
 } from "../../../hooks/UseElementDimensions";
 
 interface Props extends BoxProps {

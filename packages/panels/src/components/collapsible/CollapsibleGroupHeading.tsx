@@ -4,7 +4,7 @@ import * as React from "react";
 import styles from "./Collapsible.module.css";
 import {
   CollapsibleContent,
-  CollapsibleSimpleContentProps
+  CollapsibleSimpleContentProps,
 } from "./CollapsibleContent";
 
 interface CollapsibleGroupHeadingProps

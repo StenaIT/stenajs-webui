@@ -8,16 +8,16 @@ interface State {
 }
 
 export default {
-  title: "forms/Checkbox/CheckboxWithLabel"
+  title: "forms/Checkbox/CheckboxWithLabel",
 };
 
 export const Standard = withState<State>({
-  checked: true
+  checked: true,
 })(({ store }: { store: Store<State> }) => (
   <CheckboxWithLabel
     label={"Add cake"}
     value={store.state.checked}
-    onValueChange={checked => store.set({ checked })}
+    onValueChange={(checked) => store.set({ checked })}
     disabled={knobs.boolean("Disabled", false)}
   />
 ));

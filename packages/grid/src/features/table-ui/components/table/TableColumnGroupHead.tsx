@@ -14,7 +14,7 @@ export const TableColumnGroupHead: React.FC<Props> = ({
   label,
   flex,
   width,
-  indent = 1
+  indent = 1,
 }) => {
   return (
     <TableHeadItem width={width} flex={flex} height={tableHeadRowHeight}>

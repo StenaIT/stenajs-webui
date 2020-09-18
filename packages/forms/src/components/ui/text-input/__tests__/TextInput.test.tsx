@@ -4,13 +4,13 @@ import * as React from "react";
 import { useGridCell } from "@stenajs-webui/grid";
 import { TextInput, TextInputProps } from "../TextInput";
 
-const TextInputWithGridCell: React.FC<TextInputProps> = props => {
+const TextInputWithGridCell: React.FC<TextInputProps> = (props) => {
   const { requiredProps } = useGridCell(props.value, {
     rowIndex: 0,
     colIndex: 0,
     numRows: 10,
     numCols: 10,
-    tableId: "test123"
+    tableId: "test123",
   });
   return <TextInput {...requiredProps} {...props} />;
 };

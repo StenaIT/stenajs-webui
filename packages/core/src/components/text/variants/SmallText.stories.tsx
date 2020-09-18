@@ -3,7 +3,7 @@ import { select, text } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "core/Text/SmallText"
+  title: "core/Text/SmallText",
 };
 
 export const Standard = () => (

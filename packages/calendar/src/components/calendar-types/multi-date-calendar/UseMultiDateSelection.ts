@@ -7,16 +7,16 @@ import { MultiDateCalendarProps } from "./MultiDateCalendar";
 export const useMultiDateSelection = <T>({
   onChange,
   value,
-  statePerMonth
+  statePerMonth,
 }: MultiDateCalendarProps<T>): Partial<CalendarProps<T>> => {
   const onClickDay: OnClickDay<T> = useCallback(
-    day => {
+    (day) => {
       if (!onChange) {
         return;
       }
-      const isSelected = value && value.find(d => isSameDay(d, day.date));
+      const isSelected = value && value.find((d) => isSameDay(d, day.date));
       if (value && isSelected) {
-        onChange(value.filter(v => !isSameDay(v, day.date)));
+        onChange(value.filter((v) => !isSameDay(v, day.date)));
       } else {
         onChange([...(value || []), day.date]);
       }
@@ -35,6 +35,6 @@ export const useMultiDateSelection = <T>({
 
   return {
     onClickDay,
-    statePerMonth: statePerMonthWithSelectedDate
+    statePerMonth: statePerMonthWithSelectedDate,
   };
 };

@@ -13,7 +13,7 @@ describe("useDebounce", () => {
     const { rerender, result } = renderHook(
       ({ value }) => useDebounce(value, delay),
       {
-        initialProps: { value: firstValue }
+        initialProps: { value: firstValue },
       }
     );
     const notValue = "not value";

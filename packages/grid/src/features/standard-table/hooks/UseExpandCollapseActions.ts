@@ -1,7 +1,7 @@
 import {
   useStandardTableActions,
   useStandardTableConfig,
-  useStandardTableState
+  useStandardTableState,
 } from "./UseStandardTableConfig";
 import { useCallback, useMemo } from "react";
 import { useArraySet } from "@stenajs-webui/core";
@@ -9,18 +9,18 @@ import { useArraySet } from "@stenajs-webui/core";
 export const useExpandCollapseActions = <TItem>(item: TItem) => {
   const { keyResolver } = useStandardTableConfig();
   const {
-    expandedRows: { selectedIds }
+    expandedRows: { selectedIds },
   } = useStandardTableState();
   const {
     actions: { expandByIds },
-    dispatch
+    dispatch,
   } = useStandardTableActions();
 
   const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
 
   const isExpanded = useMemo(() => selectedIds.includes(itemKey), [
     selectedIds,
-    itemKey
+    itemKey,
   ]);
 
   const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
@@ -33,6 +33,6 @@ export const useExpandCollapseActions = <TItem>(item: TItem) => {
 
   return {
     toggleRowExpanded,
-    isExpanded
+    isExpanded,
   };
 };

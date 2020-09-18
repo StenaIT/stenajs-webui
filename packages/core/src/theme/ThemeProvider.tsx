@@ -11,7 +11,7 @@ export interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   value,
-  children
+  children,
 }) => {
   const parentTheme = useTheme();
   const mergedValue: ThemeContextValue = useMemo<ThemeContextValue>(

@@ -6,7 +6,7 @@ import { SeparatorLine } from "@stenajs-webui/core";
 import { subHours } from "date-fns";
 
 export default {
-  title: "panels/Notification"
+  title: "panels/Notification",
 };
 
 export const Standard = () => (

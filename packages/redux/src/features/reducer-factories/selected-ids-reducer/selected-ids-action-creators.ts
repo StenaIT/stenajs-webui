@@ -1,6 +1,6 @@
 import {
   SelectedIdsClearSelectedIdsAction,
-  SelectedIdsSetSelectedIdsAction
+  SelectedIdsSetSelectedIdsAction,
 } from "./selected-ids-actions";
 
 export interface SelectedIdsActions {
@@ -9,13 +9,13 @@ export interface SelectedIdsActions {
 }
 
 export const createSelectedIdsActions = (): SelectedIdsActions => ({
-  setSelectedIds: selectedIds => ({
+  setSelectedIds: (selectedIds) => ({
     selectedIds,
-    type: "SELECTED_IDS:SET_SELECTED_IDS"
+    type: "SELECTED_IDS:SET_SELECTED_IDS",
   }),
   clearSelectedIds: () => ({
-    type: "SELECTED_IDS:CLEAR_SELECTED_IDS"
-  })
+    type: "SELECTED_IDS:CLEAR_SELECTED_IDS",
+  }),
 });
 
 export const selectedIdsActions = createSelectedIdsActions();

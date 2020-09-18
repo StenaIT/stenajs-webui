@@ -4,7 +4,7 @@ import { tableBorder, tableRowHeight } from "../../../../config/TableConfig";
 
 interface Props extends BoxProps {}
 
-export const TableRow: React.FC<Props> = props => {
+export const TableRow: React.FC<Props> = (props) => {
   return (
     <Row
       height={tableRowHeight}

@@ -5,7 +5,7 @@ import { tableRowHeightPixels } from "../../../config/TableConfig";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
   useStandardTableConfig,
-  useStandardTableState
+  useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
 import { multitypeComparator } from "../util/MultitypeComparator";
 import { StandardTableRow } from "./StandardTableRow";
@@ -21,15 +21,15 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 >({
   items,
   colIndexOffset = 0,
-  rowIndexOffset = 0
+  rowIndexOffset = 0,
 }: StandardTableContentProps<TItem>) {
   const {
     keyResolver,
     disableInfiniteList,
-    enableExpandCollapse
+    enableExpandCollapse,
   } = useStandardTableConfig();
   const {
-    sortOrder: { sortBy, desc }
+    sortOrder: { sortBy, desc },
   } = useStandardTableState();
 
   const valueResolver = useColumnValueResolver(sortBy);

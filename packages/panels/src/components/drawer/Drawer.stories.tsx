@@ -4,7 +4,7 @@ import { boolean, number } from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "panels/Drawer"
+  title: "panels/Drawer",
 };
 
 export const Standard = () => (

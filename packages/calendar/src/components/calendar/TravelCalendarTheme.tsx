@@ -7,7 +7,7 @@ import {
   CalendarWrapperStyleProvider,
   defaultTextPropsProvider,
   defaultWrapperStyleProvider,
-  resolveThemeColor
+  resolveThemeColor,
 } from "./CalendarTheme";
 
 interface DefaultInnerWrapperColors {
@@ -20,13 +20,13 @@ type ChainStyleProviders = (
   providers: CalendarWrapperStyleProvider<{}>[]
 ) => CalendarWrapperStyleProvider<{}>;
 
-const chainStyleProviders: ChainStyleProviders = providers => (
+const chainStyleProviders: ChainStyleProviders = (providers) => (
   ...providerArgs
 ) =>
   providers.reduce(
     (prev, current) => ({
       ...prev,
-      ...current(...providerArgs)
+      ...current(...providerArgs),
     }),
     {}
   );
@@ -34,7 +34,7 @@ const chainStyleProviders: ChainStyleProviders = providers => (
 const travelInnerWrapperStyleProvider = ({
   rangeBackground,
   verticalExpand,
-  horizontalExpand
+  horizontalExpand,
 }: DefaultInnerWrapperColors): CalendarWrapperStyleProvider<{}> => (
   theme,
   defaultHighlights,
@@ -65,7 +65,7 @@ const travelInnerWrapperStyleProvider = ({
         ["selected", "range"],
         [undefined, resolveThemeColor(rangeBackground, theme)],
         undefined
-      )
+      ),
     };
   }
 
@@ -80,7 +80,7 @@ export interface CalendarTravelWrapperColors {
 
 export const travelDefaultWrapperStyleProvider = ({
   borderRadius,
-  rangeBorderRadius
+  rangeBorderRadius,
 }: CalendarTravelWrapperColors): CalendarWrapperStyleProvider<{}> => (
   _,
   defaultHighlights,
@@ -98,7 +98,7 @@ export const travelDefaultWrapperStyleProvider = ({
         [
           `${borderRadius} ${rangeBorderRadius} ${rangeBorderRadius} ${borderRadius}`,
           `${rangeBorderRadius} ${borderRadius} ${borderRadius} ${rangeBorderRadius}`,
-          rangeBorderRadius
+          rangeBorderRadius,
         ],
         borderRadius
       ),
@@ -122,7 +122,7 @@ export const travelDefaultWrapperStyleProvider = ({
         ["selectedStart", "selectedEnd"],
         ["0 2px 0 0", "0 0 0 2px"],
         ""
-      )
+      ),
     };
   }
 
@@ -134,10 +134,10 @@ export const travelCalendarTheme: CalendarTheme = {
   height: "38px",
   WeekNumber: {
     backgroundColor: "transparent",
-    show: false
+    show: false,
   },
   WeekDay: {
-    textColor: "#000000"
+    textColor: "#000000",
   },
   CalendarDay: {
     wrapperStyle: chainStyleProviders([
@@ -150,29 +150,29 @@ export const travelCalendarTheme: CalendarTheme = {
         todayBackground: "#FFFFFF",
         borderRadius: "6px",
         borderColor: "#f9f6f6",
-        rangeBorderRadius: "0px"
+        rangeBorderRadius: "0px",
       }),
       travelDefaultWrapperStyleProvider({
         borderColor: "#f9f6f6",
         borderRadius: "6px",
-        rangeBorderRadius: "0px"
-      })
+        rangeBorderRadius: "0px",
+      }),
     ]),
     innerWrapperStyle: travelInnerWrapperStyleProvider({
       rangeBackground: "#fce7eb",
       verticalExpand: "2px",
-      horizontalExpand: "3px"
+      horizontalExpand: "3px",
     }),
     textProps: defaultTextPropsProvider({
       selectedColor: "#FFFFFF",
       disabledColor: "#949494",
       inOtherMonthColor: "green",
-      rangeTextColor: "#d70029"
-    })
+      rangeTextColor: "#d70029",
+    }),
   },
   CalendarMonth: {
     cellSpacing: "2px",
     headerLeftIcon: faArrowLeft,
-    headerRightIcon: faArrowRight
-  }
+    headerRightIcon: faArrowRight,
+  },
 };

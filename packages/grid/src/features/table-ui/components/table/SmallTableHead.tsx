@@ -4,7 +4,7 @@ import { TableHeadItem, TableHeadProps } from "./TableHeadItem";
 
 interface Props extends TableHeadProps {}
 
-export const SmallTableHead: React.FC<Props> = props => {
+export const SmallTableHead: React.FC<Props> = (props) => {
   return (
     <TableHeadItem
       width={smallTableRowWidth}

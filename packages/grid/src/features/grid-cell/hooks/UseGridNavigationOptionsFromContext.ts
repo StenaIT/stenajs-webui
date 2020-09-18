@@ -3,7 +3,7 @@ import { GridHooksContext } from "../../../components/GridHooksTable";
 import { validateGridHookOptions } from "../../../util/GridHookOptionsValidator";
 import {
   UseGridNavigationOptions,
-  ValidatedUseGridNavigationOptions
+  ValidatedUseGridNavigationOptions,
 } from "./UseGridNavigation";
 
 export const useGridNavigationOptionsFromContext = (
@@ -15,7 +15,7 @@ export const useGridNavigationOptionsFromContext = (
     () =>
       validateGridHookOptions({
         ...context,
-        ...options
+        ...options,
       }),
     [context, options]
   );

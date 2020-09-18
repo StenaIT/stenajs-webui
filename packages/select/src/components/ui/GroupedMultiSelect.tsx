@@ -8,19 +8,19 @@ import { OptionProps } from "react-select/src/components/Option";
 import {
   defaultSelectTheme,
   SelectTheme,
-  selectThemeDark
+  selectThemeDark,
 } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
   createOnChange,
-  InternalDropdownOption
+  InternalDropdownOption,
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
 import {
   ActionMeta,
   GroupedOptionsType,
-  OptionsType
+  OptionsType,
 } from "react-select/src/types";
 import { SelectComponentsConfig } from "react-select/src/components";
 
@@ -81,9 +81,9 @@ export const GroupedMultiSelect = <TData extends {}>({
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
-}: GroupedMultiSelectProps<TData>): React.ReactElement<GroupedMultiSelectProps<
-  TData
->> => {
+}: GroupedMultiSelectProps<TData>): React.ReactElement<
+  GroupedMultiSelectProps<TData>
+> => {
   const theme = variant === "light" ? defaultSelectTheme : selectThemeDark;
 
   const Option = (props: OptionProps<DropdownOption<TData>>) => {
@@ -157,7 +157,7 @@ export const GroupedMultiSelect = <TData extends {}>({
       components={{
         ...selectProps.components,
         MultiValue,
-        Option
+        Option,
       }}
       isMulti={true}
       options={internalOptions}

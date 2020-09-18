@@ -6,7 +6,7 @@ import {
   LargeText,
   Row,
   Space,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import {
   ButtonSize,
@@ -14,14 +14,14 @@ import {
   FlatButton,
   Icon,
   PrimaryButton,
-  SecondaryButton
+  SecondaryButton,
 } from "@stenajs-webui/elements";
 import * as React from "react";
 
 const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
 
 export default {
-  title: "elements/Buttons"
+  title: "elements/Buttons",
 };
 
 export const Overview = () => (
@@ -29,7 +29,7 @@ export const Overview = () => (
     {[
       { ButtonVariant: PrimaryButton, label: "PrimaryButton" },
       { ButtonVariant: SecondaryButton, label: "SecondaryButton" },
-      { ButtonVariant: FlatButton, label: "FlatButton" }
+      { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ label, ButtonVariant }) => (
       <Column alignItems={"flex-start"}>
         <LargeText>{label}</LargeText>
@@ -70,7 +70,7 @@ export const Overview = () => (
             </tr>
           </thead>
           <tbody>
-            {buttonSizes.map(size => (
+            {buttonSizes.map((size) => (
               <tr>
                 <td>
                   <StandardText>{size}</StandardText>
@@ -139,43 +139,47 @@ export const Overview = () => (
 
 export const Variants = () => (
   <>
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(variant => (
-      <Column>
-        <LargeText>{variant}</LargeText>
-        <Space />
-        <Row alignItems={"flex-start"} indent spacing>
-          {buttonSizes.map(size => (
-            <Indent>
-              <PrimaryButton
-                key={size}
-                size={size}
-                variant={variant}
-                label={"Submit"}
-              />
-            </Indent>
-          ))}
-        </Row>
-      </Column>
-    ))}
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(variant => (
-      <Column>
-        <LargeText>{variant} (disabled)</LargeText>
-        <Space />
-        <Row alignItems={"flex-start"} indent spacing>
-          {buttonSizes.map(size => (
-            <Indent>
-              <PrimaryButton
-                key={size}
-                size={size}
-                variant={variant}
-                label={"Submit"}
-                disabled
-              />
-            </Indent>
-          ))}
-        </Row>
-      </Column>
-    ))}
+    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
+      (variant) => (
+        <Column>
+          <LargeText>{variant}</LargeText>
+          <Space />
+          <Row alignItems={"flex-start"} indent spacing>
+            {buttonSizes.map((size) => (
+              <Indent>
+                <PrimaryButton
+                  key={size}
+                  size={size}
+                  variant={variant}
+                  label={"Submit"}
+                />
+              </Indent>
+            ))}
+          </Row>
+        </Column>
+      )
+    )}
+    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
+      (variant) => (
+        <Column>
+          <LargeText>{variant} (disabled)</LargeText>
+          <Space />
+          <Row alignItems={"flex-start"} indent spacing>
+            {buttonSizes.map((size) => (
+              <Indent>
+                <PrimaryButton
+                  key={size}
+                  size={size}
+                  variant={variant}
+                  label={"Submit"}
+                  disabled
+                />
+              </Indent>
+            ))}
+          </Row>
+        </Column>
+      )
+    )}
   </>
 );
 
@@ -186,7 +190,7 @@ export const WithGenericContentToRight = () => (
     {[
       { ButtonVariant: PrimaryButton, label: "PrimaryButton" },
       { ButtonVariant: SecondaryButton, label: "SecondaryButton" },
-      { ButtonVariant: FlatButton, label: "FlatButton" }
+      { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ ButtonVariant, label }) => (
       <Column spacing>
         <LargeText>{label}</LargeText>

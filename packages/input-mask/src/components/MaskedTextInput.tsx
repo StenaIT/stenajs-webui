@@ -5,7 +5,7 @@ import { useMaskedInput } from "../hooks/UseInputMask";
 import {
   InputMask,
   InputMaskPipe,
-  InputMaskProvider
+  InputMaskProvider,
 } from "../masks/InputMask";
 
 export interface MaskedTextInputProps extends TextInputProps {

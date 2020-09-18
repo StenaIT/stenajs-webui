@@ -32,22 +32,22 @@ export const customTheme: PartialTheme = {
     inputBorderFocusedAlt: "#C7C3D8",
     inputBorderFocusedLight: "#E1DEEC",
     highlightBoxBg: "#E8F4FA",
-    highlightBoxBorder: "#7498AD"
+    highlightBoxBorder: "#7498AD",
   },
   metrics: {
     indent: 14,
     spacing: 14,
-    space: 14
+    space: 14,
   },
   fontWeights: {
     bold: 600,
     standard: 300,
-    light: 100
+    light: 100,
   },
   fonts: {
     primary: "Open Sans",
     buttons: "Open Sans",
-    input: "Open Sans"
+    input: "Open Sans",
   },
   fontSizes: {
     huge: "22px",
@@ -57,23 +57,23 @@ export const customTheme: PartialTheme = {
     input: "13px",
     small: "12px",
     smaller: "11px",
-    tiny: "9px"
+    tiny: "9px",
   },
   shadows: {
     modal: "rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;",
-    box: "rgba(0, 0, 0, 0.15) 0 2px 4px 0;"
-  }
+    box: "rgba(0, 0, 0, 0.15) 0 2px 4px 0;",
+  },
 };
 
 const overridingTheme: PartialTheme = {
   colors: {
-    interactionBgPrimary: "#a8171c"
-  }
+    interactionBgPrimary: "#a8171c",
+  },
 };
 
 export default {
   title: "theme/ThemeContext",
-  excludeStories: ["customTheme"]
+  excludeStories: ["customTheme"],
 };
 
 export const StandardTheme = () => (

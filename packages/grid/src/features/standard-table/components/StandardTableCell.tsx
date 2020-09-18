@@ -4,7 +4,7 @@ import { useCellBackgroundByColumnId } from "../hooks/UseCellBackground";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import {
   useStandardTableConfig,
-  useStandardTableId
+  useStandardTableId,
 } from "../hooks/UseStandardTableConfig";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
@@ -24,13 +24,13 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   item,
   colIndex,
   rowIndex,
-  numRows
+  numRows,
 }: StandardTableCellProps<TItem>) {
   const {
     columnOrder,
     enableGridCell,
     showRowCheckbox,
-    gridCellOptions: gridCellOptionsForTable
+    gridCellOptions: gridCellOptionsForTable,
   } = useStandardTableConfig();
   const tableId = useStandardTableId();
 
@@ -45,7 +45,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     gridCellOptions: gridCellOptionsForColumn,
     isEditable,
     onChange,
-    disableGridCell
+    disableGridCell,
   } = useColumnFromConfig(columnId);
 
   const itemValue = useMemo(() => {
@@ -84,7 +84,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       ? (value: string | undefined) => onChange(item, value)
       : undefined,
     ...gridCellOptionsForTable,
-    ...gridCellOptionsForColumn
+    ...gridCellOptionsForColumn,
   });
 
   const currentBackground = useCellBackgroundByColumnId(columnId, item);

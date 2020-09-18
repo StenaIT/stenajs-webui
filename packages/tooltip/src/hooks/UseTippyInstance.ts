@@ -23,6 +23,6 @@ export const useTippyInstance = <TElement extends HTMLElement>(): [
     (element: TippyElement<TElement> | null) => {
       tippyRef.current = element?._tippy ?? undefined;
     },
-    tippyRef
+    tippyRef,
   ];
 };

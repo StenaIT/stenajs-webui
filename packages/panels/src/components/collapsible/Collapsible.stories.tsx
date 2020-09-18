@@ -13,7 +13,7 @@ import {
   CollapsibleGroupHeading,
   CollapsibleProps,
   CollapsibleWithCheckbox,
-  CollapsibleWithCheckboxProps
+  CollapsibleWithCheckboxProps,
 } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useState } from "react";
@@ -26,7 +26,9 @@ function xor(...values: boolean[]) {
   return sum > 0 && sum < values.length;
 }
 
-const StatefulCollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = props => {
+const StatefulCollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = (
+  props
+) => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
 
   return (
@@ -37,7 +39,7 @@ const StatefulCollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = 
     />
   );
 };
-const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
+const StatefulCollapsible: React.FC<CollapsibleProps> = (props) => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
 
   return (
@@ -50,7 +52,7 @@ const StatefulCollapsible: React.FC<CollapsibleProps> = props => {
 };
 
 export default {
-  title: "panels/Collapsible"
+  title: "panels/Collapsible",
 };
 
 export const Overview = () => {
@@ -73,7 +75,7 @@ export const Overview = () => {
         <CollapsibleClickableContent
           contentLeft={<Checkbox value={boosters.new} />}
           onClick={() =>
-            setBoosters(boosters => ({ ...boosters, new: !boosters.new }))
+            setBoosters((boosters) => ({ ...boosters, new: !boosters.new }))
           }
         >
           X-58 (New)
@@ -81,9 +83,9 @@ export const Overview = () => {
         <CollapsibleClickableContent
           contentLeft={<Checkbox value={boosters.secondHand} />}
           onClick={() =>
-            setBoosters(boosters => ({
+            setBoosters((boosters) => ({
               ...boosters,
-              secondHand: !boosters.secondHand
+              secondHand: !boosters.secondHand,
             }))
           }
         >
@@ -98,7 +100,7 @@ export const Overview = () => {
             const value = thrusters.semi || thrusters.multi;
             setThrusters({
               semi: !value,
-              multi: !value
+              multi: !value,
             });
           }}
           label={"FF-12"}
@@ -111,9 +113,9 @@ export const Overview = () => {
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={thrusters.semi} />}
             onClick={() =>
-              setThrusters(thrusters => ({
+              setThrusters((thrusters) => ({
                 ...thrusters,
-                semi: !thrusters.semi
+                semi: !thrusters.semi,
               }))
             }
           >
@@ -122,9 +124,9 @@ export const Overview = () => {
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={thrusters.multi} />}
             onClick={() =>
-              setThrusters(thrusters => ({
+              setThrusters((thrusters) => ({
                 ...thrusters,
-                multi: !thrusters.multi
+                multi: !thrusters.multi,
               }))
             }
           >
@@ -140,7 +142,7 @@ export const AlternativeIcons = () => {
   const [state, setState] = useState({
     r2d2: false,
     c3po: false,
-    bb8: { engine: false, motivator: false }
+    bb8: { engine: false, motivator: false },
   });
 
   return (
@@ -166,7 +168,7 @@ export const AlternativeIcons = () => {
             ...state,
             c3po: !value,
             r2d2: !value,
-            bb8: { ...state.bb8, engine: !value, motivator: !value }
+            bb8: { ...state.bb8, engine: !value, motivator: !value },
           });
         }}
       >
@@ -176,7 +178,7 @@ export const AlternativeIcons = () => {
             <Checkbox
               checked={state.r2d2}
               onClick={() =>
-                setState(state => ({ ...state, r2d2: !state.r2d2 }))
+                setState((state) => ({ ...state, r2d2: !state.r2d2 }))
               }
             />
           }
@@ -191,7 +193,7 @@ export const AlternativeIcons = () => {
             <Checkbox
               checked={state.c3po}
               onClick={() =>
-                setState(state => ({ ...state, c3po: !state.c3po }))
+                setState((state) => ({ ...state, c3po: !state.c3po }))
               }
             />
           }
@@ -206,12 +208,12 @@ export const AlternativeIcons = () => {
             <Checkbox
               value={state.bb8.engine && state.bb8.motivator}
               indeterminate={xor(state.bb8.engine, state.bb8.motivator)}
-              onClick={event => {
+              onClick={(event) => {
                 event.stopPropagation();
                 const value = state.bb8.engine || state.bb8.motivator;
                 setState({
                   ...state,
-                  bb8: { ...state.bb8, engine: !value, motivator: !value }
+                  bb8: { ...state.bb8, engine: !value, motivator: !value },
                 });
               }}
             />
@@ -224,9 +226,9 @@ export const AlternativeIcons = () => {
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={state.bb8.engine} />}
             onClick={() =>
-              setState(state => ({
+              setState((state) => ({
                 ...state,
-                bb8: { ...state.bb8, engine: !state.bb8.engine }
+                bb8: { ...state.bb8, engine: !state.bb8.engine },
               }))
             }
           >
@@ -235,9 +237,9 @@ export const AlternativeIcons = () => {
           <CollapsibleClickableContent
             contentLeft={<Checkbox value={state.bb8.motivator} />}
             onClick={() =>
-              setState(state => ({
+              setState((state) => ({
                 ...state,
-                bb8: { ...state.bb8, motivator: !state.bb8.motivator }
+                bb8: { ...state.bb8, motivator: !state.bb8.motivator },
               }))
             }
           >
@@ -256,7 +258,7 @@ export const GroupHeaders = () => {
     0: false,
     1: false,
     2: false,
-    3: false
+    3: false,
   });
 
   return (
@@ -268,26 +270,26 @@ export const GroupHeaders = () => {
         <CollapsibleGroupHeading>Dark side</CollapsibleGroupHeading>
         <CollapsibleClickableContent
           contentLeft={<Checkbox checked={state[0]} />}
-          onClick={() => setState(state => ({ ...state, 0: !state[0] }))}
+          onClick={() => setState((state) => ({ ...state, 0: !state[0] }))}
         >
           Darth Vader
         </CollapsibleClickableContent>
         <CollapsibleClickableContent
           contentLeft={<Checkbox checked={state[1]} />}
-          onClick={() => setState(state => ({ ...state, 1: !state[1] }))}
+          onClick={() => setState((state) => ({ ...state, 1: !state[1] }))}
         >
           Darth Maul
         </CollapsibleClickableContent>
         <CollapsibleGroupHeading>Light side</CollapsibleGroupHeading>
         <CollapsibleClickableContent
           contentLeft={<Checkbox checked={state[2]} />}
-          onClick={() => setState(state => ({ ...state, 2: !state[2] }))}
+          onClick={() => setState((state) => ({ ...state, 2: !state[2] }))}
         >
           Master Yoda
         </CollapsibleClickableContent>
         <CollapsibleClickableContent
           contentLeft={<Checkbox checked={state[3]} />}
-          onClick={() => setState(state => ({ ...state, 3: !state[3] }))}
+          onClick={() => setState((state) => ({ ...state, 3: !state[3] }))}
         >
           Ozcar-One SoNoobie
         </CollapsibleClickableContent>
@@ -313,7 +315,7 @@ export const RadioButtons = () => {
           contentRight={
             <Clickable
               data-hidden={true}
-              onClickCapture={event => {
+              onClickCapture={(event) => {
                 event.stopPropagation();
                 alert("Removed");
               }}
@@ -330,7 +332,7 @@ export const RadioButtons = () => {
           contentRight={
             <Clickable
               data-hidden={true}
-              onClickCapture={event => {
+              onClickCapture={(event) => {
                 event.stopPropagation();
                 alert("Removed");
               }}
@@ -347,7 +349,7 @@ export const RadioButtons = () => {
           contentRight={
             <Clickable
               data-hidden={true}
-              onClickCapture={event => {
+              onClickCapture={(event) => {
                 event.stopPropagation();
                 alert("Removed");
               }}

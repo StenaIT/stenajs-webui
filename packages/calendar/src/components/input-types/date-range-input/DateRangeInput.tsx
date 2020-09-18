@@ -9,12 +9,12 @@ import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendarOnChangeValue,
-  DateRangeCalendarProps
+  DateRangeCalendarProps,
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
-  defaultCalendarTheme
+  defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
 import { Icon } from "@stenajs-webui/elements";
@@ -93,7 +93,7 @@ export const DateRangeInput = <T extends {}>({
   zIndex = 100,
   width = "125px",
   calendarTheme = defaultCalendarTheme,
-  calendarProps
+  calendarProps,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
@@ -106,7 +106,7 @@ export const DateRangeInput = <T extends {}>({
     startDateInputRef,
     endDateInputRef,
     onClickDay,
-    startDateIsAfterEnd
+    startDateIsAfterEnd,
   } = useDateRangeInput(value, onChange);
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);

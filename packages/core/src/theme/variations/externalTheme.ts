@@ -39,7 +39,7 @@ export enum Colors {
   Night4 = "#535e63",
   Ocean2 = "#2e4662",
   Ocean3 = "#4a5d73",
-  Lush2Alt = "rgb(174, 214, 145)" /* Disabled Lush2 buttons */
+  Lush2Alt = "rgb(174, 214, 145)" /* Disabled Lush2 buttons */,
 }
 
 export const externalTheme: Theme = {
@@ -79,11 +79,11 @@ export const externalTheme: Theme = {
     inputBorderFocusedLight: Colors.Freight3,
     inputBoxShadowFocused: "inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3)",
     highlightBoxBg: "#E8F4FA",
-    highlightBoxBorder: "#7498AD"
+    highlightBoxBorder: "#7498AD",
   },
   metrics: {
     indent: 10,
     spacing: 10,
-    space: 10
-  }
+    space: 10,
+  },
 };

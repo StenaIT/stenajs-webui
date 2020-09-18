@@ -5,7 +5,7 @@ import {
   LargeText,
   Row,
   Space,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
@@ -20,7 +20,7 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(v => !v);
+      setIsEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
@@ -37,7 +37,7 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 
       <Checkbox
         value={store.state.checked}
-        onValueChange={checked => store.set({ checked })}
+        onValueChange={(checked) => store.set({ checked })}
         disabled={knobs.boolean("Disabled", false)}
         indeterminate={knobs.boolean("Indeterminate", false)}
       />
@@ -47,7 +47,7 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
       <Checkbox
         size={"small"}
         value={store.state.checked}
-        onValueChange={checked => store.set({ checked })}
+        onValueChange={(checked) => store.set({ checked })}
         disabled={knobs.boolean("Disabled", false)}
         indeterminate={knobs.boolean("Indeterminate", false)}
       />
@@ -110,30 +110,30 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 };
 
 export default {
-  title: "forms/Checkbox"
+  title: "forms/Checkbox",
 };
 
 export const Overview = withState<State>({
-  checked: true
+  checked: true,
 })(({ store }: { store: Store<State> }) => <CheckboxOverview store={store} />);
 
 export const Standard = withState<State>({
-  checked: true
+  checked: true,
 })(({ store }: { store: Store<State> }) => (
   <Checkbox
     value={store.state.checked}
-    onValueChange={checked => store.set({ checked })}
+    onValueChange={(checked) => store.set({ checked })}
     disabled={knobs.boolean("Disabled", false)}
   />
 ));
 
 export const Small = withState<State>({
-  checked: true
+  checked: true,
 })(({ store }: { store: Store<State> }) => (
   <Checkbox
     size={"small"}
     value={store.state.checked}
-    onValueChange={checked => store.set({ checked })}
+    onValueChange={(checked) => store.set({ checked })}
     disabled={knobs.boolean("Disabled", false)}
   />
 ));

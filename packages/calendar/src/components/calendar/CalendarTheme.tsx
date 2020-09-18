@@ -8,11 +8,11 @@ import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 import {
   DayData,
   MonthData,
-  WeekData
+  WeekData,
 } from "../../util/calendar/CalendarDataFactory";
 import {
   dayHasHighlight,
-  dayHighlightSelect
+  dayHighlightSelect,
 } from "../../util/calendar/StateHelper";
 
 export interface CalendarTheme<TUserData = {}> {
@@ -87,7 +87,7 @@ export const defaultWrapperStyleProvider = ({
   selectedBorder,
   rangeBorder,
   todayBorder,
-  borderColor = "separatorLight"
+  borderColor = "separatorLight",
 }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
   theme,
   defaultHighlights,
@@ -106,7 +106,7 @@ export const defaultWrapperStyleProvider = ({
       resolveThemeColor(selectedBackground, theme),
       resolveThemeColor(todayBackground, theme),
       resolveThemeColor(rangeBackground, theme),
-      resolveThemeColor("white", theme)
+      resolveThemeColor("white", theme),
     ],
     "transparent"
   );
@@ -123,7 +123,7 @@ export const defaultWrapperStyleProvider = ({
         [
           resolveThemeColor(selectedBorder, theme),
           resolveThemeColor(rangeBorder, theme),
-          resolveThemeColor(todayBorder, theme)
+          resolveThemeColor(todayBorder, theme),
         ],
         resolveThemeColor(borderColor, theme)
       ),
@@ -134,7 +134,7 @@ export const defaultWrapperStyleProvider = ({
         dayHasHighlight(dayState, defaultHighlights, "today")
           ? "double"
           : "solid",
-      boxSizing: "border-box"
+      boxSizing: "border-box",
     };
   }
   return style;
@@ -151,7 +151,7 @@ export const defaultTextPropsProvider = ({
   selectedColor,
   disabledColor,
   inOtherMonthColor,
-  rangeTextColor
+  rangeTextColor,
 }: DefaultTextColors): TextPropsProvider<{}> => {
   return (theme, defaultHighlights, dayState, day, _, month) => {
     const isOtherMonth = day.month !== month.monthInYear;
@@ -164,11 +164,11 @@ export const defaultTextPropsProvider = ({
         resolveThemeColor(selectedColor, theme),
         rangeTextColor && resolveThemeColor(rangeTextColor, theme),
         undefined,
-        resolveThemeColor(disabledColor, theme)
+        resolveThemeColor(disabledColor, theme),
       ]
     );
     return {
-      color
+      color,
     };
   };
 };
@@ -178,10 +178,10 @@ export const defaultCalendarTheme: CalendarTheme = {
   height: "40px",
   WeekNumber: {
     backgroundColor: "transparent",
-    show: true
+    show: true,
   },
   WeekDay: {
-    textColor: "separator"
+    textColor: "separator",
   },
   CalendarDay: {
     wrapperStyle: defaultWrapperStyleProvider({
@@ -190,18 +190,18 @@ export const defaultCalendarTheme: CalendarTheme = {
       rangeBorder: "inputBorderFocusedAlt",
       rangeBackground: "inputBorderFocusedLight",
       todayBorder: "highlightBoxBorder",
-      todayBackground: "highlightBoxBg"
+      todayBackground: "highlightBoxBg",
     }),
     textProps: defaultTextPropsProvider({
       selectedColor: "white",
       disabledColor: "disabledText",
-      inOtherMonthColor: "transparent"
-    })
+      inOtherMonthColor: "transparent",
+    }),
   },
   CalendarMonth: {
     headerLeftIcon: faChevronLeft,
-    headerRightIcon: faChevronRight
-  }
+    headerRightIcon: faChevronRight,
+  },
 };
 
 export const extranetCalendarTheme: CalendarTheme = {
@@ -209,10 +209,10 @@ export const extranetCalendarTheme: CalendarTheme = {
   height: "37px",
   WeekNumber: {
     backgroundColor: "transparent",
-    show: true
+    show: true,
   },
   WeekDay: {
-    textColor: "separator"
+    textColor: "separator",
   },
   CalendarDay: {
     wrapperStyle: defaultWrapperStyleProvider({
@@ -221,15 +221,15 @@ export const extranetCalendarTheme: CalendarTheme = {
       rangeBorder: "#DAE7F2",
       rangeBackground: "#E2EDF7",
       todayBorder: "#60BD2F",
-      todayBackground: "#F1F9ED"
+      todayBackground: "#F1F9ED",
     }),
     textProps: defaultTextPropsProvider({
       selectedColor: "white",
       disabledColor: "disabledText",
-      inOtherMonthColor: "transparent"
-    })
+      inOtherMonthColor: "transparent",
+    }),
   },
-  CalendarMonth: {}
+  CalendarMonth: {},
 };
 
 export const resolveThemeColor = (s: string, theme: Theme): string =>

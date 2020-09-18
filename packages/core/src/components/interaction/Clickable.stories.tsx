@@ -2,7 +2,7 @@ import { Clickable, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 
 export default {
-  title: "core/Interaction/Clickable"
+  title: "core/Interaction/Clickable",
 };
 
 export const Default = () => (

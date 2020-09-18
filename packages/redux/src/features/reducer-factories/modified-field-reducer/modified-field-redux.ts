@@ -3,15 +3,15 @@ import { EntityWithId } from "../../../common/EntityWithId";
 import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdActions,
-  EntityByIdActions
+  EntityByIdActions,
 } from "../entity-by-id-reducer/entity-by-id-action-creators";
 import {
   createEntityByIdReducer,
-  EntityByIdState
+  EntityByIdState,
 } from "../entity-by-id-reducer/entity-by-id-reducer";
 import {
   createEntityByIdSelectors,
-  EntityByIdSelectors
+  EntityByIdSelectors,
 } from "../entity-by-id-reducer/entity-by-id-selectors";
 
 export interface ModifiedFieldItemState extends EntityWithId {
@@ -59,6 +59,6 @@ export const createModifiedFieldRedux = <TStoreState>(
   return {
     reducer,
     selectors,
-    actions
+    actions,
   };
 };

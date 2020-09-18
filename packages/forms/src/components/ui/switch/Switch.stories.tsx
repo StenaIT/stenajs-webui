@@ -5,7 +5,7 @@ import {
   LargeText,
   Row,
   Space,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { Switch } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
@@ -22,7 +22,7 @@ const SwitchOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(v => !v);
+      setIsEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
@@ -75,13 +75,13 @@ const SwitchOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 };
 
 export default {
-  title: "forms/Switch"
+  title: "forms/Switch",
 };
 
 export const Overview = withState<State>({
   checked: true,
   selectedSmall: false,
-  selected: false
+  selected: false,
 })(({ store }: { store: Store<State> }) => <SwitchOverview store={store} />);
 
 export const Standard = () => (

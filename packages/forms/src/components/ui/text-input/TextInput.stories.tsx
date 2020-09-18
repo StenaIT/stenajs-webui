@@ -6,7 +6,7 @@ import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 
 export default {
-  title: "forms/TextInput/TextInput"
+  title: "forms/TextInput/TextInput",
 };
 
 export const _TextInput = () => (
@@ -16,7 +16,7 @@ export const _TextInput = () => (
     <Space />
     {(["success", "error", "warning", "loading", "modified"] as Array<
       TextInputVariant
-    >).map(variant => (
+    >).map((variant) => (
       <React.Fragment key={variant}>
         <StandardText>Variant={variant}</StandardText>
         <TextInput value={"Some text"} variant={variant} />
@@ -128,7 +128,7 @@ export const WithContentAndNoContentPadding = () => (
           width: "32px",
           height: "32px",
           backgroundColor: "red",
-          borderRadius: "4px"
+          borderRadius: "4px",
         }}
       />
     }
@@ -150,7 +150,7 @@ export const WithContentAndNoContentPaddingRight = () => (
           width: "32px",
           height: "32px",
           backgroundColor: "red",
-          borderRadius: "4px"
+          borderRadius: "4px",
         }}
       />
     }
@@ -172,7 +172,7 @@ export const WithContentAndNoContentPaddingLeft = () => (
           width: "32px",
           height: "32px",
           backgroundColor: "red",
-          borderRadius: "4px"
+          borderRadius: "4px",
         }}
       />
     }
