@@ -16,6 +16,7 @@ import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -60,6 +61,10 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [dateInFocus, setDateInFocus] = useState(() => new Date());
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+
   const [open, setOpen] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
@@ -123,6 +128,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         dateInFocus={dateInFocus}
         setDateInFocus={setDateInFocus}
         theme={calendarTheme}
+        currentPanel={currentPanel}
+        setCurrentPanel={setCurrentPanel}
       />
     </CalendarPopperContent>
   );

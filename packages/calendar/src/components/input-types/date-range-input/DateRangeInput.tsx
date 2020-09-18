@@ -21,6 +21,7 @@ import { Icon } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { buildDayState } from "../../calendar-types/date-range-calendar/util/DayStateFactory";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
@@ -98,6 +99,9 @@ export const DateRangeInput = <T extends {}>({
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value[focusedInput]) ?? new Date()
   );
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
 
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
@@ -135,6 +139,8 @@ export const DateRangeInput = <T extends {}>({
         statePerMonth={statePerMonth}
         theme={calendarTheme}
         onClickDay={onClickDay}
+        currentPanel={currentPanel}
+        setCurrentPanel={setCurrentPanel}
       />
     </CalendarPopperContent>
   );

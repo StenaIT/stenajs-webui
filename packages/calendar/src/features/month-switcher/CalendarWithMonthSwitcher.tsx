@@ -11,6 +11,8 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { Column, Row, Space } from "@stenajs-webui/core";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
+import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
+import { CalendarPreset } from "../preset-picker/CalendarPreset";
 
 export type MonthSwitcherPlacement = "header" | "below";
 
@@ -18,13 +20,21 @@ export interface CalendarWithMonthSwitcherProps<T> extends CalendarProps<T> {
   monthSwitcherPlacement?: MonthSwitcherPlacement;
   dateInFocus: Date;
   setDateInFocus: (dateInFocus: Date) => void;
+  currentPanel: CalendarPanelType;
+  setCurrentPanel: (currentPanel: CalendarPanelType) => void;
+  onSelectPreset?: (preset: CalendarPreset) => void;
 }
+
+const noop = () => {};
 
 export function CalendarWithMonthSwitcher<T>({
   monthSwitcherPlacement,
   theme = defaultCalendarTheme,
   dateInFocus,
   setDateInFocus,
+  currentPanel,
+  setCurrentPanel,
+  onSelectPreset = noop,
   ...calendarProps
 }: CalendarWithMonthSwitcherProps<T>) {
   const {
@@ -64,6 +74,9 @@ export function CalendarWithMonthSwitcher<T>({
             theme={theme}
             dateInFocus={dateInFocus}
             setDateInFocus={setDateInFocus}
+            currentPanel={currentPanel}
+            setCurrentPanel={setCurrentPanel}
+            onSelectPreset={onSelectPreset}
             headerLeftContent={
               <Row alignItems={"center"}>
                 <FlatButton

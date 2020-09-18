@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { CalendarProps } from "../../types/CalendarTypes";
 import { Calendar } from "../../components/calendar/Calendar";
 import { Months } from "../../util/calendar/CalendarDataFactory";
@@ -7,20 +7,26 @@ import { MonthPicker } from "../month-picker/MonthPicker";
 import { YearPicker } from "../year-picker/YearPicker";
 import { Box } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
+import { CalendarPanelType } from "./CalendarPanelType";
+import { PresetPicker } from "../preset-picker/PresetPicker";
+import { CalendarPreset } from "../preset-picker/CalendarPreset";
 
 interface CalendarWithMonthYearPickersProps<T>
   extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
   dateInFocus: Date;
   setDateInFocus: (dateInFocus: Date) => void;
+  currentPanel: CalendarPanelType;
+  setCurrentPanel: (currentPanel: CalendarPanelType) => void;
+  onSelectPreset: (preset: CalendarPreset) => void;
 }
-
-type PopoverMode = "calendar" | "year" | "month";
 
 export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPickers<
   T
 >({
   dateInFocus,
   setDateInFocus,
+  currentPanel,
+  setCurrentPanel,
   ...props
 }: CalendarWithMonthYearPickersProps<T>) {
   const onChangeSelectedMonth = useCallback(
@@ -30,8 +36,9 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
       if (setDateInFocus) {
         setDateInFocus(newDate);
       }
+      setCurrentPanel("calendar");
     },
-    [dateInFocus, setDateInFocus]
+    [dateInFocus, setDateInFocus, setCurrentPanel]
   );
 
   const onChangeSelectedYear = useCallback(
@@ -41,17 +48,29 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
       if (setDateInFocus) {
         setDateInFocus(newDate);
       }
+      setCurrentPanel("calendar");
     },
-    [dateInFocus, setDateInFocus]
+    [dateInFocus, setDateInFocus, setCurrentPanel]
   );
 
-  const [mode, setMode] = useState<PopoverMode>("calendar");
+  const onClickYear = useCallback(() => {
+    setCurrentPanel("year");
+  }, [setCurrentPanel]);
 
-  switch (mode) {
+  const onClickMonth = useCallback(() => {
+    setCurrentPanel("month");
+  }, [setCurrentPanel]);
+
+  switch (currentPanel) {
     case "calendar":
       return (
         <>
-          <Calendar<T> {...props} date={dateInFocus} />
+          <Calendar<T>
+            {...props}
+            date={dateInFocus}
+            onClickYear={onClickYear}
+            onClickMonth={onClickMonth}
+          />
         </>
       );
     case "month":
@@ -68,12 +87,14 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
           onValueChange={onChangeSelectedYear}
         />
       );
+    case "presets":
+      return <PresetPicker onClickPreset={() => {}} />;
     default:
       return (
         <Box>
           <PrimaryButton
             label={"Show calendar"}
-            onClick={() => setMode("calendar")}
+            onClick={() => setCurrentPanel("calendar")}
           />
         </Box>
       );

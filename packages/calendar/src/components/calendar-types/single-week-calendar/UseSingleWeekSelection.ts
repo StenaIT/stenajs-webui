@@ -8,6 +8,7 @@ import {
 import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
 
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export const useSingleWeekSelection = <T>({
   onChange,
@@ -21,6 +22,9 @@ export const useSingleWeekSelection = <T>({
     }
     return week.days[0].date;
   });
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
 
   const onClickDay = useCallback(
     (day) => {
@@ -61,6 +65,8 @@ export const useSingleWeekSelection = <T>({
     setDateInFocus,
     onClickDay,
     onClickWeek,
+    currentPanel,
+    setCurrentPanel,
   };
 };
 

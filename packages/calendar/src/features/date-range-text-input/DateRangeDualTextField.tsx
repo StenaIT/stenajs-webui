@@ -134,7 +134,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           </Row>
         }
       >
-        <Box width={"104px"}>
+        <Box width={"100px"}>
           <TextInput
             hideBorder
             placeholder={"Start date"}

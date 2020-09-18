@@ -15,6 +15,7 @@ import {
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export interface DateInputProps<T = {}> {
   /** The current value */
@@ -73,6 +74,9 @@ export const DateInput: React.FC<DateInputProps> = ({
   width = "125px",
 }) => {
   const [dateInFocus, setDateInFocus] = useState(() => new Date());
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
   const {
     hideCalendar,
     showingCalendar,
@@ -100,6 +104,8 @@ export const DateInput: React.FC<DateInputProps> = ({
         onChange={onSelectDate}
         value={value}
         theme={calendarTheme}
+        currentPanel={currentPanel}
+        setCurrentPanel={setCurrentPanel}
       />
     </CalendarPopperContent>
   );

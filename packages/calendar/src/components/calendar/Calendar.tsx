@@ -43,6 +43,8 @@ function CalendarPanel<T extends {}>({
   onClickDay,
   onClickWeekDay,
   onClickWeek,
+  onClickMonth,
+  onClickYear,
   renderWeekDay,
   renderWeekNumber,
   headerLeftContent,
@@ -71,6 +73,8 @@ function CalendarPanel<T extends {}>({
                   onClickDay={onClickDay}
                   onClickWeekDay={onClickWeekDay}
                   onClickWeek={onClickWeek}
+                  onClickMonth={onClickMonth}
+                  onClickYear={onClickYear}
                   theme={theme}
                   renderWeekNumber={renderWeekNumber}
                   renderWeekDay={renderWeekDay}
