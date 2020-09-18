@@ -3,7 +3,7 @@ import {
   DateRangeCalendarOnChangeValue,
   DateRangeInput,
 } from "@stenajs-webui/calendar";
-import { addDays } from "date-fns";
+import { addDays, subDays } from "date-fns";
 import * as React from "react";
 
 interface DateRangeState {
@@ -28,15 +28,11 @@ export const Standard = withState<DateRangeState>({
   </div>
 ));
 
-Standard.storyName = "standard";
-
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
     <DateRangeInput onChange={() => {}} value={{}} />
   </div>
 );
-
-Empty.storyName = "empty";
 
 export const UsingPortal = withState<DateRangeState>({
   value: {
@@ -53,8 +49,6 @@ export const UsingPortal = withState<DateRangeState>({
   </div>
 ));
 
-UsingPortal.storyName = "using portal";
-
 export const WithPreselectedValue = withState<DateRangeState>({
   value: {
     endDate: undefined,
@@ -68,8 +62,6 @@ export const WithPreselectedValue = withState<DateRangeState>({
     />
   </div>
 ));
-
-WithPreselectedValue.storyName = "with preselected value";
 
 export const WithTodayHighlighted = withState<DateRangeState>({
   value: {
@@ -86,4 +78,11 @@ export const WithTodayHighlighted = withState<DateRangeState>({
   </div>
 ));
 
-WithTodayHighlighted.storyName = "with today highlighted";
+export const WithInvalidRange = () => (
+  <div style={{ display: "inline-block" }}>
+    <DateRangeInput
+      value={{ startDate: new Date(), endDate: subDays(new Date(), 7) }}
+      onChange={() => {}}
+    />
+  </div>
+);

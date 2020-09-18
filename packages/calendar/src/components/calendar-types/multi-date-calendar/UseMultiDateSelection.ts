@@ -1,14 +1,22 @@
 import { isSameDay } from "date-fns";
-import { useCallback, useMemo } from "react";
-import { CalendarProps, OnClickDay } from "../../../types/CalendarTypes";
+import { useCallback, useMemo, useState } from "react";
+import { OnClickDay } from "../../../types/CalendarTypes";
 import { addDayStateHighlights } from "../../../util/calendar/StateModifier";
 import { MultiDateCalendarProps } from "./MultiDateCalendar";
+import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export const useMultiDateSelection = <T>({
   onChange,
   value,
   statePerMonth,
-}: MultiDateCalendarProps<T>): Partial<CalendarProps<T>> => {
+}: MultiDateCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+
+  const [dateInFocus, setDateInFocus] = useState(() => new Date());
+
   const onClickDay: OnClickDay<T> = useCallback(
     (day) => {
       if (!onChange) {
@@ -36,5 +44,9 @@ export const useMultiDateSelection = <T>({
   return {
     onClickDay,
     statePerMonth: statePerMonthWithSelectedDate,
+    currentPanel,
+    setCurrentPanel,
+    dateInFocus,
+    setDateInFocus,
   };
 };

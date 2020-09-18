@@ -1,29 +1,26 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import { Box, useMultiOnClickOutside } from "@stenajs-webui/core";
-import { TextInput } from "@stenajs-webui/forms";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useRef, useState } from "react";
-import * as ReactDOM from "react-dom";
-import { Manager, Reference } from "react-popper";
+import { useRef } from "react";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
-import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
+import { Popover } from "@stenajs-webui/tooltip";
 
 export interface DateInputProps<T = {}> {
   /** The current value */
   value?: Date;
   /** onChange handler for when the user selects a date. */
   onChange?: (date: Date | undefined) => void;
-  /** Background color of the input field. */
-  backgroundColor?: string;
+  /** Variant of the input field. */
+  variant?: TextInputProps["variant"];
   /** If true, calendar will be open when component mounts. */
   openOnMount?: boolean;
   /** Is invoked when user closes the calendar popup. */
@@ -71,12 +68,9 @@ export const DateInput: React.FC<DateInputProps> = ({
   onClose,
   onChange,
   portalTarget,
-  width = "125px",
+  variant,
+  width,
 }) => {
-  const [dateInFocus, setDateInFocus] = useState(() => new Date());
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
-  );
   const {
     hideCalendar,
     showingCalendar,
@@ -89,49 +83,35 @@ export const DateInput: React.FC<DateInputProps> = ({
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
 
-  const popperContent = (
-    <CalendarPopperContent
-      open={showingCalendar}
-      innerRef={popupRef}
-      background={"var(--swui-field-bg-enabled)"}
-      borderColor={"var(--swui-modal-border-color)"}
-      zIndex={zIndex}
-    >
-      <SingleDateCalendar
-        {...calendarProps}
-        dateInFocus={dateInFocus}
-        setDateInFocus={setDateInFocus}
-        onChange={onSelectDate}
-        value={value}
-        theme={calendarTheme}
-        currentPanel={currentPanel}
-        setCurrentPanel={setCurrentPanel}
-      />
-    </CalendarPopperContent>
-  );
-
   return (
     <Box innerRef={outsideRef} width={width}>
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <Box innerRef={ref}>
-              <TextInput
-                iconLeft={faCalendarAlt}
-                onFocus={showCalendar}
-                onClickLeft={showCalendar}
-                value={value ? format(value, displayFormat) : ""}
-                placeholder={placeholder}
-                size={9}
-                autoFocus={openOnMount}
-              />
-            </Box>
-          )}
-        </Reference>
-        {portalTarget
-          ? ReactDOM.createPortal(popperContent, portalTarget)
-          : popperContent}
-      </Manager>
+      <Popover
+        arrow={false}
+        visible={showingCalendar}
+        zIndex={zIndex}
+        appendTo={portalTarget ?? "parent"}
+        content={
+          showingCalendar && (
+            <SingleDateCalendar
+              {...calendarProps}
+              onChange={onSelectDate}
+              value={value}
+              theme={calendarTheme}
+            />
+          )
+        }
+      >
+        <TextInput
+          iconLeft={faCalendarAlt}
+          onFocus={showCalendar}
+          onClickLeft={showCalendar}
+          value={value ? format(value, displayFormat) : ""}
+          placeholder={placeholder}
+          size={9}
+          autoFocus={openOnMount}
+          variant={variant}
+        />
+      </Popover>
     </Box>
   );
 };

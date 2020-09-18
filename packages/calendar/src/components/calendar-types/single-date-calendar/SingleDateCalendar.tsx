@@ -7,7 +7,10 @@ import {
 import { useSingleDateSelection } from "./UseSingleDateSelection";
 
 export interface SingleDateCalendarProps<T>
-  extends CalendarWithMonthSwitcherProps<T> {
+  extends Omit<
+    CalendarWithMonthSwitcherProps<T>,
+    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
+  > {
   value: Date | undefined;
   onChange: (value: Date | undefined) => void;
 }

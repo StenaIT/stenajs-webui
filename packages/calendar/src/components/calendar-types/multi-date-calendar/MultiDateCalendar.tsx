@@ -7,7 +7,10 @@ import {
 import { useMultiDateSelection } from "./UseMultiDateSelection";
 
 export interface MultiDateCalendarProps<T>
-  extends CalendarWithMonthSwitcherProps<T> {
+  extends Omit<
+    CalendarWithMonthSwitcherProps<T>,
+    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
+  > {
   value?: Array<Date>;
   onChange?: (value: Array<Date>) => void;
 }

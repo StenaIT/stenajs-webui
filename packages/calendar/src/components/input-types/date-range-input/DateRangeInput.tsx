@@ -81,6 +81,8 @@ export interface DateRangeInputProps<T extends {}> {
     | "focusedInput"
     | "setFocusedInput"
     | "theme"
+    | "currentPanel"
+    | "setCurrentPanel"
   >;
 }
 
@@ -92,7 +94,7 @@ export const DateRangeInput = <T extends {}>({
   value,
   onChange,
   zIndex = 100,
-  width = "125px",
+  width,
   calendarTheme = defaultCalendarTheme,
   calendarProps,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {

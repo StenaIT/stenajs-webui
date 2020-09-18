@@ -1,6 +1,5 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { DateInput, setDayStateValue } from "@stenajs-webui/calendar";
-import { color } from "@storybook/addon-knobs";
 import { addDays, addMonths } from "date-fns";
 import * as React from "react";
 
@@ -27,8 +26,6 @@ export const Standard = withState<DateInputState>({
   </div>
 ));
 
-Standard.storyName = "standard";
-
 export const WithDisabledDateTomorrow = withState<DateInputState>({
   value: undefined,
 })(({ store }: { store: Store<DateInputState> }) => (
@@ -41,15 +38,11 @@ export const WithDisabledDateTomorrow = withState<DateInputState>({
   </div>
 ));
 
-WithDisabledDateTomorrow.storyName = "with disabled date tomorrow";
-
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
     <DateInput value={undefined} />
   </div>
 );
-
-Empty.storyName = "empty";
 
 export const UsingPortal = withState<DateInputState>({
   value: undefined,
@@ -63,15 +56,11 @@ export const UsingPortal = withState<DateInputState>({
   </div>
 ));
 
-UsingPortal.storyName = "using portal";
-
 export const CustomDateFormat = () => (
   <div style={{ display: "inline-block" }}>
     <DateInput value={new Date()} displayFormat={"dd/MM/yyyy"} />
   </div>
 );
-
-CustomDateFormat.storyName = "custom date format";
 
 export const WithPreselectedValue = () => (
   <div style={{ display: "inline-block" }}>
@@ -79,15 +68,8 @@ export const WithPreselectedValue = () => (
   </div>
 );
 
-WithPreselectedValue.storyName = "with preselected value";
-
-export const WithBackgroundColor = () => (
+export const WithVariant = () => (
   <div style={{ display: "inline-block" }}>
-    <DateInput
-      value={addMonths(new Date(), 2)}
-      backgroundColor={color("Background", "#f0f060")}
-    />
+    <DateInput value={addMonths(new Date(), 2)} variant={"error"} />
   </div>
 );
-
-WithBackgroundColor.storyName = "with background color";

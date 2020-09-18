@@ -1,11 +1,7 @@
 import { eachDayOfInterval } from "date-fns";
 import { useCallback, useMemo, useState } from "react";
 import { useDateRangeOnClickDayHandler } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
-import {
-  CalendarProps,
-  CalendarState,
-  OnClickDay,
-} from "../../../types/CalendarTypes";
+import { CalendarState, OnClickDay } from "../../../types/CalendarTypes";
 import { addDayStateHighlights } from "../../../util/calendar/StateModifier";
 import {
   listContainsDate,
@@ -16,16 +12,25 @@ import {
   DateRangeFocusedInput,
 } from "../date-range-calendar/DateRangeCalendar";
 import { DateRangeExclusionCalendarProps } from "./DateRangeExclusionCalendar";
+import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export const useDateRangeExclusionSelection = <T>({
   onChange,
   value,
   statePerMonth,
-}: DateRangeExclusionCalendarProps<T>): Partial<CalendarProps<T>> => {
+}: DateRangeExclusionCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
+  );
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+
+  const [dateInFocus, setDateInFocus] = useState(
+    () => (focusedInput && value?.[focusedInput]) ?? new Date()
   );
 
   const onChangeHandler = useCallback(
@@ -80,6 +85,10 @@ export const useDateRangeExclusionSelection = <T>({
   return {
     onClickDay,
     statePerMonth: statePerMonthWithSelectedDate,
+    currentPanel,
+    setCurrentPanel,
+    dateInFocus,
+    setDateInFocus,
   };
 };
 

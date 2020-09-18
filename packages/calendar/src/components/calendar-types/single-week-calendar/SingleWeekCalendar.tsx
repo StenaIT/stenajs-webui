@@ -9,7 +9,10 @@ import { useSingleWeekSelection } from "./UseSingleWeekSelection";
 export type SingleWeekValue = string;
 
 export interface SingleWeekCalendarProps<T>
-  extends CalendarWithMonthSwitcherProps<T> {
+  extends Omit<
+    CalendarWithMonthSwitcherProps<T>,
+    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
+  > {
   value: SingleWeekValue | undefined;
   onChange: (value: SingleWeekValue | undefined) => void;
 }

@@ -89,6 +89,7 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
       );
     case "presets":
       return <PresetPicker onClickPreset={() => {}} />;
+
     default:
       return (
         <Box>

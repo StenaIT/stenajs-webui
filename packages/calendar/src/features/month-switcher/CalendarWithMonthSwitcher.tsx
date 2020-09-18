@@ -61,6 +61,8 @@ export function CalendarWithMonthSwitcher<T>({
           theme={theme}
           nextMonth={nextMonth}
           prevMonth={prevMonth}
+          nextYear={nextYear}
+          prevYear={prevYear}
         >
           <Calendar<T> {...calendarProps} theme={theme} date={dateInFocus} />
         </WithMonthSwitcherBelow>

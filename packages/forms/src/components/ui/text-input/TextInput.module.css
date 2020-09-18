@@ -83,6 +83,7 @@
     &.modified {
       --current-bg: var(--swui-textinput-bg-modified);
       --current-border-color: var(--swui-textinput-border-color-modified);
+      --current-icon-color: var(--lhds-color-blue-300);
     }
 
     &.error {
