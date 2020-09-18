@@ -1,7 +1,9 @@
 import { Store, withState } from "@dump247/storybook-state";
 import * as React from "react";
-import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
-import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
+import {
+  DateRangeDualTextInput,
+  DateRangeOnChangeValue,
+} from "@stenajs-webui/calendar";
 
 interface DateRangeState {
   value?: DateRangeOnChangeValue;

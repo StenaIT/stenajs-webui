@@ -1,7 +1,6 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { TimeTextInput } from "@stenajs-webui/calendar";
 import { Box } from "@stenajs-webui/core";
-import { color } from "@storybook/addon-knobs";
 import * as React from "react";
 
 interface TimeTextInputState {
