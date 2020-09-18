@@ -159,7 +159,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
       value.startDate &&
       value.endDate &&
       isAfter(value.startDate, value.endDate),
-    [value && value.startDate, value && value.endDate]
+    [value]
   );
 
   const statePerMonth = useMemo(

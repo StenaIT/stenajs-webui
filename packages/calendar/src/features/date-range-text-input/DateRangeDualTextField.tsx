@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { TextInput, TextInputBox, TextInputProps } from "@stenajs-webui/forms";
 import {
   Box,
@@ -54,12 +54,13 @@ export const DateRangeDualTextField: React.FC<Props> = ({
 }) => {
   const focusCounter = useRef(0);
 
-  const tryTriggerOnBlur = useCallback(
-    debounce((focusCounter: number) => {
-      if (focusCounter === 0) {
-        onBlur?.();
-      }
-    }, 10),
+  const tryTriggerOnBlur = useMemo(
+    () =>
+      debounce((focusCounter: number) => {
+        if (focusCounter === 0) {
+          onBlur?.();
+        }
+      }, 10),
     [onBlur]
   );
 
@@ -71,7 +72,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
         onFocusLeft(ev);
       }
     },
-    [onFocusLeft, focusCounter]
+    [onFocusLeft, focusCounter, tryTriggerOnBlur]
   );
 
   const focusRightHandler = useCallback(
@@ -82,7 +83,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
         onFocusRight(ev);
       }
     },
-    [onFocusRight, focusCounter]
+    [onFocusRight, focusCounter, tryTriggerOnBlur]
   );
 
   const blurLeftHandler = useCallback(
@@ -93,7 +94,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
         onBlurLeft(ev);
       }
     },
-    [onBlurLeft, focusCounter]
+    [onBlurLeft, focusCounter, tryTriggerOnBlur]
   );
 
   const blurRightHandler = useCallback(
@@ -104,7 +105,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
         onBlurRight(ev);
       }
     },
-    [onBlurRight, focusCounter]
+    [onBlurRight, focusCounter, tryTriggerOnBlur]
   );
 
   return (

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useMemo } from "react";
 
-interface GridHooksContext {
+interface GridHooksContextValue {
   /**
    * Total number of rows in table. Must be set in cell hook or in GridHooksTable prop.
    */
@@ -20,16 +20,16 @@ interface GridHooksContext {
   wrap?: boolean;
 }
 
-export const GridHooksContext = React.createContext<GridHooksContext>({});
+export const GridHooksContext = React.createContext<GridHooksContextValue>({});
 
-export const GridHooksTable: React.FC<GridHooksContext> = ({
+export const GridHooksTable: React.FC<GridHooksContextValue> = ({
   children,
   numCols,
   numRows,
   tableId,
   wrap,
 }) => {
-  const contextProps = useMemo<GridHooksContext>(
+  const contextProps = useMemo<GridHooksContextValue>(
     () => ({ numCols, numRows, tableId, wrap }),
     [numCols, numRows, tableId, wrap]
   );
