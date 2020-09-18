@@ -7,6 +7,7 @@ import {
   Indent,
   Row,
   SeparatorLine,
+  Space,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon } from "@stenajs-webui/elements";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
@@ -134,7 +135,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           </Row>
         }
       >
-        <Box width={"100px"}>
+        <Box width={"104px"}>
           <TextInput
             hideBorder
             placeholder={"Start date"}
@@ -152,6 +153,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           size={12}
           color={"var(--lhds-color-ui-500)"}
         />
+        <Space />
         <Box width={"104px"}>
           <TextInput
             hideBorder

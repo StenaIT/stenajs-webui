@@ -8,10 +8,10 @@ interface DateRangeState {
 }
 
 export default {
-  title: "calendar/Kom igen/DateRangeDualTextInput",
+  title: "calendar/Input/DateRangeDualTextInput",
 };
 
-export const TestarLite = withState<DateRangeState>({
+export const Standard = withState<DateRangeState>({
   value: undefined,
 })(({ store }: { store: Store<DateRangeState> }) => (
   <div style={{ display: "inline-block" }}>
@@ -24,5 +24,3 @@ export const TestarLite = withState<DateRangeState>({
     />
   </div>
 ));
-
-TestarLite.storyName = "testar lite";

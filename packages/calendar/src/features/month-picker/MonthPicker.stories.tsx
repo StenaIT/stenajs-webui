@@ -21,18 +21,3 @@ export const Standard = withState<DateRangeState>({
     />
   </div>
 ));
-
-Standard.storyName = "standard";
-
-export const TestarLite = withState<DateRangeState>({
-  value: undefined,
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <MonthPicker
-      value={store.state.value}
-      onValueChange={(value) => store.set({ value })}
-    />
-  </div>
-));
-
-TestarLite.storyName = "testar lite";
