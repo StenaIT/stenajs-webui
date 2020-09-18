@@ -77,9 +77,7 @@ export const _TextInput = () => (
   </Box>
 );
 
-_TextInput.story = {
-  name: "TextInput"
-};
+_TextInput.storyName = "TextInput";
 
 export const Standard = () => (
   <Box width={"400px"}>
@@ -87,25 +85,19 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithIconLeft = () => (
   <TextInput value={"some entered text"} iconLeft={faCoffee} />
 );
 
-WithIconLeft.story = {
-  name: "with icon left"
-};
+WithIconLeft.storyName = "with icon left";
 
 export const WithIconRight = () => (
   <TextInput value={"some entered text"} iconRight={faPaw} />
 );
 
-WithIconRight.story = {
-  name: "with icon right"
-};
+WithIconRight.storyName = "with icon right";
 
 export const WithContentLeft = () => (
   <TextInput
@@ -114,9 +106,7 @@ export const WithContentLeft = () => (
   />
 );
 
-WithContentLeft.story = {
-  name: "with content left"
-};
+WithContentLeft.storyName = "with content left";
 
 export const WithContentRight = () => (
   <TextInput
@@ -125,9 +115,7 @@ export const WithContentRight = () => (
   />
 );
 
-WithContentRight.story = {
-  name: "with content right"
-};
+WithContentRight.storyName = "with content right";
 
 export const WithContentAndNoContentPadding = () => (
   <TextInput
@@ -148,9 +136,8 @@ export const WithContentAndNoContentPadding = () => (
   />
 );
 
-WithContentAndNoContentPadding.story = {
-  name: "with content and no content padding"
-};
+WithContentAndNoContentPadding.storyName =
+  "with content and no content padding";
 
 export const WithContentAndNoContentPaddingRight = () => (
   <TextInput
@@ -171,9 +158,8 @@ export const WithContentAndNoContentPaddingRight = () => (
   />
 );
 
-WithContentAndNoContentPaddingRight.story = {
-  name: "with content and no content padding right"
-};
+WithContentAndNoContentPaddingRight.storyName =
+  "with content and no content padding right";
 
 export const WithContentAndNoContentPaddingLeft = () => (
   <TextInput
@@ -194,23 +180,18 @@ export const WithContentAndNoContentPaddingLeft = () => (
   />
 );
 
-WithContentAndNoContentPaddingLeft.story = {
-  name: "with content and no content padding left"
-};
+WithContentAndNoContentPaddingLeft.storyName =
+  "with content and no content padding left";
 
 export const Empty = () => <TextInput value={""} />;
 
-Empty.story = {
-  name: "empty"
-};
+Empty.storyName = "empty";
 
 export const WithPlaceholder = () => (
   <TextInput value={""} placeholder={"Enter name"} />
 );
 
-WithPlaceholder.story = {
-  name: "with placeholder"
-};
+WithPlaceholder.storyName = "with placeholder";
 
 export const WithCustomStyling = () => (
   <Box width={"400px"}>
@@ -221,9 +202,7 @@ export const WithCustomStyling = () => (
   </Box>
 );
 
-WithCustomStyling.story = {
-  name: "with custom styling"
-};
+WithCustomStyling.storyName = "with custom styling";
 
 export const WithSelectAllOnMount = () => (
   <Box width={"400px"}>
@@ -235,9 +214,7 @@ export const WithSelectAllOnMount = () => (
   </Box>
 );
 
-WithSelectAllOnMount.story = {
-  name: "with select all on mount"
-};
+WithSelectAllOnMount.storyName = "with select all on mount";
 
 export const WithSelectAllOnFocus = () => (
   <Box width={"400px"}>
@@ -247,9 +224,7 @@ export const WithSelectAllOnFocus = () => (
   </Box>
 );
 
-WithSelectAllOnFocus.story = {
-  name: "with select all on focus"
-};
+WithSelectAllOnFocus.storyName = "with select all on focus";
 
 export const Disabled = () => (
   <Box width={"400px"}>
@@ -257,9 +232,7 @@ export const Disabled = () => (
   </Box>
 );
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";
 
 export const DisabledWithContent = () => (
   <Box width={"400px"}>
@@ -272,6 +245,4 @@ export const DisabledWithContent = () => (
   </Box>
 );
 
-DisabledWithContent.story = {
-  name: "disabled with content"
-};
+DisabledWithContent.storyName = "disabled with content";

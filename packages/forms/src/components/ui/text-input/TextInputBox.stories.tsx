@@ -7,6 +7,4 @@ export default {
 
 export const Standard = () => <DateRangeDualTextField />;
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

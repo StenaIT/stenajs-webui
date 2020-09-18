@@ -23,9 +23,7 @@ export const Standard = () => (
   </Column>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Inverted = () => (
   <Column background={"#0f304d"} spacing indent>
@@ -42,6 +40,4 @@ export const Inverted = () => (
   </Column>
 );
 
-Inverted.story = {
-  name: "inverted"
-};
+Inverted.storyName = "inverted";

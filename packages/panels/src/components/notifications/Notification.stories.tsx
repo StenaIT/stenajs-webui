@@ -38,6 +38,4 @@ export const Standard = () => (
   </Column>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

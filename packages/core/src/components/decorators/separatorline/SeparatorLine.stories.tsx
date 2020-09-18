@@ -8,9 +8,7 @@ export default {
 
 export const Standard = () => <SeparatorLine />;
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithColor = () => (
   <SeparatorLine
@@ -18,26 +16,18 @@ export const WithColor = () => (
   />
 );
 
-WithColor.story = {
-  name: "with color"
-};
+WithColor.storyName = "with color";
 
 export const WithCustomColor = () => (
   <SeparatorLine color={color("Color", "#d90900")} />
 );
 
-WithCustomColor.story = {
-  name: "with custom color"
-};
+WithCustomColor.storyName = "with custom color";
 
 export const WithCustomWidth = () => <SeparatorLine width={"4px"} />;
 
-WithCustomWidth.story = {
-  name: "with custom width"
-};
+WithCustomWidth.storyName = "with custom width";
 
 export const Vertical = () => <SeparatorLine vertical size={"250px"} />;
 
-Vertical.story = {
-  name: "vertical"
-};
+Vertical.storyName = "vertical";

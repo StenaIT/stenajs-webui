@@ -37,9 +37,7 @@ export const ModalWithHeader = withState<State>({
   </>
 ));
 
-ModalWithHeader.story = {
-  name: "modal with header"
-};
+ModalWithHeader.storyName = "modal with header";
 
 export const ModalWithCustomHeaderComponent = withState<State>({
   isOpen: false
@@ -65,9 +63,7 @@ export const ModalWithCustomHeaderComponent = withState<State>({
   </>
 ));
 
-ModalWithCustomHeaderComponent.story = {
-  name: "modal with custom header component"
-};
+ModalWithCustomHeaderComponent.storyName = "modal with custom header component";
 
 export const ModalWithFixedWidth = withState<State>({
   isOpen: false
@@ -88,9 +84,7 @@ export const ModalWithFixedWidth = withState<State>({
   </>
 ));
 
-ModalWithFixedWidth.story = {
-  name: "modal with fixed width"
-};
+ModalWithFixedWidth.storyName = "modal with fixed width";
 
 export const ModalWithScroll = withState<State>({
   isOpen: false
@@ -138,9 +132,7 @@ export const ModalWithScroll = withState<State>({
   </>
 ));
 
-ModalWithScroll.story = {
-  name: "modal with scroll"
-};
+ModalWithScroll.storyName = "modal with scroll";
 
 export const _BaseModal = withState<State>({
   isOpen: false
@@ -159,9 +151,7 @@ export const _BaseModal = withState<State>({
   </>
 ));
 
-_BaseModal.story = {
-  name: "base modal"
-};
+_BaseModal.storyName = "base modal";
 
 export const DraggableModal = withState<State>({
   isOpen: false
@@ -182,9 +172,7 @@ export const DraggableModal = withState<State>({
   </>
 ));
 
-DraggableModal.story = {
-  name: "draggable modal"
-};
+DraggableModal.storyName = "draggable modal";
 
 const loremIpsumSampleText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
             earum eius excepturi nam nemo numquam repellat sit velit. Ab

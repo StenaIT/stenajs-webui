@@ -75,6 +75,4 @@ export const EventListCard = () => {
   );
 };
 
-EventListCard.story = {
-  name: "Event list card"
-};
+EventListCard.storyName = "Event list card";

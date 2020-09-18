@@ -249,9 +249,7 @@ export const AlternativeIcons = () => {
   );
 };
 
-AlternativeIcons.story = {
-  name: "Alternative icons"
-};
+AlternativeIcons.storyName = "Alternative icons";
 
 export const GroupHeaders = () => {
   const [state, setState] = useState({
@@ -298,9 +296,7 @@ export const GroupHeaders = () => {
   );
 };
 
-GroupHeaders.story = {
-  name: "Group headers"
-};
+GroupHeaders.storyName = "Group headers";
 
 export const RadioButtons = () => {
   const [active, setActive] = useState<"r2d2" | "c3po" | "bb-8">("r2d2");
@@ -373,6 +369,4 @@ export const RadioButtons = () => {
   );
 };
 
-RadioButtons.story = {
-  name: "Radio buttons"
-};
+RadioButtons.storyName = "Radio buttons";

@@ -8,14 +8,10 @@ export default {
 
 export const Standard = () => <InputSpinner />;
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithCustomColor = () => (
   <InputSpinner color={color("trackColor", "red")} />
 );
 
-WithCustomColor.story = {
-  name: "with custom color"
-};
+WithCustomColor.storyName = "with custom color";

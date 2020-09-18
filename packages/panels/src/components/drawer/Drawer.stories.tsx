@@ -15,9 +15,7 @@ export const Standard = () => (
   </Drawer>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const FromRight = () => (
   <Drawer isOpen={boolean("open", false)} slideFrom={"right"}>
@@ -27,9 +25,7 @@ export const FromRight = () => (
   </Drawer>
 );
 
-FromRight.story = {
-  name: "from right"
-};
+FromRight.storyName = "from right";
 
 export const UsingPortal = () => (
   <Drawer isOpen={boolean("open", false)} portalTarget={document.body}>
@@ -39,6 +35,4 @@ export const UsingPortal = () => (
   </Drawer>
 );
 
-UsingPortal.story = {
-  name: "using portal"
-};
+UsingPortal.storyName = "using portal";

@@ -176,9 +176,7 @@ export const CustomActionColorOnMultiple = () => (
   </Column>
 );
 
-CustomActionColorOnMultiple.story = {
-  name: "custom action color on multiple"
-};
+CustomActionColorOnMultiple.storyName = "custom action color on multiple";
 
 export const CustomCheckedBgColorOnSingle = () => (
   <Column>
@@ -192,6 +190,4 @@ export const CustomCheckedBgColorOnSingle = () => (
   </Column>
 );
 
-CustomCheckedBgColorOnSingle.story = {
-  name: "custom checked bg color on single"
-};
+CustomCheckedBgColorOnSingle.storyName = "custom checked bg color on single";

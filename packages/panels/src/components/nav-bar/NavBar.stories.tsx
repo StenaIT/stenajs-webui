@@ -28,9 +28,7 @@ export const Standard = () => (
   </NavBar>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithIcons = () => (
   <Column height={"500px"}>
@@ -42,9 +40,7 @@ export const WithIcons = () => (
   </Column>
 );
 
-WithIcons.story = {
-  name: "with icons"
-};
+WithIcons.storyName = "with icons";
 
 export const WithButtonsAndCenteredContent = () => (
   <NavBar
@@ -83,9 +79,7 @@ export const WithButtonsAndCenteredContent = () => (
   </NavBar>
 );
 
-WithButtonsAndCenteredContent.story = {
-  name: "with buttons and centered content"
-};
+WithButtonsAndCenteredContent.storyName = "with buttons and centered content";
 
 export const WithRightButtons = () => (
   <NavBar
@@ -102,9 +96,7 @@ export const WithRightButtons = () => (
   </NavBar>
 );
 
-WithRightButtons.story = {
-  name: "with right buttons"
-};
+WithRightButtons.storyName = "with right buttons";
 
 export const WithTitleToLeft = () => (
   <Column height={"500px"}>
@@ -122,9 +114,7 @@ export const WithTitleToLeft = () => (
   </Column>
 );
 
-WithTitleToLeft.story = {
-  name: "with title to left"
-};
+WithTitleToLeft.storyName = "with title to left";
 
 export const WithRightIcon = () => (
   <NavBar right={<Icon icon={faFire} />}>
@@ -134,9 +124,7 @@ export const WithRightIcon = () => (
   </NavBar>
 );
 
-WithRightIcon.story = {
-  name: "with right icon"
-};
+WithRightIcon.storyName = "with right icon";
 
 export const WithRightIconWithBadge = () => (
   <NavBar
@@ -152,9 +140,7 @@ export const WithRightIconWithBadge = () => (
   </NavBar>
 );
 
-WithRightIconWithBadge.story = {
-  name: "with right icon with badge"
-};
+WithRightIconWithBadge.storyName = "with right icon with badge";
 
 export const WithMenuButton = () => (
   <NavBar
@@ -177,9 +163,7 @@ export const WithMenuButton = () => (
   </NavBar>
 );
 
-WithMenuButton.story = {
-  name: "with menu button"
-};
+WithMenuButton.storyName = "with menu button";
 
 export const WithMenuButtonIcon = () => (
   <NavBar
@@ -210,6 +194,4 @@ export const WithMenuButtonIcon = () => (
   </NavBar>
 );
 
-WithMenuButtonIcon.story = {
-  name: "with menu button icon"
-};
+WithMenuButtonIcon.storyName = "with menu button icon";

@@ -42,10 +42,8 @@ export const Standard = withState<State>({
   </div>
 ));
 
-Standard.story = {
-  name: "standard",
-  parameters: { notes: { markdown } }
-};
+Standard.storyName = "standard";
+Standard.parameters = { notes: { markdown } };
 
 export const WithNumberDataType = withState<StateNumber>({
   value: 5
@@ -59,9 +57,7 @@ export const WithNumberDataType = withState<StateNumber>({
   </div>
 ));
 
-WithNumberDataType.story = {
-  name: "with number data type"
-};
+WithNumberDataType.storyName = "with number data type";
 
 export const Disabled = withState<State>({
   value: "5"
@@ -75,9 +71,7 @@ export const Disabled = withState<State>({
   </div>
 ));
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";
 
 export const HiddenButtons = withState<State>({
   value: "5"
@@ -91,9 +85,7 @@ export const HiddenButtons = withState<State>({
   </div>
 ));
 
-HiddenButtons.story = {
-  name: "hidden buttons"
-};
+HiddenButtons.storyName = "hidden buttons";
 
 export const WithLeftIcon = withState<State>({
   value: "5"
@@ -109,9 +101,7 @@ export const WithLeftIcon = withState<State>({
   </div>
 ));
 
-WithLeftIcon.story = {
-  name: "with left icon"
-};
+WithLeftIcon.storyName = "with left icon";
 
 export const WithContentRight = withState<State>({
   value: "5"
@@ -131,9 +121,7 @@ export const WithContentRight = withState<State>({
   </div>
 ));
 
-WithContentRight.story = {
-  name: "with content right"
-};
+WithContentRight.storyName = "with content right";
 
 export const WithMinAndMax = withState<State>({
   value: "5"
@@ -150,6 +138,4 @@ export const WithMinAndMax = withState<State>({
   </div>
 ));
 
-WithMinAndMax.story = {
-  name: "with min and max"
-};
+WithMinAndMax.storyName = "with min and max";

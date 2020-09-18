@@ -15,9 +15,7 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithJustifyContent = () => (
   <Box border={"1px solid black"} width={"250px"} indent>
@@ -50,6 +48,4 @@ export const WithJustifyContent = () => (
   </Box>
 );
 
-WithJustifyContent.story = {
-  name: "with justify-content"
-};
+WithJustifyContent.storyName = "with justify-content";

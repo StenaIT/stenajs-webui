@@ -16,6 +16,4 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

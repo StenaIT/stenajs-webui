@@ -24,9 +24,7 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const OnClick = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -36,9 +34,7 @@ export const OnClick = () => (
   </Box>
 );
 
-OnClick.story = {
-  name: "on click"
-};
+OnClick.storyName = "on click";
 
 export const NoArrow = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -48,9 +44,7 @@ export const NoArrow = () => (
   </Box>
 );
 
-NoArrow.story = {
-  name: "no arrow"
-};
+NoArrow.storyName = "no arrow";
 
 export const NoPadding = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -74,9 +68,7 @@ export const NoPadding = () => (
   </Box>
 );
 
-NoPadding.story = {
-  name: "no padding"
-};
+NoPadding.storyName = "no padding";
 
 export const Variants = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -118,9 +110,7 @@ export const Variants = () => (
   </Box>
 );
 
-Variants.story = {
-  name: "variants"
-};
+Variants.storyName = "variants";
 
 export const ControlOpen = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -130,6 +120,4 @@ export const ControlOpen = () => (
   </Box>
 );
 
-ControlOpen.story = {
-  name: "control open"
-};
+ControlOpen.storyName = "control open";

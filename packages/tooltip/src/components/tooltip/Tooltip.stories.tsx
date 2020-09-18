@@ -29,9 +29,7 @@ export const Standard = () => (
   </>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const ClickTrigger = () => (
   <Tooltip label={"Way to go!"} trigger={"click"}>
@@ -39,9 +37,7 @@ export const ClickTrigger = () => (
   </Tooltip>
 );
 
-ClickTrigger.story = {
-  name: "click trigger"
-};
+ClickTrigger.storyName = "click trigger";
 
 export const WithButton = () => (
   <Tooltip label={"Big success!"} trigger={"click"}>
@@ -49,6 +45,4 @@ export const WithButton = () => (
   </Tooltip>
 );
 
-WithButton.story = {
-  name: "with button"
-};
+WithButton.storyName = "with button";

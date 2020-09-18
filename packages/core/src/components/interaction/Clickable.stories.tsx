@@ -11,9 +11,7 @@ export const Default = () => (
   </Clickable>
 );
 
-Default.story = {
-  name: "default"
-};
+Default.storyName = "default";
 
 export const WithDomIdAndClassName = () => (
   <Clickable
@@ -25,9 +23,7 @@ export const WithDomIdAndClassName = () => (
   </Clickable>
 );
 
-WithDomIdAndClassName.story = {
-  name: "with DOM id and class name"
-};
+WithDomIdAndClassName.storyName = "with DOM id and class name";
 
 export const WithOpacityWhenMouseHoversOverClickable = () => (
   <Clickable opacityOnHover onClick={() => alert("Clicked!")}>
@@ -35,9 +31,8 @@ export const WithOpacityWhenMouseHoversOverClickable = () => (
   </Clickable>
 );
 
-WithOpacityWhenMouseHoversOverClickable.story = {
-  name: "with opacity when mouse hovers over clickable"
-};
+WithOpacityWhenMouseHoversOverClickable.storyName =
+  "with opacity when mouse hovers over clickable";
 
 export const WithDoubleClick = () => (
   <Clickable onDblClick={() => alert("Double clicked!")}>
@@ -45,9 +40,7 @@ export const WithDoubleClick = () => (
   </Clickable>
 );
 
-WithDoubleClick.story = {
-  name: "with double click"
-};
+WithDoubleClick.storyName = "with double click";
 
 export const WithNoPointerAsMouseCursor = () => (
   <Clickable disablePointer onClick={() => alert("Clicked!")}>
@@ -55,9 +48,7 @@ export const WithNoPointerAsMouseCursor = () => (
   </Clickable>
 );
 
-WithNoPointerAsMouseCursor.story = {
-  name: "with no pointer as mouse cursor"
-};
+WithNoPointerAsMouseCursor.storyName = "with no pointer as mouse cursor";
 
 export const WithNoOpacityEffectWhenClicking = () => (
   <Clickable disableOpacityOnClick onClick={() => alert("Clicked!")}>
@@ -65,9 +56,8 @@ export const WithNoOpacityEffectWhenClicking = () => (
   </Clickable>
 );
 
-WithNoOpacityEffectWhenClicking.story = {
-  name: "with no opacity effect when clicking"
-};
+WithNoOpacityEffectWhenClicking.storyName =
+  "with no opacity effect when clicking";
 
 export const WithTooltip = () => (
   <Clickable
@@ -78,6 +68,4 @@ export const WithTooltip = () => (
   </Clickable>
 );
 
-WithTooltip.story = {
-  name: "with tooltip"
-};
+WithTooltip.storyName = "with tooltip";

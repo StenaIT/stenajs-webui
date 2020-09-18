@@ -60,9 +60,7 @@ export const Standard = withState<State>({
   );
 });
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const StandardDark = withState<State>({
   values: undefined
@@ -116,9 +114,7 @@ export const StandardDark = withState<State>({
   );
 });
 
-StandardDark.story = {
-  name: "standard dark"
-};
+StandardDark.storyName = "standard dark";
 
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
@@ -157,6 +153,4 @@ export const Disabled = () => (
   </div>
 );
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";

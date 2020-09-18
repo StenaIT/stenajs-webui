@@ -16,6 +16,4 @@ export const IconWithBadge = () => (
   </WithBadge>
 );
 
-IconWithBadge.story = {
-  name: "icon with badge"
-};
+IconWithBadge.storyName = "icon with badge";

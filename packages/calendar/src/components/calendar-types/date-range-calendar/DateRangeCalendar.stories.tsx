@@ -66,19 +66,15 @@ export const Standard = withState<State>({
   />
 ));
 
-Standard.story = {
-  name: "standard",
+Standard.storyName = "standard";
 
-  parameters: {
-    notes: { markdown }
-  }
+Standard.parameters = {
+  notes: { markdown }
 };
 
 export const WithStateHook = () => <DateRangeCalendarWithState />;
 
-WithStateHook.story = {
-  name: "with state hook"
-};
+WithStateHook.storyName = "with state hook";
 
 export const WithTodayHighlighted = withState<State>({
   startDate: undefined,
@@ -96,9 +92,7 @@ export const WithTodayHighlighted = withState<State>({
   />
 ));
 
-WithTodayHighlighted.story = {
-  name: "with today highlighted"
-};
+WithTodayHighlighted.storyName = "with today highlighted";
 
 export const WithDefaultHighlights = withState<State>({
   startDate: undefined,
@@ -119,9 +113,7 @@ export const WithDefaultHighlights = withState<State>({
   );
 });
 
-WithDefaultHighlights.story = {
-  name: "with default highlights"
-};
+WithDefaultHighlights.storyName = "with default highlights";
 
 export const WithMultipleMonths = withState<State>({
   startDate: undefined,
@@ -139,9 +131,7 @@ export const WithMultipleMonths = withState<State>({
   />
 ));
 
-WithMultipleMonths.story = {
-  name: "with multiple months"
-};
+WithMultipleMonths.storyName = "with multiple months";
 
 export const WithMultipleRows = withState<State>({
   startDate: undefined,
@@ -160,9 +150,7 @@ export const WithMultipleRows = withState<State>({
   />
 ));
 
-WithMultipleRows.story = {
-  name: "with multiple rows"
-};
+WithMultipleRows.storyName = "with multiple rows";
 
 export const Travel = withState<State>({
   startDate: undefined,
@@ -222,10 +210,8 @@ export const Travel = withState<State>({
   );
 });
 
-Travel.story = {
-  name: "travel",
+Travel.storyName = "travel";
 
-  parameters: {
-    notes: { markdown }
-  }
+Travel.parameters = {
+  notes: { markdown }
 };

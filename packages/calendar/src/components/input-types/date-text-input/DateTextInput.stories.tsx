@@ -19,9 +19,7 @@ export const Standard = withState<DateTextInputState>({
   />
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const EnglishDateFormat = withState<DateTextInputState>({
   value: undefined
@@ -34,9 +32,7 @@ export const EnglishDateFormat = withState<DateTextInputState>({
   />
 ));
 
-EnglishDateFormat.story = {
-  name: "english date format"
-};
+EnglishDateFormat.storyName = "english date format";
 
 export const DutchDateFormat = withState<DateTextInputState>({
   value: undefined
@@ -49,23 +45,17 @@ export const DutchDateFormat = withState<DateTextInputState>({
   />
 ));
 
-DutchDateFormat.story = {
-  name: "dutch date format"
-};
+DutchDateFormat.storyName = "dutch date format";
 
 export const Disabled = () => <DateTextInput value={""} disabled={true} />;
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";
 
 export const Invalid = () => (
   <DateTextInput value={"invalid input"} variant={"error"} />
 );
 
-Invalid.story = {
-  name: "invalid"
-};
+Invalid.storyName = "invalid";
 
 export const WithNoIcon = withState<DateTextInputState>({
   value: undefined
@@ -77,9 +67,7 @@ export const WithNoIcon = withState<DateTextInputState>({
   />
 ));
 
-WithNoIcon.story = {
-  name: "with no icon"
-};
+WithNoIcon.storyName = "with no icon";
 
 export const WithDisabledCalendar = withState<DateTextInputState>({
   value: undefined
@@ -91,9 +79,7 @@ export const WithDisabledCalendar = withState<DateTextInputState>({
   />
 ));
 
-WithDisabledCalendar.story = {
-  name: "with disabled calendar"
-};
+WithDisabledCalendar.storyName = "with disabled calendar";
 
 export const UsingPortal = withState<DateTextInputState>({
   value: undefined
@@ -105,9 +91,7 @@ export const UsingPortal = withState<DateTextInputState>({
   />
 ));
 
-UsingPortal.story = {
-  name: "using portal"
-};
+UsingPortal.storyName = "using portal";
 
 export const CustomCalendarProps = withState<DateTextInputState>({
   value: undefined
@@ -122,6 +106,4 @@ export const CustomCalendarProps = withState<DateTextInputState>({
   />
 ));
 
-CustomCalendarProps.story = {
-  name: "custom calendar props"
-};
+CustomCalendarProps.storyName = "custom calendar props";

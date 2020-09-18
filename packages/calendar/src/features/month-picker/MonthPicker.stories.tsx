@@ -22,9 +22,7 @@ export const Standard = withState<DateRangeState>({
   </div>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const TestarLite = withState<DateRangeState>({
   value: undefined
@@ -37,6 +35,4 @@ export const TestarLite = withState<DateRangeState>({
   </div>
 ));
 
-TestarLite.story = {
-  name: "testar lite"
-};
+TestarLite.storyName = "testar lite";

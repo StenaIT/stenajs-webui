@@ -21,6 +21,4 @@ export const Standard = () => (
   </>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

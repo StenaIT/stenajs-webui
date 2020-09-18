@@ -23,9 +23,7 @@ export const Standard = withState<TimeTextInputState>({
   </Box>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Empty = withState<TimeTextInputState>({
   value: ""
@@ -36,9 +34,7 @@ export const Empty = withState<TimeTextInputState>({
   />
 ));
 
-Empty.story = {
-  name: "empty"
-};
+Empty.storyName = "empty";
 
 export const WithTime = withState<TimeTextInputState>({
   value: "23:59"
@@ -49,9 +45,7 @@ export const WithTime = withState<TimeTextInputState>({
   />
 ));
 
-WithTime.story = {
-  name: "with time"
-};
+WithTime.storyName = "with time";
 
 export const WithInvalidTime = withState<TimeTextInputState>({
   value: "9:xx"
@@ -62,9 +56,7 @@ export const WithInvalidTime = withState<TimeTextInputState>({
   />
 ));
 
-WithInvalidTime.story = {
-  name: "with invalid time"
-};
+WithInvalidTime.storyName = "with invalid time";
 
 export const WithoutIcon = withState<TimeTextInputState>({
   value: undefined
@@ -76,9 +68,7 @@ export const WithoutIcon = withState<TimeTextInputState>({
   />
 ));
 
-WithoutIcon.story = {
-  name: "without icon"
-};
+WithoutIcon.storyName = "without icon";
 
 export const WithoutPlaceholder = withState<TimeTextInputState>({
   value: undefined
@@ -90,9 +80,7 @@ export const WithoutPlaceholder = withState<TimeTextInputState>({
   />
 ));
 
-WithoutPlaceholder.story = {
-  name: "without placeholder"
-};
+WithoutPlaceholder.storyName = "without placeholder";
 
 export const Disabled = withState<TimeTextInputState>({
   value: undefined
@@ -104,15 +92,11 @@ export const Disabled = withState<TimeTextInputState>({
   />
 ));
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";
 
 export const Invalid = () => <TimeTextInput value={"invalid"} invalid={true} />;
 
-Invalid.story = {
-  name: "invalid"
-};
+Invalid.storyName = "invalid";
 
 export const WithBackgroundColor = withState<TimeTextInputState>({
   value: undefined
@@ -124,6 +108,4 @@ export const WithBackgroundColor = withState<TimeTextInputState>({
   />
 ));
 
-WithBackgroundColor.story = {
-  name: "with background color"
-};
+WithBackgroundColor.storyName = "with background color";

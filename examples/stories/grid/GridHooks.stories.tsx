@@ -9,18 +9,12 @@ export default {
 
 export const Standard = () => <GridExample />;
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithGridHooksTable = () => <GridExampleWithContext />;
 
-WithGridHooksTable.story = {
-  name: "with GridHooksTable"
-};
+WithGridHooksTable.storyName = "with GridHooksTable";
 
 export const WithCustomValue = () => <GridExampleCustomValue />;
 
-WithCustomValue.story = {
-  name: "with custom value"
-};
+WithCustomValue.storyName = "with custom value";

@@ -47,9 +47,7 @@ export const Standard = withState<State>({
   );
 });
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithPrefilledValue = withState<State>({
   creditcard: "123456789",
@@ -67,9 +65,7 @@ export const WithPrefilledValue = withState<State>({
   );
 });
 
-WithPrefilledValue.story = {
-  name: "with prefilled value"
-};
+WithPrefilledValue.storyName = "with prefilled value";
 
 export const WithOnValueChangeProp = withState<State>({
   creditcard: "123456789",
@@ -87,6 +83,4 @@ export const WithOnValueChangeProp = withState<State>({
   );
 });
 
-WithOnValueChangeProp.story = {
-  name: "with onValueChange prop"
-};
+WithOnValueChangeProp.storyName = "with onValueChange prop";

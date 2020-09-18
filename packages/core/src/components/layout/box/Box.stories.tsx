@@ -75,10 +75,8 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.story = {
-  name: "standard",
-  parameters: { notes: { markdown } }
-};
+Standard.storyName = "standard";
+Standard.parameters = { notes: { markdown } };
 
 export const Row = () => (
   <Box row>
@@ -87,9 +85,7 @@ export const Row = () => (
   </Box>
 );
 
-Row.story = {
-  name: "row"
-};
+Row.storyName = "row";
 
 export const RowWithJustifyContent = () => (
   <Box
@@ -103,9 +99,7 @@ export const RowWithJustifyContent = () => (
   </Box>
 );
 
-RowWithJustifyContent.story = {
-  name: "row with justifyContent"
-};
+RowWithJustifyContent.storyName = "row with justifyContent";
 
 export const WithDomAttributes = () => (
   <Box id={"id123"} className={"aNiceClass"}>
@@ -113,9 +107,7 @@ export const WithDomAttributes = () => (
   </Box>
 );
 
-WithDomAttributes.story = {
-  name: "with DOM attributes"
-};
+WithDomAttributes.storyName = "with DOM attributes";
 
 export const Background = () => (
   <Box
@@ -132,9 +124,7 @@ export const Background = () => (
   </Box>
 );
 
-Background.story = {
-  name: "background"
-};
+Background.storyName = "background";
 
 export const CustomBackground = () => (
   <Box background={color("background", "#e66465")} indent spacing>
@@ -143,9 +133,7 @@ export const CustomBackground = () => (
   </Box>
 );
 
-CustomBackground.story = {
-  name: "custom background"
-};
+CustomBackground.storyName = "custom background";
 
 export const GradientBackground = () => (
   <Box
@@ -161,9 +149,7 @@ export const GradientBackground = () => (
   </Box>
 );
 
-GradientBackground.story = {
-  name: "gradient background"
-};
+GradientBackground.storyName = "gradient background";
 
 export const IndentAndSpacing = () => (
   <Box
@@ -176,9 +162,7 @@ export const IndentAndSpacing = () => (
   </Box>
 );
 
-IndentAndSpacing.story = {
-  name: "indent and spacing"
-};
+IndentAndSpacing.storyName = "indent and spacing";
 
 export const Border = () => (
   <div style={{ display: "inline-block" }}>
@@ -208,9 +192,7 @@ export const Border = () => (
   </div>
 );
 
-Border.story = {
-  name: "border"
-};
+Border.storyName = "border";
 
 export const CustomBorder = () => (
   <div style={{ display: "inline-block" }}>
@@ -221,9 +203,7 @@ export const CustomBorder = () => (
   </div>
 );
 
-CustomBorder.story = {
-  name: "custom border"
-};
+CustomBorder.storyName = "custom border";
 
 export const BoxShadow = () => (
   <div style={{ display: "inline-block" }}>
@@ -235,9 +215,7 @@ export const BoxShadow = () => (
   </div>
 );
 
-BoxShadow.story = {
-  name: "box shadow"
-};
+BoxShadow.storyName = "box shadow";
 
 export const ModalShadow = () => (
   <div style={{ display: "inline-block" }}>
@@ -247,9 +225,7 @@ export const ModalShadow = () => (
   </div>
 );
 
-ModalShadow.story = {
-  name: "modal shadow"
-};
+ModalShadow.storyName = "modal shadow";
 
 export const CustomShadow = () => (
   <Box
@@ -262,9 +238,7 @@ export const CustomShadow = () => (
   </Box>
 );
 
-CustomShadow.story = {
-  name: "custom shadow"
-};
+CustomShadow.storyName = "custom shadow";
 
 export const FlexGrowChildren = () => (
   <Box row width={"500px"}>
@@ -283,9 +257,7 @@ export const FlexGrowChildren = () => (
   </Box>
 );
 
-FlexGrowChildren.story = {
-  name: "flex grow children"
-};
+FlexGrowChildren.storyName = "flex grow children";
 
 export const WithAriaLabel = () => (
   <>
@@ -302,6 +274,4 @@ export const WithAriaLabel = () => (
   </>
 );
 
-WithAriaLabel.story = {
-  name: "with aria label"
-};
+WithAriaLabel.storyName = "with aria label";

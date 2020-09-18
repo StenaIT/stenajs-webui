@@ -11,9 +11,7 @@ export const Standard = () => (
   </div>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithText = () => (
   <div style={{ display: "inline-block" }}>
@@ -21,6 +19,4 @@ export const WithText = () => (
   </div>
 );
 
-WithText.story = {
-  name: "with text"
-};
+WithText.storyName = "with text";

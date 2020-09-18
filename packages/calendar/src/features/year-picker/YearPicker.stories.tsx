@@ -21,6 +21,4 @@ export const Standard = withState<DateRangeState>({
   </div>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

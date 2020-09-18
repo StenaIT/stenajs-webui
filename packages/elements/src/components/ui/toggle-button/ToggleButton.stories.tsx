@@ -61,6 +61,4 @@ export const Standard = withState<State>({
   </Row>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

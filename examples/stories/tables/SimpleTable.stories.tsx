@@ -110,6 +110,4 @@ export const SimpleTable = () => {
   );
 };
 
-SimpleTable.story = {
-  name: "Simple table"
-};
+SimpleTable.storyName = "Simple table";

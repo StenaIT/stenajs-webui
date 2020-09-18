@@ -134,9 +134,7 @@ export const Standard = withState({ items })(({ store }) => {
   return <StandardTable items={store.state.items} config={config} />;
 });
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithSortingDisabled = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -147,9 +145,7 @@ export const WithSortingDisabled = withState({ items })(({ store }) => {
   return <StandardTable items={store.state.items} config={config} />;
 });
 
-WithSortingDisabled.story = {
-  name: "with sorting disabled"
-};
+WithSortingDisabled.storyName = "with sorting disabled";
 
 export const WithSortingDisabledAndSortByName = withState({ items })(
   ({ store }) => {
@@ -162,9 +158,8 @@ export const WithSortingDisabledAndSortByName = withState({ items })(
   }
 );
 
-WithSortingDisabledAndSortByName.story = {
-  name: "with sorting disabled and sort by name"
-};
+WithSortingDisabledAndSortByName.storyName =
+  "with sorting disabled and sort by name";
 
 export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
   ({ store }) => {
@@ -180,9 +175,8 @@ export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
   }
 );
 
-WithSortingEnabledAndSortByNameDesc.story = {
-  name: "with sorting enabled and sort by name desc"
-};
+WithSortingEnabledAndSortByNameDesc.storyName =
+  "with sorting enabled and sort by name desc";
 
 export const WithFieldError = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -199,9 +193,7 @@ export const WithFieldError = withState({ items })(({ store }) => {
   return <StandardTable items={items} config={config} />;
 });
 
-WithFieldError.story = {
-  name: "with field error"
-};
+WithFieldError.storyName = "with field error";
 
 export const WithFieldLoading = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -217,9 +209,7 @@ export const WithFieldLoading = withState({ items })(({ store }) => {
   return <StandardTable items={items} config={config} />;
 });
 
-WithFieldLoading.story = {
-  name: "with field loading"
-};
+WithFieldLoading.storyName = "with field loading";
 
 export const WithModifiedFields = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -237,9 +227,7 @@ export const WithModifiedFields = withState({ items })(({ store }) => {
   return <StandardTable items={items} config={config} />;
 });
 
-WithModifiedFields.story = {
-  name: "with modified fields"
-};
+WithModifiedFields.storyName = "with modified fields";
 
 export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
   ({ store }) => {
@@ -259,15 +247,12 @@ export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
   }
 );
 
-WithWarningWhenModifiedFieldIsEmpty.story = {
-  name: "with warning when modified field is empty"
-};
+WithWarningWhenModifiedFieldIsEmpty.storyName =
+  "with warning when modified field is empty";
 
 export const MissingItems = () => <StandardTable items={[]} config={config} />;
 
-MissingItems.story = {
-  name: "missing items"
-};
+MissingItems.storyName = "missing items";
 
 export const NavigationBetweenTables = () => {
   const config = createConfig(undefined, undefined, {
@@ -291,17 +276,13 @@ export const NavigationBetweenTables = () => {
   );
 };
 
-NavigationBetweenTables.story = {
-  name: "navigation between tables"
-};
+NavigationBetweenTables.storyName = "navigation between tables";
 
 export const Loading = () => (
   <StandardTable items={items} config={config} loading />
 );
 
-Loading.story = {
-  name: "loading"
-};
+Loading.storyName = "loading";
 
 export const _Error = () => (
   <StandardTable
@@ -311,9 +292,7 @@ export const _Error = () => (
   />
 );
 
-_Error.story = {
-  name: "error"
-};
+_Error.storyName = "error";
 
 export const ExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
@@ -328,9 +307,7 @@ export const ExpandableRows = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-ExpandableRows.story = {
-  name: "expandable rows"
-};
+ExpandableRows.storyName = "expandable rows";
 
 export const SomeExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
@@ -346,6 +323,4 @@ export const SomeExpandableRows = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-SomeExpandableRows.story = {
-  name: "some expandable rows"
-};
+SomeExpandableRows.storyName = "some expandable rows";

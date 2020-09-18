@@ -28,9 +28,7 @@ export const Standard = withState<DateRangeState>({
   </div>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
@@ -38,9 +36,7 @@ export const Empty = () => (
   </div>
 );
 
-Empty.story = {
-  name: "empty"
-};
+Empty.storyName = "empty";
 
 export const UsingPortal = withState<DateRangeState>({
   value: {
@@ -57,9 +53,7 @@ export const UsingPortal = withState<DateRangeState>({
   </div>
 ));
 
-UsingPortal.story = {
-  name: "using portal"
-};
+UsingPortal.storyName = "using portal";
 
 export const WithPreselectedValue = withState<DateRangeState>({
   value: {
@@ -75,9 +69,7 @@ export const WithPreselectedValue = withState<DateRangeState>({
   </div>
 ));
 
-WithPreselectedValue.story = {
-  name: "with preselected value"
-};
+WithPreselectedValue.storyName = "with preselected value";
 
 export const WithTodayHighlighted = withState<DateRangeState>({
   value: {
@@ -94,6 +86,4 @@ export const WithTodayHighlighted = withState<DateRangeState>({
   </div>
 ));
 
-WithTodayHighlighted.story = {
-  name: "with today highlighted"
-};
+WithTodayHighlighted.storyName = "with today highlighted";

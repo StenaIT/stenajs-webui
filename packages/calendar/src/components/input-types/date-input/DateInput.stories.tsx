@@ -27,9 +27,7 @@ export const Standard = withState<DateInputState>({
   </div>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const WithDisabledDateTomorrow = withState<DateInputState>({
   value: undefined
@@ -43,9 +41,7 @@ export const WithDisabledDateTomorrow = withState<DateInputState>({
   </div>
 ));
 
-WithDisabledDateTomorrow.story = {
-  name: "with disabled date tomorrow"
-};
+WithDisabledDateTomorrow.storyName = "with disabled date tomorrow";
 
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
@@ -53,9 +49,7 @@ export const Empty = () => (
   </div>
 );
 
-Empty.story = {
-  name: "empty"
-};
+Empty.storyName = "empty";
 
 export const UsingPortal = withState<DateInputState>({
   value: undefined
@@ -69,9 +63,7 @@ export const UsingPortal = withState<DateInputState>({
   </div>
 ));
 
-UsingPortal.story = {
-  name: "using portal"
-};
+UsingPortal.storyName = "using portal";
 
 export const CustomDateFormat = () => (
   <div style={{ display: "inline-block" }}>
@@ -79,9 +71,7 @@ export const CustomDateFormat = () => (
   </div>
 );
 
-CustomDateFormat.story = {
-  name: "custom date format"
-};
+CustomDateFormat.storyName = "custom date format";
 
 export const WithPreselectedValue = () => (
   <div style={{ display: "inline-block" }}>
@@ -89,9 +79,7 @@ export const WithPreselectedValue = () => (
   </div>
 );
 
-WithPreselectedValue.story = {
-  name: "with preselected value"
-};
+WithPreselectedValue.storyName = "with preselected value";
 
 export const WithBackgroundColor = () => (
   <div style={{ display: "inline-block" }}>
@@ -102,6 +90,4 @@ export const WithBackgroundColor = () => (
   </div>
 );
 
-WithBackgroundColor.story = {
-  name: "with background color"
-};
+WithBackgroundColor.storyName = "with background color";

@@ -19,6 +19,4 @@ export const Standard = withState<State>({
   />
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";

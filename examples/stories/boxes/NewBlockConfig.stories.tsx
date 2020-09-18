@@ -56,6 +56,4 @@ export const NewBlockConfig = () => (
   </div>
 );
 
-NewBlockConfig.story = {
-  name: "New block config"
-};
+NewBlockConfig.storyName = "New block config";

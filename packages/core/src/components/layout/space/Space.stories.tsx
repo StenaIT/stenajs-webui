@@ -13,9 +13,7 @@ export const Standard = () => (
   </Row>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Num2 = () => (
   <Row>
@@ -25,6 +23,4 @@ export const Num2 = () => (
   </Row>
 );
 
-Num2.story = {
-  name: "num=2"
-};
+Num2.storyName = "num=2";

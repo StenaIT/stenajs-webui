@@ -14,41 +14,29 @@ export default {
 
 export const Default = () => <Icon icon={faCog} />;
 
-Default.story = {
-  name: "default"
-};
+Default.storyName = "default";
 
 export const WithColor = () => <Icon icon={faCog} color={"#abcdef"} />;
 
-WithColor.story = {
-  name: "with color"
-};
+WithColor.storyName = "with color";
 
 export const WithHoverColor = () => (
   <Icon icon={faCog} color={"#abcdef"} hoverColor={"#efcdab"} />
 );
 
-WithHoverColor.story = {
-  name: "with hover color"
-};
+WithHoverColor.storyName = "with hover color";
 
 export const WithHoverIcon = () => <Icon icon={faCog} hoverIcon={faBicycle} />;
 
-WithHoverIcon.story = {
-  name: "with hover icon"
-};
+WithHoverIcon.storyName = "with hover icon";
 
 export const WithSpin = () => <Icon icon={faSpinner} spin={true} />;
 
-WithSpin.story = {
-  name: "with spin"
-};
+WithSpin.storyName = "with spin";
 
 export const WithPulse = () => <Icon icon={faSpinner} pulse={true} />;
 
-WithPulse.story = {
-  name: "with pulse"
-};
+WithPulse.storyName = "with pulse";
 
 export const HorizontalFlip = () => (
   <>
@@ -64,9 +52,7 @@ export const HorizontalFlip = () => (
   </>
 );
 
-HorizontalFlip.story = {
-  name: "horizontal flip"
-};
+HorizontalFlip.storyName = "horizontal flip";
 
 export const VerticalFlip = () => (
   <>
@@ -82,9 +68,7 @@ export const VerticalFlip = () => (
   </>
 );
 
-VerticalFlip.story = {
-  name: "vertical flip"
-};
+VerticalFlip.storyName = "vertical flip";
 
 export const WithRotation = () => (
   <Row>
@@ -104,14 +88,10 @@ export const WithRotation = () => (
   </Row>
 );
 
-WithRotation.story = {
-  name: "with rotation"
-};
+WithRotation.storyName = "with rotation";
 
 export const WithTransform = () => (
   <Icon icon={faBicycle} transform={{ flipX: true, rotate: 90 }} />
 );
 
-WithTransform.story = {
-  name: "with transform"
-};
+WithTransform.storyName = "with transform";

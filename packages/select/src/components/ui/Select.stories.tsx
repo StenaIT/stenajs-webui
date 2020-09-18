@@ -27,9 +27,7 @@ export const Standard = () => (
   </div>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Multiselect = () => (
   <div style={{ width: "400px" }}>
@@ -54,9 +52,7 @@ export const Multiselect = () => (
   </div>
 );
 
-Multiselect.story = {
-  name: "multiselect"
-};
+Multiselect.storyName = "multiselect";
 
 export const StandardDark = () => (
   <div style={{ width: "400px" }}>
@@ -86,9 +82,7 @@ export const StandardDark = () => (
   </div>
 );
 
-StandardDark.story = {
-  name: "standard dark"
-};
+StandardDark.storyName = "standard dark";
 
 export const WithGroupHeadings = () => (
   <div style={{ width: "400px" }}>
@@ -129,9 +123,7 @@ export const WithGroupHeadings = () => (
   </div>
 );
 
-WithGroupHeadings.story = {
-  name: "with group headings"
-};
+WithGroupHeadings.storyName = "with group headings";
 
 export const MultiselectDark = () => (
   <div style={{ width: "600px" }}>
@@ -162,9 +154,7 @@ export const MultiselectDark = () => (
   </div>
 );
 
-MultiselectDark.story = {
-  name: "multiselect dark"
-};
+MultiselectDark.storyName = "multiselect dark";
 
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
@@ -188,6 +178,4 @@ export const Disabled = () => (
   </div>
 );
 
-Disabled.story = {
-  name: "disabled"
-};
+Disabled.storyName = "disabled";

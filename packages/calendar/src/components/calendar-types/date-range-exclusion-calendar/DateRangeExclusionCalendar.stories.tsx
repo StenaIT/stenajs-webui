@@ -66,9 +66,7 @@ export const Standard = withState<State>({
   </>
 ));
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const TodayHighlighted = withState<State>({
   value: []
@@ -80,9 +78,7 @@ export const TodayHighlighted = withState<State>({
   />
 ));
 
-TodayHighlighted.story = {
-  name: "today highlighted"
-};
+TodayHighlighted.storyName = "today highlighted";
 
 export const WithDisabledDateTomorrow = withState<State>({
   value: []
@@ -94,9 +90,7 @@ export const WithDisabledDateTomorrow = withState<State>({
   />
 ));
 
-WithDisabledDateTomorrow.story = {
-  name: "with disabled date tomorrow"
-};
+WithDisabledDateTomorrow.storyName = "with disabled date tomorrow";
 
 export const WithDisabledAsDefault = withState<State>({
   value: []
@@ -109,9 +103,7 @@ export const WithDisabledAsDefault = withState<State>({
   />
 ));
 
-WithDisabledAsDefault.story = {
-  name: "with disabled as default"
-};
+WithDisabledAsDefault.storyName = "with disabled as default";
 
 export const WithMonthSwitcherBelow = withState<State>({
   value: []
@@ -123,9 +115,7 @@ export const WithMonthSwitcherBelow = withState<State>({
   />
 ));
 
-WithMonthSwitcherBelow.story = {
-  name: "with month switcher below"
-};
+WithMonthSwitcherBelow.storyName = "with month switcher below";
 
 export const WithMultipleMonths = withState<State>({
   value: []
@@ -137,9 +127,7 @@ export const WithMultipleMonths = withState<State>({
   />
 ));
 
-WithMultipleMonths.story = {
-  name: "with multiple months"
-};
+WithMultipleMonths.storyName = "with multiple months";
 
 export const WithMultipleRows = withState<State>({
   value: []
@@ -152,9 +140,7 @@ export const WithMultipleRows = withState<State>({
   />
 ));
 
-WithMultipleRows.story = {
-  name: "with multiple rows"
-};
+WithMultipleRows.storyName = "with multiple rows";
 
 export const WithCustomWeekContent = withState<State>({
   value: []
@@ -195,9 +181,7 @@ export const WithCustomWeekContent = withState<State>({
   );
 });
 
-WithCustomWeekContent.story = {
-  name: "with custom week content"
-};
+WithCustomWeekContent.storyName = "with custom week content";
 
 export const WithCustomContent = withState<State>({
   value: []
@@ -213,9 +197,7 @@ export const WithCustomContent = withState<State>({
   />
 ));
 
-WithCustomContent.story = {
-  name: "with custom content"
-};
+WithCustomContent.storyName = "with custom content";
 
 export const WithInstanceCustomTheme = withState<State>({
   value: []
@@ -234,6 +216,4 @@ export const WithInstanceCustomTheme = withState<State>({
   </Row>
 ));
 
-WithInstanceCustomTheme.story = {
-  name: "with instance custom theme"
-};
+WithInstanceCustomTheme.storyName = "with instance custom theme";

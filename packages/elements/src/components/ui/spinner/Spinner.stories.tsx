@@ -25,9 +25,7 @@ export const Standard = () => (
   </Column>
 );
 
-Standard.story = {
-  name: "standard"
-};
+Standard.storyName = "standard";
 
 export const Inverted = () => (
   <Box indent={4} spacing={4} background={"#777777"} display={"inline-block"}>
@@ -35,12 +33,8 @@ export const Inverted = () => (
   </Box>
 );
 
-Inverted.story = {
-  name: "inverted"
-};
+Inverted.storyName = "inverted";
 
 export const WithCustomColor = () => <Spinner color={color("Color", "red")} />;
 
-WithCustomColor.story = {
-  name: "with custom color"
-};
+WithCustomColor.storyName = "with custom color";

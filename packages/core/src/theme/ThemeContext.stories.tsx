@@ -82,9 +82,7 @@ export const StandardTheme = () => (
   </>
 );
 
-StandardTheme.story = {
-  name: "standard theme"
-};
+StandardTheme.storyName = "standard theme";
 
 export const CustomTheme = () => (
   <>
@@ -94,9 +92,7 @@ export const CustomTheme = () => (
   </>
 );
 
-CustomTheme.story = {
-  name: "custom theme"
-};
+CustomTheme.storyName = "custom theme";
 
 export const MergedCustomTheme = () => (
   <Column
@@ -114,6 +110,4 @@ export const MergedCustomTheme = () => (
   </Column>
 );
 
-MergedCustomTheme.story = {
-  name: "merged custom theme"
-};
+MergedCustomTheme.storyName = "merged custom theme";

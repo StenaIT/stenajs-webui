@@ -179,9 +179,7 @@ export const Variants = () => (
   </>
 );
 
-Variants.story = {
-  name: "variants"
-};
+Variants.storyName = "variants";
 
 export const WithGenericContentToRight = () => (
   <>
@@ -218,9 +216,7 @@ export const WithGenericContentToRight = () => (
   </>
 );
 
-WithGenericContentToRight.story = {
-  name: "with generic content to right"
-};
+WithGenericContentToRight.storyName = "with generic content to right";
 
 export const RenderedAsOtherElements = () => (
   <>
@@ -246,6 +242,4 @@ export const RenderedAsOtherElements = () => (
   </>
 );
 
-RenderedAsOtherElements.story = {
-  name: "rendered as other elements"
-};
+RenderedAsOtherElements.storyName = "rendered as other elements";
