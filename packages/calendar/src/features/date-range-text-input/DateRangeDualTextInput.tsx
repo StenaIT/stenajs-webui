@@ -1,5 +1,12 @@
 import * as React from "react";
-import { useCallback, useMemo, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { DateRangeDualTextField } from "./DateRangeDualTextField";
 import { Popover } from "@stenajs-webui/tooltip";
 import {
@@ -7,7 +14,13 @@ import {
   ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
 import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
-import { Column, StandardText } from "@stenajs-webui/core";
+import {
+  Box,
+  BoxProps,
+  Column,
+  StandardText,
+  useMultiOnClickOutside,
+} from "@stenajs-webui/core";
 import { DateRangeFocusedInput } from "../../components/calendar-types/date-range-calendar/DateRangeCalendar";
 import { DayData } from "../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
@@ -22,26 +35,94 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
   value,
   onValueChange,
 }) => {
-  const [leftText, setLeftText] = useState("");
-  const [rightText, setRightText] = useState("");
+  const [dateInFocus, setDateInFocus] = useState(
+    () => (focusedInput && value?.[focusedInput]) ?? new Date()
+  );
   const [modalMode, setModalMode] = useState<ModalMode | undefined>(undefined);
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
 
+  const popoverRef: BoxProps["innerRef"] = useRef(null);
+  const containerRef: BoxProps["innerRef"] = useRef(null);
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
   const endDateInputRef: TextInputProps["inputRef"] = useRef(null);
+
+  const inputLeftChangeHandler = useCallback(
+    (ev: ChangeEvent<HTMLInputElement>) => {
+      onValueChange?.({
+        startDate: ev.target.valueAsDate ?? undefined,
+        endDate: value?.endDate,
+      });
+    },
+    [onValueChange, value]
+  );
+
+  const inputRightChangeHandler = useCallback(
+    (ev: ChangeEvent<HTMLInputElement>) => {
+      onValueChange?.({
+        startDate: value?.startDate,
+        endDate: ev.target.valueAsDate ?? undefined,
+      });
+    },
+    [onValueChange, value]
+  );
+
+  useEffect(() => {
+    if (focusedInput) {
+      const selectedDate = value?.[focusedInput];
+      if (selectedDate) {
+        setDateInFocus(selectedDate);
+      }
+    }
+  }, [value, focusedInput]);
+
+  useEffect(() => {
+    console.log("value?.startDate CHANGED");
+
+    if (startDateInputRef.current && value?.startDate) {
+      console.log(
+        "startDateInputRef.current.valueAsDate",
+        startDateInputRef.current.valueAsDate
+      );
+      console.log("SET IT");
+      console.log("value?.startDate", value?.startDate);
+      startDateInputRef.current.valueAsDate = new Date(
+        Date.UTC(
+          value.startDate.getFullYear(),
+          value.startDate.getMonth(),
+          value.startDate.getDate()
+        )
+      );
+      console.log(
+        "startDateInputRef.current.valueAsDate AFTER",
+        startDateInputRef.current.valueAsDate
+      );
+    }
+  }, [value?.startDate]);
+
+  useEffect(() => {
+    console.log("value?.endDate CHANGED");
+
+    if (endDateInputRef.current && value?.endDate) {
+      endDateInputRef.current.valueAsDate = new Date(
+        Date.UTC(
+          value.endDate.getFullYear(),
+          value.endDate.getMonth(),
+          value.endDate.getDate()
+        )
+      );
+    }
+  }, [value?.endDate]);
 
   const showCalendarStartDate = useCallback(() => {
     setFocusedInput("startDate");
     setModalMode("calendar");
-    return true;
   }, [setFocusedInput, setModalMode]);
 
   const showCalendarEndDate = useCallback(() => {
     setFocusedInput("endDate");
     setModalMode("calendar");
-    return true;
   }, [setFocusedInput, setModalMode]);
 
   const hideCalendar = useCallback(() => {
@@ -50,12 +131,17 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
 
   const onClickDay = useCallback(
     (day: DayData) => {
+      console.log("---------------------");
+      console.log("onClickDay", value);
+
       if (focusedInput === "startDate") {
         onValueChange?.({
           startDate: day.date,
           endDate: value?.endDate,
         });
         if (!value || !value.endDate) {
+          console.log("Move to endDate", value, value?.endDate);
+
           setFocusedInput("endDate");
           endDateInputRef.current?.focus();
         } else {
@@ -67,6 +153,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
           endDate: day.date,
         });
         if (!value || value.startDate) {
+          console.log("Move to startDate", value, value?.startDate);
           setFocusedInput("startDate");
           startDateInputRef.current?.focus();
         } else {
@@ -91,52 +178,44 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
     [value]
   );
 
+  useMultiOnClickOutside([popoverRef, containerRef], hideCalendar);
+
   return (
-    <Popover
-      visible={!!modalMode}
-      content={
-        !!modalMode ? (
-          <Column>
-            {modalMode === "calendar" && (
-              <CalendarWithMonthSwitcher
-                startDateInFocus={
-                  focusedInput === "startDate" || focusedInput === "endDate"
-                    ? value?.[focusedInput]
-                    : undefined
-                }
-                statePerMonth={statePerMonth}
-                onClickDay={onClickDay}
-              />
-            )}
-            {modalMode === "presets" && (
-              <StandardText>Presets TODO</StandardText>
-            )}
-          </Column>
-        ) : null
-      }
-    >
-      <DateRangeDualTextField
-        valueLeft={leftText}
-        valueRight={rightText}
-        onValueChangeLeft={setLeftText}
-        onValueChangeRight={setRightText}
-        onClickArrowDown={() => setModalMode("presets")}
-        onClickCalendar={() => setModalMode("calendar")}
-        onBlurLeft={() => {
-          setFocusedInput("startDate");
-          setModalMode("calendar");
-        }}
-        onBlurRight={() => {
-          setFocusedInput("endDate");
-          setModalMode("calendar");
-        }}
-        onFocusLeft={showCalendarStartDate}
-        onFocusRight={showCalendarEndDate}
-        inputRefLeft={startDateInputRef}
-        inputRefRight={endDateInputRef}
-        variantLeft={startDateIsAfterEnd ? "error" : undefined}
-        variantRight={startDateIsAfterEnd ? "error" : undefined}
-      />
-    </Popover>
+    <Box innerRef={containerRef}>
+      <Popover
+        arrow={false}
+        visible={!!modalMode}
+        content={
+          !!modalMode ? (
+            <Column innerRef={popoverRef}>
+              {modalMode === "calendar" && (
+                <CalendarWithMonthSwitcher
+                  statePerMonth={statePerMonth}
+                  onClickDay={onClickDay}
+                  dateInFocus={dateInFocus}
+                  setDateInFocus={setDateInFocus}
+                />
+              )}
+              {modalMode === "presets" && (
+                <StandardText>Presets TODO</StandardText>
+              )}
+            </Column>
+          ) : null
+        }
+      >
+        <DateRangeDualTextField
+          onChangeLeft={inputLeftChangeHandler}
+          onChangeRight={inputRightChangeHandler}
+          onClickArrowDown={() => setModalMode("presets")}
+          onClickCalendar={() => setModalMode("calendar")}
+          onFocusLeft={showCalendarStartDate}
+          onFocusRight={showCalendarEndDate}
+          inputRefLeft={startDateInputRef}
+          inputRefRight={endDateInputRef}
+          variantLeft={startDateIsAfterEnd ? "error" : undefined}
+          variantRight={startDateIsAfterEnd ? "error" : undefined}
+        />
+      </Popover>
+    </Box>
   );
 };

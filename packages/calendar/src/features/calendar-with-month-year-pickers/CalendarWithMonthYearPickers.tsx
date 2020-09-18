@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { CalendarProps } from "../../types/CalendarTypes";
 import { Calendar } from "../../components/calendar/Calendar";
 import { Months } from "../../util/calendar/CalendarDataFactory";
@@ -8,18 +8,41 @@ import { YearPicker } from "../year-picker/YearPicker";
 import { Box } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 
-interface CalendarWithMonthYearPickersProps<T> extends CalendarProps<T> {}
+interface CalendarWithMonthYearPickersProps<T>
+  extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
+  dateInFocus: Date;
+  setDateInFocus: (dateInFocus: Date) => void;
+}
 
 type PopoverMode = "calendar" | "year" | "month";
 
 export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPickers<
   T
->(props: CalendarWithMonthYearPickersProps<T>) {
-  const [selectedMonth, setSelectedMonth] = useState<Months>(() =>
-    new Date().getMonth()
+>({
+  dateInFocus,
+  setDateInFocus,
+  ...props
+}: CalendarWithMonthYearPickersProps<T>) {
+  const onChangeSelectedMonth = useCallback(
+    (selectedMonth: Months) => {
+      const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
+      newDate.setMonth(selectedMonth);
+      if (setDateInFocus) {
+        setDateInFocus(newDate);
+      }
+    },
+    [dateInFocus, setDateInFocus]
   );
-  const [selectedYear, setSelectedYear] = useState<number>(() =>
-    new Date().getFullYear()
+
+  const onChangeSelectedYear = useCallback(
+    (selectedYear: number) => {
+      const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
+      newDate.setFullYear(selectedYear);
+      if (setDateInFocus) {
+        setDateInFocus(newDate);
+      }
+    },
+    [dateInFocus, setDateInFocus]
   );
 
   const [mode, setMode] = useState<PopoverMode>("calendar");
@@ -28,22 +51,22 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
     case "calendar":
       return (
         <>
-          <Calendar<T>
-            {...props}
-            month={selectedMonth}
-            year={selectedYear}
-            onClickMonth={() => setMode("month")}
-            onClickYear={() => setMode("year")}
-          />
+          <Calendar<T> {...props} date={dateInFocus} />
         </>
       );
     case "month":
       return (
-        <MonthPicker value={selectedMonth} onValueChange={setSelectedMonth} />
+        <MonthPicker
+          value={dateInFocus.getMonth()}
+          onValueChange={onChangeSelectedMonth}
+        />
       );
     case "year":
       return (
-        <YearPicker value={selectedYear} onValueChange={setSelectedYear} />
+        <YearPicker
+          value={dateInFocus.getFullYear()}
+          onValueChange={onChangeSelectedYear}
+        />
       );
     default:
       return (

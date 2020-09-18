@@ -59,6 +59,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   hideCalenderIcon = false,
   ...props
 }) => {
+  const [dateInFocus, setDateInFocus] = useState(() => new Date());
   const [open, setOpen] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
@@ -119,6 +120,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
             ? parse(value, dateFormat, new Date())
             : undefined
         }
+        dateInFocus={dateInFocus}
+        setDateInFocus={setDateInFocus}
         theme={calendarTheme}
       />
     </CalendarPopperContent>

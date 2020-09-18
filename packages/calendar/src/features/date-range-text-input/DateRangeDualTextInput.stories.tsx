@@ -17,7 +17,10 @@ export const TestarLite = withState<DateRangeState>({
   <div style={{ display: "inline-block" }}>
     <DateRangeDualTextInput
       value={store.state.value}
-      onValueChange={(value) => store.set({ value })}
+      onValueChange={(value) => {
+        console.log("onValueChange", value);
+        store.set({ value });
+      }}
     />
   </div>
 ));

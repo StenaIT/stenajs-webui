@@ -9,7 +9,7 @@ export default {
   title: "forms/TextInput/TextInput",
 };
 
-export const _TextInput = () => (
+export const Overview = () => (
   <Box width={"400px"}>
     <StandardText>Standard</StandardText>
     <TextInput value={knobs.text("Text", "Some nice text.")} />
@@ -77,27 +77,19 @@ export const _TextInput = () => (
   </Box>
 );
 
-_TextInput.storyName = "TextInput";
-
 export const Standard = () => (
   <Box width={"400px"}>
     <TextInput value={knobs.text("Text", "Some nice text.")} />
   </Box>
 );
 
-Standard.storyName = "standard";
-
 export const WithIconLeft = () => (
   <TextInput value={"some entered text"} iconLeft={faCoffee} />
 );
 
-WithIconLeft.storyName = "with icon left";
-
 export const WithIconRight = () => (
   <TextInput value={"some entered text"} iconRight={faPaw} />
 );
-
-WithIconRight.storyName = "with icon right";
 
 export const WithContentLeft = () => (
   <TextInput
@@ -106,16 +98,12 @@ export const WithContentLeft = () => (
   />
 );
 
-WithContentLeft.storyName = "with content left";
-
 export const WithContentRight = () => (
   <TextInput
     value={"some entered text"}
     contentRight={<StandardText>ms</StandardText>}
   />
 );
-
-WithContentRight.storyName = "with content right";
 
 export const WithContentAndNoContentPadding = () => (
   <TextInput
@@ -136,9 +124,6 @@ export const WithContentAndNoContentPadding = () => (
   />
 );
 
-WithContentAndNoContentPadding.storyName =
-  "with content and no content padding";
-
 export const WithContentAndNoContentPaddingRight = () => (
   <TextInput
     value={"some entered text"}
@@ -157,9 +142,6 @@ export const WithContentAndNoContentPaddingRight = () => (
     disableContentPaddingRight
   />
 );
-
-WithContentAndNoContentPaddingRight.storyName =
-  "with content and no content padding right";
 
 export const WithContentAndNoContentPaddingLeft = () => (
   <TextInput
@@ -180,18 +162,11 @@ export const WithContentAndNoContentPaddingLeft = () => (
   />
 );
 
-WithContentAndNoContentPaddingLeft.storyName =
-  "with content and no content padding left";
-
 export const Empty = () => <TextInput value={""} />;
-
-Empty.storyName = "empty";
 
 export const WithPlaceholder = () => (
   <TextInput value={""} placeholder={"Enter name"} />
 );
-
-WithPlaceholder.storyName = "with placeholder";
 
 export const WithCustomStyling = () => (
   <Box width={"400px"}>
@@ -201,8 +176,6 @@ export const WithCustomStyling = () => (
     />
   </Box>
 );
-
-WithCustomStyling.storyName = "with custom styling";
 
 export const WithSelectAllOnMount = () => (
   <Box width={"400px"}>
@@ -214,8 +187,6 @@ export const WithSelectAllOnMount = () => (
   </Box>
 );
 
-WithSelectAllOnMount.storyName = "with select all on mount";
-
 export const WithSelectAllOnFocus = () => (
   <Box width={"400px"}>
     <StandardText>All text is selected when field is focused.</StandardText>
@@ -224,15 +195,11 @@ export const WithSelectAllOnFocus = () => (
   </Box>
 );
 
-WithSelectAllOnFocus.storyName = "with select all on focus";
-
 export const Disabled = () => (
   <Box width={"400px"}>
     <TextInput value={""} placeholder={"Enter name"} disabled={true} />
   </Box>
 );
-
-Disabled.storyName = "disabled";
 
 export const DisabledWithContent = () => (
   <Box width={"400px"}>
@@ -245,4 +212,8 @@ export const DisabledWithContent = () => (
   </Box>
 );
 
-DisabledWithContent.storyName = "disabled with content";
+export const TypeDate = () => (
+  <Box width={"400px"}>
+    <TextInput type={"date"} />
+  </Box>
+);

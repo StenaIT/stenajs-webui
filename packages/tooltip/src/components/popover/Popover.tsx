@@ -28,6 +28,7 @@ const variantToTheme: Record<PopoverVariant, string> = {
 };
 
 export const Popover: React.FC<PopoverProps> = ({
+  visible,
   trigger = "mouseenter",
   children,
   tippyRef,
@@ -39,9 +40,11 @@ export const Popover: React.FC<PopoverProps> = ({
   <TippyComponent
     interactive
     className={tippyStyles.noPadding}
-    trigger={trigger}
+    trigger={visible ? undefined : trigger}
+    visible={visible}
     theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
     delay={0}
+    maxWidth={"500px"}
     content={
       <Box spacing={!disablePadding && 1} indent={!disablePadding && 1}>
         {content}

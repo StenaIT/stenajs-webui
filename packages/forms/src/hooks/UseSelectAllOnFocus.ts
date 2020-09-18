@@ -1,12 +1,24 @@
-import { FocusEventHandler, RefObject } from "react";
+import { FocusEventHandler, RefObject, useCallback } from "react";
 
 export const useSelectAllOnFocus = (
   ref: RefObject<HTMLInputElement>,
   onFocus?: FocusEventHandler<HTMLInputElement>,
   enabled?: boolean
 ) => {
-  const onFocusHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
-    if (ref.current && ref.current.type !== "number") {
+  const onFocusHandler: FocusEventHandler<HTMLInputElement> = useCallback(
+    (ev) => {
+      if (onFocus) {
+        onFocus(ev);
+      }
+
+      if (!ref.current) {
+        return;
+      }
+
+      if (ref.current?.type === "number" || ref.current?.type === "date") {
+        return;
+      }
+
       if (enabled) {
         ref.current!.setSelectionRange(0, ref.current!.value.length);
       } else {
@@ -15,11 +27,9 @@ export const useSelectAllOnFocus = (
           ref.current!.value.length
         );
       }
-    }
-    if (onFocus) {
-      onFocus(ev);
-    }
-  };
+    },
+    [ref, onFocus, enabled]
+  );
 
   return {
     onFocusHandler,

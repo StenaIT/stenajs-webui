@@ -132,6 +132,10 @@
       &:focus {
         outline: none;
       }
+
+      &::-webkit-calendar-picker-indicator{
+        display: none;
+      }
     }
   }
 

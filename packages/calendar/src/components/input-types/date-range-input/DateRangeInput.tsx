@@ -3,7 +3,7 @@ import { Box, Row, Space, useMultiOnClickOutside } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import * as ReactDOM from "react-dom";
 import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
@@ -95,6 +95,10 @@ export const DateRangeInput = <T extends {}>({
   calendarTheme = defaultCalendarTheme,
   calendarProps,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
+  const [dateInFocus, setDateInFocus] = useState(
+    () => (focusedInput && value[focusedInput]) ?? new Date()
+  );
+
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
   const {
@@ -126,11 +130,8 @@ export const DateRangeInput = <T extends {}>({
     >
       <CalendarWithMonthSwitcher
         {...calendarProps}
-        startDateInFocus={
-          focusedInput === "startDate" || focusedInput === "endDate"
-            ? value[focusedInput]
-            : undefined
-        }
+        dateInFocus={dateInFocus}
+        setDateInFocus={setDateInFocus}
         statePerMonth={statePerMonth}
         theme={calendarTheme}
         onClickDay={onClickDay}

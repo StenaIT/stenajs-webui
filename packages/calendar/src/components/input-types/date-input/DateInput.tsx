@@ -3,7 +3,7 @@ import { Box, useMultiOnClickOutside } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import * as ReactDOM from "react-dom";
 import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
@@ -72,6 +72,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   portalTarget,
   width = "125px",
 }) => {
+  const [dateInFocus, setDateInFocus] = useState(() => new Date());
   const {
     hideCalendar,
     showingCalendar,
@@ -94,6 +95,8 @@ export const DateInput: React.FC<DateInputProps> = ({
     >
       <SingleDateCalendar
         {...calendarProps}
+        dateInFocus={dateInFocus}
+        setDateInFocus={setDateInFocus}
         onChange={onSelectDate}
         value={value}
         theme={calendarTheme}

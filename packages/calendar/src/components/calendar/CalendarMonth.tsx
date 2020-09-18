@@ -1,6 +1,7 @@
 import {
   Box,
   Row,
+  SmallText,
   Space,
   StandardText,
   useThemeFields,
@@ -20,18 +21,18 @@ import {
   MonthData,
   WeekData,
 } from "../../util/calendar/CalendarDataFactory";
-
-import { CalendarTheme } from "./CalendarTheme";
+import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
 import { CalendarWeek } from "./CalendarWeek";
 import { WeekDayCell } from "./renderers/WeekDayCell";
+import { CalendarDay } from "./renderers/CalendarDay";
 import { FlatButton } from "@stenajs-webui/elements";
 
 export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
   month: MonthData;
-  dayComponent: React.ComponentType<CalendarDayProps<T>>;
+  dayComponent?: React.ComponentType<CalendarDayProps<T>>;
   userDataPerWeek?: CalendarUserMonthData<T>;
   statePerWeek?: CalendarUserMonthData<DayState>;
-  theme: CalendarTheme;
+  theme?: CalendarTheme;
   headerLeftContent?: React.ReactElement<{}>;
   headerRightContent?: React.ReactElement<{}>;
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
@@ -40,7 +41,7 @@ export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
 
 export function CalendarMonth<T>({
   month,
-  dayComponent,
+  dayComponent = CalendarDay,
   statePerWeek,
   userDataPerWeek,
   onClickDay,
@@ -52,7 +53,7 @@ export function CalendarMonth<T>({
   renderWeekDay,
   headerLeftContent,
   headerRightContent,
-  theme,
+  theme = defaultCalendarTheme,
   extraDayContent,
   defaultHighlights,
 }: CalendarMonthProps<T>) {
@@ -77,38 +78,39 @@ export function CalendarMonth<T>({
 
   return (
     <>
-      <Box alignItems={"center"}>
+      <Box alignItems={"stretch"}>
+        <Row
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          height={"32px"}
+        >
+          <Box alignItems={"center"}>{headerLeftContent}</Box>
+
+          <Row alignItems={"center"}>
+            {onClickMonth ? (
+              <FlatButton
+                onClick={() => onClickMonth(month)}
+                label={month.name}
+              />
+            ) : (
+              <StandardText>{month.name}</StandardText>
+            )}
+            <Space />
+            {onClickYear ? (
+              <FlatButton
+                onClick={() => onClickYear(month.year)}
+                label={String(month.year)}
+              />
+            ) : (
+              <StandardText>{month.year}</StandardText>
+            )}
+          </Row>
+
+          <Box alignItems={"center"}>{headerRightContent}</Box>
+        </Row>
+
         <table style={tableStyle}>
           <tbody>
-            <tr>
-              <td style={{ maxWidth: theme.width }}>
-                <Box justifyContent={"center"} alignItems={"center"}>
-                  {headerLeftContent}
-                </Box>
-              </td>
-              <td colSpan={showWeekNumber ? 6 : 5}>
-                <Row justifyContent={"center"} alignItems={"center"}>
-                  <FlatButton
-                    onClick={
-                      onClickMonth ? () => onClickMonth(month) : undefined
-                    }
-                    label={month.name}
-                  />
-                  <Space />
-                  <FlatButton
-                    onClick={
-                      onClickYear ? () => onClickYear(month.year) : undefined
-                    }
-                    label={String(month.year)}
-                  />
-                </Row>
-              </td>
-              <td style={{ maxWidth: theme.width }}>
-                <Box justifyContent={"center"} alignItems={"center"}>
-                  {headerRightContent}
-                </Box>
-              </td>
-            </tr>
             <tr>
               {showWeekNumber && (
                 <td>
@@ -118,9 +120,7 @@ export function CalendarMonth<T>({
                     justifyContent={"center"}
                     alignItems={"center"}
                   >
-                    <StandardText color={colors.weekDayTextColor}>
-                      W
-                    </StandardText>
+                    <SmallText color={colors.weekDayTextColor}>W</SmallText>
                   </Box>
                 </td>
               )}
