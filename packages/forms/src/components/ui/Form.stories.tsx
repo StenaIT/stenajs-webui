@@ -19,9 +19,12 @@ import {
   GroupedMultiSelect,
   Select
 } from "@stenajs-webui/select";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
+
+export default {
+  title: "forms"
+};
 
 interface State {
   checkbox: boolean;
@@ -413,15 +416,12 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-storiesOf("forms/", module).add(
-  "Overview",
-  withState<State>({
-    checkbox: false,
-    input: "",
-    numericInput: "",
-    radio: false,
-    select: undefined,
-    groupedMultiSelect: undefined,
-    switch: false
-  })(({ store }: { store: Store<State> }) => <FormOverview store={store} />)
-);
+export const Overview = withState<State>({
+  checkbox: false,
+  input: "",
+  numericInput: "",
+  radio: false,
+  select: undefined,
+  groupedMultiSelect: undefined,
+  switch: false
+})(({ store }: { store: Store<State> }) => <FormOverview store={store} />);

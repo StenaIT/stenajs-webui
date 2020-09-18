@@ -10,95 +10,126 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon } from "@stenajs-webui/elements";
 import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("tooltip/Popover", module)
-  .add("standard", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover content={<ActionPrompt />}>
-        <FlatButton leftIcon={faTrash} />
-      </Popover>
-    </Box>
-  ))
-  .add("on click", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover content={<ActionPrompt />} trigger={"click"}>
-        <FlatButton leftIcon={faTrash} />
-      </Popover>
-    </Box>
-  ))
-  .add("no arrow", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
-        <FlatButton leftIcon={faTrash} />
-      </Popover>
-    </Box>
-  ))
-  .add("no padding", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover
-        disablePadding
-        content={
-          <Column>
-            <Indent spacing>
-              <StandardText>The line has</StandardText>
-            </Indent>
-            <SeparatorLine />
-            <Indent spacing>
-              <StandardText>no padding</StandardText>
-            </Indent>
-          </Column>
-        }
-        trigger={"click"}
-      >
-        <FlatButton leftIcon={faTrash} />
-      </Popover>
-    </Box>
-  ))
-  .add("variants", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover content={<ActionPrompt />} trigger={"click"}>
-        <FlatButton label={"standard"} />
-      </Popover>
+export default {
+  title: "tooltip/Popover"
+};
 
-      <Spacing />
+export const Standard = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<ActionPrompt />}>
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);
 
-      <Popover content={<ActionPrompt />} trigger={"click"} variant={"info"}>
-        <FlatButton label={"info"} />
-      </Popover>
+Standard.story = {
+  name: "standard"
+};
 
-      <Spacing />
+export const OnClick = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<ActionPrompt />} trigger={"click"}>
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);
 
-      <Popover
-        content={<StandardText>Some warning.</StandardText>}
-        variant={"warning"}
-        trigger={"click"}
-      >
-        <FlatButton label={"warning"} />
-      </Popover>
+OnClick.story = {
+  name: "on click"
+};
 
-      <Spacing />
+export const NoArrow = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);
 
-      <Popover
-        content={
-          <Row>
-            <Icon icon={faTrash} />
-            <Indent />
-            <StandardText>Something went wrong.</StandardText>
-          </Row>
-        }
-        trigger={"click"}
-        variant={"error"}
-      >
-        <FlatButton label={"error"} />
-      </Popover>
-    </Box>
-  ))
-  .add("control open", () => (
-    <Box indent={5} spacing={5} display={"inline-block"}>
-      <Popover content={<ActionPrompt />} visible>
-        <FlatButton leftIcon={faTrash} />
-      </Popover>
-    </Box>
-  ));
+NoArrow.story = {
+  name: "no arrow"
+};
+
+export const NoPadding = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover
+      disablePadding
+      content={
+        <Column>
+          <Indent spacing>
+            <StandardText>The line has</StandardText>
+          </Indent>
+          <SeparatorLine />
+          <Indent spacing>
+            <StandardText>no padding</StandardText>
+          </Indent>
+        </Column>
+      }
+      trigger={"click"}
+    >
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);
+
+NoPadding.story = {
+  name: "no padding"
+};
+
+export const Variants = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<ActionPrompt />} trigger={"click"}>
+      <FlatButton label={"standard"} />
+    </Popover>
+
+    <Spacing />
+
+    <Popover content={<ActionPrompt />} trigger={"click"} variant={"info"}>
+      <FlatButton label={"info"} />
+    </Popover>
+
+    <Spacing />
+
+    <Popover
+      content={<StandardText>Some warning.</StandardText>}
+      variant={"warning"}
+      trigger={"click"}
+    >
+      <FlatButton label={"warning"} />
+    </Popover>
+
+    <Spacing />
+
+    <Popover
+      content={
+        <Row>
+          <Icon icon={faTrash} />
+          <Indent />
+          <StandardText>Something went wrong.</StandardText>
+        </Row>
+      }
+      trigger={"click"}
+      variant={"error"}
+    >
+      <FlatButton label={"error"} />
+    </Popover>
+  </Box>
+);
+
+Variants.story = {
+  name: "variants"
+};
+
+export const ControlOpen = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<ActionPrompt />} visible>
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);
+
+ControlOpen.story = {
+  name: "control open"
+};

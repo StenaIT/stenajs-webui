@@ -7,9 +7,8 @@ import {
   Space,
   StandardText
 } from "@stenajs-webui/core";
-import { Checkbox, CheckboxWithLabel } from "@stenajs-webui/forms";
+import { Checkbox } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
@@ -110,67 +109,47 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-storiesOf("forms/Checkbox", module)
-  .add(
-    "Overview",
-    withState<State>({
-      checked: true
-    })(({ store }: { store: Store<State> }) => (
-      <CheckboxOverview store={store} />
-    ))
-  )
-  .add(
-    "standard",
-    withState<State>({
-      checked: true
-    })(({ store }: { store: Store<State> }) => (
-      <Checkbox
-        value={store.state.checked}
-        onValueChange={checked => store.set({ checked })}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    ))
-  )
-  .add(
-    "small",
-    withState<State>({
-      checked: true
-    })(({ store }: { store: Store<State> }) => (
-      <Checkbox
-        size={"small"}
-        value={store.state.checked}
-        onValueChange={checked => store.set({ checked })}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    ))
-  )
-  .add("indeterminate", () => (
-    <Column>
-      <Checkbox indeterminate />
-      <Space />
-      <Checkbox indeterminate disabled />
-    </Column>
-  ));
+export default {
+  title: "forms/Checkbox"
+};
 
-storiesOf("forms/Checkbox/CheckboxWithLabel", module)
-  .add(
-    "standard",
-    withState<State>({
-      checked: true
-    })(({ store }: { store: Store<State> }) => (
-      <CheckboxWithLabel
-        label={"Add cake"}
-        value={store.state.checked}
-        onValueChange={checked => store.set({ checked })}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    ))
-  )
-  .add("disabled", () => (
-    <Checkbox
-      label={"Add cake"}
-      value={knobs.boolean("Checked", false)}
-      indeterminate={knobs.boolean("Indeterminate", false)}
-      disabled
-    />
-  ));
+export const Overview = withState<State>({
+  checked: true
+})(({ store }: { store: Store<State> }) => <CheckboxOverview store={store} />);
+
+export const Standard = withState<State>({
+  checked: true
+})(({ store }: { store: Store<State> }) => (
+  <Checkbox
+    value={store.state.checked}
+    onValueChange={checked => store.set({ checked })}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+));
+
+export const Small = withState<State>({
+  checked: true
+})(({ store }: { store: Store<State> }) => (
+  <Checkbox
+    size={"small"}
+    value={store.state.checked}
+    onValueChange={checked => store.set({ checked })}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+));
+
+export const Indeterminate = () => (
+  <Column>
+    <Checkbox indeterminate />
+    <Space />
+    <Checkbox indeterminate disabled />
+  </Column>
+);
+
+export const Disabled = () => (
+  <Checkbox
+    value={knobs.boolean("Checked", false)}
+    indeterminate={knobs.boolean("Indeterminate", false)}
+    disabled
+  />
+);

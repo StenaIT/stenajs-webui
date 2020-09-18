@@ -1,7 +1,12 @@
 import * as React from "react";
-import { storiesOf } from "@storybook/react";
 import { DateRangeDualTextField } from "@stenajs-webui/calendar";
 
-storiesOf("forms/TextInput/TextInputBox", module).add("standard", () => (
-  <DateRangeDualTextField />
-));
+export default {
+  title: "forms/TextInput/TextInputBox"
+};
+
+export const Standard = () => <DateRangeDualTextField />;
+
+Standard.story = {
+  name: "standard"
+};

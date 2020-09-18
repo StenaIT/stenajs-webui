@@ -8,11 +8,14 @@ import {
   Spacing,
   StandardText
 } from "@stenajs-webui/core";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { PrimaryButton } from "@stenajs-webui/elements";
 
-storiesOf("examples/Tables", module).add("Simple table", () => {
+export default {
+  title: "examples/Tables"
+};
+
+export const SimpleTable = () => {
   const list = ["Donald Duck", "Daisy", "Howard the duck", "A duck"];
 
   const tdStyle = {
@@ -105,4 +108,8 @@ storiesOf("examples/Tables", module).add("Simple table", () => {
       </Box>
     </div>
   );
-});
+};
+
+SimpleTable.story = {
+  name: "Simple table"
+};

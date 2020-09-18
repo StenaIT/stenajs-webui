@@ -8,10 +8,13 @@ import {
   Spacing,
   StandardText
 } from "@stenajs-webui/core";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("examples/Boxes", module).add("Event list card", () => {
+export default {
+  title: "examples/Boxes"
+};
+
+export const EventListCard = () => {
   const list = ["Today", "Yesterday"];
 
   return (
@@ -70,4 +73,8 @@ storiesOf("examples/Boxes", module).add("Event list card", () => {
       </Box>
     </div>
   );
-});
+};
+
+EventListCard.story = {
+  name: "Event list card"
+};

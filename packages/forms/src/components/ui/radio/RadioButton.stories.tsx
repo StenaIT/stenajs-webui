@@ -9,7 +9,6 @@ import {
 } from "@stenajs-webui/core";
 import { RadioButton, RadioButtonWithLabel } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
@@ -148,62 +147,51 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-storiesOf("forms/RadioButton", module)
-  .add(
-    "Overview",
-    withState<State>({
-      checked: true,
-      selectedSmall: "",
-      selected: ""
-    })(({ store }: { store: Store<State> }) => (
-      <RadioButtonOverview store={store} />
-    ))
-  )
-  .add("standard", () => (
+export default {
+  title: "forms/RadioButton"
+};
+
+export const Overview = withState<State>({
+  checked: true,
+  selectedSmall: "",
+  selected: ""
+})(({ store }: { store: Store<State> }) => (
+  <RadioButtonOverview store={store} />
+));
+
+export const Standard = () => (
+  <RadioButton
+    checked={knobs.boolean("Checked", false)}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+);
+
+export const CustomActionColorOnMultiple = () => (
+  <Column style={{ "--swui-color-primary-action": "#41ae33" } as any}>
+    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+    <Space />
+    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+    <Space />
+    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+  </Column>
+);
+
+CustomActionColorOnMultiple.story = {
+  name: "custom action color on multiple"
+};
+
+export const CustomCheckedBgColorOnSingle = () => (
+  <Column>
     <RadioButton
-      checked={knobs.boolean("Checked", false)}
+      name={"testing"}
+      style={{ "--swui-radiobutton-checked-bg-color": "#41ae33" } as any}
       disabled={knobs.boolean("Disabled", false)}
     />
-  ))
-  .add("custom action color on multiple", () => (
-    <Column style={{ "--swui-color-primary-action": "#41ae33" } as any}>
-      <RadioButton
-        name={"testing"}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-      <Space />
-      <RadioButton
-        name={"testing"}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-      <Space />
-      <RadioButton
-        name={"testing"}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    </Column>
-  ))
-  .add("custom checked bg color on single", () => (
-    <Column>
-      <RadioButton
-        name={"testing"}
-        style={{ "--swui-radiobutton-checked-bg-color": "#41ae33" } as any}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-      <Space />
-      <RadioButton
-        name={"testing"}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    </Column>
-  ));
-
-storiesOf("forms/RadioButton/RadioButtonWithLabel", module).add(
-  "standard",
-  () => (
-    <RadioButtonWithLabel
-      label={"Add cake"}
-      checked={knobs.boolean("Checked", false)}
-    />
-  )
+    <Space />
+    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+  </Column>
 );
+
+CustomCheckedBgColorOnSingle.story = {
+  name: "custom checked bg color on single"
+};

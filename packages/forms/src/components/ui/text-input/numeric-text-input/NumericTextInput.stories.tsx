@@ -6,7 +6,6 @@ import {
   NumericTextInput,
   useNumericInputValue
 } from "@stenajs-webui/forms";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import markdown from "./NumericTextInput.md";
 
@@ -26,115 +25,131 @@ const NumericInput: React.FC<NumericInputValueProps> = ({
   return <NumericTextInput {...numericProps} />;
 };
 
-storiesOf("forms/TextInput/NumericTextInput", module)
-  .add(
-    "standard",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericTextInput
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-          className={"the-super-class"}
-        />
-        <StandardText>String value: {store.state.value}</StandardText>
-      </div>
-    )),
-    { notes: { markdown } }
-  )
-  .add(
-    "with number data type",
-    withState<StateNumber>({
-      value: 5
-    })(({ store }: { store: Store<StateNumber> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericInput
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-        />
-        <StandardText>Number value: {store.state.value}</StandardText>
-      </div>
-    ))
-  )
-  .add(
-    "disabled",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericTextInput
-          disabled
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-        />
-      </div>
-    ))
-  )
-  .add(
-    "hidden buttons",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericTextInput
-          hideButtons
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-        />
-      </div>
-    ))
-  )
-  .add(
-    "with left icon",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericTextInput
-          iconLeft={faCoffee}
-          value={store.state.value}
-          min={1}
-          max={8}
-          onValueChange={value => store.set({ value })}
-        />
-      </div>
-    ))
-  )
-  .add(
-    "with content right",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <NumericTextInput
-          value={store.state.value}
-          min={1}
-          max={8}
-          contentRight={
-            <div style={{ color: "grey" }}>
-              <StandardText>sec</StandardText>
-            </div>
-          }
-          onValueChange={value => store.set({ value })}
-        />
-      </div>
-    ))
-  )
-  .add(
-    "with min and max",
-    withState<State>({
-      value: "5"
-    })(({ store }: { store: Store<State> }) => (
-      <div style={{ display: "inline-block" }}>
-        <StandardText>Minimum 3, maximum 8</StandardText>
-        <Space />
-        <NumericTextInput
-          min={3}
-          max={8}
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-        />
-      </div>
-    ))
-  );
+export default {
+  title: "forms/TextInput/NumericTextInput"
+};
+
+export const Standard = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericTextInput
+      value={store.state.value}
+      onValueChange={value => store.set({ value })}
+      className={"the-super-class"}
+    />
+    <StandardText>String value: {store.state.value}</StandardText>
+  </div>
+));
+
+Standard.story = {
+  name: "standard",
+  parameters: { notes: { markdown } }
+};
+
+export const WithNumberDataType = withState<StateNumber>({
+  value: 5
+})(({ store }: { store: Store<StateNumber> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericInput
+      value={store.state.value}
+      onValueChange={value => store.set({ value })}
+    />
+    <StandardText>Number value: {store.state.value}</StandardText>
+  </div>
+));
+
+WithNumberDataType.story = {
+  name: "with number data type"
+};
+
+export const Disabled = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericTextInput
+      disabled
+      value={store.state.value}
+      onValueChange={value => store.set({ value })}
+    />
+  </div>
+));
+
+Disabled.story = {
+  name: "disabled"
+};
+
+export const HiddenButtons = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericTextInput
+      hideButtons
+      value={store.state.value}
+      onValueChange={value => store.set({ value })}
+    />
+  </div>
+));
+
+HiddenButtons.story = {
+  name: "hidden buttons"
+};
+
+export const WithLeftIcon = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericTextInput
+      iconLeft={faCoffee}
+      value={store.state.value}
+      min={1}
+      max={8}
+      onValueChange={value => store.set({ value })}
+    />
+  </div>
+));
+
+WithLeftIcon.story = {
+  name: "with left icon"
+};
+
+export const WithContentRight = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <NumericTextInput
+      value={store.state.value}
+      min={1}
+      max={8}
+      contentRight={
+        <div style={{ color: "grey" }}>
+          <StandardText>sec</StandardText>
+        </div>
+      }
+      onValueChange={value => store.set({ value })}
+    />
+  </div>
+));
+
+WithContentRight.story = {
+  name: "with content right"
+};
+
+export const WithMinAndMax = withState<State>({
+  value: "5"
+})(({ store }: { store: Store<State> }) => (
+  <div style={{ display: "inline-block" }}>
+    <StandardText>Minimum 3, maximum 8</StandardText>
+    <Space />
+    <NumericTextInput
+      min={3}
+      max={8}
+      value={store.state.value}
+      onValueChange={value => store.set({ value })}
+    />
+  </div>
+));
+
+WithMinAndMax.story = {
+  name: "with min and max"
+};

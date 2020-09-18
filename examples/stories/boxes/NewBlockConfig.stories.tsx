@@ -11,10 +11,13 @@ import {
 import { PrimaryButton } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
 import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("examples/Boxes", module).add("New block config", () => (
+export default {
+  title: "examples/Boxes"
+};
+
+export const NewBlockConfig = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"box"} background={"white"} display={"inline-block"}>
       <Spacing num={2}>
@@ -51,4 +54,8 @@ storiesOf("examples/Boxes", module).add("New block config", () => (
       </Spacing>
     </Box>
   </div>
-));
+);
+
+NewBlockConfig.story = {
+  name: "New block config"
+};

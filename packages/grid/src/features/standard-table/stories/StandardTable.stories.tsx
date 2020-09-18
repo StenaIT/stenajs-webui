@@ -7,7 +7,6 @@ import {
   StandardTableCellRenderer,
   StandardTableConfig
 } from "@stenajs-webui/grid";
-import { storiesOf } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { Box, Column, Spacing, StandardText } from "@stenajs-webui/core";
@@ -123,174 +122,230 @@ const createOnChangeNumPassengers = (
   });
 };
 
-storiesOf("grid/StandardTable", module)
-  .add(
-    "standard",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createStandardEditableTextCell()
-      );
-      return <StandardTable items={store.state.items} config={config} />;
-    })
-  )
-  .add(
-    "with sorting disabled",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createStandardEditableTextCell(),
-        { disableSorting: true }
-      );
-      return <StandardTable items={store.state.items} config={config} />;
-    })
-  )
-  .add(
-    "with sorting disabled and sort by name",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createStandardEditableTextCell(),
-        { disableSorting: true, initialSortOrder: "name" }
-      );
-      return <StandardTable items={store.state.items} config={config} />;
-    })
-  )
-  .add(
-    "with sorting enabled and sort by name desc",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createStandardEditableTextCell(),
-        {
-          initialSortOrder: "name",
-          initialSortOrderDesc: true
-        }
-      );
-      return <StandardTable items={store.state.items} config={config} />;
-    })
-  )
-  .add(
-    "with field error",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createEditableTextCellWithStatus<number | undefined, ListItem>(
-          undefined,
-          item => ({
-            hasError: true,
-            errorMessage: "Something failed.",
-            id: item.id
-          })
-        )
-      );
-      return <StandardTable items={items} config={config} />;
-    })
-  )
-  .add(
-    "with field loading",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createEditableTextCellWithStatus<number | undefined, ListItem>(
-          undefined,
-          item => ({
-            id: item.id,
-            loading: true
-          })
-        )
-      );
-      return <StandardTable items={items} config={config} />;
-    })
-  )
-  .add(
-    "with modified fields",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createEditableTextCellWithStatus<number | undefined, ListItem>(
-          "Passengers cannot be empty.",
-          () => undefined,
-          item => ({
-            id: item.id,
-            modified: true,
-            newValue: "789"
-          })
-        )
-      );
-      return <StandardTable items={items} config={config} />;
-    })
-  )
-  .add(
-    "with warning when modified field is empty",
-    withState({ items })(({ store }) => {
-      const config = createConfig(
-        createOnChangeNumPassengers(store),
-        createEditableTextCellWithStatus<number | undefined, ListItem>(
-          "Passengers cannot be empty.",
-          () => undefined,
-          item => ({
-            id: item.id,
-            modified: true,
-            newValue: ""
-          })
-        )
-      );
-      return <StandardTable items={items} config={config} />;
-    })
-  )
-  .add("missing items", () => <StandardTable items={[]} config={config} />)
-  .add("navigation between tables", () => {
-    const config = createConfig(undefined, undefined, {
-      gridCellOptions: {
-        edgeMode: "unlimited"
-      }
-    });
+export default {
+  title: "grid/StandardTable"
+};
 
-    return (
-      <Column>
-        <StandardTable items={items} config={config} tableId={"table123"} />
-        <Spacing />
-        <StandardTable
-          items={items}
-          config={config}
-          tableId={"table123"}
-          rowIndexOffset={items.length}
-        />
-        7
-      </Column>
+export const Standard = withState({ items })(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createStandardEditableTextCell()
+  );
+  return <StandardTable items={store.state.items} config={config} />;
+});
+
+Standard.story = {
+  name: "standard"
+};
+
+export const WithSortingDisabled = withState({ items })(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createStandardEditableTextCell(),
+    { disableSorting: true }
+  );
+  return <StandardTable items={store.state.items} config={config} />;
+});
+
+WithSortingDisabled.story = {
+  name: "with sorting disabled"
+};
+
+export const WithSortingDisabledAndSortByName = withState({ items })(
+  ({ store }) => {
+    const config = createConfig(
+      createOnChangeNumPassengers(store),
+      createStandardEditableTextCell(),
+      { disableSorting: true, initialSortOrder: "name" }
     );
-  })
-  .add("loading", () => <StandardTable items={items} config={config} loading />)
-  .add("error", () => (
-    <StandardTable
-      items={items}
-      config={config}
-      error={new Error("Could not fetch users")}
-    />
-  ))
-  .add("expandable rows", () => {
-    const config = createConfig(undefined, undefined, {
-      enableExpandCollapse: true,
-      showHeaderExpandCollapse: true,
-      renderRowExpansion: item => (
-        <Box spacing indent>
-          <StandardText>Name: {item.name}</StandardText>
-        </Box>
+    return <StandardTable items={store.state.items} config={config} />;
+  }
+);
+
+WithSortingDisabledAndSortByName.story = {
+  name: "with sorting disabled and sort by name"
+};
+
+export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
+  ({ store }) => {
+    const config = createConfig(
+      createOnChangeNumPassengers(store),
+      createStandardEditableTextCell(),
+      {
+        initialSortOrder: "name",
+        initialSortOrderDesc: true
+      }
+    );
+    return <StandardTable items={store.state.items} config={config} />;
+  }
+);
+
+WithSortingEnabledAndSortByNameDesc.story = {
+  name: "with sorting enabled and sort by name desc"
+};
+
+export const WithFieldError = withState({ items })(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createEditableTextCellWithStatus<number | undefined, ListItem>(
+      undefined,
+      item => ({
+        hasError: true,
+        errorMessage: "Something failed.",
+        id: item.id
+      })
+    )
+  );
+  return <StandardTable items={items} config={config} />;
+});
+
+WithFieldError.story = {
+  name: "with field error"
+};
+
+export const WithFieldLoading = withState({ items })(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createEditableTextCellWithStatus<number | undefined, ListItem>(
+      undefined,
+      item => ({
+        id: item.id,
+        loading: true
+      })
+    )
+  );
+  return <StandardTable items={items} config={config} />;
+});
+
+WithFieldLoading.story = {
+  name: "with field loading"
+};
+
+export const WithModifiedFields = withState({ items })(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createEditableTextCellWithStatus<number | undefined, ListItem>(
+      "Passengers cannot be empty.",
+      () => undefined,
+      item => ({
+        id: item.id,
+        modified: true,
+        newValue: "789"
+      })
+    )
+  );
+  return <StandardTable items={items} config={config} />;
+});
+
+WithModifiedFields.story = {
+  name: "with modified fields"
+};
+
+export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
+  ({ store }) => {
+    const config = createConfig(
+      createOnChangeNumPassengers(store),
+      createEditableTextCellWithStatus<number | undefined, ListItem>(
+        "Passengers cannot be empty.",
+        () => undefined,
+        item => ({
+          id: item.id,
+          modified: true,
+          newValue: ""
+        })
       )
-    });
+    );
     return <StandardTable items={items} config={config} />;
-  })
-  .add("some expandable rows", () => {
-    const config = createConfig(undefined, undefined, {
-      enableExpandCollapse: true,
-      expandCollapseDisableResolver: item =>
-        item.numPassengers != null && item.numPassengers > 500,
-      renderRowExpansion: item => (
-        <Box spacing indent>
-          <StandardText>Name: {item.name}</StandardText>
-        </Box>
-      )
-    });
-    return <StandardTable items={items} config={config} />;
+  }
+);
+
+WithWarningWhenModifiedFieldIsEmpty.story = {
+  name: "with warning when modified field is empty"
+};
+
+export const MissingItems = () => <StandardTable items={[]} config={config} />;
+
+MissingItems.story = {
+  name: "missing items"
+};
+
+export const NavigationBetweenTables = () => {
+  const config = createConfig(undefined, undefined, {
+    gridCellOptions: {
+      edgeMode: "unlimited"
+    }
   });
+
+  return (
+    <Column>
+      <StandardTable items={items} config={config} tableId={"table123"} />
+      <Spacing />
+      <StandardTable
+        items={items}
+        config={config}
+        tableId={"table123"}
+        rowIndexOffset={items.length}
+      />
+      7
+    </Column>
+  );
+};
+
+NavigationBetweenTables.story = {
+  name: "navigation between tables"
+};
+
+export const Loading = () => (
+  <StandardTable items={items} config={config} loading />
+);
+
+Loading.story = {
+  name: "loading"
+};
+
+export const _Error = () => (
+  <StandardTable
+    items={items}
+    config={config}
+    error={new Error("Could not fetch users")}
+  />
+);
+
+_Error.story = {
+  name: "error"
+};
+
+export const ExpandableRows = () => {
+  const config = createConfig(undefined, undefined, {
+    enableExpandCollapse: true,
+    showHeaderExpandCollapse: true,
+    renderRowExpansion: item => (
+      <Box spacing indent>
+        <StandardText>Name: {item.name}</StandardText>
+      </Box>
+    )
+  });
+  return <StandardTable items={items} config={config} />;
+};
+
+ExpandableRows.story = {
+  name: "expandable rows"
+};
+
+export const SomeExpandableRows = () => {
+  const config = createConfig(undefined, undefined, {
+    enableExpandCollapse: true,
+    expandCollapseDisableResolver: item =>
+      item.numPassengers != null && item.numPassengers > 500,
+    renderRowExpansion: item => (
+      <Box spacing indent>
+        <StandardText>Name: {item.name}</StandardText>
+      </Box>
+    )
+  });
+  return <StandardTable items={items} config={config} />;
+};
+
+SomeExpandableRows.story = {
+  name: "some expandable rows"
+};

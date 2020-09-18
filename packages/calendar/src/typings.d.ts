@@ -16,3 +16,8 @@ declare module "*.svg" {
   export default svgUrl;
   export { svgComponent as ReactComponent };
 }
+
+declare module "*.md" {
+  const content: string;
+  export default content;
+}

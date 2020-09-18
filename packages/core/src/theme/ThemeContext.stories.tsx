@@ -1,6 +1,5 @@
 import { Column, PartialTheme, ThemeProvider } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 export const customTheme: PartialTheme = {
@@ -72,31 +71,49 @@ const overridingTheme: PartialTheme = {
   }
 };
 
-storiesOf("theme/ThemeContext", module)
-  .add("standard theme", () => (
-    <>
+export default {
+  title: "theme/ThemeContext",
+  excludeStories: ["customTheme"]
+};
+
+export const StandardTheme = () => (
+  <>
+    <PrimaryButton label={"Button"} />
+  </>
+);
+
+StandardTheme.story = {
+  name: "standard theme"
+};
+
+export const CustomTheme = () => (
+  <>
+    <ThemeProvider value={customTheme}>
       <PrimaryButton label={"Button"} />
-    </>
-  ))
-  .add("custom theme", () => (
-    <>
-      <ThemeProvider value={customTheme}>
-        <PrimaryButton label={"Button"} />
+    </ThemeProvider>
+  </>
+);
+
+CustomTheme.story = {
+  name: "custom theme"
+};
+
+export const MergedCustomTheme = () => (
+  <Column
+    alignItems={"flex-start"}
+    height={"150px"}
+    justifyContent={"space-between"}
+  >
+    <PrimaryButton label={"Default theme button"} />
+    <ThemeProvider value={customTheme}>
+      <PrimaryButton label={"Custom theme button"} />
+      <ThemeProvider value={overridingTheme}>
+        <PrimaryButton label={"Custom theme button with different color"} />
       </ThemeProvider>
-    </>
-  ))
-  .add("merged custom theme", () => (
-    <Column
-      alignItems={"flex-start"}
-      height={"150px"}
-      justifyContent={"space-between"}
-    >
-      <PrimaryButton label={"Default theme button"} />
-      <ThemeProvider value={customTheme}>
-        <PrimaryButton label={"Custom theme button"} />
-        <ThemeProvider value={overridingTheme}>
-          <PrimaryButton label={"Custom theme button with different color"} />
-        </ThemeProvider>
-      </ThemeProvider>
-    </Column>
-  ));
+    </ThemeProvider>
+  </Column>
+);
+
+MergedCustomTheme.story = {
+  name: "merged custom theme"
+};

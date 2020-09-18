@@ -1,11 +1,26 @@
-
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { GridExample } from './GridExample';
-import { GridExampleCustomValue } from './GridExampleCustomValue';
-import { GridExampleWithContext } from './GridExampleWithContext';
+import { GridExample } from "./GridExample";
+import { GridExampleCustomValue } from "./GridExampleCustomValue";
+import { GridExampleWithContext } from "./GridExampleWithContext";
 
-storiesOf("examples/Grid/GridHooks", module)
-  .add("standard", () => <GridExample />)
-  .add("with GridHooksTable", () => <GridExampleWithContext />)
-  .add("with custom value", () => <GridExampleCustomValue />);
+export default {
+  title: "examples/Grid/GridHooks"
+};
+
+export const Standard = () => <GridExample />;
+
+Standard.story = {
+  name: "standard"
+};
+
+export const WithGridHooksTable = () => <GridExampleWithContext />;
+
+WithGridHooksTable.story = {
+  name: "with GridHooksTable"
+};
+
+export const WithCustomValue = () => <GridExampleCustomValue />;
+
+WithCustomValue.story = {
+  name: "with custom value"
+};

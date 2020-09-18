@@ -1,9 +1,12 @@
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { Link } from "@stenajs-webui/elements";
 import { StandardText } from "@stenajs-webui/core";
 
-storiesOf("elements/Link", module).add("standard", () => (
+export default {
+  title: "elements/Link"
+};
+
+export const Standard = () => (
   <>
     <Link onClick={() => alert("Click")}>First link</Link> outside StandardText
     <br />
@@ -16,4 +19,8 @@ storiesOf("elements/Link", module).add("standard", () => (
       .<br />
     </StandardText>
   </>
-));
+);
+
+Standard.story = {
+  name: "standard"
+};

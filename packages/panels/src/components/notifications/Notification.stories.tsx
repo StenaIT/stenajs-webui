@@ -1,12 +1,15 @@
 import { Column } from "@stenajs-webui/core";
 import { Notification } from "@stenajs-webui/panels";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { SeparatorLine } from "@stenajs-webui/core";
 import { subHours } from "date-fns";
 
-storiesOf("panels/Notification", module).add("standard", () => (
+export default {
+  title: "panels/Notification"
+};
+
+export const Standard = () => (
   <Column
     width={"350px"}
     borderStyle={"solid"}
@@ -33,4 +36,8 @@ storiesOf("panels/Notification", module).add("standard", () => (
       date={subHours(new Date(), 48)}
     />
   </Column>
-));
+);
+
+Standard.story = {
+  name: "standard"
+};
