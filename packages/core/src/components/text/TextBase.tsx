@@ -51,7 +51,7 @@ export interface TextBasePropsBase {
   hoverColor?: string;
   whiteSpace?: WhiteSpaceProperty;
   /** Adds underline to text. */
-  textDecoration?: TextDecorationProperty;
+  textDecoration?: TextDecorationProperty<string | 0>;
   /** Adds underline when mouse hovers over text. */
   hoverUnderline?: boolean;
   /** Makes text italic. */

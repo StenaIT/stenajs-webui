@@ -1,4 +1,4 @@
-import { Row, StandardText } from "@stenajs-webui/core";
+import { Column, Row, StandardText } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
@@ -40,9 +40,11 @@ export const ClickTrigger = () => (
 ClickTrigger.storyName = "click trigger";
 
 export const WithButton = () => (
-  <Tooltip label={"Big success!"} trigger={"click"}>
-    {({ show }) => <PrimaryButton onClick={show} label={"Click me"} />}
-  </Tooltip>
+  <Column justifyContent={"flex-start"} width={"fit-content"}>
+    <Tooltip label={"Big success!"} trigger={"click"}>
+      <PrimaryButton label={"Click me"} />
+    </Tooltip>
+  </Column>
 );
 
 WithButton.storyName = "with button";

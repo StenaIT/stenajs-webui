@@ -2,9 +2,15 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
-import { components } from "react-select";
-import { MultiValueProps } from "react-select/src/components/MultiValue";
-import { OptionProps } from "react-select/src/components/Option";
+import {
+  ActionMeta,
+  components,
+  GroupedOptionsType,
+  MultiValueProps,
+  OptionProps,
+  OptionsType,
+  SelectComponentsConfig,
+} from "react-select";
 import {
   defaultSelectTheme,
   SelectTheme,
@@ -17,12 +23,6 @@ import {
   InternalDropdownOption,
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
-import {
-  ActionMeta,
-  GroupedOptionsType,
-  OptionsType,
-} from "react-select/src/types";
-import { SelectComponentsConfig } from "react-select/src/components";
 
 export type OnChangeValue<TData> =
   | OptionsType<DropdownOption<TData>>
@@ -30,7 +30,7 @@ export type OnChangeValue<TData> =
 
 export type OnChange<TData> = (
   value: OnChangeValue<TData>,
-  action: ActionMeta
+  action: ActionMeta<any>
 ) => void;
 
 export interface DropdownOption<TData> {
@@ -136,10 +136,10 @@ export const GroupedMultiSelect = <TData extends {}>({
   };
 
   const MultiValue = (
-    option: MultiValueProps<InternalDropdownOption<TData>>
+    props: MultiValueProps<InternalDropdownOption<TData>>
   ) => {
-    return !("internalOptions" in option.data) ? (
-      <components.MultiValue {...option} />
+    return !("internalOptions" in props.data) ? (
+      <components.MultiValue {...props} />
     ) : null;
   };
 
@@ -149,10 +149,9 @@ export const GroupedMultiSelect = <TData extends {}>({
   );
 
   return (
-    <Select
+    <Select<DropdownOption<TData>>
       {...selectProps}
-      // @ts-ignore
-      onChange={createOnChange(onChange)}
+      onChange={createOnChange<TData>(onChange)}
       hideSelectedOptions={false}
       components={{
         ...selectProps.components,

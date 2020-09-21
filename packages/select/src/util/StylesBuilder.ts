@@ -1,5 +1,5 @@
 import { SelectTheme } from "../SelectTheme";
-import { StylesConfig } from "react-select/src/styles";
+import { StylesConfig } from "react-select";
 
 const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],

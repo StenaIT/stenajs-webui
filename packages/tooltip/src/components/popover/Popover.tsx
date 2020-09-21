@@ -40,7 +40,7 @@ export const Popover: React.FC<PopoverProps> = ({
   <TippyComponent
     interactive
     className={tippyStyles.noPadding}
-    trigger={visible ? undefined : trigger}
+    trigger={visible !== undefined ? undefined : trigger}
     visible={visible}
     theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
     delay={0}
