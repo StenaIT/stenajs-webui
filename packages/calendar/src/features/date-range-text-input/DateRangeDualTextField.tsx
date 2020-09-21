@@ -33,6 +33,7 @@ interface Props {
   inputRefRight?: TextInputProps["inputRef"];
   variantLeft?: TextInputProps["variant"];
   variantRight?: TextInputProps["variant"];
+  showPresets?: false;
 }
 
 export const DateRangeDualTextField: React.FC<Props> = ({
@@ -51,6 +52,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
   inputRefLeft,
   inputRefRight,
   onBlur,
+  showPresets,
 }) => {
   const focusCounter = useRef(0);
 
@@ -122,17 +124,21 @@ export const DateRangeDualTextField: React.FC<Props> = ({
               />
             </Indent>
 
-            <Row height={"22px"}>
-              <SeparatorLine vertical />
-            </Row>
+            {showPresets ? (
+              <>
+                <Row height={"22px"}>
+                  <SeparatorLine vertical />
+                </Row>
 
-            <Indent num={0.5}>
-              <FlatButton
-                leftIcon={faAngleDown}
-                onClick={onClickArrowDown}
-                size={"small"}
-              />
-            </Indent>
+                <Indent num={0.5}>
+                  <FlatButton
+                    leftIcon={faAngleDown}
+                    onClick={onClickArrowDown}
+                    size={"small"}
+                  />
+                </Indent>
+              </>
+            ) : null}
           </Row>
         }
       >
