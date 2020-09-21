@@ -1,4 +1,4 @@
-import { LoadingModal } from "@stenajs-webui/panels";
+import { LoadingModal } from "@stenajs-webui/modal";
 import * as React from "react";
 import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { PrimaryButton } from "@stenajs-webui/elements";
