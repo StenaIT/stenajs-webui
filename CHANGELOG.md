@@ -21,6 +21,9 @@ It does not replace it though, since they are not API compatible.
 
 ### Breaking changes
 
+- `Months` enum have been renamed to `Month`.
+- `WeekDays` enum have been renamed to `WeekDay`.
+
 #### `Popover`
 
 `Popover` now uses Tippy, and Tippy's props.

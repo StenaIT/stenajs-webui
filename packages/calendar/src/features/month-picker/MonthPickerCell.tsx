@@ -3,11 +3,11 @@ import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { Months } from "../../util/calendar/CalendarDataFactory";
+import { Month } from "../../util/calendar/CalendarDataFactory";
 import { format } from "date-fns";
 
-interface Props extends ValueAndOnValueChangeProps<Months> {
-  month: Months;
+interface Props extends ValueAndOnValueChangeProps<Month> {
+  month: Month;
 }
 
 export const MonthPickerCell: React.FC<Props> = ({

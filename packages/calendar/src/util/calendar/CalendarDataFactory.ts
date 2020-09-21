@@ -16,7 +16,7 @@ import {
 } from "date-fns";
 import { DateFormats } from "../date/DateFormats";
 
-export enum Months {
+export enum Month {
   JANUARY = 0,
   FEBRUARY,
   MARCH,
@@ -31,7 +31,7 @@ export enum Months {
   DECEMBER,
 }
 
-export enum WeekDays {
+export enum WeekDay {
   SUNDAY = 0,
   MONDAY,
   TUESDAY,
@@ -175,10 +175,10 @@ export const calculateOverflowingMonth = (
   year: number,
   month: number
 ): { year: number; month: number } => {
-  if (month > Months.DECEMBER) {
+  if (month > Month.DECEMBER) {
     return { year: year + Math.floor(month / 12), month: month % 12 };
   }
-  if (month < Months.JANUARY) {
+  if (month < Month.JANUARY) {
     return { year: year + Math.floor(month / 12), month: 12 + (month % 12) };
   }
   return { year, month };

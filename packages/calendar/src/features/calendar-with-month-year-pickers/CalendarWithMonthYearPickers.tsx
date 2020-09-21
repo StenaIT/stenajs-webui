@@ -2,7 +2,7 @@ import * as React from "react";
 import { useCallback } from "react";
 import { CalendarProps } from "../../types/CalendarTypes";
 import { Calendar } from "../../components/calendar/Calendar";
-import { Months } from "../../util/calendar/CalendarDataFactory";
+import { Month } from "../../util/calendar/CalendarDataFactory";
 import { MonthPicker } from "../month-picker/MonthPicker";
 import { YearPicker } from "../year-picker/YearPicker";
 import { Box } from "@stenajs-webui/core";
@@ -30,7 +30,7 @@ export const CalendarWithMonthYearPickers = function CalendarWithMonthYearPicker
   ...props
 }: CalendarWithMonthYearPickersProps<T>) {
   const onChangeSelectedMonth = useCallback(
-    (selectedMonth: Months) => {
+    (selectedMonth: Month) => {
       const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
       newDate.setMonth(selectedMonth);
       if (setDateInFocus) {

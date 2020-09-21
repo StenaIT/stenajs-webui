@@ -27,5 +27,4 @@ export * from "./types/CalendarTypes";
 export * from "./features/month-picker/MonthPicker";
 export * from "./features/year-picker/YearPicker";
 export * from "./features/preset-picker/PresetPicker";
-export * from "./features/date-range-text-input/DateRangeDualTextField";
 export * from "./features/date-range-text-input/DateRangeDualTextInput";
