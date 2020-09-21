@@ -4,7 +4,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 import { PrimaryButton } from "@stenajs-webui/elements";
 
 export default {
-  title: "panels/Loading/LoadingModal",
+  title: "modal/LoadingModal",
 };
 
 export const Standard = () => (
