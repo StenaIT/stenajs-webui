@@ -9,7 +9,6 @@ import {
 import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 interface Props<TItem> {
