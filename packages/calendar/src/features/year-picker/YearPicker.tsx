@@ -1,12 +1,13 @@
 import * as React from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Row } from "@stenajs-webui/core";
-import { chunk } from "lodash";
 import { YearPickerCell } from "./YearPickerCell";
 import { FlatButton } from "@stenajs-webui/elements";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons/faCaretLeft";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
+import { eachYearOfInterval } from "date-fns";
+import { chunk } from "lodash";
 
 interface Props extends ValueAndOnValueChangeProps<number> {
   initialLastYear?: number;
@@ -18,17 +19,37 @@ export const YearPicker: React.FC<Props> = ({
   initialLastYear,
 }) => {
   const [lastYear, setLastYear] = useState(
-    () => initialLastYear || new Date().getFullYear()
+    () => initialLastYear || new Date().getFullYear() + 4
   );
 
-  const yearRows = useMemo(
-    () =>
-      chunk(
-        new Array(12).fill(null).map((_, i) => lastYear - (11 - i)),
-        3
-      ),
-    [lastYear]
-  );
+  const yearRows = useMemo(() => {
+    const startYear = lastYear - 11;
+    const years = eachYearOfInterval({
+      start: new Date(startYear, 1, 1),
+      end: new Date(lastYear, 1, 1),
+    });
+    return chunk(
+      years.map((y) => y.getFullYear()),
+      3
+    );
+  }, [lastYear]);
+
+  useEffect(() => {
+    if (!value) {
+      return;
+    }
+    if (value > lastYear) {
+      const yearDiff = value - lastYear;
+      const yearsToAdd = Math.floor(yearDiff / 3) + 3;
+      setLastYear(lastYear + yearsToAdd);
+    }
+    const startYear = lastYear - 11;
+    if (value < startYear) {
+      const yearDiff = startYear - value;
+      const yearsToSubtract = Math.floor(yearDiff / 3) + 3;
+      setLastYear(lastYear - yearsToSubtract);
+    }
+  }, [value]);
 
   return (
     <Row>

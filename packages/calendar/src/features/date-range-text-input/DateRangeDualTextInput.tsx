@@ -53,20 +53,24 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
 
   const inputLeftChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
-      onValueChange?.({
-        startDate: ev.target.valueAsDate ?? undefined,
-        endDate: value?.endDate,
-      });
+      if (ev.target.value[0] !== "0") {
+        onValueChange?.({
+          startDate: ev.target.valueAsDate ?? undefined,
+          endDate: value?.endDate,
+        });
+      }
     },
     [onValueChange, value]
   );
 
   const inputRightChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
-      onValueChange?.({
-        startDate: value?.startDate,
-        endDate: ev.target.valueAsDate ?? undefined,
-      });
+      if (ev.target.value[0] !== "0") {
+        onValueChange?.({
+          startDate: value?.startDate,
+          endDate: ev.target.valueAsDate ?? undefined,
+        });
+      }
     },
     [onValueChange, value]
   );
@@ -198,8 +202,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
           onFocusRight={showCalendarEndDate}
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
-          variantLeft={startDateIsAfterEnd ? "error" : undefined}
-          variantRight={startDateIsAfterEnd ? "error" : undefined}
+          variant={startDateIsAfterEnd ? "error" : undefined}
         />
       </Popover>
     </Box>

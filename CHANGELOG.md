@@ -2,9 +2,18 @@
 
 ## 1.3.0
 
+### New features
+
+#### `DateRangeDualTextInput`
+
+New component `DateRangeDualTextInput` which has the same functionality as `DateRangeInput`.
+
+It does not replace it though, since they are not API compatible.
+
 ### Improvements
 
 - Add `revertEditableEntity` action to `editable-entity-reducer`.
+- All calendars now has a panel for quickly selecting month and year.
 
 ### Design changes
 
@@ -14,11 +23,11 @@
 
 #### `Popover`
 
-`Popover` now uses Tippy, and uses Tippy's props.
+`Popover` now uses Tippy, and Tippy's props.
 This means that some props have changed.
 
 Most importantly, content and children can no longer be functions.
-If you need the hide and show functions, implement them using local state and `visible` props.
+If you need the hide and show functions, implement them using local state and the Popover `visible` props.
 
 ## 1.2.0
 

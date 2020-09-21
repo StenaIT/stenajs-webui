@@ -10,7 +10,7 @@ import { Row } from "@stenajs-webui/core";
 
 const cx = classNames.bind(styles);
 
-interface TextInputBoxProps
+export interface TextInputBoxProps
   extends Pick<
     TextInputProps,
     | "variant"

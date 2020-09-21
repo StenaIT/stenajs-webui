@@ -1,6 +1,11 @@
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
-import { TextInput, TextInputBox, TextInputProps } from "@stenajs-webui/forms";
+import {
+  TextInput,
+  TextInputBox,
+  TextInputBoxProps,
+  TextInputProps,
+} from "@stenajs-webui/forms";
 import {
   Box,
   ButtonProps,
@@ -33,6 +38,7 @@ interface Props {
   inputRefRight?: TextInputProps["inputRef"];
   variantLeft?: TextInputProps["variant"];
   variantRight?: TextInputProps["variant"];
+  variant?: TextInputBoxProps["variant"];
   showPresets?: false;
 }
 
@@ -51,6 +57,9 @@ export const DateRangeDualTextField: React.FC<Props> = ({
   onFocusRight,
   inputRefLeft,
   inputRefRight,
+  variant,
+  variantLeft,
+  variantRight,
   onBlur,
   showPresets,
 }) => {
@@ -114,6 +123,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
     <Box>
       <TextInputBox
         disableContentPaddingRight
+        variant={variant}
         contentRight={
           <Row alignItems={"center"}>
             <Indent num={0.5}>
@@ -152,6 +162,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onBlur={blurLeftHandler}
             onFocus={focusLeftHandler}
             inputRef={inputRefLeft}
+            variant={variantLeft}
             type={"date"}
           />
         </Box>
@@ -171,6 +182,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onBlur={blurRightHandler}
             onFocus={focusRightHandler}
             inputRef={inputRefRight}
+            variant={variantRight}
             type={"date"}
           />
         </Box>
