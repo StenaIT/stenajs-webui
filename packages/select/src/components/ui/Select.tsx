@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useMemo } from "react";
-import SelectComponent, { mergeStyles } from "react-select";
-import { Props } from "react-select/src/Select";
+import SelectComponent, { mergeStyles, Props } from "react-select";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 
