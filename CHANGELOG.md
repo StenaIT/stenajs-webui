@@ -10,6 +10,14 @@ New component `DateRangeDualTextInput` which has the same functionality as `Date
 
 It does not replace it though, since they are not API compatible.
 
+#### `CenterModal`
+
+New modal which is centered and not draggable.
+
+#### `LoadingModal`
+
+New modal for showing loading/saving state.
+
 ### Improvements
 
 - Add `revertEditableEntity` action to `editable-entity-reducer`.
