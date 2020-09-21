@@ -1,21 +1,33 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import {
   getStartDateOfISOWeek,
   getWeekForDate,
-  WeekData
+  WeekData,
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
 
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
-  statePerMonth
+  statePerMonth,
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
+  const [dateInFocus, setDateInFocus] = useState(() => {
+    const week = getWeekDataFromWeekString(value);
+    if (!week) {
+      return new Date();
+    }
+    return week.days[0].date;
+  });
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+
   const onClickDay = useCallback(
-    day => {
+    (day) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
       }
@@ -23,7 +35,7 @@ export const useSingleWeekSelection = <T>({
     [onChange]
   );
   const onClickWeek = useCallback(
-    week => {
+    (week) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(week));
       }
@@ -49,9 +61,12 @@ export const useSingleWeekSelection = <T>({
   return {
     statePerMonth: statePerMonthWithSelection,
     date,
-    startDateInFocus: date,
+    dateInFocus,
+    setDateInFocus,
     onClickDay,
-    onClickWeek
+    onClickWeek,
+    currentPanel,
+    setCurrentPanel,
   };
 };
 

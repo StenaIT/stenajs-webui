@@ -20,7 +20,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   items,
   noItemsLabel = "There is no data available.",
   colIndexOffset,
-  rowIndexOffset
+  rowIndexOffset,
 }: Props<TItem, TColumnKey>) {
   if (error) {
     return (

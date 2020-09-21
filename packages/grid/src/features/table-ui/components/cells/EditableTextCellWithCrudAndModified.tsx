@@ -5,7 +5,7 @@ import { Icon } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
 import {
   EntityCrudStatusRedux,
-  ModifiedFieldRedux
+  ModifiedFieldRedux,
 } from "@stenajs-webui/redux";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
@@ -14,11 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { tableBorder, tableRowHeight } from "../../../../config/TableConfig";
 import {
   useGridCell,
-  UseGridCellOptions
+  UseGridCellOptions,
 } from "../../../grid-cell/hooks/UseGridCell";
 import {
   CrudStatusIndicator,
-  hasIndicatorContent
+  hasIndicatorContent,
 } from "../CrudStatusIndicator";
 
 interface Props<TStoreState> {
@@ -50,7 +50,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
   rowIndex,
   numCols,
   numRows,
-  warningOnEmpty
+  warningOnEmpty,
 }: Props<TStoreState>) {
   const enableGridCell = true;
 
@@ -74,7 +74,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
             id: entityId,
             originalValue: value,
             newValue,
-            modified: true
+            modified: true,
           })
         );
       }
@@ -90,7 +90,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
     stopEditingAndRevert,
     stopEditingAndMove,
     lastKeyEvent,
-    requiredProps: { onKeyDown, ...requiredProps }
+    requiredProps: { onKeyDown, ...requiredProps },
   } = useGridCell(value, {
     rowIndex,
     colIndex,
@@ -99,17 +99,17 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
     tableId: "serviceManningMatrixTable",
     onChange: onChangeHandler,
     isEditable,
-    allowedInputType
+    allowedInputType,
   });
 
   const onKeyDownHandler = useCallback<KeyboardEventHandler>(
-    ev => {
+    (ev) => {
       if (ev.key === "Delete") {
         dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
         dispatch(
           crudStatusRedux.actions.setEntityFields(entityId, {
             hasError: false,
-            errorMessage: undefined
+            errorMessage: undefined,
           })
         );
       } else {
@@ -121,7 +121,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
       entityId,
       dispatch,
       modifiedFieldsRedux.actions,
-      crudStatusRedux.actions
+      crudStatusRedux.actions,
     ]
   );
 

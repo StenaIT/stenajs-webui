@@ -40,7 +40,7 @@ export const reducerIdGateAction = <TInnerAction>(
 ): ReducerIdGateAction<TInnerAction> => ({
   type: "REDUCER_ID_GATE:ACTION",
   action,
-  reducerId
+  reducerId,
 });
 
 const isValidReducerIdGateAction = (action: any): boolean =>

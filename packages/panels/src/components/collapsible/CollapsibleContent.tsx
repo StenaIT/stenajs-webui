@@ -9,14 +9,9 @@ export interface CollapsibleSimpleContentProps {
   contentRight?: ReactNode;
 }
 
-export const CollapsibleContent: React.FC<CollapsibleSimpleContentProps &
-  HTMLAttributes<HTMLDivElement>> = ({
-  contentLeft,
-  contentRight,
-  className,
-  children,
-  ...props
-}) => {
+export const CollapsibleContent: React.FC<
+  CollapsibleSimpleContentProps & HTMLAttributes<HTMLDivElement>
+> = ({ contentLeft, contentRight, className, children, ...props }) => {
   return (
     <div className={cx(styles.content, className)} {...props}>
       {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}

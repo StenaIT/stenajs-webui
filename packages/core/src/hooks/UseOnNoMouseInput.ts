@@ -14,10 +14,12 @@ export const useOnNoMouseMovement = (callback: () => void, delay: number) => {
 
   useEffect(() => {
     const onIdleChange = debounce(eventHandler.current, delay);
-    events.forEach(event => window.addEventListener(event, onIdleChange));
+    events.forEach((event) => window.addEventListener(event, onIdleChange));
 
     return () => {
-      events.forEach(event => window.removeEventListener(event, onIdleChange));
+      events.forEach((event) =>
+        window.removeEventListener(event, onIdleChange)
+      );
     };
   }, [delay]);
 };

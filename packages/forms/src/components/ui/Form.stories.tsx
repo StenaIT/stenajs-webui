@@ -5,23 +5,26 @@ import {
   HeaderText,
   Row,
   SmallText,
-  Space
+  Space,
 } from "@stenajs-webui/core";
 import {
   Checkbox,
   NumericTextInput,
   RadioButton,
   Switch,
-  TextInput
+  TextInput,
 } from "@stenajs-webui/forms";
 import {
   DropdownOption,
   GroupedMultiSelect,
-  Select
+  Select,
 } from "@stenajs-webui/select";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
+
+export default {
+  title: "forms",
+};
 
 interface State {
   checkbox: boolean;
@@ -35,7 +38,7 @@ interface State {
 
 const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
   store,
-  isEnabled
+  isEnabled,
 }) => {
   return (
     <table cellPadding={"5px"}>
@@ -53,7 +56,7 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>Enabled</td>
           <td>
             <Switch
-              onValueChange={value => store.set({ switch: value })}
+              onValueChange={(value) => store.set({ switch: value })}
               value={store.state.switch}
             />
           </td>
@@ -71,7 +74,7 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>Disabled</td>
           <td>
             <Switch
-              onValueChange={value => store.set({ switch: value })}
+              onValueChange={(value) => store.set({ switch: value })}
               value={store.state.switch}
               disabled
             />
@@ -166,7 +169,7 @@ const RadioButtonTable: React.FC<{
 
 const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
   store,
-  isEnabled
+  isEnabled,
 }) => {
   return (
     <table cellPadding={"5px"}>
@@ -185,7 +188,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>
             <Checkbox
               value={store.state.checkbox}
-              onValueChange={value => store.set({ checkbox: value })}
+              onValueChange={(value) => store.set({ checkbox: value })}
             />
           </td>
           <td>
@@ -203,7 +206,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>
             <Checkbox
               value={store.state.checkbox}
-              onValueChange={value => store.set({ checkbox: value })}
+              onValueChange={(value) => store.set({ checkbox: value })}
               disabled
             />
           </td>
@@ -228,7 +231,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
             <Checkbox
               size={"small"}
               value={store.state.checkbox}
-              onValueChange={value => store.set({ checkbox: value })}
+              onValueChange={(value) => store.set({ checkbox: value })}
             />
           </td>
           <td>
@@ -247,7 +250,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
             <Checkbox
               size={"small"}
               value={store.state.checkbox}
-              onValueChange={value => store.set({ checkbox: value })}
+              onValueChange={(value) => store.set({ checkbox: value })}
               disabled
             />
           </td>
@@ -269,7 +272,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(v => !v);
+      setIsEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
@@ -312,20 +315,20 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
                 <td>
                   <TextInput
                     value={store.state.input}
-                    onValueChange={value => store.set({ input: value })}
+                    onValueChange={(value) => store.set({ input: value })}
                   />
                 </td>
                 <td>
                   <TextInput
                     value={store.state.input}
-                    onValueChange={value => store.set({ input: value })}
+                    onValueChange={(value) => store.set({ input: value })}
                     disabled
                   />
                 </td>
                 <td>
                   <TextInput
                     value={store.state.input}
-                    onValueChange={value => store.set({ input: value })}
+                    onValueChange={(value) => store.set({ input: value })}
                     variant={"error"}
                   />
                 </td>
@@ -344,16 +347,16 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
             options={[
               {
                 value: "Mattias",
-                label: "Mattias"
+                label: "Mattias",
               },
               {
                 value: "Johan",
-                label: "Johan"
+                label: "Johan",
               },
               {
                 value: "Dennis the menace",
-                label: "Dennis the menace"
-              }
+                label: "Dennis the menace",
+              },
             ]}
             value={store.state.select}
             width={"200px"}
@@ -366,7 +369,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         <Space />
         <Box width={"200px"}>
           <GroupedMultiSelect
-            onChange={value => store.set({ groupedMultiSelect: value })}
+            onChange={(value) => store.set({ groupedMultiSelect: value })}
             options={[
               {
                 label: "CA",
@@ -374,9 +377,9 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
                   {
                     value: "Mattias",
                     label: "Mattias",
-                    data: "Mattias"
-                  }
-                ]
+                    data: "Mattias",
+                  },
+                ],
               },
               {
                 label: "Freight",
@@ -384,15 +387,15 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
                   {
                     value: "Johan",
                     label: "Johan",
-                    data: "Johan"
+                    data: "Johan",
                   },
                   {
                     value: "Dennis the menace",
                     label: "Dennis the menace",
-                    data: "Dennis the menace"
-                  }
-                ]
-              }
+                    data: "Dennis the menace",
+                  },
+                ],
+              },
             ]}
             value={store.state.groupedMultiSelect}
           />
@@ -405,7 +408,7 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         <Box width={"200px"}>
           <NumericTextInput
             value={store.state.numericInput}
-            onValueChange={value => store.set({ numericInput: value })}
+            onValueChange={(value) => store.set({ numericInput: value })}
           />
         </Box>
       </div>
@@ -413,15 +416,12 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-storiesOf("forms/", module).add(
-  "Overview",
-  withState<State>({
-    checkbox: false,
-    input: "",
-    numericInput: "",
-    radio: false,
-    select: undefined,
-    groupedMultiSelect: undefined,
-    switch: false
-  })(({ store }: { store: Store<State> }) => <FormOverview store={store} />)
-);
+export const Overview = withState<State>({
+  checkbox: false,
+  input: "",
+  numericInput: "",
+  radio: false,
+  select: undefined,
+  groupedMultiSelect: undefined,
+  switch: false,
+})(({ store }: { store: Store<State> }) => <FormOverview store={store} />);

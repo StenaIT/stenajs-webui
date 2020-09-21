@@ -4,10 +4,13 @@ import { faEraser } from "@fortawesome/free-solid-svg-icons/faEraser";
 import { faRecycle } from "@fortawesome/free-solid-svg-icons/faRecycle";
 import { Row } from "@stenajs-webui/core";
 import { ButtonGroup, SecondaryButton } from "@stenajs-webui/elements";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("elements/Buttons/ButtonGroup", module).add("default", () => (
+export default {
+  title: "elements/Buttons/ButtonGroup",
+};
+
+export const Default = () => (
   <>
     <Row>
       <ButtonGroup>
@@ -32,4 +35,6 @@ storiesOf("elements/Buttons/ButtonGroup", module).add("default", () => (
       </ButtonGroup>
     </Row>
   </>
-));
+);
+
+Default.storyName = "default";

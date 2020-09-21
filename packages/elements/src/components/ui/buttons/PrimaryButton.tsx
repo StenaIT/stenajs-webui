@@ -41,8 +41,6 @@ interface PrimaryButtonButtonProps
     ButtonProps {
   /** Disables the button. Changes to disabled color and clicks are disabled. */
   disabled?: boolean;
-  /** onClick callback, called when button is clicked. */
-  onClick?: () => void;
   as?: "button";
 }
 

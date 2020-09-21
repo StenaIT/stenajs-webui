@@ -20,12 +20,12 @@ interface SeparatorLineComponentProps {
 
 const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
   display: flex;
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   border: 0;
   margin: 0;
-  height: ${props =>
+  height: ${(props) =>
     props.vertical ? props.size || "100%" : props.width || "1px"};
-  width: ${props =>
+  width: ${(props) =>
     props.vertical ? props.width || "1px" : props.size || "100%"};
 `;
 
@@ -34,8 +34,8 @@ export const SeparatorLine: React.FC<SeparatorLineProps> = ({
   ...props
 }) => {
   const themeProps = useThemeSelector(
-    theme => ({
-      color: color ? theme.colors[color] || color : theme.colors.separator
+    (theme) => ({
+      color: color ? theme.colors[color] || color : theme.colors.separator,
     }),
     [color]
   );

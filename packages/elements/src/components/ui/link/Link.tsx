@@ -18,7 +18,7 @@ export const Link: React.FC<Props> = ({
   disabled,
   ...spanProps
 }) => {
-  const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = ev => {
+  const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = (ev) => {
     if ((ev.key === " " || ev.key === "Enter") && onClick) {
       ev.preventDefault();
       onClick(ev as any);

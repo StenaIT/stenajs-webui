@@ -3,12 +3,12 @@ import {
   ActionMeta,
   GroupedOptionsType,
   GroupType,
-  OptionsType
+  OptionsType,
 } from "react-select/src/types";
 import {
   DropdownOption,
   OnChange,
-  OnChangeValue
+  OnChangeValue,
 } from "../components/ui/GroupedMultiSelect";
 
 export type InternalDropdownOption<TData> =
@@ -57,7 +57,7 @@ const removeGroupedOptions = <TData>(
   selectedInternalOptions: OptionsType<InternalDropdownOption<TData>>
 ): OptionsType<InternalDropdownOption<TData>> => {
   const removeSubOptions = (option: InternalDropdownOption<TData>) => {
-    return !removedValue.internalOptions.find(internalOption =>
+    return !removedValue.internalOptions.find((internalOption) =>
       isEqual(internalOption, option)
     );
   };
@@ -75,11 +75,11 @@ export const findParentOption = <TData>(
   meta: SelectActionMeta<TData>
 ): InternalDropdownOption<TData> | undefined =>
   selectedInternalOptions
-    .filter(internalOption => "internalOptions" in internalOption)
-    .find(internalOption => {
+    .filter((internalOption) => "internalOptions" in internalOption)
+    .find((internalOption) => {
       return (
         "internalOptions" in internalOption &&
-        internalOption.internalOptions.find(io => isEqual(io, meta.option))
+        internalOption.internalOptions.find((io) => isEqual(io, meta.option))
       );
     });
 
@@ -88,7 +88,7 @@ const removeOptionHeaders = <TData>(
 ): OptionsType<InternalDropdownOption<TData>> =>
   selectedInternalOptions
     .filter(
-      selectedInternalOption => !("internalOptions" in selectedInternalOption)
+      (selectedInternalOption) => !("internalOptions" in selectedInternalOption)
     )
     .map(convertInternalOptionToDropdownOption);
 
@@ -110,7 +110,7 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
             } else {
               return [
                 ...previousValue,
-                convertInternalOptionToDropdownOption(currentValue)
+                convertInternalOptionToDropdownOption(currentValue),
               ];
             }
           }, []),
@@ -186,7 +186,7 @@ export const convertGroupedDropdownOptionsToInternalOptions = <TData>(
       return [
         ...previousValue,
         convertGroupedDropdownOptionToInternalOption(currentValue),
-        ...currentValue.options.map(convertDropdownOptionToInternalOption)
+        ...currentValue.options.map(convertDropdownOptionToInternalOption),
       ];
     },
     []
@@ -201,15 +201,15 @@ export const convertValueToInternalValue = <TData>(
     return [];
   }
   const selectedOptions: InternalDropdownOption<TData>[] = [];
-  options.forEach(option => {
+  options.forEach((option) => {
     if (allOptionsExists(option.options, value)) {
       selectedOptions.push(
         convertGroupedDropdownOptionToInternalOption(option)
       );
     }
-    option.options.forEach(option => {
+    option.options.forEach((option) => {
       if (
-        value.find(val => {
+        value.find((val) => {
           return isEqual(val, option);
         })
       ) {
@@ -227,8 +227,8 @@ export const allOptionsExists = <TData>(
   if (!value) {
     return false;
   }
-  return options.every(option => {
-    return value.find(val => isEqual(option, val));
+  return options.every((option) => {
+    return value.find((val) => isEqual(option, val));
   });
 };
 
@@ -237,7 +237,7 @@ export const convertDropdownOptionToInternalOption = <TData>(
 ): InternalDropdownOption<TData> => ({
   data: option.data,
   label: option.label,
-  value: option.value
+  value: option.value,
 });
 
 export const convertGroupedDropdownOptionToInternalOption = <TData>(
@@ -246,7 +246,7 @@ export const convertGroupedDropdownOptionToInternalOption = <TData>(
   data: option.label,
   label: option.label,
   value: option.label,
-  internalOptions: option.options
+  internalOptions: option.options,
 });
 
 export const convertInternalOptionToDropdownOption = <TData>(
@@ -254,5 +254,5 @@ export const convertInternalOptionToDropdownOption = <TData>(
 ): DropdownOption<TData> => ({
   data: option.data,
   label: option.label,
-  value: option.value
+  value: option.value,
 });

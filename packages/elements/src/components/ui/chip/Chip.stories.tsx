@@ -1,9 +1,12 @@
 import { Column, LargeText, Row, Space } from "@stenajs-webui/core";
 import { Chip, ChipVariant } from "@stenajs-webui/elements";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
-storiesOf("elements/Chip", module).add("standard", () => (
+export default {
+  title: "elements/Chip",
+};
+
+export const Standard = () => (
   <Column>
     {([
       "primary",
@@ -12,8 +15,8 @@ storiesOf("elements/Chip", module).add("standard", () => (
       "warning",
       "success",
       "passive",
-      "turquoise"
-    ] as Array<ChipVariant>).map(variant => (
+      "turquoise",
+    ] as Array<ChipVariant>).map((variant) => (
       <>
         <LargeText>{variant}</LargeText>
         <Space />
@@ -42,4 +45,6 @@ storiesOf("elements/Chip", module).add("standard", () => (
       </>
     ))}
   </Column>
-));
+);
+
+Standard.storyName = "standard";

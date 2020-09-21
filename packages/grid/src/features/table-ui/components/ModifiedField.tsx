@@ -7,7 +7,7 @@ import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import {
   CrudStatusIndicator,
-  hasIndicatorContent
+  hasIndicatorContent,
 } from "./CrudStatusIndicator";
 
 interface Props {
@@ -23,7 +23,7 @@ export const ModifiedField: React.FC<Props> = ({
   warningOnEmpty,
   value,
   modifiedField,
-  crudStatus
+  crudStatus,
 }) => {
   const showEmptyFieldWarning =
     warningOnEmpty && modifiedField?.modified && modifiedField?.newValue === "";

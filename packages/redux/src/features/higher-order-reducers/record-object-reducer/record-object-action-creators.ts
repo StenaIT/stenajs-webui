@@ -3,7 +3,7 @@ import {
   RecordObjectClearRecordAction,
   RecordObjectRecordAction,
   RecordObjectKey,
-  RecordObjectWrappedAction
+  RecordObjectWrappedAction,
 } from "./record-object-actions";
 
 export interface RecordObjectActions<
@@ -23,13 +23,13 @@ export const createRecordObjectActions = <
   recordAction: (recordId, action) => ({
     type: action.type,
     action,
-    recordId
+    recordId,
   }),
-  clearRecord: recordId => ({
+  clearRecord: (recordId) => ({
     type: "RECORD_OBJECT:CLEAR_RECORD",
-    recordId
+    recordId,
   }),
   clearAllRecords: () => ({
-    type: "RECORD_OBJECT:CLEAR_ALL_RECORDS"
-  })
+    type: "RECORD_OBJECT:CLEAR_ALL_RECORDS",
+  }),
 });

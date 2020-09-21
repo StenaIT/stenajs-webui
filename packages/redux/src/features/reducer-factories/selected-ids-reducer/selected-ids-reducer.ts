@@ -8,7 +8,7 @@ export interface SelectedIdsState {
 export const createSelectedIdsReducerInitialState = (
   initialSelection: string[] = []
 ): SelectedIdsState => ({
-  selectedIds: initialSelection
+  selectedIds: initialSelection,
 });
 
 const INITIAL_STATE = createSelectedIdsReducerInitialState();
@@ -24,13 +24,13 @@ export const createSelectedIdsReducer = (): SelectedIdsReducer => (
       const { selectedIds } = action;
       return {
         ...state,
-        selectedIds
+        selectedIds,
       };
     }
     case "SELECTED_IDS:CLEAR_SELECTED_IDS": {
       return {
         ...state,
-        selectedIds: []
+        selectedIds: [],
       };
     }
     default:

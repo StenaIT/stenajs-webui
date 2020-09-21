@@ -72,7 +72,7 @@ const ClickableElement = styled.button<ClickableElementProps>`
   ${({ pointer }) => (pointer ? "cursor: pointer;" : "")}
 
   :hover {
-    ${props => (props.opacityOnHover ? "opacity: 0.7;" : "")};
+    ${(props) => (props.opacityOnHover ? "opacity: 0.7;" : "")};
     ${({ hoverBackground }) => `background: ${hoverBackground};`}
   }
   :active {
@@ -114,8 +114,8 @@ export const Clickable: React.FC<ClickableProps> = ({
       colors: {
         background: background,
         hoverBackground: hoverBackground,
-        focusBackground: focusBackground
-      }
+        focusBackground: focusBackground,
+      },
     },
     [background, hoverBackground, focusBackground]
   );

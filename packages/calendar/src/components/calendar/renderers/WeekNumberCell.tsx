@@ -19,14 +19,14 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
   week,
   background,
   backgroundColor,
-  prefix
+  prefix,
 }) => {
   const { colors } = useThemeFields(
     {
       colors: {
         backgroundColor: theme.WeekNumber.backgroundColor,
-        textColor: theme.WeekNumber.textColor
-      }
+        textColor: theme.WeekNumber.textColor,
+      },
     },
     [theme]
   );
@@ -37,7 +37,7 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
       position={"relative"}
     >
       <Clickable
-        onClick={onClickWeek ? ev => onClickWeek(week, ev) : undefined}
+        onClick={onClickWeek ? (ev) => onClickWeek(week, ev) : undefined}
         disableFocusHighlight={!onClickWeek}
       >
         <Box

@@ -11,13 +11,13 @@ export interface ErrorPanelProps {
 
 export const ErrorPanel: React.FC<ErrorPanelProps> = ({
   text = "Something unexpected happened.",
-  theme = defaultErrorPanelTheme
+  theme = defaultErrorPanelTheme,
 }) => {
   const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: theme.backgroundColor
-      }
+        backgroundColor: theme.backgroundColor,
+      },
     },
     [theme]
   );

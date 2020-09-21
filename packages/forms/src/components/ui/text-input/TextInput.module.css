@@ -39,6 +39,7 @@
   --swui-textinput-border-color-disabled: var(
     --swui-field-border-color-disabled
   );
+
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
 
@@ -82,6 +83,7 @@
     &.modified {
       --current-bg: var(--swui-textinput-bg-modified);
       --current-border-color: var(--swui-textinput-border-color-modified);
+      --current-icon-color: var(--lhds-color-blue-300);
     }
 
     &.error {
@@ -99,6 +101,12 @@
     &.disabled {
       --current-bg: var(--swui-textinput-bg-color-disabled);
       --current-border-color: var(--swui-textinput-border-color-disabled);
+    }
+
+    &&.hideBorder {
+      border: none;
+      box-shadow: none;
+      background: none;
     }
 
     .input {
@@ -124,6 +132,10 @@
 
       &:focus {
         outline: none;
+      }
+
+      &::-webkit-calendar-picker-indicator{
+        display: none;
       }
     }
   }

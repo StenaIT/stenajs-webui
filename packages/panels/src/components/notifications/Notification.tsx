@@ -8,7 +8,7 @@ import {
   Space,
   StandardText,
   ThemeColorField,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { formatDistance } from "date-fns";
@@ -16,7 +16,7 @@ import * as React from "react";
 import { ReactNode, useMemo } from "react";
 import {
   defaultNotificationTheme,
-  NotificationTheme
+  NotificationTheme,
 } from "./NotificationTheme";
 
 export interface NotificationProps {
@@ -40,7 +40,7 @@ export const Notification: React.FC<NotificationProps> = ({
   content,
   date,
   dismissed,
-  theme = defaultNotificationTheme
+  theme = defaultNotificationTheme,
 }) => {
   const { colors } = useThemeFields(
     {
@@ -49,8 +49,8 @@ export const Notification: React.FC<NotificationProps> = ({
         notificationHoverBg: theme.notificationHoverBg,
         notificationDismissedBg: theme.notificationDismissedBg,
         notificationDismissedHoverBg: theme.notificationDismissedHoverBg,
-        disabledText: "disabledText"
-      }
+        disabledText: "disabledText",
+      },
     },
     [theme]
   );

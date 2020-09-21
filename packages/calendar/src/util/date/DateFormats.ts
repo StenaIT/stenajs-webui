@@ -7,5 +7,5 @@ export const DateFormats = {
   weekDayName: "EEEE", // Tuesday
   weekDayNameShort: "EEE", // Tue
   dateAndMonth: "d MMM", // 2 Jan
-  monthAndDate: "MMM do" // Jan 2nd
+  monthAndDate: "MMM do", // Jan 2nd
 };

@@ -23,7 +23,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     showHeaderExpandCollapse,
     enableExpandCollapse,
     columnOrder,
-    rowIndent
+    rowIndent,
   } = useStandardTableConfig();
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
@@ -31,7 +31,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   const {
     allItemsAreSelected,
     onClickCheckbox,
-    selectionIsEmpty
+    selectionIsEmpty,
   } = useTableHeadCheckbox(items);
 
   const checkboxDisabled = !items || items.length === 0;
@@ -74,7 +74,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
           </Row>
         </TableHeadItem>
       )}
-      {columnOrder.map(columnId => (
+      {columnOrder.map((columnId) => (
         <StandardTableHeadItem columnId={columnId} key={columnId} />
       ))}
       {rowIndent && <Indent num={rowIndent} />}

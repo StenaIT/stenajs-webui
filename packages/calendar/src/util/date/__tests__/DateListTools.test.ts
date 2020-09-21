@@ -2,7 +2,7 @@ import { addDays } from "date-fns";
 import {
   addDateIfNotExists,
   listContainsDate,
-  removeDateIfExist
+  removeDateIfExist,
 } from "../DateListTools";
 
 describe("DateListTool", () => {

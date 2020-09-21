@@ -13,7 +13,7 @@ export const InfiniteList: React.FC<Props> = ({
   threshold = 100,
   children,
   disabled,
-  elementHeight
+  elementHeight,
 }) => {
   if (length < threshold || disabled) {
     return <>{children}</>;

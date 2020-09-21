@@ -4,7 +4,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import { useReducer } from "react";
 import {
   createEntityReducer,
-  EntityState
+  EntityState,
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
@@ -60,7 +60,7 @@ describe("reducer-id-gate", () => {
           me: EntityState<User>;
         }>({
           you: reducerIdGate("you", createEntityReducer<User>({})),
-          me: reducerIdGate("me", createEntityReducer<User>({}))
+          me: reducerIdGate("me", createEntityReducer<User>({})),
         });
 
         const sortOrder = reducerIdGate(
@@ -79,7 +79,7 @@ describe("reducer-id-gate", () => {
         const y = combineReducers({
           sortOrder,
           selectedIds,
-          expandedRows
+          expandedRows,
         });
 
         expect(x).toBeDefined();

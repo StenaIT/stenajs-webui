@@ -11,5 +11,5 @@ export const defaultNotificationTheme: NotificationTheme = {
   notificationBg: "#eaeaea",
   notificationHoverBg: "#eeeeee",
   notificationDismissedBg: "#ffffff",
-  notificationDismissedHoverBg: "#f4f4f4"
+  notificationDismissedHoverBg: "#f4f4f4",
 };

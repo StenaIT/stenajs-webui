@@ -3,7 +3,7 @@ import { CalendarTheme } from "../components/calendar/CalendarTheme";
 import {
   DayData,
   MonthData,
-  WeekData
+  WeekData,
 } from "../util/calendar/CalendarDataFactory";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
@@ -28,6 +28,10 @@ export interface CalendarOnClicks<T> {
   onClickWeek?: OnClickWeek;
   /** onClick for a day in the calendar */
   onClickDay?: OnClickDay<T>;
+  /** onClick for the month in the calendar header */
+  onClickMonth?: OnClickMonth;
+  /** onClick for the year in the calendar header */
+  onClickYear?: OnClickYear;
 }
 
 export type RenderWeekNumber = (
@@ -134,6 +138,8 @@ export type OnClickWeek = (
   week: WeekData,
   ev: React.MouseEvent<HTMLButtonElement>
 ) => void;
+export type OnClickMonth = (month: MonthData) => void;
+export type OnClickYear = (year: number) => void;
 export type CalendarUserData<T> = { [key: string]: CalendarUserMonthData<T> };
 export type CalendarUserMonthData<T> = {
   [key: number]: CalendarUserWeekData<T>;

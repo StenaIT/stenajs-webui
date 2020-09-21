@@ -1,12 +1,44 @@
 # Changelog
 
+## 1.3.0
+
+### New features
+
+#### `DateRangeDualTextInput`
+
+New component `DateRangeDualTextInput` which has the same functionality as `DateRangeInput`.
+
+It does not replace it though, since they are not API compatible.
+
+### Improvements
+
+- Add `revertEditableEntity` action to `editable-entity-reducer`.
+- All calendars now has a panel for quickly selecting month and year.
+
+### Design changes
+
+- Disabled `ActionMenuItem` now has white background.
+
+### Breaking changes
+
+- `Months` enum have been renamed to `Month`.
+- `WeekDays` enum have been renamed to `WeekDay`.
+
+#### `Popover`
+
+`Popover` now uses Tippy, and Tippy's props.
+This means that some props have changed.
+
+Most importantly, content and children can no longer be functions.
+If you need the hide and show functions, implement them using local state and the Popover `visible` props.
+
 ## 1.2.0
 
 ### New features
 
-* `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
-* New reducer factory `editable-entity-reducer` which contains persisted and editable instances
-of entity.
+- `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
+- New reducer factory `editable-entity-reducer` which contains persisted and editable instances
+  of entity.
 
 ### Breaking changes
 
@@ -56,7 +88,7 @@ which can handle the actions as they see fit.
 
 #### Redux package types updated
 
-It now use type `Reducer` type from `redux` instead of `react`.
+It now uses type `Reducer` type from `redux` instead of `react`.
 This makes it compatible with `combineReducers` from Redux.
 
 ## 1.0.5

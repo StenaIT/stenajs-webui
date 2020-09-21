@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import {
   useStandardTableActions,
   useStandardTableConfig,
-  useStandardTableState
+  useStandardTableState,
 } from "./UseStandardTableConfig";
 
 export const useTableHeadCheckbox = <TItem>(
@@ -10,11 +10,11 @@ export const useTableHeadCheckbox = <TItem>(
 ) => {
   const { keyResolver } = useStandardTableConfig();
   const {
-    selectedIds: { selectedIds }
+    selectedIds: { selectedIds },
   } = useStandardTableState();
   const {
     actions: { selectByIds, clearSelection },
-    dispatch
+    dispatch,
   } = useStandardTableActions();
 
   const allItemsAreSelected = !items
@@ -26,7 +26,7 @@ export const useTableHeadCheckbox = <TItem>(
       if (allItemsAreSelected) {
         dispatch(clearSelection());
       } else {
-        dispatch(selectByIds(items.map(item => keyResolver(item))));
+        dispatch(selectByIds(items.map((item) => keyResolver(item))));
       }
     }
   }, [
@@ -35,12 +35,12 @@ export const useTableHeadCheckbox = <TItem>(
     dispatch,
     items,
     keyResolver,
-    selectByIds
+    selectByIds,
   ]);
 
   return {
     selectionIsEmpty: selectedIds.length === 0,
     allItemsAreSelected,
-    onClickCheckbox
+    onClickCheckbox,
   };
 };

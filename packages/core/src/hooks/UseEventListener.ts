@@ -26,7 +26,7 @@ export const useEventListener = <TEventName extends keyof HTMLElementEventMap>(
     if (!isSupported) return;
 
     // Create event listener that calls handler function stored in ref
-    const eventListener: EventHandler<TEventName> = event => {
+    const eventListener: EventHandler<TEventName> = (event) => {
       if (savedHandler.current) {
         return savedHandler.current(event);
       }

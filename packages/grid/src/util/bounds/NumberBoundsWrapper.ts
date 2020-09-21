@@ -20,7 +20,7 @@ export const wrapBounds = (
   }
   return {
     realX,
-    realY
+    realY,
   };
 };
 
@@ -48,7 +48,7 @@ export const wrapBoundsNextLine = (
   }
   return {
     realX: limitRange(realX, 0, maxX),
-    realY: limitRange(realY, 0, maxY)
+    realY: limitRange(realY, 0, maxY),
   };
 };
 

@@ -15,7 +15,7 @@ export const defaultToggleButtonTheme: ToggleButtonTheme = {
   textColorPressed: "white",
   textColorNotPressed: "primaryText",
   width: "28px",
-  height: "28px"
+  height: "28px",
 };
 
 export const defaultToggleButtonThemeDark: ToggleButtonTheme = {
@@ -24,5 +24,5 @@ export const defaultToggleButtonThemeDark: ToggleButtonTheme = {
   textColorPressed: "primaryText",
   textColorNotPressed: "white",
   width: "28px",
-  height: "28px"
+  height: "28px",
 };

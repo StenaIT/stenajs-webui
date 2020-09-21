@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   CalendarWithMonthSwitcher,
-  CalendarWithMonthSwitcherProps
+  CalendarWithMonthSwitcherProps,
 } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
 import { useDateRangeSelection } from "./hooks/UseDateRangeSelection";
@@ -14,7 +14,10 @@ export interface DateRangeCalendarOnChangeValue {
 }
 
 export interface DateRangeCalendarProps<T>
-  extends CalendarWithMonthSwitcherProps<T> {
+  extends Omit<
+    CalendarWithMonthSwitcherProps<T>,
+    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
+  > {
   startDate: Date | undefined;
   endDate: Date | undefined;
   focusedInput?: DateRangeFocusedInput;

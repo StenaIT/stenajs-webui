@@ -16,7 +16,7 @@ export const transformDateIntervalToDateStringInterval = (
 ): DateStringInterval => ({
   startDate:
     interval.startDate && format(interval.startDate, DateFormats.fullDate),
-  endDate: interval.endDate && format(interval.endDate, DateFormats.fullDate)
+  endDate: interval.endDate && format(interval.endDate, DateFormats.fullDate),
 });
 
 export const transformDateStringIntervalToDateInterval = (
@@ -31,7 +31,7 @@ export const transformDateStringIntervalToDateInterval = (
     endDate:
       (interval.endDate &&
         parse(interval.endDate, DateFormats.fullDate, now)) ||
-      undefined
+      undefined,
   };
 };
 
@@ -43,7 +43,7 @@ export const ensureStartIsFirst = (interval: DateInterval): DateInterval => {
   ) {
     return {
       startDate: interval.endDate,
-      endDate: interval.startDate
+      endDate: interval.startDate,
     };
   }
   return interval;

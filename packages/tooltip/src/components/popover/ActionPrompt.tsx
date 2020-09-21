@@ -17,7 +17,7 @@ export const ActionPrompt: React.FC<ActionPromptProps> = ({
   noLabel = "No",
   onNo,
   onYes,
-  loading
+  loading,
 }) => {
   return (
     <Column position={"relative"}>

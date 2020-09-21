@@ -4,22 +4,26 @@ import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
-import * as ReactDOM from "react-dom";
-import { Manager, Reference } from "react-popper";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
-  SingleDateCalendarProps
+  SingleDateCalendarProps,
 } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
-import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
-  defaultCalendarTheme
+  defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
+import { Popover } from "@stenajs-webui/tooltip";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
-  "value" | "onChange" | "theme"
+  | "value"
+  | "onChange"
+  | "theme"
+  | "dateInFocus"
+  | "setDateInFocus"
+  | "currentPanel"
+  | "setCurrentPanel"
 >;
 
 export interface DateTextInputProps<T>
@@ -74,7 +78,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   useMultiOnClickOutside([popupRef, outsideRef], closeCalendar);
 
   const onValueChangeHandler = useCallback(
-    value => {
+    (value) => {
       if (onValueChange) {
         onValueChange(value);
       }
@@ -103,53 +107,39 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   const invalid: boolean =
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
-  const popperContent = (
-    <CalendarPopperContent
-      innerRef={popupRef}
-      background={"var(--swui-field-bg-enabled)"}
-      borderColor={"var(--swui-modal-border-color)"}
-      zIndex={zIndex}
-      open={open}
-    >
-      <SingleDateCalendar
-        {...calendarProps}
-        onChange={onCalendarSelectDate}
-        value={
-          value && dateIsValid
-            ? parse(value, dateFormat, new Date())
-            : undefined
-        }
-        theme={calendarTheme}
-      />
-    </CalendarPopperContent>
-  );
   return (
     <Box innerRef={outsideRef} width={width}>
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <Box innerRef={ref}>
-              <TextInput
-                {...props}
-                variant={invalid ? "error" : "standard"}
-                iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
-                onClickLeft={
-                  !hideCalenderIcon && !disableCalender
-                    ? toggleCalendar
-                    : undefined
-                }
-                onValueChange={onValueChangeHandler}
-                placeholder={placeholder}
-                value={value || ""}
-                size={9}
-              />
-            </Box>
-          )}
-        </Reference>
-        {portalTarget
-          ? ReactDOM.createPortal(popperContent, portalTarget)
-          : popperContent}
-      </Manager>
+      <Popover
+        arrow={false}
+        visible={open}
+        zIndex={zIndex}
+        appendTo={portalTarget ?? "parent"}
+        content={
+          <SingleDateCalendar
+            {...calendarProps}
+            onChange={onCalendarSelectDate}
+            value={
+              value && dateIsValid
+                ? parse(value, dateFormat, new Date())
+                : undefined
+            }
+            theme={calendarTheme}
+          />
+        }
+      >
+        <TextInput
+          {...props}
+          variant={invalid ? "error" : "standard"}
+          iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
+          onClickLeft={
+            !hideCalenderIcon && !disableCalender ? toggleCalendar : undefined
+          }
+          onValueChange={onValueChangeHandler}
+          placeholder={placeholder}
+          value={value || ""}
+          size={9}
+        />
+      </Popover>
     </Box>
   );
 };

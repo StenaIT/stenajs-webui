@@ -71,16 +71,16 @@ export const defaultSelectTheme: SelectTheme = {
   arrowColor: {
     focused: {
       hover: "var(--lhds-color-ui-500)",
-      standard: "var(--lhds-color-ui-500)"
+      standard: "var(--lhds-color-ui-500)",
     },
     closed: {
       hover: "var(--lhds-color-ui-500)",
-      standard: "var(--lhds-color-ui-500)"
-    }
+      standard: "var(--lhds-color-ui-500)",
+    },
   },
   clearButtonColor: {
     hover: "var(--lhds-color-ui-600)",
-    standard: "var(--lhds-color-ui-500)"
+    standard: "var(--lhds-color-ui-500)",
   },
   input: {
     backgroundColor: "var(--swui-field-bg-enabled)",
@@ -96,10 +96,10 @@ export const defaultSelectTheme: SelectTheme = {
     minHeight: "32px",
     placeholderColor: "var(--swui-field-border-color-disabled)",
     textColor: "var(--swui-field-text-color)",
-    borderRadius: "var(--swui-field-border-radius)"
+    borderRadius: "var(--swui-field-border-radius)",
   },
   loadingIndicator: {
-    textColor: "var(--swui-field-text-color)"
+    textColor: "var(--swui-field-text-color)",
   },
   menu: {
     activeBackgroundColor: "var(--lhds-color-blue-50)",
@@ -116,10 +116,10 @@ export const defaultSelectTheme: SelectTheme = {
     selectedItemHoverTextColor: "var(--swui-field-text-color)",
     selectedItemBackgroundColor: "var(--swui-field-bg-enabled)",
     selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
-    zIndex: 1
+    zIndex: 1,
   },
   menuPortal: {
-    zIndex: 1
+    zIndex: 1,
   },
   multiSelect: {
     backgroundColor: "var(--swui-primary-action-color)",
@@ -127,24 +127,24 @@ export const defaultSelectTheme: SelectTheme = {
     removeButtonBackgroundColor: "transparent",
     removeButtonTextColor: "var(--swui-white)",
     removeButtonHoverBackgroundColor: "var(--swui-primary-action-color-hover)",
-    removeButtonHoverTextColor: "var(--swui-white)"
-  }
+    removeButtonHoverTextColor: "var(--swui-white)",
+  },
 };
 
 export const selectThemeDark: SelectTheme = {
   arrowColor: {
     focused: {
       hover: "white",
-      standard: "var(--lhds-color-ui-500)"
+      standard: "var(--lhds-color-ui-500)",
     },
     closed: {
       hover: "white",
-      standard: "var(--lhds-color-ui-500)"
-    }
+      standard: "var(--lhds-color-ui-500)",
+    },
   },
   clearButtonColor: {
     standard: "var(--lhds-color-ui-400)",
-    hover: "white"
+    hover: "white",
   },
   input: {
     backgroundColor: "#4a5d73",
@@ -160,10 +160,10 @@ export const selectThemeDark: SelectTheme = {
     minHeight: "32px",
     placeholderColor: "white",
     textColor: "white",
-    borderRadius: "4px"
+    borderRadius: "4px",
   },
   loadingIndicator: {
-    textColor: "white"
+    textColor: "white",
   },
   menu: {
     activeBackgroundColor: "#6F7E90",
@@ -180,10 +180,10 @@ export const selectThemeDark: SelectTheme = {
     selectedItemHoverTextColor: "white",
     selectedItemBackgroundColor: "#4a5d73",
     selectedItemHoverBackgroundColor: "#6F7E90",
-    zIndex: 1
+    zIndex: 1,
   },
   menuPortal: {
-    zIndex: 1
+    zIndex: 1,
   },
   multiSelect: {
     backgroundColor: "#B9D8DF",
@@ -191,6 +191,6 @@ export const selectThemeDark: SelectTheme = {
     removeButtonBackgroundColor: "#B9D8DF",
     removeButtonTextColor: "var(--lhds-color-ui-700)",
     removeButtonHoverBackgroundColor: "#226F81",
-    removeButtonHoverTextColor: "white"
-  }
+    removeButtonHoverTextColor: "white",
+  },
 };

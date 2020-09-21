@@ -86,7 +86,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
                 -webkit-appearance: none;
                 margin: 0;
               }
-            `
+            `,
           ])}
           disabled={disabled}
           {...restProps}

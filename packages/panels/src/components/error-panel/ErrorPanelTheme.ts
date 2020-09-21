@@ -9,5 +9,5 @@ export interface ErrorPanelTheme {
 export const defaultErrorPanelTheme: ErrorPanelTheme = {
   width: "350px",
   height: "250px",
-  backgroundColor: "disabledBackground"
+  backgroundColor: "disabledBackground",
 };

@@ -27,7 +27,7 @@ export const StandardTableCellUi = React.memo<Props>(
     gridCellRequiredProps,
     isEditing,
     justifyContent,
-    width
+    width,
   }) {
     return (
       <Row

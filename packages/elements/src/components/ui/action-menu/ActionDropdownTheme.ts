@@ -21,5 +21,5 @@ export const defaultActionDropdownTheme: ActionDropdownTheme = {
   expandIconColor: "var(--swui-field-border-color)",
   expandIconColorDisabled: "var(--swui-text-disabled-color)",
   expandIconColorFocus: "var(--swui-field-border-color-hover)",
-  height: "34px"
+  height: "34px",
 };

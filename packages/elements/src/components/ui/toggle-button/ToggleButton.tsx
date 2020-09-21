@@ -3,7 +3,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import {
   defaultToggleButtonTheme,
-  ToggleButtonTheme
+  ToggleButtonTheme,
 } from "./ToggleButtonTheme";
 
 interface ToggleButtonProps {
@@ -52,7 +52,7 @@ export const ToggleButton = ({
   last,
   width,
   onClick,
-  theme = defaultToggleButtonTheme
+  theme = defaultToggleButtonTheme,
 }: ToggleButtonProps) => {
   const { colors } = useThemeFields(
     {
@@ -60,8 +60,8 @@ export const ToggleButton = ({
         backgroundColorPressed: theme.backgroundColorPressed,
         backgroundColorNotPressed: theme.backgroundColorNotPressed,
         textColorPressed: theme.textColorPressed,
-        textColorNotPressed: theme.textColorNotPressed
-      }
+        textColorNotPressed: theme.textColorNotPressed,
+      },
     },
     [theme]
   );

@@ -31,7 +31,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   ...textAreaProps
 }) => {
   const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
-    ev => {
+    (ev) => {
       if (onChange) {
         onChange(ev);
       }

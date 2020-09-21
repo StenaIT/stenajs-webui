@@ -5,11 +5,10 @@ import {
   LargeText,
   Row,
   Space,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { Switch } from "@stenajs-webui/forms";
 import * as knobs from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
@@ -23,7 +22,7 @@ const SwitchOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   const [isEnabled, setIsEnabled] = useState(false);
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled(v => !v);
+      setIsEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
@@ -75,29 +74,38 @@ const SwitchOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-storiesOf("forms/Switch", module)
-  .add(
-    "Overview",
-    withState<State>({
-      checked: true,
-      selectedSmall: false,
-      selected: false
-    })(({ store }: { store: Store<State> }) => <SwitchOverview store={store} />)
-  )
-  .add("standard", () => (
+export default {
+  title: "forms/Switch",
+};
+
+export const Overview = withState<State>({
+  checked: true,
+  selectedSmall: false,
+  selected: false,
+})(({ store }: { store: Store<State> }) => <SwitchOverview store={store} />);
+
+export const Standard = () => (
+  <Switch
+    value={knobs.boolean("Toggled", false)}
+    disabled={knobs.boolean("Disabled", false)}
+  />
+);
+
+Standard.storyName = "standard";
+
+export const CustomActionColor = () => (
+  <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
     <Switch
       value={knobs.boolean("Toggled", false)}
       disabled={knobs.boolean("Disabled", false)}
     />
-  ))
-  .add("custom action color", () => (
-    <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
-      <Switch
-        value={knobs.boolean("Toggled", false)}
-        disabled={knobs.boolean("Disabled", false)}
-      />
-    </div>
-  ))
-  .add("disabled", () => (
-    <Switch value={knobs.boolean("Toggled", false)} disabled />
-  ));
+  </div>
+);
+
+CustomActionColor.storyName = "custom action color";
+
+export const Disabled = () => (
+  <Switch value={knobs.boolean("Toggled", false)} disabled />
+);
+
+Disabled.storyName = "disabled";

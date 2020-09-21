@@ -61,18 +61,18 @@ export const createEntityListReducer = <
 
     case "ENTITY_LIST:REMOVE_BY_FIELD_MATCH": {
       const { fields } = action;
-      return state.filter(item => !fieldsMatch(item, fields));
+      return state.filter((item) => !fieldsMatch(item, fields));
     }
 
     case "ENTITY_LIST:REMOVE": {
       const { entity } = action;
-      return state.filter(item => item !== entity);
+      return state.filter((item) => item !== entity);
     }
 
     case "ENTITY_LIST:TOGGLE": {
       const { entity } = action;
       const index = state.findIndex(
-        item => item === entity || fieldsMatch(item, entity)
+        (item) => item === entity || fieldsMatch(item, entity)
       );
 
       if (index >= 0) {
@@ -92,7 +92,7 @@ export const createEntityListReducer = <
           "No reducer specified, unable to handle 'actionByFieldsMatch'."
         );
       }
-      return state.map(item =>
+      return state.map((item) =>
         fieldsMatch(item, fields) ? reducer(item, innerAction) : item
       );
     }
@@ -116,7 +116,7 @@ export const createEntityListReducer = <
           "No reducer specified, unable to handle 'actionByIndex'."
         );
       }
-      return state.map(item => reducer(item, innerAction));
+      return state.map((item) => reducer(item, innerAction));
     }
 
     default:

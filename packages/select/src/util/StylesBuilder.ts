@@ -46,7 +46,7 @@ export const createStylesFromTheme = ({
   multiSelect,
   clearButtonColor,
   arrowColor,
-  loadingIndicator
+  loadingIndicator,
 }: SelectTheme): StylesConfig => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
@@ -69,8 +69,8 @@ export const createStylesFromTheme = ({
           : menu.activeBackgroundColor),
       color:
         !isDisabled &&
-        (isSelected ? menu.selectedItemActiveTextColor : menu.activeTextColor)
-    }
+        (isSelected ? menu.selectedItemActiveTextColor : menu.activeTextColor),
+    },
   }),
   control: (base, { isFocused, isDisabled }) => ({
     ...base,
@@ -87,94 +87,94 @@ export const createStylesFromTheme = ({
     boxShadow: isFocused ? input.boxShadowFocused : undefined,
     "&:hover": {
       border: input.borderFocused,
-      borderColor: input.borderColorFocused
-    }
+      borderColor: input.borderColorFocused,
+    },
   }),
-  singleValue: base => ({
+  singleValue: (base) => ({
     ...base,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    color: input.textColor
+    color: input.textColor,
   }),
-  noOptionsMessage: base => ({
-    ...base,
-    fontFamily: input.fontFamily,
-    fontSize: input.fontSize
-  }),
-  input: base => ({
+  noOptionsMessage: (base) => ({
     ...base,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    color: input.textColor
   }),
-  groupHeading: base => ({
+  input: (base) => ({
     ...base,
-    fontFamily: input.fontFamily
+    fontFamily: input.fontFamily,
+    fontSize: input.fontSize,
+    color: input.textColor,
   }),
-  multiValueLabel: base => ({
+  groupHeading: (base) => ({
+    ...base,
+    fontFamily: input.fontFamily,
+  }),
+  multiValueLabel: (base) => ({
     ...base,
     backgroundColor: multiSelect.backgroundColor,
     color: multiSelect.textColor,
     fontFamily: input.fontFamily,
-    fontSize: "12px"
+    fontSize: "12px",
   }),
-  indicatorSeparator: base => ({
+  indicatorSeparator: (base) => ({
     ...base,
-    display: "none"
+    display: "none",
   }),
-  clearIndicator: base => ({
+  clearIndicator: (base) => ({
     ...base,
     padding: "5px",
     color: clearButtonColor.standard,
     "&:hover": {
-      color: clearButtonColor.hover
+      color: clearButtonColor.hover,
     },
-    cursor: "pointer"
+    cursor: "pointer",
   }),
-  placeholder: base => ({
+  placeholder: (base) => ({
     ...base,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    color: input.placeholderColor
+    color: input.placeholderColor,
   }),
-  container: base => ({
-    ...base
-  }),
-  valueContainer: base => ({
+  container: (base) => ({
     ...base,
-    padding: "0 8px"
+  }),
+  valueContainer: (base) => ({
+    ...base,
+    padding: "0 8px",
   }),
   dropdownIndicator: (base, { isFocused }) => ({
     ...base,
     padding: "5px",
     color: isFocused ? arrowColor.focused.standard : arrowColor.closed.standard,
     "&:hover": {
-      color: isFocused ? arrowColor.focused.hover : arrowColor.closed.hover
+      color: isFocused ? arrowColor.focused.hover : arrowColor.closed.hover,
     },
     svg: {
       width: 14,
-      height: 14
-    }
+      height: 14,
+    },
   }),
-  menu: base => ({
+  menu: (base) => ({
     ...base,
     backgroundColor: menu.backgroundColor,
     color: menu.textColor,
     minWidth: menu.minWidth || base.minWidth,
     zIndex: menu.zIndex,
     width: menu.width || base.width,
-    border: input.borderFocused
+    border: input.borderFocused,
   }),
-  menuPortal: base => ({
+  menuPortal: (base) => ({
     ...base,
-    zIndex: menuPortal.zIndex
+    zIndex: menuPortal.zIndex,
   }),
-  multiValueRemove: styles => ({
+  multiValueRemove: (styles) => ({
     ...styles,
     backgroundColor: multiSelect.removeButtonBackgroundColor,
     ":hover": {
       color: multiSelect.removeButtonHoverTextColor,
-      backgroundColor: multiSelect.removeButtonHoverBackgroundColor
+      backgroundColor: multiSelect.removeButtonHoverBackgroundColor,
     },
     color: multiSelect.removeButtonTextColor,
     borderRadius: "50%",
@@ -186,9 +186,9 @@ export const createStylesFromTheme = ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    cursor: "pointer"
+    cursor: "pointer",
   }),
-  multiValue: base => ({
+  multiValue: (base) => ({
     ...base,
     backgroundColor: multiSelect.backgroundColor,
     color: multiSelect.textColor,
@@ -196,12 +196,12 @@ export const createStylesFromTheme = ({
     fontSize: "12px",
     alignItems: "center",
     margin: 0,
-    marginRight: 2
+    marginRight: 2,
   }),
-  loadingMessage: base => ({
+  loadingMessage: (base) => ({
     ...base,
     color: loadingIndicator.textColor,
     fontFamily: input.fontFamily,
-    fontSize: input.fontSize
-  })
+    fontSize: input.fontSize,
+  }),
 });

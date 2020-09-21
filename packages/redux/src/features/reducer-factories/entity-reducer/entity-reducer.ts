@@ -22,7 +22,7 @@ export const createEntityReducer = <T>(
         const { fields } = action;
         return {
           ...state,
-          ...fields
+          ...fields,
         };
       }
 

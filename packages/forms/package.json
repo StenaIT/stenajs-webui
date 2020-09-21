@@ -32,7 +32,7 @@
     "@stenajs-webui/elements": "1.2.0",
     "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
-    "date-fns": "2.0.1"
+    "date-fns": "2.16.1"
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.10",

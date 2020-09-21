@@ -4,7 +4,7 @@ import { smallTableRowWidth } from "../../../../config/TableConfig";
 
 interface Props extends TableCellProps {}
 
-export const SmallTableCell: React.FC<Props> = props => {
+export const SmallTableCell: React.FC<Props> = (props) => {
   return (
     <TableCell
       width={smallTableRowWidth}

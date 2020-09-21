@@ -12,17 +12,17 @@ describe("useOnClickOutside", () => {
     metaKey: true,
     pointerX: 1,
     pointerY: 1,
-    shiftKey: true
+    shiftKey: true,
   };
 
   it("is not called when any element is clicked", () => {
     const button = document.createElement("button");
     const button2 = document.createElement("button");
     const {
-      result: { current: ref }
+      result: { current: ref },
     } = renderHook(() => useRef<EventTarget | null>(button));
     const {
-      result: { current: ref2 }
+      result: { current: ref2 },
     } = renderHook(() => useRef<EventTarget | null>(button2));
     const handler = jest.fn();
     const event = document.createEvent("MouseEvent");
@@ -55,13 +55,13 @@ describe("useOnClickOutside", () => {
     const button = document.createElement("button");
     const button2 = document.createElement("button");
     const {
-      result: { current: ref }
+      result: { current: ref },
     } = renderHook(() => useRef<EventTarget | null>(button));
     const {
-      result: { current: ref2 }
+      result: { current: ref2 },
     } = renderHook(() => useRef<EventTarget | null>(button2));
     const {
-      result: { current: nullRef }
+      result: { current: nullRef },
     } = renderHook(() => useRef<EventTarget | null>(null));
     const handler = jest.fn();
     const event = document.createEvent("MouseEvent");

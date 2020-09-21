@@ -57,6 +57,6 @@ export const useRevertableValue = <TValue>(
     setRevertValue,
     revert,
     commit,
-    getValue
+    getValue,
   };
 };

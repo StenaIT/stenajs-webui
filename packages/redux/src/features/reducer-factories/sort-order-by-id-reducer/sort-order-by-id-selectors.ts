@@ -13,11 +13,11 @@ export const createSortOrderByIdSelectors = <TStoreState>(
   rootStateProvider: SortOrderByIdStateProvider<TStoreState>
 ): SortOrderByIdSelectors<TStoreState> => {
   return {
-    getSortOrderByIdState: state => {
+    getSortOrderByIdState: (state) => {
       return rootStateProvider(state);
     },
-    getSortOrder: state => {
+    getSortOrder: (state) => {
       return rootStateProvider(state).ids;
-    }
+    },
   };
 };

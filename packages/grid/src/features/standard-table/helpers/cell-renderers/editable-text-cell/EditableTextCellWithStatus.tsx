@@ -20,7 +20,7 @@ export const createEditableTextCellWithStatus = <TItemValue, TItem>(
     stopEditingAndRevert,
     lastKeyEvent,
     stopEditing,
-    stopEditingAndMove
+    stopEditingAndMove,
   },
   isEditable
 ) => {

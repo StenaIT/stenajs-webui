@@ -1,28 +1,38 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { Indent, Row, Space } from "@stenajs-webui/core";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import { FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { CalendarTheme } from "../../components/calendar/CalendarTheme";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
 
 export interface WithMonthSwitcherBelowProps {
   theme: CalendarTheme;
   nextMonth: () => void;
   prevMonth: () => void;
+  nextYear: () => void;
+  prevYear: () => void;
 }
 
 export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({
   children,
   prevMonth,
-  nextMonth
+  nextMonth,
+  prevYear,
+  nextYear,
 }) => (
   <div>
     {children}
     <Indent>
       <Row>
-        <PrimaryButton onClick={prevMonth} leftIcon={faChevronUp} />
+        <FlatButton onClick={prevYear} leftIcon={faAngleDoubleLeft} />
         <Space />
-        <PrimaryButton onClick={nextMonth} leftIcon={faChevronDown} />
+        <FlatButton onClick={prevMonth} leftIcon={faAngleLeft} />
+        <Indent num={2} />
+        <FlatButton onClick={nextMonth} leftIcon={faAngleRight} />
+        <Space />
+        <FlatButton onClick={nextYear} leftIcon={faAngleDoubleRight} />
       </Row>
     </Indent>
     <Space />

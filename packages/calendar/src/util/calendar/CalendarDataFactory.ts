@@ -12,11 +12,11 @@ import {
   getYear,
   isSameDay,
   startOfISOWeek,
-  startOfMonth
+  startOfMonth,
 } from "date-fns";
 import { DateFormats } from "../date/DateFormats";
 
-export enum Months {
+export enum Month {
   JANUARY = 0,
   FEBRUARY,
   MARCH,
@@ -28,17 +28,17 @@ export enum Months {
   SEPTEMBER,
   OCTOBER,
   NOVEMBER,
-  DECEMBER
+  DECEMBER,
 }
 
-export enum WeekDays {
+export enum WeekDay {
   SUNDAY = 0,
   MONDAY,
   TUESDAY,
   WEDNESDAY,
   THURSDAY,
   FRIDAY,
-  SATURDAY
+  SATURDAY,
 }
 
 export interface DayData {
@@ -95,7 +95,7 @@ export const getMonthInYear = (year: number, month: number): MonthData => {
     name: format(firstDayOfMonth, DateFormats.fullMonthName),
     year: yearToUse,
     monthInYear: monthToUse,
-    weeks: getWeeksForMonth(yearToUse, monthToUse)
+    weeks: getWeeksForMonth(yearToUse, monthToUse),
   };
 };
 
@@ -127,7 +127,7 @@ export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
     endMonth: getMonth(addDays(firstDayOfWeek, 6)),
     endYear: getYear(addDays(firstDayOfWeek, 6)),
     days: getDaysForWeekForDate(firstDayOfWeek),
-    isLastWeekOfMonth
+    isLastWeekOfMonth,
   };
 };
 
@@ -145,14 +145,14 @@ export const createDay = (date: Date): DayData => {
     isFirstDayOfWeek: dayOfWeek === 1,
     isLastDayOfWeek: dayOfWeek === 7,
     isFirstDayOfMonth: isSameDay(startOfMonth(date), date),
-    isLastDayOfMonth: isSameDay(endOfMonth(date), date)
+    isLastDayOfMonth: isSameDay(endOfMonth(date), date),
   };
 };
 
 export const getDaysForWeekForDate = (firstDayOfWeek: Date): Array<DayData> => {
   return eachDayOfInterval({
     start: firstDayOfWeek,
-    end: addDays(firstDayOfWeek, 6)
+    end: addDays(firstDayOfWeek, 6),
   }).map(createDay);
 };
 
@@ -175,10 +175,10 @@ export const calculateOverflowingMonth = (
   year: number,
   month: number
 ): { year: number; month: number } => {
-  if (month > Months.DECEMBER) {
+  if (month > Month.DECEMBER) {
     return { year: year + Math.floor(month / 12), month: month % 12 };
   }
-  if (month < Months.JANUARY) {
+  if (month < Month.JANUARY) {
     return { year: year + Math.floor(month / 12), month: 12 + (month % 12) };
   }
   return { year, month };

@@ -1,11 +1,11 @@
 import {
   createEntityListReducer,
-  EntityListState
+  EntityListState,
 } from "../entity-list-reducer";
 import { createEntityListActions } from "../entity-list-action-creators";
 import {
   createEntityReducer,
-  EntityState
+  EntityState,
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { EntityAction } from "../../../reducer-factories/entity-reducer/entity-actions";
 import { createEntityActions } from "../../../reducer-factories/entity-reducer/entity-action-creators";
@@ -27,7 +27,7 @@ describe("entity-list-reducer", () => {
     const {
       setList,
       actionByFieldsMatch,
-      actionByIndex
+      actionByIndex,
     } = createEntityListActions<User, EntityAction<User>>();
 
     describe("actionByFieldsMatch", () => {
@@ -37,7 +37,7 @@ describe("entity-list-reducer", () => {
         setList([
           { a: "a", b: "b" },
           { a: "a2", b: "b2" },
-          { a: "a3", b: "b3" }
+          { a: "a3", b: "b3" },
         ])
       );
       expect(s.length).toBe(3);
@@ -61,7 +61,7 @@ describe("entity-list-reducer", () => {
         setList([
           { a: "a", b: "b" },
           { a: "a2", b: "b2" },
-          { a: "a3", b: "b3" }
+          { a: "a3", b: "b3" },
         ])
       );
       expect(s.length).toBe(3);
@@ -91,7 +91,7 @@ describe("entity-list-reducer", () => {
       removeLast,
       removeFirst,
       removeByFieldMatch,
-      toggle
+      toggle,
     } = createEntityListActions<User>();
 
     describe("setList", () => {
@@ -99,7 +99,7 @@ describe("entity-list-reducer", () => {
         const r = reducer(
           [
             { a: "a1", b: "b1" },
-            { a: "a2", b: "b2" }
+            { a: "a2", b: "b2" },
           ],
           setList([{ a: "a3", b: "b3" }])
         );
@@ -112,7 +112,7 @@ describe("entity-list-reducer", () => {
         const r = reducer(
           [
             { a: "a1", b: "b1" },
-            { a: "a2", b: "b2" }
+            { a: "a2", b: "b2" },
           ],
           clearList()
         );
@@ -146,7 +146,7 @@ describe("entity-list-reducer", () => {
         const r = reducer(
           [
             { a: "a1", b: "b1" },
-            { a: "a2", b: "b2" }
+            { a: "a2", b: "b2" },
           ],
           removeFirst()
         );
@@ -159,7 +159,7 @@ describe("entity-list-reducer", () => {
         const r = reducer(
           [
             { a: "a1", b: "b1" },
-            { a: "a2", b: "b2" }
+            { a: "a2", b: "b2" },
           ],
           removeLast()
         );
@@ -174,7 +174,7 @@ describe("entity-list-reducer", () => {
             const r = reducer(
               [
                 { a: "a1", b: "b1" },
-                { a: "a2", b: "b2" }
+                { a: "a2", b: "b2" },
               ],
               removeAtIndex(0)
             );
@@ -188,7 +188,7 @@ describe("entity-list-reducer", () => {
               reducer(
                 [
                   { a: "a1", b: "b1" },
-                  { a: "a2", b: "b2" }
+                  { a: "a2", b: "b2" },
                 ],
                 removeAtIndex(2)
               );
@@ -201,7 +201,7 @@ describe("entity-list-reducer", () => {
               reducer(
                 [
                   { a: "a1", b: "b1" },
-                  { a: "a2", b: "b2" }
+                  { a: "a2", b: "b2" },
                 ],
                 removeAtIndex(-1)
               );
@@ -217,7 +217,7 @@ describe("entity-list-reducer", () => {
             const r = reducer(
               [
                 { a: "a1", b: "b1" },
-                { a: "a2", b: "b2" }
+                { a: "a2", b: "b2" },
               ],
               removeByFieldMatch({ a: "a1" })
             );
@@ -263,7 +263,7 @@ describe("entity-list-reducer", () => {
             const r = reducer(
               [
                 { a: "a1", b: "b1" },
-                { a: "a2", b: "b2" }
+                { a: "a2", b: "b2" },
               ],
               toggle({ a: "a2", b: "b2" })
             );
@@ -276,7 +276,7 @@ describe("entity-list-reducer", () => {
             const r = reducer(
               [
                 { a: "a1", b: "b1" },
-                { a: "a2", b: "b2" }
+                { a: "a2", b: "b2" },
               ],
               toggle({ a: "a3", b: "b3" })
             );

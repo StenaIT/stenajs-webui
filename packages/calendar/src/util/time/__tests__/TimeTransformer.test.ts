@@ -1,6 +1,6 @@
 import {
   transformNumberTimeToString,
-  transformTimeStringToNumber
+  transformTimeStringToNumber,
 } from "../TimeTransformer";
 
 describe("TimeTransformer", () => {

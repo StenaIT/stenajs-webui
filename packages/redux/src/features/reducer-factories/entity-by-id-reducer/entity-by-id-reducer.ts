@@ -19,8 +19,8 @@ export const createEntityByIdReducer = <T extends EntityWithId>() => {
           ...state,
           entities: {
             ...state.entities,
-            [entity.id]: entity
-          }
+            [entity.id]: entity,
+          },
         };
       }
 
@@ -32,28 +32,28 @@ export const createEntityByIdReducer = <T extends EntityWithId>() => {
             ...state.entities,
             [id]: {
               ...state.entities[id],
-              ...fields
-            }
-          }
+              ...fields,
+            },
+          },
         };
       }
 
       case "ENTITY_BY_ID:CLEAR_ALL_ENTITIES": {
         return {
           ...state,
-          entities: {}
+          entities: {},
         };
       }
 
       case "ENTITY_BY_ID:CLEAR_ENTITY": {
         const { id } = action;
         const entities = {
-          ...state.entities
+          ...state.entities,
         };
         delete entities[id];
         return {
           ...state,
-          entities
+          entities,
         };
       }
 

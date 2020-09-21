@@ -1,5 +1,4 @@
 import { Box, Row, Spacing, StandardText } from "@stenajs-webui/core";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 export const createIndexArray = (length: number) =>
@@ -7,7 +6,12 @@ export const createIndexArray = (length: number) =>
 
 const items = createIndexArray(30);
 
-storiesOf("core/Responsive/Box", module).add("standard", () => (
+export default {
+  title: "core/Responsive/Box",
+  excludeStories: ["createIndexArray"],
+};
+
+export const Standard = () => (
   <>
     <Spacing>
       <StandardText>
@@ -31,4 +35,6 @@ storiesOf("core/Responsive/Box", module).add("standard", () => (
       ))}
     </Row>
   </>
-));
+);
+
+Standard.storyName = "standard";

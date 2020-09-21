@@ -1,6 +1,6 @@
 import {
   EntitySetEntityAction,
-  EntitySetEntityFieldsAction
+  EntitySetEntityFieldsAction,
 } from "./entity-actions";
 
 export interface EntityActions<T> {
@@ -9,12 +9,12 @@ export interface EntityActions<T> {
 }
 
 export const createEntityActions = <T>(): EntityActions<T> => ({
-  setEntity: entity => ({
+  setEntity: (entity) => ({
     type: "ENTITY:SET_ENTITY",
-    entity
+    entity,
   }),
-  setEntityFields: fields => ({
+  setEntityFields: (fields) => ({
     type: "ENTITY:SET_ENTITY_FIELDS",
-    fields
-  })
+    fields,
+  }),
 });

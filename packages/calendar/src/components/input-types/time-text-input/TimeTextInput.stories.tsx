@@ -1,107 +1,110 @@
 import { Store, withState } from "@dump247/storybook-state";
 import { TimeTextInput } from "@stenajs-webui/calendar";
 import { Box } from "@stenajs-webui/core";
-import { color } from "@storybook/addon-knobs";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 
 interface TimeTextInputState {
   value?: string;
 }
 
-storiesOf("calendar/Input/TimeTextInput", module)
-  .add(
-    "standard",
-    withState<TimeTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <Box width={"125px"}>
-        <TimeTextInput
-          value={store.state.value}
-          onValueChange={value => store.set({ value })}
-        />
-      </Box>
-    ))
-  )
-  .add(
-    "empty",
-    withState<TimeTextInputState>({
-      value: ""
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
-    ))
-  )
-  .add(
-    "with time",
-    withState<TimeTextInputState>({
-      value: "23:59"
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
-    ))
-  )
-  .add(
-    "with invalid time",
-    withState<TimeTextInputState>({
-      value: "9:xx"
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-      />
-    ))
-  )
-  .add(
-    "without icon",
-    withState<TimeTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-        useIcon={false}
-      />
-    ))
-  )
-  .add(
-    "without placeholder",
-    withState<TimeTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-        showPlaceholder={false}
-      />
-    ))
-  )
-  .add(
-    "disabled",
-    withState<TimeTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-        disabled={true}
-      />
-    ))
-  )
-  .add("invalid", () => <TimeTextInput value={"invalid"} invalid={true} />)
-  .add(
-    "with background color",
-    withState<TimeTextInputState>({
-      value: undefined
-    })(({ store }: { store: Store<TimeTextInputState> }) => (
-      <TimeTextInput
-        value={store.state.value}
-        onValueChange={value => store.set({ value })}
-        backgroundColor={color("Background", "#f0f060")}
-      />
-    ))
-  );
+export default {
+  title: "calendar/Input/TimeTextInput",
+};
+
+export const Standard = withState<TimeTextInputState>({
+  value: undefined,
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+    />
+  </Box>
+));
+
+export const Empty = withState<TimeTextInputState>({
+  value: "",
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+    />
+  </Box>
+));
+
+export const WithTime = withState<TimeTextInputState>({
+  value: "23:59",
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+    />
+  </Box>
+));
+
+export const WithInvalidTime = withState<TimeTextInputState>({
+  value: "9:xx",
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+    />
+  </Box>
+));
+
+export const WithoutIcon = withState<TimeTextInputState>({
+  value: undefined,
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+      useIcon={false}
+    />
+  </Box>
+));
+
+export const WithoutPlaceholder = withState<TimeTextInputState>({
+  value: undefined,
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+      showPlaceholder={false}
+    />
+  </Box>
+));
+
+export const Disabled = withState<TimeTextInputState>({
+  value: undefined,
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+      disabled={true}
+    />
+  </Box>
+));
+
+export const Invalid = () => (
+  <Box width={"125px"}>
+    <TimeTextInput value={"invalid"} invalid={true} />
+  </Box>
+);
+
+export const WithVariantModified = withState<TimeTextInputState>({
+  value: undefined,
+})(({ store }: { store: Store<TimeTextInputState> }) => (
+  <Box width={"125px"}>
+    <TimeTextInput
+      value={store.state.value}
+      onValueChange={(value) => store.set({ value })}
+      variant={"modified"}
+    />
+  </Box>
+));

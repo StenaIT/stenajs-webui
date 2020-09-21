@@ -8,13 +8,13 @@ import {
   CalendarProps,
   CalendarUserData,
   DayState,
-  Renderers
+  Renderers,
 } from "../../types/CalendarTypes";
 import {
   calculateOverflowingMonth,
   getMonthInYear,
   getMonthsInYear,
-  MonthData
+  MonthData,
 } from "../../util/calendar/CalendarDataFactory";
 
 import { CalendarMonth } from "./CalendarMonth";
@@ -43,13 +43,15 @@ function CalendarPanel<T extends {}>({
   onClickDay,
   onClickWeekDay,
   onClickWeek,
+  onClickMonth,
+  onClickYear,
   renderWeekDay,
   renderWeekNumber,
   headerLeftContent,
   headerRightContent,
   extraDayContent,
   defaultHighlights,
-  theme = defaultCalendarTheme
+  theme = defaultCalendarTheme,
 }: CalendarPanelProps<T>) {
   return (
     <div>
@@ -71,6 +73,8 @@ function CalendarPanel<T extends {}>({
                   onClickDay={onClickDay}
                   onClickWeekDay={onClickWeekDay}
                   onClickWeek={onClickWeek}
+                  onClickMonth={onClickMonth}
+                  onClickYear={onClickYear}
                   theme={theme}
                   renderWeekNumber={renderWeekNumber}
                   renderWeekDay={renderWeekDay}
@@ -121,19 +125,19 @@ const getInitialDate = (year?: number, month?: number, date?: Date) => {
   if (month && year) {
     return {
       month,
-      year
+      year,
     };
   }
   if (date) {
     return {
       month: getMonth(date),
-      year: getYear(date)
+      year: getYear(date),
     };
   }
   const now = new Date();
   return {
     month: getMonth(now),
-    year: getYear(now)
+    year: getYear(now),
   };
 };
 

@@ -2,16 +2,16 @@ import { Reducer } from "redux";
 import { EntityByIdAction } from "../entity-by-id-reducer/entity-by-id-actions";
 import {
   createEntityByIdReducer,
-  EntityByIdState
+  EntityByIdState,
 } from "../entity-by-id-reducer/entity-by-id-reducer";
 import {
   createEntityByIdSelectors,
   EntityByIdSelectors,
-  EntityByIdStateSelector
+  EntityByIdStateSelector,
 } from "../entity-by-id-reducer/entity-by-id-selectors";
 import {
   createEntityByIdActions,
-  EntityByIdActions
+  EntityByIdActions,
 } from "../entity-by-id-reducer/entity-by-id-action-creators";
 
 export interface EntityCrudStatus extends CrudStatus {
@@ -67,6 +67,6 @@ export const createEntityCrudStatusRedux = <TStoreState>(
   return {
     reducer,
     actions,
-    selectors
+    selectors,
   };
 };

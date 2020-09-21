@@ -1,7 +1,7 @@
 import {
   ClearFilterValuesActionCreator,
   CommitFilterValuesActionCreator,
-  SetFilterValuesActionCreator
+  SetFilterValuesActionCreator,
 } from "./commit-actions";
 
 export interface CommitReducerActions<TState> {
@@ -14,18 +14,18 @@ export const createCommitReducerActions = <TState>(
   id: string
 ): CommitReducerActions<TState> => {
   return {
-    setValues: values => ({
+    setValues: (values) => ({
       type: "COMMIT_REDUCER.SET_VALUES",
       id,
-      values
+      values,
     }),
     commitValues: () => ({
       type: "COMMIT_REDUCER.COMMIT_VALUES",
-      id
+      id,
     }),
     clearValues: () => ({
       type: "COMMIT_REDUCER.CLEAR",
-      id
-    })
+      id,
+    }),
   };
 };

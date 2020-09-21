@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import {
   BackgroundResolver,
-  StandardTableColumnConfig
+  StandardTableColumnConfig,
 } from "../config/StandardTableConfig";
 import { useColumnFromConfig } from "./UseColumnFromConfig";
 
@@ -19,7 +19,7 @@ const useBackground = <TItem>(
   useMemo(() => getBackgroundColor(backgroundResolver, item, background), [
     backgroundResolver,
     item,
-    background
+    background,
   ]);
 
 export const useCellBackgroundByColumnId = <T>(columnId: string, item: T) => {

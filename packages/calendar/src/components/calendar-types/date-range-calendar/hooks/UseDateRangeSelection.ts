@@ -1,9 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useDateRangeOnClickDayHandler } from "../../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
-import { CalendarProps } from "../../../../types/CalendarTypes";
 import { DateRangeCalendarProps } from "../DateRangeCalendar";
 import { buildDayState } from "../util/DayStateFactory";
 import { toggleDatesIfEndIsEarlierThanStart } from "../util/IntervalSwitcher";
+import { CalendarWithMonthSwitcherProps } from "../../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { CalendarPanelType } from "../../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export const useDateRangeSelection = <T>({
   focusedInput,
@@ -13,8 +14,13 @@ export const useDateRangeSelection = <T>({
   setEndDate,
   onChange,
   setFocusedInput,
-  statePerMonth
-}: DateRangeCalendarProps<T>): CalendarProps<T> => {
+  statePerMonth,
+}: DateRangeCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+  const [dateInFocus, setDateInFocus] = useState(() => new Date());
+
   const onClickDay = useDateRangeOnClickDayHandler(
     startDate,
     setStartDate,
@@ -37,6 +43,10 @@ export const useDateRangeSelection = <T>({
 
   return {
     onClickDay,
-    statePerMonth: statePerMonthWithSelection
+    statePerMonth: statePerMonthWithSelection,
+    currentPanel,
+    setCurrentPanel,
+    setDateInFocus,
+    dateInFocus,
   };
 };

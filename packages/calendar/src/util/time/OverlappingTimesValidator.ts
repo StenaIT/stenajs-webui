@@ -14,7 +14,7 @@ export const transformTimeIntervalToNumbers = (
   interval: TimeInterval
 ): TimeIntervalNumber => ({
   startTime: transformTimeStringToNumber(interval.startTime),
-  endTime: transformTimeStringToNumber(interval.endTime)
+  endTime: transformTimeStringToNumber(interval.endTime),
 });
 
 export const timesOverlap = (

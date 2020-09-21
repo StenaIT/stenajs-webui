@@ -4,8 +4,8 @@ import {
   getMonthInYear,
   getMonthsInYear,
   getWeeksForMonth,
-  Months,
-  WeekDays
+  Month,
+  WeekDay,
 } from "../CalendarDataFactory";
 
 describe("CalendarDataFactory", () => {
@@ -15,9 +15,9 @@ describe("CalendarDataFactory", () => {
       expect(month.weeks[0].startYear).toBe(2018);
     });
     it("should return correct monthFormat", () => {
-      expect(getMonthInYear(2018, Months.JANUARY).monthString).toBe("2018-01");
-      expect(getMonthInYear(2018, Months.FEBRUARY).monthString).toBe("2018-02");
-      expect(getMonthInYear(2018, Months.DECEMBER).monthString).toBe("2018-12");
+      expect(getMonthInYear(2018, Month.JANUARY).monthString).toBe("2018-01");
+      expect(getMonthInYear(2018, Month.FEBRUARY).monthString).toBe("2018-02");
+      expect(getMonthInYear(2018, Month.DECEMBER).monthString).toBe("2018-12");
     });
   });
   describe("createDay", () => {
@@ -30,7 +30,7 @@ describe("CalendarDataFactory", () => {
   });
   describe("getWeeksForMonth", () => {
     it("should return correct weeks", () => {
-      const weeks = getWeeksForMonth(2018, Months.FEBRUARY);
+      const weeks = getWeeksForMonth(2018, Month.FEBRUARY);
       expect(weeks.length).toBe(6);
       expect(weeks[0].startMonth).toBe(0);
       expect(weeks[0].endMonth).toBe(1);
@@ -55,11 +55,11 @@ describe("CalendarDataFactory", () => {
     });
 
     it("should return correct days", () => {
-      const weeks = getWeeksForMonth(2018, Months.FEBRUARY);
+      const weeks = getWeeksForMonth(2018, Month.FEBRUARY);
       expect(weeks[0].days[0].dateString).toBe("2018-01-29");
-      expect(weeks[0].days[0].dayOfWeek).toBe(WeekDays.MONDAY);
+      expect(weeks[0].days[0].dayOfWeek).toBe(WeekDay.MONDAY);
       expect(weeks[0].days[0].year).toBe(2018);
-      expect(weeks[0].days[0].month).toBe(Months.JANUARY);
+      expect(weeks[0].days[0].month).toBe(Month.JANUARY);
       expect(weeks[0].days[0].dayOfMonth).toBe(29);
       expect(weeks[0].days[1].dateString).toBe("2018-01-30");
       expect(weeks[0].days[2].dateString).toBe("2018-01-31");
@@ -68,11 +68,11 @@ describe("CalendarDataFactory", () => {
     });
 
     it("should handle weeks where first days are part of previous month", () => {
-      expect(getWeeksForMonth(2019, Months.JANUARY).length > 0).toBe(true);
+      expect(getWeeksForMonth(2019, Month.JANUARY).length > 0).toBe(true);
     });
 
     it("should handle december 2018", () => {
-      expect(getWeeksForMonth(2018, Months.DECEMBER).length).toBe(6);
+      expect(getWeeksForMonth(2018, Month.DECEMBER).length).toBe(6);
     });
   });
 
@@ -80,29 +80,29 @@ describe("CalendarDataFactory", () => {
     it("should handle positive overflows", () => {
       const { year, month } = calculateOverflowingMonth(2018, 12);
       expect(year).toBe(2019);
-      expect(month).toBe(Months.JANUARY);
+      expect(month).toBe(Month.JANUARY);
       const r = calculateOverflowingMonth(2018, 13);
       expect(r.year).toBe(2019);
-      expect(r.month).toBe(Months.FEBRUARY);
+      expect(r.month).toBe(Month.FEBRUARY);
     });
     it("should handle negative overflows", () => {
       const { year, month } = calculateOverflowingMonth(2018, -1);
       expect(year).toBe(2017);
-      expect(month).toBe(Months.DECEMBER);
+      expect(month).toBe(Month.DECEMBER);
       const r = calculateOverflowingMonth(2018, -2);
       expect(r.year).toBe(2017);
-      expect(r.month).toBe(Months.NOVEMBER);
+      expect(r.month).toBe(Month.NOVEMBER);
     });
   });
 
   describe("getMonthsInYear", () => {
     it("should handle when interval passes a new year", () => {
-      const monthsInYear = getMonthsInYear(2018, Months.DECEMBER, 3);
+      const monthsInYear = getMonthsInYear(2018, Month.DECEMBER, 3);
       expect(monthsInYear[0].year).toBe(2018);
-      expect(monthsInYear[0].monthInYear).toBe(Months.DECEMBER);
+      expect(monthsInYear[0].monthInYear).toBe(Month.DECEMBER);
       expect(monthsInYear[0].weeks.length > 0).toBe(true);
       expect(monthsInYear[1].year).toBe(2019);
-      expect(monthsInYear[1].monthInYear).toBe(Months.JANUARY);
+      expect(monthsInYear[1].monthInYear).toBe(Month.JANUARY);
       expect(monthsInYear[1].weeks.length > 0).toBe(true);
     });
   });

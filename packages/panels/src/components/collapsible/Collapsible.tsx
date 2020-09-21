@@ -5,7 +5,7 @@ import {
   Clickable,
   ClickableProps,
   DivProps,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import cx from "classnames";
@@ -105,14 +105,14 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       <CSSTransition
         in={!collapsed}
         timeout={{
-          enter: timeout
+          enter: timeout,
         }}
         classNames={{
           enter: styles.contentEnter,
           enterActive: styles.contentEnterActive,
           exit: styles.contentExit,
           exitActive: styles.contentExitActive,
-          exitDone: styles.contentExitDone
+          exitDone: styles.contentExitDone,
         }}
         mountOnEnter={mountOnEnter}
         unmountOnExit={unmountOnCollapse}

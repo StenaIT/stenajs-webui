@@ -33,6 +33,6 @@ export const useDateInput = (
     showCalendar,
     hideCalendar,
     showingCalendar,
-    onSelectDate
+    onSelectDate,
   };
 };

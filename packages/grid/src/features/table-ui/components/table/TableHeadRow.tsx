@@ -5,7 +5,7 @@ import { tableHeadRowHeight } from "../../../../config/TableConfig";
 export interface TableHeadRowProps extends BoxProps {}
 
 export const TableHeadRow: React.FC<TableHeadRowProps> = React.memo(
-  boxProps => {
+  (boxProps) => {
     return <Row height={tableHeadRowHeight} {...boxProps} />;
   }
 );

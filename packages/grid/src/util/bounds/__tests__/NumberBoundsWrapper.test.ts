@@ -1,7 +1,7 @@
 import {
   limitRange,
   wrapBounds,
-  wrapBoundsNextLine
+  wrapBoundsNextLine,
 } from "../NumberBoundsWrapper";
 
 describe("NumberBoundsWrapper", () => {

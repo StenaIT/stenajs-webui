@@ -3,7 +3,7 @@ import {
   KeyboardEventHandler,
   RefObject,
   useCallback,
-  useState
+  useState,
 } from "react";
 
 export type MoveDirection = "right" | "left" | "down" | "up";
@@ -36,7 +36,7 @@ export const useKeyboardNavigation = (
   );
 
   const onKeyDownHandler: KeyboardEventHandler<HTMLInputElement> = useCallback(
-    ev => {
+    (ev) => {
       const { key } = ev;
       if (key === "Enter") {
         ref.current!.blur();
@@ -80,6 +80,6 @@ export const useKeyboardNavigation = (
 
   return {
     onKeyDownHandler,
-    wasCancelled
+    wasCancelled,
   };
 };

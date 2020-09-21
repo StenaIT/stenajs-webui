@@ -73,7 +73,7 @@ const createKeyDownEvent = (event: React.KeyboardEvent): KeyDownEvent => ({
   metaKey: event.metaKey,
   repeat: event.repeat,
   shiftKey: event.shiftKey,
-  which: event.which
+  which: event.which,
 });
 
 // tslint:disable-next-line:no-any
@@ -87,7 +87,7 @@ export const useEditableCell = <TValue>(
     onChange,
     onStartEditing,
     onStopEditing,
-    transformEnteredValue = defaultTransformEnteredValue
+    transformEnteredValue = defaultTransformEnteredValue,
   }: UseEditableCellOptions<TValue>
 ): UseEditableCellResult<TValue> => {
   const [isEditing, setIsEditing] = useState(false);
@@ -149,7 +149,7 @@ export const useEditableCell = <TValue>(
       setLastKeyEvent,
       allowedInputType,
       transformEnteredValue,
-      revertableValue
+      revertableValue,
     ]
   );
 
@@ -161,7 +161,7 @@ export const useEditableCell = <TValue>(
     startEditing,
     stopEditing,
     stopEditingAndRevert,
-    onDoubleClick: startEditing
+    onDoubleClick: startEditing,
   };
 };
 
@@ -186,7 +186,7 @@ const createKeyDownHandler = <TValue>(
   allowedInputType: AllowedInputType,
   transformEnteredValue: TransformEnteredValueFunc<TValue>,
   revertableValue: RevertableValue<TValue>
-): React.KeyboardEventHandler => e => {
+): React.KeyboardEventHandler => (e) => {
   if (e.key === "Enter" && isEditable) {
     setLastKeyEvent(undefined);
     startEditing();

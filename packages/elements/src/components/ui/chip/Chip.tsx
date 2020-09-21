@@ -26,9 +26,9 @@ export const Chip: React.FC<ChipProps> = ({
   onClickRemove,
   onClick,
   label,
-  variant = "primary"
+  variant = "primary",
 }) => {
-  const onClickHandler: MouseEventHandler<HTMLSpanElement> = ev => {
+  const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
     ev.stopPropagation();
     ev.preventDefault();
     if (onClick) {

@@ -5,7 +5,7 @@ import {
   StandardTableConfigContext,
   StandardTableInternalActionsContext,
   StandardTableStateContext,
-  StandardTableTableIdContext
+  StandardTableTableIdContext,
 } from "../context/StandardTableStateContext";
 import { StandardTableState } from "../redux/StandardTableReducer";
 

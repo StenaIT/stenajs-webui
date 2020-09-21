@@ -18,8 +18,8 @@ export const createCommitReducer = <TState>(
         ...state,
         workspace: {
           ...state.workspace,
-          ...values
-        }
+          ...values,
+        },
       };
     }
 
@@ -27,8 +27,8 @@ export const createCommitReducer = <TState>(
       return {
         ...state,
         workspace: {
-          ...initialState.workspace
-        }
+          ...initialState.workspace,
+        },
       };
     }
 
@@ -36,8 +36,8 @@ export const createCommitReducer = <TState>(
       return {
         ...state,
         committed: {
-          ...state.workspace
-        }
+          ...state.workspace,
+        },
       };
     }
 

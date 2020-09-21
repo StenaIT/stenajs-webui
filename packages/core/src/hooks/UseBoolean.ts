@@ -18,7 +18,7 @@ export const useBoolean = (initialValue: Value): BooleanHook => {
   }, [setValue]);
 
   const toggle = useCallback(() => {
-    setValue(v => !v);
+    setValue((v) => !v);
   }, [setValue]);
 
   return [value, setTrue, setFalse, toggle];

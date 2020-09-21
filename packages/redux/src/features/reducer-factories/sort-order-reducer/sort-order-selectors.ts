@@ -11,5 +11,5 @@ export type SortOrderStateSelector<TStoreState, TSortBy> = (
 export const createSortOrderSelectors = <TStoreState, TSortBy>(
   stateProvider: SortOrderStateSelector<TStoreState, TSortBy>
 ): SortOrderSelectors<TStoreState, TSortBy> => ({
-  getState: stateProvider
+  getState: stateProvider,
 });

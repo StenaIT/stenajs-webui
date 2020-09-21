@@ -24,7 +24,7 @@ export const CollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = (
           indeterminate={indeterminate}
           onValueChange={onValueChange}
           onChange={onChange}
-          onClick={ev => ev.stopPropagation()}
+          onClick={(ev) => ev.stopPropagation()}
         />
       }
       {...collapsibleProps}

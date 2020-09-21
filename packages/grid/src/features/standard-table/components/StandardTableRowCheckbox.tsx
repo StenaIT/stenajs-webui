@@ -3,7 +3,7 @@ import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import {
   useStandardTableConfig,
-  useStandardTableId
+  useStandardTableId,
 } from "../hooks/UseStandardTableConfig";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 
@@ -21,7 +21,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     colIndex,
     rowIndex,
     numRows,
-    disabled
+    disabled,
   }) {
     const { columnOrder } = useStandardTableConfig();
     const tableId = useStandardTableId();
@@ -30,7 +30,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
       numCols: columnOrder.length,
       numRows,
       rowIndex,
-      tableId
+      tableId,
     });
     const { requiredProps } = gridCell;
 

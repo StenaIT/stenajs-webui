@@ -15,7 +15,7 @@ describe("entity-reducer", () => {
       const s = reduce(
         {
           username: "lolo",
-          email: "hejsan"
+          email: "hejsan",
         },
         actions.setEntity({ username: "lala" })
       );
@@ -28,7 +28,7 @@ describe("entity-reducer", () => {
       const s = reduce(
         {
           username: "lolo",
-          email: "hejsan"
+          email: "hejsan",
         },
         actions.setEntityFields({ username: "lala" })
       );

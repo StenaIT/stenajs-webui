@@ -7,7 +7,7 @@ export interface LoadingPanelProps {
 }
 
 export const LoadingPanel: React.FC<LoadingPanelProps> = ({
-  text = "Loading..."
+  text = "Loading...",
 }) => {
   return (
     <Box alignItems={"center"}>

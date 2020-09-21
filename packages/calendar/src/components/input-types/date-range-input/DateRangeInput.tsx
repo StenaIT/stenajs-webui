@@ -3,24 +3,23 @@ import { Box, Row, Space, useMultiOnClickOutside } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useMemo, useRef } from "react";
-import * as ReactDOM from "react-dom";
-import { Manager, Reference } from "react-popper";
+import { useMemo, useRef, useState } from "react";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendarOnChangeValue,
-  DateRangeCalendarProps
+  DateRangeCalendarProps,
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
-import { CalendarPopperContent } from "../../calendar/CalendarPopperContent";
 import {
   CalendarTheme,
-  defaultCalendarTheme
+  defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
 import { Icon } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { buildDayState } from "../../calendar-types/date-range-calendar/util/DayStateFactory";
+import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
+import { Popover } from "@stenajs-webui/tooltip";
 
 export interface DateRangeInputProps<T extends {}> {
   /** The current date range value */
@@ -80,6 +79,8 @@ export interface DateRangeInputProps<T extends {}> {
     | "focusedInput"
     | "setFocusedInput"
     | "theme"
+    | "currentPanel"
+    | "setCurrentPanel"
   >;
 }
 
@@ -91,10 +92,17 @@ export const DateRangeInput = <T extends {}>({
   value,
   onChange,
   zIndex = 100,
-  width = "125px",
+  width,
   calendarTheme = defaultCalendarTheme,
-  calendarProps
+  calendarProps,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
+  const [dateInFocus, setDateInFocus] = useState(
+    () => (focusedInput && value[focusedInput]) ?? new Date()
+  );
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
+
   const popupRef = useRef<HTMLDivElement>(null);
   const outsideRef = useRef<HTMLDivElement>(null);
   const {
@@ -106,7 +114,7 @@ export const DateRangeInput = <T extends {}>({
     startDateInputRef,
     endDateInputRef,
     onClickDay,
-    startDateIsAfterEnd
+    startDateIsAfterEnd,
   } = useDateRangeInput(value, onChange);
 
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
@@ -116,75 +124,58 @@ export const DateRangeInput = <T extends {}>({
     [value]
   );
 
-  const popperContent = (
-    <CalendarPopperContent
-      innerRef={popupRef}
-      background={"var(--swui-field-bg-enabled)"}
-      borderColor={"var(--swui-modal-border-color)"}
-      zIndex={zIndex}
-      open={showingCalendar}
-    >
-      <CalendarWithMonthSwitcher
-        {...calendarProps}
-        startDateInFocus={
-          focusedInput === "startDate" || focusedInput === "endDate"
-            ? value[focusedInput]
-            : undefined
-        }
-        statePerMonth={statePerMonth}
-        theme={calendarTheme}
-        onClickDay={onClickDay}
-      />
-    </CalendarPopperContent>
-  );
   return (
     <Box innerRef={outsideRef}>
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <Box innerRef={ref}>
-              <Row alignItems={"center"}>
-                <TextInput
-                  iconLeft={faCalendarAlt}
-                  onFocus={showCalendarStartDate}
-                  value={
-                    value.startDate
-                      ? format(value.startDate, displayFormat)
-                      : ""
-                  }
-                  placeholder={placeholderStartDate}
-                  width={width}
-                  inputRef={startDateInputRef}
-                  size={9}
-                  variant={startDateIsAfterEnd ? "error" : undefined}
-                />
-                <Space />
-                <Icon
-                  icon={faLongArrowAltRight}
-                  color={"var(--lhds-color-ui-500)"}
-                  size={14}
-                />
-                <Space />
-                <TextInput
-                  iconLeft={faCalendarAlt}
-                  onFocus={showCalendarEndDate}
-                  value={
-                    value.endDate ? format(value.endDate, displayFormat) : ""
-                  }
-                  placeholder={placeholderEndDate}
-                  width={width}
-                  inputRef={endDateInputRef}
-                  size={9}
-                  variant={startDateIsAfterEnd ? "error" : undefined}
-                />
-              </Row>
-            </Box>
-          )}
-        </Reference>
-        {portalTarget
-          ? ReactDOM.createPortal(popperContent, portalTarget)
-          : popperContent}
-      </Manager>
+      <Popover
+        arrow={false}
+        visible={showingCalendar}
+        zIndex={zIndex}
+        appendTo={portalTarget ?? "parent"}
+        content={
+          <CalendarWithMonthSwitcher
+            {...calendarProps}
+            dateInFocus={dateInFocus}
+            setDateInFocus={setDateInFocus}
+            statePerMonth={statePerMonth}
+            theme={calendarTheme}
+            onClickDay={onClickDay}
+            currentPanel={currentPanel}
+            setCurrentPanel={setCurrentPanel}
+          />
+        }
+      >
+        <Row alignItems={"center"}>
+          <TextInput
+            iconLeft={faCalendarAlt}
+            onFocus={showCalendarStartDate}
+            value={
+              value.startDate ? format(value.startDate, displayFormat) : ""
+            }
+            placeholder={placeholderStartDate}
+            width={width}
+            inputRef={startDateInputRef}
+            size={9}
+            variant={startDateIsAfterEnd ? "error" : undefined}
+          />
+          <Space />
+          <Icon
+            icon={faLongArrowAltRight}
+            color={"var(--lhds-color-ui-500)"}
+            size={14}
+          />
+          <Space />
+          <TextInput
+            iconLeft={faCalendarAlt}
+            onFocus={showCalendarEndDate}
+            value={value.endDate ? format(value.endDate, displayFormat) : ""}
+            placeholder={placeholderEndDate}
+            width={width}
+            inputRef={endDateInputRef}
+            size={9}
+            variant={startDateIsAfterEnd ? "error" : undefined}
+          />
+        </Row>
+      </Popover>
     </Box>
   );
 };

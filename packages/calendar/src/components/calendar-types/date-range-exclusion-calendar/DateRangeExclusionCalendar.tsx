@@ -1,13 +1,16 @@
 import * as React from "react";
 import {
   CalendarWithMonthSwitcher,
-  CalendarWithMonthSwitcherProps
+  CalendarWithMonthSwitcherProps,
 } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
 import { useDateRangeExclusionSelection } from "./UseDateRangeExclusionSelection";
 
 export interface DateRangeExclusionCalendarProps<T>
-  extends CalendarWithMonthSwitcherProps<T> {
+  extends Omit<
+    CalendarWithMonthSwitcherProps<T>,
+    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
+  > {
   value?: Array<Date>;
   onChange?: (value: Array<Date>) => void;
 }

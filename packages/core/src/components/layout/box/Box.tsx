@@ -5,7 +5,7 @@ import {
   BorderColorProperty,
   BorderProperty,
   BoxShadowProperty,
-  ColorProperty
+  ColorProperty,
 } from "csstype";
 import * as React from "react";
 import {
@@ -47,7 +47,7 @@ import {
   top,
   TopProps,
   zIndex,
-  ZIndexProps
+  ZIndexProps,
 } from "styled-system";
 import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
 import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
@@ -153,11 +153,11 @@ type InnerProps = FlexBoxProps &
   BackgroundProps & { themeSpacing: number; themeIndent: number };
 
 const FlexBox = styled("div", {
-  shouldForwardProp: propName =>
-    isExcludedWebUiProp(propName) ? false : isPropValid(propName)
+  shouldForwardProp: (propName) =>
+    isExcludedWebUiProp(propName) ? false : isPropValid(propName),
 })<InnerProps>`
   box-sizing: border-box;
-  display: ${props => props.display || "flex"};
+  display: ${(props) => props.display || "flex"};
   ${background};
   ${border};
   ${borderRight};
@@ -171,7 +171,7 @@ const FlexBox = styled("div", {
   ${boxShadow};
   ${({ color }) => (color ? `color: ${color};` : "")}
   ${flexbox};
-  flex-direction: ${props =>
+  flex-direction: ${(props) =>
     (props.row && "row") || props.flexDirection || "column"};
   ${overflow};
   ${getPaddingRule}
@@ -217,7 +217,7 @@ export const Box: React.FC<BoxProps> = ({
       themeIndent: metrics.indent,
       color: (color && colors[color]) || color,
       border: (border && colors[border]) || border,
-      borderColor: (borderColor && colors[borderColor]) || borderColor
+      borderColor: (borderColor && colors[borderColor]) || borderColor,
     }),
     [shadow, background, border, borderColor, color]
   );

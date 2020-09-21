@@ -19,5 +19,5 @@ export const createEntityByIdSelectors = <
 >(
   stateSelector: EntityByIdStateSelector<TStoreState, TEntity>
 ): EntityByIdSelectors<TStoreState, TEntity> => ({
-  getState: stateSelector
+  getState: stateSelector,
 });

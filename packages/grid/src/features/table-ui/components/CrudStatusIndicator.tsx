@@ -24,7 +24,7 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
     loading,
     creating,
     deleting,
-    updating
+    updating,
   } = crudStatus;
 
   if (loading || creating || deleting || updating) {

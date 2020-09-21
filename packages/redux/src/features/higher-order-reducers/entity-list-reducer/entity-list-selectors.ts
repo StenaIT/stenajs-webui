@@ -11,5 +11,5 @@ export type EntityListSelector<TStoreState, TEntity> = (
 export const createEntityListSelectors = <TStoreState, TEntity>(
   stateSelector: EntityListSelector<TStoreState, TEntity>
 ): EntityListSelectors<TStoreState, TEntity> => ({
-  getList: store => stateSelector(store)
+  getList: (store) => stateSelector(store),
 });

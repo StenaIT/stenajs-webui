@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import {
   CalendarDayProps,
   DayState,
-  DayStateHighlight
+  DayStateHighlight,
 } from "../../../types/CalendarTypes";
 import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
 
@@ -17,7 +17,7 @@ export const CalendarDay = <T extends {}>({
   onClickDay,
   theme,
   extraDayContent: ExtraDayContent,
-  defaultHighlights
+  defaultHighlights,
 }: CalendarDayProps<T>) => {
   const fullTheme = useTheme();
 
@@ -57,7 +57,7 @@ export const CalendarDay = <T extends {}>({
         userData
       )),
     width: theme.width,
-    height: theme.height
+    height: theme.height,
   });
 
   const InnerWrapperDiv = styled.div({
@@ -72,7 +72,7 @@ export const CalendarDay = <T extends {}>({
         userData
       )),
     width: "100%",
-    height: theme.height
+    height: theme.height,
   });
 
   const CellWrapperDiv = styled.div({
@@ -88,7 +88,7 @@ export const CalendarDay = <T extends {}>({
       )),
     width: "100%",
     height: "100%",
-    position: "relative"
+    position: "relative",
   });
 
   return (
@@ -109,7 +109,7 @@ export const CalendarDay = <T extends {}>({
               )}
               {onClickDay && isClickable(defaultHighlights, dayState) ? (
                 <Clickable
-                  onClick={ev => onClickDay(day, userData, ev)}
+                  onClick={(ev) => onClickDay(day, userData, ev)}
                   style={{ width: "100%", height: "100%" }}
                 >
                   {content}

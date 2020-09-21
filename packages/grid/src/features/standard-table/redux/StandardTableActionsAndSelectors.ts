@@ -7,7 +7,7 @@ import {
   SelectedIdsSelectors,
   SortOrderAction,
   SortOrderActions,
-  SortOrderSelectors
+  SortOrderSelectors,
 } from "@stenajs-webui/redux";
 import { StandardTableState } from "./StandardTableReducer";
 
@@ -48,5 +48,5 @@ export const createInternalStandardTableActions = <
 >(): InternalStandardTableActions<TColumnKey> => ({
   sortOrder: createSortOrderActions<TColumnKey>(),
   selectedIds: createSelectedIdsActions(),
-  expandedRows: createSelectedIdsActions()
+  expandedRows: createSelectedIdsActions(),
 });

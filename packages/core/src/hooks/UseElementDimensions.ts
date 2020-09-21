@@ -20,7 +20,7 @@ export const getDimensionObject = (node: HTMLElement): ElementDimensions => {
     bottom,
     top,
     left,
-    right
+    right,
   } = node.getBoundingClientRect();
 
   return {
@@ -31,7 +31,7 @@ export const getDimensionObject = (node: HTMLElement): ElementDimensions => {
     x,
     y,
     right,
-    bottom
+    bottom,
   };
 };
 
@@ -73,6 +73,6 @@ export const useElementDimensions = (
   }, [updateDimensions]);
 
   return {
-    dimensions
+    dimensions,
   };
 };

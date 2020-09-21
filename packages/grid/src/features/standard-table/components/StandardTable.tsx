@@ -8,7 +8,7 @@ import {
   StandardTableInternalActionsContext,
   StandardTableStateContext,
   StandardTableTableIdContext,
-  TableContext
+  TableContext,
 } from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
@@ -87,7 +87,7 @@ export const StandardTable = function StandardTable<
   >(() => {
     return {
       actions,
-      dispatch
+      dispatch,
     };
   }, [actions, dispatch]);
 

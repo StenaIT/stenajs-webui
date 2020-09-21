@@ -5,7 +5,7 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import {
   formatTimeString,
-  validUserInput
+  validUserInput,
 } from "../../../util/time/TimeStringFormatValidator";
 
 interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
@@ -13,6 +13,8 @@ interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
   showPlaceholder?: boolean;
   /** Show icon when true */
   useIcon?: boolean;
+  /** Variant of the input field. */
+  variant?: TextInputProps["variant"];
 }
 
 export const TimeTextInput: React.FC<TimeTextInputProps> = ({
@@ -21,6 +23,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   useIcon = true,
   value,
   width = "85px",
+  variant,
   ...props
 }) => {
   const [valid, setValid] = useState(() => validUserInput(value));
@@ -40,7 +43,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   }, [value, onValueChange, setValid]);
 
   const onChangeHandler = useCallback(
-    ev => {
+    (ev) => {
       const time = ev.target.value;
       const validInput = validUserInput(time);
 
@@ -56,7 +59,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   return (
     <TextInput
       {...props}
-      variant={valid ? "standard" : "error"}
+      variant={!valid ? "error" : variant}
       iconLeft={useIcon ? faClock : undefined}
       value={value}
       placeholder={showPlaceholder ? timeFormat : undefined}

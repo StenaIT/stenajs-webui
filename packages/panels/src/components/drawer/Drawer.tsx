@@ -51,12 +51,11 @@ const DrawerWrapper = styled("div")<DrawerWrapperProps>`
     ${({ isOpen, slideFrom, width }) =>
       isOpen ? 0 : slideFrom === "right" ? `${width}` : `-${width}`}
   );
-  right: ${props => (props.slideFrom === "right" ? 0 : "auto")};
-  left: ${props => (props.slideFrom === "left" ? 0 : "auto")};
+  right: ${(props) => (props.slideFrom === "right" ? 0 : "auto")};
+  left: ${(props) => (props.slideFrom === "left" ? 0 : "auto")};
   height: 100%;
   ${({ width }) => `width: ${width};`}
-  ${({ background }) =>
-    `background: ${background};`}
+  ${({ background }) => `background: ${background};`}
   transition: 0.2s transform;
   box-shadow: ${({ isOpen }) =>
     isOpen ? "2px 2px 20px 0 rgba(0, 0, 0, 0.15)" : "none"};
@@ -78,8 +77,8 @@ export const Drawer: React.FC<DrawerProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        background
-      }
+        background,
+      },
     },
     [background]
   );

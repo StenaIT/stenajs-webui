@@ -5,7 +5,7 @@ import {
   Column,
   ThemeColorField,
   useOnClickOutside,
-  useThemeFields
+  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode, useCallback, useMemo, useRef, useState } from "react";
@@ -45,8 +45,8 @@ export const NavBarMenuButton: React.FC<NavBarMenuButtonProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        backgroundColor: backgroundColor
-      }
+        backgroundColor: backgroundColor,
+      },
     },
     [backgroundColor]
   );
@@ -55,7 +55,7 @@ export const NavBarMenuButton: React.FC<NavBarMenuButtonProps> = ({
   const open = useCallback(() => setMenuVisible(true), [setMenuVisible]);
   const args = useMemo<RenderPropArgs>(
     () => ({
-      close
+      close,
     }),
     [close]
   );

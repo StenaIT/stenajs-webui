@@ -4,11 +4,11 @@ import { ThemeColorField, ThemeColors } from "../theme-types/ThemeColors";
 import { ThemeFontField, ThemeFonts } from "../theme-types/ThemeFonts";
 import {
   ThemeFontSizeField,
-  ThemeFontSizes
+  ThemeFontSizes,
 } from "../theme-types/ThemeFontSizes";
 import {
   ThemeFontWeightField,
-  ThemeFontWeights
+  ThemeFontWeights,
 } from "../theme-types/ThemeFontWeights";
 import { useTheme } from "./UseTheme";
 
@@ -60,7 +60,7 @@ export const useThemeFields = <TFields extends ThemeSelectorFields>(
       colors,
       fonts,
       fontSizes,
-      fontWeights
+      fontWeights,
     } as TFields;
   }, [theme, fields]);
 };
@@ -85,7 +85,7 @@ const getFieldsFromPartOfTheme = <
     return {
       ...sum,
       [fieldName]:
-        (fieldValue && themePart[fieldValue as keyof TThemePart]) || fieldValue
+        (fieldValue && themePart[fieldValue as keyof TThemePart]) || fieldValue,
     };
   }, {});
 };

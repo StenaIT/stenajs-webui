@@ -1,6 +1,6 @@
 import {
   hasOverlappingTimes,
-  timesOverlap
+  timesOverlap,
 } from "../OverlappingTimesValidator";
 
 describe("OverlappingTimeValidator", () => {
@@ -55,7 +55,7 @@ describe("OverlappingTimeValidator", () => {
     it("returns no if no times overlap", () => {
       const overlapping = hasOverlappingTimes([
         { startTime: 900, endTime: 1600 },
-        { startTime: 1700, endTime: 1900 }
+        { startTime: 1700, endTime: 1900 },
       ]);
       expect(overlapping).toBe(false);
     });
@@ -63,7 +63,7 @@ describe("OverlappingTimeValidator", () => {
     it("returns true if two times overlap", () => {
       const overlapping = hasOverlappingTimes([
         { startTime: 900, endTime: 1800 },
-        { startTime: 1700, endTime: 1900 }
+        { startTime: 1700, endTime: 1900 },
       ]);
       expect(overlapping).toBe(true);
     });
