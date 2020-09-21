@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactModal from "react-modal";
 
-import styles from "./Modal.module.css";
+import styles from "../modal/Modal.module.css";
 
 export interface CenterModalProps extends ReactModal.Props {
   onRequestClose?: () => void;
