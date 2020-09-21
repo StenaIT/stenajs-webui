@@ -61,9 +61,10 @@ export const YearPicker: React.FC<Props> = ({
       </Column>
       <Column>
         {yearRows.map((yearRow) => (
-          <Row>
+          <Row key={yearRow[0]}>
             {yearRow.map((year) => (
               <YearPickerCell
+                key={year}
                 year={year}
                 onValueChange={onValueChange}
                 value={value}

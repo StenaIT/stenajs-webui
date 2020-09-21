@@ -41,13 +41,13 @@ export const PresetPicker: React.FC<Props> = ({ onClickPreset }) => {
       <Space />
       <Column alignItems={"center"}>
         {currentPage.presets.map((preset) => (
-          <>
+          <React.Fragment key={preset.label}>
             <PrimaryButton
               label={preset.label}
               onClick={() => onClickPreset(preset)}
             />
             <Space />
-          </>
+          </React.Fragment>
         ))}
       </Column>
     </Column>

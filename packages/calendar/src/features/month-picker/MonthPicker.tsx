@@ -16,8 +16,8 @@ const monthMatrix = [
 export const MonthPicker: React.FC<Props> = ({ value, onValueChange }) => {
   return (
     <Column>
-      {monthMatrix.map((monthRow, i) => (
-        <Row key={i}>
+      {monthMatrix.map((monthRow) => (
+        <Row key={monthRow[0]}>
           {monthRow.map((month) => (
             <MonthPickerCell
               key={month}
