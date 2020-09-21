@@ -20,6 +20,7 @@ import {
 } from "./ActionDropdownTheme";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuContext } from "./ActionMenuContext";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 interface ActionDropdownProps {
   width?: string;
@@ -123,7 +124,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
             >
               <StandardText color={colors.textColor}>{label}</StandardText>
               <Icon
-                icon={expanded ? faChevronUp : faChevronDown}
+                icon={expanded ? faChevronDown : faChevronRight}
                 size={12}
                 color={
                   disabled

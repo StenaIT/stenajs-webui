@@ -10,6 +10,7 @@ import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 interface Props<TItem> {
   item: TItem;
@@ -55,7 +56,7 @@ export const StandardTableRowExpandButton = function <TItem>({
       {!buttonDisabled && (
         <FlatButton
           size={"small"}
-          leftIcon={isExpanded ? faChevronUp : faChevronDown}
+          leftIcon={isExpanded ? faChevronDown : faChevronRight}
           onClick={toggleRowExpanded}
           {...requiredProps}
         />

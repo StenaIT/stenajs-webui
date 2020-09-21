@@ -8,8 +8,8 @@ import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse";
 import { FlatButton } from "@stenajs-webui/elements";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -50,7 +50,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
           {showHeaderExpandCollapse && (
             <FlatButton
               size={"small"}
-              leftIcon={allItemsAreExpanded ? faChevronUp : faChevronDown}
+              leftIcon={allItemsAreExpanded ? faChevronDown : faChevronRight}
               onClick={toggleExpanded}
             />
           )}
