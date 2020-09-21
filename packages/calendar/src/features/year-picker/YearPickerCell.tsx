@@ -18,10 +18,7 @@ export const YearPickerCell: React.FC<Props> = ({
       {value === year ? (
         <PrimaryButton label={label} />
       ) : (
-        <FlatButton
-          label={label}
-          onClick={() => onValueChange?.(year)}
-        />
+        <FlatButton label={label} onClick={() => onValueChange?.(year)} />
       )}
     </Row>
   );

@@ -49,7 +49,7 @@ export const YearPicker: React.FC<Props> = ({
       const yearsToSubtract = Math.floor(yearDiff / 3) + 3;
       setLastYear(lastYear - yearsToSubtract);
     }
-  }, [value]);
+  }, [value, lastYear]);
 
   return (
     <Row>
