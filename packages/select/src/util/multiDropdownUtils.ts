@@ -28,21 +28,21 @@ interface InternalParentDropdownOption<TData> {
   internalOptions: OptionsType<DropdownOption<TData>>;
 }
 
-interface SelectActionMeta<TData> extends ActionMeta {
+interface SelectActionMeta<TData> extends ActionMeta<any> {
   option: InternalDropdownOption<TData>;
   action: "select-option" | "deselect-option";
 }
 
-interface RemoveActionMeta<TData> extends ActionMeta {
+interface RemoveActionMeta<TData> extends ActionMeta<any> {
   removedValue: InternalDropdownOption<TData>;
   action: "remove-value" | "pop-value";
 }
 
-interface ClearActionMeta extends ActionMeta {
+interface ClearActionMeta extends ActionMeta<any> {
   action: "clear";
 }
 
-interface RestActionMeta extends ActionMeta {
+interface RestActionMeta extends ActionMeta<any> {
   action: "set-value" | "create-option";
 }
 

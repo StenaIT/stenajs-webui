@@ -30,7 +30,7 @@ export type OnChangeValue<TData> =
 
 export type OnChange<TData> = (
   value: OnChangeValue<TData>,
-  action: ActionMeta
+  action: ActionMeta<any>
 ) => void;
 
 export interface DropdownOption<TData> {
