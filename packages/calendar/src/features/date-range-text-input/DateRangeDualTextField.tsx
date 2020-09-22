@@ -26,6 +26,8 @@ interface Props {
   onValueChangeRight?: TextInputProps["onValueChange"];
   onChangeLeft?: TextInputProps["onChange"];
   onChangeRight?: TextInputProps["onChange"];
+  onClickLeft?: TextInputProps["onClick"];
+  onClickRight?: TextInputProps["onClick"];
   onClickCalendar?: ButtonProps["onClick"];
   onClickArrowDown?: ButtonProps["onClick"];
   onFocusLeft?: TextInputProps["onFocus"];
@@ -48,6 +50,8 @@ export const DateRangeDualTextField: React.FC<Props> = ({
   onChangeRight,
   valueLeft,
   valueRight,
+  onClickLeft,
+  onClickRight,
   onClickCalendar,
   onClickArrowDown,
   onBlurLeft,
@@ -153,6 +157,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
       >
         <Box width={"104px"}>
           <TextInput
+            onClick={onClickLeft}
             hideBorder
             placeholder={"Start date"}
             value={valueLeft}
@@ -173,6 +178,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
         <Space />
         <Box width={"104px"}>
           <TextInput
+            onClick={onClickRight}
             hideBorder
             placeholder={"End date"}
             value={valueRight}

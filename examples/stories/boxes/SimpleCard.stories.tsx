@@ -6,12 +6,12 @@ import {
   Row,
   Space,
   Spacing,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import * as React from "react";
 
 export default {
-  title: "examples/Boxes"
+  title: "examples/Boxes/EventListCard",
 };
 
 export const EventListCard = () => {
@@ -29,7 +29,7 @@ export const EventListCard = () => {
             </Spacing>
           </Box>
 
-          {list.map(label => (
+          {list.map((label) => (
             <Box background={"#fff"} spacing indent>
               <Row justifyContent={"space-between"}>
                 <StandardText color={"#a8a8a8"}>{label}</StandardText>

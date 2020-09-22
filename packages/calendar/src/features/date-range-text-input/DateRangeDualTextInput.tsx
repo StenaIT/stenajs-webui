@@ -19,13 +19,14 @@ import {
   BoxProps,
   Column,
   useBoolean,
+  useDebounce,
   useMultiOnClickOutside,
 } from "@stenajs-webui/core";
 import { DateRangeFocusedInput } from "../../components/calendar-types/date-range-calendar/DateRangeCalendar";
 import { DayData } from "../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
 import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSwitcher";
-import { buildDayState } from "../../components/calendar-types/date-range-calendar/util/DayStateFactory";
+import { buildDayStateForSingleMonth } from "../../components/calendar-types/date-range-calendar/util/DayStateFactory";
 import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
 
 interface Props extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
@@ -110,13 +111,19 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
 
   const showCalendarStartDate = useCallback(() => {
     setFocusedInput("startDate");
-    showCalendar();
-  }, [setFocusedInput, showCalendar]);
+    if (!isCalendarVisible) {
+      setCurrentPanel("calendar");
+      showCalendar();
+    }
+  }, [isCalendarVisible, setFocusedInput, showCalendar]);
 
   const showCalendarEndDate = useCallback(() => {
     setFocusedInput("endDate");
-    showCalendar();
-  }, [setFocusedInput, showCalendar]);
+    if (!isCalendarVisible) {
+      setCurrentPanel("calendar");
+      showCalendar();
+    }
+  }, [isCalendarVisible, setFocusedInput, showCalendar]);
 
   const onClickDay = useCallback(
     (day: DayData) => {
@@ -166,20 +173,36 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
     [value]
   );
 
-  const statePerMonth = useMemo(
-    () => buildDayState(undefined, value?.startDate, value?.endDate),
-    [value]
+  const statePerMonth = useMemo(() => {
+    return buildDayStateForSingleMonth(
+      undefined,
+      value?.startDate,
+      value?.endDate,
+      dateInFocus
+    );
+  }, [value, dateInFocus]);
+
+  const onKeyDownHandler = useCallback(
+    (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      if (ev.key === "Escape") {
+        hideCalendar();
+      }
+    },
+    [hideCalendar]
   );
 
   useMultiOnClickOutside([popoverRef, containerRef], hideCalendar);
 
+  const debouncedIsCalendarVisible = useDebounce(isCalendarVisible, 300);
+
   return (
-    <Box innerRef={containerRef}>
+    <Box innerRef={containerRef} onKeyDown={onKeyDownHandler}>
       <Popover
         arrow={false}
+        placement={"bottom"}
         visible={isCalendarVisible}
         content={
-          isCalendarVisible && (
+          (debouncedIsCalendarVisible || isCalendarVisible) && (
             <Column innerRef={popoverRef}>
               <CalendarWithMonthSwitcher
                 statePerMonth={statePerMonth}
@@ -200,6 +223,8 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
           onClickCalendar={onClickCalendarButton}
           onFocusLeft={showCalendarStartDate}
           onFocusRight={showCalendarEndDate}
+          onClickLeft={showCalendarStartDate}
+          onClickRight={showCalendarEndDate}
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
           variant={startDateIsAfterEnd ? "error" : undefined}

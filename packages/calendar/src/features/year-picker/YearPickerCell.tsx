@@ -16,7 +16,7 @@ export const YearPickerCell: React.FC<Props> = ({
   return (
     <Row width={"64px"} justifyContent={"center"} spacing={0.5} indent={0.5}>
       {value === year ? (
-        <PrimaryButton label={label} />
+        <PrimaryButton label={label} onClick={() => onValueChange?.(year)} />
       ) : (
         <FlatButton label={label} onClick={() => onValueChange?.(year)} />
       )}

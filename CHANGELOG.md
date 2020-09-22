@@ -1,5 +1,34 @@
 # Changelog
 
+## 2.0.1
+
+### New features
+
+#### `Banner`
+
+New component for showing information and errors.
+
+### Improvements
+
+#### `StandardTable`
+
+Column configs `itemLabelFormatter` now gets `item` as second argument.
+
+#### `DateRangeDualTextInput`
+
+- Escape key now closes the calendar popover.
+- Clicking on already selected month/year returns to the calendar.
+- Too large intervals no longer crashes calendar.
+- `YearPicker` no longer scrolls to new year in focus.
+
+#### `useGridCell`
+
+- Key down events that contain shift, cmd or ctrl are no longer captured.
+
+#### `Popover`
+
+- There are no longer warnings in console from Tippy.
+
 ## 2.0.0
 
 ### New features

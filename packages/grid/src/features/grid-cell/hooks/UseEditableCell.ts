@@ -187,13 +187,17 @@ const createKeyDownHandler = <TValue>(
   transformEnteredValue: TransformEnteredValueFunc<TValue>,
   revertableValue: RevertableValue<TValue>
 ): React.KeyboardEventHandler => (e) => {
+  if (e.ctrlKey || e.metaKey || e.shiftKey) {
+    return;
+  }
+
   if (e.key === "Enter" && isEditable) {
     setLastKeyEvent(undefined);
     startEditing();
     revertableValue.commit();
     e.preventDefault();
     e.stopPropagation();
-  } else if (!e.ctrlKey && !e.metaKey && !e.shiftKey && isEditable) {
+  } else if (isEditable) {
     // TODO Find nice way to allow full user control, while also providing simplicity.
     const lastKeyEvent = createKeyDownEvent(e);
     if (

@@ -1,4 +1,14 @@
-import { eachDayOfInterval, isAfter, isSameDay } from "date-fns";
+import {
+  addDays,
+  eachDayOfInterval,
+  endOfMonth,
+  isAfter,
+  isSameDay,
+  max,
+  min,
+  startOfMonth,
+  subDays,
+} from "date-fns";
 import { CalendarUserData, DayState } from "../../../../types/CalendarTypes";
 import { addDayStateHighlights } from "../../../../util/calendar/StateModifier";
 
@@ -34,4 +44,36 @@ export const buildDayState = (
   }
 
   return state;
+};
+
+export const buildDayStateForSingleMonth = (
+  statePerMonth: CalendarUserData<DayState> = {},
+  start: Date | undefined,
+  end: Date | undefined,
+  dateInFocus: Date
+): CalendarUserData<DayState> | undefined =>
+  buildDayStateForRange(
+    statePerMonth,
+    start,
+    end,
+    startOfMonth(dateInFocus),
+    endOfMonth(dateInFocus)
+  );
+
+export const buildDayStateForRange = (
+  statePerMonth: CalendarUserData<DayState> = {},
+  start: Date | undefined,
+  end: Date | undefined,
+  startLimit: Date,
+  endLimit: Date
+): CalendarUserData<DayState> | undefined => {
+  if (start && end) {
+    return buildDayState(
+      statePerMonth,
+      max([start, subDays(startLimit, 1)]),
+      min([end, addDays(endLimit, 1)])
+    );
+  } else {
+    return buildDayState(statePerMonth, start, end);
+  }
 };
