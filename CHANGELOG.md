@@ -15,6 +15,10 @@ Column configs `itemLabelFormatter` now gets `item` as second argument.
 - Too large intervals no longer crashes calendar.
 - `YearPicker` no longer scrolls to new year in focus.
 
+#### `useGridCell`
+
+- Key down events that contain shift, cmd or ctrl are no longer captured.
+
 ## 2.0.0
 
 ### New features
