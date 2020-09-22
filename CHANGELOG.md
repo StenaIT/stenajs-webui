@@ -2,6 +2,12 @@
 
 ## 2.0.1
 
+### New features
+
+#### `Banner`
+
+New component for showing information and errors.
+
 ### Improvements
 
 #### `StandardTable`
