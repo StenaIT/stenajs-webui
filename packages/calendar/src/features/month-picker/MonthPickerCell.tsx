@@ -24,7 +24,10 @@ export const MonthPickerCell: React.FC<Props> = ({
   return (
     <Row width={"64px"} justifyContent={"center"} spacing={0.5} indent={0.5}>
       {value === month ? (
-        <PrimaryButton label={label} />
+        <PrimaryButton
+          label={label}
+          onClick={() => onValueChange && onValueChange(month)}
+        />
       ) : (
         <FlatButton
           label={label}

@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.0.1
+
+### Improvements
+
+#### `StandardTable`
+
+Column configs `itemLabelFormatter` now gets `item` as second argument.
+
+#### `DateRangeDualTextInput`
+
+- Escape key now closes the calendar popover.
+- Clicking on already selected month/year returns to the calendar.
+- Too large intervals no longer crashes calendar.
+- `YearPicker` no longer scrolls to new year in focus.
+
 ## 2.0.0
 
 ### New features

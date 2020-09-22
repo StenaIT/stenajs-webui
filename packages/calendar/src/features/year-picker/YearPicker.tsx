@@ -18,9 +18,14 @@ export const YearPicker: React.FC<Props> = ({
   onValueChange,
   initialLastYear,
 }) => {
-  const [lastYear, setLastYear] = useState(
-    () => initialLastYear || new Date().getFullYear() + 4
-  );
+  const [lastYear, setLastYear] = useState(() => {
+    if (value) {
+      return value + 4;
+    }
+    return initialLastYear ?? new Date().getFullYear() + 4;
+  });
+
+  console.log("lastYear", lastYear);
 
   const yearRows = useMemo(() => {
     const startYear = lastYear - 11;
@@ -40,13 +45,15 @@ export const YearPicker: React.FC<Props> = ({
     }
     if (value > lastYear) {
       const yearDiff = value - lastYear;
-      const yearsToAdd = Math.floor(yearDiff / 3) + 3;
+      const remaining = yearDiff % 3;
+      const yearsToAdd = yearDiff - remaining + 3;
       setLastYear(lastYear + yearsToAdd);
     }
     const startYear = lastYear - 11;
     if (value < startYear) {
       const yearDiff = startYear - value;
-      const yearsToSubtract = Math.floor(yearDiff / 3) + 3;
+      const remaining = yearDiff % 3;
+      const yearsToSubtract = yearDiff - remaining + 3;
       setLastYear(lastYear - yearsToSubtract);
     }
   }, [value, lastYear]);

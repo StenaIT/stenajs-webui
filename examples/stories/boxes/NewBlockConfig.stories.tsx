@@ -6,7 +6,7 @@ import {
   SeparatorLine,
   Space,
   Spacing,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
@@ -14,7 +14,7 @@ import { action } from "@storybook/addon-actions";
 import * as React from "react";
 
 export default {
-  title: "examples/Boxes"
+  title: "examples/Boxes/NewBlockConfig",
 };
 
 export const NewBlockConfig = () => (
