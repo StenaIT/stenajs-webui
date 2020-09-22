@@ -19,6 +19,10 @@ Column configs `itemLabelFormatter` now gets `item` as second argument.
 
 - Key down events that contain shift, cmd or ctrl are no longer captured.
 
+#### `Popover`
+
+- There are no longer warnings in console from Tippy.
+
 ## 2.0.0
 
 ### New features
