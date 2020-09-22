@@ -61,9 +61,9 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const label = useMemo<string>(
     () =>
       itemLabelFormatter
-        ? itemLabelFormatter(itemValue)
+        ? itemLabelFormatter(itemValue, item)
         : formatValueLabel(itemValue),
-    [itemValue, itemLabelFormatter]
+    [itemValue, itemLabelFormatter, item]
   );
 
   const editable =

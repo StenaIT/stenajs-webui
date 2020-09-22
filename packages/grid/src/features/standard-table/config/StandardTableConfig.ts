@@ -194,7 +194,7 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * Useful for formatting dates for example.
    * @param value
    */
-  itemLabelFormatter?: (value: TItemValue) => string;
+  itemLabelFormatter?: (value: TItemValue, item: TItem) => string;
   /**
    * Specifies if the cell is editable. Used together with gridCellEnabled.
    * Defaults to false. Can be a boolean or a resolver.
