@@ -25,8 +25,6 @@ export const YearPicker: React.FC<Props> = ({
     return initialLastYear ?? new Date().getFullYear() + 4;
   });
 
-  console.log("lastYear", lastYear);
-
   const yearRows = useMemo(() => {
     const startYear = lastYear - 11;
     const years = eachYearOfInterval({
