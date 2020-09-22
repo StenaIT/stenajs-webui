@@ -35,10 +35,6 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
   value,
   onValueChange,
 }) => {
-  /*
-  TODO
-  Close on esc
-   */
   const [isCalendarVisible, showCalendar, hideCalendar] = useBoolean(false);
   const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
     "calendar"
