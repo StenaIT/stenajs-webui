@@ -3,6 +3,7 @@ import "./default-theme.css";
 
 export * from "./icons/Icons";
 
+export * from "./components/ui/banner/Banner";
 export * from "./components/ui/spinner/Spinner";
 export * from "./components/ui/spinner/InputSpinner";
 export * from "./components/ui/buttons/FlatButton";
