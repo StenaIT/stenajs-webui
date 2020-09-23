@@ -8,7 +8,7 @@
 
 - Updated styling to look more like design system.
 - Updated to correct colors in default theme.
-- Updated theme to use CSS prop based theme, instead of context based theme.
+- Updated the calendar theme to use CSS prop based theme, instead of context based theme.
 
 ### Breaking changes
 
