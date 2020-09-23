@@ -1,4 +1,4 @@
-import { Box, Clickable, SmallText, useThemeFields } from "@stenajs-webui/core";
+import { Box, Clickable, SmallText } from "@stenajs-webui/core";
 import * as React from "react";
 import { OnClickWeekDay } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
@@ -15,15 +15,6 @@ export const WeekDayCell = ({
   day,
   theme,
 }: WeekDayCellProps) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColor: theme.WeekDay.textColor,
-      },
-    },
-    [theme]
-  );
-
   return (
     <Clickable
       onClick={
@@ -37,7 +28,7 @@ export const WeekDayCell = ({
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <SmallText color={colors.textColor}>{day.name}</SmallText>
+        <SmallText color={theme.WeekDay.textColor}>{day.name}</SmallText>
       </Box>
     </Clickable>
   );

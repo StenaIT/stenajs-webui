@@ -1,0 +1,27 @@
+.calendar {
+  --swui-calendar-day-width: 37px;
+  --swui-calendar-day-height: 37px;
+
+  /* Week number */
+
+  --swui-calendar-week-number-bg-color: transparent;
+
+  /* Week day */
+
+  --swui-calendar-week-day-text-color: var(--lhds-color-ui-500);
+
+  /* Wrapper */
+
+  --swui-calendar-wrapper-selected-border: var(--swui-primary-action-color);
+  --swui-calendar-wrapper-selected-background: var(--swui-primary-action-color);
+  --swui-calendar-wrapper-range-border: var(--lhds-color-blue-50);
+  --swui-calendar-wrapper-range-background: var(--lhds-color-blue-50);
+  --swui-calendar-wrapper-today-border: var(--lhds-color-ui-200);
+  --swui-calendar-wrapper-today-background: var(--lhds-color-ui-200);
+
+  /* Text */
+
+  --swui-calendar-text-selected-color: #fff;
+  --swui-calendar-text-disabled-color: var(--swui-text-disabled-color);
+  --swui-calendar-text-in-other-month-color: transparent;
+}
