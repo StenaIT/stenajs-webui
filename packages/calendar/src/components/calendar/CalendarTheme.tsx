@@ -1,6 +1,4 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
@@ -42,7 +40,6 @@ export interface WeekDayTheme {
 }
 
 export type CalendarStyleProvider<TUserData, TResult> = (
-  theme: Theme,
   defaultHighlights: Array<DayStateHighlight> | undefined,
   dayState: DayState | undefined,
   day: DayData,
@@ -87,9 +84,8 @@ export const defaultWrapperStyleProvider = ({
   selectedBorder,
   rangeBorder,
   todayBorder,
-  borderColor = "separatorLight",
+  borderColor = "transparent",
 }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
-  theme,
   defaultHighlights,
   dayState,
   day,
@@ -101,13 +97,8 @@ export const defaultWrapperStyleProvider = ({
   const backgroundColor = dayHighlightSelect(
     dayState,
     defaultHighlights,
-    ["selected", "today", "range", day.month === month.monthInYear],
-    [
-      resolveThemeColor(selectedBackground, theme),
-      resolveThemeColor(todayBackground, theme),
-      resolveThemeColor(rangeBackground, theme),
-      resolveThemeColor("white", theme),
-    ],
+    ["selected", "range", "today", day.month === month.monthInYear],
+    [selectedBackground, rangeBackground, todayBackground, "#fff"],
     "transparent"
   );
 
@@ -120,12 +111,8 @@ export const defaultWrapperStyleProvider = ({
         dayState,
         defaultHighlights,
         ["selected", "range", "today"],
-        [
-          resolveThemeColor(selectedBorder, theme),
-          resolveThemeColor(rangeBorder, theme),
-          resolveThemeColor(todayBorder, theme),
-        ],
-        resolveThemeColor(borderColor, theme)
+        [selectedBorder, rangeBorder, todayBorder],
+        borderColor
       ),
       borderCollapse: "collapse",
       borderStyle:
@@ -153,18 +140,18 @@ export const defaultTextPropsProvider = ({
   inOtherMonthColor,
   rangeTextColor,
 }: DefaultTextColors): TextPropsProvider<{}> => {
-  return (theme, defaultHighlights, dayState, day, _, month) => {
+  return (defaultHighlights, dayState, day, _, month) => {
     const isOtherMonth = day.month !== month.monthInYear;
     const color = dayHighlightSelect(
       dayState,
       defaultHighlights,
       [isOtherMonth, "selected", "range", "enabled", "disabled"],
       [
-        resolveThemeColor(inOtherMonthColor, theme),
-        resolveThemeColor(selectedColor, theme),
-        rangeTextColor && resolveThemeColor(rangeTextColor, theme),
+        inOtherMonthColor,
+        selectedColor,
+        rangeTextColor,
         undefined,
-        resolveThemeColor(disabledColor, theme),
+        disabledColor,
       ]
     );
     return {
@@ -174,62 +161,37 @@ export const defaultTextPropsProvider = ({
 };
 
 export const defaultCalendarTheme: CalendarTheme = {
-  width: "40px",
-  height: "40px",
+  width: "var(--swui-calendar-day-width)",
+  height: "var(--swui-calendar-day-height)",
   WeekNumber: {
-    backgroundColor: "transparent",
+    backgroundColor: "var(--swui-calendar-week-number-bg-color)",
     show: true,
   },
   WeekDay: {
-    textColor: "separator",
+    textColor: "var(--swui-calendar-week-day-text-color)",
   },
   CalendarDay: {
     wrapperStyle: defaultWrapperStyleProvider({
-      selectedBorder: "inputBorderFocused",
-      selectedBackground: "inputBorderFocused",
-      rangeBorder: "inputBorderFocusedAlt",
-      rangeBackground: "inputBorderFocusedLight",
-      todayBorder: "highlightBoxBorder",
-      todayBackground: "highlightBoxBg",
+      selectedBorder: "var(--swui-calendar-wrapper-selected-border)",
+      selectedBackground: "var(--swui-calendar-wrapper-selected-background)",
+      rangeBorder: "var(--swui-calendar-wrapper-range-border)",
+      rangeBackground: "var(--swui-calendar-wrapper-range-background)",
+      todayBorder: "var(--swui-calendar-wrapper-today-border)",
+      todayBackground: "var(--swui-calendar-wrapper-today-background)",
     }),
     textProps: defaultTextPropsProvider({
-      selectedColor: "white",
-      disabledColor: "disabledText",
-      inOtherMonthColor: "transparent",
-    }),
-  },
-  CalendarMonth: {
-    headerLeftIcon: faChevronLeft,
-    headerRightIcon: faChevronRight,
-  },
-};
-
-export const extranetCalendarTheme: CalendarTheme = {
-  width: "37px",
-  height: "37px",
-  WeekNumber: {
-    backgroundColor: "transparent",
-    show: true,
-  },
-  WeekDay: {
-    textColor: "separator",
-  },
-  CalendarDay: {
-    wrapperStyle: defaultWrapperStyleProvider({
-      selectedBorder: "#2A7EC5",
-      selectedBackground: "#2A7EC5",
-      rangeBorder: "#DAE7F2",
-      rangeBackground: "#E2EDF7",
-      todayBorder: "#60BD2F",
-      todayBackground: "#F1F9ED",
-    }),
-    textProps: defaultTextPropsProvider({
-      selectedColor: "white",
-      disabledColor: "disabledText",
-      inOtherMonthColor: "transparent",
+      selectedColor: "var(--swui-calendar-text-selected-color)",
+      disabledColor: "var(--swui-calendar-text-disabled-color)",
+      inOtherMonthColor: "var(--swui-calendar-text-in-other-month-color)",
     }),
   },
   CalendarMonth: {},
+};
+
+export const extranetCalendarTheme: CalendarTheme = {
+  ...defaultCalendarTheme,
+  width: "37px",
+  height: "37px",
 };
 
 export const resolveThemeColor = (s: string, theme: Theme): string =>

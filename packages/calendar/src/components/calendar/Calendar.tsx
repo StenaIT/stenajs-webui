@@ -20,6 +20,7 @@ import {
 import { CalendarMonth } from "./CalendarMonth";
 import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
 import { CalendarDay } from "./renderers/CalendarDay";
+import styles from "./Calendar.module.css";
 
 interface CalendarPanelProps<T>
   extends CalendarProps<T>,
@@ -54,7 +55,7 @@ function CalendarPanel<T extends {}>({
   theme = defaultCalendarTheme,
 }: CalendarPanelProps<T>) {
   return (
-    <div>
+    <div className={styles.calendar}>
       {monthRows.map((monthRow, rowIndex) => (
         <Spacing key={rowIndex}>
           <Row>

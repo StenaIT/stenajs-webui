@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.2
+
+### Improvements
+
+#### Calendar
+
+- Updated styling to look more like design system.
+- Updated to correct colors in default theme.
+- Updated theme to use CSS prop based theme, instead of context based theme.
+
+### Breaking changes
+
+- The calendar theme `TravelCalendarTheme` has been removed.
+
 ## 2.0.1
 
 ### New features

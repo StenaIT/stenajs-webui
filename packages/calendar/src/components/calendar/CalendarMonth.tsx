@@ -1,11 +1,4 @@
-import {
-  Box,
-  Row,
-  SmallText,
-  Space,
-  StandardText,
-  useThemeFields,
-} from "@stenajs-webui/core";
+import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -57,16 +50,6 @@ export function CalendarMonth<T>({
   extraDayContent,
   defaultHighlights,
 }: CalendarMonthProps<T>) {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        headerTextColor: theme.CalendarMonth.headerTextColor,
-        weekDayTextColor: theme.WeekDay.textColor,
-      },
-    },
-    [theme]
-  );
-
   const tableStyle: React.CSSProperties = {
     borderSpacing: theme.CalendarMonth.cellSpacing
       ? theme.CalendarMonth.cellSpacing
@@ -120,7 +103,9 @@ export function CalendarMonth<T>({
                     justifyContent={"center"}
                     alignItems={"center"}
                   >
-                    <SmallText color={colors.weekDayTextColor}>W</SmallText>
+                    <SmallText color={theme.CalendarMonth.headerTextColor}>
+                      W
+                    </SmallText>
                   </Box>
                 </td>
               )}

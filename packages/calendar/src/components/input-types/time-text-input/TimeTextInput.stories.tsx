@@ -91,9 +91,9 @@ export const Disabled = withState<TimeTextInputState>({
   </Box>
 ));
 
-export const Invalid = () => (
+export const InvalidTime = () => (
   <Box width={"125px"}>
-    <TimeTextInput value={"invalid"} invalid={true} />
+    <TimeTextInput value={"invalid"} />
   </Box>
 );
 

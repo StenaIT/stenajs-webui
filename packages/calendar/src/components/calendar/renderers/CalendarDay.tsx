@@ -1,4 +1,4 @@
-import { Box, Clickable, StandardText, useTheme } from "@stenajs-webui/core";
+import { Box, Clickable, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 import styled from "@emotion/styled";
 import {
@@ -19,8 +19,6 @@ export const CalendarDay = <T extends {}>({
   extraDayContent: ExtraDayContent,
   defaultHighlights,
 }: CalendarDayProps<T>) => {
-  const fullTheme = useTheme();
-
   const content = (
     <Box
       width={"100%"}
@@ -31,7 +29,6 @@ export const CalendarDay = <T extends {}>({
       <StandardText
         {...(theme.CalendarDay.textProps &&
           theme.CalendarDay.textProps(
-            fullTheme,
             defaultHighlights,
             dayState,
             day,
@@ -48,7 +45,6 @@ export const CalendarDay = <T extends {}>({
   const WrapperTd = styled.td({
     ...(theme.CalendarDay.wrapperStyle &&
       theme.CalendarDay.wrapperStyle(
-        fullTheme,
         defaultHighlights,
         dayState,
         day,
@@ -63,7 +59,6 @@ export const CalendarDay = <T extends {}>({
   const InnerWrapperDiv = styled.div({
     ...(theme.CalendarDay.innerWrapperStyle &&
       theme.CalendarDay.innerWrapperStyle(
-        fullTheme,
         defaultHighlights,
         dayState,
         day,
@@ -78,7 +73,6 @@ export const CalendarDay = <T extends {}>({
   const CellWrapperDiv = styled.div({
     ...(theme.CalendarDay.cellWrapperStyle &&
       theme.CalendarDay.cellWrapperStyle(
-        fullTheme,
         defaultHighlights,
         dayState,
         day,
