@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.3
+
+### Improvements
+
+#### Calendar
+
+- Updated styling to look more like design system.
+
+### Fixes
+
+#### `DateRangeDualTextInput`
+
+- Fix shadow in text inputs.
+
 ## 2.0.2
 
 ### Improvements
