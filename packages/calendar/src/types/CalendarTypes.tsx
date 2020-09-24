@@ -112,6 +112,7 @@ export interface CalendarPropsWithDateSet<T> {
 
 export type DayStateHighlight =
   | "selected"
+  | "singleSelected"
   | "selectedStart"
   | "selectedEnd"
   | "range"

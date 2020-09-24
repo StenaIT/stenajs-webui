@@ -1,4 +1,4 @@
-import { Box, Clickable, SmallText } from "@stenajs-webui/core";
+import { Box, Clickable, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 import { OnClickWeek } from "../../../types/CalendarTypes";
 import { WeekData } from "../../../util/calendar/CalendarDataFactory";
@@ -38,10 +38,10 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
         >
           {background && <Box position={"absolute"}>{background}</Box>}
           <Box position={"absolute"}>
-            <SmallText color={theme.WeekNumber.textColor}>
+            <StandardText color={theme.WeekNumber.textColor}>
               {prefix}
               {week.weekNumber}
-            </SmallText>
+            </StandardText>
           </Box>
         </Box>
       </Clickable>

@@ -36,11 +36,11 @@ export const buildDayState = (
   let state = statePerMonth;
 
   if (start) {
-    state = addDayStateHighlights(state, start, ["selected"]);
+    state = addDayStateHighlights(state, start, ["selected", "singleSelected"]);
   }
 
   if (end) {
-    state = addDayStateHighlights(state, end, ["selected"]);
+    state = addDayStateHighlights(state, end, ["selected", "singleSelected"]);
   }
 
   return state;
