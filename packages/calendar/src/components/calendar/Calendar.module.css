@@ -7,10 +7,12 @@
 
   --swui-calendar-week-number-bg-color: transparent;
   --swui-calendar-week-number-text-color: var(--lhds-color-ui-500);
+  --swui-calendar-week-number-clickable-text-color: var(--lhds-color-ui-500);
 
   /* Week day */
 
   --swui-calendar-week-day-text-color: var(--lhds-color-ui-500);
+  --swui-calendar-week-day-clickable-text-color: var(--lhds-color-ui-500);
 
   /* Wrapper */
 
@@ -25,7 +27,7 @@
 
   --swui-calendar-text-selected-color: #fff;
   --swui-calendar-text-disabled-color: var(--swui-text-disabled-color);
-  --swui-calendar-text-in-other-month-color: transparent;
+  --swui-calendar-text-in-other-month-color: var(--swui-text-disabled-color);
 
   table {
     border-spacing: 0 4px;

@@ -26,8 +26,8 @@ import { DateRangeFocusedInput } from "../../components/calendar-types/date-rang
 import { DayData } from "../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
 import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSwitcher";
-import { buildDayStateForSingleMonth } from "../../components/calendar-types/date-range-calendar/util/DayStateFactory";
 import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
+import { buildDayStateForSingleMonth } from "../../util/calendar/StateModifier";
 
 interface Props extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
 

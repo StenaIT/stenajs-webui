@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
+import { TextProps, Theme } from "@stenajs-webui/core";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 
@@ -20,20 +20,22 @@ export interface CalendarTheme<TUserData = {}> {
 }
 
 export interface WeekNumberTheme {
-  backgroundColor: ThemeColorField | string;
-  textColor?: ThemeColorField | string;
+  backgroundColor: string;
+  textColor?: string;
+  clickableTextColor?: string;
   show?: boolean;
 }
 
 export interface CalendarMonthTheme {
-  headerTextColor?: ThemeColorField | string;
+  headerTextColor?: string;
   cellSpacing?: string;
   headerLeftIcon?: IconDefinition;
   headerRightIcon?: IconDefinition;
 }
 
 export interface WeekDayTheme {
-  textColor?: ThemeColorField | string;
+  textColor?: string;
+  clickableTextColor?: string;
 }
 
 export type CalendarStyleProvider<TUserData, TResult> = (
@@ -93,54 +95,51 @@ export const defaultWrapperStyleProvider = ({
     "transparent"
   );
 
-  if (day.month === month.monthInYear) {
-    return {
-      ...style,
-      backgroundColor,
-      borderTopLeftRadius: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "singleSelected"],
-        [
-          "var(--swui-calendar-day-border-radius)",
-          "var(--swui-calendar-day-border-radius)",
-        ],
-        borderColor
-      ),
-      borderBottomLeftRadius: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedStart", "singleSelected"],
-        [
-          "var(--swui-calendar-day-border-radius)",
-          "var(--swui-calendar-day-border-radius)",
-        ],
-        borderColor
-      ),
-      borderTopRightRadius: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedEnd", "singleSelected"],
-        [
-          "var(--swui-calendar-day-border-radius)",
-          "var(--swui-calendar-day-border-radius)",
-        ],
-        borderColor
-      ),
-      borderBottomRightRadius: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selectedEnd", "singleSelected"],
-        [
-          "var(--swui-calendar-day-border-radius)",
-          "var(--swui-calendar-day-border-radius)",
-        ],
-        borderColor
-      ),
-      boxSizing: "border-box",
-    };
-  }
-  return style;
+  return {
+    ...style,
+    backgroundColor,
+    borderTopLeftRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedStart", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderBottomLeftRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedStart", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderTopRightRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedEnd", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderBottomRightRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedEnd", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    boxSizing: "border-box",
+  };
 };
 
 interface DefaultTextColors {
@@ -182,10 +181,12 @@ export const defaultCalendarTheme: CalendarTheme = {
   WeekNumber: {
     backgroundColor: "var(--swui-calendar-week-number-bg-color)",
     textColor: "var(--swui-calendar-week-number-text-color)",
+    clickableTextColor: "var(--swui-calendar-week-number-clickable-text-color)",
     show: true,
   },
   WeekDay: {
     textColor: "var(--swui-calendar-week-day-text-color)",
+    clickableTextColor: "var(--swui-calendar-week-day-clickable-text-color)",
   },
   CalendarDay: {
     tdStyle: defaultWrapperStyleProvider({

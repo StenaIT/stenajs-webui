@@ -5,7 +5,7 @@ import {
   getWeekForDate,
   WeekData,
 } from "../../../util/calendar/CalendarDataFactory";
-import { addWeekStateHighlights } from "../../../util/calendar/StateModifier";
+import { addWeekRangeHighlights } from "../../../util/calendar/StateModifier";
 
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
@@ -46,7 +46,7 @@ export const useSingleWeekSelection = <T>({
   const statePerMonthWithSelection = useMemo(() => {
     const weekData = getWeekDataFromWeekString(value);
     return weekData
-      ? addWeekStateHighlights(statePerMonth, weekData, ["selected"])
+      ? addWeekRangeHighlights(statePerMonth, weekData)
       : statePerMonth;
   }, [value, statePerMonth]);
 
