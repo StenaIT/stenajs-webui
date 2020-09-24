@@ -160,9 +160,15 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
   }, [setCurrentPanel, showCalendar]);
 
   const onClickCalendarButton = useCallback(() => {
-    setCurrentPanel("calendar");
-    showCalendar();
-  }, [setCurrentPanel, showCalendar]);
+    if (focusedInput === "startDate" && startDateInputRef.current) {
+      startDateInputRef.current.focus();
+    } else if (focusedInput === "endDate" && endDateInputRef.current) {
+      endDateInputRef.current.focus();
+    } else {
+      setCurrentPanel("calendar");
+      showCalendar();
+    }
+  }, [setCurrentPanel, showCalendar, focusedInput]);
 
   const startDateIsAfterEnd = useMemo(
     () =>

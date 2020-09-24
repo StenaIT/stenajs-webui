@@ -12,7 +12,6 @@ import {
   Indent,
   Row,
   SeparatorLine,
-  Space,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, stenaArrowRight } from "@stenajs-webui/elements";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
@@ -170,12 +169,13 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             type={"date"}
           />
         </Box>
-        <Icon
-          icon={stenaArrowRight}
-          size={12}
-          color={"var(--lhds-color-ui-500)"}
-        />
-        <Space />
+        <Row indent={0.5} alignItems={"center"} justifyContent={"center"}>
+          <Icon
+            icon={stenaArrowRight}
+            size={12}
+            color={"var(--lhds-color-ui-500)"}
+          />
+        </Row>
         <Box width={"104px"}>
           <TextInput
             onClick={onClickRight}
