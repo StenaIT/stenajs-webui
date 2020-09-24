@@ -26,8 +26,8 @@ import { DateRangeFocusedInput } from "../../components/calendar-types/date-rang
 import { DayData } from "../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
 import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSwitcher";
-import { buildDayStateForSingleMonth } from "../../components/calendar-types/date-range-calendar/util/DayStateFactory";
 import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
+import { buildDayStateForSingleMonth } from "../../util/calendar/StateModifier";
 
 interface Props extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
 
@@ -160,9 +160,15 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
   }, [setCurrentPanel, showCalendar]);
 
   const onClickCalendarButton = useCallback(() => {
-    setCurrentPanel("calendar");
-    showCalendar();
-  }, [setCurrentPanel, showCalendar]);
+    if (focusedInput === "startDate" && startDateInputRef.current) {
+      startDateInputRef.current.focus();
+    } else if (focusedInput === "endDate" && endDateInputRef.current) {
+      endDateInputRef.current.focus();
+    } else {
+      setCurrentPanel("calendar");
+      showCalendar();
+    }
+  }, [setCurrentPanel, showCalendar, focusedInput]);
 
   const startDateIsAfterEnd = useMemo(
     () =>

@@ -15,21 +15,36 @@ export const WeekDayCell = ({
   day,
   theme,
 }: WeekDayCellProps) => {
-  return (
-    <Clickable
-      onClick={
-        onClickWeekDay ? (ev) => onClickWeekDay(day.dayOfWeek, ev) : undefined
-      }
-      disableFocusHighlight={!onClickWeekDay}
+  const content = (
+    <Box
+      width={theme.width}
+      height={theme.height}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
-      <Box
-        width={theme.width}
-        height={theme.height}
-        justifyContent={"center"}
-        alignItems={"center"}
+      <SmallText
+        color={
+          onClickWeekDay
+            ? theme.WeekDay.clickableTextColor
+            : theme.WeekDay.textColor
+        }
       >
-        <SmallText color={theme.WeekDay.textColor}>{day.name}</SmallText>
-      </Box>
-    </Clickable>
+        {day.name}
+      </SmallText>
+    </Box>
   );
+
+  if (onClickWeekDay) {
+    return (
+      <Clickable
+        borderRadius={"var(--swui-calendar-day-border-radius)"}
+        onClick={(ev) => onClickWeekDay(day.dayOfWeek, ev)}
+        disableFocusHighlight={!onClickWeekDay}
+      >
+        {content}
+      </Clickable>
+    );
+  }
+
+  return content;
 };

@@ -1,4 +1,4 @@
-import { Box, Clickable, SmallText } from "@stenajs-webui/core";
+import { Box, Clickable, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
 import { OnClickWeek } from "../../../types/CalendarTypes";
 import { WeekData } from "../../../util/calendar/CalendarDataFactory";
@@ -21,30 +21,44 @@ export const WeekNumberCell: React.FC<WeekNumberCellProps> = ({
   backgroundColor,
   prefix,
 }) => {
+  const content = (
+    <Box
+      width={theme.width}
+      height={theme.height}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      {background && <Box position={"absolute"}>{background}</Box>}
+      <Box position={"absolute"}>
+        <StandardText
+          color={
+            onClickWeek
+              ? theme.WeekNumber.clickableTextColor
+              : theme.WeekNumber.textColor
+          }
+        >
+          {prefix}
+          {week.weekNumber}
+        </StandardText>
+      </Box>
+    </Box>
+  );
   return (
     <Box
       background={backgroundColor || theme.WeekNumber.backgroundColor}
       position={"relative"}
     >
-      <Clickable
-        onClick={onClickWeek ? (ev) => onClickWeek(week, ev) : undefined}
-        disableFocusHighlight={!onClickWeek}
-      >
-        <Box
-          width={theme.width}
-          height={theme.height}
-          justifyContent={"center"}
-          alignItems={"center"}
+      {onClickWeek ? (
+        <Clickable
+          borderRadius={"var(--swui-calendar-day-border-radius)"}
+          onClick={(ev) => onClickWeek(week, ev)}
+          disableFocusHighlight={!onClickWeek}
         >
-          {background && <Box position={"absolute"}>{background}</Box>}
-          <Box position={"absolute"}>
-            <SmallText color={theme.WeekNumber.textColor}>
-              {prefix}
-              {week.weekNumber}
-            </SmallText>
-          </Box>
-        </Box>
-      </Clickable>
+          {content}
+        </Clickable>
+      ) : (
+        content
+      )}
     </Box>
   );
 };

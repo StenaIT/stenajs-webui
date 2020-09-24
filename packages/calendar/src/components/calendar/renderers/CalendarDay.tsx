@@ -43,8 +43,8 @@ export const CalendarDay = <T extends {}>({
   );
 
   const WrapperTd = styled.td({
-    ...(theme.CalendarDay.wrapperStyle &&
-      theme.CalendarDay.wrapperStyle(
+    ...(theme.CalendarDay.tdStyle &&
+      theme.CalendarDay.tdStyle(
         defaultHighlights,
         dayState,
         day,
@@ -52,8 +52,6 @@ export const CalendarDay = <T extends {}>({
         month,
         userData
       )),
-    width: theme.width,
-    height: theme.height,
   });
 
   const InnerWrapperDiv = styled.div({
@@ -67,7 +65,7 @@ export const CalendarDay = <T extends {}>({
         userData
       )),
     width: "100%",
-    height: theme.height,
+    height: "100%",
   });
 
   const CellWrapperDiv = styled.div({
@@ -105,6 +103,7 @@ export const CalendarDay = <T extends {}>({
                 <Clickable
                   onClick={(ev) => onClickDay(day, userData, ev)}
                   style={{ width: "100%", height: "100%" }}
+                  borderRadius={"var(--swui-calendar-day-border-radius)"}
                 >
                   {content}
                 </Clickable>

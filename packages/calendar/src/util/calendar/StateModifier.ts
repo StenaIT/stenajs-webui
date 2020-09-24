@@ -1,4 +1,17 @@
-import { format, getDate, getISOWeek } from "date-fns";
+import {
+  addDays,
+  eachDayOfInterval,
+  endOfMonth,
+  format,
+  getDate,
+  getISOWeek,
+  isAfter,
+  isSameDay,
+  max,
+  min,
+  startOfMonth,
+  subDays,
+} from "date-fns";
 import {
   CalendarState,
   CalendarUserData,
@@ -8,6 +21,73 @@ import {
 } from "../../types/CalendarTypes";
 import { DateFormats } from "../date/DateFormats";
 import { WeekData } from "./CalendarDataFactory";
+import { last } from "lodash";
+
+export const buildDayStateForDateRange = (
+  statePerMonth: CalendarUserData<DayState> = {},
+  start?: Date,
+  end?: Date
+): CalendarUserData<DayState> | undefined => {
+  if (start && end && isAfter(end, start)) {
+    return eachDayOfInterval({ start, end }).reduce(
+      (result: CalendarUserData<DayState>, date: Date) => {
+        const isFirstInRange = isSameDay(date, start);
+        const isLastInRange = isSameDay(date, end);
+        const highlights = isFirstInRange
+          ? ["selected", "selectedStart", "range"]
+          : isLastInRange
+          ? ["selected", "selectedEnd", "range"]
+          : ["range"];
+        return addDayStateHighlights(result, date, highlights);
+      },
+      statePerMonth
+    );
+  }
+
+  let state = statePerMonth;
+
+  if (start) {
+    state = addDayStateHighlights(state, start, ["selected", "singleSelected"]);
+  }
+
+  if (end) {
+    state = addDayStateHighlights(state, end, ["selected", "singleSelected"]);
+  }
+
+  return state;
+};
+
+export const buildDayStateForSingleMonth = (
+  statePerMonth: CalendarUserData<DayState> = {},
+  start: Date | undefined,
+  end: Date | undefined,
+  dateInFocus: Date
+): CalendarUserData<DayState> | undefined =>
+  buildDayStateForRange(
+    statePerMonth,
+    start,
+    end,
+    startOfMonth(dateInFocus),
+    endOfMonth(dateInFocus)
+  );
+
+export const buildDayStateForRange = (
+  statePerMonth: CalendarUserData<DayState> = {},
+  start: Date | undefined,
+  end: Date | undefined,
+  startLimit: Date,
+  endLimit: Date
+): CalendarUserData<DayState> | undefined => {
+  if (start && end) {
+    return buildDayStateForDateRange(
+      statePerMonth,
+      max([start, subDays(startLimit, 1)]),
+      min([end, addDays(endLimit, 1)])
+    );
+  } else {
+    return buildDayStateForDateRange(statePerMonth, start, end);
+  }
+};
 
 export const setDayStateValue = (
   state: CalendarUserData<DayState> | undefined,
@@ -137,5 +217,19 @@ export const addWeekStateHighlights = (
       ...(calendarState && calendarState[monthString]),
       [weekNumber]: newWeekState,
     },
+  };
+};
+
+export const addWeekRangeHighlights = (
+  calendarState: CalendarState | undefined,
+  week: WeekData
+): CalendarUserData<DayState> => {
+  if (!week.days.length) {
+    return { ...calendarState };
+  }
+  const startDate = week.days[0].date;
+  const endDate = last(week.days)?.date;
+  return {
+    ...buildDayStateForDateRange(calendarState, startDate, endDate),
   };
 };

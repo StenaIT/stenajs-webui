@@ -27,7 +27,10 @@ export const useSingleDateSelection = <T>({
   const statePerMonthWithSelectedDate = useMemo(
     () =>
       value
-        ? addDayStateHighlights(statePerMonth, value, ["selected"])
+        ? addDayStateHighlights(statePerMonth, value, [
+            "selected",
+            "singleSelected",
+          ])
         : statePerMonth,
     [statePerMonth, value]
   );

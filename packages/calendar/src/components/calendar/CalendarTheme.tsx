@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { TextProps, Theme, ThemeColorField } from "@stenajs-webui/core";
+import { TextProps, Theme } from "@stenajs-webui/core";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 
@@ -8,10 +8,7 @@ import {
   MonthData,
   WeekData,
 } from "../../util/calendar/CalendarDataFactory";
-import {
-  dayHasHighlight,
-  dayHighlightSelect,
-} from "../../util/calendar/StateHelper";
+import { dayHighlightSelect } from "../../util/calendar/StateHelper";
 
 export interface CalendarTheme<TUserData = {}> {
   width: string;
@@ -23,20 +20,22 @@ export interface CalendarTheme<TUserData = {}> {
 }
 
 export interface WeekNumberTheme {
-  backgroundColor: ThemeColorField | string;
-  textColor?: ThemeColorField | string;
+  backgroundColor: string;
+  textColor?: string;
+  clickableTextColor?: string;
   show?: boolean;
 }
 
 export interface CalendarMonthTheme {
-  headerTextColor?: ThemeColorField | string;
+  headerTextColor?: string;
   cellSpacing?: string;
   headerLeftIcon?: IconDefinition;
   headerRightIcon?: IconDefinition;
 }
 
 export interface WeekDayTheme {
-  textColor?: ThemeColorField | string;
+  textColor?: string;
+  clickableTextColor?: string;
 }
 
 export type CalendarStyleProvider<TUserData, TResult> = (
@@ -59,18 +58,15 @@ type TextPropsProvider<TUserData> = CalendarStyleProvider<
 >;
 
 export interface CalendarDayTheme<TUserData> {
-  wrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
+  tdStyle?: CalendarWrapperStyleProvider<TUserData>;
   innerWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
   cellWrapperStyle?: CalendarWrapperStyleProvider<TUserData>;
   textProps?: TextPropsProvider<TUserData>;
 }
 
 export interface CalendarDefaultWrapperColors {
-  selectedBorder: string;
   selectedBackground: string;
-  rangeBorder: string;
   rangeBackground: string;
-  todayBorder: string;
   todayBackground: string;
   borderColor?: string;
   borderRadius?: string;
@@ -81,9 +77,6 @@ export const defaultWrapperStyleProvider = ({
   selectedBackground,
   todayBackground,
   rangeBackground,
-  selectedBorder,
-  rangeBorder,
-  todayBorder,
   borderColor = "transparent",
 }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
   defaultHighlights,
@@ -102,29 +95,51 @@ export const defaultWrapperStyleProvider = ({
     "transparent"
   );
 
-  if (day.month === month.monthInYear) {
-    return {
-      ...style,
-      backgroundColor,
-      borderWidth: "1px",
-      borderColor: dayHighlightSelect(
-        dayState,
-        defaultHighlights,
-        ["selected", "range", "today"],
-        [selectedBorder, rangeBorder, todayBorder],
-        borderColor
-      ),
-      borderCollapse: "collapse",
-      borderStyle:
-        dayHasHighlight(dayState, defaultHighlights, "selected") ||
-        dayHasHighlight(dayState, defaultHighlights, "range") ||
-        dayHasHighlight(dayState, defaultHighlights, "today")
-          ? "double"
-          : "solid",
-      boxSizing: "border-box",
-    };
-  }
-  return style;
+  return {
+    ...style,
+    backgroundColor,
+    borderTopLeftRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedStart", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderBottomLeftRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedStart", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderTopRightRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedEnd", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    borderBottomRightRadius: dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selectedEnd", "singleSelected"],
+      [
+        "var(--swui-calendar-day-border-radius)",
+        "var(--swui-calendar-day-border-radius)",
+      ],
+      borderColor
+    ),
+    boxSizing: "border-box",
+  };
 };
 
 interface DefaultTextColors {
@@ -165,18 +180,18 @@ export const defaultCalendarTheme: CalendarTheme = {
   height: "var(--swui-calendar-day-height)",
   WeekNumber: {
     backgroundColor: "var(--swui-calendar-week-number-bg-color)",
+    textColor: "var(--swui-calendar-week-number-text-color)",
+    clickableTextColor: "var(--swui-calendar-week-number-clickable-text-color)",
     show: true,
   },
   WeekDay: {
     textColor: "var(--swui-calendar-week-day-text-color)",
+    clickableTextColor: "var(--swui-calendar-week-day-clickable-text-color)",
   },
   CalendarDay: {
-    wrapperStyle: defaultWrapperStyleProvider({
-      selectedBorder: "var(--swui-calendar-wrapper-selected-border)",
+    tdStyle: defaultWrapperStyleProvider({
       selectedBackground: "var(--swui-calendar-wrapper-selected-background)",
-      rangeBorder: "var(--swui-calendar-wrapper-range-border)",
       rangeBackground: "var(--swui-calendar-wrapper-range-background)",
-      todayBorder: "var(--swui-calendar-wrapper-today-border)",
       todayBackground: "var(--swui-calendar-wrapper-today-background)",
     }),
     textProps: defaultTextPropsProvider({
@@ -185,7 +200,9 @@ export const defaultCalendarTheme: CalendarTheme = {
       inOtherMonthColor: "var(--swui-calendar-text-in-other-month-color)",
     }),
   },
-  CalendarMonth: {},
+  CalendarMonth: {
+    headerTextColor: "var(--swui-calendar-week-day-text-color)",
+  },
 };
 
 export const extranetCalendarTheme: CalendarTheme = {

@@ -1,21 +1,25 @@
 .calendar {
-  --swui-calendar-day-width: 37px;
-  --swui-calendar-day-height: 37px;
+  --swui-calendar-day-width: 40px;
+  --swui-calendar-day-height: 38px;
+  --swui-calendar-day-border-radius: 4px;
 
   /* Week number */
 
   --swui-calendar-week-number-bg-color: transparent;
+  --swui-calendar-week-number-text-color: var(--lhds-color-ui-500);
+  --swui-calendar-week-number-clickable-text-color: var(--lhds-color-ui-500);
 
   /* Week day */
 
   --swui-calendar-week-day-text-color: var(--lhds-color-ui-500);
+  --swui-calendar-week-day-clickable-text-color: var(--lhds-color-ui-500);
 
   /* Wrapper */
 
   --swui-calendar-wrapper-selected-border: var(--swui-primary-action-color);
   --swui-calendar-wrapper-selected-background: var(--swui-primary-action-color);
-  --swui-calendar-wrapper-range-border: var(--lhds-color-blue-50);
-  --swui-calendar-wrapper-range-background: var(--lhds-color-blue-50);
+  --swui-calendar-wrapper-range-border: var(--lhds-color-blue-100);
+  --swui-calendar-wrapper-range-background: var(--lhds-color-blue-100);
   --swui-calendar-wrapper-today-border: var(--lhds-color-ui-200);
   --swui-calendar-wrapper-today-background: var(--lhds-color-ui-200);
 
@@ -23,5 +27,29 @@
 
   --swui-calendar-text-selected-color: #fff;
   --swui-calendar-text-disabled-color: var(--swui-text-disabled-color);
-  --swui-calendar-text-in-other-month-color: transparent;
+  --swui-calendar-text-in-other-month-color: var(--swui-text-disabled-color);
+
+  table {
+    border-spacing: 0 4px;
+  }
+
+  span {
+    line-height: 100%;
+  }
+
+  tr td:last-child {
+    border-top-right-radius: var(--swui-calendar-day-border-radius);
+    border-bottom-right-radius: var(--swui-calendar-day-border-radius);
+  }
+
+  tr td:nth-child(2) {
+    border-top-left-radius: var(--swui-calendar-day-border-radius);
+    border-bottom-left-radius: var(--swui-calendar-day-border-radius);
+  }
+
+  td {
+    padding: 0;
+    width: var(--swui-calendar-day-width);
+    height: var(--swui-calendar-day-height);
+  }
 }

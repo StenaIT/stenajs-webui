@@ -50,13 +50,6 @@ export function CalendarMonth<T>({
   extraDayContent,
   defaultHighlights,
 }: CalendarMonthProps<T>) {
-  const tableStyle: React.CSSProperties = {
-    borderSpacing: theme.CalendarMonth.cellSpacing
-      ? theme.CalendarMonth.cellSpacing
-      : 0,
-    borderCollapse: theme.CalendarMonth.cellSpacing ? "separate" : "collapse",
-  };
-
   const showWeekNumber = theme.WeekNumber.show;
 
   return (
@@ -70,29 +63,33 @@ export function CalendarMonth<T>({
           <Box alignItems={"center"}>{headerLeftContent}</Box>
 
           <Row alignItems={"center"}>
-            {onClickMonth ? (
-              <FlatButton
-                onClick={() => onClickMonth(month)}
-                label={month.name}
-              />
-            ) : (
-              <StandardText>{month.name}</StandardText>
-            )}
+            <Row width={"104px"} justifyContent={"center"}>
+              {onClickMonth ? (
+                <FlatButton
+                  onClick={() => onClickMonth(month)}
+                  label={month.name}
+                />
+              ) : (
+                <StandardText>{month.name}</StandardText>
+              )}
+            </Row>
             <Space />
-            {onClickYear ? (
-              <FlatButton
-                onClick={() => onClickYear(month.year)}
-                label={String(month.year)}
-              />
-            ) : (
-              <StandardText>{month.year}</StandardText>
-            )}
+            <Row width={"64px"} justifyContent={"center"}>
+              {onClickYear ? (
+                <FlatButton
+                  onClick={() => onClickYear(month.year)}
+                  label={String(month.year)}
+                />
+              ) : (
+                <StandardText>{month.year}</StandardText>
+              )}
+            </Row>
           </Row>
 
           <Box alignItems={"center"}>{headerRightContent}</Box>
         </Row>
 
-        <table style={tableStyle}>
+        <table>
           <tbody>
             <tr>
               {showWeekNumber && (
