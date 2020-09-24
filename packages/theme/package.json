@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/theme",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,9 +28,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/calendar": "2.0.2",
-    "@stenajs-webui/elements": "2.0.2",
-    "@stenajs-webui/forms": "2.0.2"
+    "@stenajs-webui/calendar": "2.0.3",
+    "@stenajs-webui/elements": "2.0.3",
+    "@stenajs-webui/forms": "2.0.3"
   },
   "peerDependencies": {
     "prop-types": ">=15.5.4",
