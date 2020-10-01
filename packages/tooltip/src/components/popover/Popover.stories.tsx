@@ -24,8 +24,6 @@ export const Standard = () => (
   </Box>
 );
 
-Standard.storyName = "standard";
-
 export const OnClick = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"}>
@@ -34,8 +32,6 @@ export const OnClick = () => (
   </Box>
 );
 
-OnClick.storyName = "on click";
-
 export const NoArrow = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
@@ -43,8 +39,6 @@ export const NoArrow = () => (
     </Popover>
   </Box>
 );
-
-NoArrow.storyName = "no arrow";
 
 export const NoPadding = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -67,8 +61,6 @@ export const NoPadding = () => (
     </Popover>
   </Box>
 );
-
-NoPadding.storyName = "no padding";
 
 export const Variants = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
@@ -110,8 +102,6 @@ export const Variants = () => (
   </Box>
 );
 
-Variants.storyName = "variants";
-
 export const ControlOpen = () => (
   <Box indent={5} spacing={5} display={"inline-block"}>
     <Popover content={<ActionPrompt />} visible>
@@ -120,4 +110,16 @@ export const ControlOpen = () => (
   </Box>
 );
 
-ControlOpen.storyName = "control open";
+const Alerter = () => {
+  alert("I was rendered.");
+
+  return <StandardText>I alert when I am rendered.</StandardText>;
+};
+
+export const Lazy = () => (
+  <Box indent={5} spacing={5} display={"inline-block"}>
+    <Popover content={<Alerter />} trigger={"click"} lazy>
+      <FlatButton leftIcon={faTrash} />
+    </Popover>
+  </Box>
+);

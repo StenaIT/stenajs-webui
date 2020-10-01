@@ -87,18 +87,17 @@ export const DateInput: React.FC<DateInputProps> = ({
     <Box innerRef={outsideRef} width={width}>
       <Popover
         arrow={false}
+        lazy
         visible={showingCalendar}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
         content={
-          showingCalendar && (
-            <SingleDateCalendar
-              {...calendarProps}
-              onChange={onSelectDate}
-              value={value}
-              theme={calendarTheme}
-            />
-          )
+          <SingleDateCalendar
+            {...calendarProps}
+            onChange={onSelectDate}
+            value={value}
+            theme={calendarTheme}
+          />
         }
       >
         <TextInput

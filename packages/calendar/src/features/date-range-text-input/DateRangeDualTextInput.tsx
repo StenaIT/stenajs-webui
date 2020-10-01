@@ -205,6 +205,7 @@ export const DateRangeDualTextInput: React.FC<Props> = ({
     <Box innerRef={containerRef} onKeyDown={onKeyDownHandler}>
       <Popover
         arrow={false}
+        lazy
         placement={"bottom"}
         visible={isCalendarVisible}
         content={
