@@ -128,6 +128,7 @@ export const DateRangeInput = <T extends {}>({
     <Box innerRef={outsideRef}>
       <Popover
         arrow={false}
+        lazy
         visible={showingCalendar}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}

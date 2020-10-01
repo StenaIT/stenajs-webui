@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.4
+
+### New features
+
+#### `Popover`
+
+- Added `lazy` prop to `Popover`. When enabled, the popover content is not rendered until popover is opened.
+
+#### Calendar
+
+- All calendars in popups are now lazy rendered.
+
 ## 2.0.3
 
 ### Improvements
@@ -91,19 +103,17 @@ New modal for showing loading/saving state.
 
 #### `Popover`
 
-`Popover` now uses Tippy, and Tippy's props.
-This means that some props have changed.
+`Popover` now uses Tippy, and Tippy's props. This means that some props have changed.
 
-Most importantly, content and children can no longer be functions.
-If you need the hide and show functions, implement them using local state and the Popover `visible` props.
+Most importantly, content and children can no longer be functions. If you need the hide and show functions, implement
+them using local state and the Popover `visible` props.
 
 ## 1.2.0
 
 ### New features
 
 - `entity-list-reducer` has new action `actionOnAll`, which applies child action to all items.
-- New reducer factory `editable-entity-reducer` which contains persisted and editable instances
-  of entity.
+- New reducer factory `editable-entity-reducer` which contains persisted and editable instances of entity.
 
 ### Breaking changes
 
@@ -124,13 +134,12 @@ If you need the hide and show functions, implement them using local state and th
 
 This caused prefilled checkboxes to be cleared.
 
-This must now be handled manually when there is new data in the table without it being
-unmounted between renders.
+This must now be handled manually when there is new data in the table without it being unmounted between renders.
 
 - DateRangeInput now allows invalid date range.
 
-Previously, it would switch start date and end date if start date was after end date.
-Instead, it now highlights the inputs with error highlight.
+Previously, it would switch start date and end date if start date was after end date. Instead, it now highlights the
+inputs with error highlight.
 
 This means that you are no longer guaranteed that the range is valid.
 
@@ -144,17 +153,16 @@ onChange did not properly use latest value in editor cells.
 
 ### Hotfix
 
-`reducerIdGate` did not handle actions with unexpected form.
-Such actions can be dispatched by Redux itself, or middlewares.
-Such actions are now just passed down to the internal reducer,
-which can handle the actions as they see fit.
+`reducerIdGate` did not handle actions with unexpected form. Such actions can be dispatched by Redux itself, or
+middlewares. Such actions are now just passed down to the internal reducer, which can handle the actions as they see
+fit.
 
 ## 1.0.6
 
 #### Redux package types updated
 
-It now uses type `Reducer` type from `redux` instead of `react`.
-This makes it compatible with `combineReducers` from Redux.
+It now uses type `Reducer` type from `redux` instead of `react`. This makes it compatible with `combineReducers` from
+Redux.
 
 ## 1.0.5
 
@@ -167,8 +175,8 @@ This makes it compatible with `combineReducers` from Redux.
 
 #### New actions for `StandardTable`
 
-`StandardTable` is now using new higher order reducers, which require composing nested actions.
-This made it harder to create actions in the apps, and these new actions help.
+`StandardTable` is now using new higher order reducers, which require composing nested actions. This made it harder to
+create actions in the apps, and these new actions help.
 
 - selectByIds(ids)
 - clearSelection()
@@ -177,13 +185,14 @@ This made it harder to create actions in the apps, and these new actions help.
 - sortBy(columnId, desc?)
 - clearSortOrder()
 
-New actions are exposed by `useLocalStateTableContext` hook,
-and can be created manually using `createStandardTableActions` function.
+New actions are exposed by `useLocalStateTableContext` hook, and can be created manually
+using `createStandardTableActions` function.
 
 ### Breaking changes
 
 - New actions are breaking, if the app is using them via `useLocalStateTableContext`.
-- `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder` and `initialSortOrderDesc`.
+- `useLocalStateTableContext` now accepts an `initialState` parameter instead of `initialSortOrder`
+  and `initialSortOrderDesc`.
   - Use `createStandardTableInitialState` to maintain compatibility.
 
 ## 1.0.4
@@ -191,15 +200,16 @@ and can be created manually using `createStandardTableActions` function.
 ### Improvements
 
 - `Collapsible` now has `autoFocus` and `innerRef` properties.
-- `PrimaryButton` now has an `as` property to allow it to be rendered as an anchor instead of a button.
-  This also affects `SecondaryButton` and `FlatButton`.
+- `PrimaryButton` now has an `as` property to allow it to be rendered as an anchor instead of a button. This also
+  affects `SecondaryButton` and `FlatButton`.
 - `CollapsibleClickableContent` now passes its remaining properties to its `Clickable`.
 - `@types/react-modal` has been bumped to allow setting an `id` property to the modal element.
 
 ### Fixes
 
 - `Chip` close button negative margin of 1px removed.
-- `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark.
+- `Checkbox`'s :after pseudo element now uses box-sizing: content-box by default. This fixes an issue where in the case
+  where all pseudo elements globally is set to use something other than content-box, resulted in a too small checkmark.
 - `Space` now doesn't flex, making it keep its size in a flexbox context.
 - `ModalHeader` now uses the primary font.
 
@@ -209,8 +219,8 @@ and can be created manually using `createStandardTableActions` function.
 
 #### Changes to reducer factories.
 
-All reducer factories have been updated to no longer accept reducerId.
-The reason for this is the new reducerIdGate higher order reducer.
+All reducer factories have been updated to no longer accept reducerId. The reason for this is the new reducerIdGate
+higher order reducer.
 
 Compose with `reducerIdGate` to get same functionality, and use `reducerIdGateAction` to create actions.
 
@@ -289,8 +299,7 @@ Use custom comparator to use useArraySet with objects.
 
 - StandardTable
 
-A table component with support for sorting, selecting rows,
-custom cell renderers, support for grid navigation, etc.
+A table component with support for sorting, selecting rows, custom cell renderers, support for grid navigation, etc.
 
 Can be used with Redux state, or internal state.
 
@@ -306,9 +315,8 @@ Can be used with Redux state, or internal state.
 
 #### TextInput onKeyDown prop
 
-`onKeyDown` was not receiving enter or escape.
-All other calls were also disabled when `onMove` was set.
-This has changed. `onKeyDown` now always receives all key down events.
+`onKeyDown` was not receiving enter or escape. All other calls were also disabled when `onMove` was set. This has
+changed. `onKeyDown` now always receives all key down events.
 
 ## 1.0.0-alpha.1
 
@@ -381,7 +389,8 @@ These components have new implementations, built with HTML and CSS modules.
 
 - Make it possible to change height of `StandardTextInput`.
 - `GroupedMultiSelect`, add group heading font family styling.
-- `BaseModal` now has `draggable` prop and can be used by setting `DRAGGABLE_HANDLE_CLASSNAME` as className on your drag handle.
+- `BaseModal` now has `draggable` prop and can be used by setting `DRAGGABLE_HANDLE_CLASSNAME` as className on your drag
+  handle.
 
 ### Internal
 
@@ -441,21 +450,18 @@ Bug fix release.
 
 - Resolve correct theme color for `Select`.
 - Upgrade `Select` from `v2` to `v3`.
-- Uniform heights for `text input` and `select`.
-  ​
+- Uniform heights for `text input` and `select`. ​
 
 ### New features
 
 - Add possibility to set active color for `options` in `Select menu`.
-- Add onKeyDown event for `Checkbox`.
-  ​
+- Add onKeyDown event for `Checkbox`. ​
 
 ### Storybook
 
 ​
 
-- Add `all` story for `Form`-section in `storybook`.
-  ​
+- Add `all` story for `Form`-section in `storybook`. ​
 
 ### Internal
 
@@ -515,7 +521,8 @@ Bug fix release.
 
 - Calendar
   - Add `cellSpacing` to `CalendarMonthTheme`.
-  - Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher buttons.
+  - Add `HeaderLeftIcon` and `HeaderRightIcon` to `CalendarMonthTheme` to be able to use custom icons in month switcher
+    buttons.
   - Add `borderColor`, `borderRadius` and `rangeBorderRadius` to `CalendarDay`'s `wrapperStyle`.
   - Add `rangeBackground`, `verticalExpand` and `horizontalExpand` to `CalendarDay`'s `innerWrapperStyle`.
 
@@ -536,7 +543,8 @@ Bug fix release.
 
 - Upgrade `date-fns` to `2.0.1`.
 - Add `show` option to `WeekNumber` config used in `CalenderMonth`
-- Add new highlight states to `DayStateHighlight`: `selectedStart` and `selectedEnd`. For compatibility reasons the selected days hove both the old `selected` AND `selectedStart` and/or `selectedEnd`
+- Add new highlight states to `DayStateHighlight`: `selectedStart` and `selectedEnd`. For compatibility reasons the
+  selected days hove both the old `selected` AND `selectedStart` and/or `selectedEnd`
 - Add `rangeTextColor` to `CalendarDay`'s `textProps`
 - Add `borderColor` (and `borderColorDisabled`) to `ButtonTheme`.
 

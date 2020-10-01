@@ -29,15 +29,11 @@ export const Standard = () => (
   </>
 );
 
-Standard.storyName = "standard";
-
 export const ClickTrigger = () => (
   <Tooltip label={"Way to go!"} trigger={"click"}>
     <StandardText>Click me</StandardText>
   </Tooltip>
 );
-
-ClickTrigger.storyName = "click trigger";
 
 export const WithButton = () => (
   <Column justifyContent={"flex-start"} width={"fit-content"}>
@@ -46,5 +42,3 @@ export const WithButton = () => (
     </Tooltip>
   </Column>
 );
-
-WithButton.storyName = "with button";

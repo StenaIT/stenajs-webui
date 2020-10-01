@@ -111,6 +111,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     <Box innerRef={outsideRef} width={width}>
       <Popover
         arrow={false}
+        lazy
         visible={open}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}

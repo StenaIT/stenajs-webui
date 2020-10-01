@@ -7,12 +7,15 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import { Box } from "@stenajs-webui/core";
+import { useLazyPopover } from "../../hooks/UseLazyPopover";
 
 export type PopoverVariant = "standard" | "info" | "warning" | "error";
 
-export interface PopoverProps extends Omit<TippyComponentProps, "theme"> {
+export interface PopoverProps
+  extends Omit<TippyComponentProps, "theme" | "render"> {
   tippyRef?: TippyCallbackRef<HTMLDivElement>;
   disablePadding?: boolean;
+  lazy?: boolean;
   variant?: PopoverVariant;
 }
 
@@ -32,26 +35,37 @@ export const Popover: React.FC<PopoverProps> = ({
   trigger = "mouseenter",
   children,
   tippyRef,
+  delay = 0,
   variant = "standard",
   disablePadding,
   content,
+  maxWidth = "500px",
+  plugins: propsPlugins,
+  lazy,
   ...tippyProps
-}) => (
-  <TippyComponent
-    interactive
-    className={tippyStyles.noPadding}
-    trigger={visible !== undefined ? undefined : trigger}
-    visible={visible}
-    theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
-    delay={0}
-    maxWidth={"500px"}
-    content={
-      <Box spacing={!disablePadding && 1} indent={!disablePadding && 1}>
-        {content}
-      </Box>
-    }
-    {...tippyProps}
-  >
-    <div ref={tippyRef}>{children}</div>
-  </TippyComponent>
-);
+}) => {
+  const { plugins, mounted } = useLazyPopover(propsPlugins);
+
+  return (
+    <TippyComponent
+      interactive
+      className={tippyStyles.noPadding}
+      trigger={visible !== undefined ? undefined : trigger}
+      visible={visible}
+      theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
+      delay={delay}
+      maxWidth={maxWidth}
+      content={
+        (!lazy || mounted) && (
+          <Box spacing={!disablePadding && 1} indent={!disablePadding && 1}>
+            {content}
+          </Box>
+        )
+      }
+      plugins={plugins}
+      {...tippyProps}
+    >
+      <div ref={tippyRef}>{children}</div>
+    </TippyComponent>
+  );
+};
