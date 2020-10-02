@@ -148,19 +148,6 @@
       }
     }
 
-    &Enter {
-      opacity: 0;
-    }
-
-    &EnterActive {
-      opacity: 1;
-      transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
-    }
-
-    &ExitDone {
-      display: none;
-    }
-
     [data-hidden="true"] {
       display: none;
     }
@@ -174,6 +161,19 @@
         color: var(--swui-collapsible-header-indicator-color-hover);
       }
     }
+  }
+
+  .contentEnter {
+    opacity: 0;
+  }
+
+  .contentEnterActive {
+    opacity: 1;
+    transition: opacity var(--swui-collapsible-animation-time) ease-in-out;
+  }
+
+  .contentExitDone {
+    display: none;
   }
 
   /** Clickable content */
