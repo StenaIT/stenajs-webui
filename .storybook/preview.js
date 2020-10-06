@@ -1,24 +1,45 @@
-import { withContexts } from "@storybook/addon-contexts/react";
-import { withInfo } from "@storybook/addon-info";
-import { withKnobs } from "@storybook/addon-knobs";
-import { addDecorator, addParameters } from "@storybook/react";
-import { stenaTheme } from "./stena-theme";
-import { contexts } from "./configs/contexts";
+import { ThemeProvider } from "@stenajs-webui/core";
+import * as React from "react";
+import { externalTheme, internalTheme } from "@stenajs-webui/core";
 
-import { withA11y } from "@storybook/addon-a11y"; // Must be imported last, otherwise we get weird error.
+export const parameters = {
+  a11y: {
+    element: "#root",
+    config: {},
+    options: {},
+    manual: true,
+  },
+};
 
-addParameters({
-  options: {
-    theme: stenaTheme
-  }
-});
+export const globalTypes = {
+  theme: {
+    name: "Themes",
+    description: "Global theme for components",
+    defaultValue: "external",
+    toolbar: {
+      icon: "paintbrush",
+      items: [
+        {
+          title: "Internal theme",
+          value: "internal" /* : your dark theme */,
+        },
+        {
+          title: "External Theme",
+          value: "external" /* : your light theme */,
+        },
+      ],
+    },
+  },
+};
 
-addDecorator(
-  withInfo({
-    header: false
-  })
-);
+const withThemeProvider = (Story, context) => {
+  const theme =
+    context.globals.theme === "internal" ? internalTheme : externalTheme;
+  return (
+    <ThemeProvider theme={theme}>
+      <Story {...context} />
+    </ThemeProvider>
+  );
+};
 
-addDecorator(withKnobs);
-addDecorator(withA11y);
-addDecorator(withContexts(contexts));
+export const decorators = [withThemeProvider];

@@ -7,6 +7,7 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-notes",
-    "@storybook/addon-contexts"
-  ]
+    "@storybook/addon-toolbars",
+    "@storybook/addon-docs",
+  ],
 };
