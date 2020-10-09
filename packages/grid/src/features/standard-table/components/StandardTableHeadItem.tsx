@@ -14,6 +14,7 @@ export const StandardTableHeadItem = React.memo(
   function StandardTableHeaderItem({ columnId }: StandardTableHeaderItemProps) {
     const {
       width,
+      minWidth,
       flex = 1,
       justifyContentHeader,
       columnLabel,
@@ -34,7 +35,7 @@ export const StandardTableHeadItem = React.memo(
         arrow={!disableSorting && label ? arrow : undefined}
         onClick={!disableSorting ? onClickColumnHead : undefined}
         width={width}
-        minWidth={width}
+        minWidth={minWidth ?? width}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         flex={width ? undefined : flex}
         justifyContent={justifyContentHeader}
