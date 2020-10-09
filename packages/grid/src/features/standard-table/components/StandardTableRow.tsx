@@ -72,7 +72,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     <Box borderBottom={rowIndex === numRows - 1 ? tableBorder : undefined}>
       <TableRow
         height={tableRowHeight}
-        width={"100%"}
+        width={"fit-content"}
         borderTop={isExpanded ? tableBorderExpanded : tableBorder}
         background={background}
         hoverBackground={"var(--lhds-color-ui-100)"}

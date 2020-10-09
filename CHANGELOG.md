@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.7
+
+### Hotfix
+
+- `StandardTable` row border did not have full width when overflowing with scrollbar.
+
 ## 2.0.6
 
 ### Hotfix
