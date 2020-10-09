@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.0.5
+
+### New features
+
+- Added `minWidth` field to StandardTable column config.
+
+### Fixes
+
+- Fix `Collapsible`, did not expand properly.
+
+### Other changes
+
+- Switch `Collapsible` collapse/expand arrows.
+
 ## 2.0.4
 
 ### New features

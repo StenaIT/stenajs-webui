@@ -158,6 +158,10 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    */
   infoIconTooltipText?: string;
   /**
+   * The min-width of the column.
+   */
+  minWidth?: string;
+  /**
    * The width of the column.
    */
   width?: string;
