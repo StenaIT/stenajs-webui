@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.6
+
+### Hotfix
+
+- `StandardTable` did not apply `minWidth` to header.
+
 ## 2.0.5
 
 ### New features
