@@ -7,6 +7,7 @@ import styles from "./StandardTableCellUi.module.css";
 
 interface Props {
   width?: string;
+  minWidth?: string;
   flex?: number;
   justifyContent?: string;
   enableGridCell?: boolean;
@@ -28,12 +29,13 @@ export const StandardTableCellUi = React.memo<Props>(
     isEditing,
     justifyContent,
     width,
+    minWidth,
   }) {
     return (
       <Row
         flex={width ? undefined : flex}
         width={width}
-        minWidth={width}
+        minWidth={minWidth ?? width}
         height={"100%"}
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}

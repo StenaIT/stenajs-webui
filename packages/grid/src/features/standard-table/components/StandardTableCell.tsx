@@ -39,6 +39,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     itemLabelFormatter,
     flex = 1,
     width,
+    minWidth,
     justifyContentCell = "flex-start",
     borderLeft,
     renderCell,
@@ -105,6 +106,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       gridCellRequiredProps={gridCell.requiredProps}
       isEditing={gridCell.isEditing}
       width={width}
+      minWidth={minWidth}
       justifyContent={justifyContentCell}
       borderLeft={borderLeft}
       flex={flex}
