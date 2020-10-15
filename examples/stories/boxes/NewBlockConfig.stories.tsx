@@ -55,5 +55,3 @@ export const NewBlockConfig = () => (
     </Box>
   </div>
 );
-
-NewBlockConfig.storyName = "New block config";

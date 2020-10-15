@@ -14,8 +14,6 @@ export const Standard = () => (
   </SmallerText>
 );
 
-Standard.storyName = "standard";
-
 export const HoverColor = () => (
   <SmallerText
     hoverColor={select(
@@ -28,27 +26,19 @@ export const HoverColor = () => (
   </SmallerText>
 );
 
-HoverColor.storyName = "hover color";
-
 export const WithUnderline = () => (
   <SmallerText textDecoration={"underline"}>
     That is some nice text, right there!
   </SmallerText>
 );
 
-WithUnderline.storyName = "with underline";
-
 export const WithUnderlineOnHover = () => (
   <SmallerText hoverUnderline>That is some nice text, right there!</SmallerText>
 );
 
-WithUnderlineOnHover.storyName = "with underline on hover";
-
 export const WithSelectionDisabled = () => (
   <SmallerText userSelect={"none"}>This text can not be selected</SmallerText>
 );
-
-WithSelectionDisabled.storyName = "with selection disabled";
 
 export const WithFontWeights = () => (
   <div>
@@ -63,5 +53,3 @@ export const WithFontWeights = () => (
     </div>
   </div>
 );
-
-WithFontWeights.storyName = "with font weights";

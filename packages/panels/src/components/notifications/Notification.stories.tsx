@@ -37,5 +37,3 @@ export const Standard = () => (
     />
   </Column>
 );
-
-Standard.storyName = "standard";

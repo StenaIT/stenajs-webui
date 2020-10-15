@@ -15,5 +15,3 @@ export const Standard = () => (
     />
   </Box>
 );
-
-Standard.storyName = "standard";

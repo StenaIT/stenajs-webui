@@ -91,8 +91,6 @@ export const Standard = () => (
   />
 );
 
-Standard.storyName = "standard";
-
 export const CustomActionColor = () => (
   <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
     <Switch
@@ -102,10 +100,6 @@ export const CustomActionColor = () => (
   </div>
 );
 
-CustomActionColor.storyName = "custom action color";
-
 export const Disabled = () => (
   <Switch value={knobs.boolean("Toggled", false)} disabled />
 );
-
-Disabled.storyName = "disabled";

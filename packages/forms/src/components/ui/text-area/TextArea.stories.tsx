@@ -11,30 +11,20 @@ export const Standard = () => (
   <TextArea value={knobs.text("Text", "Some nice text.")} />
 );
 
-Standard.storyName = "standard";
-
 export const WithCustomSize = () => (
   <Box width={"400px"}>
     <TextArea rows={3} value={knobs.text("Text", "Some nice text.")} />
   </Box>
 );
 
-WithCustomSize.storyName = "with custom size";
-
 export const WithResize = () => (
   <TextArea resize={"both"} value={knobs.text("Text", "Some nice text.")} />
 );
-
-WithResize.storyName = "with resize";
 
 export const Readonly = () => (
   <TextArea readOnly value={knobs.text("Text", "Some nice text.")} />
 );
 
-Readonly.storyName = "readonly";
-
 export const Disabled = () => (
   <TextArea disabled value={knobs.text("Text", "Some nice text.")} />
 );
-
-Disabled.storyName = "disabled";

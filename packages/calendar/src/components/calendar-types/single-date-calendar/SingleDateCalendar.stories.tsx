@@ -56,8 +56,6 @@ export const Standard = withState<State>({
   />
 ));
 
-Standard.storyName = "standard";
-
 export const TodayHighlighted = withState<State>({
   value: undefined,
 })(({ store }: { store: Store<State> }) => (
@@ -68,8 +66,6 @@ export const TodayHighlighted = withState<State>({
   />
 ));
 
-TodayHighlighted.storyName = "today highlighted";
-
 export const WithDisabledDateTomorrow = withState<State>({
   value: undefined,
 })(({ store }: { store: Store<State> }) => (
@@ -79,8 +75,6 @@ export const WithDisabledDateTomorrow = withState<State>({
     statePerMonth={disabledTomorrow}
   />
 ));
-
-WithDisabledDateTomorrow.storyName = "with disabled date tomorrow";
 
 export const WithDisabledAsDefault = withState<State>({
   value: undefined,
@@ -93,8 +87,6 @@ export const WithDisabledAsDefault = withState<State>({
   />
 ));
 
-WithDisabledAsDefault.storyName = "with disabled as default";
-
 export const WithMonthSwitcherBelow = withState<State>({
   value: undefined,
 })(({ store }: { store: Store<State> }) => (
@@ -104,8 +96,6 @@ export const WithMonthSwitcherBelow = withState<State>({
     monthSwitcherPlacement={"below"}
   />
 ));
-
-WithMonthSwitcherBelow.storyName = "with month switcher below";
 
 export const WithMultipleMonths = withState<State>({
   value: undefined,
@@ -117,8 +107,6 @@ export const WithMultipleMonths = withState<State>({
   />
 ));
 
-WithMultipleMonths.storyName = "with multiple months";
-
 export const WithMultipleRows = withState<State>({
   value: undefined,
 })(({ store }: { store: Store<State> }) => (
@@ -129,8 +117,6 @@ export const WithMultipleRows = withState<State>({
     value={store.state.value}
   />
 ));
-
-WithMultipleRows.storyName = "with multiple rows";
 
 export const WithCustomWeekContent = withState<State>({
   value: undefined,
@@ -169,8 +155,6 @@ export const WithCustomWeekContent = withState<State>({
   );
 });
 
-WithCustomWeekContent.storyName = "with custom week content";
-
 export const WithCustomContent = withState<State>({
   value: undefined,
 })(({ store }: { store: Store<State> }) => (
@@ -184,8 +168,6 @@ export const WithCustomContent = withState<State>({
     )}
   />
 ));
-
-WithCustomContent.storyName = "with custom content";
 
 export const WithInstanceCustomTheme = withState<State>({
   value: undefined,
@@ -203,5 +185,3 @@ export const WithInstanceCustomTheme = withState<State>({
     />
   </Row>
 ));
-
-WithInstanceCustomTheme.storyName = "with instance custom theme";

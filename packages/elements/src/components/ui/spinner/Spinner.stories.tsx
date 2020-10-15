@@ -25,16 +25,10 @@ export const Standard = () => (
   </Column>
 );
 
-Standard.storyName = "standard";
-
 export const Inverted = () => (
   <Box indent={4} spacing={4} background={"#777777"} display={"inline-block"}>
     <Spinner inverted />
   </Box>
 );
 
-Inverted.storyName = "inverted";
-
 export const WithCustomColor = () => <Spinner color={color("Color", "red")} />;
-
-WithCustomColor.storyName = "with custom color";

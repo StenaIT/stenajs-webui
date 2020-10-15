@@ -15,5 +15,3 @@ export const IconWithBadge = () => (
     <Icon icon={faFire} />
   </WithBadge>
 );
-
-IconWithBadge.storyName = "icon with badge";

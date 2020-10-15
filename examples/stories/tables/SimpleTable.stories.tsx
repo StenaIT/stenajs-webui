@@ -6,13 +6,13 @@ import {
   Row,
   Space,
   Spacing,
-  StandardText
+  StandardText,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { PrimaryButton } from "@stenajs-webui/elements";
 
 export default {
-  title: "examples/Tables"
+  title: "examples/Tables",
 };
 
 export const SimpleTable = () => {
@@ -21,7 +21,7 @@ export const SimpleTable = () => {
   const tdStyle = {
     borderBottom: "1px solid #f5f5f5",
     paddingTop: "10px",
-    paddingBottom: "10px"
+    paddingBottom: "10px",
   };
 
   return (
@@ -59,7 +59,7 @@ export const SimpleTable = () => {
                 <td style={tdStyle} />
               </tr>
 
-              {list.map(name => (
+              {list.map((name) => (
                 <tr>
                   <td style={tdStyle}>
                     <Indent>
@@ -109,5 +109,3 @@ export const SimpleTable = () => {
     </div>
   );
 };
-
-SimpleTable.storyName = "Simple table";

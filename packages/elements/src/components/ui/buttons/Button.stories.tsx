@@ -183,8 +183,6 @@ export const Variants = () => (
   </>
 );
 
-Variants.storyName = "variants";
-
 export const WithGenericContentToRight = () => (
   <>
     {[
@@ -220,8 +218,6 @@ export const WithGenericContentToRight = () => (
   </>
 );
 
-WithGenericContentToRight.storyName = "with generic content to right";
-
 export const RenderedAsOtherElements = () => (
   <>
     <Column spacing>
@@ -245,5 +241,3 @@ export const RenderedAsOtherElements = () => (
     </Column>
   </>
 );
-
-RenderedAsOtherElements.storyName = "rendered as other elements";

@@ -23,8 +23,6 @@ export const Standard = () => (
   </div>
 );
 
-Standard.storyName = "standard";
-
 export const WithNum2 = () => (
   <div style={{ display: "table" }}>
     <div style={{ border: "1px solid black" }}>
@@ -40,5 +38,3 @@ export const WithNum2 = () => (
     </div>
   </div>
 );
-
-WithNum2.storyName = "with num=2";

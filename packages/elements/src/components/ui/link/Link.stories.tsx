@@ -20,5 +20,3 @@ export const Standard = () => (
     </StandardText>
   </>
 );
-
-Standard.storyName = "standard";

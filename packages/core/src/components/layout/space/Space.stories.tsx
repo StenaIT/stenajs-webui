@@ -13,8 +13,6 @@ export const Standard = () => (
   </Row>
 );
 
-Standard.storyName = "standard";
-
 export const Num2 = () => (
   <Row>
     <Box width={"50px"} height={"50px"} background={"red"} />
@@ -22,5 +20,3 @@ export const Num2 = () => (
     <Box width={"50px"} height={"50px"} background={"blue"} />
   </Row>
 );
-
-Num2.storyName = "num=2";
