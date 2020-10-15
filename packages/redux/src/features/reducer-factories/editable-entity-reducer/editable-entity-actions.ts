@@ -4,7 +4,8 @@ export type EditableEntityAction<T> =
   | EditableEntitySetEditableEntityAction<T>
   | EditableEntitySetEntityIdAction
   | EditableEntitySetEditableEntityFieldsAction<T>
-  | EditableEntityRevertEditableEntityAction;
+  | EditableEntityRevertEditableEntityAction
+  | EditableEntityCommitEditableEntityToPersistedAction;
 
 export interface EditableEntitySetEntityAction<T> {
   type: "EDITABLE_ENTITY:SET_ENTITY";
@@ -33,4 +34,8 @@ export interface EditableEntitySetEditableEntityFieldsAction<T> {
 
 export interface EditableEntityRevertEditableEntityAction {
   type: "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY";
+}
+
+export interface EditableEntityCommitEditableEntityToPersistedAction {
+  type: "EDITABLE_ENTITY:COMMIT_EDITABLE_ENTITY_TO_PERSISTED";
 }

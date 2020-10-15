@@ -19,6 +19,14 @@ export const createEditableEntityReducer = <T>(
 
   return (state = initialState, action) => {
     switch (action.type) {
+      case "EDITABLE_ENTITY:SET_ENTITY_ID": {
+        const { id } = action;
+        return {
+          ...state,
+          id,
+        };
+      }
+
       case "EDITABLE_ENTITY:SET_ENTITY": {
         const { entity } = action;
         return {
@@ -59,6 +67,13 @@ export const createEditableEntityReducer = <T>(
         return {
           ...state,
           editable: state.persisted,
+        };
+      }
+
+      case "EDITABLE_ENTITY:COMMIT_EDITABLE_ENTITY_TO_PERSISTED": {
+        return {
+          ...state,
+          persisted: state.editable,
         };
       }
 
