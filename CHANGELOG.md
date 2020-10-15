@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.7
+
+### Improvements
+
+- Add `commitEditableEntityToPersisted` action to editable-entity-reducer.
+- Remove internal indent in `TableCell` which could break styling of cell.
+
 ## 2.0.6
 
 ### Hotfix

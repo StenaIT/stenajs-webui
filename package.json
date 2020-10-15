@@ -168,5 +168,11 @@
     "react": "16.11.0",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie < 11",
+    "not op_mini all"
+  ]
 }
