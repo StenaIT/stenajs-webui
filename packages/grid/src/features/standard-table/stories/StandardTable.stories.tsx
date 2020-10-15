@@ -230,7 +230,6 @@ export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
     return <StandardTable items={items} config={config} />;
   }
 );
-("with warning when modified field is empty");
 
 export const MissingItems = () => <StandardTable items={[]} config={config} />;
 
