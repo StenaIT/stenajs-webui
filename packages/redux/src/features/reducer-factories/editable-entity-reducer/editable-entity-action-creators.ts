@@ -1,4 +1,5 @@
 import {
+  EditableEntityCommitEditableEntityToPersistedAction,
   EditableEntityRevertEditableEntityAction,
   EditableEntitySetEditableEntityAction,
   EditableEntitySetEditableEntityFieldsAction,
@@ -18,6 +19,7 @@ export interface EditableEntityActions<T> {
     fields: Partial<T>
   ) => EditableEntitySetEditableEntityFieldsAction<T>;
   revertEditableEntity: () => EditableEntityRevertEditableEntityAction;
+  commitEditableEntityToPersisted: () => EditableEntityCommitEditableEntityToPersistedAction;
 }
 
 export const createEditableEntityActions = <T>(): EditableEntityActions<T> => ({
@@ -40,5 +42,8 @@ export const createEditableEntityActions = <T>(): EditableEntityActions<T> => ({
   }),
   revertEditableEntity: () => ({
     type: "EDITABLE_ENTITY:REVERT_EDITABLE_ENTITY",
+  }),
+  commitEditableEntityToPersisted: () => ({
+    type: "EDITABLE_ENTITY:COMMIT_EDITABLE_ENTITY_TO_PERSISTED",
   }),
 });

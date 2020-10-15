@@ -1,4 +1,4 @@
-import { BoxProps, Indent, Row } from "@stenajs-webui/core";
+import { BoxProps, Row } from "@stenajs-webui/core";
 import * as React from "react";
 
 export interface TableCellProps extends BoxProps {}
@@ -7,7 +7,7 @@ export const TableCell: React.FC<TableCellProps> = ({
   alignItems = "center",
   justifyContent = "flex-start",
   overflow = "hidden",
-  children,
+  indent = 1,
   ...boxProps
 }) => {
   return (
@@ -16,9 +16,8 @@ export const TableCell: React.FC<TableCellProps> = ({
       alignItems={alignItems}
       justifyContent={justifyContent}
       overflow={overflow}
+      indent={indent}
       {...boxProps}
-    >
-      <Indent>{children}</Indent>
-    </Row>
+    />
   );
 };
