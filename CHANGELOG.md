@@ -2,6 +2,12 @@
 
 ## 2.0.7
 
+### New components
+
+- `Label`
+
+Used to add a label to Chip, TextInput or any other component.
+
 ### Improvements
 
 - Add `commitEditableEntityToPersisted` action to editable-entity-reducer.
