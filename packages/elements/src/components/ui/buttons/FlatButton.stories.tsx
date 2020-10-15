@@ -23,8 +23,6 @@ export const Standard = () => (
   </Column>
 );
 
-Standard.storyName = "standard";
-
 export const Inverted = () => (
   <Column background={"#0f304d"} spacing indent>
     <LargeText color={"#fff"}>FlatButton inverted</LargeText>
@@ -39,5 +37,3 @@ export const Inverted = () => (
     </div>
   </Column>
 );
-
-Inverted.storyName = "inverted";

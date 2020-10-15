@@ -60,8 +60,4 @@ export const Standard = () => (
   </ActionDropdown>
 );
 
-Standard.storyName = "standard";
-
 export const Disabled = () => <ActionDropdown disabled />;
-
-Disabled.storyName = "disabled";

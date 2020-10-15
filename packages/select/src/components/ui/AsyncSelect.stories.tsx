@@ -15,8 +15,6 @@ export const _AsyncSelect = () => (
   />
 );
 
-_AsyncSelect.storyName = "async select";
-
 export const AsyncSelectDark = () => (
   <div style={{ width: "600px" }}>
     <Box background={"#2e4662"}>
@@ -34,8 +32,6 @@ export const AsyncSelectDark = () => (
     </Box>
   </div>
 );
-
-AsyncSelectDark.storyName = "async select dark";
 
 const getOptions = (): Promise<Array<{ value: string; label: string }>> =>
   new Promise((resolve) => {

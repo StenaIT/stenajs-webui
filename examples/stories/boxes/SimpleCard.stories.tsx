@@ -74,5 +74,3 @@ export const EventListCard = () => {
     </div>
   );
 };
-
-EventListCard.storyName = "Event list card";

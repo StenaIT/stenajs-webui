@@ -12,5 +12,3 @@ export const Standard = () => (
     type={select("Type", ["notification", "warning", "error"], "notification")}
   />
 );
-
-Standard.storyName = "standard";

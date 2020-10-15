@@ -11,12 +11,8 @@ export const Standard = () => (
   </div>
 );
 
-Standard.storyName = "standard";
-
 export const WithText = () => (
   <div style={{ display: "inline-block" }}>
     <LoadingPanel text={"Loading your booking..."} />
   </div>
 );
-
-WithText.storyName = "with text";

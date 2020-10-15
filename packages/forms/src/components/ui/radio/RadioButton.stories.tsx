@@ -176,8 +176,6 @@ export const CustomActionColorOnMultiple = () => (
   </Column>
 );
 
-CustomActionColorOnMultiple.storyName = "custom action color on multiple";
-
 export const CustomCheckedBgColorOnSingle = () => (
   <Column>
     <RadioButton
@@ -189,5 +187,3 @@ export const CustomCheckedBgColorOnSingle = () => (
     <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
   </Column>
 );
-
-CustomCheckedBgColorOnSingle.storyName = "custom checked bg color on single";

@@ -61,8 +61,6 @@ export const Standard = () => (
   </ActionMenu>
 );
 
-Standard.storyName = "standard";
-
 Standard.parameters = {
   notes: { markdown },
 };

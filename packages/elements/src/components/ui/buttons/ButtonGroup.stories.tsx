@@ -36,5 +36,3 @@ export const Default = () => (
     </Row>
   </>
 );
-
-Default.storyName = "default";

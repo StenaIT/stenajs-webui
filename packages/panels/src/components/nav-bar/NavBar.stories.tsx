@@ -28,8 +28,6 @@ export const Standard = () => (
   </NavBar>
 );
 
-Standard.storyName = "standard";
-
 export const WithIcons = () => (
   <Column height={"500px"}>
     <NavBar>
@@ -39,8 +37,6 @@ export const WithIcons = () => (
     </NavBar>
   </Column>
 );
-
-WithIcons.storyName = "with icons";
 
 export const WithButtonsAndCenteredContent = () => (
   <NavBar
@@ -79,8 +75,6 @@ export const WithButtonsAndCenteredContent = () => (
   </NavBar>
 );
 
-WithButtonsAndCenteredContent.storyName = "with buttons and centered content";
-
 export const WithRightButtons = () => (
   <NavBar
     right={
@@ -95,8 +89,6 @@ export const WithRightButtons = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
-
-WithRightButtons.storyName = "with right buttons";
 
 export const WithTitleToLeft = () => (
   <Column height={"500px"}>
@@ -114,8 +106,6 @@ export const WithTitleToLeft = () => (
   </Column>
 );
 
-WithTitleToLeft.storyName = "with title to left";
-
 export const WithRightIcon = () => (
   <NavBar right={<Icon icon={faFire} />}>
     <NavBarButton label={"Customers"} />
@@ -123,8 +113,6 @@ export const WithRightIcon = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
-
-WithRightIcon.storyName = "with right icon";
 
 export const WithRightIconWithBadge = () => (
   <NavBar
@@ -139,8 +127,6 @@ export const WithRightIconWithBadge = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
-
-WithRightIconWithBadge.storyName = "with right icon with badge";
 
 export const WithMenuButton = () => (
   <NavBar
@@ -162,8 +148,6 @@ export const WithMenuButton = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
-
-WithMenuButton.storyName = "with menu button";
 
 export const WithMenuButtonIcon = () => (
   <NavBar
@@ -193,5 +177,3 @@ export const WithMenuButtonIcon = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
-
-WithMenuButtonIcon.storyName = "with menu button icon";

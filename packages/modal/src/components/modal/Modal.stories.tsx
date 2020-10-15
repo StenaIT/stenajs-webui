@@ -37,8 +37,6 @@ export const ModalWithHeader = withState<State>({
   </>
 ));
 
-ModalWithHeader.storyName = "modal with header";
-
 export const ModalWithCustomHeaderComponent = withState<State>({
   isOpen: false,
 })(({ store }: { store: Store<State> }) => (
@@ -63,8 +61,6 @@ export const ModalWithCustomHeaderComponent = withState<State>({
   </>
 ));
 
-ModalWithCustomHeaderComponent.storyName = "modal with custom header component";
-
 export const ModalWithFixedWidth = withState<State>({
   isOpen: false,
 })(({ store }: { store: Store<State> }) => (
@@ -83,8 +79,6 @@ export const ModalWithFixedWidth = withState<State>({
     </Modal>
   </>
 ));
-
-ModalWithFixedWidth.storyName = "modal with fixed width";
 
 export const ModalWithScroll = withState<State>({
   isOpen: false,
@@ -132,8 +126,6 @@ export const ModalWithScroll = withState<State>({
   </>
 ));
 
-ModalWithScroll.storyName = "modal with scroll";
-
 export const _BaseModal = withState<State>({
   isOpen: false,
 })(({ store }: { store: Store<State> }) => (
@@ -150,8 +142,6 @@ export const _BaseModal = withState<State>({
     </BaseModal>
   </>
 ));
-
-_BaseModal.storyName = "base modal";
 
 export const DraggableModal = withState<State>({
   isOpen: false,
@@ -171,8 +161,6 @@ export const DraggableModal = withState<State>({
     </Modal>
   </>
 ));
-
-DraggableModal.storyName = "draggable modal";
 
 const loremIpsumSampleText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
             earum eius excepturi nam nemo numquam repellat sit velit. Ab

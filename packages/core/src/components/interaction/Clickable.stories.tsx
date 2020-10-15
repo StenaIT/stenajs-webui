@@ -11,8 +11,6 @@ export const Default = () => (
   </Clickable>
 );
 
-Default.storyName = "default";
-
 export const WithDomIdAndClassName = () => (
   <Clickable
     onClick={() => alert("Clicked!")}
@@ -23,16 +21,11 @@ export const WithDomIdAndClassName = () => (
   </Clickable>
 );
 
-WithDomIdAndClassName.storyName = "with DOM id and class name";
-
 export const WithOpacityWhenMouseHoversOverClickable = () => (
   <Clickable opacityOnHover onClick={() => alert("Clicked!")}>
     <StandardText>Hover over me!</StandardText>
   </Clickable>
 );
-
-WithOpacityWhenMouseHoversOverClickable.storyName =
-  "with opacity when mouse hovers over clickable";
 
 export const WithDoubleClick = () => (
   <Clickable onDblClick={() => alert("Double clicked!")}>
@@ -40,24 +33,17 @@ export const WithDoubleClick = () => (
   </Clickable>
 );
 
-WithDoubleClick.storyName = "with double click";
-
 export const WithNoPointerAsMouseCursor = () => (
   <Clickable disablePointer onClick={() => alert("Clicked!")}>
     <StandardText>Click me!</StandardText>
   </Clickable>
 );
 
-WithNoPointerAsMouseCursor.storyName = "with no pointer as mouse cursor";
-
 export const WithNoOpacityEffectWhenClicking = () => (
   <Clickable disableOpacityOnClick onClick={() => alert("Clicked!")}>
     <StandardText>Click me!</StandardText>
   </Clickable>
 );
-
-WithNoOpacityEffectWhenClicking.storyName =
-  "with no opacity effect when clicking";
 
 export const WithTooltip = () => (
   <Clickable
@@ -67,5 +53,3 @@ export const WithTooltip = () => (
     <StandardText>Hover me a second</StandardText>
   </Clickable>
 );
-
-WithTooltip.storyName = "with tooltip";

@@ -134,8 +134,6 @@ export const Standard = withState({ items })(({ store }) => {
   return <StandardTable items={store.state.items} config={config} />;
 });
 
-Standard.storyName = "standard";
-
 export const WithSortingDisabled = withState({ items })(({ store }) => {
   const config = createConfig(
     createOnChangeNumPassengers(store),
@@ -144,8 +142,6 @@ export const WithSortingDisabled = withState({ items })(({ store }) => {
   );
   return <StandardTable items={store.state.items} config={config} />;
 });
-
-WithSortingDisabled.storyName = "with sorting disabled";
 
 export const WithSortingDisabledAndSortByName = withState({ items })(
   ({ store }) => {
@@ -157,9 +153,6 @@ export const WithSortingDisabledAndSortByName = withState({ items })(
     return <StandardTable items={store.state.items} config={config} />;
   }
 );
-
-WithSortingDisabledAndSortByName.storyName =
-  "with sorting disabled and sort by name";
 
 export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
   ({ store }) => {
@@ -174,9 +167,6 @@ export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
     return <StandardTable items={store.state.items} config={config} />;
   }
 );
-
-WithSortingEnabledAndSortByNameDesc.storyName =
-  "with sorting enabled and sort by name desc";
 
 export const WithFieldError = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -193,8 +183,6 @@ export const WithFieldError = withState({ items })(({ store }) => {
   return <StandardTable items={items} config={config} />;
 });
 
-WithFieldError.storyName = "with field error";
-
 export const WithFieldLoading = withState({ items })(({ store }) => {
   const config = createConfig(
     createOnChangeNumPassengers(store),
@@ -208,8 +196,6 @@ export const WithFieldLoading = withState({ items })(({ store }) => {
   );
   return <StandardTable items={items} config={config} />;
 });
-
-WithFieldLoading.storyName = "with field loading";
 
 export const WithModifiedFields = withState({ items })(({ store }) => {
   const config = createConfig(
@@ -226,8 +212,6 @@ export const WithModifiedFields = withState({ items })(({ store }) => {
   );
   return <StandardTable items={items} config={config} />;
 });
-
-WithModifiedFields.storyName = "with modified fields";
 
 export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
   ({ store }) => {
@@ -246,13 +230,9 @@ export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
     return <StandardTable items={items} config={config} />;
   }
 );
-
-WithWarningWhenModifiedFieldIsEmpty.storyName =
-  "with warning when modified field is empty";
+("with warning when modified field is empty");
 
 export const MissingItems = () => <StandardTable items={[]} config={config} />;
-
-MissingItems.storyName = "missing items";
 
 export const NavigationBetweenTables = () => {
   const config = createConfig(undefined, undefined, {
@@ -276,13 +256,9 @@ export const NavigationBetweenTables = () => {
   );
 };
 
-NavigationBetweenTables.storyName = "navigation between tables";
-
 export const Loading = () => (
   <StandardTable items={items} config={config} loading />
 );
-
-Loading.storyName = "loading";
 
 export const _Error = () => (
   <StandardTable
@@ -291,8 +267,6 @@ export const _Error = () => (
     error={new Error("Could not fetch users")}
   />
 );
-
-_Error.storyName = "error";
 
 export const ExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
@@ -307,8 +281,6 @@ export const ExpandableRows = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-ExpandableRows.storyName = "expandable rows";
-
 export const SomeExpandableRows = () => {
   const config = createConfig(undefined, undefined, {
     enableExpandCollapse: true,
@@ -322,5 +294,3 @@ export const SomeExpandableRows = () => {
   });
   return <StandardTable items={items} config={config} />;
 };
-
-SomeExpandableRows.storyName = "some expandable rows";

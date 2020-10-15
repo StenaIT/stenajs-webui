@@ -13,5 +13,3 @@ export const Standard = () => (
     disabled={knobs.boolean("Disabled", false)}
   />
 );
-
-Standard.storyName = "standard";

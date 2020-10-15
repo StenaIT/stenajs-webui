@@ -19,8 +19,6 @@ export const Standard = withState<DateTextInputState>({
   />
 ));
 
-Standard.storyName = "standard";
-
 export const EnglishDateFormat = withState<DateTextInputState>({
   value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
@@ -31,8 +29,6 @@ export const EnglishDateFormat = withState<DateTextInputState>({
     onValueChange={(value) => store.set({ value })}
   />
 ));
-
-EnglishDateFormat.storyName = "english date format";
 
 export const DutchDateFormat = withState<DateTextInputState>({
   value: undefined,
@@ -45,17 +41,11 @@ export const DutchDateFormat = withState<DateTextInputState>({
   />
 ));
 
-DutchDateFormat.storyName = "dutch date format";
-
 export const Disabled = () => <DateTextInput value={""} disabled={true} />;
-
-Disabled.storyName = "disabled";
 
 export const Invalid = () => (
   <DateTextInput value={"invalid input"} variant={"error"} />
 );
-
-Invalid.storyName = "invalid";
 
 export const WithNoIcon = withState<DateTextInputState>({
   value: undefined,
@@ -67,8 +57,6 @@ export const WithNoIcon = withState<DateTextInputState>({
   />
 ));
 
-WithNoIcon.storyName = "with no icon";
-
 export const WithDisabledCalendar = withState<DateTextInputState>({
   value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
@@ -79,8 +67,6 @@ export const WithDisabledCalendar = withState<DateTextInputState>({
   />
 ));
 
-WithDisabledCalendar.storyName = "with disabled calendar";
-
 export const UsingPortal = withState<DateTextInputState>({
   value: undefined,
 })(({ store }: { store: Store<DateTextInputState> }) => (
@@ -90,8 +76,6 @@ export const UsingPortal = withState<DateTextInputState>({
     portalTarget={document.body}
   />
 ));
-
-UsingPortal.storyName = "using portal";
 
 export const CustomCalendarProps = withState<DateTextInputState>({
   value: undefined,
@@ -105,5 +89,3 @@ export const CustomCalendarProps = withState<DateTextInputState>({
     onValueChange={(value) => store.set({ value })}
   />
 ));
-
-CustomCalendarProps.storyName = "custom calendar props";

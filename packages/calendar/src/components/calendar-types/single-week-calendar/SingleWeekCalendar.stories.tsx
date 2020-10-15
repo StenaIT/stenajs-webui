@@ -18,5 +18,3 @@ export const Standard = withState<State>({
     value={store.state.week}
   />
 ));
-
-Standard.storyName = "standard";

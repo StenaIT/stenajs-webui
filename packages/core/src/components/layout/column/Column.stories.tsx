@@ -37,8 +37,6 @@ export const Standard = () => (
   </div>
 );
 
-Standard.storyName = "standard";
-
 export const WithJustifyContentFlexStart = () => (
   <div style={{ display: "table" }}>
     <Box borderWidth={"1px"} borderColor={"primaryText"}>
@@ -70,8 +68,6 @@ export const WithJustifyContentFlexStart = () => (
     </Box>
   </div>
 );
-
-WithJustifyContentFlexStart.storyName = "with justifyContent=flex-start";
 
 export const WithJustifyContentCenter = () => (
   <div style={{ display: "table" }}>
@@ -105,8 +101,6 @@ export const WithJustifyContentCenter = () => (
   </div>
 );
 
-WithJustifyContentCenter.storyName = "with justifyContent=center";
-
 export const WithJustifyContentFlexEnd = () => (
   <div style={{ display: "table" }}>
     <Box borderWidth={"1px"} borderColor={"primaryText"}>
@@ -138,8 +132,6 @@ export const WithJustifyContentFlexEnd = () => (
     </Box>
   </div>
 );
-
-WithJustifyContentFlexEnd.storyName = "with justifyContent=flex-end";
 
 export const WithAlignItemsFlexStart = () => (
   <div style={{ display: "table" }}>
@@ -173,8 +165,6 @@ export const WithAlignItemsFlexStart = () => (
   </div>
 );
 
-WithAlignItemsFlexStart.storyName = "with alignItems=flex-start";
-
 export const WithAlignItemsCenter = () => (
   <div style={{ display: "table" }}>
     <Box borderWidth={"1px"} borderColor={"primaryText"}>
@@ -207,8 +197,6 @@ export const WithAlignItemsCenter = () => (
   </div>
 );
 
-WithAlignItemsCenter.storyName = "with alignItems=center";
-
 export const WithAlignItemsFlexEnd = () => (
   <div style={{ display: "table" }}>
     <Box borderWidth={"1px"} borderColor={"primaryText"}>
@@ -240,5 +228,3 @@ export const WithAlignItemsFlexEnd = () => (
     </Box>
   </div>
 );
-
-WithAlignItemsFlexEnd.storyName = "with alignItems=flex-end";

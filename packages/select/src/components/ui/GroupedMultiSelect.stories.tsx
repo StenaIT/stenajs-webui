@@ -60,8 +60,6 @@ export const Standard = withState<State>({
   );
 });
 
-Standard.storyName = "standard";
-
 export const StandardDark = withState<State>({
   values: undefined,
 })(({ store }: { store: Store<State> }) => {
@@ -114,8 +112,6 @@ export const StandardDark = withState<State>({
   );
 });
 
-StandardDark.storyName = "standard dark";
-
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
     <GroupedMultiSelect
@@ -152,5 +148,3 @@ export const Disabled = () => (
     />
   </div>
 );
-
-Disabled.storyName = "disabled";

@@ -27,8 +27,6 @@ export const Standard = () => (
   </div>
 );
 
-Standard.storyName = "standard";
-
 export const Multiselect = () => (
   <div style={{ width: "400px" }}>
     <Select
@@ -51,8 +49,6 @@ export const Multiselect = () => (
     />
   </div>
 );
-
-Multiselect.storyName = "multiselect";
 
 export const StandardDark = () => (
   <div style={{ width: "400px" }}>
@@ -81,8 +77,6 @@ export const StandardDark = () => (
     </Box>
   </div>
 );
-
-StandardDark.storyName = "standard dark";
 
 export const WithGroupHeadings = () => (
   <div style={{ width: "400px" }}>
@@ -123,8 +117,6 @@ export const WithGroupHeadings = () => (
   </div>
 );
 
-WithGroupHeadings.storyName = "with group headings";
-
 export const MultiselectDark = () => (
   <div style={{ width: "600px" }}>
     <Box background={"#2e4662"}>
@@ -154,8 +146,6 @@ export const MultiselectDark = () => (
   </div>
 );
 
-MultiselectDark.storyName = "multiselect dark";
-
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
     <Select
@@ -177,5 +167,3 @@ export const Disabled = () => (
     />
   </div>
 );
-
-Disabled.storyName = "disabled";
