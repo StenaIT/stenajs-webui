@@ -2,6 +2,10 @@
 
 ## 2.0.8
 
+### Design changes
+
+Increased contrast in `Select` light theme hover states.
+
 ### New features
 
 `Banner` component now has `success` & `warning` variants.
