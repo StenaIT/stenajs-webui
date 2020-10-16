@@ -41,6 +41,16 @@ export const VariantSuccess = () => (
   </Box>
 );
 
+export const VariantWarning = () => (
+  <Box width={"500px"}>
+    <Banner
+      variant={"warning"}
+      headerText={"This is header"}
+      text={"This is maybe working."}
+    />
+  </Box>
+);
+
 export const VariantError = () => (
   <Box width={"500px"}>
     <Banner

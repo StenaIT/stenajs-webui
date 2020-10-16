@@ -25,6 +25,11 @@
     --current-icon-color: var(--lhds-color-green-500);
   }
 
+  &.warning {
+    --current-bg-color: var(--lhds-color-orange-50);
+    --current-icon-color: var(--lhds-color-orange-500);
+  }
+
   &.error {
     --current-bg-color: var(--lhds-color-red-50);
     --current-icon-color: var(--lhds-color-red-500);
