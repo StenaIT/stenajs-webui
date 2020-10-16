@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.8
+
+### Design changes
+
+Increased contrast in `Select` light theme hover states.
+
 ## 2.0.7
 
 ### New components
