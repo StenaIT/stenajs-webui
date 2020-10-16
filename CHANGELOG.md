@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.8
+
+### New features
+
+`Banner` component now has a `success` variant.
+
 ## 2.0.7
 
 ### New components
