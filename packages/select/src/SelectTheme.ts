@@ -102,7 +102,7 @@ export const defaultSelectTheme: SelectTheme = {
     textColor: "var(--swui-field-text-color)",
   },
   menu: {
-    activeBackgroundColor: "var(--lhds-color-blue-50)",
+    activeBackgroundColor: "var(--lhds-color-blue-100)",
     activeTextColor: "var(--swui-field-text-color)",
     selectedItemActiveBackgroundColor: "var(--lhds-color-blue-500)",
     selectedItemActiveTextColor: "var(--lhds-color-blue-50)",
@@ -111,7 +111,7 @@ export const defaultSelectTheme: SelectTheme = {
     textColor: "var(--swui-field-text-color)",
     backgroundColor: "var(--swui-field-bg-enabled)",
     hoverTextColor: "var(--swui-field-text-color)",
-    hoverBackgroundColor: "var(--lhds-color-blue-50)",
+    hoverBackgroundColor: "var(--lhds-color-blue-100)",
     selectedItemTextColor: "var(--swui-field-text-color)",
     selectedItemHoverTextColor: "var(--swui-field-text-color)",
     selectedItemBackgroundColor: "var(--swui-field-bg-enabled)",
