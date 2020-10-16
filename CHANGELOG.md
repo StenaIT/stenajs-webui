@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.8
+
+### Bug fix
+
+`DateTextInput` popover content is now wrapped with a popupRef.
+This fixes a bug where `useMultiOnClickOutside` would cause the popover to close before being able trigger a change.
+
 ## 2.0.7
 
 ### New components
