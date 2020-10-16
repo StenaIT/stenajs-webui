@@ -2,6 +2,10 @@
 
 ## 2.0.8
 
+### New features
+
+`Banner` component now has `success` & `warning` variants.
+
 ### Bug fix
 
 `DateTextInput` popover content is now wrapped with a popupRef.
