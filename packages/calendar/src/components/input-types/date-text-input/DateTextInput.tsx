@@ -116,16 +116,18 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
         content={
-          <SingleDateCalendar
-            {...calendarProps}
-            onChange={onCalendarSelectDate}
-            value={
-              value && dateIsValid
-                ? parse(value, dateFormat, new Date())
-                : undefined
-            }
-            theme={calendarTheme}
-          />
+          <Box innerRef={popupRef}>
+            <SingleDateCalendar
+              {...calendarProps}
+              onChange={onCalendarSelectDate}
+              value={
+                value && dateIsValid
+                  ? parse(value, dateFormat, new Date())
+                  : undefined
+              }
+              theme={calendarTheme}
+            />
+          </Box>
         }
       >
         <TextInput
