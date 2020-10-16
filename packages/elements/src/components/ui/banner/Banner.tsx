@@ -15,8 +15,9 @@ import cx from "classnames";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Spinner } from "../spinner/Spinner";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 
-export type BannerVariant = "standard" | "info" | "error";
+export type BannerVariant = "standard" | "info" | "success" | "error";
 
 export interface BannerProps {
   icon?: IconDefinition;
@@ -30,6 +31,7 @@ export interface BannerProps {
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
   standard: faExclamationCircle,
   info: faExclamationCircle,
+  success: faCheckCircle,
   error: faExclamationTriangle,
 };
 

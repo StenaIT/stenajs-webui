@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box } from "@stenajs-webui/core";
-import { Banner, PrimaryButton, FlatButton } from "@stenajs-webui/elements";
+import { Banner, FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 
 export default {
   title: "elements/Banner",
@@ -28,6 +28,16 @@ export const VariantInfo = () => (
 export const VariantInfoNoHeader = () => (
   <Box width={"500px"}>
     <Banner variant={"info"} text={"This is something you should know."} />
+  </Box>
+);
+
+export const VariantSuccess = () => (
+  <Box width={"500px"}>
+    <Banner
+      variant={"success"}
+      headerText={"This is header"}
+      text={"This is working."}
+    />
   </Box>
 );
 
