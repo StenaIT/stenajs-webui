@@ -4,7 +4,7 @@
 
 ### New features
 
-`Banner` component now has a `success` & `warning` variant.
+`Banner` component now has `success` & `warning` variants.
 
 ## 2.0.7
 
