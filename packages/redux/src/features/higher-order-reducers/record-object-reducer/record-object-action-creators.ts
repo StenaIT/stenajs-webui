@@ -21,7 +21,7 @@ export const createRecordObjectActions = <
   TInnerAction extends RecordObjectWrappedAction
 >(): RecordObjectActions<TInnerAction> => ({
   recordAction: (recordId, action) => ({
-    type: action.type,
+    type: "RECORD_OBJECT:ACTION",
     action,
     recordId,
   }),

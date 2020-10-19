@@ -15,21 +15,19 @@ export const reducerIdGate = <TState, TInnerAction extends Action = AnyAction>(
   reducerId: string,
   reducer: Reducer<TState, TInnerAction>
 ): ReducerIdGateReducer<TState, TInnerAction> => (state, action) => {
-  if (state === undefined) {
-    return reducer(undefined, {} as any);
-  }
+  let newState = state == null ? reducer(undefined, {} as any) : state;
 
   if (!isValidReducerIdGateAction(action)) {
-    return state;
+    return newState;
   }
 
   if (
     reducerId !== action.reducerId ||
     action.type !== "REDUCER_ID_GATE:ACTION"
   ) {
-    return state;
+    return newState;
   }
-  return reducer(state, action.action);
+  return reducer(newState, action.action);
 };
 
 export const reducerIdGateAction = <TInnerAction>(
