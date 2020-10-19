@@ -17,6 +17,8 @@ This fixes a bug where `useMultiOnClickOutside` would cause the popover to close
 
 `PrimaryButton` is no longer larger than intended on some Windows browsers.
 
+`reducer-id-gate` was calling internal reducer with the action when reducerId did not match, if state was undefined.
+
 ## 2.0.7
 
 ### New components

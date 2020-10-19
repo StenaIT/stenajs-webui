@@ -9,6 +9,7 @@ import {
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
 import fn = jest.fn;
+import { createSelectedIdsActions } from "../../../reducer-factories/selected-ids-reducer/selected-ids-action-creators";
 
 interface User {
   id?: string;
@@ -91,6 +92,22 @@ describe("reducer-id-gate", () => {
         const reducer = () => "hello";
         const x = renderHook(() => useReducer(reducer, "hai"));
         expect(x).toBeDefined();
+      });
+    });
+    describe("when correct internal reducer, but wrong reducerId", () => {
+      describe("and state is not set", () => {
+        describe("it lets internal reducer set internal state", () => {
+          const selectedIdsReducer = reducerIdGate(
+            "selectedIds",
+            createSelectedIdsReducer()
+          );
+          const action = reducerIdGateAction(
+            "wrongId",
+            createSelectedIdsActions().setSelectedIds(["123"])
+          );
+          const r = selectedIdsReducer(undefined, action);
+          expect(r.selectedIds.length).toBe(0);
+        });
       });
     });
   });
