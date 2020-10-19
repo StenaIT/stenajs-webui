@@ -10,10 +10,12 @@ Increased contrast in `Select` light theme hover states.
 
 `Banner` component now has `success` & `warning` variants.
 
-### Bug fix
+### Bug fixes
 
 `DateTextInput` popover content is now wrapped with a popupRef.
 This fixes a bug where `useMultiOnClickOutside` would cause the popover to close before being able trigger a change.
+
+`PrimaryButton` is now not larger than intended in some Windows browsers.
 
 ## 2.0.7
 
