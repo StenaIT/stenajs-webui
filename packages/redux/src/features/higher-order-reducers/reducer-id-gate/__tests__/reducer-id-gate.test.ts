@@ -8,8 +8,8 @@ import {
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
-import fn = jest.fn;
 import { createSelectedIdsActions } from "../../../reducer-factories/selected-ids-reducer/selected-ids-action-creators";
+import fn = jest.fn;
 
 interface User {
   id?: string;
