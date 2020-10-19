@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.9
+
+### Bug fix
+
+`reducer-id-gate` did not send action to inner reducer when state was undefined.
+
 ## 2.0.8
 
 ### Design changes
