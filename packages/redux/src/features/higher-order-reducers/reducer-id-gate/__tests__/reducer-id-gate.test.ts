@@ -8,7 +8,7 @@ import {
 } from "../../../reducer-factories/entity-reducer/entity-reducer";
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
-import fn = jest.fn;
+import { createSelectedIdsActions } from "../../../reducer-factories/selected-ids-reducer/selected-ids-action-creators";
 
 interface User {
   id?: string;
@@ -36,7 +36,7 @@ describe("reducer-id-gate", () => {
     describe("when receiving other actions", () => {
       describe("and state is not set", () => {
         it("calls internal reducer with empty action", () => {
-          const innerReducer = fn();
+          const innerReducer = jest.fn();
           const reducer = reducerIdGate("test", innerReducer);
           reducer(undefined, { type: "@@INIT" } as any);
           expect(innerReducer).toHaveBeenCalledWith(undefined, {});
@@ -44,7 +44,7 @@ describe("reducer-id-gate", () => {
       });
       describe("and state is set", () => {
         it("just returns state", () => {
-          const innerReducer = fn();
+          const innerReducer = jest.fn();
           const state = { hello: "world" };
           const reducer = reducerIdGate("test", innerReducer);
           const r = reducer(state, { type: "@@INIT" } as any);
@@ -91,6 +91,22 @@ describe("reducer-id-gate", () => {
         const reducer = () => "hello";
         const x = renderHook(() => useReducer(reducer, "hai"));
         expect(x).toBeDefined();
+      });
+    });
+    describe("when matching internal reducer, but wrong reducerId", () => {
+      describe("and state is not set", () => {
+        describe("it lets internal reducer set initial state", () => {
+          const selectedIdsReducer = reducerIdGate(
+            "selectedIds",
+            createSelectedIdsReducer()
+          );
+          const action = reducerIdGateAction(
+            "wrongId",
+            createSelectedIdsActions().setSelectedIds(["123"])
+          );
+          const r = selectedIdsReducer(undefined, action);
+          expect(r.selectedIds.length).toBe(0);
+        });
       });
     });
   });
