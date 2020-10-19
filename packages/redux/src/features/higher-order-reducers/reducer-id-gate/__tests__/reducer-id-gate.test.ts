@@ -96,7 +96,7 @@ describe("reducer-id-gate", () => {
     describe("when state is not set", () => {
       describe("and matching internal reducer", () => {
         describe("and correct reducerId", () => {
-          describe("it passes the action to the reducer", () => {
+          it("passes the action to the reducer", () => {
             const selectedIdsReducer = reducerIdGate(
               "selectedIds",
               createSelectedIdsReducer()
@@ -111,7 +111,7 @@ describe("reducer-id-gate", () => {
           });
         });
         describe("but wrong reducerId", () => {
-          describe("it lets internal reducer set initial state", () => {
+          it("lets internal reducer set initial state", () => {
             const selectedIdsReducer = reducerIdGate(
               "selectedIds",
               createSelectedIdsReducer()
