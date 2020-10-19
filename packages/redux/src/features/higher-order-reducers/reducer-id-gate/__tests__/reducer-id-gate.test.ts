@@ -94,9 +94,9 @@ describe("reducer-id-gate", () => {
         expect(x).toBeDefined();
       });
     });
-    describe("when correct internal reducer, but wrong reducerId", () => {
+    describe("when matching internal reducer, but wrong reducerId", () => {
       describe("and state is not set", () => {
-        describe("it lets internal reducer set internal state", () => {
+        describe("it lets internal reducer set initial state", () => {
           const selectedIdsReducer = reducerIdGate(
             "selectedIds",
             createSelectedIdsReducer()
