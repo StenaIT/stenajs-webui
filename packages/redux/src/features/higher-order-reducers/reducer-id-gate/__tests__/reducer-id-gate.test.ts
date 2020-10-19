@@ -93,19 +93,36 @@ describe("reducer-id-gate", () => {
         expect(x).toBeDefined();
       });
     });
-    describe("when matching internal reducer, but wrong reducerId", () => {
-      describe("and state is not set", () => {
-        describe("it lets internal reducer set initial state", () => {
-          const selectedIdsReducer = reducerIdGate(
-            "selectedIds",
-            createSelectedIdsReducer()
-          );
-          const action = reducerIdGateAction(
-            "wrongId",
-            createSelectedIdsActions().setSelectedIds(["123"])
-          );
-          const r = selectedIdsReducer(undefined, action);
-          expect(r.selectedIds.length).toBe(0);
+    describe("when state is not set", () => {
+      describe("and matching internal reducer", () => {
+        describe("and correct reducerId", () => {
+          describe("it passes the action to the reducer", () => {
+            const selectedIdsReducer = reducerIdGate(
+              "selectedIds",
+              createSelectedIdsReducer()
+            );
+            const action = reducerIdGateAction(
+              "selectedIds",
+              createSelectedIdsActions().setSelectedIds(["123"])
+            );
+            const r = selectedIdsReducer(undefined, action);
+            expect(r.selectedIds.length).toBe(1);
+            expect(r.selectedIds).toStrictEqual(["123"]);
+          });
+        });
+        describe("but wrong reducerId", () => {
+          describe("it lets internal reducer set initial state", () => {
+            const selectedIdsReducer = reducerIdGate(
+              "selectedIds",
+              createSelectedIdsReducer()
+            );
+            const action = reducerIdGateAction(
+              "wrongId",
+              createSelectedIdsActions().setSelectedIds(["123"])
+            );
+            const r = selectedIdsReducer(undefined, action);
+            expect(r.selectedIds.length).toBe(0);
+          });
         });
       });
     });

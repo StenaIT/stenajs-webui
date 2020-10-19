@@ -2,7 +2,6 @@ import { Reducer } from "redux";
 import {
   RecordObjectAction,
   RecordObjectClearRecordAction,
-  RecordObjectRecordAction,
   RecordObjectKey,
   RecordObjectWrappedAction,
 } from "./record-object-actions";
@@ -32,18 +31,16 @@ export const createRecordObjectReducer = <
     case "RECORD_OBJECT:CLEAR_ALL_RECORDS": {
       return {};
     }
-  }
 
-  if ("recordId" in action && "action" in action) {
-    const {
-      recordId,
-      action: innerAction,
-    } = action as RecordObjectRecordAction<TInnerAction>;
-    return {
-      ...state,
-      [recordId]: reducer(state[recordId], innerAction),
-    };
-  }
+    case "RECORD_OBJECT:ACTION": {
+      const { recordId, action: innerAction } = action;
+      return {
+        ...state,
+        [recordId]: reducer(state[recordId], innerAction),
+      };
+    }
 
-  return state;
+    default:
+      return state;
+  }
 };

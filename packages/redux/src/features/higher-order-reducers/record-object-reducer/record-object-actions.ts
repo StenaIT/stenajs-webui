@@ -14,7 +14,7 @@ export type RecordObjectKey = string | number;
 export interface RecordObjectRecordAction<
   TInnerAction extends RecordObjectWrappedAction
 > {
-  type: TInnerAction["type"];
+  type: "RECORD_OBJECT:ACTION";
   recordId: RecordObjectKey;
   action: TInnerAction;
 }
