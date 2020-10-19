@@ -161,7 +161,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
       ) : loading ? (
         <div className={styles.iconLeft}>
-          <InputSpinner size={"100%"} />
+          <InputSpinner />
         </div>
       ) : left ? (
         left
