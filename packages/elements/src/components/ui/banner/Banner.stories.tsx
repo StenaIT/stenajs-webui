@@ -61,6 +61,12 @@ export const VariantError = () => (
   </Box>
 );
 
+export const VariantEnvironmentWarning = () => (
+  <Box width={"100px"}>
+    <Banner variant={"environmentWarning"} text={"TEST!"} />
+  </Box>
+);
+
 export const NoHeader = () => (
   <Box width={"500px"}>
     <Banner text={"This is some text."} />

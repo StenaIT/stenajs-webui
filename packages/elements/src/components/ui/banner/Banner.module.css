@@ -34,4 +34,14 @@
     --current-bg-color: var(--lhds-color-red-50);
     --current-icon-color: var(--lhds-color-red-500);
   }
+
+  &.environmentWarning {
+    padding: calc(var(--swui-metrics-spacing) / 2)
+      calc(var(--swui-metrics-indent));
+    border-radius: calc(var(--swui-metrics-spacing) / 2);
+    border: 2px solid var(--lhds-color-red-300);
+    color: var(--lhds-color-red-500);
+    --current-bg-color: var(--lhds-color-red-50);
+    --current-icon-color: var(--lhds-color-red-500);
+  }
 }

@@ -14,6 +14,7 @@ import styles from "./Banner.module.css";
 import cx from "classnames";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
+import { faFlask } from "@fortawesome/free-solid-svg-icons/faFlask";
 import { Spinner } from "../spinner/Spinner";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 
@@ -22,7 +23,8 @@ export type BannerVariant =
   | "info"
   | "success"
   | "warning"
-  | "error";
+  | "error"
+  | "environmentWarning";
 
 export interface BannerProps {
   icon?: IconDefinition;
@@ -39,6 +41,7 @@ const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
   success: faCheckCircle,
   warning: faExclamationCircle,
   error: faExclamationTriangle,
+  environmentWarning: faFlask,
 };
 
 export const Banner: React.FC<BannerProps> = ({
