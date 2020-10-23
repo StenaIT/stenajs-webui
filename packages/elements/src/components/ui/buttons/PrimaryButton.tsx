@@ -1,12 +1,10 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonElementProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { InputSpinner } from "../spinner/InputSpinner";
 import styles from "./Button.module.css";
-import { CommonButtonProps } from "./ButtonCommon";
-import { getButtonLabel } from "./util/ButtonLabelFactory";
+import { CommonButtonProps } from "./common/ButtonCommon";
+import { getButtonLabel } from "./common/ButtonLabelFactory";
+import { ButtonContent } from "./common/ButtonContent";
 
 export interface PrimaryButtonProps
   extends CommonButtonProps,
@@ -58,25 +56,15 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       disabled={disabled}
       {...buttonProps}
     >
-      {success ? (
-        <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
-      ) : loading ? (
-        <div className={styles.iconLeft}>
-          <InputSpinner />
-        </div>
-      ) : left ? (
-        left
-      ) : leftIcon ? (
-        <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
-      ) : null}
-
-      {buttonLabel && <span>{buttonLabel}</span>}
-
-      {right ? (
-        right
-      ) : rightIcon ? (
-        <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
-      ) : null}
+      <ButtonContent
+        success={success}
+        loading={loading}
+        leftIcon={leftIcon}
+        left={left}
+        right={right}
+        rightIcon={rightIcon}
+        label={buttonLabel}
+      />
     </button>
   );
 };

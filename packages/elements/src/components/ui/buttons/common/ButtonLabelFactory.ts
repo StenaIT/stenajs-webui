@@ -4,12 +4,12 @@ export const getButtonLabel = (
   successLabel: string | undefined,
   loading: boolean,
   loadingLabel: string | undefined
-): string | null => {
+): string | undefined => {
   if (success) {
-    return successLabel || null;
+    return successLabel;
   } else if (loading) {
-    return loadingLabel || null;
+    return loadingLabel;
   } else {
-    return label || null;
+    return label;
   }
 };

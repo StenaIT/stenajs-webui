@@ -1,12 +1,10 @@
 import * as React from "react";
 import cx from "classnames";
 import styles from "../buttons/Button.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { InputSpinner } from "../spinner/InputSpinner";
 import { AnchorElementProps } from "@stenajs-webui/core";
-import { CommonButtonProps } from "../buttons/ButtonCommon";
-import { getButtonLabel } from "../buttons/util/ButtonLabelFactory";
+import { CommonButtonProps } from "../buttons/common/ButtonCommon";
+import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
+import { ButtonContent } from "../buttons/common/ButtonContent";
 
 export interface PrimaryButtonLinkProps
   extends CommonButtonProps,
@@ -43,36 +41,26 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   );
 
   return (
-    <a
-      ref={innerRef}
-      className={cx(
-        styles.button,
-        styles[size],
-        styles[variant],
-        !hasLabel && styles.iconButton,
-        className
-      )}
-      {...anchorProps}
-    >
-      {success ? (
-        <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
-      ) : loading ? (
-        <div className={styles.iconLeft}>
-          <InputSpinner size={"100%"} />
-        </div>
-      ) : left ? (
-        left
-      ) : leftIcon ? (
-        <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
-      ) : null}
-
-      {buttonLabel && <span>{buttonLabel}</span>}
-
-      {right ? (
-        right
-      ) : rightIcon ? (
-        <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
-      ) : null}
+    <a ref={innerRef} className={styles.buttonLink} {...anchorProps}>
+      <div
+        className={cx(
+          styles.button,
+          styles[size],
+          styles[variant],
+          !hasLabel && styles.iconButton,
+          className
+        )}
+      >
+        <ButtonContent
+          success={success}
+          loading={loading}
+          leftIcon={leftIcon}
+          left={left}
+          right={right}
+          rightIcon={rightIcon}
+          label={buttonLabel}
+        />
+      </div>
     </a>
   );
 };

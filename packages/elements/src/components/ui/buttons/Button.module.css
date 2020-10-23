@@ -1,3 +1,7 @@
+.buttonLink {
+  text-decoration: none;
+}
+
 .button {
   --swui-button-line-height: 16px;
   --swui-button-font-weight: 400;
@@ -111,6 +115,11 @@
 
   .iconRight:not(:first-child) {
     margin-left: var(--swui-metrics-indent);
+  }
+
+  .spinnerLeft {
+    display: flex;
+    align-items: center;
   }
 
   /*

@@ -14,9 +14,9 @@ import {
   Space,
   StandardText,
 } from "@stenajs-webui/core";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import * as React from "react";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 
 const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
 
@@ -55,12 +55,6 @@ export const Overview = () => (
               <th style={{ textAlign: "start" }}>
                 <StandardText>Both icons</StandardText>
               </th>
-              <th style={{ textAlign: "start" }}>
-                <StandardText>Loading</StandardText>
-              </th>
-              <th style={{ textAlign: "start" }}>
-                <StandardText>Success</StandardText>
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -70,50 +64,53 @@ export const Overview = () => (
                   <StandardText>{size}</StandardText>
                 </td>
                 <td>
-                  <ButtonVariant size={size} label={"Submit"} />
-                </td>
-                <td>
-                  <ButtonVariant size={size} leftIcon={faCoffee} />
-                </td>
-                <td>
-                  <ButtonVariant
-                    size={size}
-                    label={"Submit"}
-                    leftIcon={faCoffee}
-                  />
-                </td>
-                <td>
-                  <ButtonVariant
-                    size={size}
-                    label={"Submit"}
-                    rightIcon={faCoffee}
-                  />
-                </td>
-                <td>
-                  <ButtonVariant
-                    size={size}
-                    label={"Submit"}
-                    leftIcon={faCheck}
-                    rightIcon={faCoffee}
-                  />
-                </td>
-                <td>
-                  <Row>
-                    <ButtonVariant size={size} loading />
-                    <Space />
+                  <div style={{ display: "inline-block" }}>
                     <ButtonVariant
                       size={size}
-                      loading
-                      loadingLabel={"Loading"}
+                      label={"google.com"}
+                      href={"https://google.com"}
+                      target={"_blank"}
                     />
-                  </Row>
+                  </div>
                 </td>
                 <td>
-                  <Row>
-                    <ButtonVariant size={size} success />
-                    <Space />
-                    <ButtonVariant size={size} success successLabel={"Done"} />
-                  </Row>
+                  <div style={{ display: "inline-block" }}>
+                    <ButtonVariant size={size} leftIcon={faGoogle} />
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: "inline-block" }}>
+                    <ButtonVariant
+                      size={size}
+                      label={"google.com"}
+                      href={"https://google.com"}
+                      target={"_blank"}
+                      leftIcon={faGoogle}
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: "inline-block" }}>
+                    <ButtonVariant
+                      size={size}
+                      label={"google.com"}
+                      href={"https://google.com"}
+                      target={"_blank"}
+                      rightIcon={faGoogle}
+                    />
+                  </div>
+                </td>
+                <td>
+                  <div style={{ display: "inline-block" }}>
+                    <ButtonVariant
+                      size={size}
+                      label={"google.com"}
+                      href={"https://google.com"}
+                      target={"_blank"}
+                      leftIcon={faCheck}
+                      rightIcon={faGoogle}
+                    />
+                  </div>
                 </td>
               </tr>
             ))}
@@ -139,7 +136,9 @@ export const Variants = () => (
                   key={size}
                   size={size}
                   variant={variant}
-                  label={"Submit"}
+                  label={"google.com"}
+                  href={"https://google.com"}
+                  target={"_blank"}
                 />
               </Indent>
             ))}
@@ -163,7 +162,9 @@ export const WithGenericContentToRight = () => (
         <Row alignItems={"flex-start"}>
           <ButtonVariant
             size={"large"}
-            label={"Submit"}
+            label={"google.com"}
+            href={"https://google.com"}
+            target={"_blank"}
             right={
               <Row width={35} justifyContent={"flex-end"}>
                 <Column
