@@ -6,6 +6,8 @@
 
 - Button components no longer has `as` prop.
 
+To create links with button look, use `PrimaryButtonLink`, etc.
+
 ### New components
 
 - `TabMenu` and `Tab`.
