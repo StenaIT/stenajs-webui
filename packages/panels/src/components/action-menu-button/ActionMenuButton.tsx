@@ -1,16 +1,19 @@
 import * as React from "react";
+import { ReactNode } from "react";
 import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 
-export type ActionButtonProps = FlatButtonProps &
-  Pick<PopoverProps, "placement">;
+export interface ActionButtonProps extends FlatButtonProps {
+  renderActionItems: (close: () => void) => ReactNode;
+  placement?: PopoverProps["placement"];
+}
 
 export const ActionMenuButton: React.FC<ActionButtonProps> = ({
-  children,
-  placement,
-  leftIcon = faEllipsisH,
+  renderActionItems,
+  placement = "bottom",
+  leftIcon = faEllipsisV,
   ...flatButtonProps
 }) => {
   const [isOpen, open, close] = useBoolean(false);
@@ -18,10 +21,10 @@ export const ActionMenuButton: React.FC<ActionButtonProps> = ({
   return (
     <Popover
       disablePadding
-      placement={placement}
       visible={isOpen}
-      content={children}
       onClickOutside={close}
+      placement={placement}
+      content={renderActionItems(close)}
     >
       <FlatButton leftIcon={leftIcon} {...flatButtonProps} onClick={open} />
     </Popover>

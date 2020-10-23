@@ -1,7 +1,17 @@
-import { ActionMenuItem, Label } from "@stenajs-webui/elements";
+import { ActionMenuItem, Icon, Label } from "@stenajs-webui/elements";
 import { CheckboxMenu } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useState } from "react";
+import {
+  Column,
+  Indent,
+  Row,
+  Space,
+  Spacing,
+  StandardText,
+} from "@stenajs-webui/core";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
+import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 
 export default {
   title: "panels/CheckboxMenu",
@@ -32,40 +42,61 @@ export const Standard = () => {
     }
   };
   return (
-    <Label text={"Select rows"}>
-      <CheckboxMenu
-        value={allSelected}
-        indeterminate={!allSelected && someSelected}
-        onValueChange={onClickCheckbox}
-        renderMenu={(close) => (
-          <>
-            <ActionMenuItem
-              label={"Accompanied"}
-              onClick={() => {
-                setState({ ...state, accompanied: !state.accompanied });
-                close();
-              }}
-            />
-            <ActionMenuItem
-              label={"Unaccompanied"}
-              onClick={() => {
-                setState({ ...state, unaccompanied: !state.accompanied });
-                close();
-              }}
-            />
-            <ActionMenuItem
-              label={"Vehicle type = all"}
-              onClick={() => {
-                setState({
-                  ...state,
-                  vehicleTypeIsNull: !state.vehicleTypeIsNull,
-                });
-                close();
-              }}
-            />
-          </>
-        )}
-      />
-    </Label>
+    <Column>
+      <Label text={"Select rows"}>
+        <CheckboxMenu
+          value={allSelected}
+          indeterminate={!allSelected && someSelected}
+          onValueChange={onClickCheckbox}
+          renderMenu={(close) => (
+            <>
+              <ActionMenuItem
+                label={"Accompanied"}
+                onClick={() => {
+                  setState({ ...state, accompanied: !state.accompanied });
+                  close();
+                }}
+              />
+              <ActionMenuItem
+                label={"Unaccompanied"}
+                onClick={() => {
+                  setState({ ...state, unaccompanied: !state.unaccompanied });
+                  close();
+                }}
+              />
+              <ActionMenuItem
+                label={"Vehicle type = all"}
+                onClick={() => {
+                  setState({
+                    ...state,
+                    vehicleTypeIsNull: !state.vehicleTypeIsNull,
+                  });
+                  close();
+                }}
+              />
+            </>
+          )}
+        />
+      </Label>
+      <Spacing num={4} />
+
+      <Row>
+        <Icon icon={state.accompanied ? faCheckCircle : faCircle} />
+        <Indent />
+        <StandardText>accompanied</StandardText>
+      </Row>
+      <Space />
+      <Row>
+        <Icon icon={state.unaccompanied ? faCheckCircle : faCircle} />
+        <Indent />
+        <StandardText>unaccompanied</StandardText>
+      </Row>
+      <Space />
+      <Row>
+        <Icon icon={state.vehicleTypeIsNull ? faCheckCircle : faCircle} />
+        <Indent />
+        <StandardText>vehicleTypeIsNull</StandardText>
+      </Row>
+    </Column>
   );
 };
