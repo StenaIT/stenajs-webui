@@ -28,5 +28,6 @@
 
   .label {
     line-height: var(--swui-badge-size);
+    color: var(--swui-badge-text-color);
   }
 }

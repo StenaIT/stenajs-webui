@@ -30,3 +30,5 @@ export * from "./components/ui/action-menu/ActionMenuContext";
 export * from "./components/ui/action-menu/ActionMenuItem";
 export * from "./components/ui/action-menu/ActionMenuSeparator";
 export * from "./components/ui/action-menu/ActionMenuTheme";
+export * from "./components/ui/tabs/Tab";
+export * from "./components/ui/tabs/TabMenu";

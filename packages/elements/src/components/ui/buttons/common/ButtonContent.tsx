@@ -2,12 +2,12 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import styles from "../Button.module.css";
+import styles from "./ButtonContent.modules.css";
 import cx from "classnames";
 import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-interface ButtonContentProps {
+export interface ButtonContentProps {
   label?: string;
   loading?: boolean;
   left?: ReactNode;

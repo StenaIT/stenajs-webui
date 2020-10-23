@@ -4,10 +4,14 @@
 
 ### Breaking changes
 
-- Button components no longer use `as` props.
-- `ButtonWithPopover` has been removed from `tooltip` package.
+- Button components no longer has `as` prop.
 
 ### New components
+
+- `TabMenu` and `Tab`.
+
+`TabMenu` can have `Tab` elements as children, creating a tab menu bar.
+`Tab` have mostly the same props as buttons.
 
 - `CheckboxMenu` in `panels` package.
 
