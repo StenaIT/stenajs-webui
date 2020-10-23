@@ -1,5 +1,11 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import {
+  ButtonSize,
+  ButtonVariant,
+  FlatButtonLink,
+  Icon,
+  PrimaryButtonLink,
+  SecondaryButtonLink,
+} from "@stenajs-webui/elements";
 import {
   Column,
   Indent,
@@ -8,28 +14,22 @@ import {
   Space,
   StandardText,
 } from "@stenajs-webui/core";
-import {
-  ButtonSize,
-  ButtonVariant,
-  FlatButton,
-  Icon,
-  PrimaryButton,
-  SecondaryButton,
-} from "@stenajs-webui/elements";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import * as React from "react";
 
 const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
 
 export default {
-  title: "elements/Buttons",
+  title: "elements/ButtonLinks",
 };
 
 export const Overview = () => (
   <>
     {[
-      { ButtonVariant: PrimaryButton, label: "PrimaryButton" },
-      { ButtonVariant: SecondaryButton, label: "SecondaryButton" },
-      { ButtonVariant: FlatButton, label: "FlatButton" },
+      { ButtonVariant: PrimaryButtonLink, label: "PrimaryButtonLink" },
+      { ButtonVariant: SecondaryButtonLink, label: "SecondaryButtonLink" },
+      { ButtonVariant: FlatButtonLink, label: "FlatButtonLink" },
     ].map(({ label, ButtonVariant }) => (
       <Column alignItems={"flex-start"}>
         <LargeText>{label}</LargeText>
@@ -44,13 +44,7 @@ export const Overview = () => (
                 <StandardText>Standard</StandardText>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled</StandardText>
-              </th>
-              <th style={{ textAlign: "start" }}>
                 <StandardText>Icon only</StandardText>
-              </th>
-              <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled icon</StandardText>
               </th>
               <th style={{ textAlign: "start" }}>
                 <StandardText>Left icon</StandardText>
@@ -79,13 +73,7 @@ export const Overview = () => (
                   <ButtonVariant size={size} label={"Submit"} />
                 </td>
                 <td>
-                  <ButtonVariant size={size} label={"Submit"} disabled />
-                </td>
-                <td>
                   <ButtonVariant size={size} leftIcon={faCoffee} />
-                </td>
-                <td>
-                  <ButtonVariant size={size} leftIcon={faCoffee} disabled />
                 </td>
                 <td>
                   <ButtonVariant
@@ -147,32 +135,11 @@ export const Variants = () => (
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
               <Indent>
-                <PrimaryButton
+                <PrimaryButtonLink
                   key={size}
                   size={size}
                   variant={variant}
                   label={"Submit"}
-                />
-              </Indent>
-            ))}
-          </Row>
-        </Column>
-      )
-    )}
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
-      (variant) => (
-        <Column>
-          <LargeText>{variant} (disabled)</LargeText>
-          <Space />
-          <Row alignItems={"flex-start"} indent spacing>
-            {buttonSizes.map((size) => (
-              <Indent>
-                <PrimaryButton
-                  key={size}
-                  size={size}
-                  variant={variant}
-                  label={"Submit"}
-                  disabled
                 />
               </Indent>
             ))}
@@ -186,9 +153,9 @@ export const Variants = () => (
 export const WithGenericContentToRight = () => (
   <>
     {[
-      { ButtonVariant: PrimaryButton, label: "PrimaryButton" },
-      { ButtonVariant: SecondaryButton, label: "SecondaryButton" },
-      { ButtonVariant: FlatButton, label: "FlatButton" },
+      { ButtonVariant: PrimaryButtonLink, label: "PrimaryButtonLink" },
+      { ButtonVariant: SecondaryButtonLink, label: "SecondaryButtonLink" },
+      { ButtonVariant: FlatButtonLink, label: "FlatButtonLink" },
     ].map(({ ButtonVariant, label }) => (
       <Column spacing>
         <LargeText>{label}</LargeText>

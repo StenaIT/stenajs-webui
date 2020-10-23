@@ -1,6 +1,6 @@
 import { BoxProps, Column, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { ActionMenuTheme, defaultActionMenuTheme } from "./ActionMenuTheme";
 
 export interface ActionMenuProps {
@@ -20,28 +20,16 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
   const { colors } = useThemeFields(
     {
       colors: {
-        borderColor: theme.borderColor,
-        borderColorFocus: theme.borderColorFocus,
         menuBackground: theme.menuBackground,
       },
     },
     [theme]
   );
 
-  const hoverBorder = useMemo(() => `1px solid ${colors.borderColorFocus}`, [
-    colors.borderColorFocus,
-  ]);
-
   return (
     <Column
       background={colors.menuBackground}
-      borderColor={colors.borderColor}
-      hoverBorder={hoverBorder}
-      focusBorder={hoverBorder}
-      focusWithinBorder={hoverBorder}
       borderRadius={theme.borderRadius}
-      borderWidth={1}
-      borderStyle={"solid"}
       width={width}
       shadow={shadow}
     >

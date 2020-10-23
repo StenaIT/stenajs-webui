@@ -3,9 +3,9 @@ import * as React from "react";
 import { CSSProperties, MouseEventHandler } from "react";
 import { useThemeFields } from "../../theme/hooks/UseThemeSelector";
 import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
-import { ButtonProps } from "../../types/ElementProps";
+import { ButtonElementProps } from "../../types/ElementProps";
 
-export interface ClickableProps extends ButtonProps {
+export interface ClickableProps extends ButtonElementProps {
   /** Callback function called when clicking on click area. */
   onClick?: MouseEventHandler<HTMLButtonElement>;
   /** Callback function called when double clicking on click area. */

@@ -1,18 +1,18 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ButtonElementProps } from "@stenajs-webui/core";
-import cx from "classnames";
 import * as React from "react";
+import cx from "classnames";
+import styles from "../buttons/Button.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { InputSpinner } from "../spinner/InputSpinner";
-import styles from "./Button.module.css";
-import { CommonButtonProps } from "./ButtonCommon";
-import { getButtonLabel } from "./util/ButtonLabelFactory";
+import { AnchorElementProps } from "@stenajs-webui/core";
+import { CommonButtonProps } from "../buttons/ButtonCommon";
+import { getButtonLabel } from "../buttons/util/ButtonLabelFactory";
 
-export interface PrimaryButtonProps
+export interface PrimaryButtonLinkProps
   extends CommonButtonProps,
-    ButtonElementProps {}
+    AnchorElementProps {}
 
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   label,
   className,
   size = "normal",
@@ -25,10 +25,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   rightIcon,
   right,
   variant = "normal",
-  disabled,
-  onClick,
   innerRef,
-  ...buttonProps
+  ...anchorProps
 }) => {
   const buttonLabel = getButtonLabel(
     label,
@@ -45,9 +43,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   );
 
   return (
-    <button
+    <a
       ref={innerRef}
-      onClick={disabled || success || loading ? undefined : onClick}
       className={cx(
         styles.button,
         styles[size],
@@ -55,14 +52,13 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         !hasLabel && styles.iconButton,
         className
       )}
-      disabled={disabled}
-      {...buttonProps}
+      {...anchorProps}
     >
       {success ? (
         <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
       ) : loading ? (
         <div className={styles.iconLeft}>
-          <InputSpinner />
+          <InputSpinner size={"100%"} />
         </div>
       ) : left ? (
         left
@@ -77,6 +73,6 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       ) : rightIcon ? (
         <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
       ) : null}
-    </button>
+    </a>
   );
 };

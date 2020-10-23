@@ -33,12 +33,12 @@ When the dropdown is open, the user can press esc to close it.
 
 #### Props
 
-| Name   | Description                                      | Optional |  Default value |
-| ------ | ------------------------------------------------ | -------- | -------------- |
-| shadow | Shadow to use around the menu. Used by dropdown. | Yes      | No shadow      |
-| theme  | The theme to use                                 | Yes      | Default theme  |
-| top    | Content to show above items. Used by dropdown.   | Yes      | No content.    |
-| width  | The width of the dropdown.                       | Yes      | 180px          |
+| Name   | Description                                      | Optional | Default value |
+| ------ | ------------------------------------------------ | -------- | ------------- |
+| shadow | Shadow to use around the menu. Used by dropdown. | Yes      | No shadow     |
+| theme  | The theme to use                                 | Yes      | Default theme |
+| top    | Content to show above items. Used by dropdown.   | Yes      | No content.   |
+| width  | The width of the dropdown.                       | Yes      | 180px         |
 
 ## ActionDropdown
 
@@ -55,12 +55,12 @@ When the dropdown is open, the user can press esc to close it.
 
 #### Props
 
-| Name     | Description                | Optional |  Default value |
-| -------- | -------------------------- | -------- | -------------- |
-| disabled | Disables the dropdown      | Yes      | false          |
-| label    | The label shown.           | Yes      | "Actions"      |
-| theme    | The theme to use           | Yes      | Default theme  |
-| width    | The width of the dropdown. | Yes      | 180px          |
+| Name     | Description                | Optional | Default value |
+| -------- | -------------------------- | -------- | ------------- |
+| disabled | Disables the dropdown      | Yes      | false         |
+| label    | The label shown.           | Yes      | "Actions"     |
+| theme    | The theme to use           | Yes      | Default theme |
+| width    | The width of the dropdown. | Yes      | 180px         |
 
 ## Children components
 
@@ -74,15 +74,15 @@ When using `ActionDropdown`, the menu closes automatically when clicking on an i
 
 #### Props
 
-| Name                | Description                                             | Optional | Default value             |
-| ------------------- | ------------------------------------------------------- | -------- | ------------------------- |
-| label               | The label of the item                                   |  Yes     |  No label                 |
-| rightText           | Text to the right                                       | Yes      | No text                   |
-| icon                | Icon to show on the left                                | Yes      | No icon                   |
-| iconRight           | Icon to show on the right                               | Yes      | No icon                   |
-| disabled            | Disables the item                                       | Yes      |  Enabled                  |
-| disableCloseOnClick | If true, the menu doesn't close when clicking this item | Yes      |  Closes menu on click     |
-| onClick             | Callback called when user clicks                        | Yes      |  Nothing happens on click |
+| Name                | Description                                             | Optional | Default value            |
+| ------------------- | ------------------------------------------------------- | -------- | ------------------------ |
+| label               | The label of the item                                   | Yes      | No label                 |
+| rightText           | Text to the right                                       | Yes      | No text                  |
+| icon                | Icon to show on the left                                | Yes      | No icon                  |
+| iconRight           | Icon to show on the right                               | Yes      | No icon                  |
+| disabled            | Disables the item                                       | Yes      | Enabled                  |
+| disableCloseOnClick | If true, the menu doesn't close when clicking this item | Yes      | Closes menu on click     |
+| onClick             | Callback called when user clicks                        | Yes      | Nothing happens on click |
 
 #### Theme
 

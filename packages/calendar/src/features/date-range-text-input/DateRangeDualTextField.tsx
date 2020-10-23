@@ -8,7 +8,7 @@ import {
 } from "@stenajs-webui/forms";
 import {
   Box,
-  ButtonProps,
+  ButtonElementProps,
   Indent,
   Row,
   SeparatorLine,
@@ -27,8 +27,8 @@ interface Props {
   onChangeRight?: TextInputProps["onChange"];
   onClickLeft?: TextInputProps["onClick"];
   onClickRight?: TextInputProps["onClick"];
-  onClickCalendar?: ButtonProps["onClick"];
-  onClickArrowDown?: ButtonProps["onClick"];
+  onClickCalendar?: ButtonElementProps["onClick"];
+  onClickArrowDown?: ButtonElementProps["onClick"];
   onFocusLeft?: TextInputProps["onFocus"];
   onFocusRight?: TextInputProps["onFocus"];
   onBlur?: () => void;

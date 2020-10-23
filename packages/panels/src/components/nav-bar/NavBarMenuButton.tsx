@@ -3,7 +3,6 @@ import {
   Box,
   Clickable,
   Column,
-  ThemeColorField,
   useOnClickOutside,
   useThemeFields,
 } from "@stenajs-webui/core";
@@ -24,7 +23,7 @@ interface NavBarMenuButtonProps extends Omit<NavBarButtonProps, "onClick"> {
   top?: string;
   right?: string;
   left?: string;
-  backgroundColor?: ThemeColorField | string;
+  backgroundColor?: string;
   buttonContent?: ReactNode;
 }
 

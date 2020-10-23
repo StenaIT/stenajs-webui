@@ -7,8 +7,14 @@ export default {
 };
 
 export const Standard = () => (
-  <Badge
-    label={text("Label", "5")}
-    type={select("Type", ["notification", "warning", "error"], "notification")}
-  />
+  <div style={{ display: "inline-block" }}>
+    <Badge
+      label={text("Label", "5")}
+      type={select(
+        "Type",
+        ["notification", "warning", "error"],
+        "notification"
+      )}
+    />
+  </div>
 );

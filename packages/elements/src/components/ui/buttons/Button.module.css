@@ -37,9 +37,9 @@
   /* Shadow */
   --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
   --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
-    0 0 1px 0 rgba(29, 100, 171, 0.16);
+  0 0 1px 0 rgba(29, 100, 171, 0.16);
   --swui-button-box-shadow: 0 1px 0 0 rgba(29, 100, 171, 0.08),
-    0 0 1px -1px rgba(29, 100, 171, 0.1);
+  0 0 1px -1px rgba(29, 100, 171, 0.1);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
 
@@ -54,8 +54,7 @@
   box-sizing: border-box;
   letter-spacing: var(--swui-button-letter-spacing);
   text-decoration: var(--swui-button-text-decoration);
-  padding: var(--swui-button-padding-vertical)
-    var(--swui-button-padding-horizontal);
+  padding: var(--swui-button-padding-vertical) var(--swui-button-padding-horizontal);
   border: 1px solid var(--current-border-color);
   background-color: var(
     --current-background-color,
@@ -85,12 +84,12 @@
     align-items: center;
     display: flex;
 
-    &.small  {
+    &.small {
       width: 24px;
       height: 24px;
     }
 
-    &.large  {
+    &.large {
       width: 40px;
       height: 40px;
     }

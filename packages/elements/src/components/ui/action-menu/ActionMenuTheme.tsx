@@ -1,27 +1,25 @@
-import { ThemeColorField } from "@stenajs-webui/core";
-
 export interface ActionMenuTheme {
-  borderColor?: ThemeColorField | string;
-  borderColorFocus?: ThemeColorField | string;
+  borderColor?: string;
+  borderColorFocus?: string;
   borderRadius?: string;
-  menuBackground?: ThemeColorField | string;
-  iconColor: ThemeColorField | string;
-  iconColorDisabled: ThemeColorField | string;
-  iconColorFocus: ThemeColorField | string;
-  iconColorHover: ThemeColorField | string;
-  itemBackground?: ThemeColorField | string;
-  itemBackgroundDisabled?: ThemeColorField | string;
-  itemBackgroundDisabledFocus?: ThemeColorField | string;
-  itemBackgroundFocus?: ThemeColorField | string;
-  itemBackgroundHover?: ThemeColorField | string;
-  itemLabelColor?: ThemeColorField | string;
-  itemLabelColorDisabled?: ThemeColorField | string;
-  itemLabelColorFocus?: ThemeColorField | string;
-  itemLabelColorHover?: ThemeColorField | string;
-  itemTextColor?: ThemeColorField | string;
-  itemTextColorDisabled?: ThemeColorField | string;
-  itemTextColorFocus?: ThemeColorField | string;
-  itemTextColorHover?: ThemeColorField | string;
+  menuBackground?: string;
+  iconColor: string;
+  iconColorDisabled: string;
+  iconColorFocus: string;
+  iconColorHover: string;
+  itemBackground?: string;
+  itemBackgroundDisabled?: string;
+  itemBackgroundDisabledFocus?: string;
+  itemBackgroundFocus?: string;
+  itemBackgroundHover?: string;
+  itemLabelColor?: string;
+  itemLabelColorDisabled?: string;
+  itemLabelColorFocus?: string;
+  itemLabelColorHover?: string;
+  itemTextColor?: string;
+  itemTextColorDisabled?: string;
+  itemTextColorFocus?: string;
+  itemTextColorHover?: string;
   itemHeight: string;
 }
 
@@ -32,20 +30,20 @@ export const defaultActionMenuTheme: ActionMenuTheme = {
   menuBackground: "var(--swui-white)",
   iconColor: "var(--swui-text-primary-color)",
   iconColorDisabled: "var(--swui-text-disabled-color)",
-  iconColorFocus: "var(--swui-white)",
-  iconColorHover: "var(--swui-white)",
+  iconColorFocus: "var(--swui-text-primary-color)",
+  iconColorHover: "var(--swui-text-primary-color)",
   itemBackground: "var(--swui-white)",
-  itemBackgroundFocus: "var(--swui-primary-action-color-focus)",
-  itemBackgroundHover: "var(--swui-primary-action-color-hover)",
+  itemBackgroundFocus: "var(--swui-primary-action-color-focus-light)",
+  itemBackgroundHover: "var(--swui-primary-action-color-hover-light)",
   itemBackgroundDisabled: "var(--swui-white)",
   itemBackgroundDisabledFocus: "var(--swui-text-disabled-color-light)",
   itemLabelColor: "var(--swui-text-primary-color)",
   itemLabelColorDisabled: "var(--swui-text-disabled-color)",
-  itemLabelColorFocus: "var(--swui-white)",
-  itemLabelColorHover: "var(--swui-white)",
+  itemLabelColorFocus: "var(--swui-text-primary-color)",
+  itemLabelColorHover: "var(--swui-text-primary-color)",
   itemTextColor: "var(--swui-text-primary-color-light)",
   itemTextColorDisabled: "var(--swui-text-disabled-color-light)",
-  itemTextColorFocus: "var(--swui-white)",
-  itemTextColorHover: "var(--swui-white)",
+  itemTextColorFocus: "var(--swui-text-primary-color-light)",
+  itemTextColorHover: "var(--swui-text-primary-color-light)",
   itemHeight: "34px",
 };

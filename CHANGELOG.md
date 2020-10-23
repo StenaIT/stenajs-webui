@@ -1,5 +1,28 @@
 # Changelog
 
+## 2.1.0
+
+### Breaking changes
+
+- Button components no longer use `as` props.
+- `ButtonWithPopover` has been removed from `tooltip` package.
+
+### New components
+
+- `CheckboxMenu` in `panels` package.
+
+A checkbox and a menu, with options to quick select checkboxes.
+
+- `ActionMenuButton` in `panels` package.
+
+A flat button with ellipses icon that opens an action menu.
+
+- `PrimaryButtonLink`
+- `FlatButtonLink`
+- `SecondaryButtonLink`
+
+They are `a` tags with same design and functionality as `PrimaryButton`, etc.
+
 ## 2.0.9
 
 ### Bug fix
