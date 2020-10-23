@@ -29,6 +29,10 @@ A flat button with ellipses icon that opens an action menu.
 
 They are `a` tags with same design and functionality as `PrimaryButton`, etc.
 
+### Improvements
+
+- Updated design of `ActionMenu`.
+
 ## 2.0.9
 
 ### Bug fix
