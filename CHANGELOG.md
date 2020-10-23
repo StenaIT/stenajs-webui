@@ -32,6 +32,7 @@ They are `a` tags with same design and functionality as `PrimaryButton`, etc.
 ### Improvements
 
 - Updated design of `ActionMenu`.
+- Fix issues in buttons where spinner was not aligned correctly.
 
 ## 2.0.9
 
