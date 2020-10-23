@@ -13,7 +13,7 @@ export default {
 export const Standard = () => (
   <Box indent={8} spacing={5} display={"inline-block"}>
     <ActionMenuButton
-      renderActionItems={(close) => (
+      renderItems={(close) => (
         <>
           <ActionMenuItem label={"Open"} onClick={close} />
           <ActionMenuItem label={"Save"} icon={faSave} onClick={close} />
@@ -52,5 +52,5 @@ export const Standard = () => (
 );
 
 export const Disabled = () => (
-  <ActionMenuButton disabled renderActionItems={() => <></>} />
+  <ActionMenuButton disabled renderItems={() => <></>} />
 );

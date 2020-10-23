@@ -6,12 +6,12 @@ import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 
 export interface ActionButtonProps extends FlatButtonProps {
-  renderActionItems: (close: () => void) => ReactNode;
+  renderItems: (close: () => void) => ReactNode;
   placement?: PopoverProps["placement"];
 }
 
 export const ActionMenuButton: React.FC<ActionButtonProps> = ({
-  renderActionItems,
+  renderItems,
   placement = "bottom",
   leftIcon = faEllipsisV,
   ...flatButtonProps
@@ -24,7 +24,7 @@ export const ActionMenuButton: React.FC<ActionButtonProps> = ({
       visible={isOpen}
       onClickOutside={close}
       placement={placement}
-      content={renderActionItems(close)}
+      content={renderItems(close)}
     >
       <FlatButton leftIcon={leftIcon} {...flatButtonProps} onClick={open} />
     </Popover>
