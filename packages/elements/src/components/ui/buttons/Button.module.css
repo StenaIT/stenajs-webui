@@ -73,7 +73,7 @@
   font-family: var(--swui-font-buttons);
   cursor: pointer;
   user-select: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   &.iconButton {

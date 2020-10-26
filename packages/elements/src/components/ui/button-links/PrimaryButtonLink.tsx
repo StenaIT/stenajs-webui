@@ -41,26 +41,28 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   );
 
   return (
-    <a ref={innerRef} className={styles.buttonLink} {...anchorProps}>
-      <div
-        className={cx(
-          styles.button,
-          styles[size],
-          styles[variant],
-          !hasLabel && styles.iconButton,
-          className
-        )}
-      >
-        <ButtonContent
-          success={success}
-          loading={loading}
-          leftIcon={leftIcon}
-          left={left}
-          right={right}
-          rightIcon={rightIcon}
-          label={buttonLabel}
-        />
-      </div>
+    <a
+      ref={innerRef}
+      className={cx(
+        styles.buttonLink,
+        styles.buttonLink,
+        styles.button,
+        styles[size],
+        styles[variant],
+        !hasLabel && styles.iconButton,
+        className
+      )}
+      {...anchorProps}
+    >
+      <ButtonContent
+        success={success}
+        loading={loading}
+        leftIcon={leftIcon}
+        left={left}
+        right={right}
+        rightIcon={rightIcon}
+        label={buttonLabel}
+      />
     </a>
   );
 };
