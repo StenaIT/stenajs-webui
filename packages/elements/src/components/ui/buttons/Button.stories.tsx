@@ -217,27 +217,3 @@ export const WithGenericContentToRight = () => (
     ))}
   </>
 );
-
-export const RenderedAsOtherElements = () => (
-  <>
-    <Column spacing>
-      <LargeText>Anchor</LargeText>
-      <Space />
-      <Row alignItems={"flex-start"}>
-        <PrimaryButton
-          as={"a"}
-          size={"large"}
-          label={"Google"}
-          href={"https://google.com"}
-        />
-      </Row>
-    </Column>
-    <Column spacing>
-      <LargeText>Button (default)</LargeText>
-      <Space />
-      <Row alignItems={"flex-start"}>
-        <PrimaryButton as={"button"} size={"large"} label={"Submit"} />
-      </Row>
-    </Column>
-  </>
-);

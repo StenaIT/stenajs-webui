@@ -1,16 +1,16 @@
-import { ButtonElementProps } from "@stenajs-webui/core";
-import cx from "classnames";
 import * as React from "react";
-import styles from "./Button.module.css";
-import { CommonButtonProps } from "./common/ButtonCommon";
-import { getButtonLabel } from "./common/ButtonLabelFactory";
-import { ButtonContent } from "./common/ButtonContent";
+import cx from "classnames";
+import styles from "../buttons/Button.module.css";
+import { AnchorElementProps } from "@stenajs-webui/core";
+import { CommonButtonProps } from "../buttons/common/ButtonCommon";
+import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
+import { ButtonContent } from "../buttons/common/ButtonContent";
 
-export interface PrimaryButtonProps
+export interface PrimaryButtonLinkProps
   extends CommonButtonProps,
-    ButtonElementProps {}
+    AnchorElementProps {}
 
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   label,
   className,
   size = "normal",
@@ -23,10 +23,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   rightIcon,
   right,
   variant = "normal",
-  disabled,
-  onClick,
   innerRef,
-  ...buttonProps
+  ...anchorProps
 }) => {
   const buttonLabel = getButtonLabel(
     label,
@@ -43,18 +41,17 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   );
 
   return (
-    <button
+    <a
       ref={innerRef}
-      onClick={disabled || success || loading ? undefined : onClick}
       className={cx(
+        styles.buttonLink,
         styles.button,
         styles[size],
         styles[variant],
         !hasLabel && styles.iconButton,
         className
       )}
-      disabled={disabled}
-      {...buttonProps}
+      {...anchorProps}
     >
       <ButtonContent
         success={success}
@@ -65,6 +62,6 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         rightIcon={rightIcon}
         label={buttonLabel}
       />
-    </button>
+    </a>
   );
 };

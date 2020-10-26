@@ -24,12 +24,13 @@ export interface SpanProps extends Omit<JSX.IntrinsicElements["span"], "ref"> {
   innerRef?: Ref<HTMLSpanElement>;
 }
 
-export interface ButtonProps
+export interface ButtonElementProps
   extends Omit<JSX.IntrinsicElements["button"], "ref"> {
   innerRef?: Ref<HTMLButtonElement>;
 }
 
-export interface AnchorProps extends Omit<JSX.IntrinsicElements["a"], "ref"> {
+export interface AnchorElementProps
+  extends Omit<JSX.IntrinsicElements["a"], "ref"> {
   innerRef?: Ref<HTMLAnchorElement>;
 }
 

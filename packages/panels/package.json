@@ -31,6 +31,7 @@
     "@stenajs-webui/core": "2.0.9",
     "@stenajs-webui/elements": "2.0.9",
     "@stenajs-webui/forms": "2.0.9",
+    "@stenajs-webui/tooltip": "2.0.9",
     "classnames": "^2.2.6",
     "date-fns": "2.16.1",
     "react-transition-group": "^4.3.0"

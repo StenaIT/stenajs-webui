@@ -1,4 +1,4 @@
-import { ButtonProps, Clickable } from "@stenajs-webui/core";
+import { ButtonElementProps, Clickable } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import styles from "./Collapsible.module.css";
@@ -7,7 +7,7 @@ import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
 interface CollapsibleClickableContentProps
   extends CollapsibleSimpleContentProps,
-    ButtonProps {}
+    ButtonElementProps {}
 
 export const CollapsibleClickableContent: React.FC<CollapsibleClickableContentProps> = ({
   contentLeft,

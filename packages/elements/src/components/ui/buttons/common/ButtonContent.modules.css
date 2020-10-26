@@ -1,0 +1,23 @@
+.iconLeft,
+.iconRight {
+  height: var(--current-line-height);
+}
+
+.iconLeft,
+.iconRight {
+  height: var(--current-icon-height);
+}
+
+.iconLeft:not(:last-child) {
+  margin-right: var(--swui-metrics-indent);
+}
+
+.iconRight:not(:first-child) {
+  margin-left: var(--swui-metrics-indent);
+}
+
+.spinnerLeft {
+  display: flex;
+  align-items: center;
+}
+

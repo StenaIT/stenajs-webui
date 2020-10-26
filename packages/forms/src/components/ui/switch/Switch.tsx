@@ -1,11 +1,11 @@
 import { Ref } from "react";
 import * as React from "react";
-import { ButtonProps } from "@stenajs-webui/core";
+import { ButtonElementProps } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "../types";
 import styles from "./Switch.module.css";
 
 export interface SwitchProps
-  extends Omit<ButtonProps, "value">,
+  extends Omit<ButtonElementProps, "value">,
     ValueAndOnValueChangeProps<boolean> {
   wrapperRef?: Ref<HTMLDivElement>;
 }
