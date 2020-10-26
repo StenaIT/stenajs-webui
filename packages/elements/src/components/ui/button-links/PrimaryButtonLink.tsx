@@ -45,7 +45,6 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
       ref={innerRef}
       className={cx(
         styles.buttonLink,
-        styles.buttonLink,
         styles.button,
         styles[size],
         styles[variant],
