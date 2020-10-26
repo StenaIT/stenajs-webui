@@ -1,6 +1,11 @@
 import * as React from "react";
-import { Box } from "@stenajs-webui/core";
-import { Banner, FlatButton, PrimaryButton } from "@stenajs-webui/elements";
+import { Box, StandardText, Row, Indent } from "@stenajs-webui/core";
+import {
+  Banner,
+  FlatButton,
+  PrimaryButton,
+  Link,
+} from "@stenajs-webui/elements";
 
 export default {
   title: "elements/Banner",
@@ -81,12 +86,27 @@ export const LoadingNoHeader = () => (
 
 export const BottomContent = () => (
   <Box width={"500px"}>
-    <Banner
-      variant={"error"}
-      headerText={"This is header"}
-      text={"This is not working."}
-    >
-      <PrimaryButton label={"Retry"} />
+    <Banner variant={"error"} headerText={"This is header"}>
+      <ul style={{ paddingInlineStart: "20px" }}>
+        <li>
+          <Row>
+            <StandardText>
+              This is error one, please correct problem
+            </StandardText>
+            <Indent />
+            <Link onClick={() => alert("Link to error")}>Link to Error</Link>
+          </Row>
+        </li>
+        <li>
+          <Row>
+            <StandardText>
+              This is error two, please correct problem
+            </StandardText>
+            <Indent />
+            <Link onClick={() => alert("Link to error")}>Link to Error</Link>
+          </Row>
+        </li>
+      </ul>
     </Banner>
   </Box>
 );
