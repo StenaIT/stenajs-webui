@@ -81,10 +81,18 @@ export const LoadingNoHeader = () => (
 
 export const BottomContent = () => (
   <Box width={"500px"}>
+    <Banner variant={"error"} headerText={"This is header"}>
+      <PrimaryButton label={"Retry"} />
+    </Banner>
+  </Box>
+);
+
+export const BottomContentAndText = () => (
+  <Box width={"500px"}>
     <Banner
       variant={"error"}
       headerText={"This is header"}
-      text={"This is not working."}
+      text={"An additional text"}
     >
       <PrimaryButton label={"Retry"} />
     </Banner>

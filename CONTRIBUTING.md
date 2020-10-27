@@ -13,10 +13,13 @@ $ yarn build-all
 First, build the library.
 
 Terminal 1
+
 ```
 $ yarn start-storybook
 ```
+
 Terminal 2
+
 ```
 $ yarn watch
 ```
@@ -29,8 +32,8 @@ $ yarn watch
 
 ### Resources
 
-* https://emotion.sh/docs/introduction
-* https://styled-system.com/
+- https://emotion.sh/docs/introduction
+- https://styled-system.com/
 
 ## Dependencies
 
@@ -133,10 +136,12 @@ export const NiceButton: React.FC<NiceButtonProps> = ({ onClick }) => {
 Boolean props with default value that toggle something, should always default to false.
 
 For example:
+
 ```
 <SomeComp />
 <SomeComp showProfile />
 ```
+
 In this example `showProfile` defaults to `true` when omitted.
 It should be changed to this instead:
 
@@ -224,7 +229,11 @@ Chrome, Firefox, Edge, Safari.
 In `<package>/src/index.ts`, make sure that you export at least your component and the props interface.
 Do not export everything, only the things that should be available to the users (developers).
 
-### 9) Create a pull request in Github
+### 9) Update CHANGELOG.md
+
+State your improvements and changes and increment version.
+
+### 10) Create a pull request in Github
 
 Add screenshots for extra points!
 

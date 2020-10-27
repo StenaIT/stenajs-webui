@@ -1,14 +1,7 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  Column,
-  Indent,
-  Row,
-  Space,
-  Spacing,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Column, Indent, Space, Row, StandardText } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
@@ -27,7 +20,7 @@ export type BannerVariant =
 export interface BannerProps {
   icon?: IconDefinition;
   headerText?: string;
-  text: string;
+  text?: string;
   loading?: boolean;
   contentRight?: ReactNode;
   variant?: BannerVariant;
@@ -74,23 +67,22 @@ export const Banner: React.FC<BannerProps> = ({
             {headerText && (
               <>
                 <StandardText fontWeight={"bold"}>{headerText}</StandardText>
-                <Space />
               </>
             )}
-            <StandardText>{text}</StandardText>
+            {text && (
+              <>
+                <Space />
+                <StandardText>{text}</StandardText>
+              </>
+            )}
+            <Space />
+            {children}
           </Column>
         </Row>
         {contentRight && (
           <Column justifyContent={"center"}>{contentRight}</Column>
         )}
       </Row>
-
-      {children && (
-        <>
-          <Spacing />
-          {children}
-        </>
-      )}
     </div>
   );
 };
