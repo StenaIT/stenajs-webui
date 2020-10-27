@@ -36,7 +36,7 @@ const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
 
 export const Banner: React.FC<BannerProps> = ({
   headerText,
-  text = "",
+  text,
   children,
   contentRight,
   icon,
@@ -67,15 +67,16 @@ export const Banner: React.FC<BannerProps> = ({
             {headerText && (
               <>
                 <StandardText fontWeight={"bold"}>{headerText}</StandardText>
-                {text && <Space />}
               </>
             )}
             {text && (
               <>
+                <Space />
                 <StandardText>{text}</StandardText>
               </>
             )}
-            {children && <>{children}</>}
+            <Space />
+            {children}
           </Column>
         </Row>
         {contentRight && (
