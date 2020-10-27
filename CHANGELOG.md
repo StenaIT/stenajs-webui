@@ -4,12 +4,12 @@
 
 ### Changes
 
-- `Banner` changed to have optional text
+- `Banner` changed to have optional text.
 
-To make room for arbitrary children under header if no text provided
+To make room for arbitrary children under header if no text provided.
 
-- `Banner` children (i.e bottom content) is now in proper layout under header and text
-- Added story for Banner with both header, text and bottom content
+- `Banner` children (i.e bottom content) is now in proper layout under header and text.
+- Added story for Banner with both header, text and bottom content.
 
 ## 2.1.0
 
