@@ -231,7 +231,7 @@ Do not export everything, only the things that should be available to the users 
 
 ### 9) Update CHANGELOG.md
 
-State your improvements and changes and increment version
+State your improvements and changes and increment version.
 
 ### 10) Create a pull request in Github
 
