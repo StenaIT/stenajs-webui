@@ -2,7 +2,7 @@ import { ClassNames, keyframes } from "@emotion/core";
 import * as React from "react";
 import { ReactComponent as SpinnerSvg } from "./spinner-large.svg";
 
-export type SpinnerSize = "large" | "normal" | "small";
+export type SpinnerSize = "large" | "normal" | "small" | "tiny";
 
 export interface SpinnerProps {
   size?: SpinnerSize | string;
@@ -10,7 +10,7 @@ export interface SpinnerProps {
   inverted?: boolean;
 }
 
-const sizes = {
+const sizes: Record<SpinnerSize, string> = {
   large: "78px",
   normal: "54px",
   small: "34px",

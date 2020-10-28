@@ -1,0 +1,8 @@
+.resultItemRow {
+  display: flex;
+  flex-direction: column;
+
+  .link {
+    margin-top: 4px;
+  }
+}

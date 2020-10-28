@@ -1,8 +1,26 @@
 # Changelog
 
-## 2.1.1
+## 2.2.0
+
+### New components
+
+#### `ResultListBanner`
+
+A banner that contains a list of results. Can be used when displaying multiple errors.
+
+- `useResultListBannerState`
+
+A hook that contains all state needed for `ResultListBanner`.
+
+It exposes functions for setting the state of the banner.
+
+#### `ResultList`
+
+A list of results, presented in `ul` tag.
 
 ### Changes
+
+- `Spinner` has new size `tiny`.
 
 - `Banner` changed to have optional text.
 

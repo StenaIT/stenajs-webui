@@ -2,9 +2,10 @@
   --current-bg-color: var(--lhds-color-ui-200);
   --current-icon-color: var(--lhds-color-ui-500);
 
+  padding: calc(var(--swui-metrics-spacing) * 2) 0;
+  padding-right: calc(var(--swui-metrics-indent) * 2);
+
   background: var(--current-bg-color);
-  padding: calc(var(--swui-metrics-spacing) * 2)
-    calc(var(--swui-metrics-indent) * 2);
 
   .icon {
     color: var(--current-icon-color);

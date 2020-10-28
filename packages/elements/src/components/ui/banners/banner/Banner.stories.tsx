@@ -3,7 +3,7 @@ import { Box } from "@stenajs-webui/core";
 import { Banner, FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 
 export default {
-  title: "elements/Banner",
+  title: "elements/Banners/Banner",
 };
 
 export const Standard = () => (
@@ -94,7 +94,9 @@ export const BottomContentAndText = () => (
       headerText={"This is header"}
       text={"An additional text"}
     >
-      <PrimaryButton label={"Retry"} />
+      <div style={{ display: "inline-block" }}>
+        <PrimaryButton label={"Retry"} />
+      </div>
     </Banner>
   </Box>
 );

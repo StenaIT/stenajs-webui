@@ -39,9 +39,9 @@ export const defaultTheme: Theme = {
     highlightBoxBorder: "#7498AD",
   },
   metrics: {
-    indent: 10,
-    spacing: 10,
-    space: 10,
+    indent: 8,
+    spacing: 8,
+    space: 8,
   },
   fontWeights: {
     bold: 600,
