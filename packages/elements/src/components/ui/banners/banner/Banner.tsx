@@ -1,13 +1,13 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Column, Indent, Space, Row, StandardText } from "@stenajs-webui/core";
-import { Icon } from "../icon/Icon";
+import { Box, Column, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Icon } from "../../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { Spinner } from "../spinner/Spinner";
+import { Spinner } from "../../spinner/Spinner";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 
 export type BannerVariant =
@@ -46,23 +46,22 @@ export const Banner: React.FC<BannerProps> = ({
   return (
     <div className={cx(styles.banner, styles[variant])}>
       <Row justifyContent={"space-between"}>
-        <Row>
+        <Row width={"64px"} justifyContent={"center"} alignItems={"center"}>
           {(icon || iconPerVariant[variant] || loading) && (
             <>
-              <Column justifyContent={"center"}>
-                {loading ? (
-                  <Spinner size={"small"} color={"var(--current-icon-color)"} />
-                ) : (
-                  <Icon
-                    icon={icon ?? iconPerVariant[variant]}
-                    size={24}
-                    className={styles.icon}
-                  />
-                )}
-              </Column>
-              <Indent />
+              {loading ? (
+                <Spinner size={"tiny"} color={"var(--current-icon-color)"} />
+              ) : (
+                <Icon
+                  icon={icon ?? iconPerVariant[variant]}
+                  size={24}
+                  className={styles.icon}
+                />
+              )}
             </>
           )}
+        </Row>
+        <Row justifyContent={"space-between"} flexGrow={1}>
           <Column justifyContent={"center"}>
             {headerText && (
               <>
@@ -71,18 +70,27 @@ export const Banner: React.FC<BannerProps> = ({
             )}
             {text && (
               <>
-                <Space />
+                {headerText && <Space num={2} />}
                 <StandardText>{text}</StandardText>
               </>
             )}
-            <Space />
-            {children}
           </Column>
+          {contentRight && (
+            <Column justifyContent={"center"}>{contentRight}</Column>
+          )}
         </Row>
-        {contentRight && (
-          <Column justifyContent={"center"}>{contentRight}</Column>
-        )}
       </Row>
+      {children && (
+        <Row>
+          <Box minWidth={"64px"} />
+          <Box>
+            <>
+              <Space num={2} />
+              {children}
+            </>
+          </Box>
+        </Row>
+      )}
     </div>
   );
 };

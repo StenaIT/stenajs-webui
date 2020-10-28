@@ -1,0 +1,9 @@
+.resultList {
+  margin: 0;
+  padding-inline-start: 20px;
+  padding-inline-end: 0;
+
+  li:not(:last-child) {
+    margin-bottom: calc(var(--swui-metrics-spacing));
+  }
+}
