@@ -26,7 +26,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     enableExpandCollapse,
     columnOrder,
     rowIndent,
-    stickyHeader,
+    headerOptions,
   } = useStandardTableConfig();
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
@@ -40,7 +40,14 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   const checkboxDisabled = !items || items.length === 0;
 
   return (
-    <TableHeadRow className={cx({ [styles.stickyHeader]: stickyHeader })}>
+    <TableHeadRow
+      style={{
+        top: headerOptions?.top ? headerOptions.top : 0,
+        zIndex: headerOptions?.zIndex ? headerOptions.zIndex : 1000,
+        width: "100%",
+      }}
+      className={cx({ [styles.stickyHeader]: headerOptions?.isSticky })}
+    >
       {rowIndent && <Indent num={rowIndent} />}
       {enableExpandCollapse && (
         <Row

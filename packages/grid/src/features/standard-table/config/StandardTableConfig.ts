@@ -8,6 +8,23 @@ export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
 }
 
+export interface RowHeaderOptions {
+  /**
+   * Enable sticky behaviour for header row
+   */
+  isSticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  zIndex?: number;
+
+  /**
+   * Offset header row from top (top css property)
+   */
+  top?: number | string;
+}
+
 export interface StandardTableConfig<
   TItem,
   TColumnKeys extends string | number | symbol = keyof TItem
@@ -132,9 +149,12 @@ export interface StandardTableConfig<
   rowIndent?: boolean | number;
 
   /**
-   * Determine if header row should be sticky on top
+   * Configure table header row with custom options
+   * @property isSticky - make header sticky on top
+   * @property zIndex - set a custom z-index, defaults to 1000
+   * @property top - set a top offset
    */
-  stickyHeader?: boolean;
+  headerOptions?: RowHeaderOptions;
 }
 
 export type StandardTableColumnConfig<
