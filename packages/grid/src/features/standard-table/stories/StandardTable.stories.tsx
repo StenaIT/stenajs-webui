@@ -4,11 +4,11 @@ import {
   createEditableTextCellWithStatus,
   createStandardEditableTextCell,
   StandardTable,
-  StandardTableCellRenderer,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 import { addDays, format } from "date-fns";
 import * as React from "react";
+import { useCallback, useState } from "react";
 import { Box, Column, Row, Spacing, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
@@ -85,18 +85,7 @@ const setListItemFields = (
   fields: Partial<ListItem>
 ) => items.map((item) => (item.id === id ? { ...item, ...fields } : item));
 
-const createConfig = (
-  onChangeNumPassengers?: (
-    item: ListItem,
-    numPassengersString: string | undefined
-  ) => void,
-  numPassengersCellRenderer?: StandardTableCellRenderer<
-    number | undefined,
-    ListItem
-  >,
-  options?: Partial<StandardTableConfig<ListItem>>
-): StandardTableConfig<ListItem> => ({
-  ...options,
+const standardTableConfigForStories: StandardTableConfig<ListItem> = {
   keyResolver: (item) => item.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
@@ -110,9 +99,9 @@ const createConfig = (
     name: createColumnConfig((item) => item.name),
     ship: createColumnConfig((item) => item.ship),
     numPassengers: createColumnConfig((item) => item.numPassengers, {
-      renderCell: numPassengersCellRenderer,
+      renderCell: createStandardEditableTextCell(),
       isEditable: true,
-      onChange: onChangeNumPassengers,
+      onChange: () => {},
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
     }),
@@ -122,10 +111,9 @@ const createConfig = (
     }),
   },
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
-});
+};
 
-const config = createConfig(() => {});
-const items = createItemsMocks();
+const mockedItems = createItemsMocks();
 
 const createOnChangeNumPassengers = (
   store: Store<{ items: Array<ListItem> }>
@@ -142,49 +130,80 @@ export default {
   title: "grid/StandardTable",
 };
 
-export const Standard = withState({ items })(({ store }) => {
-  const config = createConfig(
-    createOnChangeNumPassengers(store),
-    createStandardEditableTextCell()
-  );
-  return <StandardTable items={store.state.items} config={config} />;
-});
+const useListState = (initialItems: Array<ListItem>) => {
+  const [items, setItems] = useState(initialItems);
 
-export const WithSortingDisabled = withState({ items })(({ store }) => {
+  const onChangeNumPassengers = useCallback(
+    (item: ListItem, numPassengers: string | undefined) => {
+      return setItems(
+        setListItemFields(items, item.id, {
+          numPassengers: numPassengers ? parseInt(numPassengers) : undefined,
+        })
+      );
+    },
+    [items, setItems]
+  );
+
+  return {
+    onChangeNumPassengers,
+    items,
+  };
+};
+
+export const Standard = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
+};
+
+export const WithSortingDisabled = withState({ items: mockedItems })(
+  ({ store }) => {
+    const config = createConfig(
+      createOnChangeNumPassengers(store),
+      createStandardEditableTextCell(),
+      { disableSorting: true }
+    );
+    return <StandardTable items={store.state.items} config={config} />;
+  }
+);
+
+export const WithSortingDisabledAndSortByName = withState({
+  items: mockedItems,
+})(({ store }) => {
   const config = createConfig(
     createOnChangeNumPassengers(store),
     createStandardEditableTextCell(),
-    { disableSorting: true }
+    { disableSorting: true, initialSortOrder: "name" }
   );
   return <StandardTable items={store.state.items} config={config} />;
 });
 
-export const WithSortingDisabledAndSortByName = withState({ items })(
-  ({ store }) => {
-    const config = createConfig(
-      createOnChangeNumPassengers(store),
-      createStandardEditableTextCell(),
-      { disableSorting: true, initialSortOrder: "name" }
-    );
-    return <StandardTable items={store.state.items} config={config} />;
-  }
-);
+export const WithSortingEnabledAndSortByNameDesc = withState({
+  items: mockedItems,
+})(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createStandardEditableTextCell(),
+    {
+      initialSortOrder: "name",
+      initialSortOrderDesc: true,
+    }
+  );
+  return <StandardTable items={store.state.items} config={config} />;
+});
 
-export const WithSortingEnabledAndSortByNameDesc = withState({ items })(
-  ({ store }) => {
-    const config = createConfig(
-      createOnChangeNumPassengers(store),
-      createStandardEditableTextCell(),
-      {
-        initialSortOrder: "name",
-        initialSortOrderDesc: true,
-      }
-    );
-    return <StandardTable items={store.state.items} config={config} />;
-  }
-);
-
-export const WithFieldError = withState({ items })(({ store }) => {
+export const WithFieldError = withState({ items: mockedItems })(({ store }) => {
   const config = createConfig(
     createOnChangeNumPassengers(store),
     createEditableTextCellWithStatus<number | undefined, ListItem>(
@@ -196,40 +215,26 @@ export const WithFieldError = withState({ items })(({ store }) => {
       })
     )
   );
-  return <StandardTable items={items} config={config} />;
+  return <StandardTable items={mockedItems} config={config} />;
 });
 
-export const WithFieldLoading = withState({ items })(({ store }) => {
-  const config = createConfig(
-    createOnChangeNumPassengers(store),
-    createEditableTextCellWithStatus<number | undefined, ListItem>(
-      undefined,
-      (item) => ({
-        id: item.id,
-        loading: true,
-      })
-    )
-  );
-  return <StandardTable items={items} config={config} />;
-});
+export const WithFieldLoading = withState({ items: mockedItems })(
+  ({ store }) => {
+    const config = createConfig(
+      createOnChangeNumPassengers(store),
+      createEditableTextCellWithStatus<number | undefined, ListItem>(
+        undefined,
+        (item) => ({
+          id: item.id,
+          loading: true,
+        })
+      )
+    );
+    return <StandardTable items={mockedItems} config={config} />;
+  }
+);
 
-export const WithModifiedFields = withState({ items })(({ store }) => {
-  const config = createConfig(
-    createOnChangeNumPassengers(store),
-    createEditableTextCellWithStatus<number | undefined, ListItem>(
-      "Passengers cannot be empty.",
-      () => undefined,
-      (item) => ({
-        id: item.id,
-        modified: true,
-        newValue: "789",
-      })
-    )
-  );
-  return <StandardTable items={items} config={config} />;
-});
-
-export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
+export const WithModifiedFields = withState({ items: mockedItems })(
   ({ store }) => {
     const config = createConfig(
       createOnChangeNumPassengers(store),
@@ -239,13 +244,31 @@ export const WithWarningWhenModifiedFieldIsEmpty = withState({ items })(
         (item) => ({
           id: item.id,
           modified: true,
-          newValue: "",
+          newValue: "789",
         })
       )
     );
-    return <StandardTable items={items} config={config} />;
+    return <StandardTable items={mockedItems} config={config} />;
   }
 );
+
+export const WithWarningWhenModifiedFieldIsEmpty = withState({
+  items: mockedItems,
+})(({ store }) => {
+  const config = createConfig(
+    createOnChangeNumPassengers(store),
+    createEditableTextCellWithStatus<number | undefined, ListItem>(
+      "Passengers cannot be empty.",
+      () => undefined,
+      (item) => ({
+        id: item.id,
+        modified: true,
+        newValue: "",
+      })
+    )
+  );
+  return <StandardTable items={mockedItems} config={config} />;
+});
 
 export const MissingItems = () => <StandardTable items={[]} config={config} />;
 
@@ -258,13 +281,13 @@ export const NavigationBetweenTables = () => {
 
   return (
     <Column>
-      <StandardTable items={items} config={config} tableId={"table123"} />
+      <StandardTable items={mockedItems} config={config} tableId={"table123"} />
       <Spacing />
       <StandardTable
-        items={items}
+        items={mockedItems}
         config={config}
         tableId={"table123"}
-        rowIndexOffset={items.length}
+        rowIndexOffset={mockedItems.length}
       />
       7
     </Column>
@@ -272,12 +295,12 @@ export const NavigationBetweenTables = () => {
 };
 
 export const Loading = () => (
-  <StandardTable items={items} config={config} loading />
+  <StandardTable items={mockedItems} config={config} loading />
 );
 
 export const _Error = () => (
   <StandardTable
-    items={items}
+    items={mockedItems}
     config={config}
     error={new Error("Could not fetch users")}
   />
@@ -293,7 +316,7 @@ export const ExpandableRows = () => {
       </Box>
     ),
   });
-  return <StandardTable items={items} config={config} />;
+  return <StandardTable items={mockedItems} config={config} />;
 };
 
 export const SomeExpandableRows = () => {
@@ -307,7 +330,7 @@ export const SomeExpandableRows = () => {
       </Box>
     ),
   });
-  return <StandardTable items={items} config={config} />;
+  return <StandardTable items={mockedItems} config={config} />;
 };
 
 export const WithStickyTableHeader = () => {
@@ -316,7 +339,7 @@ export const WithStickyTableHeader = () => {
   });
   return (
     <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
-      <StandardTable items={items} config={config} />
+      <StandardTable items={mockedItems} config={config} />
     </Box>
   );
 };
@@ -333,10 +356,10 @@ export const MultipleTablesWithStickyTableHeader = () => {
       }}
     >
       <Box flex={1}>
-        <StandardTable items={items} config={config} />
+        <StandardTable items={mockedItems} config={config} />
       </Box>
       <Box flex={1}>
-        <StandardTable items={items} config={config} />
+        <StandardTable items={mockedItems} config={config} />
       </Box>
     </Row>
   );
