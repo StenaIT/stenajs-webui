@@ -42,8 +42,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   return (
     <TableHeadRow
       style={{
-        top: headerOptions?.top ? headerOptions.top : 0,
-        zIndex: headerOptions?.zIndex ? headerOptions.zIndex : 1000,
+        top: headerOptions?.top ?? 0,
+        zIndex: headerOptions?.zIndex ?? 1000,
         width: "100%",
       }}
       className={cx({ [styles.stickyHeader]: headerOptions?.isSticky })}
