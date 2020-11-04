@@ -9,7 +9,7 @@ import {
 } from "@stenajs-webui/grid";
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import { Box, Column, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Column, Row, Spacing, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
   id: string;
@@ -60,6 +60,22 @@ const createItemsMocks = (): Array<ListItem> => [
     ship: "Airplane",
     numPassengers: 821,
     departure: addDays(new Date(), 18),
+  },
+  {
+    id: "128",
+    active: true,
+    name: "Fedex",
+    ship: "RoboBoat",
+    numPassengers: 534,
+    departure: addDays(new Date(), 14),
+  },
+  {
+    id: "129",
+    active: false,
+    name: "Schenker",
+    ship: "MS Britannica",
+    numPassengers: 655,
+    departure: addDays(new Date(), 5),
   },
 ];
 
@@ -292,4 +308,36 @@ export const SomeExpandableRows = () => {
     ),
   });
   return <StandardTable items={items} config={config} />;
+};
+
+export const WithStickyTableHeader = () => {
+  const config = createConfig(undefined, undefined, {
+    stickyHeader: true,
+  });
+  return (
+    <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
+      <StandardTable items={items} config={config} />
+    </Box>
+  );
+};
+
+export const MultipleTablesWithStickyTableHeader = () => {
+  const config = createConfig(undefined, undefined, {
+    stickyHeader: true,
+  });
+  return (
+    <Row
+      style={{
+        maxHeight: "220px",
+        overflowY: "scroll",
+      }}
+    >
+      <Box flex={1}>
+        <StandardTable items={items} config={config} />
+      </Box>
+      <Box flex={1}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Row>
+  );
 };

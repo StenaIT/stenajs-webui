@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1
+
+### `StandardTable`
+
+Added option for having a sticky header row as option in `StandardTable`
+
 ## 2.2.0
 
 ### New components

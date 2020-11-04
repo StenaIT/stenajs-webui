@@ -10,6 +10,8 @@ import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse"
 import { FlatButton } from "@stenajs-webui/elements";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import styles from "./StandardTableHeadRow.module.css";
+import cx from "classnames";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -24,6 +26,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     enableExpandCollapse,
     columnOrder,
     rowIndent,
+    stickyHeader,
   } = useStandardTableConfig();
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
@@ -37,7 +40,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   const checkboxDisabled = !items || items.length === 0;
 
   return (
-    <TableHeadRow>
+    <TableHeadRow className={cx({ [styles.stickyHeader]: stickyHeader })}>
       {rowIndent && <Indent num={rowIndent} />}
       {enableExpandCollapse && (
         <Row

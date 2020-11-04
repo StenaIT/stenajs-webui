@@ -130,6 +130,11 @@ export interface StandardTableConfig<
    * Add indent to the row itself.
    */
   rowIndent?: boolean | number;
+
+  /**
+   * Determine if header row should be sticky on top
+   */
+  stickyHeader?: boolean;
 }
 
 export type StandardTableColumnConfig<
