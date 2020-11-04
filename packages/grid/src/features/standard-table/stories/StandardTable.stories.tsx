@@ -8,7 +8,7 @@ import {
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Box, Column, Row, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Column, Spacing, StandardText } from "@stenajs-webui/core";
 
 interface ListItem {
   id: string;
