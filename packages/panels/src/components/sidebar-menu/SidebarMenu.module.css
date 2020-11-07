@@ -14,7 +14,7 @@
   position: relative;
 
   .sidebarMenu {
-    color: var(--swui-white);
+    color: var(--swui-sidebarmenu-text-color);
     background-color: var(--swui-sidebarmenu-background-color);
 
     .collapsibleTitle {
@@ -28,12 +28,16 @@
       --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0 0;
       --swui-collapsible-header-content-margin: 0;
 
-      color: var(--swui-white);
+      color: var(--swui-sidebarmenu-text-color);
       background-color: var(--swui-sidebarmenu-background-color);
       button {
         border-bottom: 0;
       }
       svg {
+        color: var(--swui-sidebarmenu-text-color);
+      }
+
+      span {
         color: var(--swui-sidebarmenu-text-color);
       }
 

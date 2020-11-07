@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Collapsible } from "@stenajs-webui/panels";
+import { Collapsible } from "../collapsible/Collapsible";
 import { Box } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./SidebarMenu.module.css";

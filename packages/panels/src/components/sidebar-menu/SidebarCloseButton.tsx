@@ -9,7 +9,7 @@ import {
   Row,
   SmallText,
 } from "@stenajs-webui/core";
-import { CollapsibleSimpleContentProps } from "@stenajs-webui/panels";
+import { CollapsibleSimpleContentProps } from "../collapsible/CollapsibleContent";
 
 export interface SidebarCloseButtonProps
   extends CollapsibleSimpleContentProps,
