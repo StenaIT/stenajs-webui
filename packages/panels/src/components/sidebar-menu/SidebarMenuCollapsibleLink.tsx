@@ -1,6 +1,5 @@
 import { CollapsibleSimpleContentProps } from "../..";
 import {
-  Box,
   ButtonElementProps,
   Clickable,
   StandardText,
@@ -33,9 +32,7 @@ export const SidebarMenuCollapsibleLink: React.FC<SidebarMenuClickableContentPro
       onClick={onClick}
       {...props}
     >
-      <Box spacing={1} flex={1} flexDirection={"row"}>
-        <StandardText>{children}</StandardText>
-      </Box>
+      <StandardText>{children}</StandardText>
     </Clickable>
   );
 };

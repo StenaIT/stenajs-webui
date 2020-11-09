@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
 import { Collapsible } from "../collapsible/Collapsible";
-import { Box, Column, Indent, Row, Space } from "@stenajs-webui/core";
+import { Box, Indent } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./SidebarMenu.module.css";
+import cx from "classnames";
 import { Icon } from "@stenajs-webui/elements";
 
 export interface SidebarMenuCollapsibleProps {
@@ -27,22 +28,18 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   ) : (
     <Indent num={1} />
   );
+  const parentHasIconClass: string = styles.parentHasIcon;
   return (
     <Collapsible
       label={label}
-      className={styles.collapsibleTitle}
+      className={cx(styles.collapsibleTitle, {
+        [parentHasIconClass]: iconLeft,
+      })}
       collapsed={collapsed}
       onClick={() => setCollapsed(!collapsed)}
       contentLeft={wrappedIcon}
     >
-      {iconLeft ? (
-        <Row>
-          <Space num={9} horizontal />
-          <Column>{children}</Column>
-        </Row>
-      ) : (
-        <Indent num={4}>{children}</Indent>
-      )}
+      {children}
     </Collapsible>
   );
 };
