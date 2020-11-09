@@ -21,5 +21,6 @@ export * from "./components/sidebar-menu/SidebarMenu";
 export * from "./components/sidebar-menu/SidebarMenuContainer";
 export * from "./components/sidebar-menu/SidebarMenuHeading";
 export * from "./components/sidebar-menu/SidebarMenuLink";
+export * from "./components/sidebar-menu/SidebarMenuCollapsibleLink";
 export * from "./components/sidebar-menu/SidebarMenuCollapsible";
 export * from "./components/sidebar-menu/SidebarCloseButton";

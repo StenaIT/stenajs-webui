@@ -20,7 +20,7 @@ export const SidebarMenuContainer: React.FC<SidebarMenuContainerProps> = ({
             icon={faTimes}
             color={"var(--swui-sidebarmenu-text-color)"}
             size={15}
-            data-hover={true}
+            data-hover
           />
         </Link>
       </Box>

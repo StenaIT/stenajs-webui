@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@stenajs-webui/elements";
 import {
   ButtonElementProps,
@@ -15,10 +15,12 @@ export interface SidebarCloseButtonProps
   extends CollapsibleSimpleContentProps,
     ButtonElementProps {
   label?: string;
+  leftIcon?: IconDefinition;
 }
 
 export const SidebarCloseButton: React.FC<SidebarCloseButtonProps> = ({
-  label,
+  label = "Close menu",
+  leftIcon,
   onClick,
   children,
   ...props
@@ -36,15 +38,19 @@ export const SidebarCloseButton: React.FC<SidebarCloseButtonProps> = ({
         justifyContent={"center"}
         spacing={2}
       >
-        <Icon
-          icon={faTimes}
-          color={"var(--swui-white)"}
-          size={10}
-          data-hover={true}
-        />
-        <Indent />
-        <SmallText color={"var(--swui-white)"}>
-          {label ?? "Close menu"}
+        {leftIcon && (
+          <>
+            <Icon
+              icon={leftIcon}
+              color={"var(--swui-sidebarmenu-text-color)"}
+              size={10}
+              data-hover={true}
+            />
+            <Indent />
+          </>
+        )}
+        <SmallText color={"var(--swui-sidebarmenu-text-color)"}>
+          {label}
         </SmallText>
       </Row>
     </Clickable>
