@@ -8,23 +8,6 @@ export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
 }
 
-export interface RowHeaderOptions {
-  /**
-   * Enable sticky behaviour for header row
-   */
-  isSticky?: boolean;
-
-  /**
-   * Set a custom z index
-   */
-  zIndex?: number;
-
-  /**
-   * Offset header row from top (top css property)
-   */
-  top?: number | string;
-}
-
 export interface StandardTableConfig<
   TItem,
   TColumnKeys extends string | number | symbol = keyof TItem
@@ -149,12 +132,19 @@ export interface StandardTableConfig<
   rowIndent?: boolean | number;
 
   /**
-   * Configure table header row with custom options
-   * @property isSticky - make header sticky on top
-   * @property zIndex - set a custom z-index, defaults to 1000
-   * @property top - set a top offset
+   * Enable sticky behaviour for header row
    */
-  headerOptions?: RowHeaderOptions;
+  headerRowSticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  headerRowZ?: number;
+
+  /**
+   * Offset header row from top (top css property)
+   */
+  headerRowOffsetTop?: string;
 }
 
 export type StandardTableColumnConfig<
@@ -253,6 +243,27 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
     | "isEditable"
     | "onChange"
   >;
+
+  /**
+   * Enable sticky behaviour to the left
+   * make elements scroll in behind this column
+   */
+  sticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  zIndex?: number;
+
+  /**
+   * Offset column from left (ex if we have multiple sticky columns)
+   */
+  offsetLeft?: string;
+
+  /**
+   * show a shadow on right side of component
+   */
+  shadowBorder?: boolean;
 }
 
 interface ItemValueResolver<TItem, TItemValue> {

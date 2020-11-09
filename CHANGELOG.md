@@ -5,6 +5,7 @@
 ### `StandardTable`
 
 Added option for having a sticky header row as option in `StandardTable`
+Added option for sticky first column in `StandardTable`
 
 ## 2.2.0
 

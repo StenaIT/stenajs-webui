@@ -69,7 +69,7 @@ const createItemsMocks = (): Array<ListItem> => [
     departure: addDays(new Date(), 14),
   },
   {
-    id: "129",
+    id: "A really long id, or could be a very long title",
     active: false,
     name: "Schenker",
     ship: "MS Britannica",
@@ -90,23 +90,32 @@ const standardTableConfigForStories: StandardTableConfig<ListItem> = {
   showRowCheckbox: true,
   enableGridCell: true,
   columns: {
-    id: createColumnConfig((item) => item.id),
+    id: createColumnConfig((item) => item.id, {
+      width: "100px",
+    }),
     active: createColumnConfig((item) => item.active, {
       itemLabelFormatter: (value) => (value ? "Y" : ""),
       infoIconTooltipText: "Active means out on the sea.",
+      width: "150px",
     }),
-    name: createColumnConfig((item) => item.name),
-    ship: createColumnConfig((item) => item.ship),
+    name: createColumnConfig((item) => item.name, {
+      width: "200px",
+    }),
+    ship: createColumnConfig((item) => item.ship, {
+      width: "150px",
+    }),
     numPassengers: createColumnConfig((item) => item.numPassengers, {
       renderCell: createStandardEditableTextCell(),
       isEditable: true,
       onChange: () => {},
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
+      width: "200px",
     }),
     departure: createColumnConfig((item) => item.departure, {
       itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),
       borderLeft: true,
+      width: "100px",
     }),
   },
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
@@ -422,9 +431,7 @@ export const WithStickyTableHeader = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
-    headerOptions: {
-      isSticky: true,
-    },
+    headerRowSticky: true,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -446,11 +453,9 @@ export const WithStickyTableHeaderConfiguration = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
-    headerOptions: {
-      isSticky: true,
-      top: 16,
-      zIndex: 499,
-    },
+    headerRowSticky: true,
+    headerRowOffsetTop: 16,
+    headerRowZ: 499,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -477,6 +482,42 @@ export const WithStickyTableHeaderConfiguration = () => {
         </StandardText>
       </Box>
       <StandardTable items={items} config={config} />
+    </Box>
+  );
+};
+
+export const WithStickyFirstColumn = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: false,
+    showRowCheckbox: false,
+    headerRowSticky: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+        background: "white",
+        sticky: true,
+        offsetLeft: "0",
+        shadowBorder: true,
+        zIndex: 444,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
     </Box>
   );
 };
