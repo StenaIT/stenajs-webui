@@ -18,7 +18,7 @@ interface Props {
   children: ReactNode;
   sticky?: boolean;
   zIndex?: number;
-  offsetLeft?: number | string;
+  offsetLeft?: string;
   shadowBorder?: boolean;
 }
 
@@ -50,7 +50,7 @@ export const StandardTableCellUi = React.memo<Props>(
         overflow={"hidden"}
         style={{
           position: sticky ? "sticky" : "static",
-          left: offsetLeft ? "0" : "auto",
+          left: offsetLeft ?? (sticky ? "0px" : "auto"),
           zIndex: zIndex,
           boxShadow: shadowBorder
             ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"

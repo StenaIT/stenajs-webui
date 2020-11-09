@@ -501,7 +501,6 @@ export const WithStickyFirstColumn = () => {
         width: "245px",
         background: "white",
         sticky: true,
-        offsetLeft: "0",
         shadowBorder: true,
         zIndex: 444,
       },
