@@ -1,5 +1,29 @@
 # Changelog
 
+
+## 2.2.1
+
+### New components
+
+#### SidebarMenuContainer
+A wrapper for alla `SidebarMenus` to group them vertically
+
+#### SidebarMenuHeading
+A title to the `SidebarMenu`
+
+#### SidebarMenu
+A menu with title and a wrapping links and collapsible menu components
+
+#### SidebarMenuLink
+A link that can be selected and have an icon to the left
+
+#### SidebarMenuCollapsible
+A component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
+
+#### SidebarMenuCollapsibleLink
+A link that can be selected and is contained in a `SidebarMenuCollapsible`
+
+
 ## 2.2.0
 
 ### New components

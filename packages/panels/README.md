@@ -12,3 +12,4 @@ They are composed by components from the other packages.
 - LoadingPanel
 - NavBar
 - Notifications
+- Sidebar menu
