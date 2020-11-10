@@ -135,7 +135,7 @@
     },
     {
       "path": "./packages/panels/dist/*.js",
-      "maxSize": "7 kB"
+      "maxSize": "9 kB"
     },
     {
       "path": "./packages/redux/dist/*.js",
