@@ -32,7 +32,7 @@ export const ResultListBanner: React.FC<ResultListBannerProps> = ({
                 text={item.text}
                 linkText={item.linkText}
                 onClickLink={item.onClickLink}
-                key={`ResultListBannerRow:${index}`}
+                key={index}
               />
             ))}
           </ResultList>
