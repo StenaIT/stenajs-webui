@@ -1,17 +1,17 @@
 # Changelog
 
-## 2.2.1
+## 2.3.0
 
 ### New components
 
-#### SidebarMenu
+#### `SidebarMenu`
 
-A menu with a title and a wrapping links and collapsible menu components
+A menu with a title, links and collapsible menu components
 
-- `SidebarMenuHeading` - a title to the `SidebarMenu`
-- `SidebarMenuLink` - a link that can be selected and have an icon to the left
-- `SidebarMenuCollapsible` - a component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
-- `SidebarMenuCollapsibleLink` - a link that can be selected and is contained in a `SidebarMenuCollapsible`
+- `SidebarMenuHeading` - a title.
+- `SidebarMenuLink` - a link that can be selected and have an icon to the left.
+- `SidebarMenuCollapsible` - a component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`.
+- `SidebarMenuCollapsibleLink` - a link that can be selected and is contained in a `SidebarMenuCollapsible`.
 
 See stories for examples.
 
@@ -19,17 +19,17 @@ See stories for examples.
 
 #### `StandardTable`
 
-- Added option for having a sticky header row as option in `StandardTable`
-- Added option for sticky first column in `StandardTable`
+- Added option for having a sticky header row as option in `StandardTable`.
+- Added option for sticky first column in `StandardTable`.
 
 ### Design fixes
 
-- Checkboxes inside text input fields no longer show a checkmark
-- flex-shrink: 0 has been added to checkboxes to retain their size
+- Checkboxes inside text input fields no longer show a checkmark.
+- flex-shrink: 0 has been added to checkboxes to retain their size.
 
 ### Breaking changes
 
-- --current-icon-color has been renamed to --current-checkbox-icon-color
+- --current-icon-color has been renamed to --current-checkbox-icon-color.
 
 ## 2.2.0
 
