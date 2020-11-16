@@ -1,12 +1,22 @@
 # Changelog
 
+## Upcoming
+
+### Design fixes
+
+- Checkboxes inside text input fields no longer show a checkmark
+- flex-shrink: 0 has been added to checkboxes to retain their size
+
+### Breaking changes
+
+- --current-icon-color has been renamed to --current-checkbox-icon-color
 
 ## 2.2.1
 
 ### New components
 
 #### SidebarMenuContainer
-A wrapper for alla `SidebarMenus` to group them vertically
+A wrapper for all `SidebarMenus` to group them vertically
 
 #### SidebarMenuHeading
 A title to the `SidebarMenu`
