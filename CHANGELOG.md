@@ -22,6 +22,15 @@ See stories for examples.
 - Added option for having a sticky header row as option in `StandardTable`
 - Added option for sticky first column in `StandardTable`
 
+### Design fixes
+
+- Checkboxes inside text input fields no longer show a checkmark
+- flex-shrink: 0 has been added to checkboxes to retain their size
+
+### Breaking changes
+
+- --current-icon-color has been renamed to --current-checkbox-icon-color
+
 ## 2.2.0
 
 ### New components
