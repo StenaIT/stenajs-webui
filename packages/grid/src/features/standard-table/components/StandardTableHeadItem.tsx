@@ -20,6 +20,11 @@ export const StandardTableHeadItem = React.memo(
       columnLabel,
       borderLeft,
       infoIconTooltipText,
+      background,
+      sticky,
+      zIndex,
+      shadowBorder,
+      offsetLeft,
     } = useColumnFromConfig(columnId);
     const { disableSorting } = useStandardTableConfig();
 
@@ -36,11 +41,20 @@ export const StandardTableHeadItem = React.memo(
         onClick={!disableSorting ? onClickColumnHead : undefined}
         width={width}
         minWidth={minWidth ?? width}
+        background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         flex={width ? undefined : flex}
         justifyContent={justifyContentHeader}
         label={label}
         infoIconTooltipText={infoIconTooltipText}
+        style={{
+          position: sticky ? "sticky" : "static",
+          left: offsetLeft ?? (sticky ? "0px" : "auto"),
+          zIndex: zIndex,
+          boxShadow: shadowBorder
+            ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"
+            : "",
+        }}
       />
     );
   }
