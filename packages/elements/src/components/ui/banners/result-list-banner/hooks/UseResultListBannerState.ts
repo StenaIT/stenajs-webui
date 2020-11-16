@@ -2,9 +2,17 @@ import { useCallback, useState } from "react";
 import { ResultItem } from "../../../result-list/ResultListRow";
 import { ResultListBannerState } from "../ResultListBanner";
 
+export interface UseResultListBannerStateResult {
+  bannerState: ResultListBannerState | undefined;
+  setBannerState: (bannerState: ResultListBannerState | undefined) => void;
+  setBannerResultWithTexts: (listTexts: Array<string>) => void;
+  setBannerResultWithErrors: (errors: Array<Error>) => void;
+  clearBannerResult: () => void;
+}
+
 export const useResultListBannerState = (
-  initialState: ResultListBannerState | undefined
-) => {
+  initialState?: ResultListBannerState | undefined
+): UseResultListBannerStateResult => {
   const [bannerState, setBannerState] = useState(initialState);
 
   const setBannerResultWithTexts = useCallback(
@@ -36,19 +44,3 @@ export const useResultListBannerState = (
     clearBannerResult,
   };
 };
-
-export type ResultListBannerStateSetter = ReturnType<
-  typeof useResultListBannerState
->["setBannerState"];
-
-export type ResultListBannerStateSetterWithTexts = ReturnType<
-  typeof useResultListBannerState
->["setBannerResultWithTexts"];
-
-export type ResultListBannerStateSetterWithErrors = ReturnType<
-  typeof useResultListBannerState
->["setBannerResultWithErrors"];
-
-export type ResultListBannerStateClearer = ReturnType<
-  typeof useResultListBannerState
->["clearBannerResult"];

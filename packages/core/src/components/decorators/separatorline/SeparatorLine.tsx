@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { ColorProperty } from "csstype";
 import * as React from "react";
-import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
-import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
+import { cssColor } from "../../../styling/util/CssColor";
 
 export interface SeparatorLineProps {
-  color?: ThemeColorField | ColorProperty;
+  color?: ColorProperty;
   vertical?: boolean;
   size?: string;
   width?: string;
@@ -20,9 +19,9 @@ interface SeparatorLineComponentProps {
 
 const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
   display: flex;
-  background-color: ${(props) => props.color};
   border: 0;
   margin: 0;
+  background-color: ${(props) => props.color};
   height: ${(props) =>
     props.vertical ? props.size || "100%" : props.width || "1px"};
   width: ${(props) =>
@@ -30,14 +29,8 @@ const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
 `;
 
 export const SeparatorLine: React.FC<SeparatorLineProps> = ({
-  color,
+  color = cssColor("--lhds-color-ui-300"),
   ...props
 }) => {
-  const themeProps = useThemeSelector(
-    (theme) => ({
-      color: color ? theme.colors[color] || color : theme.colors.separator,
-    }),
-    [color]
-  );
-  return <SeparatorLineComponent {...props} {...themeProps} />;
+  return <SeparatorLineComponent color={color} {...props} />;
 };

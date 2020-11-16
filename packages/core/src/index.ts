@@ -55,3 +55,7 @@ export * from "./hooks/UseMouseIsEntered";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";
+
+export * from "./styling/types/LhdsColor";
+export * from "./styling/types/ThemeColor";
+export * from "./styling/util/CssColor";
