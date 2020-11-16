@@ -8,16 +8,19 @@
 
 A menu with a title and a wrapping links and collapsible menu components
 
-- `SidebarMenuContainer`, a wrapper for alla `SidebarMenus` to group them vertically
-- `SidebarMenuHeading`, a title to the `SidebarMenu`
-- `SidebarMenuLink`, a link that can be selected and have an icon to the left
-- `SidebarMenuCollapsible`, a component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
-- `SidebarMenuCollapsibleLink`, a link that can be selected and is contained in a `SidebarMenuCollapsible`
+- `SidebarMenuHeading` - a title to the `SidebarMenu`
+- `SidebarMenuLink` - a link that can be selected and have an icon to the left
+- `SidebarMenuCollapsible` - a component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
+- `SidebarMenuCollapsibleLink` - a link that can be selected and is contained in a `SidebarMenuCollapsible`
 
-### `StandardTable`
+See stories for examples.
 
-Added option for having a sticky header row as option in `StandardTable`
-Added option for sticky first column in `StandardTable`
+### New features
+
+#### `StandardTable`
+
+- Added option for having a sticky header row as option in `StandardTable`
+- Added option for sticky first column in `StandardTable`
 
 ## 2.2.0
 

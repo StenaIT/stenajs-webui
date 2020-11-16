@@ -19,25 +19,29 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   iconLeft,
 }) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
-  const wrappedIcon = iconLeft ? (
-    <Box width={56} alignItems={"center"} justifyContent={"center"}>
-      <div className={styles.contentLeft}>
-        <Icon icon={iconLeft} size={24} data-hover={true} />
-      </div>
-    </Box>
-  ) : (
-    <Indent num={1} />
-  );
-  const parentHasIconClass: string = styles.parentHasIcon;
+
   return (
     <Collapsible
       label={label}
       className={cx(styles.collapsibleTitle, {
-        [parentHasIconClass]: iconLeft,
+        [styles.parentHasIcon]: iconLeft,
       })}
       collapsed={collapsed}
       onClick={() => setCollapsed(!collapsed)}
-      contentLeft={wrappedIcon}
+      contentLeft={
+        iconLeft ? (
+          <Box width={"56px"} alignItems={"center"} justifyContent={"center"}>
+            <Icon
+              icon={iconLeft}
+              size={18}
+              color={"--swui-sidebar-menu-text-color"}
+              data-hover={true}
+            />
+          </Box>
+        ) : (
+          <Indent num={1} />
+        )
+      }
     >
       {children}
     </Collapsible>
