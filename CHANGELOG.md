@@ -1,28 +1,26 @@
 # Changelog
 
-
 ## 2.2.1
 
 ### New components
 
-#### SidebarMenuContainer
-A wrapper for alla `SidebarMenus` to group them vertically
-
-#### SidebarMenuHeading
-A title to the `SidebarMenu`
-
 #### SidebarMenu
-A menu with title and a wrapping links and collapsible menu components
 
-#### SidebarMenuLink
-A link that can be selected and have an icon to the left
+A menu with a title and a wrapping links and collapsible menu components
 
-#### SidebarMenuCollapsible
-A component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
+- `SidebarMenuHeading` - a title to the `SidebarMenu`
+- `SidebarMenuLink` - a link that can be selected and have an icon to the left
+- `SidebarMenuCollapsible` - a component that expands and contracts sub menu items `SidebarMenuCollapsibleLink`
+- `SidebarMenuCollapsibleLink` - a link that can be selected and is contained in a `SidebarMenuCollapsible`
 
-#### SidebarMenuCollapsibleLink
-A link that can be selected and is contained in a `SidebarMenuCollapsible`
+See stories for examples.
 
+### New features
+
+#### `StandardTable`
+
+- Added option for having a sticky header row as option in `StandardTable`
+- Added option for sticky first column in `StandardTable`
 
 ## 2.2.0
 

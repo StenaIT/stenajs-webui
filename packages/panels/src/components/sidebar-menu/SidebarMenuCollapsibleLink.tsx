@@ -11,6 +11,7 @@ import styles from "./SidebarMenu.module.css";
 interface SidebarMenuClickableContentProps
   extends CollapsibleSimpleContentProps,
     ButtonElementProps {
+  label?: string;
   selected?: boolean;
 }
 
@@ -19,6 +20,7 @@ export const SidebarMenuCollapsibleLink: React.FC<SidebarMenuClickableContentPro
   onClick,
   children,
   selected,
+  label,
   ...props
 }) => {
   const selectedClass: string = styles.selectedMenuItem;
@@ -32,7 +34,7 @@ export const SidebarMenuCollapsibleLink: React.FC<SidebarMenuClickableContentPro
       onClick={onClick}
       {...props}
     >
-      <StandardText>{children}</StandardText>
+      <StandardText>{label}</StandardText>
     </Clickable>
   );
 };

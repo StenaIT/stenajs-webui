@@ -47,6 +47,10 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     isEditable,
     onChange,
     disableGridCell,
+    sticky,
+    zIndex,
+    offsetLeft,
+    shadowBorder,
   } = useColumnFromConfig(columnId);
 
   const itemValue = useMemo(() => {
@@ -111,6 +115,10 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       borderLeft={borderLeft}
       flex={flex}
       background={currentBackground}
+      sticky={sticky}
+      zIndex={zIndex}
+      offsetLeft={offsetLeft}
+      shadowBorder={shadowBorder}
     >
       {content}
     </StandardTableCellUi>

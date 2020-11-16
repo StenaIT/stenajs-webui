@@ -1,4 +1,4 @@
-import { Box, DivProps } from "@stenajs-webui/core";
+import { Box, DivProps, SmallText } from "@stenajs-webui/core";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
 import {
@@ -8,15 +8,20 @@ import {
 
 interface CollapsibleGroupHeadingProps
   extends CollapsibleSimpleContentProps,
-    DivProps {}
+    DivProps {
+  label?: string;
+}
 
 export const SidebarMenuHeading: React.FC<CollapsibleGroupHeadingProps> = ({
   className,
+  label,
   ...props
 }) => {
   return (
     <Box spacing={2} indent={2}>
-      <CollapsibleContent className={styles.heading} {...props} />
+      <CollapsibleContent className={styles.heading} {...props}>
+        <SmallText>{label}</SmallText>
+      </CollapsibleContent>
     </Box>
   );
 };
