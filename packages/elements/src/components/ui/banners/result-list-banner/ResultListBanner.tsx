@@ -27,11 +27,12 @@ export const ResultListBanner: React.FC<ResultListBannerProps> = ({
       {bannerState.items && (
         <>
           <ResultList>
-            {bannerState.items.map((item) => (
+            {bannerState.items.map((item, index) => (
               <ResultListRow
                 text={item.text}
                 linkText={item.linkText}
                 onClickLink={item.onClickLink}
+                key={index}
               />
             ))}
           </ResultList>
