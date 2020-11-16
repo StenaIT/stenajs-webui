@@ -130,6 +130,21 @@ export interface StandardTableConfig<
    * Add indent to the row itself.
    */
   rowIndent?: boolean | number;
+
+  /**
+   * Enable sticky behaviour for header row
+   */
+  headerRowSticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  headerRowZ?: number;
+
+  /**
+   * Offset header row from top (top css property)
+   */
+  headerRowOffsetTop?: string;
 }
 
 export type StandardTableColumnConfig<
@@ -228,6 +243,27 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
     | "isEditable"
     | "onChange"
   >;
+
+  /**
+   * Enable sticky behaviour to the left
+   * make elements scroll in behind this column
+   */
+  sticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  zIndex?: number;
+
+  /**
+   * Offset column from left (ex if we have multiple sticky columns)
+   */
+  offsetLeft?: string;
+
+  /**
+   * show a shadow on right side of component
+   */
+  shadowBorder?: boolean;
 }
 
 interface ItemValueResolver<TItem, TItemValue> {

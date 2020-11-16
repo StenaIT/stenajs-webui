@@ -1,9 +1,10 @@
 import { CollapsibleSimpleContentProps } from "../..";
 import {
   Box,
-  ButtonElementProps,
   Clickable,
+  ClickableProps,
   Indent,
+  Row,
   StandardText,
 } from "@stenajs-webui/core";
 import cx from "classnames";
@@ -14,42 +15,42 @@ import { Icon } from "@stenajs-webui/elements";
 
 interface SidebarMenuClickableContentProps
   extends CollapsibleSimpleContentProps,
-    ButtonElementProps {
+    ClickableProps {
   selected?: boolean;
+  label?: string;
   iconLeft?: IconDefinition;
 }
 
 export const SidebarMenuLink: React.FC<SidebarMenuClickableContentProps> = ({
   iconLeft,
   className,
-  onClick,
   children,
   selected,
-  ...props
+  label,
+  ...clickableProps
 }) => {
-  const selectedClass: string = styles.selectedMenuItem;
   return (
     <Clickable
-      disableFocusHighlight
-      disableOpacityOnClick
       className={cx(styles.contentLink, className, {
-        [selectedClass]: selected,
+        [styles.selectedMenuItem]: selected,
       })}
-      onClick={onClick}
-      {...props}
+      {...clickableProps}
     >
-      <Box spacing={1} flex={1} flexDirection={"row"}>
+      <Row spacing={1} flex={1} alignItems={"center"}>
         {iconLeft ? (
-          <Box width={56} alignItems={"center"} justifyContent={"center"}>
-            <div className={styles.contentLeft}>
-              <Icon icon={iconLeft} size={24} data-hover={true} />
-            </div>
+          <Box width={"56px"} alignItems={"center"} justifyContent={"center"}>
+            <Icon
+              icon={iconLeft}
+              size={18}
+              data-hover={true}
+              color={"var(--swui-sidebar-menu-icon-color)"}
+            />
           </Box>
         ) : (
           <Indent num={1} />
         )}
-        <StandardText>{children}</StandardText>
-      </Box>
+        <StandardText>{label}</StandardText>
+      </Row>
     </Clickable>
   );
 };
