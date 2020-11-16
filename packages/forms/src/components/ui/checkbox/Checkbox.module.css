@@ -74,7 +74,7 @@
       top var(--swui-checkbox-animation-time);
     border: 2px solid
       var(
-        --checkbox-current-icon-color,
+        --current-checkbox-icon-color,
         var(--swui-checkbox-unchecked-icon-color)
       );
     border-top: 0;
@@ -90,7 +90,7 @@
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 
     &:after {
-      --checkbox-current-icon-color: var(--swui-checkbox-icon-color);
+      --current-checkbox-icon-color: var(--swui-checkbox-icon-color);
     }
   }
 
@@ -100,7 +100,7 @@
       --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --checkbox-current-icon-color: --swui-checkbox-unchecked-icon-color;
+        --current-checkbox-icon-color: --swui-checkbox-unchecked-icon-color;
       }
     }
   }
@@ -111,7 +111,7 @@
       --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --checkbox-current-icon-color: var(--swui-checkbox-disabled-icon-color);
+        --current-checkbox-icon-color: var(--swui-checkbox-disabled-icon-color);
       }
 
       & + label {
@@ -126,7 +126,7 @@
     --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 
     &:after {
-      --checkbox-current-icon-color: var(--swui-checkbox-icon-color);
+      --current-checkbox-icon-color: var(--swui-checkbox-icon-color);
       border-right: 0;
       transform: rotate(0deg);
       width: 6px;
@@ -148,7 +148,7 @@
 
     &:disabled {
       &:after {
-        --checkbox-current-icon-color: var(--swui-checkbox-disabled-icon-color);
+        --current-checkbox-icon-color: var(--swui-checkbox-disabled-icon-color);
       }
     }
   }
