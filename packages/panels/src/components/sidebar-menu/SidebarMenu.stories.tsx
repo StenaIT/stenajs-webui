@@ -1,9 +1,8 @@
-import { Box, Column } from "@stenajs-webui/core";
+import { Box, Column, SeparatorLine } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   SidebarMenu,
   SidebarMenuCollapsible,
-  SidebarMenuCollapsibleLink,
   SidebarMenuHeading,
   SidebarMenuLink,
 } from "@stenajs-webui/panels";
@@ -14,69 +13,83 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@stenajs-webui/elements";
+import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export default {
   title: "panels/SidebarMenu",
 };
 
 export const Overview = () => {
+  const onClick = () => alert("Click");
+
   return (
-    <Column
-      width={300}
-      height={800}
-      justifyContent={"space-between"}
-      background={"var(--lhds-color-blue-900)"}
-    >
+    <Column width={"250px"}>
       <SidebarMenu onCloseClick={() => alert("Close menu")}>
-        <SidebarMenuHeading label={"Freight Pricing Portal"} />
+        <SidebarMenuHeading label={"Product name"} />
         <SidebarMenuLink
-          selected
           onClick={() => alert("Clicked Customers")}
-          iconLeft={faUserFriends}
-          label={"Customers"}
+          leftIcon={faUserFriends}
+          label={"Level 1.1"}
         />
-        <SidebarMenuCollapsible label={"Statistics"} iconLeft={faChartBar}>
-          <SidebarMenuCollapsibleLink label={"Total"} />
-          <SidebarMenuCollapsibleLink label={"Sales region"} />
-          <SidebarMenuCollapsibleLink label={"Routes"} selected />
-          <SidebarMenuCollapsibleLink label={"Sellers"} />
+        <SidebarMenuLink
+          onClick={() => alert("Clicked Customers")}
+          label={"No icon"}
+        />
+        <SidebarMenuLink
+          onClick={() => alert("Clicked Customers")}
+          loading
+          label={"Spinner"}
+        />
+        <SidebarMenuLink
+          onClick={() => alert("Clicked Customers")}
+          selected
+          label={"Selected"}
+        />
+        <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
+          <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
+          <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
+          <SidebarMenuLink
+            indent
+            label={"Level 2.3"}
+            onClick={onClick}
+            selected
+          />
+          <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
         </SidebarMenuCollapsible>
+
+        <SidebarMenuSeparator />
 
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
-          iconLeft={faBook}
-          label={"Quick guide"}
+          leftIcon={faBook}
+          label={"User manual"}
           onClick={() => alert("Click on quick guide")}
         />
         <SidebarMenuLink
-          iconLeft={faPaperPlane}
-          label={"Contact Team WebUI"}
+          leftIcon={faPaperPlane}
+          label={"Contact"}
           onClick={() => alert("Click on contact")}
         />
-      </SidebarMenu>
 
-      <Box>
-        <Box spacing={8}>
-          <Icon
-            icon={faPaperPlane}
-            color={"var(--swui-white)"}
-            size={50}
-            data-hover={true}
-          />
+        <Box>
+          <Box spacing={8}>
+            <Icon
+              icon={faPaperPlane}
+              color={"var(--swui-white)"}
+              size={50}
+              data-hover={true}
+            />
+          </Box>
         </Box>
-      </Box>
+      </SidebarMenu>
     </Column>
   );
 };
 
 export const WithoutIcons = () => {
+  const onClick = () => alert("Click");
   return (
-    <Column
-      width={300}
-      height={800}
-      justifyContent={"space-between"}
-      background={"var(--lhds-color-blue-900)"}
-    >
+    <Column width={300} height={800} justifyContent={"space-between"}>
       <SidebarMenu onCloseClick={() => alert("Close menu")}>
         <SidebarMenuHeading label={"Freight Pricing Portal"} />
         <SidebarMenuLink
@@ -85,11 +98,13 @@ export const WithoutIcons = () => {
           label={"Customers"}
         />
         <SidebarMenuCollapsible label={"Statistics"}>
-          <SidebarMenuCollapsibleLink label={"Total"} />
-          <SidebarMenuCollapsibleLink label={"Sales region"} />
-          <SidebarMenuCollapsibleLink selected label={"Routes"} />
-          <SidebarMenuCollapsibleLink label={"Sellers"} />
+          <SidebarMenuLink indent label={"Total"} onClick={onClick} />
+          <SidebarMenuLink indent label={"Sales region"} onClick={onClick} />
+          <SidebarMenuLink indent label={"Routes"} onClick={onClick} selected />
+          <SidebarMenuLink indent label={"Sellers"} onClick={onClick} />
         </SidebarMenuCollapsible>
+
+        <SidebarMenuSeparator />
 
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
@@ -100,13 +115,12 @@ export const WithoutIcons = () => {
           label={"Contact Team WebUI"}
           onClick={() => alert("Click on contact")}
         />
-      </SidebarMenu>
-
-      <Box>
-        <Box spacing={8}>
-          <Icon color={"var(--swui-white)"} size={50} data-hover={true} />
+        <Box>
+          <Box spacing={8}>
+            <Icon color={"var(--swui-white)"} size={50} data-hover={true} />
+          </Box>
         </Box>
-      </Box>
+      </SidebarMenu>
     </Column>
   );
 };

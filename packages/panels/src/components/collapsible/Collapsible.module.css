@@ -4,6 +4,7 @@
   /*
    * Header
    */
+  --swui-collapsible-header-text-color: var(--lhds-color-ui-900);
   --swui-collapsible-header-background-color: var(--swui-white);
   --swui-collapsible-header-background-color-hover: var(--lhds-color-blue-50);
   --swui-collapsible-header-background-color-active: var(--lhds-color-blue-100);
