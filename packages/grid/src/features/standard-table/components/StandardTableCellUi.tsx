@@ -51,11 +51,7 @@ export const StandardTableCellUi = React.memo<Props>(
         position={sticky ? "sticky" : "static"}
         left={offsetLeft ?? (sticky ? "0px" : "auto")}
         zIndex={zIndex}
-        style={{
-          boxShadow: shadowBorder
-            ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"
-            : "",
-        }}
+        shadow={shadowBorder && "box"}
       >
         <Row
           className={styles.standardTableCell}
