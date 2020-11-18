@@ -139,7 +139,7 @@ export interface StandardTableConfig<
   /**
    * Set a custom z index
    */
-  headerRowZ?: number;
+  headerRowZIndex?: number;
 
   /**
    * Offset header row from top (top css property)

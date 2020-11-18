@@ -35,9 +35,9 @@ export const StandardTableCellUi = React.memo<Props>(
     width,
     minWidth,
     sticky,
-    zIndex,
     offsetLeft,
     shadowBorder,
+    zIndex,
   }) {
     return (
       <Row
@@ -48,10 +48,10 @@ export const StandardTableCellUi = React.memo<Props>(
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         overflow={"hidden"}
+        position={sticky ? "sticky" : "static"}
+        left={offsetLeft ?? (sticky ? "0px" : "auto")}
+        zIndex={zIndex}
         style={{
-          position: sticky ? "sticky" : "static",
-          left: offsetLeft ?? (sticky ? "0px" : "auto"),
-          zIndex: zIndex ?? "auto",
           boxShadow: shadowBorder
             ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"
             : "",

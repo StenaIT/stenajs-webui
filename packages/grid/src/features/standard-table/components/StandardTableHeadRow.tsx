@@ -27,7 +27,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     columnOrder,
     rowIndent,
     headerRowOffsetTop,
-    headerRowZ,
+    headerRowZIndex,
     headerRowSticky,
   } = useStandardTableConfig();
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
@@ -45,7 +45,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     <TableHeadRow
       style={{
         top: headerRowOffsetTop ?? 0,
-        zIndex: headerRowZ ?? "auto",
+        zIndex: headerRowZIndex ?? "auto",
       }}
       className={cx({ [styles.stickyHeader]: headerRowSticky })}
     >

@@ -432,6 +432,7 @@ export const WithStickyTableHeader = () => {
 
   const config: StandardTableConfig<ListItem> = {
     headerRowSticky: true,
+    headerRowZIndex: 500,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -455,7 +456,7 @@ export const WithStickyTableHeaderConfiguration = () => {
   const config: StandardTableConfig<ListItem> = {
     headerRowSticky: true,
     headerRowOffsetTop: 16,
-    headerRowZ: 499,
+    headerRowZIndex: 499,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
