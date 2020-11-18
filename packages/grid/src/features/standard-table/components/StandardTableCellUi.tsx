@@ -48,10 +48,10 @@ export const StandardTableCellUi = React.memo<Props>(
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         overflow={"hidden"}
-        position={sticky ? "sticky" : "static"}
+        position={sticky ? "sticky" : undefined}
         left={offsetLeft ?? (sticky ? "0px" : "auto")}
         zIndex={zIndex}
-        shadow={shadowBorder ? "box" : ""}
+        shadow={shadowBorder ? "box" : undefined}
       >
         <Row
           className={styles.standardTableCell}
