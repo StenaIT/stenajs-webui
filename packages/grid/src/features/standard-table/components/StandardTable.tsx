@@ -1,4 +1,4 @@
-import { useDomId } from "@stenajs-webui/core";
+import { Box, useDomId } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
@@ -92,15 +92,17 @@ export const StandardTable = function StandardTable<
   }, [actions, dispatch]);
 
   return (
-    <StandardTableTableIdContext.Provider value={tableId ?? generatedTableId}>
-      <StandardTableStateContext.Provider value={state}>
-        <StandardTableActionsContext.Provider value={actionsContext}>
-          <StandardTableConfigContext.Provider value={config}>
-            <StandardTableHeadRow items={props.items} />
-            <StandardTableContent {...props} />
-          </StandardTableConfigContext.Provider>
-        </StandardTableActionsContext.Provider>
-      </StandardTableStateContext.Provider>
-    </StandardTableTableIdContext.Provider>
+    <Box>
+      <StandardTableTableIdContext.Provider value={tableId ?? generatedTableId}>
+        <StandardTableStateContext.Provider value={state}>
+          <StandardTableActionsContext.Provider value={actionsContext}>
+            <StandardTableConfigContext.Provider value={config}>
+              <StandardTableHeadRow items={props.items} />
+              <StandardTableContent {...props} />
+            </StandardTableConfigContext.Provider>
+          </StandardTableActionsContext.Provider>
+        </StandardTableStateContext.Provider>
+      </StandardTableTableIdContext.Provider>
+    </Box>
   );
 };
