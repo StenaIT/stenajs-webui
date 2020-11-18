@@ -1,11 +1,10 @@
-import { Box, SmallerText } from "@stenajs-webui/core";
+import { Box, SmallerText, TextProps } from "@stenajs-webui/core";
 import * as React from "react";
 import styles from "./SidebarMenuHeading.module.css";
 import {
   CollapsibleContent,
   CollapsibleSimpleContentProps,
 } from "../collapsible/CollapsibleContent";
-import { TextProps } from "../../../../core/src/components/text/TextBase";
 
 interface CollapsibleGroupHeadingProps
   extends Pick<CollapsibleSimpleContentProps, "contentLeft" | "contentRight">,

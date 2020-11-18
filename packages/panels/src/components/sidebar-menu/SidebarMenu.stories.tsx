@@ -1,10 +1,11 @@
-import { Box, Column, SeparatorLine } from "@stenajs-webui/core";
+import { Box, Column } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   SidebarMenu,
   SidebarMenuCollapsible,
   SidebarMenuHeading,
   SidebarMenuLink,
+  SidebarMenuSeparator,
 } from "@stenajs-webui/panels";
 import {
   faBook,
@@ -13,7 +14,6 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@stenajs-webui/elements";
-import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export default {
   title: "panels/SidebarMenu",
