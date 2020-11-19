@@ -8,13 +8,12 @@
 
 - `SidebarMenuLink` now supports `leftIcon`, `rightIcon`, etc, same as buttons.
 - `SidebarMenuLink` now has `indent` prop and can be used in `SidebarMenuCollapsible`.
-#### `StandardTable`
+- `StandardTable` configuration now has default `z-index` set to undefined instead of 1000.
 
-- Changed name from `headerRowZ` to `headerRowZIndex` option in `StandardTable`.
-- Fix default values for when not setting a `z-index` in configuration (default changed from 1000 to undefined/auto)
 ### Breaking changes
 
 - Removed `SidebarMenuCollapsibleLink`, just use `SidebarMenuLink` with `indent` prop.
+- `StandardTable` option `headerRowZ` to renamed to `headerRowZIndex`.
 
 ## 2.3.0
 
@@ -128,8 +127,8 @@ Increased contrast in `Select` light theme hover states.
 
 ### Bug fixes
 
-`DateTextInput` popover content is now wrapped with a popupRef.
-This fixes a bug where `useMultiOnClickOutside` would cause the popover to close before being able trigger a change.
+`DateTextInput` popover content is now wrapped with a popupRef. This fixes a bug where `useMultiOnClickOutside` would
+cause the popover to close before being able trigger a change.
 
 `PrimaryButton` is no longer larger than intended on some Windows browsers.
 
