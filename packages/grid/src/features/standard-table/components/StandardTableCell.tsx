@@ -49,7 +49,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     disableGridCell,
     sticky,
     zIndex,
-    offsetLeft,
+    left,
     shadowBorder,
   } = useColumnFromConfig(columnId);
 
@@ -117,7 +117,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       background={currentBackground}
       sticky={sticky}
       zIndex={zIndex}
-      offsetLeft={offsetLeft}
+      left={left}
       shadowBorder={shadowBorder}
     >
       {content}

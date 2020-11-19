@@ -18,7 +18,7 @@ interface Props {
   children: ReactNode;
   sticky?: boolean;
   zIndex?: number;
-  offsetLeft?: string;
+  left?: string;
   shadowBorder?: boolean;
 }
 
@@ -35,9 +35,9 @@ export const StandardTableCellUi = React.memo<Props>(
     width,
     minWidth,
     sticky,
-    zIndex,
-    offsetLeft,
+    left,
     shadowBorder,
+    zIndex,
   }) {
     return (
       <Row
@@ -48,14 +48,10 @@ export const StandardTableCellUi = React.memo<Props>(
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         overflow={"hidden"}
-        style={{
-          position: sticky ? "sticky" : "static",
-          left: offsetLeft ?? (sticky ? "0px" : "auto"),
-          zIndex: zIndex,
-          boxShadow: shadowBorder
-            ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"
-            : "",
-        }}
+        position={sticky ? "sticky" : undefined}
+        left={sticky && left == null ? "0px" : left}
+        zIndex={zIndex}
+        shadow={shadowBorder ? "box" : undefined}
       >
         <Row
           className={styles.standardTableCell}

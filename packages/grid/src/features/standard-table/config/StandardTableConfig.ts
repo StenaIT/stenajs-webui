@@ -139,7 +139,7 @@ export interface StandardTableConfig<
   /**
    * Set a custom z index
    */
-  headerRowZ?: number;
+  headerRowZIndex?: number;
 
   /**
    * Offset header row from top (top css property)
@@ -258,7 +258,7 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   /**
    * Offset column from left (ex if we have multiple sticky columns)
    */
-  offsetLeft?: string;
+  left?: string;
 
   /**
    * show a shadow on right side of component

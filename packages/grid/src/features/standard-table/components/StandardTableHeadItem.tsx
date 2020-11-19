@@ -24,7 +24,7 @@ export const StandardTableHeadItem = React.memo(
       sticky,
       zIndex,
       shadowBorder,
-      offsetLeft,
+      left,
     } = useColumnFromConfig(columnId);
     const { disableSorting } = useStandardTableConfig();
 
@@ -47,14 +47,10 @@ export const StandardTableHeadItem = React.memo(
         justifyContent={justifyContentHeader}
         label={label}
         infoIconTooltipText={infoIconTooltipText}
-        style={{
-          position: sticky ? "sticky" : "static",
-          left: offsetLeft ?? (sticky ? "0px" : "auto"),
-          zIndex: zIndex,
-          boxShadow: shadowBorder
-            ? "2px 0px 2px 0px rgba(12, 25, 37, 0.08)"
-            : "",
-        }}
+        position={sticky ? "sticky" : undefined}
+        left={sticky && left == null ? "0px" : left}
+        zIndex={zIndex}
+        shadow={shadowBorder ? "box" : undefined}
       />
     );
   }
