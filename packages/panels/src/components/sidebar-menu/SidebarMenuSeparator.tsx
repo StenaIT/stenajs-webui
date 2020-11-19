@@ -5,7 +5,7 @@ import {
   Spacing,
 } from "@stenajs-webui/core";
 
-interface SidebarMenuSeparatorProps extends SeparatorLineProps {}
+export interface SidebarMenuSeparatorProps extends SeparatorLineProps {}
 
 export const SidebarMenuSeparator: React.FC<SidebarMenuSeparatorProps> = (
   separatorLineProps

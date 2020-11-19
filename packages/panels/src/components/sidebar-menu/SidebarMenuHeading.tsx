@@ -6,13 +6,13 @@ import {
   CollapsibleSimpleContentProps,
 } from "../collapsible/CollapsibleContent";
 
-interface CollapsibleGroupHeadingProps
+export interface SidebarMenuHeadingProps
   extends Pick<CollapsibleSimpleContentProps, "contentLeft" | "contentRight">,
     TextProps {
   label?: string;
 }
 
-export const SidebarMenuHeading: React.FC<CollapsibleGroupHeadingProps> = ({
+export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
   className,
   label,
   contentLeft,
