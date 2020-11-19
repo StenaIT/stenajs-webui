@@ -91,7 +91,9 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
         <div className={styles.label}>
-          <StandardText>{label}</StandardText>
+          <StandardText color={"var(--swui-collapsible-header-text-color)"}>
+            {label}
+          </StandardText>
         </div>
         {contentRight && (
           <div className={styles.contentRight}>{contentRight}</div>

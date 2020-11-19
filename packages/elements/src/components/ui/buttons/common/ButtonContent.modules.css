@@ -8,7 +8,13 @@
   height: var(--current-icon-height);
 }
 
-.iconLeft:not(:last-child) {
+.leftWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftWrapper:not(:last-child) {
   margin-right: var(--swui-metrics-indent);
 }
 

@@ -1,0 +1,20 @@
+.label {
+  font-size: var(--current-text-size, var(--swui-button-text-size));
+  line-height: var(--current-line-height, var(--swui-button-line-height));
+  font-weight: var(--swui-button-font-weight);
+  font-family: var(--swui-font-buttons);
+  color: var(--swui-sidebar-menu-text-color);
+}
+
+.icon {
+  color: var(--swui-sidebar-menu-text-color);
+}
+
+.spinner {
+  color: var(--swui-sidebar-menu-text-color);
+}
+
+.leftWrapper.leftWrapper.leftWrapper.leftWrapper {
+  width: 56px;
+  margin-right: 0;
+}

@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.3.1
+
+### Improvements
+
+#### `SidebarMenu`
+
+- `SidebarMenuLink` now supports `leftIcon`, `rightIcon`, etc, same as buttons.
+- `SidebarMenuLink` now has `indent` prop and can be used in `SidebarMenuCollapsible`.
+#### `StandardTable`
+
+- Changed name from `headerRowZ` to `headerRowZIndex` option in `StandardTable`.
+- Fix default values for when not setting a `z-index` in configuration (default changed from 1000 to undefined/auto)
+### Breaking changes
+
+- Removed `SidebarMenuCollapsibleLink`, just use `SidebarMenuLink` with `indent` prop.
+
 ## 2.3.0
 
 ### New components

@@ -36,7 +36,7 @@ export interface TextProps
 export interface TextThemeProps {
   fontSize?: ThemeFontSizeField | string;
   fontFamily?: ThemeFontField | string;
-  fontWeight?: ThemeFontWeightField | FontWeightProperty;
+  fontWeight?: ThemeFontWeightField | FontWeightProperty | string;
 }
 
 export type TextBaseProps = TextBasePropsBase &
