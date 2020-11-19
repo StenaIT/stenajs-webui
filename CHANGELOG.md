@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.3.1
+
+### Improvements
+
+#### `SidebarMenu`
+
+- `SidebarMenuLink` now supports `leftIcon`, `rightIcon`, etc, same as buttons.
+- `SidebarMenuLink` now has `indent` prop and can be used in `SidebarMenuCollapsible`.
+
+### Breaking changes
+
+- Removed `SidebarMenuCollapsibleLink`, just use `SidebarMenuLink` with `indent` prop.
+
 ## 2.3.0
 
 ### New components

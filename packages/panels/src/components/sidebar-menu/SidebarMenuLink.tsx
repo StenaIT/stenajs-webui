@@ -1,55 +1,64 @@
-import { CollapsibleSimpleContentProps } from "../..";
-import {
-  Box,
-  Clickable,
-  ClickableProps,
-  Indent,
-  Row,
-  StandardText,
-} from "@stenajs-webui/core";
-import cx from "classnames";
+import { Clickable, ClickableProps, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
-import styles from "./SidebarMenu.module.css";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Icon } from "@stenajs-webui/elements";
+import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
+import contentStyles from "./SidebarMenuContent.module.css";
 
 interface SidebarMenuClickableContentProps
-  extends CollapsibleSimpleContentProps,
-    ClickableProps {
+  extends ClickableProps,
+    Pick<
+      ButtonContentProps,
+      | "label"
+      | "loading"
+      | "left"
+      | "leftIcon"
+      | "right"
+      | "rightIcon"
+      | "success"
+    > {
   selected?: boolean;
-  label?: string;
-  iconLeft?: IconDefinition;
+  indent?: boolean;
 }
 
+const selectedBorder = "4px solid var(--swui-sidebar-menu-item-selected)";
+
 export const SidebarMenuLink: React.FC<SidebarMenuClickableContentProps> = ({
-  iconLeft,
   className,
   children,
   selected,
+  indent,
   label,
+  loading,
+  left,
+  leftIcon,
+  right,
+  rightIcon,
+  success,
   ...clickableProps
 }) => {
+  const hasContentLeft = left || leftIcon || loading || success;
   return (
     <Clickable
-      className={cx(styles.contentLink, className, {
-        [styles.selectedMenuItem]: selected,
-      })}
+      background={"var(--swui-sidebar-menu-background-color)"}
+      hoverBackground={"var(--swui-sidebar-menu-background-color-hover)"}
+      style={{ borderRight: selected ? selectedBorder : undefined }}
       {...clickableProps}
     >
-      <Row spacing={1} flex={1} alignItems={"center"}>
-        {iconLeft ? (
-          <Box width={"56px"} alignItems={"center"} justifyContent={"center"}>
-            <Icon
-              icon={iconLeft}
-              size={18}
-              data-hover={true}
-              color={"var(--swui-sidebar-menu-icon-color)"}
-            />
-          </Box>
-        ) : (
-          <Indent num={1} />
-        )}
-        <StandardText>{label}</StandardText>
+      <Row spacing={1} flex={1} alignItems={"center"} height={"40px"}>
+        {!hasContentLeft && <Indent />}
+        {indent && <Indent num={3.5} />}
+        <ButtonContent
+          label={label}
+          loading={loading}
+          left={left}
+          leftIcon={leftIcon}
+          right={right}
+          rightIcon={rightIcon}
+          success={success}
+          labelClassName={contentStyles.label}
+          spinnerClassName={contentStyles.spinner}
+          iconClassName={contentStyles.icon}
+          leftWrapperClassName={contentStyles.leftWrapper}
+        />
       </Row>
     </Clickable>
   );

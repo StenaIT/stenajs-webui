@@ -2,10 +2,10 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import styles from "./ButtonContent.modules.css";
 import cx from "classnames";
 import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import styles from "./ButtonContent.modules.css";
 
 export interface ButtonContentProps {
   label?: string;
@@ -15,6 +15,10 @@ export interface ButtonContentProps {
   right?: ReactNode;
   rightIcon?: IconDefinition;
   success?: boolean;
+  iconClassName?: string;
+  labelClassName?: string;
+  spinnerClassName?: string;
+  leftWrapperClassName?: string;
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -25,27 +29,50 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   right,
   rightIcon,
   label,
+  iconClassName,
+  labelClassName,
+  spinnerClassName,
+  leftWrapperClassName,
 }) => {
   return (
     <>
-      {success ? (
-        <FontAwesomeIcon icon={faCheck} className={styles.iconLeft} />
-      ) : loading ? (
-        <div className={cx(styles.iconLeft, styles.spinnerLeft)}>
-          <InputSpinner />
+      {(success || loading || leftIcon || left) && (
+        <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
+          {success ? (
+            <FontAwesomeIcon
+              icon={faCheck}
+              className={cx(styles.iconLeft, iconClassName)}
+            />
+          ) : loading ? (
+            <div
+              className={cx(
+                styles.iconLeft,
+                styles.spinnerLeft,
+                spinnerClassName
+              )}
+            >
+              <InputSpinner />
+            </div>
+          ) : left ? (
+            left
+          ) : leftIcon ? (
+            <FontAwesomeIcon
+              icon={leftIcon}
+              className={cx(styles.iconLeft, iconClassName)}
+            />
+          ) : null}
         </div>
-      ) : left ? (
-        left
-      ) : leftIcon ? (
-        <FontAwesomeIcon icon={leftIcon} className={styles.iconLeft} />
-      ) : null}
+      )}
 
-      {label && <span>{label}</span>}
+      {label && <span className={labelClassName}>{label}</span>}
 
       {right ? (
         right
       ) : rightIcon ? (
-        <FontAwesomeIcon icon={rightIcon} className={styles.iconRight} />
+        <FontAwesomeIcon
+          icon={rightIcon}
+          className={cx(styles.iconRight, iconClassName, iconClassName)}
+        />
       ) : null}
     </>
   );
