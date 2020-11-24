@@ -1,3 +1,5 @@
+import "@stenajs-webui/theme";
+
 export * from "./theme/hooks/UseTheme";
 export * from "./theme/hooks/UseThemeSelector";
 export * from "./theme/theme-types/ThemeColors";
@@ -22,16 +24,14 @@ export * from "./components/layout/spacing/Spacing";
 export * from "./components/layout/space/Space";
 export * from "./components/util/Nest";
 
-export * from "./components/new-text/Text";
-export * from "./components/text/TextTheme";
-export { TextProps } from "./components/text/TextBase";
+export * from "./components/text/Text";
 
-export * from "./components/text/variants/TinyText";
-export * from "./components/text/variants/SmallText";
-export * from "./components/text/variants/SmallerText";
-export * from "./components/text/variants/StandardText";
-export * from "./components/text/variants/LargeText";
-export * from "./components/text/variants/HeaderText";
+export * from "./components/deprecated-text/SmallText";
+export * from "./components/deprecated-text/SmallerText";
+export * from "./components/deprecated-text/StandardText";
+export * from "./components/deprecated-text/LargeText";
+export * from "./components/deprecated-text/HeaderText";
+export * from "./components/heading/Heading";
 
 export * from "./theme/ThemeContext";
 export * from "./theme/ThemeProvider";
@@ -56,7 +56,3 @@ export * from "./hooks/UseMouseIsEntered";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";
-
-export * from "./styling/types/LhdsColor";
-export * from "./styling/types/ThemeColor";
-export * from "./styling/util/CssColor";

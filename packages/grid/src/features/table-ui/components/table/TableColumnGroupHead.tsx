@@ -1,4 +1,4 @@
-import { Box, StandardText } from "@stenajs-webui/core";
+import { Box, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { TableHeadItem } from "./TableHeadItem";
 import { tableHeadRowHeight } from "../../../../config/TableConfig";
@@ -19,7 +19,7 @@ export const TableColumnGroupHead: React.FC<Props> = ({
   return (
     <TableHeadItem width={width} flex={flex} height={tableHeadRowHeight}>
       <Box indent={indent} spacing>
-        <StandardText fontWeight={"bold"}>{label}</StandardText>
+        <Text variant={"bold"}>{label}</Text>
       </Box>
     </TableHeadItem>
   );

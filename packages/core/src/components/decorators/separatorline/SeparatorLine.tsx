@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ColorProperty } from "csstype";
 import * as React from "react";
-import { cssColor } from "../../../styling/util/CssColor";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface SeparatorLineProps {
   color?: ColorProperty;

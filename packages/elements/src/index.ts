@@ -1,6 +1,3 @@
-import "./default-colors.css";
-import "./default-theme.css";
-
 export * from "./icons/Icons";
 
 export * from "./components/ui/banners/banner/Banner";

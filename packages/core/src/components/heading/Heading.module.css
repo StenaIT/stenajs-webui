@@ -1,0 +1,40 @@
+.heading {
+  font-size: var(--swui-heading-font-size);
+  color: var(--lhds-color-ui-800);
+  letter-spacing: 0;
+  line-height: var(--swui-heading-line-height);
+  font-family: var(--swui-font-primary);
+  font-weight: var(--swui-font-weight-text);
+
+  h1& {
+    --swui-heading-font-size: 28px;
+    --swui-heading-line-height: 32px;
+  }
+
+  h2& {
+    --swui-heading-font-size: 24px;
+    --swui-heading-line-height: 28px;
+  }
+
+  h3& {
+    --swui-heading-font-size: 20px;
+    --swui-heading-line-height: 24px;
+  }
+
+  h4& {
+    --swui-heading-font-size: 16px;
+    --swui-heading-line-height: 20px;
+  }
+
+  h5& {
+    --swui-heading-font-size: 14px;
+    --swui-heading-line-height: 18px;
+    font-weight: var(--swui-font-weight-text-bold);
+  }
+
+  h6& {
+    --swui-heading-font-size: 12px;
+    --swui-heading-line-height: 16px;
+    font-weight: var(--swui-font-weight-text-bold);
+  }
+}

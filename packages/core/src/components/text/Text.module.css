@@ -1,0 +1,70 @@
+.text {
+  /* Theme vars */
+  --swui-text-letter-spacing: -0.34px;
+  --swui-text-color: var(--swui-text-primary-color);
+  --swui-text-font-family: var(--swui-font-primary);
+  --swui-text-font-weight: var(--swui-font-weight-text);
+
+  /* Current */
+  --current-color: var(--swui-text-primary-color);
+  --current-font-size: var(--swui-font-size-medium);
+  --current-line-height: var(--swui-line-height-medium);
+  --current-font-weight: var(--swui-text-font-weight);
+  --current-letter-spacing: var(--swui-text-letter-spacing);
+
+  /* Styling */
+  font-size: var(--current-font-size);
+  line-height: var(--current-line-height);
+  color: var(--current-color);
+  letter-spacing: var(--current-letter-spacing);
+  font-family: var(--swui-text-font-family);
+  font-weight: var(--current-font-weight);
+
+  &.standard {
+  }
+
+  &.bold {
+    --current-font-weight: var(--swui-font-weight-text-bold);
+  }
+
+  &.caption {
+    --current-font-size: var(--swui-font-size-small);
+    --current-line-height: var(--swui-line-height-small);
+    --current-color: var(--lhds-color-ui-700);
+    --current-letter-spacing: 0;
+    font-style: italic;
+  }
+
+  &.overline {
+    --current-font-size: var(--swui-font-size-smaller);
+    --current-line-height: var(--swui-line-height-smaller);
+    --current-color: var(--lhds-color-ui-600);
+    --current-font-weight: 600;
+    --current-letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &.large {
+    --current-font-size: var(--swui-font-size-large);
+    --current-line-height: var(--swui-line-height-large);
+    --current-letter-spacing: 0;
+  }
+
+  &.normal {
+    --current-font-size: var(--swui-font-size-medium);
+    --current-line-height: var(--swui-line-height-medium);
+  }
+
+  &.small {
+    --current-font-size: var(--swui-font-size-small);
+    --current-line-height: var(--swui-line-height-small);
+    --current-letter-spacing: 0;
+  }
+
+  &.smaller {
+    --current-font-size: var(--swui-font-size-smaller);
+    --current-line-height: var(--swui-line-height-smaller);
+    --current-letter-spacing: 0;
+  }
+
+}

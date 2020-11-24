@@ -1,4 +1,4 @@
-import { Box, SmallerText, TextProps } from "@stenajs-webui/core";
+import { Box, Text, TextProps } from "@stenajs-webui/core";
 import * as React from "react";
 import styles from "./SidebarMenuHeading.module.css";
 import {
@@ -26,13 +26,13 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
         contentLeft={contentLeft}
         contentRight={contentRight}
       >
-        <SmallerText
+        <Text
+          variant={"overline"}
           color={"var(--swui-sidebar-menu-heading-text-color)"}
-          fontWeight={"var(--swui-sidebar-menu-heading-font-weight)"}
           {...textProps}
         >
           {label}
-        </SmallerText>
+        </Text>
       </CollapsibleContent>
     </Box>
   );

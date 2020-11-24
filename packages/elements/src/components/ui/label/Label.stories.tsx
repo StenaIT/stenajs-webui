@@ -27,6 +27,18 @@ export const WithTextInput = () => (
   </Column>
 );
 
+export const Row = () => (
+  <Column width={"300px"}>
+    <Label text={"First name"} row>
+      <TextInput />
+    </Label>
+    <Spacing />
+    <Label text={"Last name"} row>
+      <TextInput />
+    </Label>
+  </Column>
+);
+
 export const WithExtraInfo = () => (
   <Column width={"400px"}>
     <Label text={"First name"} optional>

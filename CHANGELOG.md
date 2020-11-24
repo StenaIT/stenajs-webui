@@ -1,5 +1,30 @@
 # Changelog
 
+## 3.0.0
+
+### New components
+
+- `Text`
+- `Heading`
+
+### Deprecations
+
+The following components are still available, but are deprecated and will be removed in a future release.
+
+- `HeaderText`
+- `LargeText`
+- `StandardText`
+- `SmallText`
+- `SmallerText`
+
+`HeaderText` now uses `Heading`. The rest uses `Text`.
+
+### Breaking changes
+
+- `HeaderText` no longer supports `hoverUnderline`, `hoverColor`, `textDecoration` and `fontWeight`.
+- Text components no longer supports `hoverColor`, `textDecoration`, `hoverUnderline`, `fontWeight`.
+- `TinyText` has been removed. Use `Text` with variant `smaller` instead.
+
 ## 2.3.1
 
 ### Improvements

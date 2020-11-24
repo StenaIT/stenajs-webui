@@ -1,4 +1,4 @@
-import { Row, Space, StandardText, ThemeColorField } from "@stenajs-webui/core";
+import { Row, Space, Text, ThemeColorField } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
@@ -25,11 +25,7 @@ export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = (props) => {
         <Row alignItems={"center"}>
           <Checkbox {...propsToCheckbox} disabled={disabled} />
           <Space />
-          {label && (
-            <StandardText userSelect={"none"} lineHeight={"100%"}>
-              {label}
-            </StandardText>
-          )}
+          {label && <Text userSelect={"none"}>{label}</Text>}
           {children}
         </Row>
       </label>
