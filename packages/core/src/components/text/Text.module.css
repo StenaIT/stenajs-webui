@@ -1,12 +1,12 @@
 .text {
   /* Theme vars */
-  --swui-text-letter-spacing: -0.34px;
   --swui-text-color: var(--swui-text-primary-color);
   --swui-text-font-family: var(--swui-font-primary);
   --swui-text-font-weight: var(--swui-font-weight-text);
+  --swui-text-letter-spacing: -0.34px;
 
   /* Current */
-  --current-color: var(--swui-text-primary-color);
+  --current-color: var(--swui-text-color);
   --current-font-size: var(--swui-font-size-medium);
   --current-line-height: var(--swui-line-height-medium);
   --current-font-weight: var(--swui-text-font-weight);
