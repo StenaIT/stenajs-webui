@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### Design fixes
+
+- Popover now uses box-shadow from `default-theme.css` instead of tippy.js's default.
+
 ## 2.3.1
 
 ### Improvements
