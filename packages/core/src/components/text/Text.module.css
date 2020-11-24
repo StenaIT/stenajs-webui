@@ -1,6 +1,8 @@
 .text {
   /* Theme vars */
   --swui-text-color: var(--swui-text-primary-color);
+  --swui-text-color-caption: var(--lhds-color-ui-700);
+  --swui-text-color-overline: var(--lhds-color-ui-600);
   --swui-text-font-family: var(--swui-font-primary);
   --swui-text-font-weight: var(--swui-font-weight-text);
   --swui-text-letter-spacing: -0.34px;
@@ -30,7 +32,7 @@
   &.caption {
     --current-font-size: var(--swui-font-size-small);
     --current-line-height: var(--swui-line-height-small);
-    --current-color: var(--lhds-color-ui-700);
+    --current-color: var(--swui-text-color-caption);
     --current-letter-spacing: 0;
     font-style: italic;
   }
@@ -38,8 +40,8 @@
   &.overline {
     --current-font-size: var(--swui-font-size-smaller);
     --current-line-height: var(--swui-line-height-smaller);
-    --current-color: var(--lhds-color-ui-600);
-    --current-font-weight: 600;
+    --current-color: var(--swui-text-color-overline);
+    --current-font-weight: var(--swui-font-weight-text-bold);
     --current-letter-spacing: 1px;
     text-transform: uppercase;
   }
