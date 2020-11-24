@@ -1,11 +1,11 @@
 :root {
   /* Text colors */
   --swui-text-primary-color: var(--lhds-color-ui-700);
-  --swui-text-primary-color-light: #bcbabd;
-  --swui-text-disabled-color: #b6b6b6;
-  --swui-text-disabled-color-light: #dddddd;
-  --swui-text-darkmode-primary-color: #bcbabd;
-  --swui-text-darkmode-disabled-color: #dddddd;
+  --swui-text-primary-color-light: var(--lhds-color-ui-400);
+  --swui-text-disabled-color: var(--lhds-color-ui-500);
+  --swui-text-disabled-color-light: var(--lhds-color-ui-300);
+  --swui-text-darkmode-primary-color: var(--lhds-color-ui-400);
+  --swui-text-darkmode-disabled-color: var(--lhds-color-ui-300);
 
   /* Generic colors */
   --swui-white: #fff;
@@ -16,23 +16,23 @@
   --swui-primary-action-color-focus: var(--lhds-color-blue-700);
   --swui-primary-action-color-hover-light: var(--lhds-color-blue-100);
   --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
-  --swui-separator-color: #b1b1b1;
+  --swui-separator-color: var(--lhds-color-ui-300);
   --swui-handle-bg-enabled-color: var(--swui-white);
-  --swui-handle-bg-disabled-color: #bebbc0;
-  --swui-modal-border-color: #bebbc0;
+  --swui-handle-bg-disabled-color: var(--lhds-color-ui-400);
+  --swui-modal-border-color: var(--lhds-color-ui-400);
   --swui-overlay-bg-color: rgba(0, 0, 0, 0.5);
 
   /* State colors */
-  --swui-state-error-color: #d05353;
-  --swui-state-error-light-color: #fff1f4;
-  --swui-state-alert-color: #ffa400;
-  --swui-state-alert-light-color: #fff8eb;
-  --swui-state-success-color: #60bd2f;
-  --swui-state-success-light-color: #94f78c;
-  --swui-state-modified-color: var(--swui-primary-action-color);
-  --swui-state-modified-light-color: #e2edf7;
-  --swui-state-loading-color: #ced0d7;
-  --swui-state-loading-light-color: #fafafb;
+  --swui-state-error-color: var(--lhds-color-red-300);
+  --swui-state-error-light-color: var(--lhds-color-red-100);
+  --swui-state-alert-color: var(--lhds-color-orange-400);
+  --swui-state-alert-light-color: var(--lhds-color-orange-100);
+  --swui-state-success-color: var(--lhds-color-green-500);
+  --swui-state-success-light-color: var(--lhds-color-green-100);
+  --swui-state-modified-color: var(--lhds-color-blue-500);
+  --swui-state-modified-light-color: var(--lhds-color-blue-200);
+  --swui-state-loading-color: var(--lhds-color-ui-400);
+  --swui-state-loading-light-color: var(--lhds-color-ui-100);
 
   /* Fonts */
   --swui-font-primary: "Open Sans", system-ui;
@@ -67,7 +67,7 @@
   --swui-field-bg-disabled: #e8e4ea;
   --swui-field-border-color: #bbc1e1;
   --swui-field-border-color-hover: #275efe;
-  --swui-field-border-color-disabled: var(--swui-separator-color);
+  --swui-field-border-color-disabled: #b1b1b1;
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
   --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
