@@ -1,0 +1,58 @@
+.text {
+  --swui-text-font-size: 14px;
+  --swui-text-letter-spacing: -0.34px;
+  --swui-text-line-height: 20px;
+  --swui-text-color: var(--swui-text-primary-color);
+  --swui-text-font-family: var(--swui-font-primary);
+  --swui-text-font-weight: var(--swui-font-weight-text);
+
+  /* Styling */
+
+  font-size: var(--swui-text-font-size);
+  color: var(--swui-text-color);
+  letter-spacing: var(--swui-text-letter-spacing);
+  line-height: var(--swui-text-line-height);
+  font-family: var(--swui-text-font-family);
+  font-weight: var(--swui-text-font-weight);
+
+  &.standard {
+
+  }
+
+  &.bold {
+    --swui-text-font-weight: var(--swui-font-weight-text-bold);
+  }
+
+  &.caption {
+    --swui-text-font-size: 12px;
+    --swui-text-color: #4C4F56;
+    --swui-text-letter-spacing: 0;
+    --swui-text-line-height: 18px;
+    font-style: italic;
+  }
+
+  &.overline {
+    --swui-text-font-size: 10px;
+    --swui-text-letter-spacing: 1px;
+    --swui-text-line-height: 16px;
+    --swui-text-font-weight: 600;
+    --swui-text-text-transform: uppercase;
+  }
+
+  &.large {
+    --swui-text-font-size: 16px;
+    --swui-text-letter-spacing: 0;
+    --swui-text-line-height: 20px;
+  }
+
+  &.normal {
+
+  }
+
+  &.small {
+    --swui-text-font-size: 12px;
+    --swui-text-letter-spacing: 0;
+    --swui-text-line-height: 16px;
+  }
+
+}

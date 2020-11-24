@@ -3,7 +3,7 @@ import * as React from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
 import contentStyles from "./SidebarMenuContent.module.css";
 
-interface SidebarMenuClickableContentProps
+interface SidebarMenuLinkProps
   extends ClickableProps,
     Pick<
       ButtonContentProps,
@@ -21,7 +21,7 @@ interface SidebarMenuClickableContentProps
 
 const selectedBorder = "4px solid var(--swui-sidebar-menu-item-selected)";
 
-export const SidebarMenuLink: React.FC<SidebarMenuClickableContentProps> = ({
+export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   className,
   children,
   selected,
