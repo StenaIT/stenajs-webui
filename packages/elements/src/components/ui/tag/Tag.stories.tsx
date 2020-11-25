@@ -8,13 +8,17 @@ export default {
 
 export const Overview = () => (
   <Column>
-    {(["info", "error", "warning", "success", "passive"] as Array<
-      TagVariant
-    >).map((variant) => (
+    {([
+      "info",
+      "error",
+      "warning",
+      "success",
+      "passive",
+    ] as Array<TagVariant>).map((variant) => (
       <>
         <Text size={"large"}>{variant}</Text>
         <Space />
-        {(["normal", "small"] as const).map((size) => (
+        {(["medium", "small"] as const).map((size) => (
           <Row spacing={0.5}>
             <Row alignItems={"center"} width={"65px"}>
               <Text>{size}</Text>

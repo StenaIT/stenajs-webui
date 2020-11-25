@@ -52,7 +52,7 @@
     --current-letter-spacing: 0;
   }
 
-  &.normal {
+  &.medium {
     --current-font-size: var(--swui-font-size-medium);
     --current-line-height: var(--swui-line-height-medium);
   }

@@ -17,12 +17,12 @@ export type TagVariant =
   | "passive"
   | "turquoise";
 
-export type TagSize = "normal" | "small";
+export type TagSize = "medium" | "small";
 
 export const Tag: React.FC<Props> = ({
   className,
   variant = "info",
-  size = "normal",
+  size = "medium",
   label,
 }) => {
   return (

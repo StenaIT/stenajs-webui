@@ -13,8 +13,8 @@ export const Standard = () => (
     <StandardText>size=large</StandardText>
     <Spinner size={"large"} />
     <Space num={4} />
-    <StandardText>size=normal</StandardText>
-    <Spinner size={"normal"} />
+    <StandardText>size=medium</StandardText>
+    <Spinner size={"medium"} />
     <Space num={4} />
     <StandardText>size=small</StandardText>
     <Spinner size={"small"} />

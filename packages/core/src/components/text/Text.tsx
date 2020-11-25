@@ -9,10 +9,11 @@ export interface TextProps extends SpanProps {
   size?: TextSize;
   userSelect?: UserSelectProperty;
   whiteSpace?: WhiteSpaceProperty;
+  color?: string;
 }
 
 export type TextVariants = "standard" | "caption" | "overline" | "bold";
-export type TextSize = "large" | "normal" | "small" | "smaller";
+export type TextSize = "large" | "medium" | "small" | "smaller";
 
 export const Text: React.FC<TextProps> = ({
   children,

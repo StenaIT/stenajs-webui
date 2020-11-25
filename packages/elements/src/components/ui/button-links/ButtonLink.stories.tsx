@@ -18,7 +18,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import * as React from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 
-const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
+const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
 export default {
   title: "elements/ButtonLinks",
