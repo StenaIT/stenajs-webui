@@ -2,24 +2,17 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import cx from "classnames";
 import * as React from "react";
 import { MouseEventHandler } from "react";
-import { FlatButton } from "../buttons/FlatButton";
-import { Link } from "../link/Link";
 import styles from "./Chip.module.css";
+import { Icon } from "../icon/Icon";
 
-export type ChipVariant =
-  | "primary"
-  | "secondary"
-  | "error"
-  | "warning"
-  | "success"
-  | "passive"
-  | "turquoise";
+export type ChipVariant = "primary" | "secondary";
 
 export interface ChipProps {
-  label?: string;
-  variant?: ChipVariant;
   onClick?: () => void;
   onClickRemove?: () => void;
+  label?: string;
+  variant?: ChipVariant;
+  className?: string;
 }
 
 export const Chip: React.FC<ChipProps> = ({
@@ -27,6 +20,7 @@ export const Chip: React.FC<ChipProps> = ({
   onClick,
   label,
   variant = "primary",
+  className,
 }) => {
   const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
     ev.stopPropagation();
@@ -40,24 +34,28 @@ export const Chip: React.FC<ChipProps> = ({
       className={cx(
         styles.chip,
         styles[variant],
-        onClickRemove ? styles.removable : undefined
+        onClickRemove ? styles.removable : undefined,
+        className
       )}
     >
-      <Link
-        disabled={!onClick}
-        onClick={onClickHandler}
-        disableTabIndex={!onClick}
-        className={cx(styles.label, onClick ? styles.clickable : undefined)}
-      >
-        {label}
-      </Link>
+      {onClick ? (
+        <button
+          onClick={onClickHandler}
+          className={cx(styles.chipCell, styles.label)}
+        >
+          {label}
+        </button>
+      ) : (
+        <div className={cx(styles.chipCell, styles.label)}>{label}</div>
+      )}
+
       {onClickRemove && (
-        <FlatButton
-          leftIcon={faTimes}
-          size={"small"}
-          className={styles.close}
+        <button
+          className={cx(styles.chipCell, styles.close)}
           onClick={onClickRemove}
-        />
+        >
+          <Icon icon={faTimes} size={10} />
+        </button>
       )}
     </div>
   );
