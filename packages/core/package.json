@@ -62,6 +62,8 @@
   ],
   "gitHead": "480c5a9513b86e001f435ee47c670a7827dc6400",
   "dependencies": {
-    "@emotion/is-prop-valid": "^0.8.2"
+    "@emotion/is-prop-valid": "^0.8.2",
+    "@stenajs-webui/theme": "2.3.1",
+    "classnames": "^2.2.6"
   }
 }

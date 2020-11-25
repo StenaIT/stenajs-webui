@@ -1,14 +1,7 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  Box,
-  Column,
-  Indent,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Box, Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Icon } from "../../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
@@ -72,13 +65,13 @@ export const Banner: React.FC<BannerProps> = ({
           <Column justifyContent={"center"}>
             {headerText && (
               <>
-                <StandardText fontWeight={"bold"}>{headerText}</StandardText>
+                <Text variant={"bold"}>{headerText}</Text>
               </>
             )}
             {text && (
               <>
                 {headerText && <Space num={2} />}
-                <StandardText>{text}</StandardText>
+                <Text>{text}</Text>
               </>
             )}
           </Column>

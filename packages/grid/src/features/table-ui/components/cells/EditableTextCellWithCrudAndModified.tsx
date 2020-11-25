@@ -1,6 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { Indent, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
 import {
@@ -165,23 +165,20 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
             />
           ) : (
             <>
-              <StandardText
+              <Text
                 color={isEditable ? "var(--primary-action-color)" : undefined}
-                fontWeight={modifiedField?.modified ? "bold" : undefined}
+                variant={modifiedField?.modified ? "bold" : undefined}
               >
                 {value}
-              </StandardText>
+              </Text>
               {modifiedField?.newValue !== undefined && (
                 <>
                   <Indent>
                     <Icon icon={faArrowRight} size={12} />
                   </Indent>
-                  <StandardText
-                    color={"var(--primary-action-color)"}
-                    fontWeight={"bold"}
-                  >
+                  <Text color={"var(--primary-action-color)"} variant={"bold"}>
                     {modifiedField.newValue}
-                  </StandardText>
+                  </Text>
                 </>
               )}
               {crudStatus && hasIndicatorContent(crudStatus) && (

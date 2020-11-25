@@ -1,4 +1,4 @@
-import { Row, Space, StandardText, ThemeColorField } from "@stenajs-webui/core";
+import { Row, Space, Text, ThemeColorField } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
@@ -22,9 +22,7 @@ export const RadioButtonWithLabel: React.FC<RadioButtonWithLabelProps> = ({
         <Row alignItems={"center"}>
           <RadioButton disabled={disabled} {...radioButtonProps} />
           <Space />
-          <StandardText userSelect={"none"} lineHeight={"100%"}>
-            {label}
-          </StandardText>
+          <Text userSelect={"none"}>{label}</Text>
         </Row>
       </label>
     </div>

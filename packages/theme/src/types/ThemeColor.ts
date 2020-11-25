@@ -19,4 +19,6 @@ export type ThemeColor =
   | "--swui-primary-action-color-active"
   | "--swui-primary-action-color-focus"
   | "--swui-primary-action-color-hover"
-  | "--swui-primary-action-color-disabled";
+  | "--swui-primary-action-color-disabled"
+  | "--swui-font-weight-text"
+  | "--swui-font-weight-text-bold";

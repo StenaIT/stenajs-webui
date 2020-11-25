@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { TinyText } from "@stenajs-webui/core";
+import { Text } from "@stenajs-webui/core";
 import {
   ActionDropdown,
   ActionMenuItem,
@@ -49,7 +49,9 @@ export const Standard = () => (
       label={"Custom right"}
       onClick={action("I am very special!")}
     >
-      <TinyText color={"tomato"}>So custom!</TinyText>
+      <Text size={"smaller"} color={"tomato"}>
+        So custom!
+      </Text>
     </ActionMenuItem>
     <ActionMenuSeparator />
     <ActionMenuItem

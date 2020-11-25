@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CenterModal, CenterModalProps } from "../center-modal/CenterModal";
-import { Box, Column, Indent, LargeText, Row } from "@stenajs-webui/core";
+import { Box, Column, Indent, Row, Text } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon, Spinner } from "@stenajs-webui/elements";
 
@@ -31,7 +31,9 @@ export const LoadingModal: React.FC<LoadingModalProps> = ({
             </>
           )}
           {headerText && (
-            <LargeText fontWeight={"bold"}>{headerText}</LargeText>
+            <Text size={"large"} variant={"bold"}>
+              {headerText}
+            </Text>
           )}
         </Row>
         <Box

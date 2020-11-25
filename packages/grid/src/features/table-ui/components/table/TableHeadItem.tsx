@@ -6,7 +6,7 @@ import {
   Box,
   BoxProps,
   Row,
-  SmallText,
+  Text,
   Space,
   useBoolean,
   useMouseIsEntered,
@@ -95,11 +95,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                 <Space />
               </>
             )}
-            {label && (
-              <SmallText fontWeight={"bold"} hoverUnderline={!!onClick}>
-                {label}
-              </SmallText>
-            )}
+            {label && <Text variant={"bold"}>{label}</Text>}
           </Row>
         )}
         {arrow === "up" && (

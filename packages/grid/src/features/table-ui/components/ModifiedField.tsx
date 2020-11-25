@@ -1,5 +1,5 @@
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { Indent, Space, StandardText } from "@stenajs-webui/core";
+import { Indent, Space, Text } from "@stenajs-webui/core";
 import { Icon, stenaArrowRight } from "@stenajs-webui/elements";
 import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import { Tooltip } from "@stenajs-webui/tooltip";
@@ -33,23 +33,20 @@ export const ModifiedField: React.FC<Props> = ({
 
   return (
     <>
-      <StandardText
+      <Text
         color={isEditable ? "var(--swui-primary-action-color)" : undefined}
-        fontWeight={modifiedField?.modified ? "bold" : undefined}
+        variant={modifiedField?.modified ? "bold" : undefined}
       >
         {value}
-      </StandardText>
+      </Text>
       {modifiedField?.newValue !== undefined && (
         <>
           <Indent>
             <Icon icon={stenaArrowRight} size={12} />
           </Indent>
-          <StandardText
-            color={"var(--swui-primary-action-color)"}
-            fontWeight={"bold"}
-          >
+          <Text color={"var(--swui-primary-action-color)"} variant={"bold"}>
             {modifiedField.newValue}
-          </StandardText>
+          </Text>
         </>
       )}
       {hasRightIcon && <Space />}

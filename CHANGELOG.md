@@ -1,10 +1,67 @@
 # Changelog
 
-## Upcoming
+## 3.0.0
 
 ### Design fixes
 
 - Popover now uses box-shadow from `default-theme.css` instead of tippy.js's default.
+
+### New components
+
+#### Text
+
+A new component `Text` with different variants.
+The variation implements all the different typography in LHDS.
+
+Main props are `variant` and `size`.
+
+Variants have predefined styles including color,
+but color can be overridden with prop `color`.
+
+See stories for examples.
+
+#### Heading
+
+Same as `Text`, but for headings.
+
+Variants are `h1` through `h6`.
+
+#### Other components
+
+All components that use old text components have been updated to
+use new components.
+
+#### Stories
+
+All stories have been updated to use new components.
+
+### Deprecations
+
+The following components are still available, but are deprecated and will be removed in a future release.
+
+- `HeaderText`
+- `LargeText`
+- `StandardText`
+- `SmallText`
+- `SmallerText`
+
+`HeaderText` now uses `Heading`. The rest uses `Text`.
+This means that many props are no longer available.
+
+### Breaking changes
+
+#### HeaderText
+
+`HeaderText` no longer supports `hoverUnderline`, `hoverColor`, `textDecoration` and `fontWeight`.
+
+#### Text components
+
+- No longer supports `hoverColor`, `textDecoration`, `hoverUnderline`, `fontWeight`.
+- No longer supports `italic`, use `<Text variant={"caption"}>` instead.
+
+#### TinyText
+
+`TinyText` has been removed. Use `Text` with variant `smaller` instead.
 
 ## 2.3.1
 

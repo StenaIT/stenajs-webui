@@ -1,5 +1,7 @@
 .link {
   --swui-link-font-family: var(--swui-font-primary);
+  --swui-link-font-size: var(--swui-font-size-medium);
+  --swui-link-line-height: var(--swui-line-height-medium);
   --swui-link-text-decoration: underline;
   --swui-link-font-weight: var(--swui-font-weight-link);
   --swui-link-color: var(--swui-primary-action-color);
@@ -25,6 +27,8 @@
   box-sizing: border-box;
   outline: 1px solid var(--current-focus-highlight-color);
   text-decoration: var(--swui-link-text-decoration);
+  font-size: var(--swui-link-font-size);
+  line-height: var(--swui-link-line-height);
 
   &:not(.disabled) {
     cursor: pointer;

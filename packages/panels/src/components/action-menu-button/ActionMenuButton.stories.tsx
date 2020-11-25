@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Box, TinyText } from "@stenajs-webui/core";
+import { Box, Text } from "@stenajs-webui/core";
 import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ActionMenuButton } from "@stenajs-webui/panels";
@@ -41,7 +41,9 @@ export const Standard = () => (
             disabled
           />
           <ActionMenuItem label={"Custom right"} onClick={close}>
-            <TinyText color={"tomato"}>So custom!</TinyText>
+            <Text size={"smaller"} color={"tomato"}>
+              So custom!
+            </Text>
           </ActionMenuItem>
           <ActionMenuSeparator />
           <ActionMenuItem label={"Quit"} rightText={"cmd+q"} onClick={close} />
