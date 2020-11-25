@@ -4,6 +4,7 @@ import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "core/Text/Text",
+  component: Text,
 };
 
 const ipsum =

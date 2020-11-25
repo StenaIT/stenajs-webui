@@ -1,10 +1,8 @@
 import { Box, Column, Space } from "@stenajs-webui/core";
-import { withInfo } from "@storybook/addon-info";
 import * as React from "react";
 
 export default {
   title: "core/Layout/Column",
-  decorators: [withInfo({ propTables: false })],
 };
 
 export const Standard = () => (

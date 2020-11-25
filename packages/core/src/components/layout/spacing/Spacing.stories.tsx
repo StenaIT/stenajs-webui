@@ -1,10 +1,8 @@
 import { Spacing } from "@stenajs-webui/core";
-import { withInfo } from "@storybook/addon-info";
 import * as React from "react";
 
 export default {
   title: "core/Layout/Spacing",
-  decorators: [withInfo({ propTables: false })],
 };
 
 export const Standard = () => (
