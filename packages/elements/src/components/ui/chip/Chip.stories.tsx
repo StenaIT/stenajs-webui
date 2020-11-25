@@ -1,4 +1,4 @@
-import { Column, LargeText, Row, Space } from "@stenajs-webui/core";
+import { Column, Indent, Text, Row, Space } from "@stenajs-webui/core";
 import { Chip, ChipVariant } from "@stenajs-webui/elements";
 import * as React from "react";
 
@@ -6,21 +6,14 @@ export default {
   title: "elements/Chip",
 };
 
-export const Standard = () => (
+export const Overview = () => (
   <Column>
-    {([
-      "primary",
-      "secondary",
-      "error",
-      "warning",
-      "success",
-      "passive",
-      "turquoise",
-    ] as Array<ChipVariant>).map((variant) => (
+    {(["primary", "secondary"] as Array<ChipVariant>).map((variant) => (
       <>
-        <LargeText>{variant}</LargeText>
+        <Text size={"large"}>{variant}</Text>
         <Space />
-        <Row>
+        <Row spacing={0.5}>
+          <Indent />
           <div className={"indent-items"}>
             <Chip variant={variant} label={"Default"} />
             <Chip
@@ -41,6 +34,7 @@ export const Standard = () => (
             />
           </div>
         </Row>
+
         <Space num={3} />
       </>
     ))}

@@ -4,9 +4,13 @@
 
 ### Design fixes
 
-- Popover now uses box-shadow from `default-theme.css` instead of tippy.js's default.
+- Popover now uses box-shadow from `default-theme.css` instead of tippy.js default.
 
 ### New components
+
+#### Tag
+
+Derived from `Chip`, but with border and no interactions.
 
 #### Text
 
@@ -62,6 +66,10 @@ This means that many props are no longer available.
 #### TinyText
 
 `TinyText` has been removed. Use `Text` with variant `smaller` instead.
+
+#### Chip
+
+`Chip` now only has two variants, `primary` and `secondary`.
 
 ## 2.3.1
 

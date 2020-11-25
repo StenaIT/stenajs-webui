@@ -1,250 +1,97 @@
 .chip {
-  --swui-chip-line-height: 16px;
-  --swui-chip-font-size: 12px;
-  --swui-chip-letter-spacing: -0.2px;
+  /* Theme vars */
+  --swui-chip-font-size: var(--swui-font-size-small);
+  --swui-chip-line-height: var(--swui-line-height-small);
+  --swui-chip-font-weight: var(--swui-font-weight-text);
+  --swui-chip-letter-spacing: -0.34px;
   --swui-chip-height: 24px;
   --swui-chip-border-radius: var(--swui-border-radius);
-  --swui-chip-shadow: var(--swui-border-radius);
 
-  /* Border */
+  /* State vars */
   --current-text-color: var(--swui-white);
-  --current-icon-color: var(--swui-primary-action-color);
   --current-bg-color: var(--lhds-color-blue-50);
-  --current-border-color: var(--swui-primary-action-color);
+  --current-bg-color-hover: var(--lhds-color-blue-600);
+  --current-bg-color-focus: var(--lhds-color-blue-700);
+  --current-bg-color-active: var(--lhds-color-blue-800);
 
-  /*
-   * Styling
-   */
+  /* Styling */
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: row;
-  align-items: center;
-  height: var(--swui-chip-height);
-
-  box-shadow: var(--swui-chip-shadow);
   border-radius: var(--swui-chip-border-radius);
-  padding-left: var(--swui-metrics-space);
-  padding-right: calc(var(--swui-metrics-space) / 2);
   background-color: var(--current-bg-color);
-  border: 1px solid var(--current-border-color);
+
+  .chipCell {
+    font-size: var(--swui-chip-font-size);
+    font-weight: var(--swui-chip-font-weight);
+    line-height: var(--swui-chip-line-height);
+    color: var(--current-text-color);
+    height: var(--swui-chip-height);
+    display: flex;
+    align-items: center;
+  }
+
+  .label {
+    padding: 0 var(--swui-metrics-space);
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: var(--current-bg-color-hover);
+    }
+
+    &:focus {
+      background-color: var(--current-bg-color-focus);
+      outline: none;
+    }
+
+    &:active {
+      background-color: var(--current-bg-color-active);
+    }
+
+    &:first-child {
+      border-top-left-radius: var(--swui-chip-border-radius);
+      border-bottom-left-radius: var(--swui-chip-border-radius);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--swui-chip-border-radius);
+      border-bottom-right-radius: var(--swui-chip-border-radius);
+    }
+
+  }
+
+  .clickable {
+
+  }
+
+  .close {
+    padding-left: var(--swui-metrics-space);
+    padding-right: var(--swui-metrics-space);
+
+    svg {
+      color: var(--current-text-color);
+    }
+  }
 
   &.primary {
-    --current-border-color: var(--lhds-color-blue-500);
     --current-bg-color: var(--swui-primary-action-color);
-    --current-icon-color: var(--swui-white);
-
-    .label {
-      --swui-link-color: var(--swui-white);
-      --swui-link-color-hover: var(--swui-white);
-      --swui-link-color-active: var(--swui-white);
-      --swui-link-color-focus: var(--swui-white);
-      --swui-link-color-disabled: var(--swui-white);
-      --swui-link-focus-highlight-color: var(--swui-white);
-    }
-
-    .close {
-      --swui-button-background-color-hover: var(
-        --swui-primary-action-color-hover
-      );
-      --swui-button-background-color-focus: var(
-        --swui-primary-action-color-focus
-      );
-      --swui-button-background-color-active: var(
-        --swui-primary-action-color-active
-      );
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--swui-white);
-      }
-    }
+    --current-text-color: var(--swui-white);
+    --current-bg-color-hover: var(--lhds-color-blue-600);
+    --current-bg-color-focus: var(--lhds-color-blue-700);
+    --current-bg-color-active: var(--lhds-color-blue-800);
   }
 
   &.secondary {
-    --current-border-color: var(--lhds-color-blue-300);
-    --current-bg-color: var(--lhds-color-blue-50);
-    --current-icon-color: var(--lhds-color-blue-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-blue-800);
-      --swui-link-color-active: var(--lhds-color-blue-800);
-      --swui-link-color-hover: var(--lhds-color-blue-800);
-      --swui-link-color-focus: var(--lhds-color-blue-800);
-      --swui-link-color-disabled: var(--lhds-color-blue-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-blue-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-blue-400);
-      --swui-button-background-color-focus: var(--lhds-color-blue-300);
-      --swui-button-background-color-hover: var(--lhds-color-blue-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-blue-800);
-      }
-    }
-  }
-
-  &.error {
-    --current-border-color: var(--lhds-color-red-300);
-    --current-bg-color: var(--lhds-color-red-50);
-    --current-icon-color: var(--lhds-color-red-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-red-800);
-      --swui-link-color-active: var(--lhds-color-red-800);
-      --swui-link-color-hover: var(--lhds-color-red-800);
-      --swui-link-color-focus: var(--lhds-color-red-800);
-      --swui-link-color-disabled: var(--lhds-color-red-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-red-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-red-400);
-      --swui-button-background-color-focus: var(--lhds-color-red-300);
-      --swui-button-background-color-hover: var(--lhds-color-red-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-red-800);
-      }
-    }
-  }
-
-  &.warning {
-    --current-border-color: var(--lhds-color-orange-300);
-    --current-bg-color: var(--lhds-color-orange-50);
-    --current-icon-color: var(--lhds-color-orange-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-orange-800);
-      --swui-link-color-active: var(--lhds-color-orange-800);
-      --swui-link-color-hover: var(--lhds-color-orange-800);
-      --swui-link-color-focus: var(--lhds-color-orange-800);
-      --swui-link-color-disabled: var(--lhds-color-orange-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-orange-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-orange-400);
-      --swui-button-background-color-focus: var(--lhds-color-orange-300);
-      --swui-button-background-color-hover: var(--lhds-color-orange-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-orange-800);
-      }
-    }
-  }
-
-  &.success {
-    --current-border-color: var(--lhds-color-green-300);
-    --current-bg-color: var(--lhds-color-green-50);
-    --current-icon-color: var(--lhds-color-green-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-green-800);
-      --swui-link-color-active: var(--lhds-color-green-800);
-      --swui-link-color-hover: var(--lhds-color-green-800);
-      --swui-link-color-focus: var(--lhds-color-green-800);
-      --swui-link-color-disabled: var(--lhds-color-green-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-green-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-green-400);
-      --swui-button-background-color-focus: var(--lhds-color-green-300);
-      --swui-button-background-color-hover: var(--lhds-color-green-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-green-800);
-      }
-    }
-  }
-
-  &.passive {
-    --current-border-color: var(--lhds-color-ui-300);
-    --current-bg-color: var(--lhds-color-ui-50);
-    --current-icon-color: var(--lhds-color-ui-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-ui-800);
-      --swui-link-color-active: var(--lhds-color-ui-800);
-      --swui-link-color-hover: var(--lhds-color-ui-800);
-      --swui-link-color-focus: var(--lhds-color-ui-800);
-      --swui-link-color-disabled: var(--lhds-color-ui-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-ui-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-ui-400);
-      --swui-button-background-color-focus: var(--lhds-color-ui-300);
-      --swui-button-background-color-hover: var(--lhds-color-ui-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px var(--lhds-color-ui-800);
-      }
-    }
-  }
-
-  &.turquoise {
-    --current-border-color: var(--lhds-color-turquoise-300);
-    --current-bg-color: var(--lhds-color-turquoise-50);
-    --current-icon-color: var(--lhds-color-turquoise-800);
-
-    .label {
-      --swui-link-color: var(--lhds-color-turquoise-800);
-      --swui-link-color-active: var(--lhds-color-turquoise-800);
-      --swui-link-color-hover: var(--lhds-color-turquoise-800);
-      --swui-link-color-focus: var(--lhds-color-turquoise-800);
-      --swui-link-color-disabled: var(--lhds-color-turquoise-800);
-      --swui-link-focus-highlight-color: var(--lhds-color-turquoise-800);
-    }
-
-    .close {
-      --swui-button-background-color-active: var(--lhds-color-turquoise-400);
-      --swui-button-background-color-focus: var(--lhds-color-turquoise-300);
-      --swui-button-background-color-hover: var(--lhds-color-turquoise-200);
-
-      &:focus {
-        --swui-button-box-shadow-focus: 0 0 3px 1px
-          var(--lhds-color-turquoise-800);
-      }
-    }
-  }
-
-  &.removable {
-    padding-right: calc(var(--swui-metrics-space) / 2);
-  }
-
-  /*
-   * Specifying the class twice gives the css rule more specificity which
-   * makes it possible to override properties without having to use !important
-   */
-
-  .label.label {
-    font-size: var(--swui-chip-font-size);
-    letter-spacing: var(--swui-chip-letter-spacing);
-    line-height: var(--swui-chip-line-height);
-    padding-right: calc(var(--swui-metrics-space) / 2);
-    --swui-link-text-decoration: none;
-    --swui-link-focus-highlight-color-disabled: transparent;
-
-    &.clickable {
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .close.close {
-    width: 16px;
-    height: 16px;
-
-    svg {
-      color: var(--current-icon-color);
-      width: 10px;
-      height: 10px;
-    }
+    --current-bg-color: var(--lhds-color-blue-100);
+    --current-text-color: var(--lhds-color-blue-800);
+    --current-bg-color-hover: var(--lhds-color-blue-200);
+    --current-bg-color-focus: var(--lhds-color-blue-200);
+    --current-bg-color-active: var(--lhds-color-blue-300);
   }
 }
