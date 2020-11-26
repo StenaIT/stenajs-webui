@@ -9,6 +9,7 @@ export const parameters = {
     options: {},
     manual: true,
   },
+  controls: { expanded: true },
 };
 
 export const globalTypes = {
