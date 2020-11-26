@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1
+
+### Fixes
+
+- Line height was too small in `Text` styling.
+- `Tag` and `Chip` had wrong font.
+
 ## 3.0.0
 
 ### Design fixes
