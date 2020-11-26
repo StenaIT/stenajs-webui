@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { RadioButtonWithLabel } from "@stenajs-webui/forms";
+import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
 import { Column, Space } from "@stenajs-webui/core";
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: RadioButtonWithLabel,
 };
 
-export const Standard = () => {
+export const Overview = () => {
   const [selected, setSelected] = useState("");
 
   return (

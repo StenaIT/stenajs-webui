@@ -6,6 +6,7 @@
 
 - Line height was too small in `Text` styling.
 - `Tag` and `Chip` had wrong font.
+- `CheckboxWithLabel` props `textColor` not working.
 
 ### Breaking changes
 
