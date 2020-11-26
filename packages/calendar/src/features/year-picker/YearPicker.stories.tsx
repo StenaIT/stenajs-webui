@@ -1,44 +1,38 @@
-import { Store, withState } from "@dump247/storybook-state";
 import * as React from "react";
-import { YearPicker } from "@stenajs-webui/calendar";
-
-interface DateRangeState {
-  value?: number;
-}
+import { useState } from "react";
+import { YearPicker } from "./YearPicker";
 
 export default {
   title: "calendar/Pickers/YearPicker",
+  component: YearPicker,
 };
 
-export const Standard = withState<DateRangeState>({
-  value: undefined,
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <YearPicker
-      value={store.state.value}
-      onValueChange={(value) => store.set({ value })}
-    />
-  </div>
-));
+export const Standard = () => {
+  const [value, setValue] = useState<number | undefined>(undefined);
 
-export const EarlyYear = withState<DateRangeState>({
-  value: 1200,
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <YearPicker
-      value={store.state.value}
-      onValueChange={(value) => store.set({ value })}
-    />
-  </div>
-));
+  return (
+    <div style={{ display: "inline-block" }}>
+      <YearPicker value={value} onValueChange={setValue} />
+    </div>
+  );
+};
 
-export const LateYear = withState<DateRangeState>({
-  value: 3200,
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <YearPicker
-      value={store.state.value}
-      onValueChange={(value) => store.set({ value })}
-    />
-  </div>
-));
+export const EarlyYear = () => {
+  const [value, setValue] = useState<number | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <YearPicker value={value} onValueChange={setValue} />
+    </div>
+  );
+};
+
+export const LateYear = () => {
+  const [value, setValue] = useState<number | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <YearPicker value={value} onValueChange={setValue} />
+    </div>
+  );
+};

@@ -1,8 +1,9 @@
 import * as React from "react";
-import { PresetPicker } from "@stenajs-webui/calendar";
+import { PresetPicker } from "./PresetPicker";
 
 export default {
   title: "calendar/Pickers/PresetPicker",
+  component: PresetPicker,
 };
 
 export const Standard = () => (

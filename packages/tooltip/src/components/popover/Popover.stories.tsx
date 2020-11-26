@@ -6,14 +6,17 @@ import {
   Row,
   SeparatorLine,
   Spacing,
-  StandardText,
+  Text,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon } from "@stenajs-webui/elements";
-import { ActionPrompt, Popover } from "@stenajs-webui/tooltip";
 import * as React from "react";
+import { Popover } from "./Popover";
+import { ActionPrompt } from "./ActionPrompt";
 
 export default {
   title: "tooltip/Popover",
+  component: Popover,
+  subcomponents: { ActionPrompt },
 };
 
 export const Standard = () => (
@@ -47,11 +50,11 @@ export const NoPadding = () => (
       content={
         <Column>
           <Indent spacing>
-            <StandardText>The line has</StandardText>
+            <Text>The line has</Text>
           </Indent>
           <SeparatorLine />
           <Indent spacing>
-            <StandardText>no padding</StandardText>
+            <Text>no padding</Text>
           </Indent>
         </Column>
       }
@@ -77,7 +80,7 @@ export const Variants = () => (
     <Spacing />
 
     <Popover
-      content={<StandardText>Some warning.</StandardText>}
+      content={<Text>Some warning.</Text>}
       variant={"warning"}
       trigger={"click"}
     >
@@ -91,7 +94,7 @@ export const Variants = () => (
         <Row>
           <Icon icon={faTrash} />
           <Indent />
-          <StandardText>Something went wrong.</StandardText>
+          <Text>Something went wrong.</Text>
         </Row>
       }
       trigger={"click"}
@@ -113,7 +116,7 @@ export const ControlOpen = () => (
 const Alerter = () => {
   alert("I was rendered.");
 
-  return <StandardText>I alert when I am rendered.</StandardText>;
+  return <Text>I alert when I am rendered.</Text>;
 };
 
 export const Lazy = () => (

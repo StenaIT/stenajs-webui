@@ -1,9 +1,10 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
-import { Select } from "@stenajs-webui/select";
+import { Select } from "./Select";
 import * as React from "react";
 
 export default {
   title: "select/Select",
+  component: Select,
 };
 
 export const Standard = () => (

@@ -1,20 +1,16 @@
-import { Store, withState } from "@dump247/storybook-state";
-import { SingleWeekCalendar } from "@stenajs-webui/calendar";
 import * as React from "react";
-
-interface State {
-  week: string | undefined;
-}
+import { useState } from "react";
+import { SingleWeekCalendar } from "./SingleWeekCalendar";
+import { useDateRangeCalendarState } from "../date-range-calendar/hooks/UseDateRangeCalendarState";
 
 export default {
   title: "calendar/Calendar/SingleWeekCalendar",
+  component: SingleWeekCalendar,
 };
 
-export const Standard = withState<State>({
-  week: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <SingleWeekCalendar
-    onChange={(week) => store.set({ week })}
-    value={store.state.week}
-  />
-));
+export const Standard = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+  const props = useDateRangeCalendarState();
+
+  return <SingleWeekCalendar onChange={setValue} value={value} {...props} />;
+};

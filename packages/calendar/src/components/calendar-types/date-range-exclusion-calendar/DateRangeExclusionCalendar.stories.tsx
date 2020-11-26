@@ -1,23 +1,24 @@
-import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  CalendarTheme,
-  DateRangeExclusionCalendar,
-  extranetCalendarTheme,
-  OnClickWeek,
-  RenderWeekNumber,
-  setDayStateValue,
-  WeekData,
-  WeekNumberCell,
-} from "@stenajs-webui/calendar";
-import { Box, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Box, Row, Space, Text } from "@stenajs-webui/core";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
+import { useState } from "react";
+import { OnClickWeek, RenderWeekNumber } from "../../../types/CalendarTypes";
+import { setDayStateValue } from "../../../util/calendar/StateModifier";
+import { DateRangeExclusionCalendar } from "./DateRangeExclusionCalendar";
+import { WeekData } from "../../../util/calendar/CalendarDataFactory";
+import {
+  CalendarTheme,
+  extranetCalendarTheme,
+} from "../../calendar/CalendarTheme";
+import { WeekNumberCell } from "../../calendar/renderers/WeekNumberCell";
+import { useDateRangeCalendarState } from "../date-range-calendar/hooks/UseDateRangeCalendarState";
 
-interface State {
-  value: Array<Date>;
-}
+export default {
+  title: "calendar/Calendar/DateRangeExclusionCalendar",
+  component: DateRangeExclusionCalendar,
+};
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
   highlights: ["disabled"],
@@ -43,94 +44,109 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-export default {
-  title: "calendar/Calendar/DateRangeExclusionCalendar",
+export const Standard = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <>
+      <DateRangeExclusionCalendar
+        onChange={setValue}
+        value={value}
+        {...props}
+      />
+      <Space />
+      <Box background={"#eee"} spacing={2} indent={2}>
+        <Text>Click to select date range.</Text>
+        <Space />
+        <Text>Hold ctrl (or cmd) and click to toggle individual dates.</Text>
+      </Box>
+    </>
+  );
 };
 
-export const Standard = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <>
+export const TodayHighlighted = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
     <DateRangeExclusionCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
+      {...props}
+      highlightToday
+      onChange={setValue}
+      value={value}
     />
-    <Space />
-    <Box background={"#eee"} spacing={2} indent={2}>
-      <StandardText>Click to select date range.</StandardText>
-      <Space />
-      <StandardText>
-        Hold ctrl (or cmd) and click to toggle individual dates.
-      </StandardText>
-    </Box>
-  </>
-));
+  );
+};
 
-export const TodayHighlighted = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    highlightToday
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-  />
-));
+export const WithDisabledDateTomorrow = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      onChange={setValue}
+      value={value}
+      statePerMonth={disabledTomorrow}
+    />
+  );
+};
 
-export const WithDisabledDateTomorrow = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    statePerMonth={disabledTomorrow}
-  />
-));
+export const WithDisabledAsDefault = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      defaultHighlights={["disabled"]}
+      onChange={setValue}
+      value={value}
+      statePerMonth={statePerMonthWithTwoWeeksEnabled}
+    />
+  );
+};
 
-export const WithDisabledAsDefault = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    defaultHighlights={["disabled"]}
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    statePerMonth={statePerMonthWithTwoWeeksEnabled}
-  />
-));
+export const WithMonthSwitcherBelow = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      onChange={setValue}
+      value={value}
+      monthSwitcherPlacement={"below"}
+    />
+  );
+};
 
-export const WithMonthSwitcherBelow = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    monthSwitcherPlacement={"below"}
-  />
-));
+export const WithMultipleMonths = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      onChange={setValue}
+      numMonths={3}
+      value={value}
+    />
+  );
+};
 
-export const WithMultipleMonths = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    onChange={(value) => store.set({ value })}
-    numMonths={3}
-    value={store.state.value}
-  />
-));
+export const WithMultipleRows = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      onChange={setValue}
+      numMonths={6}
+      monthsPerRow={3}
+      value={value}
+    />
+  );
+};
 
-export const WithMultipleRows = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    onChange={(value) => store.set({ value })}
-    numMonths={6}
-    monthsPerRow={3}
-    value={store.state.value}
-  />
-));
-
-export const WithCustomWeekContent = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => {
+export const WithCustomWeekContent = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
   const renderWeekNumber: RenderWeekNumber = (
     week: WeekData,
     theme: CalendarTheme,
@@ -158,40 +174,48 @@ export const WithCustomWeekContent = withState<State>({
 
   return (
     <DateRangeExclusionCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
+      {...props}
+      onChange={setValue}
+      value={value}
       renderWeekNumber={renderWeekNumber}
     />
   );
-});
+};
 
-export const WithCustomContent = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeExclusionCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    extraDayContent={() => (
-      <Box position={"absolute"} top={"-10px"} right={"-10px"}>
-        <FontAwesomeIcon icon={faCoffee} />
-      </Box>
-    )}
-  />
-));
+export const WithCustomContent = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeExclusionCalendar
+      {...props}
+      onChange={setValue}
+      value={value}
+      extraDayContent={() => (
+        <Box position={"absolute"} top={"-10px"} right={"-10px"}>
+          <FontAwesomeIcon icon={faCoffee} />
+        </Box>
+      )}
+    />
+  );
+};
 
-export const WithInstanceCustomTheme = withState<State>({
-  value: [],
-})(({ store }: { store: Store<State> }) => (
-  <Row>
-    <DateRangeExclusionCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
-      theme={extranetCalendarTheme}
-    />
-    <Space num={2} />
-    <DateRangeExclusionCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
-    />
-  </Row>
-));
+export const WithInstanceCustomTheme = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <Row>
+      <DateRangeExclusionCalendar
+        {...props}
+        onChange={setValue}
+        value={value}
+        theme={extranetCalendarTheme}
+      />
+      <Space num={2} />
+      <DateRangeExclusionCalendar
+        onChange={setValue}
+        value={value}
+        {...props}
+      />
+    </Row>
+  );
+};

@@ -29,9 +29,10 @@ import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSw
 import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
 import { buildDayStateForSingleMonth } from "../../util/calendar/StateModifier";
 
-interface Props extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
+export interface DateRangeDualTextInputProps
+  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
 
-export const DateRangeDualTextInput: React.FC<Props> = ({
+export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   value,
   onValueChange,
 }) => {

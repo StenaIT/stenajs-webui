@@ -1,46 +1,43 @@
-import { Store, withState } from "@dump247/storybook-state";
 import * as React from "react";
-import {
-  DateRangeDualTextInput,
-  DateRangeOnChangeValue,
-} from "@stenajs-webui/calendar";
-import { addDays } from "date-fns";
-
-interface DateRangeState {
-  value?: DateRangeOnChangeValue;
-}
+import { useState } from "react";
+import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
+import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
+import { useDateRangeCalendarState } from "../../components/calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
 
 export default {
   title: "calendar/Input/DateRangeDualTextInput",
+  component: DateRangeDualTextInput,
 };
 
-export const Standard = withState<DateRangeState>({
-  value: undefined,
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <DateRangeDualTextInput
-      value={store.state.value}
-      onValueChange={(value) => {
-        console.log("onValueChange", value);
-        store.set({ value });
-      }}
-    />
-  </div>
-));
+export const Standard = () => {
+  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
+    undefined
+  );
+  const props = useDateRangeCalendarState();
 
-export const Prefilled = withState<DateRangeState>({
-  value: {
-    startDate: new Date(),
-    endDate: addDays(new Date(), 7),
-  },
-})(({ store }: { store: Store<DateRangeState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <DateRangeDualTextInput
-      value={store.state.value}
-      onValueChange={(value) => {
-        console.log("onValueChange", value);
-        store.set({ value });
-      }}
-    />
-  </div>
-));
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        {...props}
+      />
+    </div>
+  );
+};
+
+export const Prefilled = () => {
+  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
+    undefined
+  );
+  const props = useDateRangeCalendarState();
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        {...props}
+      />
+    </div>
+  );
+};

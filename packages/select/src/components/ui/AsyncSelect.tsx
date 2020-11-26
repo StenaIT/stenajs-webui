@@ -5,7 +5,7 @@ import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "react-select";
 
-interface AsyncSelectProps<T> extends Props<T> {
+export interface AsyncSelectProps<T> extends Props<T> {
   variant?: "dark" | "light";
 }
 

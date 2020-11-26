@@ -1,23 +1,23 @@
-import { Store, withState } from "@dump247/storybook-state";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  CalendarTheme,
-  extranetCalendarTheme,
-  MultiDateCalendar,
-  OnClickWeek,
-  RenderWeekNumber,
-  setDayStateValue,
-  WeekData,
-  WeekNumberCell,
-} from "@stenajs-webui/calendar";
 import { Box, Row, Space } from "@stenajs-webui/core";
 import { addDays, getISOWeek } from "date-fns";
 import * as React from "react";
+import { useState } from "react";
+import { OnClickWeek, RenderWeekNumber } from "../../../types/CalendarTypes";
+import { setDayStateValue } from "../../../util/calendar/StateModifier";
+import { MultiDateCalendar } from "./MultiDateCalendar";
+import { WeekData } from "../../../util/calendar/CalendarDataFactory";
+import {
+  CalendarTheme,
+  extranetCalendarTheme,
+} from "../../calendar/CalendarTheme";
+import { WeekNumberCell } from "../../calendar/renderers/WeekNumberCell";
+import { useDateRangeCalendarState } from "../date-range-calendar/hooks/UseDateRangeCalendarState";
 
-interface State {
-  value?: Array<Date>;
-}
+export default {
+  title: "calendar/Calendar/MultiDateCalendar",
+};
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
   highlights: ["disabled"],
@@ -43,86 +43,100 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-export default {
-  title: "calendar/Calendar/MultiDateCalendar",
+export const Standard = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return <MultiDateCalendar {...props} onChange={setValue} value={value} />;
 };
 
-export const Standard = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => {
-      store.set({ value });
-    }}
-    value={store.state.value}
-  />
-));
+export const TodayHighlighted = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <MultiDateCalendar
+      highlightToday
+      onChange={setValue}
+      value={value}
+      {...props}
+    />
+  );
+};
 
-export const TodayHighlighted = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    highlightToday
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-  />
-));
+export const WithDisabledDateTomorrow = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
 
-export const WithDisabledDateTomorrow = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    statePerMonth={disabledTomorrow}
-  />
-));
+  return (
+    <MultiDateCalendar
+      onChange={setValue}
+      value={value}
+      statePerMonth={disabledTomorrow}
+      {...props}
+    />
+  );
+};
 
-export const WithDisabledAsDefault = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    defaultHighlights={["disabled"]}
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    statePerMonth={statePerMonthWithTwoWeeksEnabled}
-  />
-));
+export const WithDisabledAsDefault = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
 
-export const WithMonthSwitcherBelow = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    monthSwitcherPlacement={"below"}
-  />
-));
+  return (
+    <MultiDateCalendar
+      defaultHighlights={["disabled"]}
+      onChange={setValue}
+      value={value}
+      statePerMonth={statePerMonthWithTwoWeeksEnabled}
+      {...props}
+    />
+  );
+};
 
-export const WithMultipleMonths = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => store.set({ value })}
-    numMonths={3}
-    value={store.state.value}
-  />
-));
+export const WithMonthSwitcherBelow = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
 
-export const WithMultipleRows = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => store.set({ value })}
-    numMonths={6}
-    monthsPerRow={3}
-    value={store.state.value}
-  />
-));
+  return (
+    <MultiDateCalendar
+      onChange={setValue}
+      value={value}
+      monthSwitcherPlacement={"below"}
+      {...props}
+    />
+  );
+};
 
-export const WithCustomWeekContent = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => {
+export const WithMultipleMonths = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+
+  return (
+    <MultiDateCalendar
+      onChange={setValue}
+      numMonths={3}
+      value={value}
+      {...props}
+    />
+  );
+};
+
+export const WithMultipleRows = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+  return (
+    <MultiDateCalendar
+      onChange={setValue}
+      numMonths={6}
+      monthsPerRow={3}
+      value={value}
+      {...props}
+    />
+  );
+};
+
+export const WithCustomWeekContent = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+
   const renderWeekNumber: RenderWeekNumber = (
     week: WeekData,
     theme: CalendarTheme,
@@ -150,40 +164,46 @@ export const WithCustomWeekContent = withState<State>({
 
   return (
     <MultiDateCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
+      onChange={setValue}
+      value={value}
       renderWeekNumber={renderWeekNumber}
+      {...props}
     />
   );
-});
+};
 
-export const WithCustomContent = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <MultiDateCalendar
-    onChange={(value) => store.set({ value })}
-    value={store.state.value}
-    extraDayContent={() => (
-      <Box position={"absolute"} top={"-10px"} right={"-10px"}>
-        <FontAwesomeIcon icon={faCoffee} />
-      </Box>
-    )}
-  />
-));
+export const WithCustomContent = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
 
-export const WithInstanceCustomTheme = withState<State>({
-  value: undefined,
-})(({ store }: { store: Store<State> }) => (
-  <Row>
+  return (
     <MultiDateCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
-      theme={extranetCalendarTheme}
+      onChange={setValue}
+      value={value}
+      extraDayContent={() => (
+        <Box position={"absolute"} top={"-10px"} right={"-10px"}>
+          <FontAwesomeIcon icon={faCoffee} />
+        </Box>
+      )}
+      {...props}
     />
-    <Space num={2} />
-    <MultiDateCalendar
-      onChange={(value) => store.set({ value })}
-      value={store.state.value}
-    />
-  </Row>
-));
+  );
+};
+
+export const WithInstanceCustomTheme = () => {
+  const [value, setValue] = useState<Array<Date>>([]);
+  const props = useDateRangeCalendarState();
+
+  return (
+    <Row>
+      <MultiDateCalendar
+        onChange={setValue}
+        value={value}
+        theme={extranetCalendarTheme}
+        {...props}
+      />
+      <Space num={2} />
+      <MultiDateCalendar onChange={setValue} value={value} {...props} />
+    </Row>
+  );
+};

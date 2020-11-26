@@ -2,7 +2,7 @@ import { Column, Row, Space, StandardText } from "@stenajs-webui/core";
 import { FlatButton, Spinner, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 
-interface ActionPromptProps {
+export interface ActionPromptProps {
   text?: string;
   yesLabel?: string;
   noLabel?: string;

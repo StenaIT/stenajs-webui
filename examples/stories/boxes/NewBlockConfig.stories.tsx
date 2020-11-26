@@ -1,6 +1,7 @@
 import {
   Box,
   Column,
+  Heading,
   Indent,
   Row,
   SeparatorLine,
@@ -22,7 +23,7 @@ export const NewBlockConfig = () => (
     <Box shadow={"box"} background={"white"} display={"inline-block"}>
       <Spacing num={2}>
         <Indent num={2}>
-          <StandardText fontSize={"huge"}>New block config</StandardText>
+          <Heading>New block config</Heading>
           <Space num={2} />
           <Column>
             <StandardText>Name</StandardText>
