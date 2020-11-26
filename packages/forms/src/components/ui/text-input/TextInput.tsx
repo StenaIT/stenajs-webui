@@ -57,6 +57,7 @@ export interface TextInputProps
   onDone?: (value: string) => void;
   onEnter?: () => void;
   onEsc?: () => void;
+  autoFocus?: boolean;
   /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
   onMove?: (direction: MoveDirection) => void;
 }
@@ -136,6 +137,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         type={"text"}
         disabled={disabled}
         ref={refToUse}
+        autoFocus={autoFocus}
         {...inputProps}
         {...hookProps}
       />

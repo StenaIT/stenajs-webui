@@ -16,6 +16,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   onChange,
   onValueChange,
   size = "standard",
+  name,
   ...inputProps
 }) => {
   const handleInputChange = useCallback(
@@ -33,6 +34,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <input
       type={"radio"}
+      name={name}
       className={styles.radiobutton + " " + styles[size]}
       onChange={handleInputChange}
       {...inputProps}

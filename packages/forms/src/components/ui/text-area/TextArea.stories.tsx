@@ -1,30 +1,45 @@
 import { Box } from "@stenajs-webui/core";
-import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
-import { TextArea } from "@stenajs-webui/forms";
+import { useState } from "react";
+import { TextArea, TextAreaProps } from "./TextArea";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/TextInput/TextArea",
+  component: TextArea,
+  argTypes: {
+    inputRef: disabledControl,
+  },
 };
 
-export const Standard = () => (
-  <TextArea value={knobs.text("Text", "Some nice text.")} />
-);
+export const Demo: Story<TextAreaProps> = (props) => <TextArea {...props} />;
 
-export const WithCustomSize = () => (
-  <Box width={"400px"}>
-    <TextArea rows={3} value={knobs.text("Text", "Some nice text.")} />
-  </Box>
-);
+export const Standard = () => {
+  const [text, setText] = useState("");
+  return <TextArea value={text} onValueChange={setText} />;
+};
 
-export const WithResize = () => (
-  <TextArea resize={"both"} value={knobs.text("Text", "Some nice text.")} />
-);
+export const WithCustomWidth = () => {
+  const [text, setText] = useState("");
+  return (
+    <Box width={"400px"}>
+      <TextArea rows={3} value={text} onValueChange={setText} />
+    </Box>
+  );
+};
 
-export const Readonly = () => (
-  <TextArea readOnly value={knobs.text("Text", "Some nice text.")} />
-);
+export const WithResize = () => {
+  const [text, setText] = useState("");
+  return <TextArea resize={"both"} value={text} onValueChange={setText} />;
+};
 
-export const Disabled = () => (
-  <TextArea disabled value={knobs.text("Text", "Some nice text.")} />
-);
+export const Readonly = () => {
+  const [text, setText] = useState("");
+  return <TextArea readOnly value={text} onValueChange={setText} />;
+};
+
+export const Disabled = () => {
+  const [text, setText] = useState("");
+  return <TextArea disabled value={text} onValueChange={setText} />;
+};

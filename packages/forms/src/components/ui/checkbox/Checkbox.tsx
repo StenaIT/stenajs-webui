@@ -2,6 +2,7 @@ import { InputProps } from "@stenajs-webui/core";
 import * as React from "react";
 import { ChangeEvent, useCallback, useEffect, useRef } from "react";
 import { FullOnChangeProps } from "../types";
+import cx from "classnames";
 import styles from "./Checkbox.module.css";
 
 export type CheckboxSize = "standard" | "small";
@@ -11,6 +12,7 @@ export interface CheckboxProps
     Omit<InputProps<HTMLLabelElement>, "size"> {
   indeterminate?: boolean;
   size?: CheckboxSize;
+  disabled?: boolean;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -47,7 +49,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   return (
     <input
       type={"checkbox"}
-      className={styles.checkbox + " " + styles[size]}
+      className={cx(styles.checkbox, styles[size])}
       checked={value}
       onChange={handleInputChange}
       ref={inputRefToUse}

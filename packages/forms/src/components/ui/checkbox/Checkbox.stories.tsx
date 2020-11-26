@@ -1,23 +1,28 @@
-import { Store, withState } from "@dump247/storybook-state";
-import {
-  Column,
-  HeaderText,
-  LargeText,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
-import { Checkbox } from "@stenajs-webui/forms";
+import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { Checkbox, CheckboxProps } from "./Checkbox";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
 
-interface State {
-  checked: boolean;
-}
+export default {
+  title: "forms/Checkbox",
+  component: Checkbox,
+  argTypes: {
+    inputRef: disabledControl,
+    disabled: {
+      control: "boolean",
+    },
+  },
+};
 
-const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
+export const Demo: Story<CheckboxProps> = (props) => <Checkbox {...props} />;
+
+export const Overview = () => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [checked, setChecked] = useState(false);
+
   useEffect(() => {
     const t = setInterval(() => {
       setIsEnabled((v) => !v);
@@ -27,17 +32,19 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 
   return (
     <Column>
-      <HeaderText>Checkbox</HeaderText>
+      <Heading>Checkbox</Heading>
 
       <Space num={2} />
 
-      <LargeText fontWeight={"bold"}>Clickable and knobs</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Clickable and knobs
+      </Text>
 
       <Space num={2} />
 
       <Checkbox
-        value={store.state.checked}
-        onValueChange={(checked) => store.set({ checked })}
+        value={checked}
+        onValueChange={setChecked}
         disabled={knobs.boolean("Disabled", false)}
         indeterminate={knobs.boolean("Indeterminate", false)}
       />
@@ -46,97 +53,90 @@ const CheckboxOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
 
       <Checkbox
         size={"small"}
-        value={store.state.checked}
-        onValueChange={(checked) => store.set({ checked })}
+        value={checked}
+        onValueChange={setChecked}
         disabled={knobs.boolean("Disabled", false)}
         indeterminate={knobs.boolean("Indeterminate", false)}
       />
 
       <Space num={8} />
 
-      <LargeText fontWeight={"bold"}>Transitions</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Transitions
+      </Text>
 
       <Space num={2} />
 
       <Row alignContent={"flex-start"}>
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked on/off</StandardText>
+          <Text>Checked on/off</Text>
           <Checkbox value={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Disabled, checked on/off</StandardText>
+          <Text>Disabled, checked on/off</Text>
           <Checkbox value={isEnabled} disabled />
         </Column>
 
         <Space num={8} />
 
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked, disabled on/off</StandardText>
+          <Text>Checked, disabled on/off</Text>
           <Checkbox value disabled={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Not checked, disabled on/off</StandardText>
+          <Text>Not checked, disabled on/off</Text>
           <Checkbox disabled={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Checked, indeterminate on/off</StandardText>
+          <Text>Checked, indeterminate on/off</Text>
           <Checkbox value indeterminate={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Not checked, indeterminate on/off</StandardText>
+          <Text>Not checked, indeterminate on/off</Text>
           <Checkbox indeterminate={isEnabled} />
         </Column>
 
         <Space num={8} />
 
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked, disabled, indeterminate on/off</StandardText>
+          <Text>Checked, disabled, indeterminate on/off</Text>
           <Checkbox value indeterminate={isEnabled} disabled />
 
           <Space num={2} />
 
-          <StandardText>
-            Not checked, disabled, indeterminate on/off
-          </StandardText>
+          <Text>Not checked, disabled, indeterminate on/off</Text>
           <Checkbox indeterminate={isEnabled} disabled />
         </Column>
       </Row>
     </Column>
   );
 };
-
-export default {
-  title: "forms/Checkbox",
+export const Standard = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      value={checked}
+      onValueChange={setChecked}
+      disabled={knobs.boolean("Disabled", false)}
+    />
+  );
 };
 
-export const Overview = withState<State>({
-  checked: true,
-})(({ store }: { store: Store<State> }) => <CheckboxOverview store={store} />);
-
-export const Standard = withState<State>({
-  checked: true,
-})(({ store }: { store: Store<State> }) => (
-  <Checkbox
-    value={store.state.checked}
-    onValueChange={(checked) => store.set({ checked })}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-));
-
-export const Small = withState<State>({
-  checked: true,
-})(({ store }: { store: Store<State> }) => (
-  <Checkbox
-    size={"small"}
-    value={store.state.checked}
-    onValueChange={(checked) => store.set({ checked })}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-));
+export const Small = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      size={"small"}
+      value={checked}
+      onValueChange={setChecked}
+      disabled={knobs.boolean("Disabled", false)}
+    />
+  );
+};
 
 export const Indeterminate = () => (
   <Column>
