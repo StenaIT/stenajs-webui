@@ -2,7 +2,7 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./ButtonGroup.module.css";
 
-interface ButtonGroupProps {
+export interface ButtonGroupProps {
   className?: string;
 }
 

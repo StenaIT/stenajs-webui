@@ -8,7 +8,6 @@ import {
   Omit,
   ThemeColorField,
   useMouseIsOver,
-  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { useRef } from "react";
@@ -24,7 +23,7 @@ export interface IconProps
 
 export const Icon: React.FC<IconProps> = ({
   className,
-  color = "primaryTextLight",
+  color = "var(--lhds-color-ui-500)",
   flip,
   icon,
   hoverIcon,
@@ -37,15 +36,10 @@ export const Icon: React.FC<IconProps> = ({
   transform,
   ...props
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        iconColor: color,
-        iconColorHover: hoverColor,
-      },
-    },
-    [color, hoverColor]
-  );
+  const colors = {
+    iconColor: color,
+    iconColorHover: hoverColor,
+  };
 
   const ref = useRef(null);
 

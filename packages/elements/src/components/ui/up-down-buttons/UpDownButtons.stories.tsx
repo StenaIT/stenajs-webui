@@ -1,7 +1,7 @@
-import { Box } from "@stenajs-webui/core";
-import { UpDownButtons } from "@stenajs-webui/elements";
-import { action } from "@storybook/addon-actions";
 import * as React from "react";
+import { Box } from "@stenajs-webui/core";
+import { action } from "@storybook/addon-actions";
+import { UpDownButtons } from "./UpDownButtons";
 
 export default {
   title: "elements/Buttons/UpDownButtons",

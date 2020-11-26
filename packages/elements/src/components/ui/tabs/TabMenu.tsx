@@ -3,9 +3,9 @@ import { Children } from "react";
 import styles from "./TabMenu.module.css";
 import cx from "classnames";
 
-interface Props {}
+export interface TabMenuProps {}
 
-export const TabMenu: React.FC<Props> = ({ children }) => {
+export const TabMenu: React.FC<TabMenuProps> = ({ children }) => {
   return (
     <div className={styles.tabMenu}>
       {Children.map(children, (child, index) => (

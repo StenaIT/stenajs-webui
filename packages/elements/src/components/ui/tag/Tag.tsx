@@ -2,7 +2,7 @@ import * as React from "react";
 import cx from "classnames";
 import styles from "./Tag.module.css";
 
-interface Props {
+export interface TagProps {
   variant?: TagVariant;
   label?: string;
   size?: TagSize;
@@ -19,7 +19,7 @@ export type TagVariant =
 
 export type TagSize = "medium" | "small";
 
-export const Tag: React.FC<Props> = ({
+export const Tag: React.FC<TagProps> = ({
   className,
   variant = "info",
   size = "medium",

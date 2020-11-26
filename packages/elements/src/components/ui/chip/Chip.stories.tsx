@@ -1,10 +1,24 @@
-import { Column, Indent, Text, Row, Space } from "@stenajs-webui/core";
-import { Chip, ChipVariant } from "@stenajs-webui/elements";
 import * as React from "react";
+import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { Chip, ChipProps, ChipVariant } from "./Chip";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Chip",
+  component: Chip,
+  argTypes: {
+    className: disabledControl,
+    onClick: disabledControl,
+    onClickRemove: disabledControl,
+  },
+  args: {
+    label: "Some text",
+  },
 };
+export const Demo: Story<ChipProps> = (props) => (
+  <Chip {...props} onClick={() => {}} onClickRemove={() => {}} />
+);
 
 export const Overview = () => (
   <Column>

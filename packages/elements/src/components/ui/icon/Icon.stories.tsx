@@ -1,24 +1,36 @@
+import * as React from "react";
 import {
   faBicycle,
   faCog,
   faShip,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { Indent, Row, Space, StandardText } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
-import * as React from "react";
+import { Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { Icon, IconProps } from "./Icon";
+import { Story } from "@storybook/react";
+import {
+  colorListControl,
+  disabledControl,
+} from "../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Icon",
+  component: Icon,
+  argTypes: {
+    color: colorListControl,
+    hoverColor: colorListControl,
+    icon: disabledControl,
+    hoverIcon: disabledControl,
+  },
 };
 
-export const Default = () => <Icon icon={faCog} />;
-
-export const WithColor = () => <Icon icon={faCog} color={"#abcdef"} />;
-
-export const WithHoverColor = () => (
-  <Icon icon={faCog} color={"#abcdef"} hoverColor={"#efcdab"} />
+export const Demo: Story<IconProps> = (props) => (
+  <Icon {...props} icon={faCog} />
 );
+
+export const WithColor = () => <Icon icon={faCog} color={"red"} />;
+
+export const WithHoverColor = () => <Icon icon={faCog} hoverColor={"red"} />;
 
 export const WithHoverIcon = () => <Icon icon={faCog} hoverIcon={faBicycle} />;
 
@@ -29,12 +41,12 @@ export const WithPulse = () => <Icon icon={faSpinner} pulse={true} />;
 export const HorizontalFlip = () => (
   <>
     <Row>
-      <StandardText>Normal</StandardText>
+      <Text>Normal</Text>
       <Space />
       <Icon icon={faBicycle} />
     </Row>
     <Row>
-      <StandardText>Flipped</StandardText> <Space />
+      <Text>Flipped</Text> <Space />
       <Icon icon={faBicycle} flip={"horizontal"} />
     </Row>
   </>
@@ -43,12 +55,12 @@ export const HorizontalFlip = () => (
 export const VerticalFlip = () => (
   <>
     <Row>
-      <StandardText>Normal</StandardText>
+      <Text>Normal</Text>
       <Space />
       <Icon icon={faBicycle} />
     </Row>
     <Row>
-      <StandardText>Flipped</StandardText> <Space />
+      <Text>Flipped</Text> <Space />
       <Icon icon={faBicycle} flip={"vertical"} />
     </Row>
   </>
@@ -57,16 +69,16 @@ export const VerticalFlip = () => (
 export const WithRotation = () => (
   <Row>
     <Indent>
-      <StandardText>90</StandardText>
+      <Text>90</Text>
       <Space />
       <Icon icon={faShip} rotation={90} />
     </Indent>
     <Indent>
-      <StandardText>180</StandardText> <Space />
+      <Text>180</Text> <Space />
       <Icon icon={faShip} rotation={180} />
     </Indent>
     <Indent>
-      <StandardText>270</StandardText> <Space />
+      <Text>270</Text> <Space />
       <Icon icon={faShip} rotation={270} />
     </Indent>
   </Row>

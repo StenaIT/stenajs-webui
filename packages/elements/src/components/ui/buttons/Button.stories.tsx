@@ -3,25 +3,32 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import {
   Column,
   Indent,
-  LargeText,
   Row,
   Space,
   StandardText,
+  Text,
 } from "@stenajs-webui/core";
-import {
-  ButtonSize,
-  ButtonVariant,
-  FlatButton,
-  Icon,
-  PrimaryButton,
-  SecondaryButton,
-} from "@stenajs-webui/elements";
 import * as React from "react";
+import { ButtonSize, ButtonVariant } from "./common/ButtonCommon";
+import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
+import { SecondaryButton } from "./SecondaryButton";
+import { FlatButton } from "./FlatButton";
+import { Icon } from "../icon/Icon";
+import { Story } from "@storybook/react";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
 export default {
   title: "elements/Buttons",
+  component: PrimaryButton,
+  subcomponents: { SecondaryButton, FlatButton },
+};
+
+export const Demo: Story<PrimaryButtonProps> = (props) => (
+  <PrimaryButton {...props} />
+);
+Demo.args = {
+  label: "Action",
 };
 
 export const Overview = () => (
@@ -32,7 +39,7 @@ export const Overview = () => (
       { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ label, ButtonVariant }) => (
       <Column alignItems={"flex-start"}>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <table cellPadding={"8px"}>
           <thead>
@@ -142,7 +149,7 @@ export const Variants = () => (
     {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
       (variant) => (
         <Column>
-          <LargeText>{variant}</LargeText>
+          <Text size={"large"}>{variant}</Text>
           <Space />
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
@@ -162,7 +169,7 @@ export const Variants = () => (
     {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
       (variant) => (
         <Column>
-          <LargeText>{variant} (disabled)</LargeText>
+          <Text size={"large"}>{variant} (disabled)</Text>
           <Space />
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
@@ -191,7 +198,7 @@ export const WithGenericContentToRight = () => (
       { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ ButtonVariant, label }) => (
       <Column spacing>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <Row alignItems={"flex-start"}>
           <ButtonVariant

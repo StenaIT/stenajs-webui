@@ -1,13 +1,16 @@
-import { InputSpinner } from "@stenajs-webui/elements";
-import { color } from "@storybook/addon-knobs";
 import * as React from "react";
+import { InputSpinner, InputSpinnerProps } from "./InputSpinner";
+import { Story } from "@storybook/react";
+import { colorListControl } from "../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/InputSpinner",
+  components: InputSpinner,
+  argTypes: {
+    color: colorListControl,
+  },
 };
 
-export const Standard = () => <InputSpinner />;
-
-export const WithCustomColor = () => (
-  <InputSpinner color={color("trackColor", "red")} />
+export const Overview: Story<InputSpinnerProps> = (props) => (
+  <InputSpinner {...props} />
 );

@@ -1,27 +1,19 @@
-import {
-  ButtonSize,
-  ButtonVariant,
-  FlatButtonLink,
-  Icon,
-  PrimaryButtonLink,
-  SecondaryButtonLink,
-} from "@stenajs-webui/elements";
-import {
-  Column,
-  Indent,
-  LargeText,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import * as React from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
+import { ButtonSize, ButtonVariant } from "../buttons/common/ButtonCommon";
+import { PrimaryButtonLink } from "./PrimaryButtonLink";
+import { SecondaryButtonLink } from "./SecondaryButtonLink";
+import { FlatButtonLink } from "./FlatButtonLink";
+import { Icon } from "../icon/Icon";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
 export default {
   title: "elements/ButtonLinks",
+  component: PrimaryButtonLink,
+  subcomponents: { SecondaryButtonLink, FlatButtonLink },
 };
 
 export const Overview = () => (
@@ -32,28 +24,28 @@ export const Overview = () => (
       { ButtonVariant: FlatButtonLink, label: "FlatButtonLink" },
     ].map(({ label, ButtonVariant }) => (
       <Column alignItems={"flex-start"}>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <table cellPadding={"8px"}>
           <thead>
             <tr>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Size</StandardText>
+                <Text>Size</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Standard</StandardText>
+                <Text>Standard</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Icon only</StandardText>
+                <Text>Icon only</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Left icon</StandardText>
+                <Text>Left icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Right icon</StandardText>
+                <Text>Right icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Both icons</StandardText>
+                <Text>Both icons</Text>
               </th>
             </tr>
           </thead>
@@ -61,7 +53,7 @@ export const Overview = () => (
             {buttonSizes.map((size) => (
               <tr>
                 <td>
-                  <StandardText>{size}</StandardText>
+                  <Text>{size}</Text>
                 </td>
                 <td>
                   <div style={{ display: "inline-block" }}>
@@ -127,7 +119,7 @@ export const Variants = () => (
     {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
       (variant) => (
         <Column>
-          <LargeText>{variant}</LargeText>
+          <Text size={"large"}>{variant}</Text>
           <Space />
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
@@ -157,7 +149,7 @@ export const WithGenericContentToRight = () => (
       { ButtonVariant: FlatButtonLink, label: "FlatButtonLink" },
     ].map(({ ButtonVariant, label }) => (
       <Column spacing>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <Row alignItems={"flex-start"}>
           <ButtonVariant

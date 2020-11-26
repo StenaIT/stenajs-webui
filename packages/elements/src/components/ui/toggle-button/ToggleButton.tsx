@@ -6,7 +6,7 @@ import {
   ToggleButtonTheme,
 } from "./ToggleButtonTheme";
 
-interface ToggleButtonProps {
+export interface ToggleButtonProps {
   /**
    * The label of the button.
    */
