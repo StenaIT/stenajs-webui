@@ -2,7 +2,7 @@ import * as React from "react";
 import { useResultListBannerState } from "./hooks/UseResultListBannerState";
 import { ResultListBanner, ResultListBannerProps } from "./ResultListBanner";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Banners/ResultListBanner",

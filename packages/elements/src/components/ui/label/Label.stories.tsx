@@ -3,7 +3,7 @@ import { Column, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { Label, LabelProps } from "./Label";
 import { Story } from "@storybook/react";
-import { hideArg } from "../../../../../../storybook-helpers/storybook-controls";
+import { hideArg } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Label",

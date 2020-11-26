@@ -1,11 +1,11 @@
 import { createContext, Dispatch } from "react";
-import { StandardTableConfig } from "../config/StandardTableConfig";
-import { StandardTableState } from "../redux/StandardTableReducer";
-import {
+import type { StandardTableConfig } from "../config/StandardTableConfig";
+import type { StandardTableState } from "../redux/StandardTableReducer";
+import type {
   StandardTableAction,
   StandardTableActions,
 } from "../util/ActionsFactory";
-import { InternalStandardTableAction } from "../redux/StandardTableActionsAndSelectors";
+import type { InternalStandardTableAction } from "../redux/StandardTableActionsAndSelectors";
 
 export interface StandardTableInternalActionsContext<
   TColumnKeys extends string

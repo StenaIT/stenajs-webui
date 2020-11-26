@@ -1,13 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Space } from "@stenajs-webui/core";
 import { Badge } from "../badge/Badge";
 import { Tab, TabProps } from "./Tab";
 import { TabMenu } from "./TabMenu";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/TabMenu",

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, TextProps } from "./Text";
 import { cssColor } from "@stenajs-webui/theme";
 import { Story } from "@storybook/react";
-import { colorListControl } from "../../../../../storybook-helpers/storybook-controls";
+import { colorListControl } from "../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Text/Text",

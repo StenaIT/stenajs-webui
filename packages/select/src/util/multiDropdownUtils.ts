@@ -6,7 +6,7 @@ import {
   OptionsType,
   ValueType,
 } from "react-select";
-import {
+import type {
   DropdownOption,
   OnChange,
   OnChangeValue,

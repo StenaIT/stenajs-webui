@@ -4,7 +4,7 @@ import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/RadioButton",

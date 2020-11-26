@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/Checkbox",

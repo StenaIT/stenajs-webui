@@ -7,7 +7,7 @@ import {
   colorListControl,
   shadowListControl,
   spaceControl,
-} from "../../../../../../storybook-helpers/storybook-controls";
+} from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Layout/Box",

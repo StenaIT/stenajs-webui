@@ -4,7 +4,7 @@ import {
   RefObject,
   useCallback,
 } from "react";
-import { TextInputProps } from "../components/ui/text-input/TextInput";
+import type { TextInputProps } from "../components/ui/text-input/TextInput";
 
 import { useKeyboardNavigation } from "./UseKeyboardNavigation";
 import { useSelectAllOnFocus } from "./UseSelectAllOnFocus";

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Tag, TagProps, TagVariant } from "./Tag";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Tag",

@@ -9,7 +9,7 @@ import {
 } from "./hooks/UseNumericInputValue";
 import { NumericTextInput, NumericTextInputProps } from "./NumericTextInput";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/TextInput/NumericTextInput",

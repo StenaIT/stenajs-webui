@@ -5,7 +5,7 @@ import { Story } from "@storybook/react";
 import {
   colorListControl,
   disabledControl,
-} from "../../../../../../storybook-helpers/storybook-controls";
+} from "../../../storybook-helpers/storybook-controls";
 import { Column, Space } from "@stenajs-webui/core";
 
 export default {

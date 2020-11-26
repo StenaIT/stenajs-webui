@@ -1,6 +1,8 @@
 import {
   createSelectedIdsActions,
   createSortOrderActions,
+} from "@stenajs-webui/redux";
+import type {
   ReducerIdGateAction,
   SelectedIdsAction,
   SelectedIdsActions,
@@ -9,7 +11,7 @@ import {
   SortOrderActions,
   SortOrderSelectors,
 } from "@stenajs-webui/redux";
-import { StandardTableState } from "./StandardTableReducer";
+import type { StandardTableState } from "./StandardTableReducer";
 
 export interface InternalStandardTableActions<TColumnKey extends string> {
   sortOrder: SortOrderActions<TColumnKey>;

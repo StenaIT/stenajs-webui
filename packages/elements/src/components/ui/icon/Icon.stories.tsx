@@ -11,7 +11,7 @@ import { Story } from "@storybook/react";
 import {
   colorListControl,
   disabledControl,
-} from "../../../../../../storybook-helpers/storybook-controls";
+} from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Icon",

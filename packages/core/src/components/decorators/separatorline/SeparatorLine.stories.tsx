@@ -4,7 +4,7 @@ import { Story } from "@storybook/react";
 import {
   colorListControl,
   widthControl,
-} from "../../../../../../storybook-helpers/storybook-controls";
+} from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Decorators/SeparatorLine",

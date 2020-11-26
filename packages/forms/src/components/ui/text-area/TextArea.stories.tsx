@@ -3,7 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 import { TextArea, TextAreaProps } from "./TextArea";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/TextInput/TextArea",

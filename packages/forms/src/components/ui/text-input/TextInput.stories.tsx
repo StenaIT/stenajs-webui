@@ -4,7 +4,7 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
-import { disabledControl } from "../../../../../../storybook-helpers/storybook-controls";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/TextInput/TextInput",

@@ -2,9 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { MaskedTextInput } from "./MaskedTextInput";
 import { InputMasks } from "../masks/InputMasks";
-import { Column } from "../../../core/src/components/layout/column/Column";
-import { Space } from "../../../core/src/components/layout/space/Space";
-import { Text } from "../../../core/src/components/text/Text";
+import { Column, Space, Text } from "@stenajs-webui/core";
 
 export default {
   title: "input-mask/MaskedTextInput",

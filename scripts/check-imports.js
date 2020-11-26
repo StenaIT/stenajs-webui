@@ -101,6 +101,9 @@ const checkImport = (
       console.log(`import from '${imported}'`);
       success = false;
     }
+    if (imported.startsWith(".")) {
+      checkIfImportGoesToPackagesFolder(filePath, packageJson, imported);
+    }
   } else if (isTest) {
   } else {
     if (imported === packageJson.name) {
