@@ -7,6 +7,12 @@
 - Line height was too small in `Text` styling.
 - `Tag` and `Chip` had wrong font.
 
+### Breaking changes
+
+- `Badge` prop `type` renamed to `variant`.
+- `Badge` variant `notification` renamed to `info`.
+- `Spinner` no longer has color prop.
+
 ## 3.0.0
 
 ### Design fixes
