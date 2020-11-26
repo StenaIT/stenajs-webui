@@ -1,12 +1,13 @@
 import { Column } from "@stenajs-webui/core";
-import { Notification } from "@stenajs-webui/panels";
 import * as React from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { SeparatorLine } from "@stenajs-webui/core";
 import { subHours } from "date-fns";
+import { Notification } from "./Notification";
 
 export default {
   title: "panels/Notification",
+  component: Notification,
 };
 
 export const Standard = () => (

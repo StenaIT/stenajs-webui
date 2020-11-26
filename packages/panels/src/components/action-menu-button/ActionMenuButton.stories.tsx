@@ -2,12 +2,13 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Box, Text } from "@stenajs-webui/core";
-import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ActionMenuButton } from "@stenajs-webui/panels";
+import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
+import { ActionMenuButton } from "./ActionMenuButton";
 
 export default {
   title: "panels/ActionMenuButton",
+  component: ActionMenuButton,
 };
 
 export const Standard = () => (

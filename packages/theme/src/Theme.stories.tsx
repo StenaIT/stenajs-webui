@@ -1,6 +1,7 @@
-import { cssColor, LhdsColor } from "@stenajs-webui/theme";
-import { Column, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
+import { LhdsColor } from "./types/LhdsColor";
+import { cssColor } from "./util/CssColor";
+import { Column, Row, Text } from "@stenajs-webui/core";
 
 export default {
   title: "theme/Colors",

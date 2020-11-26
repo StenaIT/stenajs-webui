@@ -6,17 +6,27 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Clickable, Column, LargeText, Row } from "@stenajs-webui/core";
 import { Badge, Icon } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, TextInput } from "@stenajs-webui/forms";
-import {
-  Collapsible,
-  CollapsibleClickableContent,
-  CollapsibleContent,
-  CollapsibleGroupHeading,
-  CollapsibleProps,
-  CollapsibleWithCheckbox,
-  CollapsibleWithCheckboxProps,
-} from "@stenajs-webui/panels";
 import * as React from "react";
 import { useState } from "react";
+import { Collapsible, CollapsibleProps } from "./Collapsible";
+import { CollapsibleClickableContent } from "./CollapsibleClickableContent";
+import { CollapsibleContent } from "./CollapsibleContent";
+import { CollapsibleGroupHeading } from "./CollapsibleGroupHeading";
+import {
+  CollapsibleWithCheckbox,
+  CollapsibleWithCheckboxProps,
+} from "./CollapsibleWithCheckbox";
+
+export default {
+  title: "panels/Collapsible",
+  component: Collapsible,
+  subcomponents: {
+    CollapsibleClickableContent,
+    CollapsibleContent,
+    CollapsibleGroupHeading,
+    CollapsibleWithCheckbox,
+  },
+};
 
 function xor(...values: boolean[]) {
   const sum = values.reduce(
@@ -49,10 +59,6 @@ const StatefulCollapsible: React.FC<CollapsibleProps> = (props) => {
       collapsed={collapsed}
     />
   );
-};
-
-export default {
-  title: "panels/Collapsible",
 };
 
 export const Overview = () => {

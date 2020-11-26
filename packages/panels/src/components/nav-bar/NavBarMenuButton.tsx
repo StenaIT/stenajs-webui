@@ -16,7 +16,8 @@ interface RenderPropArgs {
   close: () => void;
 }
 
-interface NavBarMenuButtonProps extends Omit<NavBarButtonProps, "onClick"> {
+export interface NavBarMenuButtonProps
+  extends Omit<NavBarButtonProps, "onClick"> {
   zIndex?: number;
   render?: RenderProp;
   maxHeightMenu?: string;

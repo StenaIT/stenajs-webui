@@ -1,23 +1,27 @@
 import * as React from "react";
-import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
+import { Text } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
-import { LoadingModal } from "./LoadingModal";
+import { CenterModal } from "./CenterModal";
 
 export default {
-  title: "modal/LoadingModal",
-  component: LoadingModal,
+  title: "modal/CenterModal",
+  component: CenterModal,
 };
 
 export const Standard = () => (
   <div style={{ display: "inline-block" }}>
     <PrimaryButton label={"Not clickable"} onClick={() => alert("Oupsies")} />
-    <LoadingModal />
+    <CenterModal isOpen>
+      <Text>Some modal stuff</Text>
+    </CenterModal>
   </div>
 );
 
 export const WithHeaderAndIcon = () => (
   <div style={{ display: "inline-block" }}>
     <PrimaryButton label={"Not clickable"} onClick={() => alert("Oupsies")} />
-    <LoadingModal headerText={"Saving agreement..."} headerIconLeft={faLock} />
+    <CenterModal isOpen>
+      <Text>Some modal stuff</Text>
+    </CenterModal>
   </div>
 );

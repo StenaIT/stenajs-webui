@@ -1,14 +1,14 @@
-import {
-  createColumnConfig,
-  createEditableTextCellWithStatus,
-  createStandardEditableTextCell,
-  StandardTable,
-  StandardTableConfig,
-} from "@stenajs-webui/grid";
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Box, Column, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Column, Spacing, Text } from "@stenajs-webui/core";
+import {
+  createColumnConfig,
+  StandardTableConfig,
+} from "../config/StandardTableConfig";
+import { StandardTable } from "../components/StandardTable";
+import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
+import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
 
 interface ListItem {
   id: string;
@@ -386,7 +386,7 @@ export const ExpandableRows = () => {
     enableExpandCollapse: true,
     renderRowExpansion: (item) => (
       <Box spacing indent>
-        <StandardText>Name: {item.name}</StandardText>
+        <Text>Name: {item.name}</Text>
       </Box>
     ),
     ...standardTableConfigForStories,
@@ -411,7 +411,7 @@ export const SomeExpandableRows = () => {
       item.numPassengers != null && item.numPassengers > 500,
     renderRowExpansion: (item) => (
       <Box spacing indent>
-        <StandardText>Name: {item.name}</StandardText>
+        <Text>Name: {item.name}</Text>
       </Box>
     ),
     ...standardTableConfigForStories,
@@ -455,7 +455,7 @@ export const WithStickyTableHeaderConfiguration = () => {
 
   const config: StandardTableConfig<ListItem> = {
     headerRowSticky: true,
-    headerRowOffsetTop: 16,
+    headerRowOffsetTop: "16px",
     headerRowZIndex: 499,
     ...standardTableConfigForStories,
     columns: {
@@ -478,9 +478,7 @@ export const WithStickyTableHeaderConfiguration = () => {
           backgroundColor: "white",
         }}
       >
-        <StandardText>
-          Other upper sticky content that should stick above header
-        </StandardText>
+        <Text>Other upper sticky content that should stick above header</Text>
       </Box>
       <StandardTable items={items} config={config} />
     </Box>

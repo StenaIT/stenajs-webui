@@ -1,8 +1,9 @@
-import { ErrorPanel } from "@stenajs-webui/panels";
+import { ErrorPanel } from "./ErrorPanel";
 import * as React from "react";
 
 export default {
   title: "panels/Error/ErrorPanel",
+  component: ErrorPanel,
 };
 
 export const Standard = () => <ErrorPanel />;

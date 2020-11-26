@@ -3,7 +3,7 @@ import * as React from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
 import contentStyles from "./SidebarMenuContent.module.css";
 
-interface SidebarMenuLinkProps
+export interface SidebarMenuLinkProps
   extends ClickableProps,
     Pick<
       ButtonContentProps,

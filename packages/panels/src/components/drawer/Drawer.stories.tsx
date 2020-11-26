@@ -1,11 +1,12 @@
 import { Box, useBoolean, useOnClickOutside } from "@stenajs-webui/core";
-import { Drawer } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useRef } from "react";
 import { PrimaryButton } from "@stenajs-webui/elements";
+import { Drawer } from "./Drawer";
 
 export default {
   title: "panels/Drawer",
+  component: Drawer,
 };
 
 export const Standard = () => {

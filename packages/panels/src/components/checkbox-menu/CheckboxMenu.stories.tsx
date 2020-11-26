@@ -1,20 +1,14 @@
 import { ActionMenuItem, Icon, Label } from "@stenajs-webui/elements";
-import { CheckboxMenu } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useState } from "react";
-import {
-  Column,
-  Indent,
-  Row,
-  Space,
-  Spacing,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Column, Indent, Row, Space, Spacing, Text } from "@stenajs-webui/core";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
+import { CheckboxMenu } from "./CheckboxMenu";
 
 export default {
   title: "panels/CheckboxMenu",
+  component: CheckboxMenu,
 };
 
 interface State {
@@ -83,19 +77,19 @@ export const Standard = () => {
       <Row>
         <Icon icon={state.accompanied ? faCheckCircle : faCircle} />
         <Indent />
-        <StandardText>accompanied</StandardText>
+        <Text>accompanied</Text>
       </Row>
       <Space />
       <Row>
         <Icon icon={state.unaccompanied ? faCheckCircle : faCircle} />
         <Indent />
-        <StandardText>unaccompanied</StandardText>
+        <Text>unaccompanied</Text>
       </Row>
       <Space />
       <Row>
         <Icon icon={state.vehicleTypeIsNull ? faCheckCircle : faCircle} />
         <Indent />
-        <StandardText>vehicleTypeIsNull</StandardText>
+        <Text>vehicleTypeIsNull</Text>
       </Row>
     </Column>
   );
