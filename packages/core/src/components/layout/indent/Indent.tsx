@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, BoxProps } from "../box/Box";
 
-interface IndentProps extends BoxProps {
+export interface IndentProps extends BoxProps {
   num?: number | boolean;
 }
 

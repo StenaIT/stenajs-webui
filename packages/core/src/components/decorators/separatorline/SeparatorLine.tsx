@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { ColorProperty } from "csstype";
 import * as React from "react";
-import { cssColor } from "@stenajs-webui/theme";
 
 export interface SeparatorLineProps {
   color?: ColorProperty;
@@ -29,7 +28,7 @@ const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
 `;
 
 export const SeparatorLine: React.FC<SeparatorLineProps> = ({
-  color = cssColor("--lhds-color-ui-300"),
+  color = "var(--lhds-color-ui-300)",
   ...props
 }) => {
   return <SeparatorLineComponent color={color} {...props} />;

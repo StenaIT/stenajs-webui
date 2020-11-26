@@ -1,81 +1,21 @@
-import { Box, defaultTheme, StandardText } from "@stenajs-webui/core";
-import { color, number, select } from "@storybook/addon-knobs";
-import * as CSS from "csstype";
 import * as React from "react";
 import markdown from "./Box.md";
+import { Box, BoxProps } from "./Box";
+import { Text } from "../../text/Text";
+import { Story } from "@storybook/react";
 
 export default {
   title: "core/Layout/Box",
+  component: Box,
+  parameters: { notes: { markdown } },
 };
 
-export const Standard = () => (
-  <Box
-    width={`${number("width", 100, {
-      range: true,
-      min: 100,
-      max: 500,
-      step: 1,
-    })}px`}
-    height={`${number("height", 100, {
-      range: true,
-      min: 100,
-      max: 500,
-      step: 1,
-    })}px`}
-    background={select(
-      "background",
-      Object.keys(defaultTheme.colors),
-      "primaryBg"
-    )}
-    color={select("color", Object.keys(defaultTheme.colors), "primaryText")}
-    indent={number("indent", 1, { range: true, min: 0, max: 10, step: 1 })}
-    spacing={number("spacing", 1, {
-      range: true,
-      min: 0,
-      max: 10,
-      step: 1,
-    })}
-    borderWidth={number("borderWidth", 1, {
-      range: true,
-      min: 0,
-      max: 10,
-      step: 1,
-    })}
-    borderColor={select(
-      "borderColor",
-      Object.keys(defaultTheme.colors),
-      "primaryBg"
-    )}
-    borderStyle={select(
-      "borderStyle",
-      ["solid", "dashed", "dotted", "double", "groove", "ridge"],
-      "solid"
-    )}
-    shadow={select("shadow", ["", "box", "modal"], "")}
-    justifyContent={select(
-      "justifyContent",
-      ["flex-start", "center", "flex-end", "space-around", "space-between"],
-      "flex-start"
-    )}
-    alignItems={select(
-      "alignItems",
-      ["flex-start", "center", "flex-end", "space-around", "space-between"],
-      "flex-start"
-    )}
-    flexDirection={
-      select(
-        "flexDirection",
-        ["column", "row"],
-        "column"
-      ) as CSS.FlexDirectionProperty
-    }
-  >
-    <StandardText>hello</StandardText>
-    <StandardText>world</StandardText>
+export const Overview: Story<BoxProps> = (props) => (
+  <Box {...props}>
+    <Text>hello</Text>
+    <Text>world</Text>
   </Box>
 );
-
-Standard.parameters = { notes: { markdown } };
 
 export const Row = () => (
   <Box row>
@@ -103,22 +43,14 @@ export const WithDomAttributes = () => (
 );
 
 export const Background = () => (
-  <Box
-    background={select(
-      "background",
-      Object.keys(defaultTheme.colors),
-      "primaryBg"
-    )}
-    indent
-    spacing
-  >
+  <Box background={"red"} indent spacing>
     <div>hello</div>
     <div>world</div>
   </Box>
 );
 
 export const CustomBackground = () => (
-  <Box background={color("background", "#e66465")} indent spacing>
+  <Box background={"#e66465"} indent spacing>
     <div>hello</div>
     <div>world</div>
   </Box>
@@ -126,10 +58,7 @@ export const CustomBackground = () => (
 
 export const GradientBackground = () => (
   <Box
-    background={`linear-gradient(to right, ${color(
-      "Color 1",
-      "#e66465"
-    )}, ${color("Color 2", "#9198e5")})`}
+    background={`linear-gradient(to right, "#e66465", #9198e5)`}
     indent
     spacing
   >
@@ -139,11 +68,7 @@ export const GradientBackground = () => (
 );
 
 export const IndentAndSpacing = () => (
-  <Box
-    background={"#DFCD59"}
-    indent={number("indent", 1, { range: true, min: 0, max: 10, step: 1 })}
-    spacing={number("spacing", 1, { range: true, min: 0, max: 10, step: 1 })}
-  >
+  <Box background={"#DFCD59"} indent={4} spacing={4}>
     <div>hello</div>
     <div>world</div>
   </Box>
@@ -152,22 +77,9 @@ export const IndentAndSpacing = () => (
 export const Border = () => (
   <div style={{ display: "inline-block" }}>
     <Box
-      borderWidth={number("borderWidth", 1, {
-        range: true,
-        min: 0,
-        max: 10,
-        step: 1,
-      })}
-      borderColor={select(
-        "borderColor",
-        Object.keys(defaultTheme.colors),
-        "primaryBg"
-      )}
-      borderStyle={select(
-        "borderStyle",
-        ["solid", "dashed", "dotted", "double", "groove", "ridge"],
-        "solid"
-      )}
+      borderWidth={1}
+      borderColor={"blue"}
+      borderStyle={"solid"}
       indent
       spacing
     >
@@ -189,9 +101,7 @@ export const CustomBorder = () => (
 export const BoxShadow = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"box"} indent spacing>
-      <StandardText>
-        This shadow is primarily used for cards, not modals.
-      </StandardText>
+      <Text>This shadow is primarily used for cards, not modals.</Text>
     </Box>
   </div>
 );
@@ -199,17 +109,13 @@ export const BoxShadow = () => (
 export const ModalShadow = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"modal"} indent spacing>
-      <StandardText>This shadow is primarily used for modals.</StandardText>
+      <Text>This shadow is primarily used for modals.</Text>
     </Box>
   </div>
 );
 
 export const CustomShadow = () => (
-  <Box
-    shadow={`${color("Shadow color", "red")} 0px 0px 10px 4px;`}
-    indent
-    spacing
-  >
+  <Box shadow={`red 0px 0px 10px 4px`} indent spacing>
     <div>hello</div>
     <div>world</div>
   </Box>
@@ -234,7 +140,7 @@ export const FlexGrowChildren = () => (
 
 export const WithAriaLabel = () => (
   <>
-    <StandardText>This blue box has an aria label.</StandardText>
+    <Text>This blue box has an aria label.</Text>
     <Box indent spacing>
       <Box
         aria-label={"This is a blue box."}

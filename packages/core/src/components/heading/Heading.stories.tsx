@@ -1,9 +1,15 @@
 import * as React from "react";
-import { Heading } from "@stenajs-webui/core";
+import { Heading, HeadingProps } from "./Heading";
+import { Story } from "@storybook/react";
 
 export default {
   title: "core/Text/Heading",
+  component: Heading,
 };
+
+export const Overview: Story<HeadingProps> = (props) => (
+  <Heading {...props}>The five boxing wizards jump quickly.</Heading>
+);
 
 export const H1 = () => (
   <Heading variant={"h1"}>The five boxing wizards jump quickly.</Heading>
