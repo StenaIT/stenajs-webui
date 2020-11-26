@@ -1,14 +1,26 @@
-import {
-  ResultListBanner,
-  useResultListBannerState,
-} from "@stenajs-webui/elements";
 import * as React from "react";
+import { useResultListBannerState } from "./hooks/UseResultListBannerState";
+import { ResultListBanner, ResultListBannerProps } from "./ResultListBanner";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Banners/ResultListBanner",
+  component: ResultListBanner,
+  argTypes: {
+    bannerState: disabledControl,
+    icon: disabledControl,
+    contentRight: disabledControl,
+  },
+  args: {
+    variant: "error",
+  },
 };
 
-export const Standard = () => {
+export const Overview: Story<ResultListBannerProps> = ({
+  variant,
+  loading,
+}) => {
   const { bannerState } = useResultListBannerState({
     headerText: "Could not save bookings",
     items: [
@@ -29,11 +41,13 @@ export const Standard = () => {
     ],
   });
 
-  if (!bannerState) {
-    return null;
-  }
-
-  return <ResultListBanner variant={"error"} bannerState={bannerState} />;
+  return (
+    <ResultListBanner
+      variant={variant}
+      loading={loading}
+      bannerState={bannerState!}
+    />
+  );
 };
 
 export const WithText = () => {

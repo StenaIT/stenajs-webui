@@ -2,20 +2,20 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Text } from "@stenajs-webui/core";
-import {
-  ActionDropdown,
-  ActionMenuItem,
-  ActionMenuSeparator,
-} from "@stenajs-webui/elements";
-import { action } from "@storybook/addon-actions";
 import * as React from "react";
+import { ActionMenuItem } from "./ActionMenuItem";
+import { ActionDropdown } from "./ActionDropdown";
+import { ActionMenuSeparator } from "./ActionMenuSeparator";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "elements/ActionMenu/ActionDropdown",
+  component: ActionDropdown,
+  subcomponents: { ActionMenuItem, ActionMenuSeparator },
 };
 
-export const Standard = () => (
-  <ActionDropdown>
+export const Overview = () => (
+  <ActionDropdown zIndexOnMenu={1000}>
     <ActionMenuItem label={"Open"} onClick={action("Opened")} />
     <ActionMenuItem label={"Save"} icon={faSave} onClick={action("Saved")} />
     <ActionMenuItem

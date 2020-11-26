@@ -2,17 +2,20 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Text } from "@stenajs-webui/core";
-import {
-  ActionMenu,
-  ActionMenuItem,
-  ActionMenuSeparator,
-} from "@stenajs-webui/elements";
 import { action } from "@storybook/addon-actions";
+import { ActionMenuItem } from "./ActionMenuItem";
+import { ActionMenu } from "./ActionMenu";
+import { ActionMenuSeparator } from "./ActionMenuSeparator";
 import * as React from "react";
 import markdown from "./ActionMenu.md";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
+  component: ActionMenu,
+  subcomponents: { ActionMenuItem, ActionMenuSeparator },
+  parameters: {
+    notes: { markdown },
+  },
 };
 
 export const Standard = () => (
@@ -62,7 +65,3 @@ export const Standard = () => (
     />{" "}
   </ActionMenu>
 );
-
-Standard.parameters = {
-  notes: { markdown },
-};

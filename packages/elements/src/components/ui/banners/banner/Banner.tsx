@@ -41,7 +41,7 @@ export const Banner: React.FC<BannerProps> = ({
   contentRight,
   icon,
   variant = "standard",
-  loading,
+  loading = false,
 }) => {
   return (
     <div className={cx(styles.banner, styles[variant])}>

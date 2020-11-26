@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
 
-  &.notification {
+  &.info {
     background: var(--swui-badge-notification-bg-color);
   }
 
