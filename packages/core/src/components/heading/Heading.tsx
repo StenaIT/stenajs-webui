@@ -12,7 +12,7 @@ export interface HeadingProps extends H1Props {
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export const Heading: React.FC<HeadingProps> = ({
-  variant: Element = "h3",
+  variant = "h3",
   className,
   color,
   whiteSpace,
@@ -20,6 +20,7 @@ export const Heading: React.FC<HeadingProps> = ({
   children,
   ...hProps
 }) => {
+  const Element = variant;
   return (
     <Element
       className={cx(styles.heading, className)}

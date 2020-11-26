@@ -3,11 +3,23 @@ import markdown from "./Box.md";
 import { Box, BoxProps } from "./Box";
 import { Text } from "../../text/Text";
 import { Story } from "@storybook/react";
+import {
+  colorListControl,
+  shadowListControl,
+  spaceControl,
+} from "../../../../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Layout/Box",
   component: Box,
   parameters: { notes: { markdown } },
+  argTypes: {
+    color: colorListControl,
+    background: colorListControl,
+    shadow: shadowListControl,
+    indent: spaceControl,
+    spacing: spaceControl,
+  },
 };
 
 export const Overview: Story<BoxProps> = (props) => (

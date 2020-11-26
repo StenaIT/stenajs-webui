@@ -8,7 +8,7 @@ export default {
   component: Space,
 };
 
-export const Standard = () => (
+export const Overview = () => (
   <Row>
     <Box width={"50px"} height={"50px"} background={"red"} />
     <Space />

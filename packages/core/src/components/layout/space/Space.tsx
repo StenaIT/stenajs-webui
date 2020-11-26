@@ -11,9 +11,9 @@ export interface SpaceProps {
 export const Space: React.FC<SpaceProps> = ({
   children,
   half = false,
-  horizontal,
+  horizontal = false,
   num = 1,
-  vertical,
+  vertical = false,
 }) => {
   const space = useThemeSelector((theme) => theme.metrics.space, []);
 

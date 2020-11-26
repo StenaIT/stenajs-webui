@@ -29,7 +29,16 @@ const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
 
 export const SeparatorLine: React.FC<SeparatorLineProps> = ({
   color = "var(--lhds-color-ui-300)",
-  ...props
+  size = "100%",
+  width = "1px",
+  vertical = false,
 }) => {
-  return <SeparatorLineComponent color={color} {...props} />;
+  return (
+    <SeparatorLineComponent
+      color={color}
+      size={size}
+      width={width}
+      vertical={vertical}
+    />
+  );
 };

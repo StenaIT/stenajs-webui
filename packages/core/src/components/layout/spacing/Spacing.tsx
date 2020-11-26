@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, BoxProps } from "../box/Box";
 
-interface SpacingProps extends BoxProps {
+export interface SpacingProps extends BoxProps {
   num?: number | boolean;
 }
 
