@@ -14,9 +14,13 @@ export const Overview = () => (
     <StandardText>Standard</StandardText>
     <TextInput value={knobs.text("Text", "Some nice text.")} />
     <Space />
-    {(["success", "error", "warning", "loading", "modified"] as Array<
-      TextInputVariant
-    >).map((variant) => (
+    {([
+      "success",
+      "error",
+      "warning",
+      "loading",
+      "modified",
+    ] as Array<TextInputVariant>).map((variant) => (
       <React.Fragment key={variant}>
         <StandardText>Variant={variant}</StandardText>
         <TextInput value={"Some text"} variant={variant} />
@@ -39,21 +43,13 @@ export const Overview = () => (
     <StandardText>Content left</StandardText>
     <TextInput
       value={"Some text"}
-      contentLeft={
-        <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
-          ms
-        </StandardText>
-      }
+      contentLeft={<StandardText>ms</StandardText>}
     />
     <Space />
     <StandardText>Content right</StandardText>
     <TextInput
       value={"Some text"}
-      contentRight={
-        <StandardText lineHeight={"var(--swui-field-text-line-height)"}>
-          ms
-        </StandardText>
-      }
+      contentRight={<StandardText>ms</StandardText>}
     />
     <Space />
     <StandardText>Placeholder</StandardText>

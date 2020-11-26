@@ -3,6 +3,7 @@
   --swui-chip-font-size: var(--swui-font-size-small);
   --swui-chip-line-height: var(--swui-line-height-small);
   --swui-chip-font-weight: var(--swui-font-weight-text);
+  --swui-chip-font-family: var(--swui-text-font-family);
   --swui-chip-letter-spacing: -0.34px;
   --swui-chip-height: 24px;
   --swui-chip-border-radius: var(--swui-border-radius);
@@ -22,6 +23,7 @@
   background-color: var(--current-bg-color);
 
   .chipCell {
+    font-family: var(--swui-chip-font-family);
     font-size: var(--swui-chip-font-size);
     font-weight: var(--swui-chip-font-weight);
     line-height: var(--swui-chip-line-height);

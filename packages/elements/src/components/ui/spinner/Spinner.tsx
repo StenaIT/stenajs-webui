@@ -2,7 +2,7 @@ import { ClassNames, keyframes } from "@emotion/core";
 import * as React from "react";
 import { ReactComponent as SpinnerSvg } from "./spinner-large.svg";
 
-export type SpinnerSize = "large" | "normal" | "small" | "tiny";
+export type SpinnerSize = "large" | "medium" | "small" | "tiny";
 
 export interface SpinnerProps {
   size?: SpinnerSize | string;
@@ -12,7 +12,7 @@ export interface SpinnerProps {
 
 const sizes: Record<SpinnerSize, string> = {
   large: "78px",
-  normal: "54px",
+  medium: "54px",
   small: "34px",
   tiny: "20px",
 };
@@ -69,7 +69,7 @@ const dash = keyframes`
 `;
 
 export const Spinner: React.FC<SpinnerProps> = React.memo(
-  ({ size = "normal", inverted, color }) => {
+  ({ size = "medium", inverted, color }) => {
     const sizeToUse = (sizes[size] as string | undefined) || size;
     return (
       <ClassNames>

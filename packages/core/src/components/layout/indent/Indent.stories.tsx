@@ -1,10 +1,8 @@
 import { Indent } from "@stenajs-webui/core";
-import { withInfo } from "@storybook/addon-info";
 import * as React from "react";
 
 export default {
   title: "core/Layout/Indent",
-  decorators: [withInfo({ propTables: false })],
 };
 
 export const Standard = () => (

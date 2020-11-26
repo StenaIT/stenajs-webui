@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ReactNode } from "react";
 
-export type ButtonSize = "normal" | "small" | "large";
+export type ButtonSize = "medium" | "small" | "large";
 export type ButtonVariant = "normal" | "danger" | "success";
 
 export interface CommonButtonProps {

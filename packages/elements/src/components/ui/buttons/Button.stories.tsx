@@ -18,7 +18,7 @@ import {
 } from "@stenajs-webui/elements";
 import * as React from "react";
 
-const buttonSizes: Array<ButtonSize> = ["small", "normal", "large"];
+const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
 export default {
   title: "elements/Buttons",

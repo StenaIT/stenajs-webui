@@ -13,7 +13,7 @@ export interface PrimaryButtonProps
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   label,
   className,
-  size = "normal",
+  size = "medium",
   loadingLabel,
   loading = false,
   success = false,

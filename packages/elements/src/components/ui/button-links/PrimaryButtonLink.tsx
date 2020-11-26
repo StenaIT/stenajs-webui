@@ -13,7 +13,7 @@ export interface PrimaryButtonLinkProps
 export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   label,
   className,
-  size = "normal",
+  size = "medium",
   loadingLabel,
   loading = false,
   success = false,
