@@ -1,5 +1,5 @@
 import { faExclamation } from "@fortawesome/free-solid-svg-icons/faExclamation";
-import { Box, Space, StandardText, useThemeFields } from "@stenajs-webui/core";
+import { Box, Space, Text, useThemeFields } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { defaultErrorPanelTheme, ErrorPanelTheme } from "./ErrorPanelTheme";
@@ -31,7 +31,7 @@ export const ErrorPanel: React.FC<ErrorPanelProps> = ({
     >
       <Icon icon={faExclamation} size={42} />
       <Space num={4} />
-      <StandardText>{text}</StandardText>
+      <Text>{text}</Text>
     </Box>
   );
 };

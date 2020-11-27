@@ -1,4 +1,4 @@
-import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Indent, Row, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { useGridCell } from "@stenajs-webui/grid";
 import * as React from "react";
@@ -7,7 +7,7 @@ import { FocusedBox } from "./FocusedBox";
 import {
   createCustomValueRows,
   createIndexArray,
-  CustomValueCell
+  CustomValueCell,
 } from "./util/GridHooksExampleUtils";
 
 const list10 = createIndexArray(10);
@@ -75,7 +75,7 @@ const GridCell: React.FC<GridCellProps> = ({
   numRows,
   numCols,
   value,
-  updateCell
+  updateCell,
 }) => {
   const {
     requiredProps,
@@ -85,28 +85,28 @@ const GridCell: React.FC<GridCellProps> = ({
     stopEditingAndRevert,
     stopEditingAndMove,
     editorValue,
-    setEditorValue
+    setEditorValue,
   } = useGridCell<CustomValueCell>(value, {
     rowIndex,
     colIndex,
     numRows,
     numCols,
-    onChange: v => updateCell(rowIndex, colIndex, v),
+    onChange: (v) => updateCell(rowIndex, colIndex, v),
     tableId: "test",
     isEditable: true,
-    wrap: false,
-    transformEnteredValue: enteredValue => ({
+    edgeMode: "wrapped",
+    transformEnteredValue: (enteredValue) => ({
       col: colIndex,
       row: rowIndex,
-      name: enteredValue || ""
-    })
+      name: enteredValue || "",
+    }),
   });
 
   const onChange = useCallback(
     (input: string) => {
       setEditorValue({
         ...value,
-        name: input
+        name: input,
       });
     },
     [setEditorValue, value]
@@ -125,7 +125,7 @@ const GridCell: React.FC<GridCellProps> = ({
           onMove={stopEditingAndMove}
         />
       ) : (
-        <StandardText>{`${value.name}, ${value.row}, ${value.col}`}</StandardText>
+        <Text>{`${value.name}, ${value.row}, ${value.col}`}</Text>
       )}
     </FocusedBox>
   );

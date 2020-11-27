@@ -6,7 +6,7 @@ import {
   Row,
   Space,
   Spacing,
-  StandardText,
+  Text,
 } from "@stenajs-webui/core";
 import * as React from "react";
 
@@ -24,7 +24,7 @@ export const EventListCard = () => {
           <Box background={"#eaeaea"}>
             <Spacing>
               <Indent>
-                <StandardText>Events</StandardText>
+                <Text>Events</Text>
               </Indent>
             </Spacing>
           </Box>
@@ -32,7 +32,7 @@ export const EventListCard = () => {
           {list.map((label) => (
             <Box background={"#fff"} spacing indent>
               <Row justifyContent={"space-between"}>
-                <StandardText color={"#a8a8a8"}>{label}</StandardText>
+                <Text color={"#a8a8a8"}>{label}</Text>
               </Row>
 
               {list.map(() => (
@@ -54,13 +54,11 @@ export const EventListCard = () => {
                     <>
                       <Row flex={1} alignItems={"center"}>
                         <Clickable onClick={() => {}}>
-                          <StandardText hoverUnderline>
-                            Added new sailing
-                          </StandardText>
+                          <Text>Added new sailing</Text>
                         </Clickable>
                       </Row>
                       <Row alignItems={"center"} justifyContent={"flex-end"}>
-                        <StandardText>15 minutes ago</StandardText>
+                        <Text>15 minutes ago</Text>
                       </Row>
                     </>
                   </Row>

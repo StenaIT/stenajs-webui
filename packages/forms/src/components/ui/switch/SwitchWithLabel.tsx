@@ -1,10 +1,10 @@
-import { Box, Space, StandardText, ThemeColorField } from "@stenajs-webui/core";
+import { Box, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { Switch, SwitchProps } from "./Switch";
 
 export interface SwitchWithLabelProps extends SwitchProps {
   label: string;
-  textColor?: ThemeColorField | string;
+  textColor?: string;
 }
 
 export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
@@ -21,9 +21,9 @@ export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
         <Box row alignItems={"center"}>
           <Switch disabled={disabled} {...switchProps} />
           <Space />
-          <StandardText userSelect={"none"} color={textColor}>
+          <Text userSelect={"none"} color={textColor}>
             {label}
-          </StandardText>
+          </Text>
         </Box>
       </label>
     </div>

@@ -4,9 +4,8 @@ import {
   Clickable,
   Column,
   Row,
-  SmallText,
   Space,
-  StandardText,
+  Text,
   ThemeColorField,
   useThemeFields,
 } from "@stenajs-webui/core";
@@ -84,13 +83,13 @@ export const Notification: React.FC<NotificationProps> = ({
           <Column flex={1}>
             {title && (
               <>
-                <StandardText>{title}</StandardText>
+                <Text>{title}</Text>
                 <Space half />
               </>
             )}
             {text && (
               <>
-                <SmallText>{text}</SmallText>
+                <Text size={"small"}>{text}</Text>
                 <Space half />
               </>
             )}
@@ -100,7 +99,9 @@ export const Notification: React.FC<NotificationProps> = ({
                 <Space half />
               </>
             )}
-            <SmallText color={colors.disabledText}>{agoLabel}</SmallText>
+            <Text size={"small"} color={colors.disabledText}>
+              {agoLabel}
+            </Text>
           </Column>
         </Row>
       </Box>

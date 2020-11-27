@@ -3,7 +3,7 @@ import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
-import { Clickable, Column, LargeText, Row } from "@stenajs-webui/core";
+import { Clickable, Column, Row, Text } from "@stenajs-webui/core";
 import { Badge, Icon } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -68,7 +68,7 @@ export const Overview = () => {
   return (
     <Column width={300}>
       <Row indent={2} spacing={2}>
-        <LargeText>Spaceship parts</LargeText>
+        <Text size={"large"}>Spaceship parts</Text>
       </Row>
       <StatefulCollapsible label={"Engines"} collapsed={true}>
         <CollapsibleContent />
@@ -154,7 +154,7 @@ export const AlternativeIcons = () => {
   return (
     <Column width={300}>
       <Row indent={2} spacing={2}>
-        <LargeText>Parts</LargeText>
+        <Text size={"large"}>Parts</Text>
       </Row>
       <StatefulCollapsibleWithCheckbox
         label={"Astromech droids"}
@@ -268,7 +268,7 @@ export const GroupHeaders = () => {
   return (
     <Column width={300}>
       <Row indent={2} spacing={2}>
-        <LargeText>Parts</LargeText>
+        <Text size={"large"}>Parts</Text>
       </Row>
       <StatefulCollapsible label={"Jedis"}>
         <CollapsibleGroupHeading>Dark side</CollapsibleGroupHeading>
@@ -308,7 +308,7 @@ export const RadioButtons = () => {
   return (
     <Column width={300}>
       <Row indent={2} spacing={2}>
-        <LargeText>Parts</LargeText>
+        <Text size={"large"}>Parts</Text>
       </Row>
       <StatefulCollapsible label={"Astromech droids"}>
         <CollapsibleClickableContent

@@ -1,4 +1,4 @@
-import { Box, Clickable, StandardText } from "@stenajs-webui/core";
+import { Box, Clickable, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import styled from "@emotion/styled";
 import {
@@ -26,7 +26,7 @@ export const CalendarDay = <T extends {}>({
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <StandardText
+      <Text
         {...(theme.CalendarDay.textProps &&
           theme.CalendarDay.textProps(
             defaultHighlights,
@@ -38,7 +38,7 @@ export const CalendarDay = <T extends {}>({
           ))}
       >
         {day.dayOfMonth}
-      </StandardText>
+      </Text>
     </Box>
   );
 

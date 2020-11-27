@@ -1,13 +1,6 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import {
-  Column,
-  Indent,
-  Row,
-  Space,
-  StandardText,
-  Text,
-} from "@stenajs-webui/core";
+import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ButtonSize, ButtonVariant } from "./common/ButtonCommon";
 import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
@@ -45,34 +38,34 @@ export const Overview = () => (
           <thead>
             <tr>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Size</StandardText>
+                <Text>Size</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Standard</StandardText>
+                <Text>Standard</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled</StandardText>
+                <Text>Disabled</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Icon only</StandardText>
+                <Text>Icon only</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled icon</StandardText>
+                <Text>Disabled icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Left icon</StandardText>
+                <Text>Left icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Right icon</StandardText>
+                <Text>Right icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Both icons</StandardText>
+                <Text>Both icons</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Loading</StandardText>
+                <Text>Loading</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Success</StandardText>
+                <Text>Success</Text>
               </th>
             </tr>
           </thead>
@@ -80,7 +73,7 @@ export const Overview = () => (
             {buttonSizes.map((size) => (
               <tr>
                 <td>
-                  <StandardText>{size}</StandardText>
+                  <Text>{size}</Text>
                 </td>
                 <td>
                   <ButtonVariant size={size} label={"Submit"} />

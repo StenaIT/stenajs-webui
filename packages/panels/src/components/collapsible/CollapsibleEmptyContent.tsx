@@ -1,5 +1,5 @@
 import { faInbox } from "@fortawesome/free-solid-svg-icons/faInbox";
-import { Column, SmallText, Space } from "@stenajs-webui/core";
+import { Column, Text, Space } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 
@@ -10,7 +10,9 @@ export const CollapsibleEmptyContent: React.FC<Props> = () => {
     <Column indent spacing flex={1} alignItems={"center"}>
       <Icon icon={faInbox} color={"var(--lhds-color-ui-500)"} />
       <Space />
-      <SmallText color={"var(--lhds-color-ui-500)"}>No content</SmallText>
+      <Text size={"small"} color={"var(--lhds-color-ui-500)"}>
+        No content
+      </Text>
     </Column>
   );
 };
