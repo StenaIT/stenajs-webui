@@ -3,7 +3,6 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
 import { Box, Row, Space, Spacing, Text } from "@stenajs-webui/core";
 import { Icon, PrimaryButton } from "@stenajs-webui/elements";
-import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
@@ -61,7 +60,7 @@ export const ModalWithFixedWidth = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        width={knobs.number("Width", 300) + "px"}
+        width={"300px"}
         headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}

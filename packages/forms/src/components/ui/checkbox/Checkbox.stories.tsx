@@ -1,5 +1,4 @@
 import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
-import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
@@ -37,27 +36,16 @@ export const Overview = () => {
       <Space num={2} />
 
       <Text size={"large"} variant={"bold"}>
-        Clickable and knobs
+        Clickable
       </Text>
 
       <Space num={2} />
 
-      <Checkbox
-        value={checked}
-        onValueChange={setChecked}
-        disabled={knobs.boolean("Disabled", false)}
-        indeterminate={knobs.boolean("Indeterminate", false)}
-      />
+      <Checkbox value={checked} onValueChange={setChecked} />
 
       <Space num={2} />
 
-      <Checkbox
-        size={"small"}
-        value={checked}
-        onValueChange={setChecked}
-        disabled={knobs.boolean("Disabled", false)}
-        indeterminate={knobs.boolean("Indeterminate", false)}
-      />
+      <Checkbox size={"small"} value={checked} onValueChange={setChecked} />
 
       <Space num={8} />
 
@@ -117,25 +105,12 @@ export const Overview = () => {
 };
 export const Standard = () => {
   const [checked, setChecked] = useState(false);
-  return (
-    <Checkbox
-      value={checked}
-      onValueChange={setChecked}
-      disabled={knobs.boolean("Disabled", false)}
-    />
-  );
+  return <Checkbox value={checked} onValueChange={setChecked} />;
 };
 
 export const Small = () => {
   const [checked, setChecked] = useState(false);
-  return (
-    <Checkbox
-      size={"small"}
-      value={checked}
-      onValueChange={setChecked}
-      disabled={knobs.boolean("Disabled", false)}
-    />
-  );
+  return <Checkbox size={"small"} value={checked} onValueChange={setChecked} />;
 };
 
 export const Indeterminate = () => (
@@ -147,9 +122,10 @@ export const Indeterminate = () => (
 );
 
 export const Disabled = () => (
-  <Checkbox
-    value={knobs.boolean("Checked", false)}
-    indeterminate={knobs.boolean("Indeterminate", false)}
-    disabled
-  />
+  <Column>
+    <Checkbox value={true} disabled />
+    <Space />
+    <Checkbox value={false} disabled />
+    <Checkbox indeterminate disabled />
+  </Column>
 );
