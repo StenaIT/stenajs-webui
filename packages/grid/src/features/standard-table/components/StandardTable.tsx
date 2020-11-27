@@ -1,15 +1,13 @@
 import { Box, useDomId } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import type { StandardTableConfig } from "../config/StandardTableConfig";
+import { StandardTableConfig } from "../config/StandardTableConfig";
 import {
   StandardTableActionsContext,
   StandardTableConfigContext,
+  StandardTableInternalActionsContext,
   StandardTableStateContext,
   StandardTableTableIdContext,
-} from "../context/StandardTableStateContext";
-import type {
-  StandardTableInternalActionsContext,
   TableContext,
 } from "../context/StandardTableStateContext";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";

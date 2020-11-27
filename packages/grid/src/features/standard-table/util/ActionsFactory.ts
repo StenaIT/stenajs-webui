@@ -1,6 +1,6 @@
-import type { InternalStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
-import { reducerIdGateAction } from "@stenajs-webui/redux";
-import type {
+import { InternalStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
+import {
+  reducerIdGateAction,
   ReducerIdGateAction,
   SelectedIdsAction,
   SortOrderAction,

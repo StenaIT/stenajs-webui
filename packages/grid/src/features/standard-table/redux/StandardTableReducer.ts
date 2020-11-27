@@ -8,7 +8,7 @@ import {
   SortOrderState,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "./ReducerIdFactory";
-import type { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
+import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
 import { combineReducers, Reducer } from "redux";
 
 export interface StandardTableState<TColumnKey extends string> {

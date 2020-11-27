@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import type {
+import {
   UseGridCellOptions,
   UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";

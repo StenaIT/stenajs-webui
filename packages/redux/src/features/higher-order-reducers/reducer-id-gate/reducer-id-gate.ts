@@ -1,4 +1,4 @@
-import type { Action, AnyAction, Reducer } from "redux";
+import { Action, AnyAction, Reducer } from "redux";
 
 export interface ReducerIdGateAction<TInnerAction> {
   type: "REDUCER_ID_GATE:ACTION";

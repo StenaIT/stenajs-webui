@@ -1,5 +1,5 @@
 import { limitRange, wrapBounds } from "./bounds/NumberBoundsWrapper";
-import type { CellIndices } from "./DirectionCalculator";
+import { CellIndices } from "./DirectionCalculator";
 
 export const clampPos = (
   pos: CellIndices,

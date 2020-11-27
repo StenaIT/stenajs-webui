@@ -1,5 +1,5 @@
-import type { UseGridCellOptions } from "../features/grid-cell/hooks/UseGridCell";
-import type { ValidatedUseGridNavigationOptions } from "../features/grid-cell/hooks/UseGridNavigation";
+import { UseGridCellOptions } from "../features/grid-cell/hooks/UseGridCell";
+import { ValidatedUseGridNavigationOptions } from "../features/grid-cell/hooks/UseGridNavigation";
 
 export const validateGridHookOptions = <TValue>(
   options: UseGridCellOptions<TValue>

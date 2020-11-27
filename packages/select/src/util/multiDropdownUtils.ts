@@ -1,4 +1,4 @@
-import { isEqual, uniqWith, differenceWith, intersectionWith } from "lodash";
+import { differenceWith, intersectionWith, isEqual, uniqWith } from "lodash";
 import {
   ActionMeta,
   GroupedOptionsType,
@@ -6,7 +6,7 @@ import {
   OptionsType,
   ValueType,
 } from "react-select";
-import type {
+import {
   DropdownOption,
   OnChange,
   OnChangeValue,
