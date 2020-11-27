@@ -6,7 +6,7 @@ import { Icon, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
-import { BaseModal } from "../../../dist/components/modal/BaseModal";
+import { BaseModal } from "./BaseModal";
 import { Modal } from "./Modal";
 
 export default {
