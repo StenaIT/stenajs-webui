@@ -10,6 +10,7 @@ import { ButtonGroup } from "./ButtonGroup";
 export default {
   title: "elements/ButtonGroup",
   component: ButtonGroup,
+  subcomponents: { SecondaryButton },
 };
 
 export const Overview = () => (
