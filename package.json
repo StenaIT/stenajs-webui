@@ -162,13 +162,6 @@
       "git add"
     ]
   },
-  "madge": {
-    "detectiveOptions": {
-      "ts": {
-        "skipTypeImports": true
-      }
-    }
-  },
   "resolutions": {
     "react": "16.11.0",
     "@types/react": "16.8.19",
