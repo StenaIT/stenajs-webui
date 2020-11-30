@@ -3,7 +3,7 @@ import { Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
-import { TextInput, TextInputProps } from "../TextInput";
+import { TextInput, TextInputProps } from "../text-input/TextInput";
 import { parseFloatElseUndefined } from "./util/NumericTextInputUtil";
 
 export interface NumericTextInputProps

@@ -5,7 +5,7 @@ import styles from "./Collapsible.module.css";
 import { CollapsibleSimpleContentProps } from "./CollapsibleContent";
 import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
-interface CollapsibleClickableContentProps
+export interface CollapsibleClickableContentProps
   extends CollapsibleSimpleContentProps,
     ButtonElementProps {}
 

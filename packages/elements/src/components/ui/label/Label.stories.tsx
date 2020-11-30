@@ -1,16 +1,39 @@
-import { Column, Spacing, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
-import { Label } from "@stenajs-webui/elements";
+import { Column, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
+import { Label, LabelProps } from "./Label";
+import { Story } from "@storybook/react";
+import { hideArg } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/Label",
+  component: Label,
+  argTypes: {
+    color: hideArg,
+    spacing: hideArg,
+    indent: hideArg,
+    style: hideArg,
+    shadow: hideArg,
+    border: hideArg,
+    background: hideArg,
+    borderColor: hideArg,
+    hoverBackground: hideArg,
+    hoverBorder: hideArg,
+    focusBackground: hideArg,
+    focusBorder: hideArg,
+    focusWithinBackground: hideArg,
+    focusWithinBorder: hideArg,
+    innerRef: hideArg,
+  },
+  args: {
+    text: "First name",
+  },
 };
 
-export const Standard = () => (
+export const Overview: Story<LabelProps> = (props) => (
   <Column>
-    <Label text={"First name"}>
-      <StandardText>Donald</StandardText>
+    <Label {...props}>
+      <Text>Donald</Text>
     </Label>
   </Column>
 );

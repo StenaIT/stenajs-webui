@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Column, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Column, Row, Space, Text } from "@stenajs-webui/core";
 import { CalendarMonth, CalendarMonthProps } from "./CalendarMonth";
 
 interface CalendarMonthWithMonthTextHeaderProps<T>
@@ -11,9 +11,9 @@ export function CalendarMonthWithMonthTextHeader<T>(
   return (
     <Column>
       <Row alignItems={"center"} justifyContent={"center"}>
-        <StandardText>{props.month.name}</StandardText>
+        <Text>{props.month.name}</Text>
         <Space />
-        <StandardText>{props.month.year}</StandardText>
+        <Text>{props.month.year}</Text>
       </Row>
       <CalendarMonth {...props} />
     </Column>

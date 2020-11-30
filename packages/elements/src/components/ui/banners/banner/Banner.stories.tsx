@@ -1,9 +1,12 @@
 import * as React from "react";
 import { Box } from "@stenajs-webui/core";
-import { Banner, FlatButton, PrimaryButton } from "@stenajs-webui/elements";
+import { Banner } from "./Banner";
+import { PrimaryButton } from "../../buttons/PrimaryButton";
+import { FlatButton } from "../../buttons/FlatButton";
 
 export default {
   title: "elements/Banners/Banner",
+  component: Banner,
 };
 
 export const Standard = () => (

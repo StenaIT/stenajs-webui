@@ -1,5 +1,8 @@
-import { Box, Row, Spacing, StandardText } from "@stenajs-webui/core";
 import * as React from "react";
+import { Spacing } from "../spacing/Spacing";
+import { Row } from "../row/Row";
+import { Box } from "./Box";
+import { Text } from "../../text/Text";
 
 export const createIndexArray = (length: number) =>
   Array.from(Array(length).keys());
@@ -14,9 +17,7 @@ export default {
 export const Standard = () => (
   <>
     <Spacing>
-      <StandardText>
-        Change view port width to see width of items change.
-      </StandardText>
+      <Text>Change view port width to see width of items change.</Text>
     </Spacing>
     <Row flexWrap={"wrap"}>
       {items.map((_, index) => (
@@ -28,8 +29,8 @@ export const Standard = () => (
             spacing
             indent
           >
-            <StandardText>hello</StandardText>
-            <StandardText>world</StandardText>
+            <Text>hello</Text>
+            <Text>world</Text>
           </Box>
         </Box>
       ))}

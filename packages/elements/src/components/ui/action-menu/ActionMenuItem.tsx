@@ -4,7 +4,7 @@ import {
   Row,
   SmallerText,
   Space,
-  StandardText,
+  Text,
   useElementFocus,
   useMouseIsEntered,
   useThemeFields,
@@ -110,7 +110,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
               <Space />
             </>
           )}
-          <StandardText color={colors.itemLabelColor}>{label}</StandardText>
+          <Text color={colors.itemLabelColor}>{label}</Text>
         </Row>
         {rightText && (
           <SmallerText color={colors.itemTextColor}>{rightText}</SmallerText>

@@ -1,4 +1,4 @@
-import { Box, Indent, Row, Spacing, StandardText } from "@stenajs-webui/core";
+import { Box, Indent, Row, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { GridHooksTable, useGridCell } from "@stenajs-webui/grid";
 import * as React from "react";
@@ -71,7 +71,7 @@ const GridCell: React.FC<GridCellProps> = ({
   rowIndex,
   colIndex,
   value,
-  updateCell
+  updateCell,
 }) => {
   const {
     requiredProps,
@@ -81,12 +81,12 @@ const GridCell: React.FC<GridCellProps> = ({
     stopEditingAndRevert,
     stopEditingAndMove,
     editorValue,
-    setEditorValue
+    setEditorValue,
   } = useGridCell(value, {
     rowIndex,
     colIndex,
     isEditable: true,
-    onChange: v => updateCell(rowIndex, colIndex, v)
+    onChange: (v) => updateCell(rowIndex, colIndex, v),
   });
 
   return (
@@ -102,7 +102,7 @@ const GridCell: React.FC<GridCellProps> = ({
           onMove={stopEditingAndMove}
         />
       ) : (
-        <StandardText>{value}</StandardText>
+        <Text>{value}</Text>
       )}
     </FocusedBox>
   );

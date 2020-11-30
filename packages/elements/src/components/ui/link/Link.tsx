@@ -4,12 +4,12 @@ import { KeyboardEventHandler } from "react";
 import { SpanProps } from "@stenajs-webui/core";
 import styles from "./Link.module.css";
 
-interface Props extends SpanProps {
+export interface LinkProps extends SpanProps {
   disabled?: boolean;
   disableTabIndex?: boolean;
 }
 
-export const Link: React.FC<Props> = ({
+export const Link: React.FC<LinkProps> = ({
   children,
   className,
   onClick,

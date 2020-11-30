@@ -1,105 +1,94 @@
-import { Store, withState } from "@dump247/storybook-state";
-import {
-  Column,
-  HeaderText,
-  LargeText,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
-import { Switch } from "@stenajs-webui/forms";
-import * as knobs from "@storybook/addon-knobs";
+import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { Switch, SwitchProps } from "./Switch";
+import { Story } from "@storybook/react";
 
-interface State {
-  selected: boolean;
-  selectedSmall: boolean;
-  checked: boolean;
-}
+export default {
+  title: "forms/Switch",
+  component: Switch,
+};
 
-const SwitchOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
-  const [isEnabled, setIsEnabled] = useState(false);
+export const Demo: Story<SwitchProps> = (props) => <Switch {...props} />;
+
+export const Overview = () => {
+  const [enabled, setEnabled] = useState(false);
+  const [value, setValue] = useState(false);
+
   useEffect(() => {
     const t = setInterval(() => {
-      setIsEnabled((v) => !v);
+      setEnabled((v) => !v);
     }, 1000);
     return () => clearInterval(t);
   }, []);
 
-  const onClickHandler = (selected: boolean) => store.set({ selected });
-
   return (
     <Column>
-      <HeaderText>Switch</HeaderText>
+      <Heading>Switch</Heading>
 
       <Space num={2} />
 
-      <LargeText fontWeight={"bold"}>Clickable and knobs</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Clickable
+      </Text>
 
       <Space num={2} />
 
-      <Switch value={store.state.selected} onValueChange={onClickHandler} />
+      <Switch value={value} onValueChange={setValue} />
 
       <Space num={8} />
 
-      <LargeText fontWeight={"bold"}>Transitions</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Transitions
+      </Text>
 
       <Space num={2} />
 
       <Row alignContent={"flex-start"}>
         <Column justifyContent={"flex-start"}>
-          <StandardText>Value on/off</StandardText>
-          <Switch value={isEnabled} />
+          <Text>Value on/off</Text>
+          <Switch value={enabled} />
 
           <Space num={2} />
 
-          <StandardText>Disabled, checked on/off</StandardText>
-          <Switch value={isEnabled} disabled />
+          <Text>Disabled, checked on/off</Text>
+          <Switch value={enabled} disabled />
         </Column>
 
         <Space num={8} />
 
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked, disabled on/off</StandardText>
-          <Switch value disabled={isEnabled} />
+          <Text>Checked, disabled on/off</Text>
+          <Switch value disabled={enabled} />
 
           <Space num={2} />
 
-          <StandardText>Not checked, disabled on/off</StandardText>
-          <Switch disabled={isEnabled} />
+          <Text>Not checked, disabled on/off</Text>
+          <Switch disabled={enabled} />
         </Column>
       </Row>
     </Column>
   );
 };
 
-export default {
-  title: "forms/Switch",
+export const Standard = () => {
+  const [value, setValue] = useState(false);
+  return <Switch value={value} onValueChange={setValue} />;
 };
 
-export const Overview = withState<State>({
-  checked: true,
-  selectedSmall: false,
-  selected: false,
-})(({ store }: { store: Store<State> }) => <SwitchOverview store={store} />);
-
-export const Standard = () => (
-  <Switch
-    value={knobs.boolean("Toggled", false)}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-);
-
-export const CustomActionColor = () => (
-  <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
-    <Switch
-      value={knobs.boolean("Toggled", false)}
-      disabled={knobs.boolean("Disabled", false)}
-    />
-  </div>
-);
+export const CustomActionColor = () => {
+  const [value, setValue] = useState(false);
+  return (
+    <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
+      <Switch value={value} onValueChange={setValue} />
+    </div>
+  );
+};
 
 export const Disabled = () => (
-  <Switch value={knobs.boolean("Toggled", false)} disabled />
+  <Column>
+    <Switch value disabled />
+    <Space />
+    <Switch disabled />
+  </Column>
 );

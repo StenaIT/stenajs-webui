@@ -1,9 +1,10 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
-import { LoadingScreen } from "@stenajs-webui/panels";
+import { LoadingScreen } from "./LoadingScreen";
 
 export default {
   title: "panels/Loading/LoadingScreen",
+  component: LoadingScreen,
 };
 
 export const Standard = () => (

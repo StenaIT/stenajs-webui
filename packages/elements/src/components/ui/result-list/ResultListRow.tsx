@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StandardText } from "@stenajs-webui/core";
+import { Text } from "@stenajs-webui/core";
 import { Link } from "../link/Link";
 import styles from "./ResultListRow.module.css";
 
@@ -18,7 +18,7 @@ export const ResultListRow: React.FC<ResultItemProps> = ({
 }) => {
   return (
     <div className={styles.resultItemRow}>
-      <StandardText>{text}</StandardText>
+      <Text>{text}</Text>
       {linkText && (
         <Link className={styles.link} onClick={onClickLink}>
           {linkText}

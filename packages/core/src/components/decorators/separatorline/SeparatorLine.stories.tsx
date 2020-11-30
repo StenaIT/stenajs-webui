@@ -1,23 +1,25 @@
-import { defaultTheme, SeparatorLine } from "@stenajs-webui/core";
-import { color, select } from "@storybook/addon-knobs";
 import * as React from "react";
+import { SeparatorLine, SeparatorLineProps } from "./SeparatorLine";
+import { Story } from "@storybook/react";
+import {
+  colorListControl,
+  widthControl,
+} from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Decorators/SeparatorLine",
+  component: SeparatorLine,
+  argTypes: {
+    color: colorListControl,
+    width: widthControl,
+  },
+  args: {
+    width: 1,
+  },
 };
 
-export const Standard = () => <SeparatorLine />;
-
-export const WithColor = () => (
-  <SeparatorLine
-    color={select("Color", Object.keys(defaultTheme.colors), "primaryBg")}
-  />
+export const Overview: Story<SeparatorLineProps> = ({ width, ...props }) => (
+  <SeparatorLine width={`${width}px`} {...props} />
 );
-
-export const WithCustomColor = () => (
-  <SeparatorLine color={color("Color", "#d90900")} />
-);
-
-export const WithCustomWidth = () => <SeparatorLine width={"4px"} />;
 
 export const Vertical = () => <SeparatorLine vertical size={"250px"} />;

@@ -8,7 +8,7 @@ import {
 } from "../buttons/common/ButtonContent";
 import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
 
-interface TabProps extends ButtonElementProps, ButtonContentProps {
+export interface TabProps extends ButtonElementProps, ButtonContentProps {
   selected?: boolean;
 }
 

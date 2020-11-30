@@ -4,7 +4,7 @@ import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 
-interface Props extends ValueAndOnValueChangeProps<Month> {}
+export interface MonthPickerProps extends ValueAndOnValueChangeProps<Month> {}
 
 const monthMatrix = [
   [Month.JANUARY, Month.FEBRUARY, Month.MARCH],
@@ -13,7 +13,10 @@ const monthMatrix = [
   [Month.OCTOBER, Month.NOVEMBER, Month.DECEMBER],
 ];
 
-export const MonthPicker: React.FC<Props> = ({ value, onValueChange }) => {
+export const MonthPicker: React.FC<MonthPickerProps> = ({
+  value,
+  onValueChange,
+}) => {
   return (
     <Column>
       {monthMatrix.map((monthRow) => (

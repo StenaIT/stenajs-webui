@@ -1,7 +1,6 @@
 module.exports = {
   stories: ["../**/*.stories.tsx"],
   addons: [
-    "@storybook/addon-knobs",
     "@storybook/addon-viewport",
     "@storybook/addon-storysource",
     "@storybook/addon-a11y",
@@ -33,6 +32,11 @@ module.exports = {
         },
         "postcss-loader",
       ],
+    });
+
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: ["@svgr/webpack", "file-loader"],
     });
 
     // Return the altered config

@@ -1,14 +1,17 @@
-import { Store, withState } from "@dump247/storybook-state";
-import {
-  DateRangeCalendar,
-  DateRangeCalendarProps,
-  DateRangeFocusedInput,
-  setDayStateValue,
-  useDateRangeCalendarState,
-} from "@stenajs-webui/calendar";
 import { addDays } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
+import { setDayStateValue } from "../../../util/calendar/StateModifier";
+import { DateRangeCalendar, DateRangeCalendarProps } from "./DateRangeCalendar";
+import { useDateRangeCalendarState } from "./hooks/UseDateRangeCalendarState";
+
+export default {
+  title: "calendar/Calendar/DateRangeCalendar",
+  component: DateRangeCalendar,
+  parameters: {
+    notes: { markdown },
+  },
+};
 
 let statePerMonthWithTwoWeeksEnabled = {};
 for (let i = 1; i < 7; i++) {
@@ -30,12 +33,6 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-interface State {
-  startDate?: Date;
-  endDate?: Date;
-  focusedInput: DateRangeFocusedInput;
-}
-
 function DateRangeCalendarWithState<T>({
   onChange,
 }: Pick<DateRangeCalendarProps<T>, "onChange">) {
@@ -43,95 +40,35 @@ function DateRangeCalendarWithState<T>({
   return <DateRangeCalendar {...calendarProps} onChange={onChange} />;
 }
 
-export default {
-  title: "calendar/Calendar/DateRangeCalendar",
-};
-
-export const Standard = withState<State>({
-  startDate: undefined,
-  endDate: undefined,
-  focusedInput: "startDate",
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeCalendar
-    startDate={store.state.startDate}
-    endDate={store.state.endDate}
-    focusedInput={store.state.focusedInput}
-    setStartDate={(startDate) => store.set({ startDate })}
-    setEndDate={(endDate) => store.set({ endDate })}
-    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
-  />
-));
-
-Standard.parameters = {
-  notes: { markdown },
+export const Standard = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar {...props} />;
 };
 
 export const WithStateHook = () => <DateRangeCalendarWithState />;
 
-export const WithTodayHighlighted = withState<State>({
-  startDate: undefined,
-  endDate: undefined,
-  focusedInput: "startDate",
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeCalendar
-    highlightToday
-    startDate={store.state.startDate}
-    endDate={store.state.endDate}
-    focusedInput={store.state.focusedInput}
-    setStartDate={(startDate) => store.set({ startDate })}
-    setEndDate={(endDate) => store.set({ endDate })}
-    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
-  />
-));
+export const WithTodayHighlighted = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar highlightToday {...props} />;
+};
 
-export const WithDefaultHighlights = withState<State>({
-  startDate: undefined,
-  endDate: undefined,
-  focusedInput: "startDate",
-})(({ store }: { store: Store<State> }) => {
+export const WithDefaultHighlights = () => {
+  const props = useDateRangeCalendarState();
   return (
     <DateRangeCalendar
-      startDate={store.state.startDate}
-      endDate={store.state.endDate}
-      focusedInput={store.state.focusedInput}
-      setStartDate={(startDate) => store.set({ startDate })}
-      setEndDate={(endDate) => store.set({ endDate })}
-      setFocusedInput={(focusedInput) => store.set({ focusedInput })}
+      {...props}
       defaultHighlights={["disabled"]}
       statePerMonth={statePerMonthWithTwoWeeksEnabled}
     />
   );
-});
+};
 
-export const WithMultipleMonths = withState<State>({
-  startDate: undefined,
-  endDate: undefined,
-  focusedInput: "startDate",
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeCalendar
-    numMonths={3}
-    startDate={store.state.startDate}
-    endDate={store.state.endDate}
-    focusedInput={store.state.focusedInput}
-    setStartDate={(startDate) => store.set({ startDate })}
-    setEndDate={(endDate) => store.set({ endDate })}
-    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
-  />
-));
+export const WithMultipleMonths = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar {...props} numMonths={3} />;
+};
 
-export const WithMultipleRows = withState<State>({
-  startDate: undefined,
-  endDate: undefined,
-  focusedInput: "startDate",
-})(({ store }: { store: Store<State> }) => (
-  <DateRangeCalendar
-    numMonths={6}
-    monthsPerRow={3}
-    startDate={store.state.startDate}
-    endDate={store.state.endDate}
-    focusedInput={store.state.focusedInput}
-    setStartDate={(startDate) => store.set({ startDate })}
-    setEndDate={(endDate) => store.set({ endDate })}
-    setFocusedInput={(focusedInput) => store.set({ focusedInput })}
-  />
-));
+export const WithMultipleRows = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar {...props} numMonths={6} monthsPerRow={3} />;
+};

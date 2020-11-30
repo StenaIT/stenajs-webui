@@ -6,6 +6,13 @@
 
 - Line height was too small in `Text` styling.
 - `Tag` and `Chip` had wrong font.
+- `CheckboxWithLabel` props `textColor` not working.
+
+### Breaking changes
+
+- `Badge` prop `type` renamed to `variant`.
+- `Badge` variant `notification` renamed to `info`.
+- `Spinner` no longer has color prop.
 
 ## 3.0.0
 

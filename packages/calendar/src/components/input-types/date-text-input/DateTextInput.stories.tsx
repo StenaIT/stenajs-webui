@@ -1,45 +1,43 @@
-import { Store, withState } from "@dump247/storybook-state";
-import { DateTextInput } from "@stenajs-webui/calendar";
+import { DateTextInput } from "./DateTextInput";
 import * as React from "react";
-
-interface DateTextInputState {
-  value?: string;
-}
+import { useState } from "react";
 
 export default {
   title: "calendar/Input/DateTextInput",
+  component: DateTextInput,
 };
 
-export const Standard = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-  />
-));
+export const Standard = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
 
-export const EnglishDateFormat = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    dateFormat={"dd/MM/yyyy"}
-    placeholder={"DD/MM/YYYY"}
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-  />
-));
+  return <DateTextInput value={value} onValueChange={setValue} />;
+};
 
-export const DutchDateFormat = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    dateFormat={"dd-MM-yyyy"}
-    placeholder={"DD-MM-YYYY"}
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-  />
-));
+export const EnglishDateFormat = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+
+  return (
+    <DateTextInput
+      dateFormat={"dd/MM/yyyy"}
+      placeholder={"DD/MM/YYYY"}
+      value={value}
+      onValueChange={setValue}
+    />
+  );
+};
+
+export const DutchDateFormat = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+
+  return (
+    <DateTextInput
+      dateFormat={"dd-MM-yyyy"}
+      placeholder={"DD-MM-YYYY"}
+      value={value}
+      onValueChange={setValue}
+    />
+  );
+};
 
 export const Disabled = () => <DateTextInput value={""} disabled={true} />;
 
@@ -47,45 +45,53 @@ export const Invalid = () => (
   <DateTextInput value={"invalid input"} variant={"error"} />
 );
 
-export const WithNoIcon = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-    hideCalenderIcon={true}
-  />
-));
+export const WithNoIcon = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
 
-export const WithDisabledCalendar = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-    disableCalender={true}
-  />
-));
+  return (
+    <DateTextInput
+      value={value}
+      onValueChange={setValue}
+      hideCalenderIcon={true}
+    />
+  );
+};
 
-export const UsingPortal = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-    portalTarget={document.body}
-  />
-));
+export const WithDisabledCalendar = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
 
-export const CustomCalendarProps = withState<DateTextInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateTextInputState> }) => (
-  <DateTextInput
-    calendarProps={{
-      defaultHighlights: ["disabled"],
-      highlightToday: true,
-    }}
-    value={store.state.value}
-    onValueChange={(value) => store.set({ value })}
-  />
-));
+  return (
+    <DateTextInput
+      value={value}
+      onValueChange={setValue}
+      disableCalender={true}
+    />
+  );
+};
+
+export const UsingPortal = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+
+  return (
+    <DateTextInput
+      value={value}
+      onValueChange={setValue}
+      portalTarget={document.body}
+    />
+  );
+};
+
+export const CustomCalendarProps = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+
+  return (
+    <DateTextInput
+      calendarProps={{
+        defaultHighlights: ["disabled"],
+        highlightToday: true,
+      }}
+      value={value}
+      onValueChange={setValue}
+    />
+  );
+};

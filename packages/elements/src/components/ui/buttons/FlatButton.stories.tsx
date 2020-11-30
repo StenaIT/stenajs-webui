@@ -1,6 +1,7 @@
-import { Column, LargeText, Space } from "@stenajs-webui/core";
-import { ButtonSize, FlatButton } from "@stenajs-webui/elements";
+import { Column, Text, Space } from "@stenajs-webui/core";
 import * as React from "react";
+import { ButtonSize } from "./common/ButtonCommon";
+import { FlatButton } from "./FlatButton";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
@@ -10,7 +11,7 @@ export default {
 
 export const Standard = () => (
   <Column spacing indent>
-    <LargeText>FlatButton</LargeText>
+    <Text size={"large"}>FlatButton</Text>
     <Space num={4} />
     <div style={{ display: "inline-block" }}>
       {buttonSizes.map((size) => (
@@ -25,7 +26,9 @@ export const Standard = () => (
 
 export const Inverted = () => (
   <Column background={"#0f304d"} spacing indent>
-    <LargeText color={"#fff"}>FlatButton inverted</LargeText>
+    <Text size={"large"} color={"#fff"}>
+      FlatButton inverted
+    </Text>
     <Space num={4} />
     <div style={{ display: "inline-block" }}>
       {buttonSizes.map((size) => (

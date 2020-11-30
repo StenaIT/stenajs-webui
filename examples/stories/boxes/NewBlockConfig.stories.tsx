@@ -1,12 +1,13 @@
 import {
   Box,
   Column,
+  Heading,
   Indent,
   Row,
   SeparatorLine,
   Space,
   Spacing,
-  StandardText,
+  Text,
 } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
@@ -22,10 +23,10 @@ export const NewBlockConfig = () => (
     <Box shadow={"box"} background={"white"} display={"inline-block"}>
       <Spacing num={2}>
         <Indent num={2}>
-          <StandardText fontSize={"huge"}>New block config</StandardText>
+          <Heading>New block config</Heading>
           <Space num={2} />
           <Column>
-            <StandardText>Name</StandardText>
+            <Text>Name</Text>
             <TextInput />
           </Column>
         </Indent>
@@ -36,12 +37,12 @@ export const NewBlockConfig = () => (
         <Indent num={2}>
           <Row>
             <Column>
-              <StandardText>Customer</StandardText>
+              <Text>Customer</Text>
               <TextInput />
             </Column>
             <Space num={2} />
             <Column>
-              <StandardText>Vehicle type</StandardText>
+              <Text>Vehicle type</Text>
               <TextInput />
             </Column>
           </Row>

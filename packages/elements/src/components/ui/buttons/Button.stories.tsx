@@ -1,27 +1,27 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import {
-  Column,
-  Indent,
-  LargeText,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
-import {
-  ButtonSize,
-  ButtonVariant,
-  FlatButton,
-  Icon,
-  PrimaryButton,
-  SecondaryButton,
-} from "@stenajs-webui/elements";
+import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
+import { ButtonSize, ButtonVariant } from "./common/ButtonCommon";
+import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
+import { SecondaryButton } from "./SecondaryButton";
+import { FlatButton } from "./FlatButton";
+import { Icon } from "../icon/Icon";
+import { Story } from "@storybook/react";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
 export default {
   title: "elements/Buttons",
+  component: PrimaryButton,
+  subcomponents: { SecondaryButton, FlatButton },
+};
+
+export const Demo: Story<PrimaryButtonProps> = (props) => (
+  <PrimaryButton {...props} />
+);
+Demo.args = {
+  label: "Action",
 };
 
 export const Overview = () => (
@@ -32,40 +32,40 @@ export const Overview = () => (
       { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ label, ButtonVariant }) => (
       <Column alignItems={"flex-start"}>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <table cellPadding={"8px"}>
           <thead>
             <tr>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Size</StandardText>
+                <Text>Size</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Standard</StandardText>
+                <Text>Standard</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled</StandardText>
+                <Text>Disabled</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Icon only</StandardText>
+                <Text>Icon only</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Disabled icon</StandardText>
+                <Text>Disabled icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Left icon</StandardText>
+                <Text>Left icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Right icon</StandardText>
+                <Text>Right icon</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Both icons</StandardText>
+                <Text>Both icons</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Loading</StandardText>
+                <Text>Loading</Text>
               </th>
               <th style={{ textAlign: "start" }}>
-                <StandardText>Success</StandardText>
+                <Text>Success</Text>
               </th>
             </tr>
           </thead>
@@ -73,7 +73,7 @@ export const Overview = () => (
             {buttonSizes.map((size) => (
               <tr>
                 <td>
-                  <StandardText>{size}</StandardText>
+                  <Text>{size}</Text>
                 </td>
                 <td>
                   <ButtonVariant size={size} label={"Submit"} />
@@ -142,7 +142,7 @@ export const Variants = () => (
     {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
       (variant) => (
         <Column>
-          <LargeText>{variant}</LargeText>
+          <Text size={"large"}>{variant}</Text>
           <Space />
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
@@ -162,7 +162,7 @@ export const Variants = () => (
     {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
       (variant) => (
         <Column>
-          <LargeText>{variant} (disabled)</LargeText>
+          <Text size={"large"}>{variant} (disabled)</Text>
           <Space />
           <Row alignItems={"flex-start"} indent spacing>
             {buttonSizes.map((size) => (
@@ -191,7 +191,7 @@ export const WithGenericContentToRight = () => (
       { ButtonVariant: FlatButton, label: "FlatButton" },
     ].map(({ ButtonVariant, label }) => (
       <Column spacing>
-        <LargeText>{label}</LargeText>
+        <Text size={"large"}>{label}</Text>
         <Space />
         <Row alignItems={"flex-start"}>
           <ButtonVariant

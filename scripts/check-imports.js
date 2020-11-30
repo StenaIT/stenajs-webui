@@ -1,6 +1,6 @@
 const {
   getPackageFolderList,
-  packagesPath
+  packagesPath,
 } = require("./util/package-json-fetcher");
 const glob = require("glob");
 const path = require("path");
@@ -9,10 +9,10 @@ const ts = require("typescript");
 
 let success = true;
 
-getPackageFolderList().then(packageFolders => {
+getPackageFolderList().then((packageFolders) => {
   success = true;
   Promise.all(
-    packageFolders.map(packageFolder => {
+    packageFolders.map((packageFolder) => {
       const packagesPath = path.join(packageFolder, "package.json");
       const packageFolderNameParts = packageFolder.split(path.sep);
       const packageFolderName =
@@ -21,13 +21,13 @@ getPackageFolderList().then(packageFolders => {
       const packageJson = require(packagesPath);
       // options is optional
 
-      return new Promise(resolve => {
-        glob(packageFolder + "/src/**/*.ts*", {}, function(er, files) {
+      return new Promise((resolve) => {
+        glob(packageFolder + "/src/**/*.ts*", {}, function (er, files) {
           // files is an array of filenames.
           // If the `nonull` option is set, and nothing
           // was found, then files is ["**/*.js"]
           // er is an error object or null.
-          files.forEach(filePath => {
+          files.forEach((filePath) => {
             checkSourceFilesImports(
               packageJson,
               packageFolder,
@@ -61,7 +61,7 @@ const checkSourceFilesImports = (
     ts.ScriptTarget.Latest,
     true
   );
-  sc.statements.forEach(statement => {
+  sc.statements.forEach((statement) => {
     if (statement.importClause && statement.moduleSpecifier) {
       try {
         checkImport(
@@ -93,13 +93,16 @@ const checkImport = (
   const isMdImport = imported.endsWith(".md");
 
   if (isStory) {
-    if (imported.startsWith(".") && !isMdImport) {
+    if (imported.startsWith(packageJson.name)) {
       console.log(
-        `ERROR: ${packageJson.name} import error: Story trying to import module relatively:`
+        `ERROR: ${packageJson.name} import error: Story trying to import module from own package:`
       );
       console.log(filePath);
       console.log(`import from '${imported}'`);
       success = false;
+    }
+    if (imported.startsWith(".")) {
+      checkIfImportGoesToPackagesFolder(filePath, packageJson, imported);
     }
   } else if (isTest) {
   } else {
@@ -129,7 +132,7 @@ const checkIfImportGoesToPackagesFolder = (filePath, packageJson, imported) => {
   const importedParts = imported.split(path.sep);
 
   let currentFolder = fileFolderPath;
-  importedParts.forEach(part => {
+  importedParts.forEach((part) => {
     currentFolder = path.join(currentFolder, part);
     if (currentFolder === packagesPath) {
       console.log(
@@ -182,7 +185,7 @@ const checkIfImportIsModuleThatRequiresExplicitFileImport = (
   packageJson,
   imported
 ) => {
-  librariesThatRequireExplicitFileImport.forEach(libName => {
+  librariesThatRequireExplicitFileImport.forEach((libName) => {
     if (imported.startsWith(libName)) {
       if (imported.indexOf("/") < 0) {
         console.log(

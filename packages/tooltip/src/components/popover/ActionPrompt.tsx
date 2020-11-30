@@ -1,8 +1,8 @@
-import { Column, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Column, Row, Space, Text } from "@stenajs-webui/core";
 import { FlatButton, Spinner, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 
-interface ActionPromptProps {
+export interface ActionPromptProps {
   text?: string;
   yesLabel?: string;
   noLabel?: string;
@@ -22,7 +22,7 @@ export const ActionPrompt: React.FC<ActionPromptProps> = ({
   return (
     <Column position={"relative"}>
       <div style={{ opacity: loading ? 0 : 1 }}>
-        <StandardText>{text}</StandardText>
+        <Text>{text}</Text>
         <Space />
         <Row justifyContent={"flex-end"} alignItems={"center"}>
           <FlatButton label={noLabel} onClick={onNo} />

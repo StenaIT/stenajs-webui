@@ -1,42 +1,41 @@
-import { Store, withState } from "@dump247/storybook-state";
-import { DateInput, setDayStateValue } from "@stenajs-webui/calendar";
 import { addDays, addMonths } from "date-fns";
 import * as React from "react";
+import { useState } from "react";
+import { setDayStateValue } from "../../../util/calendar/StateModifier";
+import { DateInput } from "./DateInput";
 
-interface DateInputState {
-  value?: Date;
-}
+export default {
+  title: "calendar/Input/DateInput",
+  component: DateInput,
+};
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
   highlights: ["disabled"],
 });
 
-export default {
-  title: "calendar/Input/DateInput",
+export const Standard = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput value={value} onChange={setValue} />
+    </div>
+  );
 };
 
-export const Standard = withState<DateInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateInputState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <DateInput
-      value={store.state.value}
-      onChange={(value) => store.set({ value })}
-    />
-  </div>
-));
+export const WithDisabledDateTomorrow = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
 
-export const WithDisabledDateTomorrow = withState<DateInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateInputState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <DateInput
-      value={store.state.value}
-      onChange={(value) => store.set({ value })}
-      calendarProps={{ statePerMonth: disabledTomorrow }}
-    />
-  </div>
-));
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput
+        value={value}
+        onChange={setValue}
+        calendarProps={{ statePerMonth: disabledTomorrow }}
+      />
+    </div>
+  );
+};
 
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
@@ -44,17 +43,19 @@ export const Empty = () => (
   </div>
 );
 
-export const UsingPortal = withState<DateInputState>({
-  value: undefined,
-})(({ store }: { store: Store<DateInputState> }) => (
-  <div style={{ display: "inline-block" }}>
-    <DateInput
-      value={store.state.value}
-      onChange={(value) => store.set({ value })}
-      portalTarget={document.body}
-    />
-  </div>
-));
+export const UsingPortal = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput
+        value={value}
+        onChange={setValue}
+        portalTarget={document.body}
+      />
+    </div>
+  );
+};
 
 export const CustomDateFormat = () => (
   <div style={{ display: "inline-block" }}>

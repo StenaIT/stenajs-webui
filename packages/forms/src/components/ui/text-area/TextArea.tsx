@@ -20,6 +20,8 @@ export interface TextAreaProps
     FullOnChangeProps<string, ChangeEvent<HTMLTextAreaElement>> {
   resize?: Resize;
   readOnly?: boolean;
+  rows?: number;
+  disabled?: boolean;
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({
@@ -28,6 +30,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
   onValueChange,
   onChange,
   resize = "none",
+  readOnly = false,
+  rows,
+  disabled,
   ...textAreaProps
 }) => {
   const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
@@ -45,6 +50,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
   return (
     <textarea
       {...textAreaProps}
+      disabled={disabled}
+      rows={rows}
+      readOnly={readOnly}
       className={cx(className, styles.textArea)}
       style={{ resize }}
       onChange={onChangeHandler}

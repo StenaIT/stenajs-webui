@@ -7,7 +7,7 @@ import {
   CollapsibleSimpleContentProps,
 } from "./CollapsibleContent";
 
-interface CollapsibleGroupHeadingProps
+export interface CollapsibleGroupHeadingProps
   extends CollapsibleSimpleContentProps,
     DivProps {}
 

@@ -1,11 +1,12 @@
-import { Spacing } from "@stenajs-webui/core";
 import * as React from "react";
+import { Spacing } from "./Spacing";
 
 export default {
   title: "core/Layout/Spacing",
+  component: Spacing,
 };
 
-export const Standard = () => (
+export const Overview = () => (
   <div style={{ display: "table" }}>
     <div style={{ border: "1px solid black" }}>
       <Spacing>

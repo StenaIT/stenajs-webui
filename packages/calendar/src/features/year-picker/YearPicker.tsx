@@ -9,11 +9,11 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
 import { eachYearOfInterval } from "date-fns";
 import { chunk } from "lodash";
 
-interface Props extends ValueAndOnValueChangeProps<number> {
+export interface YearPickerProps extends ValueAndOnValueChangeProps<number> {
   initialLastYear?: number;
 }
 
-export const YearPicker: React.FC<Props> = ({
+export const YearPicker: React.FC<YearPickerProps> = ({
   value,
   onValueChange,
   initialLastYear,

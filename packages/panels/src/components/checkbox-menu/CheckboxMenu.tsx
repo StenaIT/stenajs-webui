@@ -6,13 +6,13 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 
-interface Props extends CheckboxProps {
+export interface CheckboxMenuProps extends CheckboxProps {
   renderMenu: (close: () => void) => ReactNode;
 }
 
 const border = `1px solid var(--lhds-color-ui-300)`;
 
-export const CheckboxMenu: React.FC<Props> = ({
+export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
   renderMenu,
   ...checkboxProps
 }) => {

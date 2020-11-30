@@ -12,7 +12,7 @@ import { useLazyPopover } from "../../hooks/UseLazyPopover";
 export type PopoverVariant = "standard" | "info" | "warning" | "error";
 
 export interface PopoverProps
-  extends Omit<TippyComponentProps, "theme" | "render"> {
+  extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
   tippyRef?: TippyCallbackRef<HTMLDivElement>;
   disablePadding?: boolean;
   lazy?: boolean;

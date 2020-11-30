@@ -1,12 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
-import {
-  Clickable,
-  ClickableProps,
-  DivProps,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Clickable, ClickableProps, DivProps, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import cx from "classnames";
 import * as React from "react";
@@ -91,9 +86,9 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
       >
         {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
         <div className={styles.label}>
-          <StandardText color={"var(--swui-collapsible-header-text-color)"}>
+          <Text color={"var(--swui-collapsible-header-text-color)"}>
             {label}
-          </StandardText>
+          </Text>
         </div>
         {contentRight && (
           <div className={styles.contentRight}>{contentRight}</div>

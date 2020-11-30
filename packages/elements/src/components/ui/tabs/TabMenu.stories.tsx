@@ -1,11 +1,28 @@
 import * as React from "react";
 import { useState } from "react";
-import { Badge, Tab, TabMenu } from "@stenajs-webui/elements";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Space } from "@stenajs-webui/core";
+import { Badge } from "../badge/Badge";
+import { Tab, TabProps } from "./Tab";
+import { TabMenu } from "./TabMenu";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "elements/TabMenu",
+  component: Tab,
+  subcomponents: { TabMenu },
+  argTypes: {
+    innerRef: disabledControl,
+    leftWrapperClassName: disabledControl,
+    spinnerClassName: disabledControl,
+    labelClassName: disabledControl,
+    iconClassName: disabledControl,
+    rightIcon: disabledControl,
+    right: disabledControl,
+    leftIcon: disabledControl,
+    left: disabledControl,
+  },
 };
 
 type DemoTab =
@@ -25,7 +42,16 @@ const demoTabs: Array<DemoTab> = [
   "Matrix",
 ];
 
-export const Standard = () => {
+export const Demo: Story<TabProps> = (props) => (
+  <TabMenu>
+    <Tab {...props} />
+  </TabMenu>
+);
+Demo.args = {
+  label: "Some tab",
+};
+
+export const Overview = () => {
   const [tab, setTab] = useState<DemoTab>("Rates");
 
   return (
@@ -58,6 +84,7 @@ export const ContentOnSides = () => {
           }
         />
       ))}
+      <Tab loading />
     </TabMenu>
   );
 };

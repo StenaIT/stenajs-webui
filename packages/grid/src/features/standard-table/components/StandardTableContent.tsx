@@ -1,6 +1,6 @@
-import { Row, Spacing, StandardText } from "@stenajs-webui/core";
-import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
 import * as React from "react";
+import { Row, Spacing, Text } from "@stenajs-webui/core";
+import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
 import { StandardTableProps } from "./StandardTable";
 import { StandardTableRowList } from "./StandardTableRowList";
 
@@ -41,7 +41,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   if (!items || !items.length) {
     return (
       <Row spacing={10} justifyContent={"center"}>
-        <StandardText>{noItemsLabel}</StandardText>
+        <Text>{noItemsLabel}</Text>
       </Row>
     );
   }

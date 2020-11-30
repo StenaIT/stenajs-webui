@@ -1,25 +1,34 @@
-import { Store, withState } from "@dump247/storybook-state";
-import {
-  Column,
-  HeaderText,
-  LargeText,
-  Row,
-  Space,
-  StandardText,
-} from "@stenajs-webui/core";
-import { RadioButton, RadioButtonWithLabel } from "@stenajs-webui/forms";
-import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
+import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
+import { RadioButton, RadioButtonProps } from "./RadioButton";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
-interface State {
-  selected: string;
-  selectedSmall: string;
-  checked: boolean;
-}
+export default {
+  title: "forms/RadioButton",
+  component: RadioButton,
+  argTypes: {
+    checked: {
+      control: "boolean",
+    },
+    inputRef: disabledControl,
+  },
+  args: {
+    name: "somename",
+  },
+};
 
-const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
+export const Demo: Story<RadioButtonProps> = (props) => (
+  <RadioButton {...props} />
+);
+
+export const Overview = () => {
+  const [selected, setSelected] = useState("");
+  const [selectedSmall, setSelectedSmall] = useState("");
   const [isEnabled, setIsEnabled] = useState(false);
+
   useEffect(() => {
     const t = setInterval(() => {
       setIsEnabled((v) => !v);
@@ -27,17 +36,15 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
     return () => clearInterval(t);
   }, []);
 
-  const onClickHandler = (selected: string) => store.set({ selected });
-  const onClickSmallHandler = (selectedSmall: string) =>
-    store.set({ selectedSmall });
-
   return (
     <Column>
-      <HeaderText>RadioButton</HeaderText>
+      <Heading>RadioButton</Heading>
 
       <Space num={2} />
 
-      <LargeText fontWeight={"bold"}>Clickable and knobs</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Clickable
+      </Text>
 
       <Space num={2} />
 
@@ -45,8 +52,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Boat"}
         name={"travel"}
         value={"boat"}
-        checked={store.state.selected === "boat"}
-        onValueChange={onClickHandler}
+        checked={selected === "boat"}
+        onValueChange={setSelected}
       />
 
       <Space />
@@ -55,8 +62,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Plane"}
         name={"travel"}
         value={"plane"}
-        checked={store.state.selected === "plane"}
-        onValueChange={onClickHandler}
+        checked={selected === "plane"}
+        onValueChange={setSelected}
       />
 
       <Space />
@@ -65,8 +72,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Car"}
         name={"travel"}
         value={"car"}
-        checked={store.state.selected === "car"}
-        onValueChange={onClickHandler}
+        checked={selected === "car"}
+        onValueChange={setSelected}
       />
 
       <Space />
@@ -75,8 +82,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Walk"}
         name={"travel"}
         value={"walk"}
-        checked={store.state.selected === "walk"}
-        onValueChange={onClickHandler}
+        checked={selected === "walk"}
+        onValueChange={setSelected}
         disabled
       />
 
@@ -87,8 +94,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Today"}
         name={"day"}
         value={"today"}
-        checked={store.state.selectedSmall === "today"}
-        onValueChange={onClickSmallHandler}
+        checked={selectedSmall === "today"}
+        onValueChange={setSelectedSmall}
       />
 
       <Space />
@@ -98,8 +105,8 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Tomorrow"}
         name={"day"}
         value={"tomorrow"}
-        checked={store.state.selectedSmall === "tomorrow"}
-        onValueChange={onClickSmallHandler}
+        checked={selectedSmall === "tomorrow"}
+        onValueChange={setSelectedSmall}
       />
 
       <Space />
@@ -109,37 +116,39 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
         label={"Yesterday"}
         name={"day"}
         value={"yesterday"}
-        checked={store.state.selectedSmall === "yesterday"}
-        onValueChange={onClickSmallHandler}
+        checked={selectedSmall === "yesterday"}
+        onValueChange={setSelectedSmall}
         disabled
       />
 
       <Space num={8} />
 
-      <LargeText fontWeight={"bold"}>Transitions</LargeText>
+      <Text size={"large"} variant={"bold"}>
+        Transitions
+      </Text>
 
       <Space num={2} />
 
       <Row alignContent={"flex-start"}>
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked on/off</StandardText>
+          <Text>Checked on/off</Text>
           <RadioButton checked={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Disabled, checked on/off</StandardText>
+          <Text>Disabled, checked on/off</Text>
           <RadioButton checked={isEnabled} disabled />
         </Column>
 
         <Space num={8} />
 
         <Column justifyContent={"flex-start"}>
-          <StandardText>Checked, disabled on/off</StandardText>
+          <Text>Checked, disabled on/off</Text>
           <RadioButton checked disabled={isEnabled} />
 
           <Space num={2} />
 
-          <StandardText>Not checked, disabled on/off</StandardText>
+          <Text>Not checked, disabled on/off</Text>
           <RadioButton disabled={isEnabled} />
         </Column>
       </Row>
@@ -147,32 +156,13 @@ const RadioButtonOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
   );
 };
 
-export default {
-  title: "forms/RadioButton",
-};
-
-export const Overview = withState<State>({
-  checked: true,
-  selectedSmall: "",
-  selected: "",
-})(({ store }: { store: Store<State> }) => (
-  <RadioButtonOverview store={store} />
-));
-
-export const Standard = () => (
-  <RadioButton
-    checked={knobs.boolean("Checked", false)}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-);
-
 export const CustomActionColorOnMultiple = () => (
-  <Column style={{ "--swui-color-primary-action": "#41ae33" } as any}>
-    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+  <Column style={{ "--swui-primary-action-color": "#41ae33" } as any}>
+    <RadioButton name={"testing1"} />
     <Space />
-    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+    <RadioButton name={"testing2"} />
     <Space />
-    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+    <RadioButton name={"testing3"} />
   </Column>
 );
 
@@ -181,9 +171,8 @@ export const CustomCheckedBgColorOnSingle = () => (
     <RadioButton
       name={"testing"}
       style={{ "--swui-radiobutton-checked-bg-color": "#41ae33" } as any}
-      disabled={knobs.boolean("Disabled", false)}
     />
     <Space />
-    <RadioButton name={"testing"} disabled={knobs.boolean("Disabled", false)} />
+    <RadioButton name={"testing"} />
   </Column>
 );

@@ -1,10 +1,15 @@
 import * as React from "react";
-import { Text } from "@stenajs-webui/core";
+import { Text, TextProps } from "./Text";
 import { cssColor } from "@stenajs-webui/theme";
+import { Story } from "@storybook/react";
+import { colorListControl } from "../../storybook-helpers/storybook-controls";
 
 export default {
   title: "core/Text/Text",
   component: Text,
+  argTypes: {
+    color: colorListControl,
+  },
 };
 
 const ipsum =
@@ -21,7 +26,12 @@ const ipsum =
   "very popular during the Renaissance. " +
   'The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.';
 
+export const Overview: Story<TextProps> = (props) => (
+  <Text {...props}>{ipsum}</Text>
+);
+
 export const Body = () => <Text>{ipsum}</Text>;
+
 export const BodyWhite = () => (
   <Text
     color={cssColor("--lhds-color-ui-50")}

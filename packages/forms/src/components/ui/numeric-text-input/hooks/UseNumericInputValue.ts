@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { ValueAndOnValueChangeProps } from "../../../types";
+import { ValueAndOnValueChangeProps } from "../../types";
 import { NumericTextInputProps } from "../NumericTextInput";
 import { parseFloatElseUndefined } from "../util/NumericTextInputUtil";
 

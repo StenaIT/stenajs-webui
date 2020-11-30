@@ -1,9 +1,10 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
-import { AsyncSelect } from "@stenajs-webui/select";
+import { AsyncSelect } from "./AsyncSelect";
 import * as React from "react";
 
 export default {
   title: "select/AsyncSelect",
+  component: AsyncSelect,
 };
 
 export const _AsyncSelect = () => (

@@ -1,32 +1,52 @@
-import { Store, withState } from "@dump247/storybook-state";
-import * as knobs from "@storybook/addon-knobs";
 import * as React from "react";
-import { CheckboxWithLabel } from "@stenajs-webui/forms";
-
-interface State {
-  checked: boolean;
-}
+import { useState } from "react";
+import { CheckboxWithLabel, CheckboxWithLabelProps } from "./CheckboxWithLabel";
+import { Story } from "@storybook/react";
+import {
+  colorListControl,
+  disabledControl,
+} from "../../../storybook-helpers/storybook-controls";
+import { Column, Space } from "@stenajs-webui/core";
 
 export default {
   title: "forms/Checkbox/CheckboxWithLabel",
+  component: CheckboxWithLabel,
+  argTypes: {
+    inputRef: disabledControl,
+    textColor: colorListControl,
+  },
+  args: {
+    label: "Add cake",
+  },
 };
 
-export const Standard = withState<State>({
-  checked: true,
-})(({ store }: { store: Store<State> }) => (
-  <CheckboxWithLabel
-    label={"Add cake"}
-    value={store.state.checked}
-    onValueChange={(checked) => store.set({ checked })}
-    disabled={knobs.boolean("Disabled", false)}
-  />
-));
+export const Demo: Story<CheckboxWithLabelProps> = (props) => (
+  <CheckboxWithLabel {...props} />
+);
+
+export const Standard = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Column>
+      <CheckboxWithLabel
+        label={"Add cake"}
+        value={checked}
+        onValueChange={setChecked}
+      />
+      <Space />
+      <CheckboxWithLabel label={"Add cake"} />
+      <Space />
+      <CheckboxWithLabel label={"Add cake"} indeterminate />
+    </Column>
+  );
+};
 
 export const Disabled = () => (
-  <CheckboxWithLabel
-    label={"Add cake"}
-    value={knobs.boolean("Checked", false)}
-    indeterminate={knobs.boolean("Indeterminate", false)}
-    disabled
-  />
+  <Column>
+    <CheckboxWithLabel label={"Add cake"} value={false} disabled />
+    <Space />
+    <CheckboxWithLabel label={"Add cake"} value={true} disabled />
+    <Space />
+    <CheckboxWithLabel label={"Add cake"} indeterminate disabled />
+  </Column>
 );

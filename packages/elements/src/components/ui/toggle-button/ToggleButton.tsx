@@ -1,4 +1,4 @@
-import { Box, Clickable, SmallText, useThemeFields } from "@stenajs-webui/core";
+import { Box, Clickable, Text, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import {
@@ -6,7 +6,7 @@ import {
   ToggleButtonTheme,
 } from "./ToggleButtonTheme";
 
-interface ToggleButtonProps {
+export interface ToggleButtonProps {
   /**
    * The label of the button.
    */
@@ -85,11 +85,12 @@ export const ToggleButton = ({
         }
         borderRadius={borderRadius}
       >
-        <SmallText
+        <Text
+          size={"small"}
           color={pressed ? colors.textColorPressed : colors.textColorNotPressed}
         >
           {label}
-        </SmallText>
+        </Text>
       </Box>
     </Clickable>
   );

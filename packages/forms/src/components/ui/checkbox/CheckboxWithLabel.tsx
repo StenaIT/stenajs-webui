@@ -9,23 +9,26 @@ export interface CheckboxWithLabelProps extends CheckboxProps {
   innerRef?: Ref<HTMLDivElement>;
 }
 
-export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = (props) => {
-  const {
-    children,
-    disabled,
-    label,
-    innerRef,
-    textColor,
-    ...propsToCheckbox
-  } = props;
-
+export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = ({
+  children,
+  disabled = false,
+  label,
+  innerRef,
+  textColor,
+  size = "standard",
+  ...checkboxProps
+}) => {
   return (
     <div ref={innerRef}>
       <label>
         <Row alignItems={"center"}>
-          <Checkbox {...propsToCheckbox} disabled={disabled} />
+          <Checkbox {...checkboxProps} size={size} disabled={disabled} />
           <Space />
-          {label && <Text userSelect={"none"}>{label}</Text>}
+          {label && (
+            <Text userSelect={"none"} color={textColor}>
+              {label}
+            </Text>
+          )}
           {children}
         </Row>
       </label>

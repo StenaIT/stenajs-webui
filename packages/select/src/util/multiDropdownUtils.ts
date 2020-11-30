@@ -1,4 +1,4 @@
-import { isEqual, uniqWith, differenceWith, intersectionWith } from "lodash";
+import { differenceWith, intersectionWith, isEqual, uniqWith } from "lodash";
 import {
   ActionMeta,
   GroupedOptionsType,

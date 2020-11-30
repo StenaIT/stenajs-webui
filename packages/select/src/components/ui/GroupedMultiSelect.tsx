@@ -1,5 +1,5 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
+import { Box, Row, Space, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import {
@@ -95,9 +95,9 @@ export const GroupedMultiSelect = <TData extends {}>({
             justifyContent={"space-between"}
             flexDirection={"row"}
           >
-            <StandardText tabIndex={-1}>
+            <Text tabIndex={-1}>
               {formatGroupLabel ? formatGroupLabel(props.data) : props.label}
-            </StandardText>
+            </Text>
             {props.isSelected && (
               <Icon
                 color={resolveIconColor(theme, props.isFocused)}
@@ -119,9 +119,9 @@ export const GroupedMultiSelect = <TData extends {}>({
             flexDirection={"row"}
             flexGrow={1}
           >
-            <SmallText tabIndex={-1}>
+            <Text size={"small"} tabIndex={-1}>
               {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
-            </SmallText>
+            </Text>
             {props.isSelected && (
               <Icon
                 color={resolveIconColor(theme, props.isFocused)}

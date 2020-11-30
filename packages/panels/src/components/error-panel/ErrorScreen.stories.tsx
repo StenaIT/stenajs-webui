@@ -1,9 +1,10 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
-import { ErrorScreen } from "@stenajs-webui/panels";
+import { ErrorScreen } from "./ErrorScreen";
 
 export default {
   title: "panels/Error/ErrorScreen",
+  component: ErrorScreen,
 };
 
 export const Standard = () => (

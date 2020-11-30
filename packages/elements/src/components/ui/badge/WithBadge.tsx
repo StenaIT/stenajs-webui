@@ -12,7 +12,7 @@ export const WithBadge: React.FC<WithBadgeProps> = ({
   children,
   top = "10px",
   left = "-5px",
-  hideBadge,
+  hideBadge = false,
   ...badgeProps
 }) => {
   return (

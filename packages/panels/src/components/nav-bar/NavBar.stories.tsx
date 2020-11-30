@@ -2,22 +2,19 @@ import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
-import {
-  Box,
-  Clickable,
-  Column,
-  LargeText,
-  Row,
-  StandardText,
-} from "@stenajs-webui/core";
+import { Box, Clickable, Column, Row, Text } from "@stenajs-webui/core";
 import { Icon, WithBadge } from "@stenajs-webui/elements";
-import { NavBar, NavBarButton, NavBarMenuButton } from "@stenajs-webui/panels";
 import * as React from "react";
 import { TextInput } from "@stenajs-webui/forms";
 import { ClassNames } from "@emotion/core";
+import { NavBar } from "./NavBar";
+import { NavBarButton } from "./NavBarButton";
+import { NavBarMenuButton } from "./NavBarMenuButton";
 
 export default {
   title: "panels/NavBar",
+  component: NavBar,
+  subcomponents: { NavBarButton, NavBarMenuButton },
 };
 
 export const Standard = () => (
@@ -101,7 +98,9 @@ export const WithTitleToLeft = () => (
         </Row>
       }
     >
-      <LargeText color={"#fff"}>NavBar Title</LargeText>
+      <Text size={"large"} color={"#fff"}>
+        NavBar Title
+      </Text>
     </NavBar>
   </Column>
 );
@@ -138,7 +137,7 @@ export const WithMenuButton = () => (
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <StandardText>Hello</StandardText>
+          <Text>Hello</Text>
         </Box>
       </NavBarMenuButton>
     }
@@ -167,7 +166,7 @@ export const WithMenuButtonIcon = () => (
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <StandardText>Hello</StandardText>
+          <Text>Hello</Text>
         </Box>
       </NavBarMenuButton>
     }

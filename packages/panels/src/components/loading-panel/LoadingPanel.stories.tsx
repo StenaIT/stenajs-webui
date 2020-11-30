@@ -1,8 +1,9 @@
-import { LoadingPanel } from "@stenajs-webui/panels";
+import { LoadingPanel } from "./LoadingPanel";
 import * as React from "react";
 
 export default {
   title: "panels/Loading/LoadingPanel",
+  component: LoadingPanel,
 };
 
 export const Standard = () => (

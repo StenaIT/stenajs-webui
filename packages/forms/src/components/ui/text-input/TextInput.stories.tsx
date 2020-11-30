@@ -1,18 +1,31 @@
+import * as React from "react";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
-import { Box, Space, StandardText } from "@stenajs-webui/core";
-import { TextInput, TextInputVariant } from "@stenajs-webui/forms";
-import * as knobs from "@storybook/addon-knobs";
-import * as React from "react";
+import { Box, Space, Text } from "@stenajs-webui/core";
+import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
+import { Story } from "@storybook/react";
+import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
   title: "forms/TextInput/TextInput",
+  component: TextInput,
+  argTypes: {
+    wrapperStyle: disabledControl,
+    wrapperClassName: disabledControl,
+    inputRef: disabledControl,
+    contentLeft: disabledControl,
+    contentRight: disabledControl,
+    iconLeft: disabledControl,
+    iconRight: disabledControl,
+  },
 };
+
+export const Demo: Story<TextInputProps> = (props) => <TextInput {...props} />;
 
 export const Overview = () => (
   <Box width={"400px"}>
-    <StandardText>Standard</StandardText>
-    <TextInput value={knobs.text("Text", "Some nice text.")} />
+    <Text>Standard</Text>
+    <TextInput value={"Some nice text."} />
     <Space />
     {([
       "success",
@@ -22,60 +35,44 @@ export const Overview = () => (
       "modified",
     ] as Array<TextInputVariant>).map((variant) => (
       <React.Fragment key={variant}>
-        <StandardText>Variant={variant}</StandardText>
+        <Text>Variant={variant}</Text>
         <TextInput value={"Some text"} variant={variant} />
         <Space />
       </React.Fragment>
     ))}
-    <StandardText>Icon left</StandardText>
+    <Text>Icon left</Text>
     <TextInput value={"Some text"} iconLeft={faCoffee} />
     <Space />
-    <StandardText>Icon right</StandardText>
+    <Text>Icon right</Text>
     <TextInput value={"Some text"} iconRight={faCoffee} />
     <Space />
-    <StandardText>Icon clickable</StandardText>
+    <Text>Icon clickable</Text>
     <TextInput
       value={"Some text"}
       iconLeft={faCoffee}
       onClickLeft={() => alert("click")}
     />
     <Space />
-    <StandardText>Content left</StandardText>
-    <TextInput
-      value={"Some text"}
-      contentLeft={<StandardText>ms</StandardText>}
-    />
+    <Text>Content left</Text>
+    <TextInput value={"Some text"} contentLeft={<Text>ms</Text>} />
     <Space />
-    <StandardText>Content right</StandardText>
-    <TextInput
-      value={"Some text"}
-      contentRight={<StandardText>ms</StandardText>}
-    />
+    <Text>Content right</Text>
+    <TextInput value={"Some text"} contentRight={<Text>ms</Text>} />
     <Space />
-    <StandardText>Placeholder</StandardText>
+    <Text>Placeholder</Text>
     <TextInput placeholder={"E-mail"} />
     <Space />
-    <StandardText>Disabled</StandardText>
-    <TextInput value={knobs.text("Text2", "Some nice text.")} disabled />
+    <Text>Disabled</Text>
+    <TextInput value={"Some nice text."} disabled />
     <Space />
-    <StandardText>Select all on focus</StandardText>
-    <TextInput
-      value={knobs.text("Text2", "Some nice text.")}
-      selectAllOnFocus
-    />
-    <Space />
-    <StandardText>Autofocus and select all on mount</StandardText>
-    <TextInput
-      autoFocus
-      value={knobs.text("Text2", "Some nice text.")}
-      selectAllOnMount
-    />
+    <Text>Select all on focus</Text>
+    <TextInput value={"Some nice text."} selectAllOnFocus />
   </Box>
 );
 
 export const Standard = () => (
   <Box width={"400px"}>
-    <TextInput value={knobs.text("Text", "Some nice text.")} />
+    <TextInput value={"Some nice text."} />
   </Box>
 );
 
@@ -88,23 +85,17 @@ export const WithIconRight = () => (
 );
 
 export const WithContentLeft = () => (
-  <TextInput
-    value={"some entered text"}
-    contentLeft={<StandardText>W</StandardText>}
-  />
+  <TextInput value={"some entered text"} contentLeft={<Text>W</Text>} />
 );
 
 export const WithContentRight = () => (
-  <TextInput
-    value={"some entered text"}
-    contentRight={<StandardText>ms</StandardText>}
-  />
+  <TextInput value={"some entered text"} contentRight={<Text>ms</Text>} />
 );
 
 export const WithContentAndNoContentPadding = () => (
   <TextInput
     value={"some entered text"}
-    contentLeft={<StandardText>W</StandardText>}
+    contentLeft={<Text>W</Text>}
     contentRight={
       <div
         style={{
@@ -123,7 +114,7 @@ export const WithContentAndNoContentPadding = () => (
 export const WithContentAndNoContentPaddingRight = () => (
   <TextInput
     value={"some entered text"}
-    contentLeft={<StandardText>W</StandardText>}
+    contentLeft={<Text>W</Text>}
     contentRight={
       <div
         style={{
@@ -142,7 +133,7 @@ export const WithContentAndNoContentPaddingRight = () => (
 export const WithContentAndNoContentPaddingLeft = () => (
   <TextInput
     value={"some entered text"}
-    contentRight={<StandardText>W</StandardText>}
+    contentRight={<Text>W</Text>}
     contentLeft={
       <div
         style={{
@@ -173,19 +164,9 @@ export const WithCustomStyling = () => (
   </Box>
 );
 
-export const WithSelectAllOnMount = () => (
-  <Box width={"400px"}>
-    <StandardText>
-      The field is automatically focused and all text is selected.
-    </StandardText>
-    <Space />
-    <TextInput value={"Donald Duck"} selectAllOnMount autoFocus />
-  </Box>
-);
-
 export const WithSelectAllOnFocus = () => (
   <Box width={"400px"}>
-    <StandardText>All text is selected when field is focused.</StandardText>
+    <Text>All text is selected when field is focused.</Text>
     <Space />
     <TextInput value={"Donald Duck"} selectAllOnFocus />
   </Box>
@@ -202,7 +183,7 @@ export const DisabledWithContent = () => (
     <TextInput
       disabled={true}
       value={"some entered text"}
-      contentRight={<StandardText>ms</StandardText>}
+      contentRight={<Text>ms</Text>}
       iconLeft={faCoffee}
     />
   </Box>

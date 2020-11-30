@@ -1,17 +1,19 @@
 import * as React from "react";
 import { useMemo, useState } from "react";
 import { createStandardDateRangePresets } from "./PresetFactory";
-import { Column, Row, Space, StandardText } from "@stenajs-webui/core";
+import { Column, Row, Space, Text } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { CalendarPreset } from "./CalendarPreset";
 
-interface Props {
+export interface PresetPickerProps {
   onClickPreset: (preset: CalendarPreset) => void;
 }
 
-export const PresetPicker: React.FC<Props> = ({ onClickPreset }) => {
+export const PresetPicker: React.FC<PresetPickerProps> = ({
+  onClickPreset,
+}) => {
   const [pageIndex, setPageIndex] = useState(0);
   const pages = useMemo(() => createStandardDateRangePresets(new Date()), []);
 
@@ -30,7 +32,7 @@ export const PresetPicker: React.FC<Props> = ({ onClickPreset }) => {
           disabled={pageIndex === 0}
           onClick={() => setPageIndex(pageIndex - 1)}
         />
-        <StandardText>{currentPage.label}</StandardText>
+        <Text>{currentPage.label}</Text>
         <FlatButton
           size={"small"}
           leftIcon={faAngleRight}

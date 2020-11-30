@@ -1,22 +1,27 @@
 import { Box, Column } from "@stenajs-webui/core";
 import * as React from "react";
 import {
-  SidebarMenu,
-  SidebarMenuCollapsible,
-  SidebarMenuHeading,
-  SidebarMenuLink,
-  SidebarMenuSeparator,
-} from "@stenajs-webui/panels";
-import {
   faBook,
   faChartBar,
   faPaperPlane,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@stenajs-webui/elements";
+import { SidebarMenuHeading } from "./SidebarMenuHeading";
+import { SidebarMenu } from "./SidebarMenu";
+import { SidebarMenuLink } from "./SidebarMenuLink";
+import { SidebarMenuCollapsible } from "./SidebarMenuCollapsible";
+import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export default {
   title: "panels/SidebarMenu",
+  component: SidebarMenu,
+  subcomponents: {
+    SidebarMenu,
+    SidebarMenuLink,
+    SidebarMenuCollapsible,
+    SidebarMenuSeparator,
+  },
 };
 
 export const Overview = () => {

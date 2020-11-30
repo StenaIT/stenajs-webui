@@ -3,14 +3,17 @@ import { faAnchor } from "@fortawesome/free-solid-svg-icons/faAnchor";
 import { faEraser } from "@fortawesome/free-solid-svg-icons/faEraser";
 import { faRecycle } from "@fortawesome/free-solid-svg-icons/faRecycle";
 import { Row } from "@stenajs-webui/core";
-import { ButtonGroup, SecondaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
+import { SecondaryButton } from "../buttons/SecondaryButton";
+import { ButtonGroup } from "./ButtonGroup";
 
 export default {
-  title: "elements/Buttons/ButtonGroup",
+  title: "elements/ButtonGroup",
+  component: ButtonGroup,
+  subcomponents: { SecondaryButton },
 };
 
-export const Default = () => (
+export const Overview = () => (
   <>
     <Row>
       <ButtonGroup>

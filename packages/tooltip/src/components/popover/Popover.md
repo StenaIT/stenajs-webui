@@ -5,9 +5,9 @@
 ```
 <Popover
   placement={"bottom"}
-  content={<StandardText>Nice content on bottom</StandardText>}
+  content={<Text>Nice content on bottom</Text>}
 >
-  <StandardText>Hover me</StandardText>
+  <Text>Hover me</Text>
 </Popover>
 ```
 

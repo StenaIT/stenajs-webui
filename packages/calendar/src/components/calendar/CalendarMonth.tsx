@@ -1,4 +1,4 @@
-import { Box, Row, SmallText, Space, StandardText } from "@stenajs-webui/core";
+import { Box, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -70,7 +70,7 @@ export function CalendarMonth<T>({
                   label={month.name}
                 />
               ) : (
-                <StandardText>{month.name}</StandardText>
+                <Text>{month.name}</Text>
               )}
             </Row>
             <Space />
@@ -81,7 +81,7 @@ export function CalendarMonth<T>({
                   label={String(month.year)}
                 />
               ) : (
-                <StandardText>{month.year}</StandardText>
+                <Text>{month.year}</Text>
               )}
             </Row>
           </Row>
@@ -100,9 +100,12 @@ export function CalendarMonth<T>({
                     justifyContent={"center"}
                     alignItems={"center"}
                   >
-                    <SmallText color={theme.CalendarMonth.headerTextColor}>
+                    <Text
+                      size={"small"}
+                      color={theme.CalendarMonth.headerTextColor}
+                    >
                       W
-                    </SmallText>
+                    </Text>
                   </Box>
                 </td>
               )}

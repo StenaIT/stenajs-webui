@@ -8,7 +8,7 @@ This package contains components related to forms.
 - Radio
 - Switch
 - TextInputs
-  - [NumericTextInput](src/components/ui/text-input/numeric-text-input/NumericTextInput.md)
+  - [NumericTextInput](src/components/ui/numeric-text-input/NumericTextInput.md)
   - TextInput
   - TextArea
 - Checkbox

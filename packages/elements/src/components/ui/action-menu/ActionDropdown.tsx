@@ -5,36 +5,30 @@ import {
   Clickable,
   Column,
   Row,
-  StandardText,
+  Text,
   useBoolean,
   useMouseIsEntered,
   useOnClickOutside,
-  useThemeFields,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { KeyboardEventHandler, useCallback, useMemo, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import {
-  ActionDropdownTheme,
-  defaultActionDropdownTheme,
-} from "./ActionDropdownTheme";
+import { defaultActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuContext } from "./ActionMenuContext";
 
-interface ActionDropdownProps {
+export interface ActionDropdownProps {
   width?: string;
   label?: string;
   disabled?: boolean;
-  theme?: ActionDropdownTheme;
   zIndexOnMenu?: number;
 }
 
 export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   children,
-  disabled,
+  disabled = false,
   width = "180px",
   label = "Actions",
-  theme = defaultActionDropdownTheme,
   zIndexOnMenu,
 }) => {
   const [expanded, open, close] = useBoolean(false);
@@ -43,20 +37,19 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   const mouseIsOver = useMouseIsEntered(ref);
   useOnClickOutside(ref, close);
 
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        textColor: disabled ? theme.textColorDisabled : theme.textColor,
-        background: disabled ? theme.backgroundDisabled : theme.background,
-        borderColor: theme.borderColor,
-        borderColorFocus: theme.borderColorFocus,
-        expandIconColor: theme.expandIconColor,
-        expandIconColorDisabled: theme.expandIconColorDisabled,
-        expandIconColorFocus: theme.expandIconColorFocus,
-      },
-    },
-    [theme, disabled]
-  );
+  const colors = {
+    textColor: disabled
+      ? defaultActionDropdownTheme.textColorDisabled
+      : defaultActionDropdownTheme.textColor,
+    background: disabled
+      ? defaultActionDropdownTheme.backgroundDisabled
+      : defaultActionDropdownTheme.background,
+    borderColor: defaultActionDropdownTheme.borderColor,
+    borderColorFocus: defaultActionDropdownTheme.borderColorFocus,
+    expandIconColor: defaultActionDropdownTheme.expandIconColor,
+    expandIconColorDisabled: defaultActionDropdownTheme.expandIconColorDisabled,
+    expandIconColorFocus: defaultActionDropdownTheme.expandIconColorFocus,
+  };
 
   const hoverBorder = useMemo(() => `1px solid ${colors.borderColorFocus}`, [
     colors.borderColorFocus,
@@ -85,8 +78,8 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
   );
 
   const contextValue = useMemo(
-    () => ({ open, close: closeAndRefocus, theme }),
-    [open, closeAndRefocus, theme]
+    () => ({ open, close: closeAndRefocus, theme: defaultActionDropdownTheme }),
+    [open, closeAndRefocus]
   );
 
   return (
@@ -102,17 +95,17 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
           onClick={!disabled ? open : undefined}
           disableFocusHighlight={expanded}
           innerRef={clickableRef}
-          borderRadius={theme.borderRadius}
+          borderRadius={defaultActionDropdownTheme.borderRadius}
         >
           <Box
             borderColor={colors.borderColor}
             hoverBorder={disabled ? undefined : hoverBorder}
-            borderRadius={theme.borderRadius}
+            borderRadius={defaultActionDropdownTheme.borderRadius}
             borderWidth={1}
             borderStyle={"solid"}
             background={colors.background}
             width={width}
-            height={theme.height}
+            height={defaultActionDropdownTheme.height}
           >
             <Row
               width={"100%"}
@@ -121,7 +114,7 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
               justifyContent={"space-between"}
               indent
             >
-              <StandardText color={colors.textColor}>{label}</StandardText>
+              <Text color={colors.textColor}>{label}</Text>
               <Icon
                 icon={expanded ? faChevronUp : faChevronDown}
                 size={12}
@@ -151,12 +144,12 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
                 <Clickable width={"100%"} onClick={closeAndRefocus}>
                   <Row
                     width={"100%"}
-                    height={theme.height}
+                    height={defaultActionDropdownTheme.height}
                     justifyContent={"space-between"}
                     alignItems={"center"}
                     indent
                   >
-                    <StandardText>{label}</StandardText>
+                    <Text>{label}</Text>
                     <Icon
                       icon={faChevronUp}
                       size={12}

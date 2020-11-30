@@ -6,7 +6,7 @@ import {
   Row,
   Space,
   Spacing,
-  StandardText,
+  Text,
 } from "@stenajs-webui/core";
 import * as React from "react";
 import { PrimaryButton } from "@stenajs-webui/elements";
@@ -33,27 +33,27 @@ export const SimpleTable = () => {
               <tr>
                 <td style={tdStyle}>
                   <Indent>
-                    <StandardText fontWeight={"bold"}>Name</StandardText>
+                    <Text variant={"bold"}>Name</Text>
                   </Indent>
                 </td>
                 <td style={tdStyle}>
                   <Indent>
-                    <StandardText fontWeight={"bold"}>Description</StandardText>
+                    <Text variant={"bold"}>Description</Text>
                   </Indent>
                 </td>
                 <td style={tdStyle}>
                   <Indent>
-                    <StandardText fontWeight={"bold"}>Routes</StandardText>
+                    <Text variant={"bold"}>Routes</Text>
                   </Indent>
                 </td>
                 <td style={tdStyle}>
                   <Indent>
-                    <StandardText fontWeight={"bold"}>Event type</StandardText>
+                    <Text variant={"bold"}>Event type</Text>
                   </Indent>
                 </td>
                 <td style={tdStyle}>
                   <Indent>
-                    <StandardText fontWeight={"bold"}>Results</StandardText>
+                    <Text variant={"bold"}>Results</Text>
                   </Indent>
                 </td>
                 <td style={tdStyle} />
@@ -65,7 +65,7 @@ export const SimpleTable = () => {
                     <Indent>
                       <Clickable disableFocusHighlight onClick={() => {}}>
                         <Row alignItems={"center"}>
-                          <StandardText hoverUnderline>{name}</StandardText>
+                          <Text>{name}</Text>
                           <Space num={2} />
                         </Row>
                       </Clickable>
@@ -73,25 +73,25 @@ export const SimpleTable = () => {
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText>A great duck.</StandardText>
+                      <Text>A great duck.</Text>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
-                      <StandardText>GOFR, FRGO</StandardText>
+                      <Text>GOFR, FRGO</Text>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
                       <Row>
-                        <StandardText>Boarded ship</StandardText>
+                        <Text>Boarded ship</Text>
                       </Row>
                     </Indent>
                   </td>
                   <td style={tdStyle}>
                     <Indent>
                       <Row>
-                        <StandardText>Big success</StandardText>
+                        <Text>Big success</Text>
                       </Row>
                     </Indent>
                   </td>

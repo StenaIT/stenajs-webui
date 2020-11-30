@@ -1,4 +1,4 @@
-import { Indent, StandardText } from "@stenajs-webui/core";
+import { Indent, Text } from "@stenajs-webui/core";
 import * as React from "react";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 export const TextCell: React.FC<Props> = React.memo(function ({ label }) {
   return (
     <Indent>
-      <StandardText>{label}</StandardText>
+      <Text>{label}</Text>
     </Indent>
   );
 });

@@ -1,8 +1,9 @@
-import { Indent } from "@stenajs-webui/core";
 import * as React from "react";
+import { Indent } from "./Indent";
 
 export default {
   title: "core/Layout/Indent",
+  component: Indent,
 };
 
 export const Standard = () => (

@@ -1,10 +1,12 @@
 import * as React from "react";
-import { TextInput, TextInputBox } from "@stenajs-webui/forms";
 import { Icon, stenaArrowRight } from "@stenajs-webui/elements";
 import { Box, Space } from "@stenajs-webui/core";
+import { TextInput } from "./TextInput";
+import { TextInputBox } from "./TextInputBox";
 
 export default {
   title: "forms/TextInput/TextInputBox",
+  component: TextInputBox,
 };
 
 export const Standard = () => (

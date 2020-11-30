@@ -16,6 +16,7 @@ export interface ResultListBannerProps
 
 export const ResultListBanner: React.FC<ResultListBannerProps> = ({
   bannerState,
+  variant = "standard",
   ...bannerProps
 }) => {
   return (
@@ -23,6 +24,7 @@ export const ResultListBanner: React.FC<ResultListBannerProps> = ({
       {...bannerProps}
       headerText={bannerState.headerText}
       text={bannerState.text}
+      variant={variant}
     >
       {bannerState.items && (
         <>

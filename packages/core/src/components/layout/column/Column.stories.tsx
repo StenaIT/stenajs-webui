@@ -1,8 +1,11 @@
-import { Box, Column, Space } from "@stenajs-webui/core";
 import * as React from "react";
+import { Column } from "./Column";
+import { Space } from "../space/Space";
+import { Box } from "../box/Box";
 
 export default {
   title: "core/Layout/Column",
+  component: Column,
 };
 
 export const Standard = () => (

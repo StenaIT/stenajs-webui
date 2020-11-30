@@ -8,7 +8,7 @@ import {
   validUserInput,
 } from "../../../util/time/TimeStringFormatValidator";
 
-interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
+export interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
   /** Show placeholder when true */
   showPlaceholder?: boolean;
   /** Show icon when true */

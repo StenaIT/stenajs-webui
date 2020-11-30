@@ -1,19 +1,4 @@
-import { Store, withState } from "@dump247/storybook-state";
-import {
-  Box,
-  Column,
-  HeaderText,
-  Row,
-  SmallText,
-  Space,
-} from "@stenajs-webui/core";
-import {
-  Checkbox,
-  NumericTextInput,
-  RadioButton,
-  Switch,
-  TextInput,
-} from "@stenajs-webui/forms";
+import { Box, Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import {
   DropdownOption,
   GroupedMultiSelect,
@@ -21,25 +6,18 @@ import {
 } from "@stenajs-webui/select";
 import * as React from "react";
 import { useEffect, useState } from "react";
+import { Switch } from "./switch/Switch";
+import { RadioButton } from "./radio/RadioButton";
+import { Checkbox } from "./checkbox/Checkbox";
+import { TextInput } from "./text-input/TextInput";
+import { NumericTextInput } from "./numeric-text-input/NumericTextInput";
 
 export default {
   title: "forms",
 };
 
-interface State {
-  checkbox: boolean;
-  input: string;
-  numericInput: string;
-  radio: boolean;
-  select?: string;
-  groupedMultiSelect: readonly DropdownOption<string>[] | undefined;
-  switch: boolean;
-}
-
-const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
-  store,
-  isEnabled,
-}) => {
+const SwitchTable: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
+  const [checked, setChecked] = useState(false);
   return (
     <table cellPadding={"5px"}>
       <thead>
@@ -55,10 +33,7 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
         <tr>
           <td>Enabled</td>
           <td>
-            <Switch
-              onValueChange={(value) => store.set({ switch: value })}
-              value={store.state.switch}
-            />
+            <Switch onValueChange={setChecked} value={checked} />
           </td>
           <td>
             <Switch value />
@@ -73,11 +48,7 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
         <tr>
           <td>Disabled</td>
           <td>
-            <Switch
-              onValueChange={(value) => store.set({ switch: value })}
-              value={store.state.switch}
-              disabled
-            />
+            <Switch onValueChange={setChecked} value={checked} disabled />
           </td>
           <td>
             <Switch value disabled />
@@ -95,7 +66,6 @@ const SwitchTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
 };
 
 const RadioButtonTable: React.FC<{
-  store: Store<State>;
   isEnabled: boolean;
 }> = ({ isEnabled }) => {
   return (
@@ -135,7 +105,7 @@ const RadioButtonTable: React.FC<{
         </tr>
         <tr>
           <td>
-            <SmallText>Small</SmallText>
+            <Text size={"small"}>Small</Text>
           </td>
         </tr>
         <tr>
@@ -167,10 +137,8 @@ const RadioButtonTable: React.FC<{
   );
 };
 
-const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
-  store,
-  isEnabled,
-}) => {
+const CheckboxTable: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
+  const [checked, setChecked] = useState(false);
   return (
     <table cellPadding={"5px"}>
       <thead>
@@ -186,10 +154,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
         <tr>
           <td>Enabled</td>
           <td>
-            <Checkbox
-              value={store.state.checkbox}
-              onValueChange={(value) => store.set({ checkbox: value })}
-            />
+            <Checkbox value={checked} onValueChange={setChecked} />
           </td>
           <td>
             <Checkbox value />
@@ -204,11 +169,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
         <tr>
           <td>Disabled</td>
           <td>
-            <Checkbox
-              value={store.state.checkbox}
-              onValueChange={(value) => store.set({ checkbox: value })}
-              disabled
-            />
+            <Checkbox value={checked} onValueChange={setChecked} disabled />
           </td>
           <td>
             <Checkbox value disabled />
@@ -222,7 +183,7 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
         </tr>
         <tr>
           <td>
-            <SmallText>Small</SmallText>
+            <Text size={"small"}>Small</Text>
           </td>
         </tr>
         <tr>
@@ -230,8 +191,8 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>
             <Checkbox
               size={"small"}
-              value={store.state.checkbox}
-              onValueChange={(value) => store.set({ checkbox: value })}
+              value={checked}
+              onValueChange={setChecked}
             />
           </td>
           <td>
@@ -249,8 +210,8 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
           <td>
             <Checkbox
               size={"small"}
-              value={store.state.checkbox}
-              onValueChange={(value) => store.set({ checkbox: value })}
+              value={checked}
+              onValueChange={setChecked}
               disabled
             />
           </td>
@@ -268,8 +229,17 @@ const CheckboxTable: React.FC<{ store: Store<State>; isEnabled: boolean }> = ({
     </table>
   );
 };
-const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
+
+export const Overview = () => {
   const [isEnabled, setIsEnabled] = useState(false);
+  const [value, setValue] = useState("");
+  const [numeric, setNumeric] = useState("");
+  const [selected, setSelected] = useState<string | undefined | null>(
+    undefined
+  );
+  const [grouped, setGrouped] = useState<
+    readonly DropdownOption<string>[] | undefined
+  >(undefined);
   useEffect(() => {
     const t = setInterval(() => {
       setIsEnabled((v) => !v);
@@ -281,25 +251,25 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
     <Column>
       <Row>
         <Column>
-          <HeaderText>Checkbox</HeaderText>
-          <CheckboxTable store={store} isEnabled={isEnabled} />
+          <Heading>Checkbox</Heading>
+          <CheckboxTable isEnabled={isEnabled} />
         </Column>
         <Space num={4} />
         <Column>
-          <HeaderText>RadioButton</HeaderText>
-          <RadioButtonTable store={store} isEnabled={isEnabled} />
+          <Heading>RadioButton</Heading>
+          <RadioButtonTable isEnabled={isEnabled} />
         </Column>
         <Space num={4} />
         <Column>
-          <HeaderText>Switch</HeaderText>
-          <SwitchTable store={store} isEnabled={isEnabled} />
+          <Heading>Switch</Heading>
+          <SwitchTable isEnabled={isEnabled} />
         </Column>
       </Row>
 
       <Space num={4} />
 
       <div>
-        <HeaderText>TextInput</HeaderText>
+        <Heading>TextInput</Heading>
         <Space />
         <Row>
           <table cellSpacing={"5px"}>
@@ -313,22 +283,15 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
             <tbody>
               <tr>
                 <td>
-                  <TextInput
-                    value={store.state.input}
-                    onValueChange={(value) => store.set({ input: value })}
-                  />
+                  <TextInput value={value} onValueChange={setValue} />
+                </td>
+                <td>
+                  <TextInput value={value} onValueChange={setValue} disabled />
                 </td>
                 <td>
                   <TextInput
-                    value={store.state.input}
-                    onValueChange={(value) => store.set({ input: value })}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <TextInput
-                    value={store.state.input}
-                    onValueChange={(value) => store.set({ input: value })}
+                    value={value}
+                    onValueChange={setValue}
                     variant={"error"}
                   />
                 </td>
@@ -339,11 +302,11 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
       </div>
       <Space />
       <div>
-        <HeaderText>Select</HeaderText>
+        <Heading>Select</Heading>
         <Space />
         <Box width={"200px"}>
           <Select
-            onChange={(value: string) => store.set({ select: value })}
+            onChange={setSelected as any}
             options={[
               {
                 value: "Mattias",
@@ -358,18 +321,18 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
                 label: "Dennis the menace",
               },
             ]}
-            value={store.state.select}
+            value={selected as any}
             width={"200px"}
           />
         </Box>
       </div>
       <Space />
       <div>
-        <HeaderText>GroupedMultiSelect</HeaderText>
+        <Heading>GroupedMultiSelect</Heading>
         <Space />
         <Box width={"200px"}>
           <GroupedMultiSelect
-            onChange={(value) => store.set({ groupedMultiSelect: value })}
+            onChange={setGrouped}
             options={[
               {
                 label: "CA",
@@ -397,31 +360,18 @@ const FormOverview: React.FC<{ store: Store<State> }> = ({ store }) => {
                 ],
               },
             ]}
-            value={store.state.groupedMultiSelect}
+            value={grouped}
           />
         </Box>
       </div>
       <Space />
       <div>
-        <HeaderText>NumericTextInput</HeaderText>
+        <Heading>NumericTextInput</Heading>
         <Space />
         <Box width={"200px"}>
-          <NumericTextInput
-            value={store.state.numericInput}
-            onValueChange={(value) => store.set({ numericInput: value })}
-          />
+          <NumericTextInput value={numeric} onValueChange={setNumeric} />
         </Box>
       </div>
     </Column>
   );
 };
-
-export const Overview = withState<State>({
-  checkbox: false,
-  input: "",
-  numericInput: "",
-  radio: false,
-  select: undefined,
-  groupedMultiSelect: undefined,
-  switch: false,
-})(({ store }: { store: Store<State> }) => <FormOverview store={store} />);

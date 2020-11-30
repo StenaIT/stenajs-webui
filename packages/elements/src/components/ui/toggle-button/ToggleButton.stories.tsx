@@ -1,7 +1,7 @@
-import { Store, withState } from "@dump247/storybook-state";
 import { Row } from "@stenajs-webui/core";
-import { ToggleButton } from "@stenajs-webui/elements";
 import * as React from "react";
+import { useState } from "react";
+import { ToggleButton } from "./ToggleButton";
 
 interface State {
   mon?: boolean;
@@ -15,48 +15,50 @@ interface State {
 
 export default {
   title: "elements/ToggleButton",
+  component: ToggleButton,
 };
 
-export const Standard = withState<State>({
-  mon: true,
-})(({ store }: { store: Store<State> }) => (
-  <Row>
-    <ToggleButton
-      label={"M"}
-      pressed={store.state.mon}
-      onClick={(mon) => store.set({ mon })}
-      first
-    />
-    <ToggleButton
-      label={"T"}
-      pressed={store.state.tue}
-      onClick={(tue) => store.set({ tue })}
-    />
-    <ToggleButton
-      label={"W"}
-      pressed={store.state.wed}
-      onClick={(wed) => store.set({ wed })}
-    />
-    <ToggleButton
-      label={"T"}
-      pressed={store.state.thu}
-      onClick={(thu) => store.set({ thu })}
-    />
-    <ToggleButton
-      label={"F"}
-      pressed={store.state.fri}
-      onClick={(fri) => store.set({ fri })}
-    />
-    <ToggleButton
-      label={"S"}
-      pressed={store.state.sat}
-      onClick={(sat) => store.set({ sat })}
-    />
-    <ToggleButton
-      label={"S"}
-      pressed={store.state.sun}
-      onClick={(sun) => store.set({ sun })}
-      last
-    />
-  </Row>
-));
+export const Standard = () => {
+  const [state, setState] = useState<State>({});
+  return (
+    <Row>
+      <ToggleButton
+        label={"M"}
+        pressed={state.mon}
+        onClick={(mon) => setState({ ...state, mon })}
+        first
+      />
+      <ToggleButton
+        label={"T"}
+        pressed={state.tue}
+        onClick={(tue) => setState({ ...state, tue })}
+      />
+      <ToggleButton
+        label={"W"}
+        pressed={state.wed}
+        onClick={(wed) => setState({ ...state, wed })}
+      />
+      <ToggleButton
+        label={"T"}
+        pressed={state.thu}
+        onClick={(thu) => setState({ ...state, thu })}
+      />
+      <ToggleButton
+        label={"F"}
+        pressed={state.fri}
+        onClick={(fri) => setState({ ...state, fri })}
+      />
+      <ToggleButton
+        label={"S"}
+        pressed={state.sat}
+        onClick={(sat) => setState({ ...state, sat })}
+      />
+      <ToggleButton
+        label={"S"}
+        pressed={state.sun}
+        onClick={(sun) => setState({ ...state, sun })}
+        last
+      />
+    </Row>
+  );
+};

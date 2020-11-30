@@ -1,28 +1,28 @@
-import { Store, withState } from "@dump247/storybook-state";
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
+import * as React from "react";
+import { useState } from "react";
 import {
   DropdownOption,
   GroupedMultiSelect,
   OnChange,
-} from "@stenajs-webui/select";
-import * as React from "react";
-
-interface State {
-  values: readonly DropdownOption<string>[] | undefined;
-}
+} from "./GroupedMultiSelect";
 
 export default {
   title: "select/GroupedMultiSelect",
+  component: GroupedMultiSelect,
 };
 
-export const Standard = withState<State>({
-  values: undefined,
-})(({ store }: { store: Store<State> }) => {
+export const Standard = () => {
+  const [value, setValue] = useState<
+    readonly DropdownOption<string>[] | undefined
+  >(undefined);
+
   const onChange: OnChange<string> = (
     options: readonly DropdownOption<string>[] | undefined
   ) => {
-    store.set({ values: options });
+    setValue(options);
   };
+
   return (
     <div style={{ width: "400px" }}>
       <GroupedMultiSelect
@@ -54,19 +54,21 @@ export const Standard = withState<State>({
             ],
           },
         ]}
-        value={store.state.values}
+        value={value}
       />
     </div>
   );
-});
+};
 
-export const StandardDark = withState<State>({
-  values: undefined,
-})(({ store }: { store: Store<State> }) => {
+export const StandardDark = () => {
+  const [value, setValue] = useState<
+    readonly DropdownOption<string>[] | undefined
+  >(undefined);
+
   const onChange: OnChange<string> = (
     options: readonly DropdownOption<string>[] | undefined
   ) => {
-    store.set({ values: options });
+    setValue(options);
   };
   return (
     <div style={{ width: "600px" }}>
@@ -103,14 +105,14 @@ export const StandardDark = withState<State>({
                 },
               ]}
               variant={"dark"}
-              value={store.state.values}
+              value={value}
             />
           </Spacing>
         </Indent>
       </Box>
     </div>
   );
-});
+};
 
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
