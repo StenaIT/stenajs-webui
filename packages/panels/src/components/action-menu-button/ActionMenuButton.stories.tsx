@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Box, Text } from "@stenajs-webui/core";
+import { Box, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
 import { ActionMenuButton } from "./ActionMenuButton";
@@ -50,7 +50,8 @@ export const Standard = () => (
           <ActionMenuItem label={"Quit"} rightText={"cmd+q"} onClick={close} />
         </>
       )}
-    ></ActionMenuButton>
+    />
+    <Spacing num={20} />
   </Box>
 );
 

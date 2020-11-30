@@ -31,13 +31,15 @@ export const Standard = () => (
 );
 
 export const ClickTrigger = () => (
-  <Tooltip label={"Way to go!"} trigger={"click"}>
-    <Text>Click me</Text>
-  </Tooltip>
+  <Row justifyContent={"space-between"} spacing={10}>
+    <Tooltip label={"Way to go!"} trigger={"click"}>
+      <Text>Click me</Text>
+    </Tooltip>
+  </Row>
 );
 
 export const WithButton = () => (
-  <Column justifyContent={"flex-start"} width={"fit-content"}>
+  <Column justifyContent={"flex-start"} width={"fit-content"} spacing={10}>
     <Tooltip label={"Big success!"} trigger={"click"}>
       <PrimaryButton label={"Click me"} />
     </Tooltip>

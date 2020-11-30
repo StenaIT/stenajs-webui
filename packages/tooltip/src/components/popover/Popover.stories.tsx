@@ -20,7 +20,7 @@ export default {
 };
 
 export const Standard = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />}>
       <FlatButton leftIcon={faTrash} />
     </Popover>
@@ -28,7 +28,7 @@ export const Standard = () => (
 );
 
 export const OnClick = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"}>
       <FlatButton leftIcon={faTrash} />
     </Popover>
@@ -36,7 +36,7 @@ export const OnClick = () => (
 );
 
 export const NoArrow = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
       <FlatButton leftIcon={faTrash} />
     </Popover>
@@ -44,7 +44,7 @@ export const NoArrow = () => (
 );
 
 export const NoPadding = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover
       disablePadding
       content={
@@ -66,7 +66,7 @@ export const NoPadding = () => (
 );
 
 export const Variants = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"}>
       <FlatButton label={"standard"} />
     </Popover>
@@ -106,7 +106,7 @@ export const Variants = () => (
 );
 
 export const ControlOpen = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} visible>
       <FlatButton leftIcon={faTrash} />
     </Popover>
@@ -120,7 +120,7 @@ const Alerter = () => {
 };
 
 export const Lazy = () => (
-  <Box indent={5} spacing={5} display={"inline-block"}>
+  <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<Alerter />} trigger={"click"} lazy>
       <FlatButton leftIcon={faTrash} />
     </Popover>
