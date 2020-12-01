@@ -23,6 +23,7 @@ import {
   InternalDropdownOption,
 } from "../../util/multiDropdownUtils";
 import { Select, SelectProps } from "./Select";
+import { DropdownOption } from "./GroupedMultiSelectTypes";
 
 export type OnChangeValue<TData> =
   | OptionsType<DropdownOption<TData>>
@@ -33,19 +34,13 @@ export type OnChange<TData> = (
   action: ActionMeta<any>
 ) => void;
 
-export interface DropdownOption<TData> {
-  data: TData;
-  label: string;
-  value: string;
-}
-
 export interface GroupedMultiSelectProps<TData>
   extends Omit<
     SelectProps<DropdownOption<TData>>,
     "options" | "onChange" | "value" | "components"
   > {
   /**
-   * Same as Select prop `component`but without MultiValue and Option since they can not be modified
+   * Same as Select prop `component` but without MultiValue and Option since they can not be modified
    */
   components?: Omit<
     SelectComponentsConfig<DropdownOption<TData>>,

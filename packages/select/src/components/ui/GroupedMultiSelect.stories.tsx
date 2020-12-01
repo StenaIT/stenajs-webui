@@ -1,11 +1,8 @@
 import { Box, Indent, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
 import { useState } from "react";
-import {
-  DropdownOption,
-  GroupedMultiSelect,
-  OnChange,
-} from "./GroupedMultiSelect";
+import { GroupedMultiSelect, OnChange } from "./GroupedMultiSelect";
+import { DropdownOption } from "./GroupedMultiSelectTypes";
 
 export default {
   title: "select/GroupedMultiSelect",

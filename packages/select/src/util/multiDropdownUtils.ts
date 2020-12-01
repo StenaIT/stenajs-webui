@@ -6,11 +6,8 @@ import {
   OptionsType,
   ValueType,
 } from "react-select";
-import {
-  DropdownOption,
-  OnChange,
-  OnChangeValue,
-} from "../components/ui/GroupedMultiSelect";
+import { OnChange, OnChangeValue } from "../components/ui/GroupedMultiSelect";
+import { DropdownOption } from "../components/ui/GroupedMultiSelectTypes";
 
 export type InternalDropdownOption<TData> =
   | InternalChildOption<TData>
