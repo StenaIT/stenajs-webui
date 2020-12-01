@@ -21,6 +21,7 @@ export const Tab: React.FC<TabProps> = ({
   right,
   rightIcon,
   success = false,
+  tabIndex = 0, // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
   ...buttonProps
 }) => {
   const buttonLabel = getButtonLabel(
@@ -34,6 +35,9 @@ export const Tab: React.FC<TabProps> = ({
   return (
     <button
       className={cx(styles.tab, selected && styles.selected)}
+      role={"tab"}
+      aria-selected={selected}
+      tabIndex={tabIndex}
       {...buttonProps}
     >
       <div className={styles.inner}>

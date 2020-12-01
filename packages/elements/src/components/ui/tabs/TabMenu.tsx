@@ -7,7 +7,7 @@ export interface TabMenuProps {}
 
 export const TabMenu: React.FC<TabMenuProps> = ({ children }) => {
   return (
-    <div className={styles.tabMenu}>
+    <div className={styles.tabMenu} role={"tablist"}>
       {Children.map(children, (child, index) => (
         <>
           {index > 0 && (
