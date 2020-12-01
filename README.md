@@ -1,4 +1,4 @@
-# stenajs-webui [![Build status badge](https://github.com/StenaIT/stenajs-webui/workflows/Node%20CI/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions?query=workflow%3A%22Node+CI%22) [![@stenajs-webui/calendar](https://img.shields.io/npm/v/@stenajs-webui/calendar?label=%40stenajs-webui%2Fcalendar)](https://www.npmjs.com/package/@stenajs-webui/calendar) [![@stenajs-webui/core](https://img.shields.io/npm/v/@stenajs-webui/core?label=%40stenajs-webui%2Fcore)](https://www.npmjs.com/package/@stenajs-webui/core) [![@stenajs-webui/elements](https://img.shields.io/npm/v/@stenajs-webui/elements?label=%40stenajs-webui%2Felements)](https://www.npmjs.com/package/@stenajs-webui/elements) [![@stenajs-webui/forms](https://img.shields.io/npm/v/@stenajs-webui/forms?label=%40stenajs-webui%2Fforms)](https://www.npmjs.com/package/@stenajs-webui/forms) [![@stenajs-webui/grid](https://img.shields.io/npm/v/@stenajs-webui/grid?label=%40stenajs-webui%2Fgrid)](https://www.npmjs.com/package/@stenajs-webui/grid) [![@stenajs-webui/input-mask](https://img.shields.io/npm/v/@stenajs-webui/input-mask?label=%40stenajs-webui%2Finput-mask)](https://www.npmjs.com/package/@stenajs-webui/input-mask) [![@stenajs-webui/modal](https://img.shields.io/npm/v/@stenajs-webui/modal?label=%40stenajs-webui%2Fmodal)](https://www.npmjs.com/package/@stenajs-webui/modal) [![@stenajs-webui/panels](https://img.shields.io/npm/v/@stenajs-webui/panels?label=%40stenajs-webui%2Fpanels)](https://www.npmjs.com/package/@stenajs-webui/panels) [![@stenajs-webui/redux](https://img.shields.io/npm/v/@stenajs-webui/redux?label=%40stenajs-webui%2Fredux)](https://www.npmjs.com/package/@stenajs-webui/redux) [![@stenajs-webui/select](https://img.shields.io/npm/v/@stenajs-webui/select?label=%40stenajs-webui%2Fselect)](https://www.npmjs.com/package/@stenajs-webui/select) [![@stenajs-webui/theme](https://img.shields.io/npm/v/@stenajs-webui/theme?label=%40stenajs-webui%2Ftheme)](https://www.npmjs.com/package/@stenajs-webui/theme) [![@stenajs-webui/tooltip](https://img.shields.io/npm/v/@stenajs-webui/tooltip?label=%40stenajs-webui%2Ftooltip)](https://www.npmjs.com/package/@stenajs-webui/tooltip)
+# stenajs-webui [![Build status badge](https://github.com/StenaIT/stenajs-webui/workflows/Node%20CI/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions?query=workflow%3A%22Node+CI%22) [![stenajs-webui](https://img.shields.io/npm/v/@stenajs-webui/core?label=stenajs-webui)](https://www.npmjs.com/package/@stenajs-webui/core)
 
 A design system and React component framework developed at Stena Line.
 
@@ -12,18 +12,21 @@ All components are available to see in Storybook.
 
 ## Packages
 
-- [calendar](packages/calendar/README.md)
-- [core](packages/core/README.md)
-- [elements](packages/elements/README.md)
-- [forms](packages/forms/README.md)
-- [grid](packages/grid/README.md)
-- [input-mask](packages/input-mask/README.md)
-- [modal](packages/modal/README.md)
-- [panels](packages/panels/README.md)
-- [redux](packages/redux/README.md)
-- [select](packages/select/README.md)
-- [theme](packages/theme/README.md)
-- [tooltip](packages/tooltip/README.md)
+| Package                                     | NPM version                                                                                                                                                                          |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [calendar](packages/calendar/README.md)     | [![@stenajs-webui/calendar](https://img.shields.io/npm/v/@stenajs-webui/calendar?label=%40stenajs-webui%2Fcalendar)](https://www.npmjs.com/package/@stenajs-webui/calendar)         |
+| [core](packages/core/README.md)             | [![@stenajs-webui/core](https://img.shields.io/npm/v/@stenajs-webui/core?label=%40stenajs-webui%2Fcore)](https://www.npmjs.com/package/@stenajs-webui/core)                         |
+| [elements](packages/elements/README.md)     | [![@stenajs-webui/elements](https://img.shields.io/npm/v/@stenajs-webui/elements?label=%40stenajs-webui%2Felements)](https://www.npmjs.com/package/@stenajs-webui/elements)         |
+| [forms](packages/forms/README.md)           | [![@stenajs-webui/forms](https://img.shields.io/npm/v/@stenajs-webui/forms?label=%40stenajs-webui%2Fforms)](https://www.npmjs.com/package/@stenajs-webui/forms)                     |
+| [grid](packages/grid/README.md)             | [![@stenajs-webui/grid](https://img.shields.io/npm/v/@stenajs-webui/grid?label=%40stenajs-webui%2Fgrid)](https://www.npmjs.com/package/@stenajs-webui/grid)                         |
+| [input-mask](packages/input-mask/README.md) | [![@stenajs-webui/input-mask](https://img.shields.io/npm/v/@stenajs-webui/input-mask?label=%40stenajs-webui%2Finput-mask)](https://www.npmjs.com/package/@stenajs-webui/input-mask) |
+| [modal](packages/modal/README.md)           | [![@stenajs-webui/modal](https://img.shields.io/npm/v/@stenajs-webui/modal?label=%40stenajs-webui%2Fmodal)](https://www.npmjs.com/package/@stenajs-webui/modal)                     |
+| [panels](packages/panels/README.md)         | [![@stenajs-webui/panels](https://img.shields.io/npm/v/@stenajs-webui/panels?label=%40stenajs-webui%2Fpanels)](https://www.npmjs.com/package/@stenajs-webui/panels)                 |
+| [redux](packages/redux/README.md)           | [![@stenajs-webui/redux](https://img.shields.io/npm/v/@stenajs-webui/redux?label=%40stenajs-webui%2Fredux)](https://www.npmjs.com/package/@stenajs-webui/redux)                     |
+| [select](packages/select/README.md)         | [![@stenajs-webui/select](https://img.shields.io/npm/v/@stenajs-webui/select?label=%40stenajs-webui%2Fselect)](https://www.npmjs.com/package/@stenajs-webui/select)                 |
+| [theme](packages/theme/README.md)           | [![@stenajs-webui/theme](https://img.shields.io/npm/v/@stenajs-webui/theme?label=%40stenajs-webui%2Ftheme)](https://www.npmjs.com/package/@stenajs-webui/theme)                     |
+| [tooltip](packages/tooltip/README.md)       | [![@stenajs-webui/tooltip](https://img.shields.io/npm/v/@stenajs-webui/tooltip?label=%40stenajs-webui%2Ftooltip)](https://www.npmjs.com/package/@stenajs-webui/tooltip)             |
+
 
 ## Status
 
