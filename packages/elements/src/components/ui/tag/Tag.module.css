@@ -3,7 +3,7 @@
   --swui-tag-font-size: var(--swui-font-size-small);
   --swui-tag-line-height: var(--swui-line-height-small);
   --swui-tag-font-weight: var(--swui-font-weight-text);
-  --swui-tag-font-family: var(--swui-text-font-family);
+  --swui-tag-font-family: var(--swui-font-primary);
   --swui-tag-letter-spacing: -0.34px;
   --swui-tag-height-normal: 24px;
   --swui-tag-height-small: 16px;
