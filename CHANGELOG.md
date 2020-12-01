@@ -12,7 +12,6 @@
 
 - `Badge` prop `type` renamed to `variant`.
 - `Badge` variant `notification` renamed to `info`.
-- `Spinner` no longer has color prop.
 
 ## 3.0.0
 
