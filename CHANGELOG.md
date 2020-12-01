@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.2
+
+### Fixes
+
+- `Chip` was not using correct font.
+
 ## 4.0.1
 
 ### Fixes
