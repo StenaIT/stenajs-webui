@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.3
+
+### New components
+
+- `ActionButtonLink`
+
+Same as `ActionButton`, but uses `FlatButtonLink` instead of `FlatButton`.
+This makes it possible to use `href` and `target` props.
 ## 4.0.2
 
 ### Fixes
