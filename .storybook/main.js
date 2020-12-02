@@ -6,7 +6,14 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-toolbars",
-    "@storybook/addon-docs",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
