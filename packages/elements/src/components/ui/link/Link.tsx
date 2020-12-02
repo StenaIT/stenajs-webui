@@ -40,7 +40,6 @@ export const Link: React.FC<LinkProps> = ({
   };
   return (
     <a
-      role={"link"}
       tabIndex={!disableTabIndex ? tabIndex : undefined}
       className={cx(
         styles.link,
