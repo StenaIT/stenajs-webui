@@ -1,5 +1,30 @@
 # Changelog
 
+## 4.1.0
+
+### New components
+
+- `ActionMenuLink`
+
+Same as `ActionMenuItem`, but uses `FlatButtonLink` instead of `FlatButton`.
+This makes it possible to use `href` and `target` props.
+
+### New features
+
+- `Link`
+
+Add variants and sizes to `Link`, same as for `Text` except `bold` which is default for links.
+
+### Breaking changes
+
+- `TextVariants` type has been renamed to `TextVariant`.
+- `Link` now produces an <a> tag, instead of <span>.
+
+### Fixes
+
+Set sideEffects true in `theme` package.json, to prevent
+webpack from tree-shaking the theme CSS.
+
 ## 4.0.2
 
 ### Fixes

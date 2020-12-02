@@ -29,6 +29,7 @@ export * from "./components/ui/action-menu/ActionDropdown";
 export * from "./components/ui/action-menu/ActionDropdownTheme";
 export * from "./components/ui/action-menu/ActionMenu";
 export * from "./components/ui/action-menu/ActionMenuContext";
+export * from "./components/ui/action-menu/ActionMenuLink";
 export * from "./components/ui/action-menu/ActionMenuItem";
 export * from "./components/ui/action-menu/ActionMenuSeparator";
 export * from "./components/ui/action-menu/ActionMenuTheme";

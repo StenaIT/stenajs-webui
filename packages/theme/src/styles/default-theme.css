@@ -14,6 +14,7 @@
   --swui-primary-action-color-active: var(--lhds-color-blue-800);
   --swui-primary-action-color-focus-light: var(--lhds-color-blue-100);
   --swui-primary-action-color-focus: var(--lhds-color-blue-700);
+  --swui-primary-action-color-hover: var(--lhds-color-blue-300);
   --swui-primary-action-color-hover-light: var(--lhds-color-blue-100);
   --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
   --swui-separator-color: var(--lhds-color-ui-300);
