@@ -8,6 +8,8 @@ import { ActionMenu } from "./ActionMenu";
 import { ActionMenuSeparator } from "./ActionMenuSeparator";
 import * as React from "react";
 import markdown from "./ActionMenu.md";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { ActionMenuLink } from "./ActionMenuLink";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -22,6 +24,19 @@ export const Standard = () => (
   <ActionMenu>
     <ActionMenuItem label={"Open"} onClick={action("Opened")} />
     <ActionMenuItem label={"Save"} icon={faSave} onClick={action("Saved")} />
+    <ActionMenuLink
+      label={"Open new window"}
+      icon={faExternalLinkAlt}
+      href={"https://www.google.com"}
+      target={"_blank"}
+    />
+    <ActionMenuLink
+      label={"Open new window"}
+      disabled
+      icon={faExternalLinkAlt}
+      href={"https://www.google.com"}
+      target={"_blank"}
+    />
     <ActionMenuItem
       label={"Burn it"}
       icon={faFire}

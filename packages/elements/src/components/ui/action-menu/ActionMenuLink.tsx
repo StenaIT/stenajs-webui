@@ -1,6 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-  Clickable,
+  AnchorElementProps,
   Row,
   Space,
   Text,
@@ -12,8 +12,9 @@ import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
+import styles from "./ActionMenuLink.module.css";
 
-export interface ActionMenuItemProps {
+export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
   rightText?: string;
   icon?: IconDefinition;
@@ -24,7 +25,7 @@ export interface ActionMenuItemProps {
   onClick?: () => void;
 }
 
-export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
+export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
   label,
   icon,
   iconRight,
@@ -34,10 +35,13 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   theme: themeFromProps,
   children,
   disableCloseOnClick,
+  href,
+  target,
+  ...anchorProps
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
   const theme = themeFromProps || themeFromContext;
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
 
@@ -85,17 +89,22 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   }, [onClick, close, disableCloseOnClick]);
 
   return (
-    <Clickable
+    <a
       onClick={disabled ? undefined : onClickHandler}
-      disableFocusHighlight
-      background={colors.itemBackground}
-      innerRef={ref}
+      aria-disabled={disabled}
+      href={disabled ? undefined : href}
+      target={disabled ? target : href}
+      ref={ref}
+      style={{ background: colors.itemBackground }}
+      className={styles.actionMenuLink}
+      {...anchorProps}
     >
       <Row
         height={theme.itemHeight}
         indent
         alignItems={"center"}
         justifyContent={"space-between"}
+        background={colors.itemBackground}
       >
         <Row height={theme.itemHeight} alignItems={"center"}>
           {icon && (
@@ -107,7 +116,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
           <Text color={colors.itemLabelColor}>{label}</Text>
         </Row>
         {rightText && (
-          <Text size={"smaller"} color={colors.itemTextColor}>
+          <Text size={"small"} color={colors.itemTextColor}>
             {rightText}
           </Text>
         )}
@@ -124,6 +133,6 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
           </>
         )}
       </Row>
-    </Clickable>
+    </a>
   );
 };

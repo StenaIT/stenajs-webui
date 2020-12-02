@@ -5,14 +5,14 @@ import { SpanProps } from "../../types/ElementProps";
 import { UserSelectProperty, WhiteSpaceProperty } from "csstype";
 
 export interface TextProps extends SpanProps {
-  variant?: TextVariants;
+  variant?: TextVariant;
   size?: TextSize;
   userSelect?: UserSelectProperty;
   whiteSpace?: WhiteSpaceProperty;
   color?: string;
 }
 
-export type TextVariants = "standard" | "caption" | "overline" | "bold";
+export type TextVariant = "standard" | "caption" | "overline" | "bold";
 export type TextSize = "large" | "medium" | "small" | "smaller";
 
 export const Text: React.FC<TextProps> = ({

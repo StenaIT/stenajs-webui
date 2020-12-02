@@ -1,34 +1,34 @@
 .link {
-  --swui-link-font-family: var(--swui-font-primary);
-  --swui-link-font-size: var(--swui-font-size-medium);
-  --swui-link-line-height: var(--swui-line-height-medium);
-  --swui-link-text-decoration: underline;
-  --swui-link-font-weight: var(--swui-font-weight-link);
+  /* Theme vars */
   --swui-link-color: var(--swui-primary-action-color);
+  --swui-link-font-family: var(--swui-font-primary);
+  --swui-link-font-weight: var(--swui-font-weight-link);
+  --swui-link-text-decoration: underline;
+  --swui-link-letter-spacing: -0.34px;
   --swui-link-color-hover: var(--swui-primary-action-color-hover);
   --swui-link-color-active: var(--swui-primary-action-color-active);
   --swui-link-color-focus: var(--swui-primary-action-color-focus);
-  --swui-link-color-disabled: var(--swui-text-disabled-color);
+  --swui-link-color-disabled: var(--lhds-color-ui-600);
   --swui-link-focus-highlight-color: var(--lhds-color-blue-300);
   --swui-link-focus-highlight-color-disabled: var(--swui-link-color-disabled);
 
-  /*
-   * Private vars
-   */
-  --current-text-color: var(--swui-link-color);
-  --current-focus-highlight-color: transparent;
+  /* Current */
+  --current-color: var(--swui-link-color);
+  --current-font-size: var(--swui-font-size-medium);
+  --current-line-height: var(--swui-line-height-medium);
+  --current-letter-spacing: var(--swui-link-letter-spacing);
 
-  /*
-   * Styling
-   */
-  color: var(--current-text-color);
+  /* Styling */
+  font-size: var(--current-font-size);
+  line-height: var(--current-line-height);
+  color: var(--current-color);
+  letter-spacing: var(--current-letter-spacing);
   font-family: var(--swui-link-font-family);
   font-weight: var(--swui-link-font-weight);
+
   box-sizing: border-box;
-  outline: 1px solid var(--current-focus-highlight-color);
+  outline: 1px dashed var(--current-focus-highlight-color);
   text-decoration: var(--swui-link-text-decoration);
-  font-size: var(--swui-link-font-size);
-  line-height: var(--swui-link-line-height);
 
   &:not(.disabled) {
     cursor: pointer;
@@ -39,6 +39,7 @@
       --current-focus-highlight-color: var(--swui-link-focus-highlight-color);
       cursor: pointer;
     }
+
     &.disabled {
       --current-focus-highlight-color: var(
         --swui-link-focus-highlight-color-disabled
@@ -48,14 +49,55 @@
   }
 
   &:hover {
-    --current-text-color: var(--swui-link-color-hover);
+    --current-color: var(--swui-link-color-hover);
   }
 
   &:active {
-    --current-text-color: var(--swui-link-color-active);
+    --current-color: var(--swui-link-color-active);
   }
 
   &.disabled {
-    --current-text-color: var(--swui-link-color-disabled);
+    --current-color: var(--swui-link-color-disabled);
   }
+
+  &.standard {
+  }
+
+  &.caption {
+    --current-font-size: var(--swui-font-size-small);
+    --current-line-height: var(--swui-line-height-small);
+    --current-letter-spacing: 0;
+    font-style: italic;
+  }
+
+  &.overline {
+    --current-font-size: var(--swui-font-size-smaller);
+    --current-line-height: var(--swui-line-height-smaller);
+    --current-letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &.large {
+    --current-font-size: var(--swui-font-size-large);
+    --current-line-height: var(--swui-line-height-large);
+    --current-letter-spacing: 0;
+  }
+
+  &.medium {
+    --current-font-size: var(--swui-font-size-medium);
+    --current-line-height: var(--swui-line-height-medium);
+  }
+
+  &.small {
+    --current-font-size: var(--swui-font-size-small);
+    --current-line-height: var(--swui-line-height-small);
+    --current-letter-spacing: 0;
+  }
+
+  &.smaller {
+    --current-font-size: var(--swui-font-size-smaller);
+    --current-line-height: var(--swui-line-height-smaller);
+    --current-letter-spacing: 0;
+  }
+
 }
