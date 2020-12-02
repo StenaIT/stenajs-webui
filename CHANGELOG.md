@@ -18,7 +18,7 @@ Add variants and sizes to `Link`, same as for `Text` except `bold` which is defa
 ### Breaking changes
 
 - `TextVariants` type has been renamed to `TextVariant`.
-- `Link` now produces an <a> tag, instead of <span>.
+- `Link` now produces an a tag, instead of span.
 
 ### Fixes
 
