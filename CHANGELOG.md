@@ -19,6 +19,11 @@ Add variants and sizes to `Link`, same as for `Text` except `bold` which is defa
 
 `TextVariants` type has been renamed to `TextVariant`.
 
+### Fixes
+
+Set sideEffects true in `theme` package.json, to prevent
+webpack from tree-shaking the theme CSS.
+
 ## 4.0.2
 
 ### Fixes
