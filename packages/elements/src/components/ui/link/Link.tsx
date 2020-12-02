@@ -29,6 +29,7 @@ export const Link: React.FC<LinkProps> = ({
   size = "medium",
   iconLeft,
   iconRight,
+  href,
   ...anchorProps
 }) => {
   const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = (ev) => {
@@ -48,6 +49,7 @@ export const Link: React.FC<LinkProps> = ({
         disabled && styles.disabled,
         className
       )}
+      href={disabled ? undefined : href}
       onClick={!disabled ? onClick : undefined}
       onKeyDown={!disabled ? onKeyDown : undefined}
       {...anchorProps}

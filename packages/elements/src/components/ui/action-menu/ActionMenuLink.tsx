@@ -36,7 +36,6 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
   children,
   disableCloseOnClick,
   href,
-  target,
   ...anchorProps
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
@@ -93,7 +92,6 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
       onClick={disabled ? undefined : onClickHandler}
       aria-disabled={disabled}
       href={disabled ? undefined : href}
-      target={disabled ? target : href}
       ref={ref}
       style={{ background: colors.itemBackground }}
       className={styles.actionMenuLink}
