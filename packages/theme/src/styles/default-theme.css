@@ -39,7 +39,7 @@
   --swui-font-primary: "Open Sans", system-ui;
   --swui-font-weight-text: 400;
   --swui-font-weight-text-bold: 600;
-  --swui-font-weight-link: 600;
+  --swui-font-weight-link: 400;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-font-size-inputs: 14px;
