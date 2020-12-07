@@ -6,7 +6,6 @@
   "scripts": {
     "start-storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf build && build-storybook -o build",
-    "watch-storybook": "concurrently \"yarn start-storybook\" \"yarn watch\"",
     "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
     "deploy-built-storybook": "gh-pages -d build",
     "build-packages": "lerna run build",
