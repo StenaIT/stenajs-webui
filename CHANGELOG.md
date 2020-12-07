@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.1.1
+
+### Fixes
+
+- `NavBar`
+
+Changed height to 64px according to LHDS
+
+
 ## 4.1.0
 
 ### New components
