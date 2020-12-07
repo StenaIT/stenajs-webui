@@ -12,7 +12,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   children,
   right,
   center,
-  height = "50px",
+  height = "64px",
 }) => {
   return (
     <Row
