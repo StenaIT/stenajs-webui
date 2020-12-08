@@ -34,6 +34,7 @@
     "@stenajs-webui/panels": "4.1.0",
     "@stenajs-webui/redux": "4.1.0",
     "@stenajs-webui/tooltip": "4.1.0",
+    "@stenajs-webui/theme": "4.1.0",
     "classnames": "^2.2.6",
     "react-infinite": "0.13.0"
   },
