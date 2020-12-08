@@ -1,0 +1,20 @@
+.standardTable {
+  --swui-standard-table-height: 40px;
+  --swui-sticky-header-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05) ;
+  --swui-sticky-column-shadow-right: 4px 0 4px 0 rgba(0, 0, 0, 0.05) ;
+
+  /* Current */
+  --current-row-height: var(--swui-standard-table-height);
+
+  &.relaxed {
+    --current-row-height: 48px;
+  }
+
+  &.condensed {
+    --current-row-height: 32px;
+  }
+
+  &.compact {
+    --current-row-height: 24px;
+  }
+}

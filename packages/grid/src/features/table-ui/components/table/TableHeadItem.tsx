@@ -1,24 +1,17 @@
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons/faCaretDown";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
+import { BoxProps, Row, Space, Text } from "@stenajs-webui/core";
+import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
 import {
-  Box,
-  BoxProps,
-  Row,
-  Text,
-  Space,
-  useBoolean,
-  useMouseIsEntered,
-} from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
-import {
-  ButtonWithPopover,
   ButtonWithPopoverProps,
+  Popover,
   Tooltip,
 } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { useRef } from "react";
+import { CSSProperties, useRef } from "react";
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons/faLongArrowAltDown";
+import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons/faLongArrowAltUp";
+import { cssColor } from "@stenajs-webui/theme";
 
 export type ArrowType = "up" | "down";
 
@@ -26,7 +19,7 @@ export interface TableHeadProps extends BoxProps {
   label?: string;
   infoIconTooltipText?: string;
   popoverContent?: ButtonWithPopoverProps["children"];
-  popoverButtonLoading?: boolean;
+  loading?: boolean;
   arrow?: ArrowType;
   onClick?: () => void;
   selected?: boolean;
@@ -40,84 +33,94 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     children,
     selected,
     popoverContent,
-    popoverButtonLoading,
+    loading,
     infoIconTooltipText,
     overflow = "hidden",
     ...boxProps
   }) => {
-    const ref = useRef(null);
-    const mouseIsOver = useMouseIsEntered(ref);
-    const [
-      dialogueIsOpen,
-      setDialogueIsOpen,
-      setDialogueIsNotOpen,
-    ] = useBoolean(false);
+    const containerRef = useRef(null);
 
-    const popoverVisible =
-      (mouseIsOver || dialogueIsOpen) &&
-      (popoverContent || popoverButtonLoading);
+    const cursorStyle = onClick
+      ? ({ cursor: "pointer", userSelect: "none" } as CSSProperties)
+      : undefined;
+
+    const hasOnlyChildren = !label && !arrow && !infoIconTooltipText;
 
     return (
       <Row
-        onClick={onClick}
         height={"100%"}
         alignItems={"center"}
-        style={onClick ? { cursor: "pointer", userSelect: "none" } : undefined}
-        innerRef={ref}
+        innerRef={containerRef}
         overflow={overflow}
+        justifyContent={"space-between"}
+        indent
+        border={"1px solid transparent"}
         {...boxProps}
       >
-        {infoIconTooltipText && (
-          <div onClick={(ev) => ev.stopPropagation()}>
-            <Tooltip label={infoIconTooltipText} zIndex={10}>
-              <Icon
-                icon={faInfoCircle}
-                size={14}
-                color={"var(--swui-primary-action-color)"}
-              />
-            </Tooltip>
-          </div>
-        )}
-        {children && <Box indent>{children}</Box>}
-        {label && (
-          <Row indent alignItems={"center"}>
-            {popoverVisible && (
-              <>
-                <ButtonWithPopover
-                  onShow={setDialogueIsOpen}
-                  onHide={setDialogueIsNotOpen}
-                  leftIcon={faEllipsisV}
-                  size={"small"}
-                  loading={popoverButtonLoading}
-                >
-                  {popoverContent}
-                </ButtonWithPopover>
+        <Row alignItems={"center"}>
+          {(children || label) && (
+            <Row onClick={onClick} style={cursorStyle} alignItems={"center"}>
+              {children && (
+                <>
+                  {children}
+                  {!hasOnlyChildren && <Space num={0.5} />}
+                </>
+              )}
+              {label && (
+                <>
+                  <Text variant={"bold"}>{label}</Text>
+                  <Space num={0.5} />
+                </>
+              )}
+              {arrow ? (
+                <>
+                  <Icon
+                    size={14}
+                    color={cssColor("--lhds-color-blue-500")}
+                    icon={
+                      arrow === "up" ? faLongArrowAltUp : faLongArrowAltDown
+                    }
+                  />
+                  <Space />
+                </>
+              ) : null}
+            </Row>
+          )}
+
+          {infoIconTooltipText && (
+            <>
+              <Space num={0.5} />
+              <Row onClick={(ev) => ev.stopPropagation()}>
+                <Tooltip label={infoIconTooltipText} zIndex={1000}>
+                  <Icon
+                    icon={faInfoCircle}
+                    size={14}
+                    color={cssColor("--lhds-color-blue-400")}
+                  />
+                </Tooltip>
                 <Space />
-              </>
-            )}
-            {label && <Text variant={"bold"}>{label}</Text>}
-          </Row>
-        )}
-        {arrow === "up" && (
-          <>
-            <Icon
-              icon={faCaretUp}
-              size={14}
-              color={"var(--swui-primary-action-color-active)"}
-            />
-            <Space />
-          </>
-        )}
-        {arrow === "down" && (
-          <>
-            <Icon
-              icon={faCaretDown}
-              size={14}
-              color={"var(--swui-primary-action-color-active)"}
-            />
-            <Space />
-          </>
-        )}
+              </Row>
+            </>
+          )}
+        </Row>
+
+        <Row>
+          {loading ? (
+            <>
+              <InputSpinner />
+            </>
+          ) : popoverContent ? (
+            <Popover
+              content={popoverContent}
+              trigger={"click"}
+              zIndex={1000}
+              disablePadding
+              arrow
+            >
+              <FlatButton leftIcon={faEllipsisV} size={"small"} />
+            </Popover>
+          ) : null}
+        </Row>
       </Row>
     );
   }

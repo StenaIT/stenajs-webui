@@ -134,12 +134,12 @@ export interface StandardTableConfig<
   /**
    * Enable sticky behaviour for header row
    */
-  headerRowSticky?: boolean;
+  stickyHeader?: boolean;
 
   /**
    * Set a custom z index
    */
-  headerRowZIndex?: number;
+  zIndex?: number;
 
   /**
    * Offset header row from top (top css property)
@@ -259,11 +259,6 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * Offset column from left (ex if we have multiple sticky columns)
    */
   left?: string;
-
-  /**
-   * show a shadow on right side of component
-   */
-  shadowBorder?: boolean;
 }
 
 interface ItemValueResolver<TItem, TItemValue> {

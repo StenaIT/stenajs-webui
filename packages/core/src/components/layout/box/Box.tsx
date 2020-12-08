@@ -211,7 +211,7 @@ export const Box: React.FC<BoxProps> = ({
 }) => {
   const boxProps = useThemeSelector(
     ({ shadows, colors, metrics }) => ({
-      boxShadow: (shadow && shadows[shadow]) || shadow,
+      boxShadow: (shadow && shadows[shadow]) ?? shadow,
       background: (background && colors[background]) || background,
       themeSpacing: metrics.spacing,
       themeIndent: metrics.indent,

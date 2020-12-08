@@ -1,13 +1,14 @@
 import { Box, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { TableHeadItem } from "./TableHeadItem";
-import { tableHeadRowHeight } from "../../../../config/TableConfig";
+import { defaultTableHeadRowHeight } from "../../../../config/TableConfig";
 
 interface Props {
   label?: string;
   flex?: number;
   width?: string;
   indent?: number;
+  height?: string;
 }
 
 export const TableColumnGroupHead: React.FC<Props> = ({
@@ -15,9 +16,10 @@ export const TableColumnGroupHead: React.FC<Props> = ({
   flex,
   width,
   indent = 1,
+  height = defaultTableHeadRowHeight,
 }) => {
   return (
-    <TableHeadItem width={width} flex={flex} height={tableHeadRowHeight}>
+    <TableHeadItem width={width} flex={flex} height={height}>
       <Box indent={indent} spacing>
         <Text variant={"bold"}>{label}</Text>
       </Box>

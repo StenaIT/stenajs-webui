@@ -14,8 +14,15 @@ import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
+import styles from "./StandardTable.module.css";
+import cx from "classnames";
 
 export interface StandardTableProps<TItem, TColumnKey extends string> {
+  /**
+   * Variant of table
+   */
+  variant?: StandardTableVariant;
+
   /**
    * The tableId, which is passed to useGridCell.
    * Optional, defaults to generated id.
@@ -61,6 +68,12 @@ export interface StandardTableProps<TItem, TColumnKey extends string> {
   tableContext?: TableContext<TColumnKey>;
 }
 
+export type StandardTableVariant =
+  | "relaxed"
+  | "standard"
+  | "condensed"
+  | "compact";
+
 export const StandardTable = function StandardTable<
   TItem,
   TColumnKey extends string
@@ -68,6 +81,7 @@ export const StandardTable = function StandardTable<
   tableContext,
   config,
   tableId,
+  variant = "standard",
   ...props
 }: StandardTableProps<TItem, TColumnKey>) {
   const generatedTableId = useDomId();
@@ -92,13 +106,16 @@ export const StandardTable = function StandardTable<
   }, [actions, dispatch]);
 
   return (
-    <Box>
+    <Box className={cx(styles.standardTable, styles[variant])}>
       <StandardTableTableIdContext.Provider value={tableId ?? generatedTableId}>
         <StandardTableStateContext.Provider value={state}>
           <StandardTableActionsContext.Provider value={actionsContext}>
             <StandardTableConfigContext.Provider value={config}>
-              <StandardTableHeadRow items={props.items} />
-              <StandardTableContent {...props} />
+              <StandardTableHeadRow
+                items={props.items}
+                height={"var(--current-row-height)"}
+              />
+              <StandardTableContent variant={variant} {...props} />
             </StandardTableConfigContext.Provider>
           </StandardTableActionsContext.Provider>
         </StandardTableStateContext.Provider>

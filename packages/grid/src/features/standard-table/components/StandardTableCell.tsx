@@ -50,7 +50,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     sticky,
     zIndex,
     left,
-    shadowBorder,
   } = useColumnFromConfig(columnId);
 
   const itemValue = useMemo(() => {
@@ -118,7 +117,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       sticky={sticky}
       zIndex={zIndex}
       left={left}
-      shadowBorder={shadowBorder}
+      shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
     >
       {content}
     </StandardTableCellUi>

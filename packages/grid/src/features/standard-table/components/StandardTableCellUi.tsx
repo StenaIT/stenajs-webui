@@ -19,7 +19,7 @@ interface Props {
   sticky?: boolean;
   zIndex?: number;
   left?: string;
-  shadowBorder?: boolean;
+  shadow?: string;
 }
 
 export const StandardTableCellUi = React.memo<Props>(
@@ -36,8 +36,8 @@ export const StandardTableCellUi = React.memo<Props>(
     minWidth,
     sticky,
     left,
-    shadowBorder,
     zIndex,
+    shadow,
   }) {
     return (
       <Row
@@ -50,8 +50,8 @@ export const StandardTableCellUi = React.memo<Props>(
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}
         left={sticky && left == null ? "0px" : left}
-        zIndex={zIndex}
-        shadow={shadowBorder ? "box" : undefined}
+        zIndex={sticky ? zIndex ?? 450 : zIndex}
+        shadow={shadow}
       >
         <Row
           className={styles.standardTableCell}

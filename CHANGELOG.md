@@ -1,5 +1,32 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+#### Improvements
+
+- `StandardTable` has new prop `variant` which controls how compact the table is.
+- Overflow on labels now show `...` instead of just cutting off text.
+- Header now looks more like design system.
+- Sticky z-indices are now optional, and only needed for custom behaviour.
+- Sticky column and sticky header can be combined together.
+- Improve look of shadows when using sticky in table.
+
+#### Fixes
+
+- Info tooltip in table header is no longer transparent.
+
+#### Breaking changes
+
+- `TableHeadItem` prop `popoverButtonLoading` renamed to `loading` and can be visible at the same time as popover button.
+
+- `StandardTable`
+
+Config field `headerRowSticky` renamed to `stickyHeader`.
+Config field `headerRowZIndex` renamed to `zIndex`.
+Config field `shadowBorder` has been removed.
+
 ## 4.1.0
 
 ### New components
@@ -134,7 +161,7 @@ This means that many props are no longer available.
 ### Breaking changes
 
 - Removed `SidebarMenuCollapsibleLink`, just use `SidebarMenuLink` with `indent` prop.
-- `StandardTable` option `headerRowZ` to renamed to `headerRowZIndex`.
+- `StandardTable` option `headerRowZ` to renamed to `zIndex`.
 
 ## 2.3.0
 
