@@ -1,15 +1,36 @@
 .flatButton {
+  /* Theme vars */
+  --swui-flat-button-font-weight: var(--swui-font-weight-text-bold);
+
+  --swui-flat-button-text-color: var(--swui-primary-action-color);
+  --swui-flat-button-text-color-active: var(--swui-primary-action-color);
+  --swui-flat-button-text-color-disabled: var(--swui-text-disabled-color);
+
+  --swui-flat-button-background-color-hover: var(--lhds-color-blue-50);
+  --swui-flat-button-background-color-active: var(--lhds-color-blue-100);
+
+  /* Inverted */
+  --swui-flat-button-text-color-inverted: var(--lhds-color-blue-200);
+  --swui-flat-button-text-color-inverted-active: var(--lhds-color-blue-200);
+  --swui-flat-button-text-color-inverted-disabled: var(--swui-text-disabled-color);
+
+  --swui-flat-button-background-inverted-color-hover: var(--lhds-color-blue-800);
+  --swui-flat-button-background-inverted-color-active: var(--lhds-color-blue-700);
+
+  --swui-flat-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+
+
   /* Text */
-  --swui-button-font-weight: 600;
-  --swui-button-text-color: var(--swui-primary-action-color);
-  --swui-button-text-color-active: var(--swui-primary-action-color);
-  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+  --swui-button-font-weight: var(--swui-flat-button-font-weight);
+  --swui-button-text-color: var(--swui-flat-button-text-color);
+  --swui-button-text-color-active: var(--swui-flat-button-text-color-active);
+  --swui-button-text-color-disabled: var(--swui-flat-button-text-color-disabled);
 
   /* Background */
   --swui-button-background-color: transparent;
-  --swui-button-background-color-hover: var(--lhds-color-blue-50);
+  --swui-button-background-color-hover: var(--swui-flat-button-background-color-hover);
   --swui-button-background-color-focus: transparent;
-  --swui-button-background-color-active: var(--lhds-color-blue-100);
+  --swui-button-background-color-active: var(--swui-flat-button-background-color-active);
   --swui-button-background-color-disabled: transparent;
 
   /* Border */
@@ -23,20 +44,20 @@
   /* Shadow */
   --swui-button-box-shadow: none;
   --swui-button-box-shadow-hover: none;
-  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+  --swui-button-box-shadow-focus: --swui-flat-box-shadow-focus;
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
 
   &.inverted {
-    --swui-button-text-color: var(--lhds-color-blue-200);
-    --swui-button-text-color-active: var(--lhds-color-blue-200);
-    --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+    --swui-button-text-color: var(--swui-flat-button-text-color-inverted);
+    --swui-button-text-color-active: var(--swui-flat-button-text-color-inverted-active);
+    --swui-button-text-color-disabled: var(--swui-flat-button-text-color-inverted-disabled);
 
     /* Background */
     --swui-button-background-color: transparent;
-    --swui-button-background-color-hover: var(--lhds-color-blue-800);
+    --swui-button-background-color-hover: var(--swui-flat-button-background-inverted-color-hover);
     --swui-button-background-color-focus: transparent;
-    --swui-button-background-color-active: var(--lhds-color-blue-700);
+    --swui-button-background-color-active: var(--swui-flat-button-background-inverted-color-active);
     --swui-button-background-color-disabled: transparent;
   }
 }
