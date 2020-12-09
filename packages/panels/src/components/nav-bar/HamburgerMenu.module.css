@@ -1,0 +1,48 @@
+.hamburgerMenu {
+  /* Theme vars */
+  --swui-hamburgerbutton-color: var(--swui-text-primary-color);
+  --swui-hamburgerbutton-background-color: var(--lhds-color-blue-500);
+  --swui-hamburgerbutton-background-color-hover: var(--lhds-color-blue-600);
+  --swui-hamburgerbutton-line-height: 16px;
+
+
+  /* Current */
+  --current-color: var(--swui-hamburgerbutton-color);
+  --current-background-color: var(--swui-hamburgerbutton-background-color);
+  --current-background-color-hover: var(--swui-hamburgerbutton-background-color-hover);
+
+  /* Styling */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.standard {
+  }
+
+  & button {
+    line-height: var(--swui-hamburgerbutton-line-height);
+    background-color: var(--current-background-color);
+    display: inline-block;
+    border-width: 0;
+    border-image-width: 0;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    &:focus, &:hover {
+      border: 0;
+      outline: none;
+      background-color: var(--current-background-color-hover);
+    }
+  }
+
+  &.dark {
+    --current-background-color: var(--lhds-color-blue-800);
+    --current-background-color-hover: var(--lhds-color-blue-900);
+
+  }
+}
