@@ -1,13 +1,14 @@
 # Changelog
 
-## Upcoming
+## Next
 
-### Fixes
+### Improvements
+
+- `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
 
 - `NavBar`
 
 Changed height to 64px according to LHDS
-
 
 ## 4.1.0
 
