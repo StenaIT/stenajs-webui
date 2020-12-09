@@ -1,14 +1,21 @@
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Box, Column, Spacing, Text } from "@stenajs-webui/core";
+import { Box, Column, Heading, Spacing, Text } from "@stenajs-webui/core";
 import {
   createColumnConfig,
   StandardTableConfig,
 } from "../config/StandardTableConfig";
-import { StandardTable } from "../components/StandardTable";
+import {
+  StandardTable,
+  StandardTableVariant,
+} from "../components/StandardTable";
 import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
+
+export default {
+  title: "grid/StandardTable",
+};
 
 interface ListItem {
   id: string;
@@ -123,10 +130,6 @@ const standardTableConfigForStories: StandardTableConfig<ListItem> = {
 
 const mockedItems = createItemsMocks();
 
-export default {
-  title: "grid/StandardTable",
-};
-
 const useListState = (initialItems: Array<ListItem>) => {
   const [items, setItems] = useState(initialItems);
 
@@ -147,7 +150,7 @@ const useListState = (initialItems: Array<ListItem>) => {
   };
 };
 
-export const Standard = () => {
+export const Overview = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -164,7 +167,43 @@ export const Standard = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithSortingDisabled = () => {
+export const Variants = () => {
+  const { items } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
+        isEditable: false,
+      },
+    },
+  };
+
+  const variants: Array<StandardTableVariant> = [
+    "relaxed",
+    "standard",
+    "condensed",
+    "compact",
+  ];
+
+  return (
+    <>
+      {variants.map((variant) => (
+        <>
+          <Heading>{variant}</Heading>
+          <Spacing />
+          <StandardTable items={items} config={config} variant={variant} />
+          <Spacing num={2} />
+        </>
+      ))}
+    </>
+  );
+};
+
+export const SortingDisabled = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -182,7 +221,7 @@ export const WithSortingDisabled = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithSortingDisabledAndSortByName = () => {
+export const SortingDisabledAndSortByName = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -201,7 +240,7 @@ export const WithSortingDisabledAndSortByName = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithSortingEnabledAndSortByNameDesc = () => {
+export const SortingEnabledAndSortByNameDesc = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -220,7 +259,7 @@ export const WithSortingEnabledAndSortByNameDesc = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithFieldError = () => {
+export const FieldError = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -245,7 +284,7 @@ export const WithFieldError = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithFieldLoading = () => {
+export const FieldLoading = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -269,7 +308,7 @@ export const WithFieldLoading = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithModifiedFields = () => {
+export const ModifiedFields = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -298,7 +337,7 @@ export const WithModifiedFields = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithWarningWhenModifiedFieldIsEmpty = () => {
+export const WarningWhenModifiedFieldIsEmpty = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
@@ -427,12 +466,12 @@ export const SomeExpandableRows = () => {
   return <StandardTable items={items} config={config} />;
 };
 
-export const WithStickyTableHeader = () => {
+export const StickyTableHeader = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
-    headerRowSticky: true,
-    headerRowZIndex: 500,
+    stickyHeader: true,
+    zIndex: 500,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -450,13 +489,13 @@ export const WithStickyTableHeader = () => {
   );
 };
 
-export const WithStickyTableHeaderConfiguration = () => {
+export const StickyTableHeaderConfiguration = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
-    headerRowSticky: true,
+    stickyHeader: true,
     headerRowOffsetTop: "16px",
-    headerRowZIndex: 499,
+    zIndex: 499,
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -478,21 +517,20 @@ export const WithStickyTableHeaderConfiguration = () => {
           backgroundColor: "white",
         }}
       >
-        <Text>Other upper sticky content that should stick above header</Text>
+        <Text>This text should remain sticky above header</Text>
       </Box>
       <StandardTable items={items} config={config} />
     </Box>
   );
 };
 
-export const WithStickyFirstColumn = () => {
+export const StickyColumn = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
     ...standardTableConfigForStories,
     showHeaderCheckbox: false,
     showRowCheckbox: false,
-    headerRowSticky: true,
     columns: {
       ...standardTableConfigForStories.columns,
       id: {
@@ -500,11 +538,43 @@ export const WithStickyFirstColumn = () => {
         width: "245px",
         background: "white",
         sticky: true,
-        shadowBorder: true,
-        zIndex: 444,
       },
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Box>
+  );
+};
+
+export const StickyHeaderAndColumn = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: false,
+    showRowCheckbox: false,
+    stickyHeader: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+        background: "white",
+        sticky: true,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
         onChange: onChangeNumPassengers,
       },
     },

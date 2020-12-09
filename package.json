@@ -25,10 +25,10 @@
     "check-builds": "node scripts/check-builds.js",
     "check-bundle-size": "BUNDLESIZE_GITHUB_TOKEN=\"\" yarn bundlesize",
     "check-imports": "node scripts/check-imports.js",
-    "check-prettier": "prettier -l 'packages/**/src/**/*.ts?(x)' --ignore-path .gitignore --no-config",
-    "prettier": "prettier --write 'packages/**/src/**/*.ts?(x)' --ignore-path .gitignore --no-config",
-    "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --exit-code circular:1",
-    "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn dpdm --transform --warning false --exit-code circular:1"
+    "check-prettier": "prettier -l 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
+    "prettier": "prettier --write 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
+    "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
+    "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
   },
   "repository": {
     "type": "git",

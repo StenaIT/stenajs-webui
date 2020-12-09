@@ -6,7 +6,8 @@
   --swui-sidebar-menu-background-color-hover: var(--lhds-color-blue-800);
   --swui-sidebar-menu-background-color-active: var(--lhds-color-blue-800);
   --swui-sidebar-menu-item-selected: var(--lhds-color-blue-500);
-  --swui-sidebar-menu-content-padding: var(--swui-metrics-indent) var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
+  --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
+    var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
   --swui-sidebar-menu-icon-size: 20;
 
   button {

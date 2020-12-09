@@ -1,13 +1,14 @@
 import { BoxProps, Row } from "@stenajs-webui/core";
 import * as React from "react";
-import { tableHeadRowHeight } from "../../../../config/TableConfig";
+import { defaultTableHeadRowHeight } from "../../../../config/TableConfig";
 
 export interface TableHeadRowProps extends BoxProps {
   style?: React.CSSProperties;
+  height?: string;
 }
 
 export const TableHeadRow: React.FC<TableHeadRowProps> = React.memo(
-  (boxProps, style) => {
-    return <Row style={style} height={tableHeadRowHeight} {...boxProps} />;
+  ({ style, height = defaultTableHeadRowHeight, ...boxProps }) => {
+    return <Row style={style} height={height} {...boxProps} />;
   }
 );

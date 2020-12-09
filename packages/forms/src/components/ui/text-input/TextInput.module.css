@@ -48,7 +48,8 @@
     width: 100%;
     align-items: center;
     background: var(--current-bg, var(--swui-textinput-bg-color));
-    border: 1px solid var(--current-border-color, var(--swui-textinput-border-color));
+    border: 1px solid
+      var(--current-border-color, var(--swui-textinput-border-color));
     border-radius: var(--swui-textinput-border-radius);
     transition: all var(--swui-textinput-animation-time);
     --current-icon-color: var(--swui-textinput-icon-color);
@@ -63,7 +64,8 @@
      * States
      */
 
-    &.standard, &.success {
+    &.standard,
+    &.success {
       &:hover {
         &:not(.disabled) {
           --current-border-color: var(--swui-textinput-border-color-hover);

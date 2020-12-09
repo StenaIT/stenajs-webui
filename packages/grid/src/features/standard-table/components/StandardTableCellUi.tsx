@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
+import { ZIndexProperty } from "csstype";
 
 interface Props {
   width?: string;
@@ -19,7 +20,7 @@ interface Props {
   sticky?: boolean;
   zIndex?: number;
   left?: string;
-  shadowBorder?: boolean;
+  shadow?: string;
 }
 
 export const StandardTableCellUi = React.memo<Props>(
@@ -36,8 +37,8 @@ export const StandardTableCellUi = React.memo<Props>(
     minWidth,
     sticky,
     left,
-    shadowBorder,
     zIndex,
+    shadow,
   }) {
     return (
       <Row
@@ -50,8 +51,12 @@ export const StandardTableCellUi = React.memo<Props>(
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}
         left={sticky && left == null ? "0px" : left}
-        zIndex={zIndex}
-        shadow={shadowBorder ? "box" : undefined}
+        shadow={shadow}
+        style={{
+          zIndex: sticky
+            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as ZIndexProperty)
+            : zIndex,
+        }}
       >
         <Row
           className={styles.standardTableCell}

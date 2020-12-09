@@ -11,7 +11,10 @@ import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { KeyboardEventHandler, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { tableBorder, tableRowHeight } from "../../../../config/TableConfig";
+import {
+  tableBorder,
+  defaultTableRowHeight,
+} from "../../../../config/TableConfig";
 import {
   useGridCell,
   UseGridCellOptions,
@@ -127,7 +130,7 @@ export const EditableTextCellWithCrudAndModified = function EditableTextCellWith
 
   return (
     <Row
-      height={tableRowHeight}
+      height={defaultTableRowHeight}
       width={"100%"}
       borderBottom={tableBorder}
       hoverBackground={"var(--ui7)"}
