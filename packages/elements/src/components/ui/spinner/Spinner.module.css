@@ -12,14 +12,14 @@
   &.standard {
     circle {
       animation: dash 1.4s ease-in-out infinite,
-      colors 5.6s ease-in-out infinite;
+        colors 5.6s ease-in-out infinite;
     }
   }
 
   &.inverted {
     circle {
       animation: dash 1.4s ease-in-out infinite,
-      colorsInverted 5.6s ease-in-out infinite;
+        colorsInverted 5.6s ease-in-out infinite;
     }
   }
 

@@ -1,7 +1,10 @@
 .standardTable {
   --swui-standard-table-height: 40px;
-  --swui-sticky-header-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05) ;
-  --swui-sticky-column-shadow-right: 4px 0 4px 0 rgba(0, 0, 0, 0.05) ;
+  --swui-sticky-header-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  --swui-sticky-column-shadow-right: 4px 0 4px 0 rgba(0, 0, 0, 0.05);
+  --swui-sticky-header-z-index: 2;
+  --swui-sticky-column-z-index: 1;
+  --swui-sticky-popover-z-index: 3;
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);

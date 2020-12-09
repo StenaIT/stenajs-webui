@@ -16,6 +16,7 @@ import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import styles from "./StandardTable.module.css";
 import cx from "classnames";
+import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
 
 export interface StandardTableProps<TItem, TColumnKey extends string> {
   /**
@@ -107,19 +108,23 @@ export const StandardTable = function StandardTable<
 
   return (
     <Box className={cx(styles.standardTable, styles[variant])}>
-      <StandardTableTableIdContext.Provider value={tableId ?? generatedTableId}>
-        <StandardTableStateContext.Provider value={state}>
-          <StandardTableActionsContext.Provider value={actionsContext}>
-            <StandardTableConfigContext.Provider value={config}>
-              <StandardTableHeadRow
-                items={props.items}
-                height={"var(--current-row-height)"}
-              />
-              <StandardTableContent variant={variant} {...props} />
-            </StandardTableConfigContext.Provider>
-          </StandardTableActionsContext.Provider>
-        </StandardTableStateContext.Provider>
-      </StandardTableTableIdContext.Provider>
+      <StandardTableVariantContext.Provider value={variant}>
+        <StandardTableTableIdContext.Provider
+          value={tableId ?? generatedTableId}
+        >
+          <StandardTableStateContext.Provider value={state}>
+            <StandardTableActionsContext.Provider value={actionsContext}>
+              <StandardTableConfigContext.Provider value={config}>
+                <StandardTableHeadRow
+                  items={props.items}
+                  height={"var(--current-row-height)"}
+                />
+                <StandardTableContent variant={variant} {...props} />
+              </StandardTableConfigContext.Provider>
+            </StandardTableActionsContext.Provider>
+          </StandardTableStateContext.Provider>
+        </StandardTableTableIdContext.Provider>
+      </StandardTableVariantContext.Provider>
     </Box>
   );
 };

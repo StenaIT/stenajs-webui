@@ -72,7 +72,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   <Space num={0.5} />
                 </>
               )}
-              {arrow ? (
+              {arrow && (
                 <>
                   <Icon
                     size={14}
@@ -83,7 +83,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   />
                   <Space />
                 </>
-              ) : null}
+              )}
             </Row>
           )}
 
@@ -91,7 +91,10 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             <>
               <Space num={0.5} />
               <Row onClick={(ev) => ev.stopPropagation()}>
-                <Tooltip label={infoIconTooltipText} zIndex={1000}>
+                <Tooltip
+                  label={infoIconTooltipText}
+                  zIndex={"var(--swui-sticky-popover-z-index)" as any}
+                >
                   <Icon
                     icon={faInfoCircle}
                     size={14}
@@ -106,9 +109,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
 
         <Row>
           {loading ? (
-            <>
-              <InputSpinner />
-            </>
+            <InputSpinner />
           ) : popoverContent ? (
             <Popover
               content={popoverContent}

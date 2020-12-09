@@ -6,7 +6,9 @@ interface Props {
   label?: string;
 }
 
-export const TextCell: React.FC<Props> = React.memo(function ({ label }) {
+export const TextCell: React.FC<Props> = React.memo(function TextCell({
+  label,
+}) {
   return (
     <Indent overflow={"hidden"}>
       <Text className={styles.textCell} title={label}>

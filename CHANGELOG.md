@@ -17,15 +17,17 @@
 
 - Info tooltip in table header is no longer transparent.
 
-#### Breaking changes
+### Breaking changes
+
+#### Popover
 
 - `TableHeadItem` prop `popoverButtonLoading` renamed to `loading` and can be visible at the same time as popover button.
 
-- `StandardTable`
+#### StandardTable
 
-Config field `headerRowSticky` renamed to `stickyHeader`.
-Config field `headerRowZIndex` renamed to `zIndex`.
-Config field `shadowBorder` has been removed.
+- Config field `headerRowSticky` renamed to `stickyHeader`.
+- Config field `headerRowZIndex` renamed to `zIndex`.
+- Config field `shadowBorder` has been removed.
 
 ## 4.1.0
 
