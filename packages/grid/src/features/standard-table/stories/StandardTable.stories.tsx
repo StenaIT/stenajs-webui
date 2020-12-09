@@ -168,7 +168,7 @@ export const Overview = () => {
 };
 
 export const Variants = () => {
-  const { items, onChangeNumPassengers } = useListState(mockedItems);
+  const { items } = useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem> = {
     ...standardTableConfigForStories,
@@ -176,7 +176,8 @@ export const Variants = () => {
       ...standardTableConfigForStories.columns,
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
-        onChange: onChangeNumPassengers,
+        renderCell: undefined,
+        isEditable: false,
       },
     },
   };
@@ -573,6 +574,7 @@ export const StickyHeaderAndColumn = () => {
       },
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
         onChange: onChangeNumPassengers,
       },
     },
