@@ -2,6 +2,12 @@
 
 ## Next
 
+### FlatButton
+
+#### Improvements
+
+- `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
+
 ### StandardTable
 
 #### Improvements
