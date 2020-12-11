@@ -4,30 +4,22 @@
 
 ### FlatButton
 
-#### Improvements
-
 - `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
 
 ### NavBar
 
-#### New props for `NavBar`
-
-- `variant` with two options `standard` and `dark`.
-- `left` for placing content on the left side.
-- `showMenuButton` shows a button with a hamburger icon on the left edge of the menu.
-- `onClickMenuButton` callback when user clicks on the button.
+- New prop `variant` with two options `standard` and `dark`.
+- New prop `left` for placing content on the left side.
+- New prop `showMenuButton` shows a button with a hamburger icon on the left edge of the menu.
+- New prop `onClickMenuButton` callback when user clicks on the button.
 - Height increased to 64px.
 
 ### SidebarMenu
-
-#### New features
 
 - Top of menu is now 64px, to align with `NavBar` properly.
 - Close button updated to have same dimensions as in `NavBar`.
 
 ### StandardTable
-
-#### Improvements
 
 - `StandardTable` has new prop `variant` which controls how compact the table is.
 - Overflow on labels now show `...` instead of just cutting off text.
@@ -35,9 +27,6 @@
 - Sticky z-indices are now optional, and only needed for custom behaviour.
 - Sticky column and sticky header can be combined together.
 - Improve look of shadows when using sticky in table.
-
-#### Fixes
-
 - Info tooltip in table header is no longer transparent.
 
 ### Breaking changes
