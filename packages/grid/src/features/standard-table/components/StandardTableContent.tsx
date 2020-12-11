@@ -1,14 +1,16 @@
 import * as React from "react";
 import { Row, Spacing, Text } from "@stenajs-webui/core";
 import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
-import { StandardTableProps } from "./StandardTable";
+import { StandardTableProps, StandardTableVariant } from "./StandardTable";
 import { StandardTableRowList } from "./StandardTableRowList";
 
 interface Props<TItem, TColumnKey extends string>
   extends Omit<
     StandardTableProps<TItem, TColumnKey>,
     "tableContext" | "config"
-  > {}
+  > {
+  variant: StandardTableVariant;
+}
 
 export const StandardTableContent = React.memo(function StandardTableContent<
   TItem,
@@ -21,6 +23,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   noItemsLabel = "There is no data available.",
   colIndexOffset,
   rowIndexOffset,
+  variant,
 }: Props<TItem, TColumnKey>) {
   if (error) {
     return (
@@ -48,6 +51,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
 
   return (
     <StandardTableRowList
+      variant={variant}
       items={items}
       colIndexOffset={colIndexOffset}
       rowIndexOffset={rowIndexOffset}

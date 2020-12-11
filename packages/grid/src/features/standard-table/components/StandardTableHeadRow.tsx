@@ -10,16 +10,17 @@ import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse"
 import { FlatButton } from "@stenajs-webui/elements";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import styles from "./StandardTableHeadRow.module.css";
-import cx from "classnames";
+import { ZIndexProperty } from "csstype";
+import { defaultTableRowHeight } from "../../../config/TableConfig";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
+  height?: string;
 }
 
 export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   TItem
->({ items }: StandardTableHeaderProps<TItem>) {
+>({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
   const {
     showHeaderCheckbox,
     showHeaderExpandCollapse,
@@ -27,8 +28,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     columnOrder,
     rowIndent,
     headerRowOffsetTop,
-    headerRowZIndex,
-    headerRowSticky,
+    zIndex,
+    stickyHeader,
   } = useStandardTableConfig();
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
@@ -43,11 +44,16 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
 
   return (
     <TableHeadRow
+      top={headerRowOffsetTop ?? 0}
+      height={height}
+      background={stickyHeader ? "#fff" : undefined}
+      position={stickyHeader ? "sticky" : undefined}
+      shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       style={{
-        top: headerRowOffsetTop ?? 0,
-        zIndex: headerRowZIndex,
+        zIndex: stickyHeader
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
+          : zIndex,
       }}
-      className={cx({ [styles.stickyHeader]: headerRowSticky })}
     >
       {rowIndent && <Indent num={rowIndent} />}
       {enableExpandCollapse && (

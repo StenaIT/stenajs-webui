@@ -42,6 +42,7 @@ export const Popover: React.FC<PopoverProps> = ({
   maxWidth = "500px",
   plugins: propsPlugins,
   lazy,
+  arrow = true,
   ...tippyProps
 }) => {
   const { plugins, mounted } = useLazyPopover(propsPlugins);

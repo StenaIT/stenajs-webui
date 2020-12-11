@@ -1,11 +1,7 @@
 import { Box, Indent } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import {
-  tableBorder,
-  tableBorderExpanded,
-  tableRowHeight,
-} from "../../../config/TableConfig";
+import { tableBorder, tableBorderExpanded } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
@@ -71,7 +67,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   return (
     <Box borderBottom={rowIndex === numRows - 1 ? tableBorder : undefined}>
       <TableRow
-        height={tableRowHeight}
+        height={"var(--current-row-height)"}
         width={"100%"}
         borderTop={isExpanded ? tableBorderExpanded : tableBorder}
         background={background}

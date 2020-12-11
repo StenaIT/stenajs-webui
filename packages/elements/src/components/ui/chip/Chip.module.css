@@ -65,11 +65,9 @@
       border-top-right-radius: var(--swui-chip-border-radius);
       border-bottom-right-radius: var(--swui-chip-border-radius);
     }
-
   }
 
   .clickable {
-
   }
 
   .close {
