@@ -7,8 +7,17 @@
 - `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
 
 - `NavBar`
+Has now different modess 'standard/dark'.
+Changed height to 64px according to LHDS.
+Added property for logo/appName.
+Added property for `HamburgerMenu`.
 
-Changed height to 64px according to LHDS
+- `SidebarMenu`
+Set height of top box (with `HamburgerMenu close-button) to 64px according to LHDS.
+Added `HamburgerMenu` close-button``
+
+- `HamburgerMenu`
+Button that can be used to open `SidebarMenu`.
 
 ## 4.1.0
 
