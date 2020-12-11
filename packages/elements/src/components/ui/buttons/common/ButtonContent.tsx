@@ -5,7 +5,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import cx from "classnames";
 import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import styles from "./ButtonContent.modules.css";
+import styles from "./ButtonContent.module.css";
 
 export interface ButtonContentProps {
   label?: string;
@@ -71,7 +71,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
       ) : rightIcon ? (
         <FontAwesomeIcon
           icon={rightIcon}
-          className={cx(styles.iconRight, iconClassName, iconClassName)}
+          className={cx(styles.iconRight, iconClassName)}
         />
       ) : null}
     </>

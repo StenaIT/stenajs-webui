@@ -10,22 +10,20 @@
 
 ### NavBar
 
-#### Improvements
+#### New props for `NavBar`
 
-- Has now different modess 'standard/dark'.
-- Changed height to 64px according to LHDS.
-- Added property for logo/appName.
-- Added property for `HamburgerMenu`.
+- `variant` with two options `standard` and `dark`.
+- `left` for placing content on the left side.
+- `showMenuButton` shows a button with a hamburger icon on the left edge of the menu.
+- `onClickMenuButton` callback when user clicks on the button.
+- Height increased to 64px.
 
 ### SidebarMenu
 
-#### Improvements
+#### New features
 
-- Set height of top box (with `HamburgerMenu close-button) to 64px according to LHDS.
-- Added `HamburgerMenu` close-button``
-
-### HamburgerMenu
-- Button that can be used to open `SidebarMenu`.
+- Top of menu is now 64px, to align with `NavBar` properly.
+- Close button updated to have same dimensions as in `NavBar`.
 
 ### StandardTable
 
@@ -53,6 +51,10 @@
 - Config field `headerRowSticky` renamed to `stickyHeader`.
 - Config field `headerRowZIndex` renamed to `zIndex`.
 - Config field `shadowBorder` has been removed.
+
+#### NavBar
+
+- `NavBarMenuButton` is replaced by `NavBarPopoverButton`.
 
 ## 4.1.0
 

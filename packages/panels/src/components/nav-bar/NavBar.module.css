@@ -1,30 +1,53 @@
-:root {
+.navBar {
+  /* Theme vars */
   --swui-navbar-background-color: var(--lhds-color-blue-500);
-  --swui-navbar-item-backgroud-color-hover: var(--lhds-color-blue-700);
-  --swui-navbar-item-backgroud-color-selected: var(--lhds-color-blue-600);
-  --swui-navbar-item-backgroud-color-selected-hover: var(--lhds-color-blue-700);
+  --swui-navbar-item-background-color-hover: var(--lhds-color-blue-700);
+  --swui-navbar-item-background-color-selected: var(--lhds-color-blue-600);
+  --swui-navbar-item-background-color-selected-hover: var(
+    --lhds-color-blue-700
+  );
 
   --swui-navbar-background-dark-color: var(--lhds-color-blue-800);
-  --swui-navbar-dark-item-backgroud-color-hover: var(--lhds-color-blue-900);
-  --swui-navbar-dark-item-backgroud-color-selected: var(--lhds-color-blue-700);
-  --swui-navbar-dark-item-backgroud-color-selected-hover: var(--lhds-color-blue-900);
-}
-
-.navBar {
+  --swui-navbar-dark-item-background-color-hover: var(--lhds-color-blue-600);
+  --swui-navbar-dark-item-background-color-focus: var(--lhds-color-blue-600);
+  --swui-navbar-dark-item-background-color-active: var(--lhds-color-blue-500);
+  --swui-navbar-dark-item-background-color-selected: var(--lhds-color-blue-700);
+  --swui-navbar-dark-item-background-color-selected-hover: var(
+    --lhds-color-blue-600
+  );
+  --swui-navbar-dark-item-background-color-selected-focus: var(
+    --lhds-color-blue-600
+  );
+  --swui-navbar-dark-item-background-color-selected-active: var(
+    --lhds-color-blue-500
+  );
 
   /* Styling */
   background-color: var(--swui-navbar-background-color);
 
-  /* NavBarButton overrides */
-  --swui-nav-bar-button-background-color-hover: var(--swui-navbar-item-backgroud-color-hover);
-  --swui-nav-bar-button-background-color-selected: var(--swui-navbar-item-backgroud-color-selected);
-  --swui-nav-bar-button-background-color-selected-hover: var(--swui-navbar-item-backgroud-color-selected-hover);
-
   &.dark {
     background-color: var(--swui-navbar-background-dark-color);
-    --swui-nav-bar-button-background-color-hover: var(--swui-navbar-dark-item-backgroud-color-hover);
-    --swui-nav-bar-button-background-color-selected: var(--swui-navbar-dark-item-backgroud-color-selected);
-    --swui-nav-bar-button-background-color-selected-hover: var(--swui-navbar-dark-item-backgroud-color-selected-hover);
+    /* NavBarButton overrides */
+    --swui-nav-bar-button-background-color-hover: var(
+      --swui-navbar-dark-item-background-color-hover
+    );
+    --swui-nav-bar-button-background-color-focus: var(
+      --swui-navbar-dark-item-background-color-focus
+    );
+    --swui-nav-bar-button-background-color-active: var(
+      --swui-navbar-dark-item-background-color-active
+    );
+    --swui-nav-bar-button-background-color-selected: var(
+      --swui-navbar-dark-item-background-color-selected
+    );
+    --swui-nav-bar-button-background-color-selected-hover: var(
+      --swui-navbar-dark-item-background-color-selected-hover
+    );
+    --swui-nav-bar-button-background-color-selected-focus: var(
+      --swui-navbar-dark-item-background-color-selected-focus
+    );
+    --swui-nav-bar-button-background-color-selected-active: var(
+      --swui-navbar-dark-item-background-color-selected-active
+    );
   }
 }
-

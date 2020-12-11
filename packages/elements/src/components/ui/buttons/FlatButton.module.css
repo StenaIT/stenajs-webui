@@ -1,4 +1,4 @@
-:root {
+.flatButton {
   /* Theme vars */
   --swui-flat-button-font-weight: var(--swui-font-weight-text-bold);
 
@@ -31,16 +31,14 @@
   );
 
   --swui-flat-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
-}
-
-.flatButton {
-
 
   /* PrimaryButton overrides */
 
   /* Text */
   --swui-button-font-weight: var(--swui-flat-button-font-weight);
   --swui-button-text-color: var(--swui-flat-button-text-color);
+  --swui-button-text-color-focus: var(--swui-flat-button-text-color);
+  --swui-button-text-color-hover: var(--swui-flat-button-text-color);
   --swui-button-text-color-active: var(--swui-flat-button-text-color-active);
   --swui-button-text-color-disabled: var(
     --swui-flat-button-text-color-disabled
@@ -72,12 +70,14 @@
   /* Shadow */
   --swui-button-box-shadow: none;
   --swui-button-box-shadow-hover: none;
-  --swui-button-box-shadow-focus: --swui-flat-box-shadow-focus;
+  --swui-button-box-shadow-focus: var(--swui-flat-box-shadow-focus);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
 
   &.inverted {
     --swui-button-text-color: var(--swui-flat-button-text-color-inverted);
+    --swui-button-text-color-hover: var(--swui-flat-button-text-color-inverted);
+    --swui-button-text-color-focus: var(--swui-flat-button-text-color-inverted);
     --swui-button-text-color-active: var(
       --swui-flat-button-text-color-inverted-active
     );

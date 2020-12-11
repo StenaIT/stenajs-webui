@@ -10,34 +10,27 @@ import {
 import styles from "./SidebarMenu.module.css";
 import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 import cx from "classnames";
-import { HamburgerMenuButton } from "../nav-bar/HamburgerMenuButton";
+import {
+  SidebarMenuCloseButton,
+  SidebarMenuCloseButtonProps,
+} from "./SidebarMenuCloseButton";
 
 export interface SidebarMenuProps extends BoxProps {
-  variant?: SidebarMenuVariant;
-  onCloseClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
 }
 
-export type SidebarMenuVariant = "standard" | "dark";
+// TODO Add variant
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
-  variant = "standard",
   children,
   onCloseClick,
   ...boxProps
 }) => {
   return (
-    <Box
-      className={cx(styles.sidebarMenu, styles[variant], className)}
-      {...boxProps}
-    >
-      <Box alignItems={"flex-start"} size={64} justifyContent={"center"}>
-        <HamburgerMenuButton
-          onClick={onCloseClick}
-          variant={"dark"}
-          className={"hamburgerClose"}
-          isOpen={true}
-        />
+    <Box className={cx(styles.sidebarMenu, className)} {...boxProps}>
+      <Box alignItems={"flex-start"} justifyContent={"center"}>
+        <SidebarMenuCloseButton onClick={onCloseClick} variant={"dark"} />
       </Box>
       <SeparatorLine color={"var(--lhds-color-blue-700)"} />
       <Space />
