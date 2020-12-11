@@ -1,8 +1,4 @@
-.buttonLink {
-  text-decoration: none;
-}
-
-.button {
+:root {
   --swui-button-line-height: 16px;
   --swui-button-font-weight: 400;
   --swui-button-text-size: 14px;
@@ -46,11 +42,17 @@
     0 0 1px -1px rgba(29, 100, 171, 0.1);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
+}
 
+.buttonLink {
+  text-decoration: none;
+}
+
+.button {
   /*
    * Styling
    */
-
+  --current-background-color: var(--swui-button-background-color);
   --current-icon-height: 16px;
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
@@ -61,10 +63,7 @@
   padding: var(--swui-button-padding-vertical)
     var(--swui-button-padding-horizontal);
   border: 1px solid var(--current-border-color);
-  background-color: var(
-    --current-background-color,
-    var(--swui-button-background-color)
-  );
+  background-color: var(--current-background-color);
   border-radius: var(--swui-button-border-radius);
   box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
   color: var(--current-text-color);
