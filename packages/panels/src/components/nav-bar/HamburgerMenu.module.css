@@ -1,31 +1,33 @@
-.hamburgerMenu {
-  /* Theme vars */
-  --swui-hamburgerbutton-color: var(--swui-text-primary-color);
-  --swui-hamburgerbutton-background-color: var(--lhds-color-blue-500);
-  --swui-hamburgerbutton-background-color-hover: var(--lhds-color-blue-600);
-  --swui-hamburgerbutton-line-height: 16px;
+:root {
+  --swui-hamburger-menu-button-text-color: var(--lhds-color-ui-50);
+  --swui-hamburger-menu-button-background-color: var(--lhds-color-blue-500);
+  --swui-hamburger-menu-button-background-color-hover: var(--lhds-color-blue-600);
+  --swui-hamburger-menu-button-background-dark-color: var(--lhds-color-blue-800);
+  --swui-hamburger-menu-button-background-dark-color-hover: var(--lhds-color-blue-900);
+}
 
+.hamburgerMenu {
 
   /* Current */
-  --current-color: var(--swui-hamburgerbutton-color);
-  --current-background-color: var(--swui-hamburgerbutton-background-color);
-  --current-background-color-hover: var(--swui-hamburgerbutton-background-color-hover);
+  --current-background-color: var(--swui-hamburger-menu-button-background-color);
+  --current-background-color-hover: var(--swui-hamburger-menu-button-background-color-hover);
 
   /* Styling */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &.standard {
+  svg {
+    transition: transform 150ms ease-in;
   }
 
   & button {
-    line-height: var(--swui-hamburgerbutton-line-height);
+    line-height: 10px;
     background-color: var(--current-background-color);
     display: inline-block;
     border-width: 0;
     border-image-width: 0;
-    color: #ffffff;
+    color: var(--swui-hamburger-menu-button-text-color);
     text-align: center;
     cursor: pointer;
     height: 64px;
@@ -33,6 +35,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-radius: 0;
     &:focus, &:hover {
       border: 0;
       outline: none;
@@ -41,8 +44,27 @@
   }
 
   &.dark {
-    --current-background-color: var(--lhds-color-blue-800);
-    --current-background-color-hover: var(--lhds-color-blue-900);
+    --current-background-color: var(--swui-hamburger-menu-button-background-dark-color);
+    --current-background-color-hover: var(--swui-hamburger-menu-button-background-dark-color-hover);
 
+    &.hamburgerClose {
+      --current-background-color: var(--lhds-color-blue-900);
+      --current-background-color-hover: var(--lhds-color-blue-900);
+
+      &:hover {
+        svg {
+          transform:rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &.hamburgerBars{
+    color: var(--swui-hamburger-menu-button-text-color);
   }
 }
+
+
+
+
+

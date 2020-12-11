@@ -1,6 +1,5 @@
-.flatButton {
+:root {
   /* Theme vars */
-
   --swui-flat-button-font-weight: var(--swui-font-weight-text-bold);
 
   /* Text color */
@@ -26,6 +25,10 @@
   --swui-flat-button-background-inverted-color-active: var(--lhds-color-blue-700);
 
   --swui-flat-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
+}
+
+.flatButton {
+
 
   /* PrimaryButton overrides */
 

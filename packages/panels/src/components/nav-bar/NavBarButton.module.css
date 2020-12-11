@@ -1,3 +1,21 @@
-.selected {
-  --swui-button-background-color: var(--lhds-color-blue-700) !important;
+:root {
+  --swui-nav-bar-button-text-color: var(--lhds-color-ui-50);
+  --swui-nav-bar-button-background-color: transparent;
+  --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-700);
+  --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-600);
+  --swui-nav-bar-button-background-color-selected-hover: var(--lhds-color-blue-700);
 }
+
+.navBarButton {
+  /*Flatbutton overrrides */
+  --swui-flat-button-text-color: var(--swui-nav-bar-button-text-color);
+  --swui-flat-button-background-color: var(--swui-nav-bar-button-background-color);
+  --swui-flat-button-background-color-hover: var(--swui-nav-bar-button-background-color-hover);
+
+  &.selected {
+    --swui-flat-button-background-color: var(--swui-nav-bar-button-background-color-selected);
+    --swui-flat-button-background-color-hover: var(--swui-nav-bar-button-background-color-selected-hover);
+  }
+}
+
+

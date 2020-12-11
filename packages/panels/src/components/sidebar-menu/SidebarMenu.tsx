@@ -8,30 +8,38 @@ import {
   Spacing,
 } from "@stenajs-webui/core";
 import styles from "./SidebarMenu.module.css";
-import { FlatButton } from "@stenajs-webui/elements";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
+import cx from "classnames";
+import { HamburgerMenuButton } from "../nav-bar/HamburgerMenuButton";
 
 export interface SidebarMenuProps extends BoxProps {
+  variant?: SidebarMenuVariant;
   onCloseClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+export type SidebarMenuVariant = "standard" | "dark";
+
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
+  className,
+  variant = "standard",
   children,
   onCloseClick,
   ...boxProps
 }) => {
   return (
     <Box
-      className={styles.sidebarMenu}
-      background={"var(--lhds-color-blue-900)"}
+      className={cx(styles.sidebarMenu, styles[variant], className)}
       {...boxProps}
     >
-      <Box indent={1} spacing={1} alignItems={"flex-start"}>
-        <FlatButton onClick={onCloseClick} leftIcon={faTimes} size={"large"} />
+      <Box alignItems={"flex-start"} size={64} justifyContent={"center"}>
+        <HamburgerMenuButton
+          onClick={onCloseClick}
+          variant={"dark"}
+          className={"hamburgerClose"}
+          isOpen={true}
+        />
       </Box>
       <SeparatorLine color={"var(--lhds-color-blue-700)"} />
-
       <Space />
       <Box
         className={styles.sidebarMenuContent}

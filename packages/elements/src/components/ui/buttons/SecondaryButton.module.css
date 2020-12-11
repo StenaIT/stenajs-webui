@@ -1,6 +1,7 @@
 .secondaryButton {
   /* Text */
   --swui-button-text-color: var(--lhds-color-ui-700);
+  --swui-button-text-color-hover: var(--lhds-color-ui-700);
   --swui-button-text-color-active: #2877cd;
   --swui-button-text-color-disabled: var(--lhds-color-ui-500);
 
@@ -9,7 +10,7 @@
   --swui-button-background-color-hover: var(--lhds-color-blue-50);
   --swui-button-background-color-focus: var(--swui-white);
   --swui-button-background-color-active: var(--lhds-color-blue-100);
-  --swui-button-background-color-disabled: var(--swui-color-ui-300);
+  --swui-button-background-color-disabled: var(--lhds-color-ui-300);
 
   /* Border */
   --swui-button-border-color: var(--lhds-color-ui-400);
