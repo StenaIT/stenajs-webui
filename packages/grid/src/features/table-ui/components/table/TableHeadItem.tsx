@@ -1,6 +1,6 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
-import { BoxProps, Row, Space, Text } from "@stenajs-webui/core";
+import { BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
 import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
 import {
   ButtonWithPopoverProps,
@@ -68,7 +68,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
               )}
               {label && (
                 <>
-                  <Text variant={"bold"}>{label}</Text>
+                  <Heading variant={"h6"}>{label}</Heading>
                   <Space num={0.5} />
                 </>
               )}
