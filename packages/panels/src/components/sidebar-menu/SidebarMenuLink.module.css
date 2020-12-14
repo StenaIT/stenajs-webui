@@ -4,10 +4,11 @@
   --swui-sidebar-menu-link-background-color-hover: var(--lhds-color-blue-800);
   --swui-sidebar-menu-link-color: var(--swui-white);
 
-
   /* Current */
   --current-background-color: var(--swui-sidebar-menu-link-background-color);
-  --current-background-color-hover: var(--swui-sidebar-menu-link-background-color-hover);
+  --current-background-color-hover: var(
+    --swui-sidebar-menu-link-background-color-hover
+  );
   --current-color: var(--swui-sidebar-menu-link-color);
 
   button {

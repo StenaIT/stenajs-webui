@@ -1,16 +1,25 @@
 :root {
   --swui-hamburger-menu-button-text-color: var(--lhds-color-ui-50);
   --swui-hamburger-menu-button-background-color: var(--lhds-color-blue-500);
-  --swui-hamburger-menu-button-background-color-hover: var(--lhds-color-blue-600);
-  --swui-hamburger-menu-button-background-dark-color: var(--lhds-color-blue-800);
-  --swui-hamburger-menu-button-background-dark-color-hover: var(--lhds-color-blue-900);
+  --swui-hamburger-menu-button-background-color-hover: var(
+    --lhds-color-blue-600
+  );
+  --swui-hamburger-menu-button-background-dark-color: var(
+    --lhds-color-blue-800
+  );
+  --swui-hamburger-menu-button-background-dark-color-hover: var(
+    --lhds-color-blue-900
+  );
 }
 
 .hamburgerMenu {
-
   /* Current */
-  --current-background-color: var(--swui-hamburger-menu-button-background-color);
-  --current-background-color-hover: var(--swui-hamburger-menu-button-background-color-hover);
+  --current-background-color: var(
+    --swui-hamburger-menu-button-background-color
+  );
+  --current-background-color-hover: var(
+    --swui-hamburger-menu-button-background-color-hover
+  );
 
   /* Styling */
   display: flex;
@@ -36,7 +45,8 @@
     margin: 0;
     box-sizing: border-box;
     border-radius: 0;
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       border: 0;
       outline: none;
       background-color: var(--current-background-color-hover);
@@ -44,8 +54,12 @@
   }
 
   &.dark {
-    --current-background-color: var(--swui-hamburger-menu-button-background-dark-color);
-    --current-background-color-hover: var(--swui-hamburger-menu-button-background-dark-color-hover);
+    --current-background-color: var(
+      --swui-hamburger-menu-button-background-dark-color
+    );
+    --current-background-color-hover: var(
+      --swui-hamburger-menu-button-background-dark-color-hover
+    );
 
     &.hamburgerClose {
       --current-background-color: var(--lhds-color-blue-900);
@@ -53,18 +67,13 @@
 
       &:hover {
         svg {
-          transform:rotate(90deg);
+          transform: rotate(90deg);
         }
       }
     }
   }
 
-  &.hamburgerBars{
+  &.hamburgerBars {
     color: var(--swui-hamburger-menu-button-text-color);
   }
 }
-
-
-
-
-

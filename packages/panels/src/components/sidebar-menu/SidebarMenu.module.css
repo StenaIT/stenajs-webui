@@ -12,14 +12,17 @@
 }
 
 .sidebarMenu {
-
   /* Current */
   --current-separator-color: var(--swui-sidebar-menu-separator-color);
   --current-text-color: var(--swui-sidebar-menu-text-color);
   --current-icon-color: var(--swui-sidebar-menu-icon-color);
   --current-background-color: var(--swui-sidebar-menu-background-color);
-  --current-background-color-hover: var(--swui-sidebar-menu-background-color-hover);
-  --current-background-color-active: var(--swui-sidebar-menu-background-color-active);
+  --current-background-color-hover: var(
+    --swui-sidebar-menu-background-color-hover
+  );
+  --current-background-color-active: var(
+    --swui-sidebar-menu-background-color-active
+  );
   --current-item-selected: var(--swui-sidebar-menu-item-selected);
   --current-content-padding: var(--swui-sidebar-menu-content-padding);
   --swui-sidebar-menu-icon-size: 20;
@@ -31,4 +34,3 @@
     --swui-button-background-color-hover: var(--lhds-color-blue-800);
   }
 }
-
