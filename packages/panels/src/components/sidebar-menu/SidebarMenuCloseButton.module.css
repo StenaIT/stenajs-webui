@@ -1,0 +1,111 @@
+.sidebarMenuCloseButton {
+  /* Theme vars */
+  --swui-sidebar-menu-close-button-text-color: var(--lhds-color-ui-50);
+  --swui-sidebar-menu-close-button-background-color: var(--lhds-color-blue-500);
+  --swui-sidebar-menu-close-button-background-color-hover: var(
+    --lhds-color-blue-600
+  );
+  --swui-sidebar-menu-close-button-background-color-focus: var(
+    --lhds-color-blue-600
+  );
+  --swui-sidebar-menu-close-button-background-color-active: var(
+    --lhds-color-blue-500
+  );
+  --swui-sidebar-menu-close-button-background-dark-color: var(
+    --lhds-color-blue-900
+  );
+  --swui-sidebar-menu-close-button-background-dark-color-hover: var(
+    --lhds-color-blue-700
+  );
+  --swui-sidebar-menu-close-button-background-dark-color-focus: var(
+    --lhds-color-blue-700
+  );
+  --swui-sidebar-menu-close-button-background-dark-color-active: var(
+    --lhds-color-blue-600
+  );
+
+  /* Current */
+  --current-background-color: var(
+    --swui-sidebar-menu-close-button-background-color
+  );
+
+  /* Styling */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 10px;
+  background-color: var(--current-background-color);
+  color: var(--swui-sidebar-menu-close-button-text-color);
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+  outline: none;
+  border: none;
+
+  &.standard {
+    --current-background-color: var(
+      --swui-sidebar-menu-close-button-background-color
+    );
+
+    &:hover {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-color-hover
+      );
+    }
+
+    &:focus {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-color-focus
+      );
+    }
+
+    &:active {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-color-active
+      );
+    }
+  }
+
+  &.dark {
+    --current-background-color: var(
+      --swui-sidebar-menu-close-button-background-dark-color
+    );
+
+    &:hover {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-dark-color-hover
+      );
+    }
+
+    &:focus {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-dark-color-focus
+      );
+    }
+
+    &:active {
+      --current-background-color: var(
+        --swui-sidebar-menu-close-button-background-dark-color-active
+      );
+    }
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  svg {
+    transition: transform 150ms ease-in;
+  }
+
+  .icon {
+    color: var(--swui-sidebar-menu-close-button-text-color);
+  }
+}

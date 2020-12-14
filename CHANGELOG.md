@@ -4,32 +4,22 @@
 
 ### FlatButton
 
-#### Improvements
-
 - `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
 
 ### NavBar
 
-#### Improvements
-
-- Has now different modess 'standard/dark'.
-- Changed height to 64px according to LHDS.
-- Added property for logo/appName.
-- Added property for `HamburgerMenu`.
+- New prop `variant` with two options `standard` and `dark`.
+- New prop `left` for placing content on the left side.
+- New prop `showMenuButton` shows a button with a hamburger icon on the left edge of the menu.
+- New prop `onClickMenuButton` callback when user clicks on the button.
+- Height increased to 64px.
 
 ### SidebarMenu
 
-#### Improvements
-
-- Set height of top box (with `HamburgerMenu close-button) to 64px according to LHDS.
-- Added `HamburgerMenu` close-button``
-
-### HamburgerMenu
-- Button that can be used to open `SidebarMenu`.
+- Top of menu is now 64px, to align with `NavBar` properly.
+- Close button updated to have same dimensions as in `NavBar`.
 
 ### StandardTable
-
-#### Improvements
 
 - `StandardTable` has new prop `variant` which controls how compact the table is.
 - Overflow on labels now show `...` instead of just cutting off text.
@@ -37,9 +27,6 @@
 - Sticky z-indices are now optional, and only needed for custom behaviour.
 - Sticky column and sticky header can be combined together.
 - Improve look of shadows when using sticky in table.
-
-#### Fixes
-
 - Info tooltip in table header is no longer transparent.
 
 ### Breaking changes
@@ -53,6 +40,10 @@
 - Config field `headerRowSticky` renamed to `stickyHeader`.
 - Config field `headerRowZIndex` renamed to `zIndex`.
 - Config field `shadowBorder` has been removed.
+
+#### NavBar
+
+- `NavBarMenuButton` is replaced by `NavBarPopoverButton`.
 
 ## 4.1.0
 

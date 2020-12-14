@@ -1,8 +1,11 @@
 .secondaryButton {
+  /* PrimaryButton overrides */
+
   /* Text */
   --swui-button-text-color: var(--lhds-color-ui-700);
   --swui-button-text-color-hover: var(--lhds-color-ui-700);
-  --swui-button-text-color-active: #2877cd;
+  --swui-button-text-color-focus: var(--lhds-color-ui-700);
+  --swui-button-text-color-active: var(--lhds-color-blue-500);
   --swui-button-text-color-disabled: var(--lhds-color-ui-500);
 
   /* Background */
