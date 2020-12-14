@@ -37,6 +37,7 @@
 - Sticky z-indices are now optional, and only needed for custom behaviour.
 - Sticky column and sticky header can be combined together.
 - Improve look of shadows when using sticky in table.
+- Table headers set to Heading (h6) according to LHDS
 
 #### Fixes
 
