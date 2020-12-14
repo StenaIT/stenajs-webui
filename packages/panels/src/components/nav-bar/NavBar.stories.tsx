@@ -8,21 +8,116 @@ import {
   Column,
   Heading,
   Row,
+  Space,
   Text,
+  useBoolean,
+  useOnClickOutside,
 } from "@stenajs-webui/core";
-import { Icon, WithBadge } from "@stenajs-webui/elements";
+import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
 import * as React from "react";
+import { useRef } from "react";
 import { TextInput } from "@stenajs-webui/forms";
 import { ClassNames } from "@emotion/core";
 import { NavBar } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
-import { NavBarMenuButton } from "./NavBarMenuButton";
+import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
+import { Drawer } from "../drawer/Drawer";
+import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
+import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
+import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";
+import {
+  faBook,
+  faChartBar,
+  faPaperPlane,
+  faUserFriends,
+} from "@fortawesome/free-solid-svg-icons";
+import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
+import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 
 export default {
   title: "panels/NavBar",
   component: NavBar,
-  subcomponents: { NavBarButton, NavBarMenuButton },
+  subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
+};
+
+export const Demo = () => {
+  const [isOpen, open, close] = useBoolean(false);
+  const ref = useRef(null);
+  useOnClickOutside(ref, close);
+  const onClick = () => {};
+
+  return (
+    <div ref={ref}>
+      <Drawer isOpen={isOpen} width={"250px"}>
+        <Column width={"100%"}>
+          <SidebarMenu onCloseClick={close}>
+            <SidebarMenuHeading label={"Product name"} />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              leftIcon={faUserFriends}
+              label={"Level 1.1"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              label={"No icon"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              loading
+              label={"Spinner"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              selected
+              label={"Selected"}
+            />
+            <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
+              <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
+              <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
+              <SidebarMenuLink
+                indent
+                label={"Level 2.3"}
+                onClick={onClick}
+                selected
+              />
+              <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
+            </SidebarMenuCollapsible>
+
+            <SidebarMenuSeparator />
+
+            <SidebarMenuHeading label={"Support"} />
+            <SidebarMenuLink
+              leftIcon={faBook}
+              label={"User manual"}
+              onClick={() => alert("Click on quick guide")}
+            />
+            <SidebarMenuLink
+              leftIcon={faPaperPlane}
+              label={"Contact"}
+              onClick={() => alert("Click on contact")}
+            />
+
+            <Box>
+              <Box spacing={8}>
+                <Icon
+                  icon={faPaperPlane}
+                  color={"var(--swui-white)"}
+                  size={50}
+                  data-hover={true}
+                />
+              </Box>
+            </Box>
+          </SidebarMenu>
+        </Column>
+      </Drawer>
+      <NavBar showMenuButton onClickMenuButton={open} variant={"dark"}>
+        <NavBarButton label={"Customers"} selected />
+        <NavBarButton label={"Bookings"} />
+        <NavBarButton label={"Events"} />
+      </NavBar>
+    </div>
+  );
 };
 
 export const Standard = () => (
@@ -33,9 +128,9 @@ export const Standard = () => (
   </NavBar>
 );
 
-export const StandardWithApplicationName = () => (
+export const WithTitle = () => (
   <NavBar
-    logoOrAppName={
+    left={
       <Heading variant={"h4"} color={cssColor("--lhds-color-ui-50")}>
         Stena WebUI
       </Heading>
@@ -55,7 +150,7 @@ export const Dark = () => (
   </NavBar>
 );
 
-export const WithIcons = () => (
+export const WithButtonIcons = () => (
   <Column height={"500px"}>
     <NavBar>
       <NavBarButton label={"Customers"} leftIcon={faFire} selected />
@@ -65,9 +160,9 @@ export const WithIcons = () => (
   </Column>
 );
 
-export const WithHamburgerMenuAndIconsStandard = () => (
+export const WithSidebarMenu = () => (
   <Column height={"500px"}>
-    <NavBar variant={"standard"} hamburgerMenu>
+    <NavBar variant={"standard"} showMenuButton>
       <NavBarButton label={"Customers"} leftIcon={faFire} selected />
       <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
       <NavBarButton label={"Events"} leftIcon={faAddressCard} />
@@ -75,12 +170,12 @@ export const WithHamburgerMenuAndIconsStandard = () => (
   </Column>
 );
 
-export const WithHamburgerMenuAndIconsWithAppNameDark = () => (
+export const WithSidebarMenuDark = () => (
   <Column height={"500px"}>
     <NavBar
       variant={"dark"}
-      hamburgerMenu
-      logoOrAppName={
+      showMenuButton
+      left={
         <Heading variant={"h4"} color={cssColor("--lhds-color-ui-50")}>
           Stena WebUI
         </Heading>
@@ -93,9 +188,8 @@ export const WithHamburgerMenuAndIconsWithAppNameDark = () => (
   </Column>
 );
 
-export const WithButtonsAndCenteredContentStandard = () => (
+export const CenterContent = () => (
   <NavBar
-    variant={"standard"}
     center={
       <ClassNames>
         {({ css }) => (
@@ -135,7 +229,7 @@ export const WithButtonsAndCenteredContentStandard = () => (
   </NavBar>
 );
 
-export const WithButtonsAndCenteredContentDark = () => (
+export const CenterContentDark = () => (
   <NavBar
     variant={"dark"}
     center={
@@ -147,7 +241,6 @@ export const WithButtonsAndCenteredContentDark = () => (
               --swui-field-bg-enabled: var(--lhds-color-blue-900);
               --swui-field-focus-shadow: inset 0px 0px 3pt 0pt
                 rgba(255, 255, 255, 0.3);
-              /*--swui-field-border-color-hover: var(--lhds-color-ui-300);*/
               --swui-field-text-color: var(--lhds-color-ui-50);
               --swui-textinput-placeholder-color: var(--lhds-color-ui-50);
               --swui-textinput-bg-color: var(--lhds-color-blue-900);
@@ -176,53 +269,14 @@ export const WithButtonsAndCenteredContentDark = () => (
   </NavBar>
 );
 
-export const WithRightButtons = () => (
+export const RightContent = () => (
   <NavBar
     right={
       <Row>
         <NavBarButton label={"Profile"} selected />
+        <Space />
         <NavBarButton label={"Settings"} />
       </Row>
-    }
-  >
-    <NavBarButton label={"Customers"} />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
-);
-
-export const WithTitleToLeft = () => (
-  <Column height={"500px"}>
-    <NavBar
-      height={100}
-      right={
-        <Row>
-          <NavBarButton label={"Profile"} selected />
-          <NavBarButton label={"Settings"} />
-        </Row>
-      }
-    >
-      <Text size={"large"} color={"#fff"}>
-        NavBar Title
-      </Text>
-    </NavBar>
-  </Column>
-);
-
-export const WithRightIcon = () => (
-  <NavBar right={<Icon icon={faFire} />}>
-    <NavBarButton label={"Customers"} />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
-);
-
-export const WithRightIconWithBadge = () => (
-  <NavBar
-    right={
-      <WithBadge label={5}>
-        <Icon icon={faFire} />
-      </WithBadge>
     }
   >
     <NavBarButton label={"Customers"} />
@@ -234,16 +288,25 @@ export const WithRightIconWithBadge = () => (
 export const WithMenuButton = () => (
   <NavBar
     right={
-      <NavBarMenuButton label={"Click me"} leftIcon={faFire}>
-        <Box
-          width={"200px"}
-          height={"200px"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Text>Hello</Text>
-        </Box>
-      </NavBarMenuButton>
+      <NavBarPopoverButton
+        label={"Click me"}
+        leftIcon={faFire}
+        content={({ close }) => (
+          <>
+            <Box
+              width={"200px"}
+              height={"200px"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Text>Hello</Text>
+            </Box>
+            <Row>
+              <FlatButton label={"Close"} onClick={close} />
+            </Row>
+          </>
+        )}
+      />
     }
   >
     <NavBarButton label={"Customers"} />
@@ -255,24 +318,18 @@ export const WithMenuButton = () => (
 export const WithMenuButtonIcon = () => (
   <NavBar
     right={
-      <NavBarMenuButton
-        buttonContent={
-          <Box spacing indent>
-            <WithBadge label={5}>
-              <Icon icon={faFire} />
-            </WithBadge>
+      <WithBadge label={5} variant={"warning"}>
+        <NavBarPopoverButton leftIcon={faFire}>
+          <Box
+            width={"200px"}
+            height={"200px"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Text>Hello</Text>
           </Box>
-        }
-      >
-        <Box
-          width={"200px"}
-          height={"200px"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Text>Hello</Text>
-        </Box>
-      </NavBarMenuButton>
+        </NavBarPopoverButton>
+      </WithBadge>
     }
   >
     <NavBarButton label={"Customers"} />

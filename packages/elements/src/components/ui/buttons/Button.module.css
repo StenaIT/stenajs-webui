@@ -1,4 +1,5 @@
-:root {
+.button {
+  /* Theme vars */
   --swui-button-line-height: 16px;
   --swui-button-font-weight: 400;
   --swui-button-text-size: 14px;
@@ -42,13 +43,7 @@
     0 0 1px -1px rgba(29, 100, 171, 0.1);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
-}
 
-.buttonLink {
-  text-decoration: none;
-}
-
-.button {
   /*
    * Styling
    */

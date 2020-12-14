@@ -1,6 +1,7 @@
 import * as React from "react";
 import cx from "classnames";
 import styles from "../buttons/Button.module.css";
+import buttonLinkStyles from "./ButtonLink.module.css";
 import { AnchorElementProps } from "@stenajs-webui/core";
 import { CommonButtonProps } from "../buttons/common/ButtonCommon";
 import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
@@ -44,7 +45,7 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
     <a
       ref={innerRef}
       className={cx(
-        styles.buttonLink,
+        buttonLinkStyles.buttonLink,
         styles.button,
         styles[size],
         styles[variant],
