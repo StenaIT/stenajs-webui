@@ -34,7 +34,7 @@ export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
         </>
       }
     >
-      <NavBarButton {...navBarButtonProps} onClick={open} selected />
+      <NavBarButton {...navBarButtonProps} onClick={open} />
     </Popover>
   );
 };

@@ -133,7 +133,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         onClick={onClickLeft}
       />
       <input
-        className={cx(className, styles.textInput, styles.input)}
+        className={cx(styles.textInput, styles.input, className)}
         type={"text"}
         disabled={disabled}
         ref={refToUse}

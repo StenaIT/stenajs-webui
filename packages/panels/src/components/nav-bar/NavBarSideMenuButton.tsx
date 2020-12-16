@@ -11,7 +11,7 @@ export interface SidebarMenuButtonProps extends Pick<DivProps, "className"> {
 }
 
 export const NavBarSideMenuButton: React.FC<SidebarMenuButtonProps> = ({
-  variant = "standard",
+  variant = "light",
   className,
   onClick,
 }) => {

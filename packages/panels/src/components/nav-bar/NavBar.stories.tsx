@@ -18,7 +18,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { TextInput } from "@stenajs-webui/forms";
 import { ClassNames } from "@emotion/core";
-import { NavBar } from "./NavBar";
+import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
@@ -34,6 +34,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
+import { Story } from "@storybook/react";
 
 export default {
   title: "panels/NavBar",
@@ -41,7 +42,7 @@ export default {
   subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
 };
 
-export const Demo = () => {
+export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const [isOpen, open, close] = useBoolean(false);
   const ref = useRef(null);
   useOnClickOutside(ref, close);
@@ -111,7 +112,28 @@ export const Demo = () => {
           </SidebarMenu>
         </Column>
       </Drawer>
-      <NavBar showMenuButton onClickMenuButton={open} variant={"dark"}>
+      <NavBar
+        showMenuButton
+        onClickMenuButton={open}
+        variant={variant}
+        left={
+          <Heading variant={"h3"} color={"#fff"}>
+            Stena line
+          </Heading>
+        }
+        right={
+          <Row>
+            <NavBarButton label={"Profile"} selected />
+            <Space />
+            <NavBarButton label={"Settings"} />
+          </Row>
+        }
+        center={
+          <Box width={"250px"}>
+            <TextInput placeholder={"Search"} iconRight={faSearch} />
+          </Box>
+        }
+      >
         <NavBarButton label={"Customers"} selected />
         <NavBarButton label={"Bookings"} />
         <NavBarButton label={"Events"} />
@@ -120,7 +142,30 @@ export const Demo = () => {
   );
 };
 
-export const Standard = () => (
+export const Dark = () => (
+  <NavBar
+    showMenuButton
+    variant={"dark"}
+    left={
+      <Heading variant={"h3"} color={"#fff"}>
+        Stena line
+      </Heading>
+    }
+    right={
+      <Row>
+        <NavBarButton label={"Profile"} selected />
+        <Space />
+        <NavBarButton label={"Settings"} />
+      </Row>
+    }
+  >
+    <NavBarButton label={"Customers"} selected />
+    <NavBarButton label={"Bookings"} />
+    <NavBarButton label={"Events"} />
+  </NavBar>
+);
+
+export const NoMenuOrTitle = () => (
   <NavBar>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
@@ -128,7 +173,7 @@ export const Standard = () => (
   </NavBar>
 );
 
-export const WithTitle = () => (
+export const TitleNoMenu = () => (
   <NavBar
     left={
       <Heading variant={"h4"} color={cssColor("--lhds-color-ui-50")}>
@@ -142,8 +187,8 @@ export const WithTitle = () => (
   </NavBar>
 );
 
-export const Dark = () => (
-  <NavBar variant={"dark"}>
+export const MenuNoTitle = () => (
+  <NavBar showMenuButton>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
@@ -153,34 +198,6 @@ export const Dark = () => (
 export const WithButtonIcons = () => (
   <Column height={"500px"}>
     <NavBar>
-      <NavBarButton label={"Customers"} leftIcon={faFire} selected />
-      <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
-      <NavBarButton label={"Events"} leftIcon={faAddressCard} />
-    </NavBar>
-  </Column>
-);
-
-export const WithSidebarMenu = () => (
-  <Column height={"500px"}>
-    <NavBar variant={"standard"} showMenuButton>
-      <NavBarButton label={"Customers"} leftIcon={faFire} selected />
-      <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
-      <NavBarButton label={"Events"} leftIcon={faAddressCard} />
-    </NavBar>
-  </Column>
-);
-
-export const WithSidebarMenuDark = () => (
-  <Column height={"500px"}>
-    <NavBar
-      variant={"dark"}
-      showMenuButton
-      left={
-        <Heading variant={"h4"} color={cssColor("--lhds-color-ui-50")}>
-          Stena WebUI
-        </Heading>
-      }
-    >
       <NavBarButton label={"Customers"} leftIcon={faFire} selected />
       <NavBarButton label={"Bookings"} leftIcon={faCoffee} />
       <NavBarButton label={"Events"} leftIcon={faAddressCard} />
@@ -269,23 +286,7 @@ export const CenterContentDark = () => (
   </NavBar>
 );
 
-export const RightContent = () => (
-  <NavBar
-    right={
-      <Row>
-        <NavBarButton label={"Profile"} selected />
-        <Space />
-        <NavBarButton label={"Settings"} />
-      </Row>
-    }
-  >
-    <NavBarButton label={"Customers"} />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
-);
-
-export const WithMenuButton = () => (
+export const PopoverButton = () => (
   <NavBar
     right={
       <NavBarPopoverButton
@@ -315,7 +316,7 @@ export const WithMenuButton = () => (
   </NavBar>
 );
 
-export const WithMenuButtonIcon = () => (
+export const PopoverButtonIcon = () => (
   <NavBar
     right={
       <WithBadge label={5} variant={"warning"}>

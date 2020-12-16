@@ -20,10 +20,10 @@ export interface NavBarProps {
   height?: number | string;
 }
 
-export type NavBarVariant = "standard" | "dark";
+export type NavBarVariant = "light" | "dark";
 
 export const NavBar: React.FC<NavBarProps> = ({
-  variant = "standard",
+  variant = "light",
   left,
   className,
   showMenuButton = false,
@@ -33,38 +33,65 @@ export const NavBar: React.FC<NavBarProps> = ({
   height = "64px",
   onClickMenuButton,
 }) => {
+  const currentFlex = center ? 1 : undefined;
   return (
     <NavBarVariantContext.Provider value={variant}>
       <Row
         height={height}
+        minHeight={height}
+        justifyContent={"space-between"}
         className={cx(styles.navBar, styles[variant], className)}
       >
-        {showMenuButton && (
-          <NavBarSideMenuButton variant={variant} onClick={onClickMenuButton} />
-        )}
-        {left && (
-          <>
+        <Row
+          flex={currentFlex}
+          justifyContent={"flex-start"}
+          alignItems={"center"}
+        >
+          {showMenuButton ? (
+            <>
+              <NavBarSideMenuButton
+                variant={variant}
+                onClick={onClickMenuButton}
+              />
+              <Indent />
+            </>
+          ) : (
             <Indent num={2} />
-            {left}
-          </>
-        )}
-        <Indent num={1.5} />
-        <Row justifyContent={"center"} alignItems={"center"} flex={1}>
-          <Row style={{ marginRight: "auto" }} alignItems={"center"}>
-            {React.Children.map(children, (child) => (
-              <Indent num={1}>{child}</Indent>
-            ))}
-          </Row>
+          )}
+          {left ? (
+            <>
+              {left}
+              <Indent num={2} />
+            </>
+          ) : (
+            <Indent num={2} />
+          )}
+          {children && (
+            <>
+              <Row justifyContent={"center"} alignItems={"center"}>
+                {React.Children.map(children, (child, index) => (
+                  <>
+                    {index > 0 && <Indent />}
+                    {child}
+                  </>
+                ))}
+              </Row>
+            </>
+          )}
         </Row>
         {center && (
-          <Row justifyContent={"center"} alignItems={"center"} flex={1}>
+          <Row justifyContent={"center"} alignItems={"center"}>
             {center}
           </Row>
         )}
-        <Row justifyContent={"center"} alignItems={"center"} flex={1}>
-          <Row style={{ marginLeft: "auto" }}>{right}</Row>
+        <Row
+          justifyContent={"flex-end"}
+          alignItems={"center"}
+          flex={currentFlex}
+        >
+          {right}
+          <Indent num={2} />
         </Row>
-        <Indent num={3} />
       </Row>
     </NavBarVariantContext.Provider>
   );

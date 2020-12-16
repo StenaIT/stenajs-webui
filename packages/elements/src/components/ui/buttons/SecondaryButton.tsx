@@ -7,5 +7,5 @@ export const SecondaryButton: React.FC<PrimaryButtonProps> = ({
   className,
   ...props
 }) => (
-  <PrimaryButton className={cx(className, styles.secondaryButton)} {...props} />
+  <PrimaryButton className={cx(styles.secondaryButton, className)} {...props} />
 );

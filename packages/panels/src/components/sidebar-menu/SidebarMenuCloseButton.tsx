@@ -8,12 +8,12 @@ export interface SidebarMenuCloseButtonProps extends ButtonElementProps {
   variant?: SidebarMenuCloseButtonVariant;
 }
 
-export type SidebarMenuCloseButtonVariant = "standard" | "dark";
+export type SidebarMenuCloseButtonVariant = "light" | "dark";
 
 export const SidebarMenuCloseButton: React.FC<SidebarMenuCloseButtonProps> = ({
   className,
   onClick,
-  variant = "standard",
+  variant = "light",
 }) => {
   return (
     <button

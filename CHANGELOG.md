@@ -2,6 +2,11 @@
 
 ## 5.0.0
 
+### NavBar
+
+- Adjusted some alignments between side menu button, left content and buttons.
+- Centered content is now always centered.
+
 ### FlatButton
 
 - `FlatButton` now has own CSS properties for settings colors. This makes it easier to override colors for `FlatButton`.
