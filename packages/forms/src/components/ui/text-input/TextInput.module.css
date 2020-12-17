@@ -43,103 +43,103 @@
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
 
-  &.inputContainer {
-    display: flex;
+  /* Current vars */
+  --current-bg: var(--swui-textinput-bg-color);
+  --current-border-color: var(--swui-textinput-border-color);
+  --current-icon-color: var(--swui-textinput-icon-color);
+
+  /* Styling */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background: var(--current-bg);
+  border: 1px solid var(--current-border-color);
+  border-radius: var(--swui-textinput-border-radius);
+  transition: all var(--swui-textinput-animation-time);
+
+  &&:focus-within {
+    box-shadow: var(--swui-textinput-focus-shadow);
+    --current-border-color: var(--swui-textinput-border-color-hover);
+    --current-bg: var(--swui-textinput-bg-color);
+  }
+
+  input {
+    letter-spacing: var(--swui-textinput-letter-spacing);
+    line-height: var(--swui-textinput-line-height);
     width: 100%;
-    align-items: center;
-    background: var(--current-bg, var(--swui-textinput-bg-color));
-    border: 1px solid
-      var(--current-border-color, var(--swui-textinput-border-color));
-    border-radius: var(--swui-textinput-border-radius);
-    transition: all var(--swui-textinput-animation-time);
-    --current-icon-color: var(--swui-textinput-icon-color);
+    padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
+    color: var(--swui-textinput-text-color);
+    font-size: var(--swui-textinput-font-size);
+    font-family: var(--swui-textinput-font-family);
+    font-weight: var(--swui-textinput-font-weight);
+    background: var(--swui-hidden);
+    border: none;
+    min-width: 0; /* https://stackoverflow.com/a/43361500 */
 
-    &&:focus-within {
-      box-shadow: var(--swui-textinput-focus-shadow);
-      --current-border-color: var(--swui-textinput-border-color-hover);
-      --current-bg: var(--swui-textinput-bg-color);
+    &:disabled {
+      color: var(--swui-textinput-text-color-disabled);
     }
 
-    /*
-     * States
-     */
+    &::placeholder {
+      color: var(--swui-textinput-placeholder-color);
+    }
 
-    &.standard,
-    &.success {
-      &:hover {
-        &:not(.disabled) {
-          --current-border-color: var(--swui-textinput-border-color-hover);
-        }
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+  }
+
+  /* States */
+
+  &.standard,
+  &.success {
+    &:hover {
+      &:not(.disabled) {
+        --current-border-color: var(--swui-textinput-border-color-hover);
       }
     }
+  }
 
-    &.success {
-      --current-icon-color: var(--swui-textinput-icon-color-success);
-    }
+  &.success {
+    --current-icon-color: var(--swui-textinput-icon-color-success);
+  }
 
-    &.loading {
-      --current-bg: var(--swui-textinput-bg-loading);
-      --current-border-color: var(--swui-textinput-border-color-loading);
-    }
+  &.loading {
+    --current-bg: var(--swui-textinput-bg-loading);
+    --current-border-color: var(--swui-textinput-border-color-loading);
+  }
 
-    &.modified {
-      --current-bg: var(--swui-textinput-bg-modified);
-      --current-border-color: var(--swui-textinput-border-color-modified);
-      --current-icon-color: var(--lhds-color-blue-300);
-    }
+  &.modified {
+    --current-bg: var(--swui-textinput-bg-modified);
+    --current-border-color: var(--swui-textinput-border-color-modified);
+    --current-icon-color: var(--lhds-color-blue-300);
+  }
 
-    &.error {
-      --current-bg: var(--swui-textinput-bg-error);
-      --current-border-color: var(--swui-textinput-border-color-error);
-      --current-icon-color: var(--swui-textinput-border-color-error);
-    }
+  &.error {
+    --current-bg: var(--swui-textinput-bg-error);
+    --current-border-color: var(--swui-textinput-border-color-error);
+    --current-icon-color: var(--swui-textinput-border-color-error);
+  }
 
-    &.warning {
-      --current-bg: var(--swui-textinput-bg-warning);
-      --current-border-color: var(--swui-textinput-border-color-warning);
-      --current-icon-color: var(--swui-textinput-border-color-warning);
-    }
+  &.warning {
+    --current-bg: var(--swui-textinput-bg-warning);
+    --current-border-color: var(--swui-textinput-border-color-warning);
+    --current-icon-color: var(--swui-textinput-border-color-warning);
+  }
 
-    &.disabled {
-      --current-bg: var(--swui-textinput-bg-color-disabled);
-      --current-border-color: var(--swui-textinput-border-color-disabled);
-    }
+  &.disabled {
+    --current-bg: var(--swui-textinput-bg-color-disabled);
+    --current-border-color: var(--swui-textinput-border-color-disabled);
+  }
 
-    &&.hideBorder {
-      border: none;
-      box-shadow: none;
-      background: none;
-    }
-
-    .input {
-      letter-spacing: var(--swui-textinput-letter-spacing);
-      line-height: var(--swui-textinput-line-height);
-      width: 100%;
-      padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
-      color: var(--swui-textinput-text-color);
-      font-size: var(--swui-textinput-font-size);
-      font-family: var(--swui-textinput-font-family);
-      font-weight: var(--swui-textinput-font-weight);
-      background: var(--swui-hidden);
-      border: none;
-      min-width: 0; /* https://stackoverflow.com/a/43361500 */
-
-      &:disabled {
-        color: var(--swui-textinput-text-color-disabled);
-      }
-
-      &::placeholder {
-        color: var(--swui-textinput-placeholder-color);
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &::-webkit-calendar-picker-indicator {
-        display: none;
-      }
-    }
+  &&.hideBorder {
+    border: none;
+    box-shadow: none;
+    background: none;
   }
 
   .icon {

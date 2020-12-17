@@ -14,8 +14,8 @@ export interface TextInputBoxProps
   extends Pick<
     TextInputProps,
     | "variant"
+    | "className"
     | "disabled"
-    | "wrapperClassName"
     | "wrapperStyle"
     | "contentLeft"
     | "contentRight"
@@ -31,7 +31,7 @@ export interface TextInputBoxProps
 export const TextInputBox: React.FC<TextInputBoxProps> = ({
   variant = "standard",
   disabled,
-  wrapperClassName,
+  className,
   wrapperStyle,
   contentLeft,
   contentRight,
@@ -63,7 +63,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         {
           [styles.disabled]: disabled,
         },
-        wrapperClassName
+        className
       )}
       style={wrapperStyle}
     >

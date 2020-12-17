@@ -48,7 +48,6 @@ export interface TextInputProps
     InputProps,
     ExtraContent {
   wrapperStyle?: CSSProperties;
-  wrapperClassName?: string;
   variant?: TextInputVariant;
   hideBorder?: boolean;
   selectAllOnFocus?: boolean;
@@ -82,7 +81,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     selectAllOnMount,
     autoFocus,
     onValueChange,
-    wrapperClassName,
     wrapperStyle,
     onDone,
     onEnter,
@@ -119,7 +117,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         {
           [styles.hideBorder]: hideBorder,
         },
-        wrapperClassName
+        className
       )}
       style={wrapperStyle}
     >
@@ -133,7 +131,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         onClick={onClickLeft}
       />
       <input
-        className={cx(styles.textInput, styles.input, className)}
         type={"text"}
         disabled={disabled}
         ref={refToUse}

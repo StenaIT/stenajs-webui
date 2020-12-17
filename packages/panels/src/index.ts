@@ -2,6 +2,7 @@ export * from "./components/action-menu-button/ActionMenuButton";
 export * from "./components/checkbox-menu/CheckboxMenu";
 export * from "./components/nav-bar/NavBar";
 export * from "./components/nav-bar/NavBarButton";
+export * from "./components/nav-bar/NavBarHeading";
 export * from "./components/nav-bar/NavBarPopoverButton";
 export * from "./components/nav-bar/NavBarSearchField";
 export * from "./components/notifications/Notification";

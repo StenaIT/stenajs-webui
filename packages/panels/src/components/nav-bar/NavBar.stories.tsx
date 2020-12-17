@@ -32,6 +32,7 @@ import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarSearchField } from "./NavBarSearchField";
+import { NavBarHeading } from "./NavBarHeading";
 
 export default {
   title: "panels/NavBar",
@@ -113,11 +114,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
         showMenuButton
         onClickMenuButton={open}
         variant={variant}
-        left={
-          <Heading variant={"h3"} color={"#fff"}>
-            Stena line
-          </Heading>
-        }
+        left={<NavBarHeading>Stena line</NavBarHeading>}
         right={
           <Row>
             <NavBarButton label={"Profile"} selected />
@@ -135,38 +132,102 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   );
 };
 
-export const Dark = () => (
-  <NavBar
-    showMenuButton
-    variant={"dark"}
-    left={
-      <Heading variant={"h3"} color={"#fff"}>
-        Stena line
-      </Heading>
-    }
-    right={
-      <Row>
-        <NavBarButton label={"Profile"} selected />
-        <Space />
-        <NavBarButton label={"Settings"} />
-      </Row>
-    }
-    center={<NavBarSearchField />}
-  >
-    <NavBarButton label={"Customers"} selected />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
-);
+export const Dark = () => {
+  const [isOpen, open, close] = useBoolean(false);
+  const ref = useRef(null);
+  useOnClickOutside(ref, close);
+  const onClick = () => {};
+
+  return (
+    <div ref={ref}>
+      <Drawer isOpen={isOpen} width={"250px"}>
+        <Column width={"100%"}>
+          <SidebarMenu onCloseClick={close}>
+            <SidebarMenuHeading label={"Product name"} />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              leftIcon={faUserFriends}
+              label={"Level 1.1"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              label={"No icon"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              loading
+              label={"Spinner"}
+            />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              selected
+              label={"Selected"}
+            />
+            <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
+              <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
+              <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
+              <SidebarMenuLink
+                indent
+                label={"Level 2.3"}
+                onClick={onClick}
+                selected
+              />
+              <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
+            </SidebarMenuCollapsible>
+
+            <SidebarMenuSeparator />
+
+            <SidebarMenuHeading label={"Support"} />
+            <SidebarMenuLink
+              leftIcon={faBook}
+              label={"User manual"}
+              onClick={() => alert("Click on quick guide")}
+            />
+            <SidebarMenuLink
+              leftIcon={faPaperPlane}
+              label={"Contact"}
+              onClick={() => alert("Click on contact")}
+            />
+
+            <Box>
+              <Box spacing={8}>
+                <Icon
+                  icon={faPaperPlane}
+                  color={"var(--swui-white)"}
+                  size={50}
+                  data-hover={true}
+                />
+              </Box>
+            </Box>
+          </SidebarMenu>
+        </Column>
+      </Drawer>
+      <NavBar
+        showMenuButton
+        onClickMenuButton={open}
+        variant={"dark"}
+        left={<NavBarHeading>Stena line</NavBarHeading>}
+        right={
+          <Row>
+            <NavBarButton label={"Profile"} selected />
+            <Space />
+            <NavBarButton label={"Settings"} />
+          </Row>
+        }
+        center={<NavBarSearchField />}
+      >
+        <NavBarButton label={"Customers"} selected />
+        <NavBarButton label={"Bookings"} />
+        <NavBarButton label={"Events"} />
+      </NavBar>
+    </div>
+  );
+};
 
 export const NoButtons = () => (
   <NavBar
     showMenuButton
-    left={
-      <Heading variant={"h3"} color={"#fff"}>
-        Stena line
-      </Heading>
-    }
+    left={<NavBarHeading>Stena line</NavBarHeading>}
     right={
       <Row>
         <NavBarButton label={"Profile"} selected />
@@ -181,11 +242,7 @@ export const DarkNoButtons = () => (
   <NavBar
     showMenuButton
     variant={"dark"}
-    left={
-      <Heading variant={"h3"} color={"#fff"}>
-        Stena line
-      </Heading>
-    }
+    left={<NavBarHeading>Stena line</NavBarHeading>}
     right={
       <Row>
         <NavBarButton label={"Profile"} selected />

@@ -1,10 +1,11 @@
-import { ClassNames } from "@emotion/core";
 import { Omit, Space } from "@stenajs-webui/core";
 import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
 import { parseFloatElseUndefined } from "./util/NumericTextInputUtil";
+import styles from "./NumericTextInput.module.css";
+import cx from "classnames";
 
 export interface NumericTextInputProps
   extends Omit<
@@ -66,33 +67,19 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   );
 
   return (
-    <ClassNames>
-      {({ css, cx }) => (
-        <TextInput
-          contentRight={contentRightToUse}
-          value={value}
-          onValueChange={onValueChange}
-          disableContentPaddingRight={!hideButtons}
-          type={"number"}
-          min={min}
-          max={max}
-          step={step}
-          className={cx([
-            className,
-            css`
-              -moz-appearance: textfield;
-              &::-webkit-outer-spin-button,
-              &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-              }
-            `,
-          ])}
-          disabled={disabled}
-          {...restProps}
-        />
-      )}
-    </ClassNames>
+    <TextInput
+      contentRight={contentRightToUse}
+      value={value}
+      onValueChange={onValueChange}
+      disableContentPaddingRight={!hideButtons}
+      type={"number"}
+      min={min}
+      max={max}
+      step={step}
+      className={cx(styles.numericTextInput, className)}
+      disabled={disabled}
+      {...restProps}
+    />
   );
 };
 

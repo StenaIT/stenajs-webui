@@ -2,11 +2,23 @@
 
 ## 5.1.0
 
+### Icons
+
+- Add stories for custom icons.
+
 ### NavBar
 
 - Adjusted some alignments between side menu button, left content and buttons.
 - Centered content is now always centered.
 - New component `NavBarSearchField` which is a custom style input field.
+- New component `NavBarHeading` which is a heading text for nav bar.
+
+### TextInput
+
+#### Breaking changes
+
+- Removed prop `wrapperClassName`.
+- `className` is applied to outer div instead of input element.
 
 ## 5.0.0
 

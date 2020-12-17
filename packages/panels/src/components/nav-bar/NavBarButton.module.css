@@ -4,7 +4,7 @@
   --swui-nav-bar-button-background-color: transparent;
 
   &.light {
-    --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-700);
+    --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-900);
     --swui-nav-bar-button-background-color-focus: var(--lhds-color-blue-700);
     --swui-nav-bar-button-background-color-active: var(--lhds-color-blue-800);
     --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-600);
@@ -20,18 +20,18 @@
   }
 
   &.dark {
-    --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-700);
+    --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-900);
     --swui-nav-bar-button-background-color-focus: var(--lhds-color-blue-700);
-    --swui-nav-bar-button-background-color-active: var(--lhds-color-blue-500);
+    --swui-nav-bar-button-background-color-active: var(--lhds-color-blue-900);
     --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-700);
     --swui-nav-bar-button-background-color-selected-hover: var(
-      --lhds-color-blue-600
+      --lhds-color-blue-900
     );
     --swui-nav-bar-button-background-color-selected-focus: var(
       --lhds-color-blue-600
     );
     --swui-nav-bar-button-background-color-selected-active: var(
-      --lhds-color-blue-500
+      --lhds-color-blue-900
     );
   }
 

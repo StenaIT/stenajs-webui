@@ -15,13 +15,13 @@
     --lhds-color-blue-800
   );
   --swui-nav-bar-side-menu-button-background-dark-color-hover: var(
-    --lhds-color-blue-700
+    --lhds-color-blue-900
   );
   --swui-nav-bar-side-menu-button-background-dark-color-focus: var(
     --lhds-color-blue-700
   );
   --swui-nav-bar-side-menu-button-background-dark-color-active: var(
-    --lhds-color-blue-500
+    --lhds-color-blue-900
   );
 
   /* Current */
