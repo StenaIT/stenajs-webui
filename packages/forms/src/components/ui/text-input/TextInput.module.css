@@ -63,7 +63,7 @@
     --current-bg: var(--swui-textinput-bg-color);
   }
 
-  input {
+  .input {
     letter-spacing: var(--swui-textinput-letter-spacing);
     line-height: var(--swui-textinput-line-height);
     width: 100%;
@@ -93,7 +93,9 @@
     }
   }
 
-  /* States */
+  /*
+   * States
+   */
 
   &.standard,
   &.success {

@@ -76,7 +76,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       min={min}
       max={max}
       step={step}
-      className={cx(styles.numericTextInput, className)}
+      className={cx(styles.numericTextInputInput, className)}
       disabled={disabled}
       {...restProps}
     />

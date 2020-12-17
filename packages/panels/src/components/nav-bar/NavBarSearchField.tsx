@@ -11,12 +11,18 @@ interface NavBarSearchFieldProps extends TextInputProps {}
 export const NavBarSearchField: React.FC<NavBarSearchFieldProps> = ({
   placeholder = "Search...",
   className,
+  wrapperClassName,
   ...textInputProps
 }) => {
   const variant = useNavBarVariant();
   return (
     <TextInput
-      className={cx(styles.navBarSearchField, styles[variant], className)}
+      wrapperClassName={cx(
+        styles.navBarSearchField,
+        styles[variant],
+        wrapperClassName
+      )}
+      className={cx(styles.navBarSearchFieldInput, className)}
       placeholder={placeholder}
       contentRight={
         <Clickable>

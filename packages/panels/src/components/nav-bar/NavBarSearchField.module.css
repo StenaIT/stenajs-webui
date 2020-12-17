@@ -1,14 +1,15 @@
+.navBarSearchFieldInput {
+  --swui-textinput-line-height: 27px;
+  --swui-textinput-text-color: var(--lhds-color-ui-50);
+
+  &:focus {
+    --swui-textinput-text-color: var(--lhds-color-ui-800);
+  }
+}
+
+
 .navBarSearchField {
   --swui-textinput-animation-time: var(--swui-animation-time-fast);
-
-  input {
-    --swui-textinput-line-height: 27px;
-    --swui-textinput-text-color: var(--lhds-color-ui-50);
-
-    &:focus {
-      --swui-textinput-text-color: var(--lhds-color-ui-800);
-    }
-  }
 
   &.light {
     --swui-textinput-placeholder-color: var(--lhds-color-ui-500);
