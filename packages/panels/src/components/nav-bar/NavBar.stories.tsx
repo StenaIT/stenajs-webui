@@ -165,6 +165,43 @@ export const Dark = () => (
   </NavBar>
 );
 
+export const NoButtons = () => (
+  <NavBar
+    showMenuButton
+    left={
+      <Heading variant={"h3"} color={"#fff"}>
+        Stena line
+      </Heading>
+    }
+    right={
+      <Row>
+        <NavBarButton label={"Profile"} selected />
+        <Space />
+        <NavBarButton label={"Settings"} />
+      </Row>
+    }
+  />
+);
+
+export const DarkNoButtons = () => (
+  <NavBar
+    showMenuButton
+    variant={"dark"}
+    left={
+      <Heading variant={"h3"} color={"#fff"}>
+        Stena line
+      </Heading>
+    }
+    right={
+      <Row>
+        <NavBarButton label={"Profile"} selected />
+        <Space />
+        <NavBarButton label={"Settings"} />
+      </Row>
+    }
+  />
+);
+
 export const NoMenuOrTitle = () => (
   <NavBar>
     <NavBarButton label={"Customers"} selected />
