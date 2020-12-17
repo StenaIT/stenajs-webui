@@ -1,11 +1,14 @@
 # Changelog
 
-## 5.0.0
+## 5.1.0
 
 ### NavBar
 
 - Adjusted some alignments between side menu button, left content and buttons.
 - Centered content is now always centered.
+- New component `NavBarSearchField` which is a custom style input field.
+
+## 5.0.0
 
 ### FlatButton
 

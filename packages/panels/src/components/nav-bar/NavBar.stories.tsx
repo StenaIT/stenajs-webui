@@ -1,10 +1,8 @@
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import {
   Box,
-  Clickable,
   Column,
   Heading,
   Row,
@@ -16,8 +14,6 @@ import {
 import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useRef } from "react";
-import { TextInput } from "@stenajs-webui/forms";
-import { ClassNames } from "@emotion/core";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
@@ -35,6 +31,7 @@ import {
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
+import { NavBarSearchField } from "./NavBarSearchField";
 
 export default {
   title: "panels/NavBar",
@@ -128,11 +125,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
             <NavBarButton label={"Settings"} />
           </Row>
         }
-        center={
-          <Box width={"250px"}>
-            <TextInput placeholder={"Search"} iconRight={faSearch} />
-          </Box>
-        }
+        center={<NavBarSearchField />}
       >
         <NavBarButton label={"Customers"} selected />
         <NavBarButton label={"Bookings"} />
@@ -158,6 +151,7 @@ export const Dark = () => (
         <NavBarButton label={"Settings"} />
       </Row>
     }
+    center={<NavBarSearchField />}
   >
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
@@ -243,40 +237,7 @@ export const WithButtonIcons = () => (
 );
 
 export const CenterContent = () => (
-  <NavBar
-    center={
-      <ClassNames>
-        {({ css }) => (
-          <TextInput
-            wrapperClassName={css`
-              --swui-field-border-color: var(--lhds-color-blue-600);
-              --swui-field-bg-enabled: var(--lhds-color-blue-600);
-              --swui-field-focus-shadow: inset 0px 0px 3pt 0pt
-                rgba(255, 255, 255, 0.3);
-              --swui-field-border-color-hover: var(--lhds-color-ui-300);
-              --swui-field-text-color: var(--lhds-color-ui-50);
-              --swui-textinput-placeholder-color: var(--lhds-color-ui-50);
-              --swui-textinput-bg-color: var(--lhds-color-blue-600);
-              --swui-textinput-border-color: var(--lhds-color-blue-600);
-              --swui-textinput-border-color-hover: var(--lhds-color-ui-50);
-
-              &:focus-within {
-                --swui-field-text-color: var(--swui-field-text-color);
-                --swui-textinput-icon-color: var(--lhds-color-ui-500);
-                --swui-textinput-bg-color: var(--lhds-color-ui-50);
-              }
-            `}
-            placeholder={"Search..."}
-            contentRight={
-              <Clickable>
-                <Icon icon={faSearch} color={cssColor("--lhds-color-ui-50")} />
-              </Clickable>
-            }
-          />
-        )}
-      </ClassNames>
-    }
-  >
+  <NavBar center={<NavBarSearchField />}>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
@@ -284,39 +245,7 @@ export const CenterContent = () => (
 );
 
 export const CenterContentDark = () => (
-  <NavBar
-    variant={"dark"}
-    center={
-      <ClassNames>
-        {({ css }) => (
-          <TextInput
-            wrapperClassName={css`
-              --swui-field-border-color: var(--lhds-color-blue-900);
-              --swui-field-bg-enabled: var(--lhds-color-blue-900);
-              --swui-field-focus-shadow: inset 0px 0px 3pt 0pt
-                rgba(255, 255, 255, 0.3);
-              --swui-field-text-color: var(--lhds-color-ui-50);
-              --swui-textinput-placeholder-color: var(--lhds-color-ui-50);
-              --swui-textinput-bg-color: var(--lhds-color-blue-900);
-              --swui-textinput-border-color: var(--lhds-color-blue-900);
-              --swui-textinput-border-color-hover: var(--lhds-color-ui-50);
-
-              &:focus-within {
-                --swui-field-text-color: var(--swui-field-text-color);
-                --swui-textinput-bg-color: var(--lhds-color-ui-50);
-              }
-            `}
-            placeholder={"Search..."}
-            contentRight={
-              <Clickable>
-                <Icon icon={faSearch} color={cssColor("--lhds-color-ui-50")} />
-              </Clickable>
-            }
-          />
-        )}
-      </ClassNames>
-    }
-  >
+  <NavBar variant={"dark"} center={<NavBarSearchField />}>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
