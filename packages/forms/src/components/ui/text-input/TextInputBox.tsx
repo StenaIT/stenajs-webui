@@ -14,8 +14,8 @@ export interface TextInputBoxProps
   extends Pick<
     TextInputProps,
     | "variant"
-    | "disabled"
     | "wrapperClassName"
+    | "disabled"
     | "wrapperStyle"
     | "contentLeft"
     | "contentRight"

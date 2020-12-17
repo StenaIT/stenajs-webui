@@ -26,6 +26,8 @@
 
   background-color: var(--current-background-color);
 
+  height: 100vh;
+
   button {
     --swui-button-text-color: var(--swui-white);
     --swui-button-background-color-hover: var(--lhds-color-blue-800);

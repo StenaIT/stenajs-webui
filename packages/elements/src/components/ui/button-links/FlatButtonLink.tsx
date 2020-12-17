@@ -13,7 +13,7 @@ export const FlatButtonLink: React.FC<FlatButtonLinkProps> = ({
   ...props
 }) => (
   <PrimaryButtonLink
-    className={cx(className, styles.flatButton, inverted && styles.inverted)}
+    className={cx(styles.flatButton, inverted && styles.inverted, className)}
     {...props}
   />
 );

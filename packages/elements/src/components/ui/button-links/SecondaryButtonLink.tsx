@@ -8,7 +8,7 @@ export const SecondaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
   ...props
 }) => (
   <PrimaryButtonLink
-    className={cx(className, styles.secondaryButton)}
+    className={cx(styles.secondaryButton, className)}
     {...props}
   />
 );

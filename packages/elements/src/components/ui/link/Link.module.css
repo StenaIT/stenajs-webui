@@ -5,7 +5,7 @@
   --swui-link-font-weight: var(--swui-font-weight-link);
   --swui-link-text-decoration: underline;
   --swui-link-letter-spacing: -0.34px;
-  --swui-link-color-hover: var(--swui-primary-action-color-hover);
+  --swui-link-color-hover: var(--lhds-color-blue-300);
   --swui-link-color-active: var(--swui-primary-action-color-active);
   --swui-link-color-focus: var(--swui-primary-action-color-focus);
   --swui-link-color-disabled: var(--lhds-color-ui-600);

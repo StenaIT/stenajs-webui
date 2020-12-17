@@ -111,7 +111,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     <div
       className={cx(
         styles.textInput,
-        styles.inputContainer,
         styles[variant],
         {
           [styles.disabled]: disabled,
@@ -133,7 +132,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         onClick={onClickLeft}
       />
       <input
-        className={cx(className, styles.textInput, styles.input)}
+        className={cx(styles.input, className)}
         type={"text"}
         disabled={disabled}
         ref={refToUse}

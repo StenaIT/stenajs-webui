@@ -47,7 +47,7 @@
   outline: none;
   border: none;
 
-  &.standard {
+  &.light {
     --current-background-color: var(
       --swui-sidebar-menu-close-button-background-color
     );
@@ -93,16 +93,6 @@
         --swui-sidebar-menu-close-button-background-dark-color-active
       );
     }
-  }
-
-  &:hover {
-    svg {
-      transform: rotate(90deg);
-    }
-  }
-
-  svg {
-    transition: transform 150ms ease-in;
   }
 
   .icon {
