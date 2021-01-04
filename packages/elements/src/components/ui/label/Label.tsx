@@ -1,4 +1,5 @@
 import { Box, BoxProps, Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 
 export interface LabelProps extends BoxProps {
@@ -22,7 +23,7 @@ export const Label: React.FC<LabelProps> = React.memo(
 
     const infoLabel = extraInfoLabel && (
       <Text
-        color={"var(--lhds-color-ui-500)"}
+        color={cssColor("--lhds-color-ui-500")}
         variant={"caption"}
         size={"small"}
       >
@@ -35,7 +36,7 @@ export const Label: React.FC<LabelProps> = React.memo(
         <Box {...columnProps} row={row}>
           <Row alignItems={"center"} width={textWidth}>
             <Text
-              color={"var(--lhds-color-ui-500)"}
+              color={cssColor("--lhds-color-ui-500")}
               variant={"bold"}
               size={"small"}
               whiteSpace={"nowrap"}
