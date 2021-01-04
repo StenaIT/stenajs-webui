@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@stenajs-webui/core": "5.2.0",
+    "@stenajs-webui/theme": "5.2.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
