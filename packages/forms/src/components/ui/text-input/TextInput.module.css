@@ -11,6 +11,7 @@
   --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
   --swui-textinput-animation-time: var(--swui-animation-time-medium);
   --swui-textinput-icon-color: var(--swui-field-border-color-disabled);
+  --swui-textinput-icon-hover-color: var(--swui-primary-action-color);
   --swui-textinput-icon-size: var(--swui-field-icon-size);
 
   /* States */
@@ -144,7 +145,13 @@
     background: none;
   }
 
+  .clickable:hover {
+    --current-icon-color: var(--swui-textinput-icon-hover-color);
+    cursor: pointer;
+  }
+
   .icon {
+    transition: color var(--swui-textinput-animation-time);
     color: var(--current-icon-color);
     font-size: var(--swui-textinput-icon-size);
   }

@@ -107,6 +107,7 @@ export const Clickable: React.FC<ClickableProps> = ({
   background = "transparent",
   hoverBackground,
   focusBackground,
+  type = "button",
   ...restProps
 }) => {
   const { colors } = useThemeFields(
@@ -134,6 +135,7 @@ export const Clickable: React.FC<ClickableProps> = ({
       background={colors.background}
       hoverBackground={colors.hoverBackground}
       focusBackground={colors.focusBackground}
+      type={type}
       {...restProps}
     >
       {children}

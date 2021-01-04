@@ -5,6 +5,7 @@ import { Box, Space, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
+import { Badge } from "@stenajs-webui/elements";
 
 export default {
   title: "forms/TextInput/TextInput",
@@ -192,5 +193,14 @@ export const DisabledWithContent = () => (
 export const TypeDate = () => (
   <Box width={"400px"}>
     <TextInput type={"date"} />
+  </Box>
+);
+
+export const WithClickableContent = () => (
+  <Box width={"400px"}>
+    <TextInput
+      contentRight={<Badge label={"2"} />}
+      onClickRight={() => alert("Clicked")}
+    />
   </Box>
 );

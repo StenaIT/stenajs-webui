@@ -1,5 +1,15 @@
 # Changelog
 
+## Upcoming
+
+### Breaking changes
+
+- `Clickable` now has `type=button` as default to prevent it from submitting forms when clicked.
+
+### New components
+
+- Introducing `PasswordInput` with a show password button.
+
 ## 5.2.0
 
 ### Icons
