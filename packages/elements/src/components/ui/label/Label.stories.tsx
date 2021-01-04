@@ -31,27 +31,23 @@ export default {
 };
 
 export const Overview: Story<LabelProps> = (props) => (
-  <Column>
+  <Column width={300}>
     <Label {...props}>
+      <TextInput />
+    </Label>
+  </Column>
+);
+
+export const WithTextOnly = () => (
+  <Column width={300}>
+    <Label text={"First name"}>
       <Text>Donald</Text>
     </Label>
   </Column>
 );
 
-export const WithTextInput = () => (
-  <Column width={"200px"}>
-    <Label text={"First name"}>
-      <TextInput />
-    </Label>
-    <Spacing />
-    <Label text={"Last name"}>
-      <TextInput />
-    </Label>
-  </Column>
-);
-
 export const Row = () => (
-  <Column width={"300px"}>
+  <Column width={300}>
     <Label text={"First name"} row>
       <TextInput />
     </Label>
@@ -62,13 +58,37 @@ export const Row = () => (
   </Column>
 );
 
+export const RowWithTextWidth = () => (
+  <Column width={400}>
+    <Label text={"First name very long name"} textWidth={"25em"} row>
+      <TextInput />
+    </Label>
+    <Spacing />
+    <Label text={"Last name"} textWidth={"25em"} row>
+      <TextInput />
+    </Label>
+  </Column>
+);
+
 export const WithExtraInfo = () => (
-  <Column width={"400px"}>
+  <Column width={400}>
     <Label text={"First name"} optional>
       <TextInput />
     </Label>
     <Spacing />
     <Label text={"Last name"} optional maxCharacters={100}>
+      <TextInput />
+    </Label>
+  </Column>
+);
+
+export const WithExtraInfoRow = () => (
+  <Column width={400}>
+    <Label text={"First name"} optional row>
+      <TextInput />
+    </Label>
+    <Spacing />
+    <Label text={"Last name"} optional maxCharacters={100} row>
       <TextInput />
     </Label>
   </Column>

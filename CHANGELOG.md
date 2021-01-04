@@ -2,13 +2,19 @@
 
 ## Upcoming
 
+### Label
+
+- `Label` now wrapped in actual `label` HTML element.
+- `Label` with `row` prop now aligns text properly.
+- `Label` now has `textWidth` prop.
+
+### PasswordInput
+
+- Introducing `PasswordInput` with a show password button.
+
 ### Breaking changes
 
 - `Clickable` now has `type=button` as default to prevent it from submitting forms when clicked.
-
-### New components
-
-- Introducing `PasswordInput` with a show password button.
 
 ## 5.2.0
 
