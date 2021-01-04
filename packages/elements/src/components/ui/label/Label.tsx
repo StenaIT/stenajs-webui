@@ -1,43 +1,58 @@
-import { BoxProps, Column, Row, Text, Space } from "@stenajs-webui/core";
+import { Box, BoxProps, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 
 export interface LabelProps extends BoxProps {
   text: string;
   optional?: boolean;
   maxCharacters?: number;
+  textWidth?: BoxProps["width"];
 }
 
 export const Label: React.FC<LabelProps> = React.memo(
-  ({ text, optional = false, children, maxCharacters, ...columnProps }) => {
+  ({
+    text,
+    optional = false,
+    children,
+    maxCharacters,
+    row,
+    textWidth,
+    ...columnProps
+  }) => {
     const extraInfoLabel = getExtraInfoLabel(optional, maxCharacters);
 
+    const infoLabel = extraInfoLabel && (
+      <Text
+        color={"var(--lhds-color-ui-500)"}
+        variant={"caption"}
+        size={"small"}
+      >
+        {extraInfoLabel}
+      </Text>
+    );
+
     return (
-      <Column {...columnProps}>
-        <Row alignItems={"center"}>
-          <Text
-            color={"var(--lhds-color-ui-500)"}
-            variant={"bold"}
-            size={"small"}
-            whiteSpace={"nowrap"}
-          >
-            {text}
-          </Text>
-          {extraInfoLabel && (
-            <>
-              <Space num={1.5} />
-              <Text
-                color={"var(--lhds-color-ui-500)"}
-                variant={"caption"}
-                size={"small"}
-              >
-                {extraInfoLabel}
-              </Text>
-            </>
-          )}
-        </Row>
-        <Space />
-        {children}
-      </Column>
+      <label>
+        <Box {...columnProps} row={row}>
+          <Row alignItems={"center"} width={textWidth}>
+            <Text
+              color={"var(--lhds-color-ui-500)"}
+              variant={"bold"}
+              size={"small"}
+              whiteSpace={"nowrap"}
+            >
+              {text}
+            </Text>
+            {!row && <Indent num={1.5}>{infoLabel}</Indent>}
+          </Row>
+          <Space />
+          {children}
+        </Box>
+        {row && (
+          <Row justifyContent={"flex-end"} indent={0.5} spacing={0.5}>
+            {infoLabel}
+          </Row>
+        )}
+      </label>
     );
   }
 );
