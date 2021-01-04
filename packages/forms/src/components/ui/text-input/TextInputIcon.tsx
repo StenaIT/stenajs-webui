@@ -1,9 +1,9 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Clickable, Space } from "@stenajs-webui/core";
+import { Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import styles from "./TextInput.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export interface TextInputIconProps {
   iconClassName?: string;
@@ -40,9 +40,9 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
           <Space />
         ) : null}
         {onClick ? (
-          <Clickable onClick={onClick} disableFocusHighlight>
+          <span onClick={onClick} className={styles.clickable}>
             {content || null}
-          </Clickable>
+          </span>
         ) : (
           <>{content || null}</>
         )}
@@ -65,9 +65,9 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
       {iconNode && (
         <>
           {onClick ? (
-            <Clickable onClick={onClick} disableFocusHighlight>
+            <span onClick={onClick} className={styles.clickable}>
               {iconNode || null}
-            </Clickable>
+            </span>
           ) : (
             <>{iconNode || null}</>
           )}

@@ -3,7 +3,7 @@ import {
   KeyboardEventHandler,
   RefObject,
   useCallback,
-  useState,
+  useRef,
 } from "react";
 
 export type MoveDirection = "right" | "left" | "down" | "up";
@@ -21,37 +21,31 @@ export const useKeyboardNavigation = (
    * */
   onMove?: (direction: MoveDirection) => void
 ) => {
-  const [wasCancelled, setWasCancelled] = useState(false);
-
-  const blurMoveAndCancel = useCallback(
-    (direction: MoveDirection, e: KeyboardEvent<HTMLInputElement>) => {
-      ref.current!.blur();
-      if (onMove) {
-        onMove(direction);
-      }
-      e.preventDefault();
-      e.stopPropagation();
-    },
-    [onMove, ref]
-  );
+  const wasCancelledRef = useRef(false);
 
   const onKeyDownHandler: KeyboardEventHandler<HTMLInputElement> = useCallback(
     (ev) => {
       const { key } = ev;
-      if (key === "Enter") {
+      if (onEnter && key === "Enter") {
         ref.current!.blur();
-        if (onEnter) {
-          onEnter();
-        }
+        onEnter();
       } else if (onEsc && key === "Escape") {
-        setWasCancelled(true);
-        setTimeout(() => {
-          onEsc(); // Do this after set state is done. Is there a better way?
-        }, 100);
+        wasCancelledRef.current = true;
+        onEsc();
 
         ev.preventDefault();
         ev.stopPropagation();
       } else if (onMove) {
+        const blurMoveAndCancel = (
+          direction: MoveDirection,
+          e: KeyboardEvent<HTMLInputElement>
+        ) => {
+          ref.current!.blur();
+          onMove(direction);
+          e.preventDefault();
+          e.stopPropagation();
+        };
+
         if (ev.shiftKey && key === "Tab") {
           blurMoveAndCancel("left", ev);
         } else if (key === "Tab") {
@@ -75,11 +69,11 @@ export const useKeyboardNavigation = (
         onKeyDown(ev);
       }
     },
-    [onEsc, onMove, onKeyDown, ref, onEnter, blurMoveAndCancel]
+    [onEsc, onMove, onKeyDown, ref, onEnter]
   );
 
   return {
     onKeyDownHandler,
-    wasCancelled,
+    wasCancelled: wasCancelledRef.current,
   };
 };
