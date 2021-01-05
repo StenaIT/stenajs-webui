@@ -16,6 +16,26 @@
 
 - `Clickable` now has `type=button` as default to prevent it from submitting forms when clicked.
 
+#### Removed components
+
+- The following components have been removed:
+
+- Absolute
+- Relative
+
+#### Ref changes
+
+The following components now use `ref` prop instead of `innerRef`:
+
+- Clickable
+- Box
+- Row
+- Spacing
+- Indent
+- Column
+- Link
+- ResizeAwareBox
+
 ## 5.2.0
 
 ### Icons

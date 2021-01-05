@@ -1,23 +1,22 @@
 import * as React from "react";
-import { RefObject, useRef } from "react";
+import { forwardRef, RefObject, useRef } from "react";
 import { Box, BoxProps } from "./Box";
 import {
   ElementDimensions,
   useElementDimensions,
 } from "../../../hooks/UseElementDimensions";
 
-interface Props extends BoxProps {
+export interface ResizeAwareBoxProps extends BoxProps {
   onResize?: (dimensions: ElementDimensions) => void;
 }
 
-export const ResizeAwareBox: React.FC<Props> = ({
-  innerRef,
-  onResize,
-  ...boxProps
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const currentRef = (innerRef as RefObject<HTMLDivElement>) || ref;
+export const ResizeAwareBox: React.FC<ResizeAwareBoxProps> = forwardRef<
+  HTMLDivElement,
+  ResizeAwareBoxProps
+>(function ResizeAwareBox({ onResize, ...boxProps }, ref) {
+  const localRef = useRef<HTMLDivElement>(null);
+  const currentRef = (ref as RefObject<HTMLDivElement>) ?? localRef;
   useElementDimensions(currentRef, onResize);
 
-  return <Box {...boxProps} innerRef={currentRef} />;
-};
+  return <Box {...boxProps} ref={ref} />;
+});

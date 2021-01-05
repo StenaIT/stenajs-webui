@@ -8,6 +8,7 @@ import {
   ColorProperty,
 } from "csstype";
 import * as React from "react";
+import { forwardRef } from "react";
 import {
   background,
   BackgroundProps,
@@ -200,29 +201,23 @@ const FlexBox = styled("div", {
   }
 `;
 
-export const Box: React.FC<BoxProps> = ({
-  innerRef,
-  shadow,
-  background,
-  border,
-  borderColor,
-  color,
-  ...props
-}) => {
-  const boxProps = useThemeSelector(
-    ({ shadows, colors, metrics }) => ({
-      boxShadow: (shadow && shadows[shadow]) ?? shadow,
-      background: (background && colors[background]) || background,
-      themeSpacing: metrics.spacing,
-      themeIndent: metrics.indent,
-      color: (color && colors[color]) || color,
-      border: (border && colors[border]) || border,
-      borderColor: (borderColor && colors[borderColor]) || borderColor,
-    }),
-    [shadow, background, border, borderColor, color]
-  );
-  return <FlexBox ref={innerRef} {...boxProps} {...props} />;
-};
+export const Box = forwardRef<HTMLDivElement, BoxProps>(
+  ({ shadow, background, border, borderColor, color, ...props }, ref) => {
+    const boxProps = useThemeSelector(
+      ({ shadows, colors, metrics }) => ({
+        boxShadow: (shadow && shadows[shadow]) ?? shadow,
+        background: (background && colors[background]) || background,
+        themeSpacing: metrics.spacing,
+        themeIndent: metrics.indent,
+        color: (color && colors[color]) || color,
+        border: (border && colors[border]) || border,
+        borderColor: (borderColor && colors[borderColor]) || borderColor,
+      }),
+      [shadow, background, border, borderColor, color]
+    );
+    return <FlexBox ref={ref} {...boxProps} {...props} />;
+  }
+);
 
 const numberOrZero = (num: number | boolean | undefined): number => {
   if (num == null) {
