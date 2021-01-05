@@ -536,7 +536,6 @@ export const StickyColumn = () => {
       id: {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
-        background: "white",
         sticky: true,
       },
       numPassengers: {
@@ -569,7 +568,6 @@ export const StickyHeaderAndColumn = () => {
       id: {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
-        background: "white",
         sticky: true,
       },
       numPassengers: {

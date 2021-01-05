@@ -12,6 +12,9 @@
 
 - Introducing `PasswordInput` with a show password button.
 
+### StandardTable
+- When `sticky` and/or `stickyHeader` is set, implicitly set correct background colors.
+
 ### Breaking changes
 
 - `Clickable` now has `type=button` as default to prevent it from submitting forms when clicked.

@@ -46,7 +46,7 @@ export const StandardTableCellUi = React.memo<Props>(
         width={width}
         minWidth={minWidth ?? width}
         height={"100%"}
-        background={background}
+        background={sticky ? "inherit" : background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}

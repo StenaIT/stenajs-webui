@@ -43,7 +43,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
   const background = useMemo(
-    () => (rowBackgroundResolver ? rowBackgroundResolver(item) : undefined),
+    () => (rowBackgroundResolver ? rowBackgroundResolver(item) : "white"),
     [item, rowBackgroundResolver]
   );
 

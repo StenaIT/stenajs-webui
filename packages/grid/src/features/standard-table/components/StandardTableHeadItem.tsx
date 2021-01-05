@@ -40,7 +40,7 @@ export const StandardTableHeadItem = React.memo(
         onClick={!disableSorting ? onClickColumnHead : undefined}
         width={width}
         minWidth={minWidth ?? width}
-        background={background}
+        background={sticky ? "white" : background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         flex={width ? undefined : flex}
         justifyContent={justifyContentHeader}
