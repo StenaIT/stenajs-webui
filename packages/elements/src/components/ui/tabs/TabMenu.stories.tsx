@@ -13,7 +13,7 @@ export default {
   component: Tab,
   subcomponents: { TabMenu },
   argTypes: {
-    innerRef: disabledControl,
+    ref: disabledControl,
     leftWrapperClassName: disabledControl,
     spinnerClassName: disabledControl,
     labelClassName: disabledControl,

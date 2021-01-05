@@ -108,7 +108,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   return (
-    <Box innerRef={outsideRef} width={width}>
+    <Box ref={outsideRef} width={width}>
       <Popover
         arrow={false}
         lazy
@@ -116,7 +116,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
         content={
-          <Box innerRef={popupRef}>
+          <Box ref={popupRef}>
             <SingleDateCalendar
               {...calendarProps}
               onChange={onCalendarSelectDate}

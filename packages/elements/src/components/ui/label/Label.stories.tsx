@@ -23,7 +23,7 @@ export default {
     focusBorder: hideArg,
     focusWithinBackground: hideArg,
     focusWithinBorder: hideArg,
-    innerRef: hideArg,
+    ref: hideArg,
   },
   args: {
     text: "First name",

@@ -84,7 +84,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
 
   return (
-    <Box innerRef={outsideRef} width={width}>
+    <Box ref={outsideRef} width={width}>
       <Popover
         arrow={false}
         lazy

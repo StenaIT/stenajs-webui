@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Box, BoxProps } from "../box/Box";
 import { forwardRef } from "react";
+import { Box, BoxProps } from "../box/Box";
 
-export const Column = forwardRef<HTMLDivElement, Omit<BoxProps, "ref">>(
-  function Column(props, ref) {
-    return <Box ref={ref} {...props} />;
-  }
-);
+export const Column = forwardRef<HTMLDivElement, BoxProps>(function Column(
+  props,
+  ref
+) {
+  return <Box ref={ref} {...props} />;
+});
