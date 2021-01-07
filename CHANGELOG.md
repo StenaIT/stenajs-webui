@@ -1,10 +1,11 @@
 # Changelog
 
-## Next
+## 5.3.2
 
 ### StandardTable
 
 - Default background color is now white, instead of transparent.
+- When a row or cell has custom background color, no hover color is applied.
 
 ## 5.3.1
 
