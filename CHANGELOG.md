@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 5.3.0
 
 ### Label
 
@@ -10,7 +10,7 @@
 
 ### PasswordInput
 
-- Introducing `PasswordInput` with a show password button.
+- New component `PasswordInput` with a show password button.
 
 ### Breaking changes
 
