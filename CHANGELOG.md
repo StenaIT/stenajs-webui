@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.3.1
+
+Export `PasswordInput` component in forms package.
+
 ## 5.3.0
 
 ### Label
