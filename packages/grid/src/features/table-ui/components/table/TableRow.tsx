@@ -9,12 +9,14 @@ interface Props extends BoxProps {}
 
 export const TableRow: React.FC<Props> = ({
   height = defaultTableHeadRowHeight,
+  background,
   ...boxProps
 }) => {
   return (
     <Row
       borderTop={tableBorder}
-      hoverBackground={"var(--lhds-color-ui-100)"}
+      hoverBackground={background ? undefined : "var(--lhds-color-ui-100)"}
+      background={background}
       height={height}
       {...boxProps}
     />
