@@ -46,7 +46,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
     <TableHeadRow
       top={headerRowOffsetTop ?? 0}
       height={height}
-      background={stickyHeader ? "#fff" : undefined}
+      background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       style={{
