@@ -6,6 +6,7 @@ export * from "./components/ui/radio/RadioButton";
 export * from "./components/ui/radio/RadioButtonWithLabel";
 export * from "./components/ui/numeric-text-input/NumericTextInput";
 export * from "./components/ui/numeric-text-input/hooks/UseNumericInputValue";
+export * from "./components/ui/password-input/PasswordInput";
 export * from "./components/ui/text-input/TextInput";
 export * from "./components/ui/text-input/TextInputBox";
 export * from "./components/ui/text-area/TextArea";
