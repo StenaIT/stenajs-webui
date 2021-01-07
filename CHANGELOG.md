@@ -1,8 +1,14 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Default background color is now white, instead of transparent.
+
 ## 5.3.1
 
-Export `PasswordInput` component in forms package.
+- Export `PasswordInput` component in forms package.
 
 ## 5.3.0
 
