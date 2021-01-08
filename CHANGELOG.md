@@ -1,6 +1,17 @@
 # Changelog
 
-## Upcoming
+## 5.3.2
+
+### StandardTable
+
+- Default background color is now white, instead of transparent.
+- When a row or cell has custom background color, no hover color is applied.
+
+## 5.3.1
+
+- Export `PasswordInput` component in forms package.
+
+## 5.3.0
 
 ### Label
 
@@ -10,7 +21,7 @@
 
 ### PasswordInput
 
-- Introducing `PasswordInput` with a show password button.
+- New component `PasswordInput` with a show password button.
 
 ### StandardTable
 - When `sticky` and/or `stickyHeader` is set, implicitly set correct background colors.

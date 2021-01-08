@@ -12,6 +12,7 @@ import {
 } from "../components/StandardTable";
 import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "grid/StandardTable",
@@ -563,12 +564,16 @@ export const StickyHeaderAndColumn = () => {
     showHeaderCheckbox: false,
     showRowCheckbox: false,
     stickyHeader: true,
+    rowBackgroundResolver: (item) =>
+      item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
       ...standardTableConfigForStories.columns,
       id: {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
         sticky: true,
+        backgroundResolver: (item) =>
+          item.active ? cssColor("--lhds-color-orange-100") : undefined,
       },
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
