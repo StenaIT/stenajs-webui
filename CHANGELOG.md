@@ -1,5 +1,42 @@
 # Changelog
 
+## Next
+
+### Removed components
+
+The following components have been removed:
+
+- Absolute
+- Relative
+
+### Ref changes
+
+The following components now use `ref` prop instead of `innerRef`:
+
+- Clickable
+- Box
+- Row
+- Spacing
+- Indent
+- Column
+- Link
+- ResizeAwareBox
+- Checkbox
+- RadioButton
+- Heading
+- All text components
+
+`RadioButtonWithLabel` and `CheckboxWithLabel` now has `wrapperRef`
+and `inputRef` props.
+
+Ref added to `SeparatorLine`.
+
+### Fixes
+
+- `RadioButtonWithLabel` prop `textColor` is now applied on the label.
+- `YearPicker` now allows navigation more than 10 years from current year.
+- Single date calendars now sets initial focused month based on current `value`.
+
 ## 5.3.2
 
 ### StandardTable
@@ -26,26 +63,6 @@
 ### Breaking changes
 
 - `Clickable` now has `type=button` as default to prevent it from submitting forms when clicked.
-
-#### Removed components
-
-- The following components have been removed:
-
-- Absolute
-- Relative
-
-#### Ref changes
-
-The following components now use `ref` prop instead of `innerRef`:
-
-- Clickable
-- Box
-- Row
-- Spacing
-- Indent
-- Column
-- Link
-- ResizeAwareBox
 
 ## 5.2.0
 
@@ -93,7 +110,8 @@ The following components now use `ref` prop instead of `innerRef`:
 
 #### Popover
 
-- `TableHeadItem` prop `popoverButtonLoading` renamed to `loading` and can be visible at the same time as popover button.
+- `TableHeadItem` prop `popoverButtonLoading` renamed to `loading` and can be visible at the same time as popover
+  button.
 
 #### StandardTable
 
@@ -111,8 +129,8 @@ The following components now use `ref` prop instead of `innerRef`:
 
 - `ActionMenuLink`
 
-Same as `ActionMenuItem`, but uses `FlatButtonLink` instead of `FlatButton`.
-This makes it possible to use `href` and `target` props.
+Same as `ActionMenuItem`, but uses `FlatButtonLink` instead of `FlatButton`. This makes it possible to use `href`
+and `target` props.
 
 ### New features
 
@@ -127,8 +145,7 @@ Add variants and sizes to `Link`, same as for `Text` except `bold` which is defa
 
 ### Fixes
 
-Set sideEffects true in `theme` package.json, to prevent
-webpack from tree-shaking the theme CSS.
+Set sideEffects true in `theme` package.json, to prevent webpack from tree-shaking the theme CSS.
 
 ## 4.0.2
 
@@ -169,13 +186,11 @@ Derived from `Chip`, but with border and no interactions.
 
 #### Text
 
-A new component `Text` with different variants.
-The variation implements all the different typography in LHDS.
+A new component `Text` with different variants. The variation implements all the different typography in LHDS.
 
 Main props are `variant` and `size`.
 
-Variants have predefined styles including color,
-but color can be overridden with prop `color`.
+Variants have predefined styles including color, but color can be overridden with prop `color`.
 
 See stories for examples.
 
@@ -187,8 +202,7 @@ Variants are `h1` through `h6`.
 
 #### Other components
 
-All components that use old text components have been updated to
-use new components.
+All components that use old text components have been updated to use new components.
 
 #### Stories
 
@@ -204,8 +218,7 @@ The following components are still available, but are deprecated and will be rem
 - `SmallText`
 - `SmallerText`
 
-`HeaderText` now uses `Heading`. The rest uses `Text`.
-This means that many props are no longer available.
+`HeaderText` now uses `Heading`. The rest uses `Text`. This means that many props are no longer available.
 
 ### Breaking changes
 
