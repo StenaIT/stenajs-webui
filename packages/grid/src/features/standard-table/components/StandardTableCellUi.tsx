@@ -46,17 +46,17 @@ export const StandardTableCellUi = React.memo<Props>(
         width={width}
         minWidth={minWidth ?? width}
         height={"100%"}
-        background={sticky ? "inherit" : background}
+        background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}
         left={sticky && left == null ? "0px" : left}
         shadow={shadow}
-        style={{
-          zIndex: sticky
+        zIndex={
+          sticky
             ? zIndex ?? ("var(--swui-sticky-column-z-index)" as ZIndexProperty)
-            : zIndex,
-        }}
+            : zIndex
+        }
       >
         <Row
           className={styles.standardTableCell}
