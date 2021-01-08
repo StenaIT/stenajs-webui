@@ -1,6 +1,13 @@
-import { InputProps } from "@stenajs-webui/core";
 import * as React from "react";
-import { ChangeEvent, useCallback, useEffect, useRef } from "react";
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  forwardRef,
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 import { FullOnChangeProps } from "../types";
 import cx from "classnames";
 import styles from "./Checkbox.module.css";
@@ -9,51 +16,64 @@ export type CheckboxSize = "standard" | "small";
 
 export interface CheckboxProps
   extends FullOnChangeProps<boolean, ChangeEvent<HTMLInputElement>>,
-    Omit<InputProps<HTMLLabelElement>, "size"> {
+    Omit<ComponentPropsWithoutRef<"input">, "size" | "value"> {
   indeterminate?: boolean;
   size?: CheckboxSize;
   disabled?: boolean;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
-  inputRef,
-  indeterminate = false,
-  onChange,
-  onValueChange,
-  value = false,
-  size = "standard",
-  ...inputProps
-}) => {
-  const innerInputRef = useRef(null);
-
-  const inputRefToUse = inputRef || innerInputRef;
-
-  const handleInputChange = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(ev.target.checked);
-      }
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  (
+    {
+      indeterminate = false,
+      onChange,
+      onValueChange,
+      value = false,
+      size = "standard",
+      ...inputProps
     },
-    [onChange, onValueChange]
-  );
+    ref
+  ) => {
+    const localRef = useRef<HTMLInputElement>();
 
-  useEffect(() => {
-    if (inputRefToUse.current) {
-      inputRefToUse.current.indeterminate = Boolean(indeterminate);
-    }
-  }, [indeterminate, inputRefToUse]);
+    const setRef = (element: HTMLInputElement) => {
+      localRef.current = element;
+      if (ref) {
+        if (typeof ref === "function") {
+          ref(element);
+        } else {
+          (ref as MutableRefObject<HTMLInputElement>).current = element;
+        }
+      }
+    };
 
-  return (
-    <input
-      type={"checkbox"}
-      className={cx(styles.checkbox, styles[size])}
-      checked={value}
-      onChange={handleInputChange}
-      ref={inputRefToUse}
-      {...inputProps}
-    />
-  );
-};
+    const handleInputChange = useCallback(
+      (ev: ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+          onChange(ev);
+        }
+        if (onValueChange) {
+          onValueChange(ev.target.checked);
+        }
+      },
+      [onChange, onValueChange]
+    );
+
+    useEffect(() => {
+      if (localRef.current) {
+        localRef.current.indeterminate = Boolean(indeterminate);
+      }
+    }, [indeterminate, localRef.current]);
+
+    return (
+      <input
+        type={"checkbox"}
+        className={cx(styles.checkbox, styles[size])}
+        checked={value}
+        onChange={handleInputChange}
+        ref={setRef}
+        {...inputProps}
+      />
+    );
+  }
+);

@@ -10,13 +10,12 @@ export interface ResizeAwareBoxProps extends BoxProps {
   onResize?: (dimensions: ElementDimensions) => void;
 }
 
-export const ResizeAwareBox: React.FC<ResizeAwareBoxProps> = forwardRef<
-  HTMLDivElement,
-  ResizeAwareBoxProps
->(function ResizeAwareBox({ onResize, ...boxProps }, ref) {
-  const localRef = useRef<HTMLDivElement>(null);
-  const currentRef = (ref as RefObject<HTMLDivElement>) ?? localRef;
-  useElementDimensions(currentRef, onResize);
+export const ResizeAwareBox = forwardRef<HTMLDivElement, ResizeAwareBoxProps>(
+  function ResizeAwareBox({ onResize, ...boxProps }, ref) {
+    const localRef = useRef<HTMLDivElement>(null);
+    const currentRef = (ref as RefObject<HTMLDivElement>) ?? localRef;
+    useElementDimensions(currentRef, onResize);
 
-  return <Box {...boxProps} ref={ref} />;
-});
+    return <Box {...boxProps} ref={ref} />;
+  }
+);
