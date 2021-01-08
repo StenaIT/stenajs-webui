@@ -5,6 +5,13 @@ import { useState } from "react";
 export default {
   title: "calendar/Input/DateTextInput",
   component: DateTextInput,
+  decorators: [
+    (TheStory: any) => (
+      <div style={{ marginBottom: "400px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Standard = () => {

@@ -7,6 +7,13 @@ import { DateRangeInput } from "./DateRangeInput";
 export default {
   title: "calendar/Input/DateRangeInput",
   component: DateRangeInput,
+  decorators: [
+    (TheStory: any) => (
+      <div style={{ marginBottom: "400px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Standard = () => {

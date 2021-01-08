@@ -7,6 +7,13 @@ import { useDateRangeCalendarState } from "../../components/calendar-types/date-
 export default {
   title: "calendar/Input/DateRangeDualTextInput",
   component: DateRangeDualTextInput,
+  decorators: [
+    (TheStory: any) => (
+      <div style={{ marginBottom: "400px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Standard = () => {

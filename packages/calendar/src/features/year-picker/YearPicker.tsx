@@ -6,8 +6,7 @@ import { YearPickerCell } from "./YearPickerCell";
 import { FlatButton } from "@stenajs-webui/elements";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons/faCaretLeft";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
-import { eachYearOfInterval } from "date-fns";
-import { chunk } from "lodash";
+import { chunk, range } from "lodash";
 
 export interface YearPickerProps extends ValueAndOnValueChangeProps<number> {
   initialLastYear?: number;
@@ -27,34 +26,12 @@ export const YearPicker: React.FC<YearPickerProps> = ({
 
   const yearRows = useMemo(() => {
     const startYear = lastYear - 11;
-    const years = eachYearOfInterval({
-      start: new Date(startYear, 1, 1),
-      end: new Date(lastYear, 1, 1),
-    });
-    return chunk(
-      years.map((y) => y.getFullYear()),
-      3
-    );
+    return chunk(range(startYear, lastYear + 1), 3);
   }, [lastYear]);
 
   useEffect(() => {
-    if (!value) {
-      return;
-    }
-    if (value > lastYear) {
-      const yearDiff = value - lastYear;
-      const remaining = yearDiff % 3;
-      const yearsToAdd = yearDiff - remaining + 3;
-      setLastYear(lastYear + yearsToAdd);
-    }
-    const startYear = lastYear - 11;
-    if (value < startYear) {
-      const yearDiff = startYear - value;
-      const remaining = yearDiff % 3;
-      const yearsToSubtract = yearDiff - remaining + 3;
-      setLastYear(lastYear - yearsToSubtract);
-    }
-  }, [value, lastYear]);
+    setLastYear((prev) => calculateLastYearInFocus(value, prev));
+  }, [value]);
 
   return (
     <Row>
@@ -86,4 +63,28 @@ export const YearPicker: React.FC<YearPickerProps> = ({
       </Column>
     </Row>
   );
+};
+
+const calculateLastYearInFocus = (
+  value: number | undefined,
+  lastYear: number
+): number => {
+  if (value == null) {
+    return lastYear;
+  }
+  if (value > lastYear) {
+    const yearDiff = value - lastYear;
+    const remaining = yearDiff % 3;
+    const yearsToAdd = yearDiff - remaining + 3;
+    return lastYear + yearsToAdd;
+  }
+  const startYear = lastYear - 11;
+  if (value < startYear) {
+    const yearDiff = startYear - value;
+    const remaining = yearDiff % 3;
+    const yearsToSubtract = yearDiff - remaining + 3;
+    return lastYear - yearsToSubtract;
+  }
+
+  return lastYear;
 };

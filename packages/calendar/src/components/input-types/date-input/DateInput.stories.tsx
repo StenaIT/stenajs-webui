@@ -7,6 +7,13 @@ import { DateInput } from "./DateInput";
 export default {
   title: "calendar/Input/DateInput",
   component: DateInput,
+  decorators: [
+    (TheStory: any) => (
+      <div style={{ marginBottom: "400px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 const disabledTomorrow = setDayStateValue(undefined, addDays(new Date(), 1), {
