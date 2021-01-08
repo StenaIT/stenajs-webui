@@ -564,6 +564,39 @@ export const StickyHeaderAndColumn = () => {
     showHeaderCheckbox: false,
     showRowCheckbox: false,
     stickyHeader: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+        sticky: true,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Box>
+  );
+};
+
+export const StickyHeaderAndColumnWithBackgrounds = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: false,
+    showRowCheckbox: false,
+    stickyHeader: true,
     rowBackgroundResolver: (item) =>
       item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
