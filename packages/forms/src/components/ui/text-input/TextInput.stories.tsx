@@ -65,9 +65,6 @@ export const Overview = () => (
     <Space />
     <Text>Disabled</Text>
     <TextInput value={"Some nice text."} disabled />
-    <Space />
-    <Text>Select all on focus</Text>
-    <TextInput value={"Some nice text."} selectAllOnFocus />
   </Box>
 );
 
@@ -162,14 +159,6 @@ export const WithCustomStyling = () => (
       value={"some input text"}
       style={{ fontStyle: "italic", fontWeight: "bold", color: "orange" }}
     />
-  </Box>
-);
-
-export const WithSelectAllOnFocus = () => (
-  <Box width={"400px"}>
-    <Text>All text is selected when field is focused.</Text>
-    <Space />
-    <TextInput value={"Donald Duck"} selectAllOnFocus />
   </Box>
 );
 

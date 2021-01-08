@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 6.0.0
 
 ### Removed components
 
@@ -29,13 +29,23 @@ The following components now use `ref` prop instead of `innerRef`:
 `RadioButtonWithLabel` and `CheckboxWithLabel` now has `wrapperRef`
 and `inputRef` props.
 
-Ref added to `SeparatorLine`.
+`SeparatorLine` now has `ref` prop.
 
 ### Fixes
 
-- `RadioButtonWithLabel` prop `textColor` is now applied on the label.
+- `RadioButtonWithLabel` prop `textColor` now actually changes the color of the label.
+
+### Calendars
+
 - `YearPicker` now allows navigation more than 10 years from current year.
+- `YearPicker` now longer shows too many years when year value (below 11) is passed as `value`.
 - Single date calendars now sets initial focused month based on current `value`.
+
+### TextInput
+
+- `TextInput` was not triggering `onDone` if not `onEnter` was set.
+- `TextInput` no longer forces blur when user pressed enter.
+- `TextInput` prop `selectAllOnFocus` has been removed, default browser behaviour is used instead.
 
 ## 5.3.2
 

@@ -1,4 +1,5 @@
 import {
+  FocusEventHandler,
   KeyboardEvent,
   KeyboardEventHandler,
   RefObject,
@@ -13,26 +14,40 @@ export const useKeyboardNavigation = (
   /**
    * User-provided onKeyDown. Internal handler should forward calls to this.
    * */
-  onKeyDown?: KeyboardEventHandler<HTMLInputElement>,
-  onEnter?: () => void,
-  onEsc?: () => void,
+  onKeyDown: KeyboardEventHandler<HTMLInputElement> | undefined,
+  onEnter: (() => void) | undefined,
+  onEsc: (() => void) | undefined,
   /**
    * onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab.
    * */
-  onMove?: (direction: MoveDirection) => void
+  onMove: ((direction: MoveDirection) => void) | undefined,
+  onDone: ((value: string) => void) | undefined,
+  onBlur: FocusEventHandler<HTMLInputElement> | undefined,
+  onFocus: FocusEventHandler<HTMLInputElement> | undefined
 ) => {
   const wasCancelledRef = useRef(false);
+
+  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+    if (!wasCancelledRef.current) {
+      onDone?.(ev.target.value ?? "");
+    }
+    onBlur?.(ev);
+  };
+
+  const onFocusHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+    wasCancelledRef.current = false;
+    onFocus?.(ev);
+  };
 
   const onKeyDownHandler: KeyboardEventHandler<HTMLInputElement> = useCallback(
     (ev) => {
       const { key } = ev;
-      if (onEnter && key === "Enter") {
-        ref.current!.blur();
-        onEnter();
-      } else if (onEsc && key === "Escape") {
+      if (key === "Enter") {
+        onEnter?.();
+        onDone?.(ev.currentTarget.value ?? "");
+      } else if (key === "Escape") {
         wasCancelledRef.current = true;
-        onEsc();
-
+        onEsc?.();
         ev.preventDefault();
         ev.stopPropagation();
       } else if (onMove) {
@@ -74,6 +89,7 @@ export const useKeyboardNavigation = (
 
   return {
     onKeyDownHandler,
-    wasCancelled: wasCancelledRef.current,
+    onBlurHandler,
+    onFocusHandler,
   };
 };

@@ -38,6 +38,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     const setRef = (element: HTMLInputElement) => {
       localRef.current = element;
+      if (localRef.current) {
+        localRef.current.indeterminate = Boolean(indeterminate);
+      }
       if (ref) {
         if (typeof ref === "function") {
           ref(element);
@@ -63,7 +66,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       if (localRef.current) {
         localRef.current.indeterminate = Boolean(indeterminate);
       }
-    }, [indeterminate, localRef.current]);
+    }, [indeterminate, localRef]);
 
     return (
       <input
