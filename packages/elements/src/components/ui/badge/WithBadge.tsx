@@ -1,4 +1,4 @@
-import { Absolute, Row } from "@stenajs-webui/core";
+import { Box, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { Badge, BadgeProps } from "./Badge";
 
@@ -20,9 +20,9 @@ export const WithBadge: React.FC<WithBadgeProps> = ({
       {children}
       <div style={{ position: "relative" }}>
         {!hideBadge ? (
-          <Absolute top={top} left={left}>
+          <Box top={top} left={left} position={"absolute"}>
             <Badge {...badgeProps} />
-          </Absolute>
+          </Box>
         ) : null}
       </div>
     </Row>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { forwardRef } from "react";
 import cx from "classnames";
 import styles from "../buttons/Button.module.css";
 import buttonLinkStyles from "./ButtonLink.module.css";
@@ -11,22 +12,27 @@ export interface PrimaryButtonLinkProps
   extends CommonButtonProps,
     AnchorElementProps {}
 
-export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
-  label,
-  className,
-  size = "medium",
-  loadingLabel,
-  loading = false,
-  success = false,
-  successLabel,
-  leftIcon,
-  left,
-  rightIcon,
-  right,
-  variant = "normal",
-  innerRef,
-  ...anchorProps
-}) => {
+export const PrimaryButtonLink = forwardRef<
+  HTMLAnchorElement,
+  PrimaryButtonLinkProps
+>(function PrimaryButtonLink(
+  {
+    label,
+    className,
+    size = "medium",
+    loadingLabel,
+    loading = false,
+    success = false,
+    successLabel,
+    leftIcon,
+    left,
+    rightIcon,
+    right,
+    variant = "normal",
+    ...anchorProps
+  },
+  ref
+) {
   const buttonLabel = getButtonLabel(
     label,
     success,
@@ -43,7 +49,7 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
 
   return (
     <a
-      ref={innerRef}
+      ref={ref}
       className={cx(
         buttonLinkStyles.buttonLink,
         styles.button,
@@ -65,4 +71,4 @@ export const PrimaryButtonLink: React.FC<PrimaryButtonLinkProps> = ({
       />
     </a>
   );
-};
+});

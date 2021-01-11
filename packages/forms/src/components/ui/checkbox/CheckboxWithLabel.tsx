@@ -6,23 +6,23 @@ import { Checkbox, CheckboxProps } from "./Checkbox";
 export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
   textColor?: ThemeColorField | string;
-  innerRef?: Ref<HTMLDivElement>;
+  wrapperRef?: Ref<HTMLDivElement>;
+  inputRef?: Ref<HTMLInputElement>;
 }
 
 export const CheckboxWithLabel: React.FC<CheckboxWithLabelProps> = ({
   children,
-  disabled = false,
   label,
-  innerRef,
+  inputRef,
+  wrapperRef,
   textColor,
-  size = "standard",
   ...checkboxProps
 }) => {
   return (
-    <div ref={innerRef}>
+    <div ref={wrapperRef}>
       <label>
         <Row alignItems={"center"}>
-          <Checkbox {...checkboxProps} size={size} disabled={disabled} />
+          <Checkbox {...checkboxProps} ref={inputRef} />
           <Space />
           {label && (
             <Text userSelect={"none"} color={textColor}>

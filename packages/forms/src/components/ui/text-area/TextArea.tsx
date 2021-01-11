@@ -1,6 +1,11 @@
 import * as React from "react";
-import { ChangeEvent, ChangeEventHandler, useCallback } from "react";
-import { TextAreaElementProps } from "@stenajs-webui/core";
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  ComponentPropsWithoutRef,
+  forwardRef,
+  useCallback,
+} from "react";
 import cx from "classnames";
 import styles from "./TextArea.module.css";
 import { FullOnChangeProps } from "../types";
@@ -16,7 +21,7 @@ type Resize =
   | "unset";
 
 export interface TextAreaProps
-  extends TextAreaElementProps,
+  extends Omit<ComponentPropsWithoutRef<"textarea">, "value">,
     FullOnChangeProps<string, ChangeEvent<HTMLTextAreaElement>> {
   resize?: Resize;
   readOnly?: boolean;
@@ -24,39 +29,45 @@ export interface TextAreaProps
   disabled?: boolean;
 }
 
-export const TextArea: React.FC<TextAreaProps> = ({
-  className,
-  value,
-  onValueChange,
-  onChange,
-  resize = "none",
-  readOnly = false,
-  rows,
-  disabled,
-  ...textAreaProps
-}) => {
-  const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
-    (ev) => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(ev.target.value);
-      }
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  (
+    {
+      className,
+      value,
+      onValueChange,
+      onChange,
+      resize = "none",
+      readOnly = false,
+      rows,
+      disabled,
+      ...textAreaProps
     },
-    [onChange, onValueChange]
-  );
+    ref
+  ) => {
+    const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
+      (ev) => {
+        if (onChange) {
+          onChange(ev);
+        }
+        if (onValueChange) {
+          onValueChange(ev.target.value);
+        }
+      },
+      [onChange, onValueChange]
+    );
 
-  return (
-    <textarea
-      {...textAreaProps}
-      disabled={disabled}
-      rows={rows}
-      readOnly={readOnly}
-      className={cx(styles.textArea, className)}
-      style={{ resize }}
-      onChange={onChangeHandler}
-      value={value}
-    />
-  );
-};
+    return (
+      <textarea
+        disabled={disabled}
+        rows={rows}
+        readOnly={readOnly}
+        className={cx(styles.textArea, className)}
+        style={{ resize }}
+        onChange={onChangeHandler}
+        value={value}
+        ref={ref}
+        {...textAreaProps}
+      />
+    );
+  }
+);

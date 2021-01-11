@@ -10,7 +10,6 @@ export interface SwitchWithLabelProps extends SwitchProps {
 export const SwitchWithLabel: React.FC<SwitchWithLabelProps> = ({
   label,
   disabled,
-  innerRef,
   textColor,
   wrapperRef,
   ...switchProps

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import * as React from "react";
-import { CSSProperties, MouseEventHandler } from "react";
+import { CSSProperties, forwardRef, MouseEventHandler } from "react";
 import { useThemeFields } from "../../theme/hooks/UseThemeSelector";
 import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
 import { ButtonElementProps } from "../../types/ElementProps";
@@ -93,52 +93,56 @@ const ClickableElement = styled.button<ClickableElementProps>`
     borderRadius ? `border-radius: ${borderRadius};` : ""}
 `;
 
-export const Clickable: React.FC<ClickableProps> = ({
-  disableFocusHighlight,
-  onClick,
-  onDblClick,
-  tooltip,
-  disableOpacityOnClick,
-  disablePointer,
-  opacityOnHover,
-  innerRef,
-  disabled,
-  children,
-  background = "transparent",
-  hoverBackground,
-  focusBackground,
-  type = "button",
-  ...restProps
-}) => {
-  const { colors } = useThemeFields(
+export const Clickable = forwardRef<HTMLButtonElement, ClickableProps>(
+  (
     {
-      colors: {
-        background: background,
-        hoverBackground: hoverBackground,
-        focusBackground: focusBackground,
-      },
+      disableFocusHighlight,
+      onClick,
+      onDblClick,
+      tooltip,
+      disableOpacityOnClick,
+      disablePointer,
+      opacityOnHover,
+      disabled,
+      children,
+      background = "transparent",
+      hoverBackground,
+      focusBackground,
+      type = "button",
+      ...restProps
     },
-    [background, hoverBackground, focusBackground]
-  );
-  const hasClickHandler = !!(onClick || onDblClick);
-  return (
-    <ClickableElement
-      opacityOnHover={opacityOnHover}
-      title={tooltip}
-      disabled={disabled}
-      disableOpacityOnClick={disableOpacityOnClick}
-      onClick={onClick}
-      onDoubleClick={onDblClick}
-      disableFocusHighlight={disableFocusHighlight}
-      pointer={hasClickHandler && !disablePointer}
-      ref={innerRef}
-      background={colors.background}
-      hoverBackground={colors.hoverBackground}
-      focusBackground={colors.focusBackground}
-      type={type}
-      {...restProps}
-    >
-      {children}
-    </ClickableElement>
-  );
-};
+    ref
+  ) => {
+    const { colors } = useThemeFields(
+      {
+        colors: {
+          background: background,
+          hoverBackground: hoverBackground,
+          focusBackground: focusBackground,
+        },
+      },
+      [background, hoverBackground, focusBackground]
+    );
+    const hasClickHandler = !!(onClick || onDblClick);
+    return (
+      <ClickableElement
+        opacityOnHover={opacityOnHover}
+        title={tooltip}
+        disabled={disabled}
+        disableOpacityOnClick={disableOpacityOnClick}
+        onClick={onClick}
+        onDoubleClick={onDblClick}
+        disableFocusHighlight={disableFocusHighlight}
+        pointer={hasClickHandler && !disablePointer}
+        ref={ref}
+        background={colors.background}
+        hoverBackground={colors.hoverBackground}
+        focusBackground={colors.focusBackground}
+        type={type}
+        {...restProps}
+      >
+        {children}
+      </ClickableElement>
+    );
+  }
+);

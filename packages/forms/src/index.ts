@@ -12,6 +12,5 @@ export * from "./components/ui/text-input/TextInputBox";
 export * from "./components/ui/text-area/TextArea";
 export * from "./components/ui/types";
 export * from "./hooks/UseKeyboardNavigation";
-export * from "./hooks/UseSelectAllOnFocus";
 export * from "./hooks/UseSelectAllOnMount";
 export * from "./hooks/UseTextInput";

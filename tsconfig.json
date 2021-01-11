@@ -14,7 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "suppressImplicitAnyIndexErrors": true,
-    "strict": true
+    "strict": true,
+    "types": ["@emotion/core"]
   },
   "exclude": ["node_modules"]
 }

@@ -89,7 +89,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
       background={colors.itemBackground}
-      innerRef={ref}
+      ref={ref}
     >
       <Row
         height={theme.itemHeight}

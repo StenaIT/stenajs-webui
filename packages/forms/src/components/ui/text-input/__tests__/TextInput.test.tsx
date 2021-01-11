@@ -67,7 +67,6 @@ describe("TextInput", () => {
               value={""}
               onValueChange={setValueMock}
               onMove={() => {}}
-              selectAllOnFocus
               aria-label={ariaLabel}
             />
           );
@@ -103,31 +102,6 @@ describe("TextInput", () => {
 
           expect(setValueMock).toBeCalledTimes(6);
           expect(setValueMock).toBeCalledWith("7890");
-        });
-      });
-
-      describe("and selectAllOnFocus is true", () => {
-        describe("onValueChange gets called when text is entered", () => {
-          it("works", async () => {
-            const setValueMock = jest.fn();
-            const { getByLabelText } = render(
-              <TextInput
-                value={""}
-                onValueChange={setValueMock}
-                selectAllOnFocus
-                onMove={() => {}}
-                aria-label={ariaLabel}
-              />
-            );
-
-            const input = getByLabelText(ariaLabel);
-
-            await userEvent.type(input, "11");
-            await userEvent.type(input, "7890");
-
-            expect(setValueMock).toBeCalledTimes(6);
-            expect(setValueMock).toBeCalledWith("7890");
-          });
         });
       });
     });

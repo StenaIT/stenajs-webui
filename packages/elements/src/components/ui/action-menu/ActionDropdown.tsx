@@ -88,13 +88,13 @@ export const ActionDropdown: React.FC<ActionDropdownProps> = ({
         position={"relative"}
         display={"inline-block"}
         width={width}
-        innerRef={ref}
+        ref={ref}
         onKeyDown={onKeyDownHandler}
       >
         <Clickable
           onClick={!disabled ? open : undefined}
           disableFocusHighlight={expanded}
-          innerRef={clickableRef}
+          ref={clickableRef}
           borderRadius={defaultActionDropdownTheme.borderRadius}
         >
           <Box
