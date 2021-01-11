@@ -92,7 +92,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     ...inputProps
   } = props;
   const localRef = useRef(null);
-  const refToUse = inputRef || localRef;
+  const refToUse = inputRef ?? localRef;
   const hookProps = useTextInput(refToUse, props);
 
   const currentIconRight =
