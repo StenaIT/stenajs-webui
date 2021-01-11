@@ -34,6 +34,7 @@ and `inputRef` props.
 ### Fixes
 
 - `RadioButtonWithLabel` prop `textColor` now actually changes the color of the label.
+- `StandardTable` uses white as default background color which fixes sticky columns being transparent.
 
 ### Calendars
 
@@ -69,9 +70,6 @@ and `inputRef` props.
 ### PasswordInput
 
 - New component `PasswordInput` with a show password button.
-
-### StandardTable
-- When `sticky` and/or `stickyHeader` is set, implicitly set correct background colors.
 
 ### Breaking changes
 
