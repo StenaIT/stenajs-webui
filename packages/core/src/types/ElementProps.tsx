@@ -1,42 +1,27 @@
-import { Ref, RefObject } from "react";
+import { ComponentPropsWithoutRef, Ref, RefObject } from "react";
 
 export interface InputProps<T = any>
-  extends Omit<JSX.IntrinsicElements["input"], "ref" | "value" | "onChange"> {
+  extends Omit<ComponentPropsWithoutRef<"input">, "value" | "onChange"> {
   /** This is a RefObject since the input components use ref.current which Ref type doesn't have. */
   inputRef?: RefObject<HTMLInputElement>;
   wrapperRef?: Ref<T>;
 }
 
 export interface TextAreaElementProps
-  extends Omit<
-    JSX.IntrinsicElements["textarea"],
-    "ref" | "value" | "onChange"
-  > {
+  extends Omit<ComponentPropsWithoutRef<"textarea">, "value" | "onChange"> {
   /** This is a RefObject since the input components use ref.current which Ref type doesn't have. */
   inputRef?: RefObject<HTMLTextAreaElement>;
 }
 
-export interface DivProps extends Omit<JSX.IntrinsicElements["div"], "ref"> {
-  innerRef?: Ref<HTMLDivElement>;
-}
+export type DivProps = ComponentPropsWithoutRef<"div">;
 
-export interface SpanProps extends Omit<JSX.IntrinsicElements["span"], "ref"> {
-  innerRef?: Ref<HTMLSpanElement>;
-}
+export type SpanProps = ComponentPropsWithoutRef<"span">;
 
-export interface H1Props extends Omit<JSX.IntrinsicElements["h1"], "ref"> {
-  innerRef?: Ref<HTMLSpanElement>;
-}
+export type H1Props = ComponentPropsWithoutRef<"h1">;
 
-export interface ButtonElementProps
-  extends Omit<JSX.IntrinsicElements["button"], "ref"> {
-  innerRef?: Ref<HTMLButtonElement>;
-}
+export type ButtonElementProps = ComponentPropsWithoutRef<"button">;
 
-export interface AnchorElementProps
-  extends Omit<JSX.IntrinsicElements["a"], "ref"> {
-  innerRef?: Ref<HTMLAnchorElement>;
-}
+export type AnchorElementProps = ComponentPropsWithoutRef<"a">;
 
 export interface WithInnerRef<TInputElement> {
   innerRef?: Ref<TInputElement>;

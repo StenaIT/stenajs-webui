@@ -16,7 +16,6 @@ import {
 import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
 import {
   Box,
-  BoxProps,
   Column,
   useBoolean,
   useDebounce,
@@ -48,8 +47,8 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
     "startDate"
   );
 
-  const popoverRef: BoxProps["innerRef"] = useRef(null);
-  const containerRef: BoxProps["innerRef"] = useRef(null);
+  const popoverRef = useRef(null);
+  const containerRef = useRef(null);
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
   const endDateInputRef: TextInputProps["inputRef"] = useRef(null);
 
@@ -203,7 +202,7 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   const debouncedIsCalendarVisible = useDebounce(isCalendarVisible, 300);
 
   return (
-    <Box innerRef={containerRef} onKeyDown={onKeyDownHandler}>
+    <Box ref={containerRef} onKeyDown={onKeyDownHandler}>
       <Popover
         arrow={false}
         lazy
@@ -211,7 +210,7 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
         visible={isCalendarVisible}
         content={
           (debouncedIsCalendarVisible || isCalendarVisible) && (
-            <Column innerRef={popoverRef}>
+            <Column ref={popoverRef}>
               <CalendarWithMonthSwitcher
                 statePerMonth={statePerMonth}
                 onClickDay={onClickDay}

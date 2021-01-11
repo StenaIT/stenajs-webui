@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { DivProps, ThemeColorField, useThemeFields } from "@stenajs-webui/core";
 import * as React from "react";
+import { forwardRef } from "react";
 import * as ReactDOM from "react-dom";
 
 export type SlideFrom = "left" | "right";
@@ -63,17 +64,19 @@ const DrawerWrapper = styled("div")<DrawerWrapperProps>`
   top: 0;
 `;
 
-export const Drawer: React.FC<DrawerProps> = ({
-  children,
-  innerRef,
-  isOpen,
-  background,
-  portalTarget,
-  slideFrom = "left",
-  width = "400px",
-  zIndex = 1000,
-  ...divProps
-}) => {
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
+  {
+    children,
+    isOpen,
+    background,
+    portalTarget,
+    slideFrom = "left",
+    width = "400px",
+    zIndex = 1000,
+    ...divProps
+  },
+  ref
+) {
   const { colors } = useThemeFields(
     {
       colors: {
@@ -85,7 +88,7 @@ export const Drawer: React.FC<DrawerProps> = ({
 
   const drawer = (
     <DrawerWrapper
-      ref={innerRef}
+      ref={ref}
       isOpen={isOpen}
       slideFrom={slideFrom}
       width={width}
@@ -100,4 +103,4 @@ export const Drawer: React.FC<DrawerProps> = ({
     return ReactDOM.createPortal(drawer, portalTarget);
   }
   return drawer;
-};
+});

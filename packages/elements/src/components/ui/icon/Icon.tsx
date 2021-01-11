@@ -50,7 +50,7 @@ export const Icon: React.FC<IconProps> = ({
   }
 
   return (
-    <Box justifyContent={"center"} alignItems={"center"} innerRef={ref}>
+    <Box justifyContent={"center"} alignItems={"center"} ref={ref}>
       <FontAwesomeIcon
         className={className}
         color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}

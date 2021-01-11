@@ -51,7 +51,6 @@ export interface TextInputProps
   wrapperClassName?: string;
   variant?: TextInputVariant;
   hideBorder?: boolean;
-  selectAllOnFocus?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
   onDone?: (value: string) => void;
@@ -77,7 +76,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     iconRight,
     onClickLeft,
     onClickRight,
-    selectAllOnFocus,
     moveCursorToEndOnMount,
     selectAllOnMount,
     autoFocus,
@@ -93,8 +91,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     hideBorder,
     ...inputProps
   } = props;
-  const internalRef = useRef(null);
-  const refToUse = inputRef || internalRef;
+  const localRef = useRef(null);
+  const refToUse = inputRef ?? localRef;
   const hookProps = useTextInput(refToUse, props);
 
   const currentIconRight =

@@ -1,10 +1,13 @@
 import * as React from "react";
 import { Box, BoxProps } from "../box/Box";
+import { forwardRef } from "react";
 
 export interface SpacingProps extends BoxProps {
   num?: number | boolean;
 }
 
-export const Spacing: React.FC<SpacingProps> = ({ num = 1, ...props }) => {
-  return <Box spacing={num} {...props} />;
-};
+export const Spacing = forwardRef<HTMLDivElement, Omit<SpacingProps, "ref">>(
+  function Spacing({ num = 1, ...props }, ref) {
+    return <Box spacing={num} ref={ref} {...props} />;
+  }
+);

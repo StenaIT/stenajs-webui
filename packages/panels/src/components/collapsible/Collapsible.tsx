@@ -5,14 +5,15 @@ import { Clickable, ClickableProps, DivProps, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import cx from "classnames";
 import * as React from "react";
+import { forwardRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Collapsible.module.css";
 import { CollapsibleContent } from "./CollapsibleContent";
 import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
 export interface CollapsibleProps
-  extends Omit<DivProps, "onClick" | "innerRef">,
-    Pick<ClickableProps, "onClick" | "innerRef"> {
+  extends Omit<DivProps, "onClick">,
+    Pick<ClickableProps, "onClick"> {
   label: string;
   contentLeft?: React.ReactNode;
   contentRight?: React.ReactNode;
@@ -40,88 +41,94 @@ export const mapCSSTime = (value: string): number => {
   }
 };
 
-export const Collapsible: React.FC<CollapsibleProps> = ({
-  label,
-  contentLeft,
-  contentRight,
-  collapsed = false,
-  onClick,
-  className,
-  disabled = false,
-  unmountOnCollapse = false,
-  mountOnEnter = true,
-  icon = faChevronUp,
-  iconCollapsed = faChevronDown,
-  iconSize = 8,
-  children,
-  autoFocus = false,
-  innerRef,
-  ...divProps
-}) => {
-  const ref = React.useRef<HTMLDivElement>(null);
+export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
+  function Collapsible(
+    {
+      label,
+      contentLeft,
+      contentRight,
+      collapsed = false,
+      onClick,
+      className,
+      disabled = false,
+      unmountOnCollapse = false,
+      mountOnEnter = true,
+      icon = faChevronUp,
+      iconCollapsed = faChevronDown,
+      iconSize = 8,
+      children,
+      autoFocus = false,
+      ...divProps
+    },
+    ref
+  ) {
+    const divRef = React.useRef<HTMLDivElement>(null);
 
-  const timeout = ref.current
-    ? mapCSSTime(
-        getComputedStyle(ref.current).getPropertyValue(
-          "--swui-collapsible-animation-time"
+    const timeout = divRef.current
+      ? mapCSSTime(
+          getComputedStyle(divRef.current).getPropertyValue(
+            "--swui-collapsible-animation-time"
+          )
         )
-      )
-    : undefined;
+      : undefined;
 
-  return (
-    <div
-      className={cx(styles.collapsible, className)}
-      aria-expanded={!collapsed}
-      ref={ref}
-      {...divProps}
-    >
-      <Clickable
-        disableFocusHighlight
-        disableOpacityOnClick
-        className={styles.header}
-        onClick={onClick}
-        disabled={disabled}
-        autoFocus={autoFocus}
-        innerRef={innerRef}
+    return (
+      <div
+        className={cx(styles.collapsible, className)}
+        aria-expanded={!collapsed}
+        ref={divRef}
+        {...divProps}
       >
-        {contentLeft && <div className={styles.contentLeft}>{contentLeft}</div>}
-        <div className={styles.label}>
-          <Text color={"var(--swui-collapsible-header-text-color)"}>
-            {label}
-          </Text>
-        </div>
-        {contentRight && (
-          <div className={styles.contentRight}>{contentRight}</div>
-        )}
-        <Icon
-          icon={collapsed ? iconCollapsed : icon}
-          className={styles.indicator}
-          size={iconSize}
-        />
-      </Clickable>
-      <CSSTransition
-        in={!collapsed}
-        timeout={{
-          enter: timeout,
-        }}
-        classNames={{
-          enter: styles.contentEnter,
-          enterActive: styles.contentEnterActive,
-          exit: styles.contentExit,
-          exitActive: styles.contentExitActive,
-          exitDone: styles.contentExitDone,
-        }}
-        mountOnEnter={mountOnEnter}
-        unmountOnExit={unmountOnCollapse}
-      >
-        <div role={"region"}>
-          {children ?? (
-            <CollapsibleContent>
-              <CollapsibleEmptyContent />
-            </CollapsibleContent>
+        <Clickable
+          disableFocusHighlight
+          disableOpacityOnClick
+          className={styles.header}
+          onClick={onClick}
+          disabled={disabled}
+          autoFocus={autoFocus}
+          ref={ref}
+        >
+          {contentLeft && (
+            <div className={styles.contentLeft}>{contentLeft}</div>
           )}
-        </div>
-      </CSSTransition>
-    </div>
-  );
-};
+          <div className={styles.label}>
+            <Text color={"var(--swui-collapsible-header-text-color)"}>
+              {label}
+            </Text>
+          </div>
+          {contentRight && (
+            <div className={styles.contentRight}>{contentRight}</div>
+          )}
+          <Icon
+            icon={collapsed ? iconCollapsed : icon}
+            className={styles.indicator}
+            size={iconSize}
+          />
+        </Clickable>
+        <CSSTransition
+          in={!collapsed}
+          timeout={{
+            enter: timeout,
+          }}
+          classNames={{
+            enter: styles.contentEnter,
+            enterActive: styles.contentEnterActive,
+            exit: styles.contentExit,
+            exitActive: styles.contentExitActive,
+            exitDone: styles.contentExitDone,
+          }}
+          mountOnEnter={mountOnEnter}
+          unmountOnExit={unmountOnCollapse}
+        >
+          <div role={"region"}>
+            {children ?? (
+              <CollapsibleContent>
+                <CollapsibleEmptyContent />
+              </CollapsibleContent>
+            )}
+          </div>
+        </CSSTransition>
+      </div>
+    );
+  }
+);

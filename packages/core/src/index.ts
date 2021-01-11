@@ -13,8 +13,6 @@ export * from "./components/decorators/separatorline/SeparatorLine";
 
 export * from "./components/interaction/Clickable";
 
-export * from "./components/layout/absolute/Absolute";
-export * from "./components/layout/relative/Relative";
 export * from "./components/layout/column/Column";
 export * from "./components/layout/box/Box";
 export * from "./components/layout/box/ResizeAwareBox";

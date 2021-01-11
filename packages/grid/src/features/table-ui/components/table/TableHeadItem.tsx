@@ -50,7 +50,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
       <Row
         height={"100%"}
         alignItems={"center"}
-        innerRef={containerRef}
+        ref={containerRef}
         overflow={overflow}
         justifyContent={"space-between"}
         indent

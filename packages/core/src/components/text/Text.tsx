@@ -3,6 +3,7 @@ import cx from "classnames";
 import styles from "./Text.module.css";
 import { SpanProps } from "../../types/ElementProps";
 import { UserSelectProperty, WhiteSpaceProperty } from "csstype";
+import { forwardRef } from "react";
 
 export interface TextProps extends SpanProps {
   variant?: TextVariant;
@@ -15,24 +16,30 @@ export interface TextProps extends SpanProps {
 export type TextVariant = "standard" | "caption" | "overline" | "bold";
 export type TextSize = "large" | "medium" | "small" | "smaller";
 
-export const Text: React.FC<TextProps> = ({
-  children,
-  variant = "standard",
-  size = "medium",
-  className,
-  color,
-  userSelect,
-  whiteSpace,
-  style,
-  ...spanProps
-}) => {
-  return (
-    <span
-      className={cx(styles.text, styles[variant], styles[size], className)}
-      {...spanProps}
-      style={{ color, userSelect, whiteSpace, ...style }}
-    >
-      {children}
-    </span>
-  );
-};
+export const Text = forwardRef<HTMLSpanElement, TextProps>(
+  (
+    {
+      children,
+      variant = "standard",
+      size = "medium",
+      className,
+      color,
+      userSelect,
+      whiteSpace,
+      style,
+      ...spanProps
+    },
+    ref
+  ) => {
+    return (
+      <span
+        className={cx(styles.text, styles[variant], styles[size], className)}
+        ref={ref}
+        style={{ color, userSelect, whiteSpace, ...style }}
+        {...spanProps}
+      >
+        {children}
+      </span>
+    );
+  }
+);

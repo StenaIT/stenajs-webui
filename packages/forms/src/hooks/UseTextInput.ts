@@ -1,12 +1,11 @@
 import {
   ChangeEventHandler,
-  FocusEventHandler,
+  ComponentPropsWithoutRef,
   RefObject,
   useCallback,
 } from "react";
 import { TextInputProps } from "../components/ui/text-input/TextInput";
 import { useKeyboardNavigation } from "./UseKeyboardNavigation";
-import { useSelectAllOnFocus } from "./UseSelectAllOnFocus";
 import { useSelectAllOnMount } from "./UseSelectAllOnMount";
 
 export const useTextInput = (
@@ -16,7 +15,6 @@ export const useTextInput = (
     onEsc,
     onChange,
     onValueChange,
-    selectAllOnFocus,
     selectAllOnMount,
     moveCursorToEndOnMount,
     onDone,
@@ -26,30 +24,23 @@ export const useTextInput = (
     onKeyDown,
     autoFocus,
   }: TextInputProps
-): JSX.IntrinsicElements["input"] => {
-  const { onFocusHandler } = useSelectAllOnFocus(
-    ref,
-    onFocus,
-    selectAllOnFocus
-  );
+): ComponentPropsWithoutRef<"input"> => {
   useSelectAllOnMount(ref, !!moveCursorToEndOnMount, !!selectAllOnMount);
 
-  const { onKeyDownHandler, wasCancelled } = useKeyboardNavigation(
+  const {
+    onKeyDownHandler,
+    onFocusHandler,
+    onBlurHandler,
+  } = useKeyboardNavigation(
     ref,
     onKeyDown,
     onEnter,
     onEsc,
-    onMove
+    onMove,
+    onDone,
+    onBlur,
+    onFocus
   );
-
-  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
-    if (onDone && !wasCancelled) {
-      onDone(ev.target.value ?? "");
-    }
-    if (onBlur) {
-      onBlur(ev);
-    }
-  };
 
   const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
     (ev) => {

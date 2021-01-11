@@ -3,10 +3,18 @@ import * as React from "react";
 import { useState } from "react";
 import { DateRangeCalendarOnChangeValue } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { DateRangeInput } from "./DateRangeInput";
+import { Story } from "@storybook/react";
 
 export default {
   title: "calendar/Input/DateRangeInput",
   component: DateRangeInput,
+  decorators: [
+    (TheStory: Story) => (
+      <div style={{ marginBottom: "400px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Standard = () => {

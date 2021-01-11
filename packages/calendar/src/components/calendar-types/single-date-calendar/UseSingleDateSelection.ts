@@ -14,7 +14,7 @@ export const useSingleDateSelection = <T>({
     "calendar"
   );
 
-  const [dateInFocus, setDateInFocus] = useState(() => new Date());
+  const [dateInFocus, setDateInFocus] = useState(() => value ?? new Date());
 
   const onClickDay: OnClickDay<T> = useCallback(
     (day) => {
@@ -24,6 +24,7 @@ export const useSingleDateSelection = <T>({
     },
     [onChange]
   );
+
   const statePerMonthWithSelectedDate = useMemo(
     () =>
       value

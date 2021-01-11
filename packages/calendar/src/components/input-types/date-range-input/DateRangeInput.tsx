@@ -125,7 +125,7 @@ export const DateRangeInput = <T extends {}>({
   );
 
   return (
-    <Box innerRef={outsideRef}>
+    <Box ref={outsideRef}>
       <Popover
         arrow={false}
         lazy
