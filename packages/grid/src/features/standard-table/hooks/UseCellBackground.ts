@@ -9,10 +9,7 @@ const getBackgroundColor = <TItem>(
   backgroundResolver: BackgroundResolver<TItem> | undefined,
   item: TItem,
   background: string | undefined
-) =>
-  backgroundResolver
-    ? backgroundResolver(item) ?? "inherit"
-    : background ?? "inherit";
+) => (backgroundResolver ? backgroundResolver(item) : background) ?? "inherit";
 
 const useBackground = <TItem>(
   backgroundResolver: BackgroundResolver<TItem> | undefined,
