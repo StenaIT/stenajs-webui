@@ -34,6 +34,7 @@ and `inputRef` props.
 ### Fixes
 
 - `RadioButtonWithLabel` prop `textColor` now actually changes the color of the label.
+- `StandardTable` uses white as default background color which fixes sticky columns being transparent.
 
 ### Calendars
 

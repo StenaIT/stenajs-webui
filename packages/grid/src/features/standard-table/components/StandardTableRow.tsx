@@ -43,7 +43,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
   const background = useMemo(
-    () => (rowBackgroundResolver ? rowBackgroundResolver(item) : "white"),
+    () => (rowBackgroundResolver ? rowBackgroundResolver(item) : undefined),
     [item, rowBackgroundResolver]
   );
 
@@ -70,7 +70,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         height={"var(--current-row-height)"}
         width={"100%"}
         borderTop={isExpanded ? tableBorderExpanded : tableBorder}
-        background={background}
+        background={background ?? "white"}
         hoverBackground={background ? undefined : "var(--lhds-color-ui-100)"}
       >
         {rowIndent && (
