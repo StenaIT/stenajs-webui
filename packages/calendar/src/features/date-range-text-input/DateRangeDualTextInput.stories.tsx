@@ -3,12 +3,13 @@ import { useState } from "react";
 import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
 import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
 import { useDateRangeCalendarState } from "../../components/calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
+import { Story } from "@storybook/react";
 
 export default {
   title: "calendar/Input/DateRangeDualTextInput",
   component: DateRangeDualTextInput,
   decorators: [
-    (TheStory: any) => (
+    (TheStory: Story) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>

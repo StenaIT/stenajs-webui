@@ -84,7 +84,7 @@ export const useKeyboardNavigation = (
         onKeyDown(ev);
       }
     },
-    [onEsc, onMove, onKeyDown, ref, onEnter]
+    [onEsc, onMove, onKeyDown, ref, onEnter, onDone]
   );
 
   return {

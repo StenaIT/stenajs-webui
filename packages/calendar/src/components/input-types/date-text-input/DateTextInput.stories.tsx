@@ -1,12 +1,13 @@
 import { DateTextInput } from "./DateTextInput";
 import * as React from "react";
 import { useState } from "react";
+import { Story } from "@storybook/react";
 
 export default {
   title: "calendar/Input/DateTextInput",
   component: DateTextInput,
   decorators: [
-    (TheStory: any) => (
+    (TheStory: Story) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>

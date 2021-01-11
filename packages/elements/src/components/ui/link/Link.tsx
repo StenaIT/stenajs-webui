@@ -1,6 +1,6 @@
 import cx from "classnames";
 import * as React from "react";
-import { forwardRef, KeyboardEventHandler } from "react";
+import { forwardRef } from "react";
 import { AnchorElementProps } from "@stenajs-webui/core";
 import styles from "./Link.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -36,12 +36,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     },
     ref
   ) => {
-    const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = (ev) => {
-      if ((ev.key === " " || ev.key === "Enter") && onClick) {
-        ev.preventDefault();
-        onClick(ev as any);
-      }
-    };
     return (
       <a
         tabIndex={!disableTabIndex ? tabIndex : undefined}
@@ -55,7 +49,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         ref={ref}
         href={disabled ? undefined : href}
         onClick={!disabled ? onClick : undefined}
-        onKeyDown={!disabled ? onKeyDown : undefined}
         {...anchorProps}
       >
         {iconLeft && (
