@@ -33,19 +33,3 @@ export const Standard = () => {
     </div>
   );
 };
-
-export const Prefilled = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
-    undefined
-  );
-  const props = useDateRangeCalendarState();
-  return (
-    <div style={{ display: "inline-block" }}>
-      <DateRangeDualTextInput
-        value={value}
-        onValueChange={setValue}
-        {...props}
-      />
-    </div>
-  );
-};
