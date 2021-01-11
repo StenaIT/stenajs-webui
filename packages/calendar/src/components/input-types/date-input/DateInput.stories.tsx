@@ -8,7 +8,7 @@ export default {
   title: "calendar/Input/DateInput",
   component: DateInput,
   decorators: [
-    (TheStory: any) => (
+    (TheStory: ReactNode) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>
