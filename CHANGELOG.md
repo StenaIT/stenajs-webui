@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.0.1
+
+- Hotfix for prop type definitions for Indent and Spacing.
+
 ## 6.0.0
 
 ### Removed components
