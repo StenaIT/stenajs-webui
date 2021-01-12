@@ -55,24 +55,23 @@ import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
 import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 import { DivProps } from "../../../types/ElementProps";
 
-type StyledSystemProps = BorderRadiusProps &
-  BorderStyleProps &
-  BorderWidthProps &
-  BorderLeftProps &
-  BorderRightProps &
-  BorderTopProps &
-  BorderBottomProps &
-  FlexboxProps &
-  LayoutProps &
-  OverflowProps &
-  PositionProps &
-  ZIndexProps &
-  LeftProps &
-  RightProps &
-  TopProps &
-  BottomProps;
-
-type FlexBoxProps = BoxProps;
+interface StyledSystemProps
+  extends BorderRadiusProps,
+    BorderStyleProps,
+    BorderWidthProps,
+    BorderLeftProps,
+    BorderRightProps,
+    BorderTopProps,
+    BorderBottomProps,
+    FlexboxProps,
+    LayoutProps,
+    OverflowProps,
+    PositionProps,
+    ZIndexProps,
+    LeftProps,
+    RightProps,
+    TopProps,
+    BottomProps {}
 
 type ShadowType = keyof ThemeShadows;
 
@@ -81,57 +80,69 @@ export interface BoxProps extends StyledSystemProps, DivProps {
    * Sets the text color of the box.
    */
   color?: ThemeColorField | ColorProperty;
+
   /**
    * If true, children are placed in a row.
    */
   row?: boolean;
+
   /**
    * Adds spacing over and under content.
    */
   spacing?: boolean | number;
+
   /**
    * Adds spacing left and right of content.
    */
   indent?: boolean | number;
-  style?: React.CSSProperties;
+
   /**
    * Adds a shadow around the box.
    */
   shadow?: ShadowType | BoxShadowProperty;
+
   /**
    * Sets the background of the box.
    */
   background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+
   /**
    * Sets the border of the box.
    */
   border?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+
   /**
    * Sets the border color of the box.
    */
   borderColor?: ThemeColorField | BorderColorProperty;
+
   /**
    * Sets the background of the box when hovering with mouse.
    */
   hoverBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+
   /**
    * Sets the border of the box when hovering with mouse.
    */
   hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+
   /**
    * Sets the background of the box when the box is in focus.
    */
   focusBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+
   /**
    * Sets the border of the box when the box is in focus.
    */
   focusBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+
   /**
    * Sets the background of the box when focus is within the box.
    */
   focusWithinBackground?:
     | ThemeColorField
     | BackgroundProperty<TLengthStyledSystem>;
+
   /**
    * Sets the border of the box when focus is within the box.
    */
@@ -149,7 +160,7 @@ const getPaddingRule = (props: InnerProps) =>
     ${numberOrZero(props.indent) * (props.themeIndent || 10)}px;`
     : "";
 
-type InnerProps = FlexBoxProps &
+type InnerProps = BoxProps &
   BoxShadowProps &
   BackgroundProps & { themeSpacing: number; themeIndent: number };
 
