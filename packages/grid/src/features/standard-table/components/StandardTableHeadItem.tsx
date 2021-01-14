@@ -1,10 +1,10 @@
-import { lowerCase, upperFirst } from "lodash";
 import * as React from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
 import { useTableSortHeader } from "../hooks/UseTableSortHeader";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -32,7 +32,7 @@ export const StandardTableHeadItem = React.memo(
     const label =
       typeof columnLabel === "string"
         ? columnLabel
-        : upperFirst(lowerCase(columnId));
+        : formatColumnIdToHeaderCellLabel(columnId);
 
     return (
       <TableHeadItem

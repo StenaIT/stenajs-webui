@@ -1,3 +1,5 @@
+import { lowerCase, upperFirst } from "lodash";
+
 export const formatValueLabel = <T>(itemValue: T) => {
   if (itemValue == null) {
     return "";
@@ -9,3 +11,6 @@ export const formatValueLabel = <T>(itemValue: T) => {
     return String(itemValue);
   }
 };
+
+export const formatColumnIdToHeaderCellLabel = (columnId: string): string =>
+  upperFirst(lowerCase(columnId));
