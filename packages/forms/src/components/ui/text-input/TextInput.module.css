@@ -76,6 +76,7 @@
     background: var(--swui-hidden);
     border: none;
     min-width: 0; /* https://stackoverflow.com/a/43361500 */
+    margin: 0; /* Safari */
 
     &:disabled {
       color: var(--swui-textinput-text-color-disabled);
