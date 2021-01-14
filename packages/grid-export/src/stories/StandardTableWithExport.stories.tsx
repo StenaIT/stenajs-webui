@@ -1,6 +1,9 @@
 import * as React from "react";
-import { createColumnConfig, StandardTableConfig } from "@stenajs-webui/grid";
-import { StandardTable } from "../../../grid/src/features/standard-table/components/StandardTable";
+import {
+  createColumnConfig,
+  StandardTable,
+  StandardTableConfig,
+} from "@stenajs-webui/grid";
 import { Column } from "@stenajs-webui/core";
 import { StandardTableExcelExportButton } from "../components/StandardTableExcelExportButton";
 
