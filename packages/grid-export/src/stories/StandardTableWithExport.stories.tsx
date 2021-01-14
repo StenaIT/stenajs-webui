@@ -69,3 +69,21 @@ export const WithNoItems = () => (
     <StandardTable config={config} items={[]} />
   </Column>
 );
+
+export const WithCustomFormatters = () => {
+  const formatters = {
+    lastName: (item: Item) => item.firstName + "sson",
+    age: (item: Item) => item.age + 100,
+  };
+
+  return (
+    <Column>
+      <StandardTableExcelExportButton
+        config={config}
+        items={items}
+        formatters={formatters}
+      />
+      <StandardTable config={config} items={items} />
+    </Column>
+  );
+};

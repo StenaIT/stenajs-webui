@@ -1,15 +1,19 @@
 import { StandardTableConfig } from "@stenajs-webui/grid";
-import { createZipcelxConfig } from "../transformers/ConfigTransformer";
+import {
+  createZipcelxConfig,
+  CustomCellFormatters,
+} from "../transformers/ConfigTransformer";
 import zipcelx from "zipcelx";
 
 export const downloadExcelForStandardTable = async <
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string | number | symbol = keyof TItem
 >(
   filename: string,
-  config: StandardTableConfig<TItem, TColumnKeys>,
-  items: Array<TItem>
+  config: StandardTableConfig<TItem, TColumnKey>,
+  items: Array<TItem>,
+  formatters?: CustomCellFormatters<TItem, TColumnKey>
 ) => {
-  const excelConfig = createZipcelxConfig(filename, config, items);
+  const excelConfig = createZipcelxConfig(filename, config, items, formatters);
   await zipcelx(excelConfig);
 };
