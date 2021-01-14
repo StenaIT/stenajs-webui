@@ -38,6 +38,10 @@ module.exports = {
       ...shared
     },
     {
+      rootDir: "packages/grid-export/src",
+      ...shared
+    },
+    {
       rootDir: "packages/input-mask/src",
       ...shared
     },

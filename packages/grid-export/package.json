@@ -1,5 +1,5 @@
 {
-  "name": "@stenajs-webui/modal",
+  "name": "@stenajs-webui/grid-export",
   "version": "6.0.1",
   "description": "",
   "author": "mattias800",
@@ -18,7 +18,7 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
+    "test": "jest",
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
@@ -28,38 +28,29 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@types/react-modal": "^3.10.6",
+    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@stenajs-webui/core": "6.0.1",
     "@stenajs-webui/elements": "6.0.1",
-    "@stenajs-webui/theme": "6.0.1",
-    "classnames": "^2.2.6",
-    "react-draggable": "^4.4.2",
-    "react-modal": "^3.11.1"
+    "@stenajs-webui/grid": "6.0.1",
+    "@types/zipcelx": "^1.5.0",
+    "date-fns": "2.16.1",
+    "zipcelx": "^1.6.2"
   },
   "peerDependencies": {
-    "@emotion/core": ">=10.0.10",
-    "@fortawesome/fontawesome-svg-core": ">=1.2.18",
-    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
-    "@fortawesome/react-fontawesome": ">=0.1.4",
-    "@types/react": ">=16.8.19",
-    "@types/react-dom": ">=16.8.4",
+    "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.10",
-    "@fortawesome/fontawesome-svg-core": "1.2.18",
-    "@fortawesome/free-solid-svg-icons": "5.8.2",
-    "@fortawesome/react-fontawesome": "0.1.4",
-    "@types/classnames": "^2.2.10",
     "@types/jest": "^23.1.5",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "prop-types": "^15.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "files": [
     "dist"
   ],
-  "gitHead": "abdea64c41b6f672cc0448a9788b4b1831e7f7db"
+  "gitHead": "40f790050c2dabfcec39a1f69965ea9ae7777b81"
 }

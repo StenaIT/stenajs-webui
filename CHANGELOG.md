@@ -1,5 +1,20 @@
 # Changelog
 
+## 6.1.0
+
+### New package `grid-export`
+
+Contains components and logic for exporting data in tables to file.
+
+#### StandardTableExcelExportButton
+
+When the user clicks the button, it downloads the
+content of a `StandardTable` as an Excel .xlsx file.
+
+### Fixes
+
+- Fixed `TextInput` height in Safari.
+
 ## 6.0.1
 
 - Hotfix for prop type definitions for Indent and Spacing.

@@ -122,6 +122,10 @@
       "maxSize": "14 kB"
     },
     {
+      "path": "./packages/grid-export/dist/*.js",
+      "maxSize": "3 kB"
+    },
+    {
       "path": "./packages/input-mask/dist/*.js",
       "maxSize": "2 kB"
     },
