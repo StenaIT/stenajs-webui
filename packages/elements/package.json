@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "6.0.1",
-    "@stenajs-webui/theme": "6.0.1",
+    "@stenajs-webui/core": "6.1.0",
+    "@stenajs-webui/theme": "6.1.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
