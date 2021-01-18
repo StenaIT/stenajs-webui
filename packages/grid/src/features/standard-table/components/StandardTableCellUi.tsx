@@ -13,7 +13,7 @@ interface Props {
   justifyContent?: string;
   enableGridCell?: boolean;
   isEditing: boolean;
-  gridCellRequiredProps: GridCellRequiredProps;
+  gridCellRequiredProps?: GridCellRequiredProps;
   background?: string;
   borderLeft?: string | boolean;
   children: ReactNode;

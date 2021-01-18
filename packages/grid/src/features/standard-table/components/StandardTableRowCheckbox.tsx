@@ -27,7 +27,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     const tableId = useStandardTableId();
     const gridCell = useGridCell<boolean>(!!value, {
       colIndex,
-      numCols: columnOrder.length,
+      numCols: columnOrder?.length ?? 0,
       numRows,
       rowIndex,
       tableId,

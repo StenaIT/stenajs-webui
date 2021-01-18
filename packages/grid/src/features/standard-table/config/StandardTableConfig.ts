@@ -3,6 +3,7 @@ import {
   UseGridCellOptions,
   UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";
+import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 
 export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
@@ -10,7 +11,8 @@ export interface RowExpansionArgs {
 
 export interface StandardTableConfig<
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string,
+  TColumnGroupKey extends string = ""
 > {
   /**
    * If true, click on table headers does not change sort order.
@@ -21,7 +23,7 @@ export interface StandardTableConfig<
    * Table will be sorted by specified column key as default.
    * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
-  initialSortOrder?: TColumnKeys;
+  initialSortOrder?: TColumnKey;
 
   /**
    * Initial sorting will be desc. Does nothing if initialSortOrder is not specified.
@@ -32,13 +34,28 @@ export interface StandardTableConfig<
   /**
    * Configs for the columns available in the table.
    */
-  columns: Record<TColumnKeys, StandardTableColumnConfig<TItem, any>>;
+  columns: Record<TColumnKey, StandardTableColumnConfig<TItem, any>>;
 
   /**
    * The order of the columns. This is a list of keys from `columns`.
    * If a column is not added, it is not displayed.
    */
-  columnOrder: Array<TColumnKeys>;
+  columnOrder?: Array<TColumnKey>;
+
+  /**
+   * Configs for the column groups available in the table.
+   * If column groups are used, columnOrder will not be used.
+   */
+  columnGroups?: Record<
+    TColumnGroupKey,
+    StandardTableColumnGroupConfig<TColumnKey>
+  >;
+
+  /**
+   * The order of the column groups. This is a list of keys from `columnGroups`.
+   * If the columnGroups `columnOrder` array is empty, it is not displayed.
+   */
+  columnGroupOrder?: Array<TColumnGroupKey>;
 
   /**
    * A key resolver for an item in the list. This is needed for React key props in the components.

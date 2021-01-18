@@ -7,19 +7,19 @@ import { transformItemToCell } from "./CellTransformer";
 
 export type CustomCellFormatters<
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
-> = Partial<Record<TColumnKeys, CustomCellFormatter<TItem>>>;
+  TColumnKey extends string | number | symbol = keyof TItem
+> = Partial<Record<TColumnKey, CustomCellFormatter<TItem>>>;
 
 export type CustomCellFormatter<TItem> = (item: TItem) => string | number;
 
 export const createZipcelxConfig = <
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string | number | symbol = keyof TItem
 >(
   filename: string,
-  config: StandardTableConfig<TItem, TColumnKeys>,
+  config: StandardTableConfig<TItem, TColumnKey>,
   items: Array<TItem>,
-  formatters?: CustomCellFormatters<TItem, TColumnKeys>
+  formatters?: CustomCellFormatters<TItem, TColumnKey>
 ): ZipCelXConfig => ({
   filename,
   sheet: {
@@ -40,9 +40,9 @@ export const createZipcelxConfig = <
 
 export const transformTableHeaders = <
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string | number | symbol = keyof TItem
 >(
-  config: StandardTableConfig<TItem, TColumnKeys>
+  config: StandardTableConfig<TItem, TColumnKey>
 ): ZipCelXRow => {
   return config.columnOrder.map((columnId) => {
     const columnConfig = config.columns[columnId];

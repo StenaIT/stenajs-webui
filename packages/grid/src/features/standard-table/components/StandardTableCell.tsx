@@ -17,6 +17,7 @@ export interface StandardTableCellProps<TItem> {
   rowIndex: number;
   colIndex: number;
   numRows: number;
+  disableBorderLeft?: boolean;
 }
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
@@ -25,6 +26,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   colIndex,
   rowIndex,
   numRows,
+  disableBorderLeft,
 }: StandardTableCellProps<TItem>) {
   const {
     columnOrder,
@@ -81,7 +83,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     colIndex,
     rowIndex,
     numRows,
-    numCols: columnOrder.length + (showRowCheckbox ? 1 : 0),
+    numCols: columnOrder?.length ?? 0 + (showRowCheckbox ? 1 : 0),
     tableId,
     isEditable: editable,
     onChange: onChange
@@ -111,7 +113,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       width={width}
       minWidth={minWidth}
       justifyContent={justifyContentCell}
-      borderLeft={borderLeft}
+      borderLeft={disableBorderLeft ? undefined : borderLeft}
       flex={flex}
       background={currentBackground}
       sticky={sticky}

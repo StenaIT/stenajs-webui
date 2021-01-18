@@ -9,12 +9,12 @@ import {
 } from "../redux/StandardTableReducer";
 import { createStandardTableActions } from "../util/ActionsFactory";
 
-export const useLocalStateTableContext = <TColumnKeys extends string>(
+export const useLocalStateTableContext = <TColumnKey extends string>(
   tableId: string,
-  initialState: StandardTableState<TColumnKeys> = createStandardTableInitialState<TColumnKeys>()
+  initialState: StandardTableState<TColumnKey> = createStandardTableInitialState<TColumnKey>()
 ) => {
-  const [state, dispatch] = useReducer<StandardTableReducer<TColumnKeys>>(
-    createStandardTableReducer<TColumnKeys>(tableId),
+  const [state, dispatch] = useReducer<StandardTableReducer<TColumnKey>>(
+    createStandardTableReducer<TColumnKey>(tableId),
     initialState
   );
 
@@ -22,12 +22,12 @@ export const useLocalStateTableContext = <TColumnKeys extends string>(
     () =>
       createStandardTableActions(
         tableId,
-        createInternalStandardTableActions<TColumnKeys>()
+        createInternalStandardTableActions<TColumnKey>()
       ),
     [tableId]
   );
 
-  const tableContext = useMemo<TableContext<TColumnKeys>>(
+  const tableContext = useMemo<TableContext<TColumnKey>>(
     () => ({
       dispatch,
       actions,

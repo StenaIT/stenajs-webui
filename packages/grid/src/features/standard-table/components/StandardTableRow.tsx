@@ -1,4 +1,4 @@
-import { Box, Indent } from "@stenajs-webui/core";
+import { Box, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import { tableBorder, tableBorderExpanded } from "../../../config/TableConfig";
@@ -14,6 +14,7 @@ import { StandardTableCell } from "./StandardTableCell";
 import { StandardTableRowCheckbox } from "./StandardTableRowCheckbox";
 import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
 import { StandardTableRowExpandButton } from "./StandardTableRowExpandButton";
+import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 
 interface StandardTableItemProps<TItem> {
   item: TItem;
@@ -28,8 +29,8 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   numRows,
   colIndexOffset,
 }: StandardTableItemProps<TItem>) {
+  const groupConfigs = useGroupConfigsForRows();
   const {
-    columnOrder,
     showRowCheckbox,
     rowBackgroundResolver,
     checkboxDisabledResolver,
@@ -94,22 +95,40 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
             numRows={numRows}
           />
         )}
-        {columnOrder.map((columnId, index) => {
-          const localColIndexOffset =
-            colIndexOffset +
-            (showRowCheckbox ? 1 : 0) +
-            (enableExpandCollapse ? 1 : 0);
-          return (
-            <StandardTableCell
-              key={columnId}
-              columnId={columnId}
-              item={item}
-              colIndex={localColIndexOffset + index}
-              rowIndex={rowIndex}
-              numRows={numRows}
-            />
-          );
-        })}
+        {groupConfigs.map((groupConfig, groupIndex) => (
+          <Row
+            background={"inherit"}
+            borderLeft={
+              groupIndex === 0
+                ? undefined
+                : groupConfig.borderLeft === true
+                ? tableBorder
+                : groupConfig.borderLeft || undefined
+            }
+          >
+            {groupConfig.columnOrder.map((columnId, index) => {
+              // TODO Get correct index when using groups.
+              const localColIndexOffset =
+                colIndexOffset +
+                (showRowCheckbox ? 1 : 0) +
+                (enableExpandCollapse ? 1 : 0);
+              return (
+                <StandardTableCell
+                  key={columnId}
+                  columnId={columnId}
+                  item={item}
+                  colIndex={localColIndexOffset + index}
+                  rowIndex={rowIndex}
+                  numRows={numRows}
+                  disableBorderLeft={
+                    (groupIndex === 0 || Boolean(groupConfig.borderLeft)) &&
+                    index === 0
+                  }
+                />
+              );
+            })}
+          </Row>
+        ))}
         {rowIndent && (
           <Indent num={rowIndent} background={lastColumnBackground} />
         )}

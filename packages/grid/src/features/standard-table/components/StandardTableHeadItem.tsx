@@ -8,10 +8,14 @@ import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
+  disableBorderLeft?: boolean;
 }
 
 export const StandardTableHeadItem = React.memo(
-  function StandardTableHeaderItem({ columnId }: StandardTableHeaderItemProps) {
+  function StandardTableHeaderItem({
+    columnId,
+    disableBorderLeft,
+  }: StandardTableHeaderItemProps) {
     const {
       width,
       minWidth,
@@ -41,7 +45,13 @@ export const StandardTableHeadItem = React.memo(
         width={width}
         minWidth={minWidth ?? width}
         background={background ?? "white"}
-        borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
+        borderLeft={
+          disableBorderLeft
+            ? undefined
+            : borderLeft === true
+            ? tableBorder
+            : borderLeft || undefined
+        }
         flex={width ? undefined : flex}
         justifyContent={justifyContentHeader}
         label={label}

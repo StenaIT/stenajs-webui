@@ -1,5 +1,25 @@
 import { StandardTableColumnConfig } from "../config/StandardTableConfig";
+import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "./UseStandardTableConfig";
+import { StandardTableColumnGroupConfig } from "../config/StandardTableColumnGroupConfig";
+
+export const useColumnGroupFromConfig = <TColumnGroupKey extends string>(
+  groupId: string
+): StandardTableColumnGroupConfig<TColumnGroupKey> => {
+  const { columnGroups } = useStandardTableConfig<
+    unknown,
+    "",
+    TColumnGroupKey
+  >();
+  if (columnGroups == null) {
+    throw new Error("Column groups is not set.");
+  }
+  const columnGroup = columnGroups[groupId];
+  if (!columnGroup) {
+    throw new Error("No config for column group with id=" + groupId);
+  }
+  return columnGroup;
+};
 
 export const useColumnFromConfig = <TItem, TItemValue = any>(
   columnId: string
@@ -12,25 +32,16 @@ export const useColumnFromConfig = <TItem, TItemValue = any>(
   return column;
 };
 
-export const useColumnFromConfigByIndex = (columnIndex: number) => {
-  const { columnOrder } = useStandardTableConfig();
-  if (columnIndex >= columnOrder.length) {
-    throw new Error("Column index is larger than number of columns.");
-  }
-  if (columnIndex < 0) {
-    throw new Error("Column index cannot be negative.");
-  }
-  const columnId = columnOrder[columnIndex];
-
-  return useColumnFromConfig(columnId);
-};
-
 export const useFirstColumnFromConfig = () => {
-  return useColumnFromConfigByIndex(0);
+  const config = useStandardTableConfig();
+  const columnId = useGroupConfigsForRows()[0].columnOrder[0];
+  return config.columns[columnId];
 };
 
 export const useLastColumnFromConfig = () => {
-  const { columnOrder } = useStandardTableConfig();
-
-  return useColumnFromConfigByIndex(columnOrder.length - 1);
+  const config = useStandardTableConfig();
+  const groupConfigs = useGroupConfigsForRows();
+  const groupConfig = groupConfigs[groupConfigs.length - 1];
+  const columnId = groupConfig.columnOrder[groupConfig.columnOrder.length - 1];
+  return config.columns[columnId];
 };
