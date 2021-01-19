@@ -83,7 +83,7 @@ const items: Array<Item> = [
     id: "5",
     firstName: "Niklas",
     lastName: "Rockstar",
-    age: 19,
+    age: 27,
   },
 ];
 
