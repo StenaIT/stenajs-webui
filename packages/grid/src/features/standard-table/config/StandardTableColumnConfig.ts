@@ -133,7 +133,7 @@ export type StandardTableCellRenderer<TItemValue, TItem> = (
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
 
-interface ItemValueResolver<TItem, TItemValue> {
+export interface ItemValueResolver<TItem, TItemValue> {
   itemValueResolver: (item: TItem) => TItemValue;
 }
 
