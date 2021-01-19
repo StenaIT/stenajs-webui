@@ -1,7 +1,6 @@
-import { Heading, Indent, Space } from "@stenajs-webui/core";
+import { Box, Heading, Indent, Row, Space } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
 import * as React from "react";
-import { StandardTableCellUi } from "../../components/StandardTableCellUi";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
 
@@ -9,6 +8,7 @@ interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
   columnId: TColumnKey;
   isFirstInGroup: boolean;
+  borderFromGroup?: string;
 }
 
 export const GroupedColumn = function ColumnGroupColumnItem<
@@ -17,17 +17,12 @@ export const GroupedColumn = function ColumnGroupColumnItem<
   columnId,
   groupConfig,
   isFirstInGroup,
+  borderFromGroup,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
   const { label, render, contentLeft, contentRight, loading } = groupConfig;
-
-  const {
-    flex = 1,
-    width,
-    minWidth,
-    sticky,
-    zIndex,
-    left,
-  } = useColumnConfigById(columnId);
+  const { flex = 1, width, minWidth, zIndex, left } = useColumnConfigById(
+    columnId
+  );
 
   const content = isFirstInGroup ? (
     <>
@@ -60,19 +55,29 @@ export const GroupedColumn = function ColumnGroupColumnItem<
   ) : null;
 
   return (
-    <StandardTableCellUi
-      isEditing={false}
+    <Box
+      position={"relative"}
+      height={"var(--current-row-height)"}
       width={width}
-      minWidth={minWidth}
+      minWidth={minWidth ?? width}
       justifyContent={"flex-start"}
-      flex={flex}
-      background={"inherit"}
-      sticky={sticky}
+      flex={width ? undefined : flex}
+      background={content ? "white" : "transparent"}
       zIndex={zIndex}
       left={left}
-      shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
+      borderLeft={borderFromGroup}
     >
-      {content}
-    </StandardTableCellUi>
+      {content && (
+        <Row
+          height={"var(--current-row-height)"}
+          position={"absolute"}
+          top={0}
+          left={0}
+          alignItems={"center"}
+        >
+          {content}
+        </Row>
+      )}
+    </Box>
   );
 };

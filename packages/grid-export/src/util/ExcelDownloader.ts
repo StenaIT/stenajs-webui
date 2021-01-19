@@ -7,10 +7,11 @@ import zipcelx from "zipcelx";
 
 export const downloadExcelForStandardTable = async <
   TItem,
-  TColumnKey extends string | number | symbol = keyof TItem
+  TColumnKey extends string,
+  TColumnGroupKey extends string
 >(
   filename: string,
-  config: StandardTableConfig<TItem, TColumnKey>,
+  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   items: Array<TItem>,
   formatters?: CustomCellFormatters<TItem, TColumnKey>
 ) => {

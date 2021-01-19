@@ -1,19 +1,21 @@
 import * as React from "react";
-import { tableBorder } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
-import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
+import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
   disableBorderLeft?: boolean;
+  borderFromGroup?: boolean | string;
 }
 
 export const StandardTableHeadItem = React.memo(
   function StandardTableHeaderItem({
     columnId,
+    borderFromGroup,
     disableBorderLeft,
   }: StandardTableHeaderItemProps) {
     const {
@@ -38,6 +40,12 @@ export const StandardTableHeadItem = React.memo(
         ? columnLabel
         : formatColumnIdToHeaderCellLabel(columnId);
 
+    const activeBorderLeft = getCellBorder(
+      borderFromGroup,
+      disableBorderLeft,
+      borderLeft
+    );
+
     return (
       <TableHeadItem
         arrow={!disableSorting && label ? arrow : undefined}
@@ -45,13 +53,7 @@ export const StandardTableHeadItem = React.memo(
         width={width}
         minWidth={minWidth ?? width}
         background={background ?? "white"}
-        borderLeft={
-          disableBorderLeft
-            ? undefined
-            : borderLeft === true
-            ? tableBorder
-            : borderLeft || undefined
-        }
+        borderLeft={activeBorderLeft}
         flex={width ? undefined : flex}
         justifyContent={justifyContentHeader}
         label={label}

@@ -14,8 +14,6 @@ export * from "./features/table-ui/components/cells/EditableTextCellWithCrudAndM
 
 export * from "./config/TableConfig";
 
-export * from "./features/standard-table/config/StandardTableConfig";
-
 export * from "./features/standard-table/context/StandardTableStateContext";
 
 export * from "./features/standard-table/redux/StandardTableActionsAndSelectors";
@@ -31,12 +29,15 @@ export * from "./features/standard-table/components/StandardTableRowList";
 export * from "./features/standard-table/components/TextCell";
 
 export * from "./features/standard-table/config/StandardTableColumnConfig";
+export * from "./features/standard-table/config/StandardTableColumnGroupConfig";
+export * from "./features/standard-table/config/StandardTableConfig";
 
 export * from "./features/standard-table/features/checkboxes/UseRowCheckbox";
 export * from "./features/standard-table/features/checkboxes/UseTableHeadCheckbox";
 export * from "./features/standard-table/features/checkboxes/StandardTableRowCheckbox";
 export * from "./features/standard-table/features/sorting/UseTableSortHeader";
 export * from "./features/standard-table/features/sorting/MultitypeComparator";
+export * from "./features/standard-table/features/column-groups/ColumnGroupFactory";
 export * from "./features/standard-table/types/StandardTableOnKeyDown";
 
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";

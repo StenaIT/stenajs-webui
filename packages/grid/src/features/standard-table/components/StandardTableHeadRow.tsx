@@ -5,16 +5,14 @@ import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import { ZIndexProperty } from "csstype";
 import * as React from "react";
-import {
-  defaultTableRowHeight,
-  tableBorder,
-} from "../../../config/TableConfig";
+import { defaultTableRowHeight } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
-import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 
 interface StandardTableHeaderProps<TItem> {
@@ -96,30 +94,26 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           </Row>
         </TableHeadItem>
       )}
-      {groupConfigs.map((groupConfig, groupIndex) => (
-        <Row
-          key={groupIndex}
-          background={"inherit"}
-          borderLeft={
-            groupIndex === 0
-              ? undefined
-              : groupConfig.borderLeft === true
-              ? tableBorder
-              : groupConfig.borderLeft || undefined
-          }
-        >
-          {groupConfig.columnOrder.map((columnId, index) => (
-            <StandardTableHeadItem
-              columnId={columnId}
-              key={columnId}
-              disableBorderLeft={
-                (groupIndex === 0 || Boolean(groupConfig.borderLeft)) &&
-                index === 0
-              }
-            />
-          ))}
-        </Row>
-      ))}
+      {groupConfigs.map((groupConfig, groupIndex) => {
+        return (
+          <React.Fragment key={groupIndex}>
+            {groupConfig.columnOrder.map((columnId, index) => {
+              return (
+                <StandardTableHeadItem
+                  columnId={columnId}
+                  key={columnId}
+                  borderFromGroup={getCellBorderFromGroup(
+                    groupIndex,
+                    index,
+                    groupConfig.borderLeft
+                  )}
+                  disableBorderLeft={groupIndex === 0 && index === 0}
+                />
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
       {rowIndent && <Indent num={rowIndent} />}
     </TableHeadRow>
   );

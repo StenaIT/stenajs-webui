@@ -6,8 +6,14 @@ import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons/faFileDownload";
 import { CustomCellFormatters } from "../transformers/ConfigTransformer";
 
-interface StandardTableExcelExportButtonProps<TItem, TColumnKey extends string>
-  extends Pick<StandardTableProps<TItem, TColumnKey>, "config" | "items">,
+interface StandardTableExcelExportButtonProps<
+  TItem,
+  TColumnKey extends string,
+  TColumnGroupKey extends string
+> extends Pick<
+      StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
+      "config" | "items"
+    >,
     Pick<FlatButtonProps, "size"> {
   filename?: string;
   formatters?: CustomCellFormatters<TItem, TColumnKey>;
@@ -15,14 +21,15 @@ interface StandardTableExcelExportButtonProps<TItem, TColumnKey extends string>
 
 export const StandardTableExcelExportButton = function StandardTableExcelExportButton<
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
+  TColumnGroupKey extends string
 >({
   config,
   size,
   items,
   filename = "exported-spreadsheet",
   formatters,
-}: StandardTableExcelExportButtonProps<TItem, TColumnKey>) {
+}: StandardTableExcelExportButtonProps<TItem, TColumnKey, TColumnGroupKey>) {
   const onClickExportExcel = useCallback(async () => {
     if (items && items.length) {
       await downloadExcelForStandardTable(filename, config, items, formatters);

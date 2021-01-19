@@ -1,10 +1,10 @@
-import * as React from "react";
+import { Column } from "@stenajs-webui/core";
 import {
   createColumnConfig,
   StandardTable,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
-import { Column } from "@stenajs-webui/core";
+import * as React from "react";
 import { StandardTableExcelExportButton } from "../components/StandardTableExcelExportButton";
 
 export default {
@@ -29,12 +29,37 @@ const config: StandardTableConfig<Item, keyof Omit<Item, "id">> = {
   columnOrder: ["firstName", "lastName", "age"],
 };
 
+const configWithGroups: StandardTableConfig<
+  Item,
+  keyof Omit<Item, "id">,
+  "names" | "info"
+> = {
+  keyResolver: (item) => item.id,
+  rowIndent: 3,
+  columns: {
+    firstName: createColumnConfig((item) => item.firstName),
+    lastName: createColumnConfig((item) => item.lastName),
+    age: createColumnConfig((item) => item.age),
+  },
+  columnGroups: {
+    names: {
+      label: "Name",
+      columnOrder: ["firstName", "lastName"],
+    },
+    info: {
+      label: "Info",
+      columnOrder: ["age"],
+    },
+  },
+  columnGroupOrder: ["names", "info"],
+};
+
 const items: Array<Item> = [
   {
     id: "1",
     firstName: "Johan",
     lastName: "Rocketman",
-    age: 19,
+    age: 21,
   },
   {
     id: "2",
@@ -53,6 +78,12 @@ const items: Array<Item> = [
     firstName: "Joakim",
     lastName: "Anka",
     age: 63,
+  },
+  {
+    id: "5",
+    firstName: "Niklas",
+    lastName: "Rockstar",
+    age: 19,
   },
 ];
 
@@ -87,3 +118,10 @@ export const WithCustomFormatters = () => {
     </Column>
   );
 };
+
+export const WithColumnGroups = () => (
+  <Column>
+    <StandardTableExcelExportButton config={configWithGroups} items={items} />
+    <StandardTable config={configWithGroups} items={items} />
+  </Column>
+);

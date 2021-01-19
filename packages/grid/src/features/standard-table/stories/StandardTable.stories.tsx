@@ -834,8 +834,6 @@ export const OnKeyDown = () => {
         items={mockedItems}
         config={config}
         onKeyDown={(ev, { columnId, item }) => {
-          console.log("onkeyDown", ev, ev.key, { columnId, item });
-
           if (ev.key === " ") {
             setText(`${columnId}:${item.id}`);
             ev.preventDefault();

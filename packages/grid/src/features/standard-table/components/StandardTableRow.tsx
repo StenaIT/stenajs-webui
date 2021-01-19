@@ -1,4 +1,4 @@
-import { Box, Indent, Row } from "@stenajs-webui/core";
+import { Box, Indent } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
 import { tableBorder, tableBorderExpanded } from "../../../config/TableConfig";
@@ -15,6 +15,7 @@ import {
   useLastColumnConfig,
 } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableCell } from "./StandardTableCell";
 
 interface StandardTableItemProps<TItem> {
@@ -98,17 +99,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
           />
         )}
         {groupConfigs.map((groupConfig, groupIndex) => (
-          <Row
-            key={groupIndex}
-            background={"inherit"}
-            borderLeft={
-              groupIndex === 0
-                ? undefined
-                : groupConfig.borderLeft === true
-                ? tableBorder
-                : groupConfig.borderLeft || undefined
-            }
-          >
+          <React.Fragment key={groupIndex}>
             {groupConfig.columnOrder.map((columnId, index) => (
               <StandardTableCell
                 key={columnId}
@@ -117,13 +108,15 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                 colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
                 rowIndex={rowIndex}
                 numRows={numRows}
-                disableBorderLeft={
-                  (groupIndex === 0 || Boolean(groupConfig.borderLeft)) &&
-                  index === 0
-                }
+                borderFromGroup={getCellBorderFromGroup(
+                  groupIndex,
+                  index,
+                  groupConfig.borderLeft
+                )}
+                disableBorderLeft={groupIndex === 0 && index === 0}
               />
             ))}
-          </Row>
+          </React.Fragment>
         ))}
         {rowIndent && (
           <Indent num={rowIndent} background={lastColumnBackground} />

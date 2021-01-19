@@ -9,6 +9,7 @@ import {
   useStandardTableConfig,
   useStandardTableId,
 } from "../hooks/UseStandardTableConfig";
+import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
@@ -19,6 +20,7 @@ export interface StandardTableCellProps<TItem> {
   rowIndex: number;
   colIndex: number;
   numRows: number;
+  borderFromGroup?: boolean | string;
   disableBorderLeft?: boolean;
 }
 
@@ -28,6 +30,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   colIndex,
   rowIndex,
   numRows,
+  borderFromGroup,
   disableBorderLeft,
 }: StandardTableCellProps<TItem>) {
   const {
@@ -114,6 +117,12 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     [label, itemValue, item, gridCell, renderCell, editable]
   );
 
+  const activeBorderLeft = getCellBorder(
+    borderFromGroup,
+    disableBorderLeft,
+    borderLeft
+  );
+
   return (
     <StandardTableCellUi
       enableGridCell={enableGridCell && !disableGridCell}
@@ -122,7 +131,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       width={width}
       minWidth={minWidth}
       justifyContent={justifyContentCell}
-      borderLeft={disableBorderLeft ? undefined : borderLeft}
+      borderLeft={activeBorderLeft}
       flex={flex}
       background={currentBackground}
       sticky={sticky}
