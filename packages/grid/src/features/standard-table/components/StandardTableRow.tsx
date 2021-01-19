@@ -3,18 +3,19 @@ import * as React from "react";
 import { useMemo } from "react";
 import { tableBorder, tableBorderExpanded } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
+import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
+import { useRowCheckbox } from "../features/checkboxes/UseRowCheckbox";
+import { useColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
+import { StandardTableRowExpandButton } from "../features/expand-collapse/StandardTableRowExpandButton";
+import { useExpandCollapseActions } from "../features/expand-collapse/UseExpandCollapseActions";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
-  useFirstColumnFromConfig,
-  useLastColumnFromConfig,
-} from "../hooks/UseColumnFromConfig";
-import { useRowCheckbox } from "../hooks/UseRowCheckbox";
+  useFirstColumnConfig,
+  useLastColumnConfig,
+} from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { StandardTableCell } from "./StandardTableCell";
-import { StandardTableRowCheckbox } from "./StandardTableRowCheckbox";
-import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
-import { StandardTableRowExpandButton } from "./StandardTableRowExpandButton";
-import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 
 interface StandardTableItemProps<TItem> {
   item: TItem;
@@ -30,6 +31,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   colIndexOffset,
 }: StandardTableItemProps<TItem>) {
   const groupConfigs = useGroupConfigsForRows();
+  const { columnIndexPerColumnId } = useColumnIndexPerColumnIdContext();
   const {
     showRowCheckbox,
     rowBackgroundResolver,
@@ -54,12 +56,12 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     [item, checkboxDisabledResolver]
   );
 
-  const firstColumn = useFirstColumnFromConfig();
+  const firstColumn = useFirstColumnConfig();
   const firstColumnBackground = useCellBackgroundByColumnConfig(
     firstColumn,
     item
   );
-  const lastColumn = useLastColumnFromConfig();
+  const lastColumn = useLastColumnConfig();
   const lastColumnBackground = useCellBackgroundByColumnConfig(
     lastColumn,
     item
@@ -97,6 +99,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         )}
         {groupConfigs.map((groupConfig, groupIndex) => (
           <Row
+            key={groupIndex}
             background={"inherit"}
             borderLeft={
               groupIndex === 0
@@ -106,27 +109,20 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                 : groupConfig.borderLeft || undefined
             }
           >
-            {groupConfig.columnOrder.map((columnId, index) => {
-              // TODO Get correct index when using groups.
-              const localColIndexOffset =
-                colIndexOffset +
-                (showRowCheckbox ? 1 : 0) +
-                (enableExpandCollapse ? 1 : 0);
-              return (
-                <StandardTableCell
-                  key={columnId}
-                  columnId={columnId}
-                  item={item}
-                  colIndex={localColIndexOffset + index}
-                  rowIndex={rowIndex}
-                  numRows={numRows}
-                  disableBorderLeft={
-                    (groupIndex === 0 || Boolean(groupConfig.borderLeft)) &&
-                    index === 0
-                  }
-                />
-              );
-            })}
+            {groupConfig.columnOrder.map((columnId, index) => (
+              <StandardTableCell
+                key={columnId}
+                columnId={columnId}
+                item={item}
+                colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
+                rowIndex={rowIndex}
+                numRows={numRows}
+                disableBorderLeft={
+                  (groupIndex === 0 || Boolean(groupConfig.borderLeft)) &&
+                  index === 0
+                }
+              />
+            ))}
           </Row>
         ))}
         {rowIndent && (

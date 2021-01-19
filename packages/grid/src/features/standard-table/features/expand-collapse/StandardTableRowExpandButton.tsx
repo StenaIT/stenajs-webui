@@ -4,13 +4,13 @@ import { Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useMemo } from "react";
-import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
-import { useTotalNumColumnsForRows } from "../context/GroupConfigsForRowsContext";
-import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
+import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
+import { useTotalNumColumnsForRows } from "../../context/GroupConfigsForRowsContext";
+import { useExpandCollapseActions } from "./UseExpandCollapseActions";
 import {
   useStandardTableConfig,
   useStandardTableId,
-} from "../hooks/UseStandardTableConfig";
+} from "../../hooks/UseStandardTableConfig";
 
 interface Props<TItem> {
   item: TItem;

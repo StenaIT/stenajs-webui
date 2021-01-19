@@ -1,8 +1,8 @@
 import * as React from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
-import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
-import { useTableSortHeader } from "../hooks/UseTableSortHeader";
+import { useColumnConfigById } from "../hooks/UseColumnConfigById";
+import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 
@@ -28,7 +28,7 @@ export const StandardTableHeadItem = React.memo(
       sticky,
       zIndex,
       left,
-    } = useColumnFromConfig(columnId);
+    } = useColumnConfigById(columnId);
     const { disableSorting } = useStandardTableConfig();
 
     const { arrow, onClickColumnHead } = useTableSortHeader(columnId);

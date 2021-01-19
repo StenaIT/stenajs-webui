@@ -4,7 +4,7 @@ import {
   useStandardTableActions,
   useStandardTableConfig,
   useStandardTableState,
-} from "./UseStandardTableConfig";
+} from "../../hooks/UseStandardTableConfig";
 
 export const useRowCheckbox = <TItem>(item: TItem) => {
   const { keyResolver } = useStandardTableConfig();

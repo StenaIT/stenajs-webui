@@ -2,7 +2,7 @@ import { Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { tableBorder } from "../../../../config/TableConfig";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
-import { ColumnGroupColumnItem } from "./ColumnGroupColumnItem";
+import { GroupedColumn } from "./GroupedColumn";
 
 interface ColumnGroupItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
@@ -22,13 +22,11 @@ export const ColumnGroupItem = React.memo(function ColumnGroupItem<
   return (
     <Row background={"inherit"} borderLeft={borderLeft}>
       {groupConfig.columnOrder.map((columnId, index) => (
-        <ColumnGroupColumnItem<TColumnKey>
+        <GroupedColumn<TColumnKey>
           groupConfig={groupConfig}
           columnId={columnId}
           key={columnId}
           isFirstInGroup={index === 0}
-          isFirstGroup={groupIndex === 0}
-          groupHasBorderLeft={Boolean(groupConfig.borderLeft)}
         />
       ))}
     </Row>

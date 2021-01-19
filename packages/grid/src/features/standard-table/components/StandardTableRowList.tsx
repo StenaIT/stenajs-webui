@@ -6,7 +6,7 @@ import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
-import { multitypeComparator } from "../util/MultitypeComparator";
+import { multitypeComparator } from "../features/sorting/MultitypeComparator";
 import { StandardTableRow } from "./StandardTableRow";
 import { elementHeightPerVariant } from "../config/StandardTableInfiniteConfig";
 import { StandardTableVariant } from "./StandardTable";

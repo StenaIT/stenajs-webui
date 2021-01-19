@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.2.0
+
+### StandardTable
+
+- Add support for column groups.
+- Add `onKeyDown` prop. Callback receives event and object with columnId and item of focused cell.
+
 ## 6.1.0
 
 ### New package `grid-export`

@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { ArrowType } from "../../table-ui/components/table/TableHeadItem";
+import { ArrowType } from "../../../table-ui/components/table/TableHeadItem";
 import {
   useStandardTableActions,
   useStandardTableState,
-} from "./UseStandardTableConfig";
+} from "../../hooks/UseStandardTableConfig";
 
 interface Result {
   selected: boolean;

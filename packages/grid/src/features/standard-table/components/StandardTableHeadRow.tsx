@@ -13,8 +13,8 @@ import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
-import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
-import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse";
+import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
+import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 
 interface StandardTableHeaderProps<TItem> {
@@ -22,7 +22,7 @@ interface StandardTableHeaderProps<TItem> {
   height?: string;
 }
 
-export const StandardTableHeadRow = React.memo(function StandardTableHeader<
+export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
 >({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
   const groupConfigs = useGroupConfigsForRows();
@@ -46,8 +46,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
   } = useTableHeadCheckbox(items);
 
   const checkboxDisabled = !items || items.length === 0;
-
-  console.log("groupConfigs", groupConfigs);
 
   return (
     <TableHeadRow
@@ -100,6 +98,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (
         <Row
+          key={groupIndex}
           background={"inherit"}
           borderLeft={
             groupIndex === 0

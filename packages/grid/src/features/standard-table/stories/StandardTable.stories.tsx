@@ -1,3 +1,5 @@
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import {
   Box,
   Column,
@@ -6,7 +8,8 @@ import {
   Spacing,
   Text,
 } from "@stenajs-webui/core";
-import { CheckboxWithLabel } from "@stenajs-webui/forms";
+import { FlatButton } from "@stenajs-webui/elements";
+import { CheckboxWithLabel, TextInput } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import { addDays, format } from "date-fns";
 import * as React from "react";
@@ -15,10 +18,8 @@ import {
   StandardTable,
   StandardTableVariant,
 } from "../components/StandardTable";
-import {
-  createColumnConfig,
-  StandardTableConfig,
-} from "../config/StandardTableConfig";
+import { createColumnConfig } from "../config/StandardTableColumnConfig";
+import { StandardTableConfig } from "../config/StandardTableConfig";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
 import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
@@ -685,6 +686,7 @@ export const GroupedColumns = () => {
       },
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
+        isEditable: false,
         renderCell: undefined,
         onChange: onChangeNumPassengers,
       },
@@ -694,11 +696,15 @@ export const GroupedColumns = () => {
         borderLeft: true,
         label: "Information",
         columnOrder: infoColumnOrder,
+        contentLeft: <FlatButton size={"small"} leftIcon={faAngleLeft} />,
+        contentRight: <FlatButton size={"small"} leftIcon={faAngleRight} />,
+        loading: true,
       },
       passengers: {
         borderLeft: true,
         label: "Passengers",
         columnOrder: passengersColumnOrder,
+        loading: true,
       },
     },
     columnOrder: undefined,
@@ -775,6 +781,7 @@ export const GroupedColumnsAndSticky = () => {
       },
       numPassengers: {
         ...standardTableConfigForStories.columns.numPassengers,
+        isEditable: false,
         renderCell: undefined,
         onChange: onChangeNumPassengers,
       },
@@ -800,5 +807,46 @@ export const GroupedColumnsAndSticky = () => {
         <StandardTable items={items} config={config} />
       </Box>
     </Box>
+  );
+};
+
+export const OnKeyDown = () => {
+  const [text, setText] = useState("");
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    disableSorting: true,
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: undefined,
+        isEditable: false,
+      },
+    },
+  };
+
+  return (
+    <Column>
+      <Text>Focus on cell and press space.</Text>
+      <Spacing />
+      <StandardTable
+        items={mockedItems}
+        config={config}
+        onKeyDown={(ev, { columnId, item }) => {
+          console.log("onkeyDown", ev, ev.key, { columnId, item });
+
+          if (ev.key === " ") {
+            setText(`${columnId}:${item.id}`);
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        }}
+      />
+      <Spacing />
+      <Box width={"200px"}>
+        <TextInput value={text} disabled />
+      </Box>
+    </Column>
   );
 };

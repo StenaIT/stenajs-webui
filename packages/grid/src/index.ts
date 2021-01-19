@@ -27,7 +27,7 @@ export * from "./features/standard-table/components/StandardTableCellUi";
 export * from "./features/standard-table/components/StandardTableContent";
 export * from "./features/standard-table/components/StandardTableHeadRow";
 export * from "./features/standard-table/components/StandardTableRow";
-export * from "./features/standard-table/components/StandardTableRowCheckbox";
+export * from "./features/standard-table/features/checkboxes/StandardTableRowCheckbox";
 export * from "./features/standard-table/components/StandardTableRowList";
 export * from "./features/standard-table/components/TextCell";
 
@@ -35,16 +35,16 @@ export * from "./features/standard-table/helpers/cell-renderers/editable-text-ce
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
 export * from "./features/standard-table/hooks/UseCellBackground";
-export * from "./features/standard-table/hooks/UseColumnFromConfig";
+export * from "./features/standard-table/hooks/UseColumnConfigById";
 export * from "./features/standard-table/hooks/UseColumnValueResolver";
-export * from "./features/standard-table/hooks/UseRowCheckbox";
+export * from "./features/standard-table/features/checkboxes/UseRowCheckbox";
 export * from "./features/standard-table/hooks/UseStandardTableConfig";
-export * from "./features/standard-table/hooks/UseTableHeadCheckbox";
-export * from "./features/standard-table/hooks/UseTableSortHeader";
+export * from "./features/standard-table/features/checkboxes/UseTableHeadCheckbox";
+export * from "./features/standard-table/features/sorting/UseTableSortHeader";
 export * from "./features/standard-table/hooks/UseLocalStateTableContext";
 
 export * from "./features/standard-table/util/LabelFormatter";
-export * from "./features/standard-table/util/MultitypeComparator";
+export * from "./features/standard-table/features/sorting/MultitypeComparator";
 export * from "./features/standard-table/util/ActionsFactory";
 
 export * from "./features/grid-cell/hooks/UseEditableCell";
@@ -52,3 +52,9 @@ export * from "./features/grid-cell/hooks/UseGridCell";
 export * from "./features/grid-cell/hooks/UseGridNavigation";
 export * from "./features/grid-cell/hooks/UseGridNavigationOptionsFromContext";
 export * from "./features/grid-cell/hooks/UseRevertableValue";
+export { createColumnConfig } from "./features/standard-table/config/StandardTableColumnConfig";
+export { ItemValueResolver } from "./features/standard-table/config/StandardTableColumnConfig";
+export { StandardTableColumnOptions } from "./features/standard-table/config/StandardTableColumnConfig";
+export { StandardTableColumnConfig } from "./features/standard-table/config/StandardTableColumnConfig";
+export { BackgroundResolver } from "./features/standard-table/config/StandardTableColumnConfig";
+export { StandardTableCellRenderer } from "./features/standard-table/config/StandardTableColumnConfig";

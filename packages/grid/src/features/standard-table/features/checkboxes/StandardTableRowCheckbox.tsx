@@ -4,8 +4,8 @@ import * as React from "react";
 import {
   useStandardTableConfig,
   useStandardTableId,
-} from "../hooks/UseStandardTableConfig";
-import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
+} from "../../hooks/UseStandardTableConfig";
+import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
 
 interface Props extends Pick<CheckboxProps, "value" | "onValueChange"> {
   colIndex: number;

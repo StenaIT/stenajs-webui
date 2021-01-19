@@ -1,5 +1,5 @@
-import { StandardTableConfig } from "../config/StandardTableConfig";
-import { StandardTableColumnGroupConfig } from "../config/StandardTableColumnGroupConfig";
+import { StandardTableConfig } from "../../config/StandardTableConfig";
+import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { compact } from "lodash";
 
 export const createColumnConfigsForRows = <

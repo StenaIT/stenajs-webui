@@ -1,52 +1,63 @@
-import { Indent, Text } from "@stenajs-webui/core";
+import { Heading, Indent, Space } from "@stenajs-webui/core";
+import { InputSpinner } from "@stenajs-webui/elements";
 import * as React from "react";
+import { StandardTableCellUi } from "../../components/StandardTableCellUi";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
-import { useColumnFromConfig } from "../../hooks/UseColumnFromConfig";
-import { StandardTableCellUi } from "../StandardTableCellUi";
+import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
 
 interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
   columnId: TColumnKey;
   isFirstInGroup: boolean;
-  isFirstGroup: boolean;
-  groupHasBorderLeft: boolean;
 }
 
-export const ColumnGroupColumnItem = function ColumnGroupColumnItem<
+export const GroupedColumn = function ColumnGroupColumnItem<
   TColumnKey extends string
 >({
   columnId,
   groupConfig,
   isFirstInGroup,
-  isFirstGroup,
-  groupHasBorderLeft,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
-  const { label, render } = groupConfig;
+  const { label, render, contentLeft, contentRight, loading } = groupConfig;
 
   const {
     flex = 1,
     width,
     minWidth,
-    borderLeft,
     sticky,
     zIndex,
     left,
-  } = useColumnFromConfig(columnId);
+  } = useColumnConfigById(columnId);
 
   const content = isFirstInGroup ? (
     <>
+      {contentLeft && (
+        <>
+          {contentLeft}
+          <Space num={0.5} />
+        </>
+      )}
       {render ? (
         render(groupConfig)
       ) : (
         <Indent>
-          <Text variant={"bold"}>{label}</Text>
+          <Heading variant={"h5"}>{label}</Heading>
         </Indent>
+      )}
+      {contentRight && (
+        <>
+          <Space num={0.5} />
+          {contentRight}
+        </>
+      )}
+      {loading && (
+        <>
+          <Indent />
+          <InputSpinner />
+        </>
       )}
     </>
   ) : null;
-
-  const disableBorderLeft =
-    (isFirstGroup || groupHasBorderLeft) && isFirstInGroup;
 
   return (
     <StandardTableCellUi
@@ -54,7 +65,6 @@ export const ColumnGroupColumnItem = function ColumnGroupColumnItem<
       width={width}
       minWidth={minWidth}
       justifyContent={"flex-start"}
-      borderLeft={disableBorderLeft ? undefined : borderLeft}
       flex={flex}
       background={"inherit"}
       sticky={sticky}
