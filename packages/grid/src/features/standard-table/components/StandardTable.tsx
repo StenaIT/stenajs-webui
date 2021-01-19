@@ -159,7 +159,7 @@ export const StandardTable = function StandardTable<
 
   const columnIndexPerColumnId = useMemo(
     () => calculateColumnIndexPerColumnId(config),
-    [groupConfigsForRows]
+    [config]
   );
 
   return (

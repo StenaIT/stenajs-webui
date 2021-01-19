@@ -85,7 +85,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     (ev) => {
       onKeyDown?.(ev, { columnId, item });
     },
-    [onKeyDown]
+    [onKeyDown, columnId, item]
   );
 
   const gridCell = useGridCell<string>(label, {
