@@ -28,9 +28,15 @@ export const getCellBorderFromGroup = (
   groupIndex: number,
   columnIndexInGroup: number,
   groupBorderLeft: string | boolean | undefined
-): string | undefined =>
-  groupIndex === 0 || columnIndexInGroup !== 0
-    ? undefined
-    : groupBorderLeft === true
-    ? tableBorder
-    : groupBorderLeft || undefined;
+): string | undefined => {
+  if (groupIndex === 0 || columnIndexInGroup !== 0) {
+    return undefined;
+  }
+  if (groupBorderLeft) {
+    if (groupBorderLeft === true) {
+      return tableBorder;
+    }
+    return groupBorderLeft;
+  }
+  return undefined;
+};

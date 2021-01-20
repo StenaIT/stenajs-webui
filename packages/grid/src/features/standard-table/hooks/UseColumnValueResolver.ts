@@ -3,7 +3,7 @@ import { useStandardTableConfig } from "./UseStandardTableConfig";
 export const useColumnValueResolver = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = ""
+  TColumnGroupKey extends string = string
 >(
   columnId: TColumnKey | undefined
 ) => {
