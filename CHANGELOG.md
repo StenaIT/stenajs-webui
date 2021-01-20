@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.2.0
+## 7.0.0
 
 ### StandardTable
 
@@ -17,6 +17,10 @@
 ### grid-export
 
 - grid-export package now fully supports column groups.
+
+### Breaking changes
+
+- `Heading` no longer has margin, layout should be decided by parents.
 
 ## 6.1.0
 
