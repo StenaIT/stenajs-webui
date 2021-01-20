@@ -145,7 +145,9 @@ export const StandardTable = function StandardTable<
     };
   }, [actions, dispatch]);
 
-  const usingColumnGroups = Boolean(columnGroupOrder ?? config.columnGroupOrder);
+  const usingColumnGroups = Boolean(
+    columnGroupOrder ?? config.columnGroupOrder
+  );
 
   const groupConfigsForRows = useMemo(
     () =>
