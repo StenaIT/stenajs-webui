@@ -3,17 +3,20 @@ import * as React from "react";
 import { useMemo } from "react";
 import { tableBorder, tableBorderExpanded } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
+import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
+import { useRowCheckbox } from "../features/checkboxes/UseRowCheckbox";
+import { useColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
+import { StandardTableRowExpandButton } from "../features/expand-collapse/StandardTableRowExpandButton";
+import { useExpandCollapseActions } from "../features/expand-collapse/UseExpandCollapseActions";
 import { useCellBackgroundByColumnConfig } from "../hooks/UseCellBackground";
 import {
-  useFirstColumnFromConfig,
-  useLastColumnFromConfig,
-} from "../hooks/UseColumnFromConfig";
-import { useRowCheckbox } from "../hooks/UseRowCheckbox";
+  useFirstColumnConfig,
+  useLastColumnConfig,
+} from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableCell } from "./StandardTableCell";
-import { StandardTableRowCheckbox } from "./StandardTableRowCheckbox";
-import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
-import { StandardTableRowExpandButton } from "./StandardTableRowExpandButton";
 
 interface StandardTableItemProps<TItem> {
   item: TItem;
@@ -28,8 +31,9 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   numRows,
   colIndexOffset,
 }: StandardTableItemProps<TItem>) {
+  const groupConfigs = useGroupConfigsForRows();
+  const { columnIndexPerColumnId } = useColumnIndexPerColumnIdContext();
   const {
-    columnOrder,
     showRowCheckbox,
     rowBackgroundResolver,
     checkboxDisabledResolver,
@@ -53,12 +57,12 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     [item, checkboxDisabledResolver]
   );
 
-  const firstColumn = useFirstColumnFromConfig();
+  const firstColumn = useFirstColumnConfig();
   const firstColumnBackground = useCellBackgroundByColumnConfig(
     firstColumn,
     item
   );
-  const lastColumn = useLastColumnFromConfig();
+  const lastColumn = useLastColumnConfig();
   const lastColumnBackground = useCellBackgroundByColumnConfig(
     lastColumn,
     item
@@ -94,22 +98,26 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
             numRows={numRows}
           />
         )}
-        {columnOrder.map((columnId, index) => {
-          const localColIndexOffset =
-            colIndexOffset +
-            (showRowCheckbox ? 1 : 0) +
-            (enableExpandCollapse ? 1 : 0);
-          return (
-            <StandardTableCell
-              key={columnId}
-              columnId={columnId}
-              item={item}
-              colIndex={localColIndexOffset + index}
-              rowIndex={rowIndex}
-              numRows={numRows}
-            />
-          );
-        })}
+        {groupConfigs.map((groupConfig, groupIndex) => (
+          <React.Fragment key={groupIndex}>
+            {groupConfig.columnOrder.map((columnId, index) => (
+              <StandardTableCell
+                key={columnId}
+                columnId={columnId}
+                item={item}
+                colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
+                rowIndex={rowIndex}
+                numRows={numRows}
+                borderFromGroup={getCellBorderFromGroup(
+                  groupIndex,
+                  index,
+                  groupConfig.borderLeft
+                )}
+                disableBorderLeft={groupIndex === 0 && index === 0}
+              />
+            ))}
+          </React.Fragment>
+        ))}
         {rowIndent && (
           <Indent num={rowIndent} background={lastColumnBackground} />
         )}

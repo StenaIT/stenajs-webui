@@ -1,15 +1,18 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { KeyboardEventHandler, useCallback, useMemo } from "react";
+import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
+import { useOnKeyDownContext } from "../context/OnKeyDownContext";
+import { useColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
 import { useCellBackgroundByColumnId } from "../hooks/UseCellBackground";
-import { useColumnFromConfig } from "../hooks/UseColumnFromConfig";
+import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import {
   useStandardTableConfig,
   useStandardTableId,
 } from "../hooks/UseStandardTableConfig";
+import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
-import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 
 export interface StandardTableCellProps<TItem> {
   columnId: string;
@@ -17,6 +20,8 @@ export interface StandardTableCellProps<TItem> {
   rowIndex: number;
   colIndex: number;
   numRows: number;
+  borderFromGroup?: boolean | string;
+  disableBorderLeft?: boolean;
 }
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
@@ -25,14 +30,16 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   colIndex,
   rowIndex,
   numRows,
+  borderFromGroup,
+  disableBorderLeft,
 }: StandardTableCellProps<TItem>) {
   const {
-    columnOrder,
     enableGridCell,
-    showRowCheckbox,
     gridCellOptions: gridCellOptionsForTable,
   } = useStandardTableConfig();
   const tableId = useStandardTableId();
+  const onKeyDown = useOnKeyDownContext();
+  const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
 
   const {
     itemValueResolver,
@@ -50,7 +57,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     sticky,
     zIndex,
     left,
-  } = useColumnFromConfig(columnId);
+  } = useColumnConfigById(columnId);
 
   const itemValue = useMemo(() => {
     if (itemValueResolver) {
@@ -77,11 +84,18 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       ? isEditable(item)
       : undefined;
 
+  const onKeyDownHandler = useCallback<KeyboardEventHandler<HTMLDivElement>>(
+    (ev) => {
+      onKeyDown?.(ev, { columnId, item });
+    },
+    [onKeyDown, columnId, item]
+  );
+
   const gridCell = useGridCell<string>(label, {
     colIndex,
     rowIndex,
     numRows,
-    numCols: columnOrder.length + (showRowCheckbox ? 1 : 0),
+    numCols: numNavigableColumns,
     tableId,
     isEditable: editable,
     onChange: onChange
@@ -103,6 +117,12 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     [label, itemValue, item, gridCell, renderCell, editable]
   );
 
+  const activeBorderLeft = getCellBorder(
+    borderFromGroup,
+    disableBorderLeft,
+    borderLeft
+  );
+
   return (
     <StandardTableCellUi
       enableGridCell={enableGridCell && !disableGridCell}
@@ -111,13 +131,14 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       width={width}
       minWidth={minWidth}
       justifyContent={justifyContentCell}
-      borderLeft={borderLeft}
+      borderLeft={activeBorderLeft}
       flex={flex}
       background={currentBackground}
       sticky={sticky}
       zIndex={zIndex}
       left={left}
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
+      onKeyDown={onKeyDownHandler}
     >
       {content}
     </StandardTableCellUi>

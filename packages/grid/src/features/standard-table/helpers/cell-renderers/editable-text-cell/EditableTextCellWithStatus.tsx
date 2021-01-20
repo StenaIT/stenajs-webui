@@ -2,7 +2,7 @@ import { Indent } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import * as React from "react";
-import { StandardTableCellRenderer } from "../../../config/StandardTableConfig";
+import { StandardTableCellRenderer } from "../../../config/StandardTableColumnConfig";
 import { ModifiedField } from "../../../../table-ui/components/ModifiedField";
 
 export const createEditableTextCellWithStatus = <TItemValue, TItem>(

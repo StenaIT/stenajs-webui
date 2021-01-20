@@ -2,6 +2,7 @@
   font-size: var(--swui-heading-font-size);
   color: var(--lhds-color-ui-800);
   letter-spacing: 0;
+  margin: 0;
   line-height: var(--swui-heading-line-height);
   font-family: var(--swui-font-primary);
   font-weight: var(--swui-font-weight-text);

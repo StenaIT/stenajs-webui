@@ -2,7 +2,7 @@ import {
   useStandardTableActions,
   useStandardTableConfig,
   useStandardTableState,
-} from "./UseStandardTableConfig";
+} from "../../hooks/UseStandardTableConfig";
 import { useCallback, useMemo } from "react";
 import { useArraySet } from "@stenajs-webui/core";
 

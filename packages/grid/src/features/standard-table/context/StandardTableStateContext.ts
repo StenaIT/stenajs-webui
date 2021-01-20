@@ -8,20 +8,20 @@ import {
 import { InternalStandardTableAction } from "../redux/StandardTableActionsAndSelectors";
 
 export interface StandardTableInternalActionsContext<
-  TColumnKeys extends string
+  TColumnKey extends string
 > {
-  dispatch: Dispatch<StandardTableAction<TColumnKeys>>;
-  actions: StandardTableActions<TColumnKeys>;
+  dispatch: Dispatch<StandardTableAction<TColumnKey>>;
+  actions: StandardTableActions<TColumnKey>;
 }
 
 /**
  * A combination of dispatch, state and actions. This is used to
  * connect the table to a state.
  */
-export interface TableContext<TColumnKeys extends string> {
-  dispatch: Dispatch<InternalStandardTableAction<TColumnKeys>>;
-  state: StandardTableState<TColumnKeys>;
-  actions: StandardTableActions<TColumnKeys>;
+export interface TableContext<TColumnKey extends string> {
+  dispatch: Dispatch<InternalStandardTableAction<TColumnKey>>;
+  state: StandardTableState<TColumnKey>;
+  actions: StandardTableActions<TColumnKey>;
 }
 
 export const StandardTableTableIdContext = createContext<string>("");
@@ -35,5 +35,5 @@ export const StandardTableActionsContext = createContext<
 >(undefined as any);
 
 export const StandardTableConfigContext = createContext<
-  StandardTableConfig<any, any>
+  StandardTableConfig<any, any, any>
 >(undefined as any);

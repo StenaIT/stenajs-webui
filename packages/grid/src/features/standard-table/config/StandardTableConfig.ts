@@ -1,16 +1,21 @@
 import { ReactNode } from "react";
-import {
-  UseGridCellOptions,
-  UseGridCellResult,
-} from "../../grid-cell/hooks/UseGridCell";
+import { UseGridCellOptions } from "../../grid-cell/hooks/UseGridCell";
+import { StandardTableColumnConfig } from "./StandardTableColumnConfig";
+import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 
 export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
 }
 
+export interface StandardTableOnKeyDownArgs<TItem, TColumnKey extends string> {
+  columnId: TColumnKey;
+  item: TItem;
+}
+
 export interface StandardTableConfig<
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string,
+  TColumnGroupKey extends string = string
 > {
   /**
    * If true, click on table headers does not change sort order.
@@ -21,7 +26,7 @@ export interface StandardTableConfig<
    * Table will be sorted by specified column key as default.
    * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
-  initialSortOrder?: TColumnKeys;
+  initialSortOrder?: TColumnKey;
 
   /**
    * Initial sorting will be desc. Does nothing if initialSortOrder is not specified.
@@ -32,13 +37,28 @@ export interface StandardTableConfig<
   /**
    * Configs for the columns available in the table.
    */
-  columns: Record<TColumnKeys, StandardTableColumnConfig<TItem, any>>;
+  columns: Record<TColumnKey, StandardTableColumnConfig<TItem, any>>;
 
   /**
    * The order of the columns. This is a list of keys from `columns`.
    * If a column is not added, it is not displayed.
    */
-  columnOrder: Array<TColumnKeys>;
+  columnOrder?: Array<TColumnKey>;
+
+  /**
+   * Configs for the column groups available in the table.
+   * If column groups are used, columnOrder will not be used.
+   */
+  columnGroups?: Record<
+    TColumnGroupKey,
+    StandardTableColumnGroupConfig<TColumnKey>
+  >;
+
+  /**
+   * The order of the column groups. This is a list of keys from `columnGroups`.
+   * If the columnGroups `columnOrder` array is empty, it is not displayed.
+   */
+  columnGroupOrder?: Array<TColumnGroupKey>;
 
   /**
    * A key resolver for an item in the list. This is needed for React key props in the components.
@@ -146,131 +166,3 @@ export interface StandardTableConfig<
    */
   headerRowOffsetTop?: string;
 }
-
-export type StandardTableColumnConfig<
-  TItem,
-  TItemValue
-> = StandardTableColumnOptions<TItem, TItemValue> &
-  ItemValueResolver<TItem, TItemValue>;
-
-export type StandardTableCellRenderer<TItemValue, TItem> = (
-  label: string,
-  value: TItemValue,
-  item: TItem,
-  gridCell: UseGridCellResult<string>,
-  isEditable?: boolean
-) => ReactNode;
-
-export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
-
-export interface StandardTableColumnOptions<TItem, TItemValue> {
-  /**
-   * The header label of the column.
-   */
-  columnLabel?: string;
-  /**
-   * This shows a tooltip on the left side of the column header label.
-   */
-  infoIconTooltipText?: string;
-  /**
-   * The min-width of the column.
-   */
-  minWidth?: string;
-  /**
-   * The width of the column.
-   */
-  width?: string;
-  /**
-   * The flex of the column. Defaults to 1 if width is not specified.
-   */
-  flex?: number;
-  /**
-   * Custom renderer for the cell. Falls back to an internal renderer that uses String(item[field]).
-   */
-  renderCell?: StandardTableCellRenderer<TItemValue, TItem>;
-  /**
-   * Adds a static background color to the column.
-   */
-  background?: string;
-  /**
-   * Adds a dynamic background color to the column, based on the item.
-   */
-  backgroundResolver?: BackgroundResolver<TItem>;
-  /**
-   * Adds a border on the left side of the column. Can be a boolean, is a border CSS value.
-   */
-  borderLeft?: string | boolean;
-  /**
-   * Justify content for the header. Defaults to flex-start, which aligns the label to the left.
-   */
-  justifyContentHeader?: string;
-  /**
-   * Justify content for the cell. Defaults to flex-start, which aligns the cell content to the left.
-   */
-  justifyContentCell?: string;
-  /**
-   * A custom label formatter. This is applied after sorting, and before renderCell.
-   * Useful for formatting dates for example.
-   * @param value
-   */
-  itemLabelFormatter?: (value: TItemValue, item: TItem) => string;
-  /**
-   * Specifies if the cell is editable. Used together with gridCellEnabled.
-   * Defaults to false. Can be a boolean or a resolver.
-   */
-  isEditable?: boolean | ((item: TItem) => boolean);
-  /**
-   * The onChange callback when isEditable is true.
-   * @param item
-   * @param value
-   */
-  onChange?: (item: TItem, value: string | undefined) => void;
-  /**
-   * Disables the grid cell functionality for this column.
-   */
-  disableGridCell?: boolean;
-  /**
-   * Grid cell options, if you need custom behaviour.
-   * Not all options are available, since it is controlled by StandardTable.
-   */
-  gridCellOptions?: Omit<
-    UseGridCellOptions<string>,
-    | "colIndex"
-    | "rowIndex"
-    | "numRows"
-    | "numCols"
-    | "tableId"
-    | "isEditable"
-    | "onChange"
-  >;
-
-  /**
-   * Enable sticky behaviour to the left
-   * make elements scroll in behind this column
-   */
-  sticky?: boolean;
-
-  /**
-   * Set a custom z index
-   */
-  zIndex?: number;
-
-  /**
-   * Offset column from left (ex if we have multiple sticky columns)
-   */
-  left?: string;
-}
-
-interface ItemValueResolver<TItem, TItemValue> {
-  itemValueResolver: (item: TItem) => TItemValue;
-}
-
-export const createColumnConfig = <TItem, TItemValue>(
-  itemValueResolver: (item: TItem) => TItemValue,
-  options?: StandardTableColumnOptions<TItem, TItemValue>
-): StandardTableColumnConfig<TItem, TItemValue> => {
-  return {
-    ...options,
-    itemValueResolver,
-  };
-};

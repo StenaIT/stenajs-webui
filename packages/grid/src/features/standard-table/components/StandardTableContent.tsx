@@ -4,9 +4,12 @@ import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
 import { StandardTableProps, StandardTableVariant } from "./StandardTable";
 import { StandardTableRowList } from "./StandardTableRowList";
 
-interface Props<TItem, TColumnKey extends string>
-  extends Omit<
-    StandardTableProps<TItem, TColumnKey>,
+interface Props<
+  TItem,
+  TColumnKey extends string,
+  TColumnGroupKey extends string
+> extends Omit<
+    StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
     "tableContext" | "config"
   > {
   variant: StandardTableVariant;
@@ -14,7 +17,8 @@ interface Props<TItem, TColumnKey extends string>
 
 export const StandardTableContent = React.memo(function StandardTableContent<
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
+  TColumnGroupKey extends string
 >({
   error,
   errorLabel,
@@ -24,7 +28,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   colIndexOffset,
   rowIndexOffset,
   variant,
-}: Props<TItem, TColumnKey>) {
+}: Props<TItem, TColumnKey, TColumnGroupKey>) {
   if (error) {
     return (
       <Spacing num={10}>

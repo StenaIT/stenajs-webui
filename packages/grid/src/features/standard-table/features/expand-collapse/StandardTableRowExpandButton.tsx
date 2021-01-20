@@ -1,15 +1,16 @@
-import * as React from "react";
-import { useMemo } from "react";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
+import * as React from "react";
+import { useMemo } from "react";
+import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
+import { useTotalNumColumnsForRows } from "../../context/GroupConfigsForRowsContext";
+import { useExpandCollapseActions } from "./UseExpandCollapseActions";
 import {
   useStandardTableConfig,
   useStandardTableId,
-} from "../hooks/UseStandardTableConfig";
-import { useExpandCollapseActions } from "../hooks/UseExpandCollapseActions";
-import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+} from "../../hooks/UseStandardTableConfig";
 
 interface Props<TItem> {
   item: TItem;
@@ -24,11 +25,11 @@ export const StandardTableRowExpandButton = function <TItem>({
   numRows,
   rowIndex,
 }: Props<TItem>) {
-  const { columnOrder } = useStandardTableConfig();
+  const totalNumColumns = useTotalNumColumnsForRows();
   const tableId = useStandardTableId();
   const gridCell = useGridCell<boolean>(true, {
     colIndex,
-    numCols: columnOrder.length,
+    numCols: totalNumColumns,
     numRows,
     rowIndex,
     tableId,

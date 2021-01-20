@@ -1,31 +1,34 @@
-import { Indent, Row } from "@stenajs-webui/core";
-import { Checkbox } from "@stenajs-webui/forms";
-import * as React from "react";
-import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
-import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
-import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
-import { useTableHeadCheckbox } from "../hooks/UseTableHeadCheckbox";
-import { StandardTableHeadItem } from "./StandardTableHeadItem";
-import { useTableHeadExpandCollapse } from "../hooks/UseTableHeadExpandCollapse";
-import { FlatButton } from "@stenajs-webui/elements";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { Indent, Row } from "@stenajs-webui/core";
+import { FlatButton } from "@stenajs-webui/elements";
+import { Checkbox } from "@stenajs-webui/forms";
 import { ZIndexProperty } from "csstype";
+import * as React from "react";
 import { defaultTableRowHeight } from "../../../config/TableConfig";
+import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
+import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
+import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
+import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
+import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
+import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
+import { StandardTableHeadItem } from "./StandardTableHeadItem";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
 }
 
-export const StandardTableHeadRow = React.memo(function StandardTableHeader<
+export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
 >({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
+  const groupConfigs = useGroupConfigsForRows();
+
   const {
     showHeaderCheckbox,
     showHeaderExpandCollapse,
     enableExpandCollapse,
-    columnOrder,
     rowIndent,
     headerRowOffsetTop,
     zIndex,
@@ -91,9 +94,26 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeader<
           </Row>
         </TableHeadItem>
       )}
-      {columnOrder.map((columnId) => (
-        <StandardTableHeadItem columnId={columnId} key={columnId} />
-      ))}
+      {groupConfigs.map((groupConfig, groupIndex) => {
+        return (
+          <React.Fragment key={groupIndex}>
+            {groupConfig.columnOrder.map((columnId, index) => {
+              return (
+                <StandardTableHeadItem
+                  columnId={columnId}
+                  key={columnId}
+                  borderFromGroup={getCellBorderFromGroup(
+                    groupIndex,
+                    index,
+                    groupConfig.borderLeft
+                  )}
+                  disableBorderLeft={groupIndex === 0 && index === 0}
+                />
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
       {rowIndent && <Indent num={rowIndent} />}
     </TableHeadRow>
   );

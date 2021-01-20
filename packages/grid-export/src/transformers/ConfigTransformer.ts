@@ -1,56 +1,52 @@
 import {
-  formatColumnIdToHeaderCellLabel,
+  createColumnConfigsForRows,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
-import { ZipCelXCell, ZipCelXConfig, ZipCelXRow } from "zipcelx";
-import { transformItemToCell } from "./CellTransformer";
+import { ZipCelXConfig, ZipCelXRow } from "zipcelx";
+import {
+  transformGroupHeaders,
+  transformTableHeaders,
+} from "./HeaderTransformer";
+import { transformTableRow } from "./RowTransformer";
 
-export type CustomCellFormatters<
-  TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
-> = Partial<Record<TColumnKeys, CustomCellFormatter<TItem>>>;
+export type CustomCellFormatters<TItem, TColumnKey extends string> = Partial<
+  Record<TColumnKey, CustomCellFormatter<TItem>>
+>;
 
 export type CustomCellFormatter<TItem> = (item: TItem) => string | number;
 
 export const createZipcelxConfig = <
   TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
+  TColumnKey extends string,
+  TColumnGroupKey extends string
 >(
   filename: string,
-  config: StandardTableConfig<TItem, TColumnKeys>,
+  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   items: Array<TItem>,
-  formatters?: CustomCellFormatters<TItem, TColumnKeys>
-): ZipCelXConfig => ({
-  filename,
-  sheet: {
-    data: [
-      transformTableHeaders(config),
-      ...items.map<ZipCelXRow>((item) => {
-        return config.columnOrder.map<ZipCelXCell>((columnId) => {
-          const columnConfig = config.columns[columnId];
-          const formatter = formatters?.[columnId];
-          const value = columnConfig.itemValueResolver(item);
-          const label = columnConfig.itemLabelFormatter?.(value, item);
-          return transformItemToCell(value, label, formatter?.(item));
-        });
-      }),
-    ],
-  },
-});
+  formatters?: CustomCellFormatters<TItem, TColumnKey>
+): ZipCelXConfig => {
+  const groupConfigs = createColumnConfigsForRows(
+    config.columnGroups,
+    config.columnGroupOrder,
+    config.columnOrder
+  );
 
-export const transformTableHeaders = <
-  TItem,
-  TColumnKeys extends string | number | symbol = keyof TItem
->(
-  config: StandardTableConfig<TItem, TColumnKeys>
-): ZipCelXRow => {
-  return config.columnOrder.map((columnId) => {
-    const columnConfig = config.columns[columnId];
-    return {
-      type: "string",
-      value:
-        columnConfig.columnLabel ??
-        formatColumnIdToHeaderCellLabel(String(columnId)),
-    };
-  });
+  const headerRows: Array<ZipCelXRow> = [];
+
+  if (config.columnGroups) {
+    headerRows.push(transformGroupHeaders(groupConfigs));
+  }
+  headerRows.push(transformTableHeaders(config, groupConfigs));
+
+  return {
+    filename,
+    sheet: {
+      data: [
+        ...headerRows,
+        ...items.map<ZipCelXRow>((item) =>
+          transformTableRow(item, config, groupConfigs, formatters)
+        ),
+      ],
+    },
+  };
 };

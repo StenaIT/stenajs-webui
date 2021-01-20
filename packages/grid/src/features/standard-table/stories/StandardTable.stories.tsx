@@ -1,18 +1,27 @@
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
+import {
+  Box,
+  Column,
+  Heading,
+  Space,
+  Spacing,
+  Text,
+} from "@stenajs-webui/core";
+import { FlatButton } from "@stenajs-webui/elements";
+import { CheckboxWithLabel, TextInput } from "@stenajs-webui/forms";
+import { cssColor } from "@stenajs-webui/theme";
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { Box, Column, Heading, Spacing, Text } from "@stenajs-webui/core";
-import {
-  createColumnConfig,
-  StandardTableConfig,
-} from "../config/StandardTableConfig";
 import {
   StandardTable,
   StandardTableVariant,
 } from "../components/StandardTable";
-import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
+import { createColumnConfig } from "../config/StandardTableColumnConfig";
+import { StandardTableConfig } from "../config/StandardTableConfig";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
-import { cssColor } from "@stenajs-webui/theme";
+import { createEditableTextCellWithStatus } from "../helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
 export default {
   title: "grid/StandardTable",
@@ -92,7 +101,10 @@ const setListItemFields = (
   fields: Partial<ListItem>
 ) => items.map((item) => (item.id === id ? { ...item, ...fields } : item));
 
-const standardTableConfigForStories: StandardTableConfig<ListItem> = {
+const standardTableConfigForStories: StandardTableConfig<
+  ListItem,
+  keyof ListItem
+> = {
   keyResolver: (item) => item.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
@@ -154,7 +166,7 @@ const useListState = (initialItems: Array<ListItem>) => {
 export const Overview = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -171,7 +183,7 @@ export const Overview = () => {
 export const Variants = () => {
   const { items } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -207,7 +219,7 @@ export const Variants = () => {
 export const SortingDisabled = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     disableSorting: true,
     ...standardTableConfigForStories,
     columns: {
@@ -225,7 +237,7 @@ export const SortingDisabled = () => {
 export const SortingDisabledAndSortByName = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     disableSorting: true,
     initialSortOrder: "name",
     ...standardTableConfigForStories,
@@ -244,7 +256,7 @@ export const SortingDisabledAndSortByName = () => {
 export const SortingEnabledAndSortByNameDesc = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     initialSortOrder: "name",
     initialSortOrderDesc: true,
     ...standardTableConfigForStories,
@@ -263,7 +275,7 @@ export const SortingEnabledAndSortByNameDesc = () => {
 export const FieldError = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -288,7 +300,7 @@ export const FieldError = () => {
 export const FieldLoading = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -312,7 +324,7 @@ export const FieldLoading = () => {
 export const ModifiedFields = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -341,7 +353,7 @@ export const ModifiedFields = () => {
 export const WarningWhenModifiedFieldIsEmpty = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -374,7 +386,7 @@ export const MissingItems = () => (
 export const NavigationBetweenTables = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     gridCellOptions: {
       edgeMode: "unlimited",
     },
@@ -422,7 +434,7 @@ export const _Error = () => (
 export const ExpandableRows = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     enableExpandCollapse: true,
     renderRowExpansion: (item) => (
       <Box spacing indent>
@@ -445,7 +457,7 @@ export const ExpandableRows = () => {
 export const SomeExpandableRows = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     enableExpandCollapse: true,
     expandCollapseDisableResolver: (item) =>
       item.numPassengers != null && item.numPassengers > 500,
@@ -470,7 +482,7 @@ export const SomeExpandableRows = () => {
 export const StickyTableHeader = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     stickyHeader: true,
     zIndex: 500,
     ...standardTableConfigForStories,
@@ -493,7 +505,7 @@ export const StickyTableHeader = () => {
 export const StickyTableHeaderConfiguration = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     stickyHeader: true,
     headerRowOffsetTop: "16px",
     zIndex: 499,
@@ -528,7 +540,7 @@ export const StickyTableHeaderConfiguration = () => {
 export const StickyColumn = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     showHeaderCheckbox: false,
     showRowCheckbox: false,
@@ -559,7 +571,7 @@ export const StickyColumn = () => {
 export const StickyHeaderAndColumn = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     showHeaderCheckbox: false,
     showRowCheckbox: false,
@@ -592,7 +604,7 @@ export const StickyHeaderAndColumn = () => {
 export const StickyHeaderAndColumnWithBackgrounds = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
-  const config: StandardTableConfig<ListItem> = {
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
     showHeaderCheckbox: false,
     showRowCheckbox: false,
@@ -623,5 +635,217 @@ export const StickyHeaderAndColumnWithBackgrounds = () => {
         <StandardTable items={items} config={config} />
       </Box>
     </Box>
+  );
+};
+
+export const GroupedColumns = () => {
+  const [showId, setShowId] = useState(true);
+  const [showActive, setShowActive] = useState(true);
+  const [showName, setShowName] = useState(true);
+  const [showShip, setShowShip] = useState(true);
+  const [showNumPassengers, setShowNumPassengers] = useState(true);
+  const [showDeparture, setShowDeparture] = useState(true);
+
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const infoColumnOrder: Array<keyof ListItem> = [];
+  if (showId) {
+    infoColumnOrder.push("id");
+  }
+  if (showActive) {
+    infoColumnOrder.push("active");
+  }
+  if (showName) {
+    infoColumnOrder.push("name");
+  }
+
+  const passengersColumnOrder: Array<keyof ListItem> = [];
+  if (showShip) {
+    passengersColumnOrder.push("ship");
+  }
+  if (showNumPassengers) {
+    passengersColumnOrder.push("numPassengers");
+  }
+  if (showDeparture) {
+    passengersColumnOrder.push("departure");
+  }
+
+  const config: StandardTableConfig<
+    ListItem,
+    keyof ListItem,
+    "info" | "passengers"
+  > = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: true,
+    showRowCheckbox: true,
+    enableExpandCollapse: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        isEditable: false,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnGroups: {
+      info: {
+        borderLeft: true,
+        label: "Information",
+        columnOrder: infoColumnOrder,
+        contentLeft: <FlatButton size={"small"} leftIcon={faAngleLeft} />,
+        contentRight: <FlatButton size={"small"} leftIcon={faAngleRight} />,
+        loading: true,
+      },
+      passengers: {
+        borderLeft: true,
+        label: "Passengers",
+        columnOrder: passengersColumnOrder,
+        loading: true,
+      },
+    },
+    columnOrder: undefined,
+    columnGroupOrder: ["info", "passengers"],
+  };
+
+  return (
+    <Column>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+      <Spacing />
+      <CheckboxWithLabel
+        value={showId}
+        onValueChange={setShowId}
+        label={"Include id"}
+      />
+      <Space />
+      <CheckboxWithLabel
+        value={showActive}
+        onValueChange={setShowActive}
+        label={"Include active"}
+      />
+      <Space />
+      <CheckboxWithLabel
+        value={showName}
+        onValueChange={setShowName}
+        label={"Include name"}
+      />
+      <Spacing />
+      <CheckboxWithLabel
+        value={showShip}
+        onValueChange={setShowShip}
+        label={"Include ship"}
+      />
+      <Space />
+      <CheckboxWithLabel
+        value={showNumPassengers}
+        onValueChange={setShowNumPassengers}
+        label={"Include num passengers"}
+      />
+      <Space />
+      <CheckboxWithLabel
+        value={showDeparture}
+        onValueChange={setShowDeparture}
+        label={"Include departure"}
+      />
+    </Column>
+  );
+};
+
+export const GroupedColumnsAndSticky = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<
+    ListItem,
+    keyof ListItem,
+    "info" | "passengers"
+  > = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: false,
+    showRowCheckbox: false,
+    stickyHeader: true,
+    rowBackgroundResolver: (item) =>
+      item.active ? cssColor("--lhds-color-green-100") : undefined,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+        sticky: true,
+        backgroundResolver: (item) =>
+          item.active ? cssColor("--lhds-color-orange-100") : undefined,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        isEditable: false,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnGroups: {
+      info: {
+        label: "Information",
+        columnOrder: ["id", "active", "name"],
+      },
+      passengers: {
+        borderLeft: true,
+        label: "Passengers",
+        columnOrder: ["ship", "numPassengers", "departure"],
+      },
+    },
+    columnOrder: undefined,
+    columnGroupOrder: ["info", "passengers"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Box>
+  );
+};
+
+export const OnKeyDown = () => {
+  const [text, setText] = useState("");
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    disableSorting: true,
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: undefined,
+        isEditable: false,
+      },
+    },
+  };
+
+  return (
+    <Column>
+      <Text>Focus on cell and press space.</Text>
+      <Spacing />
+      <StandardTable
+        items={mockedItems}
+        config={config}
+        onKeyDown={(ev, { columnId, item }) => {
+          if (ev.key === " ") {
+            setText(`${columnId}:${item.id}`);
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        }}
+      />
+      <Spacing />
+      <Box width={"200px"}>
+        <TextInput value={text} disabled />
+      </Box>
+    </Column>
   );
 };

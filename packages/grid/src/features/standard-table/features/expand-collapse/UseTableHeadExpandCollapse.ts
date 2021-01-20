@@ -3,7 +3,7 @@ import {
   useStandardTableActions,
   useStandardTableConfig,
   useStandardTableState,
-} from "./UseStandardTableConfig";
+} from "../../hooks/UseStandardTableConfig";
 
 export const useTableHeadExpandCollapse = <TItem>(
   items: Array<TItem> | undefined

@@ -1,5 +1,27 @@
 # Changelog
 
+## 7.0.0
+
+### StandardTable
+
+- Added `onKeyDown` prop. Callback receives event and object with columnId and item of focused cell.
+- Border is no longer rendered on left-most column.
+- If a cell is in focus, that row is highlighted.
+
+#### Column groups
+
+- Add support for column groups.
+- If `columnGroups` is set in table config, `columnOrder` is ignored.
+- If `columnGroups` is set, `columnGroupOrder` must be set.
+
+### grid-export
+
+- grid-export package now fully supports column groups.
+
+### Breaking changes
+
+- `Heading` no longer has margin, layout should be decided by parents.
+
 ## 6.1.0
 
 ### New package `grid-export`
