@@ -31,9 +31,6 @@ export const calculateColumnIndexPerColumnId = <
   if (config.showRowCheckbox) {
     currentIndex++;
   }
-  if (config.showRowCheckbox) {
-    currentIndex++;
-  }
   if (config.enableExpandCollapse) {
     currentIndex++;
   }

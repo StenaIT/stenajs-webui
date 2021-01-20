@@ -676,8 +676,9 @@ export const GroupedColumns = () => {
     "info" | "passengers"
   > = {
     ...standardTableConfigForStories,
-    showHeaderCheckbox: false,
-    showRowCheckbox: false,
+    showHeaderCheckbox: true,
+    showRowCheckbox: true,
+    enableExpandCollapse: true,
     columns: {
       ...standardTableConfigForStories.columns,
       id: {
