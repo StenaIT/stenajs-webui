@@ -1,5 +1,16 @@
 # Changelog
 
+## 7.1.0
+
+### grid-export
+
+- Null and undefined in cells are now rendered as empty strings.
+- Add support for booleans, will render "Y" when true and "" when false.
+
+#### Fixes
+
+- When `itemLabelFormatter` returned falsy value, Excel cell would instead contain the non-formatted value.
+
 ## 7.0.0
 
 ### StandardTable

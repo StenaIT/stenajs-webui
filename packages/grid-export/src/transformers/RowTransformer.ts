@@ -1,7 +1,9 @@
-import { StandardTableConfig } from "@stenajs-webui/grid";
+import {
+  StandardTableColumnGroupConfig,
+  StandardTableConfig,
+} from "@stenajs-webui/grid";
 import { flatten } from "lodash";
 import { ZipCelXCell, ZipCelXRow } from "zipcelx";
-import { StandardTableColumnGroupConfig } from "@stenajs-webui/grid";
 import { transformItemToCell } from "./CellTransformer";
 import { CustomCellFormatters } from "./ConfigTransformer";
 
@@ -36,7 +38,10 @@ export const transformCell = <
 ): ZipCelXCell => {
   const columnConfig = config.columns[columnId];
   const formatter = formatters?.[columnId];
-  const value = columnConfig.itemValueResolver(item);
-  const label = columnConfig.itemLabelFormatter?.(value, item);
-  return transformItemToCell(value, label, formatter?.(item));
+  return transformItemToCell(
+    item,
+    columnConfig.itemValueResolver,
+    columnConfig.itemLabelFormatter,
+    formatter
+  );
 };

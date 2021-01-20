@@ -1,16 +1,27 @@
-import { ZipCelXCell } from "zipcelx";
+import { StandardTableColumnConfig } from "@stenajs-webui/grid";
 import { format } from "date-fns";
+import { ZipCelXCell } from "zipcelx";
+import { CustomCellFormatter } from "./ConfigTransformer";
 
-export const transformItemToCell = <TValue>(
-  value: TValue,
-  label: string | undefined,
-  formatted?: string | number
+export const transformItemToCell = <TItem, TItemValue>(
+  item: TItem,
+  itemValueResolver: StandardTableColumnConfig<
+    TItem,
+    TItemValue
+  >["itemValueResolver"],
+  itemLabelFormatter:
+    | StandardTableColumnConfig<TItem, TItemValue>["itemLabelFormatter"]
+    | undefined,
+  formatter?: CustomCellFormatter<TItem>
 ): ZipCelXCell => {
-  if (formatted != null) {
-    return createCell(formatted);
+  if (formatter) {
+    return createCell(formatter(item));
   }
 
-  if (label) {
+  const value = itemValueResolver(item);
+
+  if (itemLabelFormatter) {
+    const label = itemLabelFormatter?.(value, item);
     return createCell(label);
   }
 
@@ -18,8 +29,16 @@ export const transformItemToCell = <TValue>(
     return createCell(value);
   }
 
+  if (typeof value === "boolean") {
+    return createCell(value ? "Y" : "");
+  }
+
   if (value instanceof Date) {
     return createCell(format(value, "yyyy-MM-dd HH:mm"));
+  }
+
+  if (value == null) {
+    return createCell("");
   }
 
   return createCell(String(value));
