@@ -40,7 +40,7 @@ export const testItems: Array<TestItem> = [
     id: "5",
     firstName: "Niklas",
     lastName: "Rockstar",
-    age: 19,
+    age: 27,
   },
 ];
 
