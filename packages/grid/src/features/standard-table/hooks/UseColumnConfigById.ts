@@ -36,7 +36,7 @@ export const useFirstColumnConfig = <TItem, TItemValue>():
   | StandardTableColumnConfig<TItem, TItemValue>
   | undefined => {
   const config = useStandardTableConfig();
-  const columnId = useGroupConfigsForRows()?.[0]?.columnOrder?.[0] ?? undefined;
+  const columnId = useGroupConfigsForRows()?.[0]?.columnOrder?.[0];
   return columnId ? config.columns[columnId] : undefined;
 };
 
