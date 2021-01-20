@@ -15,7 +15,7 @@ export interface StandardTableOnKeyDownArgs<TItem, TColumnKey extends string> {
 export interface StandardTableConfig<
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = ""
+  TColumnGroupKey extends string = string
 > {
   /**
    * If true, click on table headers does not change sort order.
