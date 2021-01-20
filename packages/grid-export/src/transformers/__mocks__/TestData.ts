@@ -90,6 +90,7 @@ export const testConfigWithGroups: StandardTableConfig<
       columnOrder: ["age"],
     },
   },
+  columnGroupOrder: ["names", "info"],
 };
 
 export const testGroupConfigsWithGroups = createColumnConfigsForRows(
