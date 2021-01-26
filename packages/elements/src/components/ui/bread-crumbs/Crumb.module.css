@@ -1,0 +1,14 @@
+.crumb {
+  color: var(--lhds-color-ui-600);
+  font-size: 10px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+  color: var(--lhds-color-blue-500);
+}
