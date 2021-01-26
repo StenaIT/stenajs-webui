@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 7.2.0
 
 ## Bread crumbs
 
