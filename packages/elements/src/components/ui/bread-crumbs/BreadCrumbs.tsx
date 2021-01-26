@@ -1,9 +1,9 @@
 import { Indent, Row } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { Children } from "react";
 import { stenaBreadCrumbArrow } from "../../../icons/Icons";
+import { Icon } from "../icon/Icon";
 
 export interface BreadCrumbsProps {}
 
