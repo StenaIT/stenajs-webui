@@ -36,7 +36,9 @@ export const GroupedColumn = function ColumnGroupColumnItem<
         render(groupConfig)
       ) : (
         <Indent>
-          <Heading variant={"h5"}>{label}</Heading>
+          <Heading variant={"h5"} whiteSpace={"nowrap"}>
+            {label}
+          </Heading>
         </Indent>
       )}
       {contentRight && (

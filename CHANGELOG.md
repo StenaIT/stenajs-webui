@@ -1,5 +1,12 @@
 # Changelog
 
+## Next
+
+## Bread crumbs
+
+- Added bread crumbs. Use `Crumb` components and wrap them with `BreadCrumbs`.
+- Story example shows how to integrate with react-router.
+
 ## 7.1.0
 
 ### grid-export
