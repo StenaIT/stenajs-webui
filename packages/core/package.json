@@ -60,7 +60,7 @@
   "files": [
     "dist"
   ],
-  "gitHead": "1b41ba2723d58cf05b18521f42f46fe5d5519c36",
+  "gitHead": "7069f912414e67281314e3759591abaf46db0a77",
   "dependencies": {
     "@emotion/is-prop-valid": "^0.8.2",
     "@stenajs-webui/theme": "7.2.0",
