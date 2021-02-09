@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -63,7 +63,7 @@
   "gitHead": "7069f912414e67281314e3759591abaf46db0a77",
   "dependencies": {
     "@emotion/is-prop-valid": "^0.8.2",
-    "@stenajs-webui/theme": "7.2.0",
+    "@stenajs-webui/theme": "7.2.1",
     "classnames": "^2.2.6"
   }
 }
