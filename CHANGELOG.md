@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.2.1
+
+- Small alignment fix in `StandardTable` header.
+
 ## 7.2.0
 
 ## Bread crumbs
