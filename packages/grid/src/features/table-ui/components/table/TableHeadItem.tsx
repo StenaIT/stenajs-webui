@@ -66,11 +66,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   {!hasOnlyChildren && <Space num={0.5} />}
                 </>
               )}
-              {label && (
-                <>
-                  <Heading variant={"h6"}>{label}</Heading>
-                </>
-              )}
+              {label && <Heading variant={"h6"}>{label}</Heading>}
               {arrow && (
                 <>
                   <Space num={0.5} />
