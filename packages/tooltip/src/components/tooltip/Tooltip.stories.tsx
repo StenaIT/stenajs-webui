@@ -53,7 +53,7 @@ export const Disabled = () => {
   useEffect(() => {
     const r = setInterval(toggle, 2000);
     return () => clearInterval(r);
-  }, []);
+  }, [toggle]);
 
   return (
     <Column justifyContent={"flex-start"} width={"fit-content"} spacing={10}>

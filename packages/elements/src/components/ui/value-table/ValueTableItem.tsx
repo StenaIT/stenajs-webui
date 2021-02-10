@@ -1,9 +1,9 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { BoxProps, Row, Text } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
+import { Icon } from "../icon/Icon";
 
 export interface ValueTableItemProps {
   label: string;
