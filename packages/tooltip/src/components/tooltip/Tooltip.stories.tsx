@@ -1,7 +1,8 @@
-import { Column, Row, Text } from "@stenajs-webui/core";
+import { Column, Row, Spacing, Text, useBoolean } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
-import { Tooltip } from "./Tooltip";
 import * as React from "react";
+import { useEffect } from "react";
+import { Tooltip } from "./Tooltip";
 
 export default {
   title: "tooltip/Tooltip",
@@ -45,3 +46,22 @@ export const WithButton = () => (
     </Tooltip>
   </Column>
 );
+
+export const Disabled = () => {
+  const [disabled, , , toggle] = useBoolean(false);
+
+  useEffect(() => {
+    const r = setInterval(toggle, 2000);
+    return () => clearInterval(r);
+  }, []);
+
+  return (
+    <Column justifyContent={"flex-start"} width={"fit-content"} spacing={10}>
+      <Tooltip label={"Big success!"} disabled={disabled}>
+        <PrimaryButton label={"Hover me"} />
+      </Tooltip>
+      <Spacing />
+      <Text>Disabled={disabled ? "true" : "false"}</Text>
+    </Column>
+  );
+};
