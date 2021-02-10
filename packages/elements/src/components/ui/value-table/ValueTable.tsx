@@ -22,11 +22,13 @@ export const ValueTable: React.FC<ValueTableProps> = ({
         </Row>
       )}
       <table cellPadding={0} cellSpacing={0} className={styles.valueTable}>
-        {Children.map(children, (child, index) => (
-          <tr key={index} className={styles.row}>
-            {child}
-          </tr>
-        ))}
+        <tbody>
+          {Children.map(children, (child, index) => (
+            <tr key={index} className={styles.row}>
+              {child}
+            </tr>
+          ))}
+        </tbody>
       </table>
       {footer && (
         <Row spacing>
