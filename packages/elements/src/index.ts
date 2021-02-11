@@ -38,3 +38,5 @@ export * from "./components/ui/action-menu/ActionMenuTheme";
 export * from "./components/ui/tabs/Tab";
 export * from "./components/ui/tabs/TabMenu";
 export * from "./components/ui/tag/Tag";
+export * from "./components/ui/value-table/ValueTable";
+export * from "./components/ui/value-table/ValueTableItem";

@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.3.0
+
+### New component `ValueTable`
+
+- Table for displaying key/value pairs of data.
+- Available in `elements` package.
+
 ## 7.2.1
 
 - Small alignment fix in `StandardTable` header.
