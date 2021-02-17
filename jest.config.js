@@ -6,68 +6,72 @@ const shared = {
     "ts-jest": {
       diagnostics: {
         warnOnly: true,
-        ignoreCodes: [151001]
-      }
-    }
+        ignoreCodes: [151001],
+      },
+    },
   },
-  "moduleNameMapper": {
-    "\\.(css|less)$": "identity-obj-proxy"
-  }
+  moduleNameMapper: {
+    "\\.(css|less)$": "identity-obj-proxy",
+  },
 };
 
 module.exports = {
   projects: [
     {
       rootDir: "packages/calendar/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/core/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/elements/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/forms/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/grid/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/grid-export/src",
-      ...shared
+      ...shared,
+    },
+    {
+      rootDir: "packages/grid-html-export/src",
+      ...shared,
     },
     {
       rootDir: "packages/input-mask/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/modal/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/panels/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/redux/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/select/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/theme/src",
-      ...shared
+      ...shared,
     },
     {
       rootDir: "packages/tooltip/src",
-      ...shared
-    }
-  ]
+      ...shared,
+    },
+  ],
 };
