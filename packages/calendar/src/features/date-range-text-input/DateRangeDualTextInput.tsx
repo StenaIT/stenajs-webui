@@ -35,7 +35,8 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   value,
   onValueChange,
 }) => {
-  const [isCalendarVisible, showCalendar, hideCalendar] = useBoolean(false);
+  const [isCalendarVisible, showCalendar, _hideCalendar] = useBoolean(false);
+
   const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
     "calendar"
   );
@@ -43,6 +44,11 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()
   );
+
+  const [firstFocusedInput, setFirstFocusedInput] = useState<
+    DateRangeFocusedInput | undefined
+  >(undefined);
+
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
@@ -51,6 +57,11 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   const containerRef = useRef(null);
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
   const endDateInputRef: TextInputProps["inputRef"] = useRef(null);
+
+  const hideCalendar = useCallback(() => {
+    setFirstFocusedInput(undefined);
+    _hideCalendar();
+  }, [setFirstFocusedInput, _hideCalendar]);
 
   const inputLeftChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -76,54 +87,75 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
     [onValueChange, value]
   );
 
-  useEffect(() => {
-    if (focusedInput) {
-      const selectedDate = value?.[focusedInput];
-      if (selectedDate) {
-        setDateInFocus(selectedDate);
+  useEffect(
+    function moveFocusedDateWhenValueChanges() {
+      if (focusedInput) {
+        const selectedDate = value?.[focusedInput];
+        if (selectedDate) {
+          setDateInFocus(selectedDate);
+        }
       }
-    }
-  }, [value, focusedInput]);
+    },
+    [value, focusedInput]
+  );
 
-  useEffect(() => {
-    if (startDateInputRef.current && value?.startDate) {
-      startDateInputRef.current.valueAsDate = new Date(
-        Date.UTC(
-          value.startDate.getFullYear(),
-          value.startDate.getMonth(),
-          value.startDate.getDate()
-        )
-      );
-    }
-  }, [value?.startDate]);
+  useEffect(
+    function updateStartDateFieldWhenValueChanges() {
+      if (startDateInputRef.current && value?.startDate) {
+        startDateInputRef.current.valueAsDate = new Date(
+          Date.UTC(
+            value.startDate.getFullYear(),
+            value.startDate.getMonth(),
+            value.startDate.getDate()
+          )
+        );
+      }
+    },
+    [value?.startDate]
+  );
 
-  useEffect(() => {
-    if (endDateInputRef.current && value?.endDate) {
-      endDateInputRef.current.valueAsDate = new Date(
-        Date.UTC(
-          value.endDate.getFullYear(),
-          value.endDate.getMonth(),
-          value.endDate.getDate()
-        )
-      );
-    }
-  }, [value?.endDate]);
+  useEffect(
+    function updateEndDateFieldWhenValueChanges() {
+      if (endDateInputRef.current && value?.endDate) {
+        endDateInputRef.current.valueAsDate = new Date(
+          Date.UTC(
+            value.endDate.getFullYear(),
+            value.endDate.getMonth(),
+            value.endDate.getDate()
+          )
+        );
+      }
+    },
+    [value?.endDate]
+  );
 
-  const showCalendarStartDate = useCallback(() => {
+  const onFocusLeft = useCallback(() => {
+    if (firstFocusedInput == null) {
+      setFirstFocusedInput("startDate");
+    }
     setFocusedInput("startDate");
     if (!isCalendarVisible) {
       setCurrentPanel("calendar");
       showCalendar();
     }
-  }, [isCalendarVisible, setFocusedInput, showCalendar]);
+  }, [
+    isCalendarVisible,
+    setFocusedInput,
+    showCalendar,
+    setFirstFocusedInput,
+    firstFocusedInput,
+  ]);
 
-  const showCalendarEndDate = useCallback(() => {
+  const onFocusRight = useCallback(() => {
+    if (firstFocusedInput == null) {
+      setFirstFocusedInput("endDate");
+    }
     setFocusedInput("endDate");
     if (!isCalendarVisible) {
       setCurrentPanel("calendar");
       showCalendar();
     }
-  }, [isCalendarVisible, setFocusedInput, showCalendar]);
+  }, [isCalendarVisible, setFocusedInput, showCalendar, setFirstFocusedInput]);
 
   const onClickDay = useCallback(
     (day: DayData) => {
@@ -132,26 +164,33 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
           startDate: day.date,
           endDate: value?.endDate,
         });
-        if (!value || !value.endDate) {
+        if (firstFocusedInput === "startDate") {
           setFocusedInput("endDate");
           endDateInputRef.current?.focus();
         } else {
-          setTimeout(hideCalendar, 150);
+          setTimeout(hideCalendar, 50);
         }
       } else if (focusedInput === "endDate") {
         onValueChange?.({
           startDate: value?.startDate,
           endDate: day.date,
         });
-        if (!value || !value.startDate) {
+        if (!value?.startDate || isAfter(value?.startDate, day.date)) {
           setFocusedInput("startDate");
           startDateInputRef.current?.focus();
         } else {
-          setTimeout(hideCalendar, 150);
+          setTimeout(hideCalendar, 50);
         }
       }
     },
-    [focusedInput, onValueChange, setFocusedInput, hideCalendar, value]
+    [
+      focusedInput,
+      onValueChange,
+      setFocusedInput,
+      hideCalendar,
+      value,
+      firstFocusedInput,
+    ]
   );
 
   const onClickArrowButton = useCallback(() => {
@@ -228,10 +267,10 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
           onChangeRight={inputRightChangeHandler}
           onClickArrowDown={onClickArrowButton}
           onClickCalendar={onClickCalendarButton}
-          onFocusLeft={showCalendarStartDate}
-          onFocusRight={showCalendarEndDate}
-          onClickLeft={showCalendarStartDate}
-          onClickRight={showCalendarEndDate}
+          onFocusLeft={onFocusLeft}
+          onFocusRight={onFocusRight}
+          onClickLeft={onFocusLeft}
+          onClickRight={onFocusRight}
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
           variant={startDateIsAfterEnd ? "error" : undefined}
