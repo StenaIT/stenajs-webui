@@ -53,6 +53,8 @@ When boolean turns false, it returns false after a certain delay.
 
 This is useful for delaying the removal of elements in the DOM.
 
+#### Example
+
 ```js
 const delayedShowPopover = useDelayedFalse(showPopover);
 ```
