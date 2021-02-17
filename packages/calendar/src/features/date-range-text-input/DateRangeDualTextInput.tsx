@@ -16,8 +16,10 @@ import { buildDayStateForSingleMonth } from "../../util/calendar/StateModifier";
 import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
 import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSwitcher";
 import { DateRangeDualTextField } from "./DateRangeDualTextField";
-import { useDateRangeDualTextInputStateAndHandlers } from "./hooks/UseDateRangeDualTextInputStateAndHandlers";
-import { useDateRangeDualTextInputEffects } from "./hooks/UseDateRangeDualTextInputEffects";
+import { useDateRangeEffects } from "./hooks/UseDateRangeEffects";
+import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
+import { useInputStates } from "./hooks/UseInputStates";
+import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 
 export interface DateRangeDualTextInputProps
   extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
@@ -33,30 +35,42 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
   const endDateInputRef: TextInputProps["inputRef"] = useRef(null);
 
+  const states = useInputStates(startDate, endDate);
+
   const {
+    dateInFocus,
+    setDateInFocus,
+    isCalendarVisible,
+    currentPanel,
+    setCurrentPanel,
+  } = states;
+
+  const {
+    showCalendar,
     hideCalendar,
     inputLeftChangeHandler,
     inputRightChangeHandler,
-    onClickArrowButton,
-    onClickCalendarButton,
-    onClickDay,
-    onFocusLeft,
-    onFocusRight,
-    isCalendarVisible,
+  } = useDateRangeHandlers(startDate, endDate, onValueChange, states);
+
+  const {
     onKeyDownHandler,
-    setDateInFocus,
-    dateInFocus,
-    currentPanel,
-    setCurrentPanel,
-  } = useDateRangeDualTextInputStateAndHandlers(
+    onFocusRight,
+    onFocusLeft,
+    onClickDay,
+    onClickCalendarButton,
+    onClickArrowButton,
+  } = useUserInputHandlers(
     startDate,
     endDate,
     onValueChange,
     startDateInputRef,
-    endDateInputRef
+    endDateInputRef,
+    showCalendar,
+    hideCalendar,
+    states
   );
 
-  useDateRangeDualTextInputEffects(
+  useDateRangeEffects(
     startDate,
     endDate,
     setDateInFocus,
@@ -69,14 +83,11 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
     [startDate, endDate]
   );
 
-  const statePerMonth = useMemo(() => {
-    return buildDayStateForSingleMonth(
-      undefined,
-      startDate,
-      endDate,
-      dateInFocus
-    );
-  }, [startDate, endDate, dateInFocus]);
+  const statePerMonth = useMemo(
+    () =>
+      buildDayStateForSingleMonth(undefined, startDate, endDate, dateInFocus),
+    [startDate, endDate, dateInFocus]
+  );
 
   useMultiOnClickOutside([popoverRef, containerRef], hideCalendar);
 

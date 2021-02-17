@@ -1,95 +1,27 @@
-import { useBoolean } from "@stenajs-webui/core";
 import { isAfter } from "date-fns";
 import * as React from "react";
-import { ChangeEvent, RefObject, useCallback, useState } from "react";
-import { DateRangeFocusedInput } from "../../../components/calendar-types/date-range-calendar/DateRangeCalendar";
+import { RefObject, useCallback } from "react";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
-import { CalendarPanelType } from "../../calendar-with-month-year-pickers/CalendarPanelType";
 import { DateRangeDualTextInputProps } from "../DateRangeDualTextInput";
+import { UseInputStatesResult } from "./UseInputStates";
 
-export const useDateRangeDualTextInputStateAndHandlers = (
+export const useUserInputHandlers = (
   startDate: Date | undefined,
   endDate: Date | undefined,
   onValueChange: DateRangeDualTextInputProps["onValueChange"],
   startDateInputRef: RefObject<HTMLInputElement>,
-  endDateInputRef: RefObject<HTMLInputElement>
-) => {
-  const [
+  endDateInputRef: RefObject<HTMLInputElement>,
+  showCalendar: () => void,
+  hideCalendar: () => void,
+  {
+    firstFocusedInput,
+    setFirstFocusedInput,
     isCalendarVisible,
-    showCalendarInternal,
-    hideCalendarInternal,
-  ] = useBoolean(false);
-
-  const [firstFocusedInput, setFirstFocusedInput] = useState<
-    DateRangeFocusedInput | undefined
-  >(undefined);
-
-  const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
-    "startDate"
-  );
-
-  const [dateInFocus, setDateInFocus] = useState<Date>(() => {
-    const fromValue =
-      focusedInput === "startDate"
-        ? startDate
-        : focusedInput === "endDate"
-        ? endDate
-        : undefined;
-
-    return fromValue ?? new Date();
-  });
-
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
-  );
-
-  const inputLeftChangeHandler = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => {
-      if (ev.target.value[0] !== "0") {
-        onValueChange?.({
-          startDate: ev.target.valueAsDate ?? undefined,
-          endDate,
-        });
-      }
-    },
-    [onValueChange, endDate]
-  );
-
-  const inputRightChangeHandler = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => {
-      if (ev.target.value[0] !== "0") {
-        onValueChange?.({
-          startDate,
-          endDate: ev.target.valueAsDate ?? undefined,
-        });
-      }
-    },
-    [onValueChange, startDate]
-  );
-
-  const showCalendar = useCallback(() => {
-    if (startDate) {
-      setDateInFocus(startDate);
-    } else if (endDate) {
-      setDateInFocus(endDate);
-    } else {
-      setDateInFocus(new Date());
-    }
-    setCurrentPanel("calendar");
-    showCalendarInternal();
-  }, [
-    startDate,
-    endDate,
+    setFocusedInput,
+    focusedInput,
     setCurrentPanel,
-    showCalendarInternal,
-    setDateInFocus,
-  ]);
-
-  const hideCalendar = useCallback(() => {
-    setFirstFocusedInput(undefined);
-    hideCalendarInternal();
-  }, [setFirstFocusedInput, hideCalendarInternal]);
-
+  }: UseInputStatesResult
+) => {
   const onFocusLeft = useCallback(() => {
     if (firstFocusedInput == null) {
       setFirstFocusedInput("startDate");
@@ -167,18 +99,21 @@ export const useDateRangeDualTextInputStateAndHandlers = (
   }, [setCurrentPanel, showCalendar]);
 
   const onClickCalendarButton = useCallback(() => {
-    if (focusedInput === "startDate" && startDateInputRef.current) {
-      startDateInputRef.current.focus();
-    } else if (focusedInput === "endDate" && endDateInputRef.current) {
-      endDateInputRef.current.focus();
+    if (isCalendarVisible) {
+      hideCalendar();
     } else {
+      setFocusedInput("startDate");
+      setFirstFocusedInput("startDate");
+      startDateInputRef.current?.focus();
       setCurrentPanel("calendar");
       showCalendar();
     }
   }, [
-    focusedInput,
+    isCalendarVisible,
+    hideCalendar,
+    setFocusedInput,
+    setFirstFocusedInput,
     startDateInputRef,
-    endDateInputRef,
     setCurrentPanel,
     showCalendar,
   ]);
@@ -193,21 +128,11 @@ export const useDateRangeDualTextInputStateAndHandlers = (
   );
 
   return {
-    inputLeftChangeHandler,
-    inputRightChangeHandler,
-    hideCalendar,
     onFocusLeft,
     onFocusRight,
     onClickDay,
     onClickArrowButton,
     onClickCalendarButton,
     onKeyDownHandler,
-    isCalendarVisible,
-    focusedInput,
-    setFocusedInput,
-    dateInFocus,
-    setDateInFocus,
-    currentPanel,
-    setCurrentPanel,
   };
 };

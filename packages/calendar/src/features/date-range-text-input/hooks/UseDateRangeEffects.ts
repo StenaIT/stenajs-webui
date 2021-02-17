@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from "react";
 
-export const useDateRangeDualTextInputEffects = (
+export const useDateRangeEffects = (
   startDate: Date | undefined,
   endDate: Date | undefined,
   setDateInFocus: (date: Date) => void,
