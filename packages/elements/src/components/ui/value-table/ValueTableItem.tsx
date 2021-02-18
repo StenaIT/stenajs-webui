@@ -7,6 +7,7 @@ import { Icon } from "../icon/Icon";
 
 export interface ValueTableItemProps {
   label: string;
+  labelIndent?: boolean | number;
   value: string | number | boolean | ReactNode | undefined;
   alignValue?: BoxProps["justifyContent"];
 }
@@ -15,6 +16,7 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
   label,
   value,
   alignValue = "left",
+  labelIndent,
 }) => {
   const formattedValue = useMemo(() => {
     if (value == null) {
@@ -40,7 +42,11 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
   return (
     <>
       <td>
-        <Row height={"var(--swui-value-table-height)"} alignItems={"center"}>
+        <Row
+          height={"var(--swui-value-table-height)"}
+          alignItems={"center"}
+          indent={labelIndent}
+        >
           <Text
             color={cssColor("--lhds-color-ui-500")}
             variant={"bold"}
