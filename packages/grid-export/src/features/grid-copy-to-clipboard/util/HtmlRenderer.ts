@@ -1,10 +1,8 @@
 import { StandardTableConfig } from "@stenajs-webui/grid";
-import {
-  createHtmlConfig,
-  CustomCellFormatters,
-} from "../transformers/ConfigTransformer";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
+import { createHtmlConfig } from "../transformers/ConfigTransformer";
 
-export const renderHtmlForStandardTable = async <
+export const renderHtmlForStandardTable = <
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string

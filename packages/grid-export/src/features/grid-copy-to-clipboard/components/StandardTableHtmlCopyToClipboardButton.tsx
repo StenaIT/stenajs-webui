@@ -2,11 +2,10 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { StandardTableProps } from "@stenajs-webui/grid";
 import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
-import * as clipboard from "clipboard-polyfill";
-import { CustomCellFormatters } from "../transformers/ConfigTransformer";
-import { renderHtmlForStandardTable } from "../util/HtmlRenderer";
+import { CustomCellFormatters } from "../transformers/html/ConfigTransformer";
+import { copyContentToClipboard } from "../util/CopyContentToClipboard";
 
-interface StandardTableHtmlExportButtonProps<
+export interface StandardTableHtmlCopyToClipboardButtonProps<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
@@ -19,9 +18,10 @@ interface StandardTableHtmlExportButtonProps<
   renderContent?: (content: string) => string | null;
   label?: string;
   labelAfterCopy?: string;
+  numTimeToRevertLabel?: number;
 }
 
-export const StandardTableHtmlCopyToClipboardButton = function StandardTableHtmlExportButton<
+export function StandardTableHtmlCopyToClipboardButton<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
@@ -33,26 +33,18 @@ export const StandardTableHtmlCopyToClipboardButton = function StandardTableHtml
   formatters,
   label = "Copy to clipboard",
   labelAfterCopy = "Content copied!",
-}: StandardTableHtmlExportButtonProps<TItem, TColumnKey, TColumnGroupKey>) {
+  numTimeToRevertLabel = 2000,
+}: StandardTableHtmlCopyToClipboardButtonProps<
+  TItem,
+  TColumnKey,
+  TColumnGroupKey
+>) {
   const [contentCopied, setContentCopied] = useState<boolean>(false);
   const onClickExportHtml = useCallback(async () => {
-    let htmlToCopy: string | null = "";
+    await copyContentToClipboard(items, config, formatters, renderContent);
 
-    if (items && items.length) {
-      htmlToCopy = await renderHtmlForStandardTable(config, items, formatters);
-    }
-
-    if (renderContent) {
-      htmlToCopy = renderContent(htmlToCopy);
-    }
-    if (htmlToCopy) {
-      const item = new clipboard.ClipboardItem({
-        "text/html": new Blob([htmlToCopy], { type: "text/html" }),
-      });
-
-      await clipboard.write([item]);
-      setContentCopied(true);
-    }
+    setContentCopied(true);
+    setTimeout(() => setContentCopied(false), numTimeToRevertLabel);
   }, [config, items, formatters]);
 
   return (
@@ -63,4 +55,4 @@ export const StandardTableHtmlCopyToClipboardButton = function StandardTableHtml
       label={contentCopied ? labelAfterCopy : label}
     />
   );
-};
+}

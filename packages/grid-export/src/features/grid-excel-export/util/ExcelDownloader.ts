@@ -1,9 +1,7 @@
 import { StandardTableConfig } from "@stenajs-webui/grid";
-import {
-  createZipcelxConfig,
-  CustomCellFormatters,
-} from "../transformers/ConfigTransformer";
 import zipcelx from "zipcelx";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
+import { createZipcelxConfig } from "../transformers/ConfigTransformer";
 
 export const downloadExcelForStandardTable = async <
   TItem,

@@ -8,12 +8,7 @@ import {
   transformTableHeaders,
 } from "./HeaderTransformer";
 import { transformTableRow } from "./RowTransformer";
-
-export type CustomCellFormatters<TItem, TColumnKey extends string> = Partial<
-  Record<TColumnKey, CustomCellFormatter<TItem>>
->;
-
-export type CustomCellFormatter<TItem> = (item: TItem) => string | number;
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 export const createZipcelxConfig = <
   TItem,
