@@ -47,7 +47,7 @@ describe("CellTransformer", () => {
       });
       describe("and value is Date", () => {
         it("returns formatted date and type string", () => {
-          let date = new Date(2020, 4, 9, 12, 0, 0);
+          const date = new Date(2020, 4, 9, 12, 0, 0);
           expect(
             transformItemToCell({ x: date }, (item) => item.x, undefined)
           ).toStrictEqual({

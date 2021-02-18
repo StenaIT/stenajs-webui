@@ -95,7 +95,7 @@ export const Demo = () => (
   </Column>
 );
 
-export const DemoWithCallback = () => {
+export const WithRenderContent = () => {
   const additionalComponent = useRef<HTMLDivElement>(null);
 
   const renderCopy = (html: string): string | null => {
