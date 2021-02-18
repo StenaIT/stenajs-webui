@@ -9,7 +9,7 @@ import { useRef } from "react";
 import { StandardTableHtmlCopyToClipboardButton } from "../components/StandardTableHtmlCopyToClipboardButton";
 
 export default {
-  title: "grid-html-export/StandardTableHtmlExportButton",
+  title: "grid-export/StandardTableHtmlExportButton",
 };
 
 interface Item {
