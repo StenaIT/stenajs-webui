@@ -15,9 +15,9 @@ Takes `list` and `setList` methods as arguments.
 Returns: [add, remove, toggle]
 
 ```js
-const [list, setList] = useState(['world']);
-const {add, remove, toggle} = useArraySet(list, setList);
-toggle('hello');
+const [list, setList] = useState(["world"]);
+const { add, remove, toggle } = useArraySet(list, setList);
+toggle("hello");
 // Adds 'hello' to the list, if it doesn't already exist.
 ```
 
@@ -42,6 +42,21 @@ Returns: The debounced value.
 
 ```js
 const searchQueryToApi = useDebounce(searchQuery);
+```
+
+### useDelayedFalse
+
+Takes a boolean as argument and returns that boolean.
+
+When boolean turns true, it returns true immediately.
+When boolean turns false, it returns false after a certain delay.
+
+This is useful for delaying the removal of elements in the DOM.
+
+#### Example
+
+```js
+const delayedShowPopover = useDelayedFalse(showPopover);
 ```
 
 ### useDomId

@@ -1,6 +1,25 @@
 # Changelog
 
-## 7.4.0
+## Next
+
+### New hook `useDelayedFalse`
+
+A hook that takes a boolean as argument and returns that boolean.
+When boolean turns false, it returns false after a certain delay.
+When boolean turns true, it returns true immediately.
+
+This is useful for delaying the removal of elements in the DOM.
+
+### `DateRangeDualTextInput`
+
+Updated behaviour when selecting dates in popover.
+
+- Selecting startDate always moves to endDate.
+- Selecting endDate closes calendar except when
+  date range is invalid or startDate has not been selected.
+  Then it moves to start date.
+
+## Next
 
 ### grid-export
 

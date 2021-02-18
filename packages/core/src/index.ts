@@ -45,6 +45,7 @@ export * from "./types/Omit";
 export * from "./hooks/UseArraySet";
 export * from "./hooks/UseBoolean";
 export * from "./hooks/UseDebounce";
+export * from "./hooks/UseDelayedFalse";
 export * from "./hooks/UseDomId";
 export * from "./hooks/UseElementDimensions";
 export * from "./hooks/UseElementFocus";
