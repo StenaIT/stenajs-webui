@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.4.0
+
+### grid-export
+
+- Add support for copy table content with default formatting (as well as other components) to clipboard.
+
 ## 7.3.0
 
 ### New component `ValueTable`
