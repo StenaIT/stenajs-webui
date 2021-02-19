@@ -4,7 +4,7 @@ import { downloadExcelForStandardTable } from "../util/ExcelDownloader";
 import { StandardTableProps } from "@stenajs-webui/grid";
 import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons/faFileDownload";
-import { CustomCellFormatters } from "../transformers/ConfigTransformer";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 interface StandardTableExcelExportButtonProps<
   TItem,

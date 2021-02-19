@@ -5,7 +5,7 @@ import {
 import { flatten } from "lodash";
 import { ZipCelXCell, ZipCelXRow } from "zipcelx";
 import { transformItemToCell } from "./CellTransformer";
-import { CustomCellFormatters } from "./ConfigTransformer";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 export const transformTableRow = <
   TItem,

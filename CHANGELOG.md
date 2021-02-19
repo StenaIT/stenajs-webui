@@ -19,6 +19,12 @@ Updated behaviour when selecting dates in popover.
   date range is invalid or startDate has not been selected.
   Then it moves to start date.
 
+## Next
+
+### grid-export
+
+- Add support for copy table content with default formatting (as well as other components) to clipboard.
+
 ## 7.3.0
 
 ### New component `ValueTable`

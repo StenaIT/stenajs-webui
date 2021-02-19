@@ -123,7 +123,7 @@
     },
     {
       "path": "./packages/grid-export/dist/*.js",
-      "maxSize": "3 kB"
+      "maxSize": "4 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",
