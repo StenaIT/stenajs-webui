@@ -1,7 +1,7 @@
 import { renderHtmlForStandardTable } from "./HtmlRenderer";
 import * as clipboard from "clipboard-polyfill";
 import { StandardTableConfig } from "@stenajs-webui/grid/dist/features/standard-table/config/StandardTableConfig";
-import { CustomCellFormatter } from "../transformers/ConfigTransformer";
+import { CustomCellFormatter } from "../../../common/CellFormatters";
 
 export async function copyContentToClipboard<
   TItem,

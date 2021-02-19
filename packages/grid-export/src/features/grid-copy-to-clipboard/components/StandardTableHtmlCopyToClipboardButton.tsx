@@ -2,14 +2,15 @@ import * as React from "react";
 import { useCallback, useState } from "react";
 import { StandardTableProps } from "@stenajs-webui/grid";
 import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
-import { CustomCellFormatters } from "../transformers/html/ConfigTransformer";
 import { copyContentToClipboard } from "../util/CopyContentToClipboard";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 export interface StandardTableHtmlCopyToClipboardButtonProps<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
-> extends Pick<
+>
+  extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
     >,

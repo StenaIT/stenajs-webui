@@ -4,13 +4,14 @@ import { downloadExcelForStandardTable } from "../util/ExcelDownloader";
 import { StandardTableProps } from "@stenajs-webui/grid";
 import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons/faFileDownload";
-import { CustomCellFormatters } from "../transformers/excel/ConfigTransformer";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 interface StandardTableExcelExportButtonProps<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
-> extends Pick<
+>
+  extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
     >,
