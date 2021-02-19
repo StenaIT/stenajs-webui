@@ -1,7 +1,7 @@
 import { StandardTableColumnConfig } from "@stenajs-webui/grid";
 import { format } from "date-fns";
 import { ZipCelXCell } from "zipcelx";
-import { CustomCellFormatter } from "./ConfigTransformer";
+import { CustomCellFormatter } from "../../../common/CellFormatters";
 
 export const transformItemToCell = <TItem, TItemValue>(
   item: TItem,

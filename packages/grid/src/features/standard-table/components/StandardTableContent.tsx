@@ -8,8 +8,7 @@ interface Props<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
->
-  extends Omit<
+> extends Omit<
     StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
     "tableContext" | "config"
   > {

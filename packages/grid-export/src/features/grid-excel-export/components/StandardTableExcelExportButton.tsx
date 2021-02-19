@@ -10,8 +10,7 @@ interface StandardTableExcelExportButtonProps<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
->
-  extends Pick<
+> extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
     >,

@@ -19,9 +19,13 @@ export const Demo: Story<TagProps> = (props) => <Tag {...props} />;
 
 export const Overview = () => (
   <Column>
-    {(["info", "error", "warning", "success", "passive"] as Array<
-      TagVariant
-    >).map((variant) => (
+    {([
+      "info",
+      "error",
+      "warning",
+      "success",
+      "passive",
+    ] as Array<TagVariant>).map((variant) => (
       <>
         <Text size={"large"}>{variant}</Text>
         <Space />

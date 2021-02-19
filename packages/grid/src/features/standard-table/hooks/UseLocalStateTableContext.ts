@@ -11,9 +11,7 @@ import { createStandardTableActions } from "../util/ActionsFactory";
 
 export const useLocalStateTableContext = <TColumnKey extends string>(
   tableId: string,
-  initialState: StandardTableState<
-    TColumnKey
-  > = createStandardTableInitialState<TColumnKey>()
+  initialState: StandardTableState<TColumnKey> = createStandardTableInitialState<TColumnKey>()
 ) => {
   const [state, dispatch] = useReducer<StandardTableReducer<TColumnKey>>(
     createStandardTableReducer<TColumnKey>(tableId),

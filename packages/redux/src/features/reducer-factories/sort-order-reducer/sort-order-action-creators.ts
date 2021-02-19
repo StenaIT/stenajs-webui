@@ -8,9 +8,9 @@ export interface SortOrderActions<TSortBy> {
   clearSortOrder: () => SortOrderClearSortOrderAction;
 }
 
-export const createSortOrderActions = <TSortBy>(): SortOrderActions<
+export const createSortOrderActions = <
   TSortBy
-> => ({
+>(): SortOrderActions<TSortBy> => ({
   sortBy: (sortBy, desc) => ({
     desc,
     sortBy,

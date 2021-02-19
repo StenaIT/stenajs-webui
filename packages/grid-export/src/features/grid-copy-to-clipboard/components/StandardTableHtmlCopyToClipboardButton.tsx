@@ -9,8 +9,7 @@ export interface StandardTableHtmlCopyToClipboardButtonProps<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
->
-  extends Pick<
+> extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
     >,
@@ -46,7 +45,7 @@ export function StandardTableHtmlCopyToClipboardButton<
 
     setContentCopied(true);
     setTimeout(() => setContentCopied(false), numTimeToRevertLabel);
-  }, [config, items, formatters]);
+  }, [config, items, formatters, numTimeToRevertLabel, renderContent]);
 
   return (
     <FlatButton

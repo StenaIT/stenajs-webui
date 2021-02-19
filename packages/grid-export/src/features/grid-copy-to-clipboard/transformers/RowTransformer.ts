@@ -4,7 +4,7 @@ import {
 } from "@stenajs-webui/grid";
 import { flatten } from "lodash";
 import { transformItemToCell } from "./CellTransformer";
-import { CustomCellFormatters } from "./ConfigTransformer";
+import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 export const transformTableRow = <
   TItem,
