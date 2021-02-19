@@ -7,6 +7,6 @@ export interface ActionDropdownContextValue {
   theme: ActionMenuTheme;
 }
 
-export const ActionMenuContext = React.createContext<ActionDropdownContextValue>(
-  { theme: defaultActionMenuTheme }
-);
+export const ActionMenuContext = React.createContext<
+  ActionDropdownContextValue
+>({ theme: defaultActionMenuTheme });
