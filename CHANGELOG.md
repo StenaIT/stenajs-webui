@@ -6,7 +6,7 @@
 
 - Add support for copy table content with default formatting (as well as other components) to clipboard.
 
-### `DateRangeDualTextInput`
+### DateRangeDualTextInput
 
 Updated behaviour when selecting dates in popover.
 
