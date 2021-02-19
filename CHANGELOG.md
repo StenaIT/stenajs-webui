@@ -1,14 +1,10 @@
 # Changelog
 
-## Next
+## 7.4.0
 
-### New hook `useDelayedFalse`
+### grid-export
 
-A hook that takes a boolean as argument and returns that boolean.
-When boolean turns false, it returns false after a certain delay.
-When boolean turns true, it returns true immediately.
-
-This is useful for delaying the removal of elements in the DOM.
+- Add support for copy table content with default formatting (as well as other components) to clipboard.
 
 ### `DateRangeDualTextInput`
 
@@ -19,11 +15,13 @@ Updated behaviour when selecting dates in popover.
   date range is invalid or startDate has not been selected.
   Then it moves to start date.
 
-## Next
+### New hook `useDelayedFalse`
 
-### grid-export
+A hook that takes a boolean as argument and returns that boolean.
+When boolean turns false, it returns false after a certain delay.
+When boolean turns true, it returns true immediately.
 
-- Add support for copy table content with default formatting (as well as other components) to clipboard.
+This is useful for delaying the removal of elements in the DOM.
 
 ## 7.3.0
 
