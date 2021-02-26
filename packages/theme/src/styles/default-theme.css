@@ -63,7 +63,7 @@
   --swui-field-text-color: #424551;
   --swui-field-text-color-disabled: var(--lhds-color-ui-700);
   --swui-field-text-spacing: 6px;
-  --swui-field-letter-spacing: 0px;
+  --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: 20px;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
