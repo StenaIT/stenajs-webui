@@ -28,7 +28,7 @@
   --swui-state-loading-light-color: var(--lhds-color-ui-100);
 
   /* Fonts */
-  --swui-font-primary: "Stena Sans", "Open Sans", system-ui;
+  --swui-font-primary: "Stena Sans", "Open Sans", Arial, sans-serif;
   --swui-font-weight-text: 400;
   --swui-font-weight-text-bold: 600;
   --swui-font-weight-link: 400;

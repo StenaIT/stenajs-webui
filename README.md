@@ -12,7 +12,7 @@ All components are available to see in Storybook.
 
 ## Packages
 
-| Package                                     | NPM version                                                                                                                                                                          |
+| Package                                     | NPM version                                                                                                                                                                         |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [calendar](packages/calendar/README.md)     | [![@stenajs-webui/calendar](https://img.shields.io/npm/v/@stenajs-webui/calendar?label=%40stenajs-webui%2Fcalendar)](https://www.npmjs.com/package/@stenajs-webui/calendar)         |
 | [core](packages/core/README.md)             | [![@stenajs-webui/core](https://img.shields.io/npm/v/@stenajs-webui/core?label=%40stenajs-webui%2Fcore)](https://www.npmjs.com/package/@stenajs-webui/core)                         |
@@ -26,7 +26,6 @@ All components are available to see in Storybook.
 | [select](packages/select/README.md)         | [![@stenajs-webui/select](https://img.shields.io/npm/v/@stenajs-webui/select?label=%40stenajs-webui%2Fselect)](https://www.npmjs.com/package/@stenajs-webui/select)                 |
 | [theme](packages/theme/README.md)           | [![@stenajs-webui/theme](https://img.shields.io/npm/v/@stenajs-webui/theme?label=%40stenajs-webui%2Ftheme)](https://www.npmjs.com/package/@stenajs-webui/theme)                     |
 | [tooltip](packages/tooltip/README.md)       | [![@stenajs-webui/tooltip](https://img.shields.io/npm/v/@stenajs-webui/tooltip?label=%40stenajs-webui%2Ftooltip)](https://www.npmjs.com/package/@stenajs-webui/tooltip)             |
-
 
 ## Status
 
@@ -105,13 +104,4 @@ See the `package.json` file for each package to see what dependencies are requir
 
 ### Add fonts
 
-The default font is `Open Sans`. You must make sure that it is available in your browser.
-
-An easy way to make it work is to add the following snippet to your applications HTML head.
-
-```
-<link
-  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
-  rel="stylesheet"
-/>
-```
+[See our fonts guide](FONTS.md) to use `Stena Sans` in your application.
