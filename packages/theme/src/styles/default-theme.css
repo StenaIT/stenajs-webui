@@ -1,12 +1,4 @@
 :root {
-  /* Text colors */
-  --swui-text-primary-color: var(--lhds-color-ui-700);
-  --swui-text-primary-color-light: var(--lhds-color-ui-400);
-  --swui-text-disabled-color: var(--lhds-color-ui-500);
-  --swui-text-disabled-color-light: var(--lhds-color-ui-300);
-  --swui-text-darkmode-primary-color: var(--lhds-color-ui-400);
-  --swui-text-darkmode-disabled-color: var(--lhds-color-ui-300);
-
   /* Generic colors */
   --swui-white: #fff;
   --swui-hidden: rgba(0, 0, 0, 0);
@@ -36,7 +28,7 @@
   --swui-state-loading-light-color: var(--lhds-color-ui-100);
 
   /* Fonts */
-  --swui-font-primary: "Open Sans", system-ui;
+  --swui-font-primary: "Stena Sans", "Open Sans", system-ui;
   --swui-font-weight-text: 400;
   --swui-font-weight-text-bold: 600;
   --swui-font-weight-link: 400;
@@ -53,6 +45,15 @@
   --swui-line-height-smaller: 14px;
   --swui-font-weight-inputs: 400;
 
+  /* Text */
+  --swui-text-primary-color: var(--lhds-color-ui-700);
+  --swui-text-primary-color-light: var(--lhds-color-ui-400);
+  --swui-text-disabled-color: var(--lhds-color-ui-500);
+  --swui-text-disabled-color-light: var(--lhds-color-ui-300);
+  --swui-text-darkmode-primary-color: var(--lhds-color-ui-400);
+  --swui-text-darkmode-disabled-color: var(--lhds-color-ui-300);
+  --swui-text-letter-spacing: 0;
+
   /* Animation speeds */
   --swui-animation-time-fast: 0.1s;
   --swui-animation-time-medium: 0.25s;
@@ -60,9 +61,9 @@
 
   /* Form fields */
   --swui-field-text-color: #424551;
-  --swui-field-text-color-disabled: #989cab;
+  --swui-field-text-color-disabled: var(--lhds-color-ui-700);
   --swui-field-text-spacing: 6px;
-  --swui-field-letter-spacing: -0.34px;
+  --swui-field-letter-spacing: 0px;
   --swui-field-text-line-height: 20px;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
@@ -78,6 +79,7 @@
   --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
+  --swui-field-placeholder-color: var(--lhds-color-ui-500);
 
   /* Borders */
   --swui-border-radius: 4px;
