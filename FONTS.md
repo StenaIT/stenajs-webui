@@ -1,8 +1,32 @@
 # Fonts guide
 
-To use Stena Sans, first [download the font from the brandportal](https://brandportal.stenaline.com).
+To use Stena Sans, first [download the font from the brandportal](https://brandportal.stenaline.com). (Choose to sign in via SSO)
 
 The zip contains `WOFF` and `WOFF2` folders, copy and paste the font files from these folders into the `public/fonts` folder in your app (create it if it doesn't exist).
+
+```
+public
+├── favicon.ico
+└── fonts
+    ├── StenaSans-Bold.woff
+    ├── StenaSans-Bold.woff2
+    ├── StenaSans-BoldCondensed.woff
+    ├── StenaSans-BoldCondensed.woff2
+    ├── StenaSans-BoldItalic.woff
+    ├── StenaSans-BoldItalic.woff2
+    ├── StenaSans-Light.woff
+    ├── StenaSans-Light.woff2
+    ├── StenaSans-LightItalic.woff
+    ├── StenaSans-LightItalic.woff2
+    ├── StenaSans-Medium.woff
+    ├── StenaSans-Medium.woff2
+    ├── StenaSans-MediumItalic.woff
+    ├── StenaSans-MediumItalic.woff2
+    ├── StenaSans-Regular.woff
+    ├── StenaSans-Regular.woff2
+    ├── StenaSans-RegularItalic.woff
+    └── StenaSans-RegularItalic.woff2
+```
 
 Copy this CSS into a `<style>` tag in your `public/index.html` to define the font in your app:
 
