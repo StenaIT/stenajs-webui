@@ -117,6 +117,8 @@ export const defaultSelectTheme: SelectTheme = {
     selectedItemBackgroundColor: "var(--swui-field-bg-enabled)",
     selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
     zIndex: 1,
+    width: "auto",
+    minWidth: "100%",
   },
   menuPortal: {
     zIndex: 1,
@@ -181,6 +183,7 @@ export const selectThemeDark: SelectTheme = {
     selectedItemBackgroundColor: "#4a5d73",
     selectedItemHoverBackgroundColor: "#6F7E90",
     zIndex: 1,
+    width: "auto",
   },
   menuPortal: {
     zIndex: 1,

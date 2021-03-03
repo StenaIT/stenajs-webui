@@ -12,8 +12,10 @@ export const Standard = () => (
     <Select
       options={[
         {
-          value: "Mattias",
-          label: "Mattias",
+          value:
+            "MattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias",
+          label:
+            "MattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias",
         },
         {
           value: "Johan",
