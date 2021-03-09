@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.5.0
+
+### New component `TimeInput`
+
+An input field with type=time.
+
+### New component `DateTimeInput`
+
+An input field with type=datetime-local.
+
+### TimeTextInput
+
+`TimeTextInput` has been deprecated.
+
 ## 7.4.0
 
 ### grid-export

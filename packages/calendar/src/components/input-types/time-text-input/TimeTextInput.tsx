@@ -17,6 +17,9 @@ export interface TimeTextInputProps extends Omit<TextInputProps, "onChange"> {
   variant?: TextInputProps["variant"];
 }
 
+/**
+ * @deprecated
+ */
 export const TimeTextInput: React.FC<TimeTextInputProps> = ({
   onValueChange,
   showPlaceholder = true,

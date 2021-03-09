@@ -13,6 +13,8 @@ export * from "./components/input-types/date-input/DateInput";
 export * from "./components/input-types/date-range-input/DateRangeInput";
 export * from "./components/input-types/date-text-input/DateTextInput";
 export * from "./components/input-types/time-text-input/TimeTextInput";
+export * from "./components/input-types/date-time-input/DateTimeInput";
+export * from "./components/input-types/time-input/TimeInput";
 export * from "./components/calendar/Calendar";
 export * from "./components/calendar/CalendarTheme";
 export * from "./components/calendar/renderers/CalendarDay";
