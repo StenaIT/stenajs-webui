@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### Updated `Select`
+
+- Select component now allows menu component to be wider than the input.
+
 ## 7.4.0
 
 ### grid-export
