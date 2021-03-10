@@ -12,10 +12,30 @@ export const Standard = () => (
     <Select
       options={[
         {
-          value:
-            "MattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias",
+          value: "Mattias",
+          label: "Mattias",
+        },
+        {
+          value: "Johan",
+          label: "Johan",
+        },
+        {
+          value: "Dennis the menace",
+          label: "Dennis the menace",
+        },
+      ]}
+    />
+  </div>
+);
+
+export const LongLabels = () => (
+  <div style={{ width: "400px" }}>
+    <Select
+      options={[
+        {
+          value: "lorem",
           label:
-            "MattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias MattiasMattiasMattiasMattiasMattiasMattiasMattias",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus massa, molestie ac sapien in, sodales interdum arcu",
         },
         {
           value: "Johan",
