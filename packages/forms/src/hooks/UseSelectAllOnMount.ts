@@ -18,7 +18,7 @@ export const useSelectAllOnMount = (
     if (
       ref.current?.type !== "text" &&
       ref.current?.type !== "search" &&
-      ref.current?.type !== "URL" &&
+      ref.current?.type !== "url" &&
       ref.current?.type !== "tel" &&
       ref.current?.type !== "password"
     ) {
