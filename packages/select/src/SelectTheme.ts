@@ -184,6 +184,7 @@ export const selectThemeDark: SelectTheme = {
     selectedItemHoverBackgroundColor: "#6F7E90",
     zIndex: 1,
     width: "auto",
+    minWidth: "100%",
   },
   menuPortal: {
     zIndex: 1,
