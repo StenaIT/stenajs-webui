@@ -119,6 +119,7 @@ export const defaultSelectTheme: SelectTheme = {
     zIndex: 1,
     width: "auto",
     minWidth: "100%",
+    whiteSpace: "nowrap",
   },
   menuPortal: {
     zIndex: 1,
@@ -185,6 +186,7 @@ export const selectThemeDark: SelectTheme = {
     zIndex: 1,
     width: "auto",
     minWidth: "100%",
+    whiteSpace: "nowrap",
   },
   menuPortal: {
     zIndex: 1,
