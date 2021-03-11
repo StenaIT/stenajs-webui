@@ -1,0 +1,13 @@
+.timePicker {
+  overflow: hidden;
+  width: 180px;
+}
+
+.timePickerColumn {
+  overflow-y: hidden;
+  flex: 1;
+
+  &:hover {
+    overflow-y: scroll;
+  }
+}

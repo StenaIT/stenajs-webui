@@ -2,17 +2,15 @@
 
 ## 7.5.0
 
-### New component `TimeInput`
-
-An input field with type=time.
-
 ### New component `DateTimeInput`
 
-An input field with type=datetime-local.
+An input field with both date and time.
+When entering date, a popover with a calendar is showing.
+When entering time, a popover with time picker is showing.
 
-### TimeTextInput
+### New component `TimePicker`
 
-`TimeTextInput` has been deprecated.
+A component for selecting hour and minute.
 
 ## 7.4.0
 
