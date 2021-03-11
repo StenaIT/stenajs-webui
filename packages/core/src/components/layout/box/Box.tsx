@@ -42,8 +42,10 @@ import {
   OverflowProps,
   position,
   PositionProps,
+  ResponsiveValue,
   right,
   RightProps,
+  system,
   TLengthStyledSystem,
   top,
   TopProps,
@@ -89,12 +91,12 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   /**
    * Adds spacing over and under content.
    */
-  spacing?: boolean | number;
+  spacing?: ResponsiveValue<boolean | TLengthStyledSystem>;
 
   /**
    * Adds spacing left and right of content.
    */
-  indent?: boolean | number;
+  indent?: ResponsiveValue<boolean | TLengthStyledSystem>;
 
   /**
    * Adds a shadow around the box.
@@ -161,11 +163,21 @@ const excludedProps = [
 const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
 
-const getPaddingRule = (props: InnerProps) =>
-  props.spacing || props.indent
-    ? `padding: ${numberOrZero(props.spacing) * (props.themeSpacing || 10)}px
-    ${numberOrZero(props.indent) * (props.themeIndent || 10)}px;`
-    : "";
+const indent = (themeSpacing: number) =>
+  system({
+    indent: {
+      properties: ["paddingLeft", "paddingRight"],
+      transform: (value: number) => numberOrZero(value) * themeSpacing,
+    },
+  });
+
+const spacing = (themeIndent: number) =>
+  system({
+    spacing: {
+      properties: ["paddingTop", "paddingBottom"],
+      transform: (value: number) => numberOrZero(value) * themeIndent,
+    },
+  });
 
 type InnerProps = BoxProps &
   BoxShadowProps &
@@ -193,7 +205,8 @@ const FlexBox = styled("div", {
   flex-direction: ${(props) =>
     (props.row && "row") || props.flexDirection || "column"};
   ${overflow};
-  ${getPaddingRule}
+  ${({ themeIndent }) => indent(themeIndent)}
+  ${({ themeSpacing }) => spacing(themeSpacing)}
   ${position};
   ${layout};
   ${zIndex};

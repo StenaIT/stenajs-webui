@@ -37,3 +37,27 @@ export const Standard = () => (
     </Row>
   </>
 );
+
+export const IndentSpacing = () => (
+  <>
+    <Spacing>
+      <Text>Change view port width to see width of items change.</Text>
+    </Spacing>
+    <Row flexWrap={"wrap"}>
+      {items.map((_, index) => (
+        <Box key={index} width={1} spacing={[0, 1, 2, 3]} indent={[0, 1, 2, 3]}>
+          <Box
+            borderColor={"#777"}
+            borderWidth={"1px"}
+            borderStyle={"solid"}
+            spacing
+            indent
+          >
+            <Text>hello</Text>
+            <Text>world</Text>
+          </Box>
+        </Box>
+      ))}
+    </Row>
+  </>
+);
