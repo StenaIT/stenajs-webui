@@ -57,3 +57,4 @@ export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";
 
 export * from "./utils/SwitchCaseExhauster";
+export * from "./utils/parsers/NumberParser";

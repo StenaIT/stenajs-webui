@@ -3,7 +3,7 @@ import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
-import { parseFloatElseUndefined } from "./util/NumericTextInputUtil";
+import { parseFloatElseUndefined } from "@stenajs-webui/core";
 import styles from "./NumericTextInput.module.css";
 import cx from "classnames";
 

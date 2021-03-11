@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { ValueAndOnValueChangeProps } from "../../types";
 import { NumericTextInputProps } from "../NumericTextInput";
-import { parseFloatElseUndefined } from "../util/NumericTextInputUtil";
+import { parseFloatElseUndefined } from "@stenajs-webui/core";
 
 export type NumericInputValueProps = ValueAndOnValueChangeProps<
   number | undefined

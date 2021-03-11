@@ -12,6 +12,13 @@ When entering time, a popover with time picker is showing.
 
 A component for selecting hour and minute.
 
+### New util functions in `core`
+
+- `parseFloatElseUndefined`
+- `parseIntElseUndefined`
+
+They return undefined if parse fails.
+
 ## 7.4.0
 
 ### grid-export

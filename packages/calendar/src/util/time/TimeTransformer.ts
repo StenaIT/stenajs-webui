@@ -1,4 +1,4 @@
-import { parseIntElseUndefined } from "../../../../forms/src/components/ui/numeric-text-input/util/NumericTextInputUtil";
+import { parseIntElseUndefined } from "@stenajs-webui/core";
 import { formatHours, formatMinutes } from "./TimeStringFormatValidator";
 
 export const transformNumberTimeToString = (
