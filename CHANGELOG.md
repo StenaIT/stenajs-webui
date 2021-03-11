@@ -1,5 +1,15 @@
 # Changelog
 
+## Upcoming
+
+### Updated `Select`
+
+- Select component now allows menu component to be wider than the input.
+
+### Breaking changes
+
+- Select options now has `whiteSpace` set to `nowrap`.
+
 ## 7.4.0
 
 ### grid-export
