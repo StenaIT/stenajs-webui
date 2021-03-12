@@ -2,6 +2,21 @@
 
 ## 8.0.0
 
+### Box
+
+The following props on `Box` are now responsive:
+
+- `row`
+- `indent`
+- `spacing`
+- `background`
+- `border`
+- `borderColor`
+- `display`
+- `shadow`
+
+They can be used by passing an array or dictionary with values instead of a single value.
+
 ### Themes
 
 Theming is no longer using React context.
