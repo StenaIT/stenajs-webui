@@ -4,6 +4,7 @@ import {
   useDelayedFalse,
   useMultiOnClickOutside,
 } from "@stenajs-webui/core";
+import { stenaArrowRight } from "@stenajs-webui/elements";
 import {
   TextInputProps,
   ValueAndOnValueChangeProps,
@@ -12,10 +13,10 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
-import { buildDayStateForSingleMonth } from "../../util/calendar/StateModifier";
-import { DateRangeOnChangeValue } from "../date-range/hooks/UseDateRangeOnClickDayHandler";
-import { CalendarWithMonthSwitcher } from "../month-switcher/CalendarWithMonthSwitcher";
-import { DateRangeDualTextField } from "./DateRangeDualTextField";
+import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
+import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
+import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { buildDayStateForSingleMonth } from "../../../util/calendar/StateModifier";
 import { useDateRangeEffects } from "./hooks/UseDateRangeEffects";
 import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
@@ -115,7 +116,12 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
           )
         }
       >
-        <DateRangeDualTextField
+        <DualTextInput
+          separatorIcon={stenaArrowRight}
+          typeLeft={"date"}
+          typeRight={"date"}
+          placeholderLeft={"Start date"}
+          placeholderRight={"End date"}
           onChangeLeft={inputLeftChangeHandler}
           onChangeRight={inputRightChangeHandler}
           onClickArrowDown={onClickArrowButton}
@@ -127,6 +133,8 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
           variant={startDateIsAfterEnd ? "error" : undefined}
+          widthLeft={"104px"}
+          widthRight={"104px"}
         />
       </Popover>
     </Box>

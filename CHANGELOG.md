@@ -28,6 +28,50 @@ All theme variables are using CSS properties.
 This also applies to components derived from `Box`,
 such as `Row` and `Column`.
 
+## 7.5.2
+
+# DateTimeInput
+
+- Fixed width of time input in DateTimeInput.
+- `onEsc` and `onEnter` are no longer required props.
+
+## 7.5.1
+
+# DateTimeInput
+
+Add props `onEsc` and `onEnter`. They are invoked on both input fields.
+
+# TimePicker
+
+Fix missing key in JSX.
+
+## 7.5.0
+
+### New component `DateTimeInput`
+
+An input field with both date and time.
+When entering date, a popover with a calendar is showing.
+When entering time, a popover with time picker is showing.
+
+### New component `TimePicker`
+
+A component for selecting hour and minute.
+
+### New util functions in `core`
+
+- `parseFloatElseUndefined`
+- `parseIntElseUndefined`
+
+They return undefined if parse fails.
+
+### Updated `Select`
+
+- Select component now allows menu component to be wider than the input.
+
+### Breaking changes
+
+- Select options now has `whiteSpace` set to `nowrap`.
+
 ## 7.4.0
 
 ### grid-export

@@ -10,7 +10,18 @@ export const useSelectAllOnMount = (
       return;
     }
 
-    if (ref.current?.type === "number" || ref.current?.type === "date") {
+    /*
+      `selectionStart`, `selectionEnd` properties and `setSelectionRange` method apply only to inputs of types text, search, URL, tel and password.
+      Chrome, starting from version 33, throws an exception while accessing those properties and method on the rest of input types.
+      https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
+     */
+    if (
+      ref.current?.type !== "text" &&
+      ref.current?.type !== "search" &&
+      ref.current?.type !== "url" &&
+      ref.current?.type !== "tel" &&
+      ref.current?.type !== "password"
+    ) {
       return;
     }
 

@@ -130,19 +130,19 @@ describe("TimeStringFormatValidator", () => {
     });
     it("Minute missing digit", () => {
       expect(formatTimeString("09:1")).toEqual({
-        time: "09:10",
+        time: "09:01",
         success: true,
       });
     });
     it("Minutes and hours missing digit", () => {
       expect(formatTimeString("9:1")).toEqual({
-        time: "09:10",
+        time: "09:01",
         success: true,
       });
     });
     it("Starting with separator", () => {
       expect(formatTimeString(":1")).toEqual({
-        time: "00:10",
+        time: "00:01",
         success: true,
       });
     });

@@ -14,14 +14,11 @@ Box is the main building stone which most other components are derived from.
 
 #### Components derived from Box
 
-- Absolute (same as Box, position is absolute)
-- Relative (same as Box, position is relative)
-
-- Column (same as Box, content is placed in a column)
-- Row (same as Box, content is placed in a row)
-- [Indent](src/components/layout/indent/Indent.md)
-- [Space](src/components/layout/space/Space.md)
-- [Spacing](src/components/layout/spacing/Spacing.md)
+* Column (same as Box, content is placed in a column)
+* Row (same as Box, content is placed in a row)
+* [Indent](src/components/layout/indent/Indent.md)
+* [Space](src/components/layout/space/Space.md)
+* [Spacing](src/components/layout/spacing/Spacing.md)
 
 ### Interaction
 
