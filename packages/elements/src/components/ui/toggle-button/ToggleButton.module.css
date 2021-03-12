@@ -1,0 +1,29 @@
+.toggleButton {
+  --swui-toggle-button-width: 28px;
+  --swui-toggle-button-height: 28px;
+  --swui-toggle-button-bg-pressed: var(--swui-primary-action-color);
+  --swui-toggle-button-bg-not-pressed: var(--lhds-color-blue-100);
+  --swui-toggle-button-text-color-pressed: var(--swui-white);
+  --swui-toggle-button-text-color-not-pressed: var(--swui-text-color);
+
+  /*
+   * Styling
+   */
+
+  width: var(--swui-toggle-button-width);
+  height: var(--swui-toggle-button-height);
+
+  background: var(--swui-toggle-button-bg-not-pressed);
+
+  .label {
+    color: var(--swui-toggle-button-text-color-not-pressed);
+  }
+
+  &.pressed {
+    background: var(--swui-toggle-button-bg-pressed);
+
+    .label {
+      color: var(--swui-toggle-button-text-color-pressed);
+    }
+  }
+}
