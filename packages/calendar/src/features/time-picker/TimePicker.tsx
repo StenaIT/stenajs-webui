@@ -20,7 +20,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({
   value,
   onValueChange,
 }) => {
-  const canScroll = useRef(true);
+  const canScrollRef = useRef(true);
   const [hour, setHour] = useState<number | undefined>(undefined);
   const [minute, setMinute] = useState<number | undefined>(undefined);
 
@@ -31,10 +31,6 @@ export const TimePicker: React.FC<TimePickerProps> = ({
       setMinute(minute);
     }
   }, [value]);
-
-  const onScrolledHandler = useCallback(() => {
-    canScroll.current = false;
-  }, [canScroll]);
 
   const onClickHour = useCallback(
     (h: number) => {
@@ -62,16 +58,14 @@ export const TimePicker: React.FC<TimePickerProps> = ({
         items={hours}
         onClick={onClickHour}
         selectedItem={hour}
-        canScroll={canScroll}
-        onScroll={onScrolledHandler}
+        canScrollRef={canScrollRef}
       />
       <Indent />
       <TimePickerColumn
         items={minutes}
         onClick={onClickMinutes}
         selectedItem={minute}
-        canScroll={canScroll}
-        onScroll={onScrolledHandler}
+        canScrollRef={canScrollRef}
       />
     </Row>
   );

@@ -1,15 +1,14 @@
 import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import { RefObject, useEffect, useRef } from "react";
+import { MutableRefObject, RefObject, useEffect, useRef } from "react";
 
 export interface TimePickerCellProps {
   item: number;
   selected?: boolean;
   onClick: (label: number) => void;
   columnRef: RefObject<HTMLDivElement>;
-  canScroll: RefObject<boolean>;
-  onScroll: () => void;
+  canScrollRef: MutableRefObject<boolean>;
 }
 
 export const TimePickerCell: React.FC<TimePickerCellProps> = ({
@@ -17,20 +16,24 @@ export const TimePickerCell: React.FC<TimePickerCellProps> = ({
   item,
   selected,
   columnRef,
-  canScroll,
-  onScroll,
+  canScrollRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(
     function scrollToSelectedItem() {
-      if (selected && columnRef.current && ref.current && canScroll.current) {
+      if (
+        selected &&
+        columnRef.current &&
+        ref.current &&
+        canScrollRef.current
+      ) {
         const targetScroll = ref.current.scrollHeight * Math.max(item - 2, 0);
         columnRef.current.scrollTo(0, targetScroll);
-        onScroll();
+        canScrollRef.current = false;
       }
     },
-    [columnRef, onScroll, item, selected, canScroll]
+    [columnRef, item, selected, canScrollRef]
   );
 
   return (
