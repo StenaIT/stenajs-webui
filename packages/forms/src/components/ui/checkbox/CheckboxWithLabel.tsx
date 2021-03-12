@@ -1,11 +1,11 @@
-import { Row, Space, Text, ThemeColorField } from "@stenajs-webui/core";
+import { Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { Ref } from "react";
 import { Checkbox, CheckboxProps } from "./Checkbox";
 
 export interface CheckboxWithLabelProps extends CheckboxProps {
   label?: string;
-  textColor?: ThemeColorField | string;
+  textColor?: string;
   wrapperRef?: Ref<HTMLDivElement>;
   inputRef?: Ref<HTMLInputElement>;
 }

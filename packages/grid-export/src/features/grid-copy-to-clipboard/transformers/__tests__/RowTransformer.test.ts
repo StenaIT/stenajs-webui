@@ -4,7 +4,7 @@ import {
   testGroupConfigs,
   TestItem,
   testItems,
-} from "../__mocks__/TestData";
+} from "../__mocks__/CopyToClipboardTestData";
 
 describe("RowTransformer", () => {
   describe("transformTableRow", () => {

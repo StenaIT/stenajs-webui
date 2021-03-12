@@ -10,7 +10,7 @@ All other packages depend on core.
 
 Box is the main building stone which most other components are derived from.
 
-* [Box](src/components/layout/box/Box.md)
+- [Box](src/components/layout/box/Box.md)
 
 #### Components derived from Box
 
@@ -22,17 +22,11 @@ Box is the main building stone which most other components are derived from.
 
 ### Interaction
 
-* [Clickable](src/components/interaction/Clickable.md)
+- [Clickable](src/components/interaction/Clickable.md)
 
 ### Decorators
 
-* SeparatorLine
-
-## Theme
-
-There are components and hooks available for the themes.
-
-See [`src/theme/Theme.md`](src/theme/Theme.md) for details.
+- SeparatorLine
 
 ## Hooks
 

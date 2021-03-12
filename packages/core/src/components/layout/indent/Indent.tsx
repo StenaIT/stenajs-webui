@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Box, BoxProps } from "../box/Box";
 import { forwardRef } from "react";
+import { Box, BoxProps } from "../box/Box";
+import { ResponsiveValue, TLengthStyledSystem } from "styled-system";
 
 export interface IndentProps extends BoxProps {
-  num?: number | boolean;
+  num?: ResponsiveValue<boolean | TLengthStyledSystem>;
 }
 
 export const Indent = forwardRef<HTMLDivElement, IndentProps>(function Indent(

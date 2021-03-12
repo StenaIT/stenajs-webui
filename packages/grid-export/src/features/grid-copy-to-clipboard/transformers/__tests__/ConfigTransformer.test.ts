@@ -2,7 +2,7 @@ import {
   testConfig,
   testConfigWithGroups,
   testItems,
-} from "../__mocks__/TestData";
+} from "../__mocks__/CopyToClipboardTestData";
 import { createHtmlConfig } from "../ConfigTransformer";
 
 const fullTable =

@@ -1,5 +1,37 @@
 # Changelog
 
+## 8.0.0
+
+### Box
+
+The following props on `Box` are now responsive:
+
+- `row`
+- `indent`
+- `spacing`
+- `background`
+- `border`
+- `borderColor`
+- `display`
+- `shadow`
+
+They can be used by passing an array or dictionary with values instead of a single value.
+
+### ToggleButton
+
+Design has been updated to use design system colors.
+
+### Themes
+
+Theming is no longer using React context.
+All theme variables are using CSS properties.
+
+### Breaking changes
+
+`Box` no longer has property `color`.
+This also applies to components derived from `Box`,
+such as `Row` and `Column`.
+
 ## 7.5.2
 
 # DateTimeInput

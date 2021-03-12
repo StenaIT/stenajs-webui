@@ -42,15 +42,15 @@
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
     "@types/lodash": ">=4.14.135",
-    "@types/react": ">=16.8.19",
+    "@types/react": ">=16.9.48",
     "@types/react-dom": ">=16.8.4",
-    "@types/styled-system": ">=5.0.1",
+    "@types/styled-system": ">=5.1.10",
     "csstype": ">=2.6.4",
     "lodash": ">=4.17.11",
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6",
-    "styled-system": ">=5.0.18"
+    "styled-system": ">=5.1.5"
   },
   "devDependencies": {
     "@emotion/core": "^10.0.10",
@@ -62,16 +62,16 @@
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.135",
-    "@types/react": "^16.8.19",
+    "@types/react": "^16.9.48",
     "@types/react-dom": "^16.8.4",
-    "@types/styled-system": "^5.0.1",
+    "@types/styled-system": "^5.1.10",
     "csstype": "^2.6.4",
     "enzyme": "^3.9.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-system": "^5.0.18"
+    "styled-system": "^5.1.5"
   },
   "files": [
     "dist"

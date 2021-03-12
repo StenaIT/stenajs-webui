@@ -3,12 +3,7 @@ import {
   FontAwesomeIcon,
   Props as FontAwesomeProps,
 } from "@fortawesome/react-fontawesome";
-import {
-  Box,
-  Omit,
-  ThemeColorField,
-  useMouseIsOver,
-} from "@stenajs-webui/core";
+import { Box, Omit, useMouseIsOver } from "@stenajs-webui/core";
 import * as React from "react";
 import { useRef } from "react";
 
@@ -16,8 +11,8 @@ export interface IconProps
   extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
   hoverIcon?: IconDefinition;
-  color?: ThemeColorField | string;
-  hoverColor?: ThemeColorField | string;
+  color?: string;
+  hoverColor?: string;
   size?: number;
 }
 

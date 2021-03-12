@@ -168,7 +168,7 @@ Example:
 
 ```
 export interface BackgroundTheme {
-    color: ThemeColorField | string;
+    color: string;
 }
 
 export const defaultBackgroundTheme: BackgroundTheme {

@@ -1,10 +1,8 @@
-import { ThemeColorField } from "@stenajs-webui/core";
-
 export interface NotificationTheme {
-  notificationBg: ThemeColorField | string;
-  notificationHoverBg: ThemeColorField | string;
-  notificationDismissedBg: ThemeColorField | string;
-  notificationDismissedHoverBg: ThemeColorField | string;
+  notificationBg: string;
+  notificationHoverBg: string;
+  notificationDismissedBg: string;
+  notificationDismissedHoverBg: string;
 }
 
 export const defaultNotificationTheme: NotificationTheme = {
