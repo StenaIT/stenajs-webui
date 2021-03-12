@@ -8,7 +8,7 @@ export interface TimePickerCellProps {
   selected?: boolean;
   onClick: (label: number) => void;
   columnRef: RefObject<HTMLDivElement>;
-  canScroll: boolean;
+  canScroll: RefObject<boolean>;
   onScroll: () => void;
 }
 
@@ -24,7 +24,7 @@ export const TimePickerCell: React.FC<TimePickerCellProps> = ({
 
   useEffect(
     function scrollToSelectedItem() {
-      if (selected && columnRef.current && ref.current && canScroll) {
+      if (selected && columnRef.current && ref.current && canScroll.current) {
         const targetScroll = ref.current.scrollHeight * Math.max(item - 2, 0);
         columnRef.current.scrollTo(0, targetScroll);
         onScroll();

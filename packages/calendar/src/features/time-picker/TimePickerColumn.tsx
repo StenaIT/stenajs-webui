@@ -1,5 +1,5 @@
 import { Column } from "@stenajs-webui/core";
-import { useRef } from "react";
+import { RefObject, useRef } from "react";
 import * as React from "react";
 import styles from "./TimePicker.module.css";
 import { TimePickerCell } from "./TimePickerCell";
@@ -8,7 +8,7 @@ interface Props {
   items: Array<number>;
   onClick: (item: number) => void;
   selectedItem: number | undefined;
-  canScroll: boolean;
+  canScroll: RefObject<boolean>;
   onScroll: () => void;
 }
 
