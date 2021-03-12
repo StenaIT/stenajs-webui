@@ -17,6 +17,10 @@ The following props on `Box` are now responsive:
 
 They can be used by passing an array or dictionary with values instead of a single value.
 
+### ToggleButton
+
+Design has been updated to use design system colors.
+
 ### Themes
 
 Theming is no longer using React context.
