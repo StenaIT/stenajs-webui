@@ -1,9 +1,7 @@
-import { ThemeColorField } from "@stenajs-webui/core";
-
 export interface ErrorPanelTheme {
   width: string;
   height: string;
-  backgroundColor: ThemeColorField | string;
+  backgroundColor: string;
 }
 
 export const defaultErrorPanelTheme: ErrorPanelTheme = {

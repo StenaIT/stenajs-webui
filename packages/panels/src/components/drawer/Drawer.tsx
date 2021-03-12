@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { DivProps, ThemeColorField, useThemeFields } from "@stenajs-webui/core";
+import { DivProps } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef } from "react";
 import * as ReactDOM from "react-dom";
@@ -10,7 +10,7 @@ export interface DrawerProps extends DivProps {
   /**
    * Background of the drawer
    */
-  background?: ThemeColorField | string;
+  background?: string;
 
   /**
    * Portal target, HTML element. If not set, portal is not used.
@@ -77,15 +77,6 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
   },
   ref
 ) {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        background,
-      },
-    },
-    [background]
-  );
-
   const drawer = (
     <DrawerWrapper
       ref={ref}
@@ -93,7 +84,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(
       slideFrom={slideFrom}
       width={width}
       zIndex={zIndex}
-      background={colors.background}
+      background={background}
       {...divProps}
     >
       {children}
