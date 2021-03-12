@@ -1,14 +1,5 @@
 import "@stenajs-webui/theme";
 
-export * from "./theme/hooks/UseTheme";
-export * from "./theme/hooks/UseThemeSelector";
-export * from "./theme/theme-types/ThemeColors";
-export * from "./theme/theme-types/ThemeFonts";
-export * from "./theme/theme-types/ThemeFontSizes";
-export * from "./theme/theme-types/ThemeFontWeights";
-export * from "./theme/theme-types/ThemeMetrics";
-export * from "./theme/theme-types/ThemeShadows";
-
 export * from "./components/decorators/separatorline/SeparatorLine";
 
 export * from "./components/interaction/Clickable";
@@ -30,13 +21,6 @@ export * from "./components/deprecated-text/StandardText";
 export * from "./components/deprecated-text/LargeText";
 export * from "./components/deprecated-text/HeaderText";
 export * from "./components/heading/Heading";
-
-export * from "./theme/ThemeContext";
-export * from "./theme/ThemeProvider";
-export * from "./theme/DefaultTheme";
-export * from "./theme/variations/externalTheme";
-export * from "./theme/variations/internalTheme";
-export * from "./theme/Theme";
 
 export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
