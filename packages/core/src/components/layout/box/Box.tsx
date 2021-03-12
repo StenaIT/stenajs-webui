@@ -43,7 +43,6 @@ import {
   right,
   RightProps,
   system,
-  textColor,
   TLengthStyledSystem,
   top,
   TopProps,
@@ -145,14 +144,7 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   focusWithinBorder?: BorderProperty<TLengthStyledSystem>;
 }
 
-const excludedProps = [
-  "spacing",
-  "indent",
-  "width",
-  "height",
-  "color",
-  "overflow",
-];
+const excludedProps = ["spacing", "indent", "width", "height", "overflow"];
 
 const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
@@ -194,8 +186,11 @@ export const Box = styled("div", {
   shouldForwardProp: (propName) =>
     isExcludedWebUiProp(propName) ? false : isPropValid(propName),
 })<InnerProps>`
+  --current-spacing: 0;
+  --current-indent: 0;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   ${box};
   ${background};
   ${border};
@@ -208,7 +203,6 @@ export const Box = styled("div", {
   ${borderStyle};
   ${borderWidth};
   ${boxShadow};
-  ${textColor}
   ${flexbox};
   ${overflow};
   ${position};
