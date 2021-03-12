@@ -1,4 +1,3 @@
-import { Box } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
@@ -9,7 +8,7 @@ export default {
   component: DateTimeInput,
   decorators: [
     (TheStory: Story) => (
-      <div style={{ marginBottom: "400px" }}>
+      <div style={{ marginBottom: "400px", display: "inline-block" }}>
         <TheStory />
       </div>
     ),
@@ -19,19 +18,11 @@ export default {
 export const Standard = () => {
   const [value, setValue] = useState<Date | undefined>(undefined);
 
-  return (
-    <Box width={"265px"}>
-      <DateTimeInput value={value} onValueChange={setValue} />
-    </Box>
-  );
+  return <DateTimeInput value={value} onValueChange={setValue} />;
 };
 
 export const PreselectedValue = () => {
   const [value, setValue] = useState<Date | undefined>(new Date());
 
-  return (
-    <Box width={"265px"}>
-      <DateTimeInput value={value} onValueChange={setValue} />
-    </Box>
-  );
+  return <DateTimeInput value={value} onValueChange={setValue} />;
 };

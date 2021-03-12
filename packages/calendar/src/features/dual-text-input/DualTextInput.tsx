@@ -3,6 +3,7 @@ import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import {
   Box,
+  BoxProps,
   ButtonElementProps,
   Indent,
   Row,
@@ -22,6 +23,8 @@ import { useCallback, useMemo, useRef } from "react";
 export interface DualTextInputProps {
   onEsc?: TextInputProps["onEsc"];
   onEnter?: TextInputProps["onEnter"];
+  widthLeft?: BoxProps["width"];
+  widthRight?: BoxProps["width"];
   valueLeft?: TextInputProps["value"];
   valueRight?: TextInputProps["value"];
   typeLeft?: TextInputProps["type"];
@@ -79,6 +82,8 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   variantRight,
   onBlur,
   showPresets,
+  widthLeft,
+  widthRight,
 }) => {
   const focusCounter = useRef(0);
 
@@ -169,7 +174,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
           </Row>
         }
       >
-        <Box width={"104px"}>
+        <Box width={widthLeft}>
           <TextInput
             onEsc={onEsc}
             onEnter={onEnter}
@@ -193,7 +198,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             color={"var(--lhds-color-ui-500)"}
           />
         </Row>
-        <Box width={"104px"}>
+        <Box width={widthRight}>
           <TextInput
             onEsc={onEsc}
             onEnter={onEnter}

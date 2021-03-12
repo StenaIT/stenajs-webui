@@ -26,8 +26,8 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 
 export interface DateTimeInputProps extends ValueAndOnValueChangeProps<Date> {
-  onEsc: () => void;
-  onEnter: () => void;
+  onEsc?: () => void;
+  onEnter?: () => void;
 }
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
@@ -161,6 +161,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           inputRefLeft={dateInputRef}
           inputRefRight={timeInputRef}
           valueRight={timeValue}
+          widthLeft={"104px"}
+          widthRight={"64px"}
         />
       </Popover>
     </Box>

@@ -133,6 +133,8 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
           variant={startDateIsAfterEnd ? "error" : undefined}
+          widthLeft={"104px"}
+          widthRight={"104px"}
         />
       </Popover>
     </Box>

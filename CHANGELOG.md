@@ -1,5 +1,12 @@
 # Changelog
 
+## 7.5.2
+
+# DateTimeInput
+
+- Fixed width of time input in DateTimeInput.
+- `onEsc` and `onEnter` are no longer required props.
+
 ## 7.5.1
 
 # DateTimeInput
