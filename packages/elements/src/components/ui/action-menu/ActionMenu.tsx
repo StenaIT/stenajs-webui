@@ -1,4 +1,4 @@
-import { BoxProps, Column, useThemeFields } from "@stenajs-webui/core";
+import { BoxProps, Column } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { ActionMenuTheme, defaultActionMenuTheme } from "./ActionMenuTheme";
@@ -17,18 +17,9 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
   width = "200px",
   shadow,
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        menuBackground: theme.menuBackground,
-      },
-    },
-    [theme]
-  );
-
   return (
     <Column
-      background={colors.menuBackground}
+      background={theme.menuBackground}
       borderRadius={theme.borderRadius}
       width={width}
       shadow={shadow}
