@@ -5,10 +5,7 @@ import {
   BorderColorProperty,
   BorderProperty,
   BoxShadowProperty,
-  ColorProperty,
 } from "csstype";
-import * as React from "react";
-import { forwardRef } from "react";
 import {
   background,
   BackgroundProps,
@@ -46,15 +43,13 @@ import {
   right,
   RightProps,
   system,
+  textColor,
   TLengthStyledSystem,
   top,
   TopProps,
   zIndex,
   ZIndexProps,
 } from "styled-system";
-import { useThemeSelector } from "../../../theme/hooks/UseThemeSelector";
-import { ThemeColorField } from "../../../theme/theme-types/ThemeColors";
-import { ThemeShadows } from "../../../theme/theme-types/ThemeShadows";
 import { DivProps } from "../../../types/ElementProps";
 
 interface StyledSystemProps
@@ -75,18 +70,19 @@ interface StyledSystemProps
     TopProps,
     BottomProps {}
 
-type ShadowType = keyof ThemeShadows;
+const shadows = {
+  box: "var(--swui-shadow-box)",
+  popover: "var(--swui-shadow-popover)",
+  modal: "var(--swui-shadow-modal)",
+};
+
+type ShadowType = keyof typeof shadows;
 
 export interface BoxProps extends StyledSystemProps, DivProps {
   /**
-   * Sets the text color of the box.
-   */
-  color?: ThemeColorField | ColorProperty;
-
-  /**
    * If true, children are placed in a row.
    */
-  row?: boolean;
+  row?: ResponsiveValue<boolean>;
 
   /**
    * Adds spacing over and under content.
@@ -101,54 +97,52 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   /**
    * Adds a shadow around the box.
    */
-  shadow?: ShadowType | BoxShadowProperty;
+  shadow?: ResponsiveValue<BoxShadowProperty | ShadowType>;
 
   /**
    * Sets the background of the box.
    */
-  background?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  background?: ResponsiveValue<BackgroundProperty<TLengthStyledSystem>>;
 
   /**
    * Sets the border of the box.
    */
-  border?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  border?: ResponsiveValue<BorderProperty<TLengthStyledSystem>>;
 
   /**
    * Sets the border color of the box.
    */
-  borderColor?: ThemeColorField | BorderColorProperty;
+  borderColor?: ResponsiveValue<BorderColorProperty>;
 
   /**
    * Sets the background of the box when hovering with mouse.
    */
-  hoverBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  hoverBackground?: BackgroundProperty<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when hovering with mouse.
    */
-  hoverBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  hoverBorder?: BorderProperty<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when the box is in focus.
    */
-  focusBackground?: ThemeColorField | BackgroundProperty<TLengthStyledSystem>;
+  focusBackground?: BackgroundProperty<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when the box is in focus.
    */
-  focusBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  focusBorder?: BorderProperty<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when focus is within the box.
    */
-  focusWithinBackground?:
-    | ThemeColorField
-    | BackgroundProperty<TLengthStyledSystem>;
+  focusWithinBackground?: BackgroundProperty<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when focus is within the box.
    */
-  focusWithinBorder?: ThemeColorField | BorderProperty<TLengthStyledSystem>;
+  focusWithinBorder?: BorderProperty<TLengthStyledSystem>;
 }
 
 const excludedProps = [
@@ -163,32 +157,46 @@ const excludedProps = [
 const isExcludedWebUiProp = (propName: string) =>
   excludedProps.indexOf(propName) !== -1;
 
-const indent = (themeSpacing: number) =>
-  system({
-    indent: {
-      properties: ["paddingLeft", "paddingRight"],
-      transform: (value: number) => numberOrZero(value) * themeSpacing,
-    },
-  });
+const numberOrZero = (num: number | boolean | undefined): number => {
+  if (num == null) {
+    return 0;
+  }
+  if (typeof num === "boolean") {
+    return num ? 1 : 0;
+  }
+  return num;
+};
 
-const spacing = (themeIndent: number) =>
-  system({
-    spacing: {
-      properties: ["paddingTop", "paddingBottom"],
-      transform: (value: number) => numberOrZero(value) * themeIndent,
-    },
-  });
+const box = system({
+  row: {
+    property: "flexDirection",
+    transform: (row: boolean) => (row ? "row" : "column"),
+  },
+  indent: {
+    // @ts-ignore
+    property: "--current-indent",
+    transform: numberOrZero,
+  },
+  spacing: {
+    // @ts-ignore
+    property: "--current-spacing",
+    transform: numberOrZero,
+  },
+  shadow: {
+    property: "boxShadow",
+    transform: (value) => shadows[value] ?? value,
+  },
+});
 
-type InnerProps = BoxProps &
-  BoxShadowProps &
-  BackgroundProps & { themeSpacing: number; themeIndent: number };
+type InnerProps = BoxProps & BoxShadowProps & BackgroundProps;
 
-const FlexBox = styled("div", {
+export const Box = styled("div", {
   shouldForwardProp: (propName) =>
     isExcludedWebUiProp(propName) ? false : isPropValid(propName),
 })<InnerProps>`
   box-sizing: border-box;
-  display: ${(props) => props.display || "flex"};
+  display: flex;
+  ${box};
   ${background};
   ${border};
   ${borderRight};
@@ -200,13 +208,9 @@ const FlexBox = styled("div", {
   ${borderStyle};
   ${borderWidth};
   ${boxShadow};
-  ${({ color }) => (color ? `color: ${color};` : "")}
+  ${textColor}
   ${flexbox};
-  flex-direction: ${(props) =>
-    (props.row && "row") || props.flexDirection || "column"};
   ${overflow};
-  ${({ themeIndent }) => indent(themeIndent)}
-  ${({ themeSpacing }) => spacing(themeSpacing)}
   ${position};
   ${layout};
   ${zIndex};
@@ -214,6 +218,9 @@ const FlexBox = styled("div", {
   ${right};
   ${top};
   ${bottom};
+
+  padding: calc(var(--current-spacing) * var(--swui-metrics-spacing))
+    calc(var(--current-indent) * var(--swui-metrics-indent));
   :hover {
     ${({ hoverBackground }) =>
       hoverBackground ? `background: ${hoverBackground};` : ""}
@@ -231,31 +238,3 @@ const FlexBox = styled("div", {
       focusWithinBorder ? `border: ${focusWithinBorder};` : ""}
   }
 `;
-
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({ shadow, background, border, borderColor, color, ...props }, ref) => {
-    const boxProps = useThemeSelector(
-      ({ shadows, colors, metrics }) => ({
-        boxShadow: (shadow && shadows[shadow]) ?? shadow,
-        background: (background && colors[background]) || background,
-        themeSpacing: metrics.spacing,
-        themeIndent: metrics.indent,
-        color: (color && colors[color]) || color,
-        border: (border && colors[border]) || border,
-        borderColor: (borderColor && colors[borderColor]) || borderColor,
-      }),
-      [shadow, background, border, borderColor, color]
-    );
-    return <FlexBox ref={ref} {...boxProps} {...props} />;
-  }
-);
-
-const numberOrZero = (num: number | boolean | undefined): number => {
-  if (num == null) {
-    return 0;
-  }
-  if (typeof num === "boolean") {
-    return num ? 1 : 0;
-  }
-  return num;
-};
