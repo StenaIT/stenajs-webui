@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.5.1
+
+# DateTimeInput
+
+Add props `onEsc` and `onEnter`. They are invoked on both input fields.
+
+# TimePicker
+
+Fix missing key in JSX.
+
 ## 7.5.0
 
 ### New component `DateTimeInput`

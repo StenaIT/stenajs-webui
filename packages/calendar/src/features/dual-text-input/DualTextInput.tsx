@@ -20,6 +20,8 @@ import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
 
 export interface DualTextInputProps {
+  onEsc?: TextInputProps["onEsc"];
+  onEnter?: TextInputProps["onEnter"];
   valueLeft?: TextInputProps["value"];
   valueRight?: TextInputProps["value"];
   typeLeft?: TextInputProps["type"];
@@ -49,6 +51,8 @@ export interface DualTextInputProps {
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
+  onEsc,
+  onEnter,
   onValueChangeLeft,
   onValueChangeRight,
   separatorIcon,
@@ -167,6 +171,8 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
       >
         <Box width={"104px"}>
           <TextInput
+            onEsc={onEsc}
+            onEnter={onEnter}
             onClick={onClickLeft}
             hideBorder
             placeholder={placeholderLeft}
@@ -189,6 +195,8 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         </Row>
         <Box width={"104px"}>
           <TextInput
+            onEsc={onEsc}
+            onEnter={onEnter}
             onClick={onClickRight}
             hideBorder
             placeholder={placeholderRight}

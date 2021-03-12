@@ -25,11 +25,16 @@ import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 
-export interface DateTimeInputProps extends ValueAndOnValueChangeProps<Date> {}
+export interface DateTimeInputProps extends ValueAndOnValueChangeProps<Date> {
+  onEsc: () => void;
+  onEnter: () => void;
+}
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   value,
   onValueChange,
+  onEnter,
+  onEsc,
 }) => {
   const popoverRef = useRef(null);
   const containerRef = useRef(null);
@@ -138,6 +143,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
         }
       >
         <DualTextInput
+          onEsc={onEsc}
+          onEnter={onEnter}
           separatorIcon={faClock}
           typeLeft={"date"}
           typeRight={"time"}

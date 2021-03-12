@@ -25,6 +25,7 @@ export const TimePickerColumn: React.FC<Props> = ({
     <Column className={styles.timePickerColumn} ref={columnRef}>
       {items.map((item) => (
         <TimePickerCell
+          key={item}
           item={item}
           onClick={onClick}
           selected={item === selectedItem}
