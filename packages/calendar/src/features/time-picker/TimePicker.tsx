@@ -1,8 +1,8 @@
-import { Indent, Row, useBoolean } from "@stenajs-webui/core";
+import { Indent, Row } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { range } from "lodash";
 import * as React from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   formatHours,
   formatMinutes,
@@ -20,7 +20,7 @@ export const TimePicker: React.FC<TimePickerProps> = ({
   value,
   onValueChange,
 }) => {
-  const [hasScrolled, setHasScrolled] = useBoolean(false);
+  const canScrollRef = useRef(true);
   const [hour, setHour] = useState<number | undefined>(undefined);
   const [minute, setMinute] = useState<number | undefined>(undefined);
 
@@ -58,16 +58,14 @@ export const TimePicker: React.FC<TimePickerProps> = ({
         items={hours}
         onClick={onClickHour}
         selectedItem={hour}
-        canScroll={!hasScrolled}
-        onScroll={setHasScrolled}
+        canScrollRef={canScrollRef}
       />
       <Indent />
       <TimePickerColumn
         items={minutes}
         onClick={onClickMinutes}
         selectedItem={minute}
-        canScroll={!hasScrolled}
-        onScroll={setHasScrolled}
+        canScrollRef={canScrollRef}
       />
     </Row>
   );
