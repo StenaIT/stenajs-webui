@@ -1,6 +1,23 @@
 # Changelog
 
-## Upcoming
+## 7.5.0
+
+### New component `DateTimeInput`
+
+An input field with both date and time.
+When entering date, a popover with a calendar is showing.
+When entering time, a popover with time picker is showing.
+
+### New component `TimePicker`
+
+A component for selecting hour and minute.
+
+### New util functions in `core`
+
+- `parseFloatElseUndefined`
+- `parseIntElseUndefined`
+
+They return undefined if parse fails.
 
 ### Updated `Select`
 

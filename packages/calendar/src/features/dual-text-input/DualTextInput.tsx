@@ -1,11 +1,6 @@
-import * as React from "react";
-import { useCallback, useMemo, useRef } from "react";
-import {
-  TextInput,
-  TextInputBox,
-  TextInputBoxProps,
-  TextInputProps,
-} from "@stenajs-webui/forms";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import {
   Box,
   ButtonElementProps,
@@ -13,14 +8,25 @@ import {
   Row,
   SeparatorLine,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon, stenaArrowRight } from "@stenajs-webui/elements";
-import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
+import { FlatButton, Icon } from "@stenajs-webui/elements";
+import {
+  TextInput,
+  TextInputBox,
+  TextInputBoxProps,
+  TextInputProps,
+} from "@stenajs-webui/forms";
 import { debounce } from "lodash";
+import * as React from "react";
+import { useCallback, useMemo, useRef } from "react";
 
-interface Props {
+export interface DualTextInputProps {
   valueLeft?: TextInputProps["value"];
   valueRight?: TextInputProps["value"];
+  typeLeft?: TextInputProps["type"];
+  typeRight?: TextInputProps["type"];
+  separatorIcon?: IconDefinition;
+  placeholderLeft?: TextInputProps["placeholder"];
+  placeholderRight?: TextInputProps["placeholder"];
   onValueChangeLeft?: TextInputProps["onValueChange"];
   onValueChangeRight?: TextInputProps["onValueChange"];
   onChangeLeft?: TextInputProps["onChange"];
@@ -42,9 +48,14 @@ interface Props {
   showPresets?: false;
 }
 
-export const DateRangeDualTextField: React.FC<Props> = ({
+export const DualTextInput: React.FC<DualTextInputProps> = ({
   onValueChangeLeft,
   onValueChangeRight,
+  separatorIcon,
+  placeholderLeft,
+  placeholderRight,
+  typeLeft,
+  typeRight,
   onChangeLeft,
   onChangeRight,
   valueLeft,
@@ -158,7 +169,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           <TextInput
             onClick={onClickLeft}
             hideBorder
-            placeholder={"Start date"}
+            placeholder={placeholderLeft}
             value={valueLeft}
             onValueChange={onValueChangeLeft}
             onChange={onChangeLeft}
@@ -166,12 +177,12 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onFocus={focusLeftHandler}
             inputRef={inputRefLeft}
             variant={variantLeft}
-            type={"date"}
+            type={typeLeft}
           />
         </Box>
         <Row indent={0.5} alignItems={"center"} justifyContent={"center"}>
           <Icon
-            icon={stenaArrowRight}
+            icon={separatorIcon}
             size={12}
             color={"var(--lhds-color-ui-500)"}
           />
@@ -180,7 +191,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           <TextInput
             onClick={onClickRight}
             hideBorder
-            placeholder={"End date"}
+            placeholder={placeholderRight}
             value={valueRight}
             onValueChange={onValueChangeRight}
             onChange={onChangeRight}
@@ -188,7 +199,7 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onFocus={focusRightHandler}
             inputRef={inputRefRight}
             variant={variantRight}
-            type={"date"}
+            type={typeRight}
           />
         </Box>
       </TextInputBox>
