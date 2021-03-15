@@ -15,7 +15,7 @@ export interface LinkProps extends AnchorElementProps {
   size?: LinkSize;
 }
 
-export type LinkVariant = "standard" | "caption" | "overline";
+export type LinkVariant = "standard" | "caption" | "overline" | "bold";
 export type LinkSize = "large" | "medium" | "small" | "smaller";
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
