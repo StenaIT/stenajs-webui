@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.0.1
+
+### DateTimeInput
+
+Add `onBlur` prop. Triggered when the whole component loses focus.
+
 ## 8.0.0
 
 ### Box
