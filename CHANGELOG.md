@@ -11,6 +11,10 @@ Add `autoFocus` props. Autofocuses on date part of the input.
 
 Add `autoFocus` props. Autofocuses on date part of the input.
 
+### Link
+
+Add variant `bold`.
+
 ## 8.0.0
 
 ### Box
