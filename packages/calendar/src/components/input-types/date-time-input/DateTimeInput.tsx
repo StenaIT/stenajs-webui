@@ -28,6 +28,7 @@ import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 export interface DateTimeInputProps extends ValueAndOnValueChangeProps<Date> {
   onEsc?: () => void;
   onEnter?: () => void;
+  onBlur?: () => void;
 }
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
@@ -35,6 +36,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onValueChange,
   onEnter,
   onEsc,
+  onBlur,
 }) => {
   const popoverRef = useRef(null);
   const containerRef = useRef(null);
@@ -145,6 +147,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
         <DualTextInput
           onEsc={onEsc}
           onEnter={onEnter}
+          onBlur={onBlur}
           separatorIcon={faClock}
           typeLeft={"date"}
           typeRight={"time"}
