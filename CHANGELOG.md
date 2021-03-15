@@ -6,6 +6,10 @@
 
 Add `onBlur` prop. Triggered when the whole component loses focus.
 
+### Link
+
+Add variant `bold`.
+
 ## 8.0.0
 
 ### Box
