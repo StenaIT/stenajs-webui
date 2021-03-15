@@ -5,6 +5,11 @@
 ### DateTimeInput
 
 Add `onBlur` prop. Triggered when the whole component loses focus.
+Add `autoFocus` props. Autofocuses on date part of the input.
+
+### DateRangeDualTextInput
+
+Add `autoFocus` props. Autofocuses on date part of the input.
 
 ## 8.0.0
 

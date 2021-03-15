@@ -51,9 +51,13 @@ export interface DualTextInputProps {
   variantRight?: TextInputProps["variant"];
   variant?: TextInputBoxProps["variant"];
   showPresets?: false;
+  autoFocusLeft?: boolean;
+  autoFocusRight?: boolean;
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
+  autoFocusLeft,
+  autoFocusRight,
   onEsc,
   onEnter,
   onValueChangeLeft,
@@ -189,6 +193,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             inputRef={inputRefLeft}
             variant={variantLeft}
             type={typeLeft}
+            autoFocus={autoFocusLeft}
           />
         </Box>
         <Row indent={0.5} alignItems={"center"} justifyContent={"center"}>
@@ -213,6 +218,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             inputRef={inputRefRight}
             variant={variantRight}
             type={typeRight}
+            autoFocus={autoFocusRight}
           />
         </Box>
       </TextInputBox>

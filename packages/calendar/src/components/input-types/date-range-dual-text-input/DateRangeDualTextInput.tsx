@@ -23,11 +23,20 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 
 export interface DateRangeDualTextInputProps
-  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {}
+  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {
+  onEsc?: () => void;
+  onEnter?: () => void;
+  onBlur?: () => void;
+  autoFocus?: boolean;
+}
 
 export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
   value,
   onValueChange,
+  autoFocus,
+  onBlur,
+  onEnter,
+  onEsc,
 }) => {
   const { startDate, endDate } = value || {};
 
@@ -117,6 +126,10 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
         }
       >
         <DualTextInput
+          autoFocusLeft={autoFocus}
+          onEsc={onEsc}
+          onEnter={onEnter}
+          onBlur={onBlur}
           separatorIcon={stenaArrowRight}
           typeLeft={"date"}
           typeRight={"date"}
