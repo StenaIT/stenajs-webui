@@ -25,7 +25,8 @@ import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 
-export interface DateTimeInputProps extends ValueAndOnValueChangeProps<Date> {
+export interface DateTimeInputProps
+  extends ValueAndOnValueChangeProps<Date | null> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;

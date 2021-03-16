@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.0.2
+
+### DateTimeInput
+
+Types now allow value=null.
+This makes sure that the component is control, while it has no value.
+
 ## 8.0.1
 
 ### DateTimeInput

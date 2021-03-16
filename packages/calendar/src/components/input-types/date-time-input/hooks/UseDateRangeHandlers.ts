@@ -4,7 +4,7 @@ import { DateTimeInputProps } from "../DateTimeInput";
 import { UseInputStatesResult } from "./UseInputStates";
 
 export const useDateRangeHandlers = (
-  date: Date | undefined,
+  date: Date | undefined | null,
   onValueChange: DateTimeInputProps["onValueChange"],
   {
     setDateInFocus,
@@ -20,7 +20,7 @@ export const useDateRangeHandlers = (
   dateInputRef: RefObject<HTMLInputElement>
 ) => {
   const onChangeDate = useCallback(
-    (incomingDate: Date | undefined) => {
+    (incomingDate: Date | null) => {
       if (!incomingDate) {
         return;
       }
@@ -92,8 +92,7 @@ export const useDateRangeHandlers = (
   const inputLeftChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
       if (ev.target.value[0] !== "0") {
-        const newDate = ev.target.valueAsDate;
-        onChangeDate(newDate ?? undefined);
+        onChangeDate(ev.target.valueAsDate);
       }
     },
     [onChangeDate]

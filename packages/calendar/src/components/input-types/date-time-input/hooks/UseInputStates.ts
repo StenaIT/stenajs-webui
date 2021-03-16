@@ -5,7 +5,7 @@ import { CalendarPanelType } from "../../../../features/calendar-with-month-year
 
 export type UseInputStatesResult = ReturnType<typeof useInputStates>;
 
-export const useInputStates = (date: Date | undefined) => {
+export const useInputStates = (date: Date | undefined | null) => {
   const [localDate, setLocalDate] = useState<Date | undefined>(undefined);
   const [localTime, setLocalTime] = useState<string | undefined>(undefined);
 
