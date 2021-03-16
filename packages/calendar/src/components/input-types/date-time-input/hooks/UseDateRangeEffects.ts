@@ -1,7 +1,7 @@
 import { RefObject, useEffect } from "react";
 
 export const useDateRangeEffects = (
-  date: Date | undefined,
+  date: Date | undefined | null,
   setDateInFocus: (date: Date) => void,
   dateInputRef: RefObject<HTMLInputElement>
 ) => {
