@@ -133,7 +133,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
                 <Column>
                   <Column overflow={"hidden"} height={"250px"}>
                     <TimePicker
-                      value={timeValue}
+                      value={timeValue ?? ""}
                       onValueChange={onChangeTime}
                     />
                   </Column>
@@ -167,7 +167,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           onClickRight={onFocusRight}
           inputRefLeft={dateInputRef}
           inputRefRight={timeInputRef}
-          valueRight={timeValue}
+          valueRight={timeValue ?? ""}
           widthLeft={"104px"}
           widthRight={"64px"}
         />
