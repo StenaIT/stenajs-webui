@@ -31,7 +31,8 @@ export const useUserInputHandlers = (
   const onClickDay = useCallback(
     (day: DayData) => {
       onChangeDate(day.date);
-      setTimeout(hideCalendar, 50);
+      hideCalendar();
+      showTimePicker();
     },
     [onChangeDate, hideCalendar]
   );

@@ -33,7 +33,7 @@ export const useDateRangeHandlers = (
         newDate.setMinutes(date.getMinutes());
 
         onValueChange?.(newDate);
-        setLocalDate(newDate);
+        setLocalDate(undefined);
       } else if (localTime) {
         // Only time has been selected
         const { minute, hour } = getHoursAndMinutesFromTimeString(localTime);
@@ -42,7 +42,7 @@ export const useDateRangeHandlers = (
         newDate.setMinutes(minute ?? 0);
 
         onValueChange?.(newDate);
-        setLocalDate(newDate);
+        setLocalDate(undefined);
       } else {
         // Nothing has been selected
         setLocalDate(newDate);
@@ -70,7 +70,7 @@ export const useDateRangeHandlers = (
         newDate.setMinutes(newTime.minute || 0);
 
         onValueChange?.(newDate);
-        setLocalTime(time);
+        setLocalTime(undefined);
       } else if (localDate) {
         // Only date has already been selected
         const newTime = getHoursAndMinutesFromTimeString(time);
@@ -80,7 +80,7 @@ export const useDateRangeHandlers = (
         newDate.setMinutes(newTime.minute || 0);
 
         onValueChange?.(newDate);
-        setLocalTime(time);
+        setLocalTime(undefined);
       } else {
         // Nothing has been selected
         setLocalTime(time);

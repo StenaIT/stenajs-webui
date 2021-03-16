@@ -1,3 +1,6 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
+import { Indent, Row } from "@stenajs-webui/core";
+import { FlatButton } from "@stenajs-webui/elements";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
@@ -16,13 +19,19 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<Date | undefined>(undefined);
+  const [value, setValue] = useState<Date | null>(null);
 
-  return <DateTimeInput value={value} onValueChange={setValue} />;
+  return (
+    <Row>
+      <DateTimeInput value={value} onValueChange={setValue} />
+      <Indent />
+      <FlatButton leftIcon={faTrash} onClick={() => setValue(null)} />
+    </Row>
+  );
 };
 
 export const PreselectedValue = () => {
-  const [value, setValue] = useState<Date | undefined>(new Date());
+  const [value, setValue] = useState<Date | null>(new Date());
 
   return <DateTimeInput value={value} onValueChange={setValue} />;
 };
