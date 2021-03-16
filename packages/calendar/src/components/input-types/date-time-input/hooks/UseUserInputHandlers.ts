@@ -34,7 +34,7 @@ export const useUserInputHandlers = (
       hideCalendar();
       showTimePicker();
     },
-    [onChangeDate, hideCalendar]
+    [onChangeDate, hideCalendar, showTimePicker]
   );
 
   const onClickArrowButton = useCallback(() => {
