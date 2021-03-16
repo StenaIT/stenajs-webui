@@ -4,7 +4,7 @@ import { DayData } from "../../../../util/calendar/CalendarDataFactory";
 import { UseInputStatesResult } from "./UseInputStates";
 
 export const useUserInputHandlers = (
-  onChangeDate: (incomingDate: Date | undefined) => void,
+  onChangeDate: (incomingDate: Date | null) => void,
   dateInputRef: RefObject<HTMLInputElement>,
   showCalendar: () => void,
   hideCalendar: () => void,
