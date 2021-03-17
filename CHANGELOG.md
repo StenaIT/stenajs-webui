@@ -10,6 +10,10 @@
 
 Increased contrast in: `Label`, `ValueTable` and input placeholders.
 
+## Fixes
+
+Remove letter-spacing override done by setting text size.
+
 ## 8.0.2
 
 ### DateTimeInput
