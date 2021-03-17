@@ -8,7 +8,8 @@
 
 ## Design changes
 
-Increased contrast in: `Label`, `ValueTable` and input placeholders.
+- Increased contrast in: `Label`, `ValueTable` and input placeholders.
+- Buttons now have a `width` prop which is responsive according to styled-system.
 
 ## 8.0.2
 
