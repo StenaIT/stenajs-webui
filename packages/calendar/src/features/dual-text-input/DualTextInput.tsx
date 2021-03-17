@@ -1,26 +1,37 @@
-import * as React from "react";
-import { useCallback, useMemo, useRef } from "react";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
+import {
+  Box,
+  BoxProps,
+  ButtonElementProps,
+  Indent,
+  Row,
+  SeparatorLine,
+} from "@stenajs-webui/core";
+import { FlatButton, Icon } from "@stenajs-webui/elements";
 import {
   TextInput,
   TextInputBox,
   TextInputBoxProps,
   TextInputProps,
 } from "@stenajs-webui/forms";
-import {
-  Box,
-  ButtonElementProps,
-  Indent,
-  Row,
-  SeparatorLine,
-} from "@stenajs-webui/core";
-import { FlatButton, Icon, stenaArrowRight } from "@stenajs-webui/elements";
-import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import { debounce } from "lodash";
+import * as React from "react";
+import { useCallback, useMemo, useRef } from "react";
 
-interface Props {
+export interface DualTextInputProps {
+  onEsc?: TextInputProps["onEsc"];
+  onEnter?: TextInputProps["onEnter"];
+  widthLeft?: BoxProps["width"];
+  widthRight?: BoxProps["width"];
   valueLeft?: TextInputProps["value"];
   valueRight?: TextInputProps["value"];
+  typeLeft?: TextInputProps["type"];
+  typeRight?: TextInputProps["type"];
+  separatorIcon?: IconDefinition;
+  placeholderLeft?: TextInputProps["placeholder"];
+  placeholderRight?: TextInputProps["placeholder"];
   onValueChangeLeft?: TextInputProps["onValueChange"];
   onValueChangeRight?: TextInputProps["onValueChange"];
   onChangeLeft?: TextInputProps["onChange"];
@@ -40,11 +51,22 @@ interface Props {
   variantRight?: TextInputProps["variant"];
   variant?: TextInputBoxProps["variant"];
   showPresets?: false;
+  autoFocusLeft?: boolean;
+  autoFocusRight?: boolean;
 }
 
-export const DateRangeDualTextField: React.FC<Props> = ({
+export const DualTextInput: React.FC<DualTextInputProps> = ({
+  autoFocusLeft,
+  autoFocusRight,
+  onEsc,
+  onEnter,
   onValueChangeLeft,
   onValueChangeRight,
+  separatorIcon,
+  placeholderLeft,
+  placeholderRight,
+  typeLeft,
+  typeRight,
   onChangeLeft,
   onChangeRight,
   valueLeft,
@@ -64,6 +86,8 @@ export const DateRangeDualTextField: React.FC<Props> = ({
   variantRight,
   onBlur,
   showPresets,
+  widthLeft,
+  widthRight,
 }) => {
   const focusCounter = useRef(0);
 
@@ -154,11 +178,13 @@ export const DateRangeDualTextField: React.FC<Props> = ({
           </Row>
         }
       >
-        <Box width={"104px"}>
+        <Box width={widthLeft}>
           <TextInput
+            onEsc={onEsc}
+            onEnter={onEnter}
             onClick={onClickLeft}
             hideBorder
-            placeholder={"Start date"}
+            placeholder={placeholderLeft}
             value={valueLeft}
             onValueChange={onValueChangeLeft}
             onChange={onChangeLeft}
@@ -166,21 +192,24 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onFocus={focusLeftHandler}
             inputRef={inputRefLeft}
             variant={variantLeft}
-            type={"date"}
+            type={typeLeft}
+            autoFocus={autoFocusLeft}
           />
         </Box>
         <Row indent={0.5} alignItems={"center"} justifyContent={"center"}>
           <Icon
-            icon={stenaArrowRight}
+            icon={separatorIcon}
             size={12}
             color={"var(--lhds-color-ui-500)"}
           />
         </Row>
-        <Box width={"104px"}>
+        <Box width={widthRight}>
           <TextInput
+            onEsc={onEsc}
+            onEnter={onEnter}
             onClick={onClickRight}
             hideBorder
-            placeholder={"End date"}
+            placeholder={placeholderRight}
             value={valueRight}
             onValueChange={onValueChangeRight}
             onChange={onChangeRight}
@@ -188,7 +217,8 @@ export const DateRangeDualTextField: React.FC<Props> = ({
             onFocus={focusRightHandler}
             inputRef={inputRefRight}
             variant={variantRight}
-            type={"date"}
+            type={typeRight}
+            autoFocus={autoFocusRight}
           />
         </Box>
       </TextInputBox>

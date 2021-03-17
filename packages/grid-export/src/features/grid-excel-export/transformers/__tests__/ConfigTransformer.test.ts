@@ -2,7 +2,7 @@ import {
   testConfig,
   testConfigWithGroups,
   testItems,
-} from "../__mocks__/TestData";
+} from "../__mocks__/ExcelExportTestData";
 import { createZipcelxConfig } from "../ConfigTransformer";
 
 describe("ConfigTransformer", () => {

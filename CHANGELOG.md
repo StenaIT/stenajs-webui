@@ -1,5 +1,113 @@
 # Changelog
 
+## Upcoming
+
+## Font changes
+
+- Default primary font is now Stena Sans, with Open Sans fallback.
+
+## Design changes
+
+Increased contrast in: `Label`, `ValueTable` and input placeholders.
+
+## 8.0.2
+
+### DateTimeInput
+
+Types now allow value=null.
+This makes sure that the component is control, while it has no value.
+
+## 8.0.1
+
+### DateTimeInput
+
+Add `onBlur` prop. Triggered when the whole component loses focus.
+Add `autoFocus` props. Autofocuses on date part of the input.
+
+### DateRangeDualTextInput
+
+Add `autoFocus` props. Autofocuses on date part of the input.
+
+### Link
+
+Add variant `bold`.
+
+## 8.0.0
+
+### Box
+
+The following props on `Box` are now responsive:
+
+- `row`
+- `indent`
+- `spacing`
+- `background`
+- `border`
+- `borderColor`
+- `display`
+- `shadow`
+
+They can be used by passing an array or dictionary with values instead of a single value.
+
+### ToggleButton
+
+Design has been updated to use design system colors.
+
+### Themes
+
+Theming is no longer using React context.
+All theme variables are using CSS properties.
+
+### Breaking changes
+
+`Box` no longer has property `color`.
+This also applies to components derived from `Box`,
+such as `Row` and `Column`.
+
+## 7.5.2
+
+# DateTimeInput
+
+- Fixed width of time input in DateTimeInput.
+- `onEsc` and `onEnter` are no longer required props.
+
+## 7.5.1
+
+# DateTimeInput
+
+Add props `onEsc` and `onEnter`. They are invoked on both input fields.
+
+# TimePicker
+
+Fix missing key in JSX.
+
+## 7.5.0
+
+### New component `DateTimeInput`
+
+An input field with both date and time.
+When entering date, a popover with a calendar is showing.
+When entering time, a popover with time picker is showing.
+
+### New component `TimePicker`
+
+A component for selecting hour and minute.
+
+### New util functions in `core`
+
+- `parseFloatElseUndefined`
+- `parseIntElseUndefined`
+
+They return undefined if parse fails.
+
+### Updated `Select`
+
+- Select component now allows menu component to be wider than the input.
+
+### Breaking changes
+
+- Select options now has `whiteSpace` set to `nowrap`.
+
 ## 7.4.0
 
 ### grid-export

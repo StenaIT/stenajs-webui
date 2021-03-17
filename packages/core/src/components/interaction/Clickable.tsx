@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import * as React from "react";
 import { CSSProperties, forwardRef, MouseEventHandler } from "react";
-import { useThemeFields } from "../../theme/hooks/UseThemeSelector";
-import { ThemeColorField } from "../../theme/theme-types/ThemeColors";
 import { ButtonElementProps } from "../../types/ElementProps";
 
 export interface ClickableProps extends ButtonElementProps {
@@ -27,15 +25,15 @@ export interface ClickableProps extends ButtonElementProps {
   /**
    * Sets the background of the box.
    */
-  background?: ThemeColorField | string;
+  background?: string;
   /**
    * Sets the background of the box when the box is in focus.
    */
-  focusBackground?: ThemeColorField | string;
+  focusBackground?: string;
   /**
    * Sets the background of the box when hovering with mouse.
    */
-  hoverBackground?: ThemeColorField | string;
+  hoverBackground?: string;
   /**
    * The width.
    */
@@ -55,9 +53,9 @@ interface ClickableElementProps {
   opacityOnHover?: boolean;
   disableFocusHighlight?: boolean;
   pointer?: boolean;
-  background?: ThemeColorField | string;
-  focusBackground?: ThemeColorField | string;
-  hoverBackground?: ThemeColorField | string;
+  background?: string;
+  focusBackground?: string;
+  hoverBackground?: string;
   width?: string;
   height?: string;
   borderRadius?: string;
@@ -113,17 +111,8 @@ export const Clickable = forwardRef<HTMLButtonElement, ClickableProps>(
     },
     ref
   ) => {
-    const { colors } = useThemeFields(
-      {
-        colors: {
-          background: background,
-          hoverBackground: hoverBackground,
-          focusBackground: focusBackground,
-        },
-      },
-      [background, hoverBackground, focusBackground]
-    );
     const hasClickHandler = !!(onClick || onDblClick);
+
     return (
       <ClickableElement
         opacityOnHover={opacityOnHover}
@@ -135,9 +124,9 @@ export const Clickable = forwardRef<HTMLButtonElement, ClickableProps>(
         disableFocusHighlight={disableFocusHighlight}
         pointer={hasClickHandler && !disablePointer}
         ref={ref}
-        background={colors.background}
-        hoverBackground={colors.hoverBackground}
-        focusBackground={colors.focusBackground}
+        background={background}
+        hoverBackground={hoverBackground}
+        focusBackground={focusBackground}
         type={type}
         {...restProps}
       >

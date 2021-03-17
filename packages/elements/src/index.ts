@@ -25,7 +25,6 @@ export * from "./components/ui/label/Label";
 export * from "./components/ui/link/Link";
 export * from "./components/ui/badge/Badge";
 export * from "./components/ui/badge/WithBadge";
-export * from "./components/ui/toggle-button/ToggleButtonTheme";
 export * from "./components/ui/toggle-button/ToggleButton";
 export * from "./components/ui/action-menu/ActionDropdown";
 export * from "./components/ui/action-menu/ActionDropdownTheme";

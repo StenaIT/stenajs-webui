@@ -3,6 +3,11 @@ import * as React from "react";
 import { useState } from "react";
 import { ToggleButton } from "./ToggleButton";
 
+export default {
+  title: "elements/ToggleButton",
+  component: ToggleButton,
+};
+
 interface State {
   mon?: boolean;
   tue?: boolean;
@@ -12,11 +17,6 @@ interface State {
   sat?: boolean;
   sun?: boolean;
 }
-
-export default {
-  title: "elements/ToggleButton",
-  component: ToggleButton,
-};
 
 export const Standard = () => {
   const [state, setState] = useState<State>({});

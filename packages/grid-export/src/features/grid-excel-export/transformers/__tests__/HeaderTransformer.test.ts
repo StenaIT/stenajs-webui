@@ -2,7 +2,7 @@ import {
   testConfig,
   testGroupConfigs,
   testGroupConfigsWithGroups,
-} from "../__mocks__/TestData";
+} from "../__mocks__/ExcelExportTestData";
 import {
   transformGroupHeaders,
   transformTableHeaders,

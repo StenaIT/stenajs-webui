@@ -1,14 +1,13 @@
-import { ThemeColorField } from "@stenajs-webui/core";
 import { ActionMenuTheme, defaultActionMenuTheme } from "./ActionMenuTheme";
 
 export interface ActionDropdownTheme extends ActionMenuTheme {
-  background?: ThemeColorField | string;
-  backgroundDisabled?: ThemeColorField | string;
-  textColor?: ThemeColorField | string;
-  textColorDisabled?: ThemeColorField | string;
-  expandIconColor: ThemeColorField | string;
-  expandIconColorDisabled: ThemeColorField | string;
-  expandIconColorFocus: ThemeColorField | string;
+  background?: string;
+  backgroundDisabled?: string;
+  textColor?: string;
+  textColorDisabled?: string;
+  expandIconColor: string;
+  expandIconColorDisabled: string;
+  expandIconColorFocus: string;
   height: string;
 }
 

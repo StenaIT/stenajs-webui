@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "7.4.0",
+  "version": "8.0.3",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -31,15 +31,15 @@
     "@emotion/core": ">=10.0.10",
     "@emotion/styled": ">=10.0.10",
     "@types/lodash": ">=4.14.135",
-    "@types/react": ">=16.8.19",
+    "@types/react": ">=16.9.48",
     "@types/react-dom": ">=16.8.4",
-    "@types/styled-system": ">=5.0.1",
+    "@types/styled-system": ">=5.1.10",
     "csstype": ">=2.6.4",
     "lodash": ">=4.17.11",
     "prop-types": ">=15.5.4",
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6",
-    "styled-system": ">=5.0.18"
+    "styled-system": ">=5.1.5"
   },
   "devDependencies": {
     "@emotion/core": "^10.0.10",
@@ -47,15 +47,15 @@
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.135",
-    "@types/react": "^16.8.19",
+    "@types/react": "^16.9.48",
     "@types/react-dom": "^16.8.4",
-    "@types/styled-system": "^5.0.1",
+    "@types/styled-system": "^5.1.10",
     "csstype": "^2.6.4",
     "lodash": "^4.17.11",
     "prop-types": "^15.5.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-system": "^5.0.18"
+    "styled-system": "^5.1.5"
   },
   "files": [
     "dist"
@@ -63,7 +63,7 @@
   "gitHead": "2af0da486f1a2c591f05a82b9d268897479706f9",
   "dependencies": {
     "@emotion/is-prop-valid": "^0.8.2",
-    "@stenajs-webui/theme": "7.4.0",
+    "@stenajs-webui/theme": "8.0.3",
     "classnames": "^2.2.6"
   }
 }

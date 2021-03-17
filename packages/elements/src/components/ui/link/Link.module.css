@@ -4,7 +4,7 @@
   --swui-link-font-family: var(--swui-font-primary);
   --swui-link-font-weight: var(--swui-font-weight-link);
   --swui-link-text-decoration: underline;
-  --swui-link-letter-spacing: -0.34px;
+  --swui-link-letter-spacing: var(--swui-text-letter-spacing);
   --swui-link-color-hover: var(--lhds-color-blue-300);
   --swui-link-color-active: var(--swui-primary-action-color-active);
   --swui-link-color-focus: var(--swui-primary-action-color-focus);
@@ -17,6 +17,7 @@
   --current-font-size: var(--swui-font-size-medium);
   --current-line-height: var(--swui-line-height-medium);
   --current-letter-spacing: var(--swui-link-letter-spacing);
+  --current-font-weight: var(--swui-link-font-weight);
 
   /* Styling */
   font-size: var(--current-font-size);
@@ -24,7 +25,7 @@
   color: var(--current-color);
   letter-spacing: var(--current-letter-spacing);
   font-family: var(--swui-link-font-family);
-  font-weight: var(--swui-link-font-weight);
+  font-weight: var(--current-font-weight);
 
   box-sizing: border-box;
   outline: 1px dashed var(--current-focus-highlight-color);
@@ -61,6 +62,10 @@
   }
 
   &.standard {
+  }
+
+  &.bold {
+    --current-font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.caption {

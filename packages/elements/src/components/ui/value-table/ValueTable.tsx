@@ -32,7 +32,7 @@ export const ValueTable: React.FC<ValueTableProps> = ({
       </table>
       {footer && (
         <Row spacing>
-          <Text size={"small"} color={cssColor("--lhds-color-ui-500")}>
+          <Text size={"small"} color={cssColor("--lhds-color-ui-600")}>
             {footer}
           </Text>
         </Row>

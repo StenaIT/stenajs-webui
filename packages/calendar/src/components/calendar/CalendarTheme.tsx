@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { TextProps, Theme } from "@stenajs-webui/core";
+import { TextProps } from "@stenajs-webui/core";
 import { CSSProperties } from "react";
 import { DayState, DayStateHighlight } from "../../types/CalendarTypes";
 
@@ -210,6 +210,3 @@ export const extranetCalendarTheme: CalendarTheme = {
   width: "37px",
   height: "37px",
 };
-
-export const resolveThemeColor = (s: string, theme: Theme): string =>
-  theme.colors[s] || s;

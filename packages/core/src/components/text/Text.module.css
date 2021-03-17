@@ -5,7 +5,6 @@
   --swui-text-color-overline: var(--lhds-color-ui-600);
   --swui-text-font-family: var(--swui-font-primary);
   --swui-text-font-weight: var(--swui-font-weight-text);
-  --swui-text-letter-spacing: -0.34px;
 
   /* Current */
   --current-color: var(--swui-text-color);

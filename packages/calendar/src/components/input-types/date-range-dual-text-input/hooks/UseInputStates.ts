@@ -1,7 +1,7 @@
 import { useBoolean } from "@stenajs-webui/core";
 import { useState } from "react";
-import { DateRangeFocusedInput } from "../../../components/calendar-types/date-range-calendar/DateRangeCalendar";
-import { CalendarPanelType } from "../../calendar-with-month-year-pickers/CalendarPanelType";
+import { DateRangeFocusedInput } from "../../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { CalendarPanelType } from "../../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 
 export type UseInputStatesResult = ReturnType<typeof useInputStates>;
 
