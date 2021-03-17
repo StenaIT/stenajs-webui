@@ -1,5 +1,15 @@
 # Changelog
 
+## Upcoming
+
+## Font changes
+
+- Default primary font is now Stena Sans, with Open Sans fallback.
+
+## Design changes
+
+Increased contrast in: `Label`, `ValueTable` and input placeholders.
+
 ## 8.0.2
 
 ### DateTimeInput
