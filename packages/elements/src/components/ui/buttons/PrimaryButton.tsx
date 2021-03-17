@@ -14,9 +14,7 @@ export interface PrimaryButtonProps
     ButtonElementProps,
     WidthProps {}
 
-const Button = styled.button`
-  ${width}
-`;
+const Button = styled.button(width);
 
 export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
   function PrimaryButton(
