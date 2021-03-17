@@ -8,7 +8,7 @@
   --swui-textinput-font-size: var(--swui-font-size-inputs);
   --swui-textinput-font-family: var(--swui-font-input);
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
-  --swui-textinput-placeholder-color: var(--swui-text-disabled-color);
+  --swui-textinput-placeholder-color: var(--swui-field-placeholder-color);
   --swui-textinput-animation-time: var(--swui-animation-time-medium);
   --swui-textinput-icon-color: var(--swui-field-border-color-disabled);
   --swui-textinput-icon-hover-color: var(--swui-primary-action-color);

@@ -105,13 +105,4 @@ See the `package.json` file for each package to see what dependencies are requir
 
 ### Add fonts
 
-The default font is `Open Sans`. You must make sure that it is available in your browser.
-
-An easy way to make it work is to add the following snippet to your applications HTML head.
-
-```
-<link
-  href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
-  rel="stylesheet"
-/>
-```
+[See our fonts guide](FONTS.md) to use `Stena Sans` in your application.

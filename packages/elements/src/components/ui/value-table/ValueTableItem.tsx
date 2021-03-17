@@ -48,7 +48,7 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
           indent={labelIndent}
         >
           <Text
-            color={cssColor("--lhds-color-ui-500")}
+            color={cssColor("--lhds-color-ui-600")}
             variant={"bold"}
             whiteSpace={"nowrap"}
           >

@@ -4,7 +4,7 @@
   --swui-chip-line-height: var(--swui-line-height-small);
   --swui-chip-font-weight: var(--swui-font-weight-text);
   --swui-chip-font-family: var(--swui-font-primary);
-  --swui-chip-letter-spacing: -0.34px;
+  --swui-chip-letter-spacing: var(--swui-text-letter-spacing);
   --swui-chip-height: 24px;
   --swui-chip-border-radius: var(--swui-border-radius);
 

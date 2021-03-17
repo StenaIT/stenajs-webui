@@ -139,6 +139,7 @@
     &.groupHeading {
       border: none;
       font-size: var(--swui-collapsible-groupheading-font-size);
+      font-family: var(--swui-font-primary);
       color: var(--swui-collapsible-groupheading-text-color);
       text-transform: uppercase;
       font-weight: 600;
@@ -179,6 +180,7 @@
 
   /** Clickable content */
   button.content {
+    font-family: var(--swui-font-primary);
     font-size: inherit;
     width: 100%;
 

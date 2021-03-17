@@ -1,7 +1,7 @@
 .crumb {
   color: var(--lhds-color-ui-600);
   font-size: 10px;
-  font-family: "Open Sans";
+  font-family: var(--swui-font-primary);
   font-weight: 600;
   letter-spacing: 1px;
   text-decoration: none;

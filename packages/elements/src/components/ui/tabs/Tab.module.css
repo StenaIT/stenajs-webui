@@ -26,7 +26,8 @@
   display: flex;
   align-items: stretch;
   box-sizing: border-box;
-  font-size: var(--swui-font-buttons);
+  font-size: var(--swui-font-size-medium);
+  font-family: var(--swui-font-buttons);
   border: none;
   border-bottom: 1px solid var(--current-outer-border-bottom-color);
   cursor: pointer;
