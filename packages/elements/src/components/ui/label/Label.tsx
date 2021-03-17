@@ -37,7 +37,6 @@ export const Label: React.FC<LabelProps> = React.memo(
           <Row alignItems={"center"} width={textWidth}>
             <Text
               color={cssColor("--lhds-color-ui-600")}
-              variant={"bold"}
               size={"small"}
               whiteSpace={"nowrap"}
             >
