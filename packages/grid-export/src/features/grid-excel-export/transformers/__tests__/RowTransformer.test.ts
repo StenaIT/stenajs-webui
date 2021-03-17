@@ -3,7 +3,7 @@ import {
   testGroupConfigs,
   TestItem,
   testItems,
-} from "../__mocks__/TestData";
+} from "../__mocks__/ExcelExportTestData";
 import { transformTableRow } from "../RowTransformer";
 
 describe("RowTransformer", () => {

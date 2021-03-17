@@ -1,15 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  Box,
-  Clickable,
-  Column,
-  Row,
-  Space,
-  Text,
-  ThemeColorField,
-  useThemeFields,
-} from "@stenajs-webui/core";
+import { Box, Clickable, Column, Row, Space, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
 import { formatDistance } from "date-fns";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
@@ -25,7 +17,7 @@ export interface NotificationProps {
   dismissed?: boolean;
   date?: Date;
   icon?: IconDefinition;
-  iconColor?: ThemeColorField | string;
+  iconColor?: string;
   onClick?: () => void;
   theme?: NotificationTheme;
 }
@@ -41,18 +33,6 @@ export const Notification: React.FC<NotificationProps> = ({
   dismissed,
   theme = defaultNotificationTheme,
 }) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        notificationBg: theme.notificationBg,
-        notificationHoverBg: theme.notificationHoverBg,
-        notificationDismissedBg: theme.notificationDismissedBg,
-        notificationDismissedHoverBg: theme.notificationDismissedHoverBg,
-        disabledText: "disabledText",
-      },
-    },
-    [theme]
-  );
   const agoLabel = useMemo(() => {
     if (date) {
       return `${formatDistance(date, new Date())} ago`;
@@ -64,12 +44,12 @@ export const Notification: React.FC<NotificationProps> = ({
     <Clickable onClick={onClick} style={{ textAlign: "left" }}>
       <Box
         background={
-          dismissed ? colors.notificationDismissedBg : colors.notificationBg
+          dismissed ? theme.notificationDismissedBg : theme.notificationBg
         }
         hoverBackground={
           dismissed
-            ? colors.notificationDismissedHoverBg
-            : colors.notificationHoverBg
+            ? theme.notificationDismissedHoverBg
+            : theme.notificationHoverBg
         }
         spacing
         indent
@@ -99,7 +79,7 @@ export const Notification: React.FC<NotificationProps> = ({
                 <Space half />
               </>
             )}
-            <Text size={"small"} color={colors.disabledText}>
+            <Text size={"small"} color={cssColor("--swui-text-disabled-color")}>
               {agoLabel}
             </Text>
           </Column>

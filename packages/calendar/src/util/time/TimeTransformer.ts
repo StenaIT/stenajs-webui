@@ -1,3 +1,6 @@
+import { parseIntElseUndefined } from "@stenajs-webui/core";
+import { formatHours, formatMinutes } from "./TimeStringFormatValidator";
+
 export const transformNumberTimeToString = (
   time: number | undefined | null
 ): string | undefined => {
@@ -68,3 +71,27 @@ export const isValidTimeString = (time: string | undefined): boolean => {
     return false;
   }
 };
+
+export const getHoursAndMinutesFromTimeString = (
+  value: string | undefined
+): {
+  hour: number | undefined;
+  minute: number | undefined;
+} => {
+  if (value && isValidTimeString(value)) {
+    const p = value.split(":");
+    return {
+      hour: parseIntElseUndefined(p[0]),
+      minute: parseIntElseUndefined(p[1]),
+    };
+  }
+  return {
+    hour: undefined,
+    minute: undefined,
+  };
+};
+
+export const transformTimeInDateToTimeString = (date: Date): string =>
+  `${formatHours(String(date.getHours()))}:${formatMinutes(
+    String(date.getMinutes())
+  )}`;

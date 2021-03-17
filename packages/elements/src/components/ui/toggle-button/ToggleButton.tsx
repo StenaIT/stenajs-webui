@@ -1,10 +1,8 @@
-import { Box, Clickable, Text, useThemeFields } from "@stenajs-webui/core";
+import { Box, Clickable, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { useMemo } from "react";
-import {
-  defaultToggleButtonTheme,
-  ToggleButtonTheme,
-} from "./ToggleButtonTheme";
+import cx from "classnames";
+import styles from "./ToggleButton.module.css";
 
 export interface ToggleButtonProps {
   /**
@@ -37,12 +35,6 @@ export interface ToggleButtonProps {
    * @default Width specified in theme.
    */
   width?: string;
-
-  /**
-   * The theme to use.7
-   * @default defaultToggleButtonTheme
-   */
-  theme?: ToggleButtonTheme;
 }
 
 export const ToggleButton = ({
@@ -52,19 +44,7 @@ export const ToggleButton = ({
   last,
   width,
   onClick,
-  theme = defaultToggleButtonTheme,
 }: ToggleButtonProps) => {
-  const { colors } = useThemeFields(
-    {
-      colors: {
-        backgroundColorPressed: theme.backgroundColorPressed,
-        backgroundColorNotPressed: theme.backgroundColorNotPressed,
-        textColorPressed: theme.textColorPressed,
-        textColorNotPressed: theme.textColorNotPressed,
-      },
-    },
-    [theme]
-  );
   const borderRadius = useMemo(
     () =>
       `${first ? "3px" : 0} ${last ? "3px 3px" : "0 0"} ${first ? "3px" : "0"}`,
@@ -74,21 +54,13 @@ export const ToggleButton = ({
   return (
     <Clickable onClick={() => onClick && onClick(!pressed)}>
       <Box
-        width={width || theme.width}
-        height={theme.height}
+        className={cx(styles.toggleButton, pressed && styles.pressed)}
+        width={width}
         justifyContent={"center"}
         alignItems={"center"}
-        background={
-          pressed
-            ? colors.backgroundColorPressed
-            : colors.backgroundColorNotPressed
-        }
         borderRadius={borderRadius}
       >
-        <Text
-          size={"small"}
-          color={pressed ? colors.textColorPressed : colors.textColorNotPressed}
-        >
+        <Text size={"small"} className={styles.label}>
           {label}
         </Text>
       </Box>

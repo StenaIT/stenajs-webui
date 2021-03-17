@@ -45,7 +45,7 @@ export const formatMinutes = (minutes: string): string => {
 
   switch (minutes.length) {
     case 1:
-      return `${m}0`;
+      return `0${m}`;
     case 2:
       return minutes;
     default:

@@ -28,6 +28,28 @@ export const Standard = () => (
   </div>
 );
 
+export const LongLabels = () => (
+  <div style={{ width: "400px" }}>
+    <Select
+      options={[
+        {
+          value: "lorem",
+          label:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus massa, molestie ac sapien in, sodales interdum arcu",
+        },
+        {
+          value: "Johan",
+          label: "Johan",
+        },
+        {
+          value: "Dennis the menace",
+          label: "Dennis the menace",
+        },
+      ]}
+    />
+  </div>
+);
+
 export const Multiselect = () => (
   <div style={{ width: "400px" }}>
     <Select
