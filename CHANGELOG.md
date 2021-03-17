@@ -2,13 +2,17 @@
 
 ## Upcoming
 
-## Font changes
+### Font changes
 
 - Default primary font is now Stena Sans, with Open Sans fallback.
 
-## Design changes
+### Design changes
 
 Increased contrast in: `Label`, `ValueTable` and input placeholders.
+
+### Internal
+
+- `Space` now uses emotion for styling instead of inline styles.
 
 ## 8.0.2
 

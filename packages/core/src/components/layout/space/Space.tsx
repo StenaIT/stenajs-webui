@@ -8,19 +8,11 @@ export interface SpaceProps {
   vertical?: boolean;
 }
 
-const InnerSpace = styled.div<{
-  num: number;
-  vertical: boolean;
-  horizontal: boolean;
-}>`
+const InnerSpace = styled.div`
+  --current-size: 1;
   flex: none;
-  --current-size: ${({ num }) => num};
-  width: ${({ vertical }) =>
-    vertical ? "1px" : "calc(var(--current-size) * var(--swui-metrics-space))"};
-  height: ${({ horizontal }) =>
-    horizontal
-      ? "1px"
-      : "calc(var(--current-size) * var(--swui-metrics-space))"};
+  width: calc(var(--current-size) * var(--swui-metrics-space));
+  height: calc(var(--current-size) * var(--swui-metrics-space));
 `;
 
 export const Space: React.VFC<SpaceProps> = ({
@@ -31,5 +23,13 @@ export const Space: React.VFC<SpaceProps> = ({
 }) => {
   const size = num * (half ? 0.5 : 1);
 
-  return <InnerSpace num={size} horizontal={horizontal} vertical={vertical} />;
+  return (
+    <InnerSpace
+      style={{
+        ["--current-size" as string]: size,
+        height: horizontal ? 1 : undefined,
+        width: vertical ? 1 : undefined,
+      }}
+    />
+  );
 };
