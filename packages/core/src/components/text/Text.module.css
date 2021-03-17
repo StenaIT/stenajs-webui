@@ -48,7 +48,6 @@
   &.large {
     --current-font-size: var(--swui-font-size-large);
     --current-line-height: var(--swui-line-height-large);
-    --current-letter-spacing: 0;
   }
 
   &.medium {
@@ -59,12 +58,10 @@
   &.small {
     --current-font-size: var(--swui-font-size-small);
     --current-line-height: var(--swui-line-height-small);
-    --current-letter-spacing: 0;
   }
 
   &.smaller {
     --current-font-size: var(--swui-font-size-smaller);
     --current-line-height: var(--swui-line-height-smaller);
-    --current-letter-spacing: 0;
   }
 }
