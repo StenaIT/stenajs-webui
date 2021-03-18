@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## 8.1.0
 
 ### Font changes
 
