@@ -6,10 +6,15 @@ import styles from "./Button.module.css";
 import { CommonButtonProps } from "./common/ButtonCommon";
 import { getButtonLabel } from "./common/ButtonLabelFactory";
 import { ButtonContent } from "./common/ButtonContent";
+import styled from "@emotion/styled";
+import { width, WidthProps } from "styled-system";
 
 export interface PrimaryButtonProps
   extends CommonButtonProps,
-    ButtonElementProps {}
+    ButtonElementProps,
+    WidthProps {}
+
+const Button = styled.button(width);
 
 export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
   function PrimaryButton(
@@ -47,7 +52,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
     );
 
     return (
-      <button
+      <Button
         ref={ref}
         onClick={disabled || success || loading ? undefined : onClick}
         className={cx(
@@ -69,7 +74,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           rightIcon={rightIcon}
           label={buttonLabel}
         />
-      </button>
+      </Button>
     );
   }
 );

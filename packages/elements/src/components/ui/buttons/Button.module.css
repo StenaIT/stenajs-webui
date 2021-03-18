@@ -70,6 +70,7 @@
   user-select: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
   &.iconButton {
     padding: var(--swui-button-padding-vertical);

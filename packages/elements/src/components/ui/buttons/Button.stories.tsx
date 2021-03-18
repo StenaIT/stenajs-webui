@@ -217,3 +217,13 @@ export const WithGenericContentToRight = () => (
     ))}
   </>
 );
+
+export const WithResponsiveWidth = () => (
+  <Column spacing>
+    <Text>Resize viewport to see button with width 100%</Text>
+    <Space />
+    <Row>
+      <PrimaryButton width={["100%", "auto"]} label={"Button content"} />
+    </Row>
+  </Column>
+);
