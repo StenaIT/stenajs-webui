@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import * as React from "react";
 
 export interface SpaceProps {
@@ -7,22 +8,27 @@ export interface SpaceProps {
   vertical?: boolean;
 }
 
+const InnerSpace = styled.div`
+  --current-size: 1;
+  flex: none;
+  width: calc(var(--current-size) * var(--swui-metrics-space));
+  height: calc(var(--current-size) * var(--swui-metrics-space));
+`;
+
 export const Space: React.VFC<SpaceProps> = ({
   half = false,
   horizontal = false,
   num = 1,
   vertical = false,
 }) => {
-  const halfMod = half ? 0.5 : 1.0;
-  const size = num * halfMod;
+  const size = num * (half ? 0.5 : 1);
+
   return (
-    <div
+    <InnerSpace
       style={{
-        width: vertical ? "1px" : `calc(${size} * var(--swui-metrics-space))`,
-        height: horizontal
-          ? "1px"
-          : `calc(${size} * var(--swui-metrics-space))`,
-        flex: "none",
+        ["--current-size" as string]: size,
+        height: horizontal ? 1 : undefined,
+        width: vertical ? 1 : undefined,
       }}
     />
   );
