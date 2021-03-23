@@ -144,9 +144,17 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   focusWithinBorder?: BorderProperty<TLengthStyledSystem>;
 }
 
-const excludedProps = ["spacing", "indent", "width", "height", "overflow", "display"];
+const excludedProps = [
+  "spacing",
+  "indent",
+  "width",
+  "height",
+  "overflow",
+  "display",
+];
 
-const isExcludedWebUiProp = (propName: string) => excludedProps.includes(propName);
+const isExcludedWebUiProp = (propName: string) =>
+  excludedProps.includes(propName);
 
 const numberOrZero = (num: number | boolean | undefined): number => {
   if (num == null) {
