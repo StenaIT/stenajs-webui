@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### Fixes
+
+- The `display` property in Box is now properly excluded.
+
 ## 8.1.0
 
 ### Font changes
