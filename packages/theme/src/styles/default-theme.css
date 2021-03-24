@@ -30,7 +30,7 @@
   /* Fonts */
   --swui-font-primary: "Stena Sans", "Open Sans", Arial, sans-serif;
   --swui-font-weight-text: 400;
-  --swui-font-weight-text-bold: 600;
+  --swui-font-weight-text-bold: 500;
   --swui-font-weight-link: 400;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);

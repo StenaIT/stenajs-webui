@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### Font changes
+
+- Bold font weight has value `500`.
+
 ## 8.1.0
 
 ### Font changes
@@ -23,15 +29,14 @@ Remove letter-spacing override done by setting text size.
 
 ### DateTimeInput
 
-Types now allow value=null.
-This makes sure that the component is control, while it has no value.
+Types now allow value=null. This makes sure that the component is control, while it has no value.
 
 ## 8.0.1
 
 ### DateTimeInput
 
-Add `onBlur` prop. Triggered when the whole component loses focus.
-Add `autoFocus` props. Autofocuses on date part of the input.
+Add `onBlur` prop. Triggered when the whole component loses focus. Add `autoFocus` props. Autofocuses on date part of
+the input.
 
 ### DateRangeDualTextInput
 
@@ -64,14 +69,11 @@ Design has been updated to use design system colors.
 
 ### Themes
 
-Theming is no longer using React context.
-All theme variables are using CSS properties.
+Theming is no longer using React context. All theme variables are using CSS properties.
 
 ### Breaking changes
 
-`Box` no longer has property `color`.
-This also applies to components derived from `Box`,
-such as `Row` and `Column`.
+`Box` no longer has property `color`. This also applies to components derived from `Box`, such as `Row` and `Column`.
 
 ## 7.5.2
 
@@ -94,9 +96,8 @@ Fix missing key in JSX.
 
 ### New component `DateTimeInput`
 
-An input field with both date and time.
-When entering date, a popover with a calendar is showing.
-When entering time, a popover with time picker is showing.
+An input field with both date and time. When entering date, a popover with a calendar is showing. When entering time, a
+popover with time picker is showing.
 
 ### New component `TimePicker`
 
@@ -128,15 +129,13 @@ They return undefined if parse fails.
 Updated behaviour when selecting dates in popover.
 
 - Selecting startDate always moves to endDate.
-- Selecting endDate closes calendar except when
-  date range is invalid or startDate has not been selected.
-  Then it moves to start date.
+- Selecting endDate closes calendar except when date range is invalid or startDate has not been selected. Then it moves
+  to start date.
 
 ### New hook `useDelayedFalse`
 
-A hook that takes a boolean as argument and returns that boolean.
-When boolean turns false, it returns false after a certain delay.
-When boolean turns true, it returns true immediately.
+A hook that takes a boolean as argument and returns that boolean. When boolean turns false, it returns false after a
+certain delay. When boolean turns true, it returns true immediately.
 
 This is useful for delaying the removal of elements in the DOM.
 
@@ -199,8 +198,7 @@ Contains components and logic for exporting data in tables to file.
 
 #### StandardTableExcelExportButton
 
-When the user clicks the button, it downloads the
-content of a `StandardTable` as an Excel .xlsx file.
+When the user clicks the button, it downloads the content of a `StandardTable` as an Excel .xlsx file.
 
 ### Fixes
 
