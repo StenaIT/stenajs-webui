@@ -19,7 +19,6 @@ export const Label: React.FC<LabelProps> = React.memo(
     maxCharacters,
     row,
     textWidth,
-    flex,
     htmlFor,
     ...boxProps
   }) => {
