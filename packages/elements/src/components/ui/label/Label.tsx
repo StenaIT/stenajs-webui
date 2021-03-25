@@ -1,12 +1,14 @@
 import { Box, BoxProps, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
+import { ComponentPropsWithoutRef } from "react";
 
-export interface LabelProps extends BoxProps {
+export interface LabelProps extends ComponentPropsWithoutRef<"label"> {
   text: string;
   optional?: boolean;
   maxCharacters?: number;
   textWidth?: BoxProps["width"];
+  row?: BoxProps["row"];
 }
 
 export const Label: React.FC<LabelProps> = React.memo(
@@ -17,7 +19,7 @@ export const Label: React.FC<LabelProps> = React.memo(
     maxCharacters,
     row,
     textWidth,
-    ...columnProps
+    ...labelProps
   }) => {
     const extraInfoLabel = getExtraInfoLabel(optional, maxCharacters);
 
@@ -32,8 +34,8 @@ export const Label: React.FC<LabelProps> = React.memo(
     );
 
     return (
-      <label>
-        <Box {...columnProps} row={row}>
+      <label {...labelProps}>
+        <Box row={row}>
           <Row alignItems={"center"} width={textWidth}>
             <Text
               color={cssColor("--lhds-color-ui-600")}
