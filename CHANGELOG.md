@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+## Additions
+
+- Add `htmlFor` prop to `Label` component.
+
 ## 8.1.0
 
 ### Font changes
