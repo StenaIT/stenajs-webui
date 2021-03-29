@@ -1,4 +1,5 @@
 export * from "./components/action-menu-button/ActionMenuButton";
+export * from "./components/action-menu-label-button/ActionMenuLabelButton";
 export * from "./components/checkbox-menu/CheckboxMenu";
 export * from "./components/nav-bar/NavBar";
 export * from "./components/nav-bar/NavBarButton";
