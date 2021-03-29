@@ -7,6 +7,11 @@
   --swui-flat-button-text-color-active: var(--swui-primary-action-color);
   --swui-flat-button-text-color-disabled: var(--swui-text-disabled-color);
 
+  /* Icon color */
+  --swui-flat-button-icon-color: var(--swui-primary-action-color);
+  --swui-flat-button-icon-color-active: var(--swui-primary-action-color);
+  --swui-flat-button-icon-color-disabled: var(--swui-text-disabled-color);
+
   /* Background color */
   --swui-flat-button-background-color: transparent;
   --swui-flat-button-background-color-hover: var(--lhds-color-blue-50);
@@ -42,6 +47,15 @@
   --swui-button-text-color-active: var(--swui-flat-button-text-color-active);
   --swui-button-text-color-disabled: var(
     --swui-flat-button-text-color-disabled
+  );
+
+  /* Icon */
+  --swui-button-icon-color: var(--swui-flat-button-icon-color);
+  --swui-button-icon-color-focus: var(--swui-flat-button-icon-color);
+  --swui-button-icon-color-hover: var(--swui-flat-button-icon-color);
+  --swui-button-icon-color-active: var(--swui-flat-button-icon-color-active);
+  --swui-button-icon-color-disabled: var(
+    --swui-flat-button-icon-color-disabled
   );
 
   /* Background */
