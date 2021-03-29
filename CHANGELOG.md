@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming changes
+
+### ActionMenuLabelButton
+
+- New action button component with dropdown like design
+
 ## 8.1.0
 
 ### Font changes
