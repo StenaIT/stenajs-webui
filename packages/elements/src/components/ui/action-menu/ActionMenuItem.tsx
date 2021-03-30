@@ -13,6 +13,7 @@ import { Icon } from "../icon/Icon";
 import { ActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styled from "@emotion/styled";
+import { dangerActionMenuTheme } from "./ActionMenuTheme";
 
 const BorderRadiusClickable = styled(Clickable)`
   &:first-child {
@@ -23,8 +24,20 @@ const BorderRadiusClickable = styled(Clickable)`
   }
 `;
 
+export type ActionMenuItemVariant = "danger";
+
+function themeFromVariant(variant?: ActionMenuItemVariant) {
+  switch (variant) {
+    case "danger":
+      return dangerActionMenuTheme;
+    default:
+      return null;
+  }
+}
+
 export interface ActionMenuItemProps {
   label: string;
+  variant?: ActionMenuItemVariant;
   rightText?: string;
   icon?: IconDefinition;
   theme?: ActionDropdownTheme;
@@ -36,6 +49,7 @@ export interface ActionMenuItemProps {
 
 export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   label,
+  variant,
   icon,
   iconRight,
   rightText,
@@ -46,7 +60,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   disableCloseOnClick,
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
-  const theme = themeFromProps || themeFromContext;
+  const theme = themeFromProps || themeFromVariant(variant) || themeFromContext;
   const ref = useRef<HTMLButtonElement>(null);
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
