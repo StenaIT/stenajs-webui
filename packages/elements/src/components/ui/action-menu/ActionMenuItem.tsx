@@ -15,13 +15,22 @@ import { ActionMenuContext } from "./ActionMenuContext";
 import styled from "@emotion/styled";
 import { dangerActionMenuTheme } from "./ActionMenuTheme";
 
-const BorderRadiusClickable = styled(Clickable)`
-  &:first-child {
-    border-radius: 4px 4px 0 0;
-  }
-  &:last-child {
-    border-radius: 0 0 4px 4px;
-  }
+interface BorderRadiusClickableProps {
+  styledBorderRadius: ActionDropdownTheme["borderRadius"];
+}
+
+const BorderRadiusClickable = styled(Clickable)<BorderRadiusClickableProps>`
+  ${(props) =>
+    props.styledBorderRadius
+      ? `
+    &:first-child {
+      border-radius: ${props.styledBorderRadius} ${props.styledBorderRadius} 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 ${props.styledBorderRadius} ${props.styledBorderRadius};
+    }
+  `
+      : ""}
 `;
 
 export type ActionMenuItemVariant = "danger";
@@ -110,6 +119,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
 
   return (
     <BorderRadiusClickable
+      styledBorderRadius={theme.borderRadius}
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
       background={colors.itemBackground}
