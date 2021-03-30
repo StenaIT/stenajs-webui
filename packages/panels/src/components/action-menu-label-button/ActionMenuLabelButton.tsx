@@ -14,7 +14,7 @@ export const ActionMenuLabelButton: React.FC<ActionMenuLabelButtonProps> = ({
   renderItems,
   placement = "bottom",
   rightIcon = faAngleDown,
-  ...flatButtonProps
+  ...buttonProps
 }) => {
   const [isOpen, , close, toggle] = useBoolean(false);
 
@@ -25,10 +25,12 @@ export const ActionMenuLabelButton: React.FC<ActionMenuLabelButtonProps> = ({
       onClickOutside={close}
       placement={placement}
       content={renderItems(close)}
+      arrow={false}
+      variant={"outlined"}
     >
       <SecondaryButton
         rightIcon={rightIcon}
-        {...flatButtonProps}
+        {...buttonProps}
         onClick={toggle}
       />
     </Popover>

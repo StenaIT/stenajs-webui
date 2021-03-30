@@ -12,6 +12,16 @@ import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
+import styled from "@emotion/styled";
+
+const BorderRadiusClickable = styled(Clickable)`
+  &:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+`;
 
 export interface ActionMenuItemProps {
   label: string;
@@ -85,7 +95,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   }, [onClick, close, disableCloseOnClick]);
 
   return (
-    <Clickable
+    <BorderRadiusClickable
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
       background={colors.itemBackground}
@@ -93,7 +103,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
     >
       <Row
         height={theme.itemHeight}
-        indent
+        indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
@@ -124,6 +134,6 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
           </>
         )}
       </Row>
-    </Clickable>
+    </BorderRadiusClickable>
   );
 };

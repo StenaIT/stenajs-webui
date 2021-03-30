@@ -9,7 +9,12 @@ import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import { Box } from "@stenajs-webui/core";
 import { useLazyPopover } from "../../hooks/UseLazyPopover";
 
-export type PopoverVariant = "standard" | "info" | "warning" | "error";
+export type PopoverVariant =
+  | "standard"
+  | "info"
+  | "warning"
+  | "error"
+  | "outlined";
 
 export interface PopoverProps
   extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
@@ -28,6 +33,7 @@ const variantToTheme: Record<PopoverVariant, string> = {
   info: "info",
   warning: "warning",
   error: "error",
+  outlined: "outlined",
 };
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -56,6 +62,7 @@ export const Popover: React.FC<PopoverProps> = ({
       theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
       delay={delay}
       maxWidth={maxWidth}
+      arrow={arrow}
       content={
         (!lazy || mounted) && (
           <Box spacing={!disablePadding && 1} indent={!disablePadding && 1}>

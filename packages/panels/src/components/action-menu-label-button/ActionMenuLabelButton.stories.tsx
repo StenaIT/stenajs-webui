@@ -3,7 +3,11 @@ import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Box, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
+import {
+  ActionMenuItem,
+  ActionMenuSeparator,
+  dangerActionMenuTheme,
+} from "@stenajs-webui/elements";
 import { ActionMenuLabelButton } from "./ActionMenuLabelButton";
 
 export default {
@@ -23,7 +27,7 @@ export const Standard = () => (
             label={"Burn it"}
             icon={faFire}
             onClick={close}
-            disabled
+            theme={dangerActionMenuTheme}
           />
           <ActionMenuItem
             label={"Click doesn't close"}

@@ -6,6 +6,17 @@
 
 - New action button component with dropdown like design
 
+### Design changes
+
+- Added outlined variant to `Popover`
+- Removed padding from `ActionMenuSeparator`
+- More padding to `ActionMenuItem`
+- Added danger theme to `ActionMenuItem`
+
+### Bug fixes
+
+- Fixed bug in `Popover` where arrow could not be removed
+
 ## 8.1.0
 
 ### Font changes
