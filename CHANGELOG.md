@@ -10,8 +10,9 @@
 
 - Added outlined variant to `Popover`
 - Removed padding from `ActionMenuSeparator`
+- Removed padding from `ActionMenu`
 - More padding to `ActionMenuItem`
-- Added danger theme to `ActionMenuItem`
+- Added danger variant to `ActionMenuItem`
 
 ### Bug fixes
 
