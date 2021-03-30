@@ -5,6 +5,7 @@ import { Box, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
 import { ActionMenuLabelButton } from "./ActionMenuLabelButton";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 
 export default {
   title: "panels/ActionMenuLabelButton",
@@ -12,7 +13,7 @@ export default {
 };
 
 export const Standard = () => (
-  <Box indent={8} spacing={5} display={"inline-block"}>
+  <Box indent={8} display={"inline-block"}>
     <ActionMenuLabelButton
       label={"Actions"}
       renderItems={(close) => (
@@ -47,10 +48,86 @@ export const Standard = () => (
         </>
       )}
     />
-    <Spacing num={20} />
+    <Spacing num={21} />
   </Box>
 );
 
 export const Disabled = () => (
-  <ActionMenuLabelButton disabled renderItems={() => <></>} />
+  <ActionMenuLabelButton
+    label={"Disabled"}
+    disabled
+    renderItems={() => <></>}
+  />
+);
+
+export const Icons = () => (
+  <Box>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Custom icon"}
+        rightIcon={faCoffee}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Left icon"}
+        leftIcon={faCoffee}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+  </Box>
+);
+
+export const Sizes = () => (
+  <Box>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Small"}
+        size={"small"}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Medium"}
+        size={"medium"}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Large"}
+        size={"large"}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+  </Box>
+);
+
+export const CustomContent = () => (
+  <Box>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Left content"}
+        left={
+          <Text size={"smaller"} color={"tomato"}>
+            So custom!
+          </Text>
+        }
+        renderItems={() => <></>}
+      />
+    </Spacing>
+    <Spacing>
+      <ActionMenuLabelButton
+        label={"Right content"}
+        right={
+          <Text size={"smaller"} color={"tomato"}>
+            So custom!
+          </Text>
+        }
+        renderItems={() => <></>}
+      />
+    </Spacing>
+  </Box>
 );

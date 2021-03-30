@@ -5,8 +5,14 @@ import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-export interface ActionMenuLabelButtonProps extends PrimaryButtonProps {
+export interface ActionMenuLabelButtonProps
+  extends Omit<
+    PrimaryButtonProps,
+    "variant" | "loading" | "loadingLabel" | "success" | "successLabel"
+  > {
+  /** The content of the Action Menu. */
   renderItems: (close: () => void) => ReactNode;
+  /** The placement of the Action Menu. */
   placement?: PopoverProps["placement"];
 }
 
