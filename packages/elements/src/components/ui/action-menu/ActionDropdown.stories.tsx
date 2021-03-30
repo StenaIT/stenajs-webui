@@ -23,7 +23,7 @@ export const Overview = () => (
         label={"Burn it"}
         icon={faFire}
         onClick={action("It was burned!")}
-        disabled
+        variant={"danger"}
       />
       <ActionMenuItem
         label={"Click doesn't close"}
@@ -61,7 +61,7 @@ export const Overview = () => (
         onClick={action("All stop!")}
       />
     </ActionDropdown>
-    <Spacing num={20} />
+    <Spacing num={23} />
   </Column>
 );
 
