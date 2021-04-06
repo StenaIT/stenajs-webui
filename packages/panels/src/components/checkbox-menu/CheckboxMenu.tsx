@@ -31,6 +31,7 @@ export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
         ) : undefined
       }
       placement={"bottom-start"}
+      variant={"outlined"}
     >
       <Box display={"inline-block"}>
         <Row
