@@ -4,17 +4,18 @@ import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Box, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
-import { ActionMenuLabelButton } from "./ActionMenuLabelButton";
+import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 
 export default {
-  title: "panels/ActionMenuLabelButton",
-  component: ActionMenuLabelButton,
+  title: "panels/ActionMenuSecondaryButton",
+  component: ActionMenuSecondaryButton,
 };
 
 export const Standard = () => (
   <Box indent={8} display={"inline-block"}>
-    <ActionMenuLabelButton
+    <ActionMenuSecondaryButton
       label={"Actions"}
       renderItems={(close) => (
         <>
@@ -53,7 +54,7 @@ export const Standard = () => (
 );
 
 export const Disabled = () => (
-  <ActionMenuLabelButton
+  <ActionMenuSecondaryButton
     label={"Disabled"}
     disabled
     renderItems={() => <></>}
@@ -63,16 +64,22 @@ export const Disabled = () => (
 export const Icons = () => (
   <Box>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Custom icon"}
         rightIcon={faCoffee}
         renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Left icon"}
         leftIcon={faCoffee}
+        renderItems={() => <></>}
+      />
+    </Spacing>
+    <Spacing>
+      <ActionMenuSecondaryButton
+        rightIcon={faEllipsisV}
         renderItems={() => <></>}
       />
     </Spacing>
@@ -82,21 +89,21 @@ export const Icons = () => (
 export const Sizes = () => (
   <Box>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Small"}
         size={"small"}
         renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Medium"}
         size={"medium"}
         renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Large"}
         size={"large"}
         renderItems={() => <></>}
@@ -108,10 +115,14 @@ export const Sizes = () => (
 export const CustomContent = () => (
   <Box>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Left content"}
         left={
-          <Text size={"smaller"} color={"tomato"}>
+          <Text
+            size={"smaller"}
+            variant={"bold"}
+            color={"var(--lhds-color-orange-300)"}
+          >
             So custom!
           </Text>
         }
@@ -119,10 +130,14 @@ export const CustomContent = () => (
       />
     </Spacing>
     <Spacing>
-      <ActionMenuLabelButton
+      <ActionMenuSecondaryButton
         label={"Right content"}
         right={
-          <Text size={"smaller"} color={"tomato"}>
+          <Text
+            size={"smaller"}
+            variant={"bold"}
+            color={"var(--lhds-color-orange-300)"}
+          >
             So custom!
           </Text>
         }

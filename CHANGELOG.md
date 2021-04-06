@@ -2,17 +2,20 @@
 
 ## Upcoming changes
 
-### ActionMenuLabelButton
+### Breaking changes
 
-- New action button component with dropdown like design
+- Removed `ActionDropdown` and `ActionDropdownTheme`
+- Removed `theme` prop from `ActionMenuItem`, replacing it with a `variant` prop that can be set to `danger`
+- `ActionMenuButton` is no longer exported. Instead, there are three new components:
+  - `ActionMenuPrimaryButton`
+  - `ActionMenuSecondaryButton`
+  - `ActionMenuFlatButton`
 
 ### Design changes
 
-- Added outlined variant to `Popover`
-- Removed padding from `ActionMenuSeparator`
-- Removed padding from `ActionMenu`
-- More padding to `ActionMenuItem`
-- Added danger variant to `ActionMenuItem`
+- The icon for `SecondaryButton` is now blue
+- New variant `outlined` added to `Popover`. It is used for the Action Menu.
+- Padding changes for `ActionMenu`, `ActionMenuItem`, `ActionMenuSeparator`
 
 ### Bug fixes
 
