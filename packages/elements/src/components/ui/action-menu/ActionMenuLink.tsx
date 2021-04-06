@@ -10,7 +10,7 @@ import {
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionDropdownTheme } from "./ActionDropdownTheme";
+import { ActionMenuTheme } from "./ActionMenuTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styles from "./ActionMenuLink.module.css";
 
@@ -18,7 +18,7 @@ export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
   rightText?: string;
   icon?: IconDefinition;
-  theme?: ActionDropdownTheme;
+  theme?: ActionMenuTheme;
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;

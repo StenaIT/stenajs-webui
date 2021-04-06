@@ -10,13 +10,12 @@ import {
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styled from "@emotion/styled";
-import { dangerActionMenuTheme } from "./ActionMenuTheme";
+import { ActionMenuTheme, dangerActionMenuTheme } from "./ActionMenuTheme";
 
 interface BorderRadiusClickableProps {
-  styledBorderRadius: ActionDropdownTheme["borderRadius"];
+  styledBorderRadius: ActionMenuTheme["borderRadius"];
 }
 
 const BorderRadiusClickable = styled(Clickable)<BorderRadiusClickableProps>`
@@ -49,7 +48,6 @@ export interface ActionMenuItemProps {
   variant?: ActionMenuItemVariant;
   rightText?: string;
   icon?: IconDefinition;
-  theme?: ActionDropdownTheme;
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
@@ -64,12 +62,11 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   rightText,
   disabled,
   onClick,
-  theme: themeFromProps,
   children,
   disableCloseOnClick,
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
-  const theme = themeFromProps || themeFromVariant(variant) || themeFromContext;
+  const theme = themeFromVariant(variant) || themeFromContext;
   const ref = useRef<HTMLButtonElement>(null);
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
