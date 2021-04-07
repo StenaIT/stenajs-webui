@@ -1,22 +1,38 @@
 import * as React from "react";
 import { ReactNode } from "react";
-import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  PrimaryButton,
+  PrimaryButtonProps,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
 import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-export interface ActionButtonProps extends FlatButtonProps {
+export interface ActionMenuButtonProps
+  extends Omit<
+    PrimaryButtonProps,
+    "variant" | "loading" | "loadingLabel" | "success" | "successLabel"
+  > {
+  /** The content of the Action Menu. */
   renderItems: (close: () => void) => ReactNode;
+  /** The placement of the Action Menu. */
   placement?: PopoverProps["placement"];
+  buttonComponent:
+    | typeof PrimaryButton
+    | typeof SecondaryButton
+    | typeof FlatButton;
 }
 
-export const ActionMenuButton: React.FC<ActionButtonProps> = ({
+export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   renderItems,
   placement = "bottom",
-  leftIcon = faEllipsisV,
-  ...flatButtonProps
+  buttonComponent: Button,
+  rightIcon = faAngleDown,
+  ...buttonProps
 }) => {
-  const [isOpen, open, close] = useBoolean(false);
+  const [isOpen, , close, toggle] = useBoolean(false);
 
   return (
     <Popover
@@ -25,8 +41,10 @@ export const ActionMenuButton: React.FC<ActionButtonProps> = ({
       onClickOutside={close}
       placement={placement}
       content={renderItems(close)}
+      arrow={false}
+      variant={"outlined"}
     >
-      <FlatButton leftIcon={leftIcon} {...flatButtonProps} onClick={open} />
+      <Button rightIcon={rightIcon} {...buttonProps} onClick={toggle} />
     </Popover>
   );
 };

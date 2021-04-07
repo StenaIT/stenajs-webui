@@ -41,7 +41,7 @@ export const Standard = () => (
       label={"Burn it"}
       icon={faFire}
       onClick={action("It was burned!")}
-      disabled
+      variant={"danger"}
     />
     <ActionMenuItem
       label={"Click doesn't close"}

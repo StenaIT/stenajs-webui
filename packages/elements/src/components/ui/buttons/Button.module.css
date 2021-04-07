@@ -2,6 +2,7 @@
   /* Theme vars */
   --swui-button-line-height: 16px;
   --swui-button-font-weight: 400;
+  --swui-button-icon-color: var(--swui-white);
   --swui-button-text-size: var(--swui-font-size-medium);
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
@@ -14,6 +15,12 @@
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-text-color-active: var(--swui-button-text-color);
   --swui-button-text-color-disabled: var(--swui-field-text-color-disabled);
+
+  /* Icon */
+  --swui-button-icon-color-focus: var(--swui-button-icon-color);
+  --swui-button-icon-color-hover: var(--swui-button-icon-color);
+  --swui-button-icon-color-active: var(--swui-button-icon-color);
+  --swui-button-icon-color-disabled: var(--swui-field-text-color-disabled);
 
   /* Background */
   --swui-button-background-color: var(--swui-primary-action-color);
@@ -49,6 +56,7 @@
    */
   --current-background-color: var(--swui-button-background-color);
   --current-icon-height: 16px;
+  --current-icon-color: var(--swui-button-icon-color);
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
 
@@ -74,7 +82,7 @@
 
   &.iconButton {
     padding: var(--swui-button-padding-vertical);
-    color: var(--current-text-color);
+    color: var(--current-icon-color);
 
     border-radius: var(--swui-button-border-radius-icon-only);
 
@@ -120,6 +128,7 @@
   &:hover {
     --current-background-color: var(--swui-button-background-color-hover);
     --current-border-color: var(--swui-button-border-color-hover);
+    --current-icon-color: var(--swui-button-icon-color-hover);
     --current-text-color: var(--swui-button-text-color-hover);
     --current-box-shadow: var(--swui-button-box-shadow-hover);
   }
@@ -127,6 +136,7 @@
   &:focus {
     outline: 0;
     --current-border-color: var(--swui-button-border-color-focus);
+    --current-icon-color: var(--swui-button-icon-color-focus);
     --current-text-color: var(--swui-button-text-color-focus);
     --current-box-shadow: var(--swui-button-box-shadow-focus);
   }
@@ -134,6 +144,7 @@
   &:active {
     --current-background-color: var(--swui-button-background-color-active);
     --current-border-color: var(--swui-button-border-color-active);
+    --current-icon-color: var(--swui-button-icon-color-active);
     --current-text-color: var(--swui-button-text-color-active);
     --current-box-shadow: var(--swui-button-box-shadow-active);
   }
@@ -141,6 +152,7 @@
   &:disabled {
     --current-background-color: var(--swui-button-background-color-disabled);
     --current-border-color: var(--swui-button-border-color-disabled);
+    --current-icon-color: var(--swui-button-icon-color-disabled);
     --current-text-color: var(--swui-button-text-color-disabled);
     --current-box-shadow: var(--swui-button-box-shadow-disabled);
     cursor: not-allowed;
