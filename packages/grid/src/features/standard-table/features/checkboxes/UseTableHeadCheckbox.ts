@@ -17,20 +17,22 @@ export const useTableHeadCheckbox = <TItem>(
     dispatch,
   } = useStandardTableActions();
 
+  const selectionIsEmpty = selectedIds.length === 0;
+
   const allItemsAreSelected = !items
     ? false
     : items.length > 0 && selectedIds.length === items.length;
 
   const onClickCheckbox = useCallback(() => {
     if (items) {
-      if (allItemsAreSelected) {
-        dispatch(clearSelection());
-      } else {
+      if (selectionIsEmpty) {
         dispatch(selectByIds(items.map((item) => keyResolver(item))));
+      } else {
+        dispatch(clearSelection());
       }
     }
   }, [
-    allItemsAreSelected,
+    selectionIsEmpty,
     clearSelection,
     dispatch,
     items,
@@ -39,7 +41,7 @@ export const useTableHeadCheckbox = <TItem>(
   ]);
 
   return {
-    selectionIsEmpty: selectedIds.length === 0,
+    selectionIsEmpty,
     allItemsAreSelected,
     onClickCheckbox,
   };
