@@ -1,4 +1,6 @@
-export * from "./components/action-menu-button/ActionMenuButton";
+export * from "./components/action-menu-button/ActionMenuPrimaryButton";
+export * from "./components/action-menu-button/ActionMenuSecondaryButton";
+export * from "./components/action-menu-button/ActionMenuFlatButton";
 export * from "./components/checkbox-menu/CheckboxMenu";
 export * from "./components/nav-bar/NavBar";
 export * from "./components/nav-bar/NavBarButton";

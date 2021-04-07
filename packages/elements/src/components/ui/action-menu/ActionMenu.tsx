@@ -25,7 +25,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
       shadow={shadow}
     >
       {top}
-      <Column spacing={0.5}>{children}</Column>
+      <Column>{children}</Column>
     </Column>
   );
 };

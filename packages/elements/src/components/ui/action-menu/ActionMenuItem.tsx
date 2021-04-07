@@ -10,14 +10,44 @@ import {
 import * as React from "react";
 import { useCallback, useContext, useRef } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionDropdownTheme } from "./ActionDropdownTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
+import styled from "@emotion/styled";
+import { ActionMenuTheme, dangerActionMenuTheme } from "./ActionMenuTheme";
+
+interface BorderRadiusClickableProps {
+  styledBorderRadius: ActionMenuTheme["borderRadius"];
+}
+
+const BorderRadiusClickable = styled(Clickable)<BorderRadiusClickableProps>`
+  ${(props) =>
+    props.styledBorderRadius
+      ? `
+    &:first-child {
+      border-radius: ${props.styledBorderRadius} ${props.styledBorderRadius} 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 ${props.styledBorderRadius} ${props.styledBorderRadius};
+    }
+  `
+      : ""}
+`;
+
+export type ActionMenuItemVariant = "danger";
+
+function themeFromVariant(variant?: ActionMenuItemVariant) {
+  switch (variant) {
+    case "danger":
+      return dangerActionMenuTheme;
+    default:
+      return null;
+  }
+}
 
 export interface ActionMenuItemProps {
   label: string;
+  variant?: ActionMenuItemVariant;
   rightText?: string;
   icon?: IconDefinition;
-  theme?: ActionDropdownTheme;
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
@@ -26,17 +56,17 @@ export interface ActionMenuItemProps {
 
 export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   label,
+  variant,
   icon,
   iconRight,
   rightText,
   disabled,
   onClick,
-  theme: themeFromProps,
   children,
   disableCloseOnClick,
 }) => {
   const { close, theme: themeFromContext } = useContext(ActionMenuContext);
-  const theme = themeFromProps || themeFromContext;
+  const theme = themeFromVariant(variant) || themeFromContext;
   const ref = useRef<HTMLButtonElement>(null);
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
@@ -85,7 +115,8 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   }, [onClick, close, disableCloseOnClick]);
 
   return (
-    <Clickable
+    <BorderRadiusClickable
+      styledBorderRadius={theme.borderRadius}
       onClick={disabled ? undefined : onClickHandler}
       disableFocusHighlight
       background={colors.itemBackground}
@@ -93,7 +124,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
     >
       <Row
         height={theme.itemHeight}
-        indent
+        indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
@@ -124,6 +155,6 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
           </>
         )}
       </Row>
-    </Clickable>
+    </BorderRadiusClickable>
   );
 };

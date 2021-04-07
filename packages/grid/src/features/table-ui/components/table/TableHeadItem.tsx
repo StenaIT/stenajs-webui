@@ -112,7 +112,8 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
               trigger={"click"}
               zIndex={1000}
               disablePadding
-              arrow
+              variant={"outlined"}
+              arrow={false}
             >
               <FlatButton leftIcon={faEllipsisV} size={"small"} />
             </Popover>
