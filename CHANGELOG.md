@@ -22,6 +22,10 @@
 - Fixed bug in `Popover` where arrow could not be removed
 - The top checkbox in `StandardTable` deselects all if some are selected, as opposed to selecting all
 
+## Additions
+
+- Add `htmlFor` prop to `Label` component.
+
 ## 8.1.0
 
 ### Font changes
