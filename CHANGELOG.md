@@ -1,6 +1,26 @@
 # Changelog
 
-## Upcoming
+## Upcoming changes
+
+### Breaking changes
+
+- Removed `ActionDropdown` and `ActionDropdownTheme`
+- Removed `theme` prop from `ActionMenuItem`, replacing it with a `variant` prop that can be set to `danger`
+- `ActionMenuButton` is no longer exported. Instead, there are three new components:
+  - `ActionMenuPrimaryButton`
+  - `ActionMenuSecondaryButton`
+  - `ActionMenuFlatButton`
+
+### Design changes
+
+- The icon for `SecondaryButton` is now blue
+- New variant `outlined` added to `Popover`. It is used for the Action menu, Checkbox menu, and Table head popover.
+- Padding changes for `ActionMenu`, `ActionMenuItem`, `ActionMenuSeparator`
+
+### Bug fixes
+
+- Fixed bug in `Popover` where arrow could not be removed
+- The top checkbox in `StandardTable` deselects all if some are selected, as opposed to selecting all
 
 ## Additions
 

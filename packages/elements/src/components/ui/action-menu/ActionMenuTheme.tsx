@@ -45,5 +45,17 @@ export const defaultActionMenuTheme: ActionMenuTheme = {
   itemTextColorDisabled: "var(--swui-text-disabled-color-light)",
   itemTextColorFocus: "var(--swui-text-primary-color-light)",
   itemTextColorHover: "var(--swui-text-primary-color-light)",
-  itemHeight: "34px",
+  itemHeight: "40px",
+};
+
+export const dangerActionMenuTheme: ActionMenuTheme = {
+  ...defaultActionMenuTheme,
+  iconColor: "var(--lhds-color-red-500)",
+  iconColorFocus: "var(--lhds-color-red-500)",
+  iconColorHover: "var(--lhds-color-red-500)",
+  itemBackgroundFocus: "var(--lhds-color-red-50)",
+  itemBackgroundHover: "var(--lhds-color-red-50)",
+  itemLabelColor: "var(--lhds-color-red-600)",
+  itemLabelColorFocus: "var(--lhds-color-red-600)",
+  itemLabelColorHover: "var(--lhds-color-red-600)",
 };

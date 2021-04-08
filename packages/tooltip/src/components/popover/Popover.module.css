@@ -6,6 +6,10 @@
   box-shadow: var(--swui-shadow-popover);
 }
 
+:global(.tippy-box[data-theme~="outlined"]) {
+  border: 1px solid var(--lhds-color-blue-500);
+}
+
 :global(.tippy-box[data-theme~="info"]) {
   background-color: var(--lhds-color-blue-50);
   color: var(--swui-text-primary-color);
