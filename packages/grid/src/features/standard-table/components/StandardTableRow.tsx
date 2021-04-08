@@ -4,7 +4,8 @@ import { useMemo } from "react";
 import {
   tableBackgroundColorExpanded,
   tableBorder,
-  tableBorderExpanded,
+  tableBorderLeft,
+  tableBorderLeftExpanded,
 } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
@@ -78,7 +79,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         height={"var(--current-row-height)"}
         width={"100%"}
         borderTop={tableBorder}
-        borderLeft={isExpanded ? tableBorderExpanded : undefined}
+        borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
         background={
           background ?? isExpanded ? tableBackgroundColorExpanded : "white"
         }
@@ -131,7 +132,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       </TableRow>
       {enableExpandCollapse && renderRowExpansion && isExpanded && (
         <Box
-          borderLeft={tableBorderExpanded}
+          borderLeft={tableBorderLeftExpanded}
           background={tableBackgroundColorExpanded}
         >
           {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}

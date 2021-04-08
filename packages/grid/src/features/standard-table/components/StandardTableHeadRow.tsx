@@ -5,7 +5,10 @@ import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import { ZIndexProperty } from "csstype";
 import * as React from "react";
-import { defaultTableRowHeight } from "../../../config/TableConfig";
+import {
+  defaultTableRowHeight,
+  tableBorderLeft,
+} from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
@@ -49,6 +52,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     <TableHeadRow
       top={headerRowOffsetTop ?? 0}
       height={height}
+      borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
