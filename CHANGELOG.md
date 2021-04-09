@@ -16,6 +16,7 @@
 - The icon for `SecondaryButton` is now blue
 - New variant `outlined` added to `Popover`. It is used for the Action menu, Checkbox menu, and Table head popover.
 - Padding changes for `ActionMenu`, `ActionMenuItem`, `ActionMenuSeparator`
+- Expanded rows in `StandardTable` have a blue background with a border on the left
 
 ### Bug fixes
 

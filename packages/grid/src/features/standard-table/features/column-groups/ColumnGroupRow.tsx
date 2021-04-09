@@ -1,7 +1,10 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { ZIndexProperty } from "csstype";
 import * as React from "react";
-import { defaultTableRowHeight } from "../../../../config/TableConfig";
+import {
+  defaultTableRowHeight,
+  tableBorderLeft,
+} from "../../../../config/TableConfig";
 import { TableHeadItem } from "../../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
@@ -27,6 +30,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   return (
     <TableHeadRow
       height={height}
+      borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
