@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming changes
+## 9.0.0
 
 ### Breaking changes
 
