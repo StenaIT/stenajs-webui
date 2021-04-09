@@ -42,7 +42,7 @@ export const LoadingModal: React.FC<LoadingModalProps> = ({
           spacing={6}
           indent={8}
         >
-          <Spinner size={"large"} />
+          <Spinner size={"medium"} />
         </Box>
       </Column>
     </CenterModal>
