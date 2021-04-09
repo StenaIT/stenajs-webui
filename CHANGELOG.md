@@ -96,9 +96,13 @@ All theme variables are using CSS properties.
 
 ### Breaking changes
 
-`Box` no longer has property `color`.
-This also applies to components derived from `Box`,
-such as `Row` and `Column`.
+## 7.5.3
+
+# EditSpinner
+
+- `Spinner` no longer has property `large` and no related class exist.
+- Spinner has new color `blue 500`.
+- Animations are removed using the same color.
 
 ## 7.5.2
 

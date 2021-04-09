@@ -17,7 +17,7 @@
   }
 
   &.inverted {
-    stroke: #eee;
+    stroke: var(--lhds-color-ui-300);
     circle {
       animation: dash 1.4s ease-in-out infinite;
     }
