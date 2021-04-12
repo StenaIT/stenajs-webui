@@ -68,6 +68,13 @@ const resolveIconColor = (
     ? theme.menu.selectedItemHoverTextColor
     : theme.menu.selectedItemTextColor;
 
+const resolveSelectedTextColor = (
+  theme: SelectTheme,
+  isSelected: boolean
+): string | undefined => {
+  return isSelected ? theme.menu.selectedItemTextColor : undefined;
+};
+
 export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
@@ -114,7 +121,13 @@ export const GroupedMultiSelect = <TData extends {}>({
             flexDirection={"row"}
             flexGrow={1}
           >
-            <Text size={"small"} tabIndex={-1}>
+            <Text
+              size={"small"}
+              tabIndex={-1}
+              style={{
+                color: resolveSelectedTextColor(theme, props.isSelected),
+              }}
+            >
               {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
             </Text>
             {props.isSelected && (
