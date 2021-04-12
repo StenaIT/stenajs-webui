@@ -1,5 +1,18 @@
 # Changelog
 
+## Upcoming
+
+### Design changes
+
+- Select hover state is now `Blue200`
+- Selected state text color is now `Blue500`
+- Selected/Checked state background color is now `Blue50`. Text color is `Blue500`. Checkbox is `Blue500`
+
+### Code improvements
+
+- Add select menu style variables that represent what they style. 
+
+
 ## 9.0.0
 
 ### Breaking changes
