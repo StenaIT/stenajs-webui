@@ -9,6 +9,7 @@
 ### Design changes
 
 - Spinner has new color `blue 500`.
+- `Banner` icon has fixed width and will not be compressed by long content
 
 ### Code improvements
 
