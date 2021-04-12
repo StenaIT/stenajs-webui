@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### design changes
+
+- All columns will be rendered left aligned in Standard table HTML export
+
 ## 9.0.0
 
 ### Breaking changes
