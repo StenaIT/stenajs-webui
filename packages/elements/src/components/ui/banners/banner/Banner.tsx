@@ -46,7 +46,12 @@ export const Banner: React.FC<BannerProps> = ({
   return (
     <div className={cx(styles.banner, styles[variant])}>
       <Row justifyContent={"space-between"}>
-        <Row width={"64px"} justifyContent={"center"} alignItems={"center"}>
+        <Row
+          flex={"none"}
+          width={"64px"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
           {(icon || iconPerVariant[variant] || loading) && (
             <>
               {loading ? (

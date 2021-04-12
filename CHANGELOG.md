@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming changes
+
+### Design changes
+- `Banner` icon has fixed width and will not be compressed by long content
+
 ## 9.0.0
 
 ### Breaking changes
