@@ -17,7 +17,7 @@ export const transformTableHeaders = <
     groupConfigs.map((groupConfig) =>
       groupConfig.columnOrder.map((columnId) => {
         const columnConfig = config.columns[columnId];
-        return `<th>${
+        return `<th style="text-align: left">${
           columnConfig.columnLabel ??
           formatColumnIdToHeaderCellLabel(String(columnId))
         }</th>`;
@@ -31,9 +31,9 @@ export const transformGroupHeaders = <TColumnKey extends string>(
 ): string[] => {
   return flatten(
     groupConfigs.map((groupConfig) => {
-      return `<th colspan="${groupConfig.columnOrder.length}">${
-        groupConfig.label ?? ""
-      }</th>`;
+      return `<th style="text-align: left" colspan="${
+        groupConfig.columnOrder.length
+      }">${groupConfig.label ?? ""}</th>`;
     })
   );
 };

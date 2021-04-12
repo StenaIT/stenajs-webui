@@ -44,5 +44,5 @@ export const transformItemToCell = <TItem, TItemValue>(
 };
 
 const createCell = (value: string | number): string => {
-  return `<td>${value}</td>`;
+  return `<td style="text-align: left">${value}</td>`;
 };
