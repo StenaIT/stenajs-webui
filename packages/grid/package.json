@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid",
-  "version": "8.1.0",
+  "version": "9.0.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,13 +28,13 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "8.1.0",
-    "@stenajs-webui/elements": "8.1.0",
-    "@stenajs-webui/forms": "8.1.0",
-    "@stenajs-webui/panels": "8.1.0",
-    "@stenajs-webui/redux": "8.1.0",
-    "@stenajs-webui/theme": "8.1.0",
-    "@stenajs-webui/tooltip": "8.1.0",
+    "@stenajs-webui/core": "9.0.0",
+    "@stenajs-webui/elements": "9.0.0",
+    "@stenajs-webui/forms": "9.0.0",
+    "@stenajs-webui/panels": "9.0.0",
+    "@stenajs-webui/redux": "9.0.0",
+    "@stenajs-webui/theme": "9.0.0",
+    "@stenajs-webui/tooltip": "9.0.0",
     "classnames": "^2.2.6",
     "react-infinite": "0.13.0"
   },
