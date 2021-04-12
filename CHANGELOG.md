@@ -1,5 +1,19 @@
 # Changelog
 
+## Upcoming
+
+### Breaking changes
+
+- `Spinner` no longer has property `large` and no related class exist.
+
+### Design changes
+
+- Spinner has new color `blue 500`.
+
+### Code improvements
+
+- Animations are removed using the same color for spinner.
+
 ## 9.0.0
 
 ### Breaking changes
@@ -10,9 +24,6 @@
   - `ActionMenuPrimaryButton`
   - `ActionMenuSecondaryButton`
   - `ActionMenuFlatButton`
-  - `Spinner` no longer has property `large` and no related class exist.
-  - Spinner has new color `blue 500`.
-  - Animations are removed using the same color.
 
 ### Design changes
 
