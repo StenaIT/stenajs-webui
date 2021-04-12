@@ -1,4 +1,4 @@
-export const alignmentTransformer = (
+export const transformJustifyContentToTextAlign = (
   justifyContent: string | undefined
 ): string | undefined => {
   switch (justifyContent?.toLowerCase()) {

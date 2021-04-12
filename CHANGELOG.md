@@ -4,7 +4,7 @@
 
 ### design changes
 
-- All columns will be rendered left aligned in Standard table HTML export
+- All horizontal column alignments will be rendered according to the table config
 
 ## 9.0.0
 

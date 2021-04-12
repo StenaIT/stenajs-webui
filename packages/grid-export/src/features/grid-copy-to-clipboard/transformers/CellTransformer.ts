@@ -1,7 +1,7 @@
 import { StandardTableColumnConfig } from "@stenajs-webui/grid";
 import { format } from "date-fns";
 import { CustomCellFormatter } from "../../../common/CellFormatters";
-import { alignmentTransformer } from "./AlignmentTransformer";
+import { transformJustifyContentToTextAlign } from "./AlignmentTransformer";
 
 export const transformItemToCell = <TItem, TItemValue>(
   item: TItem,
@@ -53,10 +53,12 @@ const createCell = (
   justifyContentCell: string | undefined
 ): string => {
   if (justifyContentCell) {
-    console.log("Will render CELL: ", justifyContentCell);
-    return `<td style="${alignmentTransformer(
+    const styleProperty = transformJustifyContentToTextAlign(
       justifyContentCell
-    )}"'}>${value}</td>`;
+    );
+    return `<td ${
+      styleProperty ? 'style="' + styleProperty + '"' : ""
+    }>${value}</td>`;
   }
   return `<td>${value}</td>`;
 };

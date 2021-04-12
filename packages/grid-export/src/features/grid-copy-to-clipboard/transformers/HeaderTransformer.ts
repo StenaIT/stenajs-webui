@@ -4,7 +4,7 @@ import {
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 import { flatten } from "lodash";
-import { alignmentTransformer } from "./AlignmentTransformer";
+import { transformJustifyContentToTextAlign } from "./AlignmentTransformer";
 
 export const transformTableHeaders = <
   TItem,
@@ -20,9 +20,10 @@ export const transformTableHeaders = <
         const columnConfig = config.columns[columnId];
 
         if (columnConfig.justifyContentHeader) {
-          return `<th style="${alignmentTransformer(
+          const styleProperty = transformJustifyContentToTextAlign(
             columnConfig.justifyContentHeader
-          )}">${
+          );
+          return `<th ${styleProperty ? 'style="' + styleProperty + '"' : ""}>${
             columnConfig.columnLabel ??
             formatColumnIdToHeaderCellLabel(String(columnId))
           }</th>`;
