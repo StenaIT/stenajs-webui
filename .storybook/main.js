@@ -1,11 +1,14 @@
 module.exports = {
-  stories: ["../**/*.stories.tsx"],
+  stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
+  typescript: {
+    reactDocgen: process.env.NODE_ENV === "production" ? "react-docgen-typescript" : false,
+  },
   addons: [
     "@storybook/addon-viewport",
-    "@storybook/addon-storysource",
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-toolbars",
+    "@storybook/addon-postcss",
     {
       name: "@storybook/addon-docs",
       options: {
@@ -22,7 +25,7 @@ module.exports = {
 
     // Remove the existing css rule
     config.module.rules = config.module.rules.filter(
-      (f) => f.test.toString() !== "/\\.css$/"
+      (f) => f.test?.toString() !== "/\\.css$/"
     );
 
     // Make whatever fine-grained changes you need
