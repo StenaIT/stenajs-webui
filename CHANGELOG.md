@@ -10,6 +10,9 @@
   - `ActionMenuPrimaryButton`
   - `ActionMenuSecondaryButton`
   - `ActionMenuFlatButton`
+  - `Spinner` no longer has property `large` and no related class exist.
+  - Spinner has new color `blue 500`.
+  - Animations are removed using the same color.
 
 ### Design changes
 
@@ -95,14 +98,6 @@ Theming is no longer using React context.
 All theme variables are using CSS properties.
 
 ### Breaking changes
-
-## 7.5.3
-
-# EditSpinner
-
-- `Spinner` no longer has property `large` and no related class exist.
-- Spinner has new color `blue 500`.
-- Animations are removed using the same color.
 
 ## 7.5.2
 
