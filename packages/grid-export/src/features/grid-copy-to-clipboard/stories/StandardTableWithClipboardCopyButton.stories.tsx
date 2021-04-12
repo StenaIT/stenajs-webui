@@ -29,6 +29,22 @@ const config: StandardTableConfig<Item, keyof Omit<Item, "id">> = {
   },
   columnOrder: ["firstName", "lastName", "age"],
 };
+const configWithAlignment: StandardTableConfig<Item, keyof Omit<Item, "id">> = {
+  keyResolver: (item) => item.id,
+  rowIndent: 3,
+  columns: {
+    firstName: createColumnConfig((item) => item.firstName, {
+      justifyContentHeader: "start",
+      justifyContentCell: "left",
+    }),
+    lastName: createColumnConfig((item) => item.lastName, {
+      justifyContentHeader: "flex-end",
+      justifyContentCell: "flex-end",
+    }),
+    age: createColumnConfig((item) => item.age),
+  },
+  columnOrder: ["firstName", "lastName", "age"],
+};
 
 const configWithGroups: StandardTableConfig<
   Item,
@@ -159,5 +175,15 @@ export const WithColumnGroups = () => (
       items={items}
     />
     <StandardTable config={configWithGroups} items={items} />
+  </Column>
+);
+
+export const WithAlignedColumnsGroups = () => (
+  <Column>
+    <StandardTableHtmlCopyToClipboardButton
+      config={configWithAlignment}
+      items={items}
+    />
+    <StandardTable config={configWithAlignment} items={items} />
   </Column>
 );
