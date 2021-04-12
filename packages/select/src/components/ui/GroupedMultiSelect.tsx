@@ -71,8 +71,8 @@ const resolveIconColor = (
 const resolveSelectedTextColor = (
   theme: SelectTheme,
   isSelected: boolean
-): string | undefined => {
-  return isSelected ? theme.menu.selectedItemTextColor : undefined;
+): string => {
+  return isSelected ? theme.menu.selectedItemTextColor : "";
 };
 
 export const GroupedMultiSelect = <TData extends {}>({
