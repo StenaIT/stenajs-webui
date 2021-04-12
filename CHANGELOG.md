@@ -99,6 +99,10 @@ All theme variables are using CSS properties.
 
 ### Breaking changes
 
+`Box` no longer has property `color`.
+This also applies to components derived from `Box`,
+such as `Row` and `Column`.
+
 ## 7.5.2
 
 # DateTimeInput
