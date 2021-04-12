@@ -65,8 +65,8 @@ const resolveIconColor = (
   isFocused: boolean
 ): string | undefined =>
   isFocused
-    ? theme.menu.selectedItemHoverTextColor
-    : theme.menu.selectedItemTextColor;
+    ? theme.menu.selectedItemHoverIconColor
+    : theme.menu.selectedItemIconColor;
 
 const resolveSelectedTextColor = (
   theme: SelectTheme,
