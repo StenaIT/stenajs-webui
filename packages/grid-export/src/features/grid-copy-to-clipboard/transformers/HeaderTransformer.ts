@@ -23,7 +23,7 @@ export const transformTableHeaders = <
           const styleProperty = transformJustifyContentToTextAlign(
             columnConfig.justifyContentHeader
           );
-          return `<th ${styleProperty ? 'style="' + styleProperty + '"' : ""}>${
+          return `<th${styleProperty ? ' style="' + styleProperty + '"' : ""}>${
             columnConfig.columnLabel ??
             formatColumnIdToHeaderCellLabel(String(columnId))
           }</th>`;

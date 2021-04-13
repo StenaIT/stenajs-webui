@@ -56,8 +56,8 @@ const createCell = (
     const styleProperty = transformJustifyContentToTextAlign(
       justifyContentCell
     );
-    return `<td ${
-      styleProperty ? 'style="' + styleProperty + '"' : ""
+    return `<td${
+      styleProperty ? ' style="' + styleProperty + '"' : ""
     }>${value}</td>`;
   }
   return `<td>${value}</td>`;
