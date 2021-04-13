@@ -37,4 +37,56 @@
   --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
+
+  &.normal {
+  }
+
+
+  &.danger:not(:disabled) {
+    --current-background-color: var(--swui-button-background-color);
+    --current-border-color: var(--swui-button-border-color);
+    --current-icon-color: var(--lhds-color-red-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-red-50);
+      --current-border-color: var(--lhds-color-red-400);
+      --current-icon-color: var(--lhds-color-red-500);
+    }
+
+    &:focus {
+      --current-border-color: var(--lhds-color-red-600);
+      --current-icon-color: var(--lhds-color-red-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-red-100);
+      --current-border-color: var(--lhds-color-red-500);
+      --current-text-color: var(--lhds-color-red-900);
+      --current-icon-color: var(--lhds-color-red-900);
+    }
+  }
+
+  &.success:not(:disabled) {
+    --current-background-color: var(--swui-button-background-color);
+    --current-border-color: var(--swui-button-border-color);
+    --current-icon-color: var(--lhds-color-green-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-green-50);
+      --current-border-color: var(--lhds-color-green-400);
+      --current-icon-color: var(--lhds-color-green-500);
+    }
+
+    &:focus {
+      --current-border-color: var(--lhds-color-green-600);
+      --current-icon-color: var(--lhds-color-green-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-green-100);
+      --current-border-color: var(--lhds-color-green-500);
+      --current-icon-color: var(--lhds-color-green-900);
+      --current-text-color: var(--lhds-color-green-900);
+    }
+  }
 }

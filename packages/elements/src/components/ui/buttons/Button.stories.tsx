@@ -139,48 +139,51 @@ export const Overview = () => (
 
 export const Variants = () => (
   <>
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
-      (variant) => (
-        <Column>
-          <Text size={"large"}>{variant}</Text>
-          <Space />
-          <Row alignItems={"flex-start"} indent spacing>
-            {buttonSizes.map((size) => (
-              <Indent>
-                <PrimaryButton
-                  key={size}
-                  size={size}
-                  variant={variant}
-                  label={"Submit"}
-                />
-              </Indent>
-            ))}
-          </Row>
-        </Column>
-      )
-    )}
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
-      (variant) => (
-        <Column>
-          <Text size={"large"}>{variant} (disabled)</Text>
-          <Space />
-          <Row alignItems={"flex-start"} indent spacing>
-            {buttonSizes.map((size) => (
-              <Indent>
-                <PrimaryButton
-                  key={size}
-                  size={size}
-                  variant={variant}
-                  label={"Submit"}
-                  disabled
-                />
-              </Indent>
-            ))}
-          </Row>
-        </Column>
-      )
-    )}
+    {[
+      { ButtonVariant: PrimaryButton, label: "PrimaryButton" },
+      { ButtonVariant: SecondaryButton, label: "SecondaryButton" },
+      { ButtonVariant: FlatButton, label: "FlatButton" },
+    ].map(({ label, ButtonVariant }) => (
+      <Column>
+        <Text size={"large"}>{label}</Text>
+        <Space />
+        {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
+          (variant) => (
+            <Column>
+              <Text size={"large"}>{variant}</Text>
+              <Space />
+              <Row alignItems={"flex-start"} indent spacing>
+                <Indent>
+                  <ButtonVariant
+                    variant={variant}
+                    label={"Submit"}
+                    leftIcon={faCheck}
+                  />
+                </Indent>
+                <Indent>
+                  <ButtonVariant
+                    variant={variant}
+                    label={"Disabled"}
+                    leftIcon={faCheck}
+                    disabled
+                  />
+                </Indent>
+              </Row>
+            </Column>
+          )
+        )}
+        <Space num={8} />
+      </Column>
+    ))}
   </>
+);
+
+export const FlatButtonInverted = () => (
+  <Row background={"#2e4662"} spacing={2} indent={2}>
+    <FlatButton inverted label={"Submit"} />
+    <Space num={2} />
+    <FlatButton inverted label={"Disabled"} disabled />
+  </Row>
 );
 
 export const WithGenericContentToRight = () => (

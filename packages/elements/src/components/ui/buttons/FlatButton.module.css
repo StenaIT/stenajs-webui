@@ -114,4 +114,61 @@
       --swui-flat-button-background-inverted-color-disabled
     );
   }
+
+  &.normal {
+  }
+
+  &.danger:not(:disabled) {
+    --current-background-color: --swui-flat-button-background-color;
+    --current-border-color: --swui-button-border-color;
+    --current-icon-color: var(--lhds-color-red-500);
+    --current-text-color: var(--lhds-color-red-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-red-50);
+      --current-border-color: --swui-button-border-color-hover;
+      --current-icon-color: var(--lhds-color-red-700);
+      --current-text-color: var(--lhds-color-red-700);
+    }
+
+    &:focus {
+      --current-border-color: --swui-button-border-color-focus;
+      --current-icon-color: var(--lhds-color-red-500);
+      --current-text-color: var(--lhds-color-red-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-red-100);
+      --current-border-color: --swui-button-border-color-active;
+      --current-icon-color: var(--lhds-color-red-900);
+      --current-text-color: var(--lhds-color-red-900);
+    }
+  }
+
+  &.success:not(:disabled) {
+    --current-background-color: --swui-flat-button-background-color;
+    --current-border-color: --swui-button-border-color;
+    --current-icon-color: var(--lhds-color-green-500);
+    --current-text-color: var(--lhds-color-green-500);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-green-50);
+      --current-border-color: --swui-button-border-color-hover;
+      --current-icon-color: var(--lhds-color-green-700);
+      --current-text-color: var(--lhds-color-green-700);
+    }
+
+    &:focus {
+      --current-border-color: --swui-button-border-color-focus;
+      --current-icon-color: var(--lhds-color-green-500);
+      --current-text-color: var(--lhds-color-green-500);
+    }
+
+    &:active {
+      --current-background-color: var(--lhds-color-green-100);
+      --current-border-color: --swui-button-border-color-active;
+      --current-icon-color: var(--lhds-color-green-900);
+      --current-text-color: var(--lhds-color-green-900);
+    }
+  }
 }
