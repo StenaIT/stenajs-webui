@@ -111,6 +111,17 @@ export const Demo = () => (
   </Column>
 );
 
+export const Disabled = () => (
+  <Column>
+    <StandardTableHtmlCopyToClipboardButton
+      config={config}
+      items={items}
+      disabled={true}
+    />
+    <StandardTable config={config} items={items} />
+  </Column>
+);
+
 export const WithRenderContent = () => {
   const additionalComponent = useRef<HTMLDivElement>(null);
 

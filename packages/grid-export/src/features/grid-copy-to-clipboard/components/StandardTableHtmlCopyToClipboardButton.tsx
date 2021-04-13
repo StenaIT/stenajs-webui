@@ -13,7 +13,7 @@ export interface StandardTableHtmlCopyToClipboardButtonProps<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
     >,
-    Pick<FlatButtonProps, "size"> {
+    Pick<FlatButtonProps, "size" | "disabled"> {
   formatters?: CustomCellFormatters<TItem, TColumnKey>;
   renderContent?: (content: string) => string | null;
   label?: string;
@@ -34,6 +34,7 @@ export function StandardTableHtmlCopyToClipboardButton<
   label = "Copy to clipboard",
   labelAfterCopy = "Content copied!",
   numTimeToRevertLabel = 2000,
+  disabled = false,
 }: StandardTableHtmlCopyToClipboardButtonProps<
   TItem,
   TColumnKey,
@@ -51,7 +52,7 @@ export function StandardTableHtmlCopyToClipboardButton<
     <FlatButton
       size={size}
       onClick={onClickExportHtml}
-      disabled={!items || !items.length}
+      disabled={disabled || !items || !items.length}
       label={contentCopied ? labelAfterCopy : label}
     />
   );
