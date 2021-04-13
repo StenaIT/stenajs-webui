@@ -71,8 +71,8 @@ const resolveIconColor = (
 const resolveSelectedTextColor = (
   theme: SelectTheme,
   isSelected: boolean
-): string => {
-  return isSelected ? theme.menu.selectedItemTextColor : "";
+): string | undefined => {
+  return isSelected ? theme.menu.selectedItemTextColor : undefined;
 };
 
 export const GroupedMultiSelect = <TData extends {}>({
@@ -124,9 +124,7 @@ export const GroupedMultiSelect = <TData extends {}>({
             <Text
               size={"small"}
               tabIndex={-1}
-              style={{
-                color: resolveSelectedTextColor(theme, props.isSelected),
-              }}
+              color={resolveSelectedTextColor(theme, props.isSelected)}
             >
               {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
             </Text>
