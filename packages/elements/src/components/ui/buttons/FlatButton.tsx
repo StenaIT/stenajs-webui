@@ -9,17 +9,13 @@ export type FlatButtonProps = PrimaryButtonProps & {
 };
 
 export const FlatButton = forwardRef<HTMLButtonElement, FlatButtonProps>(
-  function FlatButton(
-    { className, inverted, variant = "normal", ...props },
-    ref
-  ) {
+  function FlatButton({ className, inverted, ...props }, ref) {
     return (
       <PrimaryButton
         ref={ref}
         className={cx(
           styles.flatButton,
           inverted && styles.inverted,
-          styles[variant],
           className
         )}
         {...props}

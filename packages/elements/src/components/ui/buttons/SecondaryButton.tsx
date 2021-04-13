@@ -7,11 +7,11 @@ import styles from "./SecondaryButton.module.css";
 export const SecondaryButton = forwardRef<
   HTMLButtonElement,
   PrimaryButtonProps
->(function SecondaryButton({ className, variant = "normal", ...props }, ref) {
+>(function SecondaryButton({ className, ...props }, ref) {
   return (
     <PrimaryButton
       ref={ref}
-      className={cx(styles.secondaryButton, styles[variant], className)}
+      className={cx(styles.secondaryButton, className)}
       {...props}
     />
   );

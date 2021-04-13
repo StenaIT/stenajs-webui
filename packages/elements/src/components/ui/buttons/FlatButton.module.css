@@ -49,6 +49,9 @@
     --swui-flat-button-text-color-disabled
   );
 
+  --swui-button-danger-text-color: var(--lhds-color-red-500);
+  --swui-button-success-text-color: var(--lhds-color-green-500);
+
   /* Icon */
   --swui-button-icon-color: var(--swui-flat-button-icon-color);
   --swui-button-icon-color-focus: var(--swui-flat-button-icon-color);
@@ -57,6 +60,9 @@
   --swui-button-icon-color-disabled: var(
     --swui-flat-button-icon-color-disabled
   );
+
+  --swui-button-danger-icon-color: var(--lhds-color-red-500);
+  --swui-button-success-icon-color: var(--lhds-color-green-500);
 
   /* Background */
   --swui-button-background-color: var(--swui-flat-button-background-color);
@@ -73,6 +79,24 @@
     --swui-flat-button-background-color-disabled
   );
 
+  --swui-button-danger-background-color: var(
+    --swui-flat-button-background-color
+  );
+  --swui-button-danger-background-color-hover: var(--lhds-color-red-50);
+  --swui-button-danger-background-color-focus: var(
+    --swui-flat-button-background-color-focus
+  );
+  --swui-button-danger-background-color-active: var(--lhds-color-red-100);
+
+  --swui-button-success-background-color: var(
+    --swui-flat-button-background-color
+  );
+  --swui-button-success-background-color-hover: var(--lhds-color-green-50);
+  --swui-button-success-background-color-focus: var(
+    --swui-flat-button-background-color-focus
+  );
+  --swui-button-success-background-color-active: var(--lhds-color-green-100);
+
   /* Border */
   --swui-button-border-color: transparent;
   --swui-button-border-color-hover: transparent;
@@ -80,6 +104,28 @@
   --swui-button-border-color-active: transparent;
   --swui-button-border-color-disabled: transparent;
   --swui-button-border-radius-icon-only: 50%;
+
+  --swui-button-danger-border-color: var(--swui-button-border-color);
+  --swui-button-danger-border-color-hover: var(
+    --swui-button-border-color-hover
+  );
+  --swui-button-danger-border-color-focus: var(
+    --swui-button-border-color-active
+  );
+  --swui-button-danger-border-color-active: var(
+    --swui-button-border-color-disabled
+  );
+
+  --swui-button-success-border-color: var(--swui-button-border-color);
+  --swui-button-success-border-color-hover: var(
+    --swui-button-border-color-hover
+  );
+  --swui-button-success-border-color-focus: var(
+    --swui-button-border-color-active
+  );
+  --swui-button-success-border-color-active: var(
+    --swui-button-border-color-disabled
+  );
 
   /* Shadow */
   --swui-button-box-shadow: none;
@@ -113,62 +159,5 @@
     --swui-button-background-color-disabled: var(
       --swui-flat-button-background-inverted-color-disabled
     );
-  }
-
-  &.normal {
-  }
-
-  &.danger:not(:disabled) {
-    --current-background-color: --swui-flat-button-background-color;
-    --current-border-color: --swui-button-border-color;
-    --current-icon-color: var(--lhds-color-red-500);
-    --current-text-color: var(--lhds-color-red-500);
-
-    &:hover {
-      --current-background-color: var(--lhds-color-red-50);
-      --current-border-color: --swui-button-border-color-hover;
-      --current-icon-color: var(--lhds-color-red-700);
-      --current-text-color: var(--lhds-color-red-700);
-    }
-
-    &:focus {
-      --current-border-color: --swui-button-border-color-focus;
-      --current-icon-color: var(--lhds-color-red-500);
-      --current-text-color: var(--lhds-color-red-500);
-    }
-
-    &:active {
-      --current-background-color: var(--lhds-color-red-100);
-      --current-border-color: --swui-button-border-color-active;
-      --current-icon-color: var(--lhds-color-red-900);
-      --current-text-color: var(--lhds-color-red-900);
-    }
-  }
-
-  &.success:not(:disabled) {
-    --current-background-color: --swui-flat-button-background-color;
-    --current-border-color: --swui-button-border-color;
-    --current-icon-color: var(--lhds-color-green-500);
-    --current-text-color: var(--lhds-color-green-500);
-
-    &:hover {
-      --current-background-color: var(--lhds-color-green-50);
-      --current-border-color: --swui-button-border-color-hover;
-      --current-icon-color: var(--lhds-color-green-700);
-      --current-text-color: var(--lhds-color-green-700);
-    }
-
-    &:focus {
-      --current-border-color: --swui-button-border-color-focus;
-      --current-icon-color: var(--lhds-color-green-500);
-      --current-text-color: var(--lhds-color-green-500);
-    }
-
-    &:active {
-      --current-background-color: var(--lhds-color-green-100);
-      --current-border-color: --swui-button-border-color-active;
-      --current-icon-color: var(--lhds-color-green-900);
-      --current-text-color: var(--lhds-color-green-900);
-    }
   }
 }
