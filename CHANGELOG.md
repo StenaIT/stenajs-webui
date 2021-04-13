@@ -4,10 +4,9 @@
 
 ### Design changes
 - `Banner` icon has fixed width and will not be compressed by long content
+
+### StandardTableHtmlCopyToClipboardButton
 - All horizontal column alignments will be rendered according to the table config
-
-## Additions
-
 - Add disable prop to StandardTableHtmlCopyToClipboardButton
 
 ## 9.0.0
