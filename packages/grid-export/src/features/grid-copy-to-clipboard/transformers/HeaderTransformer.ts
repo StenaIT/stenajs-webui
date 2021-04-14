@@ -4,6 +4,7 @@ import {
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 import { flatten } from "lodash";
+import { transformJustifyContentToTextAlign } from "./AlignmentTransformer";
 
 export const transformTableHeaders = <
   TItem,
@@ -17,6 +18,16 @@ export const transformTableHeaders = <
     groupConfigs.map((groupConfig) =>
       groupConfig.columnOrder.map((columnId) => {
         const columnConfig = config.columns[columnId];
+
+        if (columnConfig.justifyContentHeader) {
+          const styleProperty = transformJustifyContentToTextAlign(
+            columnConfig.justifyContentHeader
+          );
+          return `<th${styleProperty ? ' style="' + styleProperty + '"' : ""}>${
+            columnConfig.columnLabel ??
+            formatColumnIdToHeaderCellLabel(String(columnId))
+          }</th>`;
+        }
         return `<th>${
           columnConfig.columnLabel ??
           formatColumnIdToHeaderCellLabel(String(columnId))
@@ -31,9 +42,9 @@ export const transformGroupHeaders = <TColumnKey extends string>(
 ): string[] => {
   return flatten(
     groupConfigs.map((groupConfig) => {
-      return `<th colspan="${groupConfig.columnOrder.length}">${
-        groupConfig.label ?? ""
-      }</th>`;
+      return `<th style="text-align: left" colspan="${
+        groupConfig.columnOrder.length
+      }">${groupConfig.label ?? ""}</th>`;
     })
   );
 };

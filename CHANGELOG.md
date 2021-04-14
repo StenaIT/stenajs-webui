@@ -4,6 +4,7 @@
 
 ### Design changes
 - `Banner` icon has fixed width and will not be compressed by long content
+- All horizontal column alignments will be rendered according to the table config
 - Button variants look good for `SecondaryButton` and `FlatButton`
 - Border color matches background color for `PrimaryButton`
 - Disabled text and icon color for `PrimaryButton` is the same as for `SecondaryButton`
