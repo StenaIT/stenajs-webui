@@ -14,13 +14,37 @@
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-text-color-active: var(--swui-button-text-color);
-  --swui-button-text-color-disabled: var(--swui-field-text-color-disabled);
+  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+
+  --swui-button-danger-text-color: var(--swui-button-text-color);
+  --swui-button-danger-text-color-focus: var(--swui-button-danger-text-color);
+  --swui-button-danger-text-color-hover: var(--swui-button-danger-text-color);
+  --swui-button-danger-text-color-active: var(--swui-button-danger-text-color);
+
+  --swui-button-success-text-color: var(--swui-button-text-color);
+  --swui-button-success-text-color-focus: var(--swui-button-success-text-color);
+  --swui-button-success-text-color-hover: var(--swui-button-success-text-color);
+  --swui-button-success-text-color-active: var(
+    --swui-button-success-text-color
+  );
 
   /* Icon */
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
   --swui-button-icon-color-hover: var(--swui-button-icon-color);
   --swui-button-icon-color-active: var(--swui-button-icon-color);
-  --swui-button-icon-color-disabled: var(--swui-field-text-color-disabled);
+  --swui-button-icon-color-disabled: var(--swui-text-disabled-color);
+
+  --swui-button-danger-icon-color: var(--swui-button-icon-color);
+  --swui-button-danger-icon-color-focus: var(--swui-button-danger-icon-color);
+  --swui-button-danger-icon-color-hover: var(--swui-button-danger-icon-color);
+  --swui-button-danger-icon-color-active: var(--swui-button-danger-icon-color);
+
+  --swui-button-success-icon-color: var(--swui-button-icon-color);
+  --swui-button-success-icon-color-focus: var(--swui-button-success-icon-color);
+  --swui-button-success-icon-color-hover: var(--swui-button-success-icon-color);
+  --swui-button-success-icon-color-active: var(
+    --swui-button-success-icon-color
+  );
 
   /* Background */
   --swui-button-background-color: var(--swui-primary-action-color);
@@ -33,14 +57,48 @@
     --swui-primary-action-color-disabled
   );
 
+  --swui-button-danger-background-color: var(--lhds-color-red-500);
+  --swui-button-danger-background-color-active: var(--lhds-color-red-900);
+  --swui-button-danger-background-color-focus: var(--lhds-color-red-700);
+  --swui-button-danger-background-color-hover: var(--lhds-color-red-600);
+
+  --swui-button-success-background-color: var(--lhds-color-green-500);
+  --swui-button-success-background-color-active: var(--lhds-color-green-900);
+  --swui-button-success-background-color-focus: var(--lhds-color-green-700);
+  --swui-button-success-background-color-hover: var(--lhds-color-green-600);
+
   /* Border */
   --swui-button-border-color: var(--swui-button-background-color);
   --swui-button-border-radius: var(--swui-border-radius);
   --swui-button-border-radius-icon-only: var(--swui-border-radius);
-  --swui-button-border-color-focus: var(--swui-button-background-color);
-  --swui-button-border-color-hover: var(--swui-button-background-color);
-  --swui-button-border-color-active: var(--swui-button-background-color);
+  --swui-button-border-color-focus: var(--swui-button-background-color-focus);
+  --swui-button-border-color-hover: var(--swui-button-background-color-hover);
+  --swui-button-border-color-active: var(--swui-button-background-color-active);
   --swui-button-border-color-disabled: var(--lhds-color-ui-400);
+
+  --swui-button-danger-border-color: var(--swui-button-danger-background-color);
+  --swui-button-danger-border-color-focus: var(
+    --swui-button-danger-background-color-focus
+  );
+  --swui-button-danger-border-color-hover: var(
+    --swui-button-danger-background-color-hover
+  );
+  --swui-button-danger-border-color-active: var(
+    --swui-button-danger-background-color-active
+  );
+
+  --swui-button-success-border-color: var(
+    --swui-button-success-background-color
+  );
+  --swui-button-success-border-color-focus: var(
+    --swui-button-success-background-color-focus
+  );
+  --swui-button-success-border-color-hover: var(
+    --swui-button-success-background-color-hover
+  );
+  --swui-button-success-border-color-active: var(
+    --swui-button-success-background-color-active
+  );
 
   /* Shadow */
   --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
@@ -135,6 +193,7 @@
 
   &:focus {
     outline: 0;
+    --current-background-color: var(--swui-button-background-color-focus);
     --current-border-color: var(--swui-button-border-color-focus);
     --current-icon-color: var(--swui-button-icon-color-focus);
     --current-text-color: var(--swui-button-text-color-focus);
@@ -162,42 +221,72 @@
   }
 
   &.danger:not(:disabled) {
-    --current-background-color: var(--lhds-color-red-500);
-    --current-border-color: var(--lhds-color-red-500);
+    --current-background-color: var(--swui-button-danger-background-color);
+    --current-border-color: var(--swui-button-danger-border-color);
+    --current-text-color: var(--swui-button-danger-text-color);
+    --current-icon-color: var(--swui-button-danger-icon-color);
 
     &:hover {
-      --current-background-color: var(--lhds-color-red-700);
-      --current-border-color: var(--lhds-color-red-700);
+      --current-background-color: var(
+        --swui-button-danger-background-color-hover
+      );
+      --current-border-color: var(--swui-button-danger-border-color-hover);
+      --current-text-color: var(--swui-button-danger-text-color-hover);
+      --current-icon-color: var(--swui-button-danger-icon-color-hover);
     }
 
     &:focus {
       outline: 0;
-      --current-border-color: var(--lhds-color-red-500);
+      --current-background-color: var(
+        --swui-button-danger-background-color-focus
+      );
+      --current-border-color: var(--swui-button-danger-border-color-focus);
+      --current-text-color: var(--swui-button-danger-text-color-focus);
+      --current-icon-color: var(--swui-button-danger-icon-color-focus);
     }
 
     &:active {
-      --current-background-color: var(--lhds-color-red-900);
-      --current-border-color: var(--lhds-color-red-900);
+      --current-background-color: var(
+        --swui-button-danger-background-color-active
+      );
+      --current-border-color: var(--swui-button-danger-border-color-active);
+      --current-text-color: var(--swui-button-danger-text-color-active);
+      --current-icon-color: var(--swui-button-danger-icon-color-active);
     }
   }
 
   &.success:not(:disabled) {
-    --current-background-color: var(--lhds-color-green-500);
-    --current-border-color: var(--lhds-color-green-500);
+    --current-background-color: var(--swui-button-success-background-color);
+    --current-border-color: var(--swui-button-success-border-color);
+    --current-text-color: var(--swui-button-success-text-color);
+    --current-icon-color: var(--swui-button-success-icon-color);
 
     &:hover {
-      --current-background-color: var(--lhds-color-green-700);
-      --current-border-color: var(--lhds-color-green-700);
+      --current-background-color: var(
+        --swui-button-success-background-color-hover
+      );
+      --current-border-color: var(--swui-button-success-border-color-hover);
+      --current-text-color: var(--swui-button-success-text-color-hover);
+      --current-icon-color: var(--swui-button-success-icon-color-hover);
     }
 
     &:focus {
       outline: 0;
-      --current-border-color: var(--lhds-color-green-500);
+      --current-background-color: var(
+        --swui-button-success-background-color-focus
+      );
+      --current-border-color: var(--swui-button-success-border-color-focus);
+      --current-text-color: var(--swui-button-success-text-color-focus);
+      --current-icon-color: var(--swui-button-success-icon-color-focus);
     }
 
     &:active {
-      --current-background-color: var(--lhds-color-green-900);
-      --current-border-color: var(--lhds-color-green-900);
+      --current-background-color: var(
+        --swui-button-success-background-color-active
+      );
+      --current-border-color: var(--swui-button-success-border-color-active);
+      --current-text-color: var(--swui-button-success-text-color-active);
+      --current-icon-color: var(--swui-button-success-icon-color-active);
     }
   }
 }
