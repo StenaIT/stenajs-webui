@@ -1,24 +1,34 @@
 # Changelog
 
-## Upcoming
+## 9.1.0
 
-### `Select` component changes
+### Select
 
-- `Select` hover state is now changed.
-- Selected state text color is now `Blue500`
-- Selected/Checked state background color is now `Blue50`. Text color is `Blue500`. Checkbox is `Blue500`
+- Updated design to look more like design system.
+
+### StandardTableHtmlCopyToClipboardButton
+
+- When exporting to clipboard, all horizontal column alignments
+  will be rendered according to the table config.
+
+### Spinner
+
+- `Spinner` only has one color now.
+- Removed `Spinner` variant `large`.
+
+### Banner
+
+- `Banner` icon has fixed width and will no longer be compressed by long content.
+
+### Buttons
+
+- Button variants look good for `SecondaryButton` and `FlatButton`.
+- Border color matches background color for `PrimaryButton`.
+- Disabled text and icon color for `PrimaryButton` is the same as for `SecondaryButton`.
+
 ### Breaking changes
 
-- `Spinner` no longer has property `large` and no related class exist.
-
-### Design changes
-
-- Spinner only has one color now.
-- `Banner` icon has fixed width and will not be compressed by long content
-- All horizontal column alignments will be rendered according to the table config
-- Button variants look good for `SecondaryButton` and `FlatButton`
-- Border color matches background color for `PrimaryButton`
-- Disabled text and icon color for `PrimaryButton` is the same as for `SecondaryButton`
+- Removed `Spinner` variant `large`.
 
 ## 9.0.0
 
@@ -33,15 +43,15 @@
 
 ### Design changes
 
-- The icon for `SecondaryButton` is now blue
+- The icon for `SecondaryButton` is now blue.
 - New variant `outlined` added to `Popover`. It is used for the Action menu, Checkbox menu, and Table head popover.
-- Padding changes for `ActionMenu`, `ActionMenuItem`, `ActionMenuSeparator`
-- Expanded rows in `StandardTable` have a blue background with a border on the left
+- Padding changes for `ActionMenu`, `ActionMenuItem`, `ActionMenuSeparator`.
+- Expanded rows in `StandardTable` have a blue background with a border on the left.
 
 ### Bug fixes
 
-- Fixed bug in `Popover` where arrow could not be removed
-- The top checkbox in `StandardTable` deselects all if some are selected, as opposed to selecting all
+- Fixed bug in `Popover` where arrow could not be removed.
+- The top checkbox in `StandardTable` deselects all if some are selected, as opposed to selecting all.
 
 ## Additions
 
@@ -55,7 +65,7 @@
 
 ### Design changes
 
-- Increased contrast in: `Label`, `ValueTable` and input placeholders.
+- Increased contrast in `Label`, `ValueTable` and input placeholders.
 - Buttons now have a `width` prop which is responsive according to styled-system.
 
 ## Fixes
