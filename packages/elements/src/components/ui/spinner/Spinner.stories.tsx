@@ -8,9 +8,6 @@ export default {
 
 export const Standard = () => (
   <Column>
-    <Text>size=large</Text>
-    <Spinner size={"large"} />
-    <Space num={4} />
     <Text>size=medium</Text>
     <Spinner size={"medium"} />
     <Space num={4} />

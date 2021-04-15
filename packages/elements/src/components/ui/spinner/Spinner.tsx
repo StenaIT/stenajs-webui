@@ -11,7 +11,7 @@ export interface SpinnerProps {
 
 export type SpinnerVariant = "standard" | "inverted";
 
-export type SpinnerSize = "large" | "medium" | "small" | "tiny";
+export type SpinnerSize = "medium" | "small" | "tiny";
 
 export const Spinner: React.FC<SpinnerProps> = ({
   size = "medium",
