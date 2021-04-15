@@ -65,8 +65,8 @@ const resolveIconColor = (
   isFocused: boolean
 ): string | undefined =>
   isFocused
-    ? theme.menu.selectedItemHoverTextColor
-    : theme.menu.selectedItemTextColor;
+    ? theme.menu.selectedItemHoverIconColor
+    : theme.menu.selectedItemIconColor;
 
 export const GroupedMultiSelect = <TData extends {}>({
   onChange,
@@ -114,7 +114,13 @@ export const GroupedMultiSelect = <TData extends {}>({
             flexDirection={"row"}
             flexGrow={1}
           >
-            <Text size={"small"} tabIndex={-1}>
+            <Text
+              size={"small"}
+              tabIndex={-1}
+              color={
+                props.isSelected ? theme.menu.selectedItemTextColor : undefined
+              }
+            >
               {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
             </Text>
             {props.isSelected && (

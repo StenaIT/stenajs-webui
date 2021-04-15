@@ -47,6 +47,8 @@ export interface SelectTheme {
     selectedItemTextColor: string;
     selectedItemBackgroundColor: string;
     selectedItemHoverTextColor: string;
+    selectedItemIconColor: string;
+    selectedItemHoverIconColor: string;
     selectedItemHoverBackgroundColor: string;
     selectedItemActiveTextColor: string;
     selectedItemActiveBackgroundColor: string;
@@ -111,10 +113,12 @@ export const defaultSelectTheme: SelectTheme = {
     textColor: "var(--swui-field-text-color)",
     backgroundColor: "var(--swui-field-bg-enabled)",
     hoverTextColor: "var(--swui-field-text-color)",
-    hoverBackgroundColor: "var(--lhds-color-blue-100)",
-    selectedItemTextColor: "var(--swui-field-text-color)",
+    hoverBackgroundColor: "var(--lhds-color-blue-200)",
+    selectedItemTextColor: "var(--lhds-color-blue-500)",
+    selectedItemIconColor: "var(--lhds-color-blue-500)",
     selectedItemHoverTextColor: "var(--swui-field-text-color)",
-    selectedItemBackgroundColor: "var(--swui-field-bg-enabled)",
+    selectedItemHoverIconColor: "var(--swui-field-text-color)",
+    selectedItemBackgroundColor: "var(--lhds-color-blue-50)",
     selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
     zIndex: 1,
     width: "auto",
@@ -180,7 +184,9 @@ export const selectThemeDark: SelectTheme = {
     hoverTextColor: "white",
     hoverBackgroundColor: "#6F7E90",
     selectedItemTextColor: "white",
+    selectedItemIconColor: "white",
     selectedItemHoverTextColor: "white",
+    selectedItemHoverIconColor: "white",
     selectedItemBackgroundColor: "#4a5d73",
     selectedItemHoverBackgroundColor: "#6F7E90",
     zIndex: 1,
