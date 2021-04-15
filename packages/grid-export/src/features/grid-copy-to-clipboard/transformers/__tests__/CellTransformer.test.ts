@@ -6,14 +6,24 @@ describe("CellTransformer", () => {
       describe("and value is string", () => {
         it("returns value", () => {
           expect(
-            transformItemToCell({ x: "hej" }, (item) => item.x, undefined)
+            transformItemToCell(
+              { x: "hej" },
+              (item) => item.x,
+              undefined,
+              undefined
+            )
           ).toStrictEqual("<td>hej</td>");
         });
       });
       describe("and value is number", () => {
         it("returns value", () => {
           expect(
-            transformItemToCell({ x: 123 }, (item) => item.x, undefined)
+            transformItemToCell(
+              { x: 123 },
+              (item) => item.x,
+              undefined,
+              undefined
+            )
           ).toStrictEqual("<td>123</td>");
         });
       });
@@ -21,14 +31,24 @@ describe("CellTransformer", () => {
         describe("and value is true", () => {
           it("returns Y ", () => {
             expect(
-              transformItemToCell({ x: true }, (item) => item.x, undefined)
+              transformItemToCell(
+                { x: true },
+                (item) => item.x,
+                undefined,
+                undefined
+              )
             ).toStrictEqual("<td>Y</td>");
           });
         });
         describe("and value is false", () => {
           it("returns empty", () => {
             expect(
-              transformItemToCell({ x: false }, (item) => item.x, undefined)
+              transformItemToCell(
+                { x: false },
+                (item) => item.x,
+                undefined,
+                undefined
+              )
             ).toStrictEqual("<td></td>");
           });
         });
@@ -37,7 +57,12 @@ describe("CellTransformer", () => {
         it("returns formatted date", () => {
           const date = new Date(2020, 4, 9, 12, 0, 0);
           expect(
-            transformItemToCell({ x: date }, (item) => item.x, undefined)
+            transformItemToCell(
+              { x: date },
+              (item) => item.x,
+              undefined,
+              undefined
+            )
           ).toStrictEqual("<td>2020-05-09 12:00</td>");
         });
       });
@@ -49,6 +74,7 @@ describe("CellTransformer", () => {
           transformItemToCell(
             { x: date },
             (item) => item.x,
+            undefined,
             () => "hello"
           )
         ).toStrictEqual("<td>hello</td>");
@@ -63,6 +89,7 @@ describe("CellTransformer", () => {
               date,
               () => null,
               undefined,
+              undefined,
               () => "custom"
             )
           ).toStrictEqual("<td>custom</td>");
@@ -75,6 +102,7 @@ describe("CellTransformer", () => {
             transformItemToCell(
               date,
               () => null,
+              undefined,
               undefined,
               () => 3
             )

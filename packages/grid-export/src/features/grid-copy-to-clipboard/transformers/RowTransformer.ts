@@ -40,6 +40,7 @@ export const transformCell = <
   return transformItemToCell(
     item,
     columnConfig.itemValueResolver,
+    columnConfig.justifyContentCell,
     columnConfig.itemLabelFormatter,
     formatter
   );

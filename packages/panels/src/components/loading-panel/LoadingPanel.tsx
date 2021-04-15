@@ -11,7 +11,7 @@ export const LoadingPanel: React.FC<LoadingPanelProps> = ({
 }) => {
   return (
     <Box alignItems={"center"}>
-      <Spinner size={"large"} />
+      <Spinner size={"medium"} />
       <Space num={4} />
       <Text>{text}</Text>
     </Box>
