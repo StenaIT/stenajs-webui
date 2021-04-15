@@ -13,16 +13,12 @@
 
 ### Design changes
 
-- Spinner has new color `blue 500`.
+- Spinner only has one color now.
 - `Banner` icon has fixed width and will not be compressed by long content
 - All horizontal column alignments will be rendered according to the table config
 - Button variants look good for `SecondaryButton` and `FlatButton`
 - Border color matches background color for `PrimaryButton`
 - Disabled text and icon color for `PrimaryButton` is the same as for `SecondaryButton`
-
-### Code improvements
-
-- Animations are removed using the same color for spinner.
 
 ## 9.0.0
 
