@@ -5,10 +5,8 @@ import {
   Column,
   SeparatorLine,
   Space,
-  Spacing,
 } from "@stenajs-webui/core";
 import styles from "./SidebarMenu.module.css";
-import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 import cx from "classnames";
 import {
   SidebarMenuCloseButton,
@@ -38,12 +36,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         className={styles.sidebarMenuContent}
         background={"var(--swui-sidebar-menu-background-color)"}
       >
-        <Column flexGrow={1}>
-          {children}
-          <Spacing num={2}>
-            <SidebarMenuSeparator />
-          </Spacing>
-        </Column>
+        <Column flexGrow={1}>{children}</Column>
       </Box>
     </Box>
   );
