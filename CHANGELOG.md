@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming changes
+
+### ValueTable
+
+- Adds `variant` prop with values "relaxed", "standard", "condensed", "compact".
+
 ## 9.1.0
 
 ### Select
