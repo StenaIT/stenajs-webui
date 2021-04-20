@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming changes
+## 9.1.1
 
 ### Modal
 
