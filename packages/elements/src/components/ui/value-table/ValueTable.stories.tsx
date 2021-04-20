@@ -3,8 +3,9 @@ import { cssColor } from "@stenajs-webui/theme";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { Icon } from "../icon/Icon";
-import { ValueTable, ValueTableProps } from "./ValueTable";
+import { ValueTable, ValueTableProps, ValueTableVariant } from "./ValueTable";
 import { ValueTableItem } from "./ValueTableItem";
+import { Heading, Spacing } from "@stenajs-webui/core";
 
 export default {
   title: "elements/ValueTable",
@@ -104,3 +105,39 @@ export const AlignValueRight: Story<ValueTableProps> = (props) => (
     />
   </ValueTable>
 );
+
+export const Variants = () => {
+  const variants: Array<ValueTableVariant> = [
+    "relaxed",
+    "standard",
+    "condensed",
+    "compact",
+  ];
+
+  return variants.map((variant) => (
+    <>
+      <Heading>{variant}</Heading>
+      <Spacing />
+      <ValueTable variant={variant}>
+        <ValueTableItem label={"E-mail"} value={"user@example.com"} />
+        <ValueTableItem label={"First name"} value={"Donald"} />
+        <ValueTableItem label={"Last name"} value={"Duck"} />
+        <ValueTableItem label={"Age"} value={42} />
+        <ValueTableItem label={"Parents (undefined)"} value={undefined} />
+        <ValueTableItem label={"Is duck (true)"} value={true} />
+        <ValueTableItem label={"Is human (false)"} value={false} />
+        <ValueTableItem
+          label={"Drinks"}
+          value={
+            <Icon
+              icon={faCoffee}
+              size={14}
+              color={cssColor("--lhds-color-orange-300")}
+            />
+          }
+        />
+      </ValueTable>
+      <Spacing num={2} />
+    </>
+  ));
+};

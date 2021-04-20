@@ -9,3 +9,15 @@
     border-top: 1px solid var(--lhds-color-ui-300);
   }
 }
+
+.relaxed {
+  --swui-value-table-height: 48px;
+}
+
+.condensed {
+  --swui-value-table-height: 32px;
+}
+
+.compact {
+  --swui-value-table-height: 24px;
+}

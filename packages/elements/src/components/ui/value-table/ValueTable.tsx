@@ -3,16 +3,25 @@ import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { Children } from "react";
 import styles from "./ValueTable.module.css";
+import cx from "classnames";
+
+export type ValueTableVariant =
+  | "relaxed"
+  | "standard"
+  | "condensed"
+  | "compact";
 
 export interface ValueTableProps {
   header?: string;
   footer?: string;
+  variant?: ValueTableVariant;
 }
 
 export const ValueTable: React.FC<ValueTableProps> = ({
   children,
   header,
   footer,
+  variant = "standard",
 }) => {
   return (
     <Column>
@@ -21,7 +30,11 @@ export const ValueTable: React.FC<ValueTableProps> = ({
           <Heading variant={"h5"}>{header}</Heading>
         </Row>
       )}
-      <table cellPadding={0} cellSpacing={0} className={styles.valueTable}>
+      <table
+        cellPadding={0}
+        cellSpacing={0}
+        className={cx(styles.valueTable, styles[variant])}
+      >
         <tbody>
           {Children.map(children, (child, index) => (
             <tr key={index} className={styles.row}>
