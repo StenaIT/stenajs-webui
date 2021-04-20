@@ -3,9 +3,7 @@ import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { Children } from "react";
 import styles from "./ValueTable.module.css";
-import classNames from "classnames/bind";
-
-const cx = classNames.bind(styles);
+import cx from "classnames";
 
 export type ValueTableVariant =
   | "relaxed"
