@@ -7,6 +7,10 @@
 - Prepending icons in the action menu have a fixed width, aligning the text between items
 - `ActionMenuLink` has the same indent as `ActionMenuItem`
 
+### ActionMenuButton
+
+- Add `portalTarget` prop.
+
 ## 9.1.1
 
 ### Modal

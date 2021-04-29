@@ -19,6 +19,8 @@ export interface ActionMenuButtonProps
   renderItems: (close: () => void) => ReactNode;
   /** The placement of the Action Menu. */
   placement?: PopoverProps["placement"];
+  /** Portal target, HTML element. If not set, portal is not used. */
+  portalTarget?: PopoverProps["appendTo"];
   buttonComponent:
     | typeof PrimaryButton
     | typeof SecondaryButton
@@ -30,6 +32,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   placement = "bottom",
   buttonComponent: Button,
   rightIcon = faAngleDown,
+  portalTarget,
   ...buttonProps
 }) => {
   const [isOpen, , close, toggle] = useBoolean(false);
@@ -43,6 +46,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       content={renderItems(close)}
       arrow={false}
       variant={"outlined"}
+      appendTo={portalTarget ?? "parent"}
     >
       <Button rightIcon={rightIcon} {...buttonProps} onClick={toggle} />
     </Popover>
