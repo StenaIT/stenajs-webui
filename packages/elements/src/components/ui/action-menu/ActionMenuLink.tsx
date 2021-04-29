@@ -99,7 +99,7 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
     >
       <Row
         height={theme.itemHeight}
-        indent
+        indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
         background={colors.itemBackground}
@@ -107,7 +107,7 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
         <Row height={theme.itemHeight} alignItems={"center"}>
           {icon && (
             <>
-              <Icon icon={icon} size={16} color={colors.iconColor} />
+              <Icon icon={icon} fixedWidth size={16} color={colors.iconColor} />
               <Space />
             </>
           )}

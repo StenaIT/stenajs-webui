@@ -131,7 +131,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
         <Row height={theme.itemHeight} alignItems={"center"}>
           {icon && (
             <>
-              <Icon icon={icon} size={16} color={colors.iconColor} />
+              <Icon icon={icon} fixedWidth size={16} color={colors.iconColor} />
               <Space />
             </>
           )}
