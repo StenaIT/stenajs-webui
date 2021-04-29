@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### ActionMenuButton
+
+- Add `portalTarget` prop.
+
 ## 9.1.1
 
 ### Modal
