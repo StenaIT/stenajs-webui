@@ -1,11 +1,11 @@
 # Changelog
 
-## Upcoming changes
+## 9.1.2
 
 ### ActionMenu
 
-- Prepending icons in the action menu have a fixed width, aligning the text between items
-- `ActionMenuLink` has the same indent as `ActionMenuItem`
+- Icons in `ActionMenuItem` have a fixed width, aligning the text between items.
+- `ActionMenuLink` has the same indent as `ActionMenuItem`.
 
 ### ActionMenuButton
 
