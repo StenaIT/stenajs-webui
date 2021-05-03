@@ -1,5 +1,9 @@
 # Changelog
 
+## 9.1.3
+
+- Fix bug introduced in 9.1.2 where border-radius was not applied in `ActionMenuItem`.
+
 ## 9.1.2
 
 ### ActionMenu
