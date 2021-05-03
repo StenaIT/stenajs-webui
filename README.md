@@ -103,6 +103,10 @@ $ yarn add @fortawesome/fontawesome-svg-core \
 
 See the `package.json` file for each package to see what dependencies are required.
 
+### Testing changes locally using Yalc
+
+[See our Yalc guide](YALC.md) to test changes locally.
+
 ### Add fonts
 
 [See our fonts guide](FONTS.md) to use `Stena Sans` in your application.
