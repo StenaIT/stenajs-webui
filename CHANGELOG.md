@@ -4,8 +4,8 @@
 
 ### StandardTable
 
-- Added `stickyHeaderAndRowCheckbox`, `stickyHeaderCheckboxRightShadow` and `stickyRowCheckboxRightShadow` props which is all booleans.
-- Fixed the positioning of the checkboxes and other elements in the table if `stickyHeaderAndRowCheckbox` is true or not.
+- Added `stickyCheckboxColumn` which is a boolean.
+- Fixed the positioning of the checkboxes and other elements in the table if `stickyCheckboxColumn` is true or not.
 
 ### ActionMenu
 

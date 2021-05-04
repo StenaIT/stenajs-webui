@@ -36,7 +36,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const {
     enableGridCell,
     gridCellOptions: gridCellOptionsForTable,
-    stickyHeaderAndRowCheckbox,
+    stickyCheckboxColumn,
   } = useStandardTableConfig();
   const tableId = useStandardTableId();
   const onKeyDown = useOnKeyDownContext();
@@ -138,9 +138,9 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       sticky={sticky}
       zIndex={zIndex}
       left={
-        sticky && stickyHeaderAndRowCheckbox && left == null
+        sticky && stickyCheckboxColumn && left == null
           ? "45px"
-          : sticky && !stickyHeaderAndRowCheckbox && left == null
+          : sticky && !stickyCheckboxColumn && left == null
           ? "0px"
           : left
       }

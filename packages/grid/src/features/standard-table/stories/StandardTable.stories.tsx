@@ -638,6 +638,39 @@ export const StickyHeaderAndColumnWithBackgrounds = () => {
   );
 };
 
+export const StickyHeaderAndRowCheckbox = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: true,
+    showRowCheckbox: true,
+    stickyHeader: true,
+    stickyCheckboxColumn: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Box>
+  );
+};
+
 export const GroupedColumns = () => {
   const [showId, setShowId] = useState(true);
   const [showActive, setShowActive] = useState(true);

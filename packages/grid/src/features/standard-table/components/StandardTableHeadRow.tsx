@@ -14,6 +14,7 @@ import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
+import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
@@ -36,9 +37,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     headerRowOffsetTop,
     zIndex,
     stickyHeader,
-    stickyHeaderAndRowCheckbox,
-    stickyHeaderCheckboxRightShadow,
+    stickyCheckboxColumn,
   } = useStandardTableConfig();
+
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
   );
@@ -88,14 +89,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           minWidth={"45px"}
           justifyContent={"center"}
           overflow={"hidden"}
-          background={stickyHeaderAndRowCheckbox ? "white" : undefined}
-          position={stickyHeaderAndRowCheckbox ? "sticky" : undefined}
-          left={stickyHeaderAndRowCheckbox ? "0px" : undefined}
-          shadow={
-            stickyHeaderAndRowCheckbox && stickyHeaderCheckboxRightShadow
-              ? "var(--swui-sticky-column-shadow-right)"
-              : undefined
-          }
+          background={stickyCheckboxColumn ? "white" : undefined}
+          position={stickyCheckboxColumn ? "sticky" : undefined}
+          left={stickyCheckboxColumn ? "0px" : undefined}
           zIndex={zIndex}
         >
           <Row alignItems={"center"}>

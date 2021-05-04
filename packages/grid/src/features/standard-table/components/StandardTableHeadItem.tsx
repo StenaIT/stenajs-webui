@@ -31,7 +31,7 @@ export const StandardTableHeadItem = React.memo(
       zIndex,
       left,
     } = useColumnConfigById(columnId);
-    const { stickyHeaderAndRowCheckbox } = useStandardTableConfig();
+    const { stickyCheckboxColumn } = useStandardTableConfig();
     const { disableSorting } = useStandardTableConfig();
 
     const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
@@ -61,9 +61,9 @@ export const StandardTableHeadItem = React.memo(
         infoIconTooltipText={infoIconTooltipText}
         position={sticky ? "sticky" : undefined}
         left={
-          sticky && stickyHeaderAndRowCheckbox && left == null
+          sticky && stickyCheckboxColumn && left == null
             ? "45px"
-            : sticky && !stickyHeaderAndRowCheckbox && left == null
+            : sticky && !stickyCheckboxColumn && left == null
             ? "0px"
             : left
         }
