@@ -157,6 +157,21 @@ export interface StandardTableConfig<
   stickyHeader?: boolean;
 
   /**
+   * Enable sticky behaviour for header and row checkbox
+   */
+  stickyHeaderAndRowCheckbox?: boolean;
+
+  /**
+   * Enable a shadow on the right side of the header checkbox
+   */
+  stickyHeaderCheckboxRightShadow?: boolean;
+
+  /**
+   * Enable a shadow on the right side of the row checkbox
+   */
+  stickyRowCheckboxRightShadow?: boolean;
+
+  /**
    * Set a custom z index
    */
   zIndex?: number;

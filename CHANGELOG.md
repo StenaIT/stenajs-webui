@@ -2,6 +2,11 @@
 
 ## Upcoming changes
 
+### StandardTable
+
+- Added `stickyHeaderAndRowCheckbox`, `stickyHeaderCheckboxRightShadow` and `stickyRowCheckboxRightShadow` props which is all booleans.
+- Fixed the positioning of the checkboxes and other elements in the table if `stickyHeaderAndRowCheckbox` is true or not.
+
 ### ActionMenu
 
 - Prepending icons in the action menu have a fixed width, aligning the text between items
