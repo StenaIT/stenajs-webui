@@ -802,6 +802,7 @@ export const GroupedColumnsAndSticky = () => {
     showHeaderCheckbox: false,
     showRowCheckbox: false,
     stickyHeader: true,
+    headerRowOffsetTop: "40px",
     rowBackgroundResolver: (item) =>
       item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
@@ -810,6 +811,7 @@ export const GroupedColumnsAndSticky = () => {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
         sticky: true,
+        left: "0",
         backgroundResolver: (item) =>
           item.active ? cssColor("--lhds-color-orange-100") : undefined,
       },

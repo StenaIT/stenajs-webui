@@ -1,5 +1,6 @@
 import { Box, Heading, Indent, Row, Space } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
+import { ZIndexProperty } from "csstype";
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
@@ -20,9 +21,14 @@ export const GroupedColumn = function ColumnGroupColumnItem<
   borderFromGroup,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
   const { label, render, contentLeft, contentRight, loading } = groupConfig;
-  const { flex = 1, width, minWidth, zIndex, left } = useColumnConfigById(
-    columnId
-  );
+  const {
+    flex = 1,
+    width,
+    minWidth,
+    zIndex,
+    left,
+    sticky,
+  } = useColumnConfigById(columnId);
 
   const content = isFirstInGroup ? (
     <>
@@ -58,16 +64,21 @@ export const GroupedColumn = function ColumnGroupColumnItem<
 
   return (
     <Box
-      position={"relative"}
+      position={sticky ? "sticky" : "relative"}
       height={"var(--current-row-height)"}
       width={width}
       minWidth={minWidth ?? width}
       justifyContent={"flex-start"}
       flex={width ? undefined : flex}
-      background={content ? "white" : "transparent"}
-      zIndex={zIndex}
+      background={content || sticky ? "white" : "transparent"}
       left={left}
       borderLeft={borderFromGroup}
+      zIndex={
+        sticky
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
+          : zIndex
+      }
+      shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
     >
       {content && (
         <Row
