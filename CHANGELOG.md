@@ -5,7 +5,7 @@
 ## Select
 
 - Update `react-select` to 4.3.0.
-- New component `MultiSelect`.
+- New components `MultiSelect` and `AsyncMultiSelect`.
 
 ## Breaking changes
 
