@@ -9,7 +9,7 @@ export default {
   component: ChipMultiSelect,
   decorators: [
     (TheStory: Story) => (
-      <div style={{ width: "300px" }}>
+      <div style={{ width: "300px", marginBottom: "250px" }}>
         <TheStory />
       </div>
     ),
