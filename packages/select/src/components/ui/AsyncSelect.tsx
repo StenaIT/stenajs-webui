@@ -15,11 +15,11 @@ export const AsyncSelect = <T extends {}>({
   ...selectProps
 }: AsyncSelectProps<T>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme(
+    const sourceStyles = createStylesFromTheme<T, false>(
       variant === "light" ? defaultSelectTheme : selectThemeDark
     );
 
-    return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
+    return styles ? mergeStyles<T, false>(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
   return <AsyncComponent styles={selectStyles} {...selectProps} />;
