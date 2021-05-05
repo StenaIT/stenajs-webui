@@ -383,6 +383,16 @@ export const MissingItems = () => (
   <StandardTable items={[]} config={standardTableConfigForStories} />
 );
 
+export const MissingItemsCustomBanner = () => (
+  <StandardTable
+    items={[]}
+    config={standardTableConfigForStories}
+    noItemsHeader={"There are no users."}
+    noItemsLabel={"Change filter settings to widen the search."}
+    noItemsContentRight={<FlatButton label={"Open filter"} />}
+  />
+);
+
 export const NavigationBetweenTables = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 

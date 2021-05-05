@@ -1,5 +1,17 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Now uses `Banner` to show no items available message.
+- Add props `noItemsContentRight`, `noItemsContentBottom`
+  and `noItemsHeader` to customize the banner.
+
+### Banner
+
+- Design updated to make it slightly more compact.
+
 ## 9.1.3
 
 - Fix bug introduced in 9.1.2 where border-radius was not applied in `ActionMenuItem`.

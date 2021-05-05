@@ -1,7 +1,7 @@
 import { Box, useDomId } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { GroupConfigsForRowsContext } from "../context/GroupConfigsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
@@ -70,6 +70,21 @@ export interface StandardTableProps<
   items?: Array<TItem>;
   error?: Error;
   loading?: boolean;
+
+  /**
+   * Content right in banner shown when there are no items.
+   */
+  noItemsContentRight?: ReactNode;
+
+  /**
+   * Content right in banner shown when there are no items.
+   */
+  noItemsContentBottom?: ReactNode;
+
+  /**
+   * Header in banner shown when there are no items.
+   */
+  noItemsHeader?: string;
 
   /**
    * Message displayed when there are no items to display, and it is not loading or has error.
