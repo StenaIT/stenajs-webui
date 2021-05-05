@@ -26,7 +26,7 @@ const optionMocks = [
   { value: "7", label: "Janne" },
 ];
 
-export const PrefetchedData = () => {
+export const Demo = () => {
   const [text, setText] = useState<string>("");
   const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
 
