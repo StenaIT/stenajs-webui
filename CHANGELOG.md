@@ -2,6 +2,16 @@
 
 ## Next
 
+### StandardTable
+
+- Now uses `Banner` to show no items available message.
+- Add props `noItemsContentRight`, `noItemsContentBottom`
+  and `noItemsHeader` to customize the banner.
+
+### Banner
+
+- Design updated to make it slightly more compact.
+
 ## Select
 
 - Update `react-select` to 4.3.0.
