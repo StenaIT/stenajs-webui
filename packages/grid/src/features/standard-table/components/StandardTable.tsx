@@ -77,7 +77,7 @@ export interface StandardTableProps<
   noItemsContentRight?: ReactNode;
 
   /**
-   * Content right in banner shown when there are no items.
+   * Content bottom in banner shown when there are no items.
    */
   noItemsContentBottom?: ReactNode;
 
