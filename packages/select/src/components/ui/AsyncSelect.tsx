@@ -19,7 +19,7 @@ export const AsyncSelect = <T extends {}>({
       variant === "light" ? defaultSelectTheme : selectThemeDark
     );
 
-    return styles ? mergeStyles<T, false>(sourceStyles, styles) : sourceStyles;
+    return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
   return <AsyncComponent styles={selectStyles} {...selectProps} />;

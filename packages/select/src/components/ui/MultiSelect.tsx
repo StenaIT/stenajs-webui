@@ -14,7 +14,7 @@ export const MultiSelect = <T extends {}>({
   ...selectProps
 }: MultiSelectProps<T>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme(
+    const sourceStyles = createStylesFromTheme<T, true>(
       variant === "light" ? defaultSelectTheme : selectThemeDark
     );
 

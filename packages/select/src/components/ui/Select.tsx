@@ -14,7 +14,7 @@ export const Select = <T extends {}>({
   ...selectProps
 }: SelectProps<T>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme(
+    const sourceStyles = createStylesFromTheme<T, false>(
       variant === "light" ? defaultSelectTheme : selectThemeDark
     );
 
