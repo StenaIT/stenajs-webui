@@ -5,7 +5,8 @@ import AsyncComponent, { Props } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 
-export interface AsyncMultiSelectProps<T> extends Props<T, true> {
+export interface AsyncMultiSelectProps<T = { label: string; value: string }>
+  extends Omit<Props<T, true>, "isMulti"> {
   variant?: "dark" | "light";
 }
 

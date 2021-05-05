@@ -4,7 +4,8 @@ import SelectComponent, { mergeStyles, Props } from "react-select";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 
-export interface SelectProps<T> extends Props<T, false> {
+export interface SelectProps<T = { label: string; value: string }>
+  extends Omit<Props<T, false>, "isMulti"> {
   variant?: "dark" | "light";
 }
 

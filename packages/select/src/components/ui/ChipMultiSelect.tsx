@@ -1,7 +1,80 @@
+import { Column, Row, Space, Spacing } from "@stenajs-webui/core";
+import { Chip, FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
+import { ValueAndOnValueChangeProps } from "../../../../forms/src/components/ui/types";
+import { MultiSelect, MultiSelectProps } from "./MultiSelect";
 
-interface Props {}
+export interface ChipMultiSelectValue {
+  label: string;
+  value: string;
+}
 
-export const ChipMultiSelect: React.FC<Props> = () => {
-  return <div></div>;
-};
+export interface ChipMultiSelectProps
+  extends Omit<MultiSelectProps, "value" | "onChange" | "isLoading">,
+    ValueAndOnValueChangeProps<Array<ChipMultiSelectValue>> {
+  loading?: boolean;
+  inputValue?: string;
+  onInputChange?: (inputValue: string) => void;
+  noneSelectedLabel?: string;
+}
+
+export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
+  ({
+    value,
+    onValueChange,
+    placeholder = "Type to search",
+    loading,
+    inputValue,
+    onInputChange,
+    noneSelectedLabel = "None",
+    ...selectProps
+  }) => {
+    return (
+      <Column>
+        <Row flexWrap={"wrap"}>
+          {value?.map((v) => (
+            <React.Fragment key={v.value}>
+              <Spacing num={0.5}>
+                <Chip
+                  label={v.label}
+                  onClickRemove={() =>
+                    onValueChange?.(
+                      value?.filter((f) => f.value !== v.value) ?? []
+                    )
+                  }
+                />
+              </Spacing>
+              <Space />
+            </React.Fragment>
+          ))}
+          {value?.length ? (
+            <Spacing num={0.5}>
+              <FlatButton
+                size={"small"}
+                label={"Clear"}
+                onClick={() => onValueChange?.([])}
+              />
+            </Spacing>
+          ) : (
+            <Spacing num={0.5}>
+              <Chip variant={"secondary"} label={noneSelectedLabel} />
+            </Spacing>
+          )}
+        </Row>
+        <Space num={0.5} />
+        <MultiSelect<ChipMultiSelectValue>
+          {...selectProps}
+          isClearable={false}
+          value={value}
+          onChange={onValueChange}
+          hideSelectedOptions
+          components={{ MultiValueContainer: () => null }}
+          placeholder={placeholder}
+          isLoading={loading}
+          inputValue={inputValue}
+          onInputChange={onInputChange}
+        />
+      </Column>
+    );
+  }
+);
