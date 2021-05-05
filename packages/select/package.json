@@ -30,6 +30,7 @@
   "dependencies": {
     "@stenajs-webui/core": "9.1.3",
     "@stenajs-webui/elements": "9.1.3",
+    "@stenajs-webui/forms": "9.1.3",
     "@types/react-select": "^4.0.15",
     "react-select": "^4.3.0"
   },

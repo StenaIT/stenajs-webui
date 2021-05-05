@@ -1,7 +1,7 @@
 import { Column, Row, Space, Spacing } from "@stenajs-webui/core";
 import { Chip, FlatButton } from "@stenajs-webui/elements";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import * as React from "react";
-import { ValueAndOnValueChangeProps } from "../../../../forms/src/components/ui/types";
 import { MultiSelect, MultiSelectProps } from "./MultiSelect";
 
 export interface ChipMultiSelectValue {
