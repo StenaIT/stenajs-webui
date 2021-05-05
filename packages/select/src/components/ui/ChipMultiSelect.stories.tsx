@@ -26,7 +26,22 @@ const optionMocks = [
   { value: "7", label: "Janne" },
 ];
 
-export const Demo = () => {
+export const PrefetchedData = () => {
+  const [text, setText] = useState<string>("");
+  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
+
+  return (
+    <ChipMultiSelect
+      options={optionMocks}
+      value={value}
+      onValueChange={setValue}
+      inputValue={text}
+      onInputChange={setText}
+    />
+  );
+};
+
+export const WithDataFetch = () => {
   const [text, setText] = useState<string>("");
   const [loading, setLoading, setNotLoading] = useBoolean(false);
   const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
@@ -55,21 +70,6 @@ export const Demo = () => {
       inputValue={text}
       onInputChange={onChangeText}
       loading={loading}
-    />
-  );
-};
-
-export const PrefetchedData = () => {
-  const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
-
-  return (
-    <ChipMultiSelect
-      options={optionMocks}
-      value={value}
-      onValueChange={setValue}
-      inputValue={text}
-      onInputChange={setText}
     />
   );
 };

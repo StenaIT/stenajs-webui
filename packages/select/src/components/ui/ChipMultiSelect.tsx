@@ -67,8 +67,9 @@ export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
           isClearable={false}
           value={value}
           onChange={onValueChange}
+          backspaceRemovesValue={false}
           hideSelectedOptions
-          components={{ MultiValueContainer: () => null }}
+          controlShouldRenderValue={false}
           placeholder={placeholder}
           isLoading={loading}
           inputValue={inputValue}
