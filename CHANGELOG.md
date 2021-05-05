@@ -5,7 +5,8 @@
 ## Select
 
 - Update `react-select` to 4.3.0.
-- New components `MultiSelect` and `AsyncMultiSelect`.
+- New components `MultiSelect` and `AsyncMultiSelect` replaces `isMulti` prop.
+- New `ChipMultiSelect` component.
 
 ## Breaking changes
 
