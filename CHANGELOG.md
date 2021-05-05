@@ -12,6 +12,16 @@
 
 - Design updated to make it slightly more compact.
 
+## Select
+
+- Update `react-select` to 4.3.0.
+- New component `MultiSelect`.
+
+## Breaking changes
+
+- `Select` no longer supports `isMulti` prop.
+- `AsyncSelect` no longer supports `isMulti` prop.
+
 ## 9.1.3
 
 - Fix bug introduced in 9.1.2 where border-radius was not applied in `ActionMenuItem`.

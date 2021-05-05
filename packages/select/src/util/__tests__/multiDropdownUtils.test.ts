@@ -1,6 +1,7 @@
 import {
+  ActionMeta,
   GroupedOptionsType,
-  GroupType,
+  GroupTypeBase,
   OptionsType,
   ValueType,
 } from "react-select";
@@ -14,7 +15,6 @@ import {
   convertValueToInternalValue,
   createOnChange,
   InternalDropdownOption,
-  Meta,
 } from "../multiDropdownUtils";
 
 describe("multiDropdownUtils", () => {
@@ -53,7 +53,7 @@ describe("multiDropdownUtils", () => {
             },
           ];
           const newOnChange = createOnChange(onChange);
-          const meta: Meta<string> = {
+          const meta: ActionMeta<DropdownOption<string>> = {
             action: "select-option",
             option: options[0].options[0],
           };
@@ -62,7 +62,7 @@ describe("multiDropdownUtils", () => {
           > = convertGroupedDropdownOptionsToInternalOptions(options);
 
           newOnChange([selectedOptions[1], selectedOptions[3]], meta);
-          const expected: ValueType<DropdownOption<string>> = [
+          const expected: ValueType<DropdownOption<string>, true> = [
             convertDropdownOptionToInternalOption(options[0].options[0]),
             convertDropdownOptionToInternalOption(options[1].options[0]),
           ];
@@ -107,13 +107,13 @@ describe("multiDropdownUtils", () => {
             const selectedOptions: OptionsType<
               InternalDropdownOption<string>
             > = convertGroupedDropdownOptionsToInternalOptions(options);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "select-option",
               option: selectedOptions[2],
             };
 
             newOnChange([selectedOptions[1], selectedOptions[2]], meta);
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
               ...options[1].options,
             ];
@@ -157,7 +157,7 @@ describe("multiDropdownUtils", () => {
             const selectedOptions: OptionsType<
               InternalDropdownOption<string>
             > = convertGroupedDropdownOptionsToInternalOptions(options);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "select-option",
               option: selectedOptions[2],
             };
@@ -166,7 +166,7 @@ describe("multiDropdownUtils", () => {
               [selectedOptions[1], selectedOptions[2], selectedOptions[3]],
               meta
             );
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
               ...options[1].options,
             ];
@@ -210,7 +210,7 @@ describe("multiDropdownUtils", () => {
             const selectedOptions: OptionsType<
               InternalDropdownOption<string>
             > = convertGroupedDropdownOptionsToInternalOptions(options);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "select-option",
               option: selectedOptions[2],
             };
@@ -224,7 +224,7 @@ describe("multiDropdownUtils", () => {
               ],
               meta
             );
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
               ...options[1].options,
             ];
@@ -268,7 +268,7 @@ describe("multiDropdownUtils", () => {
             const selectedOptions: OptionsType<
               InternalDropdownOption<string>
             > = convertGroupedDropdownOptionsToInternalOptions(options);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "select-option",
               option: selectedOptions[3],
             };
@@ -278,7 +278,7 @@ describe("multiDropdownUtils", () => {
               meta
             );
 
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
               options[1].options[0],
             ];
@@ -323,7 +323,7 @@ describe("multiDropdownUtils", () => {
               },
             ];
             const newOnChange = createOnChange(onChange);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "deselect-option",
               option: options[1].options[0],
             };
@@ -339,7 +339,7 @@ describe("multiDropdownUtils", () => {
               ],
               meta
             );
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
               convertDropdownOptionToInternalOption(options[1].options[1]),
             ];
@@ -380,7 +380,7 @@ describe("multiDropdownUtils", () => {
               },
             ];
             const newOnChange = createOnChange(onChange);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "deselect-option",
               option: options[0].options[0],
             };
@@ -389,7 +389,7 @@ describe("multiDropdownUtils", () => {
             > = convertGroupedDropdownOptionsToInternalOptions(options);
 
             newOnChange([selectedOptions[3]], meta);
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -433,7 +433,7 @@ describe("multiDropdownUtils", () => {
           const selectedOptions: OptionsType<
             InternalDropdownOption<string>
           > = convertGroupedDropdownOptionsToInternalOptions(options);
-          const meta: Meta<string> = {
+          const meta: ActionMeta<DropdownOption<string>> = {
             action: "deselect-option",
             option: selectedOptions[2],
           };
@@ -448,7 +448,7 @@ describe("multiDropdownUtils", () => {
             ],
             meta
           );
-          const expected: ValueType<DropdownOption<string>> = [
+          const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -492,7 +492,7 @@ describe("multiDropdownUtils", () => {
                 },
               ];
               const newOnChange = createOnChange(onChange);
-              const meta: Meta<string> = {
+              const meta: ActionMeta<DropdownOption<string>> = {
                 action: "remove-value",
                 removedValue: options[1].options[0],
               };
@@ -509,7 +509,7 @@ describe("multiDropdownUtils", () => {
                 ],
                 meta
               );
-              const expected: ValueType<DropdownOption<string>> = [
+              const expected: ValueType<DropdownOption<string>, true> = [
                 convertDropdownOptionToInternalOption(options[0].options[0]),
                 convertDropdownOptionToInternalOption(options[1].options[1]),
               ];
@@ -550,13 +550,13 @@ describe("multiDropdownUtils", () => {
                 },
               ];
               const newOnChange = createOnChange(onChange);
-              const meta: Meta<string> = {
+              const meta: ActionMeta<DropdownOption<string>> = {
                 action: "remove-value",
                 removedValue: options[1].options[0],
               };
 
-              newOnChange(undefined, meta);
-              const expected: ValueType<DropdownOption<string>> = [];
+              newOnChange(undefined as any, meta);
+              const expected: ValueType<DropdownOption<string>, true> = [];
               expect(onChange).toHaveBeenCalledWith(expected, meta);
             });
           });
@@ -595,7 +595,7 @@ describe("multiDropdownUtils", () => {
               },
             ];
             const newOnChange = createOnChange(onChange);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "remove-value",
               removedValue: options[0].options[0],
             };
@@ -604,7 +604,7 @@ describe("multiDropdownUtils", () => {
             > = convertGroupedDropdownOptionsToInternalOptions(options);
 
             newOnChange([selectedOptions[3]], meta);
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -648,7 +648,7 @@ describe("multiDropdownUtils", () => {
           const selectedOptions: OptionsType<
             InternalDropdownOption<string>
           > = convertGroupedDropdownOptionsToInternalOptions(options);
-          const meta: Meta<string> = {
+          const meta: ActionMeta<DropdownOption<string>> = {
             action: "remove-value",
             removedValue: selectedOptions[2],
           };
@@ -663,7 +663,7 @@ describe("multiDropdownUtils", () => {
             ],
             meta
           );
-          const expected: ValueType<DropdownOption<string>> = [
+          const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -706,7 +706,7 @@ describe("multiDropdownUtils", () => {
               },
             ];
             const newOnChange = createOnChange(onChange);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "pop-value",
               removedValue: options[1].options[0],
             };
@@ -722,7 +722,7 @@ describe("multiDropdownUtils", () => {
               ],
               meta
             );
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
               convertDropdownOptionToInternalOption(options[1].options[1]),
             ];
@@ -763,7 +763,7 @@ describe("multiDropdownUtils", () => {
               },
             ];
             const newOnChange = createOnChange(onChange);
-            const meta: Meta<string> = {
+            const meta: ActionMeta<DropdownOption<string>> = {
               action: "pop-value",
               removedValue: options[0].options[0],
             };
@@ -772,7 +772,7 @@ describe("multiDropdownUtils", () => {
             > = convertGroupedDropdownOptionsToInternalOptions(options);
 
             newOnChange([selectedOptions[3]], meta);
-            const expected: ValueType<DropdownOption<string>> = [
+            const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[1].options[0]),
             ];
             expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -816,7 +816,7 @@ describe("multiDropdownUtils", () => {
           const selectedOptions: OptionsType<
             InternalDropdownOption<string>
           > = convertGroupedDropdownOptionsToInternalOptions(options);
-          const meta: Meta<string> = {
+          const meta: ActionMeta<DropdownOption<string>> = {
             action: "pop-value",
             removedValue: selectedOptions[2],
           };
@@ -830,7 +830,7 @@ describe("multiDropdownUtils", () => {
             ],
             meta
           );
-          const expected: ValueType<DropdownOption<string>> = [
+          const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
           ];
           expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -1068,7 +1068,7 @@ describe("multiDropdownUtils", () => {
           value: "string 1",
         },
       ];
-      const option: GroupType<DropdownOption<string>> = {
+      const option: GroupTypeBase<DropdownOption<string>> = {
         label: "label",
         value: "string",
         options,
