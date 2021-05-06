@@ -43,3 +43,5 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
     );
   }
 );
+
+export const Txt = Text;
