@@ -68,6 +68,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       zIndex={zIndex}
       left={left}
       borderLeft={borderFromGroup}
+      border={"1px solid transparent"}
     >
       {content && (
         <Row

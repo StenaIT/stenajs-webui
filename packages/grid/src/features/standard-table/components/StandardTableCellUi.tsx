@@ -50,6 +50,7 @@ export const StandardTableCellUi = React.memo<Props>(
         height={"100%"}
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
+        border={"1px solid transparent"}
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}
         left={sticky && left == null ? "0px" : left}
@@ -67,7 +68,6 @@ export const StandardTableCellUi = React.memo<Props>(
           height={"100%"}
           justifyContent={justifyContent}
           alignItems={"center"}
-          border={"1px solid transparent"}
           borderRadius={enableGridCell ? "4px" : undefined}
           focusBorder={
             enableGridCell && !isEditing
