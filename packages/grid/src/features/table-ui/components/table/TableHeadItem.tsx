@@ -2,6 +2,7 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 import { BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
 import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
 import {
   ButtonWithPopoverProps,
   Popover,
@@ -9,20 +10,22 @@ import {
 } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { CSSProperties, useRef } from "react";
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons/faLongArrowAltDown";
-import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons/faLongArrowAltUp";
-import { cssColor } from "@stenajs-webui/theme";
-
-export type ArrowType = "up" | "down";
+import {
+  SortOrderDirection,
+  SortOrderIcon,
+  SortOrderIconVariant,
+} from "./SortOrderIcon";
 
 export interface TableHeadProps extends BoxProps {
   label?: string;
   infoIconTooltipText?: string;
   popoverContent?: ButtonWithPopoverProps["children"];
   loading?: boolean;
-  arrow?: ArrowType;
+  arrow?: SortOrderDirection;
   onClick?: () => void;
   selected?: boolean;
+  alignRight?: boolean;
+  sortOrderIconVariant?: SortOrderIconVariant;
 }
 
 export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
@@ -36,6 +39,8 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     loading,
     infoIconTooltipText,
     overflow = "hidden",
+    alignRight,
+    sortOrderIconVariant,
     ...boxProps
   }) => {
     const containerRef = useRef(null);
@@ -66,16 +71,23 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   {!hasOnlyChildren && <Space num={0.5} />}
                 </>
               )}
+              {arrow && alignRight && (
+                <>
+                  <Space />
+                  <SortOrderIcon
+                    direction={arrow}
+                    iconVariant={sortOrderIconVariant}
+                  />
+                  <Space num={0.5} />
+                </>
+              )}
               {label && <Heading variant={"h6"}>{label}</Heading>}
-              {arrow && (
+              {arrow && !alignRight && (
                 <>
                   <Space num={0.5} />
-                  <Icon
-                    size={14}
-                    color={cssColor("--lhds-color-blue-500")}
-                    icon={
-                      arrow === "up" ? faLongArrowAltUp : faLongArrowAltDown
-                    }
+                  <SortOrderIcon
+                    direction={arrow}
+                    iconVariant={sortOrderIconVariant}
                   />
                   <Space />
                 </>
@@ -85,7 +97,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
 
           {infoIconTooltipText && (
             <>
-              <Space num={0.5} />
+              <Space />
               <Row onClick={(ev) => ev.stopPropagation()}>
                 <Tooltip
                   label={infoIconTooltipText}

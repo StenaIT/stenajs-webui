@@ -1,13 +1,13 @@
 import { SortOrderState } from "@stenajs-webui/redux";
 import { useMemo } from "react";
 import { useStandardTableActions } from "../../standard-table/hooks/UseStandardTableConfig";
-import { ArrowType } from "../components/table/TableHeadItem";
+import { SortOrderDirection } from "../components/table/SortOrderIcon";
 import { StandardTableActions } from "../../standard-table/util/ActionsFactory";
 
 interface Result {
   selected: boolean;
   desc: boolean;
-  arrow: ArrowType | undefined;
+  arrow: SortOrderDirection | undefined;
   onClickColumnHead: () => void;
 }
 

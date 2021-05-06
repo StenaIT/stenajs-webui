@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ArrowType } from "../../../table-ui/components/table/TableHeadItem";
+import { SortOrderDirection } from "../../../table-ui/components/table/SortOrderIcon";
 import {
   useStandardTableActions,
   useStandardTableState,
@@ -8,7 +8,7 @@ import {
 interface Result {
   selected: boolean;
   desc: boolean;
-  arrow: ArrowType | undefined;
+  arrow: SortOrderDirection | undefined;
   onClickColumnHead: () => void;
 }
 
