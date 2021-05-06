@@ -25,10 +25,16 @@
 - New components `MultiSelect` and `AsyncMultiSelect` replaces `isMulti` prop.
 - New `ChipMultiSelect` component.
 
+### DateTextInput
+
+- Moved icon to right side, and changed it to a FlatButton.
+  This makes the input slightly wider.
+
 ### Breaking changes
 
 - `Select` no longer supports `isMulti` prop.
 - `AsyncSelect` no longer supports `isMulti` prop.
+- `DateTextInput` is now slightly wider by default.
 
 ## 9.1.3
 

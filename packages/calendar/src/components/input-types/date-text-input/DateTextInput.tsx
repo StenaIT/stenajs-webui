@@ -1,6 +1,8 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { Box, Omit, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { Box, Omit, Row, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { FlatButton } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
+import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useRef, useState } from "react";
@@ -13,7 +15,6 @@ import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
-import { Popover } from "@stenajs-webui/tooltip";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -57,7 +58,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   placeholder = "yyyy-mm-dd",
   portalTarget,
   value,
-  width = "125px",
+  width = "130px",
   zIndex = 100,
   calendarTheme = defaultCalendarTheme,
   hideCalenderIcon = false,
@@ -133,14 +134,22 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         <TextInput
           {...props}
           variant={invalid ? "error" : "standard"}
-          iconLeft={!hideCalenderIcon ? faCalendarAlt : undefined}
-          onClickLeft={
-            !hideCalenderIcon && !disableCalender ? toggleCalendar : undefined
+          disableContentPaddingRight
+          contentRight={
+            !hideCalenderIcon ? (
+              <Row alignItems={"center"} indent={0.5}>
+                <FlatButton
+                  size={"small"}
+                  leftIcon={faCalendarAlt}
+                  onClick={toggleCalendar}
+                />
+              </Row>
+            ) : undefined
           }
           onValueChange={onValueChangeHandler}
           placeholder={placeholder}
           value={value || ""}
-          size={9}
+          size={10}
         />
       </Popover>
     </Box>
