@@ -34,6 +34,11 @@
 - Added `stickyCheckboxColumn` which is a boolean.
 - Fixed the positioning of the checkboxes and other elements in the table if `stickyCheckboxColumn` is true or not.
 
+### StandardTable
+
+- Added `stickyCheckboxColumn` which is a boolean.
+- Fixed the positioning of the checkboxes and other elements in the table if `stickyCheckboxColumn` is true or not.
+
 ### ActionMenu
 
 - Icons in `ActionMenuItem` have a fixed width, aligning the text between items.
