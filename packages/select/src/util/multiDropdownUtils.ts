@@ -2,7 +2,7 @@ import { differenceWith, intersectionWith, isEqual, uniqWith } from "lodash";
 import {
   ActionMeta,
   GroupedOptionsType,
-  GroupType,
+  GroupTypeBase,
   OptionsType,
   ValueType,
 } from "react-select";
@@ -26,30 +26,6 @@ interface InternalParentDropdownOption<TData> {
   internalOptions: OptionsType<DropdownOption<TData>>;
 }
 
-interface SelectActionMeta<TData> extends ActionMeta<DropdownOption<TData>> {
-  option?: InternalDropdownOption<TData>;
-  action: "select-option" | "deselect-option";
-}
-
-interface RemoveActionMeta<TData> extends ActionMeta<DropdownOption<TData>> {
-  removedValue?: InternalDropdownOption<TData>;
-  action: "remove-value" | "pop-value";
-}
-
-interface ClearActionMeta extends ActionMeta<any> {
-  action: "clear";
-}
-
-interface RestActionMeta extends ActionMeta<any> {
-  action: "set-value" | "create-option";
-}
-
-export type Meta<TData> =
-  | ClearActionMeta
-  | SelectActionMeta<TData>
-  | RemoveActionMeta<TData>
-  | RestActionMeta;
-
 const removeGroupedOptions = <TData>(
   removedValue: InternalParentDropdownOption<TData>,
   selectedInternalOptions: OptionsType<InternalDropdownOption<TData>>
@@ -72,8 +48,11 @@ const removeOptionHeaders = <TData>(
     .map(convertInternalOptionToDropdownOption);
 
 export const createOnChange = <TData>(onChange: OnChange<TData>) => (
-  incomingSelectedInternalOptions: ValueType<InternalDropdownOption<TData>>,
-  meta: Meta<TData>
+  incomingSelectedInternalOptions: ValueType<
+    InternalDropdownOption<TData>,
+    true
+  >,
+  meta: ActionMeta<DropdownOption<TData>>
 ) => {
   const selectedInternalOptions = (() => {
     if (!incomingSelectedInternalOptions) {
@@ -136,12 +115,6 @@ export const createOnChange = <TData>(onChange: OnChange<TData>) => (
       } else {
         onChange(removeOptionHeaders(selectedInternalOptions), meta);
       }
-      break;
-    case "set-value":
-      onChange(
-        selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-        meta
-      );
       break;
     case "clear":
       onChange(
@@ -220,7 +193,7 @@ export const convertDropdownOptionToInternalOption = <TData>(
 });
 
 export const convertGroupedDropdownOptionToInternalOption = <TData>(
-  option: GroupType<DropdownOption<TData>>
+  option: GroupTypeBase<DropdownOption<TData>>
 ): InternalDropdownOption<TData> => ({
   data: option.label,
   label: option.label,

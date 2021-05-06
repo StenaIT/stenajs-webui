@@ -1,3 +1,4 @@
+import { OptionTypeBase } from "react-select/src/types";
 import { SelectTheme } from "../SelectTheme";
 import { StylesConfig } from "react-select";
 
@@ -39,7 +40,10 @@ const resolveOptionColor = (
   }
 };
 
-export const createStylesFromTheme = ({
+export const createStylesFromTheme = <
+  OptionType extends OptionTypeBase,
+  IsMulti extends boolean
+>({
   menu,
   menuPortal,
   input,
@@ -47,7 +51,7 @@ export const createStylesFromTheme = ({
   clearButtonColor,
   arrowColor,
   loadingIndicator,
-}: SelectTheme): StylesConfig => ({
+}: SelectTheme): StylesConfig<OptionType, IsMulti> => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
     fontFamily: input.fontFamily,
@@ -62,14 +66,16 @@ export const createStylesFromTheme = ({
     cursor: isDisabled ? "not-allowed" : "default",
     whiteSpace: menu.whiteSpace || base.whiteSpace,
     ":active": {
-      backgroundColor:
-        !isDisabled &&
-        (isSelected
-          ? menu.selectedItemActiveBackgroundColor
-          : menu.activeBackgroundColor),
-      color:
-        !isDisabled &&
-        (isSelected ? menu.selectedItemActiveTextColor : menu.activeTextColor),
+      backgroundColor: isDisabled
+        ? undefined
+        : isSelected
+        ? menu.selectedItemActiveBackgroundColor
+        : menu.activeBackgroundColor,
+      color: isDisabled
+        ? undefined
+        : isSelected
+        ? menu.selectedItemActiveTextColor
+        : menu.activeTextColor,
     },
   }),
   control: (base, { isFocused, isDisabled }) => ({

@@ -383,6 +383,16 @@ export const MissingItems = () => (
   <StandardTable items={[]} config={standardTableConfigForStories} />
 );
 
+export const MissingItemsCustomBanner = () => (
+  <StandardTable
+    items={[]}
+    config={standardTableConfigForStories}
+    noItemsHeader={"There are no users."}
+    noItemsLabel={"Change filter settings to widen the search."}
+    noItemsContentRight={<FlatButton label={"Open filter"} />}
+  />
+);
+
 export const NavigationBetweenTables = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
@@ -638,6 +648,39 @@ export const StickyHeaderAndColumnWithBackgrounds = () => {
   );
 };
 
+export const StickyHeaderAndRowCheckbox = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: true,
+    showRowCheckbox: true,
+    stickyHeader: true,
+    stickyCheckboxColumn: true,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        width: "245px",
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "200px", maxWidth: "80%", overflow: "scroll" }}>
+      <Box style={{ width: "100vw" }}>
+        <StandardTable items={items} config={config} />
+      </Box>
+    </Box>
+  );
+};
+
 export const GroupedColumns = () => {
   const [showId, setShowId] = useState(true);
   const [showActive, setShowActive] = useState(true);
@@ -769,6 +812,7 @@ export const GroupedColumnsAndSticky = () => {
     showHeaderCheckbox: false,
     showRowCheckbox: false,
     stickyHeader: true,
+    headerRowOffsetTop: "40px",
     rowBackgroundResolver: (item) =>
       item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
@@ -777,6 +821,7 @@ export const GroupedColumnsAndSticky = () => {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
         sticky: true,
+        left: "0",
         backgroundResolver: (item) =>
           item.active ? cssColor("--lhds-color-orange-100") : undefined,
       },

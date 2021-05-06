@@ -1,11 +1,47 @@
 # Changelog
 
-## Upcoming changes
+## Next
+
+### StandardTable
+
+- Now uses `Banner` to show no items available message.
+- Add props `noItemsContentRight`, `noItemsContentBottom`
+  and `noItemsHeader` to customize the banner.
+
+### Banner
+
+- Design updated to make it slightly more compact.
+
+## Select
+
+- Update `react-select` to 4.3.0.
+- New components `MultiSelect` and `AsyncMultiSelect` replaces `isMulti` prop.
+- New `ChipMultiSelect` component.
+
+## Breaking changes
+
+- `Select` no longer supports `isMulti` prop.
+- `AsyncSelect` no longer supports `isMulti` prop.
+
+## 9.1.3
+
+- Fix bug introduced in 9.1.2 where border-radius was not applied in `ActionMenuItem`.
+
+## 9.1.2
+
+### StandardTable
+
+- Added `stickyCheckboxColumn` which is a boolean.
+- Fixed the positioning of the checkboxes and other elements in the table if `stickyCheckboxColumn` is true or not.
 
 ### ActionMenu
 
-- Prepending icons in the action menu have a fixed width, aligning the text between items
-- `ActionMenuLink` has the same indent as `ActionMenuItem`
+- Icons in `ActionMenuItem` have a fixed width, aligning the text between items.
+- `ActionMenuLink` has the same indent as `ActionMenuItem`.
+
+### ActionMenuButton
+
+- Add `portalTarget` prop.
 
 ## 9.1.1
 

@@ -23,10 +23,12 @@ const BorderRadiusClickable = styled(Clickable)<BorderRadiusClickableProps>`
     props.styledBorderRadius
       ? `
     &:first-child {
-      border-radius: ${props.styledBorderRadius} ${props.styledBorderRadius} 0 0;
+      border-top-left-radius: ${props.styledBorderRadius};
+      border-top-right-radius: ${props.styledBorderRadius};
     }
     &:last-child {
-      border-radius: 0 0 ${props.styledBorderRadius} ${props.styledBorderRadius};
+      border-bottom-left-radius: ${props.styledBorderRadius};
+      border-bottom-right-radius: ${props.styledBorderRadius};
     }
   `
       : ""}
