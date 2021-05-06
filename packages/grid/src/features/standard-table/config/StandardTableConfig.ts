@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { UseGridCellOptions } from "../../grid-cell/hooks/UseGridCell";
+import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
 import { StandardTableColumnConfig } from "./StandardTableColumnConfig";
 import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 
@@ -165,4 +166,10 @@ export interface StandardTableConfig<
    * Offset header row from top (top css property)
    */
   headerRowOffsetTop?: string;
+
+  /**
+   * The default icon variant to use when displaying sort order. Can be overridden per column.
+   * @default amount
+   */
+  sortOrderIconVariant?: SortOrderIconVariant;
 }

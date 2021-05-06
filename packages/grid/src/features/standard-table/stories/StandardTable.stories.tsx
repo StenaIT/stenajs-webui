@@ -112,6 +112,7 @@ const standardTableConfigForStories: StandardTableConfig<
   columns: {
     id: createColumnConfig((item) => item.id, {
       width: "100px",
+      sortOrderIconVariant: "numeric",
     }),
     active: createColumnConfig((item) => item.active, {
       itemLabelFormatter: (value) => (value ? "Y" : ""),
@@ -120,9 +121,14 @@ const standardTableConfigForStories: StandardTableConfig<
     }),
     name: createColumnConfig((item) => item.name, {
       width: "200px",
+      justifyContentHeader: "flex-end",
+      justifyContentCell: "flex-end",
+      infoIconTooltipText: "Ohoh",
+      sortOrderIconVariant: "alpha",
     }),
     ship: createColumnConfig((item) => item.ship, {
       width: "150px",
+      sortOrderIconVariant: "alpha",
     }),
     numPassengers: createColumnConfig((item) => item.numPassengers, {
       renderCell: createStandardEditableTextCell(),
@@ -131,6 +137,7 @@ const standardTableConfigForStories: StandardTableConfig<
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
       width: "200px",
+      sortOrderIconVariant: "numeric",
     }),
     departure: createColumnConfig((item) => item.departure, {
       itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),

@@ -3,6 +3,7 @@ import {
   UseGridCellOptions,
   UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";
+import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
 
 export type StandardTableColumnConfig<
   TItem,
@@ -121,6 +122,11 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * Offset column from left (ex if we have multiple sticky columns)
    */
   left?: string;
+
+  /**
+   * The icon variant to use when displaying sort order.
+   */
+  sortOrderIconVariant?: SortOrderIconVariant;
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (
