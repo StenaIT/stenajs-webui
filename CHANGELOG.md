@@ -2,6 +2,11 @@
 
 ## Next
 
+### Text
+
+- Now also exported with name `Txt`.
+  This makes auto-import work properly, since `Text` is already defined globally.
+
 ### StandardTable
 
 - Now uses `Banner` to show no items available message.
