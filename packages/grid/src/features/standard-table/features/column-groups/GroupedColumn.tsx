@@ -73,6 +73,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       background={content || sticky ? "white" : "transparent"}
       left={left}
       borderLeft={borderFromGroup}
+      border={"1px solid transparent"}
       zIndex={
         sticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
