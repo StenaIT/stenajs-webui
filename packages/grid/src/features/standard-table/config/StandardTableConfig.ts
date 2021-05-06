@@ -158,6 +158,11 @@ export interface StandardTableConfig<
   stickyHeader?: boolean;
 
   /**
+   * Enable sticky behaviour for header and row checkbox
+   */
+  stickyCheckboxColumn?: boolean;
+
+  /**
    * Set a custom z index
    */
   zIndex?: number;

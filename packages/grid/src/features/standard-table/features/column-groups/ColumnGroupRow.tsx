@@ -31,6 +31,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     <TableHeadRow
       height={height}
       borderLeft={tableBorderLeft}
+      top={stickyHeader ? 0 : undefined}
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
