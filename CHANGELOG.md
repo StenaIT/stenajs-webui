@@ -7,18 +7,25 @@
 - Now uses `Banner` to show no items available message.
 - Add props `noItemsContentRight`, `noItemsContentBottom`
   and `noItemsHeader` to customize the banner.
+- Sort order icon is on left or right side of column header
+  label, depending on header alignment.
+- Add sort order icon variants, can be set in table config.
+  There is one option for the whole table, and one per config
+  which overrides the table setting.
+- Row checkbox column can now be sticky.
+- Fixed visual bug in column group when column is sticky.
 
 ### Banner
 
 - Design updated to make it slightly more compact.
 
-## Select
+### Select
 
 - Update `react-select` to 4.3.0.
 - New components `MultiSelect` and `AsyncMultiSelect` replaces `isMulti` prop.
 - New `ChipMultiSelect` component.
 
-## Breaking changes
+### Breaking changes
 
 - `Select` no longer supports `isMulti` prop.
 - `AsyncSelect` no longer supports `isMulti` prop.
