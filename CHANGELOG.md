@@ -43,9 +43,13 @@
 
 ### Dependency updates
 
-If any of these dependencies are included in your applications package.json, you should update it.
+Emotion has been updated to major 11.
 
-- Emotion has been updated to 11.
+React has been updated to major 17.
+
+If any of these dependencies are included in your applications
+package.json, you should update them.
+
 - `@emotion/core` is removed.
 - `@emotion/react@11.1.5` is added.
 - `@emotion/styled@11.3.0`
@@ -56,7 +60,6 @@ If any of these dependencies are included in your applications package.json, you
 - `@types/lodash@4.14.168`
 - `@types/react@17.0.5`
 - `@types/react-dom@17.0.3`
-
 
 ## 9.1.3
 
