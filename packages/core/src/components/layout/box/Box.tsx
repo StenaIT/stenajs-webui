@@ -1,11 +1,7 @@
 import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
-import {
-  BackgroundProperty,
-  BorderColorProperty,
-  BorderProperty,
-  BoxShadowProperty,
-} from "csstype";
+import { Property } from "csstype";
+
 import {
   background,
   BackgroundProps,
@@ -50,6 +46,10 @@ import {
   ZIndexProps,
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
+import Background = Property.Background;
+import Border = Property.Border;
+import BorderColor = Property.BorderColor;
+import BoxShadow = Property.BoxShadow;
 
 interface StyledSystemProps
   extends BorderRadiusProps,
@@ -96,52 +96,52 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   /**
    * Adds a shadow around the box.
    */
-  shadow?: ResponsiveValue<BoxShadowProperty | ShadowType>;
+  shadow?: ResponsiveValue<BoxShadow | ShadowType>;
 
   /**
    * Sets the background of the box.
    */
-  background?: ResponsiveValue<BackgroundProperty<TLengthStyledSystem>>;
+  background?: ResponsiveValue<Background<TLengthStyledSystem>>;
 
   /**
    * Sets the border of the box.
    */
-  border?: ResponsiveValue<BorderProperty<TLengthStyledSystem>>;
+  border?: ResponsiveValue<Border<TLengthStyledSystem>>;
 
   /**
    * Sets the border color of the box.
    */
-  borderColor?: ResponsiveValue<BorderColorProperty>;
+  borderColor?: ResponsiveValue<BorderColor>;
 
   /**
    * Sets the background of the box when hovering with mouse.
    */
-  hoverBackground?: BackgroundProperty<TLengthStyledSystem>;
+  hoverBackground?: Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when hovering with mouse.
    */
-  hoverBorder?: BorderProperty<TLengthStyledSystem>;
+  hoverBorder?: Border<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when the box is in focus.
    */
-  focusBackground?: BackgroundProperty<TLengthStyledSystem>;
+  focusBackground?: Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when the box is in focus.
    */
-  focusBorder?: BorderProperty<TLengthStyledSystem>;
+  focusBorder?: Border<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when focus is within the box.
    */
-  focusWithinBackground?: BackgroundProperty<TLengthStyledSystem>;
+  focusWithinBackground?: Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when focus is within the box.
    */
-  focusWithinBorder?: BorderProperty<TLengthStyledSystem>;
+  focusWithinBorder?: Border<TLengthStyledSystem>;
 }
 
 const excludedProps = [
@@ -191,7 +191,11 @@ type InnerProps = BoxProps & BoxShadowProps & BackgroundProps;
 
 export const Box = styled("div", {
   shouldForwardProp: (propName) =>
-    isExcludedWebUiProp(propName) ? false : isPropValid(propName),
+    typeof propName === "string"
+      ? isExcludedWebUiProp(propName)
+        ? false
+        : isPropValid(propName)
+      : false,
 })<InnerProps>`
   --current-spacing: 0;
   --current-indent: 0;

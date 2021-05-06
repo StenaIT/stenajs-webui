@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import { ColorProperty } from "csstype";
+import { Property } from "csstype";
 import * as React from "react";
 import { forwardRef } from "react";
+import Color = Property.Color;
 
 export interface SeparatorLineProps {
-  color?: ColorProperty;
+  color?: Color;
   vertical?: boolean;
   size?: string;
   width?: string;

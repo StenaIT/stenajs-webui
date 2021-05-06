@@ -1,10 +1,11 @@
 import { BoxProps, Row } from "@stenajs-webui/core";
+import { Property } from "csstype";
 import * as React from "react";
 import { ReactNode } from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
-import { ZIndexProperty } from "csstype";
+import ZIndex = Property.ZIndex;
 
 interface Props {
   width?: string;
@@ -57,7 +58,7 @@ export const StandardTableCellUi = React.memo<Props>(
         shadow={shadow}
         zIndex={
           sticky
-            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as ZIndexProperty)
+            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as ZIndex)
             : zIndex
         }
         onKeyDown={onKeyDown}

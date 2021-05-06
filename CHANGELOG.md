@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 10.0.0
 
 ### Text
 
@@ -40,6 +40,23 @@
 - `Select` no longer supports `isMulti` prop.
 - `AsyncSelect` no longer supports `isMulti` prop.
 - `DateTextInput` is now slightly wider by default.
+
+### Dependency updates
+
+If any of these dependencies are included in your applications package.json, you should update it.
+
+- Emotion has been updated to 11.
+- `@emotion/core` is removed.
+- `@emotion/react@11.1.5` is added.
+- `@emotion/styled@11.3.0`
+- `react@17.0.2`
+- `react-dom@17.0.2`
+- `lodash@4.17.21`
+- `csstype@3.0.8`
+- `@types/lodash@4.14.168`
+- `@types/react@17.0.5`
+- `@types/react-dom@17.0.3`
+
 
 ## 9.1.3
 

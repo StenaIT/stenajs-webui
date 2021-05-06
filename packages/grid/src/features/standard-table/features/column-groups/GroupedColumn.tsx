@@ -1,9 +1,10 @@
 import { Box, Heading, Indent, Row, Space } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
-import { ZIndexProperty } from "csstype";
+import { Property } from "csstype";
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
+import ZIndex = Property.ZIndex;
 
 interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
@@ -76,7 +77,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       border={"1px solid transparent"}
       zIndex={
         sticky
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndex)
           : zIndex
       }
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
