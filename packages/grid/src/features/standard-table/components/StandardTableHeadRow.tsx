@@ -36,7 +36,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     headerRowOffsetTop,
     zIndex,
     stickyHeader,
+    stickyCheckboxColumn,
   } = useStandardTableConfig();
+
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
   );
@@ -86,6 +88,10 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           minWidth={"45px"}
           justifyContent={"center"}
           overflow={"hidden"}
+          background={stickyCheckboxColumn ? "white" : undefined}
+          position={stickyCheckboxColumn ? "sticky" : undefined}
+          left={stickyCheckboxColumn ? "0px" : undefined}
+          zIndex={zIndex}
         >
           <Row alignItems={"center"}>
             <Checkbox
