@@ -10,7 +10,6 @@ import { TableHeadRow } from "../../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 import { ColumnGroupItem } from "./ColumnGroupItem";
-import ZIndex = Property.ZIndex;
 
 interface ColumnGroupRowProps {
   height?: string;
@@ -38,7 +37,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       zIndex={
         stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndex)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex
       }
     >

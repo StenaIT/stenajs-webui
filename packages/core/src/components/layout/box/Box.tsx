@@ -46,10 +46,6 @@ import {
   ZIndexProps,
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
-import Background = Property.Background;
-import Border = Property.Border;
-import BorderColor = Property.BorderColor;
-import BoxShadow = Property.BoxShadow;
 
 interface StyledSystemProps
   extends BorderRadiusProps,
@@ -96,52 +92,52 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   /**
    * Adds a shadow around the box.
    */
-  shadow?: ResponsiveValue<BoxShadow | ShadowType>;
+  shadow?: ResponsiveValue<Property.BoxShadow | ShadowType>;
 
   /**
    * Sets the background of the box.
    */
-  background?: ResponsiveValue<Background<TLengthStyledSystem>>;
+  background?: ResponsiveValue<Property.Background<TLengthStyledSystem>>;
 
   /**
    * Sets the border of the box.
    */
-  border?: ResponsiveValue<Border<TLengthStyledSystem>>;
+  border?: ResponsiveValue<Property.Border<TLengthStyledSystem>>;
 
   /**
    * Sets the border color of the box.
    */
-  borderColor?: ResponsiveValue<BorderColor>;
+  borderColor?: ResponsiveValue<Property.BorderColor>;
 
   /**
    * Sets the background of the box when hovering with mouse.
    */
-  hoverBackground?: Background<TLengthStyledSystem>;
+  hoverBackground?: Property.Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when hovering with mouse.
    */
-  hoverBorder?: Border<TLengthStyledSystem>;
+  hoverBorder?: Property.Border<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when the box is in focus.
    */
-  focusBackground?: Background<TLengthStyledSystem>;
+  focusBackground?: Property.Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when the box is in focus.
    */
-  focusBorder?: Border<TLengthStyledSystem>;
+  focusBorder?: Property.Border<TLengthStyledSystem>;
 
   /**
    * Sets the background of the box when focus is within the box.
    */
-  focusWithinBackground?: Background<TLengthStyledSystem>;
+  focusWithinBackground?: Property.Background<TLengthStyledSystem>;
 
   /**
    * Sets the border of the box when focus is within the box.
    */
-  focusWithinBorder?: Border<TLengthStyledSystem>;
+  focusWithinBorder?: Property.Border<TLengthStyledSystem>;
 }
 
 const excludedProps = [

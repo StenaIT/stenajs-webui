@@ -17,7 +17,6 @@ import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTable
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
-import ZIndex = Property.ZIndex;
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -61,7 +60,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       style={{
         zIndex: stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndex)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex,
       }}
     >

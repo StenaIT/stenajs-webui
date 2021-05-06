@@ -4,14 +4,12 @@ import styles from "./Text.module.css";
 import { SpanProps } from "../../types/ElementProps";
 import { Property } from "csstype";
 import { forwardRef } from "react";
-import WhiteSpace = Property.WhiteSpace;
-import UserSelect = Property.UserSelect;
 
 export interface TextProps extends SpanProps {
   variant?: TextVariant;
   size?: TextSize;
-  userSelect?: UserSelect;
-  whiteSpace?: WhiteSpace;
+  userSelect?: Property.UserSelect;
+  whiteSpace?: Property.WhiteSpace;
   color?: string;
 }
 

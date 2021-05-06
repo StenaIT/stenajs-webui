@@ -4,7 +4,6 @@ import { Property } from "csstype";
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
-import ZIndex = Property.ZIndex;
 
 interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
@@ -77,7 +76,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       border={"1px solid transparent"}
       zIndex={
         sticky
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndex)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex
       }
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}

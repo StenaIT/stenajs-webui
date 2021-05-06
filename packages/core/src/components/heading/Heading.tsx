@@ -4,11 +4,10 @@ import * as React from "react";
 import { forwardRef } from "react";
 import { H1Props } from "../../types/ElementProps";
 import styles from "./Heading.module.css";
-import WhiteSpace = Property.WhiteSpace;
 
 export interface HeadingProps extends H1Props {
   variant?: HeadingVariant;
-  whiteSpace?: WhiteSpace;
+  whiteSpace?: Property.WhiteSpace;
 }
 
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

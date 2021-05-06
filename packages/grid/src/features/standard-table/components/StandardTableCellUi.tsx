@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
-import ZIndex = Property.ZIndex;
 
 interface Props {
   width?: string;
@@ -58,7 +57,7 @@ export const StandardTableCellUi = React.memo<Props>(
         shadow={shadow}
         zIndex={
           sticky
-            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as ZIndex)
+            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as Property.ZIndex)
             : zIndex
         }
         onKeyDown={onKeyDown}
