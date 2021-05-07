@@ -38,28 +38,28 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.18",
     "@fortawesome/free-solid-svg-icons": ">=5.8.2",
     "@fortawesome/react-fontawesome": ">=0.1.4",
-    "@types/lodash": ">=4.14.135",
-    "@types/react": ">=16.9.48",
-    "@types/react-dom": ">=16.8.4",
-    "csstype": ">=2.6.4",
-    "lodash": ">=4.17.11",
+    "@types/lodash": ">=4.14.168",
+    "@types/react": ">=17.0.5",
+    "@types/react-dom": ">=17.0.3",
+    "csstype": ">=3.0.8",
+    "lodash": ">=4.17.21",
     "prop-types": ">=15.5.4",
-    "react": ">=16.8.6",
-    "react-dom": ">=16.8.6"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.18",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@fortawesome/react-fontawesome": "0.1.4",
     "@types/jest": "^23.1.5",
-    "@types/lodash": "^4.14.135",
-    "@types/react": "^16.9.48",
-    "@types/react-dom": "^16.8.4",
-    "csstype": "^2.6.4",
-    "lodash": "^4.17.11",
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
+    "csstype": "^3.0.8",
+    "lodash": "^4.17.21",
     "prop-types": "^15.5.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "files": [
     "dist"

@@ -1,5 +1,5 @@
 import { Indent, Row } from "@stenajs-webui/core";
-import { ZIndexProperty } from "csstype";
+import { Property } from "csstype";
 import * as React from "react";
 import {
   defaultTableRowHeight,
@@ -37,7 +37,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       zIndex={
         stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex
       }
     >

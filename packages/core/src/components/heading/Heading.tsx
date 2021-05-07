@@ -1,13 +1,13 @@
-import * as React from "react";
 import cx from "classnames";
+import { Property } from "csstype";
+import * as React from "react";
+import { forwardRef } from "react";
 import { H1Props } from "../../types/ElementProps";
 import styles from "./Heading.module.css";
-import { WhiteSpaceProperty } from "csstype";
-import { forwardRef } from "react";
 
 export interface HeadingProps extends H1Props {
   variant?: HeadingVariant;
-  whiteSpace?: WhiteSpaceProperty;
+  whiteSpace?: Property.WhiteSpace;
 }
 
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

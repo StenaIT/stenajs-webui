@@ -1,4 +1,4 @@
-import { WhiteSpaceProperty } from "csstype";
+import { Property } from "csstype";
 
 export interface SelectTheme {
   arrowColor: {
@@ -54,7 +54,7 @@ export interface SelectTheme {
     selectedItemActiveBackgroundColor: string;
     zIndex: number;
     width?: string;
-    whiteSpace?: WhiteSpaceProperty;
+    whiteSpace?: Property.WhiteSpace;
   };
   menuPortal: {
     zIndex: number;

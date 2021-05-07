@@ -1,4 +1,4 @@
-import { ClassNames, keyframes } from "@emotion/core";
+import { ClassNames, keyframes } from "@emotion/react";
 import * as React from "react";
 import { ReactComponent as SpinnerSvg } from "./spinner-small.svg";
 

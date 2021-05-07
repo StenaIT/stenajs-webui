@@ -3,7 +3,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight
 import { Indent, Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
-import { ZIndexProperty } from "csstype";
+import { Property } from "csstype";
 import * as React from "react";
 import {
   defaultTableRowHeight,
@@ -60,7 +60,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
       style={{
         zIndex: stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as ZIndexProperty)
+          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex,
       }}
     >
