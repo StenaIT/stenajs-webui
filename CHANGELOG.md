@@ -1,5 +1,11 @@
 # Changelog
 
+## Upcoming
+
+### ActionMenuButton
+
+- Add `zIndex` prop.
+
 ## 10.0.0
 
 ### Text
