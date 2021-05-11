@@ -1,6 +1,10 @@
 # Changelog
 
-## Upcoming changes
+## Upcoming
+
+### ActionMenuButton
+
+- Add `zIndex` prop.
 
 ### StandardTable
 
