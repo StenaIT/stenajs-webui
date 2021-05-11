@@ -6,6 +6,10 @@
 
 - Add `zIndex` prop.
 
+### StandardTable
+
+- Fixed bug regarding sticky header checkbox with column groups. Column group names was showing behind the checkbox when scrolling horizontally.
+
 ## 10.0.0
 
 ### Text

@@ -25,6 +25,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     rowIndent,
     zIndex,
     stickyHeader,
+    stickyCheckboxColumn,
   } = useStandardTableConfig();
 
   return (
@@ -57,6 +58,19 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
           minWidth={"45px"}
           justifyContent={"center"}
           overflow={"hidden"}
+          background={
+            showHeaderCheckbox && stickyCheckboxColumn ? "white" : undefined
+          }
+          position={
+            showHeaderCheckbox && stickyCheckboxColumn ? "sticky" : undefined
+          }
+          left={showHeaderCheckbox && stickyCheckboxColumn ? "0px" : undefined}
+          zIndex={
+            showHeaderCheckbox && stickyCheckboxColumn
+              ? zIndex ??
+                ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
+              : zIndex
+          }
         />
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (
