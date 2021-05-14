@@ -50,7 +50,6 @@ export const StandardTableCellUi = React.memo<Props>(
         height={"100%"}
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
-        border={"1px solid transparent"}
         overflow={"hidden"}
         position={sticky ? "sticky" : undefined}
         left={sticky && left == null ? "0px" : left}
@@ -63,6 +62,7 @@ export const StandardTableCellUi = React.memo<Props>(
         onKeyDown={onKeyDown}
       >
         <Row
+          border={"1px solid transparent"}
           className={styles.standardTableCell}
           width={"100%"}
           height={"100%"}

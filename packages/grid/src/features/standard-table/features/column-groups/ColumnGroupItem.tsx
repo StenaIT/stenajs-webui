@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { getCellBorderFromGroup } from "../../util/CellBorderCalculator";
-import { GroupedColumn } from "./GroupedColumn";
+import { ColumnInGroup } from "./ColumnInGroup";
 
 interface ColumnGroupItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
@@ -15,7 +15,7 @@ export const ColumnGroupItem = React.memo(function ColumnGroupItem<
     <>
       {groupConfig.columnOrder.map((columnId, index) => {
         return (
-          <GroupedColumn<TColumnKey>
+          <ColumnInGroup<TColumnKey>
             groupConfig={groupConfig}
             columnId={columnId}
             key={columnId}
