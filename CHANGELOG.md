@@ -9,6 +9,7 @@
 ### StandardTable
 
 - Fixed bug regarding sticky header checkbox with column groups. Column group names was showing behind the checkbox when scrolling horizontally.
+- Fix alignment issue when using column groups and borders.
 
 ## 10.0.0
 

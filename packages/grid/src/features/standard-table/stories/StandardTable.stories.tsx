@@ -111,23 +111,19 @@ const standardTableConfigForStories: StandardTableConfig<
   enableGridCell: true,
   columns: {
     id: createColumnConfig((item) => item.id, {
-      width: "100px",
       sortOrderIconVariant: "numeric",
     }),
     active: createColumnConfig((item) => item.active, {
       itemLabelFormatter: (value) => (value ? "Y" : ""),
       infoIconTooltipText: "Active means out on the sea.",
-      width: "150px",
     }),
     name: createColumnConfig((item) => item.name, {
-      width: "200px",
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
       infoIconTooltipText: "Ohoh",
       sortOrderIconVariant: "alpha",
     }),
     ship: createColumnConfig((item) => item.ship, {
-      width: "150px",
       sortOrderIconVariant: "alpha",
     }),
     numPassengers: createColumnConfig((item) => item.numPassengers, {
@@ -136,13 +132,11 @@ const standardTableConfigForStories: StandardTableConfig<
       onChange: () => {},
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
-      width: "200px",
       sortOrderIconVariant: "numeric",
     }),
     departure: createColumnConfig((item) => item.departure, {
       itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),
       borderLeft: true,
-      width: "100px",
     }),
   },
   columnOrder: ["id", "active", "name", "ship", "numPassengers", "departure"],

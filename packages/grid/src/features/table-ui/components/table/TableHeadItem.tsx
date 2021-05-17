@@ -58,11 +58,9 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         ref={containerRef}
         overflow={overflow}
         justifyContent={"space-between"}
-        indent
-        border={"1px solid transparent"}
         {...boxProps}
       >
-        <Row alignItems={"center"}>
+        <Row alignItems={"center"} indent>
           {(children || label) && (
             <Row onClick={onClick} style={cursorStyle} alignItems={"center"}>
               {children && (

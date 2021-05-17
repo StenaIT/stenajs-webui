@@ -12,7 +12,7 @@ interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   borderFromGroup?: string;
 }
 
-export const GroupedColumn = function ColumnGroupColumnItem<
+export const ColumnInGroup = function ColumnGroupColumnItem<
   TColumnKey extends string
 >({
   columnId,
@@ -28,6 +28,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
     zIndex,
     left,
     sticky,
+    borderLeft,
   } = useColumnConfigById(columnId);
 
   const content = isFirstInGroup ? (
@@ -62,6 +63,8 @@ export const GroupedColumn = function ColumnGroupColumnItem<
     </>
   ) : null;
 
+  const activeBorder = getActiveBorder(borderFromGroup, borderLeft);
+
   return (
     <Box
       position={sticky ? "sticky" : "relative"}
@@ -72,8 +75,7 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       flex={width ? undefined : flex}
       background={content || sticky ? "white" : "transparent"}
       left={left}
-      borderLeft={borderFromGroup}
-      border={"1px solid transparent"}
+      borderLeft={activeBorder}
       zIndex={
         sticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
@@ -94,4 +96,17 @@ export const GroupedColumn = function ColumnGroupColumnItem<
       )}
     </Box>
   );
+};
+
+const getActiveBorder = (
+  borderFromGroup: string | undefined,
+  borderFromColumn: string | boolean | undefined
+): string | undefined => {
+  if (borderFromGroup) {
+    return borderFromGroup;
+  }
+  if (borderFromColumn) {
+    return "1px solid transparent";
+  }
+  return undefined;
 };
