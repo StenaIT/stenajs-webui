@@ -1,27 +1,42 @@
 import { multitypeComparator } from "../MultitypeComparator";
 
 describe("MultitypeComparator", () => {
-  describe("left side is null", () => {
-    it("returns 1", () => {
-      return expect(multitypeComparator(null, 1)).toBe(1);
+  describe("sorting", () => {
+    describe("list with zeroes and null", () => {
+      it("sorts null last", () => {
+        const list = [0, null, 0, 0, null, 0];
+        list.sort(multitypeComparator);
+        expect(list).toEqual([0, 0, 0, 0, null, null]);
+      });
+    });
+  });
+  describe("left side is nullable", () => {
+    describe("right side is falsy", () => {
+      it("returns 1", () => {
+        expect(multitypeComparator(null, 0)).toBe(1);
+        expect(multitypeComparator(undefined, 0)).toBe(1);
+      });
+    });
+    describe("right side is not falsy", () => {
+      it("returns 1", () => {
+        expect(multitypeComparator(null, 1)).toBe(1);
+        expect(multitypeComparator(undefined, 1)).toBe(1);
+      });
     });
   });
 
-  describe("left side is undefined", () => {
-    it("returns 1", () => {
-      return expect(multitypeComparator(undefined, 1)).toBe(1);
+  describe("right side is nullable", () => {
+    describe("left side is falsy", () => {
+      it("returns -1", () => {
+        expect(multitypeComparator(0, null)).toBe(-1);
+        expect(multitypeComparator(0, undefined)).toBe(-1);
+      });
     });
-  });
-
-  describe("right side is null", () => {
-    it("returns -1", () => {
-      return expect(multitypeComparator(1, null)).toBe(-1);
-    });
-  });
-
-  describe("right side is undefined", () => {
-    it("returns -1", () => {
-      return expect(multitypeComparator(1, undefined)).toBe(-1);
+    describe("left side is not falsy", () => {
+      it("returns -1", () => {
+        expect(multitypeComparator(1, null)).toBe(-1);
+        expect(multitypeComparator(1, undefined)).toBe(-1);
+      });
     });
   });
 

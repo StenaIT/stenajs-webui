@@ -6,13 +6,15 @@ import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "react-select";
 
 export interface AsyncSelectProps<T = { label: string; value: string }>
-  extends Omit<Props<T, false>, "isMulti"> {
+  extends Props<T, false> {
   variant?: "dark" | "light";
+  isMulti?: false;
 }
 
 export const AsyncSelect = <T extends {}>({
   variant = "light",
   styles,
+  isMulti,
   ...selectProps
 }: AsyncSelectProps<T>) => {
   const selectStyles = useMemo(() => {
@@ -23,5 +25,7 @@ export const AsyncSelect = <T extends {}>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
-  return <AsyncComponent styles={selectStyles} {...selectProps} />;
+  return (
+    <AsyncComponent styles={selectStyles} {...selectProps} isMulti={false} />
+  );
 };

@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.1.1
+
+### Select
+
+- Fix types for select components, which cause auto-complete to not work.
+
+### StandardTable
+
+- Fix sort order comparator, did not sort properly between null and falsy values.
+
 ## 10.1.0
 
 ### ActionMenuButton
