@@ -5,13 +5,15 @@ import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 
 export interface SelectProps<T = { label: string; value: string }>
-  extends Omit<Props<T, false>, "isMulti"> {
+  extends Props<T, false> {
   variant?: "dark" | "light";
+  isMulti?: false;
 }
 
 export const Select = <T extends {}>({
   variant = "light",
   styles,
+  isMulti,
   ...selectProps
 }: SelectProps<T>) => {
   const selectStyles = useMemo(() => {
@@ -22,5 +24,7 @@ export const Select = <T extends {}>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
-  return <SelectComponent styles={selectStyles} {...selectProps} />;
+  return (
+    <SelectComponent styles={selectStyles} {...selectProps} isMulti={false} />
+  );
 };

@@ -4,10 +4,10 @@ export const multitypeComparator = (
   a: ComparableType,
   b: ComparableType
 ): number => {
-  if (a && b == null) {
+  if (a != null && b == null) {
     return -1;
   }
-  if (a == null && b) {
+  if (a == null && b != null) {
     return 1;
   }
   if (isBothOfType(a, b, "number")) {

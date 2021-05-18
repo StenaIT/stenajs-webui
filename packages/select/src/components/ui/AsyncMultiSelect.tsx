@@ -6,13 +6,15 @@ import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 
 export interface AsyncMultiSelectProps<T = { label: string; value: string }>
-  extends Omit<Props<T, true>, "isMulti"> {
+  extends Props<T, true> {
   variant?: "dark" | "light";
+  isMulti?: true;
 }
 
 export const AsyncMultiSelect = <T extends {}>({
   variant = "light",
   styles,
+  isMulti,
   ...selectProps
 }: AsyncMultiSelectProps<T>) => {
   const selectStyles = useMemo(() => {
@@ -23,5 +25,7 @@ export const AsyncMultiSelect = <T extends {}>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
-  return <AsyncComponent styles={selectStyles} {...selectProps} />;
+  return (
+    <AsyncComponent styles={selectStyles} {...selectProps} isMulti={true} />
+  );
 };
