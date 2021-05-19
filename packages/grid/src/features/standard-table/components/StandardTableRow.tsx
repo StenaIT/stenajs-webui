@@ -51,16 +51,16 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
-  const background = useMemo(
-    () => (rowBackgroundResolver ? rowBackgroundResolver(item) : undefined),
-    [item, rowBackgroundResolver]
-  );
+  const background = useMemo(() => rowBackgroundResolver?.(item, isSelected), [
+    isSelected,
+    item,
+    rowBackgroundResolver,
+  ]);
 
-  const disabled = useMemo(
-    () =>
-      checkboxDisabledResolver ? checkboxDisabledResolver(item) : undefined,
-    [item, checkboxDisabledResolver]
-  );
+  const disabled = useMemo(() => checkboxDisabledResolver?.(item), [
+    item,
+    checkboxDisabledResolver,
+  ]);
 
   const firstColumn = useFirstColumnConfig();
   const firstColumnBackground = useCellBackgroundByColumnConfig(

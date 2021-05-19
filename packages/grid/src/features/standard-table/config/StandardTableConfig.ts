@@ -106,7 +106,10 @@ export interface StandardTableConfig<
    * Add this to create a background color for the row, based on the item displayed.
    * @param item
    */
-  rowBackgroundResolver?: (item: TItem) => string | undefined;
+  rowBackgroundResolver?: (
+    item: TItem,
+    selected: boolean
+  ) => string | undefined;
 
   /**
    * This makes it possible to disable the checkbox for a row, based in the item.
