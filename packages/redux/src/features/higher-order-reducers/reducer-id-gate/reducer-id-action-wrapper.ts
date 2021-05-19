@@ -1,4 +1,4 @@
-import { ReducerIdGateAction } from "@stenajs-webui/redux";
+import { ReducerIdGateAction } from "./reducer-id-gate";
 
 type ActionCreator = (...args: any) => any;
 
