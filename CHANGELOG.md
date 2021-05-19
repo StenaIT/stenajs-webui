@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### NavBar
+
+- `NavBarButton` icon now has same color as the text.
+
 ## 10.1.2
 
 ### StandardTable

@@ -1,6 +1,7 @@
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
+import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import {
   Box,
   Column,
@@ -124,7 +125,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
         }
         center={<NavBarSearchField />}
       >
-        <NavBarButton label={"Customers"} selected />
+        <NavBarButton label={"Customers"} leftIcon={faUsers} selected />
         <NavBarButton label={"Bookings"} />
         <NavBarButton label={"Events"} />
       </NavBar>
