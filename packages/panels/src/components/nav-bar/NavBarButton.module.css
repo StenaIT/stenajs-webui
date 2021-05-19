@@ -37,6 +37,7 @@
 
   /* Flatbutton overrrides */
   --swui-flat-button-text-color: var(--swui-nav-bar-button-text-color);
+  --swui-flat-button-icon-color: var(--swui-nav-bar-button-text-color);
   --swui-flat-button-text-color-active: var(--swui-nav-bar-button-text-color);
   --swui-flat-button-background-color: var(
     --swui-nav-bar-button-background-color
