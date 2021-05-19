@@ -1,6 +1,6 @@
 import { ReducerIdGateAction } from "@stenajs-webui/redux";
 
-export type ActionCreator = (...args: any) => any;
+type ActionCreator = (...args: any) => any;
 
 export type ActionCreatorCreator<TActionCreator extends ActionCreator> = (
   ...args: Parameters<TActionCreator>
