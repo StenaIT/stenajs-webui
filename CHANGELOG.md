@@ -6,6 +6,18 @@
 
 - `NavBarButton` icon now has same color as the text.
 
+### reducerIdGate
+
+Add helper function for wrapping actions with reducerIdGate action.
+
+```
+export const myActionsWithGate = wrapActionsWithReducerIdGate(reducerId, {
+  ...myActions,
+};
+```
+
+It returns the same actions, but wrapped with reducerIdGate action.
+
 ## 10.1.2
 
 ### StandardTable

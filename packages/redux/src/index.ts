@@ -5,6 +5,7 @@ export * from "./features/higher-order-reducers/record-object-reducer/record-obj
 export * from "./features/higher-order-reducers/record-object-reducer/record-object-action-creators";
 
 export * from "./features/higher-order-reducers/reducer-id-gate/reducer-id-gate";
+export * from "./features/higher-order-reducers/reducer-id-gate/reducer-id-action-wrapper";
 
 export * from "./features/reducer-factories/commit-reducer/commit-action-creators";
 export * from "./features/reducer-factories/commit-reducer/commit-actions";
