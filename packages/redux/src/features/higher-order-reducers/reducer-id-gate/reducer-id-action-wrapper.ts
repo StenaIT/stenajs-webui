@@ -1,6 +1,6 @@
 import { ReducerIdGateAction } from "@stenajs-webui/redux";
 
-type ActionCreator = (...args: any) => any;
+export type ActionCreator = (...args: any) => any;
 
 export type ActionCreatorCreator<TActionCreator extends ActionCreator> = (
   ...args: Parameters<TActionCreator>
@@ -23,15 +23,19 @@ export interface ActionCreatorsMapObject {
   [key: string]: ActionCreator;
 }
 
+export type ReducerIdGatedActionCreator<
+  TActionCreators extends ActionCreatorsMapObject
+> = {
+  [K in keyof TActionCreators]: ActionCreatorCreator<TActionCreators[K]>;
+};
+
 export const wrapActionsWithReducerIdGate = <
   TActionCreators extends ActionCreatorsMapObject
 >(
   reducerId: string,
   actionCreators: TActionCreators
-) => {
-  const boundActionCreators = {} as {
-    [K in keyof TActionCreators]: ActionCreatorCreator<TActionCreators[K]>;
-  };
+): ReducerIdGatedActionCreator<TActionCreators> => {
+  const boundActionCreators = {} as ReducerIdGatedActionCreator<TActionCreators>;
   for (const key in actionCreators) {
     const actionCreator = actionCreators[key];
     boundActionCreators[key] = wrapActionWithReducerIdGate(
