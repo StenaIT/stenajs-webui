@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.1.2
+
+### StandardTable
+
+- `rowBackgroundResolver` now gets `selected` as second argument.
+  This makes it possible to change background color depending on
+  the checkbox being checked or not.
+
 ## 10.1.1
 
 ### Select
