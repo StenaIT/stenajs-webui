@@ -18,6 +18,15 @@ export const myActionsWithGate = wrapActionsWithReducerIdGate(reducerId, {
 
 It returns the same actions, but wrapped with reducerIdGate action.
 
+### Action Menu
+
+- All types of `ActionMenuButton` support keyboard navigation, whether `portalTarget` is used or not
+- `ActionMenuItem` has new props `id` and `loading`
+- `ActionMenuItem` receives the HTML `disabled` prop when disabled
+- `ActionMenuLink` can be triggered with Space, just like `ActionMenuItem`
+- `ActionMenuLink` has border radius if first or last child, just like `ActionMenuItem`
+- The text in `ActionMenuItem` and `ActionMenuLink` does not wrap
+
 ## 10.1.2
 
 ### StandardTable

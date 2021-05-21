@@ -13,6 +13,27 @@ import { Icon } from "../icon/Icon";
 import { ActionMenuTheme } from "./ActionMenuTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styles from "./ActionMenuLink.module.css";
+import styled from "@emotion/styled";
+
+interface BorderRadiusAnchorProps {
+  styledBorderRadius: ActionMenuTheme["borderRadius"];
+}
+
+const BorderRadiusAnchor = styled.a<BorderRadiusAnchorProps>`
+  ${(props) =>
+    props.styledBorderRadius
+      ? `
+    &:first-child {
+      border-top-left-radius: ${props.styledBorderRadius};
+      border-top-right-radius: ${props.styledBorderRadius};
+    }
+    &:last-child {
+      border-bottom-left-radius: ${props.styledBorderRadius};
+      border-bottom-right-radius: ${props.styledBorderRadius};
+    }
+  `
+      : ""}
+`;
 
 export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
@@ -87,9 +108,18 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
     }
   }, [onClick, close, disableCloseOnClick]);
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
+    if (event.key === " ") {
+      event.preventDefault();
+      ref.current?.click();
+    }
+  };
+
   return (
-    <a
+    <BorderRadiusAnchor
+      styledBorderRadius={theme.borderRadius}
       onClick={disabled ? undefined : onClickHandler}
+      onKeyDown={onKeyDown}
       aria-disabled={disabled}
       href={disabled ? undefined : href}
       ref={ref}
@@ -102,7 +132,6 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
         indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
-        background={colors.itemBackground}
       >
         <Row height={theme.itemHeight} alignItems={"center"}>
           {icon && (
@@ -111,10 +140,16 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
               <Space />
             </>
           )}
-          <Text color={colors.itemLabelColor}>{label}</Text>
+          <Text color={colors.itemLabelColor} whiteSpace={"nowrap"}>
+            {label}
+          </Text>
         </Row>
         {rightText && (
-          <Text size={"small"} color={colors.itemTextColor}>
+          <Text
+            size={"small"}
+            color={colors.itemTextColor}
+            whiteSpace={"nowrap"}
+          >
             {rightText}
           </Text>
         )}
@@ -131,6 +166,6 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
           </>
         )}
       </Row>
-    </a>
+    </BorderRadiusAnchor>
   );
 };

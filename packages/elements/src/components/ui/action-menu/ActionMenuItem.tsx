@@ -1,5 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
+  Box,
   Clickable,
   Row,
   Space,
@@ -13,6 +14,7 @@ import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styled from "@emotion/styled";
 import { ActionMenuTheme, dangerActionMenuTheme } from "./ActionMenuTheme";
+import { InputSpinner } from "../spinner/InputSpinner";
 
 interface BorderRadiusClickableProps {
   styledBorderRadius: ActionMenuTheme["borderRadius"];
@@ -46,6 +48,7 @@ function themeFromVariant(variant?: ActionMenuItemVariant) {
 }
 
 export interface ActionMenuItemProps {
+  id?: string;
   label: string;
   variant?: ActionMenuItemVariant;
   rightText?: string;
@@ -53,16 +56,19 @@ export interface ActionMenuItemProps {
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
+  loading?: boolean;
   onClick?: () => void;
 }
 
 export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
+  id,
   label,
   variant,
   icon,
   iconRight,
   rightText,
   disabled,
+  loading,
   onClick,
   children,
   disableCloseOnClick,
@@ -118,8 +124,10 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
 
   return (
     <BorderRadiusClickable
+      id={id}
       styledBorderRadius={theme.borderRadius}
       onClick={disabled ? undefined : onClickHandler}
+      disabled={disabled}
       disableFocusHighlight
       background={colors.itemBackground}
       ref={ref}
@@ -131,16 +139,36 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
         justifyContent={"space-between"}
       >
         <Row height={theme.itemHeight} alignItems={"center"}>
-          {icon && (
+          {loading ? (
             <>
-              <Icon icon={icon} fixedWidth size={16} color={colors.iconColor} />
+              <Box width={20} alignItems={"center"}>
+                <InputSpinner />
+              </Box>
               <Space />
             </>
+          ) : (
+            icon && (
+              <>
+                <Icon
+                  icon={icon}
+                  fixedWidth
+                  size={16}
+                  color={colors.iconColor}
+                />
+                <Space />
+              </>
+            )
           )}
-          <Text color={colors.itemLabelColor}>{label}</Text>
+          <Text color={colors.itemLabelColor} whiteSpace={"nowrap"}>
+            {label}
+          </Text>
         </Row>
         {rightText && (
-          <Text size={"smaller"} color={colors.itemTextColor}>
+          <Text
+            size={"smaller"}
+            color={colors.itemTextColor}
+            whiteSpace={"nowrap"}
+          >
             {rightText}
           </Text>
         )}
