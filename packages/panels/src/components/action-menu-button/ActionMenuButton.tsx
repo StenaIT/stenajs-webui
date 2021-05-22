@@ -1,6 +1,7 @@
 import * as React from "react";
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import {
+  ActionMenuContext,
   FlatButton,
   PrimaryButton,
   PrimaryButtonProps,
@@ -38,7 +39,9 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   zIndex,
   ...buttonProps
 }) => {
-  const [isOpen, , close, toggle] = useBoolean(false);
+  const [isOpen, open, close, toggle] = useBoolean(false);
+
+  const contextValue = useMemo(() => ({ open, close }), [open, close]);
 
   return (
     <Popover
@@ -46,7 +49,11 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       visible={isOpen}
       onClickOutside={close}
       placement={placement}
-      content={renderItems(close)}
+      content={
+        <ActionMenuContext.Provider value={contextValue}>
+          {renderItems(close)}
+        </ActionMenuContext.Provider>
+      }
       arrow={false}
       variant={"outlined"}
       appendTo={portalTarget ?? "parent"}

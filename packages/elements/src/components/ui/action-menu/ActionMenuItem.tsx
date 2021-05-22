@@ -1,49 +1,14 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  Clickable,
-  Row,
-  Space,
-  Text,
-  useElementFocus,
-  useMouseIsEntered,
-} from "@stenajs-webui/core";
+import { Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { useCallback, useContext, useRef } from "react";
+import { forwardRef, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
-import styled from "@emotion/styled";
-import { ActionMenuTheme, dangerActionMenuTheme } from "./ActionMenuTheme";
+import cx from "classnames";
 
-interface BorderRadiusClickableProps {
-  styledBorderRadius: ActionMenuTheme["borderRadius"];
-}
+import styles from "./ActionMenu.module.css";
 
-const BorderRadiusClickable = styled(Clickable)<BorderRadiusClickableProps>`
-  ${(props) =>
-    props.styledBorderRadius
-      ? `
-    &:first-child {
-      border-top-left-radius: ${props.styledBorderRadius};
-      border-top-right-radius: ${props.styledBorderRadius};
-    }
-    &:last-child {
-      border-bottom-left-radius: ${props.styledBorderRadius};
-      border-bottom-right-radius: ${props.styledBorderRadius};
-    }
-  `
-      : ""}
-`;
-
-export type ActionMenuItemVariant = "danger";
-
-function themeFromVariant(variant?: ActionMenuItemVariant) {
-  switch (variant) {
-    case "danger":
-      return dangerActionMenuTheme;
-    default:
-      return null;
-  }
-}
+export type ActionMenuItemVariant = "standard" | "danger";
 
 export interface ActionMenuItemProps {
   label: string;
@@ -56,56 +21,24 @@ export interface ActionMenuItemProps {
   onClick?: () => void;
 }
 
-export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
-  label,
-  variant,
-  icon,
-  iconRight,
-  rightText,
-  disabled,
-  onClick,
-  children,
-  disableCloseOnClick,
-}) => {
-  const { close, theme: themeFromContext } = useContext(ActionMenuContext);
-  const theme = themeFromVariant(variant) || themeFromContext;
-  const ref = useRef<HTMLButtonElement>(null);
-  const { isInFocus } = useElementFocus(ref);
-  const mouseIsOver = useMouseIsEntered(ref);
-
-  const colors = {
-    iconColor: disabled
-      ? theme.iconColorDisabled
-      : mouseIsOver
-      ? theme.iconColorHover
-      : isInFocus
-      ? theme.iconColorFocus
-      : theme.iconColor,
-    itemLabelColor: disabled
-      ? theme.itemLabelColorDisabled
-      : mouseIsOver
-      ? theme.itemLabelColorHover
-      : isInFocus
-      ? theme.itemLabelColorFocus
-      : theme.itemLabelColor,
-    itemTextColor: disabled
-      ? theme.itemTextColorDisabled
-      : mouseIsOver
-      ? theme.itemTextColorHover
-      : isInFocus
-      ? theme.itemTextColorFocus
-      : theme.itemTextColor,
-    itemBackground:
-      disabled && isInFocus
-        ? theme.itemBackgroundDisabledFocus
-        : disabled
-        ? theme.itemBackgroundDisabled
-        : mouseIsOver
-        ? theme.itemBackgroundHover
-        : isInFocus
-        ? theme.itemBackgroundFocus
-        : theme.itemBackground,
-  };
+export const ActionMenuItem = forwardRef<
+  HTMLButtonElement,
+  ActionMenuItemProps
+>(function ActionMenuItem(
+  {
+    label,
+    variant = "standard",
+    icon,
+    iconRight,
+    rightText,
+    disabled,
+    onClick,
+    children,
+    disableCloseOnClick,
+  },
+  ref
+) {
+  const { close } = useContext(ActionMenuContext);
 
   const onClickHandler = useCallback(() => {
     if (close && !disableCloseOnClick) {
@@ -117,30 +50,40 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   }, [onClick, close, disableCloseOnClick]);
 
   return (
-    <BorderRadiusClickable
-      styledBorderRadius={theme.borderRadius}
+    <button
+      className={cx(styles.Item, styles[variant])}
       onClick={disabled ? undefined : onClickHandler}
-      disableFocusHighlight
-      background={colors.itemBackground}
+      disabled={disabled}
       ref={ref}
     >
       <Row
-        height={theme.itemHeight}
+        width={"100%"}
         indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        <Row height={theme.itemHeight} alignItems={"center"}>
+        <Row alignItems={"center"}>
           {icon && (
             <>
-              <Icon icon={icon} fixedWidth size={16} color={colors.iconColor} />
+              <Icon
+                className={styles.ItemIcon}
+                icon={icon}
+                fixedWidth
+                size={16}
+              />
               <Space />
             </>
           )}
-          <Text color={colors.itemLabelColor}>{label}</Text>
+          <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
+            {label}
+          </Text>
         </Row>
         {rightText && (
-          <Text size={"smaller"} color={colors.itemTextColor}>
+          <Text
+            className={styles.ItemText}
+            size={"small"}
+            whiteSpace={"nowrap"}
+          >
             {rightText}
           </Text>
         )}
@@ -153,10 +96,10 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
         {iconRight && (
           <>
             <Space />
-            <Icon icon={iconRight} size={14} color={colors.itemLabelColor} />
+            <Icon className={styles.ItemIcon} icon={iconRight} size={14} />
           </>
         )}
       </Row>
-    </BorderRadiusClickable>
+    </button>
   );
-};
+});

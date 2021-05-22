@@ -3,7 +3,11 @@ import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Box, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { ActionMenuItem, ActionMenuSeparator } from "@stenajs-webui/elements";
+import {
+  ActionMenu,
+  ActionMenuItem,
+  ActionMenuSeparator,
+} from "@stenajs-webui/elements";
 import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
@@ -17,36 +21,26 @@ export const Standard = () => (
   <Box indent={8} display={"inline-block"}>
     <ActionMenuPrimaryButton
       label={"Actions"}
-      renderItems={(close) => (
-        <>
-          <ActionMenuItem label={"Open"} onClick={close} />
-          <ActionMenuItem label={"Save"} icon={faSave} onClick={close} />
-          <ActionMenuItem
-            label={"Burn it"}
-            icon={faFire}
-            onClick={close}
-            variant={"danger"}
-          />
-          <ActionMenuItem label={"Disabled"} disabled onClick={close} />
-          <ActionMenuItem
-            label={"Icon right"}
-            onClick={close}
-            iconRight={faCheck}
-          />
+      renderItems={() => (
+        <ActionMenu>
+          <ActionMenuItem label={"Open"} />
+          <ActionMenuItem label={"Save"} icon={faSave} />
+          <ActionMenuItem label={"Burn it"} icon={faFire} variant={"danger"} />
+          <ActionMenuItem label={"Disabled"} disabled />
+          <ActionMenuItem label={"Icon right"} iconRight={faCheck} />
           <ActionMenuItem
             label={"Icon right disabled"}
-            onClick={close}
             iconRight={faCheck}
             disabled
           />
-          <ActionMenuItem label={"Custom right"} onClick={close}>
+          <ActionMenuItem label={"Custom right"}>
             <Text size={"smaller"} color={"tomato"}>
               So custom!
             </Text>
           </ActionMenuItem>
           <ActionMenuSeparator />
-          <ActionMenuItem label={"Quit"} rightText={"cmd+q"} onClick={close} />
-        </>
+          <ActionMenuItem label={"Quit"} rightText={"cmd+q"} />
+        </ActionMenu>
       )}
     />
     <Spacing num={21} />
@@ -57,7 +51,7 @@ export const Disabled = () => (
   <ActionMenuPrimaryButton
     label={"Disabled"}
     disabled
-    renderItems={() => <></>}
+    renderItems={() => <ActionMenu></ActionMenu>}
   />
 );
 
@@ -67,20 +61,20 @@ export const Icons = () => (
       <ActionMenuPrimaryButton
         label={"Custom icon"}
         rightIcon={faCoffee}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Left icon"}
         leftIcon={faCoffee}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         rightIcon={faEllipsisV}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
   </Box>
@@ -92,21 +86,21 @@ export const Sizes = () => (
       <ActionMenuPrimaryButton
         label={"Small"}
         size={"small"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Medium"}
         size={"medium"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Large"}
         size={"large"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
   </Box>
@@ -126,7 +120,7 @@ export const CustomContent = () => (
             So custom!
           </Text>
         }
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
@@ -141,7 +135,7 @@ export const CustomContent = () => (
             So custom!
           </Text>
         }
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
   </Box>
@@ -153,21 +147,21 @@ export const Variants = () => (
       <ActionMenuPrimaryButton
         label={"Normal"}
         variant={"normal"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Success"}
         variant={"success"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Danger"}
         variant={"danger"}
-        renderItems={() => <></>}
+        renderItems={() => <ActionMenu></ActionMenu>}
       />
     </Spacing>
   </Box>
