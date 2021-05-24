@@ -14,6 +14,7 @@ import { ActionMenuTheme } from "./ActionMenuTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
 import styles from "./ActionMenuLink.module.css";
 import styled from "@emotion/styled";
+import { useFocusManager } from "@react-aria/focus";
 
 interface BorderRadiusAnchorProps {
   styledBorderRadius: ActionMenuTheme["borderRadius"];
@@ -65,6 +66,25 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
 
+  const focusManager = useFocusManager();
+  const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        event.preventDefault();
+        focusManager.focusNext({ wrap: true });
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        event.preventDefault();
+        focusManager.focusPrevious({ wrap: true });
+        break;
+      case " ":
+        event.preventDefault();
+        ref.current?.click();
+    }
+  };
+
   const colors = {
     iconColor: disabled
       ? theme.iconColorDisabled
@@ -107,13 +127,6 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
       onClick();
     }
   }, [onClick, close, disableCloseOnClick]);
-
-  const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
-    if (event.key === " ") {
-      event.preventDefault();
-      ref.current?.click();
-    }
-  };
 
   return (
     <BorderRadiusAnchor

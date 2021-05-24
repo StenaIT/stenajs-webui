@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ReactNode, useRef } from "react";
 import {
+  ActionMenu,
   FlatButton,
   PrimaryButton,
   PrimaryButtonProps,
@@ -9,7 +10,6 @@ import {
 import { Box, useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { FocusScope } from "@react-aria/focus";
 import { Plugin as TippyPlugin, Props as TippyProps } from "tippy.js";
 
 export interface ActionMenuButtonProps
@@ -93,11 +93,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
         onClickOutside={close}
         placement={placement}
         content={
-          isOpen && (
-            <FocusScope contain>
-              <Box>{renderItems(close)}</Box>
-            </FocusScope>
-          )
+          isOpen && <ActionMenu trapFocus>{renderItems(close)}</ActionMenu>
         }
         arrow={false}
         variant={"outlined"}

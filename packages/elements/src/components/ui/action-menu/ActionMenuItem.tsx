@@ -15,6 +15,7 @@ import { ActionMenuContext } from "./ActionMenuContext";
 import styled from "@emotion/styled";
 import { ActionMenuTheme, dangerActionMenuTheme } from "./ActionMenuTheme";
 import { InputSpinner } from "../spinner/InputSpinner";
+import { useFocusManager } from "@react-aria/focus";
 
 interface BorderRadiusClickableProps {
   styledBorderRadius: ActionMenuTheme["borderRadius"];
@@ -79,6 +80,22 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
   const { isInFocus } = useElementFocus(ref);
   const mouseIsOver = useMouseIsEntered(ref);
 
+  const focusManager = useFocusManager();
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        event.preventDefault();
+        focusManager.focusNext({ wrap: true });
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        event.preventDefault();
+        focusManager.focusPrevious({ wrap: true });
+        break;
+    }
+  };
+
   const colors = {
     iconColor: disabled
       ? theme.iconColorDisabled
@@ -127,6 +144,7 @@ export const ActionMenuItem: React.FC<ActionMenuItemProps> = ({
       id={id}
       styledBorderRadius={theme.borderRadius}
       onClick={disabled ? undefined : onClickHandler}
+      onKeyDown={onKeyDown}
       disabled={disabled}
       disableFocusHighlight
       background={colors.itemBackground}
