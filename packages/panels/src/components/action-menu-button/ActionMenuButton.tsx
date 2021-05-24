@@ -69,12 +69,9 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
         },
         onMount() {
           restoreFocus = false;
-          const firstItem = popper.querySelector(
-            "button:not([disabled]), a[href]"
-          );
-          if (firstItem) {
-            (firstItem as HTMLButtonElement).focus();
-          }
+          popper
+            .querySelector<HTMLElement>("button:not([disabled]), a[href]")
+            ?.focus();
         },
         onHide() {
           if (buttonRef.current && restoreFocus) {
