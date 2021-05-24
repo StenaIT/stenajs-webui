@@ -18,6 +18,16 @@ export const myActionsWithGate = wrapActionsWithReducerIdGate(reducerId, {
 
 It returns the same actions, but wrapped with reducerIdGate action.
 
+### StandardTable
+
+When using editable cells, `editorValue` was not always reset and could
+become inconsistent with the value of the data.
+`editorValue` is now always reset when editor for a cell is opened.
+
+### Dependencies
+
+Font awesome icons have been updated to `5.15.3`.
+
 ## 10.1.2
 
 ### StandardTable

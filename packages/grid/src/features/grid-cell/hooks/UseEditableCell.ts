@@ -95,18 +95,20 @@ export const useEditableCell = <TValue>(
     undefined
   );
   const revertableValue = useRevertableValue<TValue>(value);
-  const { getValue, revert } = revertableValue;
+  const { getValue, revert, setValue, setRevertValue } = revertableValue;
 
   const startEditing = useCallback(
     (keyEvent?: KeyDownEvent) => {
       if (isEditable) {
+        setValue(value);
+        setRevertValue(value);
         setIsEditing(true);
         if (onStartEditing) {
           onStartEditing(keyEvent);
         }
       }
     },
-    [isEditable, onStartEditing, setIsEditing]
+    [isEditable, onStartEditing, setRevertValue, setValue, value]
   );
 
   const stopEditing = useCallback(() => {

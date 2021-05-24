@@ -149,7 +149,7 @@ const useListState = (initialItems: Array<ListItem>) => {
 
   const onChangeNumPassengers = useCallback(
     (item: ListItem, numPassengers: string | undefined) => {
-      return setItems(
+      setItems(
         setListItemFields(items, item.id, {
           numPassengers: numPassengers ? parseInt(numPassengers) : undefined,
         })
