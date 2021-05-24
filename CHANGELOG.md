@@ -20,7 +20,9 @@ It returns the same actions, but wrapped with reducerIdGate action.
 
 ### StandardTable
 
-When using editable cells, `editorValue` was not always reset and could
+- Sort order icon `amount` variant now has inverted arrow direction.
+
+- When using editable cells, `editorValue` was not always reset and could
 become inconsistent with the value of the data.
 `editorValue` is now always reset when editor for a cell is opened.
 
@@ -32,7 +34,7 @@ Font awesome icons have been updated to `5.15.3`.
 
 ### StandardTable
 
-- `rowBackgroundResolver` now gets `selected` as second argument.
+- `rowBackgroundResolver` function now gets `selected` as second argument.
   This makes it possible to change background color depending on
   the checkbox being checked or not.
 
