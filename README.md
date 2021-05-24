@@ -74,8 +74,10 @@ They are specified in their respective package.json.
 For example, to use `@stenajs-webui/core` you must add the following dependencies:
 
 ```
-$ yarn add @emotion/core \
+$ yarn add @emotion/react \
            @emotion/styled \
+           csstype \
+           lodash \
            prop-types \
            react \
            react-dom \
@@ -86,9 +88,10 @@ If you are using Typescript, you must also add the following dependencies:
 
 ```
 $ yarn add typescript
-           @types/styled-system \
+           @types/lodash \
            @types/react \
-           @types/react-dom
+           @types/react-dom \
+           @types/styled-system
 ```
 
 `typescript` is required by `create-react-app` when using Typescript, `stenajs-webui` does not require it.
@@ -105,7 +108,9 @@ See the `package.json` file for each package to see what dependencies are requir
 
 ### Testing changes locally using Yalc
 
-[See our Yalc guide](YALC.md) to test changes locally.
+If you need to make changes to the library code and test it in your application, you can use Yalc.
+
+[See our Yalc guide](YALC.md)
 
 ### Add fonts
 

@@ -39,7 +39,7 @@
     "react-infinite": "0.13.0"
   },
   "peerDependencies": {
-    "@fortawesome/free-solid-svg-icons": ">=5.8.2",
+    "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@types/lodash": ">=4.14.168",
     "@types/react": ">=17.0.5",
     "@types/react-dom": ">=17.0.3",
@@ -53,7 +53,7 @@
     "redux": ">=4.0.5"
   },
   "devDependencies": {
-    "@fortawesome/free-solid-svg-icons": "5.8.2",
+    "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.5",

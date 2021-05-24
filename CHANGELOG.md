@@ -27,11 +27,23 @@ It returns the same actions, but wrapped with reducerIdGate action.
 - `ActionMenuLink` has border radius if first or last child, just like `ActionMenuItem`
 - The text in `ActionMenuItem` and `ActionMenuLink` does not wrap
 
+### StandardTable
+
+- Sort order icon `amount` variant now has inverted arrow direction.
+
+- When using editable cells, `editorValue` was not always reset and could
+become inconsistent with the value of the data.
+`editorValue` is now always reset when editor for a cell is opened.
+
+### Dependencies
+
+Font awesome icons have been updated to `5.15.3`.
+
 ## 10.1.2
 
 ### StandardTable
 
-- `rowBackgroundResolver` now gets `selected` as second argument.
+- `rowBackgroundResolver` function now gets `selected` as second argument.
   This makes it possible to change background color depending on
   the checkbox being checked or not.
 
