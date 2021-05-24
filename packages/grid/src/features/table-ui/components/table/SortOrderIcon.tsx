@@ -1,8 +1,8 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { faSortAlphaDown } from "@fortawesome/free-solid-svg-icons/faSortAlphaDown";
 import { faSortAlphaUp } from "@fortawesome/free-solid-svg-icons/faSortAlphaUp";
-import { faSortAmountDown } from "@fortawesome/free-solid-svg-icons/faSortAmountDown";
-import { faSortAmountUp } from "@fortawesome/free-solid-svg-icons/faSortAmountUp";
+import { faSortAmountDownAlt } from "@fortawesome/free-solid-svg-icons/faSortAmountDownAlt";
+import { faSortAmountUpAlt } from "@fortawesome/free-solid-svg-icons/faSortAmountUpAlt";
 import { faSortNumericDown } from "@fortawesome/free-solid-svg-icons/faSortNumericDown";
 import { faSortNumericUp } from "@fortawesome/free-solid-svg-icons/faSortNumericUp";
 import { exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
@@ -41,7 +41,7 @@ export const getIcon = (
     case "numeric":
       return arrow === "up" ? faSortNumericUp : faSortNumericDown;
     case "amount":
-      return arrow === "up" ? faSortAmountUp : faSortAmountDown;
+      return arrow === "up" ? faSortAmountUpAlt : faSortAmountDownAlt;
     default:
       return exhaustSwitchCaseElseThrow(iconType);
   }
