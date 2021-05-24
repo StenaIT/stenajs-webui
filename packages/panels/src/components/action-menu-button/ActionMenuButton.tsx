@@ -1,14 +1,16 @@
 import * as React from "react";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import {
+  ActionMenu,
   FlatButton,
   PrimaryButton,
   PrimaryButtonProps,
   SecondaryButton,
 } from "@stenajs-webui/elements";
-import { useBoolean } from "@stenajs-webui/core";
+import { Box, useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { Plugin as TippyPlugin, Props as TippyProps } from "tippy.js";
 
 export interface ActionMenuButtonProps
   extends Omit<
@@ -34,25 +36,76 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   placement = "bottom",
   buttonComponent: Button,
   rightIcon = faAngleDown,
-  portalTarget,
+  portalTarget = "parent",
   zIndex,
   ...buttonProps
 }) => {
   const [isOpen, , close, toggle] = useBoolean(false);
 
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const focusManager: TippyPlugin<TippyProps> = {
+    name: "focusManager",
+    defaultValue: true,
+    fn({ popper }) {
+      let restoreFocus = false;
+
+      const closeOnEscape = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          restoreFocus = true;
+          close();
+        }
+        if (event.key === "Enter" || event.key === " ") {
+          restoreFocus = true;
+        }
+      };
+
+      return {
+        onCreate() {
+          popper.addEventListener("keydown", closeOnEscape);
+        },
+        onDestroy() {
+          popper.removeEventListener("keydown", closeOnEscape);
+        },
+        onMount() {
+          restoreFocus = false;
+          popper
+            .querySelector<HTMLElement>("button:not([disabled]), a[href]")
+            ?.focus();
+        },
+        onHide() {
+          if (buttonRef.current && restoreFocus) {
+            buttonRef.current.focus();
+          }
+        },
+      };
+    },
+  };
+
   return (
-    <Popover
-      disablePadding
-      visible={isOpen}
-      onClickOutside={close}
-      placement={placement}
-      content={renderItems(close)}
-      arrow={false}
-      variant={"outlined"}
-      appendTo={portalTarget ?? "parent"}
-      zIndex={zIndex}
-    >
-      <Button rightIcon={rightIcon} {...buttonProps} onClick={toggle} />
-    </Popover>
+    <Box>
+      <Popover
+        disablePadding
+        visible={isOpen}
+        onClickOutside={close}
+        placement={placement}
+        content={
+          isOpen && <ActionMenu trapFocus>{renderItems(close)}</ActionMenu>
+        }
+        arrow={false}
+        variant={"outlined"}
+        appendTo={portalTarget}
+        zIndex={zIndex}
+        plugins={[focusManager]}
+        lazy
+      >
+        <Button
+          rightIcon={rightIcon}
+          {...buttonProps}
+          ref={buttonRef}
+          onClick={toggle}
+        />
+      </Popover>
+    </Box>
   );
 };
