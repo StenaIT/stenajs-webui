@@ -8,8 +8,8 @@ import {
 
 export const useForwardedRef = <T>(
   ref: RefCallback<T> | MutableRefObject<T> | null
-): RefObject<T> => {
-  const innerRef = useRef<T>(null) as MutableRefObject<T>;
+): RefObject<NonNullable<T>> => {
+  const innerRef = useRef<T>(null) as MutableRefObject<NonNullable<T>>;
 
   useEffect(() => {
     if (!ref) return;

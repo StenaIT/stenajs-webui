@@ -6,6 +6,7 @@ import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import cx from "classnames";
+
 import { useForwardedRef } from "@stenajs-webui/core";
 
 import styles from "./ActionMenu.module.css";
@@ -41,7 +42,7 @@ export const ActionMenuLink = forwardRef<
   ref: React.Ref<HTMLAnchorElement>
 ) {
   const { close } = useContext(ActionMenuContext);
-  const innerRef = useForwardedRef<HTMLAnchorElement>(ref);
+  const innerRef = useForwardedRef<HTMLAnchorElement | null>(ref);
 
   const onClickHandler = useCallback(() => {
     if (close && !disableCloseOnClick) {
@@ -55,7 +56,7 @@ export const ActionMenuLink = forwardRef<
   const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
     if (event.key === " ") {
       event.preventDefault();
-      innerRef?.current.click();
+      innerRef?.current?.click();
     }
   };
 
