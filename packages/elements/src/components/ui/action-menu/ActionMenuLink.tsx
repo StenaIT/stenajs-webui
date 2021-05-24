@@ -4,7 +4,7 @@ import * as React from "react";
 import { forwardRef, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
-import { ActionMenuItemProps, ActionMenuItemVariant } from "./ActionMenuItem";
+import { ActionMenuItemVariant } from "./ActionMenuItem";
 import cx from "classnames";
 import { useForwardedRef } from "@stenajs-webui/core";
 
