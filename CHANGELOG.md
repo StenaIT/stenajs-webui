@@ -1,5 +1,12 @@
 # Changelog
 
+## POC!
+
+### Modal
+
+- Different takes on draggable modal. By separating the draggable part from text and buttons, we can copy text and press
+  buttons without the draggable interfering.
+
 ## Next
 
 ### NavBar
@@ -30,9 +37,9 @@ It returns the same actions, but wrapped with reducerIdGate action.
 ### StandardTable
 
 - Sort order icon `amount` variant now has inverted arrow direction.
-- When using editable cells, `editorValue` was not always reset and could
-become inconsistent with the value of the data.
-`editorValue` is now always reset when editor for a cell is opened.
+- When using editable cells, `editorValue` was not always reset and could become inconsistent with the value of the
+  data.
+  `editorValue` is now always reset when editor for a cell is opened.
 - `rowBackgroundResolver` can now return color or object containing `background` and `hoverBackground` fields.
 
 ### RadioButton
@@ -47,9 +54,8 @@ Font awesome icons have been updated to `5.15.3`.
 
 ### StandardTable
 
-- `rowBackgroundResolver` function now gets `selected` as second argument.
-  This makes it possible to change background color depending on
-  the checkbox being checked or not.
+- `rowBackgroundResolver` function now gets `selected` as second argument. This makes it possible to change background
+  color depending on the checkbox being checked or not.
 
 ## 10.1.1
 
@@ -69,25 +75,23 @@ Font awesome icons have been updated to `5.15.3`.
 
 ### StandardTable
 
-- Fixed bug regarding sticky header checkbox with column groups. Column group names was showing behind the checkbox when scrolling horizontally.
+- Fixed bug regarding sticky header checkbox with column groups. Column group names was showing behind the checkbox when
+  scrolling horizontally.
 - Fix alignment issue when using column groups and borders.
 
 ## 10.0.0
 
 ### Text
 
-- Now also exported with name `Txt`.
-  This makes auto-import work properly, since `Text` is already defined globally.
+- Now also exported with name `Txt`. This makes auto-import work properly, since `Text` is already defined globally.
 
 ### StandardTable
 
 - Now uses `Banner` to show no items available message.
 - Add props `noItemsContentRight`, `noItemsContentBottom`
   and `noItemsHeader` to customize the banner.
-- Sort order icon is on left or right side of column header
-  label, depending on header alignment.
-- Add sort order icon variants, can be set in table config.
-  There is one option for the whole table, and one per config
+- Sort order icon is on left or right side of column header label, depending on header alignment.
+- Add sort order icon variants, can be set in table config. There is one option for the whole table, and one per config
   which overrides the table setting.
 - Row checkbox column can now be sticky.
 - Fixed visual bug in column group when column is sticky.
@@ -104,8 +108,7 @@ Font awesome icons have been updated to `5.15.3`.
 
 ### DateTextInput
 
-- Moved icon to right side, and changed it to a FlatButton.
-  This makes the input slightly wider.
+- Moved icon to right side, and changed it to a FlatButton. This makes the input slightly wider.
 
 ### Breaking changes
 
@@ -119,8 +122,7 @@ Emotion has been updated to major 11.
 
 React has been updated to major 17.
 
-If any of these dependencies are included in your applications
-package.json, you should update them.
+If any of these dependencies are included in your applications package.json, you should update them.
 
 - `@emotion/core` is removed.
 - `@emotion/react@11.1.5` is added.
@@ -176,8 +178,7 @@ package.json, you should update them.
 
 ### StandardTableHtmlCopyToClipboardButton
 
-- When exporting to clipboard, all horizontal column alignments
-  will be rendered according to the table config.
+- When exporting to clipboard, all horizontal column alignments will be rendered according to the table config.
 
 ### Spinner
 
@@ -248,15 +249,14 @@ Remove letter-spacing override done by setting text size.
 
 ### DateTimeInput
 
-Types now allow value=null.
-This makes sure that the component is control, while it has no value.
+Types now allow value=null. This makes sure that the component is control, while it has no value.
 
 ## 8.0.1
 
 ### DateTimeInput
 
-Add `onBlur` prop. Triggered when the whole component loses focus.
-Add `autoFocus` props. Autofocuses on date part of the input.
+Add `onBlur` prop. Triggered when the whole component loses focus. Add `autoFocus` props. Autofocuses on date part of
+the input.
 
 ### DateRangeDualTextInput
 
@@ -289,14 +289,11 @@ Design has been updated to use design system colors.
 
 ### Themes
 
-Theming is no longer using React context.
-All theme variables are using CSS properties.
+Theming is no longer using React context. All theme variables are using CSS properties.
 
 ### Breaking changes
 
-`Box` no longer has property `color`.
-This also applies to components derived from `Box`,
-such as `Row` and `Column`.
+`Box` no longer has property `color`. This also applies to components derived from `Box`, such as `Row` and `Column`.
 
 ## 7.5.2
 
@@ -319,9 +316,8 @@ Fix missing key in JSX.
 
 ### New component `DateTimeInput`
 
-An input field with both date and time.
-When entering date, a popover with a calendar is showing.
-When entering time, a popover with time picker is showing.
+An input field with both date and time. When entering date, a popover with a calendar is showing. When entering time, a
+popover with time picker is showing.
 
 ### New component `TimePicker`
 
@@ -353,15 +349,13 @@ They return undefined if parse fails.
 Updated behaviour when selecting dates in popover.
 
 - Selecting startDate always moves to endDate.
-- Selecting endDate closes calendar except when
-  date range is invalid or startDate has not been selected.
-  Then it moves to start date.
+- Selecting endDate closes calendar except when date range is invalid or startDate has not been selected. Then it moves
+  to start date.
 
 ### New hook `useDelayedFalse`
 
-A hook that takes a boolean as argument and returns that boolean.
-When boolean turns false, it returns false after a certain delay.
-When boolean turns true, it returns true immediately.
+A hook that takes a boolean as argument and returns that boolean. When boolean turns false, it returns false after a
+certain delay. When boolean turns true, it returns true immediately.
 
 This is useful for delaying the removal of elements in the DOM.
 
@@ -424,8 +418,7 @@ Contains components and logic for exporting data in tables to file.
 
 #### StandardTableExcelExportButton
 
-When the user clicks the button, it downloads the
-content of a `StandardTable` as an Excel .xlsx file.
+When the user clicks the button, it downloads the content of a `StandardTable` as an Excel .xlsx file.
 
 ### Fixes
 

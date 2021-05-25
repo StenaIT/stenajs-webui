@@ -9,6 +9,8 @@ export interface ModalProps extends BaseModalProps {
   headerText?: string;
   spacing?: number;
   indent?: number;
+  draggableHandle?: boolean;
+  draggableBar?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -17,6 +19,8 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   spacing,
   indent,
+  draggableHandle,
+  draggableBar,
   ...props
 }) => {
   const activeSpacing = typeof spacing === "number" ? spacing : 1;
@@ -28,6 +32,9 @@ export const Modal: React.FC<ModalProps> = ({
         onRequestClose={props.onRequestClose}
         header={header}
         headerText={headerText}
+        draggable={props.draggable}
+        draggableHandle={draggableHandle}
+        draggableBar={draggableBar}
       />
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}
