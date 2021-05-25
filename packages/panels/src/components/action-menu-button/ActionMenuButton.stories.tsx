@@ -7,6 +7,10 @@ import {
   ActionMenuItem,
   ActionMenuLink,
   ActionMenuSeparator,
+  ActionMenuItemNoButton,
+  ButtonGroup,
+  SecondaryButton,
+  PrimaryButton,
 } from "@stenajs-webui/elements";
 import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
@@ -53,6 +57,20 @@ export const Overview = () => (
               <ActionMenuItem label={"Loading"} loading />
               <ActionMenuItem label={"Disabled"} disabled />
               <ActionMenuItem label={"Icon right"} iconRight={faCheck} />
+              <ActionMenuItemNoButton label={"Content right"}>
+                <ButtonGroup>
+                  <PrimaryButton size={"small"} label={"S"} />
+                  <SecondaryButton size={"small"} label={"M"} />
+                  <SecondaryButton size={"small"} label={"L"} />
+                </ButtonGroup>
+              </ActionMenuItemNoButton>
+              <ActionMenuItemNoButton label={"Content right very much text"}>
+                <ButtonGroup>
+                  <SecondaryButton size={"small"} label={"25"} />
+                  <PrimaryButton size={"small"} label={"50"} />
+                  <SecondaryButton size={"small"} label={"100"} />
+                </ButtonGroup>
+              </ActionMenuItemNoButton>
               <ActionMenuItem
                 label={"Icon right disabled"}
                 iconRight={faCheck}

@@ -18,7 +18,7 @@ export interface ActionMenuProps {
 export const ActionMenu: React.FC<ActionMenuProps> = ({
   top,
   children,
-  width = "200px",
+  width,
   shadow,
   variant = "standard",
   trapFocus,
