@@ -6,10 +6,9 @@ import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import cx from "classnames";
-
 import { useForwardedRef } from "@stenajs-webui/core";
-
 import styles from "./ActionMenu.module.css";
+import { useFocusManager } from "@react-aria/focus";
 
 export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
@@ -53,10 +52,22 @@ export const ActionMenuLink = forwardRef<
     }
   }, [onClick, close, disableCloseOnClick]);
 
+  const focusManager = useFocusManager();
   const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
-    if (event.key === " ") {
-      event.preventDefault();
-      innerRef?.current?.click();
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        event.preventDefault();
+        focusManager.focusNext({ wrap: true });
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        event.preventDefault();
+        focusManager.focusPrevious({ wrap: true });
+        break;
+      case " ":
+        event.preventDefault();
+        innerRef.current?.click();
     }
   };
 

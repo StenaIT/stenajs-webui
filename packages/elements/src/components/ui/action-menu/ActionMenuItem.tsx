@@ -1,16 +1,19 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Row, Space, Text } from "@stenajs-webui/core";
+import { Row, Space, Text, Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import cx from "classnames";
+import { InputSpinner } from "../spinner/InputSpinner";
+import { useFocusManager } from "@react-aria/focus";
 
 import styles from "./ActionMenu.module.css";
 
 export type ActionMenuItemVariant = "standard" | "danger";
 
 export interface ActionMenuItemProps {
+  id?: string;
   label: string;
   variant?: ActionMenuItemVariant;
   rightText?: string;
@@ -18,6 +21,7 @@ export interface ActionMenuItemProps {
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
+  loading?: boolean;
   onClick?: () => void;
 }
 
@@ -35,6 +39,8 @@ export const ActionMenuItem = forwardRef<
     onClick,
     children,
     disableCloseOnClick,
+    loading,
+    id,
   },
   ref
 ) {
@@ -49,9 +55,27 @@ export const ActionMenuItem = forwardRef<
     }
   }, [onClick, close, disableCloseOnClick]);
 
+  const focusManager = useFocusManager();
+  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (event.key) {
+      case "ArrowDown":
+      case "ArrowRight":
+        event.preventDefault();
+        focusManager.focusNext({ wrap: true });
+        break;
+      case "ArrowUp":
+      case "ArrowLeft":
+        event.preventDefault();
+        focusManager.focusPrevious({ wrap: true });
+        break;
+    }
+  };
+
   return (
     <button
+      id={id}
       className={cx(styles.Item, styles[variant])}
+      onKeyDown={onKeyDown}
       onClick={disabled ? undefined : onClickHandler}
       disabled={disabled}
       ref={ref}
@@ -63,16 +87,25 @@ export const ActionMenuItem = forwardRef<
         justifyContent={"space-between"}
       >
         <Row alignItems={"center"}>
-          {icon && (
+          {loading ? (
             <>
-              <Icon
-                className={styles.ItemIcon}
-                icon={icon}
-                fixedWidth
-                size={16}
-              />
+              <Box width={20} alignItems={"center"}>
+                <InputSpinner />
+              </Box>
               <Space />
             </>
+          ) : (
+            icon && (
+              <>
+                <Icon
+                  className={styles.ItemIcon}
+                  icon={icon}
+                  fixedWidth
+                  size={16}
+                />
+                <Space />
+              </>
+            )
           )}
           <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
             {label}

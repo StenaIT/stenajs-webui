@@ -22,7 +22,11 @@ export default {
 
 export const Standard = () => (
   <ActionMenu>
-    <ActionMenuItem label={"Open"} onClick={action("Opened")} />
+    <ActionMenuItem
+      id={"action-menu-item-open"}
+      label={"Open"}
+      onClick={action("Opened")}
+    />
     <ActionMenuItem label={"Save"} icon={faSave} onClick={action("Saved")} />
     <ActionMenuLink
       label={"Open new window"}
@@ -43,6 +47,7 @@ export const Standard = () => (
       onClick={action("It was burned!")}
       variant={"danger"}
     />
+    <ActionMenuItem label={"Loading"} loading onClick={action("Loading")} />
     <ActionMenuItem
       label={"Click doesn't close"}
       onClick={action("I didn't close the menu!")}

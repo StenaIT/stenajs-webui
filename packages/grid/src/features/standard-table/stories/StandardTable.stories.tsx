@@ -149,7 +149,7 @@ const useListState = (initialItems: Array<ListItem>) => {
 
   const onChangeNumPassengers = useCallback(
     (item: ListItem, numPassengers: string | undefined) => {
-      return setItems(
+      setItems(
         setListItemFields(items, item.id, {
           numPassengers: numPassengers ? parseInt(numPassengers) : undefined,
         })
@@ -393,6 +393,29 @@ export const MissingItemsCustomBanner = () => (
     noItemsContentRight={<FlatButton label={"Open filter"} />}
   />
 );
+
+export const BackgroundResolver = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    rowBackgroundResolver: (item) =>
+      item.id === "124"
+        ? {
+            background: cssColor("--lhds-color-green-200"),
+            hoverBackground: cssColor("--lhds-color-green-300"),
+          }
+        : undefined,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+  };
+  return <StandardTable items={items} config={config} />;
+};
 
 export const NavigationBetweenTables = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);

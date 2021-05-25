@@ -1,16 +1,17 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Box, Spacing, Text } from "@stenajs-webui/core";
+import { Box, Heading, Row, Space, Spacing, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import {
-  ActionMenu,
   ActionMenuItem,
+  ActionMenuLink,
   ActionMenuSeparator,
 } from "@stenajs-webui/elements";
 import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
 
 export default {
   title: "panels/ActionMenuSecondaryButton",
@@ -22,10 +23,11 @@ export const Standard = () => (
     <ActionMenuSecondaryButton
       label={"Actions"}
       renderItems={() => (
-        <ActionMenu>
+        <>
           <ActionMenuItem label={"Open"} />
           <ActionMenuItem label={"Save"} icon={faSave} />
           <ActionMenuItem label={"Burn it"} icon={faFire} variant={"danger"} />
+          <ActionMenuItem label={"Loading"} loading />
           <ActionMenuItem label={"Disabled"} disabled />
           <ActionMenuItem label={"Icon right"} iconRight={faCheck} />
           <ActionMenuItem
@@ -40,10 +42,10 @@ export const Standard = () => (
           </ActionMenuItem>
           <ActionMenuSeparator />
           <ActionMenuItem label={"Quit"} rightText={"cmd+q"} />
-        </ActionMenu>
+        </>
       )}
     />
-    <Spacing num={21} />
+    <Spacing num={24} />
   </Box>
 );
 
@@ -51,7 +53,7 @@ export const Disabled = () => (
   <ActionMenuSecondaryButton
     label={"Disabled"}
     disabled
-    renderItems={() => <ActionMenu></ActionMenu>}
+    renderItems={() => <></>}
   />
 );
 
@@ -61,20 +63,20 @@ export const Icons = () => (
       <ActionMenuSecondaryButton
         label={"Custom icon"}
         rightIcon={faCoffee}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuSecondaryButton
         label={"Left icon"}
         leftIcon={faCoffee}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuSecondaryButton
         rightIcon={faEllipsisV}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
   </Box>
@@ -86,21 +88,21 @@ export const Sizes = () => (
       <ActionMenuSecondaryButton
         label={"Small"}
         size={"small"}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuSecondaryButton
         label={"Medium"}
         size={"medium"}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
       <ActionMenuSecondaryButton
         label={"Large"}
         size={"large"}
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
   </Box>
@@ -120,7 +122,7 @@ export const CustomContent = () => (
             So custom!
           </Text>
         }
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
     <Spacing>
@@ -135,8 +137,148 @@ export const CustomContent = () => (
             So custom!
           </Text>
         }
-        renderItems={() => <ActionMenu></ActionMenu>}
+        renderItems={() => <></>}
       />
     </Spacing>
   </Box>
 );
+
+export const PortalTarget = () => {
+  const portalTarget =
+    document.getElementById("action-menu-portal") ?? document.body;
+
+  return (
+    <Box>
+      <Box>
+        <Heading>Default target</Heading>
+        <Space />
+        <Text>Try navigating with the keyboard.</Text>
+        <Space num={2} />
+        <Row>
+          <ActionMenuSecondaryButton
+            label={"Buttons first"}
+            renderItems={(close) => (
+              <>
+                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+                <ActionMenuItem
+                  label={"Do something"}
+                  icon={faFire}
+                  onClick={close}
+                />
+                <ActionMenuLink
+                  label={"Go somewhere"}
+                  icon={faExternalLinkAlt}
+                  href={"#"}
+                  onClick={close}
+                />
+              </>
+            )}
+          />
+          <Space num={2} />
+          <ActionMenuSecondaryButton
+            label={"Links first"}
+            renderItems={(close) => (
+              <>
+                <ActionMenuLink
+                  label={"Don't go"}
+                  icon={faExternalLinkAlt}
+                  disabled
+                />
+                <ActionMenuLink
+                  label={"Go somewhere"}
+                  icon={faExternalLinkAlt}
+                  href={"#"}
+                  onClick={close}
+                />
+                <ActionMenuItem
+                  label={"Do something"}
+                  icon={faFire}
+                  onClick={close}
+                />
+              </>
+            )}
+          />
+          <Space num={2} />
+          <ActionMenuSecondaryButton
+            label={"All disabled"}
+            renderItems={() => (
+              <>
+                <ActionMenuLink
+                  label={"Don't go"}
+                  icon={faExternalLinkAlt}
+                  disabled
+                />
+                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+              </>
+            )}
+          />
+        </Row>
+        <Space num={11} />
+      </Box>
+      <Box>
+        <Heading>Portal target</Heading>
+        <Space />
+        <Text>Try navigating with the keyboard.</Text>
+        <Space num={2} />
+        <Row>
+          <ActionMenuSecondaryButton
+            label={"Action button"}
+            portalTarget={portalTarget}
+            renderItems={(close) => (
+              <>
+                <ActionMenuItem
+                  label={"Do something"}
+                  icon={faFire}
+                  onClick={close}
+                />
+                <ActionMenuLink
+                  label={"Go somewhere"}
+                  icon={faExternalLinkAlt}
+                  href={"#"}
+                  onClick={close}
+                />
+              </>
+            )}
+          />
+          <Space num={2} />
+          <ActionMenuSecondaryButton
+            label={"Next button"}
+            portalTarget={portalTarget}
+            renderItems={(close) => (
+              <>
+                <ActionMenuItem
+                  label={"Do something"}
+                  icon={faFire}
+                  onClick={close}
+                />
+                <ActionMenuLink
+                  label={"Go somewhere"}
+                  icon={faExternalLinkAlt}
+                  href={"#"}
+                  onClick={close}
+                />
+              </>
+            )}
+          />
+          <Space num={2} />
+          <ActionMenuSecondaryButton
+            label={"All disabled"}
+            portalTarget={portalTarget}
+            renderItems={() => (
+              <>
+                <ActionMenuLink
+                  label={"Don't go"}
+                  icon={faExternalLinkAlt}
+                  disabled
+                />
+                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+              </>
+            )}
+          />
+        </Row>
+        <Space num={11} />
+      </Box>
+      <div id={"action-menu-portal"} />
+    </Box>
+  );
+};
