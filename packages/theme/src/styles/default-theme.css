@@ -13,7 +13,7 @@
   --swui-handle-bg-enabled-color: var(--swui-white);
   --swui-handle-bg-disabled-color: var(--lhds-color-ui-400);
   --swui-modal-border-color: var(--lhds-color-ui-400);
-  --swui-overlay-bg-color: rgba(0, 0, 0, 0.5);
+  --swui-overlay-bg-color: rgba(13, 14, 16, 0.5);
 
   /* State colors */
   --swui-state-error-color: var(--lhds-color-red-300);
