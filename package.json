@@ -46,10 +46,10 @@
     "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-docs": "^6.2.9",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-storysource": "^6.2.9",
     "@storybook/addon-toolbars": "^6.2.9",
     "@storybook/addon-viewport": "^6.2.9",
-    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@storybook/theming": "^6.2.9",
@@ -120,7 +120,7 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "16 kB"
+      "maxSize": "17 kB"
     },
     {
       "path": "./packages/grid-export/dist/*.js",
@@ -177,5 +177,6 @@
     "not dead",
     "not ie < 11",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {}
 }
