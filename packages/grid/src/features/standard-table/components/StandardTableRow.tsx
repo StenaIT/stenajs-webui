@@ -1,13 +1,16 @@
 import { Box, Indent } from "@stenajs-webui/core";
+import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { useMemo } from "react";
 import {
   tableBackgroundColorExpanded,
+  tableBackgroundHoverColorExpanded,
   tableBorder,
   tableBorderLeft,
   tableBorderLeftExpanded,
 } from "../../../config/TableConfig";
 import { TableRow } from "../../table-ui/components/table/TableRow";
+import { RowBackgroundResolverColorCombination } from "../config/StandardTableConfig";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
 import { useRowCheckbox } from "../features/checkboxes/UseRowCheckbox";
@@ -30,6 +33,50 @@ interface StandardTableItemProps<TItem> {
   colIndexOffset: number;
 }
 
+const getBackgroundColor = (
+  resolvedBackground:
+    | string
+    | undefined
+    | RowBackgroundResolverColorCombination,
+  isSelected: boolean,
+  isExpanded: boolean
+): string => {
+  if (resolvedBackground) {
+    return typeof resolvedBackground === "string"
+      ? resolvedBackground
+      : resolvedBackground?.background;
+  }
+  if (isSelected) {
+    return cssColor("--lhds-color-blue-50");
+  }
+  if (isExpanded) {
+    return tableBackgroundColorExpanded;
+  }
+  return "white";
+};
+
+const getHoverBackgroundColor = (
+  resolvedBackground:
+    | string
+    | undefined
+    | RowBackgroundResolverColorCombination,
+  isSelected: boolean,
+  isExpanded: boolean
+): string | undefined => {
+  if (resolvedBackground) {
+    return typeof resolvedBackground === "string"
+      ? resolvedBackground
+      : resolvedBackground?.hoverBackground;
+  }
+  if (isSelected) {
+    return cssColor("--lhds-color-blue-100");
+  }
+  if (isExpanded) {
+    return tableBackgroundHoverColorExpanded;
+  }
+  return cssColor("--lhds-color-ui-100");
+};
+
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
   rowIndex,
@@ -51,11 +98,22 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
-  const background = useMemo(() => rowBackgroundResolver?.(item, isSelected), [
+  const resolvedBackgroundResult = useMemo(
+    () => rowBackgroundResolver?.(item, isSelected),
+    [isSelected, item, rowBackgroundResolver]
+  );
+
+  const background = getBackgroundColor(
+    resolvedBackgroundResult,
     isSelected,
-    item,
-    rowBackgroundResolver,
-  ]);
+    isExpanded
+  );
+
+  const hoverBackground = getHoverBackgroundColor(
+    resolvedBackgroundResult,
+    isSelected,
+    isExpanded
+  );
 
   const disabled = useMemo(() => checkboxDisabledResolver?.(item), [
     item,
@@ -80,10 +138,15 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         width={"100%"}
         borderTop={tableBorder}
         borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
-        background={
-          background ?? isExpanded ? tableBackgroundColorExpanded : "white"
+        background={background}
+        hoverBackground={hoverBackground}
+        style={
+          resolvedBackgroundResult
+            ? {
+                ["--focus-within-background" as string]: hoverBackground,
+              }
+            : undefined
         }
-        hoverBackground={background ? undefined : "var(--lhds-color-ui-100)"}
       >
         {rowIndent && (
           <Indent num={rowIndent} background={firstColumnBackground} />

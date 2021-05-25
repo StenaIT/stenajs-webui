@@ -35,6 +35,8 @@
     "@stenajs-webui/redux": "10.1.2",
     "@stenajs-webui/theme": "10.1.2",
     "@stenajs-webui/tooltip": "10.1.2",
+    "@types/chroma-js": "^2.1.3",
+    "chroma-js": "^2.1.2",
     "classnames": "^2.2.6",
     "react-infinite": "0.13.0"
   },
