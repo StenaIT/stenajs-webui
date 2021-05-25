@@ -3,10 +3,14 @@ import * as React from "react";
 import { ReactNode } from "react";
 import styles from "./ActionMenu.module.css";
 import { FocusScope } from "@react-aria/focus";
+import cx from "classnames";
+
+export type ActionMenuVariant = "standard" | "outlined";
 
 export interface ActionMenuProps {
   top?: ReactNode;
-  width?: string;
+  width?: BoxProps["width"];
+  variant?: ActionMenuVariant;
   shadow?: BoxProps["shadow"];
   trapFocus?: boolean;
 }
@@ -16,6 +20,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
   children,
   width = "200px",
   shadow,
+  variant = "standard",
   trapFocus,
 }) => {
   if (!children) {
@@ -24,7 +29,11 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
 
   return (
     <FocusScope contain={trapFocus}>
-      <Column className={styles.ActionMenu} width={width} shadow={shadow}>
+      <Column
+        className={cx(styles.ActionMenu, styles["menu-" + variant])}
+        width={width}
+        shadow={shadow}
+      >
         {top}
         <Column>{children}</Column>
       </Column>

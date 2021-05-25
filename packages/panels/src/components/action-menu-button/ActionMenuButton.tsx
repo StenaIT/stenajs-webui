@@ -1,13 +1,15 @@
 import * as React from "react";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useMemo, useRef } from "react";
 import {
   ActionMenu,
+  ActionMenuContext,
+  ActionMenuProps,
   FlatButton,
   PrimaryButton,
   PrimaryButtonProps,
   SecondaryButton,
 } from "@stenajs-webui/elements";
-import { Box, useBoolean } from "@stenajs-webui/core";
+import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Plugin as TippyPlugin, Props as TippyProps } from "tippy.js";
@@ -25,6 +27,8 @@ export interface ActionMenuButtonProps
   zIndex?: number;
   /** Portal target, HTML element. If not set, portal is not used. */
   portalTarget?: PopoverProps["appendTo"];
+  menuWidth?: ActionMenuProps["width"];
+  menuTop?: ActionMenuProps["top"];
   buttonComponent:
     | typeof PrimaryButton
     | typeof SecondaryButton
@@ -38,9 +42,11 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   rightIcon = faAngleDown,
   portalTarget = "parent",
   zIndex,
+  menuWidth,
+  menuTop,
   ...buttonProps
 }) => {
-  const [isOpen, , close, toggle] = useBoolean(false);
+  const [isOpen, open, close, toggle] = useBoolean(false);
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -82,6 +88,8 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
     },
   };
 
+  const contextValue = useMemo(() => ({ open, close }), [open, close]);
+
   return (
     <Popover
       disablePadding
@@ -89,10 +97,20 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       onClickOutside={close}
       placement={placement}
       content={
-        isOpen && <ActionMenu trapFocus>{renderItems(close)}</ActionMenu>
+        isOpen && (
+          <ActionMenu
+            variant={"outlined"}
+            width={menuWidth}
+            top={menuTop}
+            trapFocus
+          >
+            <ActionMenuContext.Provider value={contextValue}>
+              {renderItems(close)}
+            </ActionMenuContext.Provider>
+          </ActionMenu>
+        )
       }
       arrow={false}
-      variant={"outlined"}
       appendTo={portalTarget}
       zIndex={zIndex}
       plugins={[focusManager]}
