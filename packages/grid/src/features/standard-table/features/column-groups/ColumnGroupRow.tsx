@@ -26,13 +26,20 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
+    groupRowOffsetTop,
   } = useStandardTableConfig();
 
   return (
     <TableHeadRow
       height={height}
       borderLeft={tableBorderLeft}
-      top={stickyHeader ? 0 : undefined}
+      top={
+        stickyHeader && groupRowOffsetTop
+          ? groupRowOffsetTop
+          : stickyHeader
+          ? 0
+          : undefined
+      }
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}

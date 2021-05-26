@@ -176,6 +176,11 @@ export interface StandardTableConfig<
   headerRowOffsetTop?: string;
 
   /**
+   * Offset group row from top (top css property)
+   */
+  groupRowOffsetTop?: string;
+
+  /**
    * The default icon variant to use when displaying sort order. Can be overridden per column.
    * @default amount
    */
