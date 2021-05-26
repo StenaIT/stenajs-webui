@@ -2,6 +2,20 @@
 
 ## Next
 
+### Cards
+
+New components for creating cards, `Card`, `CardHeader` and `CardBody`.
+
+Example:
+```typescript
+    <Card>
+      <CardHeader text={"Overview"} />
+      <CardBody>
+        <Text>Lorem ipsavablasfasofofa</Text>
+      </CardBody>
+    </Card>
+```
+
 ### NavBar
 
 - `NavBarButton` icon now has same color as the text.
