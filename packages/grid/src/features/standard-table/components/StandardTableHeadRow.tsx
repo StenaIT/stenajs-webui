@@ -52,7 +52,13 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   return (
     <TableHeadRow
-      top={headerRowOffsetTop ?? 0}
+      top={
+        headerRowOffsetTop && groupConfigs
+          ? `calc(${headerRowOffsetTop} + 40px)`
+          : headerRowOffsetTop
+          ? headerRowOffsetTop
+          : 0
+      }
       height={height}
       borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}

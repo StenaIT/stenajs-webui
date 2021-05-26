@@ -26,7 +26,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
-    groupRowOffsetTop,
+    headerRowOffsetTop,
   } = useStandardTableConfig();
 
   return (
@@ -34,8 +34,8 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
       height={height}
       borderLeft={tableBorderLeft}
       top={
-        stickyHeader && groupRowOffsetTop
-          ? groupRowOffsetTop
+        stickyHeader && headerRowOffsetTop
+          ? headerRowOffsetTop
           : stickyHeader
           ? 0
           : undefined
