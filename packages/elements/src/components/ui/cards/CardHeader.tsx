@@ -11,6 +11,7 @@ export interface CardHeaderProps {
   variant?: CardHeaderVariant;
   contentRight?: ReactNode;
   contentLeft?: ReactNode;
+  contentCenter?: ReactNode;
   contentAfterHeading?: ReactNode;
 }
 
@@ -20,11 +21,11 @@ export const CardHeader: React.VFC<CardHeaderProps> = ({
   contentAfterHeading,
   contentRight,
   contentLeft,
+  contentCenter,
 }) => {
   return (
     <div className={cx(styles.cardHeader, styles[variant])}>
       <Row alignItems={"center"}>
-        <Space />
         {contentLeft && (
           <>
             {contentLeft}
@@ -41,7 +42,8 @@ export const CardHeader: React.VFC<CardHeaderProps> = ({
         )}
         {contentAfterHeading}
       </Row>
-      <Row>{contentRight}</Row>
+      {contentCenter && <Row alignItems={"center"}>{contentCenter}</Row>}
+      <Row alignItems={"center"}>{contentRight}</Row>
     </div>
   );
 };
