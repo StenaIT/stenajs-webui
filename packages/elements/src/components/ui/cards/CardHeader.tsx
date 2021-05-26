@@ -1,4 +1,4 @@
-import { Heading, Indent, Row, Space } from "@stenajs-webui/core";
+import { Heading, Indent, Row } from "@stenajs-webui/core";
 import * as cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
