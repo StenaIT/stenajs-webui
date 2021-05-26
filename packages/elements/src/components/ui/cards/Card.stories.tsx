@@ -13,9 +13,8 @@ import {
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { ActionMenuSecondaryButton } from "../../../../../panels/src/components/action-menu-button/ActionMenuSecondaryButton";
-import { ActionMenuItem } from "../action-menu/ActionMenuItem";
 import { FlatButton } from "../buttons/FlatButton";
+import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
 import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
@@ -107,16 +106,7 @@ export const Details = () => {
         }
         contentRight={
           <Row alignItems={"center"}>
-            <ActionMenuSecondaryButton
-              label={"Booking actions"}
-              renderItems={() => (
-                <>
-                  <ActionMenuItem label={"Cancel"} />
-                  <ActionMenuItem label={"Refund"} />
-                  <ActionMenuItem label={"Send as PDF"} />
-                </>
-              )}
-            />
+            <SecondaryButton label={"Booking actions"} />
             <Indent />
             <FlatButton leftIcon={faTimes} />
           </Row>
