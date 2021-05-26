@@ -198,9 +198,7 @@ export const StandardTable = function StandardTable<
                       value={usingColumnGroups}
                     >
                       <StandardTableColumnGroupOrderContext.Provider
-                        value={
-                          columnGroupOrder ?? config.columnGroupOrder ?? []
-                        }
+                        value={columnGroupOrder ?? config.columnGroupOrder}
                       >
                         <OnKeyDownContext.Provider value={onKeyDown}>
                           {(columnGroupOrder || config.columnGroupOrder) && (
