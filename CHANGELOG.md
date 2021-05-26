@@ -34,7 +34,7 @@ It returns the same actions, but wrapped with reducerIdGate action.
   become inconsistent with the value of the data.
   `editorValue` is now always reset when editor for a cell is opened.
 - `rowBackgroundResolver` can now return color or object containing `background` and `hoverBackground` fields.
-- Added the prop `groupRowOffsetTop` to StandardTableConfig.
+- Added the option `groupRowOffsetTop` to StandardTableConfig.
 
 ### RadioButton
 
