@@ -12,6 +12,7 @@ import {
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
@@ -39,6 +40,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     stickyCheckboxColumn,
   } = useStandardTableConfig();
 
+  const columnGroup = useColumnGroupOrderContext();
+
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
   );
@@ -53,7 +56,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   return (
     <TableHeadRow
       top={
-        headerRowOffsetTop && groupConfigs
+        headerRowOffsetTop && columnGroup !== undefined
           ? `calc(${headerRowOffsetTop} + ${height})`
           : headerRowOffsetTop
       }
