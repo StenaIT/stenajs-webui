@@ -836,7 +836,7 @@ export const GroupedColumnsAndSticky = () => {
     showHeaderCheckbox: false,
     showRowCheckbox: false,
     stickyHeader: true,
-    headerRowOffsetTop: "40px",
+    headerRowOffsetTop: "0px",
     rowBackgroundResolver: (item) =>
       item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
