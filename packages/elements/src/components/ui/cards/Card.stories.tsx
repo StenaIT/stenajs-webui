@@ -15,6 +15,19 @@ export default {
 export const Demo = () => {
   return (
     <Card>
+      <CardHeader text={"Overview"} />
+      <CardBody>
+        <Heading variant={"h5"}>Subheader</Heading>
+        <Space />
+        <Text>Lorem ipsavablasfasofofa</Text>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const HeaderContent = () => {
+  return (
+    <Card>
       <CardHeader
         text={"Overview"}
         contentAfterHeading={<FlatButton leftIcon={faJedi} />}
