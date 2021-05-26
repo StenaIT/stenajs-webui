@@ -33,7 +33,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     showHeaderExpandCollapse,
     enableExpandCollapse,
     rowIndent,
-    headerRowOffsetTop,
+    headerRowOffsetTop = 0,
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
@@ -54,10 +54,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     <TableHeadRow
       top={
         headerRowOffsetTop && groupConfigs
-          ? `calc(${headerRowOffsetTop} + 40px)`
+          ? `calc(${headerRowOffsetTop} + ${height})`
           : headerRowOffsetTop
-          ? headerRowOffsetTop
-          : 0
       }
       height={height}
       borderLeft={tableBorderLeft}
