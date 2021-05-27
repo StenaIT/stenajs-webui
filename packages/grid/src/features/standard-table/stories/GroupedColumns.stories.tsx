@@ -1,6 +1,6 @@
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
-import { Box, Column, Space, Spacing } from "@stenajs-webui/core";
+import { Box, Column, Space, Spacing, Text } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { CheckboxWithLabel } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
@@ -189,6 +189,67 @@ export const GroupedColumnsAndSticky = () => {
       <Box style={{ width: "100vw" }}>
         <StandardTable items={items} config={config} />
       </Box>
+    </Box>
+  );
+};
+
+export const GroupedColumnsAndStickyConfiguration = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<
+    ListItem,
+    keyof ListItem,
+    "info" | "passengers"
+  > = {
+    ...standardTableConfigForStories,
+    stickyHeader: true,
+    headerRowOffsetTop: "16px",
+    zIndex: 499,
+    rowBackgroundResolver: (item) =>
+      item.active ? cssColor("--lhds-color-green-100") : undefined,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        backgroundResolver: (item) =>
+          item.active ? cssColor("--lhds-color-orange-100") : undefined,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        isEditable: false,
+        renderCell: undefined,
+        onChange: onChangeNumPassengers,
+      },
+    },
+    columnGroups: {
+      info: {
+        label: "Information",
+        columnOrder: ["id", "active", "name"],
+      },
+      passengers: {
+        borderLeft: true,
+        label: "Passengers",
+        columnOrder: ["ship", "numPassengers", "departure"],
+      },
+    },
+    columnOrder: undefined,
+    columnGroupOrder: ["info", "passengers"],
+  };
+
+  return (
+    <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
+      <Box
+        style={{
+          height: 16,
+          position: "sticky",
+          top: 0,
+          zIndex: 500,
+          backgroundColor: "white",
+        }}
+      >
+        <Text>This text should remain sticky above header</Text>
+      </Box>
+      <StandardTable items={items} config={config} />
     </Box>
   );
 };
