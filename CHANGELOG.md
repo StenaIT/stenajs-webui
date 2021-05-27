@@ -2,6 +2,20 @@
 
 ## Next
 
+### Cards
+
+New components for creating cards, `Card`, `CardHeader` and `CardBody`.
+
+Example:
+```typescript
+    <Card>
+      <CardHeader text={"Overview"} />
+      <CardBody>
+        <Text>Lorem ipsavablasfasofofa</Text>
+      </CardBody>
+    </Card>
+```
+
 ### NavBar
 
 - `NavBarButton` icon now has same color as the text.
@@ -39,10 +53,15 @@ It returns the same actions, but wrapped with reducerIdGate action.
   become inconsistent with the value of the data.
   `editorValue` is now always reset when editor for a cell is opened.
 - `rowBackgroundResolver` can now return color or object containing `background` and `hoverBackground` fields.
+- `headerRowOffsetTop` does now also set the offset for grouped rows if `headerRowOffsetTop` & `stickyHeader` are true
 
 ### RadioButton
 
 - `RadioButton` has fixed width, i.e. will not be squashed when content is competing for space
+
+### LoadingModal
+
+- `LoadingModal` has been redesigned. The props are the same as before.
 
 ### Dependencies
 

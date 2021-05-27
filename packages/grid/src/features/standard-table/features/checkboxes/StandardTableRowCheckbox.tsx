@@ -27,7 +27,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     const totalNumColumns = useTotalNumColumnsForRows();
 
     const tableId = useStandardTableId();
-    const { zIndex, stickyCheckboxColumn } = useStandardTableConfig();
+    const { stickyCheckboxColumn } = useStandardTableConfig();
     const gridCell = useGridCell<boolean>(Boolean(value), {
       colIndex,
       numCols: totalNumColumns,
@@ -47,7 +47,6 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
         background={stickyCheckboxColumn ? "inherit" : undefined}
         position={stickyCheckboxColumn ? "sticky" : undefined}
         left={stickyCheckboxColumn ? "0px" : undefined}
-        zIndex={zIndex}
       >
         <Checkbox
           size={"small"}

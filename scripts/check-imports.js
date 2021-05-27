@@ -88,7 +88,8 @@ const checkImport = (
   allPackageFolder,
   imported
 ) => {
-  const isStory = filePath.indexOf(".stories.") >= 0;
+  const isStory =
+    filePath.indexOf(".stories.") >= 0 || filePath.indexOf("/stories/") >= 0;
   const isTest = filePath.indexOf(".test.") >= 0;
   const isMdImport = imported.endsWith(".md");
 
