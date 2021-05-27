@@ -30,7 +30,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
   return (
     <FocusScope contain={trapFocus}>
       <Column
-        className={cx(styles.ActionMenu, styles["menu-" + variant])}
+        className={cx(styles.actionMenu, styles[variant])}
         width={width}
         shadow={shadow}
       >

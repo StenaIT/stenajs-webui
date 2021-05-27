@@ -7,7 +7,7 @@ import { ActionMenuContext } from "./ActionMenuContext";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import cx from "classnames";
 import { useForwardedRef } from "@stenajs-webui/core";
-import styles from "./ActionMenu.module.css";
+import styles from "./ActionMenuItem.module.css";
 import { useFocusManager } from "@react-aria/focus";
 
 export interface ActionMenuLinkProps extends AnchorElementProps {
@@ -73,7 +73,7 @@ export const ActionMenuLink = forwardRef<
 
   return (
     <a
-      className={cx(styles.Item, styles[variant])}
+      className={cx(styles.actionMenuItem, styles[variant])}
       onClick={disabled ? undefined : onClickHandler}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
@@ -91,7 +91,7 @@ export const ActionMenuLink = forwardRef<
           {icon && (
             <>
               <Icon
-                className={styles.ItemIcon}
+                className={styles.actionMenuItemIcon}
                 icon={icon}
                 fixedWidth
                 size={16}
@@ -99,13 +99,13 @@ export const ActionMenuLink = forwardRef<
               <Space />
             </>
           )}
-          <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
+          <Text className={styles.actionMenuItemLabel} whiteSpace={"nowrap"}>
             {label}
           </Text>
         </Row>
         {rightText && (
           <Text
-            className={styles.ItemText}
+            className={styles.actionMenuItemText}
             size={"small"}
             whiteSpace={"nowrap"}
           >
@@ -121,7 +121,11 @@ export const ActionMenuLink = forwardRef<
         {iconRight && (
           <>
             <Space />
-            <Icon className={styles.ItemIcon} icon={iconRight} size={14} />
+            <Icon
+              className={styles.actionMenuItemIcon}
+              icon={iconRight}
+              size={14}
+            />
           </>
         )}
       </Row>

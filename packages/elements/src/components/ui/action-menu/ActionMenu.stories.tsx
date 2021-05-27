@@ -21,7 +21,7 @@ export default {
 };
 
 export const Standard = () => (
-  <ActionMenu>
+  <ActionMenu width={200}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
@@ -87,7 +87,7 @@ export const Standard = () => (
 );
 
 export const Outlined = () => (
-  <ActionMenu variant={"outlined"}>
+  <ActionMenu width={200} variant={"outlined"}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}

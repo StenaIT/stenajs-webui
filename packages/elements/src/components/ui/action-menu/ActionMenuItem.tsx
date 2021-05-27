@@ -8,7 +8,7 @@ import cx from "classnames";
 import { InputSpinner } from "../spinner/InputSpinner";
 import { useFocusManager } from "@react-aria/focus";
 
-import styles from "./ActionMenu.module.css";
+import styles from "./ActionMenuItem.module.css";
 
 export type ActionMenuItemVariant = "standard" | "danger";
 
@@ -74,7 +74,7 @@ export const ActionMenuItem = forwardRef<
   return (
     <button
       id={id}
-      className={cx(styles.Item, styles[variant])}
+      className={cx(styles.actionMenuItem, styles[variant])}
       onKeyDown={onKeyDown}
       onClick={disabled ? undefined : onClickHandler}
       disabled={disabled}
@@ -98,7 +98,7 @@ export const ActionMenuItem = forwardRef<
             icon && (
               <>
                 <Icon
-                  className={styles.ItemIcon}
+                  className={styles.actionMenuItemIcon}
                   icon={icon}
                   fixedWidth
                   size={16}
@@ -107,13 +107,13 @@ export const ActionMenuItem = forwardRef<
               </>
             )
           )}
-          <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
+          <Text className={styles.actionMenuItemLabel} whiteSpace={"nowrap"}>
             {label}
           </Text>
         </Row>
         {rightText && (
           <Text
-            className={styles.ItemText}
+            className={styles.actionMenuItemText}
             size={"small"}
             whiteSpace={"nowrap"}
           >
@@ -129,7 +129,11 @@ export const ActionMenuItem = forwardRef<
         {iconRight && (
           <>
             <Space />
-            <Icon className={styles.ItemIcon} icon={iconRight} size={14} />
+            <Icon
+              className={styles.actionMenuItemIcon}
+              icon={iconRight}
+              size={14}
+            />
           </>
         )}
       </Row>

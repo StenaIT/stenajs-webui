@@ -7,7 +7,7 @@ import cx from "classnames";
 import { InputSpinner } from "../spinner/InputSpinner";
 import { useFocusManager } from "@react-aria/focus";
 
-import styles from "./ActionMenu.module.css";
+import styles from "./ActionMenuItem.module.css";
 
 export type ActionMenuItemNoButtonVariant = "standard" | "danger";
 
@@ -56,7 +56,11 @@ export const ActionMenuItemNoButton = forwardRef<
 
   return (
     <div
-      className={cx(styles.Item, styles.ItemNoButton, styles[variant])}
+      className={cx(
+        styles.actionMenuItem,
+        styles.ItemNoButton,
+        styles[variant]
+      )}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
       ref={ref}
