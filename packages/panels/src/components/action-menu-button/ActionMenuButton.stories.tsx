@@ -1,22 +1,30 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Box, Heading, Row, Space, Spacing, Text } from "@stenajs-webui/core";
-import * as React from "react";
-import {
-  ActionMenuItem,
-  ActionMenuLink,
-  ActionMenuSeparator,
-  ActionMenuItemNoButton,
-  ButtonGroup,
-  SecondaryButton,
-  PrimaryButton,
-} from "@stenajs-webui/elements";
-import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
+import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
+import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
+import {
+  Box,
+  Column,
+  Heading,
+  Row,
+  Space,
+  Spacing,
+  Text,
+} from "@stenajs-webui/core";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  ActionMenuSeparator,
+  ButtonGroup,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
+import * as React from "react";
 import { ActionMenuFlatButton } from "./ActionMenuFlatButton";
+import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
 
 export default {
@@ -25,7 +33,7 @@ export default {
 };
 
 export const Overview = () => (
-  <>
+  <Column>
     {[
       {
         ButtonVariant: ActionMenuPrimaryButton,
@@ -37,7 +45,7 @@ export const Overview = () => (
       },
       { ButtonVariant: ActionMenuFlatButton, label: "ActionMenuFlatButton" },
     ].map(({ label, ButtonVariant }) => (
-      <Box indent={8} display={"inline-block"}>
+      <Row spacing={2}>
         <ButtonVariant
           label={label}
           renderItems={() => (
@@ -57,20 +65,20 @@ export const Overview = () => (
               <ActionMenuItem label={"Loading"} loading />
               <ActionMenuItem label={"Disabled"} disabled />
               <ActionMenuItem label={"Icon right"} iconRight={faCheck} />
-              <ActionMenuItemNoButton label={"Content right"}>
+              <ActionMenuItemContent label={"Content right"}>
                 <ButtonGroup>
                   <PrimaryButton size={"small"} label={"S"} />
                   <SecondaryButton size={"small"} label={"M"} />
                   <SecondaryButton size={"small"} label={"L"} />
                 </ButtonGroup>
-              </ActionMenuItemNoButton>
-              <ActionMenuItemNoButton label={"Content right very much text"}>
+              </ActionMenuItemContent>
+              <ActionMenuItemContent label={"Content right very much text"}>
                 <ButtonGroup>
                   <SecondaryButton size={"small"} label={"25"} />
                   <PrimaryButton size={"small"} label={"50"} />
                   <SecondaryButton size={"small"} label={"100"} />
                 </ButtonGroup>
-              </ActionMenuItemNoButton>
+              </ActionMenuItemContent>
               <ActionMenuItem
                 label={"Icon right disabled"}
                 iconRight={faCheck}
@@ -86,10 +94,10 @@ export const Overview = () => (
             </>
           )}
         />
-      </Box>
+      </Row>
     ))}
     <Spacing num={24} />
-  </>
+  </Column>
 );
 
 export const Disabled = () => (

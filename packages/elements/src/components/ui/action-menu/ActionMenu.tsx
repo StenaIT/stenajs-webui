@@ -1,9 +1,9 @@
+import { FocusScope } from "@react-aria/focus";
 import { BoxProps, Column } from "@stenajs-webui/core";
+import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
 import styles from "./ActionMenu.module.css";
-import { FocusScope } from "@react-aria/focus";
-import cx from "classnames";
 
 export type ActionMenuVariant = "standard" | "outlined";
 

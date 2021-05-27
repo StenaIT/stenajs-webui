@@ -30,7 +30,7 @@ export * from "./components/ui/action-menu/ActionMenu";
 export * from "./components/ui/action-menu/ActionMenuContext";
 export * from "./components/ui/action-menu/ActionMenuLink";
 export * from "./components/ui/action-menu/ActionMenuItem";
-export * from "./components/ui/action-menu/ActionMenuItemNoButton";
+export * from "./components/ui/action-menu/ActionMenuItemContent";
 export * from "./components/ui/action-menu/ActionMenuSeparator";
 export * from "./components/ui/tabs/Tab";
 export * from "./components/ui/tabs/TabMenu";

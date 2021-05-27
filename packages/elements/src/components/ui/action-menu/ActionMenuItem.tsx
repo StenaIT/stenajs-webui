@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Row, Space, Text, Box } from "@stenajs-webui/core";
 import * as React from "react";
-import { forwardRef, useCallback, useContext } from "react";
+import { forwardRef, PropsWithChildren, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import cx from "classnames";
@@ -27,7 +27,7 @@ export interface ActionMenuItemProps {
 
 export const ActionMenuItem = forwardRef<
   HTMLButtonElement,
-  ActionMenuItemProps
+  PropsWithChildren<ActionMenuItemProps>
 >(function ActionMenuItem(
   {
     label,

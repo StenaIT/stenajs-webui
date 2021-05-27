@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Box, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { forwardRef } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 import { Icon } from "../icon/Icon";
 import cx from "classnames";
 import { InputSpinner } from "../spinner/InputSpinner";
@@ -21,9 +21,9 @@ export interface ActionMenuItemNoButtonProps {
   loading?: boolean;
 }
 
-export const ActionMenuItemNoButton = forwardRef<
+export const ActionMenuItemContent = forwardRef<
   HTMLDivElement,
-  ActionMenuItemNoButtonProps
+  PropsWithChildren<ActionMenuItemNoButtonProps>
 >(function ActionMenuItemNoButton(
   {
     label,
