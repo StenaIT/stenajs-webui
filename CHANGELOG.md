@@ -31,13 +31,17 @@ It returns the same actions, but wrapped with reducerIdGate action.
 
 - Sort order icon `amount` variant now has inverted arrow direction.
 - When using editable cells, `editorValue` was not always reset and could
-become inconsistent with the value of the data.
-`editorValue` is now always reset when editor for a cell is opened.
+  become inconsistent with the value of the data.
+  `editorValue` is now always reset when editor for a cell is opened.
 - `rowBackgroundResolver` can now return color or object containing `background` and `hoverBackground` fields.
 
 ### RadioButton
 
 - `RadioButton` has fixed width, i.e. will not be squashed when content is competing for space
+
+### LoadingModal
+
+- `LoadingModal` has been redesigned. The props are the same as before.
 
 ### Dependencies
 
