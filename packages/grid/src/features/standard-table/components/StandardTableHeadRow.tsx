@@ -24,6 +24,24 @@ interface StandardTableHeaderProps<TItem> {
   height?: string;
 }
 
+const getTopPosition = (
+  headerRowOffsetTop: string | undefined,
+  columnGroupOrder: Array<string> | undefined,
+  height: string,
+  stickyHeader: boolean | undefined
+) => {
+  if (headerRowOffsetTop && columnGroupOrder !== undefined) {
+    return `calc(${headerRowOffsetTop} + ${height})`;
+  } else if (stickyHeader && columnGroupOrder) {
+    return `calc(0px + ${height})`;
+  } else if (headerRowOffsetTop) {
+    return headerRowOffsetTop;
+  } else if (stickyHeader) {
+    return 0;
+  }
+  return undefined;
+};
+
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
 >({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
@@ -34,13 +52,13 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     showHeaderExpandCollapse,
     enableExpandCollapse,
     rowIndent,
-    headerRowOffsetTop = 0,
+    headerRowOffsetTop,
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
   } = useStandardTableConfig();
 
-  const columnGroup = useColumnGroupOrderContext();
+  const columnGroupOrder = useColumnGroupOrderContext();
 
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
@@ -53,20 +71,14 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const checkboxDisabled = !items || items.length === 0;
 
-  const topPosition = () => {
-    if (headerRowOffsetTop && columnGroup !== undefined) {
-      return `calc(${headerRowOffsetTop} + ${height})`;
-    } else if (headerRowOffsetTop) {
-      return headerRowOffsetTop;
-    } else if (stickyHeader) {
-      return 0;
-    }
-    return undefined;
-  };
-
   return (
     <TableHeadRow
-      top={topPosition()}
+      top={getTopPosition(
+        headerRowOffsetTop,
+        columnGroupOrder,
+        height,
+        stickyHeader
+      )}
       height={height}
       borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}
