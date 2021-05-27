@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 11.0.0
 
 ### ErrorPanel and ErrorScreen
 
@@ -49,7 +49,7 @@ export const myActionsWithGate = wrapActionsWithReducerIdGate(reducerId, {
 
 It returns the same actions, but wrapped with reducerIdGate action.
 
-### Action Menu
+### ActionMenu
 
 - All types of `ActionMenuButton` support keyboard navigation, whether `portalTarget` is used or not
 - `ActionMenuItem` has new props `id` and `loading`
@@ -58,6 +58,7 @@ It returns the same actions, but wrapped with reducerIdGate action.
 - `ActionMenuLink` has border radius if first or last child, just like `ActionMenuItem`
 - The text in `ActionMenuItem` and `ActionMenuLink` does not wrap
 - New component `ActionMenuLinkContent` which can be used to display an item that is not a button.
+- `ActionMenu` no longer has default width, it is flexed instead.
 
 ### StandardTable
 
@@ -75,6 +76,11 @@ It returns the same actions, but wrapped with reducerIdGate action.
 ### Dependencies
 
 Font awesome icons have been updated to `5.15.3`.
+
+### Breaking changes
+
+- Font awesome dependencies must be updated.
+- `ActionMenu` no longer has default width.
 
 ## 10.1.2
 
