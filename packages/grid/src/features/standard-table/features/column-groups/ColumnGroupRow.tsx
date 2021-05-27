@@ -15,6 +15,20 @@ interface ColumnGroupRowProps {
   height?: string;
 }
 
+const getTopPosition = (
+  stickyHeader: boolean | undefined,
+  headerRowOffsetTop: string | undefined
+) => {
+  if (stickyHeader && headerRowOffsetTop) {
+    return headerRowOffsetTop;
+  } else if (headerRowOffsetTop) {
+    return headerRowOffsetTop;
+  } else if (stickyHeader) {
+    return 0;
+  }
+  return undefined;
+};
+
 export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   height = defaultTableRowHeight,
 }: ColumnGroupRowProps) {
@@ -26,13 +40,14 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
+    headerRowOffsetTop,
   } = useStandardTableConfig();
 
   return (
     <TableHeadRow
       height={height}
       borderLeft={tableBorderLeft}
-      top={stickyHeader ? 0 : undefined}
+      top={getTopPosition(stickyHeader, headerRowOffsetTop)}
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
