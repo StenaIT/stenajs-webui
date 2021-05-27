@@ -30,6 +30,7 @@ It returns the same actions, but wrapped with reducerIdGate action.
 - `ActionMenuLink` can be triggered with Space, just like `ActionMenuItem`
 - `ActionMenuLink` has border radius if first or last child, just like `ActionMenuItem`
 - The text in `ActionMenuItem` and `ActionMenuLink` does not wrap
+- New component `ActionMenuLinkContent` which can be used to display an item that is not a button.
 
 ### StandardTable
 
