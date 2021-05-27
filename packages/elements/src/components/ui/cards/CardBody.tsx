@@ -1,12 +1,8 @@
-import { Column } from "@stenajs-webui/core";
+import { BoxProps, Column } from "@stenajs-webui/core";
 import * as React from "react";
 
-interface CardBodyProps {}
+interface CardBodyProps extends Omit<BoxProps, "indent" | "spacing"> {}
 
-export const CardBody: React.FC<CardBodyProps> = ({ children }) => {
-  return (
-    <Column indent={2} spacing={2}>
-      {children}
-    </Column>
-  );
+export const CardBody: React.FC<CardBodyProps> = (props) => {
+  return <Column indent={2} spacing={2} {...props} />;
 };

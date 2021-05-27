@@ -1,12 +1,11 @@
-import { Column } from "@stenajs-webui/core";
+import { BoxProps, Column } from "@stenajs-webui/core";
 import * as React from "react";
 
-export interface CardProps {}
+export interface CardProps extends Omit<BoxProps, "shadow"> {}
 
-export const Card: React.FC<CardProps> = ({ children }) => {
-  return (
-    <Column shadow={"box"} background={"white"}>
-      {children}
-    </Column>
-  );
+export const Card: React.FC<CardProps> = ({
+  background = "white",
+  ...boxProps
+}) => {
+  return <Column shadow={"box"} background={background} {...boxProps} />;
 };
