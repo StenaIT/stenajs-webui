@@ -53,13 +53,20 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const checkboxDisabled = !items || items.length === 0;
 
+  const topPosition = () => {
+    if (headerRowOffsetTop && columnGroup !== undefined) {
+      return `calc(${headerRowOffsetTop} + ${height})`;
+    } else if (headerRowOffsetTop) {
+      return headerRowOffsetTop;
+    } else if (stickyHeader) {
+      return 0;
+    }
+    return undefined;
+  };
+
   return (
     <TableHeadRow
-      top={
-        headerRowOffsetTop && columnGroup !== undefined
-          ? `calc(${headerRowOffsetTop} + ${height})`
-          : headerRowOffsetTop
-      }
+      top={topPosition()}
       height={height}
       borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}

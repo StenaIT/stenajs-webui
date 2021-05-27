@@ -29,11 +29,22 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     headerRowOffsetTop = 0,
   } = useStandardTableConfig();
 
+  const topPosition = () => {
+    if (stickyHeader && headerRowOffsetTop) {
+      return headerRowOffsetTop;
+    } else if (headerRowOffsetTop) {
+      return headerRowOffsetTop;
+    } else if (stickyHeader) {
+      return 0;
+    }
+    return undefined;
+  };
+
   return (
     <TableHeadRow
       height={height}
       borderLeft={tableBorderLeft}
-      top={stickyHeader ? headerRowOffsetTop : undefined}
+      top={topPosition()}
       background={stickyHeader ? "white" : undefined}
       position={stickyHeader ? "sticky" : undefined}
       shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
