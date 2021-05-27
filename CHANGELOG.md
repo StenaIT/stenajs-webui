@@ -2,18 +2,31 @@
 
 ## Next
 
+### ErrorPanel and ErrorScreen
+
+- Updated to use `Banner` instead of icon and text.
+
+### LoadingModal
+
+- `LoadingModal` has been redesigned. The props are the same as before.
+
+### LoadingPanel and LoadingScreen
+
+- Updated to look more like `LoadingModal`.
+
 ### Cards
 
 New components for creating cards, `Card`, `CardHeader` and `CardBody`.
 
 Example:
+
 ```typescript
-    <Card>
-      <CardHeader text={"Overview"} />
-      <CardBody>
-        <Text>Lorem ipsavablasfasofofa</Text>
-      </CardBody>
-    </Card>
+<Card>
+  <CardHeader text={"Overview"} />
+  <CardBody>
+    <Text>Lorem ipsavablasfasofofa</Text>
+  </CardBody>
+</Card>
 ```
 
 ### NavBar
@@ -53,10 +66,6 @@ It returns the same actions, but wrapped with reducerIdGate action.
 ### RadioButton
 
 - `RadioButton` has fixed width, i.e. will not be squashed when content is competing for space
-
-### LoadingModal
-
-- `LoadingModal` has been redesigned. The props are the same as before.
 
 ### Dependencies
 
