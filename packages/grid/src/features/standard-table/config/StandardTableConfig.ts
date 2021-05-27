@@ -109,7 +109,7 @@ export interface StandardTableConfig<
   rowBackgroundResolver?: (
     item: TItem,
     selected: boolean
-  ) => string | undefined;
+  ) => string | RowBackgroundResolverColorCombination | undefined;
 
   /**
    * This makes it possible to disable the checkbox for a row, based in the item.
@@ -180,4 +180,9 @@ export interface StandardTableConfig<
    * @default amount
    */
   sortOrderIconVariant?: SortOrderIconVariant;
+}
+
+export interface RowBackgroundResolverColorCombination {
+  background: string;
+  hoverBackground: string;
 }

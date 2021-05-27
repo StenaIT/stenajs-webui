@@ -1,5 +1,5 @@
 .tableRow {
   &:focus-within {
-    background-color: var(--lhds-color-blue-50);
+    background: var(--focus-within-background, var(--lhds-color-blue-50));
   }
 }
