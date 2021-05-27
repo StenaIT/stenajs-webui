@@ -1,34 +1,30 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Row, Space, Text, Box } from "@stenajs-webui/core";
+import { Box, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { forwardRef, PropsWithChildren, useCallback, useContext } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionMenuContext } from "./ActionMenuContext";
 import cx from "classnames";
 import { InputSpinner } from "../spinner/InputSpinner";
 import { useFocusManager } from "@react-aria/focus";
 
 import styles from "./ActionMenuItem.module.css";
 
-export type ActionMenuItemVariant = "standard" | "danger";
+export type ActionMenuItemNoButtonVariant = "standard" | "danger";
 
-export interface ActionMenuItemProps {
-  id?: string;
+export interface ActionMenuItemNoButtonProps {
   label: string;
-  variant?: ActionMenuItemVariant;
+  variant?: ActionMenuItemNoButtonVariant;
   rightText?: string;
   icon?: IconDefinition;
   iconRight?: IconDefinition;
   disabled?: boolean;
-  disableCloseOnClick?: boolean;
   loading?: boolean;
-  onClick?: () => void;
 }
 
-export const ActionMenuItem = forwardRef<
-  HTMLButtonElement,
-  PropsWithChildren<ActionMenuItemProps>
->(function ActionMenuItem(
+export const ActionMenuItemContent = forwardRef<
+  HTMLDivElement,
+  PropsWithChildren<ActionMenuItemNoButtonProps>
+>(function ActionMenuItemNoButton(
   {
     label,
     variant = "standard",
@@ -36,27 +32,14 @@ export const ActionMenuItem = forwardRef<
     iconRight,
     rightText,
     disabled,
-    onClick,
     children,
-    disableCloseOnClick,
     loading,
-    id,
+    ...divProps
   },
   ref
 ) {
-  const { close } = useContext(ActionMenuContext);
-
-  const onClickHandler = useCallback(() => {
-    if (close && !disableCloseOnClick) {
-      close();
-    }
-    if (onClick) {
-      onClick();
-    }
-  }, [onClick, close, disableCloseOnClick]);
-
   const focusManager = useFocusManager();
-  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     switch (event.key) {
       case "ArrowDown":
       case "ArrowRight":
@@ -72,13 +55,16 @@ export const ActionMenuItem = forwardRef<
   };
 
   return (
-    <button
-      id={id}
-      className={cx(styles.actionMenuItem, styles[variant])}
+    <div
+      className={cx(
+        styles.actionMenuItem,
+        styles.ItemNoButton,
+        styles[variant]
+      )}
       onKeyDown={onKeyDown}
-      onClick={disabled ? undefined : onClickHandler}
-      disabled={disabled}
+      aria-disabled={disabled}
       ref={ref}
+      {...divProps}
     >
       <Row
         width={"100%"}
@@ -98,7 +84,7 @@ export const ActionMenuItem = forwardRef<
             icon && (
               <>
                 <Icon
-                  className={styles.actionMenuItemIcon}
+                  className={styles.ItemIcon}
                   icon={icon}
                   fixedWidth
                   size={16}
@@ -107,13 +93,13 @@ export const ActionMenuItem = forwardRef<
               </>
             )
           )}
-          <Text className={styles.actionMenuItemLabel} whiteSpace={"nowrap"}>
+          <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
             {label}
           </Text>
         </Row>
         {rightText && (
           <Text
-            className={styles.actionMenuItemText}
+            className={styles.ItemText}
             size={"small"}
             whiteSpace={"nowrap"}
           >
@@ -129,14 +115,10 @@ export const ActionMenuItem = forwardRef<
         {iconRight && (
           <>
             <Space />
-            <Icon
-              className={styles.actionMenuItemIcon}
-              icon={iconRight}
-              size={14}
-            />
+            <Icon className={styles.ItemIcon} icon={iconRight} size={14} />
           </>
         )}
       </Row>
-    </button>
+    </div>
   );
 });

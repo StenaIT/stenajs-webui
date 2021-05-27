@@ -1,30 +1,36 @@
+import { FocusScope } from "@react-aria/focus";
 import { BoxProps, Column } from "@stenajs-webui/core";
+import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
-import { ActionMenuTheme, defaultActionMenuTheme } from "./ActionMenuTheme";
-import { FocusScope } from "@react-aria/focus";
+import styles from "./ActionMenu.module.css";
+
+export type ActionMenuVariant = "standard" | "outlined";
 
 export interface ActionMenuProps {
   top?: ReactNode;
-  theme?: ActionMenuTheme;
-  width?: string;
+  width?: BoxProps["width"];
+  variant?: ActionMenuVariant;
   shadow?: BoxProps["shadow"];
   trapFocus?: boolean;
 }
 
 export const ActionMenu: React.FC<ActionMenuProps> = ({
-  theme = defaultActionMenuTheme,
   top,
   children,
-  width = "200px",
+  width,
   shadow,
+  variant = "standard",
   trapFocus,
 }) => {
+  if (!children) {
+    return null;
+  }
+
   return (
     <FocusScope contain={trapFocus}>
       <Column
-        background={theme.menuBackground}
-        borderRadius={theme.borderRadius}
+        className={cx(styles.actionMenu, styles[variant])}
         width={width}
         shadow={shadow}
       >

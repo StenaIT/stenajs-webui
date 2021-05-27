@@ -1,70 +1,56 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  AnchorElementProps,
-  Row,
-  Space,
-  Text,
-  useElementFocus,
-  useMouseIsEntered,
-} from "@stenajs-webui/core";
+import { AnchorElementProps, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { useCallback, useContext, useRef } from "react";
+import { forwardRef, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
-import { ActionMenuTheme } from "./ActionMenuTheme";
 import { ActionMenuContext } from "./ActionMenuContext";
-import styles from "./ActionMenuLink.module.css";
-import styled from "@emotion/styled";
+import { ActionMenuItemVariant } from "./ActionMenuItem";
+import cx from "classnames";
+import { useForwardedRef } from "@stenajs-webui/core";
+import styles from "./ActionMenuItem.module.css";
 import { useFocusManager } from "@react-aria/focus";
-
-interface BorderRadiusAnchorProps {
-  styledBorderRadius: ActionMenuTheme["borderRadius"];
-}
-
-const BorderRadiusAnchor = styled.a<BorderRadiusAnchorProps>`
-  ${(props) =>
-    props.styledBorderRadius
-      ? `
-    &:first-child {
-      border-top-left-radius: ${props.styledBorderRadius};
-      border-top-right-radius: ${props.styledBorderRadius};
-    }
-    &:last-child {
-      border-bottom-left-radius: ${props.styledBorderRadius};
-      border-bottom-right-radius: ${props.styledBorderRadius};
-    }
-  `
-      : ""}
-`;
 
 export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
   rightText?: string;
+  variant?: ActionMenuItemVariant;
   icon?: IconDefinition;
-  theme?: ActionMenuTheme;
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
   onClick?: () => void;
 }
 
-export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
-  label,
-  icon,
-  iconRight,
-  rightText,
-  disabled,
-  onClick,
-  theme: themeFromProps,
-  children,
-  disableCloseOnClick,
-  href,
-  ...anchorProps
-}) => {
-  const { close, theme: themeFromContext } = useContext(ActionMenuContext);
-  const theme = themeFromProps || themeFromContext;
-  const ref = useRef<HTMLAnchorElement>(null);
-  const { isInFocus } = useElementFocus(ref);
-  const mouseIsOver = useMouseIsEntered(ref);
+export const ActionMenuLink = forwardRef<
+  HTMLAnchorElement,
+  ActionMenuLinkProps
+>(function ActionMenuLink(
+  {
+    label,
+    variant = "standard",
+    icon,
+    iconRight,
+    rightText,
+    disabled,
+    onClick,
+    children,
+    disableCloseOnClick,
+    href,
+    ...anchorProps
+  },
+  ref: React.Ref<HTMLAnchorElement>
+) {
+  const { close } = useContext(ActionMenuContext);
+  const innerRef = useForwardedRef<HTMLAnchorElement | null>(ref);
+
+  const onClickHandler = useCallback(() => {
+    if (close && !disableCloseOnClick) {
+      close();
+    }
+    if (onClick) {
+      onClick();
+    }
+  }, [onClick, close, disableCloseOnClick]);
 
   const focusManager = useFocusManager();
   const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
@@ -81,86 +67,46 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
         break;
       case " ":
         event.preventDefault();
-        ref.current?.click();
+        innerRef.current?.click();
     }
   };
-
-  const colors = {
-    iconColor: disabled
-      ? theme.iconColorDisabled
-      : mouseIsOver
-      ? theme.iconColorHover
-      : isInFocus
-      ? theme.iconColorFocus
-      : theme.iconColor,
-    itemLabelColor: disabled
-      ? theme.itemLabelColorDisabled
-      : mouseIsOver
-      ? theme.itemLabelColorHover
-      : isInFocus
-      ? theme.itemLabelColorFocus
-      : theme.itemLabelColor,
-    itemTextColor: disabled
-      ? theme.itemTextColorDisabled
-      : mouseIsOver
-      ? theme.itemTextColorHover
-      : isInFocus
-      ? theme.itemTextColorFocus
-      : theme.itemTextColor,
-    itemBackground:
-      disabled && isInFocus
-        ? theme.itemBackgroundDisabledFocus
-        : disabled
-        ? theme.itemBackgroundDisabled
-        : mouseIsOver
-        ? theme.itemBackgroundHover
-        : isInFocus
-        ? theme.itemBackgroundFocus
-        : theme.itemBackground,
-  };
-
-  const onClickHandler = useCallback(() => {
-    if (close && !disableCloseOnClick) {
-      close();
-    }
-    if (onClick) {
-      onClick();
-    }
-  }, [onClick, close, disableCloseOnClick]);
 
   return (
-    <BorderRadiusAnchor
-      styledBorderRadius={theme.borderRadius}
+    <a
+      className={cx(styles.actionMenuItem, styles[variant])}
       onClick={disabled ? undefined : onClickHandler}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
       href={disabled ? undefined : href}
-      ref={ref}
-      style={{ background: colors.itemBackground }}
-      className={styles.actionMenuLink}
+      ref={innerRef}
       {...anchorProps}
     >
       <Row
-        height={theme.itemHeight}
+        width={"100%"}
         indent={2}
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        <Row height={theme.itemHeight} alignItems={"center"}>
+        <Row alignItems={"center"}>
           {icon && (
             <>
-              <Icon icon={icon} fixedWidth size={16} color={colors.iconColor} />
+              <Icon
+                className={styles.actionMenuItemIcon}
+                icon={icon}
+                fixedWidth
+                size={16}
+              />
               <Space />
             </>
           )}
-          <Text color={colors.itemLabelColor} whiteSpace={"nowrap"}>
+          <Text className={styles.actionMenuItemLabel} whiteSpace={"nowrap"}>
             {label}
           </Text>
         </Row>
         {rightText && (
           <Text
+            className={styles.actionMenuItemText}
             size={"small"}
-            color={colors.itemTextColor}
             whiteSpace={"nowrap"}
           >
             {rightText}
@@ -175,10 +121,14 @@ export const ActionMenuLink: React.FC<ActionMenuLinkProps> = ({
         {iconRight && (
           <>
             <Space />
-            <Icon icon={iconRight} size={14} color={colors.itemLabelColor} />
+            <Icon
+              className={styles.actionMenuItemIcon}
+              icon={iconRight}
+              size={14}
+            />
           </>
         )}
       </Row>
-    </BorderRadiusAnchor>
+    </a>
   );
-};
+});

@@ -2,7 +2,7 @@ import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faAnchor } from "@fortawesome/free-solid-svg-icons/faAnchor";
 import { faEraser } from "@fortawesome/free-solid-svg-icons/faEraser";
 import { faRecycle } from "@fortawesome/free-solid-svg-icons/faRecycle";
-import { Row } from "@stenajs-webui/core";
+import { Row, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { ButtonGroup } from "./ButtonGroup";
@@ -24,6 +24,7 @@ export const Overview = () => (
         <SecondaryButton leftIcon={faAnchor} />
       </ButtonGroup>
     </Row>
+    <Spacing />
     <Row>
       <ButtonGroup>
         <SecondaryButton leftIcon={faRecycle} />
@@ -31,6 +32,7 @@ export const Overview = () => (
         <SecondaryButton leftIcon={faAnchor} />
       </ButtonGroup>
     </Row>
+    <Spacing />
     <Row>
       <ButtonGroup>
         <SecondaryButton leftIcon={faEraser} />
