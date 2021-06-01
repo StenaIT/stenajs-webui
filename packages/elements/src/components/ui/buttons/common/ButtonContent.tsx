@@ -64,7 +64,9 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
         </div>
       )}
 
-      {label && <span className={labelClassName}>{label}</span>}
+      {label && (
+        <span className={cx(styles.label, labelClassName)}>{label}</span>
+      )}
 
       {right ? (
         right

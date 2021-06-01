@@ -6,6 +6,20 @@
 
 - Increase contrast for text with action, such as Link and Crumb.
 
+## Next
+
+### Tabs
+
+- Text does no longer wrap.
+
+### Buttons
+
+- Text does no longer wrap.
+
+### SideMenuLink
+
+- Text does no longer wrap.
+
 ## 11.0.0
 
 ### ErrorPanel and ErrorScreen
