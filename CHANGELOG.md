@@ -1,4 +1,9 @@
 # Changelog
+## Next
+
+### RadioButton and Checkbox
+
+- Add different focus highlight when checked.
 
 ## 11.0.0
 
