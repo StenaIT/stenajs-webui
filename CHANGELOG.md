@@ -6,6 +6,10 @@
 
 - Add different focus highlight when checked.
 
+### General updates
+
+- Increase contrast for text with action, such as Link and Crumb.
+
 ### Tabs
 
 - Text does no longer wrap.

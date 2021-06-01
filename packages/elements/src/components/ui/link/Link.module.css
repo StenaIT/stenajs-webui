@@ -1,13 +1,13 @@
 .link {
   /* Theme vars */
-  --swui-link-color: var(--swui-primary-action-color);
   --swui-link-font-family: var(--swui-font-primary);
   --swui-link-font-weight: var(--swui-font-weight-link);
   --swui-link-text-decoration: underline;
   --swui-link-letter-spacing: var(--swui-text-letter-spacing);
-  --swui-link-color-hover: var(--lhds-color-blue-300);
-  --swui-link-color-active: var(--swui-primary-action-color-active);
-  --swui-link-color-focus: var(--swui-primary-action-color-focus);
+  --swui-link-color: var(--swui-text-action-color);
+  --swui-link-color-hover: var(--swui-text-action-color-focus);
+  --swui-link-color-active: var(--swui-text-action-color-active);
+  --swui-link-color-focus: var(--swui-text-action-color-focus);
   --swui-link-color-disabled: var(--lhds-color-ui-600);
   --swui-link-focus-highlight-color: var(--lhds-color-blue-300);
   --swui-link-focus-highlight-color-disabled: var(--swui-link-color-disabled);
