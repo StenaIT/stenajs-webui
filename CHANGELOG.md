@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### General updates
+
+- Increase contrast for text with action, such as Link and Crumb.
+
 ## 11.0.0
 
 ### ErrorPanel and ErrorScreen

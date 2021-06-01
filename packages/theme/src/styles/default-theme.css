@@ -47,6 +47,10 @@
 
   /* Text */
   --swui-text-primary-color: var(--lhds-color-ui-700);
+  --swui-text-action-color: var(--lhds-color-blue-600);
+  --swui-text-action-color-hover: var(--lhds-color-blue-500);
+  --swui-text-action-color-focus: var(--lhds-color-blue-500);
+  --swui-text-action-color-active: var(--lhds-color-blue-700);
   --swui-text-primary-color-light: var(--lhds-color-ui-400);
   --swui-text-disabled-color: var(--lhds-color-ui-500);
   --swui-text-disabled-color-light: var(--lhds-color-ui-300);
