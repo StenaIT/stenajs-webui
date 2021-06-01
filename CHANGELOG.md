@@ -6,6 +6,18 @@
 
 - Add different focus highlight when checked.
 
+### Tabs
+
+- Text does no longer wrap.
+
+### Buttons
+
+- Text does no longer wrap.
+
+### SideMenuLink
+
+- Text does no longer wrap.
+
 ## 11.0.0
 
 ### ErrorPanel and ErrorScreen
