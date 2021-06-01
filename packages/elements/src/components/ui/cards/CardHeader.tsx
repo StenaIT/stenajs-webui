@@ -1,5 +1,5 @@
 import { Heading, Indent, Row } from "@stenajs-webui/core";
-import * as cx from "classnames";
+import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
 import styles from "./CardHeader.module.css";
