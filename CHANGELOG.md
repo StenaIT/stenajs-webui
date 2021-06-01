@@ -6,8 +6,6 @@
 
 - Increase contrast for text with action, such as Link and Crumb.
 
-## Next
-
 ### Tabs
 
 - Text does no longer wrap.
