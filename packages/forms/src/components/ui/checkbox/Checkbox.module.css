@@ -21,7 +21,8 @@
     --swui-field-border-color-disabled
   );
   /* Shadow */
-  --swui-checkbox-focus-shadow: var(--swui-field-focus-shadow);
+  --swui-checkbox-checked-focus-shadow: var(--swui-field-focus-shadow-inverted);
+  --swui-checkbox-unchecked-focus-shadow: var(--swui-field-focus-shadow);
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -162,7 +163,12 @@
   }
 
   &:focus {
-    box-shadow: var(--swui-checkbox-focus-shadow);
+    &:checked {
+      box-shadow: var(--swui-checkbox-checked-focus-shadow);
+    }
+    &:not(:checked) {
+      box-shadow: var(--swui-checkbox-unchecked-focus-shadow);
+    }
   }
 
   & + label {
