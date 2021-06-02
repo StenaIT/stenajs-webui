@@ -94,6 +94,8 @@
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
   --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
   --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
+  --swui-field-focus-shadow-inverted: inset 0px 0px 3pt 0pt
+    var(--lhds-color-blue-50);
 
   /* Metrics */
   --swui-metrics-indent: 8px;

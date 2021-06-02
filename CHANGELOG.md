@@ -2,6 +2,10 @@
 
 ## Next
 
+### RadioButton and Checkbox
+
+- Add different focus highlight when checked.
+
 ### General updates
 
 - Increase contrast for text with action, such as Link and Crumb.
