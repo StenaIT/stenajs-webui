@@ -33,50 +33,6 @@ interface StandardTableItemProps<TItem> {
   colIndexOffset: number;
 }
 
-const getBackgroundColor = (
-  resolvedBackground:
-    | string
-    | undefined
-    | RowBackgroundResolverColorCombination,
-  isSelected: boolean,
-  isExpanded: boolean
-): string => {
-  if (resolvedBackground) {
-    return typeof resolvedBackground === "string"
-      ? resolvedBackground
-      : resolvedBackground?.background;
-  }
-  if (isSelected) {
-    return cssColor("--lhds-color-blue-50");
-  }
-  if (isExpanded) {
-    return tableBackgroundColorExpanded;
-  }
-  return "white";
-};
-
-const getHoverBackgroundColor = (
-  resolvedBackground:
-    | string
-    | undefined
-    | RowBackgroundResolverColorCombination,
-  isSelected: boolean,
-  isExpanded: boolean
-): string | undefined => {
-  if (resolvedBackground) {
-    return typeof resolvedBackground === "string"
-      ? resolvedBackground
-      : resolvedBackground?.hoverBackground;
-  }
-  if (isSelected) {
-    return cssColor("--lhds-color-blue-100");
-  }
-  if (isExpanded) {
-    return tableBackgroundHoverColorExpanded;
-  }
-  return cssColor("--lhds-color-ui-100");
-};
-
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
   rowIndex,
@@ -115,6 +71,12 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     isExpanded
   );
 
+  const focusBackground = getFocusBackgroundColor(
+    resolvedBackgroundResult,
+    isSelected,
+    hoverBackground
+  );
+
   const disabled = useMemo(() => checkboxDisabledResolver?.(item), [
     item,
     checkboxDisabledResolver,
@@ -141,9 +103,9 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         background={background}
         hoverBackground={hoverBackground}
         style={
-          resolvedBackgroundResult
+          focusBackground
             ? {
-                ["--focus-within-background" as string]: hoverBackground,
+                ["--focus-within-background" as string]: focusBackground,
               }
             : undefined
         }
@@ -204,3 +166,64 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     </Box>
   );
 });
+
+const getBackgroundColor = (
+  resolvedBackground:
+    | string
+    | undefined
+    | RowBackgroundResolverColorCombination,
+  isSelected: boolean,
+  isExpanded: boolean
+): string => {
+  if (resolvedBackground) {
+    return typeof resolvedBackground === "string"
+      ? resolvedBackground
+      : resolvedBackground?.background;
+  }
+  if (isSelected) {
+    return cssColor("--lhds-color-blue-100");
+  }
+  if (isExpanded) {
+    return tableBackgroundColorExpanded;
+  }
+  return "white";
+};
+
+const getHoverBackgroundColor = (
+  resolvedBackground:
+    | string
+    | undefined
+    | RowBackgroundResolverColorCombination,
+  isSelected: boolean,
+  isExpanded: boolean
+): string | undefined => {
+  if (resolvedBackground) {
+    return typeof resolvedBackground === "string"
+      ? resolvedBackground
+      : resolvedBackground?.hoverBackground;
+  }
+  if (isSelected) {
+    return cssColor("--lhds-color-blue-100");
+  }
+  if (isExpanded) {
+    return tableBackgroundHoverColorExpanded;
+  }
+  return cssColor("--lhds-color-ui-100");
+};
+
+const getFocusBackgroundColor = (
+  resolvedBackground:
+    | string
+    | undefined
+    | RowBackgroundResolverColorCombination,
+  isSelected: boolean,
+  hoverBackground: string | undefined
+): string | undefined => {
+  if (isSelected) {
+    return cssColor("--lhds-color-blue-100");
+  }
+  if (resolvedBackground) {
+    return hoverBackground;
+  }
+  return undefined;
+};
