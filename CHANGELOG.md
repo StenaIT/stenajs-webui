@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ActionMenuLink
+
+- Prop `onClick` now has same type as HTML a-tag onClick.
+
 ## 11.1.0
 
 ### General updates
