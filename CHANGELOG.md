@@ -2,29 +2,18 @@
 
 ## Next
 
+### General updates
+
+- Increase contrast for text with action, such as Link and Crumb.
+- Text no longer wraps in tabs, buttons and `SideMenuLink`.
+
 ### RadioButton and Checkbox
 
 - Add different focus highlight when checked.
 
-### General updates
-
-- Increase contrast for text with action, such as Link and Crumb.
-
 ### FlatButton
 
 - Icon now has correct color when `FlatButton` is inverted.
-
-### Tabs
-
-- Text does no longer wrap.
-
-### Buttons
-
-- Text does no longer wrap.
-
-### SideMenuLink
-
-- Text does no longer wrap.
 
 ## 11.0.0
 
