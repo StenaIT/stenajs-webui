@@ -49,8 +49,8 @@ export const ActionMenuLink = forwardRef<
 
   const onClickHandler = useCallback<MouseEventHandler<HTMLAnchorElement>>(
     (ev) => {
-      if (close && !disableCloseOnClick) {
-        close();
+      if (!disableCloseOnClick) {
+        close?.();
       }
       if (onClick) {
         onClick(ev);
