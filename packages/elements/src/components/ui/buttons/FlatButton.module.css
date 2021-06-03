@@ -20,11 +20,17 @@
   --swui-flat-button-background-color-disabled: transparent;
 
   /* Inverted */
-  --swui-flat-button-text-color-inverted: var(--lhds-color-blue-200);
-  --swui-flat-button-text-color-inverted-active: var(--lhds-color-blue-200);
+  --swui-flat-button-text-color-inverted: var(--lhds-color-blue-50);
+  --swui-flat-button-text-color-inverted-active: var(--lhds-color-blue-50);
   --swui-flat-button-text-color-inverted-disabled: var(
-    --swui-text-disabled-color
+    --swui-text-disabled-color-light
   );
+  --swui-flat-button-icon-color-inverted: var(--lhds-color-blue-50);
+  --swui-flat-button-icon-color-inverted-active: var(--lhds-color-blue-50);
+  --swui-flat-button-icon-color-inverted-disabled: var(
+    --swui-text-disabled-color-light
+  );
+
   --swui-flat-button-background-inverted-color-focus: transparent;
   --swui-flat-button-background-inverted-color-disabled: transparent;
 
@@ -135,6 +141,7 @@
   --swui-button-box-shadow-disabled: none;
 
   &.inverted {
+    /* Text */
     --swui-button-text-color: var(--swui-flat-button-text-color-inverted);
     --swui-button-text-color-hover: var(--swui-flat-button-text-color-inverted);
     --swui-button-text-color-focus: var(--swui-flat-button-text-color-inverted);
@@ -143,6 +150,17 @@
     );
     --swui-button-text-color-disabled: var(
       --swui-flat-button-text-color-inverted-disabled
+    );
+
+    /* Icon */
+    --swui-button-icon-color: var(--swui-flat-button-icon-color-inverted);
+    --swui-button-icon-color-focus: var(--swui-flat-button-icon-color-inverted);
+    --swui-button-icon-color-hover: var(--swui-flat-button-icon-color-inverted);
+    --swui-button-icon-color-active: var(
+      --swui-flat-button-icon-color-inverted-active
+    );
+    --swui-button-icon-color-disabled: var(
+      --swui-flat-button-icon-color-inverted-disabled
     );
 
     /* Background */

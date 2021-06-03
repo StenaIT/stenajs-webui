@@ -1,3 +1,4 @@
+import { faJediOrder } from "@fortawesome/free-brands-svg-icons/faJediOrder";
 import { Column, Text, Space } from "@stenajs-webui/core";
 import * as React from "react";
 import { ButtonSize } from "./common/ButtonCommon";
@@ -16,7 +17,12 @@ export const Standard = () => (
     <div style={{ display: "inline-block" }}>
       {buttonSizes.map((size) => (
         <>
-          <FlatButton key={size} size={size} label={size} />
+          <FlatButton
+            key={size}
+            size={size}
+            label={size}
+            leftIcon={faJediOrder}
+          />
           <Space />
         </>
       ))}
@@ -33,7 +39,13 @@ export const Inverted = () => (
     <div style={{ display: "inline-block" }}>
       {buttonSizes.map((size) => (
         <>
-          <FlatButton key={size} size={size} label={size} inverted />
+          <FlatButton
+            key={size}
+            size={size}
+            label={size}
+            inverted
+            leftIcon={faJediOrder}
+          />
           <Space />
         </>
       ))}
