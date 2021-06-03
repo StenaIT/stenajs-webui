@@ -10,6 +10,10 @@
 
 - Increase contrast for text with action, such as Link and Crumb.
 
+### FlatButton
+
+- Icon now has correct color when `FlatButton` is inverted.
+
 ### Tabs
 
 - Text does no longer wrap.
