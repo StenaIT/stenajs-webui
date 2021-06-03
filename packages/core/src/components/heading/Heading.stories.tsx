@@ -34,3 +34,9 @@ export const H5 = () => (
 export const H6 = () => (
   <Heading variant={"h6"}>The five boxing wizards jump quickly.</Heading>
 );
+
+export const H3asH1 = () => (
+  <Heading variant={"h3"} as={"h1"}>
+    The five boxing wizards jump quickly.
+  </Heading>
+);
