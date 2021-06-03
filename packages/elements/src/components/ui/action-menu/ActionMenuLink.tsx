@@ -52,9 +52,7 @@ export const ActionMenuLink = forwardRef<
       if (!disableCloseOnClick) {
         close?.();
       }
-      if (onClick) {
-        onClick(ev);
-      }
+      onClick?.(ev);
     },
     [onClick, close, disableCloseOnClick]
   );
