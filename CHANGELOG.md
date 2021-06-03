@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 11.1.0
 
 ### General updates
 
