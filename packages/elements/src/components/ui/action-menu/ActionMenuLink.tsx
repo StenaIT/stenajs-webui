@@ -1,14 +1,19 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { AnchorElementProps, Row, Space, Text } from "@stenajs-webui/core";
+import { useFocusManager } from "@react-aria/focus";
+import {
+  AnchorElementProps,
+  Row,
+  Space,
+  Text,
+  useForwardedRef,
+} from "@stenajs-webui/core";
+import cx from "classnames";
 import * as React from "react";
-import { forwardRef, useCallback, useContext } from "react";
+import { forwardRef, MouseEventHandler, useCallback, useContext } from "react";
 import { Icon } from "../icon/Icon";
 import { ActionMenuContext } from "./ActionMenuContext";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
-import cx from "classnames";
-import { useForwardedRef } from "@stenajs-webui/core";
 import styles from "./ActionMenuItem.module.css";
-import { useFocusManager } from "@react-aria/focus";
 
 export interface ActionMenuLinkProps extends AnchorElementProps {
   label: string;
@@ -18,7 +23,6 @@ export interface ActionMenuLinkProps extends AnchorElementProps {
   iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
-  onClick?: () => void;
 }
 
 export const ActionMenuLink = forwardRef<
@@ -43,14 +47,15 @@ export const ActionMenuLink = forwardRef<
   const { close } = useContext(ActionMenuContext);
   const innerRef = useForwardedRef<HTMLAnchorElement | null>(ref);
 
-  const onClickHandler = useCallback(() => {
-    if (close && !disableCloseOnClick) {
-      close();
-    }
-    if (onClick) {
-      onClick();
-    }
-  }, [onClick, close, disableCloseOnClick]);
+  const onClickHandler = useCallback<MouseEventHandler<HTMLAnchorElement>>(
+    (ev) => {
+      if (!disableCloseOnClick) {
+        close?.();
+      }
+      onClick?.(ev);
+    },
+    [onClick, close, disableCloseOnClick]
+  );
 
   const focusManager = useFocusManager();
   const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
