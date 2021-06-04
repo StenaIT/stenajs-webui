@@ -70,13 +70,15 @@ export const ActionMenuItemContent = forwardRef<
       />
       {bottom && (
         <>
-          <Row indent={2} width={"100%"}>
+          <Row indent={2}>
             {!fullWidthBottomContent && (success || loading || leftIcon) && (
               <div className={buttonStyles.leftWrapper}>
                 <div className={styles.actionMenuItemIconWrapper} />
               </div>
             )}
-            <Row alignItems={"center"}>{bottom}</Row>
+            <Row alignItems={"center"} width={"100%"}>
+              {bottom}
+            </Row>
           </Row>
           <Space num={1.5} />
         </>
