@@ -15,7 +15,6 @@ import { ButtonGroup } from "../button-group/ButtonGroup";
 import { PrimaryButton, SecondaryButton } from "../../../../dist";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
-import { useEffect, useState } from "react";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
