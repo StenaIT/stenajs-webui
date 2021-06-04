@@ -1,5 +1,5 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ButtonSize, ButtonVariant } from "./common/ButtonCommon";
@@ -82,23 +82,23 @@ export const Overview = () => (
                   <ButtonVariant size={size} label={"Submit"} disabled />
                 </td>
                 <td>
-                  <ButtonVariant size={size} leftIcon={faCoffee} />
+                  <ButtonVariant size={size} leftIcon={faJedi} />
                 </td>
                 <td>
-                  <ButtonVariant size={size} leftIcon={faCoffee} disabled />
+                  <ButtonVariant size={size} leftIcon={faJedi} disabled />
                 </td>
                 <td>
                   <ButtonVariant
                     size={size}
                     label={"Submit"}
-                    leftIcon={faCoffee}
+                    leftIcon={faJedi}
                   />
                 </td>
                 <td>
                   <ButtonVariant
                     size={size}
                     label={"Submit"}
-                    rightIcon={faCoffee}
+                    rightIcon={faJedi}
                   />
                 </td>
                 <td>
@@ -106,7 +106,7 @@ export const Overview = () => (
                     size={size}
                     label={"Submit"}
                     leftIcon={faCheck}
-                    rightIcon={faCoffee}
+                    rightIcon={faJedi}
                   />
                 </td>
                 <td>
@@ -201,18 +201,16 @@ export const WithGenericContentToRight = () => (
             size={"large"}
             label={"Submit"}
             right={
-              <Row width={35} justifyContent={"flex-end"}>
-                <Column
-                  justifyContent={"center"}
-                  alignItems={"center"}
-                  background={"#fe2266"}
-                  borderRadius={"50%"}
-                  width={24}
-                  height={24}
-                >
-                  <Icon icon={faCheck} color={"white"} />
-                </Column>
-              </Row>
+              <Column
+                justifyContent={"center"}
+                alignItems={"center"}
+                background={"#fe2266"}
+                borderRadius={"50%"}
+                width={24}
+                height={24}
+              >
+                <Icon icon={faCheck} color={"white"} />
+              </Column>
             }
           />
         </Row>

@@ -1,7 +1,7 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Text } from "@stenajs-webui/core";
+import { Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import { action } from "@storybook/addon-actions";
 import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
@@ -10,6 +10,11 @@ import * as React from "react";
 import markdown from "./ActionMenu.md";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
+import { ActionMenuItemContent } from "./ActionMenuItemContent";
+import { ButtonGroup } from "../button-group/ButtonGroup";
+import { PrimaryButton, SecondaryButton } from "../../../../dist";
+import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
+import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -27,25 +32,35 @@ export const Standard = () => (
       label={"Open"}
       onClick={action("Opened")}
     />
-    <ActionMenuItem label={"Save"} icon={faSave} onClick={action("Saved")} />
+    <ActionMenuItem
+      label={"Save"}
+      leftIcon={faSave}
+      onClick={action("Saved")}
+    />
     <ActionMenuLink
       label={"Open new window"}
-      icon={faExternalLinkAlt}
+      leftIcon={faExternalLinkAlt}
       href={"https://www.google.com"}
       target={"_blank"}
     />
     <ActionMenuLink
       label={"Open new window"}
       disabled
-      icon={faExternalLinkAlt}
+      leftIcon={faExternalLinkAlt}
       href={"https://www.google.com"}
       target={"_blank"}
     />
     <ActionMenuItem
       label={"Burn it"}
-      icon={faFire}
+      leftIcon={faFire}
       onClick={action("It was burned!")}
       variant={"danger"}
+    />
+    <ActionMenuItem
+      label={"Save it"}
+      leftIcon={faSave}
+      onClick={action("It was saved!")}
+      variant={"success"}
     />
     <ActionMenuItem label={"Loading"} loading onClick={action("Loading")} />
     <ActionMenuItem
@@ -61,28 +76,72 @@ export const Standard = () => (
     <ActionMenuItem
       label={"Icon right"}
       onClick={action("Icon right clicked")}
-      iconRight={faCheck}
+      rightIcon={faCheck}
     />
     <ActionMenuItem
       label={"Icon right disabled"}
       onClick={action("I can never happen again!")}
-      iconRight={faCheck}
+      rightIcon={faCheck}
       disabled
     />
-    <ActionMenuItem
-      label={"Custom right"}
-      onClick={action("I am very special!")}
-    >
-      <Text size={"smaller"} color={"tomato"}>
-        So custom!
-      </Text>
-    </ActionMenuItem>
+    <ActionMenuItemContent
+      label={"Content right"}
+      right={
+        <ButtonGroup>
+          <PrimaryButton size={"small"} label={"S"} />
+          <SecondaryButton size={"small"} label={"M"} />
+          <SecondaryButton size={"small"} label={"L"} />
+        </ButtonGroup>
+      }
+    />
+    <ActionMenuItemContent
+      label={"Content bottom"}
+      leftIcon={faSearch}
+      bottom={
+        <ButtonGroup>
+          <SecondaryButton size={"small"} label={"25"} />
+          <PrimaryButton size={"small"} label={"50"} />
+          <SecondaryButton size={"small"} label={"100"} />
+        </ButtonGroup>
+      }
+    />
+    <ActionMenuItemContent
+      label={"Bottom full width"}
+      leftIcon={faAirFreshener}
+      bottom={
+        <ButtonGroup>
+          <SecondaryButton size={"small"} label={"10"} />
+          <PrimaryButton size={"small"} label={"20"} />
+          <SecondaryButton size={"small"} label={"30"} />
+          <SecondaryButton size={"small"} label={"40"} />
+          <SecondaryButton size={"small"} label={"50"} />
+          <SecondaryButton size={"small"} label={"60"} />
+        </ButtonGroup>
+      }
+      fullWidthBottomContent
+    />
+    <ActionMenuItemContent
+      disabled
+      label={"Disabled full width"}
+      leftIcon={faAirFreshener}
+      bottom={
+        <ButtonGroup>
+          <SecondaryButton size={"small"} label={"10"} disabled />
+          <PrimaryButton size={"small"} label={"20"} disabled />
+          <SecondaryButton size={"small"} label={"30"} disabled />
+          <SecondaryButton size={"small"} label={"40"} disabled />
+          <SecondaryButton size={"small"} label={"50"} disabled />
+          <SecondaryButton size={"small"} label={"60"} disabled />
+        </ButtonGroup>
+      }
+      fullWidthBottomContent
+    />
     <ActionMenuSeparator />
     <ActionMenuItem
-      label={"Quit"}
-      rightText={"cmd+q"}
-      onClick={action("All stop!")}
-    />{" "}
+      label={"Quit it"}
+      right={<Text size={"smaller"}>⌘ Q</Text>}
+      onClick={action("Quitting")}
+    />
   </ActionMenu>
 );
 
@@ -93,61 +152,43 @@ export const Outlined = () => (
       label={"Open"}
       onClick={action("Opened")}
     />
-    <ActionMenuItem label={"Save"} icon={faSave} onClick={action("Saved")} />
-    <ActionMenuLink
-      label={"Open new window"}
-      icon={faExternalLinkAlt}
-      href={"https://www.google.com"}
-      target={"_blank"}
-    />
-    <ActionMenuLink
-      label={"Open new window"}
-      disabled
-      icon={faExternalLinkAlt}
-      href={"https://www.google.com"}
-      target={"_blank"}
-    />
-    <ActionMenuItem
-      label={"Burn it"}
-      icon={faFire}
-      onClick={action("It was burned!")}
-      variant={"danger"}
-    />
-    <ActionMenuItem label={"Loading"} loading onClick={action("Loading")} />
-    <ActionMenuItem
-      label={"Click doesn't close"}
-      onClick={action("I didn't close the menu!")}
-      disableCloseOnClick
-    />
-    <ActionMenuItem
-      label={"Disabled"}
-      disabled
-      onClick={action("I can never happen!")}
-    />
-    <ActionMenuItem
-      label={"Icon right"}
-      onClick={action("Icon right clicked")}
-      iconRight={faCheck}
-    />
-    <ActionMenuItem
-      label={"Icon right disabled"}
-      onClick={action("I can never happen again!")}
-      iconRight={faCheck}
-      disabled
-    />
-    <ActionMenuItem
-      label={"Custom right"}
-      onClick={action("I am very special!")}
-    >
-      <Text size={"smaller"} color={"tomato"}>
-        So custom!
-      </Text>
-    </ActionMenuItem>
     <ActionMenuSeparator />
     <ActionMenuItem
-      label={"Quit"}
-      rightText={"cmd+q"}
-      onClick={action("All stop!")}
-    />{" "}
+      label={"Quit it"}
+      right={<Text size={"smaller"}>⌘ Q</Text>}
+      onClick={action("Quitting")}
+    />
   </ActionMenu>
 );
+
+export const AsyncItem = () => {
+  const [loading, setLoading, clearLoading] = useBoolean(false);
+
+  const [saved, setSaved] = useTimeoutState(false, 2000);
+
+  const start = () => {
+    setLoading();
+    setTimeout(() => {
+      clearLoading();
+      setSaved(true);
+    }, 2000);
+  };
+
+  return (
+    <ActionMenu width={200} variant={"outlined"}>
+      <ActionMenuItem
+        id={"action-menu-item-open"}
+        label={"Open"}
+        onClick={action("Opened")}
+      />
+      <ActionMenuItem
+        label={saved ? "Saved" : loading ? "Saving..." : "Save"}
+        leftIcon={faSave}
+        onClick={start}
+        variant={saved ? "success" : undefined}
+        success={saved}
+        loading={loading}
+      />
+    </ActionMenu>
+  );
+};
