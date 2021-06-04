@@ -1,6 +1,6 @@
 # Changelog
 
-## 11.2.0
+## Next
 
 ### ActionMenu
 
@@ -15,6 +15,8 @@
 ### Buttons
 
 - Add margin to right content.
+
+## 11.2.0
 
 ### ActionMenuLink
 
