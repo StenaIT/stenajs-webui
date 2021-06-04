@@ -2,6 +2,20 @@
 
 ## Next
 
+### ActionMenu
+
+- Action menu now uses button content.
+- ActionMenuItemContent now has bottom prop to show content below.
+  - Also has `fullWidthBottomContent` which removes the left space reserved for icons and loading states.
+
+### UseTimeoutState
+
+- Add new hook useTimeoutState.
+
+### Buttons
+
+- Add margin to right content.
+
 ### ActionMenuLink
 
 - Prop `onClick` now has same type as HTML a-tag onClick.

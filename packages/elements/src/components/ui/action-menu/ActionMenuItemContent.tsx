@@ -1,124 +1,99 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Box, Row, Space, Text } from "@stenajs-webui/core";
+import { Column, DivProps, Row, Space } from "@stenajs-webui/core";
 import * as React from "react";
-import { forwardRef, PropsWithChildren } from "react";
-import { Icon } from "../icon/Icon";
+import { forwardRef, ReactNode } from "react";
 import cx from "classnames";
-import { InputSpinner } from "../spinner/InputSpinner";
-import { useFocusManager } from "@react-aria/focus";
+import buttonStyles from "../buttons/common/ButtonContent.module.css";
 
 import styles from "./ActionMenuItem.module.css";
+import {
+  ButtonContent,
+  ButtonContentProps,
+} from "../buttons/common/ButtonContent";
+import { ActionMenuItemVariant } from "./ActionMenuItem";
+import { useActionMenuLogic } from "./UseActionMenuLogic";
 
-export type ActionMenuItemNoButtonVariant = "standard" | "danger";
-
-export interface ActionMenuItemNoButtonProps {
-  label: string;
-  variant?: ActionMenuItemNoButtonVariant;
-  rightText?: string;
-  icon?: IconDefinition;
-  iconRight?: IconDefinition;
+export interface ActionMenuItemNoButtonProps
+  extends DivProps,
+    ButtonContentProps {
+  variant?: ActionMenuItemVariant;
   disabled?: boolean;
-  loading?: boolean;
+  bottom?: ReactNode;
+  fullWidthBottomContent?: boolean;
 }
 
 export const ActionMenuItemContent = forwardRef<
   HTMLDivElement,
-  PropsWithChildren<ActionMenuItemNoButtonProps>
+  ActionMenuItemNoButtonProps
 >(function ActionMenuItemNoButton(
   {
-    label,
-    variant = "standard",
-    icon,
-    iconRight,
-    rightText,
-    disabled,
-    children,
+    success,
     loading,
-    ...divProps
+    leftIcon,
+    left,
+    right,
+    rightIcon,
+    label,
+    iconClassName,
+    labelClassName,
+    spinnerClassName,
+    leftWrapperClassName,
+    variant = "standard",
+    className,
+    disabled,
+    bottom,
+    fullWidthBottomContent,
+    ...props
   },
   ref
 ) {
-  const focusManager = useFocusManager();
-  const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    switch (event.key) {
-      case "ArrowDown":
-      case "ArrowRight":
-        event.preventDefault();
-        focusManager.focusNext({ wrap: true });
-        break;
-      case "ArrowUp":
-      case "ArrowLeft":
-        event.preventDefault();
-        focusManager.focusPrevious({ wrap: true });
-        break;
-    }
-  };
+  const { onKeyDown, innerRef } = useActionMenuLogic(props, ref);
 
   return (
-    <div
+    <Column
       className={cx(
         styles.actionMenuItem,
-        styles.ItemNoButton,
-        styles[variant]
+        styles.actionMenuItemContent,
+        styles[variant],
+        className
       )}
+      ref={innerRef}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
-      ref={ref}
-      {...divProps}
+      {...props}
     >
       <Row
-        width={"100%"}
-        indent={2}
         alignItems={"center"}
-        justifyContent={"space-between"}
+        indent={2}
+        className={styles.actionMenuItemInnerContent}
       >
-        <Row alignItems={"center"}>
-          {loading ? (
-            <>
-              <Box width={20} alignItems={"center"}>
-                <InputSpinner />
-              </Box>
-              <Space />
-            </>
-          ) : (
-            icon && (
-              <>
-                <Icon
-                  className={styles.ItemIcon}
-                  icon={icon}
-                  fixedWidth
-                  size={16}
-                />
-                <Space />
-              </>
-            )
-          )}
-          <Text className={styles.ItemLabel} whiteSpace={"nowrap"}>
-            {label}
-          </Text>
-        </Row>
-        {rightText && (
-          <Text
-            className={styles.ItemText}
-            size={"small"}
-            whiteSpace={"nowrap"}
-          >
-            {rightText}
-          </Text>
-        )}
-        {children && (
-          <>
-            <Space />
-            {children}
-          </>
-        )}
-        {iconRight && (
-          <>
-            <Space />
-            <Icon className={styles.ItemIcon} icon={iconRight} size={14} />
-          </>
-        )}
+        <ButtonContent
+          success={success}
+          loading={loading}
+          leftIcon={leftIcon}
+          left={left}
+          right={right}
+          rightIcon={rightIcon}
+          label={label}
+          labelClassName={styles.actionMenuItemLabel}
+          iconClassName={styles.actionMenuItemIcon}
+          leftWrapperClassName={cx({
+            [styles.actionMenuItemIconWrapper]: success || loading || leftIcon,
+          })}
+        />
       </Row>
-    </div>
+      {bottom && (
+        <>
+          <Row indent={2}>
+            {!fullWidthBottomContent && (success || loading || leftIcon) && (
+              <div className={buttonStyles.leftWrapper}>
+                <div className={styles.actionMenuItemIconWrapper} />
+              </div>
+            )}
+            <Row alignItems={"center"}>{bottom}</Row>
+          </Row>
+          <Space num={1.5} />
+        </>
+      )}
+    </Column>
   );
 });

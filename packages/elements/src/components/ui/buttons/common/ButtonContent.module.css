@@ -9,17 +9,18 @@
   height: var(--current-icon-height);
 }
 
-.leftWrapper {
+.leftWrapper,
+.rightWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &:not(:last-child) {
-    margin-right: var(--swui-metrics-indent);
-  }
 }
 
-.iconRight:not(:first-child) {
+.leftWrapper:not(:last-child) {
+  margin-right: var(--swui-metrics-indent);
+}
+
+.rightWrapper {
   margin-left: var(--swui-metrics-indent);
 }
 

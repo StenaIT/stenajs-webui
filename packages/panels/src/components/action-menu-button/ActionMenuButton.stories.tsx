@@ -26,6 +26,7 @@ import * as React from "react";
 import { ActionMenuFlatButton } from "./ActionMenuFlatButton";
 import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "panels/ActionMenuButton",
@@ -48,40 +49,58 @@ export const Overview = () => (
       <Row spacing={2}>
         <ButtonVariant
           label={label}
-          renderItems={() => (
+          renderItems={(close) => (
             <>
               <ActionMenuItem label={"Open"} />
-              <ActionMenuItem label={"Save"} icon={faSave} />
+              <ActionMenuItem label={"Save"} leftIcon={faSave} />
               <ActionMenuItem
                 label={"Don't close on click"}
                 disableCloseOnClick
-                icon={faCoffee}
+                leftIcon={faCoffee}
               />
               <ActionMenuItem
                 label={"Burn it"}
-                icon={faFire}
+                leftIcon={faFire}
                 variant={"danger"}
               />
               <ActionMenuItem label={"Loading"} loading />
               <ActionMenuItem label={"Disabled"} disabled />
-              <ActionMenuItem label={"Icon right"} iconRight={faCheck} />
-              <ActionMenuItemContent label={"Content right"}>
-                <ButtonGroup>
-                  <PrimaryButton size={"small"} label={"S"} />
-                  <SecondaryButton size={"small"} label={"M"} />
-                  <SecondaryButton size={"small"} label={"L"} />
-                </ButtonGroup>
-              </ActionMenuItemContent>
-              <ActionMenuItemContent label={"Content right very much text"}>
-                <ButtonGroup>
-                  <SecondaryButton size={"small"} label={"25"} />
-                  <PrimaryButton size={"small"} label={"50"} />
-                  <SecondaryButton size={"small"} label={"100"} />
-                </ButtonGroup>
-              </ActionMenuItemContent>
+              <ActionMenuItem label={"Icon right"} rightIcon={faCheck} />
+              <ActionMenuItemContent
+                label={"Content right"}
+                right={
+                  <ButtonGroup>
+                    <PrimaryButton size={"small"} label={"S"} />
+                    <SecondaryButton size={"small"} label={"M"} />
+                    <SecondaryButton size={"small"} label={"L"} />
+                  </ButtonGroup>
+                }
+              />
+              <ActionMenuItemContent
+                label={"Content very much text"}
+                bottom={
+                  <ButtonGroup>
+                    <SecondaryButton
+                      size={"small"}
+                      label={"25"}
+                      onClick={close}
+                    />
+                    <PrimaryButton
+                      size={"small"}
+                      label={"50"}
+                      onClick={close}
+                    />
+                    <SecondaryButton
+                      size={"small"}
+                      label={"100"}
+                      onClick={close}
+                    />
+                  </ButtonGroup>
+                }
+              />
               <ActionMenuItem
                 label={"Icon right disabled"}
-                iconRight={faCheck}
+                rightIcon={faCheck}
                 disabled
               />
               <ActionMenuItem label={"Custom right"}>
@@ -90,7 +109,11 @@ export const Overview = () => (
                 </Text>
               </ActionMenuItem>
               <ActionMenuSeparator />
-              <ActionMenuItem label={"Quit"} rightText={"cmd+q"} />
+              <ActionMenuItem
+                label={"Quit it"}
+                right={<Text size={"smaller"}>⌘ Q</Text>}
+                onClick={action("Quitting")}
+              />
             </>
           )}
         />
@@ -236,11 +259,15 @@ export const PortalTarget = () => {
             label={"Buttons first"}
             renderItems={() => (
               <>
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
-                <ActionMenuItem label={"Do something"} icon={faFire} />
+                <ActionMenuItem
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
+                />
+                <ActionMenuItem label={"Do something"} leftIcon={faFire} />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                 />
               </>
@@ -253,15 +280,15 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                 />
-                <ActionMenuItem label={"Do something"} icon={faFire} />
+                <ActionMenuItem label={"Do something"} leftIcon={faFire} />
               </>
             )}
           />
@@ -272,10 +299,14 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+                <ActionMenuItem
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
+                />
               </>
             )}
           />
@@ -295,12 +326,12 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuItem
                   label={"Do something"}
-                  icon={faFire}
+                  leftIcon={faFire}
                   onClick={close}
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                   onClick={close}
                 />
@@ -315,12 +346,12 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuItem
                   label={"Do something"}
-                  icon={faFire}
+                  leftIcon={faFire}
                   onClick={close}
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                   onClick={close}
                 />
@@ -335,10 +366,14 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+                <ActionMenuItem
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
+                />
               </>
             )}
           />
@@ -349,3 +384,24 @@ export const PortalTarget = () => {
     </Box>
   );
 };
+
+export const Scrollable = () => (
+  <Row>
+    <ActionMenuPrimaryButton
+      label={"Hello"}
+      renderItems={() => (
+        <Box maxHeight={200} overflowY={"auto"}>
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+        </Box>
+      )}
+    />
+  </Row>
+);

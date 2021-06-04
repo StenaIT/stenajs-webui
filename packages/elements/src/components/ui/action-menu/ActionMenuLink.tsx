@@ -1,26 +1,19 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { useFocusManager } from "@react-aria/focus";
-import {
-  AnchorElementProps,
-  Row,
-  Space,
-  Text,
-  useForwardedRef,
-} from "@stenajs-webui/core";
+import { AnchorElementProps, Row } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { forwardRef, MouseEventHandler, useCallback, useContext } from "react";
-import { Icon } from "../icon/Icon";
-import { ActionMenuContext } from "./ActionMenuContext";
+import { forwardRef } from "react";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import styles from "./ActionMenuItem.module.css";
+import {
+  ButtonContent,
+  ButtonContentProps,
+} from "../buttons/common/ButtonContent";
+import { useActionMenuLogic } from "./UseActionMenuLogic";
 
-export interface ActionMenuLinkProps extends AnchorElementProps {
-  label: string;
-  rightText?: string;
+export interface ActionMenuLinkProps
+  extends AnchorElementProps,
+    ButtonContentProps {
   variant?: ActionMenuItemVariant;
-  icon?: IconDefinition;
-  iconRight?: IconDefinition;
   disabled?: boolean;
   disableCloseOnClick?: boolean;
 }
@@ -30,109 +23,60 @@ export const ActionMenuLink = forwardRef<
   ActionMenuLinkProps
 >(function ActionMenuLink(
   {
+    success,
+    loading,
+    leftIcon,
+    left,
+    right,
+    rightIcon,
     label,
+    iconClassName,
+    labelClassName,
+    spinnerClassName,
+    leftWrapperClassName,
     variant = "standard",
-    icon,
-    iconRight,
-    rightText,
+    className,
     disabled,
-    onClick,
-    children,
-    disableCloseOnClick,
     href,
-    ...anchorProps
+    ...props
   },
   ref: React.Ref<HTMLAnchorElement>
 ) {
-  const { close } = useContext(ActionMenuContext);
-  const innerRef = useForwardedRef<HTMLAnchorElement | null>(ref);
-
-  const onClickHandler = useCallback<MouseEventHandler<HTMLAnchorElement>>(
-    (ev) => {
-      if (!disableCloseOnClick) {
-        close?.();
-      }
-      onClick?.(ev);
-    },
-    [onClick, close, disableCloseOnClick]
+  const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
+    props,
+    ref
   );
-
-  const focusManager = useFocusManager();
-  const onKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
-    switch (event.key) {
-      case "ArrowDown":
-      case "ArrowRight":
-        event.preventDefault();
-        focusManager.focusNext({ wrap: true });
-        break;
-      case "ArrowUp":
-      case "ArrowLeft":
-        event.preventDefault();
-        focusManager.focusPrevious({ wrap: true });
-        break;
-      case " ":
-        event.preventDefault();
-        innerRef.current?.click();
-    }
-  };
 
   return (
     <a
-      className={cx(styles.actionMenuItem, styles[variant])}
+      className={cx(styles.actionMenuItem, styles[variant], className)}
       onClick={disabled ? undefined : onClickHandler}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
       href={disabled ? undefined : href}
       ref={innerRef}
-      {...anchorProps}
+      {...props}
     >
       <Row
+        alignItems={"center"}
         width={"100%"}
         indent={2}
-        alignItems={"center"}
-        justifyContent={"space-between"}
+        className={styles.actionMenuItemInnerContent}
       >
-        <Row alignItems={"center"}>
-          {icon && (
-            <>
-              <Icon
-                className={styles.actionMenuItemIcon}
-                icon={icon}
-                fixedWidth
-                size={16}
-              />
-              <Space />
-            </>
-          )}
-          <Text className={styles.actionMenuItemLabel} whiteSpace={"nowrap"}>
-            {label}
-          </Text>
-        </Row>
-        {rightText && (
-          <Text
-            className={styles.actionMenuItemText}
-            size={"small"}
-            whiteSpace={"nowrap"}
-          >
-            {rightText}
-          </Text>
-        )}
-        {children && (
-          <>
-            <Space />
-            {children}
-          </>
-        )}
-        {iconRight && (
-          <>
-            <Space />
-            <Icon
-              className={styles.actionMenuItemIcon}
-              icon={iconRight}
-              size={14}
-            />
-          </>
-        )}
+        <ButtonContent
+          success={success}
+          loading={loading}
+          leftIcon={leftIcon}
+          left={left}
+          right={right}
+          rightIcon={rightIcon}
+          label={label}
+          labelClassName={styles.actionMenuItemLabel}
+          iconClassName={styles.actionMenuItemIcon}
+          leftWrapperClassName={cx({
+            [styles.actionMenuItemIconWrapper]: success || loading || leftIcon,
+          })}
+        />
       </Row>
     </a>
   );
