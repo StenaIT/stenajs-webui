@@ -1,14 +1,12 @@
-import { AnchorElementProps, Row } from "@stenajs-webui/core";
+import { AnchorElementProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import styles from "./ActionMenuItem.module.css";
-import {
-  ButtonContent,
-  ButtonContentProps,
-} from "../buttons/common/ButtonContent";
+import { ButtonContentProps } from "../buttons/common/ButtonContent";
 import { useActionMenuLogic } from "./UseActionMenuLogic";
+import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
 
 export interface ActionMenuLinkProps
   extends AnchorElementProps,
@@ -49,35 +47,23 @@ export const ActionMenuLink = forwardRef<
 
   return (
     <a
+      {...props}
       className={cx(styles.actionMenuItem, styles[variant], className)}
       onClick={disabled ? undefined : onClickHandler}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
       href={disabled ? undefined : href}
       ref={innerRef}
-      {...props}
     >
-      <Row
-        alignItems={"center"}
-        width={"100%"}
-        indent={2}
-        className={styles.actionMenuItemInnerContent}
-      >
-        <ButtonContent
-          success={success}
-          loading={loading}
-          leftIcon={leftIcon}
-          left={left}
-          right={right}
-          rightIcon={rightIcon}
-          label={label}
-          labelClassName={styles.actionMenuItemLabel}
-          iconClassName={styles.actionMenuItemIcon}
-          leftWrapperClassName={cx({
-            [styles.actionMenuItemIconWrapper]: success || loading || leftIcon,
-          })}
-        />
-      </Row>
+      <ActionMenuCommonContent
+        success={success}
+        loading={loading}
+        leftIcon={leftIcon}
+        left={left}
+        right={right}
+        rightIcon={rightIcon}
+        label={label}
+      />
     </a>
   );
 });

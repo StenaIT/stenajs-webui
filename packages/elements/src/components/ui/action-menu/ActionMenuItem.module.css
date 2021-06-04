@@ -52,10 +52,6 @@
   font-weight: var(--swui-button-font-weight);
   font-family: var(--swui-font-buttons);
 
-  &.bottom {
-    flex-direction: column;
-  }
-
   &:not(.actionMenuItemContent) {
     cursor: pointer;
   }

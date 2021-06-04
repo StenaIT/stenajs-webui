@@ -5,14 +5,12 @@ import cx from "classnames";
 import buttonStyles from "../buttons/common/ButtonContent.module.css";
 
 import styles from "./ActionMenuItem.module.css";
-import {
-  ButtonContent,
-  ButtonContentProps,
-} from "../buttons/common/ButtonContent";
+import { ButtonContentProps } from "../buttons/common/ButtonContent";
 import { ActionMenuItemVariant } from "./ActionMenuItem";
 import { useActionMenuLogic } from "./UseActionMenuLogic";
+import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
 
-export interface ActionMenuItemNoButtonProps
+export interface ActionMenuItemContentProps
   extends DivProps,
     ButtonContentProps {
   variant?: ActionMenuItemVariant;
@@ -23,8 +21,8 @@ export interface ActionMenuItemNoButtonProps
 
 export const ActionMenuItemContent = forwardRef<
   HTMLDivElement,
-  ActionMenuItemNoButtonProps
->(function ActionMenuItemNoButton(
+  ActionMenuItemContentProps
+>(function ActionMenuItemContent(
   {
     success,
     loading,
@@ -50,6 +48,7 @@ export const ActionMenuItemContent = forwardRef<
 
   return (
     <Column
+      {...props}
       className={cx(
         styles.actionMenuItem,
         styles.actionMenuItemContent,
@@ -59,31 +58,19 @@ export const ActionMenuItemContent = forwardRef<
       ref={innerRef}
       onKeyDown={onKeyDown}
       aria-disabled={disabled}
-      {...props}
     >
-      <Row
-        alignItems={"center"}
-        indent={2}
-        className={styles.actionMenuItemInnerContent}
-      >
-        <ButtonContent
-          success={success}
-          loading={loading}
-          leftIcon={leftIcon}
-          left={left}
-          right={right}
-          rightIcon={rightIcon}
-          label={label}
-          labelClassName={styles.actionMenuItemLabel}
-          iconClassName={styles.actionMenuItemIcon}
-          leftWrapperClassName={cx({
-            [styles.actionMenuItemIconWrapper]: success || loading || leftIcon,
-          })}
-        />
-      </Row>
+      <ActionMenuCommonContent
+        success={success}
+        loading={loading}
+        leftIcon={leftIcon}
+        left={left}
+        right={right}
+        rightIcon={rightIcon}
+        label={label}
+      />
       {bottom && (
         <>
-          <Row indent={2}>
+          <Row indent={2} width={"100%"}>
             {!fullWidthBottomContent && (success || loading || leftIcon) && (
               <div className={buttonStyles.leftWrapper}>
                 <div className={styles.actionMenuItemIconWrapper} />
