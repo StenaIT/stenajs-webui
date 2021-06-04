@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 11.2.0
 
 ### ActionMenu
 
@@ -19,6 +19,10 @@
 ### ActionMenuLink
 
 - Prop `onClick` now has same type as HTML a-tag onClick.
+
+### Heading
+
+- `Heading` now supports `as` prop, which can be `h1`-`h6`.
 
 ## 11.1.0
 
