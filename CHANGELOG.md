@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ChipMultiSelect
+
+- Small chip wrapping fix.
+
 ## 11.3.0
 
 ### ActionMenu

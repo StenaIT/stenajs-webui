@@ -33,7 +33,7 @@ export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
       <Column>
         <Row flexWrap={"wrap"}>
           {value?.map((v) => (
-            <React.Fragment key={v.value}>
+            <Row key={v.value}>
               <Spacing num={0.5}>
                 <Chip
                   label={v.label}
@@ -45,7 +45,7 @@ export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
                 />
               </Spacing>
               <Space />
-            </React.Fragment>
+            </Row>
           ))}
           {value?.length ? (
             <Spacing num={0.5}>
