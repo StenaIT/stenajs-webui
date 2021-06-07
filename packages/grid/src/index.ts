@@ -36,7 +36,7 @@ export * from "./features/standard-table/features/checkboxes/UseRowCheckbox";
 export * from "./features/standard-table/features/checkboxes/UseTableHeadCheckbox";
 export * from "./features/standard-table/features/checkboxes/StandardTableRowCheckbox";
 export * from "./features/standard-table/features/sorting/UseTableSortHeader";
-export * from "./features/standard-table/features/sorting/MultitypeComparator";
+export * from "./features/standard-table/features/sorting/MultiTypeComparator";
 export * from "./features/standard-table/features/column-groups/ColumnGroupFactory";
 export * from "./features/standard-table/types/StandardTableOnKeyDown";
 

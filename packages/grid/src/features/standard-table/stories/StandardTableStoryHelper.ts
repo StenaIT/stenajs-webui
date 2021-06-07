@@ -8,7 +8,7 @@ export interface ListItem {
   id: string;
   active: boolean;
   name: string;
-  ship: string;
+  ship: string | null;
   numPassengers?: number;
   departure: Date;
 }
@@ -61,6 +61,22 @@ export const createItemsMocks = (): Array<ListItem> => [
     ship: "RoboBoat",
     numPassengers: 534,
     departure: addDays(new Date(), 14),
+  },
+  {
+    id: "129",
+    active: true,
+    name: "No ship AB",
+    ship: null,
+    numPassengers: 534,
+    departure: addDays(new Date(), 12),
+  },
+  {
+    id: "130",
+    active: true,
+    name: "Empty string ship AB",
+    ship: "",
+    numPassengers: 534,
+    departure: addDays(new Date(), 13),
   },
   {
     id: "A really long id, or could be a very long title",

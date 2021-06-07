@@ -6,7 +6,7 @@ import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
-import { multitypeComparator } from "../features/sorting/MultitypeComparator";
+import { createMultiTypeComparator } from "../features/sorting/MultiTypeComparator";
 import { StandardTableRow } from "./StandardTableRow";
 import { elementHeightPerVariant } from "../config/StandardTableInfiniteConfig";
 import { StandardTableVariant } from "./StandardTable";
@@ -47,11 +47,11 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
     const sortedList = [...items];
     sortedList.sort((a, b) =>
-      multitypeComparator(valueResolver(a) as any, valueResolver(b) as any)
+      createMultiTypeComparator(desc)(
+        valueResolver(a) as any,
+        valueResolver(b) as any
+      )
     );
-    if (desc) {
-      sortedList.reverse();
-    }
     return sortedList;
   }, [items, valueResolver, desc]);
 
