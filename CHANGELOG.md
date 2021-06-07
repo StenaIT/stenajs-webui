@@ -4,9 +4,9 @@
 
 ### ActionMenu
 
-- Action menu now uses button content.
-- ActionMenuItemContent now has bottom prop to show content below.
-  - Also has `fullWidthBottomContent` which removes the left space reserved for icons and loading states.
+- Action menu items now support same props as buttons and tabs.
+- `ActionMenuItemContent` has new prop `bottom` to show content below.
+  - New prop `fullWidthBottomContent` which removes the left space reserved for icons and loading states.
 
 ### UseTimeoutState
 
@@ -15,6 +15,10 @@
 ### Buttons
 
 - Add margin to right content.
+
+### Breaking changes
+
+- Action menu items have updated set of props.
 
 ## 11.2.0
 
