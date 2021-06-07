@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 11.3.0
 
 ### ActionMenu
 
