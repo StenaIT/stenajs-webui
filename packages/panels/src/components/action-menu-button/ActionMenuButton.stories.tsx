@@ -1,62 +1,126 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Box, Heading, Row, Space, Spacing, Text } from "@stenajs-webui/core";
-import * as React from "react";
-import {
-  ActionMenuItem,
-  ActionMenuLink,
-  ActionMenuSeparator,
-} from "@stenajs-webui/elements";
-import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
+import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
+import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
+import {
+  Box,
+  Column,
+  Heading,
+  Row,
+  Space,
+  Spacing,
+  Text,
+} from "@stenajs-webui/core";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  ActionMenuSeparator,
+  ButtonGroup,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
+import * as React from "react";
+import { ActionMenuFlatButton } from "./ActionMenuFlatButton";
+import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
+import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
+import { action } from "@storybook/addon-actions";
 
 export default {
-  title: "panels/ActionMenuPrimaryButton",
+  title: "panels/ActionMenuButton",
   component: ActionMenuPrimaryButton,
 };
 
-export const Standard = () => (
-  <Box indent={8} display={"inline-block"}>
-    <ActionMenuPrimaryButton
-      label={"Actions"}
-      renderItems={(close) => (
-        <>
-          <ActionMenuItem label={"Open"} onClick={close} />
-          <ActionMenuItem label={"Save"} icon={faSave} onClick={close} />
-          <ActionMenuItem
-            label={"Burn it"}
-            icon={faFire}
-            onClick={close}
-            variant={"danger"}
-          />
-          <ActionMenuItem label={"Loading"} loading onClick={close} />
-          <ActionMenuItem label={"Disabled"} disabled onClick={close} />
-          <ActionMenuItem
-            label={"Icon right"}
-            onClick={close}
-            iconRight={faCheck}
-          />
-          <ActionMenuItem
-            label={"Icon right disabled"}
-            onClick={close}
-            iconRight={faCheck}
-            disabled
-          />
-          <ActionMenuItem label={"Custom right"} onClick={close}>
-            <Text size={"smaller"} color={"tomato"}>
-              So custom!
-            </Text>
-          </ActionMenuItem>
-          <ActionMenuSeparator />
-          <ActionMenuItem label={"Quit"} rightText={"cmd+q"} onClick={close} />
-        </>
-      )}
-    />
+export const Overview = () => (
+  <Column>
+    {[
+      {
+        ButtonVariant: ActionMenuPrimaryButton,
+        label: "ActionMenuPrimaryButton",
+      },
+      {
+        ButtonVariant: ActionMenuSecondaryButton,
+        label: "ActionMenuSecondaryButton",
+      },
+      { ButtonVariant: ActionMenuFlatButton, label: "ActionMenuFlatButton" },
+    ].map(({ label, ButtonVariant }) => (
+      <Row spacing={2}>
+        <ButtonVariant
+          label={label}
+          renderItems={(close) => (
+            <>
+              <ActionMenuItem label={"Open"} />
+              <ActionMenuItem label={"Save"} leftIcon={faSave} />
+              <ActionMenuItem
+                label={"Don't close on click"}
+                disableCloseOnClick
+                leftIcon={faCoffee}
+              />
+              <ActionMenuItem
+                label={"Burn it"}
+                leftIcon={faFire}
+                variant={"danger"}
+              />
+              <ActionMenuItem label={"Loading"} loading />
+              <ActionMenuItem label={"Disabled"} disabled />
+              <ActionMenuItem label={"Icon right"} rightIcon={faCheck} />
+              <ActionMenuItemContent
+                label={"Content right"}
+                right={
+                  <ButtonGroup>
+                    <PrimaryButton size={"small"} label={"S"} />
+                    <SecondaryButton size={"small"} label={"M"} />
+                    <SecondaryButton size={"small"} label={"L"} />
+                  </ButtonGroup>
+                }
+              />
+              <ActionMenuItemContent
+                label={"Content very much text"}
+                bottom={
+                  <ButtonGroup>
+                    <SecondaryButton
+                      size={"small"}
+                      label={"25"}
+                      onClick={close}
+                    />
+                    <PrimaryButton
+                      size={"small"}
+                      label={"50"}
+                      onClick={close}
+                    />
+                    <SecondaryButton
+                      size={"small"}
+                      label={"100"}
+                      onClick={close}
+                    />
+                  </ButtonGroup>
+                }
+              />
+              <ActionMenuItem
+                label={"Icon right disabled"}
+                rightIcon={faCheck}
+                disabled
+              />
+              <ActionMenuItem label={"Custom right"}>
+                <Text size={"smaller"} color={"tomato"}>
+                  So custom!
+                </Text>
+              </ActionMenuItem>
+              <ActionMenuSeparator />
+              <ActionMenuItem
+                label={"Quit it"}
+                right={<Text size={"smaller"}>⌘ Q</Text>}
+                onClick={action("Quitting")}
+              />
+            </>
+          )}
+        />
+      </Row>
+    ))}
     <Spacing num={24} />
-  </Box>
+  </Column>
 );
 
 export const Disabled = () => (
@@ -193,19 +257,18 @@ export const PortalTarget = () => {
         <Row>
           <ActionMenuPrimaryButton
             label={"Buttons first"}
-            renderItems={(close) => (
+            renderItems={() => (
               <>
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
                 <ActionMenuItem
-                  label={"Do something"}
-                  icon={faFire}
-                  onClick={close}
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
                 />
+                <ActionMenuItem label={"Do something"} leftIcon={faFire} />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
-                  onClick={close}
                 />
               </>
             )}
@@ -213,24 +276,19 @@ export const PortalTarget = () => {
           <Space num={2} />
           <ActionMenuPrimaryButton
             label={"Links first"}
-            renderItems={(close) => (
+            renderItems={() => (
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
-                  onClick={close}
                 />
-                <ActionMenuItem
-                  label={"Do something"}
-                  icon={faFire}
-                  onClick={close}
-                />
+                <ActionMenuItem label={"Do something"} leftIcon={faFire} />
               </>
             )}
           />
@@ -241,10 +299,14 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+                <ActionMenuItem
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
+                />
               </>
             )}
           />
@@ -264,12 +326,12 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuItem
                   label={"Do something"}
-                  icon={faFire}
+                  leftIcon={faFire}
                   onClick={close}
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                   onClick={close}
                 />
@@ -284,12 +346,12 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuItem
                   label={"Do something"}
-                  icon={faFire}
+                  leftIcon={faFire}
                   onClick={close}
                 />
                 <ActionMenuLink
                   label={"Go somewhere"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   href={"#"}
                   onClick={close}
                 />
@@ -304,10 +366,14 @@ export const PortalTarget = () => {
               <>
                 <ActionMenuLink
                   label={"Don't go"}
-                  icon={faExternalLinkAlt}
+                  leftIcon={faExternalLinkAlt}
                   disabled
                 />
-                <ActionMenuItem label={"Do nothing"} icon={faCoffee} disabled />
+                <ActionMenuItem
+                  label={"Do nothing"}
+                  leftIcon={faCoffee}
+                  disabled
+                />
               </>
             )}
           />
@@ -318,3 +384,24 @@ export const PortalTarget = () => {
     </Box>
   );
 };
+
+export const Scrollable = () => (
+  <Row>
+    <ActionMenuPrimaryButton
+      label={"Hello"}
+      renderItems={() => (
+        <Box maxHeight={200} overflowY={"auto"}>
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+        </Box>
+      )}
+    />
+  </Row>
+);

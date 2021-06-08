@@ -12,6 +12,7 @@ import {
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
@@ -22,6 +23,24 @@ interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
 }
+
+const getTopPosition = (
+  headerRowOffsetTop: string | undefined,
+  columnGroupOrder: Array<string> | undefined,
+  height: string,
+  stickyHeader: boolean | undefined
+) => {
+  if (headerRowOffsetTop && columnGroupOrder !== undefined) {
+    return `calc(${headerRowOffsetTop} + ${height})`;
+  } else if (stickyHeader && columnGroupOrder) {
+    return `calc(0px + ${height})`;
+  } else if (headerRowOffsetTop) {
+    return headerRowOffsetTop;
+  } else if (stickyHeader) {
+    return 0;
+  }
+  return undefined;
+};
 
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
@@ -39,6 +58,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     stickyCheckboxColumn,
   } = useStandardTableConfig();
 
+  const columnGroupOrder = useColumnGroupOrderContext();
+
   const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
     items
   );
@@ -52,7 +73,12 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   return (
     <TableHeadRow
-      top={headerRowOffsetTop ?? 0}
+      top={getTopPosition(
+        headerRowOffsetTop,
+        columnGroupOrder,
+        height,
+        stickyHeader
+      )}
       height={height}
       borderLeft={tableBorderLeft}
       background={stickyHeader ? "white" : undefined}

@@ -19,6 +19,7 @@ export interface ButtonContentProps {
   labelClassName?: string;
   spinnerClassName?: string;
   leftWrapperClassName?: string;
+  rightWrapperClassName?: string;
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -33,6 +34,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   labelClassName,
   spinnerClassName,
   leftWrapperClassName,
+  rightWrapperClassName,
 }) => {
   return (
     <>
@@ -64,16 +66,22 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
         </div>
       )}
 
-      {label && <span className={labelClassName}>{label}</span>}
+      {label && (
+        <span className={cx(styles.label, labelClassName)}>{label}</span>
+      )}
 
-      {right ? (
-        right
-      ) : rightIcon ? (
-        <FontAwesomeIcon
-          icon={rightIcon}
-          className={cx(styles.iconRight, iconClassName)}
-        />
-      ) : null}
+      {(right || rightIcon) && (
+        <div className={cx(styles.rightWrapper, rightWrapperClassName)}>
+          {right ? (
+            right
+          ) : rightIcon ? (
+            <FontAwesomeIcon
+              icon={rightIcon}
+              className={cx(styles.iconRight, iconClassName)}
+            />
+          ) : null}
+        </div>
+      )}
     </>
   );
 };

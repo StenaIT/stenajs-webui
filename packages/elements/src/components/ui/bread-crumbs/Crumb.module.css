@@ -1,5 +1,5 @@
 .crumb {
-  color: var(--lhds-color-ui-600);
+  color: var(--swui-text-action-color);
   font-size: 10px;
   font-family: var(--swui-font-primary);
   font-weight: 600;
@@ -10,5 +10,14 @@
 
 .crumb:hover {
   text-decoration: underline;
-  color: var(--lhds-color-blue-500);
+  color: var(--swui-text-action-color-hover);
+}
+
+.crumb:focus {
+  color: var(--swui-text-action-color-focus);
+}
+
+.crumb:active {
+  text-decoration: underline;
+  color: var(--swui-text-action-color-active);
 }

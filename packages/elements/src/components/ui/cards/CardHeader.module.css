@@ -1,0 +1,15 @@
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--lhds-color-ui-300);
+  padding: 0 calc(2 * var(--swui-metrics-indent));
+
+  &.standard {
+    height: 56px;
+  }
+
+  &.compact {
+    height: 48px;
+  }
+}

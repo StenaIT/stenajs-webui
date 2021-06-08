@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 
 export const StandardTableColumnGroupOrderContext = createContext<
-  Array<string>
->([]);
+  Array<string> | undefined
+>(undefined);
 
 export const StandardTableUsingColumnGroupsContext = createContext<boolean>(
   false

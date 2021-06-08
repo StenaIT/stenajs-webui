@@ -1,4 +1,4 @@
-import { Box, Space, Text } from "@stenajs-webui/core";
+import { Box, Heading, Space } from "@stenajs-webui/core";
 import { Spinner } from "@stenajs-webui/elements";
 import * as React from "react";
 
@@ -11,9 +11,9 @@ export const LoadingPanel: React.FC<LoadingPanelProps> = ({
 }) => {
   return (
     <Box alignItems={"center"}>
-      <Spinner size={"medium"} />
+      <Spinner size={"small"} />
       <Space num={4} />
-      <Text>{text}</Text>
+      <Heading variant={"h4"}>{text}</Heading>
     </Box>
   );
 };
