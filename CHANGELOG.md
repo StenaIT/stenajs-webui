@@ -1,11 +1,11 @@
 # Changelog
 
-## POC!
+## Next
 
 ### Modal
 
-- Different takes on draggable modal. By separating the draggable part from text and buttons, we can copy text and press
-  buttons without the draggable interfering.
+- Restricted the draggable area of a modal to the new handle on the left.
+  You can add more areas by adding the `DRAGGABLE_HANDLE_CLASSNAME` to any element in the modal header.
 
 ## 11.3.0
 

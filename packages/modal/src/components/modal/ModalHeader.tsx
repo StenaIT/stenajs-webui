@@ -3,8 +3,7 @@ import { FlatButton, Icon } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import { BaseModalProps, DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
-import { Box, Column, Row, Txt } from "@stenajs-webui/core";
-import { cssColor } from "@stenajs-webui/theme";
+import { Box, Row, Txt } from "@stenajs-webui/core";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
@@ -12,8 +11,6 @@ interface Props {
   header?: ReactNode;
   headerText?: string;
   draggable: BaseModalProps["draggable"];
-  draggableHandle?: boolean;
-  draggableBar?: boolean;
 }
 
 export const ModalHeader: React.FC<Props> = ({
@@ -21,31 +18,33 @@ export const ModalHeader: React.FC<Props> = ({
   header,
   headerText,
   draggable,
-  draggableHandle,
-  draggableBar,
 }) => {
   return (
-    <Column borderBottom={"1px solid var(--swui-modal-header-border-color)"}>
-      {draggable && draggableBar && (
+    <Row
+      spacing={2}
+      indent={2}
+      borderBottom={"1px solid var(--swui-modal-header-border-color)"}
+    >
+      {draggable && (
         <Box
           className={DRAGGABLE_HANDLE_CLASSNAME}
-          width={"100%"}
-          spacing={0.5}
-          background={cssColor("--lhds-color-ui-300")}
-        />
-      )}
-      <Row spacing indent>
-        {draggable && draggableHandle && (
-          <Icon icon={faGripVertical} className={DRAGGABLE_HANDLE_CLASSNAME} />
-        )}
-        <Row spacing indent={2} flex={1} alignItems={"center"}>
-          {headerText && <Txt size={"large"}>{headerText}</Txt>}
-          {header}
-        </Row>
-        <Box alignSelf={"flex-start"}>
-          <FlatButton onClick={onRequestClose} leftIcon={faTimes} />
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Icon icon={faGripVertical} />
         </Box>
+      )}
+      <Row indent flex={1} alignItems={"center"}>
+        {headerText && <Txt size={"large"}>{headerText}</Txt>}
+        {header}
       </Row>
-    </Column>
+      <Box>
+        <FlatButton
+          alignSelf={"flex-start"}
+          onClick={onRequestClose}
+          leftIcon={faTimes}
+        />
+      </Box>
+    </Row>
   );
 };

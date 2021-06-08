@@ -129,42 +129,22 @@ export const _BaseModal = () => {
 };
 
 export const DraggableModal = () => {
-  const [isBarModalOpen, setBarModalOpen] = useState(false);
-  const [isHandleModalOpen, setHandleModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   return (
     <div>
       <Txt>These are different takes on a draggable modal.</Txt>
       <Space num={2} />
-      <PrimaryButton
-        onClick={() => setBarModalOpen(true)}
-        label={"Open bar modal"}
-      />
-      <Space num={2} />
-      <PrimaryButton
-        onClick={() => setHandleModalOpen(true)}
-        label={"Open handle modal"}
-      />
+      <PrimaryButton onClick={() => setModalOpen(true)} label={"Open modal"} />
       <Space num={2} />
       <PrimaryButton
         onClick={() => setCustomModalOpen(true)}
         label={"Open custom modal"}
       />
       <Modal
-        headerText={"Bar modal"}
-        isOpen={isBarModalOpen}
-        onRequestClose={() => setBarModalOpen(false)}
-        draggable
-        draggableBar
-      >
-        <Box indent={2} spacing>
-          <Txt>Drag me using the bar in the top.</Txt>
-        </Box>
-      </Modal>
-      <Modal
-        headerText={"Handle modal"}
-        isOpen={isHandleModalOpen}
-        onRequestClose={() => setHandleModalOpen(false)}
+        headerText={"Draggable modal"}
+        isOpen={isModalOpen}
+        onRequestClose={() => setModalOpen(false)}
         draggable
         draggableHandle
       >
@@ -173,7 +153,7 @@ export const DraggableModal = () => {
         </Box>
       </Modal>
       <Modal
-        headerText={"Custom modal"}
+        headerText={"Draggable modal with custom areas"}
         header={
           <Row
             background={cssColor("--lhds-color-orange-200")}
@@ -181,6 +161,8 @@ export const DraggableModal = () => {
             spacing
             indent={2}
             justifyContent={"space-around"}
+            alignItems={"center"}
+            height={64}
           >
             <Txt variant={"bold"}>This is custom content</Txt>
             <Box
@@ -197,10 +179,9 @@ export const DraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>Drag me using the customized draggable part of my header.</Txt>
-          <Space num={2} />
-          <Txt variant={"bold"}>
-            Don't forget to specify the draggable part in the code!
+          <Txt>
+            Drag me using the handle on the left or the customized draggable
+            part of my header.
           </Txt>
         </Box>
       </Modal>
