@@ -146,7 +146,6 @@ export const DraggableModal = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setModalOpen(false)}
         draggable
-        draggableHandle
       >
         <Box indent={2} spacing>
           <Txt>Drag me using the handle on the left.</Txt>

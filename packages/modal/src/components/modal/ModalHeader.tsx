@@ -38,12 +38,8 @@ export const ModalHeader: React.FC<Props> = ({
         {headerText && <Txt size={"large"}>{headerText}</Txt>}
         {header}
       </Row>
-      <Box>
-        <FlatButton
-          alignSelf={"flex-start"}
-          onClick={onRequestClose}
-          leftIcon={faTimes}
-        />
+      <Box alignSelf={"flex-start"}>
+        <FlatButton onClick={onRequestClose} leftIcon={faTimes} />
       </Box>
     </Row>
   );
