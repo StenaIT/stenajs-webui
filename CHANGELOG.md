@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ButtonContent
+
+- `rightIcon` has no margin if it is the first child
+
 ## 11.3.0
 
 ### ActionMenu
