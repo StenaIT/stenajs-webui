@@ -9,6 +9,7 @@ import * as ReactModal from "react-modal";
 import { BaseModal, DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
+import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 
 export default {
   title: "modal/Modal",
@@ -130,27 +131,32 @@ export const _BaseModal = () => {
 
 export const DraggableModal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
   return (
     <div>
-      <Txt>These are different takes on a draggable modal.</Txt>
-      <Space num={2} />
       <PrimaryButton onClick={() => setModalOpen(true)} label={"Open modal"} />
-      <Space num={2} />
-      <PrimaryButton
-        onClick={() => setCustomModalOpen(true)}
-        label={"Open custom modal"}
-      />
       <Modal
         headerText={"Draggable modal"}
         isOpen={isModalOpen}
         onRequestClose={() => setModalOpen(false)}
+        shouldCloseOnOverlayClick
         draggable
       >
         <Box indent={2} spacing>
           <Txt>Drag me using the handle on the left.</Txt>
         </Box>
       </Modal>
+    </div>
+  );
+};
+
+export const CustomDraggableModal = () => {
+  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
+  return (
+    <div>
+      <PrimaryButton
+        onClick={() => setCustomModalOpen(true)}
+        label={"Open custom modal"}
+      />
       <Modal
         headerText={"Draggable modal with custom areas"}
         header={
@@ -175,12 +181,39 @@ export const DraggableModal = () => {
         }
         isOpen={isCustomModalOpen}
         onRequestClose={() => setCustomModalOpen(false)}
+        shouldCloseOnOverlayClick
         draggable
       >
         <Box indent={2} spacing>
           <Txt>
             Drag me using the handle on the left or the customized draggable
             part of my header.
+          </Txt>
+        </Box>
+      </Modal>
+    </div>
+  );
+};
+
+export const DraggableModalWithCustomHandleIcon = () => {
+  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
+  return (
+    <div>
+      <PrimaryButton
+        onClick={() => setCustomModalOpen(true)}
+        label={"Open modal"}
+      />
+      <Modal
+        headerText={"Draggable modal with custom handle icon"}
+        isOpen={isCustomModalOpen}
+        onRequestClose={() => setCustomModalOpen(false)}
+        shouldCloseOnOverlayClick
+        draggable
+        handleIcon={faJedi}
+      >
+        <Box indent={2} spacing>
+          <Txt>
+            Drag me using the <Txt variant={"caption"}>force</Txt>
           </Txt>
         </Box>
       </Modal>

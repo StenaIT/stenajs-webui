@@ -1,14 +1,12 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
-import { ReactNode } from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
-import { ModalHeader } from "./ModalHeader";
+import { ModalHeader, ModalHeaderProps } from "./ModalHeader";
 
-export interface ModalProps extends BaseModalProps {
-  header?: ReactNode;
-  headerText?: string;
+export interface ModalProps extends BaseModalProps, ModalHeaderProps {
   spacing?: number;
   indent?: number;
+  draggable?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -17,18 +15,22 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   spacing,
   indent,
+  draggable = false,
+  onRequestClose,
+  handleIcon,
   ...props
 }) => {
   const activeSpacing = typeof spacing === "number" ? spacing : 1;
   const activeIndent = typeof indent === "number" ? indent : 1;
 
   return (
-    <BaseModal {...props}>
+    <BaseModal {...props} onRequestClose={onRequestClose} draggable={draggable}>
       <ModalHeader
-        onRequestClose={props.onRequestClose}
+        onRequestClose={onRequestClose}
         header={header}
         headerText={headerText}
-        draggable={props.draggable}
+        draggable={draggable}
+        handleIcon={handleIcon}
       />
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}

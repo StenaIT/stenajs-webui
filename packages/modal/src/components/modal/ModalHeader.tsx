@@ -5,19 +5,21 @@ import { ReactNode } from "react";
 import { BaseModalProps, DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
 import { Box, Row, Txt } from "@stenajs-webui/core";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-interface Props {
+export interface ModalHeaderProps extends Pick<BaseModalProps, "draggable"> {
   onRequestClose?: () => void;
   header?: ReactNode;
   headerText?: string;
-  draggable: BaseModalProps["draggable"];
+  handleIcon?: IconDefinition;
 }
 
-export const ModalHeader: React.FC<Props> = ({
+export const ModalHeader: React.FC<ModalHeaderProps> = ({
   onRequestClose,
   header,
   headerText,
   draggable,
+  handleIcon = faGripVertical,
 }) => {
   return (
     <Row
@@ -31,7 +33,7 @@ export const ModalHeader: React.FC<Props> = ({
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <Icon icon={faGripVertical} />
+          <Icon icon={handleIcon} />
         </Box>
       )}
       <Row indent flex={1} alignItems={"center"}>
