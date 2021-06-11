@@ -55,7 +55,7 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
       mountOnEnter = true,
       icon = faChevronUp,
       iconCollapsed = faChevronDown,
-      iconSize = 12,
+      iconSize = 8,
       children,
       autoFocus = false,
       ...divProps
