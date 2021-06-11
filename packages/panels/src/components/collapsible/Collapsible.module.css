@@ -1,6 +1,10 @@
 .collapsible {
   --swui-collapsible-animation-time: var(--swui-animation-time-fast);
 
+  --swui-collapsible-expanded-line-background-color: var(
+    --swui-primary-action-color
+  );
+
   /*
    * Header
    */
@@ -94,7 +98,21 @@
     }
   }
 
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: var(--swui-collapsible-expanded-line-background-color);
+    top: -1px;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
   &[aria-expanded="false"] {
+    --swui-collapsible-expanded-line-background-color: transparent;
     .indicator {
       color: var(--swui-collapsible-header-indicator-color-collapsed);
     }
@@ -102,6 +120,10 @@
 
   .label {
     margin-right: auto;
+
+    span {
+      font-weight: var(--swui-collapsible-header-font-weight);
+    }
   }
 
   .contentLeft,

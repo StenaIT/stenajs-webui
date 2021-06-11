@@ -144,6 +144,29 @@ export const Overview = () => {
   );
 };
 
+export const Levels = () => {
+  return (
+    <Column width={300}>
+      <StatefulCollapsible label={"Level 1"} collapsed={false}>
+        <StatefulCollapsible label={"Level 2"} collapsed={false}>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+        </StatefulCollapsible>
+        <StatefulCollapsible label={"Level 2"} collapsed={false}>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+        </StatefulCollapsible>
+      </StatefulCollapsible>
+      <StatefulCollapsible label={"Level 1"} collapsed={false}>
+        <StatefulCollapsible label={"Level 2"} collapsed={false}>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+          <CollapsibleClickableContent>Level 3</CollapsibleClickableContent>
+        </StatefulCollapsible>
+      </StatefulCollapsible>
+    </Column>
+  );
+};
+
 export const AlternativeIcons = () => {
   const [state, setState] = useState({
     r2d2: false,
