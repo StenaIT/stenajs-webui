@@ -92,13 +92,13 @@ export const Details = () => {
         contentAfterHeading={<Heading variant={"h4"}>7133842</Heading>}
         contentCenter={
           <Row alignItems={"center"}>
-            <Icon icon={faCircle} color={cssColor("--lhds-color-green-500")} />
+            <Icon icon={faCircle} color={cssColor("--lhds-color-green-600")} />
             <Space />
             <Text>Confirmed</Text>
             <Indent num={2} />
             <Icon
               icon={faCreditCard}
-              color={cssColor("--lhds-color-orange-500")}
+              color={cssColor("--lhds-color-orange-600")}
             />
             <Space />
             <Text>Partially paid</Text>
@@ -154,7 +154,7 @@ export const Switch = () => {
         text={"Switch booking: 71338164"}
         contentAfterHeading={
           <Row>
-            <Icon icon={faCircle} color={cssColor("--lhds-color-green-500")} />
+            <Icon icon={faCircle} color={cssColor("--lhds-color-green-600")} />
             <Space />
             <Text>Confirmed</Text>
           </Row>
@@ -184,7 +184,7 @@ export const Approved = () => {
           <Icon
             icon={faCheckSquare}
             size={26}
-            color={cssColor("--lhds-color-green-500")}
+            color={cssColor("--lhds-color-green-600")}
           />
         }
         contentRight={<FlatButton leftIcon={faTimes} />}
