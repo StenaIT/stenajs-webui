@@ -20,7 +20,7 @@
   margin-right: var(--swui-metrics-indent);
 }
 
-.rightWrapper {
+.rightWrapper:not(:first-child) {
   margin-left: var(--swui-metrics-indent);
 }
 

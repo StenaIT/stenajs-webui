@@ -6,6 +6,12 @@
 
 - Small chip wrapping fix.
 
+## 11.3.1
+
+### ButtonContent
+
+- `rightIcon` has no margin if it is the first child
+
 ## 11.3.0
 
 ### ActionMenu
