@@ -18,7 +18,7 @@
 
 #### StandardTable
 
-`renderCell` has changed it arguments.
+`renderCell` has changed its arguments.
 
 It now receives an options object as argument instead of multiple arguments.
 
