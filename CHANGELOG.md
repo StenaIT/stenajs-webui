@@ -8,6 +8,7 @@
 - `renderCell` function now receives `isSelected` flag. True if checkbox is checked.
 - Fixed bug where `left` was improperly set when
   `stickyCheckboxColumn` was true but `showRowCheckbox` was false.
+- Column group now has `error` property, which displays an error triangle to the right of the label.
 
 ### ChipMultiSelect
 
