@@ -9,11 +9,10 @@ export const createEditableTextCellWithStatus = <TItemValue, TItem>(
   warningOnEmpty?: string | ((item: TItem) => string),
   crudStatusProvider?: (item: TItem) => EntityCrudStatus | undefined,
   modifiedFieldProvider?: (item: TItem) => ModifiedFieldItemState | undefined
-): StandardTableCellRenderer<TItemValue, TItem> => (
+): StandardTableCellRenderer<TItemValue, TItem> => ({
   label,
-  _itemValue,
-  _item,
-  {
+  item,
+  gridCell: {
     editorValue,
     isEditing,
     setEditorValue,
@@ -22,17 +21,17 @@ export const createEditableTextCellWithStatus = <TItemValue, TItem>(
     stopEditing,
     stopEditingAndMove,
   },
-  isEditable
-) => {
+  isEditable,
+}) => {
   const warnOnEmpty =
     typeof warningOnEmpty === "function"
-      ? warningOnEmpty(_item)
+      ? warningOnEmpty(item)
       : warningOnEmpty;
 
-  const crudStatus = crudStatusProvider ? crudStatusProvider(_item) : undefined;
+  const crudStatus = crudStatusProvider ? crudStatusProvider(item) : undefined;
 
   const modifiedField = modifiedFieldProvider
-    ? modifiedFieldProvider(_item)
+    ? modifiedFieldProvider(item)
     : undefined;
 
   return isEditable && isEditing ? (

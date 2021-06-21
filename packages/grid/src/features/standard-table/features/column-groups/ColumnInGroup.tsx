@@ -1,5 +1,8 @@
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Box, Heading, Indent, Row, Space } from "@stenajs-webui/core";
-import { InputSpinner } from "@stenajs-webui/elements";
+import { Icon, InputSpinner } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
+import { Tooltip } from "@stenajs-webui/tooltip";
 import { Property } from "csstype";
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
@@ -20,7 +23,14 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   isFirstInGroup,
   borderFromGroup,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
-  const { label, render, contentLeft, contentRight, loading } = groupConfig;
+  const {
+    label,
+    render,
+    contentLeft,
+    contentRight,
+    loading,
+    error,
+  } = groupConfig;
   const {
     flex = 1,
     width,
@@ -54,12 +64,17 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
           {contentRight}
         </>
       )}
-      {loading && (
-        <>
-          <Indent />
-          <InputSpinner />
-        </>
-      )}
+      {(error || loading) && <Indent />}
+      {loading ? (
+        <InputSpinner />
+      ) : error ? (
+        <Tooltip label={error}>
+          <Icon
+            icon={faExclamationTriangle}
+            color={cssColor("--lhds-color-red-500")}
+          />
+        </Tooltip>
+      ) : undefined}
     </>
   ) : null;
 

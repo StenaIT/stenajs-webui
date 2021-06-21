@@ -6,6 +6,23 @@
 
 - Small chip wrapping fix.
 
+### Breaking changes
+
+#### StandardTable
+
+`renderCell` has changed it arguments.
+
+It now receives an options object as argument instead of multiple arguments.
+
+Change from:
+
+```
+// Old
+renderCell: (label, item) => (
+// New
+renderCell: ({ label, item }) => (
+```
+
 ## 11.3.1
 
 ### ButtonContent

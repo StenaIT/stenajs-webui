@@ -8,6 +8,7 @@ import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import {
   useStandardTableConfig,
   useStandardTableId,
+  useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
@@ -34,13 +35,22 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   disableBorderLeft,
 }: StandardTableCellProps<TItem>) {
   const {
+    keyResolver,
     enableGridCell,
     gridCellOptions: gridCellOptionsForTable,
     stickyCheckboxColumn,
+    showRowCheckbox,
   } = useStandardTableConfig();
+
+  const selectedIds = useStandardTableState().selectedIds.selectedIds;
   const tableId = useStandardTableId();
   const onKeyDown = useOnKeyDownContext();
   const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
+
+  const isSelected = useMemo(() => {
+    const itemId = keyResolver(item);
+    return selectedIds.indexOf(itemId) >= 0;
+  }, [item, keyResolver, selectedIds]);
 
   const {
     itemValueResolver,
@@ -111,11 +121,18 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const content = useMemo(
     () =>
       renderCell ? (
-        renderCell(label, itemValue, item, gridCell, editable)
+        renderCell({
+          label,
+          value: itemValue,
+          item,
+          gridCell,
+          isEditable: editable,
+          isSelected,
+        })
       ) : (
         <TextCell label={label} />
       ),
-    [label, itemValue, item, gridCell, renderCell, editable]
+    [renderCell, label, itemValue, item, gridCell, editable, isSelected]
   );
 
   const activeBorderLeft = getCellBorder(
@@ -138,7 +155,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       sticky={sticky}
       zIndex={zIndex}
       left={
-        sticky && stickyCheckboxColumn && left == null
+        sticky && showRowCheckbox && stickyCheckboxColumn && left == null
           ? "45px"
           : sticky && !stickyCheckboxColumn && left == null
           ? "0px"
