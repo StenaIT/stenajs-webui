@@ -2,6 +2,11 @@
 
 ## Next
 
+### StandardTable
+
+- `renderCell` receives options argument.
+- `renderCell` function now receives `isSelected` flag. True if checkbox is checked.
+
 ### ChipMultiSelect
 
 - Small chip wrapping fix.
