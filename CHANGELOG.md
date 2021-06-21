@@ -6,6 +6,8 @@
 
 - `renderCell` receives options argument.
 - `renderCell` function now receives `isSelected` flag. True if checkbox is checked.
+- Fixed bug where `left` was improperly set when
+  `stickyCheckboxColumn` was true but `showRowCheckbox` was false.
 
 ### ChipMultiSelect
 
