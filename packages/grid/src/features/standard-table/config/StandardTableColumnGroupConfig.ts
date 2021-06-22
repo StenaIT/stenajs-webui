@@ -8,4 +8,5 @@ export interface StandardTableColumnGroupConfig<TColumnKey extends string> {
   columnOrder: Array<TColumnKey>;
   borderLeft?: boolean | string;
   loading?: boolean;
+  error?: string;
 }

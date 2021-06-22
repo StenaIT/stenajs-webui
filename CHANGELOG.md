@@ -2,10 +2,41 @@
 
 ## Next
 
+### StandardTable
+
+- `renderCell` receives options argument.
+- `renderCell` function now receives `isSelected` flag. True if checkbox is checked.
+- Fixed bug where `left` was improperly set when
+  `stickyCheckboxColumn` was true but `showRowCheckbox` was false.
+- Column group now has `error` property, which displays an error triangle to the right of the label.
+
+### ChipMultiSelect
+
+- Small chip wrapping fix.
+
 ### Modal
 
 - Restricted the draggable area of a modal to the new handle on the left.
   You can add more areas by adding the `DRAGGABLE_HANDLE_CLASSNAME` to any element in the modal header.
+
+### Breaking changes
+
+#### StandardTable
+
+`renderCell` has changed its arguments.
+
+It now receives an options object as argument instead of multiple arguments.
+
+Change from:
+
+```
+// Old
+renderCell: (label, item) => (
+// New
+renderCell: ({ label, item }) => (
+```
+
+## 11.3.1
 
 ### ButtonContent
 

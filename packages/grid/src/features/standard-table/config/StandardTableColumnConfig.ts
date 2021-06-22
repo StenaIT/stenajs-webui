@@ -130,12 +130,17 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (
-  label: string,
-  value: TItemValue,
-  item: TItem,
-  gridCell: UseGridCellResult<string>,
-  isEditable?: boolean
+  arg: StandardTableCellRendererArgObject<TItemValue, TItem>
 ) => ReactNode;
+
+export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
+  label: string;
+  value: TItemValue;
+  item: TItem;
+  gridCell: UseGridCellResult<string>;
+  isEditable?: boolean;
+  isSelected: boolean;
+}
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
 
