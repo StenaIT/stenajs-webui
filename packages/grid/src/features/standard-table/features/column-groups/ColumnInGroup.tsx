@@ -100,18 +100,16 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
     >
       {content && (
-        <Box
-          position={"relative"}
-          zIndex={
-            "var(--swui-sticky-column-group-label-z-index)" as Property.ZIndex
-          }
-        >
+        <Box position={"relative"}>
           <Row
             height={"var(--current-row-height)"}
             position={"absolute"}
             top={0}
             left={0}
             alignItems={"center"}
+            zIndex={
+              "var(--swui-sticky-column-group-label-z-index)" as Property.ZIndex
+            }
           >
             {content}
           </Row>

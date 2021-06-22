@@ -251,17 +251,25 @@ const createSalesPerformanceStandardTableConfig = (
           <FlatButton />
         </Indent>
       ),
-      flex: 2,
       width: "48px",
+      minWidth: "48px",
+      sticky: true,
+      left: "0px",
     }),
     leg: createColumnConfig((item) => item.info.legCode, {
-      flex: 2,
+      width: "60px",
+      minWidth: "60px",
+      sticky: true,
+      left: "48px",
     }),
     dayOfWeek: createColumnConfig(
       (item) => item.info.extraData.dayOfWeekString,
       {
         columnLabel: "Day",
-        flex: 2,
+        width: "60px",
+        minWidth: "60px",
+        sticky: true,
+        left: "108px",
       }
     ),
     departureDateTime: createColumnConfig(
@@ -271,14 +279,27 @@ const createSalesPerformanceStandardTableConfig = (
           `${format(parseISO(value), "yyyy-MM-dd")} ${
             item.info.extraData.timeString
           }`,
-        flex: 5,
+        width: "140px",
+        minWidth: "140px",
+        sticky: true,
+        left: "168px",
       }
     ),
     timeToDeparture: createColumnConfig(
       (item) => item.info.extraData.timeToDepartureString,
-      { flex: 3 }
+      {
+        width: "90px",
+        minWidth: "90px",
+        sticky: true,
+        left: "308px",
+      }
     ),
-    ship: createColumnConfig((item) => item.info.shipCode),
+    ship: createColumnConfig((item) => item.info.shipCode, {
+      width: "60px",
+      minWidth: "60px",
+      sticky: true,
+      left: "398px",
+    }),
 
     /**
      * Automation
@@ -313,7 +334,7 @@ const createSalesPerformanceStandardTableConfig = (
     status: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
-          <Popover content={<Box indent={1} spacing={1}></Box>}>
+          <Popover content={<Box indent={1} spacing={1} />}>
             <Icon
               icon={faCoffee}
               color={cssColor("--lhds-color-blue-300")}
@@ -328,7 +349,7 @@ const createSalesPerformanceStandardTableConfig = (
       renderCell: () => (
         <Indent>
           <Indent>
-            <Popover content={<Box indent={1} spacing={1}></Box>}>
+            <Popover content={<Box indent={1} spacing={1} />}>
               <Icon
                 icon={faCoffee}
                 color={cssColor("--lhds-color-blue-300")}
