@@ -46,11 +46,9 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     }
 
     const sortedList = [...items];
+    const comparator = createMultiTypeComparator(desc);
     sortedList.sort((a, b) =>
-      createMultiTypeComparator(desc)(
-        valueResolver(a) as any,
-        valueResolver(b) as any
-      )
+      comparator(valueResolver(a) as any, valueResolver(b) as any)
     );
     return sortedList;
   }, [items, valueResolver, desc]);

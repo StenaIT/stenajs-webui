@@ -65,7 +65,7 @@ export const createItemsMocks = (): Array<ListItem> => [
   {
     id: "129",
     active: true,
-    name: "No ship AB",
+    name: "Null ship AB",
     ship: null,
     numPassengers: 534,
     departure: addDays(new Date(), 12),
