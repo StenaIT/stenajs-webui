@@ -9,6 +9,7 @@
 - Fixed bug where `left` was improperly set when
   `stickyCheckboxColumn` was true but `showRowCheckbox` was false.
 - Column group now has `error` property, which displays an error triangle to the right of the label.
+- Fix problem where `contentRight` in column group could not be interacted with.
 
 ### ChipMultiSelect
 

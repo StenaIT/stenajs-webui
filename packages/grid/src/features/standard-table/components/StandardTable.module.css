@@ -5,6 +5,7 @@
   --swui-sticky-header-z-index: 2;
   --swui-sticky-column-z-index: 1;
   --swui-sticky-popover-z-index: 3;
+  --swui-sticky-column-group-label-z-index: 4;
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);
