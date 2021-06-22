@@ -45,6 +45,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
     <>
       {contentLeft && (
         <>
+          <Space />
           {contentLeft}
           <Space num={0.5} />
         </>
@@ -82,7 +83,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
 
   return (
     <Box
-      position={sticky ? "sticky" : "relative"}
+      position={sticky ? "sticky" : undefined}
       height={"var(--current-row-height)"}
       width={width}
       minWidth={minWidth ?? width}
@@ -99,15 +100,22 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
     >
       {content && (
-        <Row
-          height={"var(--current-row-height)"}
-          position={"absolute"}
-          top={0}
-          left={0}
-          alignItems={"center"}
+        <Box
+          position={"relative"}
+          zIndex={
+            "var(--swui-sticky-column-group-label-z-index)" as Property.ZIndex
+          }
         >
-          {content}
-        </Row>
+          <Row
+            height={"var(--current-row-height)"}
+            position={"absolute"}
+            top={0}
+            left={0}
+            alignItems={"center"}
+          >
+            {content}
+          </Row>
+        </Box>
       )}
     </Box>
   );
