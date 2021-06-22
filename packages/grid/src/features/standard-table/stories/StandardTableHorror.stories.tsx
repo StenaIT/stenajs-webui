@@ -286,12 +286,12 @@ const createSalesPerformanceStandardTableConfig = (
         item?.automation?.departureAutomation?.fareClassMethodName
           .toUpperCase()
           .replace("_", " ") ?? "-",
-      renderCell: (label, item) => (
+      renderCell: ({ label, item }) => (
         <Indent>
           <Tag
             label={label}
             variant={
-              item?.departureAutomation.automationEnabled
+              item?.automation.departureAutomation.automationEnabled
                 ? "success"
                 : "passive"
             }
@@ -343,7 +343,7 @@ const createSalesPerformanceStandardTableConfig = (
      */
     efpVehiclesReserved: createColumnConfig((item) => item.efpVehicles, {
       columnLabel: "Res.",
-      renderCell: (_, value) => (
+      renderCell: ({ value }) => (
         <Indent>
           <Text>{value?.salesPerformance.booked}</Text>
           <Space />
@@ -385,7 +385,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-1",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.efpHistory.minus1?.textColor}>
               {label}
@@ -403,7 +403,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-3",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.efpHistory.minus3?.textColor}>
               {label}
@@ -421,7 +421,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-7",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.efpHistory.minus7?.textColor}>
               {label}
@@ -439,7 +439,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-30",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.efpHistory.minus30?.textColor}>
               {label}
@@ -457,7 +457,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-45",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.efpHistory.minus45?.textColor}>
               {label}
@@ -517,7 +517,7 @@ const createSalesPerformanceStandardTableConfig = (
         minWidth: smallTableRowWidth,
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus1?.bgColor,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.guestsHistory.minus1?.textColor}>
               {label}
@@ -534,7 +534,7 @@ const createSalesPerformanceStandardTableConfig = (
         minWidth: smallTableRowWidth,
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus3?.bgColor,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.guestsHistory.minus3?.textColor}>
               {label}
@@ -551,7 +551,7 @@ const createSalesPerformanceStandardTableConfig = (
         minWidth: smallTableRowWidth,
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus7?.bgColor,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.guestsHistory.minus7?.textColor}>
               {label}
@@ -568,7 +568,7 @@ const createSalesPerformanceStandardTableConfig = (
         minWidth: smallTableRowWidth,
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus30?.bgColor,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.guestsHistory.minus30?.textColor}>
               {label}
@@ -585,7 +585,7 @@ const createSalesPerformanceStandardTableConfig = (
         minWidth: smallTableRowWidth,
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus45?.bgColor,
-        renderCell: (label, _, item) => (
+        renderCell: ({ label, item }) => (
           <Indent>
             <Text color={item.tableColors.guestsHistory.minus45?.textColor}>
               {label}

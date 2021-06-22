@@ -6,11 +6,9 @@ import { StandardTableCellRenderer } from "../../../config/StandardTableColumnCo
 export const createStandardEditableTextCell = <
   TItemValue,
   TItem
->(): StandardTableCellRenderer<TItemValue, TItem> => (
+>(): StandardTableCellRenderer<TItemValue, TItem> => ({
   label,
-  _itemValue,
-  _item,
-  {
+  gridCell: {
     editorValue,
     isEditing,
     setEditorValue,
@@ -18,8 +16,8 @@ export const createStandardEditableTextCell = <
     lastKeyEvent,
     stopEditing,
     stopEditingAndMove,
-  }
-) =>
+  },
+}) =>
   isEditing ? (
     <TextInput
       onValueChange={setEditorValue}
