@@ -14,6 +14,11 @@
 
 - Small chip wrapping fix.
 
+### Modal
+
+- Restricted the draggable area of a modal to the new handle on the left.
+  You can add more areas by adding the `DRAGGABLE_HANDLE_CLASSNAME` to any element in the modal header.
+
 ### Breaking changes
 
 #### StandardTable
