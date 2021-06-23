@@ -46,7 +46,7 @@ export const StandardTableCellUi = React.memo<Props>(
       <Row
         flex={width ? undefined : flex}
         width={width}
-        minWidth={minWidth ?? width}
+        minWidth={minWidth ?? width ?? "20px"}
         height={"100%"}
         background={background}
         borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
