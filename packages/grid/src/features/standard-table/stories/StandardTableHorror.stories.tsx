@@ -5,6 +5,7 @@ import { Box, Indent, Space, Text } from "@stenajs-webui/core";
 import { Chip, FlatButton, Icon, Tag } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Popover } from "@stenajs-webui/tooltip";
+import { Story } from "@storybook/react";
 import { format, parseISO } from "date-fns";
 import { round } from "lodash";
 import * as React from "react";
@@ -14,6 +15,15 @@ import { StandardTableConfig } from "../config/StandardTableConfig";
 
 export default {
   title: "grid/StandardTable/Horror",
+  decorators: [
+    (TheStory: Story) => (
+      <div
+        style={{ width: "700px", marginBottom: "450px", overflow: "scroll" }}
+      >
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export interface SalesPerformanceTableRowItem {
@@ -240,6 +250,7 @@ const createSalesPerformanceStandardTableConfig = (
   keyResolver: (item) => item.info.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
+  stickyCheckboxColumn: true,
   columns: {
     /**
      * Departure
@@ -254,13 +265,13 @@ const createSalesPerformanceStandardTableConfig = (
       width: "48px",
       minWidth: "48px",
       sticky: true,
-      left: "0px",
+      left: "calc(45px + 0px)",
     }),
     leg: createColumnConfig((item) => item.info.legCode, {
       width: "60px",
       minWidth: "60px",
       sticky: true,
-      left: "48px",
+      left: "calc(45px + 48px)",
     }),
     dayOfWeek: createColumnConfig(
       (item) => item.info.extraData.dayOfWeekString,
@@ -269,7 +280,7 @@ const createSalesPerformanceStandardTableConfig = (
         width: "60px",
         minWidth: "60px",
         sticky: true,
-        left: "108px",
+        left: "calc(45px + 48px + 60px)",
       }
     ),
     departureDateTime: createColumnConfig(
@@ -282,7 +293,7 @@ const createSalesPerformanceStandardTableConfig = (
         width: "140px",
         minWidth: "140px",
         sticky: true,
-        left: "168px",
+        left: "calc(45px + 48px + 60px + 60px)",
       }
     ),
     timeToDeparture: createColumnConfig(
@@ -291,14 +302,14 @@ const createSalesPerformanceStandardTableConfig = (
         width: "90px",
         minWidth: "90px",
         sticky: true,
-        left: "308px",
+        left: "calc(45px + 48px + 60px + 60px + 140px)",
       }
     ),
     ship: createColumnConfig((item) => item.info.shipCode, {
       width: "60px",
       minWidth: "60px",
       sticky: true,
-      left: "398px",
+      left: "calc(45px + 48px + 60px + 60px + 140px + 90px)",
     }),
 
     /**
