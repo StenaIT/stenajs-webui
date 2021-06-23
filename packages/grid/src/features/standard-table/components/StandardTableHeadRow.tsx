@@ -10,7 +10,6 @@ import {
   tableBorderLeft,
 } from "../../../config/TableConfig";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
-import { TableHeadRow } from "../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
@@ -72,33 +71,33 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   const checkboxDisabled = !items || items.length === 0;
 
   return (
-    <TableHeadRow
-      top={getTopPosition(
-        headerRowOffsetTop,
-        columnGroupOrder,
-        height,
-        stickyHeader
-      )}
-      height={height}
-      borderLeft={tableBorderLeft}
-      background={stickyHeader ? "white" : undefined}
-      position={stickyHeader ? "sticky" : undefined}
-      shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
+    <tr
       style={{
         zIndex: stickyHeader
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex,
+        top: getTopPosition(
+          headerRowOffsetTop,
+          columnGroupOrder,
+          height,
+          stickyHeader
+        ),
+        height,
+        borderLeft: tableBorderLeft,
+        background: stickyHeader ? "white" : undefined,
+        position: stickyHeader ? "sticky" : undefined,
+        boxShadow: stickyHeader
+          ? "var(--swui-sticky-header-shadow)"
+          : undefined,
       }}
     >
-      {rowIndent && <Indent num={rowIndent} />}
+      {rowIndent && (
+        <th>
+          <Indent num={rowIndent} />
+        </th>
+      )}
       {enableExpandCollapse && (
-        <Row
-          alignItems={"center"}
-          justifyContent={"center"}
-          width={"45px"}
-          minWidth={"45px"}
-          indent
-        >
+        <th style={{ width: "45px", textAlign: "left" }}>
           {showHeaderExpandCollapse && (
             <FlatButton
               size={"small"}
@@ -106,20 +105,21 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
               onClick={toggleExpanded}
             />
           )}
-        </Row>
+        </th>
       )}
       {showHeaderCheckbox && (
-        <TableHeadItem
-          width={"45px"}
-          minWidth={"45px"}
-          justifyContent={"center"}
-          overflow={"hidden"}
-          background={stickyCheckboxColumn ? "white" : undefined}
-          position={stickyCheckboxColumn ? "sticky" : undefined}
-          left={stickyCheckboxColumn ? "0px" : undefined}
-          zIndex={zIndex}
+        <th
+          style={{
+            width: "45px",
+            minWidth: "45px",
+            overflow: "hidden",
+            background: stickyCheckboxColumn ? "white" : undefined,
+            position: stickyCheckboxColumn ? "sticky" : undefined,
+            left: stickyCheckboxColumn ? "0px" : undefined,
+            zIndex: zIndex,
+          }}
         >
-          <Row alignItems={"center"}>
+          <TableHeadItem justifyContent="center">
             <Checkbox
               size={"small"}
               disabled={checkboxDisabled}
@@ -127,8 +127,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
               indeterminate={!selectionIsEmpty && !allItemsAreSelected}
               onValueChange={onClickCheckbox}
             />
-          </Row>
-        </TableHeadItem>
+          </TableHeadItem>
+        </th>
       )}
       {groupConfigs.map((groupConfig, groupIndex) => {
         return (
@@ -151,6 +151,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
         );
       })}
       {rowIndent && <Indent num={rowIndent} />}
-    </TableHeadRow>
+    </tr>
   );
 });

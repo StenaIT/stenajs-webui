@@ -6,7 +6,6 @@ import {
   tableBorderLeft,
 } from "../../../../config/TableConfig";
 import { TableHeadItem } from "../../../table-ui/components/table/TableHeadItem";
-import { TableHeadRow } from "../../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 import { ColumnGroupItem } from "./ColumnGroupItem";
@@ -44,18 +43,20 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   } = useStandardTableConfig();
 
   return (
-    <TableHeadRow
-      height={height}
-      borderLeft={tableBorderLeft}
-      top={getTopPosition(stickyHeader, headerRowOffsetTop)}
-      background={stickyHeader ? "white" : undefined}
-      position={stickyHeader ? "sticky" : undefined}
-      shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
-      zIndex={
-        stickyHeader
+    <tr
+      style={{
+        height: height,
+        borderLeft: tableBorderLeft,
+        top: getTopPosition(stickyHeader, headerRowOffsetTop),
+        background: stickyHeader ? "white" : undefined,
+        position: stickyHeader ? "sticky" : undefined,
+        boxShadow: stickyHeader
+          ? "var(--swui-sticky-header-shadow)"
+          : undefined,
+        zIndex: stickyHeader
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex
-      }
+          : zIndex,
+      }}
     >
       {rowIndent && <Indent num={rowIndent} />}
       {enableExpandCollapse && (
@@ -96,6 +97,6 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
         />
       ))}
       {rowIndent && <Indent num={rowIndent} />}
-    </TableHeadRow>
+    </tr>
   );
 });

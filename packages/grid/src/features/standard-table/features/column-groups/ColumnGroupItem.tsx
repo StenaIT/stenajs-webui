@@ -11,23 +11,19 @@ interface ColumnGroupItemProps<TColumnKey extends string> {
 export const ColumnGroupItem = React.memo(function ColumnGroupItem<
   TColumnKey extends string
 >({ groupConfig, groupIndex }: ColumnGroupItemProps<TColumnKey>) {
+  const columnId = groupConfig.columnOrder[0];
   return (
-    <>
-      {groupConfig.columnOrder.map((columnId, index) => {
-        return (
-          <ColumnInGroup<TColumnKey>
-            groupConfig={groupConfig}
-            columnId={columnId}
-            key={columnId}
-            isFirstInGroup={index === 0}
-            borderFromGroup={getCellBorderFromGroup(
-              groupIndex,
-              index,
-              groupConfig.borderLeft
-            )}
-          />
-        );
-      })}
-    </>
+    <ColumnInGroup<TColumnKey>
+      groupConfig={groupConfig}
+      columnId={columnId}
+      key={columnId}
+      colSpan={groupConfig.columnOrder.length}
+      isFirstInGroup={true}
+      borderFromGroup={getCellBorderFromGroup(
+        groupIndex,
+        0,
+        groupConfig.borderLeft
+      )}
+    />
   );
 });

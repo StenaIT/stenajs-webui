@@ -52,32 +52,38 @@ export const StandardTableHeadItem = React.memo(
     );
 
     return (
-      <TableHeadItem
-        arrow={!disableSorting && label ? arrow : undefined}
-        onClick={!disableSorting ? onClickColumnHead : undefined}
-        width={width}
-        minWidth={minWidth ?? width ?? "20px"}
-        background={background ?? "white"}
-        borderLeft={activeBorderLeft}
-        flex={width ? undefined : flex}
-        justifyContent={justifyContentHeader}
-        label={label}
-        infoIconTooltipText={infoIconTooltipText}
-        position={sticky ? "sticky" : undefined}
-        left={
-          sticky && stickyCheckboxColumn && left == null
-            ? "45px"
-            : sticky && !stickyCheckboxColumn && left == null
-            ? "0px"
-            : left
-        }
-        shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
-        zIndex={zIndex}
-        alignRight={justifyContentHeader === "flex-end"}
-        sortOrderIconVariant={
-          sortOrderIconVariant ?? defaultSortOrderIconVariant
-        }
-      />
+      <th
+        style={{
+          width: width,
+          minWidth: minWidth ?? width ?? "20px",
+          background: background ?? "white",
+          borderLeft: activeBorderLeft,
+          flex: width ? undefined : flex,
+          justifyContent: justifyContentHeader,
+          position: sticky ? "sticky" : undefined,
+          left:
+            sticky && stickyCheckboxColumn && left == null
+              ? "45px"
+              : sticky && !stickyCheckboxColumn && left == null
+              ? "0px"
+              : left,
+          boxShadow: sticky
+            ? "var(--swui-sticky-column-shadow-right)"
+            : undefined,
+          zIndex: zIndex,
+        }}
+      >
+        <TableHeadItem
+          arrow={!disableSorting && label ? arrow : undefined}
+          onClick={!disableSorting ? onClickColumnHead : undefined}
+          label={label}
+          infoIconTooltipText={infoIconTooltipText}
+          alignRight={justifyContentHeader === "flex-end"}
+          sortOrderIconVariant={
+            sortOrderIconVariant ?? defaultSortOrderIconVariant
+          }
+        />
+      </th>
     );
   }
 );

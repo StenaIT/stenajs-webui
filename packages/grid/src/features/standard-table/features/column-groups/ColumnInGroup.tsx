@@ -1,5 +1,5 @@
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { Box, Heading, Indent, Row, Space } from "@stenajs-webui/core";
+import { Heading, Indent, Row, Space } from "@stenajs-webui/core";
 import { Icon, InputSpinner } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
@@ -13,6 +13,7 @@ interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   columnId: TColumnKey;
   isFirstInGroup: boolean;
   borderFromGroup?: string;
+  colSpan: number;
 }
 
 export const ColumnInGroup = function ColumnGroupColumnItem<
@@ -22,6 +23,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   groupConfig,
   isFirstInGroup,
   borderFromGroup,
+  colSpan,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
   const {
     label,
@@ -32,7 +34,6 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
     error,
   } = groupConfig;
   const {
-    flex = 1,
     width,
     minWidth,
     zIndex,
@@ -82,40 +83,26 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   const activeBorder = getActiveBorder(borderFromGroup, borderLeft);
 
   return (
-    <Box
-      position={sticky ? "sticky" : undefined}
-      height={"var(--current-row-height)"}
-      width={width}
-      minWidth={minWidth ?? width ?? "20px"}
-      justifyContent={"flex-start"}
-      flex={width ? undefined : flex}
-      background={content || sticky ? "white" : "transparent"}
-      left={left}
-      borderLeft={activeBorder}
-      zIndex={
-        sticky
+    <th
+      colSpan={colSpan}
+      style={{
+        position: sticky ? "sticky" : undefined,
+        height: "var(--current-row-height)",
+        width: width,
+        minWidth: minWidth ?? width ?? "20px",
+        background: content || sticky ? "white" : "transparent",
+        left: left,
+        borderLeft: activeBorder,
+        zIndex: sticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex ?? 1
-      }
-      shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
+          : zIndex ?? 1,
+        boxShadow: sticky
+          ? "var(--swui-sticky-column-shadow-right)"
+          : undefined,
+      }}
     >
-      {content && (
-        <Box position={"relative"}>
-          <Row
-            height={"var(--current-row-height)"}
-            position={"absolute"}
-            top={0}
-            left={0}
-            alignItems={"center"}
-            zIndex={
-              "var(--swui-sticky-column-group-label-z-index)" as Property.ZIndex
-            }
-          >
-            {content}
-          </Row>
-        </Box>
-      )}
-    </Box>
+      <Row alignItems={"center"}>{content}</Row>
+    </th>
   );
 };
 

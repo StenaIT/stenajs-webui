@@ -9,7 +9,6 @@ import {
   tableBorderLeft,
   tableBorderLeftExpanded,
 } from "../../../config/TableConfig";
-import { TableRow } from "../../table-ui/components/table/TableRow";
 import { RowBackgroundResolverColorCombination } from "../config/StandardTableConfig";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
@@ -94,21 +93,16 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   );
 
   return (
-    <Box borderBottom={rowIndex === numRows - 1 ? tableBorder : undefined}>
-      <TableRow
-        height={"var(--current-row-height)"}
-        width={"100%"}
-        borderTop={tableBorder}
-        borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
-        background={background}
-        hoverBackground={hoverBackground}
-        style={
-          focusBackground
-            ? {
-                ["--focus-within-background" as string]: focusBackground,
-              }
-            : undefined
-        }
+    <>
+      <tr
+        style={{
+          borderLeft: isExpanded ? tableBorderLeftExpanded : tableBorderLeft,
+          background: background,
+          //hoverBackground: hoverBackground,
+          ...(focusBackground
+            ? { ["--focus-within-background" as string]: focusBackground }
+            : undefined),
+        }}
       >
         {rowIndent && (
           <Indent num={rowIndent} background={firstColumnBackground} />
@@ -154,16 +148,20 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         {rowIndent && (
           <Indent num={rowIndent} background={lastColumnBackground} />
         )}
-      </TableRow>
+      </tr>
       {enableExpandCollapse && renderRowExpansion && isExpanded && (
-        <Box
-          borderLeft={tableBorderLeftExpanded}
-          background={tableBackgroundColorExpanded}
+        <tr
+          style={{
+            borderLeft: tableBorderLeftExpanded,
+            background: tableBackgroundColorExpanded,
+          }}
         >
-          {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
-        </Box>
+          <td colSpan={200}>
+            {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
+          </td>
+        </tr>
       )}
-    </Box>
+    </>
   );
 });
 

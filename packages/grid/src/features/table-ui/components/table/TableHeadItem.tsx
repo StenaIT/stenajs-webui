@@ -1,6 +1,6 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
-import { BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
+import { Box, BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
 import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import {

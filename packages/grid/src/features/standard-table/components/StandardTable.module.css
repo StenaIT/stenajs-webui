@@ -9,6 +9,11 @@
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);
+  border-spacing: 0;
+
+  td {
+    border-top: 1px solid var(--lhds-color-ui-300);
+  }
 
   &.relaxed {
     --current-row-height: 48px;

@@ -30,7 +30,6 @@ export const StandardTableCellUi = React.memo<Props>(
     borderLeft,
     children,
     background,
-    flex,
     gridCellRequiredProps,
     isEditing,
     justifyContent,
@@ -43,22 +42,22 @@ export const StandardTableCellUi = React.memo<Props>(
     onKeyDown,
   }) {
     return (
-      <Row
-        flex={width ? undefined : flex}
-        width={width}
-        minWidth={minWidth ?? width ?? "20px"}
-        height={"100%"}
-        background={background}
-        borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
-        overflow={"hidden"}
-        position={sticky ? "sticky" : undefined}
-        left={sticky && left == null ? "0px" : left}
-        shadow={shadow}
-        zIndex={
-          sticky
+      <td
+        style={{
+          width: width,
+          minWidth: minWidth ?? width ?? "20px",
+          background: background,
+          borderLeft:
+            borderLeft === true ? tableBorder : borderLeft || undefined,
+          overflow: "hidden",
+          height: "var(--current-row-height)",
+          position: sticky ? "sticky" : undefined,
+          left: sticky && left == null ? "0px" : left,
+          boxShadow: shadow,
+          zIndex: sticky
             ? zIndex ?? ("var(--swui-sticky-column-z-index)" as Property.ZIndex)
-            : zIndex
-        }
+            : zIndex ?? 1,
+        }}
         onKeyDown={onKeyDown}
       >
         <Row
@@ -83,7 +82,7 @@ export const StandardTableCellUi = React.memo<Props>(
         >
           {children}
         </Row>
-      </Row>
+      </td>
     );
   }
 );

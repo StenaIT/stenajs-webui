@@ -65,11 +65,13 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   }
 
   return (
-    <StandardTableRowList
-      variant={variant}
-      items={items}
-      colIndexOffset={colIndexOffset}
-      rowIndexOffset={rowIndexOffset}
-    />
+    <tbody>
+      <StandardTableRowList
+        variant={variant}
+        items={items}
+        colIndexOffset={colIndexOffset}
+        rowIndexOffset={rowIndexOffset}
+      />
+    </tbody>
   );
 });

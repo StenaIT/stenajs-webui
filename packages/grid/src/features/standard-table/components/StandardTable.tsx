@@ -1,4 +1,4 @@
-import { Box, useDomId } from "@stenajs-webui/core";
+import { useDomId } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
@@ -180,7 +180,7 @@ export const StandardTable = function StandardTable<
   );
 
   return (
-    <Box className={cx(styles.standardTable, styles[variant])}>
+    <table className={cx(styles.standardTable, styles[variant])}>
       <StandardTableVariantContext.Provider value={variant}>
         <StandardTableTableIdContext.Provider
           value={tableId ?? generatedTableId}
@@ -201,15 +201,17 @@ export const StandardTable = function StandardTable<
                         value={columnGroupOrder ?? config.columnGroupOrder}
                       >
                         <OnKeyDownContext.Provider value={onKeyDown}>
-                          {(columnGroupOrder || config.columnGroupOrder) && (
-                            <ColumnGroupRow
+                          <thead>
+                            {(columnGroupOrder || config.columnGroupOrder) && (
+                              <ColumnGroupRow
+                                height={"var(--current-row-height)"}
+                              />
+                            )}
+                            <StandardTableHeadRow
+                              items={props.items}
                               height={"var(--current-row-height)"}
                             />
-                          )}
-                          <StandardTableHeadRow
-                            items={props.items}
-                            height={"var(--current-row-height)"}
-                          />
+                          </thead>
                           <StandardTableContent variant={variant} {...props} />
                         </OnKeyDownContext.Provider>
                       </StandardTableColumnGroupOrderContext.Provider>
@@ -221,6 +223,6 @@ export const StandardTable = function StandardTable<
           </StandardTableStateContext.Provider>
         </StandardTableTableIdContext.Provider>
       </StandardTableVariantContext.Provider>
-    </Box>
+    </table>
   );
 };

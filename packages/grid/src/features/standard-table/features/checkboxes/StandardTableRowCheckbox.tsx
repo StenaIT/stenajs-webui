@@ -1,4 +1,3 @@
-import { Row } from "@stenajs-webui/core";
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
@@ -38,15 +37,15 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     const { requiredProps } = gridCell;
 
     return (
-      <Row
-        alignItems={"center"}
-        justifyContent={"center"}
-        width={"45px"}
-        minWidth={"45px"}
-        indent
-        background={stickyCheckboxColumn ? "inherit" : undefined}
-        position={stickyCheckboxColumn ? "sticky" : undefined}
-        left={stickyCheckboxColumn ? "0px" : undefined}
+      <td
+        style={{
+          width: "45px",
+          minWidth: "45px",
+          background: stickyCheckboxColumn ? "inherit" : undefined,
+          position: stickyCheckboxColumn ? "sticky" : undefined,
+          left: stickyCheckboxColumn ? "0px" : undefined,
+          textAlign: "center",
+        }}
       >
         <Checkbox
           size={"small"}
@@ -55,7 +54,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
           onValueChange={onValueChange}
           {...requiredProps}
         />
-      </Row>
+      </td>
     );
   }
 );
