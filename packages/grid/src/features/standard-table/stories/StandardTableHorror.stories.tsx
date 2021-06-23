@@ -5,7 +5,6 @@ import { Box, Indent, Space, Text } from "@stenajs-webui/core";
 import { Chip, FlatButton, Icon, Tag } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Popover } from "@stenajs-webui/tooltip";
-import { Story } from "@storybook/react";
 import { format, parseISO } from "date-fns";
 import { round } from "lodash";
 import * as React from "react";
@@ -15,15 +14,6 @@ import { StandardTableConfig } from "../config/StandardTableConfig";
 
 export default {
   title: "grid/StandardTable/Horror",
-  decorators: [
-    (TheStory: Story) => (
-      <div
-        style={{ width: "700px", marginBottom: "450px", overflow: "scroll" }}
-      >
-        <TheStory />
-      </div>
-    ),
-  ],
 };
 
 export interface SalesPerformanceTableRowItem {
@@ -245,6 +235,7 @@ const items = [
 ];
 
 const createSalesPerformanceStandardTableConfig = (
+  stickyDepartures: boolean,
   loadingState: SalesPerformanceLoadingState
 ): StandardTableConfig<SalesPerformanceTableRowItem, Column, ColumnGroup> => ({
   keyResolver: (item) => item.info.id,
@@ -264,14 +255,14 @@ const createSalesPerformanceStandardTableConfig = (
       ),
       width: "48px",
       minWidth: "48px",
-      sticky: true,
-      left: "calc(45px + 0px)",
+      sticky: stickyDepartures,
+      left: stickyDepartures ? "calc(45px + 0px)" : undefined,
     }),
     leg: createColumnConfig((item) => item.info.legCode, {
       width: "60px",
       minWidth: "60px",
-      sticky: true,
-      left: "calc(45px + 48px)",
+      sticky: stickyDepartures,
+      left: stickyDepartures ? "calc(45px + 48px)" : undefined,
     }),
     dayOfWeek: createColumnConfig(
       (item) => item.info.extraData.dayOfWeekString,
@@ -279,8 +270,8 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "Day",
         width: "60px",
         minWidth: "60px",
-        sticky: true,
-        left: "calc(45px + 48px + 60px)",
+        sticky: stickyDepartures,
+        left: stickyDepartures ? "calc(45px + 48px + 60px)" : undefined,
       }
     ),
     departureDateTime: createColumnConfig(
@@ -292,8 +283,8 @@ const createSalesPerformanceStandardTableConfig = (
           }`,
         width: "140px",
         minWidth: "140px",
-        sticky: true,
-        left: "calc(45px + 48px + 60px + 60px)",
+        sticky: stickyDepartures,
+        left: stickyDepartures ? "calc(45px + 48px + 60px + 60px)" : undefined,
       }
     ),
     timeToDeparture: createColumnConfig(
@@ -301,15 +292,19 @@ const createSalesPerformanceStandardTableConfig = (
       {
         width: "90px",
         minWidth: "90px",
-        sticky: true,
-        left: "calc(45px + 48px + 60px + 60px + 140px)",
+        sticky: stickyDepartures,
+        left: stickyDepartures
+          ? "calc(45px + 48px + 60px + 60px + 140px)"
+          : undefined,
       }
     ),
     ship: createColumnConfig((item) => item.info.shipCode, {
       width: "60px",
       minWidth: "60px",
-      sticky: true,
-      left: "calc(45px + 48px + 60px + 60px + 140px + 90px)",
+      sticky: stickyDepartures,
+      left: stickyDepartures
+        ? "calc(45px + 48px + 60px + 60px + 140px + 90px)"
+        : undefined,
     }),
 
     /**
@@ -706,11 +701,29 @@ export const HorrorStory = () => {
   const s = {
     loading: false,
   };
-  const config = createSalesPerformanceStandardTableConfig({
+  const config = createSalesPerformanceStandardTableConfig(false, {
     price: s,
     guests: s,
     efpVehicles: s,
     automation: s,
   });
   return <StandardTable config={config} items={items} />;
+};
+
+export const StickyDepartureGroup = () => {
+  const s = {
+    loading: false,
+  };
+  const config = createSalesPerformanceStandardTableConfig(true, {
+    price: s,
+    guests: s,
+    efpVehicles: s,
+    automation: s,
+  });
+
+  return (
+    <div style={{ width: "700px", marginBottom: "450px", overflow: "scroll" }}>
+      <StandardTable config={config} items={items} />
+    </div>
+  );
 };
