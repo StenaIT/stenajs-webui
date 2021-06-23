@@ -1,11 +1,10 @@
-import { Box, Indent } from "@stenajs-webui/core";
+import { Indent } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { useMemo } from "react";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
-  tableBorder,
   tableBorderLeft,
   tableBorderLeftExpanded,
 } from "../../../config/TableConfig";

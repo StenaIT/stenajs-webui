@@ -1,6 +1,6 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { Indent, Row } from "@stenajs-webui/core";
+import { Indent } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import { Property } from "csstype";
