@@ -95,7 +95,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
       zIndex={
         sticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex
+          : zIndex ?? 1
       }
       shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
     >
