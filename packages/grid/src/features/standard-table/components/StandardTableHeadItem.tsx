@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import * as React from "react";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
@@ -77,7 +78,11 @@ export const StandardTableHeadItem = React.memo(
             : stickyColumn
             ? "var(--swui-sticky-column-shadow-right)"
             : undefined,
-          zIndex: zIndex,
+          zIndex: (stickyHeader && stickyColumn
+            ? "var(--swui-sticky-header-in-sticky-column-z-index)"
+            : stickyHeader
+            ? "var(--swui-sticky-header-z-index)"
+            : zIndex) as CSSProperties["zIndex"],
         }}
       >
         <TableHeadItem

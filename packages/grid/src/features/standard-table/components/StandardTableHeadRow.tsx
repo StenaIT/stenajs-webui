@@ -114,13 +114,17 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             width: "45px",
             minWidth: "45px",
             overflow: "hidden",
-            zIndex: stickyCheckboxColumn || stickyHeader ? 1 : undefined,
+            zIndex: (stickyHeader
+              ? "var(--swui-sticky-header-z-index)"
+              : stickyCheckboxColumn
+              ? "var(--swui-sticky-column-z-index)"
+              : undefined) as CSSProperties["zIndex"],
             background:
               stickyCheckboxColumn || stickyHeader ? "white" : undefined,
             position:
               stickyCheckboxColumn || stickyHeader ? "sticky" : undefined,
             left: stickyCheckboxColumn ? "0px" : undefined,
-            top: stickyHeader ? "0px" : undefined,
+            top: stickyHeaderStyle.top,
             boxShadow: stickyHeader
               ? "var(--swui-sticky-header-shadow)"
               : stickyCheckboxColumn

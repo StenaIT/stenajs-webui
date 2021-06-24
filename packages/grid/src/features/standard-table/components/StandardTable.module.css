@@ -4,8 +4,9 @@
   --swui-sticky-column-shadow-right: 4px 0 4px 0 rgba(0, 0, 0, 0.05);
   --swui-sticky-header-z-index: 2;
   --swui-sticky-column-z-index: 1;
-  --swui-sticky-popover-z-index: 3;
-  --swui-sticky-column-group-label-z-index: 4;
+  --swui-sticky-header-in-sticky-column-z-index: 3;
+  --swui-sticky-popover-z-index: 4;
+  --swui-sticky-column-group-label-z-index: 5;
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);
