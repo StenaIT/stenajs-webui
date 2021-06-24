@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+- Spinner has updated animation.
+
 ## 12.0.0
 
 ### StandardTable
