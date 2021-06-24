@@ -18,6 +18,7 @@ import {
   TableContext,
 } from "../context/StandardTableStateContext";
 import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
+import { TotalNumColumnsContext } from "../context/TotalNumColumnsContext";
 import { createColumnConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
 import { ColumnGroupRow } from "../features/column-groups/ColumnGroupRow";
 import { calculateColumnIndexPerColumnId } from "../features/column-index-per-column-id/ColumnIndexCalculator";
@@ -25,6 +26,7 @@ import { ColumnIndexPerColumnIdContext } from "../features/column-index-per-colu
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import { StandardTableOnKeyDown } from "../types/StandardTableOnKeyDown";
+import { getTotalNumColumns } from "../util/ColumnCounter";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
@@ -184,11 +186,14 @@ export const StandardTable = function StandardTable<
     [config]
   );
 
+  const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
+
   return (
     <table
       className={cx(styles.standardTable, styles[variant])}
       style={
         {
+          width: "100%",
           "--current-left-offset":
             enableExpandCollapse && stickyCheckboxColumn
               ? "calc(var(--swui-expand-cell-width) + var(--swui-checkbox-cell-width))"
@@ -200,48 +205,54 @@ export const StandardTable = function StandardTable<
         } as CSSProperties
       }
     >
-      <StandardTableVariantContext.Provider value={variant}>
-        <StandardTableTableIdContext.Provider
-          value={tableId ?? generatedTableId}
-        >
-          <StandardTableStateContext.Provider value={state}>
-            <StandardTableActionsContext.Provider value={actionsContext}>
-              <StandardTableConfigContext.Provider value={config}>
-                <GroupConfigsForRowsContext.Provider
-                  value={groupConfigsForRows}
-                >
-                  <ColumnIndexPerColumnIdContext.Provider
-                    value={columnIndexPerColumnId}
+      <TotalNumColumnsContext.Provider value={totalNumColumns}>
+        <StandardTableVariantContext.Provider value={variant}>
+          <StandardTableTableIdContext.Provider
+            value={tableId ?? generatedTableId}
+          >
+            <StandardTableStateContext.Provider value={state}>
+              <StandardTableActionsContext.Provider value={actionsContext}>
+                <StandardTableConfigContext.Provider value={config}>
+                  <GroupConfigsForRowsContext.Provider
+                    value={groupConfigsForRows}
                   >
-                    <StandardTableUsingColumnGroupsContext.Provider
-                      value={usingColumnGroups}
+                    <ColumnIndexPerColumnIdContext.Provider
+                      value={columnIndexPerColumnId}
                     >
-                      <StandardTableColumnGroupOrderContext.Provider
-                        value={columnGroupOrder ?? config.columnGroupOrder}
+                      <StandardTableUsingColumnGroupsContext.Provider
+                        value={usingColumnGroups}
                       >
-                        <OnKeyDownContext.Provider value={onKeyDown}>
-                          <thead>
-                            {(columnGroupOrder || config.columnGroupOrder) && (
-                              <ColumnGroupRow
+                        <StandardTableColumnGroupOrderContext.Provider
+                          value={columnGroupOrder ?? config.columnGroupOrder}
+                        >
+                          <OnKeyDownContext.Provider value={onKeyDown}>
+                            <thead>
+                              {(columnGroupOrder ||
+                                config.columnGroupOrder) && (
+                                <ColumnGroupRow
+                                  height={"var(--current-row-height)"}
+                                />
+                              )}
+                              <StandardTableHeadRow
+                                items={props.items}
                                 height={"var(--current-row-height)"}
                               />
-                            )}
-                            <StandardTableHeadRow
-                              items={props.items}
-                              height={"var(--current-row-height)"}
+                            </thead>
+                            <StandardTableContent
+                              variant={variant}
+                              {...props}
                             />
-                          </thead>
-                          <StandardTableContent variant={variant} {...props} />
-                        </OnKeyDownContext.Provider>
-                      </StandardTableColumnGroupOrderContext.Provider>
-                    </StandardTableUsingColumnGroupsContext.Provider>
-                  </ColumnIndexPerColumnIdContext.Provider>
-                </GroupConfigsForRowsContext.Provider>
-              </StandardTableConfigContext.Provider>
-            </StandardTableActionsContext.Provider>
-          </StandardTableStateContext.Provider>
-        </StandardTableTableIdContext.Provider>
-      </StandardTableVariantContext.Provider>
+                          </OnKeyDownContext.Provider>
+                        </StandardTableColumnGroupOrderContext.Provider>
+                      </StandardTableUsingColumnGroupsContext.Provider>
+                    </ColumnIndexPerColumnIdContext.Provider>
+                  </GroupConfigsForRowsContext.Provider>
+                </StandardTableConfigContext.Provider>
+              </StandardTableActionsContext.Provider>
+            </StandardTableStateContext.Provider>
+          </StandardTableTableIdContext.Provider>
+        </StandardTableVariantContext.Provider>
+      </TotalNumColumnsContext.Provider>
     </table>
   );
 };

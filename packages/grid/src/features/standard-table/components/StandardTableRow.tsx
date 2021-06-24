@@ -10,6 +10,7 @@ import {
 } from "../../../config/TableConfig";
 import { RowBackgroundResolverColorCombination } from "../config/StandardTableConfig";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
 import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
 import { useRowCheckbox } from "../features/checkboxes/UseRowCheckbox";
 import { useColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
@@ -92,6 +93,8 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     lastColumn,
     item
   );
+
+  const totalNumColumns = useTotalNumColumns();
 
   return (
     <>
@@ -185,7 +188,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
             background: tableBackgroundColorExpanded,
           }}
         >
-          <td colSpan={200}>
+          <td colSpan={totalNumColumns}>
             {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
           </td>
         </tr>
