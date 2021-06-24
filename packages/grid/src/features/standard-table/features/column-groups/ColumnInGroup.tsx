@@ -91,7 +91,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
         width: width,
         minWidth: minWidth ?? width ?? "20px",
         background: content || sticky ? "white" : "transparent",
-        left: left,
+        left: `calc(var(--current-left-offset) + ${left})`,
         borderLeft: activeBorder,
         zIndex: sticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)

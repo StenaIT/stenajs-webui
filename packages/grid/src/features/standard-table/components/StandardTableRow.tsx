@@ -1,8 +1,7 @@
 import { Indent } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
-import { styled } from "@storybook/theming";
 import * as React from "react";
-import { useMemo } from "react";
+import { CSSProperties, useMemo } from "react";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
@@ -24,6 +23,7 @@ import {
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableCell } from "./StandardTableCell";
+import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
 interface StandardTableItemProps<TItem> {
   item: TItem;
@@ -31,20 +31,6 @@ interface StandardTableItemProps<TItem> {
   numRows: number;
   colIndexOffset: number;
 }
-
-const TrWithHoverBackground = styled.tr<{
-  borderLeft: string | undefined;
-  focusBackground: string | undefined;
-  hoverBackground: string | undefined;
-  background: string | undefined;
-}>`
-  --focus-within-background: ${({ focusBackground }) => focusBackground};
-  border-left: ${({ borderLeft }) => borderLeft};
-  background: ${({ background }) => background};
-  &:hover {
-    background: ${({ hoverBackground }) => hoverBackground};
-  }
-`;
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
@@ -116,26 +102,47 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
       >
         {rowIndent && (
-          <Indent num={rowIndent} background={firstColumnBackground} />
+          <td>
+            <Indent num={rowIndent} background={firstColumnBackground} />
+          </td>
         )}
         {enableExpandCollapse && (
-          <StandardTableRowExpandButton
-            colIndex={colIndexOffset}
-            rowIndex={enableGridCell ? rowIndex : 0}
-            numRows={enableGridCell ? numRows : 0}
-            item={item}
-          />
+          <td
+            style={{
+              width: "var(--swui-expand-cell-width)",
+            }}
+          >
+            <StandardTableRowExpandButton
+              colIndex={colIndexOffset}
+              rowIndex={enableGridCell ? rowIndex : 0}
+              numRows={enableGridCell ? numRows : 0}
+              item={item}
+            />
+          </td>
         )}
         {showRowCheckbox && (
           <td
-            style={{
-              width: "45px",
-              minWidth: "45px",
-              background: stickyCheckboxColumn ? "inherit" : undefined,
-              position: stickyCheckboxColumn ? "sticky" : undefined,
-              left: stickyCheckboxColumn ? "0px" : undefined,
-              textAlign: "center",
-            }}
+            style={
+              {
+                width: "var(--swui-checkbox-cell-width)",
+                minWidth: "var(--swui-checkbox-cell-width)",
+                background: stickyCheckboxColumn ? "inherit" : undefined,
+                position: stickyCheckboxColumn ? "sticky" : undefined,
+                left:
+                  enableExpandCollapse && stickyCheckboxColumn
+                    ? "var(--swui-expand-cell-width)"
+                    : stickyCheckboxColumn
+                    ? "0px"
+                    : undefined,
+                textAlign: "center",
+                boxShadow: stickyCheckboxColumn
+                  ? "var(--swui-sticky-column-shadow-right)"
+                  : undefined,
+                zIndex: stickyCheckboxColumn
+                  ? "var(--swui-sticky-column-z-index)"
+                  : undefined,
+              } as CSSProperties
+            }
           >
             <StandardTableRowCheckbox
               disabled={disabled}

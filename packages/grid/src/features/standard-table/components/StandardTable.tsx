@@ -1,7 +1,7 @@
 import { useDomId } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { ReactNode, useMemo } from "react";
+import { CSSProperties, ReactNode, useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { GroupConfigsForRowsContext } from "../context/GroupConfigsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
@@ -140,7 +140,12 @@ export const StandardTable = function StandardTable<
   ...props
 }: StandardTableProps<TItem, TColumnKey, TColumnGroupKey>) {
   const generatedTableId = useDomId();
-  const { initialSortOrderDesc, initialSortOrder } = config;
+  const {
+    initialSortOrderDesc,
+    initialSortOrder,
+    enableExpandCollapse,
+    stickyCheckboxColumn,
+  } = config;
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
     tableId ?? generatedTableId,
@@ -180,7 +185,21 @@ export const StandardTable = function StandardTable<
   );
 
   return (
-    <table className={cx(styles.standardTable, styles[variant])}>
+    <table
+      className={cx(styles.standardTable, styles[variant])}
+      style={
+        {
+          "--current-left-offset":
+            enableExpandCollapse && stickyCheckboxColumn
+              ? "calc(var(--swui-expand-cell-width) + var(--swui-checkbox-cell-width))"
+              : stickyCheckboxColumn
+              ? "var(--swui-checkbox-cell-width)"
+              : enableExpandCollapse
+              ? "var(--swui-expand-cell-width)"
+              : "0px",
+        } as CSSProperties
+      }
+    >
       <StandardTableVariantContext.Provider value={variant}>
         <StandardTableTableIdContext.Provider
           value={tableId ?? generatedTableId}

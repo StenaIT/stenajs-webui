@@ -17,6 +17,7 @@ import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTable
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
+import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -86,19 +87,21 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   };
 
   return (
-    <tr
-      style={{
-        height,
-        borderLeft: tableBorderLeft,
-      }}
-    >
+    <TrWithHoverBackground height={height} borderLeft={tableBorderLeft}>
       {rowIndent && (
         <th style={stickyHeaderStyle}>
           <Indent num={rowIndent} />
         </th>
       )}
       {enableExpandCollapse && (
-        <th style={{ width: "45px", textAlign: "left", ...stickyHeaderStyle }}>
+        <th
+          style={{
+            width: "var(--swui-expand-cell-width)",
+            minWidth: "var(--swui-expand-cell-width)",
+            textAlign: "left",
+            ...stickyHeaderStyle,
+          }}
+        >
           {showHeaderExpandCollapse && (
             <FlatButton
               size={"small"}
@@ -111,8 +114,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       {showHeaderCheckbox && (
         <th
           style={{
-            width: "45px",
-            minWidth: "45px",
+            width: "var(--swui-checkbox-cell-width)",
+            minWidth: "var(--swui-checkbox-cell-width)",
             overflow: "hidden",
             zIndex: (stickyHeader
               ? "var(--swui-sticky-header-z-index)"
@@ -166,6 +169,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
         );
       })}
       {rowIndent && <Indent num={rowIndent} />}
-    </tr>
+    </TrWithHoverBackground>
   );
 });

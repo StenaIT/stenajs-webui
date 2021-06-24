@@ -1,7 +1,6 @@
 import { BoxProps, Row } from "@stenajs-webui/core";
-import { Property } from "csstype";
 import * as React from "react";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
@@ -18,7 +17,7 @@ interface Props {
   borderLeft?: string | boolean;
   children: ReactNode;
   sticky?: boolean;
-  zIndex?: number;
+  zIndex?: number | string;
   left?: string;
   shadow?: string;
   onKeyDown?: BoxProps["onKeyDown"];
@@ -54,9 +53,9 @@ export const StandardTableCellUi = React.memo<Props>(
           position: sticky ? "sticky" : undefined,
           left: sticky && left == null ? "0px" : left,
           boxShadow: shadow,
-          zIndex: sticky
-            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as Property.ZIndex)
-            : zIndex ?? 1,
+          zIndex: (sticky
+            ? zIndex ?? "var(--swui-sticky-column-z-index)"
+            : zIndex ?? 1) as CSSProperties["zIndex"],
         }}
         onKeyDown={onKeyDown}
       >

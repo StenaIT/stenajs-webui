@@ -38,8 +38,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     keyResolver,
     enableGridCell,
     gridCellOptions: gridCellOptionsForTable,
-    stickyCheckboxColumn,
-    showRowCheckbox,
   } = useStandardTableConfig();
 
   const selectedIds = useStandardTableState().selectedIds.selectedIds;
@@ -65,7 +63,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     isEditable,
     onChange,
     disableGridCell,
-    sticky,
+    sticky: stickyColumn,
     zIndex,
     left,
   } = useColumnConfigById(columnId);
@@ -152,16 +150,18 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       borderLeft={activeBorderLeft}
       flex={flex}
       background={currentBackground}
-      sticky={sticky}
-      zIndex={zIndex}
-      left={
-        sticky && showRowCheckbox && stickyCheckboxColumn && left == null
-          ? "45px"
-          : sticky && !stickyCheckboxColumn && left == null
-          ? "0px"
-          : left
+      sticky={stickyColumn}
+      zIndex={
+        zIndex ?? stickyColumn ? "var(--swui-sticky-column-z-index)" : undefined
       }
-      shadow={sticky ? "var(--swui-sticky-column-shadow-right)" : undefined}
+      left={
+        stickyColumn
+          ? `calc(var(--current-left-offset) + ${left ?? "0px"})`
+          : undefined
+      }
+      shadow={
+        stickyColumn ? "var(--swui-sticky-column-shadow-right)" : undefined
+      }
       onKeyDown={onKeyDownHandler}
     >
       {content}

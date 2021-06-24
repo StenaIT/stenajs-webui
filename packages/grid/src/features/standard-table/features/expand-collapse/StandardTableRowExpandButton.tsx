@@ -46,21 +46,15 @@ export const StandardTableRowExpandButton = function <TItem>({
     return expandCollapseDisableResolver(item);
   }, [expandCollapseDisableResolver, item]);
   return (
-    <td
-      style={{
-        width: "45px",
-      }}
-    >
-      <Row alignItems={"center"} justifyContent={"center"} indent>
-        {!buttonDisabled && (
-          <FlatButton
-            size={"small"}
-            leftIcon={isExpanded ? faChevronDown : faChevronRight}
-            onClick={toggleRowExpanded}
-            {...requiredProps}
-          />
-        )}
-      </Row>
-    </td>
+    <Row alignItems={"center"} justifyContent={"center"} indent>
+      {!buttonDisabled && (
+        <FlatButton
+          size={"small"}
+          leftIcon={isExpanded ? faChevronDown : faChevronRight}
+          onClick={toggleRowExpanded}
+          {...requiredProps}
+        />
+      )}
+    </Row>
   );
 };

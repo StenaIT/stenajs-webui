@@ -5,7 +5,6 @@ import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../../config/TableConfig";
-import { TableHeadItem } from "../../../table-ui/components/table/TableHeadItem";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 import { ColumnGroupItem } from "./ColumnGroupItem";
@@ -59,12 +58,12 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
       }}
     >
       {rowIndent && (
-        <td>
+        <th>
           <Indent num={rowIndent} />
-        </td>
+        </th>
       )}
       {enableExpandCollapse && (
-        <td>
+        <th>
           <Row
             alignItems={"center"}
             justifyContent={"center"}
@@ -72,27 +71,27 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
             minWidth={"45px"}
             indent
           />
-        </td>
+        </th>
       )}
       {showHeaderCheckbox && (
-        <TableHeadItem
-          width={"45px"}
-          minWidth={"45px"}
-          justifyContent={"center"}
-          overflow={"hidden"}
-          background={
-            showHeaderCheckbox && stickyCheckboxColumn ? "white" : undefined
-          }
-          position={
-            showHeaderCheckbox && stickyCheckboxColumn ? "sticky" : undefined
-          }
-          left={showHeaderCheckbox && stickyCheckboxColumn ? "0px" : undefined}
-          zIndex={
-            showHeaderCheckbox && stickyCheckboxColumn
-              ? zIndex ??
-                ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-              : zIndex
-          }
+        <th
+          style={{
+            background:
+              showHeaderCheckbox && stickyCheckboxColumn ? "white" : undefined,
+            position:
+              showHeaderCheckbox && stickyCheckboxColumn ? "sticky" : undefined,
+            left:
+              showHeaderCheckbox && stickyCheckboxColumn ? "0px" : undefined,
+            zIndex:
+              showHeaderCheckbox && stickyCheckboxColumn
+                ? zIndex ??
+                  ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
+                : zIndex,
+            boxShadow:
+              !stickyHeader && showHeaderCheckbox && stickyCheckboxColumn
+                ? "var(--swui-sticky-column-shadow-right)"
+                : undefined,
+          }}
         />
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (

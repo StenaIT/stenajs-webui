@@ -7,13 +7,23 @@
   --swui-sticky-header-in-sticky-column-z-index: 3;
   --swui-sticky-popover-z-index: 4;
   --swui-sticky-column-group-label-z-index: 5;
+  --swui-expand-cell-width: 45px;
+  --swui-checkbox-cell-width: 45px;
+  --swui-expand-highlight-border-width: 2px;
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);
+  --current-left-offset: 0px;
+
   border-spacing: 0;
 
   td {
     border-top: 1px solid var(--lhds-color-ui-300);
+    padding: 0;
+  }
+
+  th {
+    padding: 0;
   }
 
   &.relaxed {
