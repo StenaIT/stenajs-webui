@@ -1,5 +1,4 @@
 import { Indent, Row } from "@stenajs-webui/core";
-import { Property } from "csstype";
 import * as React from "react";
 import {
   defaultTableRowHeight,
@@ -7,25 +6,13 @@ import {
 } from "../../../../config/TableConfig";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
-import { ColumnGroupItem } from "./ColumnGroupItem";
+import { getCellBorderFromGroup } from "../../util/CellBorderCalculator";
+import { ColumnInGroup } from "./ColumnInGroup";
+import { createStickyHeaderProps } from "./StickyHeaderPropsFactory";
 
 interface ColumnGroupRowProps {
   height?: string;
 }
-
-const getTopPosition = (
-  stickyHeader: boolean | undefined,
-  headerRowOffsetTop: string | undefined
-) => {
-  if (stickyHeader && headerRowOffsetTop) {
-    return headerRowOffsetTop;
-  } else if (headerRowOffsetTop) {
-    return headerRowOffsetTop;
-  } else if (stickyHeader) {
-    return 0;
-  }
-  return undefined;
-};
 
 export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   height = defaultTableRowHeight,
@@ -41,29 +28,26 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     headerRowOffsetTop,
   } = useStandardTableConfig();
 
+  const stickyHeaderProps = createStickyHeaderProps(
+    stickyHeader,
+    headerRowOffsetTop,
+    zIndex
+  );
+
   return (
     <tr
       style={{
         height: height,
         borderLeft: tableBorderLeft,
-        top: getTopPosition(stickyHeader, headerRowOffsetTop),
-        background: stickyHeader ? "white" : undefined,
-        position: stickyHeader ? "sticky" : undefined,
-        boxShadow: stickyHeader
-          ? "var(--swui-sticky-header-shadow)"
-          : undefined,
-        zIndex: stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex,
       }}
     >
       {rowIndent && (
-        <th>
+        <th style={stickyHeaderProps}>
           <Indent num={rowIndent} />
         </th>
       )}
       {enableExpandCollapse && (
-        <th>
+        <th style={stickyHeaderProps}>
           <Row
             alignItems={"center"}
             justifyContent={"center"}
@@ -76,29 +60,34 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
       {showHeaderCheckbox && (
         <th
           style={{
-            background:
-              showHeaderCheckbox && stickyCheckboxColumn ? "white" : undefined,
+            ...stickyHeaderProps,
             position:
-              showHeaderCheckbox && stickyCheckboxColumn ? "sticky" : undefined,
-            left:
-              showHeaderCheckbox && stickyCheckboxColumn ? "0px" : undefined,
-            zIndex:
-              showHeaderCheckbox && stickyCheckboxColumn
-                ? zIndex ??
-                  ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-                : zIndex,
-            boxShadow:
-              !stickyHeader && showHeaderCheckbox && stickyCheckboxColumn
-                ? "var(--swui-sticky-column-shadow-right)"
-                : undefined,
+              stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
+            background:
+              stickyHeader || stickyCheckboxColumn ? "white" : undefined,
+            boxShadow: stickyCheckboxColumn
+              ? "var(--swui-sticky-column-shadow-right)"
+              : undefined,
+            left: stickyCheckboxColumn
+              ? enableExpandCollapse
+                ? "var(--swui-expand-cell-width)"
+                : "0px"
+              : undefined,
           }}
         />
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (
-        <ColumnGroupItem
+        <ColumnInGroup
           groupConfig={groupConfig}
-          key={groupIndex}
-          groupIndex={groupIndex}
+          columnId={groupConfig.columnOrder[0]}
+          key={groupConfig.columnOrder[0]}
+          colSpan={groupConfig.columnOrder.length}
+          isFirstInGroup={true}
+          borderFromGroup={getCellBorderFromGroup(
+            groupIndex,
+            0,
+            groupConfig.borderLeft
+          )}
         />
       ))}
       {rowIndent && <Indent num={rowIndent} />}

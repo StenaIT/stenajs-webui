@@ -7,6 +7,7 @@ import { Property } from "csstype";
 import * as React from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
+import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 
 interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
@@ -38,9 +39,10 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
     minWidth,
     zIndex,
     left,
-    sticky,
+    sticky: stickyColumn,
     borderLeft,
   } = useColumnConfigById(columnId);
+  const { stickyHeader, headerRowOffsetTop } = useStandardTableConfig();
 
   const content = isFirstInGroup ? (
     <>
@@ -81,22 +83,26 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   ) : null;
 
   const activeBorder = getActiveBorder(borderFromGroup, borderLeft);
+  const isSticky = stickyColumn || stickyHeader;
 
   return (
     <th
       colSpan={colSpan}
       style={{
-        position: sticky ? "sticky" : undefined,
+        position: isSticky ? "sticky" : undefined,
         height: "var(--current-row-height)",
         width: width,
         minWidth: minWidth ?? width ?? "20px",
-        background: content || sticky ? "white" : "transparent",
-        left: `calc(var(--current-left-offset) + ${left})`,
+        background: isSticky ? "white" : "transparent",
+        left: stickyColumn
+          ? `calc(var(--current-left-offset) + ${left})`
+          : undefined,
+        top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
         borderLeft: activeBorder,
-        zIndex: sticky
+        zIndex: isSticky
           ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
           : zIndex ?? 1,
-        boxShadow: sticky
+        boxShadow: stickyColumn
           ? "var(--swui-sticky-column-shadow-right)"
           : undefined,
       }}

@@ -42,8 +42,7 @@ export const StickyTableHeaderConfiguration = () => {
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     stickyHeader: true,
-    headerRowOffsetTop: "16px",
-    zIndex: 499,
+    headerRowOffsetTop: "20px",
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -58,7 +57,7 @@ export const StickyTableHeaderConfiguration = () => {
     <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
       <Box
         style={{
-          height: 16,
+          height: 20,
           position: "sticky",
           top: 0,
           zIndex: 500,
