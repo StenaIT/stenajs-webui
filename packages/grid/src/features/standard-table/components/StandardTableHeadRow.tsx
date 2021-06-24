@@ -117,7 +117,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             width: "var(--swui-checkbox-cell-width)",
             minWidth: "var(--swui-checkbox-cell-width)",
             overflow: "hidden",
-            zIndex: (stickyHeader
+            zIndex: (stickyHeader && stickyCheckboxColumn
+              ? "var(--swui-sticky-header-in-sticky-column-z-index)"
+              : stickyHeader
               ? "var(--swui-sticky-header-z-index)"
               : stickyCheckboxColumn
               ? "var(--swui-sticky-column-z-index)"
