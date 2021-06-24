@@ -1,5 +1,6 @@
 import { Indent } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
+import { styled } from "@storybook/theming";
 import * as React from "react";
 import { useMemo } from "react";
 import {
@@ -31,12 +32,27 @@ interface StandardTableItemProps<TItem> {
   colIndexOffset: number;
 }
 
+const TrWithHoverBackground = styled.tr<{
+  borderLeft: string | undefined;
+  focusBackground: string | undefined;
+  hoverBackground: string | undefined;
+  background: string | undefined;
+}>`
+  --focus-within-background: ${({ focusBackground }) => focusBackground};
+  border-left: ${({ borderLeft }) => borderLeft};
+  background: ${({ background }) => background};
+  &:hover {
+    background: ${({ hoverBackground }) => hoverBackground};
+  }
+`;
+
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
   rowIndex,
   numRows,
   colIndexOffset,
 }: StandardTableItemProps<TItem>) {
+  const { stickyCheckboxColumn } = useStandardTableConfig();
   const groupConfigs = useGroupConfigsForRows();
   const { columnIndexPerColumnId } = useColumnIndexPerColumnIdContext();
   const {
@@ -93,15 +109,11 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
 
   return (
     <>
-      <tr
-        style={{
-          borderLeft: isExpanded ? tableBorderLeftExpanded : tableBorderLeft,
-          background: background,
-          //hoverBackground: hoverBackground,
-          ...(focusBackground
-            ? { ["--focus-within-background" as string]: focusBackground }
-            : undefined),
-        }}
+      <TrWithHoverBackground
+        hoverBackground={hoverBackground}
+        background={background}
+        focusBackground={focusBackground}
+        borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
       >
         {rowIndent && (
           <Indent num={rowIndent} background={firstColumnBackground} />
@@ -115,14 +127,25 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
           />
         )}
         {showRowCheckbox && (
-          <StandardTableRowCheckbox
-            disabled={disabled}
-            value={isSelected}
-            onValueChange={toggleSelected}
-            colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
-            rowIndex={rowIndex}
-            numRows={numRows}
-          />
+          <td
+            style={{
+              width: "45px",
+              minWidth: "45px",
+              background: stickyCheckboxColumn ? "inherit" : undefined,
+              position: stickyCheckboxColumn ? "sticky" : undefined,
+              left: stickyCheckboxColumn ? "0px" : undefined,
+              textAlign: "center",
+            }}
+          >
+            <StandardTableRowCheckbox
+              disabled={disabled}
+              value={isSelected}
+              onValueChange={toggleSelected}
+              colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
+              rowIndex={rowIndex}
+              numRows={numRows}
+            />
+          </td>
         )}
         {groupConfigs.map((groupConfig, groupIndex) => (
           <React.Fragment key={groupIndex}>
@@ -147,7 +170,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         {rowIndent && (
           <Indent num={rowIndent} background={lastColumnBackground} />
         )}
-      </tr>
+      </TrWithHoverBackground>
       {enableExpandCollapse && renderRowExpansion && isExpanded && (
         <tr
           style={{
