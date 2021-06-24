@@ -54,6 +54,7 @@
     "redux": ">=4.0.5"
   },
   "devDependencies": {
+    "@emotion/styled": "^11.3.0",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.168",
