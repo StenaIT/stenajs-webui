@@ -36,6 +36,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     children,
     selected,
     popoverContent,
+    justifyContent = "space-between",
     loading,
     infoIconTooltipText,
     overflow = "hidden",
@@ -57,7 +58,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         alignItems={"center"}
         ref={containerRef}
         overflow={overflow}
-        justifyContent={"space-between"}
+        justifyContent={justifyContent}
         {...boxProps}
       >
         <Row alignItems={"center"} indent>

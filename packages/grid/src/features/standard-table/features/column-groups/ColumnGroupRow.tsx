@@ -58,15 +58,21 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
           : zIndex,
       }}
     >
-      {rowIndent && <Indent num={rowIndent} />}
+      {rowIndent && (
+        <td>
+          <Indent num={rowIndent} />
+        </td>
+      )}
       {enableExpandCollapse && (
-        <Row
-          alignItems={"center"}
-          justifyContent={"center"}
-          width={"45px"}
-          minWidth={"45px"}
-          indent
-        />
+        <td>
+          <Row
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={"45px"}
+            minWidth={"45px"}
+            indent
+          />
+        </td>
       )}
       {showHeaderCheckbox && (
         <TableHeadItem

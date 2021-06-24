@@ -10,6 +10,8 @@ export interface StandardTableHeaderItemProps {
   columnId: string;
   disableBorderLeft?: boolean;
   borderFromGroup?: boolean | string;
+  stickyHeader?: boolean;
+  top?: string | number;
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -17,6 +19,8 @@ export const StandardTableHeadItem = React.memo(
     columnId,
     borderFromGroup,
     disableBorderLeft,
+    stickyHeader,
+    top,
   }: StandardTableHeaderItemProps) {
     const {
       width,
@@ -27,7 +31,7 @@ export const StandardTableHeadItem = React.memo(
       borderLeft,
       infoIconTooltipText,
       background,
-      sticky,
+      sticky: stickyColumn,
       zIndex,
       left,
       sortOrderIconVariant,
@@ -60,14 +64,17 @@ export const StandardTableHeadItem = React.memo(
           borderLeft: activeBorderLeft,
           flex: width ? undefined : flex,
           justifyContent: justifyContentHeader,
-          position: sticky ? "sticky" : undefined,
+          position: stickyColumn || stickyHeader ? "sticky" : undefined,
           left:
-            sticky && stickyCheckboxColumn && left == null
+            stickyColumn && stickyCheckboxColumn && left == null
               ? "45px"
-              : sticky && !stickyCheckboxColumn && left == null
+              : stickyColumn && !stickyCheckboxColumn && left == null
               ? "0px"
               : left,
-          boxShadow: sticky
+          top: top,
+          boxShadow: stickyHeader
+            ? "var(--swui-sticky-header-shadow)"
+            : stickyColumn
             ? "var(--swui-sticky-column-shadow-right)"
             : undefined,
           zIndex: zIndex,

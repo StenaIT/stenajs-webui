@@ -31,7 +31,7 @@ export const StickyTableHeader = () => {
   };
 
   return (
-    <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
+    <Box style={{ maxHeight: "230px", overflowY: "scroll" }}>
       <StandardTable items={items} config={config} />
     </Box>
   );
