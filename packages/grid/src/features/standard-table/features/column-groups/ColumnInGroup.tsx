@@ -3,8 +3,8 @@ import { Heading, Indent, Row, Space } from "@stenajs-webui/core";
 import { Icon, InputSpinner } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
-import { Property } from "csstype";
 import * as React from "react";
+import { CSSProperties } from "react";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { useColumnConfigById } from "../../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
@@ -88,24 +88,26 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   return (
     <th
       colSpan={colSpan}
-      style={{
-        position: isSticky ? "sticky" : undefined,
-        height: "var(--current-row-height)",
-        width: width,
-        minWidth: minWidth ?? width ?? "20px",
-        background: isSticky ? "white" : "transparent",
-        left: stickyColumn
-          ? `calc(var(--current-left-offset) + ${left})`
-          : undefined,
-        top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
-        borderLeft: activeBorder,
-        zIndex: isSticky
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex ?? 1,
-        boxShadow: stickyColumn
-          ? "var(--swui-sticky-column-shadow-right)"
-          : undefined,
-      }}
+      style={
+        {
+          position: isSticky ? "sticky" : undefined,
+          height: "var(--current-row-height)",
+          width: width,
+          minWidth: minWidth ?? width ?? "20px",
+          background: isSticky ? "white" : "transparent",
+          left: stickyColumn
+            ? `calc(var(--current-left-offset) + ${left})`
+            : undefined,
+          top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
+          borderLeft: activeBorder,
+          zIndex: isSticky
+            ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"
+            : zIndex ?? 1,
+          boxShadow: stickyColumn
+            ? "var(--swui-sticky-column-shadow-right)"
+            : undefined,
+        } as CSSProperties
+      }
     >
       <Row alignItems={"center"}>{content}</Row>
     </th>

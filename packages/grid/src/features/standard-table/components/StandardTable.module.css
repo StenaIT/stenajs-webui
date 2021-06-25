@@ -5,8 +5,9 @@
   --swui-sticky-header-z-index: 1;
   --swui-sticky-column-z-index: 2;
   --swui-sticky-header-in-sticky-column-z-index: 3;
-  --swui-sticky-popover-z-index: 4;
-  --swui-sticky-column-group-label-z-index: 5;
+  --swui-sticky-header-column-group-z-index: 4;
+  --swui-sticky-popover-z-index: 5;
+  --swui-sticky-column-group-label-z-index: 6;
   --swui-expand-cell-width: 45px;
   --swui-checkbox-cell-width: 45px;
   --swui-expand-highlight-border-width: 2px;
