@@ -167,6 +167,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                 colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
                 rowIndex={rowIndex}
                 numRows={numRows}
+                stickyColumnGroupLeft={groupConfig.sticky && groupIndex === 0}
+                stickyColumnGroupRight={
+                  groupConfig.sticky && groupIndex === groupConfigs.length - 1
+                }
                 borderFromGroup={getCellBorderFromGroup(
                   groupIndex,
                   index,

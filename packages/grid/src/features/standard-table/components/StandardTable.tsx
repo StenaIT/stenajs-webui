@@ -32,6 +32,8 @@ import { ensureConfigHasValidSticky } from "../util/StickyColumnGroupValidator";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
+import { StickyColumnOffsetContext } from "../context/StickyColumnOffsetContext";
+import { calculateOffsetForColumnInStickyColumnGroups } from "../util/StickyColumnGroupOffsetCalculator";
 
 export interface StandardTableProps<
   TItem,
@@ -190,6 +192,11 @@ export const StandardTable = function StandardTable<
 
   const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
 
+  const stickyColumnOffsetContext = useMemo(
+    () => calculateOffsetForColumnInStickyColumnGroups(config),
+    [config]
+  );
+
   const validationError = useMemo(() => {
     try {
       ensureConfigHasValidSticky(config);
@@ -220,54 +227,56 @@ export const StandardTable = function StandardTable<
         } as CSSProperties
       }
     >
-      <TotalNumColumnsContext.Provider value={totalNumColumns}>
-        <StandardTableVariantContext.Provider value={variant}>
-          <StandardTableTableIdContext.Provider
-            value={tableId ?? generatedTableId}
-          >
-            <StandardTableStateContext.Provider value={state}>
-              <StandardTableActionsContext.Provider value={actionsContext}>
-                <StandardTableConfigContext.Provider value={config}>
-                  <GroupConfigsForRowsContext.Provider
-                    value={groupConfigsForRows}
-                  >
-                    <ColumnIndexPerColumnIdContext.Provider
-                      value={columnIndexPerColumnId}
+      <StickyColumnOffsetContext.Provider value={stickyColumnOffsetContext}>
+        <TotalNumColumnsContext.Provider value={totalNumColumns}>
+          <StandardTableVariantContext.Provider value={variant}>
+            <StandardTableTableIdContext.Provider
+              value={tableId ?? generatedTableId}
+            >
+              <StandardTableStateContext.Provider value={state}>
+                <StandardTableActionsContext.Provider value={actionsContext}>
+                  <StandardTableConfigContext.Provider value={config}>
+                    <GroupConfigsForRowsContext.Provider
+                      value={groupConfigsForRows}
                     >
-                      <StandardTableUsingColumnGroupsContext.Provider
-                        value={usingColumnGroups}
+                      <ColumnIndexPerColumnIdContext.Provider
+                        value={columnIndexPerColumnId}
                       >
-                        <StandardTableColumnGroupOrderContext.Provider
-                          value={columnGroupOrder ?? config.columnGroupOrder}
+                        <StandardTableUsingColumnGroupsContext.Provider
+                          value={usingColumnGroups}
                         >
-                          <OnKeyDownContext.Provider value={onKeyDown}>
-                            <thead>
-                              {(columnGroupOrder ||
-                                config.columnGroupOrder) && (
-                                <ColumnGroupRow
+                          <StandardTableColumnGroupOrderContext.Provider
+                            value={columnGroupOrder ?? config.columnGroupOrder}
+                          >
+                            <OnKeyDownContext.Provider value={onKeyDown}>
+                              <thead>
+                                {(columnGroupOrder ||
+                                  config.columnGroupOrder) && (
+                                  <ColumnGroupRow
+                                    height={"var(--current-row-height)"}
+                                  />
+                                )}
+                                <StandardTableHeadRow
+                                  items={props.items}
                                   height={"var(--current-row-height)"}
                                 />
-                              )}
-                              <StandardTableHeadRow
-                                items={props.items}
-                                height={"var(--current-row-height)"}
+                              </thead>
+                              <StandardTableContent
+                                variant={variant}
+                                {...props}
                               />
-                            </thead>
-                            <StandardTableContent
-                              variant={variant}
-                              {...props}
-                            />
-                          </OnKeyDownContext.Provider>
-                        </StandardTableColumnGroupOrderContext.Provider>
-                      </StandardTableUsingColumnGroupsContext.Provider>
-                    </ColumnIndexPerColumnIdContext.Provider>
-                  </GroupConfigsForRowsContext.Provider>
-                </StandardTableConfigContext.Provider>
-              </StandardTableActionsContext.Provider>
-            </StandardTableStateContext.Provider>
-          </StandardTableTableIdContext.Provider>
-        </StandardTableVariantContext.Provider>
-      </TotalNumColumnsContext.Provider>
+                            </OnKeyDownContext.Provider>
+                          </StandardTableColumnGroupOrderContext.Provider>
+                        </StandardTableUsingColumnGroupsContext.Provider>
+                      </ColumnIndexPerColumnIdContext.Provider>
+                    </GroupConfigsForRowsContext.Provider>
+                  </StandardTableConfigContext.Provider>
+                </StandardTableActionsContext.Provider>
+              </StandardTableStateContext.Provider>
+            </StandardTableTableIdContext.Provider>
+          </StandardTableVariantContext.Provider>
+        </TotalNumColumnsContext.Provider>
+      </StickyColumnOffsetContext.Provider>
     </table>
   );
 };

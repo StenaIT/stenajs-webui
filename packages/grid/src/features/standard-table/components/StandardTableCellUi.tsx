@@ -19,6 +19,7 @@ interface Props {
   sticky?: boolean;
   zIndex?: number | string;
   left?: string;
+  right?: string;
   shadow?: string;
   onKeyDown?: BoxProps["onKeyDown"];
 }
@@ -36,6 +37,7 @@ export const StandardTableCellUi = React.memo<Props>(
     minWidth,
     sticky,
     left,
+    right,
     zIndex,
     shadow,
     onKeyDown,
@@ -51,7 +53,8 @@ export const StandardTableCellUi = React.memo<Props>(
           overflow: "hidden",
           height: "var(--current-row-height)",
           position: sticky ? "sticky" : undefined,
-          left: sticky && left == null ? "0px" : left,
+          left: sticky ? left : undefined,
+          right: sticky ? right : undefined,
           boxShadow: shadow,
           zIndex: (sticky
             ? zIndex ?? "var(--swui-sticky-column-z-index)"

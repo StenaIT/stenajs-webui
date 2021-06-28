@@ -14,6 +14,7 @@ import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
+import { useStickyColumnOffsetContext } from "../context/StickyColumnOffsetContext";
 
 export interface StandardTableCellProps<TItem> {
   columnId: string;
@@ -23,6 +24,8 @@ export interface StandardTableCellProps<TItem> {
   numRows: number;
   borderFromGroup?: boolean | string;
   disableBorderLeft?: boolean;
+  stickyColumnGroupLeft?: boolean;
+  stickyColumnGroupRight?: boolean;
 }
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
@@ -33,6 +36,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   numRows,
   borderFromGroup,
   disableBorderLeft,
+  stickyColumnGroupLeft,
+  stickyColumnGroupRight,
 }: StandardTableCellProps<TItem>) {
   const {
     keyResolver,
@@ -44,6 +49,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const tableId = useStandardTableId();
   const onKeyDown = useOnKeyDownContext();
   const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
+  const stickyColumnOffsetContext = useStickyColumnOffsetContext();
 
   const isSelected = useMemo(() => {
     const itemId = keyResolver(item);

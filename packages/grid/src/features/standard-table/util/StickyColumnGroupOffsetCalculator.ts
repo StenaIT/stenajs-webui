@@ -7,13 +7,46 @@ export type OffsetPerColumn<TColumnKey extends string> = Record<
 
 /**
  * This methods assumes that the config has already been validated to be correct.
- * @param columnIds
- * @param columns
+ * @param config
  */
-export const calculateOffsetForColumnInStickyColumnGroup = <
+export const calculateOffsetForColumnInStickyColumnGroups = <
   TItem,
   TColumnKey extends string
 >(
+  config: StandardTableConfig<TItem, TColumnKey>
+): OffsetPerColumn<TColumnKey> => {
+  const firstColumnGroupId = config.columnGroupOrder?.[0];
+  const lastColumnGroupId =
+    config.columnGroupOrder?.[config.columnGroupOrder?.length - 1];
+
+  const firstColumnConfig = firstColumnGroupId
+    ? config.columnGroups?.[firstColumnGroupId]
+    : undefined;
+  const lastColumnConfig = lastColumnGroupId
+    ? config.columnGroups?.[lastColumnGroupId]
+    : undefined;
+
+  const left = firstColumnConfig?.sticky
+    ? calculateOffsetForColumns(
+        getColumnIdsForLeftSideStickyGroup(config),
+        config.columns
+      )
+    : undefined;
+
+  const right = lastColumnConfig?.sticky
+    ? calculateOffsetForColumns(
+        getColumnIdsForRightSideStickyGroup(config),
+        config.columns
+      )
+    : undefined;
+
+  return {
+    ...left,
+    ...right,
+  } as OffsetPerColumn<TColumnKey>;
+};
+
+export const calculateOffsetForColumns = <TItem, TColumnKey extends string>(
   columnIds: Array<TColumnKey>,
   columns: StandardTableConfig<TItem, TColumnKey>["columns"]
 ): OffsetPerColumn<TColumnKey> => {
