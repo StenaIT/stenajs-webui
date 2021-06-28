@@ -1,4 +1,5 @@
 import { useDomId } from "@stenajs-webui/core";
+import { ErrorScreen } from "@stenajs-webui/panels";
 import cx from "classnames";
 import * as React from "react";
 import { CSSProperties, ReactNode, useMemo } from "react";
@@ -27,6 +28,7 @@ import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import { StandardTableOnKeyDown } from "../types/StandardTableOnKeyDown";
 import { getTotalNumColumns } from "../util/ColumnCounter";
+import { ensureConfigHasValidSticky } from "../util/StickyColumnGroupValidator";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
@@ -187,6 +189,19 @@ export const StandardTable = function StandardTable<
   );
 
   const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
+
+  const validationError = useMemo(() => {
+    try {
+      ensureConfigHasValidSticky(config);
+      return undefined;
+    } catch (e) {
+      return e;
+    }
+  }, [config]);
+
+  if (validationError) {
+    return <ErrorScreen text={validationError.message} />;
+  }
 
   return (
     <table
