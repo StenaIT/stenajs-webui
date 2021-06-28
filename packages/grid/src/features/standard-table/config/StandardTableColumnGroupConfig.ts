@@ -9,5 +9,4 @@ export interface StandardTableColumnGroupConfig<TColumnKey extends string> {
   borderLeft?: boolean | string;
   loading?: boolean;
   error?: string;
-  sticky?: boolean;
 }

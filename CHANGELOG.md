@@ -1,5 +1,13 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Columns can now be sticky to the right.
+- When using column groups, only column groups can be sticky, not single columns.
+- New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+
 ## 12.0.0
 
 ### StandardTable

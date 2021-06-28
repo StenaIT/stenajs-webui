@@ -312,6 +312,7 @@ const createSalesPerformanceStandardTableConfig = (
   showHeaderCheckbox: true,
   showRowCheckbox: true,
   stickyCheckboxColumn: true,
+  stickyColumnGroups: stickyDepartures ? "first" : undefined,
   columns: {
     /**
      * Departure
@@ -325,14 +326,10 @@ const createSalesPerformanceStandardTableConfig = (
       ),
       width: "48px",
       minWidth: "48px",
-      sticky: stickyDepartures,
-      left: stickyDepartures ? "0px" : undefined,
     }),
     leg: createColumnConfig((item) => item.info.legCode, {
       width: "60px",
       minWidth: "60px",
-      sticky: stickyDepartures,
-      left: stickyDepartures ? "calc(48px)" : undefined,
     }),
     dayOfWeek: createColumnConfig(
       (item) => item.info.extraData.dayOfWeekString,
@@ -340,8 +337,6 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "Day",
         width: "60px",
         minWidth: "60px",
-        sticky: stickyDepartures,
-        left: stickyDepartures ? "calc(48px + 60px)" : undefined,
       }
     ),
     departureDateTime: createColumnConfig(
@@ -353,8 +348,6 @@ const createSalesPerformanceStandardTableConfig = (
           }`,
         width: "140px",
         minWidth: "140px",
-        sticky: stickyDepartures,
-        left: stickyDepartures ? "calc(48px + 60px + 60px)" : undefined,
       }
     ),
     timeToDeparture: createColumnConfig(
@@ -362,17 +355,11 @@ const createSalesPerformanceStandardTableConfig = (
       {
         width: "90px",
         minWidth: "90px",
-        sticky: stickyDepartures,
-        left: stickyDepartures ? "calc(48px + 60px + 60px + 140px)" : undefined,
       }
     ),
     ship: createColumnConfig((item) => item.info.shipCode, {
       width: "60px",
       minWidth: "60px",
-      sticky: stickyDepartures,
-      left: stickyDepartures
-        ? "calc(48px + 60px + 60px + 140px + 90px)"
-        : undefined,
     }),
 
     /**

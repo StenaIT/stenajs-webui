@@ -1,4 +1,7 @@
-import { StandardTableConfig } from "../config/StandardTableConfig";
+import {
+  StandardTableConfig,
+  StandardTableConfigWithGroups,
+} from "../../config/StandardTableConfig";
 
 export type OffsetPerColumn<TColumnKey extends string> = Record<
   TColumnKey,
@@ -13,32 +16,26 @@ export const calculateOffsetForColumnInStickyColumnGroups = <
   TItem,
   TColumnKey extends string
 >(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>
 ): OffsetPerColumn<TColumnKey> => {
-  const firstColumnGroupId = config.columnGroupOrder?.[0];
-  const lastColumnGroupId =
-    config.columnGroupOrder?.[config.columnGroupOrder?.length - 1];
+  const left =
+    config.stickyColumnGroups === "first" ||
+    config.stickyColumnGroups === "both"
+      ? calculateOffsetForColumns(
+          getColumnIdsForLeftSideStickyGroup(config),
+          config.columns,
+          true
+        )
+      : undefined;
 
-  const firstColumnConfig = firstColumnGroupId
-    ? config.columnGroups?.[firstColumnGroupId]
-    : undefined;
-  const lastColumnConfig = lastColumnGroupId
-    ? config.columnGroups?.[lastColumnGroupId]
-    : undefined;
-
-  const left = firstColumnConfig?.sticky
-    ? calculateOffsetForColumns(
-        getColumnIdsForLeftSideStickyGroup(config),
-        config.columns
-      )
-    : undefined;
-
-  const right = lastColumnConfig?.sticky
-    ? calculateOffsetForColumns(
-        getColumnIdsForRightSideStickyGroup(config),
-        config.columns
-      )
-    : undefined;
+  const right =
+    config.stickyColumnGroups === "last" || config.stickyColumnGroups === "both"
+      ? calculateOffsetForColumns(
+          getColumnIdsForRightSideStickyGroup(config),
+          config.columns,
+          false
+        )
+      : undefined;
 
   return {
     ...left,
@@ -48,10 +45,13 @@ export const calculateOffsetForColumnInStickyColumnGroups = <
 
 export const calculateOffsetForColumns = <TItem, TColumnKey extends string>(
   columnIds: Array<TColumnKey>,
-  columns: StandardTableConfig<TItem, TColumnKey>["columns"]
+  columns: StandardTableConfig<TItem, TColumnKey>["columns"],
+  includeOffsetForCheckboxAndExpand: boolean
 ): OffsetPerColumn<TColumnKey> => {
   const r = {} as OffsetPerColumn<TColumnKey>;
-  const widths: Array<string> = ["0px"];
+  const widths: Array<string> = [
+    includeOffsetForCheckboxAndExpand ? "var(--current-left-offset)" : "0px",
+  ];
   for (let i = 0; i < columnIds.length; i++) {
     const columnId = columnIds[i];
     const columnConfig = columns?.[columnId];
@@ -65,7 +65,7 @@ export const getColumnIdsForLeftSideStickyGroup = <
   TItem,
   TColumnKey extends string
 >(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>
 ): Array<TColumnKey> => {
   const columnGroupId = config.columnGroupOrder?.[0];
   if (!columnGroupId) {
@@ -79,7 +79,7 @@ export const getColumnIdsForRightSideStickyGroup = <
   TItem,
   TColumnKey extends string
 >(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>
 ): Array<TColumnKey> => {
   const columnGroupId =
     config.columnGroupOrder?.[config.columnGroupOrder?.length - 1];

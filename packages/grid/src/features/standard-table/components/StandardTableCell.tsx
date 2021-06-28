@@ -2,6 +2,7 @@ import * as React from "react";
 import { KeyboardEventHandler, useCallback, useMemo } from "react";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 import { useOnKeyDownContext } from "../context/OnKeyDownContext";
+import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
 import { useCellBackgroundByColumnId } from "../hooks/UseCellBackground";
 import { useColumnConfigById } from "../hooks/UseColumnConfigById";
@@ -14,7 +15,6 @@ import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
-import { useStickyColumnOffsetContext } from "../context/StickyColumnOffsetContext";
 
 export interface StandardTableCellProps<TItem> {
   columnId: string;
@@ -36,8 +36,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   numRows,
   borderFromGroup,
   disableBorderLeft,
-  stickyColumnGroupLeft,
-  stickyColumnGroupRight,
 }: StandardTableCellProps<TItem>) {
   const {
     keyResolver,
@@ -49,7 +47,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const tableId = useStandardTableId();
   const onKeyDown = useOnKeyDownContext();
   const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
-  const stickyColumnOffsetContext = useStickyColumnOffsetContext();
+  const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
   const isSelected = useMemo(() => {
     const itemId = keyResolver(item);
@@ -71,7 +69,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     disableGridCell,
     sticky: stickyColumn,
     zIndex,
-    left,
   } = useColumnConfigById(columnId);
 
   const itemValue = useMemo(() => {
@@ -145,6 +142,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     borderLeft
   );
 
+  const stickyProps = stickyPropsPerColumnContext[columnId];
+
   return (
     <StandardTableCellUi
       enableGridCell={enableGridCell && !disableGridCell}
@@ -156,15 +155,12 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       borderLeft={activeBorderLeft}
       flex={flex}
       background={currentBackground}
-      sticky={stickyColumn}
+      sticky={stickyProps.sticky}
       zIndex={
         zIndex ?? stickyColumn ? "var(--swui-sticky-column-z-index)" : undefined
       }
-      left={
-        stickyColumn
-          ? `calc(var(--current-left-offset) + ${left ?? "0px"})`
-          : undefined
-      }
+      left={stickyProps.left}
+      right={stickyProps.right}
       shadow={
         stickyColumn ? "var(--swui-sticky-column-shadow-right)" : undefined
       }

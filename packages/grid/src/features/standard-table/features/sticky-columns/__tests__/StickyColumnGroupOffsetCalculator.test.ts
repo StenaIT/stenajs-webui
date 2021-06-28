@@ -32,6 +32,8 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         },
       },
 
+      stickyColumnGroups: "",
+
       columnGroups: {
         left: {
           sticky: false,
@@ -47,8 +49,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
 
     describe("when first and last are sticky", () => {
       it("includes offset for both", () => {
-        config.columnGroups.left.sticky = true;
-        config.columnGroups.right.sticky = true;
+        config.stickyColumnGroups = "both";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
           config as any
         );
@@ -65,8 +66,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
 
     describe("when first is sticky", () => {
       it("includes offset for first only", () => {
-        config.columnGroups.left.sticky = true;
-        config.columnGroups.right.sticky = false;
+        config.stickyColumnGroups = "first";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
           config as any
         );
@@ -79,10 +79,8 @@ describe("StickyColumnGroupOffsetCalculator", () => {
     });
 
     describe("when last is sticky", () => {
-      config.columnGroups.left.sticky = false;
-      config.columnGroups.right.sticky = true;
-
       it("includes offset for last", () => {
+        config.stickyColumnGroups = "last";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
           config as any
         );

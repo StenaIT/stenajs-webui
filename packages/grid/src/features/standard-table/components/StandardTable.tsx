@@ -19,21 +19,21 @@ import {
   TableContext,
 } from "../context/StandardTableStateContext";
 import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
+import { StickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { TotalNumColumnsContext } from "../context/TotalNumColumnsContext";
 import { createColumnConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
 import { ColumnGroupRow } from "../features/column-groups/ColumnGroupRow";
 import { calculateColumnIndexPerColumnId } from "../features/column-index-per-column-id/ColumnIndexCalculator";
 import { ColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
+import { ensureConfigHasValidSticky } from "../features/sticky-columns/StickyColumnGroupValidator";
+import { getStickyPropsPerColumn } from "../features/sticky-columns/StickyPropsPerColumnCalculator";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import { StandardTableOnKeyDown } from "../types/StandardTableOnKeyDown";
 import { getTotalNumColumns } from "../util/ColumnCounter";
-import { ensureConfigHasValidSticky } from "../util/StickyColumnGroupValidator";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
-import { StickyColumnOffsetContext } from "../context/StickyColumnOffsetContext";
-import { calculateOffsetForColumnInStickyColumnGroups } from "../util/StickyColumnGroupOffsetCalculator";
 
 export interface StandardTableProps<
   TItem,
@@ -172,17 +172,24 @@ export const StandardTable = function StandardTable<
   }, [actions, dispatch]);
 
   const usingColumnGroups = Boolean(
-    columnGroupOrder ?? config.columnGroupOrder
+    columnGroupOrder ?? "columnGroupOrder" in config
   );
+
+  const columnGroupsFromConfig =
+    "columnGroups" in config ? config.columnGroups : undefined;
+  const columnGroupOrderFromConfig =
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined;
+  const columnOrderFromConfig =
+    "columnOrder" in config ? config.columnOrder : undefined;
 
   const groupConfigsForRows = useMemo(
     () =>
       createColumnConfigsForRows<TItem, TColumnKey, TColumnGroupKey>(
-        config.columnGroups,
-        config.columnGroupOrder,
-        config.columnOrder
+        columnGroupsFromConfig,
+        columnGroupOrderFromConfig,
+        columnOrderFromConfig
       ),
-    [config.columnGroups, config.columnGroupOrder, config.columnOrder]
+    [columnGroupsFromConfig, columnGroupOrderFromConfig, columnOrderFromConfig]
   );
 
   const columnIndexPerColumnId = useMemo(
@@ -192,8 +199,8 @@ export const StandardTable = function StandardTable<
 
   const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
 
-  const stickyColumnOffsetContext = useMemo(
-    () => calculateOffsetForColumnInStickyColumnGroups(config),
+  const stickyPropsPerColumnContext = useMemo(
+    () => getStickyPropsPerColumn(config),
     [config]
   );
 
@@ -227,7 +234,7 @@ export const StandardTable = function StandardTable<
         } as CSSProperties
       }
     >
-      <StickyColumnOffsetContext.Provider value={stickyColumnOffsetContext}>
+      <StickyPropsPerColumnContext.Provider value={stickyPropsPerColumnContext}>
         <TotalNumColumnsContext.Provider value={totalNumColumns}>
           <StandardTableVariantContext.Provider value={variant}>
             <StandardTableTableIdContext.Provider
@@ -246,12 +253,16 @@ export const StandardTable = function StandardTable<
                           value={usingColumnGroups}
                         >
                           <StandardTableColumnGroupOrderContext.Provider
-                            value={columnGroupOrder ?? config.columnGroupOrder}
+                            value={
+                              "columnGroupOrder" in config
+                                ? columnGroupOrder ?? config.columnGroupOrder
+                                : columnGroupOrder
+                            }
                           >
                             <OnKeyDownContext.Provider value={onKeyDown}>
                               <thead>
                                 {(columnGroupOrder ||
-                                  config.columnGroupOrder) && (
+                                  "columnGroupOrder" in config) && (
                                   <ColumnGroupRow
                                     height={"var(--current-row-height)"}
                                   />
@@ -276,7 +287,7 @@ export const StandardTable = function StandardTable<
             </StandardTableTableIdContext.Provider>
           </StandardTableVariantContext.Provider>
         </TotalNumColumnsContext.Provider>
-      </StickyColumnOffsetContext.Provider>
+      </StickyPropsPerColumnContext.Provider>
     </table>
   );
 };
