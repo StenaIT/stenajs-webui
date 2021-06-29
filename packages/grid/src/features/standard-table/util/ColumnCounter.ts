@@ -18,12 +18,12 @@ const getNumUserColumns = <
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
 ): number => {
-  if (!config.columnGroupOrder) {
-    return config.columnOrder?.length ?? 0;
+  if ("columnGroupOrder" in config) {
+    return config.columnGroupOrder.reduce<number>((sum, groupId) => {
+      const group = config.columnGroups?.[groupId];
+      return sum + (group?.columnOrder?.length ?? 0);
+    }, 0);
   }
 
-  return config.columnGroupOrder.reduce<number>((sum, groupId) => {
-    const group = config.columnGroups?.[groupId];
-    return sum + (group?.columnOrder?.length ?? 0);
-  }, 0);
+  return config.columnOrder?.length ?? 0;
 };
