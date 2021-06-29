@@ -19,13 +19,13 @@ export const createHtmlConfig = <
   formatters?: CustomCellFormatters<TItem, TColumnKey>
 ): string => {
   const groupConfigs = createColumnConfigsForRows(
-    config.columnGroups,
-    config.columnGroupOrder,
-    config.columnOrder
+    "columnGroups" in config ? config.columnGroups : undefined,
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
+    "columnOrder" in config ? config.columnOrder : undefined
   );
 
   const headerRows: Array<string> = [];
-  if (config.columnGroups) {
+  if ("columnGroups" in config) {
     headerRows.push(transformGroupHeaders(groupConfigs).join(""));
   }
   headerRows.push(transformTableHeaders(config, groupConfigs).join(""));
