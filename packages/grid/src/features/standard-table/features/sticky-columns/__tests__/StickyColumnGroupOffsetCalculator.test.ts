@@ -54,9 +54,11 @@ describe("StickyColumnGroupOffsetCalculator", () => {
           config as any
         );
         expect(Object.keys(offsets).length).toBe(6);
-        expect(offsets.link).toBe("calc(0px)");
-        expect(offsets.leg).toBe("calc(0px + 48px)");
-        expect(offsets.dayOfWeek).toBe("calc(0px + 48px + 60px)");
+        expect(offsets.link).toBe("calc(var(--current-left-offset))");
+        expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
+        expect(offsets.dayOfWeek).toBe(
+          "calc(var(--current-left-offset) + 48px + 60px)"
+        );
 
         expect(offsets.ship).toBe("calc(0px)");
         expect(offsets.timeToDeparture).toBe("calc(0px + 60px)");
@@ -70,11 +72,12 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
           config as any
         );
-        console.log(offsets);
         expect(Object.keys(offsets).length).toBe(3);
-        expect(offsets.link).toBe("calc(0px)");
-        expect(offsets.leg).toBe("calc(0px + 48px)");
-        expect(offsets.dayOfWeek).toBe("calc(0px + 48px + 60px)");
+        expect(offsets.link).toBe("calc(var(--current-left-offset))");
+        expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
+        expect(offsets.dayOfWeek).toBe(
+          "calc(var(--current-left-offset) + 48px + 60px)"
+        );
       });
     });
 
@@ -137,7 +140,8 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         const columnIds = getColumnIdsForLeftSideStickyGroup(config as any);
         const offsets = calculateOffsetForColumns(
           columnIds,
-          config.columns as any
+          config.columns as any,
+          false
         );
         expect(Object.keys(offsets).length).toBe(6);
         expect(offsets.link).toBe("calc(0px)");
@@ -159,7 +163,8 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         const columnIds = getColumnIdsForRightSideStickyGroup(config as any);
         const offsets = calculateOffsetForColumns(
           columnIds,
-          config.columns as any
+          config.columns as any,
+          false
         );
         expect(Object.keys(offsets).length).toBe(6);
 
