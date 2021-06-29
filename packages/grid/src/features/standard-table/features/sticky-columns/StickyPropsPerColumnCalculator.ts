@@ -26,10 +26,13 @@ export const getStickyPropsPerColumnWithNoGroups = <
 
   return columnIds.reduce<StickyPropsPerColumn<TColumnKey>>((sum, columnId) => {
     const columnConfig = config.columns[columnId];
+    const sticky = Boolean(columnConfig.sticky);
     sum[columnId] = {
-      sticky: Boolean(columnConfig.sticky),
-      left: columnConfig.left,
-      right: columnConfig.right,
+      sticky,
+      left: sticky
+        ? `calc(var(--current-left-offset) + ${columnConfig.left ?? "0px"})`
+        : undefined,
+      right: sticky ? columnConfig.right : undefined,
     };
     return sum;
   }, {} as StickyPropsPerColumn<TColumnKey>);

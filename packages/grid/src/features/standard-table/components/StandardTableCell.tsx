@@ -24,8 +24,6 @@ export interface StandardTableCellProps<TItem> {
   numRows: number;
   borderFromGroup?: boolean | string;
   disableBorderLeft?: boolean;
-  stickyColumnGroupLeft?: boolean;
-  stickyColumnGroupRight?: boolean;
 }
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
@@ -67,7 +65,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     isEditable,
     onChange,
     disableGridCell,
-    sticky: stickyColumn,
     zIndex,
   } = useColumnConfigById(columnId);
 
@@ -157,12 +154,16 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       background={currentBackground}
       sticky={stickyProps.sticky}
       zIndex={
-        zIndex ?? stickyColumn ? "var(--swui-sticky-column-z-index)" : undefined
+        zIndex ?? stickyProps.sticky
+          ? "var(--swui-sticky-column-z-index)"
+          : undefined
       }
       left={stickyProps.left}
       right={stickyProps.right}
       shadow={
-        stickyColumn ? "var(--swui-sticky-column-shadow-right)" : undefined
+        stickyProps.sticky
+          ? "var(--swui-sticky-column-shadow-right)"
+          : undefined
       }
       onKeyDown={onKeyDownHandler}
     >

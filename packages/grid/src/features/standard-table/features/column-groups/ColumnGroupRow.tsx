@@ -1,4 +1,5 @@
 import { Indent, Row } from "@stenajs-webui/core";
+import { CSSProperties } from "react";
 import * as React from "react";
 import {
   defaultTableRowHeight,
@@ -18,6 +19,8 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   height = defaultTableRowHeight,
 }: ColumnGroupRowProps) {
   const groupConfigs = useGroupConfigsForRows();
+  const config = useStandardTableConfig();
+
   const {
     showHeaderCheckbox,
     enableExpandCollapse,
@@ -26,7 +29,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     stickyHeader,
     stickyCheckboxColumn,
     headerRowOffsetTop,
-  } = useStandardTableConfig();
+  } = config;
 
   const stickyHeaderProps = createStickyHeaderProps(
     stickyHeader,
@@ -73,16 +76,18 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
                 ? "var(--swui-expand-cell-width)"
                 : "0px"
               : undefined,
+            zIndex: "var(--swui-sticky-column-group-label-z-index)" as CSSProperties["zIndex"],
           }}
         />
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (
         <ColumnInGroup
+          isFirstGroup={groupIndex === 0}
+          isLastGroup={groupIndex === groupConfigs.length - 1}
           groupConfig={groupConfig}
           columnId={groupConfig.columnOrder[0]}
           key={groupConfig.columnOrder[0]}
           colSpan={groupConfig.columnOrder.length}
-          isFirstInGroup={true}
           borderFromGroup={getCellBorderFromGroup(
             groupIndex,
             0,

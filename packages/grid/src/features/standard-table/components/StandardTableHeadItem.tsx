@@ -1,6 +1,7 @@
-import { CSSProperties } from "react";
 import * as React from "react";
+import { CSSProperties } from "react";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
+import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
 import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
@@ -32,15 +33,14 @@ export const StandardTableHeadItem = React.memo(
       borderLeft,
       infoIconTooltipText,
       background,
-      sticky: stickyColumn,
       zIndex,
-      left,
       sortOrderIconVariant,
     } = useColumnConfigById(columnId);
     const {
       disableSorting,
       sortOrderIconVariant: defaultSortOrderIconVariant,
     } = useStandardTableConfig();
+    const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
     const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
 
@@ -55,6 +55,8 @@ export const StandardTableHeadItem = React.memo(
       borderLeft
     );
 
+    const stickyProps = stickyPropsPerColumnContext[columnId];
+
     return (
       <th
         style={{
@@ -64,21 +66,23 @@ export const StandardTableHeadItem = React.memo(
           borderLeft: activeBorderLeft,
           flex: width ? undefined : flex,
           justifyContent: justifyContentHeader,
-          position: stickyColumn || stickyHeader ? "sticky" : undefined,
-          left: stickyColumn
-            ? `calc(var(--current-left-offset) + ${left ?? "0px"})`
-            : undefined,
+          position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
+          left: stickyProps.left,
+          right: stickyProps.right,
           top: top,
-          boxShadow: stickyHeader
-            ? "var(--swui-sticky-header-shadow)"
-            : stickyColumn
-            ? "var(--swui-sticky-column-shadow-right)"
-            : undefined,
-          zIndex: (stickyHeader && stickyColumn
+          boxShadow:
+            stickyHeader && stickyProps.sticky
+              ? "var(--swui-sticky-header-shadow-and-right)"
+              : stickyHeader
+              ? "var(--swui-sticky-header-shadow)"
+              : stickyProps.sticky
+              ? "var(--swui-sticky-column-shadow-right)"
+              : undefined,
+          zIndex: (stickyHeader && stickyProps.sticky
             ? "var(--swui-sticky-header-in-sticky-column-z-index)"
             : stickyHeader
             ? "var(--swui-sticky-header-z-index)"
-            : stickyColumn
+            : stickyProps.sticky
             ? "var(--swui-sticky-column-z-index)"
             : zIndex) as CSSProperties["zIndex"],
         }}

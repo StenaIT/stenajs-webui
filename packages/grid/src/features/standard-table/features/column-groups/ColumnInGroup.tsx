@@ -12,7 +12,8 @@ import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 interface ColumnGroupColumnItemProps<TColumnKey extends string> {
   groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
   columnId: TColumnKey;
-  isFirstInGroup: boolean;
+  isFirstGroup: boolean;
+  isLastGroup: boolean;
   borderFromGroup?: string;
   colSpan: number;
 }
@@ -22,9 +23,10 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
 >({
   columnId,
   groupConfig,
-  isFirstInGroup,
   borderFromGroup,
   colSpan,
+  isFirstGroup,
+  isLastGroup,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
   const {
     label,
@@ -34,56 +36,22 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
     loading,
     error,
   } = groupConfig;
-  const {
-    width,
-    minWidth,
-    zIndex,
-    left,
-    sticky: stickyColumn,
-    borderLeft,
-  } = useColumnConfigById(columnId);
-  const { stickyHeader, headerRowOffsetTop } = useStandardTableConfig();
+  const { width, minWidth, zIndex, borderLeft } = useColumnConfigById(columnId);
+  const config = useStandardTableConfig();
+  const { stickyHeader, headerRowOffsetTop } = config;
 
-  const content = isFirstInGroup ? (
-    <>
-      {contentLeft && (
-        <>
-          <Space />
-          {contentLeft}
-          <Space num={0.5} />
-        </>
-      )}
-      {render ? (
-        render(groupConfig)
-      ) : (
-        <Indent>
-          <Heading variant={"h5"} whiteSpace={"nowrap"}>
-            {label}
-          </Heading>
-        </Indent>
-      )}
-      {contentRight && (
-        <>
-          <Space num={0.5} />
-          {contentRight}
-        </>
-      )}
-      {(error || loading) && <Indent />}
-      {loading ? (
-        <InputSpinner />
-      ) : error ? (
-        <Tooltip label={error}>
-          <Icon
-            icon={faExclamationTriangle}
-            color={cssColor("--lhds-color-red-500")}
-          />
-        </Tooltip>
-      ) : undefined}
-    </>
-  ) : null;
+  const stickyColumnGroups =
+    "columnGroupOrder" in config ? config.stickyColumnGroups : undefined;
 
   const activeBorder = getActiveBorder(borderFromGroup, borderLeft);
-  const isSticky = stickyColumn || stickyHeader;
+  const isStickyLeft =
+    isFirstGroup &&
+    (stickyColumnGroups === "first" || stickyColumnGroups === "both");
+  const isStickyRight =
+    isLastGroup &&
+    (stickyColumnGroups === "last" || stickyColumnGroups === "both");
+
+  const isSticky = isStickyLeft || isStickyRight || stickyHeader;
 
   return (
     <th
@@ -95,21 +63,63 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
           width: width,
           minWidth: minWidth ?? width ?? "20px",
           background: isSticky ? "white" : "transparent",
-          left: stickyColumn
-            ? `calc(var(--current-left-offset) + ${left})`
-            : undefined,
+          left: isStickyLeft ? `var(--current-left-offset)` : undefined,
+          right: isStickyRight ? `0px` : undefined,
           top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
           borderLeft: activeBorder,
-          zIndex: isSticky
-            ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"
-            : zIndex ?? 1,
-          boxShadow: stickyColumn
+          zIndex:
+            isStickyLeft || isStickyLeft
+              ? "var(--swui-sticky-column-group-label-z-index)"
+              : stickyHeader
+              ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"
+              : zIndex ?? 1,
+          boxShadow: isStickyLeft
             ? "var(--swui-sticky-column-shadow-right)"
+            : isStickyRight
+            ? "var(--swui-sticky-column-shadow-left)"
             : undefined,
         } as CSSProperties
       }
     >
-      <Row alignItems={"center"}>{content}</Row>
+      <Row alignItems={"center"}>
+        {
+          <>
+            {contentLeft && (
+              <>
+                <Space />
+                {contentLeft}
+                <Space num={0.5} />
+              </>
+            )}
+            {render ? (
+              render(groupConfig)
+            ) : (
+              <Indent>
+                <Heading variant={"h5"} whiteSpace={"nowrap"}>
+                  {label}
+                </Heading>
+              </Indent>
+            )}
+            {contentRight && (
+              <>
+                <Space num={0.5} />
+                {contentRight}
+              </>
+            )}
+            {(error || loading) && <Indent />}
+            {loading ? (
+              <InputSpinner />
+            ) : error ? (
+              <Tooltip label={error}>
+                <Icon
+                  icon={faExclamationTriangle}
+                  color={cssColor("--lhds-color-red-500")}
+                />
+              </Tooltip>
+            ) : undefined}
+          </>
+        }
+      </Row>
     </th>
   );
 };
