@@ -25,9 +25,6 @@ export const StandardTableHeadItem = React.memo(
     top,
   }: StandardTableHeaderItemProps) {
     const {
-      width,
-      minWidth,
-      flex = 1,
       justifyContentHeader,
       columnLabel,
       borderLeft,
@@ -60,11 +57,8 @@ export const StandardTableHeadItem = React.memo(
     return (
       <th
         style={{
-          width: width,
-          minWidth: minWidth ?? width ?? "20px",
           background: background ?? "white",
           borderLeft: activeBorderLeft,
-          flex: width ? undefined : flex,
           position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
           right: stickyProps.right,

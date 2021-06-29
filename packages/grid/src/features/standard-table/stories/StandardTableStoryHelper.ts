@@ -89,16 +89,19 @@ export const standardTableConfigForStories: StandardTableConfig<
   columns: {
     id: createColumnConfig((item) => item.id, {
       sortOrderIconVariant: "numeric",
+      flex: 1,
     }),
     active: createColumnConfig((item) => item.active, {
       itemLabelFormatter: (value) => (value ? "Y" : ""),
       infoIconTooltipText: "Active means out on the sea.",
+      flex: 1,
     }),
     name: createColumnConfig((item) => item.name, {
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
       infoIconTooltipText: "Ohoh",
       sortOrderIconVariant: "alpha",
+      flex: 2,
     }),
     ship: createColumnConfig((item) => item.ship, {
       sortOrderIconVariant: "alpha",

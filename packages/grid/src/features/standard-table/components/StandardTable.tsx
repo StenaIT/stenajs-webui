@@ -222,6 +222,7 @@ export const StandardTable = function StandardTable<
       className={cx(styles.standardTable, styles[variant])}
       style={
         {
+          tableLayout: "fixed",
           width: "100%",
           "--current-left-offset":
             enableExpandCollapse && stickyCheckboxColumn

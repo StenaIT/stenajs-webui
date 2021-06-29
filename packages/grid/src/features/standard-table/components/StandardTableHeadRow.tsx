@@ -1,6 +1,5 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { Indent } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -88,9 +87,12 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   return (
     <TrWithHoverBackground height={height} borderLeft={tableBorderLeft}>
       {rowIndent && (
-        <th style={stickyHeaderStyle}>
-          <Indent num={rowIndent} />
-        </th>
+        <th
+          style={{
+            ...stickyHeaderStyle,
+            width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
+          }}
+        />
       )}
       {enableExpandCollapse && (
         <th
@@ -167,7 +169,14 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           </React.Fragment>
         );
       })}
-      {rowIndent && <Indent num={rowIndent} />}
+      {rowIndent && (
+        <th
+          style={{
+            ...stickyHeaderStyle,
+            width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
+          }}
+        />
+      )}
     </TrWithHoverBackground>
   );
 });

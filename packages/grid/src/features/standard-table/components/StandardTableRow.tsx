@@ -1,4 +1,3 @@
-import { Indent } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { CSSProperties, useMemo } from "react";
@@ -105,9 +104,12 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
       >
         {rowIndent && (
-          <td>
-            <Indent num={rowIndent} background={firstColumnBackground} />
-          </td>
+          <td
+            style={{
+              width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
+              background: firstColumnBackground,
+            }}
+          />
         )}
         {enableExpandCollapse && (
           <td
@@ -178,7 +180,12 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
           </React.Fragment>
         ))}
         {rowIndent && (
-          <Indent num={rowIndent} background={lastColumnBackground} />
+          <td
+            style={{
+              width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
+              background: lastColumnBackground,
+            }}
+          />
         )}
       </TrWithHoverBackground>
       {enableExpandCollapse && renderRowExpansion && isExpanded && (

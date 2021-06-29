@@ -1,6 +1,6 @@
-import { Indent, Row } from "@stenajs-webui/core";
-import { CSSProperties } from "react";
+import { Row } from "@stenajs-webui/core";
 import * as React from "react";
+import { CSSProperties } from "react";
 import {
   defaultTableRowHeight,
   tableBorderLeft,
@@ -44,11 +44,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
         borderLeft: tableBorderLeft,
       }}
     >
-      {rowIndent && (
-        <th style={stickyHeaderProps}>
-          <Indent num={rowIndent} />
-        </th>
-      )}
+      {rowIndent && <th style={stickyHeaderProps} />}
       {enableExpandCollapse && (
         <th style={stickyHeaderProps}>
           <Row
@@ -95,7 +91,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
           )}
         />
       ))}
-      {rowIndent && <Indent num={rowIndent} />}
+      {rowIndent && <th style={stickyHeaderProps} />}
     </tr>
   );
 });
