@@ -9,7 +9,6 @@ import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../config/TableConfig";
-import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
@@ -137,15 +136,13 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
               : undefined,
           }}
         >
-          <TableHeadItem justifyContent="center">
-            <Checkbox
-              size={"small"}
-              disabled={checkboxDisabled}
-              value={allItemsAreSelected}
-              indeterminate={!selectionIsEmpty && !allItemsAreSelected}
-              onValueChange={onClickCheckbox}
-            />
-          </TableHeadItem>
+          <Checkbox
+            size={"small"}
+            disabled={checkboxDisabled}
+            value={allItemsAreSelected}
+            indeterminate={!selectionIsEmpty && !allItemsAreSelected}
+            onValueChange={onClickCheckbox}
+          />
         </th>
       )}
       {groupConfigs.map((groupConfig, groupIndex) => {

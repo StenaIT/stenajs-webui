@@ -1,6 +1,6 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
-import { BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
+import { Box, BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
 import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import {
@@ -36,7 +36,6 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     children,
     selected,
     popoverContent,
-    justifyContent = "space-between",
     loading,
     infoIconTooltipText,
     overflow = "hidden",
@@ -58,10 +57,18 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         alignItems={"center"}
         ref={containerRef}
         overflow={overflow}
-        justifyContent={justifyContent}
+        justifyContent={alignRight ? "flex-end" : "flex-start"}
         {...boxProps}
       >
         <Row alignItems={"center"} indent>
+          {!arrow && alignRight && (
+            <>
+              <Space />
+              <Box width={"14px"} />
+              <Space num={0.5} />
+            </>
+          )}
+
           {(children || label) && (
             <Row onClick={onClick} style={cursorStyle} alignItems={"center"}>
               {children && (
@@ -130,6 +137,14 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             </Popover>
           ) : null}
         </Row>
+
+        {!arrow && !alignRight && (
+          <>
+            <Space />
+            <Box width={"14px"} />
+            <Space num={0.5} />
+          </>
+        )}
       </Row>
     );
   }

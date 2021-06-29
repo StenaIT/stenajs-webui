@@ -65,7 +65,6 @@ export const StandardTableHeadItem = React.memo(
           background: background ?? "white",
           borderLeft: activeBorderLeft,
           flex: width ? undefined : flex,
-          justifyContent: justifyContentHeader,
           position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
           right: stickyProps.right,
