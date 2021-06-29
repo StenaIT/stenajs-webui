@@ -65,7 +65,8 @@ export const StandardTableCellUi = React.memo<Props>(
         <Row
           border={"1px solid transparent"}
           className={styles.standardTableCell}
-          width={"100%"}
+          width={width}
+          minWidth={minWidth ?? width ?? "20px"}
           height={"100%"}
           justifyContent={justifyContent}
           alignItems={"center"}

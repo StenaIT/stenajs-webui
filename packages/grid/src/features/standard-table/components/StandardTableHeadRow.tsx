@@ -1,5 +1,6 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
+import { Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -70,8 +71,10 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   const checkboxDisabled = !items || items.length === 0;
 
   const stickyHeaderStyle: CSSProperties = {
-    zIndex: (stickyHeader
-      ? zIndex ?? "var(--swui-sticky-header-z-index)"
+    zIndex: (stickyHeader && stickyCheckboxColumn
+      ? "var(--swui-sticky-header-in-sticky-column-z-index)"
+      : stickyHeader
+      ? "var(--swui-sticky-header-z-index)"
       : zIndex) as CSSProperties["zIndex"],
     top: getTopPosition(
       headerRowOffsetTop,
@@ -79,44 +82,52 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       height,
       stickyHeader
     ),
-    background: stickyHeader ? "white" : undefined,
-    position: stickyHeader ? "sticky" : undefined,
-    boxShadow: stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined,
+    background: stickyHeader || stickyCheckboxColumn ? "white" : undefined,
+    position: stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
+    boxShadow:
+      stickyHeader && stickyCheckboxColumn
+        ? "var(--swui-sticky-header-shadow-and-right)"
+        : stickyCheckboxColumn
+        ? "var(--swui-sticky-column-shadow-right)"
+        : stickyHeader
+        ? "var(--swui-sticky-header-shadow)"
+        : undefined,
   };
 
   return (
     <TrWithHoverBackground height={height} borderLeft={tableBorderLeft}>
       {rowIndent && (
-        <th
-          style={{
-            ...stickyHeaderStyle,
-            width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
-          }}
-        />
+        <th style={stickyHeaderStyle}>
+          <Row indent={rowIndent} />
+        </th>
       )}
       {enableExpandCollapse && (
         <th
           style={{
-            width: "var(--swui-expand-cell-width)",
-            minWidth: "var(--swui-expand-cell-width)",
-            textAlign: "left",
             ...stickyHeaderStyle,
+            left: "0px",
+            textAlign: "left",
           }}
         >
-          {showHeaderExpandCollapse && (
-            <FlatButton
-              size={"small"}
-              leftIcon={allItemsAreExpanded ? faChevronDown : faChevronRight}
-              onClick={toggleExpanded}
-            />
-          )}
+          <Row
+            width={"var(--swui-expand-cell-width)"}
+            minWidth={"var(--swui-expand-cell-width)"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            {showHeaderExpandCollapse && (
+              <FlatButton
+                size={"small"}
+                leftIcon={allItemsAreExpanded ? faChevronDown : faChevronRight}
+                onClick={toggleExpanded}
+              />
+            )}
+          </Row>
         </th>
       )}
       {showHeaderCheckbox && (
         <th
           style={{
-            width: "var(--swui-checkbox-cell-width)",
-            minWidth: "var(--swui-checkbox-cell-width)",
             overflow: "hidden",
             zIndex: (stickyHeader && stickyCheckboxColumn
               ? "var(--swui-sticky-header-in-sticky-column-z-index)"
@@ -129,22 +140,37 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
               stickyCheckboxColumn || stickyHeader ? "white" : undefined,
             position:
               stickyCheckboxColumn || stickyHeader ? "sticky" : undefined,
-            left: stickyCheckboxColumn ? "0px" : undefined,
+            left:
+              stickyCheckboxColumn && enableExpandCollapse
+                ? "var(--swui-expand-cell-width)"
+                : stickyCheckboxColumn
+                ? "0px"
+                : undefined,
             top: stickyHeaderStyle.top,
-            boxShadow: stickyHeader
-              ? "var(--swui-sticky-header-shadow)"
-              : stickyCheckboxColumn
-              ? "var(--swui-sticky-column-shadow-right)"
-              : undefined,
+            boxShadow:
+              stickyHeader && stickyCheckboxColumn
+                ? "var(--swui-sticky-header-shadow-and-right)"
+                : stickyHeader
+                ? "var(--swui-sticky-header-shadow)"
+                : stickyCheckboxColumn
+                ? "var(--swui-sticky-column-shadow-right)"
+                : undefined,
           }}
         >
-          <Checkbox
-            size={"small"}
-            disabled={checkboxDisabled}
-            value={allItemsAreSelected}
-            indeterminate={!selectionIsEmpty && !allItemsAreSelected}
-            onValueChange={onClickCheckbox}
-          />
+          <Row
+            width={"var(--swui-checkbox-cell-width)"}
+            minWidth={"var(--swui-checkbox-cell-width)"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <Checkbox
+              size={"small"}
+              disabled={checkboxDisabled}
+              value={allItemsAreSelected}
+              indeterminate={!selectionIsEmpty && !allItemsAreSelected}
+              onValueChange={onClickCheckbox}
+            />
+          </Row>
         </th>
       )}
       {groupConfigs.map((groupConfig, groupIndex) => {
@@ -163,6 +189,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                   disableBorderLeft={groupIndex === 0 && index === 0}
                   stickyHeader={stickyHeader}
                   top={stickyHeaderStyle.top}
+                  isInFirstGroup={groupIndex === 0}
+                  isInLastGroup={groupIndex === groupConfigs.length - 1}
+                  isFirstInGroup={index === 0}
                 />
               );
             })}
@@ -170,12 +199,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
         );
       })}
       {rowIndent && (
-        <th
-          style={{
-            ...stickyHeaderStyle,
-            width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
-          }}
-        />
+        <th style={stickyHeaderStyle}>
+          <Row indent={rowIndent} />
+        </th>
       )}
     </TrWithHoverBackground>
   );

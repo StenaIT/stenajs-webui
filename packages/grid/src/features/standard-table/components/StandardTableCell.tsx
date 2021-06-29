@@ -24,6 +24,9 @@ export interface StandardTableCellProps<TItem> {
   numRows: number;
   borderFromGroup?: boolean | string;
   disableBorderLeft?: boolean;
+  isFirstInGroup: boolean;
+  isInFirstGroup: boolean;
+  isInLastGroup: boolean;
 }
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
@@ -34,6 +37,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   numRows,
   borderFromGroup,
   disableBorderLeft,
+  isFirstInGroup,
+  isInLastGroup,
 }: StandardTableCellProps<TItem>) {
   const {
     keyResolver,
@@ -161,7 +166,9 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       left={stickyProps.left}
       right={stickyProps.right}
       shadow={
-        stickyProps.sticky
+        stickyProps.sticky && isInLastGroup && isFirstInGroup
+          ? "var(--swui-sticky-column-shadow-left)"
+          : stickyProps.sticky
           ? "var(--swui-sticky-column-shadow-right)"
           : undefined
       }

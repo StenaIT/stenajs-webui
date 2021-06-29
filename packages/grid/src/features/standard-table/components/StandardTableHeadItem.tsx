@@ -14,6 +14,9 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
+  isFirstInGroup: boolean;
+  isInFirstGroup: boolean;
+  isInLastGroup: boolean;
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -23,6 +26,8 @@ export const StandardTableHeadItem = React.memo(
     disableBorderLeft,
     stickyHeader,
     top,
+    isInLastGroup,
+    isFirstInGroup,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -32,6 +37,8 @@ export const StandardTableHeadItem = React.memo(
       background,
       zIndex,
       sortOrderIconVariant,
+      width,
+      minWidth,
     } = useColumnConfigById(columnId);
     const {
       disableSorting,
@@ -64,7 +71,14 @@ export const StandardTableHeadItem = React.memo(
           right: stickyProps.right,
           top: top,
           boxShadow:
-            stickyHeader && stickyProps.sticky
+            stickyProps.sticky &&
+            isInLastGroup &&
+            isFirstInGroup &&
+            stickyHeader
+              ? "var(--swui-sticky-header-shadow-and-left)"
+              : stickyProps.sticky && isInLastGroup && isFirstInGroup
+              ? "var(--swui-sticky-column-shadow-left)"
+              : stickyHeader && stickyProps.sticky
               ? "var(--swui-sticky-header-shadow-and-right)"
               : stickyHeader
               ? "var(--swui-sticky-header-shadow)"
@@ -81,6 +95,8 @@ export const StandardTableHeadItem = React.memo(
         }}
       >
         <TableHeadItem
+          width={width}
+          minWidth={minWidth}
           arrow={!disableSorting && label ? arrow : undefined}
           onClick={!disableSorting ? onClickColumnHead : undefined}
           label={label}

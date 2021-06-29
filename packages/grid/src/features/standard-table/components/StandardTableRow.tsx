@@ -1,3 +1,4 @@
+import { Indent, Row } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { CSSProperties, useMemo } from "react";
@@ -106,31 +107,47 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         {rowIndent && (
           <td
             style={{
-              width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
               background: firstColumnBackground,
             }}
-          />
+          >
+            <Indent num={rowIndent} />
+          </td>
         )}
         {enableExpandCollapse && (
           <td
-            style={{
-              width: "var(--swui-expand-cell-width)",
-            }}
+            style={
+              {
+                background: stickyCheckboxColumn ? "inherit" : undefined,
+                position: stickyCheckboxColumn ? "sticky" : undefined,
+                left: stickyCheckboxColumn ? "0px" : undefined,
+                boxShadow: stickyCheckboxColumn
+                  ? "var(--swui-sticky-column-shadow-right)"
+                  : undefined,
+                zIndex: stickyCheckboxColumn
+                  ? "var(--swui-sticky-column-z-index)"
+                  : undefined,
+              } as CSSProperties
+            }
           >
-            <StandardTableRowExpandButton
-              colIndex={colIndexOffset}
-              rowIndex={enableGridCell ? rowIndex : 0}
-              numRows={enableGridCell ? numRows : 0}
-              item={item}
-            />
+            <Row
+              width={"var(--swui-expand-cell-width)"}
+              minWidth={"var(--swui-expand-cell-width)"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <StandardTableRowExpandButton
+                colIndex={colIndexOffset}
+                rowIndex={enableGridCell ? rowIndex : 0}
+                numRows={enableGridCell ? numRows : 0}
+                item={item}
+              />
+            </Row>
           </td>
         )}
         {showRowCheckbox && (
           <td
             style={
               {
-                width: "var(--swui-checkbox-cell-width)",
-                minWidth: "var(--swui-checkbox-cell-width)",
                 background: stickyCheckboxColumn ? "inherit" : undefined,
                 position: stickyCheckboxColumn ? "sticky" : undefined,
                 left:
@@ -149,14 +166,21 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
               } as CSSProperties
             }
           >
-            <StandardTableRowCheckbox
-              disabled={disabled}
-              value={isSelected}
-              onValueChange={toggleSelected}
-              colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
-              rowIndex={rowIndex}
-              numRows={numRows}
-            />
+            <Row
+              width={"var(--swui-checkbox-cell-width)"}
+              minWidth={"var(--swui-checkbox-cell-width)"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <StandardTableRowCheckbox
+                disabled={disabled}
+                value={isSelected}
+                onValueChange={toggleSelected}
+                colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
+                rowIndex={rowIndex}
+                numRows={numRows}
+              />
+            </Row>
           </td>
         )}
         {groupConfigs.map((groupConfig, groupIndex) => (
@@ -175,6 +199,9 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                   groupConfig.borderLeft
                 )}
                 disableBorderLeft={groupIndex === 0 && index === 0}
+                isInFirstGroup={groupIndex === 0}
+                isInLastGroup={groupIndex === groupConfigs.length - 1}
+                isFirstInGroup={index === 0}
               />
             ))}
           </React.Fragment>
@@ -182,10 +209,11 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         {rowIndent && (
           <td
             style={{
-              width: `calc(var(--swui-metrics-indent) * ${rowIndent})`,
               background: lastColumnBackground,
             }}
-          />
+          >
+            <Indent num={rowIndent} />
+          </td>
         )}
       </TrWithHoverBackground>
       {enableExpandCollapse && renderRowExpansion && isExpanded && (

@@ -1,4 +1,3 @@
-import { Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { CSSProperties } from "react";
 import {
@@ -33,6 +32,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
 
   const stickyHeaderProps = createStickyHeaderProps(
     stickyHeader,
+    stickyCheckboxColumn,
     headerRowOffsetTop,
     zIndex
   );
@@ -46,32 +46,25 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     >
       {rowIndent && <th style={stickyHeaderProps} />}
       {enableExpandCollapse && (
-        <th style={stickyHeaderProps}>
-          <Row
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={"45px"}
-            minWidth={"45px"}
-            indent
-          />
-        </th>
+        <th
+          style={{
+            ...stickyHeaderProps,
+            width: "var(--swui-expand-cell-width)",
+            left: stickyCheckboxColumn ? "0px" : undefined,
+            zIndex: "var(--swui-sticky-column-group-label-z-index)" as CSSProperties["zIndex"],
+          }}
+        />
       )}
       {showHeaderCheckbox && (
         <th
           style={{
             ...stickyHeaderProps,
-            position:
-              stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
-            background:
-              stickyHeader || stickyCheckboxColumn ? "white" : undefined,
-            boxShadow: stickyCheckboxColumn
-              ? "var(--swui-sticky-column-shadow-right)"
-              : undefined,
-            left: stickyCheckboxColumn
-              ? enableExpandCollapse
+            left:
+              stickyCheckboxColumn && enableExpandCollapse
                 ? "var(--swui-expand-cell-width)"
-                : "0px"
-              : undefined,
+                : stickyCheckboxColumn
+                ? "0px"
+                : undefined,
             zIndex: "var(--swui-sticky-column-group-label-z-index)" as CSSProperties["zIndex"],
           }}
         />

@@ -305,14 +305,14 @@ const items = [
 ];
 
 const createSalesPerformanceStandardTableConfig = (
-  stickyDepartures: boolean,
+  stickyGroups: boolean,
   loadingState: SalesPerformanceLoadingState
 ): StandardTableConfig<SalesPerformanceTableRowItem, Column, ColumnGroup> => ({
   keyResolver: (item) => item.info.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
   stickyCheckboxColumn: true,
-  stickyColumnGroups: stickyDepartures ? "first" : undefined,
+  stickyColumnGroups: stickyGroups ? "both" : undefined,
   columns: {
     /**
      * Departure
@@ -587,11 +587,11 @@ const createSalesPerformanceStandardTableConfig = (
      */
     reserved: createColumnConfig((item) => item.info?.passengers.reserved, {
       columnLabel: "Res.",
-      flex: 1,
+      width: "60px",
     }),
     remaining: createColumnConfig((item) => item.info?.passengers.remaining, {
       columnLabel: "Rem.",
-      flex: 1,
+      width: "60px",
     }),
     guestsHistoryMinus1: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[0].diff,
@@ -776,11 +776,7 @@ export const StickyDepartureGroup = () => {
     automation: s,
   });
 
-  return (
-    <div style={{ width: "700px", marginBottom: "450px", overflow: "scroll" }}>
-      <StandardTable config={config} items={items} />
-    </div>
-  );
+  return <StandardTable config={config} items={items} />;
 };
 
 export const StickyDepartureGroupAndHeaders = () => {
@@ -795,9 +791,5 @@ export const StickyDepartureGroupAndHeaders = () => {
   });
   config.stickyHeader = true;
 
-  return (
-    <div style={{ width: "700px", marginBottom: "450px", overflow: "scroll" }}>
-      <StandardTable config={config} items={items} />
-    </div>
-  );
+  return <StandardTable config={config} items={items} />;
 };
