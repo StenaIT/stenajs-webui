@@ -70,9 +70,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const checkboxDisabled = !items || items.length === 0;
 
-  console.log("stickyHeader", stickyHeader);
-  console.log("stickyCheckboxColumn", stickyCheckboxColumn);
-
   const stickyHeaderStyle: CSSProperties = {
     zIndex: (stickyHeader && stickyCheckboxColumn
       ? "var(--swui-sticky-header-in-sticky-column-z-index)"
