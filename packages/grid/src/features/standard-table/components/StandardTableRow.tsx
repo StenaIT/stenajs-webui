@@ -59,7 +59,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
-  const visible = useOnScreen(trRef);
+  const visible = useOnScreen(trRef, {
+    rootMargin: "400px",
+    threshold: 0,
+  });
 
   const resolvedBackgroundResult = useMemo(
     () => rowBackgroundResolver?.(item, isSelected),

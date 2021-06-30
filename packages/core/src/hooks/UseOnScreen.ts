@@ -1,14 +1,24 @@
 import { RefObject, useEffect, useMemo, useState } from "react";
 
-export const useOnScreen = (ref: RefObject<Element>) => {
+export const useOnScreen = (
+  ref: RefObject<Element>,
+  options?: IntersectionObserverInit
+) => {
   const [isIntersecting, setIntersecting] = useState(false);
+
+  const { rootMargin, root, threshold } = options || {};
 
   const observer = useMemo(
     () =>
-      new IntersectionObserver(([entry]) =>
-        setIntersecting(entry.isIntersecting)
+      new IntersectionObserver(
+        ([entry]) => setIntersecting(entry.isIntersecting),
+        {
+          rootMargin,
+          root,
+          threshold,
+        }
       ),
-    [setIntersecting]
+    [setIntersecting, rootMargin, root, threshold]
   );
 
   useEffect(() => {
