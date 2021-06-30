@@ -700,7 +700,7 @@ export const HorrorStory = () => {
   return <StandardTable config={config} items={items} />;
 };
 
-export const StickyDepartureGroup = () => {
+export const StickyColumnGroups = () => {
   const s = {
     loading: false,
   };
@@ -714,7 +714,7 @@ export const StickyDepartureGroup = () => {
   return <StandardTable config={config} items={items} />;
 };
 
-export const StickyDepartureGroupAndHeaders = () => {
+export const StickyColumnsGroupsAndHeaders = () => {
   const s = {
     loading: false,
   };

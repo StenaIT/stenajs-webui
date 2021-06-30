@@ -138,7 +138,7 @@ export const GroupedColumns = () => {
   );
 };
 
-export const GroupedColumnsAndSticky = () => {
+export const GroupedColumnsAndStickyHeader = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<
@@ -157,8 +157,6 @@ export const GroupedColumnsAndSticky = () => {
       id: {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
-        sticky: true,
-        left: "0",
         backgroundResolver: (item) =>
           item.active ? cssColor("--lhds-color-orange-100") : undefined,
       },
