@@ -1,8 +1,7 @@
-import { Indent, Row } from "@stenajs-webui/core";
+import { Indent, Row, useOnScreen } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { CSSProperties, useMemo, useRef } from "react";
-import { useOnScreen } from "../../../../../core/src/hooks/UseOnScreen";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
