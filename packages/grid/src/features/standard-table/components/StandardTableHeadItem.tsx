@@ -84,7 +84,7 @@ export const StandardTableHeadItem = React.memo(
             : stickyHeader
             ? "var(--swui-sticky-header-z-index)"
             : stickyProps.sticky
-            ? "var(--swui-sticky-column-z-index)"
+            ? "var(--swui-sticky-group-header-z-index)"
             : zIndex) as CSSProperties["zIndex"],
         }}
       >

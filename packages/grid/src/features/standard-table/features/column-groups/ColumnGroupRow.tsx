@@ -37,6 +37,10 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     zIndex
   );
 
+  const zIndexForCells = (stickyHeader
+    ? "var(--swui-sticky-column-group-label-z-index)"
+    : "var(--swui-sticky-group-group-z-index)") as CSSProperties["zIndex"];
+
   return (
     <tr
       style={{
@@ -51,7 +55,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
             ...stickyHeaderProps,
             width: "var(--swui-expand-cell-width)",
             left: stickyCheckboxColumn ? "0px" : undefined,
-            zIndex: "var(--swui-sticky-column-group-label-z-index)" as CSSProperties["zIndex"],
+            zIndex: zIndexForCells,
           }}
         />
       )}
@@ -65,7 +69,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
                 : stickyCheckboxColumn
                 ? "0px"
                 : undefined,
-            zIndex: "var(--swui-sticky-column-group-label-z-index)" as CSSProperties["zIndex"],
+            zIndex: zIndexForCells,
           }}
         />
       )}

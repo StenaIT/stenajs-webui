@@ -70,9 +70,14 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const checkboxDisabled = !items || items.length === 0;
 
+  console.log("stickyHeader", stickyHeader);
+  console.log("stickyCheckboxColumn", stickyCheckboxColumn);
+
   const stickyHeaderStyle: CSSProperties = {
     zIndex: (stickyHeader && stickyCheckboxColumn
       ? "var(--swui-sticky-header-in-sticky-column-z-index)"
+      : stickyCheckboxColumn
+      ? "var(--swui-sticky-group-header-z-index)"
       : stickyHeader
       ? "var(--swui-sticky-header-z-index)"
       : zIndex) as CSSProperties["zIndex"],
@@ -128,32 +133,13 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       {showHeaderCheckbox && (
         <th
           style={{
+            ...stickyHeaderStyle,
             overflow: "hidden",
-            zIndex: (stickyHeader && stickyCheckboxColumn
-              ? "var(--swui-sticky-header-in-sticky-column-z-index)"
-              : stickyHeader
-              ? "var(--swui-sticky-header-z-index)"
-              : stickyCheckboxColumn
-              ? "var(--swui-sticky-column-z-index)"
-              : undefined) as CSSProperties["zIndex"],
-            background:
-              stickyCheckboxColumn || stickyHeader ? "white" : undefined,
-            position:
-              stickyCheckboxColumn || stickyHeader ? "sticky" : undefined,
             left:
               stickyCheckboxColumn && enableExpandCollapse
                 ? "var(--swui-expand-cell-width)"
                 : stickyCheckboxColumn
                 ? "0px"
-                : undefined,
-            top: stickyHeaderStyle.top,
-            boxShadow:
-              stickyHeader && stickyCheckboxColumn
-                ? "var(--swui-sticky-header-shadow-and-right)"
-                : stickyHeader
-                ? "var(--swui-sticky-header-shadow)"
-                : stickyCheckboxColumn
-                ? "var(--swui-sticky-column-shadow-right)"
                 : undefined,
           }}
         >

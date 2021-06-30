@@ -44,14 +44,15 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
     "columnGroupOrder" in config ? config.stickyColumnGroups : undefined;
 
   const activeBorder = getActiveBorder(borderFromGroup, borderLeft);
-  const isStickyLeft =
+  const isStickyFirstGroup =
     isFirstGroup &&
     (stickyColumnGroups === "first" || stickyColumnGroups === "both");
-  const isStickyRight =
+  const isStickyLastGroup =
     isLastGroup &&
     (stickyColumnGroups === "last" || stickyColumnGroups === "both");
 
-  const isSticky = isStickyLeft || isStickyRight || stickyHeader;
+  const isSticky = isStickyFirstGroup || isStickyLastGroup || stickyHeader;
+  const isStickyGroup = isStickyFirstGroup || isStickyLastGroup;
 
   return (
     <th
@@ -63,19 +64,21 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
           width: width,
           minWidth: minWidth ?? width ?? "20px",
           background: isSticky ? "white" : "transparent",
-          left: isStickyLeft ? `var(--current-left-offset)` : undefined,
-          right: isStickyRight ? `0px` : undefined,
+          left: isStickyFirstGroup ? `var(--current-left-offset)` : undefined,
+          right: isStickyLastGroup ? `0px` : undefined,
           top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
           borderLeft: activeBorder,
           zIndex:
-            isStickyLeft || isStickyRight
+            stickyHeader && isStickyGroup
               ? "var(--swui-sticky-column-group-label-z-index)"
+              : isStickyGroup
+              ? "var(--swui-sticky-group-group-z-index)"
               : stickyHeader
               ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"
               : zIndex ?? 1,
-          boxShadow: isStickyLeft
+          boxShadow: isStickyFirstGroup
             ? "var(--swui-sticky-column-shadow-right)"
-            : isStickyRight
+            : isStickyLastGroup
             ? "var(--swui-sticky-column-shadow-left)"
             : undefined,
         } as CSSProperties
