@@ -52,7 +52,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     <>
       {sortedItems.map((item, index) => (
         <StandardTableRow
-          alwaysVisible={disableInfiniteList}
+          alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
           key={keyResolver(item)}
           colIndexOffset={colIndexOffset}
