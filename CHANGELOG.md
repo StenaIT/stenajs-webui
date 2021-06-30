@@ -8,6 +8,7 @@
 - Columns can now be sticky to the right.
 - When using column groups, only column groups can be sticky, not single columns.
 - New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+- When using `stickyColumnGroups`, all columns in that group must have fixed width.
 - Column option `flex` no longer supported. Use `width` and `%` instead.
 
 ### Breaking changes
