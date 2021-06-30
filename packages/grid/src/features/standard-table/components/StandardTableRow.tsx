@@ -1,7 +1,8 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { CSSProperties, useMemo } from "react";
+import { CSSProperties, useMemo, useRef } from "react";
+import { useOnScreen } from "../../../../../core/src/hooks/UseOnScreen";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
@@ -24,13 +25,15 @@ import {
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableCell } from "./StandardTableCell";
+import { StandardTableRowExpansion } from "./StandardTableRowExpansion";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
-interface StandardTableItemProps<TItem> {
+export interface StandardTableRowProps<TItem> {
   item: TItem;
   rowIndex: number;
   numRows: number;
   colIndexOffset: number;
+  alwaysVisible?: boolean;
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
@@ -38,7 +41,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   rowIndex,
   numRows,
   colIndexOffset,
-}: StandardTableItemProps<TItem>) {
+  alwaysVisible,
+}: StandardTableRowProps<TItem>) {
+  const trRef = useRef(null);
+  const totalNumColumns = useTotalNumColumns();
   const { stickyCheckboxColumn } = useStandardTableConfig();
   const groupConfigs = useGroupConfigsForRows();
   const { columnIndexPerColumnId } = useColumnIndexPerColumnIdContext();
@@ -48,12 +54,13 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     checkboxDisabledResolver,
     enableGridCell,
     rowIndent,
-    renderRowExpansion,
     enableExpandCollapse,
   } = useStandardTableConfig();
 
-  const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);
+  const { isExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected } = useRowCheckbox(item);
+
+  const visible = useOnScreen(trRef);
 
   const resolvedBackgroundResult = useMemo(
     () => rowBackgroundResolver?.(item, isSelected),
@@ -94,8 +101,6 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     item
   );
 
-  const totalNumColumns = useTotalNumColumns();
-
   return (
     <>
       <TrWithHoverBackground
@@ -103,128 +108,127 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
         background={background}
         focusBackground={focusBackground}
         borderLeft={isExpanded ? tableBorderLeftExpanded : tableBorderLeft}
+        ref={trRef}
       >
-        {rowIndent && (
-          <td
-            style={{
-              background: firstColumnBackground,
-            }}
-          >
-            <Indent num={rowIndent} />
-          </td>
-        )}
-        {enableExpandCollapse && (
-          <td
-            style={
-              {
-                background: stickyCheckboxColumn ? "inherit" : undefined,
-                position: stickyCheckboxColumn ? "sticky" : undefined,
-                left: stickyCheckboxColumn ? "0px" : undefined,
-                boxShadow: stickyCheckboxColumn
-                  ? "var(--swui-sticky-column-shadow-right)"
-                  : undefined,
-                zIndex: stickyCheckboxColumn
-                  ? "var(--swui-sticky-column-z-index)"
-                  : undefined,
-              } as CSSProperties
-            }
-          >
-            <Row
-              width={"var(--swui-expand-cell-width)"}
-              minWidth={"var(--swui-expand-cell-width)"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <StandardTableRowExpandButton
-                colIndex={colIndexOffset}
-                rowIndex={enableGridCell ? rowIndex : 0}
-                numRows={enableGridCell ? numRows : 0}
-                item={item}
-              />
-            </Row>
-          </td>
-        )}
-        {showRowCheckbox && (
-          <td
-            style={
-              {
-                background: stickyCheckboxColumn ? "inherit" : undefined,
-                position: stickyCheckboxColumn ? "sticky" : undefined,
-                left:
-                  enableExpandCollapse && stickyCheckboxColumn
-                    ? "var(--swui-expand-cell-width)"
-                    : stickyCheckboxColumn
-                    ? "0px"
-                    : undefined,
-                textAlign: "center",
-                boxShadow: stickyCheckboxColumn
-                  ? "var(--swui-sticky-column-shadow-right)"
-                  : undefined,
-                zIndex: stickyCheckboxColumn
-                  ? "var(--swui-sticky-column-z-index)"
-                  : undefined,
-              } as CSSProperties
-            }
-          >
-            <Row
-              width={"var(--swui-checkbox-cell-width)"}
-              minWidth={"var(--swui-checkbox-cell-width)"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <StandardTableRowCheckbox
-                disabled={disabled}
-                value={isSelected}
-                onValueChange={toggleSelected}
-                colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
-                rowIndex={rowIndex}
-                numRows={numRows}
-              />
-            </Row>
-          </td>
-        )}
-        {groupConfigs.map((groupConfig, groupIndex) => (
-          <React.Fragment key={groupIndex}>
-            {groupConfig.columnOrder.map((columnId, index) => (
-              <StandardTableCell
-                key={columnId}
-                columnId={columnId}
-                item={item}
-                colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
-                rowIndex={rowIndex}
-                numRows={numRows}
-                borderFromGroup={getCellBorderFromGroup(
-                  groupIndex,
-                  index,
-                  groupConfig.borderLeft
-                )}
-                disableBorderLeft={groupIndex === 0 && index === 0}
-              />
+        {visible || alwaysVisible ? (
+          <>
+            {rowIndent && (
+              <td
+                style={{
+                  background: firstColumnBackground,
+                }}
+              >
+                <Indent num={rowIndent} />
+              </td>
+            )}
+            {enableExpandCollapse && (
+              <td
+                style={
+                  {
+                    background: stickyCheckboxColumn ? "inherit" : undefined,
+                    position: stickyCheckboxColumn ? "sticky" : undefined,
+                    left: stickyCheckboxColumn ? "0px" : undefined,
+                    boxShadow: stickyCheckboxColumn
+                      ? "var(--swui-sticky-column-shadow-right)"
+                      : undefined,
+                    zIndex: stickyCheckboxColumn
+                      ? "var(--swui-sticky-column-z-index)"
+                      : undefined,
+                  } as CSSProperties
+                }
+              >
+                <Row
+                  width={"var(--swui-expand-cell-width)"}
+                  minWidth={"var(--swui-expand-cell-width)"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                >
+                  <StandardTableRowExpandButton
+                    colIndex={colIndexOffset}
+                    rowIndex={enableGridCell ? rowIndex : 0}
+                    numRows={enableGridCell ? numRows : 0}
+                    item={item}
+                  />
+                </Row>
+              </td>
+            )}
+            {showRowCheckbox && (
+              <td
+                style={
+                  {
+                    background: stickyCheckboxColumn ? "inherit" : undefined,
+                    position: stickyCheckboxColumn ? "sticky" : undefined,
+                    left:
+                      enableExpandCollapse && stickyCheckboxColumn
+                        ? "var(--swui-expand-cell-width)"
+                        : stickyCheckboxColumn
+                        ? "0px"
+                        : undefined,
+                    textAlign: "center",
+                    boxShadow: stickyCheckboxColumn
+                      ? "var(--swui-sticky-column-shadow-right)"
+                      : undefined,
+                    zIndex: stickyCheckboxColumn
+                      ? "var(--swui-sticky-column-z-index)"
+                      : undefined,
+                  } as CSSProperties
+                }
+              >
+                <Row
+                  width={"var(--swui-checkbox-cell-width)"}
+                  minWidth={"var(--swui-checkbox-cell-width)"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                >
+                  <StandardTableRowCheckbox
+                    disabled={disabled}
+                    value={isSelected}
+                    onValueChange={toggleSelected}
+                    colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
+                    rowIndex={rowIndex}
+                    numRows={numRows}
+                  />
+                </Row>
+              </td>
+            )}
+            {groupConfigs.map((groupConfig, groupIndex) => (
+              <React.Fragment key={groupIndex}>
+                {groupConfig.columnOrder.map((columnId, index) => (
+                  <StandardTableCell
+                    key={columnId}
+                    columnId={columnId}
+                    item={item}
+                    colIndex={colIndexOffset + columnIndexPerColumnId[columnId]}
+                    rowIndex={rowIndex}
+                    numRows={numRows}
+                    borderFromGroup={getCellBorderFromGroup(
+                      groupIndex,
+                      index,
+                      groupConfig.borderLeft
+                    )}
+                    disableBorderLeft={groupIndex === 0 && index === 0}
+                  />
+                ))}
+              </React.Fragment>
             ))}
-          </React.Fragment>
-        ))}
-        {rowIndent && (
+            {rowIndent && (
+              <td
+                style={{
+                  background: lastColumnBackground,
+                }}
+              >
+                <Indent num={rowIndent} />
+              </td>
+            )}
+          </>
+        ) : (
           <td
-            style={{
-              background: lastColumnBackground,
-            }}
-          >
-            <Indent num={rowIndent} />
-          </td>
+            colSpan={totalNumColumns}
+            style={{ height: "var(--current-row-height)" }}
+          />
         )}
       </TrWithHoverBackground>
-      {enableExpandCollapse && renderRowExpansion && isExpanded && (
-        <tr
-          style={{
-            borderLeft: tableBorderLeftExpanded,
-            background: tableBackgroundColorExpanded,
-          }}
-        >
-          <td colSpan={totalNumColumns}>
-            {renderRowExpansion(item, { onRequestCollapse: toggleRowExpanded })}
-          </td>
-        </tr>
-      )}
+      <StandardTableRowExpansion item={item} />
     </>
   );
 });

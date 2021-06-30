@@ -68,7 +68,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
           top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
           borderLeft: activeBorder,
           zIndex:
-            isStickyLeft || isStickyLeft
+            isStickyLeft || isStickyRight
               ? "var(--swui-sticky-column-group-label-z-index)"
               : stickyHeader
               ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"

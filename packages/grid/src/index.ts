@@ -1,6 +1,5 @@
 export * from "./components/GridHooksTable";
 
-export * from "./features/table-ui/components/InfiniteList";
 export * from "./features/table-ui/components/CrudStatusIndicator";
 export * from "./features/table-ui/components/ModifiedField";
 export * from "./features/table-ui/components/table/SmallTableCell";

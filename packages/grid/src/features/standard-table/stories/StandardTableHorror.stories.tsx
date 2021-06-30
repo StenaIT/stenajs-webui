@@ -111,6 +111,11 @@ interface SalesPerformanceLoadingState {
 
 const smallTableRowWidth = "40px";
 
+const createItems = (numItems: number) =>
+  Array(numItems)
+    .fill(null)
+    .map((_, i) => createItem(String(i)));
+
 const createItem = (id: string) => ({
   info: {
     id,
@@ -232,77 +237,7 @@ const createItem = (id: string) => ({
   },
 });
 
-const items = [
-  createItem("1"),
-  createItem("2"),
-  createItem("3"),
-  createItem("4"),
-  createItem("5"),
-  createItem("6"),
-  createItem("7"),
-  createItem("8"),
-  createItem("9"),
-  createItem("10"),
-  createItem("11"),
-  createItem("12"),
-  createItem("13"),
-  createItem("14"),
-  createItem("15"),
-  createItem("16"),
-  createItem("17"),
-  createItem("18"),
-  createItem("19"),
-  createItem("20"),
-  // createItem("21"),
-  // createItem("22"),
-  // createItem("23"),
-  // createItem("24"),
-  // createItem("25"),
-  // createItem("26"),
-  // createItem("27"),
-  // createItem("28"),
-  // createItem("29"),
-  // createItem("30"),
-  // createItem("31"),
-  // createItem("32"),
-  // createItem("33"),
-  // createItem("34"),
-  // createItem("35"),
-  // createItem("36"),
-  // createItem("37"),
-  // createItem("38"),
-  // createItem("39"),
-  // createItem("40"),
-  // createItem("41"),
-  // createItem("42"),
-  // createItem("43"),
-  // createItem("44"),
-  // createItem("45"),
-  // createItem("46"),
-  // createItem("47"),
-  // createItem("48"),
-  // createItem("49"),
-  // createItem("50"),
-  // createItem("51"),
-  // createItem("52"),
-  // createItem("53"),
-  // createItem("54"),
-  // createItem("55"),
-  // createItem("56"),
-  // createItem("57"),
-  // createItem("58"),
-  // createItem("59"),
-  // createItem("60"),
-  // createItem("61"),
-  // createItem("62"),
-  // createItem("63"),
-  // createItem("64"),
-  // createItem("65"),
-  // createItem("66"),
-  // createItem("67"),
-  // createItem("68"),
-  // createItem("69"),
-];
+const items = createItems(100);
 
 const createSalesPerformanceStandardTableConfig = (
   stickyGroups: boolean,
