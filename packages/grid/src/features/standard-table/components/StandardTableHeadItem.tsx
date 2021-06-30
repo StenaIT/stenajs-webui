@@ -14,9 +14,6 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
-  isFirstInGroup: boolean;
-  isInFirstGroup: boolean;
-  isInLastGroup: boolean;
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -26,8 +23,6 @@ export const StandardTableHeadItem = React.memo(
     disableBorderLeft,
     stickyHeader,
     top,
-    isInLastGroup,
-    isFirstInGroup,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -72,11 +67,10 @@ export const StandardTableHeadItem = React.memo(
           top: top,
           boxShadow:
             stickyProps.sticky &&
-            isInLastGroup &&
-            isFirstInGroup &&
+            stickyProps.isFirstColumnInLastGroup &&
             stickyHeader
               ? "var(--swui-sticky-header-shadow-and-left)"
-              : stickyProps.sticky && isInLastGroup && isFirstInGroup
+              : stickyProps.sticky && stickyProps.isFirstColumnInLastGroup
               ? "var(--swui-sticky-column-shadow-left)"
               : stickyHeader && stickyProps.sticky
               ? "var(--swui-sticky-header-shadow-and-right)"

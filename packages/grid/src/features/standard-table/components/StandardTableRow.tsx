@@ -199,9 +199,6 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                   groupConfig.borderLeft
                 )}
                 disableBorderLeft={groupIndex === 0 && index === 0}
-                isInFirstGroup={groupIndex === 0}
-                isInLastGroup={groupIndex === groupConfigs.length - 1}
-                isFirstInGroup={index === 0}
               />
             ))}
           </React.Fragment>

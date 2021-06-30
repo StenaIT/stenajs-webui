@@ -189,9 +189,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                   disableBorderLeft={groupIndex === 0 && index === 0}
                   stickyHeader={stickyHeader}
                   top={stickyHeaderStyle.top}
-                  isInFirstGroup={groupIndex === 0}
-                  isInLastGroup={groupIndex === groupConfigs.length - 1}
-                  isFirstInGroup={index === 0}
                 />
               );
             })}
