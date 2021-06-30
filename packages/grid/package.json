@@ -35,8 +35,7 @@
     "@stenajs-webui/redux": "12.0.0",
     "@stenajs-webui/theme": "12.0.0",
     "@stenajs-webui/tooltip": "12.0.0",
-    "classnames": "^2.2.6",
-    "react-visibility-sensor": "^5.1.1"
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "@emotion/styled": ">=11.3.0",

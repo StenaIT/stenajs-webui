@@ -8,7 +8,6 @@ import styles from "./StandardTableCellUi.module.css";
 interface Props {
   width?: string;
   minWidth?: string;
-  flex?: number;
   justifyContent?: string;
   enableGridCell?: boolean;
   isEditing: boolean;

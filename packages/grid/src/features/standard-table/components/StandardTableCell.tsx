@@ -55,7 +55,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const {
     itemValueResolver,
     itemLabelFormatter,
-    flex = 1,
     width,
     minWidth,
     justifyContentCell = "flex-start",
@@ -150,7 +149,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       minWidth={minWidth}
       justifyContent={justifyContentCell}
       borderLeft={activeBorderLeft}
-      flex={flex}
       background={currentBackground}
       sticky={stickyProps.sticky}
       zIndex={
