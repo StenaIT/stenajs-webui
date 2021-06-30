@@ -63,11 +63,6 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   width?: string;
 
   /**
-   * The flex of the column. Defaults to 1 if width is not specified.
-   */
-  flex?: number;
-
-  /**
    * Custom renderer for the cell. Falls back to an internal renderer that uses String(item[field]).
    */
   renderCell?: StandardTableCellRenderer<TItemValue, TItem>;

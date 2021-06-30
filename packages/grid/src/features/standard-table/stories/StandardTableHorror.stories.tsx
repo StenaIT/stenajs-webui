@@ -325,7 +325,6 @@ const createSalesPerformanceStandardTableConfig = (
           <Chip label={"Test"} />
         </Indent>
       ),
-      flex: 1.5,
     }),
     status: createColumnConfig((item) => item.automation, {
       renderCell: () => (
@@ -339,7 +338,6 @@ const createSalesPerformanceStandardTableConfig = (
           </Popover>
         </Indent>
       ),
-      flex: 1.6,
     }),
     flags: createColumnConfig((item) => item.automation, {
       renderCell: () => (
@@ -355,7 +353,6 @@ const createSalesPerformanceStandardTableConfig = (
           </Indent>
         </Indent>
       ),
-      flex: 2,
     }),
     /**
      * EFP vehicles
@@ -489,14 +486,12 @@ const createSalesPerformanceStandardTableConfig = (
      * Price
      */
     fareClass: createColumnConfig(
-      (item) => item.price?.travelPricing?.fareClass,
-      { flex: 1 }
+      (item) => item.price?.travelPricing?.fareClass
     ),
     price: createColumnConfig(
       (item) => item.price?.travelPricing?.fareClassPrice,
       {
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     lastYear: createColumnConfig(
@@ -506,7 +501,6 @@ const createSalesPerformanceStandardTableConfig = (
       {
         columnLabel: "LY",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     friend: createColumnConfig(
@@ -514,7 +508,6 @@ const createSalesPerformanceStandardTableConfig = (
       {
         columnLabel: "Comp.",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     /**

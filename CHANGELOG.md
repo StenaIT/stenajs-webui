@@ -4,9 +4,20 @@
 
 ### StandardTable
 
+- `StandardTable` now uses `<table>` internally.
 - Columns can now be sticky to the right.
 - When using column groups, only column groups can be sticky, not single columns.
 - New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+- Column option `flex` no longer supported. Use `width` and `%` instead.
+
+### Breaking changes
+
+- `StandardTable` column config no longer supports `flex`.
+
+This is because `StandardTable` uses `<table>` internally, which
+doesn't support flex.
+
+Use `width` with `%` instead.
 
 ## 12.0.0
 
