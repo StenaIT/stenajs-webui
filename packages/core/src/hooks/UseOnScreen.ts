@@ -25,7 +25,6 @@ export const useOnScreen = (
     if (ref.current) {
       observer.observe(ref.current);
     }
-    // Remove the observer as soon as the component is unmounted
     return () => {
       observer.disconnect();
     };
