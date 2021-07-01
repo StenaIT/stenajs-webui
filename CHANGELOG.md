@@ -2,6 +2,29 @@
 
 ## Next
 
+### New hook `useOnScreen`
+
+This hook can be used to determine if a DOM element is visible on screen.
+
+It returns a boolean, true if the element is visible in viewport.
+
+It uses the Intersection Observer API.
+
+Example:
+
+```
+  const ref = useRef(null);
+
+  const visible = useOnScreen(ref, {
+    rootMargin: "400px",
+    threshold: 0,
+  });
+
+  return <div ref={ref}>...</div>
+```
+
+
+
 ### StandardTable
 
 - `StandardTable` now uses `<table>` internally.
