@@ -18,7 +18,7 @@ export const useOnScreen = (
           threshold,
         }
       ),
-    [setIntersecting, rootMargin, root, threshold]
+    [rootMargin, root, threshold]
   );
 
   useEffect(() => {

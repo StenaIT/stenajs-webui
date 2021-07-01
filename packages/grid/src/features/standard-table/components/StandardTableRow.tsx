@@ -60,7 +60,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isSelected, toggleSelected } = useRowCheckbox(item);
 
   const visible = useOnScreen(trRef, {
-    rootMargin: "400px",
+    rootMargin: "400px 0px 400px 0px",
     threshold: 0,
   });
 

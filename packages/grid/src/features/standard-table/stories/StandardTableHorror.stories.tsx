@@ -237,7 +237,7 @@ const createItem = (id: string) => ({
   },
 });
 
-const items = createItems(100);
+const items = createItems(500);
 
 const createSalesPerformanceStandardTableConfig = (
   stickyGroups: boolean,
@@ -690,7 +690,26 @@ export const HorrorStory = () => {
     efpVehicles: s,
     automation: s,
   });
+
   return <StandardTable config={config} items={items} />;
+};
+
+export const WithScroll = () => {
+  const s = {
+    loading: false,
+  };
+  const config = createSalesPerformanceStandardTableConfig(false, {
+    price: s,
+    guests: s,
+    efpVehicles: s,
+    automation: s,
+  });
+
+  return (
+    <Box height={"400px"} overflowY={"scroll"}>
+      <StandardTable config={config} items={items} />
+    </Box>
+  );
 };
 
 export const StickyColumnGroups = () => {
