@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ActionMenuButton
+
+- Allows for custom `onClick` events
+
 ## 12.0.0
 
 ### StandardTable
