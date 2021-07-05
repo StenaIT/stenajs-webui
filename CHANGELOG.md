@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ActionMenuItem
+
+- No longer forwards `disableCloseOnClick` to the DOM
+
 ## 12.0.0
 
 ### StandardTable

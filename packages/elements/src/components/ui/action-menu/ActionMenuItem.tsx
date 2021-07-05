@@ -35,12 +35,14 @@ export const ActionMenuItem = forwardRef<
     leftWrapperClassName,
     variant = "standard",
     className,
+    onClick,
+    disableCloseOnClick,
     ...props
   },
   ref
 ) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
-    props,
+    { disableCloseOnClick, onClick },
     ref
   );
 
