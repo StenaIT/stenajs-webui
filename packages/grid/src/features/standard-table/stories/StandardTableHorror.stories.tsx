@@ -635,6 +635,7 @@ const createSalesPerformanceStandardTableConfig = (
       label: "Sales performance (EFP vehicles)",
       loading: loadingState.efpVehicles.loading,
       borderLeft: true,
+      error: "Something went wrong",
       columnOrder: [
         "efpVehiclesReserved",
         "forecast",

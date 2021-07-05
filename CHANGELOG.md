@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Fix column group warning being rendered below sticky elements.
+
 ## 13.0.0
 
 ### ModalHeader
