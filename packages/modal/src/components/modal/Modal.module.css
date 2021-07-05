@@ -59,11 +59,21 @@
     }
 
     &.isDraggable {
+
       :global(.draggable-modal-handle) {
         cursor: move;
+
+        :global(.draggable-modal-cancel) {
+          cursor: initial;
+        }
+        button:global(.draggable-modal-cancel) {
+          cursor: pointer;
+        }
       }
     }
   }
+
+
 }
 
 @keyframes fadeIn {

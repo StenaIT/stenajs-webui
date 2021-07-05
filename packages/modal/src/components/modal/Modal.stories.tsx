@@ -6,10 +6,9 @@ import { Icon, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
-import { BaseModal, DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
+import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
-import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 
 export default {
   title: "modal/Modal",
@@ -142,7 +141,7 @@ export const DraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>Drag me using the handle on the left.</Txt>
+          <Txt>Drag me using the header but not the text.</Txt>
         </Box>
       </Modal>
     </div>
@@ -158,7 +157,7 @@ export const CustomDraggableModal = () => {
         label={"Open custom modal"}
       />
       <Modal
-        headerText={"Draggable modal with custom areas"}
+        headerText={"Non-draggable text"}
         header={
           <Row
             background={cssColor("--lhds-color-orange-200")}
@@ -171,11 +170,11 @@ export const CustomDraggableModal = () => {
           >
             <Txt variant={"bold"}>This is custom content</Txt>
             <Box
-              className={DRAGGABLE_HANDLE_CLASSNAME}
+              className={DRAGGABLE_CANCEL_CLASSNAME}
               background={cssColor("--lhds-color-orange-400")}
               indent={2}
             >
-              <Txt variant={"bold"}>I am the draggable part</Txt>
+              <Txt variant={"bold"}>I am not draggable</Txt>
             </Box>
           </Row>
         }
@@ -185,36 +184,7 @@ export const CustomDraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>
-            Drag me using the handle on the left or the customized draggable
-            part of my header.
-          </Txt>
-        </Box>
-      </Modal>
-    </div>
-  );
-};
-
-export const DraggableModalWithCustomHandleIcon = () => {
-  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
-  return (
-    <div>
-      <PrimaryButton
-        onClick={() => setCustomModalOpen(true)}
-        label={"Open modal"}
-      />
-      <Modal
-        headerText={"Draggable modal with custom handle icon"}
-        isOpen={isCustomModalOpen}
-        onRequestClose={() => setCustomModalOpen(false)}
-        shouldCloseOnOverlayClick
-        draggable
-        handleIcon={faJedi}
-      >
-        <Box indent={2} spacing>
-          <Txt>
-            Drag me using the <Txt variant={"caption"}>force</Txt>
-          </Txt>
+          <Txt>Drag me using the header except the non-draggable part.</Txt>
         </Box>
       </Modal>
     </div>
