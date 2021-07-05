@@ -4532,13 +4532,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-infinite@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@types/react-infinite/-/react-infinite-0.0.35.tgz#0199474dcafe4a41c30d22a19ccafd8901634fb6"
-  integrity sha512-NQB2qfrs6Q4RBpfmKNzAH9KYO/kbYybQ5H6rsj7pYbwtXtBDsWSlf7OiTs7Hp2ZA+F3tfEzvx6UfVdjhRareyw==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-modal@^3.10.6":
   version "3.10.6"
   resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.10.6.tgz#76717220f32bc72769190692147814a540053c7e"
