@@ -113,10 +113,15 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
             {loading ? (
               <InputSpinner />
             ) : error ? (
-              <Tooltip label={error}>
+              <Tooltip
+                label={error}
+                placement={"bottom"}
+                appendTo={document.body}
+              >
                 <Icon
                   icon={faExclamationTriangle}
                   color={cssColor("--lhds-color-red-500")}
+                  size={14}
                 />
               </Tooltip>
             ) : undefined}
