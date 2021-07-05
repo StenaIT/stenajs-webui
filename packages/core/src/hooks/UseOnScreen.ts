@@ -4,22 +4,20 @@ export const useOnScreen = (
   ref: RefObject<Element>,
   options?: IntersectionObserverInit
 ) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const { rootMargin, root, threshold } = options || {};
 
-  const observer = useMemo(
-    () =>
-      new IntersectionObserver(
-        ([entry]) => setIntersecting(entry.isIntersecting),
-        {
-          rootMargin,
-          root,
-          threshold,
-        }
-      ),
-    [rootMargin, root, threshold]
-  );
+  const observer = useMemo(() => {
+    return new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      {
+        rootMargin,
+        root,
+        threshold,
+      }
+    );
+  }, [setIsVisible, rootMargin, root, threshold]);
 
   useEffect(() => {
     if (ref.current) {
@@ -30,5 +28,5 @@ export const useOnScreen = (
     };
   }, [observer, ref]);
 
-  return isIntersecting;
+  return isVisible;
 };
