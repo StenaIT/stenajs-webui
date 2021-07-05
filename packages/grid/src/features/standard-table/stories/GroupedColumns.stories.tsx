@@ -138,7 +138,7 @@ export const GroupedColumns = () => {
   );
 };
 
-export const GroupedColumnsAndSticky = () => {
+export const GroupedColumnsAndStickyHeader = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
   const config: StandardTableConfig<
@@ -157,8 +157,6 @@ export const GroupedColumnsAndSticky = () => {
       id: {
         ...standardTableConfigForStories.columns.id,
         width: "245px",
-        sticky: true,
-        left: "0",
         backgroundResolver: (item) =>
           item.active ? cssColor("--lhds-color-orange-100") : undefined,
       },
@@ -203,8 +201,7 @@ export const GroupedColumnsAndStickyConfiguration = () => {
   > = {
     ...standardTableConfigForStories,
     stickyHeader: true,
-    headerRowOffsetTop: "16px",
-    zIndex: 499,
+    headerRowOffsetTop: "20px",
     rowBackgroundResolver: (item) =>
       item.active ? cssColor("--lhds-color-green-100") : undefined,
     columns: {
@@ -240,7 +237,7 @@ export const GroupedColumnsAndStickyConfiguration = () => {
     <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
       <Box
         style={{
-          height: 16,
+          height: 20,
           position: "sticky",
           top: 0,
           zIndex: 500,

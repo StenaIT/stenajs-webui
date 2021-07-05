@@ -110,6 +110,7 @@ export const standardTableConfigForStories: StandardTableConfig<
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
       sortOrderIconVariant: "numeric",
+      width: "140px",
     }),
     departure: createColumnConfig((item) => item.departure, {
       itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),

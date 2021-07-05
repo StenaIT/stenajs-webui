@@ -39,6 +39,7 @@ export * from "./hooks/UseMouseIsEntered";
 export * from "./hooks/UseMultiOnClickOutside";
 export * from "./hooks/UseOnClickOutside";
 export * from "./hooks/UseOnNoMouseInput";
+export * from "./hooks/UseOnScreen";
 export * from "./hooks/UseForwardedRef";
 export * from "./hooks/UseTimeoutState";
 

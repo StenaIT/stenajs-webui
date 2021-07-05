@@ -1,38 +1,25 @@
-import { Indent, Row } from "@stenajs-webui/core";
-import { Property } from "csstype";
 import * as React from "react";
+import { CSSProperties } from "react";
 import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../../config/TableConfig";
-import { TableHeadItem } from "../../../table-ui/components/table/TableHeadItem";
-import { TableHeadRow } from "../../../table-ui/components/table/TableHeadRow";
 import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
-import { ColumnGroupItem } from "./ColumnGroupItem";
+import { getCellBorderFromGroup } from "../../util/CellBorderCalculator";
+import { ColumnInGroup } from "./ColumnInGroup";
+import { createStickyHeaderProps } from "./StickyHeaderPropsFactory";
 
 interface ColumnGroupRowProps {
   height?: string;
 }
 
-const getTopPosition = (
-  stickyHeader: boolean | undefined,
-  headerRowOffsetTop: string | undefined
-) => {
-  if (stickyHeader && headerRowOffsetTop) {
-    return headerRowOffsetTop;
-  } else if (headerRowOffsetTop) {
-    return headerRowOffsetTop;
-  } else if (stickyHeader) {
-    return 0;
-  }
-  return undefined;
-};
-
 export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   height = defaultTableRowHeight,
 }: ColumnGroupRowProps) {
   const groupConfigs = useGroupConfigsForRows();
+  const config = useStandardTableConfig();
+
   const {
     showHeaderCheckbox,
     enableExpandCollapse,
@@ -41,61 +28,67 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     stickyHeader,
     stickyCheckboxColumn,
     headerRowOffsetTop,
-  } = useStandardTableConfig();
+  } = config;
+
+  const stickyHeaderProps = createStickyHeaderProps(
+    stickyHeader,
+    stickyCheckboxColumn,
+    headerRowOffsetTop,
+    zIndex
+  );
+
+  const zIndexForCells = (stickyHeader
+    ? "var(--swui-sticky-column-group-label-z-index)"
+    : "var(--swui-sticky-group-group-z-index)") as CSSProperties["zIndex"];
 
   return (
-    <TableHeadRow
-      height={height}
-      borderLeft={tableBorderLeft}
-      top={getTopPosition(stickyHeader, headerRowOffsetTop)}
-      background={stickyHeader ? "white" : undefined}
-      position={stickyHeader ? "sticky" : undefined}
-      shadow={stickyHeader ? "var(--swui-sticky-header-shadow)" : undefined}
-      zIndex={
-        stickyHeader
-          ? zIndex ?? ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-          : zIndex
-      }
+    <tr
+      style={{
+        height: height,
+        borderLeft: tableBorderLeft,
+      }}
     >
-      {rowIndent && <Indent num={rowIndent} />}
+      {rowIndent && <th style={stickyHeaderProps} />}
       {enableExpandCollapse && (
-        <Row
-          alignItems={"center"}
-          justifyContent={"center"}
-          width={"45px"}
-          minWidth={"45px"}
-          indent
+        <th
+          style={{
+            ...stickyHeaderProps,
+            width: "var(--swui-expand-cell-width)",
+            left: stickyCheckboxColumn ? "0px" : undefined,
+            zIndex: zIndexForCells,
+          }}
         />
       )}
       {showHeaderCheckbox && (
-        <TableHeadItem
-          width={"45px"}
-          minWidth={"45px"}
-          justifyContent={"center"}
-          overflow={"hidden"}
-          background={
-            showHeaderCheckbox && stickyCheckboxColumn ? "white" : undefined
-          }
-          position={
-            showHeaderCheckbox && stickyCheckboxColumn ? "sticky" : undefined
-          }
-          left={showHeaderCheckbox && stickyCheckboxColumn ? "0px" : undefined}
-          zIndex={
-            showHeaderCheckbox && stickyCheckboxColumn
-              ? zIndex ??
-                ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
-              : zIndex
-          }
+        <th
+          style={{
+            ...stickyHeaderProps,
+            left:
+              stickyCheckboxColumn && enableExpandCollapse
+                ? "var(--swui-expand-cell-width)"
+                : stickyCheckboxColumn
+                ? "0px"
+                : undefined,
+            zIndex: zIndexForCells,
+          }}
         />
       )}
       {groupConfigs.map((groupConfig, groupIndex) => (
-        <ColumnGroupItem
+        <ColumnInGroup
+          isFirstGroup={groupIndex === 0}
+          isLastGroup={groupIndex === groupConfigs.length - 1}
           groupConfig={groupConfig}
-          key={groupIndex}
-          groupIndex={groupIndex}
+          columnId={groupConfig.columnOrder[0]}
+          key={groupConfig.columnOrder[0]}
+          colSpan={groupConfig.columnOrder.length}
+          borderFromGroup={getCellBorderFromGroup(
+            groupIndex,
+            0,
+            groupConfig.borderLeft
+          )}
         />
       ))}
-      {rowIndent && <Indent num={rowIndent} />}
-    </TableHeadRow>
+      {rowIndent && <th style={stickyHeaderProps} />}
+    </tr>
   );
 });

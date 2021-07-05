@@ -1,15 +1,13 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { InfiniteList } from "../../table-ui/components/InfiniteList";
+import { multitypeComparator } from "../features/sorting/MultitypeComparator";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
-import { multitypeComparator } from "../features/sorting/MultitypeComparator";
-import { StandardTableRow } from "./StandardTableRow";
-import { elementHeightPerVariant } from "../config/StandardTableInfiniteConfig";
 import { StandardTableVariant } from "./StandardTable";
+import { StandardTableRow } from "./StandardTableRow";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
@@ -22,15 +20,10 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   TItem
 >({
   items,
-  variant,
   colIndexOffset = 0,
   rowIndexOffset = 0,
 }: StandardTableContentProps<TItem>) {
-  const {
-    keyResolver,
-    disableInfiniteList,
-    enableExpandCollapse,
-  } = useStandardTableConfig();
+  const { keyResolver, disableInfiniteList } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();
@@ -56,14 +49,10 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   }, [items, valueResolver, desc]);
 
   return (
-    <InfiniteList
-      disabled={disableInfiniteList || enableExpandCollapse}
-      length={sortedItems.length}
-      elementHeight={elementHeightPerVariant[variant]}
-      threshold={30}
-    >
+    <>
       {sortedItems.map((item, index) => (
         <StandardTableRow
+          alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
           key={keyResolver(item)}
           colIndexOffset={colIndexOffset}
@@ -71,6 +60,6 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           numRows={sortedItems.length}
         />
       ))}
-    </InfiniteList>
+    </>
   );
 });

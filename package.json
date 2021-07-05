@@ -120,7 +120,7 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "17 kB"
+      "maxSize": "20 kB"
     },
     {
       "path": "./packages/grid-export/dist/*.js",

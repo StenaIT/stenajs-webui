@@ -2,12 +2,52 @@
 
 ## Next
 
+### Spinner
 
 - Spinner has updated animation.
 
 ### ActionMenuButton
 
 - Allows for custom `onClick` events
+
+### New hook `useOnScreen`
+
+This hook can be used to determine if a DOM element is visible on screen.
+
+It returns a boolean, true if the element is visible in viewport.
+
+It uses the Intersection Observer API.
+
+Example:
+
+```
+  const ref = useRef(null);
+
+  const visible = useOnScreen(ref, {
+    rootMargin: "400px",
+    threshold: 0,
+  });
+
+  return <div ref={ref}>...</div>
+```
+
+### StandardTable
+
+- `StandardTable` now uses `<table>` internally.
+- Columns can now be sticky to the right.
+- When using column groups, only column groups can be sticky, not single columns.
+- New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+- When using `stickyColumnGroups`, all columns in that group must have fixed width.
+- Column option `flex` no longer supported. Use `width` and `%` instead.
+
+### Breaking changes
+
+- `StandardTable` column config no longer supports `flex`.
+
+This is because `StandardTable` uses `<table>` internally, which
+doesn't support flex.
+
+Use `width` with `%` instead.
 
 ## 12.0.0
 

@@ -1,7 +1,6 @@
 import { BoxProps, Row } from "@stenajs-webui/core";
-import { Property } from "csstype";
 import * as React from "react";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { tableBorder } from "../../../config/TableConfig";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
@@ -9,7 +8,6 @@ import styles from "./StandardTableCellUi.module.css";
 interface Props {
   width?: string;
   minWidth?: string;
-  flex?: number;
   justifyContent?: string;
   enableGridCell?: boolean;
   isEditing: boolean;
@@ -18,8 +16,9 @@ interface Props {
   borderLeft?: string | boolean;
   children: ReactNode;
   sticky?: boolean;
-  zIndex?: number;
+  zIndex?: number | string;
   left?: string;
+  right?: string;
   shadow?: string;
   onKeyDown?: BoxProps["onKeyDown"];
 }
@@ -30,7 +29,6 @@ export const StandardTableCellUi = React.memo<Props>(
     borderLeft,
     children,
     background,
-    flex,
     gridCellRequiredProps,
     isEditing,
     justifyContent,
@@ -38,33 +36,36 @@ export const StandardTableCellUi = React.memo<Props>(
     minWidth,
     sticky,
     left,
+    right,
     zIndex,
     shadow,
     onKeyDown,
   }) {
     return (
-      <Row
-        flex={width ? undefined : flex}
-        width={width}
-        minWidth={minWidth ?? width}
-        height={"100%"}
-        background={background}
-        borderLeft={borderLeft === true ? tableBorder : borderLeft || undefined}
-        overflow={"hidden"}
-        position={sticky ? "sticky" : undefined}
-        left={sticky && left == null ? "0px" : left}
-        shadow={shadow}
-        zIndex={
-          sticky
-            ? zIndex ?? ("var(--swui-sticky-column-z-index)" as Property.ZIndex)
-            : zIndex
-        }
+      <td
+        style={{
+          width: width,
+          minWidth: minWidth ?? width ?? "20px",
+          background: background,
+          borderLeft:
+            borderLeft === true ? tableBorder : borderLeft || undefined,
+          overflow: "hidden",
+          height: "var(--current-row-height)",
+          position: sticky ? "sticky" : undefined,
+          left: sticky ? left : undefined,
+          right: sticky ? right : undefined,
+          boxShadow: shadow,
+          zIndex: (sticky
+            ? zIndex ?? "var(--swui-sticky-column-z-index)"
+            : zIndex ?? 1) as CSSProperties["zIndex"],
+        }}
         onKeyDown={onKeyDown}
       >
         <Row
           border={"1px solid transparent"}
           className={styles.standardTableCell}
-          width={"100%"}
+          width={width}
+          minWidth={minWidth ?? width ?? "20px"}
           height={"100%"}
           justifyContent={justifyContent}
           alignItems={"center"}
@@ -83,7 +84,7 @@ export const StandardTableCellUi = React.memo<Props>(
         >
           {children}
         </Row>
-      </Row>
+      </td>
     );
   }
 );

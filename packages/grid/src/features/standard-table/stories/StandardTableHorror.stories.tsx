@@ -111,135 +111,143 @@ interface SalesPerformanceLoadingState {
 
 const smallTableRowWidth = "40px";
 
-const items = [
-  {
-    info: {
-      id: "1",
-      travelId: "someid",
-      legCode: "CODE",
-      lastYearDepartureId: null,
-      departureDateTime: {
-        local: "1970-05-07 09:10:00",
-        zoned: "1970-05-07T09:10:00Z",
-        ianaTimeZone: "Z",
-      },
-      shipCode: "DANI",
-      clusterCode: null,
-      passengers: {
-        id: "someid2:someid",
-        reserved: 13,
-        remaining: 14,
-      },
-      extraData: {
-        dayOfWeek: 5,
-        dayOfWeekString: "Fri",
-        timeString: "09:10",
-        timeToDepartureString: "7 days ago",
-        minutesToDeparture: -10426,
-      },
+const createItems = (numItems: number) =>
+  Array(numItems)
+    .fill(null)
+    .map((_, i) => createItem(String(i)));
+
+const createItem = (id: string) => ({
+  info: {
+    id,
+    travelId: "someid",
+    legCode: "CODE",
+    lastYearDepartureId: null,
+    departureDateTime: {
+      local: "1970-05-07 09:10:00",
+      zoned: "1970-05-07T09:10:00Z",
+      ianaTimeZone: "Z",
     },
-    pricingPath: "/some-path",
-    automation: {
+    shipCode: "DANI",
+    clusterCode: null,
+    passengers: {
       id: "someid2:someid",
-      fareClassAutomation: {
-        id: "someid",
-        efpVehicleFareClassAllocationAutomation: {
-          id: "someidEFPVehicles",
-          willingnessToPaySetting: null,
-          statusSetting: null,
-          methodSetting: {
-            id: "someotherid",
-            method: {
-              id: "2",
-              name: "TEST_METHOD",
-            },
-          },
-          automationState: null,
-        },
-      },
-      departureAutomation: {
-        fareClassMethodName: "TEST_METHOD",
-        automationEnabled: false,
-        sortFieldAutomationMethodAndDepartureDateTime: "0TEST_METHOD",
-        sortFieldAutomationStatus: "JustForSorting",
-        sortFieldAutomationFlags: "0",
-        sortFieldAutomationWillingnessToPay: 0,
-      },
+      reserved: 13,
+      remaining: 14,
     },
-    efpVehicles: {
-      id: "someid2:someid",
-      salesPerformance: {
-        id: "someid2:someid",
-        booked: null,
-        bookedLastYearSameDaysToDeparture: null,
-        forecast: null,
-        forecastUtilisation: null,
-        totalCarEquivalentUnitLastYear: null,
-      },
-    },
-    fareClassRecommendationRevenue: {
-      id: "someid2:someid",
-      revenueGains: [],
-      futureRevenues: [],
-    },
-    guestsHistory: {
-      id: "someid2:someid",
-      guestsPerformance: [
-        {
-          id: "someid:1970-05-13",
-          date: "1970-05-13",
-          guestsReserved: null,
-        },
-        {
-          id: "someid:1970-05-11",
-          date: "1970-05-11",
-          guestsReserved: null,
-        },
-        {
-          id: "someid:1970-05-07",
-          date: "1970-05-07",
-          guestsReserved: 10,
-          diff: -25,
-        },
-        {
-          id: "someid:1970-04-14",
-          date: "1970-04-14",
-          guestsReserved: 10,
-          diff: 0,
-        },
-        {
-          id: "someid:1970-03-30",
-          date: "1970-03-30",
-          guestsReserved: 10,
-          diff: 2,
-        },
-      ],
-    },
-    tableColors: {
-      efpHistory: {
-        minus1: {},
-        minus3: {},
-        minus7: {},
-        minus30: {},
-        minus45: {},
-      },
-      guestsHistory: {
-        minus1: {},
-        minus3: {},
-        minus7: { bgColor: "#fda59d", textColor: "#6c2524" },
-        minus30: { bgColor: "#fdaf9e", textColor: "#6d3024" },
-        minus45: { bgColor: "#fdae9e", textColor: "#6d2f24" },
-      },
+    extraData: {
+      dayOfWeek: 5,
+      dayOfWeekString: "Fri",
+      timeString: "09:10",
+      timeToDepartureString: "7 days ago",
+      minutesToDeparture: -10426,
     },
   },
-];
+  pricingPath: "/some-path",
+  automation: {
+    id: "someid2:someid",
+    fareClassAutomation: {
+      id: "someid",
+      efpVehicleFareClassAllocationAutomation: {
+        id: "someidEFPVehicles",
+        willingnessToPaySetting: null,
+        statusSetting: null,
+        methodSetting: {
+          id: "someotherid",
+          method: {
+            id: "2",
+            name: "TEST_METHOD",
+          },
+        },
+        automationState: null,
+      },
+    },
+    departureAutomation: {
+      fareClassMethodName: "TEST_METHOD",
+      automationEnabled: false,
+      sortFieldAutomationMethodAndDepartureDateTime: "0TEST_METHOD",
+      sortFieldAutomationStatus: "JustForSorting",
+      sortFieldAutomationFlags: "0",
+      sortFieldAutomationWillingnessToPay: 0,
+    },
+  },
+  efpVehicles: {
+    id: "someid2:someid",
+    salesPerformance: {
+      id: "someid2:someid",
+      booked: null,
+      bookedLastYearSameDaysToDeparture: null,
+      forecast: null,
+      forecastUtilisation: null,
+      totalCarEquivalentUnitLastYear: null,
+    },
+  },
+  fareClassRecommendationRevenue: {
+    id: "someid2:someid",
+    revenueGains: [],
+    futureRevenues: [],
+  },
+  guestsHistory: {
+    id: "someid2:someid",
+    guestsPerformance: [
+      {
+        id: "someid:1970-05-13",
+        date: "1970-05-13",
+        guestsReserved: null,
+      },
+      {
+        id: "someid:1970-05-11",
+        date: "1970-05-11",
+        guestsReserved: null,
+      },
+      {
+        id: "someid:1970-05-07",
+        date: "1970-05-07",
+        guestsReserved: 10,
+        diff: -25,
+      },
+      {
+        id: "someid:1970-04-14",
+        date: "1970-04-14",
+        guestsReserved: 10,
+        diff: 0,
+      },
+      {
+        id: "someid:1970-03-30",
+        date: "1970-03-30",
+        guestsReserved: 10,
+        diff: 2,
+      },
+    ],
+  },
+  tableColors: {
+    efpHistory: {
+      minus1: {},
+      minus3: {},
+      minus7: {},
+      minus30: {},
+      minus45: {},
+    },
+    guestsHistory: {
+      minus1: {},
+      minus3: {},
+      minus7: { bgColor: "#fda59d", textColor: "#6c2524" },
+      minus30: { bgColor: "#fdaf9e", textColor: "#6d3024" },
+      minus45: { bgColor: "#fdae9e", textColor: "#6d2f24" },
+    },
+  },
+});
+
+const items = createItems(500);
 
 const createSalesPerformanceStandardTableConfig = (
+  stickyGroups: boolean,
   loadingState: SalesPerformanceLoadingState
 ): StandardTableConfig<SalesPerformanceTableRowItem, Column, ColumnGroup> => ({
   keyResolver: (item) => item.info.id,
   showHeaderCheckbox: true,
   showRowCheckbox: true,
+  stickyCheckboxColumn: true,
+  stickyColumnGroups: stickyGroups ? "both" : undefined,
   columns: {
     /**
      * Departure
@@ -251,17 +259,19 @@ const createSalesPerformanceStandardTableConfig = (
           <FlatButton />
         </Indent>
       ),
-      flex: 2,
       width: "48px",
+      minWidth: "48px",
     }),
     leg: createColumnConfig((item) => item.info.legCode, {
-      flex: 2,
+      width: "60px",
+      minWidth: "60px",
     }),
     dayOfWeek: createColumnConfig(
       (item) => item.info.extraData.dayOfWeekString,
       {
         columnLabel: "Day",
-        flex: 2,
+        width: "60px",
+        minWidth: "60px",
       }
     ),
     departureDateTime: createColumnConfig(
@@ -271,14 +281,21 @@ const createSalesPerformanceStandardTableConfig = (
           `${format(parseISO(value), "yyyy-MM-dd")} ${
             item.info.extraData.timeString
           }`,
-        flex: 5,
+        width: "140px",
+        minWidth: "140px",
       }
     ),
     timeToDeparture: createColumnConfig(
       (item) => item.info.extraData.timeToDepartureString,
-      { flex: 3 }
+      {
+        width: "90px",
+        minWidth: "90px",
+      }
     ),
-    ship: createColumnConfig((item) => item.info.shipCode),
+    ship: createColumnConfig((item) => item.info.shipCode, {
+      width: "60px",
+      minWidth: "60px",
+    }),
 
     /**
      * Automation
@@ -300,7 +317,7 @@ const createSalesPerformanceStandardTableConfig = (
           />
         </Indent>
       ),
-      width: "105px",
+      width: "125px",
     }),
     wtp: createColumnConfig((item) => item.automation, {
       renderCell: () => (
@@ -308,12 +325,11 @@ const createSalesPerformanceStandardTableConfig = (
           <Chip label={"Test"} />
         </Indent>
       ),
-      flex: 1.5,
     }),
     status: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
-          <Popover content={<Box indent={1} spacing={1}></Box>}>
+          <Popover content={<Box indent={1} spacing={1} />}>
             <Icon
               icon={faCoffee}
               color={cssColor("--lhds-color-blue-300")}
@@ -322,13 +338,12 @@ const createSalesPerformanceStandardTableConfig = (
           </Popover>
         </Indent>
       ),
-      flex: 1.6,
     }),
     flags: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
           <Indent>
-            <Popover content={<Box indent={1} spacing={1}></Box>}>
+            <Popover content={<Box indent={1} spacing={1} />}>
               <Icon
                 icon={faCoffee}
                 color={cssColor("--lhds-color-blue-300")}
@@ -338,7 +353,6 @@ const createSalesPerformanceStandardTableConfig = (
           </Indent>
         </Indent>
       ),
-      flex: 2,
     }),
     /**
      * EFP vehicles
@@ -472,14 +486,12 @@ const createSalesPerformanceStandardTableConfig = (
      * Price
      */
     fareClass: createColumnConfig(
-      (item) => item.price?.travelPricing?.fareClass,
-      { flex: 1 }
+      (item) => item.price?.travelPricing?.fareClass
     ),
     price: createColumnConfig(
       (item) => item.price?.travelPricing?.fareClassPrice,
       {
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     lastYear: createColumnConfig(
@@ -489,7 +501,6 @@ const createSalesPerformanceStandardTableConfig = (
       {
         columnLabel: "LY",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     friend: createColumnConfig(
@@ -497,7 +508,6 @@ const createSalesPerformanceStandardTableConfig = (
       {
         columnLabel: "Comp.",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-        flex: 1,
       }
     ),
     /**
@@ -505,11 +515,11 @@ const createSalesPerformanceStandardTableConfig = (
      */
     reserved: createColumnConfig((item) => item.info?.passengers.reserved, {
       columnLabel: "Res.",
-      flex: 1,
+      width: "60px",
     }),
     remaining: createColumnConfig((item) => item.info?.passengers.remaining, {
       columnLabel: "Rem.",
-      flex: 1,
+      width: "60px",
     }),
     guestsHistoryMinus1: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[0].diff,
@@ -674,11 +684,59 @@ export const HorrorStory = () => {
   const s = {
     loading: false,
   };
-  const config = createSalesPerformanceStandardTableConfig({
+  const config = createSalesPerformanceStandardTableConfig(false, {
     price: s,
     guests: s,
     efpVehicles: s,
     automation: s,
   });
+
+  return <StandardTable config={config} items={items} />;
+};
+
+export const WithScroll = () => {
+  const s = {
+    loading: false,
+  };
+  const config = createSalesPerformanceStandardTableConfig(false, {
+    price: s,
+    guests: s,
+    efpVehicles: s,
+    automation: s,
+  });
+
+  return (
+    <Box height={"400px"} overflowY={"scroll"}>
+      <StandardTable config={config} items={items} />
+    </Box>
+  );
+};
+
+export const StickyColumnGroups = () => {
+  const s = {
+    loading: false,
+  };
+  const config = createSalesPerformanceStandardTableConfig(true, {
+    price: s,
+    guests: s,
+    efpVehicles: s,
+    automation: s,
+  });
+
+  return <StandardTable config={config} items={items} />;
+};
+
+export const StickyColumnsGroupsAndHeaders = () => {
+  const s = {
+    loading: false,
+  };
+  const config = createSalesPerformanceStandardTableConfig(true, {
+    price: s,
+    guests: s,
+    efpVehicles: s,
+    automation: s,
+  });
+  config.stickyHeader = true;
+
   return <StandardTable config={config} items={items} />;
 };
