@@ -2,6 +2,10 @@
 
 ## 13.0.0
 
+### ModalHeader
+
+- `ModalHeader` is no longer draggable by default if used outside of `Modal`.
+
 ### Spinner
 
 - Spinner has updated animation.
