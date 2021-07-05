@@ -44,6 +44,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   zIndex,
   menuWidth,
   menuTop,
+  onClick,
   ...buttonProps
 }) => {
   const [isOpen, open, close, toggle] = useBoolean(false);
@@ -90,6 +91,13 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
 
   const contextValue = useMemo(() => ({ open, close }), [open, close]);
 
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    onClick?.(event);
+    toggle();
+  };
+
   return (
     <Popover
       disablePadding
@@ -120,7 +128,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
         rightIcon={rightIcon}
         {...buttonProps}
         ref={buttonRef}
-        onClick={toggle}
+        onClick={handleClick}
       />
     </Popover>
   );
