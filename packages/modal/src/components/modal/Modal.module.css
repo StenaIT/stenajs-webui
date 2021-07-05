@@ -59,7 +59,6 @@
     }
 
     &.isDraggable {
-
       :global(.draggable-modal-handle) {
         cursor: move;
 
@@ -72,8 +71,6 @@
       }
     }
   }
-
-
 }
 
 @keyframes fadeIn {
