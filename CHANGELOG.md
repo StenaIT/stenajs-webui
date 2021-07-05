@@ -2,6 +2,14 @@
 
 ## Next
 
+### Spinner
+
+- Spinner has updated animation.
+
+### ActionMenuButton
+
+- Allows for custom `onClick` events
+
 ### New hook `useOnScreen`
 
 This hook can be used to determine if a DOM element is visible on screen.
@@ -22,8 +30,6 @@ Example:
 
   return <div ref={ref}>...</div>
 ```
-
-
 
 ### StandardTable
 
