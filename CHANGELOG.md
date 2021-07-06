@@ -1,5 +1,17 @@
 # Changelog
 
+## Next
+
+### Modal
+
+- `ModalHeader` is once again draggable by default.
+- Buttons and tooltips inside `ModalHeader` are not draggable.
+- `headerText` in `ModalHeader` is not draggable.
+- `DRAGGABLE_CANCEL_CLASSNAME` can be used to make part of `ModalHeader` not draggable.
+  Remember to use this for text that should be selectable in all browsers (e.g. Firefox).
+- New prop `closeButtonClassName` for `ModalHeader` lets you set a classname for the close button.
+- The close button now has an aria-label ("Close").
+
 ## 13.0.1
 
 ### StandardTable

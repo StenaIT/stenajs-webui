@@ -1,7 +1,6 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { FlatButton, Icon } from "@stenajs-webui/elements";
+import { FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import * as cx from "classnames";
 import { ReactNode } from "react";
 import {
   DRAGGABLE_CANCEL_CLASSNAME,
@@ -39,7 +38,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
       </Row>
       <Box alignSelf={"flex-start"}>
         <FlatButton
-          className={cx(closeButtonClassName, DRAGGABLE_CANCEL_CLASSNAME)}
+          className={closeButtonClassName}
           onClick={onRequestClose}
           aria-label={"Close"}
           leftIcon={faTimes}

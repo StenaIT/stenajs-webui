@@ -2,13 +2,22 @@ import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
 import { Box, Row, Space, Spacing, Text, Txt } from "@stenajs-webui/core";
-import { Icon, PrimaryButton } from "@stenajs-webui/elements";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  Icon,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
 import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
+import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
+import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 
 export default {
   title: "modal/Modal",
@@ -176,6 +185,21 @@ export const CustomDraggableModal = () => {
             >
               <Txt variant={"bold"}>I am not draggable</Txt>
             </Box>
+            <SecondaryButton label={"Buttons are not draggable"} />
+            <ActionMenuSecondaryButton
+              renderItems={() => (
+                <>
+                  <ActionMenuItem label={"Button"} />
+                  <ActionMenuLink label={"Link"} />
+                  <ActionMenuItemContent
+                    label={"Content"}
+                    right={
+                      <SecondaryButton size={"small"} leftIcon={faJediOrder} />
+                    }
+                  />
+                </>
+              )}
+            />
           </Row>
         }
         isOpen={isCustomModalOpen}
@@ -184,7 +208,7 @@ export const CustomDraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>Drag me using the header except the non-draggable part.</Txt>
+          <Txt>Drag me using the header except the non-draggable parts.</Txt>
         </Box>
       </Modal>
     </div>

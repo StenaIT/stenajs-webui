@@ -28,7 +28,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
     >
       <Draggable
         handle={`.${DRAGGABLE_HANDLE_CLASSNAME}`}
-        cancel={`.${DRAGGABLE_CANCEL_CLASSNAME}`}
+        cancel={`.${DRAGGABLE_CANCEL_CLASSNAME}, button, [role="tooltip"]`}
         bounds=".ReactModal__Overlay"
         disabled={!draggable}
       >
