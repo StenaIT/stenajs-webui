@@ -12,6 +12,7 @@ export interface BaseModalProps extends ReactModal.Props {
 }
 
 export const DRAGGABLE_HANDLE_CLASSNAME = "draggable-modal-handle";
+export const DRAGGABLE_CANCEL_CLASSNAME = "draggable-modal-cancel";
 
 export const BaseModal: React.FC<BaseModalProps> = ({
   width,
@@ -27,6 +28,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
     >
       <Draggable
         handle={`.${DRAGGABLE_HANDLE_CLASSNAME}`}
+        cancel={`.${DRAGGABLE_CANCEL_CLASSNAME}, button, [role="tooltip"]`}
         bounds=".ReactModal__Overlay"
         disabled={!draggable}
       >
