@@ -124,6 +124,10 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const background =
     useCellBackgroundByColumnId(columnId, item) ?? fallbackBackground;
 
+  const currentZIndex = stickyProps.sticky
+    ? zIndex ?? "var(--swui-sticky-column-z-index)"
+    : zIndex ?? 1;
+
   const content = useMemo(
     () =>
       renderCell ? (
@@ -134,11 +138,21 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
           gridCell,
           isEditable: editable,
           isSelected,
+          zIndex: currentZIndex,
         })
       ) : (
         <TextCell label={label} />
       ),
-    [renderCell, label, itemValue, item, gridCell, editable, isSelected]
+    [
+      renderCell,
+      label,
+      itemValue,
+      item,
+      gridCell,
+      editable,
+      isSelected,
+      currentZIndex,
+    ]
   );
 
   const activeBorderLeft = getCellBorder(
@@ -166,9 +180,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
         left: stickyProps.sticky ? stickyProps.left : undefined,
         right: stickyProps.sticky ? stickyProps.right : undefined,
         boxShadow: shadow,
-        zIndex: (stickyProps.sticky
-          ? zIndex ?? "var(--swui-sticky-column-z-index)"
-          : zIndex ?? 1) as CSSProperties["zIndex"],
+        zIndex: currentZIndex as CSSProperties["zIndex"],
         height: "var(--current-row-height)",
         background: background,
       }}
