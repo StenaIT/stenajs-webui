@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- When `backgroundResolver` returned undefined for a sticky column, it became see-through.
+
 ## 13.0.2
 
 ### StandardTable

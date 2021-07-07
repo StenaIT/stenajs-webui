@@ -118,7 +118,11 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     ...gridCellOptionsForColumn,
   });
 
-  const currentBackground = useCellBackgroundByColumnId(columnId, item);
+  const stickyProps = stickyPropsPerColumnContext[columnId];
+
+  const fallbackBackground = stickyProps.sticky ? "white" : "inherit";
+  const background =
+    useCellBackgroundByColumnId(columnId, item) ?? fallbackBackground;
 
   const content = useMemo(
     () =>
@@ -143,8 +147,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     borderLeft
   );
 
-  const stickyProps = stickyPropsPerColumnContext[columnId];
-
   const shadow =
     stickyProps.sticky &&
     stickyProps.type === "last-group" &&
@@ -168,7 +170,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
           ? zIndex ?? "var(--swui-sticky-column-z-index)"
           : zIndex ?? 1) as CSSProperties["zIndex"],
         height: "var(--current-row-height)",
-        background: currentBackground,
+        background: background,
       }}
     >
       <StandardTableCellUi
