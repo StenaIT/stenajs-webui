@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid-export",
-  "version": "13.0.1",
+  "version": "13.0.2",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
-    "@stenajs-webui/core": "13.0.1",
-    "@stenajs-webui/elements": "13.0.1",
-    "@stenajs-webui/grid": "13.0.1",
+    "@stenajs-webui/core": "13.0.2",
+    "@stenajs-webui/elements": "13.0.2",
+    "@stenajs-webui/grid": "13.0.2",
     "@types/zipcelx": "^1.5.0",
     "clipboard-polyfill": "^3.0.2",
     "date-fns": "2.16.1",
