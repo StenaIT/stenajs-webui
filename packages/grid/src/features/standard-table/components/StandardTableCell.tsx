@@ -1,5 +1,10 @@
 import * as React from "react";
-import { KeyboardEventHandler, useCallback, useMemo } from "react";
+import {
+  CSSProperties,
+  KeyboardEventHandler,
+  useCallback,
+  useMemo,
+} from "react";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 import { useOnKeyDownContext } from "../context/OnKeyDownContext";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
@@ -140,40 +145,43 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const stickyProps = stickyPropsPerColumnContext[columnId];
 
+  const shadow =
+    stickyProps.sticky &&
+    stickyProps.type === "last-group" &&
+    stickyProps.isFirstColumnInLastGroup
+      ? "var(--swui-sticky-column-shadow-left)"
+      : stickyProps.sticky && stickyProps.type === "column" && stickyProps.right
+      ? "var(--swui-sticky-column-shadow-left)"
+      : stickyProps.sticky
+      ? "var(--swui-sticky-column-shadow-right)"
+      : undefined;
+
   return (
-    <StandardTableCellUi
-      enableGridCell={enableGridCell && !disableGridCell}
-      gridCellRequiredProps={gridCell.requiredProps}
-      isEditing={gridCell.isEditing}
-      width={width}
-      minWidth={minWidth}
-      justifyContent={justifyContentCell}
-      borderLeft={activeBorderLeft}
-      background={currentBackground}
-      sticky={stickyProps.sticky}
-      zIndex={
-        zIndex ?? stickyProps.sticky
-          ? "var(--swui-sticky-column-z-index)"
-          : undefined
-      }
-      left={stickyProps.left}
-      right={stickyProps.right}
-      shadow={
-        stickyProps.sticky &&
-        stickyProps.type === "last-group" &&
-        stickyProps.isFirstColumnInLastGroup
-          ? "var(--swui-sticky-column-shadow-left)"
-          : stickyProps.sticky &&
-            stickyProps.type === "column" &&
-            stickyProps.right
-          ? "var(--swui-sticky-column-shadow-left)"
-          : stickyProps.sticky
-          ? "var(--swui-sticky-column-shadow-right)"
-          : undefined
-      }
-      onKeyDown={onKeyDownHandler}
+    <td
+      style={{
+        borderLeft: activeBorderLeft,
+        position: stickyProps.sticky ? "sticky" : undefined,
+        left: stickyProps.sticky ? stickyProps.left : undefined,
+        right: stickyProps.sticky ? stickyProps.right : undefined,
+        boxShadow: shadow,
+        zIndex: (stickyProps.sticky
+          ? zIndex ?? "var(--swui-sticky-column-z-index)"
+          : zIndex ?? 1) as CSSProperties["zIndex"],
+        height: "var(--swui-standard-table-height)",
+      }}
     >
-      {content}
-    </StandardTableCellUi>
+      <StandardTableCellUi
+        enableGridCell={enableGridCell && !disableGridCell}
+        gridCellRequiredProps={gridCell.requiredProps}
+        isEditing={gridCell.isEditing}
+        width={width}
+        minWidth={minWidth}
+        justifyContent={justifyContentCell}
+        background={currentBackground}
+        onKeyDown={onKeyDownHandler}
+      >
+        {content}
+      </StandardTableCellUi>
+    </td>
   );
 });
