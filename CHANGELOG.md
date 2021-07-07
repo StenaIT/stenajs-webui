@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 13.0.2
 
 ### StandardTable
 
