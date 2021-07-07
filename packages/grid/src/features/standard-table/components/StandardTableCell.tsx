@@ -167,7 +167,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
         zIndex: (stickyProps.sticky
           ? zIndex ?? "var(--swui-sticky-column-z-index)"
           : zIndex ?? 1) as CSSProperties["zIndex"],
-        height: "var(--swui-standard-table-height)",
+        height: "var(--current-row-height)",
+        background: currentBackground,
       }}
     >
       <StandardTableCellUi
@@ -177,7 +178,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
         width={width}
         minWidth={minWidth}
         justifyContent={justifyContentCell}
-        background={currentBackground}
         onKeyDown={onKeyDownHandler}
       >
         {content}
