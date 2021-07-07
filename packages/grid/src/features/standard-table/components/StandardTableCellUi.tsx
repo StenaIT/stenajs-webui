@@ -1,7 +1,6 @@
 import { BoxProps, Row } from "@stenajs-webui/core";
 import * as React from "react";
-import { CSSProperties, ReactNode } from "react";
-import { tableBorder } from "../../../config/TableConfig";
+import { ReactNode } from "react";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
 
@@ -13,20 +12,13 @@ interface Props {
   isEditing: boolean;
   gridCellRequiredProps?: GridCellRequiredProps;
   background?: string;
-  borderLeft?: string | boolean;
   children: ReactNode;
-  sticky?: boolean;
-  zIndex?: number | string;
-  left?: string;
-  right?: string;
-  shadow?: string;
   onKeyDown?: BoxProps["onKeyDown"];
 }
 
 export const StandardTableCellUi = React.memo<Props>(
   function StandardTableCellUi({
     enableGridCell,
-    borderLeft,
     children,
     background,
     gridCellRequiredProps,
@@ -34,31 +26,15 @@ export const StandardTableCellUi = React.memo<Props>(
     justifyContent,
     width,
     minWidth,
-    sticky,
-    left,
-    right,
-    zIndex,
-    shadow,
     onKeyDown,
   }) {
     return (
-      <td
-        style={{
-          width: width,
-          minWidth: minWidth ?? width ?? "20px",
-          background: background,
-          borderLeft:
-            borderLeft === true ? tableBorder : borderLeft || undefined,
-          overflow: "hidden",
-          height: "var(--current-row-height)",
-          position: sticky ? "sticky" : undefined,
-          left: sticky ? left : undefined,
-          right: sticky ? right : undefined,
-          boxShadow: shadow,
-          zIndex: (sticky
-            ? zIndex ?? "var(--swui-sticky-column-z-index)"
-            : zIndex ?? 1) as CSSProperties["zIndex"],
-        }}
+      <Row
+        width={width}
+        minWidth={minWidth ?? width ?? "20px"}
+        height={"100%"}
+        background={background}
+        overflow={"hidden"}
         onKeyDown={onKeyDown}
       >
         <Row
@@ -84,7 +60,7 @@ export const StandardTableCellUi = React.memo<Props>(
         >
           {children}
         </Row>
-      </td>
+      </Row>
     );
   }
 );

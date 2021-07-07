@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Slight refactoring to make `StandardTableCellUi` more backward compatible.
+
 ## 13.0.1
 
 ### StandardTable
