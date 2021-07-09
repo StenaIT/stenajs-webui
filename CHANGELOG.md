@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+- Fix some cases where cell did not align left/right properly.
+
 ## 13.0.3
 
 ### StandardTable

@@ -183,6 +183,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
         zIndex: currentZIndex as CSSProperties["zIndex"],
         height: "var(--current-row-height)",
         background: background,
+        width: width,
+        minWidth: minWidth ?? width ?? "20px",
       }}
     >
       <StandardTableCellUi
