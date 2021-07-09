@@ -91,8 +91,8 @@ export const StandardTableHeadItem = React.memo(
         }}
       >
         <TableHeadItem
-          width={"100%"}
-          minWidth={"100%"}
+          width={"inherit"}
+          minWidth={"inherit"}
           arrow={!disableSorting && label ? arrow : undefined}
           onClick={!disableSorting ? onClickColumnHead : undefined}
           label={label}

@@ -55,10 +55,20 @@ export const calculateOffsetForColumns = <TItem, TColumnKey extends string>(
   for (let i = 0; i < columnIds.length; i++) {
     const columnId = columnIds[i];
     const columnConfig = columns?.[columnId];
-    r[columnId] = "calc(" + widths.join(" + ") + ")";
+    r[columnId] = getCalcForWidths(widths);
     widths.push(columnConfig?.width ?? "0px");
   }
   return r;
+};
+
+const getCalcForWidths = (widths: Array<string>): string => {
+  if (widths.length === 0) {
+    return "0px";
+  }
+  if (widths.length === 1) {
+    return widths[0];
+  }
+  return "calc(" + widths.join(" + ") + ")";
 };
 
 export const getColumnIdsForLeftSideStickyGroup = <

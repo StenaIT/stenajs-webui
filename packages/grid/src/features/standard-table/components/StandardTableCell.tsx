@@ -120,9 +120,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const stickyProps = stickyPropsPerColumnContext[columnId];
 
-  const fallbackBackground = stickyProps.sticky ? "white" : "inherit";
-  const background =
-    useCellBackgroundByColumnId(columnId, item) ?? fallbackBackground;
+  const background = useCellBackgroundByColumnId(columnId, item) ?? "inherit";
 
   const currentZIndex = stickyProps.sticky
     ? zIndex ?? "var(--swui-sticky-column-z-index)"

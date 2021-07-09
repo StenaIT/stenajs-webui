@@ -54,13 +54,13 @@ describe("StickyColumnGroupOffsetCalculator", () => {
           config as any
         );
         expect(Object.keys(offsets).length).toBe(6);
-        expect(offsets.link).toBe("calc(var(--current-left-offset))");
+        expect(offsets.link).toBe("var(--current-left-offset)");
         expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
         expect(offsets.dayOfWeek).toBe(
           "calc(var(--current-left-offset) + 48px + 60px)"
         );
 
-        expect(offsets.ship).toBe("calc(0px)");
+        expect(offsets.ship).toBe("0px");
         expect(offsets.timeToDeparture).toBe("calc(0px + 60px)");
         expect(offsets.departureDateTime).toBe("calc(0px + 60px + 90px)");
       });
@@ -73,7 +73,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
           config as any
         );
         expect(Object.keys(offsets).length).toBe(3);
-        expect(offsets.link).toBe("calc(var(--current-left-offset))");
+        expect(offsets.link).toBe("var(--current-left-offset)");
         expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
         expect(offsets.dayOfWeek).toBe(
           "calc(var(--current-left-offset) + 48px + 60px)"
@@ -88,7 +88,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
           config as any
         );
         expect(Object.keys(offsets).length).toBe(3);
-        expect(offsets.ship).toBe("calc(0px)");
+        expect(offsets.ship).toBe("0px");
         expect(offsets.timeToDeparture).toBe("calc(0px + 60px)");
         expect(offsets.departureDateTime).toBe("calc(0px + 60px + 90px)");
       });
@@ -144,7 +144,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
           false
         );
         expect(Object.keys(offsets).length).toBe(6);
-        expect(offsets.link).toBe("calc(0px)");
+        expect(offsets.link).toBe("0px");
         expect(offsets.leg).toBe("calc(0px + 48px)");
         expect(offsets.dayOfWeek).toBe("calc(0px + 48px + 60px)");
         expect(offsets.departureDateTime).toBe(
@@ -168,7 +168,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         );
         expect(Object.keys(offsets).length).toBe(6);
 
-        expect(offsets.ship).toBe("calc(0px)");
+        expect(offsets.ship).toBe("0px");
         expect(offsets.timeToDeparture).toBe("calc(0px + 60px)");
         expect(offsets.departureDateTime).toBe("calc(0px + 60px + 90px)");
         expect(offsets.dayOfWeek).toBe("calc(0px + 60px + 90px + 140px)");

@@ -144,7 +144,12 @@ export const StickyHeaderAndColumnWithBackgrounds = () => {
     showRowCheckbox: false,
     stickyHeader: true,
     rowBackgroundResolver: (item) =>
-      item.active ? cssColor("--lhds-color-green-100") : undefined,
+      item.active
+        ? {
+            background: cssColor("--lhds-color-green-100"),
+            hoverBackground: cssColor("--lhds-color-green-200"),
+          }
+        : undefined,
     columns: {
       ...standardTableConfigForStories.columns,
       id: {

@@ -223,7 +223,6 @@ export const StandardTable = function StandardTable<
       style={
         {
           width: "100%",
-          tableLayout: "fixed",
           isolation: "isolate",
           "--current-left-offset":
             enableExpandCollapse && stickyCheckboxColumn

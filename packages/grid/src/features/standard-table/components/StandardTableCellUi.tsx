@@ -28,8 +28,8 @@ export const StandardTableCellUi = React.memo<Props>(
   }) {
     return (
       <Row
-        width={"100%"}
-        height={"100%"}
+        width={"inherit"}
+        height={"inherit"}
         background={background}
         overflow={"hidden"}
         onKeyDown={onKeyDown}
