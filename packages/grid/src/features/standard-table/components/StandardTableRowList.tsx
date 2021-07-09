@@ -23,6 +23,11 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   colIndexOffset = 0,
   rowIndexOffset = 0,
 }: StandardTableContentProps<TItem>) {
+  /**
+   * This ref is used to force rerender of rows.
+   * This is needed because intersection observer API doesn't correctly trigger for all
+   * rows after sorting.
+   */
   const sortCounterRef = useRef(0);
   const { keyResolver, disableInfiniteList } = useStandardTableConfig();
   const {
