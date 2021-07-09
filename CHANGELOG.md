@@ -2,10 +2,14 @@
 
 ## Next
 
+### StandardTable
+
 - Cell content can no longer expand the column width.
 - Table heads get correct width set.
 
 ## 13.0.4
+
+### StandardTable
 
 - Fix some cases where cell did not align left/right properly.
 
