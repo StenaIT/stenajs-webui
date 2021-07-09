@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 13.0.4
 
 - Fix some cases where cell did not align left/right properly.
 
