@@ -1,6 +1,15 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Table heads and cells have correct width when specified.
+- Sorting in table could cause empty rows.
+
 ## 13.0.4
+
+### StandardTable
 
 - Fix some cases where cell did not align left/right properly.
 

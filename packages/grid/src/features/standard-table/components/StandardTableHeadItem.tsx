@@ -86,11 +86,13 @@ export const StandardTableHeadItem = React.memo(
             : stickyProps.sticky
             ? "var(--swui-sticky-group-header-z-index)"
             : zIndex) as CSSProperties["zIndex"],
+          width,
+          minWidth,
         }}
       >
         <TableHeadItem
-          width={width}
-          minWidth={minWidth}
+          width={"inherit"}
+          minWidth={"inherit"}
           arrow={!disableSorting && label ? arrow : undefined}
           onClick={!disableSorting ? onClickColumnHead : undefined}
           label={label}

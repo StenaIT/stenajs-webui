@@ -131,8 +131,8 @@ const createItem = (id: string) => ({
     clusterCode: null,
     passengers: {
       id: "someid2:someid",
-      reserved: 13,
-      remaining: 14,
+      reserved: Math.floor(Math.random() * 1300),
+      remaining: Math.floor(Math.random() * 1300),
     },
     extraData: {
       dayOfWeek: 5,
