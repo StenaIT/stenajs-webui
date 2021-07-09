@@ -4,8 +4,8 @@
 
 ### StandardTable
 
-- Cell content can no longer expand the column width.
-- Table heads get correct width set.
+- Table heads and cells have correct width when specified.
+- Sorting in table could cause empty rows.
 
 ## 13.0.4
 
