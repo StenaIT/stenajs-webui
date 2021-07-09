@@ -24,14 +24,11 @@ export const StandardTableCellUi = React.memo<Props>(
     gridCellRequiredProps,
     isEditing,
     justifyContent,
-    width,
-    minWidth,
     onKeyDown,
   }) {
     return (
       <Row
-        width={width}
-        minWidth={minWidth ?? width ?? "20px"}
+        width={"100%"}
         height={"100%"}
         background={background}
         overflow={"hidden"}
@@ -40,8 +37,7 @@ export const StandardTableCellUi = React.memo<Props>(
         <Row
           border={"1px solid transparent"}
           className={styles.standardTableCell}
-          width={width}
-          minWidth={minWidth ?? width ?? "20px"}
+          width={"100%"}
           height={"100%"}
           justifyContent={justifyContent}
           alignItems={"center"}
