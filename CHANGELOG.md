@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### New component `GroupedChipMultiSelect`
+
+- A combination of `ChipMultiSelect` and `GroupedMultiSelect`
+
 ## 13.0.5
 
 ### StandardTable
