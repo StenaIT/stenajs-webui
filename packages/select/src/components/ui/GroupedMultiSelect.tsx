@@ -49,15 +49,15 @@ export interface GroupedMultiSelectProps<TData>
   /**
    * Same as Select prop `options` but only with GroupOptionsType
    */
-  options: GroupedOptionsType<DropdownOption<TData>>;
+  options?: GroupedOptionsType<DropdownOption<TData>>;
   /**
    * Same as Select prop `onChange` but only with GroupOptionsType
    */
-  onChange: OnChange<TData>;
+  onChange?: OnChange<TData>;
   /**
    * Same as Select prop `value` but only with GroupOptionsType
    */
-  value: OptionsType<DropdownOption<TData>> | undefined;
+  value?: OptionsType<DropdownOption<TData>> | undefined;
 }
 
 const resolveIconColor = (
@@ -144,15 +144,17 @@ export const GroupedMultiSelect = <TData extends {}>({
     ) : null;
   };
 
-  const internalValue = convertValueToInternalValue(options, value);
-  const internalOptions = convertGroupedDropdownOptionsToInternalOptions(
-    options
-  );
+  const internalValue = options
+    ? convertValueToInternalValue(options, value)
+    : undefined;
+  const internalOptions = options
+    ? convertGroupedDropdownOptionsToInternalOptions(options)
+    : undefined;
 
   return (
     <MultiSelect<DropdownOption<TData>>
       {...selectProps}
-      onChange={createOnChange<TData>(onChange)}
+      onChange={onChange ? createOnChange<TData>(onChange) : undefined}
       hideSelectedOptions={false}
       components={{
         ...selectProps.components,
