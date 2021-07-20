@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ValueAndOnValueChangeProps } from "../../../../../forms/dist/components/ui/types";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import {
   GroupedMultiSelect,
   GroupedMultiSelectProps,
