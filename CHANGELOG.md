@@ -2,6 +2,10 @@
 
 ## Next
 
+### New component `GroupedChipMultiSelect`
+
+- A combination of `ChipMultiSelect` and `GroupedMultiSelect`
+
 ### Modal
 
 - `ModalHeader` is once again draggable by default.
