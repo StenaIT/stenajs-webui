@@ -17,7 +17,7 @@ export const Modal: React.FC<ModalProps> = ({
   indent,
   draggable = false,
   onRequestClose,
-  handleIcon,
+  closeButtonClassName,
   ...props
 }) => {
   const activeSpacing = typeof spacing === "number" ? spacing : 1;
@@ -29,8 +29,7 @@ export const Modal: React.FC<ModalProps> = ({
         onRequestClose={onRequestClose}
         header={header}
         headerText={headerText}
-        draggable={draggable}
-        handleIcon={handleIcon}
+        closeButtonClassName={closeButtonClassName}
       />
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}
