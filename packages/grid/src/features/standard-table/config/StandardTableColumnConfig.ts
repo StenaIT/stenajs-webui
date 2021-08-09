@@ -149,6 +149,10 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
   gridCell: UseGridCellResult<string>;
   isEditable?: boolean;
   isSelected: boolean;
+  /**
+   * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
+   */
+  zIndex?: number | string;
 }
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;

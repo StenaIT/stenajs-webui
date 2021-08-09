@@ -223,6 +223,7 @@ export const StandardTable = function StandardTable<
       style={
         {
           width: "100%",
+          isolation: "isolate",
           "--current-left-offset":
             enableExpandCollapse && stickyCheckboxColumn
               ? "calc(var(--swui-expand-cell-width) + var(--swui-checkbox-cell-width))"

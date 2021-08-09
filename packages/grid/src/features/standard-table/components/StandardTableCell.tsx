@@ -1,5 +1,10 @@
 import * as React from "react";
-import { KeyboardEventHandler, useCallback, useMemo } from "react";
+import {
+  CSSProperties,
+  KeyboardEventHandler,
+  useCallback,
+  useMemo,
+} from "react";
 import { useGridCell } from "../../grid-cell/hooks/UseGridCell";
 import { useOnKeyDownContext } from "../context/OnKeyDownContext";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
@@ -113,7 +118,13 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     ...gridCellOptionsForColumn,
   });
 
-  const currentBackground = useCellBackgroundByColumnId(columnId, item);
+  const stickyProps = stickyPropsPerColumnContext[columnId];
+
+  const background = useCellBackgroundByColumnId(columnId, item) ?? "inherit";
+
+  const currentZIndex = stickyProps.sticky
+    ? zIndex ?? "var(--swui-sticky-column-z-index)"
+    : zIndex ?? 1;
 
   const content = useMemo(
     () =>
@@ -125,11 +136,21 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
           gridCell,
           isEditable: editable,
           isSelected,
+          zIndex: currentZIndex,
         })
       ) : (
         <TextCell label={label} />
       ),
-    [renderCell, label, itemValue, item, gridCell, editable, isSelected]
+    [
+      renderCell,
+      label,
+      itemValue,
+      item,
+      gridCell,
+      editable,
+      isSelected,
+      currentZIndex,
+    ]
   );
 
   const activeBorderLeft = getCellBorder(
@@ -138,42 +159,43 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     borderLeft
   );
 
-  const stickyProps = stickyPropsPerColumnContext[columnId];
+  const shadow =
+    stickyProps.sticky &&
+    stickyProps.type === "last-group" &&
+    stickyProps.isFirstColumnInLastGroup
+      ? "var(--swui-sticky-column-shadow-left)"
+      : stickyProps.sticky && stickyProps.type === "column" && stickyProps.right
+      ? "var(--swui-sticky-column-shadow-left)"
+      : stickyProps.sticky
+      ? "var(--swui-sticky-column-shadow-right)"
+      : undefined;
 
   return (
-    <StandardTableCellUi
-      enableGridCell={enableGridCell && !disableGridCell}
-      gridCellRequiredProps={gridCell.requiredProps}
-      isEditing={gridCell.isEditing}
-      width={width}
-      minWidth={minWidth}
-      justifyContent={justifyContentCell}
-      borderLeft={activeBorderLeft}
-      background={currentBackground}
-      sticky={stickyProps.sticky}
-      zIndex={
-        zIndex ?? stickyProps.sticky
-          ? "var(--swui-sticky-column-z-index)"
-          : undefined
-      }
-      left={stickyProps.left}
-      right={stickyProps.right}
-      shadow={
-        stickyProps.sticky &&
-        stickyProps.type === "last-group" &&
-        stickyProps.isFirstColumnInLastGroup
-          ? "var(--swui-sticky-column-shadow-left)"
-          : stickyProps.sticky &&
-            stickyProps.type === "column" &&
-            stickyProps.right
-          ? "var(--swui-sticky-column-shadow-left)"
-          : stickyProps.sticky
-          ? "var(--swui-sticky-column-shadow-right)"
-          : undefined
-      }
-      onKeyDown={onKeyDownHandler}
+    <td
+      style={{
+        borderLeft: activeBorderLeft,
+        position: stickyProps.sticky ? "sticky" : undefined,
+        left: stickyProps.sticky ? stickyProps.left : undefined,
+        right: stickyProps.sticky ? stickyProps.right : undefined,
+        boxShadow: shadow,
+        zIndex: currentZIndex as CSSProperties["zIndex"],
+        height: "var(--current-row-height)",
+        background: background,
+        width: width,
+        minWidth: minWidth ?? width ?? "20px",
+      }}
     >
-      {content}
-    </StandardTableCellUi>
+      <StandardTableCellUi
+        enableGridCell={enableGridCell && !disableGridCell}
+        gridCellRequiredProps={gridCell.requiredProps}
+        isEditing={gridCell.isEditing}
+        width={width}
+        minWidth={minWidth}
+        justifyContent={justifyContentCell}
+        onKeyDown={onKeyDownHandler}
+      >
+        {content}
+      </StandardTableCellUi>
+    </td>
   );
 });

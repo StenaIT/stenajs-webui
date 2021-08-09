@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { multitypeComparator } from "../features/sorting/MultitypeComparator";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
@@ -23,6 +23,12 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   colIndexOffset = 0,
   rowIndexOffset = 0,
 }: StandardTableContentProps<TItem>) {
+  /**
+   * This ref is used to force rerender of rows.
+   * This is needed because intersection observer API doesn't correctly trigger for all
+   * rows after sorting.
+   */
+  const sortCounterRef = useRef(0);
   const { keyResolver, disableInfiniteList } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
@@ -45,11 +51,12 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     if (desc) {
       sortedList.reverse();
     }
+    sortCounterRef.current++;
     return sortedList;
   }, [items, valueResolver, desc]);
 
   return (
-    <>
+    <React.Fragment key={sortCounterRef.current}>
       {sortedItems.map((item, index) => (
         <StandardTableRow
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
@@ -60,6 +67,6 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           numRows={sortedItems.length}
         />
       ))}
-    </>
+    </React.Fragment>
   );
 });

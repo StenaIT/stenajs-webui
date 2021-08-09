@@ -12,6 +12,31 @@
 - New prop `closeButtonClassName` for `ModalHeader` lets you set a classname for the close button.
 - The close button now has an aria-label ("Close").
 
+## 13.0.5
+
+### StandardTable
+
+- Table heads and cells have correct width when specified.
+- Sorting in table could cause empty rows.
+
+## 13.0.4
+
+### StandardTable
+
+- Fix some cases where cell did not align left/right properly.
+
+## 13.0.3
+
+### StandardTable
+
+- When `backgroundResolver` returned undefined for a sticky column, it became see-through.
+
+## 13.0.2
+
+### StandardTable
+
+- Slight refactoring to make `StandardTableCellUi` more backward compatible.
+
 ## 13.0.1
 
 ### StandardTable
