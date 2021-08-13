@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Shadow under sticky header now shows under header where there are no columns.
+
 ## 13.0.6
 
 ### New component `GroupedChipMultiSelect`

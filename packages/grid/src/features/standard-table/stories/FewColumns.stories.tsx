@@ -46,6 +46,43 @@ export const FixedWidthColumns = () => {
   );
 };
 
+export const FixedWidthColumnsWithStickyHeader = () => {
+  const config: StandardTableConfig<ListItem, "id" | "name"> = {
+    keyResolver: (item) => item.id,
+    showHeaderCheckbox: true,
+    showRowCheckbox: true,
+    enableGridCell: true,
+    stickyHeader: true,
+    columns: {
+      id: createColumnConfig((item) => item.id, {
+        sortOrderIconVariant: "numeric",
+        width: "100px",
+      }),
+      name: createColumnConfig((item) => item.name, {
+        justifyContentHeader: "flex-end",
+        justifyContentCell: "flex-end",
+        infoIconTooltipText: "Ohoh",
+        sortOrderIconVariant: "alpha",
+        width: "100px",
+      }),
+    },
+    columnOrder: ["id", "name"],
+  };
+
+  return (
+    <div>
+      <StandardTable items={mockedItems} config={config} />
+      <Spacing />
+      <Banner
+        headerText={"With sticky header"}
+        text={
+          "Shadow under sticky header should show under header where there are no columns."
+        }
+      />
+    </div>
+  );
+};
+
 export const MinWidthColumns = () => {
   const config: StandardTableConfig<ListItem, "id" | "name"> = {
     keyResolver: (item) => item.id,
