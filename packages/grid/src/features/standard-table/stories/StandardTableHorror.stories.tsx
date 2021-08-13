@@ -342,15 +342,13 @@ const createSalesPerformanceStandardTableConfig = (
     flags: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
-          <Indent>
-            <Popover content={<Box indent={1} spacing={1} />}>
-              <Icon
-                icon={faCoffee}
-                color={cssColor("--lhds-color-blue-300")}
-                size={14}
-              />
-            </Popover>
-          </Indent>
+          <Popover content={<Box indent={1} spacing={1} />}>
+            <Icon
+              icon={faCoffee}
+              color={cssColor("--lhds-color-blue-300")}
+              size={14}
+            />
+          </Popover>
         </Indent>
       ),
     }),
@@ -595,6 +593,8 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "-45",
         width: smallTableRowWidth,
         minWidth: smallTableRowWidth,
+        justifyContentCell: "center",
+        justifyContentHeader: "center",
         backgroundResolver: (item) =>
           item.tableColors.guestsHistory.minus45?.bgColor,
         renderCell: ({ label, item }) => (
