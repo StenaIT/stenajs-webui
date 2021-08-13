@@ -183,6 +183,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           <Row indent={rowIndent} />
         </th>
       )}
+      <th />
     </TrWithHoverBackground>
   );
 });

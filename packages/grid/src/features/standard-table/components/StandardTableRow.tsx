@@ -215,6 +215,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
               <Indent num={rowIndent} />
             </td>
           )}
+          <td />
         </>
       </>
     ),

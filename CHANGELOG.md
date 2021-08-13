@@ -6,6 +6,10 @@
 
 - A combination of `ChipMultiSelect` and `GroupedMultiSelect`
 
+### StandardTable
+
+- When all columns had fixed width, they would still get wider than specified when table was wider.
+
 ### Modal
 
 - `ModalHeader` is once again draggable by default.

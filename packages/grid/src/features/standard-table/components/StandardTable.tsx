@@ -34,6 +34,7 @@ import { getTotalNumColumns } from "../util/ColumnCounter";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
+import { ColGroups } from "./ColGroups";
 
 export interface StandardTableProps<
   TItem,
@@ -260,6 +261,7 @@ export const StandardTable = function StandardTable<
                                 : columnGroupOrder
                             }
                           >
+                            <ColGroups />
                             <OnKeyDownContext.Provider value={onKeyDown}>
                               <thead>
                                 {(columnGroupOrder ||

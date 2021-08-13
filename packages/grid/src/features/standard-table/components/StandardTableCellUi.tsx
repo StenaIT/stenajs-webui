@@ -25,10 +25,13 @@ export const StandardTableCellUi = React.memo<Props>(
     isEditing,
     justifyContent,
     onKeyDown,
+    width,
+    minWidth,
   }) {
     return (
       <Row
-        width={"inherit"}
+        width={width}
+        minWidth={minWidth}
         height={"inherit"}
         background={background}
         overflow={"hidden"}
