@@ -9,9 +9,6 @@ export const ColGroups: React.FC<ColsProps> = () => {
   const config = useStandardTableConfig();
   const groupConfigs = useGroupConfigsForRows();
 
-  console.log("groupConfigs", groupConfigs);
-  console.log("config", config);
-
   const hasExtraColGroup =
     config.enableExpandCollapse || config.showRowCheckbox;
 
