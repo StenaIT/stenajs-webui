@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 13.0.6
 
 ### New component `GroupedChipMultiSelect`
 
