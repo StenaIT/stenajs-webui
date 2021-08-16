@@ -1,27 +1,32 @@
-import { StandardTableConfig } from "../../config/StandardTableConfig";
-import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { compact } from "lodash";
+import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
+import {
+  StandardTableConfigWithGroups,
+  StandardTableConfigWithNoGroups,
+} from "../../config/StandardTableConfig";
 
 export const createColumnConfigsForRows = <
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >(
-  columnGroups: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnGroups"],
-  columnGroupOrder: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnGroupOrder"],
-  columnOrder: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnOrder"]
+  columnGroups:
+    | StandardTableConfigWithGroups<
+        TItem,
+        TColumnKey,
+        TColumnGroupKey
+      >["columnGroups"]
+    | undefined,
+  columnGroupOrder:
+    | StandardTableConfigWithGroups<
+        TItem,
+        TColumnKey,
+        TColumnGroupKey
+      >["columnGroupOrder"]
+    | undefined,
+  columnOrder:
+    | StandardTableConfigWithNoGroups<TItem, TColumnKey>["columnOrder"]
+    | undefined
 ): Array<StandardTableColumnGroupConfig<TColumnKey>> => {
   if (columnGroups) {
     return compact(

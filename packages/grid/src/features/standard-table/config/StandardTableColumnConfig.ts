@@ -9,7 +9,37 @@ export type StandardTableColumnConfig<
   TItem,
   TItemValue
 > = StandardTableColumnOptions<TItem, TItemValue> &
+  StandardTableColumnOptionsWithNoGroups &
   ItemValueResolver<TItem, TItemValue>;
+
+export type StandardTableColumnConfigWithGroups<
+  TItem,
+  TItemValue
+> = StandardTableColumnOptions<TItem, TItemValue> &
+  ItemValueResolver<TItem, TItemValue>;
+
+export interface StandardTableColumnOptionsWithNoGroups {
+  /**
+   * Enable sticky behaviour to the left make elements scroll in behind this column.
+   * If neither left nor right is specified, it defaults to left: 0px.
+   */
+  sticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  zIndex?: number;
+
+  /**
+   * Offset column from left (ex if we have multiple sticky columns)
+   */
+  left?: string;
+
+  /**
+   * Offset column from right (ex if we have multiple sticky columns)
+   */
+  right?: string;
+}
 
 export interface StandardTableColumnOptions<TItem, TItemValue> {
   /**
@@ -31,11 +61,6 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * The width of the column.
    */
   width?: string;
-
-  /**
-   * The flex of the column. Defaults to 1 if width is not specified.
-   */
-  flex?: number;
 
   /**
    * Custom renderer for the cell. Falls back to an internal renderer that uses String(item[field]).
@@ -108,34 +133,27 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   >;
 
   /**
-   * Enable sticky behaviour to the left
-   * make elements scroll in behind this column
-   */
-  sticky?: boolean;
-
-  /**
-   * Set a custom z index
-   */
-  zIndex?: number;
-
-  /**
-   * Offset column from left (ex if we have multiple sticky columns)
-   */
-  left?: string;
-
-  /**
    * The icon variant to use when displaying sort order.
    */
   sortOrderIconVariant?: SortOrderIconVariant;
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (
-  label: string,
-  value: TItemValue,
-  item: TItem,
-  gridCell: UseGridCellResult<string>,
-  isEditable?: boolean
+  arg: StandardTableCellRendererArgObject<TItemValue, TItem>
 ) => ReactNode;
+
+export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
+  label: string;
+  value: TItemValue;
+  item: TItem;
+  gridCell: UseGridCellResult<string>;
+  isEditable?: boolean;
+  isSelected: boolean;
+  /**
+   * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
+   */
+  zIndex?: number | string;
+}
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
 

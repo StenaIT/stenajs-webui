@@ -1,15 +1,13 @@
 import * as React from "react";
-import { useMemo } from "react";
-import { InfiniteList } from "../../table-ui/components/InfiniteList";
+import { useMemo, useRef } from "react";
+import { multitypeComparator } from "../features/sorting/MultitypeComparator";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../hooks/UseStandardTableConfig";
-import { multitypeComparator } from "../features/sorting/MultitypeComparator";
-import { StandardTableRow } from "./StandardTableRow";
-import { elementHeightPerVariant } from "../config/StandardTableInfiniteConfig";
 import { StandardTableVariant } from "./StandardTable";
+import { StandardTableRow } from "./StandardTableRow";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
@@ -22,15 +20,16 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   TItem
 >({
   items,
-  variant,
   colIndexOffset = 0,
   rowIndexOffset = 0,
 }: StandardTableContentProps<TItem>) {
-  const {
-    keyResolver,
-    disableInfiniteList,
-    enableExpandCollapse,
-  } = useStandardTableConfig();
+  /**
+   * This ref is used to force rerender of rows.
+   * This is needed because intersection observer API doesn't correctly trigger for all
+   * rows after sorting.
+   */
+  const sortCounterRef = useRef(0);
+  const { keyResolver, disableInfiniteList } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();
@@ -52,18 +51,15 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     if (desc) {
       sortedList.reverse();
     }
+    sortCounterRef.current++;
     return sortedList;
   }, [items, valueResolver, desc]);
 
   return (
-    <InfiniteList
-      disabled={disableInfiniteList || enableExpandCollapse}
-      length={sortedItems.length}
-      elementHeight={elementHeightPerVariant[variant]}
-      threshold={30}
-    >
+    <React.Fragment key={sortCounterRef.current}>
       {sortedItems.map((item, index) => (
         <StandardTableRow
+          alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
           key={keyResolver(item)}
           colIndexOffset={colIndexOffset}
@@ -71,6 +67,6 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           numRows={sortedItems.length}
         />
       ))}
-    </InfiniteList>
+    </React.Fragment>
   );
 });

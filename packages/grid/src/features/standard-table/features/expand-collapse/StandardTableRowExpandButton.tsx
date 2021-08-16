@@ -1,6 +1,5 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useMemo } from "react";
@@ -11,6 +10,7 @@ import {
   useStandardTableConfig,
   useStandardTableId,
 } from "../../hooks/UseStandardTableConfig";
+import { Row } from "@stenajs-webui/core";
 
 interface Props<TItem> {
   item: TItem;
@@ -46,13 +46,7 @@ export const StandardTableRowExpandButton = function <TItem>({
     return expandCollapseDisableResolver(item);
   }, [expandCollapseDisableResolver, item]);
   return (
-    <Row
-      alignItems={"center"}
-      justifyContent={"center"}
-      width={"45px"}
-      minWidth={"45px"}
-      indent
-    >
+    <Row alignItems={"center"} justifyContent={"center"} indent>
       {!buttonDisabled && (
         <FlatButton
           size={"small"}

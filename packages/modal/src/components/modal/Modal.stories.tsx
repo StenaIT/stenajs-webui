@@ -1,13 +1,23 @@
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import { Box, Row, Space, Spacing, Text } from "@stenajs-webui/core";
-import { Icon, PrimaryButton } from "@stenajs-webui/elements";
+import { Box, Row, Space, Spacing, Text, Txt } from "@stenajs-webui/core";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  Icon,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
-import { BaseModal } from "./BaseModal";
+import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
+import { cssColor } from "@stenajs-webui/theme";
+import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
+import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 
 export default {
   title: "modal/Modal",
@@ -128,19 +138,80 @@ export const _BaseModal = () => {
 };
 
 export const DraggableModal = () => {
-  const [isOpen, setOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   return (
-    <>
-      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+    <div>
+      <PrimaryButton onClick={() => setModalOpen(true)} label={"Open modal"} />
       <Modal
-        headerText={"Draggable modal title here"}
-        isOpen={isOpen}
-        onRequestClose={() => setOpen(false)}
+        headerText={"Draggable modal"}
+        isOpen={isModalOpen}
+        onRequestClose={() => setModalOpen(false)}
+        shouldCloseOnOverlayClick
         draggable
       >
-        {loremIpsumSampleText}
+        <Box indent={2} spacing>
+          <Txt>Drag me using the header but not the text.</Txt>
+        </Box>
       </Modal>
-    </>
+    </div>
+  );
+};
+
+export const CustomDraggableModal = () => {
+  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
+  return (
+    <div>
+      <PrimaryButton
+        onClick={() => setCustomModalOpen(true)}
+        label={"Open custom modal"}
+      />
+      <Modal
+        headerText={"Non-draggable text"}
+        header={
+          <Row
+            background={cssColor("--lhds-color-orange-200")}
+            flex={1}
+            spacing
+            indent={2}
+            justifyContent={"space-around"}
+            alignItems={"center"}
+            height={64}
+          >
+            <Txt variant={"bold"}>This is custom content</Txt>
+            <Box
+              className={DRAGGABLE_CANCEL_CLASSNAME}
+              background={cssColor("--lhds-color-orange-400")}
+              indent={2}
+            >
+              <Txt variant={"bold"}>I am not draggable</Txt>
+            </Box>
+            <SecondaryButton label={"Buttons are not draggable"} />
+            <ActionMenuSecondaryButton
+              renderItems={() => (
+                <>
+                  <ActionMenuItem label={"Button"} />
+                  <ActionMenuLink label={"Link"} />
+                  <ActionMenuItemContent
+                    label={"Content"}
+                    right={
+                      <SecondaryButton size={"small"} leftIcon={faJediOrder} />
+                    }
+                  />
+                </>
+              )}
+            />
+          </Row>
+        }
+        isOpen={isCustomModalOpen}
+        onRequestClose={() => setCustomModalOpen(false)}
+        shouldCloseOnOverlayClick
+        draggable
+      >
+        <Box indent={2} spacing>
+          <Txt>Drag me using the header except the non-draggable parts.</Txt>
+        </Box>
+      </Modal>
+    </div>
   );
 };
 

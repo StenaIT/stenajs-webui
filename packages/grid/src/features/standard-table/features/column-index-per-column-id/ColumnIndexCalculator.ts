@@ -22,9 +22,9 @@ export const calculateColumnIndexPerColumnId = <
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
 ): ColumnIndexPerColumnIdCalculationResult<TColumnKey> => {
   const groupConfigs = createColumnConfigsForRows(
-    config.columnGroups,
-    config.columnGroupOrder,
-    config.columnOrder
+    "columnGroups" in config ? config.columnGroups : undefined,
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
+    "columnOrder" in config ? config.columnOrder : undefined
   );
   let columnIndexPerColumnId = {} as ColumnIndexPerColumnId<TColumnKey>;
   let currentIndex = 0;

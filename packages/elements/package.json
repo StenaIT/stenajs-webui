@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "11.3.0",
+  "version": "13.0.7",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@react-aria/focus": "3.3.0",
-    "@stenajs-webui/core": "11.3.0",
-    "@stenajs-webui/theme": "11.3.0",
+    "@stenajs-webui/core": "13.0.7",
+    "@stenajs-webui/theme": "13.0.7",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
@@ -64,5 +64,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "2c26a997a9113a7c4077bf62133fac0196e40e3d"
+  "gitHead": "e8c2d1e48283d397d94200904eae694679fc2766"
 }

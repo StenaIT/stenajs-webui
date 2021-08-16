@@ -1,13 +1,38 @@
 .standardTable {
   --swui-standard-table-height: 40px;
-  --swui-sticky-header-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
-  --swui-sticky-column-shadow-right: 4px 0 4px 0 rgba(0, 0, 0, 0.05);
-  --swui-sticky-header-z-index: 2;
-  --swui-sticky-column-z-index: 1;
-  --swui-sticky-popover-z-index: 3;
+  --swui-sticky-header-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.05);
+  --swui-sticky-header-shadow-and-right: var(--swui-sticky-header-shadow),
+    var(--swui-sticky-column-shadow-right);
+  --swui-sticky-header-shadow-and-left: var(--swui-sticky-header-shadow),
+    var(--swui-sticky-column-shadow-left);
+  --swui-sticky-column-shadow-right: 4px 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --swui-sticky-column-shadow-left: -4px 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --swui-sticky-header-z-index: 10;
+  --swui-sticky-column-z-index: 20;
+  --swui-sticky-group-group-z-index: 25;
+  --swui-sticky-group-header-z-index: 26;
+  --swui-sticky-header-column-group-z-index: 30;
+  --swui-sticky-column-group-label-z-index: 40;
+  --swui-sticky-header-in-sticky-column-z-index: 50;
+  --swui-sticky-popover-z-index: 60;
+  --swui-expand-cell-width: 45px;
+  --swui-checkbox-cell-width: 45px;
+  --swui-expand-highlight-border-width: 2px;
 
   /* Current */
   --current-row-height: var(--swui-standard-table-height);
+  --current-left-offset: 0px;
+
+  border-spacing: 0;
+
+  td {
+    border-top: 1px solid var(--lhds-color-ui-300);
+    padding: 0;
+  }
+
+  th {
+    padding: 0;
+  }
 
   &.relaxed {
     --current-row-height: 48px;

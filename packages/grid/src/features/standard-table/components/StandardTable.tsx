@@ -1,7 +1,8 @@
-import { Box, useDomId } from "@stenajs-webui/core";
+import { useDomId } from "@stenajs-webui/core";
+import { ErrorScreen } from "@stenajs-webui/panels";
 import cx from "classnames";
 import * as React from "react";
-import { ReactNode, useMemo } from "react";
+import { CSSProperties, ReactNode, useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { GroupConfigsForRowsContext } from "../context/GroupConfigsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
@@ -18,16 +19,22 @@ import {
   TableContext,
 } from "../context/StandardTableStateContext";
 import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
+import { StickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
+import { TotalNumColumnsContext } from "../context/TotalNumColumnsContext";
 import { createColumnConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
 import { ColumnGroupRow } from "../features/column-groups/ColumnGroupRow";
 import { calculateColumnIndexPerColumnId } from "../features/column-index-per-column-id/ColumnIndexCalculator";
 import { ColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
+import { ensureConfigHasValidSticky } from "../features/sticky-columns/StickyColumnGroupValidator";
+import { getStickyPropsPerColumn } from "../features/sticky-columns/StickyPropsPerColumnCalculator";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import { StandardTableOnKeyDown } from "../types/StandardTableOnKeyDown";
+import { getTotalNumColumns } from "../util/ColumnCounter";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
+import { ColGroups } from "./ColGroups";
 
 export interface StandardTableProps<
   TItem,
@@ -140,7 +147,12 @@ export const StandardTable = function StandardTable<
   ...props
 }: StandardTableProps<TItem, TColumnKey, TColumnGroupKey>) {
   const generatedTableId = useDomId();
-  const { initialSortOrderDesc, initialSortOrder } = config;
+  const {
+    initialSortOrderDesc,
+    initialSortOrder,
+    enableExpandCollapse,
+    stickyCheckboxColumn,
+  } = config;
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
     tableId ?? generatedTableId,
@@ -161,17 +173,24 @@ export const StandardTable = function StandardTable<
   }, [actions, dispatch]);
 
   const usingColumnGroups = Boolean(
-    columnGroupOrder ?? config.columnGroupOrder
+    columnGroupOrder ?? "columnGroupOrder" in config
   );
+
+  const columnGroupsFromConfig =
+    "columnGroups" in config ? config.columnGroups : undefined;
+  const columnGroupOrderFromConfig =
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined;
+  const columnOrderFromConfig =
+    "columnOrder" in config ? config.columnOrder : undefined;
 
   const groupConfigsForRows = useMemo(
     () =>
       createColumnConfigsForRows<TItem, TColumnKey, TColumnGroupKey>(
-        config.columnGroups,
-        config.columnGroupOrder,
-        config.columnOrder
+        columnGroupsFromConfig,
+        columnGroupOrderFromConfig,
+        columnOrderFromConfig
       ),
-    [config.columnGroups, config.columnGroupOrder, config.columnOrder]
+    [columnGroupsFromConfig, columnGroupOrderFromConfig, columnOrderFromConfig]
   );
 
   const columnIndexPerColumnId = useMemo(
@@ -179,48 +198,99 @@ export const StandardTable = function StandardTable<
     [config]
   );
 
+  const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
+
+  const stickyPropsPerColumnContext = useMemo(
+    () => getStickyPropsPerColumn(config),
+    [config]
+  );
+
+  const validationError = useMemo(() => {
+    try {
+      ensureConfigHasValidSticky(config);
+      return undefined;
+    } catch (e) {
+      return e;
+    }
+  }, [config]);
+
+  if (validationError) {
+    return <ErrorScreen text={validationError.message} />;
+  }
+
   return (
-    <Box className={cx(styles.standardTable, styles[variant])}>
-      <StandardTableVariantContext.Provider value={variant}>
-        <StandardTableTableIdContext.Provider
-          value={tableId ?? generatedTableId}
-        >
-          <StandardTableStateContext.Provider value={state}>
-            <StandardTableActionsContext.Provider value={actionsContext}>
-              <StandardTableConfigContext.Provider value={config}>
-                <GroupConfigsForRowsContext.Provider
-                  value={groupConfigsForRows}
-                >
-                  <ColumnIndexPerColumnIdContext.Provider
-                    value={columnIndexPerColumnId}
-                  >
-                    <StandardTableUsingColumnGroupsContext.Provider
-                      value={usingColumnGroups}
+    <table
+      className={cx(styles.standardTable, styles[variant])}
+      style={
+        {
+          width: "100%",
+          isolation: "isolate",
+          "--current-left-offset":
+            enableExpandCollapse && stickyCheckboxColumn
+              ? "calc(var(--swui-expand-cell-width) + var(--swui-checkbox-cell-width))"
+              : stickyCheckboxColumn
+              ? "var(--swui-checkbox-cell-width)"
+              : enableExpandCollapse
+              ? "var(--swui-expand-cell-width)"
+              : "0px",
+        } as CSSProperties
+      }
+    >
+      <StickyPropsPerColumnContext.Provider value={stickyPropsPerColumnContext}>
+        <TotalNumColumnsContext.Provider value={totalNumColumns}>
+          <StandardTableVariantContext.Provider value={variant}>
+            <StandardTableTableIdContext.Provider
+              value={tableId ?? generatedTableId}
+            >
+              <StandardTableStateContext.Provider value={state}>
+                <StandardTableActionsContext.Provider value={actionsContext}>
+                  <StandardTableConfigContext.Provider value={config}>
+                    <GroupConfigsForRowsContext.Provider
+                      value={groupConfigsForRows}
                     >
-                      <StandardTableColumnGroupOrderContext.Provider
-                        value={columnGroupOrder ?? config.columnGroupOrder}
+                      <ColumnIndexPerColumnIdContext.Provider
+                        value={columnIndexPerColumnId}
                       >
-                        <OnKeyDownContext.Provider value={onKeyDown}>
-                          {(columnGroupOrder || config.columnGroupOrder) && (
-                            <ColumnGroupRow
-                              height={"var(--current-row-height)"}
-                            />
-                          )}
-                          <StandardTableHeadRow
-                            items={props.items}
-                            height={"var(--current-row-height)"}
-                          />
-                          <StandardTableContent variant={variant} {...props} />
-                        </OnKeyDownContext.Provider>
-                      </StandardTableColumnGroupOrderContext.Provider>
-                    </StandardTableUsingColumnGroupsContext.Provider>
-                  </ColumnIndexPerColumnIdContext.Provider>
-                </GroupConfigsForRowsContext.Provider>
-              </StandardTableConfigContext.Provider>
-            </StandardTableActionsContext.Provider>
-          </StandardTableStateContext.Provider>
-        </StandardTableTableIdContext.Provider>
-      </StandardTableVariantContext.Provider>
-    </Box>
+                        <StandardTableUsingColumnGroupsContext.Provider
+                          value={usingColumnGroups}
+                        >
+                          <StandardTableColumnGroupOrderContext.Provider
+                            value={
+                              "columnGroupOrder" in config
+                                ? columnGroupOrder ?? config.columnGroupOrder
+                                : columnGroupOrder
+                            }
+                          >
+                            <ColGroups />
+                            <OnKeyDownContext.Provider value={onKeyDown}>
+                              <thead>
+                                {(columnGroupOrder ||
+                                  "columnGroupOrder" in config) && (
+                                  <ColumnGroupRow
+                                    height={"var(--current-row-height)"}
+                                  />
+                                )}
+                                <StandardTableHeadRow
+                                  items={props.items}
+                                  height={"var(--current-row-height)"}
+                                />
+                              </thead>
+                              <StandardTableContent
+                                variant={variant}
+                                {...props}
+                              />
+                            </OnKeyDownContext.Provider>
+                          </StandardTableColumnGroupOrderContext.Provider>
+                        </StandardTableUsingColumnGroupsContext.Provider>
+                      </ColumnIndexPerColumnIdContext.Provider>
+                    </GroupConfigsForRowsContext.Provider>
+                  </StandardTableConfigContext.Provider>
+                </StandardTableActionsContext.Provider>
+              </StandardTableStateContext.Provider>
+            </StandardTableTableIdContext.Provider>
+          </StandardTableVariantContext.Provider>
+        </TotalNumColumnsContext.Provider>
+      </StickyPropsPerColumnContext.Provider>
+    </table>
   );
 };

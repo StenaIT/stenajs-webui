@@ -61,8 +61,8 @@ export const testConfig: StandardTableConfig<
 };
 
 export const testGroupConfigs = createColumnConfigsForRows(
-  testConfig.columnGroups,
-  testConfig.columnGroupOrder,
+  undefined,
+  undefined,
   testConfig.columnOrder
 );
 
@@ -96,5 +96,5 @@ export const testConfigWithGroups: StandardTableConfig<
 export const testGroupConfigsWithGroups = createColumnConfigsForRows(
   testConfigWithGroups.columnGroups,
   testConfigWithGroups.columnGroupOrder,
-  testConfigWithGroups.columnOrder
+  undefined
 );

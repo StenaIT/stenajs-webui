@@ -1,6 +1,153 @@
 # Changelog
 
-## Next
+## 13.0.7
+
+### StandardTable
+
+- Shadow under sticky header now shows under header where there are no columns.
+
+## 13.0.6
+
+### New component `GroupedChipMultiSelect`
+
+- A combination of `ChipMultiSelect` and `GroupedMultiSelect`
+
+### StandardTable
+
+- When all columns had fixed width, they would still get wider than specified when table was wider.
+
+### Modal
+
+- `ModalHeader` is once again draggable by default.
+- Buttons and tooltips inside `ModalHeader` are not draggable.
+- `headerText` in `ModalHeader` is not draggable.
+- `DRAGGABLE_CANCEL_CLASSNAME` can be used to make part of `ModalHeader` not draggable.
+  Remember to use this for text that should be selectable in all browsers (e.g. Firefox).
+- New prop `closeButtonClassName` for `ModalHeader` lets you set a classname for the close button.
+- The close button now has an aria-label ("Close").
+
+## 13.0.5
+
+### StandardTable
+
+- Table heads and cells have correct width when specified.
+- Sorting in table could cause empty rows.
+
+## 13.0.4
+
+### StandardTable
+
+- Fix some cases where cell did not align left/right properly.
+
+## 13.0.3
+
+### StandardTable
+
+- When `backgroundResolver` returned undefined for a sticky column, it became see-through.
+
+## 13.0.2
+
+### StandardTable
+
+- Slight refactoring to make `StandardTableCellUi` more backward compatible.
+
+## 13.0.1
+
+### StandardTable
+
+- Fix column group warning being rendered below sticky elements.
+
+## 13.0.0
+
+### ModalHeader
+
+- `ModalHeader` is no longer draggable by default if used outside of `Modal`.
+
+### Spinner
+
+- Spinner has updated animation.
+
+### ActionMenuButton
+
+- Allows for custom `onClick` events
+
+### New hook `useOnScreen`
+
+This hook can be used to determine if a DOM element is visible on screen.
+
+It returns a boolean, true if the element is visible in viewport.
+
+It uses the Intersection Observer API.
+
+Example:
+
+```
+  const ref = useRef(null);
+
+  const visible = useOnScreen(ref, {
+    rootMargin: "400px",
+    threshold: 0,
+  });
+
+  return <div ref={ref}>...</div>
+```
+
+### StandardTable
+
+- `StandardTable` now uses `<table>` internally.
+- Columns can now be sticky to the right.
+- When using column groups, only column groups can be sticky, not single columns.
+- New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+- When using `stickyColumnGroups`, all columns in that group must have fixed width.
+- Column option `flex` no longer supported. Use `width` and `%` instead.
+
+### Breaking changes
+
+- `StandardTable` column config no longer supports `flex`.
+
+This is because `StandardTable` uses `<table>` internally, which
+doesn't support flex.
+
+Use `width` with `%` instead.
+
+## 12.0.0
+
+### StandardTable
+
+- `renderCell` receives options argument.
+- `renderCell` function now receives `isSelected` flag. True if checkbox is checked.
+- Fixed bug where `left` was improperly set when
+  `stickyCheckboxColumn` was true but `showRowCheckbox` was false.
+- Column group now has `error` property, which displays an error triangle to the right of the label.
+- Fix problem where `contentRight` in column group could not be interacted with.
+
+### ChipMultiSelect
+
+- Small chip wrapping fix.
+
+### Modal
+
+- Restricted the draggable area of a modal to the new handle on the left.
+  You can add more areas by adding the `DRAGGABLE_HANDLE_CLASSNAME` to any element in the modal header.
+
+### Breaking changes
+
+#### StandardTable
+
+`renderCell` has changed its arguments.
+
+It now receives an options object as argument instead of multiple arguments.
+
+Change from:
+
+```
+// Old
+renderCell: (label, item) => (
+// New
+renderCell: ({ label, item }) => (
+```
+
+## 11.3.1
 
 ### ButtonContent
 

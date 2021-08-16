@@ -21,14 +21,14 @@ export const createZipcelxConfig = <
   formatters?: CustomCellFormatters<TItem, TColumnKey>
 ): ZipCelXConfig => {
   const groupConfigs = createColumnConfigsForRows(
-    config.columnGroups,
-    config.columnGroupOrder,
-    config.columnOrder
+    "columnGroups" in config ? config.columnGroups : undefined,
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
+    "columnOrder" in config ? config.columnOrder : undefined
   );
 
   const headerRows: Array<ZipCelXRow> = [];
 
-  if (config.columnGroups) {
+  if ("columnGroups" in config) {
     headerRows.push(transformGroupHeaders(groupConfigs));
   }
   headerRows.push(transformTableHeaders(config, groupConfigs));

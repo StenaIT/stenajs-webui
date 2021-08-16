@@ -1,25 +1,6 @@
 import { StandardTableColumnConfig } from "../config/StandardTableColumnConfig";
 import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
 import { useStandardTableConfig } from "./UseStandardTableConfig";
-import { StandardTableColumnGroupConfig } from "../config/StandardTableColumnGroupConfig";
-
-export const useColumnGroupFromConfig = <TColumnGroupKey extends string>(
-  groupId: string
-): StandardTableColumnGroupConfig<TColumnGroupKey> => {
-  const { columnGroups } = useStandardTableConfig<
-    unknown,
-    "",
-    TColumnGroupKey
-  >();
-  if (columnGroups == null) {
-    throw new Error("Column groups is not set.");
-  }
-  const columnGroup = columnGroups[groupId];
-  if (!columnGroup) {
-    throw new Error("No config for column group with id=" + groupId);
-  }
-  return columnGroup;
-};
 
 export const useColumnConfigById = <TItem, TItemValue>(
   columnId: string

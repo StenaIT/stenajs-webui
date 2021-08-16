@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/input-mask",
-  "version": "11.3.0",
+  "version": "13.0.7",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/forms": "11.3.0",
+    "@stenajs-webui/forms": "13.0.7",
     "text-mask-core": "^5.1.2"
   },
   "peerDependencies": {
@@ -47,5 +47,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "2c26a997a9113a7c4077bf62133fac0196e40e3d"
+  "gitHead": "e8c2d1e48283d397d94200904eae694679fc2766"
 }
