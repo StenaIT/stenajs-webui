@@ -224,7 +224,7 @@ New components for creating cards, `Card`, `CardHeader` and `CardBody`.
 
 Example:
 
-```typescript
+```tsx
 <Card>
   <CardHeader text={"Overview"} />
   <CardBody>
