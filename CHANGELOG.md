@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Design changes
+
+- Updated styling for `Collapsible`.
+
 ## 13.0.7
 
 ### StandardTable

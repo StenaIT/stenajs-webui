@@ -34,8 +34,7 @@
   --swui-collapsible-content-background-color: var(--lhds-color-ui-100);
   --swui-collapsible-content-border-color: var(--lhds-color-ui-300);
   --swui-collapsible-content-padding: var(--swui-metrics-indent)
-    calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
-    calc(var(--swui-metrics-indent) * 3);
+    calc(var(--swui-metrics-indent) * 2);
 
   --swui-collapsible-groupheading-font-size: var(--swui-font-size-smaller);
   --swui-collapsible-groupheading-text-color: var(--lhds-color-ui-600);
@@ -230,11 +229,9 @@
   /* Increase padding with depth */
 
   & & {
-    --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0
-      calc(var(--swui-metrics-indent) * 3);
     --swui-collapsible-content-padding: var(--swui-metrics-indent)
       calc(var(--swui-metrics-indent) * 2) var(--swui-metrics-indent)
-      calc(var(--swui-metrics-indent) * 5);
+      calc(var(--swui-metrics-indent) * 4);
   }
 
   & & & {
