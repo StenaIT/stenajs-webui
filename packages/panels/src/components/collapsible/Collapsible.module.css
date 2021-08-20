@@ -1,21 +1,26 @@
 .collapsible {
   --swui-collapsible-animation-time: var(--swui-animation-time-fast);
 
+  --swui-collapsible-expanded-line-background-color: var(
+    --swui-primary-action-color
+  );
+
   /*
    * Header
    */
   --swui-collapsible-header-text-color: var(--lhds-color-ui-900);
   --swui-collapsible-header-background-color: var(--swui-white);
-  --swui-collapsible-header-background-color-hover: var(--lhds-color-blue-50);
+  --swui-collapsible-header-background-color-hover: var(--lhds-color-blue-100);
   --swui-collapsible-header-background-color-active: var(--lhds-color-blue-100);
   --swui-collapsible-header-border-color: var(--lhds-color-ui-300);
   --swui-collapsible-header-border-color-focus: var(
     --swui-primary-action-color
   );
+  --swui-collapsible-header-focus-shadow: var(--swui-field-focus-shadow);
   --swui-collapsible-header-content-margin: calc(
     var(--swui-metrics-indent) * 2
   );
-  --swui-collapsible-header-font-weight: 600;
+  --swui-collapsible-header-font-weight: var(--swui-font-weight-text-bold);
   --swui-collapsible-header-indicator-color: var(--swui-primary-action-color);
   --swui-collapsible-header-indicator-color-collapsed: var(--lhds-color-ui-500);
   --swui-collapsible-header-indicator-color-hover: var(
@@ -31,8 +36,8 @@
   --swui-collapsible-content-padding: var(--swui-metrics-indent)
     calc(var(--swui-metrics-indent) * 2);
 
-  --swui-collapsible-groupheading-font-size: var(--swui-font-size-small);
-  --swui-collapsible-groupheading-text-color: var(--lhds-color-ui-500);
+  --swui-collapsible-groupheading-font-size: var(--swui-font-size-smaller);
+  --swui-collapsible-groupheading-text-color: var(--lhds-color-ui-600);
 
   --swui-collapsible-min-height: 40px;
 
@@ -44,9 +49,6 @@
     font-size: inherit;
     font-family: var(--swui-font-primary);
     font-weight: var(--swui-collapsible-header-font-weight);
-
-    /** Needed for ::after focus element */
-    position: relative;
 
     min-height: var(--swui-collapsible-min-height);
     box-sizing: border-box;
@@ -73,16 +75,9 @@
     }
 
     &:focus {
-      background: var(--swui-collapsible-header-background-color-hover);
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        height: 100%;
-        background: var(--swui-collapsible-header-border-color-focus);
-        right: 0;
-      }
+      outline: 1px solid var(--swui-collapsible-header-border-color-focus);
+      outline-offset: -1px;
+      box-shadow: var(--swui-collapsible-header-focus-shadow);
     }
 
     &:active {
@@ -94,7 +89,21 @@
     }
   }
 
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: var(--swui-collapsible-expanded-line-background-color);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
   &[aria-expanded="false"] {
+    --swui-collapsible-expanded-line-background-color: transparent;
     .indicator {
       color: var(--swui-collapsible-header-indicator-color-collapsed);
     }
@@ -102,6 +111,10 @@
 
   .label {
     margin-right: auto;
+
+    span {
+      font-weight: var(--swui-collapsible-header-font-weight);
+    }
   }
 
   .contentLeft,
@@ -184,20 +197,10 @@
     font-size: inherit;
     width: 100%;
 
-    /** Needed for ::after focus element */
-    position: relative;
-
     &:focus {
-      background: var(--swui-collapsible-header-background-color-hover);
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 2px;
-        height: 100%;
-        background: var(--swui-collapsible-header-border-color-focus);
-        right: 0;
-      }
+      outline: 1px solid var(--swui-collapsible-header-border-color-focus);
+      outline-offset: -1px;
+      box-shadow: var(--swui-collapsible-header-focus-shadow);
     }
 
     &:not(:disabled):hover {

@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Design changes
+
+- Updated styling for `Collapsible`.
+
 ## 13.0.7
 
 ### StandardTable
@@ -218,7 +224,7 @@ New components for creating cards, `Card`, `CardHeader` and `CardBody`.
 
 Example:
 
-```typescript
+```tsx
 <Card>
   <CardHeader text={"Overview"} />
   <CardBody>
