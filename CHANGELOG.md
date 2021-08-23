@@ -2,6 +2,13 @@
 
 ## Next
 
+### useEditableCell
+
+New option `none` for option `allowedInputType`.
+This disables the ability to automatically open the editor when the user starts typing in an editable table cell.
+
+This is usable when the editor is not a text input field.
+
 ### Design changes
 
 - Updated styling for `Collapsible`.
