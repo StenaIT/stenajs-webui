@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 13.1.0
 
 ### useEditableCell
 
