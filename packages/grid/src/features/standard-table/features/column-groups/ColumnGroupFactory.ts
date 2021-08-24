@@ -5,7 +5,7 @@ import {
   StandardTableConfigWithNoGroups,
 } from "../../config/StandardTableConfig";
 
-export const createColumnConfigsForRows = <
+export const createColumnGroupConfigsForRows = <
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string

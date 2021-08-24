@@ -33,8 +33,8 @@ export const ColGroups: React.FC<ColsProps> = () => {
           )}
         </colgroup>
       )}
-      {groupConfigs.map((group) => (
-        <colgroup>
+      {groupConfigs.map((group, index) => (
+        <colgroup key={index}>
           {group.columnOrder.map((columnId) => (
             <col
               style={{

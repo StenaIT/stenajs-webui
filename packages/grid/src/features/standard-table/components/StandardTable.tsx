@@ -21,7 +21,7 @@ import {
 import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
 import { StickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { TotalNumColumnsContext } from "../context/TotalNumColumnsContext";
-import { createColumnConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
+import { createColumnGroupConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
 import { ColumnGroupRow } from "../features/column-groups/ColumnGroupRow";
 import { calculateColumnIndexPerColumnId } from "../features/column-index-per-column-id/ColumnIndexCalculator";
 import { ColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
@@ -185,7 +185,7 @@ export const StandardTable = function StandardTable<
 
   const groupConfigsForRows = useMemo(
     () =>
-      createColumnConfigsForRows<TItem, TColumnKey, TColumnGroupKey>(
+      createColumnGroupConfigsForRows<TItem, TColumnKey, TColumnGroupKey>(
         columnGroupsFromConfig,
         columnGroupOrderFromConfig,
         columnOrderFromConfig

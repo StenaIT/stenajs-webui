@@ -1,6 +1,6 @@
 import { StandardTableColumnConfig } from "../../config/StandardTableColumnConfig";
 import { StandardTableConfig } from "../../config/StandardTableConfig";
-import { createColumnConfigsForRows } from "../column-groups/ColumnGroupFactory";
+import { createColumnGroupConfigsForRows } from "../column-groups/ColumnGroupFactory";
 
 export type ColumnIndexPerColumnId<TColumnKey extends string> = Record<
   TColumnKey,
@@ -21,7 +21,7 @@ export const calculateColumnIndexPerColumnId = <
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
 ): ColumnIndexPerColumnIdCalculationResult<TColumnKey> => {
-  const groupConfigs = createColumnConfigsForRows(
+  const groupConfigs = createColumnGroupConfigsForRows(
     "columnGroups" in config ? config.columnGroups : undefined,
     "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
     "columnOrder" in config ? config.columnOrder : undefined
