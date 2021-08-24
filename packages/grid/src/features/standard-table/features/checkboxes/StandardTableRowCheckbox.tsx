@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
-import { useTotalNumColumnsForRows } from "../../context/GroupConfigsForRowsContext";
+import { useTotalNumColumnsForRows } from "../../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableId } from "../../hooks/UseStandardTableConfig";
 
 interface Props extends Pick<CheckboxProps, "value" | "onValueChange"> {

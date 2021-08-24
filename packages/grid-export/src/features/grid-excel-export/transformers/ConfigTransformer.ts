@@ -1,5 +1,5 @@
 import {
-  createColumnConfigsForRows,
+  createGroupConfigAndIdsForRows,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 import { ZipCelXConfig, ZipCelXRow } from "zipcelx";
@@ -20,13 +20,14 @@ export const createZipcelxConfig = <
   items: Array<TItem>,
   formatters?: CustomCellFormatters<TItem, TColumnKey>
 ): ZipCelXConfig => {
-  const groupConfigs = createColumnConfigsForRows(
+  const groupConfigsAndIds = createGroupConfigAndIdsForRows(
     "columnGroups" in config ? config.columnGroups : undefined,
     "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
     "columnOrder" in config ? config.columnOrder : undefined
   );
 
   const headerRows: Array<ZipCelXRow> = [];
+  const groupConfigs = groupConfigsAndIds.map((p) => p.groupConfig);
 
   if ("columnGroups" in config) {
     headerRows.push(transformGroupHeaders(groupConfigs));
