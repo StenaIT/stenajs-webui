@@ -1,6 +1,6 @@
 import {
   createColumnConfig,
-  createColumnConfigsForRows,
+  createGroupConfigAndIdsForRows,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 
@@ -60,11 +60,11 @@ export const testConfig: StandardTableConfig<
   columnOrder: ["firstName", "lastName", "age"],
 };
 
-export const testGroupConfigs = createColumnConfigsForRows(
+export const testGroupConfigs = createGroupConfigAndIdsForRows(
   undefined,
   undefined,
   testConfig.columnOrder
-);
+).map((p) => p.groupConfig);
 
 export const testConfigWithGroups: StandardTableConfig<
   TestItem,
@@ -93,8 +93,8 @@ export const testConfigWithGroups: StandardTableConfig<
   columnGroupOrder: ["names", "info"],
 };
 
-export const testGroupConfigsWithGroups = createColumnConfigsForRows(
+export const testGroupConfigsWithGroups = createGroupConfigAndIdsForRows(
   testConfigWithGroups.columnGroups,
   testConfigWithGroups.columnGroupOrder,
   undefined
-);
+).map((p) => p.groupConfig);

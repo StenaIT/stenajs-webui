@@ -9,7 +9,7 @@ import {
   tableBorderLeftExpanded,
 } from "../../../config/TableConfig";
 import { RowBackgroundResolverColorCombination } from "../config/StandardTableConfig";
-import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
 import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
 import { StandardTableRowCheckbox } from "../features/checkboxes/StandardTableRowCheckbox";
 import { useRowCheckbox } from "../features/checkboxes/UseRowCheckbox";
@@ -45,7 +45,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const trRef = useRef(null);
   const totalNumColumns = useTotalNumColumns();
   const { stickyCheckboxColumn } = useStandardTableConfig();
-  const groupConfigs = useGroupConfigsForRows();
+  const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
   const { columnIndexPerColumnId } = useColumnIndexPerColumnIdContext();
   const {
     showRowCheckbox,
@@ -186,8 +186,8 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
               </Row>
             </td>
           )}
-          {groupConfigs.map((groupConfig, groupIndex) => (
-            <React.Fragment key={groupIndex}>
+          {groupConfigsAndIds.map(({ groupConfig, groupId }, groupIndex) => (
+            <React.Fragment key={groupId}>
               {groupConfig.columnOrder.map((columnId, index) => (
                 <StandardTableCell
                   key={columnId}
@@ -226,7 +226,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       enableExpandCollapse,
       enableGridCell,
       firstColumnBackground,
-      groupConfigs,
+      groupConfigsAndIds,
       isSelected,
       item,
       lastColumnBackground,

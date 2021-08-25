@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
-import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
 import { booleanOrNumberToNumber } from "@stenajs-webui/core";
 
 interface ColsProps {}
 
 export const ColGroups: React.FC<ColsProps> = () => {
   const config = useStandardTableConfig();
-  const groupConfigs = useGroupConfigsForRows();
+  const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
 
   const hasExtraColGroup =
     config.enableExpandCollapse || config.showRowCheckbox;
@@ -33,9 +33,9 @@ export const ColGroups: React.FC<ColsProps> = () => {
           )}
         </colgroup>
       )}
-      {groupConfigs.map((group) => (
-        <colgroup>
-          {group.columnOrder.map((columnId) => (
+      {groupConfigsAndIds.map(({ groupConfig, groupId }) => (
+        <colgroup key={groupId}>
+          {groupConfig.columnOrder.map((columnId) => (
             <col
               style={{
                 width: config.columns[columnId].width,

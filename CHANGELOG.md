@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Fix missing key warning.
+
 ## 13.1.0
 
 ### useEditableCell
