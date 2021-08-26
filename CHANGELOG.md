@@ -6,6 +6,16 @@
 
 - Fix missing key warning.
 
+## Next
+
+### InputStepper
+
+- New component `InputStepper` is a number input with step buttons on the sides
+
+### Minor changes
+
+- Icon buttons ignore flex to keep their width
+
 ## 13.1.0
 
 ### useEditableCell

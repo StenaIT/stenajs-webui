@@ -34,15 +34,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
 }) => {
   const onClick = useCallback(
     (numSteps: number) => {
-      if (onValueChange) {
-        if (!value) {
-          onValueChange(String(numSteps));
-        } else {
-          const parsedValue = parseFloatElseUndefined(value);
-          const newValue = (parsedValue || 0) + numSteps;
-          onValueChange(String(limitWithinRange(newValue, min, max)));
-        }
-      }
+      changeValue({ onValueChange, value, numSteps, min, max });
     },
     [value, max, min, onValueChange]
   );
@@ -81,6 +73,30 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       {...restProps}
     />
   );
+};
+
+export const changeValue = ({
+  onValueChange,
+  value,
+  numSteps,
+  min,
+  max,
+}: {
+  onValueChange: ((value: string) => void) | undefined;
+  value: string | undefined;
+  numSteps: number;
+  min: number | undefined;
+  max: number | undefined;
+}) => {
+  if (onValueChange) {
+    if (!value) {
+      onValueChange(String(numSteps));
+    } else {
+      const parsedValue = parseFloatElseUndefined(value);
+      const newValue = (parsedValue || 0) + numSteps;
+      onValueChange(String(limitWithinRange(newValue, min, max)));
+    }
+  }
 };
 
 const limitWithinRange = (
