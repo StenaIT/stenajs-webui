@@ -2,6 +2,10 @@
 
 ## Next
 
+### New reducer factory `value-by-id-reducer`
+
+Stores one value per `string` id.
+
 ### StandardTable
 
 - Fix missing key warning.
