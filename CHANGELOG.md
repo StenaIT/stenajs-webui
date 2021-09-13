@@ -8,9 +8,9 @@
 
 ## Next
 
-### InputStepper
+### NumericStepper
 
-- New component `InputStepper` is a number input with step buttons on the sides
+- New component `NumericStepper` is a number input with step buttons on the sides
 
 ### Minor changes
 
