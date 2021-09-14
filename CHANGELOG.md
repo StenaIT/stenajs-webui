@@ -10,6 +10,10 @@ Stores one value per `string` id.
 
 - Fix missing key warning.
 
+### ActionMenuItem
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the menu was opened with keyboard interaction.
+
 ## 13.1.0
 
 ### useEditableCell
