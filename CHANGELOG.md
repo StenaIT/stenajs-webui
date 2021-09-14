@@ -1,10 +1,10 @@
 # Changelog
 
-## Next
+## 13.1.1
 
 ### New reducer factory `value-by-id-reducer`
 
-Stores one value per `string` id.
+- Stores one value per `string` id.
 
 ### StandardTable
 
