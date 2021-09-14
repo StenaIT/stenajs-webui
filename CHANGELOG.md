@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+- Fix missing export of `value-by-id-reducer`.
+-
 ## 13.1.1
 
 ### New reducer factory `value-by-id-reducer`
