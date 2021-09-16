@@ -37,6 +37,7 @@ export const ColGroups: React.FC<ColsProps> = () => {
         <colgroup key={groupId}>
           {groupConfig.columnOrder.map((columnId) => (
             <col
+              key={columnId}
               style={{
                 width: config.columns[columnId].width,
                 minWidth: config.columns[columnId].minWidth,
