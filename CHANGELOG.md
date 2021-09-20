@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Collapsible
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
+
 ## 13.1.2
 
 - Fix missing export of `value-by-id-reducer`.
