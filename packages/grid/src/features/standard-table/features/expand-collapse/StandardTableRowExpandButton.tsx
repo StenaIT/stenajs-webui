@@ -4,7 +4,7 @@ import { FlatButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useMemo } from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
-import { useTotalNumColumnsForRows } from "../../context/GroupConfigsForRowsContext";
+import { useTotalNumColumnsForRows } from "../../context/GroupConfigsAndIdsForRowsContext";
 import { useExpandCollapseActions } from "./UseExpandCollapseActions";
 import {
   useStandardTableConfig,

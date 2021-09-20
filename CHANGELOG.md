@@ -1,5 +1,62 @@
 # Changelog
 
+## 13.1.2
+
+- Fix missing export of `value-by-id-reducer`.
+
+## 13.1.1
+
+### New reducer factory `value-by-id-reducer`
+
+- Stores one value per `string` id.
+
+### StandardTable
+
+- Fix missing key warning.
+
+### ActionMenuItem
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the menu was opened with keyboard interaction.
+
+## 13.1.0
+
+### useEditableCell
+
+New option `none` for option `allowedInputType`.
+This disables the ability to automatically open the editor when the user starts typing in an editable table cell.
+
+This is usable when the editor is not a text input field.
+
+### Design changes
+
+- Updated styling for `Collapsible`.
+
+## 13.0.7
+
+### StandardTable
+
+- Shadow under sticky header now shows under header where there are no columns.
+
+## 13.0.6
+
+### New component `GroupedChipMultiSelect`
+
+- A combination of `ChipMultiSelect` and `GroupedMultiSelect`
+
+### StandardTable
+
+- When all columns had fixed width, they would still get wider than specified when table was wider.
+
+### Modal
+
+- `ModalHeader` is once again draggable by default.
+- Buttons and tooltips inside `ModalHeader` are not draggable.
+- `headerText` in `ModalHeader` is not draggable.
+- `DRAGGABLE_CANCEL_CLASSNAME` can be used to make part of `ModalHeader` not draggable.
+  Remember to use this for text that should be selectable in all browsers (e.g. Firefox).
+- New prop `closeButtonClassName` for `ModalHeader` lets you set a classname for the close button.
+- The close button now has an aria-label ("Close").
+
 ## 13.0.5
 
 ### StandardTable
@@ -192,7 +249,7 @@ New components for creating cards, `Card`, `CardHeader` and `CardBody`.
 
 Example:
 
-```typescript
+```tsx
 <Card>
   <CardHeader text={"Overview"} />
   <CardBody>

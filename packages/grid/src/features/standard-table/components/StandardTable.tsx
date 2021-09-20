@@ -4,7 +4,7 @@ import cx from "classnames";
 import * as React from "react";
 import { CSSProperties, ReactNode, useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
-import { GroupConfigsForRowsContext } from "../context/GroupConfigsForRowsContext";
+import { GroupConfigsAndIdsForRowsContext } from "../context/GroupConfigsAndIdsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
 import {
   StandardTableColumnGroupOrderContext,
@@ -21,7 +21,7 @@ import {
 import { StandardTableVariantContext } from "../context/StandardTableVariantContext";
 import { StickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { TotalNumColumnsContext } from "../context/TotalNumColumnsContext";
-import { createColumnConfigsForRows } from "../features/column-groups/ColumnGroupFactory";
+import { createGroupConfigAndIdsForRows } from "../features/column-groups/ColumnGroupFactory";
 import { ColumnGroupRow } from "../features/column-groups/ColumnGroupRow";
 import { calculateColumnIndexPerColumnId } from "../features/column-index-per-column-id/ColumnIndexCalculator";
 import { ColumnIndexPerColumnIdContext } from "../features/column-index-per-column-id/ColumnIndexPerColumnIdContext";
@@ -34,6 +34,7 @@ import { getTotalNumColumns } from "../util/ColumnCounter";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
+import { ColGroups } from "./ColGroups";
 
 export interface StandardTableProps<
   TItem,
@@ -184,7 +185,7 @@ export const StandardTable = function StandardTable<
 
   const groupConfigsForRows = useMemo(
     () =>
-      createColumnConfigsForRows<TItem, TColumnKey, TColumnGroupKey>(
+      createGroupConfigAndIdsForRows<TItem, TColumnKey, TColumnGroupKey>(
         columnGroupsFromConfig,
         columnGroupOrderFromConfig,
         columnOrderFromConfig
@@ -244,7 +245,7 @@ export const StandardTable = function StandardTable<
               <StandardTableStateContext.Provider value={state}>
                 <StandardTableActionsContext.Provider value={actionsContext}>
                   <StandardTableConfigContext.Provider value={config}>
-                    <GroupConfigsForRowsContext.Provider
+                    <GroupConfigsAndIdsForRowsContext.Provider
                       value={groupConfigsForRows}
                     >
                       <ColumnIndexPerColumnIdContext.Provider
@@ -260,6 +261,7 @@ export const StandardTable = function StandardTable<
                                 : columnGroupOrder
                             }
                           >
+                            <ColGroups />
                             <OnKeyDownContext.Provider value={onKeyDown}>
                               <thead>
                                 {(columnGroupOrder ||
@@ -281,7 +283,7 @@ export const StandardTable = function StandardTable<
                           </StandardTableColumnGroupOrderContext.Provider>
                         </StandardTableUsingColumnGroupsContext.Provider>
                       </ColumnIndexPerColumnIdContext.Provider>
-                    </GroupConfigsForRowsContext.Provider>
+                    </GroupConfigsAndIdsForRowsContext.Provider>
                   </StandardTableConfigContext.Provider>
                 </StandardTableActionsContext.Provider>
               </StandardTableStateContext.Provider>

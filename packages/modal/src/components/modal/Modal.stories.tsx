@@ -2,14 +2,22 @@ import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
 import { Box, Row, Space, Spacing, Text, Txt } from "@stenajs-webui/core";
-import { Icon, PrimaryButton } from "@stenajs-webui/elements";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  Icon,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import * as ReactModal from "react-modal";
-import { BaseModal, DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
+import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
-import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
+import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
+import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 
 export default {
   title: "modal/Modal",
@@ -142,7 +150,7 @@ export const DraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>Drag me using the handle on the left.</Txt>
+          <Txt>Drag me using the header but not the text.</Txt>
         </Box>
       </Modal>
     </div>
@@ -158,7 +166,7 @@ export const CustomDraggableModal = () => {
         label={"Open custom modal"}
       />
       <Modal
-        headerText={"Draggable modal with custom areas"}
+        headerText={"Non-draggable text"}
         header={
           <Row
             background={cssColor("--lhds-color-orange-200")}
@@ -171,12 +179,27 @@ export const CustomDraggableModal = () => {
           >
             <Txt variant={"bold"}>This is custom content</Txt>
             <Box
-              className={DRAGGABLE_HANDLE_CLASSNAME}
+              className={DRAGGABLE_CANCEL_CLASSNAME}
               background={cssColor("--lhds-color-orange-400")}
               indent={2}
             >
-              <Txt variant={"bold"}>I am the draggable part</Txt>
+              <Txt variant={"bold"}>I am not draggable</Txt>
             </Box>
+            <SecondaryButton label={"Buttons are not draggable"} />
+            <ActionMenuSecondaryButton
+              renderItems={() => (
+                <>
+                  <ActionMenuItem label={"Button"} />
+                  <ActionMenuLink label={"Link"} />
+                  <ActionMenuItemContent
+                    label={"Content"}
+                    right={
+                      <SecondaryButton size={"small"} leftIcon={faJediOrder} />
+                    }
+                  />
+                </>
+              )}
+            />
           </Row>
         }
         isOpen={isCustomModalOpen}
@@ -185,36 +208,7 @@ export const CustomDraggableModal = () => {
         draggable
       >
         <Box indent={2} spacing>
-          <Txt>
-            Drag me using the handle on the left or the customized draggable
-            part of my header.
-          </Txt>
-        </Box>
-      </Modal>
-    </div>
-  );
-};
-
-export const DraggableModalWithCustomHandleIcon = () => {
-  const [isCustomModalOpen, setCustomModalOpen] = useState(false);
-  return (
-    <div>
-      <PrimaryButton
-        onClick={() => setCustomModalOpen(true)}
-        label={"Open modal"}
-      />
-      <Modal
-        headerText={"Draggable modal with custom handle icon"}
-        isOpen={isCustomModalOpen}
-        onRequestClose={() => setCustomModalOpen(false)}
-        shouldCloseOnOverlayClick
-        draggable
-        handleIcon={faJedi}
-      >
-        <Box indent={2} spacing>
-          <Txt>
-            Drag me using the <Txt variant={"caption"}>force</Txt>
-          </Txt>
+          <Txt>Drag me using the header except the non-draggable parts.</Txt>
         </Box>
       </Modal>
     </div>

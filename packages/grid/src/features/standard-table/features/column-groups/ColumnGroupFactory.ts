@@ -5,7 +5,12 @@ import {
   StandardTableConfigWithNoGroups,
 } from "../../config/StandardTableConfig";
 
-export const createColumnConfigsForRows = <
+export interface GroupConfigAndId<TColumnKey extends string> {
+  groupId: string;
+  groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
+}
+
+export const createGroupConfigAndIdsForRows = <
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
@@ -27,16 +32,29 @@ export const createColumnConfigsForRows = <
   columnOrder:
     | StandardTableConfigWithNoGroups<TItem, TColumnKey>["columnOrder"]
     | undefined
-): Array<StandardTableColumnGroupConfig<TColumnKey>> => {
+): Array<GroupConfigAndId<TColumnKey>> => {
   if (columnGroups) {
     return compact(
-      columnGroupOrder?.map((groupId) => columnGroups?.[groupId]) ?? []
-    ).filter((columnGroup) => columnGroup.columnOrder.length > 0);
+      columnGroupOrder?.map((groupId) => {
+        const groupConfig = columnGroups?.[groupId];
+        return {
+          groupId,
+          groupConfig,
+        };
+      }) ?? []
+    )
+      .filter((item) => (item.groupConfig?.columnOrder.length ?? 0) > 0)
+      .map<GroupConfigAndId<TColumnKey>>(
+        (p) => p as GroupConfigAndId<TColumnKey>
+      );
   }
   return [
     {
-      label: "",
-      columnOrder: columnOrder ?? [],
+      groupId: "virtual",
+      groupConfig: {
+        label: "",
+        columnOrder: columnOrder ?? [],
+      },
     },
   ];
 };

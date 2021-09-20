@@ -9,7 +9,7 @@ import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../config/TableConfig";
-import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
 import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
@@ -44,7 +44,7 @@ const getTopPosition = (
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
 >({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
-  const groupConfigs = useGroupConfigsForRows();
+  const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
 
   const {
     showHeaderCheckbox,
@@ -156,9 +156,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           </Row>
         </th>
       )}
-      {groupConfigs.map((groupConfig, groupIndex) => {
+      {groupConfigsAndIds.map(({ groupConfig, groupId }, groupIndex) => {
         return (
-          <React.Fragment key={groupIndex}>
+          <React.Fragment key={groupId}>
             {groupConfig.columnOrder.map((columnId, index) => {
               return (
                 <StandardTableHeadItem
@@ -183,6 +183,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           <Row indent={rowIndent} />
         </th>
       )}
+      <th style={stickyHeaderStyle} />
     </TrWithHoverBackground>
   );
 });

@@ -4,7 +4,7 @@ import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../../config/TableConfig";
-import { useGroupConfigsForRows } from "../../context/GroupConfigsForRowsContext";
+import { useGroupConfigsAndIdsForRows } from "../../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableConfig } from "../../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../../util/CellBorderCalculator";
 import { ColumnInGroup } from "./ColumnInGroup";
@@ -17,7 +17,7 @@ interface ColumnGroupRowProps {
 export const ColumnGroupRow = React.memo(function ColumnGroupRow({
   height = defaultTableRowHeight,
 }: ColumnGroupRowProps) {
-  const groupConfigs = useGroupConfigsForRows();
+  const groupConfigAndIds = useGroupConfigsAndIdsForRows();
   const config = useStandardTableConfig();
 
   const {
@@ -73,13 +73,13 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
           }}
         />
       )}
-      {groupConfigs.map((groupConfig, groupIndex) => (
+      {groupConfigAndIds.map(({ groupConfig, groupId }, groupIndex) => (
         <ColumnInGroup
           isFirstGroup={groupIndex === 0}
-          isLastGroup={groupIndex === groupConfigs.length - 1}
+          isLastGroup={groupIndex === groupConfigAndIds.length - 1}
           groupConfig={groupConfig}
           columnId={groupConfig.columnOrder[0]}
-          key={groupConfig.columnOrder[0]}
+          key={groupId}
           colSpan={groupConfig.columnOrder.length}
           borderFromGroup={getCellBorderFromGroup(
             groupIndex,

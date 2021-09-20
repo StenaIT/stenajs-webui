@@ -45,3 +45,4 @@ export * from "./hooks/UseTimeoutState";
 
 export * from "./utils/SwitchCaseExhauster";
 export * from "./utils/parsers/NumberParser";
+export { booleanOrNumberToNumber } from "./utils/BooleanOrNumberToNumber";
