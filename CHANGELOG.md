@@ -2,19 +2,36 @@
 
 ## Next
 
-### StandardTable
-
-- Fix missing key warning.
-
-## Next
-
 ### NumericStepper
 
 - New component `NumericStepper` is a number input with step buttons on the sides
 
+### Collapsible
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
+- Remove top border for `CollapsibleGroupHeading`.
+
 ### Minor changes
 
 - Icon buttons ignore flex to keep their width
+
+## 13.1.2
+
+- Fix missing export of `value-by-id-reducer`.
+
+## 13.1.1
+
+### New reducer factory `value-by-id-reducer`
+
+- Stores one value per `string` id.
+
+### StandardTable
+
+- Fix missing key warning.
+
+### ActionMenuItem
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the menu was opened with keyboard interaction.
 
 ## 13.1.0
 

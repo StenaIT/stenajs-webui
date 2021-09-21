@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/tooltip",
-  "version": "13.1.0",
+  "version": "13.1.2",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "13.1.0",
-    "@stenajs-webui/elements": "13.1.0",
+    "@stenajs-webui/core": "13.1.2",
+    "@stenajs-webui/elements": "13.1.2",
     "@tippyjs/react": "^4.1.0",
     "tippy.js": "^6.2.6"
   },
@@ -53,5 +53,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "e8c2d1e48283d397d94200904eae694679fc2766"
+  "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961"
 }
