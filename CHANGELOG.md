@@ -11,6 +11,10 @@
 - Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
 - Remove top border for `CollapsibleGroupHeading`.
 
+### Bug fixes
+
+- `NumericInput` now caps typed-in values to min and max
+
 ### Minor changes
 
 - Icon buttons ignore flex to keep their width
