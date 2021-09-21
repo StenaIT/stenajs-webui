@@ -2,6 +2,10 @@
 
 ## Next
 
+### StandardTable
+
+- Fix missing key warning.
+
 ### Collapsible
 
 - Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
