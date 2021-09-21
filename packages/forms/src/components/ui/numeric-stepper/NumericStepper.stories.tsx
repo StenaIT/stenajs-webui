@@ -1,4 +1,4 @@
-import { Space, Text } from "@stenajs-webui/core";
+import { Space, Txt } from "@stenajs-webui/core";
 import * as React from "react";
 import { useState } from "react";
 import {
@@ -34,7 +34,7 @@ export const Demo: Story<NumericStepperProps> = (props) => {
   return (
     <div style={{ display: "inline-block" }}>
       <NumericStepper {...props} value={value} onValueChange={setValue} />
-      <Text>String value: {value}</Text>
+      <Txt>String value: {value}</Txt>
     </div>
   );
 };
@@ -44,7 +44,7 @@ export const WithNumberDataType = () => {
   return (
     <div style={{ display: "inline-block" }}>
       <NumericInput value={value} onValueChange={setValue} />
-      <Text>Number value: {value}</Text>
+      <Txt>Number value: {value}</Txt>
     </div>
   );
 };
@@ -62,7 +62,7 @@ export const WithMinAndMax = () => {
   const [value, setValue] = useState("5");
   return (
     <div style={{ display: "inline-block" }}>
-      <Text>Minimum 3, maximum 8</Text>
+      <Txt>Minimum 3, maximum 8</Txt>
       <Space />
       <NumericStepper min={3} max={8} value={value} onValueChange={setValue} />
     </div>
@@ -77,11 +77,7 @@ export const WithContentRight = () => {
         value={value}
         min={1}
         max={8}
-        contentRight={
-          <div style={{ color: "grey" }}>
-            <Text>sec</Text>
-          </div>
-        }
+        contentRight={<Txt color={"gray"} userSelect={"none"}>sec</Txt>}
         onValueChange={setValue}
       />
     </div>
