@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Collapsible
+
+- Remove top border for `CollapsibleGroupHeading`
+
 ## 13.1.2
 
 - Fix missing export of `value-by-id-reducer`.
