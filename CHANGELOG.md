@@ -5,6 +5,7 @@
 ### Collapsible
 
 - Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
+- Remove top border for `CollapsibleGroupHeading`.
 
 ## 13.1.2
 
