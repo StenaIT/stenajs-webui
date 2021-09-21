@@ -2,14 +2,22 @@
 
 ## Next
 
-### StandardTable
+### NumericStepper
 
-- Fix missing key warning.
+- New component `NumericStepper` is a number input with step buttons on the sides
 
 ### Collapsible
 
 - Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
 - Remove top border for `CollapsibleGroupHeading`.
+
+### Bug fixes
+
+- `NumericInput` now caps typed-in values to min and max
+
+### Minor changes
+
+- Icon buttons ignore flex to keep their width
 
 ## 13.1.2
 

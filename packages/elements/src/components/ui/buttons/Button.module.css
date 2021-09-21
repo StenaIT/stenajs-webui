@@ -141,6 +141,7 @@
   &.iconButton {
     padding: var(--swui-button-padding-vertical);
     color: var(--current-icon-color);
+    flex: none;
 
     border-radius: var(--swui-button-border-radius-icon-only);
 
