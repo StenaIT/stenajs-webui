@@ -34,7 +34,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
 }) => {
   const onClick = useCallback(
     (numSteps: number) => {
-      changeValue({ onValueChange, value, numSteps, min, max });
+      handleNumericOnChangeValue({ onValueChange, value, numSteps, min, max });
     },
     [value, max, min, onValueChange]
   );
@@ -75,7 +75,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   );
 };
 
-export const changeValue = ({
+export const handleNumericOnChangeValue = ({
   onValueChange,
   value,
   numSteps,

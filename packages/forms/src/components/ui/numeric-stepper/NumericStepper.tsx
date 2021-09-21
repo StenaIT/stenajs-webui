@@ -4,7 +4,7 @@ import * as React from "react";
 import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import {
-  changeValue,
+  handleNumericOnChangeValue,
   NumericTextInput,
   NumericTextInputProps,
 } from "../numeric-text-input/NumericTextInput";
@@ -24,7 +24,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
 }) => {
   const onClick = useCallback(
     (numSteps: number) => {
-      changeValue({ onValueChange, value, numSteps, min, max });
+      handleNumericOnChangeValue({ onValueChange, value, numSteps, min, max });
     },
     [value, max, min, onValueChange]
   );
