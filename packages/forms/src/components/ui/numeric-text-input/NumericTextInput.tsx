@@ -3,9 +3,12 @@ import { UpDownButtons } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
-import { parseFloatElseUndefined } from "@stenajs-webui/core";
 import styles from "./NumericTextInput.module.css";
 import cx from "classnames";
+import {
+  onStepValueChange,
+  onTextValueChange,
+} from "../../../utils/NumericHelpers";
 
 export interface NumericTextInputProps
   extends Omit<
@@ -34,9 +37,15 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
 }) => {
   const onClick = useCallback(
     (numSteps: number) => {
-      handleNumericOnChangeValue({ onValueChange, value, numSteps, min, max });
+      onStepValueChange({ onValueChange, value, numSteps, min, max });
     },
     [value, max, min, onValueChange]
+  );
+  const onChange = useCallback(
+    (newValue: string) => {
+      onTextValueChange({ onValueChange, newValue, min, max });
+    },
+    [max, min, onValueChange]
   );
 
   const contentRightToUse = hideButtons ? (
@@ -62,7 +71,7 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     <TextInput
       contentRight={contentRightToUse}
       value={value}
-      onValueChange={onValueChange}
+      onValueChange={onChange}
       disableContentPaddingRight={!hideButtons}
       type={"number"}
       min={min}
@@ -73,43 +82,4 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
       {...restProps}
     />
   );
-};
-
-export const handleNumericOnChangeValue = ({
-  onValueChange,
-  value,
-  numSteps,
-  min,
-  max,
-}: {
-  onValueChange: ((value: string) => void) | undefined;
-  value: string | undefined;
-  numSteps: number;
-  min: number | undefined;
-  max: number | undefined;
-}) => {
-  if (onValueChange) {
-    if (!value) {
-      onValueChange(String(numSteps));
-    } else {
-      const parsedValue = parseFloatElseUndefined(value);
-      const newValue = (parsedValue || 0) + numSteps;
-      onValueChange(String(limitWithinRange(newValue, min, max)));
-    }
-  }
-};
-
-const limitWithinRange = (
-  value: number,
-  min?: number,
-  max?: number
-): number => {
-  let v = value;
-  if (min != null) {
-    v = Math.max(min, v);
-  }
-  if (max != null) {
-    v = Math.min(max, v);
-  }
-  return v;
 };

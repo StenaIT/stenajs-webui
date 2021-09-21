@@ -4,12 +4,15 @@ import * as React from "react";
 import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import {
-  handleNumericOnChangeValue,
   NumericTextInput,
   NumericTextInputProps,
 } from "../numeric-text-input/NumericTextInput";
 import { useCallback } from "react";
 import { isMaxReached, isMinReached } from "../../../utils/NumberComparator";
+import {
+  onStepValueChange,
+  onTextValueChange,
+} from "../../../utils/NumericHelpers";
 
 export interface NumericStepperProps
   extends Omit<NumericTextInputProps, "hideButtons"> {}
@@ -25,9 +28,15 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
 }) => {
   const onClick = useCallback(
     (numSteps: number) => {
-      handleNumericOnChangeValue({ onValueChange, value, numSteps, min, max });
+      onStepValueChange({ onValueChange, value, numSteps, min, max });
     },
     [value, max, min, onValueChange]
+  );
+  const onChange = useCallback(
+    (newValue: string) => {
+      onTextValueChange({ onValueChange, newValue, min, max });
+    },
+    [max, min, onValueChange]
   );
 
   return (
@@ -41,7 +50,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
       <Space />
       <NumericTextInput
         hideButtons
-        onValueChange={onValueChange}
+        onValueChange={onChange}
         value={value}
         max={max}
         min={min}
