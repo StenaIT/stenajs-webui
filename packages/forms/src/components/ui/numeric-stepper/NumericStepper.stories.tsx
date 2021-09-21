@@ -77,7 +77,11 @@ export const WithContentRight = () => {
         value={value}
         min={1}
         max={8}
-        contentRight={<Txt color={"gray"} userSelect={"none"}>sec</Txt>}
+        contentRight={
+          <Txt color={"gray"} userSelect={"none"}>
+            sec
+          </Txt>
+        }
         onValueChange={setValue}
       />
     </div>

@@ -9,6 +9,7 @@ import {
   NumericTextInputProps,
 } from "../numeric-text-input/NumericTextInput";
 import { useCallback } from "react";
+import { isMaxReached, isMinReached } from "../../../utils/NumberComparator";
 
 export interface NumericStepperProps
   extends Omit<NumericTextInputProps, "hideButtons"> {}
@@ -34,7 +35,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
       <FlatButton
         leftIcon={faMinus}
         aria-label={"Decrease"}
-        disabled={disabled}
+        disabled={disabled || isMinReached(value, min)}
         onClick={() => onClick(-step)}
       />
       <Space />
@@ -52,7 +53,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
       <FlatButton
         leftIcon={faPlus}
         aria-label={"Increase"}
-        disabled={disabled}
+        disabled={disabled || isMaxReached(value, max)}
         onClick={() => onClick(step)}
       />
     </Row>
