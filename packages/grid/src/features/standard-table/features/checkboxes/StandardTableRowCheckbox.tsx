@@ -1,6 +1,6 @@
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
-import { useCallback, useEffect, useRef } from "react";
+import { RefObject, useCallback } from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
 import { useTotalNumColumnsForRows } from "../../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableId } from "../../hooks/UseStandardTableConfig";
@@ -11,6 +11,7 @@ interface Props extends Pick<CheckboxProps, "value" | "onValueChange"> {
   numRows: number;
   disabled?: boolean;
   onValueChangeAndShift: CheckboxProps["onValueChange"];
+  shiftPressedRef: RefObject<boolean>;
 }
 
 export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
@@ -22,9 +23,8 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     numRows,
     disabled,
     onValueChangeAndShift,
+    shiftPressedRef,
   }) {
-    const shiftPressedRef = useRef(false);
-
     const totalNumColumns = useTotalNumColumnsForRows();
 
     const tableId = useStandardTableId();
@@ -37,27 +37,6 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     });
     const { requiredProps } = gridCell;
 
-    useEffect(() => {
-      const keyUp = (ev: KeyboardEvent) => {
-        if (ev.key === "Shift") {
-          shiftPressedRef.current = false;
-        }
-      };
-
-      const keyDown = (ev: KeyboardEvent) => {
-        if (ev.key === "Shift") {
-          shiftPressedRef.current = true;
-        }
-      };
-
-      document.addEventListener("keyup", keyUp);
-      document.addEventListener("keydown", keyDown);
-      return () => {
-        document.removeEventListener("keyup", keyUp);
-        document.removeEventListener("keydown", keyDown);
-      };
-    }, []);
-
     const internalOnValueChange = useCallback(
       (value: boolean) => {
         if (shiftPressedRef.current) {
@@ -66,7 +45,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
           onValueChange?.(value);
         }
       },
-      [onValueChange, onValueChangeAndShift]
+      [onValueChange, onValueChangeAndShift, shiftPressedRef]
     );
 
     return (

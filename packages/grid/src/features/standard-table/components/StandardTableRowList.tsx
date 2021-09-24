@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { multitypeComparator } from "../features/sorting/MultitypeComparator";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
@@ -29,6 +29,9 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
    * rows after sorting.
    */
   const sortCounterRef = useRef(0);
+
+  const shiftPressedRef = useRef(false);
+
   const { keyResolver, disableInfiniteList } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
@@ -60,6 +63,27 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     keyResolver,
   ]);
 
+  useEffect(() => {
+    const keyUp = (ev: KeyboardEvent) => {
+      if (ev.key === "Shift") {
+        shiftPressedRef.current = false;
+      }
+    };
+
+    const keyDown = (ev: KeyboardEvent) => {
+      if (ev.key === "Shift") {
+        shiftPressedRef.current = true;
+      }
+    };
+
+    document.addEventListener("keyup", keyUp);
+    document.addEventListener("keydown", keyDown);
+    return () => {
+      document.removeEventListener("keyup", keyUp);
+      document.removeEventListener("keydown", keyDown);
+    };
+  }, []);
+
   return (
     <React.Fragment key={sortCounterRef.current}>
       {sortedItems.map((item, index) => (
@@ -71,6 +95,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}
+          shiftPressedRef={shiftPressedRef}
         />
       ))}
     </React.Fragment>

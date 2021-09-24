@@ -1,7 +1,7 @@
 import { Indent, Row, useOnScreen } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { CSSProperties, useMemo, useRef } from "react";
+import { CSSProperties, RefObject, useMemo, useRef } from "react";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
@@ -34,6 +34,7 @@ export interface StandardTableRowProps<TItem> {
   numRows: number;
   colIndexOffset: number;
   alwaysVisible?: boolean;
+  shiftPressedRef: RefObject<boolean>;
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
@@ -43,6 +44,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   numRows,
   colIndexOffset,
   alwaysVisible,
+  shiftPressedRef,
 }: StandardTableRowProps<TItem>) {
   const trRef = useRef(null);
   const totalNumColumns = useTotalNumColumns();
@@ -188,6 +190,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                   colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
                   rowIndex={rowIndex}
                   numRows={numRows}
+                  shiftPressedRef={shiftPressedRef}
                 />
               </Row>
             </td>
@@ -240,6 +243,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       rowIndent,
       rowIndex,
       shiftAndToggleSelected,
+      shiftPressedRef,
       showRowCheckbox,
       stickyCheckboxColumn,
       toggleSelected,
