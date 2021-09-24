@@ -239,6 +239,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       numRows,
       rowIndent,
       rowIndex,
+      shiftAndToggleSelected,
       showRowCheckbox,
       stickyCheckboxColumn,
       toggleSelected,
