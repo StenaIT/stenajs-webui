@@ -37,26 +37,26 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     });
     const { requiredProps } = gridCell;
 
-    const keyUp = useCallback((ev: KeyboardEvent) => {
-      if (ev.key === "Shift") {
-        shiftPressedRef.current = false;
-      }
-    }, []);
-
-    const keyDown = useCallback((ev: KeyboardEvent) => {
-      if (ev.key === "Shift") {
-        shiftPressedRef.current = true;
-      }
-    }, []);
-
     useEffect(() => {
+      const keyUp = (ev: KeyboardEvent) => {
+        if (ev.key === "Shift") {
+          shiftPressedRef.current = false;
+        }
+      };
+
+      const keyDown = (ev: KeyboardEvent) => {
+        if (ev.key === "Shift") {
+          shiftPressedRef.current = true;
+        }
+      };
+
       document.addEventListener("keyup", keyUp);
       document.addEventListener("keydown", keyDown);
       return () => {
         document.removeEventListener("keyup", keyUp);
         document.removeEventListener("keydown", keyDown);
       };
-    }, [keyDown, keyUp]);
+    }, []);
 
     const internalOnValueChange = useCallback(
       (value: boolean) => {
