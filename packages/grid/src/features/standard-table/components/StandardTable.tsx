@@ -166,10 +166,11 @@ export const StandardTable = function StandardTable<
   const actionsContext = useMemo<
     StandardTableInternalActionsContext<TColumnKey>
   >(() => {
-    return {
+    const r: StandardTableInternalActionsContext<TColumnKey> = {
       actions,
       dispatch,
     };
+    return r;
   }, [actions, dispatch]);
 
   const usingColumnGroups = Boolean(

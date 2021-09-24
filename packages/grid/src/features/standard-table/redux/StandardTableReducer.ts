@@ -10,8 +10,8 @@ import {
   SortOrderState,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "./ReducerIdFactory";
-import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
 import { combineReducers, Reducer } from "redux";
+import { StandardTableAction } from "../util/ActionsFactory";
 
 export interface StandardTableState<TColumnKey extends string> {
   sortOrder: SortOrderState<TColumnKey>;
@@ -38,7 +38,7 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
 
 export type StandardTableReducer<TColumnKey extends string> = Reducer<
   StandardTableState<TColumnKey>,
-  InternalStandardTableAction<TColumnKey>
+  StandardTableAction<TColumnKey>
 >;
 
 export const createStandardTableReducer = <TColumnKey extends string>(

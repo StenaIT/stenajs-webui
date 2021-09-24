@@ -9,12 +9,12 @@ import {
 import { getReducerIdFor } from "../redux/ReducerIdFactory";
 import { StandardTableStateFields } from "../redux/StandardTableReducer";
 
-export type StandardTableAction<TColumnKey> =
-  | ReducerIdGateAction<SelectedIdsAction>
+export type StandardTableAction<TColumnKey extends string> =
   | ReducerIdGateAction<SortOrderAction<TColumnKey>>
+  | ReducerIdGateAction<SelectedIdsAction>
   | ReducerIdGateAction<EntityAction<StandardTableStateFields>>;
 
-export interface StandardTableActions<TColumnKey> {
+export interface StandardTableActions<TColumnKey extends string> {
   setSelectedIds: (ids: Array<string>) => StandardTableAction<TColumnKey>;
   clearSelection: () => StandardTableAction<TColumnKey>;
   expandByIds: (ids: Array<string>) => StandardTableAction<TColumnKey>;
