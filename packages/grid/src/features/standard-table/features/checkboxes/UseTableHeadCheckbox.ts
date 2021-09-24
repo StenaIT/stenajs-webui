@@ -13,7 +13,7 @@ export const useTableHeadCheckbox = <TItem>(
     selectedIds: { selectedIds },
   } = useStandardTableState();
   const {
-    actions: { selectByIds, clearSelection },
+    actions: { setSelectedIds, clearSelection },
     dispatch,
   } = useStandardTableActions();
 
@@ -26,7 +26,7 @@ export const useTableHeadCheckbox = <TItem>(
   const onClickCheckbox = useCallback(() => {
     if (items) {
       if (selectionIsEmpty) {
-        dispatch(selectByIds(items.map((item) => keyResolver(item))));
+        dispatch(setSelectedIds(items.map((item) => keyResolver(item))));
       } else {
         dispatch(clearSelection());
       }
@@ -37,7 +37,7 @@ export const useTableHeadCheckbox = <TItem>(
     dispatch,
     items,
     keyResolver,
-    selectByIds,
+    setSelectedIds,
   ]);
 
   return {

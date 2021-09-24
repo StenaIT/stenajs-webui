@@ -1,8 +1,10 @@
 import {
+  createEntityReducer,
   createSelectedIdsReducer,
   createSelectedIdsReducerInitialState,
   createSortOrderReducer,
   createSortOrderReducerInitialState,
+  EntityState,
   reducerIdGate,
   SelectedIdsState,
   SortOrderState,
@@ -15,6 +17,11 @@ export interface StandardTableState<TColumnKey extends string> {
   sortOrder: SortOrderState<TColumnKey>;
   selectedIds: SelectedIdsState;
   expandedRows: SelectedIdsState;
+  fields: EntityState<StandardTableStateFields>;
+}
+
+export interface StandardTableStateFields {
+  lastSelectedId?: string;
 }
 
 export const createStandardTableInitialState = <TColumnKey extends string>(
@@ -26,6 +33,7 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
   sortOrder: createSortOrderReducerInitialState(sortBy, desc),
   selectedIds: createSelectedIdsReducerInitialState(selectedIds),
   expandedRows: createSelectedIdsReducerInitialState(expandedRows),
+  fields: { lastSelectedId: undefined },
 });
 
 export type StandardTableReducer<TColumnKey extends string> = Reducer<
@@ -48,10 +56,15 @@ export const createStandardTableReducer = <TColumnKey extends string>(
     getReducerIdFor(reducerId, "expandedRows"),
     createSelectedIdsReducer()
   );
+  const fields = reducerIdGate(
+    getReducerIdFor(reducerId, "fields"),
+    createEntityReducer<StandardTableStateFields>({})
+  );
 
   return combineReducers({
     sortOrder,
     selectedIds,
     expandedRows,
+    fields,
   });
 };

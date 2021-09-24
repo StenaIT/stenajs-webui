@@ -5,15 +5,20 @@ import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../../hooks/UseStandardTableConfig";
+import { getIdsBetweenSelected } from "../../util/IdListPartial";
 
-export const useRowCheckbox = <TItem>(item: TItem) => {
+export const useRowCheckbox = <TItem>(
+  item: TItem,
+  itemIdList: Array<string>
+) => {
   const { keyResolver } = useStandardTableConfig();
 
   const {
     selectedIds: { selectedIds },
+    fields: { lastSelectedId },
   } = useStandardTableState();
   const {
-    actions: { selectByIds },
+    actions: { setSelectedIds, setLastSelectedId },
     dispatch,
   } = useStandardTableActions();
 
@@ -24,16 +29,44 @@ export const useRowCheckbox = <TItem>(item: TItem) => {
     itemKey,
   ]);
 
-  const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
-    dispatch(selectByIds(ids))
+  const { toggle, addMultiple, removeMultiple } = useArraySet(
+    selectedIds,
+    (ids: Array<string>) => dispatch(setSelectedIds(ids))
   );
+
+  const shiftAndToggleSelected = useCallback(() => {
+    if (itemIdList && lastSelectedId) {
+      const idList = getIdsBetweenSelected(itemIdList, lastSelectedId, itemKey);
+      if (idList?.length) {
+        if (isSelected) {
+          removeMultiple(idList);
+        } else {
+          addMultiple(idList);
+        }
+      } else {
+        toggle(itemKey);
+      }
+    } else {
+      toggle(itemKey);
+    }
+    dispatch(setLastSelectedId(itemKey));
+  }, [
+    itemIdList,
+    lastSelectedId,
+    dispatch,
+    setLastSelectedId,
+    itemKey,
+    toggle,
+  ]);
 
   const toggleSelected = useCallback(() => {
     toggle(itemKey);
-  }, [toggle, itemKey]);
+    dispatch(setLastSelectedId(itemKey));
+  }, [toggle, itemKey, dispatch, setLastSelectedId]);
 
   return {
     isSelected,
     toggleSelected,
+    shiftAndToggleSelected,
   };
 };

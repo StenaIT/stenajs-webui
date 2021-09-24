@@ -55,13 +55,19 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     return sortedList;
   }, [items, valueResolver, desc]);
 
+  const itemIdList = useMemo(() => sortedItems.map((l) => keyResolver(l)), [
+    sortedItems,
+    keyResolver,
+  ]);
+
   return (
     <React.Fragment key={sortCounterRef.current}>
       {sortedItems.map((item, index) => (
         <StandardTableRow
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
-          key={keyResolver(item)}
+          itemIdList={itemIdList}
+          key={itemIdList[index]}
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}
