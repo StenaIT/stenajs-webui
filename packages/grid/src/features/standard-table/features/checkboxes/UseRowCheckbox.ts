@@ -56,6 +56,9 @@ export const useRowCheckbox = <TItem>(
     dispatch,
     setLastSelectedId,
     itemKey,
+    isSelected,
+    removeMultiple,
+    addMultiple,
     toggle,
   ]);
 
