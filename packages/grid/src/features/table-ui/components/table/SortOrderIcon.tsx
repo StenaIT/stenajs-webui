@@ -5,7 +5,7 @@ import { faSortAmountDownAlt } from "@fortawesome/free-solid-svg-icons/faSortAmo
 import { faSortAmountUpAlt } from "@fortawesome/free-solid-svg-icons/faSortAmountUpAlt";
 import { faSortNumericDown } from "@fortawesome/free-solid-svg-icons/faSortNumericDown";
 import { faSortNumericUp } from "@fortawesome/free-solid-svg-icons/faSortNumericUp";
-import { exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
+import { Box, exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
@@ -23,11 +23,13 @@ export const SortOrderIcon: React.FC<Props> = ({
   direction,
 }) => {
   return (
-    <Icon
-      size={14}
-      color={cssColor("--lhds-color-ui-500")}
-      icon={getIcon(direction, iconVariant)}
-    />
+    <Box width={"14px"}>
+      <Icon
+        size={14}
+        color={cssColor("--lhds-color-ui-500")}
+        icon={getIcon(direction, iconVariant)}
+      />
+    </Box>
   );
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid",
-  "version": "11.3.1",
+  "version": "13.3.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,17 +28,17 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "11.3.1",
-    "@stenajs-webui/elements": "11.3.1",
-    "@stenajs-webui/forms": "11.3.1",
-    "@stenajs-webui/panels": "11.3.1",
-    "@stenajs-webui/redux": "11.3.1",
-    "@stenajs-webui/theme": "11.3.1",
-    "@stenajs-webui/tooltip": "11.3.1",
-    "classnames": "^2.2.6",
-    "react-infinite": "0.13.0"
+    "@stenajs-webui/core": "13.3.0",
+    "@stenajs-webui/elements": "13.3.0",
+    "@stenajs-webui/forms": "13.3.0",
+    "@stenajs-webui/panels": "13.3.0",
+    "@stenajs-webui/redux": "13.3.0",
+    "@stenajs-webui/theme": "13.3.0",
+    "@stenajs-webui/tooltip": "13.3.0",
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
+    "@emotion/styled": ">=11.3.0",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@types/lodash": ">=4.14.168",
     "@types/react": ">=17.0.5",
@@ -53,12 +53,12 @@
     "redux": ">=4.0.5"
   },
   "devDependencies": {
+    "@emotion/styled": "^11.3.0",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
-    "@types/react-infinite": "^0.0.35",
     "@types/react-redux": "^7.1.8",
     "csstype": "^3.0.8",
     "lodash": "^4.17.21",
@@ -71,5 +71,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "2c26a997a9113a7c4077bf62133fac0196e40e3d"
+  "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961"
 }

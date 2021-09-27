@@ -1,20 +1,27 @@
 import {
+  createEntityReducer,
   createSelectedIdsReducer,
   createSelectedIdsReducerInitialState,
   createSortOrderReducer,
   createSortOrderReducerInitialState,
+  EntityState,
   reducerIdGate,
   SelectedIdsState,
   SortOrderState,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "./ReducerIdFactory";
-import { InternalStandardTableAction } from "./StandardTableActionsAndSelectors";
 import { combineReducers, Reducer } from "redux";
+import { StandardTableAction } from "../util/ActionsFactory";
 
 export interface StandardTableState<TColumnKey extends string> {
   sortOrder: SortOrderState<TColumnKey>;
   selectedIds: SelectedIdsState;
   expandedRows: SelectedIdsState;
+  fields: EntityState<StandardTableStateFields>;
+}
+
+export interface StandardTableStateFields {
+  lastSelectedId?: string;
 }
 
 export const createStandardTableInitialState = <TColumnKey extends string>(
@@ -26,11 +33,12 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
   sortOrder: createSortOrderReducerInitialState(sortBy, desc),
   selectedIds: createSelectedIdsReducerInitialState(selectedIds),
   expandedRows: createSelectedIdsReducerInitialState(expandedRows),
+  fields: { lastSelectedId: undefined },
 });
 
 export type StandardTableReducer<TColumnKey extends string> = Reducer<
   StandardTableState<TColumnKey>,
-  InternalStandardTableAction<TColumnKey>
+  StandardTableAction<TColumnKey>
 >;
 
 export const createStandardTableReducer = <TColumnKey extends string>(
@@ -48,10 +56,15 @@ export const createStandardTableReducer = <TColumnKey extends string>(
     getReducerIdFor(reducerId, "expandedRows"),
     createSelectedIdsReducer()
   );
+  const fields = reducerIdGate(
+    getReducerIdFor(reducerId, "fields"),
+    createEntityReducer<StandardTableStateFields>({})
+  );
 
   return combineReducers({
     sortOrder,
     selectedIds,
     expandedRows,
+    fields,
   });
 };

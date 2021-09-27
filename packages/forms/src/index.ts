@@ -14,3 +14,5 @@ export * from "./components/ui/types";
 export * from "./hooks/UseKeyboardNavigation";
 export * from "./hooks/UseSelectAllOnMount";
 export * from "./hooks/UseTextInput";
+export { onTextValueChange } from "./utils/NumericHelpers";
+export { onStepValueChange } from "./utils/NumericHelpers";

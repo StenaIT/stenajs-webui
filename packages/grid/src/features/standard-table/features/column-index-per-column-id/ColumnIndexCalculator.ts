@@ -1,6 +1,6 @@
 import { StandardTableColumnConfig } from "../../config/StandardTableColumnConfig";
 import { StandardTableConfig } from "../../config/StandardTableConfig";
-import { createColumnConfigsForRows } from "../column-groups/ColumnGroupFactory";
+import { createGroupConfigAndIdsForRows } from "../column-groups/ColumnGroupFactory";
 
 export type ColumnIndexPerColumnId<TColumnKey extends string> = Record<
   TColumnKey,
@@ -21,10 +21,10 @@ export const calculateColumnIndexPerColumnId = <
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
 ): ColumnIndexPerColumnIdCalculationResult<TColumnKey> => {
-  const groupConfigs = createColumnConfigsForRows(
-    config.columnGroups,
-    config.columnGroupOrder,
-    config.columnOrder
+  const groupConfigs = createGroupConfigAndIdsForRows(
+    "columnGroups" in config ? config.columnGroups : undefined,
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
+    "columnOrder" in config ? config.columnOrder : undefined
   );
   let columnIndexPerColumnId = {} as ColumnIndexPerColumnId<TColumnKey>;
   let currentIndex = 0;
@@ -35,7 +35,7 @@ export const calculateColumnIndexPerColumnId = <
     currentIndex++;
   }
   groupConfigs.forEach((conf) => {
-    conf.columnOrder.forEach((columnId) => {
+    conf.groupConfig.columnOrder.forEach((columnId) => {
       if (isColumnNavigable(config.columns[columnId])) {
         columnIndexPerColumnId[columnId] = currentIndex++;
       }

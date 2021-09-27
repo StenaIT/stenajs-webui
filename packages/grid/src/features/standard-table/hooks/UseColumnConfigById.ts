@@ -1,25 +1,6 @@
 import { StandardTableColumnConfig } from "../config/StandardTableColumnConfig";
-import { useGroupConfigsForRows } from "../context/GroupConfigsForRowsContext";
+import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableConfig } from "./UseStandardTableConfig";
-import { StandardTableColumnGroupConfig } from "../config/StandardTableColumnGroupConfig";
-
-export const useColumnGroupFromConfig = <TColumnGroupKey extends string>(
-  groupId: string
-): StandardTableColumnGroupConfig<TColumnGroupKey> => {
-  const { columnGroups } = useStandardTableConfig<
-    unknown,
-    "",
-    TColumnGroupKey
-  >();
-  if (columnGroups == null) {
-    throw new Error("Column groups is not set.");
-  }
-  const columnGroup = columnGroups[groupId];
-  if (!columnGroup) {
-    throw new Error("No config for column group with id=" + groupId);
-  }
-  return columnGroup;
-};
 
 export const useColumnConfigById = <TItem, TItemValue>(
   columnId: string
@@ -36,7 +17,8 @@ export const useFirstColumnConfig = <TItem, TItemValue>():
   | StandardTableColumnConfig<TItem, TItemValue>
   | undefined => {
   const config = useStandardTableConfig();
-  const columnId = useGroupConfigsForRows()?.[0]?.columnOrder?.[0];
+  const columnId = useGroupConfigsAndIdsForRows()?.[0]?.groupConfig
+    .columnOrder?.[0];
   return columnId ? config.columns[columnId] : undefined;
 };
 
@@ -44,9 +26,11 @@ export const useLastColumnConfig = <TItem, TItemValue>():
   | StandardTableColumnConfig<TItem, TItemValue>
   | undefined => {
   const config = useStandardTableConfig();
-  const groupConfigs = useGroupConfigsForRows();
-  const groupConfig = groupConfigs[groupConfigs.length - 1];
+  const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
+  const groupConfigAndId = groupConfigsAndIds[groupConfigsAndIds.length - 1];
   const columnId =
-    groupConfig?.columnOrder[groupConfig.columnOrder.length - 1] ?? undefined;
+    groupConfigAndId?.groupConfig.columnOrder[
+      groupConfigAndId.groupConfig.columnOrder.length - 1
+    ] ?? undefined;
   return columnId ? config.columns[columnId] : undefined;
 };

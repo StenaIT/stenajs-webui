@@ -31,7 +31,7 @@ export const StickyTableHeader = () => {
   };
 
   return (
-    <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
+    <Box style={{ maxHeight: "230px", overflowY: "scroll" }}>
       <StandardTable items={items} config={config} />
     </Box>
   );
@@ -42,8 +42,7 @@ export const StickyTableHeaderConfiguration = () => {
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     stickyHeader: true,
-    headerRowOffsetTop: "16px",
-    zIndex: 499,
+    headerRowOffsetTop: "20px",
     ...standardTableConfigForStories,
     columns: {
       ...standardTableConfigForStories.columns,
@@ -58,7 +57,7 @@ export const StickyTableHeaderConfiguration = () => {
     <Box style={{ maxHeight: "220px", overflowY: "scroll" }}>
       <Box
         style={{
-          height: 16,
+          height: 20,
           position: "sticky",
           top: 0,
           zIndex: 500,
@@ -145,7 +144,12 @@ export const StickyHeaderAndColumnWithBackgrounds = () => {
     showRowCheckbox: false,
     stickyHeader: true,
     rowBackgroundResolver: (item) =>
-      item.active ? cssColor("--lhds-color-green-100") : undefined,
+      item.active
+        ? {
+            background: cssColor("--lhds-color-green-100"),
+            hoverBackground: cssColor("--lhds-color-green-200"),
+          }
+        : undefined,
     columns: {
       ...standardTableConfigForStories.columns,
       id: {

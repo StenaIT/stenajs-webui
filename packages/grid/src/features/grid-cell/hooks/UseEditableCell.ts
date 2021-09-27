@@ -2,7 +2,12 @@ import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
 import { RevertableValue, useRevertableValue } from "./UseRevertableValue";
 
-export type AllowedInputType = "all" | "numeric" | "alphanumeric" | "letters";
+export type AllowedInputType =
+  | "all"
+  | "numeric"
+  | "alphanumeric"
+  | "letters"
+  | "none";
 
 type OnStartEditingFunc = (keyEvent?: KeyDownEvent) => void;
 type TransformEnteredValueFunc<TValue> = (value?: string) => TValue;

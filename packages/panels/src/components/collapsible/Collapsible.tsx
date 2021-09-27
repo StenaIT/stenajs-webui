@@ -103,6 +103,7 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
             icon={collapsed ? iconCollapsed : icon}
             className={styles.indicator}
             size={iconSize}
+            fixedWidth
           />
         </Clickable>
         <CSSTransition
