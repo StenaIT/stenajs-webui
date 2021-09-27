@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Minor changes
+
+- Darker shade for success color
+
 ## 13.3.0
 
 ### StandardTable
