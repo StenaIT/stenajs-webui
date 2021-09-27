@@ -56,7 +56,7 @@
   );
 
   --swui-button-danger-text-color: var(--lhds-color-red-500);
-  --swui-button-success-text-color: var(--lhds-color-green-500);
+  --swui-button-success-text-color: var(--lhds-color-green-600);
 
   /* Icon */
   --swui-button-icon-color: var(--swui-flat-button-icon-color);
@@ -68,7 +68,7 @@
   );
 
   --swui-button-danger-icon-color: var(--lhds-color-red-500);
-  --swui-button-success-icon-color: var(--lhds-color-green-500);
+  --swui-button-success-icon-color: var(--lhds-color-green-600);
 
   /* Background */
   --swui-button-background-color: var(--swui-flat-button-background-color);
