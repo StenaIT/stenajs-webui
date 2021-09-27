@@ -1,4 +1,4 @@
-type ReducerIdSuffix = "selectedIds" | "expandedRows" | "sortOrder";
+type ReducerIdSuffix = "selectedIds" | "expandedRows" | "sortOrder" | "fields";
 
 export const getReducerIdFor = (
   reducerId: string,

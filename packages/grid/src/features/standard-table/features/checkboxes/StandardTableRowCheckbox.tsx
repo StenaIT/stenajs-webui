@@ -1,5 +1,6 @@
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 import * as React from "react";
+import { RefObject, useCallback } from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
 import { useTotalNumColumnsForRows } from "../../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableId } from "../../hooks/UseStandardTableConfig";
@@ -9,6 +10,8 @@ interface Props extends Pick<CheckboxProps, "value" | "onValueChange"> {
   rowIndex: number;
   numRows: number;
   disabled?: boolean;
+  onValueChangeAndShift: CheckboxProps["onValueChange"];
+  shiftPressedRef: RefObject<boolean>;
 }
 
 export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
@@ -19,6 +22,8 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     rowIndex,
     numRows,
     disabled,
+    onValueChangeAndShift,
+    shiftPressedRef,
   }) {
     const totalNumColumns = useTotalNumColumnsForRows();
 
@@ -32,12 +37,23 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
     });
     const { requiredProps } = gridCell;
 
+    const internalOnValueChange = useCallback(
+      (value: boolean) => {
+        if (shiftPressedRef.current) {
+          onValueChangeAndShift?.(value);
+        } else {
+          onValueChange?.(value);
+        }
+      },
+      [onValueChange, onValueChangeAndShift, shiftPressedRef]
+    );
+
     return (
       <Checkbox
         size={"small"}
         disabled={disabled}
         value={value}
-        onValueChange={onValueChange}
+        onValueChange={internalOnValueChange}
         {...requiredProps}
       />
     );

@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- User can now shift+click on checkboxes to select/deselect a range of rows.
+
 ## 13.2.0
 
 ### NumericStepper

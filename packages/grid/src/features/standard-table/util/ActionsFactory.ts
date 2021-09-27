@@ -1,18 +1,21 @@
 import { InternalStandardTableActions } from "../redux/StandardTableActionsAndSelectors";
 import {
+  EntityAction,
   reducerIdGateAction,
   ReducerIdGateAction,
   SelectedIdsAction,
   SortOrderAction,
 } from "@stenajs-webui/redux";
 import { getReducerIdFor } from "../redux/ReducerIdFactory";
+import { StandardTableStateFields } from "../redux/StandardTableReducer";
 
-export type StandardTableAction<TColumnKey> =
+export type StandardTableAction<TColumnKey extends string> =
+  | ReducerIdGateAction<SortOrderAction<TColumnKey>>
   | ReducerIdGateAction<SelectedIdsAction>
-  | ReducerIdGateAction<SortOrderAction<TColumnKey>>;
+  | ReducerIdGateAction<EntityAction<StandardTableStateFields>>;
 
-export interface StandardTableActions<TColumnKey> {
-  selectByIds: (ids: Array<string>) => StandardTableAction<TColumnKey>;
+export interface StandardTableActions<TColumnKey extends string> {
+  setSelectedIds: (ids: Array<string>) => StandardTableAction<TColumnKey>;
   clearSelection: () => StandardTableAction<TColumnKey>;
   expandByIds: (ids: Array<string>) => StandardTableAction<TColumnKey>;
   collapseAll: () => StandardTableAction<TColumnKey>;
@@ -21,6 +24,9 @@ export interface StandardTableActions<TColumnKey> {
     desc?: boolean
   ) => StandardTableAction<TColumnKey>;
   clearSortOrder: () => StandardTableAction<TColumnKey>;
+  setLastSelectedId: (
+    lastSelectedId: string
+  ) => StandardTableAction<TColumnKey>;
 }
 
 export const createStandardTableActions = <TColumnKey extends string>(
@@ -28,7 +34,7 @@ export const createStandardTableActions = <TColumnKey extends string>(
   actions: InternalStandardTableActions<TColumnKey>
 ): StandardTableActions<TColumnKey> => {
   return {
-    selectByIds: (ids) =>
+    setSelectedIds: (ids) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "selectedIds"),
         actions.selectedIds.setSelectedIds(ids)
@@ -57,6 +63,11 @@ export const createStandardTableActions = <TColumnKey extends string>(
       reducerIdGateAction(
         getReducerIdFor(tableId, "sortOrder"),
         actions.sortOrder.clearSortOrder()
+      ),
+    setLastSelectedId: (lastSelectedId: string) =>
+      reducerIdGateAction(
+        getReducerIdFor(tableId, "fields"),
+        actions.fields.setEntityFields({ lastSelectedId })
       ),
   };
 };

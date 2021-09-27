@@ -165,12 +165,13 @@ export const StandardTable = function StandardTable<
 
   const actionsContext = useMemo<
     StandardTableInternalActionsContext<TColumnKey>
-  >(() => {
-    return {
+  >(
+    () => ({
       actions,
       dispatch,
-    };
-  }, [actions, dispatch]);
+    }),
+    [actions, dispatch]
+  );
 
   const usingColumnGroups = Boolean(
     columnGroupOrder ?? "columnGroupOrder" in config
