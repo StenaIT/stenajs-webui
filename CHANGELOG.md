@@ -2,6 +2,27 @@
 
 ## Next
 
+### StandardTable
+
+- New feature, summary row.
+
+A column config can now specify a summary cell at the bottom of the table.
+
+```
+summaryText: ({ items }) =>
+  String(sumBy(items, (item) => item.numPassengers ?? 0)),
+```
+
+```
+        renderSummaryCell: () => (
+          <Indent>
+            <Tag label={"Jedi knights"} />
+          </Indent>
+        )
+```
+
+See grid package [README.md](packages/grid/README.md) for more info.
+
 ### Minor changes
 
 - Darker shade for success color

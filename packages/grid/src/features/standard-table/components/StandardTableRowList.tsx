@@ -8,6 +8,7 @@ import {
 } from "../hooks/UseStandardTableConfig";
 import { StandardTableVariant } from "./StandardTable";
 import { StandardTableRow } from "./StandardTableRow";
+import { SummaryRowSwitcher } from "../features/summary-row/components/SummaryRowSwitcher";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
@@ -98,6 +99,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           shiftPressedRef={shiftPressedRef}
         />
       ))}
+      <SummaryRowSwitcher items={sortedItems} />
     </React.Fragment>
   );
 });

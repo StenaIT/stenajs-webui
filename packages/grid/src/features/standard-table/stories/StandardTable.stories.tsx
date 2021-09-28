@@ -1,4 +1,11 @@
-import { Box, Column, Heading, Spacing, Text } from "@stenajs-webui/core";
+import {
+  Box,
+  Column,
+  Heading,
+  Indent,
+  Spacing,
+  Text,
+} from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
@@ -14,6 +21,8 @@ import {
   standardTableConfigForStories,
   useListState,
 } from "./StandardTableStoryHelper";
+import { sumBy } from "lodash";
+import { Tag } from "@stenajs-webui/elements";
 
 export default {
   title: "grid/StandardTable",
@@ -164,4 +173,45 @@ export const OnKeyDown = () => {
       </Box>
     </Column>
   );
+};
+
+export const SummaryRow = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        summaryText: () => "Total",
+      },
+      name: {
+        ...standardTableConfigForStories.columns.name,
+        summaryText: () => "This is a very long text.",
+        summaryCellColSpan: 2,
+      },
+      active: {
+        ...standardTableConfigForStories.columns.active,
+        summaryText: ({ items }) =>
+          `${sumBy(items, (item) => (item.active ? 1 : 0))} active`,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+        summaryText: ({ items }) =>
+          String(sumBy(items, (item) => item.numPassengers ?? 0)),
+      },
+      departure: {
+        ...standardTableConfigForStories.columns.departure,
+        renderSummaryCell: () => (
+          <Indent>
+            <Tag label={"Jedi knights"} />
+          </Indent>
+        ),
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
 };
