@@ -33,7 +33,11 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   const shiftPressedRef = useRef(false);
 
-  const { keyResolver, disableInfiniteList } = useStandardTableConfig();
+  const {
+    keyResolver,
+    disableInfiniteList,
+    checkboxDisabledResolver,
+  } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();
@@ -59,10 +63,13 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     return sortedList;
   }, [items, valueResolver, desc]);
 
-  const itemIdList = useMemo(() => sortedItems.map((l) => keyResolver(l)), [
-    sortedItems,
-    keyResolver,
-  ]);
+  const enabledItemsIdList = useMemo(
+    () =>
+      sortedItems
+        .filter((l) => (checkboxDisabledResolver?.(l) ? false : true ?? true))
+        .map((l) => keyResolver(l)),
+    [sortedItems, checkboxDisabledResolver, keyResolver]
+  );
 
   useEffect(() => {
     const keyUp = (ev: KeyboardEvent) => {
@@ -91,8 +98,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
         <StandardTableRow
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
-          itemIdList={itemIdList}
-          key={itemIdList[index]}
+          enabledItemsIdList={enabledItemsIdList}
+          key={enabledItemsIdList[index]}
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}

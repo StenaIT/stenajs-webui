@@ -29,7 +29,7 @@ import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
 export interface StandardTableRowProps<TItem> {
   item: TItem;
-  itemIdList: Array<string>;
+  enabledItemsIdList: Array<string>;
   rowIndex: number;
   numRows: number;
   colIndexOffset: number;
@@ -39,7 +39,7 @@ export interface StandardTableRowProps<TItem> {
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
-  itemIdList,
+  enabledItemsIdList,
   rowIndex,
   numRows,
   colIndexOffset,
@@ -63,7 +63,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   const { isExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected, shiftAndToggleSelected } = useRowCheckbox(
     item,
-    itemIdList
+    enabledItemsIdList
   );
 
   const visible = useOnScreen(trRef, {

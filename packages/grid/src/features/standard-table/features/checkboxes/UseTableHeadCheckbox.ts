@@ -8,7 +8,7 @@ import {
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
 ) => {
-  const { keyResolver } = useStandardTableConfig();
+  const { keyResolver, checkboxDisabledResolver } = useStandardTableConfig();
   const {
     selectedIds: { selectedIds },
   } = useStandardTableState();
@@ -26,18 +26,27 @@ export const useTableHeadCheckbox = <TItem>(
   const onClickCheckbox = useCallback(() => {
     if (items) {
       if (selectionIsEmpty) {
-        dispatch(setSelectedIds(items.map((item) => keyResolver(item))));
+        dispatch(
+          setSelectedIds(
+            items
+              .filter((item) =>
+                checkboxDisabledResolver?.(item) ? false : true ?? true
+              )
+              .map((item) => keyResolver(item))
+          )
+        );
       } else {
         dispatch(clearSelection());
       }
     }
   }, [
-    selectionIsEmpty,
-    clearSelection,
-    dispatch,
     items,
-    keyResolver,
+    selectionIsEmpty,
+    dispatch,
     setSelectedIds,
+    checkboxDisabledResolver,
+    keyResolver,
+    clearSelection,
   ]);
 
   return {
