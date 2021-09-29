@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 13.4.0
 
 ### StandardTable
 
@@ -21,11 +21,11 @@ summaryText: ({ items }) =>
 ```
 
 ```
-        renderSummaryCell: () => (
-          <Indent>
-            <Tag label={"Jedi knights"} />
-          </Indent>
-        )
+renderSummaryCell: () => (
+  <Indent>
+    <Tag label={"Jedi knights"} />
+  </Indent>
+)
 ```
 
 See grid package [README.md](packages/grid/README.md) for more info.
