@@ -33,6 +33,7 @@ export const Overview = () => {
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
+    checkboxDisabledResolver: (item) => item.id === "125",
     columns: {
       ...standardTableConfigForStories.columns,
       numPassengers: {

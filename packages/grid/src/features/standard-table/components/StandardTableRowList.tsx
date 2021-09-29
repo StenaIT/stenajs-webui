@@ -9,6 +9,7 @@ import {
 import { StandardTableVariant } from "./StandardTable";
 import { StandardTableRow } from "./StandardTableRow";
 import { SummaryRowSwitcher } from "../features/summary-row/components/SummaryRowSwitcher";
+import { filterItemsOnEnabledCheckboxes } from "../util/FilterItemsOnEnabledCheckboxes";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
@@ -33,7 +34,11 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   const shiftPressedRef = useRef(false);
 
-  const { keyResolver, disableInfiniteList } = useStandardTableConfig();
+  const {
+    keyResolver,
+    disableInfiniteList,
+    checkboxDisabledResolver,
+  } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();
@@ -59,10 +64,13 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     return sortedList;
   }, [items, valueResolver, desc]);
 
-  const itemIdList = useMemo(() => sortedItems.map((l) => keyResolver(l)), [
-    sortedItems,
-    keyResolver,
-  ]);
+  const idListForEnabledItems = useMemo(
+    () =>
+      sortedItems
+        .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
+        .map((l) => keyResolver(l)),
+    [sortedItems, checkboxDisabledResolver, keyResolver]
+  );
 
   useEffect(() => {
     const keyUp = (ev: KeyboardEvent) => {
@@ -91,8 +99,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
         <StandardTableRow
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
-          itemIdList={itemIdList}
-          key={itemIdList[index]}
+          idListForEnabledItems={idListForEnabledItems}
+          key={keyResolver(item)}
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}

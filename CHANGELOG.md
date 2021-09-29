@@ -4,7 +4,14 @@
 
 ### StandardTable
 
-- New feature, summary row.
+#### Checkbox fixes
+
+Disabled checkboxes are not checked when
+
+1) Clicking checkbox in table header
+2) Shift-clicking row checkboxes
+
+#### New feature, summary row.
 
 A column config can now specify a summary cell at the bottom of the table.
 
