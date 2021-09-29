@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/panels",
-  "version": "13.3.0",
+  "version": "13.4.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,11 +28,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "13.3.0",
-    "@stenajs-webui/elements": "13.3.0",
-    "@stenajs-webui/forms": "13.3.0",
-    "@stenajs-webui/theme": "13.3.0",
-    "@stenajs-webui/tooltip": "13.3.0",
+    "@stenajs-webui/core": "13.4.0",
+    "@stenajs-webui/elements": "13.4.0",
+    "@stenajs-webui/forms": "13.4.0",
+    "@stenajs-webui/theme": "13.4.0",
+    "@stenajs-webui/tooltip": "13.4.0",
     "classnames": "^2.2.6",
     "date-fns": "2.16.1",
     "react-transition-group": "^4.3.0",
