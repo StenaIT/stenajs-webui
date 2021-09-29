@@ -4,6 +4,7 @@ import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../../hooks/UseStandardTableConfig";
+import { filterItemsOnEnabledCheckboxes } from "../../util/FilterItemsOnEnabledCheckboxes";
 
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
@@ -29,9 +30,7 @@ export const useTableHeadCheckbox = <TItem>(
         dispatch(
           setSelectedIds(
             items
-              .filter((item) =>
-                checkboxDisabledResolver?.(item) ? false : true ?? true
-              )
+              .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
               .map((item) => keyResolver(item))
           )
         );

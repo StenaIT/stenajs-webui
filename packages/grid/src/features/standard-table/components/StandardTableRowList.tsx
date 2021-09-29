@@ -9,6 +9,7 @@ import {
 import { StandardTableVariant } from "./StandardTable";
 import { StandardTableRow } from "./StandardTableRow";
 import { SummaryRowSwitcher } from "../features/summary-row/components/SummaryRowSwitcher";
+import { filterItemsOnEnabledCheckboxes } from "../util/FilterItemsOnEnabledCheckboxes";
 
 interface StandardTableContentProps<TItem> {
   items?: Array<TItem>;
@@ -66,7 +67,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   const idListForEnabledItems = useMemo(
     () =>
       sortedItems
-        .filter((l) => (checkboxDisabledResolver?.(l) ? false : true ?? true))
+        .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
         .map((l) => keyResolver(l)),
     [sortedItems, checkboxDisabledResolver, keyResolver]
   );
@@ -99,7 +100,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
           idListForEnabledItems={idListForEnabledItems}
-          key={idListForEnabledItems[index]}
+          key={keyResolver(item)}
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}
