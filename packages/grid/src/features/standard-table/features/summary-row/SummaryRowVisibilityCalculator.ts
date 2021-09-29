@@ -1,12 +1,11 @@
-import { StandardTableConfig } from "../../config/StandardTableConfig";
 import { StandardTableColumnOptions } from "../../config/StandardTableColumnConfig";
 
 export const isSummaryRowVisible = <TColumnKey extends string>(
-  columns: StandardTableConfig<unknown, TColumnKey>["columns"]
+  columns: Record<TColumnKey, StandardTableColumnOptions<unknown, unknown>>
 ): boolean =>
-  Object.keys(columns).some((columnId) =>
-    columnHasSummaryCell(columns[columnId])
-  );
+  (Object.values(columns) as Array<
+    StandardTableColumnOptions<unknown, unknown>
+  >).some((columnConfig) => columnHasSummaryCell(columnConfig));
 
 export const columnHasSummaryCell = (
   columnConfig: StandardTableColumnOptions<unknown, unknown>
