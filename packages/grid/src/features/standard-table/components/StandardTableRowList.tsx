@@ -63,7 +63,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     return sortedList;
   }, [items, valueResolver, desc]);
 
-  const enabledItemsIdList = useMemo(
+  const idListForEnabledItems = useMemo(
     () =>
       sortedItems
         .filter((l) => (checkboxDisabledResolver?.(l) ? false : true ?? true))
@@ -98,8 +98,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
         <StandardTableRow
           alwaysVisible={disableInfiniteList || sortedItems.length < 30}
           item={item}
-          enabledItemsIdList={enabledItemsIdList}
-          key={enabledItemsIdList[index]}
+          idListForEnabledItems={idListForEnabledItems}
+          key={idListForEnabledItems[index]}
           colIndexOffset={colIndexOffset}
           rowIndex={index + rowIndexOffset}
           numRows={sortedItems.length}
