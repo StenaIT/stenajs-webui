@@ -14,6 +14,7 @@ export interface DrawerProps
     | "overlayClassName"
     | "className"
     | "style"
+    | "parentSelector"
   > {
   width?: string;
   background?: string;
@@ -24,6 +25,10 @@ export interface DrawerProps
    * @param {String('left'|'right')}
    */
   slideFrom?: SlideFrom;
+  /**
+   * Portal target, HTML element. If not set, portal is not used.
+   */
+  portalTarget?: HTMLElement | null;
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
@@ -31,6 +36,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   background,
   children,
   slideFrom = "left",
+  portalTarget,
   ...reactModalProps
 }) => {
   return (
@@ -51,6 +57,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         beforeClose: styles.beforeClose,
       }}
       style={{ content: { width, background } }}
+      parentSelector={portalTarget ? () => portalTarget : undefined}
       {...reactModalProps}
     >
       {children}
