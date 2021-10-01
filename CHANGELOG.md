@@ -1,5 +1,15 @@
 # Changelog
 
+## Next
+
+### Drawer
+
+New implementation using `react-modal`.
+
+### Breaking changes
+
+`Drawer` has been moved from `panels` to `modal`.
+
 ## 13.4.0
 
 ### StandardTable
