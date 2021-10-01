@@ -1,0 +1,60 @@
+.portal {
+  .overlay {
+    --background-opacity: 0;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, var(--background-opacity));
+    transition: background-color var(--swui-animation-time-medium) ease-in-out;
+
+    &.afterOpen {
+      --background-opacity: 0.75;
+    }
+
+    &.beforeClose {
+      --background-opacity: 0;
+    }
+  }
+
+  .content {
+    box-shadow: var(--swui-shadow-modal);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    transition: transform var(--swui-animation-time-medium) ease-in-out;
+    transform: translateX(-100%);
+
+    &.slideFromLeft {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    &.slideFromRight {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    &.afterOpen {
+      transform: translateX(0);
+
+      &.slideFromLeft {
+        transform: translateX(0);
+      }
+
+      &.slideFromRight {
+        transform: translateX(0);
+      }
+    }
+
+    &.beforeClose {
+      transform: translateX(-100%);
+
+      &.slideFromLeft {
+        transform: translateX(-100%);
+      }
+
+      &.slideFromRight {
+        transform: translateX(100%);
+      }
+    }
+  }
+}
