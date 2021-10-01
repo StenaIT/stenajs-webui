@@ -21,40 +21,24 @@
     bottom: 0;
     top: 0;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
-    transform: translateX(-100%);
+    transform: translateX(var(--translate-x-outside-screen, 0));
 
     &.slideFromLeft {
+      --translate-x-outside-screen: -100%;
       left: 0;
-      transform: translateX(-100%);
     }
 
     &.slideFromRight {
+      --translate-x-outside-screen: 100%;
       right: 0;
-      transform: translateX(100%);
     }
 
     &.afterOpen {
       transform: translateX(0);
-
-      &.slideFromLeft {
-        transform: translateX(0);
-      }
-
-      &.slideFromRight {
-        transform: translateX(0);
-      }
     }
 
     &.beforeClose {
-      transform: translateX(-100%);
-
-      &.slideFromLeft {
-        transform: translateX(-100%);
-      }
-
-      &.slideFromRight {
-        transform: translateX(100%);
-      }
+      transform: translateX(var(--translate-x-outside-screen));
     }
   }
 }

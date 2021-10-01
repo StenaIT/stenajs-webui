@@ -6,7 +6,15 @@ import styles from "./Drawer.module.css";
 
 export type SlideFrom = "left" | "right";
 
-export interface DrawerProps extends ReactModal.Props {
+export interface DrawerProps
+  extends Omit<
+    ReactModal.Props,
+    | "closeTimeoutMS"
+    | "portalClassName"
+    | "overlayClassName"
+    | "className"
+    | "style"
+  > {
   width?: string;
   background?: string;
   onRequestClose?: () => void;
