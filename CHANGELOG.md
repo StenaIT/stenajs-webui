@@ -1,5 +1,16 @@
 # Changelog
 
+## Next
+
+### Drawer
+
+New implementation using `react-modal`.
+
+### Breaking changes
+
+- `Drawer` has been moved from `panels` to `modal`.
+- `Drawer` prop `zIndex` has been removed.
+
 ## 13.4.0
 
 ### StandardTable
@@ -8,8 +19,8 @@
 
 Disabled checkboxes are not checked when
 
-1) Clicking checkbox in table header
-2) Shift-clicking row checkboxes
+1. Clicking checkbox in table header
+2. Shift-clicking row checkboxes
 
 #### New feature, summary row.
 
