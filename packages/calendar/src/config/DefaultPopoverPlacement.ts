@@ -1,3 +1,3 @@
-import { Placement } from "tippy.js";
+import { PopoverPlacement } from "@stenajs-webui/tooltip";
 
-export const defaultPopoverPlacement: Placement = "bottom";
+export const defaultPopoverPlacement: PopoverPlacement = "bottom";
