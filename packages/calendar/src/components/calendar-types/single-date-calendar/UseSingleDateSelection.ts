@@ -3,15 +3,16 @@ import { OnClickDay } from "../../../types/CalendarTypes";
 import { addDayStateHighlights } from "../../../util/calendar/StateModifier";
 import { SingleDateCalendarProps } from "./SingleDateCalendar";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
-import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
+import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
 
 export const useSingleDateSelection = <T>({
   onChange,
   value,
   statePerMonth,
+  onChangePanel,
 }: SingleDateCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
+  const { currentPanel, setCurrentPanel } = useInternalPanelState(
+    onChangePanel
   );
 
   const [dateInFocus, setDateInFocus] = useState(() => value ?? new Date());

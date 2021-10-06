@@ -1,18 +1,12 @@
 import * as React from "react";
-import {
-  CalendarWithMonthSwitcher,
-  CalendarWithMonthSwitcherProps,
-} from "../../../features/month-switcher/CalendarWithMonthSwitcher";
-
+import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { useSingleWeekSelection } from "./UseSingleWeekSelection";
+import { CalendarWithInternalPanelAndFocusStateProps } from "../../../types/CalendarWithInternalPanelAndFocusStateProps";
 
 export type SingleWeekValue = string;
 
 export interface SingleWeekCalendarProps<T>
-  extends Omit<
-    CalendarWithMonthSwitcherProps<T>,
-    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
-  > {
+  extends CalendarWithInternalPanelAndFocusStateProps<T> {
   value: SingleWeekValue | undefined;
   onChange: (value: SingleWeekValue | undefined) => void;
 }

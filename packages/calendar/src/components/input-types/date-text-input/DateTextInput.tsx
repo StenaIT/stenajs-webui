@@ -15,6 +15,7 @@ import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
+import { usePopoverCalendar } from "../../../features/internal-panel-state/UsePopoverCalendar";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -65,6 +66,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
+  const { tippyRef, onChangePanel } = usePopoverCalendar();
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
@@ -112,11 +114,15 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         visible={open}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
+        placement={"bottom"}
         onClickOutside={hideCalendar}
+        sticky={"popper"}
+        tippyRef={tippyRef}
         content={
           <SingleDateCalendar
             {...calendarProps}
             onChange={onCalendarSelectDate}
+            onChangePanel={onChangePanel}
             value={
               value && dateIsValid
                 ? parse(value, dateFormat, new Date())
