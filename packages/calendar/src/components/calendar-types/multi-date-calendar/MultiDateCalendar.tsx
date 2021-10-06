@@ -1,12 +1,12 @@
 import * as React from "react";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { useMultiDateSelection } from "./UseMultiDateSelection";
-import { UseInternalPanelStateArgs } from "../../../features/internal-panel-state/UseInternalPanelState";
-import { CalendarWithInternalPanelAndFocusStateProps } from "../../../types/CalendarWithInternalPanelAndFocusStateProps";
+import { UseInternalPanelStateProps } from "../../../features/internal-panel-state/UseInternalPanelState";
+import { InternalPanelAndFocusStateProps } from "../../../types/InternalPanelAndFocusStateProps";
 
 export interface MultiDateCalendarProps<T>
-  extends CalendarWithInternalPanelAndFocusStateProps<T>,
-    UseInternalPanelStateArgs {
+  extends InternalPanelAndFocusStateProps<T>,
+    UseInternalPanelStateProps {
   value?: Array<Date>;
   onChange?: (value: Array<Date>) => void;
 }

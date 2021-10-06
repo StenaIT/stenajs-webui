@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 
 export type OnChangePanel = (panel: CalendarPanelType) => void;
 
-export interface UseInternalPanelStateArgs {
+export interface UseInternalPanelStateProps {
   onChangePanel?: OnChangePanel;
 }
 
