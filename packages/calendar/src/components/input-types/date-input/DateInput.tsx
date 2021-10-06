@@ -4,7 +4,7 @@ import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
 import * as React from "react";
-import { usePopoverCalendar } from "../../../features/internal-panel-state/UsePopoverCalendar";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import {
@@ -78,7 +78,7 @@ export const DateInput: React.FC<DateInputProps> = ({
     showCalendar,
   } = useDateInput(onChange, onClose, openOnMount);
 
-  const { tippyRef, onChangePanel } = usePopoverCalendar();
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   return (
     <Box width={width}>

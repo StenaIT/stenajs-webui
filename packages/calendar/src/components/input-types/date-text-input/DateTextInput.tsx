@@ -6,7 +6,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { usePopoverCalendar } from "../../../features/internal-panel-state/UsePopoverCalendar";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -60,7 +60,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
-  const { tippyRef, onChangePanel } = usePopoverCalendar();
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);

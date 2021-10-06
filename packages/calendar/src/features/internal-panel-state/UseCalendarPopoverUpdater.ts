@@ -1,7 +1,7 @@
 import { useTippyInstance } from "@stenajs-webui/tooltip";
 import { useCallback } from "react";
 
-export const usePopoverCalendar = () => {
+export const useCalendarPopoverUpdater = () => {
   const [tippyRef, tippyInstanceRef] = useTippyInstance();
 
   const onChangePanel = useCallback(() => {
