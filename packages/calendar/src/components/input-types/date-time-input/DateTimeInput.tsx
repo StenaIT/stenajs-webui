@@ -1,12 +1,5 @@
 import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
-import {
-  Box,
-  Column,
-  Row,
-  Space,
-  useDelayedFalse,
-  useMultiOnClickOutside,
-} from "@stenajs-webui/core";
+import { Box, Column, Row, Space, useDelayedFalse } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import {
   TextInputProps,
@@ -14,7 +7,7 @@ import {
 } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { TimePicker } from "../../../features/time-picker/TimePicker";
@@ -41,8 +34,6 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onBlur,
   autoFocus,
 }) => {
-  const popoverRef = useRef(null);
-  const containerRef = useRef(null);
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
 
@@ -97,10 +88,10 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
     ]);
   }, [localDate, value]);
 
-  useMultiOnClickOutside([popoverRef, containerRef], () => {
+  const hideAll = useCallback(() => {
     hideCalendar();
     hideTimePicker();
-  });
+  }, [hideCalendar, hideTimePicker]);
 
   const timeValue = useMemo<string | undefined>(
     () => (value ? transformTimeInDateToTimeString(value) : localTime),
@@ -111,15 +102,16 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   const delayedIsTimePickerVisible = useDelayedFalse(isTimePickerVisible, 300);
 
   return (
-    <Box ref={containerRef} onKeyDown={onKeyDownHandler}>
+    <Box onKeyDown={onKeyDownHandler}>
       <Popover
         arrow={false}
         lazy
         placement={"bottom"}
         visible={isCalendarVisible || isTimePickerVisible}
+        onClickOutside={hideAll}
         content={
           (delayedIsCalendarVisible || delayedIsTimePickerVisible) && (
-            <Column ref={popoverRef}>
+            <Column>
               {delayedIsCalendarVisible ? (
                 <CalendarWithMonthSwitcher
                   statePerMonth={statePerMonth}

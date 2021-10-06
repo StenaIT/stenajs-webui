@@ -2,6 +2,11 @@
 
 ## Next
 
+### Calendar inputs
+
+All calendar inputs are now using Tippyjs internal implementation for
+listening for clicks outside.
+
 ### Drawer
 
 New implementation using `react-modal`.
