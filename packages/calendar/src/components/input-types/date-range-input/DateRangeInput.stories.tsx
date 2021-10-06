@@ -1,9 +1,10 @@
+import { Column } from "@stenajs-webui/core";
+import { Story } from "@storybook/react";
 import { addDays, subDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { DateRangeCalendarOnChangeValue } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { DateRangeInput } from "./DateRangeInput";
-import { Story } from "@storybook/react";
 
 export default {
   title: "calendar/Input/DateRangeInput",
@@ -29,6 +30,12 @@ export const Standard = () => {
     </div>
   );
 };
+
+export const Centered = () => (
+  <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
+    <Standard />
+  </Column>
+);
 
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>

@@ -6,6 +6,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
+import { usePopoverCalendar } from "../../../features/internal-panel-state/UsePopoverCalendar";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -15,17 +16,10 @@ import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
-import { usePopoverCalendar } from "../../../features/internal-panel-state/UsePopoverCalendar";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
-  | "value"
-  | "onChange"
-  | "theme"
-  | "dateInFocus"
-  | "setDateInFocus"
-  | "currentPanel"
-  | "setCurrentPanel"
+  "value" | "onChange" | "theme"
 >;
 
 export interface DateTextInputProps<T>

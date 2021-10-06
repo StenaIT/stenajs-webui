@@ -129,6 +129,7 @@ export const DateRangeInput = <T extends {}>({
       lazy
       visible={showingCalendar}
       zIndex={zIndex}
+      placement={"bottom"}
       appendTo={portalTarget ?? "parent"}
       onClickOutside={hideCalendar}
       content={
