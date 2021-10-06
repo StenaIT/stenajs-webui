@@ -4,6 +4,7 @@ import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendarOnChangeValue,
@@ -129,6 +130,7 @@ export const DateRangeInput = <T extends {}>({
       lazy
       visible={showingCalendar}
       zIndex={zIndex}
+      placement={defaultPopoverPlacement}
       appendTo={portalTarget ?? "parent"}
       onClickOutside={hideCalendar}
       content={

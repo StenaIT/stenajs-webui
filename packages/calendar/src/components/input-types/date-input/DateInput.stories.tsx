@@ -1,3 +1,4 @@
+import { Column } from "@stenajs-webui/core";
 import { addDays, addMonths } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
@@ -30,6 +31,12 @@ export const Standard = () => {
     </div>
   );
 };
+
+export const Centered = () => (
+  <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
+    <Standard />
+  </Column>
+);
 
 export const WithDisabledDateTomorrow = () => {
   const [value, setValue] = useState<Date | undefined>(undefined);

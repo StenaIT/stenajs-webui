@@ -6,6 +6,8 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -18,13 +20,7 @@ import {
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
-  | "value"
-  | "onChange"
-  | "theme"
-  | "dateInFocus"
-  | "setDateInFocus"
-  | "currentPanel"
-  | "setCurrentPanel"
+  "value" | "onChange" | "theme"
 >;
 
 export interface DateTextInputProps<T>
@@ -65,6 +61,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
@@ -112,11 +109,15 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         visible={open}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
+        placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
+        sticky={"popper"}
+        tippyRef={tippyRef}
         content={
           <SingleDateCalendar
             {...calendarProps}
             onChange={onCalendarSelectDate}
+            onChangePanel={onChangePanel}
             value={
               value && dateIsValid
                 ? parse(value, dateFormat, new Date())

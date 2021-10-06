@@ -4,6 +4,8 @@ import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
 import * as React from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import {
@@ -77,6 +79,8 @@ export const DateInput: React.FC<DateInputProps> = ({
     showCalendar,
   } = useDateInput(onChange, onClose, openOnMount);
 
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
+
   return (
     <Box width={width}>
       <Popover
@@ -84,14 +88,17 @@ export const DateInput: React.FC<DateInputProps> = ({
         lazy
         visible={showingCalendar}
         onClickOutside={hideCalendar}
+        placement={defaultPopoverPlacement}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
+        tippyRef={tippyRef}
         content={
           <SingleDateCalendar
             {...calendarProps}
             onChange={onSelectDate}
             value={value}
             theme={calendarTheme}
+            onChangePanel={onChangePanel}
           />
         }
       >

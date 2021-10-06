@@ -8,6 +8,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
 import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
@@ -99,7 +100,7 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
       <Popover
         arrow={false}
         lazy
-        placement={"bottom"}
+        placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
         visible={isCalendarVisible}
         content={

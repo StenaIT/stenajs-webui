@@ -3,8 +3,8 @@ import { useDateRangeOnClickDayHandler } from "../../../../features/date-range/h
 import { DateRangeCalendarProps } from "../DateRangeCalendar";
 import { toggleDatesIfEndIsEarlierThanStart } from "../util/IntervalSwitcher";
 import { CalendarWithMonthSwitcherProps } from "../../../../features/month-switcher/CalendarWithMonthSwitcher";
-import { CalendarPanelType } from "../../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 import { buildDayStateForDateRange } from "../../../../util/calendar/StateModifier";
+import { useInternalPanelState } from "../../../../features/internal-panel-state/UseInternalPanelState";
 
 export const useDateRangeSelection = <T>({
   focusedInput,
@@ -15,9 +15,10 @@ export const useDateRangeSelection = <T>({
   onChange,
   setFocusedInput,
   statePerMonth,
+  onChangePanel,
 }: DateRangeCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
+  const { currentPanel, setCurrentPanel } = useInternalPanelState(
+    onChangePanel
   );
   const [dateInFocus, setDateInFocus] = useState(() => new Date());
 
