@@ -4,8 +4,10 @@
 
 ### Calendar inputs
 
-All calendar inputs are now using Tippyjs internal implementation for
-listening for clicks outside.
+- All calendar inputs are now using Tippyjs internal implementation for
+  listening for clicks outside.
+- Fix problem with calendar input popovers. They did not update position
+  when calendar changed size.
 
 ### Drawer
 
