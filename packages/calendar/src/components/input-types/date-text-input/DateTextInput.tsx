@@ -6,6 +6,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
@@ -108,7 +109,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         visible={open}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
-        placement={"bottom"}
+        placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
         sticky={"popper"}
         tippyRef={tippyRef}

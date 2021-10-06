@@ -8,6 +8,7 @@ import {
 import { Popover } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { TimePicker } from "../../../features/time-picker/TimePicker";
@@ -106,7 +107,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
       <Popover
         arrow={false}
         lazy
-        placement={"bottom"}
+        placement={defaultPopoverPlacement}
         visible={isCalendarVisible || isTimePickerVisible}
         onClickOutside={hideAll}
         content={
