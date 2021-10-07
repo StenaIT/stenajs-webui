@@ -509,7 +509,10 @@ export const CrazyStory = () => {
   return (
     <Column spacing indent background={cssColor("--lhds-color-ui-200")}>
       <Column width={300} background={cssColor("--lhds-color-ui-50")}>
-        <StatefulCollapsible label={"Focus"} collapsed />
+        <StatefulCollapsible
+          label={"Focus with very long label text that should wrap correctly"}
+          collapsed
+        />
         <StatefulCollapsible
           label={"Hover"}
           contentRight={<Tag size={"small"} label={"12"} />}
