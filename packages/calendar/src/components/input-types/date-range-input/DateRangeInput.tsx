@@ -4,6 +4,7 @@ import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useMemo, useState } from "react";
+import { cssColor } from "@stenajs-webui/theme";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
@@ -160,7 +161,7 @@ export const DateRangeInput = <T extends {}>({
         <Space />
         <Icon
           icon={faLongArrowAltRight}
-          color={"var(--lhds-color-ui-500)"}
+          color={cssColor("--lhds-color-ui-500")}
           size={14}
         />
         <Space />
