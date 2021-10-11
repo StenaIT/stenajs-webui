@@ -27,7 +27,7 @@ export const MissingItemsCustomBanner = () => (
 export const Loading = () => (
   <StandardTable
     items={mockedItems}
-    config={standardTableConfigForStories}
+    config={{ ...standardTableConfigForStories, rowIndent: 2 }}
     loading
   />
 );
