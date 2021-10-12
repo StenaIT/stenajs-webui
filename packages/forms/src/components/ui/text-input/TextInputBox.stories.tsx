@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Icon, stenaArrowRight } from "@stenajs-webui/elements";
 import { Box, Space } from "@stenajs-webui/core";
+import { cssColor } from "@stenajs-webui/theme";
 import { TextInput } from "./TextInput";
 import { TextInputBox } from "./TextInputBox";
 
@@ -16,7 +17,7 @@ export const Standard = () => (
       <Icon
         icon={stenaArrowRight}
         size={12}
-        color={"var(--lhds-color-ui-500)"}
+        color={cssColor("--lhds-color-ui-500")}
       />
       <Space />
       <TextInput hideBorder />

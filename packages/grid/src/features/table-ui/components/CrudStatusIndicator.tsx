@@ -1,8 +1,9 @@
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Icon, InputSpinner } from "@stenajs-webui/elements";
+import { CrudStatus } from "@stenajs-webui/redux";
+import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { CrudStatus } from "@stenajs-webui/redux";
 
 interface Props {
   crudStatus?: CrudStatus;
@@ -28,14 +29,14 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
   } = crudStatus;
 
   if (loading || creating || deleting || updating) {
-    return <InputSpinner color={"var(--lhds-color-ui-500)"} />;
+    return <InputSpinner color={cssColor("--lhds-color-ui-500")} />;
   }
 
   if (hasError) {
     const icon = (
       <Icon
         icon={faExclamationTriangle}
-        color={"var(--lhds-color-orange-600)"}
+        color={cssColor("--lhds-color-orange-600")}
         size={14}
       />
     );

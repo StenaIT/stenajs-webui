@@ -19,6 +19,7 @@ import {
 import { debounce } from "lodash";
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface DualTextInputProps {
   onEsc?: TextInputProps["onEsc"];
@@ -200,7 +201,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
           <Icon
             icon={separatorIcon}
             size={12}
-            color={"var(--lhds-color-ui-500)"}
+            color={cssColor("--lhds-color-ui-500")}
           />
         </Row>
         <Box width={widthRight}>
