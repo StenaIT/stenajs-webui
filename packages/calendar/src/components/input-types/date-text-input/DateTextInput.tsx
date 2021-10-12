@@ -111,7 +111,6 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
         appendTo={portalTarget ?? "parent"}
         placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
-        sticky={"popper"}
         tippyRef={tippyRef}
         content={
           <SingleDateCalendar

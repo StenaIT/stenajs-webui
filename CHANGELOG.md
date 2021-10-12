@@ -1,6 +1,10 @@
 # Changelog
 
-## Next
+## 14.0.1
+
+### Collapsible
+
+- Left align text in collapsible with wrapping text.
 
 ### StandardTable
 
