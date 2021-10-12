@@ -7,6 +7,7 @@ export const getTotalNumColumns = <
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
 ): number =>
+  (config.rowIndent ? 2 : 0) +
   (config.enableExpandCollapse ? 1 : 0) +
   (config.showRowCheckbox ? 1 : 0) +
   getNumUserColumns(config);

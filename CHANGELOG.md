@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Fix invalid content width for loading when using rowIndent.
+
 ## 14.0.0
 
 ### Calendar inputs
