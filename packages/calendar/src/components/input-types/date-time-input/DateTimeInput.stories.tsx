@@ -1,5 +1,5 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
-import { Indent, Row } from "@stenajs-webui/core";
+import { Column, Indent, Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { Story } from "@storybook/react";
 import * as React from "react";
@@ -27,6 +27,19 @@ export const Standard = () => {
       <Indent />
       <FlatButton leftIcon={faTrash} onClick={() => setValue(null)} />
     </Row>
+  );
+};
+
+export const Centered = () => {
+  return (
+    <Column
+      alignItems={"center"}
+      justifyContent={"center"}
+      height={"800px"}
+      width={"800px"}
+    >
+      <Standard />
+    </Column>
   );
 };
 

@@ -1,14 +1,109 @@
 # Changelog
 
-## Next
+## 14.0.1
+
+### Collapsible
+
+- Left align text in collapsible with wrapping text.
+
+### StandardTable
+
+- Fix invalid content width for loading when using rowIndent.
+
+## 14.0.0
+
+### Calendar inputs
+
+- All calendar inputs are now using Tippyjs internal implementation for
+  listening for clicks outside.
+- Fix problem with calendar input popovers. They did not update position
+  when calendar changed size.
+
+### Drawer
+
+New implementation using `react-modal`.
+
+### Breaking changes
+
+- `Drawer` has been moved from `panels` to `modal`.
+- `Drawer` prop `zIndex` has been removed.
+
+## 13.4.0
+
+### StandardTable
+
+#### Checkbox fixes
+
+Disabled checkboxes are not checked when
+
+1. Clicking checkbox in table header
+2. Shift-clicking row checkboxes
+
+#### New feature, summary row.
+
+A column config can now specify a summary cell at the bottom of the table.
+
+```
+summaryText: ({ items }) =>
+  String(sumBy(items, (item) => item.numPassengers ?? 0)),
+```
+
+```
+renderSummaryCell: () => (
+  <Indent>
+    <Tag label={"Jedi knights"} />
+  </Indent>
+)
+```
+
+See grid package [README.md](packages/grid/README.md) for more info.
+
+### Minor changes
+
+- Darker shade for success color
+
+## 13.3.0
+
+### StandardTable
+
+- User can now shift+click on checkboxes to select/deselect a range of rows.
+
+## 13.2.0
+
+### NumericStepper
+
+- New component `NumericStepper` is a number input with step buttons on the sides
+
+### Collapsible
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
+- Remove top border for `CollapsibleGroupHeading`.
+
+### Bug fixes
+
+- `NumericInput` now caps typed-in values to min and max
+
+### Minor changes
+
+- Icon buttons ignore flex to keep their width
+
+## 13.1.2
+
+- Fix missing export of `value-by-id-reducer`.
+
+## 13.1.1
 
 ### New reducer factory `value-by-id-reducer`
 
-Stores one value per `string` id.
+- Stores one value per `string` id.
 
 ### StandardTable
 
 - Fix missing key warning.
+
+### ActionMenuItem
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the menu was opened with keyboard interaction.
 
 ## 13.1.0
 

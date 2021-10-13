@@ -49,6 +49,7 @@
     font-size: inherit;
     font-family: var(--swui-font-primary);
     font-weight: var(--swui-collapsible-header-font-weight);
+    text-align: left;
 
     min-height: var(--swui-collapsible-min-height);
     box-sizing: border-box;
@@ -74,7 +75,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       outline: 1px solid var(--swui-collapsible-header-border-color-focus);
       outline-offset: -1px;
       box-shadow: var(--swui-collapsible-header-focus-shadow);
@@ -113,6 +114,7 @@
     margin-right: auto;
 
     span {
+      --current-line-height: 1;
       font-weight: var(--swui-collapsible-header-font-weight);
     }
   }
@@ -157,10 +159,6 @@
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 1px;
-
-      &:not(:first-child) {
-        border-top: 1px solid var(--swui-collapsible-content-border-color);
-      }
     }
 
     [data-hidden="true"] {
@@ -196,8 +194,9 @@
     font-family: var(--swui-font-primary);
     font-size: inherit;
     width: 100%;
+    text-align: left;
 
-    &:focus {
+    &:focus-visible {
       outline: 1px solid var(--swui-collapsible-header-border-color-focus);
       outline-offset: -1px;
       box-shadow: var(--swui-collapsible-header-focus-shadow);

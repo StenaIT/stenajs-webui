@@ -136,6 +136,40 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * The icon variant to use when displaying sort order.
    */
   sortOrderIconVariant?: SortOrderIconVariant;
+
+  /**
+   * Render summary cell at the bottom of the table.
+   * If this is not provided for any columns, the summary row will not be rendered at all.
+   */
+  renderSummaryCell?: StandardTableSummaryCellRenderer<TItem>;
+
+  /**
+   * Render summary cell at the bottom of the table.
+   * If this is not provided for any columns, the summary row will not be rendered at all.
+   */
+  summaryText?: StandardTableSummaryTextProvider<TItem>;
+
+  /**
+   * Col span for the summary cell.
+   */
+  summaryCellColSpan?: number;
+}
+
+export type StandardTableSummaryTextProvider<TItem> = (
+  arg: StandardTableSummaryTextProviderArgObject<TItem>
+) => string;
+
+export interface StandardTableSummaryTextProviderArgObject<TItem> {
+  items: Array<TItem>;
+}
+
+export type StandardTableSummaryCellRenderer<TItem> = (
+  arg: StandardTableSummaryCellRendererArgObject<TItem>
+) => ReactNode;
+
+export interface StandardTableSummaryCellRendererArgObject<TItem> {
+  items: Array<TItem>;
+  text?: string;
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (

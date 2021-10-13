@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   Box,
   BoxProps,
@@ -6,8 +5,10 @@ import {
   SeparatorLine,
   Space,
 } from "@stenajs-webui/core";
-import styles from "./SidebarMenu.module.css";
+import { cssColor } from "@stenajs-webui/theme";
 import cx from "classnames";
+import * as React from "react";
+import styles from "./SidebarMenu.module.css";
 import {
   SidebarMenuCloseButton,
   SidebarMenuCloseButtonProps,
@@ -30,7 +31,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       <Box alignItems={"flex-start"} justifyContent={"center"}>
         <SidebarMenuCloseButton onClick={onCloseClick} variant={"dark"} />
       </Box>
-      <SeparatorLine color={"var(--lhds-color-blue-700)"} />
+      <SeparatorLine color={cssColor("--lhds-color-blue-700")} />
       <Space />
       <Box
         className={styles.sidebarMenuContent}

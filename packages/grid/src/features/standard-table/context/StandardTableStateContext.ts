@@ -5,7 +5,6 @@ import {
   StandardTableAction,
   StandardTableActions,
 } from "../util/ActionsFactory";
-import { InternalStandardTableAction } from "../redux/StandardTableActionsAndSelectors";
 
 export interface StandardTableInternalActionsContext<
   TColumnKey extends string
@@ -19,7 +18,7 @@ export interface StandardTableInternalActionsContext<
  * connect the table to a state.
  */
 export interface TableContext<TColumnKey extends string> {
-  dispatch: Dispatch<InternalStandardTableAction<TColumnKey>>;
+  dispatch: Dispatch<StandardTableAction<TColumnKey>>;
   state: StandardTableState<TColumnKey>;
   actions: StandardTableActions<TColumnKey>;
 }

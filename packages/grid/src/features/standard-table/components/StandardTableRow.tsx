@@ -1,7 +1,7 @@
 import { Indent, Row, useOnScreen } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { CSSProperties, useMemo, useRef } from "react";
+import { CSSProperties, RefObject, useMemo, useRef } from "react";
 import {
   tableBackgroundColorExpanded,
   tableBackgroundHoverColorExpanded,
@@ -29,18 +29,22 @@ import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
 export interface StandardTableRowProps<TItem> {
   item: TItem;
+  idListForEnabledItems: Array<string>;
   rowIndex: number;
   numRows: number;
   colIndexOffset: number;
   alwaysVisible?: boolean;
+  shiftPressedRef: RefObject<boolean>;
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   item,
+  idListForEnabledItems,
   rowIndex,
   numRows,
   colIndexOffset,
   alwaysVisible,
+  shiftPressedRef,
 }: StandardTableRowProps<TItem>) {
   const trRef = useRef(null);
   const totalNumColumns = useTotalNumColumns();
@@ -57,7 +61,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
   } = useStandardTableConfig();
 
   const { isExpanded } = useExpandCollapseActions(item);
-  const { isSelected, toggleSelected } = useRowCheckbox(item);
+  const { isSelected, toggleSelected, shiftAndToggleSelected } = useRowCheckbox(
+    item,
+    idListForEnabledItems
+  );
 
   const visible = useOnScreen(trRef, {
     rootMargin: "400px 0px 400px 0px",
@@ -179,9 +186,11 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
                   disabled={disabled}
                   value={isSelected}
                   onValueChange={toggleSelected}
+                  onValueChangeAndShift={shiftAndToggleSelected}
                   colIndex={colIndexOffset + (enableExpandCollapse ? 1 : 0)}
                   rowIndex={rowIndex}
                   numRows={numRows}
+                  shiftPressedRef={shiftPressedRef}
                 />
               </Row>
             </td>
@@ -233,6 +242,8 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
       numRows,
       rowIndent,
       rowIndex,
+      shiftAndToggleSelected,
+      shiftPressedRef,
       showRowCheckbox,
       stickyCheckboxColumn,
       toggleSelected,

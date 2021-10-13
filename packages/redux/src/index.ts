@@ -50,3 +50,8 @@ export * from "./features/reducer-factories/sort-order-reducer/sort-order-reduce
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-actions";
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-action-creators";
 export * from "./features/reducer-factories/sort-order-reducer/sort-order-selectors";
+
+export * from "./features/reducer-factories/value-by-id-reducer/value-by-id-reducer";
+export * from "./features/reducer-factories/value-by-id-reducer/value-by-id-actions";
+export * from "./features/reducer-factories/value-by-id-reducer/value-by-id-action-creators";
+export * from "./features/reducer-factories/value-by-id-reducer/value-by-id-selectors";

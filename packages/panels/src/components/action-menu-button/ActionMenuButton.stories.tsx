@@ -22,12 +22,13 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
+import { action } from "@storybook/addon-actions";
 import * as React from "react";
+import { useState } from "react";
 import { ActionMenuFlatButton } from "./ActionMenuFlatButton";
 import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
-import { action } from "@storybook/addon-actions";
-import { useState } from "react";
 
 export default {
   title: "panels/ActionMenuButton",
@@ -192,7 +193,7 @@ export const CustomContent = () => (
           <Txt
             size={"smaller"}
             variant={"bold"}
-            color={"var(--lhds-color-orange-300)"}
+            color={cssColor("--lhds-color-orange-300")}
           >
             So custom!
           </Txt>
@@ -207,7 +208,7 @@ export const CustomContent = () => (
           <Txt
             size={"smaller"}
             variant={"bold"}
-            color={"var(--lhds-color-orange-300)"}
+            color={cssColor("--lhds-color-orange-300")}
           >
             So custom!
           </Txt>

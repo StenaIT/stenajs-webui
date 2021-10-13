@@ -26,7 +26,11 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
     if (typeof value === "boolean") {
       if (value) {
         return (
-          <Icon icon={faCheck} size={14} color={"var(--lhds-color-ui-700)"} />
+          <Icon
+            icon={faCheck}
+            size={14}
+            color={cssColor("--lhds-color-ui-700")}
+          />
         );
       } else {
         return "-";

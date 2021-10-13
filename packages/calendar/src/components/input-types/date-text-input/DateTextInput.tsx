@@ -1,11 +1,13 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { Box, Omit, Row, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { Box, Omit, Row } from "@stenajs-webui/core";
 import { FlatButton } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -18,13 +20,7 @@ import {
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
-  | "value"
-  | "onChange"
-  | "theme"
-  | "dateInFocus"
-  | "setDateInFocus"
-  | "currentPanel"
-  | "setCurrentPanel"
+  "value" | "onChange" | "theme"
 >;
 
 export interface DateTextInputProps<T>
@@ -65,18 +61,15 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
-  const popupRef = useRef<HTMLDivElement>(null);
-  const outsideRef = useRef<HTMLDivElement>(null);
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
   }, [setOpen, open]);
 
-  const closeCalendar = useCallback(() => {
+  const hideCalendar = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
-
-  useMultiOnClickOutside([popupRef, outsideRef], closeCalendar);
 
   const onValueChangeHandler = useCallback(
     (value) => {
@@ -109,26 +102,28 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
     (userInputCorrectLength && !dateIsValid) || inValidInput;
 
   return (
-    <Box ref={outsideRef} width={width}>
+    <Box width={width}>
       <Popover
         arrow={false}
         lazy
         visible={open}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
+        placement={defaultPopoverPlacement}
+        onClickOutside={hideCalendar}
+        tippyRef={tippyRef}
         content={
-          <Box ref={popupRef}>
-            <SingleDateCalendar
-              {...calendarProps}
-              onChange={onCalendarSelectDate}
-              value={
-                value && dateIsValid
-                  ? parse(value, dateFormat, new Date())
-                  : undefined
-              }
-              theme={calendarTheme}
-            />
-          </Box>
+          <SingleDateCalendar
+            {...calendarProps}
+            onChange={onCalendarSelectDate}
+            onChangePanel={onChangePanel}
+            value={
+              value && dateIsValid
+                ? parse(value, dateFormat, new Date())
+                : undefined
+            }
+            theme={calendarTheme}
+          />
         }
       >
         <TextInput

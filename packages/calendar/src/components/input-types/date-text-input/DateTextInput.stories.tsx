@@ -1,3 +1,4 @@
+import { Column } from "@stenajs-webui/core";
 import { DateTextInput } from "./DateTextInput";
 import * as React from "react";
 import { useState } from "react";
@@ -20,6 +21,12 @@ export const Standard = () => {
 
   return <DateTextInput value={value} onValueChange={setValue} />;
 };
+
+export const Centered = () => (
+  <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
+    <Standard />
+  </Column>
+);
 
 export const EnglishDateFormat = () => {
   const [value, setValue] = useState<string | undefined>(undefined);

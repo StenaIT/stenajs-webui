@@ -1,9 +1,11 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { Box, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { Box } from "@stenajs-webui/core";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
+import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
 import * as React from "react";
-import { useRef } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
+import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import {
@@ -12,7 +14,6 @@ import {
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
-import { Popover } from "@stenajs-webui/tooltip";
 
 export interface DateInputProps<T = {}> {
   /** The current value */
@@ -78,25 +79,26 @@ export const DateInput: React.FC<DateInputProps> = ({
     showCalendar,
   } = useDateInput(onChange, onClose, openOnMount);
 
-  const popupRef = useRef<HTMLDivElement>(null);
-  const outsideRef = useRef<HTMLDivElement>(null);
-
-  useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
+  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   return (
-    <Box ref={outsideRef} width={width}>
+    <Box width={width}>
       <Popover
         arrow={false}
         lazy
         visible={showingCalendar}
+        onClickOutside={hideCalendar}
+        placement={defaultPopoverPlacement}
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
+        tippyRef={tippyRef}
         content={
           <SingleDateCalendar
             {...calendarProps}
             onChange={onSelectDate}
             value={value}
             theme={calendarTheme}
+            onChangePanel={onChangePanel}
           />
         }
       >

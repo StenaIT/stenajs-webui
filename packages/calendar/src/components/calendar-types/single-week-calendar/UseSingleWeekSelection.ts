@@ -6,14 +6,14 @@ import {
   WeekData,
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekRangeHighlights } from "../../../util/calendar/StateModifier";
-
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
-import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
+import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
 
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
   statePerMonth,
+  onChangePanel,
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const [dateInFocus, setDateInFocus] = useState(() => {
     const week = getWeekDataFromWeekString(value);
@@ -22,8 +22,8 @@ export const useSingleWeekSelection = <T>({
     }
     return week.days[0].date;
   });
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
+  const { currentPanel, setCurrentPanel } = useInternalPanelState(
+    onChangePanel
   );
 
   const onClickDay = useCallback(
