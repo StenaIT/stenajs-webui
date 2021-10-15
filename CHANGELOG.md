@@ -1,5 +1,9 @@
 # Changelog
 
+## Next
+
+- `Drawer` prop `zIndex` has been added back.
+
 ## 14.0.1
 
 ### Collapsible
