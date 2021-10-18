@@ -35,7 +35,7 @@ export interface DrawerProps
 export const Drawer: React.FC<DrawerProps> = ({
   width = "370px",
   background,
-  zIndex = 1000,
+  zIndex,
   children,
   slideFrom = "left",
   portalTarget,
