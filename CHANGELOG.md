@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 14.0.2
 
 - `Drawer` prop `zIndex` has been added back.
 
