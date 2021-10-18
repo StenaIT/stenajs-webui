@@ -12,7 +12,7 @@ import * as React from "react";
 import { PrimaryButton } from "@stenajs-webui/elements";
 
 export default {
-  title: "examples/Tables",
+  title: "examples/Tables/Simple",
 };
 
 export const SimpleTable = () => {
