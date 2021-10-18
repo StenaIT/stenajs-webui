@@ -18,6 +18,7 @@ export interface DrawerProps
   > {
   width?: string;
   background?: string;
+  zIndex?: number;
   onRequestClose?: () => void;
   /**
    * Which direction the drawer will appear from.
@@ -34,6 +35,7 @@ export interface DrawerProps
 export const Drawer: React.FC<DrawerProps> = ({
   width = "370px",
   background,
+  zIndex,
   children,
   slideFrom = "left",
   portalTarget,
@@ -56,7 +58,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         afterOpen: styles.afterOpen,
         beforeClose: styles.beforeClose,
       }}
-      style={{ content: { width, background } }}
+      style={{ content: { width, background }, overlay: { zIndex } }}
       parentSelector={portalTarget ? () => portalTarget : undefined}
       {...reactModalProps}
     >
