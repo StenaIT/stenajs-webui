@@ -100,7 +100,7 @@ export interface StandardTableProps<
   noItemsLabel?: string;
 
   /**
-   * Data used to u
+   * Data used to populate the ResultListBanner component.
    */
   errorBanner?: ResultListBannerState;
 
