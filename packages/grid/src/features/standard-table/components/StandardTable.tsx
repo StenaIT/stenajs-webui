@@ -35,6 +35,7 @@ import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { ColGroups } from "./ColGroups";
+import { ResultListBannerState } from "@stenajs-webui/elements";
 
 export interface StandardTableProps<
   TItem,
@@ -99,9 +100,9 @@ export interface StandardTableProps<
   noItemsLabel?: string;
 
   /**
-   * Message displayed when there is an error.
+   * Data used to u
    */
-  errorLabel?: string;
+  errorBanner?: ResultListBannerState;
 
   /**
    * TableContext, containing state, actions and dispatch. Makes it possible to connect Redux.

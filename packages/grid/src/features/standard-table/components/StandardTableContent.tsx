@@ -1,5 +1,5 @@
-import { Row, Spacing } from "@stenajs-webui/core";
-import { Banner } from "@stenajs-webui/elements";
+import { Box, Row, Spacing } from "@stenajs-webui/core";
+import { Banner, ResultListBanner } from "@stenajs-webui/elements";
 import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
@@ -23,7 +23,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   TColumnGroupKey extends string
 >({
   error,
-  errorLabel,
+  errorBanner,
   loading,
   items,
   noItemsLabel = "There is no data available.",
@@ -36,13 +36,29 @@ export const StandardTableContent = React.memo(function StandardTableContent<
 }: Props<TItem, TColumnKey, TColumnGroupKey>) {
   const totalNumColumns = useTotalNumColumns();
 
+  if (errorBanner) {
+    return (
+      <tbody>
+        <tr>
+          <td colSpan={totalNumColumns}>
+            <Spacing num={4} justifyContent={"center"}>
+              <Box alignItems={"center"}>
+                <ResultListBanner bannerState={errorBanner} variant={"error"} />
+              </Box>
+            </Spacing>
+          </td>
+        </tr>
+      </tbody>
+    );
+  }
+
   if (error) {
     return (
       <tbody>
         <tr>
           <td colSpan={totalNumColumns}>
             <Spacing num={4}>
-              <ErrorScreen text={errorLabel || error.message} />
+              <ErrorScreen text={error.message} />
             </Spacing>
           </td>
         </tr>
