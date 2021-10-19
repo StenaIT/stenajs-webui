@@ -1,4 +1,3 @@
-import { ResultListBannerState } from "./../../../../../elements/src/components/ui/banners/result-list-banner/ResultListBanner";
 import { addDays, format } from "date-fns";
 import { useCallback, useState } from "react";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";
