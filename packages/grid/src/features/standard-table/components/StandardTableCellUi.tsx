@@ -9,7 +9,6 @@ interface Props {
   minWidth?: string;
   justifyContent?: string;
   enableGridCell?: boolean;
-  enableGridCellFocus?: boolean;
   isEditing: boolean;
   gridCellRequiredProps?: GridCellRequiredProps;
   background?: string;
@@ -20,7 +19,6 @@ interface Props {
 export const StandardTableCellUi = React.memo<Props>(
   function StandardTableCellUi({
     enableGridCell,
-    enableGridCellFocus,
     children,
     background,
     gridCellRequiredProps,
@@ -30,13 +28,6 @@ export const StandardTableCellUi = React.memo<Props>(
     width,
     minWidth,
   }) {
-    const addFocusBorder = enableGridCell && !isEditing && enableGridCellFocus;
-
-    const addFocusWithinBorder =
-      enableGridCell && !isEditing && !enableGridCellFocus;
-
-    const focusBorder = "1px solid var(--swui-primary-action-color)";
-
     return (
       <Row
         width={width}
@@ -54,16 +45,17 @@ export const StandardTableCellUi = React.memo<Props>(
           justifyContent={justifyContent}
           alignItems={"center"}
           borderRadius={enableGridCell ? "4px" : undefined}
-          focusBorder={addFocusBorder ? focusBorder : undefined}
-          focusWithinBorder={addFocusWithinBorder ? focusBorder : undefined}
+          focusBorder={
+            enableGridCell && !isEditing
+              ? "1px solid var(--swui-primary-action-color)"
+              : undefined
+          }
           hoverBorder={
-            enableGridCell && !isEditing && enableGridCellFocus
+            enableGridCell && !isEditing
               ? "1px solid var(--lhds-color-ui-300)"
               : undefined
           }
-          {...(enableGridCell && enableGridCellFocus
-            ? gridCellRequiredProps
-            : undefined)}
+          {...(enableGridCell ? gridCellRequiredProps : undefined)}
         >
           {children}
         </Row>
