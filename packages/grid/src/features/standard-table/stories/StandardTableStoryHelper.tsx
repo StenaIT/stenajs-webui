@@ -1,8 +1,11 @@
 import { addDays, format } from "date-fns";
+import * as React from "react";
 import { useCallback, useState } from "react";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
+import { Indent } from "@stenajs-webui/core";
+import { Checkbox } from "@stenajs-webui/forms";
 
 export interface ListItem {
   id: string;
@@ -204,7 +207,12 @@ export const standardTableConfigForStories: StandardTableConfig<
       sortOrderIconVariant: "numeric",
     }),
     active: createColumnConfig((item) => item.active, {
-      itemLabelFormatter: (value) => (value ? "Y" : ""),
+      disableGridCellFocus: true,
+      renderCell: ({ item, gridCell: { requiredProps } }) => (
+        <Indent>
+          <Checkbox value={item.active} {...requiredProps} />
+        </Indent>
+      ),
       infoIconTooltipText: "Active means out on the sea.",
     }),
     name: createColumnConfig((item) => item.name, {
