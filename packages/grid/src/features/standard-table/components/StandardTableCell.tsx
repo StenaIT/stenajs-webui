@@ -185,9 +185,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       }}
     >
       <StandardTableCellUi
-        enableGridCell={
-          enableGridCell && !disableGridCell && !disableGridCellFocus
-        }
+        enableGridCell={enableGridCell && !disableGridCell}
+        enableGridCellFocus={!disableGridCellFocus}
         gridCellRequiredProps={gridCell.requiredProps}
         isEditing={gridCell.isEditing}
         width={width}
