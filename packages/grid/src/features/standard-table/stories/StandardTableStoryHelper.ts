@@ -249,8 +249,20 @@ export const useListState = (initialItems: Array<ListItem>) => {
     [items, setItems]
   );
 
+  const onChangeActive = useCallback(
+    (item: ListItem, active: boolean) => {
+      setItems(
+        setListItemFields(items, item.id, {
+          active,
+        })
+      );
+    },
+    [items, setItems]
+  );
+
   return {
     onChangeNumPassengers,
+    onChangeActive,
     items,
   };
 };
