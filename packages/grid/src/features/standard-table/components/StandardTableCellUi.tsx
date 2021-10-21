@@ -3,6 +3,7 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { GridCellRequiredProps } from "../../grid-cell/hooks/UseGridCell";
 import styles from "./StandardTableCellUi.module.css";
+import { FocusedElement } from "./FocusedElement";
 
 interface Props {
   width?: string;
@@ -37,13 +38,10 @@ export const StandardTableCellUi = React.memo<Props>(
         overflow={"hidden"}
         onKeyDown={onKeyDown}
       >
-        <Row
-          border={"1px solid transparent"}
+        <FocusedElement
+          as={"label"}
           className={styles.standardTableCell}
-          width={"100%"}
-          height={"100%"}
           justifyContent={justifyContent}
-          alignItems={"center"}
           borderRadius={enableGridCell ? "4px" : undefined}
           focusBorder={
             enableGridCell && !isEditing
@@ -57,8 +55,15 @@ export const StandardTableCellUi = React.memo<Props>(
           }
           {...(enableGridCell ? gridCellRequiredProps : undefined)}
         >
-          {children}
-        </Row>
+          <Row
+            width={"100%"}
+            height={"100%"}
+            justifyContent={justifyContent}
+            alignItems={"center"}
+          >
+            {children}
+          </Row>
+        </FocusedElement>
       </Row>
     );
   }
