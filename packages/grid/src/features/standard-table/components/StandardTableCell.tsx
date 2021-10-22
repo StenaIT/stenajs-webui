@@ -104,7 +104,6 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       onKeyDownCell?.(ev, { columnId, item });
       if (onKeyDownTable || onKeyDownCell) {
         ev.stopPropagation();
-        ev.preventDefault();
       }
     },
     [onKeyDownTable, columnId, item, onKeyDownCell]
