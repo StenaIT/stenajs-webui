@@ -4,8 +4,7 @@
 
 ### StandardTable
 - `errorBanner` is added to standard table and is prioritized before error property if given. 
-### Breaking changes
-- `errorLabel` is removed from standard table.
+- `error and errorLabel` are no displayed in an error banner instead of ErrorScreen.
 ## 14.0.2
 
 - `Drawer` prop `zIndex` has been added back.

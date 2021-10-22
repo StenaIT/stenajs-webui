@@ -1,6 +1,10 @@
 import { Box, Row, Spacing } from "@stenajs-webui/core";
-import { Banner, ResultListBanner } from "@stenajs-webui/elements";
-import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
+import {
+  Banner,
+  ResultListBanner,
+  ResultListBannerState,
+} from "@stenajs-webui/elements";
+import { LoadingScreen } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
 import { StandardTableProps, StandardTableVariant } from "./StandardTable";
@@ -16,6 +20,12 @@ interface Props<
   > {
   variant: StandardTableVariant;
 }
+
+export const createErrorBanner = (message: string): ResultListBannerState => {
+  return {
+    headerText: message,
+  };
+};
 
 export const StandardTableContent = React.memo(function StandardTableContent<
   TItem,
@@ -33,6 +43,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   colIndexOffset,
   rowIndexOffset,
   variant,
+  errorLabel,
 }: Props<TItem, TColumnKey, TColumnGroupKey>) {
   const totalNumColumns = useTotalNumColumns();
 
@@ -57,8 +68,17 @@ export const StandardTableContent = React.memo(function StandardTableContent<
       <tbody>
         <tr>
           <td colSpan={totalNumColumns}>
-            <Spacing num={4}>
-              <ErrorScreen text={error.message} />
+            <Spacing num={4} justifyContent={"center"}>
+              <Box alignItems={"center"}>
+                <ResultListBanner
+                  bannerState={
+                    error.message
+                      ? createErrorBanner(error.message)
+                      : createErrorBanner(errorLabel ?? "")
+                  }
+                  variant={"error"}
+                />
+              </Box>
             </Spacing>
           </td>
         </tr>

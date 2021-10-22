@@ -105,6 +105,11 @@ export interface StandardTableProps<
   errorBanner?: ResultListBannerState;
 
   /**
+   * Message displayed when there is an error.
+   */
+  errorLabel?: string;
+
+  /**
    * TableContext, containing state, actions and dispatch. Makes it possible to connect Redux.
    * This is optional and falls back to internal useReducer if omitted.
    */
@@ -212,12 +217,24 @@ export const StandardTable = function StandardTable<
       ensureConfigHasValidSticky(config);
       return undefined;
     } catch (e) {
-      return e;
+      if (e instanceof Error) {
+        return e;
+      }
+
+      return "Unknown error";
     }
   }, [config]);
 
   if (validationError) {
-    return <ErrorScreen text={validationError.message} />;
+    return (
+      <ErrorScreen
+        text={
+          validationError instanceof Error
+            ? validationError.message
+            : validationError
+        }
+      />
+    );
   }
 
   return (
