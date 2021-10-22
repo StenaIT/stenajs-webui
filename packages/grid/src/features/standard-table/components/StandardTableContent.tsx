@@ -21,9 +21,11 @@ interface Props<
   variant: StandardTableVariant;
 }
 
-export const createErrorBanner = (message: string): ResultListBannerState => {
+export const createErrorBanner = (
+  message: string | undefined
+): ResultListBannerState => {
   return {
-    headerText: message,
+    headerText: message ?? "Unknown error",
   };
 };
 
@@ -74,7 +76,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
                   bannerState={
                     error.message
                       ? createErrorBanner(error.message)
-                      : createErrorBanner(errorLabel ?? "")
+                      : createErrorBanner(errorLabel)
                   }
                   variant={"error"}
                 />
