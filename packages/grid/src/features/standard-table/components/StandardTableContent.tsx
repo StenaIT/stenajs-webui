@@ -65,7 +65,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
     );
   }
 
-  if (error) {
+  if (error || errorLabel) {
     return (
       <tbody>
         <tr>
@@ -74,7 +74,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
               <Box alignItems={"center"}>
                 <ResultListBanner
                   bannerState={
-                    error.message
+                    error
                       ? createErrorBanner(error.message)
                       : createErrorBanner(errorLabel)
                   }
