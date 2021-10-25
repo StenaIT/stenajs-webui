@@ -1,11 +1,12 @@
 # Changelog
 
-## Next
+## 14.1.0
 
 ### StandardTable
 
 - `bannerError` is added to standard table and is prioritized before error property if given. Error is now displayed in a ResultListBanner.
 - `error and errorLabel` are now displayed in an Banner instead of ErrorScreen.
+
 #### Column configs now have `onKeyDown` option.
 
 ```
