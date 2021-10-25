@@ -3,18 +3,28 @@ import { format } from "date-fns";
 import { CustomCellFormatter } from "../../../common/CellFormatters";
 import { transformJustifyContentToTextAlign } from "./AlignmentTransformer";
 
-export const transformItemToCell = <TItem, TItemValue>(
+export const transformItemToCell = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(
   item: TItem,
   itemValueResolver: StandardTableColumnConfig<
     TItem,
-    TItemValue
+    TItemValue,
+    TColumnKey
   >["itemValueResolver"],
   justifyContentCell: StandardTableColumnConfig<
     TItem,
-    TItemValue
+    TItemValue,
+    TColumnKey
   >["justifyContentCell"],
   itemLabelFormatter:
-    | StandardTableColumnConfig<TItem, TItemValue>["itemLabelFormatter"]
+    | StandardTableColumnConfig<
+        TItem,
+        TItemValue,
+        TColumnKey
+      >["itemLabelFormatter"]
     | undefined,
   formatter?: CustomCellFormatter<TItem>
 ): string => {
