@@ -35,6 +35,7 @@ import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { ColGroups } from "./ColGroups";
+import { ResultListBannerState } from "@stenajs-webui/elements";
 
 export interface StandardTableProps<
   TItem,
@@ -97,6 +98,11 @@ export interface StandardTableProps<
    * Message displayed when there are no items to display, and it is not loading or has error.
    */
   noItemsLabel?: string;
+
+  /**
+   * Data used to populate the ResultListBanner component.
+   */
+  bannerError?: ResultListBannerState;
 
   /**
    * Message displayed when there is an error.
@@ -211,7 +217,11 @@ export const StandardTable = function StandardTable<
       ensureConfigHasValidSticky(config);
       return undefined;
     } catch (e) {
-      return e;
+      if (e instanceof Error) {
+        return e;
+      }
+
+      return new Error("Unknown error");
     }
   }, [config]);
 

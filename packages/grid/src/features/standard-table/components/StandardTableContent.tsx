@@ -1,6 +1,6 @@
-import { Row, Spacing } from "@stenajs-webui/core";
-import { Banner } from "@stenajs-webui/elements";
-import { ErrorScreen, LoadingScreen } from "@stenajs-webui/panels";
+import { Box, Row, Spacing } from "@stenajs-webui/core";
+import { Banner, ResultListBanner } from "@stenajs-webui/elements";
+import { LoadingScreen } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
 import { StandardTableProps, StandardTableVariant } from "./StandardTable";
@@ -23,7 +23,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   TColumnGroupKey extends string
 >({
   error,
-  errorLabel,
+  bannerError,
   loading,
   items,
   noItemsLabel = "There is no data available.",
@@ -33,16 +33,40 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   colIndexOffset,
   rowIndexOffset,
   variant,
+  errorLabel,
 }: Props<TItem, TColumnKey, TColumnGroupKey>) {
   const totalNumColumns = useTotalNumColumns();
 
-  if (error) {
+  if (bannerError) {
     return (
       <tbody>
         <tr>
           <td colSpan={totalNumColumns}>
-            <Spacing num={4}>
-              <ErrorScreen text={errorLabel || error.message} />
+            <Spacing num={4} justifyContent={"center"}>
+              <Box alignItems={"center"}>
+                <ResultListBanner bannerState={bannerError} variant={"error"} />
+              </Box>
+            </Spacing>
+          </td>
+        </tr>
+      </tbody>
+    );
+  }
+
+  if (error || errorLabel) {
+    return (
+      <tbody>
+        <tr>
+          <td colSpan={totalNumColumns}>
+            <Spacing num={4} justifyContent={"center"}>
+              <Box alignItems={"center"}>
+                <Banner
+                  headerText={
+                    (error ? error.message : errorLabel) ?? "Unknown error"
+                  }
+                  variant={"error"}
+                />
+              </Box>
             </Spacing>
           </td>
         </tr>
