@@ -1,5 +1,19 @@
 # Changelog
 
+## Next
+
+### StandardTable
+
+- Column configs now have `onKeyDown` option.
+
+```
+onKeyDown: (event, { item, columnId }) => {
+  if (event.key === " ") {
+    setActive(item, !item.active);
+  }
+},
+```
+
 ## 14.0.2
 
 - `Drawer` prop `zIndex` has been added back.

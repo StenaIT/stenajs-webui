@@ -32,7 +32,10 @@ export interface StandardTableConfigWithGroups<
   /**
    * Configs for the columns available in the table.
    */
-  columns: Record<TColumnKey, StandardTableColumnConfigWithGroups<TItem, any>>;
+  columns: Record<
+    TColumnKey,
+    StandardTableColumnConfigWithGroups<TItem, any, TColumnKey>
+  >;
 
   /**
    * Configs for the column groups available in the table.
@@ -62,7 +65,10 @@ export interface StandardTableConfigWithNoGroups<
   /**
    * Configs for the columns available in the table.
    */
-  columns: Record<TColumnKey, StandardTableColumnConfig<TItem, any>>;
+  columns: Record<
+    TColumnKey,
+    StandardTableColumnConfig<TItem, any, TColumnKey>
+  >;
 
   /**
    * The order of the columns. This is a list of keys from `columns`.

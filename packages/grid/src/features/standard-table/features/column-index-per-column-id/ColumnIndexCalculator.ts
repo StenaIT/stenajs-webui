@@ -48,5 +48,5 @@ export const calculateColumnIndexPerColumnId = <
 };
 
 const isColumnNavigable = <TItem, TColumnKey extends string>(
-  columnConfig: StandardTableColumnConfig<TItem, TColumnKey>
+  columnConfig: StandardTableColumnConfig<TItem, unknown, TColumnKey>
 ): boolean => !columnConfig.disableGridCell;

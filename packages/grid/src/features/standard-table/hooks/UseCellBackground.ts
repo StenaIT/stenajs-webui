@@ -31,8 +31,14 @@ export const useCellBackgroundByColumnId = <T>(
   return useBackground(backgroundResolver, item, background);
 };
 
-export const useCellBackgroundByColumnConfig = <TItem, TItemValue>(
-  columnConfig: StandardTableColumnConfig<TItem, TItemValue> | undefined,
+export const useCellBackgroundByColumnConfig = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(
+  columnConfig:
+    | StandardTableColumnConfig<TItem, TItemValue, TColumnKey>
+    | undefined,
   item: TItem
 ): string | undefined => {
   const { background, backgroundResolver } = columnConfig ?? {};

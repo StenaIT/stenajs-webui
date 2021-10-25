@@ -2,9 +2,13 @@ import { StandardTableColumnConfig } from "../config/StandardTableColumnConfig";
 import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
 import { useStandardTableConfig } from "./UseStandardTableConfig";
 
-export const useColumnConfigById = <TItem, TItemValue>(
+export const useColumnConfigById = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(
   columnId: string
-): StandardTableColumnConfig<TItem, TItemValue> => {
+): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> => {
   const { columns } = useStandardTableConfig();
   const column = columns[columnId];
   if (!column) {
@@ -13,18 +17,22 @@ export const useColumnConfigById = <TItem, TItemValue>(
   return column;
 };
 
-export const useFirstColumnConfig = <TItem, TItemValue>():
-  | StandardTableColumnConfig<TItem, TItemValue>
-  | undefined => {
+export const useFirstColumnConfig = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> | undefined => {
   const config = useStandardTableConfig();
   const columnId = useGroupConfigsAndIdsForRows()?.[0]?.groupConfig
     .columnOrder?.[0];
   return columnId ? config.columns[columnId] : undefined;
 };
 
-export const useLastColumnConfig = <TItem, TItemValue>():
-  | StandardTableColumnConfig<TItem, TItemValue>
-  | undefined => {
+export const useLastColumnConfig = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> | undefined => {
   const config = useStandardTableConfig();
   const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
   const groupConfigAndId = groupConfigsAndIds[groupConfigsAndIds.length - 1];
