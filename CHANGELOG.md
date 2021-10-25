@@ -4,6 +4,16 @@
 
 ### StandardTable
 
+#### Column configs now have `onKeyDown` option.
+
+```
+onKeyDown: (event, { item, columnId }) => {
+  if (event.key === " ") {
+    setActive(item, !item.active);
+  }
+},
+```
+
 #### Disable automatic focus highlight on cells
 
 New column config: `disableGridCellFocus`

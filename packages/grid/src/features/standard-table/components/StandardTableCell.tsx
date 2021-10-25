@@ -48,7 +48,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const selectedIds = useStandardTableState().selectedIds.selectedIds;
   const tableId = useStandardTableId();
-  const onKeyDown = useOnKeyDownContext();
+  const onKeyDownTable = useOnKeyDownContext();
   const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
   const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
@@ -68,6 +68,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     gridCellOptions: gridCellOptionsForColumn,
     isEditable,
     onChange,
+    onKeyDown: onKeyDownCell,
     disableGridCell,
     disableGridCellFocus,
     zIndex,
@@ -100,9 +101,14 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const onKeyDownHandler = useCallback<KeyboardEventHandler<HTMLDivElement>>(
     (ev) => {
-      onKeyDown?.(ev, { columnId, item });
+      onKeyDownTable?.(ev, { columnId, item });
+      onKeyDownCell?.(ev, { columnId, item });
+      if (ev.key !== "Tab" && (onKeyDownTable || onKeyDownCell)) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     },
-    [onKeyDown, columnId, item]
+    [onKeyDownTable, columnId, item, onKeyDownCell]
   );
 
   const gridCell = useGridCell<string>(label, {

@@ -6,7 +6,7 @@ import {
   Spacing,
   Text,
 } from "@stenajs-webui/core";
-import { TextInput } from "@stenajs-webui/forms";
+import { Checkbox, TextInput } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { useState } from "react";
@@ -23,6 +23,7 @@ import {
 } from "./StandardTableStoryHelper";
 import { sumBy } from "lodash";
 import { Tag } from "@stenajs-webui/elements";
+import { createColumnConfig } from "../config/StandardTableColumnConfig";
 
 export default {
   title: "grid/StandardTable",
@@ -100,6 +101,33 @@ export const BackgroundResolver = () => {
         ...standardTableConfigForStories.columns.numPassengers,
         onChange: onChangeNumPassengers,
       },
+    },
+  };
+  return <StandardTable items={items} config={config} />;
+};
+
+export const CellOnKeyDown = () => {
+  const { items, onChangeActive } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      active: createColumnConfig((item) => item.active, {
+        onKeyDown: ({ key }, { item }) => {
+          if (key === " ") {
+            onChangeActive(item, !item.active);
+          }
+        },
+        renderCell: ({ item }) => (
+          <Indent>
+            <Checkbox
+              value={item.active}
+              onValueChange={(value) => onChangeActive(item, value)}
+            />
+          </Indent>
+        ),
+      }),
     },
   };
   return <StandardTable items={items} config={config} />;

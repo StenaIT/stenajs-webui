@@ -4,18 +4,22 @@ import {
   UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
+import { StandardTableOnKeyDownArgs } from "./StandardTableConfig";
+import * as React from "react";
 
 export type StandardTableColumnConfig<
   TItem,
-  TItemValue
-> = StandardTableColumnOptions<TItem, TItemValue> &
+  TItemValue,
+  TColumnKey extends string
+> = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
   StandardTableColumnOptionsWithNoGroups &
   ItemValueResolver<TItem, TItemValue>;
 
 export type StandardTableColumnConfigWithGroups<
   TItem,
-  TItemValue
-> = StandardTableColumnOptions<TItem, TItemValue> &
+  TItemValue,
+  TColumnKey extends string
+> = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
   ItemValueResolver<TItem, TItemValue>;
 
 export interface StandardTableColumnOptionsWithNoGroups {
@@ -41,7 +45,11 @@ export interface StandardTableColumnOptionsWithNoGroups {
   right?: string;
 }
 
-export interface StandardTableColumnOptions<TItem, TItemValue> {
+export interface StandardTableColumnOptions<
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+> {
   /**
    * The header label of the column.
    */
@@ -111,6 +119,16 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * @param value
    */
   onChange?: (item: TItem, value: string | undefined) => void;
+
+  /**
+   * The onKeyDown callback on the HTML element with focus.
+   * @param ev
+   * @param args
+   */
+  onKeyDown?: (
+    ev: React.KeyboardEvent<HTMLDivElement>,
+    args: StandardTableOnKeyDownArgs<TItem, TColumnKey>
+  ) => void;
 
   /**
    * Disables the grid cell functionality for this column.
@@ -204,10 +222,14 @@ export interface ItemValueResolver<TItem, TItemValue> {
   itemValueResolver: (item: TItem) => TItemValue;
 }
 
-export const createColumnConfig = <TItem, TItemValue>(
+export const createColumnConfig = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(
   itemValueResolver: (item: TItem) => TItemValue,
-  options?: StandardTableColumnOptions<TItem, TItemValue>
-): StandardTableColumnConfig<TItem, TItemValue> => {
+  options?: StandardTableColumnOptions<TItem, TItemValue, TColumnKey>
+): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> => {
   return {
     ...options,
     itemValueResolver,
