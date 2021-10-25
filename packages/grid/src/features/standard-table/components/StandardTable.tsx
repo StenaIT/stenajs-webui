@@ -221,20 +221,12 @@ export const StandardTable = function StandardTable<
         return e;
       }
 
-      return "Unknown error";
+      return new Error("Unknown error");
     }
   }, [config]);
 
   if (validationError) {
-    return (
-      <ErrorScreen
-        text={
-          validationError instanceof Error
-            ? validationError.message
-            : validationError
-        }
-      />
-    );
+    return <ErrorScreen text={validationError.message} />;
   }
 
   return (
