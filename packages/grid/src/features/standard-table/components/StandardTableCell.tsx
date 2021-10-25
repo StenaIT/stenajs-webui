@@ -102,7 +102,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     (ev) => {
       onKeyDownTable?.(ev, { columnId, item });
       onKeyDownCell?.(ev, { columnId, item });
-      if (onKeyDownTable || onKeyDownCell) {
+      if (ev.key !== "Tab" && (onKeyDownTable || onKeyDownCell)) {
+        ev.preventDefault();
         ev.stopPropagation();
       }
     },
