@@ -1,9 +1,5 @@
 import { Box, Row, Spacing } from "@stenajs-webui/core";
-import {
-  Banner,
-  ResultListBanner,
-  ResultListBannerState,
-} from "@stenajs-webui/elements";
+import { Banner, ResultListBanner } from "@stenajs-webui/elements";
 import { LoadingScreen } from "@stenajs-webui/panels";
 import * as React from "react";
 import { useTotalNumColumns } from "../context/TotalNumColumnsContext";
@@ -64,10 +60,10 @@ export const StandardTableContent = React.memo(function StandardTableContent<
           <td colSpan={totalNumColumns}>
             <Spacing num={4} justifyContent={"center"}>
               <Box alignItems={"center"}>
-                <ResultListBanner
-                  bannerState={createErrorBanner(
-                    error ? error.message : errorLabel
-                  )}
+                <Banner
+                  headerText={
+                    (error ? error.message : errorLabel) ?? "Unknown error"
+                  }
                   variant={"error"}
                 />
               </Box>
@@ -124,11 +120,3 @@ export const StandardTableContent = React.memo(function StandardTableContent<
     </tbody>
   );
 });
-
-const createErrorBanner = (
-  message: string | undefined
-): ResultListBannerState => {
-  return {
-    headerText: message ?? "Unknown error",
-  };
-};
