@@ -21,14 +21,6 @@ interface Props<
   variant: StandardTableVariant;
 }
 
-export const createErrorBanner = (
-  message: string | undefined
-): ResultListBannerState => {
-  return {
-    headerText: message ?? "Unknown error",
-  };
-};
-
 export const StandardTableContent = React.memo(function StandardTableContent<
   TItem,
   TColumnKey extends string,
@@ -73,11 +65,9 @@ export const StandardTableContent = React.memo(function StandardTableContent<
             <Spacing num={4} justifyContent={"center"}>
               <Box alignItems={"center"}>
                 <ResultListBanner
-                  bannerState={
-                    error
-                      ? createErrorBanner(error.message)
-                      : createErrorBanner(errorLabel)
-                  }
+                  bannerState={createErrorBanner(
+                    error ? error.message : errorLabel
+                  )}
                   variant={"error"}
                 />
               </Box>
@@ -134,3 +124,11 @@ export const StandardTableContent = React.memo(function StandardTableContent<
     </tbody>
   );
 });
+
+const createErrorBanner = (
+  message: string | undefined
+): ResultListBannerState => {
+  return {
+    headerText: message ?? "Unknown error",
+  };
+};
