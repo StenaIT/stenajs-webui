@@ -55,7 +55,7 @@ export const BannerError = () => {
     <StandardTable
       items={mockedItems}
       config={standardTableConfigForStories}
-      errorBanner={bannerState}
+      bannerError={bannerState}
     />
   );
 };
