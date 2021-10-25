@@ -35,7 +35,7 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   TColumnGroupKey extends string
 >({
   error,
-  errorBanner,
+  bannerError,
   loading,
   items,
   noItemsLabel = "There is no data available.",
@@ -49,14 +49,14 @@ export const StandardTableContent = React.memo(function StandardTableContent<
 }: Props<TItem, TColumnKey, TColumnGroupKey>) {
   const totalNumColumns = useTotalNumColumns();
 
-  if (errorBanner) {
+  if (bannerError) {
     return (
       <tbody>
         <tr>
           <td colSpan={totalNumColumns}>
             <Spacing num={4} justifyContent={"center"}>
               <Box alignItems={"center"}>
-                <ResultListBanner bannerState={errorBanner} variant={"error"} />
+                <ResultListBanner bannerState={bannerError} variant={"error"} />
               </Box>
             </Spacing>
           </td>

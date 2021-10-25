@@ -102,7 +102,7 @@ export interface StandardTableProps<
   /**
    * Data used to populate the ResultListBanner component.
    */
-  errorBanner?: ResultListBannerState;
+  bannerError?: ResultListBannerState;
 
   /**
    * Message displayed when there is an error.
