@@ -4,7 +4,7 @@
 
 ### StandardTable
 
-- Column configs now have `onKeyDown` option.
+#### Column configs now have `onKeyDown` option.
 
 ```
 onKeyDown: (event, { item, columnId }) => {
@@ -12,6 +12,29 @@ onKeyDown: (event, { item, columnId }) => {
     setActive(item, !item.active);
   }
 },
+```
+
+#### Disable automatic focus highlight on cells
+
+New column config: `disableGridCellFocus`
+
+If this setting is enabled, the cell must add the focus highlight and onKeyDown on an element manually.
+
+This makes it possible to let arrow navigation move focus to for example a checkbox in the cell, instead of the cell itself.
+
+#### Example
+
+Adding this is easy, just spread `requiredProps` from `gridCell` into the HTML element.
+
+```
+    active: createColumnConfig((item) => item.active, {
+      disableGridCellFocus: true,
+      renderCell: ({ item, gridCell: { requiredProps } }) => (
+        <Indent>
+          <Checkbox value={item.active} {...requiredProps} />
+        </Indent>
+      ),
+    })
 ```
 
 ## 14.0.2

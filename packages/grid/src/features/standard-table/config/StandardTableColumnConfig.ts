@@ -132,8 +132,17 @@ export interface StandardTableColumnOptions<
 
   /**
    * Disables the grid cell functionality for this column.
+   * If enable, the user can no longer navigate to or from this column with arrow keys.
+   * Focus highlight on the cell is also disabled.
    */
   disableGridCell?: boolean;
+
+  /**
+   * Grid cell is enabled, but arrow key logic and focus highlight must be applied manually.
+   * This makes it possible to move focus to an element inside the cell, instead of on the cell itself.
+   * For example, if the cell contains a checkbox, we user can arrow key navigate to the checkbox.
+   */
+  disableGridCellFocus?: boolean;
 
   /**
    * Grid cell options, if you need custom behaviour.
