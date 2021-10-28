@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### ActionMenuItem / ActionMenuLink
+
+- `disableCloseOnClick` is no longer forwarded to the DOM.
+
 ## 14.1.1
 
 ### Tag and Chip
