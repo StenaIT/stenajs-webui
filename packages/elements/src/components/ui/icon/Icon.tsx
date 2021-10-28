@@ -3,12 +3,13 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { Box, Omit } from "@stenajs-webui/core";
+import { Box, Omit, BoxProps } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef } from "react";
 
 export interface IconProps
-  extends Omit<FontAwesomeIconProps, "color" | "size" | "icon"> {
+  extends Omit<FontAwesomeIconProps, "color" | "size" | "icon" | "display">,
+    Pick<BoxProps, "display"> {
   icon?: IconDefinition;
   color?: string;
   size?: number;
@@ -26,6 +27,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
     spin,
     style,
     transform,
+    display,
     ...props
   },
   ref
@@ -35,7 +37,12 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
   }
 
   return (
-    <Box justifyContent={"center"} alignItems={"center"} ref={ref}>
+    <Box
+      justifyContent={"center"}
+      alignItems={"center"}
+      display={display}
+      ref={ref}
+    >
       <FontAwesomeIcon
         className={className}
         color={color}

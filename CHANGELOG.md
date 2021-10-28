@@ -11,6 +11,7 @@
 - Icon no longer has props `hoverIcon` and `hoverColor`.
 - Icon no longer has largely unnecessary mouseover event listeners.
 - Icon may have a `ref`.
+- Icon may have a `display` prop so that you can e.g. display it inline.
 
 ### Breaking changes
 

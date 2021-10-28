@@ -5,7 +5,7 @@ import {
   faShip,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { Indent, Row, Space, Text, Txt } from "@stenajs-webui/core";
 import { Icon, IconProps } from "./Icon";
 import { Story } from "@storybook/react";
 import {
@@ -80,4 +80,19 @@ export const WithRotation = () => (
 
 export const WithTransform = () => (
   <Icon icon={faBicycle} transform={{ flipX: true, rotate: 90 }} />
+);
+
+export const WithDisplay = () => (
+  <>
+    <p>
+      <Txt>This </Txt>
+      <Icon icon={faBicycle} display={"inline"} />
+      <Txt> is inline</Txt>
+    </p>
+    <p style={{ display: "inline-block" }}>
+      <Txt>This </Txt>
+      <Icon icon={faBicycle} />
+      <Txt> is not inline</Txt>
+    </p>
+  </>
 );
