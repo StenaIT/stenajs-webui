@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/theme",
-  "version": "12.0.0",
+  "version": "14.1.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -43,5 +43,5 @@
   "files": [
     "dist"
   ],
-  "gitHead": "2c26a997a9113a7c4077bf62133fac0196e40e3d"
+  "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961"
 }

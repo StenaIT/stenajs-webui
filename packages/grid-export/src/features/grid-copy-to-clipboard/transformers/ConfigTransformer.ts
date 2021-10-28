@@ -1,5 +1,5 @@
 import {
-  createColumnConfigsForRows,
+  createGroupConfigAndIdsForRows,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
 import {
@@ -18,14 +18,16 @@ export const createHtmlConfig = <
   items: Array<TItem>,
   formatters?: CustomCellFormatters<TItem, TColumnKey>
 ): string => {
-  const groupConfigs = createColumnConfigsForRows(
-    config.columnGroups,
-    config.columnGroupOrder,
-    config.columnOrder
+  const groupConfigsAndIds = createGroupConfigAndIdsForRows(
+    "columnGroups" in config ? config.columnGroups : undefined,
+    "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
+    "columnOrder" in config ? config.columnOrder : undefined
   );
 
   const headerRows: Array<string> = [];
-  if (config.columnGroups) {
+  const groupConfigs = groupConfigsAndIds.map((p) => p.groupConfig);
+
+  if ("columnGroups" in config) {
     headerRows.push(transformGroupHeaders(groupConfigs).join(""));
   }
   headerRows.push(transformTableHeaders(config, groupConfigs).join(""));

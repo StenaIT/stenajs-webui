@@ -1,0 +1,34 @@
+.portal {
+  .overlay {
+    position: fixed;
+    inset: 0;
+  }
+
+  .content {
+    box-shadow: var(--swui-shadow-modal);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    transition: transform var(--swui-animation-time-medium) ease-in-out;
+    transform: translateX(var(--translate-x-outside-screen, 0));
+    overflow-y: auto;
+
+    &.slideFromLeft {
+      --translate-x-outside-screen: -100%;
+      left: 0;
+    }
+
+    &.slideFromRight {
+      --translate-x-outside-screen: 100%;
+      right: 0;
+    }
+
+    &.afterOpen {
+      transform: translateX(0);
+    }
+
+    &.beforeClose {
+      transform: translateX(var(--translate-x-outside-screen));
+    }
+  }
+}

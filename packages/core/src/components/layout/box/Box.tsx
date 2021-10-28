@@ -46,6 +46,7 @@ import {
   ZIndexProps,
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
+import { booleanOrNumberToNumber } from "../../../utils/BooleanOrNumberToNumber";
 
 interface StyledSystemProps
   extends BorderRadiusProps,
@@ -152,16 +153,6 @@ const excludedProps = [
 const isExcludedWebUiProp = (propName: string) =>
   excludedProps.includes(propName);
 
-const numberOrZero = (num: number | boolean | undefined): number => {
-  if (num == null) {
-    return 0;
-  }
-  if (typeof num === "boolean") {
-    return num ? 1 : 0;
-  }
-  return num;
-};
-
 const box = system({
   row: {
     property: "flexDirection",
@@ -170,12 +161,12 @@ const box = system({
   indent: {
     // @ts-ignore
     property: "--current-indent",
-    transform: numberOrZero,
+    transform: booleanOrNumberToNumber,
   },
   spacing: {
     // @ts-ignore
     property: "--current-spacing",
-    transform: numberOrZero,
+    transform: booleanOrNumberToNumber,
   },
   shadow: {
     property: "boxShadow",

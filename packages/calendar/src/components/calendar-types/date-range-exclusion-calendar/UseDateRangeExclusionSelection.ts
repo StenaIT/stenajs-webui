@@ -13,20 +13,21 @@ import {
 } from "../date-range-calendar/DateRangeCalendar";
 import { DateRangeExclusionCalendarProps } from "./DateRangeExclusionCalendar";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
-import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
+import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
 
 export const useDateRangeExclusionSelection = <T>({
   onChange,
   value,
   statePerMonth,
+  onChangePanel,
 }: DateRangeExclusionCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
+  const { currentPanel, setCurrentPanel } = useInternalPanelState(
+    onChangePanel
   );
 
   const [dateInFocus, setDateInFocus] = useState(

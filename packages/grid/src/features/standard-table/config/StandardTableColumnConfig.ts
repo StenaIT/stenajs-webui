@@ -4,14 +4,52 @@ import {
   UseGridCellResult,
 } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
+import { StandardTableOnKeyDownArgs } from "./StandardTableConfig";
+import * as React from "react";
 
 export type StandardTableColumnConfig<
   TItem,
-  TItemValue
-> = StandardTableColumnOptions<TItem, TItemValue> &
+  TItemValue,
+  TColumnKey extends string
+> = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
+  StandardTableColumnOptionsWithNoGroups &
   ItemValueResolver<TItem, TItemValue>;
 
-export interface StandardTableColumnOptions<TItem, TItemValue> {
+export type StandardTableColumnConfigWithGroups<
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+> = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
+  ItemValueResolver<TItem, TItemValue>;
+
+export interface StandardTableColumnOptionsWithNoGroups {
+  /**
+   * Enable sticky behaviour to the left make elements scroll in behind this column.
+   * If neither left nor right is specified, it defaults to left: 0px.
+   */
+  sticky?: boolean;
+
+  /**
+   * Set a custom z index
+   */
+  zIndex?: number;
+
+  /**
+   * Offset column from left (ex if we have multiple sticky columns)
+   */
+  left?: string;
+
+  /**
+   * Offset column from right (ex if we have multiple sticky columns)
+   */
+  right?: string;
+}
+
+export interface StandardTableColumnOptions<
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+> {
   /**
    * The header label of the column.
    */
@@ -31,11 +69,6 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
    * The width of the column.
    */
   width?: string;
-
-  /**
-   * The flex of the column. Defaults to 1 if width is not specified.
-   */
-  flex?: number;
 
   /**
    * Custom renderer for the cell. Falls back to an internal renderer that uses String(item[field]).
@@ -88,9 +121,28 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   onChange?: (item: TItem, value: string | undefined) => void;
 
   /**
+   * The onKeyDown callback on the HTML element with focus.
+   * @param ev
+   * @param args
+   */
+  onKeyDown?: (
+    ev: React.KeyboardEvent<HTMLDivElement>,
+    args: StandardTableOnKeyDownArgs<TItem, TColumnKey>
+  ) => void;
+
+  /**
    * Disables the grid cell functionality for this column.
+   * If enable, the user can no longer navigate to or from this column with arrow keys.
+   * Focus highlight on the cell is also disabled.
    */
   disableGridCell?: boolean;
+
+  /**
+   * Grid cell is enabled, but arrow key logic and focus highlight must be applied manually.
+   * This makes it possible to move focus to an element inside the cell, instead of on the cell itself.
+   * For example, if the cell contains a checkbox, we user can arrow key navigate to the checkbox.
+   */
+  disableGridCellFocus?: boolean;
 
   /**
    * Grid cell options, if you need custom behaviour.
@@ -108,25 +160,43 @@ export interface StandardTableColumnOptions<TItem, TItemValue> {
   >;
 
   /**
-   * Enable sticky behaviour to the left
-   * make elements scroll in behind this column
-   */
-  sticky?: boolean;
-
-  /**
-   * Set a custom z index
-   */
-  zIndex?: number;
-
-  /**
-   * Offset column from left (ex if we have multiple sticky columns)
-   */
-  left?: string;
-
-  /**
    * The icon variant to use when displaying sort order.
    */
   sortOrderIconVariant?: SortOrderIconVariant;
+
+  /**
+   * Render summary cell at the bottom of the table.
+   * If this is not provided for any columns, the summary row will not be rendered at all.
+   */
+  renderSummaryCell?: StandardTableSummaryCellRenderer<TItem>;
+
+  /**
+   * Render summary cell at the bottom of the table.
+   * If this is not provided for any columns, the summary row will not be rendered at all.
+   */
+  summaryText?: StandardTableSummaryTextProvider<TItem>;
+
+  /**
+   * Col span for the summary cell.
+   */
+  summaryCellColSpan?: number;
+}
+
+export type StandardTableSummaryTextProvider<TItem> = (
+  arg: StandardTableSummaryTextProviderArgObject<TItem>
+) => string;
+
+export interface StandardTableSummaryTextProviderArgObject<TItem> {
+  items: Array<TItem>;
+}
+
+export type StandardTableSummaryCellRenderer<TItem> = (
+  arg: StandardTableSummaryCellRendererArgObject<TItem>
+) => ReactNode;
+
+export interface StandardTableSummaryCellRendererArgObject<TItem> {
+  items: Array<TItem>;
+  text?: string;
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (
@@ -140,6 +210,10 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
   gridCell: UseGridCellResult<string>;
   isEditable?: boolean;
   isSelected: boolean;
+  /**
+   * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
+   */
+  zIndex?: number | string;
 }
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
@@ -148,10 +222,14 @@ export interface ItemValueResolver<TItem, TItemValue> {
   itemValueResolver: (item: TItem) => TItemValue;
 }
 
-export const createColumnConfig = <TItem, TItemValue>(
+export const createColumnConfig = <
+  TItem,
+  TItemValue,
+  TColumnKey extends string
+>(
   itemValueResolver: (item: TItem) => TItemValue,
-  options?: StandardTableColumnOptions<TItem, TItemValue>
-): StandardTableColumnConfig<TItem, TItemValue> => {
+  options?: StandardTableColumnOptions<TItem, TItemValue, TColumnKey>
+): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> => {
   return {
     ...options,
     itemValueResolver,

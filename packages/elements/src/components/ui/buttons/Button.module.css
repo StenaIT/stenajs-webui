@@ -62,10 +62,10 @@
   --swui-button-danger-background-color-focus: var(--lhds-color-red-700);
   --swui-button-danger-background-color-hover: var(--lhds-color-red-600);
 
-  --swui-button-success-background-color: var(--lhds-color-green-500);
+  --swui-button-success-background-color: var(--lhds-color-green-600);
   --swui-button-success-background-color-active: var(--lhds-color-green-900);
-  --swui-button-success-background-color-focus: var(--lhds-color-green-700);
-  --swui-button-success-background-color-hover: var(--lhds-color-green-600);
+  --swui-button-success-background-color-focus: var(--lhds-color-green-800);
+  --swui-button-success-background-color-hover: var(--lhds-color-green-700);
 
   /* Border */
   --swui-button-border-color: var(--swui-button-background-color);
@@ -141,6 +141,7 @@
   &.iconButton {
     padding: var(--swui-button-padding-vertical);
     color: var(--current-icon-color);
+    flex: none;
 
     border-radius: var(--swui-button-border-radius-icon-only);
 

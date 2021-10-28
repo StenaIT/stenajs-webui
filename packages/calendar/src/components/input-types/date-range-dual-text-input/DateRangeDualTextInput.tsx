@@ -1,9 +1,4 @@
-import {
-  Box,
-  Column,
-  useDelayedFalse,
-  useMultiOnClickOutside,
-} from "@stenajs-webui/core";
+import { Box, useDelayedFalse } from "@stenajs-webui/core";
 import { stenaArrowRight } from "@stenajs-webui/elements";
 import {
   TextInputProps,
@@ -13,6 +8,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
 import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
@@ -40,8 +36,6 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
 }) => {
   const { startDate, endDate } = value || {};
 
-  const popoverRef = useRef(null);
-  const containerRef = useRef(null);
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
   const endDateInputRef: TextInputProps["inputRef"] = useRef(null);
 
@@ -99,29 +93,26 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
     [startDate, endDate, dateInFocus]
   );
 
-  useMultiOnClickOutside([popoverRef, containerRef], hideCalendar);
-
   const delayedIsCalendarVisible = useDelayedFalse(isCalendarVisible, 300);
 
   return (
-    <Box ref={containerRef} onKeyDown={onKeyDownHandler}>
+    <Box onKeyDown={onKeyDownHandler}>
       <Popover
         arrow={false}
         lazy
-        placement={"bottom"}
+        placement={defaultPopoverPlacement}
+        onClickOutside={hideCalendar}
         visible={isCalendarVisible}
         content={
           delayedIsCalendarVisible && (
-            <Column ref={popoverRef}>
-              <CalendarWithMonthSwitcher
-                statePerMonth={statePerMonth}
-                onClickDay={onClickDay}
-                dateInFocus={dateInFocus}
-                setDateInFocus={setDateInFocus}
-                currentPanel={currentPanel}
-                setCurrentPanel={setCurrentPanel}
-              />
-            </Column>
+            <CalendarWithMonthSwitcher
+              statePerMonth={statePerMonth}
+              onClickDay={onClickDay}
+              dateInFocus={dateInFocus}
+              setDateInFocus={setDateInFocus}
+              currentPanel={currentPanel}
+              setCurrentPanel={setCurrentPanel}
+            />
           )
         }
       >

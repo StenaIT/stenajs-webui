@@ -9,7 +9,6 @@ export * from "./components/nav-bar/NavBarPopoverButton";
 export * from "./components/nav-bar/NavBarSearchField";
 export * from "./components/notifications/Notification";
 export * from "./components/notifications/NotificationTheme";
-export * from "./components/drawer/Drawer";
 export * from "./components/collapsible/Collapsible";
 export * from "./components/collapsible/CollapsibleWithCheckbox";
 export * from "./components/collapsible/CollapsibleContent";

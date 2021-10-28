@@ -11,7 +11,7 @@ import {
   Row,
   Space,
   Spacing,
-  Text,
+  Txt,
 } from "@stenajs-webui/core";
 import {
   ActionMenuItem,
@@ -22,11 +22,13 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
+import { action } from "@storybook/addon-actions";
 import * as React from "react";
+import { useState } from "react";
 import { ActionMenuFlatButton } from "./ActionMenuFlatButton";
 import { ActionMenuPrimaryButton } from "./ActionMenuPrimaryButton";
 import { ActionMenuSecondaryButton } from "./ActionMenuSecondaryButton";
-import { action } from "@storybook/addon-actions";
 
 export default {
   title: "panels/ActionMenuButton",
@@ -104,14 +106,14 @@ export const Overview = () => (
                 disabled
               />
               <ActionMenuItem label={"Custom right"}>
-                <Text size={"smaller"} color={"tomato"}>
+                <Txt size={"smaller"} color={"tomato"}>
                   So custom!
-                </Text>
+                </Txt>
               </ActionMenuItem>
               <ActionMenuSeparator />
               <ActionMenuItem
                 label={"Quit it"}
-                right={<Text size={"smaller"}>⌘ Q</Text>}
+                right={<Txt size={"smaller"}>⌘ Q</Txt>}
                 onClick={action("Quitting")}
               />
             </>
@@ -188,13 +190,13 @@ export const CustomContent = () => (
       <ActionMenuPrimaryButton
         label={"Left content"}
         left={
-          <Text
+          <Txt
             size={"smaller"}
             variant={"bold"}
-            color={"var(--lhds-color-orange-300)"}
+            color={cssColor("--lhds-color-orange-300")}
           >
             So custom!
-          </Text>
+          </Txt>
         }
         renderItems={() => <></>}
       />
@@ -203,13 +205,13 @@ export const CustomContent = () => (
       <ActionMenuPrimaryButton
         label={"Right content"}
         right={
-          <Text
+          <Txt
             size={"smaller"}
             variant={"bold"}
-            color={"var(--lhds-color-orange-300)"}
+            color={cssColor("--lhds-color-orange-300")}
           >
             So custom!
-          </Text>
+          </Txt>
         }
         renderItems={() => <></>}
       />
@@ -252,7 +254,7 @@ export const PortalTarget = () => {
       <Box>
         <Heading>Default target</Heading>
         <Space />
-        <Text>Try navigating with the keyboard.</Text>
+        <Txt>Try navigating with the keyboard.</Txt>
         <Space num={2} />
         <Row>
           <ActionMenuPrimaryButton
@@ -316,7 +318,7 @@ export const PortalTarget = () => {
       <Box>
         <Heading>Portal target</Heading>
         <Space />
-        <Text>Try navigating with the keyboard.</Text>
+        <Txt>Try navigating with the keyboard.</Txt>
         <Space num={2} />
         <Row>
           <ActionMenuPrimaryButton
@@ -405,3 +407,24 @@ export const Scrollable = () => (
     />
   </Row>
 );
+
+export const ClickEvent = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <Row alignItems={"center"}>
+      <ActionMenuPrimaryButton
+        label={"Click me"}
+        onClick={() => setCount((c) => c + 1)}
+        renderItems={() => (
+          <>
+            <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+            <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+            <ActionMenuItem label={"Do nothing"} leftIcon={faCoffee} disabled />
+          </>
+        )}
+      />
+      <Space num={2} />
+      <Txt>I have been clicked {count} times</Txt>
+    </Row>
+  );
+};

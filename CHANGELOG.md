@@ -6,6 +6,292 @@
 
 - No longer forwards `disableCloseOnClick` to the DOM
 
+## 14.1.1
+
+### Tag and Chip
+
+- Labels can no longer wrap into multiple rows.
+
+### Drawer
+
+- If content is too high, it is possible to scroll the content of the drawer.
+
+### ValueById-reducer
+
+- Factory can now take initial state as argument.
+
+## 14.1.0
+
+### StandardTable
+
+- `bannerError` is added to standard table and is prioritized before error property if given. Error is now displayed in a ResultListBanner.
+- `error and errorLabel` are now displayed in an Banner instead of ErrorScreen.
+
+#### Column configs now have `onKeyDown` option.
+
+```
+onKeyDown: (event, { item, columnId }) => {
+  if (event.key === " ") {
+    setActive(item, !item.active);
+  }
+},
+```
+
+#### Disable automatic focus highlight on cells
+
+New column config: `disableGridCellFocus`
+
+If this setting is enabled, the cell must add the focus highlight and onKeyDown on an element manually.
+
+This makes it possible to let arrow navigation move focus to for example a checkbox in the cell, instead of the cell itself.
+
+#### Example
+
+Adding this is easy, just spread `requiredProps` from `gridCell` into the HTML element.
+
+```
+    active: createColumnConfig((item) => item.active, {
+      disableGridCellFocus: true,
+      renderCell: ({ item, gridCell: { requiredProps } }) => (
+        <Indent>
+          <Checkbox value={item.active} {...requiredProps} />
+        </Indent>
+      ),
+    })
+```
+
+## 14.0.2
+
+- `Drawer` prop `zIndex` has been added back.
+
+## 14.0.1
+
+### Collapsible
+
+- Left align text in collapsible with wrapping text.
+
+### StandardTable
+
+- Fix invalid content width for loading when using rowIndent.
+
+## 14.0.0
+
+### Calendar inputs
+
+- All calendar inputs are now using Tippyjs internal implementation for
+  listening for clicks outside.
+- Fix problem with calendar input popovers. They did not update position
+  when calendar changed size.
+
+### Drawer
+
+New implementation using `react-modal`.
+
+### Breaking changes
+
+- `Drawer` has been moved from `panels` to `modal`.
+- `Drawer` prop `zIndex` has been removed.
+
+## 13.4.0
+
+### StandardTable
+
+#### Checkbox fixes
+
+Disabled checkboxes are not checked when
+
+1. Clicking checkbox in table header
+2. Shift-clicking row checkboxes
+
+#### New feature, summary row.
+
+A column config can now specify a summary cell at the bottom of the table.
+
+```
+summaryText: ({ items }) =>
+  String(sumBy(items, (item) => item.numPassengers ?? 0)),
+```
+
+```
+renderSummaryCell: () => (
+  <Indent>
+    <Tag label={"Jedi knights"} />
+  </Indent>
+)
+```
+
+See grid package [README.md](packages/grid/README.md) for more info.
+
+### Minor changes
+
+- Darker shade for success color
+
+## 13.3.0
+
+### StandardTable
+
+- User can now shift+click on checkboxes to select/deselect a range of rows.
+
+## 13.2.0
+
+### NumericStepper
+
+- New component `NumericStepper` is a number input with step buttons on the sides
+
+### Collapsible
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the `Collapsible` was opened with keyboard interaction.
+- Remove top border for `CollapsibleGroupHeading`.
+
+### Bug fixes
+
+- `NumericInput` now caps typed-in values to min and max
+
+### Minor changes
+
+- Icon buttons ignore flex to keep their width
+
+## 13.1.2
+
+- Fix missing export of `value-by-id-reducer`.
+
+## 13.1.1
+
+### New reducer factory `value-by-id-reducer`
+
+- Stores one value per `string` id.
+
+### StandardTable
+
+- Fix missing key warning.
+
+### ActionMenuItem
+
+- Replace `:focus` with `:focus-visible`, this makes the focus state visible only if the menu was opened with keyboard interaction.
+
+## 13.1.0
+
+### useEditableCell
+
+New option `none` for option `allowedInputType`.
+This disables the ability to automatically open the editor when the user starts typing in an editable table cell.
+
+This is usable when the editor is not a text input field.
+
+### Design changes
+
+- Updated styling for `Collapsible`.
+
+## 13.0.7
+
+### StandardTable
+
+- Shadow under sticky header now shows under header where there are no columns.
+
+## 13.0.6
+
+### New component `GroupedChipMultiSelect`
+
+- A combination of `ChipMultiSelect` and `GroupedMultiSelect`
+
+### StandardTable
+
+- When all columns had fixed width, they would still get wider than specified when table was wider.
+
+### Modal
+
+- `ModalHeader` is once again draggable by default.
+- Buttons and tooltips inside `ModalHeader` are not draggable.
+- `headerText` in `ModalHeader` is not draggable.
+- `DRAGGABLE_CANCEL_CLASSNAME` can be used to make part of `ModalHeader` not draggable.
+  Remember to use this for text that should be selectable in all browsers (e.g. Firefox).
+- New prop `closeButtonClassName` for `ModalHeader` lets you set a classname for the close button.
+- The close button now has an aria-label ("Close").
+
+## 13.0.5
+
+### StandardTable
+
+- Table heads and cells have correct width when specified.
+- Sorting in table could cause empty rows.
+
+## 13.0.4
+
+### StandardTable
+
+- Fix some cases where cell did not align left/right properly.
+
+## 13.0.3
+
+### StandardTable
+
+- When `backgroundResolver` returned undefined for a sticky column, it became see-through.
+
+## 13.0.2
+
+### StandardTable
+
+- Slight refactoring to make `StandardTableCellUi` more backward compatible.
+
+## 13.0.1
+
+### StandardTable
+
+- Fix column group warning being rendered below sticky elements.
+
+## 13.0.0
+
+### ModalHeader
+
+- `ModalHeader` is no longer draggable by default if used outside of `Modal`.
+
+### Spinner
+
+- Spinner has updated animation.
+
+### ActionMenuButton
+
+- Allows for custom `onClick` events
+
+### New hook `useOnScreen`
+
+This hook can be used to determine if a DOM element is visible on screen.
+
+It returns a boolean, true if the element is visible in viewport.
+
+It uses the Intersection Observer API.
+
+Example:
+
+```
+  const ref = useRef(null);
+
+  const visible = useOnScreen(ref, {
+    rootMargin: "400px",
+    threshold: 0,
+  });
+
+  return <div ref={ref}>...</div>
+```
+
+### StandardTable
+
+- `StandardTable` now uses `<table>` internally.
+- Columns can now be sticky to the right.
+- When using column groups, only column groups can be sticky, not single columns.
+- New optional option `stickyColumnGroups` when using column groups. Can be `first`, `last` or `both`.
+- When using `stickyColumnGroups`, all columns in that group must have fixed width.
+- Column option `flex` no longer supported. Use `width` and `%` instead.
+
+### Breaking changes
+
+- `StandardTable` column config no longer supports `flex`.
+
+This is because `StandardTable` uses `<table>` internally, which
+doesn't support flex.
+
+Use `width` with `%` instead.
+
 ## 12.0.0
 
 ### StandardTable
@@ -114,7 +400,7 @@ New components for creating cards, `Card`, `CardHeader` and `CardBody`.
 
 Example:
 
-```typescript
+```tsx
 <Card>
   <CardHeader text={"Overview"} />
   <CardBody>

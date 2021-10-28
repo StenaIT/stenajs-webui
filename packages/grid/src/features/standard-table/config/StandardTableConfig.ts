@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
 import { UseGridCellOptions } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
-import { StandardTableColumnConfig } from "./StandardTableColumnConfig";
+import {
+  StandardTableColumnConfig,
+  StandardTableColumnConfigWithGroups,
+} from "./StandardTableColumnConfig";
 import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 
 export interface RowExpansionArgs {
@@ -13,11 +16,68 @@ export interface StandardTableOnKeyDownArgs<TItem, TColumnKey extends string> {
   item: TItem;
 }
 
-export interface StandardTableConfig<
+export type StandardTableConfig<
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string = string
-> {
+> =
+  | StandardTableConfigWithGroups<TItem, TColumnKey, TColumnGroupKey>
+  | StandardTableConfigWithNoGroups<TItem, TColumnKey>;
+
+export interface StandardTableConfigWithGroups<
+  TItem,
+  TColumnKey extends string,
+  TColumnGroupKey extends string = string
+> extends StandardTableConfigBase<TItem, TColumnKey> {
+  /**
+   * Configs for the columns available in the table.
+   */
+  columns: Record<
+    TColumnKey,
+    StandardTableColumnConfigWithGroups<TItem, any, TColumnKey>
+  >;
+
+  /**
+   * Configs for the column groups available in the table.
+   * If column groups are used, columnOrder will not be used.
+   */
+  columnGroups: Record<
+    TColumnGroupKey,
+    StandardTableColumnGroupConfig<TColumnKey>
+  >;
+
+  /**
+   * The order of the column groups. This is a list of keys from `columnGroups`.
+   * If the columnGroups `columnOrder` array is empty, it is not displayed.
+   */
+  columnGroupOrder: Array<TColumnGroupKey>;
+
+  /**
+   * Enable sticky behaviour for column groups.
+   */
+  stickyColumnGroups?: StickyColumnGroupVariant;
+}
+
+export interface StandardTableConfigWithNoGroups<
+  TItem,
+  TColumnKey extends string
+> extends StandardTableConfigBase<TItem, TColumnKey> {
+  /**
+   * Configs for the columns available in the table.
+   */
+  columns: Record<
+    TColumnKey,
+    StandardTableColumnConfig<TItem, any, TColumnKey>
+  >;
+
+  /**
+   * The order of the columns. This is a list of keys from `columns`.
+   * If a column is not added, it is not displayed.
+   */
+  columnOrder: Array<TColumnKey>;
+}
+
+export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
   /**
    * If true, click on table headers does not change sort order.
    */
@@ -34,32 +94,6 @@ export interface StandardTableConfig<
    * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
   initialSortOrderDesc?: boolean;
-
-  /**
-   * Configs for the columns available in the table.
-   */
-  columns: Record<TColumnKey, StandardTableColumnConfig<TItem, any>>;
-
-  /**
-   * The order of the columns. This is a list of keys from `columns`.
-   * If a column is not added, it is not displayed.
-   */
-  columnOrder?: Array<TColumnKey>;
-
-  /**
-   * Configs for the column groups available in the table.
-   * If column groups are used, columnOrder will not be used.
-   */
-  columnGroups?: Record<
-    TColumnGroupKey,
-    StandardTableColumnGroupConfig<TColumnKey>
-  >;
-
-  /**
-   * The order of the column groups. This is a list of keys from `columnGroups`.
-   * If the columnGroups `columnOrder` array is empty, it is not displayed.
-   */
-  columnGroupOrder?: Array<TColumnGroupKey>;
 
   /**
    * A key resolver for an item in the list. This is needed for React key props in the components.
@@ -186,3 +220,5 @@ export interface RowBackgroundResolverColorCombination {
   background: string;
   hoverBackground: string;
 }
+
+export type StickyColumnGroupVariant = "first" | "last" | "both";

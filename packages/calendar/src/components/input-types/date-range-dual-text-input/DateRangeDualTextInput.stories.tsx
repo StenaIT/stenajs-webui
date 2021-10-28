@@ -1,10 +1,11 @@
+import { Column } from "@stenajs-webui/core";
+import { Story } from "@storybook/react";
 import { addDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
-import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
 import { useDateRangeCalendarState } from "../../calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
-import { Story } from "@storybook/react";
+import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
 
 export default {
   title: "calendar/Input/DateRangeDualTextInput",
@@ -34,6 +35,12 @@ export const Standard = () => {
     </div>
   );
 };
+
+export const Centered = () => (
+  <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
+    <Standard />
+  </Column>
+);
 
 export const StartSelected = () => {
   const [value, setValue] = useState<DateRangeOnChangeValue | undefined>({

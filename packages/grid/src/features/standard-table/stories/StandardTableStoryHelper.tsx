@@ -1,8 +1,11 @@
 import { addDays, format } from "date-fns";
+import * as React from "react";
 import { useCallback, useState } from "react";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { createStandardEditableTextCell } from "../helpers/cell-renderers/editable-text-cell/EditableTextCell";
+import { Indent } from "@stenajs-webui/core";
+import { Checkbox } from "@stenajs-webui/forms";
 
 export interface ListItem {
   id: string;
@@ -62,6 +65,119 @@ export const createItemsMocks = (): Array<ListItem> => [
     numPassengers: 534,
     departure: addDays(new Date(), 14),
   },
+
+  {
+    id: "129",
+    active: false,
+    name: "Postnord",
+    ship: "Boaty",
+    numPassengers: 548,
+    departure: addDays(new Date(), 18),
+  },
+  {
+    id: "130",
+    active: true,
+    name: "Schenker",
+    ship: "Airplane",
+    numPassengers: 425,
+    departure: addDays(new Date(), 19),
+  },
+  {
+    id: "131",
+    active: false,
+    name: "Fedex",
+    ship: "RoboBoat",
+    numPassengers: 625,
+    departure: addDays(new Date(), 1),
+  },
+  {
+    id: "132",
+    active: true,
+    name: "UPS",
+    ship: "Boatinator",
+    numPassengers: 222,
+    departure: addDays(new Date(), 5),
+  },
+  {
+    id: "133",
+    active: true,
+    name: "DHL",
+    ship: "McBoat",
+    numPassengers: 333,
+    departure: addDays(new Date(), 8),
+  },
+  {
+    id: "134",
+    active: true,
+    name: "Fedex",
+    ship: "RoboBoat",
+    numPassengers: 99,
+    departure: addDays(new Date(), 12),
+  },
+  {
+    id: "135",
+    active: false,
+    name: "Schenker",
+    ship: "MS Britannica",
+    numPassengers: 842,
+    departure: addDays(new Date(), 20),
+  },
+  {
+    id: "136",
+    active: false,
+    name: "UPS",
+    ship: "Airplane",
+    numPassengers: 295,
+    departure: addDays(new Date(), 25),
+  },
+  {
+    id: "137",
+    active: false,
+    name: "Postnord",
+    ship: "RoboBoat",
+    numPassengers: 555,
+    departure: addDays(new Date(), 30),
+  },
+  {
+    id: "138",
+    active: true,
+    name: "Schenker",
+    ship: "Boaty",
+    numPassengers: 333,
+    departure: addDays(new Date(), 4),
+  },
+  {
+    id: "139",
+    active: true,
+    name: "DHL",
+    ship: "McBoat",
+    numPassengers: 534,
+    departure: addDays(new Date(), 27),
+  },
+  {
+    id: "140",
+    active: true,
+    name: "UPS",
+    ship: "Boatinator",
+    numPassengers: 515,
+    departure: addDays(new Date(), 21),
+  },
+  {
+    id: "141",
+    active: false,
+    name: "Postnord",
+    ship: "MS Britannica",
+    numPassengers: 888,
+    departure: addDays(new Date(), 7),
+  },
+  {
+    id: "142",
+    active: false,
+    name: "Fedex",
+    ship: "RoboBoat",
+    numPassengers: 785,
+    departure: addDays(new Date(), 13),
+  },
   {
     id: "A really long id, or could be a very long title",
     active: false,
@@ -91,7 +207,12 @@ export const standardTableConfigForStories: StandardTableConfig<
       sortOrderIconVariant: "numeric",
     }),
     active: createColumnConfig((item) => item.active, {
-      itemLabelFormatter: (value) => (value ? "Y" : ""),
+      disableGridCellFocus: true,
+      renderCell: ({ item, gridCell: { requiredProps } }) => (
+        <Indent>
+          <Checkbox value={item.active} {...requiredProps} />
+        </Indent>
+      ),
       infoIconTooltipText: "Active means out on the sea.",
     }),
     name: createColumnConfig((item) => item.name, {
@@ -110,6 +231,7 @@ export const standardTableConfigForStories: StandardTableConfig<
       justifyContentHeader: "flex-end",
       justifyContentCell: "flex-end",
       sortOrderIconVariant: "numeric",
+      width: "140px",
     }),
     departure: createColumnConfig((item) => item.departure, {
       itemLabelFormatter: (value) => format(value, "yyyy-MM-dd"),
@@ -135,8 +257,20 @@ export const useListState = (initialItems: Array<ListItem>) => {
     [items, setItems]
   );
 
+  const onChangeActive = useCallback(
+    (item: ListItem, active: boolean) => {
+      setItems(
+        setListItemFields(items, item.id, {
+          active,
+        })
+      );
+    },
+    [items, setItems]
+  );
+
   return {
     onChangeNumPassengers,
+    onChangeActive,
     items,
   };
 };

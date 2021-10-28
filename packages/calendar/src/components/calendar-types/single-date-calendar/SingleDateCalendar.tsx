@@ -1,16 +1,11 @@
 import * as React from "react";
-import {
-  CalendarWithMonthSwitcher,
-  CalendarWithMonthSwitcherProps,
-} from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 
 import { useSingleDateSelection } from "./UseSingleDateSelection";
+import { InternalPanelAndFocusStateProps } from "../../../types/InternalPanelAndFocusStateProps";
 
 export interface SingleDateCalendarProps<T>
-  extends Omit<
-    CalendarWithMonthSwitcherProps<T>,
-    "currentPanel" | "setCurrentPanel" | "dateInFocus" | "setDateInFocus"
-  > {
+  extends InternalPanelAndFocusStateProps<T> {
   value: Date | undefined;
   onChange: (value: Date | undefined) => void;
 }

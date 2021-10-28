@@ -1,9 +1,11 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
-import { Box, Row, Space, useMultiOnClickOutside } from "@stenajs-webui/core";
+import { Row, Space } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
+import { cssColor } from "@stenajs-webui/theme";
+import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendarOnChangeValue,
@@ -84,6 +86,9 @@ export interface DateRangeInputProps<T extends {}> {
   >;
 }
 
+/**
+ * @deprecated Please use DateRangeDualTextInput instead.
+ */
 export const DateRangeInput = <T extends {}>({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
@@ -103,8 +108,6 @@ export const DateRangeInput = <T extends {}>({
     "calendar"
   );
 
-  const popupRef = useRef<HTMLDivElement>(null);
-  const outsideRef = useRef<HTMLDivElement>(null);
   const {
     hideCalendar,
     showCalendarEndDate,
@@ -117,66 +120,62 @@ export const DateRangeInput = <T extends {}>({
     startDateIsAfterEnd,
   } = useDateRangeInput(value, onChange);
 
-  useMultiOnClickOutside([popupRef, outsideRef], hideCalendar);
-
   const statePerMonth = useMemo(
     () => buildDayStateForDateRange(undefined, value.startDate, value.endDate),
     [value]
   );
 
   return (
-    <Box ref={outsideRef}>
-      <Popover
-        arrow={false}
-        lazy
-        visible={showingCalendar}
-        zIndex={zIndex}
-        appendTo={portalTarget ?? "parent"}
-        content={
-          <CalendarWithMonthSwitcher
-            {...calendarProps}
-            dateInFocus={dateInFocus}
-            setDateInFocus={setDateInFocus}
-            statePerMonth={statePerMonth}
-            theme={calendarTheme}
-            onClickDay={onClickDay}
-            currentPanel={currentPanel}
-            setCurrentPanel={setCurrentPanel}
-          />
-        }
-      >
-        <Row alignItems={"center"}>
-          <TextInput
-            iconLeft={faCalendarAlt}
-            onFocus={showCalendarStartDate}
-            value={
-              value.startDate ? format(value.startDate, displayFormat) : ""
-            }
-            placeholder={placeholderStartDate}
-            width={width}
-            inputRef={startDateInputRef}
-            size={9}
-            variant={startDateIsAfterEnd ? "error" : undefined}
-          />
-          <Space />
-          <Icon
-            icon={faLongArrowAltRight}
-            color={"var(--lhds-color-ui-500)"}
-            size={14}
-          />
-          <Space />
-          <TextInput
-            iconLeft={faCalendarAlt}
-            onFocus={showCalendarEndDate}
-            value={value.endDate ? format(value.endDate, displayFormat) : ""}
-            placeholder={placeholderEndDate}
-            width={width}
-            inputRef={endDateInputRef}
-            size={9}
-            variant={startDateIsAfterEnd ? "error" : undefined}
-          />
-        </Row>
-      </Popover>
-    </Box>
+    <Popover
+      arrow={false}
+      lazy
+      visible={showingCalendar}
+      zIndex={zIndex}
+      placement={defaultPopoverPlacement}
+      appendTo={portalTarget ?? "parent"}
+      onClickOutside={hideCalendar}
+      content={
+        <CalendarWithMonthSwitcher
+          {...calendarProps}
+          dateInFocus={dateInFocus}
+          setDateInFocus={setDateInFocus}
+          statePerMonth={statePerMonth}
+          theme={calendarTheme}
+          onClickDay={onClickDay}
+          currentPanel={currentPanel}
+          setCurrentPanel={setCurrentPanel}
+        />
+      }
+    >
+      <Row alignItems={"center"}>
+        <TextInput
+          iconLeft={faCalendarAlt}
+          onFocus={showCalendarStartDate}
+          value={value.startDate ? format(value.startDate, displayFormat) : ""}
+          placeholder={placeholderStartDate}
+          width={width}
+          inputRef={startDateInputRef}
+          size={9}
+          variant={startDateIsAfterEnd ? "error" : undefined}
+        />
+        <Space />
+        <Icon
+          icon={faLongArrowAltRight}
+          color={cssColor("--lhds-color-ui-500")}
+          size={14}
+        />
+        <Space />
+        <TextInput
+          iconLeft={faCalendarAlt}
+          onFocus={showCalendarEndDate}
+          value={value.endDate ? format(value.endDate, displayFormat) : ""}
+          placeholder={placeholderEndDate}
+          width={width}
+          inputRef={endDateInputRef}
+          size={9}
+          variant={startDateIsAfterEnd ? "error" : undefined}
+        />
+      </Row>
+    </Popover>
   );
 };

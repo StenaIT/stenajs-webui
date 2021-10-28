@@ -19,7 +19,7 @@ import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
-import { Drawer } from "../drawer/Drawer";
+import { Drawer } from "@stenajs-webui/modal";
 import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
 import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
 import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";

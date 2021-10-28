@@ -1,5 +1,12 @@
-import { Box, Column, Heading, Spacing, Text } from "@stenajs-webui/core";
-import { TextInput } from "@stenajs-webui/forms";
+import {
+  Box,
+  Column,
+  Heading,
+  Indent,
+  Spacing,
+  Text,
+} from "@stenajs-webui/core";
+import { Checkbox, TextInput } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { useState } from "react";
@@ -14,6 +21,9 @@ import {
   standardTableConfigForStories,
   useListState,
 } from "./StandardTableStoryHelper";
+import { sumBy } from "lodash";
+import { Tag } from "@stenajs-webui/elements";
+import { createColumnConfig } from "../config/StandardTableColumnConfig";
 
 export default {
   title: "grid/StandardTable",
@@ -24,6 +34,7 @@ export const Overview = () => {
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
+    checkboxDisabledResolver: (item) => item.id === "125",
     columns: {
       ...standardTableConfigForStories.columns,
       numPassengers: {
@@ -90,6 +101,33 @@ export const BackgroundResolver = () => {
         ...standardTableConfigForStories.columns.numPassengers,
         onChange: onChangeNumPassengers,
       },
+    },
+  };
+  return <StandardTable items={items} config={config} />;
+};
+
+export const CellOnKeyDown = () => {
+  const { items, onChangeActive } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      active: createColumnConfig((item) => item.active, {
+        onKeyDown: ({ key }, { item }) => {
+          if (key === " ") {
+            onChangeActive(item, !item.active);
+          }
+        },
+        renderCell: ({ item }) => (
+          <Indent>
+            <Checkbox
+              value={item.active}
+              onValueChange={(value) => onChangeActive(item, value)}
+            />
+          </Indent>
+        ),
+      }),
     },
   };
   return <StandardTable items={items} config={config} />;
@@ -164,4 +202,45 @@ export const OnKeyDown = () => {
       </Box>
     </Column>
   );
+};
+
+export const SummaryRow = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    columns: {
+      ...standardTableConfigForStories.columns,
+      id: {
+        ...standardTableConfigForStories.columns.id,
+        summaryText: () => "Total",
+      },
+      name: {
+        ...standardTableConfigForStories.columns.name,
+        summaryText: () => "This is a very long text.",
+        summaryCellColSpan: 2,
+      },
+      active: {
+        ...standardTableConfigForStories.columns.active,
+        summaryText: ({ items }) =>
+          `${sumBy(items, (item) => (item.active ? 1 : 0))} active`,
+      },
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+        summaryText: ({ items }) =>
+          String(sumBy(items, (item) => item.numPassengers ?? 0)),
+      },
+      departure: {
+        ...standardTableConfigForStories.columns.departure,
+        renderSummaryCell: () => (
+          <Indent>
+            <Tag label={"Jedi knights"} />
+          </Indent>
+        ),
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
 };

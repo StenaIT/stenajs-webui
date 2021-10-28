@@ -1,37 +1,60 @@
-import { StandardTableConfig } from "../../config/StandardTableConfig";
-import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import { compact } from "lodash";
+import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
+import {
+  StandardTableConfigWithGroups,
+  StandardTableConfigWithNoGroups,
+} from "../../config/StandardTableConfig";
 
-export const createColumnConfigsForRows = <
+export interface GroupConfigAndId<TColumnKey extends string> {
+  groupId: string;
+  groupConfig: StandardTableColumnGroupConfig<TColumnKey>;
+}
+
+export const createGroupConfigAndIdsForRows = <
   TItem,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >(
-  columnGroups: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnGroups"],
-  columnGroupOrder: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnGroupOrder"],
-  columnOrder: StandardTableConfig<
-    TItem,
-    TColumnKey,
-    TColumnGroupKey
-  >["columnOrder"]
-): Array<StandardTableColumnGroupConfig<TColumnKey>> => {
+  columnGroups:
+    | StandardTableConfigWithGroups<
+        TItem,
+        TColumnKey,
+        TColumnGroupKey
+      >["columnGroups"]
+    | undefined,
+  columnGroupOrder:
+    | StandardTableConfigWithGroups<
+        TItem,
+        TColumnKey,
+        TColumnGroupKey
+      >["columnGroupOrder"]
+    | undefined,
+  columnOrder:
+    | StandardTableConfigWithNoGroups<TItem, TColumnKey>["columnOrder"]
+    | undefined
+): Array<GroupConfigAndId<TColumnKey>> => {
   if (columnGroups) {
     return compact(
-      columnGroupOrder?.map((groupId) => columnGroups?.[groupId]) ?? []
-    ).filter((columnGroup) => columnGroup.columnOrder.length > 0);
+      columnGroupOrder?.map((groupId) => {
+        const groupConfig = columnGroups?.[groupId];
+        return {
+          groupId,
+          groupConfig,
+        };
+      }) ?? []
+    )
+      .filter((item) => (item.groupConfig?.columnOrder.length ?? 0) > 0)
+      .map<GroupConfigAndId<TColumnKey>>(
+        (p) => p as GroupConfigAndId<TColumnKey>
+      );
   }
   return [
     {
-      label: "",
-      columnOrder: columnOrder ?? [],
+      groupId: "virtual",
+      groupConfig: {
+        label: "",
+        columnOrder: columnOrder ?? [],
+      },
     },
   ];
 };

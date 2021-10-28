@@ -13,10 +13,10 @@ const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
   const sizes = [10, 12, 14, 16, 18, 20, 22, 24];
   const colors = [
     cssColor("--lhds-color-blue-500"),
-    cssColor("--lhds-color-ui-500"),
+    cssColor("--lhds-color-ui-600"),
     cssColor("--lhds-color-red-500"),
-    cssColor("--lhds-color-green-500"),
-    cssColor("--lhds-color-turquoise-500"),
+    cssColor("--lhds-color-green-600"),
+    cssColor("--lhds-color-turquoise-600"),
   ];
 
   return (

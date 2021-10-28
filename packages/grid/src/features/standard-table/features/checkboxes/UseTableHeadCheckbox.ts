@@ -4,16 +4,17 @@ import {
   useStandardTableConfig,
   useStandardTableState,
 } from "../../hooks/UseStandardTableConfig";
+import { filterItemsOnEnabledCheckboxes } from "../../util/FilterItemsOnEnabledCheckboxes";
 
 export const useTableHeadCheckbox = <TItem>(
   items: Array<TItem> | undefined
 ) => {
-  const { keyResolver } = useStandardTableConfig();
+  const { keyResolver, checkboxDisabledResolver } = useStandardTableConfig();
   const {
     selectedIds: { selectedIds },
   } = useStandardTableState();
   const {
-    actions: { selectByIds, clearSelection },
+    actions: { setSelectedIds, clearSelection },
     dispatch,
   } = useStandardTableActions();
 
@@ -26,18 +27,25 @@ export const useTableHeadCheckbox = <TItem>(
   const onClickCheckbox = useCallback(() => {
     if (items) {
       if (selectionIsEmpty) {
-        dispatch(selectByIds(items.map((item) => keyResolver(item))));
+        dispatch(
+          setSelectedIds(
+            items
+              .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
+              .map((item) => keyResolver(item))
+          )
+        );
       } else {
         dispatch(clearSelection());
       }
     }
   }, [
-    selectionIsEmpty,
-    clearSelection,
-    dispatch,
     items,
+    selectionIsEmpty,
+    dispatch,
+    setSelectedIds,
+    checkboxDisabledResolver,
     keyResolver,
-    selectByIds,
+    clearSelection,
   ]);
 
   return {
