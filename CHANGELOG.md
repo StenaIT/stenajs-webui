@@ -2,9 +2,9 @@
 
 ## Next
 
-### ActionMenuItem
+### ActionMenuItem / ActionMenuLink
 
-- No longer forwards `disableCloseOnClick` to the DOM
+- `disableCloseOnClick` is no longer forwarded to the DOM.
 
 ## 14.1.1
 
