@@ -6,9 +6,11 @@ export interface ValueByIdState<TValue> {
 
 export const valueByIdInitialState = { values: {} };
 
-export const createValueByIdReducer = <TValue>() => {
+export const createValueByIdReducer = <TValue>(
+  initialValue: ValueByIdState<TValue> = valueByIdInitialState
+) => {
   return (
-    state: ValueByIdState<TValue> = valueByIdInitialState,
+    state: ValueByIdState<TValue> = initialValue,
     action: ValueByIdAction<TValue>
   ): ValueByIdState<TValue> => {
     switch (action.type) {

@@ -11,6 +11,7 @@
     top: 0;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
     transform: translateX(var(--translate-x-outside-screen, 0));
+    overflow-y: auto;
 
     &.slideFromLeft {
       --translate-x-outside-screen: -100%;

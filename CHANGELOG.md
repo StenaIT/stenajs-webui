@@ -1,5 +1,19 @@
 # Changelog
 
+## Next
+
+### Tag and Chip
+
+- Labels can no longer wrap into multiple rows.
+
+### Drawer
+
+- If content is too high, it is possible to scroll the content of the drawer.
+
+### ValueById-reducer
+
+- Factory can now take initial state as argument.
+
 ## 14.1.0
 
 ### StandardTable

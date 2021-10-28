@@ -19,6 +19,7 @@
   box-sizing: border-box;
   display: inline-flex;
   flex-direction: row;
+  white-space: nowrap;
   border-radius: var(--swui-tag-border-radius);
   background-color: var(--current-bg-color);
   border: 1px solid var(--current-border-color);
