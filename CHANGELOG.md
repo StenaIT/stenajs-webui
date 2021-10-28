@@ -10,6 +10,7 @@
 
 - Icon no longer has props `hoverIcon` and `hoverColor`.
 - Icon no longer has largely unnecessary mouseover event listeners.
+- Icon may have a `ref`.
 
 ### Breaking changes
 
