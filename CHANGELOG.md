@@ -6,6 +6,16 @@
 
 - `disableCloseOnClick` is no longer forwarded to the DOM.
 
+### Icon
+
+- Icon no longer has props `hoverIcon` and `hoverColor`.
+- Icon no longer has largely unnecessary mouseover event listeners.
+- Icon may have a `ref`.
+
+### Breaking changes
+
+- Icon no longer has props `hoverIcon` and `hoverColor`.
+
 ## 14.1.1
 
 ### Tag and Chip

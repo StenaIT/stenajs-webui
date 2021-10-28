@@ -1,45 +1,35 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   FontAwesomeIcon,
-  Props as FontAwesomeProps,
+  FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { Box, Omit, useMouseIsOver } from "@stenajs-webui/core";
+import { Box, Omit } from "@stenajs-webui/core";
 import * as React from "react";
-import { useRef } from "react";
+import { forwardRef } from "react";
 
 export interface IconProps
-  extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
+  extends Omit<FontAwesomeIconProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
-  hoverIcon?: IconDefinition;
   color?: string;
-  hoverColor?: string;
   size?: number;
 }
 
-export const Icon: React.FC<IconProps> = ({
-  className,
-  color = "var(--lhds-color-ui-500)",
-  flip,
-  icon,
-  hoverIcon,
-  pulse,
-  rotation,
-  hoverColor,
-  size = 20,
-  spin,
-  style,
-  transform,
-  ...props
-}) => {
-  const colors = {
-    iconColor: color,
-    iconColorHover: hoverColor,
-  };
-
-  const ref = useRef(null);
-
-  const mouseIsOver = useMouseIsOver(ref);
-
+export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
+  {
+    className,
+    color = "var(--lhds-color-ui-500)",
+    flip,
+    icon,
+    pulse,
+    rotation,
+    size = 20,
+    spin,
+    style,
+    transform,
+    ...props
+  },
+  ref
+) {
   if (!icon) {
     return null;
   }
@@ -48,9 +38,9 @@ export const Icon: React.FC<IconProps> = ({
     <Box justifyContent={"center"} alignItems={"center"} ref={ref}>
       <FontAwesomeIcon
         className={className}
-        color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}
+        color={color}
         flip={flip}
-        icon={(mouseIsOver && hoverIcon) || icon}
+        icon={icon}
         pulse={pulse}
         rotation={rotation}
         spin={spin}
@@ -60,4 +50,4 @@ export const Icon: React.FC<IconProps> = ({
       />
     </Box>
   );
-};
+});
