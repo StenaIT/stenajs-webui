@@ -84,3 +84,27 @@ export const FromRight = () => {
     </div>
   );
 };
+
+export const WithScroll = () => {
+  const [isOpen, open, close] = useBoolean(false);
+
+  return (
+    <div>
+      <Drawer isOpen={isOpen} onRequestClose={close}>
+        <Box background={"#9198e5"} height={"200px"} width={"100%"} />
+        <Box background={"#e59198"} height={"200px"} width={"100%"} />
+        <Box background={"#94e591"} height={"200px"} width={"100%"} />
+        <Box background={"#e5cd91"} height={"200px"} width={"100%"} />
+        <Box background={"#91c5e5"} height={"200px"} width={"100%"} />
+        <Box background={"#9198e5"} height={"200px"} width={"100%"} />
+        <Box background={"#dd91e5"} height={"200px"} width={"100%"} />
+        <Box background={"#9ce591"} height={"200px"} width={"100%"} />
+      </Drawer>
+
+      <PrimaryButton label={"Open"} onClick={open} />
+      <Row justifyContent={"center"} spacing={8}>
+        <Heading>This will be below the overlay.</Heading>
+      </Row>
+    </div>
+  );
+};
