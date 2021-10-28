@@ -1,18 +1,15 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   FontAwesomeIcon,
-  Props as FontAwesomeProps,
+  FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { Box, Omit, useMouseIsOver } from "@stenajs-webui/core";
+import { Box, Omit } from "@stenajs-webui/core";
 import * as React from "react";
-import { useRef } from "react";
 
 export interface IconProps
-  extends Omit<FontAwesomeProps, "color" | "size" | "icon"> {
+  extends Omit<FontAwesomeIconProps, "color" | "size" | "icon"> {
   icon?: IconDefinition;
-  hoverIcon?: IconDefinition;
   color?: string;
-  hoverColor?: string;
   size?: number;
 }
 
@@ -21,36 +18,25 @@ export const Icon: React.FC<IconProps> = ({
   color = "var(--lhds-color-ui-500)",
   flip,
   icon,
-  hoverIcon,
   pulse,
   rotation,
-  hoverColor,
   size = 20,
   spin,
   style,
   transform,
   ...props
 }) => {
-  const colors = {
-    iconColor: color,
-    iconColorHover: hoverColor,
-  };
-
-  const ref = useRef(null);
-
-  const mouseIsOver = useMouseIsOver(ref);
-
   if (!icon) {
     return null;
   }
 
   return (
-    <Box justifyContent={"center"} alignItems={"center"} ref={ref}>
+    <Box justifyContent={"center"} alignItems={"center"}>
       <FontAwesomeIcon
         className={className}
-        color={(mouseIsOver && colors.iconColorHover) || colors.iconColor}
+        color={color}
         flip={flip}
-        icon={(mouseIsOver && hoverIcon) || icon}
+        icon={icon}
         pulse={pulse}
         rotation={rotation}
         spin={spin}

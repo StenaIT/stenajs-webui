@@ -18,9 +18,7 @@ export default {
   component: Icon,
   argTypes: {
     color: colorListControl,
-    hoverColor: colorListControl,
     icon: disabledControl,
-    hoverIcon: disabledControl,
   },
 };
 
@@ -29,10 +27,6 @@ export const Demo: Story<IconProps> = (props) => (
 );
 
 export const WithColor = () => <Icon icon={faCog} color={"red"} />;
-
-export const WithHoverColor = () => <Icon icon={faCog} hoverColor={"red"} />;
-
-export const WithHoverIcon = () => <Icon icon={faCog} hoverIcon={faBicycle} />;
 
 export const WithSpin = () => <Icon icon={faSpinner} spin={true} />;
 
