@@ -1,3 +1,5 @@
-# stenajs-webui/theme
+# stenajs-webui/filter
 
-This package contains methods that help create themes for components.
+This package contains components and functionality that makes it easy to create custom filters in a drawer, and an overview row containing chips.
+
+
