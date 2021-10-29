@@ -14,7 +14,7 @@ import { SearchFilterButton } from "../components/SearchFilterButton";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
 
 export default {
-  title: "panels/SearchFilter",
+  title: "filter/SearchFilter",
 };
 
 export interface SalesItemSearchFilterModel {
