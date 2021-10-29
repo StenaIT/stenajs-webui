@@ -2,6 +2,17 @@
 
 ## Next
 
+### New package `filter`
+
+This package contains new functionality, search filter.
+
+It makes it easy to create a custom filter in a drawer,
+with a custom model for the search filter.
+
+It also makes it easy to create an overview row containing chips.
+
+Please see stories for an example.
+
 ### ActionMenuItem and ActionMenuLink
 
 - `disableCloseOnClick` is no longer forwarded to the DOM.
