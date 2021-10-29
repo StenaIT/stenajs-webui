@@ -1,10 +1,10 @@
 import { BoxProps, Column } from "@stenajs-webui/core";
 import * as React from "react";
 
-export interface CardProps extends Omit<BoxProps, "shadow"> {}
+export interface CardProps extends BoxProps {}
 
 export const Card: React.FC<CardProps> = ({
   background = "white",
-  elevation = "small",
+  shadow = "elevationS",
   ...boxProps
-}) => <Column elevation={elevation} background={background} {...boxProps} />;
+}) => <Column shadow={shadow} background={background} {...boxProps} />;

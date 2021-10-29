@@ -8,7 +8,6 @@ import {
   shadowListControl,
   spaceControl,
 } from "../../../storybook-helpers/storybook-controls";
-import { Space } from "../space/Space";
 import { cssColor } from "@stenajs-webui/theme";
 
 export default {
@@ -112,6 +111,46 @@ export const CustomBorder = () => (
   </div>
 );
 
+export const ElevationShadows = () => (
+  <Box
+    background={cssColor("--lhds-color-ui-100")}
+    indent={3}
+    spacing={3}
+    flexDirection={"row"}
+    justifyContent={"space-between"}
+  >
+    {([
+      "elevationXS",
+      "elevationS",
+      "elevationM",
+      "elevationL",
+      "elevationXL",
+      "elevationXXL",
+    ] as const).map((shadow) => (
+      <Box
+        shadow={shadow}
+        indent
+        spacing
+        borderRadius={4}
+        background={cssColor("--lhds-color-ui-50")}
+      >
+        <Txt>{shadow}</Txt>
+      </Box>
+    ))}
+  </Box>
+);
+
+export const ResponsiveShadow = () => (
+  <Box
+    shadow={[null, "elevationS", "elevationM", "elevationL"]}
+    indent
+    spacing
+    borderRadius={4}
+  >
+    <Txt>I hover more on larger screens!</Txt>
+  </Box>
+);
+
 export const BoxShadow = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"box"} indent spacing>
@@ -140,52 +179,6 @@ export const CustomShadow = () => (
   <Box shadow={`red 0px 0px 10px 4px`} indent spacing>
     <div>hello</div>
     <div>world</div>
-  </Box>
-);
-
-export const Elevation = () => (
-  <Box background={cssColor("--lhds-color-ui-100")} indent={3} spacing={3}>
-    <Box flexDirection={"row"} justifyContent={"space-between"}>
-      {([
-        "smaller",
-        "small",
-        "medium",
-        "large",
-        "larger",
-        "largest",
-      ] as const).map((elevation) => (
-        <Box
-          elevation={elevation}
-          indent
-          spacing
-          borderRadius={4}
-          background={cssColor("--lhds-color-ui-50")}
-        >
-          <Txt>{elevation}</Txt>
-        </Box>
-      ))}
-    </Box>
-    <Space num={3} />
-    <Box
-      elevation={"largest"}
-      shadow={"box"}
-      indent
-      spacing
-      background={cssColor("--lhds-color-ui-50")}
-    >
-      <Txt>shadow overrides elevation</Txt>
-    </Box>
-  </Box>
-);
-
-export const ResponsiveElevation = () => (
-  <Box
-    elevation={[null, "small", "medium", "large"]}
-    indent
-    spacing
-    borderRadius={4}
-  >
-    <Txt>I hover more on larger screens!</Txt>
   </Box>
 );
 

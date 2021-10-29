@@ -8,11 +8,12 @@
 
 ### Box
 
-- Added prop `elevation`. This prop adds a shadow to the box, and will be overridden by the old `shadow` prop if both are used at the same time.
+- Added elevation shadows.
 
 ### Card
 
-- `Card` has a default `elevation` instead of a `shadow`.
+- `Card` may have a custom `shadow`.
+- The default shadow of `Card` is `elevationXS`.
 
 ### Icon
 
