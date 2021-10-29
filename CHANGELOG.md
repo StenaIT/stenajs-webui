@@ -6,6 +6,14 @@
 
 - `disableCloseOnClick` is no longer forwarded to the DOM.
 
+### Box
+
+- Added prop `elevation`. This prop adds a shadow to the box, and will be overridden by the old `shadow` prop if both are used at the same time.
+
+### Card
+
+- `Card` has a default `elevation` instead of a `shadow`.
+
 ### Icon
 
 - Icon no longer has props `hoverIcon` and `hoverColor`.

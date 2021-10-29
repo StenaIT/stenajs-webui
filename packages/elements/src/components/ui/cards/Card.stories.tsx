@@ -9,7 +9,7 @@ import {
   Row,
   SeparatorLine,
   Space,
-  Text,
+  Txt,
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
@@ -34,7 +34,7 @@ export const Demo = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
     </Card>
   );
@@ -51,11 +51,11 @@ export const HeaderContent = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
       </CardBody>
     </Card>
   );
@@ -73,11 +73,11 @@ export const CompactHeader = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
       </CardBody>
     </Card>
   );
@@ -94,14 +94,14 @@ export const Details = () => {
           <Row alignItems={"center"}>
             <Icon icon={faCircle} color={cssColor("--lhds-color-green-600")} />
             <Space />
-            <Text>Confirmed</Text>
+            <Txt>Confirmed</Txt>
             <Indent num={2} />
             <Icon
               icon={faCreditCard}
               color={cssColor("--lhds-color-orange-600")}
             />
             <Space />
-            <Text>Partially paid</Text>
+            <Txt>Partially paid</Txt>
           </Row>
         }
         contentRight={
@@ -115,11 +115,11 @@ export const Details = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
       </CardBody>
     </Card>
   );
@@ -136,11 +136,11 @@ export const Unpaid = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
       </CardBody>
     </Card>
   );
@@ -156,7 +156,7 @@ export const Switch = () => {
           <Row>
             <Icon icon={faCircle} color={cssColor("--lhds-color-green-600")} />
             <Space />
-            <Text>Confirmed</Text>
+            <Txt>Confirmed</Txt>
           </Row>
         }
         contentRight={<FlatButton leftIcon={faTimes} />}
@@ -164,11 +164,11 @@ export const Switch = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
       </CardBody>
     </Card>
   );
@@ -192,11 +192,22 @@ export const Approved = () => {
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
+        <Txt>Lorem ipsavablasfasofofa</Txt>
       </CardBody>
       <SeparatorLine />
       <CardBody>
-        <Text>Line has no padding.</Text>
+        <Txt>Line has no padding.</Txt>
+      </CardBody>
+    </Card>
+  );
+};
+
+export const Elevation = () => {
+  return (
+    <Card elevation={"large"}>
+      <CardHeader variant={"compact"} text={"Elevation"} />
+      <CardBody>
+        <Txt>With more elevation</Txt>
       </CardBody>
     </Card>
   );

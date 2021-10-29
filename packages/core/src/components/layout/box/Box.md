@@ -10,7 +10,7 @@ For example:
 ```jsx
 <Box flexDirection={'row'}>
    some content
-</Row>
+</Box>
 ```
 
 is less readable than
@@ -36,30 +36,3 @@ It probably makes more sense to use one Box instead of many nested components, t
   some content
 </Box>
 ```
-
-# Theming
-
-You can set border, background, spacing, indent, etc, using theme.
-
-It allows presets from theme.
-
-```jsx
-<Box background={'primaryBg'}>
-    some content
-</Box>
-```
-
-As well as raw CSS values.
-
-```jsx
-<Box background={'#757575'}>
-    some content
-</Box>
-```
-
-The following props can use theme palette names:
-
-- boxShadow
-- background
-- border
-- borderColor

@@ -1,13 +1,15 @@
 import * as React from "react";
 import markdown from "./Box.md";
 import { Box, BoxProps } from "./Box";
-import { Text } from "../../text/Text";
+import { Txt } from "../../text/Text";
 import { Story } from "@storybook/react";
 import {
   colorListControl,
   shadowListControl,
   spaceControl,
 } from "../../../storybook-helpers/storybook-controls";
+import { Space } from "../space/Space";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "core/Layout/Box",
@@ -24,8 +26,8 @@ export default {
 
 export const Overview: Story<BoxProps> = (props) => (
   <Box {...props}>
-    <Text>hello</Text>
-    <Text>world</Text>
+    <Txt>hello</Txt>
+    <Txt>world</Txt>
   </Box>
 );
 
@@ -113,7 +115,7 @@ export const CustomBorder = () => (
 export const BoxShadow = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"box"} indent spacing>
-      <Text>This shadow is primarily used for cards, not modals.</Text>
+      <Txt>This shadow is primarily used for cards, not modals.</Txt>
     </Box>
   </div>
 );
@@ -121,7 +123,15 @@ export const BoxShadow = () => (
 export const ModalShadow = () => (
   <div style={{ display: "inline-block" }}>
     <Box shadow={"modal"} indent spacing>
-      <Text>This shadow is primarily used for modals.</Text>
+      <Txt>This shadow is primarily used for modals.</Txt>
+    </Box>
+  </div>
+);
+
+export const PopoverShadow = () => (
+  <div style={{ display: "inline-block" }}>
+    <Box shadow={"popover"} indent spacing>
+      <Txt>This shadow is primarily used for popovers.</Txt>
     </Box>
   </div>
 );
@@ -130,6 +140,52 @@ export const CustomShadow = () => (
   <Box shadow={`red 0px 0px 10px 4px`} indent spacing>
     <div>hello</div>
     <div>world</div>
+  </Box>
+);
+
+export const Elevation = () => (
+  <Box background={cssColor("--lhds-color-ui-100")} indent={3} spacing={3}>
+    <Box flexDirection={"row"} justifyContent={"space-between"}>
+      {([
+        "smaller",
+        "small",
+        "medium",
+        "large",
+        "larger",
+        "largest",
+      ] as const).map((elevation) => (
+        <Box
+          elevation={elevation}
+          indent
+          spacing
+          borderRadius={4}
+          background={cssColor("--lhds-color-ui-50")}
+        >
+          <Txt>{elevation}</Txt>
+        </Box>
+      ))}
+    </Box>
+    <Space num={3} />
+    <Box
+      elevation={"largest"}
+      shadow={"box"}
+      indent
+      spacing
+      background={cssColor("--lhds-color-ui-50")}
+    >
+      <Txt>shadow overrides elevation</Txt>
+    </Box>
+  </Box>
+);
+
+export const ResponsiveElevation = () => (
+  <Box
+    elevation={[null, "small", "medium", "large"]}
+    indent
+    spacing
+    borderRadius={4}
+  >
+    <Txt>I hover more on larger screens!</Txt>
   </Box>
 );
 
@@ -152,7 +208,7 @@ export const FlexGrowChildren = () => (
 
 export const WithAriaLabel = () => (
   <>
-    <Text>This blue box has an aria label.</Text>
+    <Txt>This blue box has an aria label.</Txt>
     <Box indent spacing>
       <Box
         aria-label={"This is a blue box."}

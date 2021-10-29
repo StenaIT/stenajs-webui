@@ -5,5 +5,6 @@ export interface CardProps extends Omit<BoxProps, "shadow"> {}
 
 export const Card: React.FC<CardProps> = ({
   background = "white",
+  elevation = "small",
   ...boxProps
-}) => <Column shadow={"box"} background={background} {...boxProps} />;
+}) => <Column elevation={elevation} background={background} {...boxProps} />;

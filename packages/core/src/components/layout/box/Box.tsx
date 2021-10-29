@@ -74,6 +74,17 @@ const shadows = {
 
 type ShadowType = keyof typeof shadows;
 
+const elevations = {
+  smaller: "var(--swui-shadow-elevation-xs)",
+  small: "var(--swui-shadow-elevation-s)",
+  medium: "var(--swui-shadow-elevation-m)",
+  large: "var(--swui-shadow-elevation-l)",
+  larger: "var(--swui-shadow-elevation-xl)",
+  largest: "var(--swui-shadow-elevation-xxl)",
+};
+
+type ElevationType = keyof typeof elevations;
+
 export interface BoxProps extends StyledSystemProps, DivProps {
   /**
    * If true, children are placed in a row.
@@ -91,9 +102,14 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   indent?: ResponsiveValue<boolean | TLengthStyledSystem>;
 
   /**
-   * Adds a shadow around the box.
+   * Adds a shadow around the box. Overrides elevation.
    */
   shadow?: ResponsiveValue<Property.BoxShadow | ShadowType>;
+
+  /**
+   * Elevates the box with shadows. Use shadow for custom shadows.
+   */
+  elevation?: ResponsiveValue<ElevationType>;
 
   /**
    * Sets the background of the box.
@@ -148,6 +164,8 @@ const excludedProps = [
   "height",
   "overflow",
   "display",
+  "shadow",
+  "elevation",
 ];
 
 const isExcludedWebUiProp = (propName: string) =>
@@ -171,6 +189,10 @@ const box = system({
   shadow: {
     property: "boxShadow",
     transform: (value) => shadows[value] ?? value,
+  },
+  elevation: {
+    property: "boxShadow",
+    transform: (value) => elevations[value] ?? value,
   },
 });
 
