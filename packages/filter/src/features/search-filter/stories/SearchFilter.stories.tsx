@@ -39,7 +39,7 @@ const fetchItemDivisionsForFilter = async () =>
     )
   );
 
-export const salesItemSearchFilterConfig: SearchFilterConfig<
+const salesItemSearchFilterConfig: SearchFilterConfig<
   SalesItemSearchFilterModel,
   SalesItemSearchFilterSectionKey
 > = {
