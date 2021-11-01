@@ -12,7 +12,7 @@ import {
 } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
-import * as ReactModal from "react-modal";
+import ReactModal from "react-modal";
 import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
 import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";

@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactModal from "react-modal";
+import ReactModal from "react-modal";
 
 import styles from "../modal/Modal.module.css";
 
