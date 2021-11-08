@@ -56,6 +56,7 @@ export const useKeyboardNavigation = (
           direction: MoveDirection,
           e: KeyboardEvent<HTMLInputElement>
         ) => {
+          wasHandled.current = true;
           ref.current!.blur();
           onMove(direction);
           e.preventDefault();
