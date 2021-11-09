@@ -2,9 +2,10 @@
 
 ## Next
 
-### UseKeyboardNavigation
+### UseKeyboardNavigation / UseTextInput
 
-- Fixed issue where onChange was called twice when pressing enter or the arrow keys.
+- Add support for `HTMLTextAreaElement` through a generic element type.
+- Fixed issue where `onChange` was called twice when pressing enter or the arrow keys.
 
 ### ActionMenuItem / ActionMenuLink
 
