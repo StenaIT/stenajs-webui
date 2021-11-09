@@ -1,7 +1,27 @@
 import { RefObject, useEffect } from "react";
+import { TextInputElement } from "./UseKeyboardNavigation";
+
+export function elementHasSelectionRange(element: TextInputElement): boolean {
+  if (element.tagName === "TEXTAREA") {
+    return true;
+  }
+
+  if (
+    element.tagName === "INPUT" &&
+    (element.type === "text" ||
+      element.type === "search" ||
+      element.type === "url" ||
+      element.type === "tel" ||
+      element.type === "password")
+  ) {
+    return true;
+  }
+
+  return false;
+}
 
 export const useSelectAllOnMount = (
-  ref: RefObject<HTMLInputElement>,
+  ref: RefObject<TextInputElement>,
   moveCursorToEnd: boolean,
   enabled: boolean
 ) => {
@@ -15,18 +35,12 @@ export const useSelectAllOnMount = (
       Chrome, starting from version 33, throws an exception while accessing those properties and method on the rest of input types.
       https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
      */
-    if (
-      ref.current?.type !== "text" &&
-      ref.current?.type !== "search" &&
-      ref.current?.type !== "url" &&
-      ref.current?.type !== "tel" &&
-      ref.current?.type !== "password"
-    ) {
+    if (!elementHasSelectionRange(ref.current)) {
       return;
     }
 
     if (enabled) {
-      ref.current.setSelectionRange(0, ref.current!.value.length);
+      ref.current.setSelectionRange(0, ref.current.value.length);
     } else if (moveCursorToEnd) {
       ref.current.setSelectionRange(
         ref.current.value.length,

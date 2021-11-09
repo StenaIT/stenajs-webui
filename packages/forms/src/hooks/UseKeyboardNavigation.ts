@@ -8,13 +8,14 @@ import {
 } from "react";
 
 export type MoveDirection = "right" | "left" | "down" | "up";
+export type TextInputElement = HTMLTextAreaElement | HTMLInputElement;
 
-export const useKeyboardNavigation = (
-  ref: RefObject<HTMLInputElement>,
+export const useKeyboardNavigation = <TElement extends TextInputElement>(
+  ref: RefObject<TElement>,
   /**
    * User-provided onKeyDown. Internal handler should forward calls to this.
    * */
-  onKeyDown: KeyboardEventHandler<HTMLInputElement> | undefined,
+  onKeyDown: KeyboardEventHandler<TElement> | undefined,
   onEnter: (() => void) | undefined,
   onEsc: (() => void) | undefined,
   /**
@@ -22,24 +23,24 @@ export const useKeyboardNavigation = (
    * */
   onMove: ((direction: MoveDirection) => void) | undefined,
   onDone: ((value: string) => void) | undefined,
-  onBlur: FocusEventHandler<HTMLInputElement> | undefined,
-  onFocus: FocusEventHandler<HTMLInputElement> | undefined
+  onBlur: FocusEventHandler<TElement> | undefined,
+  onFocus: FocusEventHandler<TElement> | undefined
 ) => {
   const wasHandled = useRef(false);
 
-  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+  const onBlurHandler: FocusEventHandler<TElement> = (ev) => {
     if (!wasHandled.current) {
       onDone?.(ev.target.value ?? "");
     }
     onBlur?.(ev);
   };
 
-  const onFocusHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+  const onFocusHandler: FocusEventHandler<TElement> = (ev) => {
     wasHandled.current = false;
     onFocus?.(ev);
   };
 
-  const onKeyDownHandler: KeyboardEventHandler<HTMLInputElement> = useCallback(
+  const onKeyDownHandler: KeyboardEventHandler<TElement> = useCallback(
     (ev) => {
       const { key } = ev;
       if (key === "Enter") {
@@ -54,7 +55,7 @@ export const useKeyboardNavigation = (
       } else if (onMove) {
         const blurMoveAndCancel = (
           direction: MoveDirection,
-          e: KeyboardEvent<HTMLInputElement>
+          e: KeyboardEvent<TElement>
         ) => {
           wasHandled.current = true;
           ref.current!.blur();
