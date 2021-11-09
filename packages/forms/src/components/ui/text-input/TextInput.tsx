@@ -93,7 +93,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     onBlur,
     ...inputProps
   } = props;
-  const localRef = useRef(null);
+  const localRef = useRef<HTMLInputElement>(null);
   const refToUse = inputRef ?? localRef;
   const hookProps = useTextInput<HTMLInputElement>(refToUse, {
     onEnter,
