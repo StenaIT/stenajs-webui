@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactModal from "react-modal";
+import ReactModal from "react-modal";
 import cx from "classnames";
 
 import styles from "./Drawer.module.css";
