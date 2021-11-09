@@ -4,7 +4,7 @@
 
 ### UseKeyboardNavigation
 
-- Fixed issue where onChange was called twice when pressing enter
+- Fixed issue where onChange was called twice when pressing enter or the arrow keys.
 
 ### ActionMenuItem / ActionMenuLink
 
