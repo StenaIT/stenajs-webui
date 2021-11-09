@@ -1,15 +1,50 @@
 import {
+  ChangeEvent,
   ChangeEventHandler,
-  ComponentPropsWithoutRef,
+  CSSProperties,
+  FocusEventHandler,
+  KeyboardEventHandler,
   RefObject,
   useCallback,
 } from "react";
-import { TextInputProps } from "../components/ui/text-input/TextInput";
-import { useKeyboardNavigation } from "./UseKeyboardNavigation";
+import { TextInputVariant } from "../components/ui/text-input/TextInput";
+import {
+  MoveDirection,
+  TextInputElement,
+  useKeyboardNavigation,
+} from "./UseKeyboardNavigation";
 import { useSelectAllOnMount } from "./UseSelectAllOnMount";
+import { FullOnChangeProps } from "../components/ui/types";
 
-export const useTextInput = (
-  ref: RefObject<HTMLInputElement>,
+interface UseTextInputOptions<TElement extends TextInputElement>
+  extends FullOnChangeProps<string, ChangeEvent<TElement>> {
+  wrapperStyle?: CSSProperties;
+  wrapperClassName?: string;
+  variant?: TextInputVariant;
+  hideBorder?: boolean;
+  selectAllOnMount?: boolean;
+  moveCursorToEndOnMount?: boolean;
+  onDone?: (value: string) => void;
+  onEnter?: () => void;
+  onEsc?: () => void;
+  autoFocus?: boolean;
+  /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
+  onMove?: (direction: MoveDirection) => void;
+  onFocus?: FocusEventHandler<TElement>;
+  onBlur?: FocusEventHandler<TElement>;
+  onKeyDown?: KeyboardEventHandler<TElement>;
+}
+
+interface UseTextInputHookResult<TElement extends TextInputElement> {
+  autoFocus?: boolean;
+  onChange: ChangeEventHandler<TElement>;
+  onFocus: FocusEventHandler<TElement>;
+  onBlur: FocusEventHandler<TElement>;
+  onKeyDown: KeyboardEventHandler<TElement>;
+}
+
+export const useTextInput = <TElement extends TextInputElement>(
+  ref: RefObject<TElement>,
   {
     onEnter,
     onEsc,
@@ -23,15 +58,15 @@ export const useTextInput = (
     onBlur,
     onKeyDown,
     autoFocus,
-  }: TextInputProps
-): ComponentPropsWithoutRef<"input"> => {
+  }: UseTextInputOptions<TElement>
+): UseTextInputHookResult<TElement> => {
   useSelectAllOnMount(ref, !!moveCursorToEndOnMount, !!selectAllOnMount);
 
   const {
     onKeyDownHandler,
     onFocusHandler,
     onBlurHandler,
-  } = useKeyboardNavigation(
+  } = useKeyboardNavigation<TElement>(
     ref,
     onKeyDown,
     onEnter,
@@ -42,14 +77,10 @@ export const useTextInput = (
     onFocus
   );
 
-  const onChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
+  const onChangeHandler = useCallback<ChangeEventHandler<TElement>>(
     (ev) => {
-      if (onChange) {
-        onChange(ev);
-      }
-      if (onValueChange) {
-        onValueChange(ev.target.value);
-      }
+      onChange?.(ev);
+      onValueChange?.(ev.target.value);
     },
     [onChange, onValueChange]
   );

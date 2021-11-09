@@ -89,11 +89,26 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     onChange,
     onKeyDown,
     hideBorder,
+    onFocus,
+    onBlur,
     ...inputProps
   } = props;
   const localRef = useRef(null);
   const refToUse = inputRef ?? localRef;
-  const hookProps = useTextInput(refToUse, props);
+  const hookProps = useTextInput<HTMLInputElement>(refToUse, {
+    onEnter,
+    onEsc,
+    onChange,
+    onValueChange,
+    selectAllOnMount,
+    moveCursorToEndOnMount,
+    onDone,
+    onMove,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    autoFocus,
+  });
 
   const currentIconRight =
     variant === "success"

@@ -8,13 +8,14 @@ import {
 } from "react";
 
 export type MoveDirection = "right" | "left" | "down" | "up";
+export type TextInputElement = HTMLTextAreaElement | HTMLInputElement;
 
-export const useKeyboardNavigation = (
-  ref: RefObject<HTMLInputElement>,
+export const useKeyboardNavigation = <TElement extends TextInputElement>(
+  ref: RefObject<TElement>,
   /**
    * User-provided onKeyDown. Internal handler should forward calls to this.
    * */
-  onKeyDown: KeyboardEventHandler<HTMLInputElement> | undefined,
+  onKeyDown: KeyboardEventHandler<TElement> | undefined,
   onEnter: (() => void) | undefined,
   onEsc: (() => void) | undefined,
   /**
@@ -22,24 +23,24 @@ export const useKeyboardNavigation = (
    * */
   onMove: ((direction: MoveDirection) => void) | undefined,
   onDone: ((value: string) => void) | undefined,
-  onBlur: FocusEventHandler<HTMLInputElement> | undefined,
-  onFocus: FocusEventHandler<HTMLInputElement> | undefined
+  onBlur: FocusEventHandler<TElement> | undefined,
+  onFocus: FocusEventHandler<TElement> | undefined
 ) => {
   const wasCancelledRef = useRef(false);
 
-  const onBlurHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+  const onBlurHandler: FocusEventHandler<TElement> = (ev) => {
     if (!wasCancelledRef.current) {
       onDone?.(ev.target.value ?? "");
     }
     onBlur?.(ev);
   };
 
-  const onFocusHandler: FocusEventHandler<HTMLInputElement> = (ev) => {
+  const onFocusHandler: FocusEventHandler<TElement> = (ev) => {
     wasCancelledRef.current = false;
     onFocus?.(ev);
   };
 
-  const onKeyDownHandler: KeyboardEventHandler<HTMLInputElement> = useCallback(
+  const onKeyDownHandler: KeyboardEventHandler<TElement> = useCallback(
     (ev) => {
       const { key } = ev;
       if (key === "Enter") {
@@ -53,7 +54,7 @@ export const useKeyboardNavigation = (
       } else if (onMove) {
         const blurMoveAndCancel = (
           direction: MoveDirection,
-          e: KeyboardEvent<HTMLInputElement>
+          e: KeyboardEvent<TElement>
         ) => {
           ref.current!.blur();
           onMove(direction);

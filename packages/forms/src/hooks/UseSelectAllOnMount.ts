@@ -1,8 +1,7 @@
 import { RefObject, useEffect } from "react";
+import { TextInputElement } from "./UseKeyboardNavigation";
 
-export function elementHasSelectionRange(
-  element: HTMLInputElement | HTMLTextAreaElement
-): boolean {
+export function elementHasSelectionRange(element: TextInputElement): boolean {
   if (element.tagName === "TEXTAREA") {
     return true;
   }
@@ -22,7 +21,7 @@ export function elementHasSelectionRange(
 }
 
 export const useSelectAllOnMount = (
-  ref: RefObject<HTMLInputElement | HTMLTextAreaElement>,
+  ref: RefObject<TextInputElement>,
   moveCursorToEnd: boolean,
   enabled: boolean
 ) => {
