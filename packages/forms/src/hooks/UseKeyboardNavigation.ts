@@ -26,17 +26,17 @@ export const useKeyboardNavigation = <TElement extends TextInputElement>(
   onBlur: FocusEventHandler<TElement> | undefined,
   onFocus: FocusEventHandler<TElement> | undefined
 ) => {
-  const wasCancelledRef = useRef(false);
+  const wasHandled = useRef(false);
 
   const onBlurHandler: FocusEventHandler<TElement> = (ev) => {
-    if (!wasCancelledRef.current) {
+    if (!wasHandled.current) {
       onDone?.(ev.target.value ?? "");
     }
     onBlur?.(ev);
   };
 
   const onFocusHandler: FocusEventHandler<TElement> = (ev) => {
-    wasCancelledRef.current = false;
+    wasHandled.current = false;
     onFocus?.(ev);
   };
 
@@ -44,10 +44,11 @@ export const useKeyboardNavigation = <TElement extends TextInputElement>(
     (ev) => {
       const { key } = ev;
       if (key === "Enter") {
+        wasHandled.current = true;
         onEnter?.();
         onDone?.(ev.currentTarget.value ?? "");
       } else if (key === "Escape") {
-        wasCancelledRef.current = true;
+        wasHandled.current = true;
         onEsc?.();
         ev.preventDefault();
         ev.stopPropagation();
@@ -56,6 +57,7 @@ export const useKeyboardNavigation = <TElement extends TextInputElement>(
           direction: MoveDirection,
           e: KeyboardEvent<TElement>
         ) => {
+          wasHandled.current = true;
           ref.current!.blur();
           onMove(direction);
           e.preventDefault();
