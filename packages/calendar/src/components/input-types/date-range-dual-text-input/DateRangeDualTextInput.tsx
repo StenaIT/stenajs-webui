@@ -92,8 +92,13 @@ export const DateRangeDualTextInput = <TData extends {}>({
 
   const statePerMonth = useMemo(
     () =>
-      buildDayStateForSingleMonth(undefined, startDate, endDate, dateInFocus),
-    [startDate, endDate, dateInFocus]
+      buildDayStateForSingleMonth(
+        calendarProps?.statePerMonth,
+        startDate,
+        endDate,
+        dateInFocus
+      ),
+    [calendarProps?.statePerMonth, startDate, endDate, dateInFocus]
   );
 
   const delayedIsCalendarVisible = useDelayedFalse(isCalendarVisible, 300);
@@ -109,13 +114,13 @@ export const DateRangeDualTextInput = <TData extends {}>({
         content={
           delayedIsCalendarVisible && (
             <CalendarWithMonthSwitcher
-              statePerMonth={statePerMonth}
               onClickDay={onClickDay}
               dateInFocus={dateInFocus}
               setDateInFocus={setDateInFocus}
               currentPanel={currentPanel}
               setCurrentPanel={setCurrentPanel}
               {...calendarProps}
+              statePerMonth={statePerMonth}
             />
           )
         }
