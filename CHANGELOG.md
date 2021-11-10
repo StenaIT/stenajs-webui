@@ -2,6 +2,9 @@
 
 ## Next
 
+### DateRangeDualTextInput
+- Add `calendarProps` which will be passed along to the internal Calendar-component, and can be used to specify enabled dates and `onDayClick` callback.
+
 ### UseKeyboardNavigation / UseTextInput
 
 - Add support for `HTMLTextAreaElement` through a generic element type.
