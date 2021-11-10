@@ -30,3 +30,18 @@ export function DateRangeCalendar<T extends {}>(
     <CalendarWithMonthSwitcher<T> {...props} {...dateRangeSelectionProps} />
   );
 }
+
+export type DateRangeInputCalendarProps<T> = Omit<
+  DateRangeCalendarProps<T>,
+  | "startDateInFocus"
+  | "onChange"
+  | "startDate"
+  | "endDate"
+  | "setStartDate"
+  | "setEndDate"
+  | "focusedInput"
+  | "setFocusedInput"
+  | "theme"
+  | "currentPanel"
+  | "setCurrentPanel"
+>;
