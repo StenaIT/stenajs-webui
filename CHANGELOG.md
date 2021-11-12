@@ -4,7 +4,7 @@
 
 ### Calendar
 
-- Added `hideYearPagination` prop to disable year pagination arrows.
+- Added `hideYearPagination` prop to hide year pagination arrows.
 
 ### DateRangeDualTextInput
 - Add `calendarProps` which will be passed along to the internal Calendar-component, and can be used to specify enabled dates and `onDayClick` callback.
