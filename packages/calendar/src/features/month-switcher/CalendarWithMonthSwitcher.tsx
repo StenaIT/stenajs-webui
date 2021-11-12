@@ -23,7 +23,7 @@ export interface CalendarWithMonthSwitcherProps<T> extends CalendarProps<T> {
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
   onSelectPreset?: (preset: CalendarPreset) => void;
-  disableYearPagination?: boolean;
+  hideYearPagination?: boolean;
 }
 
 const noop = () => {};
@@ -36,7 +36,7 @@ export function CalendarWithMonthSwitcher<T>({
   currentPanel,
   setCurrentPanel,
   onSelectPreset = noop,
-  disableYearPagination = false,
+  hideYearPagination = false,
   ...calendarProps
 }: CalendarWithMonthSwitcherProps<T>) {
   const {
@@ -83,7 +83,7 @@ export function CalendarWithMonthSwitcher<T>({
             onSelectPreset={onSelectPreset}
             headerLeftContent={
               <Row alignItems={"center"}>
-                {!disableYearPagination && (
+                {!hideYearPagination && (
                   <FlatButton
                     size={"small"}
                     onClick={prevYear}
@@ -106,7 +106,7 @@ export function CalendarWithMonthSwitcher<T>({
                   leftIcon={faAngleRight}
                 />
                 <Space />
-                {!disableYearPagination && (
+                {!hideYearPagination && (
                   <FlatButton
                     size={"small"}
                     onClick={nextYear}

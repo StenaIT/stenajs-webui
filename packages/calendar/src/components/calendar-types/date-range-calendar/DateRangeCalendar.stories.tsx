@@ -73,7 +73,7 @@ export const WithMultipleRows = () => {
   return <DateRangeCalendar {...props} numMonths={6} monthsPerRow={3} />;
 };
 
-export const WithDisabledYearPagination = () => {
+export const WithHiddenYearPagination = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar {...props} disableYearPagination={true} />;
+  return <DateRangeCalendar {...props} hideYearPagination={true} />;
 };
