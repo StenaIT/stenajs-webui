@@ -9,7 +9,7 @@ import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   DateRangeCalendarOnChangeValue,
-  DateRangeCalendarProps,
+  DateRangeInputCalendarProps,
 } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import {
   CalendarTheme,
@@ -23,7 +23,7 @@ import { CalendarPanelType } from "../../../features/calendar-with-month-year-pi
 import { Popover } from "@stenajs-webui/tooltip";
 import { buildDayStateForDateRange } from "../../../util/calendar/StateModifier";
 
-export interface DateRangeInputProps<T extends {}> {
+export interface DateRangeInputProps<T> {
   /** The current date range value */
   value: DateRangeCalendarOnChangeValue;
 
@@ -70,20 +70,7 @@ export interface DateRangeInputProps<T extends {}> {
   calendarTheme?: CalendarTheme;
 
   /** Props to be passed to DateRangeCalendar, see DateRangeCalendar. */
-  calendarProps?: Omit<
-    DateRangeCalendarProps<T>,
-    | "startDateInFocus"
-    | "onChange"
-    | "startDate"
-    | "endDate"
-    | "setStartDate"
-    | "setEndDate"
-    | "focusedInput"
-    | "setFocusedInput"
-    | "theme"
-    | "currentPanel"
-    | "setCurrentPanel"
-  >;
+  calendarProps?: DateRangeInputCalendarProps<T>;
 }
 
 /**
