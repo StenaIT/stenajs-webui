@@ -36,6 +36,26 @@ export const Standard = () => {
   );
 };
 
+export const DisabledYearPagination = () => {
+  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
+    undefined
+  );
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        calendarProps={{
+          disableYearPagination: true,
+        }}
+        {...props}
+      />
+    </div>
+  );
+};
+
 export const Centered = () => (
   <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
     <Standard />
