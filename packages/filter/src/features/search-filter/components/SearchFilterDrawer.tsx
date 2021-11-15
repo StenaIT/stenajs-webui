@@ -4,7 +4,7 @@ import {
   SearchFilterState,
 } from "../redux/SearchFilterRedux";
 import * as React from "react";
-import { Dispatch, useCallback } from "react";
+import { Dispatch, PropsWithChildren, useCallback } from "react";
 import { Drawer, DrawerProps } from "@stenajs-webui/modal";
 import { cssColor } from "@stenajs-webui/theme";
 import { Column } from "@stenajs-webui/core";
@@ -25,7 +25,7 @@ export const SearchFilterDrawer = function SearchFilterDrawer<
   actions,
   children,
   ...drawerProps
-}: SearchFilterDrawerProps<TFormModel, TSectionKey>) {
+}: PropsWithChildren<SearchFilterDrawerProps<TFormModel, TSectionKey>>) {
   const { open } = state.settings;
   const closeDrawer = useCallback(() => {
     dispatch(actions.closeFilters());
