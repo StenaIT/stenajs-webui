@@ -20,7 +20,6 @@ export const SearchFilterDrawer = function SearchFilterDrawer<
   TFormModel,
   TSectionKey extends string
 >({
-  config,
   state,
   dispatch,
   actions,
