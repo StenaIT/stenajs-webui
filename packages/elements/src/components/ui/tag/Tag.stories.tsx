@@ -25,6 +25,7 @@ export const Overview = () => (
       "warning",
       "success",
       "passive",
+      "turquoise",
     ] as Array<TagVariant>).map((variant) => (
       <>
         <Text size={"large"}>{variant}</Text>
