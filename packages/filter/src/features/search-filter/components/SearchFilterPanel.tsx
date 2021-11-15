@@ -39,7 +39,6 @@ export const SearchFilterPanel = function SearchFilterPanel<
           key={sectionId}
           sectionId={sectionId}
           state={state}
-          config={config}
           dispatch={dispatch}
           actions={actions}
         />

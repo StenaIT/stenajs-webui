@@ -1,30 +1,47 @@
 import {
   DateRangeCalendar,
   DateRangeCalendarProps,
+  DateRangeFocusedInput,
 } from "@stenajs-webui/calendar";
 import * as React from "react";
 import { useMemo, useState } from "react";
-import { DateRangeFocusedInput } from "@stenajs-webui/calendar/dist/components/calendar-types/date-range-calendar/DateRangeCalendar";
 import { Box } from "@stenajs-webui/core";
 import { parse } from "date-fns";
+import {
+  SearchFilterSection,
+  SearchFilterSectionProps,
+} from "../../../components/SearchFilterSection";
 
-interface DateRangeCalendarSectionProps
-  extends Omit<
-    DateRangeCalendarProps<{}>,
-    "focusedInput" | "setFocusedInput" | "startDate" | "endDate"
-  > {
-  startDate: string | undefined;
-  endDate: string | undefined;
+interface DateRangeCalendarSectionOnChangeValue {
+  startDate?: string;
+  endDate?: string;
 }
 
-export const DateRangeCalendarSection: React.FC<DateRangeCalendarSectionProps> = ({
-  startDate,
-  endDate,
+interface DateRangeCalendarSectionProps<TFormModel, TSectionKey extends string>
+  extends SearchFilterSectionProps<TFormModel, TSectionKey>,
+    Omit<
+      DateRangeCalendarProps<{}>,
+      "focusedInput" | "setFocusedInput" | "startDate" | "endDate" | "onChange"
+    > {
+  value: DateRangeCalendarSectionOnChangeValue;
+}
+
+export const DateRangeCalendarSection = <
+  TFormModel,
+  TSectionKey extends string
+>({
+  value,
+  sectionId,
+  state,
+  actions,
+  dispatch,
   ...dateRangeCalendarProps
-}) => {
+}: DateRangeCalendarSectionProps<TFormModel, TSectionKey>) => {
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
+
+  const { startDate, endDate } = value ?? {};
 
   const startDateObj = useMemo(
     () => (startDate ? parse(startDate, "yyyy-MM-dd", new Date()) : undefined),
@@ -37,16 +54,23 @@ export const DateRangeCalendarSection: React.FC<DateRangeCalendarSectionProps> =
   );
 
   return (
-    <Box flex={1} alignItems={"center"}>
-      <Box background={"white"} indent>
-        <DateRangeCalendar
-          setFocusedInput={setFocusedInput}
-          focusedInput={focusedInput}
-          startDate={startDateObj}
-          endDate={endDateObj}
-          {...dateRangeCalendarProps}
-        />
+    <SearchFilterSection
+      sectionId={sectionId}
+      state={state}
+      actions={actions}
+      dispatch={dispatch}
+    >
+      <Box flex={1} alignItems={"center"}>
+        <Box background={"white"} indent>
+          <DateRangeCalendar
+            setFocusedInput={setFocusedInput}
+            focusedInput={focusedInput}
+            startDate={startDateObj}
+            endDate={endDateObj}
+            {...dateRangeCalendarProps}
+          />
+        </Box>
       </Box>
-    </Box>
+    </SearchFilterSection>
   );
 };

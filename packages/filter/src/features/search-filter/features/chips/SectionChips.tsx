@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Dispatch, useCallback } from "react";
-import { SearchFilterConfig } from "../../config/SearchFilterConfig";
+import {
+  SearchFilterSectionChipModel,
+  SearchFilterSectionOnClickRemoveOnChip,
+} from "../../config/SearchFilterConfig";
 import {
   SearchFilterAction,
   SearchFilterActions,
@@ -11,7 +14,9 @@ import { ChipSpacer } from "./ChipSpacer";
 
 interface SectionChipsProps<TFormModel, TSectionKey extends string> {
   sectionId: TSectionKey;
-  config: SearchFilterConfig<TFormModel, TSectionKey>;
+  chips?: Array<SearchFilterSectionChipModel>;
+  emptyChipLabel?: string;
+  onClickRemoveOnChip?: SearchFilterSectionOnClickRemoveOnChip<TFormModel>;
   state: SearchFilterState<TFormModel>;
   dispatch: Dispatch<SearchFilterAction<TFormModel>>;
   actions: SearchFilterActions<TFormModel, TSectionKey>;
@@ -23,16 +28,15 @@ export const SectionChips = function SectionChips<
   TSectionKey extends string
 >({
   sectionId,
-  config,
+  chips,
   state: { formModel },
+  emptyChipLabel,
+  onClickRemoveOnChip,
   dispatch,
   actions,
   disableChipClearButton,
 }: SectionChipsProps<TFormModel, TSectionKey>) {
-  const { emptyChipLabel, onClickRemoveOnChip, chips } = config.sections[
-    sectionId
-  ];
-  const chipModels = chips?.({ formModel }) ?? [];
+  const chipModels = chips ?? [];
 
   const setFormModelFields = useCallback(
     (fields: Partial<TFormModel>) =>

@@ -1,40 +1,25 @@
 import * as React from "react";
 import { Dispatch, useCallback } from "react";
-import { SearchFilterConfig } from "../../config/SearchFilterConfig";
 import {
   SearchFilterAction,
   SearchFilterActions,
-  SearchFilterState,
 } from "../../redux/SearchFilterRedux";
-import { SectionChips } from "./SectionChips";
-import { SecondaryButton } from "@stenajs-webui/elements";
-import { ChipSpacer } from "./ChipSpacer";
 import { Row } from "@stenajs-webui/core";
+import { ChipSpacer } from "./ChipSpacer";
+import { SecondaryButton } from "@stenajs-webui/elements";
 
-interface SearchFilterChipsProps<TFormModel, TSectionKey extends string> {
-  config: SearchFilterConfig<TFormModel, TSectionKey>;
-  state: SearchFilterState<TFormModel>;
-  dispatch: Dispatch<SearchFilterAction<TFormModel>>;
-  actions: SearchFilterActions<TFormModel, TSectionKey>;
-  disableChipClearButton?: boolean;
+interface SearchFilterChipsProps {
+  dispatch: Dispatch<SearchFilterAction<any>>;
+  actions: SearchFilterActions<any, any>;
   disableClearAllButton?: boolean;
 }
 
-export const SearchFilterChips = function SearchFilterChips<
-  TFormModel,
-  TSectionKey extends string
->({
-  config,
-  state,
-  dispatch,
+export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({
+  children,
   actions,
-  disableClearAllButton,
-  disableChipClearButton,
-}: SearchFilterChipsProps<TFormModel, TSectionKey>) {
-  const sectionIdsWithChips = config.sectionOrder.filter(
-    (sectionId) => config.sections[sectionId] != null
-  );
-
+  dispatch,
+  disableClearAllButton = false,
+}) => {
   const onClickClearAll = useCallback(
     () => dispatch(actions.clearFormModel()),
     [actions, dispatch]
@@ -42,19 +27,7 @@ export const SearchFilterChips = function SearchFilterChips<
 
   return (
     <Row flexWrap={"wrap"}>
-      {sectionIdsWithChips.map((sectionId) => {
-        return (
-          <SectionChips
-            key={sectionId}
-            sectionId={sectionId}
-            config={config}
-            state={state}
-            dispatch={dispatch}
-            actions={actions}
-            disableChipClearButton={disableChipClearButton}
-          />
-        );
-      })}
+      {children}
       {!disableClearAllButton && (
         <ChipSpacer>
           <SecondaryButton

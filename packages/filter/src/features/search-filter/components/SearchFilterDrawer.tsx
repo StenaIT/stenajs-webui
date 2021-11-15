@@ -1,23 +1,21 @@
-import { Drawer, DrawerProps } from "@stenajs-webui/modal";
-import { cssColor } from "@stenajs-webui/theme";
-import * as React from "react";
-import { Dispatch, useCallback } from "react";
-import { SearchFilterConfig } from "../config/SearchFilterConfig";
 import {
   SearchFilterAction,
   SearchFilterActions,
   SearchFilterState,
 } from "../redux/SearchFilterRedux";
-import { SearchFilterPanel } from "./SearchFilterPanel";
+import * as React from "react";
+import { Dispatch, useCallback } from "react";
+import { Drawer, DrawerProps } from "@stenajs-webui/modal";
+import { cssColor } from "@stenajs-webui/theme";
+import { Column } from "@stenajs-webui/core";
+import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 
 interface SearchFilterDrawerProps<TFormModel, TSectionKey extends string>
   extends Omit<DrawerProps, "isOpen" | "onRequestClose"> {
-  config: SearchFilterConfig<TFormModel, TSectionKey>;
   state: SearchFilterState<TFormModel>;
   dispatch: Dispatch<SearchFilterAction<TFormModel>>;
   actions: SearchFilterActions<TFormModel, TSectionKey>;
 }
-
 export const SearchFilterDrawer = function SearchFilterDrawer<
   TFormModel,
   TSectionKey extends string
@@ -26,10 +24,10 @@ export const SearchFilterDrawer = function SearchFilterDrawer<
   state,
   dispatch,
   actions,
+  children,
   ...drawerProps
 }: SearchFilterDrawerProps<TFormModel, TSectionKey>) {
   const { open } = state.settings;
-
   const closeDrawer = useCallback(() => {
     dispatch(actions.closeFilters());
   }, [actions, dispatch]);
@@ -42,12 +40,10 @@ export const SearchFilterDrawer = function SearchFilterDrawer<
       onRequestClose={closeDrawer}
       {...drawerProps}
     >
-      <SearchFilterPanel
-        config={config}
-        state={state}
-        dispatch={dispatch}
-        actions={actions}
-      />
+      <Column>
+        <SearchFilterPanelHeader onRequestClose={closeDrawer} />
+        {children}
+      </Column>
     </Drawer>
   );
 };

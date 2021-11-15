@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Dispatch, useCallback, useEffect, useState } from "react";
-import { SearchFilterConfig } from "../config/SearchFilterConfig";
-import { Column, Row, useBoolean } from "@stenajs-webui/core";
+import { Dispatch, PropsWithChildren, useCallback } from "react";
+import { Row } from "@stenajs-webui/core";
 import {
   SearchFilterAction,
   SearchFilterActions,
@@ -9,14 +8,23 @@ import {
 } from "../redux/SearchFilterRedux";
 import { Collapsible, CollapsibleContent } from "@stenajs-webui/panels";
 import { lowerCase, upperFirst } from "lodash";
-import { Spinner } from "@stenajs-webui/elements";
+import { Banner, FlatButton, Spinner } from "@stenajs-webui/elements";
 
-interface SearchFilterSectionProps<TFormModel, TSectionKey extends string> {
+export interface SearchFilterSectionProps<
+  TFormModel,
+  TSectionKey extends string
+> {
   sectionId: TSectionKey;
-  config: SearchFilterConfig<TFormModel, TSectionKey>;
   state: SearchFilterState<TFormModel>;
   actions: SearchFilterActions<TFormModel, TSectionKey>;
   dispatch: Dispatch<SearchFilterAction<TFormModel>>;
+  contentLeft?: React.ReactNode;
+  contentRight?: React.ReactNode;
+  disableContentPadding?: boolean;
+  loading?: boolean;
+  error?: string;
+  onRetry?: () => void;
+  label?: string;
 }
 
 export const SearchFilterSection = function SearchFilterSection<
@@ -24,78 +32,54 @@ export const SearchFilterSection = function SearchFilterSection<
   TSectionKey extends string
 >({
   sectionId,
-  config,
+  label,
+  contentLeft,
+  contentRight,
   state,
   dispatch,
   actions,
-}: SearchFilterSectionProps<TFormModel, TSectionKey>) {
+  loading,
+  error,
+  onRetry,
+  disableContentPadding,
+  children,
+}: PropsWithChildren<SearchFilterSectionProps<TFormModel, TSectionKey>>) {
   const expanded = state.expandedSections.values[sectionId] ?? false;
-  const {
-    fetcher,
-    renderEditor,
-    renderLeft,
-    renderRight,
-    label,
-    showEditorWhileLoading,
-  } = config.sections[sectionId];
-  const [loading, startLoading, stopLoading] = useBoolean(false);
-  const [error, setError] = useState<Error | undefined>(undefined);
-  const [data, setData] = useState<unknown>(null);
 
   const onClickLabel = useCallback(() => {
     dispatch(actions.setSectionExpanded(sectionId, !expanded));
   }, [actions, dispatch, expanded, sectionId]);
 
-  useEffect(() => {
-    if (fetcher) {
-      startLoading();
-      setError(undefined);
-      fetcher(state.formModel)
-        .then(setData)
-        .catch(setError)
-        .finally(stopLoading);
-    }
-    // TODO Should only refetch when form model fields used by fetcher has been changed.
-  }, [fetcher, startLoading, state.formModel, stopLoading]);
-
-  const setFormModelFields = useCallback(
-    (fields: Partial<TFormModel>) =>
-      dispatch(actions.setFormModelFields(fields)),
-    [dispatch, actions]
-  );
-
   const activeLabel = label ?? formatColumnIdToHeaderCellLabel(sectionId);
 
-  const showEditor = !loading || showEditorWhileLoading;
-  const showLoading = loading && !showEditorWhileLoading;
-
-  const renderArgs = {
-    formModel: state.formModel,
-    setFormModelFields,
-    data,
-    loading,
-    error,
-  };
-
   return (
-    <Column>
-      <Collapsible
-        label={activeLabel}
-        collapsed={!expanded}
-        onClick={onClickLabel}
-        contentLeft={renderLeft?.(renderArgs)}
-        contentRight={renderRight?.(renderArgs)}
-      >
+    <Collapsible
+      label={activeLabel}
+      collapsed={!expanded}
+      onClick={onClickLabel}
+      contentLeft={contentLeft}
+      contentRight={contentRight}
+    >
+      {loading ? (
         <CollapsibleContent>
-          {showLoading && (
-            <Row spacing justifyContent={"center"} flex={1}>
-              <Spinner size={"small"} />
-            </Row>
-          )}
-          {showEditor && renderEditor?.(renderArgs)}
+          <Row spacing justifyContent={"center"} flex={1}>
+            <Spinner size={"small"} />
+          </Row>
         </CollapsibleContent>
-      </Collapsible>
-    </Column>
+      ) : error ? (
+        <Banner
+          variant={"error"}
+          text={error}
+          contentRight={
+            onRetry ? <FlatButton label={"Retry"} onClick={onRetry} /> : null
+          }
+        />
+      ) : disableContentPadding ? (
+        children
+      ) : (
+        <CollapsibleContent>{children}</CollapsibleContent>
+      )}
+    </Collapsible>
   );
 };
 

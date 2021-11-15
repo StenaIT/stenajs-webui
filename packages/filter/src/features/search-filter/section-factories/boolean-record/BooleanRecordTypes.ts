@@ -1,2 +1,7 @@
 export type BooleanRecord = Record<string, boolean>;
-export type BooleanRecordData = Array<{ id: string; label: string }>;
+export interface BooleanRecordOption {
+  value: string;
+  label: string;
+}
+
+export type BooleanRecordOptions = Array<BooleanRecordOption>;
