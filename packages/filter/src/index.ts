@@ -4,7 +4,6 @@
 
 export * from "./features/search-filter/components/SearchFilterDrawer";
 export * from "./features/search-filter/components/SearchFilterButton";
-export * from "./features/search-filter/components/SearchFilterPanel";
 export * from "./features/search-filter/components/SearchFilterSection";
 export * from "./features/search-filter/components/SearchFilterPanelHeader";
 export * from "./features/search-filter/config/SearchFilterConfig";
