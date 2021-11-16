@@ -57,25 +57,45 @@ export const useUserInputHandlers = (
   const onClickDay = useCallback(
     (day: DayData) => {
       if (focusedInput === "startDate") {
-        onValueChange?.({
-          startDate: day.date,
-          endDate,
-        });
-        if (firstFocusedInput === "startDate") {
+        if (endDate != null && isAfter(day.date, endDate)) {
+          onValueChange?.({
+            startDate: day.date,
+            endDate: undefined,
+          });
           setFocusedInput("endDate");
           endDateInputRef.current?.focus();
         } else {
-          setTimeout(hideCalendar, 50);
+          onValueChange?.({
+            startDate: day.date,
+            endDate,
+          });
+          if (firstFocusedInput === "startDate") {
+            setFocusedInput("endDate");
+            endDateInputRef.current?.focus();
+          } else {
+            setTimeout(hideCalendar, 50);
+          }
         }
       } else if (focusedInput === "endDate") {
-        onValueChange?.({
-          startDate,
-          endDate: day.date,
-        });
-        if (!startDate || isAfter(startDate, day.date)) {
+        if (!startDate) {
+          onValueChange?.({
+            startDate,
+            endDate: day.date,
+          });
           setFocusedInput("startDate");
           startDateInputRef.current?.focus();
+        } else if (isAfter(startDate, day.date)) {
+          onValueChange?.({
+            startDate: day.date,
+            endDate: undefined,
+          });
+          setFocusedInput("endDate");
+          endDateInputRef.current?.focus();
         } else {
+          onValueChange?.({
+            startDate,
+            endDate: day.date,
+          });
           setTimeout(hideCalendar, 50);
         }
       }
