@@ -19,7 +19,6 @@
   },
   "scripts": {
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
-    "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
     "clean": "rm -rf dist",

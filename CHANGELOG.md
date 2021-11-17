@@ -18,7 +18,9 @@ Please see stories for an example.
 - `truthyKeysAsList`, returns all keys that have a truthy value.
 - `PickByValue`, a type that returns a new type with picked fields that match a type.
 
-`type StringFieldsOnUser = PickByValue<User, string>;`
+```typescript
+type StringFieldsOnUser = PickByValue<User, string>;
+```
 
 ### Select components
 
