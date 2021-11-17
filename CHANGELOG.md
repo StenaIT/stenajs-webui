@@ -1,5 +1,22 @@
 # Changelog
 
+## Next
+
+### New package `filter`
+
+This package contains new functionality, search filter.
+
+It makes it easy to create a custom filter in a drawer,
+with a custom model for the search filter.
+
+It also makes it easy to create an overview row containing chips.
+
+Please see stories for an example.
+
+### Select components
+
+- Dependency `react-select` has been updated to v5.
+
 ## 14.2.0
 
 ### Calendar
@@ -15,17 +32,6 @@
 
 - Add support for `HTMLTextAreaElement` through a generic element type.
 - Fixed issue where `onChange` was called twice when pressing enter or the arrow keys.
-
-### New package `filter`
-
-This package contains new functionality, search filter.
-
-It makes it easy to create a custom filter in a drawer,
-with a custom model for the search filter.
-
-It also makes it easy to create an overview row containing chips.
-
-Please see stories for an example.
 
 ### ActionMenuItem and ActionMenuLink
 
