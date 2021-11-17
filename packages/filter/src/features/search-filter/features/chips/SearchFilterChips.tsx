@@ -2,7 +2,7 @@ import * as React from "react";
 import { useCallback } from "react";
 import { Row } from "@stenajs-webui/core";
 import { ChipSpacer } from "./ChipSpacer";
-import { SecondaryButton } from "@stenajs-webui/elements";
+import { FlatButton } from "@stenajs-webui/elements";
 import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../../context/SearchFilterActionsContext";
 
@@ -27,7 +27,7 @@ export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({
       {children}
       {!disableClearAllButton && (
         <ChipSpacer>
-          <SecondaryButton
+          <FlatButton
             size={"small"}
             label={"Clear all"}
             onClick={onClickClearAll}
