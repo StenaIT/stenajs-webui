@@ -23,7 +23,6 @@ export const createChipsPropsForDateRange = <
     formModel[endDateFieldName]
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForDateRange(
-    formModel,
     startDateFieldName,
     endDateFieldName
   ),
@@ -45,7 +44,6 @@ export const createOnClickRemoveOnChipForDateRange = <
   TFormModel,
   TField extends keyof PickByValue<TFormModel, DateRange>
 >(
-  formModel: TFormModel,
   startDateFieldName: TField,
   endDateFieldName: TField
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
