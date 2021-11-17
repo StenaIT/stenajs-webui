@@ -4,26 +4,49 @@ import {
   DateRangeFocusedInput,
 } from "@stenajs-webui/calendar";
 import * as React from "react";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Box } from "@stenajs-webui/core";
-import { parse } from "date-fns";
+import { format, parse } from "date-fns";
 import {
   SearchFilterSection,
   SearchFilterSectionProps,
 } from "../../../components/SearchFilterSection";
+import {
+  SearchFilterActions,
+  SearchFilterDispatch,
+} from "../../../redux/SearchFilterRedux";
+import { useSearchFilterDispatch } from "../../../context/SearchFilterDispatchContext";
+import { useSearchFilterActions } from "../../../context/SearchFilterActionsContext";
 
 interface DateRangeCalendarSectionOnChangeValue {
   startDate?: string;
   endDate?: string;
 }
 
-interface DateRangeCalendarSectionProps<TFormModel, TSectionKey extends string>
-  extends SearchFilterSectionProps<TFormModel, TSectionKey>,
+export interface DateRangeCalendarSectionProps<
+  TFormModel,
+  TSectionKey extends string
+> extends SearchFilterSectionProps<TSectionKey>,
     Omit<
       DateRangeCalendarProps<{}>,
-      "focusedInput" | "setFocusedInput" | "startDate" | "endDate" | "onChange"
+      | "focusedInput"
+      | "setFocusedInput"
+      | "startDate"
+      | "endDate"
+      | "onChange"
+      | "setStartDate"
+      | "setEndDate"
     > {
   value: DateRangeCalendarSectionOnChangeValue;
+  onValueChange: (
+    value: DateRangeCalendarSectionOnChangeValue,
+    options: SetDateOptions<TFormModel, TSectionKey>
+  ) => void;
+}
+
+export interface SetDateOptions<TFormModel, TSectionKey extends string> {
+  dispatch: SearchFilterDispatch<TFormModel>;
+  actions: SearchFilterActions<TFormModel, TSectionKey>;
 }
 
 export const DateRangeCalendarSection = <
@@ -31,12 +54,17 @@ export const DateRangeCalendarSection = <
   TSectionKey extends string
 >({
   value,
+  onValueChange,
   sectionId,
-  state,
-  actions,
-  dispatch,
   ...dateRangeCalendarProps
 }: DateRangeCalendarSectionProps<TFormModel, TSectionKey>) => {
+  const dispatch = useSearchFilterDispatch();
+  const actions = useSearchFilterActions<TFormModel, TSectionKey>();
+
+  const options = useMemo<SetDateOptions<TFormModel, TSectionKey>>(
+    () => ({ dispatch, actions }),
+    [actions, dispatch]
+  );
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
@@ -53,13 +81,28 @@ export const DateRangeCalendarSection = <
     [endDate]
   );
 
+  const setStartDate = useCallback(
+    (startDate: Date) => {
+      onValueChange(
+        { startDate: format(startDate, "yyyy-MM-dd"), endDate },
+        options
+      );
+    },
+    [endDate, onValueChange, options]
+  );
+
+  const setEndDate = useCallback(
+    (endDate: Date) => {
+      onValueChange(
+        { startDate, endDate: format(endDate, "yyyy-MM-dd") },
+        options
+      );
+    },
+    [onValueChange, options, startDate]
+  );
+
   return (
-    <SearchFilterSection
-      sectionId={sectionId}
-      state={state}
-      actions={actions}
-      dispatch={dispatch}
-    >
+    <SearchFilterSection sectionId={sectionId}>
       <Box flex={1} alignItems={"center"}>
         <Box background={"white"} indent>
           <DateRangeCalendar
@@ -67,6 +110,8 @@ export const DateRangeCalendarSection = <
             focusedInput={focusedInput}
             startDate={startDateObj}
             endDate={endDateObj}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
             {...dateRangeCalendarProps}
           />
         </Box>

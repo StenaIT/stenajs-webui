@@ -1,25 +1,19 @@
 import * as React from "react";
-import { Dispatch, useCallback } from "react";
+import { useCallback } from "react";
 import {
   SearchFilterSectionChipModel,
   SearchFilterSectionOnClickRemoveOnChip,
 } from "../../config/SearchFilterConfig";
-import {
-  SearchFilterAction,
-  SearchFilterActions,
-  SearchFilterState,
-} from "../../redux/SearchFilterRedux";
 import { Chip } from "@stenajs-webui/elements";
 import { ChipSpacer } from "./ChipSpacer";
+import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
+import { useSearchFilterActions } from "../../context/SearchFilterActionsContext";
 
-interface SectionChipsProps<TFormModel, TSectionKey extends string> {
+export interface SectionChipsProps<TFormModel, TSectionKey extends string> {
   sectionId: TSectionKey;
   chips?: Array<SearchFilterSectionChipModel>;
   emptyChipLabel?: string;
   onClickRemoveOnChip?: SearchFilterSectionOnClickRemoveOnChip<TFormModel>;
-  state: SearchFilterState<TFormModel>;
-  dispatch: Dispatch<SearchFilterAction<TFormModel>>;
-  actions: SearchFilterActions<TFormModel, TSectionKey>;
   disableChipClearButton?: boolean;
 }
 
@@ -29,14 +23,12 @@ export const SectionChips = function SectionChips<
 >({
   sectionId,
   chips,
-  state: { formModel },
   emptyChipLabel,
   onClickRemoveOnChip,
-  dispatch,
-  actions,
   disableChipClearButton,
 }: SectionChipsProps<TFormModel, TSectionKey>) {
-  const chipModels = chips ?? [];
+  const dispatch = useSearchFilterDispatch();
+  const actions = useSearchFilterActions();
 
   const setFormModelFields = useCallback(
     (fields: Partial<TFormModel>) =>
@@ -46,9 +38,9 @@ export const SectionChips = function SectionChips<
 
   const onClickRemove = useCallback(
     (value: string) => {
-      onClickRemoveOnChip?.({ value, formModel, setFormModelFields });
+      onClickRemoveOnChip?.({ value, setFormModelFields });
     },
-    [formModel, onClickRemoveOnChip, setFormModelFields]
+    [onClickRemoveOnChip, setFormModelFields]
   );
 
   const onClickLabel = useCallback(() => {
@@ -57,7 +49,7 @@ export const SectionChips = function SectionChips<
     dispatch(actions.openFilters());
   }, [actions, dispatch, sectionId]);
 
-  if (!chipModels.length) {
+  if (!chips?.length) {
     if (!emptyChipLabel) {
       return null;
     }
@@ -74,7 +66,7 @@ export const SectionChips = function SectionChips<
 
   return (
     <>
-      {chipModels.map(({ label, value }) => (
+      {chips.map(({ label, value }) => (
         <ChipSpacer key={value}>
           <Chip
             label={label ?? sectionId}

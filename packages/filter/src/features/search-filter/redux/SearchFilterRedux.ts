@@ -12,10 +12,15 @@ import {
   ValueByIdAction,
   ValueByIdState,
 } from "@stenajs-webui/redux";
+import { Dispatch } from "react";
 
 export interface SearchFilterSettings {
   open: boolean;
 }
+
+export type SearchFilterDispatch<TFormModel> = Dispatch<
+  SearchFilterAction<TFormModel>
+>;
 
 export interface SearchFilterState<TFormModel> {
   expandedSections: ValueByIdState<boolean>;
@@ -28,22 +33,32 @@ export type SearchFilterAction<TFormModel> =
   | ReducerIdGateAction<EntityAction<TFormModel>>
   | ReducerIdGateAction<EntityAction<SearchFilterSettings>>;
 
+export const createSearchFilterInitialState = <TFormModel>(
+  initialFormModel: TFormModel
+): SearchFilterState<TFormModel> => ({
+  settings: {
+    open: false,
+  },
+  formModel: initialFormModel,
+  expandedSections: { values: {} },
+});
+
 export const createSearchFilterReducer = <TFormModel>(
   reducerId: string,
-  initialFormModel: TFormModel
+  initialState: SearchFilterState<TFormModel>
 ) =>
   combineReducers({
     expandedSections: reducerIdGate(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdReducer<boolean>()
+      createValueByIdReducer<boolean>(initialState.expandedSections)
     ),
     formModel: reducerIdGate(
       getReducerIdFor(reducerId, "formModel"),
-      createEntityReducer<TFormModel>(initialFormModel)
+      createEntityReducer<TFormModel>(initialState.formModel)
     ),
     settings: reducerIdGate(
       getReducerIdFor(reducerId, "settings"),
-      createEntityReducer<SearchFilterSettings>({ open: false })
+      createEntityReducer<SearchFilterSettings>(initialState.settings)
     ),
   });
 

@@ -1,15 +1,11 @@
 import * as React from "react";
-import { useEffect, useMemo, useState } from "react";
-import {
-  BooleanRecord,
-  BooleanRecordOptions,
-} from "../section-factories/boolean-record/BooleanRecordTypes";
+import { useMemo, useState } from "react";
+import { BooleanRecord } from "../section-factories/boolean-record/BooleanRecordTypes";
 import { Card, CardHeader } from "@stenajs-webui/elements";
 import { Indent, Row, useBoolean } from "@stenajs-webui/core";
 import { SearchFilterButton } from "../components/SearchFilterButton";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
 import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
-import { format } from "date-fns";
 import { SearchFilterDrawer } from "../components/SearchFilterDrawer";
 import { SearchFilterChips } from "../features/chips/SearchFilterChips";
 import {
@@ -17,13 +13,11 @@ import {
   SearchFilterSectionProps,
 } from "../components/SearchFilterSection";
 import { SectionChips } from "../features/chips/SectionChips";
-import {
-  CheckboxSection,
-  CheckboxSectionProps,
-} from "../section-factories/boolean-record/checkboxes/SimpleCheckboxListSection";
+import { createSearchFilterInitialState } from "../redux/SearchFilterRedux";
+import { createDateRangeSectionProps } from "../section-factories/date-range/DateRangePropsFactory";
 
 export default {
-  title: "filter/SearchFilterNew",
+  title: "filter/SearchFilter",
 };
 
 export interface SalesItemSearchFilterModel {
@@ -37,25 +31,11 @@ export type SalesItemSearchFilterSectionKey =
   | "divisions"
   | "error";
 
-const fetchItemDivisionsForFilter = async (startDate: string | undefined) =>
-  new Promise<BooleanRecordOptions>((resolve) =>
-    setTimeout(
-      () =>
-        resolve([
-          { value: "1", label: "The one " + (startDate ?? "no date") },
-          { value: "2", label: "Second" },
-          { value: "3", label: "Threes" },
-          { value: "4", label: "Quatro" },
-        ]),
-      1000
-    )
-  );
-
 export const Demo = () => {
   const { dispatch, actions, state } = useLocalSearchFilterState<
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
-  >({ divisions: {} });
+  >(createSearchFilterInitialState({ divisions: {} }));
 
   const comparisonDateChips = useMemo(() => {
     const { startDate, endDate } = state.formModel;
@@ -84,14 +64,11 @@ export const Demo = () => {
           text={"OSS pricing"}
           contentAfterHeading={
             <Row alignItems={"center"} indent spacing>
-              <SearchFilterButton actions={actions} dispatch={dispatch} />
+              <SearchFilterButton />
               <Indent num={0.5} />
-              <SearchFilterChips actions={actions} dispatch={dispatch}>
+              <SearchFilterChips>
                 <SectionChips
                   sectionId={"comparisonDate"}
-                  state={state}
-                  actions={actions}
-                  dispatch={dispatch}
                   chips={comparisonDateChips}
                   emptyChipLabel={"No dates"}
                   onClickRemoveOnChip={() => {
@@ -105,9 +82,6 @@ export const Demo = () => {
                 />
                 <SectionChips
                   sectionId={"divisions"}
-                  state={state}
-                  actions={actions}
-                  dispatch={dispatch}
                   chips={divisionChips}
                   emptyChipLabel={"All division"}
                   onClickRemoveOnChip={({ value }) => {
@@ -127,54 +101,22 @@ export const Demo = () => {
           }
         />
       </Card>
-      <SearchFilterDrawer state={state} actions={actions} dispatch={dispatch}>
+      <SearchFilterDrawer>
         <DateRangeCalendarSection
           sectionId={"comparisonDate"}
-          state={state}
-          actions={actions}
-          dispatch={dispatch}
-          value={state.formModel}
-          setStartDate={(startDate) => {
-            dispatch(
-              actions.setFormModelFields({
-                startDate: format(startDate, "yyyy-MM-dd"),
-              })
-            );
-          }}
-          setEndDate={(endDate) => {
-            dispatch(
-              actions.setFormModelFields({
-                endDate: format(endDate, "yyyy-MM-dd"),
-              })
-            );
-          }}
+          {...createDateRangeSectionProps(
+            state.formModel,
+            "startDate",
+            "endDate"
+          )}
         />
-        <DivisionSection
-          sectionId={"divisions"}
-          state={state}
-          actions={actions}
-          dispatch={dispatch}
-          value={state.formModel.divisions}
-          onValueChange={(divisions) => {
-            console.log(divisions);
-            dispatch(actions.setFormModelFields({ divisions }));
-          }}
-        />
-        <ErrorSection
-          sectionId={"error"}
-          state={state}
-          actions={actions}
-          dispatch={dispatch}
-        />
+        <ErrorSection sectionId={"error"} />
       </SearchFilterDrawer>
     </>
   );
 };
 
-type FilterSectionProps = SearchFilterSectionProps<
-  SalesItemSearchFilterModel,
-  SalesItemSearchFilterSectionKey
->;
+type FilterSectionProps = SearchFilterSectionProps<SalesItemSearchFilterSectionKey>;
 
 const ErrorSection: React.VFC<FilterSectionProps> = (props) => {
   const [loading, startLoading, stopLoading] = useBoolean(false);
@@ -197,35 +139,6 @@ const ErrorSection: React.VFC<FilterSectionProps> = (props) => {
       loading={loading}
       error={error}
       onRetry={onRetry}
-    />
-  );
-};
-
-const DivisionSection: React.VFC<
-  CheckboxSectionProps<
-    SalesItemSearchFilterModel,
-    SalesItemSearchFilterSectionKey
-  >
-> = ({ state, ...props }) => {
-  const [loading, startLoading, stopLoading] = useBoolean(false);
-  const [error, setError] = useState<Error | undefined>(undefined);
-  const [data, setData] = useState<BooleanRecordOptions | undefined>(undefined);
-
-  useEffect(() => {
-    startLoading();
-    fetchItemDivisionsForFilter(state.formModel.startDate)
-      .then(setData)
-      .catch(setError)
-      .then(stopLoading);
-  }, [startLoading, state.formModel.startDate, stopLoading]);
-
-  return (
-    <CheckboxSection
-      {...props}
-      state={state}
-      loading={loading}
-      error={error?.message}
-      options={data}
     />
   );
 };

@@ -11,12 +11,11 @@ export interface ChipsArg<TSearchFilterModel> {
   formModel: TSearchFilterModel;
 }
 
-export type SetFormModelFields<TFormModel> = (
+export type FormFieldsSetter<TFormModel> = (
   fields: Partial<TFormModel>
 ) => void;
 
 export interface OnClickRemoveOnChipArg<TFormModel> {
   value: string;
-  formModel: TFormModel;
-  setFormModelFields: SetFormModelFields<TFormModel>;
+  setFormModelFields: FormFieldsSetter<TFormModel>;
 }

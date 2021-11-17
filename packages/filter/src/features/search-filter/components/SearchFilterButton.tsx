@@ -1,34 +1,27 @@
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
 import { SecondaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import { Dispatch, useCallback } from "react";
-import {
-  SearchFilterAction,
-  SearchFilterActions,
-} from "../redux/SearchFilterRedux";
+import { useCallback } from "react";
+import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
+import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
 
-interface SearchFilterDrawerButtonProps<
-  TFormModel,
-  TSectionKey extends string
-> {
-  dispatch: Dispatch<SearchFilterAction<TFormModel>>;
-  actions: SearchFilterActions<TFormModel, TSectionKey>;
+interface SearchFilterDrawerButtonProps {
+  label?: string;
 }
 
-export const SearchFilterButton = function SearchFilterDrawerButton<
-  TFormModel,
-  TSectionKey extends string
->({
-  dispatch,
-  actions,
-}: SearchFilterDrawerButtonProps<TFormModel, TSectionKey>) {
+export const SearchFilterButton: React.VFC<SearchFilterDrawerButtonProps> = ({
+  label = "Filters",
+}) => {
+  const dispatch = useSearchFilterDispatch();
+  const actions = useSearchFilterActions();
+
   const onClickButton = useCallback(() => {
     dispatch(actions.openFilters());
   }, [actions, dispatch]);
 
   return (
     <SecondaryButton
-      label={"Filters"}
+      label={label}
       leftIcon={faSlidersH}
       onClick={onClickButton}
     />
