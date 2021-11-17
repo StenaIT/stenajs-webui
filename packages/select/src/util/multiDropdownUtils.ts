@@ -46,9 +46,13 @@ const removeOptionHeaders = <TData>(
     .map(convertInternalOptionToDropdownOption);
 
 export const createOnChange = <TData>(onChange: OnChange<TData>) => (
-  selectedInternalOptions: OnChangeValue<InternalDropdownOption<TData>, true>,
+  incomingSelectedInternalOptions: OnChangeValue<
+    InternalDropdownOption<TData>,
+    true
+  >,
   meta: ActionMeta<InternalDropdownOption<TData>>
 ) => {
+  const selectedInternalOptions = incomingSelectedInternalOptions ?? [];
   switch (meta.action) {
     case "select-option":
       if (meta.option && "internalOptions" in meta.option) {
