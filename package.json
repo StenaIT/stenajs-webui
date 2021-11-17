@@ -105,7 +105,7 @@
   "bundlesize": [
     {
       "path": "./packages/calendar/dist/*.js",
-      "maxSize": "19 kB"
+      "maxSize": "20 kB"
     },
     {
       "path": "./packages/core/dist/*.js",
@@ -121,11 +121,11 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "22 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./packages/grid-export/dist/*.js",
-      "maxSize": "4 kB"
+      "maxSize": "5 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",
@@ -145,7 +145,7 @@
     },
     {
       "path": "./packages/select/dist/*.js",
-      "maxSize": "5 kB"
+      "maxSize": "6 kB"
     },
     {
       "path": "./packages/theme/dist/*.js",
