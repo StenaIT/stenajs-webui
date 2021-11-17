@@ -1,6 +1,5 @@
-import { OptionTypeBase } from "react-select/src/types";
-import { SelectTheme } from "../SelectTheme";
 import { StylesConfig } from "react-select";
+import { SelectTheme } from "../SelectTheme";
 
 const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],
@@ -40,10 +39,7 @@ const resolveOptionColor = (
   }
 };
 
-export const createStylesFromTheme = <
-  OptionType extends OptionTypeBase,
-  IsMulti extends boolean
->({
+export const createStylesFromTheme = <OptionType, IsMulti extends boolean>({
   menu,
   menuPortal,
   input,

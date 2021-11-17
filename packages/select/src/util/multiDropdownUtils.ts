@@ -2,7 +2,7 @@ import { differenceWith, intersectionWith, isEqual, uniqWith } from "lodash";
 import {
   ActionMeta,
   GroupedOptionsType,
-  GroupTypeBase,
+  GroupBase,
   OptionsType,
   ValueType,
 } from "react-select";
@@ -193,7 +193,7 @@ export const convertDropdownOptionToInternalOption = <TData>(
 });
 
 export const convertGroupedDropdownOptionToInternalOption = <TData>(
-  option: GroupTypeBase<DropdownOption<TData>>
+  option: GroupBase<DropdownOption<TData>>
 ): InternalDropdownOption<TData> => ({
   data: option.label,
   label: option.label,
