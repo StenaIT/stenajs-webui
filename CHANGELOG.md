@@ -13,6 +13,13 @@ It also makes it easy to create an overview row containing chips.
 
 Please see stories for an example.
 
+### New utils in `core`
+
+- `truthyKeysAsList`, returns all keys that have a truthy value.
+- `PickByValue`, a type that returns a new type with picked fields that match a type.
+
+`type StringFieldsOnUser = PickByValue<User, string>;`
+
 ### Select components
 
 - Dependency `react-select` has been updated to v5.
@@ -43,13 +50,6 @@ Please see stories for an example.
 - Removed unnecessary mouseover event listeners.
 - Added `ref` prop.
 - Added `display` prop so that you can e.g. display it inline.
-
-### New utils in `core`
-
-- `truthyKeysAsList`, returns all keys that have a truthy value.
-- `PickByValue`, a type that returns a new type with picked fields that match a type.
-
-`type StringFieldsOnUser = PickByValue<User, string>;`
 
 ### Breaking changes
 
