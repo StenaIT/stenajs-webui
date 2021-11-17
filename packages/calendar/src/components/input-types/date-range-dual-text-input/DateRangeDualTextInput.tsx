@@ -17,23 +17,26 @@ import { useDateRangeEffects } from "./hooks/UseDateRangeEffects";
 import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
+import { DateRangeInputCalendarProps } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 
-export interface DateRangeDualTextInputProps
+export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
   autoFocus?: boolean;
+  calendarProps?: DateRangeInputCalendarProps<TData>;
 }
 
-export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
+export const DateRangeDualTextInput = <TData extends {}>({
   value,
   onValueChange,
   autoFocus,
   onBlur,
   onEnter,
   onEsc,
-}) => {
+  calendarProps,
+}: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
 
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -89,8 +92,13 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
 
   const statePerMonth = useMemo(
     () =>
-      buildDayStateForSingleMonth(undefined, startDate, endDate, dateInFocus),
-    [startDate, endDate, dateInFocus]
+      buildDayStateForSingleMonth(
+        calendarProps?.statePerMonth,
+        startDate,
+        endDate,
+        dateInFocus
+      ),
+    [calendarProps?.statePerMonth, startDate, endDate, dateInFocus]
   );
 
   const delayedIsCalendarVisible = useDelayedFalse(isCalendarVisible, 300);
@@ -106,12 +114,13 @@ export const DateRangeDualTextInput: React.FC<DateRangeDualTextInputProps> = ({
         content={
           delayedIsCalendarVisible && (
             <CalendarWithMonthSwitcher
-              statePerMonth={statePerMonth}
               onClickDay={onClickDay}
               dateInFocus={dateInFocus}
               setDateInFocus={setDateInFocus}
               currentPanel={currentPanel}
               setCurrentPanel={setCurrentPanel}
+              {...calendarProps}
+              statePerMonth={statePerMonth}
             />
           )
         }

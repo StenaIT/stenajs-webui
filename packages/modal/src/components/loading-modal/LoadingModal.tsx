@@ -9,7 +9,7 @@ import {
 } from "@stenajs-webui/core";
 import { Icon, Spinner } from "@stenajs-webui/elements";
 import * as React from "react";
-import * as ReactModal from "react-modal";
+import ReactModal from "react-modal";
 import styles from "./LoadingModal.module.css";
 
 export interface LoadingModalProps extends Omit<ReactModal.Props, "isOpen"> {

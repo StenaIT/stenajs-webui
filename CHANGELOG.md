@@ -1,6 +1,20 @@
 # Changelog
 
-## Next
+## 14.2.0
+
+### Calendar
+
+- Added `hideYearPagination` prop to hide year pagination arrows.
+
+### DateRangeDualTextInput
+
+- Add `calendarProps` which will be passed along to the internal Calendar-component, and can be used to specify enabled dates and `onDayClick` callback.
+- User can no longer select invalid date interval, instead the other date is cleared.
+
+### UseKeyboardNavigation / UseTextInput
+
+- Add support for `HTMLTextAreaElement` through a generic element type.
+- Fixed issue where `onChange` was called twice when pressing enter or the arrow keys.
 
 ### New package `filter`
 

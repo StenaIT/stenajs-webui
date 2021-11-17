@@ -93,3 +93,23 @@ export const RangeSelected = () => {
     </div>
   );
 };
+
+export const WithHiddenYearPagination = () => {
+  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
+    undefined
+  );
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        calendarProps={{
+          hideYearPagination: true,
+        }}
+        {...props}
+      />
+    </div>
+  );
+};
