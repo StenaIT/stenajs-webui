@@ -1,9 +1,8 @@
 import {
   ActionMeta,
-  GroupedOptionsType,
-  GroupTypeBase,
-  OptionsType,
-  ValueType,
+  GroupBase as GroupTypeBase,
+  Options as OptionsType,
+  OnChangeValue as ValueType,
 } from "react-select";
 import { DropdownOption } from "../..";
 import {
@@ -14,6 +13,7 @@ import {
   convertInternalOptionToDropdownOption,
   convertValueToInternalValue,
   createOnChange,
+  GroupedOptionsType,
   InternalDropdownOption,
 } from "../multiDropdownUtils";
 
@@ -1068,7 +1068,9 @@ describe("multiDropdownUtils", () => {
           value: "string 1",
         },
       ];
-      const option: GroupTypeBase<DropdownOption<string>> = {
+      const option: GroupTypeBase<DropdownOption<string>> & {
+        value: string;
+      } = {
         label: "label",
         value: "string",
         options,

@@ -5,11 +5,11 @@ import * as React from "react";
 import {
   ActionMeta,
   components,
-  GroupedOptionsType,
+  GroupBase,
   MultiValueProps,
+  OnChangeValue,
   OptionProps,
-  OptionsType,
-  SelectComponentsConfig,
+  Options,
 } from "react-select";
 import {
   defaultSelectTheme,
@@ -20,30 +20,31 @@ import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
   createOnChange,
+  GroupedOptionsType,
   InternalDropdownOption,
 } from "../../util/multiDropdownUtils";
 import { DropdownOption } from "./GroupedMultiSelectTypes";
-import { MultiSelect, MultiSelectProps } from "./MultiSelect";
-
-export type OnChangeValue<TData> =
-  | OptionsType<DropdownOption<TData>>
-  | undefined;
+import {
+  MultiSelect,
+  MultiSelectComponentsConfig,
+  MultiSelectProps,
+} from "./MultiSelect";
 
 export type OnChange<TData> = (
-  value: OnChangeValue<TData>,
+  value: OnChangeValue<DropdownOption<TData>, true>,
   action: ActionMeta<any>
 ) => void;
 
 export interface GroupedMultiSelectProps<TData>
   extends Omit<
-    MultiSelectProps<DropdownOption<TData>>,
+    MultiSelectProps<InternalDropdownOption<TData>>,
     "options" | "onChange" | "value" | "components"
   > {
   /**
    * Same as Select prop `component` but without MultiValue and Option since they can not be modified
    */
   components?: Omit<
-    SelectComponentsConfig<DropdownOption<TData>, true>,
+    MultiSelectComponentsConfig<InternalDropdownOption<TData>>,
     "MultiValue" | "Option"
   >;
   /**
@@ -57,7 +58,7 @@ export interface GroupedMultiSelectProps<TData>
   /**
    * Same as Select prop `value` but only with GroupOptionsType
    */
-  value?: OptionsType<DropdownOption<TData>> | undefined;
+  value?: Options<DropdownOption<TData>> | undefined;
 }
 
 const resolveIconColor = (
@@ -81,8 +82,14 @@ export const GroupedMultiSelect = <TData extends {}>({
 > => {
   const theme = variant === "light" ? defaultSelectTheme : selectThemeDark;
 
-  const Option = (props: OptionProps<DropdownOption<TData>, true>) => {
-    if (props.data.internalOptions) {
+  const Option = (
+    props: OptionProps<
+      InternalDropdownOption<TData>,
+      true,
+      GroupBase<InternalDropdownOption<TData>>
+    >
+  ) => {
+    if ("options" in props.data) {
       return (
         <components.Option {...props}>
           <Box
@@ -121,7 +128,13 @@ export const GroupedMultiSelect = <TData extends {}>({
                 props.isSelected ? theme.menu.selectedItemTextColor : undefined
               }
             >
-              {formatOptionLabel ? formatOptionLabel(props.data) : props.label}
+              {formatOptionLabel
+                ? formatOptionLabel(props.data, {
+                    context: "menu",
+                    inputValue: selectProps.inputValue ?? "",
+                    selectValue: props.getValue(),
+                  })
+                : props.label}
             </Text>
             {props.isSelected && (
               <Icon
@@ -137,7 +150,11 @@ export const GroupedMultiSelect = <TData extends {}>({
   };
 
   const MultiValue = (
-    props: MultiValueProps<InternalDropdownOption<TData>>
+    props: MultiValueProps<
+      InternalDropdownOption<TData>,
+      true,
+      GroupBase<InternalDropdownOption<TData>>
+    >
   ) => {
     return !("internalOptions" in props.data) ? (
       <components.MultiValue {...props} />
@@ -152,7 +169,7 @@ export const GroupedMultiSelect = <TData extends {}>({
     : undefined;
 
   return (
-    <MultiSelect<DropdownOption<TData>>
+    <MultiSelect<InternalDropdownOption<TData>>
       {...selectProps}
       onChange={onChange ? createOnChange<TData>(onChange) : undefined}
       hideSelectedOptions={false}

@@ -1,5 +1,6 @@
 import { StylesConfig } from "react-select";
 import { SelectTheme } from "../SelectTheme";
+import { GroupBase } from "react-select/dist/declarations/src/types";
 
 const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],
@@ -39,7 +40,11 @@ const resolveOptionColor = (
   }
 };
 
-export const createStylesFromTheme = <OptionType, IsMulti extends boolean>({
+export const createStylesFromTheme = <
+  OptionType,
+  IsMulti extends boolean,
+  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
+>({
   menu,
   menuPortal,
   input,
@@ -47,7 +52,7 @@ export const createStylesFromTheme = <OptionType, IsMulti extends boolean>({
   clearButtonColor,
   arrowColor,
   loadingIndicator,
-}: SelectTheme): StylesConfig<OptionType, IsMulti> => ({
+}: SelectTheme): StylesConfig<OptionType, IsMulti, TGroup> => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
     fontFamily: input.fontFamily,
