@@ -7,7 +7,7 @@ import {
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { BooleanRecord, BooleanRecordOptions } from "../BooleanRecordTypes";
 import { ChipMultiSelect, ChipMultiSelectValue } from "@stenajs-webui/select";
-import { truthyKeysAsList } from "../../../../../common/util/record/TrueKeysAsList";
+import { truthyKeysAsList } from "@stenajs-webui/core";
 
 interface MultiChipSelectSectionProps<TSectionKey extends string>
   extends SearchFilterSectionProps<TSectionKey>,

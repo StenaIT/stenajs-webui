@@ -3,7 +3,7 @@ import {
   SearchFilterSectionChipModel,
   SearchFilterSectionOnClickRemoveOnChip,
 } from "../../config/SearchFilterConfig";
-import { PickByValue } from "../../../../../../oss-graphql-api/src/common/types/GenericTypes";
+import { PickByValue } from "@stenajs-webui/core";
 import { SectionChipsProps } from "../../features/chips/SectionChips";
 
 export const createChipsPropsForDateRange = <
