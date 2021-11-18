@@ -27,7 +27,7 @@ be wrapped with
   </SearchFilterDrawer>
 ```
 
-If you are only using local state (no Redux, persistance, etc),
+If you are only using local state (no Redux, persistence, etc),
 you can use `SearchFilterLocalStateContext`.
 It will automatically setup actions, state and dispatch.
 
