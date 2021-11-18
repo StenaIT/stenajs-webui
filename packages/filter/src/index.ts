@@ -11,6 +11,7 @@ export * from "./features/search-filter/hooks/UseLocalSearchFilterState";
 export * from "./features/search-filter/redux/SearchFilterRedux";
 export * from "./features/search-filter/types/FilterEntity";
 export * from "./features/search-filter/features/chips/SearchFilterChips";
+export * from "./features/search-filter/features/chips/SectionChips";
 export * from "./features/search-filter/section-factories/boolean-record/BooleanRecordTypes";
 export * from "./features/search-filter/section-factories/boolean-record/BooleanRecordChips";
 export * from "./features/search-filter/section-factories/boolean-record/components/SimpleCheckboxListSection";
