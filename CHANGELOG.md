@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.0.0-alpha.2
+
+### Filter
+
+- Add more missing export.
+
 ## 15.0.0-alpha.1
 
 ### Filter
