@@ -16,7 +16,7 @@ or many chips.
 The filter components access state, dispatch and actions. These are fetched from context, so any filter components must
 be wrapped with
 
-```typescript jsx
+```tsx
 <SearchFilterContext actions={actions} state={state} dispatch={dispatch}>
   <SearchFilterButton/>
   <SearchFilterChips>
@@ -31,7 +31,7 @@ If you are only using local state (no Redux, persistance, etc),
 you can use `SearchFilterLocalStateContext`.
 It will automatically setup actions, state and dispatch.
 
-```typescript jsx
+```tsx
 <SearchFilterLocalStateContext<FormModel>
   initialFormModel={{ startDate: undefined, endDate: undefined }}
 >
@@ -41,7 +41,7 @@ It will automatically setup actions, state and dispatch.
 
 If you use `SearchFilterLocalStateContext`, you can use this to access filter state.
 
-```typescript jsx
+```tsx
 const state = useSearchFilterState();
 ```
 
@@ -49,7 +49,7 @@ const state = useSearchFilterState();
 
 You can create custom sections easily.
 
-```typescript jsx
+```tsx
 const MySection = (...props) => (
   <SearchFilterSection sectionId={sectionId} loading={loading} error={error}>
     <ChipMultiSelect
@@ -75,7 +75,7 @@ More will be made available as the `filter` package matures.
 
 Add the section to the drawer.
 
-```typescript jsx
+```tsx
 <DateRangeCalendarSection
   sectionId={"comparisonDate"}
   {...createDateRangeSectionProps(state.formModel, "startDate", "endDate")}
@@ -84,7 +84,7 @@ Add the section to the drawer.
 
 And add the chips.
 
-```typescript jsx
+```tsx
 <SectionChips
   sectionId={"comparisonDate"}
   emptyChipLabel={"No dates"}
@@ -98,7 +98,7 @@ Add the section to the drawer. This section does not have a helper method for cr
 
 They must be specified manually. This might change.
 
-```typescript jsx
+```tsx
 <ChipMultiSelectSection
   sectionId={"divisions"}
   loading={false}
@@ -112,7 +112,7 @@ They must be specified manually. This might change.
 
 And add the chips.
 
-```typescript jsx
+```tsx
 <SectionChips
   sectionId={"divisions"}
   emptyChipLabel={"All division"}
@@ -129,7 +129,7 @@ In this example, `state.formModel.divisions` must be a `BooleanRecord`.
 Another section for `BooleanRecord` is `SimpleCheckboxListSection`.
 They are API compatible and are interchangeable.
 
-```typescript jsx
+```tsx
 <SimpleCheckboxListSection
   sectionId={"divisions"}
   loading={false}
