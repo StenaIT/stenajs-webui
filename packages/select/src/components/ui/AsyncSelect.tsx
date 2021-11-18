@@ -1,12 +1,13 @@
 import * as React from "react";
 import { useMemo } from "react";
-import AsyncComponent, { Props } from "react-select/async";
+import AsyncComponent, { AsyncProps } from "react-select/async";
 import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
 import { createStylesFromTheme } from "../../util/StylesBuilder";
 import { mergeStyles } from "react-select";
+import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export interface AsyncSelectProps<T = { label: string; value: string }>
-  extends Props<T, false> {
+  extends AsyncProps<T, false, GroupBase<T>> {
   variant?: "dark" | "light";
   isMulti?: false;
 }

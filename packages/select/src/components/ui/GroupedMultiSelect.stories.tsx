@@ -62,9 +62,7 @@ export const StandardDark = () => {
     readonly DropdownOption<string>[] | undefined
   >(undefined);
 
-  const onChange: OnChange<string> = (
-    options: readonly DropdownOption<string>[] | undefined
-  ) => {
+  const onChange: OnChange<string> = (options) => {
     setValue(options);
   };
   return (

@@ -83,20 +83,22 @@
     "jest": "^26.6.3",
     "lerna": "^3.22.0",
     "lint-staged": "^9.0.0",
-    "postcss-nested": "^4.2.3",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-loader": "^4.3.0",
+    "postcss-nested": "^5.0.6",
+    "postcss-preset-env": "^7.0.0",
     "prettier": "^2.2.1",
     "react-docgen-typescript-loader": "^3.1.0",
-    "rollup": "^2.28.2",
+    "rollup": "^2.60.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.3",
-    "rollup-plugin-postcss": "^3.1.8",
-    "rollup-plugin-typescript2": "^0.27.3",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-typescript2": "^0.31.0",
     "rollup-plugin-url": "^3.0.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.2"
+    "tslib": "2.3.1",
+    "typescript": "4.4.4"
   },
   "optionalDependencies": {
     "fsevents": "^2.2.1"
@@ -104,7 +106,7 @@
   "bundlesize": [
     {
       "path": "./packages/calendar/dist/*.js",
-      "maxSize": "19 kB"
+      "maxSize": "20 kB"
     },
     {
       "path": "./packages/core/dist/*.js",
@@ -120,11 +122,11 @@
     },
     {
       "path": "./packages/grid/dist/*.js",
-      "maxSize": "22 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./packages/grid-export/dist/*.js",
-      "maxSize": "4 kB"
+      "maxSize": "5 kB"
     },
     {
       "path": "./packages/input-mask/dist/*.js",
@@ -144,7 +146,7 @@
     },
     {
       "path": "./packages/select/dist/*.js",
-      "maxSize": "5 kB"
+      "maxSize": "6 kB"
     },
     {
       "path": "./packages/theme/dist/*.js",
@@ -170,7 +172,8 @@
     "react": "17.0.2",
     "@babel/core": "7.13.15",
     "@types/react": "17.0.5",
-    "@types/react-dom": "17.0.3"
+    "@types/react-dom": "17.0.3",
+    "tslib": "2.3.1"
   },
   "browserslist": [
     ">0.2%",

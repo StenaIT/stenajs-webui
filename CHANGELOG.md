@@ -1,5 +1,31 @@
 # Changelog
 
+## Next
+
+### New package `filter`
+
+This package contains new functionality, search filter.
+
+It makes it easy to create a custom filter in a drawer,
+with a custom model for the search filter.
+
+It also makes it easy to create an overview row containing chips.
+
+Please see stories for an example.
+
+### New utils in `core`
+
+- `truthyKeysAsList`, returns all keys that have a truthy value.
+- `PickByValue`, a type that returns a new type with picked fields that match a type.
+
+```typescript
+type StringFieldsOnUser = PickByValue<User, string>;
+```
+
+### Select components
+
+- Dependency `react-select` has been updated to v5.
+
 ## 14.2.0
 
 ### Calendar
@@ -16,16 +42,16 @@
 - Add support for `HTMLTextAreaElement` through a generic element type.
 - Fixed issue where `onChange` was called twice when pressing enter or the arrow keys.
 
-### ActionMenuItem / ActionMenuLink
+### ActionMenuItem and ActionMenuLink
 
 - `disableCloseOnClick` is no longer forwarded to the DOM.
 
 ### Icon
 
-- Icon no longer has props `hoverIcon` and `hoverColor`.
-- Icon no longer has largely unnecessary mouseover event listeners.
-- Icon may have a `ref`.
-- Icon may have a `display` prop so that you can e.g. display it inline.
+- Removed props `hoverIcon` and `hoverColor`.
+- Removed unnecessary mouseover event listeners.
+- Added `ref` prop.
+- Added `display` prop so that you can e.g. display it inline.
 
 ### Breaking changes
 
@@ -49,8 +75,8 @@
 
 ### StandardTable
 
-- `bannerError` is added to standard table and is prioritized before error property if given. Error is now displayed in a ResultListBanner.
-- `error and errorLabel` are now displayed in an Banner instead of ErrorScreen.
+- Added `bannerError` to `StandardTable` props and is prioritized before error property if given. Error is now displayed in a `ResultListBanner`.
+- `error` and `errorLabel` are now displayed in a `Banner`.
 
 #### Column configs now have `onKeyDown` option.
 
