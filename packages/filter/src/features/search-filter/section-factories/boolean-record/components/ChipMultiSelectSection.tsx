@@ -9,20 +9,20 @@ import { BooleanRecord, BooleanRecordOptions } from "../BooleanRecordTypes";
 import { ChipMultiSelect, ChipMultiSelectValue } from "@stenajs-webui/select";
 import { truthyKeysAsList } from "@stenajs-webui/core";
 
-interface MultiChipSelectSectionProps<TSectionKey extends string>
+interface ChipMultiSelectSectionProps<TSectionKey extends string>
   extends SearchFilterSectionProps<TSectionKey>,
     ValueAndOnValueChangeProps<BooleanRecord> {
   options?: BooleanRecordOptions;
 }
 
-export const MultiChipSelectSection = <TSectionKey extends string>({
+export const ChipMultiSelectSection = <TSectionKey extends string>({
   options,
   error,
   loading,
   sectionId,
   value,
   onValueChange,
-}: MultiChipSelectSectionProps<TSectionKey>): React.ReactElement => {
+}: ChipMultiSelectSectionProps<TSectionKey>): React.ReactElement => {
   const [text, setText] = useState<string>("");
 
   const listValue = useMemo<Array<ChipMultiSelectValue>>(

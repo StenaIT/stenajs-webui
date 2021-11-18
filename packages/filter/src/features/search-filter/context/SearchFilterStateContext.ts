@@ -10,7 +10,9 @@ export const useSearchFilterState = <
 >(): SearchFilterState<TFormModel> => {
   const c = useContext(SearchFilterStateContext);
   if (!c) {
-    throw new Error("Missing search filter state context.");
+    throw new Error(
+      "Missing search filter context, wrap components with SearchFilterContext component."
+    );
   }
   return c as SearchFilterState<TFormModel>;
 };
