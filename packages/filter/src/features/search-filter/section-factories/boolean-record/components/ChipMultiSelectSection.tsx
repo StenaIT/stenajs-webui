@@ -17,11 +17,9 @@ interface ChipMultiSelectSectionProps<TSectionKey extends string>
 
 export const ChipMultiSelectSection = <TSectionKey extends string>({
   options,
-  error,
-  loading,
-  sectionId,
   value,
   onValueChange,
+  ...sectionProps
 }: ChipMultiSelectSectionProps<TSectionKey>): React.ReactElement => {
   const [text, setText] = useState<string>("");
 
@@ -52,7 +50,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
   );
 
   return (
-    <SearchFilterSection sectionId={sectionId} loading={loading} error={error}>
+    <SearchFilterSection {...sectionProps}>
       <ChipMultiSelect
         options={filteredOptions}
         value={listValue}
