@@ -1,13 +1,9 @@
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { MultiSelect, MultiSelectProps } from "../MultiSelect";
-import {
-  CommonChipMultiSelect,
-  CommonChipMultiSelectSelectValue,
-} from "./CommonChipMultiSelect";
+import { ChipRow, ChipRowItem } from "./ChipRow";
 
-export interface ChipMultiSelectValue
-  extends CommonChipMultiSelectSelectValue {}
+export interface ChipMultiSelectValue extends ChipRowItem {}
 
 export interface ChipMultiSelectProps
   extends Omit<MultiSelectProps, "value" | "onChange" | "isLoading">,
@@ -30,7 +26,7 @@ export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
     ...selectProps
   }) => {
     return (
-      <CommonChipMultiSelect
+      <ChipRow
         noneSelectedLabel={noneSelectedLabel}
         onValueChange={onValueChange}
         value={value}
@@ -48,7 +44,7 @@ export const ChipMultiSelect = React.memo<ChipMultiSelectProps>(
           inputValue={inputValue}
           onInputChange={onInputChange}
         />
-      </CommonChipMultiSelect>
+      </ChipRow>
     );
   }
 );
