@@ -33,7 +33,7 @@
     "@stenajs-webui/theme": "15.0.0-alpha.3",
     "@stenajs-webui/tooltip": "15.0.0-alpha.3",
     "classnames": "^2.3.1",
-    "date-fns": "2.16.1",
+    "date-fns": "2.26.0",
     "react-transition-group": "^4.3.0",
     "tippy.js": "^6.2.6"
   },

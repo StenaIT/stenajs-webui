@@ -32,7 +32,7 @@
     "@stenajs-webui/forms": "15.0.0-alpha.3",
     "@stenajs-webui/theme": "15.0.0-alpha.3",
     "@stenajs-webui/tooltip": "15.0.0-alpha.3",
-    "date-fns": "2.16.1"
+    "date-fns": "2.26.0"
   },
   "peerDependencies": {
     "@emotion/react": ">=11.1.5",
