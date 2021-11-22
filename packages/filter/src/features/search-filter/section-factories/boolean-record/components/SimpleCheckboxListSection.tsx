@@ -8,7 +8,7 @@ import { CollapsibleClickableContent } from "@stenajs-webui/panels";
 import { Checkbox, ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { BooleanRecord, BooleanRecordOptions } from "../BooleanRecordTypes";
 
-export interface CheckboxSectionProps<TSectionKey extends string>
+export interface SimpleCheckboxSectionProps<TSectionKey extends string>
   extends SearchFilterSectionProps<TSectionKey>,
     ValueAndOnValueChangeProps<BooleanRecord> {
   options?: BooleanRecordOptions;
@@ -16,18 +16,11 @@ export interface CheckboxSectionProps<TSectionKey extends string>
 
 export const SimpleCheckboxListSection = <TSectionKey extends string>({
   options,
-  error,
-  loading,
-  sectionId,
   value,
   onValueChange,
-}: CheckboxSectionProps<TSectionKey>): React.ReactElement => (
-  <SearchFilterSection
-    sectionId={sectionId}
-    loading={loading}
-    error={error}
-    disableContentPadding
-  >
+  ...sectionProps
+}: SimpleCheckboxSectionProps<TSectionKey>): React.ReactElement => (
+  <SearchFilterSection disableContentPadding {...sectionProps}>
     <Column maxHeight={"400px"} overflowY={"auto"} flex={1}>
       {options?.map((d) => (
         <CollapsibleClickableContent
