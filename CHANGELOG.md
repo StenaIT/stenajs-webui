@@ -1,5 +1,9 @@
 # Changelog
 
+## 15.0.0-alpha.3
+
+- `ChipMultiSelectSection` always fill full width of filter section.
+
 ## 15.0.0-alpha.2
 
 ### Filter
