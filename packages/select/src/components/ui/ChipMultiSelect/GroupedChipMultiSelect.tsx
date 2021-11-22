@@ -5,7 +5,7 @@ import {
   GroupedMultiSelectProps,
 } from "../GroupedMultiSelect";
 import { DropdownOption } from "../GroupedMultiSelectTypes";
-import { CommonChipMultiSelect } from "./CommonChipMultiSelect";
+import { ChipRow } from "./ChipRow";
 
 type StringGroupedMultiSelectProps = GroupedMultiSelectProps<string>;
 
@@ -32,7 +32,7 @@ export const GroupedChipMultiSelect = React.memo<GroupedChipMultiSelectProps>(
     ...selectProps
   }) => {
     return (
-      <CommonChipMultiSelect
+      <ChipRow
         noneSelectedLabel={noneSelectedLabel}
         onValueChange={onValueChange}
         value={value}
@@ -50,7 +50,7 @@ export const GroupedChipMultiSelect = React.memo<GroupedChipMultiSelectProps>(
           inputValue={inputValue}
           onInputChange={onInputChange}
         />
-      </CommonChipMultiSelect>
+      </ChipRow>
     );
   }
 );

@@ -4,26 +4,24 @@ import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { PropsWithChildren } from "react";
 
-export interface CommonChipMultiSelectSelectValue {
+export interface ChipRowItem {
   label: string;
   value: string;
 }
 
-export interface CommonChipMultiSelectProps<TValue>
+export interface ChipRowProps<TValue>
   extends ValueAndOnValueChangeProps<TValue> {
   noneSelectedLabel?: string;
 }
 
-export function CommonChipMultiSelect<
-  TValue extends CommonChipMultiSelectSelectValue
->({
+export function ChipRow<TValue extends ChipRowItem>({
   value,
   onValueChange,
   noneSelectedLabel = "None",
   children,
-}: PropsWithChildren<CommonChipMultiSelectProps<Array<TValue>>>) {
+}: PropsWithChildren<ChipRowProps<Array<TValue>>>) {
   return (
-    <Column>
+    <Column flex={1}>
       <Row flexWrap={"wrap"}>
         {value?.map((v) => (
           <Row key={v.value}>
