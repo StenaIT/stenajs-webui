@@ -1,5 +1,9 @@
 # Changelog
 
+## 15.0.0-alpha.4
+
+- `ChipMultiSelect` and `SimpleCheckboxListSection` pass down section props to `SearchFilterSection`.
+
 ## 15.0.0-alpha.3
 
 - `ChipMultiSelectSection` always fill full width of filter section.
