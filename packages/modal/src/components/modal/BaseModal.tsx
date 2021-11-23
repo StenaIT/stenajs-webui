@@ -2,7 +2,6 @@ import * as React from "react";
 import ReactModal from "react-modal";
 import Draggable from "react-draggable";
 import cx from "classnames";
-
 import styles from "./Modal.module.css";
 
 export interface BaseModalProps extends ReactModal.Props {
