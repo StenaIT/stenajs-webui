@@ -18,7 +18,6 @@ import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
 import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
-import { ModalFooter } from "./ModalFooter";
 
 export default {
   title: "modal/Modal",
