@@ -6,6 +6,7 @@
   --swui-modal-width: 960px;
   --swui-modal-header-border-color: var(--lhds-color-ui-300);
   --swui-modal-shadow: var(--swui-shadow-modal);
+  --swui-modal-footer-shadow: var(--swui-shadow-modal);
 
   position: fixed;
   z-index: 10;
@@ -37,7 +38,6 @@
   .content {
     position: relative;
     display: block;
-
     background: var(--swui-modal-content-bg-color);
     box-shadow: var(--swui-modal-shadow);
     pointer-events: all;

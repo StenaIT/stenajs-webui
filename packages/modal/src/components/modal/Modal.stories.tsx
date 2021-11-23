@@ -215,6 +215,63 @@ export const CustomDraggableModal = () => {
   );
 };
 
+export const ModalWithStickyContentBottom = () => {
+  const [isStickyFooterModalOpen, setStickyFootertModalOpen] = useState(false);
+  return (
+    <div>
+      <PrimaryButton
+        onClick={() => setStickyFootertModalOpen(true)}
+        label={"Open sticky footer modal"}
+      />
+      <Modal
+        headerText={"Header text"}
+        isOpen={isStickyFooterModalOpen}
+        onRequestClose={() => setStickyFootertModalOpen(false)}
+        shouldCloseOnOverlayClick
+        width={"750px"}
+        footer={
+          <Box
+            justifyContent={"space-around"}
+            alignItems={"center"}
+            row={true}
+            height={64}
+          >
+            <PrimaryButton
+              onClick={() => setStickyFootertModalOpen(false)}
+              label={"Example button 1"}
+            />
+            <PrimaryButton
+              onClick={() => setStickyFootertModalOpen(false)}
+              label={"Example button 2"}
+            />
+          </Box>
+        }
+      >
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faCoffee} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faLeaf} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faAddressBook} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faLeaf} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faAddressBook} />
+        </Row>
+      </Modal>
+    </div>
+  );
+};
+
 const loremIpsumSampleText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
             earum eius excepturi nam nemo numquam repellat sit velit. Ab
             architecto dolorum maiores numquam officia perspiciatis repellendus
