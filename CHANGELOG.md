@@ -2,7 +2,6 @@
 
 ## Next
 - `Modal` has new prop `footer`. The footer is sticky by default, but can be turned off with `disableStickyFooter`.
-- `ModalFooter` is added and is used as a wrapper around the content given to `footer`prop.
 
 ## 15.0.0-alpha.4
 

@@ -2,7 +2,7 @@ import { Column } from "@stenajs-webui/core";
 import * as React from "react";
 
 interface ModalFooterProps {
-  sticky?: boolean;
+  sticky: boolean;
 }
 
 export const ModalFooter: React.FC<ModalFooterProps> = ({
