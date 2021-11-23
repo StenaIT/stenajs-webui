@@ -1,9 +1,8 @@
 # Changelog
 
 ## Next
-- `Modal` can now be given a new prop `footer`, which is a `React.node`. By default the footer is sticky.
+- `Modal` has new prop `footer`. The footer is sticky by default, but can be turned off with `disableStickyFooter`.
 - `ModalFooter` is added and is used as a wrapper around the content given to `footer`prop.
-- `Modal` now has an additional prop `disableStickyFooter` which controls if the footer added should be sticky or not. This property defaults to false.
 
 ## 15.0.0-alpha.4
 

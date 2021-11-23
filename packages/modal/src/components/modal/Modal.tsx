@@ -40,7 +40,7 @@ export const Modal: React.FC<ModalProps> = ({
         {children}
       </Box>
       {footer && (
-        <ModalFooter sticky={disableStickyFooter}>{footer}</ModalFooter>
+        <ModalFooter disableSticky={disableStickyFooter}>{footer}</ModalFooter>
       )}
     </BaseModal>
   );
