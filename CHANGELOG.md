@@ -1,5 +1,10 @@
 # Changelog
 
+## Next
+- `ModalFooter` is added and can be used as to get a default indent, background and spacing.
+- `Modal` can no be given a new prop `footer`, which is a `React.node`. By default the footer is sticky.
+- `Modal` now has an additional prop `stickyFooter` to turn of the sticky property for the footer.
+
 ## 15.0.0-alpha.4
 
 - `ChipMultiSelect` and `SimpleCheckboxListSection` pass down section props to `SearchFilterSection`.

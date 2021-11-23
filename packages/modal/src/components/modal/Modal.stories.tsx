@@ -18,6 +18,7 @@ import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
 import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
+import { ModalFooter } from "./ModalFooter";
 
 export default {
   title: "modal/Modal",
@@ -210,6 +211,66 @@ export const CustomDraggableModal = () => {
         <Box indent={2} spacing>
           <Txt>Drag me using the header except the non-draggable parts.</Txt>
         </Box>
+      </Modal>
+    </div>
+  );
+};
+
+export const ModalWithStickyContentBottom = () => {
+  const [
+    isStickyBottomContentModalOpen,
+    setStickyBottomContentModalOpen,
+  ] = useState(false);
+  return (
+    <div>
+      <PrimaryButton
+        onClick={() => setStickyBottomContentModalOpen(true)}
+        label={"Open sticky bottom content modal"}
+      />
+      <Modal
+        headerText={"Header text"}
+        isOpen={isStickyBottomContentModalOpen}
+        onRequestClose={() => setStickyBottomContentModalOpen(false)}
+        shouldCloseOnOverlayClick
+        width={"750px"}
+        footer={
+          <ModalFooter
+            justifyContent={"space-around"}
+            alignItems={"center"}
+            row={true}
+            height={64}
+          >
+            <PrimaryButton
+              onClick={() => setStickyBottomContentModalOpen(false)}
+              label={"Example button 1"}
+            />
+            <PrimaryButton
+              onClick={() => setStickyBottomContentModalOpen(false)}
+              label={"Example button 2"}
+            />
+          </ModalFooter>
+        }
+      >
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faCoffee} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faLeaf} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faAddressBook} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faLeaf} />
+        </Row>
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+        <Row justifyContent={"center"} alignItems={"center"}>
+          <Icon size={20} icon={faAddressBook} />
+        </Row>
       </Modal>
     </div>
   );

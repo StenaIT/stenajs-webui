@@ -7,6 +7,8 @@ export interface ModalProps extends BaseModalProps, ModalHeaderProps {
   spacing?: number;
   indent?: number;
   draggable?: boolean;
+  footer?: React.ReactNode;
+  stickyFooter?: boolean;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -18,6 +20,8 @@ export const Modal: React.FC<ModalProps> = ({
   draggable = false,
   onRequestClose,
   closeButtonClassName,
+  footer,
+  stickyFooter = true,
   ...props
 }) => {
   const activeSpacing = typeof spacing === "number" ? spacing : 1;
@@ -34,6 +38,19 @@ export const Modal: React.FC<ModalProps> = ({
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}
       </Box>
+      {footer && (
+        <Box
+          position={stickyFooter ? "sticky" : undefined}
+          bottom={
+            stickyFooter ? "calc(-1 * var(--swui-modal-padding))" : undefined
+          }
+          boxShadow={
+            stickyFooter ? "var(--swui-sticky-modal-footer-shadow)" : undefined
+          }
+        >
+          {footer}
+        </Box>
+      )}
     </BaseModal>
   );
 };
