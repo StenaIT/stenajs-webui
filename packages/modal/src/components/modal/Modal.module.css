@@ -6,7 +6,7 @@
   --swui-modal-width: 960px;
   --swui-modal-header-border-color: var(--lhds-color-ui-300);
   --swui-modal-shadow: var(--swui-shadow-modal);
-  --swui-sticky-modal-footer-shadow: -1px 0px 25px -2px rgba(0, 0, 0, 0.2);
+  --swui-sticky-modal-footer-shadow: var(--swui-shadow-modal-footer);
 
   position: fixed;
   z-index: 10;

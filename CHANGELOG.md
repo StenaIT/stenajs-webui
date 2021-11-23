@@ -1,7 +1,7 @@
 # Changelog
 
 ## Next
-- `ModalFooter` is added and can be used as to get a default indent, background and spacing.
+- `ModalFooter` is added and can be used to get a default indent, background and spacing.
 - `Modal` can now be given a new prop `footer`, which is a `React.node`. By default the footer is sticky.
 - `Modal` now has an additional prop `stickyFooter` to turn of the sticky property for the footer.
 
