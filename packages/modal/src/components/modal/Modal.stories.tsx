@@ -231,7 +231,7 @@ export const ModalWithStickyContentBottom = () => {
         shouldCloseOnOverlayClick
         width={"750px"}
         footer={
-          <ModalFooter
+          <Box
             justifyContent={"space-around"}
             alignItems={"center"}
             row={true}
@@ -245,7 +245,7 @@ export const ModalWithStickyContentBottom = () => {
               onClick={() => setStickyFootertModalOpen(false)}
               label={"Example button 2"}
             />
-          </ModalFooter>
+          </Box>
         }
       >
         <Box spacing={2}>{loremIpsumSampleText}</Box>
