@@ -1,4 +1,4 @@
-import { addDays } from "date-fns";
+import { addDays, format } from "date-fns";
 import * as React from "react";
 import markdown from "./DateRangeCalendar.md";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
@@ -50,6 +50,17 @@ export const WithStateHook = () => <DateRangeCalendarWithState />;
 export const WithTodayHighlighted = () => {
   const props = useDateRangeCalendarState();
   return <DateRangeCalendar highlightToday {...props} />;
+};
+
+export const WithMinMaxDate = () => {
+  const props = useDateRangeCalendarState();
+  return (
+    <DateRangeCalendar
+      {...props}
+      minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+      maxDate={format(addDays(new Date(), 5), "yyyy-MM-dd")}
+    />
+  );
 };
 
 export const WithDefaultHighlights = () => {

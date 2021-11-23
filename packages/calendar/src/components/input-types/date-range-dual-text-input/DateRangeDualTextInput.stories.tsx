@@ -1,6 +1,6 @@
 import { Column } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
-import { addDays } from "date-fns";
+import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
@@ -108,6 +108,25 @@ export const WithHiddenYearPagination = () => {
         calendarProps={{
           hideYearPagination: true,
         }}
+        {...props}
+      />
+    </div>
+  );
+};
+
+export const MinMaxDates = () => {
+  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
+    undefined
+  );
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+        maxDate={format(addDays(new Date(), 5), "yyyy-MM-dd")}
         {...props}
       />
     </div>

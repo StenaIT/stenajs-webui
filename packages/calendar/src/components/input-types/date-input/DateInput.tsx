@@ -1,4 +1,4 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
 import { Box } from "@stenajs-webui/core";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
@@ -14,8 +14,9 @@ import {
 } from "../../calendar/CalendarTheme";
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
+import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 
-export interface DateInputProps<T = {}> {
+export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */
   value?: Date;
   /** onChange handler for when the user selects a date. */
@@ -71,6 +72,8 @@ export const DateInput: React.FC<DateInputProps> = ({
   portalTarget,
   variant,
   width,
+  minDate,
+  maxDate,
 }) => {
   const {
     hideCalendar,
@@ -99,18 +102,23 @@ export const DateInput: React.FC<DateInputProps> = ({
             value={value}
             theme={calendarTheme}
             onChangePanel={onChangePanel}
+            minDate={minDate}
+            maxDate={maxDate}
           />
         }
       >
         <TextInput
-          iconLeft={faCalendarAlt}
+          type={"date"}
+          iconRight={faCalendarAlt}
           onFocus={showCalendar}
-          onClickLeft={showCalendar}
+          onClickRight={showCalendar}
           value={value ? format(value, displayFormat) : ""}
           placeholder={placeholder}
           size={9}
           autoFocus={openOnMount}
           variant={variant}
+          min={minDate}
+          max={maxDate}
         />
       </Popover>
     </Box>

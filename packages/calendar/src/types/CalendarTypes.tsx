@@ -6,7 +6,9 @@ import {
   WeekData,
 } from "../util/calendar/CalendarDataFactory";
 
-export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
+export interface CalendarDayProps<T = {}>
+  extends ExtraDayContentProps<T>,
+    OptionalMinMaxDates {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   onClickDay?: OnClickDay<T>;
   defaultHighlights?: Array<DayStateHighlight>;
@@ -55,7 +57,8 @@ export interface Renderers {
 export interface CalendarProps<T>
   extends CalendarHeaderContentProps,
     CalendarOnClicks<T>,
-    Renderers {
+    Renderers,
+    OptionalMinMaxDatesAsString {
   /** The year to show. If used, must also provide month. Overrides prop date. */
   year?: number;
   /** The month to show. If used, must also provide year. Overrides prop date. */
@@ -123,6 +126,30 @@ export type DayStateHighlight =
 
 export interface HighlightsState {
   highlights?: Array<DayStateHighlight>;
+}
+
+export interface OptionalMinMaxDates {
+  /**
+   * Earliest date that can be interacted with. Earlier dates will be disabled.
+   */
+  minDate?: Date;
+
+  /**
+   * Latest date that can be interacted with. Later dates will be disabled.
+   */
+  maxDate?: Date;
+}
+
+export interface OptionalMinMaxDatesAsString {
+  /**
+   * Earliest date that can be interacted with. Earlier dates will be disabled.
+   */
+  minDate?: string;
+
+  /**
+   * Latest date that can be interacted with. Later dates will be disabled.
+   */
+  maxDate?: string;
 }
 
 export type DayState = HighlightsState;

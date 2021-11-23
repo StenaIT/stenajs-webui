@@ -7,6 +7,7 @@ import {
   DayState,
   DayStateHighlight,
   ExtraDayContentProps,
+  OptionalMinMaxDates,
   Renderers,
 } from "../../types/CalendarTypes";
 import {
@@ -20,7 +21,10 @@ import { WeekDayCell } from "./renderers/WeekDayCell";
 import { CalendarDay } from "./renderers/CalendarDay";
 import { FlatButton } from "@stenajs-webui/elements";
 
-export interface CalendarMonthProps<T> extends CalendarOnClicks<T>, Renderers {
+export interface CalendarMonthProps<T>
+  extends CalendarOnClicks<T>,
+    Renderers,
+    OptionalMinMaxDates {
   month: MonthData;
   dayComponent?: React.ComponentType<CalendarDayProps<T>>;
   userDataPerWeek?: CalendarUserMonthData<T>;
@@ -37,6 +41,8 @@ export function CalendarMonth<T>({
   dayComponent = CalendarDay,
   statePerWeek,
   userDataPerWeek,
+  minDate,
+  maxDate,
   onClickDay,
   onClickWeek,
   onClickWeekDay,
@@ -139,6 +145,8 @@ export function CalendarMonth<T>({
                 renderWeekNumber={renderWeekNumber}
                 extraDayContent={extraDayContent}
                 defaultHighlights={defaultHighlights}
+                minDate={minDate}
+                maxDate={maxDate}
               />
             ))}
           </tbody>

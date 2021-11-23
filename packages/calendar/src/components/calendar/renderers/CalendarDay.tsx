@@ -1,5 +1,6 @@
 import { Box, Clickable, Text } from "@stenajs-webui/core";
 import * as React from "react";
+import { useMemo } from "react";
 import styled from "@emotion/styled";
 import {
   CalendarDayProps,
@@ -7,8 +8,9 @@ import {
   DayStateHighlight,
 } from "../../../types/CalendarTypes";
 import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
+import { isAfter, isBefore } from "date-fns";
 
-export const CalendarDay = <T extends {}>({
+export const CalendarDay = function CalendarDay<T extends {}>({
   day,
   week,
   month,
@@ -18,7 +20,33 @@ export const CalendarDay = <T extends {}>({
   theme,
   extraDayContent: ExtraDayContent,
   defaultHighlights,
-}: CalendarDayProps<T>) => {
+  minDate,
+  maxDate,
+}: CalendarDayProps<T>) {
+  const isBeforeMinDate = useMemo(() => {
+    if (!minDate) {
+      return false;
+    }
+    return isBefore(day.date, minDate);
+  }, [day.date, minDate]);
+
+  const isAfterMaxDate = useMemo(() => {
+    if (!maxDate) {
+      return false;
+    }
+    return isAfter(day.date, maxDate);
+  }, [day.date, maxDate]);
+
+  const disabledByMinMax = isBeforeMinDate || isAfterMaxDate;
+
+  const activeDayState = useMemo(
+    () =>
+      disabledByMinMax
+        ? { highlights: [...(dayState?.highlights ?? []), "disabled"] }
+        : dayState,
+    [dayState, disabledByMinMax]
+  );
+
   const content = (
     <Box
       width={"100%"}
@@ -30,7 +58,7 @@ export const CalendarDay = <T extends {}>({
         {...(theme.CalendarDay.textProps &&
           theme.CalendarDay.textProps(
             defaultHighlights,
-            dayState,
+            activeDayState,
             day,
             week,
             month,
@@ -46,7 +74,7 @@ export const CalendarDay = <T extends {}>({
     ...(theme.CalendarDay.tdStyle &&
       theme.CalendarDay.tdStyle(
         defaultHighlights,
-        dayState,
+        activeDayState,
         day,
         week,
         month,
@@ -58,7 +86,7 @@ export const CalendarDay = <T extends {}>({
     ...(theme.CalendarDay.innerWrapperStyle &&
       theme.CalendarDay.innerWrapperStyle(
         defaultHighlights,
-        dayState,
+        activeDayState,
         day,
         week,
         month,
@@ -72,7 +100,7 @@ export const CalendarDay = <T extends {}>({
     ...(theme.CalendarDay.cellWrapperStyle &&
       theme.CalendarDay.cellWrapperStyle(
         defaultHighlights,
-        dayState,
+        activeDayState,
         day,
         week,
         month,
@@ -94,12 +122,12 @@ export const CalendarDay = <T extends {}>({
                   week={week}
                   month={month}
                   day={day}
-                  dayState={dayState}
+                  dayState={activeDayState}
                   theme={theme}
                   userData={userData}
                 />
               )}
-              {onClickDay && isClickable(defaultHighlights, dayState) ? (
+              {onClickDay && isClickable(defaultHighlights, activeDayState) ? (
                 <Clickable
                   onClick={(ev) => onClickDay(day, userData, ev)}
                   style={{ width: "100%", height: "100%" }}

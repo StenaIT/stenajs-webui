@@ -1,5 +1,19 @@
 # Changelog
 
+## Next
+
+### Calendars
+
+- `TextInput` now automatically changes `iconLeft` into a `FlatButton` if `onClickLeft` is set. Same for right side.
+
+#### minDate and maxDate props
+
+New props `minDate` and `maxDate` in `Calendar` and all calendar input components.
+
+Both are optional, and both are strings in format `2021-11-23`.
+
+When set, all dates before (or after) will be disabled in the calendar.
+
 ## 15.0.0-alpha.4
 
 - `ChipMultiSelect` and `SimpleCheckboxListSection` pass down section props to `SearchFilterSection`.
