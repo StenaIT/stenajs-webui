@@ -1,6 +1,7 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
+import { ModalFooter } from "./ModalFooter";
 import { ModalHeader, ModalHeaderProps } from "./ModalHeader";
 
 export interface ModalProps extends BaseModalProps, ModalHeaderProps {
@@ -39,21 +40,7 @@ export const Modal: React.FC<ModalProps> = ({
         {children}
       </Box>
       {footer && (
-        <Box
-          position={disableStickyFooter ? undefined : "sticky"}
-          bottom={
-            disableStickyFooter
-              ? undefined
-              : "calc(-1 * var(--swui-modal-padding))"
-          }
-          boxShadow={
-            disableStickyFooter
-              ? undefined
-              : "var(--swui-sticky-modal-footer-shadow)"
-          }
-        >
-          {footer}
-        </Box>
+        <ModalFooter sticky={disableStickyFooter}>{footer}</ModalFooter>
       )}
     </BaseModal>
   );
