@@ -217,20 +217,17 @@ export const CustomDraggableModal = () => {
 };
 
 export const ModalWithStickyContentBottom = () => {
-  const [
-    isStickyBottomContentModalOpen,
-    setStickyBottomContentModalOpen,
-  ] = useState(false);
+  const [isStickyFooterModalOpen, setStickyFootertModalOpen] = useState(false);
   return (
     <div>
       <PrimaryButton
-        onClick={() => setStickyBottomContentModalOpen(true)}
-        label={"Open sticky bottom content modal"}
+        onClick={() => setStickyFootertModalOpen(true)}
+        label={"Open sticky footer modal"}
       />
       <Modal
         headerText={"Header text"}
-        isOpen={isStickyBottomContentModalOpen}
-        onRequestClose={() => setStickyBottomContentModalOpen(false)}
+        isOpen={isStickyFooterModalOpen}
+        onRequestClose={() => setStickyFootertModalOpen(false)}
         shouldCloseOnOverlayClick
         width={"750px"}
         footer={
@@ -241,11 +238,11 @@ export const ModalWithStickyContentBottom = () => {
             height={64}
           >
             <PrimaryButton
-              onClick={() => setStickyBottomContentModalOpen(false)}
+              onClick={() => setStickyFootertModalOpen(false)}
               label={"Example button 1"}
             />
             <PrimaryButton
-              onClick={() => setStickyBottomContentModalOpen(false)}
+              onClick={() => setStickyFootertModalOpen(false)}
               label={"Example button 2"}
             />
           </ModalFooter>
