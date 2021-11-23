@@ -1,5 +1,11 @@
 # Changelog
 
+## Next
+
+### Heading and Text
+
+- Added `wordBreak` prop.
+
 ## 15.0.0-alpha.4
 
 - `ChipMultiSelect` and `SimpleCheckboxListSection` pass down section props to `SearchFilterSection`.

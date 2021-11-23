@@ -8,6 +8,7 @@ import styles from "./Heading.module.css";
 export interface HeadingProps extends H1Props {
   variant?: HeadingVariant;
   whiteSpace?: Property.WhiteSpace;
+  wordBreak?: Property.WordBreak;
   as?: HeadingVariant;
 }
 
@@ -20,6 +21,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       className,
       color,
       whiteSpace,
+      wordBreak,
       style,
       children,
       as,
@@ -31,7 +33,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <Element
         className={cx(styles.heading, styles[variant], className)}
-        style={{ color, whiteSpace, ...style }}
+        style={{ color, whiteSpace, wordBreak, ...style }}
         ref={ref}
         {...hProps}
       >
