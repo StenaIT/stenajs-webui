@@ -5,15 +5,11 @@ export const isDateInMinMaxRange = (
   min: Date | undefined,
   max: Date | undefined
 ): boolean => {
-  if (min) {
-    if (isBefore(date, min)) {
-      return isSameDay(date, min);
-    }
+  if (min && isBefore(date, min)) {
+    return isSameDay(date, min);
   }
-  if (max) {
-    if (isAfter(date, max)) {
-      return isSameDay(date, max);
-    }
+  if (max && isAfter(date, max)) {
+    return isSameDay(date, max);
   }
   return true;
 };
