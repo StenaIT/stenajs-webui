@@ -4,10 +4,8 @@ import {
   CalendarDayProps,
   OptionalMinMaxDates,
 } from "../../types/CalendarTypes";
-import {
-  isAfterOrSameDay,
-  isBeforeOrSameDay,
-} from "../../util/date/DateComparator";
+import { addDayStateHighlightsOnSingleDay } from "../../util/calendar/StateModifier";
+import { isDateInMinMaxRange } from "../../util/date/DateMinMaxValidator";
 
 interface DisabledDayWrapperProps<T>
   extends CalendarDayProps<T>,
@@ -23,28 +21,12 @@ export const DisabledDayWrapper = function DisabledDayWrapper<T>({
   day,
   ...props
 }: DisabledDayWrapperProps<T>) {
-  const isBeforeMinDate = useMemo(() => {
-    if (!minDate) {
-      return false;
-    }
-    return isBeforeOrSameDay(day.date, minDate);
-  }, [day.date, minDate]);
-
-  const isAfterMaxDate = useMemo(() => {
-    if (!maxDate) {
-      return false;
-    }
-    return isAfterOrSameDay(day.date, maxDate);
-  }, [day.date, maxDate]);
-
-  const disabledByMinMax = isBeforeMinDate || isAfterMaxDate;
-
   const activeDayState = useMemo(
     () =>
-      disabledByMinMax
-        ? { highlights: [...(dayState?.highlights ?? []), "disabled"] }
+      !isDateInMinMaxRange(day.date, minDate, maxDate)
+        ? addDayStateHighlightsOnSingleDay(dayState, ["disabled"])
         : dayState,
-    [dayState, disabledByMinMax]
+    [day.date, dayState, maxDate, minDate]
   );
 
   return <DayComponent day={day} {...props} dayState={activeDayState} />;
