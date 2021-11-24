@@ -14,6 +14,10 @@ Both are optional, and both are strings in format `2021-11-23`.
 
 When set, all dates before (or after) will be disabled in the calendar.
 
+### Heading and Text
+
+- Added `wordBreak` prop.
+
 ### Modal
 
 - `Modal` has new prop `footer`. The footer is sticky by default, but can be turned off with `disableStickyFooter`.

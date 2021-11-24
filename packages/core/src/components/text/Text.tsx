@@ -10,6 +10,7 @@ export interface TextProps extends SpanProps {
   size?: TextSize;
   userSelect?: Property.UserSelect;
   whiteSpace?: Property.WhiteSpace;
+  wordBreak?: Property.WordBreak;
   color?: string;
 }
 
@@ -26,6 +27,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       color,
       userSelect,
       whiteSpace,
+      wordBreak,
       style,
       ...spanProps
     },
@@ -35,7 +37,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       <span
         className={cx(styles.text, styles[variant], styles[size], className)}
         ref={ref}
-        style={{ color, userSelect, whiteSpace, ...style }}
+        style={{ color, userSelect, whiteSpace, wordBreak, ...style }}
         {...spanProps}
       >
         {children}
