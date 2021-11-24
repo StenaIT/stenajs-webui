@@ -1,6 +1,13 @@
 # Changelog
 
 ## Next
+
+### Heading and Text
+
+- Added `wordBreak` prop.
+
+### Modal
+
 - `Modal` has new prop `footer`. The footer is sticky by default, but can be turned off with `disableStickyFooter`.
 
 ## 15.0.0-alpha.4
