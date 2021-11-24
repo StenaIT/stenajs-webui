@@ -6,9 +6,7 @@ import {
   WeekData,
 } from "../util/calendar/CalendarDataFactory";
 
-export interface CalendarDayProps<T = {}>
-  extends ExtraDayContentProps<T>,
-    OptionalMinMaxDates {
+export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   onClickDay?: OnClickDay<T>;
   defaultHighlights?: Array<DayStateHighlight>;

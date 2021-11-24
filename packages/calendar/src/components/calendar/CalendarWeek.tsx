@@ -13,6 +13,7 @@ import {
 import { MonthData, WeekData } from "../../util/calendar/CalendarDataFactory";
 
 import { CalendarTheme } from "./CalendarTheme";
+import { DisabledDayWrapper } from "./DisabledDayWrapper";
 import { WeekNumberCell } from "./renderers/WeekNumberCell";
 
 export interface CalendarWeekProps<T> extends OptionalMinMaxDates {
@@ -32,7 +33,7 @@ export interface CalendarWeekProps<T> extends OptionalMinMaxDates {
 export function CalendarWeek<T>({
   week,
   month,
-  dayComponent: DayComponent,
+  dayComponent,
   statePerWeekDay,
   userDataPerWeekDay,
   minDate,
@@ -60,7 +61,8 @@ export function CalendarWeek<T>({
         </td>
       )}
       {week.days.map((day) => (
-        <DayComponent
+        <DisabledDayWrapper
+          dayComponent={dayComponent}
           key={day.dateString}
           day={day}
           week={week}
