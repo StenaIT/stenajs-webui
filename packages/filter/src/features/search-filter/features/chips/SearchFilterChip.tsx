@@ -50,7 +50,7 @@ export const SearchFilterChip = function SearchFilterChip<
         label={label ?? sectionId}
         onClick={onClickLabel}
         onClickRemove={
-          onClickRemove ? undefined : () => onClickRemoveHandler(value)
+          onClickRemove ? () => onClickRemoveHandler(value) : undefined
         }
       />
     </ChipSpacer>
