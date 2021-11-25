@@ -28,6 +28,10 @@ export interface DualTextInputProps {
   widthRight?: BoxProps["width"];
   valueLeft?: TextInputProps["value"];
   valueRight?: TextInputProps["value"];
+  minLeft?: string;
+  maxLeft?: string;
+  minRight?: string;
+  maxRight?: string;
   typeLeft?: TextInputProps["type"];
   typeRight?: TextInputProps["type"];
   separatorIcon?: IconDefinition;
@@ -72,6 +76,10 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   onChangeRight,
   valueLeft,
   valueRight,
+  minLeft,
+  maxLeft,
+  minRight,
+  maxRight,
   onClickLeft,
   onClickRight,
   onClickCalendar,
@@ -195,6 +203,8 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             variant={variantLeft}
             type={typeLeft}
             autoFocus={autoFocusLeft}
+            min={minLeft}
+            max={maxLeft}
           />
         </Box>
         <Row indent={0.5} alignItems={"center"} justifyContent={"center"}>
@@ -220,6 +230,8 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             variant={variantRight}
             type={typeRight}
             autoFocus={autoFocusRight}
+            min={minRight}
+            max={maxRight}
           />
         </Box>
       </TextInputBox>

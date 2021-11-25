@@ -22,8 +22,9 @@ import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/Cale
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 import { Popover } from "@stenajs-webui/tooltip";
 import { buildDayStateForDateRange } from "../../../util/calendar/StateModifier";
+import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 
-export interface DateRangeInputProps<T> {
+export interface DateRangeInputProps<T> extends OptionalMinMaxDatesAsString {
   /** The current date range value */
   value: DateRangeCalendarOnChangeValue;
 
@@ -87,6 +88,8 @@ export const DateRangeInput = <T extends {}>({
   width,
   calendarTheme = defaultCalendarTheme,
   calendarProps,
+  minDate,
+  maxDate,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value[focusedInput]) ?? new Date()
@@ -131,6 +134,8 @@ export const DateRangeInput = <T extends {}>({
           onClickDay={onClickDay}
           currentPanel={currentPanel}
           setCurrentPanel={setCurrentPanel}
+          minDate={minDate}
+          maxDate={maxDate}
         />
       }
     >

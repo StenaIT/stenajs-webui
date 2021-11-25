@@ -1,5 +1,5 @@
 import { Column } from "@stenajs-webui/core";
-import { addDays, addMonths } from "date-fns";
+import { addDays, addMonths, addYears, format } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
@@ -89,3 +89,33 @@ export const WithVariant = () => (
     <DateInput value={addMonths(new Date(), 2)} variant={"error"} />
   </div>
 );
+
+export const MinMaxDates = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput
+        value={value}
+        onChange={setValue}
+        minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+        maxDate={format(addYears(addDays(new Date(), 5), 1), "yyyy-MM-dd")}
+      />
+    </div>
+  );
+};
+
+export const MinMaxDatesClose = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput
+        value={value}
+        onChange={setValue}
+        minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+        maxDate={format(addDays(new Date(), 5), "yyyy-MM-dd")}
+      />
+    </div>
+  );
+};

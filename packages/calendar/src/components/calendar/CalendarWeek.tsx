@@ -7,14 +7,16 @@ import {
   ExtraDayContentProps,
   OnClickDay,
   OnClickWeek,
+  OptionalMinMaxDates,
   RenderWeekNumber,
 } from "../../types/CalendarTypes";
 import { MonthData, WeekData } from "../../util/calendar/CalendarDataFactory";
 
 import { CalendarTheme } from "./CalendarTheme";
+import { DisabledDayWrapper } from "./DisabledDayWrapper";
 import { WeekNumberCell } from "./renderers/WeekNumberCell";
 
-export interface CalendarWeekProps<T> {
+export interface CalendarWeekProps<T> extends OptionalMinMaxDates {
   dayComponent: React.ComponentType<CalendarDayProps<T>>;
   week: WeekData;
   month: MonthData;
@@ -31,9 +33,11 @@ export interface CalendarWeekProps<T> {
 export function CalendarWeek<T>({
   week,
   month,
-  dayComponent: DayComponent,
+  dayComponent,
   statePerWeekDay,
   userDataPerWeekDay,
+  minDate,
+  maxDate,
   onClickWeek,
   onClickDay,
   theme,
@@ -57,7 +61,8 @@ export function CalendarWeek<T>({
         </td>
       )}
       {week.days.map((day) => (
-        <DayComponent
+        <DisabledDayWrapper
+          dayComponent={dayComponent}
           key={day.dateString}
           day={day}
           week={week}
@@ -68,6 +73,8 @@ export function CalendarWeek<T>({
           theme={theme}
           extraDayContent={extraDayContent}
           defaultHighlights={defaultHighlights}
+          minDate={minDate}
+          maxDate={maxDate}
         />
       ))}
     </tr>
