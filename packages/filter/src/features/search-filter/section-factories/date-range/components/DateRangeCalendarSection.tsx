@@ -1,12 +1,15 @@
 import {
+  DateRange,
   DateRangeCalendar,
   DateRangeCalendarProps,
   DateRangeFocusedInput,
+  dateRangeToStrings,
+  DateStringRange,
+  stringsToDateRange,
 } from "@stenajs-webui/calendar";
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
 import { Box } from "@stenajs-webui/core";
-import { format, parse } from "date-fns";
 import {
   SearchFilterSection,
   SearchFilterSectionProps,
@@ -18,28 +21,17 @@ import {
 import { useSearchFilterDispatch } from "../../../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../../../context/SearchFilterActionsContext";
 
-interface DateRangeCalendarSectionOnChangeValue {
-  startDate?: string;
-  endDate?: string;
-}
-
 export interface DateRangeCalendarSectionProps<
   TFormModel,
   TSectionKey extends string
 > extends SearchFilterSectionProps<TSectionKey>,
     Omit<
       DateRangeCalendarProps<{}>,
-      | "focusedInput"
-      | "setFocusedInput"
-      | "startDate"
-      | "endDate"
-      | "onChange"
-      | "setStartDate"
-      | "setEndDate"
+      "value" | "onValueChange" | "focusedInput" | "setFocusedInput"
     > {
-  value: DateRangeCalendarSectionOnChangeValue;
+  value: DateStringRange;
   onValueChange: (
-    value: DateRangeCalendarSectionOnChangeValue,
+    value: DateStringRange,
     options: SetDateOptions<TFormModel, TSectionKey>
   ) => void;
 }
@@ -69,36 +61,13 @@ export const DateRangeCalendarSection = <
     "startDate"
   );
 
-  const { startDate, endDate } = value ?? {};
+  const dateRangeValue = useMemo(() => stringsToDateRange(value), [value]);
 
-  const startDateObj = useMemo(
-    () => (startDate ? parse(startDate, "yyyy-MM-dd", new Date()) : undefined),
-    [startDate]
-  );
-
-  const endDateObj = useMemo(
-    () => (endDate ? parse(endDate, "yyyy-MM-dd", new Date()) : undefined),
-    [endDate]
-  );
-
-  const setStartDate = useCallback(
-    (startDate: Date) => {
-      onValueChange(
-        { startDate: format(startDate, "yyyy-MM-dd"), endDate },
-        options
-      );
+  const onValueChangeHandler = useCallback(
+    (value: DateRange) => {
+      onValueChange(dateRangeToStrings(value), options);
     },
-    [endDate, onValueChange, options]
-  );
-
-  const setEndDate = useCallback(
-    (endDate: Date) => {
-      onValueChange(
-        { startDate, endDate: format(endDate, "yyyy-MM-dd") },
-        options
-      );
-    },
-    [onValueChange, options, startDate]
+    [onValueChange, options]
   );
 
   return (
@@ -108,10 +77,8 @@ export const DateRangeCalendarSection = <
           <DateRangeCalendar
             setFocusedInput={setFocusedInput}
             focusedInput={focusedInput}
-            startDate={startDateObj}
-            endDate={endDateObj}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
+            value={dateRangeValue}
+            onValueChange={onValueChangeHandler}
             {...dateRangeCalendarProps}
           />
         </Box>

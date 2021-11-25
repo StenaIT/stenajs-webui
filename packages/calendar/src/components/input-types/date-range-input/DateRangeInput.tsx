@@ -1,16 +1,13 @@
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import { Row, Space } from "@stenajs-webui/core";
-import { TextInput } from "@stenajs-webui/forms";
+import { TextInput, ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
 import { useMemo, useState } from "react";
 import { cssColor } from "@stenajs-webui/theme";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
 import { DateFormats } from "../../../util/date/DateFormats";
-import {
-  DateRangeCalendarOnChangeValue,
-  DateRangeInputCalendarProps,
-} from "../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { DateRangeInputCalendarProps } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import {
   CalendarTheme,
   defaultCalendarTheme,
@@ -23,14 +20,11 @@ import { CalendarPanelType } from "../../../features/calendar-with-month-year-pi
 import { Popover } from "@stenajs-webui/tooltip";
 import { buildDayStateForDateRange } from "../../../util/calendar/StateModifier";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { DateRange } from "../../../types/DateRange";
 
-export interface DateRangeInputProps<T> extends OptionalMinMaxDatesAsString {
-  /** The current date range value */
-  value: DateRangeCalendarOnChangeValue;
-
-  /** The onChange handler. */
-  onChange: (value: DateRangeCalendarOnChangeValue) => void;
-
+export interface DateRangeInputProps<T>
+  extends OptionalMinMaxDatesAsString,
+    ValueAndOnValueChangeProps<DateRange> {
   /**
    * The date format in the input field. See date-fns docs.
    * @default YYYY-MM-dd
@@ -83,7 +77,7 @@ export const DateRangeInput = <T extends {}>({
   placeholderEndDate = "End date",
   portalTarget,
   value,
-  onChange,
+  onValueChange,
   zIndex = 100,
   width,
   calendarTheme = defaultCalendarTheme,
@@ -92,7 +86,7 @@ export const DateRangeInput = <T extends {}>({
   maxDate,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const [dateInFocus, setDateInFocus] = useState(
-    () => (focusedInput && value[focusedInput]) ?? new Date()
+    () => (focusedInput && value?.[focusedInput]) ?? new Date()
   );
   const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
     "calendar"
@@ -108,10 +102,11 @@ export const DateRangeInput = <T extends {}>({
     endDateInputRef,
     onClickDay,
     startDateIsAfterEnd,
-  } = useDateRangeInput(value, onChange);
+  } = useDateRangeInput(value, onValueChange);
 
   const statePerMonth = useMemo(
-    () => buildDayStateForDateRange(undefined, value.startDate, value.endDate),
+    () =>
+      buildDayStateForDateRange(undefined, value?.startDate, value?.endDate),
     [value]
   );
 
@@ -143,7 +138,7 @@ export const DateRangeInput = <T extends {}>({
         <TextInput
           iconLeft={faCalendarAlt}
           onFocus={showCalendarStartDate}
-          value={value.startDate ? format(value.startDate, displayFormat) : ""}
+          value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}
           width={width}
           inputRef={startDateInputRef}
@@ -160,7 +155,7 @@ export const DateRangeInput = <T extends {}>({
         <TextInput
           iconLeft={faCalendarAlt}
           onFocus={showCalendarEndDate}
-          value={value.endDate ? format(value.endDate, displayFormat) : ""}
+          value={value?.endDate ? format(value.endDate, displayFormat) : ""}
           placeholder={placeholderEndDate}
           width={width}
           inputRef={endDateInputRef}

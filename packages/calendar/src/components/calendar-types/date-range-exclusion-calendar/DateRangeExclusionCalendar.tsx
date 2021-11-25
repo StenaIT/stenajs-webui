@@ -3,13 +3,12 @@ import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/Cale
 import { useDateRangeExclusionSelection } from "./UseDateRangeExclusionSelection";
 import { UseInternalPanelStateProps } from "../../../features/internal-panel-state/UseInternalPanelState";
 import { InternalPanelAndFocusStateProps } from "../../../types/InternalPanelAndFocusStateProps";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 
 export interface DateRangeExclusionCalendarProps<T>
   extends InternalPanelAndFocusStateProps<T>,
-    UseInternalPanelStateProps {
-  value?: Array<Date>;
-  onChange?: (value: Array<Date>) => void;
-}
+    UseInternalPanelStateProps,
+    ValueAndOnValueChangeProps<Array<Date>> {}
 
 export function DateRangeExclusionCalendar<T extends {}>(
   props: DateRangeExclusionCalendarProps<T>

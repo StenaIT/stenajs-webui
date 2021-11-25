@@ -1,74 +1,43 @@
-import { isAfter } from "date-fns";
 import { useCallback } from "react";
 import { DateRangeFocusedInput } from "../../../components/calendar-types/date-range-calendar/DateRangeCalendar";
 import { OnClickDay } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
-import { ensureStartIsFirst } from "../../../util/calendar/CalendarIntervalValidator";
-
-export interface DateRangeOnChangeValue {
-  startDate?: Date;
-  endDate?: Date;
-}
+import { toggleDatesIfEndIsEarlierThanStart } from "../../../util/date-range/IntervalSwitcher";
+import { DateRange } from "../../../types/DateRange";
+import { isAfter } from "date-fns";
 
 export const useDateRangeOnClickDayHandler = <T>(
-  startDate: Date | undefined,
-  setStartDate: (startDate: Date) => void,
-  endDate: Date | undefined,
-  setEndDate: (endDate: Date) => void,
+  value: DateRange | undefined,
+  onValueChange: ((dateRange: DateRange) => void) | undefined,
   focusedInput: DateRangeFocusedInput,
-  setFocusedInput: (focusedInput: DateRangeFocusedInput) => void,
-  onChange?: (value: DateRangeOnChangeValue) => void
+  setFocusedInput: (focusedInput: DateRangeFocusedInput) => void
 ): OnClickDay<T> => {
   return useCallback(
     (day: DayData) => {
-      if (focusedInput === "startDate") {
-        if (endDate && isAfter(day.date, endDate)) {
-          setStartDate(endDate);
-          setEndDate(day.date);
-          if (onChange) {
-            onChange({ startDate: endDate, endDate: day.date });
-          }
-        } else {
-          setStartDate(day.date);
-          setFocusedInput("endDate");
-          if (onChange) {
-            onChange(
-              ensureStartIsFirst({
-                startDate: day.date,
-                endDate: endDate,
-              })
-            );
-          }
-        }
-      } else if (focusedInput === "endDate") {
-        if (startDate && isAfter(startDate, day.date)) {
-          setStartDate(day.date);
-          setEndDate(startDate);
-          if (onChange) {
-            onChange({ startDate: day.date, endDate: startDate });
-          }
-        } else {
-          setEndDate(day.date);
-          setFocusedInput("startDate");
-          if (onChange) {
-            onChange(
-              ensureStartIsFirst({
-                startDate: startDate,
-                endDate: day.date,
-              })
-            );
-          }
-        }
+      const dateRange = {
+        startDate: focusedInput === "startDate" ? day.date : value?.startDate,
+        endDate: focusedInput === "endDate" ? day.date : value?.endDate,
+      };
+
+      const isInvalidRange = Boolean(
+        dateRange.startDate &&
+          dateRange.endDate &&
+          isAfter(dateRange.startDate, dateRange.endDate)
+      );
+
+      const validDateRange = toggleDatesIfEndIsEarlierThanStart(dateRange);
+
+      if (!isInvalidRange) {
+        setFocusedInput(focusedInput === "startDate" ? "endDate" : "startDate");
       }
+      onValueChange?.(validDateRange);
     },
     [
       focusedInput,
-      endDate,
-      startDate,
-      setStartDate,
-      setEndDate,
-      onChange,
+      onValueChange,
       setFocusedInput,
+      value?.endDate,
+      value?.startDate,
     ]
   );
 };
