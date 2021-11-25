@@ -22,7 +22,7 @@ export * from "./components/calendar/renderers/WeekNumberCell";
 export * from "./util/calendar/CalendarDataFactory";
 export * from "./util/calendar/StateHelper";
 export * from "./util/calendar/StateModifier";
-export * from "./util/date-range/IntervalSwitcher";
+export * from "./util/date-range/DateRangeValidator";
 export * from "./util/date-range/DateRangeTransformer";
 export * from "./types/CalendarTypes";
 export * from "./types/DateRange";

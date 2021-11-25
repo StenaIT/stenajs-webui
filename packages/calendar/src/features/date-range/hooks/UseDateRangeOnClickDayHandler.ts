@@ -2,9 +2,11 @@ import { useCallback } from "react";
 import { DateRangeFocusedInput } from "../../../components/calendar-types/date-range-calendar/DateRangeCalendar";
 import { OnClickDay } from "../../../types/CalendarTypes";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
-import { toggleDatesIfEndIsEarlierThanStart } from "../../../util/date-range/IntervalSwitcher";
+import {
+  isDateRangeInvalid,
+  toggleDatesIfEndIsEarlierThanStart,
+} from "../../../util/date-range/DateRangeValidator";
 import { DateRange } from "../../../types/DateRange";
-import { isAfter } from "date-fns";
 
 export const useDateRangeOnClickDayHandler = <T>(
   value: DateRange | undefined,
@@ -19,18 +21,10 @@ export const useDateRangeOnClickDayHandler = <T>(
         endDate: focusedInput === "endDate" ? day.date : value?.endDate,
       };
 
-      const isInvalidRange = Boolean(
-        dateRange.startDate &&
-          dateRange.endDate &&
-          isAfter(dateRange.startDate, dateRange.endDate)
-      );
-
-      const validDateRange = toggleDatesIfEndIsEarlierThanStart(dateRange);
-
-      if (!isInvalidRange) {
+      if (!isDateRangeInvalid(dateRange)) {
         setFocusedInput(focusedInput === "startDate" ? "endDate" : "startDate");
       }
-      onValueChange?.(validDateRange);
+      onValueChange?.(toggleDatesIfEndIsEarlierThanStart(dateRange));
     },
     [
       focusedInput,

@@ -1,21 +1,28 @@
-import { isAfter } from "date-fns";
+import { isAfter, isSameDay } from "date-fns";
 import { DateRange, DateStringRange } from "../../types/DateRange";
 import { dateRangeToStrings, stringsToDateRange } from "./DateRangeTransformer";
 
-export const toggleDatesIfEndIsEarlierThanStart = ({
+export const isDateRangeInvalid = ({
   startDate,
   endDate,
-}: DateRange): DateRange => {
-  if (startDate && endDate && isAfter(startDate, endDate)) {
+}: DateRange): boolean =>
+  Boolean(
+    startDate &&
+      endDate &&
+      !isSameDay(startDate, endDate) &&
+      isAfter(startDate, endDate)
+  );
+
+export const toggleDatesIfEndIsEarlierThanStart = (
+  dateRange: DateRange
+): DateRange => {
+  if (isDateRangeInvalid(dateRange)) {
     return {
-      startDate: endDate,
-      endDate: startDate,
+      startDate: dateRange.endDate,
+      endDate: dateRange.startDate,
     };
   }
-  return {
-    startDate,
-    endDate,
-  };
+  return dateRange;
 };
 
 export const toggleDateStringsIfEndIsEarlierThanStart = (
