@@ -3,8 +3,8 @@ import { Story } from "@storybook/react";
 import { addDays, format, subDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
-import { DateRangeCalendarOnChangeValue } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { DateRangeInput } from "./DateRangeInput";
+import { DateRange } from "../../../types/DateRange";
 
 export default {
   title: "calendar/Input/DateRangeInput",
@@ -19,14 +19,14 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+  const [value, setValue] = useState<DateRange>({
     startDate: undefined,
     endDate: undefined,
   });
 
   return (
     <div style={{ display: "inline-block" }}>
-      <DateRangeInput value={value} onChange={setValue} />
+      <DateRangeInput value={value} onValueChange={setValue} />
     </div>
   );
 };
@@ -39,12 +39,12 @@ export const Centered = () => (
 
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
-    <DateRangeInput onChange={() => {}} value={{}} />
+    <DateRangeInput />
   </div>
 );
 
 export const UsingPortal = () => {
-  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+  const [value, setValue] = useState<DateRange>({
     startDate: undefined,
     endDate: undefined,
   });
@@ -53,7 +53,7 @@ export const UsingPortal = () => {
     <div style={{ display: "inline-block" }}>
       <DateRangeInput
         value={value}
-        onChange={setValue}
+        onValueChange={setValue}
         portalTarget={document.body}
       />
     </div>
@@ -61,20 +61,20 @@ export const UsingPortal = () => {
 };
 
 export const WithPreselectedValue = () => {
-  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+  const [value, setValue] = useState<DateRange>({
     startDate: new Date(),
     endDate: addDays(new Date(), 5),
   });
 
   return (
     <div style={{ display: "inline-block" }}>
-      <DateRangeInput value={value} onChange={setValue} />
+      <DateRangeInput value={value} onValueChange={setValue} />
     </div>
   );
 };
 
 export const WithTodayHighlighted = () => {
-  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+  const [value, setValue] = useState<DateRange>({
     startDate: undefined,
     endDate: undefined,
   });
@@ -83,7 +83,7 @@ export const WithTodayHighlighted = () => {
     <div style={{ display: "inline-block" }}>
       <DateRangeInput
         value={value}
-        onChange={setValue}
+        onValueChange={setValue}
         calendarProps={{ highlightToday: true }}
       />
     </div>
@@ -94,13 +94,12 @@ export const WithInvalidRange = () => (
   <div style={{ display: "inline-block" }}>
     <DateRangeInput
       value={{ startDate: new Date(), endDate: subDays(new Date(), 7) }}
-      onChange={() => {}}
     />
   </div>
 );
 
 export const MinMaxDates = () => {
-  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+  const [value, setValue] = useState<DateRange>({
     startDate: undefined,
     endDate: undefined,
   });
@@ -109,7 +108,7 @@ export const MinMaxDates = () => {
     <div style={{ display: "inline-block" }}>
       <DateRangeInput
         value={value}
-        onChange={setValue}
+        onValueChange={setValue}
         minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
         maxDate={format(addDays(new Date(), 15), "yyyy-MM-dd")}
       />

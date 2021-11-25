@@ -3,9 +3,9 @@ import { Story } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
-import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
 import { useDateRangeCalendarState } from "../../calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
 import { DateRangeDualTextInput } from "./DateRangeDualTextInput";
+import { DateRange } from "../../../types/DateRange";
 
 export default {
   title: "calendar/Input/DateRangeDualTextInput",
@@ -20,9 +20,7 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
-    undefined
-  );
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
   const props = useDateRangeCalendarState();
 
   return (
@@ -43,7 +41,7 @@ export const Centered = () => (
 );
 
 export const StartSelected = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>({
+  const [value, setValue] = useState<DateRange | undefined>({
     startDate: new Date(),
   });
   const props = useDateRangeCalendarState();
@@ -60,7 +58,7 @@ export const StartSelected = () => {
 };
 
 export const EndSelected = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>({
+  const [value, setValue] = useState<DateRange | undefined>({
     endDate: new Date(),
   });
   const props = useDateRangeCalendarState();
@@ -77,7 +75,7 @@ export const EndSelected = () => {
 };
 
 export const RangeSelected = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>({
+  const [value, setValue] = useState<DateRange | undefined>({
     startDate: new Date(),
     endDate: addDays(new Date(), 7),
   });
@@ -95,9 +93,7 @@ export const RangeSelected = () => {
 };
 
 export const WithHiddenYearPagination = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
-    undefined
-  );
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
   const props = useDateRangeCalendarState();
 
   return (
@@ -115,9 +111,7 @@ export const WithHiddenYearPagination = () => {
 };
 
 export const MinMaxDates = () => {
-  const [value, setValue] = useState<DateRangeOnChangeValue | undefined>(
-    undefined
-  );
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
   const props = useDateRangeCalendarState();
 
   return (

@@ -50,7 +50,7 @@ export const Standard = () => {
   return (
     <>
       <DateRangeExclusionCalendar
-        onChange={setValue}
+        onValueChange={setValue}
         value={value}
         {...props}
       />
@@ -71,7 +71,7 @@ export const TodayHighlighted = () => {
     <DateRangeExclusionCalendar
       {...props}
       highlightToday
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
     />
   );
@@ -83,7 +83,7 @@ export const WithDisabledDateTomorrow = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
       statePerMonth={disabledTomorrow}
     />
@@ -97,7 +97,7 @@ export const WithDisabledAsDefault = () => {
     <DateRangeExclusionCalendar
       {...props}
       defaultHighlights={["disabled"]}
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
       statePerMonth={statePerMonthWithTwoWeeksEnabled}
     />
@@ -110,7 +110,7 @@ export const WithMonthSwitcherBelow = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
       monthSwitcherPlacement={"below"}
     />
@@ -123,7 +123,7 @@ export const WithMultipleMonths = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       numMonths={3}
       value={value}
     />
@@ -136,7 +136,7 @@ export const WithMultipleRows = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       numMonths={6}
       monthsPerRow={3}
       value={value}
@@ -175,7 +175,7 @@ export const WithCustomWeekContent = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
       renderWeekNumber={renderWeekNumber}
     />
@@ -188,7 +188,7 @@ export const WithCustomContent = () => {
   return (
     <DateRangeExclusionCalendar
       {...props}
-      onChange={setValue}
+      onValueChange={setValue}
       value={value}
       extraDayContent={() => (
         <Box position={"absolute"} top={"-10px"} right={"-10px"}>
@@ -206,13 +206,13 @@ export const WithInstanceCustomTheme = () => {
     <Row>
       <DateRangeExclusionCalendar
         {...props}
-        onChange={setValue}
+        onValueChange={setValue}
         value={value}
         theme={extranetCalendarTheme}
       />
       <Space num={2} />
       <DateRangeExclusionCalendar
-        onChange={setValue}
+        onValueChange={setValue}
         value={value}
         {...props}
       />
