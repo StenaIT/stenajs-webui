@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import { Box, Clickable, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import styled from "@emotion/styled";
 import {
   CalendarDayProps,
   DayState,
@@ -8,7 +8,7 @@ import {
 } from "../../../types/CalendarTypes";
 import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
 
-export const CalendarDay = <T extends {}>({
+export const CalendarDay = function CalendarDay<T extends {}>({
   day,
   week,
   month,
@@ -18,7 +18,7 @@ export const CalendarDay = <T extends {}>({
   theme,
   extraDayContent: ExtraDayContent,
   defaultHighlights,
-}: CalendarDayProps<T>) => {
+}: CalendarDayProps<T>) {
   const content = (
     <Box
       width={"100%"}

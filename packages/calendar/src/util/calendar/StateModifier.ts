@@ -12,6 +12,7 @@ import {
   startOfMonth,
   subDays,
 } from "date-fns";
+import { last } from "lodash";
 import {
   CalendarState,
   CalendarUserData,
@@ -21,7 +22,6 @@ import {
 } from "../../types/CalendarTypes";
 import { DateFormats } from "../date/DateFormats";
 import { WeekData } from "./CalendarDataFactory";
-import { last } from "lodash";
 
 export const buildDayStateForDateRange = (
   statePerMonth: CalendarUserData<DayState> = {},
@@ -161,11 +161,6 @@ export const addDayStateHighlights = (
     calendarState[monthString][weekNumber] &&
     calendarState[monthString][weekNumber][dayInMonth];
 
-  const newHighlights: Array<DayStateHighlight> =
-    dayState && dayState.highlights
-      ? [...dayState.highlights, ...highlights]
-      : highlights;
-
   return {
     ...calendarState,
     [monthString]: {
@@ -174,12 +169,19 @@ export const addDayStateHighlights = (
         ...(calendarState &&
           calendarState[monthString] &&
           calendarState[monthString][weekNumber]),
-        [dayInMonth]: {
-          ...dayState,
-          highlights: newHighlights,
-        },
+        [dayInMonth]: addDayStateHighlightsOnSingleDay(dayState, highlights),
       },
     },
+  };
+};
+
+export const addDayStateHighlightsOnSingleDay = (
+  dayState: DayState | undefined,
+  highlights: Array<DayStateHighlight>
+): DayState => {
+  return {
+    ...dayState,
+    highlights: [...(dayState?.highlights ?? []), ...highlights],
   };
 };
 

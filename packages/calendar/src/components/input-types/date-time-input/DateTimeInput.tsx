@@ -18,9 +18,11 @@ import { useDateRangeEffects } from "./hooks/UseDateRangeEffects";
 import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
+import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 
 export interface DateTimeInputProps
-  extends ValueAndOnValueChangeProps<Date | null> {
+  extends ValueAndOnValueChangeProps<Date | null>,
+    OptionalMinMaxDatesAsString {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -34,6 +36,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onEsc,
   onBlur,
   autoFocus,
+  minDate,
+  maxDate,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -121,6 +125,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
                   setDateInFocus={setDateInFocus}
                   currentPanel={currentPanel}
                   setCurrentPanel={setCurrentPanel}
+                  minDate={minDate}
+                  maxDate={maxDate}
                 />
               ) : delayedIsTimePickerVisible ? (
                 <Column>
@@ -163,6 +169,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           valueRight={timeValue ?? ""}
           widthLeft={"104px"}
           widthRight={"64px"}
+          minLeft={minDate}
+          maxLeft={maxDate}
         />
       </Popover>
     </Box>

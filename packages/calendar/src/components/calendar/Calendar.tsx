@@ -1,5 +1,5 @@
 import { Row, Space, Spacing } from "@stenajs-webui/core";
-import { getMonth, getYear } from "date-fns";
+import { getMonth, getYear, parse } from "date-fns";
 import { chunk } from "lodash";
 import * as React from "react";
 import { useHighlightToday } from "../../features/today-state/UseHighlightToday";
@@ -21,6 +21,7 @@ import { CalendarMonth } from "./CalendarMonth";
 import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
 import { CalendarDay } from "./renderers/CalendarDay";
 import styles from "./Calendar.module.css";
+import { useMemo } from "react";
 
 interface CalendarPanelProps<T>
   extends CalendarProps<T>,
@@ -41,6 +42,8 @@ function CalendarPanel<T extends {}>({
   dayComponent = CalendarDay,
   userDataPerMonth,
   statePerMonth,
+  minDate,
+  maxDate,
   onClickDay,
   onClickWeekDay,
   onClickWeek,
@@ -54,6 +57,16 @@ function CalendarPanel<T extends {}>({
   defaultHighlights,
   theme = defaultCalendarTheme,
 }: CalendarPanelProps<T>) {
+  const minDateObj = useMemo(
+    () => (minDate ? parse(minDate, "yyyy-MM-dd", new Date()) : undefined),
+    [minDate]
+  );
+
+  const maxDateObj = useMemo(
+    () => (maxDate ? parse(maxDate, "yyyy-MM-dd", new Date()) : undefined),
+    [maxDate]
+  );
+
   return (
     <div className={styles.calendar}>
       {monthRows.map((monthRow, rowIndex) => (
@@ -83,6 +96,8 @@ function CalendarPanel<T extends {}>({
                   headerRightContent={headerRightContent}
                   extraDayContent={extraDayContent}
                   defaultHighlights={defaultHighlights}
+                  minDate={minDateObj}
+                  maxDate={maxDateObj}
                 />
               </React.Fragment>
             ))}

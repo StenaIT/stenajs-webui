@@ -1,6 +1,6 @@
 import { Column } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
-import { addDays, subDays } from "date-fns";
+import { addDays, format, subDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { DateRangeCalendarOnChangeValue } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
@@ -98,3 +98,21 @@ export const WithInvalidRange = () => (
     />
   </div>
 );
+
+export const MinMaxDates = () => {
+  const [value, setValue] = useState<DateRangeCalendarOnChangeValue>({
+    startDate: undefined,
+    endDate: undefined,
+  });
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeInput
+        value={value}
+        onChange={setValue}
+        minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+        maxDate={format(addDays(new Date(), 15), "yyyy-MM-dd")}
+      />
+    </div>
+  );
+};

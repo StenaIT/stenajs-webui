@@ -18,9 +18,11 @@ import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { DateRangeInputCalendarProps } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 
 export interface DateRangeDualTextInputProps<TData = unknown>
-  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue> {
+  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue>,
+    OptionalMinMaxDatesAsString {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -35,6 +37,8 @@ export const DateRangeDualTextInput = <TData extends {}>({
   onBlur,
   onEnter,
   onEsc,
+  minDate,
+  maxDate,
   calendarProps,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
@@ -119,6 +123,8 @@ export const DateRangeDualTextInput = <TData extends {}>({
               setDateInFocus={setDateInFocus}
               currentPanel={currentPanel}
               setCurrentPanel={setCurrentPanel}
+              minDate={minDate}
+              maxDate={maxDate}
               {...calendarProps}
               statePerMonth={statePerMonth}
             />
@@ -148,6 +154,10 @@ export const DateRangeDualTextInput = <TData extends {}>({
           variant={startDateIsAfterEnd ? "error" : undefined}
           widthLeft={"104px"}
           widthRight={"104px"}
+          minLeft={minDate}
+          maxLeft={maxDate}
+          minRight={minDate}
+          maxRight={maxDate}
         />
       </Popover>
     </Box>

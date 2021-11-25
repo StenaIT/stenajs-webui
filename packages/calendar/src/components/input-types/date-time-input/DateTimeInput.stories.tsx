@@ -5,6 +5,7 @@ import { Story } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { DateTimeInput } from "./DateTimeInput";
+import { addDays, format } from "date-fns";
 
 export default {
   title: "calendar/Input/DateTimeInput",
@@ -47,4 +48,17 @@ export const PreselectedValue = () => {
   const [value, setValue] = useState<Date | null>(new Date());
 
   return <DateTimeInput value={value} onValueChange={setValue} />;
+};
+
+export const MinMaxDates = () => {
+  const [value, setValue] = useState<Date | null>(new Date());
+
+  return (
+    <DateTimeInput
+      value={value}
+      onValueChange={setValue}
+      minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
+      maxDate={format(addDays(new Date(), 5), "yyyy-MM-dd")}
+    />
+  );
 };
