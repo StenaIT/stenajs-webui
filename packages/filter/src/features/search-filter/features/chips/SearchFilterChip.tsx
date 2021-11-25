@@ -31,12 +31,9 @@ export const SearchFilterChip = function SearchFilterChip<
     [dispatch, actions]
   );
 
-  const onClickRemoveHandler = useCallback(
-    (value: string) => {
-      onClickRemove?.({ value, setFormModelFields });
-    },
-    [onClickRemove, setFormModelFields]
-  );
+  const onClickRemoveHandler = useCallback(() => {
+    onClickRemove?.({ value, setFormModelFields });
+  }, [onClickRemove, setFormModelFields, value]);
 
   const onClickLabel = useCallback(() => {
     dispatch(actions.clearExpandedSections());
@@ -49,9 +46,7 @@ export const SearchFilterChip = function SearchFilterChip<
       <Chip
         label={label ?? sectionId}
         onClick={onClickLabel}
-        onClickRemove={
-          onClickRemove ? () => onClickRemoveHandler(value) : undefined
-        }
+        onClickRemove={onClickRemove ? onClickRemoveHandler : undefined}
       />
     </ChipSpacer>
   );
