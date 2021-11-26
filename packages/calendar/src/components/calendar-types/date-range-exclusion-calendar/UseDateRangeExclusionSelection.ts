@@ -7,22 +7,19 @@ import {
   listContainsDate,
   removeDateIfExist,
 } from "../../../util/date/DateListTools";
-import {
-  DateRangeCalendarOnChangeValue,
-  DateRangeFocusedInput,
-} from "../date-range-calendar/DateRangeCalendar";
+import { DateRangeFocusedInput } from "../date-range-calendar/DateRangeCalendar";
 import { DateRangeExclusionCalendarProps } from "./DateRangeExclusionCalendar";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
+import { DateRange } from "../../../types/DateRange";
 
 export const useDateRangeExclusionSelection = <T>({
-  onChange,
   value,
+  onValueChange,
   statePerMonth,
   onChangePanel,
 }: DateRangeExclusionCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const [startDate, setStartDate] = useState<Date | undefined>();
-  const [endDate, setEndDate] = useState<Date | undefined>();
+  const [dateRange, setDateRange] = useState<DateRange | undefined>();
   const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
     "startDate"
   );
@@ -35,49 +32,47 @@ export const useDateRangeExclusionSelection = <T>({
   );
 
   const onChangeHandler = useCallback(
-    (value: DateRangeCalendarOnChangeValue) => {
+    (value: DateRange) => {
+      setDateRange(value);
       const { startDate, endDate } = value;
-      if (onChange) {
+      if (onValueChange) {
         if (startDate && endDate) {
           const dates = eachDayOfInterval({ start: startDate, end: endDate });
-          onChange(dates);
+          onValueChange(dates);
         } else if (startDate) {
-          onChange([startDate]);
+          onValueChange([startDate]);
         } else if (endDate) {
-          onChange([endDate]);
+          onValueChange([endDate]);
         }
       }
     },
-    [onChange]
+    [onValueChange]
   );
 
   const onClickDayRange = useDateRangeOnClickDayHandler(
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
+    dateRange,
+    onChangeHandler,
     focusedInput,
-    setFocusedInput,
-    onChangeHandler
+    setFocusedInput
   );
 
   const onClickDay: OnClickDay<T> = useCallback(
     (day, userData, ev) => {
-      if (onChange) {
+      if (onValueChange) {
         if (ev.ctrlKey || ev.metaKey) {
           if (!value) {
-            onChange([day.date]);
+            onValueChange([day.date]);
           } else if (listContainsDate(value, day.date)) {
-            onChange(removeDateIfExist(value, day.date));
+            onValueChange(removeDateIfExist(value, day.date));
           } else {
-            onChange([...value, day.date]);
+            onValueChange([...value, day.date]);
           }
         } else {
           onClickDayRange(day, userData, ev);
         }
       }
     },
-    [onChange, onClickDayRange, value]
+    [onValueChange, onClickDayRange, value]
   );
   const statePerMonthWithSelectedDate = useMemo(() => {
     return addHighlighting(statePerMonth, value);

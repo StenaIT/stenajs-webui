@@ -1,14 +1,12 @@
 import { useCallback, useMemo, useRef, useState } from "react";
-import {
-  DateRangeCalendarOnChangeValue,
-  DateRangeFocusedInput,
-} from "../../../calendar-types/date-range-calendar/DateRangeCalendar";
+import { DateRangeFocusedInput } from "../../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { DayData } from "../../../../util/calendar/CalendarDataFactory";
 import { isAfter } from "date-fns";
+import { DateRange } from "../../../../types/DateRange";
 
 export const useDateRangeInput = (
-  value: DateRangeCalendarOnChangeValue,
-  onChange: (dateRange: DateRangeCalendarOnChangeValue) => void
+  value: DateRange | undefined,
+  onValueChange: ((dateRange: DateRange) => void) | undefined
 ) => {
   const startDateInputRef = useRef<HTMLInputElement>(null);
   const endDateInputRef = useRef<HTMLInputElement>(null);
@@ -37,22 +35,22 @@ export const useDateRangeInput = (
   const onClickDay = useCallback(
     (day: DayData) => {
       if (focusedInput === "startDate") {
-        onChange({
+        onValueChange?.({
           startDate: day.date,
-          endDate: value.endDate,
+          endDate: value?.endDate,
         });
-        if (!value.endDate) {
+        if (!value?.endDate) {
           setFocusedInput("endDate");
           endDateInputRef.current && endDateInputRef.current.focus();
         } else {
           setTimeout(hideCalendar, 150);
         }
       } else if (focusedInput === "endDate") {
-        onChange({
-          startDate: value.startDate,
+        onValueChange?.({
+          startDate: value?.startDate,
           endDate: day.date,
         });
-        if (!value.startDate) {
+        if (!value?.startDate) {
           setFocusedInput("startDate");
           startDateInputRef.current && startDateInputRef.current.focus();
         } else {
@@ -60,15 +58,15 @@ export const useDateRangeInput = (
         }
       }
     },
-    [focusedInput, onChange, setFocusedInput, hideCalendar, value]
+    [focusedInput, onValueChange, setFocusedInput, hideCalendar, value]
   );
 
   const startDateIsAfterEnd = useMemo(
     () =>
-      value.startDate &&
-      value.endDate &&
+      value?.startDate &&
+      value?.endDate &&
       isAfter(value.startDate, value.endDate),
-    [value.startDate, value.endDate]
+    [value?.startDate, value?.endDate]
   );
 
   return {

@@ -2,24 +2,16 @@ import * as React from "react";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { useDateRangeSelection } from "./hooks/UseDateRangeSelection";
 import { InternalPanelAndFocusStateProps } from "../../../types/InternalPanelAndFocusStateProps";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
+import { DateRange } from "../../../types/DateRange";
 
 export type DateRangeFocusedInput = "startDate" | "endDate" | undefined;
 
-export interface DateRangeCalendarOnChangeValue {
-  startDate?: Date;
-  endDate?: Date;
-}
-
 export interface DateRangeCalendarProps<T>
-  extends InternalPanelAndFocusStateProps<T> {
-  startDate: Date | undefined;
-  endDate: Date | undefined;
+  extends InternalPanelAndFocusStateProps<T>,
+    ValueAndOnValueChangeProps<DateRange> {
   focusedInput?: DateRangeFocusedInput;
-  setStartDate: (startDate: Date) => void;
-  setEndDate: (endDate: Date) => void;
   setFocusedInput: (focusedInput: DateRangeFocusedInput) => void;
-  /** onChange handler for when the user selects a date. */
-  onChange?: (value: DateRangeCalendarOnChangeValue) => void;
 }
 
 export function DateRangeCalendar<T extends {}>(
@@ -34,11 +26,8 @@ export function DateRangeCalendar<T extends {}>(
 export type DateRangeInputCalendarProps<T> = Omit<
   DateRangeCalendarProps<T>,
   | "startDateInFocus"
-  | "onChange"
-  | "startDate"
-  | "endDate"
-  | "setStartDate"
-  | "setEndDate"
+  | "value"
+  | "onValueChange"
   | "focusedInput"
   | "setFocusedInput"
   | "theme"

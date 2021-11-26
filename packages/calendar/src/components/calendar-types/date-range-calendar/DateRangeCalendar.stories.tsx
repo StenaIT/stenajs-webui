@@ -34,10 +34,10 @@ for (let i = 10; i < 14; i++) {
 }
 
 function DateRangeCalendarWithState<T>({
-  onChange,
-}: Pick<DateRangeCalendarProps<T>, "onChange">) {
+  onValueChange,
+}: Pick<DateRangeCalendarProps<T>, "onValueChange">) {
   const calendarProps = useDateRangeCalendarState();
-  return <DateRangeCalendar {...calendarProps} onChange={onChange} />;
+  return <DateRangeCalendar {...calendarProps} onValueChange={onValueChange} />;
 }
 
 export const Standard = () => {

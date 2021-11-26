@@ -9,7 +9,6 @@ import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
-import { DateRangeOnChangeValue } from "../../../features/date-range/hooks/UseDateRangeOnClickDayHandler";
 import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { buildDayStateForSingleMonth } from "../../../util/calendar/StateModifier";
@@ -19,10 +18,11 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { DateRangeInputCalendarProps } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { DateRange } from "../../../types/DateRange";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateRangeDualTextInputProps<TData = unknown>
-  extends ValueAndOnValueChangeProps<DateRangeOnChangeValue>,
+  extends ValueAndOnValueChangeProps<DateRange>,
     OptionalMinMaxDatesAsString {
   onEsc?: () => void;
   onEnter?: () => void;

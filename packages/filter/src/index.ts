@@ -24,7 +24,6 @@ export * from "./features/search-filter/section-factories/boolean-record/Boolean
 export * from "./features/search-filter/section-factories/boolean-record/BooleanRecordChips";
 export * from "./features/search-filter/section-factories/boolean-record/components/SimpleCheckboxListSection";
 export * from "./features/search-filter/section-factories/boolean-record/components/ChipMultiSelectSection";
-export * from "./features/search-filter/section-factories/date-range/DateRangeTypes";
 export * from "./features/search-filter/section-factories/date-range/DateRangeChips";
 export * from "./features/search-filter/section-factories/date-range/DateRangePropsFactory";
 export * from "./features/search-filter/section-factories/date-range/components/DateRangeCalendarSection";

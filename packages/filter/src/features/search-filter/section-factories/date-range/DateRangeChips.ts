@@ -1,4 +1,4 @@
-import { DateRange } from "./DateRangeTypes";
+import { DateStringRange } from "@stenajs-webui/calendar";
 import {
   SearchFilterSectionChipModel,
   SearchFilterSectionOnClickRemoveOnChip,
@@ -42,7 +42,7 @@ export const createChipsForDateRange = (
 
 export const createOnClickRemoveOnChipForDateRange = <
   TFormModel,
-  TField extends keyof PickByValue<TFormModel, DateRange>
+  TField extends keyof PickByValue<TFormModel, DateStringRange>
 >(
   startDateFieldName: TField,
   endDateFieldName: TField
