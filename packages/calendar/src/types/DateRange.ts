@@ -4,6 +4,14 @@ export interface DateRange {
 }
 
 export interface DateStringRange {
-  startDate?: string; // yyyy-MM-dd
-  endDate?: string; // yyyy-MM-dd
+  /**
+   * Format: yyyy-MM-dd
+   * Example: 2021-02-21
+   */
+  startDate?: string;
+  /**
+   * Format: yyyy-MM-dd
+   * Example: 2021-02-21
+   */
+  endDate?: string;
 }
