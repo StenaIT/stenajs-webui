@@ -17,6 +17,8 @@ import {
   CalendarTheme,
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
+import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export type DateTextInputCalendarProps<T> = Omit<
   SingleDateCalendarProps<T>,
@@ -24,7 +26,8 @@ export type DateTextInputCalendarProps<T> = Omit<
 >;
 
 export interface DateTextInputProps<T>
-  extends Omit<TextInputProps, "onChange" | "theme"> {
+  extends Omit<TextInputProps, "onChange" | "theme" | "min" | "max">,
+    OptionalMinMaxDatesAsString {
   /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
   /** Close calendar when date is selected, @default true */
@@ -58,6 +61,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   zIndex = 100,
   calendarTheme = defaultCalendarTheme,
   hideCalenderIcon = false,
+  minDate,
+  maxDate = defaultMaxDate,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -122,6 +127,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 ? parse(value, dateFormat, new Date())
                 : undefined
             }
+            minDate={minDate}
+            maxDate={maxDate}
             theme={calendarTheme}
           />
         }
@@ -144,6 +151,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
           onValueChange={onValueChangeHandler}
           placeholder={placeholder}
           value={value || ""}
+          min={minDate}
+          max={maxDate}
           size={10}
         />
       </Popover>
