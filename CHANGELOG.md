@@ -1,5 +1,11 @@
 # Changelog
 
+# Next
+
+## DateTextInput
+
+- Add `minDate` and `maxDate` props to `DateTextInput`.
+
 # 15.0.0-alpha.5
 
 ## Calendars
