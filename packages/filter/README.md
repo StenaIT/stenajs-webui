@@ -140,3 +140,43 @@ They are API compatible and are interchangeable.
   }
 />
 ```
+
+## Chips
+
+You can add all chips for a section using the `SectionChips` component.
+
+```tsx
+<SectionChips
+  sectionId={"divisions"}
+  emptyChipLabel={"All division"}
+  {...createChipsPropsForBooleanRecord(
+    state.formModel,
+    "divisions",
+    divisionOptions
+  )}
+/>
+```
+
+### Manual chips
+
+If you need more manual control over each chip, you can add them individually.
+
+```tsx
+{
+  myList.map(({ value, label }) => (
+    <SearchFilterChip
+      key={value}
+      label={label ?? sectionId}
+      sectionId={sectionId}
+      onClickRemove={onClickRemoveOnChip}
+      value={value}
+    />
+  ));
+}
+```
+
+If you need a chip to indicate no selection, you can use `EmptyChip`.
+
+```tsx
+<EmptyChip sectionId={sectionId} label={emptyChipLabel} />
+```

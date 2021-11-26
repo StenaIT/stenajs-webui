@@ -21,6 +21,7 @@ import { Popover } from "@stenajs-webui/tooltip";
 import { buildDayStateForDateRange } from "../../../util/calendar/StateModifier";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { DateRange } from "../../../types/DateRange";
+import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateRangeInputProps<T>
   extends OptionalMinMaxDatesAsString,
@@ -83,7 +84,7 @@ export const DateRangeInput = <T extends {}>({
   calendarTheme = defaultCalendarTheme,
   calendarProps,
   minDate,
-  maxDate,
+  maxDate = defaultMaxDate,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()

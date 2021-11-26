@@ -12,6 +12,7 @@
 New props `minDate` and `maxDate` in `Calendar` and all calendar input components.
 
 Both are optional, and both are strings in format `2021-11-23`.
+If `maxDate` is not provided, `2999-12-31` is the default.
 
 When set, all dates before (or after) will be disabled in the calendar.
 
