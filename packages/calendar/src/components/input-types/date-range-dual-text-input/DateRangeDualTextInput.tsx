@@ -19,6 +19,7 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { DateRangeInputCalendarProps } from "../../calendar-types/date-range-calendar/DateRangeCalendar";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRangeOnChangeValue>,
@@ -38,7 +39,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
   onEnter,
   onEsc,
   minDate,
-  maxDate,
+  maxDate = defaultMaxDate,
   calendarProps,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};

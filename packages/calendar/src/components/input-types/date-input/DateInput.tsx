@@ -15,6 +15,7 @@ import {
 import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */
@@ -73,7 +74,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   variant,
   width,
   minDate,
-  maxDate,
+  maxDate = defaultMaxDate,
 }) => {
   const {
     hideCalendar,
