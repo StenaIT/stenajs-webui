@@ -19,6 +19,7 @@ import { useDateRangeHandlers } from "./hooks/UseDateRangeHandlers";
 import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
+import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
@@ -37,7 +38,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onBlur,
   autoFocus,
   minDate,
-  maxDate,
+  maxDate = defaultMaxDate,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
