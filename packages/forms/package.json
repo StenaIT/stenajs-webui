@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "15.0.0-alpha.4",
+  "version": "15.0.0-alpha.5",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,8 +27,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "15.0.0-alpha.4",
-    "@stenajs-webui/elements": "15.0.0-alpha.4",
+    "@stenajs-webui/core": "15.0.0-alpha.5",
+    "@stenajs-webui/elements": "15.0.0-alpha.5",
     "classnames": "^2.3.1",
     "date-fns": "2.26.0"
   },
