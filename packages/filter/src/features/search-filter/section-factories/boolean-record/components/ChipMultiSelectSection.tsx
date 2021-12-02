@@ -60,6 +60,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
         inputValue={text}
         noneSelectedLabel={noneSelectedLabel}
         onInputChange={setText}
+        closeMenuOnSelect={false}
       />
     </SearchFilterSection>
   );
