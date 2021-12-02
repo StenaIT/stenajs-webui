@@ -1,5 +1,12 @@
 # Changelog
 
+# Next
+
+## ChipMultiSelectSection
+
+- Add `noneSelectedLabel` to override the default `None` chip.
+- Keep the menu open after selecting a value.
+
 # 15.0.0-alpha.6
 
 ## DateTextInput
