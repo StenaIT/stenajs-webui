@@ -60,7 +60,9 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     if (desc) {
       sortedList.reverse();
     }
-    sortCounterRef.current++;
+    if (!disableInfiniteList) {
+      sortCounterRef.current++;
+    }
     return sortedList;
   }, [items, valueResolver, desc]);
 
