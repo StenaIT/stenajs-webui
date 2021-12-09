@@ -64,7 +64,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
       sortCounterRef.current++;
     }
     return sortedList;
-  }, [items, valueResolver, desc]);
+  }, [items, valueResolver, desc, disableInfiniteList]);
 
   const idListForEnabledItems = useMemo(
     () =>
