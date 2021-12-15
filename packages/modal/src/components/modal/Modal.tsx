@@ -1,8 +1,9 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
-import { ModalFooter } from "./ModalFooter";
 import { ModalHeader, ModalHeaderProps } from "./ModalHeader";
+import cx from "classnames";
+import styles from "./Modal.module.css";
 
 export interface ModalProps extends BaseModalProps, ModalHeaderProps {
   spacing?: number;
@@ -40,7 +41,13 @@ export const Modal: React.FC<ModalProps> = ({
         {children}
       </Box>
       {footer && (
-        <ModalFooter sticky={!disableStickyFooter}>{footer}</ModalFooter>
+        <Box
+          className={cx(styles.footer, {
+            [styles.stickyFooter]: !disableStickyFooter,
+          })}
+        >
+          {footer}
+        </Box>
       )}
     </BaseModal>
   );

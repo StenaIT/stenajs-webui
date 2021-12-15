@@ -18,6 +18,7 @@ import { Modal } from "./Modal";
 import { cssColor } from "@stenajs-webui/theme";
 import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
+import { ModalFooter } from "./ModalFooter";
 
 export default {
   title: "modal/Modal",
@@ -230,21 +231,18 @@ export const ModalWithStickyContentBottom = () => {
         shouldCloseOnOverlayClick
         width={"750px"}
         footer={
-          <Box
-            justifyContent={"space-around"}
-            alignItems={"center"}
-            row={true}
-            height={64}
-          >
-            <PrimaryButton
-              onClick={() => setStickyFootertModalOpen(false)}
-              label={"Example button 1"}
-            />
-            <PrimaryButton
-              onClick={() => setStickyFootertModalOpen(false)}
-              label={"Example button 2"}
-            />
-          </Box>
+          <ModalFooter>
+            <Row justifyContent={"space-around"} alignItems={"center"}>
+              <PrimaryButton
+                onClick={() => setStickyFootertModalOpen(false)}
+                label={"Example button 1"}
+              />
+              <PrimaryButton
+                onClick={() => setStickyFootertModalOpen(false)}
+                label={"Example button 2"}
+              />
+            </Row>
+          </ModalFooter>
         }
       >
         <Box spacing={2}>{loremIpsumSampleText}</Box>
