@@ -7,6 +7,11 @@
 - Add `noneSelectedLabel` to override the default `None` chip.
 - Keep the menu open after selecting a value.
 
+## Modal
+
+- Hide footer shadow and make footer static in print mode
+- Make footer padding optional by using `ModalFooter`
+
 # 15.0.0-alpha.6
 
 ## DateTextInput
