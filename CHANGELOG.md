@@ -1,6 +1,10 @@
 # Changelog
 
-# Next
+# 15.0.0-alpha.7
+
+## UseOnClickOutside
+
+- Add `options` param to allow click events in the capturing phase.
 
 ## ChipMultiSelectSection
 
@@ -11,6 +15,12 @@
 
 - Hide footer shadow and make footer static in print mode
 - Make footer padding optional by using `ModalFooter`
+
+## Bugfixes
+
+### StandardTable
+
+- Do not re-mount the entire table when `items` are changed and sorting is disabled, even if `initialSortOrder` is set.
 
 # 15.0.0-alpha.6
 
