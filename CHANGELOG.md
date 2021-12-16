@@ -9,7 +9,7 @@
 
 ## Modal
 
-- Hide footer shadow in print mode
+- Hide footer shadow and make footer static in print mode
 - Make footer padding optional by using `ModalFooter`
 
 # 15.0.0-alpha.6
