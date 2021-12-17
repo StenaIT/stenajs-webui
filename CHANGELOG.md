@@ -1,5 +1,11 @@
 # Changelog
 
+# Next
+
+## Modal
+
+- `ModalFooter` is exported correctly
+
 # 15.0.0-alpha.7
 
 ## UseOnClickOutside
