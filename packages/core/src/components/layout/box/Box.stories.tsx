@@ -168,13 +168,8 @@ export const WithAriaLabel = () => (
 );
 
 export const Gap = () => (
-  <>
-    <Box
-      gap={2}
-      row
-      background={cssColor("--lhds-color-orange-200")}
-      display={"inline-flex"}
-    >
+  <Box gap alignItems={"flex-start"}>
+    <Box gap={2} row background={cssColor("--lhds-color-orange-200")}>
       <Box
         width={"50px"}
         height={"50px"}
@@ -196,12 +191,7 @@ export const Gap = () => (
         background={cssColor("--lhds-color-orange-400")}
       />
     </Box>
-    <Space />
-    <Box
-      gap={2}
-      background={cssColor("--lhds-color-orange-200")}
-      display={"inline-flex"}
-    >
+    <Box gap={2} background={cssColor("--lhds-color-orange-200")}>
       <Box
         width={"50px"}
         height={"50px"}
@@ -223,5 +213,5 @@ export const Gap = () => (
         background={cssColor("--lhds-color-orange-400")}
       />
     </Box>
-  </>
+  </Box>
 );
