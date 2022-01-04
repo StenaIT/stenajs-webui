@@ -2,6 +2,10 @@
 
 # Next
 
+## Box
+
+- `Box`, and consequently `Row` and `Column`, now has a `gap` prop. Like `indent` and `spacing`, it maps to the css gap property with our own spacing units.
+
 ## Modal
 
 - `ModalFooter` is exported correctly
