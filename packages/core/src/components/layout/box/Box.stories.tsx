@@ -8,6 +8,8 @@ import {
   shadowListControl,
   spaceControl,
 } from "../../../storybook-helpers/storybook-controls";
+import { cssColor } from "@stenajs-webui/theme";
+import { Space } from "../space/Space";
 
 export default {
   title: "core/Layout/Box",
@@ -31,8 +33,8 @@ export const Overview: Story<BoxProps> = (props) => (
 
 export const Row = () => (
   <Box row>
-    <Box width={"25px"} height={"25px"} background={"#8e7e7e"} />
-    <Box width={"25px"} height={"25px"} background={"#3e7e7e"} />
+    <Box width={"25px"} height={"25px"} background={"#8e7e7e"}/>
+    <Box width={"25px"} height={"25px"} background={"#3e7e7e"}/>
   </Box>
 );
 
@@ -43,8 +45,8 @@ export const RowWithJustifyContent = () => (
     width={"500px"}
     border={"1px solid grey"}
   >
-    <Box width={"25px"} height={"25px"} background={"#8e7e7e"} />
-    <Box width={"25px"} height={"25px"} background={"#3e7e7e"} />
+    <Box width={"25px"} height={"25px"} background={"#8e7e7e"}/>
+    <Box width={"25px"} height={"25px"} background={"#3e7e7e"}/>
   </Box>
 );
 
@@ -161,6 +163,34 @@ export const WithAriaLabel = () => (
         height={"100px"}
         background={"blue"}
       />
+    </Box>
+  </>
+);
+
+export const Gap = () => (
+  <>
+    <Box gap={2} row background={cssColor("--lhds-color-orange-200")}
+         display={"inline-flex"}>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+    </Box>
+    <Space />
+    <Box gap={2} background={cssColor("--lhds-color-orange-200")}
+         display={"inline-flex"}>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
+      <Box width={"50px"} height={"50px"}
+           background={cssColor("--lhds-color-orange-400")}/>
     </Box>
   </>
 );
