@@ -9,7 +9,6 @@ import {
   spaceControl,
 } from "../../../storybook-helpers/storybook-controls";
 import { cssColor } from "@stenajs-webui/theme";
-import { Space } from "../space/Space";
 
 export default {
   title: "core/Layout/Box",
@@ -171,45 +170,73 @@ export const Gap = () => (
   <Box gap alignItems={"flex-start"}>
     <Box gap={2} row background={cssColor("--lhds-color-orange-200")}>
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
     </Box>
     <Box gap={2} background={cssColor("--lhds-color-orange-200")}>
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
       <Box
-        width={"50px"}
-        height={"50px"}
+        width={50}
+        height={50}
+        background={cssColor("--lhds-color-orange-400")}
+      />
+    </Box>
+    <Box
+      gap={2}
+      row
+      flexWrap={"wrap"}
+      width={116}
+      background={cssColor("--lhds-color-orange-200")}
+    >
+      <Box
+        width={50}
+        height={50}
+        background={cssColor("--lhds-color-orange-400")}
+      />
+      <Box
+        width={50}
+        height={50}
+        background={cssColor("--lhds-color-orange-400")}
+      />
+      <Box
+        width={50}
+        height={50}
+        background={cssColor("--lhds-color-orange-400")}
+      />
+      <Box
+        width={50}
+        height={50}
         background={cssColor("--lhds-color-orange-400")}
       />
     </Box>
