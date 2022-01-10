@@ -2,7 +2,7 @@
 
 # Next
 
-## Modal
+# 15.0.0-alpha.8
 
 - `ModalFooter` is exported correctly
 
