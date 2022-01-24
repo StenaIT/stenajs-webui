@@ -1,5 +1,13 @@
 # Changelog
 
+# Next
+
+## Tooltip, grid, panels & calendar
+
+### Breaking changes
+
+- Remove CSS import for compatibility with nextjs. (See [README in tooltip](packages/tooltip/README.md) for more information)
+
 # 15.0.0-alpha.9
 
 ## Box
