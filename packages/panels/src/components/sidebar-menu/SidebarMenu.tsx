@@ -25,7 +25,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
-  hideCloseButton,
+  hideCloseButton = false,
   ...boxProps
 }) => {
   return (
