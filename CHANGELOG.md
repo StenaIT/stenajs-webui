@@ -1,5 +1,46 @@
 # Changelog
 
+# Next
+
+## DateRangeDualTextInput
+
+- The width of the two fields can be customised using `widthLeft` and `widthRight`
+- The default width of the input fields is slightly larger to make room for the text in Firefox
+
+# 15.0.0-alpha.9
+
+## Box
+
+- `Box`, and consequently `Row` and `Column`, now has a `gap` prop. Like `indent` and `spacing`, it maps to the css gap property with our own spacing units.
+
+# 15.0.0-alpha.8
+
+## Modal
+
+- `ModalFooter` is exported correctly
+
+# 15.0.0-alpha.7
+
+## UseOnClickOutside
+
+- Add `options` param to allow click events in the capturing phase.
+
+## ChipMultiSelectSection
+
+- Add `noneSelectedLabel` to override the default `None` chip.
+- Keep the menu open after selecting a value.
+
+## Modal
+
+- Hide footer shadow and make footer static in print mode
+- Make footer padding optional by using `ModalFooter`
+
+## Bugfixes
+
+### StandardTable
+
+- Do not re-mount the entire table when `items` are changed and sorting is disabled, even if `initialSortOrder` is set.
+
 # 15.0.0-alpha.6
 
 ## DateTextInput

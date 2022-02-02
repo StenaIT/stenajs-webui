@@ -12,12 +12,14 @@ import { truthyKeysAsList } from "@stenajs-webui/core";
 interface ChipMultiSelectSectionProps<TSectionKey extends string>
   extends SearchFilterSectionProps<TSectionKey>,
     ValueAndOnValueChangeProps<BooleanRecord> {
+  noneSelectedLabel?: string;
   options?: BooleanRecordOptions;
 }
 
 export const ChipMultiSelectSection = <TSectionKey extends string>({
   options,
   value,
+  noneSelectedLabel,
   onValueChange,
   ...sectionProps
 }: ChipMultiSelectSectionProps<TSectionKey>): React.ReactElement => {
@@ -56,7 +58,9 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
         value={listValue}
         onValueChange={onValueChangeInternal}
         inputValue={text}
+        noneSelectedLabel={noneSelectedLabel}
         onInputChange={setText}
+        closeMenuOnSelect={false}
       />
     </SearchFilterSection>
   );

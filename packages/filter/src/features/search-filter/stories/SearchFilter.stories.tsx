@@ -336,7 +336,7 @@ export const Demo = () => {
               />
               <SectionChips
                 sectionId={"divisions"}
-                emptyChipLabel={"All division"}
+                emptyChipLabel={"All divisions"}
                 {...createChipsPropsForBooleanRecord(
                   state.formModel,
                   "divisions",
@@ -368,6 +368,7 @@ export const Demo = () => {
         <ChipMultiSelectSection
           sectionId={"divisions"}
           loading={false}
+          noneSelectedLabel={"All divisions"}
           options={divisionOptions}
           value={state.formModel.divisions}
           onValueChange={(divisions) =>
@@ -441,7 +442,7 @@ export const ManyChips = () => {
             <SearchFilterChips>
               <SectionChips
                 sectionId={"divisions"}
-                emptyChipLabel={"All division"}
+                emptyChipLabel={"All divisions"}
                 {...createChipsPropsForBooleanRecord(
                   state.formModel,
                   "divisions",
@@ -458,6 +459,7 @@ export const ManyChips = () => {
           sectionId={"divisions"}
           loading={false}
           options={divisionOptions}
+          noneSelectedLabel={"All divisions"}
           value={state.formModel.divisions}
           onValueChange={(divisions) =>
             dispatch(actions.setFormModelFields({ divisions }))

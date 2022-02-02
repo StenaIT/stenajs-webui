@@ -91,6 +91,11 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   indent?: ResponsiveValue<boolean | TLengthStyledSystem>;
 
   /**
+   * Adds spacing between children.
+   */
+  gap?: ResponsiveValue<boolean | TLengthStyledSystem>;
+
+  /**
    * Adds a shadow around the box.
    */
   shadow?: ResponsiveValue<Property.BoxShadow | ShadowType>;
@@ -144,6 +149,7 @@ export interface BoxProps extends StyledSystemProps, DivProps {
 const excludedProps = [
   "spacing",
   "indent",
+  "gap",
   "width",
   "height",
   "overflow",
@@ -168,6 +174,11 @@ const box = system({
     property: "--current-spacing",
     transform: booleanOrNumberToNumber,
   },
+  gap: {
+    // @ts-ignore
+    property: "--current-gap",
+    transform: booleanOrNumberToNumber,
+  },
   shadow: {
     property: "boxShadow",
     transform: (value) => shadows[value] ?? value,
@@ -186,6 +197,7 @@ export const Box = styled("div", {
 })<InnerProps>`
   --current-spacing: 0;
   --current-indent: 0;
+  --current-gap: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -210,6 +222,8 @@ export const Box = styled("div", {
   ${right};
   ${top};
   ${bottom};
+
+  gap: calc(var(--current-gap) * var(--swui-metrics-space));
 
   padding: calc(var(--current-spacing) * var(--swui-metrics-spacing))
     calc(var(--current-indent) * var(--swui-metrics-indent));

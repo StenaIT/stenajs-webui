@@ -89,3 +89,18 @@
     opacity: 1;
   }
 }
+
+.footer {
+  background-color: var(--swui-modal-content-bg-color);
+}
+
+.stickyFooter {
+  position: sticky;
+  bottom: calc(-1 * var(--swui-modal-padding));
+  box-shadow: var(--swui-modal-footer-shadow);
+
+  @media print {
+    position: static;
+    box-shadow: none;
+  }
+}
