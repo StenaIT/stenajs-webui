@@ -30,8 +30,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 }) => {
   return (
     <Box className={cx(styles.sidebarMenu, className)} {...boxProps}>
-      if (!hideCloseButton){" "}
-      {
+      {!hideCloseButton && (
         <>
           <Box alignItems={"flex-start"} justifyContent={"center"}>
             <SidebarMenuCloseButton onClick={onCloseClick} variant={"dark"} />
@@ -39,7 +38,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
           <SeparatorLine color={cssColor("--lhds-color-blue-700")} />
           <Space />
         </>
-      }
+      )}
       <Box
         className={styles.sidebarMenuContent}
         background={"var(--swui-sidebar-menu-background-color)"}
