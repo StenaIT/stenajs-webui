@@ -9,7 +9,10 @@ import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
-import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
+import {
+  DualTextInput,
+  DualTextInputProps,
+} from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { buildDayStateForSingleMonth } from "../../../util/calendar/StateModifier";
 import { useDateRangeEffects } from "./hooks/UseDateRangeEffects";
@@ -23,7 +26,8 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRange>,
-    OptionalMinMaxDatesAsString {
+    OptionalMinMaxDatesAsString,
+    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -41,6 +45,8 @@ export const DateRangeDualTextInput = <TData extends {}>({
   minDate,
   maxDate = defaultMaxDate,
   calendarProps,
+  widthLeft = 128,
+  widthRight = 128,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
 
@@ -153,8 +159,8 @@ export const DateRangeDualTextInput = <TData extends {}>({
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
           variant={startDateIsAfterEnd ? "error" : undefined}
-          widthLeft={"104px"}
-          widthRight={"104px"}
+          widthLeft={widthLeft}
+          widthRight={widthRight}
           minLeft={minDate}
           maxLeft={maxDate}
           minRight={minDate}

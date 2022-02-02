@@ -1,5 +1,12 @@
 # Changelog
 
+# Next
+
+## DateRangeDualTextInput
+
+- The width of the two fields can be customised using `widthLeft` and `widthRight`
+- The default width of the input fields is slightly larger to make room for the text in Firefox
+
 # 15.0.0-alpha.9
 
 ## Box

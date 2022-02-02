@@ -1,4 +1,4 @@
-import { Column } from "@stenajs-webui/core";
+import { Column, Txt } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
@@ -124,5 +124,32 @@ export const MinMaxDates = () => {
         {...props}
       />
     </div>
+  );
+};
+
+export const FieldWidth = () => {
+  const [value, setValue] = useState<DateRange | undefined>({
+    startDate: new Date(),
+  });
+  const props = useDateRangeCalendarState();
+
+  return (
+    <Column gap={1} alignItems={"flex-start"}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        widthLeft={104}
+        widthRight={104}
+        {...props}
+      />
+      <Txt>
+        Notice: Firefox adds a 'remove' icon that might cover your date if the
+        input field is too short.
+      </Txt>
+      <Txt>
+        Also, Open Sans is wider than Stena Sans, so use that to measure until
+        Stena Sans is published.
+      </Txt>
+    </Column>
   );
 };
