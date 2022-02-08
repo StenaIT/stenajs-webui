@@ -2,6 +2,10 @@
 
 # 15.0.0-alpha.10
 
+## SidebarMenu
+
+- The close button can be disabled with `hideCloseButton`
+
 ## DateRangeDualTextInput
 
 - The width of the two fields can be customised using `widthLeft` and `widthRight`
