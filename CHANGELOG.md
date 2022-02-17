@@ -1,3 +1,15 @@
+# v15.0.2 (Thu Feb 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Add compressed-size action ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.0.1 (Thu Feb 17 2022)
 
 #### 🐛 Bug Fix
