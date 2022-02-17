@@ -28,5 +28,5 @@ jobs:
       - name: "Compressed Size"
         uses: preactjs/compressed-size-action@v2
         with:
-          build: "-v" # Will execute `yarn run -v` (essentially a no-op)
+          build-script: "-v" # Will execute `yarn run -v` (essentially a no-op)
           pattern: "packages/*/dist/*.js"
