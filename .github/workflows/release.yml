@@ -35,4 +35,5 @@ jobs:
           yarn build-packages
           yarn post-build-check
 
-          yarn auto shipit -v
+          yarn auto shipit
+          rm $HOME/.npmrc || true
