@@ -1,12 +1,10 @@
-name: Node CI
+name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node
@@ -25,8 +23,25 @@ jobs:
           yarn post-build-check
         env:
           CI: true
+  check-bundle-size:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: "Compressed Size"
         uses: preactjs/compressed-size-action@v2
         with:
           build-script: "-v" # Will execute `yarn run -v` (essentially a no-op)
           pattern: "packages/*/dist/*.js"
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == "push" && github.ref_name == "master" && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
+    steps:
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
+        run: |
+          yarn auto shipit
+          rm $HOME/.npmrc || true
