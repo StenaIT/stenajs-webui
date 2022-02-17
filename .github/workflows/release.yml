@@ -17,17 +17,11 @@ jobs:
         run: git fetch --unshallow --tags
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 16.x
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
 
       - name: Create Release
         env:
@@ -37,7 +31,9 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn lerna link
-          yarn check-prettier
-          yarn build-all
-          yarn test
-          yarn auto shipit -vv --dry-run --from=v15.0.0-alpha.10 
+
+          yarn pre-build-check
+          yarn build-packages
+          yarn post-build-check
+
+          yarn auto shipit -vv --dry-run
