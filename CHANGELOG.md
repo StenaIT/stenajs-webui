@@ -1,3 +1,22 @@
+# v15.0.1 (Thu Feb 17 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Increase width of DateTimeInput [#429](https://github.com/StenaIT/stenajs-webui/pull/429) ([@lindskogen](https://github.com/lindskogen))
+
+#### ⚠️ Pushed to `master`
+
+- Add exact option to lerna ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Fix exact version reference ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.0.0 (Thu Feb 17 2022)
 
 #### ✨ Features
