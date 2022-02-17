@@ -8,5 +8,6 @@
     "publish": {
       "verifyAccess": false
     }
-  }
+  },
+  "exact": true
 }
