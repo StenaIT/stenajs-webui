@@ -35,7 +35,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == "push" && github.ref_name == "master" && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
+    if: ${{ github.event_name == 'push' && github.ref_name == 'master' && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
     steps:
       - name: Create Release
         env:
