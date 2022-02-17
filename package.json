@@ -63,6 +63,7 @@
     "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
+    "auto": "^10.32.6",
     "autoprefixer": "^9.7.2",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
@@ -182,5 +183,10 @@
     "not ie < 11",
     "not op_mini all"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
+  }
 }

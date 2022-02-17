@@ -1,0 +1,12 @@
+{
+  "author": "autobot <41898282+github-actions[bot]@users.noreply.github.com>",
+  "plugins": [
+    [
+      "npm",
+      {
+        "exact": true,
+        "subPackageChangelogs": false
+      }
+    ]
+  ]
+}

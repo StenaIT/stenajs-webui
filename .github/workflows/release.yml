@@ -1,0 +1,43 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - master
+      - feature/release-ci
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-deps-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-deps-${{ hashFiles('yarn.lock') }}
+
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
+        run: |
+          yarn install --frozen-lockfile
+          yarn lerna link
+          yarn check-prettier
+          yarn build-all
+          yarn test
+          yarn auto shipit -vv --dry-run
