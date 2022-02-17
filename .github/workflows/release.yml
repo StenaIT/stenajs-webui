@@ -40,4 +40,4 @@ jobs:
           yarn check-prettier
           yarn build-all
           yarn test
-          yarn auto shipit -vv --dry-run
+          yarn auto shipit -vv --dry-run --from=v15.0.0-alpha.10 
