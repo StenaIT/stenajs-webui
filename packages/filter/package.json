@@ -39,6 +39,7 @@
     "date-fns": "2.26.0"
   },
   "peerDependencies": {
+    "@emotion/react": ">=11.1.5",
     "@emotion/styled": ">=11.3.0",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@types/lodash": ">=4.14.168",
@@ -49,6 +50,7 @@
     "redux": ">=4.0.5"
   },
   "devDependencies": {
+    "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@types/jest": "^23.1.5",
