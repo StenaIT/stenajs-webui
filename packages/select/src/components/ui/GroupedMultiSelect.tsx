@@ -89,7 +89,7 @@ export const GroupedMultiSelect = <TData extends {}>({
       GroupBase<InternalDropdownOption<TData>>
     >
   ) => {
-    if ("options" in props.data) {
+    if ("internalOptions" in props.data) {
       return (
         <components.Option {...props}>
           <Box
