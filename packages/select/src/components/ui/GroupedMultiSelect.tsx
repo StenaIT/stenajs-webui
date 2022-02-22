@@ -1,7 +1,8 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { Box, Row, Space, Text } from "@stenajs-webui/core";
+import { Row, Space, Text, TextSize } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import * as React from "react";
+import { ReactNode } from "react";
 import {
   ActionMeta,
   components,
@@ -69,6 +70,33 @@ const resolveIconColor = (
     ? theme.menu.selectedItemHoverIconColor
     : theme.menu.selectedItemIconColor;
 
+function formatInnerOptionLabel<TData>(
+  props: OptionProps<
+    InternalDropdownOption<TData>,
+    true,
+    GroupBase<InternalDropdownOption<TData>>
+  >
+) {
+  const { formatGroupLabel, formatOptionLabel } = props.selectProps;
+
+  if ("internalOptions" in props.data) {
+    return formatGroupLabel
+      ? formatGroupLabel({
+          label: props.data.label,
+          options: props.data.internalOptions,
+        })
+      : props.label;
+  }
+
+  return formatOptionLabel
+    ? formatOptionLabel(props.data, {
+        context: "menu",
+        inputValue: props.selectProps.inputValue ?? "",
+        selectValue: props.getValue(),
+      })
+    : props.label;
+}
+
 export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
@@ -89,61 +117,20 @@ export const GroupedMultiSelect = <TData extends {}>({
       GroupBase<InternalDropdownOption<TData>>
     >
   ) => {
-    if ("internalOptions" in props.data) {
-      return (
-        <components.Option {...props}>
-          <Box
-            alignItems={"center"}
-            justifyContent={"space-between"}
-            flexDirection={"row"}
-          >
-            <Text tabIndex={-1}>
-              {formatGroupLabel ? formatGroupLabel(props.data) : props.label}
-            </Text>
-            {props.isSelected && (
-              <Icon
-                color={resolveIconColor(theme, props.isFocused)}
-                icon={faCheck}
-                size={12}
-              />
-            )}
-          </Box>
-        </components.Option>
-      );
-    }
+    const label = formatInnerOptionLabel(props);
+    const isGroupOption = "internalOptions" in props.data;
+
     return (
       <components.Option {...props}>
         <Row>
-          <Space />
-          <Box
-            alignItems={"center"}
-            justifyContent={"space-between"}
-            flexDirection={"row"}
-            flexGrow={1}
-          >
-            <Text
-              size={"small"}
-              tabIndex={-1}
-              color={
-                props.isSelected ? theme.menu.selectedItemTextColor : undefined
-              }
-            >
-              {formatOptionLabel
-                ? formatOptionLabel(props.data, {
-                    context: "menu",
-                    inputValue: selectProps.inputValue ?? "",
-                    selectValue: props.getValue(),
-                  })
-                : props.label}
-            </Text>
-            {props.isSelected && (
-              <Icon
-                color={resolveIconColor(theme, props.isFocused)}
-                icon={faCheck}
-                size={12}
-              />
-            )}
-          </Box>
+          {!isGroupOption && <Space />}
+          <InnerOption
+            theme={theme}
+            size={"small"}
+            label={label}
+            selected={props.isSelected}
+            focused={props.isFocused}
+          />
         </Row>
       </components.Option>
     );
@@ -185,3 +172,28 @@ export const GroupedMultiSelect = <TData extends {}>({
     />
   );
 };
+
+interface InnerOptionProps {
+  size?: TextSize;
+  selected: boolean;
+  theme: SelectTheme;
+  label: ReactNode;
+  focused: boolean;
+}
+
+const InnerOption: React.VFC<InnerOptionProps> = ({
+  focused,
+  label,
+  selected,
+  size,
+  theme,
+}) => (
+  <Row alignItems={"center"} justifyContent={"space-between"} flexGrow={1}>
+    <Text tabIndex={-1} size={size} color={"currentColor"}>
+      {label}
+    </Text>
+    {selected && (
+      <Icon color={resolveIconColor(theme, focused)} icon={faCheck} size={12} />
+    )}
+  </Row>
+);
