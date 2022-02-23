@@ -126,7 +126,7 @@ export const GroupedMultiSelect = <TData extends {}>({
           {!isGroupOption && <Space />}
           <InnerOption
             theme={theme}
-            size={"small"}
+            size={!isGroupOption ? "small" : undefined}
             label={label}
             selected={props.isSelected}
             focused={props.isFocused}
