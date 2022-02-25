@@ -1,3 +1,15 @@
+# v15.1.0 (Fri Feb 25 2022)
+
+#### 🐛 Bug Fix
+
+- Some design updates on search filter drawer and panel [#436](https://github.com/StenaIT/stenajs-webui/pull/436) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.0.3 (Fri Feb 25 2022)
 
 #### 🔩 Dependency Updates
