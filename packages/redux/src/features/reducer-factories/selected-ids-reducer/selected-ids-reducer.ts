@@ -15,10 +15,9 @@ const INITIAL_STATE = createSelectedIdsReducerInitialState();
 
 export type SelectedIdsReducer = Reducer<SelectedIdsState, SelectedIdsAction>;
 
-export const createSelectedIdsReducer = (): SelectedIdsReducer => (
-  state = INITIAL_STATE,
-  action
-) => {
+export const createSelectedIdsReducer = (
+  initialState: SelectedIdsState = INITIAL_STATE
+): SelectedIdsReducer => (state = initialState, action) => {
   switch (action.type) {
     case "SELECTED_IDS:SET_SELECTED_IDS": {
       const { selectedIds } = action;
