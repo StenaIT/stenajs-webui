@@ -1,3 +1,26 @@
+# v15.0.3 (Fri Feb 25 2022)
+
+#### 🐛 Bug Fix
+
+- Re-add git fetch --tags which is needed by auto [#432](https://github.com/StenaIT/stenajs-webui/pull/432) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/select`
+  - Fix select typings and styling regression [#433](https://github.com/StenaIT/stenajs-webui/pull/433) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🏠 Internal
+
+- Use stena sans cloudfront font CDN [#434](https://github.com/StenaIT/stenajs-webui/pull/434) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🔩 Dependency Updates
+
+- `@stenajs-webui/core`, `@stenajs-webui/filter`, `@stenajs-webui/grid`, `@stenajs-webui/tooltip`
+  - Fix missing peer dependencies [#431](https://github.com/StenaIT/stenajs-webui/pull/431) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.0.2 (Thu Feb 17 2022)
 
 #### ⚠️ Pushed to `master`
