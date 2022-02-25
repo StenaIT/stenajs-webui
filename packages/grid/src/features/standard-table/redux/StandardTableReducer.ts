@@ -43,7 +43,7 @@ export type StandardTableReducer<TColumnKey extends string> = Reducer<
 
 export const createStandardTableReducer = <TColumnKey extends string>(
   reducerId: string,
-  initialState?: StandardTableState<TColumnKey>
+  initialState?: Partial<StandardTableState<TColumnKey>>
 ): StandardTableReducer<TColumnKey> => {
   const sortOrder = reducerIdGate(
     getReducerIdFor(reducerId, "sortOrder"),
