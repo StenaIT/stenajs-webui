@@ -38,15 +38,15 @@
   --swui-font-size-large: 16px;
   --swui-line-height-large: 24px;
   --swui-font-size-medium: 14px;
-  --swui-line-height-medium: 20px;
+  --swui-line-height-medium: 16px;
   --swui-font-size-small: 12px;
-  --swui-line-height-small: 18px;
+  --swui-line-height-small: 16px;
   --swui-font-size-smaller: 10px;
-  --swui-line-height-smaller: 14px;
+  --swui-line-height-smaller: 16px;
   --swui-font-weight-inputs: 400;
 
   /* Text */
-  --swui-text-primary-color: var(--lhds-color-ui-700);
+  --swui-text-primary-color: var(--lhds-color-ui-900);
   --swui-text-action-color: var(--lhds-color-blue-600);
   --swui-text-action-color-hover: var(--lhds-color-blue-500);
   --swui-text-action-color-focus: var(--lhds-color-blue-500);
