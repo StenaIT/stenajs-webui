@@ -3,7 +3,7 @@
 #### 🚀 Enhancement
 
 - `@stenajs-webui/grid`
-  - Add hideBorderTop to TableRow [£441](https://github.com/StenaIT/stenajs-webui/pull/439)
+  - Add hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441)
 
 #### Authors: 1
 
