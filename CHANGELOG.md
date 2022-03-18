@@ -1,3 +1,14 @@
+# v15.3.1 (Fri Mar 18 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Add hideBorderTop to TableRow [£441](https://github.com/StenaIT/stenajs-webui/pull/439)
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
 # v15.3.0 (Tue Mar 01 2022)
 
 #### 🚀 Enhancement
