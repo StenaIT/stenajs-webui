@@ -26,6 +26,7 @@ export default {
         hidden: true,
       },
     },
+    layout: "fullscreen",
     viewMode: "canvas",
     docs: {
       page: null,

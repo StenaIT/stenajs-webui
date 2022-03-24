@@ -38,6 +38,9 @@ import { NavBarHeading } from "./NavBarHeading";
 export default {
   title: "panels/NavBar",
   component: NavBar,
+  parameters: {
+    layout: "fullscreen",
+  },
   subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
 };
 
