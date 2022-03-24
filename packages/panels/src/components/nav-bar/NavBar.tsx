@@ -30,7 +30,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   children,
   right,
   center,
-  height = "64px",
+  height = "48px",
   onClickMenuButton,
 }) => {
   const currentFlex = center ? 1 : undefined;
@@ -40,6 +40,7 @@ export const NavBar: React.FC<NavBarProps> = ({
         height={height}
         minHeight={height}
         justifyContent={"space-between"}
+        style={{ ["--swui-nav-bar-height" as string]: height }}
         className={cx(styles.navBar, styles[variant], className)}
       >
         <Row

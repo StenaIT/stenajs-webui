@@ -8,6 +8,8 @@
 
 .icon {
   color: var(--swui-sidebar-menu-text-color);
+  font-size: 16px;
+  width: var(--swui-sidebar-menu-item-height)
 }
 
 .spinner {
@@ -17,4 +19,29 @@
 .leftWrapper.leftWrapper.leftWrapper.leftWrapper {
   width: 56px;
   margin-right: 0;
+}
+
+.button {
+  border: 0;
+  background: var(--swui-sidebar-menu-background-color);
+
+  &:hover {
+    background: var(--swui-sidebar-menu-background-color-hover);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    background: var(--swui-sidebar-menu-background-color-active);
+  }
+
+  &:active {
+    background: var(--swui-sidebar-menu-background-color-active);
+  }
+
+  &.selected {
+    background: var(--swui-sidebar-menu-item-selected);
+  }
 }

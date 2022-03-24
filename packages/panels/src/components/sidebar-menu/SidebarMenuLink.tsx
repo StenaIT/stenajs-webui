@@ -1,7 +1,8 @@
-import { Clickable, ClickableProps, Indent, Row } from "@stenajs-webui/core";
+import { ClickableProps, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
 import contentStyles from "./SidebarMenuContent.module.css";
+import cx from "classnames";
 
 export interface SidebarMenuLinkProps
   extends ClickableProps,
@@ -19,8 +20,6 @@ export interface SidebarMenuLinkProps
   indent?: boolean;
 }
 
-const selectedBorder = "4px solid var(--swui-sidebar-menu-item-selected)";
-
 export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   className,
   children,
@@ -37,13 +36,19 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
 }) => {
   const hasContentLeft = left || leftIcon || loading || success;
   return (
-    <Clickable
-      background={"var(--swui-sidebar-menu-background-color)"}
-      hoverBackground={"var(--swui-sidebar-menu-background-color-hover)"}
-      style={{ borderRight: selected ? selectedBorder : undefined }}
+    <button
+      className={cx(
+        contentStyles.button,
+        selected ? contentStyles.selected : undefined
+      )}
       {...clickableProps}
     >
-      <Row spacing={1} flex={1} alignItems={"center"} height={"40px"}>
+      <Row
+        spacing={1}
+        flex={1}
+        alignItems={"center"}
+        height={"var(--swui-sidebar-menu-item-height)"}
+      >
         {!hasContentLeft && <Indent />}
         {indent && <Indent num={3.5} />}
         <ButtonContent
@@ -56,10 +61,10 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
           success={success}
           labelClassName={contentStyles.label}
           spinnerClassName={contentStyles.spinner}
-          iconClassName={contentStyles.icon}
+          iconClassName={cx(contentStyles.icon, "fa-fw")}
           leftWrapperClassName={contentStyles.leftWrapper}
         />
       </Row>
-    </Clickable>
+    </button>
   );
 };

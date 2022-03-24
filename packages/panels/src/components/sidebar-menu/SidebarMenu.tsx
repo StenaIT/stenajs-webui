@@ -17,14 +17,16 @@ import {
 export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
   hideCloseButton?: boolean;
+  variant?: SidebarMenuVariant;
 }
 
-// TODO Add variant
+export type SidebarMenuVariant = "light" | "dark";
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
+  variant = "light",
   hideCloseButton = false,
   ...boxProps
 }) => {
@@ -32,9 +34,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
     <Box className={cx(styles.sidebarMenu, className)} {...boxProps}>
       {!hideCloseButton && (
         <>
-          <Box alignItems={"flex-start"} justifyContent={"center"}>
-            <SidebarMenuCloseButton onClick={onCloseClick} variant={"dark"} />
-          </Box>
+          <SidebarMenuCloseButton onClick={onCloseClick} variant={variant} />
           <SeparatorLine color={cssColor("--lhds-color-blue-700")} />
           <Space />
         </>
@@ -43,7 +43,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         className={styles.sidebarMenuContent}
         background={"var(--swui-sidebar-menu-background-color)"}
       >
-        <Column flexGrow={1}>{children}</Column>
+        <Column flex={1}>{children}</Column>
       </Box>
     </Box>
   );

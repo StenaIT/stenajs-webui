@@ -1,8 +1,9 @@
 import * as React from "react";
 import cx from "classnames";
 import styles from "./SidebarMenuCloseButton.module.css";
-import { ButtonElementProps } from "@stenajs-webui/core";
-import { ReactComponent as HamburgerCloseSvg } from "./svg/close.svg";
+import { Box, ButtonElementProps } from "@stenajs-webui/core";
+import { Icon } from "@stenajs-webui/elements";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export interface SidebarMenuCloseButtonProps extends ButtonElementProps {
   variant?: SidebarMenuCloseButtonVariant;
@@ -20,7 +21,9 @@ export const SidebarMenuCloseButton: React.FC<SidebarMenuCloseButtonProps> = ({
       onClick={onClick}
       className={cx(styles.sidebarMenuCloseButton, className, styles[variant])}
     >
-      <HamburgerCloseSvg className={styles.icon} />
+      <Box className={styles.iconWrapper}>
+        <Icon icon={faTimes} className={styles.icon} />
+      </Box>
     </button>
   );
 };

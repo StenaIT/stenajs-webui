@@ -1,5 +1,6 @@
 .sidebarMenuButton {
   /* Theme vars */
+  --swui-nav-bar-height: 48px;
   --swui-nav-bar-side-menu-button-text-color: var(--lhds-color-ui-50);
   --swui-nav-bar-side-menu-button-background-color: var(--lhds-color-blue-500);
   --swui-nav-bar-side-menu-button-background-color-hover: var(
@@ -38,8 +39,8 @@
   background-color: var(--current-background-color);
   color: var(--swui-nav-bar-side-menu-button-text-color);
   cursor: pointer;
-  height: 64px;
-  width: 64px;
+  height: var(--swui-nav-bar-height);
+  width: var(--swui-nav-bar-height);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
