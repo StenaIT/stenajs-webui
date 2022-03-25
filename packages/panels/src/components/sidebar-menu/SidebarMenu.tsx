@@ -31,7 +31,10 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   ...boxProps
 }) => {
   return (
-    <Box className={cx(styles.sidebarMenu, className)} {...boxProps}>
+    <Box
+      className={cx(styles.sidebarMenu, styles[variant], className)}
+      {...boxProps}
+    >
       {!hideCloseButton && (
         <>
           <SidebarMenuCloseButton onClick={onCloseClick} variant={variant} />
@@ -41,7 +44,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       )}
       <Box
         className={styles.sidebarMenuContent}
-        background={"var(--swui-sidebar-menu-background-color)"}
+        background={"var(--current-background-color)"}
       >
         <Column flex={1}>{children}</Column>
       </Box>

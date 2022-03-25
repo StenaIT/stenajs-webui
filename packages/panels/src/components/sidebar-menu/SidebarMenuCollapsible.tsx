@@ -20,7 +20,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
   return (
-    <Box background={"var(--swui-sidebar-menu-background-color)"}>
+    <Box background={"var(--current-background-color)"}>
       <Collapsible
         className={styles.sidebarMenuCollapsible}
         label={label}
@@ -32,7 +32,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
               <Icon
                 icon={leftIcon}
                 size={16}
-                color={"var(--swui-sidebar-menu-text-color)"}
+                color={"var(--current-text-color)"}
                 data-hover={true}
               />
             </Box>

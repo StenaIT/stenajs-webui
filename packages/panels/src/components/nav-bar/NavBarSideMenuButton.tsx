@@ -3,8 +3,7 @@ import cx from "classnames";
 import styles from "./NavBarSideMenuButton.module.css";
 import { DivProps } from "@stenajs-webui/core";
 import { NavBarVariant } from "./NavBar";
-import { Icon } from "@stenajs-webui/elements";
-import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { ReactComponent as Hamburger } from "./svg/bars.svg";
 
 export interface SidebarMenuButtonProps extends Pick<DivProps, "className"> {
   variant?: NavBarVariant;
@@ -21,7 +20,7 @@ export const NavBarSideMenuButton: React.FC<SidebarMenuButtonProps> = ({
       onClick={onClick}
       className={cx(styles.sidebarMenuButton, styles[variant], className)}
     >
-      <Icon className={styles.icon} icon={faBars} size={16} fixedWidth />
+      <Hamburger className={styles.icon} />
     </button>
   );
 };

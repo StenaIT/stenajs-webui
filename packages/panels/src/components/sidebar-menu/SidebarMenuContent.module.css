@@ -3,17 +3,17 @@
   line-height: var(--current-line-height, var(--swui-button-line-height));
   font-weight: var(--swui-button-font-weight);
   font-family: var(--swui-font-buttons);
-  color: var(--swui-sidebar-menu-text-color);
+  color: var(--current-text-color);
 }
 
 .icon {
-  color: var(--swui-sidebar-menu-text-color);
+  color: var(--current-text-color);
   font-size: 16px;
   width: var(--swui-sidebar-menu-item-height)
 }
 
 .spinner {
-  color: var(--swui-sidebar-menu-text-color);
+  color: var(--current-text-color);
 }
 
 .leftWrapper.leftWrapper.leftWrapper.leftWrapper {
@@ -23,10 +23,10 @@
 
 .button {
   border: 0;
-  background: var(--swui-sidebar-menu-background-color);
+  background: var(--current-background-color);
 
   &:hover {
-    background: var(--swui-sidebar-menu-background-color-hover);
+    background: var(--current-background-color-hover);
   }
 
   &:focus {
@@ -34,14 +34,14 @@
   }
 
   &:focus-visible {
-    background: var(--swui-sidebar-menu-background-color-active);
+    background: var(--current-background-color-active);
   }
 
   &:active {
-    background: var(--swui-sidebar-menu-background-color-active);
+    background: var(--current-background-color-active);
   }
 
   &.selected {
-    background: var(--swui-sidebar-menu-item-selected);
+    background: var(--current-item-selected);
   }
 }

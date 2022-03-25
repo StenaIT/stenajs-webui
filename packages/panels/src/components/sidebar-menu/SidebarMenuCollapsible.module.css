@@ -1,22 +1,22 @@
 .sidebarMenuCollapsible {
-  --swui-collapsible-header-text-color: var(--swui-sidebar-menu-text-color);
+  --swui-collapsible-header-text-color: var(--current-text-color);
   --swui-collapsible-header-background-color: var(
-    --swui-sidebar-menu-background-color
+    --current-background-color
   );
   --swui-collapsible-header-background-color-hover: var(
-    --swui-sidebar-menu-background-color-hover
+    --current-background-color-hover
   );
   --swui-collapsible-header-background-color-active: var(
-    --swui-sidebar-menu-background-color-active
+    --current-background-color-active
   );
   --swui-collapsible-header-indicator-color: var(
-    --swui-sidebar-menu-text-color
+    --current-text-color
   );
   --swui-collapsible-header-indicator-color-collapsed: var(
-    --swui-sidebar-menu-text-color
+    --current-text-color
   );
   --swui-collapsible-header-indicator-color-hover: var(
-    --swui-sidebar-menu-text-color
+    --current-text-color
   );
   --swui-collapsible-header-padding: 0 calc(var(--swui-metrics-indent) * 2) 0 0;
   --swui-collapsible-header-content-margin: 0;

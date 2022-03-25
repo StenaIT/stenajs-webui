@@ -59,7 +59,7 @@
       );
     }
 
-    &:focus {
+    &:focus-visible {
       --current-background-color: var(
         --swui-nav-bar-side-menu-button-background-color-focus
       );
@@ -83,7 +83,7 @@
       );
     }
 
-    &:focus {
+    &:focus-visible {
       --current-background-color: var(
         --swui-nav-bar-side-menu-button-background-dark-color-focus
       );

@@ -53,8 +53,8 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   return (
     <div ref={ref}>
       <Drawer isOpen={isOpen} width={"250px"}>
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close}>
+        <Column width={"100%"} ref={ref}>
+          <SidebarMenu onCloseClick={close} variant={variant}>
             <SidebarMenuHeading label={"Product name"} />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
@@ -143,10 +143,10 @@ export const Dark = () => {
   const onClick = () => {};
 
   return (
-    <div ref={ref}>
+    <div>
       <Drawer isOpen={isOpen} width={"250px"}>
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close}>
+        <Column width={"100%"} ref={ref}>
+          <SidebarMenu onCloseClick={close} variant={"dark"}>
             <SidebarMenuHeading label={"Product name"} />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
@@ -220,7 +220,7 @@ export const Dark = () => {
         }
         center={<NavBarSearchField />}
       >
-        <NavBarButton label={"Customers"} selected />
+        <NavBarButton label={"Customers"} leftIcon={faUsers} selected />
         <NavBarButton label={"Bookings"} />
         <NavBarButton label={"Events"} />
       </NavBar>
