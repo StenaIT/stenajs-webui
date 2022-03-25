@@ -1,4 +1,4 @@
-import { Indent, Row } from "@stenajs-webui/core";
+import { Box, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import cx from "classnames";
@@ -13,6 +13,7 @@ export interface NavBarProps {
   variant?: NavBarVariant;
   className?: string;
   showMenuButton?: boolean;
+  menuButtonVisibility?: "visible" | "hidden";
   onClickMenuButton?: SidebarMenuButtonProps["onClick"];
   right?: ReactNode;
   center?: ReactNode;
@@ -27,6 +28,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   left,
   className,
   showMenuButton = false,
+  menuButtonVisibility = "visible",
   children,
   right,
   center,
@@ -50,10 +52,14 @@ export const NavBar: React.FC<NavBarProps> = ({
         >
           {showMenuButton ? (
             <>
-              <NavBarSideMenuButton
-                variant={variant}
-                onClick={onClickMenuButton}
-              />
+              {menuButtonVisibility === "hidden" ? (
+                <Box width={"var(--swui-nav-bar-height)"} />
+              ) : (
+                <NavBarSideMenuButton
+                  variant={variant}
+                  onClick={onClickMenuButton}
+                />
+              )}
               <Indent />
             </>
           ) : (

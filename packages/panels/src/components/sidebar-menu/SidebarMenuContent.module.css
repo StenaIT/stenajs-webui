@@ -9,7 +9,6 @@
 .icon {
   color: var(--current-text-color);
   font-size: 16px;
-  width: var(--swui-sidebar-menu-item-height)
 }
 
 .spinner {
@@ -17,15 +16,16 @@
 }
 
 .leftWrapper.leftWrapper.leftWrapper.leftWrapper {
-  width: 56px;
+  width: var(--swui-sidebar-menu-item-height);
   margin-right: 0;
 }
 
 .button {
   border: 0;
+  padding: 0;
   background: var(--current-background-color);
 
-  &:hover {
+  [data-collapsed] [aria-expanded="true"] &, &:hover {
     background: var(--current-background-color-hover);
   }
 

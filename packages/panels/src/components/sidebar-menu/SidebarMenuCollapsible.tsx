@@ -28,7 +28,11 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
         onClick={() => setCollapsed(!collapsed)}
         contentLeft={
           leftIcon ? (
-            <Box width={"48px"} alignItems={"center"} justifyContent={"center"}>
+            <Box
+              width={"var(--swui-sidebar-menu-item-height)"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
               <Icon
                 icon={leftIcon}
                 size={16}

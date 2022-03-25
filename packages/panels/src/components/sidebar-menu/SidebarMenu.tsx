@@ -17,6 +17,7 @@ import {
 export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
   hideCloseButton?: boolean;
+  collapsed?: boolean;
   variant?: SidebarMenuVariant;
 }
 
@@ -26,13 +27,20 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
+  collapsed = false,
   variant = "light",
   hideCloseButton = false,
   ...boxProps
 }) => {
   return (
     <Box
-      className={cx(styles.sidebarMenu, styles[variant], className)}
+      className={cx(
+        styles.sidebarMenu,
+        styles[variant],
+        collapsed ? styles.collapsed : null,
+        className
+      )}
+      data-collapsed={collapsed || undefined}
       {...boxProps}
     >
       {!hideCloseButton && (
@@ -44,6 +52,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       )}
       <Box
         className={styles.sidebarMenuContent}
+        height={"100%"}
         background={"var(--current-background-color)"}
       >
         <Column flex={1}>{children}</Column>
