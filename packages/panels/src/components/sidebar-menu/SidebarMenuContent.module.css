@@ -25,7 +25,8 @@
   padding: 0;
   background: var(--current-background-color);
 
-  [data-collapsed] [aria-expanded="true"] &, &:hover {
+  [data-collapsed] [aria-expanded="true"] &,
+  &:hover {
     background: var(--current-background-color-hover);
   }
 

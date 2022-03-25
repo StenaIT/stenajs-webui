@@ -16,7 +16,9 @@
   --swui-sidebar-dark-item-background-color-hover: var(--lhds-color-blue-600);
   --swui-sidebar-dark-item-background-color-focus: var(--lhds-color-blue-600);
   --swui-sidebar-dark-item-background-color-active: var(--lhds-color-blue-500);
-  --swui-sidebar-dark-item-background-color-selected: var(--lhds-color-blue-700);
+  --swui-sidebar-dark-item-background-color-selected: var(
+    --lhds-color-blue-700
+  );
   --swui-sidebar-dark-item-background-color-selected-hover: var(
     --lhds-color-blue-600
   );
@@ -50,7 +52,9 @@
     --current-background-color-active: var(
       --swui-sidebar-dark-item-background-color-active
     );
-    --current-item-selected: var(--swui-sidebar-dark-item-background-color-selected);
+    --current-item-selected: var(
+      --swui-sidebar-dark-item-background-color-selected
+    );
   }
 
   background-color: var(--current-background-color);
