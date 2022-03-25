@@ -2,11 +2,11 @@ import * as React from "react";
 import cx from "classnames";
 import styles from "./NavBarSideMenuButton.module.css";
 import { DivProps } from "@stenajs-webui/core";
-import { NavBarVariant } from "./NavBar";
 import { ReactComponent as Hamburger } from "./svg/bars.svg";
+import { SidebarMenuVariant } from "../sidebar-menu/SidebarMenu";
 
 export interface SidebarMenuButtonProps extends Pick<DivProps, "className"> {
-  variant?: NavBarVariant;
+  variant?: SidebarMenuVariant;
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

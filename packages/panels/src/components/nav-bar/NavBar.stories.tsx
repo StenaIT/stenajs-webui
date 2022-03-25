@@ -5,7 +5,6 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import {
   Box,
   Column,
-  exhaustSwitchCaseElseThrow,
   Heading,
   Row,
   Space,
@@ -14,7 +13,6 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ReactNode } from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
@@ -22,10 +20,7 @@ import { cssColor } from "@stenajs-webui/theme";
 import { Drawer } from "@stenajs-webui/modal";
 import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
 import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
-import {
-  SidebarMenuLink,
-  SidebarMenuLinkProps,
-} from "../sidebar-menu/SidebarMenuLink";
+import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";
 import {
   faBook,
   faChartBar,
@@ -37,11 +32,15 @@ import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarSearchField } from "./NavBarSearchField";
 import { NavBarHeading } from "./NavBarHeading";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import { Popover } from "@stenajs-webui/tooltip";
-import { NavBarSideMenuButton } from "./NavBarSideMenuButton";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
+import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
+import { SidebarItem } from "../sidebar-menu/rail/renderer/types";
+import {
+  renderItemsExpanded,
+  renderItemsInRail,
+} from "../sidebar-menu/rail/renderer/RailRenderer";
+import { NavBarSideMenuButton } from "./NavBarSideMenuButton";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 
 export default {
   title: "panels/NavBar",
@@ -370,104 +369,6 @@ export const PopoverButtonIcon = () => (
   </NavBar>
 );
 
-interface SidebarHeadingItem {
-  type: "heading";
-  label: string;
-}
-
-interface SidebarSeparatorItem {
-  type: "separator";
-}
-
-interface SidebarLinkItem extends Omit<SidebarMenuLinkProps, "type"> {
-  type: "link";
-}
-
-interface SidebarGroupedItem {
-  type: "grouped";
-  label: string;
-  leftIcon?: IconDefinition;
-  items: SidebarItem[];
-}
-
-type SidebarItem =
-  | SidebarHeadingItem
-  | SidebarSeparatorItem
-  | SidebarLinkItem
-  | SidebarGroupedItem;
-
-const renderItemsExpanded = (
-  items: SidebarItem[],
-  indent = false
-): ReactNode[] => {
-  return items.map((item) => {
-    switch (item.type) {
-      case "heading":
-        return <SidebarMenuHeading label={item.label} />;
-      case "separator":
-        return <SidebarMenuSeparator />;
-      case "link": {
-        const { type, ...linkProps } = item;
-        return <SidebarMenuLink indent={indent} {...linkProps} />;
-      }
-      case "grouped":
-        return (
-          <SidebarMenuCollapsible leftIcon={item.leftIcon} label={item.label}>
-            {renderItemsExpanded(item.items, true)}
-          </SidebarMenuCollapsible>
-        );
-      default:
-        return exhaustSwitchCaseElseThrow(item);
-    }
-  });
-};
-
-const renderItemsInRail = (items: SidebarItem[]): ReactNode[] => {
-  return items.map((item) => {
-    switch (item.type) {
-      case "heading":
-        return null;
-      case "separator":
-        return <SidebarMenuSeparator />;
-      case "link": {
-        const { type, ...linkProps } = item;
-        return (
-          <SidebarMenuLink
-            title={item.label}
-            width={"var(--swui-sidebar-menu-item-height)"}
-            {...linkProps}
-            label={undefined}
-          />
-        );
-      }
-      case "grouped":
-        return (
-          <div>
-            <Popover
-              appendTo={"parent"}
-              arrow={false}
-              offset={[0, 0]}
-              placement={"right-start"}
-              trigger={"focusin mouseenter click"}
-              disablePadding
-              lazy
-              content={
-                <Box minWidth={"250px"}>{renderItemsExpanded(item.items)}</Box>
-              }
-            >
-              <SidebarMenuLink
-                width={"var(--swui-sidebar-menu-item-height)"}
-                leftIcon={item.leftIcon}
-              />
-            </Popover>
-          </div>
-        );
-      default:
-        return exhaustSwitchCaseElseThrow(item);
-    }
-  });
-};
-
 const sidebarItems: SidebarItem[] = [
   { type: "heading", label: "Product name" },
   { type: "link", label: "Level 1.1", leftIcon: faUserFriends },
@@ -491,19 +392,19 @@ const sidebarItems: SidebarItem[] = [
   { type: "link", label: "Contact", leftIcon: faPaperPlane },
 ];
 
-export const DemoWithRail: Story<Pick<NavBarProps, "variant">> = ({
-  variant,
-}) => {
+export const DemoWithRail: Story = () => {
+  const variant = "light";
   const [isOpen, open, close] = useBoolean(false);
   const [railEnabled, enableRail, disableRail] = useBoolean(true);
 
+  const drawerWidth = "250px";
+
   return (
     <>
-      <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
+      <Drawer isOpen={isOpen} onRequestClose={close} width={drawerWidth}>
         <Column width={"100%"}>
           <SidebarMenu onCloseClick={close} variant={variant}>
             {renderItemsExpanded(sidebarItems)}
-
             <Box>
               <Box spacing={8}>
                 <Icon
@@ -534,21 +435,72 @@ export const DemoWithRail: Story<Pick<NavBarProps, "variant">> = ({
         left={<NavBarHeading>Stena line</NavBarHeading>}
       />
       {railEnabled && (
-        <SidebarMenu
-          collapsed
-          position={"fixed"}
-          left={0}
-          top={0}
-          hideCloseButton
-        >
+        <SidebarRailMenu variant={variant}>
           <NavBarSideMenuButton variant={variant} onClick={open} />
-          {renderItemsInRail(sidebarItems)}
+          {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
           <SidebarMenuLink
             style={{ marginTop: "auto" }}
             leftIcon={faAngleDoubleLeft}
             onClick={disableRail}
           />
-        </SidebarMenu>
+        </SidebarRailMenu>
+      )}
+    </>
+  );
+};
+
+export const DarkWithRail: Story = () => {
+  const variant = "dark";
+  const [isOpen, open, close] = useBoolean(false);
+  const [railEnabled, enableRail, disableRail] = useBoolean(true);
+
+  const drawerWidth = "250px";
+
+  return (
+    <>
+      <Drawer isOpen={isOpen} onRequestClose={close} width={drawerWidth}>
+        <Column width={"100%"}>
+          <SidebarMenu onCloseClick={close} variant={variant}>
+            {renderItemsExpanded(sidebarItems)}
+            <Box>
+              <Box spacing={8}>
+                <Icon
+                  icon={faPaperPlane}
+                  color={"var(--swui-white)"}
+                  size={50}
+                  data-hover={true}
+                />
+              </Box>
+            </Box>
+            <SidebarMenuLink
+              style={{ marginTop: "auto" }}
+              leftIcon={faAngleDoubleRight}
+              label={"Always show menu"}
+              onClick={() => {
+                enableRail();
+                close();
+              }}
+            />
+          </SidebarMenu>
+        </Column>
+      </Drawer>
+      <NavBar
+        showMenuButton
+        onClickMenuButton={open}
+        menuButtonVisibility={railEnabled ? "hidden" : "visible"}
+        variant={variant}
+        left={<NavBarHeading>Stena line</NavBarHeading>}
+      />
+      {railEnabled && (
+        <SidebarRailMenu variant={variant}>
+          <NavBarSideMenuButton variant={variant} onClick={open} />
+          {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
+          <SidebarMenuLink
+            style={{ marginTop: "auto" }}
+            leftIcon={faAngleDoubleLeft}
+            onClick={disableRail}
+          />
+        </SidebarRailMenu>
       )}
     </>
   );
