@@ -16,8 +16,7 @@ export const MonthPickerCell: React.FC<Props> = ({
   month,
 }) => {
   const label = useMemo(() => {
-    const now = new Date();
-    now.setMonth(month);
+    const now = new Date(2000, month, 1);
     return format(now, "MMM");
   }, [month]);
 
