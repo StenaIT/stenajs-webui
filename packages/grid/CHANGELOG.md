@@ -1,3 +1,15 @@
+# v15.3.2 (Thu Mar 31 2022)
+
+#### 🐛 Bug Fix
+
+- Wrong number of tds in summary row in StandardTable [#440](https://github.com/StenaIT/stenajs-webui/pull/440) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.1.0 (Fri Feb 25 2022)
 
 #### 🚀 Enhancement

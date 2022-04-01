@@ -1,3 +1,15 @@
+# v15.3.1 (Wed Mar 30 2022)
+
+#### 🐛 Bug Fix
+
+- Render only one March month [#444](https://github.com/StenaIT/stenajs-webui/pull/444) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.2.1 (Tue Mar 01 2022)
 
 #### 🐛 Bug Fix
