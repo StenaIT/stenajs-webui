@@ -2,30 +2,29 @@
   /**
      * Theme vars
      */
-  --swui-value-table-height: 40px;
   width: 100%;
-
   .row:not(:first-child) td {
     border-top: 1px solid var(--lhds-color-ui-300);
   }
+  td {
+    --current-spacing: 1.5;
+    --current-indent: 0;
+    padding: calc(var(--current-spacing) * var(--swui-metrics-spacing))
+      calc(var(--current-indent) * var(--swui-metrics-indent));
+  }
+  tbody {
+    vertical-align: top;
+  }
 }
 
-.relaxed {
-  --swui-value-table-height: 48px;
+.relaxed td {
+  --current-spacing: 2;
 }
 
-.condensed {
-  --swui-value-table-height: 32px;
+.condensed td {
+  --current-spacing: 1;
 }
 
-.compact {
-  --swui-value-table-height: 24px;
-}
-
-.alignTdTop {
-  vertical-align: top;
-}
-
-.alignTdBottom {
-  vertical-align: bottom;
+.compact td {
+  --current-spacing: 0.5;
 }

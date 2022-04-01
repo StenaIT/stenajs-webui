@@ -1,12 +1,10 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { BoxProps, Row, Text, TextProps } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
-import cx from "classnames";
+import { Property } from "csstype";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
 import { Icon } from "../icon/Icon";
-import styles from "./ValueTable.module.css";
-import { Property } from "csstype";
 
 export interface ValueTableItemProps {
   label: string;
@@ -16,13 +14,8 @@ export interface ValueTableItemProps {
   justifyContentValue?: BoxProps["justifyContent"];
   labelWidth?: Property.Width;
   valueWidth?: Property.Width;
-  alignLabel?: "flex-start" | "center" | "flex-end";
-  alignValue?: "flex-start" | "center" | "flex-end";
   whiteSpaceLabel?: TextProps["whiteSpace"];
-  whiteSpaceValue?: TextProps["whiteSpace"];
-  wordBreakLabel?: TextProps["wordBreak"];
-  wordBreakValue?: TextProps["wordBreak"];
-  spacing?: number;
+  disableValueWrapping?: boolean;
 }
 
 export const ValueTableItem: React.FC<ValueTableItemProps> = ({
@@ -33,13 +26,8 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
   justifyContentValue,
   labelWidth,
   valueWidth,
-  alignLabel = "center",
-  alignValue = "center",
   whiteSpaceLabel = "nowrap",
-  whiteSpaceValue,
-  wordBreakLabel,
-  wordBreakValue,
-  spacing = 1,
+  disableValueWrapping = false,
 }) => {
   const formattedValue = useMemo(() => {
     if (value == null) {
@@ -68,45 +56,24 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
 
   return (
     <>
-      <td
-        className={cx({
-          [styles.alignTdTop]: alignLabel === "flex-start",
-          [styles.alignTdBottom]: alignLabel === "flex-end",
-        })}
-        width={labelWidth}
-      >
-        <Row
-          minHeight={"var(--swui-value-table-height)"}
-          alignItems={alignLabel}
-          justifyContent={justifyContentLabel}
-          indent={labelIndent}
-          spacing={spacing}
-        >
+      <td width={labelWidth}>
+        <Row justifyContent={justifyContentLabel} indent={labelIndent}>
           <Text
             color={cssColor("--lhds-color-ui-600")}
             variant={"bold"}
             whiteSpace={whiteSpaceLabel}
-            wordBreak={wordBreakLabel}
           >
             {label}
           </Text>
         </Row>
       </td>
-      <td
-        className={cx({
-          [styles.alignTdTop]: alignValue === "flex-start",
-          [styles.alignTdBottom]: alignValue === "flex-end",
-        })}
-        width={valueWidth}
-      >
-        <Row
-          minHeight={"var(--swui-value-table-height)"}
-          alignItems={alignValue}
-          justifyContent={justifyContentValue}
-          spacing={spacing}
-        >
+      <td width={valueWidth}>
+        <Row justifyContent={justifyContentValue}>
           {typeof formattedValue === "string" ? (
-            <Text whiteSpace={whiteSpaceValue} wordBreak={wordBreakValue}>
+            <Text
+              whiteSpace={disableValueWrapping ? "nowrap" : "pre-line"}
+              wordBreak={disableValueWrapping ? undefined : "normal"}
+            >
               {formattedValue}
             </Text>
           ) : (
