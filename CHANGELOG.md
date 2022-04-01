@@ -1,3 +1,12 @@
+### ValueTableItem
+
+- Updated `ValueTableItem` to handle multiple rows on both `<Td>`.
+- New props to handle alignments, widths, spacing and text.
+
+# New Props
+
+- `justifyContentLabel`, `justifyContentValue`, `labelWidth`, `valueWidth`, `alignLabel`, `whiteSpaceLabel`, `whiteSpaceValue`, `wordBreakLabel`, `wordBreakValue` and `spacing`
+
 # v15.3.2 (Thu Mar 31 2022)
 
 #### 🐛 Bug Fix
@@ -152,6 +161,7 @@
 #### Authors: 17
 
 - Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
 ---
 
 # Changelog
