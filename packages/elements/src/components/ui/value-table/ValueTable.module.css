@@ -21,3 +21,11 @@
 .compact {
   --swui-value-table-height: 24px;
 }
+
+.alignTdTop {
+  vertical-align: top;
+}
+
+.alignTdBottom {
+  vertical-align: bottom;
+}
