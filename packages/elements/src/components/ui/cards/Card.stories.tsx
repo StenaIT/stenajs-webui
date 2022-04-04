@@ -44,8 +44,8 @@ export const HeaderContent = () => {
   return (
     <Card>
       <CardHeader
+        leftIcon={faJedi}
         text={"Overview"}
-        contentAfterHeading={<FlatButton leftIcon={faJedi} />}
         contentRight={<FlatButton label={"Create"} />}
       />
       <CardBody>
@@ -65,9 +65,9 @@ export const CompactHeader = () => {
   return (
     <Card>
       <CardHeader
+        leftIcon={faJedi}
         variant={"compact"}
         text={"Overview"}
-        contentAfterHeading={<FlatButton leftIcon={faJedi} />}
         contentRight={<FlatButton label={"Create"} />}
       />
       <CardBody>

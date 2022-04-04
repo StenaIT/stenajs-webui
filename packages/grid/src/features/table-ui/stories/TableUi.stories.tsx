@@ -129,7 +129,13 @@ export const WithBorderTopHidden = () => {
       {friends.map((friend, index) => {
         const hideBorder =
           index > 0 && friends[index - 1].gender === friend.gender;
-        return <FriendRow friend={friend} hideBorder={hideBorder} />;
+        return (
+          <FriendRow
+            key={friend.name}
+            friend={friend}
+            hideBorder={hideBorder}
+          />
+        );
       })}
     </Column>
   );

@@ -1,13 +1,30 @@
-# v15.3.1 (Fri Mar 18 2022)
+# v15.3.2 (Thu Mar 31 2022)
 
-#### 🚀 Enhancement
+#### 🐛 Bug Fix
 
 - `@stenajs-webui/grid`
-  - Add hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441)
+  - Wrong number of tds in summary row in StandardTable [#440](https://github.com/StenaIT/stenajs-webui/pull/440) ([@mattias800](https://github.com/mattias800))
 
 #### Authors: 1
 
-- Markus Patoka ([@esepato](https://github.com/esepato))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.3.1 (Wed Mar 30 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Render only one March month [#444](https://github.com/StenaIT/stenajs-webui/pull/444) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`
+  - Update Card header (fixes AB#88134) [#443](https://github.com/StenaIT/stenajs-webui/pull/443) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
 
 # v15.3.0 (Tue Mar 01 2022)
 
