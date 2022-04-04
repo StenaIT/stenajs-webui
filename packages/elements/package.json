@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "15.3.2",
+  "version": "15.4.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@react-aria/focus": "3.3.0",
-    "@stenajs-webui/core": "15.3.2",
-    "@stenajs-webui/theme": "15.3.2",
+    "@stenajs-webui/core": "15.4.0",
+    "@stenajs-webui/theme": "15.4.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
