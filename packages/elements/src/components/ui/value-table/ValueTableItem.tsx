@@ -1,20 +1,19 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { BoxProps, Row, Text, TextProps } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
-import { Property } from "csstype";
 import * as React from "react";
-import { ReactNode, useMemo } from "react";
+import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { Icon } from "../icon/Icon";
 
 export interface ValueTableItemProps {
   label: string;
   labelIndent?: boolean | number;
   value: string | number | boolean | ReactNode | undefined;
-  justifyContentLabel?: BoxProps["justifyContent"];
-  justifyContentValue?: BoxProps["justifyContent"];
-  labelWidth?: Property.Width;
-  valueWidth?: Property.Width;
-  whiteSpaceLabel?: TextProps["whiteSpace"];
+  alignLabel?: BoxProps["justifyContent"];
+  alignValue?: BoxProps["justifyContent"];
+  labelWidth?: ComponentPropsWithoutRef<"td">["width"];
+  valueWidth?: ComponentPropsWithoutRef<"td">["width"];
+  labelWhiteSpace?: TextProps["whiteSpace"];
   disableValueWrapping?: boolean;
 }
 
@@ -22,11 +21,11 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
   label,
   labelIndent,
   value,
-  justifyContentLabel,
-  justifyContentValue,
+  alignLabel,
+  alignValue,
   labelWidth,
   valueWidth,
-  whiteSpaceLabel = "nowrap",
+  labelWhiteSpace = "nowrap",
   disableValueWrapping = false,
 }) => {
   const formattedValue = useMemo(() => {
@@ -57,18 +56,18 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
   return (
     <>
       <td width={labelWidth}>
-        <Row justifyContent={justifyContentLabel} indent={labelIndent}>
+        <Row justifyContent={alignLabel} indent={labelIndent}>
           <Text
             color={cssColor("--lhds-color-ui-600")}
             variant={"bold"}
-            whiteSpace={whiteSpaceLabel}
+            whiteSpace={labelWhiteSpace}
           >
             {label}
           </Text>
         </Row>
       </td>
       <td width={valueWidth}>
-        <Row justifyContent={justifyContentValue}>
+        <Row justifyContent={alignValue}>
           {typeof formattedValue === "string" ? (
             <Text
               whiteSpace={disableValueWrapping ? "nowrap" : "pre-line"}

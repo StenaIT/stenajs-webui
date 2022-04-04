@@ -64,33 +64,33 @@ export const AlignValueRight: Story<ValueTableProps> = (props) => (
     <ValueTableItem
       label={"E-mail"}
       value={"user@example.com"}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
     <ValueTableItem
       label={"First name"}
       value={"Donald"}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
     <ValueTableItem
       label={"Last name"}
       value={"Duck"}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
-    <ValueTableItem label={"Age"} value={42} justifyContentValue={"flex-end"} />
+    <ValueTableItem label={"Age"} value={42} alignValue={"flex-end"} />
     <ValueTableItem
       label={"Parents (undefined)"}
       value={undefined}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
     <ValueTableItem
       label={"Is duck (true)"}
       value={true}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
     <ValueTableItem
       label={"Is human (false)"}
       value={false}
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
     <ValueTableItem
       label={"Drinks"}
@@ -101,7 +101,7 @@ export const AlignValueRight: Story<ValueTableProps> = (props) => (
           color={cssColor("--lhds-color-orange-300")}
         />
       }
-      justifyContentValue={"flex-end"}
+      alignValue={"flex-end"}
     />
   </ValueTable>
 );

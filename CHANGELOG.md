@@ -152,7 +152,6 @@
 #### Authors: 17
 
 - Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
-
 ---
 
 # Changelog
