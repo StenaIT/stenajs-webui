@@ -1,12 +1,36 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 import cx from "classnames";
-
 import styles from "./Drawer.module.css";
+import { exhaustSwitchCase } from "@stenajs-webui/core";
 
-export type SlideFrom = "left" | "right";
+export type SlideFrom = SlideFromLeftRight | SlideFromTopBottom;
+export type SlideFromLeftRight = "left" | "right";
+export type SlideFromTopBottom = "top" | "bottom";
 
-export interface DrawerProps
+export type DrawerProps = DrawerBaseLeftRight | DrawerBaseTopBottom;
+
+interface DrawerBaseLeftRight extends DrawerBaseProps {
+  width?: string;
+  /**
+   * Which direction the drawer will appear from.
+   * @default left
+   * @param {String('left'|'right')}
+   */
+  slideFrom?: SlideFromLeftRight;
+}
+
+interface DrawerBaseTopBottom extends DrawerBaseProps {
+  height?: string;
+  /**
+   * Which direction the drawer will appear from.
+   * @default left
+   * @param {String('top'|'bottom')}
+   */
+  slideFrom?: SlideFromTopBottom;
+}
+
+interface DrawerBaseProps
   extends Omit<
     ReactModal.Props,
     | "closeTimeoutMS"
@@ -16,16 +40,9 @@ export interface DrawerProps
     | "style"
     | "parentSelector"
   > {
-  width?: string;
   background?: string;
   zIndex?: number;
   onRequestClose?: () => void;
-  /**
-   * Which direction the drawer will appear from.
-   * @default left
-   * @param {String('left'|'right')}
-   */
-  slideFrom?: SlideFrom;
   /**
    * Portal target, HTML element. If not set, portal is not used.
    */
@@ -33,7 +50,6 @@ export interface DrawerProps
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
-  width = "370px",
   background,
   zIndex,
   children,
@@ -41,6 +57,10 @@ export const Drawer: React.FC<DrawerProps> = ({
   portalTarget,
   ...reactModalProps
 }) => {
+  const height =
+    "height" in reactModalProps ? reactModalProps.height : undefined;
+  const width = "width" in reactModalProps ? reactModalProps.width : undefined;
+
   return (
     <ReactModal
       closeTimeoutMS={250}
@@ -51,18 +71,30 @@ export const Drawer: React.FC<DrawerProps> = ({
         beforeClose: styles.beforeClose,
       }}
       className={{
-        base: cx(
-          styles.content,
-          slideFrom === "left" ? styles.slideFromLeft : styles.slideFromRight
-        ),
+        base: cx(styles.content, getClassNameForSlide(slideFrom)),
         afterOpen: styles.afterOpen,
         beforeClose: styles.beforeClose,
       }}
-      style={{ content: { width, background }, overlay: { zIndex } }}
+      style={{ content: { width, height, background }, overlay: { zIndex } }}
       parentSelector={portalTarget ? () => portalTarget : undefined}
       {...reactModalProps}
     >
       {children}
     </ReactModal>
   );
+};
+
+const getClassNameForSlide = (slideFrom: SlideFrom): string => {
+  switch (slideFrom) {
+    case "left":
+      return styles.slideFromLeft;
+    case "right":
+      return styles.slideFromRight;
+    case "top":
+      return styles.slideFromTop;
+    case "bottom":
+      return styles.slideFromBottom;
+    default:
+      return exhaustSwitchCase(slideFrom, styles.slideFromLeft);
+  }
 };
