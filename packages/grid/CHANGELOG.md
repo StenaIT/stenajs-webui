@@ -1,3 +1,15 @@
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v15.3.2 (Thu Mar 31 2022)
 
 #### 🐛 Bug Fix
