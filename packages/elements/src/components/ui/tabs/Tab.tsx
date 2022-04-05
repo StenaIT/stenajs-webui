@@ -45,17 +45,15 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(
       ref={ref}
       {...buttonProps}
     >
-      <div className={styles.inner}>
-        <ButtonContent
-          success={success}
-          loading={loading}
-          leftIcon={leftIcon}
-          left={left}
-          right={right}
-          rightIcon={rightIcon}
-          label={buttonLabel}
-        />
-      </div>
+      <ButtonContent
+        success={success}
+        loading={loading}
+        leftIcon={leftIcon}
+        left={left}
+        right={right}
+        rightIcon={rightIcon}
+        label={buttonLabel}
+      />
     </button>
   );
 });
