@@ -1,3 +1,15 @@
+# v15.5.0 (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- Add PageHeader component (fixes AB#91057) [#447](https://github.com/StenaIT/stenajs-webui/pull/447) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.2.0 (Mon Feb 28 2022)
 
 #### 🚀 Enhancement
