@@ -1,3 +1,15 @@
+# v15.3.1 (Wed Mar 30 2022)
+
+#### 🐛 Bug Fix
+
+- Update Card header (fixes AB#88134) [#443](https://github.com/StenaIT/stenajs-webui/pull/443) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.2.0 (Mon Feb 28 2022)
 
 #### 🚀 Enhancement

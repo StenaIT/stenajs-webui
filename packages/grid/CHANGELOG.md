@@ -1,3 +1,27 @@
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v15.3.2 (Thu Mar 31 2022)
+
+#### 🐛 Bug Fix
+
+- Wrong number of tds in summary row in StandardTable [#440](https://github.com/StenaIT/stenajs-webui/pull/440) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.1.0 (Fri Feb 25 2022)
 
 #### 🚀 Enhancement

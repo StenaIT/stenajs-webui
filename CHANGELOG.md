@@ -1,3 +1,57 @@
+# v15.4.1 (Tue Apr 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Task 90903: Drawer slide from top and bottom (AB#90903) [#446](https://github.com/StenaIT/stenajs-webui/pull/446) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v15.3.2 (Thu Mar 31 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Wrong number of tds in summary row in StandardTable [#440](https://github.com/StenaIT/stenajs-webui/pull/440) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.3.1 (Wed Mar 30 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Render only one March month [#444](https://github.com/StenaIT/stenajs-webui/pull/444) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`
+  - Update Card header (fixes AB#88134) [#443](https://github.com/StenaIT/stenajs-webui/pull/443) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.3.0 (Tue Mar 01 2022)
 
 #### 🚀 Enhancement

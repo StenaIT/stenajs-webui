@@ -5,6 +5,7 @@ import styles from "./StandardTableSummaryRow.module.css";
 import { getCellBorderFromGroup } from "../../../util/CellBorderCalculator";
 import { SummaryCell } from "./SummaryCell";
 import { getColumnsLimitedWithColSpan } from "../SummaryCellColSpanCalculator";
+import { Indent } from "@stenajs-webui/core";
 
 interface StandardTableSummaryRowProps<TItem> {
   items: Array<TItem>;
@@ -19,10 +20,16 @@ export const StandardTableSummaryRow = React.memo(
       showRowCheckbox,
       enableExpandCollapse,
       columns,
+      rowIndent,
     } = useStandardTableConfig();
 
     return (
       <tr className={styles.summaryRow}>
+        {rowIndent && (
+          <td>
+            <Indent num={rowIndent} />
+          </td>
+        )}
         {enableExpandCollapse && <td />}
         {showRowCheckbox && <td />}
         {groupConfigsAndIds.map(({ groupConfig, groupId }, groupIndex) => (
@@ -47,6 +54,12 @@ export const StandardTableSummaryRow = React.memo(
             )}
           </React.Fragment>
         ))}
+        {rowIndent && (
+          <td>
+            <Indent num={rowIndent} />
+          </td>
+        )}
+        <td />
       </tr>
     );
   }
