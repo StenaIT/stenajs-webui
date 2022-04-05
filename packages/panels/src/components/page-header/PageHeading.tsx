@@ -13,8 +13,8 @@ interface PageHeadingProps {
 
 const variantToSpacing: Record<PageHeadingVariant, number> = {
   compact: 1,
-  default: 2,
-  relaxed: 3,
+  default: 1.5,
+  relaxed: 2,
 };
 
 export const PageHeading: React.VFC<PageHeadingProps> = ({

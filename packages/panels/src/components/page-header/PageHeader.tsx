@@ -21,7 +21,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <Box shadow={"box"}>
       <Box indent={3}>
-        {renderBreadCrumbs && <Row spacing>{renderBreadCrumbs()}</Row>}
+        {renderBreadCrumbs && <Row spacing={1.25}>{renderBreadCrumbs()}</Row>}
         {renderPageHeading?.()}
         {renderTabs?.()}
       </Box>

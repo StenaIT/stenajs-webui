@@ -15,6 +15,8 @@ import { Box, Heading, Row, Space } from "@stenajs-webui/core";
 import { Fragment, useState } from "react";
 import { TextInput } from "@stenajs-webui/forms";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
+import { NavBar } from "../nav-bar/NavBar";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "panels/PageHeader",
@@ -84,8 +86,6 @@ export const Variants = () => {
 
   return variants.map((variant) => (
     <Fragment key={variant}>
-      <Heading>{variant}</Heading>
-      <Space num={2} />
       <PageHeader
         renderBreadCrumbs={() => (
           <BreadCrumbs>
@@ -96,7 +96,7 @@ export const Variants = () => {
         )}
         renderPageHeading={() => (
           <PageHeading
-            heading={"Page Header"}
+            heading={variant}
             variant={variant}
             contentLeft={<Tag label={"56"} />}
             contentRight={
@@ -127,17 +127,35 @@ export const Variants = () => {
             />
           </TabMenu>
         )}
-      >
-        <PageHeaderRow gap={2}>
-          <Box>
-            <TextInput />
-          </Box>
-          <PrimaryButton label={"Action"} />
-        </PageHeaderRow>
-      </PageHeader>
+      />
       <Space num={4} />
     </Fragment>
   ));
+};
+
+export const BreadCrumbsAndHeading = () => {
+  return (
+    <>
+      <NavBar
+        showMenuButton
+        left={
+          <Heading variant={"h4"} color={cssColor("--lhds-color-ui-50")}>
+            Stena WebUI
+          </Heading>
+        }
+      />
+      <PageHeader
+        renderBreadCrumbs={() => (
+          <BreadCrumbs>
+            <Crumb label={"Home"} />
+            <Crumb label={"Customer"} />
+            <Crumb label={"Booking"} />
+          </BreadCrumbs>
+        )}
+        renderPageHeading={() => <PageHeading heading={"Booking"} />}
+      />
+    </>
+  );
 };
 
 export const FilterChips = () => {
