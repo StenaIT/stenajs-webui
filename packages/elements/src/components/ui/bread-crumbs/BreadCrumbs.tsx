@@ -9,7 +9,7 @@ export interface BreadCrumbsProps {}
 
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ children }) => {
   return (
-    <Row alignItems={"center"} spacing indent={2}>
+    <Row alignItems={"center"}>
       {Children.map(children, (child, index) => (
         <>
           {child && (
