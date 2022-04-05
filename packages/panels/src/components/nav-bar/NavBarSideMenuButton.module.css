@@ -12,26 +12,13 @@
   --swui-nav-bar-side-menu-button-background-color-active: var(
     --lhds-color-blue-700
   );
-  --swui-nav-bar-side-menu-button-background-dark-color: var(
-    --lhds-color-blue-800
-  );
-  --swui-nav-bar-side-menu-button-background-dark-color-hover: var(
-    --lhds-color-blue-900
-  );
-  --swui-nav-bar-side-menu-button-background-dark-color-focus: var(
-    --lhds-color-blue-700
-  );
-  --swui-nav-bar-side-menu-button-background-dark-color-active: var(
-    --lhds-color-blue-900
-  );
 
-  /* Current */
+  /* State vars */
   --current-background-color: var(
     --swui-nav-bar-side-menu-button-background-color
   );
 
   /* Styling */
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,52 +35,22 @@
   outline: none;
   border: none;
 
-  &.light {
+  &:hover {
     --current-background-color: var(
-      --swui-nav-bar-side-menu-button-background-color
+      --swui-nav-bar-side-menu-button-background-color-hover
     );
-
-    &:hover {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-color-hover
-      );
-    }
-
-    &:focus-visible {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-color-focus
-      );
-    }
-
-    &:active {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-color-active
-      );
-    }
   }
 
-  &.dark {
+  &:focus-visible {
     --current-background-color: var(
-      --swui-nav-bar-side-menu-button-background-dark-color
+      --swui-nav-bar-side-menu-button-background-color-focus
     );
+  }
 
-    &:hover {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-dark-color-hover
-      );
-    }
-
-    &:focus-visible {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-dark-color-focus
-      );
-    }
-
-    &:active {
-      --current-background-color: var(
-        --swui-nav-bar-side-menu-button-background-dark-color-active
-      );
-    }
+  &:active {
+    --current-background-color: var(
+      --swui-nav-bar-side-menu-button-background-color-active
+    );
   }
 
   .icon {

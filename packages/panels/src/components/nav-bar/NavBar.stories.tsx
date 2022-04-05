@@ -13,7 +13,7 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
 import * as React from "react";
-import { NavBar, NavBarProps } from "./NavBar";
+import { NavBar } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
@@ -30,7 +30,6 @@ import {
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
-import { NavBarSearchField } from "./NavBarSearchField";
 import { NavBarHeading } from "./NavBarHeading";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
@@ -41,6 +40,7 @@ import {
 } from "../sidebar-menu/rail/renderer/RailRenderer";
 import { NavBarSideMenuButton } from "./NavBarSideMenuButton";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
+import { TextInput } from "@stenajs-webui/forms";
 
 export default {
   title: "panels/NavBar",
@@ -51,7 +51,7 @@ export default {
   subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
 };
 
-export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
+export const Demo: Story = () => {
   const [isOpen, open, close] = useBoolean(false);
   const onClick = () => {};
 
@@ -59,7 +59,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
         <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close} variant={variant}>
+          <SidebarMenu onCloseClick={close}>
             <SidebarMenuHeading label={"Product name"} />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
@@ -122,7 +122,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
       <NavBar
         showMenuButton
         onClickMenuButton={open}
-        variant={variant}
         left={<NavBarHeading>Stena line</NavBarHeading>}
         right={
           <Row>
@@ -131,97 +130,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
             <NavBarButton label={"Settings"} />
           </Row>
         }
-        center={<NavBarSearchField />}
-      >
-        <NavBarButton label={"Customers"} leftIcon={faUsers} selected />
-        <NavBarButton label={"Bookings"} />
-        <NavBarButton label={"Events"} />
-      </NavBar>
-    </div>
-  );
-};
-
-export const Dark = () => {
-  const [isOpen, open, close] = useBoolean(false);
-  const onClick = () => {};
-
-  return (
-    <div>
-      <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close} variant={"dark"}>
-            <SidebarMenuHeading label={"Product name"} />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              leftIcon={faUserFriends}
-              label={"Level 1.1"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              label={"No icon"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              loading
-              label={"Spinner"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              selected
-              label={"Selected"}
-            />
-            <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-              <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
-              <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
-              <SidebarMenuLink
-                indent
-                label={"Level 2.3"}
-                onClick={onClick}
-                selected
-              />
-              <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
-            </SidebarMenuCollapsible>
-
-            <SidebarMenuSeparator />
-
-            <SidebarMenuHeading label={"Support"} />
-            <SidebarMenuLink
-              leftIcon={faBook}
-              label={"User manual"}
-              onClick={() => alert("Click on quick guide")}
-            />
-            <SidebarMenuLink
-              leftIcon={faPaperPlane}
-              label={"Contact"}
-              onClick={() => alert("Click on contact")}
-            />
-
-            <Box>
-              <Box spacing={8}>
-                <Icon
-                  icon={faPaperPlane}
-                  color={"var(--swui-white)"}
-                  size={50}
-                  data-hover={true}
-                />
-              </Box>
-            </Box>
-          </SidebarMenu>
-        </Column>
-      </Drawer>
-      <NavBar
-        showMenuButton
-        onClickMenuButton={open}
-        variant={"dark"}
-        left={<NavBarHeading>Stena line</NavBarHeading>}
-        right={
-          <Row>
-            <NavBarButton label={"Profile"} selected />
-            <Space />
-            <NavBarButton label={"Settings"} />
-          </Row>
-        }
-        center={<NavBarSearchField />}
       >
         <NavBarButton label={"Customers"} leftIcon={faUsers} selected />
         <NavBarButton label={"Bookings"} />
@@ -234,21 +142,6 @@ export const Dark = () => {
 export const NoButtons = () => (
   <NavBar
     showMenuButton
-    left={<NavBarHeading>Stena line</NavBarHeading>}
-    right={
-      <Row>
-        <NavBarButton label={"Profile"} selected />
-        <Space />
-        <NavBarButton label={"Settings"} />
-      </Row>
-    }
-  />
-);
-
-export const DarkNoButtons = () => (
-  <NavBar
-    showMenuButton
-    variant={"dark"}
     left={<NavBarHeading>Stena line</NavBarHeading>}
     right={
       <Row>
@@ -301,15 +194,7 @@ export const WithButtonIcons = () => (
 );
 
 export const CenterContent = () => (
-  <NavBar center={<NavBarSearchField />}>
-    <NavBarButton label={"Customers"} selected />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
-);
-
-export const CenterContentDark = () => (
-  <NavBar variant={"dark"} center={<NavBarSearchField />}>
+  <NavBar center={<TextInput />}>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
@@ -393,7 +278,6 @@ const sidebarItems: SidebarItem[] = [
 ];
 
 export const DemoWithRail: Story = () => {
-  const variant = "light";
   const [isOpen, open, close] = useBoolean(false);
   const [railEnabled, enableRail, disableRail] = useBoolean(true);
 
@@ -403,7 +287,7 @@ export const DemoWithRail: Story = () => {
     <>
       <Drawer isOpen={isOpen} onRequestClose={close} width={drawerWidth}>
         <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close} variant={variant}>
+          <SidebarMenu onCloseClick={close}>
             {renderItemsExpanded(sidebarItems)}
             <Box>
               <Box spacing={8}>
@@ -431,69 +315,11 @@ export const DemoWithRail: Story = () => {
         showMenuButton
         onClickMenuButton={open}
         menuButtonVisibility={railEnabled ? "hidden" : "visible"}
-        variant={variant}
         left={<NavBarHeading>Stena line</NavBarHeading>}
       />
       {railEnabled && (
-        <SidebarRailMenu variant={variant}>
-          <NavBarSideMenuButton variant={variant} onClick={open} />
-          {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
-          <SidebarMenuLink
-            style={{ marginTop: "auto" }}
-            leftIcon={faAngleDoubleLeft}
-            onClick={disableRail}
-          />
-        </SidebarRailMenu>
-      )}
-    </>
-  );
-};
-
-export const DarkWithRail: Story = () => {
-  const variant = "dark";
-  const [isOpen, open, close] = useBoolean(false);
-  const [railEnabled, enableRail, disableRail] = useBoolean(true);
-
-  const drawerWidth = "250px";
-
-  return (
-    <>
-      <Drawer isOpen={isOpen} onRequestClose={close} width={drawerWidth}>
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close} variant={variant}>
-            {renderItemsExpanded(sidebarItems)}
-            <Box>
-              <Box spacing={8}>
-                <Icon
-                  icon={faPaperPlane}
-                  color={"var(--swui-white)"}
-                  size={50}
-                  data-hover={true}
-                />
-              </Box>
-            </Box>
-            <SidebarMenuLink
-              style={{ marginTop: "auto" }}
-              leftIcon={faAngleDoubleRight}
-              label={"Always show menu"}
-              onClick={() => {
-                enableRail();
-                close();
-              }}
-            />
-          </SidebarMenu>
-        </Column>
-      </Drawer>
-      <NavBar
-        showMenuButton
-        onClickMenuButton={open}
-        menuButtonVisibility={railEnabled ? "hidden" : "visible"}
-        variant={variant}
-        left={<NavBarHeading>Stena line</NavBarHeading>}
-      />
-      {railEnabled && (
-        <SidebarRailMenu variant={variant}>
-          <NavBarSideMenuButton variant={variant} onClick={open} />
+        <SidebarRailMenu>
+          <NavBarSideMenuButton onClick={open} />
           {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
           <SidebarMenuLink
             style={{ marginTop: "auto" }}

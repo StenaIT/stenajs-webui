@@ -4,21 +4,16 @@ import styles from "./SidebarMenuCloseButton.module.css";
 import { Box, ButtonElementProps } from "@stenajs-webui/core";
 import { ReactComponent as CloseIcon } from "./svg/close.svg";
 
-export interface SidebarMenuCloseButtonProps extends ButtonElementProps {
-  variant?: SidebarMenuCloseButtonVariant;
-}
-
-export type SidebarMenuCloseButtonVariant = "light" | "dark";
+export interface SidebarMenuCloseButtonProps extends ButtonElementProps {}
 
 export const SidebarMenuCloseButton: React.FC<SidebarMenuCloseButtonProps> = ({
   className,
   onClick,
-  variant = "light",
 }) => {
   return (
     <button
       onClick={onClick}
-      className={cx(styles.sidebarMenuCloseButton, className, styles[variant])}
+      className={cx(styles.sidebarMenuCloseButton, className)}
     >
       <Box className={styles.iconWrapper}>
         <CloseIcon className={styles.icon} />

@@ -4,7 +4,6 @@
   --swui-sidebar-menu-separator-color: var(--lhds-color-blue-700);
   --swui-sidebar-menu-text-color: var(--swui-white);
   --swui-sidebar-menu-icon-color: var(--swui-white);
-
   --swui-sidebar-menu-background-color: var(--lhds-color-blue-500);
   --swui-sidebar-menu-background-color-hover: var(--lhds-color-blue-700);
   --swui-sidebar-menu-background-color-focus: var(--lhds-color-blue-700);
@@ -13,7 +12,7 @@
   --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
     var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
 
-  /* Current */
+  /* State vars */
   --current-separator-color: var(--swui-sidebar-menu-separator-color);
   --current-text-color: var(--swui-sidebar-menu-text-color);
   --current-icon-color: var(--swui-sidebar-menu-icon-color);
