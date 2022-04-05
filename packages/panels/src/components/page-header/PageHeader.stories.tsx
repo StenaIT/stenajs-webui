@@ -18,6 +18,9 @@ import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
 
 export default {
   title: "panels/PageHeader",
+  parameters: {
+    layout: "fullscreen",
+  },
   component: PageHeader,
 };
 
