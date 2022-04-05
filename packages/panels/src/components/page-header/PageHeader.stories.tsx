@@ -77,6 +77,7 @@ export const Demo = () => {
 
 export const Variants = () => {
   const variants: PageHeadingVariant[] = ["compact", "default", "relaxed"];
+  const [tabId, setTabId] = useState(0);
 
   return variants.map((variant) => (
     <Fragment key={variant}>
@@ -106,9 +107,21 @@ export const Variants = () => {
         )}
         renderTabs={() => (
           <TabMenu>
-            <Tab label={"Selected"} selected />
-            <Tab label={"Something"} />
-            <Tab label={"Something else"} />
+            <Tab
+              label={"Selected"}
+              selected={tabId === 0}
+              onClick={() => setTabId(0)}
+            />
+            <Tab
+              label={"Something"}
+              selected={tabId === 1}
+              onClick={() => setTabId(1)}
+            />
+            <Tab
+              label={"Something else"}
+              selected={tabId === 2}
+              onClick={() => setTabId(2)}
+            />
           </TabMenu>
         )}
       >
@@ -138,9 +151,9 @@ export const FilterChips = () => {
       <PageHeaderRow gap={2} alignItems={"center"}>
         <SecondaryButton leftIcon={faSlidersH} label={"Filters"} />
         <Row gap>
-          <Chip variant={"secondary"} label={"All Routes"} />
-          <Chip variant={"secondary"} label={"All Customers"} />
-          <Chip variant={"secondary"} label={"All States"} />
+          <Chip variant={"secondary"} label={"All routes"} />
+          <Chip variant={"secondary"} label={"All customers"} />
+          <Chip variant={"secondary"} label={"All states"} />
         </Row>
       </PageHeaderRow>
     </PageHeader>
