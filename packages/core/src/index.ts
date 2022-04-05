@@ -24,6 +24,7 @@ export * from "./components/heading/Heading";
 
 export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
+export * from "./types/FlattenUnion";
 export * from "./types/Omit";
 export * from "./types/PickByValue";
 

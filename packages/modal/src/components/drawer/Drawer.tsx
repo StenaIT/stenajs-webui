@@ -2,7 +2,7 @@ import * as React from "react";
 import ReactModal from "react-modal";
 import cx from "classnames";
 import styles from "./Drawer.module.css";
-import { exhaustSwitchCase } from "@stenajs-webui/core";
+import { exhaustSwitchCase, FlattenUnion } from "@stenajs-webui/core";
 
 export type SlideFrom = SlideFromLeftRight | SlideFromTopBottom;
 export type SlideFromLeftRight = "left" | "right";
@@ -57,9 +57,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   portalTarget,
   ...reactModalProps
 }) => {
-  const height =
-    "height" in reactModalProps ? reactModalProps.height : undefined;
-  const width = "width" in reactModalProps ? reactModalProps.width : undefined;
+  const { height, width } = reactModalProps as FlattenUnion<DrawerProps>;
 
   return (
     <ReactModal
