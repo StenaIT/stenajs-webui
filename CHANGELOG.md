@@ -1,3 +1,16 @@
+# v15.4.1 (Tue Apr 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Task 90903: Drawer slide from top and bottom (AB#90903) [#446](https://github.com/StenaIT/stenajs-webui/pull/446) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.4.0 (Mon Apr 04 2022)
 
 #### 🚀 Enhancement
