@@ -13,23 +13,6 @@
   --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
     var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
 
-  --swui-sidebar-background-dark-color: var(--lhds-color-blue-800);
-  --swui-sidebar-dark-item-background-color-hover: var(--lhds-color-blue-700);
-  --swui-sidebar-dark-item-background-color-focus: var(--lhds-color-blue-700);
-  --swui-sidebar-dark-item-background-color-active: var(--lhds-color-blue-500);
-  --swui-sidebar-dark-item-background-color-selected: var(
-    --lhds-color-blue-600
-  );
-  --swui-sidebar-dark-item-background-color-selected-hover: var(
-    --lhds-color-blue-600
-  );
-  --swui-sidebar-dark-item-background-color-selected-focus: var(
-    --lhds-color-blue-600
-  );
-  --swui-sidebar-dark-item-background-color-selected-active: var(
-    --lhds-color-blue-500
-  );
-
   /* Current */
   --current-separator-color: var(--swui-sidebar-menu-separator-color);
   --current-text-color: var(--swui-sidebar-menu-text-color);
@@ -47,22 +30,7 @@
   --current-item-selected: var(--swui-sidebar-menu-item-selected);
   --current-content-padding: var(--swui-sidebar-menu-content-padding);
 
-  &.dark {
-    --current-separator-color: var(--swui-sidebar-menu-separator-color);
-    --current-background-color: var(--swui-sidebar-background-dark-color);
-    --current-background-color-hover: var(
-      --swui-sidebar-dark-item-background-color-hover
-    );
-    --current-background-color-focus: var(
-      --swui-sidebar-dark-item-background-color-focus
-    );
-    --current-background-color-active: var(
-      --swui-sidebar-dark-item-background-color-active
-    );
-    --current-item-selected: var(
-      --swui-sidebar-dark-item-background-color-selected
-    );
-  }
+  /* Styling */
 
   background-color: var(--current-background-color);
   height: 100vh;

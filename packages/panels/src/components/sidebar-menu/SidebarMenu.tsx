@@ -18,17 +18,13 @@ export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
   hideCloseButton?: boolean;
   collapsed?: boolean;
-  variant?: SidebarMenuVariant;
 }
-
-export type SidebarMenuVariant = "light" | "dark";
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
   collapsed = false,
-  variant = "light",
   hideCloseButton = false,
   ...boxProps
 }) => {
@@ -36,7 +32,6 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
     <Box
       className={cx(
         styles.sidebarMenu,
-        styles[variant],
         collapsed ? styles.collapsed : null,
         className
       )}
@@ -45,7 +40,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
     >
       {!hideCloseButton && (
         <>
-          <SidebarMenuCloseButton onClick={onCloseClick} variant={variant} />
+          <SidebarMenuCloseButton onClick={onCloseClick} />
           <SeparatorLine color={cssColor("--lhds-color-blue-700")} />
           <Space />
         </>
