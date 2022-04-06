@@ -6,7 +6,7 @@ interface RailMenuProps {
 }
 
 export const SidebarRailMenu: React.FC<RailMenuProps> = ({
-  variant = "light",
+  variant,
   children,
 }) => {
   return (

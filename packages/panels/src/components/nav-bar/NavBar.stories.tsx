@@ -13,7 +13,7 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
 import * as React from "react";
-import { NavBar } from "./NavBar";
+import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
@@ -51,7 +51,7 @@ export default {
   subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
 };
 
-export const Demo: Story = () => {
+export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const [isOpen, open, close] = useBoolean(false);
   const onClick = () => {};
 
@@ -59,7 +59,7 @@ export const Demo: Story = () => {
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
         <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close}>
+          <SidebarMenu onCloseClick={close} variant={variant}>
             <SidebarMenuHeading label={"Product name"} />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
@@ -122,6 +122,7 @@ export const Demo: Story = () => {
       <NavBar
         showMenuButton
         onClickMenuButton={open}
+        variant={variant}
         left={<NavBarHeading>Stena line</NavBarHeading>}
         right={
           <Row>

@@ -7,6 +7,7 @@ import {
   NavBarSideMenuButton,
   SidebarMenuButtonProps,
 } from "./NavBarSideMenuButton";
+import { getNavbarHeight, NavBarVariant } from "./navbarHeightUtil";
 
 export interface NavBarProps {
   className?: string;
@@ -16,7 +17,7 @@ export interface NavBarProps {
   right?: ReactNode;
   center?: ReactNode;
   left?: ReactNode;
-  height?: number | string;
+  variant?: NavBarVariant;
 }
 
 export const NavBar: React.FC<NavBarProps> = ({
@@ -27,10 +28,11 @@ export const NavBar: React.FC<NavBarProps> = ({
   children,
   right,
   center,
-  height = "48px",
+  variant = "default",
   onClickMenuButton,
 }) => {
   const currentFlex = center ? 1 : undefined;
+  const height = getNavbarHeight(variant);
   return (
     <Row
       height={height}

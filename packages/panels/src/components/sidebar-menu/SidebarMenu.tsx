@@ -13,11 +13,15 @@ import {
   SidebarMenuCloseButton,
   SidebarMenuCloseButtonProps,
 } from "./SidebarMenuCloseButton";
+import { getNavbarHeight, NavBarVariant } from "../nav-bar/navbarHeightUtil";
+
+export type SidebarMenuVariant = NavBarVariant;
 
 export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
   hideCloseButton?: boolean;
   collapsed?: boolean;
+  variant?: SidebarMenuVariant;
 }
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
@@ -26,8 +30,12 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   onCloseClick,
   collapsed = false,
   hideCloseButton = false,
+  variant = "default",
   ...boxProps
 }) => {
+  console.log(variant);
+  const height = getNavbarHeight(variant);
+
   return (
     <Box
       className={cx(
@@ -35,6 +43,10 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         collapsed ? styles.collapsed : null,
         className
       )}
+      style={{
+        ["--swui-sidebar-menu-item-height" as string]: height,
+        ["--swui-nav-bar-height" as string]: height,
+      }}
       data-collapsed={collapsed || undefined}
       {...boxProps}
     >
