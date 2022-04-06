@@ -1,3 +1,20 @@
+# v15.5.0 (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- Add PageHeader component (fixes AB#91057) [#447](https://github.com/StenaIT/stenajs-webui/pull/447) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- Fix tabmenu colors (fixes AB#91051) [#448](https://github.com/StenaIT/stenajs-webui/pull/448) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.3.1 (Wed Mar 30 2022)
 
 #### 🐛 Bug Fix

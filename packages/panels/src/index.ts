@@ -19,6 +19,8 @@ export * from "./components/error-panel/ErrorPanel";
 export * from "./components/error-panel/ErrorScreen";
 export * from "./components/loading-panel/LoadingPanel";
 export * from "./components/loading-panel/LoadingScreen";
+export * from "./components/page-header/PageHeader";
+export * from "./components/page-header/PageHeading";
 export * from "./components/sidebar-menu/SidebarMenu";
 export * from "./components/sidebar-menu/rail/SidebarRailMenu";
 export * from "./components/sidebar-menu/rail/renderer/RailRenderer";
