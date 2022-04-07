@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/tooltip",
-  "version": "15.5.0",
+  "version": "15.5.1",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,8 +27,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "15.5.0",
-    "@stenajs-webui/elements": "15.5.0",
+    "@stenajs-webui/core": "15.5.1",
+    "@stenajs-webui/elements": "15.5.1",
     "@tippyjs/react": "^4.1.0",
     "tippy.js": "^6.2.6"
   },
