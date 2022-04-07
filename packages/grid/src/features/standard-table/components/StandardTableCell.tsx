@@ -52,10 +52,11 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   const { numNavigableColumns } = useColumnIndexPerColumnIdContext();
   const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
+  const itemKey = useMemo(() => keyResolver(item), [item, keyResolver]);
+
   const isSelected = useMemo(() => {
-    const itemId = keyResolver(item);
-    return selectedIds.indexOf(itemId) >= 0;
-  }, [item, keyResolver, selectedIds]);
+    return selectedIds.indexOf(itemKey) >= 0;
+  }, [itemKey, selectedIds]);
 
   const {
     itemValueResolver,
@@ -144,6 +145,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
           isEditable: editable,
           isSelected,
           zIndex: currentZIndex,
+          itemKey,
         })
       ) : (
         <TextCell label={label} />
@@ -157,6 +159,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       editable,
       isSelected,
       currentZIndex,
+      itemKey,
     ]
   );
 
