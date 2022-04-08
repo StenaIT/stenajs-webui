@@ -102,12 +102,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const onKeyDownHandler = useCallback<KeyboardEventHandler<HTMLDivElement>>(
     (ev) => {
-      onKeyDownTable?.(ev, { columnId, item });
       onKeyDownCell?.(ev, { columnId, item });
-      if (ev.key !== "Tab" && (onKeyDownTable || onKeyDownCell)) {
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
+      onKeyDownTable?.(ev, { columnId, item });
     },
     [onKeyDownTable, columnId, item, onKeyDownCell]
   );
