@@ -1,3 +1,16 @@
+# v15.5.2 (Fri Apr 08 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix event propagation bug in onKeyDown in StandardTable [#450](https://github.com/StenaIT/stenajs-webui/pull/450) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.1 (Thu Apr 07 2022)
 
 #### 🐛 Bug Fix
