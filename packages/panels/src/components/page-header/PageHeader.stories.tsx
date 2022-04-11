@@ -104,7 +104,7 @@ export const NoTabsOrHeadingContent = () => {
 };
 
 export const Variants = () => {
-  const variants: PageHeadingVariant[] = ["compact", "default", "relaxed"];
+  const variants: PageHeadingVariant[] = ["compact", "standard", "relaxed"];
   const [tabId, setTabId] = useState(0);
 
   return variants.map((variant) => (
@@ -157,7 +157,7 @@ export const Variants = () => {
 };
 
 export const VariantsWithNoHeadingContent = () => {
-  const variants: PageHeadingVariant[] = ["compact", "default", "relaxed"];
+  const variants: PageHeadingVariant[] = ["compact", "standard", "relaxed"];
 
   return variants.map((variant) => (
     <Fragment key={variant}>
