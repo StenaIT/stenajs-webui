@@ -13,7 +13,8 @@ import {
   SidebarMenuCloseButton,
   SidebarMenuCloseButtonProps,
 } from "./SidebarMenuCloseButton";
-import { getNavbarHeight, NavBarVariant } from "../nav-bar/navbarHeightUtil";
+import { getNavbarHeight } from "../nav-bar/NavbarHeightStyleUtil";
+import { NavBarVariant } from "../nav-bar/NavBar";
 
 export type SidebarMenuVariant = NavBarVariant;
 
@@ -30,7 +31,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   onCloseClick,
   collapsed = false,
   hideCloseButton = false,
-  variant = "default",
+  variant = "standard",
   ...boxProps
 }) => {
   console.log(variant);
