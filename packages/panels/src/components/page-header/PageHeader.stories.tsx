@@ -1,5 +1,6 @@
 import * as React from "react";
-import { PageHeader, PageHeaderRow } from "./PageHeader";
+import { Fragment, useState } from "react";
+import { PageHeader } from "./PageHeader";
 import {
   BreadCrumbs,
   Chip,
@@ -12,11 +13,11 @@ import {
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
-import { Fragment, useState } from "react";
 import { TextInput } from "@stenajs-webui/forms";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";
+import { PageHeaderRow } from "./PageHeaderRow";
 
 export default {
   title: "panels/PageHeader",
@@ -80,6 +81,28 @@ export const Demo = () => {
   );
 };
 
+export const NoTabsOrHeadingContent = () => {
+  return (
+    <PageHeader
+      renderBreadCrumbs={() => (
+        <BreadCrumbs>
+          <Crumb label={"Home"} />
+          <Crumb label={"Customer"} />
+          <Crumb label={"Booking"} />
+        </BreadCrumbs>
+      )}
+      renderPageHeading={() => <PageHeading heading={"Page Header"} />}
+    >
+      <PageHeaderRow gap={2}>
+        <Box>
+          <TextInput />
+        </Box>
+        <PrimaryButton label={"Action"} />
+      </PageHeaderRow>
+    </PageHeader>
+  );
+};
+
 export const Variants = () => {
   const variants: PageHeadingVariant[] = ["compact", "default", "relaxed"];
   const [tabId, setTabId] = useState(0);
@@ -128,6 +151,32 @@ export const Variants = () => {
           </TabMenu>
         )}
       />
+      <Space num={4} />
+    </Fragment>
+  ));
+};
+
+export const VariantsWithNoHeadingContent = () => {
+  const variants: PageHeadingVariant[] = ["compact", "default", "relaxed"];
+
+  return variants.map((variant) => (
+    <Fragment key={variant}>
+      <PageHeader
+        renderBreadCrumbs={() => (
+          <BreadCrumbs>
+            <Crumb label={"Home"} />
+            <Crumb label={"Customer"} />
+            <Crumb label={"Booking"} />
+          </BreadCrumbs>
+        )}
+        renderPageHeading={() => (
+          <PageHeading heading={variant} variant={variant} />
+        )}
+      >
+        <PageHeaderRow>
+          <TextInput />
+        </PageHeaderRow>
+      </PageHeader>
       <Space num={4} />
     </Fragment>
   ));
