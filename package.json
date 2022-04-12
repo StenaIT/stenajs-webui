@@ -6,8 +6,6 @@
   "scripts": {
     "start-storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf build && build-storybook -o build",
-    "deploy-storybook": "yarn build-all && yarn build-storybook && yarn deploy-built-storybook",
-    "deploy-built-storybook": "gh-pages -d build",
     "build-packages": "lerna run build",
     "build-packages-and-storybook": "lerna run build && build-storybook",
     "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
@@ -78,7 +76,6 @@
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.2",
     "eslint-plugin-storybook": "^0.5.1",
-    "gh-pages": "^2.0.1",
     "husky": "^3.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",

@@ -2,7 +2,7 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { Heading, Row } from "@stenajs-webui/core";
 
-export type PageHeadingVariant = "compact" | "default" | "relaxed";
+export type PageHeadingVariant = "compact" | "standard" | "relaxed";
 
 interface PageHeadingProps {
   contentLeft?: ReactNode;
@@ -13,13 +13,13 @@ interface PageHeadingProps {
 
 const variantToSpacing: Record<PageHeadingVariant, number> = {
   compact: 1,
-  default: 1.5,
+  standard: 1.5,
   relaxed: 2,
 };
 
 export const PageHeading: React.VFC<PageHeadingProps> = ({
   heading,
-  variant = "default",
+  variant = "standard",
   contentLeft,
   contentRight,
 }) => (

@@ -1,4 +1,4 @@
-import { Box, BoxProps, Row, SeparatorLine } from "@stenajs-webui/core";
+import { Box, Row, SeparatorLine, Space } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 
@@ -7,10 +7,6 @@ export interface PageHeaderProps {
   renderPageHeading?: () => ReactNode;
   renderTabs?: () => ReactNode;
 }
-
-export const PageHeaderRow: React.FC<BoxProps> = (props) => (
-  <Row indent={3} spacing {...props} />
-);
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
   renderBreadCrumbs,
@@ -27,6 +23,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </Box>
       {children && (
         <>
+          {!renderTabs && <Space />}
           <SeparatorLine />
           {children}
         </>
