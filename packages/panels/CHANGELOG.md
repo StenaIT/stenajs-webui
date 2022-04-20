@@ -1,3 +1,15 @@
+# v15.5.3 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Improve spacing in PageHeader when there are no tabs [#452](https://github.com/StenaIT/stenajs-webui/pull/452) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.0 (Tue Apr 05 2022)
 
 #### 🚀 Enhancement

@@ -1,3 +1,18 @@
+# v15.5.3 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Remove storybook deploy scripts [#451](https://github.com/StenaIT/stenajs-webui/pull/451) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/panels`
+  - Improve spacing in PageHeader when there are no tabs [#452](https://github.com/StenaIT/stenajs-webui/pull/452) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.2 (Fri Apr 08 2022)
 
 #### 🐛 Bug Fix
