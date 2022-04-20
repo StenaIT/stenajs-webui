@@ -81,6 +81,7 @@ export const renderItemsInRail = (
               }
             >
               <SidebarMenuLink
+                title={item.label}
                 width={"var(--swui-sidebar-menu-item-height)"}
                 leftIcon={item.leftIcon}
               />

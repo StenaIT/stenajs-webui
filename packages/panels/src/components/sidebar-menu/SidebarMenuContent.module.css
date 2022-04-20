@@ -1,6 +1,6 @@
 .label {
-  font-size: var(--current-text-size, var(--swui-button-text-size));
-  line-height: var(--current-line-height, var(--swui-button-line-height));
+  font-size: var(--current-text-size, var(--swui-font-size-medium));
+  line-height: var(--current-line-height, var(--swui-line-height-medium));
   font-weight: var(--swui-button-font-weight);
   font-family: var(--swui-font-buttons);
   color: var(--current-text-color);

@@ -307,10 +307,14 @@ export const DemoWithRail: Story = () => {
             </Box>
             <SidebarMenuLink
               style={{ marginTop: "auto" }}
-              leftIcon={faAngleDoubleRight}
-              label={"Always show menu"}
+              leftIcon={railEnabled ? faAngleDoubleLeft : faAngleDoubleRight}
+              label={railEnabled ? "Hide menu" : "Always show menu"}
               onClick={() => {
-                enableRail();
+                if (railEnabled) {
+                  disableRail();
+                } else {
+                  enableRail();
+                }
                 close();
               }}
             />
@@ -329,6 +333,7 @@ export const DemoWithRail: Story = () => {
           {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
           <SidebarMenuLink
             style={{ marginTop: "auto" }}
+            title={"Hide menu"}
             leftIcon={faAngleDoubleLeft}
             onClick={disableRail}
           />
