@@ -34,7 +34,6 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   variant = "standard",
   ...boxProps
 }) => {
-  console.log(variant);
   const height = getNavbarHeight(variant);
 
   return (

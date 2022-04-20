@@ -71,7 +71,11 @@ export const renderItemsInRail = (
               disablePadding
               lazy
               content={
-                <Box minWidth={popupMinWidth}>
+                <Box
+                  minWidth={popupMinWidth}
+                  background={"var(--lhds-color-blue-500)"}
+                >
+                  <SidebarMenuHeading label={item.label} />
                   {renderItemsExpanded(item.items)}
                 </Box>
               }
