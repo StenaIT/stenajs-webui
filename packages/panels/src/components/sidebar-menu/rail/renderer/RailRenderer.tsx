@@ -49,13 +49,12 @@ export const renderItemsInRail = (
       case "separator":
         return <SidebarMenuSeparator />;
       case "link": {
-        const { type, ...linkProps } = item;
+        const { type, label, ...linkProps } = item;
         return (
           <SidebarMenuLink
-            title={item.label}
+            title={label}
             width={"var(--swui-sidebar-menu-item-height)"}
             {...linkProps}
-            label={undefined}
           />
         );
       }

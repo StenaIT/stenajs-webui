@@ -31,7 +31,6 @@ import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
 import { SidebarItem } from "../sidebar-menu/rail/renderer/types";
 import {
@@ -41,6 +40,7 @@ import {
 import { NavBarSideMenuButton } from "./NavBarSideMenuButton";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { TextInput } from "@stenajs-webui/forms";
+import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 
 export default {
   title: "panels/NavBar",
@@ -307,8 +307,8 @@ export const DemoWithRail: Story = () => {
             </Box>
             <SidebarMenuLink
               style={{ marginTop: "auto" }}
-              leftIcon={railEnabled ? faAngleDoubleLeft : faAngleDoubleRight}
-              label={railEnabled ? "Hide menu" : "Always show menu"}
+              leftIcon={railEnabled ? faAngleDoubleLeft : faThumbtack}
+              label={railEnabled ? "Unpin menu" : "Pin menu"}
               onClick={() => {
                 if (railEnabled) {
                   disableRail();
@@ -333,7 +333,7 @@ export const DemoWithRail: Story = () => {
           {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
           <SidebarMenuLink
             style={{ marginTop: "auto" }}
-            title={"Hide menu"}
+            title={"Unpin menu"}
             leftIcon={faAngleDoubleLeft}
             onClick={disableRail}
           />
