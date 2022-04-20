@@ -286,7 +286,12 @@ export const DemoWithRail: Story = () => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onRequestClose={close} width={drawerWidth}>
+      <Drawer
+        isOpen={isOpen}
+        onRequestClose={close}
+        width={drawerWidth}
+        background={"var(--lhds-color-blue-500)"}
+      >
         <Column width={"100%"}>
           <SidebarMenu onCloseClick={close}>
             {renderItemsExpanded(sidebarItems)}
