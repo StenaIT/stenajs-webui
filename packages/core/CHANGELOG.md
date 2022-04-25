@@ -1,3 +1,16 @@
+# v15.5.4 (Mon Apr 25 2022)
+
+#### 🐛 Bug Fix
+
+- Add SidebarRailMenu [#442](https://github.com/StenaIT/stenajs-webui/pull/442) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.4.1 (Tue Apr 05 2022)
 
 #### 🐛 Bug Fix
