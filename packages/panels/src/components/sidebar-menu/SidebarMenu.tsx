@@ -1,11 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  Column,
-  SeparatorLine,
-  Space,
-} from "@stenajs-webui/core";
-import { cssColor } from "@stenajs-webui/theme";
+import { Box, BoxProps, Column, Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
@@ -15,6 +8,7 @@ import {
 } from "./SidebarMenuCloseButton";
 import { getNavbarHeight } from "../nav-bar/NavbarHeightStyleUtil";
 import { NavBarVariant } from "../nav-bar/NavBar";
+import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export type SidebarMenuVariant = NavBarVariant;
 
@@ -53,7 +47,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       {!hideCloseButton && (
         <>
           <SidebarMenuCloseButton onClick={onCloseClick} />
-          <SeparatorLine color={cssColor("--lhds-color-blue-700")} />
+          <SidebarMenuSeparator />
           <Space />
         </>
       )}
