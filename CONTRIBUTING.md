@@ -27,7 +27,7 @@ $ yarn watch
 ## Libraries of choice
 
 - `emotion` and `styled-system` is used for all styling.
-- Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
+- Hooks over HOC:s. All components should use hooks.
 - Font Awesome is used for all icons.
 
 ### Resources
