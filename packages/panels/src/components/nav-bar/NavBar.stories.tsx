@@ -37,7 +37,6 @@ import {
   renderItemsExpanded,
   renderItemsInRail,
 } from "../sidebar-menu/rail/renderer/RailRenderer";
-import { NavBarSideMenuButton } from "./NavBarSideMenuButton";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
@@ -328,8 +327,7 @@ export const DemoWithRail: Story = () => {
         left={<NavBarHeading>Stena line</NavBarHeading>}
       />
       {railEnabled && (
-        <SidebarRailMenu>
-          <NavBarSideMenuButton onClick={open} />
+        <SidebarRailMenu onClickMenuButton={open}>
           {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
           <SidebarMenuLink
             style={{ marginTop: "auto" }}
