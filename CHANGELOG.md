@@ -1,3 +1,16 @@
+# v15.5.6 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add sidebar menu to rail [#454](https://github.com/StenaIT/stenajs-webui/pull/454) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.5.5 (Tue Apr 26 2022)
 
 #### 🐛 Bug Fix
