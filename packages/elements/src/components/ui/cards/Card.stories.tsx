@@ -61,7 +61,7 @@ export const HeaderContent = () => {
   );
 };
 
-export const CompactHeader = () => {
+export const CompactCard = () => {
   return (
     <Card>
       <CardHeader
@@ -70,13 +70,13 @@ export const CompactHeader = () => {
         text={"Overview"}
         contentRight={<FlatButton label={"Create"} />}
       />
-      <CardBody>
+      <CardBody variant={"compact"}>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
         <Text>Lorem ipsavablasfasofofa</Text>
       </CardBody>
       <SeparatorLine />
-      <CardBody>
+      <CardBody variant={"compact"}>
         <Text>Line has no padding.</Text>
       </CardBody>
     </Card>
