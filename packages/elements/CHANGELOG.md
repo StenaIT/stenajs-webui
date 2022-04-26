@@ -1,3 +1,15 @@
+# v15.5.5 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- Add compact variant to cardbody [#453](https://github.com/StenaIT/stenajs-webui/pull/453) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v15.5.0 (Tue Apr 05 2022)
 
 #### 🚀 Enhancement
