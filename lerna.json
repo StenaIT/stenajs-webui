@@ -3,7 +3,7 @@
   "packages": [
     "packages/*"
   ],
-  "version": "15.5.4",
+  "version": "15.5.5",
   "command": {
     "publish": {
       "verifyAccess": false
