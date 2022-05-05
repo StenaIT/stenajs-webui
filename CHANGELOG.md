@@ -1,3 +1,16 @@
+# v15.5.7 (Thu May 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Use bigger font in tabmenu items [#455](https://github.com/StenaIT/stenajs-webui/pull/455) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.5.6 (Tue Apr 26 2022)
 
 #### 🐛 Bug Fix
