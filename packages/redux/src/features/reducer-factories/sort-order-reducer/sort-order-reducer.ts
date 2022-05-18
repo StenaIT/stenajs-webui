@@ -14,19 +14,14 @@ export const createSortOrderReducerInitialState = <TSortBy>(
   desc,
 });
 
-const INITIAL_STATE = {
-  sortBy: undefined,
-  desc: false,
-};
-
 export type SortOrderReducer<TSortBy> = Reducer<
   SortOrderState<TSortBy>,
   SortOrderAction<TSortBy>
 >;
 
-export const createSortOrderReducer = <
-  TSortBy
->(): SortOrderReducer<TSortBy> => (state = INITIAL_STATE, action) => {
+export const createSortOrderReducer = <TSortBy>(
+  initialState: SortOrderState<TSortBy> = { sortBy: undefined, desc: false }
+): SortOrderReducer<TSortBy> => (state = initialState, action) => {
   switch (action.type) {
     case "SORT_ORDER:SET_SORT_BY": {
       const { sortBy, desc } = action;

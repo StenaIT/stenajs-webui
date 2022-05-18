@@ -1,7 +1,7 @@
 .text {
   /* Theme vars */
   --swui-text-color: var(--swui-text-primary-color);
-  --swui-text-color-caption: var(--swui-text-primary-color);
+  --swui-text-color-caption: var(--lhds-color-ui-600);
   --swui-text-color-overline: var(--lhds-color-ui-600);
   --swui-text-font-family: var(--swui-font-primary);
   --swui-text-font-weight: var(--swui-font-weight-text);

@@ -1,8 +1,8 @@
 import {
   ActionMeta,
   GroupBase as GroupTypeBase,
-  Options as OptionsType,
   OnChangeValue as ValueType,
+  Options as OptionsType,
 } from "react-select";
 import { DropdownOption } from "../..";
 import {
@@ -26,7 +26,6 @@ describe("multiDropdownUtils", () => {
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
-              value: "CA",
               options: [
                 {
                   value: "Mattias",
@@ -37,7 +36,6 @@ describe("multiDropdownUtils", () => {
             },
             {
               label: "Freight",
-              value: "Freight",
               options: [
                 {
                   value: "Johan",
@@ -77,7 +75,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -88,7 +85,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -127,7 +123,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -138,7 +133,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -180,7 +174,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -191,7 +184,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -238,7 +230,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -249,7 +240,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -296,7 +286,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -307,7 +296,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -353,7 +341,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -364,7 +351,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -403,7 +389,6 @@ describe("multiDropdownUtils", () => {
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
-              value: "CA",
               options: [
                 {
                   value: "Mattias",
@@ -414,7 +399,6 @@ describe("multiDropdownUtils", () => {
             },
             {
               label: "Freight",
-              value: "Freight",
               options: [
                 {
                   value: "Johan",
@@ -465,7 +449,6 @@ describe("multiDropdownUtils", () => {
               const options: GroupedOptionsType<DropdownOption<string>> = [
                 {
                   label: "CA",
-                  value: "CA",
                   options: [
                     {
                       value: "Mattias",
@@ -476,7 +459,6 @@ describe("multiDropdownUtils", () => {
                 },
                 {
                   label: "Freight",
-                  value: "Freight",
                   options: [
                     {
                       value: "Johan",
@@ -523,7 +505,6 @@ describe("multiDropdownUtils", () => {
               const options: GroupedOptionsType<DropdownOption<string>> = [
                 {
                   label: "CA",
-                  value: "CA",
                   options: [
                     {
                       value: "Mattias",
@@ -534,7 +515,6 @@ describe("multiDropdownUtils", () => {
                 },
                 {
                   label: "Freight",
-                  value: "Freight",
                   options: [
                     {
                       value: "Johan",
@@ -568,7 +548,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -579,7 +558,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -618,7 +596,6 @@ describe("multiDropdownUtils", () => {
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
-              value: "CA",
               options: [
                 {
                   value: "Mattias",
@@ -629,7 +606,6 @@ describe("multiDropdownUtils", () => {
             },
             {
               label: "Freight",
-              value: "Freight",
               options: [
                 {
                   value: "Johan",
@@ -679,7 +655,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -690,7 +665,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -736,7 +710,6 @@ describe("multiDropdownUtils", () => {
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
-                value: "CA",
                 options: [
                   {
                     value: "Mattias",
@@ -747,7 +720,6 @@ describe("multiDropdownUtils", () => {
               },
               {
                 label: "Freight",
-                value: "Freight",
                 options: [
                   {
                     value: "Johan",
@@ -786,7 +758,6 @@ describe("multiDropdownUtils", () => {
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
-              value: "CA",
               options: [
                 {
                   value: "Mattias",
@@ -797,7 +768,6 @@ describe("multiDropdownUtils", () => {
             },
             {
               label: "Freight",
-              value: "Freight",
               options: [
                 {
                   value: "Johan",
@@ -844,7 +814,6 @@ describe("multiDropdownUtils", () => {
       const input: GroupedOptionsType<DropdownOption<string>> = [
         {
           label: "CA",
-          value: "CA",
           options: [
             {
               value: "Mattias",
@@ -855,7 +824,6 @@ describe("multiDropdownUtils", () => {
         },
         {
           label: "Freight",
-          value: "Freight",
           options: [
             {
               value: "Johan",
@@ -910,7 +878,6 @@ describe("multiDropdownUtils", () => {
     const groupOptions: GroupedOptionsType<DropdownOption<string>> = [
       {
         label: "CA",
-        value: "CA",
         options: [
           {
             value: "Mattias",
@@ -921,7 +888,6 @@ describe("multiDropdownUtils", () => {
       },
       {
         label: "Freight",
-        value: "Freight",
         options: [
           {
             value: "Johan",

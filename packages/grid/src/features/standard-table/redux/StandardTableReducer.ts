@@ -42,23 +42,24 @@ export type StandardTableReducer<TColumnKey extends string> = Reducer<
 >;
 
 export const createStandardTableReducer = <TColumnKey extends string>(
-  reducerId: string
+  reducerId: string,
+  initialState?: Partial<StandardTableState<TColumnKey>>
 ): StandardTableReducer<TColumnKey> => {
   const sortOrder = reducerIdGate(
     getReducerIdFor(reducerId, "sortOrder"),
-    createSortOrderReducer<TColumnKey>()
+    createSortOrderReducer<TColumnKey>(initialState?.sortOrder)
   );
   const selectedIds = reducerIdGate(
     getReducerIdFor(reducerId, "selectedIds"),
-    createSelectedIdsReducer()
+    createSelectedIdsReducer(initialState?.selectedIds)
   );
   const expandedRows = reducerIdGate(
     getReducerIdFor(reducerId, "expandedRows"),
-    createSelectedIdsReducer()
+    createSelectedIdsReducer(initialState?.expandedRows)
   );
   const fields = reducerIdGate(
     getReducerIdFor(reducerId, "fields"),
-    createEntityReducer<StandardTableStateFields>({})
+    createEntityReducer<StandardTableStateFields>(initialState?.fields ?? {})
   );
 
   return combineReducers({

@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid",
-  "version": "15.0.0-alpha.9",
+  "version": "15.5.7",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -27,16 +27,17 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "15.0.0-alpha.9",
-    "@stenajs-webui/elements": "15.0.0-alpha.9",
-    "@stenajs-webui/forms": "15.0.0-alpha.9",
-    "@stenajs-webui/panels": "15.0.0-alpha.9",
-    "@stenajs-webui/redux": "15.0.0-alpha.9",
-    "@stenajs-webui/theme": "15.0.0-alpha.9",
-    "@stenajs-webui/tooltip": "15.0.0-alpha.9",
+    "@stenajs-webui/core": "15.5.7",
+    "@stenajs-webui/elements": "15.5.7",
+    "@stenajs-webui/forms": "15.5.7",
+    "@stenajs-webui/panels": "15.5.7",
+    "@stenajs-webui/redux": "15.5.7",
+    "@stenajs-webui/theme": "15.5.7",
+    "@stenajs-webui/tooltip": "15.5.7",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
+    "@emotion/react": ">=11.1.5",
     "@emotion/styled": ">=11.3.0",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@types/lodash": ">=4.14.168",
@@ -52,6 +53,7 @@
     "redux": ">=4.0.5"
   },
   "devDependencies": {
+    "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@types/jest": "^23.1.5",

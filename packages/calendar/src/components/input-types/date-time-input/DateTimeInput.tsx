@@ -9,7 +9,10 @@ import { Popover } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
-import { DualTextInput } from "../../../features/dual-text-input/DualTextInput";
+import {
+  DualTextInput,
+  DualTextInputProps,
+} from "../../../features/dual-text-input/DualTextInput";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { TimePicker } from "../../../features/time-picker/TimePicker";
 import { addDayStateHighlights } from "../../../util/calendar/StateModifier";
@@ -23,7 +26,8 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
-    OptionalMinMaxDatesAsString {
+    OptionalMinMaxDatesAsString,
+    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -38,6 +42,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   onBlur,
   autoFocus,
   minDate,
+  widthLeft = 128,
+  widthRight = 80,
   maxDate = defaultMaxDate,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -168,8 +174,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           inputRefLeft={dateInputRef}
           inputRefRight={timeInputRef}
           valueRight={timeValue ?? ""}
-          widthLeft={"104px"}
-          widthRight={"64px"}
+          widthLeft={widthLeft}
+          widthRight={widthRight}
           minLeft={minDate}
           maxLeft={maxDate}
         />

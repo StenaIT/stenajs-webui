@@ -1,24 +1,41 @@
-name: Node CI
+name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-    - name: install, build and test
-      run: |
-        yarn 
-        yarn lerna link
-        yarn check-prettier
-        yarn build-all
-        yarn test
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
+      - name: install, build and test
+        run: |
+          yarn install --frozen-lockfile
+          yarn lerna link
+
+          yarn pre-build-check
+          yarn build-packages
+          yarn post-build-check
+        env:
+          CI: true
+      - name: "Compressed Size"
+        uses: preactjs/compressed-size-action@v2
+        with:
+          build-script: "-v" # Will execute `yarn run -v` (essentially a no-op)
+          pattern: "packages/*/dist/*.js"
+      - name: Create Release
+        if: ${{ github.event_name == 'push' && github.ref_name == 'master' && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
+        run: |
+          yarn auto shipit
+          rm $HOME/.npmrc || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true

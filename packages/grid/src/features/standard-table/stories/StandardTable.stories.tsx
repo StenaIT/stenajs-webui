@@ -107,7 +107,9 @@ export const BackgroundResolver = () => {
 };
 
 export const CellOnKeyDown = () => {
-  const { items, onChangeActive } = useListState(mockedItems);
+  const { items, onChangeActive, onChangeNumPassengers } = useListState(
+    mockedItems
+  );
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,
@@ -128,6 +130,15 @@ export const CellOnKeyDown = () => {
           </Indent>
         ),
       }),
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onKeyDown: (ev, { item }) => {
+          if (ev.key === "Delete") {
+            onChangeNumPassengers(item, undefined);
+          }
+        },
+        onChange: onChangeNumPassengers,
+      },
     },
   };
   return <StandardTable items={items} config={config} />;

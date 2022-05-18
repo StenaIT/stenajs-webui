@@ -46,9 +46,6 @@
   .header {
     background-color: var(--swui-collapsible-header-background-color);
     width: 100%;
-    font-size: inherit;
-    font-family: var(--swui-font-primary);
-    font-weight: var(--swui-collapsible-header-font-weight);
     text-align: left;
 
     min-height: var(--swui-collapsible-min-height);
@@ -101,6 +98,10 @@
     bottom: 0;
     left: 0;
     z-index: 1;
+  }
+
+  .headerText {
+    font-weight: var(--swui-collapsible-header-font-weight);
   }
 
   &[aria-expanded="false"] {
@@ -157,7 +158,7 @@
       font-family: var(--swui-font-primary);
       color: var(--swui-collapsible-groupheading-text-color);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: var(--swui-font-weight-text-bold);
       letter-spacing: 1px;
     }
 

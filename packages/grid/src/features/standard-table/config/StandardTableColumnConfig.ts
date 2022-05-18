@@ -207,6 +207,7 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
   label: string;
   value: TItemValue;
   item: TItem;
+  itemKey: string;
   gridCell: UseGridCellResult<string>;
   isEditable?: boolean;
   isSelected: boolean;

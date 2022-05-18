@@ -1,6 +1,6 @@
 .heading {
   font-size: var(--swui-heading-font-size);
-  color: var(--lhds-color-ui-800);
+  color: var(--lhds-color-ui-900);
   letter-spacing: 0;
   margin: 0;
   line-height: var(--swui-heading-line-height);
@@ -9,12 +9,12 @@
 
   &.h1 {
     --swui-heading-font-size: 28px;
-    --swui-heading-line-height: 32px;
+    --swui-heading-line-height: 40px;
   }
 
   &.h2 {
     --swui-heading-font-size: 24px;
-    --swui-heading-line-height: 28px;
+    --swui-heading-line-height: 32px;
   }
 
   &.h3 {
@@ -24,12 +24,13 @@
 
   &.h4 {
     --swui-heading-font-size: 16px;
-    --swui-heading-line-height: 20px;
+    --swui-heading-line-height: 24px;
+    font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.h5 {
     --swui-heading-font-size: 14px;
-    --swui-heading-line-height: 18px;
+    --swui-heading-line-height: 16px;
     font-weight: var(--swui-font-weight-text-bold);
   }
 

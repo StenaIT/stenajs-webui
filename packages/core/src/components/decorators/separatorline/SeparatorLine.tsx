@@ -21,6 +21,7 @@ const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
   display: flex;
   border: 0;
   margin: 0;
+  flex: none;
   background-color: ${(props) => props.color};
   height: ${(props) =>
     props.vertical ? props.size || "100%" : props.width || "1px"};

@@ -44,8 +44,8 @@ export const HeaderContent = () => {
   return (
     <Card>
       <CardHeader
+        leftIcon={faJedi}
         text={"Overview"}
-        contentAfterHeading={<FlatButton leftIcon={faJedi} />}
         contentRight={<FlatButton label={"Create"} />}
       />
       <CardBody>
@@ -61,22 +61,22 @@ export const HeaderContent = () => {
   );
 };
 
-export const CompactHeader = () => {
+export const CompactCard = () => {
   return (
     <Card>
       <CardHeader
+        leftIcon={faJedi}
         variant={"compact"}
         text={"Overview"}
-        contentAfterHeading={<FlatButton leftIcon={faJedi} />}
         contentRight={<FlatButton label={"Create"} />}
       />
-      <CardBody>
+      <CardBody variant={"compact"}>
         <Heading variant={"h5"}>Subheader</Heading>
         <Space />
         <Text>Lorem ipsavablasfasofofa</Text>
       </CardBody>
       <SeparatorLine />
-      <CardBody>
+      <CardBody variant={"compact"}>
         <Text>Line has no padding.</Text>
       </CardBody>
     </Card>

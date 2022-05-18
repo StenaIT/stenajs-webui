@@ -1,12 +1,310 @@
+# v15.5.7 (Thu May 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Use bigger font in tabmenu items [#455](https://github.com/StenaIT/stenajs-webui/pull/455) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.5.6 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add sidebar menu to rail [#454](https://github.com/StenaIT/stenajs-webui/pull/454) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.5.5 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add compact variant to cardbody [#453](https://github.com/StenaIT/stenajs-webui/pull/453) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.5.4 (Mon Apr 25 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/panels`
+  - Add SidebarRailMenu [#442](https://github.com/StenaIT/stenajs-webui/pull/442) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.3 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Remove storybook deploy scripts [#451](https://github.com/StenaIT/stenajs-webui/pull/451) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/panels`
+  - Improve spacing in PageHeader when there are no tabs [#452](https://github.com/StenaIT/stenajs-webui/pull/452) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.2 (Fri Apr 08 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix event propagation bug in onKeyDown in StandardTable [#450](https://github.com/StenaIT/stenajs-webui/pull/450) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.1 (Thu Apr 07 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Pass itemKey to renderProps in StandardTable [#449](https://github.com/StenaIT/stenajs-webui/pull/449) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.0 (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Add PageHeader component (fixes AB#91057) [#447](https://github.com/StenaIT/stenajs-webui/pull/447) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix tabmenu colors (fixes AB#91051) [#448](https://github.com/StenaIT/stenajs-webui/pull/448) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.4.1 (Tue Apr 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Task 90903: Drawer slide from top and bottom (AB#90903) [#446](https://github.com/StenaIT/stenajs-webui/pull/446) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v15.3.2 (Thu Mar 31 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Wrong number of tds in summary row in StandardTable [#440](https://github.com/StenaIT/stenajs-webui/pull/440) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.3.1 (Wed Mar 30 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Render only one March month [#444](https://github.com/StenaIT/stenajs-webui/pull/444) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`
+  - Update Card header (fixes AB#88134) [#443](https://github.com/StenaIT/stenajs-webui/pull/443) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.3.0 (Tue Mar 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/theme`
+  - Update font color and line height (fixes AB#87047) [#439](https://github.com/StenaIT/stenajs-webui/pull/439) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.2.1 (Tue Mar 01 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Disable calendar widget for https://stenait.github.io/stenajs-webui/?path=/story/calendar-input-datetextinput--disabled (fixes AB#86042) [#438](https://github.com/StenaIT/stenajs-webui/pull/438) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.2.0 (Mon Feb 28 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Change bold font weight to 500 [#284](https://github.com/StenaIT/stenajs-webui/pull/284) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v15.1.0 (Fri Feb 25 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`, `@stenajs-webui/redux`
+  - Support initial state in reducer factories [#437](https://github.com/StenaIT/stenajs-webui/pull/437) ([@mattias800](https://github.com/mattias800))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/filter`
+  - Some design updates on search filter drawer and panel [#436](https://github.com/StenaIT/stenajs-webui/pull/436) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`
+  - Increase contrast of Heading. [#435](https://github.com/StenaIT/stenajs-webui/pull/435) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.0.3 (Fri Feb 25 2022)
+
+#### 🐛 Bug Fix
+
+- Re-add git fetch --tags which is needed by auto [#432](https://github.com/StenaIT/stenajs-webui/pull/432) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/select`
+  - Fix select typings and styling regression [#433](https://github.com/StenaIT/stenajs-webui/pull/433) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🏠 Internal
+
+- Use stena sans cloudfront font CDN [#434](https://github.com/StenaIT/stenajs-webui/pull/434) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🔩 Dependency Updates
+
+- `@stenajs-webui/core`, `@stenajs-webui/filter`, `@stenajs-webui/grid`, `@stenajs-webui/tooltip`
+  - Fix missing peer dependencies [#431](https://github.com/StenaIT/stenajs-webui/pull/431) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.0.2 (Thu Feb 17 2022)
+
+#### ⚠️ Pushed to `master`
+
+- Add compressed-size action ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.0.1 (Thu Feb 17 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Increase width of DateTimeInput [#429](https://github.com/StenaIT/stenajs-webui/pull/429) ([@lindskogen](https://github.com/lindskogen))
+
+#### ⚠️ Pushed to `master`
+
+- Add exact option to lerna ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Fix exact version reference ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.0.0 (Thu Feb 17 2022)
+
+#### ✨ Features
+
+- Add automated CI release flow [#430](https://github.com/StenaIT/stenajs-webui/pull/430) ([@lindskogen](https://github.com/lindskogen))
+
+#### 📝 Documentation
+
+- Add missing changelog regarding SidebarMenu [#428](https://github.com/StenaIT/stenajs-webui/pull/428) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 17
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+---
+
 # Changelog
 
-# Next
+# 15.0.0-alpha.10
 
-## Tooltip, grid, panels & calendar
+## SidebarMenu
 
-### Breaking changes
+- The close button can be disabled with `hideCloseButton`
 
-- Remove CSS import for compatibility with nextjs. (See [README in tooltip](packages/tooltip/README.md) for more information)
+## DateRangeDualTextInput
+
+- The width of the two fields can be customised using `widthLeft` and `widthRight`
+- The default width of the input fields is slightly larger to make room for the text in Firefox
 
 # 15.0.0-alpha.9
 

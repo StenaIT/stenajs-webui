@@ -3,9 +3,7 @@ import { ActionMeta, GroupBase, OnChangeValue, Options } from "react-select";
 import { OnChange } from "../components/ui/GroupedMultiSelect";
 import { DropdownOption } from "../components/ui/GroupedMultiSelectTypes";
 
-export type GroupedOptionsType<TOption> = ReadonlyArray<
-  GroupBase<TOption> & { value: string }
->;
+export type GroupedOptionsType<TOption> = ReadonlyArray<GroupBase<TOption>>;
 
 export type InternalDropdownOption<TData> =
   | InternalChildOption<TData>

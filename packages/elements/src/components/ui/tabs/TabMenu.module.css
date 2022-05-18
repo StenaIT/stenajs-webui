@@ -1,5 +1,5 @@
 .tabMenu {
-  --swui-tab-menu-height: 45px;
+  --swui-tab-menu-height: 40px;
   --swui-tab-menu-border-color: var(--lhds-color-ui-200);
 
   /*
@@ -8,28 +8,7 @@
   display: flex;
   height: var(--swui-tab-menu-height);
 
-  .separator {
-    display: flex;
-    box-sizing: border-box;
-    height: var(--swui-tab-menu-height);
-    border-bottom: 1px solid transparent;
-
-    &.filler {
-      flex-grow: 1;
-
-      .separatorInner {
-        flex-grow: 1;
-      }
-    }
-
-    &:not(.filler) {
-      .separatorInner {
-        width: calc(var(--swui-metrics-indent) * 3);
-      }
-    }
-
-    .separatorInner {
-      border-bottom: 1px solid var(--swui-tab-menu-border-color);
-    }
+  &.withBorder {
+    border-bottom: 1px solid var(--swui-tab-menu-border-color);
   }
 }

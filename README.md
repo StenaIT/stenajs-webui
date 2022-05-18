@@ -1,4 +1,4 @@
-# stenajs-webui [![Build status badge](https://github.com/StenaIT/stenajs-webui/workflows/Node%20CI/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions?query=workflow%3A%22Node+CI%22) [![stenajs-webui](https://img.shields.io/npm/v/@stenajs-webui/core?label=stenajs-webui)](https://www.npmjs.com/package/@stenajs-webui/core)
+# stenajs-webui [![CI](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml) [![stenajs-webui](https://img.shields.io/npm/v/@stenajs-webui/core?label=stenajs-webui)](https://www.npmjs.com/package/@stenajs-webui/core)
 
 A design system and React component framework developed at Stena Line.
 
@@ -59,7 +59,7 @@ There is no need for DefinitelyTyped.
 
 ## Installation
 
-```
+```shell
 $ yarn add @stenajs-webui/core
 ```
 
@@ -73,7 +73,7 @@ They are specified in their respective package.json.
 
 For example, to use `@stenajs-webui/core` you must add the following dependencies:
 
-```
+```shell
 $ yarn add @emotion/react \
            @emotion/styled \
            csstype \
@@ -86,7 +86,7 @@ $ yarn add @emotion/react \
 
 If you are using Typescript, you must also add the following dependencies:
 
-```
+```shell
 $ yarn add typescript
            @types/lodash \
            @types/react \
@@ -98,7 +98,7 @@ $ yarn add typescript
 
 If you are also using `@stenajs-webui/elements`, you must also add the following dependencies:
 
-```
+```shell
 $ yarn add @fortawesome/fontawesome-svg-core \
            @fortawesome/free-solid-svg-icons \
            @fortawesome/react-fontawesome
@@ -114,4 +114,8 @@ If you need to make changes to the library code and test it in your application,
 
 ### Add fonts
 
-[See our fonts guide](FONTS.md) to use `Stena Sans` in your application.
+Copy this `<link>` tag into the `<head>` tag in your `public/index.html` to define the font in your app:
+
+```html
+<link href="https://d2zob0vy63qnjk.cloudfront.net/StenaSans.css" rel="stylesheet" type="text/css" />
+```

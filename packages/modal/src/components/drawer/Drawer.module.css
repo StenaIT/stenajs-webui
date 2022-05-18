@@ -6,29 +6,64 @@
 
   .content {
     box-shadow: var(--swui-shadow-modal);
+    background: white;
     position: absolute;
-    bottom: 0;
-    top: 0;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
-    transform: translateX(var(--translate-x-outside-screen, 0));
-    overflow-y: auto;
+
+    &.slideFromLeft,
+    &.slideFromRight {
+      transform: translateX(var(--translate-x-outside-screen, 0));
+      overflow-y: auto;
+      top: 0;
+      bottom: 0;
+
+      &.afterOpen {
+        transform: translateX(0);
+      }
+
+      &.beforeClose {
+        transform: translateX(var(--translate-x-outside-screen));
+      }
+    }
+
+    &.slideFromTop,
+    &.slideFromBottom {
+      transform: translateY(var(--translate-y-outside-screen, 0));
+      overflow-x: auto;
+      left: 0;
+      right: 0;
+
+      &.afterOpen {
+        transform: translateY(0);
+      }
+
+      &.beforeClose {
+        transform: translateY(var(--translate-y-outside-screen));
+      }
+    }
 
     &.slideFromLeft {
       --translate-x-outside-screen: -100%;
+      width: 370px;
       left: 0;
     }
 
     &.slideFromRight {
       --translate-x-outside-screen: 100%;
+      width: 370px;
       right: 0;
     }
 
-    &.afterOpen {
-      transform: translateX(0);
+    &.slideFromTop {
+      --translate-y-outside-screen: -100%;
+      height: 370px;
+      top: 0;
     }
 
-    &.beforeClose {
-      transform: translateX(var(--translate-x-outside-screen));
+    &.slideFromBottom {
+      --translate-y-outside-screen: 100%;
+      height: 370px;
+      bottom: 0;
     }
   }
 }

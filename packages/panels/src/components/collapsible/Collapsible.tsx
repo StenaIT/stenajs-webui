@@ -92,7 +92,10 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
             <div className={styles.contentLeft}>{contentLeft}</div>
           )}
           <div className={styles.label}>
-            <Text color={"var(--swui-collapsible-header-text-color)"}>
+            <Text
+              color={"var(--swui-collapsible-header-text-color)"}
+              className={styles.headerText}
+            >
               {label}
             </Text>
           </div>

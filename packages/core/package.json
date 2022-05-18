@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "15.0.0-alpha.9",
+  "version": "15.5.7",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "prop-types": "^15.5.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
     "styled-system": "^5.1.5"
   },
   "files": [
@@ -62,7 +63,7 @@
   "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961",
   "dependencies": {
     "@emotion/is-prop-valid": "^1.1.0",
-    "@stenajs-webui/theme": "15.0.0-alpha.9",
+    "@stenajs-webui/theme": "15.5.7",
     "classnames": "^2.3.1"
   }
 }
