@@ -10,6 +10,8 @@ export interface HeadingProps extends H1Props {
   whiteSpace?: Property.WhiteSpace;
   wordBreak?: Property.WordBreak;
   as?: HeadingVariant;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -25,6 +27,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       style,
       children,
       as,
+      testId,
       ...hProps
     },
     ref
@@ -35,6 +38,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(styles.heading, styles[variant], className)}
         style={{ color, whiteSpace, wordBreak, ...style }}
         ref={ref}
+        data-testid={testId}
         {...hProps}
       >
         {children}

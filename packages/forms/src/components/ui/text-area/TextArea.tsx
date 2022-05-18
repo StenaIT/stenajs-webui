@@ -27,6 +27,8 @@ export interface TextAreaProps
   readOnly?: boolean;
   rows?: number;
   disabled?: boolean;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -40,6 +42,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       readOnly = false,
       rows,
       disabled,
+      testId,
       ...textAreaProps
     },
     ref
@@ -66,6 +69,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         onChange={onChangeHandler}
         value={value}
         ref={ref}
+        data-testid={testId}
         {...textAreaProps}
       />
     );

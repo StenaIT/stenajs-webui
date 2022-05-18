@@ -13,6 +13,8 @@ export interface ChipProps {
   label?: string;
   variant?: ChipVariant;
   className?: string;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 export const Chip: React.FC<ChipProps> = ({
@@ -21,6 +23,7 @@ export const Chip: React.FC<ChipProps> = ({
   label,
   variant = "primary",
   className,
+  testId,
 }) => {
   const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
     ev.stopPropagation();
@@ -37,6 +40,7 @@ export const Chip: React.FC<ChipProps> = ({
         onClickRemove ? styles.removable : undefined,
         className
       )}
+      data-testid={testId}
     >
       {onClick ? (
         <button

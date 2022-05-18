@@ -32,6 +32,8 @@ export interface BannerProps {
   loading?: boolean;
   contentRight?: ReactNode;
   variant?: BannerVariant;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
@@ -50,9 +52,10 @@ export const Banner: React.FC<BannerProps> = ({
   icon,
   variant = "standard",
   loading = false,
+  testId,
 }) => {
   return (
-    <div className={cx(styles.banner, styles[variant])}>
+    <div className={cx(styles.banner, styles[variant])} data-testid={testId}>
       <Row justifyContent={"space-between"}>
         <Row
           flex={"none"}

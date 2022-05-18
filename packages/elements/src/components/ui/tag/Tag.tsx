@@ -7,6 +7,8 @@ export interface TagProps {
   label?: string;
   size?: TagSize;
   className?: string;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 export type TagVariant =
@@ -24,9 +26,13 @@ export const Tag: React.FC<TagProps> = ({
   variant = "info",
   size = "medium",
   label,
+  testId,
 }) => {
   return (
-    <div className={cx(styles.tag, styles[variant], styles[size], className)}>
+    <div
+      className={cx(styles.tag, styles[variant], styles[size], className)}
+      data-testid={testId}
+    >
       {label}
     </div>
   );

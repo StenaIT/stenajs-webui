@@ -14,11 +14,13 @@ export interface RadioButtonProps
   extends FullOnChangeProps<string, ChangeEvent<HTMLInputElement>>,
     Omit<ComponentPropsWithoutRef<"input">, "size" | "value"> {
   size?: RadioButtonSize;
+  /** Sets the data-testid attribute of the DOM element. */
+  testId?: string;
 }
 
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   (
-    { onChange, onValueChange, size = "standard", name, ...inputProps },
+    { onChange, onValueChange, size = "standard", name, testId, ...inputProps },
     ref
   ) => {
     const handleInputChange = useCallback(
@@ -40,6 +42,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
         className={styles.radiobutton + " " + styles[size]}
         onChange={handleInputChange}
         ref={ref}
+        data-testid={testId}
         {...inputProps}
       />
     );
