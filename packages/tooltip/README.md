@@ -4,5 +4,5 @@ This package provides components for adding tooltips and other popover functiona
 
 ## Components
 
-* [Popover](src/components/popover/Popover.md)
-* Tooltip
+- [Popover](src/components/popover/Popover.md)
+- Tooltip
