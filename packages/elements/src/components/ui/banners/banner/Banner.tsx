@@ -4,6 +4,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   Box,
   Column,
+  getDataProps,
   Heading,
   Indent,
   Row,
@@ -50,9 +51,10 @@ export const Banner: React.FC<BannerProps> = ({
   icon,
   variant = "standard",
   loading = false,
+  ...rest
 }) => {
   return (
-    <div className={cx(styles.banner, styles[variant])}>
+    <div className={cx(styles.banner, styles[variant])} {...getDataProps(rest)}>
       <Row justifyContent={"space-between"}>
         <Row
           flex={"none"}

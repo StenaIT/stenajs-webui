@@ -2,6 +2,7 @@ import * as React from "react";
 import { ReactComponent as SpinnerSvg } from "./spinner-large.svg";
 import cx from "classnames";
 import styles from "./Spinner.module.css";
+import { getDataProps } from "@stenajs-webui/core";
 
 export interface SpinnerProps {
   size?: SpinnerSize;
@@ -17,6 +18,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
   size = "medium",
   variant = "standard",
   color,
+  ...rest
 }) => (
   <SpinnerSvg
     className={cx(
@@ -25,5 +27,6 @@ export const Spinner: React.FC<SpinnerProps> = ({
       color ? styles.customColor : styles[variant]
     )}
     style={{ stroke: color }}
+    {...getDataProps(rest)}
   />
 );
