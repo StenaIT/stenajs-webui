@@ -3,6 +3,7 @@ import TippyComponent, {
 } from "@tippyjs/react";
 import * as React from "react";
 import styles from "./Popover.module.css";
+import "./Tippy.module.css";
 import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import { Box } from "@stenajs-webui/core";
 import { useLazyPopover } from "../../hooks/UseLazyPopover";
