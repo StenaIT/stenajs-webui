@@ -1,3 +1,16 @@
+# v15.5.8 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- Add compatibility with Next.js and vitest [#426](https://github.com/StenaIT/stenajs-webui/pull/426) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.0.3 (Fri Feb 25 2022)
 
 #### 🔩 Dependency Updates

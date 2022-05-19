@@ -117,5 +117,9 @@ If you need to make changes to the library code and test it in your application,
 Copy this `<link>` tag into the `<head>` tag in your `public/index.html` to define the font in your app:
 
 ```html
-<link href="https://d2zob0vy63qnjk.cloudfront.net/StenaSans.css" rel="stylesheet" type="text/css" />
+<link
+  href="https://d2zob0vy63qnjk.cloudfront.net/StenaSans.css"
+  rel="stylesheet"
+  type="text/css"
+/>
 ```
