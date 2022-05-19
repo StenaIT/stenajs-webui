@@ -47,5 +47,6 @@ export * from "./hooks/UseTimeoutState";
 
 export * from "./utils/SwitchCaseExhauster";
 export * from "./utils/TruthyKeysAsList";
+export * from "./utils/PropsForwarder";
 export * from "./utils/parsers/NumberParser";
 export { booleanOrNumberToNumber } from "./utils/BooleanOrNumberToNumber";

@@ -33,7 +33,6 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
       variant = "normal",
       disabled,
       onClick,
-      testId,
       ...buttonProps
     },
     ref
@@ -64,7 +63,6 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           className
         )}
         disabled={disabled}
-        data-testid={testId}
         {...buttonProps}
       >
         <ButtonContent

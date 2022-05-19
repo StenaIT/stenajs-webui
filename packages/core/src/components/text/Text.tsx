@@ -12,8 +12,6 @@ export interface TextProps extends SpanProps {
   whiteSpace?: Property.WhiteSpace;
   wordBreak?: Property.WordBreak;
   color?: string;
-  /** Sets the data-testid attribute of the DOM element. */
-  testId?: string;
 }
 
 export type TextVariant = "standard" | "caption" | "overline" | "bold";
@@ -31,7 +29,6 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       whiteSpace,
       wordBreak,
       style,
-      testId,
       ...spanProps
     },
     ref
@@ -41,7 +38,6 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
         className={cx(styles.text, styles[variant], styles[size], className)}
         ref={ref}
         style={{ color, userSelect, whiteSpace, wordBreak, ...style }}
-        data-testid={testId}
         {...spanProps}
       >
         {children}

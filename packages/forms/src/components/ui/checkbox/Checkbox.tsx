@@ -20,8 +20,6 @@ export interface CheckboxProps
   indeterminate?: boolean;
   size?: CheckboxSize;
   disabled?: boolean;
-  /** Sets the data-testid attribute of the DOM element. */
-  testId?: string;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -32,7 +30,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onValueChange,
       value = false,
       size = "standard",
-      testId,
       ...inputProps
     },
     ref
@@ -78,7 +75,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         checked={value}
         onChange={handleInputChange}
         ref={setRef}
-        data-testid={testId}
         {...inputProps}
       />
     );

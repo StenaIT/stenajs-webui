@@ -13,8 +13,6 @@ export interface LinkProps extends AnchorElementProps {
   iconRight?: IconDefinition;
   variant?: LinkVariant;
   size?: LinkSize;
-  /** Sets the data-testid attribute of the DOM element. */
-  testId?: string;
 }
 
 export type LinkVariant = "standard" | "caption" | "overline" | "bold";
@@ -34,7 +32,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       iconLeft,
       iconRight,
       href,
-      testId,
       ...anchorProps
     },
     ref
@@ -52,7 +49,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         ref={ref}
         href={disabled ? undefined : href}
         onClick={!disabled ? onClick : undefined}
-        data-testid={testId}
         {...anchorProps}
       >
         {iconLeft && (

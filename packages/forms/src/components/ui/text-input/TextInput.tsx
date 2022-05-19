@@ -59,8 +59,6 @@ export interface TextInputProps
   autoFocus?: boolean;
   /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
   onMove?: (direction: MoveDirection) => void;
-  /** Sets the data-testid attribute of the input element. */
-  testId?: string;
 }
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
@@ -93,7 +91,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     hideBorder,
     onFocus,
     onBlur,
-    testId,
     ...inputProps
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -153,7 +150,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         disabled={disabled}
         ref={refToUse}
         autoFocus={autoFocus}
-        data-testid={testId}
         {...inputProps}
         {...hookProps}
       />

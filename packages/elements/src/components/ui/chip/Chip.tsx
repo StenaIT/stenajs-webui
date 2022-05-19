@@ -4,6 +4,7 @@ import * as React from "react";
 import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
+import { getDataProps } from "@stenajs-webui/core";
 
 export type ChipVariant = "primary" | "secondary";
 
@@ -13,8 +14,6 @@ export interface ChipProps {
   label?: string;
   variant?: ChipVariant;
   className?: string;
-  /** Sets the data-testid attribute of the DOM element. */
-  testId?: string;
 }
 
 export const Chip: React.FC<ChipProps> = ({
@@ -23,7 +22,7 @@ export const Chip: React.FC<ChipProps> = ({
   label,
   variant = "primary",
   className,
-  testId,
+  ...rest
 }) => {
   const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
     ev.stopPropagation();
@@ -40,7 +39,7 @@ export const Chip: React.FC<ChipProps> = ({
         onClickRemove ? styles.removable : undefined,
         className
       )}
-      data-testid={testId}
+      {...getDataProps(rest)}
     >
       {onClick ? (
         <button

@@ -27,6 +27,4 @@ export interface CommonButtonProps {
   rightIcon?: IconDefinition;
   /** React element to place to the right of the text. */
   right?: ReactNode;
-  /** Sets the data-testid attribute of the button element. */
-  testId?: string;
 }
