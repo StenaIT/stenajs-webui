@@ -11,4 +11,4 @@ export const getDataProps = <T extends Record<string, unknown>>(
     }, {} as T);
 
 const isDataProp = <TProp extends string>(propName: TProp): boolean =>
-  propName.indexOf("data-") === 0 || propName.indexOf("aria-") === 0;
+  propName.startsWith("data-") || propName.startsWith("aria-");
