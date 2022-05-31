@@ -1,3 +1,16 @@
+# v15.5.9 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/elements`
+  - Add support for data-* and aria-* props [#456](https://github.com/StenaIT/stenajs-webui/pull/456) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.8 (Thu May 19 2022)
 
 #### 🐛 Bug Fix

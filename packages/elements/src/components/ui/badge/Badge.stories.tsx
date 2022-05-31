@@ -15,3 +15,9 @@ export const Standard: Story<BadgeProps> = ({ label = 0, ...props }) => (
     <Badge label={label} {...props} />
   </div>
 );
+
+export const WithTestId: Story<BadgeProps> = ({ label = 0, ...props }) => (
+  <div style={{ display: "inline-block" }}>
+    <Badge label={label} {...props} data-testid={"woo-test-id"} />
+  </div>
+);

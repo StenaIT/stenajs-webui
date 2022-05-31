@@ -4,6 +4,7 @@ import * as React from "react";
 import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
+import { getDataProps } from "@stenajs-webui/core";
 
 export type ChipVariant = "primary" | "secondary";
 
@@ -21,6 +22,7 @@ export const Chip: React.FC<ChipProps> = ({
   label,
   variant = "primary",
   className,
+  ...rest
 }) => {
   const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
     ev.stopPropagation();
@@ -37,6 +39,7 @@ export const Chip: React.FC<ChipProps> = ({
         onClickRemove ? styles.removable : undefined,
         className
       )}
+      {...getDataProps(rest)}
     >
       {onClick ? (
         <button
