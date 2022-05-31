@@ -3,11 +3,13 @@ import * as React from "react";
 import cx from "classnames";
 import styles from "./NavBarNotificationButton.module.css";
 import { faBell } from "@fortawesome/free-solid-svg-icons/faBell";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface NavBarNotificationButtonProps
   extends Omit<FlatButtonProps, "leftIcon" | "rightIcon" | "label"> {
   count: number;
   unread: boolean;
+  icon?: IconDefinition;
 }
 
 export const NavBarNotificationButton: React.FC<NavBarNotificationButtonProps> = ({
@@ -16,6 +18,7 @@ export const NavBarNotificationButton: React.FC<NavBarNotificationButtonProps> =
   className,
   labelClassName,
   iconClassName,
+  icon = faBell,
   ...buttonProps
 }) => {
   const hasCount = count > 0;
@@ -23,7 +26,7 @@ export const NavBarNotificationButton: React.FC<NavBarNotificationButtonProps> =
   return (
     <FlatButton
       {...buttonProps}
-      leftIcon={faBell}
+      leftIcon={icon}
       className={cx(
         { [styles.unread]: unread },
         { [styles.hasCount]: hasCount },
