@@ -27,4 +27,14 @@ export interface CommonButtonProps {
   rightIcon?: IconDefinition;
   /** React element to place to the right of the text. */
   right?: ReactNode;
+  /** Icon class name */
+  iconClassName?: string;
+  /** Label class name */
+  labelClassName?: string;
+  /** Spinner class name */
+  spinnerClassName?: string;
+  /** Left wrapper class name */
+  leftWrapperClassName?: string;
+  /** Left wrapper class name */
+  rightWrapperClassName?: string;
 }

@@ -33,6 +33,11 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
       variant = "normal",
       disabled,
       onClick,
+      iconClassName,
+      labelClassName,
+      spinnerClassName,
+      leftWrapperClassName,
+      rightWrapperClassName,
       ...buttonProps
     },
     ref
@@ -73,6 +78,11 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           right={right}
           rightIcon={rightIcon}
           label={buttonLabel}
+          iconClassName={iconClassName}
+          labelClassName={labelClassName}
+          spinnerClassName={spinnerClassName}
+          leftWrapperClassName={leftWrapperClassName}
+          rightWrapperClassName={rightWrapperClassName}
         />
       </Button>
     );
