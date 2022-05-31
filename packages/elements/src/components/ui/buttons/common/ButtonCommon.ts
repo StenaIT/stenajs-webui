@@ -35,6 +35,6 @@ export interface CommonButtonProps {
   spinnerClassName?: string;
   /** Left wrapper class name */
   leftWrapperClassName?: string;
-  /** Left wrapper class name */
+  /** Right wrapper class name */
   rightWrapperClassName?: string;
 }
