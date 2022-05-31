@@ -1,0 +1,116 @@
+.navBarNotificationButton {
+  /* Theme vars */
+  --swui-nav-bar-notification-button-text-color: var(--lhds-color-ui-50);
+  --swui-nav-bar-notification-button-background-color: var(
+    --lhds-color-blue-700
+  );
+  --swui-nav-bar-notification-button-background-color-hover: var(
+    --lhds-color-blue-900
+  );
+  --swui-nav-bar-notification-button-background-color-focus: var(
+    --lhds-color-blue-700
+  );
+  --swui-nav-bar-notification-button-background-color-active: var(
+    --lhds-color-blue-800
+  );
+  --swui-nav-bar-notification-button-background-color-unread: var(
+    --lhds-color-red-500
+  );
+  --swui-nav-bar-notification-button-background-color-unread-hover: var(
+    --lhds-color-red-700
+  );
+  --swui-nav-bar-notification-button-background-color-unread-focus: var(
+    --lhds-color-red-700
+  );
+  --swui-nav-bar-notification-button-background-color-unread-active: var(
+    --lhds-color-red-800
+  );
+
+  /* FlatButton overrides */
+  --swui-flat-button-text-color: var(
+    --swui-nav-bar-notification-button-text-color
+  );
+  --swui-flat-button-icon-color: var(
+    --swui-nav-bar-notification-button-text-color
+  );
+  --swui-flat-button-text-color-active: var(
+    --swui-nav-bar-notification-button-text-color
+  );
+  --swui-flat-button-background-color: var(
+    --swui-nav-bar-notification-button-background-color
+  );
+  --swui-flat-button-background-color-hover: var(
+    --swui-nav-bar-notification-button-background-color-hover
+  );
+  --swui-flat-button-background-color-focus: var(
+    --swui-nav-bar-notification-button-background-color-focus
+  );
+  --swui-flat-button-background-color-active: var(
+    --swui-nav-bar-notification-button-background-color-active
+  );
+
+  --swui-button-border-radius: 16px;
+  --swui-button-border-radius-icon-only: 16px;
+  --swui-nav-bar-notification-shake-count: 3;
+
+  transition: 0.5s width;
+
+  width: 32px;
+
+  &.hasCount {
+    width: 56px;
+  }
+
+  &.unread {
+    --swui-flat-button-background-color: var(
+      --swui-nav-bar-notification-button-background-color-unread
+    );
+    --swui-flat-button-background-color-hover: var(
+      --swui-nav-bar-notification-button-background-color-unread-hover
+    );
+    --swui-flat-button-background-color-focus: var(
+      --swui-nav-bar-notification-button-background-color-unread-focus
+    );
+    --swui-flat-button-background-color-active: var(
+      --swui-nav-bar-notification-button-background-color-unread-active
+    );
+
+    &.hasCount {
+      .icon {
+        transform-origin: top center;
+        animation: shake 1.5s ease-in-out
+          var(--swui-nav-bar-notification-shake-count);
+      }
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(0);
+    }
+    7% {
+      transform: rotate(20deg);
+    }
+    15% {
+      transform: rotate(-20deg);
+    }
+    22% {
+      transform: rotate(16deg);
+    }
+    30% {
+      transform: rotate(-16deg);
+    }
+    38% {
+      transform: rotate(6deg);
+    }
+    42% {
+      transform: rotate(-6deg);
+    }
+    46% {
+      transform: rotate(2deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+}

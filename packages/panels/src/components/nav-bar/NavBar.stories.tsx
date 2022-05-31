@@ -11,7 +11,12 @@ import {
   Text,
   useBoolean,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  Icon,
+  PrimaryButton,
+  WithBadge,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
@@ -40,6 +45,8 @@ import {
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
+import { NavBarNotificationButton } from "./NavBarNotificationButton";
+import { useEffect, useState } from "react";
 
 export default {
   title: "panels/NavBar",
@@ -253,6 +260,33 @@ export const PopoverButtonIcon = () => (
     <NavBarButton label={"Events"} />
   </NavBar>
 );
+
+export const NotificationButton = () => {
+  const [unread, setUnread, , toggle] = useBoolean(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count > 0) {
+      setUnread();
+    }
+  }, [count]);
+
+  return (
+    <>
+      <NavBar
+        right={<NavBarNotificationButton count={count} unread={unread} />}
+      />
+      <Row indent spacing gap justifyContent={"flex-end"}>
+        <PrimaryButton
+          label={"-"}
+          onClick={() => setCount((c) => Math.max(c - 1, 0))}
+        />
+        <PrimaryButton label={"Toggle unread"} onClick={toggle} />
+        <PrimaryButton label={"+"} onClick={() => setCount((c) => c + 1)} />
+      </Row>
+    </>
+  );
+};
 
 const sidebarItems: SidebarItem[] = [
   { type: "heading", label: "Product name" },
