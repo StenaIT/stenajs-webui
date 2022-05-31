@@ -28,8 +28,8 @@
   );
 
   /* Icon */
-  --swui-button-icon-height: 1.6em;
-  --swui-button-icon-height-large: 2.4em;
+  --swui-button-icon-height: 1.6rem;
+  --swui-button-icon-height-large: 2.4rem;
 
   --swui-button-icon-color: var(--swui-white);
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
