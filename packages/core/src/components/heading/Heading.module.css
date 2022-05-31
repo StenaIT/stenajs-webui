@@ -8,35 +8,35 @@
   font-weight: var(--swui-font-weight-text);
 
   &.h1 {
-    --swui-heading-font-size: 28px;
-    --swui-heading-line-height: 40px;
+    --swui-heading-font-size: 2.8rem;
+    --swui-heading-line-height: 4.0rem;
   }
 
   &.h2 {
-    --swui-heading-font-size: 24px;
-    --swui-heading-line-height: 32px;
+    --swui-heading-font-size: 2.4rem;
+    --swui-heading-line-height: 3.2rem;
   }
 
   &.h3 {
-    --swui-heading-font-size: 20px;
-    --swui-heading-line-height: 24px;
+    --swui-heading-font-size: 2.0rem;
+    --swui-heading-line-height: 2.4rem;
   }
 
   &.h4 {
-    --swui-heading-font-size: 16px;
-    --swui-heading-line-height: 24px;
+    --swui-heading-font-size: 1.6rem;
+    --swui-heading-line-height: 2.4rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.h5 {
-    --swui-heading-font-size: 14px;
-    --swui-heading-line-height: 16px;
+    --swui-heading-font-size: 1.4rem;
+    --swui-heading-line-height: 1.6rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.h6 {
-    --swui-heading-font-size: 12px;
-    --swui-heading-line-height: 16px;
+    --swui-heading-font-size: 1.2rem;
+    --swui-heading-line-height: 1.6rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 }

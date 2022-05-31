@@ -1,3 +1,4 @@
+import "./styles/base.css";
 import "./styles/default-colors.css";
 import "./styles/default-theme.css";
 
