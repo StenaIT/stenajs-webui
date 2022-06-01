@@ -7,14 +7,11 @@ import {
   Column,
   Heading,
   Row,
-  SeparatorLine,
   Space,
   Text,
-  Txt,
   useBoolean,
 } from "@stenajs-webui/core";
 import {
-  ActionMenu,
   ActionMenuItem,
   ActionMenuItemContent,
   ActionMenuSeparator,
@@ -51,7 +48,6 @@ import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoub
 import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
-import { Popover } from "@stenajs-webui/tooltip";
 import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 

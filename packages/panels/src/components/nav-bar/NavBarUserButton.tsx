@@ -1,4 +1,3 @@
-import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import * as React from "react";
 import cx from "classnames";
 import styles from "./NavBarUserButton.module.css";
