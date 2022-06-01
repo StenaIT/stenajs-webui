@@ -7,11 +7,21 @@ import {
   Column,
   Heading,
   Row,
+  SeparatorLine,
   Space,
   Text,
+  Txt,
   useBoolean,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon, WithBadge } from "@stenajs-webui/elements";
+import {
+  ActionMenu,
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuSeparator,
+  FlatButton,
+  Icon,
+  WithBadge,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
@@ -40,6 +50,10 @@ import {
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
+import { NavBarUserButton } from "./NavBarUserButton";
+import { Popover } from "@stenajs-webui/tooltip";
+import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 
 export default {
   title: "panels/NavBar",
@@ -252,6 +266,41 @@ export const PopoverButtonIcon = () => (
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
   </NavBar>
+);
+
+export const UserButton = () => (
+  <Column gap>
+    <NavBar
+      right={
+        <NavBarUserButton
+          username={"USR007"}
+          renderItems={() => (
+            <>
+              <ActionMenuItemContent label={"user@example.com"} />
+              <ActionMenuSeparator />
+              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+            </>
+          )}
+        />
+      }
+    />
+    <NavBar
+      right={
+        <NavBarUserButton
+          initials={"U7"}
+          renderItems={() => (
+            <>
+              <ActionMenuItemContent label={"user@example.com"} />
+              <ActionMenuSeparator />
+              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+            </>
+          )}
+        />
+      }
+    />
+  </Column>
 );
 
 const sidebarItems: SidebarItem[] = [
