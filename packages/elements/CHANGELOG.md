@@ -1,3 +1,15 @@
+# v15.5.10 (Thu Jun 02 2022)
+
+#### 🐛 Bug Fix
+
+- Nav: Notification button + animation (fixes AB#92377) [#459](https://github.com/StenaIT/stenajs-webui/pull/459) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.5.9 (Thu May 19 2022)
 
 #### 🐛 Bug Fix
