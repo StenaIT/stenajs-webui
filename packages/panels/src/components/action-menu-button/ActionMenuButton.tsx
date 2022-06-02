@@ -33,6 +33,7 @@ export interface ActionMenuButtonProps
     | typeof PrimaryButton
     | typeof SecondaryButton
     | typeof FlatButton;
+  disableArrow?: boolean;
 }
 
 export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
@@ -45,6 +46,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   menuWidth,
   menuTop,
   onClick,
+  disableArrow = false,
   ...buttonProps
 }) => {
   const [isOpen, open, close, toggle] = useBoolean(false);
@@ -125,7 +127,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       lazy
     >
       <Button
-        rightIcon={rightIcon}
+        rightIcon={disableArrow ? undefined : rightIcon}
         {...buttonProps}
         ref={buttonRef}
         onClick={handleClick}
