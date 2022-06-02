@@ -269,7 +269,7 @@ export const NotificationButton = () => {
     if (count > 0) {
       setUnread();
     }
-  }, [count]);
+  });
 
   return (
     <>
