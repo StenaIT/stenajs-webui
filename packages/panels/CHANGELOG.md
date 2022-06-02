@@ -1,3 +1,15 @@
+# v15.6.0 (Thu Jun 02 2022)
+
+#### 🚀 Enhancement
+
+- Nav: New user icon (fixes AB#92613) [#460](https://github.com/StenaIT/stenajs-webui/pull/460) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.5.10 (Thu Jun 02 2022)
 
 #### 🐛 Bug Fix
