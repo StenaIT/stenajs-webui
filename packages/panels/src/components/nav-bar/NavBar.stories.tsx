@@ -12,6 +12,9 @@ import {
   useBoolean,
 } from "@stenajs-webui/core";
 import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuSeparator,
   FlatButton,
   Icon,
   PrimaryButton,
@@ -45,6 +48,9 @@ import {
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
+import { NavBarUserButton } from "./NavBarUserButton";
+import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
 import { useEffect, useState } from "react";
 
@@ -259,6 +265,41 @@ export const PopoverButtonIcon = () => (
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
   </NavBar>
+);
+
+export const UserButton = () => (
+  <Column gap>
+    <NavBar
+      right={
+        <NavBarUserButton
+          username={"USR007"}
+          renderItems={() => (
+            <>
+              <ActionMenuItemContent label={"user@example.com"} />
+              <ActionMenuSeparator />
+              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+            </>
+          )}
+        />
+      }
+    />
+    <NavBar
+      right={
+        <NavBarUserButton
+          initials={"U7"}
+          renderItems={() => (
+            <>
+              <ActionMenuItemContent label={"user@example.com"} />
+              <ActionMenuSeparator />
+              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+            </>
+          )}
+        />
+      }
+    />
+  </Column>
 );
 
 export const NotificationButton = () => {

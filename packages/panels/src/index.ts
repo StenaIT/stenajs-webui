@@ -8,6 +8,7 @@ export * from "./components/nav-bar/NavBarHeading";
 export * from "./components/nav-bar/NavBarPopoverButton";
 export * from "./components/nav-bar/NavBarNotificationButton";
 export * from "./components/nav-bar/NavBarSearchField";
+export * from "./components/nav-bar/NavBarUserButton";
 export * from "./components/notifications/Notification";
 export * from "./components/notifications/NotificationTheme";
 export * from "./components/collapsible/Collapsible";
