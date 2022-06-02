@@ -17,6 +17,7 @@ import {
   ActionMenuSeparator,
   FlatButton,
   Icon,
+  PrimaryButton,
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -50,6 +51,8 @@ import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
 import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
+import { NavBarNotificationButton } from "./NavBarNotificationButton";
+import { useEffect, useState } from "react";
 
 export default {
   title: "panels/NavBar",
@@ -298,6 +301,33 @@ export const UserButton = () => (
     />
   </Column>
 );
+
+export const NotificationButton = () => {
+  const [unread, setUnread, , toggle] = useBoolean(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (count > 0) {
+      setUnread();
+    }
+  });
+
+  return (
+    <>
+      <NavBar
+        right={<NavBarNotificationButton count={count} unread={unread} />}
+      />
+      <Row indent spacing gap justifyContent={"flex-end"}>
+        <PrimaryButton
+          label={"-"}
+          onClick={() => setCount((c) => Math.max(c - 1, 0))}
+        />
+        <PrimaryButton label={"Toggle unread"} onClick={toggle} />
+        <PrimaryButton label={"+"} onClick={() => setCount((c) => c + 1)} />
+      </Row>
+    </>
+  );
+};
 
 const sidebarItems: SidebarItem[] = [
   { type: "heading", label: "Product name" },
