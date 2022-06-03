@@ -44,6 +44,8 @@ import {
   TopProps,
   zIndex,
   ZIndexProps,
+  grid,
+  GridProps,
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
 import { booleanOrNumberToNumber } from "../../../utils/BooleanOrNumberToNumber";
@@ -57,6 +59,7 @@ interface StyledSystemProps
     BorderTopProps,
     BorderBottomProps,
     FlexboxProps,
+    GridProps,
     LayoutProps,
     OverflowProps,
     PositionProps,
@@ -222,6 +225,7 @@ export const Box = styled("div", {
   ${right};
   ${top};
   ${bottom};
+  ${grid};
 
   gap: calc(var(--current-gap) * var(--swui-metrics-space));
 

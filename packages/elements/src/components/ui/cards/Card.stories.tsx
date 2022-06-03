@@ -18,9 +18,10 @@ import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
 import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
-import { CardBody } from "./CardBody";
+import { CardBody, CardBodyVariant } from "./CardBody";
 import { CardHeader } from "./CardHeader";
 import { CardWrapper } from "./CardWrapper";
+import styled from "@emotion/styled";
 
 export default {
   title: "elements/Card",
@@ -44,26 +45,72 @@ export const Demo = () => {
   );
 };
 
+const GridCardWrapper = styled(CardWrapper)`
+  display: grid;
+  grid-template-rows: auto;
+  background: var(--lhds-color-ui-200);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header1"
+    "header2"
+    "header3"
+    "subheader1"
+    "subheader2"
+    "main";
+
+  @media (min-width: 52em) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "header1 header1 header2 header2 header3 header3"
+      "subheader1 subheader1 subheader1 subheader2 subheader2 subheader2"
+      "main main main main main main";
+  }
+`;
+
+const variant: CardBodyVariant = "compact";
+
 export const ResponsiveDemo = () => {
   return (
-    <CardWrapper>
-      <Card>
-        <CardHeader text={"Overview"} />
-        <CardBody>
+    <GridCardWrapper display={"grid"}>
+      <Card gridArea={"header1"}>
+        <CardHeader text={"Shoulder"} variant={variant} />
+        <CardBody variant={variant}>
+          <Text>Shoulder</Text>
+        </CardBody>
+      </Card>
+      <Card gridArea={"header2"}>
+        <CardHeader text={"Off-peak"} variant={variant} />
+        <CardBody variant={variant}>
+          <Text>Off-peak</Text>
+        </CardBody>
+      </Card>
+      <Card gridArea={"header3"}>
+        <CardHeader text={"Peak"} variant={variant} />
+        <CardBody variant={variant}>
+          <Text>Peak</Text>
+        </CardBody>
+      </Card>
+      <Card gridArea={"subheader1"}>
+        <CardHeader text={"Niklas"} variant={variant} />
+        <CardBody variant={variant}>
+          <Text>Niklas</Text>
+        </CardBody>
+      </Card>
+      <Card gridArea={"subheader2"}>
+        <CardHeader text={"Johan"} variant={variant} />
+        <CardBody variant={variant}>
+          <Text>Johan</Text>
+        </CardBody>
+      </Card>
+      <Card gridArea={"main"}>
+        <CardHeader text={"Overview"} variant={variant} />
+        <CardBody variant={variant}>
           <Heading variant={"h5"}>Subheader</Heading>
           <Space />
           <Text>Lorem ipsavablasfasofofa</Text>
         </CardBody>
       </Card>
-      <Card>
-        <CardHeader text={"Overview"} />
-        <CardBody>
-          <Heading variant={"h5"}>Subheader</Heading>
-          <Space />
-          <Text>Lorem ipsavablasfasofofa</Text>
-        </CardBody>
-      </Card>
-    </CardWrapper>
+    </GridCardWrapper>
   );
 };
 
