@@ -1,10 +1,10 @@
 import { Heading, Row } from "@stenajs-webui/core";
-import cx from "classnames";
 import * as React from "react";
 import { ReactNode } from "react";
-import styles from "./CardHeader.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "../icon/Icon";
+import { cssColor } from "@stenajs-webui/theme";
+import { CARD_INDENT, CARD_SPACING, CARD_SPACING_COMPACT } from "./Card";
 
 export type CardHeaderVariant = "standard" | "compact";
 
@@ -28,7 +28,12 @@ export const CardHeader: React.VFC<CardHeaderProps> = ({
   contentCenter,
 }) => {
   return (
-    <div className={cx(styles.cardHeader, styles[variant])}>
+    <Row
+      justifyContent={"space-between"}
+      borderBottom={`1px solid ${cssColor("--lhds-color-ui-300")}`}
+      indent={CARD_INDENT}
+      spacing={variant === "compact" ? CARD_SPACING_COMPACT : CARD_SPACING}
+    >
       <Row alignItems={"center"} gap={variant === "compact" ? 1 : 2}>
         {contentLeft}
         {leftIcon && (
@@ -43,6 +48,6 @@ export const CardHeader: React.VFC<CardHeaderProps> = ({
       </Row>
       {contentCenter && <Row alignItems={"center"}>{contentCenter}</Row>}
       <Row alignItems={"center"}>{contentRight}</Row>
-    </div>
+    </Row>
   );
 };

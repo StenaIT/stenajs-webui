@@ -20,11 +20,15 @@ import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
 import { CardBody } from "./CardBody";
 import { CardHeader } from "./CardHeader";
+import { CardWrapper } from "./CardWrapper";
 
 export default {
   title: "elements/Card",
   component: Card,
-  subcomponents: { CardHeader },
+  parameters: {
+    layout: "fullscreen",
+  },
+  subcomponents: { CardHeader, CardWrapper, CardBody },
 };
 
 export const Demo = () => {
@@ -37,6 +41,29 @@ export const Demo = () => {
         <Text>Lorem ipsavablasfasofofa</Text>
       </CardBody>
     </Card>
+  );
+};
+
+export const ResponsiveDemo = () => {
+  return (
+    <CardWrapper>
+      <Card>
+        <CardHeader text={"Overview"} />
+        <CardBody>
+          <Heading variant={"h5"}>Subheader</Heading>
+          <Space />
+          <Text>Lorem ipsavablasfasofofa</Text>
+        </CardBody>
+      </Card>
+      <Card>
+        <CardHeader text={"Overview"} />
+        <CardBody>
+          <Heading variant={"h5"}>Subheader</Heading>
+          <Space />
+          <Text>Lorem ipsavablasfasofofa</Text>
+        </CardBody>
+      </Card>
+    </CardWrapper>
   );
 };
 
