@@ -28,6 +28,14 @@ export const Centered = () => (
   </Column>
 );
 
+export const WithVariant = () => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+
+  return (
+    <DateTextInput value={value} onValueChange={setValue} variant={"error"} />
+  );
+};
+
 export const EnglishDateFormat = () => {
   const [value, setValue] = useState<string | undefined>(undefined);
 

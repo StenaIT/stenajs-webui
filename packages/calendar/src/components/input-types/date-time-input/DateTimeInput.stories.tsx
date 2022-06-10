@@ -31,6 +31,18 @@ export const Standard = () => {
   );
 };
 
+export const WithVariant = () => {
+  const [value, setValue] = useState<Date | null>(null);
+
+  return (
+    <Row>
+      <DateTimeInput value={value} onValueChange={setValue} variant={"error"} />
+      <Indent />
+      <FlatButton leftIcon={faTrash} onClick={() => setValue(null)} />
+    </Row>
+  );
+};
+
 export const Centered = () => {
   return (
     <Column

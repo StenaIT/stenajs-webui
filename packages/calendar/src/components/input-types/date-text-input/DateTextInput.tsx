@@ -63,6 +63,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   hideCalenderIcon = false,
   minDate,
   maxDate = defaultMaxDate,
+  variant,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -135,7 +136,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
       >
         <TextInput
           {...props}
-          variant={invalid ? "error" : "standard"}
+          variant={invalid ? "error" : variant}
           disableContentPaddingRight
           contentRight={
             !hideCalenderIcon ? (

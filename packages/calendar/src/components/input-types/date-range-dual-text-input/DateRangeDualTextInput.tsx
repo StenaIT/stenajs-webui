@@ -27,7 +27,7 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRange>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -47,6 +47,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
   calendarProps,
   widthLeft = 128,
   widthRight = 128,
+  variant,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
 
@@ -158,7 +159,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
           onClickRight={onFocusRight}
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
-          variant={startDateIsAfterEnd ? "error" : undefined}
+          variant={startDateIsAfterEnd ? "error" : variant}
           widthLeft={widthLeft}
           widthRight={widthRight}
           minLeft={minDate}
