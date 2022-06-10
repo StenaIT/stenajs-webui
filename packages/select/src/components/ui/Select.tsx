@@ -25,7 +25,7 @@ export const Select = <T extends {}>({
     );
 
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
-  }, [variant, styles]);
+  }, [variant, textVariant, styles]);
 
   return (
     <SelectComponent styles={selectStyles} {...selectProps} isMulti={false} />
