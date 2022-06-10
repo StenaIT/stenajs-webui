@@ -28,6 +28,28 @@ export const Standard = () => (
   </div>
 );
 
+export const WithVariant = () => (
+  <div style={{ width: "400px" }}>
+    <MultiSelect
+      textVariant={"error"}
+      options={[
+        {
+          value: "Mattias",
+          label: "Mattias",
+        },
+        {
+          value: "Johan",
+          label: "Johan",
+        },
+        {
+          value: "Dennis the menace",
+          label: "Dennis the menace",
+        },
+      ]}
+    />
+  </div>
+);
+
 export const WithGroupHeadings = () => (
   <div style={{ width: "400px" }}>
     <Indent num={4}>

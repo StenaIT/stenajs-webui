@@ -28,6 +28,28 @@ export const Standard = () => (
   </div>
 );
 
+export const WithVariant = () => (
+  <div style={{ width: "400px" }}>
+    <Select
+      textVariant={"error"}
+      options={[
+        {
+          value: "Mattias",
+          label: "Mattias",
+        },
+        {
+          value: "Johan",
+          label: "Johan",
+        },
+        {
+          value: "Dennis the menace",
+          label: "Dennis the menace",
+        },
+      ]}
+    />
+  </div>
+);
+
 export const LongLabels = () => (
   <div style={{ width: "400px" }}>
     <Select
@@ -71,6 +93,35 @@ export const StandardDark = () => (
               },
             ]}
             variant={"dark"}
+          />
+        </Spacing>
+      </Indent>
+    </Box>
+  </div>
+);
+
+export const DarkWithVariant = () => (
+  <div style={{ width: "400px" }}>
+    <Box background={"#2e4662"}>
+      <Indent num={4}>
+        <Spacing num={4}>
+          <Select
+            options={[
+              {
+                value: "Mattias",
+                label: "Mattias",
+              },
+              {
+                value: "Johan",
+                label: "Johan",
+              },
+              {
+                value: "Dennis the menace",
+                label: "Dennis the menace",
+              },
+            ]}
+            variant={"dark"}
+            textVariant={"error"}
           />
         </Spacing>
       </Indent>

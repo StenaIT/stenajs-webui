@@ -18,11 +18,14 @@ export interface SelectTheme {
   input: {
     backgroundColor: string;
     border: string;
-    borderFocused: string;
     borderColor: string;
     borderColorFocused: string;
     borderRadius: string;
     disabledBackgroundColor: string;
+    warningBackgroundColor: string;
+    errorBackgroundColor: string;
+    warningBorderColor: string;
+    errorBorderColor: string;
     boxShadowFocused: string;
     fontFamily: string;
     fontSize: string;
@@ -86,11 +89,14 @@ export const defaultSelectTheme: SelectTheme = {
   },
   input: {
     backgroundColor: "var(--swui-field-bg-enabled)",
-    border: `1px solid var(--swui-field-border-color)`,
-    borderFocused: `1px solid var(--swui-field-border-color-hover)`,
+    border: `1px solid var(--swui-select-border-color)`,
     borderColor: "var(--swui-field-border-color)",
     borderColorFocused: "var(--swui-field-border-color-hover)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    warningBackgroundColor: "var(--swui-state-alert-light-color)",
+    errorBackgroundColor: "var(--swui-state-error-light-color)",
+    warningBorderColor: "var(--swui-state-alert-color)",
+    errorBorderColor: "var(--swui-state-error-color)",
     boxShadowFocused: "var(--swui-field-focus-shadow)",
     fontFamily: "var(--swui-font-primary)",
     fontSize: "var(--swui-font-size-inputs)",
@@ -155,11 +161,14 @@ export const selectThemeDark: SelectTheme = {
   },
   input: {
     backgroundColor: "#4a5d73",
-    border: "1px solid transparent",
-    borderFocused: `1px solid #92a3b5`,
+    border: "1px solid var(--swui-select-border-color)",
     borderColor: "transparent",
     borderColorFocused: "#92a3b5",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    warningBackgroundColor: "var(--swui-state-alert-color)",
+    errorBackgroundColor: "var(--swui-state-error-color)",
+    warningBorderColor: "var(--swui-state-alert-light-color)",
+    errorBorderColor: "var(--swui-state-error-light-color)",
     boxShadowFocused: "var(--swui-field-focus-shadow)",
     fontFamily: "var(--swui-font-primary)",
     fontSize: "var(--swui-font-size-inputs)",
