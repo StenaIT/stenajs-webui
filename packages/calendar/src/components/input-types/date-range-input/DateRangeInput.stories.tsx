@@ -37,6 +37,19 @@ export const Centered = () => (
   </Column>
 );
 
+export const Disabled = () => {
+  const [value, setValue] = useState<DateRange>({
+    startDate: undefined,
+    endDate: undefined,
+  });
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeInput value={value} onValueChange={setValue} disabled />
+    </div>
+  );
+};
+
 export const Empty = () => (
   <div style={{ display: "inline-block" }}>
     <DateRangeInput />

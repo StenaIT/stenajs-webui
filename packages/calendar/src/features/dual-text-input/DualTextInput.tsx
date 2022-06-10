@@ -58,6 +58,7 @@ export interface DualTextInputProps {
   showPresets?: false;
   autoFocusLeft?: boolean;
   autoFocusRight?: boolean;
+  disabled?: boolean;
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
@@ -97,6 +98,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   showPresets,
   widthLeft,
   widthRight,
+  disabled,
 }) => {
   const focusCounter = useRef(0);
 
@@ -158,6 +160,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     <Box>
       <TextInputBox
         disableContentPaddingRight
+        disabled={disabled}
         variant={variant}
         contentRight={
           <Row alignItems={"center"}>
@@ -165,6 +168,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
               <FlatButton
                 leftIcon={faCalendarAlt}
                 onClick={onClickCalendar}
+                disabled={disabled}
                 size={"small"}
               />
             </Indent>
@@ -179,6 +183,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
                   <FlatButton
                     leftIcon={faAngleDown}
                     onClick={onClickArrowDown}
+                    disabled={disabled}
                     size={"small"}
                   />
                 </Indent>
@@ -192,6 +197,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             onEsc={onEsc}
             onEnter={onEnter}
             onClick={onClickLeft}
+            disabled={disabled}
             hideBorder
             placeholder={placeholderLeft}
             value={valueLeft}
@@ -219,6 +225,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             onEsc={onEsc}
             onEnter={onEnter}
             onClick={onClickRight}
+            disabled={disabled}
             hideBorder
             placeholder={placeholderRight}
             value={valueRight}

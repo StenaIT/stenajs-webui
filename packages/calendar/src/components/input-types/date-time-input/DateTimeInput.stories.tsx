@@ -44,6 +44,18 @@ export const Centered = () => {
   );
 };
 
+export const Disabled = () => {
+  const [value, setValue] = useState<Date | null>(null);
+
+  return (
+    <Row>
+      <DateTimeInput value={value} onValueChange={setValue} disabled />
+      <Indent />
+      <FlatButton leftIcon={faTrash} onClick={() => setValue(null)} />
+    </Row>
+  );
+};
+
 export const PreselectedValue = () => {
   const [value, setValue] = useState<Date | null>(new Date());
 

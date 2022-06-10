@@ -40,6 +40,22 @@ export const Centered = () => (
   </Column>
 );
 
+export const Disabled = () => {
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        disabled
+        {...props}
+      />
+    </div>
+  );
+};
+
 export const StartSelected = () => {
   const [value, setValue] = useState<DateRange | undefined>({
     startDate: new Date(),

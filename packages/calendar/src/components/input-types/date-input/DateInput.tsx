@@ -1,5 +1,5 @@
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
-import { Box } from "@stenajs-webui/core";
+import { Box, Row } from "@stenajs-webui/core";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
@@ -16,6 +16,7 @@ import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
+import { FlatButton } from "@stenajs-webui/elements";
 
 export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */
@@ -58,6 +59,10 @@ export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   calendarTheme?: CalendarTheme;
   /** Props to be passed to Calendar, see SingleDateCalendar. */
   calendarProps?: DateTextInputCalendarProps<T>;
+  /**
+   * Disables the TextInput, Calendar and Popover.
+   */
+  disabled?: boolean;
 }
 
 export const DateInput: React.FC<DateInputProps> = ({
@@ -75,6 +80,7 @@ export const DateInput: React.FC<DateInputProps> = ({
   width,
   minDate,
   maxDate = defaultMaxDate,
+  disabled,
 }) => {
   const {
     hideCalendar,
@@ -96,6 +102,7 @@ export const DateInput: React.FC<DateInputProps> = ({
         zIndex={zIndex}
         appendTo={portalTarget ?? "parent"}
         tippyRef={tippyRef}
+        disabled={disabled}
         content={
           <SingleDateCalendar
             {...calendarProps}
@@ -110,12 +117,22 @@ export const DateInput: React.FC<DateInputProps> = ({
       >
         <TextInput
           type={"date"}
-          iconRight={faCalendarAlt}
+          contentRight={
+            <Row alignItems={"center"}>
+              <FlatButton
+                size={"small"}
+                disabled={disabled}
+                leftIcon={faCalendarAlt}
+                onClick={showCalendar}
+              />
+            </Row>
+          }
           onFocus={showCalendar}
           onClickRight={showCalendar}
           value={value ? format(value, displayFormat) : ""}
           placeholder={placeholder}
           size={9}
+          disabled={disabled}
           autoFocus={openOnMount}
           variant={variant}
           min={minDate}
