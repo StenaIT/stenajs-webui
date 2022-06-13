@@ -12,11 +12,7 @@ import {
   OptionProps,
   Options,
 } from "react-select";
-import {
-  defaultSelectTheme,
-  SelectTheme,
-  selectThemeDark,
-} from "../../SelectTheme";
+import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
@@ -101,15 +97,13 @@ export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
   value,
-  variant = "light",
+  variant = "standard",
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
 }: GroupedMultiSelectProps<TData>): React.ReactElement<
   GroupedMultiSelectProps<TData>
 > => {
-  const theme = variant === "light" ? defaultSelectTheme : selectThemeDark;
-
   const Option = (
     props: OptionProps<
       InternalDropdownOption<TData>,
@@ -125,7 +119,7 @@ export const GroupedMultiSelect = <TData extends {}>({
         <Row>
           {!isGroupOption && <Space />}
           <InnerOption
-            theme={theme}
+            theme={defaultSelectTheme}
             size={!isGroupOption ? "small" : undefined}
             label={label}
             selected={props.isSelected}

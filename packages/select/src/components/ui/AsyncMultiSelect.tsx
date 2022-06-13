@@ -2,32 +2,29 @@ import * as React from "react";
 import { useMemo } from "react";
 import { mergeStyles } from "react-select";
 import AsyncComponent, { AsyncProps } from "react-select/async";
-import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
-import { createStylesFromTheme, SelectVariant } from "../../util/StylesBuilder";
+import {
+  createStylesFromVariant,
+  SelectVariant,
+} from "../../util/StylesBuilder";
 import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export interface AsyncMultiSelectProps<T = { label: string; value: string }>
   extends AsyncProps<T, true, GroupBase<T>> {
-  variant?: "dark" | "light";
-  textVariant?: SelectVariant;
+  variant?: SelectVariant;
   isMulti?: true;
 }
 
 export const AsyncMultiSelect = <T extends {}>({
-  variant = "light",
-  textVariant,
+  variant = "standard",
   styles,
   isMulti,
   ...selectProps
 }: AsyncMultiSelectProps<T>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme<T, true>(
-      variant === "light" ? defaultSelectTheme : selectThemeDark,
-      textVariant
-    );
+    const sourceStyles = createStylesFromVariant<T, true>(variant);
 
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
-  }, [variant, textVariant, styles]);
+  }, [variant, styles]);
 
   return (
     <AsyncComponent styles={selectStyles} {...selectProps} isMulti={true} />

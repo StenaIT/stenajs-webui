@@ -1,8 +1,8 @@
 import { StylesConfig } from "react-select";
-import { SelectTheme } from "../SelectTheme";
+import { defaultSelectTheme, SelectTheme } from "../SelectTheme";
 import { GroupBase } from "react-select/dist/declarations/src/types";
 
-export type SelectVariant = "warning" | "error";
+export type SelectVariant = "standard" | "warning" | "error" | "success";
 
 const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],
@@ -54,6 +54,8 @@ const resolveInputBackgroundColor = (
     return colors.backgroundColor;
   } else if (variant === "warning") {
     return colors.warningBackgroundColor;
+  } else if (variant === "success") {
+    return colors.successBackgroundColor;
   } else if (variant === "error") {
     return colors.errorBackgroundColor;
   } else {
@@ -74,6 +76,8 @@ const resolveInputBorderColor = (
     return colors.borderColorFocused;
   } else if (variant === "warning") {
     return colors.warningBorderColor;
+  } else if (variant === "success") {
+    return colors.successBorderColor;
   } else if (variant === "error") {
     return colors.errorBorderColor;
   } else if (isHovered) {
@@ -83,6 +87,9 @@ const resolveInputBorderColor = (
   }
 };
 
+/**
+ * @deprecated
+ */
 export const createStylesFromTheme = <
   OptionType,
   IsMulti extends boolean,
@@ -273,3 +280,12 @@ export const createStylesFromTheme = <
     fontSize: input.fontSize,
   }),
 });
+
+export const createStylesFromVariant = <
+  OptionType,
+  IsMulti extends boolean,
+  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
+>(
+  variant: SelectVariant
+): StylesConfig<OptionType, IsMulti, TGroup> =>
+  createStylesFromTheme(defaultSelectTheme, variant);
