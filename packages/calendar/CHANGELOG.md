@@ -1,3 +1,15 @@
+# v15.7.0 (Tue Jun 14 2022)
+
+#### 🚀 Enhancement
+
+- 94903 add disabled state to date components [#464](https://github.com/StenaIT/stenajs-webui/pull/464) (emil.heldring@stenaline.com)
+
+#### Authors: 1
+
+- Emil Heldring ([@emilheldring95](https://github.com/emilheldring95))
+
+---
+
 # v15.3.1 (Wed Mar 30 2022)
 
 #### 🐛 Bug Fix

@@ -32,6 +32,7 @@ export interface DateTimeInputProps
   onEnter?: () => void;
   onBlur?: () => void;
   autoFocus?: boolean;
+  disabled?: boolean;
 }
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
@@ -46,6 +47,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   widthRight = 80,
   maxDate = defaultMaxDate,
   variant,
+  disabled,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -119,6 +121,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
       <Popover
         arrow={false}
         lazy
+        disabled={disabled}
         placement={defaultPopoverPlacement}
         visible={isCalendarVisible || isTimePickerVisible}
         onClickOutside={hideAll}
@@ -159,6 +162,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           onEsc={onEsc}
           onEnter={onEnter}
           onBlur={onBlur}
+          disabled={disabled}
           separatorIcon={faClock}
           typeLeft={"date"}
           typeRight={"time"}

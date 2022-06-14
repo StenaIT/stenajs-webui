@@ -33,6 +33,7 @@ export interface DateRangeDualTextInputProps<TData = unknown>
   onBlur?: () => void;
   autoFocus?: boolean;
   calendarProps?: DateRangeInputCalendarProps<TData>;
+  disabled?: boolean;
 }
 
 export const DateRangeDualTextInput = <TData extends {}>({
@@ -48,6 +49,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
   widthLeft = 128,
   widthRight = 128,
   variant,
+  disabled,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
 
@@ -120,6 +122,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
       <Popover
         arrow={false}
         lazy
+        disabled={disabled}
         placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
         visible={isCalendarVisible}
@@ -144,6 +147,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
           onEsc={onEsc}
           onEnter={onEnter}
           onBlur={onBlur}
+          disabled={disabled}
           separatorIcon={stenaArrowRight}
           typeLeft={"date"}
           typeRight={"date"}
