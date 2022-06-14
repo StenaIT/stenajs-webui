@@ -58,7 +58,7 @@
   border-radius: var(--swui-textinput-border-radius);
   transition: all var(--swui-textinput-animation-time);
 
-  &&:focus-within &:not(.disabled) {
+  &&:focus-within:not(.disabled) {
     box-shadow: var(--swui-textinput-focus-shadow);
     --current-border-color: var(--swui-textinput-border-color-hover);
     --current-bg: var(--swui-textinput-bg-color);
