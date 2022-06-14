@@ -1,3 +1,21 @@
+# v15.7.0 (Tue Jun 14 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/forms`
+  - 94903 add disabled state to date components [#464](https://github.com/StenaIT/stenajs-webui/pull/464) (emil.heldring@stenaline.com)
+
+#### 📝 Documentation
+
+- Remove themes from CONTRIBUTING.md [#462](https://github.com/StenaIT/stenajs-webui/pull/462) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Emil Heldring ([@emilheldring95](https://github.com/emilheldring95))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.6.0 (Thu Jun 02 2022)
 
 #### 🚀 Enhancement
