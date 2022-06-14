@@ -67,6 +67,11 @@ export interface DateRangeInputProps<T>
 
   /** Props to be passed to DateRangeCalendar, see DateRangeCalendar. */
   calendarProps?: DateRangeInputCalendarProps<T>;
+
+  /**
+   * Disables the Popover and both TextInputs.
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -85,6 +90,7 @@ export const DateRangeInput = <T extends {}>({
   calendarProps,
   minDate,
   maxDate = defaultMaxDate,
+  disabled,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()
@@ -115,6 +121,7 @@ export const DateRangeInput = <T extends {}>({
     <Popover
       arrow={false}
       lazy
+      disabled={disabled}
       visible={showingCalendar}
       zIndex={zIndex}
       placement={defaultPopoverPlacement}
@@ -142,6 +149,7 @@ export const DateRangeInput = <T extends {}>({
           value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}
           width={width}
+          disabled={disabled}
           inputRef={startDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}
@@ -159,6 +167,7 @@ export const DateRangeInput = <T extends {}>({
           value={value?.endDate ? format(value.endDate, displayFormat) : ""}
           placeholder={placeholderEndDate}
           width={width}
+          disabled={disabled}
           inputRef={endDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}

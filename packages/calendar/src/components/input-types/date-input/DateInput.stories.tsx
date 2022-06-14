@@ -38,6 +38,16 @@ export const Centered = () => (
   </Column>
 );
 
+export const Disabled = () => {
+  const [value, setValue] = useState<Date | undefined>(undefined);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateInput value={value} onChange={setValue} disabled />
+    </div>
+  );
+};
+
 export const WithDisabledDateTomorrow = () => {
   const [value, setValue] = useState<Date | undefined>(undefined);
 
