@@ -27,7 +27,7 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -46,6 +46,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   widthLeft = 128,
   widthRight = 80,
   maxDate = defaultMaxDate,
+  variant,
   disabled,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -182,6 +183,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           widthRight={widthRight}
           minLeft={minDate}
           maxLeft={maxDate}
+          variant={variant}
         />
       </Popover>
     </Box>

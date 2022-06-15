@@ -34,6 +34,22 @@ export const Standard = () => {
   );
 };
 
+export const WithVariant = () => {
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        variant={"error"}
+        {...props}
+      />
+    </div>
+  );
+};
+
 export const Centered = () => (
   <Column alignItems={"center"} justifyContent={"center"} height={"800px"}>
     <Standard />

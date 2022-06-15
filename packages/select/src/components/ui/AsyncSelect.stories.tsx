@@ -1,4 +1,3 @@
-import { Box, Indent, Spacing } from "@stenajs-webui/core";
 import { AsyncSelect } from "./AsyncSelect";
 import * as React from "react";
 
@@ -14,24 +13,6 @@ export const _AsyncSelect = () => (
     cacheOptions
     isSearchable
   />
-);
-
-export const AsyncSelectDark = () => (
-  <div style={{ width: "600px" }}>
-    <Box background={"#2e4662"}>
-      <Indent num={4}>
-        <Spacing num={4}>
-          <AsyncSelect
-            loadOptions={getOptions}
-            defaultOptions={[]}
-            cacheOptions
-            isSearchable
-            variant={"dark"}
-          />
-        </Spacing>
-      </Indent>
-    </Box>
-  </div>
 );
 
 const getOptions = (): Promise<Array<{ value: string; label: string }>> =>

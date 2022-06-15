@@ -1,6 +1,8 @@
 import { StylesConfig } from "react-select";
-import { SelectTheme } from "../SelectTheme";
+import { defaultSelectTheme, SelectTheme } from "../SelectTheme";
 import { GroupBase } from "react-select/dist/declarations/src/types";
+
+export type SelectVariant = "standard" | "warning" | "error" | "success";
 
 const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],
@@ -40,19 +42,70 @@ const resolveOptionColor = (
   }
 };
 
+const resolveInputBackgroundColor = (
+  colors: SelectTheme["input"],
+  isDisabled: boolean,
+  isFocused: boolean,
+  variant: SelectVariant | undefined
+): string | undefined => {
+  if (isDisabled) {
+    return colors.disabledBackgroundColor;
+  } else if (isFocused) {
+    return colors.backgroundColor;
+  } else if (variant === "warning") {
+    return colors.warningBackgroundColor;
+  } else if (variant === "success") {
+    return colors.successBackgroundColor;
+  } else if (variant === "error") {
+    return colors.errorBackgroundColor;
+  } else {
+    return colors.backgroundColor;
+  }
+};
+
+const resolveInputBorderColor = (
+  colors: SelectTheme["input"],
+  isDisabled: boolean,
+  isFocused: boolean,
+  isHovered: boolean,
+  variant: SelectVariant | undefined
+): string | undefined => {
+  if (isDisabled) {
+    return colors.borderColor;
+  } else if (isFocused) {
+    return colors.borderColorFocused;
+  } else if (variant === "warning") {
+    return colors.warningBorderColor;
+  } else if (variant === "success") {
+    return colors.successBorderColor;
+  } else if (variant === "error") {
+    return colors.errorBorderColor;
+  } else if (isHovered) {
+    return colors.borderColorFocused;
+  } else {
+    return colors.borderColor;
+  }
+};
+
+/**
+ * @deprecated
+ */
 export const createStylesFromTheme = <
   OptionType,
   IsMulti extends boolean,
   TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
->({
-  menu,
-  menuPortal,
-  input,
-  multiSelect,
-  clearButtonColor,
-  arrowColor,
-  loadingIndicator,
-}: SelectTheme): StylesConfig<OptionType, IsMulti, TGroup> => ({
+>(
+  {
+    menu,
+    menuPortal,
+    input,
+    multiSelect,
+    clearButtonColor,
+    arrowColor,
+    loadingIndicator,
+  }: SelectTheme,
+  variant: SelectVariant | undefined
+): StylesConfig<OptionType, IsMulti, TGroup> => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
     fontFamily: input.fontFamily,
@@ -79,22 +132,36 @@ export const createStylesFromTheme = <
         : menu.activeTextColor,
     },
   }),
-  control: (base, { isFocused, isDisabled }) => ({
+  control: (base, { isFocused, isDisabled, menuIsOpen }) => ({
     ...base,
     // none of react-selects styles are passed to <View />
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
     minHeight: input.minHeight,
-    backgroundColor: isDisabled
-      ? input.disabledBackgroundColor
-      : input.backgroundColor,
+    backgroundColor: resolveInputBackgroundColor(
+      input,
+      isDisabled,
+      isFocused,
+      variant
+    ),
     borderRadius: input.borderRadius,
-    border: isFocused ? input.borderFocused : input.border,
-    borderColor: isFocused ? input.borderColorFocused : input.borderColor,
+    border: input.border,
+    "--swui-select-border-color": resolveInputBorderColor(
+      input,
+      isDisabled,
+      isFocused || menuIsOpen,
+      false,
+      variant
+    ),
     boxShadow: isFocused ? input.boxShadowFocused : undefined,
     "&:hover": {
-      border: input.borderFocused,
-      borderColor: input.borderColorFocused,
+      "--swui-select-border-color": resolveInputBorderColor(
+        input,
+        false,
+        isFocused || menuIsOpen,
+        true,
+        variant
+      ),
     },
   }),
   singleValue: (base) => ({
@@ -170,7 +237,8 @@ export const createStylesFromTheme = <
     minWidth: menu.minWidth || base.minWidth,
     zIndex: menu.zIndex,
     width: menu.width || base.width,
-    border: input.borderFocused,
+    border: input.border,
+    borderColor: input.borderColorFocused,
   }),
   menuPortal: (base) => ({
     ...base,
@@ -212,3 +280,12 @@ export const createStylesFromTheme = <
     fontSize: input.fontSize,
   }),
 });
+
+export const createStylesFromVariant = <
+  OptionType,
+  IsMulti extends boolean,
+  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
+>(
+  variant: SelectVariant
+): StylesConfig<OptionType, IsMulti, TGroup> =>
+  createStylesFromTheme(defaultSelectTheme, variant);

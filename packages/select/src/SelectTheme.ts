@@ -18,11 +18,16 @@ export interface SelectTheme {
   input: {
     backgroundColor: string;
     border: string;
-    borderFocused: string;
     borderColor: string;
     borderColorFocused: string;
     borderRadius: string;
     disabledBackgroundColor: string;
+    warningBackgroundColor: string;
+    errorBackgroundColor: string;
+    successBackgroundColor: string;
+    warningBorderColor: string;
+    errorBorderColor: string;
+    successBorderColor: string;
     boxShadowFocused: string;
     fontFamily: string;
     fontSize: string;
@@ -86,11 +91,16 @@ export const defaultSelectTheme: SelectTheme = {
   },
   input: {
     backgroundColor: "var(--swui-field-bg-enabled)",
-    border: `1px solid var(--swui-field-border-color)`,
-    borderFocused: `1px solid var(--swui-field-border-color-hover)`,
+    border: `1px solid var(--swui-select-border-color)`,
     borderColor: "var(--swui-field-border-color)",
     borderColorFocused: "var(--swui-field-border-color-hover)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    warningBackgroundColor: "var(--swui-state-alert-light-color)",
+    errorBackgroundColor: "var(--swui-state-error-light-color)",
+    successBackgroundColor: "var(--swui-state-success-light-color)",
+    warningBorderColor: "var(--swui-state-alert-color)",
+    errorBorderColor: "var(--swui-state-error-color)",
+    successBorderColor: "var(--swui-state-success-color)",
     boxShadowFocused: "var(--swui-field-focus-shadow)",
     fontFamily: "var(--swui-font-primary)",
     fontSize: "var(--swui-font-size-inputs)",
@@ -135,74 +145,5 @@ export const defaultSelectTheme: SelectTheme = {
     removeButtonTextColor: "var(--swui-white)",
     removeButtonHoverBackgroundColor: "var(--swui-primary-action-color-hover)",
     removeButtonHoverTextColor: "var(--swui-white)",
-  },
-};
-
-export const selectThemeDark: SelectTheme = {
-  arrowColor: {
-    focused: {
-      hover: "white",
-      standard: "var(--lhds-color-ui-500)",
-    },
-    closed: {
-      hover: "white",
-      standard: "var(--lhds-color-ui-500)",
-    },
-  },
-  clearButtonColor: {
-    standard: "var(--lhds-color-ui-400)",
-    hover: "white",
-  },
-  input: {
-    backgroundColor: "#4a5d73",
-    border: "1px solid transparent",
-    borderFocused: `1px solid #92a3b5`,
-    borderColor: "transparent",
-    borderColorFocused: "#92a3b5",
-    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
-    boxShadowFocused: "var(--swui-field-focus-shadow)",
-    fontFamily: "var(--swui-font-primary)",
-    fontSize: "var(--swui-font-size-inputs)",
-    height: "32px",
-    minHeight: "32px",
-    placeholderColor: "white",
-    textColor: "white",
-    borderRadius: "4px",
-  },
-  loadingIndicator: {
-    textColor: "white",
-  },
-  menu: {
-    activeBackgroundColor: "#6F7E90",
-    activeTextColor: "white",
-    selectedItemActiveBackgroundColor: "#6F7E90",
-    selectedItemActiveTextColor: "white",
-    disabledTextColor: "var(--swui-text-disabled-color)",
-    disabledBackgroundColor: "var(--swui-field-bg-disabled)",
-    backgroundColor: "#4a5d73",
-    textColor: "white",
-    hoverTextColor: "white",
-    hoverBackgroundColor: "#6F7E90",
-    selectedItemTextColor: "white",
-    selectedItemIconColor: "white",
-    selectedItemHoverTextColor: "white",
-    selectedItemHoverIconColor: "white",
-    selectedItemBackgroundColor: "#4a5d73",
-    selectedItemHoverBackgroundColor: "#6F7E90",
-    zIndex: 1,
-    width: "auto",
-    minWidth: "100%",
-    whiteSpace: "nowrap",
-  },
-  menuPortal: {
-    zIndex: 1,
-  },
-  multiSelect: {
-    backgroundColor: "#B9D8DF",
-    textColor: "var(--lhds-color-ui-700)",
-    removeButtonBackgroundColor: "#B9D8DF",
-    removeButtonTextColor: "var(--lhds-color-ui-700)",
-    removeButtonHoverBackgroundColor: "#226F81",
-    removeButtonHoverTextColor: "white",
   },
 };

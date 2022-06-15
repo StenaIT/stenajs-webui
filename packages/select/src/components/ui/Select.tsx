@@ -1,25 +1,25 @@
 import * as React from "react";
 import { useMemo } from "react";
 import SelectComponent, { mergeStyles, Props } from "react-select";
-import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
-import { createStylesFromTheme } from "../../util/StylesBuilder";
+import {
+  createStylesFromVariant,
+  SelectVariant,
+} from "../../util/StylesBuilder";
 
 export interface SelectProps<T = { label: string; value: string }>
   extends Props<T, false> {
-  variant?: "dark" | "light";
+  variant?: SelectVariant;
   isMulti?: false;
 }
 
 export const Select = <T extends {}>({
-  variant = "light",
+  variant = "standard",
   styles,
   isMulti,
   ...selectProps
 }: SelectProps<T>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme<T, false>(
-      variant === "light" ? defaultSelectTheme : selectThemeDark
-    );
+    const sourceStyles = createStylesFromVariant<T, false>(variant);
 
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);

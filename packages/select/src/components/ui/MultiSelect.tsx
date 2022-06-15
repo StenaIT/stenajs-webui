@@ -5,13 +5,15 @@ import SelectComponent, {
   Props,
   SelectComponentsConfig,
 } from "react-select";
-import { defaultSelectTheme, selectThemeDark } from "../../SelectTheme";
-import { createStylesFromTheme } from "../../util/StylesBuilder";
+import {
+  createStylesFromVariant,
+  SelectVariant,
+} from "../../util/StylesBuilder";
 import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export interface MultiSelectProps<TOption = { label: string; value: string }>
   extends Props<TOption, true> {
-  variant?: "dark" | "light";
+  variant?: SelectVariant;
   isMulti?: true;
 }
 
@@ -22,15 +24,13 @@ export type MultiSelectComponentsConfig<TOption> = SelectComponentsConfig<
 >;
 
 export const MultiSelect = <TOption extends {}>({
-  variant = "light",
+  variant = "standard",
   styles,
   isMulti,
   ...selectProps
 }: MultiSelectProps<TOption>) => {
   const selectStyles = useMemo(() => {
-    const sourceStyles = createStylesFromTheme<TOption, true>(
-      variant === "light" ? defaultSelectTheme : selectThemeDark
-    );
+    const sourceStyles = createStylesFromVariant<TOption, true>(variant);
 
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
