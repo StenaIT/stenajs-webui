@@ -1,3 +1,17 @@
+# v16.0.0 (Wed Jun 15 2022)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - Add variant to Select and date inputs [#463](https://github.com/StenaIT/stenajs-webui/pull/463) ([@nikteg](https://github.com/nikteg) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v15.7.0 (Tue Jun 14 2022)
 
 #### 🚀 Enhancement
