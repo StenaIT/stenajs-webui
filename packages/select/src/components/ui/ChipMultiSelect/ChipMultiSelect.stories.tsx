@@ -2,8 +2,7 @@ import { useBoolean } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import { useState } from "react";
 import * as React from "react";
-import { ChipMultiSelect } from "./ChipMultiSelect";
-import { ChipRowItem } from "./ChipRow";
+import { ChipMultiSelect, ChipMultiSelectValue } from "./ChipMultiSelect";
 
 export default {
   title: "select/ChipMultiSelect",
@@ -17,7 +16,7 @@ export default {
   ],
 };
 
-const optionMocks: ChipRowItem[] = [
+const optionMocks: ChipMultiSelectValue[] = [
   { value: "1", label: "Kalle" },
   { value: "2", label: "Joakim" },
   { value: "3", label: "Kajsa" },
@@ -27,11 +26,11 @@ const optionMocks: ChipRowItem[] = [
   { value: "7", label: "Janne" },
 ];
 
-interface ChipRowItemWithData extends ChipRowItem {
+interface ChipMultiSelectValueWithData extends ChipMultiSelectValue {
   data: { name: string };
 }
 
-const complexOptionMocks: ChipRowItemWithData[] = [
+const complexOptionMocks: ChipMultiSelectValueWithData[] = [
   { value: "1", label: "Kalle", data: { name: "Kalle" } },
   { value: "2", label: "Joakim", data: { name: "Joakim" } },
   { value: "3", label: "Kajsa", data: { name: "Kajsa" } },
@@ -43,7 +42,7 @@ const complexOptionMocks: ChipRowItemWithData[] = [
 
 export const Demo = () => {
   const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<ReadonlyArray<ChipRowItem>>([]);
+  const [value, setValue] = useState<ReadonlyArray<ChipMultiSelectValue>>([]);
 
   return (
     <ChipMultiSelect
@@ -58,7 +57,9 @@ export const Demo = () => {
 
 export const WithComplexData = () => {
   const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<ReadonlyArray<ChipRowItemWithData>>([]);
+  const [value, setValue] = useState<
+    ReadonlyArray<ChipMultiSelectValueWithData>
+  >([]);
 
   return (
     <ChipMultiSelect

@@ -3,6 +3,8 @@ import * as React from "react";
 import { MultiSelect, MultiSelectProps } from "../MultiSelect";
 import { ChipRow, ChipRowItem } from "./ChipRow";
 
+export interface ChipMultiSelectValue extends ChipRowItem {}
+
 export interface ChipMultiSelectProps<TOption>
   extends Omit<MultiSelectProps<TOption>, "value" | "onChange" | "isLoading">,
     ValueAndOnValueChangeProps<ReadonlyArray<TOption>> {
@@ -12,7 +14,7 @@ export interface ChipMultiSelectProps<TOption>
   noneSelectedLabel?: string;
 }
 
-function _ChipMultiSelect<TOption extends ChipRowItem>({
+function _ChipMultiSelect<TOption extends ChipMultiSelectValue>({
   value,
   onValueChange,
   placeholder = "Type to search",
