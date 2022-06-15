@@ -7,50 +7,51 @@ import {
 import { DropdownOption } from "../GroupedMultiSelectTypes";
 import { ChipRow } from "./ChipRow";
 
-type StringGroupedMultiSelectProps = GroupedMultiSelectProps<string>;
+export interface GroupedChipMultiSelectValue<TData>
+  extends DropdownOption<TData> {}
 
-export interface GroupedChipMultiSelectValue extends DropdownOption<string> {}
-
-export interface GroupedChipMultiSelectProps
-  extends Omit<StringGroupedMultiSelectProps, "onChange" | "value">,
-    ValueAndOnValueChangeProps<Array<DropdownOption<string>>> {
+export interface GroupedChipMultiSelectProps<TData>
+  extends Omit<GroupedMultiSelectProps<TData>, "onChange" | "value">,
+    ValueAndOnValueChangeProps<ReadonlyArray<DropdownOption<TData>>> {
   loading?: boolean;
   inputValue?: string;
   onInputChange?: (inputValue: string) => void;
   noneSelectedLabel?: string;
 }
 
-export const GroupedChipMultiSelect = React.memo<GroupedChipMultiSelectProps>(
-  ({
-    value,
-    onValueChange,
-    placeholder = "Type to search",
-    loading,
-    inputValue,
-    onInputChange,
-    noneSelectedLabel = "None",
-    ...selectProps
-  }) => {
-    return (
-      <ChipRow
-        noneSelectedLabel={noneSelectedLabel}
-        onValueChange={onValueChange}
+function _GroupedChipMultiSelect<TData>({
+  value,
+  onValueChange,
+  placeholder = "Type to search",
+  loading,
+  inputValue,
+  onInputChange,
+  noneSelectedLabel = "None",
+  ...selectProps
+}: GroupedChipMultiSelectProps<TData>) {
+  return (
+    <ChipRow
+      noneSelectedLabel={noneSelectedLabel}
+      onValueChange={onValueChange}
+      value={value}
+    >
+      <GroupedMultiSelect<TData>
+        {...selectProps}
+        isClearable={false}
         value={value}
-      >
-        <GroupedMultiSelect<string>
-          {...selectProps}
-          isClearable={false}
-          value={value}
-          onChange={onValueChange as StringGroupedMultiSelectProps["onChange"]}
-          backspaceRemovesValue={false}
-          hideSelectedOptions
-          controlShouldRenderValue={false}
-          placeholder={placeholder}
-          isLoading={loading}
-          inputValue={inputValue}
-          onInputChange={onInputChange}
-        />
-      </ChipRow>
-    );
-  }
-);
+        onChange={onValueChange}
+        backspaceRemovesValue={false}
+        hideSelectedOptions
+        controlShouldRenderValue={false}
+        placeholder={placeholder}
+        isLoading={loading}
+        inputValue={inputValue}
+        onInputChange={onInputChange}
+      />
+    </ChipRow>
+  );
+}
+
+export const GroupedChipMultiSelect = React.memo(
+  _GroupedChipMultiSelect
+) as typeof _GroupedChipMultiSelect;
