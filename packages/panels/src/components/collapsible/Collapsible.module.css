@@ -159,7 +159,7 @@
       color: var(--swui-collapsible-groupheading-text-color);
       text-transform: uppercase;
       font-weight: var(--swui-font-weight-text-bold);
-      letter-spacing: 1px;
+      letter-spacing: 0.1rem;
     }
 
     [data-hidden="true"] {

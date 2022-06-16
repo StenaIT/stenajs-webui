@@ -3,7 +3,7 @@
   font-size: 1rem;
   font-family: var(--swui-font-primary);
   font-weight: var(--swui-font-weight-text-bold);
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   text-decoration: none;
   cursor: pointer;
 }

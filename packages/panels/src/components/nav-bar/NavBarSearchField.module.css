@@ -1,5 +1,5 @@
 .navBarSearchFieldInput {
-  --swui-textinput-line-height: 27px;
+  --swui-textinput-line-height: 2.7rem;
   --swui-textinput-text-color: var(--lhds-color-ui-50);
 
   &:focus {
