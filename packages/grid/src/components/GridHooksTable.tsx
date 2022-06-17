@@ -1,8 +1,11 @@
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
 
-interface GridHooksContextValue {
+interface GridHooksTableProps extends GridHooksContextValue {
   children?: ReactNode;
+}
+
+interface GridHooksContextValue {
   /**
    * Total number of rows in table. Must be set in cell hook or in GridHooksTable prop.
    */
@@ -23,7 +26,7 @@ interface GridHooksContextValue {
 
 export const GridHooksContext = React.createContext<GridHooksContextValue>({});
 
-export const GridHooksTable: React.FC<GridHooksContextValue> = ({
+export const GridHooksTable: React.FC<GridHooksTableProps> = ({
   children,
   numCols,
   numRows,
