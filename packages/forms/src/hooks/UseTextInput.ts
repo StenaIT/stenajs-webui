@@ -62,17 +62,20 @@ export const useTextInput = <TElement extends TextInputElement>(
 ): UseTextInputHookResult<TElement> => {
   useSelectAllOnMount(ref, !!moveCursorToEndOnMount, !!selectAllOnMount);
 
-  const { onKeyDownHandler, onFocusHandler, onBlurHandler } =
-    useKeyboardNavigation<TElement>(
-      ref,
-      onKeyDown,
-      onEnter,
-      onEsc,
-      onMove,
-      onDone,
-      onBlur,
-      onFocus
-    );
+  const {
+    onKeyDownHandler,
+    onFocusHandler,
+    onBlurHandler,
+  } = useKeyboardNavigation<TElement>(
+    ref,
+    onKeyDown,
+    onEnter,
+    onEsc,
+    onMove,
+    onDone,
+    onBlur,
+    onFocus
+  );
 
   const onChangeHandler = useCallback<ChangeEventHandler<TElement>>(
     (ev) => {

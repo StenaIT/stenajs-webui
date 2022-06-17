@@ -128,15 +128,15 @@ export const useGridNavigation = (
     ]
   );
 
-  const onKeyDown = useMemo(
-    () => createKeyDownHandler(moveHandler),
-    [moveHandler]
-  );
+  const onKeyDown = useMemo(() => createKeyDownHandler(moveHandler), [
+    moveHandler,
+  ]);
 
-  const id = useMemo(
-    () => createCellId(tableId, rowIndex, colIndex),
-    [tableId, rowIndex, colIndex]
-  );
+  const id = useMemo(() => createCellId(tableId, rowIndex, colIndex), [
+    tableId,
+    rowIndex,
+    colIndex,
+  ]);
 
   const requiredProps = useMemo(
     () => ({
@@ -156,47 +156,31 @@ export const useGridNavigation = (
 
 type MoveHandler = (direction: MoveDirection) => void;
 
-const createMoveHandler =
-  (
-    tableId: string,
-    rowIndex: number,
-    colIndex: number,
-    numRows: number,
-    numCols: number,
-    edgeMode?: TableEdgeMoveMode,
-    onCellMove?: CellMoveHandler,
-    onCellNavigation?: CellNavigationHandler
-  ): MoveHandler =>
-  (direction) => {
-    const pos = getNextPositionWrappedOrClamped(
-      rowIndex,
-      colIndex,
-      numRows,
-      numCols,
-      direction,
-      edgeMode
-    );
+const createMoveHandler = (
+  tableId: string,
+  rowIndex: number,
+  colIndex: number,
+  numRows: number,
+  numCols: number,
+  edgeMode?: TableEdgeMoveMode,
+  onCellMove?: CellMoveHandler,
+  onCellNavigation?: CellNavigationHandler
+): MoveHandler => (direction) => {
+  const pos = getNextPositionWrappedOrClamped(
+    rowIndex,
+    colIndex,
+    numRows,
+    numCols,
+    direction,
+    edgeMode
+  );
 
-    const colDidChange = colIndex !== pos.colIndex;
-    const rowDidChange = rowIndex !== pos.rowIndex;
+  const colDidChange = colIndex !== pos.colIndex;
+  const rowDidChange = rowIndex !== pos.rowIndex;
 
-    if (colDidChange || rowDidChange) {
-      if (onCellMove) {
-        onCellMove({
-          direction,
-          fromRowIndex: rowIndex,
-          fromColIndex: colIndex,
-          rowIndex: pos.rowIndex,
-          colIndex: pos.colIndex,
-          colDidChange,
-          rowDidChange,
-        });
-      }
-      focusOnCell(tableId, pos);
-    }
-
-    if (onCellNavigation) {
-      onCellNavigation({
+  if (colDidChange || rowDidChange) {
+    if (onCellMove) {
+      onCellMove({
         direction,
         fromRowIndex: rowIndex,
         fromColIndex: colIndex,
@@ -204,10 +188,24 @@ const createMoveHandler =
         colIndex: pos.colIndex,
         colDidChange,
         rowDidChange,
-        cellDidChange: colDidChange || rowDidChange,
       });
     }
-  };
+    focusOnCell(tableId, pos);
+  }
+
+  if (onCellNavigation) {
+    onCellNavigation({
+      direction,
+      fromRowIndex: rowIndex,
+      fromColIndex: colIndex,
+      rowIndex: pos.rowIndex,
+      colIndex: pos.colIndex,
+      colDidChange,
+      rowDidChange,
+      cellDidChange: colDidChange || rowDidChange,
+    });
+  }
+};
 
 const createCellId = (
   tableId: string,
@@ -215,33 +213,33 @@ const createCellId = (
   colIndex: number
 ): string => ensureDomIdIsCorrect(`table-${tableId}-${rowIndex}-${colIndex}`);
 
-const createKeyDownHandler =
-  (moveHandler: MoveHandler) =>
-  (e: KeyboardEvent): boolean => {
-    if (e.key === "ArrowLeft") {
-      moveHandler("left");
-      e.preventDefault();
-      e.stopPropagation();
-      return true;
-    } else if (e.key === "ArrowUp") {
-      moveHandler("up");
-      e.preventDefault();
-      e.stopPropagation();
-      return true;
-    } else if (e.key === "ArrowRight") {
-      moveHandler("right");
-      e.preventDefault();
-      e.stopPropagation();
-      return true;
-    } else if (e.key === "ArrowDown") {
-      moveHandler("down");
-      e.preventDefault();
-      e.stopPropagation();
-      return true;
-    } else {
-      return false;
-    }
-  };
+const createKeyDownHandler = (moveHandler: MoveHandler) => (
+  e: KeyboardEvent
+): boolean => {
+  if (e.key === "ArrowLeft") {
+    moveHandler("left");
+    e.preventDefault();
+    e.stopPropagation();
+    return true;
+  } else if (e.key === "ArrowUp") {
+    moveHandler("up");
+    e.preventDefault();
+    e.stopPropagation();
+    return true;
+  } else if (e.key === "ArrowRight") {
+    moveHandler("right");
+    e.preventDefault();
+    e.stopPropagation();
+    return true;
+  } else if (e.key === "ArrowDown") {
+    moveHandler("down");
+    e.preventDefault();
+    e.stopPropagation();
+    return true;
+  } else {
+    return false;
+  }
+};
 
 type FocusOnCellFunc = (tableId: string, pos: CellIndices) => void;
 

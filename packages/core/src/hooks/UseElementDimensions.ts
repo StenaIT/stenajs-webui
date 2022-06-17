@@ -12,8 +12,16 @@ export interface ElementDimensions {
 }
 
 export const getDimensionObject = (node: HTMLElement): ElementDimensions => {
-  const { x, y, width, height, bottom, top, left, right } =
-    node.getBoundingClientRect();
+  const {
+    x,
+    y,
+    width,
+    height,
+    bottom,
+    top,
+    left,
+    right,
+  } = node.getBoundingClientRect();
 
   return {
     width,

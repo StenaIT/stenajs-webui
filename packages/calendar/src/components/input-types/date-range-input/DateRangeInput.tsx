@@ -95,8 +95,9 @@ export const DateRangeInput = <T extends {}>({
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()
   );
-  const [currentPanel, setCurrentPanel] =
-    useState<CalendarPanelType>("calendar");
+  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
+    "calendar"
+  );
 
   const {
     hideCalendar,

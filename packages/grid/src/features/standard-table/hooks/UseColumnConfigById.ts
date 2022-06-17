@@ -23,8 +23,8 @@ export const useFirstColumnConfig = <
   TColumnKey extends string
 >(): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> | undefined => {
   const config = useStandardTableConfig();
-  const columnId =
-    useGroupConfigsAndIdsForRows()?.[0]?.groupConfig.columnOrder?.[0];
+  const columnId = useGroupConfigsAndIdsForRows()?.[0]?.groupConfig
+    .columnOrder?.[0];
   return columnId ? config.columns[columnId] : undefined;
 };
 

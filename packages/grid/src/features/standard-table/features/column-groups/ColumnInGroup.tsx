@@ -28,8 +28,14 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
   isFirstGroup,
   isLastGroup,
 }: ColumnGroupColumnItemProps<TColumnKey>) {
-  const { label, render, contentLeft, contentRight, loading, error } =
-    groupConfig;
+  const {
+    label,
+    render,
+    contentLeft,
+    contentRight,
+    loading,
+    error,
+  } = groupConfig;
   const { width, minWidth, zIndex, borderLeft } = useColumnConfigById(columnId);
   const config = useStandardTableConfig();
   const { stickyHeader, headerRowOffsetTop } = config;

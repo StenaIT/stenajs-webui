@@ -19,8 +19,8 @@ export const createChipsPropsForDateRange = <
   "chips" | "onClickRemoveOnChip"
 > => ({
   chips: createChipsForDateRange(
-    formModel[startDateFieldName] as unknown as string | undefined,
-    formModel[endDateFieldName] as unknown as string | undefined
+    (formModel[startDateFieldName] as unknown) as string | undefined,
+    (formModel[endDateFieldName] as unknown) as string | undefined
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForDateRange(
     startDateFieldName,
@@ -48,9 +48,9 @@ export const createOnClickRemoveOnChipForDateRange = <
   endDateFieldName: TField
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields }) => {
-    setFormModelFields({
+    setFormModelFields(({
       [startDateFieldName]: undefined,
       [endDateFieldName]: undefined,
-    } as unknown as Partial<TFormModel>);
+    } as unknown) as Partial<TFormModel>);
   };
 };

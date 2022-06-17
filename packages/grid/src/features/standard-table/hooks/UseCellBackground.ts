@@ -17,10 +17,11 @@ const useBackground = <TItem>(
   item: TItem,
   background: string | undefined
 ): string | undefined =>
-  useMemo(
-    () => getBackgroundColor(backgroundResolver, item, background),
-    [backgroundResolver, item, background]
-  );
+  useMemo(() => getBackgroundColor(backgroundResolver, item, background), [
+    backgroundResolver,
+    item,
+    background,
+  ]);
 
 export const useCellBackgroundByColumnId = <T>(
   columnId: string,

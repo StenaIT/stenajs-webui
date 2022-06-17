@@ -49,10 +49,10 @@ export const createModifiedFieldRedux = <TStoreState>(
 ): ModifiedFieldRedux<TStoreState> => {
   const reducer = createEntityByIdReducer<ModifiedFieldItemState>();
 
-  const selectors: ModifiedFieldsSelectors<TStoreState> =
-    createEntityByIdSelectors<TStoreState, ModifiedFieldItemState>(
-      stateSelector
-    );
+  const selectors: ModifiedFieldsSelectors<TStoreState> = createEntityByIdSelectors<
+    TStoreState,
+    ModifiedFieldItemState
+  >(stateSelector);
 
   const actions = createEntityByIdActions<ModifiedFieldItemState>();
 

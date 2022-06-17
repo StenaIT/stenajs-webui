@@ -18,10 +18,10 @@ export const useExpandCollapseActions = <TItem>(item: TItem) => {
 
   const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
 
-  const isExpanded = useMemo(
-    () => selectedIds.includes(itemKey),
-    [selectedIds, itemKey]
-  );
+  const isExpanded = useMemo(() => selectedIds.includes(itemKey), [
+    selectedIds,
+    itemKey,
+  ]);
 
   const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
     dispatch(expandByIds(ids))

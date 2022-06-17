@@ -2,11 +2,12 @@ export interface RecordObjectWrappedAction {
   type: string;
 }
 
-export type RecordObjectAction<TInnerAction extends RecordObjectWrappedAction> =
-
-    | RecordObjectClearRecordAction
-    | RecordObjectClearAllRecordsAction
-    | RecordObjectRecordAction<TInnerAction>;
+export type RecordObjectAction<
+  TInnerAction extends RecordObjectWrappedAction
+> =
+  | RecordObjectClearRecordAction
+  | RecordObjectClearAllRecordsAction
+  | RecordObjectRecordAction<TInnerAction>;
 
 export type RecordObjectKey = string | number;
 

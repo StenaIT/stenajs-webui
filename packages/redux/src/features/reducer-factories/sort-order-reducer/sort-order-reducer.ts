@@ -19,30 +19,28 @@ export type SortOrderReducer<TSortBy> = Reducer<
   SortOrderAction<TSortBy>
 >;
 
-export const createSortOrderReducer =
-  <TSortBy>(
-    initialState: SortOrderState<TSortBy> = { sortBy: undefined, desc: false }
-  ): SortOrderReducer<TSortBy> =>
-  (state = initialState, action) => {
-    switch (action.type) {
-      case "SORT_ORDER:SET_SORT_BY": {
-        const { sortBy, desc } = action;
-        return {
-          ...state,
-          sortBy,
-          desc,
-        };
-      }
-
-      case "SORT_ORDER:CLEAR_SORT_ORDER": {
-        return {
-          ...state,
-          sortBy: undefined,
-          desc: false,
-        };
-      }
-
-      default:
-        return state;
+export const createSortOrderReducer = <TSortBy>(
+  initialState: SortOrderState<TSortBy> = { sortBy: undefined, desc: false }
+): SortOrderReducer<TSortBy> => (state = initialState, action) => {
+  switch (action.type) {
+    case "SORT_ORDER:SET_SORT_BY": {
+      const { sortBy, desc } = action;
+      return {
+        ...state,
+        sortBy,
+        desc,
+      };
     }
-  };
+
+    case "SORT_ORDER:CLEAR_SORT_ORDER": {
+      return {
+        ...state,
+        sortBy: undefined,
+        desc: false,
+      };
+    }
+
+    default:
+      return state;
+  }
+};

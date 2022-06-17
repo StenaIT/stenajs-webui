@@ -19,7 +19,7 @@ export const createChipsPropsForBooleanRecord = <
   "chips" | "onClickRemoveOnChip"
 > => ({
   chips: createChipsForBooleanRecord(
-    formModel[fieldName] as unknown as BooleanRecord,
+    (formModel[fieldName] as unknown) as BooleanRecord,
     options
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForBooleanRecord(
@@ -47,8 +47,8 @@ export const createOnClickRemoveOnChipForBooleanRecord = <
   return ({ setFormModelFields, value }) => {
     const newRecord = { ...formModel[fieldName] };
     newRecord[value] = false;
-    setFormModelFields({
+    setFormModelFields(({
       [fieldName]: newRecord,
-    } as unknown as Partial<TFormModel>);
+    } as unknown) as Partial<TFormModel>);
   };
 };

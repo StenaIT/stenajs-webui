@@ -57,8 +57,9 @@ export const DateRangeCalendarSection = <
     () => ({ dispatch, actions }),
     [actions, dispatch]
   );
-  const [focusedInput, setFocusedInput] =
-    useState<DateRangeFocusedInput>("startDate");
+  const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
+    "startDate"
+  );
 
   const dateRangeValue = useMemo(() => stringsToDateRange(value), [value]);
 

@@ -19,35 +19,29 @@ interface StandardTableExcelExportButtonProps<
   formatters?: CustomCellFormatters<TItem, TColumnKey>;
 }
 
-export const StandardTableExcelExportButton =
-  function StandardTableExcelExportButton<
-    TItem,
-    TColumnKey extends string,
-    TColumnGroupKey extends string
-  >({
-    config,
-    size,
-    items,
-    filename = "exported-spreadsheet",
-    formatters,
-  }: StandardTableExcelExportButtonProps<TItem, TColumnKey, TColumnGroupKey>) {
-    const onClickExportExcel = useCallback(async () => {
-      if (items && items.length) {
-        await downloadExcelForStandardTable(
-          filename,
-          config,
-          items,
-          formatters
-        );
-      }
-    }, [config, items, filename, formatters]);
+export const StandardTableExcelExportButton = function StandardTableExcelExportButton<
+  TItem,
+  TColumnKey extends string,
+  TColumnGroupKey extends string
+>({
+  config,
+  size,
+  items,
+  filename = "exported-spreadsheet",
+  formatters,
+}: StandardTableExcelExportButtonProps<TItem, TColumnKey, TColumnGroupKey>) {
+  const onClickExportExcel = useCallback(async () => {
+    if (items && items.length) {
+      await downloadExcelForStandardTable(filename, config, items, formatters);
+    }
+  }, [config, items, filename, formatters]);
 
-    return (
-      <FlatButton
-        size={size}
-        leftIcon={faFileDownload}
-        onClick={onClickExportExcel}
-        disabled={!items || !items.length}
-      />
-    );
-  };
+  return (
+    <FlatButton
+      size={size}
+      leftIcon={faFileDownload}
+      onClick={onClickExportExcel}
+      disabled={!items || !items.length}
+    />
+  );
+};

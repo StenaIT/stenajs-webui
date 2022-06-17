@@ -55,10 +55,11 @@ export const SummaryCell = React.memo(function SummaryCell<TItem>({
       : undefined;
 
   const text = useMemo(() => summaryText?.({ items }), [items, summaryText]);
-  const renderResult = useMemo(
-    () => renderSummaryCell?.({ items, text }),
-    [items, renderSummaryCell, text]
-  );
+  const renderResult = useMemo(() => renderSummaryCell?.({ items, text }), [
+    items,
+    renderSummaryCell,
+    text,
+  ]);
 
   return (
     <td

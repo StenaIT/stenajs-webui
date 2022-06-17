@@ -391,8 +391,7 @@ export const Demo = () => {
   );
 };
 
-type FilterSectionProps =
-  SearchFilterSectionProps<SalesItemSearchFilterSectionKey>;
+type FilterSectionProps = SearchFilterSectionProps<SalesItemSearchFilterSectionKey>;
 
 const ErrorSection: React.VFC<FilterSectionProps> = (props) => {
   const [loading, startLoading, stopLoading] = useBoolean(false);

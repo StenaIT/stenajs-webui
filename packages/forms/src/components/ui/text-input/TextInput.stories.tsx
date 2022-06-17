@@ -28,15 +28,13 @@ export const Overview = () => (
     <Text>Standard</Text>
     <TextInput value={"Some nice text."} />
     <Space />
-    {(
-      [
-        "success",
-        "error",
-        "warning",
-        "loading",
-        "modified",
-      ] as Array<TextInputVariant>
-    ).map((variant) => (
+    {([
+      "success",
+      "error",
+      "warning",
+      "loading",
+      "modified",
+    ] as Array<TextInputVariant>).map((variant) => (
       <React.Fragment key={variant}>
         <Text>Variant={variant}</Text>
         <TextInput value={"Some text"} variant={variant} />

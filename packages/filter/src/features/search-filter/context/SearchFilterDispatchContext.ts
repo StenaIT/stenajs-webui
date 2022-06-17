@@ -3,7 +3,7 @@ import { SearchFilterDispatch } from "../redux/SearchFilterRedux";
 
 export const SearchFilterDispatchContext = createContext<
   SearchFilterDispatch<unknown>
->(null as unknown as SearchFilterDispatch<unknown>);
+>((null as unknown) as SearchFilterDispatch<unknown>);
 
 export const useSearchFilterDispatch = () => {
   const c = useContext(SearchFilterDispatchContext);

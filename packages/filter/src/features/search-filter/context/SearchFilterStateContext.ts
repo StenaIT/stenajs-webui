@@ -3,7 +3,7 @@ import { SearchFilterState } from "../redux/SearchFilterRedux";
 
 export const SearchFilterStateContext = createContext<
   SearchFilterState<unknown>
->(null as unknown as SearchFilterState<unknown>);
+>((null as unknown) as SearchFilterState<unknown>);
 
 export const useSearchFilterState = <
   TFormModel

@@ -11,26 +11,24 @@ export type ReducerIdGateReducer<
   TInnerAction extends Action = AnyAction
 > = Reducer<TState, ReducerIdGateAction<TInnerAction>>;
 
-export const reducerIdGate =
-  <TState, TInnerAction extends Action = AnyAction>(
-    reducerId: string,
-    reducer: Reducer<TState, TInnerAction>
-  ): ReducerIdGateReducer<TState, TInnerAction> =>
-  (state, action) => {
-    let newState = state == null ? reducer(undefined, {} as any) : state;
+export const reducerIdGate = <TState, TInnerAction extends Action = AnyAction>(
+  reducerId: string,
+  reducer: Reducer<TState, TInnerAction>
+): ReducerIdGateReducer<TState, TInnerAction> => (state, action) => {
+  let newState = state == null ? reducer(undefined, {} as any) : state;
 
-    if (!isValidReducerIdGateAction(action)) {
-      return newState;
-    }
+  if (!isValidReducerIdGateAction(action)) {
+    return newState;
+  }
 
-    if (
-      reducerId !== action.reducerId ||
-      action.type !== "REDUCER_ID_GATE:ACTION"
-    ) {
-      return newState;
-    }
-    return reducer(newState, action.action);
-  };
+  if (
+    reducerId !== action.reducerId ||
+    action.type !== "REDUCER_ID_GATE:ACTION"
+  ) {
+    return newState;
+  }
+  return reducer(newState, action.action);
+};
 
 export const reducerIdGateAction = <TInnerAction>(
   reducerId: string,

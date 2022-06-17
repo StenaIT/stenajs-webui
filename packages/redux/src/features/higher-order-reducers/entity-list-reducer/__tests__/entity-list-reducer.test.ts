@@ -24,8 +24,11 @@ describe("entity-list-reducer", () => {
       EntityState<User>,
       EntityAction<User>
     >(entityReducer);
-    const { setList, actionByFieldsMatch, actionByIndex } =
-      createEntityListActions<User, EntityAction<User>>();
+    const {
+      setList,
+      actionByFieldsMatch,
+      actionByIndex,
+    } = createEntityListActions<User, EntityAction<User>>();
 
     describe("actionByFieldsMatch", () => {
       let s: EntityListState<EntityState<User>> = [];
