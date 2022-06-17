@@ -37,9 +37,11 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     zIndex
   );
 
-  const zIndexForCells = (stickyHeader
-    ? "var(--swui-sticky-column-group-label-z-index)"
-    : "var(--swui-sticky-group-group-z-index)") as CSSProperties["zIndex"];
+  const zIndexForCells = (
+    stickyHeader
+      ? "var(--swui-sticky-column-group-label-z-index)"
+      : "var(--swui-sticky-group-group-z-index)"
+  ) as CSSProperties["zIndex"];
 
   return (
     <tr

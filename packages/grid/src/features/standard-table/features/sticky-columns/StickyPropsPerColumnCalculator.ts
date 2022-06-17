@@ -50,9 +50,8 @@ export const getStickyPropsPerColumnWithGroups = <
   const r = {} as StickyPropsPerColumn<TColumnKey>;
   const columnGroupIds = config.columnGroupOrder;
 
-  const stickyGroupOffsets = calculateOffsetForColumnInStickyColumnGroups(
-    config
-  );
+  const stickyGroupOffsets =
+    calculateOffsetForColumnInStickyColumnGroups(config);
 
   const firstGroupIsSticky =
     config.stickyColumnGroups === "first" ||

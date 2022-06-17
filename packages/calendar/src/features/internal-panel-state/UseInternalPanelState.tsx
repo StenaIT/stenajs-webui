@@ -10,9 +10,8 @@ export interface UseInternalPanelStateProps {
 export const useInternalPanelState = (
   onChangePanel: OnChangePanel | undefined
 ) => {
-  const [currentPanel, _setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
-  );
+  const [currentPanel, _setCurrentPanel] =
+    useState<CalendarPanelType>("calendar");
 
   const setCurrentPanel = useCallback(
     (currentPanel: CalendarPanelType) => {

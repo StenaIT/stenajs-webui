@@ -34,11 +34,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   const shiftPressedRef = useRef(false);
 
-  const {
-    keyResolver,
-    disableInfiniteList,
-    checkboxDisabledResolver,
-  } = useStandardTableConfig();
+  const { keyResolver, disableInfiniteList, checkboxDisabledResolver } =
+    useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();

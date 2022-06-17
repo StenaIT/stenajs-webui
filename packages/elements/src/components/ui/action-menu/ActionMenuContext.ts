@@ -5,6 +5,5 @@ export interface ActionDropdownContextValue {
   open?: () => void;
 }
 
-export const ActionMenuContext = React.createContext<ActionDropdownContextValue>(
-  {}
-);
+export const ActionMenuContext =
+  React.createContext<ActionDropdownContextValue>({});

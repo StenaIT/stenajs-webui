@@ -20,12 +20,10 @@ export const useDateRangeExclusionSelection = <T>({
   onChangePanel,
 }: DateRangeExclusionCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const [dateRange, setDateRange] = useState<DateRange | undefined>();
-  const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
-    "startDate"
-  );
-  const { currentPanel, setCurrentPanel } = useInternalPanelState(
-    onChangePanel
-  );
+  const [focusedInput, setFocusedInput] =
+    useState<DateRangeFocusedInput>("startDate");
+  const { currentPanel, setCurrentPanel } =
+    useInternalPanelState(onChangePanel);
 
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()

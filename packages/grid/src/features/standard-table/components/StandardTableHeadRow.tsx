@@ -59,14 +59,10 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const columnGroupOrder = useColumnGroupOrderContext();
 
-  const { allItemsAreExpanded, toggleExpanded } = useTableHeadExpandCollapse(
-    items
-  );
-  const {
-    allItemsAreSelected,
-    onClickCheckbox,
-    selectionIsEmpty,
-  } = useTableHeadCheckbox(items);
+  const { allItemsAreExpanded, toggleExpanded } =
+    useTableHeadExpandCollapse(items);
+  const { allItemsAreSelected, onClickCheckbox, selectionIsEmpty } =
+    useTableHeadCheckbox(items);
 
   const checkboxDisabled = !items || items.length === 0;
 

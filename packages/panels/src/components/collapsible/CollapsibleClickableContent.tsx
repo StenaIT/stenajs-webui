@@ -9,14 +9,9 @@ export interface CollapsibleClickableContentProps
   extends CollapsibleSimpleContentProps,
     ButtonElementProps {}
 
-export const CollapsibleClickableContent: React.FC<CollapsibleClickableContentProps> = ({
-  contentLeft,
-  contentRight,
-  className,
-  onClick,
-  children,
-  ...props
-}) => {
+export const CollapsibleClickableContent: React.FC<
+  CollapsibleClickableContentProps
+> = ({ contentLeft, contentRight, className, onClick, children, ...props }) => {
   return (
     <Clickable
       disableFocusHighlight

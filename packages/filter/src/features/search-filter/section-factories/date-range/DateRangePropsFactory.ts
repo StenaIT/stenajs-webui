@@ -14,8 +14,8 @@ export const createDateRangeSectionProps = <
   "value" | "onValueChange"
 > => ({
   value: {
-    startDate: (formModel[startDateFieldName] as unknown) as string | undefined,
-    endDate: (formModel[endDateFieldName] as unknown) as string | undefined,
+    startDate: formModel[startDateFieldName] as unknown as string | undefined,
+    endDate: formModel[endDateFieldName] as unknown as string | undefined,
   },
   onValueChange: (value, { dispatch, actions }) => {
     const fields: Partial<TFormModel> = {
