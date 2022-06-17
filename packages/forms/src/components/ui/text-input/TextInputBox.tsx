@@ -7,6 +7,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { InputSpinner } from "@stenajs-webui/elements";
 import { Row } from "@stenajs-webui/core";
+import { ReactNode } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +27,9 @@ export interface TextInputBoxProps
     | "iconLeft"
     | "onClickLeft"
     | "onClickRight"
-  > {}
+  > {
+  children?: ReactNode;
+}
 
 export const TextInputBox: React.FC<TextInputBoxProps> = ({
   variant = "standard",

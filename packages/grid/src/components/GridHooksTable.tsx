@@ -1,7 +1,8 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 
 interface GridHooksContextValue {
+  children?: ReactNode;
   /**
    * Total number of rows in table. Must be set in cell hook or in GridHooksTable prop.
    */

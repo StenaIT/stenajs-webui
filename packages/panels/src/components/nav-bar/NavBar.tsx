@@ -20,6 +20,7 @@ export interface NavBarProps {
   center?: ReactNode;
   left?: ReactNode;
   variant?: NavBarVariant;
+  children?: ReactNode;
 }
 
 export const NavBar: React.FC<NavBarProps> = ({
