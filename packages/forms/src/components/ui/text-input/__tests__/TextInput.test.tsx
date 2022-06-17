@@ -54,7 +54,13 @@ describe("TextInput", () => {
         await userEvent.type(input, "34567");
 
         expect(setValueMock).toBeCalledTimes(7);
-        expect(setValueMock).toBeCalledWith("34567");
+        expect(setValueMock).toBeCalledWith("1");
+        expect(setValueMock).toBeCalledWith("2");
+        expect(setValueMock).toBeCalledWith("3");
+        expect(setValueMock).toBeCalledWith("4");
+        expect(setValueMock).toBeCalledWith("5");
+        expect(setValueMock).toBeCalledWith("6");
+        expect(setValueMock).toBeCalledWith("7");
       });
     });
 
@@ -77,7 +83,13 @@ describe("TextInput", () => {
           await userEvent.type(input, "34567");
 
           expect(setValueMock).toBeCalledTimes(7);
-          expect(setValueMock).toBeCalledWith("34567");
+          expect(setValueMock).toBeCalledWith("1");
+          expect(setValueMock).toBeCalledWith("2");
+          expect(setValueMock).toBeCalledWith("3");
+          expect(setValueMock).toBeCalledWith("4");
+          expect(setValueMock).toBeCalledWith("5");
+          expect(setValueMock).toBeCalledWith("6");
+          expect(setValueMock).toBeCalledWith("7");
         });
       });
     });
@@ -101,7 +113,12 @@ describe("TextInput", () => {
           await userEvent.type(input, "7890");
 
           expect(setValueMock).toBeCalledTimes(6);
-          expect(setValueMock).toBeCalledWith("7890");
+          expect(setValueMock).toBeCalledWith("1");
+          expect(setValueMock).toBeCalledWith("3");
+          expect(setValueMock).toBeCalledWith("7");
+          expect(setValueMock).toBeCalledWith("8");
+          expect(setValueMock).toBeCalledWith("9");
+          expect(setValueMock).toBeCalledWith("0");
         });
       });
     });
@@ -125,7 +142,12 @@ describe("TextInput", () => {
           await userEvent.type(input, "7890");
 
           expect(setValueMock).toBeCalledTimes(6);
-          expect(setValueMock).toBeCalledWith("7890");
+          expect(setValueMock).toBeCalledWith("1");
+          expect(setValueMock).toBeCalledWith("3");
+          expect(setValueMock).toBeCalledWith("7");
+          expect(setValueMock).toBeCalledWith("8");
+          expect(setValueMock).toBeCalledWith("9");
+          expect(setValueMock).toBeCalledWith("0");
         });
       });
     });
@@ -149,7 +171,11 @@ describe("TextInput", () => {
           await userEvent.type(input, "987");
 
           expect(setValueMock).toBeCalledTimes(5);
-          expect(setValueMock).toBeCalledWith("987");
+          expect(setValueMock).toBeCalledWith("1");
+          expect(setValueMock).toBeCalledWith("3");
+          expect(setValueMock).toBeCalledWith("9");
+          expect(setValueMock).toBeCalledWith("8");
+          expect(setValueMock).toBeCalledWith("7");
         });
       });
     });
