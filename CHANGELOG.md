@@ -1,3 +1,16 @@
+# v16.1.0 (Fri Jun 17 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Accessible font-sizes using `rem` instead of `px` [#458](https://github.com/StenaIT/stenajs-webui/pull/458) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v16.0.0 (Wed Jun 15 2022)
 
 #### 💥 Breaking Change

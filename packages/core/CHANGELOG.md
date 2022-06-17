@@ -1,3 +1,15 @@
+# v16.1.0 (Fri Jun 17 2022)
+
+#### 🚀 Enhancement
+
+- Accessible font-sizes using `rem` instead of `px` [#458](https://github.com/StenaIT/stenajs-webui/pull/458) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.9 (Thu May 19 2022)
 
 #### 🐛 Bug Fix
