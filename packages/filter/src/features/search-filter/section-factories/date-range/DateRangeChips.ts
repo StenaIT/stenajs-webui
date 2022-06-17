@@ -19,8 +19,8 @@ export const createChipsPropsForDateRange = <
   "chips" | "onClickRemoveOnChip"
 > => ({
   chips: createChipsForDateRange(
-    formModel[startDateFieldName],
-    formModel[endDateFieldName]
+    (formModel[startDateFieldName] as unknown) as string | undefined,
+    (formModel[endDateFieldName] as unknown) as string | undefined
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForDateRange(
     startDateFieldName,

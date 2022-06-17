@@ -1,5 +1,9 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
+
+interface GridHooksTableProps extends GridHooksContextValue {
+  children?: ReactNode;
+}
 
 interface GridHooksContextValue {
   /**
@@ -22,7 +26,7 @@ interface GridHooksContextValue {
 
 export const GridHooksContext = React.createContext<GridHooksContextValue>({});
 
-export const GridHooksTable: React.FC<GridHooksContextValue> = ({
+export const GridHooksTable: React.FC<GridHooksTableProps> = ({
   children,
   numCols,
   numRows,

@@ -18,7 +18,10 @@ export const createChipsPropsForBooleanRecord = <
   SectionChipsProps<TFormModel, TSectionKey>,
   "chips" | "onClickRemoveOnChip"
 > => ({
-  chips: createChipsForBooleanRecord(formModel[fieldName], options),
+  chips: createChipsForBooleanRecord(
+    (formModel[fieldName] as unknown) as BooleanRecord,
+    options
+  ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForBooleanRecord(
     formModel,
     fieldName
@@ -42,7 +45,7 @@ export const createOnClickRemoveOnChipForBooleanRecord = <
   fieldName: TField
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields, value }) => {
-    const newRecord: BooleanRecord = { ...formModel[fieldName] };
+    const newRecord = { ...formModel[fieldName] };
     newRecord[value] = false;
     setFormModelFields(({
       [fieldName]: newRecord,

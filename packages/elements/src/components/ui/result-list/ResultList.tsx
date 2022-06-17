@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Children } from "react";
+import { Children, ReactNode } from "react";
 import styles from "./ResultList.module.css";
 
-interface Props {}
+export interface ResultListProps {
+  children?: ReactNode;
+}
 
-export const ResultList: React.FC<Props> = ({ children }) => {
+export const ResultList: React.FC<ResultListProps> = ({ children }) => {
   return (
     <ul className={styles.resultList}>
       {Children.map(children, (child) => (
