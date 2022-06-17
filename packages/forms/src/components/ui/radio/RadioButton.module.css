@@ -139,7 +139,7 @@
   }
 
   & + label {
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: var(--swui-radiobutton-size-standard);
     display: inline-block;
     vertical-align: top;

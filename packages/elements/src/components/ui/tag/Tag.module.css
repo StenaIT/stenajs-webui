@@ -28,7 +28,7 @@
   font-weight: var(--swui-tag-font-weight);
   line-height: var(--swui-tag-line-height);
   color: var(--current-text-color);
-  height: var(--current-height);
+  min-height: var(--current-height);
   align-items: center;
   padding: 0 var(--swui-metrics-space);
 

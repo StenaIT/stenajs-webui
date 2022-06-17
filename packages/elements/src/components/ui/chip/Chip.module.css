@@ -28,7 +28,7 @@
     font-weight: var(--swui-chip-font-weight);
     line-height: var(--swui-chip-line-height);
     color: var(--current-text-color);
-    height: var(--swui-chip-height);
+    min-height: var(--swui-chip-height);
     display: flex;
     align-items: center;
   }
