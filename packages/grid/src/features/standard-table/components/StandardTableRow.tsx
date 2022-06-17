@@ -94,10 +94,10 @@ export const StandardTableRow = React.memo(function StandardTableRow<TItem>({
     hoverBackground
   );
 
-  const disabled = useMemo(() => checkboxDisabledResolver?.(item), [
-    item,
-    checkboxDisabledResolver,
-  ]);
+  const disabled = useMemo(
+    () => checkboxDisabledResolver?.(item),
+    [item, checkboxDisabledResolver]
+  );
 
   const firstColumn = useFirstColumnConfig();
   const firstColumnBackground = useCellBackgroundByColumnConfig(

@@ -10,10 +10,9 @@ interface SearchFilterPanelHeaderProps {
   header?: string;
 }
 
-export const SearchFilterPanelHeader: React.FC<SearchFilterPanelHeaderProps> = ({
-  onRequestClose,
-  header = "Filters",
-}) => {
+export const SearchFilterPanelHeader: React.FC<
+  SearchFilterPanelHeaderProps
+> = ({ onRequestClose, header = "Filters" }) => {
   return (
     <Row
       height={"56px"}

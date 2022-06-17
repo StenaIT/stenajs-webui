@@ -82,12 +82,8 @@ export const DateInput: React.FC<DateInputProps> = ({
   maxDate = defaultMaxDate,
   disabled,
 }) => {
-  const {
-    hideCalendar,
-    showingCalendar,
-    onSelectDate,
-    showCalendar,
-  } = useDateInput(onChange, onClose, openOnMount);
+  const { hideCalendar, showingCalendar, onSelectDate, showCalendar } =
+    useDateInput(onChange, onClose, openOnMount);
 
   const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
