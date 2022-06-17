@@ -45,9 +45,9 @@ function xor(...values: boolean[]) {
   return sum > 0 && sum < values.length;
 }
 
-const StatefulCollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = (
-  props
-) => {
+const StatefulCollapsibleWithCheckbox: React.FC<
+  CollapsibleWithCheckboxProps
+> = (props) => {
   const [collapsed, setCollapsed] = useState(Boolean(props.collapsed));
 
   return (

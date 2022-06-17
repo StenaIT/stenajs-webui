@@ -12,7 +12,9 @@ export interface NavBarNotificationButtonProps
   icon?: IconDefinition;
 }
 
-export const NavBarNotificationButton: React.FC<NavBarNotificationButtonProps> = ({
+export const NavBarNotificationButton: React.FC<
+  NavBarNotificationButtonProps
+> = ({
   count,
   unread = false,
   className,

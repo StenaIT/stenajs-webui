@@ -9,15 +9,11 @@ export const useInputStates = (date: Date | undefined | null) => {
   const [localDate, setLocalDate] = useState<Date | undefined>(undefined);
   const [localTime, setLocalTime] = useState<string | undefined>(undefined);
 
-  const [
-    isCalendarVisible,
-    showCalendarInternal,
-    hideCalendarInternal,
-  ] = useBoolean(false);
+  const [isCalendarVisible, showCalendarInternal, hideCalendarInternal] =
+    useBoolean(false);
 
-  const [isTimePickerVisible, showTimePicker, hideTimePicker] = useBoolean(
-    false
-  );
+  const [isTimePickerVisible, showTimePicker, hideTimePicker] =
+    useBoolean(false);
 
   const [firstFocusedInput, setFirstFocusedInput] = useState<
     DateRangeFocusedInput | undefined
@@ -27,9 +23,8 @@ export const useInputStates = (date: Date | undefined | null) => {
     () => date ?? new Date()
   );
 
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
-  );
+  const [currentPanel, setCurrentPanel] =
+    useState<CalendarPanelType>("calendar");
 
   return {
     isCalendarVisible,

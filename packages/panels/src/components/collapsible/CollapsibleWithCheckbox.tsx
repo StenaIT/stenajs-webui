@@ -9,7 +9,9 @@ export interface CollapsibleWithCheckboxProps
       "value" | "onValueChange" | "onChange" | "indeterminate"
     > {}
 
-export const CollapsibleWithCheckbox: React.FC<CollapsibleWithCheckboxProps> = ({
+export const CollapsibleWithCheckbox: React.FC<
+  CollapsibleWithCheckboxProps
+> = ({
   value,
   onValueChange,
   onChange,

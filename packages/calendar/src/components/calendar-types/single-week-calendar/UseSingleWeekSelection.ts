@@ -22,9 +22,8 @@ export const useSingleWeekSelection = <T>({
     }
     return week.days[0].date;
   });
-  const { currentPanel, setCurrentPanel } = useInternalPanelState(
-    onChangePanel
-  );
+  const { currentPanel, setCurrentPanel } =
+    useInternalPanelState(onChangePanel);
 
   const onClickDay = useCallback(
     (day) => {

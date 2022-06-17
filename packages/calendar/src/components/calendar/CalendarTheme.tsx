@@ -73,74 +73,70 @@ export interface CalendarDefaultWrapperColors {
   rangeBorderRadius?: string;
 }
 
-export const defaultWrapperStyleProvider = ({
-  selectedBackground,
-  todayBackground,
-  rangeBackground,
-  borderColor = "transparent",
-}: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> => (
-  defaultHighlights,
-  dayState,
-  day,
-  _,
-  month
-) => {
-  let style = {};
+export const defaultWrapperStyleProvider =
+  ({
+    selectedBackground,
+    todayBackground,
+    rangeBackground,
+    borderColor = "transparent",
+  }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> =>
+  (defaultHighlights, dayState, day, _, month) => {
+    let style = {};
 
-  const backgroundColor = dayHighlightSelect(
-    dayState,
-    defaultHighlights,
-    ["selected", "range", "today", day.month === month.monthInYear],
-    [selectedBackground, rangeBackground, todayBackground, "#fff"],
-    "transparent"
-  );
+    const backgroundColor = dayHighlightSelect(
+      dayState,
+      defaultHighlights,
+      ["selected", "range", "today", day.month === month.monthInYear],
+      [selectedBackground, rangeBackground, todayBackground, "#fff"],
+      "transparent"
+    );
 
-  return {
-    ...style,
-    backgroundColor,
-    borderTopLeftRadius: dayHighlightSelect(
-      dayState,
-      defaultHighlights,
-      ["selectedStart", "singleSelected"],
-      [
-        "var(--swui-calendar-day-border-radius)",
-        "var(--swui-calendar-day-border-radius)",
-      ],
-      borderColor
-    ),
-    borderBottomLeftRadius: dayHighlightSelect(
-      dayState,
-      defaultHighlights,
-      ["selectedStart", "singleSelected"],
-      [
-        "var(--swui-calendar-day-border-radius)",
-        "var(--swui-calendar-day-border-radius)",
-      ],
-      borderColor
-    ),
-    borderTopRightRadius: dayHighlightSelect(
-      dayState,
-      defaultHighlights,
-      ["selectedEnd", "singleSelected"],
-      [
-        "var(--swui-calendar-day-border-radius)",
-        "var(--swui-calendar-day-border-radius)",
-      ],
-      borderColor
-    ),
-    borderBottomRightRadius: dayHighlightSelect(
-      dayState,
-      defaultHighlights,
-      ["selectedEnd", "singleSelected"],
-      [
-        "var(--swui-calendar-day-border-radius)",
-        "var(--swui-calendar-day-border-radius)",
-      ],
-      borderColor
-    ),
-    boxSizing: "border-box",
+    return {
+      ...style,
+      backgroundColor,
+      borderTopLeftRadius: dayHighlightSelect(
+        dayState,
+        defaultHighlights,
+        ["selectedStart", "singleSelected"],
+        [
+          "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
+        ],
+        borderColor
+      ),
+      borderBottomLeftRadius: dayHighlightSelect(
+        dayState,
+        defaultHighlights,
+        ["selectedStart", "singleSelected"],
+        [
+          "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
+        ],
+        borderColor
+      ),
+      borderTopRightRadius: dayHighlightSelect(
+        dayState,
+        defaultHighlights,
+        ["selectedEnd", "singleSelected"],
+        [
+          "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
+        ],
+        borderColor
+      ),
+      borderBottomRightRadius: dayHighlightSelect(
+        dayState,
+        defaultHighlights,
+        ["selectedEnd", "singleSelected"],
+        [
+          "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
+        ],
+        borderColor
+      ),
+      boxSizing: "border-box",
+    };
   };
-};
 
 interface DefaultTextColors {
   disabledColor: string;

@@ -24,10 +24,10 @@ export const useRowCheckbox = <TItem>(
 
   const itemKey = useMemo(() => keyResolver(item), [keyResolver, item]);
 
-  const isSelected = useMemo(() => selectedIds.includes(itemKey), [
-    selectedIds,
-    itemKey,
-  ]);
+  const isSelected = useMemo(
+    () => selectedIds.includes(itemKey),
+    [selectedIds, itemKey]
+  );
 
   const { toggle, addMultiple, removeMultiple } = useArraySet(
     selectedIds,

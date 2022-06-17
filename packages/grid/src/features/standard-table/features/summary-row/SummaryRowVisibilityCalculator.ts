@@ -6,9 +6,11 @@ export const isSummaryRowVisible = <TColumnKey extends string>(
     StandardTableColumnOptions<unknown, unknown, TColumnKey>
   >
 ): boolean =>
-  (Object.values(columns) as Array<
-    StandardTableColumnOptions<unknown, unknown, TColumnKey>
-  >).some((columnConfig) => columnHasSummaryCell(columnConfig));
+  (
+    Object.values(columns) as Array<
+      StandardTableColumnOptions<unknown, unknown, TColumnKey>
+    >
+  ).some((columnConfig) => columnHasSummaryCell(columnConfig));
 
 export const columnHasSummaryCell = <TColumnKey extends string>(
   columnConfig: StandardTableColumnOptions<unknown, unknown, TColumnKey>

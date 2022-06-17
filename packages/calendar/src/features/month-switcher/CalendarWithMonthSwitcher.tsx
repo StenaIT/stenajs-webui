@@ -39,17 +39,13 @@ export function CalendarWithMonthSwitcher<T>({
   hideYearPagination = false,
   ...calendarProps
 }: CalendarWithMonthSwitcherProps<T>) {
-  const {
-    nextMonth,
-    prevMonth,
-    nextYear,
-    prevYear,
-  } = useSelectedMonthStepperLogic(
-    dateInFocus,
-    setDateInFocus,
-    calendarProps.monthsPerRow,
-    calendarProps.numMonths
-  );
+  const { nextMonth, prevMonth, nextYear, prevYear } =
+    useSelectedMonthStepperLogic(
+      dateInFocus,
+      setDateInFocus,
+      calendarProps.monthsPerRow,
+      calendarProps.numMonths
+    );
 
   const placement = fallbackIfNoPlacement(
     monthSwitcherPlacement,

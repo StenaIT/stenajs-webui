@@ -36,8 +36,8 @@
     "csstype": ">=3.0.8",
     "lodash": ">=4.17.21",
     "prop-types": ">=15.5.4",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "styled-system": ">=5.1.5"
   },
   "devDependencies": {
@@ -52,9 +52,9 @@
     "csstype": "^3.0.8",
     "lodash": "^4.17.21",
     "prop-types": "^15.5.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "styled-system": "^5.1.5"
   },
   "files": [

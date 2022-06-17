@@ -19,14 +19,8 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
     return null;
   }
 
-  const {
-    errorMessage,
-    hasError,
-    loading,
-    creating,
-    deleting,
-    updating,
-  } = crudStatus;
+  const { errorMessage, hasError, loading, creating, deleting, updating } =
+    crudStatus;
 
   if (loading || creating || deleting || updating) {
     return <InputSpinner color={cssColor("--lhds-color-ui-500")} />;
