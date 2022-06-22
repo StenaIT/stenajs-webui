@@ -2,7 +2,7 @@ import { useBoolean } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import { useState } from "react";
 import * as React from "react";
-import { ChipMultiSelect, ChipMultiSelectValue } from "./ChipMultiSelect";
+import { ChipMultiSelect, ChipMultiSelectOption } from "./ChipMultiSelect";
 
 export default {
   title: "select/ChipMultiSelect",
@@ -16,7 +16,7 @@ export default {
   ],
 };
 
-const optionMocks: ChipMultiSelectValue[] = [
+const optionMocks: ChipMultiSelectOption[] = [
   { value: "1", label: "Kalle" },
   { value: "2", label: "Joakim" },
   { value: "3", label: "Kajsa" },
@@ -26,7 +26,7 @@ const optionMocks: ChipMultiSelectValue[] = [
   { value: "7", label: "Janne" },
 ];
 
-interface ChipMultiSelectValueWithData extends ChipMultiSelectValue {
+interface ChipMultiSelectValueWithData extends ChipMultiSelectOption {
   data: { name: string };
 }
 
@@ -42,7 +42,7 @@ const complexOptionMocks: ChipMultiSelectValueWithData[] = [
 
 export const Demo = () => {
   const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
+  const [value, setValue] = useState<Array<ChipMultiSelectOption>>([]);
 
   return (
     <ChipMultiSelect
@@ -57,9 +57,7 @@ export const Demo = () => {
 
 export const WithComplexData = () => {
   const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<
-    Array<ChipMultiSelectValueWithData>
-  >([]);
+  const [value, setValue] = useState<Array<ChipMultiSelectValueWithData>>([]);
 
   return (
     <ChipMultiSelect
@@ -75,8 +73,8 @@ export const WithComplexData = () => {
 export const WithDataFetch = () => {
   const [text, setText] = useState<string>("");
   const [loading, setLoading, setNotLoading] = useBoolean(false);
-  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
-  const [options, setOptions] = useState<Array<ChipMultiSelectValue>>([]);
+  const [value, setValue] = useState<Array<ChipMultiSelectOption>>([]);
+  const [options, setOptions] = useState<Array<ChipMultiSelectOption>>([]);
 
   const onChangeText = async (t: string) => {
     setText(t);
