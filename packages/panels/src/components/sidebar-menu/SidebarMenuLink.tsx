@@ -27,7 +27,10 @@ export interface SidebarMenuLinkProps
 
 export type SidebarLinkRenderer = (props: RenderLinkProps) => ReactNode;
 
-export const defaultRenderLink: SidebarLinkRenderer = (props) => {
+export const defaultRenderLink: SidebarLinkRenderer = ({
+  activeClassName,
+  ...props
+}) => {
   return <button {...props} />;
 };
 
