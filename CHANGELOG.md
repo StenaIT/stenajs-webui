@@ -1,3 +1,18 @@
+# v17.1.0 (Wed Jun 22 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/select`
+  - Add generics to ChipMultiSelect and GroupedChipMultiSelect [#465](https://github.com/StenaIT/stenajs-webui/pull/465) ([@nikteg](https://github.com/nikteg) [@juiceit](https://github.com/juiceit) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v17.0.0 (Fri Jun 17 2022)
 
 #### 💥 Breaking Change
