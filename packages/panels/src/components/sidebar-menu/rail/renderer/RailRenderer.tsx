@@ -12,19 +12,23 @@ export const renderItemsExpanded = (
   items: SidebarItem[],
   indent = false
 ): ReactNode[] => {
-  return items.map((item) => {
+  return items.map((item, index) => {
     switch (item.type) {
       case "heading":
-        return <SidebarMenuHeading label={item.label} />;
+        return <SidebarMenuHeading key={index} label={item.label} />;
       case "separator":
-        return <SidebarMenuSeparator />;
+        return <SidebarMenuSeparator key={index} />;
       case "link": {
         const { type, ...linkProps } = item;
-        return <SidebarMenuLink indent={indent} {...linkProps} />;
+        return <SidebarMenuLink key={index} indent={indent} {...linkProps} />;
       }
       case "grouped":
         return (
-          <SidebarMenuCollapsible leftIcon={item.leftIcon} label={item.label}>
+          <SidebarMenuCollapsible
+            key={index}
+            leftIcon={item.leftIcon}
+            label={item.label}
+          >
             {renderItemsExpanded(item.items, true)}
           </SidebarMenuCollapsible>
         );
@@ -42,16 +46,17 @@ export const renderItemsInRail = (
   items: SidebarItem[],
   { popupMinWidth }: RailRendererOptions
 ): ReactNode[] => {
-  return items.map((item) => {
+  return items.map((item, index) => {
     switch (item.type) {
       case "heading":
         return null;
       case "separator":
-        return <SidebarMenuSeparator />;
+        return <SidebarMenuSeparator key={index} />;
       case "link": {
         const { type, label, ...linkProps } = item;
         return (
           <SidebarMenuLink
+            key={index}
             title={label}
             width={"var(--swui-sidebar-menu-item-height)"}
             {...linkProps}
@@ -60,7 +65,7 @@ export const renderItemsInRail = (
       }
       case "grouped":
         return (
-          <div>
+          <div key={index}>
             <Popover
               appendTo={"parent"}
               arrow={false}
