@@ -1,3 +1,15 @@
+# v17.1.1 (Wed Jun 22 2022)
+
+#### 🐛 Bug Fix
+
+- Fix key and activeClassName-warnings [#468](https://github.com/StenaIT/stenajs-webui/pull/468) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.0.0 (Fri Jun 17 2022)
 
 #### 💥 Breaking Change
