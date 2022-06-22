@@ -172,7 +172,7 @@
   }
 
   & + label {
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: var(--swui-checkbox-height);
     display: inline-block;
     vertical-align: top;

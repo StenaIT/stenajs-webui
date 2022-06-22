@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "16.0.0",
+  "version": "17.0.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@react-aria/focus": "3.3.0",
-    "@stenajs-webui/core": "16.0.0",
-    "@stenajs-webui/theme": "16.0.0",
+    "@stenajs-webui/core": "17.0.0",
+    "@stenajs-webui/theme": "17.0.0",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {
@@ -38,11 +38,11 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.35",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@fortawesome/react-fontawesome": ">=0.1.14",
-    "@types/react": ">=17.0.5",
-    "@types/react-dom": ">=17.0.3",
+    "@types/react": ">=18.0.14",
+    "@types/react-dom": ">=18.0.5",
     "@types/styled-system": ">=5.1.10",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "styled-system": ">=5.1.5"
   },
   "devDependencies": {
@@ -52,11 +52,11 @@
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "0.1.14",
     "@types/jest": "^23.1.5",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
     "@types/styled-system": "^5.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-system": "^5.1.5"
   },
   "files": [

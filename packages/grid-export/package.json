@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid-export",
-  "version": "16.0.0",
+  "version": "17.0.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -28,9 +28,9 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
-    "@stenajs-webui/core": "16.0.0",
-    "@stenajs-webui/elements": "16.0.0",
-    "@stenajs-webui/grid": "16.0.0",
+    "@stenajs-webui/core": "17.0.0",
+    "@stenajs-webui/elements": "17.0.0",
+    "@stenajs-webui/grid": "17.0.0",
     "@types/zipcelx": "^1.5.0",
     "clipboard-polyfill": "^3.0.2",
     "date-fns": "2.26.0",
@@ -40,18 +40,18 @@
     "@types/lodash": ">=4.14.168",
     "lodash": ">=4.17.21",
     "prop-types": ">=15.5.4",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.168",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
     "lodash": "^4.17.21",
     "prop-types": "^15.5.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "files": [
     "dist"

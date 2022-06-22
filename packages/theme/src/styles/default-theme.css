@@ -34,15 +34,15 @@
   --swui-font-weight-link: 400;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
-  --swui-font-size-inputs: 14px;
-  --swui-font-size-large: 16px;
-  --swui-line-height-large: 24px;
-  --swui-font-size-medium: 14px;
-  --swui-line-height-medium: 16px;
-  --swui-font-size-small: 12px;
-  --swui-line-height-small: 16px;
-  --swui-font-size-smaller: 10px;
-  --swui-line-height-smaller: 16px;
+  --swui-font-size-inputs: 1.4rem;
+  --swui-font-size-large: 1.6rem;
+  --swui-line-height-large: 2.4rem;
+  --swui-font-size-medium: 1.4rem;
+  --swui-line-height-medium: 1.6rem;
+  --swui-font-size-small: 1.2rem;
+  --swui-line-height-small: 1.6rem;
+  --swui-font-size-smaller: 1rem;
+  --swui-line-height-smaller: 1.6rem;
   --swui-font-weight-inputs: 400;
 
   /* Text */
@@ -68,7 +68,7 @@
   --swui-field-text-color-disabled: var(--lhds-color-ui-700);
   --swui-field-text-spacing: 6px;
   --swui-field-letter-spacing: 0;
-  --swui-field-text-line-height: 20px;
+  --swui-field-text-line-height: 2rem;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
   --swui-field-border-color: #bbc1e1;

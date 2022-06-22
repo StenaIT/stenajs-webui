@@ -2,7 +2,7 @@ import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { Omit } from "@stenajs-webui/core";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { ChangeEventHandler, useCallback, useState } from "react";
 import {
   formatTimeString,
   validUserInput,
@@ -45,7 +45,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
     }
   }, [value, onValueChange, setValid]);
 
-  const onChangeHandler = useCallback(
+  const onChangeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (ev) => {
       const time = ev.target.value;
       const validInput = validUserInput(time);

@@ -18,7 +18,7 @@ import {
 } from "@stenajs-webui/forms";
 import { debounce } from "lodash";
 import * as React from "react";
-import { useCallback, useMemo, useRef } from "react";
+import { FocusEventHandler, useCallback, useMemo, useRef } from "react";
 import { cssColor } from "@stenajs-webui/theme";
 
 export interface DualTextInputProps {
@@ -112,7 +112,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onBlur]
   );
 
-  const focusLeftHandler = useCallback(
+  const focusLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current++;
       tryTriggerOnBlur(focusCounter.current);
@@ -123,7 +123,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onFocusLeft, focusCounter, tryTriggerOnBlur]
   );
 
-  const focusRightHandler = useCallback(
+  const focusRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current++;
       tryTriggerOnBlur(focusCounter.current);
@@ -134,7 +134,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onFocusRight, focusCounter, tryTriggerOnBlur]
   );
 
-  const blurLeftHandler = useCallback(
+  const blurLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current--;
       tryTriggerOnBlur(focusCounter.current);
@@ -145,7 +145,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onBlurLeft, focusCounter, tryTriggerOnBlur]
   );
 
-  const blurRightHandler = useCallback(
+  const blurRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current--;
       tryTriggerOnBlur(focusCounter.current);

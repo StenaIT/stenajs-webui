@@ -78,7 +78,7 @@
   &.overline {
     --current-font-size: var(--swui-font-size-smaller);
     --current-line-height: var(--swui-line-height-smaller);
-    --current-letter-spacing: 1px;
+    --current-letter-spacing: 0.1rem;
     text-transform: uppercase;
   }
 

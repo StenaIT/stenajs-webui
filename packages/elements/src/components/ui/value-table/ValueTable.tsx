@@ -1,7 +1,7 @@
 import { Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { Children } from "react";
+import { Children, ReactNode } from "react";
 import styles from "./ValueTable.module.css";
 import cx from "classnames";
 
@@ -15,6 +15,7 @@ export interface ValueTableProps {
   header?: string;
   footer?: string;
   variant?: ValueTableVariant;
+  children?: ReactNode;
 }
 
 export const ValueTable: React.FC<ValueTableProps> = ({

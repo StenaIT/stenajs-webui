@@ -6,6 +6,7 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
+import { ReactNode } from "react";
 
 export interface WithMonthSwitcherBelowProps {
   theme: CalendarTheme;
@@ -13,6 +14,7 @@ export interface WithMonthSwitcherBelowProps {
   prevMonth: () => void;
   nextYear: () => void;
   prevYear: () => void;
+  children?: ReactNode;
 }
 
 export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({

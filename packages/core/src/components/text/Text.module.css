@@ -41,7 +41,7 @@
     --current-line-height: var(--swui-line-height-smaller);
     --current-color: var(--swui-text-color-overline);
     --current-font-weight: var(--swui-font-weight-text-bold);
-    --current-letter-spacing: 1px;
+    --current-letter-spacing: 0.1rem;
     text-transform: uppercase;
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "16.0.0",
+  "version": "17.0.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -30,14 +30,14 @@
     "@emotion/react": ">=11.1.5",
     "@emotion/styled": ">=11.3.0",
     "@types/lodash": ">=4.14.168",
-    "@types/react": ">=17.0.5",
-    "@types/react-dom": ">=17.0.3",
+    "@types/react": ">=18.0.14",
+    "@types/react-dom": ">=18.0.5",
     "@types/styled-system": ">=5.1.10",
     "csstype": ">=3.0.8",
     "lodash": ">=4.17.21",
     "prop-types": ">=15.5.4",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "styled-system": ">=5.1.5"
   },
   "devDependencies": {
@@ -46,15 +46,15 @@
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^23.1.5",
     "@types/lodash": "^4.14.168",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
     "@types/styled-system": "^5.1.10",
     "csstype": "^3.0.8",
     "lodash": "^4.17.21",
     "prop-types": "^15.5.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "styled-system": "^5.1.5"
   },
   "files": [
@@ -63,7 +63,7 @@
   "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961",
   "dependencies": {
     "@emotion/is-prop-valid": "^1.1.0",
-    "@stenajs-webui/theme": "16.0.0",
+    "@stenajs-webui/theme": "17.0.0",
     "classnames": "^2.3.1"
   }
 }

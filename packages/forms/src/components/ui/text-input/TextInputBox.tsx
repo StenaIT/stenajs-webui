@@ -1,14 +1,13 @@
 import * as React from "react";
+import { ReactNode } from "react";
 import styles from "./TextInput.module.css";
-import classNames from "classnames/bind";
+import cx from "classnames";
 import { TextInputProps } from "./TextInput";
 import { TextInputIcon } from "./TextInputIcon";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { InputSpinner } from "@stenajs-webui/elements";
 import { Row } from "@stenajs-webui/core";
-
-const cx = classNames.bind(styles);
 
 export interface TextInputBoxProps
   extends Pick<
@@ -26,7 +25,9 @@ export interface TextInputBoxProps
     | "iconLeft"
     | "onClickLeft"
     | "onClickRight"
-  > {}
+  > {
+  children?: ReactNode;
+}
 
 export const TextInputBox: React.FC<TextInputBoxProps> = ({
   variant = "standard",

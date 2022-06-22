@@ -78,7 +78,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   }, [setOpen]);
 
   const onValueChangeHandler = useCallback(
-    (value) => {
+    (value: string) => {
       if (onValueChange) {
         onValueChange(value);
       }

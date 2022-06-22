@@ -6,6 +6,7 @@ export interface PageHeaderProps {
   renderBreadCrumbs?: () => ReactNode;
   renderPageHeading?: () => ReactNode;
   renderTabs?: () => ReactNode;
+  children?: ReactNode;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({

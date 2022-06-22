@@ -4,6 +4,7 @@ const shared = {
   setupFilesAfterEnv: ["<rootDir>../../../setupTests.js"],
   globals: {
     "ts-jest": {
+      isolatedModules: true,
       diagnostics: {
         warnOnly: true,
         ignoreCodes: [151001]

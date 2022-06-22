@@ -107,9 +107,8 @@ export const BackgroundResolver = () => {
 };
 
 export const CellOnKeyDown = () => {
-  const { items, onChangeActive, onChangeNumPassengers } = useListState(
-    mockedItems
-  );
+  const { items, onChangeActive, onChangeNumPassengers } =
+    useListState(mockedItems);
 
   const config: StandardTableConfig<ListItem, keyof ListItem> = {
     ...standardTableConfigForStories,

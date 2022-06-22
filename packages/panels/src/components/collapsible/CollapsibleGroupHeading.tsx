@@ -11,10 +11,9 @@ export interface CollapsibleGroupHeadingProps
   extends CollapsibleSimpleContentProps,
     DivProps {}
 
-export const CollapsibleGroupHeading: React.FC<CollapsibleGroupHeadingProps> = ({
-  className,
-  ...props
-}) => (
+export const CollapsibleGroupHeading: React.FC<
+  CollapsibleGroupHeadingProps
+> = ({ className, ...props }) => (
   <CollapsibleContent
     className={cx(styles.groupHeading, className)}
     {...props}

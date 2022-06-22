@@ -1,11 +1,13 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { Children } from "react";
+import { Children, ReactNode } from "react";
 import { stenaBreadCrumbArrow } from "../../../icons/Icons";
 import { Icon } from "../icon/Icon";
 
-export interface BreadCrumbsProps {}
+export interface BreadCrumbsProps {
+  children?: ReactNode;
+}
 
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ children }) => {
   return (

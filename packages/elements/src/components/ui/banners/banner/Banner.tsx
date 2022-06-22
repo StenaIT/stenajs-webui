@@ -33,6 +33,7 @@ export interface BannerProps {
   loading?: boolean;
   contentRight?: ReactNode;
   variant?: BannerVariant;
+  children?: ReactNode;
 }
 
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {

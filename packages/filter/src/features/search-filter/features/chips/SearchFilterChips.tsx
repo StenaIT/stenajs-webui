@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { Row } from "@stenajs-webui/core";
 import { ChipSpacer } from "./ChipSpacer";
 import { FlatButton } from "@stenajs-webui/elements";
@@ -8,6 +8,7 @@ import { useSearchFilterActions } from "../../context/SearchFilterActionsContext
 
 interface SearchFilterChipsProps {
   disableClearAllButton?: boolean;
+  children?: ReactNode;
 }
 
 export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({

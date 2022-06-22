@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { Collapsible } from "../collapsible/Collapsible";
 import { Box, Column, Indent } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -10,6 +10,7 @@ export interface SidebarMenuCollapsibleProps {
   label: string;
   collapsed?: boolean;
   leftIcon?: IconDefinition;
+  children?: ReactNode;
 }
 
 export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({

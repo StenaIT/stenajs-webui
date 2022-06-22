@@ -1,11 +1,13 @@
 import { Box, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { Badge, BadgeProps } from "./Badge";
+import { ReactNode } from "react";
 
 export interface WithBadgeProps extends BadgeProps {
   top?: string;
   left?: string;
   hideBadge?: boolean;
+  children?: ReactNode;
 }
 
 export const WithBadge: React.FC<WithBadgeProps> = ({

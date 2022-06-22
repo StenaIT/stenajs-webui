@@ -1,3 +1,31 @@
+# v17.0.0 (Fri Jun 17 2022)
+
+#### 💥 Breaking Change
+
+- Upgrade and apply prettier. [#467](https://github.com/StenaIT/stenajs-webui/pull/467) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- Update Typescript, React, Jest, etc. [#466](https://github.com/StenaIT/stenajs-webui/pull/466) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v16.1.0 (Fri Jun 17 2022)
+
+#### 🚀 Enhancement
+
+- Accessible font-sizes using `rem` instead of `px` [#458](https://github.com/StenaIT/stenajs-webui/pull/458) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v15.5.10 (Thu Jun 02 2022)
 
 #### 🐛 Bug Fix

@@ -12,9 +12,10 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";
 import { ButtonGroup } from "../button-group/ButtonGroup";
-import { PrimaryButton, SecondaryButton } from "../../../../dist";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
+import { SecondaryButton } from "../buttons/SecondaryButton";
+import { PrimaryButton } from "../buttons/PrimaryButton";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",

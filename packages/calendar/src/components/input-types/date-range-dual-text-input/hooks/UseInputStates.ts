@@ -9,19 +9,15 @@ export const useInputStates = (
   startDate: Date | undefined,
   endDate: Date | undefined
 ) => {
-  const [
-    isCalendarVisible,
-    showCalendarInternal,
-    hideCalendarInternal,
-  ] = useBoolean(false);
+  const [isCalendarVisible, showCalendarInternal, hideCalendarInternal] =
+    useBoolean(false);
 
   const [firstFocusedInput, setFirstFocusedInput] = useState<
     DateRangeFocusedInput | undefined
   >(undefined);
 
-  const [focusedInput, setFocusedInput] = useState<DateRangeFocusedInput>(
-    "startDate"
-  );
+  const [focusedInput, setFocusedInput] =
+    useState<DateRangeFocusedInput>("startDate");
 
   const [dateInFocus, setDateInFocus] = useState<Date>(() => {
     const fromValue =
@@ -34,9 +30,8 @@ export const useInputStates = (
     return fromValue ?? new Date();
   });
 
-  const [currentPanel, setCurrentPanel] = useState<CalendarPanelType>(
-    "calendar"
-  );
+  const [currentPanel, setCurrentPanel] =
+    useState<CalendarPanelType>("calendar");
 
   return {
     isCalendarVisible,
