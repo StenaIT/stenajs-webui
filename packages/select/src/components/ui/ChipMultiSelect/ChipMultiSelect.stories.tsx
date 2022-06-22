@@ -42,7 +42,7 @@ const complexOptionMocks: ChipMultiSelectValueWithData[] = [
 
 export const Demo = () => {
   const [text, setText] = useState<string>("");
-  const [value, setValue] = useState<ReadonlyArray<ChipMultiSelectValue>>([]);
+  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
 
   return (
     <ChipMultiSelect
@@ -58,7 +58,7 @@ export const Demo = () => {
 export const WithComplexData = () => {
   const [text, setText] = useState<string>("");
   const [value, setValue] = useState<
-    ReadonlyArray<ChipMultiSelectValueWithData>
+    Array<ChipMultiSelectValueWithData>
   >([]);
 
   return (
@@ -75,8 +75,8 @@ export const WithComplexData = () => {
 export const WithDataFetch = () => {
   const [text, setText] = useState<string>("");
   const [loading, setLoading, setNotLoading] = useBoolean(false);
-  const [value, setValue] = useState<ReadonlyArray<ChipRowItem>>([]);
-  const [options, setOptions] = useState<ReadonlyArray<ChipRowItem>>([]);
+  const [value, setValue] = useState<Array<ChipMultiSelectValue>>([]);
+  const [options, setOptions] = useState<Array<ChipMultiSelectValue>>([]);
 
   const onChangeText = async (t: string) => {
     setText(t);

@@ -49,7 +49,7 @@ const optionMocks = [
 export const Demo = () => {
   const [text, setText] = useState<string>("");
   const [value, setValue] = useState<
-    ReadonlyArray<GroupedChipMultiSelectValue<string>>
+    Array<GroupedChipMultiSelectValue<string>>
   >([]);
 
   return (
@@ -94,7 +94,7 @@ const complexOptionMocks = [
 export const WithComplexData = () => {
   const [text, setText] = useState<string>("");
   const [value, setValue] = useState<
-    ReadonlyArray<GroupedChipMultiSelectValue<{ name: string }>>
+    Array<GroupedChipMultiSelectValue<{ name: string }>>
   >([]);
 
   return (

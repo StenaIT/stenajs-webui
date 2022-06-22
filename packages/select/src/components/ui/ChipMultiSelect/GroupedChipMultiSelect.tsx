@@ -12,7 +12,7 @@ export interface GroupedChipMultiSelectValue<TData>
 
 export interface GroupedChipMultiSelectProps<TData>
   extends Omit<GroupedMultiSelectProps<TData>, "onChange" | "value">,
-    ValueAndOnValueChangeProps<ReadonlyArray<DropdownOption<TData>>> {
+    ValueAndOnValueChangeProps<Array<DropdownOption<TData>>> {
   loading?: boolean;
   inputValue?: string;
   onInputChange?: (inputValue: string) => void;

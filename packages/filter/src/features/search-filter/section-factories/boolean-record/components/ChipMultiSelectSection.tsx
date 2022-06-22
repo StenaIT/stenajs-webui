@@ -25,7 +25,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
 }: ChipMultiSelectSectionProps<TSectionKey>): React.ReactElement => {
   const [text, setText] = useState<string>("");
 
-  const listValue = useMemo<ReadonlyArray<ChipMultiSelectValue>>(
+  const listValue = useMemo<Array<ChipMultiSelectValue>>(
     () =>
       value
         ? truthyKeysAsList(value).map<ChipMultiSelectValue>((key) => {
@@ -45,7 +45,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
   }, [options, text]);
 
   const onValueChangeInternal = useCallback(
-    (value: ReadonlyArray<ChipMultiSelectValue>) => {
+    (value: Array<ChipMultiSelectValue>) => {
       onValueChange?.(createBooleanRecordFromValue(value));
     },
     [onValueChange]
@@ -67,7 +67,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
 };
 
 const createBooleanRecordFromValue = (
-  value: ReadonlyArray<ChipMultiSelectValue>
+  value: Array<ChipMultiSelectValue>
 ): BooleanRecord => {
   return value.reduce<BooleanRecord>((sum, item) => {
     sum[item.value] = true;

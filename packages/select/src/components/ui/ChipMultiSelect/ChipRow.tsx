@@ -19,7 +19,7 @@ export function ChipRow<TValue extends ChipRowItem>({
   onValueChange,
   noneSelectedLabel = "None",
   children,
-}: PropsWithChildren<ChipRowProps<ReadonlyArray<TValue>>>) {
+}: PropsWithChildren<ChipRowProps<Array<TValue>>>) {
   return (
     <Column flex={1}>
       <Row flexWrap={"wrap"}>

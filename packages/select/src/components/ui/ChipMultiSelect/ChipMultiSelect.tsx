@@ -7,7 +7,7 @@ export interface ChipMultiSelectValue extends ChipRowItem {}
 
 export interface ChipMultiSelectProps<TOption>
   extends Omit<MultiSelectProps<TOption>, "value" | "onChange" | "isLoading">,
-    ValueAndOnValueChangeProps<ReadonlyArray<TOption>> {
+    ValueAndOnValueChangeProps<Array<TOption>> {
   loading?: boolean;
   inputValue?: string;
   onInputChange?: (inputValue: string) => void;
