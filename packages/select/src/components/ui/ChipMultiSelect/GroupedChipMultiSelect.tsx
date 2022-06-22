@@ -39,7 +39,9 @@ function _GroupedChipMultiSelect<TData>({
         {...selectProps}
         isClearable={false}
         value={value}
-        onChange={onValueChange}
+        onChange={
+          onValueChange ? (value) => onValueChange([...value]) : undefined
+        }
         backspaceRemovesValue={false}
         hideSelectedOptions
         controlShouldRenderValue={false}

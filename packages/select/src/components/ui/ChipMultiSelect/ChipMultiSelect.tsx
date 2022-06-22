@@ -34,7 +34,9 @@ function _ChipMultiSelect<TOption extends ChipMultiSelectValue>({
         {...selectProps}
         isClearable={false}
         value={value}
-        onChange={onValueChange}
+        onChange={
+          onValueChange ? (value) => onValueChange([...value]) : undefined
+        }
         backspaceRemovesValue={false}
         hideSelectedOptions
         controlShouldRenderValue={false}
