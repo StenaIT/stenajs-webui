@@ -83,6 +83,25 @@ export const Variants = () => {
   );
 };
 
+export const WithoutCheckboxInHeader = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    showHeaderCheckbox: false,
+    checkboxDisabledResolver: (item) => item.id === "125",
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
+};
+
 export const BackgroundResolver = () => {
   const { items, onChangeNumPassengers } = useListState(mockedItems);
 
