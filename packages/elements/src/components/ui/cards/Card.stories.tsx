@@ -2,7 +2,6 @@ import { faCheckSquare } from "@fortawesome/free-solid-svg-icons/faCheckSquare";
 import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons/faCreditCard";
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import {
   Heading,
   Indent,
@@ -13,6 +12,7 @@ import {
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
+import { stenaTimes } from "../../../icons/ui/Icons-ui";
 import { FlatButton } from "../buttons/FlatButton";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
@@ -108,7 +108,7 @@ export const Details = () => {
           <Row alignItems={"center"}>
             <SecondaryButton label={"Booking actions"} />
             <Indent />
-            <FlatButton leftIcon={faTimes} />
+            <FlatButton leftIcon={stenaTimes} />
           </Row>
         }
       />
@@ -131,7 +131,7 @@ export const Unpaid = () => {
       <CardHeader
         text={"71338164"}
         contentLeft={<Tag label={"Unpaid"} variant={"error"} />}
-        contentRight={<FlatButton leftIcon={faTimes} />}
+        contentRight={<FlatButton leftIcon={stenaTimes} />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -159,7 +159,7 @@ export const Switch = () => {
             <Text>Confirmed</Text>
           </Row>
         }
-        contentRight={<FlatButton leftIcon={faTimes} />}
+        contentRight={<FlatButton leftIcon={stenaTimes} />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -187,7 +187,7 @@ export const Approved = () => {
             color={cssColor("--lhds-color-green-600")}
           />
         }
-        contentRight={<FlatButton leftIcon={faTimes} />}
+        contentRight={<FlatButton leftIcon={stenaTimes} />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
