@@ -55,6 +55,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     zIndex,
     stickyHeader,
     stickyCheckboxColumn,
+    showRowCheckbox,
   } = useStandardTableConfig();
 
   const columnGroupOrder = useColumnGroupOrderContext();
@@ -123,7 +124,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           </Row>
         </th>
       )}
-      {showHeaderCheckbox && (
+      {(showRowCheckbox || showHeaderCheckbox) && (
         <th
           style={{
             ...stickyHeaderStyle,
@@ -142,13 +143,15 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Checkbox
-              size={"small"}
-              disabled={checkboxDisabled}
-              value={allItemsAreSelected}
-              indeterminate={!selectionIsEmpty && !allItemsAreSelected}
-              onValueChange={onClickCheckbox}
-            />
+            {showHeaderCheckbox && (
+              <Checkbox
+                size={"small"}
+                disabled={checkboxDisabled}
+                value={allItemsAreSelected}
+                indeterminate={!selectionIsEmpty && !allItemsAreSelected}
+                onValueChange={onClickCheckbox}
+              />
+            )}
           </Row>
         </th>
       )}

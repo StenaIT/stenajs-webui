@@ -1,3 +1,16 @@
+# v17.1.2 (Mon Jun 27 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix misaligned StandardTable header when rowCheckbox is true and headerCheckbox is false [#469](https://github.com/StenaIT/stenajs-webui/pull/469) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.1.1 (Wed Jun 22 2022)
 
 #### 🐛 Bug Fix
