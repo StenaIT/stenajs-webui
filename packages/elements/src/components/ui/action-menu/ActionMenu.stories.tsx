@@ -1,4 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
@@ -16,6 +15,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
+import { stenaCheck } from "../../../icons/ui/Icons-ui";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -77,12 +77,12 @@ export const Standard = () => (
     <ActionMenuItem
       label={"Icon right"}
       onClick={action("Icon right clicked")}
-      rightIcon={faCheck}
+      rightIcon={stenaCheck}
     />
     <ActionMenuItem
       label={"Icon right disabled"}
       onClick={action("I can never happen again!")}
-      rightIcon={faCheck}
+      rightIcon={stenaCheck}
       disabled
     />
     <ActionMenuItemContent

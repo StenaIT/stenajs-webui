@@ -2,7 +2,7 @@ import { Indent, Row } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { Children, ReactNode } from "react";
-import { StenaArrowRight } from "../../../icons/ui/Icons-ui";
+import { stenaArrowRight } from "../../../icons/ui/Icons-ui";
 import { Icon } from "../icon/Icon";
 
 export interface BreadCrumbsProps {
@@ -19,7 +19,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ children }) => {
               {index > 0 && (
                 <Indent num={2}>
                   <Icon
-                    icon={StenaArrowRight}
+                    icon={stenaArrowRight}
                     size={8}
                     color={cssColor("--lhds-color-ui-700")}
                   />

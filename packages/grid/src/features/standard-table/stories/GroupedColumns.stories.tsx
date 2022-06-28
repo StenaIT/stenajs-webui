@@ -1,7 +1,9 @@
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { Box, Column, Space, Spacing, Text } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  stenaAngleLeft,
+  stenaAngleRight,
+} from "@stenajs-webui/elements";
 import { CheckboxWithLabel } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
@@ -78,8 +80,8 @@ export const GroupedColumns = () => {
         borderLeft: true,
         label: "Information",
         columnOrder: infoColumnOrder,
-        contentLeft: <FlatButton size={"small"} leftIcon={faAngleLeft} />,
-        contentRight: <FlatButton size={"small"} leftIcon={faAngleRight} />,
+        contentLeft: <FlatButton size={"small"} leftIcon={stenaAngleLeft} />,
+        contentRight: <FlatButton size={"small"} leftIcon={stenaAngleRight} />,
         loading: true,
       },
       passengers: {

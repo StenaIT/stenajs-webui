@@ -1,11 +1,11 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import cx from "classnames";
 import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./ButtonContent.module.css";
+import { stenaCheck } from "../../../../icons/ui/Icons-ui";
 
 export interface ButtonContentProps {
   label?: string;
@@ -42,7 +42,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
         <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
           {success ? (
             <FontAwesomeIcon
-              icon={faCheck}
+              icon={stenaCheck}
               className={cx(styles.iconLeft, iconClassName)}
             />
           ) : loading ? (

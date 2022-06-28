@@ -1,9 +1,8 @@
 import * as React from "react";
 import { Heading, Indent, Row } from "@stenajs-webui/core";
-import { Icon, SecondaryButton } from "@stenajs-webui/elements";
+import { Icon, SecondaryButton, StenaSliders } from "@stenajs-webui/elements";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { cssColor } from "@stenajs-webui/theme";
-import { StenaSliders } from "../../../../../elements/src/icons/ui/Icons-ui";
 
 interface SearchFilterPanelHeaderProps {
   onRequestClose: () => void;

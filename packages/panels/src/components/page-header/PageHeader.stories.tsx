@@ -10,11 +10,11 @@ import {
   Tab,
   TabMenu,
   Tag,
+  StenaSliders,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
-import { StenaSliders } from "../../../../elements/src/icons/ui/Icons-ui";
 
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";

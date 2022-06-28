@@ -1,5 +1,4 @@
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import * as React from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { ButtonSize, ButtonVariant } from "../buttons/common/ButtonCommon";
@@ -7,6 +6,7 @@ import { PrimaryButtonLink } from "./PrimaryButtonLink";
 import { SecondaryButtonLink } from "./SecondaryButtonLink";
 import { FlatButtonLink } from "./FlatButtonLink";
 import { Icon } from "../icon/Icon";
+import { stenaCheck } from "../../../icons/ui/Icons-ui";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
@@ -99,7 +99,7 @@ export const Overview = () => (
                       label={"google.com"}
                       href={"https://google.com"}
                       target={"_blank"}
-                      leftIcon={faCheck}
+                      leftIcon={stenaCheck}
                       rightIcon={faGoogle}
                     />
                   </div>
@@ -167,7 +167,7 @@ export const WithGenericContentToRight = () => (
                   width={24}
                   height={24}
                 >
-                  <Icon icon={faCheck} color={"white"} />
+                  <Icon icon={stenaCheck} color={"white"} />
                 </Column>
               </Row>
             }
