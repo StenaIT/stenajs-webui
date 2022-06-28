@@ -1,4 +1,4 @@
-export * from "./icons/Icons";
+export * from "./icons/Icons/ui";
 
 export * from "./components/ui/banners/banner/Banner";
 export * from "./components/ui/banners/result-list-banner/ResultListBanner";
