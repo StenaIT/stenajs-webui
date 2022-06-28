@@ -1,27 +1,27 @@
 import * as React from "react";
 import {
-  StenaAngleLeft,
-  StenaAngleRight,
-  StenaAngleUp,
-  StenaAngleDown,
-  StenaArrowRight,
-  StenaTrash,
-  StenaTimes,
-  StenaSliders,
-  StenaSearch,
-  StenaRefresh,
-  StenaPlus,
-  StenaMinus,
-  StenaPlusCircle,
-  StenaMinusCircle,
-  StenaPen,
-  StenaHamburger,
-  StenaExclamation,
-  StenaCopy,
-  StenaCheck,
-  StenaCalendar,
-  StenaBell,
-  StenaBellFilled,
+  stenaAngleLeft,
+  stenaAngleRight,
+  stenaAngleUp,
+  stenaAngleDown,
+  stenaArrowRight,
+  stenaTrash,
+  stenaTimes,
+  stenaSliders,
+  stenaSearch,
+  stenaRefresh,
+  stenaPlus,
+  stenaMinus,
+  stenaPlusCircle,
+  stenaMinusCircle,
+  stenaPen,
+  stenaHamburger,
+  stenaExclamation,
+  stenaCopy,
+  stenaCheck,
+  stenaCalendar,
+  stenaBell,
+  stenaBellFilled,
 } from "./Icons-ui";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
@@ -77,25 +77,25 @@ const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
   );
 };
 
-export const AngleLeft = () => <IconDemo icon={StenaAngleLeft} />;
-export const AngleRight = () => <IconDemo icon={StenaAngleRight} />;
-export const AngleUp = () => <IconDemo icon={StenaAngleUp} />;
-export const AngleDown = () => <IconDemo icon={StenaAngleDown} />;
-export const ArrowRight = () => <IconDemo icon={StenaArrowRight} />;
-export const Trash = () => <IconDemo icon={StenaTrash} />;
-export const Times = () => <IconDemo icon={StenaTimes} />;
-export const Sliders = () => <IconDemo icon={StenaSliders} />;
-export const Search = () => <IconDemo icon={StenaSearch} />;
-export const Refresh = () => <IconDemo icon={StenaRefresh} />;
-export const Plus = () => <IconDemo icon={StenaPlus} />;
-export const Minus = () => <IconDemo icon={StenaMinus} />;
-export const PlusCircle = () => <IconDemo icon={StenaPlusCircle} />;
-export const MinusCircle = () => <IconDemo icon={StenaMinusCircle} />;
-export const Pen = () => <IconDemo icon={StenaPen} />;
-export const Hamburger = () => <IconDemo icon={StenaHamburger} />;
-export const Exclamation = () => <IconDemo icon={StenaExclamation} />;
-export const Copy = () => <IconDemo icon={StenaCopy} />;
-export const Check = () => <IconDemo icon={StenaCheck} />;
-export const Calendar = () => <IconDemo icon={StenaCalendar} />;
-export const Bell = () => <IconDemo icon={StenaBell} />;
-export const BellFilled = () => <IconDemo icon={StenaBellFilled} />;
+export const AngleLeft = () => <IconDemo icon={stenaAngleLeft} />;
+export const AngleRight = () => <IconDemo icon={stenaAngleRight} />;
+export const AngleUp = () => <IconDemo icon={stenaAngleUp} />;
+export const AngleDown = () => <IconDemo icon={stenaAngleDown} />;
+export const ArrowRight = () => <IconDemo icon={stenaArrowRight} />;
+export const Trash = () => <IconDemo icon={stenaTrash} />;
+export const Times = () => <IconDemo icon={stenaTimes} />;
+export const Sliders = () => <IconDemo icon={stenaSliders} />;
+export const Search = () => <IconDemo icon={stenaSearch} />;
+export const Refresh = () => <IconDemo icon={stenaRefresh} />;
+export const Plus = () => <IconDemo icon={stenaPlus} />;
+export const Minus = () => <IconDemo icon={stenaMinus} />;
+export const PlusCircle = () => <IconDemo icon={stenaPlusCircle} />;
+export const MinusCircle = () => <IconDemo icon={stenaMinusCircle} />;
+export const Pen = () => <IconDemo icon={stenaPen} />;
+export const Hamburger = () => <IconDemo icon={stenaHamburger} />;
+export const Exclamation = () => <IconDemo icon={stenaExclamation} />;
+export const Copy = () => <IconDemo icon={stenaCopy} />;
+export const Check = () => <IconDemo icon={stenaCheck} />;
+export const Calendar = () => <IconDemo icon={stenaCalendar} />;
+export const Bell = () => <IconDemo icon={stenaBell} />;
+export const BellFilled = () => <IconDemo icon={stenaBellFilled} />;

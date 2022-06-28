@@ -1,6 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export const StenaAngleLeft: IconDefinition = {
+export const stenaAngleLeft: IconDefinition = {
   icon: [
     48,
     48,
@@ -12,7 +12,7 @@ export const StenaAngleLeft: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaAngleRight: IconDefinition = {
+export const stenaAngleRight: IconDefinition = {
   icon: [
     48,
     48,
@@ -24,7 +24,7 @@ export const StenaAngleRight: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaAngleUp: IconDefinition = {
+export const stenaAngleUp: IconDefinition = {
   icon: [
     48,
     48,
@@ -36,7 +36,7 @@ export const StenaAngleUp: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaAngleDown: IconDefinition = {
+export const stenaAngleDown: IconDefinition = {
   icon: [
     48,
     48,
@@ -48,7 +48,7 @@ export const StenaAngleDown: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaArrowRight: IconDefinition = {
+export const stenaArrowRight: IconDefinition = {
   icon: [
     48,
     48,
@@ -60,7 +60,7 @@ export const StenaArrowRight: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaTrash: IconDefinition = {
+export const stenaTrash: IconDefinition = {
   icon: [
     48,
     48,
@@ -72,7 +72,7 @@ export const StenaTrash: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaTimes: IconDefinition = {
+export const stenaTimes: IconDefinition = {
   icon: [
     48,
     48,
@@ -84,7 +84,7 @@ export const StenaTimes: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaSliders: IconDefinition = {
+export const stenaSliders: IconDefinition = {
   icon: [
     48,
     48,
@@ -96,7 +96,7 @@ export const StenaSliders: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaSearch: IconDefinition = {
+export const stenaSearch: IconDefinition = {
   icon: [
     48,
     48,
@@ -108,7 +108,7 @@ export const StenaSearch: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaRefresh: IconDefinition = {
+export const stenaRefresh: IconDefinition = {
   icon: [
     48,
     48,
@@ -120,7 +120,7 @@ export const StenaRefresh: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaPlus: IconDefinition = {
+export const stenaPlus: IconDefinition = {
   icon: [
     48,
     48,
@@ -132,7 +132,7 @@ export const StenaPlus: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaMinus: IconDefinition = {
+export const stenaMinus: IconDefinition = {
   icon: [
     48,
     48,
@@ -144,7 +144,7 @@ export const StenaMinus: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaPlusCircle: IconDefinition = {
+export const stenaPlusCircle: IconDefinition = {
   icon: [
     48,
     48,
@@ -156,7 +156,7 @@ export const StenaPlusCircle: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaMinusCircle: IconDefinition = {
+export const stenaMinusCircle: IconDefinition = {
   icon: [
     48,
     48,
@@ -168,7 +168,7 @@ export const StenaMinusCircle: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaPen: IconDefinition = {
+export const stenaPen: IconDefinition = {
   icon: [
     48,
     48,
@@ -180,7 +180,7 @@ export const StenaPen: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaHamburger: IconDefinition = {
+export const stenaHamburger: IconDefinition = {
   icon: [
     48,
     48,
@@ -192,7 +192,7 @@ export const StenaHamburger: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaExclamation: IconDefinition = {
+export const stenaExclamation: IconDefinition = {
   icon: [
     48,
     48,
@@ -204,7 +204,7 @@ export const StenaExclamation: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaCopy: IconDefinition = {
+export const stenaCopy: IconDefinition = {
   icon: [
     48,
     48,
@@ -216,7 +216,7 @@ export const StenaCopy: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaCheck: IconDefinition = {
+export const stenaCheck: IconDefinition = {
   icon: [
     48,
     48,
@@ -228,7 +228,7 @@ export const StenaCheck: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaCalendar: IconDefinition = {
+export const stenaCalendar: IconDefinition = {
   icon: [
     48,
     48,
@@ -240,7 +240,7 @@ export const StenaCalendar: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaBell: IconDefinition = {
+export const stenaBell: IconDefinition = {
   icon: [
     48,
     48,
@@ -252,7 +252,7 @@ export const StenaBell: IconDefinition = {
   prefix: "fal",
 };
 
-export const StenaBellFilled: IconDefinition = {
+export const stenaBellFilled: IconDefinition = {
   icon: [
     48,
     48,

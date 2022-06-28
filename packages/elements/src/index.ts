@@ -1,5 +1,4 @@
-export * from "./icons/Icons/ui";
-
+export * from "./icons/ui/Icons-ui";
 export * from "./components/ui/banners/banner/Banner";
 export * from "./components/ui/banners/result-list-banner/ResultListBanner";
 export * from "./components/ui/banners/result-list-banner/hooks/UseResultListBannerState";
