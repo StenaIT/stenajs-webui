@@ -2,7 +2,6 @@ import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
-import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
 import { Clickable, Column, Row, Space, Text } from "@stenajs-webui/core";
 import {
@@ -12,6 +11,7 @@ import {
   Icon,
   PrimaryButton,
   Tag,
+  stenaTrash,
 } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, Switch, TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -452,7 +452,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={faTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
             </Clickable>
           }
         >
@@ -469,7 +469,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={faTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
             </Clickable>
           }
         >
@@ -486,7 +486,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={faTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
             </Clickable>
           }
         >
