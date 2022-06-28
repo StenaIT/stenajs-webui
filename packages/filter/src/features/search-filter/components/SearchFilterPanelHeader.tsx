@@ -2,8 +2,8 @@ import * as React from "react";
 import { Heading, Indent, Row } from "@stenajs-webui/core";
 import { Icon, SecondaryButton } from "@stenajs-webui/elements";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
 import { cssColor } from "@stenajs-webui/theme";
+import { StenaSliders } from "../../../../../elements/src/icons/ui/Icons-ui";
 
 interface SearchFilterPanelHeaderProps {
   onRequestClose: () => void;
@@ -22,7 +22,7 @@ export const SearchFilterPanelHeader: React.FC<
     >
       <Row alignItems={"center"}>
         <Icon
-          icon={faSlidersH}
+          icon={StenaSliders}
           color={cssColor("--lhds-color-ui-800")}
           size={24}
         />
