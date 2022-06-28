@@ -1,6 +1,5 @@
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
 import { Clickable, Column, Row, Space, Text } from "@stenajs-webui/core";
 import {
@@ -12,6 +11,7 @@ import {
   Tag,
   stenaTrash,
   stenaSearch,
+  stenaPlusCircle,
 } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, Switch, TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -493,7 +493,9 @@ export const RadioButtons = () => {
           BB-8
         </CollapsibleClickableContent>
         <CollapsibleClickableContent
-          contentLeft={<Icon icon={faPlusCircle} size={24} data-hover={true} />}
+          contentLeft={
+            <Icon icon={stenaPlusCircle} size={24} data-hover={true} />
+          }
           onClick={() => alert("Added")}
         >
           Add new mech

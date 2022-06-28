@@ -1,8 +1,6 @@
 import { Omit, Row, Space } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaPlus, stenaMinus } from "@stenajs-webui/elements";
 import * as React from "react";
-import { faMinus } from "@fortawesome/free-solid-svg-icons/faMinus";
-import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import {
   NumericTextInput,
   NumericTextInputProps,
@@ -42,7 +40,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
   return (
     <Row role={"group"}>
       <FlatButton
-        leftIcon={faMinus}
+        leftIcon={stenaMinus}
         aria-label={"Decrease"}
         disabled={disabled || isMinReached(value, min)}
         onClick={() => onClick(-step)}
@@ -60,7 +58,7 @@ export const NumericStepper: React.FC<NumericStepperProps> = ({
       />
       <Space />
       <FlatButton
-        leftIcon={faPlus}
+        leftIcon={stenaPlus}
         aria-label={"Increase"}
         disabled={disabled || isMaxReached(value, max)}
         onClick={() => onClick(step)}
