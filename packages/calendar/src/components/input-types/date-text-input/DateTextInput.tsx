@@ -1,6 +1,5 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import { Box, Omit, Row } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaCalendar } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
@@ -144,7 +143,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 <FlatButton
                   size={"small"}
                   disabled={props.disabled}
-                  leftIcon={faCalendarAlt}
+                  leftIcon={stenaCalendar}
                   onClick={toggleCalendar}
                 />
               </Row>
