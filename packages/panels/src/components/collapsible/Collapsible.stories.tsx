@@ -1,7 +1,6 @@
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
 import { Clickable, Column, Row, Space, Text } from "@stenajs-webui/core";
 import {
@@ -12,6 +11,7 @@ import {
   PrimaryButton,
   Tag,
   stenaTrash,
+  stenaSearch,
 } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, Switch, TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -85,7 +85,7 @@ export const Overview = () => {
       <StatefulCollapsible label={"Boosters"}>
         <CollapsibleGroupHeading>Search boosters</CollapsibleGroupHeading>
         <CollapsibleContent>
-          <TextInput iconRight={faSearch} />
+          <TextInput iconRight={stenaSearch} />
         </CollapsibleContent>
         <CollapsibleClickableContent
           contentLeft={<Checkbox value={boosters.new} />}

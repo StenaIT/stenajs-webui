@@ -11,11 +11,10 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";
 import { ButtonGroup } from "../button-group/ButtonGroup";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
-import { stenaCheck } from "../../../icons/ui/Icons-ui";
+import { stenaCheck, stenaSearch } from "../../../icons/ui/Icons-ui";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -97,7 +96,7 @@ export const Standard = () => (
     />
     <ActionMenuItemContent
       label={"Content bottom"}
-      leftIcon={faSearch}
+      leftIcon={stenaSearch}
       bottom={
         <ButtonGroup>
           <SecondaryButton size={"small"} label={"25"} />

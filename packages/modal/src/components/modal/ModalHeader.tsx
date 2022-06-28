@@ -1,4 +1,3 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { FlatButton, stenaTimes } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
