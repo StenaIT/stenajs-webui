@@ -32,3 +32,4 @@ export * from "./components/sidebar-menu/SidebarMenuHeading";
 export * from "./components/sidebar-menu/SidebarMenuLink";
 export * from "./components/sidebar-menu/SidebarMenuCollapsible";
 export * from "./components/sidebar-menu/SidebarMenuSeparator";
+export * from "./components/selected-items-actions-panel/SelectedItemsActionsPanel";
