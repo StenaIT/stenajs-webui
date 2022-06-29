@@ -11,15 +11,16 @@ import {
   Space,
   Text,
 } from "@stenajs-webui/core";
-import {
-  stenaExclamationTriangle,
-  stenaExclamationCircle,
-  stenaCheckCircle,
-} from "@stenajs-webui/elements";
+
 import { Icon } from "../../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
 import { Spinner } from "../../spinner/Spinner";
+import {
+  stenaCheckCircle,
+  stenaExclamationCircle,
+  stenaExclamationTriangle,
+} from "../../../../icons/ui/Icons-ui";
 
 export type BannerVariant =
   | "standard"
