@@ -1,3 +1,16 @@
+# v17.2.0 (Tue Jun 28 2022)
+
+#### 🚀 Enhancement
+
+- Change color of blue-600 to match with "Hav" [#470](https://github.com/StenaIT/stenajs-webui/pull/470) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 2
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.0.0 (Fri Jun 17 2022)
 
 #### 🔩 Dependency Updates
