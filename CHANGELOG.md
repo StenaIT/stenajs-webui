@@ -1,3 +1,33 @@
+# v17.2.0 (Tue Jun 28 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Add SelectedItemsActionsPanel component [#457](https://github.com/StenaIT/stenajs-webui/pull/457) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/theme`
+  - Change color of blue-600 to match with "Hav" [#470](https://github.com/StenaIT/stenajs-webui/pull/470) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.1.2 (Mon Jun 27 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix misaligned StandardTable header when rowCheckbox is true and headerCheckbox is false [#469](https://github.com/StenaIT/stenajs-webui/pull/469) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.1.1 (Wed Jun 22 2022)
 
 #### 🐛 Bug Fix

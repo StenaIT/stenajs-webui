@@ -1,3 +1,15 @@
+# v17.2.0 (Tue Jun 28 2022)
+
+#### 🚀 Enhancement
+
+- Add SelectedItemsActionsPanel component [#457](https://github.com/StenaIT/stenajs-webui/pull/457) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.1.1 (Wed Jun 22 2022)
 
 #### 🐛 Bug Fix
