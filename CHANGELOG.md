@@ -1,3 +1,17 @@
+# v17.4.1 (Wed Jun 29 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/filter`
+  - `SearchFilterDrawer` pass `header` prop down to `SearchFilterPanelHeader` [#472](https://github.com/StenaIT/stenajs-webui/pull/472) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 2
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.2.0 (Tue Jun 28 2022)
 
 #### 🚀 Enhancement
