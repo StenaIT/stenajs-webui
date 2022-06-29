@@ -30,7 +30,7 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
         styles.navBarUserButton,
         className
       )}
-      leftIcon={username != null ? faUser : undefined}
+      leftIcon={username != null ? stenaUser : undefined}
       label={initials ?? username}
       disableArrow
     />
