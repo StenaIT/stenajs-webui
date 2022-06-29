@@ -10,7 +10,7 @@ import {
   Tab,
   TabMenu,
   Tag,
-  StenaSliders,
+  stenaSliders,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
@@ -220,7 +220,7 @@ export const FilterChips = () => {
       )}
     >
       <PageHeaderRow gap={2} alignItems={"center"}>
-        <SecondaryButton leftIcon={StenaSliders} label={"Filters"} />
+        <SecondaryButton leftIcon={stenaSliders} label={"Filters"} />
         <Row gap>
           <Chip variant={"secondary"} label={"All routes"} />
           <Chip variant={"secondary"} label={"All customers"} />

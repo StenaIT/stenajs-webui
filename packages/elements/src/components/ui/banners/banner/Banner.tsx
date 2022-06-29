@@ -11,13 +11,15 @@ import {
   Space,
   Text,
 } from "@stenajs-webui/core";
+import {
+  stenaExclamationTriangle,
+  stenaExclamationCircle,
+  stenaCheckCircle,
+} from "@stenajs-webui/elements";
 import { Icon } from "../../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Spinner } from "../../spinner/Spinner";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
 
 export type BannerVariant =
   | "standard"
@@ -37,11 +39,11 @@ export interface BannerProps {
 }
 
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
-  standard: faExclamationCircle,
-  info: faExclamationCircle,
-  success: faCheckCircle,
-  warning: faExclamationCircle,
-  error: faExclamationTriangle,
+  standard: stenaExclamationCircle,
+  info: stenaExclamationCircle,
+  success: stenaCheckCircle,
+  warning: stenaExclamationCircle,
+  error: stenaExclamationTriangle,
 };
 
 export const Banner: React.FC<BannerProps> = ({

@@ -1,5 +1,4 @@
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
-import { SecondaryButton } from "@stenajs-webui/elements";
+import { SecondaryButton, stenaSliders } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
@@ -22,7 +21,7 @@ export const SearchFilterButton: React.VFC<SearchFilterDrawerButtonProps> = ({
   return (
     <SecondaryButton
       label={label}
-      leftIcon={faSlidersH}
+      leftIcon={stenaSliders}
       onClick={onClickButton}
     />
   );

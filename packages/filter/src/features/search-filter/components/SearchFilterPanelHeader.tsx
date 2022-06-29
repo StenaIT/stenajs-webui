@@ -3,7 +3,7 @@ import { Heading, Indent, Row } from "@stenajs-webui/core";
 import {
   Icon,
   SecondaryButton,
-  StenaSliders,
+  stenaSliders,
   stenaTimes,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
@@ -25,7 +25,7 @@ export const SearchFilterPanelHeader: React.FC<
     >
       <Row alignItems={"center"}>
         <Icon
-          icon={StenaSliders}
+          icon={stenaSliders}
           color={cssColor("--lhds-color-ui-800")}
           size={24}
         />

@@ -1,4 +1,3 @@
-import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
 import { Box, Column, Row, Space, useDelayedFalse } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import {
@@ -23,6 +22,7 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
+import { stenaClock } from "@stenajs-webui/elements";
 
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
@@ -163,7 +163,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           onEnter={onEnter}
           onBlur={onBlur}
           disabled={disabled}
-          separatorIcon={faClock}
+          separatorIcon={stenaClock}
           typeLeft={"date"}
           typeRight={"time"}
           placeholderLeft={"yyyy-mm-dd"}

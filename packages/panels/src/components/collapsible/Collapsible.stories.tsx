@@ -1,6 +1,5 @@
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons/faFolderOpen";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
 import { Clickable, Column, Row, Space, Text } from "@stenajs-webui/core";
 import {
   Badge,
@@ -521,13 +520,13 @@ export const CrazyStory = () => {
         >
           <CollapsibleGroupHeading>Grouped header</CollapsibleGroupHeading>
           <CollapsibleClickableContent
-            contentRight={<FlatButton leftIcon={faTrashAlt} size={"small"} />}
+            contentRight={<FlatButton leftIcon={stenaTrash} size={"small"} />}
             onClick={() => alert("Deleted")}
           >
             Hover on row with icon
           </CollapsibleClickableContent>
           <CollapsibleClickableContent
-            contentRight={<FlatButton leftIcon={faTrashAlt} size={"small"} />}
+            contentRight={<FlatButton leftIcon={stenaTrash} size={"small"} />}
             onClick={() => alert("Deleted")}
           >
             Hover on icon
