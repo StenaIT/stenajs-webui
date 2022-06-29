@@ -7,7 +7,7 @@ import { SecondaryButton } from "./SecondaryButton";
 import { FlatButton } from "./FlatButton";
 import { Icon } from "../icon/Icon";
 import { Story } from "@storybook/react";
-import { stenaCheck } from "../../../icons/ui/Icons-ui";
+import { stenaCheck } from "../../../icons/ui/IconsUi";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 

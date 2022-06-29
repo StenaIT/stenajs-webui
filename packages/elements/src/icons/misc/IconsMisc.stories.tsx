@@ -5,10 +5,9 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Row, Text } from "@stenajs-webui/core";
 import { Icon } from "../../components/ui/icon/Icon";
-import _ from "lodash";
 
 export default {
-  title: "elements/Icons/misc",
+  title: "elements/Icons/Misc",
 };
 
 const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {

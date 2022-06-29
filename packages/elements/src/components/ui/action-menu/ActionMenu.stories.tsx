@@ -14,7 +14,7 @@ import { ButtonGroup } from "../button-group/ButtonGroup";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
-import { stenaCheck, stenaSearch } from "../../../icons/ui/Icons-ui";
+import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",

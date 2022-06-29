@@ -47,14 +47,14 @@ import {
   stenaPhone,
   stenaSortUp,
   stenaSortDown,
-} from "./Icons-ui";
+} from "./IconsUi";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Row, Text } from "@stenajs-webui/core";
 import { Icon } from "../../components/ui/icon/Icon";
 
 export default {
-  title: "elements/Icons/ui",
+  title: "elements/Icons/UI",
 };
 
 const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {

@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
 import { getDataProps } from "@stenajs-webui/core";
-import { stenaTimes } from "../../../icons/ui/Icons-ui";
+import { stenaTimes } from "../../../icons/ui/IconsUi";
 
 export type ChipVariant = "primary" | "secondary";
 

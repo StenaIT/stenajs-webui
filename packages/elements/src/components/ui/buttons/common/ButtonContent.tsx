@@ -5,7 +5,7 @@ import cx from "classnames";
 import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./ButtonContent.module.css";
-import { stenaCheck } from "../../../../icons/ui/Icons-ui";
+import { stenaCheck } from "../../../../icons/ui/IconsUi";
 
 export interface ButtonContentProps {
   label?: string;

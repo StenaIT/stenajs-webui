@@ -20,7 +20,7 @@ import {
   stenaCheckCircle,
   stenaExclamationCircle,
   stenaExclamationTriangle,
-} from "../../../../icons/ui/Icons-ui";
+} from "../../../../icons/ui/IconsUi";
 
 export type BannerVariant =
   | "standard"
