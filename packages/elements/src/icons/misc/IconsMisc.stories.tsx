@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { stenaCombined } from "./Icons-misc";
+import { stenaCombined } from "./IconsMisc";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Row, Text } from "@stenajs-webui/core";
