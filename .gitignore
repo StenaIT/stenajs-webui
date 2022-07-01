@@ -22,3 +22,4 @@ yarn-error.log*
 .idea
 build
 lerna-debug.log
+.vscode/settings.json
