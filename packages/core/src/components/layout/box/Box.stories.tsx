@@ -1,5 +1,5 @@
 import * as React from "react";
-import markdown from "./Box.md";
+import markdown from "./Box.md?raw";
 import { Box, BoxProps } from "./Box";
 import { Text } from "../../text/Text";
 import { Story } from "@storybook/react";

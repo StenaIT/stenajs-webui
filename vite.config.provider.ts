@@ -3,7 +3,7 @@ import svgr from "vite-plugin-svgr";
 import react from "@vitejs/plugin-react";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
-export const createViteConfig = (pkg) => {
+export const createViteConfig = (pkg: any) => {
   const externalPackages = [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),

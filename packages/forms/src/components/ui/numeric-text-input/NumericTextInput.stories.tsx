@@ -2,7 +2,7 @@ import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { useState } from "react";
-import markdown from "./NumericTextInput.md";
+import markdown from "./NumericTextInput.md?raw";
 import {
   NumericInputValueProps,
   useNumericInputValue,

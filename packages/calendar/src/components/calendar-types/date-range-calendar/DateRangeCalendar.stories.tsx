@@ -1,6 +1,6 @@
 import { addDays, format } from "date-fns";
 import * as React from "react";
-import markdown from "./DateRangeCalendar.md";
+import markdown from "./DateRangeCalendar.md?raw";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
 import { DateRangeCalendar, DateRangeCalendarProps } from "./DateRangeCalendar";
 import { useDateRangeCalendarState } from "./hooks/UseDateRangeCalendarState";
