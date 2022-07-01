@@ -1,3 +1,21 @@
+# v17.9.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Added four more icons from the Stena UI set [#479](https://github.com/StenaIT/stenajs-webui/pull/479) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### 🏠 Internal
+
+- Use vite builder for storybook [#477](https://github.com/StenaIT/stenajs-webui/pull/477) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

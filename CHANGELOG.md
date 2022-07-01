@@ -1,3 +1,27 @@
+# v17.9.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Added four more icons from the Stena UI set [#479](https://github.com/StenaIT/stenajs-webui/pull/479) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### 🐛 Bug Fix
+
+- Added windows vscode settings.json to the .gitignore [#478](https://github.com/StenaIT/stenajs-webui/pull/478) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### 🏠 Internal
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`
+  - Use vite builder for storybook [#477](https://github.com/StenaIT/stenajs-webui/pull/477) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.8.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

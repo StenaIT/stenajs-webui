@@ -1,3 +1,15 @@
+# v17.9.0 (Fri Jul 01 2022)
+
+#### 🏠 Internal
+
+- Use vite builder for storybook [#477](https://github.com/StenaIT/stenajs-webui/pull/477) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.8.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
