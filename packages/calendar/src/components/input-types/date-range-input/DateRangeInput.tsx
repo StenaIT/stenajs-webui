@@ -1,4 +1,3 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import { Row, Space } from "@stenajs-webui/core";
 import { TextInput, ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { format } from "date-fns";
@@ -13,7 +12,7 @@ import {
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
-import { Icon } from "@stenajs-webui/elements";
+import { Icon, stenaCalendar } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
@@ -143,7 +142,7 @@ export const DateRangeInput = <T extends {}>({
     >
       <Row alignItems={"center"}>
         <TextInput
-          iconLeft={faCalendarAlt}
+          iconLeft={stenaCalendar}
           onFocus={showCalendarStartDate}
           value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}
@@ -161,7 +160,7 @@ export const DateRangeInput = <T extends {}>({
         />
         <Space />
         <TextInput
-          iconLeft={faCalendarAlt}
+          iconLeft={stenaCalendar}
           onFocus={showCalendarEndDate}
           value={value?.endDate ? format(value.endDate, displayFormat) : ""}
           placeholder={placeholderEndDate}

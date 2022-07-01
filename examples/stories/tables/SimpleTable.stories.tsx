@@ -1,4 +1,3 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import {
   Box,
   Clickable,
@@ -9,7 +8,7 @@ import {
   Text,
 } from "@stenajs-webui/core";
 import * as React from "react";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import { PrimaryButton, stenaPlus } from "@stenajs-webui/elements";
 
 export default {
   title: "examples/Tables/Simple",
@@ -102,7 +101,7 @@ export const SimpleTable = () => {
           </table>
           <Space />
           <Row indent justifyContent={"flex-start"}>
-            <PrimaryButton leftIcon={faPlus} />
+            <PrimaryButton leftIcon={stenaPlus} />
           </Row>
         </Spacing>
       </Box>

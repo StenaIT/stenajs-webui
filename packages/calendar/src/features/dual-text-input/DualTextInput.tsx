@@ -1,6 +1,4 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import {
   Box,
   BoxProps,
@@ -9,7 +7,12 @@ import {
   Row,
   SeparatorLine,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  Icon,
+  stenaCalendar,
+  stenaAngleDown,
+} from "@stenajs-webui/elements";
 import {
   TextInput,
   TextInputBox,
@@ -166,7 +169,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
           <Row alignItems={"center"}>
             <Indent num={0.5}>
               <FlatButton
-                leftIcon={faCalendarAlt}
+                leftIcon={stenaCalendar}
                 onClick={onClickCalendar}
                 disabled={disabled}
                 size={"small"}
@@ -181,7 +184,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
 
                 <Indent num={0.5}>
                   <FlatButton
-                    leftIcon={faAngleDown}
+                    leftIcon={stenaAngleDown}
                     onClick={onClickArrowDown}
                     disabled={disabled}
                     size={"small"}

@@ -1,8 +1,11 @@
 import * as React from "react";
 import { Heading, Indent, Row } from "@stenajs-webui/core";
-import { Icon, SecondaryButton } from "@stenajs-webui/elements";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
+import {
+  Icon,
+  SecondaryButton,
+  stenaSliders,
+  stenaTimes,
+} from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 
 interface SearchFilterPanelHeaderProps {
@@ -22,14 +25,14 @@ export const SearchFilterPanelHeader: React.FC<
     >
       <Row alignItems={"center"}>
         <Icon
-          icon={faSlidersH}
+          icon={stenaSliders}
           color={cssColor("--lhds-color-ui-800")}
           size={24}
         />
         <Indent />
         <Heading variant={"h4"}>{header}</Heading>
       </Row>
-      <SecondaryButton leftIcon={faTimes} onClick={onRequestClose} />
+      <SecondaryButton leftIcon={stenaTimes} onClick={onRequestClose} />
     </Row>
   );
 };

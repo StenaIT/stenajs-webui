@@ -10,11 +10,12 @@ import {
   Tab,
   TabMenu,
   Tag,
+  stenaSliders,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
+
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";
 import { PageHeaderRow } from "./PageHeaderRow";
@@ -223,7 +224,7 @@ export const FilterChips = () => {
       )}
     >
       <PageHeaderRow gap={2} alignItems={"center"}>
-        <SecondaryButton leftIcon={faSlidersH} label={"Filters"} />
+        <SecondaryButton leftIcon={stenaSliders} label={"Filters"} />
         <Row gap>
           <Chip variant={"secondary"} label={"All routes"} />
           <Chip variant={"secondary"} label={"All customers"} />

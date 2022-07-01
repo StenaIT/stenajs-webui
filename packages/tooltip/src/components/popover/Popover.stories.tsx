@@ -1,4 +1,3 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import {
   Box,
   Column,
@@ -8,7 +7,7 @@ import {
   Spacing,
   Text,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon } from "@stenajs-webui/elements";
+import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Popover } from "./Popover";
 import { ActionPrompt } from "./ActionPrompt";
@@ -22,7 +21,7 @@ export default {
 export const Standard = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />}>
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );
@@ -30,7 +29,7 @@ export const Standard = () => (
 export const OnClick = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"}>
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );
@@ -38,7 +37,7 @@ export const OnClick = () => (
 export const NoArrow = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );
@@ -60,7 +59,7 @@ export const NoPadding = () => (
       }
       trigger={"click"}
     >
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );
@@ -92,7 +91,7 @@ export const Variants = () => (
     <Popover
       content={
         <Row>
-          <Icon icon={faTrash} />
+          <Icon icon={stenaTrash} />
           <Indent />
           <Text>Something went wrong.</Text>
         </Row>
@@ -108,7 +107,7 @@ export const Variants = () => (
 export const ControlOpen = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<ActionPrompt />} visible>
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );
@@ -122,7 +121,7 @@ const Alerter = () => {
 export const Lazy = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover content={<Alerter />} trigger={"click"} lazy>
-      <FlatButton leftIcon={faTrash} />
+      <FlatButton leftIcon={stenaTrash} />
     </Popover>
   </Box>
 );

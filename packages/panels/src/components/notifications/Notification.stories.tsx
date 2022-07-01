@@ -1,6 +1,6 @@
 import { Column } from "@stenajs-webui/core";
 import * as React from "react";
-import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
+import { stenaUser } from "@stenajs-webui/elements";
 import { SeparatorLine } from "@stenajs-webui/core";
 import { subHours } from "date-fns";
 import { Notification } from "./Notification";
@@ -33,7 +33,7 @@ export const Standard = () => (
     <Notification
       title={"You have a friend request"}
       text={"Everyone wants to be your friend."}
-      icon={faUser}
+      icon={stenaUser}
       date={subHours(new Date(), 48)}
     />
   </Column>

@@ -1,10 +1,10 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import cx from "classnames";
 import * as React from "react";
 import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
 import { getDataProps } from "@stenajs-webui/core";
+import { stenaTimes } from "../../../icons/ui/IconsUi";
 
 export type ChipVariant = "primary" | "secondary";
 
@@ -57,7 +57,7 @@ export const Chip: React.FC<ChipProps> = ({
           className={cx(styles.chipCell, styles.close)}
           onClick={onClickRemove}
         >
-          <Icon icon={faTimes} size={10} />
+          <Icon icon={stenaTimes} size={10} />
         </button>
       )}
     </div>

@@ -2,8 +2,8 @@ import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
 import * as React from "react";
 import cx from "classnames";
 import styles from "./NavBarNotificationButton.module.css";
-import { faBell } from "@fortawesome/free-solid-svg-icons/faBell";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { stenaBell } from "@stenajs-webui/elements";
 
 export interface NavBarNotificationButtonProps
   extends Omit<FlatButtonProps, "leftIcon" | "rightIcon" | "label"> {
@@ -20,7 +20,7 @@ export const NavBarNotificationButton: React.FC<
   className,
   labelClassName,
   iconClassName,
-  icon = faBell,
+  icon = stenaBell,
   ...buttonProps
 }) => {
   const hasCount = count > 0;

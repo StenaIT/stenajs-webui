@@ -1,7 +1,11 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 import { Box, BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
-import { FlatButton, Icon, InputSpinner } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  Icon,
+  InputSpinner,
+  stenaInfoCircle,
+} from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import {
   ButtonWithPopoverProps,
@@ -110,7 +114,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   zIndex={"var(--swui-sticky-popover-z-index)" as any}
                 >
                   <Icon
-                    icon={faInfoCircle}
+                    icon={stenaInfoCircle}
                     size={14}
                     color={cssColor("--lhds-color-blue-400")}
                   />
