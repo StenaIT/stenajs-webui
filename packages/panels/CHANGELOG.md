@@ -1,3 +1,15 @@
+# v17.5.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Give PageHeader a white background [#473](https://github.com/StenaIT/stenajs-webui/pull/473) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.2.0 (Tue Jun 28 2022)
 
 #### 🚀 Enhancement
