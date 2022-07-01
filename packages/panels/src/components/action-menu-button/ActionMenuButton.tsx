@@ -8,10 +8,10 @@ import {
   PrimaryButton,
   PrimaryButtonProps,
   SecondaryButton,
+  stenaAngleDown,
 } from "@stenajs-webui/elements";
 import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Plugin as TippyPlugin, Props as TippyProps } from "tippy.js";
 
 export interface ActionMenuButtonProps
@@ -40,7 +40,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   renderItems,
   placement = "bottom",
   buttonComponent: Button,
-  rightIcon = faAngleDown,
+  rightIcon = stenaAngleDown,
   portalTarget = "parent",
   zIndex,
   menuWidth,

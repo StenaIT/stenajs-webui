@@ -10,11 +10,12 @@ import {
   Tab,
   TabMenu,
   Tag,
+  stenaSliders,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
-import { faSlidersH } from "@fortawesome/free-solid-svg-icons/faSlidersH";
+
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";
 import { PageHeaderRow } from "./PageHeaderRow";
@@ -107,53 +108,57 @@ export const Variants = () => {
   const variants: PageHeadingVariant[] = ["compact", "standard", "relaxed"];
   const [tabId, setTabId] = useState(0);
 
-  return variants.map((variant) => (
-    <Fragment key={variant}>
-      <PageHeader
-        renderBreadCrumbs={() => (
-          <BreadCrumbs>
-            <Crumb label={"Home"} />
-            <Crumb label={"Customer"} />
-            <Crumb label={"Booking"} />
-          </BreadCrumbs>
-        )}
-        renderPageHeading={() => (
-          <PageHeading
-            heading={variant}
-            variant={variant}
-            contentLeft={<Tag label={"56"} />}
-            contentRight={
-              <>
-                <SecondaryButton label={"Discard"} />
-                <Space />
-                <PrimaryButton label={"Save"} />
-              </>
-            }
+  return (
+    <Box background={cssColor("--lhds-color-ui-300")}>
+      {variants.map((variant) => (
+        <Fragment key={variant}>
+          <PageHeader
+            renderBreadCrumbs={() => (
+              <BreadCrumbs>
+                <Crumb label={"Home"} />
+                <Crumb label={"Customer"} />
+                <Crumb label={"Booking"} />
+              </BreadCrumbs>
+            )}
+            renderPageHeading={() => (
+              <PageHeading
+                heading={variant}
+                variant={variant}
+                contentLeft={<Tag label={"56"} />}
+                contentRight={
+                  <>
+                    <SecondaryButton label={"Discard"} />
+                    <Space />
+                    <PrimaryButton label={"Save"} />
+                  </>
+                }
+              />
+            )}
+            renderTabs={() => (
+              <TabMenu>
+                <Tab
+                  label={"Selected"}
+                  selected={tabId === 0}
+                  onClick={() => setTabId(0)}
+                />
+                <Tab
+                  label={"Something"}
+                  selected={tabId === 1}
+                  onClick={() => setTabId(1)}
+                />
+                <Tab
+                  label={"Something else"}
+                  selected={tabId === 2}
+                  onClick={() => setTabId(2)}
+                />
+              </TabMenu>
+            )}
           />
-        )}
-        renderTabs={() => (
-          <TabMenu>
-            <Tab
-              label={"Selected"}
-              selected={tabId === 0}
-              onClick={() => setTabId(0)}
-            />
-            <Tab
-              label={"Something"}
-              selected={tabId === 1}
-              onClick={() => setTabId(1)}
-            />
-            <Tab
-              label={"Something else"}
-              selected={tabId === 2}
-              onClick={() => setTabId(2)}
-            />
-          </TabMenu>
-        )}
-      />
-      <Space num={4} />
-    </Fragment>
-  ));
+          <Space num={4} />
+        </Fragment>
+      ))}
+    </Box>
+  );
 };
 
 export const VariantsWithNoHeadingContent = () => {
@@ -219,7 +224,7 @@ export const FilterChips = () => {
       )}
     >
       <PageHeaderRow gap={2} alignItems={"center"}>
-        <SecondaryButton leftIcon={faSlidersH} label={"Filters"} />
+        <SecondaryButton leftIcon={stenaSliders} label={"Filters"} />
         <Row gap>
           <Chip variant={"secondary"} label={"All routes"} />
           <Chip variant={"secondary"} label={"All customers"} />

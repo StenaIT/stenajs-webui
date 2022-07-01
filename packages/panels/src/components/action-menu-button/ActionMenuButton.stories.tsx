@@ -1,4 +1,4 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+import { stenaCheck } from "@stenajs-webui/elements";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
@@ -67,7 +67,7 @@ export const Overview = () => (
               />
               <ActionMenuItem label={"Loading"} loading />
               <ActionMenuItem label={"Disabled"} disabled />
-              <ActionMenuItem label={"Icon right"} rightIcon={faCheck} />
+              <ActionMenuItem label={"Icon right"} rightIcon={stenaCheck} />
               <ActionMenuItemContent
                 label={"Content right"}
                 right={
@@ -102,7 +102,7 @@ export const Overview = () => (
               />
               <ActionMenuItem
                 label={"Icon right disabled"}
-                rightIcon={faCheck}
+                rightIcon={stenaCheck}
                 disabled
               />
               <ActionMenuItem label={"Custom right"}>

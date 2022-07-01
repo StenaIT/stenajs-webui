@@ -1,6 +1,5 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { Row, Space, Text, TextSize } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import { Icon, stenaCheck } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -187,7 +186,11 @@ const InnerOption: React.VFC<InnerOptionProps> = ({
       {label}
     </Text>
     {selected && (
-      <Icon color={resolveIconColor(theme, focused)} icon={faCheck} size={12} />
+      <Icon
+        color={resolveIconColor(theme, focused)}
+        icon={stenaCheck}
+        size={12}
+      />
     )}
   </Row>
 );

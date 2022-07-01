@@ -2,9 +2,12 @@ import * as React from "react";
 import { useMemo, useState } from "react";
 import { createStandardDateRangePresets } from "./PresetFactory";
 import { Column, Row, Space, Text } from "@stenajs-webui/core";
-import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
+import {
+  FlatButton,
+  PrimaryButton,
+  stenaAngleLeft,
+  stenaAngleRight,
+} from "@stenajs-webui/elements";
 import { CalendarPreset } from "./CalendarPreset";
 
 export interface PresetPickerProps {
@@ -28,14 +31,14 @@ export const PresetPicker: React.FC<PresetPickerProps> = ({
       >
         <FlatButton
           size={"small"}
-          leftIcon={faAngleLeft}
+          leftIcon={stenaAngleLeft}
           disabled={pageIndex === 0}
           onClick={() => setPageIndex(pageIndex - 1)}
         />
         <Text>{currentPage.label}</Text>
         <FlatButton
           size={"small"}
-          leftIcon={faAngleRight}
+          leftIcon={stenaAngleRight}
           disabled={pageIndex === pages.length - 1}
           onClick={() => setPageIndex(pageIndex + 1)}
         />

@@ -1,9 +1,12 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { Box, Column, Indent, Row, useBoolean } from "@stenajs-webui/core";
-import { ActionMenu, FlatButton } from "@stenajs-webui/elements";
+import {
+  ActionMenu,
+  FlatButton,
+  stenaAngleDown,
+} from "@stenajs-webui/elements";
 import { Popover } from "@stenajs-webui/tooltip";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import { Checkbox, CheckboxProps } from "@stenajs-webui/forms";
 
 export interface CheckboxMenuProps extends CheckboxProps {
@@ -43,7 +46,7 @@ export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
         >
           <Checkbox {...checkboxProps} />
           <Indent num={0.5} />
-          <FlatButton size={"small"} onClick={open} leftIcon={faAngleDown} />
+          <FlatButton size={"small"} onClick={open} leftIcon={stenaAngleDown} />
         </Row>
       </Box>
     </Popover>
