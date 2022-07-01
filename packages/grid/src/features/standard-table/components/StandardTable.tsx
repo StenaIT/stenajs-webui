@@ -1,8 +1,7 @@
-import { useDomId } from "@stenajs-webui/core";
 import { ErrorScreen } from "@stenajs-webui/panels";
 import cx from "classnames";
 import * as React from "react";
-import { CSSProperties, ReactNode, useMemo } from "react";
+import { CSSProperties, ReactNode, useMemo, useId } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { GroupConfigsAndIdsForRowsContext } from "../context/GroupConfigsAndIdsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
@@ -152,7 +151,7 @@ export const StandardTable = function StandardTable<
   onKeyDown,
   ...props
 }: StandardTableProps<TItem, TColumnKey, TColumnGroupKey>) {
-  const generatedTableId = useDomId();
+  const generatedTableId = useId();
   const {
     initialSortOrderDesc,
     initialSortOrder,

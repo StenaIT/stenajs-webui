@@ -1,3 +1,17 @@
+# v17.8.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Replace useDomId with useId [#476](https://github.com/StenaIT/stenajs-webui/pull/476) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/core`, `@stenajs-webui/grid`
+  - Replace useDomId with useId [#476](https://github.com/StenaIT/stenajs-webui/pull/476) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
