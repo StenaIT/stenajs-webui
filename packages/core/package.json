@@ -18,7 +18,6 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "jest",
     "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
     "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
     "clean": "rimraf dist",
