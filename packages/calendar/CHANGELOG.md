@@ -1,3 +1,17 @@
+# v17.6.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Use Stena icons instead of Font Awesome icons [#471](https://github.com/StenaIT/stenajs-webui/pull/471) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.0.0 (Fri Jun 17 2022)
 
 #### 💥 Breaking Change

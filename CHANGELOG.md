@@ -1,3 +1,18 @@
+# v17.6.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Use Stena icons instead of Font Awesome icons [#471](https://github.com/StenaIT/stenajs-webui/pull/471) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.5.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
