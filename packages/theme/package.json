@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
-    "start": "yarn tsc -p tsconfig.build.json && yarn vite build",
+    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
     "clean": "rimraf dist",
     "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
