@@ -13,6 +13,9 @@ import {
   stenaArrowWideRight,
   stenaArrowWideUp,
   stenaArrowWideDown,
+  stenaBusinessAgreement,
+  stenaBusinessCustomer,
+  stenaBusinessSignature,
   stenaTrash,
   stenaTimes,
   stenaSliders,
@@ -37,6 +40,7 @@ import {
   stenaInfoCircleFilled,
   stenaCheckCircle,
   stenaClock,
+  stenaClockFilled,
   stenaArrowCircleDown,
   stenaArrowCircleLeft,
   stenaArrowCircleRight,
@@ -120,6 +124,14 @@ export const ArrowCircleRight = () => <IconDemo icon={stenaArrowCircleRight} />;
 export const ArrowCircleUp = () => <IconDemo icon={stenaArrowCircleUp} />;
 export const ArrowCircleDown = () => <IconDemo icon={stenaArrowCircleDown} />;
 
+export const BusinessAgreement = () => (
+  <IconDemo icon={stenaBusinessAgreement} />
+);
+export const BusinessCustomer = () => <IconDemo icon={stenaBusinessCustomer} />;
+export const BusinessSignature = () => (
+  <IconDemo icon={stenaBusinessSignature} />
+);
+
 export const Times = () => <IconDemo icon={stenaTimes} />;
 export const Sliders = () => <IconDemo icon={stenaSliders} />;
 export const Check = () => <IconDemo icon={stenaCheck} />;
@@ -142,6 +154,7 @@ export const BellFilled = () => <IconDemo icon={stenaBellFilled} />;
 export const Calendar = () => <IconDemo icon={stenaCalendar} />;
 export const CalendarFilled = () => <IconDemo icon={stenaCalendarFilled} />;
 export const Clock = () => <IconDemo icon={stenaClock} />;
+export const ClockFilled = () => <IconDemo icon={stenaClockFilled} />;
 export const Phone = () => <IconDemo icon={stenaPhone} />;
 export const Pen = () => <IconDemo icon={stenaPen} />;
 export const Trash = () => <IconDemo icon={stenaTrash} />;
@@ -156,12 +169,15 @@ export const InfoCircleFilled = () => <IconDemo icon={stenaInfoCircleFilled} />;
 export const ExclamationTriangle = () => (
   <IconDemo icon={stenaExclamationTriangle} />
 );
+
 export const ExclamationTriangleFilled = () => (
   <IconDemo icon={stenaExclamationTriangleFilled} />
 );
+
 export const ExclamationCircle = () => (
   <IconDemo icon={stenaExclamationCircle} />
 );
+
 export const ExclamationCircleFilled = () => (
   <IconDemo icon={stenaExclamationCircleFilled} />
 );
