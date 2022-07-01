@@ -6,7 +6,7 @@ import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuSeparator } from "./ActionMenuSeparator";
 import * as React from "react";
-import markdown from "./ActionMenu.md";
+import markdown from "./ActionMenu.md?raw";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";

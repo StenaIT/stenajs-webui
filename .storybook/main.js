@@ -1,7 +1,14 @@
+const { mergeConfig } = require("vite");
+const svgr = require("vite-plugin-svgr").default;
+const cssInjectedByJsPlugin = require("vite-plugin-css-injected-by-js");
+
+/** @type {import('@storybook/builder-vite').StorybookViteConfig} */
 module.exports = {
+  core: { builder: "@storybook/builder-vite" },
   stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
   typescript: {
-    reactDocgen: process.env.NODE_ENV === "production" ? "react-docgen-typescript" : false,
+    reactDocgen:
+      process.env.NODE_ENV === "production" ? "react-docgen-typescript" : false,
   },
   addons: [
     "@storybook/addon-viewport",
@@ -19,38 +26,9 @@ module.exports = {
       },
     },
   ],
-  webpackFinal: async (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
-
-    // Remove the existing css rule
-    config.module.rules = config.module.rules.filter(
-      (f) => f.test?.toString() !== "/\\.css$/"
-    );
-
-    // Make whatever fine-grained changes you need
-    config.module.rules.push({
-      test: /\.css$/i,
-      use: [
-        "style-loader",
-        {
-          loader: "css-loader",
-          options: {
-            importLoaders: 1,
-            modules: { auto: true },
-          },
-        },
-        "postcss-loader",
-      ],
+  viteFinal(config, { configType }) {
+    return mergeConfig(config, {
+      plugins: [svgr(), cssInjectedByJsPlugin({ topExecutionPriority: false })],
     });
-
-    config.module.rules.unshift({
-      test: /\.svg$/,
-      use: ["@svgr/webpack", "file-loader"],
-    });
-
-    // Return the altered config
-    return config;
   },
 };
