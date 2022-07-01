@@ -15,7 +15,7 @@ export const wrapActionWithReducerIdGate =
     return {
       type: "REDUCER_ID_GATE:ACTION",
       reducerId,
-      action: actionCreator(...args),
+      action: actionCreator(...(args as any)),
     };
   };
 

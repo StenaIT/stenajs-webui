@@ -57,5 +57,5 @@ export * from "./features/grid-cell/hooks/UseGridNavigation";
 export * from "./features/grid-cell/hooks/UseGridNavigationOptionsFromContext";
 export * from "./features/grid-cell/hooks/UseRevertableValue";
 
-export { SortOrderIconVariant } from "./features/table-ui/components/table/SortOrderIcon";
-export { SortOrderDirection } from "./features/table-ui/components/table/SortOrderIcon";
+export type { SortOrderIconVariant } from "./features/table-ui/components/table/SortOrderIcon";
+export type { SortOrderDirection } from "./features/table-ui/components/table/SortOrderIcon";

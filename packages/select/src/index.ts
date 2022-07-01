@@ -7,4 +7,4 @@ export * from "./components/ui/ChipMultiSelect/ChipMultiSelect";
 export * from "./components/ui/ChipMultiSelect/GroupedChipMultiSelect";
 export * from "./SelectTheme";
 export * from "./util/StylesBuilder";
-export { DropdownOption } from "./components/ui/GroupedMultiSelectTypes";
+export type { DropdownOption } from "./components/ui/GroupedMultiSelectTypes";
