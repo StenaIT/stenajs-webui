@@ -1,3 +1,16 @@
+# v17.7.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Build packages with vite [#475](https://github.com/StenaIT/stenajs-webui/pull/475) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.6.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

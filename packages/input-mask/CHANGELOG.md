@@ -1,3 +1,15 @@
+# v17.7.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Build packages with vite [#475](https://github.com/StenaIT/stenajs-webui/pull/475) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.0.0 (Fri Jun 17 2022)
 
 #### 🔩 Dependency Updates
