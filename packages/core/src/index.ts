@@ -24,6 +24,7 @@ export * from "./components/heading/Heading";
 
 export * from "./types/ElementProps";
 export * from "./types/DeepPartial";
+export * from "./types/FlattenUnion";
 export * from "./types/Omit";
 export * from "./types/PickByValue";
 
@@ -46,5 +47,6 @@ export * from "./hooks/UseTimeoutState";
 
 export * from "./utils/SwitchCaseExhauster";
 export * from "./utils/TruthyKeysAsList";
+export * from "./utils/PropsForwarder";
 export * from "./utils/parsers/NumberParser";
 export { booleanOrNumberToNumber } from "./utils/BooleanOrNumberToNumber";

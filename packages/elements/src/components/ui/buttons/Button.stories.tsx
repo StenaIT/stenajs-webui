@@ -1,4 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
@@ -8,6 +7,7 @@ import { SecondaryButton } from "./SecondaryButton";
 import { FlatButton } from "./FlatButton";
 import { Icon } from "../icon/Icon";
 import { Story } from "@storybook/react";
+import { stenaCheck } from "../../../icons/ui/IconsUi";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
@@ -105,7 +105,7 @@ export const Overview = () => (
                   <ButtonVariant
                     size={size}
                     label={"Submit"}
-                    leftIcon={faCheck}
+                    leftIcon={stenaCheck}
                     rightIcon={faJedi}
                   />
                 </td>
@@ -157,14 +157,14 @@ export const Variants = () => (
                   <ButtonVariant
                     variant={variant}
                     label={"Submit"}
-                    leftIcon={faCheck}
+                    leftIcon={stenaCheck}
                   />
                 </Indent>
                 <Indent>
                   <ButtonVariant
                     variant={variant}
                     label={"Disabled"}
-                    leftIcon={faCheck}
+                    leftIcon={stenaCheck}
                     disabled
                   />
                 </Indent>
@@ -209,7 +209,7 @@ export const WithGenericContentToRight = () => (
                 width={24}
                 height={24}
               >
-                <Icon icon={faCheck} color={"white"} />
+                <Icon icon={stenaCheck} color={"white"} />
               </Column>
             }
           />

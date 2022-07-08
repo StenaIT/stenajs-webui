@@ -1,18 +1,17 @@
 .tab {
   --swui-tab-border-color: var(--lhds-color-ui-200);
-  --swui-tab-bg-color-focus: var(--lhds-color-blue-100);
-  --swui-tab-border-color-hover: var(--lhds-color-ui-400);
+  --swui-tab-border-color-hover: var(--lhds-color-blue-200);
   --swui-tab-border-color-focus: var(--lhds-color-blue-200);
-  --swui-tab-border-color-selected: var(--swui-primary-action-color);
-  --swui-tab-label-color: var(--lhds-color-ui-500);
-  --swui-tab-label-color-selected: var(--lhds-color-ui-700);
+  --swui-tab-border-color-selected: var(--lhds-color-blue-600);
+  --swui-tab-label-color: var(--swui-text-primary-color);
+  --swui-tab-label-color-selected: var(--swui-text-action-color);
+  --swui-tab-outline-color-focus: var(--lhds-color-blue-400);
 
   /*
   State variables
    */
 
   --current-outer-border-bottom-color: transparent;
-  --current-inner-border-bottom-color: var(--swui-tab-border-color);
   --current-inset-shadow: none;
   --current-label-color: var(--swui-tab-label-color);
 
@@ -22,45 +21,35 @@
 
   outline: none;
   height: var(--swui-tab-menu-height);
-  padding: 0;
+  padding: 0 calc(var(--swui-metrics-indent) * 2);
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   font-size: var(--swui-font-size-medium);
   font-family: var(--swui-font-buttons);
+  font-weight: var(--swui-font-weight-text-bold);
   border: none;
-  border-bottom: 1px solid var(--current-outer-border-bottom-color);
+  border-bottom: 2px solid var(--current-outer-border-bottom-color);
   cursor: pointer;
   background-color: transparent;
   color: var(--current-label-color);
 
-  .inner {
-    display: flex;
-    padding: 0 calc(var(--swui-metrics-indent) * 2);
-    border-bottom: 1px solid var(--current-inner-border-bottom-color);
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--current-inset-shadow);
-  }
-
-  &:focus {
-    &:not(.selected) {
-      --current-outer-border-bottom-color: var(--swui-tab-border-color-focus);
-      --current-inner-border-bottom-color: var(--swui-tab-border-color-focus);
-    }
+  &:focus-visible {
+    outline: 1px solid var(--swui-tab-outline-color-focus);
+    box-shadow: inset var(--swui-primary-action-color) 0 0 4px 0;
+    border: none;
+    padding-bottom: 2px;
   }
 
   &.selected {
     --current-outer-border-bottom-color: var(--swui-tab-border-color-selected);
-    --current-inner-border-bottom-color: var(--swui-tab-border-color-selected);
     --current-label-color: var(--swui-tab-label-color-selected);
   }
 
   &:hover {
     &:not(.selected) {
       --current-outer-border-bottom-color: var(--swui-tab-border-color-hover);
-      --current-inner-border-bottom-color: var(--swui-tab-border-color-hover);
     }
   }
 }

@@ -11,9 +11,8 @@ export const useSingleDateSelection = <T>({
   statePerMonth,
   onChangePanel,
 }: SingleDateCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
-  const { currentPanel, setCurrentPanel } = useInternalPanelState(
-    onChangePanel
-  );
+  const { currentPanel, setCurrentPanel } =
+    useInternalPanelState(onChangePanel);
 
   const [dateInFocus, setDateInFocus] = useState(() => value ?? new Date());
 

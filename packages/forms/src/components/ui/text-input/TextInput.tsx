@@ -1,9 +1,8 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { InputProps } from "@stenajs-webui/core";
 import { InputSpinner } from "@stenajs-webui/elements";
-import classNames from "classnames/bind";
+import { stenaCheck, stenaExclamationTriangle } from "@stenajs-webui/elements";
+import cx from "classnames";
 import * as React from "react";
 import { ChangeEvent, CSSProperties, useRef } from "react";
 import { MoveDirection } from "../../../hooks/UseKeyboardNavigation";
@@ -11,8 +10,6 @@ import { useTextInput } from "../../../hooks/UseTextInput";
 import { FullOnChangeProps } from "../types";
 import styles from "./TextInput.module.css";
 import { TextInputIcon } from "./TextInputIcon";
-
-const cx = classNames.bind(styles);
 
 export type TextInputVariant =
   | "standard"
@@ -112,9 +109,9 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
 
   const currentIconRight =
     variant === "success"
-      ? faCheck
+      ? stenaCheck
       : variant === "warning" || variant === "error"
-      ? faExclamationTriangle
+      ? stenaExclamationTriangle
       : iconRight;
 
   const currentContentRight =

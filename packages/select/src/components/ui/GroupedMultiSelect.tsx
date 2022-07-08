@@ -1,6 +1,5 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { Row, Space, Text, TextSize } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import { Icon, stenaCheck } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -12,11 +11,7 @@ import {
   OptionProps,
   Options,
 } from "react-select";
-import {
-  defaultSelectTheme,
-  SelectTheme,
-  selectThemeDark,
-} from "../../SelectTheme";
+import { defaultSelectTheme, SelectTheme } from "../../SelectTheme";
 import {
   convertGroupedDropdownOptionsToInternalOptions,
   convertValueToInternalValue,
@@ -101,15 +96,13 @@ export const GroupedMultiSelect = <TData extends {}>({
   onChange,
   options,
   value,
-  variant = "light",
+  variant = "standard",
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps
 }: GroupedMultiSelectProps<TData>): React.ReactElement<
   GroupedMultiSelectProps<TData>
 > => {
-  const theme = variant === "light" ? defaultSelectTheme : selectThemeDark;
-
   const Option = (
     props: OptionProps<
       InternalDropdownOption<TData>,
@@ -125,7 +118,7 @@ export const GroupedMultiSelect = <TData extends {}>({
         <Row>
           {!isGroupOption && <Space />}
           <InnerOption
-            theme={theme}
+            theme={defaultSelectTheme}
             size={!isGroupOption ? "small" : undefined}
             label={label}
             selected={props.isSelected}
@@ -193,7 +186,11 @@ const InnerOption: React.VFC<InnerOptionProps> = ({
       {label}
     </Text>
     {selected && (
-      <Icon color={resolveIconColor(theme, focused)} icon={faCheck} size={12} />
+      <Icon
+        color={resolveIconColor(theme, focused)}
+        icon={stenaCheck}
+        size={12}
+      />
     )}
   </Row>
 );

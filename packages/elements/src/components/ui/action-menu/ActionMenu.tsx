@@ -13,6 +13,7 @@ export interface ActionMenuProps {
   variant?: ActionMenuVariant;
   shadow?: BoxProps["shadow"];
   trapFocus?: boolean;
+  children?: ReactNode;
 }
 
 export const ActionMenu: React.FC<ActionMenuProps> = ({

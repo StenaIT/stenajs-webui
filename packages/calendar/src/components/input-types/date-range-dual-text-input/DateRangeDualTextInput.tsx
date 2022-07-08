@@ -27,12 +27,13 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRange>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
   autoFocus?: boolean;
   calendarProps?: DateRangeInputCalendarProps<TData>;
+  disabled?: boolean;
 }
 
 export const DateRangeDualTextInput = <TData extends {}>({
@@ -47,6 +48,8 @@ export const DateRangeDualTextInput = <TData extends {}>({
   calendarProps,
   widthLeft = 128,
   widthRight = 128,
+  variant,
+  disabled,
 }: DateRangeDualTextInputProps<TData>) => {
   const { startDate, endDate } = value || {};
 
@@ -119,6 +122,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
       <Popover
         arrow={false}
         lazy
+        disabled={disabled}
         placement={defaultPopoverPlacement}
         onClickOutside={hideCalendar}
         visible={isCalendarVisible}
@@ -143,6 +147,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
           onEsc={onEsc}
           onEnter={onEnter}
           onBlur={onBlur}
+          disabled={disabled}
           separatorIcon={stenaArrowRight}
           typeLeft={"date"}
           typeRight={"date"}
@@ -158,7 +163,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
           onClickRight={onFocusRight}
           inputRefLeft={startDateInputRef}
           inputRefRight={endDateInputRef}
-          variant={startDateIsAfterEnd ? "error" : undefined}
+          variant={startDateIsAfterEnd ? "error" : variant}
           widthLeft={widthLeft}
           widthRight={widthRight}
           minLeft={minDate}

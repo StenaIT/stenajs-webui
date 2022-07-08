@@ -1,8 +1,13 @@
-import { faAngleLeft } from "@fortawesome/free-solid-svg-icons/faAngleLeft";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons/faAngleRight";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Box, Indent, Space, Text } from "@stenajs-webui/core";
-import { Chip, FlatButton, Icon, Tag } from "@stenajs-webui/elements";
+import {
+  Chip,
+  FlatButton,
+  Icon,
+  Tag,
+  stenaAngleLeft,
+  stenaAngleRight,
+} from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, parseISO } from "date-fns";
@@ -611,10 +616,18 @@ const createSalesPerformanceStandardTableConfig = (
     departures: {
       label: "Departures",
       contentLeft: (
-        <FlatButton size={"small"} leftIcon={faAngleLeft} onClick={() => {}} />
+        <FlatButton
+          size={"small"}
+          leftIcon={stenaAngleLeft}
+          onClick={() => {}}
+        />
       ),
       contentRight: (
-        <FlatButton size={"small"} leftIcon={faAngleRight} onClick={() => {}} />
+        <FlatButton
+          size={"small"}
+          leftIcon={stenaAngleRight}
+          onClick={() => {}}
+        />
       ),
       columnOrder: [
         "link",

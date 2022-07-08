@@ -1,3 +1,409 @@
+# v17.9.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Added four more icons from the Stena UI set [#479](https://github.com/StenaIT/stenajs-webui/pull/479) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### 🐛 Bug Fix
+
+- Added windows vscode settings.json to the .gitignore [#478](https://github.com/StenaIT/stenajs-webui/pull/478) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### 🏠 Internal
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`
+  - Use vite builder for storybook [#477](https://github.com/StenaIT/stenajs-webui/pull/477) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.8.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Replace useDomId with useId [#476](https://github.com/StenaIT/stenajs-webui/pull/476) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/core`, `@stenajs-webui/grid`
+  - Replace useDomId with useId [#476](https://github.com/StenaIT/stenajs-webui/pull/476) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.7.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Build packages with vite [#475](https://github.com/StenaIT/stenajs-webui/pull/475) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.6.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Use Stena icons instead of Font Awesome icons [#471](https://github.com/StenaIT/stenajs-webui/pull/471) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.5.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Give PageHeader a white background [#473](https://github.com/StenaIT/stenajs-webui/pull/473) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v17.4.1 (Wed Jun 29 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/filter`
+  - `SearchFilterDrawer` pass `header` prop down to `SearchFilterPanelHeader` [#472](https://github.com/StenaIT/stenajs-webui/pull/472) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 2
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+
+---
+
+# v17.2.0 (Tue Jun 28 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Add SelectedItemsActionsPanel component [#457](https://github.com/StenaIT/stenajs-webui/pull/457) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/theme`
+  - Change color of blue-600 to match with "Hav" [#470](https://github.com/StenaIT/stenajs-webui/pull/470) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.1.2 (Mon Jun 27 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix misaligned StandardTable header when rowCheckbox is true and headerCheckbox is false [#469](https://github.com/StenaIT/stenajs-webui/pull/469) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.1.1 (Wed Jun 22 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Fix key and activeClassName-warnings [#468](https://github.com/StenaIT/stenajs-webui/pull/468) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.1.0 (Wed Jun 22 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/select`
+  - Add generics to ChipMultiSelect and GroupedChipMultiSelect [#465](https://github.com/StenaIT/stenajs-webui/pull/465) ([@nikteg](https://github.com/nikteg) [@juiceit](https://github.com/juiceit) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v17.0.0 (Fri Jun 17 2022)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Upgrade and apply prettier. [#467](https://github.com/StenaIT/stenajs-webui/pull/467) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Update Typescript, React, Jest, etc. [#466](https://github.com/StenaIT/stenajs-webui/pull/466) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v16.1.0 (Fri Jun 17 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Accessible font-sizes using `rem` instead of `px` [#458](https://github.com/StenaIT/stenajs-webui/pull/458) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v16.0.0 (Wed Jun 15 2022)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - Add variant to Select and date inputs [#463](https://github.com/StenaIT/stenajs-webui/pull/463) ([@nikteg](https://github.com/nikteg) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.7.0 (Tue Jun 14 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/forms`
+  - 94903 add disabled state to date components [#464](https://github.com/StenaIT/stenajs-webui/pull/464) (emil.heldring@stenaline.com)
+
+#### 📝 Documentation
+
+- Remove themes from CONTRIBUTING.md [#462](https://github.com/StenaIT/stenajs-webui/pull/462) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Emil Heldring ([@emilheldring95](https://github.com/emilheldring95))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.6.0 (Thu Jun 02 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Nav: New user icon (fixes AB#92613) [#460](https://github.com/StenaIT/stenajs-webui/pull/460) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.5.10 (Thu Jun 02 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Nav: Notification button + animation (fixes AB#92377) [#459](https://github.com/StenaIT/stenajs-webui/pull/459) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.5.9 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/elements`
+  - Add support for data-* and aria-* props [#456](https://github.com/StenaIT/stenajs-webui/pull/456) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.8 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/tooltip`
+  - Add compatibility with Next.js and vitest [#426](https://github.com/StenaIT/stenajs-webui/pull/426) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.7 (Thu May 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Use bigger font in tabmenu items [#455](https://github.com/StenaIT/stenajs-webui/pull/455) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.5.6 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add sidebar menu to rail [#454](https://github.com/StenaIT/stenajs-webui/pull/454) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.5.5 (Tue Apr 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add compact variant to cardbody [#453](https://github.com/StenaIT/stenajs-webui/pull/453) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v15.5.4 (Mon Apr 25 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/panels`
+  - Add SidebarRailMenu [#442](https://github.com/StenaIT/stenajs-webui/pull/442) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.3 (Tue Apr 12 2022)
+
+#### 🐛 Bug Fix
+
+- Remove storybook deploy scripts [#451](https://github.com/StenaIT/stenajs-webui/pull/451) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/panels`
+  - Improve spacing in PageHeader when there are no tabs [#452](https://github.com/StenaIT/stenajs-webui/pull/452) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.2 (Fri Apr 08 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix event propagation bug in onKeyDown in StandardTable [#450](https://github.com/StenaIT/stenajs-webui/pull/450) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.1 (Thu Apr 07 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Pass itemKey to renderProps in StandardTable [#449](https://github.com/StenaIT/stenajs-webui/pull/449) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.0 (Tue Apr 05 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Add PageHeader component (fixes AB#91057) [#447](https://github.com/StenaIT/stenajs-webui/pull/447) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix tabmenu colors (fixes AB#91051) [#448](https://github.com/StenaIT/stenajs-webui/pull/448) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
+# v15.4.1 (Tue Apr 05 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Task 90903: Drawer slide from top and bottom (AB#90903) [#446](https://github.com/StenaIT/stenajs-webui/pull/446) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v15.3.2 (Thu Mar 31 2022)
 
 #### 🐛 Bug Fix

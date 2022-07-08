@@ -85,6 +85,65 @@ export const FromRight = () => {
   );
 };
 
+export const FromTop = () => {
+  const [isOpen, open, close] = useBoolean(false);
+
+  return (
+    <div>
+      <Drawer isOpen={isOpen} onRequestClose={close} slideFrom={"top"}>
+        <Box background={"#9198e5"} flexGrow={1} spacing={2} indent={2}>
+          Drawer content
+        </Box>
+      </Drawer>
+      <PrimaryButton label={"Open"} onClick={open} />
+      <Row justifyContent={"center"} spacing={8}>
+        <Heading>This will be below the overlay.</Heading>
+      </Row>
+    </div>
+  );
+};
+
+export const FromBottom = () => {
+  const [isOpen, open, close] = useBoolean(false);
+
+  return (
+    <div>
+      <Drawer isOpen={isOpen} onRequestClose={close} slideFrom={"bottom"}>
+        <Box background={"#9198e5"} flexGrow={1} spacing={2} indent={2}>
+          Drawer content
+        </Box>
+      </Drawer>
+      <PrimaryButton label={"Open"} onClick={open} />
+      <Row justifyContent={"center"} spacing={8}>
+        <Heading>This will be below the overlay.</Heading>
+      </Row>
+    </div>
+  );
+};
+
+export const CustomHeight = () => {
+  const [isOpen, open, close] = useBoolean(false);
+
+  return (
+    <div>
+      <Drawer
+        isOpen={isOpen}
+        onRequestClose={close}
+        slideFrom={"bottom"}
+        height={"100px"}
+      >
+        <Box background={"#9198e5"} flexGrow={1} spacing={2} indent={2}>
+          Drawer content
+        </Box>
+      </Drawer>
+      <PrimaryButton label={"Open"} onClick={open} />
+      <Row justifyContent={"center"} spacing={8}>
+        <Heading>This will be below the overlay.</Heading>
+      </Row>
+    </div>
+  );
+};
+
 export const WithScroll = () => {
   const [isOpen, open, close] = useBoolean(false);
 

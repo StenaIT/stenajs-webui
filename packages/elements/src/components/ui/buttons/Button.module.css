@@ -1,8 +1,7 @@
 .button {
   /* Theme vars */
-  --swui-button-line-height: 16px;
+  --swui-button-line-height: 1.6rem;
   --swui-button-font-weight: 400;
-  --swui-button-icon-color: var(--swui-white);
   --swui-button-text-size: var(--swui-font-size-medium);
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
@@ -29,6 +28,10 @@
   );
 
   /* Icon */
+  --swui-button-icon-height: 1.6rem;
+  --swui-button-icon-height-large: 2.4rem;
+
+  --swui-button-icon-color: var(--swui-white);
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
   --swui-button-icon-color-hover: var(--swui-button-icon-color);
   --swui-button-icon-color-active: var(--swui-button-icon-color);
@@ -113,7 +116,7 @@
    * Styling
    */
   --current-background-color: var(--swui-button-background-color);
-  --current-icon-height: 16px;
+  --current-icon-height: var(--swui-button-icon-height);
   --current-icon-color: var(--swui-button-icon-color);
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
@@ -167,20 +170,20 @@
    */
 
   &.small {
-    --current-line-height: 16px;
+    --current-line-height: 1.6rem;
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2 - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
-    --current-text-size: 12px;
+    --current-text-size: 1.2rem;
   }
 
   &.large {
-    --current-line-height: 24px;
+    --current-line-height: 2.4rem;
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
-    --current-text-size: 16px;
+    --current-text-size: 1.6rem;
 
     &.iconButton {
-      --current-icon-height: 24px;
+      --current-icon-height: var(--swui-button-icon-height-large);
     }
   }
 

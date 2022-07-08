@@ -1,15 +1,17 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { Children } from "react";
-import { stenaBreadCrumbArrow } from "../../../icons/Icons";
+import { Children, ReactNode } from "react";
+import { stenaArrowRight } from "../../../icons/ui/IconsUi";
 import { Icon } from "../icon/Icon";
 
-export interface BreadCrumbsProps {}
+export interface BreadCrumbsProps {
+  children?: ReactNode;
+}
 
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ children }) => {
   return (
-    <Row alignItems={"center"} spacing indent={2}>
+    <Row alignItems={"center"}>
       {Children.map(children, (child, index) => (
         <>
           {child && (
@@ -17,7 +19,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ children }) => {
               {index > 0 && (
                 <Indent num={2}>
                   <Icon
-                    icon={stenaBreadCrumbArrow}
+                    icon={stenaArrowRight}
                     size={8}
                     color={cssColor("--lhds-color-ui-700")}
                   />

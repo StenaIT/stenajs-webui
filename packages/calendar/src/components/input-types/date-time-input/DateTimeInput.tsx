@@ -1,4 +1,3 @@
-import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";
 import { Box, Column, Row, Space, useDelayedFalse } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import {
@@ -23,15 +22,17 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
+import { stenaClock } from "@stenajs-webui/elements";
 
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
   autoFocus?: boolean;
+  disabled?: boolean;
 }
 
 export const DateTimeInput: React.FC<DateTimeInputProps> = ({
@@ -45,6 +46,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   widthLeft = 128,
   widthRight = 80,
   maxDate = defaultMaxDate,
+  variant,
+  disabled,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -118,6 +121,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
       <Popover
         arrow={false}
         lazy
+        disabled={disabled}
         placement={defaultPopoverPlacement}
         visible={isCalendarVisible || isTimePickerVisible}
         onClickOutside={hideAll}
@@ -158,7 +162,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           onEsc={onEsc}
           onEnter={onEnter}
           onBlur={onBlur}
-          separatorIcon={faClock}
+          disabled={disabled}
+          separatorIcon={stenaClock}
           typeLeft={"date"}
           typeRight={"time"}
           placeholderLeft={"yyyy-mm-dd"}
@@ -178,6 +183,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
           widthRight={widthRight}
           minLeft={minDate}
           maxLeft={maxDate}
+          variant={variant}
         />
       </Popover>
     </Box>

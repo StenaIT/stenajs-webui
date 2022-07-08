@@ -1,4 +1,4 @@
-import { Box, Indent, Spacing } from "@stenajs-webui/core";
+import { Column, Indent, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
 import { Select } from "./Select";
 
@@ -28,6 +28,30 @@ export const Standard = () => (
   </div>
 );
 
+export const WithVariant = () => (
+  <Column width={400} gap={2}>
+    {(["error", "warning", "success"] as const).map((variant) => (
+      <Select
+        variant={variant}
+        options={[
+          {
+            value: "Mattias",
+            label: "Mattias",
+          },
+          {
+            value: "Johan",
+            label: "Johan",
+          },
+          {
+            value: "Dennis the menace",
+            label: "Dennis the menace",
+          },
+        ]}
+      />
+    ))}
+  </Column>
+);
+
 export const LongLabels = () => (
   <div style={{ width: "400px" }}>
     <Select
@@ -47,34 +71,6 @@ export const LongLabels = () => (
         },
       ]}
     />
-  </div>
-);
-
-export const StandardDark = () => (
-  <div style={{ width: "400px" }}>
-    <Box background={"#2e4662"}>
-      <Indent num={4}>
-        <Spacing num={4}>
-          <Select
-            options={[
-              {
-                value: "Mattias",
-                label: "Mattias",
-              },
-              {
-                value: "Johan",
-                label: "Johan",
-              },
-              {
-                value: "Dennis the menace",
-                label: "Dennis the menace",
-              },
-            ]}
-            variant={"dark"}
-          />
-        </Spacing>
-      </Indent>
-    </Box>
   </div>
 );
 

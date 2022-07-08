@@ -4,19 +4,23 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   Box,
   Column,
+  getDataProps,
   Heading,
   Indent,
   Row,
   Space,
   Text,
 } from "@stenajs-webui/core";
+
 import { Icon } from "../../icon/Icon";
 import styles from "./Banner.module.css";
 import cx from "classnames";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Spinner } from "../../spinner/Spinner";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons/faCheckCircle";
+import {
+  stenaCheckCircle,
+  stenaExclamationCircle,
+  stenaExclamationTriangle,
+} from "../../../../icons/ui/IconsUi";
 
 export type BannerVariant =
   | "standard"
@@ -32,14 +36,15 @@ export interface BannerProps {
   loading?: boolean;
   contentRight?: ReactNode;
   variant?: BannerVariant;
+  children?: ReactNode;
 }
 
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
-  standard: faExclamationCircle,
-  info: faExclamationCircle,
-  success: faCheckCircle,
-  warning: faExclamationCircle,
-  error: faExclamationTriangle,
+  standard: stenaExclamationCircle,
+  info: stenaExclamationCircle,
+  success: stenaCheckCircle,
+  warning: stenaExclamationCircle,
+  error: stenaExclamationTriangle,
 };
 
 export const Banner: React.FC<BannerProps> = ({
@@ -50,9 +55,10 @@ export const Banner: React.FC<BannerProps> = ({
   icon,
   variant = "standard",
   loading = false,
+  ...rest
 }) => {
   return (
-    <div className={cx(styles.banner, styles[variant])}>
+    <div className={cx(styles.banner, styles[variant])} {...getDataProps(rest)}>
       <Row justifyContent={"space-between"}>
         <Row
           flex={"none"}

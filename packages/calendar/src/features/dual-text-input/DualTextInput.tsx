@@ -1,6 +1,4 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons/faCalendarAlt";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons/faAngleDown";
 import {
   Box,
   BoxProps,
@@ -9,7 +7,12 @@ import {
   Row,
   SeparatorLine,
 } from "@stenajs-webui/core";
-import { FlatButton, Icon } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  Icon,
+  stenaCalendar,
+  stenaAngleDown,
+} from "@stenajs-webui/elements";
 import {
   TextInput,
   TextInputBox,
@@ -18,7 +21,7 @@ import {
 } from "@stenajs-webui/forms";
 import { debounce } from "lodash";
 import * as React from "react";
-import { useCallback, useMemo, useRef } from "react";
+import { FocusEventHandler, useCallback, useMemo, useRef } from "react";
 import { cssColor } from "@stenajs-webui/theme";
 
 export interface DualTextInputProps {
@@ -58,6 +61,7 @@ export interface DualTextInputProps {
   showPresets?: false;
   autoFocusLeft?: boolean;
   autoFocusRight?: boolean;
+  disabled?: boolean;
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
@@ -97,6 +101,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   showPresets,
   widthLeft,
   widthRight,
+  disabled,
 }) => {
   const focusCounter = useRef(0);
 
@@ -110,7 +115,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onBlur]
   );
 
-  const focusLeftHandler = useCallback(
+  const focusLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current++;
       tryTriggerOnBlur(focusCounter.current);
@@ -121,7 +126,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onFocusLeft, focusCounter, tryTriggerOnBlur]
   );
 
-  const focusRightHandler = useCallback(
+  const focusRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current++;
       tryTriggerOnBlur(focusCounter.current);
@@ -132,7 +137,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onFocusRight, focusCounter, tryTriggerOnBlur]
   );
 
-  const blurLeftHandler = useCallback(
+  const blurLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current--;
       tryTriggerOnBlur(focusCounter.current);
@@ -143,7 +148,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     [onBlurLeft, focusCounter, tryTriggerOnBlur]
   );
 
-  const blurRightHandler = useCallback(
+  const blurRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
     (ev) => {
       focusCounter.current--;
       tryTriggerOnBlur(focusCounter.current);
@@ -158,13 +163,15 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     <Box>
       <TextInputBox
         disableContentPaddingRight
+        disabled={disabled}
         variant={variant}
         contentRight={
           <Row alignItems={"center"}>
             <Indent num={0.5}>
               <FlatButton
-                leftIcon={faCalendarAlt}
+                leftIcon={stenaCalendar}
                 onClick={onClickCalendar}
+                disabled={disabled}
                 size={"small"}
               />
             </Indent>
@@ -177,8 +184,9 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
 
                 <Indent num={0.5}>
                   <FlatButton
-                    leftIcon={faAngleDown}
+                    leftIcon={stenaAngleDown}
                     onClick={onClickArrowDown}
+                    disabled={disabled}
                     size={"small"}
                   />
                 </Indent>
@@ -192,6 +200,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             onEsc={onEsc}
             onEnter={onEnter}
             onClick={onClickLeft}
+            disabled={disabled}
             hideBorder
             placeholder={placeholderLeft}
             value={valueLeft}
@@ -219,6 +228,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
             onEsc={onEsc}
             onEnter={onEnter}
             onClick={onClickRight}
+            disabled={disabled}
             hideBorder
             placeholder={placeholderRight}
             value={valueRight}

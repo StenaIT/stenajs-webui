@@ -1,8 +1,8 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { BoxProps, Row, Text, TextProps } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
+import { stenaCheck } from "../../../icons/ui/IconsUi";
 import { Icon } from "../icon/Icon";
 
 export interface ValueTableItemProps {
@@ -37,7 +37,7 @@ export const ValueTableItem: React.FC<ValueTableItemProps> = ({
       if (value) {
         return (
           <Icon
-            icon={faCheck}
+            icon={stenaCheck}
             size={14}
             color={cssColor("--lhds-color-ui-700")}
           />

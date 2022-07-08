@@ -5,8 +5,8 @@ import { ActionMenuButton, ActionMenuButtonProps } from "./ActionMenuButton";
 export interface ActionMenuSecondaryButtonProps
   extends Omit<ActionMenuButtonProps, "buttonComponent"> {}
 
-export const ActionMenuSecondaryButton: React.FC<ActionMenuSecondaryButtonProps> = (
-  props
-) => {
+export const ActionMenuSecondaryButton: React.FC<
+  ActionMenuSecondaryButtonProps
+> = (props) => {
   return <ActionMenuButton buttonComponent={SecondaryButton} {...props} />;
 };

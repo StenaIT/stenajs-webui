@@ -1,4 +1,3 @@
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
@@ -7,14 +6,15 @@ import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuSeparator } from "./ActionMenuSeparator";
 import * as React from "react";
-import markdown from "./ActionMenu.md";
+import markdown from "./ActionMenu.md?raw";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";
 import { ButtonGroup } from "../button-group/ButtonGroup";
-import { PrimaryButton, SecondaryButton } from "../../../../dist";
-import { faSearch } from "@fortawesome/free-solid-svg-icons/faSearch";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
+import { SecondaryButton } from "../buttons/SecondaryButton";
+import { PrimaryButton } from "../buttons/PrimaryButton";
+import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -76,12 +76,12 @@ export const Standard = () => (
     <ActionMenuItem
       label={"Icon right"}
       onClick={action("Icon right clicked")}
-      rightIcon={faCheck}
+      rightIcon={stenaCheck}
     />
     <ActionMenuItem
       label={"Icon right disabled"}
       onClick={action("I can never happen again!")}
-      rightIcon={faCheck}
+      rightIcon={stenaCheck}
       disabled
     />
     <ActionMenuItemContent
@@ -96,7 +96,7 @@ export const Standard = () => (
     />
     <ActionMenuItemContent
       label={"Content bottom"}
-      leftIcon={faSearch}
+      leftIcon={stenaSearch}
       bottom={
         <ButtonGroup>
           <SecondaryButton size={"small"} label={"25"} />

@@ -1,3 +1,105 @@
+# v17.8.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Replace useDomId with useId [#476](https://github.com/StenaIT/stenajs-webui/pull/476) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.7.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Build packages with vite [#475](https://github.com/StenaIT/stenajs-webui/pull/475) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.6.0 (Fri Jul 01 2022)
+
+#### 🚀 Enhancement
+
+- Use Stena icons instead of Font Awesome icons [#471](https://github.com/StenaIT/stenajs-webui/pull/471) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.1.2 (Mon Jun 27 2022)
+
+#### 🐛 Bug Fix
+
+- Fix misaligned StandardTable header when rowCheckbox is true and headerCheckbox is false [#469](https://github.com/StenaIT/stenajs-webui/pull/469) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.0.0 (Fri Jun 17 2022)
+
+#### 💥 Breaking Change
+
+- Upgrade and apply prettier. [#467](https://github.com/StenaIT/stenajs-webui/pull/467) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- Update Typescript, React, Jest, etc. [#466](https://github.com/StenaIT/stenajs-webui/pull/466) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.2 (Fri Apr 08 2022)
+
+#### 🐛 Bug Fix
+
+- Fix event propagation bug in onKeyDown in StandardTable [#450](https://github.com/StenaIT/stenajs-webui/pull/450) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.5.1 (Thu Apr 07 2022)
+
+#### 🐛 Bug Fix
+
+- Pass itemKey to renderProps in StandardTable [#449](https://github.com/StenaIT/stenajs-webui/pull/449) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v15.4.0 (Mon Apr 04 2022)
+
+#### 🚀 Enhancement
+
+- Added property hideBorderTop to TableRow [#441](https://github.com/StenaIT/stenajs-webui/pull/441) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v15.3.2 (Thu Mar 31 2022)
 
 #### 🐛 Bug Fix

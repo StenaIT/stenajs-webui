@@ -37,7 +37,7 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
       {...drawerProps}
     >
       <Column>
-        <SearchFilterPanelHeader onRequestClose={closeDrawer} />
+        <SearchFilterPanelHeader onRequestClose={closeDrawer} header={header} />
         <SeparatorLine />
         {children}
       </Column>

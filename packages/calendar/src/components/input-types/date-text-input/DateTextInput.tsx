@@ -1,6 +1,5 @@
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons/faCalendarAlt";
 import { Box, Omit, Row } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaCalendar } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
@@ -63,6 +62,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   hideCalenderIcon = false,
   minDate,
   maxDate = defaultMaxDate,
+  variant,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -77,7 +77,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   }, [setOpen]);
 
   const onValueChangeHandler = useCallback(
-    (value) => {
+    (value: string) => {
       if (onValueChange) {
         onValueChange(value);
       }
@@ -135,7 +135,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
       >
         <TextInput
           {...props}
-          variant={invalid ? "error" : "standard"}
+          variant={invalid ? "error" : variant}
           disableContentPaddingRight
           contentRight={
             !hideCalenderIcon ? (
@@ -143,7 +143,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
                 <FlatButton
                   size={"small"}
                   disabled={props.disabled}
-                  leftIcon={faCalendarAlt}
+                  leftIcon={stenaCalendar}
                   onClick={toggleCalendar}
                 />
               </Row>

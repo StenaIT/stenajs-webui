@@ -1,5 +1,4 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaTimes } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -41,7 +40,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
           className={closeButtonClassName}
           onClick={onRequestClose}
           aria-label={"Close"}
-          leftIcon={faTimes}
+          leftIcon={stenaTimes}
         />
       </Box>
     </Row>

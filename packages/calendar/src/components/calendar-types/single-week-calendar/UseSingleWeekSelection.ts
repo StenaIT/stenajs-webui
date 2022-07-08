@@ -8,6 +8,7 @@ import {
 import { addWeekRangeHighlights } from "../../../util/calendar/StateModifier";
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
 import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
+import { OnClickDay, OnClickWeek } from "../../../types/CalendarTypes";
 
 export const useSingleWeekSelection = <T>({
   onChange,
@@ -22,11 +23,10 @@ export const useSingleWeekSelection = <T>({
     }
     return week.days[0].date;
   });
-  const { currentPanel, setCurrentPanel } = useInternalPanelState(
-    onChangePanel
-  );
+  const { currentPanel, setCurrentPanel } =
+    useInternalPanelState(onChangePanel);
 
-  const onClickDay = useCallback(
+  const onClickDay = useCallback<OnClickDay<T>>(
     (day) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
@@ -34,7 +34,7 @@ export const useSingleWeekSelection = <T>({
     },
     [onChange]
   );
-  const onClickWeek = useCallback(
+  const onClickWeek = useCallback<OnClickWeek>(
     (week) => {
       if (onChange) {
         onChange(getWeekStringFromWeekData(week));

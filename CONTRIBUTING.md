@@ -27,7 +27,7 @@ $ yarn watch
 ## Libraries of choice
 
 - `emotion` and `styled-system` is used for all styling.
-- Hooks over HOC:s. `recompose` is used by some packages, but all new components should use hooks instead.
+- Hooks over HOC:s. All components should use hooks.
 - Font Awesome is used for all icons.
 
 ### Resources
@@ -151,34 +151,6 @@ It should be changed to this instead:
 ```
 
 Where `hideProfile` have default value of `false`.
-
-## Themes
-
-- If your component has a theme, add `<Component>Theme.ts` next to `<Component>.tsx`.
-- The theme file should include an interface with same name as the file.
-- It should also include a default theme, named `default<Component>Theme`;
-- Passing a theme to a component should always be done with a prop named `theme`.
-- If your component has sub-components with different themes, each sub-component should have it's corresponding theme set in the prop `theme`.
-- The `theme` prop should always be optional, falling back to a default theme.
-- If the users might need to set theme globally, add a context provider that uses the default theme as default value.
-- Theme fields should allow for lookup in theme if color, font, font-size or font-weight.
-- Theme interface and default theme should be exported and available to use.
-
-Example:
-
-```
-export interface BackgroundTheme {
-    color: string;
-}
-
-export const defaultBackgroundTheme: BackgroundTheme {
-    color: 'primaryBg',
-}
-```
-
-Then use `useThemeFields` hook which can resolve the color from theme.
-
-`useThemeFields` can resolve colors, fonts, font-sizes and font-weights.
 
 ## Process
 

@@ -1,5 +1,3 @@
-import "tippy.js/dist/tippy.css";
-import "tippy.js/themes/light.css";
 import { Instance } from "tippy.js";
 import { MutableRefObject, useRef } from "react";
 

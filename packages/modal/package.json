@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/modal",
-  "version": "15.3.2",
+  "version": "17.9.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -18,21 +18,20 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "clean": "rm -rf dist",
+    "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
+    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
+    "clean": "rimraf dist",
     "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "15.3.2",
-    "@stenajs-webui/elements": "15.3.2",
-    "@stenajs-webui/theme": "15.3.2",
+    "@stenajs-webui/core": "17.9.0",
+    "@stenajs-webui/elements": "17.9.0",
+    "@stenajs-webui/theme": "17.9.0",
     "@types/react-modal": "^3.13.1",
     "classnames": "^2.3.1",
-    "react-draggable": "^4.4.2",
+    "react-draggable": "^4.4.5",
     "react-modal": "^3.14.3"
   },
   "peerDependencies": {
@@ -40,10 +39,10 @@
     "@fortawesome/fontawesome-svg-core": ">=1.2.35",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@fortawesome/react-fontawesome": ">=0.1.14",
-    "@types/react": ">=17.0.5",
-    "@types/react-dom": ">=17.0.3",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "@types/react": ">=18.0.14",
+    "@types/react-dom": ">=18.0.5",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@emotion/react": "^11.1.5",
@@ -51,10 +50,10 @@
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "0.1.14",
     "@types/jest": "^23.1.5",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "files": [
     "dist"

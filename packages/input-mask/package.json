@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/input-mask",
-  "version": "15.3.2",
+  "version": "17.9.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -18,30 +18,29 @@
     "npm": ">=5"
   },
   "scripts": {
-    "test": "jest",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "clean": "rm -rf dist",
+    "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
+    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
+    "clean": "rimraf dist",
     "prepare": "yarn clean && yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/forms": "15.3.2",
+    "@stenajs-webui/forms": "17.9.0",
     "text-mask-core": "^5.1.2"
   },
   "peerDependencies": {
     "prop-types": ">=15.5.4",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@types/jest": "^23.1.5",
-    "@types/react": "^17.0.5",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
     "prop-types": "^15.5.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "files": [
     "dist"

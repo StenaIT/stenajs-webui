@@ -16,12 +16,8 @@ export const StandardTableSummaryRow = React.memo(
     items,
   }: StandardTableSummaryRowProps<TItem>) {
     const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
-    const {
-      showRowCheckbox,
-      enableExpandCollapse,
-      columns,
-      rowIndent,
-    } = useStandardTableConfig();
+    const { showRowCheckbox, enableExpandCollapse, columns, rowIndent } =
+      useStandardTableConfig();
 
     return (
       <tr className={styles.summaryRow}>

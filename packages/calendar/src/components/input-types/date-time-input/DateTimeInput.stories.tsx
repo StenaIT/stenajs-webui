@@ -1,6 +1,5 @@
-import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
 import { Column, Indent, Row } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaTrash } from "@stenajs-webui/elements";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
@@ -26,7 +25,19 @@ export const Standard = () => {
     <Row>
       <DateTimeInput value={value} onValueChange={setValue} />
       <Indent />
-      <FlatButton leftIcon={faTrash} onClick={() => setValue(null)} />
+      <FlatButton leftIcon={stenaTrash} onClick={() => setValue(null)} />
+    </Row>
+  );
+};
+
+export const WithVariant = () => {
+  const [value, setValue] = useState<Date | null>(null);
+
+  return (
+    <Row>
+      <DateTimeInput value={value} onValueChange={setValue} variant={"error"} />
+      <Indent />
+      <FlatButton leftIcon={stenaTrash} onClick={() => setValue(null)} />
     </Row>
   );
 };
@@ -41,6 +52,18 @@ export const Centered = () => {
     >
       <Standard />
     </Column>
+  );
+};
+
+export const Disabled = () => {
+  const [value, setValue] = useState<Date | null>(null);
+
+  return (
+    <Row>
+      <DateTimeInput value={value} onValueChange={setValue} disabled />
+      <Indent />
+      <FlatButton leftIcon={stenaTrash} onClick={() => setValue(null)} />
+    </Row>
   );
 };
 

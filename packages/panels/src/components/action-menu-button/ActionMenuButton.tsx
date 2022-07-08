@@ -8,10 +8,10 @@ import {
   PrimaryButton,
   PrimaryButtonProps,
   SecondaryButton,
+  stenaAngleDown,
 } from "@stenajs-webui/elements";
 import { useBoolean } from "@stenajs-webui/core";
 import { Popover, PopoverProps } from "@stenajs-webui/tooltip";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Plugin as TippyPlugin, Props as TippyProps } from "tippy.js";
 
 export interface ActionMenuButtonProps
@@ -33,18 +33,20 @@ export interface ActionMenuButtonProps
     | typeof PrimaryButton
     | typeof SecondaryButton
     | typeof FlatButton;
+  disableArrow?: boolean;
 }
 
 export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   renderItems,
   placement = "bottom",
   buttonComponent: Button,
-  rightIcon = faAngleDown,
+  rightIcon = stenaAngleDown,
   portalTarget = "parent",
   zIndex,
   menuWidth,
   menuTop,
   onClick,
+  disableArrow = false,
   ...buttonProps
 }) => {
   const [isOpen, open, close, toggle] = useBoolean(false);
@@ -125,7 +127,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       lazy
     >
       <Button
-        rightIcon={rightIcon}
+        rightIcon={disableArrow ? undefined : rightIcon}
         {...buttonProps}
         ref={buttonRef}
         onClick={handleClick}

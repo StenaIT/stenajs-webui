@@ -59,7 +59,7 @@ This is useful for delaying the removal of elements in the DOM.
 const delayedShowPopover = useDelayedFalse(showPopover);
 ```
 
-### useDomId
+### useDomId (deprecated, - useId is now built into React since v18)
 
 Creates a string that is unique and guaranteed to persist through component lifecycle.
 Can take an optional string argument which is included in the id. It must be a valid id token.
