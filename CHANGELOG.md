@@ -1,3 +1,22 @@
+# v17.10.0 (Tue Jul 12 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/select`
+  - Use overline style in select group header [#480](https://github.com/StenaIT/stenajs-webui/pull/480) ([@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Use unused icon prop in NavBarUserButton [#481](https://github.com/StenaIT/stenajs-webui/pull/481) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v17.9.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

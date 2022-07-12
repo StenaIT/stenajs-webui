@@ -1,3 +1,15 @@
+# v17.10.0 (Tue Jul 12 2022)
+
+#### 🚀 Enhancement
+
+- Use overline style in select group header [#480](https://github.com/StenaIT/stenajs-webui/pull/480) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

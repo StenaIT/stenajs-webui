@@ -1,3 +1,15 @@
+# v17.10.0 (Tue Jul 12 2022)
+
+#### 🐛 Bug Fix
+
+- Use unused icon prop in NavBarUserButton [#481](https://github.com/StenaIT/stenajs-webui/pull/481) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
