@@ -61,6 +61,13 @@ export interface SelectTheme {
     width?: string;
     whiteSpace?: Property.WhiteSpace;
   };
+  groupHeading: {
+    fontSize: string;
+    lineHeight: string;
+    fontWeight: string;
+    color: string;
+    letterSpacing: string;
+  };
   menuPortal: {
     zIndex: number;
   };
@@ -112,6 +119,13 @@ export const defaultSelectTheme: SelectTheme = {
   },
   loadingIndicator: {
     textColor: "var(--swui-field-text-color)",
+  },
+  groupHeading: {
+    fontSize: "var(--swui-font-size-smaller)",
+    lineHeight: "var(--swui-line-height-smaller)",
+    fontWeight: "var(--swui-font-weight-text-bold)",
+    color: "var(--lhds-color-ui-600)",
+    letterSpacing: "0.1rem",
   },
   menu: {
     activeBackgroundColor: "var(--lhds-color-blue-100)",

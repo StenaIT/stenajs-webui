@@ -102,6 +102,7 @@ export const createStylesFromTheme = <
     multiSelect,
     clearButtonColor,
     arrowColor,
+    groupHeading,
     loadingIndicator,
   }: SelectTheme,
   variant: SelectVariant | undefined
@@ -183,14 +184,18 @@ export const createStylesFromTheme = <
   }),
   groupHeading: (base) => ({
     ...base,
-    fontFamily: input.fontFamily,
+    fontSize: groupHeading.fontSize,
+    lineHeight: groupHeading.lineHeight,
+    fontWeight: groupHeading.fontWeight as any,
+    color: groupHeading.color,
+    letterSpacing: groupHeading.letterSpacing,
   }),
   multiValueLabel: (base) => ({
     ...base,
     backgroundColor: multiSelect.backgroundColor,
     color: multiSelect.textColor,
     fontFamily: input.fontFamily,
-    fontSize: "12px",
+    fontSize: groupHeading.fontSize,
   }),
   indicatorSeparator: (base) => ({
     ...base,
@@ -268,7 +273,7 @@ export const createStylesFromTheme = <
     backgroundColor: multiSelect.backgroundColor,
     color: multiSelect.textColor,
     fontFamily: input.fontFamily,
-    fontSize: "12px",
+    fontSize: groupHeading.fontSize,
     alignItems: "center",
     margin: 0,
     marginRight: 2,
