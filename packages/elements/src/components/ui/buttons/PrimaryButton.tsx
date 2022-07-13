@@ -16,6 +16,7 @@ export interface PrimaryButtonProps
     ButtonElementProps,
     WidthProps {}
 
+// NOTE: Same styles as .iconButton in CSS file. Do not change one without the other.
 const iconButtonStyles = css`
   padding: var(--swui-button-padding-vertical);
   color: var(--current-icon-color);
@@ -48,7 +49,6 @@ const Button = styled.button<{ showLabelBreakpoint?: string }>`
     showLabelBreakpoint &&
     css`
       ${iconButtonStyles}
-
       .${contentStyles.label} {
         display: none;
       }

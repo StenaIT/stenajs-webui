@@ -142,6 +142,7 @@
   justify-content: center;
   gap: var(--swui-metrics-indent);
 
+  /* NOTE: Same styles as iconButtonStyles in PrimaryButton. Do not change one without the other. */
   &.iconButton {
     padding: var(--swui-button-padding-vertical);
     color: var(--current-icon-color);
