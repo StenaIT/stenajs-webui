@@ -231,24 +231,23 @@ export const WithResponsiveWidth = () => (
 );
 
 export const WithResponsiveLabel = () => {
-  const StyledRow = styled(Row)`
+  const StyledPrimaryButton = styled(PrimaryButton)`
     @media screen and (max-width: 512px) {
       .hide-me {
         display: none;
       }
+      padding: var(--swui-button-padding-vertical);
     }
   `;
   return (
-    <Column spacing>
+    <Column spacing gap alignItems={"flex-start"}>
       <Text>Resize viewport to see button with or without label</Text>
-      <Space />
-      <StyledRow>
-        <PrimaryButton
-          leftIcon={faJedi}
-          label={"Button content"}
-          labelClassName={"hide-me"}
-        />
-      </StyledRow>
+      <StyledPrimaryButton
+        leftIcon={faJedi}
+        label={"Button content"}
+        aria-label={"Button content"}
+        labelClassName={"hide-me"}
+      />
     </Column>
   );
 };
