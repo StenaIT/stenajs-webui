@@ -140,6 +140,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--swui-metrics-indent);
 
   &.iconButton {
     padding: var(--swui-button-padding-vertical);

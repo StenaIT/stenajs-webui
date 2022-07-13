@@ -16,14 +16,6 @@
   justify-content: center;
 }
 
-.leftWrapper:not(:last-child) {
-  margin-right: var(--swui-metrics-indent);
-}
-
-.rightWrapper:not(:first-child) {
-  margin-left: var(--swui-metrics-indent);
-}
-
 .spinnerLeft {
   display: flex;
   align-items: center;

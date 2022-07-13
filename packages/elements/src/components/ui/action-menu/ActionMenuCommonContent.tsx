@@ -20,6 +20,7 @@ export const ActionMenuCommonContent: React.VFC<ButtonContentProps> = ({
     alignItems={"center"}
     width={"100%"}
     indent={2}
+    gap={1}
     className={styles.actionMenuItemInnerContent}
   >
     <ButtonContent

@@ -22,6 +22,7 @@
   outline: none;
   height: var(--swui-tab-menu-height);
   padding: 0 calc(var(--swui-metrics-indent) * 2);
+  gap: var(--swui-metrics-indent);
   display: flex;
   align-items: center;
   justify-content: center;

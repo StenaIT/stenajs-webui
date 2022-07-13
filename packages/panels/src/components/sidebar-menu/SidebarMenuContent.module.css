@@ -17,7 +17,6 @@
 
 .leftWrapper.leftWrapper.leftWrapper.leftWrapper {
   width: var(--swui-sidebar-menu-item-height);
-  margin-right: 0;
 }
 
 .button {
