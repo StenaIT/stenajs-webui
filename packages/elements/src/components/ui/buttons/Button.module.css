@@ -163,6 +163,7 @@
     &.large {
       width: 40px;
       height: 40px;
+     --current-icon-height: var(--swui-button-icon-height-large);
     }
   }
 
@@ -182,10 +183,6 @@
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
     --current-text-size: 1.6rem;
-
-    &.iconButton {
-      --current-icon-height: var(--swui-button-icon-height-large);
-    }
   }
 
   &:hover {

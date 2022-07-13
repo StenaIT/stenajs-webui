@@ -1,11 +1,6 @@
 .iconLeft,
 .iconRight {
   color: var(--current-icon-color);
-  height: var(--current-line-height);
-}
-
-.iconLeft,
-.iconRight {
   height: var(--current-icon-height);
 }
 

@@ -37,4 +37,6 @@ export interface CommonButtonProps {
   leftWrapperClassName?: string;
   /** Right wrapper class name */
   rightWrapperClassName?: string;
+  /** Hides label until the breakpoint is reached */
+  showLabelBreakpoint?: string;
 }
