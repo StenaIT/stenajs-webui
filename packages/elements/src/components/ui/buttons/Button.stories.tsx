@@ -8,6 +8,7 @@ import { FlatButton } from "./FlatButton";
 import { Icon } from "../icon/Icon";
 import { Story } from "@storybook/react";
 import { stenaCheck } from "../../../icons/ui/IconsUi";
+import styled from "@emotion/styled";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 
@@ -228,3 +229,26 @@ export const WithResponsiveWidth = () => (
     </Row>
   </Column>
 );
+
+export const WithResponsiveLabel = () => {
+  const StyledRow = styled(Row)`
+    @media screen and (max-width: 512px) {
+      .hide-me {
+        display: none;
+      }
+    }
+  `;
+  return (
+    <Column spacing>
+      <Text>Resize viewport to see button with or without label</Text>
+      <Space />
+      <StyledRow>
+        <PrimaryButton
+          leftIcon={faJedi}
+          label={"Button content"}
+          labelClassName={"hide-me"}
+        />
+      </StyledRow>
+    </Column>
+  );
+};
