@@ -246,12 +246,9 @@ const createKeyDownHandler =
 type FocusOnCellFunc = (tableId: string, pos: CellIndices) => void;
 
 export const focusOnCell: FocusOnCellFunc = (tableId, pos) => {
-  const el = (document.querySelector(
-    `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`
-  ) ||
-    document.querySelector(
-      `#${createCellId(tableId, pos.rowIndex, pos.colIndex)}`
-    )) as HTMLElement;
+  const el = document.getElementById(
+    createCellId(tableId, pos.rowIndex, pos.colIndex)
+  );
   if (el) {
     el.focus();
   }
