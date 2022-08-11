@@ -1,3 +1,16 @@
+# v17.10.1 (Thu Aug 11 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Fix keyboard navigation in StandardTable [#484](https://github.com/StenaIT/stenajs-webui/pull/484) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v17.10.0 (Tue Jul 12 2022)
 
 #### 🚀 Enhancement

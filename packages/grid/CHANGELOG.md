@@ -1,3 +1,15 @@
+# v17.10.1 (Thu Aug 11 2022)
+
+#### 🐛 Bug Fix
+
+- Fix keyboard navigation in StandardTable [#484](https://github.com/StenaIT/stenajs-webui/pull/484) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v17.8.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
