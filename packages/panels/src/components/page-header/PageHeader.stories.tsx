@@ -187,6 +187,29 @@ export const VariantsWithNoHeadingContent = () => {
   ));
 };
 
+export const VariantsWithNoBreadCrumbs = () => {
+  const variants: PageHeadingVariant[] = ["compact", "standard", "relaxed"];
+
+  return (
+    <Box background={cssColor("--lhds-color-ui-300")}>
+      {variants.map((variant) => (
+        <Fragment key={variant}>
+          <PageHeader
+            renderPageHeading={() => (
+              <PageHeading heading={variant} variant={variant} />
+            )}
+          >
+            <PageHeaderRow>
+              <TextInput />
+            </PageHeaderRow>
+          </PageHeader>
+          <Space num={4} />
+        </Fragment>
+      ))}
+    </Box>
+  );
+};
+
 export const BreadCrumbsAndHeading = () => {
   return (
     <>
