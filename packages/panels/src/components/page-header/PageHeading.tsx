@@ -7,7 +7,7 @@ export type PageHeadingVariant = "compact" | "standard" | "relaxed";
 interface PageHeadingProps {
   contentLeft?: ReactNode;
   contentRight?: ReactNode;
-  heading: string;
+  heading: string | ReactNode;
   variant?: PageHeadingVariant;
 }
 
