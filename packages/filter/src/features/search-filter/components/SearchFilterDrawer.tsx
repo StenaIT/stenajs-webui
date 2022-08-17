@@ -7,18 +7,15 @@ import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchFilterDrawerProps
   extends Omit<DrawerProps, "isOpen" | "onRequestClose"> {
   header?: string;
-  headerIcon?: IconDefinition;
 }
 
 export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   children,
   header,
-  headerIcon,
   ...drawerProps
 }) => {
   const {
@@ -40,11 +37,7 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
       {...drawerProps}
     >
       <Column>
-        <SearchFilterPanelHeader
-          onRequestClose={closeDrawer}
-          header={header}
-          headerIcon={headerIcon}
-        />
+        <SearchFilterPanelHeader onRequestClose={closeDrawer} header={header} />
         <SeparatorLine />
         {children}
       </Column>

@@ -1,15 +1,3 @@
-# v17.11.1 (Wed Aug 17 2022)
-
-#### 🚀 Enhancement
-
-- `@stenajs-webui/filter`
-  - Props for setting button/header icon and label on `SearchFilterButton` and `SearchFilterDrawer`
-
-#### Authors: 1
-
-- Jonas Peterson ([@upeterson](https://github.com/jupeterson))
-
----
 # v17.11.0 (Wed Aug 17 2022)
 
 #### 🚀 Enhancement
