@@ -1,3 +1,16 @@
+# v17.11.0 (Wed Aug 17 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Do not render space below heading if PageHeader has no breadcrumbs [#485](https://github.com/StenaIT/stenajs-webui/pull/485) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.10.1 (Thu Aug 11 2022)
 
 #### 🐛 Bug Fix
