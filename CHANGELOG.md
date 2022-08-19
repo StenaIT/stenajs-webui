@@ -1,3 +1,16 @@
+# v17.12.0 (Fri Aug 19 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/filter`
+  - Add change icon label functionality [#487](https://github.com/StenaIT/stenajs-webui/pull/487) (jonas.peterson@stenaline.com)
+
+#### Authors: 1
+
+- Jonas Peterson ([@jupeterson](https://github.com/jupeterson))
+
+---
+
 # v17.11.0 (Wed Aug 17 2022)
 
 #### 🚀 Enhancement
