@@ -1,4 +1,5 @@
 import * as React from "react";
+import styles from "./RouteLeg.module.css";
 import { Box, Column, Row, Space, Txt } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import { cssColor } from "@stenajs-webui/theme";
@@ -37,17 +38,19 @@ export interface RouteLegProps {
   variant: ModeOfTransport;
   departure: LocationAndTimeProps;
   arrival: LocationAndTimeProps;
+  children?: React.ReactNode;
 }
 
 export const RouteLeg: React.FC<RouteLegProps> = ({
   variant,
   departure,
   arrival,
+  children,
 }) => {
   const icon = variant === "ship" ? faShip : faTrain;
 
   return (
-    <Row alignItems={"stretch"} gap={3}>
+    <div className={styles.routeLeg}>
       <Column alignItems={"center"}>
         <Icon
           icon={icon}
@@ -84,6 +87,12 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
           time={arrival.time}
         />
       </Column>
-    </Row>
+      {children && (
+        <>
+          <div />
+          <div>{children}</div>
+        </>
+      )}
+    </div>
   );
 };
