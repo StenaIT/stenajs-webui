@@ -1,6 +1,14 @@
 .gridCardContainer {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(max(195px, 45vw), 2fr));
+  /* margin: 24px; */
   margin: 24px;
   gap: 24px;
+}
+
+@media only screen and (max-width: 375px) {
+  .gridCardContainer {
+    margin: 2px 0;
+    gap: 12px;
+  }
 }
