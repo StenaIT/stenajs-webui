@@ -2,13 +2,6 @@
   --swui-action-menu-menu-background: var(--swui-white);
   --swui-action-menu-border-radius: 4px;
 
-  background: var(--swui-action-menu-menu-background);
   border-radius: var(--swui-action-menu-border-radius);
 
-  &.standard {
-  }
-
-  &.outlined {
-    border: 1px solid var(--lhds-color-blue-500);
-  }
 }
