@@ -1,7 +1,6 @@
 .gridCardContainer {
-  --swui-action-menu-menu-background: var(--swui-white);
-  --swui-action-menu-border-radius: 4px;
-
-  border-radius: var(--swui-action-menu-border-radius);
-
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(195px, 45vw), 2fr));
+  margin: 24px;
+  gap: 24px;
 }
