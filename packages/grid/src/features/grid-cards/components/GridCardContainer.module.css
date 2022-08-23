@@ -1,9 +1,14 @@
 .gridCardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(max(195px, 45vw), 2fr));
-  /* margin: 24px; */
   margin: 24px;
   gap: 24px;
+}
+
+.gridCardContainer > .gridSpanTwo {
+  grid-column: span 2;
+  color: red;
+  background-color: orange;
 }
 
 @media only screen and (max-width: 375px) {
