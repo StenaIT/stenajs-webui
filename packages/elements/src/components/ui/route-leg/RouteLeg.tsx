@@ -70,7 +70,6 @@ export interface RouteLegProps {
   arrival: LocationAndTimeProps;
   size?: RouteLegSize;
   label?: string;
-  isFinal?: boolean;
   selected?: boolean;
   children?: React.ReactNode;
 }
@@ -82,7 +81,6 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
   size = "standard",
   label,
   selected = false,
-  isFinal = false,
   children,
 }) => {
   const icon = variant === "ship" ? stenaShip : stenaTrain;
@@ -118,24 +116,14 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
             border={`1px solid ${cssColor("--lhds-color-ui-300")}`}
             borderRadius={2}
           />
-          {isFinal ? (
-            <Box
-              flex={"none"}
-              border={`4px solid ${cssColor("--lhds-color-blue-100")}`}
-              background={cssColor("--lhds-color-blue-500")}
-              width={16}
-              height={16}
-              borderRadius={8}
-            />
-          ) : (
-            <Box
-              flex={"none"}
-              border={`2px solid ${cssColor("--lhds-color-ui-300")}`}
-              width={8}
-              height={8}
-              borderRadius={8}
-            />
-          )}
+          <Box
+            flex={"none"}
+            border={`4px solid ${cssColor("--lhds-color-blue-100")}`}
+            background={cssColor("--lhds-color-blue-500")}
+            width={16}
+            height={16}
+            borderRadius={8}
+          />
         </Column>
         <Column gap={size === "standard" ? 3 : 2}>
           <LocationAndTime

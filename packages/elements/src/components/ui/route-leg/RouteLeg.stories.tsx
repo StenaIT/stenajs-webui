@@ -27,15 +27,6 @@ export const Rail = () => (
   />
 );
 
-export const FinalDestination = () => (
-  <RouteLeg
-    variant={"rail"}
-    departure={{ location: "Göteborg", date: "23 Aug", time: "09:10" }}
-    arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
-    isFinal
-  />
-);
-
 export const WithChildren = () => (
   <RouteLeg
     variant={"ship"}
@@ -129,7 +120,6 @@ export const Multileg = () => (
       variant={"rail"}
       departure={{ location: "Göteborg", date: "23 Aug", time: "09:10" }}
       arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
-      isFinal
     />
     <RouteLegBanner headerText={"Total time"} text={"2d 3h 15min"} />
   </RouteLegList>
@@ -170,7 +160,6 @@ export const MultilegCompact = () => (
         variant={"rail"}
         departure={{ location: "Göteborg", date: "23 Aug", time: "09:10" }}
         arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
-        isFinal
       >
         <Link>123456789</Link>
       </RouteLeg>
@@ -187,7 +176,6 @@ export const MultilegCompactCompact = () => (
         arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
         size={"relaxed"}
         selected
-        isFinal
       />
     </Box>
     <SeparatorLine />
@@ -226,7 +214,6 @@ export const MultilegCompactCompact = () => (
         arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
         size={"compact"}
         label={"3rd route"}
-        isFinal
       />
     </Box>
   </Box>
