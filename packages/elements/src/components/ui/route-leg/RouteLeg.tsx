@@ -25,7 +25,7 @@ const LocationAndTime: React.FC<
     return (
       <Row gap={2} justifyContent={"space-between"}>
         <Txt size={"small"}>{location}</Txt>
-        <Row gap>
+        <Row gap={0.5}>
           <Txt size={"small"} variant={"bold"}>
             {date}
           </Txt>
@@ -42,7 +42,7 @@ const LocationAndTime: React.FC<
         <Txt size={"large"} variant={"bold"}>
           {location}
         </Txt>
-        <Row gap>
+        <Row gap={0.5}>
           <Txt size={"small"} variant={"bold"}>
             {date}
           </Txt>
