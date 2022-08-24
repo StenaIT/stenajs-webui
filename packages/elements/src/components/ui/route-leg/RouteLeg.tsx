@@ -68,8 +68,8 @@ export interface RouteLegProps {
   variant: ModeOfTransport;
   departure: LocationAndTimeProps;
   arrival: LocationAndTimeProps;
-  size?: RouteLegSize;
   label?: string;
+  size?: RouteLegSize;
   selected?: boolean;
   children?: React.ReactNode;
 }
@@ -78,8 +78,8 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
   variant,
   departure,
   arrival,
-  size = "standard",
   label,
+  size = "standard",
   selected = false,
   children,
 }) => {
