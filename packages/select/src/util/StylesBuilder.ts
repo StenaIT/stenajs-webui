@@ -184,6 +184,7 @@ export const createStylesFromTheme = <
   }),
   groupHeading: (base) => ({
     ...base,
+    fontFamily: input.fontFamily,
     fontSize: groupHeading.fontSize,
     lineHeight: groupHeading.lineHeight,
     fontWeight: groupHeading.fontWeight as any,

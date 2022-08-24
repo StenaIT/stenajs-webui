@@ -1,3 +1,42 @@
+# v17.12.1 (Mon Aug 22 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/select`
+  - Bring back lost font family to Select group heading [#488](https://github.com/StenaIT/stenajs-webui/pull/488) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v17.12.0 (Fri Aug 19 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/filter`
+  - Add change icon label functionality [#487](https://github.com/StenaIT/stenajs-webui/pull/487) (jonas.peterson@stenaline.com)
+
+#### Authors: 1
+
+- Jonas Peterson ([@jupeterson](https://github.com/jupeterson))
+
+---
+
+# v17.11.0 (Wed Aug 17 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Do not render space below heading if PageHeader has no breadcrumbs [#485](https://github.com/StenaIT/stenajs-webui/pull/485) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.10.1 (Thu Aug 11 2022)
 
 #### 🐛 Bug Fix

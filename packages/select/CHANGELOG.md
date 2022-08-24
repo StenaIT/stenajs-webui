@@ -1,3 +1,15 @@
+# v17.12.1 (Mon Aug 22 2022)
+
+#### 🐛 Bug Fix
+
+- Bring back lost font family to Select group heading [#488](https://github.com/StenaIT/stenajs-webui/pull/488) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.10.0 (Tue Jul 12 2022)
 
 #### 🚀 Enhancement

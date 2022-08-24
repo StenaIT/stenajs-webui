@@ -7,15 +7,17 @@ import {
   stenaTimes,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchFilterPanelHeaderProps {
   onRequestClose: () => void;
   header?: string;
+  headerIcon?: IconDefinition;
 }
 
 export const SearchFilterPanelHeader: React.FC<
   SearchFilterPanelHeaderProps
-> = ({ onRequestClose, header = "Filters" }) => {
+> = ({ onRequestClose, header = "Filters", headerIcon = stenaSliders }) => {
   return (
     <Row
       height={"56px"}
@@ -25,7 +27,7 @@ export const SearchFilterPanelHeader: React.FC<
     >
       <Row alignItems={"center"}>
         <Icon
-          icon={stenaSliders}
+          icon={headerIcon}
           color={cssColor("--lhds-color-ui-800")}
           size={24}
         />

@@ -201,11 +201,7 @@ Chrome, Firefox, Edge, Safari.
 In `<package>/src/index.ts`, make sure that you export at least your component and the props interface.
 Do not export everything, only the things that should be available to the users (developers).
 
-### 9) Update CHANGELOG.md
-
-State your improvements and changes and increment version.
-
-### 10) Create a pull request in Github
+### 9) Create a pull request in Github
 
 Add screenshots for extra points!
 

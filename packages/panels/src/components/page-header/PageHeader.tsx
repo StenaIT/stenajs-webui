@@ -25,7 +25,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       </Box>
       {children && (
         <>
-          {!renderTabs && <Space />}
+          {!renderTabs && renderBreadCrumbs && <Space />}
           <SeparatorLine />
           {children}
         </>
