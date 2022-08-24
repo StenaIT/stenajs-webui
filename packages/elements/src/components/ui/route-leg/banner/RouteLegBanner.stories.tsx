@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box } from "@stenajs-webui/core";
-import { RouteLegBanner } from "./RouteLegBanner";
+import { RouteLegBanner, RouteLegTimeTag } from "./RouteLegBanner";
 
 export default {
   title: "elements/RouteLeg/RouteLegBanner",
@@ -27,4 +27,10 @@ export const VariantWarning = () => (
       variant={"warning"}
     />
   </Box>
+);
+
+export const VariantInfoCompact = () => <RouteLegTimeTag text={"3h 15min"} />;
+
+export const VariantWarningCompact = () => (
+  <RouteLegTimeTag text={"3h 15min"} variant={"warning"} />
 );

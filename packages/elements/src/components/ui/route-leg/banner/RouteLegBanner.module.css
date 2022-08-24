@@ -1,4 +1,4 @@
-.banner {
+.timeBanner {
   --current-bg-color: var(--lhds-color-ui-200);
   --current-icon-color: var(--lhds-color-ui-500);
 
@@ -20,4 +20,20 @@
     --current-bg-color: var(--lhds-color-orange-50);
     --current-icon-color: var(--lhds-color-orange-600);
   }
+}
+
+.timeTag {
+  --current-icon-color: var(--lhds-color-ui-500);
+
+.icon {
+  color: var(--current-icon-color);
+}
+
+&.info {
+   --current-icon-color: var(--lhds-color-blue-500);
+ }
+
+&.warning {
+   --current-icon-color: var(--lhds-color-orange-600);
+ }
 }
