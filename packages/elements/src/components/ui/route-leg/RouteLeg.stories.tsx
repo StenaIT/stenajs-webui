@@ -1,9 +1,11 @@
 import * as React from "react";
-import { RouteLeg } from "./RouteLeg";
+import { RouteLeg, RouteLegSize } from "./RouteLeg";
 import { TimeTag } from "./TimeTag";
 import { Link } from "../link/Link";
-import { Box, SeparatorLine } from "@stenajs-webui/core";
+import { Box, Heading, SeparatorLine } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
+
+const routeLegSizes: Array<RouteLegSize> = ["compact", "standard", "relaxed"];
 
 export default {
   title: "elements/RouteLeg",
@@ -17,6 +19,28 @@ export const Demo = () => (
     arrival={{ location: "Frederikshavn", date: "23 Aug", time: "12:40" }}
   />
 );
+
+export const Overview = () => {
+  return (
+    <Box gap={5}>
+      {routeLegSizes.map((size) => (
+        <Box width={220} gap={2}>
+          <Heading as={"h4"}>{size}</Heading>
+          <RouteLeg
+            variant={"ship"}
+            departure={{ location: "Göteborg", date: "23 Aug", time: "09:10" }}
+            arrival={{
+              location: "Frederikshavn",
+              date: "23 Aug",
+              time: "12:40",
+            }}
+            size={size}
+          />
+        </Box>
+      ))}
+    </Box>
+  );
+};
 
 export const Ship = () => (
   <RouteLeg
@@ -151,12 +175,8 @@ export const Multileg = () => (
 );
 
 export const MultilegCompact = () => (
-  <Box
-    width={264}
-    border={`1px solid ${cssColor("--lhds-color-ui-300")}`}
-    background={cssColor("--lhds-color-ui-100")}
-  >
-    <Box indent={3} spacing={3} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={264} border={`1px solid ${cssColor("--lhds-color-ui-300")}`}>
+    <Box indent={3} spacing={3}>
       <RouteLeg
         variant={"rail"}
         departure={{ location: "Bettembourg", date: "15 Apr", time: "18:00" }}
