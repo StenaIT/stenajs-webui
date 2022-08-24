@@ -44,6 +44,7 @@ import {
   stenaPlusCircle,
   stenaRefresh,
   stenaSearch,
+  stenaShip,
   stenaSliders,
   stenaSortDown,
   stenaSortUp,
@@ -184,3 +185,5 @@ export const ExclamationCircleFilled = () => (
 );
 
 export const Train = () => <IconDemo icon={stenaTrain} />;
+
+export const Ship = () => <IconDemo icon={stenaShip} />;

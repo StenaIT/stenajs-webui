@@ -3,8 +3,11 @@ import styles from "./RouteLeg.module.css";
 import { Box, Column, Row, Space, Txt } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import { cssColor } from "@stenajs-webui/theme";
-import { faShip } from "@fortawesome/free-solid-svg-icons/faShip";
-import { stenaCheckCircle, stenaTrain } from "../../../icons/ui/IconsUi";
+import {
+  stenaCheckCircle,
+  stenaShip,
+  stenaTrain,
+} from "../../../icons/ui/IconsUi";
 
 export type ModeOfTransport = "ship" | "rail";
 export type RouteLegSize = "standard" | "compact" | "relaxed";
@@ -82,7 +85,7 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
   isFinal = false,
   children,
 }) => {
-  const icon = variant === "ship" ? faShip : stenaTrain;
+  const icon = variant === "ship" ? stenaShip : stenaTrain;
 
   return (
     <div className={styles.routeLeg}>
