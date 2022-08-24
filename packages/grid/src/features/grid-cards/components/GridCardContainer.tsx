@@ -5,14 +5,8 @@ export interface GridCardContainerProps {
   children?: React.ReactNode;
 }
 
-export const GridCardContainer: React.FC<GridCardContainerProps> = (
-  {
-    children
-  }
-) => {
-  return (
-    <div className={styles.gridCardContainer}>
-      {children}
-    </div>
-  );
+export const GridCardContainer: React.FC<GridCardContainerProps> = ({
+  children,
+}) => {
+  return <div className={styles.gridCardContainer}>{children}</div>;
 };
