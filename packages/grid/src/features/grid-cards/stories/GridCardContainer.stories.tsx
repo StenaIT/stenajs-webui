@@ -65,3 +65,27 @@ export const CardsMixed = () => {
     </GridCardContainer>
   );
 };
+
+export const CardsThree = () => {
+  return (
+    <GridCardContainer nrOfColumns={3}>
+      {renderCard("This is the 1th card", "Weep")}
+      {renderCard("This is the 2nd card", "Woop")}
+      {renderCard("This is the 3rd card", "Woop woop.")}
+      {renderCard("This is the 4th card", "~Cheerioooos!")}
+      {renderCard("This is the 5th card", "Party party mode activated.")}
+    </GridCardContainer>
+  );
+};
+
+export const CardsFour = () => {
+  return (
+    <GridCardContainer nrOfColumns={4}>
+      {renderCard("This is the 1th card", "Woop")}
+      {renderCard("This is the 2nd card", "Weep")}
+      {renderCard("This is the 3rd card", "Woop woop.")}
+      {renderCard("This is the 4th card", "~Cheerioooos!")}
+      {renderCard("This is the 5th card", "Party party mode activated.")}
+    </GridCardContainer>
+  );
+};

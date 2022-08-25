@@ -1,15 +1,36 @@
 .gridCardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(max(195px, 45vw), 2fr));
   margin: 24px;
   gap: 24px;
+  --grid-card-min-size: 195px;
+}
+
+.CardsTwo {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(var(--grid-card-min-size), 45vw), 2fr)
+  );
+}
+
+.CardsThree {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(var(--grid-card-min-size), 30vw), 2fr)
+  );
+}
+
+.CardsFour {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(var(--grid-card-min-size), 22vw), 2fr)
+  );
 }
 
 .gridCardContainer > .gridSpanTwo {
   grid-column: span 2;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 500px) {
   .gridCardContainer {
     margin: 2px 0;
     gap: 12px;
