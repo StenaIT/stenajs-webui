@@ -24,7 +24,7 @@ export const Overview = () => {
   return (
     <Box gap={5}>
       {routeLegSizes.map((size) => (
-        <Box width={220} gap={2}>
+        <Box width={220} gap={2} key={size}>
           <Heading as={"h4"}>{size}</Heading>
           <RouteLeg
             variant={"ship"}
