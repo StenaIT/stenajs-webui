@@ -1,0 +1,36 @@
+.ballot {
+  --current-bg-color: var(--lhds-color-ui-50);
+  --current-icon-color: var(--lhds-color-ui-500);
+
+  padding: calc(var(--swui-metrics-spacing) * 2);
+
+  background: var(--current-bg-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--swui-metrics-spacing) * 2);
+
+  width: 100%;
+  max-width: 400px;
+
+  box-shadow: var(--swui-shadow-box);
+
+  .icon {
+    color: var(--current-icon-color);
+  }
+
+  &.kommun {
+    --current-bg-color: var(--lhds-color-ui-50);
+    --current-icon-color: var(--lhds-color-ui-500);
+  }
+
+  &.landsting {
+    --current-bg-color: var(--lhds-color-blue-50);
+    --current-icon-color: var(--lhds-color-blue-500);
+  }
+
+  &.riksdag {
+    --current-bg-color: var(--lhds-color-orange-50);
+    --current-icon-color: var(--lhds-color-orange-600);
+  }
+}
