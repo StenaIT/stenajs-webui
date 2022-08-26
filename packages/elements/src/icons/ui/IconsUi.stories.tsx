@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { IconDemo } from "./IconsUiDemo";
 import {
   stenaAngleLeft,
   stenaAngleRight,
@@ -15,9 +15,16 @@ import {
   stenaArrowWideDown,
   stenaBusinessAgreement,
   stenaBusinessCustomer,
+  stenaBusinessCard,
+  stenaBusinessClaim,
+  stenaBusinessInvoice,
+  stenaBusinessNSLH,
+  stenaCalendarManage,
+  stenaExpand,
   stenaBusinessSignature,
   stenaTrash,
   stenaTimes,
+  stenaTimesCircle,
   stenaSliders,
   stenaSearch,
   stenaRefresh,
@@ -28,6 +35,17 @@ import {
   stenaPen,
   stenaHamburger,
   stenaCopy,
+  stenaCopyDocument,
+  stenaLogout,
+  stenaMail,
+  stenaSwitch,
+  stenaMobile,
+  stenaSailingGate,
+  stenaSailingLocation,
+  stenaSailingOnQuay,
+  stenaSailingOnRoute,
+  stenaSailingShip,
+  stenaSailingTrain,
   stenaCheck,
   stenaCalendar,
   stenaBell,
@@ -39,6 +57,7 @@ import {
   stenaInfoCircle,
   stenaInfoCircleFilled,
   stenaCheckCircle,
+  stenaCheckCircleFilled,
   stenaClock,
   stenaClockFilled,
   stenaArrowCircleDown,
@@ -51,60 +70,12 @@ import {
   stenaPhone,
   stenaSortUp,
   stenaSortDown,
+  stenaDownload,
+  stenaIntermodal,
 } from "./IconsUi";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { cssColor } from "@stenajs-webui/theme";
-import { Box, Row, Text } from "@stenajs-webui/core";
-import { Icon } from "../../components/ui/icon/Icon";
 
 export default {
   title: "elements/Icons/UI",
-};
-
-const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
-  const sizes = [10, 12, 14, 16, 18, 20, 22, 24];
-  const colors = [
-    cssColor("--lhds-color-blue-600"),
-    cssColor("--lhds-color-ui-800"),
-    cssColor("--lhds-color-red-600"),
-    cssColor("--lhds-color-green-600"),
-  ];
-
-  return (
-    <>
-      <Row>
-        {sizes.map((size, key) => (
-          <Box
-            key={key}
-            indent
-            width={"50px"}
-            height={"50px"}
-            justifyContent={"center"}
-            alignItems={"center"}
-          >
-            <Text>{size}</Text>
-          </Box>
-        ))}
-      </Row>
-
-      {colors.map((color, keyColor) => (
-        <Row key={keyColor}>
-          {sizes.map((size, keySize) => (
-            <Box
-              key={keyColor + "_" + keySize}
-              indent
-              width={"50px"}
-              height={"50px"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Icon icon={icon} color={color} size={size} />
-            </Box>
-          ))}
-        </Row>
-      ))}
-    </>
-  );
 };
 
 export const AngleLeft = () => <IconDemo icon={stenaAngleLeft} />;
@@ -128,15 +99,24 @@ export const BusinessAgreement = () => (
   <IconDemo icon={stenaBusinessAgreement} />
 );
 export const BusinessCustomer = () => <IconDemo icon={stenaBusinessCustomer} />;
+export const BusinessCard = () => <IconDemo icon={stenaBusinessCard} />;
+export const BusinessClaim = () => <IconDemo icon={stenaBusinessClaim} />;
+export const BusinessInvoice = () => <IconDemo icon={stenaBusinessInvoice} />;
+export const BusinessNSLH = () => <IconDemo icon={stenaBusinessNSLH} />;
 export const BusinessSignature = () => (
   <IconDemo icon={stenaBusinessSignature} />
 );
 
 export const Times = () => <IconDemo icon={stenaTimes} />;
+export const TimesCircle = () => <IconDemo icon={stenaTimesCircle} />;
 export const Sliders = () => <IconDemo icon={stenaSliders} />;
 export const Check = () => <IconDemo icon={stenaCheck} />;
 export const CheckCircle = () => <IconDemo icon={stenaCheckCircle} />;
+export const CheckCircleFilled = () => (
+  <IconDemo icon={stenaCheckCircleFilled} />
+);
 export const Copy = () => <IconDemo icon={stenaCopy} />;
+export const CopyDocument = () => <IconDemo icon={stenaCopyDocument} />;
 
 export const Search = () => <IconDemo icon={stenaSearch} />;
 export const Refresh = () => <IconDemo icon={stenaRefresh} />;
@@ -153,12 +133,16 @@ export const Bell = () => <IconDemo icon={stenaBell} />;
 export const BellFilled = () => <IconDemo icon={stenaBellFilled} />;
 export const Calendar = () => <IconDemo icon={stenaCalendar} />;
 export const CalendarFilled = () => <IconDemo icon={stenaCalendarFilled} />;
+export const CalendarManage = () => <IconDemo icon={stenaCalendarManage} />;
 export const Clock = () => <IconDemo icon={stenaClock} />;
 export const ClockFilled = () => <IconDemo icon={stenaClockFilled} />;
 export const Phone = () => <IconDemo icon={stenaPhone} />;
 export const Pen = () => <IconDemo icon={stenaPen} />;
 export const Trash = () => <IconDemo icon={stenaTrash} />;
 export const Hamburger = () => <IconDemo icon={stenaHamburger} />;
+export const Download = () => <IconDemo icon={stenaDownload} />;
+export const Intermodal = () => <IconDemo icon={stenaIntermodal} />;
+export const Logout = () => <IconDemo icon={stenaLogout} />;
 
 export const User = () => <IconDemo icon={stenaUser} />;
 export const UserCircle = () => <IconDemo icon={stenaUserCircle} />;
@@ -181,3 +165,14 @@ export const ExclamationCircle = () => (
 export const ExclamationCircleFilled = () => (
   <IconDemo icon={stenaExclamationCircleFilled} />
 );
+
+export const Expand = () => <IconDemo icon={stenaExpand} />;
+export const Mail = () => <IconDemo icon={stenaMail} />;
+export const Switch = () => <IconDemo icon={stenaSwitch} />;
+export const Mobile = () => <IconDemo icon={stenaMobile} />;
+export const SailingGate = () => <IconDemo icon={stenaSailingGate} />;
+export const SailingLocation = () => <IconDemo icon={stenaSailingLocation} />;
+export const SailingOnQuay = () => <IconDemo icon={stenaSailingOnQuay} />;
+export const SailingOnRoute = () => <IconDemo icon={stenaSailingOnRoute} />;
+export const SailingShip = () => <IconDemo icon={stenaSailingShip} />;
+export const SailingTrain = () => <IconDemo icon={stenaSailingTrain} />;
