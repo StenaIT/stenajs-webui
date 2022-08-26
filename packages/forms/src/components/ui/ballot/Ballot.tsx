@@ -5,8 +5,8 @@ import { Column, Heading, Row, Txt } from "@stenajs-webui/core";
 import styles from "./Ballot.module.css";
 import cx from "classnames";
 import { faVoteYea } from "@fortawesome/free-solid-svg-icons/faVoteYea";
-import { Checkbox } from "../checkbox/Checkbox";
 import { Icon, PrimaryButton } from "@stenajs-webui/elements";
+import { CheckboxWithLabel } from "../checkbox/CheckboxWithLabel";
 
 export type BallotVariant = "riksdag" | "kommun" | "landsting";
 
@@ -59,24 +59,20 @@ export const Ballot: React.FC<BallotProps> = ({
       {candidates && (
         <Column gap>
           {candidates.map((candidate) => (
-            <label>
-              <Row alignItems={"center"} gap>
-                <Checkbox
-                  disabled={disabled}
-                  onClick={() => {
-                    if (selectedCandidate === candidate) {
-                      setSelectedCandidate(null);
-                      onSelectCandidate?.(null);
-                    } else {
-                      setSelectedCandidate(candidate);
-                      onSelectCandidate?.(candidate);
-                    }
-                  }}
-                  checked={selectedCandidate === candidate}
-                />
-                <Txt>{candidate}</Txt>
-              </Row>
-            </label>
+            <CheckboxWithLabel
+              label={candidate}
+              checked={selectedCandidate === candidate}
+              disabled={disabled}
+              onClick={() => {
+                if (selectedCandidate === candidate) {
+                  setSelectedCandidate(null);
+                  onSelectCandidate?.(null);
+                } else {
+                  setSelectedCandidate(candidate);
+                  onSelectCandidate?.(candidate);
+                }
+              }}
+            />
           ))}
         </Column>
       )}
