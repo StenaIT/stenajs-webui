@@ -16,9 +16,9 @@ export const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
   return (
     <>
       <Row>
-        {sizes.map((size, key) => (
+        {sizes.map((size) => (
           <Box
-            key={key}
+            key={size}
             indent
             width={"50px"}
             height={"50px"}
@@ -32,9 +32,9 @@ export const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
 
       {colors.map((color, keyColor) => (
         <Row key={keyColor}>
-          {sizes.map((size, keySize) => (
+          {sizes.map((size) => (
             <Box
-              key={keyColor + "_" + keySize}
+              key={size}
               indent
               width={"50px"}
               height={"50px"}
