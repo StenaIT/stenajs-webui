@@ -2,13 +2,11 @@ import * as React from "react";
 import { ReactNode, useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Column, Heading, Row, Txt } from "@stenajs-webui/core";
-
-import { Icon } from "../icon/Icon";
 import styles from "./Ballot.module.css";
 import cx from "classnames";
-import { PrimaryButton } from "../buttons/PrimaryButton";
-import { Checkbox } from "@stenajs-webui/forms";
 import { faVoteYea } from "@fortawesome/free-solid-svg-icons/faVoteYea";
+import { Checkbox } from "../checkbox/Checkbox";
+import { Icon, PrimaryButton } from "@stenajs-webui/elements";
 
 export type BallotVariant = "riksdag" | "kommun" | "landsting";
 
@@ -82,6 +80,7 @@ export const Ballot: React.FC<BallotProps> = ({
           ))}
         </Column>
       )}
+      {children}
       <Row flex={1} alignItems={"flex-end"}>
         <PrimaryButton
           onClick={() => onVote(selectedCandidate)}
@@ -92,7 +91,6 @@ export const Ballot: React.FC<BallotProps> = ({
           disabled={disabled}
         />
       </Row>
-      {children}
     </div>
   );
 };

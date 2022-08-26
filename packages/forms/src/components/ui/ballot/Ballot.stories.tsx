@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Ballot, BallotVariant } from "./Ballot";
-import { stenaShip } from "../../../icons/ui/IconsUi";
 import { Row } from "@stenajs-webui/core";
+import { faShip } from "@fortawesome/free-solid-svg-icons/faShip";
 
 export default {
   title: "elements/Ballot",
@@ -16,7 +16,7 @@ export const Variants = () => (
       <Ballot
         categoryText={`Val till ${variant}`}
         variant={variant}
-        icon={stenaShip}
+        icon={faShip}
         headerText={"Stenapartiet"}
         text={"You may check one of the following candidates if you want to."}
         candidates={[
