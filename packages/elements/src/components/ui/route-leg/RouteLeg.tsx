@@ -5,8 +5,8 @@ import { Icon } from "../icon/Icon";
 import { cssColor } from "@stenajs-webui/theme";
 import {
   stenaCheckCircle,
-  stenaShip,
-  stenaTrain,
+  stenaSailingShip,
+  stenaSailingTrain,
 } from "../../../icons/ui/IconsUi";
 
 export type ModeOfTransport = "ship" | "rail";
@@ -83,7 +83,7 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
   selected = false,
   children,
 }) => {
-  const icon = variant === "ship" ? stenaShip : stenaTrain;
+  const icon = variant === "ship" ? stenaSailingShip : stenaSailingTrain;
 
   return (
     <div className={styles.routeLeg}>
