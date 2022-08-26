@@ -27,8 +27,12 @@ module.exports = {
     },
   ],
   viteFinal(config, { configType }) {
-    return mergeConfig(config, {
-      plugins: [svgr(), cssInjectedByJsPlugin({ topExecutionPriority: false })],
-    });
+    let plugins = [svgr()];
+
+    if (configType === "PRODUCTION") {
+      plugins.push(cssInjectedByJsPlugin({ topExecutionPriority: false }));
+    }
+
+    return mergeConfig(config, { plugins });
   },
 };
