@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start-storybook": "start-storybook -p 6007",
+    "start-storybook": "start-storybook -p 6006",
     "build-storybook": "rimraf build && build-storybook -o build",
     "build-packages": "lerna run build",
     "build-packages-and-storybook": "lerna run build && build-storybook",
