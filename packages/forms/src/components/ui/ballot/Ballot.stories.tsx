@@ -3,7 +3,7 @@ import { Ballot, BallotVariant } from "./Ballot";
 import { Row } from "@stenajs-webui/core";
 import { faShip } from "@fortawesome/free-solid-svg-icons/faShip";
 import { Icon } from "@stenajs-webui/elements";
-import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
+import { faChild } from "@fortawesome/free-solid-svg-icons/faChild";
 
 export default {
   title: "forms/Ballot",
@@ -39,7 +39,6 @@ export const Loading = () => (
   <Row gap={3}>
     <Ballot
       categoryText={"Val till riksdagen"}
-      icon={faShip}
       headerText={"Stenapartiet"}
       text={"You may check one of the following candidates if you want to."}
       candidates={[
@@ -60,7 +59,6 @@ export const Disabled = () => (
   <Row gap={3}>
     <Ballot
       categoryText={"Val till riksdagen"}
-      icon={faShip}
       headerText={"Stenapartiet"}
       text={"You may check one of the following candidates if you want to."}
       candidates={[
@@ -81,6 +79,16 @@ export const NoCandidates = () => (
   <Row gap={3}>
     <Ballot
       categoryText={"Val till riksdagen"}
+      headerText={"Stenapartiet"}
+      onVote={() => alert("You voted")}
+    />
+  </Row>
+);
+
+export const WithIcon = () => (
+  <Row gap={3}>
+    <Ballot
+      categoryText={"Val till riksdagen"}
       icon={faShip}
       headerText={"Stenapartiet"}
       onVote={() => alert("You voted")}
@@ -92,11 +100,16 @@ export const WithChildren = () => (
   <Row gap={3}>
     <Ballot
       categoryText={"Val till riksdagen"}
-      icon={faShip}
       headerText={"Stenapartiet"}
       onVote={() => alert("You voted")}
     >
-      <Icon icon={faJedi} />
+      <Row justifyContent={"center"} gap>
+        <Icon icon={faChild} />
+        <Icon icon={faChild} />
+        <Icon icon={faChild} />
+        <Icon icon={faChild} />
+        <Icon icon={faChild} />
+      </Row>
     </Ballot>
   </Row>
 );
