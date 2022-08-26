@@ -30,8 +30,8 @@ export const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
         ))}
       </Row>
 
-      {colors.map((color, keyColor) => (
-        <Row key={keyColor}>
+      {colors.map((color) => (
+        <Row key={color}>
           {sizes.map((size) => (
             <Box
               key={size}
