@@ -37,7 +37,7 @@ interface CalendarPanelProps<T>
   theme?: CalendarTheme;
 }
 
-function CalendarPanel<T extends {}>({
+function CalendarPanel<T>({
   monthRows,
   dayComponent = CalendarDay,
   userDataPerMonth,
@@ -108,7 +108,7 @@ function CalendarPanel<T extends {}>({
   );
 }
 
-export function Calendar<T extends {}>(props: CalendarProps<T>) {
+export function Calendar<T>(props: CalendarProps<T>) {
   const initialDate = getInitialDate(props.year, props.month, props.date);
   const { year, month } = calculateOverflowingMonth(
     initialDate.year,

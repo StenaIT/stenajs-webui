@@ -23,12 +23,12 @@ export type MultiSelectComponentsConfig<TOption> = SelectComponentsConfig<
   GroupBase<TOption>
 >;
 
-export const MultiSelect = <TOption extends {}>({
+export function MultiSelect<TOption>({
   variant = "standard",
   styles,
   isMulti,
   ...selectProps
-}: MultiSelectProps<TOption>) => {
+}: MultiSelectProps<TOption>) {
   const selectStyles = useMemo(() => {
     const sourceStyles = createStylesFromVariant<TOption, true>(variant);
 
@@ -38,4 +38,4 @@ export const MultiSelect = <TOption extends {}>({
   return (
     <SelectComponent styles={selectStyles} {...selectProps} isMulti={true} />
   );
-};
+}

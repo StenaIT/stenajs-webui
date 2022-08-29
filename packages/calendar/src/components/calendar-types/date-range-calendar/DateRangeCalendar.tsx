@@ -14,9 +14,7 @@ export interface DateRangeCalendarProps<T>
   setFocusedInput: (focusedInput: DateRangeFocusedInput) => void;
 }
 
-export function DateRangeCalendar<T extends {}>(
-  props: DateRangeCalendarProps<T>
-) {
+export function DateRangeCalendar<T>(props: DateRangeCalendarProps<T>) {
   const dateRangeSelectionProps = useDateRangeSelection(props);
   return (
     <CalendarWithMonthSwitcher<T> {...props} {...dateRangeSelectionProps} />

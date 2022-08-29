@@ -10,7 +10,7 @@ export interface DateRangeExclusionCalendarProps<T>
     UseInternalPanelStateProps,
     ValueAndOnValueChangeProps<Array<Date>> {}
 
-export function DateRangeExclusionCalendar<T extends {}>(
+export function DateRangeExclusionCalendar<T>(
   props: DateRangeExclusionCalendarProps<T>
 ) {
   const selectionProps = useDateRangeExclusionSelection(props);

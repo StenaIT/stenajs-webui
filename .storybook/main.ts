@@ -1,9 +1,9 @@
-const { mergeConfig } = require("vite");
-const svgr = require("vite-plugin-svgr").default;
-const cssInjectedByJsPlugin = require("vite-plugin-css-injected-by-js");
+import { mergeConfig } from "vite";
+import svgr from "vite-plugin-svgr";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import { StorybookViteConfig } from "@storybook/builder-vite";
 
-/** @type {import('@storybook/builder-vite').StorybookViteConfig} */
-module.exports = {
+const config: StorybookViteConfig = {
   core: { builder: "@storybook/builder-vite" },
   stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
   typescript: {
@@ -36,3 +36,5 @@ module.exports = {
     return mergeConfig(config, { plugins });
   },
 };
+
+module.exports = config;

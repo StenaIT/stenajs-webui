@@ -92,7 +92,7 @@ function formatInnerOptionLabel<TData>(
     : props.label;
 }
 
-export const GroupedMultiSelect = <TData extends {}>({
+export function GroupedMultiSelect<TData>({
   onChange,
   options,
   value,
@@ -102,7 +102,7 @@ export const GroupedMultiSelect = <TData extends {}>({
   ...selectProps
 }: GroupedMultiSelectProps<TData>): React.ReactElement<
   GroupedMultiSelectProps<TData>
-> => {
+> {
   const Option = (
     props: OptionProps<
       InternalDropdownOption<TData>,
@@ -164,7 +164,7 @@ export const GroupedMultiSelect = <TData extends {}>({
       variant={variant}
     />
   );
-};
+}
 
 interface InnerOptionProps {
   size?: TextSize;
