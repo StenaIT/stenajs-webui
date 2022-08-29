@@ -7,6 +7,7 @@ export interface PageHeaderProps {
   renderBreadCrumbs?: () => ReactNode;
   renderPageHeading?: () => ReactNode;
   renderTabs?: () => ReactNode;
+  TopContent?: ReactNode;
   children?: ReactNode;
 }
 
@@ -14,10 +15,12 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   renderBreadCrumbs,
   renderPageHeading,
   renderTabs,
+  TopContent,
   children,
 }) => {
   return (
     <Box shadow={"box"} background={cssColor("--lhds-color-ui-50")}>
+      {TopContent}
       <Box indent={3}>
         {renderBreadCrumbs && <Row spacing={1.25}>{renderBreadCrumbs()}</Row>}
         {renderPageHeading?.()}

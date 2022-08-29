@@ -11,6 +11,7 @@ import {
   TabMenu,
   Tag,
   stenaSliders,
+  Banner,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
@@ -19,6 +20,7 @@ import { TextInput } from "@stenajs-webui/forms";
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";
 import { PageHeaderRow } from "./PageHeaderRow";
+import { ErrorScreen } from "../error-panel/ErrorScreen";
 
 export default {
   title: "panels/PageHeader",
@@ -100,6 +102,38 @@ export const NoTabsOrHeadingContent = () => {
         </Box>
         <PrimaryButton label={"Action"} />
       </PageHeaderRow>
+    </PageHeader>
+  );
+};
+
+export const TopAndBotContent = () => {
+  return (
+    <PageHeader
+      TopContent={
+        <Banner
+          variant={"error"}
+          headerText={"Oh noes! There's an error here!"}
+        />
+      }
+      renderBreadCrumbs={() => (
+        <BreadCrumbs>
+          <Crumb label={"Home"} />
+          <Crumb label={"Customer"} />
+          <Crumb label={"Booking"} />
+        </BreadCrumbs>
+      )}
+      renderPageHeading={() => <PageHeading heading={"Page Header"} />}
+    >
+      <PageHeaderRow gap={2}>
+        <Box>
+          <TextInput />
+        </Box>
+        <PrimaryButton label={"Action"} />
+      </PageHeaderRow>
+      <Banner
+        variant={"info"}
+        headerText={"Having errors in the code is not good."}
+      />
     </PageHeader>
   );
 };
