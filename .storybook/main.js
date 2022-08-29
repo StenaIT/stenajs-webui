@@ -29,7 +29,7 @@ module.exports = {
   viteFinal(config, { configType }) {
     let plugins = [svgr()];
 
-    if (configType === "PRODUCTION") {
+    if (configType !== "PRODUCTION") {
       plugins.push(cssInjectedByJsPlugin({ topExecutionPriority: false }));
     }
 
