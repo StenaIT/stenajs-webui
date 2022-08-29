@@ -1,4 +1,4 @@
-.gridCardContainer {
+.gridContainer {
   display: grid;
   margin: 24px;
   gap: 24px;
@@ -26,12 +26,12 @@
   );
 }
 
-.gridCardContainer > .gridSpanTwo {
+.gridContainer > .gridSpanTwo {
   grid-column: span 2;
 }
 
 @media only screen and (max-width: 500px) {
-  .gridCardContainer {
+  .gridContainer {
     margin: 2px 0;
     gap: 12px;
   }

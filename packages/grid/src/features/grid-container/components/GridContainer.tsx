@@ -1,12 +1,12 @@
 import * as React from "react";
-import styles from "./GridCardContainer.module.css";
+import styles from "./GridContainer.module.css";
 
-export interface GridCardContainerProps {
+export interface GridContainerProps {
   nrOfColumns?: number;
   children?: React.ReactNode;
 }
 
-export const GridCardContainer: React.FC<GridCardContainerProps> = ({
+export const GridContainer: React.FC<GridContainerProps> = ({
   nrOfColumns,
   children,
 }) => {
