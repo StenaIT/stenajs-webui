@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IconDemo } from "./IconsUiDemo";
+import * as allIcons from "./IconsUi";
 import {
   stenaAngleLeft,
   stenaAngleRight,
@@ -73,10 +74,48 @@ import {
   stenaDownload,
   stenaIntermodal,
 } from "./IconsUi";
+import { Box, Txt } from "@stenajs-webui/core";
+import { Icon } from "../../components/ui/icon/Icon";
 
 export default {
   title: "elements/Icons/UI",
 };
+
+export const AllIconsDemo = () => (
+  <Box
+    indent
+    spacing
+    style={{
+      display: "grid",
+      gap: "8px",
+      gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+      background: "#f0f1f3",
+    }}
+  >
+    {Object.keys(allIcons).map((iconName) => (
+      <Box
+        gap
+        indent
+        borderRadius={8}
+        style={{ aspectRatio: "1", cursor: "pointer" }}
+        background={"rgb(255, 255, 255)"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        hoverBackground={"rgb(255, 212, 59)"}
+        onClick={() => navigator.clipboard.writeText(iconName)}
+      >
+        <Icon key={iconName} icon={allIcons[iconName]} size={24} />
+        <Txt
+          size={"small"}
+          wordBreak={"break-word"}
+          style={{ textAlign: "center" }}
+        >
+          {iconName}
+        </Txt>
+      </Box>
+    ))}
+  </Box>
+);
 
 export const AngleDown = () => <IconDemo icon={stenaAngleDown} />;
 export const AngleLeft = () => <IconDemo icon={stenaAngleLeft} />;
