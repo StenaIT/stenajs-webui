@@ -27,6 +27,7 @@ module.exports = {
     },
   ],
   viteFinal(config, { configType }) {
+    console.log(configType);
     let plugins = [svgr()];
 
     if (configType === "PRODUCTION") {
