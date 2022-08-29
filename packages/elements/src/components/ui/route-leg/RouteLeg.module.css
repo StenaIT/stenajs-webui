@@ -1,0 +1,16 @@
+.routeLeg {
+  position: relative;
+
+  .selectedIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: calc(3 * var(--swui-metrics-indent));
+    row-gap: calc(2 * var(--swui-metrics-indent));
+  }
+}
