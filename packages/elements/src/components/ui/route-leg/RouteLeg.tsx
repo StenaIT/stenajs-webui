@@ -105,12 +105,7 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
       )}
       <div className={styles.grid}>
         <Column alignItems={"center"} gap={0.5}>
-          <Icon
-            icon={icon}
-            fixedWidth
-            color={cssColor("--lhds-color-ui-700")}
-            size={24}
-          />
+          <Icon icon={icon} fixedWidth size={24} />
           <Box
             flex={1}
             border={`1px solid ${cssColor("--lhds-color-ui-300")}`}

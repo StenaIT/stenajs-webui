@@ -18,7 +18,7 @@ export interface IconProps
 export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
   {
     className,
-    color = "var(--lhds-color-ui-500)",
+    color = "var(--lhds-color-ui-900)",
     flip,
     icon,
     pulse,
