@@ -1,3 +1,23 @@
+# v17.13.0 (Mon Aug 29 2022)
+
+#### 🚀 Enhancement
+
+- Add route leg component [#490](https://github.com/StenaIT/stenajs-webui/pull/490) ([@juiceit](https://github.com/juiceit))
+- New batch of Stena SVG icons [#492](https://github.com/StenaIT/stenajs-webui/pull/492) (david.zetterdahl@stenaline.com [@nikteg](https://github.com/nikteg) [@LordDz](https://github.com/LordDz))
+
+#### 🐛 Bug Fix
+
+- Switch and minus replacements [#493](https://github.com/StenaIT/stenajs-webui/pull/493) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Niklas ([@nikteg](https://github.com/nikteg))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.9.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

@@ -1,3 +1,28 @@
+# v17.13.0 (Mon Aug 29 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add route leg component [#490](https://github.com/StenaIT/stenajs-webui/pull/490) ([@juiceit](https://github.com/juiceit))
+  - New batch of Stena SVG icons [#492](https://github.com/StenaIT/stenajs-webui/pull/492) (david.zetterdahl@stenaline.com [@nikteg](https://github.com/nikteg) [@LordDz](https://github.com/LordDz))
+
+#### 🐛 Bug Fix
+
+- Fix extractCss config in production [#496](https://github.com/StenaIT/stenajs-webui/pull/496) ([@lindskogen](https://github.com/lindskogen))
+- Only use cssInjectedByJsPlugin in production [#494](https://github.com/StenaIT/stenajs-webui/pull/494) ([@nikteg](https://github.com/nikteg))
+- `@stenajs-webui/elements`
+  - Switch and minus replacements [#493](https://github.com/StenaIT/stenajs-webui/pull/493) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 5
+
+- David ([@LordDz](https://github.com/LordDz))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Niklas ([@nikteg](https://github.com/nikteg))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.12.1 (Mon Aug 22 2022)
 
 #### 🐛 Bug Fix
