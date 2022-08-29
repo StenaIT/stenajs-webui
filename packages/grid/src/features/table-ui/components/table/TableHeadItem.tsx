@@ -91,7 +91,11 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                   <Space num={0.5} />
                 </>
               )}
-              {label && <Heading variant={"h6"}>{label}</Heading>}
+              {label && (
+                <Heading variant={"h6"} style={{ textAlign: "left" }}>
+                  {label}
+                </Heading>
+              )}
               {arrow && !alignRight && (
                 <>
                   <Space num={0.5} />
