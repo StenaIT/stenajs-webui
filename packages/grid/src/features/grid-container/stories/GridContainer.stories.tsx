@@ -6,12 +6,12 @@ import {
   CardHeader,
   FlatButton,
 } from "@stenajs-webui/elements";
-import { GridCardContainer } from "../components/GridCardContainer";
+import { GridContainer } from "../components/GridContainer";
 import { faJedi } from "@fortawesome/free-solid-svg-icons";
-import styles from "../components/GridCardContainer.module.css";
+import styles from "../components/GridContainer.module.css";
 
 export default {
-  title: "grid/CardsContainer",
+  title: "grid/GridContainer",
 };
 
 const renderCard = (header: string, text: string, className?: string) => (
@@ -36,19 +36,19 @@ const renderCard = (header: string, text: string, className?: string) => (
 
 export const CardsCompact = () => {
   return (
-    <GridCardContainer>
+    <GridContainer>
       {renderCard("This is the 1th card", "it's an awesome card indeed.")}
       {renderCard("This is the 2nd card", "Look at this awesome text!")}
       {renderCard("This is the 3rd card", "Woop woop.")}
       {renderCard("This is the 4th card", "~Cheerioooos!")}
       {renderCard("This is the 5th card", "Party party mode activated.")}
-    </GridCardContainer>
+    </GridContainer>
   );
 };
 
 export const CardsMixed = () => {
   return (
-    <GridCardContainer>
+    <GridContainer>
       {renderCard(
         "This is the 1th card",
         "I'm set to cover 2 columns if possible",
@@ -62,30 +62,41 @@ export const CardsMixed = () => {
       {renderCard("This is the 3rd card", "Woop woop.")}
       {renderCard("This is the 4th card", "~Cheerioooos!")}
       {renderCard("This is the 5th card", "Party party mode activated.")}
-    </GridCardContainer>
+    </GridContainer>
   );
 };
 
 export const CardsThree = () => {
   return (
-    <GridCardContainer nrOfColumns={3}>
+    <GridContainer nrOfColumns={3}>
       {renderCard("This is the 1th card", "Weep")}
       {renderCard("This is the 2nd card", "Woop")}
       {renderCard("This is the 3rd card", "Woop woop.")}
       {renderCard("This is the 4th card", "~Cheerioooos!")}
       {renderCard("This is the 5th card", "Party party mode activated.")}
-    </GridCardContainer>
+    </GridContainer>
   );
 };
 
 export const CardsFour = () => {
   return (
-    <GridCardContainer nrOfColumns={4}>
+    <GridContainer nrOfColumns={4}>
       {renderCard("This is the 1th card", "Woop")}
       {renderCard("This is the 2nd card", "Weep")}
       {renderCard("This is the 3rd card", "Woop woop.")}
       {renderCard("This is the 4th card", "~Cheerioooos!")}
       {renderCard("This is the 5th card", "Party party mode activated.")}
-    </GridCardContainer>
+    </GridContainer>
+  );
+};
+
+export const MixedContent = () => {
+  return (
+    <GridContainer nrOfColumns={2}>
+      {renderCard("This is a card", "Woop")}
+      <label>This supports text as well</label>
+      <label>This is text</label>
+      <p>Here's some more text</p>
+    </GridContainer>
   );
 };
