@@ -76,6 +76,7 @@ import {
 } from "./IconsUi";
 import { Box, Txt } from "@stenajs-webui/core";
 import { Icon } from "../../components/ui/icon/Icon";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "elements/Icons/UI",
@@ -89,7 +90,7 @@ export const AllIconsDemo = () => (
       display: "grid",
       gap: "8px",
       gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
-      background: "#f0f1f3",
+      background: cssColor("--lhds-color-ui-100"),
     }}
   >
     {Object.keys(allIcons).map((iconName) => (
