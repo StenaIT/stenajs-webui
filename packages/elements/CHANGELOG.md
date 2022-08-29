@@ -1,3 +1,15 @@
+# v17.13.1 (Mon Aug 29 2022)
+
+#### 🐛 Bug Fix
+
+- Add icons overview page [#495](https://github.com/StenaIT/stenajs-webui/pull/495) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.0 (Mon Aug 29 2022)
 
 #### 🚀 Enhancement

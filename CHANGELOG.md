@@ -1,3 +1,18 @@
+# v17.13.1 (Mon Aug 29 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Align table head left [#497](https://github.com/StenaIT/stenajs-webui/pull/497) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`
+  - Add icons overview page [#495](https://github.com/StenaIT/stenajs-webui/pull/495) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.0 (Mon Aug 29 2022)
 
 #### 🚀 Enhancement
