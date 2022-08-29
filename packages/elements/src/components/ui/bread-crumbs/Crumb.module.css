@@ -1,23 +1,26 @@
 .crumb {
-  color: var(--swui-text-action-color);
   font-size: 1rem;
   font-family: var(--swui-font-primary);
   font-weight: var(--swui-font-weight-text-bold);
   letter-spacing: 0.1rem;
   text-decoration: none;
-  cursor: pointer;
-}
 
-.crumb:hover {
-  text-decoration: underline;
-  color: var(--swui-text-action-color-hover);
-}
+  &:not(:last-of-type) {
+    cursor: pointer;
+    color: var(--swui-text-action-color);
 
-.crumb:focus {
-  color: var(--swui-text-action-color-focus);
-}
+    &:hover {
+      text-decoration: underline;
+      color: var(--swui-text-action-color-hover);
+    }
 
-.crumb:active {
-  text-decoration: underline;
-  color: var(--swui-text-action-color-active);
+    &:focus {
+      color: var(--swui-text-action-color-focus);
+    }
+
+    &:active {
+      text-decoration: underline;
+      color: var(--swui-text-action-color-active);
+    }
+  }
 }
