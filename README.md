@@ -1,4 +1,4 @@
-# stenajs-webui [![CI](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml) [![stenajs-webui](https://img.shields.io/npm/v/@stenajs-webui/core?label=stenajs-webui)](https://www.npmjs.com/package/@stenajs-webui/core)
+# stenajs-webui [![CI](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml/badge.svg)](https://github.com/StenaIT/stenajs-webui/actions/workflows/nodejs.yml) [![stenajs-webui](https://img.shields.io/npm/v/@stenajs-webui/core?label=stenajs-webui)](https://www.npmjs.com/package/@stenajs-webui/core) [![Netlify Status](https://api.netlify.com/api/v1/badges/65047e35-e5ab-4e9d-b350-eb037bf7bb3b/deploy-status)](https://app.netlify.com/sites/stenajs-webui/deploys)
 
 A design system and React component framework developed at Stena Line.
 
