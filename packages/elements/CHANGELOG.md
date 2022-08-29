@@ -1,3 +1,16 @@
+# v17.13.2 (Mon Aug 29 2022)
+
+#### 🐛 Bug Fix
+
+- Change default icon color (fixes AB#97855) [#498](https://github.com/StenaIT/stenajs-webui/pull/498) ([@lindskogen](https://github.com/lindskogen) [@juiceit](https://github.com/juiceit))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.13.1 (Mon Aug 29 2022)
 
 #### 🐛 Bug Fix
