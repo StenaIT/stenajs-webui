@@ -11,7 +11,7 @@ export const GridContainer: React.FC<GridContainerProps> = ({
   children,
 }) => {
   const className =
-    styles.gridCardContainer +
+    styles.gridContainer +
     " " +
     (nrOfColumns
       ? nrOfColumns > 3
