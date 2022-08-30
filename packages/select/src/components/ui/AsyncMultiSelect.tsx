@@ -14,12 +14,12 @@ export interface AsyncMultiSelectProps<T = { label: string; value: string }>
   isMulti?: true;
 }
 
-export const AsyncMultiSelect = <T extends {}>({
+export function AsyncMultiSelect<T>({
   variant = "standard",
   styles,
   isMulti,
   ...selectProps
-}: AsyncMultiSelectProps<T>) => {
+}: AsyncMultiSelectProps<T>) {
   const selectStyles = useMemo(() => {
     const sourceStyles = createStylesFromVariant<T, true>(variant);
 
@@ -29,4 +29,4 @@ export const AsyncMultiSelect = <T extends {}>({
   return (
     <AsyncComponent styles={selectStyles} {...selectProps} isMulti={true} />
   );
-};
+}

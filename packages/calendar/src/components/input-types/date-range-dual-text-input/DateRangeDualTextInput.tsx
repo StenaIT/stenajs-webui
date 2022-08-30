@@ -36,7 +36,7 @@ export interface DateRangeDualTextInputProps<TData = unknown>
   disabled?: boolean;
 }
 
-export const DateRangeDualTextInput = <TData extends {}>({
+export function DateRangeDualTextInput<TData>({
   value,
   onValueChange,
   autoFocus,
@@ -50,7 +50,7 @@ export const DateRangeDualTextInput = <TData extends {}>({
   widthRight = 128,
   variant,
   disabled,
-}: DateRangeDualTextInputProps<TData>) => {
+}: DateRangeDualTextInputProps<TData>) {
   const { startDate, endDate } = value || {};
 
   const startDateInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -174,4 +174,4 @@ export const DateRangeDualTextInput = <TData extends {}>({
       </Popover>
     </Box>
   );
-};
+}

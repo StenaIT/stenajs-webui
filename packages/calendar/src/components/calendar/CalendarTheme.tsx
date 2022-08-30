@@ -10,7 +10,7 @@ import {
 } from "../../util/calendar/CalendarDataFactory";
 import { dayHighlightSelect } from "../../util/calendar/StateHelper";
 
-export interface CalendarTheme<TUserData = {}> {
+export interface CalendarTheme<TUserData = unknown> {
   width: string;
   height: string;
   WeekNumber: WeekNumberTheme;
@@ -79,7 +79,7 @@ export const defaultWrapperStyleProvider =
     todayBackground,
     rangeBackground,
     borderColor = "transparent",
-  }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<{}> =>
+  }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<unknown> =>
   (defaultHighlights, dayState, day, _, month) => {
     let style = {};
 
@@ -150,7 +150,7 @@ export const defaultTextPropsProvider = ({
   disabledColor,
   inOtherMonthColor,
   rangeTextColor,
-}: DefaultTextColors): TextPropsProvider<{}> => {
+}: DefaultTextColors): TextPropsProvider<unknown> => {
   return (defaultHighlights, dayState, day, _, month) => {
     const isOtherMonth = day.month !== month.monthInYear;
     const color = dayHighlightSelect(

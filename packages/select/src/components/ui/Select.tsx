@@ -12,12 +12,12 @@ export interface SelectProps<T = { label: string; value: string }>
   isMulti?: false;
 }
 
-export const Select = <T extends {}>({
+export function Select<T>({
   variant = "standard",
   styles,
   isMulti,
   ...selectProps
-}: SelectProps<T>) => {
+}: SelectProps<T>) {
   const selectStyles = useMemo(() => {
     const sourceStyles = createStylesFromVariant<T, false>(variant);
 
@@ -27,4 +27,4 @@ export const Select = <T extends {}>({
   return (
     <SelectComponent styles={selectStyles} {...selectProps} isMulti={false} />
   );
-};
+}

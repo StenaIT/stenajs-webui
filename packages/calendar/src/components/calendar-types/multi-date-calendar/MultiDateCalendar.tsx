@@ -11,9 +11,7 @@ export interface MultiDateCalendarProps<T>
   onChange?: (value: Array<Date>) => void;
 }
 
-export function MultiDateCalendar<T extends {}>(
-  props: MultiDateCalendarProps<T>
-) {
+export function MultiDateCalendar<T>(props: MultiDateCalendarProps<T>) {
   const selectionProps = useMultiDateSelection(props);
   return <CalendarWithMonthSwitcher<T> {...props} {...selectionProps} />;
 }

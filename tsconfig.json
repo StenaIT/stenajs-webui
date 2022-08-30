@@ -20,5 +20,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "strict": true
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": [],
   "exclude": ["node_modules"]
 }

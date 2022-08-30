@@ -76,7 +76,7 @@ export interface DateRangeInputProps<T>
 /**
  * @deprecated Please use DateRangeDualTextInput instead.
  */
-export const DateRangeInput = <T extends {}>({
+export function DateRangeInput<T>({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
   placeholderEndDate = "End date",
@@ -90,7 +90,7 @@ export const DateRangeInput = <T extends {}>({
   minDate,
   maxDate = defaultMaxDate,
   disabled,
-}: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> => {
+}: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> {
   const [dateInFocus, setDateInFocus] = useState(
     () => (focusedInput && value?.[focusedInput]) ?? new Date()
   );
@@ -173,4 +173,4 @@ export const DateRangeInput = <T extends {}>({
       </Row>
     </Popover>
   );
-};
+}

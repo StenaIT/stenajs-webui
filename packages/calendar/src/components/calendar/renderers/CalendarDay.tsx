@@ -8,7 +8,7 @@ import {
 } from "../../../types/CalendarTypes";
 import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
 
-export const CalendarDay = function CalendarDay<T extends {}>({
+export const CalendarDay = function CalendarDay<T>({
   day,
   week,
   month,

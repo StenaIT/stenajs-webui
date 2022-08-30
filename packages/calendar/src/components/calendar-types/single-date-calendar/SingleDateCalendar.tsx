@@ -10,9 +10,7 @@ export interface SingleDateCalendarProps<T>
   onChange: (value: Date | undefined) => void;
 }
 
-export function SingleDateCalendar<T extends {}>(
-  props: SingleDateCalendarProps<T>
-) {
+export function SingleDateCalendar<T>(props: SingleDateCalendarProps<T>) {
   const singleDateSelectionProps = useSingleDateSelection(props);
   return (
     <CalendarWithMonthSwitcher<T> {...props} {...singleDateSelectionProps} />
