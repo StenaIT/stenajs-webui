@@ -1,3 +1,17 @@
+# v17.13.3 (Tue Aug 30 2022)
+
+#### 🐛 Bug Fix
+
+- Fix stenaSailingRoute icon [#501](https://github.com/StenaIT/stenajs-webui/pull/501) ([@juiceit](https://github.com/juiceit))
+- Remove link styling for last-of-type (fixes AB#97856) [#499](https://github.com/StenaIT/stenajs-webui/pull/499) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.13.2 (Mon Aug 29 2022)
 
 #### 🐛 Bug Fix

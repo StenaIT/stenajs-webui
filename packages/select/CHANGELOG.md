@@ -1,3 +1,15 @@
+# v17.13.3 (Tue Aug 30 2022)
+
+#### 🏠 Internal
+
+- Upgrade storybook, vite and ts [#502](https://github.com/StenaIT/stenajs-webui/pull/502) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.12.1 (Mon Aug 22 2022)
 
 #### 🐛 Bug Fix
