@@ -3,11 +3,11 @@
   --swui-nav-bar-button-text-color: var(--lhds-color-ui-50);
   --swui-nav-bar-button-background-color: transparent;
   --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-900);
-  --swui-nav-bar-button-background-color-focus: var(--lhds-color-blue-700);
+  --swui-nav-bar-button-background-color-focus: var(--lhds-color-blue-800);
   --swui-nav-bar-button-background-color-active: var(--lhds-color-blue-800);
-  --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-600);
+  --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-700);
   --swui-nav-bar-button-background-color-selected-hover: var(
-    --lhds-color-blue-700
+    --lhds-color-blue-800
   );
   --swui-nav-bar-button-background-color-selected-focus: var(
     --lhds-color-blue-700
