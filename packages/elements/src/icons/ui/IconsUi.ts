@@ -681,7 +681,7 @@ export const stenaLockOpen: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaLogout: IconDefinition = {
+export const stenaSignOut: IconDefinition = {
   icon: [
     48,
     48,
@@ -934,7 +934,7 @@ export const stenaSailingOffpeak: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaSailingOnquay: IconDefinition = {
+export const stenaSailingOnQuay: IconDefinition = {
   icon: [
     48,
     48,
@@ -945,7 +945,7 @@ export const stenaSailingOnquay: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaSailingOnroute: IconDefinition = {
+export const stenaSailingOnRoute: IconDefinition = {
   icon: [
     48,
     48,
@@ -1022,7 +1022,7 @@ export const stenaSearch: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaSignin: IconDefinition = {
+export const stenaSignIn: IconDefinition = {
   icon: [
     48,
     48,
@@ -1187,7 +1187,7 @@ export const stenaTrash: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaTurnoff: IconDefinition = {
+export const stenaTurnOff: IconDefinition = {
   icon: [
     48,
     48,
