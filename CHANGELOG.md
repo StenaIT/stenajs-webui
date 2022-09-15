@@ -1,3 +1,16 @@
+# v17.14.0 (Thu Sep 15 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add generate icons from svg script and add/update some icons [#505](https://github.com/StenaIT/stenajs-webui/pull/505) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.3 (Tue Aug 30 2022)
 
 #### 🐛 Bug Fix
