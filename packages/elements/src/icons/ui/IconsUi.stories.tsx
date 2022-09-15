@@ -1,4 +1,6 @@
 import * as React from "react";
+import { IconDemo } from "./IconsUiDemo";
+inport { useState } from "react";
 import * as allIcons from "./IconsUi";
 import { Box, Txt } from "@stenajs-webui/core";
 import { Icon } from "../../components/ui/icon/Icon";
@@ -8,8 +10,10 @@ export default {
   title: "elements/Icons/UI",
 };
 
-export const AllIconsDemo = () => (
-  <Box
+export const AllIconsDemo = () => {
+  const [selectedIcon, setSelectedIcon] = useState(Object.values(allIcons)[0]);
+  return (<>
+    <Box
     indent
     spacing
     style={{
@@ -29,7 +33,10 @@ export const AllIconsDemo = () => (
         justifyContent={"center"}
         alignItems={"center"}
         hoverBackground={"rgb(255, 212, 59)"}
-        onClick={() => navigator.clipboard.writeText(iconName)}
+        onClick={() => {
+          navigator.clipboard.writeText(iconName);
+          setSelectedIcon(allIcons[iconName]);
+        }
       >
         <Icon key={iconName} icon={allIcons[iconName]} size={24} />
         <Txt
@@ -42,4 +49,6 @@ export const AllIconsDemo = () => (
       </Box>
     ))}
   </Box>
+  <IconDemo icon={selectedIcon} />
+  </>)
 );
