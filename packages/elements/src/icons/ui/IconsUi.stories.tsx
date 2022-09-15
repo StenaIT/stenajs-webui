@@ -36,7 +36,7 @@ export const AllIconsDemo = () => {
         onClick={() => {
           navigator.clipboard.writeText(iconName);
           setSelectedIcon(allIcons[iconName]);
-        }
+        }}
       >
         <Icon key={iconName} icon={allIcons[iconName]} size={24} />
         <Txt
