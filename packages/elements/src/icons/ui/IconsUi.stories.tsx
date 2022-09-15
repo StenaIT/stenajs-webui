@@ -50,5 +50,5 @@ export const AllIconsDemo = () => {
     ))}
   </Box>
   <IconDemo icon={selectedIcon} />
-  </>)
-);
+  </>);
+};
