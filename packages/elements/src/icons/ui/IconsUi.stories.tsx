@@ -1,6 +1,6 @@
 import * as React from "react";
 import { IconDemo } from "./IconsUiDemo";
-inport { useState } from "react";
+import { useState } from "react";
 import * as allIcons from "./IconsUi";
 import { Box, Txt } from "@stenajs-webui/core";
 import { Icon } from "../../components/ui/icon/Icon";
