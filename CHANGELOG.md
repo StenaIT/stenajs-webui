@@ -1,3 +1,16 @@
+# v17.15.0 (Fri Sep 16 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Icons update [#506](https://github.com/StenaIT/stenajs-webui/pull/506) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.14.0 (Thu Sep 15 2022)
 
 #### 🚀 Enhancement
