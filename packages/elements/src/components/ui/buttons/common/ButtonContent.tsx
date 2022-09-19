@@ -6,6 +6,7 @@ import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./ButtonContent.module.css";
 import { stenaCheck } from "../../../../icons/ui/IconsUi";
+import { Icon } from "../../icon/Icon";
 
 export interface ButtonContentProps {
   label?: string;
@@ -41,7 +42,8 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
       {(success || loading || leftIcon || left) && (
         <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
           {success ? (
-            <FontAwesomeIcon
+            <Icon
+              size={16}
               icon={stenaCheck}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -58,7 +60,8 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           ) : left ? (
             left
           ) : leftIcon ? (
-            <FontAwesomeIcon
+            <Icon
+              size={16}
               icon={leftIcon}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -75,7 +78,8 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           {right ? (
             right
           ) : rightIcon ? (
-            <FontAwesomeIcon
+            <Icon
+              size={16}
               icon={rightIcon}
               className={cx(styles.iconRight, iconClassName)}
             />

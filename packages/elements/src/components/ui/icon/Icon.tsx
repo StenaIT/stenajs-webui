@@ -51,7 +51,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
         pulse={pulse}
         rotation={rotation}
         spin={spin}
-        style={{ fontSize: size, ...style }}
+        style={{ fontSize: size / 10 + "rem", ...style }}
         transform={transform}
         {...props}
       />
