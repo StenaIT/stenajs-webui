@@ -1,3 +1,15 @@
+# v17.17.0 (Mon Sep 19 2022)
+
+#### 🚀 Enhancement
+
+- Update some of the  icons [#508](https://github.com/StenaIT/stenajs-webui/pull/508) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.16.0 (Fri Sep 16 2022)
 
 #### 🚀 Enhancement
