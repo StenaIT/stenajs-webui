@@ -1,3 +1,16 @@
+# v17.18.0 (Thu Sep 22 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Remove css for cardheader and add classname [#510](https://github.com/StenaIT/stenajs-webui/pull/510) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.17.0 (Mon Sep 19 2022)
 
 #### 🚀 Enhancement
