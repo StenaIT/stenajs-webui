@@ -28,9 +28,6 @@
   );
 
   /* Icon */
-  --swui-button-icon-height: 1.6rem;
-  --swui-button-icon-height-large: 2.4rem;
-
   --swui-button-icon-color: var(--swui-white);
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
   --swui-button-icon-color-hover: var(--swui-button-icon-color);
@@ -116,7 +113,6 @@
    * Styling
    */
   --current-background-color: var(--swui-button-background-color);
-  --current-icon-height: var(--swui-button-icon-height);
   --current-icon-color: var(--swui-button-icon-color);
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
@@ -181,10 +177,6 @@
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
     --current-text-size: 1.6rem;
-
-    &.iconButton {
-      --current-icon-height: var(--swui-button-icon-height-large);
-    }
   }
 
   &:hover {

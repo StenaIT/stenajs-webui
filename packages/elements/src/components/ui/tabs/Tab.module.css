@@ -10,7 +10,6 @@
   /*
   State variables
    */
-
   --current-outer-border-bottom-color: transparent;
   --current-inset-shadow: none;
   --current-label-color: var(--swui-tab-label-color);
