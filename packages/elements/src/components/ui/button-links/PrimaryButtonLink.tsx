@@ -4,7 +4,10 @@ import cx from "classnames";
 import styles from "../buttons/Button.module.css";
 import buttonLinkStyles from "./ButtonLink.module.css";
 import { AnchorElementProps } from "@stenajs-webui/core";
-import { ButtonSize, CommonButtonProps } from "../buttons/common/ButtonCommon";
+import {
+  CommonButtonProps,
+  getIconSizeFromButtonSize,
+} from "../buttons/common/ButtonCommon";
 import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
 import { ButtonContent } from "../buttons/common/ButtonContent";
 
@@ -47,10 +50,6 @@ export const PrimaryButtonLink = forwardRef<
       (loading && loadingLabel)
   );
 
-  const getIconSizeFromButtonSize = (): ButtonSize => {
-    return size === "large" ? (hasLabel ? "medium" : "large") : size;
-  };
-
   return (
     <a
       ref={ref}
@@ -65,7 +64,7 @@ export const PrimaryButtonLink = forwardRef<
       {...anchorProps}
     >
       <ButtonContent
-        iconSize={getIconSizeFromButtonSize()}
+        iconSize={getIconSizeFromButtonSize(size, hasLabel)}
         success={success}
         loading={loading}
         leftIcon={leftIcon}
