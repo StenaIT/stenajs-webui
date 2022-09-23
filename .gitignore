@@ -23,3 +23,5 @@ yarn-error.log*
 build
 lerna-debug.log
 .vscode/settings.json
+
+scripts/assets/*
