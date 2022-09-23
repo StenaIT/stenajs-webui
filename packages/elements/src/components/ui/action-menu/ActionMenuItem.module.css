@@ -1,7 +1,6 @@
 .actionMenuItem {
   --swui-action-menu-item-height: 40px;
 
-  --swui-action-menu-icon-height: 1.6rem;
   --swui-action-menu-icon-color: var(--swui-text-primary-color);
   --swui-action-menu-icon-color-disabled: var(--swui-text-disabled-color);
   --swui-action-menu-icon-color-focus: var(--swui-text-primary-color);

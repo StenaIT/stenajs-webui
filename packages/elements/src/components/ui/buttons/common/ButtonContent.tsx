@@ -38,7 +38,8 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   rightWrapperClassName,
   iconSize = "medium",
 }) => {
-  const iconPixelSize = iconSize === "small" ? 12 : undefined;
+  const iconPixelSize =
+    iconSize === "small" ? 12 : iconSize === "large" ? 24 : undefined;
   return (
     <>
       {(success || loading || leftIcon || left) && (
