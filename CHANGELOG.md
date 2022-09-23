@@ -1,3 +1,16 @@
+# v17.18.1 (Fri Sep 23 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Use rem for icons in buttons [#509](https://github.com/StenaIT/stenajs-webui/pull/509) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.18.0 (Thu Sep 22 2022)
 
 #### 🚀 Enhancement
