@@ -56,8 +56,9 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
         (loading && loadingLabel)
     );
 
-    const iconSize: ButtonSize =
-      size === "large" ? (hasLabel ? "medium" : "large") : size;
+    const getIconSizeFromButtonSize = (): ButtonSize => {
+      return size === "large" ? (hasLabel ? "medium" : "large") : size;
+    };
 
     return (
       <Button
@@ -79,7 +80,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           leftIcon={leftIcon}
           left={left}
           right={right}
-          iconSize={iconSize}
+          iconSize={getIconSizeFromButtonSize()}
           rightIcon={rightIcon}
           label={buttonLabel}
           iconClassName={iconClassName}

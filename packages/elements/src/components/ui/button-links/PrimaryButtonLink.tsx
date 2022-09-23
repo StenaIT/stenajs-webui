@@ -47,8 +47,9 @@ export const PrimaryButtonLink = forwardRef<
       (loading && loadingLabel)
   );
 
-  const iconSize: ButtonSize =
-    size === "large" ? (hasLabel ? "medium" : "large") : size;
+  const getIconSizeFromButtonSize = (): ButtonSize => {
+    return size === "large" ? (hasLabel ? "medium" : "large") : size;
+  };
 
   return (
     <a
@@ -64,7 +65,7 @@ export const PrimaryButtonLink = forwardRef<
       {...anchorProps}
     >
       <ButtonContent
-        iconSize={iconSize}
+        iconSize={getIconSizeFromButtonSize()}
         success={success}
         loading={loading}
         leftIcon={leftIcon}
