@@ -9,6 +9,7 @@
 .icon {
   color: var(--current-text-color);
   font-size: 1.6rem;
+  height: var(--swui-icon-height);
 }
 
 .spinner {

@@ -76,6 +76,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           leftIcon={leftIcon}
           left={left}
           right={right}
+          iconSize={size}
           rightIcon={rightIcon}
           label={buttonLabel}
           iconClassName={iconClassName}

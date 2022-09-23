@@ -20,6 +20,7 @@ export interface ButtonContentProps {
   spinnerClassName?: string;
   leftWrapperClassName?: string;
   rightWrapperClassName?: string;
+  iconSize?: "large" | "medium" | "small";
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -35,14 +36,16 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   spinnerClassName,
   leftWrapperClassName,
   rightWrapperClassName,
+  iconSize = "medium",
 }) => {
+  const iconPixelSize = iconSize === "small" ? 12 : undefined;
   return (
     <>
       {(success || loading || leftIcon || left) && (
         <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
           {success ? (
             <Icon
-              size={16}
+              size={iconPixelSize}
               icon={stenaCheck}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -60,7 +63,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
             left
           ) : leftIcon ? (
             <Icon
-              size={16}
+              size={iconPixelSize}
               icon={leftIcon}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -78,7 +81,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
             right
           ) : rightIcon ? (
             <Icon
-              size={16}
+              size={iconPixelSize}
               icon={rightIcon}
               className={cx(styles.iconRight, iconClassName)}
             />

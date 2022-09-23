@@ -23,7 +23,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
     icon,
     pulse,
     rotation,
-    size = 20,
+    size = 16,
     spin,
     style,
     transform,
