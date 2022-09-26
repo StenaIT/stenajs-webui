@@ -1,4 +1,4 @@
-import { Heading, Row } from "@stenajs-webui/core";
+import { BoxProps, Heading, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -7,7 +7,7 @@ import { cssColor } from "@stenajs-webui/theme";
 
 export type CardHeaderVariant = "standard" | "compact";
 
-export interface CardHeaderProps {
+export interface CardHeaderProps extends Pick<BoxProps, "className" | "flex"> {
   text?: string;
   variant?: CardHeaderVariant;
   leftIcon?: IconDefinition;
@@ -15,7 +15,6 @@ export interface CardHeaderProps {
   contentLeft?: ReactNode;
   contentCenter?: ReactNode;
   contentAfterHeading?: ReactNode;
-  className?: string;
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
@@ -26,7 +25,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   contentRight,
   contentLeft,
   contentCenter,
-  className,
+  ...boxProps
 }) => {
   return (
     <Row
@@ -34,7 +33,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
       justifyContent={"space-between"}
       indent={3}
       borderBottom={`1px solid ${cssColor("--lhds-color-ui-300")}`}
-      className={className}
+      {...boxProps}
     >
       <Row alignItems={"center"} gap={variant === "compact" ? 1 : 2}>
         {contentLeft}

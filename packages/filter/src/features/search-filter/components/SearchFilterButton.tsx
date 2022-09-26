@@ -10,7 +10,7 @@ interface SearchFilterDrawerButtonProps {
   leftIcon?: IconDefinition;
 }
 
-export const SearchFilterButton: React.VFC<SearchFilterDrawerButtonProps> = ({
+export const SearchFilterButton: React.FC<SearchFilterDrawerButtonProps> = ({
   label = "Filters",
   leftIcon = stenaSliders,
 }) => {

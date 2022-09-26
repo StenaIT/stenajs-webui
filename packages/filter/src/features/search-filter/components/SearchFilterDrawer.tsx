@@ -1,8 +1,8 @@
 import * as React from "react";
-import { useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { Drawer, DrawerProps } from "@stenajs-webui/modal";
 import { cssColor } from "@stenajs-webui/theme";
-import { Column, SeparatorLine } from "@stenajs-webui/core";
+import { Column } from "@stenajs-webui/core";
 import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
@@ -13,12 +13,14 @@ interface SearchFilterDrawerProps
   extends Omit<DrawerProps, "isOpen" | "onRequestClose"> {
   header?: string;
   headerIcon?: IconDefinition;
+  headerContentRight?: ReactNode;
 }
 
 export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   children,
   header,
   headerIcon,
+  headerContentRight,
   ...drawerProps
 }) => {
   const {
@@ -39,13 +41,13 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
       onRequestClose={closeDrawer}
       {...drawerProps}
     >
-      <Column>
+      <Column height={"100%"}>
         <SearchFilterPanelHeader
           onRequestClose={closeDrawer}
           header={header}
           headerIcon={headerIcon}
+          contentRight={headerContentRight}
         />
-        <SeparatorLine />
         {children}
       </Column>
     </Drawer>
