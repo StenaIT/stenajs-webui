@@ -1,3 +1,15 @@
+# v17.18.2 (Mon Sep 26 2022)
+
+#### 🐛 Bug Fix
+
+- Update angle icons [#511](https://github.com/StenaIT/stenajs-webui/pull/511) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.18.1 (Fri Sep 23 2022)
 
 #### 🐛 Bug Fix
