@@ -24,7 +24,10 @@ import { useSearchFilterActions } from "../../../context/SearchFilterActionsCont
 export interface DateRangeCalendarSectionProps<
   TFormModel,
   TSectionKey extends string
-> extends SearchFilterSectionProps<TSectionKey>,
+> extends Omit<
+      SearchFilterSectionProps<TSectionKey>,
+      "label" | "onRetry" | "error" | "loading"
+    >,
     Omit<
       DateRangeCalendarProps<{}>,
       "value" | "onValueChange" | "focusedInput" | "setFocusedInput"
@@ -48,6 +51,9 @@ export const DateRangeCalendarSection = <
   value,
   onValueChange,
   sectionId,
+  contentLeft,
+  contentRight,
+  disableContentPadding,
   ...dateRangeCalendarProps
 }: DateRangeCalendarSectionProps<TFormModel, TSectionKey>) => {
   const dispatch = useSearchFilterDispatch();
@@ -70,7 +76,12 @@ export const DateRangeCalendarSection = <
   );
 
   return (
-    <SearchFilterSection sectionId={sectionId}>
+    <SearchFilterSection
+      sectionId={sectionId}
+      contentRight={contentRight}
+      contentLeft={contentLeft}
+      disableContentPadding={disableContentPadding}
+    >
       <Box flex={1} alignItems={"center"}>
         <Box background={"white"} indent>
           <DateRangeCalendar

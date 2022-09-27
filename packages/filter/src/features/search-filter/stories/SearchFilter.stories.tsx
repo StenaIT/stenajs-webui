@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Card, PrimaryButton } from "@stenajs-webui/elements";
+import { Card, PrimaryButton, Tag } from "@stenajs-webui/elements";
 import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
 import { SearchFilterButton } from "../components/SearchFilterButton";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
@@ -310,6 +310,14 @@ export const Demo = () => {
     SalesItemSearchFilterSectionKey
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
 
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
+
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
       <Card>
@@ -359,6 +367,14 @@ export const Demo = () => {
       </Card>
       <SearchFilterDrawer>
         <DateRangeCalendarSection
+          contentRight={
+            state.formModel.startDate &&
+            state.formModel.endDate && (
+              <Tag
+                label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+              />
+            )
+          }
           sectionId={"comparisonDate"}
           {...createDateRangeSectionProps(
             state.formModel,
@@ -367,6 +383,11 @@ export const Demo = () => {
           )}
         />
         <ChipMultiSelectSection
+          contentRight={
+            selectedDivisions > 0 && (
+              <Tag label={selectedDivisions.toString()} />
+            )
+          }
           sectionId={"divisions"}
           loading={false}
           noneSelectedLabel={"All divisions"}
@@ -377,6 +398,11 @@ export const Demo = () => {
           }
         />
         <SimpleCheckboxListSection
+          contentRight={
+            selectedCategories > 0 && (
+              <Tag label={selectedCategories.toString()} />
+            )
+          }
           sectionId={"categories"}
           options={categoryOptions}
           value={state.formModel.categories}
@@ -397,6 +423,14 @@ export const StickySearchButton = () => {
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
+
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
@@ -448,6 +482,14 @@ export const StickySearchButton = () => {
       <SearchFilterDrawer>
         <Box overflow={"auto"}>
           <DateRangeCalendarSection
+            contentRight={
+              state.formModel.startDate &&
+              state.formModel.endDate && (
+                <Tag
+                  label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+                />
+              )
+            }
             sectionId={"comparisonDate"}
             {...createDateRangeSectionProps(
               state.formModel,
@@ -456,6 +498,11 @@ export const StickySearchButton = () => {
             )}
           />
           <ChipMultiSelectSection
+            contentRight={
+              selectedDivisions > 0 && (
+                <Tag label={selectedDivisions.toString()} />
+              )
+            }
             sectionId={"divisions"}
             loading={false}
             noneSelectedLabel={"All divisions"}
@@ -466,6 +513,11 @@ export const StickySearchButton = () => {
             }
           />
           <SimpleCheckboxListSection
+            contentRight={
+              selectedCategories > 0 && (
+                <Tag label={selectedCategories.toString()} />
+              )
+            }
             sectionId={"categories"}
             options={categoryOptions}
             value={state.formModel.categories}
@@ -497,6 +549,14 @@ export const WithClearFiltersInHeader = () => {
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
+
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
@@ -547,6 +607,14 @@ export const WithClearFiltersInHeader = () => {
       </Card>
       <SearchFilterDrawer headerContentRight={<ClearFiltersButton />}>
         <DateRangeCalendarSection
+          contentRight={
+            state.formModel.startDate &&
+            state.formModel.endDate && (
+              <Tag
+                label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+              />
+            )
+          }
           sectionId={"comparisonDate"}
           {...createDateRangeSectionProps(
             state.formModel,
@@ -555,6 +623,11 @@ export const WithClearFiltersInHeader = () => {
           )}
         />
         <ChipMultiSelectSection
+          contentRight={
+            selectedDivisions > 0 && (
+              <Tag label={selectedDivisions.toString()} />
+            )
+          }
           sectionId={"divisions"}
           loading={false}
           noneSelectedLabel={"All divisions"}
@@ -565,6 +638,11 @@ export const WithClearFiltersInHeader = () => {
           }
         />
         <SimpleCheckboxListSection
+          contentRight={
+            selectedCategories > 0 && (
+              <Tag label={selectedCategories.toString()} />
+            )
+          }
           sectionId={"categories"}
           options={categoryOptions}
           value={state.formModel.categories}
