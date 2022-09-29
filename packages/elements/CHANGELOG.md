@@ -1,3 +1,15 @@
+# v17.18.3 (Thu Sep 29 2022)
+
+#### 🐛 Bug Fix
+
+- Refine filter drawer (AB#97356) [#513](https://github.com/StenaIT/stenajs-webui/pull/513) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.18.2 (Mon Sep 26 2022)
 
 #### 🐛 Bug Fix
