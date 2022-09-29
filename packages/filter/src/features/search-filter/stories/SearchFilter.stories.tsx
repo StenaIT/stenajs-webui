@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
-import { Card } from "@stenajs-webui/elements";
-import { Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
+import { Card, PrimaryButton, Tag } from "@stenajs-webui/elements";
+import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
 import { SearchFilterButton } from "../components/SearchFilterButton";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
 import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
@@ -20,6 +20,7 @@ import { createChipsPropsForBooleanRecord } from "../section-factories/boolean-r
 import { SearchFilterContext } from "../components/context/SearchFilterContext";
 import { BooleanRecord } from "../section-factories/boolean-record/BooleanRecordTypes";
 import { createChipsPropsForDateRange } from "../section-factories/date-range/DateRangeChips";
+import { ClearFiltersButton } from "../components/ClearFiltersButton";
 
 export default {
   title: "filter/SearchFilter",
@@ -309,6 +310,14 @@ export const Demo = () => {
     SalesItemSearchFilterSectionKey
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
 
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
+
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
       <Card>
@@ -358,6 +367,14 @@ export const Demo = () => {
       </Card>
       <SearchFilterDrawer>
         <DateRangeCalendarSection
+          contentRight={
+            state.formModel.startDate &&
+            state.formModel.endDate && (
+              <Tag
+                label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+              />
+            )
+          }
           sectionId={"comparisonDate"}
           {...createDateRangeSectionProps(
             state.formModel,
@@ -366,6 +383,11 @@ export const Demo = () => {
           )}
         />
         <ChipMultiSelectSection
+          contentRight={
+            selectedDivisions > 0 && (
+              <Tag label={selectedDivisions.toString()} />
+            )
+          }
           sectionId={"divisions"}
           loading={false}
           noneSelectedLabel={"All divisions"}
@@ -376,6 +398,251 @@ export const Demo = () => {
           }
         />
         <SimpleCheckboxListSection
+          contentRight={
+            selectedCategories > 0 && (
+              <Tag label={selectedCategories.toString()} />
+            )
+          }
+          sectionId={"categories"}
+          options={categoryOptions}
+          value={state.formModel.categories}
+          onValueChange={(categories) =>
+            dispatch(actions.setFormModelFields({ categories }))
+          }
+        />
+
+        <ErrorSection sectionId={"error"} />
+        <SearchFilterSection sectionId={"loading"} loading={true} />
+      </SearchFilterDrawer>
+    </SearchFilterContext>
+  );
+};
+
+export const StickySearchButton = () => {
+  const { dispatch, actions, state } = useLocalSearchFilterState<
+    SalesItemSearchFilterModel,
+    SalesItemSearchFilterSectionKey
+  >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
+
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
+
+  return (
+    <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
+      <Card>
+        <Row
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          indent={2}
+          spacing
+          minHeight={"56px"}
+        >
+          <Row alignItems={"center"}>
+            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
+            <Indent />
+            <SearchFilterButton />
+            <Indent num={0.5} />
+            <SearchFilterChips>
+              <SectionChips
+                sectionId={"comparisonDate"}
+                emptyChipLabel={"No dates"}
+                {...createChipsPropsForDateRange(
+                  state.formModel,
+                  "startDate",
+                  "endDate"
+                )}
+              />
+              <SectionChips
+                sectionId={"divisions"}
+                emptyChipLabel={"All divisions"}
+                {...createChipsPropsForBooleanRecord(
+                  state.formModel,
+                  "divisions",
+                  divisionOptions
+                )}
+              />
+              <SectionChips
+                sectionId={"categories"}
+                emptyChipLabel={"All categories"}
+                {...createChipsPropsForBooleanRecord(
+                  state.formModel,
+                  "categories",
+                  categoryOptions
+                )}
+              />
+            </SearchFilterChips>
+          </Row>
+        </Row>
+      </Card>
+      <SearchFilterDrawer>
+        <Box overflow={"auto"}>
+          <DateRangeCalendarSection
+            contentRight={
+              state.formModel.startDate &&
+              state.formModel.endDate && (
+                <Tag
+                  label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+                />
+              )
+            }
+            sectionId={"comparisonDate"}
+            {...createDateRangeSectionProps(
+              state.formModel,
+              "startDate",
+              "endDate"
+            )}
+          />
+          <ChipMultiSelectSection
+            contentRight={
+              selectedDivisions > 0 && (
+                <Tag label={selectedDivisions.toString()} />
+              )
+            }
+            sectionId={"divisions"}
+            loading={false}
+            noneSelectedLabel={"All divisions"}
+            options={divisionOptions}
+            value={state.formModel.divisions}
+            onValueChange={(divisions) =>
+              dispatch(actions.setFormModelFields({ divisions }))
+            }
+          />
+          <SimpleCheckboxListSection
+            contentRight={
+              selectedCategories > 0 && (
+                <Tag label={selectedCategories.toString()} />
+              )
+            }
+            sectionId={"categories"}
+            options={categoryOptions}
+            value={state.formModel.categories}
+            onValueChange={(categories) =>
+              dispatch(actions.setFormModelFields({ categories }))
+            }
+          />
+
+          <ErrorSection sectionId={"error"} />
+          <SearchFilterSection sectionId={"loading"} loading={true} />
+        </Box>
+        <Row
+          style={{ marginTop: "auto" }}
+          justifyContent={"center"}
+          spacing={2}
+          indent
+          shadow={"popover"}
+          zIndex={1}
+        >
+          <PrimaryButton label={"Search"} />
+        </Row>
+      </SearchFilterDrawer>
+    </SearchFilterContext>
+  );
+};
+
+export const WithClearFiltersInHeader = () => {
+  const { dispatch, actions, state } = useLocalSearchFilterState<
+    SalesItemSearchFilterModel,
+    SalesItemSearchFilterSectionKey
+  >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
+
+  const selectedCategories = Object.values(state.formModel.categories).filter(
+    (value) => value
+  ).length;
+
+  const selectedDivisions = Object.values(state.formModel.divisions).filter(
+    (value) => value
+  ).length;
+
+  return (
+    <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
+      <Card>
+        <Row
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          indent={2}
+          spacing
+          minHeight={"56px"}
+        >
+          <Row alignItems={"center"}>
+            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
+            <Indent />
+            <SearchFilterButton />
+            <Indent num={0.5} />
+            <SearchFilterChips>
+              <SectionChips
+                sectionId={"comparisonDate"}
+                emptyChipLabel={"No dates"}
+                {...createChipsPropsForDateRange(
+                  state.formModel,
+                  "startDate",
+                  "endDate"
+                )}
+              />
+              <SectionChips
+                sectionId={"divisions"}
+                emptyChipLabel={"All divisions"}
+                {...createChipsPropsForBooleanRecord(
+                  state.formModel,
+                  "divisions",
+                  divisionOptions
+                )}
+              />
+              <SectionChips
+                sectionId={"categories"}
+                emptyChipLabel={"All categories"}
+                {...createChipsPropsForBooleanRecord(
+                  state.formModel,
+                  "categories",
+                  categoryOptions
+                )}
+              />
+            </SearchFilterChips>
+          </Row>
+        </Row>
+      </Card>
+      <SearchFilterDrawer headerContentRight={<ClearFiltersButton />}>
+        <DateRangeCalendarSection
+          contentRight={
+            state.formModel.startDate &&
+            state.formModel.endDate && (
+              <Tag
+                label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
+              />
+            )
+          }
+          sectionId={"comparisonDate"}
+          {...createDateRangeSectionProps(
+            state.formModel,
+            "startDate",
+            "endDate"
+          )}
+        />
+        <ChipMultiSelectSection
+          contentRight={
+            selectedDivisions > 0 && (
+              <Tag label={selectedDivisions.toString()} />
+            )
+          }
+          sectionId={"divisions"}
+          loading={false}
+          noneSelectedLabel={"All divisions"}
+          options={divisionOptions}
+          value={state.formModel.divisions}
+          onValueChange={(divisions) =>
+            dispatch(actions.setFormModelFields({ divisions }))
+          }
+        />
+        <SimpleCheckboxListSection
+          contentRight={
+            selectedCategories > 0 && (
+              <Tag label={selectedCategories.toString()} />
+            )
+          }
           sectionId={"categories"}
           options={categoryOptions}
           value={state.formModel.categories}

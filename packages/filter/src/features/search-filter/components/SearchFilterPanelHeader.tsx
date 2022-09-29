@@ -1,40 +1,40 @@
 import * as React from "react";
-import { Heading, Indent, Row } from "@stenajs-webui/core";
+import { ReactNode } from "react";
 import {
-  Icon,
-  SecondaryButton,
+  CardHeader,
+  FlatButton,
   stenaSliders,
   stenaTimes,
 } from "@stenajs-webui/elements";
-import { cssColor } from "@stenajs-webui/theme";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { Row } from "@stenajs-webui/core";
 
 interface SearchFilterPanelHeaderProps {
   onRequestClose: () => void;
   header?: string;
   headerIcon?: IconDefinition;
+  contentRight?: ReactNode;
 }
 
 export const SearchFilterPanelHeader: React.FC<
   SearchFilterPanelHeaderProps
-> = ({ onRequestClose, header = "Filters", headerIcon = stenaSliders }) => {
+> = ({
+  onRequestClose,
+  header = "Filters",
+  headerIcon = stenaSliders,
+  contentRight,
+}) => {
   return (
-    <Row
-      height={"56px"}
-      justifyContent={"space-between"}
-      alignItems={"center"}
-      indent={2}
-    >
-      <Row alignItems={"center"}>
-        <Icon
-          icon={headerIcon}
-          color={cssColor("--lhds-color-ui-800")}
-          size={24}
-        />
-        <Indent />
-        <Heading variant={"h4"}>{header}</Heading>
-      </Row>
-      <SecondaryButton leftIcon={stenaTimes} onClick={onRequestClose} />
-    </Row>
+    <CardHeader
+      flex={"0 0 auto"}
+      contentRight={
+        <Row gap={2}>
+          {contentRight}
+          <FlatButton leftIcon={stenaTimes} onClick={onRequestClose} />
+        </Row>
+      }
+      leftIcon={headerIcon}
+      text={header}
+    />
   );
 };
