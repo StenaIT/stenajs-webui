@@ -5,6 +5,7 @@ import { Box, Column, Indent } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./SidebarMenuCollapsible.module.css";
 import { Icon } from "@stenajs-webui/elements";
+import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export interface SidebarMenuCollapsibleProps {
   label: string;
@@ -46,8 +47,10 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
           )
         }
       >
+        {!collapsed && <SidebarMenuSeparator />}
         <Column flex={1}>{children}</Column>
       </Collapsible>
+      {collapsed && <SidebarMenuSeparator />}
     </Box>
   );
 };

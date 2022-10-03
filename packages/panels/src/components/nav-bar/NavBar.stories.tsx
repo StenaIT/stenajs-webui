@@ -21,6 +21,7 @@ import {
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
@@ -36,7 +37,6 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
-import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
@@ -52,7 +52,6 @@ import { NavBarUserButton } from "./NavBarUserButton";
 import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
-import { useEffect, useState } from "react";
 
 export default {
   title: "panels/NavBar",
@@ -103,8 +102,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               />
               <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
             </SidebarMenuCollapsible>
-
-            <SidebarMenuSeparator />
 
             <SidebarMenuHeading label={"Support"} />
             <SidebarMenuLink

@@ -4,6 +4,7 @@ import { CSSProperties, ReactNode } from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
 import contentStyles from "./SidebarMenuContent.module.css";
 import cx from "classnames";
+import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export type RenderLinkProps = ButtonElementProps & { activeClassName: string };
 
@@ -26,13 +27,6 @@ export interface SidebarMenuLinkProps
 }
 
 export type SidebarLinkRenderer = (props: RenderLinkProps) => ReactNode;
-
-export const defaultRenderLink: SidebarLinkRenderer = ({
-  activeClassName,
-  ...props
-}) => {
-  return <button {...props} />;
-};
 
 export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   className,
@@ -94,6 +88,14 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
         children: innerChildren,
         style: innerStyle,
       })}
+      <SidebarMenuSeparator />
     </>
   );
+};
+
+export const defaultRenderLink: SidebarLinkRenderer = ({
+  activeClassName,
+  ...props
+}) => {
+  return <button {...props} />;
 };

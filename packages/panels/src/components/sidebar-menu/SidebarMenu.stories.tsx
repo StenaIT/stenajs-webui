@@ -62,8 +62,6 @@ export const Overview = () => {
           <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
         </SidebarMenuCollapsible>
 
-        <SidebarMenuSeparator />
-
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
           leftIcon={faBook}
@@ -108,8 +106,6 @@ export const WithoutIcons = () => {
           <SidebarMenuLink indent label={"Routes"} onClick={onClick} selected />
           <SidebarMenuLink indent label={"Sellers"} onClick={onClick} />
         </SidebarMenuCollapsible>
-
-        <SidebarMenuSeparator />
 
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink

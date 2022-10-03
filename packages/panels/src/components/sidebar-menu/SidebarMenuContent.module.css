@@ -44,5 +44,6 @@
 
   &.selected {
     background: var(--current-item-selected);
+    border-left: var(--swui-sidebar-menu-left-border-selected);
   }
 }
