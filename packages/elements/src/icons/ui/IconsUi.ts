@@ -439,17 +439,6 @@ export const stenaClearRow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaClear: IconDefinition = {
-  icon: [
-    48,
-    48,
-    [],
-    "",
-    "M41,3H7L6.8,3C4.7,3.1,3,4.9,3,7v34c0,2.2,1.8,4,4,4h34l0.2,0c2.1-0.1,3.8-1.9,3.8-4V7C45,4.8,43.2,3,41,3z M42,41c0,0.6-0.4,1-1,1H7c-0.6,0-1-0.4-1-1V7c0-0.6,0.4-1,1-1h34c0.6,0,1,0.4,1,1V41z M36,22H12c-0.6,0-1,0.4-1,1v2c0,0.6,0.4,1,1,1h24c0.6,0,1-0.4,1-1v-2C37,22.4,36.6,22,36,22z",
-  ],
-  iconName: "random",
-  prefix: "fal",
-};
 export const stenaClockFilled: IconDefinition = {
   icon: [
     48,
