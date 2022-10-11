@@ -309,12 +309,12 @@ const getHoverBackgroundColor = (
       : resolvedBackground?.hoverBackground;
   }
   if (isSelected) {
-    return cssColor("--lhds-color-blue-100");
+    return cssColor("--lhds-color-blue-200");
   }
   if (isExpanded) {
     return tableBackgroundHoverColorExpanded;
   }
-  return cssColor("--lhds-color-ui-100");
+  return cssColor("--lhds-color-ui-200");
 };
 
 const getFocusBackgroundColor = (
@@ -326,7 +326,7 @@ const getFocusBackgroundColor = (
   hoverBackground: string | undefined
 ): string | undefined => {
   if (isSelected) {
-    return cssColor("--lhds-color-blue-100");
+    return cssColor("--lhds-color-blue-200");
   }
   if (resolvedBackground) {
     return hoverBackground;
