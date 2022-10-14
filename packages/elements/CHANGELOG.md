@@ -1,3 +1,15 @@
+# v17.19.1 (Fri Oct 14 2022)
+
+#### 🐛 Bug Fix
+
+- Use kebab-case in the Icons story for better readability [#515](https://github.com/StenaIT/stenajs-webui/pull/515) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.19.0 (Wed Oct 05 2022)
 
 #### 🚀 Enhancement

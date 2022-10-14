@@ -1,3 +1,16 @@
+# v17.19.1 (Fri Oct 14 2022)
+
+#### 🐛 Bug Fix
+
+- Change table hover background color to 200 [#516](https://github.com/StenaIT/stenajs-webui/pull/516) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+
+#### Authors: 2
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.13.1 (Mon Aug 29 2022)
 
 #### 🐛 Bug Fix

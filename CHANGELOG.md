@@ -1,3 +1,20 @@
+# v17.19.1 (Fri Oct 14 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Change table hover background color to 200 [#516](https://github.com/StenaIT/stenajs-webui/pull/516) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz))
+- `@stenajs-webui/elements`
+  - Use kebab-case in the Icons story for better readability [#515](https://github.com/StenaIT/stenajs-webui/pull/515) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.19.0 (Wed Oct 05 2022)
 
 #### 🚀 Enhancement
