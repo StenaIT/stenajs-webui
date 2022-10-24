@@ -1,15 +1,15 @@
 .sidebarMenuCloseButton {
   /* Theme vars */
   --swui-sidebar-menu-close-button-text-color: var(--lhds-color-ui-50);
-  --swui-sidebar-menu-close-button-background-color: var(--lhds-color-blue-500);
+  --swui-sidebar-menu-close-button-background-color: var(--lhds-color-blue-600);
   --swui-sidebar-menu-close-button-background-color-hover: var(
-    --lhds-color-blue-600
+    --lhds-color-blue-700
   );
   --swui-sidebar-menu-close-button-background-color-focus: var(
-    --lhds-color-blue-600
+    --lhds-color-blue-700
   );
   --swui-sidebar-menu-close-button-background-color-active: var(
-    --lhds-color-blue-500
+    --lhds-color-blue-600
   );
 
   /* Current */

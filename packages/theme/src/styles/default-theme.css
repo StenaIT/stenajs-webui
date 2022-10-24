@@ -2,12 +2,12 @@
   /* Generic colors */
   --swui-white: #fff;
   --swui-hidden: rgba(0, 0, 0, 0);
-  --swui-primary-action-color: var(--lhds-color-blue-500);
-  --swui-primary-action-color-hover: var(--lhds-color-blue-600);
+  --swui-primary-action-color: var(--lhds-color-blue-600);
+  --swui-primary-action-color-hover: var(--lhds-color-blue-700);
   --swui-primary-action-color-hover-light: var(--lhds-color-blue-100);
-  --swui-primary-action-color-focus: var(--lhds-color-blue-700);
+  --swui-primary-action-color-focus: var(--lhds-color-blue-800);
   --swui-primary-action-color-focus-light: var(--lhds-color-blue-100);
-  --swui-primary-action-color-active: var(--lhds-color-blue-800);
+  --swui-primary-action-color-active: var(--lhds-color-blue-900);
   --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
   --swui-separator-color: var(--lhds-color-ui-300);
   --swui-handle-bg-enabled-color: var(--swui-white);
@@ -64,15 +64,15 @@
   --swui-animation-time-slow: 0.5s;
 
   /* Form fields */
-  --swui-field-text-color: #424551;
+  --swui-field-text-color: var(--lhds-color-ui-700);
   --swui-field-text-color-disabled: var(--lhds-color-ui-700);
   --swui-field-text-spacing: 6px;
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: 2rem;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: #e8e4ea;
-  --swui-field-border-color: #bbc1e1;
-  --swui-field-border-color-hover: #275efe;
+  --swui-field-border-color: var(--lhds-color-blue-200);
+  --swui-field-border-color-hover: var(--lhds-color-blue-600);
   --swui-field-border-color-disabled: #b1b1b1;
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
   --swui-field-box-size-large: 32px;

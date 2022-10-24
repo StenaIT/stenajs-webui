@@ -1,6 +1,16 @@
+import {
+  faBook,
+  faChartBar,
+  faPaperPlane,
+  faUserFriends,
+} from "@fortawesome/free-solid-svg-icons";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
+import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
+import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import {
   Box,
@@ -20,39 +30,29 @@ import {
   PrimaryButton,
   WithBadge,
 } from "@stenajs-webui/elements";
-import * as React from "react";
-import { NavBar, NavBarProps } from "./NavBar";
-import { NavBarButton } from "./NavBarButton";
-import { NavBarPopoverButton } from "./NavBarPopoverButton";
-import { cssColor } from "@stenajs-webui/theme";
+import { TextInput } from "@stenajs-webui/forms";
 import { Drawer } from "@stenajs-webui/modal";
-import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
-import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
-import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";
-import {
-  faBook,
-  faChartBar,
-  faPaperPlane,
-  faUserFriends,
-} from "@fortawesome/free-solid-svg-icons";
-import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
-import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
+import { cssColor } from "@stenajs-webui/theme";
 import { Story } from "@storybook/react";
-import { NavBarHeading } from "./NavBarHeading";
-import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
-import { SidebarItem } from "../sidebar-menu/rail/renderer/types";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import {
   renderItemsExpanded,
   renderItemsInRail,
 } from "../sidebar-menu/rail/renderer/RailRenderer";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import { TextInput } from "@stenajs-webui/forms";
-import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
-import { NavBarUserButton } from "./NavBarUserButton";
-import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
+import { SidebarItem } from "../sidebar-menu/rail/renderer/types";
+import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
+import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
+import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
+import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
+import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";
+import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
+import { NavBar, NavBarProps } from "./NavBar";
+import { NavBarButton } from "./NavBarButton";
+import { NavBarHeading } from "./NavBarHeading";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
-import { useEffect, useState } from "react";
+import { NavBarPopoverButton } from "./NavBarPopoverButton";
+import { NavBarUserButton } from "./NavBarUserButton";
 
 export default {
   title: "panels/NavBar",
@@ -364,7 +364,7 @@ export const DemoWithRail: Story = () => {
         isOpen={isOpen}
         onRequestClose={close}
         width={drawerWidth}
-        background={"var(--lhds-color-blue-500)"}
+        background={cssColor("--lhds-color-blue-600")}
       >
         <Column width={"100%"}>
           <SidebarMenu onCloseClick={close}>

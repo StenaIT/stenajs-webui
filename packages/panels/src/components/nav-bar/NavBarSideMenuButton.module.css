@@ -1,15 +1,15 @@
 .sidebarMenuButton {
   /* Theme vars */
   --swui-nav-bar-side-menu-button-text-color: var(--lhds-color-ui-50);
-  --swui-nav-bar-side-menu-button-background-color: var(--lhds-color-blue-500);
+  --swui-nav-bar-side-menu-button-background-color: var(--lhds-color-blue-600);
   --swui-nav-bar-side-menu-button-background-color-hover: var(
-    --lhds-color-blue-600
+    --lhds-color-blue-700
   );
   --swui-nav-bar-side-menu-button-background-color-focus: var(
-    --lhds-color-blue-600
+    --lhds-color-blue-700
   );
   --swui-nav-bar-side-menu-button-background-color-active: var(
-    --lhds-color-blue-700
+    --lhds-color-blue-800
   );
 
   /* State vars */

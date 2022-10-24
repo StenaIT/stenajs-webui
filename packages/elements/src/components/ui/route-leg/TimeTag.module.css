@@ -10,6 +10,6 @@
   }
 
   &.total {
-    --current-icon-color: var(--lhds-color-blue-500);
+    --current-icon-color: var(--lhds-color-blue-600);
   }
 }

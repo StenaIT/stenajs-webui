@@ -77,7 +77,7 @@ export const renderItemsInRail = (
               content={
                 <Box
                   minWidth={popupMinWidth}
-                  background={"var(--lhds-color-blue-500)"}
+                  background={"var(--lhds-color-blue-600)"}
                 >
                   <SidebarMenuHeading label={item.label} />
                   {renderItemsExpanded(item.items)}

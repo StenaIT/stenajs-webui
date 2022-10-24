@@ -11,7 +11,7 @@
   }
 
   &.standard {
-    stroke: var(--lhds-color-blue-500);
+    stroke: var(--lhds-color-blue-600);
 
     circle {
       animation: dash 1.4s ease-in-out infinite both;

@@ -3,10 +3,10 @@
   --swui-sidebar-menu-separator-color: var(--lhds-color-blue-700);
   --swui-sidebar-menu-text-color: var(--swui-white);
   --swui-sidebar-menu-icon-color: var(--swui-white);
-  --swui-sidebar-menu-background-color: var(--lhds-color-blue-500);
-  --swui-sidebar-menu-background-color-hover: var(--lhds-color-blue-700);
-  --swui-sidebar-menu-background-color-focus: var(--lhds-color-blue-700);
-  --swui-sidebar-menu-background-color-active: var(--lhds-color-blue-600);
+  --swui-sidebar-menu-background-color: var(--lhds-color-blue-600);
+  --swui-sidebar-menu-background-color-hover: var(--lhds-color-blue-800);
+  --swui-sidebar-menu-background-color-focus: var(--lhds-color-blue-800);
+  --swui-sidebar-menu-background-color-active: var(--lhds-color-blue-700);
   --swui-sidebar-menu-item-selected: var(--lhds-color-blue-800);
   --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
     var(--swui-metrics-indent) var(--swui-metrics-indent) 0;

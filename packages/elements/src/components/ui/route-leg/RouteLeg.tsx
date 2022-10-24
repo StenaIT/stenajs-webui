@@ -114,7 +114,7 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
           <Box
             flex={"none"}
             border={`4px solid ${cssColor("--lhds-color-blue-100")}`}
-            background={cssColor("--lhds-color-blue-500")}
+            background={cssColor("--lhds-color-blue-600")}
             width={16}
             height={16}
             borderRadius={8}
