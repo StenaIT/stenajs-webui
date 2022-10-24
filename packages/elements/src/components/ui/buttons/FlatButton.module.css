@@ -3,19 +3,19 @@
   --swui-flat-button-font-weight: var(--swui-font-weight-text-bold);
 
   /* Text color */
-  --swui-flat-button-text-color: var(--swui-primary-action-color);
-  --swui-flat-button-text-color-active: var(--swui-primary-action-color);
+  --swui-flat-button-text-color: var(--swui-text-action-color);
+  --swui-flat-button-text-color-active: var(--swui-text-action-color);
   --swui-flat-button-text-color-disabled: var(--swui-text-disabled-color);
 
   /* Icon color */
-  --swui-flat-button-icon-color: var(--swui-primary-action-color);
-  --swui-flat-button-icon-color-active: var(--swui-primary-action-color);
+  --swui-flat-button-icon-color: var(--swui-text-action-color);
+  --swui-flat-button-icon-color-active: var(--swui-text-action-color);
   --swui-flat-button-icon-color-disabled: var(--swui-text-disabled-color);
 
   /* Background color */
   --swui-flat-button-background-color: transparent;
-  --swui-flat-button-background-color-hover: var(--lhds-color-blue-50);
-  --swui-flat-button-background-color-active: var(--lhds-color-blue-100);
+  --swui-flat-button-background-color-hover: var(--lhds-color-blue-100);
+  --swui-flat-button-background-color-active: var(--lhds-color-blue-200);
   --swui-flat-button-background-color-focus: transparent;
   --swui-flat-button-background-color-disabled: transparent;
 
