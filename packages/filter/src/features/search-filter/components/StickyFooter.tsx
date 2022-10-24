@@ -6,7 +6,7 @@ export interface StickySearchButtonProps extends Pick<BoxProps, "gap"> {
   children?: ReactNode;
 }
 
-export const StickyBottomContent: React.FC<StickySearchButtonProps> = ({
+export const StickyFooter: React.FC<StickySearchButtonProps> = ({
   children,
   ...boxProps
 }) => {

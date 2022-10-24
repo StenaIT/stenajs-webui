@@ -10,7 +10,7 @@ import {
   SearchFilterSection,
   SearchFilterSectionProps,
 } from "../components/SearchFilterSection";
-import { StickyBottomContent } from "../components/StickyBottomContent";
+import { StickyFooter } from "../components/StickyFooter";
 import { SearchFilterChips } from "../features/chips/SearchFilterChips";
 import { SectionChips } from "../features/chips/SectionChips";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
@@ -419,7 +419,7 @@ export const Demo = () => {
   );
 };
 
-export const WithStickyBottomContent = () => {
+export const WithStickyFooter = () => {
   const { dispatch, actions, state } = useLocalSearchFilterState<
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
@@ -530,10 +530,10 @@ export const WithStickyBottomContent = () => {
           <ErrorSection sectionId={"error"} />
           <SearchFilterSection sectionId={"loading"} loading />
         </Box>
-        <StickyBottomContent gap={1}>
+        <StickyFooter gap={1}>
           <PrimaryButton label={"Search"} />
           <FlatButton label={"Clear all"} />
-        </StickyBottomContent>
+        </StickyFooter>
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
