@@ -1,3 +1,15 @@
+# v17.23.0 (Mon Oct 24 2022)
+
+#### 🚀 Enhancement
+
+- Use circle icon for nav bar user button [#520](https://github.com/StenaIT/stenajs-webui/pull/520) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.20.0 (Mon Oct 24 2022)
 
 #### 🚀 Enhancement
