@@ -1,3 +1,29 @@
+# v17.22.0 (Mon Oct 24 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/filter`
+  - Add `StickyFooter` for filter, automatically makes buttons 100% wide [#521](https://github.com/StenaIT/stenajs-webui/pull/521) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.21.0 (Mon Oct 24 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Increase contrast in FlatButton colors [#518](https://github.com/StenaIT/stenajs-webui/pull/518) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.20.0 (Mon Oct 24 2022)
 
 #### 🚀 Enhancement
