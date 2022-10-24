@@ -1,3 +1,15 @@
+# v17.22.0 (Mon Oct 24 2022)
+
+#### 🚀 Enhancement
+
+- Add `StickyFooter` for filter, automatically makes buttons 100% wide [#521](https://github.com/StenaIT/stenajs-webui/pull/521) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.18.3 (Thu Sep 29 2022)
 
 #### 🐛 Bug Fix
