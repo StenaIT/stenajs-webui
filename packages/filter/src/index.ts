@@ -6,7 +6,7 @@ export * from "./features/search-filter/components/SearchFilterDrawer";
 export * from "./features/search-filter/components/SearchFilterButton";
 export * from "./features/search-filter/components/SearchFilterSection";
 export * from "./features/search-filter/components/SearchFilterPanelHeader";
-export * from "./features/search-filter/components/StickySearchButton";
+export * from "./features/search-filter/components/StickyBottomContent";
 export * from "./features/search-filter/components/context/SearchFilterContext";
 export * from "./features/search-filter/components/context/SearchFilterLocalStateContext";
 export * from "./features/search-filter/config/SearchFilterConfig";

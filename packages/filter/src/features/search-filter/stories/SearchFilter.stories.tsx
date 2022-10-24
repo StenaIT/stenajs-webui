@@ -1,5 +1,5 @@
 import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
-import { Card, Tag } from "@stenajs-webui/elements";
+import { Card, FlatButton, PrimaryButton, Tag } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import { ClearFiltersButton } from "../components/ClearFiltersButton";
@@ -10,7 +10,7 @@ import {
   SearchFilterSection,
   SearchFilterSectionProps,
 } from "../components/SearchFilterSection";
-import { StickySearchButton } from "../components/StickySearchButton";
+import { StickyBottomContent } from "../components/StickyBottomContent";
 import { SearchFilterChips } from "../features/chips/SearchFilterChips";
 import { SectionChips } from "../features/chips/SectionChips";
 import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
@@ -419,7 +419,7 @@ export const Demo = () => {
   );
 };
 
-export const WithStickySearchButton = () => {
+export const WithStickyBottomContent = () => {
   const { dispatch, actions, state } = useLocalSearchFilterState<
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
@@ -530,7 +530,10 @@ export const WithStickySearchButton = () => {
           <ErrorSection sectionId={"error"} />
           <SearchFilterSection sectionId={"loading"} loading />
         </Box>
-        <StickySearchButton label={"Search"} />
+        <StickyBottomContent gap={1}>
+          <PrimaryButton label={"Search"} />
+          <FlatButton label={"Clear all"} />
+        </StickyBottomContent>
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
