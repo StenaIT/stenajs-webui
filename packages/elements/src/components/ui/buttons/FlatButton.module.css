@@ -3,13 +3,13 @@
   --swui-flat-button-font-weight: var(--swui-font-weight-text-bold);
 
   /* Text color */
-  --swui-flat-button-text-color: var(--lhds-color-blue-600);
-  --swui-flat-button-text-color-active: var(--lhds-color-blue-600);
+  --swui-flat-button-text-color: var(--swui-text-action-color);
+  --swui-flat-button-text-color-active: var(--swui-text-action-color);
   --swui-flat-button-text-color-disabled: var(--swui-text-disabled-color);
 
   /* Icon color */
-  --swui-flat-button-icon-color: var(--lhds-color-blue-600);
-  --swui-flat-button-icon-color-active: var(--lhds-color-blue-600);
+  --swui-flat-button-icon-color: var(--swui-text-action-color);
+  --swui-flat-button-icon-color-active: var(--swui-text-action-color);
   --swui-flat-button-icon-color-disabled: var(--swui-text-disabled-color);
 
   /* Background color */
