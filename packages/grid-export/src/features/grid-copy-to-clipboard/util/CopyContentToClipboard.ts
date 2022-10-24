@@ -1,7 +1,6 @@
-import { renderHtmlForStandardTable } from "./HtmlRenderer";
-import * as clipboard from "clipboard-polyfill";
 import { StandardTableConfig } from "@stenajs-webui/grid/dist/features/standard-table/config/StandardTableConfig";
 import { CustomCellFormatter } from "../../../common/CellFormatters";
+import { renderHtmlForStandardTable } from "./HtmlRenderer";
 
 export async function copyContentToClipboard<
   TItem,
@@ -25,10 +24,10 @@ export async function copyContentToClipboard<
     htmlToCopy = renderContent(htmlToCopy);
   }
   if (htmlToCopy) {
-    const item = new clipboard.ClipboardItem({
+    const item = new ClipboardItem({
       "text/html": new Blob([htmlToCopy], { type: "text/html" }),
     });
 
-    await clipboard.write([item]);
+    await navigator.clipboard.write([item]);
   }
 }

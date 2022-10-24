@@ -6346,11 +6346,6 @@ cli-width@^2.0.0:
   resolved "https://registry.npmjs.org/cli-width/-/cli-width-2.2.1.tgz"
   integrity sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==
 
-clipboard-polyfill@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/clipboard-polyfill/-/clipboard-polyfill-3.0.2.tgz"
-  integrity sha512-1DTdwGicGBAhK4/VjOwFYG3fAu1aj1n/jC/00qkRyDobKSB/PF8mhJkbAlDGbNEc8hIrPElv5j96OE5PwHMUfA==
-
 cliui@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/cliui/-/cliui-5.0.0.tgz"
