@@ -1,26 +1,27 @@
+import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
+import { Card, FlatButton, PrimaryButton, Tag } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
-import { Card, PrimaryButton, Tag } from "@stenajs-webui/elements";
-import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
+import { ClearFiltersButton } from "../components/ClearFiltersButton";
+import { SearchFilterContext } from "../components/context/SearchFilterContext";
 import { SearchFilterButton } from "../components/SearchFilterButton";
-import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
-import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
 import { SearchFilterDrawer } from "../components/SearchFilterDrawer";
-import { SearchFilterChips } from "../features/chips/SearchFilterChips";
 import {
   SearchFilterSection,
   SearchFilterSectionProps,
 } from "../components/SearchFilterSection";
+import { StickyFooter } from "../components/StickyFooter";
+import { SearchFilterChips } from "../features/chips/SearchFilterChips";
 import { SectionChips } from "../features/chips/SectionChips";
+import { useLocalSearchFilterState } from "../hooks/UseLocalSearchFilterState";
 import { createSearchFilterInitialState } from "../redux/SearchFilterRedux";
-import { createDateRangeSectionProps } from "../section-factories/date-range/DateRangePropsFactory";
+import { createChipsPropsForBooleanRecord } from "../section-factories/boolean-record/BooleanRecordChips";
+import { BooleanRecord } from "../section-factories/boolean-record/BooleanRecordTypes";
 import { ChipMultiSelectSection } from "../section-factories/boolean-record/components/ChipMultiSelectSection";
 import { SimpleCheckboxListSection } from "../section-factories/boolean-record/components/SimpleCheckboxListSection";
-import { createChipsPropsForBooleanRecord } from "../section-factories/boolean-record/BooleanRecordChips";
-import { SearchFilterContext } from "../components/context/SearchFilterContext";
-import { BooleanRecord } from "../section-factories/boolean-record/BooleanRecordTypes";
+import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
 import { createChipsPropsForDateRange } from "../section-factories/date-range/DateRangeChips";
-import { ClearFiltersButton } from "../components/ClearFiltersButton";
+import { createDateRangeSectionProps } from "../section-factories/date-range/DateRangePropsFactory";
 
 export default {
   title: "filter/SearchFilter",
@@ -412,13 +413,13 @@ export const Demo = () => {
         />
 
         <ErrorSection sectionId={"error"} />
-        <SearchFilterSection sectionId={"loading"} loading={true} />
+        <SearchFilterSection sectionId={"loading"} loading />
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
 };
 
-export const StickySearchButton = () => {
+export const WithStickyFooter = () => {
   const { dispatch, actions, state } = useLocalSearchFilterState<
     SalesItemSearchFilterModel,
     SalesItemSearchFilterSectionKey
@@ -527,18 +528,12 @@ export const StickySearchButton = () => {
           />
 
           <ErrorSection sectionId={"error"} />
-          <SearchFilterSection sectionId={"loading"} loading={true} />
+          <SearchFilterSection sectionId={"loading"} loading />
         </Box>
-        <Row
-          style={{ marginTop: "auto" }}
-          justifyContent={"center"}
-          spacing={2}
-          indent
-          shadow={"popover"}
-          zIndex={1}
-        >
+        <StickyFooter gap={1}>
           <PrimaryButton label={"Search"} />
-        </Row>
+          <FlatButton label={"Clear all"} />
+        </StickyFooter>
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
@@ -652,7 +647,7 @@ export const WithClearFiltersInHeader = () => {
         />
 
         <ErrorSection sectionId={"error"} />
-        <SearchFilterSection sectionId={"loading"} loading={true} />
+        <SearchFilterSection sectionId={"loading"} loading />
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
@@ -661,7 +656,7 @@ export const WithClearFiltersInHeader = () => {
 type FilterSectionProps =
   SearchFilterSectionProps<SalesItemSearchFilterSectionKey>;
 
-const ErrorSection: React.VFC<FilterSectionProps> = (props) => {
+const ErrorSection: React.FC<FilterSectionProps> = (props) => {
   const [loading, startLoading, stopLoading] = useBoolean(false);
   const [error, setError] = useState<string | undefined>(
     "Something went wrong"
@@ -734,7 +729,7 @@ export const ManyChips = () => {
           }
         />
         <ErrorSection sectionId={"error"} />
-        <SearchFilterSection sectionId={"loading"} loading={true} />
+        <SearchFilterSection sectionId={"loading"} loading />
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
