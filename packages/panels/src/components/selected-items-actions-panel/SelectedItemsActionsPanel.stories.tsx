@@ -1,8 +1,12 @@
+import { Indent, Row, Space, Text } from "@stenajs-webui/core";
+import {
+  FlatButton,
+  SecondaryButton,
+  stenaClearRow,
+  Tag,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { SelectedItemsActionsPanel } from "./SelectedItemsActionsPanel";
-import { Indent, Row, Space, Text } from "@stenajs-webui/core";
-import { FlatButton, SecondaryButton, Tag } from "@stenajs-webui/elements";
-import { faMinusSquare } from "@fortawesome/free-solid-svg-icons/faMinusSquare";
 
 export default {
   title: "panels/SelectedItemsActionsPanel",
@@ -18,7 +22,7 @@ export const WithButtons = () => {
     <SelectedItemsActionsPanel
       numItemsSelected={3}
       afterLabelContent={
-        <FlatButton label={"Clear all"} leftIcon={faMinusSquare} />
+        <FlatButton label={"Clear all"} leftIcon={stenaClearRow} />
       }
       rightContent={
         <Row>
@@ -36,7 +40,7 @@ export const CustomLabel = () => {
     <SelectedItemsActionsPanel
       label={"Great selection, man!"}
       afterLabelContent={
-        <FlatButton label={"Clear all"} leftIcon={faMinusSquare} />
+        <FlatButton label={"Clear all"} leftIcon={stenaClearRow} />
       }
       rightContent={
         <Row>
@@ -60,7 +64,7 @@ export const CustomLabelContent = () => {
         </Row>
       }
       afterLabelContent={
-        <FlatButton label={"Clear all"} leftIcon={faMinusSquare} />
+        <FlatButton label={"Clear all"} leftIcon={stenaClearRow} />
       }
       rightContent={
         <Row>
