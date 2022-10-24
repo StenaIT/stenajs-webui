@@ -1,3 +1,15 @@
+# v17.20.0 (Mon Oct 24 2022)
+
+#### 🚀 Enhancement
+
+- Use Stena icon in "Clear all" button in SelectedItemsActionsPanel [#517](https://github.com/StenaIT/stenajs-webui/pull/517) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.11.0 (Wed Aug 17 2022)
 
 #### 🚀 Enhancement
