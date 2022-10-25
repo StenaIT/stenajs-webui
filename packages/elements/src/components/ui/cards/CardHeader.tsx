@@ -1,4 +1,4 @@
-import { BoxProps, Heading, Row } from "@stenajs-webui/core";
+import { BoxProps, Heading, HeadingVariant, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -15,6 +15,7 @@ export interface CardHeaderProps extends Pick<BoxProps, "className" | "flex"> {
   contentLeft?: ReactNode;
   contentCenter?: ReactNode;
   contentAfterHeading?: ReactNode;
+  headingLevel?: HeadingVariant;
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
@@ -25,6 +26,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   contentRight,
   contentLeft,
   contentCenter,
+  headingLevel = "h2",
   ...boxProps
 }) => {
   return (
@@ -41,7 +43,10 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
           <Icon icon={leftIcon} size={variant === "compact" ? 16 : 24} />
         )}
         {text && (
-          <Heading variant={variant === "compact" ? "h5" : "h4"}>
+          <Heading
+            variant={variant === "compact" ? "h5" : "h4"}
+            as={headingLevel}
+          >
             {text}
           </Heading>
         )}
