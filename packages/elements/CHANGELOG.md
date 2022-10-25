@@ -1,3 +1,15 @@
+# v17.23.1 (Tue Oct 25 2022)
+
+#### 🐛 Bug Fix
+
+- Last crumb in bread crumbs has the same color as the rest [#519](https://github.com/StenaIT/stenajs-webui/pull/519) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.21.0 (Mon Oct 24 2022)
 
 #### 🚀 Enhancement
