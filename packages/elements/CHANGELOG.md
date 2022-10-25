@@ -1,3 +1,15 @@
+# v17.24.0 (Tue Oct 25 2022)
+
+#### 🚀 Enhancement
+
+- Allow choice of headingLevel in CardHeader [#525](https://github.com/StenaIT/stenajs-webui/pull/525) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.23.1 (Tue Oct 25 2022)
 
 #### 🐛 Bug Fix
