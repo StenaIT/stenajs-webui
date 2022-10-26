@@ -1,3 +1,16 @@
+# v17.25.0 (Wed Oct 26 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/forms`
+  - Add `CopyToClipboardButton` which can copy specified text to clipboard [#522](https://github.com/StenaIT/stenajs-webui/pull/522) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.24.0 (Tue Oct 25 2022)
 
 #### 🚀 Enhancement
