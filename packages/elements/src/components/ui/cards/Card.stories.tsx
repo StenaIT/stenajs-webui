@@ -3,6 +3,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons/faCircle";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons/faCreditCard";
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import {
+  Box,
   Heading,
   Indent,
   Row,
@@ -199,5 +200,36 @@ export const Approved = () => {
         <Text>Line has no padding.</Text>
       </CardBody>
     </Card>
+  );
+};
+
+export const HeadingLevel = () => {
+  return (
+    <Box gap={2}>
+      <Card>
+        <CardHeader text={"Heading level 2"} headingLevel={"h2"} />
+        <CardBody gap={2}>
+          <Text>
+            This card header has the same styling as the other, but it is
+            displayed as an h2 in the DOM.
+          </Text>
+          <Text>
+            A screen reader would acknowledge this as heading level 2.
+          </Text>
+        </CardBody>
+      </Card>
+      <Card>
+        <CardHeader text={"Heading level 3"} headingLevel={"h3"} />
+        <CardBody gap={2}>
+          <Text>
+            This card header has the same styling as the other, but it is
+            displayed as an h3 in the DOM.
+          </Text>
+          <Text>
+            A screen reader would acknowledge this as heading level 3.
+          </Text>
+        </CardBody>
+      </Card>
+    </Box>
   );
 };

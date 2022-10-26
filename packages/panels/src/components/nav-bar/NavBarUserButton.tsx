@@ -1,12 +1,13 @@
-import * as React from "react";
-import cx from "classnames";
-import styles from "./NavBarUserButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { stenaUserCircle } from "@stenajs-webui/elements";
+import cx from "classnames";
+import * as React from "react";
 import {
   ActionMenuFlatButton,
   ActionMenuFlatButtonProps,
 } from "../action-menu-button/ActionMenuFlatButton";
-import { stenaUser } from "@stenajs-webui/elements";
+import styles from "./NavBarUserButton.module.css";
+
 export interface NavBarUserButtonProps
   extends Omit<ActionMenuFlatButtonProps, "label" | "leftIcon" | "rightIcon"> {
   username?: string;
@@ -18,7 +19,7 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
   className,
   username,
   initials,
-  icon = stenaUser,
+  icon = stenaUserCircle,
   iconClassName,
   ...buttonProps
 }) => {
