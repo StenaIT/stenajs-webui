@@ -1154,7 +1154,7 @@ export const stenaSailingLocation: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaSailingNoshow: IconDefinition = {
+export const stenaSailingNoShow: IconDefinition = {
   icon: [
     48,
     48,
@@ -1473,7 +1473,7 @@ export const stenaStatusDone: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaStatusInprogress: IconDefinition = {
+export const stenaStatusInProgress: IconDefinition = {
   icon: [
     48,
     48,
