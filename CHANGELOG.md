@@ -1,3 +1,16 @@
+# v17.26.0 (Tue Nov 08 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add more webui icons [#526](https://github.com/StenaIT/stenajs-webui/pull/526) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.25.0 (Wed Oct 26 2022)
 
 #### 🚀 Enhancement
