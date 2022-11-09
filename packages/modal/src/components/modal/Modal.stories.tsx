@@ -43,6 +43,28 @@ export const ModalWithHeader = () => {
   );
 };
 
+export const Mobile = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <Modal
+        headerText={"Modal title here"}
+        isOpen={isOpen}
+        onRequestClose={() => setOpen(false)}
+      >
+        {loremIpsumSampleText}
+      </Modal>
+    </>
+  );
+};
+
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
+};
+
 export const ModalWithCustomHeaderComponent = () => {
   const [isOpen, setOpen] = useState(false);
   return (
@@ -136,6 +158,24 @@ export const _BaseModal = () => {
       </BaseModal>
     </>
   );
+};
+
+export const BaseModalMobile = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <BaseModal isOpen={isOpen} onRequestClose={() => setOpen(false)}>
+        <Spacing indent>modal without header</Spacing>
+      </BaseModal>
+    </>
+  );
+};
+
+BaseModalMobile.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
 };
 
 export const DraggableModal = () => {

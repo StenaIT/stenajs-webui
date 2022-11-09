@@ -20,7 +20,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: var(--swui-modal-padding);
 
   animation: fadeIn var(--swui-modal-animation-time)
     cubic-bezier(0.645, 0.045, 0.355, 1) both;
@@ -30,9 +29,13 @@
   }
 
   .modal {
-    max-width: 100%;
+    max-width: 100vw;
     outline: none;
     pointer-events: none;
+
+    @media (max-width: 768px) {
+      width: 100vw;
+    }
   }
 
   .content {
@@ -41,12 +44,17 @@
     background: var(--swui-modal-content-bg-color);
     box-shadow: var(--swui-modal-shadow);
     pointer-events: all;
+    top: calc(var(--swui-metrics-space) * 2);
 
     width: var(--swui-modal-width);
     max-width: 100%;
 
     animation: appear var(--swui-animation-time-fast)
       cubic-bezier(0.645, 0.045, 0.355, 1) both;
+
+    @media (max-width: 768px) {
+      top: 0;
+    }
 
     @media print {
       box-shadow: none;
@@ -81,11 +89,9 @@
 
 @keyframes appear {
   0% {
-    top: calc(0 - var(--swui-metrics-space));
     opacity: 0;
   }
   100% {
-    top: var(--swui-metrics-space);
     opacity: 1;
   }
 }
