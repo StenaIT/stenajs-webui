@@ -1,7 +1,6 @@
 .overlay {
   --swui-modal-animation-time: var(--swui-animation-time-fast);
   --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
-  --swui-modal-padding: var(--swui-metrics-space);
   --swui-modal-content-bg-color: var(--swui-white);
   --swui-modal-width: 960px;
   --swui-modal-header-border-color: var(--lhds-color-ui-300);
@@ -102,7 +101,7 @@
 
 .stickyFooter {
   position: sticky;
-  bottom: calc(-1 * var(--swui-modal-padding));
+  bottom: 0;
   box-shadow: var(--swui-modal-footer-shadow);
 
   @media print {
