@@ -1,3 +1,16 @@
+# v17.27.0 (Wed Nov 09 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`
+  - Modal is fullscreen on mobile [#527](https://github.com/StenaIT/stenajs-webui/pull/527) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.26.0 (Tue Nov 08 2022)
 
 #### 🚀 Enhancement
