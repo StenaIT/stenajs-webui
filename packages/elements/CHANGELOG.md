@@ -1,3 +1,15 @@
+# v17.27.1 (Mon Nov 14 2022)
+
+#### 🐛 Bug Fix
+
+- Add user icons [#528](https://github.com/StenaIT/stenajs-webui/pull/528) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.26.0 (Tue Nov 08 2022)
 
 #### 🚀 Enhancement
