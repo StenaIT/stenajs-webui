@@ -70,9 +70,9 @@
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: 2rem;
   --swui-field-bg-enabled: var(--swui-white);
-  --swui-field-bg-disabled: #e8e4ea;
-  --swui-field-border-color: #bbc1e1;
-  --swui-field-border-color-hover: #275efe;
+  --swui-field-bg-disabled: var(--lhds-color-ui-300);
+  --swui-field-border-color: var(--lhds-color-ui-400);
+  --swui-field-border-color-hover: var(--lhds-color-blue-500);
   --swui-field-border-color-disabled: #b1b1b1;
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
   --swui-field-box-size-large: 32px;
