@@ -1,3 +1,15 @@
+# v17.28.0 (Tue Nov 15 2022)
+
+#### 🚀 Enhancement
+
+- Change form field default colors (AB#102893) [#529](https://github.com/StenaIT/stenajs-webui/pull/529) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
