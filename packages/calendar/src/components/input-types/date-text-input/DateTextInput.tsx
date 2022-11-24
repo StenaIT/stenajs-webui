@@ -142,7 +142,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
               <Row alignItems={"center"} indent={0.5}>
                 <FlatButton
                   size={"small"}
-                  disabled={props.disabled}
+                  disabled={props.disabled || disableCalender}
                   leftIcon={stenaCalendar}
                   onClick={toggleCalendar}
                 />
