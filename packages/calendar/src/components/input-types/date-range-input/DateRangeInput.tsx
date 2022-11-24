@@ -91,9 +91,6 @@ export function DateRangeInput<T>({
   maxDate = defaultMaxDate,
   disabled,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> {
-  const [dateInFocus, setDateInFocus] = useState(
-    () => (focusedInput && value?.[focusedInput]) ?? new Date()
-  );
   const [currentPanel, setCurrentPanel] =
     useState<CalendarPanelType>("calendar");
 
@@ -109,6 +106,9 @@ export function DateRangeInput<T>({
     startDateIsAfterEnd,
   } = useDateRangeInput(value, onValueChange);
 
+  const [dateInFocus, setDateInFocus] = useState(
+    () => (focusedInput && value?.[focusedInput]) ?? new Date()
+  );
   const statePerMonth = useMemo(
     () =>
       buildDayStateForDateRange(undefined, value?.startDate, value?.endDate),
