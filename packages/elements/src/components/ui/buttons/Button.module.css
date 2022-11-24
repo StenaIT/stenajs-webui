@@ -189,6 +189,9 @@
 
   &:focus {
     outline: 0;
+  }
+
+  &:focus-visible {
     --current-background-color: var(--swui-button-background-color-focus);
     --current-border-color: var(--swui-button-border-color-focus);
     --current-icon-color: var(--swui-button-icon-color-focus);
@@ -233,6 +236,9 @@
 
     &:focus {
       outline: 0;
+    }
+
+    &:focus-visible {
       --current-background-color: var(
         --swui-button-danger-background-color-focus
       );
@@ -268,6 +274,9 @@
 
     &:focus {
       outline: 0;
+    }
+
+    &:focus-visible {
       --current-background-color: var(
         --swui-button-success-background-color-focus
       );

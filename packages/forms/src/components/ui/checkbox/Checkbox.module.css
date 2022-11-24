@@ -162,7 +162,7 @@
     }
   }
 
-  &:focus {
+  &:focus-visible {
     &:checked {
       box-shadow: var(--swui-checkbox-checked-focus-shadow);
     }
