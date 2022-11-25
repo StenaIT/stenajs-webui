@@ -1,3 +1,16 @@
+# v17.28.1 (Fri Nov 25 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Fix variable used before declaration error [#531](https://github.com/StenaIT/stenajs-webui/pull/531) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.28.0 (Tue Nov 15 2022)
 
 #### 🚀 Enhancement

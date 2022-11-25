@@ -1,3 +1,15 @@
+# v17.28.1 (Fri Nov 25 2022)
+
+#### 🐛 Bug Fix
+
+- Fix variable used before declaration error [#531](https://github.com/StenaIT/stenajs-webui/pull/531) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.3 (Tue Aug 30 2022)
 
 #### 🏠 Internal
