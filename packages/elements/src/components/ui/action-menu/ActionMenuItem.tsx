@@ -11,7 +11,7 @@ import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
 export type ActionMenuItemVariant = "standard" | "danger" | "success";
 
 export interface ActionMenuItemProps
-  extends ButtonElementProps,
+  extends Omit<ButtonElementProps, "children">,
     ButtonContentProps {
   variant?: ActionMenuItemVariant;
   disableCloseOnClick?: boolean;
