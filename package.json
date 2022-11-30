@@ -75,20 +75,20 @@
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.2",
-    "eslint-plugin-storybook": "^0.6.4",
+    "eslint-plugin-storybook": "^0.6.5",
     "husky": "^3.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
     "lerna": "^3.22.0",
-    "path-that-svg": "1.2.4",
-    "svgson": "4.1.0",
     "lint-staged": "^12.1.2",
+    "path-that-svg": "1.2.4",
     "postcss-loader": "^4.3.0",
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.0.0",
     "prettier": "2.7.1",
     "react-docgen-typescript-loader": "^3.1.0",
+    "svgson": "4.1.0",
     "ts-jest": "^28.0.5",
     "tslib": "2.3.1",
     "typescript": "4.8.2",
@@ -123,7 +123,9 @@
     "not ie < 11",
     "not op_mini all"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "storybook": "6.5.13"
+  },
   "auto": {
     "plugins": [
       "npm"
