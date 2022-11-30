@@ -1,4 +1,12 @@
-import { Column, Row, Spacing, Text, useBoolean } from "@stenajs-webui/core";
+import {
+  Box,
+  Column,
+  Indent,
+  Row,
+  Spacing,
+  Text,
+  useBoolean,
+} from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useEffect } from "react";
@@ -45,6 +53,43 @@ export const WithButton = () => (
       <PrimaryButton label={"Click me"} />
     </Tooltip>
   </Column>
+);
+
+export const Variants = () => (
+  <Box indent={10} display="flex">
+    <Row spacing={3} display={"inline-flex"}>
+      <Tooltip label={"No variant"}>
+        <Text>No variant</Text>
+      </Tooltip>
+      <Indent />
+
+      <Tooltip label={"Standard"}>
+        <Text>standard</Text>
+      </Tooltip>
+      <Indent />
+
+      <Tooltip label={"Outlined"} variant={"outlined"}>
+        <Text>outlined</Text>
+      </Tooltip>
+      <Indent />
+    </Row>
+
+    <Row spacing={3} display={"inline-flex"}>
+      <Tooltip label={"Info"} variant={"info"}>
+        <Text>info</Text>
+      </Tooltip>
+      <Indent />
+
+      <Tooltip label={"Warning"} variant={"warning"}>
+        <Text>warning</Text>
+      </Tooltip>
+      <Indent />
+
+      <Tooltip label={"Oh no error error!"} variant={"error"}>
+        <Text>error</Text>
+      </Tooltip>
+    </Row>
+  </Box>
 );
 
 export const Disabled = () => {
