@@ -1,12 +1,12 @@
+import { Box } from "@stenajs-webui/core";
 import TippyComponent, {
   TippyProps as TippyComponentProps,
 } from "@tippyjs/react";
 import * as React from "react";
+import { useLazyPopover } from "../../hooks/UseLazyPopover";
+import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import styles from "./Popover.module.css";
 import "./Tippy.module.css";
-import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
-import { Box } from "@stenajs-webui/core";
-import { useLazyPopover } from "../../hooks/UseLazyPopover";
 
 export type PopoverVariant =
   | "standard"
@@ -15,24 +15,18 @@ export type PopoverVariant =
   | "error"
   | "outlined";
 
+export type LightMode = "light" | "dark";
 export interface PopoverProps
   extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
   tippyRef?: TippyCallbackRef<HTMLDivElement>;
   disablePadding?: boolean;
   lazy?: boolean;
   variant?: PopoverVariant;
+  lightMode?: LightMode;
 }
 
 export const tippyStyles = {
   noPadding: styles.noPadding,
-};
-
-const variantToTheme: Record<PopoverVariant, string> = {
-  standard: "light",
-  info: "info",
-  warning: "warning",
-  error: "error",
-  outlined: "outlined",
 };
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -48,6 +42,7 @@ export const Popover: React.FC<PopoverProps> = ({
   plugins: propsPlugins,
   lazy,
   arrow = true,
+  lightMode = "light",
   ...tippyProps
 }) => {
   const { plugins, mounted } = useLazyPopover(propsPlugins);
@@ -58,7 +53,7 @@ export const Popover: React.FC<PopoverProps> = ({
       className={tippyStyles.noPadding}
       trigger={visible !== undefined ? undefined : trigger}
       visible={visible}
-      theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
+      theme={`${lightMode}`}
       delay={delay}
       maxWidth={maxWidth}
       arrow={arrow}
