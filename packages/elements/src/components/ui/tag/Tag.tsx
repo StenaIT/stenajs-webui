@@ -1,13 +1,14 @@
-import * as React from "react";
-import cx from "classnames";
-import styles from "./Tag.module.css";
 import { getDataProps } from "@stenajs-webui/core";
+import cx from "classnames";
+import * as React from "react";
+import styles from "./Tag.module.css";
 
 export interface TagProps {
   variant?: TagVariant;
   label?: string;
   size?: TagSize;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export type TagVariant =
@@ -25,6 +26,7 @@ export const Tag: React.FC<TagProps> = ({
   variant = "info",
   size = "medium",
   label,
+  icon,
   ...rest
 }) => {
   return (
@@ -32,7 +34,10 @@ export const Tag: React.FC<TagProps> = ({
       className={cx(styles.tag, styles[variant], styles[size], className)}
       {...getDataProps(rest)}
     >
-      {label}
+      <>
+        {icon}
+        {label}
+      </>
     </div>
   );
 };
