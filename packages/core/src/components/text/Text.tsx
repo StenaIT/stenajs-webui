@@ -1,9 +1,9 @@
-import * as React from "react";
 import cx from "classnames";
-import styles from "./Text.module.css";
-import { SpanProps } from "../../types/ElementProps";
 import { Property } from "csstype";
+import * as React from "react";
 import { forwardRef } from "react";
+import { SpanProps } from "../../types/ElementProps";
+import styles from "./Text.module.css";
 
 export interface TextProps extends SpanProps {
   variant?: TextVariant;
@@ -12,6 +12,7 @@ export interface TextProps extends SpanProps {
   whiteSpace?: Property.WhiteSpace;
   wordBreak?: Property.WordBreak;
   color?: string;
+  fontWeight?: Property.FontWeight;
 }
 
 export type TextVariant = "standard" | "caption" | "overline" | "bold";
@@ -29,6 +30,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       whiteSpace,
       wordBreak,
       style,
+      fontWeight,
       ...spanProps
     },
     ref
@@ -37,7 +39,14 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       <span
         className={cx(styles.text, styles[variant], styles[size], className)}
         ref={ref}
-        style={{ color, userSelect, whiteSpace, wordBreak, ...style }}
+        style={{
+          color,
+          userSelect,
+          whiteSpace,
+          wordBreak,
+          fontWeight,
+          ...style,
+        }}
         {...spanProps}
       >
         {children}
