@@ -7,7 +7,6 @@ import {
   Spacing,
   Text,
 } from "@stenajs-webui/core";
-import * as React from "react";
 import { PrimaryButton, stenaPlus } from "@stenajs-webui/elements";
 
 export default {
@@ -58,8 +57,8 @@ export const SimpleTable = () => {
                 <td style={tdStyle} />
               </tr>
 
-              {list.map((name) => (
-                <tr>
+              {list.map((name, key) => (
+                <tr key={key}>
                   <td style={tdStyle}>
                     <Indent>
                       <Clickable disableFocusHighlight onClick={() => {}}>
