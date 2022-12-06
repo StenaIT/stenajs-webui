@@ -35,17 +35,6 @@ export const colorListControl = {
       "var(--lhds-color-orange-800)",
       "var(--lhds-color-orange-900)",
 
-      "var(--lhds-color-purple-100)",
-      "var(--lhds-color-purple-200)",
-      "var(--lhds-color-purple-300)",
-      "var(--lhds-color-purple-400)",
-      "var(--lhds-color-purple-50)",
-      "var(--lhds-color-purple-500)",
-      "var(--lhds-color-purple-600)",
-      "var(--lhds-color-purple-700)",
-      "var(--lhds-color-purple-800)",
-      "var(--lhds-color-purple-900)",
-
       "var(--lhds-color-red-100)",
       "var(--lhds-color-red-200)",
       "var(--lhds-color-red-300)",
