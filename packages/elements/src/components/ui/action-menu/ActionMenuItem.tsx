@@ -1,5 +1,4 @@
 import { ButtonElementProps } from "@stenajs-webui/core";
-import * as React from "react";
 import { forwardRef } from "react";
 import cx from "classnames";
 
@@ -37,6 +36,7 @@ export const ActionMenuItem = forwardRef<
     className,
     onClick,
     disableCloseOnClick,
+    disabled,
     ...props
   },
   ref
@@ -49,9 +49,13 @@ export const ActionMenuItem = forwardRef<
   return (
     <button
       {...props}
-      className={cx(styles.actionMenuItem, styles[variant], className)}
+      className={cx(
+        styles.actionMenuItem,
+        styles[disabled ? "disabled" : variant],
+        className
+      )}
       onKeyDown={onKeyDown}
-      onClick={props.disabled ? undefined : onClickHandler}
+      onClick={disabled ? undefined : onClickHandler}
       ref={innerRef}
     >
       <ActionMenuCommonContent
