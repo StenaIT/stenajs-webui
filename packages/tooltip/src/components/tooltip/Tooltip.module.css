@@ -116,7 +116,6 @@
   --current-icon-color: red;
 
   /* Styling */
-  /* box-sizing: border-box; */
   display: inline-flex;
   flex-direction: row;
   white-space: nowrap;
