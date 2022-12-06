@@ -10,20 +10,19 @@ import TippyComponent, {
 } from "@tippyjs/react";
 import cx from "classnames";
 import * as React from "react";
-import { useLazyPopover } from "../../hooks/UseLazyPopover";
 import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import styles from "./Tooltip.module.css";
 
 type TooltipVariant = "info" | "warning" | "error";
 
-export interface TooltipProps {
-  variant?: TooltipVariant;
-  label: string;
-}
-
 interface TippyProps
   extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
   tippyRef?: TippyCallbackRef<HTMLDivElement>;
+}
+
+export interface TooltipProps extends TippyProps {
+  variant?: TooltipVariant;
+  label: string;
 }
 
 const variantIcons = {
@@ -32,7 +31,7 @@ const variantIcons = {
   error: stenaExclamationTriangle,
 };
 
-export const Tooltip: React.FC<TooltipProps & TippyProps> = ({
+export const Tooltip: React.FC<TooltipProps> = ({
   visible,
   trigger = "mouseenter",
   children,
@@ -41,13 +40,10 @@ export const Tooltip: React.FC<TooltipProps & TippyProps> = ({
   variant,
   content,
   maxWidth = "125px",
-  plugins: propsPlugins,
   arrow = true,
   label,
   ...tippyProps
 }) => {
-  const { plugins } = useLazyPopover(propsPlugins);
-
   const textComponent = (
     <Indent display={"inline-block"} indent={1}>
       <Text color="white" size={"small"} variant="bold">
@@ -80,7 +76,6 @@ export const Tooltip: React.FC<TooltipProps & TippyProps> = ({
           )}
         </Row>
       }
-      plugins={plugins}
       {...tippyProps}
     >
       <div ref={tippyRef}>{children}</div>
