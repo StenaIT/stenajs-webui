@@ -20,6 +20,7 @@ import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
 import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
 import { useState } from "react";
+import * as React from "react";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
