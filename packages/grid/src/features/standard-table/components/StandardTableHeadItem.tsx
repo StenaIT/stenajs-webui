@@ -60,6 +60,9 @@ export const StandardTableHeadItem = React.memo(
       <th
         style={{
           background: background ?? "white",
+          borderBottom: arrow
+            ? "1px solid var(--lhds-color-blue-500)"
+            : undefined,
           borderLeft: activeBorderLeft,
           position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
