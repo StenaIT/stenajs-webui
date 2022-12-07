@@ -57,8 +57,8 @@ export const SimpleTable = () => {
                 <td style={tdStyle} />
               </tr>
 
-              {list.map((name, key) => (
-                <tr key={key}>
+              {list.map((name, index) => (
+                <tr key={index}>
                   <td style={tdStyle}>
                     <Indent>
                       <Clickable disableFocusHighlight onClick={() => {}}>
