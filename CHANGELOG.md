@@ -1,3 +1,22 @@
+# v17.29.0 (Mon Dec 12 2022)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add support for locale in calendar [#541](https://github.com/StenaIT/stenajs-webui/pull/541) ([@mattias800](https://github.com/mattias800))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/theme`
+  - Remove --lhds-color-purple-* [#538](https://github.com/StenaIT/stenajs-webui/pull/538) ([@LordDz](https://github.com/LordDz))
+
+#### Authors: 2
+
+- David ([@LordDz](https://github.com/LordDz))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.28.1 (Fri Nov 25 2022)
 
 #### 🐛 Bug Fix

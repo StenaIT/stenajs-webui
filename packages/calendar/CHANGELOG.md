@@ -1,3 +1,15 @@
+# v17.29.0 (Mon Dec 12 2022)
+
+#### 🚀 Enhancement
+
+- Add support for locale in calendar [#541](https://github.com/StenaIT/stenajs-webui/pull/541) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.28.1 (Fri Nov 25 2022)
 
 #### 🐛 Bug Fix
