@@ -100,19 +100,7 @@ export function CalendarMonth<T>({
             <tr>
               {showWeekNumber && (
                 <td>
-                  <Box
-                    width={theme.width}
-                    height={theme.height}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    <Text
-                      size={"small"}
-                      color={theme.CalendarMonth.headerTextColor}
-                    >
-                      W
-                    </Text>
-                  </Box>
+                  <Box width={theme.width} height={theme.height} />
                 </td>
               )}
               {month.weeks[0].days.map((day: DayData) => (
