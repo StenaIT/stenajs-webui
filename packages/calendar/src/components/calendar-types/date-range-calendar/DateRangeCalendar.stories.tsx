@@ -1,8 +1,9 @@
 import { addDays, format } from "date-fns";
+import { sv, enUS } from "date-fns/locale";
 import * as React from "react";
-import markdown from "./DateRangeCalendar.md?raw";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
 import { DateRangeCalendar, DateRangeCalendarProps } from "./DateRangeCalendar";
+import markdown from "./DateRangeCalendar.md?raw";
 import { useDateRangeCalendarState } from "./hooks/UseDateRangeCalendarState";
 
 export default {
@@ -43,6 +44,16 @@ function DateRangeCalendarWithState<T>({
 export const Standard = () => {
   const props = useDateRangeCalendarState();
   return <DateRangeCalendar {...props} />;
+};
+
+export const SwedishLocale = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar {...props} locale={sv} />;
+};
+
+export const WeekStartAtSunday = () => {
+  const props = useDateRangeCalendarState();
+  return <DateRangeCalendar {...props} locale={enUS} />;
 };
 
 export const WithStateHook = () => <DateRangeCalendarWithState />;
