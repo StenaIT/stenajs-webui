@@ -11,6 +11,7 @@ import {
   getWeek,
   getYear,
   isSameDay,
+  lastDayOfWeek,
   startOfMonth,
   startOfWeek,
 } from "date-fns";
@@ -146,15 +147,15 @@ export const createDay = (date: Date, locale: Locale): DayData => {
   const dayOfWeek = getISODay(date);
   return {
     date,
-    name: format(date, "EEE", locale ? { locale } : undefined),
+    name: format(date, "EEE", { locale }),
     dateString: format(addHours(date, 12), DateFormats.fullDate),
     weekNumber: getWeek(date, { locale }),
     year: getYear(date),
     month: getMonth(date),
     dayOfMonth: getDate(date),
     dayOfWeek,
-    isFirstDayOfWeek: dayOfWeek === 1,
-    isLastDayOfWeek: dayOfWeek === 7,
+    isFirstDayOfWeek: isSameDay(startOfWeek(date, { locale }), date),
+    isLastDayOfWeek: isSameDay(lastDayOfWeek(date, { locale }), date),
     isFirstDayOfMonth: isSameDay(startOfMonth(date), date),
     isLastDayOfMonth: isSameDay(endOfMonth(date), date),
   };
