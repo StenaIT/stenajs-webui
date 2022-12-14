@@ -23,6 +23,7 @@ interface TippyProps
 export interface TooltipProps extends TippyProps {
   variant?: TooltipVariant;
   label: string;
+  multiRow?: boolean;
 }
 
 const variantIcons = {
@@ -30,6 +31,19 @@ const variantIcons = {
   warning: stenaExclamationCircle,
   error: stenaExclamationTriangle,
 };
+
+const textComponent = (label: string, maxWidth: number) => (
+  <Indent spacing={0.5} display={"inline-block"}>
+    <Text
+      color="white"
+      size={"small"}
+      variant="bold"
+      style={{ display: "flex", maxWidth: maxWidth }}
+    >
+      {label}
+    </Text>
+  </Indent>
+);
 
 export const Tooltip: React.FC<TooltipProps> = ({
   visible,
@@ -39,19 +53,11 @@ export const Tooltip: React.FC<TooltipProps> = ({
   delay = 0,
   variant,
   content,
-  maxWidth = "125px",
+  multiRow,
   arrow = true,
   label,
   ...tippyProps
 }) => {
-  const textComponent = (
-    <Indent display={"inline-block"} indent={1}>
-      <Text color="white" size={"small"} variant="bold">
-        {label}
-      </Text>
-    </Indent>
-  );
-
   return (
     <TippyComponent
       interactive
@@ -60,19 +66,18 @@ export const Tooltip: React.FC<TooltipProps> = ({
       visible={visible}
       theme={"dark"}
       delay={delay}
-      maxWidth={maxWidth}
       arrow={arrow}
       content={
-        <Row spacing={0.5} indent={0.5} alignItems="center">
+        <Row spacing={0.5} indent={0.5}>
           {variant ? (
             <>
               <div className={cx(styles.iconWrapper, styles[variant])}>
                 <Icon icon={variantIcons[variant]} size={16} />
               </div>
-              {textComponent}
+              {textComponent(label, multiRow ? 100 : -1)}
             </>
           ) : (
-            textComponent
+            textComponent(label, multiRow ? 100 : -1)
           )}
         </Row>
       }

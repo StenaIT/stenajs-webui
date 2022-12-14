@@ -1,11 +1,4 @@
-import {
-  Box,
-  Column,
-  Row,
-  Spacing,
-  Text,
-  useBoolean,
-} from "@stenajs-webui/core";
+import { Column, Row, Spacing, Text, useBoolean } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
@@ -56,29 +49,38 @@ export const WithButton = () => (
 );
 
 export const Variants = () => (
-  <Box indent={10} display="flex">
-    <Row gap={4} display={"inline-flex"}>
-      <Tooltip label={"Standard"}>
-        <Text>standard</Text>
-      </Tooltip>
+  <Row indent={10} gap={20}>
+    <Tooltip label={"Standard"}>
+      <Text>standard</Text>
+    </Tooltip>
 
-      <Tooltip label={"Info"} variant={"info"}>
-        <Text color={cssColor("--lhds-color-blue-700")}>info</Text>
-      </Tooltip>
+    <Tooltip label={"Info"} variant={"info"}>
+      <Text color={cssColor("--lhds-color-blue-700")}>info</Text>
+    </Tooltip>
 
-      <Tooltip label={"Warning"} variant={"warning"}>
-        <Text color={cssColor("--lhds-color-orange-700")}>warning</Text>
-      </Tooltip>
+    <Tooltip label={"Warning"} variant={"warning"}>
+      <Text color={cssColor("--lhds-color-orange-700")}>warning</Text>
+    </Tooltip>
 
-      <Tooltip label={"Error, shame!"} variant={"error"}>
-        <Text color={cssColor("--lhds-color-red-700")}>error</Text>
-      </Tooltip>
+    <Tooltip label={"Error, shame!"} variant={"error"}>
+      <Text color={cssColor("--lhds-color-red-700")}>error</Text>
+    </Tooltip>
 
-      <Tooltip label={"We need to inform about many things. Please read this."}>
-        <Text>Multi row</Text>
-      </Tooltip>
-    </Row>
-  </Box>
+    <Tooltip
+      label={"We need to inform about many things. Please read this."}
+      multiRow={true}
+    >
+      <Text>Multi row</Text>
+    </Tooltip>
+
+    <Tooltip
+      label={"We need to inform about many things. Please read this."}
+      variant={"warning"}
+      multiRow={true}
+    >
+      <Text>Multi row warning</Text>
+    </Tooltip>
+  </Row>
 );
 
 export const Disabled = () => {

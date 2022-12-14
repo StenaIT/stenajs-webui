@@ -127,8 +127,9 @@
   font-weight: var(--swui-tag-font-weight);
   line-height: var(--swui-tag-line-height);
   color: var(--current-text-color);
-  align-items: center;
+  align-items: flex-start;
   padding: 4px;
+  height: 16px;
 
   svg {
     color: var(--current-icon-color);
