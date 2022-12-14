@@ -1,6 +1,8 @@
 import { Column, Text } from "@stenajs-webui/core";
 import { TableRow } from "../components/table/TableRow";
 import * as React from "react";
+import { useState } from "react";
+
 import { TableHeadRow } from "../components/table/TableHeadRow";
 import { TableHeadItem } from "../components/table/TableHeadItem";
 import { TableCell } from "../components/table/TableCell";
@@ -12,18 +14,25 @@ export default {
 };
 
 const borderLeft = "1px solid " + cssColor("--lhds-color-ui-300");
-const width = "200px";
+const width = "225px";
 
 export const Overview = () => {
-  const noop = () => {};
+  const [selectedNr, setSelectedNr] = useState(1);
+
+  const onClickActive = (nr: number) => {
+    setSelectedNr(nr);
+  };
   return (
     <Column>
       <TableHeadRow>
         <TableHeadItem
           label={"Username"}
           width={width}
-          arrow={"down"}
-          onClick={noop}
+          onClick={() => {
+            onClickActive(1);
+          }}
+          selected={selectedNr === 1}
+          arrow={(selectedNr === 1 && "down") || undefined}
           popoverContent={
             <Column>
               <ActionMenuItem label={"Rename"} />
@@ -37,21 +46,31 @@ export const Overview = () => {
           label={"E-mail"}
           width={width}
           infoIconTooltipText={"This is the e-mail."}
-          onClick={noop}
-          arrow={"down"}
+          onClick={() => {
+            onClickActive(2);
+          }}
+          selected={selectedNr === 2}
+          arrow={(selectedNr === 2 && "down") || undefined}
         />
         <TableHeadItem
           label={"First name"}
           width={width}
           borderLeft={borderLeft}
           loading
-          onClick={noop}
-          arrow={"up"}
+          onClick={() => {
+            onClickActive(3);
+          }}
+          selected={selectedNr === 3}
+          arrow={(selectedNr === 3 && "down") || undefined}
         />
         <TableHeadItem
           label={"Last name"}
           width={width}
-          onClick={noop}
+          onClick={() => {
+            onClickActive(4);
+          }}
+          selected={selectedNr === 4}
+          arrow={(selectedNr === 4 && "down") || undefined}
           infoIconTooltipText={"This is the username."}
         />
         <TableHeadItem label={""} width={width} borderLeft={borderLeft} />

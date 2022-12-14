@@ -62,6 +62,11 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         ref={containerRef}
         overflow={overflow}
         justifyContent={alignRight ? "flex-end" : "flex-start"}
+        style={{
+          borderBottom: selected
+            ? "2px solid var(--lhds-color-blue-500)"
+            : "2px solid transparent",
+        }}
         {...boxProps}
       >
         <Row alignItems={"center"} indent>
