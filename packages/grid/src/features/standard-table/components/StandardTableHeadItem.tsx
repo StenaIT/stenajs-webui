@@ -62,8 +62,8 @@ export const StandardTableHeadItem = React.memo(
           background: background ?? "white",
           borderBottom:
             !disableSorting && selected
-              ? "1px solid var(--lhds-color-blue-500)"
-              : undefined,
+              ? "2px solid var(--lhds-color-blue-500)"
+              : "2px solid transparent",
           borderLeft: activeBorderLeft,
           position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
