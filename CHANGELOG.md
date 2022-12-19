@@ -1,3 +1,16 @@
+# v17.29.1 (Mon Dec 19 2022)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Remove children from ActionMenuItem (fixes AB#104119) [#534](https://github.com/StenaIT/stenajs-webui/pull/534) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.29.0 (Mon Dec 12 2022)
 
 #### 🚀 Enhancement
