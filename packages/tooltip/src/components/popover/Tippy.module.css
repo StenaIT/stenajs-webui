@@ -133,4 +133,39 @@
   .tippy-box[data-theme~="light"] > .tippy-svg-arrow {
     fill: #fff;
   }
+
+  /*Dark mode!*/
+  .tippy-box[data-theme~="dark"] {
+    color: #26323d;
+    box-shadow: 0 0 20px 4px rgba(154, 161, 177, 0.15),
+      0 4px 80px -8px rgba(36, 40, 47, 0.25),
+      0 4px 4px -2px rgba(91, 94, 105, 0.15);
+    background-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"][data-placement^="top"] > .tippy-arrow:before {
+    border-top-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"][data-placement^="bottom"]
+    > .tippy-arrow:before {
+    border-bottom-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"][data-placement^="left"] > .tippy-arrow:before {
+    border-left-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"][data-placement^="right"]
+    > .tippy-arrow:before {
+    border-right-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"] > .tippy-backdrop {
+    background-color: var(--lhds-color-ui-900);
+  }
+
+  .tippy-box[data-theme~="dark"] > .tippy-svg-arrow {
+    fill: var(--lhds-color-ui-900);
+  }
 }
