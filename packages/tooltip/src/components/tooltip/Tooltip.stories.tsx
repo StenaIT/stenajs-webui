@@ -12,7 +12,7 @@ export default {
 
 export const Standard = () => (
   <>
-    <Row justifyContent={"space-between"} spacing={10}>
+    <Row justifyContent={"space-between"} spacing={10} background="red">
       <Tooltip placement={"bottom"} label={"Nice content on bottom"}>
         <Text>Hover me</Text>
       </Tooltip>
@@ -68,7 +68,7 @@ export const Variants = () => (
 
     <Tooltip
       label={"We need to inform about many things. Please read this."}
-      multiRow={true}
+      maxWidth={200}
     >
       <Text>Multi row</Text>
     </Tooltip>
@@ -76,7 +76,7 @@ export const Variants = () => (
     <Tooltip
       label={"We need to inform about many things. Please read this."}
       variant={"warning"}
-      multiRow={true}
+      maxWidth={200}
     >
       <Text>Multi row warning</Text>
     </Tooltip>

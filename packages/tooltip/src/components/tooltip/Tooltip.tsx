@@ -5,26 +5,12 @@ import {
   stenaExclamationTriangle,
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
-import TippyComponent, {
-  TippyProps as TippyComponentProps,
-} from "@tippyjs/react";
 import cx from "classnames";
 import * as React from "react";
-import { TippyCallbackRef } from "../../hooks/UseTippyInstance";
 import styles from "./Tooltip.module.css";
+import { Popover, PopoverProps } from "../popover/Popover";
 
 type TooltipVariant = "info" | "warning" | "error";
-
-interface TippyProps
-  extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
-  tippyRef?: TippyCallbackRef<HTMLDivElement>;
-}
-
-export interface TooltipProps extends TippyProps {
-  variant?: TooltipVariant;
-  label: string;
-  multiRow?: boolean;
-}
 
 const variantIcons = {
   info: stenaInfoCircle,
@@ -32,7 +18,18 @@ const variantIcons = {
   error: stenaExclamationTriangle,
 };
 
-const textComponent = (label: string, maxWidth: number) => (
+export interface TooltipProps
+  extends Partial<Omit<PopoverProps, "theme" | "render">> {
+  label: string;
+  maxWidth?: number;
+  variant?: TooltipVariant;
+  children: JSX.Element;
+}
+
+const TooltipText: React.FC<{ label: string; maxWidth?: number }> = ({
+  label,
+  maxWidth,
+}) => (
   <Indent spacing={0.5} display={"inline-block"}>
     <Text
       color="white"
@@ -46,27 +43,17 @@ const textComponent = (label: string, maxWidth: number) => (
 );
 
 export const Tooltip: React.FC<TooltipProps> = ({
-  visible,
-  trigger = "mouseenter",
-  children,
-  tippyRef,
-  delay = 0,
-  variant,
-  content,
-  multiRow,
-  arrow = true,
   label,
-  ...tippyProps
+  maxWidth,
+  variant,
+  children,
+  ...popoverProps
 }) => {
   return (
-    <TippyComponent
-      interactive
-      className={styles.noPadding}
-      trigger={visible !== undefined ? undefined : trigger}
-      visible={visible}
-      theme={"dark"}
-      delay={delay}
-      arrow={arrow}
+    <Popover
+      theme="dark"
+      {...popoverProps}
+      disablePadding={true}
       content={
         <Row spacing={0.5} indent={0.5}>
           {variant ? (
@@ -74,16 +61,15 @@ export const Tooltip: React.FC<TooltipProps> = ({
               <div className={cx(styles.iconWrapper, styles[variant])}>
                 <Icon icon={variantIcons[variant]} size={16} />
               </div>
-              {textComponent(label, multiRow ? 100 : -1)}
+              <TooltipText label={label} maxWidth={maxWidth} />
             </>
           ) : (
-            textComponent(label, multiRow ? 100 : -1)
+            <TooltipText label={label} maxWidth={maxWidth} />
           )}
         </Row>
       }
-      {...tippyProps}
     >
-      <div ref={tippyRef}>{children}</div>
-    </TippyComponent>
+      {children}
+    </Popover>
   );
 };
