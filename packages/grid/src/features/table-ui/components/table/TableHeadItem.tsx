@@ -54,7 +54,9 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
       : undefined;
 
     const hasOnlyChildren = !label && !arrow && !infoIconTooltipText;
-
+    const borderTop = selected
+      ? "2px solid var(--lhds-color-blue-500)"
+      : "2px solid transparent";
     return (
       <Row
         height={"100%"}
@@ -63,9 +65,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         overflow={overflow}
         justifyContent={alignRight ? "flex-end" : "flex-start"}
         style={{
-          borderBottom: selected
-            ? "2px solid var(--lhds-color-blue-500)"
-            : "2px solid transparent",
+          borderTop: borderTop,
         }}
         {...boxProps}
       >
