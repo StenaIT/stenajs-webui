@@ -1,7 +1,7 @@
 .button {
   /* Theme vars */
   --swui-button-line-height: 1.6rem;
-  --swui-button-font-weight: 400;
+  --swui-button-font-weight: var(--swui-font-weight-text-bold);
   --swui-button-text-size: var(--swui-font-size-medium);
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
@@ -10,6 +10,7 @@
   --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
 
   /* Text */
+
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-text-color-active: var(--swui-button-text-color);
