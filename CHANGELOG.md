@@ -1,3 +1,16 @@
+# v17.30.1 (Thu Jan 12 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Correct time offset when calendar focuses on date [#543](https://github.com/StenaIT/stenajs-webui/pull/543) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v17.30.0 (Tue Dec 20 2022)
 
 #### 🚀 Enhancement
