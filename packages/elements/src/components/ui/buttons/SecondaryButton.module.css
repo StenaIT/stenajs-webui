@@ -3,9 +3,9 @@
 
   /* Text */
   --swui-button-text-color: var(--lhds-color-blue-600);
-  --swui-button-text-color-hover: var(--lhds-color-ui-700);
-  --swui-button-text-color-focus: var(--lhds-color-ui-700);
-  --swui-button-text-color-active: var(--lhds-color-blue-500);
+  --swui-button-text-color-hover: var(--lhds-color-blue-600);
+  --swui-button-text-color-focus: var(--lhds-color-blue-600);
+  --swui-button-text-color-active: var(--lhds-color-blue-600);
 
   --swui-button-danger-text-color-active: var(--lhds-color-red-500);
   --swui-button-success-text-color-active: var(--lhds-color-green-600);
