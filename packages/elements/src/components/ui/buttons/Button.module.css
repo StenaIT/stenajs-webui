@@ -184,7 +184,7 @@
     --current-background-color: var(--swui-button-background-color-hover);
     --current-border-color: var(--swui-button-border-color-hover);
     --current-icon-color: var(--swui-button-icon-color-hover);
-    --current-text-color: var(--lhds-color-blue-500);
+    --current-text-color: var(--swui-button-text-color);
     --current-box-shadow: var(--swui-button-box-shadow-hover);
   }
 
