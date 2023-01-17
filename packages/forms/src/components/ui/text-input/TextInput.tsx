@@ -48,6 +48,8 @@ export interface TextInputProps
   wrapperClassName?: string;
   variant?: TextInputVariant;
   hideBorder?: boolean;
+  showBorderContentLeft?: boolean;
+  showBorderContentRight?: boolean;
   selectAllOnMount?: boolean;
   moveCursorToEndOnMount?: boolean;
   onDone?: (value: string) => void;
@@ -85,6 +87,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     onMove,
     onChange,
     onKeyDown,
+    showBorderContentLeft,
+    showBorderContentRight,
     hideBorder,
     onFocus,
     onBlur,
@@ -142,7 +146,12 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         onClick={onClickLeft}
       />
       <input
-        className={cx(styles.input, className)}
+        className={cx(
+          showBorderContentLeft && styles.contentLeft,
+          showBorderContentRight && styles.contentRight,
+          styles.input,
+          className
+        )}
         type={"text"}
         disabled={disabled}
         ref={refToUse}

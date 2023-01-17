@@ -115,7 +115,7 @@ export const DateInput: React.FC<DateInputProps> = ({
           contentRight={
             <Row alignItems={"center"}>
               <FlatButton
-                size={"small"}
+                size={"medium"}
                 disabled={disabled}
                 leftIcon={stenaCalendar}
                 onClick={showCalendar}
@@ -132,6 +132,8 @@ export const DateInput: React.FC<DateInputProps> = ({
           variant={variant}
           min={minDate}
           max={maxDate}
+          disableContentPadding={true}
+          showBorderContentRight={true}
         />
       </Popover>
     </Box>

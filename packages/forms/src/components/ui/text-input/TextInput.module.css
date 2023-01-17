@@ -95,6 +95,13 @@
     }
   }
 
+  .contentLeft {
+    border-left: 1px solid var(--current-border-color);
+  }
+
+  .contentRight {
+    border-right: 1px solid var(--current-border-color);
+  }
   /*
    * States
    */
