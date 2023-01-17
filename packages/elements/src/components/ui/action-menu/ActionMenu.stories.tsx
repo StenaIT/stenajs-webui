@@ -50,7 +50,7 @@ export const Standard = () => (
       target={"_blank"}
     />
     <ActionMenuLink
-      label={"Open new window"}
+      label={"Open new window disabled"}
       disabled
       leftIcon={faExternalLinkAlt}
       href={"https://www.google.com"}
@@ -135,7 +135,7 @@ export const Standard = () => (
     />
     <ActionMenuItemContent
       disabled
-      label={"Disabled full width"}
+      label={"Bottom full width disabled"}
       leftIcon={faAirFreshener}
       bottom={
         <ButtonGroup>

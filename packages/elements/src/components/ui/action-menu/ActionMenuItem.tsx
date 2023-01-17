@@ -49,11 +49,7 @@ export const ActionMenuItem = forwardRef<
   return (
     <button
       {...props}
-      className={cx(
-        styles.actionMenuItem,
-        className,
-        styles[props.disabled ? "disabled" : variant]
-      )}
+      className={cx(styles.actionMenuItem, className, styles[variant])}
       onKeyDown={onKeyDown}
       onClick={props.disabled ? undefined : onClickHandler}
       ref={innerRef}

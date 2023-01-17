@@ -78,6 +78,11 @@
   }
 
   &.standard {
+    &:disabled:focus-visible {
+      --current-item-background: var(
+        --swui-action-menu-item-background-disabled-focus
+      );
+    }
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--swui-action-menu-item-background-hover);
       --current-item-label-color: var(
@@ -95,17 +100,17 @@
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
       --current-item-icon-color: var(--swui-action-menu-icon-color-focus);
     }
+  }
+
+  &.danger {
+    --current-item-icon-color: var(--lhds-color-red-500);
+    --current-item-label-color: var(--lhds-color-red-600);
 
     &:disabled:focus-visible {
       --current-item-background: var(
         --swui-action-menu-item-background-disabled-focus
       );
     }
-  }
-
-  &.danger {
-    --current-item-icon-color: var(--lhds-color-red-500);
-    --current-item-label-color: var(--lhds-color-red-600);
 
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--lhds-color-red-50);
@@ -121,12 +126,6 @@
       --current-item-icon-color: var(--lhds-color-red-500);
 
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
-    }
-
-    &:disabled:focus-visible {
-      --current-item-background: var(
-        --swui-action-menu-item-background-disabled-focus
-      );
     }
   }
 
@@ -134,6 +133,12 @@
     --current-item-icon-color: var(--lhds-color-green-600);
     --current-item-label-color: var(--lhds-color-green-600);
 
+    &:disabled:focus-visible {
+      --current-item-background: var(
+        --swui-action-menu-item-background-disabled-focus
+      );
+    }
+
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--lhds-color-green-50);
       --current-item-icon-color: var(--lhds-color-green-600);
@@ -148,12 +153,6 @@
       --current-item-icon-color: var(--lhds-color-green-600);
 
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
-    }
-
-    &:disabled:focus-visible {
-      --current-item-background: var(
-        --swui-action-menu-item-background-disabled-focus
-      );
     }
   }
 }
