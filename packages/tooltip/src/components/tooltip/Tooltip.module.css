@@ -4,9 +4,9 @@
 
 .iconWrapper {
   /* State vars */
-  --current-bg-color: var(--lhds-color-blue-50);
-  --current-border-color: var(--swui-primary-action-color);
-  --current-icon-color: red;
+  --current-bg-color: transparent;
+  --current-border-color: var(--lhds-color-ui-50);
+  --current-icon-color: var(--lhds-color-ui-50);
 
   /* Styling */
   display: inline-flex;
@@ -14,10 +14,9 @@
   white-space: nowrap;
   background-color: var(--current-bg-color);
   border: 1px solid var(--current-border-color);
-  border-radius: 4px;
-  padding: 4px;
+  border-radius: var(--swui-border-radius);
+  padding: calc(var(--swui-metrics-spacing) * 0.5);
   height: 16px;
-
   align-items: flex-start;
 
   svg {

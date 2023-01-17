@@ -9,6 +9,7 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./Tooltip.module.css";
 import { Popover, PopoverProps } from "../popover/Popover";
+import { cssColor } from "@stenajs-webui/theme";
 
 type TooltipVariant = "info" | "warning" | "error";
 
@@ -32,7 +33,7 @@ const TooltipText: React.FC<{ label: string; maxWidth?: number }> = ({
 }) => (
   <Indent spacing={0.5} display={"inline-block"}>
     <Text
-      color="white"
+      color={cssColor("--lhds-color-ui-50")}
       size={"small"}
       variant="bold"
       style={{ display: "flex", maxWidth: maxWidth }}

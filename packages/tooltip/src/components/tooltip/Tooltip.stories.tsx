@@ -66,10 +66,7 @@ export const Variants = () => (
       <Text color={cssColor("--lhds-color-red-700")}>error</Text>
     </Tooltip>
 
-    <Tooltip
-      label={"We need to inform about many things. Please read this."}
-      maxWidth={200}
-    >
+    <Tooltip label={"Error, shame! Lorem ipsum. Lorem ipsum"} maxWidth={100}>
       <Text>Multi row</Text>
     </Tooltip>
 
@@ -78,7 +75,7 @@ export const Variants = () => (
       variant={"warning"}
       maxWidth={200}
     >
-      <Text>Multi row warning</Text>
+      <Text color={cssColor("--lhds-color-orange-700")}>Multi row warning</Text>
     </Tooltip>
   </Row>
 );
