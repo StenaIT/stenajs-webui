@@ -1,15 +1,15 @@
 import { Column, Indent, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
-import { MultiSelectWithOverflow } from "./MultiSelectWithOverflow";
+import { OverflowingMultiSelect } from "./OverflowingMultiSelect";
 
 export default {
-  title: "select/MultiSelectWithOverflow",
-  component: MultiSelectWithOverflow,
+  title: "select/OverflowingMultiSelect",
+  component: OverflowingMultiSelect,
 };
 
 export const Standard = () => (
   <div style={{ width: "400px" }}>
-    <MultiSelectWithOverflow
+    <OverflowingMultiSelect
       options={[
         {
           value: "Mattias",
@@ -31,7 +31,7 @@ export const Standard = () => (
 export const WithVariant = () => (
   <Column width={400} gap={2}>
     {(["error", "warning", "success"] as const).map((variant) => (
-      <MultiSelectWithOverflow
+      <OverflowingMultiSelect
         variant={variant}
         options={[
           {
@@ -54,7 +54,7 @@ export const WithVariant = () => (
 
 export const LongLabels = () => (
   <div style={{ width: "400px" }}>
-    <MultiSelectWithOverflow
+    <OverflowingMultiSelect
       options={[
         {
           value: "lorem",
@@ -78,7 +78,7 @@ export const WithGroupHeadings = () => (
   <div style={{ width: "400px" }}>
     <Indent num={4}>
       <Spacing num={4}>
-        <MultiSelectWithOverflow
+        <OverflowingMultiSelect
           options={[
             {
               label: "Group heading 1",
@@ -115,7 +115,7 @@ export const WithGroupHeadings = () => (
 
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
-    <MultiSelectWithOverflow
+    <OverflowingMultiSelect
       options={[
         {
           value: "Mattias",

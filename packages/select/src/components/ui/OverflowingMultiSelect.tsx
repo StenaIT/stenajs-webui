@@ -3,7 +3,7 @@ import { MultiSelect, MultiSelectProps } from "./MultiSelect";
 import { memo, ReactElement } from "react";
 import { components, ValueContainerProps } from "react-select";
 
-export function MultiSelectWithOverflow<T>(props: MultiSelectProps<T>) {
+export function OverflowingMultiSelect<T>(props: MultiSelectProps<T>) {
   return (
     <MultiSelect
       hideSelectedOptions={false}
