@@ -1,3 +1,15 @@
+# v17.30.2 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- Add OverflowingMultiSelect component [#547](https://github.com/StenaIT/stenajs-webui/pull/547) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.3 (Tue Aug 30 2022)
 
 #### 🏠 Internal
