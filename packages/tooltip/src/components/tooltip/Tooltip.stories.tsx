@@ -49,7 +49,7 @@ export const WithButton = () => (
 );
 
 export const Variants = () => (
-  <Row indent={10} gap={20}>
+  <Row justifyContent={"space-between"} spacing={10}>
     <Tooltip label={"Standard"}>
       <Text>standard</Text>
     </Tooltip>
@@ -66,16 +66,18 @@ export const Variants = () => (
       <Text color={cssColor("--lhds-color-red-700")}>error</Text>
     </Tooltip>
 
-    <Tooltip label={"Error, shame! Lorem ipsum. Lorem ipsum"} maxWidth={100}>
-      <Text>Multi row</Text>
+    <Tooltip label={"Error, shame! Lorem ipsum. Lorem ipsum"} maxWidth={70}>
+      <Text>Multi row fixed witdh 70</Text>
     </Tooltip>
 
     <Tooltip
       label={"We need to inform about many things. Please read this."}
       variant={"warning"}
-      maxWidth={200}
+      maxWidth={100}
     >
-      <Text color={cssColor("--lhds-color-orange-700")}>Multi row warning</Text>
+      <Text color={cssColor("--lhds-color-orange-700")}>
+        Multi row fixed width 100 warning
+      </Text>
     </Tooltip>
   </Row>
 );
