@@ -1,0 +1,24 @@
+.inputFieldButton {
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+
+  width: 24px;
+  height: 24px;
+
+  svg {
+    color: var(--lhds-color-blue-600);
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.inputFieldButton:active {
+  background-color: var(--lhds-color-blue-200);
+  border-radius: 2px;
+}
+
+.inputFieldButton:hover {
+  border-radius: 2px;
+  background-color: var(--lhds-color-blue-200);
+}
