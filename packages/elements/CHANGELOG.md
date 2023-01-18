@@ -1,3 +1,15 @@
+# v17.30.3 (Wed Jan 18 2023)
+
+#### 🐛 Bug Fix
+
+- Make PrimaryButton and SecondaryButton text bold and adjust success and danger variants for better contrast [#546](https://github.com/StenaIT/stenajs-webui/pull/546) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
 # v17.30.0 (Tue Dec 20 2022)
 
 #### 🚀 Enhancement
