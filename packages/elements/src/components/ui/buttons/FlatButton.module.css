@@ -110,7 +110,6 @@
   --swui-button-border-color-active: transparent;
   --swui-button-border-color-disabled: transparent;
   --swui-button-border-radius-icon-only: 50%;
-  --swui-button-border-radius-icon-only-hover: 2px;
 
   --swui-button-danger-border-color: var(--swui-button-border-color);
   --swui-button-danger-border-color-hover: var(

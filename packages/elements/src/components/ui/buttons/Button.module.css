@@ -167,7 +167,7 @@
 
   &.small {
     --current-line-height: 1.6rem;
-    --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2);
+    --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2 - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
     --current-text-size: 1.2rem;
   }
@@ -185,7 +185,6 @@
     --current-icon-color: var(--swui-button-icon-color-hover);
     --current-text-color: var(--swui-button-text-color-hover);
     --current-box-shadow: var(--swui-button-box-shadow-hover);
-    border-radius: var(--swui-button-border-radius-icon-only-hover);
   }
 
   &:focus {
@@ -195,7 +194,6 @@
     --current-icon-color: var(--swui-button-icon-color-focus);
     --current-text-color: var(--swui-button-text-color-focus);
     --current-box-shadow: var(--swui-button-box-shadow-focus);
-    border-radius: var(--swui-button-border-radius-icon-only-hover);
   }
 
   &:active {
@@ -204,7 +202,6 @@
     --current-icon-color: var(--swui-button-icon-color-active);
     --current-text-color: var(--swui-button-text-color-active);
     --current-box-shadow: var(--swui-button-box-shadow-active);
-    border-radius: var(--swui-button-border-radius-icon-only-hover);
   }
 
   &:disabled {
