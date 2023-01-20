@@ -24,7 +24,7 @@ export const Standard = () => (
               alert("woop woop");
             }}
           />
-          <Space />
+          <Space key={size + "1"} />
         </>
       ))}
     </div>
