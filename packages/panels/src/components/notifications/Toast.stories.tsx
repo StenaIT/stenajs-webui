@@ -1,19 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
-import {
-  FlatButton,
-  Link,
-  stenaCalendarManage,
-  stenaInfoMegaphone,
-  stenaSms,
-  Tag,
-} from "@stenajs-webui/elements";
+import { Link, stenaInfoMegaphone } from "@stenajs-webui/elements";
 import { Toast, ToastProps } from "./Toast";
-import { Box, Column, Row, Txt } from "@stenajs-webui/core";
+import { Box, Column, Txt } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
-import { Notification } from "./Notification";
-import { NotificationHeader } from "./NotificationHeader";
-import { NotificationBody } from "./NotificationBody";
 import { Story } from "@storybook/react";
 import {
   colorListControl,
@@ -24,7 +14,7 @@ import {
 } from "../../storybook-helpers/storybook-controls";
 
 export default {
-  title: "panels/Toast",
+  title: "panels/Notifications/Toast",
   component: Toast,
   parameters: {
     backgrounds: {
@@ -37,7 +27,6 @@ export default {
     iconColor: colorListControl,
     iconAriaLabel: textControl,
     contentLeft: hideControl,
-    contentRight: hideControl,
     children: hideControl,
     width: widthControl,
     onClose: hideControl,
@@ -175,52 +164,3 @@ export const Clickable = () => {
     </Box>
   );
 };
-
-export const HeaderOnly = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
-    <Notification text={"24 nov 06:10"} />
-  </Box>
-);
-
-export const InPanel = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
-    <NotificationHeader
-      text={"24 nov 06:10"}
-      icon={stenaCalendarManage}
-      iconAriaLabel={"Date"}
-      contentRight={<Tag label={"Confirmed"} variant={"success"} />}
-    />
-    <NotificationBody gap={2} alignItems={"flex-start"}>
-      <Txt>1 booking confirmed</Txt>
-      <Link variant={"bold"} size={"small"}>
-        GOFR 2022-09-06
-      </Link>
-      <Txt>More information required</Txt>
-      <Row alignSelf={"flex-end"}>
-        <FlatButton label={"Full message"} leftIcon={stenaSms} />
-      </Row>
-    </NotificationBody>
-  </Box>
-);
-
-export const InPanelNotification = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
-    <Notification
-      text={"24 nov 06:10"}
-      icon={stenaCalendarManage}
-      iconAriaLabel={"Date"}
-      contentRight={<Tag label={"Confirmed"} variant={"success"} />}
-    >
-      <Box gap={2} alignItems={"flex-start"}>
-        <Txt>1 booking confirmed</Txt>
-        <Link variant={"bold"} size={"small"}>
-          GOFR 2022-09-06
-        </Link>
-        <Txt>More information required</Txt>
-        <Row alignSelf={"flex-end"}>
-          <FlatButton label={"Full message"} leftIcon={stenaSms} />
-        </Row>
-      </Box>
-    </Notification>
-  </Box>
-);

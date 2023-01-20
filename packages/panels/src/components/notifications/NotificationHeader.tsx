@@ -2,10 +2,13 @@ import { Box, Row, Txt } from "@stenajs-webui/core";
 import * as React from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@stenajs-webui/elements";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface NotificationHeaderProps {
   /** Text. */
   text: string;
+  /** Timestamp. */
+  timestamp?: string;
   /** Icon. */
   icon?: IconDefinition;
   /** Icon description for accessibility. */
@@ -20,6 +23,7 @@ export interface NotificationHeaderProps {
 
 export const InnerNotificationHeader: React.FC<NotificationHeaderProps> = ({
   text,
+  timestamp,
   icon,
   iconAriaLabel,
   iconColor,
@@ -40,8 +44,13 @@ export const InnerNotificationHeader: React.FC<NotificationHeaderProps> = ({
         aria-label={iconAriaLabel}
       />
     )}
-    <Box minHeight={20} justifyContent={"center"} flex={1}>
+    <Box minHeight={20} justifyContent={"center"} flex={1} gap={0.5}>
       <Txt variant={"bold"}>{text}</Txt>
+      {timestamp && (
+        <Txt size={"small"} color={cssColor("--lhds-color-ui-600")}>
+          {timestamp}
+        </Txt>
+      )}
     </Box>
     {contentRight}
   </Row>

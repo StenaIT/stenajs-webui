@@ -24,13 +24,9 @@ export const Toast: React.FC<ToastProps> = ({
   onClickAriaLabel = "Open notification",
   onClose,
   disableClose = false,
-  text,
-  icon,
-  iconAriaLabel,
-  iconColor,
-  contentLeft,
   children,
   width = 264,
+  ...headerProps
 }) => (
   <Box
     borderRadius={8}
@@ -46,13 +42,7 @@ export const Toast: React.FC<ToastProps> = ({
       spacing
       className={cx({ [styles.nonClickable]: onClick })}
     >
-      <ToastHeader
-        text={text}
-        icon={icon}
-        iconAriaLabel={iconAriaLabel}
-        iconColor={iconColor}
-        contentLeft={contentLeft}
-      />
+      <ToastHeader {...headerProps} />
       {!disableClose && (
         <Box
           flex={"none"}
