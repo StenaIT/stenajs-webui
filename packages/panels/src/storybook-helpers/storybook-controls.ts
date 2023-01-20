@@ -64,12 +64,6 @@ export const widthControl = {
   control: { type: "range", min: 200, max: 320, step: 1 },
 };
 
-export const disabledControl = {
-  control: {
-    disable: true,
-  },
-};
-
 export const textControl = { control: "text" };
 
 export const hideControl = { control: "none" };

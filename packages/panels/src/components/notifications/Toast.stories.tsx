@@ -7,11 +7,11 @@ import { cssColor } from "@stenajs-webui/theme";
 import { Story } from "@storybook/react";
 import {
   colorListControl,
-  disabledControl,
   hideControl,
   textControl,
   widthControl,
 } from "../../storybook-helpers/storybook-controls";
+import { formatDistance } from "date-fns";
 
 export default {
   title: "panels/Notifications/Toast",
@@ -29,8 +29,8 @@ export default {
     contentLeft: hideControl,
     children: hideControl,
     width: widthControl,
+    maxWidth: widthControl,
     onClose: hideControl,
-    disableClose: disabledControl,
     onClick: hideControl,
     onClickAriaLabel: textControl,
   },
@@ -40,15 +40,19 @@ export const Overview: Story<ToastProps> = (props) => <Toast {...props} />;
 Overview.args = {
   text: "Something happened",
   icon: stenaInfoMegaphone,
+  onClose: () => {},
 };
 
-export const Minimal = () => <Toast text={"You need at least some text"} />;
+export const Minimal = () => (
+  <Toast text={"You need at least some text"} onClose={() => {}} />
+);
 
 export const Icon = () => (
   <Toast
     text={"Hey, listen!"}
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
+    onClose={() => {}}
   />
 );
 
@@ -58,6 +62,7 @@ export const IconColour = () => (
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
     iconColor={cssColor("--lhds-color-blue-500")}
+    onClose={() => {}}
   />
 );
 
@@ -86,7 +91,6 @@ export const NoCloseButton = () => (
     text={"Can't close me"}
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
-    disableClose
   />
 );
 
@@ -97,6 +101,17 @@ export const LongText = () => (
     }
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
+    onClose={() => {}}
+  />
+);
+
+export const Timestamp = () => (
+  <Toast
+    text={"Hey, listen!"}
+    icon={stenaInfoMegaphone}
+    iconAriaLabel={"Information"}
+    timestamp={`${formatDistance(new Date(), new Date())} ago`}
+    onClose={() => {}}
   />
 );
 
@@ -110,6 +125,7 @@ export const LeftContent = () => (
         width={20}
       />
     }
+    onClose={() => {}}
   />
 );
 
@@ -118,6 +134,7 @@ export const Content = () => (
     text={"More content"}
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
+    onClose={() => {}}
   >
     <Column gap={2} alignItems={"flex-start"}>
       <Txt>This thing just happened</Txt>

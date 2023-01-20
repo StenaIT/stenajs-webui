@@ -1,7 +1,7 @@
 import { Box, Row, Txt } from "@stenajs-webui/core";
 import * as React from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Icon } from "@stenajs-webui/elements";
+import { FlatButton, Icon, stenaTimes } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 
 export interface NotificationHeaderProps {
@@ -19,9 +19,11 @@ export interface NotificationHeaderProps {
   contentLeft?: React.ReactNode;
   /** Right content. */
   contentRight?: React.ReactNode;
+  /** What happens on clicking close. */
+  onClose?: () => void;
 }
 
-export const InnerNotificationHeader: React.FC<NotificationHeaderProps> = ({
+export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
   text,
   timestamp,
   icon,
@@ -29,37 +31,47 @@ export const InnerNotificationHeader: React.FC<NotificationHeaderProps> = ({
   iconColor,
   contentLeft,
   contentRight,
+  onClose,
 }) => (
-  <Row indent={2} spacing gap={2} flex={1} alignItems={"flex-start"}>
-    {contentLeft && (
-      <Box minHeight={20} justifyContent={"center"}>
-        {contentLeft}
+  <Row alignItems={"flex-start"} indent spacing>
+    <Row indent={2} spacing gap={2} flex={1} alignItems={"flex-start"}>
+      {contentLeft && (
+        <Box minHeight={20} justifyContent={"center"}>
+          {contentLeft}
+        </Box>
+      )}
+      {!contentLeft && icon && (
+        <Icon
+          icon={icon}
+          size={20}
+          color={iconColor}
+          aria-label={iconAriaLabel}
+        />
+      )}
+      <Box minHeight={20} justifyContent={"center"} flex={1} gap={0.5}>
+        <Txt variant={"bold"}>{text}</Txt>
+        {timestamp && (
+          <Txt size={"small"} color={cssColor("--lhds-color-ui-600")}>
+            {timestamp}
+          </Txt>
+        )}
+      </Box>
+      {contentRight}
+    </Row>
+    {onClose && (
+      <Box
+        flex={"none"}
+        justifyContent={"center"}
+        style={{
+          height: "calc(20px + 2 * var(--swui-metrics-spacing))",
+        }}
+      >
+        <FlatButton
+          leftIcon={stenaTimes}
+          onClick={onClose}
+          aria-label={"Close"}
+        />
       </Box>
     )}
-    {!contentLeft && icon && (
-      <Icon
-        icon={icon}
-        size={20}
-        color={iconColor}
-        aria-label={iconAriaLabel}
-      />
-    )}
-    <Box minHeight={20} justifyContent={"center"} flex={1} gap={0.5}>
-      <Txt variant={"bold"}>{text}</Txt>
-      {timestamp && (
-        <Txt size={"small"} color={cssColor("--lhds-color-ui-600")}>
-          {timestamp}
-        </Txt>
-      )}
-    </Box>
-    {contentRight}
   </Row>
-);
-
-export const NotificationHeader: React.FC<NotificationHeaderProps> = (
-  props
-) => (
-  <Box indent spacing>
-    <InnerNotificationHeader {...props} />
-  </Box>
 );

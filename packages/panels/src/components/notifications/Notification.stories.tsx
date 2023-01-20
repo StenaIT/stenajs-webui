@@ -1,9 +1,11 @@
 import * as React from "react";
+import { useState } from "react";
 import {
   FlatButton,
   Link,
   stenaCalendarManage,
   stenaCheck,
+  stenaInfoCircle,
   stenaInfoMegaphone,
   stenaSms,
   Tag,
@@ -37,6 +39,7 @@ export default {
     contentLeft: hideControl,
     contentRight: hideControl,
     children: hideControl,
+    onClose: hideControl,
   },
 };
 
@@ -54,14 +57,12 @@ Overview.args = {
     <Column alignItems={"flex-start"}>
       <Link variant={"bold"}>76123456</Link>
       <Space />
-      <Txt size={"small"}>
-        A UK Customs Procedure must be set prior to check-in. Enter the required
-        Import data after the customs procedure is set.
-      </Txt>
+      <Txt size={"small"}>Customer reference required</Txt>
       <Space num={2} />
-      <Link variant={"bold"}>HKHA 2023-01-20 14:15</Link>
+      <Link variant={"bold"}>GOFR 2023-01-20 09:00</Link>
     </Column>
   ),
+  onClose: () => {},
 };
 
 export const Minimal = () => (
@@ -103,6 +104,17 @@ export const LongText = () => (
   </Box>
 );
 
+export const Timestamp = () => (
+  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+    <Notification
+      text={"Hey, listen!"}
+      icon={stenaInfoMegaphone}
+      iconAriaLabel={"Information"}
+      timestamp={`${formatDistance(new Date(), new Date())} ago`}
+    />
+  </Box>
+);
+
 export const LeftContent = () => (
   <Box width={300} background={cssColor("--lhds-color-ui-50")}>
     <Notification
@@ -118,24 +130,18 @@ export const LeftContent = () => (
   </Box>
 );
 
-export const Content = () => (
+export const RightContent = () => (
   <Box width={300} background={cssColor("--lhds-color-ui-50")}>
     <Notification
-      text={"More content"}
-      icon={stenaInfoMegaphone}
-      iconAriaLabel={"Information"}
-    >
-      <Column gap={2} alignItems={"flex-start"}>
-        <Txt>This thing just happened</Txt>
-        <Link variant={"bold"} size={"small"}>
-          Read all about it
-        </Link>
-      </Column>
-    </Notification>
+      text={"24 nov 06:10"}
+      icon={stenaCalendarManage}
+      iconAriaLabel={"Date"}
+      contentRight={<Tag label={"Confirmed"} variant={"success"} />}
+    />
   </Box>
 );
 
-export const InPanelNotification = () => (
+export const Content = () => (
   <Box width={300} background={cssColor("--lhds-color-ui-50")}>
     <Notification
       text={"24 nov 06:10"}
@@ -156,3 +162,36 @@ export const InPanelNotification = () => (
     </Notification>
   </Box>
 );
+
+export const CloseFunction = () => {
+  const [showNotification, setShowNotification] = useState(true);
+
+  const onClose = () => {
+    setShowNotification(false);
+    setTimeout(() => setShowNotification(true), 1000);
+  };
+
+  return (
+    showNotification && (
+      <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+        <Notification
+          text={"Temporary timetable changes"}
+          timestamp={`${formatDistance(new Date(), new Date())} ago`}
+          icon={stenaInfoCircle}
+          iconAriaLabel={"Information"}
+          onClose={onClose}
+        >
+          <Box gap={2} alignItems={"flex-start"}>
+            <Txt>
+              Please be advised that there is essential maintenance work being
+              performed on...
+            </Txt>
+            <Row alignSelf={"flex-end"}>
+              <FlatButton label={"Full message"} leftIcon={stenaSms} />
+            </Row>
+          </Box>
+        </Notification>
+      </Box>
+    )
+  );
+};
