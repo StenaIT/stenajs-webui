@@ -1,0 +1,35 @@
+.clickable {
+  /* Theme vars */
+  --swui-toast-border-color: transparent;
+  --swui-toast-item-border-color-hover: var(--lhds-color-blue-500);
+
+  --current-border-color: var(--swui-toast-border-color);
+
+  /* Styling */
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--current-border-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background-color: transparent;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    --current-border-color: var(--swui-toast-item-border-color-hover);
+  }
+}
+
+.nonClickable {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+
+  a, button {
+    pointer-events: auto;
+  }
+}

@@ -33,3 +33,4 @@ export * from "./components/sidebar-menu/SidebarMenuLink";
 export * from "./components/sidebar-menu/SidebarMenuCollapsible";
 export * from "./components/sidebar-menu/SidebarMenuSeparator";
 export * from "./components/selected-items-actions-panel/SelectedItemsActionsPanel";
+export * from "./components/toasts/Toast";
