@@ -12,7 +12,7 @@ export default {
 
 export const Standard = () => (
   <>
-    <Row justifyContent={"space-between"} spacing={10} background="red">
+    <Row justifyContent={"space-between"} spacing={10}>
       <Tooltip placement={"bottom"} label={"Nice content on bottom"}>
         <Text>Hover me</Text>
       </Tooltip>
