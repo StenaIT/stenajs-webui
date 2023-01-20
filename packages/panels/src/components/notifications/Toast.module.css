@@ -29,7 +29,8 @@
   z-index: 1;
   pointer-events: none;
 
-  a, button {
+  a,
+  button {
     pointer-events: auto;
   }
 }
