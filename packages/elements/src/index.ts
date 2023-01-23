@@ -14,6 +14,7 @@ export * from "./components/ui/buttons/PrimaryButton";
 export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
 export * from "./components/ui/buttons/common/ButtonContent";
+export * from "./components/ui/buttons/input-field/InputFieldButton";
 export * from "./components/ui/button-links/FlatButtonLink";
 export * from "./components/ui/button-links/PrimaryButtonLink";
 export * from "./components/ui/button-links/SecondaryButtonLink";
