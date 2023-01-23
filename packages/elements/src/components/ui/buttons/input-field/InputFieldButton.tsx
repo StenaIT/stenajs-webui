@@ -1,3 +1,4 @@
+import { Row } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
@@ -14,14 +15,16 @@ export interface InputFieldProps {
 export const InputFieldButton = forwardRef<HTMLButtonElement, InputFieldProps>(
   function InputFieldButton({ className, icon, disabled, onClick }, ref) {
     return (
-      <button
-        ref={ref}
-        className={cx(styles.inputFieldButton, className)}
-        disabled={disabled}
-        onClick={onClick}
-      >
-        {icon && <Icon icon={icon} size={16} />}
-      </button>
+      <Row alignItems={"center"}>
+        <button
+          ref={ref}
+          className={cx(styles.inputFieldButton, className)}
+          disabled={disabled}
+          onClick={onClick}
+        >
+          {icon && <Icon icon={icon} size={16} />}
+        </button>
+      </Row>
     );
   }
 );

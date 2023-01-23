@@ -1,4 +1,4 @@
-import { Row, Space } from "@stenajs-webui/core";
+import { Row } from "@stenajs-webui/core";
 import { TextInput, ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { format } from "date-fns";
 import * as React from "react";
@@ -12,7 +12,7 @@ import {
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
-import { Icon, stenaCalendar } from "@stenajs-webui/elements";
+import { Icon, InputFieldButton, stenaCalendar } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
@@ -142,7 +142,6 @@ export function DateRangeInput<T>({
     >
       <Row alignItems={"center"}>
         <TextInput
-          iconLeft={stenaCalendar}
           onFocus={showCalendarStartDate}
           value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}
@@ -151,14 +150,25 @@ export function DateRangeInput<T>({
           inputRef={startDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}
+          contentLeft={
+            <InputFieldButton
+              disabled={disabled}
+              icon={stenaCalendar}
+              onClick={showCalendarStartDate}
+            />
+          }
+          disableContentPadding={true}
+          showBorderContentLeft={true}
         />
-        <Space />
-        <Icon
-          icon={faLongArrowAltRight}
-          color={cssColor("--lhds-color-ui-500")}
-          size={14}
-        />
-        <Space />
+
+        <Row indent={1}>
+          <Icon
+            icon={faLongArrowAltRight}
+            color={cssColor("--lhds-color-ui-500")}
+            size={14}
+          />
+        </Row>
+
         <TextInput
           iconLeft={stenaCalendar}
           onFocus={showCalendarEndDate}
@@ -169,6 +179,15 @@ export function DateRangeInput<T>({
           inputRef={endDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}
+          contentLeft={
+            <InputFieldButton
+              disabled={disabled}
+              icon={stenaCalendar}
+              onClick={showCalendarEndDate}
+            />
+          }
+          disableContentPadding={true}
+          showBorderContentLeft={true}
         />
       </Row>
     </Popover>

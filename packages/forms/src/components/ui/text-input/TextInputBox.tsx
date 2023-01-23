@@ -25,6 +25,8 @@ export interface TextInputBoxProps
     | "iconLeft"
     | "onClickLeft"
     | "onClickRight"
+    | "showBorderContentLeft"
+    | "showBorderContentRight"
   > {
   children?: ReactNode;
 }
@@ -39,6 +41,8 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
   disableContentPadding,
   disableContentPaddingLeft,
   disableContentPaddingRight,
+  showBorderContentLeft,
+  showBorderContentRight,
   iconRight,
   iconLeft,
   onClickLeft,
@@ -77,7 +81,15 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         spaceOnLeft
         onClick={onClickLeft}
       />
-      <Row alignItems={"center"}>{children}</Row>
+      <Row
+        alignItems={"center"}
+        className={cx(
+          showBorderContentLeft && styles.contentLeft,
+          showBorderContentRight && styles.contentRight
+        )}
+      >
+        {children}
+      </Row>
       <TextInputIcon
         content={currentContentRight}
         disableContentPadding={disableContentPadding}

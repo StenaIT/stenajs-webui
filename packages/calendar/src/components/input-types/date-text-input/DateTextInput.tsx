@@ -1,5 +1,5 @@
-import { Box, Omit, Row } from "@stenajs-webui/core";
-import { FlatButton, stenaCalendar } from "@stenajs-webui/elements";
+import { Box, Omit } from "@stenajs-webui/core";
+import { InputFieldButton, stenaCalendar } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
@@ -52,6 +52,7 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
   closeOnCalendarSelectDate = true,
   dateFormat = DateFormats.fullDate,
   disableCalender = false,
+  disabled,
   onValueChange,
   placeholder = "yyyy-mm-dd",
   portalTarget,
@@ -139,14 +140,11 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
           disableContentPaddingRight
           contentRight={
             !hideCalenderIcon ? (
-              <Row alignItems={"center"} indent={0.5}>
-                <FlatButton
-                  size={"small"}
-                  disabled={props.disabled}
-                  leftIcon={stenaCalendar}
-                  onClick={toggleCalendar}
-                />
-              </Row>
+              <InputFieldButton
+                icon={stenaCalendar}
+                disabled={disabled}
+                onClick={toggleCalendar}
+              />
             ) : undefined
           }
           onValueChange={onValueChangeHandler}
@@ -155,6 +153,8 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
           min={minDate}
           max={maxDate}
           size={10}
+          disableContentPadding={true}
+          showBorderContentRight={true}
         />
       </Popover>
     </Box>
