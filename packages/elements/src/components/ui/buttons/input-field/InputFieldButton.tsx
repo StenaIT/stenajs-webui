@@ -20,7 +20,7 @@ export const InputFieldButton = forwardRef<HTMLButtonElement, InputFieldProps>(
         disabled={disabled}
         onClick={onClick}
       >
-        {icon && <Icon icon={icon} size={24} />}
+        {icon && <Icon icon={icon} size={16} />}
       </button>
     );
   }

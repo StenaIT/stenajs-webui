@@ -1,22 +1,49 @@
 .inputFieldButton {
-  background-color: transparent;
-  border: none;
-  padding: 0px;
+  --swui-inputfieldbutton-width: 24px;
+  --swui-inputfieldbutton-height: 24px;
+  --swui-inputfieldbutton-margin: 4px;
+  --swui-inputfieldbutton-padding: 0;
+  --swui-inputfieldbutton-border: none;
+  --swui-inputfieldbutton-border-radius: 2px;
+  --swui-inputfieldbutton-background-color: transparent;
+  --swui-inputfieldbutton-background-color-disabled: transparent;
+  --swui-inputfieldbutton-icon-color: var(--lhds-color-blue-600);
+  --swui-inputfieldbutton-icon-color-disabled: var(--swui-text-disabled-color);
+  --swui-inputfieldbutton-hover-color: 2px;
 
-  width: 24px;
-  height: 24px;
+  --current-background-color: var(--swui-inputfieldbutton-background-color);
+  --current-icon-color: var(--swui-inputfieldbutton-icon-color);
+
+  background-color: var(--current-background-color);
+  border: var(--swui-inputfieldbutton-border);
+  border-radius: var(--swui-inputfieldbutton-border-radius);
+
+  width: var(--swui-inputfieldbutton-width);
+  height: var(--swui-inputfieldbutton-height);
+  margin: var(--swui-inputfieldbutton-margin);
+  padding: var(--swui-inputfieldbutton-padding);
+
+  cursor: pointer;
 
   svg {
-    color: var(--lhds-color-blue-600);
+    color: var(--current-icon-color);
   }
-}
 
-.inputFieldButton:active {
-  background-color: var(--lhds-color-blue-200);
-  border-radius: 2px;
-}
+  &:active,
+  &:hover {
+    --current-background-color: var(--lhds-color-blue-200);
+    --current-icon-color: var(--swui-inputfieldbutton-icon-color);
+  }
 
-.inputFieldButton:hover {
-  border-radius: 2px;
-  background-color: var(--lhds-color-blue-200);
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled {
+    --current-background-color: var(
+      --swui-inputfieldbutton-background-color-disabled
+    );
+    --current-icon-color: var(--swui-inputfieldbutton-icon-color-disabled);
+    cursor: not-allowed;
+  }
 }

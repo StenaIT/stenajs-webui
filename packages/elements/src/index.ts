@@ -10,6 +10,7 @@ export * from "./components/ui/spinner/InputSpinner";
 export * from "./components/ui/bread-crumbs/BreadCrumbs";
 export * from "./components/ui/bread-crumbs/Crumb";
 export * from "./components/ui/buttons/FlatButton";
+export * from "./components/ui/buttons/input-field/InputFieldButton";
 export * from "./components/ui/buttons/PrimaryButton";
 export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
