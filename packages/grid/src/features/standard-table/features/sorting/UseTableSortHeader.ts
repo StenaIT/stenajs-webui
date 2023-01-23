@@ -7,7 +7,6 @@ import {
 
 interface Result {
   selected: boolean;
-  selectedBorder: string | undefined;
   desc: boolean;
   arrow: SortOrderDirection | undefined;
   onClickColumnHead: () => void;
@@ -21,13 +20,10 @@ export const useTableSortHeader = (columnId: string): Result => {
 
   return useMemo(() => {
     const selected = columnId === sortBy;
-    const selectedBorder = selected
-      ? "2px solid var(--lhds-color-blue-500)"
-      : "2px solid transparent";
+
     return {
       arrow: selected ? (desc ? "up" : "down") : undefined,
       selected,
-      selectedBorder,
       desc,
       onClickColumnHead: () => {
         dispatch(actions.sortBy(columnId, selected ? !desc : false));

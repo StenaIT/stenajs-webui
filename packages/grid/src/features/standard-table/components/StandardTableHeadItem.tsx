@@ -41,8 +41,7 @@ export const StandardTableHeadItem = React.memo(
     } = useStandardTableConfig();
     const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
-    const { arrow, selectedBorder, onClickColumnHead } =
-      useTableSortHeader(columnId);
+    const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
 
     const label =
       typeof columnLabel === "string"
@@ -61,7 +60,6 @@ export const StandardTableHeadItem = React.memo(
       <th
         style={{
           background: background ?? "white",
-          borderTop: selectedBorder,
           borderLeft: activeBorderLeft,
           position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
@@ -103,6 +101,7 @@ export const StandardTableHeadItem = React.memo(
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
+          selected={selected}
         />
       </th>
     );
