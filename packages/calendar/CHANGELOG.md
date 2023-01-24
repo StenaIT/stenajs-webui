@@ -1,3 +1,15 @@
+# v17.30.6 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- Use stena icons for year buttons in calendar [#552](https://github.com/StenaIT/stenajs-webui/pull/552) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.5 (Tue Jan 24 2023)
 
 #### 🐛 Bug Fix
