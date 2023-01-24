@@ -1,3 +1,16 @@
+# v17.30.5 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Show month names in correct locale [#551](https://github.com/StenaIT/stenajs-webui/pull/551) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.4 (Tue Jan 24 2023)
 
 #### 🐛 Bug Fix
