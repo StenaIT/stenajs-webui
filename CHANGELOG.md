@@ -1,3 +1,16 @@
+# v17.30.4 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Fix DateRangeCalendar stories, the dates are now clickable [#550](https://github.com/StenaIT/stenajs-webui/pull/550) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.3 (Wed Jan 18 2023)
 
 #### 🐛 Bug Fix
