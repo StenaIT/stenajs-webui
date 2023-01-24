@@ -11,6 +11,5 @@ export default {
 export const Standard = () => {
   const [value, setValue] = useState<string | undefined>(undefined);
   const props = useDateRangeCalendarState();
-
   return <SingleWeekCalendar onChange={setValue} value={value} {...props} />;
 };
