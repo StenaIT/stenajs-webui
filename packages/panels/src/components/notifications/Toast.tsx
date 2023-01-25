@@ -19,7 +19,7 @@ export interface ToastProps
 
 export const Toast: React.FC<ToastProps> = ({
   onClick,
-  onClickAriaLabel = "Open notification",
+  onClickAriaLabel,
   children,
   width = 264,
   maxWidth,
