@@ -97,7 +97,7 @@ export const NoCloseButton = () => (
 export const LongText = () => (
   <Toast
     text={
-      "This text is long and spans multiple rows and this is what that looks like"
+      "Try to keep the text short but if it should need several rows it wraps like this"
     }
     icon={stenaInfoMegaphone}
     iconAriaLabel={"Information"}
