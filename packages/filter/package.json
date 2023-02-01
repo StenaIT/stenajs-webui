@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/filter",
-  "version": "17.30.7",
+  "version": "17.31.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -26,15 +26,15 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/calendar": "17.30.7",
-    "@stenajs-webui/core": "17.30.7",
-    "@stenajs-webui/elements": "17.30.7",
-    "@stenajs-webui/forms": "17.30.7",
-    "@stenajs-webui/modal": "17.30.7",
-    "@stenajs-webui/panels": "17.30.7",
-    "@stenajs-webui/redux": "17.30.7",
-    "@stenajs-webui/select": "17.30.7",
-    "@stenajs-webui/theme": "17.30.7",
+    "@stenajs-webui/calendar": "17.31.0",
+    "@stenajs-webui/core": "17.31.0",
+    "@stenajs-webui/elements": "17.31.0",
+    "@stenajs-webui/forms": "17.31.0",
+    "@stenajs-webui/modal": "17.31.0",
+    "@stenajs-webui/panels": "17.31.0",
+    "@stenajs-webui/redux": "17.31.0",
+    "@stenajs-webui/select": "17.31.0",
+    "@stenajs-webui/theme": "17.31.0",
     "date-fns": "2.26.0"
   },
   "peerDependencies": {
