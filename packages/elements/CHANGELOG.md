@@ -1,3 +1,15 @@
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- Now possible to style button with only icon to have custom sizes [#555](https://github.com/StenaIT/stenajs-webui/pull/555) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.3 (Wed Jan 18 2023)
 
 #### 🐛 Bug Fix
