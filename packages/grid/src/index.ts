@@ -37,7 +37,7 @@ export * from "./features/standard-table/features/checkboxes/StandardTableRowChe
 export * from "./features/standard-table/features/sorting/UseTableSortHeader";
 export * from "./features/standard-table/features/sorting/MultitypeComparator";
 export * from "./features/standard-table/features/column-groups/ColumnGroupFactory";
-export * from "./features/standard-table/types/StandardTableOnKeyDown";
+export * from "./features/standard-table/types/StandardTableEvents";
 
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";

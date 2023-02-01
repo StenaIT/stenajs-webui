@@ -5,23 +5,26 @@ import {
   Indent,
   Spacing,
   Text,
+  Txt,
 } from "@stenajs-webui/core";
 import { Checkbox, TextInput } from "@stenajs-webui/forms";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   StandardTable,
   StandardTableVariant,
 } from "../components/StandardTable";
 import { StandardTableConfig } from "../config/StandardTableConfig";
+import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
+import { createStandardTableInitialState } from "../redux/StandardTableReducer";
 import {
   ListItem,
   mockedItems,
   standardTableConfigForStories,
   useListState,
 } from "./StandardTableStoryHelper";
-import { sumBy } from "lodash";
+import { sortBy, sumBy } from "lodash";
 import { Tag } from "@stenajs-webui/elements";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";
 
@@ -123,6 +126,42 @@ export const BackgroundResolver = () => {
     },
   };
   return <StandardTable items={items} config={config} />;
+};
+
+export const ExternalSorting = () => {
+  const { items } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    enableExternalSorting: true,
+  };
+
+  const { tableContext } = useLocalStateTableContext<keyof ListItem>(
+    "test",
+    createStandardTableInitialState("id")
+  );
+
+  const { sortOrder } = tableContext.state;
+
+  const sortedItems = useMemo(() => {
+    let listItems = sortBy(items, sortOrder.sortBy ?? "id");
+    if (sortOrder.desc) {
+      listItems.reverse();
+    }
+    return listItems;
+  }, [items, sortOrder.desc, sortOrder.sortBy]);
+
+  return (
+    <Column>
+      <Txt>See story source to see how this works.</Txt>
+      <Spacing />
+      <StandardTable
+        items={sortedItems}
+        config={config}
+        tableContext={tableContext}
+      />
+    </Column>
+  );
 };
 
 export const CellOnKeyDown = () => {

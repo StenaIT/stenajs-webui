@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { SortOrderDirection } from "../../../table-ui/components/table/SortOrderIcon";
+import { useOnSortOrderChangeContext } from "../../context/OnSortOrderChangeContext";
 import {
   useStandardTableActions,
   useStandardTableState,
@@ -14,6 +15,7 @@ interface Result {
 
 export const useTableSortHeader = (columnId: string): Result => {
   const { dispatch, actions } = useStandardTableActions();
+  const onSortOrderChange = useOnSortOrderChangeContext();
   const {
     sortOrder: { desc, sortBy },
   } = useStandardTableState();
@@ -25,8 +27,10 @@ export const useTableSortHeader = (columnId: string): Result => {
       selected,
       desc,
       onClickColumnHead: () => {
-        dispatch(actions.sortBy(columnId, selected ? !desc : false));
+        const d = selected ? !desc : false;
+        dispatch(actions.sortBy(columnId, d));
+        onSortOrderChange?.(columnId, d);
       },
     };
-  }, [sortBy, desc, actions, columnId, dispatch]);
+  }, [columnId, sortBy, desc, dispatch, actions, onSortOrderChange]);
 };
