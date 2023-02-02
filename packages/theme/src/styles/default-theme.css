@@ -11,7 +11,7 @@
   --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
   --swui-separator-color: var(--lhds-color-ui-300);
   --swui-handle-bg-enabled-color: var(--swui-white);
-  --swui-handle-bg-disabled-color: var(--lhds-color-ui-400);
+  --swui-handle-bg-disabled-color: var(--lhds-color-ui-300);
   --swui-modal-border-color: var(--lhds-color-ui-400);
   --swui-overlay-bg-color: rgba(13, 14, 16, 0.5);
 
@@ -52,7 +52,7 @@
   --swui-text-action-color-focus: var(--lhds-color-blue-500);
   --swui-text-action-color-active: var(--lhds-color-blue-700);
   --swui-text-primary-color-light: var(--lhds-color-ui-400);
-  --swui-text-disabled-color: var(--lhds-color-ui-500);
+  --swui-text-disabled-color: var(--lhds-color-ui-600);
   --swui-text-disabled-color-light: var(--lhds-color-ui-300);
   --swui-text-darkmode-primary-color: var(--lhds-color-ui-400);
   --swui-text-darkmode-disabled-color: var(--lhds-color-ui-300);

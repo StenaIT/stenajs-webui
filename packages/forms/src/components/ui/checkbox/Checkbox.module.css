@@ -5,7 +5,7 @@
   --swui-checkbox-animation-time: var(--swui-animation-time-medium);
   /* Icon */
   --swui-checkbox-icon-color: var(--swui-field-indicator-active-color);
-  --swui-checkbox-disabled-icon-color: var(--lhds-color-ui-600);
+  --swui-checkbox-disabled-icon-color: var(--swui-text-disabled-color);
   --swui-checkbox-unchecked-icon-color: var(
     --swui-field-indicator-inactive-color
   );
@@ -107,7 +107,7 @@
       --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --current-checkbox-icon-color: var(--swui-checkbox-disabled-icon-color);
+        --current-checkbox-icon-color: var(--swui-field-text-color-disabled);
       }
 
       & + label {

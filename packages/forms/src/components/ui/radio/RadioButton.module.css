@@ -5,15 +5,15 @@
   --swui-radiobutton-animation-time: var(--swui-animation-time-medium);
   /* Icon */
   --swui-radiobutton-icon-color: var(--swui-field-indicator-active-color);
-  --swui-radiobutton-disabled-icon-color: var(--lhds-color-ui-600);
+  --swui-radiobutton-disabled-icon-color: var(--swui-field-text-color-disabled);
   --swui-radiobutton-unchecked-icon-color: var(
     --swui-field-indicator-inactive-color
   );
   /* Background */
   --swui-radiobutton-checked-bg-color: var(--swui-primary-action-color);
-  --swui-radiobutton-checked-disabled-bg-color: var(--lhds-color-ui-300);
+  --swui-radiobutton-checked-disabled-bg-color: var(--swui-field-bg-disabled);
   --swui-radiobutton-unchecked-bg-color: var(--swui-white);
-  --swui-radiobutton-unchecked-disabled-bg-color: var(--lhds-color-ui-300);
+  --swui-radiobutton-unchecked-disabled-bg-color: var(--swui-field-bg-disabled);
   /* Border */
   --swui-radiobutton-unchecked-border-color: var(--swui-field-border-color);
 
