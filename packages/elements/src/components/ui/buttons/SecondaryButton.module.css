@@ -4,7 +4,7 @@
   /* Text */
   --swui-button-text-color: var(--swui-text-action-color);
 
-  --swui-button-text-color-disabled: var(--swui-text-disabled-color: );
+  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
 
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-text-color-hover: var(--swui-button-text-color);

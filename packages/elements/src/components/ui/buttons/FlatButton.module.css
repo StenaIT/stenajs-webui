@@ -51,7 +51,9 @@
   --swui-button-text-color-focus: var(--swui-flat-button-text-color);
   --swui-button-text-color-hover: var(--swui-flat-button-text-color);
   --swui-button-text-color-active: var(--swui-flat-button-text-color-active);
-  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+  --swui-button-text-color-disabled: var(
+    --swui-flat-button-text-color-disabled
+  );
 
   --swui-button-danger-text-color: var(--lhds-color-red-500);
   --swui-button-success-text-color: var(--lhds-color-green-600);
