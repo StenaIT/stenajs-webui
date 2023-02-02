@@ -65,7 +65,7 @@
 
   /* Form fields */
   --swui-field-text-color: #424551;
-  --swui-field-text-color-disabled: var(--lhds-color-ui-700);
+  --swui-field-text-color-disabled: var(--lhds-color-ui-600);
   --swui-field-text-spacing: 6px;
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: 2rem;

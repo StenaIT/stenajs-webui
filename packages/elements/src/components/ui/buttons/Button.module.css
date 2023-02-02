@@ -14,7 +14,7 @@
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-text-color-active: var(--swui-button-text-color);
-  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+  --swui-button-text-color-disabled: var(--lhds-color-ui-600);
 
   --swui-button-danger-text-color: var(--swui-button-text-color);
   --swui-button-danger-text-color-focus: var(--swui-button-danger-text-color);
@@ -33,7 +33,7 @@
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
   --swui-button-icon-color-hover: var(--swui-button-icon-color);
   --swui-button-icon-color-active: var(--swui-button-icon-color);
-  --swui-button-icon-color-disabled: var(--swui-text-disabled-color);
+  --swui-button-icon-color-disabled: var(--lhds-color-ui-600);
 
   --swui-button-danger-icon-color: var(--swui-button-icon-color);
   --swui-button-danger-icon-color-focus: var(--swui-button-danger-icon-color);
@@ -54,9 +54,7 @@
   );
   --swui-button-background-color-focus: var(--swui-primary-action-color-focus);
   --swui-button-background-color-hover: var(--swui-primary-action-color-hover);
-  --swui-button-background-color-disabled: var(
-    --swui-primary-action-color-disabled
-  );
+  --swui-button-background-color-disabled: var(--lhds-color-ui-300);
 
   --swui-button-danger-background-color: var(--lhds-color-red-500);
   --swui-button-danger-background-color-active: var(--lhds-color-red-900);
@@ -75,7 +73,6 @@
   --swui-button-border-color-focus: var(--swui-button-background-color-focus);
   --swui-button-border-color-hover: var(--swui-button-background-color-hover);
   --swui-button-border-color-active: var(--swui-button-background-color-active);
-  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
 
   --swui-button-danger-border-color: var(--swui-button-danger-background-color);
   --swui-button-danger-border-color-focus: var(
