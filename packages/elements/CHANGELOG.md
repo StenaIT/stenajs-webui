@@ -1,3 +1,15 @@
+# v17.32.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- ResultListBanner can have children, shown below bulletpoint list [#557](https://github.com/StenaIT/stenajs-webui/pull/557) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.31.0 (Wed Feb 01 2023)
 
 #### 🚀 Enhancement
