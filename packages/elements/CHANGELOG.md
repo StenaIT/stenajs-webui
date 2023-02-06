@@ -1,3 +1,15 @@
+# v17.33.0 (Mon Feb 06 2023)
+
+#### 🚀 Enhancement
+
+- Add file icons with labels and finance paid status icons [#558](https://github.com/StenaIT/stenajs-webui/pull/558) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v17.32.0 (Fri Feb 03 2023)
 
 #### 🚀 Enhancement
