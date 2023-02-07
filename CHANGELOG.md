@@ -1,3 +1,44 @@
+# v17.33.0 (Mon Feb 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add file icons with labels and finance paid status icons [#558](https://github.com/StenaIT/stenajs-webui/pull/558) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
+# v17.32.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - ResultListBanner can have children, shown below bulletpoint list [#557](https://github.com/StenaIT/stenajs-webui/pull/557) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Now possible to style button with only icon to have custom sizes [#555](https://github.com/StenaIT/stenajs-webui/pull/555) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/grid`
+  - External sorting and `onSortOrderChange` prop in StandardTable [#554](https://github.com/StenaIT/stenajs-webui/pull/554) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.7 (Tue Jan 31 2023)
 
 #### 🐛 Bug Fix

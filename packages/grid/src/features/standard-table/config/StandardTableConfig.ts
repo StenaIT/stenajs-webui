@@ -84,6 +84,12 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
   disableSorting?: boolean;
 
   /**
+   * If true, click on table headers works as usual, but no sorting is applied.
+   * Sort must be applied outside of StandardTable, in client or in backend.
+   */
+  enableExternalSorting?: boolean;
+
+  /**
    * Table will be sorted by specified column key as default.
    * Only used when using internal reducer. If redux is used, this setting is ignored.
    */
