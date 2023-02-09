@@ -1,3 +1,15 @@
+# v17.34.0 (Thu Feb 09 2023)
+
+#### 🚀 Enhancement
+
+- Update icons in banner [#559](https://github.com/StenaIT/stenajs-webui/pull/559) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
 # v17.33.0 (Mon Feb 06 2023)
 
 #### 🚀 Enhancement
