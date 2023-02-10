@@ -15,6 +15,11 @@
   --swui-checkbox-disabled-bg-color: var(--swui-field-bg-disabled);
   --swui-checkbox-disabled-checked-bg-color: var(--swui-field-bg-disabled);
 
+  /* Border */
+  --swui-checkbox-border-color: var(--swui-field-border-color);
+  --swui-checkbox-border-hover-color: var(--swui-field-border-color-hover);
+  --swui-checkbox-disabled-border-color: var(--swui-checkbox-disabled-bg-color);
+
   /* Shadow */
   --swui-checkbox-checked-focus-shadow: var(--swui-field-focus-shadow-inverted);
   --swui-checkbox-unchecked-focus-shadow: var(--swui-field-focus-shadow);
@@ -107,7 +112,7 @@
       --current-border-color: var(--swui-checkbox-disabled-border-color);
 
       &:after {
-        --current-checkbox-icon-color: var(--swui-field-text-color-disabled);
+        --current-checkbox-icon-color: var(--swui-checkbox-disabled-icon-color);
       }
 
       & + label {

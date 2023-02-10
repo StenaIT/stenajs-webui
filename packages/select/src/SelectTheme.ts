@@ -19,7 +19,7 @@ export interface SelectTheme {
     backgroundColor: string;
     border: string;
     borderColor: string;
-
+    disabledBorderColor: string;
     borderColorFocused: string;
     borderRadius: string;
     disabledBackgroundColor: string;
@@ -103,6 +103,7 @@ export const defaultSelectTheme: SelectTheme = {
     borderColor: "var(--swui-field-border-color)",
     borderColorFocused: "var(--swui-field-border-color-hover)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    disabledBorderColor: "var(--swui-field-bg-disabled)",
     warningBackgroundColor: "var(--swui-state-alert-light-color)",
     errorBackgroundColor: "var(--swui-state-error-light-color)",
     successBackgroundColor: "var(--swui-state-success-light-color)",
@@ -133,7 +134,7 @@ export const defaultSelectTheme: SelectTheme = {
     activeTextColor: "var(--swui-field-text-color)",
     selectedItemActiveBackgroundColor: "var(--lhds-color-blue-500)",
     selectedItemActiveTextColor: "var(--lhds-color-blue-50)",
-    disabledTextColor: "var(--lhds-color-ui-600)",
+    disabledTextColor: "var(--swui-field-text-color-disabled)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
     textColor: "var(--swui-field-text-color)",
     backgroundColor: "var(--swui-field-bg-enabled)",
