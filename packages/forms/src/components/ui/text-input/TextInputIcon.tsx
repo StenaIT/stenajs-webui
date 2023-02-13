@@ -62,7 +62,12 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
       {icon && (
         <>
           {onClick ? (
-            <FlatButton onClick={onClick} leftIcon={icon} size={"small"} />
+            <FlatButton
+              type={"button"}
+              onClick={onClick}
+              leftIcon={icon}
+              size={"small"}
+            />
           ) : (
             <FontAwesomeIcon
               icon={icon}
