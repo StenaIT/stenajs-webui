@@ -1,12 +1,13 @@
-import { useBoolean } from "@stenajs-webui/core";
 import cx from "classnames";
 import React, {
   ReactNode,
   useCallback,
   useMemo,
+  useReducer,
   useRef,
   useState,
 } from "react";
+
 import styles from "./Dialog.module.css";
 import { ModalContext } from "./ModalContext";
 
@@ -32,20 +33,22 @@ type UseModalResult<TProps, TPromiseResolve> = [
 
 interface ModalOptions {
   className?: string;
+  overlayDivClassName?: string;
 }
 
-export const useModal = <TProps extends {}, TPromiseResolve>(
+export function useModal<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
   options?: ModalOptions
-): UseModalResult<TProps, TPromiseResolve> => {
+): UseModalResult<TProps, TPromiseResolve> {
   const ref = useRef<HTMLDialogElement>(null);
+  const [key, forceRerender] = useReducer((x) => x + 1, 0);
   const promiseRef = useRef<Promise<TPromiseResolve | undefined>>();
   const resolveRef = useRef<
     ((value: TPromiseResolve | undefined) => void) | undefined
   >();
   const rejectRef = useRef<((error?: Error) => void) | undefined>();
   const [currentProps, setCurrentProps] = useState<TProps | undefined>();
-  const [closing, setClosing, setNotClosing] = useBoolean(false);
+  const [closing, setClosing] = useState(false);
 
   const Comp = component;
 
@@ -57,37 +60,42 @@ export const useModal = <TProps extends {}, TPromiseResolve>(
           rejectRef.current = reject;
         }
       );
-      setNotClosing();
+      setClosing(false);
+      forceRerender();
       setCurrentProps(props);
       ref.current?.showModal();
       return promiseRef.current;
     },
-    [setNotClosing]
+    []
   );
 
-  const resolve = useCallback<ResolveCommand<TPromiseResolve>>(() => {
-    setClosing();
-    const listener = () => {
-      setNotClosing();
-      ref.current?.close();
-      resolveRef.current?.(undefined);
-      ref.current?.removeEventListener("animationend", listener);
-    };
-    ref.current?.addEventListener("animationend", listener);
-  }, [setClosing, setNotClosing]);
+  const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
+    (value) => {
+      setClosing(true);
+      ref.current?.addEventListener(
+        "animationend",
+        () => {
+          setClosing(false);
+          ref.current?.close();
+          resolveRef.current?.(value);
+        },
+        { once: true }
+      );
+    },
+    [setClosing]
+  );
 
   const reject = useCallback<RejectCommand>(
     (error) => {
-      setClosing();
+      setClosing(true);
       const listener = () => {
-        setNotClosing();
+        setClosing(false);
         ref.current?.close();
         rejectRef.current?.(error);
-        ref.current?.removeEventListener("animationend", listener);
       };
-      ref.current?.addEventListener("animationend", listener);
+      ref.current?.addEventListener("animationend", listener, { once: true });
     },
-    [setClosing, setNotClosing]
+    [setClosing]
   );
 
   const dialogElement = useMemo<ReactNode>(
@@ -98,18 +106,30 @@ export const useModal = <TProps extends {}, TPromiseResolve>(
           ref={ref}
           className={cx(
             styles.dialog,
-            closing && styles.close,
+            closing && styles.closing,
             options?.className
           )}
         >
-          <div onClick={(ev) => ev.stopPropagation()}>
-            {currentProps && <Comp {...currentProps} />}
+          <div
+            className={options?.overlayDivClassName}
+            onClick={(ev) => ev.stopPropagation()}
+          >
+            {currentProps && <Comp {...currentProps} key={key} />}
           </div>
         </dialog>
       </ModalContext.Provider>
     ),
-    [Comp, closing, currentProps, options?.className, reject, resolve]
+    [
+      Comp,
+      closing,
+      currentProps,
+      key,
+      options?.className,
+      options?.overlayDivClassName,
+      reject,
+      resolve,
+    ]
   );
 
   return [dialogElement, { show, reject }];
-};
+}

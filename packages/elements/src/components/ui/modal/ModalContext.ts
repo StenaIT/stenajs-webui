@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 export interface ModalContextValue<TResolveValue> {
-  resolve: (value?: TResolveValue | undefined) => void;
+  resolve: (value: TResolveValue) => void;
   reject: (error?: Error) => void;
 }
 

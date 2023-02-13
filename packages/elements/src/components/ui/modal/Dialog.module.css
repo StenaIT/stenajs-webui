@@ -14,7 +14,7 @@
     animation: slidein 0.25s forwards;
   }
 
-  &.close[open] {
+  &.closing[open] {
     animation: slideout 0.25s forwards;
   }
 
@@ -28,15 +28,12 @@
 
   &::backdrop {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.6);
     animation: fadein 0.25s forwards;
   }
 
-  &.close::backdrop {
+  &.closing::backdrop {
     animation: fadeout 0.25s forwards;
   }
 

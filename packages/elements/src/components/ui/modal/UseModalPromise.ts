@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ModalContext, ModalContextValue } from "./ModalContext";
 
 export const useModalPromise = <
-  TResolveValue
+  TResolveValue = void
 >(): ModalContextValue<TResolveValue> => {
   const context = useContext(ModalContext);
   if (context == null) {
