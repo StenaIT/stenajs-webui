@@ -42,3 +42,5 @@ export * from "./components/ui/value-table/ValueTable";
 export * from "./components/ui/value-table/ValueTableItem";
 export * from "./components/ui/route-leg/RouteLeg";
 export * from "./components/ui/route-leg/TimeTag";
+export * from "./components/ui/modal/UseModal";
+export * from "./components/ui/modal/UseModalPromise";
