@@ -1,10 +1,13 @@
+import { enGB } from "date-fns/locale";
 import * as React from "react";
 import { Month } from "../../util/calendar/CalendarDataFactory";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 
-export interface MonthPickerProps extends ValueAndOnValueChangeProps<Month> {}
+export interface MonthPickerProps extends ValueAndOnValueChangeProps<Month> {
+  locale?: Locale;
+}
 
 const monthMatrix = [
   [Month.JANUARY, Month.FEBRUARY, Month.MARCH],
@@ -16,6 +19,7 @@ const monthMatrix = [
 export const MonthPicker: React.FC<MonthPickerProps> = ({
   value,
   onValueChange,
+  locale = enGB,
 }) => {
   return (
     <Column>
@@ -27,6 +31,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
               month={month}
               onValueChange={onValueChange}
               value={value}
+              locale={locale}
             />
           ))}
         </Row>

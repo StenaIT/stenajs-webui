@@ -1,3 +1,4 @@
+import { startCase } from "lodash";
 import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
@@ -8,17 +9,19 @@ import { format } from "date-fns";
 
 interface Props extends ValueAndOnValueChangeProps<Month> {
   month: Month;
+  locale: Locale;
 }
 
 export const MonthPickerCell: React.FC<Props> = ({
   value,
   onValueChange,
   month,
+  locale,
 }) => {
   const label = useMemo(() => {
     const now = new Date(2000, month, 1);
-    return format(now, "MMM");
-  }, [month]);
+    return startCase(format(now, "MMM", { locale }));
+  }, [locale, month]);
 
   return (
     <Row width={"64px"} justifyContent={"center"} spacing={0.5} indent={0.5}>

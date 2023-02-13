@@ -19,6 +19,7 @@ export interface SelectTheme {
     backgroundColor: string;
     border: string;
     borderColor: string;
+    disabledBorderColor: string;
     borderColorFocused: string;
     borderRadius: string;
     disabledBackgroundColor: string;
@@ -102,6 +103,7 @@ export const defaultSelectTheme: SelectTheme = {
     borderColor: "var(--swui-field-border-color)",
     borderColorFocused: "var(--swui-field-border-color-hover)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
+    disabledBorderColor: "var(--swui-field-bg-disabled)",
     warningBackgroundColor: "var(--swui-state-alert-light-color)",
     errorBackgroundColor: "var(--swui-state-error-light-color)",
     successBackgroundColor: "var(--swui-state-success-light-color)",
@@ -113,7 +115,7 @@ export const defaultSelectTheme: SelectTheme = {
     fontSize: "var(--swui-font-size-inputs)",
     height: "32px",
     minHeight: "32px",
-    placeholderColor: "var(--swui-field-border-color-disabled)",
+    placeholderColor: "var(--swui-field-text-color)",
     textColor: "var(--swui-field-text-color)",
     borderRadius: "var(--swui-field-border-radius)",
   },

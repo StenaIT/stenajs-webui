@@ -10,7 +10,6 @@
   --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
 
   /* Text */
-
   --swui-button-text-color-focus: var(--swui-button-text-color);
   --swui-button-text-color-hover: var(--swui-button-text-color);
   --swui-button-text-color-active: var(--swui-button-text-color);
@@ -47,6 +46,12 @@
     --swui-button-success-icon-color
   );
 
+  /* Icon only */
+  --swui-button-icon-only-size-small: 24px;
+  --swui-button-icon-only-size-medium: 32px;
+  --swui-button-icon-only-size-large: 40px;
+  --swui-button-border-radius-icon-only: var(--swui-border-radius);
+
   /* Background */
   --swui-button-background-color: var(--swui-primary-action-color);
   --swui-button-background-color-active: var(
@@ -71,12 +76,12 @@
   /* Border */
   --swui-button-border-color: var(--swui-button-background-color);
   --swui-button-border-radius: var(--swui-border-radius);
-  --swui-button-border-radius-icon-only: var(--swui-border-radius);
   --swui-button-border-color-focus: var(--swui-button-background-color-focus);
   --swui-button-border-color-hover: var(--swui-button-background-color-hover);
   --swui-button-border-color-active: var(--swui-button-background-color-active);
-  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
-
+  --swui-button-border-color-disabled: var(
+    --swui-button-background-color-disabled
+  );
   --swui-button-danger-border-color: var(--swui-button-danger-background-color);
   --swui-button-danger-border-color-focus: var(
     --swui-button-danger-background-color-focus
@@ -145,20 +150,20 @@
 
     border-radius: var(--swui-button-border-radius-icon-only);
 
-    width: 32px;
-    height: 32px;
+    width: var(--swui-button-icon-only-size-medium);
+    height: var(--swui-button-icon-only-size-medium);
     justify-content: center;
     align-items: center;
     display: flex;
 
     &.small {
-      width: 24px;
-      height: 24px;
+      width: var(--swui-button-icon-only-size-small);
+      height: var(--swui-button-icon-only-size-small);
     }
 
     &.large {
-      width: 40px;
-      height: 40px;
+      width: var(--swui-button-icon-only-size-large);
+      height: var(--swui-button-icon-only-size-large);
     }
   }
 
@@ -190,6 +195,9 @@
 
   &:focus {
     outline: 0;
+  }
+
+  &:focus-visible {
     --current-background-color: var(--swui-button-background-color-focus);
     --current-border-color: var(--swui-button-border-color-focus);
     --current-icon-color: var(--swui-button-icon-color-focus);
@@ -234,6 +242,9 @@
 
     &:focus {
       outline: 0;
+    }
+
+    &:focus-visible {
       --current-background-color: var(
         --swui-button-danger-background-color-focus
       );
@@ -269,6 +280,9 @@
 
     &:focus {
       outline: 0;
+    }
+
+    &:focus-visible {
       --current-background-color: var(
         --swui-button-success-background-color-focus
       );

@@ -34,8 +34,12 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
   const shiftPressedRef = useRef(false);
 
-  const { keyResolver, disableInfiniteList, checkboxDisabledResolver } =
-    useStandardTableConfig();
+  const {
+    keyResolver,
+    disableInfiniteList,
+    checkboxDisabledResolver,
+    enableExternalSorting,
+  } = useStandardTableConfig();
   const {
     sortOrder: { sortBy, desc },
   } = useStandardTableState();
@@ -43,6 +47,9 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
   const valueResolver = useColumnValueResolver(sortBy);
 
   const sortedItems = useMemo(() => {
+    if (enableExternalSorting) {
+      return items ?? [];
+    }
     if (!items || !items.length) {
       return [];
     }
@@ -61,7 +68,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
       sortCounterRef.current++;
     }
     return sortedList;
-  }, [items, valueResolver, desc, disableInfiniteList]);
+  }, [enableExternalSorting, items, valueResolver, desc, disableInfiniteList]);
 
   const idListForEnabledItems = useMemo(
     () =>

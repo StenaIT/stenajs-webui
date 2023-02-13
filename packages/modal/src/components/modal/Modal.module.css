@@ -3,6 +3,7 @@
   --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
   --swui-modal-content-bg-color: var(--swui-white);
   --swui-modal-width: 960px;
+  --swui-modal-max-width: 100%;
   --swui-modal-header-border-color: var(--lhds-color-ui-300);
   --swui-modal-shadow: var(--swui-shadow-modal);
   --swui-modal-footer-shadow: var(--swui-shadow-modal);
@@ -46,14 +47,16 @@
     top: calc(var(--swui-metrics-space) * 2);
 
     width: var(--swui-modal-width);
-    max-width: 100%;
-
-    animation: appear var(--swui-animation-time-fast)
-      cubic-bezier(0.645, 0.045, 0.355, 1) both;
+    max-width: var(--swui-modal-max-width);
 
     @media (max-width: 768px) {
       top: 0;
+      width: 100%;
+      max-width: 100%;
     }
+
+    animation: appear var(--swui-animation-time-fast)
+      cubic-bezier(0.645, 0.045, 0.355, 1) both;
 
     @media print {
       box-shadow: none;

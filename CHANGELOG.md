@@ -1,3 +1,109 @@
+# v17.34.0 (Thu Feb 09 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Update icons in banner [#559](https://github.com/StenaIT/stenajs-webui/pull/559) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
+# v17.33.0 (Mon Feb 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add file icons with labels and finance paid status icons [#558](https://github.com/StenaIT/stenajs-webui/pull/558) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
+# v17.32.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - ResultListBanner can have children, shown below bulletpoint list [#557](https://github.com/StenaIT/stenajs-webui/pull/557) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Now possible to style button with only icon to have custom sizes [#555](https://github.com/StenaIT/stenajs-webui/pull/555) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/grid`
+  - External sorting and `onSortOrderChange` prop in StandardTable [#554](https://github.com/StenaIT/stenajs-webui/pull/554) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.7 (Tue Jan 31 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Modal width is always 100% on mobile [#553](https://github.com/StenaIT/stenajs-webui/pull/553) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.6 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Use stena icons for year buttons in calendar [#552](https://github.com/StenaIT/stenajs-webui/pull/552) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.5 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Show month names in correct locale [#551](https://github.com/StenaIT/stenajs-webui/pull/551) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.4 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Fix DateRangeCalendar stories, the dates are now clickable [#550](https://github.com/StenaIT/stenajs-webui/pull/550) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.30.3 (Wed Jan 18 2023)
 
 #### 🐛 Bug Fix
