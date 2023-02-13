@@ -15,6 +15,10 @@
   --swui-radiobutton-unchecked-bg-color: var(--swui-white);
   --swui-radiobutton-unchecked-disabled-bg-color: var(--swui-field-bg-disabled);
   /* Border */
+  --swui-radiobutton-unchecked-border-color: var(--swui-field-border-color);
+  --swui-radiobutton-unchecked-hover-border-color: var(
+    --swui-field-border-color-hover
+  );
   --swui-radiobutton-unchecked-border-color: var(
     --swui-radiobutton-checked-disabled-bg-color
   );
