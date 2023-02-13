@@ -26,12 +26,12 @@ const ModalContent: React.FC = () => {
   );
 };
 export const Overview: Story = () => {
-  const [dialog, { show }] = useModal(ModalContent);
+  const [element, { show }] = useModal(ModalContent);
 
   return (
     <Row>
       <PrimaryButton label={"Open modal"} onClick={() => show({})} />
-      {dialog}
+      {element}
     </Row>
   );
 };
@@ -57,8 +57,9 @@ const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
     </Column>
   );
 };
+
 export const ResolveReject: Story = () => {
-  const [dialog, { show }] = useModal<EmailFormProps, string>(EmailForm);
+  const [element, { show }] = useModal<EmailFormProps, string>(EmailForm);
   const [email, setEmail] = useState("");
 
   const onClickOpen = useCallback(async () => {
@@ -75,7 +76,7 @@ export const ResolveReject: Story = () => {
         <PrimaryButton label={"Open form"} onClick={onClickOpen} />
       </Row>
       <Text>Current e-mail: {email ? email : "Not set"}</Text>
-      {dialog}
+      {element}
     </Column>
   );
 };
