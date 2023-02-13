@@ -79,8 +79,9 @@
   --swui-button-border-color-focus: var(--swui-button-background-color-focus);
   --swui-button-border-color-hover: var(--swui-button-background-color-hover);
   --swui-button-border-color-active: var(--swui-button-background-color-active);
-  --swui-button-border-color-disabled: var(--lhds-color-ui-400);
-
+  --swui-button-border-color-disabled: var(
+    --swui-button-background-color-disabled
+  );
   --swui-button-danger-border-color: var(--swui-button-danger-background-color);
   --swui-button-danger-border-color-focus: var(
     --swui-button-danger-background-color-focus
