@@ -1,3 +1,32 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/panels`
+  - Add Toast and remake Notification [#549](https://github.com/StenaIT/stenajs-webui/pull/549) ([@juiceit](https://github.com/juiceit) [@lindskogen](https://github.com/lindskogen))
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Actually disable the calendar icon button in DateTextInput [#530](https://github.com/StenaIT/stenajs-webui/pull/530) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`
+  - Change focus to focus-visible for form elements [#533](https://github.com/StenaIT/stenajs-webui/pull/533) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/forms`
+  - Set TextInputIcon type to button (fixes AB#105906) [#544](https://github.com/StenaIT/stenajs-webui/pull/544) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.34.0 (Thu Feb 09 2023)
 
 #### 🚀 Enhancement

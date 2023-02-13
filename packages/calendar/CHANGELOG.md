@@ -1,3 +1,15 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🐛 Bug Fix
+
+- Actually disable the calendar icon button in DateTextInput [#530](https://github.com/StenaIT/stenajs-webui/pull/530) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.30.6 (Tue Jan 24 2023)
 
 #### 🐛 Bug Fix
