@@ -19,7 +19,7 @@
   --swui-radiobutton-unchecked-hover-border-color: var(
     --swui-field-border-color-hover
   );
-  --swui-radiobutton-unchecked-border-color: var(
+  --swui-radiobutton-disabled-border-color: var(
     --swui-radiobutton-checked-disabled-bg-color
   );
 
