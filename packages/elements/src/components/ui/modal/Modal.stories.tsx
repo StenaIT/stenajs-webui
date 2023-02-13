@@ -60,11 +60,11 @@ const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
 
 export const ResolveReject: Story = () => {
   const [element, { show }] = useModal<EmailFormProps, string>(EmailForm);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string | undefined>(undefined);
 
   const onClickOpen = useCallback(async () => {
     try {
-      const result = await show({ currentEmail: email });
+      const result = await show({ currentEmail: email ?? "" });
       if (result != null) {
         setEmail(result);
       }
@@ -75,7 +75,7 @@ export const ResolveReject: Story = () => {
       <Row>
         <PrimaryButton label={"Open form"} onClick={onClickOpen} />
       </Row>
-      <Text>Current e-mail: {email ? email : "Not set"}</Text>
+      <Text>Current e-mail: {email ?? "Not set"}</Text>
       {element}
     </Column>
   );
