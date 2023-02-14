@@ -20,7 +20,7 @@ import { Icon } from "../icon/Icon";
 import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
 import { CardBody } from "./CardBody";
-import { CardHeader } from "./CardHeader";
+import { CardHeader } from "./CardHeader2";
 
 export default {
   title: "elements/Card",

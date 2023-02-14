@@ -21,28 +21,30 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   closeButtonClassName,
 }) => {
   return (
-    <Row
-      spacing={2}
-      indent={2}
-      borderBottom={"1px solid var(--swui-modal-header-border-color)"}
-      className={DRAGGABLE_HANDLE_CLASSNAME}
-    >
-      <Row flex={1} indent alignItems={"center"}>
-        {headerText && (
-          <Txt className={DRAGGABLE_CANCEL_CLASSNAME} size={"large"}>
-            {headerText}
-          </Txt>
-        )}
-        {header}
+    <>
+      <Row
+        spacing={2}
+        indent={2}
+        borderBottom={"1px solid var(--swui-modal-header-border-color)"}
+        className={DRAGGABLE_HANDLE_CLASSNAME}
+      >
+        <Row flex={1} indent alignItems={"center"}>
+          {headerText && (
+            <Txt className={DRAGGABLE_CANCEL_CLASSNAME} size={"large"}>
+              {headerText}
+            </Txt>
+          )}
+          {header}
+        </Row>
+        <Box alignSelf={"flex-start"}>
+          <FlatButton
+            className={closeButtonClassName}
+            onClick={onRequestClose}
+            aria-label={"Close"}
+            leftIcon={stenaTimes}
+          />
+        </Box>
       </Row>
-      <Box alignSelf={"flex-start"}>
-        <FlatButton
-          className={closeButtonClassName}
-          onClick={onRequestClose}
-          aria-label={"Close"}
-          leftIcon={stenaTimes}
-        />
-      </Box>
-    </Row>
+    </>
   );
 };

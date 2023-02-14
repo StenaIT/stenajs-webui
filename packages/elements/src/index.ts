@@ -24,6 +24,7 @@ export * from "./components/ui/cards/Card";
 export * from "./components/ui/cards/CardHeader";
 export * from "./components/ui/cards/CardBody";
 export * from "./components/ui/chip/Chip";
+export * from "./components/ui/header/BaseHeader";
 export * from "./components/ui/label/Label";
 export * from "./components/ui/link/Link";
 export * from "./components/ui/badge/Badge";

@@ -1,11 +1,11 @@
 import { Box } from "@stenajs-webui/core";
 import * as React from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
-import { ModalHeader, ModalHeaderProps } from "./ModalHeader";
 import cx from "classnames";
 import styles from "./Modal.module.css";
 
-export interface ModalProps extends BaseModalProps, ModalHeaderProps {
+export interface ModalProps extends BaseModalProps {
+  header?: React.ReactNode;
   spacing?: number;
   indent?: number;
   draggable?: boolean;
@@ -15,13 +15,11 @@ export interface ModalProps extends BaseModalProps, ModalHeaderProps {
 
 export const Modal: React.FC<ModalProps> = ({
   header,
-  headerText,
   children,
   spacing,
   indent,
   draggable = false,
   onRequestClose,
-  closeButtonClassName,
   footer,
   disableStickyFooter = false,
   ...props
@@ -31,12 +29,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <BaseModal {...props} onRequestClose={onRequestClose} draggable={draggable}>
-      <ModalHeader
-        onRequestClose={onRequestClose}
-        header={header}
-        headerText={headerText}
-        closeButtonClassName={closeButtonClassName}
-      />
+      {header}
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}
       </Box>

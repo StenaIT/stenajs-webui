@@ -1,0 +1,17 @@
+.baseHeader {
+  --swui-content-header-height: 48px;
+
+  height: var(--swui-content-header-height);
+
+  &.compact {
+    --swui-content-header-height: 40px;
+  }
+
+  &.standard {
+    --swui-content-header-height: 48px;
+  }
+
+  &.relaxed {
+    --swui-content-header-height: 56px;
+  }
+}

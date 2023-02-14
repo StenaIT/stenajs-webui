@@ -1,7 +1,7 @@
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import { Box, Row, Space, Spacing, Text, Txt } from "@stenajs-webui/core";
+import { Box, Row, Spacing, Txt } from "@stenajs-webui/core";
 import {
   ActionMenuItem,
   ActionMenuItemContent,
@@ -19,6 +19,7 @@ import { cssColor } from "@stenajs-webui/theme";
 import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 import { ModalFooter } from "./ModalFooter";
+import { ModalHeader2 } from "./ModalHeader2";
 
 export default {
   title: "modal/Modal",
@@ -33,7 +34,12 @@ export const ModalWithHeader = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        headerText={"Modal title here"}
+        header={
+          <ModalHeader2
+            text={"Modal title here"}
+            onRequestClose={() => setOpen(false)}
+          />
+        }
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -49,7 +55,12 @@ export const Mobile = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        headerText={"Modal title here"}
+        header={
+          <ModalHeader2
+            text={"Modal title here"}
+            onRequestClose={() => setOpen(false)}
+          />
+        }
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -72,7 +83,12 @@ export const MobileWithFixedWidth = () => {
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
         width={"300px"}
-        headerText={"Modal title here"}
+        header={
+          <ModalHeader2
+            text={"Modal title here"}
+            onRequestClose={() => setOpen(false)}
+          />
+        }
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -91,19 +107,13 @@ MobileWithFixedWidth.parameters = {
   },
 };
 
-export const ModalWithCustomHeaderComponent = () => {
+export const ModalWithHeaderIcon = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        header={
-          <Row justifyContent={"flex-start"}>
-            <Icon icon={faLeaf} />
-            <Space />
-            <Text variant={"bold"}>Custom modal title</Text>
-          </Row>
-        }
+        header={<ModalHeader2 text={"Modal title here"} leftIcon={faLeaf} />}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -120,7 +130,6 @@ export const ModalWithFixedWidth = () => {
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
         width={"300px"}
-        headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -137,7 +146,6 @@ export const ModalWithMaxWidth = () => {
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
         maxWidth={"400px"}
-        headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -153,7 +161,7 @@ export const ModalWithScroll = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        headerText={"Modal title here"}
+        header={<ModalHeader2 text={"Scrollable modal content"} />}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -227,7 +235,13 @@ export const DraggableModal = () => {
     <div>
       <PrimaryButton onClick={() => setModalOpen(true)} label={"Open modal"} />
       <Modal
-        headerText={"Draggable modal"}
+        header={
+          <ModalHeader2
+            text={"Draggable modal"}
+            draggable
+            onRequestClose={() => setModalOpen(false)}
+          />
+        }
         isOpen={isModalOpen}
         onRequestClose={() => setModalOpen(false)}
         shouldCloseOnOverlayClick
@@ -250,7 +264,7 @@ export const CustomDraggableModal = () => {
         label={"Open custom modal"}
       />
       <Modal
-        headerText={"Non-draggable text"}
+        // header={<Txt>Non-draggable text</Txt>}
         header={
           <Row
             background={cssColor("--lhds-color-orange-200")}
@@ -308,7 +322,7 @@ export const ModalWithStickyContentBottom = () => {
         label={"Open sticky footer modal"}
       />
       <Modal
-        headerText={"Header text"}
+        header={<Txt>Header text</Txt>}
         isOpen={isStickyFooterModalOpen}
         onRequestClose={() => setStickyFootertModalOpen(false)}
         shouldCloseOnOverlayClick
