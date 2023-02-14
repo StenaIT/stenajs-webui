@@ -5,13 +5,11 @@
   border-radius: var(--swui-border-radius);
   padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-spacing) * 2);
 
-
   &.withIcon {
     padding: calc(var(--swui-metrics-spacing) * 0.5);
     padding-right: calc(var(--swui-metrics-spacing) * 2);
   }
 }
-
 
 .iconWrapper {
   /* State vars */
