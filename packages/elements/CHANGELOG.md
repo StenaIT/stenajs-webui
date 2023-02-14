@@ -1,3 +1,20 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🚀 Enhancement
+
+- changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- Change focus to focus-visible for form elements [#533](https://github.com/StenaIT/stenajs-webui/pull/533) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.34.0 (Thu Feb 09 2023)
 
 #### 🚀 Enhancement
