@@ -11,9 +11,9 @@ import React, {
 import styles from "./Dialog.module.css";
 import { ModalContext } from "./ModalContext";
 
-export type ShowCommand<TProps, TPromiseResolve> = (
-  props: TProps
-) => Promise<TPromiseResolve | undefined>;
+export type ShowCommand<TProps, TPromiseResolve> = keyof TProps extends never
+  ? () => Promise<TPromiseResolve | undefined>
+  : (props: TProps) => Promise<TPromiseResolve | undefined>;
 
 export type ResolveCommand<TPromiseResolve> = (
   resolveValue: TPromiseResolve
@@ -53,7 +53,7 @@ export function useModal<TProps, TPromiseResolve = void>(
   const Comp = component;
 
   const show = useCallback<ShowCommand<TProps, TPromiseResolve>>(
-    (props: TProps) => {
+    (props?: TProps) => {
       promiseRef.current = new Promise<TPromiseResolve | undefined>(
         (resolve, reject) => {
           resolveRef.current = resolve;

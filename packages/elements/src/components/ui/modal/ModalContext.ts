@@ -1,8 +1,9 @@
 import { createContext } from "react";
+import { RejectCommand, ResolveCommand } from "./UseModal";
 
 export interface ModalContextValue<TResolveValue> {
-  resolve: (value: TResolveValue) => void;
-  reject: (error?: Error) => void;
+  resolve: ResolveCommand<TResolveValue>;
+  reject: RejectCommand;
 }
 
 export const ModalContext = createContext<ModalContextValue<any> | undefined>(
