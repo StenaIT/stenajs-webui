@@ -29,7 +29,7 @@
   &::backdrop {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(13, 14, 16, 0.5);
     animation: fadein 0.25s forwards;
   }
 

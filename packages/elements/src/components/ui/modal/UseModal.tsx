@@ -33,11 +33,10 @@ export function useModal<TProps, TPromiseResolve = void>(
   const ref = useRef<HTMLDialogElement>(null);
   const [key, forceRerender] = useReducer((x) => x + 1, 0);
   const promiseRef = useRef<Promise<TPromiseResolve | undefined>>();
-  const resolveRef = useRef<
-    ((value: TPromiseResolve | undefined) => void) | undefined
-  >();
-  const rejectRef = useRef<((error?: Error) => void) | undefined>();
-  const [currentProps, setCurrentProps] = useState<TProps | undefined>();
+  const resolveRef = useRef<ResolveCommand<TPromiseResolve> | undefined>();
+  const modalComponentProps = useRef<TProps>();
+  const rejectRef = useRef<RejectCommand | undefined>();
+  const [contentVisible, setContentVisible] = useState(false);
   const [closing, setClosing] = useState(false);
 
   const Comp = component;
@@ -51,8 +50,9 @@ export function useModal<TProps, TPromiseResolve = void>(
         }
       );
       setClosing(false);
+      setContentVisible(true);
       forceRerender();
-      setCurrentProps(props);
+      modalComponentProps.current = props;
       ref.current?.showModal();
       return promiseRef.current;
     },
@@ -66,8 +66,10 @@ export function useModal<TProps, TPromiseResolve = void>(
         "animationend",
         () => {
           setClosing(false);
+          setContentVisible(false);
           ref.current?.close();
           resolveRef.current?.(value);
+          modalComponentProps.current = undefined;
         },
         { once: true }
       );
@@ -78,12 +80,17 @@ export function useModal<TProps, TPromiseResolve = void>(
   const reject = useCallback<RejectCommand>(
     (error) => {
       setClosing(true);
-      const listener = () => {
-        setClosing(false);
-        ref.current?.close();
-        rejectRef.current?.(error);
-      };
-      ref.current?.addEventListener("animationend", listener, { once: true });
+      ref.current?.addEventListener(
+        "animationend",
+        () => {
+          setClosing(false);
+          setContentVisible(false);
+          ref.current?.close();
+          rejectRef.current?.(error);
+          modalComponentProps.current = undefined;
+        },
+        { once: true }
+      );
     },
     [setClosing]
   );
@@ -104,7 +111,9 @@ export function useModal<TProps, TPromiseResolve = void>(
             className={options?.overlayDivClassName}
             onClick={(ev) => ev.stopPropagation()}
           >
-            {currentProps && <Comp {...currentProps} key={key} />}
+            {contentVisible && (
+              <Comp {...(modalComponentProps.current as TProps)} key={key} />
+            )}
           </div>
         </dialog>
       </ModalContext.Provider>
@@ -112,7 +121,7 @@ export function useModal<TProps, TPromiseResolve = void>(
     [
       Comp,
       closing,
-      currentProps,
+      contentVisible,
       key,
       options?.className,
       options?.overlayDivClassName,

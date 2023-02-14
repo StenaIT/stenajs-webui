@@ -6,7 +6,7 @@ export const useModalPromise = <
 >(): ModalContextValue<TResolveValue> => {
   const context = useContext(ModalContext);
   if (context == null) {
-    throw new Error("useDialogPromise is being used outside of useDialog.");
+    throw new Error("useModalPromise is being used outside of useModal.");
   }
   return context as ModalContextValue<TResolveValue>;
 };
