@@ -102,6 +102,7 @@ export const StandardTableHeadItem = React.memo(
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
           selected={selected}
+          height={"var(--current-row-height)"}
         />
       </th>
     );
