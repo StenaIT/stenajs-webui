@@ -6,7 +6,7 @@ import styles from "./ActionMenuItem.module.css";
 import { ButtonContentProps } from "../buttons/common/ButtonContent";
 import { useActionMenuLogic } from "./UseActionMenuLogic";
 import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
-import React from "react";
+import * as React from "react";
 
 export type ActionMenuItemVariant = "standard" | "danger" | "success";
 
