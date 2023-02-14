@@ -63,8 +63,6 @@ export interface DualTextInputProps {
   autoFocusLeft?: boolean;
   autoFocusRight?: boolean;
   disabled?: boolean;
-  showBorderContentLeft?: boolean;
-  showBorderContentRight?: boolean;
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
@@ -105,8 +103,6 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   widthLeft,
   widthRight,
   disabled,
-  showBorderContentLeft,
-  showBorderContentRight,
 }) => {
   const focusCounter = useRef(0);
 
@@ -168,8 +164,6 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
     <Box>
       <TextInputBox
         disableContentPaddingRight
-        showBorderContentLeft={showBorderContentLeft}
-        showBorderContentRight={showBorderContentRight}
         disabled={disabled}
         variant={variant}
         contentRight={

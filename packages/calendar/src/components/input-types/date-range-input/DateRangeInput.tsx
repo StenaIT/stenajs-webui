@@ -158,7 +158,6 @@ export function DateRangeInput<T>({
             />
           }
           disableContentPadding={true}
-          showBorderContentLeft={true}
         />
 
         <Row indent={1}>
@@ -170,7 +169,6 @@ export function DateRangeInput<T>({
         </Row>
 
         <TextInput
-          iconLeft={stenaCalendar}
           onFocus={showCalendarEndDate}
           value={value?.endDate ? format(value.endDate, displayFormat) : ""}
           placeholder={placeholderEndDate}
@@ -187,7 +185,6 @@ export function DateRangeInput<T>({
             />
           }
           disableContentPadding={true}
-          showBorderContentLeft={true}
         />
       </Row>
     </Popover>

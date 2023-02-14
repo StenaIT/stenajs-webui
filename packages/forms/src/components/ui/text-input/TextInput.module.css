@@ -37,9 +37,7 @@
   --swui-textinput-border-radius: var(--swui-field-border-radius);
   --swui-textinput-border-color: var(--swui-field-border-color);
   --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
-  --swui-textinput-border-color-disabled: var(
-    --swui-field-border-color-disabled
-  );
+  --swui-textinput-border-color-disabled: var(--swui-field-border-color-disabled);
 
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
@@ -75,8 +73,10 @@
     font-weight: var(--swui-textinput-font-weight);
     background: var(--swui-hidden);
     border: none;
-    min-width: 0; /* https://stackoverflow.com/a/43361500 */
-    margin: 0; /* Safari */
+    min-width: 0;
+    /* https://stackoverflow.com/a/43361500 */
+    margin: 0;
+    /* Safari */
 
     &:disabled {
       color: var(--swui-textinput-text-color-disabled);
@@ -95,13 +95,6 @@
     }
   }
 
-  .contentLeft {
-    border-left: 1px solid var(--current-border-color);
-  }
-
-  .contentRight {
-    border-right: 1px solid var(--current-border-color);
-  }
   /*
    * States
    */
