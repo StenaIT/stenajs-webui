@@ -7,28 +7,18 @@ import React, {
   useRef,
   useState,
 } from "react";
-
 import styles from "./Dialog.module.css";
+import { RejectCommand, ResolveCommand, ShowCommand } from "./ModalCommands";
 import { ModalContext } from "./ModalContext";
 
-export type ShowCommand<TProps, TPromiseResolve> = keyof TProps extends never
-  ? () => Promise<TPromiseResolve | undefined>
-  : (props: TProps) => Promise<TPromiseResolve | undefined>;
-
-export type ResolveCommand<TPromiseResolve> = (
-  resolveValue: TPromiseResolve
-) => void;
-
-export type RejectCommand = (error?: Error) => void;
-
-type ModalCommands<TProps, TPromiseResolve> = {
+type UseModalCallbacks<TProps, TPromiseResolve> = {
   show: ShowCommand<TProps, TPromiseResolve>;
   reject: RejectCommand;
 };
 
 type UseModalResult<TProps, TPromiseResolve> = [
   ReactNode,
-  ModalCommands<TProps, TPromiseResolve>
+  UseModalCallbacks<TProps, TPromiseResolve>
 ];
 
 interface ModalOptions {
