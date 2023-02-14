@@ -4,7 +4,7 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./TextInput.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FlatButton } from "@stenajs-webui/elements";
+import { InputFieldButton } from "@stenajs-webui/elements";
 
 export interface TextInputIconProps {
   iconClassName?: string;
@@ -62,7 +62,7 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
       {icon && (
         <>
           {onClick ? (
-            <FlatButton onClick={onClick} leftIcon={icon} size={"small"} />
+            <InputFieldButton onClick={onClick} icon={icon} />
           ) : (
             <FontAwesomeIcon
               icon={icon}
