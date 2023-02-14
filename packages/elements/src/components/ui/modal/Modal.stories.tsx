@@ -30,7 +30,7 @@ export const Overview: Story = () => {
 
   return (
     <Row>
-      <PrimaryButton label={"Open modal"} onClick={() => show({})} />
+      <PrimaryButton label={"Open modal"} onClick={() => show()} />
       {element}
     </Row>
   );
