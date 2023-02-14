@@ -36,6 +36,23 @@ export const Overview: Story = () => {
   );
 };
 
+export const Mobile: Story = () => {
+  const [element, { show }] = useModal(ModalContent);
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open modal"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
+};
+
 interface EmailFormProps {
   currentEmail: string;
 }
