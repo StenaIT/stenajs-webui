@@ -22,51 +22,42 @@ const variantIcons = {
 export interface TooltipProps
   extends Partial<Omit<PopoverProps, "theme" | "render">> {
   label: string;
-  maxWidth?: number;
   variant?: TooltipVariant;
   children: JSX.Element;
 }
 
 const TooltipText: React.FC<{ label: string }> = ({ label }) => (
-  <Text
-    className={styles.tooltipText}
-    color={cssColor("--lhds-color-ui-50")}
-    size={"small"}
-    variant="bold"
-  >
+  <Text color={cssColor("--lhds-color-ui-50")} size={"small"} variant="bold">
     {label}
   </Text>
 );
 
 export const Tooltip: React.FC<TooltipProps> = ({
   label,
-  maxWidth,
   variant,
   children,
   ...popoverProps
-}) => {
-  return (
-    <Popover
-      theme="dark"
-      {...popoverProps}
-      disablePadding
-      content={
-        <div className={cx(styles.tooltip, variant ? styles.withIcon : null)}>
-          {variant ? (
-            <>
-              <div className={cx(styles.iconWrapper, styles[variant])}>
-                <Icon icon={variantIcons[variant]} size={16} />
-              </div>
-              <Space />
-              <TooltipText label={label} />
-            </>
-          ) : (
+}) => (
+  <Popover
+    theme="dark"
+    {...popoverProps}
+    disablePadding
+    content={
+      <div className={cx(styles.tooltip, variant ? styles.withIcon : null)}>
+        {variant ? (
+          <>
+            <div className={cx(styles.iconWrapper, styles[variant])}>
+              <Icon icon={variantIcons[variant]} size={16} />
+            </div>
+            <Space />
             <TooltipText label={label} />
-          )}
-        </div>
-      }
-    >
-      {children}
-    </Popover>
-  );
-};
+          </>
+        ) : (
+          <TooltipText label={label} />
+        )}
+      </div>
+    }
+  >
+    {children}
+  </Popover>
+);

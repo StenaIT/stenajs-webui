@@ -1,6 +1,6 @@
 .tooltip {
   display: flex;
-  justify-content: center;
+  width: fit-content;
   align-items: center;
   border-radius: var(--swui-border-radius);
   padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-spacing) * 2);
