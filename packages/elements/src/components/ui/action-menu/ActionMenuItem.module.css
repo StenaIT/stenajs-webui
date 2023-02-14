@@ -7,16 +7,10 @@
   --swui-action-menu-icon-color-hover: var(--swui-text-primary-color);
 
   --swui-action-menu-item-background: var(--swui-white);
-  --swui-action-menu-item-background-focus: var(
-    --swui-primary-action-color-focus-light
-  );
-  --swui-action-menu-item-background-hover: var(
-    --swui-primary-action-color-hover-light
-  );
+  --swui-action-menu-item-background-focus: var(--swui-primary-action-color-focus-light);
+  --swui-action-menu-item-background-hover: var(--swui-primary-action-color-hover-light);
   --swui-action-menu-item-background-disabled: var(--swui-white);
-  --swui-action-menu-item-background-disabled-focus: var(
-    --swui-text-disabled-color-light
-  );
+  --swui-action-menu-item-background-disabled-focus: var(--swui-text-disabled-color-light);
 
   --swui-action-menu-item-label-color: var(--swui-text-primary-color);
   --swui-action-menu-item-label-color-disabled: var(--swui-text-disabled-color);
@@ -24,15 +18,9 @@
   --swui-action-menu-item-label-color-hover: var(--swui-text-primary-color);
 
   --swui-action-menu-item-text-color: var(--swui-text-primary-color-light);
-  --swui-action-menu-item-text-color-disabled: var(
-    --swui-text-disabled-color-light
-  );
-  --swui-action-menu-item-text-color-focus: var(
-    --swui-text-primary-color-light
-  );
-  --swui-action-menu-item-text-color-hover: var(
-    --swui-text-primary-color-light
-  );
+  --swui-action-menu-item-text-color-disabled: var(--swui-text-disabled-color-light);
+  --swui-action-menu-item-text-color-focus: var(--swui-text-primary-color-light);
+  --swui-action-menu-item-text-color-hover: var(--swui-text-primary-color-light);
 
   --current-item-background: var(--swui-action-menu-item-background);
   --current-item-label-color: var(--swui-action-menu-item-label-color);
@@ -67,27 +55,22 @@
   }
 
   &.standard {
-    &:disabled:focus-visible {
-      --current-item-background: var(
-        --swui-action-menu-item-background-disabled-focus
-      );
-    }
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--swui-action-menu-item-background-hover);
-      --current-item-label-color: var(
-        --swui-action-menu-item-label-color-hover
-      );
+      --current-item-label-color: var(--swui-action-menu-item-label-color-hover);
       --current-item-text-color: var(--swui-action-menu-item-text-color-hover);
       --current-item-icon-color: var(--swui-action-menu-icon-color-hover);
     }
 
     &:focus-visible {
       --current-item-background: var(--swui-action-menu-item-background-focus);
-      --current-item-label-color: var(
-        --swui-action-menu-item-label-color-focus
-      );
+      --current-item-label-color: var(--swui-action-menu-item-label-color-focus);
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
       --current-item-icon-color: var(--swui-action-menu-icon-color-focus);
+    }
+
+    &:disabled:focus-visible {
+      --current-item-background: var(--swui-action-menu-item-background-disabled-focus);
     }
   }
 
@@ -95,12 +78,6 @@
     --current-item-icon-color: var(--lhds-color-red-500);
     --current-item-label-color: var(--lhds-color-red-600);
 
-    &:disabled:focus-visible {
-      --current-item-background: var(
-        --swui-action-menu-item-background-disabled-focus
-      );
-    }
-
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--lhds-color-red-50);
       --current-item-icon-color: var(--lhds-color-red-500);
@@ -115,6 +92,10 @@
       --current-item-icon-color: var(--lhds-color-red-500);
 
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
+    }
+
+    &:disabled:focus-visible {
+      --current-item-background: var(--swui-action-menu-item-background-disabled-focus);
     }
   }
 
@@ -122,12 +103,6 @@
     --current-item-icon-color: var(--lhds-color-green-600);
     --current-item-label-color: var(--lhds-color-green-600);
 
-    &:disabled:focus-visible {
-      --current-item-background: var(
-        --swui-action-menu-item-background-disabled-focus
-      );
-    }
-
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--lhds-color-green-50);
       --current-item-icon-color: var(--lhds-color-green-600);
@@ -143,15 +118,17 @@
 
       --current-item-text-color: var(--swui-action-menu-item-text-color-focus);
     }
+
+    &:disabled:focus-visible {
+      --current-item-background: var(--swui-action-menu-item-background-disabled-focus);
+    }
   }
 
   &:disabled,
   &[aria-disabled="true"] {
     cursor: not-allowed;
     --current-item-background: var(--swui-action-menu-item-background-disabled);
-    --current-item-label-color: var(
-      --swui-action-menu-item-label-color-disabled
-    );
+    --current-item-label-color: var(--swui-action-menu-item-label-color-disabled);
     --current-item-text-color: var(--swui-action-menu-item-text-color-disabled);
     --current-item-icon-color: var(--swui-action-menu-icon-color-disabled);
   }
