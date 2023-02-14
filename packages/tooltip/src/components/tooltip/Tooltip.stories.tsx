@@ -22,7 +22,6 @@ export const Standard = () => (
       <Tooltip placement={"right"} label={"Nice content on right"}>
         <Text>Hover me</Text>
       </Tooltip>
-      <div />
     </Row>
     <Row justifyContent={"center"}>
       <Tooltip placement={"top"} label={"Nice content on top"}>
@@ -69,7 +68,6 @@ export const Variants = () => (
     <Tooltip label={"Error, shame! Lorem ipsum. Lorem ipsum"} maxWidth={70}>
       <Text>Multi row fixed witdh 70</Text>
     </Tooltip>
-
     <Tooltip
       label={"We need to inform about many things. Please read this."}
       variant={"warning"}

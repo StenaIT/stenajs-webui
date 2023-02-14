@@ -1,6 +1,17 @@
-.noPadding :global(.tippy-content) {
-  padding: 0;
+.tooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--swui-border-radius);
+  padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-spacing) * 2);
+
+
+  &.withIcon {
+    padding: calc(var(--swui-metrics-spacing) * 0.5);
+    padding-right: calc(var(--swui-metrics-spacing) * 2);
+  }
 }
+
 
 .iconWrapper {
   /* State vars */

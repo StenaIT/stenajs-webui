@@ -1,4 +1,4 @@
-import { Indent, Row, Text } from "@stenajs-webui/core";
+import { Text, Space } from "@stenajs-webui/core";
 import {
   Icon,
   stenaExclamationCircle,
@@ -27,20 +27,15 @@ export interface TooltipProps
   children: JSX.Element;
 }
 
-const TooltipText: React.FC<{ label: string; maxWidth?: number }> = ({
-  label,
-  maxWidth,
-}) => (
-  <Indent spacing={0.5} display={"inline-block"}>
-    <Text
-      color={cssColor("--lhds-color-ui-50")}
-      size={"small"}
-      variant="bold"
-      style={{ display: "flex", maxWidth: maxWidth }}
-    >
-      {label}
-    </Text>
-  </Indent>
+const TooltipText: React.FC<{ label: string }> = ({ label }) => (
+  <Text
+    className={styles.tooltipText}
+    color={cssColor("--lhds-color-ui-50")}
+    size={"small"}
+    variant="bold"
+  >
+    {label}
+  </Text>
 );
 
 export const Tooltip: React.FC<TooltipProps> = ({
@@ -54,20 +49,21 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <Popover
       theme="dark"
       {...popoverProps}
-      disablePadding={true}
+      disablePadding
       content={
-        <Row spacing={0.5} indent={0.5}>
+        <div className={cx(styles.tooltip, variant ? styles.withIcon : null)}>
           {variant ? (
             <>
               <div className={cx(styles.iconWrapper, styles[variant])}>
                 <Icon icon={variantIcons[variant]} size={16} />
               </div>
-              <TooltipText label={label} maxWidth={maxWidth} />
+              <Space />
+              <TooltipText label={label} />
             </>
           ) : (
-            <TooltipText label={label} maxWidth={maxWidth} />
+            <TooltipText label={label} />
           )}
-        </Row>
+        </div>
       }
     >
       {children}
