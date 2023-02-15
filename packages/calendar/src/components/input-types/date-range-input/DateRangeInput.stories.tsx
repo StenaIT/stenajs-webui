@@ -5,11 +5,11 @@ import * as React from "react";
 import { useState } from "react";
 import { DateRangeInput } from "./DateRangeInput";
 import { DateRange } from "../../../types/DateRange";
-import { FlatButton } from "@stenajs-webui/elements";
 import {
+  FlatButton,
   stenaLockClosed,
   stenaLockOpen,
-} from "../../../../../elements/src/icons/ui/IconsUi";
+} from "@stenajs-webui/elements";
 
 export default {
   title: "calendar/Input/DateRangeInput",
