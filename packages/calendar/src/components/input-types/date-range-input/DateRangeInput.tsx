@@ -143,7 +143,7 @@ export function DateRangeInput<T>({
       <Row alignItems={"center"}>
         <TextInput
           iconLeft={stenaCalendar}
-          onClickLeft={showCalendarEndDate}
+          onClickLeft={showCalendarStartDate}
           onFocus={showCalendarStartDate}
           value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}

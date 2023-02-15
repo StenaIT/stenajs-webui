@@ -1,4 +1,4 @@
-import { Box, Omit } from "@stenajs-webui/core";
+import { Box, Omit, Space } from "@stenajs-webui/core";
 import { InputFieldButton, stenaCalendar } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
@@ -140,11 +140,14 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
           disableContentPaddingRight
           contentRight={
             !hideCalenderIcon ? (
-              <InputFieldButton
-                icon={stenaCalendar}
-                disabled={disabled}
-                onClick={toggleCalendar}
-              />
+              <div style={{ display: "flex" }}>
+                <InputFieldButton
+                  icon={stenaCalendar}
+                  disabled={disabled}
+                  onClick={toggleCalendar}
+                />
+                <Space num={0.5} />
+              </div>
             ) : undefined
           }
           onValueChange={onValueChangeHandler}

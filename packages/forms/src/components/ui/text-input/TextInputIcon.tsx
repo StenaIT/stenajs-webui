@@ -12,6 +12,7 @@ export interface TextInputIconProps {
   icon?: IconDefinition;
   spaceOnRight?: boolean;
   spaceOnLeft?: boolean;
+  disabled?: boolean;
   disableContentPadding?: boolean;
   disableContentPaddingLeft?: boolean;
   disableContentPaddingRight?: boolean;
@@ -24,6 +25,7 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
   content,
   spaceOnLeft,
   spaceOnRight,
+  disabled,
   disableContentPadding,
   disableContentPaddingLeft,
   disableContentPaddingRight,
@@ -58,11 +60,15 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
 
   return (
     <>
-      {spaceOnLeft ? <Space /> : null}
+      {spaceOnLeft ? <Space num={0.5} /> : null}
       {icon && (
         <>
           {onClick ? (
-            <InputFieldButton onClick={onClick} icon={icon} />
+            <InputFieldButton
+              onClick={onClick}
+              icon={icon}
+              disabled={disabled}
+            />
           ) : (
             <FontAwesomeIcon
               icon={icon}
@@ -71,7 +77,7 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
           )}
         </>
       )}
-      {spaceOnRight ? <Space /> : null}
+      {spaceOnRight ? <Space num={0.5} /> : null}
     </>
   );
 };

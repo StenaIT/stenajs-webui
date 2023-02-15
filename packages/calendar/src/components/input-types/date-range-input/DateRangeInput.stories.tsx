@@ -1,10 +1,15 @@
-import { Column } from "@stenajs-webui/core";
+import { Column, Row } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import { addDays, format, subDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { DateRangeInput } from "./DateRangeInput";
 import { DateRange } from "../../../types/DateRange";
+import { FlatButton } from "@stenajs-webui/elements";
+import {
+  stenaLockClosed,
+  stenaLockOpen,
+} from "../../../../../elements/src/icons/ui/IconsUi";
 
 export default {
   title: "calendar/Input/DateRangeInput",
@@ -47,6 +52,30 @@ export const Disabled = () => {
     <div style={{ display: "inline-block" }}>
       <DateRangeInput value={value} onValueChange={setValue} disabled />
     </div>
+  );
+};
+
+export const DisabledToggle = () => {
+  const [disabled, setDisabled] = useState<boolean>(false);
+
+  const [value, setValue] = useState<DateRange>({
+    startDate: undefined,
+    endDate: undefined,
+  });
+
+  return (
+    <Row gap>
+      <FlatButton
+        leftIcon={disabled ? stenaLockClosed : stenaLockOpen}
+        onClick={() => setDisabled(!disabled)}
+        label="Toggle"
+      />
+      <DateRangeInput
+        value={value}
+        onValueChange={setValue}
+        disabled={disabled}
+      />
+    </Row>
   );
 };
 

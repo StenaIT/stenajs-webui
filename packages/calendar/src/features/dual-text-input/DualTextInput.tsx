@@ -6,6 +6,7 @@ import {
   Indent,
   Row,
   SeparatorLine,
+  Space,
 } from "@stenajs-webui/core";
 import {
   FlatButton,
@@ -168,11 +169,14 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         variant={variant}
         contentRight={
           <Row alignItems={"center"}>
-            <InputFieldButton
-              icon={stenaCalendar}
-              onClick={onClickCalendar}
-              disabled={disabled}
-            />
+            <div style={{ display: "flex" }}>
+              <InputFieldButton
+                icon={stenaCalendar}
+                disabled={disabled}
+                onClick={onClickCalendar}
+              />
+              <Space num={0.25} />
+            </div>
 
             {showPresets ? (
               <>

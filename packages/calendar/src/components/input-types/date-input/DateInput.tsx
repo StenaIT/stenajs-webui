@@ -15,7 +15,7 @@ import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
-import { InputFieldButton, stenaCalendar } from "@stenajs-webui/elements";
+import { stenaCalendar } from "@stenajs-webui/elements";
 
 export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */
@@ -112,13 +112,8 @@ export const DateInput: React.FC<DateInputProps> = ({
       >
         <TextInput
           type={"date"}
-          contentRight={
-            <InputFieldButton
-              disabled={disabled}
-              icon={stenaCalendar}
-              onClick={showCalendar}
-            />
-          }
+          onClick={showCalendar}
+          iconRight={stenaCalendar}
           onFocus={showCalendar}
           onClickRight={showCalendar}
           value={value ? format(value, displayFormat) : ""}

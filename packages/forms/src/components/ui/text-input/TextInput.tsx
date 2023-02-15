@@ -134,6 +134,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     >
       <TextInputIcon
         content={contentLeft}
+        disabled={disabled}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
@@ -151,6 +152,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         {...hookProps}
       />
       <TextInputIcon
+        disabled={disabled}
         content={currentContentRight}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}

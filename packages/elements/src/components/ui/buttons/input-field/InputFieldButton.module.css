@@ -5,9 +5,7 @@
   --swui-input-field-button-background-color-disabled: transparent;
   --swui-input-field-button-padding: 4px;
   --swui-input-field-button-icon-color: var(--lhds-color-blue-600);
-  --swui-input-field-button-icon-color-disabled: var(
-    --swui-text-disabled-color
-  );
+  --swui-input-field-button-icon-color-disabled: var(--swui-text-disabled-color);
 
   --current-background-color: var(--swui-input-field-button-background-color);
   --current-icon-color: var(--swui-input-field-button-icon-color);
@@ -33,9 +31,7 @@
   }
 
   &:disabled {
-    --current-background-color: var(
-      --swui-input-field-button-background-color-disabled
-    );
+    --current-background-color: var(--swui-input-field-button-background-color-disabled);
     --current-icon-color: var(--swui-input-field-button-icon-color-disabled);
     cursor: not-allowed;
   }
