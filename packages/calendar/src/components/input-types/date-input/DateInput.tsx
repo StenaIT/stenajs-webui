@@ -129,8 +129,7 @@ export const DateInput: React.FC<DateInputProps> = ({
           variant={variant}
           min={minDate}
           max={maxDate}
-          disableContentPadding={true}
-          showBorderContentRight={true}
+          disableContentPadding
         />
       </Popover>
     </Box>

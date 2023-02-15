@@ -170,7 +170,6 @@ export function DateRangeDualTextInput<TData>({
           maxLeft={maxDate}
           minRight={minDate}
           maxRight={maxDate}
-          showBorderContentRight={true}
         />
       </Popover>
     </Box>

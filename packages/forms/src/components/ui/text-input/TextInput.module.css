@@ -37,7 +37,9 @@
   --swui-textinput-border-radius: var(--swui-field-border-radius);
   --swui-textinput-border-color: var(--swui-field-border-color);
   --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
-  --swui-textinput-border-color-disabled: var(--swui-field-border-color-disabled);
+  --swui-textinput-border-color-disabled: var(
+    --swui-field-border-color-disabled
+  );
 
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);

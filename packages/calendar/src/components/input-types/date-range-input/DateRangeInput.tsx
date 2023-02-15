@@ -12,7 +12,7 @@ import {
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
-import { Icon, InputFieldButton, stenaCalendar } from "@stenajs-webui/elements";
+import { Icon, stenaCalendar } from "@stenajs-webui/elements";
 import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
@@ -142,6 +142,8 @@ export function DateRangeInput<T>({
     >
       <Row alignItems={"center"}>
         <TextInput
+          iconLeft={stenaCalendar}
+          onClickLeft={showCalendarEndDate}
           onFocus={showCalendarStartDate}
           value={value?.startDate ? format(value.startDate, displayFormat) : ""}
           placeholder={placeholderStartDate}
@@ -150,17 +152,10 @@ export function DateRangeInput<T>({
           inputRef={startDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}
-          contentLeft={
-            <InputFieldButton
-              disabled={disabled}
-              icon={stenaCalendar}
-              onClick={showCalendarStartDate}
-            />
-          }
           disableContentPadding={true}
         />
 
-        <Row indent={1}>
+        <Row indent>
           <Icon
             icon={faLongArrowAltRight}
             color={cssColor("--lhds-color-ui-500")}
@@ -169,6 +164,8 @@ export function DateRangeInput<T>({
         </Row>
 
         <TextInput
+          iconLeft={stenaCalendar}
+          onClickLeft={showCalendarEndDate}
           onFocus={showCalendarEndDate}
           value={value?.endDate ? format(value.endDate, displayFormat) : ""}
           placeholder={placeholderEndDate}
@@ -177,13 +174,6 @@ export function DateRangeInput<T>({
           inputRef={endDateInputRef}
           size={9}
           variant={startDateIsAfterEnd ? "error" : undefined}
-          contentLeft={
-            <InputFieldButton
-              disabled={disabled}
-              icon={stenaCalendar}
-              onClick={showCalendarEndDate}
-            />
-          }
           disableContentPadding={true}
         />
       </Row>

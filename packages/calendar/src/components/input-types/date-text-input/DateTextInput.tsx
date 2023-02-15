@@ -154,7 +154,6 @@ export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
           max={maxDate}
           size={10}
           disableContentPadding={true}
-          showBorderContentRight={true}
         />
       </Popover>
     </Box>
