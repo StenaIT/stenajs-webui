@@ -1,20 +1,20 @@
+import { Column, Row, Space } from "@stenajs-webui/core";
 import {
   FlatButton,
   stenaAngleLeft,
+  stenaAngleLeftDouble,
   stenaAngleRight,
+  stenaAngleRightDouble,
 } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Calendar } from "../../components/calendar/Calendar";
 import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
 import { CalendarProps } from "../../types/CalendarTypes";
+import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
+import { CalendarWithMonthYearPickers } from "../calendar-with-month-year-pickers/CalendarWithMonthYearPickers";
+import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { useSelectedMonthStepperLogic } from "./hooks/UseSelectedMonthStepperLogic";
 import { WithMonthSwitcherBelow } from "./MonthSwitcherBelow";
-import { CalendarWithMonthYearPickers } from "../calendar-with-month-year-pickers/CalendarWithMonthYearPickers";
-import { Column, Row, Space } from "@stenajs-webui/core";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons/faAngleDoubleRight";
-import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
-import { CalendarPreset } from "../preset-picker/CalendarPreset";
 
 export type MonthSwitcherPlacement = "header" | "below";
 
@@ -85,7 +85,7 @@ export function CalendarWithMonthSwitcher<T>({
                   <FlatButton
                     size={"small"}
                     onClick={prevYear}
-                    leftIcon={faAngleDoubleLeft}
+                    leftIcon={stenaAngleLeftDouble}
                   />
                 )}
                 <Space />
@@ -108,7 +108,7 @@ export function CalendarWithMonthSwitcher<T>({
                   <FlatButton
                     size={"small"}
                     onClick={nextYear}
-                    leftIcon={faAngleDoubleRight}
+                    leftIcon={stenaAngleRightDouble}
                   />
                 )}
               </Row>

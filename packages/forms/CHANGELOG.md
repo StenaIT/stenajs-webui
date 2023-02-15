@@ -1,3 +1,33 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🚀 Enhancement
+
+- changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- Change focus to focus-visible for form elements [#533](https://github.com/StenaIT/stenajs-webui/pull/533) ([@lindskogen](https://github.com/lindskogen))
+- Set TextInputIcon type to button (fixes AB#105906) [#544](https://github.com/StenaIT/stenajs-webui/pull/544) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.29.0 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Remove --lhds-color-purple-* [#538](https://github.com/StenaIT/stenajs-webui/pull/538) ([@LordDz](https://github.com/LordDz))
+
+#### Authors: 1
+
+- David ([@LordDz](https://github.com/LordDz))
+
+---
+
 # v17.25.0 (Wed Oct 26 2022)
 
 #### 🚀 Enhancement

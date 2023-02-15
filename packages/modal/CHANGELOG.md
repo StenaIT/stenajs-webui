@@ -1,3 +1,15 @@
+# v17.30.7 (Tue Jan 31 2023)
+
+#### 🐛 Bug Fix
+
+- Modal width is always 100% on mobile [#553](https://github.com/StenaIT/stenajs-webui/pull/553) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.27.0 (Wed Nov 09 2022)
 
 #### 🚀 Enhancement

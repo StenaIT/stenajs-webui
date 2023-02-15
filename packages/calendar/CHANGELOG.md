@@ -1,3 +1,75 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🐛 Bug Fix
+
+- Actually disable the calendar icon button in DateTextInput [#530](https://github.com/StenaIT/stenajs-webui/pull/530) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.30.6 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- Use stena icons for year buttons in calendar [#552](https://github.com/StenaIT/stenajs-webui/pull/552) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.5 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- Show month names in correct locale [#551](https://github.com/StenaIT/stenajs-webui/pull/551) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.4 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- Fix DateRangeCalendar stories, the dates are now clickable [#550](https://github.com/StenaIT/stenajs-webui/pull/550) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.1 (Thu Jan 12 2023)
+
+#### 🐛 Bug Fix
+
+- Correct time offset when calendar focuses on date [#543](https://github.com/StenaIT/stenajs-webui/pull/543) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
+# v17.29.0 (Mon Dec 12 2022)
+
+#### 🚀 Enhancement
+
+- Add support for locale in calendar [#541](https://github.com/StenaIT/stenajs-webui/pull/541) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.28.1 (Fri Nov 25 2022)
 
 #### 🐛 Bug Fix

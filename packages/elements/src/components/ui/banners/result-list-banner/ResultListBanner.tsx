@@ -17,6 +17,7 @@ export interface ResultListBannerProps
 export const ResultListBanner: React.FC<ResultListBannerProps> = ({
   bannerState,
   variant = "standard",
+  children,
   ...bannerProps
 }) => {
   return (
@@ -40,6 +41,7 @@ export const ResultListBanner: React.FC<ResultListBannerProps> = ({
           </ResultList>
         </>
       )}
+      {children}
     </Banner>
   );
 };

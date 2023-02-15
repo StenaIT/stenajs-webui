@@ -49,7 +49,9 @@ export const useDateRangeHandlers = (
       }
       setDateInFocus(newDate);
       if (dateInputRef.current) {
-        dateInputRef.current.valueAsDate = newDate;
+        dateInputRef.current.valueAsDate = new Date(
+          Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate())
+        );
       }
     },
     [date, dateInputRef, localTime, onValueChange, setDateInFocus, setLocalDate]

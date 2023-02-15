@@ -92,6 +92,9 @@ export interface CalendarProps<T>
   /** If true, today's date will be highlighted. */
   highlightToday?: boolean;
 
+  /** The locale to use for formatting */
+  locale?: Locale;
+
   /** The theme to use. */
   theme?: CalendarTheme;
 }
