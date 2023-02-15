@@ -3,8 +3,12 @@ import * as React from "react";
 import { BaseModal, BaseModalProps } from "./BaseModal";
 import cx from "classnames";
 import styles from "./Modal.module.css";
+import { ModalHeader2, ModalHeaderProps2 } from "./ModalHeader2";
 
-export interface ModalProps extends BaseModalProps {
+export interface ModalProps
+  extends BaseModalProps,
+    Pick<ModalHeaderProps2, "draggable" | "closeButtonClassName"> {
+  headerText?: string;
   header?: React.ReactNode;
   spacing?: number;
   indent?: number;
@@ -15,6 +19,7 @@ export interface ModalProps extends BaseModalProps {
 
 export const Modal: React.FC<ModalProps> = ({
   header,
+  headerText,
   children,
   spacing,
   indent,
@@ -30,6 +35,13 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <BaseModal {...props} onRequestClose={onRequestClose} draggable={draggable}>
       {header}
+      {!header && !!headerText && (
+        <ModalHeader2
+          onRequestClose={onRequestClose}
+          draggable={draggable}
+          text={headerText}
+        />
+      )}
       <Box spacing={activeSpacing} indent={activeIndent}>
         {children}
       </Box>

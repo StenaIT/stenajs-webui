@@ -19,6 +19,7 @@ export interface BaseHeaderProps
   contentCenter?: ReactNode;
   contentAfterHeading?: ReactNode;
   headingLevel?: HeadingVariant;
+  textClassName?: string;
 }
 
 /**
@@ -34,13 +35,15 @@ export const BaseHeader: React.FC<BaseHeaderProps> = ({
   contentCenter,
   headingLevel = "h2",
   indent = 3,
+  className,
+  textClassName,
   ...boxProps
 }) => {
   return (
     <Row
       justifyContent={"space-between"}
       borderBottom={`1px solid ${cssColor("--lhds-color-ui-300")}`}
-      className={cx(styles.baseHeader, styles[variant])}
+      className={cx(styles.baseHeader, styles[variant], className)}
       indent={indent}
       {...boxProps}
     >
@@ -49,6 +52,7 @@ export const BaseHeader: React.FC<BaseHeaderProps> = ({
         {leftIcon && <Icon icon={leftIcon} size={resolveIconSize(variant)} />}
         {text && (
           <Heading
+            className={textClassName}
             variant={variant === "compact" ? "h5" : "h4"}
             as={headingLevel}
           >

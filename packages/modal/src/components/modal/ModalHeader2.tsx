@@ -4,8 +4,12 @@ import {
   FlatButton,
   stenaTimes,
 } from "@stenajs-webui/elements";
+import cx from "classnames";
 import * as React from "react";
-import { DRAGGABLE_HANDLE_CLASSNAME } from "./BaseModal";
+import {
+  DRAGGABLE_CANCEL_CLASSNAME,
+  DRAGGABLE_HANDLE_CLASSNAME,
+} from "./BaseModal";
 
 export interface ModalHeaderProps2
   extends Omit<BaseHeaderProps, "contentRight"> {
@@ -18,11 +22,12 @@ export const ModalHeader2: React.FC<ModalHeaderProps2> = ({
   onRequestClose,
   closeButtonClassName,
   draggable = false,
+  className,
   ...baseHeaderProps
 }) => {
   return (
     <BaseHeader
-      className={DRAGGABLE_HANDLE_CLASSNAME}
+      className={cx({ [DRAGGABLE_HANDLE_CLASSNAME]: draggable }, className)}
       contentRight={
         onRequestClose && (
           <FlatButton
@@ -33,6 +38,7 @@ export const ModalHeader2: React.FC<ModalHeaderProps2> = ({
           />
         )
       }
+      textClassName={DRAGGABLE_CANCEL_CLASSNAME}
       {...baseHeaderProps}
     />
   );

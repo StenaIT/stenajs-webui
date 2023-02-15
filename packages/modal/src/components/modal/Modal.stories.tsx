@@ -1,7 +1,7 @@
 import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons/faLeaf";
-import { Box, Row, Spacing, Txt } from "@stenajs-webui/core";
+import { Box, Row, Spacing, Text, Txt } from "@stenajs-webui/core";
 import {
   ActionMenuItem,
   ActionMenuItemContent,
@@ -9,13 +9,13 @@ import {
   Icon,
   PrimaryButton,
   SecondaryButton,
+  Tag,
 } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import ReactModal from "react-modal";
-import { BaseModal, DRAGGABLE_CANCEL_CLASSNAME } from "./BaseModal";
+import { BaseModal } from "./BaseModal";
 import { Modal } from "./Modal";
-import { cssColor } from "@stenajs-webui/theme";
 import { ActionMenuSecondaryButton } from "@stenajs-webui/panels";
 import { faJediOrder } from "@fortawesome/free-brands-svg-icons";
 import { ModalFooter } from "./ModalFooter";
@@ -28,7 +28,35 @@ export default {
 
 ReactModal.setAppElement("#root");
 
+export const SimpleModal = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <Modal isOpen={isOpen} onRequestClose={() => setOpen(false)}>
+        {loremIpsumSampleText}
+      </Modal>
+    </>
+  );
+};
+
 export const ModalWithHeader = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <Modal
+        headerText={"Header text"}
+        isOpen={isOpen}
+        onRequestClose={() => setOpen(false)}
+      >
+        {loremIpsumSampleText}
+      </Modal>
+    </>
+  );
+};
+
+export const ModalWithCustomHeader = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
@@ -36,12 +64,14 @@ export const ModalWithHeader = () => {
       <Modal
         header={
           <ModalHeader2
-            text={"Modal title here"}
+            text={"Custom header"}
+            leftIcon={faLeaf}
+            contentAfterHeading={<Tag label={"Stuff"} />}
+            contentCenter={<Text>Leaves are beautiful</Text>}
             onRequestClose={() => setOpen(false)}
           />
         }
         isOpen={isOpen}
-        onRequestClose={() => setOpen(false)}
       >
         {loremIpsumSampleText}
       </Modal>
@@ -55,12 +85,7 @@ export const Mobile = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        header={
-          <ModalHeader2
-            text={"Modal title here"}
-            onRequestClose={() => setOpen(false)}
-          />
-        }
+        headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -83,12 +108,7 @@ export const MobileWithFixedWidth = () => {
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
         width={"300px"}
-        header={
-          <ModalHeader2
-            text={"Modal title here"}
-            onRequestClose={() => setOpen(false)}
-          />
-        }
+        headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -107,28 +127,13 @@ MobileWithFixedWidth.parameters = {
   },
 };
 
-export const ModalWithHeaderIcon = () => {
-  const [isOpen, setOpen] = useState(false);
-  return (
-    <>
-      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
-      <Modal
-        header={<ModalHeader2 text={"Modal title here"} leftIcon={faLeaf} />}
-        isOpen={isOpen}
-        onRequestClose={() => setOpen(false)}
-      >
-        {loremIpsumSampleText}
-      </Modal>
-    </>
-  );
-};
-
 export const ModalWithFixedWidth = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
+        headerText={"Fixed width 300px"}
         width={"300px"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
@@ -145,6 +150,7 @@ export const ModalWithMaxWidth = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
+        headerText={"Max width 400px"}
         maxWidth={"400px"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
@@ -161,7 +167,7 @@ export const ModalWithScroll = () => {
     <>
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
-        header={<ModalHeader2 text={"Scrollable modal content"} />}
+        headerText={"Scrollable modal content"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}
       >
@@ -235,13 +241,7 @@ export const DraggableModal = () => {
     <div>
       <PrimaryButton onClick={() => setModalOpen(true)} label={"Open modal"} />
       <Modal
-        header={
-          <ModalHeader2
-            text={"Draggable modal"}
-            draggable
-            onRequestClose={() => setModalOpen(false)}
-          />
-        }
+        headerText={"Draggable modal"}
         isOpen={isModalOpen}
         onRequestClose={() => setModalOpen(false)}
         shouldCloseOnOverlayClick
@@ -257,6 +257,7 @@ export const DraggableModal = () => {
 
 export const CustomDraggableModal = () => {
   const [isCustomModalOpen, setCustomModalOpen] = useState(false);
+  const closeModal = () => setCustomModalOpen(false);
   return (
     <div>
       <PrimaryButton
@@ -264,46 +265,38 @@ export const CustomDraggableModal = () => {
         label={"Open custom modal"}
       />
       <Modal
-        // header={<Txt>Non-draggable text</Txt>}
         header={
-          <Row
-            background={cssColor("--lhds-color-orange-200")}
-            flex={1}
-            spacing
-            indent={2}
-            justifyContent={"space-around"}
-            alignItems={"center"}
-            height={64}
-          >
-            <Txt variant={"bold"}>This is custom content</Txt>
-            <Box
-              className={DRAGGABLE_CANCEL_CLASSNAME}
-              background={cssColor("--lhds-color-orange-400")}
-              indent={2}
-            >
-              <Txt variant={"bold"}>I am not draggable</Txt>
-            </Box>
-            <SecondaryButton label={"Buttons are not draggable"} />
-            <ActionMenuSecondaryButton
-              renderItems={() => (
-                <>
-                  <ActionMenuItem label={"Button"} />
-                  <ActionMenuLink label={"Link"} />
-                  <ActionMenuItemContent
-                    label={"Content"}
-                    right={
-                      <SecondaryButton size={"small"} leftIcon={faJediOrder} />
-                    }
-                  />
-                </>
-              )}
-            />
-          </Row>
+          <ModalHeader2
+            draggable
+            text={"Draggable custom content"}
+            variant={"compact"}
+            onRequestClose={closeModal}
+            contentCenter={
+              <Row>
+                <SecondaryButton label={"Buttons are not draggable"} />
+                <ActionMenuSecondaryButton
+                  renderItems={() => (
+                    <>
+                      <ActionMenuItem label={"Button"} />
+                      <ActionMenuLink label={"Link"} />
+                      <ActionMenuItemContent
+                        label={"Content"}
+                        right={
+                          <SecondaryButton
+                            size={"small"}
+                            leftIcon={faJediOrder}
+                          />
+                        }
+                      />
+                    </>
+                  )}
+                />
+              </Row>
+            }
+          />
         }
         isOpen={isCustomModalOpen}
-        onRequestClose={() => setCustomModalOpen(false)}
-        shouldCloseOnOverlayClick
-        draggable
+        onRequestClose={closeModal}
       >
         <Box indent={2} spacing>
           <Txt>Drag me using the header except the non-draggable parts.</Txt>
@@ -322,7 +315,7 @@ export const ModalWithStickyContentBottom = () => {
         label={"Open sticky footer modal"}
       />
       <Modal
-        header={<Txt>Header text</Txt>}
+        headerText={"Sticky bottom"}
         isOpen={isStickyFooterModalOpen}
         onRequestClose={() => setStickyFootertModalOpen(false)}
         shouldCloseOnOverlayClick
