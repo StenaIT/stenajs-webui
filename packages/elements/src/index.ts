@@ -44,3 +44,4 @@ export * from "./components/ui/route-leg/RouteLeg";
 export * from "./components/ui/route-leg/TimeTag";
 export * from "./components/ui/modal/UseModal";
 export * from "./components/ui/modal/UseModalPromise";
+export * from "./components/ui/modal/drawer/UseModalDrawer";
