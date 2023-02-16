@@ -8,14 +8,14 @@
     .contentWrapper {
       height: 100%;
     }
-  }
-
-  &.left {
-    margin: 0 auto 0 0;
 
     @media (max-width: 768px) {
       width: fit-content;
     }
+  }
+
+  &.left {
+    margin: 0 auto 0 0;
 
     &[open] {
       animation: slideInLeft 0.25s forwards;
@@ -28,10 +28,6 @@
 
   &.right {
     margin: 0 0 0 auto;
-
-    @media (max-width: 768px) {
-      width: fit-content;
-    }
 
     &[open] {
       animation: slideInRight 0.25s forwards;
