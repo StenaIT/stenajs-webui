@@ -7,23 +7,25 @@ import React, {
   useRef,
   useState,
 } from "react";
-import styles from "./Dialog.module.css";
 import { RejectCommand, ResolveCommand, ShowCommand } from "./ModalCommands";
 import { ModalContext } from "./ModalContext";
+import styles from "./Modal.module.css";
 
 type UseModalCallbacks<TProps, TPromiseResolve> = {
   show: ShowCommand<TProps, TPromiseResolve>;
   reject: RejectCommand;
 };
 
-type UseModalResult<TProps, TPromiseResolve> = [
+export type UseModalResult<TProps, TPromiseResolve> = [
   ReactNode,
   UseModalCallbacks<TProps, TPromiseResolve>
 ];
 
-interface ModalOptions {
+export interface ModalOptions {
+  disableCloseOnClickOutside?: boolean;
   className?: string;
-  overlayDivClassName?: string;
+  closingClassName?: string;
+  contentWrapperClassName?: string;
 }
 
 export function useModal<TProps, TPromiseResolve = void>(
@@ -99,17 +101,24 @@ export function useModal<TProps, TPromiseResolve = void>(
     () => (
       <ModalContext.Provider value={{ resolve, reject }}>
         <dialog
-          onClick={() => reject()}
+          onClick={
+            options?.disableCloseOnClickOutside ? undefined : () => reject()
+          }
           ref={ref}
           className={cx(
-            styles.dialog,
+            styles.modal,
             closing && styles.closing,
+            closing && options?.closingClassName,
             options?.className
           )}
         >
           <div
-            className={options?.overlayDivClassName}
-            onClick={(ev) => ev.stopPropagation()}
+            className={options?.contentWrapperClassName}
+            onClick={
+              options?.disableCloseOnClickOutside
+                ? undefined
+                : (ev) => ev.stopPropagation()
+            }
           >
             {contentVisible && (
               <Comp {...(modalComponentProps.current as TProps)} key={key} />
@@ -119,14 +128,16 @@ export function useModal<TProps, TPromiseResolve = void>(
       </ModalContext.Provider>
     ),
     [
-      Comp,
+      resolve,
+      reject,
+      options?.disableCloseOnClickOutside,
+      options?.closingClassName,
+      options?.className,
+      options?.contentWrapperClassName,
       closing,
       contentVisible,
+      Comp,
       key,
-      options?.className,
-      options?.overlayDivClassName,
-      reject,
-      resolve,
     ]
   );
 
