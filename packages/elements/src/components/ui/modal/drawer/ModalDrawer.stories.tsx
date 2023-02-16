@@ -31,3 +31,36 @@ export const Overview: Story = () => {
     </Row>
   );
 };
+
+export const FromRight: Story = () => {
+  const [element, { show }] = useModalDrawer(DrawerContent, "right");
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open drawer"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
+export const FromTop: Story = () => {
+  const [element, { show }] = useModalDrawer(DrawerContent, "top");
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open drawer"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
+export const FromBottom: Story = () => {
+  const [element, { show }] = useModalDrawer(DrawerContent, "bottom");
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open drawer"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
