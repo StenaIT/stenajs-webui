@@ -1,3 +1,19 @@
+# v18.0.1 (Thu Feb 16 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Prioritize ActionMenuItems disabled variants in CSS [#540](https://github.com/StenaIT/stenajs-webui/pull/540) (david.zetterdahl@stenaline.com [@lindskogen](https://github.com/lindskogen) [@LordDz](https://github.com/LordDz))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
 # v18.0.0 (Mon Feb 13 2023)
 
 #### 💥 Breaking Change
