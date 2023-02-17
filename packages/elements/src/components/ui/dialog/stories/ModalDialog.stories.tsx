@@ -3,18 +3,18 @@ import { TextInput } from "@stenajs-webui/forms";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { PrimaryButton } from "../buttons/PrimaryButton";
-import { SecondaryButton } from "../buttons/SecondaryButton";
-import { Label } from "../label/Label";
-import { useModal } from "./UseModal";
-import { useModalPromise } from "./UseModalPromise";
+import { PrimaryButton } from "../../buttons/PrimaryButton";
+import { SecondaryButton } from "../../buttons/SecondaryButton";
+import { Label } from "../../label/Label";
+import { useDialogPromise } from "../UseDialogPromise";
+import { useModalDialog } from "../modal/UseModalDialog";
 
 export default {
-  title: "elements/Modal",
+  title: "elements/ModalDialog",
 };
 
 const ModalContent: React.FC = () => {
-  const { resolve } = useModalPromise();
+  const { resolve } = useDialogPromise();
 
   return (
     <Column spacing={2} indent={2} gap={2}>
@@ -26,7 +26,7 @@ const ModalContent: React.FC = () => {
   );
 };
 export const Overview: Story = () => {
-  const [element, { show }] = useModal(ModalContent);
+  const [element, { show }] = useModalDialog(ModalContent);
 
   return (
     <Row>
@@ -37,7 +37,7 @@ export const Overview: Story = () => {
 };
 
 export const Mobile: Story = () => {
-  const [element, { show }] = useModal(ModalContent);
+  const [element, { show }] = useModalDialog(ModalContent);
 
   return (
     <Row>
@@ -59,7 +59,7 @@ interface EmailFormProps {
 
 const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
   const [text, setText] = useState(currentEmail);
-  const { resolve, reject } = useModalPromise<string>();
+  const { resolve, reject } = useDialogPromise<string>();
 
   return (
     <Column spacing={2} indent={2} gap={2}>
@@ -76,7 +76,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
 };
 
 export const ResolveReject: Story = () => {
-  const [element, { show }] = useModal<EmailFormProps, string>(EmailForm);
+  const [element, { show }] = useModalDialog<EmailFormProps, string>(EmailForm);
   const [email, setEmail] = useState<string | undefined>(undefined);
 
   const onClickOpen = useCallback(async () => {

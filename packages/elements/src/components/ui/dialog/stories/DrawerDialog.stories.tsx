@@ -2,15 +2,15 @@ import { Column, Row, Text } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { PrimaryButton } from "../../buttons/PrimaryButton";
-import { useModalPromise } from "../UseModalPromise";
-import { useModalDrawer } from "./UseModalDrawer";
+import { useDrawerDialog } from "../drawer/UseDrawerDialog";
+import { useDialogPromise } from "../UseDialogPromise";
 
 export default {
   title: "elements/ModalDrawer",
 };
 
 const DrawerContent: React.FC = () => {
-  const { resolve } = useModalPromise();
+  const { resolve } = useDialogPromise();
 
   return (
     <Column spacing={2} indent={2} gap={2}>
@@ -22,7 +22,7 @@ const DrawerContent: React.FC = () => {
   );
 };
 export const Overview: Story = () => {
-  const [element, { show }] = useModalDrawer(DrawerContent, "left");
+  const [element, { show }] = useDrawerDialog(DrawerContent, "left");
 
   return (
     <Row>
@@ -33,7 +33,7 @@ export const Overview: Story = () => {
 };
 
 export const FromRight: Story = () => {
-  const [element, { show }] = useModalDrawer(DrawerContent, "right");
+  const [element, { show }] = useDrawerDialog(DrawerContent, "right");
 
   return (
     <Row>
@@ -44,7 +44,7 @@ export const FromRight: Story = () => {
 };
 
 export const FromTop: Story = () => {
-  const [element, { show }] = useModalDrawer(DrawerContent, "top");
+  const [element, { show }] = useDrawerDialog(DrawerContent, "top");
 
   return (
     <Row>
@@ -55,7 +55,7 @@ export const FromTop: Story = () => {
 };
 
 export const FromBottom: Story = () => {
-  const [element, { show }] = useModalDrawer(DrawerContent, "bottom");
+  const [element, { show }] = useDrawerDialog(DrawerContent, "bottom");
 
   return (
     <Row>

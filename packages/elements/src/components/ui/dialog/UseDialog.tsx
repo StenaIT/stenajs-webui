@@ -1,38 +1,43 @@
 import cx from "classnames";
 import React, {
   ReactNode,
+  RefObject,
   useCallback,
   useMemo,
   useReducer,
   useRef,
   useState,
 } from "react";
-import { RejectCommand, ResolveCommand, ShowCommand } from "./ModalCommands";
-import { ModalContext } from "./ModalContext";
-import styles from "./Modal.module.css";
+import { RejectCommand, ResolveCommand, ShowCommand } from "./DialogCommands";
+import { DialogContext } from "./DialogContext";
 
-type UseModalCallbacks<TProps, TPromiseResolve> = {
+type UseDialogCallbacks<TProps, TPromiseResolve> = {
   show: ShowCommand<TProps, TPromiseResolve>;
   reject: RejectCommand;
 };
 
-export type UseModalResult<TProps, TPromiseResolve> = [
+export type UseDialogResult<TProps, TPromiseResolve> = [
   ReactNode,
-  UseModalCallbacks<TProps, TPromiseResolve>
+  UseDialogCallbacks<TProps, TPromiseResolve>
 ];
 
-export interface ModalOptions {
+export interface DialogOptions {
   disableCloseOnClickOutside?: boolean;
-  className?: string;
-  closingClassName?: string;
-  contentWrapperClassName?: string;
+  modal: boolean;
+  className: string;
+  closingClassName: string;
+  contentWrapperClassName: string;
+  ref?: RefObject<HTMLDialogElement>;
+  onResolve?: () => void;
+  onReject?: () => void;
 }
 
-export function useModal<TProps, TPromiseResolve = void>(
+export function useDialog<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
-  options?: ModalOptions
-): UseModalResult<TProps, TPromiseResolve> {
-  const ref = useRef<HTMLDialogElement>(null);
+  options: DialogOptions
+): UseDialogResult<TProps, TPromiseResolve> {
+  const localRef = useRef<HTMLDialogElement>(null);
+  const currentRef = options.ref ?? localRef;
   const [key, forceRerender] = useReducer((x) => x + 1, 0);
   const promiseRef = useRef<Promise<TPromiseResolve | undefined>>();
   const resolveRef = useRef<ResolveCommand<TPromiseResolve> | undefined>();
@@ -55,85 +60,98 @@ export function useModal<TProps, TPromiseResolve = void>(
       setContentVisible(true);
       forceRerender();
       modalComponentProps.current = props;
-      ref.current?.showModal();
+      if (options?.modal) {
+        currentRef.current?.showModal();
+      } else {
+        currentRef.current?.show();
+      }
       return promiseRef.current;
     },
-    []
+    [currentRef, options?.modal]
   );
 
   const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
     (value) => {
       setClosing(true);
-      ref.current?.addEventListener(
+      currentRef.current?.addEventListener(
         "animationend",
         () => {
           setClosing(false);
           setContentVisible(false);
-          ref.current?.close();
+          currentRef.current?.close();
           resolveRef.current?.(value);
           modalComponentProps.current = undefined;
+          options?.onResolve?.();
         },
         { once: true }
       );
     },
-    [setClosing]
+    [currentRef, options]
   );
 
   const reject = useCallback<RejectCommand>(
     (error) => {
       setClosing(true);
-      ref.current?.addEventListener(
+      currentRef.current?.addEventListener(
         "animationend",
         () => {
           setClosing(false);
           setContentVisible(false);
-          ref.current?.close();
+          currentRef.current?.close();
           rejectRef.current?.(error);
+          options?.onReject?.();
           modalComponentProps.current = undefined;
         },
         { once: true }
       );
     },
-    [setClosing]
+    [currentRef, options]
   );
 
   const dialogElement = useMemo<ReactNode>(
     () => (
-      <ModalContext.Provider value={{ resolve, reject }}>
+      <DialogContext.Provider value={{ resolve, reject }}>
         <dialog
           onClick={
             options?.disableCloseOnClickOutside ? undefined : () => reject()
           }
-          ref={ref}
+          ref={currentRef}
           className={cx(
-            styles.modal,
-            closing && styles.closing,
-            closing && options?.closingClassName,
-            options?.className
+            options?.className,
+            closing && options?.closingClassName
           )}
         >
-          <div
-            className={options?.contentWrapperClassName}
-            onClick={
-              options?.disableCloseOnClickOutside
-                ? undefined
-                : (ev) => ev.stopPropagation()
-            }
-          >
-            {contentVisible && (
-              <Comp {...(modalComponentProps.current as TProps)} key={key} />
-            )}
-          </div>
+          {options?.disableCloseOnClickOutside ? (
+            <>
+              {contentVisible && (
+                <Comp {...(modalComponentProps.current as TProps)} key={key} />
+              )}
+            </>
+          ) : (
+            <div
+              className={options?.contentWrapperClassName}
+              onClick={
+                options?.disableCloseOnClickOutside
+                  ? undefined
+                  : (ev) => ev.stopPropagation()
+              }
+            >
+              {contentVisible && (
+                <Comp {...(modalComponentProps.current as TProps)} key={key} />
+              )}
+            </div>
+          )}
         </dialog>
-      </ModalContext.Provider>
+      </DialogContext.Provider>
     ),
     [
       resolve,
       reject,
       options?.disableCloseOnClickOutside,
-      options?.closingClassName,
       options?.className,
+      options?.closingClassName,
       options?.contentWrapperClassName,
+      currentRef,
       closing,
       contentVisible,
       Comp,

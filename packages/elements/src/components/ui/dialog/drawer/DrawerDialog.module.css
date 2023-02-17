@@ -1,10 +1,20 @@
-.modalDrawer {
+.drawerDialog {
   max-height: 100%;
   max-width: 100%;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: contain;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px 4px;
+  position: fixed;
 
   &.left,
   &.right {
     height: 100%;
+    top: 0;
+    bottom: 0;
+
     .contentWrapper {
       height: 100%;
     }
@@ -15,7 +25,8 @@
   }
 
   &.left {
-    margin: 0 auto 0 0;
+    left: 0;
+    right: unset;
 
     &[open] {
       animation: slideInLeft 0.25s forwards;
@@ -27,7 +38,8 @@
   }
 
   &.right {
-    margin: 0 0 0 auto;
+    left: unset;
+    right: 0;
 
     &[open] {
       animation: slideInRight 0.25s forwards;
@@ -41,6 +53,8 @@
   &.top,
   &.bottom {
     width: 100%;
+    left: 0;
+    right: 0;
 
     @media (max-width: 768px) {
       height: fit-content;
@@ -48,7 +62,8 @@
   }
 
   &.top {
-    margin: 0 0 auto 0;
+    top: 0;
+    bottom: unset;
 
     &[open] {
       animation: slideInTop 0.25s forwards;
@@ -60,7 +75,8 @@
   }
 
   &.bottom {
-    margin: auto 0 0 0;
+    top: unset;
+    bottom: 0;
 
     &[open] {
       animation: slideInBottom 0.25s forwards;
