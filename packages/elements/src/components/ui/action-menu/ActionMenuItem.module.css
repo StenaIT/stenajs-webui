@@ -66,17 +66,6 @@
     border-bottom-right-radius: var(--swui-action-menu-border-radius);
   }
 
-  &:disabled,
-  &[aria-disabled="true"] {
-    cursor: not-allowed;
-    --current-item-background: var(--swui-action-menu-item-background-disabled);
-    --current-item-label-color: var(
-      --swui-action-menu-item-label-color-disabled
-    );
-    --current-item-text-color: var(--swui-action-menu-item-text-color-disabled);
-    --current-item-icon-color: var(--swui-action-menu-icon-color-disabled);
-  }
-
   &.standard {
     &:hover:not(&:disabled, &[aria-disabled="true"], &.actionMenuItemContent) {
       --current-item-background: var(--swui-action-menu-item-background-hover);
@@ -155,6 +144,17 @@
         --swui-action-menu-item-background-disabled-focus
       );
     }
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    --current-item-background: var(--swui-action-menu-item-background-disabled);
+    --current-item-label-color: var(
+      --swui-action-menu-item-label-color-disabled
+    );
+    --current-item-text-color: var(--swui-action-menu-item-text-color-disabled);
+    --current-item-icon-color: var(--swui-action-menu-icon-color-disabled);
   }
 }
 

@@ -7,30 +7,37 @@ import {
   Month,
   WeekDay,
 } from "../CalendarDataFactory";
+import { enGB } from "date-fns/locale";
 
 describe("CalendarDataFactory", () => {
   describe("getMonthInYear", () => {
     it("should wrap to next year when month is too high", () => {
-      const month = getMonthInYear(2017, 12);
+      const month = getMonthInYear(2017, 12, enGB);
       expect(month.weeks[0].startYear).toBe(2018);
     });
     it("should return correct monthFormat", () => {
-      expect(getMonthInYear(2018, Month.JANUARY).monthString).toBe("2018-01");
-      expect(getMonthInYear(2018, Month.FEBRUARY).monthString).toBe("2018-02");
-      expect(getMonthInYear(2018, Month.DECEMBER).monthString).toBe("2018-12");
+      expect(getMonthInYear(2018, Month.JANUARY, enGB).monthString).toBe(
+        "2018-01"
+      );
+      expect(getMonthInYear(2018, Month.FEBRUARY, enGB).monthString).toBe(
+        "2018-02"
+      );
+      expect(getMonthInYear(2018, Month.DECEMBER, enGB).monthString).toBe(
+        "2018-12"
+      );
     });
   });
   describe("createDay", () => {
     it("should handle 2018-02-01", () => {
       const date = new Date(2018, 1, 1);
-      const day = createDay(date);
+      const day = createDay(date, enGB);
       expect(day.name).toBe("Thu");
       expect(day.dateString).toBe("2018-02-01");
     });
   });
   describe("getWeeksForMonth", () => {
     it("should return correct weeks", () => {
-      const weeks = getWeeksForMonth(2018, Month.FEBRUARY);
+      const weeks = getWeeksForMonth(2018, Month.FEBRUARY, enGB);
       expect(weeks.length).toBe(6);
       expect(weeks[0].startMonth).toBe(0);
       expect(weeks[0].endMonth).toBe(1);
@@ -55,7 +62,7 @@ describe("CalendarDataFactory", () => {
     });
 
     it("should return correct days", () => {
-      const weeks = getWeeksForMonth(2018, Month.FEBRUARY);
+      const weeks = getWeeksForMonth(2018, Month.FEBRUARY, enGB);
       expect(weeks[0].days[0].dateString).toBe("2018-01-29");
       expect(weeks[0].days[0].dayOfWeek).toBe(WeekDay.MONDAY);
       expect(weeks[0].days[0].year).toBe(2018);
@@ -68,11 +75,11 @@ describe("CalendarDataFactory", () => {
     });
 
     it("should handle weeks where first days are part of previous month", () => {
-      expect(getWeeksForMonth(2019, Month.JANUARY).length > 0).toBe(true);
+      expect(getWeeksForMonth(2019, Month.JANUARY, enGB).length > 0).toBe(true);
     });
 
     it("should handle december 2018", () => {
-      expect(getWeeksForMonth(2018, Month.DECEMBER).length).toBe(6);
+      expect(getWeeksForMonth(2018, Month.DECEMBER, enGB).length).toBe(6);
     });
   });
 
@@ -97,7 +104,7 @@ describe("CalendarDataFactory", () => {
 
   describe("getMonthsInYear", () => {
     it("should handle when interval passes a new year", () => {
-      const monthsInYear = getMonthsInYear(2018, Month.DECEMBER, 3);
+      const monthsInYear = getMonthsInYear(2018, Month.DECEMBER, 3, enGB);
       expect(monthsInYear[0].year).toBe(2018);
       expect(monthsInYear[0].monthInYear).toBe(Month.DECEMBER);
       expect(monthsInYear[0].weeks.length > 0).toBe(true);

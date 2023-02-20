@@ -1,23 +1,25 @@
+import { setWeek, startOfWeek } from "date-fns";
+import { enGB } from "date-fns/locale";
 import { useCallback, useMemo, useState } from "react";
+import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
 import { CalendarWithMonthSwitcherProps } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
+import { OnClickDay, OnClickWeek } from "../../../types/CalendarTypes";
 import {
-  getStartDateOfISOWeek,
   getWeekForDate,
   WeekData,
 } from "../../../util/calendar/CalendarDataFactory";
 import { addWeekRangeHighlights } from "../../../util/calendar/StateModifier";
 import { SingleWeekCalendarProps } from "./SingleWeekCalendar";
-import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
-import { OnClickDay, OnClickWeek } from "../../../types/CalendarTypes";
 
 export const useSingleWeekSelection = <T>({
   onChange,
   value,
   statePerMonth,
   onChangePanel,
+  locale = enGB,
 }: SingleWeekCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const [dateInFocus, setDateInFocus] = useState(() => {
-    const week = getWeekDataFromWeekString(value);
+    const week = getWeekDataFromWeekString(value, locale);
     if (!week) {
       return new Date();
     }
@@ -29,10 +31,10 @@ export const useSingleWeekSelection = <T>({
   const onClickDay = useCallback<OnClickDay<T>>(
     (day) => {
       if (onChange) {
-        onChange(getWeekStringFromWeekData(getWeekForDate(day.date)));
+        onChange(getWeekStringFromWeekData(getWeekForDate(day.date, locale)));
       }
     },
-    [onChange]
+    [locale, onChange]
   );
   const onClickWeek = useCallback<OnClickWeek>(
     (week) => {
@@ -44,19 +46,19 @@ export const useSingleWeekSelection = <T>({
   );
 
   const statePerMonthWithSelection = useMemo(() => {
-    const weekData = getWeekDataFromWeekString(value);
+    const weekData = getWeekDataFromWeekString(value, locale);
     return weekData
       ? addWeekRangeHighlights(statePerMonth, weekData)
       : statePerMonth;
-  }, [value, statePerMonth]);
+  }, [value, locale, statePerMonth]);
 
   const date = useMemo(() => {
-    const week = getWeekDataFromWeekString(value);
+    const week = getWeekDataFromWeekString(value, locale);
     if (!week) {
       return new Date();
     }
     return week.days[0].date;
-  }, [value]);
+  }, [locale, value]);
 
   return {
     statePerMonth: statePerMonthWithSelection,
@@ -80,7 +82,8 @@ const getWeekStringFromWeekData = (
 };
 
 const getWeekDataFromWeekString = (
-  week: string | undefined
+  week: string | undefined,
+  locale: Locale
 ): WeekData | undefined => {
   if (!week) {
     return undefined;
@@ -88,5 +91,8 @@ const getWeekDataFromWeekString = (
   const parts = week.split("-");
   const weekNumber = parseInt(parts[1], 10);
   const year = parseInt(parts[0], 10);
-  return getWeekForDate(getStartDateOfISOWeek(weekNumber, year));
+  const date = new Date();
+  date.setFullYear(year);
+  const firstDateOfWeek = startOfWeek(setWeek(date, weekNumber), { locale });
+  return getWeekForDate(firstDateOfWeek, locale);
 };

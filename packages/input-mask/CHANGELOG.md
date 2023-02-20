@@ -1,3 +1,15 @@
+# v17.29.0 (Mon Dec 12 2022)
+
+#### 🐛 Bug Fix
+
+- Remove --lhds-color-purple-* [#538](https://github.com/StenaIT/stenajs-webui/pull/538) ([@LordDz](https://github.com/LordDz))
+
+#### Authors: 1
+
+- David ([@LordDz](https://github.com/LordDz))
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement

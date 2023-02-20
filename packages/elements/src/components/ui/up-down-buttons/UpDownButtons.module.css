@@ -11,6 +11,9 @@
 
     &:focus {
       outline: none;
+    }
+
+    &:focus-visible {
       box-shadow: var(--swui-stepper-button-focus-shadow);
     }
 

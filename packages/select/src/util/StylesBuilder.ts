@@ -71,7 +71,7 @@ const resolveInputBorderColor = (
   variant: SelectVariant | undefined
 ): string | undefined => {
   if (isDisabled) {
-    return colors.borderColor;
+    return colors.disabledBorderColor;
   } else if (isFocused) {
     return colors.borderColorFocused;
   } else if (variant === "warning") {

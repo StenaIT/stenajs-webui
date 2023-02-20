@@ -5,9 +5,13 @@ import { action } from "@storybook/addon-actions";
 import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuSeparator } from "./ActionMenuSeparator";
-import * as React from "react";
 import markdown from "./ActionMenu.md?raw";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExternalLinkAlt,
+  faSadCry,
+  faToggleOff,
+  faToggleOn,
+} from "@fortawesome/free-solid-svg-icons";
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";
 import { ButtonGroup } from "../button-group/ButtonGroup";
@@ -15,6 +19,8 @@ import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
 import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
+import { useState } from "react";
+import * as React from "react";
 
 export default {
   title: "elements/ActionMenu/ActionMenu",
@@ -44,7 +50,7 @@ export const Standard = () => (
       target={"_blank"}
     />
     <ActionMenuLink
-      label={"Open new window"}
+      label={"Open new window disabled"}
       disabled
       leftIcon={faExternalLinkAlt}
       href={"https://www.google.com"}
@@ -55,6 +61,13 @@ export const Standard = () => (
       leftIcon={faFire}
       onClick={action("It was burned!")}
       variant={"danger"}
+    />
+    <ActionMenuItem
+      label={"Disabled danger"}
+      leftIcon={faFire}
+      onClick={action("Oh noes how did you activate this!?")}
+      variant={"danger"}
+      disabled={true}
     />
     <ActionMenuItem
       label={"Save it"}
@@ -122,7 +135,7 @@ export const Standard = () => (
     />
     <ActionMenuItemContent
       disabled
-      label={"Disabled full width"}
+      label={"Bottom full width disabled"}
       leftIcon={faAirFreshener}
       bottom={
         <ButtonGroup>
@@ -163,8 +176,16 @@ export const Outlined = () => (
 
 export const AsyncItem = () => {
   const [loading, setLoading, clearLoading] = useBoolean(false);
+  const [loadingDanger, setLoadingDanger, clearLoadingDanger] =
+    useBoolean(false);
+  const [loadingSucess, setLoadingSuccess, clearLoadingSuccess] =
+    useBoolean(false);
 
   const [saved, setSaved] = useTimeoutState(false, 2000);
+  const [savedDanger, setSavedDanger] = useTimeoutState(false, 2000);
+  const [savedSuccess, setSavedSuccess] = useTimeoutState(false, 2000);
+  const [isDangerOn, setIsDangerOn] = useState(true);
+  const [isSuccessOn, setIsSuccessOn] = useState(true);
 
   const start = () => {
     setLoading();
@@ -172,6 +193,30 @@ export const AsyncItem = () => {
       clearLoading();
       setSaved(true);
     }, 2000);
+  };
+
+  const startDanger = () => {
+    setLoadingDanger();
+    setTimeout(() => {
+      clearLoadingDanger();
+      setSavedDanger(true);
+    }, 2000);
+  };
+
+  const startSuccess = () => {
+    setLoadingSuccess();
+    setTimeout(() => {
+      clearLoadingSuccess();
+      setSavedSuccess(true);
+    }, 2000);
+  };
+
+  const toggleDanger = () => {
+    setIsDangerOn(!isDangerOn);
+  };
+
+  const toggleSuccess = () => {
+    setIsSuccessOn(!isSuccessOn);
   };
 
   return (
@@ -188,6 +233,49 @@ export const AsyncItem = () => {
         variant={saved ? "success" : undefined}
         success={saved}
         loading={loading}
+      />
+      <ActionMenuItem
+        label={
+          savedDanger
+            ? "Saved with danger"
+            : loadingDanger
+            ? "Saving with danger..."
+            : "Save dangerously"
+        }
+        leftIcon={isDangerOn ? faSave : faSadCry}
+        onClick={startDanger}
+        variant={"danger"}
+        success={savedDanger}
+        loading={loadingDanger}
+        disabled={!isDangerOn}
+      />
+
+      <ActionMenuItem
+        label={"Toggle Danger"}
+        leftIcon={isDangerOn ? faToggleOn : faToggleOff}
+        onClick={toggleDanger}
+      />
+
+      <ActionMenuItem
+        label={
+          savedSuccess
+            ? "Saved with success"
+            : loadingSucess
+            ? "Saving with success..."
+            : "Save successfully"
+        }
+        leftIcon={isSuccessOn ? faSave : faSadCry}
+        onClick={startSuccess}
+        variant={"success"}
+        success={savedSuccess}
+        loading={loadingSucess}
+        disabled={!isSuccessOn}
+      />
+
+      <ActionMenuItem
+        label={"Toggle Success"}
+        leftIcon={isSuccessOn ? faToggleOn : faToggleOff}
+        onClick={toggleSuccess}
       />
     </ActionMenu>
   );

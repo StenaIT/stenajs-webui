@@ -1,3 +1,28 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🚀 Enhancement
+
+- changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.30.2 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- Add OverflowingMultiSelect component [#547](https://github.com/StenaIT/stenajs-webui/pull/547) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v17.13.3 (Tue Aug 30 2022)
 
 #### 🏠 Internal
