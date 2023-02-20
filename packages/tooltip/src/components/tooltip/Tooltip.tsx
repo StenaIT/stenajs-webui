@@ -26,9 +26,9 @@ export interface TooltipProps
   children: JSX.Element;
 }
 
-const TooltipText: React.FC<{ label: string }> = ({ label }) => (
+const TooltipText: React.FC<{ children: JSX.Element }> = ({ children }) => (
   <Text color={cssColor("--lhds-color-ui-50")} size={"small"} variant="bold">
-    {label}
+    {children}
   </Text>
 );
 
