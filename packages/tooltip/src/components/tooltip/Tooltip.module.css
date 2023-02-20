@@ -3,7 +3,7 @@
   width: fit-content;
   align-items: center;
   border-radius: var(--swui-border-radius);
-  padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-spacing) * 2);
+  padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-indent) * 2);
 
   &.withIcon {
     padding: calc(var(--swui-metrics-spacing) * 0.5);
