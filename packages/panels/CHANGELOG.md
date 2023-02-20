@@ -1,3 +1,16 @@
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 💥 Breaking Change
+
+- Add Toast and remake Notification [#549](https://github.com/StenaIT/stenajs-webui/pull/549) ([@juiceit](https://github.com/juiceit) [@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v17.23.0 (Mon Oct 24 2022)
 
 #### 🚀 Enhancement

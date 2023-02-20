@@ -1,10 +1,12 @@
+import { ResultListBannerState } from "@stenajs-webui/elements";
 import { ErrorScreen } from "@stenajs-webui/panels";
 import cx from "classnames";
 import * as React from "react";
-import { CSSProperties, ReactNode, useMemo, useId } from "react";
+import { CSSProperties, ReactNode, useId, useMemo } from "react";
 import { StandardTableConfig } from "../config/StandardTableConfig";
 import { GroupConfigsAndIdsForRowsContext } from "../context/GroupConfigsAndIdsForRowsContext";
 import { OnKeyDownContext } from "../context/OnKeyDownContext";
+import { OnSortOrderChangeContext } from "../context/OnSortOrderChangeContext";
 import {
   StandardTableColumnGroupOrderContext,
   StandardTableUsingColumnGroupsContext,
@@ -28,13 +30,15 @@ import { ensureConfigHasValidSticky } from "../features/sticky-columns/StickyCol
 import { getStickyPropsPerColumn } from "../features/sticky-columns/StickyPropsPerColumnCalculator";
 import { useLocalStateTableContext } from "../hooks/UseLocalStateTableContext";
 import { createStandardTableInitialState } from "../redux/StandardTableReducer";
-import { StandardTableOnKeyDown } from "../types/StandardTableOnKeyDown";
+import {
+  StandardTableOnKeyDown,
+  StandardTableOnSortOrderChange,
+} from "../types/StandardTableEvents";
 import { getTotalNumColumns } from "../util/ColumnCounter";
+import { ColGroups } from "./ColGroups";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
-import { ColGroups } from "./ColGroups";
-import { ResultListBannerState } from "@stenajs-webui/elements";
 
 export interface StandardTableProps<
   TItem,
@@ -129,6 +133,12 @@ export interface StandardTableProps<
    * an object that contains columnId and item for the focused cell.
    */
   onKeyDown?: StandardTableOnKeyDown<TItem, TColumnKey>;
+
+  /**
+   * Event listener for when user changes the sort order.
+   * This is triggered when user clicks on the table headers, even if using external sorting.
+   */
+  onSortOrderChange?: StandardTableOnSortOrderChange<TColumnKey>;
 }
 
 export type StandardTableVariant =
@@ -149,6 +159,7 @@ export const StandardTable = function StandardTable<
   tableId,
   variant = "standard",
   onKeyDown,
+  onSortOrderChange,
   ...props
 }: StandardTableProps<TItem, TColumnKey, TColumnGroupKey>) {
   const generatedTableId = useId();
@@ -273,22 +284,26 @@ export const StandardTable = function StandardTable<
                           >
                             <ColGroups />
                             <OnKeyDownContext.Provider value={onKeyDown}>
-                              <thead>
-                                {(columnGroupOrder ||
-                                  "columnGroupOrder" in config) && (
-                                  <ColumnGroupRow
+                              <OnSortOrderChangeContext.Provider
+                                value={onSortOrderChange}
+                              >
+                                <thead>
+                                  {(columnGroupOrder ||
+                                    "columnGroupOrder" in config) && (
+                                    <ColumnGroupRow
+                                      height={"var(--current-row-height)"}
+                                    />
+                                  )}
+                                  <StandardTableHeadRow
+                                    items={props.items}
                                     height={"var(--current-row-height)"}
                                   />
-                                )}
-                                <StandardTableHeadRow
-                                  items={props.items}
-                                  height={"var(--current-row-height)"}
+                                </thead>
+                                <StandardTableContent
+                                  variant={variant}
+                                  {...props}
                                 />
-                              </thead>
-                              <StandardTableContent
-                                variant={variant}
-                                {...props}
-                              />
+                              </OnSortOrderChangeContext.Provider>
                             </OnKeyDownContext.Provider>
                           </StandardTableColumnGroupOrderContext.Provider>
                         </StandardTableUsingColumnGroupsContext.Provider>

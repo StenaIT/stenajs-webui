@@ -5,7 +5,7 @@
   --swui-radiobutton-animation-time: var(--swui-animation-time-medium);
   /* Icon */
   --swui-radiobutton-icon-color: var(--swui-field-indicator-active-color);
-  --swui-radiobutton-disabled-icon-color: var(--swui-separator-color);
+  --swui-radiobutton-disabled-icon-color: var(--swui-field-text-color-disabled);
   --swui-radiobutton-unchecked-icon-color: var(
     --swui-field-indicator-inactive-color
   );
@@ -20,8 +20,9 @@
     --swui-field-border-color-hover
   );
   --swui-radiobutton-disabled-border-color: var(
-    --swui-field-border-color-disabled
+    --swui-radiobutton-checked-disabled-bg-color
   );
+
   /* Shadow */
   --swui-radiobutton-checked-focus-shadow: var(
     --swui-field-focus-shadow-inverted
@@ -129,7 +130,7 @@
     }
   }
 
-  &:focus {
+  &:focus-visible {
     &:checked {
       box-shadow: var(--swui-radiobutton-checked-focus-shadow);
     }

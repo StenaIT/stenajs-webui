@@ -6,6 +6,7 @@ import styles from "./Modal.module.css";
 
 export interface BaseModalProps extends ReactModal.Props {
   width?: string;
+  maxWidth?: string;
   onRequestClose?: () => void;
   draggable?: boolean;
 }
@@ -15,6 +16,7 @@ export const DRAGGABLE_CANCEL_CLASSNAME = "draggable-modal-cancel";
 
 export const BaseModal: React.FC<BaseModalProps> = ({
   width,
+  maxWidth,
   draggable = false,
   children,
   ...reactModalProps
@@ -32,7 +34,10 @@ export const BaseModal: React.FC<BaseModalProps> = ({
         disabled={!draggable}
       >
         <div
-          style={{ ["--swui-modal-width" as string]: width }}
+          style={{
+            ["--swui-modal-width" as string]: width,
+            ["--swui-modal-max-width" as string]: maxWidth,
+          }}
           className={cx(styles.content, {
             [styles.isDraggable]: draggable,
           })}

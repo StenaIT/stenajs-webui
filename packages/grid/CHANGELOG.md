@@ -1,3 +1,15 @@
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- External sorting and `onSortOrderChange` prop in StandardTable [#554](https://github.com/StenaIT/stenajs-webui/pull/554) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.29.0 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix
