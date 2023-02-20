@@ -19,16 +19,15 @@ const variantIcons = {
   error: stenaExclamationTriangle,
 };
 
-export interface TooltipProps
-  extends Partial<Omit<PopoverProps, "theme" | "render">> {
+export interface TooltipProps extends Omit<PopoverProps, "theme" | "render"> {
   label: string;
   variant?: TooltipVariant;
   children: JSX.Element;
 }
 
-const TooltipText: React.FC<{ children: JSX.Element }> = ({ children }) => (
+const TooltipText: React.FC<{ label: string }> = ({ label }) => (
   <Text color={cssColor("--lhds-color-ui-50")} size={"small"} variant="bold">
-    {children}
+    {label}
   </Text>
 );
 
