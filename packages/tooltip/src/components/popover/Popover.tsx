@@ -15,12 +15,15 @@ export type PopoverVariant =
   | "error"
   | "outlined";
 
+export type PopoverTheme = "light" | "dark";
+
 export interface PopoverProps
   extends Partial<Omit<TippyComponentProps, "theme" | "render">> {
   tippyRef?: TippyCallbackRef<HTMLDivElement>;
   disablePadding?: boolean;
   lazy?: boolean;
   variant?: PopoverVariant;
+  theme?: PopoverTheme;
 }
 
 export const tippyStyles = {
@@ -48,6 +51,7 @@ export const Popover: React.FC<PopoverProps> = ({
   plugins: propsPlugins,
   lazy,
   arrow = true,
+  theme = "light",
   ...tippyProps
 }) => {
   const { plugins, mounted } = useLazyPopover(propsPlugins);
@@ -58,7 +62,7 @@ export const Popover: React.FC<PopoverProps> = ({
       className={tippyStyles.noPadding}
       trigger={visible !== undefined ? undefined : trigger}
       visible={visible}
-      theme={"light " + variantToTheme[variant] ?? variantToTheme.standard}
+      theme={`${theme} ${variantToTheme[variant] ?? variantToTheme.standard}`}
       delay={delay}
       maxWidth={maxWidth}
       arrow={arrow}
