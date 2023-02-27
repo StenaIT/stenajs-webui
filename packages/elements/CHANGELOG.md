@@ -1,3 +1,15 @@
+# v18.1.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Button icons now customisable using CSS properties [#563](https://github.com/StenaIT/stenajs-webui/pull/563) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.0.1 (Thu Feb 16 2023)
 
 #### 🐛 Bug Fix
