@@ -1,3 +1,17 @@
+# v18.0.3 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Add blue bottom line to sorted column header [#539](https://github.com/StenaIT/stenajs-webui/pull/539) (david.zetterdahl@stenaline.com [@mattias800](https://github.com/mattias800) [@LordDz](https://github.com/LordDz))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.31.0 (Wed Feb 01 2023)
 
 #### 🚀 Enhancement

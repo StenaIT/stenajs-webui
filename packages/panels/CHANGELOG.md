@@ -1,3 +1,19 @@
+# v18.0.3 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Add headingLevel to PageHeading, default being h1 [#561](https://github.com/StenaIT/stenajs-webui/pull/561) ([@juiceit](https://github.com/juiceit))
+
+#### 📝 Documentation
+
+- Use NavBarSearchField in center content story [#503](https://github.com/StenaIT/stenajs-webui/pull/503) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v18.0.0 (Mon Feb 13 2023)
 
 #### 💥 Breaking Change
