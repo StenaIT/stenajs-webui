@@ -3,10 +3,7 @@ import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
 import styles from "./Button.module.css";
-import {
-  CommonButtonProps,
-  getIconSizeFromButtonSize,
-} from "./common/ButtonCommon";
+import { CommonButtonProps } from "./common/ButtonCommon";
 import { getButtonLabel } from "./common/ButtonLabelFactory";
 import { ButtonContent } from "./common/ButtonContent";
 import styled from "@emotion/styled";
@@ -79,7 +76,6 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           leftIcon={leftIcon}
           left={left}
           right={right}
-          iconSize={getIconSizeFromButtonSize(size, hasLabel)}
           rightIcon={rightIcon}
           label={buttonLabel}
           iconClassName={iconClassName}

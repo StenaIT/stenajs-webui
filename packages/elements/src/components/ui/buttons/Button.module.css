@@ -28,6 +28,13 @@
   );
 
   /* Icon */
+  --swui-button-icon-height-small: 1.2rem;
+  --swui-button-icon-height-small-icon-only: 1.2rem;
+  --swui-button-icon-height-medium: 1.6rem;
+  --swui-button-icon-height-medium-icon-only: 1.6rem;
+  --swui-button-icon-height-large: 1.6rem;
+  --swui-button-icon-height-large-icon-only: 2.4rem;
+
   --swui-button-icon-color: var(--swui-white);
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
   --swui-button-icon-color-hover: var(--swui-button-icon-color);
@@ -119,6 +126,7 @@
    * Styling
    */
   --current-background-color: var(--swui-button-background-color);
+  --current-icon-height: var(--swui-button-icon-height-medium);
   --current-icon-color: var(--swui-button-icon-color);
   --current-text-color: var(--swui-button-text-color);
   --current-border-color: var(--swui-button-border-color);
@@ -144,6 +152,8 @@
   justify-content: center;
 
   &.iconButton {
+    --current-icon-height: var(--swui-button-icon-height-medium-icon-only);
+
     padding: var(--swui-button-padding-vertical);
     color: var(--current-icon-color);
     flex: none;
@@ -176,6 +186,11 @@
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2 - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
     --current-text-size: 1.2rem;
+    --current-icon-height: var(--swui-button-icon-height-small);
+
+    &.iconButton {
+      --current-icon-height: var(--swui-button-icon-height-small-icon-only);
+    }
   }
 
   &.large {
@@ -183,6 +198,11 @@
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
     --current-text-size: 1.6rem;
+    --current-icon-height: var(--swui-button-icon-height-large);
+
+    &.iconButton {
+      --current-icon-height: var(--swui-button-icon-height-large-icon-only);
+    }
   }
 
   &:hover {
