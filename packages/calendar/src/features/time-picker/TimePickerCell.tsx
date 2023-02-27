@@ -2,6 +2,7 @@ import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { MutableRefObject, RefObject, useEffect, useRef } from "react";
+import { padStart } from "lodash";
 
 export interface TimePickerCellProps {
   item: number;
@@ -46,12 +47,12 @@ export const TimePickerCell: React.FC<TimePickerCellProps> = ({
     >
       {selected ? (
         <PrimaryButton
-          label={String(item)}
+          label={padStart(String(item), 2, "0")}
           onClick={() => onClick && onClick(item)}
         />
       ) : (
         <FlatButton
-          label={String(item)}
+          label={String(item).padStart(2, "0")}
           onClick={() => onClick && onClick(item)}
         />
       )}
