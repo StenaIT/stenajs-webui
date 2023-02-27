@@ -1,3 +1,18 @@
+# v18.1.0 (Mon Feb 27 2023)
+
+#### 🚀 Enhancement
+
+- Rewrite tooltip using TippyComponent instead of Popover [#537](https://github.com/StenaIT/stenajs-webui/pull/537) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
 # v17.7.0 (Fri Jul 01 2022)
 
 #### 🚀 Enhancement
