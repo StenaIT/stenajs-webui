@@ -1,5 +1,4 @@
 import { ButtonElementProps } from "@stenajs-webui/core";
-import * as React from "react";
 import { forwardRef } from "react";
 import cx from "classnames";
 
@@ -7,11 +6,12 @@ import styles from "./ActionMenuItem.module.css";
 import { ButtonContentProps } from "../buttons/common/ButtonContent";
 import { useActionMenuLogic } from "./UseActionMenuLogic";
 import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
+import * as React from "react";
 
 export type ActionMenuItemVariant = "standard" | "danger" | "success";
 
 export interface ActionMenuItemProps
-  extends ButtonElementProps,
+  extends Omit<ButtonElementProps, "children">,
     ButtonContentProps {
   variant?: ActionMenuItemVariant;
   disableCloseOnClick?: boolean;

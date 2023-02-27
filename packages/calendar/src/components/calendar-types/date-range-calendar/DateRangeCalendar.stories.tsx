@@ -1,8 +1,11 @@
 import { addDays, format } from "date-fns";
+import { sv, enUS } from "date-fns/locale";
+import { useState } from "react";
 import * as React from "react";
-import markdown from "./DateRangeCalendar.md?raw";
+import { DateRange } from "../../../types/DateRange";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
-import { DateRangeCalendar, DateRangeCalendarProps } from "./DateRangeCalendar";
+import { DateRangeCalendar } from "./DateRangeCalendar";
+import markdown from "./DateRangeCalendar.md?raw";
 import { useDateRangeCalendarState } from "./hooks/UseDateRangeCalendarState";
 
 export default {
@@ -33,29 +36,64 @@ for (let i = 10; i < 14; i++) {
   );
 }
 
-function DateRangeCalendarWithState<T>({
-  onValueChange,
-}: Pick<DateRangeCalendarProps<T>, "onValueChange">) {
-  const calendarProps = useDateRangeCalendarState();
-  return <DateRangeCalendar {...calendarProps} onValueChange={onValueChange} />;
-}
-
 export const Standard = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar {...props} />;
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      {...props}
+      value={dateRange}
+      onValueChange={setDateRange}
+    />
+  );
 };
 
-export const WithStateHook = () => <DateRangeCalendarWithState />;
+export const SwedishLocale = () => {
+  const props = useDateRangeCalendarState();
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      locale={sv}
+    />
+  );
+};
+
+export const WeekStartAtSunday = () => {
+  const props = useDateRangeCalendarState();
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      locale={enUS}
+    />
+  );
+};
 
 export const WithTodayHighlighted = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar highlightToday {...props} />;
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      highlightToday
+      {...props}
+    />
+  );
 };
 
 export const WithMinMaxDate = () => {
   const props = useDateRangeCalendarState();
+  const [dateRange, setDateRange] = useState<DateRange>();
   return (
     <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
       {...props}
       minDate={format(addDays(new Date(), 3), "yyyy-MM-dd")}
       maxDate={format(addDays(new Date(), 5), "yyyy-MM-dd")}
@@ -65,8 +103,11 @@ export const WithMinMaxDate = () => {
 
 export const WithDefaultHighlights = () => {
   const props = useDateRangeCalendarState();
+  const [dateRange, setDateRange] = useState<DateRange>();
   return (
     <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
       {...props}
       defaultHighlights={["disabled"]}
       statePerMonth={statePerMonthWithTwoWeeksEnabled}
@@ -76,15 +117,40 @@ export const WithDefaultHighlights = () => {
 
 export const WithMultipleMonths = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar {...props} numMonths={3} />;
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      numMonths={3}
+    />
+  );
 };
 
 export const WithMultipleRows = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar {...props} numMonths={6} monthsPerRow={3} />;
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      numMonths={6}
+      monthsPerRow={3}
+    />
+  );
 };
 
 export const WithHiddenYearPagination = () => {
   const props = useDateRangeCalendarState();
-  return <DateRangeCalendar {...props} hideYearPagination={true} />;
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      hideYearPagination={true}
+    />
+  );
 };

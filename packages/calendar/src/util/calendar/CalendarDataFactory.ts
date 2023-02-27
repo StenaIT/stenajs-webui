@@ -7,13 +7,14 @@ import {
   format,
   getDate,
   getISODay,
-  getISOWeek,
   getMonth,
+  getWeek,
   getYear,
   isSameDay,
-  startOfISOWeek,
   startOfMonth,
+  startOfWeek,
 } from "date-fns";
+import { startCase } from "lodash";
 import { DateFormats } from "../date/DateFormats";
 
 export enum Month {
@@ -77,38 +78,48 @@ export interface MonthData {
 export const getMonthsInYear = (
   year: number,
   startMonth: number,
-  numMonths: number
+  numMonths: number,
+  locale: Locale
 ): Array<MonthData> => {
   const months = [];
   for (let i = 0; i < numMonths; i++) {
-    months.push(getMonthInYear(year, startMonth + i));
+    months.push(getMonthInYear(year, startMonth + i, locale));
   }
   return months;
 };
 
-export const getMonthInYear = (year: number, month: number): MonthData => {
+export const getMonthInYear = (
+  year: number,
+  month: number,
+  locale: Locale
+): MonthData => {
   const yearToUse = year + Math.floor(month / 12);
   const monthToUse = month % 12;
   const firstDayOfMonth = new Date(yearToUse, monthToUse, 1);
   return {
     monthString: format(firstDayOfMonth, DateFormats.yearAndMonth),
-    name: format(firstDayOfMonth, DateFormats.fullMonthName),
+    name: startCase(
+      format(firstDayOfMonth, DateFormats.fullMonthName, { locale })
+    ),
     year: yearToUse,
     monthInYear: monthToUse,
-    weeks: getWeeksForMonth(yearToUse, monthToUse),
+    weeks: getWeeksForMonth(yearToUse, monthToUse, locale),
   };
 };
 
 export const getWeeksForMonth = (
   year: number,
   month: number,
+  locale: Locale,
   forceSixWeeks: boolean = true
 ): Array<WeekData> => {
   const firstDayOfMonth = new Date(year, month, 1);
-  const firstDayOfFirstWeek = startOfISOWeek(firstDayOfMonth);
+  const firstDayOfFirstWeek = startOfWeek(firstDayOfMonth, { locale });
+
   const weeks = [];
+
   for (let i = 0; i < 6; i++) {
-    const week = getWeekForDate(addWeeks(firstDayOfFirstWeek, i));
+    const week = getWeekForDate(addWeeks(firstDayOfFirstWeek, i), locale);
     if (i > 0 && week.startMonth !== month && !forceSixWeeks) {
       return weeks;
     }
@@ -117,27 +128,30 @@ export const getWeeksForMonth = (
   return weeks;
 };
 
-export const getWeekForDate = (firstDayOfWeek: Date): WeekData => {
+export const getWeekForDate = (
+  firstDayOfWeek: Date,
+  locale: Locale
+): WeekData => {
   const isLastWeekOfMonth =
     getMonth(addDays(firstDayOfWeek, 7)) !== getMonth(firstDayOfWeek);
   return {
-    weekNumber: getISOWeek(firstDayOfWeek),
+    weekNumber: getWeek(firstDayOfWeek, { locale }),
     startMonth: getMonth(firstDayOfWeek),
     startYear: getYear(firstDayOfWeek),
     endMonth: getMonth(addDays(firstDayOfWeek, 6)),
     endYear: getYear(addDays(firstDayOfWeek, 6)),
-    days: getDaysForWeekForDate(firstDayOfWeek),
+    days: getDaysForWeekForDate(firstDayOfWeek, locale),
     isLastWeekOfMonth,
   };
 };
 
-export const createDay = (date: Date): DayData => {
+export const createDay = (date: Date, locale: Locale): DayData => {
   const dayOfWeek = getISODay(date);
   return {
     date,
-    name: format(date, "EEE"),
+    name: format(date, "EEE", locale ? { locale } : undefined),
     dateString: format(addHours(date, 12), DateFormats.fullDate),
-    weekNumber: getISOWeek(date),
+    weekNumber: getWeek(date, { locale }),
     year: getYear(date),
     month: getMonth(date),
     dayOfMonth: getDate(date),
@@ -149,26 +163,14 @@ export const createDay = (date: Date): DayData => {
   };
 };
 
-export const getDaysForWeekForDate = (firstDayOfWeek: Date): Array<DayData> => {
+export const getDaysForWeekForDate = (
+  firstDayOfWeek: Date,
+  locale: Locale
+): Array<DayData> => {
   return eachDayOfInterval({
     start: firstDayOfWeek,
     end: addDays(firstDayOfWeek, 6),
-  }).map(createDay);
-};
-
-export const getStartDateOfISOWeek = (
-  weekNumber: number,
-  year: number
-): Date => {
-  const simple = new Date(year, 0, 1 + (weekNumber - 1) * 7);
-  const dayOfWeek = simple.getDay();
-  const isoWeekStart = simple;
-  if (dayOfWeek <= 4) {
-    isoWeekStart.setDate(simple.getDate() - simple.getDay() + 1);
-  } else {
-    isoWeekStart.setDate(simple.getDate() + 8 - simple.getDay());
-  }
-  return isoWeekStart;
+  }).map((d) => createDay(d, locale));
 };
 
 export const calculateOverflowingMonth = (

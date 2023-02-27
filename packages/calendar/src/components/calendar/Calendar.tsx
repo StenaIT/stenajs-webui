@@ -1,7 +1,9 @@
 import { Row, Space, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear, parse } from "date-fns";
+import { enGB } from "date-fns/locale";
 import { chunk } from "lodash";
 import * as React from "react";
+import { useMemo } from "react";
 import { useHighlightToday } from "../../features/today-state/UseHighlightToday";
 import {
   CalendarOnClicks,
@@ -16,12 +18,11 @@ import {
   getMonthsInYear,
   MonthData,
 } from "../../util/calendar/CalendarDataFactory";
+import styles from "./Calendar.module.css";
 
 import { CalendarMonth } from "./CalendarMonth";
 import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
 import { CalendarDay } from "./renderers/CalendarDay";
-import styles from "./Calendar.module.css";
-import { useMemo } from "react";
 
 interface CalendarPanelProps<T>
   extends CalendarProps<T>,
@@ -117,6 +118,7 @@ export function Calendar<T>(props: CalendarProps<T>) {
   const monthRows = getMonthRows(
     year,
     month,
+    props.locale ?? enGB,
     props.numMonths,
     props.monthsPerRow
   );
@@ -160,14 +162,15 @@ const getInitialDate = (year?: number, month?: number, date?: Date) => {
 const getMonthRows = (
   year: number,
   month: number,
+  locale: Locale,
   numMonths?: number,
   monthsPerRow?: number
 ): Array<Array<MonthData>> => {
   if (numMonths == null) {
-    return [[getMonthInYear(year, month)]];
+    return [[getMonthInYear(year, month, locale)]];
   }
   if (monthsPerRow == null) {
-    return [getMonthsInYear(year, month, numMonths)];
+    return [getMonthsInYear(year, month, numMonths, locale)];
   }
-  return chunk(getMonthsInYear(year, month, numMonths), monthsPerRow);
+  return chunk(getMonthsInYear(year, month, numMonths, locale), monthsPerRow);
 };

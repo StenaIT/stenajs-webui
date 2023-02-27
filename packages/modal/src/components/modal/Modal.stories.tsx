@@ -65,6 +65,32 @@ Mobile.parameters = {
   },
 };
 
+export const MobileWithFixedWidth = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <Modal
+        width={"300px"}
+        headerText={"Modal title here"}
+        isOpen={isOpen}
+        onRequestClose={() => setOpen(false)}
+      >
+        This should still be full width of screen.
+        <br />
+        <br />
+        {loremIpsumSampleText}
+      </Modal>
+    </>
+  );
+};
+
+MobileWithFixedWidth.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
+};
+
 export const ModalWithCustomHeaderComponent = () => {
   const [isOpen, setOpen] = useState(false);
   return (
@@ -94,6 +120,23 @@ export const ModalWithFixedWidth = () => {
       <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
       <Modal
         width={"300px"}
+        headerText={"Modal title here"}
+        isOpen={isOpen}
+        onRequestClose={() => setOpen(false)}
+      >
+        <Box spacing={2}>{loremIpsumSampleText}</Box>
+      </Modal>
+    </>
+  );
+};
+
+export const ModalWithMaxWidth = () => {
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <>
+      <PrimaryButton onClick={() => setOpen(true)} label={"Open modal"} />
+      <Modal
+        maxWidth={"400px"}
         headerText={"Modal title here"}
         isOpen={isOpen}
         onRequestClose={() => setOpen(false)}

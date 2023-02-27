@@ -36,6 +36,9 @@
 
   &:focus {
     outline: 0;
+  }
+
+  &:focus-visible {
     border: 1px solid var(--swui-switch-selected-highlight-color);
     box-shadow: inset var(--swui-switch-selected-highlight-color) 0 0 4px 0;
   }
