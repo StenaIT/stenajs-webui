@@ -41,7 +41,7 @@ export const StandardTableHeadItem = React.memo(
     } = useStandardTableConfig();
     const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
-    const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
+    const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
 
     const label =
       typeof columnLabel === "string"
@@ -101,6 +101,8 @@ export const StandardTableHeadItem = React.memo(
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
+          selected={selected}
+          height={"var(--current-row-height)"}
         />
       </th>
     );
