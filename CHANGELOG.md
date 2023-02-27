@@ -1,3 +1,16 @@
+# v18.1.1 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Format hours and minutes in TimePickerCell with leading zeros [#532](https://github.com/StenaIT/stenajs-webui/pull/532) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v18.1.0 (Mon Feb 27 2023)
 
 #### 🚀 Enhancement
