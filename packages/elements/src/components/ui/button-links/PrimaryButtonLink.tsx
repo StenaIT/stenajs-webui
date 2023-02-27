@@ -4,10 +4,7 @@ import cx from "classnames";
 import styles from "../buttons/Button.module.css";
 import buttonLinkStyles from "./ButtonLink.module.css";
 import { AnchorElementProps } from "@stenajs-webui/core";
-import {
-  CommonButtonProps,
-  getIconSizeFromButtonSize,
-} from "../buttons/common/ButtonCommon";
+import { CommonButtonProps } from "../buttons/common/ButtonCommon";
 import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
 import { ButtonContent } from "../buttons/common/ButtonContent";
 
@@ -64,7 +61,6 @@ export const PrimaryButtonLink = forwardRef<
       {...anchorProps}
     >
       <ButtonContent
-        iconSize={getIconSizeFromButtonSize(size, hasLabel)}
         success={success}
         loading={loading}
         leftIcon={leftIcon}

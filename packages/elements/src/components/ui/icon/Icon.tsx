@@ -12,18 +12,18 @@ export interface IconProps
     Pick<BoxProps, "display"> {
   icon?: IconDefinition;
   color?: string;
-  size?: number;
+  size?: number | string;
 }
 
 export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
   {
     className,
-    color = "var(--lhds-color-ui-900)",
+    color = "var(--swui-text-primary-color)",
     flip,
     icon,
     pulse,
     rotation,
-    size = 16,
+    size,
     spin,
     style,
     transform,
@@ -35,6 +35,8 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
   if (!icon) {
     return null;
   }
+
+  const fontSize = typeof size === "string" ? size : (size ?? 16) / 10 + "rem";
 
   return (
     <Box
@@ -51,7 +53,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
         pulse={pulse}
         rotation={rotation}
         spin={spin}
-        style={{ fontSize: size / 10 + "rem", ...style }}
+        style={{ fontSize, ...style }}
         transform={transform}
         {...props}
       />
