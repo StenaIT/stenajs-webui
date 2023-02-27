@@ -3,7 +3,7 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { Box, Omit, BoxProps } from "@stenajs-webui/core";
+import { Box, BoxProps, Omit } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef } from "react";
 
@@ -23,20 +23,20 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
     icon,
     pulse,
     rotation,
-    size,
+    size = 16,
     spin,
     style,
     transform,
     display,
     ...props
-  },
+  }: IconProps,
   ref
 ) {
   if (!icon) {
     return null;
   }
 
-  const fontSize = typeof size === "string" ? size : (size ?? 16) / 10 + "rem";
+  const fontSize = typeof size === "string" ? size : size / 10 + "rem";
 
   return (
     <Box
