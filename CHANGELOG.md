@@ -1,3 +1,16 @@
+# v18.2.0 (Mon Feb 27 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - New modal API [#560](https://github.com/StenaIT/stenajs-webui/pull/560) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.1.2 (Mon Feb 27 2023)
 
 #### 🐛 Bug Fix
