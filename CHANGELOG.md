@@ -1,3 +1,39 @@
+# v18.0.3 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add headingLevel to PageHeading, default being h1 [#561](https://github.com/StenaIT/stenajs-webui/pull/561) ([@juiceit](https://github.com/juiceit))
+- `@stenajs-webui/grid`
+  - Add blue bottom line to sorted column header [#539](https://github.com/StenaIT/stenajs-webui/pull/539) (david.zetterdahl@stenaline.com [@mattias800](https://github.com/mattias800) [@LordDz](https://github.com/LordDz))
+
+#### 📝 Documentation
+
+- `@stenajs-webui/panels`
+  - Use NavBarSearchField in center content story [#503](https://github.com/StenaIT/stenajs-webui/pull/503) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.0.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`
+  - Make `Heading` style customisable [#562](https://github.com/StenaIT/stenajs-webui/pull/562) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.0.1 (Thu Feb 16 2023)
 
 #### 🐛 Bug Fix

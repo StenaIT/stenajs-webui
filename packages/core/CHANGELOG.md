@@ -1,3 +1,15 @@
+# v18.0.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Make `Heading` style customisable [#562](https://github.com/StenaIT/stenajs-webui/pull/562) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.29.0 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix

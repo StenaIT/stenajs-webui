@@ -22,6 +22,7 @@ export const useTableSortHeader = (columnId: string): Result => {
 
   return useMemo(() => {
     const selected = columnId === sortBy;
+
     return {
       arrow: selected ? (desc ? "up" : "down") : undefined,
       selected,
