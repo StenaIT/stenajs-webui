@@ -1,11 +1,15 @@
 .heading {
+  --swui-heading-text-color: var(--swui-text-primary-color);
+  --swui-heading-font-family: var(--swui-font-primary);
+  --swui-heading-font-weight: var(--swui-font-weight-text);
+
   font-size: var(--swui-heading-font-size);
-  color: var(--lhds-color-ui-900);
+  color: var(--swui-heading-text-color);
   letter-spacing: 0;
   margin: 0;
   line-height: var(--swui-heading-line-height);
-  font-family: var(--swui-font-primary);
-  font-weight: var(--swui-font-weight-text);
+  font-family: var(--swui-heading-font-family);
+  font-weight: var(--swui-heading-font-weight);
 
   &.h1 {
     --swui-heading-font-size: 2.8rem;
