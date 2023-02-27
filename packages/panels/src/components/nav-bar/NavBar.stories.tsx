@@ -21,6 +21,7 @@ import {
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
@@ -46,13 +47,12 @@ import {
   renderItemsInRail,
 } from "../sidebar-menu/rail/renderer/RailRenderer";
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import { TextInput } from "@stenajs-webui/forms";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
 import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
-import { useEffect, useState } from "react";
+import { NavBarSearchField } from "./NavBarSearchField";
 
 export default {
   title: "panels/NavBar",
@@ -207,7 +207,7 @@ export const WithButtonIcons = () => (
 );
 
 export const CenterContent = () => (
-  <NavBar center={<TextInput />}>
+  <NavBar center={<NavBarSearchField />}>
     <NavBarButton label={"Customers"} selected />
     <NavBarButton label={"Bookings"} />
     <NavBarButton label={"Events"} />
