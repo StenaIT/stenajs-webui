@@ -64,6 +64,7 @@ export interface DualTextInputProps {
   autoFocusLeft?: boolean;
   autoFocusRight?: boolean;
   disabled?: boolean;
+  disableCalendar?: boolean;
 }
 
 export const DualTextInput: React.FC<DualTextInputProps> = ({
@@ -104,6 +105,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
   widthLeft,
   widthRight,
   disabled,
+  disableCalendar,
 }) => {
   const focusCounter = useRef(0);
 
@@ -169,14 +171,12 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         variant={variant}
         contentRight={
           <Row alignItems={"center"}>
-            <div style={{ display: "flex" }}>
-              <InputFieldButton
-                icon={stenaCalendar}
-                disabled={disabled}
-                onClick={onClickCalendar}
-              />
-              <Space num={0.25} />
-            </div>
+            <InputFieldButton
+              icon={stenaCalendar}
+              disabled={disabled || disableCalendar}
+              onClick={onClickCalendar}
+            />
+            <Space num={0.25} />
 
             {showPresets ? (
               <>

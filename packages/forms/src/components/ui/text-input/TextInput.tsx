@@ -44,6 +44,7 @@ export interface TextInputProps
   extends FullOnChangeProps<string, ChangeEvent<HTMLInputElement>>,
     InputProps,
     ExtraContent {
+  disableCalender?: boolean;
   wrapperStyle?: CSSProperties;
   wrapperClassName?: string;
   variant?: TextInputVariant;
@@ -63,6 +64,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     variant = "standard",
     inputRef,
     disabled,
+    disableCalender,
     className,
     contentLeft,
     contentRight,
@@ -134,7 +136,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     >
       <TextInputIcon
         content={contentLeft}
-        disabled={disabled}
+        disabled={disabled || disableCalender}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
@@ -143,7 +145,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         onClick={onClickLeft}
       />
       <input
-        className={cx(styles.centerContent, styles.input, className)}
+        className={cx(styles.input, className)}
         type={"text"}
         disabled={disabled}
         ref={refToUse}
@@ -152,7 +154,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         {...hookProps}
       />
       <TextInputIcon
-        disabled={disabled}
+        disabled={disabled || disableCalender}
         content={currentContentRight}
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
