@@ -1,3 +1,4 @@
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import react from "@vitejs/plugin-react";
@@ -16,7 +17,7 @@ export const createViteConfig = (pkg: any) => {
   );
 
   return defineConfig({
-    plugins: [svgr(), react(), cssInjectedByJsPlugin()],
+    plugins: [svgr(), react(), cssInjectedByJsPlugin(), vanillaExtractPlugin()],
     build: {
       emptyOutDir: false,
       sourcemap: true,

@@ -1,10 +1,10 @@
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import * as React from "react";
-import { CSSProperties } from "react";
-import { stenaCheck } from "../../../icons/ui/IconsUi";
-import { disabledControl } from "../../../storybook-helpers/storybook-controls";
-import { Tag, TagProps, TagVariant } from "./Tag";
+import { stenaCheck } from "../../../../icons/ui/IconsUi";
+import { disabledControl } from "../../../../storybook-helpers/storybook-controls";
+import { customTheme } from "./CustomTag.css";
+import { Tag, TagProps, TagVariant } from "../Tag";
 
 export default {
   title: "elements/Tag",
@@ -24,11 +24,11 @@ export const Overview = () => (
     {(
       ["info", "error", "warning", "success", "passive"] as Array<TagVariant>
     ).map((variant) => (
-      <>
+      <Column key={variant}>
         <Text size={"large"}>{variant}</Text>
         <Space />
         {(["medium", "small"] as const).map((size) => (
-          <Row spacing={0.5}>
+          <Row spacing={0.5} key={size}>
             <Row alignItems={"center"} width={"65px"}>
               <Text>{size}</Text>
             </Row>
@@ -46,22 +46,11 @@ export const Overview = () => (
         ))}
 
         <Space num={3} />
-      </>
+      </Column>
     ))}
   </Column>
 );
 
 export const CustomTheme: Story<TagProps> = () => (
-  <Tag
-    style={
-      {
-        "--swui-tag-font-size": "1.4rem",
-        "--swui-tag-bg-color": "#F4F4F4",
-        "--swui-tag-text-color": "#123D66",
-        "--swui-tag-border-radius": "8px",
-        "--swui-tag-indent": "4px",
-      } as CSSProperties
-    }
-    label={"Economy fare selected"}
-  />
+  <Tag label={"Economy fare selected"} className={customTheme} />
 );

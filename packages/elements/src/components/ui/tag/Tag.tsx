@@ -4,7 +4,12 @@ import { getDataProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { CSSProperties } from "react";
-import styles from "./Tag.module.css";
+import {
+  labelStyle,
+  tagStandardTheme,
+  tagClassName,
+  variants,
+} from "./Tag.css";
 
 export interface TagProps {
   variant?: TagVariant;
@@ -22,20 +27,29 @@ export type TagSize = "medium" | "small";
 export const Tag: React.FC<TagProps> = ({
   className,
   style,
-  variant = "info",
-  size = "medium",
+  variant,
+  size,
   label,
   icon,
   ...rest
 }) => {
   return (
     <div
-      className={cx(styles.tag, styles[variant], styles[size], className)}
+      className={
+        className
+          ? cx(className, tagClassName)
+          : cx(
+              tagStandardTheme,
+              tagClassName,
+              variant && variants[variant],
+              size && variants[size]
+            )
+      }
       style={style}
       {...getDataProps(rest)}
     >
       {icon && <FontAwesomeIcon icon={icon} />}
-      <span className={styles.label}>{label}</span>
+      <span className={labelStyle}>{label}</span>
     </div>
   );
 };

@@ -29,6 +29,7 @@
     "@react-aria/focus": "3.3.0",
     "@stenajs-webui/core": "18.2.0",
     "@stenajs-webui/theme": "18.2.0",
+    "@vanilla-extract/css": "^1.9.5",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {

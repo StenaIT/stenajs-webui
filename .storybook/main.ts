@@ -1,7 +1,8 @@
-import { mergeConfig } from "vite";
-import svgr from "vite-plugin-svgr";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { StorybookViteConfig } from "@storybook/builder-vite";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import { mergeConfig } from "vite";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import svgr from "vite-plugin-svgr";
 
 const config: StorybookViteConfig = {
   core: { builder: "@storybook/builder-vite" },
@@ -28,7 +29,7 @@ const config: StorybookViteConfig = {
     },
   ],
   viteFinal(config, { configType }) {
-    let plugins = [svgr()];
+    let plugins = [svgr(), vanillaExtractPlugin()];
 
     if (configType !== "PRODUCTION") {
       plugins.push(cssInjectedByJsPlugin({ topExecutionPriority: false }));
