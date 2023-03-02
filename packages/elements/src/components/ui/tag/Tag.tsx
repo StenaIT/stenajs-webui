@@ -1,16 +1,17 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as React from "react";
+import { getDataProps } from "@stenajs-webui/core";
 import cx from "classnames";
+import * as React from "react";
+import { CSSProperties } from "react";
 import styles from "./Tag.module.css";
-import { DivProps, getDataProps } from "@stenajs-webui/core";
 
 export interface TagProps {
   variant?: TagVariant;
   label?: string;
   size?: TagSize;
   className?: string;
-  style?: DivProps["style"];
+  style?: CSSProperties;
   icon?: IconDefinition;
 }
 
