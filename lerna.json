@@ -1,5 +1,4 @@
 {
-  "lerna": "2.1.0",
   "packages": [
     "packages/*"
   ],
@@ -9,5 +8,6 @@
       "verifyAccess": false
     }
   },
+  "useWorkspaces": true,
   "exact": true
 }
