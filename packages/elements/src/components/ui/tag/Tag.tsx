@@ -11,6 +11,7 @@ export interface TagProps {
   label?: string;
   size?: TagSize;
   className?: string;
+  theme?: string;
   style?: CSSProperties;
   icon?: IconDefinition;
 }
@@ -23,6 +24,7 @@ export const Tag: React.FC<TagProps> = ({
   className,
   style,
   variant,
+  theme = tagStandardTheme,
   size,
   label,
   icon,
@@ -30,7 +32,7 @@ export const Tag: React.FC<TagProps> = ({
 }) => {
   return (
     <div
-      className={cx(tagStandardTheme, tagClassName({ variant, size }))}
+      className={cx(theme, tagClassName({ variant, size }))}
       style={style}
       {...getDataProps(rest)}
     >

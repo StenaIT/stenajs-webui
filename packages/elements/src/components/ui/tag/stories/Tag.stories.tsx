@@ -52,5 +52,5 @@ export const Overview = () => (
 );
 
 export const CustomTheme: Story<TagProps> = () => (
-  <Tag label={"Economy fare selected"} className={customTheme} />
+  <Tag label={"Economy fare selected"} theme={customTheme} />
 );
