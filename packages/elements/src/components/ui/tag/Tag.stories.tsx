@@ -1,8 +1,10 @@
-import * as React from "react";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
-import { Tag, TagProps, TagVariant } from "./Tag";
 import { Story } from "@storybook/react";
+import * as React from "react";
+import { CSSProperties } from "react";
+import { stenaCheck } from "../../../icons/ui/IconsUi";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
+import { Tag, TagProps, TagVariant } from "./Tag";
 
 export default {
   title: "elements/Tag",
@@ -20,14 +22,7 @@ export const Demo: Story<TagProps> = (props) => <Tag {...props} />;
 export const Overview = () => (
   <Column>
     {(
-      [
-        "info",
-        "error",
-        "warning",
-        "success",
-        "passive",
-        "turquoise",
-      ] as Array<TagVariant>
+      ["info", "error", "warning", "success", "passive"] as Array<TagVariant>
     ).map((variant) => (
       <>
         <Text size={"large"}>{variant}</Text>
@@ -38,9 +33,15 @@ export const Overview = () => (
               <Text>{size}</Text>
             </Row>
             <Indent />
-            <div className={"indent-items"}>
-              <Tag size={size} variant={variant} label={"Default"} />
-            </div>
+
+            <Tag size={size} variant={variant} label={"Default"} />
+            <Indent />
+            <Tag
+              size={size}
+              variant={variant}
+              label={"Default"}
+              icon={stenaCheck}
+            />
           </Row>
         ))}
 
@@ -48,4 +49,19 @@ export const Overview = () => (
       </>
     ))}
   </Column>
+);
+
+export const CustomTheme: Story<TagProps> = () => (
+  <Tag
+    style={
+      {
+        "--swui-tag-font-size": "1.4rem",
+        "--swui-tag-bg-color": "#F4F4F4",
+        "--swui-tag-text-color": "#123D66",
+        "--swui-tag-border-radius": "8px",
+        "--swui-tag-indent": "4px",
+      } as CSSProperties
+    }
+    label={"Economy fare selected"}
+  />
 );
