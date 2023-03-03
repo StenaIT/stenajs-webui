@@ -1,9 +1,5 @@
-import {
-  createGlobalTheme,
-  createTheme,
-  style,
-  styleVariants,
-} from "@vanilla-extract/css";
+import { createGlobalTheme, createTheme, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
 
 export const globalTheme = createGlobalTheme(":root", {
   lhdsColors: {
@@ -114,77 +110,70 @@ export const [tagStandardTheme, tagThemeVars] = createTheme({
   indent: globalTheme.metrics.indent,
 });
 
-export const tagClassName = style({
-  background: tagThemeVars.bgColor,
-  color: tagThemeVars.textColor,
-  fontFamily: tagThemeVars.fontFamily,
-  fontSize: tagThemeVars.fontSize,
-  fontWeight: tagThemeVars.fontWeight,
-  boxSizing: "border-box",
-  display: "inline-flex",
-  flexDirection: "row",
-  whiteSpace: "nowrap",
-  borderRadius: tagThemeVars.borderRadius,
-  minHeight: tagThemeVars.height,
-  alignItems: "center",
-  padding: `0 ${tagThemeVars.indent}`,
-});
-
-export const labelStyle = style({
-  selectors: {
-    [`${tagClassName} &`]: {
-      padding: `0 ${tagThemeVars.indent}`,
+export const tagClassName = recipe({
+  base: {
+    background: tagThemeVars.bgColor,
+    color: tagThemeVars.textColor,
+    fontFamily: tagThemeVars.fontFamily,
+    fontSize: tagThemeVars.fontSize,
+    fontWeight: tagThemeVars.fontWeight,
+    boxSizing: "border-box",
+    display: "inline-flex",
+    flexDirection: "row",
+    whiteSpace: "nowrap",
+    borderRadius: tagThemeVars.borderRadius,
+    minHeight: tagThemeVars.height,
+    alignItems: "center",
+    padding: `0 ${tagThemeVars.indent}`,
+  },
+  variants: {
+    size: {
+      medium: {},
+      small: {
+        vars: {
+          [tagThemeVars.height]: "16px",
+        },
+      },
     },
+    variant: {
+      info: {
+        vars: {
+          [tagThemeVars.bgColor]: globalTheme.lhdsColors.blue100,
+          [tagThemeVars.textColor]: globalTheme.lhdsColors.blue800,
+        },
+      },
+      passive: {
+        vars: {
+          [tagThemeVars.bgColor]: globalTheme.lhdsColors.ui300,
+          [tagThemeVars.textColor]: globalTheme.lhdsColors.ui900,
+        },
+      },
+      success: {
+        vars: {
+          [tagThemeVars.bgColor]: globalTheme.lhdsColors.green100,
+          [tagThemeVars.textColor]: globalTheme.lhdsColors.green900,
+        },
+      },
+      warning: {
+        vars: {
+          [tagThemeVars.bgColor]: globalTheme.lhdsColors.orange100,
+          [tagThemeVars.textColor]: globalTheme.lhdsColors.orange900,
+        },
+      },
+      error: {
+        vars: {
+          [tagThemeVars.bgColor]: globalTheme.lhdsColors.red100,
+          [tagThemeVars.textColor]: globalTheme.lhdsColors.red800,
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "info",
+    size: "medium",
   },
 });
 
-export const variants = styleVariants({
-  /**
-   * Sizes
-   */
-  medium: [tagClassName, {}],
-  small: [
-    tagClassName,
-    {
-      minHeight: "16px",
-    },
-  ],
-  /**
-   * Variants
-   */
-  info: [
-    tagClassName,
-    {
-      background: globalTheme.lhdsColors.blue100,
-      color: globalTheme.lhdsColors.blue800,
-    },
-  ],
-  passive: [
-    tagClassName,
-    {
-      background: globalTheme.lhdsColors.ui300,
-      color: globalTheme.lhdsColors.ui900,
-    },
-  ],
-  success: [
-    tagClassName,
-    {
-      background: globalTheme.lhdsColors.green100,
-      color: globalTheme.lhdsColors.green900,
-    },
-  ],
-  warning: [
-    tagClassName,
-    {
-      background: globalTheme.lhdsColors.orange100,
-      color: globalTheme.lhdsColors.orange900,
-    },
-  ],
-  error: [
-    tagClassName,
-    {
-      background: globalTheme.lhdsColors.red100,
-      color: globalTheme.lhdsColors.red800,
-    },
-  ],
+export const labelStyle = style({
+  padding: `0 ${tagThemeVars.indent}`,
 });

@@ -4,12 +4,7 @@ import { getDataProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import { CSSProperties } from "react";
-import {
-  labelStyle,
-  tagStandardTheme,
-  tagClassName,
-  variants,
-} from "./Tag.css";
+import { labelStyle, tagStandardTheme, tagClassName } from "./Tag.css";
 
 export interface TagProps {
   variant?: TagVariant;
@@ -35,16 +30,7 @@ export const Tag: React.FC<TagProps> = ({
 }) => {
   return (
     <div
-      className={
-        className
-          ? cx(className, tagClassName)
-          : cx(
-              tagStandardTheme,
-              tagClassName,
-              variant && variants[variant],
-              size && variants[size]
-            )
-      }
+      className={cx(tagStandardTheme, tagClassName({ variant, size }))}
       style={style}
       {...getDataProps(rest)}
     >
