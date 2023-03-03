@@ -1,3 +1,15 @@
+# v18.4.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- Tag icon size is different depending on variant [#568](https://github.com/StenaIT/stenajs-webui/pull/568) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.3.0 (Fri Mar 03 2023)
 
 #### 🚀 Enhancement
