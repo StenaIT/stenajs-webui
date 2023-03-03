@@ -11,8 +11,8 @@
   --swui-tag-bg-color: var(--lhds-color-blue-100);
   --swui-tag-text-color: var(--lhds-color-blue-800);
   --swui-tag-indent: var(--swui-metrics-indent);
-  --swui-tag-icon-size-normal: 16px;
-  --swui-tag-icon-size-small: 12px;
+  --swui-tag-icon-size-normal: 1.6rem;
+  --swui-tag-icon-size-small: 1.2rem;
 
   /* State vars */
   --current-text-color: var(--swui-tag-text-color);
