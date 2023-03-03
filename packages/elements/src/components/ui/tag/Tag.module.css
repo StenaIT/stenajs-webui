@@ -11,11 +11,14 @@
   --swui-tag-bg-color: var(--lhds-color-blue-100);
   --swui-tag-text-color: var(--lhds-color-blue-800);
   --swui-tag-indent: var(--swui-metrics-indent);
+  --swui-tag-icon-size-normal: 16px;
+  --swui-tag-icon-size-small: 12px;
 
   /* State vars */
   --current-text-color: var(--swui-tag-text-color);
   --current-bg-color: var(--swui-tag-bg-color);
   --current-height: var(--swui-tag-height-normal);
+  --current-icon-size: var(--swui-tag-icon-size-normal);
 
   /* Styling */
   background-color: var(--current-bg-color);
@@ -37,8 +40,13 @@
     padding: 0 var(--swui-tag-indent);
   }
 
+  .icon {
+    font-size: var(--current-icon-size);
+  }
+
   &.small {
     --current-height: var(--swui-tag-height-small);
+    --current-icon-size: var(--swui-tag-icon-size-small);
   }
 
   &.error {
