@@ -2,7 +2,7 @@ import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { CSSProperties } from "react";
-import { stenaCheck } from "../../../icons/ui/IconsUi";
+import { stenaSailingOnQuay } from "../../../icons/ui/IconsUi";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 import { Tag, TagProps, TagVariant } from "./Tag";
 
@@ -40,7 +40,7 @@ export const Overview = () => (
               size={size}
               variant={variant}
               label={"Default"}
-              icon={stenaCheck}
+              icon={stenaSailingOnQuay}
             />
           </Row>
         ))}
