@@ -1,3 +1,23 @@
+# v18.3.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - New design for `Tag` [#565](https://github.com/StenaIT/stenajs-webui/pull/565) ([@mattias800](https://github.com/mattias800))
+  - Add several finance icons (AB#109066) [#567](https://github.com/StenaIT/stenajs-webui/pull/567) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### 🏠 Internal
+
+- Tooling: Upgrade lerna to latest version [#564](https://github.com/StenaIT/stenajs-webui/pull/564) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.2.0 (Mon Feb 27 2023)
 
 #### 🚀 Enhancement

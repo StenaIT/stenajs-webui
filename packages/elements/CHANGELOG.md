@@ -1,3 +1,17 @@
+# v18.3.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- New design for `Tag` [#565](https://github.com/StenaIT/stenajs-webui/pull/565) ([@mattias800](https://github.com/mattias800))
+- Add several finance icons (AB#109066) [#567](https://github.com/StenaIT/stenajs-webui/pull/567) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 2
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.2.0 (Mon Feb 27 2023)
 
 #### 🚀 Enhancement
