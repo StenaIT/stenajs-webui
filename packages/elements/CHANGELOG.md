@@ -1,3 +1,15 @@
+# v18.4.1 (Tue Mar 14 2023)
+
+#### 🐛 Bug Fix
+
+- Small fix for Tag icon when using global border-box [#569](https://github.com/StenaIT/stenajs-webui/pull/569) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.4.0 (Fri Mar 03 2023)
 
 #### 🚀 Enhancement
