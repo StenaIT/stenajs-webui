@@ -42,7 +42,6 @@
 
   .icon {
     font-size: var(--current-icon-size);
-    box-sizing: content-box;
   }
 
   &.small {
