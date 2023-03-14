@@ -38,10 +38,11 @@
   min-height: var(--current-height);
   align-items: center;
   padding: 0 var(--current-indent);
+  gap: var(--swui-tag-icon-label-indent);
 
   .icon {
     font-size: var(--current-icon-size);
-    padding-right: var(--swui-tag-icon-label-indent);
+    box-sizing: content-box;
   }
 
   &.small {
