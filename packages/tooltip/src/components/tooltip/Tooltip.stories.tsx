@@ -99,6 +99,20 @@ export const Variants = () => (
     >
       <Text>Tooltip with lots of text</Text>
     </Tooltip>
+
+    <Tooltip
+      label={`This is my tooltip, there's many like them, but this one is mine!
+    There are many colours in the world, but the coolest color is surely the tooltip color.
+    If I had a coin for everytime I saw a tooltip, I'd have many coins.
+    Tooltips will soon take over the world.
+    AI bots has nothing on tooltips.`}
+      placement="bottom"
+      variant={"error"}
+    >
+      <Text color={cssColor("--lhds-color-red-700")}>
+        Tooltip with lots of text
+      </Text>
+    </Tooltip>
   </Column>
 );
 
