@@ -1,3 +1,16 @@
+# v18.4.2 (Thu Mar 23 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/tooltip`
+  - Fix tooltip icon height with border-box [#570](https://github.com/StenaIT/stenajs-webui/pull/570) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v18.4.1 (Tue Mar 14 2023)
 
 #### 🐛 Bug Fix
