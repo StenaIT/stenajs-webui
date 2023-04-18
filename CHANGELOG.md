@@ -1,3 +1,22 @@
+# v18.5.0 (Tue Apr 18 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add new status icons and update sailing icons [#571](https://github.com/StenaIT/stenajs-webui/pull/571) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### 🏠 Internal
+
+- `@stenajs-webui/elements`
+  - Add buttons and tag demo [#572](https://github.com/StenaIT/stenajs-webui/pull/572) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v18.4.2 (Thu Mar 23 2023)
 
 #### 🐛 Bug Fix
