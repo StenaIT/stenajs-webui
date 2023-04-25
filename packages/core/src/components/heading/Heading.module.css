@@ -2,6 +2,7 @@
   --swui-heading-text-color: var(--swui-text-primary-color);
   --swui-heading-font-family: var(--swui-font-primary);
   --swui-heading-font-weight: var(--swui-font-weight-text);
+  --swui-heading-line-height: var(--swui-line-height);
 
   font-size: var(--swui-heading-font-size);
   color: var(--swui-heading-text-color);
@@ -13,34 +14,28 @@
 
   &.h1 {
     --swui-heading-font-size: 2.8rem;
-    --swui-heading-line-height: 4rem;
   }
 
   &.h2 {
     --swui-heading-font-size: 2.4rem;
-    --swui-heading-line-height: 3.2rem;
   }
 
   &.h3 {
     --swui-heading-font-size: 2rem;
-    --swui-heading-line-height: 2.4rem;
   }
 
   &.h4 {
     --swui-heading-font-size: 1.6rem;
-    --swui-heading-line-height: 2.4rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.h5 {
     --swui-heading-font-size: 1.4rem;
-    --swui-heading-line-height: 1.6rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 
   &.h6 {
     --swui-heading-font-size: 1.2rem;
-    --swui-heading-line-height: 1.6rem;
     font-weight: var(--swui-font-weight-text-bold);
   }
 }
