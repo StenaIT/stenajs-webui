@@ -1,6 +1,6 @@
-import { Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { useState } from "react";
+import { ButtonGroup } from "../button-group/ButtonGroup";
 import { ToggleButton } from "./ToggleButton";
 
 export default {
@@ -18,47 +18,89 @@ interface State {
   sun?: boolean;
 }
 
-export const Standard = () => {
+export const Weekdays = () => {
   const [state, setState] = useState<State>({});
   return (
-    <Row>
+    <ButtonGroup>
+      <ToggleButton
+        label={"Monday"}
+        pressed={state.mon}
+        onValueChange={(mon) => setState({ ...state, mon })}
+      />
+      <ToggleButton
+        label={"Tuesday"}
+        pressed={state.tue}
+        onValueChange={(tue) => setState({ ...state, tue })}
+      />
+      <ToggleButton
+        label={"Wednesday"}
+        pressed={state.wed}
+        onValueChange={(wed) => setState({ ...state, wed })}
+      />
+      <ToggleButton
+        label={"Thursday"}
+        pressed={state.thu}
+        onValueChange={(thu) => setState({ ...state, thu })}
+      />
+      <ToggleButton
+        label={"Friday"}
+        pressed={state.fri}
+        onValueChange={(fri) => setState({ ...state, fri })}
+      />
+      <ToggleButton
+        label={"Saturday"}
+        pressed={state.sat}
+        onValueChange={(sat) => setState({ ...state, sat })}
+      />
+      <ToggleButton
+        label={"Sunday"}
+        pressed={state.sun}
+        onValueChange={(sun) => setState({ ...state, sun })}
+      />
+    </ButtonGroup>
+  );
+};
+
+export const ShortWeekdays = () => {
+  const [state, setState] = useState<State>({});
+
+  return (
+    <ButtonGroup>
       <ToggleButton
         label={"M"}
         pressed={state.mon}
-        onClick={(mon) => setState({ ...state, mon })}
-        first
+        onValueChange={(mon) => setState({ ...state, mon })}
       />
       <ToggleButton
         label={"T"}
         pressed={state.tue}
-        onClick={(tue) => setState({ ...state, tue })}
+        onValueChange={(tue) => setState({ ...state, tue })}
       />
       <ToggleButton
         label={"W"}
         pressed={state.wed}
-        onClick={(wed) => setState({ ...state, wed })}
+        onValueChange={(wed) => setState({ ...state, wed })}
       />
       <ToggleButton
         label={"T"}
         pressed={state.thu}
-        onClick={(thu) => setState({ ...state, thu })}
+        onValueChange={(thu) => setState({ ...state, thu })}
       />
       <ToggleButton
         label={"F"}
         pressed={state.fri}
-        onClick={(fri) => setState({ ...state, fri })}
+        onValueChange={(fri) => setState({ ...state, fri })}
       />
       <ToggleButton
         label={"S"}
         pressed={state.sat}
-        onClick={(sat) => setState({ ...state, sat })}
+        onValueChange={(sat) => setState({ ...state, sat })}
       />
       <ToggleButton
         label={"S"}
         pressed={state.sun}
-        onClick={(sun) => setState({ ...state, sun })}
-        last
+        onValueChange={(sun) => setState({ ...state, sun })}
       />
-    </Row>
+    </ButtonGroup>
   );
 };
