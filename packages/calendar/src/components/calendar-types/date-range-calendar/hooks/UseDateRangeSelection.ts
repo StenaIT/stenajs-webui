@@ -12,10 +12,13 @@ export const useDateRangeSelection = <T>({
   setFocusedInput,
   statePerMonth,
   onChangePanel,
+  initialDateInFocus,
 }: DateRangeCalendarProps<T>): CalendarWithMonthSwitcherProps<T> => {
   const { currentPanel, setCurrentPanel } =
     useInternalPanelState(onChangePanel);
-  const [dateInFocus, setDateInFocus] = useState(() => new Date());
+  const [dateInFocus, setDateInFocus] = useState(
+    () => initialDateInFocus ?? new Date()
+  );
 
   const onClickDay = useDateRangeOnClickDayHandler(
     value,

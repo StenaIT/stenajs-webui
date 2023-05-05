@@ -12,6 +12,7 @@ export interface DateRangeCalendarProps<T>
     ValueAndOnValueChangeProps<DateRange> {
   focusedInput?: DateRangeFocusedInput;
   setFocusedInput: (focusedInput: DateRangeFocusedInput) => void;
+  initialDateInFocus?: Date;
 }
 
 export function DateRangeCalendar<T>(props: DateRangeCalendarProps<T>) {
