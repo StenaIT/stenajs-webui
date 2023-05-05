@@ -1,3 +1,16 @@
+# v18.6.0 (Fri May 05 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add initialDateInFocus prop to DateRangeCalendar [#576](https://github.com/StenaIT/stenajs-webui/pull/576) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.5.0 (Tue Apr 18 2023)
 
 #### 🚀 Enhancement
