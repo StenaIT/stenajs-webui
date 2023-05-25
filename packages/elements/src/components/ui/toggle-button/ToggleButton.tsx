@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { ButtonElementProps, Text } from "@stenajs-webui/core";
-import { useCallback } from "react";
+import { forwardRef, useCallback } from "react";
 import * as React from "react";
 import cx from "classnames";
 import { width, WidthProps } from "styled-system";
@@ -37,7 +37,10 @@ export interface ToggleButtonProps extends WidthProps, ButtonElementProps {
 
 const Button = styled.button(width);
 
-export const ToggleButton: React.FC<ToggleButtonProps> = ({
+export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
+  HTMLButtonElement,
+  ToggleButtonProps
+>(function ToggleButton({
   label,
   pressed,
   size = "medium",
@@ -45,15 +48,11 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
   disabled,
   onClick,
   ...buttonProps
-}) => {
+}) {
   const handleClick = useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>) => {
-      if (onClick) {
-        onClick(ev);
-      }
-      if (onValueChange) {
-        onValueChange(!pressed);
-      }
+      onClick?.(ev);
+      onValueChange?.(!pressed);
     },
     [onClick, onValueChange, pressed]
   );
@@ -75,4 +74,4 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
       </Text>
     </Button>
   );
-};
+});
