@@ -1,4 +1,4 @@
-import { Box, BoxProps, Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { Box, BoxProps, Indent, Row, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { ComponentPropsWithoutRef } from "react";
@@ -9,6 +9,7 @@ export interface LabelProps extends BoxProps {
   maxCharacters?: number;
   textWidth?: BoxProps["width"];
   htmlFor?: ComponentPropsWithoutRef<"label">["htmlFor"];
+  labelClassName?: string;
 }
 
 export const Label: React.FC<LabelProps> = React.memo(
@@ -20,6 +21,7 @@ export const Label: React.FC<LabelProps> = React.memo(
     row,
     textWidth,
     htmlFor,
+    labelClassName,
     ...boxProps
   }) => {
     const extraInfoLabel = getExtraInfoLabel(optional, maxCharacters);
@@ -35,8 +37,8 @@ export const Label: React.FC<LabelProps> = React.memo(
     );
 
     return (
-      <label htmlFor={htmlFor}>
-        <Box {...boxProps} row={row}>
+      <label htmlFor={htmlFor} className={labelClassName}>
+        <Box {...boxProps} row={row} gap>
           <Row alignItems={"center"} width={textWidth}>
             <Text
               color={cssColor("--lhds-color-ui-600")}
@@ -47,7 +49,6 @@ export const Label: React.FC<LabelProps> = React.memo(
             </Text>
             {!row && <Indent num={1.5}>{infoLabel}</Indent>}
           </Row>
-          <Space />
           {children}
         </Box>
         {row && (
