@@ -86,6 +86,7 @@ export const StandardTableHeadItem = React.memo(
             : stickyProps.sticky
             ? "var(--swui-sticky-group-header-z-index)"
             : zIndex) as CSSProperties["zIndex"],
+          height: 0, // CSS trick to force TableHeadItem to use 100% height
           width,
           minWidth,
         }}
@@ -102,7 +103,7 @@ export const StandardTableHeadItem = React.memo(
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
           selected={selected}
-          height={"var(--current-row-height)"}
+          height={"100%"}
         />
       </th>
     );
