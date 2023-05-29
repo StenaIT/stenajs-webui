@@ -1,3 +1,15 @@
+# v18.6.1 (Mon May 29 2023)
+
+#### 🐛 Bug Fix
+
+- StandardTable header can now expand when label is large or long [#577](https://github.com/StenaIT/stenajs-webui/pull/577) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v18.0.3 (Mon Feb 27 2023)
 
 #### 🐛 Bug Fix
