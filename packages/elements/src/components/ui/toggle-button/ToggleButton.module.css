@@ -1,10 +1,10 @@
 .toggleButton {
   --swui-toggle-button-height: 32px;
 
-  --swui-toggle-button-bg: var(--swui-white);
-  --swui-toggle-button-bg-pressed: var(--lhds-color-blue-100);
-  --swui-toggle-button-bg-hover: var(--lhds-color-blue-50);
-  --swui-toggle-button-bg-disabled: var(--lhds-color-ui-300);
+  --swui-toggle-button-background: var(--swui-white);
+  --swui-toggle-button-background-pressed: var(--lhds-color-blue-100);
+  --swui-toggle-button-background-hover: var(--lhds-color-blue-50);
+  --swui-toggle-button-background-disabled: var(--lhds-color-ui-300);
 
   --swui-toggle-button-text-color: var(--swui-button-text-color);
   --swui-toggle-button-text-color-pressed: var(--swui-button-text-color);
@@ -20,7 +20,7 @@
   --swui-toggle-button-box-shadow-focus: inset 0 0 2px 1px
     var(--lhds-color-blue-300);
 
-  background: var(--swui-toggle-button-bg);
+  background: var(--swui-toggle-button-background);
   border: 1px solid var(--swui-toggle-button-border-color);
   border-radius: var(--swui-border-radius);
   box-shadow: var(--swui-toggle-button-bow-shadow);
@@ -55,7 +55,7 @@
   }
 
   &:hover:not(.disabled) {
-    --swui-toggle-button-bg: var(--swui-toggle-button-bg-hover);
+    --swui-toggle-button-background: var(--swui-toggle-button-background-hover);
     --swui-toggle-button-border-color: var(
       --swui-toggle-button-border-color-hover
     );
@@ -70,19 +70,25 @@
   }
 
   &.pressed {
-    --swui-toggle-button-bg: var(--swui-toggle-button-bg-pressed);
+    --swui-toggle-button-background: var(
+      --swui-toggle-button-background-pressed
+    );
     --swui-toggle-button-border-color: var(
       --swui-toggle-button-border-color-pressed
     );
     z-index: 1;
 
     &:hover {
-      --swui-toggle-button-bg: var(--swui-toggle-button-bg-pressed);
+      --swui-toggle-button-background: var(
+        --swui-toggle-button-background-pressed
+      );
     }
   }
 
   &.disabled {
-    --swui-toggle-button-bg: var(--swui-toggle-button-bg-disabled);
+    --swui-toggle-button-background: var(
+      --swui-toggle-button-background-disabled
+    );
     --swui-toggle-button-border-color: var(
       --swui-toggle-button-border-color-disabled
     );
