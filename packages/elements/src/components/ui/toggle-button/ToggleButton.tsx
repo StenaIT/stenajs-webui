@@ -8,7 +8,9 @@ import styles from "./ToggleButton.module.css";
 
 export type ToggleButtonSize = "small" | "medium" | "large";
 
-export interface ToggleButtonProps extends WidthProps, ButtonElementProps {
+export interface ToggleButtonProps
+  extends WidthProps,
+    Omit<ButtonElementProps, "value"> {
   /**
    * The label of the button.
    */
@@ -17,12 +19,12 @@ export interface ToggleButtonProps extends WidthProps, ButtonElementProps {
   /**
    * The pressed state change handler.
    */
-  onValueChange?: (pressed: boolean) => void;
+  onValueChange?: (value: boolean) => void;
 
   /**
    * If true, the button will display as pressed.
    */
-  pressed?: boolean;
+  value?: boolean;
 
   /**
    * The size of the button.
@@ -42,7 +44,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
   ToggleButtonProps
 >(function ToggleButton({
   label,
-  pressed,
+  value,
   size = "medium",
   onValueChange,
   disabled,
@@ -52,17 +54,18 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
   const handleClick = useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(ev);
-      onValueChange?.(!pressed);
+      onValueChange?.(!value);
     },
-    [onClick, onValueChange, pressed]
+    [onClick, onValueChange, value]
   );
 
   return (
     <Button
+      aria-pressed={value}
       className={cx(
         styles.toggleButton,
         styles[size],
-        pressed && styles.pressed,
+        value && styles.pressed,
         disabled && styles.disabled
       )}
       onClick={handleClick}
