@@ -47,21 +47,21 @@
     color: var(--swui-toggle-button-text-color);
   }
 
-  &:focus {
+  &:focus-visible {
     --swui-toggle-button-border-color: var(
       --swui-toggle-button-border-color-focus
     );
     --swui-toggle-button-bow-shadow: var(--swui-toggle-button-box-shadow-focus);
   }
 
-  &:hover:not(.disabled) {
+  &:hover:not(:disabled) {
     --swui-toggle-button-background: var(--swui-toggle-button-background-hover);
     --swui-toggle-button-border-color: var(
       --swui-toggle-button-border-color-hover
     );
     --swui-toggle-button-bow-shadow: var(--swui-toggle-button-box-shadow-hover);
 
-    &:focus {
+    &:focus-visible {
       --swui-toggle-button-bow-shadow: var(
           --swui-toggle-button-box-shadow-hover
         ),
@@ -85,7 +85,7 @@
     }
   }
 
-  &.disabled {
+  &:disabled {
     --swui-toggle-button-background: var(
       --swui-toggle-button-background-disabled
     );

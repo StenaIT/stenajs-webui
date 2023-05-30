@@ -62,12 +62,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
   return (
     <Button
       aria-pressed={value}
-      className={cx(
-        styles.toggleButton,
-        styles[size],
-        value && styles.pressed,
-        disabled && styles.disabled
-      )}
+      className={cx(styles.toggleButton, styles[size], value && styles.pressed)}
       onClick={handleClick}
       disabled={disabled}
       {...buttonProps}
