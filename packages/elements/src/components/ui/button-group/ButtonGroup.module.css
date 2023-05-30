@@ -9,8 +9,8 @@
       margin-right: -1px;
     }
 
-    &:hover,
-    &:focus {
+    &:hover:not(:disabled),
+    &:focus-visible {
       z-index: 1;
     }
 
