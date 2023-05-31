@@ -1,3 +1,20 @@
+# v18.7.0 (Wed May 31 2023)
+
+#### 🚀 Enhancement
+
+- Update design and functionality of ToggleButton [#574](https://github.com/StenaIT/stenajs-webui/pull/574) ([@esepato](https://github.com/esepato))
+
+#### 🐛 Bug Fix
+
+- Add labelClassName and gap instead of Space [#575](https://github.com/StenaIT/stenajs-webui/pull/575) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v18.5.0 (Tue Apr 18 2023)
 
 #### 🚀 Enhancement
