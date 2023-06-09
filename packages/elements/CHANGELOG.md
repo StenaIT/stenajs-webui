@@ -1,3 +1,15 @@
+# v18.7.1 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- Pass unused ToggleButton ref [#579](https://github.com/StenaIT/stenajs-webui/pull/579) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v18.7.0 (Wed May 31 2023)
 
 #### 🚀 Enhancement
