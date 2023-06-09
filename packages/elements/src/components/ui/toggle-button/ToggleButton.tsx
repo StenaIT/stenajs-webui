@@ -42,15 +42,18 @@ const Button = styled.button(width);
 export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
   HTMLButtonElement,
   ToggleButtonProps
->(function ToggleButton({
-  label,
-  value,
-  size = "medium",
-  onValueChange,
-  disabled,
-  onClick,
-  ...buttonProps
-}) {
+>(function ToggleButton(
+  {
+    label,
+    value,
+    size = "medium",
+    onValueChange,
+    disabled,
+    onClick,
+    ...buttonProps
+  },
+  ref
+) {
   const handleClick = useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(ev);
@@ -65,6 +68,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
       className={cx(styles.toggleButton, styles[size], value && styles.pressed)}
       onClick={handleClick}
       disabled={disabled}
+      ref={ref}
       {...buttonProps}
     >
       <Text size={"small"} className={styles.label}>
