@@ -91,6 +91,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
         />
       ))}
       {rowIndent && <th style={stickyHeaderProps} />}
+      <th style={stickyHeaderProps} />
     </tr>
   );
 });
