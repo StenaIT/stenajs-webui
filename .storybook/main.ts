@@ -1,15 +1,16 @@
 import { mergeConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import { StorybookViteConfig } from "@storybook/builder-vite";
+import { StorybookConfig } from "@storybook/react-vite";
 
-const config: StorybookViteConfig = {
+const config: StorybookConfig = {
   core: { builder: "@storybook/builder-vite" },
   stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
   typescript: {
     reactDocgen:
       process.env.NODE_ENV === "production" ? "react-docgen-typescript" : false,
   },
+
   addons: [
     "@storybook/addon-viewport",
     "@storybook/addon-backgrounds",
@@ -17,7 +18,6 @@ const config: StorybookViteConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-toolbars",
-    "@storybook/addon-postcss",
     {
       name: "@storybook/addon-docs",
       options: {
@@ -35,6 +35,15 @@ const config: StorybookViteConfig = {
     }
 
     return mergeConfig(config, { plugins });
+  },
+
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
+  },
+
+  docs: {
+    autodocs: true,
   },
 };
 
