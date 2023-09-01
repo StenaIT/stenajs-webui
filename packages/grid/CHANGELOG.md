@@ -1,3 +1,15 @@
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v18.6.1 (Mon May 29 2023)
 
 #### 🐛 Bug Fix

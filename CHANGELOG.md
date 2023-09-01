@@ -1,3 +1,18 @@
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Fix automated release user.email [#582](https://github.com/StenaIT/stenajs-webui/pull/582) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/grid`
+  - Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v18.7.1 (Fri Jun 09 2023)
 
 #### 🐛 Bug Fix
