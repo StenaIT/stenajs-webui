@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/calendar",
-  "version": "18.7.2",
+  "version": "18.8.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -26,11 +26,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "18.7.2",
-    "@stenajs-webui/elements": "18.7.2",
-    "@stenajs-webui/forms": "18.7.2",
-    "@stenajs-webui/theme": "18.7.2",
-    "@stenajs-webui/tooltip": "18.7.2",
+    "@stenajs-webui/core": "18.8.0",
+    "@stenajs-webui/elements": "18.8.0",
+    "@stenajs-webui/forms": "18.8.0",
+    "@stenajs-webui/theme": "18.8.0",
+    "@stenajs-webui/tooltip": "18.8.0",
     "date-fns": "2.26.0"
   },
   "peerDependencies": {
