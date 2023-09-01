@@ -1,3 +1,16 @@
+# v18.8.0 (Fri Sep 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add new ShimmerBox component [#578](https://github.com/StenaIT/stenajs-webui/pull/578) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.7.2 (Fri Sep 01 2023)
 
 #### 🐛 Bug Fix
