@@ -7,7 +7,7 @@
   --swui-tag-letter-spacing: var(--swui-text-letter-spacing);
   --swui-tag-height-normal: 24px;
   --swui-tag-height-small: 16px;
-  --swui-tag-border-radius: 10rem;
+  --swui-tag-border-radius: var(--swui-border-radius);
   --swui-tag-bg-color: var(--lhds-color-blue-100);
   --swui-tag-text-color: var(--lhds-color-blue-800);
   --swui-tag-icon-label-indent: var(--swui-metrics-indent);

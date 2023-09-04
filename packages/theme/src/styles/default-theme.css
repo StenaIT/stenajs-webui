@@ -34,7 +34,7 @@
   --swui-font-weight-link: 400;
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
-  --swui-font-size-inputs: 1.4rem;
+  --swui-font-size-inputs: 1.6rem;
   --swui-font-size-large: 1.8rem;
   --swui-line-height-large: 2.6rem;
   --swui-font-size-medium: 1.6rem;
@@ -78,7 +78,7 @@
   --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
-  --swui-field-border-radius: 4px;
+  --swui-field-border-radius: 8px;
   --swui-field-icon-color: var(--swui-text-primary-color);
   --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);
@@ -86,7 +86,7 @@
   --swui-field-placeholder-color: var(--lhds-color-ui-500);
 
   /* Borders */
-  --swui-border-radius: 4px;
+  --swui-border-radius: 8px;
 
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
