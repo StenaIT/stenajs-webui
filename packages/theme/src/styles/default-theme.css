@@ -35,14 +35,14 @@
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-font-size-inputs: 1.4rem;
-  --swui-font-size-large: 1.6rem;
-  --swui-line-height-large: 2.4rem;
-  --swui-font-size-medium: 1.4rem;
-  --swui-line-height-medium: 1.6rem;
-  --swui-font-size-small: 1.2rem;
-  --swui-line-height-small: 1.6rem;
-  --swui-font-size-smaller: 1rem;
-  --swui-line-height-smaller: 1.6rem;
+  --swui-font-size-large: 1.8rem;
+  --swui-line-height-large: 2.6rem;
+  --swui-font-size-medium: 1.6rem;
+  --swui-line-height-medium: 1.8rem;
+  --swui-font-size-small: 1.4rem;
+  --swui-line-height-small: 1.8rem;
+  --swui-font-size-smaller: 1.2rem;
+  --swui-line-height-smaller: 1.8rem;
   --swui-font-weight-inputs: 400;
 
   /* Text */
