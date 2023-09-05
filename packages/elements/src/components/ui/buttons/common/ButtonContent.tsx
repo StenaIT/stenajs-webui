@@ -6,6 +6,7 @@ import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./ButtonContent.module.css";
 import { stenaCheck } from "../../../../icons/ui/IconsUi";
+import { ButtonSize } from "./ButtonCommon";
 
 export interface ButtonContentProps {
   label?: string;
@@ -20,6 +21,7 @@ export interface ButtonContentProps {
   spinnerClassName?: string;
   leftWrapperClassName?: string;
   rightWrapperClassName?: string;
+  size?: ButtonSize;
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -35,11 +37,14 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   spinnerClassName,
   leftWrapperClassName,
   rightWrapperClassName,
+  size = "medium",
 }) => {
   return (
     <>
       {(success || loading || leftIcon || left) && (
-        <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
+        <div
+          className={cx(styles.leftWrapper, styles[size], leftWrapperClassName)}
+        >
           {success ? (
             <FontAwesomeIcon
               icon={stenaCheck}
@@ -71,7 +76,13 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
       )}
 
       {(right || rightIcon) && (
-        <div className={cx(styles.rightWrapper, rightWrapperClassName)}>
+        <div
+          className={cx(
+            styles.rightWrapper,
+            styles[size],
+            rightWrapperClassName
+          )}
+        >
           {right ? (
             right
           ) : rightIcon ? (

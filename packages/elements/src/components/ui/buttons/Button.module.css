@@ -6,8 +6,8 @@
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
   --swui-button-letter-spacing: var(--swui-field-letter-spacing);
-  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 1px);
-  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
+  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 3px);
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 3 - 1px);
 
   /* Text */
   --swui-button-text-color-focus: var(--swui-button-text-color);
@@ -30,10 +30,12 @@
   /* Icon */
   --swui-button-icon-height-small: 1.2rem;
   --swui-button-icon-height-small-icon-only: 1.2rem;
-  --swui-button-icon-height-medium: 1.6rem;
-  --swui-button-icon-height-medium-icon-only: 1.6rem;
-  --swui-button-icon-height-large: 1.6rem;
-  --swui-button-icon-height-large-icon-only: 2.4rem;
+  --swui-button-icon-height-medium: 2rem;
+  --swui-button-icon-height-medium-icon-only: 2rem;
+  --swui-button-icon-height-large: 2rem;
+  --swui-button-icon-height-large-icon-only: 2rem;
+  --swui-button-icon-height-larger: 2rem;
+  --swui-button-icon-height-larger-icon-only: 2.4rem;
 
   --swui-button-icon-color: var(--swui-white);
   --swui-button-icon-color-focus: var(--swui-button-icon-color);
@@ -57,7 +59,8 @@
   --swui-button-icon-only-size-small: 24px;
   --swui-button-icon-only-size-medium: 32px;
   --swui-button-icon-only-size-large: 40px;
-  --swui-button-border-radius-icon-only: var(--swui-border-radius);
+  --swui-button-icon-only-size-larger: 72px;
+  --swui-button-border-radius-icon-only: 9999px;
 
   /* Background */
   --swui-button-background-color: var(--swui-primary-action-color);
@@ -82,7 +85,7 @@
 
   /* Border */
   --swui-button-border-color: var(--swui-button-background-color);
-  --swui-button-border-radius: var(--swui-border-radius);
+  --swui-button-border-radius: 9999px;
   --swui-button-border-color-focus: var(--swui-button-background-color-focus);
   --swui-button-border-color-hover: var(--swui-button-background-color-hover);
   --swui-button-border-color-active: var(--swui-button-background-color-active);
@@ -175,6 +178,11 @@
       width: var(--swui-button-icon-only-size-large);
       height: var(--swui-button-icon-only-size-large);
     }
+
+    &.larger {
+      width: var(--swui-button-icon-only-size-larger);
+      height: var(--swui-button-icon-only-size-larger);
+    }
   }
 
   /*
@@ -195,13 +203,30 @@
 
   &.large {
     --current-line-height: 2.4rem;
-    --swui-button-padding-vertical: calc(var(--swui-metrics-space) - 1px);
+    --swui-button-padding-vertical: calc(var(--swui-metrics-space) * 2 - 4px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
-    --current-text-size: 1.6rem;
+    --current-text-size: 1.8rem;
     --current-icon-height: var(--swui-button-icon-height-large);
 
     &.iconButton {
       --current-icon-height: var(--swui-button-icon-height-large-icon-only);
+    }
+  }
+
+  &.larger {
+    --swui-button-padding-vertical: 24px;
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 6 - 1px);
+
+    --current-text-size: 2rem;
+    --current-line-height: 2.4rem;
+    --swui-button-font-weight: 500;
+
+    --swui-button-box-shadow-focus: unset;
+
+    --current-icon-height: var(--swui-button-icon-height-larger);
+
+    &.iconButton {
+      --current-icon-height: var(--swui-button-icon-height-larger-icon-only);
     }
   }
 
