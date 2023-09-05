@@ -31,25 +31,25 @@ export const Chip: React.FC<ChipProps> = ({
       onClick();
     }
   };
+
+  const removableStyle = onClickRemove ? styles.removable : undefined;
+
   return (
     <div
-      className={cx(
-        styles.chip,
-        styles[variant],
-        onClickRemove ? styles.removable : undefined,
-        className
-      )}
+      className={cx(styles.chip, styles[variant], removableStyle, className)}
       {...getDataProps(rest)}
     >
       {onClick ? (
         <button
           onClick={onClickHandler}
-          className={cx(styles.chipCell, styles.label)}
+          className={cx(styles.chipCell, styles.label, removableStyle)}
         >
           {label}
         </button>
       ) : (
-        <div className={cx(styles.chipCell, styles.label)}>{label}</div>
+        <div className={cx(styles.chipCell, styles.label, removableStyle)}>
+          {label}
+        </div>
       )}
 
       {onClickRemove && (
