@@ -9,7 +9,7 @@ import { Icon } from "../icon/Icon";
 import { Story } from "@storybook/react";
 import { stenaCheck } from "../../../icons/ui/IconsUi";
 
-const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
+const buttonSizes: Array<ButtonSize> = ["small", "medium", "large", "larger"];
 
 export default {
   title: "elements/Buttons",

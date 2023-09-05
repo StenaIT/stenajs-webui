@@ -13,10 +13,18 @@
 
 .leftWrapper:not(:last-child) {
   margin-right: var(--swui-metrics-indent);
+
+  &.larger {
+    margin-right: calc(var(--swui-metrics-indent) * 2);
+  }
 }
 
 .rightWrapper:not(:first-child) {
   margin-left: var(--swui-metrics-indent);
+
+  &.larger {
+    margin-left: calc(var(--swui-metrics-indent) * 2);
+  }
 }
 
 .spinnerLeft {

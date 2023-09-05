@@ -2,11 +2,11 @@
   /* Theme vars */
   --swui-chip-font-size: var(--swui-font-size-small);
   --swui-chip-line-height: var(--swui-line-height-small);
-  --swui-chip-font-weight: var(--swui-font-weight-text);
+  --swui-chip-font-weight: var(--swui-font-weight-text-bold);
   --swui-chip-font-family: var(--swui-font-primary);
   --swui-chip-letter-spacing: var(--swui-text-letter-spacing);
   --swui-chip-height: 24px;
-  --swui-chip-border-radius: var(--swui-border-radius);
+  --swui-chip-border-radius: 99rem;
 
   /* State vars */
   --current-text-color: var(--swui-white);
@@ -35,7 +35,12 @@
 
   .label {
     white-space: nowrap;
-    padding: 0 var(--swui-metrics-space);
+    padding: 0 calc(var(--swui-metrics-space) * 2);
+
+    &.removable {
+      padding: 0 var(--swui-metrics-space) 0
+        calc(var(--swui-metrics-indent) * 2);
+    }
   }
 
   button {
