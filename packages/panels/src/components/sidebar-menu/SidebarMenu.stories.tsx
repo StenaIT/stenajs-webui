@@ -62,8 +62,6 @@ export const Overview = () => {
           <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
         </SidebarMenuCollapsible>
 
-        <SidebarMenuSeparator />
-
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
           leftIcon={faBook}

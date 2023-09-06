@@ -37,7 +37,6 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
-import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
@@ -64,7 +63,7 @@ export default {
 };
 
 export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
-  const [isOpen, open, close] = useBoolean(false);
+  const [isOpen, open, close] = useBoolean(true);
   const onClick = () => {};
 
   return (
@@ -103,8 +102,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               />
               <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
             </SidebarMenuCollapsible>
-
-            <SidebarMenuSeparator />
 
             <SidebarMenuHeading label={"Support"} />
             <SidebarMenuLink

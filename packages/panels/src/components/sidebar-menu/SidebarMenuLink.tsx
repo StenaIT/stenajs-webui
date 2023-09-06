@@ -1,4 +1,4 @@
-import { ButtonElementProps, Indent, Row } from "@stenajs-webui/core";
+import { Box, ButtonElementProps, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { CSSProperties, ReactNode } from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
@@ -86,14 +86,16 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   );
 
   return (
-    <>
-      {renderLink({
-        ...buttonProps,
-        activeClassName: contentStyles.selected,
-        className: innerClassName,
-        children: innerChildren,
-        style: innerStyle,
-      })}
-    </>
+    <Box indent={1} width={"100%"}>
+      <Box width={"100%"} borderRadius={"99rem"} overflow={"hidden"}>
+        {renderLink({
+          ...buttonProps,
+          activeClassName: contentStyles.selected,
+          className: innerClassName,
+          children: innerChildren,
+          style: innerStyle,
+        })}
+      </Box>
+    </Box>
   );
 };

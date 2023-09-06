@@ -20,7 +20,7 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
   ...textProps
 }) => {
   return (
-    <Box spacing={2} indent={2}>
+    <Box indent={2} spacing={1}>
       <CollapsibleContent
         className={styles.sidebarMenuHeading}
         contentLeft={contentLeft}
@@ -29,6 +29,7 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
         <Text
           variant={"overline"}
           color={"var(--swui-sidebar-menu-heading-text-color)"}
+          size={"small"}
           {...textProps}
         >
           {label}

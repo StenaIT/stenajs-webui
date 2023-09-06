@@ -1,4 +1,4 @@
-import { Box, BoxProps, Column, Space } from "@stenajs-webui/core";
+import { Box, BoxProps, Column, Indent, Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
@@ -8,7 +8,6 @@ import {
 } from "./SidebarMenuCloseButton";
 import { getNavbarHeight } from "../nav-bar/NavbarHeightStyleUtil";
 import { NavBarVariant } from "../nav-bar/NavBar";
-import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export type SidebarMenuVariant = NavBarVariant;
 
@@ -44,11 +43,14 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       data-collapsed={collapsed || undefined}
       {...boxProps}
     >
+      <Space num={2} />
+
       {!hideCloseButton && (
         <>
-          <SidebarMenuCloseButton onClick={onCloseClick} />
-          <SidebarMenuSeparator />
-          <Space />
+          <Indent>
+            <SidebarMenuCloseButton onClick={onCloseClick} />
+          </Indent>
+          <Space num={2} />
         </>
       )}
       <Box
@@ -56,7 +58,9 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         height={"100%"}
         background={"var(--current-background-color)"}
       >
-        <Column flex={1}>{children}</Column>
+        <Column flex={1} gap={1}>
+          {children}
+        </Column>
       </Box>
     </Box>
   );
