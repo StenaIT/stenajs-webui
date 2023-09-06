@@ -1,3 +1,16 @@
+# v18.9.0 (Wed Sep 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Add checkboxDisabled prop to CollapsibleWithCheckbox [#585](https://github.com/StenaIT/stenajs-webui/pull/585) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
 # v18.8.0 (Fri Sep 01 2023)
 
 #### 🚀 Enhancement
