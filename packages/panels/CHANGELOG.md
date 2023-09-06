@@ -1,3 +1,15 @@
+# v18.9.1 (Wed Sep 06 2023)
+
+#### 🐛 Bug Fix
+
+- Fixed issue with new disabled functionality in CollapsibleWithCheckbox [#586](https://github.com/StenaIT/stenajs-webui/pull/586) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
 # v18.9.0 (Wed Sep 06 2023)
 
 #### 🚀 Enhancement
