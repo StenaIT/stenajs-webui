@@ -3,16 +3,16 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
 import {
-  SidebarMenuCloseButton,
-  SidebarMenuCloseButtonProps,
-} from "./SidebarMenuCloseButton";
+  SidebarMenuCloseButtonRow,
+  SidebarMenuCloseButtonRowProps,
+} from "./SidebarMenuCloseButtonRow";
 import { getNavbarHeight } from "../nav-bar/NavbarHeightStyleUtil";
 import { NavBarVariant } from "../nav-bar/NavBar";
 
 export type SidebarMenuVariant = NavBarVariant;
 
 export interface SidebarMenuProps extends BoxProps {
-  onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
+  onCloseClick?: SidebarMenuCloseButtonRowProps["onClick"];
   hideCloseButton?: boolean;
   collapsed?: boolean;
   variant?: SidebarMenuVariant;
@@ -48,7 +48,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 
       {!hideCloseButton && (
         <>
-          <SidebarMenuCloseButton onClick={onCloseClick} />
+          <SidebarMenuCloseButtonRow onClick={onCloseClick} />
           <Space num={1.5} />
         </>
       )}
