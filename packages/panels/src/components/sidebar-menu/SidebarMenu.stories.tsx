@@ -51,15 +51,18 @@ export const Overview = () => {
           label={"Selected"}
         />
         <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-          <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
-          <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
-          <SidebarMenuLink
-            indent
-            label={"Level 2.3"}
-            onClick={onClick}
-            selected
-          />
-          <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
+          <SidebarMenuLink label={"Level 2.1"} onClick={onClick} />
+          <SidebarMenuLink label={"Level 2.2"} onClick={onClick} />
+          <SidebarMenuLink label={"Level 2.3"} onClick={onClick} selected />
+          <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
+          <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
+            <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
+            <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
+            <SidebarMenuCollapsible label={"Level 3.3"} leftIcon={faChartBar}>
+              <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
+            </SidebarMenuCollapsible>
+          </SidebarMenuCollapsible>
         </SidebarMenuCollapsible>
 
         <SidebarMenuHeading label={"Support"} />
@@ -101,10 +104,10 @@ export const WithoutIcons = () => {
           label={"Customers"}
         />
         <SidebarMenuCollapsible label={"Statistics"}>
-          <SidebarMenuLink indent label={"Total"} onClick={onClick} />
-          <SidebarMenuLink indent label={"Sales region"} onClick={onClick} />
-          <SidebarMenuLink indent label={"Routes"} onClick={onClick} selected />
-          <SidebarMenuLink indent label={"Sellers"} onClick={onClick} />
+          <SidebarMenuLink label={"Total"} onClick={onClick} />
+          <SidebarMenuLink label={"Sales region"} onClick={onClick} />
+          <SidebarMenuLink label={"Routes"} onClick={onClick} selected />
+          <SidebarMenuLink label={"Sellers"} onClick={onClick} />
         </SidebarMenuCollapsible>
 
         <SidebarMenuSeparator />

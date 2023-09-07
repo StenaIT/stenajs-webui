@@ -22,7 +22,6 @@ export interface SidebarMenuLinkProps
   renderLink?: SidebarLinkRenderer;
   width?: CSSProperties["width"];
   selected?: boolean;
-  indent?: boolean;
 }
 
 export type SidebarLinkRenderer = (props: RenderLinkProps) => ReactNode;
@@ -38,7 +37,6 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   className,
   children,
   selected,
-  indent,
   label,
   loading,
   left,
@@ -68,7 +66,6 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   const innerChildren = (
     <Row spacing={1} flex={1} alignItems={"center"}>
       {!hasContentLeft && <Indent />}
-      {indent && <Indent num={3.5} />}
       <ButtonContent
         label={label}
         loading={loading}

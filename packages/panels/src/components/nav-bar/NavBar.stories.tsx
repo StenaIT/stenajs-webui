@@ -92,15 +92,10 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               label={"Selected"}
             />
             <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-              <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
-              <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
-              <SidebarMenuLink
-                indent
-                label={"Level 2.3"}
-                onClick={onClick}
-                selected
-              />
-              <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.1"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.2"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.3"} onClick={onClick} selected />
+              <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
             </SidebarMenuCollapsible>
 
             <SidebarMenuHeading label={"Support"} />
