@@ -24,6 +24,7 @@
   border: 0;
   padding: 0;
   background: var(--current-background-color);
+  height: var(--swui-sidebar-menu-item-height);
 
   [data-collapsed] [aria-expanded="true"] &,
   &:hover {

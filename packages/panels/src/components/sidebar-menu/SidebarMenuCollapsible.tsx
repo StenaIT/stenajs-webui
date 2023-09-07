@@ -31,16 +31,6 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
 }) => {
   const [expanded, setExpanded] = useState<boolean>(initialExpand);
 
-  const innerClassName = cx(
-    contentStyles.button,
-    expanded ? contentStyles.selected : undefined,
-    className
-  );
-
-  const innerStyle = {
-    height: "var(--swui-sidebar-menu-item-height)",
-  };
-
   return (
     <Box
       background={"var(--current-background-color)"}
@@ -53,8 +43,11 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
         justifyContent={"space-between"}
       >
         <button
-          className={innerClassName}
-          style={innerStyle}
+          className={cx(
+            contentStyles.button,
+            expanded ? contentStyles.selected : undefined,
+            className
+          )}
           onClick={() => setExpanded(!expanded)}
         >
           <Row justifyContent={"space-between"} indent={2}>
