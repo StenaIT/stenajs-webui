@@ -9,7 +9,7 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
   label,
 }) => {
   return (
-    <Box height={"32px"} justifyContent={"center"}>
+    <Box height={"32px"} justifyContent={"center"} indent={1}>
       <Space />
       <Text variant={"overline"} size={"smaller"}>
         {label}

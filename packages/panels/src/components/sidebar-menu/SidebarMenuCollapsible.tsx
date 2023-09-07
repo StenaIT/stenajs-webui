@@ -46,25 +46,25 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
       background={"var(--current-background-color)"}
       aria-expanded={expanded}
     >
-      <Box width={"100%"}>
-        <Box
-          width={"100%"}
-          borderRadius={"99rem"}
-          overflow={"hidden"}
-          justifyContent={"space-between"}
+      <Box
+        width={"100%"}
+        borderRadius={"99rem"}
+        overflow={"hidden"}
+        justifyContent={"space-between"}
+      >
+        <button
+          className={innerClassName}
+          style={innerStyle}
+          onClick={() => setExpanded(!expanded)}
         >
-          <button
-            className={innerClassName}
-            style={innerStyle}
-            onClick={() => setExpanded(!expanded)}
-          >
-            <Row justifyContent={"space-between"}>
-              <Row>
-                {leftIcon ? (
+          <Row justifyContent={"space-between"} indent={2}>
+            <Row>
+              {leftIcon && (
+                <>
                   <Box
-                    width={"var(--swui-sidebar-menu-item-height)"}
                     alignItems={"center"}
                     justifyContent={"center"}
+                    width={"16px"}
                   >
                     <Icon
                       icon={leftIcon}
@@ -73,33 +73,31 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
                       data-hover={true}
                     />
                   </Box>
-                ) : (
-                  <Indent num={1} />
-                )}
-                <Text variant={"bold"} className={styles.label}>
-                  {label}
-                </Text>
-              </Row>
-              <Row>
-                <Icon
-                  icon={expanded ? faChevronUp : faChevronDown}
-                  size={12}
-                  color={cssColor("--lhds-color-blue-600")}
-                />
-                <Indent />
-              </Row>
+                  <Indent />
+                </>
+              )}
+              <Text variant={"bold"} className={styles.label}>
+                {label}
+              </Text>
             </Row>
-          </button>
-        </Box>
+            <Row>
+              <Icon
+                icon={expanded ? faChevronUp : faChevronDown}
+                size={12}
+                color={cssColor("--lhds-color-blue-600")}
+              />
+            </Row>
+          </Row>
+        </button>
       </Box>
 
       {expanded && (
-        <Indent>
+        <>
           <Space />
           <SidebarMenuCollapsibleGroupBox indent={indent}>
             {children}
           </SidebarMenuCollapsibleGroupBox>
-        </Indent>
+        </>
       )}
     </Box>
   );

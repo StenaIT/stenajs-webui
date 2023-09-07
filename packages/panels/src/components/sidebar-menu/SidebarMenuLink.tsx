@@ -65,7 +65,7 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
 
   const innerChildren = (
     <Row spacing={1} flex={1} alignItems={"center"}>
-      {!hasContentLeft && <Indent />}
+      <Indent num={hasContentLeft ? 0.5 : 1} />
       <ButtonContent
         label={label}
         loading={loading}

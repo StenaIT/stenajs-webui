@@ -65,6 +65,10 @@ export const Overview = () => {
           </SidebarMenuCollapsible>
         </SidebarMenuCollapsible>
 
+        <SidebarMenuCollapsible label={"No icon"}>
+          <SidebarMenuLink label={"Level 2"} onClick={onClick} />
+        </SidebarMenuCollapsible>
+
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
           leftIcon={faBook}

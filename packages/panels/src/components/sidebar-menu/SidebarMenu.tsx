@@ -31,7 +31,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 
   return (
     <Box
-      indent={2}
+      indent={1}
       className={cx(
         styles.sidebarMenu,
         collapsed ? styles.collapsed : null,

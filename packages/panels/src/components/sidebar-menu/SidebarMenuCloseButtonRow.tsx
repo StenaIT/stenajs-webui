@@ -9,7 +9,12 @@ export const SidebarMenuCloseButtonRow: React.FC<
   SidebarMenuCloseButtonRowProps
 > = ({ onClick }) => {
   return (
-    <Row justifyContent={"space-between"} alignItems={"center"} flex={1}>
+    <Row
+      justifyContent={"space-between"}
+      alignItems={"center"}
+      flex={1}
+      indent={1}
+    >
       <FlatButton leftIcon={stenaTimes} onClick={onClick} variant={"danger"} />
       <StenaFlag className={styles.stenaFlag} />
     </Row>
