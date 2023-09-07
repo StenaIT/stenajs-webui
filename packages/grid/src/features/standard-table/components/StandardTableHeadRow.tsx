@@ -17,12 +17,12 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
-import { TooltipProps } from "@stenajs-webui/tooltip";
+import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
-  appendTooltipTo?: TooltipProps["appendTo"];
+  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
 const getTopPosition = (

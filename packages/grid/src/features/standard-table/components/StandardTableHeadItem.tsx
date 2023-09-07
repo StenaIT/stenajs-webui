@@ -1,13 +1,15 @@
 import * as React from "react";
 import { CSSProperties } from "react";
-import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
+import {
+  TableHeadItem,
+  TableHeadProps,
+} from "../../table-ui/components/table/TableHeadItem";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
 import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
-import { TooltipProps } from "@stenajs-webui/tooltip";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -15,7 +17,7 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
-  appendTooltipTo?: TooltipProps["appendTo"];
+  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
 export const StandardTableHeadItem = React.memo(

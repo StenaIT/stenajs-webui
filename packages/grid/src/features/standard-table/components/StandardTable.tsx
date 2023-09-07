@@ -39,7 +39,7 @@ import { ColGroups } from "./ColGroups";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
-import { TooltipProps } from "@stenajs-webui/tooltip";
+import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 
 export interface StandardTableProps<
   TItem,
@@ -80,7 +80,7 @@ export interface StandardTableProps<
    * Append tooltip to HTML element. This prop is passed to Tippy.
    * This is useful to solve z-index problems.
    */
-  appendTooltipTo?: TooltipProps["appendTo"];
+  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 
   /**
    * Items to list in the table.
