@@ -17,10 +17,12 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
+import { TooltipProps } from "@stenajs-webui/tooltip";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
+  appendTooltipTo?: TooltipProps["appendTo"];
 }
 
 const getTopPosition = (
@@ -43,7 +45,11 @@ const getTopPosition = (
 
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem
->({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
+>({
+  items,
+  appendTooltipTo,
+  height = defaultTableRowHeight,
+}: StandardTableHeaderProps<TItem>) {
   const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
 
   const {
@@ -171,6 +177,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                   disableBorderLeft={groupIndex === 0 && index === 0}
                   stickyHeader={stickyHeader}
                   top={stickyHeaderStyle.top}
+                  appendTooltipTo={appendTooltipTo}
                 />
               );
             })}

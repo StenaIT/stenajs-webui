@@ -7,6 +7,7 @@ import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
+import { TooltipProps } from "@stenajs-webui/tooltip";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -14,6 +15,7 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
+  appendTooltipTo?: TooltipProps["appendTo"];
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -23,6 +25,7 @@ export const StandardTableHeadItem = React.memo(
     disableBorderLeft,
     stickyHeader,
     top,
+    appendTooltipTo,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -102,6 +105,7 @@ export const StandardTableHeadItem = React.memo(
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
+          appendTooltipTo={appendTooltipTo}
           selected={selected}
           height={"100%"}
         />
