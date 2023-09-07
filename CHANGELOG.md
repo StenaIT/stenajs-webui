@@ -1,3 +1,17 @@
+# v18.10.0 (Thu Sep 07 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add filled versions of some icons [#545](https://github.com/StenaIT/stenajs-webui/pull/545) ([@juiceit](https://github.com/juiceit) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.9.3 (Thu Sep 07 2023)
 
 #### 🐛 Bug Fix
