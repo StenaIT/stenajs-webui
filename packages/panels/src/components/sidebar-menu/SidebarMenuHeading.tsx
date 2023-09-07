@@ -1,10 +1,6 @@
-import { Box, Text, TextProps } from "@stenajs-webui/core";
+import { Box, Space, Text, TextProps } from "@stenajs-webui/core";
 import * as React from "react";
-import styles from "./SidebarMenuHeading.module.css";
-import {
-  CollapsibleContent,
-  CollapsibleSimpleContentProps,
-} from "../collapsible/CollapsibleContent";
+import { CollapsibleSimpleContentProps } from "../collapsible/CollapsibleContent";
 
 export interface SidebarMenuHeadingProps
   extends Pick<CollapsibleSimpleContentProps, "contentLeft" | "contentRight">,
@@ -20,21 +16,11 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
   ...textProps
 }) => {
   return (
-    <Box indent={2} spacing={1}>
-      <CollapsibleContent
-        className={styles.sidebarMenuHeading}
-        contentLeft={contentLeft}
-        contentRight={contentRight}
-      >
-        <Text
-          variant={"overline"}
-          color={"var(--swui-sidebar-menu-heading-text-color)"}
-          size={"smaller"}
-          {...textProps}
-        >
-          {label}
-        </Text>
-      </CollapsibleContent>
+    <Box height={"32px"} justifyContent={"center"} indent={2}>
+      <Space />
+      <Text variant={"overline"} size={"smaller"} {...textProps}>
+        {label}
+      </Text>
     </Box>
   );
 };
