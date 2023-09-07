@@ -1,3 +1,97 @@
+# v18.10.0 (Thu Sep 07 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add filled versions of some icons [#545](https://github.com/StenaIT/stenajs-webui/pull/545) ([@juiceit](https://github.com/juiceit) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.9.3 (Thu Sep 07 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Tooltip in StandardTable can be rendered to portal [#589](https://github.com/StenaIT/stenajs-webui/pull/589) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.9.2 (Wed Sep 06 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Fixed issue with always requiring checkboxDisabled in CollapsibleWithCheckbox. [#587](https://github.com/StenaIT/stenajs-webui/pull/587) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.9.1 (Wed Sep 06 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Fixed issue with new disabled functionality in CollapsibleWithCheckbox [#586](https://github.com/StenaIT/stenajs-webui/pull/586) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.9.0 (Wed Sep 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Add checkboxDisabled prop to CollapsibleWithCheckbox [#585](https://github.com/StenaIT/stenajs-webui/pull/585) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.8.0 (Fri Sep 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add new ShimmerBox component [#578](https://github.com/StenaIT/stenajs-webui/pull/578) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Fix automated release user.email [#582](https://github.com/StenaIT/stenajs-webui/pull/582) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/grid`
+  - Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v18.7.1 (Fri Jun 09 2023)
 
 #### 🐛 Bug Fix

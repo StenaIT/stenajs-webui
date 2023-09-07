@@ -46,3 +46,4 @@ export * from "./components/ui/dialog/UseDialog";
 export * from "./components/ui/dialog/UseDialogPromise";
 export * from "./components/ui/dialog/drawer/UseDrawerDialog";
 export * from "./components/ui/dialog/modal/UseModalDialog";
+export * from "./components/ui/shimmer-box/ShimmerBox";

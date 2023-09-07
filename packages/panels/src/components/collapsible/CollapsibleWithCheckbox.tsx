@@ -7,7 +7,9 @@ export interface CollapsibleWithCheckboxProps
     Pick<
       CheckboxProps,
       "value" | "onValueChange" | "onChange" | "indeterminate"
-    > {}
+    > {
+  checkboxDisabled?: CheckboxProps["disabled"];
+}
 
 export const CollapsibleWithCheckbox: React.FC<
   CollapsibleWithCheckboxProps
@@ -16,6 +18,7 @@ export const CollapsibleWithCheckbox: React.FC<
   onValueChange,
   onChange,
   indeterminate,
+  checkboxDisabled,
   ...collapsibleProps
 }) => {
   return (
@@ -26,6 +29,7 @@ export const CollapsibleWithCheckbox: React.FC<
           indeterminate={indeterminate}
           onValueChange={onValueChange}
           onChange={onChange}
+          disabled={checkboxDisabled}
           onClick={(ev) => ev.stopPropagation()}
         />
       }

@@ -1,3 +1,27 @@
+# v18.9.3 (Thu Sep 07 2023)
+
+#### 🐛 Bug Fix
+
+- Tooltip in StandardTable can be rendered to portal [#589](https://github.com/StenaIT/stenajs-webui/pull/589) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v18.6.1 (Mon May 29 2023)
 
 #### 🐛 Bug Fix
