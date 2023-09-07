@@ -7,7 +7,10 @@
   --swui-sidebar-menu-background-color-hover: var(--lhds-color-ui-400);
   --swui-sidebar-menu-background-color-focus: var(--lhds-color-ui-400);
   --swui-sidebar-menu-background-color-active: var(--lhds-color-ui-300);
-  --swui-sidebar-menu-item-selected: var(--lhds-color-blue-100);
+  --swui-sidebar-menu-background-selected: var(--lhds-color-blue-100);
+  --swui-sidebar-menu-background-selected-hover: var(--lhds-color-blue-200);
+  --swui-sidebar-menu-background-selected-focus: var(--lhds-color-blue-200);
+  --swui-sidebar-menu-background-selected-active: var(--lhds-color-blue-100);
   --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
     var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
 
@@ -25,7 +28,17 @@
   --current-background-color-active: var(
     --swui-sidebar-menu-background-color-active
   );
-  --current-item-selected: var(--swui-sidebar-menu-item-selected);
+  --current-background-selected: var(--swui-sidebar-menu-background-selected);
+  --current-background-selected-hover: var(
+    --swui-sidebar-menu-background-selected-hover
+  );
+  --current-background-selected-focus: var(
+    --swui-sidebar-menu-background-selected-focus
+  );
+  --current-background-selected-active: var(
+    --swui-sidebar-menu-background-selected-active
+  );
+
   --current-content-padding: var(--swui-sidebar-menu-content-padding);
 
   /* Styling */

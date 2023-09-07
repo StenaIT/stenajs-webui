@@ -43,6 +43,18 @@
   }
 
   &.selected {
-    background: var(--current-item-selected);
+    background: var(--current-background-selected);
+
+    &:hover {
+      background: var(--current-background-selected-hover);
+    }
+
+    &:focus-visible {
+      background: var(--current-background-selected-focus);
+    }
+
+    &:active {
+      background: var(--current-background-selected-active);
+    }
   }
 }

@@ -41,7 +41,10 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   };
 
   return (
-    <Box background={"var(--current-background-color)"}>
+    <Box
+      background={"var(--current-background-color)"}
+      aria-expanded={expanded}
+    >
       <Box indent={1} width={"100%"}>
         <Box
           width={"100%"}

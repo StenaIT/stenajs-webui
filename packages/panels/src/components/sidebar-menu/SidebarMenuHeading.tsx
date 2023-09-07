@@ -29,7 +29,7 @@ export const SidebarMenuHeading: React.FC<SidebarMenuHeadingProps> = ({
         <Text
           variant={"overline"}
           color={"var(--swui-sidebar-menu-heading-text-color)"}
-          size={"small"}
+          size={"smaller"}
           {...textProps}
         >
           {label}
