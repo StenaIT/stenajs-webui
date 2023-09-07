@@ -63,7 +63,7 @@ export default {
 };
 
 export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
-  const [isOpen, open, close] = useBoolean(true);
+  const [isOpen, open, close] = useBoolean(false);
   const onClick = () => {};
 
   return (
