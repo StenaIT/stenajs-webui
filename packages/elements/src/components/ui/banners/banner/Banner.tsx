@@ -17,9 +17,11 @@ import styles from "./Banner.module.css";
 import cx from "classnames";
 import { Spinner } from "../../spinner/Spinner";
 import {
-  stenaCheckCircle,
+  stenaCheck,
   stenaExclamationCircle,
   stenaExclamationTriangle,
+  stenaInfoMegaphone,
+  stenaInfoSpeech,
 } from "../../../../icons/ui/IconsUi";
 
 export type BannerVariant =
@@ -41,9 +43,9 @@ export interface BannerProps {
 
 const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
   standard: stenaExclamationCircle,
-  info: stenaExclamationCircle,
-  success: stenaCheckCircle,
-  warning: stenaExclamationCircle,
+  info: stenaInfoSpeech,
+  success: stenaCheck,
+  warning: stenaInfoMegaphone,
   error: stenaExclamationTriangle,
 };
 
@@ -66,19 +68,21 @@ export const Banner: React.FC<BannerProps> = ({
           justifyContent={"center"}
           alignItems={"center"}
         >
-          {(icon || iconPerVariant[variant] || loading) && (
-            <>
-              {loading ? (
-                <Spinner size={"tiny"} color={"var(--current-icon-color)"} />
-              ) : (
-                <Icon
-                  icon={icon ?? iconPerVariant[variant]}
-                  size={24}
-                  className={styles.icon}
-                />
-              )}
-            </>
-          )}
+          <div className={styles.iconBackground}>
+            {(icon || iconPerVariant[variant] || loading) && (
+              <>
+                {loading ? (
+                  <Spinner size={"tiny"} />
+                ) : (
+                  <Icon
+                    icon={icon ?? iconPerVariant[variant]}
+                    size={20}
+                    className={styles.icon}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </Row>
         <Row justifyContent={"space-between"} flexGrow={1}>
           <Column justifyContent={"center"}>

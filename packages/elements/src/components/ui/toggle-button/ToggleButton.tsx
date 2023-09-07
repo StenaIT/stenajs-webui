@@ -1,69 +1,79 @@
-import { Box, Clickable, Text } from "@stenajs-webui/core";
+import styled from "@emotion/styled";
+import { ButtonElementProps, Text } from "@stenajs-webui/core";
+import { forwardRef, useCallback } from "react";
 import * as React from "react";
-import { useMemo } from "react";
 import cx from "classnames";
+import { width, WidthProps } from "styled-system";
 import styles from "./ToggleButton.module.css";
 
-export interface ToggleButtonProps {
+export type ToggleButtonSize = "small" | "medium" | "large";
+
+export interface ToggleButtonProps
+  extends WidthProps,
+    Omit<ButtonElementProps, "value"> {
   /**
    * The label of the button.
    */
   label?: string | number;
 
   /**
-   * The click handler.
+   * The pressed state change handler.
    */
-  onClick?: (pressed: boolean) => void;
+  onValueChange?: (value: boolean) => void;
 
   /**
    * If true, the button will display as pressed.
    */
-  pressed?: boolean;
+  value?: boolean;
 
   /**
-   * If true, the button will have rounded corners on the left side.
+   * The size of the button.
    */
-  first?: boolean;
+  size?: ToggleButtonSize;
 
   /**
-   * If true, the button will have rounded corners on the right side.
+   * If true, the button will be disabled.
    */
-  last?: boolean;
-
-  /**
-   * The width of the button.
-   * @default Width specified in theme.
-   */
-  width?: string;
+  disabled?: boolean;
 }
 
-export const ToggleButton = ({
-  label,
-  pressed,
-  first,
-  last,
-  width,
-  onClick,
-}: ToggleButtonProps) => {
-  const borderRadius = useMemo(
-    () =>
-      `${first ? "3px" : 0} ${last ? "3px 3px" : "0 0"} ${first ? "3px" : "0"}`,
-    [first, last]
+const Button = styled.button(width);
+
+export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
+  HTMLButtonElement,
+  ToggleButtonProps
+>(function ToggleButton(
+  {
+    label,
+    value,
+    size = "medium",
+    onValueChange,
+    disabled,
+    onClick,
+    ...buttonProps
+  },
+  ref
+) {
+  const handleClick = useCallback(
+    (ev: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(ev);
+      onValueChange?.(!value);
+    },
+    [onClick, onValueChange, value]
   );
 
   return (
-    <Clickable onClick={() => onClick && onClick(!pressed)}>
-      <Box
-        className={cx(styles.toggleButton, pressed && styles.pressed)}
-        width={width}
-        justifyContent={"center"}
-        alignItems={"center"}
-        borderRadius={borderRadius}
-      >
-        <Text size={"small"} className={styles.label}>
-          {label}
-        </Text>
-      </Box>
-    </Clickable>
+    <Button
+      aria-pressed={value}
+      className={cx(styles.toggleButton, styles[size], value && styles.pressed)}
+      onClick={handleClick}
+      disabled={disabled}
+      ref={ref}
+      {...buttonProps}
+    >
+      <Text size={"small"} className={styles.label}>
+        {label}
+      </Text>
+    </Button>
   );
-};
+});

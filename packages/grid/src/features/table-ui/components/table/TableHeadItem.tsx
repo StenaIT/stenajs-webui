@@ -11,6 +11,7 @@ import {
   ButtonWithPopoverProps,
   Popover,
   Tooltip,
+  TooltipProps,
 } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { CSSProperties, useRef } from "react";
@@ -30,6 +31,7 @@ export interface TableHeadProps extends BoxProps {
   selected?: boolean;
   alignRight?: boolean;
   sortOrderIconVariant?: SortOrderIconVariant;
+  appendTooltipTo?: TooltipProps["appendTo"];
 }
 
 export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
@@ -45,6 +47,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     overflow = "hidden",
     alignRight,
     sortOrderIconVariant,
+    appendTooltipTo,
     ...boxProps
   }) => {
     const containerRef = useRef(null);
@@ -62,6 +65,10 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         ref={containerRef}
         overflow={overflow}
         justifyContent={alignRight ? "flex-end" : "flex-start"}
+        borderTop={"2px solid transparent"}
+        borderBottom={`2px solid ${
+          selected ? cssColor("--lhds-color-blue-500") : "transparent"
+        }`}
         {...boxProps}
       >
         <Row alignItems={"center"} indent>
@@ -116,6 +123,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                 <Tooltip
                   label={infoIconTooltipText}
                   zIndex={"var(--swui-sticky-popover-z-index)" as any}
+                  appendTo={appendTooltipTo}
                 >
                   <Icon
                     icon={stenaInfoCircle}

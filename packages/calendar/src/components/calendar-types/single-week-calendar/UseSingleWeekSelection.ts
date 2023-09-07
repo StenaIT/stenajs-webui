@@ -1,4 +1,4 @@
-import { setWeek } from "date-fns";
+import { setWeek, startOfWeek } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { useCallback, useMemo, useState } from "react";
 import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";
@@ -93,5 +93,6 @@ const getWeekDataFromWeekString = (
   const year = parseInt(parts[0], 10);
   const date = new Date();
   date.setFullYear(year);
-  return getWeekForDate(setWeek(date, weekNumber), locale);
+  const firstDateOfWeek = startOfWeek(setWeek(date, weekNumber), { locale });
+  return getWeekForDate(firstDateOfWeek, locale);
 };

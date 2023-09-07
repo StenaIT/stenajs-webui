@@ -7,10 +7,10 @@ import {
   Crumb,
   PrimaryButton,
   SecondaryButton,
+  stenaSliders,
   Tab,
   TabMenu,
   Tag,
-  stenaSliders,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
 import { Box, Heading, Row, Space } from "@stenajs-webui/core";
@@ -255,5 +255,15 @@ export const FilterChips = () => {
         </Row>
       </PageHeaderRow>
     </PageHeader>
+  );
+};
+
+export const HeadingLevel = () => {
+  return (
+    <PageHeader
+      renderPageHeading={() => (
+        <PageHeading heading={"Heading level 2"} headingLevel={"h2"} />
+      )}
+    />
   );
 };

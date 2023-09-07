@@ -1,6 +1,7 @@
 .iconLeft,
 .iconRight {
   color: var(--current-icon-color);
+  font-size: var(--current-icon-height);
 }
 
 .leftWrapper,

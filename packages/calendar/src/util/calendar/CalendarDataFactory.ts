@@ -14,6 +14,7 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
+import { startCase } from "lodash";
 import { DateFormats } from "../date/DateFormats";
 
 export enum Month {
@@ -97,7 +98,9 @@ export const getMonthInYear = (
   const firstDayOfMonth = new Date(yearToUse, monthToUse, 1);
   return {
     monthString: format(firstDayOfMonth, DateFormats.yearAndMonth),
-    name: format(firstDayOfMonth, DateFormats.fullMonthName),
+    name: startCase(
+      format(firstDayOfMonth, DateFormats.fullMonthName, { locale })
+    ),
     year: yearToUse,
     monthInYear: monthToUse,
     weeks: getWeeksForMonth(yearToUse, monthToUse, locale),

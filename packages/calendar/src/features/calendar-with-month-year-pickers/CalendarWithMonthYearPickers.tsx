@@ -22,6 +22,7 @@ interface CalendarWithMonthYearPickersProps<T>
 
 export const CalendarWithMonthYearPickers =
   function CalendarWithMonthYearPickers<T>({
+    locale,
     dateInFocus,
     setDateInFocus,
     currentPanel,
@@ -69,6 +70,7 @@ export const CalendarWithMonthYearPickers =
               date={dateInFocus}
               onClickYear={onClickYear}
               onClickMonth={onClickMonth}
+              locale={locale}
             />
           </>
         );
@@ -77,6 +79,7 @@ export const CalendarWithMonthYearPickers =
           <MonthPicker
             value={dateInFocus.getMonth()}
             onValueChange={onChangeSelectedMonth}
+            locale={locale}
           />
         );
       case "year":

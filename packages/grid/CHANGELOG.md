@@ -1,3 +1,65 @@
+# v18.9.3 (Thu Sep 07 2023)
+
+#### 🐛 Bug Fix
+
+- Tooltip in StandardTable can be rendered to portal [#589](https://github.com/StenaIT/stenajs-webui/pull/589) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
+# v18.6.1 (Mon May 29 2023)
+
+#### 🐛 Bug Fix
+
+- StandardTable header can now expand when label is large or long [#577](https://github.com/StenaIT/stenajs-webui/pull/577) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.0.3 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Add blue bottom line to sorted column header [#539](https://github.com/StenaIT/stenajs-webui/pull/539) (david.zetterdahl@stenaline.com [@mattias800](https://github.com/mattias800) [@LordDz](https://github.com/LordDz))
+
+#### Authors: 3
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- External sorting and `onSortOrderChange` prop in StandardTable [#554](https://github.com/StenaIT/stenajs-webui/pull/554) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v17.29.0 (Mon Dec 12 2022)
 
 #### 🐛 Bug Fix

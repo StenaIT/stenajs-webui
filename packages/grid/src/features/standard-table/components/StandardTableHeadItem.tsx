@@ -1,6 +1,9 @@
 import * as React from "react";
 import { CSSProperties } from "react";
-import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
+import {
+  TableHeadItem,
+  TableHeadProps,
+} from "../../table-ui/components/table/TableHeadItem";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
 import { useColumnConfigById } from "../hooks/UseColumnConfigById";
@@ -14,6 +17,7 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
+  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -23,6 +27,7 @@ export const StandardTableHeadItem = React.memo(
     disableBorderLeft,
     stickyHeader,
     top,
+    appendTooltipTo,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -41,7 +46,7 @@ export const StandardTableHeadItem = React.memo(
     } = useStandardTableConfig();
     const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
-    const { arrow, onClickColumnHead } = useTableSortHeader(columnId);
+    const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
 
     const label =
       typeof columnLabel === "string"
@@ -86,6 +91,7 @@ export const StandardTableHeadItem = React.memo(
             : stickyProps.sticky
             ? "var(--swui-sticky-group-header-z-index)"
             : zIndex) as CSSProperties["zIndex"],
+          height: 0, // CSS trick to force TableHeadItem to use 100% height
           width,
           minWidth,
         }}
@@ -101,6 +107,9 @@ export const StandardTableHeadItem = React.memo(
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
+          appendTooltipTo={appendTooltipTo}
+          selected={selected}
+          height={"100%"}
         />
       </th>
     );

@@ -1,3 +1,500 @@
+# v18.9.3 (Thu Sep 07 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Tooltip in StandardTable can be rendered to portal [#589](https://github.com/StenaIT/stenajs-webui/pull/589) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.9.2 (Wed Sep 06 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Fixed issue with always requiring checkboxDisabled in CollapsibleWithCheckbox. [#587](https://github.com/StenaIT/stenajs-webui/pull/587) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.9.1 (Wed Sep 06 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Fixed issue with new disabled functionality in CollapsibleWithCheckbox [#586](https://github.com/StenaIT/stenajs-webui/pull/586) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.9.0 (Wed Sep 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/panels`
+  - Add checkboxDisabled prop to CollapsibleWithCheckbox [#585](https://github.com/StenaIT/stenajs-webui/pull/585) ([@RobertStigsson](https://github.com/RobertStigsson))
+
+#### Authors: 1
+
+- [@RobertStigsson](https://github.com/RobertStigsson)
+
+---
+
+# v18.8.0 (Fri Sep 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add new ShimmerBox component [#578](https://github.com/StenaIT/stenajs-webui/pull/578) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.7.2 (Fri Sep 01 2023)
+
+#### 🐛 Bug Fix
+
+- Fix automated release user.email [#582](https://github.com/StenaIT/stenajs-webui/pull/582) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/grid`
+  - Column group header in standard table is transparent instead of filled [#580](https://github.com/StenaIT/stenajs-webui/pull/580) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
+# v18.7.1 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Pass unused ToggleButton ref [#579](https://github.com/StenaIT/stenajs-webui/pull/579) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.7.0 (Wed May 31 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Update design and functionality of ToggleButton [#574](https://github.com/StenaIT/stenajs-webui/pull/574) ([@esepato](https://github.com/esepato))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add labelClassName and gap instead of Space [#575](https://github.com/StenaIT/stenajs-webui/pull/575) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.6.1 (Mon May 29 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - StandardTable header can now expand when label is large or long [#577](https://github.com/StenaIT/stenajs-webui/pull/577) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.6.0 (Fri May 05 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add initialDateInFocus prop to DateRangeCalendar [#576](https://github.com/StenaIT/stenajs-webui/pull/576) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.5.0 (Tue Apr 18 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add new status icons and update sailing icons [#571](https://github.com/StenaIT/stenajs-webui/pull/571) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### 🏠 Internal
+
+- `@stenajs-webui/elements`
+  - Add buttons and tag demo [#572](https://github.com/StenaIT/stenajs-webui/pull/572) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v18.4.2 (Thu Mar 23 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/tooltip`
+  - Fix tooltip icon height with border-box [#570](https://github.com/StenaIT/stenajs-webui/pull/570) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v18.4.1 (Tue Mar 14 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Small fix for Tag icon when using global border-box [#569](https://github.com/StenaIT/stenajs-webui/pull/569) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.4.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Tag icon size is different depending on variant [#568](https://github.com/StenaIT/stenajs-webui/pull/568) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.3.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - New design for `Tag` [#565](https://github.com/StenaIT/stenajs-webui/pull/565) ([@mattias800](https://github.com/mattias800))
+  - Add several finance icons (AB#109066) [#567](https://github.com/StenaIT/stenajs-webui/pull/567) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### 🏠 Internal
+
+- Tooling: Upgrade lerna to latest version [#564](https://github.com/StenaIT/stenajs-webui/pull/564) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.2.0 (Mon Feb 27 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - New modal API [#560](https://github.com/StenaIT/stenajs-webui/pull/560) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.1.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Button icons now customisable using CSS properties [#563](https://github.com/StenaIT/stenajs-webui/pull/563) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.1.1 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Format hours and minutes in TimePickerCell with leading zeros [#532](https://github.com/StenaIT/stenajs-webui/pull/532) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v18.1.0 (Mon Feb 27 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/tooltip`
+  - Rewrite tooltip using TippyComponent instead of Popover [#537](https://github.com/StenaIT/stenajs-webui/pull/537) (david.zetterdahl@stenaline.com [@LordDz](https://github.com/LordDz) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
+# v18.0.3 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add headingLevel to PageHeading, default being h1 [#561](https://github.com/StenaIT/stenajs-webui/pull/561) ([@juiceit](https://github.com/juiceit))
+- `@stenajs-webui/grid`
+  - Add blue bottom line to sorted column header [#539](https://github.com/StenaIT/stenajs-webui/pull/539) (david.zetterdahl@stenaline.com [@mattias800](https://github.com/mattias800) [@LordDz](https://github.com/LordDz))
+
+#### 📝 Documentation
+
+- `@stenajs-webui/panels`
+  - Use NavBarSearchField in center content story [#503](https://github.com/StenaIT/stenajs-webui/pull/503) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.0.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`
+  - Make `Heading` style customisable [#562](https://github.com/StenaIT/stenajs-webui/pull/562) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.0.1 (Thu Feb 16 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Prioritize ActionMenuItems disabled variants in CSS [#540](https://github.com/StenaIT/stenajs-webui/pull/540) (david.zetterdahl@stenaline.com [@lindskogen](https://github.com/lindskogen) [@LordDz](https://github.com/LordDz))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/panels`
+  - Add Toast and remake Notification [#549](https://github.com/StenaIT/stenajs-webui/pull/549) ([@juiceit](https://github.com/juiceit) [@lindskogen](https://github.com/lindskogen))
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Actually disable the calendar icon button in DateTextInput [#530](https://github.com/StenaIT/stenajs-webui/pull/530) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`
+  - Change focus to focus-visible for form elements [#533](https://github.com/StenaIT/stenajs-webui/pull/533) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/forms`
+  - Set TextInputIcon type to button (fixes AB#105906) [#544](https://github.com/StenaIT/stenajs-webui/pull/544) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 3
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v17.34.0 (Thu Feb 09 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Update icons in banner [#559](https://github.com/StenaIT/stenajs-webui/pull/559) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
+# v17.33.0 (Mon Feb 06 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add file icons with labels and finance paid status icons [#558](https://github.com/StenaIT/stenajs-webui/pull/558) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
+# v17.32.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - ResultListBanner can have children, shown below bulletpoint list [#557](https://github.com/StenaIT/stenajs-webui/pull/557) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Now possible to style button with only icon to have custom sizes [#555](https://github.com/StenaIT/stenajs-webui/pull/555) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/grid`
+  - External sorting and `onSortOrderChange` prop in StandardTable [#554](https://github.com/StenaIT/stenajs-webui/pull/554) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.7 (Tue Jan 31 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Modal width is always 100% on mobile [#553](https://github.com/StenaIT/stenajs-webui/pull/553) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.6 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Use stena icons for year buttons in calendar [#552](https://github.com/StenaIT/stenajs-webui/pull/552) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.5 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Show month names in correct locale [#551](https://github.com/StenaIT/stenajs-webui/pull/551) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.4 (Tue Jan 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Fix DateRangeCalendar stories, the dates are now clickable [#550](https://github.com/StenaIT/stenajs-webui/pull/550) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.3 (Wed Jan 18 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Make PrimaryButton and SecondaryButton text bold and adjust success and danger variants for better contrast [#546](https://github.com/StenaIT/stenajs-webui/pull/546) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
+# v17.30.2 (Tue Jan 17 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/select`
+  - Add OverflowingMultiSelect component [#547](https://github.com/StenaIT/stenajs-webui/pull/547) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.30.1 (Thu Jan 12 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Correct time offset when calendar focuses on date [#543](https://github.com/StenaIT/stenajs-webui/pull/543) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v17.30.0 (Tue Dec 20 2022)
 
 #### 🚀 Enhancement

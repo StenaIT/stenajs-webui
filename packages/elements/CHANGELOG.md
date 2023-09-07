@@ -1,3 +1,215 @@
+# v18.8.0 (Fri Sep 01 2023)
+
+#### 🚀 Enhancement
+
+- Add new ShimmerBox component [#578](https://github.com/StenaIT/stenajs-webui/pull/578) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.7.1 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- Pass unused ToggleButton ref [#579](https://github.com/StenaIT/stenajs-webui/pull/579) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.7.0 (Wed May 31 2023)
+
+#### 🚀 Enhancement
+
+- Update design and functionality of ToggleButton [#574](https://github.com/StenaIT/stenajs-webui/pull/574) ([@esepato](https://github.com/esepato))
+
+#### 🐛 Bug Fix
+
+- Add labelClassName and gap instead of Space [#575](https://github.com/StenaIT/stenajs-webui/pull/575) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
+# v18.5.0 (Tue Apr 18 2023)
+
+#### 🚀 Enhancement
+
+- Add new status icons and update sailing icons [#571](https://github.com/StenaIT/stenajs-webui/pull/571) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### 🏠 Internal
+
+- Add buttons and tag demo [#572](https://github.com/StenaIT/stenajs-webui/pull/572) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v18.4.1 (Tue Mar 14 2023)
+
+#### 🐛 Bug Fix
+
+- Small fix for Tag icon when using global border-box [#569](https://github.com/StenaIT/stenajs-webui/pull/569) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.4.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- Tag icon size is different depending on variant [#568](https://github.com/StenaIT/stenajs-webui/pull/568) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.3.0 (Fri Mar 03 2023)
+
+#### 🚀 Enhancement
+
+- New design for `Tag` [#565](https://github.com/StenaIT/stenajs-webui/pull/565) ([@mattias800](https://github.com/mattias800))
+- Add several finance icons (AB#109066) [#567](https://github.com/StenaIT/stenajs-webui/pull/567) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 2
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.2.0 (Mon Feb 27 2023)
+
+#### 🚀 Enhancement
+
+- New modal API [#560](https://github.com/StenaIT/stenajs-webui/pull/560) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.1.2 (Mon Feb 27 2023)
+
+#### 🐛 Bug Fix
+
+- Button icons now customisable using CSS properties [#563](https://github.com/StenaIT/stenajs-webui/pull/563) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.0.1 (Thu Feb 16 2023)
+
+#### 🐛 Bug Fix
+
+- Prioritize ActionMenuItems disabled variants in CSS [#540](https://github.com/StenaIT/stenajs-webui/pull/540) (david.zetterdahl@stenaline.com [@lindskogen](https://github.com/lindskogen) [@LordDz](https://github.com/LordDz))
+
+#### Authors: 4
+
+- David ([@LordDz](https://github.com/LordDz))
+- David Zetterdahl (david.zetterdahl@stenaline.com)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Zetterdahl David (david.zetterdahl@stenaline.com)
+
+---
+
+# v18.0.0 (Mon Feb 13 2023)
+
+#### 🚀 Enhancement
+
+- changing color for disabled UI elements [#556](https://github.com/StenaIT/stenajs-webui/pull/556) ([@PaulineAnnBar](https://github.com/PaulineAnnBar) [@lindskogen](https://github.com/lindskogen))
+
+#### 🐛 Bug Fix
+
+- Change focus to focus-visible for form elements [#533](https://github.com/StenaIT/stenajs-webui/pull/533) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 2
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v17.34.0 (Thu Feb 09 2023)
+
+#### 🚀 Enhancement
+
+- Update icons in banner [#559](https://github.com/StenaIT/stenajs-webui/pull/559) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
+# v17.33.0 (Mon Feb 06 2023)
+
+#### 🚀 Enhancement
+
+- Add file icons with labels and finance paid status icons [#558](https://github.com/StenaIT/stenajs-webui/pull/558) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
+# v17.32.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- ResultListBanner can have children, shown below bulletpoint list [#557](https://github.com/StenaIT/stenajs-webui/pull/557) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.31.0 (Wed Feb 01 2023)
+
+#### 🚀 Enhancement
+
+- Now possible to style button with only icon to have custom sizes [#555](https://github.com/StenaIT/stenajs-webui/pull/555) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v17.30.3 (Wed Jan 18 2023)
+
+#### 🐛 Bug Fix
+
+- Make PrimaryButton and SecondaryButton text bold and adjust success and danger variants for better contrast [#546](https://github.com/StenaIT/stenajs-webui/pull/546) ([@PaulineAnnBar](https://github.com/PaulineAnnBar))
+
+#### Authors: 1
+
+- [@PaulineAnnBar](https://github.com/PaulineAnnBar)
+
+---
+
 # v17.30.0 (Tue Dec 20 2022)
 
 #### 🚀 Enhancement

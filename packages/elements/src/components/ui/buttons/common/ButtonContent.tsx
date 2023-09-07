@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { ReactNode } from "react";
 import cx from "classnames";
@@ -5,7 +6,6 @@ import { InputSpinner } from "../../spinner/InputSpinner";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import styles from "./ButtonContent.module.css";
 import { stenaCheck } from "../../../../icons/ui/IconsUi";
-import { Icon } from "../../icon/Icon";
 
 export interface ButtonContentProps {
   label?: string;
@@ -20,7 +20,6 @@ export interface ButtonContentProps {
   spinnerClassName?: string;
   leftWrapperClassName?: string;
   rightWrapperClassName?: string;
-  iconSize?: "large" | "medium" | "small";
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -36,17 +35,13 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   spinnerClassName,
   leftWrapperClassName,
   rightWrapperClassName,
-  iconSize = "medium",
 }) => {
-  const iconPixelSize =
-    iconSize === "small" ? 12 : iconSize === "large" ? 24 : undefined;
   return (
     <>
       {(success || loading || leftIcon || left) && (
         <div className={cx(styles.leftWrapper, leftWrapperClassName)}>
           {success ? (
-            <Icon
-              size={iconPixelSize}
+            <FontAwesomeIcon
               icon={stenaCheck}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -63,8 +58,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           ) : left ? (
             left
           ) : leftIcon ? (
-            <Icon
-              size={iconPixelSize}
+            <FontAwesomeIcon
               icon={leftIcon}
               className={cx(styles.iconLeft, iconClassName)}
             />
@@ -81,8 +75,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           {right ? (
             right
           ) : rightIcon ? (
-            <Icon
-              size={iconPixelSize}
+            <FontAwesomeIcon
               icon={rightIcon}
               className={cx(styles.iconRight, iconClassName)}
             />

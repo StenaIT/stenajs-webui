@@ -1,0 +1,182 @@
+.drawerDialog {
+  max-height: 100%;
+  max-width: 100%;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: contain;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px 4px;
+  position: fixed;
+
+  &.left,
+  &.right {
+    height: 100%;
+    top: 0;
+    bottom: 0;
+
+    .contentWrapper {
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      width: fit-content;
+    }
+  }
+
+  &.left {
+    left: 0;
+    right: unset;
+
+    &[open] {
+      animation: slideInLeft 0.25s forwards;
+    }
+
+    &.closing[open] {
+      animation: slideOutLeft 0.25s forwards;
+    }
+  }
+
+  &.right {
+    left: unset;
+    right: 0;
+
+    &[open] {
+      animation: slideInRight 0.25s forwards;
+    }
+
+    &.closing[open] {
+      animation: slideOutRight 0.25s forwards;
+    }
+  }
+
+  &.top,
+  &.bottom {
+    width: 100%;
+    left: 0;
+    right: 0;
+
+    @media (max-width: 768px) {
+      height: fit-content;
+    }
+  }
+
+  &.top {
+    top: 0;
+    bottom: unset;
+
+    &[open] {
+      animation: slideInTop 0.25s forwards;
+    }
+
+    &.closing[open] {
+      animation: slideOutTop 0.25s forwards;
+    }
+  }
+
+  &.bottom {
+    top: unset;
+    bottom: 0;
+
+    &[open] {
+      animation: slideInBottom 0.25s forwards;
+    }
+
+    &.closing[open] {
+      animation: slideOutBottom 0.25s forwards;
+    }
+  }
+
+  &[open] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutLeft {
+    from {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInTop {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutTop {
+    from {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInBottom {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutBottom {
+    from {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 1;
+    }
+  }
+}

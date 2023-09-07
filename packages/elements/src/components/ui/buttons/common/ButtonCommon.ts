@@ -4,13 +4,6 @@ import { ReactNode } from "react";
 export type ButtonSize = "medium" | "small" | "large";
 export type ButtonVariant = "normal" | "danger" | "success";
 
-export const getIconSizeFromButtonSize = (
-  size: ButtonSize,
-  hasLabel: boolean
-): ButtonSize => {
-  return size === "large" ? (hasLabel ? "medium" : "large") : size;
-};
-
 export interface CommonButtonProps {
   /** The text on the button. */
   label?: string;
