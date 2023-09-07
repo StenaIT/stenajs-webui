@@ -1,3 +1,15 @@
+# v18.9.3 (Thu Sep 07 2023)
+
+#### 🐛 Bug Fix
+
+- Tooltip in StandardTable can be rendered to portal [#589](https://github.com/StenaIT/stenajs-webui/pull/589) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.7.2 (Fri Sep 01 2023)
 
 #### 🐛 Bug Fix
