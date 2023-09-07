@@ -4,6 +4,7 @@ import { Box, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@stenajs-webui/elements";
 import contentStyles from "./SidebarMenuContent.module.css";
+import styles from "./SidebarMenuCollapsible.module.css";
 import cx from "classnames";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -45,7 +46,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
       background={"var(--current-background-color)"}
       aria-expanded={expanded}
     >
-      <Box indent={1} width={"100%"}>
+      <Box width={"100%"}>
         <Box
           width={"100%"}
           borderRadius={"99rem"}
@@ -75,7 +76,9 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
                 ) : (
                   <Indent num={1} />
                 )}
-                <Text variant={"bold"}>{label}</Text>
+                <Text variant={"bold"} className={styles.label}>
+                  {label}
+                </Text>
               </Row>
               <Row>
                 <Icon

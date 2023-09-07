@@ -6,4 +6,6 @@
   flex-direction: column;
   padding-top: var(--swui-metrics-space);
   padding-bottom: var(--swui-metrics-space);
+
+  --current-text-size: var(--swui-font-size-small);
 }

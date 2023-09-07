@@ -83,7 +83,7 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   );
 
   return (
-    <Box indent={1} width={"100%"}>
+    <Box width={"100%"}>
       <Box width={"100%"} borderRadius={"99rem"} overflow={"hidden"}>
         {renderLink({
           ...buttonProps,

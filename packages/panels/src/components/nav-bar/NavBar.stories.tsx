@@ -109,17 +109,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               label={"Contact"}
               onClick={() => alert("Click on contact")}
             />
-
-            <Box>
-              <Box spacing={8}>
-                <Icon
-                  icon={faPaperPlane}
-                  color={"var(--swui-white)"}
-                  size={50}
-                  data-hover={true}
-                />
-              </Box>
-            </Box>
           </SidebarMenu>
         </Column>
       </Drawer>

@@ -1,4 +1,4 @@
-import { Box, BoxProps, Column, Indent, Space } from "@stenajs-webui/core";
+import { Box, BoxProps, Column, Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
@@ -31,6 +31,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 
   return (
     <Box
+      indent={2}
       className={cx(
         styles.sidebarMenu,
         collapsed ? styles.collapsed : null,
@@ -43,14 +44,12 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       data-collapsed={collapsed || undefined}
       {...boxProps}
     >
-      <Space num={2} />
+      <Space num={1.5} />
 
       {!hideCloseButton && (
         <>
-          <Indent>
-            <SidebarMenuCloseButton onClick={onCloseClick} />
-          </Indent>
-          <Space num={2} />
+          <SidebarMenuCloseButton onClick={onCloseClick} />
+          <Space num={1.5} />
         </>
       )}
       <Box

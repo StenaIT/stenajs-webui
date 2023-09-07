@@ -11,8 +11,6 @@
   --swui-sidebar-menu-background-selected-hover: var(--lhds-color-blue-200);
   --swui-sidebar-menu-background-selected-focus: var(--lhds-color-blue-200);
   --swui-sidebar-menu-background-selected-active: var(--lhds-color-blue-100);
-  --swui-sidebar-menu-content-padding: var(--swui-metrics-indent)
-    var(--swui-metrics-indent) var(--swui-metrics-indent) 0;
 
   /* State vars */
   --current-separator-color: var(--swui-sidebar-menu-separator-color);
@@ -38,8 +36,6 @@
   --current-background-selected-active: var(
     --swui-sidebar-menu-background-selected-active
   );
-
-  --current-content-padding: var(--swui-sidebar-menu-content-padding);
 
   /* Styling */
 
