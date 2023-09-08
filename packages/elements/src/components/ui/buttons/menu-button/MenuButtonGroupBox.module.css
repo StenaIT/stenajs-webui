@@ -1,4 +1,4 @@
-.collapsibleGroupBox {
+.menuButtonGroupBox {
   background: var(--lhds-color-ui-200);
   border-radius: var(--swui-border-radius);
   gap: var(--swui-metrics-space);

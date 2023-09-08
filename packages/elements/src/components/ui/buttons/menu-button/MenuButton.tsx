@@ -8,16 +8,16 @@ import {
   Text,
 } from "@stenajs-webui/core";
 import cx from "classnames";
-import { Icon } from "@stenajs-webui/elements";
-import styles from "./CollapsibleButton.module.css";
+import styles from "./MenuButton.module.css";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { cssColor } from "@stenajs-webui/theme";
-import { CollapsibleGroupBox } from "./CollapsibleGroupBox";
+import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ReactNode } from "react";
+import { Icon } from "../../icon/Icon";
 
-export interface CollapsibleButtonProps extends ButtonElementProps {
+export interface MenuButtonProps extends ButtonElementProps {
   label: string;
   expanded?: boolean;
   expandable?: boolean;
@@ -26,7 +26,7 @@ export interface CollapsibleButtonProps extends ButtonElementProps {
   children?: ReactNode;
 }
 
-export const CollapsibleButton: React.FC<CollapsibleButtonProps> = ({
+export const MenuButton: React.FC<MenuButtonProps> = ({
   label,
   expanded,
   expandable,
@@ -38,7 +38,7 @@ export const CollapsibleButton: React.FC<CollapsibleButtonProps> = ({
 }) => {
   return (
     <Box
-      className={styles.collapsibleButton}
+      className={styles.menuButton}
       background={"var(--current-background-color)"}
       aria-expanded={expanded}
     >
@@ -96,7 +96,7 @@ export const CollapsibleButton: React.FC<CollapsibleButtonProps> = ({
       {expanded && (
         <>
           <Space />
-          <CollapsibleGroupBox>{children}</CollapsibleGroupBox>
+          <MenuButtonGroupBox>{children}</MenuButtonGroupBox>
         </>
       )}
     </Box>

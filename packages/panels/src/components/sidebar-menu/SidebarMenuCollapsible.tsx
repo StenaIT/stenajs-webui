@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactNode, useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { CollapsibleButton } from "../collapsible/prutt/CollapsibleButton";
+import { MenuButton } from "@stenajs-webui/elements";
 
 export interface SidebarMenuCollapsibleProps {
   label: string;
@@ -22,7 +22,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   const [expanded, setExpanded] = useState<boolean>(initialExpand);
 
   return (
-    <CollapsibleButton
+    <MenuButton
       label={label}
       onClick={() => setExpanded(!expanded)}
       leftIcon={leftIcon}
@@ -32,6 +32,6 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
       selected={expanded}
     >
       {children}
-    </CollapsibleButton>
+    </MenuButton>
   );
 };
