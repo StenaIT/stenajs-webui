@@ -1,7 +1,7 @@
 .label {
   font-size: var(--current-text-size, var(--swui-font-size-medium));
   line-height: var(--current-line-height, var(--swui-line-height-medium));
-  font-weight: var(--swui-button-font-weight);
+  font-weight: var(--swui-font-weight-text-bold);
   font-family: var(--swui-font-buttons);
   color: var(--current-text-color);
 }
@@ -24,6 +24,7 @@
   border: 0;
   padding: 0;
   background: var(--current-background-color);
+  height: var(--swui-sidebar-menu-item-height);
 
   [data-collapsed] [aria-expanded="true"] &,
   &:hover {
@@ -43,6 +44,18 @@
   }
 
   &.selected {
-    background: var(--current-item-selected);
+    background: var(--current-background-selected);
+
+    &:hover {
+      background: var(--current-background-selected-hover);
+    }
+
+    &:focus-visible {
+      background: var(--current-background-selected-focus);
+    }
+
+    &:active {
+      background: var(--current-background-selected-active);
+    }
   }
 }

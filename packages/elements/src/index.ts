@@ -1,3 +1,6 @@
+import { ReactComponent as StenaFlagSvg } from "./icons/StenaFlag.svg";
+
+export const StenaFlag = StenaFlagSvg;
 export * from "./icons/ui/IconsUi";
 export * from "./icons/misc/IconsMisc";
 export * from "./components/ui/banners/banner/Banner";

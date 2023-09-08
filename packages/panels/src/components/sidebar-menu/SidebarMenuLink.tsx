@@ -1,4 +1,4 @@
-import { ButtonElementProps, Indent, Row } from "@stenajs-webui/core";
+import { Box, ButtonElementProps, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { CSSProperties, ReactNode } from "react";
 import { ButtonContent, ButtonContentProps } from "@stenajs-webui/elements";
@@ -22,7 +22,6 @@ export interface SidebarMenuLinkProps
   renderLink?: SidebarLinkRenderer;
   width?: CSSProperties["width"];
   selected?: boolean;
-  indent?: boolean;
 }
 
 export type SidebarLinkRenderer = (props: RenderLinkProps) => ReactNode;
@@ -38,7 +37,6 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   className,
   children,
   selected,
-  indent,
   label,
   loading,
   left,
@@ -67,8 +65,7 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
 
   const innerChildren = (
     <Row spacing={1} flex={1} alignItems={"center"}>
-      {!hasContentLeft && <Indent />}
-      {indent && <Indent num={3.5} />}
+      <Indent num={hasContentLeft ? 0.5 : 1} />
       <ButtonContent
         label={label}
         loading={loading}
@@ -86,14 +83,16 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = ({
   );
 
   return (
-    <>
-      {renderLink({
-        ...buttonProps,
-        activeClassName: contentStyles.selected,
-        className: innerClassName,
-        children: innerChildren,
-        style: innerStyle,
-      })}
-    </>
+    <Box width={"100%"}>
+      <Box width={"100%"} borderRadius={"99rem"} overflow={"hidden"}>
+        {renderLink({
+          ...buttonProps,
+          activeClassName: contentStyles.selected,
+          className: innerClassName,
+          children: innerChildren,
+          style: innerStyle,
+        })}
+      </Box>
+    </Box>
   );
 };

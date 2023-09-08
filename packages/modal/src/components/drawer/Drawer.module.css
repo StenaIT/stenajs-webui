@@ -10,6 +10,10 @@
     position: absolute;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
 
+    &:focus-visible {
+      outline: unset;
+    }
+
     &.slideFromLeft,
     &.slideFromRight {
       transform: translateX(var(--translate-x-outside-screen, 0));
