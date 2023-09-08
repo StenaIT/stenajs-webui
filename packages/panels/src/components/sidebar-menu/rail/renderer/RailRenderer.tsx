@@ -8,10 +8,7 @@ import { Box, exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
 import { Popover } from "@stenajs-webui/tooltip";
 import { SidebarItem } from "./types";
 
-export const renderItemsExpanded = (
-  items: SidebarItem[],
-  indent = false
-): ReactNode[] => {
+export const renderItemsExpanded = (items: SidebarItem[]): ReactNode[] => {
   return items.map((item, index) => {
     switch (item.type) {
       case "heading":
@@ -20,7 +17,7 @@ export const renderItemsExpanded = (
         return <SidebarMenuSeparator key={index} />;
       case "link": {
         const { type, ...linkProps } = item;
-        return <SidebarMenuLink key={index} indent={indent} {...linkProps} />;
+        return <SidebarMenuLink key={index} {...linkProps} />;
       }
       case "grouped":
         return (
@@ -28,8 +25,9 @@ export const renderItemsExpanded = (
             key={index}
             leftIcon={item.leftIcon}
             label={item.label}
+            initialExpand={true}
           >
-            {renderItemsExpanded(item.items, true)}
+            {renderItemsExpanded(item.items)}
           </SidebarMenuCollapsible>
         );
       default:
