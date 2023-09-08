@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 
 export interface SidebarMenuCollapsibleGroupLineProps {
   children?: ReactNode;
-  indent?: number | boolean;
 }
 
 export const SidebarMenuCollapsibleGroupBox: React.FC<

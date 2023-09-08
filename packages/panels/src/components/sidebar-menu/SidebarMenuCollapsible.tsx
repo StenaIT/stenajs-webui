@@ -18,7 +18,6 @@ export interface SidebarMenuCollapsibleProps {
   children?: ReactNode;
   className?: string;
   initialExpand?: boolean;
-  indent?: number | boolean;
 }
 
 export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
@@ -27,7 +26,6 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   leftIcon,
   className,
   initialExpand = false,
-  indent,
 }) => {
   const [expanded, setExpanded] = useState<boolean>(initialExpand);
 
@@ -87,7 +85,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
       {expanded && (
         <>
           <Space />
-          <SidebarMenuCollapsibleGroupBox indent={indent}>
+          <SidebarMenuCollapsibleGroupBox>
             {children}
           </SidebarMenuCollapsibleGroupBox>
         </>
