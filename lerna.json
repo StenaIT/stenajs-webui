@@ -1,6 +1,6 @@
 {
   "packages": ["packages/*"],
-  "version": "18.8.0",
+  "version": "18.10.0",
   "command": {
     "publish": {
       "verifyAccess": false
