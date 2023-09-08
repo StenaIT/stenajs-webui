@@ -20,7 +20,7 @@ export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
   children,
   ...navBarButtonProps
 }) => {
-  const [isOpen, open, close] = useBoolean(false);
+  const [isOpen, , close, toggle] = useBoolean(false);
 
   return (
     <Popover
@@ -34,7 +34,7 @@ export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
         </>
       }
     >
-      <NavBarButton {...navBarButtonProps} onClick={open} />
+      <NavBarButton {...navBarButtonProps} onClick={toggle} />
     </Popover>
   );
 };
