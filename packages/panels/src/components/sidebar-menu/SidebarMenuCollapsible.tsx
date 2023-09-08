@@ -1,53 +1,95 @@
 import * as React from "react";
 import { ReactNode, useState } from "react";
-import { Collapsible } from "../collapsible/Collapsible";
-import { Box, Column, Indent } from "@stenajs-webui/core";
+import { Box, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import styles from "./SidebarMenuCollapsible.module.css";
 import { Icon } from "@stenajs-webui/elements";
+import contentStyles from "./SidebarMenuContent.module.css";
+import styles from "./SidebarMenuCollapsible.module.css";
+import cx from "classnames";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { cssColor } from "@stenajs-webui/theme";
+import { SidebarMenuCollapsibleGroupBox } from "./SidebarMenuCollapsibleGroupBox";
 
 export interface SidebarMenuCollapsibleProps {
   label: string;
   collapsed?: boolean;
   leftIcon?: IconDefinition;
   children?: ReactNode;
+  className?: string;
+  initialExpand?: boolean;
 }
 
 export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   children,
   label,
   leftIcon,
+  className,
+  initialExpand = false,
 }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(initialExpand);
 
   return (
-    <Box background={"var(--current-background-color)"}>
-      <Collapsible
-        className={styles.sidebarMenuCollapsible}
-        label={label}
-        collapsed={collapsed}
-        onClick={() => setCollapsed(!collapsed)}
-        contentLeft={
-          leftIcon ? (
-            <Box
-              width={"var(--swui-sidebar-menu-item-height)"}
-              alignItems={"center"}
-              justifyContent={"center"}
-            >
-              <Icon
-                icon={leftIcon}
-                size={16}
-                color={"var(--current-text-color)"}
-                data-hover={true}
-              />
-            </Box>
-          ) : (
-            <Indent num={1} />
-          )
-        }
+    <Box
+      background={"var(--current-background-color)"}
+      aria-expanded={expanded}
+    >
+      <Box
+        width={"100%"}
+        borderRadius={"99rem"}
+        overflow={"hidden"}
+        justifyContent={"space-between"}
       >
-        <Column flex={1}>{children}</Column>
-      </Collapsible>
+        <button
+          className={cx(
+            contentStyles.button,
+            expanded ? contentStyles.selected : undefined,
+            className
+          )}
+          onClick={() => setExpanded(!expanded)}
+        >
+          <Row justifyContent={"space-between"} indent={2}>
+            <Row>
+              {leftIcon && (
+                <>
+                  <Box
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    width={"16px"}
+                  >
+                    <Icon
+                      icon={leftIcon}
+                      size={16}
+                      color={"var(--current-text-color)"}
+                      data-hover={true}
+                    />
+                  </Box>
+                  <Indent />
+                </>
+              )}
+              <Text variant={"bold"} className={styles.label}>
+                {label}
+              </Text>
+            </Row>
+            <Row>
+              <Icon
+                icon={expanded ? faChevronUp : faChevronDown}
+                size={12}
+                color={cssColor("--lhds-color-blue-600")}
+              />
+            </Row>
+          </Row>
+        </button>
+      </Box>
+
+      {expanded && (
+        <>
+          <Space />
+          <SidebarMenuCollapsibleGroupBox>
+            {children}
+          </SidebarMenuCollapsibleGroupBox>
+        </>
+      )}
     </Box>
   );
 };

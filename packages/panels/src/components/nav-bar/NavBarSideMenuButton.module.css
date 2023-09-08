@@ -1,15 +1,15 @@
 .sidebarMenuButton {
   /* Theme vars */
-  --swui-nav-bar-side-menu-button-text-color: var(--lhds-color-ui-50);
-  --swui-nav-bar-side-menu-button-background-color: var(--lhds-color-blue-500);
+  --swui-nav-bar-side-menu-button-text-color: var(--lhds-color-blue-600);
+  --swui-nav-bar-side-menu-button-background-color: var(--lhds-color-ui-50);
   --swui-nav-bar-side-menu-button-background-color-hover: var(
-    --lhds-color-blue-600
+    --lhds-color-ui-100
   );
   --swui-nav-bar-side-menu-button-background-color-focus: var(
-    --lhds-color-blue-600
+    --lhds-color-ui-200
   );
   --swui-nav-bar-side-menu-button-background-color-active: var(
-    --lhds-color-blue-700
+    --lhds-color-ui-200
   );
 
   /* State vars */
@@ -53,6 +53,8 @@
   }
 
   .icon {
-    color: var(--swui-nav-bar-side-menu-button-text-color);
+    path {
+      fill: var(--swui-nav-bar-side-menu-button-text-color);
+    }
   }
 }

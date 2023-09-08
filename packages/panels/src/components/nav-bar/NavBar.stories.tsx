@@ -37,7 +37,6 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
-import { SidebarMenuSeparator } from "../sidebar-menu/SidebarMenuSeparator";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
@@ -93,18 +92,11 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               label={"Selected"}
             />
             <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-              <SidebarMenuLink indent label={"Level 2.1"} onClick={onClick} />
-              <SidebarMenuLink indent label={"Level 2.2"} onClick={onClick} />
-              <SidebarMenuLink
-                indent
-                label={"Level 2.3"}
-                onClick={onClick}
-                selected
-              />
-              <SidebarMenuLink indent label={"Level 2.4"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.1"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.2"} onClick={onClick} />
+              <SidebarMenuLink label={"Level 2.3"} onClick={onClick} selected />
+              <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
             </SidebarMenuCollapsible>
-
-            <SidebarMenuSeparator />
 
             <SidebarMenuHeading label={"Support"} />
             <SidebarMenuLink
@@ -117,17 +109,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
               label={"Contact"}
               onClick={() => alert("Click on contact")}
             />
-
-            <Box>
-              <Box spacing={8}>
-                <Icon
-                  icon={faPaperPlane}
-                  color={"var(--swui-white)"}
-                  size={50}
-                  data-hover={true}
-                />
-              </Box>
-            </Box>
           </SidebarMenu>
         </Column>
       </Drawer>
