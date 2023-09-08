@@ -8,7 +8,7 @@ export const SidebarMenuSeparator: React.FC<SidebarMenuSeparatorProps> = (
   separatorLineProps
 ) => (
   <SeparatorLine
-    color={cssColor("--lhds-color-blue-600")}
+    color={cssColor("--lhds-color-ui-400")}
     {...separatorLineProps}
   />
 );

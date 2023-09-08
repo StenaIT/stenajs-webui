@@ -3,17 +3,16 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./SidebarMenu.module.css";
 import {
-  SidebarMenuCloseButton,
-  SidebarMenuCloseButtonProps,
-} from "./SidebarMenuCloseButton";
+  SidebarMenuCloseButtonRow,
+  SidebarMenuCloseButtonRowProps,
+} from "./SidebarMenuCloseButtonRow";
 import { getNavbarHeight } from "../nav-bar/NavbarHeightStyleUtil";
 import { NavBarVariant } from "../nav-bar/NavBar";
-import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
 
 export type SidebarMenuVariant = NavBarVariant;
 
 export interface SidebarMenuProps extends BoxProps {
-  onCloseClick?: SidebarMenuCloseButtonProps["onClick"];
+  onCloseClick?: SidebarMenuCloseButtonRowProps["onClick"];
   hideCloseButton?: boolean;
   collapsed?: boolean;
   variant?: SidebarMenuVariant;
@@ -32,6 +31,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 
   return (
     <Box
+      indent={1}
       className={cx(
         styles.sidebarMenu,
         collapsed ? styles.collapsed : null,
@@ -44,11 +44,12 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       data-collapsed={collapsed || undefined}
       {...boxProps}
     >
+      <Space num={1.5} />
+
       {!hideCloseButton && (
         <>
-          <SidebarMenuCloseButton onClick={onCloseClick} />
-          <SidebarMenuSeparator />
-          <Space />
+          <SidebarMenuCloseButtonRow onClick={onCloseClick} />
+          <Space num={1.5} />
         </>
       )}
       <Box
@@ -56,7 +57,9 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         height={"100%"}
         background={"var(--current-background-color)"}
       >
-        <Column flex={1}>{children}</Column>
+        <Column flex={1} gap={1}>
+          {children}
+        </Column>
       </Box>
     </Box>
   );
