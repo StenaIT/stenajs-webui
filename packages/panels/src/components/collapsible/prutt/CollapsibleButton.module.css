@@ -1,0 +1,100 @@
+.collapsibleButton {
+  --swui-collapsible-button-item-height: 40px;
+  --swui-collapsible-button-separator-color: var(--swui-white);
+  --swui-collapsible-button-text-color: var(--lhds-color-ui-900);
+  --swui-collapsible-button-icon-color: var(--lhds-color-ui-900);
+  --swui-collapsible-button-background-color: transparent;
+  --swui-collapsible-button-background-color-hover: var(--lhds-color-ui-400);
+  --swui-collapsible-button-background-color-focus: var(--lhds-color-ui-400);
+  --swui-collapsible-button-background-color-active: var(--lhds-color-ui-300);
+  --swui-collapsible-button-background-selected: var(--lhds-color-blue-100);
+  --swui-collapsible-button-background-selected-hover: var(
+    --lhds-color-blue-200
+  );
+  --swui-collapsible-button-background-selected-focus: var(
+    --lhds-color-blue-200
+  );
+  --swui-collapsible-button-background-selected-active: var(
+    --lhds-color-blue-100
+  );
+
+  /* State vars */
+  --current-separator-color: var(--swui-collapsible-button-separator-color);
+  --current-text-color: var(--swui-collapsible-button-text-color);
+  --current-icon-color: var(--swui-collapsible-button-icon-color);
+  --current-background-color: var(--swui-collapsible-button-background-color);
+  --current-background-color-hover: var(
+    --swui-collapsible-button-background-color-hover
+  );
+  --current-background-color-focus: var(
+    --swui-collapsible-button-background-color-focus
+  );
+  --current-background-color-active: var(
+    --swui-collapsible-button-background-color-active
+  );
+  --current-background-selected: var(
+    --swui-collapsible-button-background-selected
+  );
+  --current-background-selected-hover: var(
+    --swui-collapsible-button-background-selected-hover
+  );
+  --current-background-selected-focus: var(
+    --swui-collapsible-button-background-selected-focus
+  );
+  --current-background-selected-active: var(
+    --swui-collapsible-button-background-selected-active
+  );
+
+  /* Styling */
+
+  background-color: var(--current-background-color);
+
+  .label {
+    font-size: var(--current-text-size, var(--swui-font-size-medium));
+  }
+
+  button {
+    --swui-button-text-color: var(--swui-white);
+    --swui-button-background-color-hover: var(
+      --swui-collapsible-button-background-color-hover
+    );
+
+    border: 0;
+    padding: 0;
+    background: var(--current-background-color);
+    height: var(--swui-collapsible-button-item-height);
+
+    [data-collapsed] [aria-expanded="true"] &,
+    &:hover {
+      background: var(--current-background-color-hover);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      background: var(--current-background-color-active);
+    }
+
+    &:active {
+      background: var(--current-background-color-active);
+    }
+
+    &.selected {
+      background: var(--current-background-selected);
+
+      &:hover {
+        background: var(--current-background-selected-hover);
+      }
+
+      &:focus-visible {
+        background: var(--current-background-selected-focus);
+      }
+
+      &:active {
+        background: var(--current-background-selected-active);
+      }
+    }
+  }
+}
