@@ -108,12 +108,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
       placement={placement}
       content={
         isOpen && (
-          <ActionMenu
-            variant={"outlined"}
-            width={menuWidth}
-            top={menuTop}
-            trapFocus
-          >
+          <ActionMenu width={menuWidth} top={menuTop} trapFocus>
             <ActionMenuContext.Provider value={contextValue}>
               {renderItems(close)}
             </ActionMenuContext.Provider>

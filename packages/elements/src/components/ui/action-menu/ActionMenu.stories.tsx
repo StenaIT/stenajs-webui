@@ -32,7 +32,7 @@ export default {
 };
 
 export const Standard = () => (
-  <ActionMenu width={200}>
+  <ActionMenu width={220}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
@@ -50,7 +50,7 @@ export const Standard = () => (
       target={"_blank"}
     />
     <ActionMenuLink
-      label={"Open new window disabled"}
+      label={"Open disabled"}
       disabled
       leftIcon={faExternalLinkAlt}
       href={"https://www.google.com"}
@@ -142,7 +142,7 @@ export const Standard = () => (
 );
 
 export const Outlined = () => (
-  <ActionMenu width={200} variant={"outlined"}>
+  <ActionMenu width={200}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
@@ -199,7 +199,7 @@ export const AsyncItem = () => {
   };
 
   return (
-    <ActionMenu width={200} variant={"outlined"}>
+    <ActionMenu width={200}>
       <ActionMenuItem
         id={"action-menu-item-open"}
         label={"Open"}

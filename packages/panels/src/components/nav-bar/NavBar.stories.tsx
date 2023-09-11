@@ -83,11 +83,6 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
             />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
-              loading
-              label={"Spinner"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
               selected
               label={"Selected"}
             />
@@ -314,7 +309,6 @@ const sidebarItems: SidebarItem[] = [
   { type: "heading", label: "Product name" },
   { type: "link", label: "Level 1.1", leftIcon: faUserFriends },
   { type: "link", label: "No icon" },
-  { type: "link", label: "Spinner", loading: true },
   { type: "link", label: "Selected", selected: true },
   {
     type: "grouped",
@@ -388,6 +382,7 @@ export const DemoWithRail: Story = () => {
           <SidebarMenuLink
             style={{ marginTop: "auto" }}
             title={"Unpin menu"}
+            label={"Unpin menu"}
             leftIcon={faAngleDoubleLeft}
             onClick={disableRail}
           />

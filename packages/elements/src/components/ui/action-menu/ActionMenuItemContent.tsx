@@ -1,4 +1,11 @@
-import { Box, Column, DivProps, Row, Space } from "@stenajs-webui/core";
+import {
+  Column,
+  DivProps,
+  Indent,
+  Row,
+  Space,
+  Spacing,
+} from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef, ReactNode } from "react";
 
@@ -49,23 +56,27 @@ export const ActionMenuItemContent = forwardRef<
       >
         <Row justifyContent={"space-between"} alignItems={"center"}>
           <MenuButtonContent label={label} leftIcon={leftIcon} />
-          {right}
+          {right && (
+            <>
+              <Space />
+              {right}
+            </>
+          )}
         </Row>
 
         {bottom && (
           <>
             <Space />
-            <Row indent={2}>
-              {!fullWidthBottomContent && leftIcon && <Box width={"16px"} />}
+            <Row>
+              {!fullWidthBottomContent && leftIcon && <Indent num={2} />}
               <Row alignItems={"center"} width={"100%"}>
                 {bottom}
               </Row>
             </Row>
-            <Space num={1.5} />
           </>
         )}
       </Column>
-      <Space />
+      <Spacing />
     </>
   );
 });
