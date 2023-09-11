@@ -14,10 +14,7 @@ export interface ActionMenuItemProps
 export const ActionMenuItem = forwardRef<
   HTMLButtonElement,
   ActionMenuItemProps
->(function ActionMenuItem(
-  { leftIcon, label, className, onClick, disableCloseOnClick, ...props },
-  ref
-) {
+>(function ActionMenuItem({ disableCloseOnClick, onClick, ...props }, ref) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
     { disableCloseOnClick, onClick },
     ref
@@ -25,12 +22,10 @@ export const ActionMenuItem = forwardRef<
 
   return (
     <MenuButton
-      label={label}
-      leftIcon={leftIcon}
-      expandable={false}
       onKeyDown={onKeyDown}
       onClick={props.disabled ? undefined : onClickHandler}
       ref={innerRef}
+      {...props}
     />
   );
 });

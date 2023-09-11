@@ -1,18 +1,37 @@
 import * as React from "react";
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
 import { AnchorElementProps, Box, Row } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { MenuButtonContent } from "./MenuButtonContent";
+import { MenuButtonVariant } from "./MenuButton";
 
-export type MenuButtonVariant = "standard" | "danger";
+export type MenuButtonLinkRenderer = (
+  anchorProps: AnchorElementProps,
+  activeClassName: string
+) => ReactNode;
 
-export interface MenuButtonLinkProps extends AnchorElementProps {
+export type MenuButtonLinkProps =
+  | MenuButtonLinkNoRenderLinkProps
+  | MenuButtonLinkWithRenderLinkProps;
+
+interface MenuButtonCommonProps extends AnchorElementProps {
   label: string;
   leftIcon?: IconDefinition;
   variant?: MenuButtonVariant;
   disabled?: boolean;
+}
+
+export interface MenuButtonLinkNoRenderLinkProps extends MenuButtonCommonProps {
+  renderLink?: never;
+  selected?: boolean;
+}
+
+export interface MenuButtonLinkWithRenderLinkProps
+  extends MenuButtonCommonProps {
+  renderLink?: MenuButtonLinkRenderer;
+  selected?: never;
 }
 
 export const MenuButtonLink = forwardRef<
@@ -28,34 +47,55 @@ export const MenuButtonLink = forwardRef<
     variant = "standard",
     href,
     ...linkProps
-  }: MenuButtonLinkProps,
+  },
   ref
 ) {
+  const innerChildren = (
+    <Row justifyContent={"space-between"} indent={2}>
+      <MenuButtonContent label={label} leftIcon={leftIcon} />
+    </Row>
+  );
+
+  const renderLinkProps = "renderLink" in linkProps ? linkProps : undefined;
+  const noRenderLinkProps = "selected" in linkProps ? linkProps : undefined;
+
+  const linkClassName = cx(
+    styles.button,
+    styles.buttonLink,
+    disabled && styles.disabled,
+    noRenderLinkProps?.selected && styles.selected,
+    styles[variant],
+    className
+  );
+
+  const link = renderLinkProps?.renderLink?.(
+    {
+      ...linkProps,
+      className: linkClassName,
+      href: disabled ? undefined : href,
+      children: innerChildren,
+    },
+    styles.selected
+  ) ?? (
+    <a
+      className={linkClassName}
+      href={disabled ? undefined : href}
+      ref={ref}
+      {...linkProps}
+    >
+      {innerChildren}
+    </a>
+  );
+
   return (
     <Box
-      className={cx(
-        styles.menuButton,
-        disabled && styles.disabled,
-        styles[variant]
-      )}
+      className={cx(styles.menuButton)}
+      width={"100%"}
+      borderRadius={"99rem"}
+      overflow={"hidden"}
+      justifyContent={"space-between"}
     >
-      <Box
-        width={"100%"}
-        borderRadius={"99rem"}
-        overflow={"hidden"}
-        justifyContent={"space-between"}
-      >
-        <a
-          className={cx(styles.button, styles.buttonLink, className)}
-          href={disabled ? undefined : href}
-          ref={ref}
-          {...linkProps}
-        >
-          <Row justifyContent={"space-between"} indent={2}>
-            <MenuButtonContent label={label} leftIcon={leftIcon} />
-          </Row>
-        </a>
-      </Box>
+      {link}
     </Box>
   );
 });

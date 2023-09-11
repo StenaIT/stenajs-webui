@@ -42,19 +42,14 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       disabled,
       variant = "standard",
       ...buttonProps
-    }: MenuButtonProps,
+    },
     ref
   ) {
     return (
-      <Box
-        className={cx(
-          styles.menuButton,
-          disabled && styles.disabled,
-          styles[variant]
-        )}
-        aria-expanded={expanded}
-      >
+      <Box>
         <Box
+          aria-expanded={expanded}
+          className={cx(styles.menuButton)}
           width={"100%"}
           borderRadius={"99rem"}
           overflow={"hidden"}
@@ -63,7 +58,9 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
           <button
             className={cx(
               styles.button,
-              selected ? styles.selected : undefined,
+              selected && styles.selected,
+              disabled && styles.disabled,
+              styles[variant],
               className
             )}
             disabled={disabled}

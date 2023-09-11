@@ -1,4 +1,5 @@
 import { MenuButton } from "./MenuButton";
+import { MenuButtonLink } from "./MenuButtonLink";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { Column, Text, useBoolean } from "@stenajs-webui/core";
 import * as React from "react";
@@ -6,7 +7,7 @@ import {
   faChartBar,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { MenuButtonLink } from "./MenuButtonLink";
+import cx from "classnames";
 
 export default {
   title: "elements/MenuButton",
@@ -19,7 +20,7 @@ export default {
 export const Overview = () => {
   const [expanded, , , toggle] = useBoolean(false);
   return (
-    <Column width={"200px"} gap>
+    <Column width={"230px"} gap>
       <MenuButton label={"Just a button"} />
 
       <MenuButton label={"I have icon"} leftIcon={faChartBar} />
@@ -35,6 +36,49 @@ export const Overview = () => {
         href={"https://www.google.com"}
         target={"_blank"}
         leftIcon={faExternalLinkAlt}
+      />
+
+      <MenuButtonLink
+        label={"Selected link"}
+        href={"https://www.google.com"}
+        target={"_blank"}
+        selected
+        leftIcon={faExternalLinkAlt}
+      />
+
+      <MenuButtonLink
+        label={"I am custom link"}
+        href={"https://www.google.com"}
+        target={"_blank"}
+        leftIcon={faExternalLinkAlt}
+        renderLink={({ className, children, ...anchorProps }) => (
+          <a
+            {...anchorProps}
+            className={className}
+            onClick={() => alert("I am so custom!")}
+          >
+            {children}
+          </a>
+        )}
+      />
+
+      <MenuButtonLink
+        label={"I am custom selected"}
+        href={"https://www.google.com"}
+        target={"_blank"}
+        leftIcon={faExternalLinkAlt}
+        renderLink={(
+          { className, children, ...anchorProps },
+          activeClassName
+        ) => (
+          <a
+            {...anchorProps}
+            className={cx(className, activeClassName)}
+            onClick={() => alert("I am so custom!")}
+          >
+            {children}
+          </a>
+        )}
       />
 
       <MenuButton
