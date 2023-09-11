@@ -1,12 +1,14 @@
 import * as React from "react";
 import {
   MenuButtonLink,
-  MenuButtonLinkNoRenderLinkProps,
+  MenuButtonLinkNotSelectedProps,
   MenuButtonLinkWithRenderLinkProps,
+  MenuButtonLinkWithSelectedProps,
 } from "@stenajs-webui/elements";
 
 export type SidebarMenuLinkProps =
-  | MenuButtonLinkNoRenderLinkProps
+  | MenuButtonLinkNotSelectedProps
+  | MenuButtonLinkWithSelectedProps
   | MenuButtonLinkWithRenderLinkProps;
 
 export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = (props) => {

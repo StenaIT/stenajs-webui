@@ -13,7 +13,8 @@ export type MenuButtonLinkRenderer = (
 ) => ReactNode;
 
 export type MenuButtonLinkProps =
-  | MenuButtonLinkNoRenderLinkProps
+  | MenuButtonLinkNotSelectedProps
+  | MenuButtonLinkWithSelectedProps
   | MenuButtonLinkWithRenderLinkProps;
 
 interface MenuButtonCommonProps extends AnchorElementProps {
@@ -23,7 +24,12 @@ interface MenuButtonCommonProps extends AnchorElementProps {
   disabled?: boolean;
 }
 
-export interface MenuButtonLinkNoRenderLinkProps extends MenuButtonCommonProps {
+export interface MenuButtonLinkNotSelectedProps extends MenuButtonCommonProps {
+  renderLink?: never;
+  selected?: never;
+}
+
+export interface MenuButtonLinkWithSelectedProps extends MenuButtonCommonProps {
   renderLink?: never;
   selected?: boolean;
 }
