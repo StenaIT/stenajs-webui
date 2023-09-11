@@ -33,7 +33,7 @@ files.forEach(async (file) => {
     .trim();
 
   const iconDefinition = {
-    icon: [48, 48, [], "", pathData],
+    icon: [24, 24, [], "", pathData],
     iconName: "random",
     prefix: "fal",
   };
