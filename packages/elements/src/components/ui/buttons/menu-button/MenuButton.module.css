@@ -41,16 +41,31 @@
 
   background-color: var(--current-background-color);
 
+  &.danger {
+    --current-text-color: var(--lhds-color-red-600);
+    --current-background-color-hover: var(--lhds-color-red-100);
+    --current-background-color-focus: var(--lhds-color-red-100);
+    --current-background-color-active: var(--lhds-color-ui-200);
+  }
+
+  &.disabled {
+    --current-text-color: var(--lhds-color-ui-500);
+    --current-background-color-hover: var(--swui-menu-button-background-color);
+    --current-background-color-focus: var(--swui-menu-button-background-color);
+    --current-background-color-active: var(--swui-menu-button-background-color);
+  }
+
   .label {
     font-size: var(--current-text-size, var(--swui-font-size-medium));
   }
 
-  button {
-    --swui-button-text-color: var(--swui-white);
-    --swui-button-background-color-hover: var(
-      --swui-menu-button-background-color-hover
-    );
+  .buttonLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
 
+  .button {
     border: 0;
     padding: 0;
     background: var(--current-background-color);

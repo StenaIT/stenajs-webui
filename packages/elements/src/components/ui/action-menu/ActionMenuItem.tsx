@@ -1,19 +1,13 @@
-import { ButtonElementProps } from "@stenajs-webui/core";
-import { forwardRef } from "react";
-import cx from "classnames";
-
-import styles from "./ActionMenuItem.module.css";
-import { ButtonContentProps } from "../buttons/common/ButtonContent";
-import { useActionMenuLogic } from "./UseActionMenuLogic";
-import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
 import * as React from "react";
-
-export type ActionMenuItemVariant = "standard" | "danger" | "success";
+import { forwardRef } from "react";
+import { useActionMenuLogic } from "./UseActionMenuLogic";
+import { MenuButton, MenuButtonProps } from "../buttons/menu-button/MenuButton";
 
 export interface ActionMenuItemProps
-  extends Omit<ButtonElementProps, "children">,
-    ButtonContentProps {
-  variant?: ActionMenuItemVariant;
+  extends Omit<
+    MenuButtonProps,
+    "children" | "expandable" | "expanded" | "selected"
+  > {
   disableCloseOnClick?: boolean;
 }
 
@@ -21,24 +15,7 @@ export const ActionMenuItem = forwardRef<
   HTMLButtonElement,
   ActionMenuItemProps
 >(function ActionMenuItem(
-  {
-    success,
-    loading,
-    leftIcon,
-    left,
-    right,
-    rightIcon,
-    label,
-    iconClassName,
-    labelClassName,
-    spinnerClassName,
-    leftWrapperClassName,
-    variant = "standard",
-    className,
-    onClick,
-    disableCloseOnClick,
-    ...props
-  },
+  { leftIcon, label, className, onClick, disableCloseOnClick, ...props },
   ref
 ) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
@@ -47,22 +24,13 @@ export const ActionMenuItem = forwardRef<
   );
 
   return (
-    <button
-      {...props}
-      className={cx(styles.actionMenuItem, styles[variant], className)}
+    <MenuButton
+      label={label}
+      leftIcon={leftIcon}
+      expandable={false}
       onKeyDown={onKeyDown}
       onClick={props.disabled ? undefined : onClickHandler}
       ref={innerRef}
-    >
-      <ActionMenuCommonContent
-        success={success}
-        loading={loading}
-        leftIcon={leftIcon}
-        left={left}
-        right={right}
-        rightIcon={rightIcon}
-        label={label}
-      />
-    </button>
+    />
   );
 });

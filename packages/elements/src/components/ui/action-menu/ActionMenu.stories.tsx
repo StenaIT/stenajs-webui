@@ -1,6 +1,6 @@
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
 import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
+import { useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import { action } from "@storybook/addon-actions";
 import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
@@ -18,12 +18,12 @@ import { ButtonGroup } from "../button-group/ButtonGroup";
 import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { PrimaryButton } from "../buttons/PrimaryButton";
-import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
-import { useState } from "react";
+import { stenaSearch } from "../../../icons/ui/IconsUi";
 import * as React from "react";
+import { useState } from "react";
 
 export default {
-  title: "elements/ActionMenu/ActionMenu",
+  title: "elements/ActionMenu",
   component: ActionMenu,
   subcomponents: { ActionMenuItem, ActionMenuSeparator },
   parameters: {
@@ -73,9 +73,7 @@ export const Standard = () => (
       label={"Save it"}
       leftIcon={faSave}
       onClick={action("It was saved!")}
-      variant={"success"}
     />
-    <ActionMenuItem label={"Loading"} loading onClick={action("Loading")} />
     <ActionMenuItem
       label={"Click doesn't close"}
       onClick={action("I didn't close the menu!")}
@@ -85,17 +83,6 @@ export const Standard = () => (
       label={"Disabled"}
       disabled
       onClick={action("I can never happen!")}
-    />
-    <ActionMenuItem
-      label={"Icon right"}
-      onClick={action("Icon right clicked")}
-      rightIcon={stenaCheck}
-    />
-    <ActionMenuItem
-      label={"Icon right disabled"}
-      onClick={action("I can never happen again!")}
-      rightIcon={stenaCheck}
-      disabled
     />
     <ActionMenuItemContent
       label={"Content right"}
@@ -150,11 +137,7 @@ export const Standard = () => (
       fullWidthBottomContent
     />
     <ActionMenuSeparator />
-    <ActionMenuItem
-      label={"Quit it"}
-      right={<Text size={"smaller"}>⌘ Q</Text>}
-      onClick={action("Quitting")}
-    />
+    <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
   </ActionMenu>
 );
 
@@ -166,11 +149,7 @@ export const Outlined = () => (
       onClick={action("Opened")}
     />
     <ActionMenuSeparator />
-    <ActionMenuItem
-      label={"Quit it"}
-      right={<Text size={"smaller"}>⌘ Q</Text>}
-      onClick={action("Quitting")}
-    />
+    <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
   </ActionMenu>
 );
 
@@ -230,9 +209,6 @@ export const AsyncItem = () => {
         label={saved ? "Saved" : loading ? "Saving..." : "Save"}
         leftIcon={faSave}
         onClick={start}
-        variant={saved ? "success" : undefined}
-        success={saved}
-        loading={loading}
       />
       <ActionMenuItem
         label={
@@ -245,8 +221,6 @@ export const AsyncItem = () => {
         leftIcon={isDangerOn ? faSave : faSadCry}
         onClick={startDanger}
         variant={"danger"}
-        success={savedDanger}
-        loading={loadingDanger}
         disabled={!isDangerOn}
       />
 
@@ -266,9 +240,6 @@ export const AsyncItem = () => {
         }
         leftIcon={isSuccessOn ? faSave : faSadCry}
         onClick={startSuccess}
-        variant={"success"}
-        success={savedSuccess}
-        loading={loadingSucess}
         disabled={!isSuccessOn}
       />
 
