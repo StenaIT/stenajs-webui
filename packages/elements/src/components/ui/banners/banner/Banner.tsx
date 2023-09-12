@@ -48,6 +48,8 @@ const iconPerVariant: Record<BannerVariant, IconDefinition | undefined> = {
   error: stenaExclamationTriangle,
 };
 
+const leftContentWidth = "56px";
+
 export const Banner: React.FC<BannerProps> = ({
   headerText,
   text,
@@ -59,14 +61,14 @@ export const Banner: React.FC<BannerProps> = ({
   ...rest
 }) => {
   return (
-    <div className={cx(styles.banner, styles[variant])} {...getDataProps(rest)}>
+    <Column
+      className={cx(styles.banner, styles[variant])}
+      spacing={children || (headerText && text) ? 2 : 1}
+      indent={2}
+      {...getDataProps(rest)}
+    >
       <Row justifyContent={"space-between"}>
-        <Row
-          flex={"none"}
-          width={"64px"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
+        <Row flex={"none"} width={leftContentWidth} alignItems={"center"}>
           <div className={styles.iconBackground}>
             {(icon || iconPerVariant[variant] || loading) && (
               <>
@@ -95,13 +97,13 @@ export const Banner: React.FC<BannerProps> = ({
       </Row>
       {children && (
         <Row>
-          <Box minWidth={"64px"} />
+          <Box minWidth={leftContentWidth} />
           <Box>
             <Space />
             {children}
           </Box>
         </Row>
       )}
-    </div>
+    </Column>
   );
 };
