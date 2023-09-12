@@ -6,7 +6,6 @@ import {
   Column,
   getDataProps,
   Heading,
-  Indent,
   Row,
   Space,
   Text,
@@ -84,25 +83,13 @@ export const Banner: React.FC<BannerProps> = ({
             )}
           </div>
         </Row>
-        <Row justifyContent={"space-between"} flexGrow={1}>
-          <Column justifyContent={"center"}>
-            {headerText && (
-              <>
-                <Heading variant={"h5"}>{headerText}</Heading>
-              </>
-            )}
-            {text && (
-              <>
-                {headerText && <Space />}
-                <Text>{text}</Text>
-              </>
-            )}
+        <Row justifyContent={"space-between"} flexGrow={1} gap>
+          <Column justifyContent={"center"} gap>
+            {headerText && <Heading variant={"h5"}>{headerText}</Heading>}
+            {text && <Text>{text}</Text>}
           </Column>
           {contentRight && (
-            <>
-              <Indent />
-              <Column justifyContent={"center"}>{contentRight}</Column>
-            </>
+            <Column justifyContent={"center"}>{contentRight}</Column>
           )}
         </Row>
       </Row>
@@ -110,10 +97,8 @@ export const Banner: React.FC<BannerProps> = ({
         <Row>
           <Box minWidth={"64px"} />
           <Box>
-            <>
-              <Space />
-              {children}
-            </>
+            <Space />
+            {children}
           </Box>
         </Row>
       )}
