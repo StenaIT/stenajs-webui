@@ -1,17 +1,16 @@
-import { AnchorElementProps } from "@stenajs-webui/core";
-import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
-import { ActionMenuItemVariant } from "./ActionMenuItem";
-import styles from "./ActionMenuItem.module.css";
-import { ButtonContentProps } from "../buttons/common/ButtonContent";
 import { useActionMenuLogic } from "./UseActionMenuLogic";
-import { ActionMenuCommonContent } from "./ActionMenuCommonContent";
+import {
+  MenuButtonLink,
+  MenuButtonLinkProps,
+} from "../buttons/menu-button/MenuButtonLink";
 
 export interface ActionMenuLinkProps
-  extends AnchorElementProps,
-    ButtonContentProps {
-  variant?: ActionMenuItemVariant;
+  extends Omit<
+    MenuButtonLinkProps,
+    "children" | "expandable" | "expanded" | "selected"
+  > {
   disabled?: boolean;
   disableCloseOnClick?: boolean;
 }
@@ -20,26 +19,7 @@ export const ActionMenuLink = forwardRef<
   HTMLAnchorElement,
   ActionMenuLinkProps
 >(function ActionMenuLink(
-  {
-    success,
-    loading,
-    leftIcon,
-    left,
-    right,
-    rightIcon,
-    label,
-    iconClassName,
-    labelClassName,
-    spinnerClassName,
-    leftWrapperClassName,
-    variant = "standard",
-    className,
-    disabled,
-    href,
-    onClick,
-    disableCloseOnClick,
-    ...props
-  },
+  { disabled, onClick, disableCloseOnClick, ...props },
   ref: React.Ref<HTMLAnchorElement>
 ) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
@@ -48,24 +28,12 @@ export const ActionMenuLink = forwardRef<
   );
 
   return (
-    <a
-      {...props}
-      className={cx(styles.actionMenuItem, styles[variant], className)}
-      onClick={disabled ? undefined : onClickHandler}
+    <MenuButtonLink
       onKeyDown={onKeyDown}
-      aria-disabled={disabled}
-      href={disabled ? undefined : href}
+      disabled={disabled}
+      onClick={disabled ? undefined : onClickHandler}
       ref={innerRef}
-    >
-      <ActionMenuCommonContent
-        success={success}
-        loading={loading}
-        leftIcon={leftIcon}
-        left={left}
-        right={right}
-        rightIcon={rightIcon}
-        label={label}
-      />
-    </a>
+      {...props}
+    />
   );
 });
