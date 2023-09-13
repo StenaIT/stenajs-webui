@@ -24,7 +24,7 @@ export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
   return (
     <div style={{ position: "relative" }}>
       <Box
-        background={cssColor(color)}
+        background={color}
         position={loading ? "relative" : undefined}
         className={cx(styles.cardy, noPaddingBottom && styles.noPaddingBottom)}
         {...boxProps}
