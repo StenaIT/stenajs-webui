@@ -1,3 +1,15 @@
+# v18.10.1 (Wed Sep 13 2023)
+
+#### 🐛 Bug Fix
+
+- Update banner default height (spacing = 1) [#593](https://github.com/StenaIT/stenajs-webui/pull/593) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v18.10.0 (Thu Sep 07 2023)
 
 #### 🚀 Enhancement
