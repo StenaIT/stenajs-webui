@@ -2,6 +2,7 @@
   --current-bg-color: var(--lhds-color-ui-200);
 
   background: var(--current-bg-color);
+  border-radius: var(--swui-border-radius);
 
   .iconBackground {
     height: 40px;
