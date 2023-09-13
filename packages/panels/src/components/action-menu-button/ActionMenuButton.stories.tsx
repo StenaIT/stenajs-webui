@@ -1,4 +1,12 @@
-import { stenaCheck } from "@stenajs-webui/elements";
+import {
+  ActionMenuItem,
+  ActionMenuItemContent,
+  ActionMenuLink,
+  ActionMenuSeparator,
+  ButtonGroup,
+  PrimaryButton,
+  SecondaryButton,
+} from "@stenajs-webui/elements";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
@@ -13,15 +21,6 @@ import {
   Spacing,
   Txt,
 } from "@stenajs-webui/core";
-import {
-  ActionMenuItem,
-  ActionMenuItemContent,
-  ActionMenuLink,
-  ActionMenuSeparator,
-  ButtonGroup,
-  PrimaryButton,
-  SecondaryButton,
-} from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { action } from "@storybook/addon-actions";
 import * as React from "react";
@@ -65,9 +64,7 @@ export const Overview = () => (
                 leftIcon={faFire}
                 variant={"danger"}
               />
-              <ActionMenuItem label={"Loading"} loading />
               <ActionMenuItem label={"Disabled"} disabled />
-              <ActionMenuItem label={"Icon right"} rightIcon={stenaCheck} />
               <ActionMenuItemContent
                 label={"Content right"}
                 right={
@@ -100,22 +97,8 @@ export const Overview = () => (
                   </ButtonGroup>
                 }
               />
-              <ActionMenuItem
-                label={"Icon right disabled"}
-                rightIcon={stenaCheck}
-                disabled
-              />
-              <ActionMenuItem label={"Custom right"}>
-                <Txt size={"smaller"} color={"tomato"}>
-                  So custom!
-                </Txt>
-              </ActionMenuItem>
               <ActionMenuSeparator />
-              <ActionMenuItem
-                label={"Quit it"}
-                right={<Txt size={"smaller"}>⌘ Q</Txt>}
-                onClick={action("Quitting")}
-              />
+              <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
             </>
           )}
         />
