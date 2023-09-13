@@ -10,9 +10,9 @@ export interface SidebarSeparatorItem {
   type: "separator";
 }
 
-export interface SidebarLinkItem extends Omit<SidebarMenuLinkProps, "type"> {
+export type SidebarLinkItem = SidebarMenuLinkProps & {
   type: "link";
-}
+};
 
 export interface SidebarGroupedItem {
   type: "grouped";
