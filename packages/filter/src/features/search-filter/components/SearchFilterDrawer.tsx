@@ -2,7 +2,7 @@ import * as React from "react";
 import { ReactNode, useCallback } from "react";
 import { Drawer, DrawerProps } from "@stenajs-webui/modal";
 import { cssColor } from "@stenajs-webui/theme";
-import { Column } from "@stenajs-webui/core";
+import { Box, Column } from "@stenajs-webui/core";
 import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
@@ -48,7 +48,9 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
           headerIcon={headerIcon}
           contentRight={headerContentRight}
         />
-        {children}
+        <Box spacing indent>
+          {children}
+        </Box>
       </Column>
     </Drawer>
   );

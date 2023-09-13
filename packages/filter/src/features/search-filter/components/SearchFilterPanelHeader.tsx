@@ -30,7 +30,11 @@ export const SearchFilterPanelHeader: React.FC<
       contentRight={
         <Row gap={2}>
           {contentRight}
-          <FlatButton leftIcon={stenaTimes} onClick={onRequestClose} />
+          <FlatButton
+            leftIcon={stenaTimes}
+            onClick={onRequestClose}
+            variant={"danger"}
+          />
         </Row>
       }
       leftIcon={headerIcon}
