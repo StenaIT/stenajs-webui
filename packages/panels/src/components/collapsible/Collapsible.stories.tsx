@@ -7,10 +7,10 @@ import {
   FlatButton,
   Icon,
   PrimaryButton,
-  Tag,
-  stenaTrash,
-  stenaSearch,
   stenaPlusCircle,
+  stenaSearch,
+  stenaTrash,
+  Tag,
 } from "@stenajs-webui/elements";
 import { Checkbox, RadioButton, Switch, TextInput } from "@stenajs-webui/forms";
 import * as React from "react";
@@ -451,7 +451,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} />
             </Clickable>
           }
         >
@@ -468,7 +468,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} />
             </Clickable>
           }
         >
@@ -485,7 +485,7 @@ export const RadioButtons = () => {
                 alert("Removed");
               }}
             >
-              <Icon icon={stenaTrash} hoverColor={"#C62F37"} />
+              <Icon icon={stenaTrash} />
             </Clickable>
           }
         >
