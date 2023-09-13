@@ -101,4 +101,6 @@
   --swui-metrics-indent: 8px;
   --swui-metrics-spacing: 8px;
   --swui-metrics-space: 8px;
+
+  --swui-default-item-height: 40px;
 }

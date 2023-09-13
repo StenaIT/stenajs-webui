@@ -56,7 +56,7 @@ export const renderItemsInRail = (
           <SidebarMenuLink
             key={index}
             title={label}
-            width={"var(--swui-sidebar-menu-item-height)"}
+            label={label}
             {...linkProps}
           />
         );
@@ -84,7 +84,7 @@ export const renderItemsInRail = (
             >
               <SidebarMenuLink
                 title={item.label}
-                width={"var(--swui-sidebar-menu-item-height)"}
+                label={item.label}
                 leftIcon={item.leftIcon}
               />
             </Popover>
