@@ -9,7 +9,6 @@ import cx from "classnames";
 interface CardyProps extends Pick<BoxProps, "minWidth"> {
   color?: CssPropColor;
   loading?: boolean;
-  noPaddingBottom?: boolean;
   className?: string;
 }
 
