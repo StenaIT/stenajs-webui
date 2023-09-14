@@ -21,10 +21,10 @@ export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
 }) => {
   return (
     <Box
+      {...restProps}
       background={color}
       position={loading ? "relative" : undefined}
       className={cx(styles.cardy, className)}
-      {...restProps}
     >
       {children}
       {loading && (
