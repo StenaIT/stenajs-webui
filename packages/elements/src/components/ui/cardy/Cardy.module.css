@@ -1,0 +1,19 @@
+.cardy.cardy {
+  border-radius: 24px;
+
+  padding-top: 32px;
+  padding-bottom: 56px;
+  @media (max-width: 768px) {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
+}
+
+.cardyIndent.cardyIndent {
+  padding-left: 32px;
+  padding-right: 32px;
+  @media (max-width: 768px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
