@@ -1,3 +1,16 @@
+# v18.11.0 (Thu Sep 14 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/theme`
+  - New component: Cardy [#597](https://github.com/StenaIT/stenajs-webui/pull/597) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.10.1 (Wed Sep 13 2023)
 
 #### 🐛 Bug Fix
