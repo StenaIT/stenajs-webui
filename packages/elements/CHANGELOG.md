@@ -1,3 +1,15 @@
+# v18.11.1 (Thu Sep 14 2023)
+
+#### 🐛 Bug Fix
+
+- Fix color prop in Cardy. [#601](https://github.com/StenaIT/stenajs-webui/pull/601) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.11.0 (Thu Sep 14 2023)
 
 #### 🚀 Enhancement
