@@ -5,7 +5,7 @@ import {
   faShip,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { Column, Indent, Row, Space, Text, Txt } from "@stenajs-webui/core";
+import { Column, Row, Text, Txt } from "@stenajs-webui/core";
 import { Icon, IconProps } from "./Icon";
 import { Story } from "@storybook/react";
 import {
