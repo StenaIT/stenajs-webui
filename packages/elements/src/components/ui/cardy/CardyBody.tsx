@@ -8,7 +8,5 @@ export interface CardyBodyProps extends Pick<BoxProps, "gap"> {
 }
 
 export const CardyBody: React.FC<CardyBodyProps> = (boxProps) => {
-  return (
-    <Box className={styles.cardyIndent} {...boxProps} />
-  );
+  return <Box className={styles.cardyIndent} {...boxProps} />;
 };

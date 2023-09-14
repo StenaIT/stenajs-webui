@@ -7,11 +7,6 @@
     padding-top: 24px;
     padding-bottom: 48px;
   }
-
-  &.noPaddingBottom {
-    padding-bottom: 0;
-    overflow: hidden;
-  }
 }
 
 .cardyIndent.cardyIndent {
