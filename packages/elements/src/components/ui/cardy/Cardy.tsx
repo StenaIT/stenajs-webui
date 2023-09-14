@@ -14,7 +14,7 @@ interface CardyProps extends Pick<BoxProps, "minWidth"> {
 
 export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
   children,
-  color = cssColor("--lhds-color-ui-200"),
+  color = "--lhds-color-ui-200",
   loading,
   className,
   ...restProps
@@ -22,7 +22,7 @@ export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
   return (
     <Box
       {...restProps}
-      background={color}
+      background={cssColor(color)}
       position={loading ? "relative" : undefined}
       className={cx(styles.cardy, className)}
     >
