@@ -17,14 +17,14 @@ export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
   color = cssColor("--lhds-color-ui-200"),
   loading,
   className,
-  ...boxProps
+  ...restProps
 }) => {
   return (
     <Box
       background={color}
       position={loading ? "relative" : undefined}
       className={cx(styles.cardy, className)}
-      {...boxProps}
+      {...restProps}
     >
       {children}
       {loading && (
