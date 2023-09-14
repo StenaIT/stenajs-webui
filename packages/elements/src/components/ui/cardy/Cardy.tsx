@@ -4,6 +4,7 @@ import { PropsWithChildren } from "react";
 import styles from "./Cardy.module.css";
 import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { Spinner } from "../spinner/Spinner";
+import cx from "classnames";
 
 interface CardyProps extends Pick<BoxProps, "minWidth"> {
   color?: CssPropColor;
@@ -23,7 +24,7 @@ export const Cardy: React.FC<PropsWithChildren<CardyProps>> = ({
     <Box
       background={color}
       position={loading ? "relative" : undefined}
-      className={styles.cardy}
+      className={cx(styles.cardy, className)}
       {...boxProps}
     >
       {children}
