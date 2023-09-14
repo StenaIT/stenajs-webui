@@ -19,6 +19,7 @@ export type BrandColor =
   | "--sand-dark"
   | "--hav-30"
   | "--molnigare"
+  | "--black"
   | "--silver"
   | "--silver-light"
   | "--silver-lighter"
