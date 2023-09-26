@@ -2,36 +2,67 @@
   --swui-toggle-button-height: 32px;
 
   --swui-toggle-button-background: var(--swui-white);
-  --swui-toggle-button-background-pressed: var(--lhds-color-blue-100);
-  --swui-toggle-button-background-hover: var(--lhds-color-blue-50);
-  --swui-toggle-button-background-disabled: var(--lhds-color-ui-300);
+  --swui-toggle-button-background-selected: var(--lhds-color-blue-200);
+  --swui-toggle-button-background-hover: var(--lhds-color-ui-200);
+  --swui-toggle-button-background-focus: var(--lhds-color-blue-100);
+  --swui-toggle-button-background-focus-selected: var(--lhds-color-blue-300);
+  --swui-toggle-button-background-active: var(--lhds-color-blue-100);
+  --swui-toggle-button-background-disabled: var(--lhds-color-ui-500);
 
   --swui-toggle-button-text-color: var(--swui-button-text-color);
-  --swui-toggle-button-text-color-pressed: var(--swui-button-text-color);
+  --swui-toggle-button-text-color-disabled: var(--lhds-color-ui-50);
 
-  --swui-toggle-button-border-color: var(--lhds-color-ui-400);
-  --swui-toggle-button-border-color-hover: var(--lhds-color-blue-500);
-  --swui-toggle-button-border-color-pressed: var(--lhds-color-blue-500);
-  --swui-toggle-button-border-color-focus: var(--lhds-color-blue-500);
-  --swui-toggle-button-border-color-disabled: var(--lhds-color-ui-300);
+  /* State */
 
-  --swui-toggle-button-bow-shadow: none;
-  --swui-toggle-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16);
-  --swui-toggle-button-box-shadow-focus: inset 0 0 2px 1px
-    var(--lhds-color-blue-300);
+  --current-background: var(--swui-toggle-button-background);
 
-  background: var(--swui-toggle-button-background);
-  border: 1px solid var(--swui-toggle-button-border-color);
-  border-radius: var(--swui-border-radius);
-  box-shadow: var(--swui-toggle-button-bow-shadow);
-  box-sizing: border-box;
-  cursor: pointer;
-  height: var(--swui-toggle-button-height);
-  outline: 0;
-  padding: 0 var(--swui-metrics-space);
+  /* Styling */
+
+  label {
+    background: var(--current-background);
+    border-radius: var(--swui-border-radius);
+    cursor: pointer;
+    height: var(--swui-toggle-button-height);
+    min-width: var(--swui-toggle-button-height);
+    padding: 0 calc(var(--swui-metrics-space) * 1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: var(--swui-font-primary);
+    font-weight: var(--swui-font-weight-text);
+    font-size: var(--swui-font-size-medium);
+    color: var(--swui-toggle-button-text-color);
+    user-select: none;
+  }
+
+  input {
+    position: absolute;
+    left: -100vw;
+  }
+
+  input:focus-visible ~ label {
+    --current-background: var(--swui-toggle-button-background-focus);
+  }
+
+  &.selected {
+    input:focus-visible ~ label {
+      --current-background: var(--swui-toggle-button-background-focus-selected);
+    }
+  }
+
+  &.disabled {
+    label {
+      color: var(--swui-toggle-button-text-color-disabled);
+    }
+  }
 
   &.small {
     --swui-toggle-button-height: 24px;
+    label {
+      font-size: var(--swui-font-size-small);
+    }
   }
 
   &.medium {
@@ -43,59 +74,23 @@
     padding: 0 calc(2 * var(--swui-metrics-space));
   }
 
-  .label {
-    color: var(--swui-toggle-button-text-color);
-  }
-
-  &:focus-visible {
-    --swui-toggle-button-border-color: var(
-      --swui-toggle-button-border-color-focus
-    );
-    --swui-toggle-button-bow-shadow: var(--swui-toggle-button-box-shadow-focus);
-  }
-
-  &:hover:not(:disabled) {
-    --swui-toggle-button-background: var(--swui-toggle-button-background-hover);
-    --swui-toggle-button-border-color: var(
-      --swui-toggle-button-border-color-hover
-    );
-    --swui-toggle-button-bow-shadow: var(--swui-toggle-button-box-shadow-hover);
-
-    &:focus-visible {
-      --swui-toggle-button-bow-shadow: var(
-          --swui-toggle-button-box-shadow-hover
-        ),
-        var(--swui-toggle-button-box-shadow-focus);
-    }
-  }
-
-  &.pressed {
-    --swui-toggle-button-background: var(
-      --swui-toggle-button-background-pressed
-    );
-    --swui-toggle-button-border-color: var(
-      --swui-toggle-button-border-color-pressed
-    );
-    z-index: 1;
-
+  &:not(.disabled) {
     &:hover {
-      --swui-toggle-button-background: var(
-        --swui-toggle-button-background-pressed
-      );
+      --current-background: var(--swui-toggle-button-background-hover);
+    }
+
+    &:active {
+      --current-background: var(--swui-toggle-button-background-active);
+    }
+
+    &.selected {
+      --current-background: var(--swui-toggle-button-background-selected);
+      z-index: 1;
     }
   }
 
-  &:disabled {
-    --swui-toggle-button-background: var(
-      --swui-toggle-button-background-disabled
-    );
-    --swui-toggle-button-border-color: var(
-      --swui-toggle-button-border-color-disabled
-    );
+  &.disabled {
+    --current-background: var(--swui-toggle-button-background-disabled);
     cursor: not-allowed;
-
-    .label {
-      color: var(--swui-text-disabled-color);
-    }
   }
 }

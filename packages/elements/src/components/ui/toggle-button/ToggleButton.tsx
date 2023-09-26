@@ -1,46 +1,29 @@
-import styled from "@emotion/styled";
-import { ButtonElementProps, Text } from "@stenajs-webui/core";
-import { forwardRef, useCallback } from "react";
+import { InputElementProps } from "@stenajs-webui/core";
 import * as React from "react";
+import { forwardRef, useCallback, useId } from "react";
 import cx from "classnames";
-import { width, WidthProps } from "styled-system";
 import styles from "./ToggleButton.module.css";
 
 export type ToggleButtonSize = "small" | "medium" | "large";
 
 export interface ToggleButtonProps
-  extends WidthProps,
-    Omit<ButtonElementProps, "value"> {
+  extends Omit<InputElementProps, "value" | "size" | "checked"> {
+  value?: boolean;
+  onValueChange?: (value: boolean) => void;
+
   /**
    * The label of the button.
    */
   label?: string | number;
 
   /**
-   * The pressed state change handler.
-   */
-  onValueChange?: (value: boolean) => void;
-
-  /**
-   * If true, the button will display as pressed.
-   */
-  value?: boolean;
-
-  /**
    * The size of the button.
    */
   size?: ToggleButtonSize;
-
-  /**
-   * If true, the button will be disabled.
-   */
-  disabled?: boolean;
 }
 
-const Button = styled.button(width);
-
 export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
-  HTMLButtonElement,
+  HTMLInputElement,
   ToggleButtonProps
 >(function ToggleButton(
   {
@@ -48,32 +31,45 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
     value,
     size = "medium",
     onValueChange,
+    onChange,
     disabled,
-    onClick,
-    ...buttonProps
+    ...inputProps
   },
   ref
 ) {
-  const handleClick = useCallback(
-    (ev: React.MouseEvent<HTMLButtonElement>) => {
-      onClick?.(ev);
+  const id = useId();
+
+  const onChangeHandler = useCallback<
+    React.ChangeEventHandler<HTMLInputElement>
+  >(
+    (ev) => {
+      onChange?.(ev);
       onValueChange?.(!value);
     },
-    [onClick, onValueChange, value]
+    [onChange, onValueChange, value]
   );
 
   return (
-    <Button
-      aria-pressed={value}
-      className={cx(styles.toggleButton, styles[size], value && styles.pressed)}
-      onClick={handleClick}
-      disabled={disabled}
-      ref={ref}
-      {...buttonProps}
+    <div
+      className={cx(
+        styles.toggleButton,
+        styles[size],
+        value && styles.selected,
+        disabled && styles.disabled
+      )}
     >
-      <Text size={"small"} className={styles.label}>
-        {label}
-      </Text>
-    </Button>
+      <input
+        type={"checkbox"}
+        aria-pressed={value}
+        onChange={onChangeHandler}
+        disabled={disabled}
+        checked={value}
+        ref={ref}
+        id={id}
+        value={label}
+        {...inputProps}
+      />
+      <label htmlFor={id}>{label}</label>
+    </div>
   );
 });
