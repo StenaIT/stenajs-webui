@@ -1,3 +1,16 @@
+# v18.12.0 (Tue Sep 26 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Set line-height to 1.5 [#573](https://github.com/StenaIT/stenajs-webui/pull/573) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
 # v18.11.1 (Thu Sep 14 2023)
 
 #### 🐛 Bug Fix
