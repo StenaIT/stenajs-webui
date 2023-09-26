@@ -21,6 +21,8 @@ export type H1Props = ComponentPropsWithoutRef<"h1">;
 
 export type ButtonElementProps = ComponentPropsWithoutRef<"button">;
 
+export type InputElementProps = ComponentPropsWithoutRef<"input">;
+
 export type AnchorElementProps = ComponentPropsWithoutRef<"a">;
 
 export interface WithInnerRef<TInputElement> {
