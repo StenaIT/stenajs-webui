@@ -1,11 +1,12 @@
 import cx from "classnames";
 import * as React from "react";
 import styles from "./ButtonGroup.module.css";
-import { ReactNode } from "react";
+import { ToggleButtonProps } from "../toggle-button/ToggleButton";
+import { FlatButtonProps } from "../buttons/FlatButton";
 
 export interface ButtonGroupProps {
   className?: string;
-  children?: ReactNode;
+  children: Iterable<React.ReactElement<ToggleButtonProps | FlatButtonProps>>;
 }
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({

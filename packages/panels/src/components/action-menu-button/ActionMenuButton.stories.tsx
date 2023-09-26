@@ -4,14 +4,15 @@ import {
   ActionMenuLink,
   ActionMenuSeparator,
   ButtonGroup,
-  PrimaryButton,
-  SecondaryButton,
+  stenaBusinessClaim,
+  stenaSave,
+  stenaTrash,
+  ToggleButton,
 } from "@stenajs-webui/elements";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import {
   Box,
   Column,
@@ -53,15 +54,15 @@ export const Overview = () => (
           renderItems={(close) => (
             <>
               <ActionMenuItem label={"Open"} />
-              <ActionMenuItem label={"Save"} leftIcon={faSave} />
+              <ActionMenuItem label={"Save"} leftIcon={stenaSave} />
               <ActionMenuItem
                 label={"Don't close on click"}
                 disableCloseOnClick
-                leftIcon={faCoffee}
+                leftIcon={stenaBusinessClaim}
               />
               <ActionMenuItem
                 label={"Burn it"}
-                leftIcon={faFire}
+                leftIcon={stenaTrash}
                 variant={"danger"}
               />
               <ActionMenuItem label={"Disabled"} disabled />
@@ -69,9 +70,9 @@ export const Overview = () => (
                 label={"Content right"}
                 right={
                   <ButtonGroup>
-                    <PrimaryButton size={"small"} label={"S"} />
-                    <SecondaryButton size={"small"} label={"M"} />
-                    <SecondaryButton size={"small"} label={"L"} />
+                    <ToggleButton value={true} size={"small"} label={"S"} />
+                    <ToggleButton size={"small"} label={"M"} />
+                    <ToggleButton size={"small"} label={"L"} />
                   </ButtonGroup>
                 }
               />
@@ -79,17 +80,14 @@ export const Overview = () => (
                 label={"Content very much text"}
                 bottom={
                   <ButtonGroup>
-                    <SecondaryButton
-                      size={"small"}
-                      label={"25"}
-                      onClick={close}
-                    />
-                    <PrimaryButton
+                    <ToggleButton size={"small"} label={"25"} onClick={close} />
+                    <ToggleButton
+                      value={true}
                       size={"small"}
                       label={"50"}
                       onClick={close}
                     />
-                    <SecondaryButton
+                    <ToggleButton
                       size={"small"}
                       label={"100"}
                       onClick={close}

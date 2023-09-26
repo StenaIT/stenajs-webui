@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
+import { ToggleButton, ToggleButtonSize } from "./ToggleButton";
+import { Column } from "@stenajs-webui/core";
 import { ButtonGroup } from "../button-group/ButtonGroup";
-import { ToggleButton } from "./ToggleButton";
 
 export default {
   title: "elements/ToggleButton",
@@ -20,6 +21,7 @@ interface State {
 
 export const Weekdays = () => {
   const [state, setState] = useState<State>({});
+
   return (
     <ButtonGroup>
       <ToggleButton
@@ -56,6 +58,7 @@ export const Weekdays = () => {
         label={"Sunday"}
         onValueChange={(sun) => setState({ ...state, sun })}
         value={state.sun}
+        disabled
       />
     </ButtonGroup>
   );
@@ -100,7 +103,64 @@ export const ShortWeekdays = () => {
         label={"S"}
         onValueChange={(sun) => setState({ ...state, sun })}
         value={state.sun}
+        disabled
       />
     </ButtonGroup>
+  );
+};
+
+export const Sizes = () => {
+  const [state, setState] = useState<State>({});
+  const sizes: Array<ToggleButtonSize> = ["small", "medium", "large"];
+  return (
+    <Column gap={4}>
+      {sizes.map((size) => (
+        <ButtonGroup>
+          <ToggleButton
+            label={"Monday"}
+            onValueChange={(mon) => setState({ ...state, mon })}
+            value={state.mon}
+            size={size}
+          />
+          <ToggleButton
+            label={"Tuesday"}
+            onValueChange={(tue) => setState({ ...state, tue })}
+            value={state.tue}
+            size={size}
+          />
+          <ToggleButton
+            label={"Wednesday"}
+            onValueChange={(wed) => setState({ ...state, wed })}
+            value={state.wed}
+            size={size}
+          />
+          <ToggleButton
+            label={"Thursday"}
+            onValueChange={(thu) => setState({ ...state, thu })}
+            value={state.thu}
+            size={size}
+          />
+          <ToggleButton
+            label={"Friday"}
+            onValueChange={(fri) => setState({ ...state, fri })}
+            value={state.fri}
+            size={size}
+          />
+          <ToggleButton
+            label={"Saturday"}
+            onValueChange={(sat) => setState({ ...state, sat })}
+            value={state.sat}
+            size={size}
+          />
+          <ToggleButton
+            label={"Sunday"}
+            onValueChange={(sun) => setState({ ...state, sun })}
+            value={state.sun}
+            size={size}
+            disabled
+          />
+        </ButtonGroup>
+      ))}
+    </Column>
   );
 };
