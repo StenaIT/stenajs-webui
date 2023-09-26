@@ -60,7 +60,6 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
     >
       <input
         type={"checkbox"}
-        aria-pressed={value}
         onChange={onChangeHandler}
         disabled={disabled}
         checked={value}
