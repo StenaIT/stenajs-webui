@@ -25,17 +25,14 @@
   }
 
   &.h4 {
-    --swui-heading-font-size: 1.6rem;
-    font-weight: var(--swui-font-weight-text-bold);
+    --swui-heading-font-size: 1.8rem;
   }
 
   &.h5 {
-    --swui-heading-font-size: 1.4rem;
-    font-weight: var(--swui-font-weight-text-bold);
+    --swui-heading-font-size: 1.6rem;
   }
 
   &.h6 {
-    --swui-heading-font-size: 1.2rem;
-    font-weight: var(--swui-font-weight-text-bold);
+    --swui-heading-font-size: 1.4rem;
   }
 }

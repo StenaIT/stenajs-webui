@@ -73,9 +73,6 @@
     }
   }
 
-  .clickable {
-  }
-
   .close {
     padding-left: var(--swui-metrics-space);
     padding-right: var(--swui-metrics-space);
