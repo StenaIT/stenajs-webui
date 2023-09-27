@@ -74,9 +74,11 @@ export const MenuButtonLink = forwardRef<
     className
   );
 
+  const { renderLink, selected, ...anchorProps } = linkProps;
+
   const link = renderLinkProps?.renderLink?.(
     {
-      ...linkProps,
+      ...anchorProps,
       className: linkClassName,
       href: disabled ? undefined : href,
       children: innerChildren,
@@ -87,7 +89,7 @@ export const MenuButtonLink = forwardRef<
       className={linkClassName}
       href={disabled ? undefined : href}
       ref={ref}
-      {...linkProps}
+      {...anchorProps}
     >
       {innerChildren}
     </a>

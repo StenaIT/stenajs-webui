@@ -1,11 +1,4 @@
-import {
-  Column,
-  DivProps,
-  Indent,
-  Row,
-  Space,
-  Spacing,
-} from "@stenajs-webui/core";
+import { Column, DivProps, Indent, Row, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef, ReactNode } from "react";
 
@@ -46,6 +39,7 @@ export const ActionMenuItemContent = forwardRef<
   return (
     <>
       <Column
+        gap={1}
         {...props}
         minHeight={"var(--swui-default-item-height)"}
         justifyContent={"center"}
@@ -54,26 +48,18 @@ export const ActionMenuItemContent = forwardRef<
         onKeyDown={onKeyDown}
         aria-disabled={disabled}
       >
-        <Row justifyContent={"space-between"} alignItems={"center"}>
+        <Row justifyContent={"space-between"} alignItems={"center"} gap={1}>
           <MenuButtonContent label={label} leftIcon={leftIcon} />
-          {right && (
-            <>
-              <Space />
-              {right}
-            </>
-          )}
+          {right}
         </Row>
 
         {bottom && (
-          <>
-            <Space />
-            <Row>
-              {!fullWidthBottomContent && leftIcon && <Indent num={2} />}
-              <Row alignItems={"center"} width={"100%"}>
-                {bottom}
-              </Row>
+          <Row>
+            {!fullWidthBottomContent && leftIcon && <Indent num={2} />}
+            <Row alignItems={"center"} width={"100%"}>
+              {bottom}
             </Row>
-          </>
+          </Row>
         )}
       </Column>
       <Spacing />

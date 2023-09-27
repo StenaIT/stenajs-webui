@@ -44,7 +44,7 @@ export default {
 };
 
 export const Overview: Story<NotificationProps> = (props) => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification {...props} />
   </Box>
 );
@@ -66,13 +66,13 @@ Overview.args = {
 };
 
 export const Minimal = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification text={"You need at least some text"} />
   </Box>
 );
 
 export const Icon = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
@@ -82,7 +82,7 @@ export const Icon = () => (
 );
 
 export const IconColour = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
@@ -93,7 +93,7 @@ export const IconColour = () => (
 );
 
 export const LongText = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={
         "Try to keep the text short but if it should need several rows it wraps like this"
@@ -105,7 +105,7 @@ export const LongText = () => (
 );
 
 export const Timestamp = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
@@ -116,7 +116,7 @@ export const Timestamp = () => (
 );
 
 export const LeftContent = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Custom content"}
       contentLeft={
@@ -131,7 +131,7 @@ export const LeftContent = () => (
 );
 
 export const RightContent = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"24 nov 06:10"}
       icon={stenaCalendarManage}
@@ -142,7 +142,7 @@ export const RightContent = () => (
 );
 
 export const Content = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"24 nov 06:10"}
       icon={stenaCalendarManage}
@@ -173,7 +173,7 @@ export const CloseFunction = () => {
 
   return (
     showNotification && (
-      <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+      <Box width={300}>
         <Notification
           text={"Temporary timetable changes"}
           timestamp={`${formatDistance(new Date(), new Date())} ago`}

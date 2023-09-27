@@ -18,6 +18,8 @@ import {
   FlatButton,
   Icon,
   PrimaryButton,
+  stenaCog,
+  stenaSignOut,
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -48,8 +50,6 @@ import {
 import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
-import { faCog } from "@fortawesome/free-solid-svg-icons/faCog";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons/faSignOutAlt";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
 import { NavBarSearchField } from "./NavBarSearchField";
 
@@ -253,8 +253,8 @@ export const UserButton = () => (
             <>
               <ActionMenuItemContent label={"user@example.com"} />
               <ActionMenuSeparator />
-              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
-              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+              <ActionMenuItem leftIcon={stenaCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={stenaSignOut} label={"Logout"} />
             </>
           )}
         />
@@ -268,8 +268,8 @@ export const UserButton = () => (
             <>
               <ActionMenuItemContent label={"user@example.com"} />
               <ActionMenuSeparator />
-              <ActionMenuItem leftIcon={faCog} label={"Manage account"} />
-              <ActionMenuItem leftIcon={faSignOutAlt} label={"Logout"} />
+              <ActionMenuItem leftIcon={stenaCog} label={"Manage account"} />
+              <ActionMenuItem leftIcon={stenaSignOut} label={"Logout"} />
             </>
           )}
         />

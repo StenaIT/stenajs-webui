@@ -159,7 +159,7 @@ export const AsyncItem = () => {
   const [loading, setLoading, clearLoading] = useBoolean(false);
   const [loadingDanger, setLoadingDanger, clearLoadingDanger] =
     useBoolean(false);
-  const [loadingSucess, setLoadingSuccess, clearLoadingSuccess] =
+  const [loadingSuccess, setLoadingSuccess, clearLoadingSuccess] =
     useBoolean(false);
 
   const [saved, setSaved] = useTimeoutState(false, 2000);
@@ -236,7 +236,7 @@ export const AsyncItem = () => {
         label={
           savedSuccess
             ? "Saved with success"
-            : loadingSucess
+            : loadingSuccess
             ? "Saving with success..."
             : "Save successfully"
         }
