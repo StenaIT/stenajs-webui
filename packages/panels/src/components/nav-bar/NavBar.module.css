@@ -6,7 +6,10 @@
   --swui-navbar-item-background-color-selected-hover: var(
     --lhds-color-blue-700
   );
+  --swui-nav-bar-height: 48px;
 
   /* Styling */
   background-color: var(--swui-navbar-background-color);
+  height: var(--swui-nav-bar-height);
+  min-height: var(--swui-nav-bar-height);
 }

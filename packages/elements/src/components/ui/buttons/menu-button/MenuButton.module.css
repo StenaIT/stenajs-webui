@@ -4,9 +4,9 @@
   --swui-menu-button-text-color: var(--lhds-color-ui-900);
   --swui-menu-button-icon-color: var(--lhds-color-ui-900);
   --swui-menu-button-background-color: transparent;
-  --swui-menu-button-background-color-hover: var(--lhds-color-ui-400);
+  --swui-menu-button-background-color-hover: var(--lhds-color-ui-300);
   --swui-menu-button-background-color-focus: var(--lhds-color-ui-400);
-  --swui-menu-button-background-color-active: var(--lhds-color-ui-300);
+  --swui-menu-button-background-color-active: var(--lhds-color-ui-400);
   --swui-menu-button-background-selected: var(--lhds-color-blue-100);
   --swui-menu-button-background-selected-hover: var(--lhds-color-blue-200);
   --swui-menu-button-background-selected-focus: var(--lhds-color-blue-200);

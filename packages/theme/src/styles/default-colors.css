@@ -34,8 +34,8 @@
   --lhds-color-orange-900: #895800;
 
   --lhds-color-red-50: #fff1f4;
-  --lhds-color-red-100: #ffdde4;
-  --lhds-color-red-200: #ff899f;
+  --lhds-color-red-100: var(--snackskal-light);
+  --lhds-color-red-200: var(--snackskal);
   --lhds-color-red-300: #ff4e70;
   --lhds-color-red-400: #f1002e;
   --lhds-color-red-500: #d70029;
@@ -58,7 +58,7 @@
   --lhds-color-ui-50: #ffffff;
   --lhds-color-ui-100: #fafafb;
   --lhds-color-ui-200: var(--silver-lighter);
-  --lhds-color-ui-300: #e4e4e4;
+  --lhds-color-ui-300: var(--silver-ui);
   --lhds-color-ui-400: var(--silver-light);
   --lhds-color-ui-500: var(--silver);
   --lhds-color-ui-600: #5c6171;

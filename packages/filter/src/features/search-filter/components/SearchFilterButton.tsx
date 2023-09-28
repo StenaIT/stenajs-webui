@@ -1,4 +1,4 @@
-import { SecondaryButton, stenaSliders } from "@stenajs-webui/elements";
+import { SecondaryButton, stenaSlidersMini } from "@stenajs-webui/elements";
 import * as React from "react";
 import { useCallback } from "react";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
@@ -12,7 +12,7 @@ interface SearchFilterDrawerButtonProps {
 
 export const SearchFilterButton: React.FC<SearchFilterDrawerButtonProps> = ({
   label = "Filters",
-  leftIcon = stenaSliders,
+  leftIcon = stenaSlidersMini,
 }) => {
   const dispatch = useSearchFilterDispatch();
   const actions = useSearchFilterActions();

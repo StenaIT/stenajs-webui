@@ -1,7 +1,6 @@
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons/faAddressCard";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import {
   Box,
   Column,
@@ -18,8 +17,15 @@ import {
   FlatButton,
   Icon,
   PrimaryButton,
+  stenaBusinessClaim,
+  stenaBusinessInvoice,
+  stenaCalendar,
   stenaCog,
+  stenaSailingTicket,
   stenaSignOut,
+  stenaStatisticsLine,
+  stenaStatusNoShow,
+  stenaUserMultiple,
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
@@ -69,39 +75,67 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   return (
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close} variant={variant}>
-            <SidebarMenuHeading label={"Product name"} />
+        <Column width={"250px"}>
+          <SidebarMenu onCloseClick={close}>
+            <SidebarMenuHeading label={"Freight portal"} />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
-              leftIcon={faUserFriends}
-              label={"Level 1.1"}
+              leftIcon={stenaCalendar}
+              label={"Manage"}
             />
             <SidebarMenuLink
               onClick={() => alert("Clicked Customers")}
-              label={"No icon"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
+              label={"Book (selected)"}
+              leftIcon={stenaSailingTicket}
               selected
-              label={"Selected"}
             />
-            <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-              <SidebarMenuLink label={"Level 2.1"} onClick={onClick} />
-              <SidebarMenuLink label={"Level 2.2"} onClick={onClick} />
-              <SidebarMenuLink label={"Level 2.3"} onClick={onClick} selected />
+            <SidebarMenuLink
+              onClick={() => alert("Clicked Customers")}
+              label={"Statistics"}
+              leftIcon={stenaStatisticsLine}
+            />
+            <SidebarMenuHeading label={"Administration"} />
+            <SidebarMenuCollapsible
+              label={"Invoices"}
+              leftIcon={stenaBusinessInvoice}
+            >
+              <SidebarMenuLink
+                label={"No show & late handling"}
+                onClick={onClick}
+              />
+              <SidebarMenuLink label={"Late payment"} onClick={onClick} />
+              <SidebarMenuLink
+                label={"Archive (selected)"}
+                onClick={onClick}
+                selected
+              />
               <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
+              <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
+                <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
+                <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
+                <SidebarMenuCollapsible
+                  label={"Level 3.3"}
+                  leftIcon={faChartBar}
+                >
+                  <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
+                  <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
+                </SidebarMenuCollapsible>
+              </SidebarMenuCollapsible>
+            </SidebarMenuCollapsible>
+
+            <SidebarMenuCollapsible label={"No icon"}>
+              <SidebarMenuLink label={"Level 2"} onClick={onClick} />
             </SidebarMenuCollapsible>
 
             <SidebarMenuHeading label={"Support"} />
             <SidebarMenuLink
-              leftIcon={faBook}
-              label={"User manual"}
+              leftIcon={stenaBusinessClaim}
+              label={"Make a claim"}
               onClick={() => alert("Click on quick guide")}
             />
             <SidebarMenuLink
-              leftIcon={faPaperPlane}
-              label={"Contact"}
+              leftIcon={stenaStatusNoShow}
+              label={"No show, late handling"}
               onClick={() => alert("Click on contact")}
             />
           </SidebarMenu>
@@ -120,7 +154,11 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
           </Row>
         }
       >
-        <NavBarButton label={"Customers"} leftIcon={faUsers} selected />
+        <NavBarButton
+          label={"Customers"}
+          leftIcon={stenaUserMultiple}
+          selected
+        />
         <NavBarButton label={"Bookings"} />
         <NavBarButton label={"Events"} />
       </NavBar>

@@ -1,5 +1,15 @@
 import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
-import { Card, FlatButton, PrimaryButton, Tag } from "@stenajs-webui/elements";
+import {
+  Card,
+  FlatButton,
+  PrimaryButton,
+  stenaCalendar,
+  stenaClock,
+  stenaDetails,
+  stenaExclamationTriangle,
+  stenaSailingCargo,
+  Tag,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import { ClearFiltersButton } from "../components/ClearFiltersButton";
@@ -22,6 +32,7 @@ import { SimpleCheckboxListSection } from "../section-factories/boolean-record/c
 import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
 import { createChipsPropsForDateRange } from "../section-factories/date-range/DateRangeChips";
 import { createDateRangeSectionProps } from "../section-factories/date-range/DateRangePropsFactory";
+import { SearchFilterClearButton } from "../components/SearchFilterClearButton";
 
 export default {
   title: "filter/SearchFilter",
@@ -330,8 +341,6 @@ export const Demo = () => {
           minHeight={"56px"}
         >
           <Row alignItems={"center"}>
-            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
-            <Indent />
             <SearchFilterButton />
             <Indent num={0.5} />
             <SearchFilterChips>
@@ -366,12 +375,15 @@ export const Demo = () => {
           </Row>
         </Row>
       </Card>
-      <SearchFilterDrawer>
+      <SearchFilterDrawer headerContentRight={<SearchFilterClearButton />}>
         <DateRangeCalendarSection
+          label={"Date"}
+          leftIcon={stenaCalendar}
           contentRight={
             state.formModel.startDate &&
             state.formModel.endDate && (
               <Tag
+                size={"small"}
                 label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
               />
             )
@@ -384,6 +396,7 @@ export const Demo = () => {
           )}
         />
         <ChipMultiSelectSection
+          leftIcon={stenaSailingCargo}
           contentRight={
             selectedDivisions > 0 && (
               <Tag label={selectedDivisions.toString()} />
@@ -399,6 +412,7 @@ export const Demo = () => {
           }
         />
         <SimpleCheckboxListSection
+          leftIcon={stenaDetails}
           contentRight={
             selectedCategories > 0 && (
               <Tag label={selectedCategories.toString()} />
@@ -412,8 +426,12 @@ export const Demo = () => {
           }
         />
 
-        <ErrorSection sectionId={"error"} />
-        <SearchFilterSection sectionId={"loading"} loading />
+        <ErrorSection leftIcon={stenaExclamationTriangle} sectionId={"error"} />
+        <SearchFilterSection
+          leftIcon={stenaClock}
+          sectionId={"loading"}
+          loading
+        />
       </SearchFilterDrawer>
     </SearchFilterContext>
   );

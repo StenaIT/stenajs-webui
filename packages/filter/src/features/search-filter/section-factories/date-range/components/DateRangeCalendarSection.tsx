@@ -37,6 +37,7 @@ export interface DateRangeCalendarSectionProps<
     value: DateStringRange,
     options: SetDateOptions<TFormModel, TSectionKey>
   ) => void;
+  label?: string;
 }
 
 export interface SetDateOptions<TFormModel, TSectionKey extends string> {
@@ -51,9 +52,10 @@ export const DateRangeCalendarSection = <
   value,
   onValueChange,
   sectionId,
-  contentLeft,
   contentRight,
   disableContentPadding,
+  label,
+  leftIcon,
   ...dateRangeCalendarProps
 }: DateRangeCalendarSectionProps<TFormModel, TSectionKey>) => {
   const dispatch = useSearchFilterDispatch();
@@ -77,9 +79,10 @@ export const DateRangeCalendarSection = <
 
   return (
     <SearchFilterSection
+      label={label}
+      leftIcon={leftIcon}
       sectionId={sectionId}
       contentRight={contentRight}
-      contentLeft={contentLeft}
       disableContentPadding={disableContentPadding}
     >
       <Box flex={1} alignItems={"center"}>
