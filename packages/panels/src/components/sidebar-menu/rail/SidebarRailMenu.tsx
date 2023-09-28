@@ -20,7 +20,6 @@ export const SidebarRailMenu: React.FC<RailMenuProps> = ({
       position={"fixed"}
       left={0}
       top={0}
-      hideCloseButton
       variant={variant}
     >
       <NavBarSideMenuButton onClick={onClickMenuButton} />

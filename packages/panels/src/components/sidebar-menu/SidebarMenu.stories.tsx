@@ -1,12 +1,15 @@
 import { Box, Column } from "@stenajs-webui/core";
 import * as React from "react";
+import { faChartBar } from "@fortawesome/free-solid-svg-icons";
 import {
-  faBook,
-  faChartBar,
-  faPaperPlane,
-  faUserFriends,
-} from "@fortawesome/free-solid-svg-icons";
-import { Icon } from "@stenajs-webui/elements";
+  Icon,
+  stenaBusinessClaim,
+  stenaBusinessInvoice,
+  stenaCalendar,
+  stenaSailingTicket,
+  stenaStatisticsLine,
+  stenaStatusNoShow,
+} from "@stenajs-webui/elements";
 import { SidebarMenuHeading } from "./SidebarMenuHeading";
 import { SidebarMenu } from "./SidebarMenu";
 import { SidebarMenuLink } from "./SidebarMenuLink";
@@ -30,30 +33,38 @@ export const Overview = () => {
   return (
     <Column width={"250px"}>
       <SidebarMenu onCloseClick={() => alert("Close menu")}>
-        <SidebarMenuHeading label={"Product name"} />
+        <SidebarMenuHeading label={"Freight portal"} />
         <SidebarMenuLink
           onClick={() => alert("Clicked Customers")}
-          leftIcon={faUserFriends}
-          label={"Level 1.1"}
+          leftIcon={stenaCalendar}
+          label={"Manage"}
         />
         <SidebarMenuLink
           onClick={() => alert("Clicked Customers")}
-          label={"No icon"}
-        />
-        <SidebarMenuLink
-          onClick={() => alert("Clicked Customers")}
-          loading
-          label={"Spinner"}
-        />
-        <SidebarMenuLink
-          onClick={() => alert("Clicked Customers")}
+          label={"Book (selected)"}
+          leftIcon={stenaSailingTicket}
           selected
-          label={"Selected"}
         />
-        <SidebarMenuCollapsible label={"Level 1.2"} leftIcon={faChartBar}>
-          <SidebarMenuLink label={"Level 2.1"} onClick={onClick} />
-          <SidebarMenuLink label={"Level 2.2"} onClick={onClick} />
-          <SidebarMenuLink label={"Level 2.3"} onClick={onClick} selected />
+        <SidebarMenuLink
+          onClick={() => alert("Clicked Customers")}
+          label={"Statistics"}
+          leftIcon={stenaStatisticsLine}
+        />
+        <SidebarMenuHeading label={"Administration"} />
+        <SidebarMenuCollapsible
+          label={"Invoices"}
+          leftIcon={stenaBusinessInvoice}
+        >
+          <SidebarMenuLink
+            label={"No show & late handling"}
+            onClick={onClick}
+          />
+          <SidebarMenuLink label={"Late payment"} onClick={onClick} />
+          <SidebarMenuLink
+            label={"Archive (selected)"}
+            onClick={onClick}
+            selected
+          />
           <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
           <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
             <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
@@ -71,26 +82,15 @@ export const Overview = () => {
 
         <SidebarMenuHeading label={"Support"} />
         <SidebarMenuLink
-          leftIcon={faBook}
-          label={"User manual"}
+          leftIcon={stenaBusinessClaim}
+          label={"Make a claim"}
           onClick={() => alert("Click on quick guide")}
         />
         <SidebarMenuLink
-          leftIcon={faPaperPlane}
-          label={"Contact"}
+          leftIcon={stenaStatusNoShow}
+          label={"No show, late handling"}
           onClick={() => alert("Click on contact")}
         />
-
-        <Box>
-          <Box spacing={8}>
-            <Icon
-              icon={faPaperPlane}
-              color={"var(--swui-white)"}
-              size={50}
-              data-hover={true}
-            />
-          </Box>
-        </Box>
       </SidebarMenu>
     </Column>
   );
