@@ -7,7 +7,6 @@ import {
   NavBarSideMenuButton,
   SidebarMenuButtonProps,
 } from "./NavBarSideMenuButton";
-import { getNavbarHeight } from "./NavbarHeightStyleUtil";
 
 export type NavBarVariant = "compact" | "standard" | "relaxed";
 
@@ -31,17 +30,12 @@ export const NavBar: React.FC<NavBarProps> = ({
   children,
   right,
   center,
-  variant = "standard",
   onClickMenuButton,
 }) => {
   const currentFlex = center ? 1 : undefined;
-  const height = getNavbarHeight(variant);
   return (
     <Row
-      height={height}
-      minHeight={height}
       justifyContent={"space-between"}
-      style={{ ["--swui-nav-bar-height" as string]: height }}
       className={cx(styles.navBar, className)}
     >
       <Row

@@ -14,6 +14,7 @@ export const SidebarMenuCloseButtonRow: React.FC<
       alignItems={"center"}
       flex={1}
       indent={1}
+      minHeight={"48px"}
     >
       <FlatButton leftIcon={stenaTimes} onClick={onClick} variant={"danger"} />
       <StenaFlag className={styles.stenaFlag} />
