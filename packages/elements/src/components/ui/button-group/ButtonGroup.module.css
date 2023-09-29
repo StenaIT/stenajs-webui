@@ -4,6 +4,7 @@
   padding: 2px;
   gap: 2px;
   border: 2px solid var(--lhds-color-ui-300);
+  width: fit-content;
 
   border-radius: 12px;
 }
