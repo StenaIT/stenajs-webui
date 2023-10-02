@@ -17,9 +17,14 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   children,
 }) => {
   return (
-    <Box shadow={"box"} background={cssColor("--lhds-color-ui-50")}>
+    <Box shadow={"box"} background={cssColor("--lhds-color-ui-50")} gap={2}>
       <Box indent={3}>
-        {renderBreadCrumbs && <Row spacing={1.25}>{renderBreadCrumbs()}</Row>}
+        {renderBreadCrumbs && (
+          <Row spacing={1} alignItems={"center"}>
+            <Row width={"64px"} height={"16px"} />
+            {renderBreadCrumbs()}
+          </Row>
+        )}
         {renderPageHeading?.()}
         {renderTabs?.()}
       </Box>

@@ -9,13 +9,12 @@ import {
 } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { cssColor } from "@stenajs-webui/theme";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "../../icon/Icon";
 import { MenuButtonContent } from "./MenuButtonContent";
+import { stenaAngleDown, stenaAngleUp } from "../../../../icons/ui/IconsUi";
 
 export type MenuButtonVariant = "standard" | "danger";
 
@@ -80,8 +79,8 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
                   <Row>
                     <Indent />
                     <Icon
-                      icon={expanded ? faChevronUp : faChevronDown}
-                      size={12}
+                      icon={expanded ? stenaAngleUp : stenaAngleDown}
+                      size={18}
                       color={cssColor("--lhds-color-blue-600")}
                     />
                   </Row>

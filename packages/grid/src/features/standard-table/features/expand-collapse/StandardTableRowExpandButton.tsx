@@ -1,6 +1,8 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
-import { FlatButton } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  stenaAngleDown,
+  stenaAngleRight,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useMemo } from "react";
 import { useGridCell } from "../../../grid-cell/hooks/UseGridCell";
@@ -50,7 +52,7 @@ export const StandardTableRowExpandButton = function <TItem>({
       {!buttonDisabled && (
         <FlatButton
           size={"small"}
-          leftIcon={isExpanded ? faChevronDown : faChevronRight}
+          leftIcon={isExpanded ? stenaAngleDown : stenaAngleRight}
           onClick={toggleRowExpanded}
           {...requiredProps}
         />

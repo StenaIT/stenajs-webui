@@ -83,30 +83,20 @@ export function CalendarWithMonthSwitcher<T>({
               <Row alignItems={"center"}>
                 {!hideYearPagination && (
                   <FlatButton
-                    size={"small"}
                     onClick={prevYear}
                     leftIcon={stenaAngleLeftDouble}
                   />
                 )}
                 <Space />
-                <FlatButton
-                  size={"small"}
-                  onClick={prevMonth}
-                  leftIcon={stenaAngleLeft}
-                />
+                <FlatButton onClick={prevMonth} leftIcon={stenaAngleLeft} />
               </Row>
             }
             headerRightContent={
               <Row alignItems={"center"}>
-                <FlatButton
-                  size={"small"}
-                  onClick={nextMonth}
-                  leftIcon={stenaAngleRight}
-                />
+                <FlatButton onClick={nextMonth} leftIcon={stenaAngleRight} />
                 <Space />
                 {!hideYearPagination && (
                   <FlatButton
-                    size={"small"}
                     onClick={nextYear}
                     leftIcon={stenaAngleRightDouble}
                   />

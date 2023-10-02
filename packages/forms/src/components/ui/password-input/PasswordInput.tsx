@@ -2,8 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
-import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
-import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
+import { stenaEyeHide, stenaEyeShow } from "@stenajs-webui/elements";
 
 export interface PasswordInputProps extends TextInputProps {
   visibleIcon?: IconDefinition;
@@ -11,8 +10,8 @@ export interface PasswordInputProps extends TextInputProps {
 }
 
 export const PasswordInput: React.FC<PasswordInputProps> = ({
-  hiddenIcon = faEye,
-  visibleIcon = faEyeSlash,
+  hiddenIcon = stenaEyeShow,
+  visibleIcon = stenaEyeHide,
   ...props
 }) => {
   const [isPassword, setIsPassword] = useState(true);

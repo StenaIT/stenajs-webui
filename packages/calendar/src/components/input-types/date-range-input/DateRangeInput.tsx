@@ -12,8 +12,11 @@ import {
   defaultCalendarTheme,
 } from "../../calendar/CalendarTheme";
 import { useDateRangeInput } from "./hooks/UseDateRangeInput";
-import { Icon, stenaCalendar } from "@stenajs-webui/elements";
-import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons/faLongArrowAltRight";
+import {
+  Icon,
+  stenaArrowWideRight,
+  stenaCalendar,
+} from "@stenajs-webui/elements";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
 import { Popover } from "@stenajs-webui/tooltip";
@@ -154,7 +157,7 @@ export function DateRangeInput<T>({
         />
         <Space />
         <Icon
-          icon={faLongArrowAltRight}
+          icon={stenaArrowWideRight}
           color={cssColor("--lhds-color-ui-500")}
           size={14}
         />

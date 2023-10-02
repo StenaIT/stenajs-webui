@@ -1,7 +1,9 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Indent, Row, Space, Text } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import {
+  Icon,
+  stenaArrowRight,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import { TextInput } from "@stenajs-webui/forms";
 import {
   EntityCrudStatusRedux,
@@ -12,8 +14,8 @@ import * as React from "react";
 import { KeyboardEventHandler, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  tableBorder,
   defaultTableRowHeight,
+  tableBorder,
 } from "../../../../config/TableConfig";
 import {
   useGridCell,
@@ -176,7 +178,7 @@ export const EditableTextCellWithCrudAndModified =
                 {modifiedField?.newValue !== undefined && (
                   <>
                     <Indent>
-                      <Icon icon={faArrowRight} size={12} />
+                      <Icon icon={stenaArrowRight} size={12} />
                     </Indent>
                     <Text
                       color={"var(--primary-action-color)"}
@@ -194,7 +196,7 @@ export const EditableTextCellWithCrudAndModified =
                 modifiedField?.newValue === "" ? (
                   <Tooltip label={warningOnEmpty} zIndex={100}>
                     <Icon
-                      icon={faExclamationTriangle}
+                      icon={stenaExclamationTriangle}
                       color={"var(--ui-alert1)"}
                       size={14}
                     />
