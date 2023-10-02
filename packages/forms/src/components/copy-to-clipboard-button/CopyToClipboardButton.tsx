@@ -1,6 +1,9 @@
-import { faCopy } from "@fortawesome/free-regular-svg-icons/faCopy";
 import { useTimeoutState } from "@stenajs-webui/core";
-import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  FlatButtonProps,
+  stenaCopy,
+} from "@stenajs-webui/elements";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useCallback } from "react";
@@ -30,7 +33,7 @@ export function CopyToClipboardButton({
       <FlatButton
         size={size}
         onClick={onClick}
-        leftIcon={faCopy}
+        leftIcon={stenaCopy}
         disabled={value == null}
       />
     </Tooltip>

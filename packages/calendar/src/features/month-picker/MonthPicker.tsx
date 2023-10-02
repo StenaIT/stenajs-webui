@@ -22,9 +22,9 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   locale = enGB,
 }) => {
   return (
-    <Column>
+    <Column gap={1}>
       {monthMatrix.map((monthRow) => (
-        <Row key={monthRow[0]}>
+        <Row key={monthRow[0]} gap={1}>
           {monthRow.map((month) => (
             <MonthPickerCell
               key={month}

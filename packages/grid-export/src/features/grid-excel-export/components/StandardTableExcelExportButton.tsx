@@ -2,8 +2,11 @@ import * as React from "react";
 import { useCallback } from "react";
 import { downloadExcelForStandardTable } from "../util/ExcelDownloader";
 import { StandardTableProps } from "@stenajs-webui/grid";
-import { FlatButton, FlatButtonProps } from "@stenajs-webui/elements";
-import { faFileDownload } from "@fortawesome/free-solid-svg-icons/faFileDownload";
+import {
+  FlatButton,
+  FlatButtonProps,
+  stenaDownload,
+} from "@stenajs-webui/elements";
 import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 interface StandardTableExcelExportButtonProps<
@@ -45,7 +48,7 @@ export const StandardTableExcelExportButton =
     return (
       <FlatButton
         size={size}
-        leftIcon={faFileDownload}
+        leftIcon={stenaDownload}
         onClick={onClickExportExcel}
         disabled={!items || !items.length}
       />

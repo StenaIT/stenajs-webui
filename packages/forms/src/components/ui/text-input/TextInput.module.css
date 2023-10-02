@@ -10,36 +10,37 @@
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
   --swui-textinput-placeholder-color: var(--swui-field-placeholder-color);
   --swui-textinput-animation-time: var(--swui-animation-time-medium);
-  --swui-textinput-icon-color: var(--swui-field-border-color-disabled);
+  --swui-textinput-icon-color: var(--swui-field-icon-color);
   --swui-textinput-icon-hover-color: var(--swui-primary-action-color);
   --swui-textinput-icon-size: var(--swui-field-icon-size);
 
-  /* States */
+  /* Variants */
   --swui-textinput-icon-color-success: var(--swui-state-success-color);
 
   --swui-textinput-bg-loading: var(--swui-state-loading-light-color);
   --swui-textinput-border-color-loading: var(--swui-state-loading-color);
 
   --swui-textinput-bg-modified: var(--swui-state-modified-light-color);
-  --swui-textinput-border-color-modified: var(--swui-state-modified-color);
+  --swui-textinput-border-color-modified: var(
+    --swui-state-modified-light-color
+  );
 
   --swui-textinput-bg-warning: var(--swui-state-alert-light-color);
-  --swui-textinput-border-color-warning: var(--swui-state-alert-color);
+  --swui-textinput-border-color-warning: var(--swui-state-alert-light-color);
 
   --swui-textinput-bg-error: var(--swui-state-error-light-color);
-  --swui-textinput-border-color-error: var(--swui-state-error-color);
+  --swui-textinput-border-color-error: var(--swui-state-error-light-color);
+
+  --swui-textinput-bg-color-disabled: var(--swui-field-bg-disabled);
+  --swui-textinput-border-color-disabled: var(--swui-field-bg-disabled);
 
   /* Background */
   --swui-textinput-bg-color: var(--swui-field-bg-enabled);
-  --swui-textinput-bg-color-disabled: var(--swui-field-bg-disabled);
 
   /* Border */
   --swui-textinput-border-radius: var(--swui-field-border-radius);
   --swui-textinput-border-color: var(--swui-field-border-color);
   --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
-  --swui-textinput-border-color-disabled: var(
-    --swui-field-border-color-disabled
-  );
 
   /* Shadow */
   --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);

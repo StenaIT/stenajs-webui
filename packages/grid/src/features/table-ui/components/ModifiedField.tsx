@@ -1,6 +1,9 @@
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Indent, Space, Text } from "@stenajs-webui/core";
-import { Icon, stenaArrowRight } from "@stenajs-webui/elements";
+import {
+  Icon,
+  stenaArrowRight,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import { EntityCrudStatus, ModifiedFieldItemState } from "@stenajs-webui/redux";
 import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
@@ -54,7 +57,7 @@ export const ModifiedField: React.FC<Props> = ({
       {showEmptyFieldWarning ? (
         <Tooltip label={warningOnEmpty!} zIndex={100}>
           <Icon
-            icon={faExclamationTriangle}
+            icon={stenaExclamationTriangle}
             color={cssColor("--lhds-color-orange-600")}
             size={14}
           />

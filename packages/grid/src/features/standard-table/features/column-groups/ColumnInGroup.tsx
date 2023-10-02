@@ -1,6 +1,9 @@
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
 import { Heading, Indent, Row, Space } from "@stenajs-webui/core";
-import { Icon, InputSpinner } from "@stenajs-webui/elements";
+import {
+  Icon,
+  InputSpinner,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
@@ -113,7 +116,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
                 appendTo={document.body}
               >
                 <Icon
-                  icon={faExclamationTriangle}
+                  icon={stenaExclamationTriangle}
                   color={cssColor("--lhds-color-red-500")}
                   size={14}
                 />

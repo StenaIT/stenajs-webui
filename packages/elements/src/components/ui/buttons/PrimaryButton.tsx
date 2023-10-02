@@ -56,6 +56,8 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
         (loading && loadingLabel)
     );
 
+    const labelOnly = hasLabel && !left && !leftIcon && !right && !rightIcon;
+
     return (
       <Button
         ref={ref}
@@ -65,6 +67,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           styles[size],
           styles[variant],
           !hasLabel && styles.iconButton,
+          labelOnly && styles.labelOnly,
           className
         )}
         disabled={disabled}

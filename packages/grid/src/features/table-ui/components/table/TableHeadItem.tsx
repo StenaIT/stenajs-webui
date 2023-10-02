@@ -1,9 +1,9 @@
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { Box, BoxProps, Heading, Row, Space } from "@stenajs-webui/core";
 import {
   FlatButton,
   Icon,
   InputSpinner,
+  stenaDotsVertical,
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
@@ -149,7 +149,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
               variant={"outlined"}
               arrow={false}
             >
-              <FlatButton leftIcon={faEllipsisV} size={"small"} />
+              <FlatButton leftIcon={stenaDotsVertical} size={"small"} />
             </Popover>
           ) : null}
         </Row>

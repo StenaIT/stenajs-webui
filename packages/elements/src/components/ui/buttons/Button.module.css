@@ -6,8 +6,11 @@
   --swui-button-text-color: var(--swui-white);
   --swui-button-text-decoration: none;
   --swui-button-letter-spacing: var(--swui-field-letter-spacing);
-  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 3px);
-  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 3 - 1px);
+  --swui-button-padding-vertical: calc(var(--swui-metrics-spacing) - 1px);
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
+  --swui-button-padding-horizontal-label-only: calc(
+    var(--swui-metrics-spacing) * 3 - 1px
+  );
 
   /* Text */
   --swui-button-text-color-focus: var(--swui-button-text-color);
@@ -154,6 +157,11 @@
   align-items: center;
   justify-content: center;
 
+  &.labelOnly {
+    padding: var(--swui-button-padding-vertical)
+      var(--swui-button-padding-horizontal-label-only);
+  }
+
   &.iconButton {
     --current-icon-height: var(--swui-button-icon-height-medium-icon-only);
 
@@ -193,6 +201,9 @@
     --current-line-height: 1.6rem;
     --swui-button-padding-vertical: calc(var(--swui-metrics-space) / 2 - 1px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 2 - 1px
+    );
     --current-text-size: 1.2rem;
     --current-icon-height: var(--swui-button-icon-height-small);
 
@@ -203,8 +214,11 @@
 
   &.large {
     --current-line-height: 2.4rem;
-    --swui-button-padding-vertical: calc(var(--swui-metrics-space) * 2 - 4px);
+    --swui-button-padding-vertical: calc(var(--swui-metrics-space) * 2 - 5px);
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 3 - 1px
+    );
     --current-text-size: 1.8rem;
     --current-icon-height: var(--swui-button-icon-height-large);
 
@@ -216,6 +230,9 @@
   &.larger {
     --swui-button-padding-vertical: 24px;
     --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 6 - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 6 - 1px
+    );
 
     --current-text-size: 2rem;
     --current-line-height: 2.4rem;

@@ -1,8 +1,6 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { Clickable, ClickableProps, DivProps, Text } from "@stenajs-webui/core";
-import { Icon } from "@stenajs-webui/elements";
+import { Icon, stenaAngleDown, stenaAngleUp } from "@stenajs-webui/elements";
 import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
@@ -53,9 +51,9 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
       disabled = false,
       unmountOnCollapse = false,
       mountOnEnter = true,
-      icon = faChevronUp,
-      iconCollapsed = faChevronDown,
-      iconSize = 8,
+      icon = stenaAngleUp,
+      iconCollapsed = stenaAngleDown,
+      iconSize = 16,
       children,
       autoFocus = false,
       ...divProps

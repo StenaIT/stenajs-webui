@@ -25,6 +25,7 @@ export * from "./components/ui/button-links/SecondaryButtonLink";
 export * from "./components/ui/button-group/ButtonGroup";
 export * from "./components/ui/up-down-buttons/UpDownButtons";
 export * from "./components/ui/icon/Icon";
+export * from "./components/ui/icon/CircledIcon";
 export * from "./components/ui/card/Card";
 export * from "./components/ui/card/CardHeader";
 export * from "./components/ui/card/CardBody";

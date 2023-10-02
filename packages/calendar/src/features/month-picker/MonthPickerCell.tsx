@@ -24,7 +24,7 @@ export const MonthPickerCell: React.FC<Props> = ({
   }, [locale, month]);
 
   return (
-    <Row width={"64px"} justifyContent={"center"} spacing={0.5} indent={0.5}>
+    <Row justifyContent={"center"}>
       {value === month ? (
         <PrimaryButton
           label={label}

@@ -1,11 +1,10 @@
 import * as React from "react";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
 import { Box, Space, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
-import { Badge } from "@stenajs-webui/elements";
+import { Badge, stenaAnimals } from "@stenajs-webui/elements";
 
 export default {
   title: "forms/TextInput/TextInput",
@@ -44,15 +43,15 @@ export const Overview = () => (
       </React.Fragment>
     ))}
     <Text>Icon left</Text>
-    <TextInput value={"Some text"} iconLeft={faCoffee} />
+    <TextInput value={"Some text"} iconLeft={stenaAnimals} />
     <Space />
     <Text>Icon right</Text>
-    <TextInput value={"Some text"} iconRight={faCoffee} />
+    <TextInput value={"Some text"} iconRight={stenaAnimals} />
     <Space />
     <Text>Icon clickable</Text>
     <TextInput
       value={"Some text"}
-      iconLeft={faCoffee}
+      iconLeft={stenaAnimals}
       onClickLeft={() => alert("click")}
     />
     <Space />
@@ -77,7 +76,7 @@ export const Standard = () => (
 );
 
 export const WithIconLeft = () => (
-  <TextInput value={"some entered text"} iconLeft={faCoffee} />
+  <TextInput value={"some entered text"} iconLeft={stenaAnimals} />
 );
 
 export const WithIconRight = () => (
@@ -176,7 +175,7 @@ export const DisabledWithContent = () => (
       disabled={true}
       value={"some entered text"}
       contentRight={<Text>ms</Text>}
-      iconLeft={faCoffee}
+      iconLeft={stenaAnimals}
     />
   </Box>
 );

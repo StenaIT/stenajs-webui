@@ -1,12 +1,12 @@
 import { Box, Column } from "@stenajs-webui/core";
 import * as React from "react";
-import { faChartBar } from "@fortawesome/free-solid-svg-icons";
 import {
   Icon,
   stenaBusinessClaim,
   stenaBusinessInvoice,
   stenaCalendar,
   stenaSailingTicket,
+  stenaStatisticsBar,
   stenaStatisticsLine,
   stenaStatusNoShow,
 } from "@stenajs-webui/elements";
@@ -66,10 +66,16 @@ export const Overview = () => {
             selected
           />
           <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
-          <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
+          <SidebarMenuCollapsible
+            label={"Level 2.5"}
+            leftIcon={stenaStatisticsBar}
+          >
             <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
             <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
-            <SidebarMenuCollapsible label={"Level 3.3"} leftIcon={faChartBar}>
+            <SidebarMenuCollapsible
+              label={"Level 3.3"}
+              leftIcon={stenaStatisticsBar}
+            >
               <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
               <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
             </SidebarMenuCollapsible>
