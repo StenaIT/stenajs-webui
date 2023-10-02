@@ -1,7 +1,7 @@
 .heading {
   --swui-heading-text-color: var(--swui-text-primary-color);
   --swui-heading-font-family: var(--swui-font-primary);
-  --swui-heading-font-weight: var(--swui-font-weight-text);
+  --swui-heading-font-weight: var(--swui-font-weight-text-bold);
 
   font-size: var(--swui-heading-font-size);
   color: var(--swui-heading-text-color);

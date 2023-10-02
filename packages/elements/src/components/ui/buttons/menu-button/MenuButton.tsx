@@ -25,6 +25,7 @@ export interface MenuButtonProps extends ButtonElementProps {
   expandable?: boolean;
   selected?: boolean;
   leftIcon?: IconDefinition;
+  right?: ReactNode;
   variant?: MenuButtonVariant;
   children?: ReactNode;
 }
@@ -41,6 +42,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       children,
       disabled,
       variant = "standard",
+      right,
       ...buttonProps
     },
     ref
@@ -53,7 +55,6 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
           width={"100%"}
           borderRadius={"99rem"}
           overflow={"hidden"}
-          justifyContent={"space-between"}
         >
           <button
             className={cx(
@@ -67,18 +68,25 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
             ref={ref}
             {...buttonProps}
           >
-            <Row justifyContent={"space-between"} indent={2}>
+            <Row
+              justifyContent={"space-between"}
+              alignItems={"center"}
+              indent={2}
+            >
               <MenuButtonContent label={label} leftIcon={leftIcon} />
-              {expandable && (
-                <Row>
-                  <Indent />
-                  <Icon
-                    icon={expanded ? faChevronUp : faChevronDown}
-                    size={12}
-                    color={cssColor("--lhds-color-blue-600")}
-                  />
-                </Row>
-              )}
+              <Row gap={1} alignItems={"center"}>
+                {right && <Row alignItems={"center"}>{right}</Row>}
+                {expandable && (
+                  <Row>
+                    <Indent />
+                    <Icon
+                      icon={expanded ? faChevronUp : faChevronDown}
+                      size={12}
+                      color={cssColor("--lhds-color-blue-600")}
+                    />
+                  </Row>
+                )}
+              </Row>
             </Row>
           </button>
         </Box>

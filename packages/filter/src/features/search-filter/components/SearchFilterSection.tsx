@@ -11,16 +11,17 @@ import {
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export interface SearchFilterSectionProps<TSectionKey extends string> {
   sectionId: TSectionKey;
-  contentLeft?: React.ReactNode;
+  label?: string;
+  leftIcon?: IconDefinition;
   contentRight?: React.ReactNode;
   disableContentPadding?: boolean;
   loading?: boolean;
   error?: string;
   onRetry?: () => void;
-  label?: string;
 }
 
 export const SearchFilterSection = function SearchFilterSection<
@@ -33,6 +34,8 @@ export const SearchFilterSection = function SearchFilterSection<
   onRetry,
   disableContentPadding,
   children,
+  leftIcon,
+  contentRight,
 }: PropsWithChildren<SearchFilterSectionProps<TSectionKey>>) {
   const state = useSearchFilterState();
   const dispatch = useSearchFilterDispatch();
@@ -50,10 +53,12 @@ export const SearchFilterSection = function SearchFilterSection<
     <>
       <MenuButton
         label={activeLabel}
+        leftIcon={leftIcon}
         expandable
         expanded={expanded}
         selected={expanded}
         onClick={onClickLabel}
+        right={contentRight}
       >
         {loading ? (
           <Row spacing justifyContent={"center"} flex={1}>

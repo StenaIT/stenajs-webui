@@ -1,7 +1,8 @@
 :root {
   --core-blue: #004a93;
   --modern-red: rgb(234, 20, 61);
-  --snackskal: rgb(247, 215, 209);
+  --snackskal: #fcb4cd;
+  --snackskal-light: #fce1db;
   --sjobod: rgb(176, 15, 46);
   --tang: rgb(117, 20, 34);
   --modern-blue: rgb(35, 120, 205);
@@ -24,6 +25,7 @@
   --silver-light: #c9c9c9;
   --silver-lighter: #f4f4f4;
   --silver-dark: #6b6b6b;
+  --silver-ui: #ebebeb;
   --efp-premium: #e7ae2f;
   --efp-flexi: var(--hav);
   --efp-economy: var(--sjobod);

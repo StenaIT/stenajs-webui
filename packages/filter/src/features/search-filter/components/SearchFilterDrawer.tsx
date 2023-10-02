@@ -7,19 +7,16 @@ import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchFilterDrawerProps
   extends Omit<DrawerProps, "isOpen" | "onRequestClose"> {
   header?: string;
-  headerIcon?: IconDefinition;
   headerContentRight?: ReactNode;
 }
 
 export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   children,
   header,
-  headerIcon,
   headerContentRight,
   ...drawerProps
 }) => {
@@ -34,21 +31,18 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   }, [actions, dispatch]);
 
   return (
-    <Drawer
-      background={cssColor("--lhds-color-ui-50")}
-      width={"370px"}
-      isOpen={open}
-      onRequestClose={closeDrawer}
-      {...drawerProps}
-    >
-      <Column height={"100%"}>
+    <Drawer isOpen={open} onRequestClose={closeDrawer} {...drawerProps}>
+      <Column
+        height={"100%"}
+        borderRadius={"var(--swui-border-radius)"}
+        background={cssColor("--lhds-color-ui-50")}
+      >
         <SearchFilterPanelHeader
           onRequestClose={closeDrawer}
           header={header}
-          headerIcon={headerIcon}
           contentRight={headerContentRight}
         />
-        <Box spacing indent>
+        <Box spacing={1} indent={1} gap={1}>
           {children}
         </Box>
       </Column>

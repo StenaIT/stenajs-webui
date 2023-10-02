@@ -17,10 +17,10 @@ export const MenuButtonContent: React.FC<MenuButtonContentProps> = ({
     <Row>
       {leftIcon && (
         <>
-          <Box alignItems={"center"} justifyContent={"center"} width={"16px"}>
+          <Box alignItems={"center"} justifyContent={"center"} width={"20px"}>
             <Icon
               icon={leftIcon}
-              size={16}
+              size={20}
               color={"var(--current-text-color)"}
               data-hover={true}
             />

@@ -35,7 +35,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
         borderRadius={"8px"}
       >
         {top}
-        <Column>{children}</Column>
+        <Column gap={1}>{children}</Column>
       </Column>
     </FocusScope>
   );
