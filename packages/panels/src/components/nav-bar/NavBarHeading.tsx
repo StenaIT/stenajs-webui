@@ -4,5 +4,7 @@ import { Heading, HeadingProps } from "@stenajs-webui/core";
 interface NavBarHeadingProps extends HeadingProps {}
 
 export const NavBarHeading: React.FC<NavBarHeadingProps> = (headingProps) => {
-  return <Heading whiteSpace={"nowrap"} variant={"h4"} {...headingProps} />;
+  return (
+    <Heading whiteSpace={"nowrap"} variant={"h4"} as={"h1"} {...headingProps} />
+  );
 };

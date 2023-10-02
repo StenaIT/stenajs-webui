@@ -18,18 +18,14 @@ interface PageHeadingProps {
 export const PageHeading: React.FC<PageHeadingProps> = ({
   icon,
   heading,
-  headingLevel = "h1",
+  headingLevel = "h2",
   contentLeft,
   contentRight,
 }) => (
   <Row alignItems={"center"} gap={2} height={"64px"}>
     <Row alignItems={"center"}>
       <Row width={"64px"} alignItems={"center"}>
-        {icon && (
-          <>
-            <CircledIcon icon={icon} />
-          </>
-        )}
+        {icon && <CircledIcon icon={icon} />}
       </Row>
       <Heading variant={"h3"} as={headingLevel}>
         {heading}
