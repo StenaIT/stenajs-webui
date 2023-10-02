@@ -11,7 +11,7 @@
   );
   /* Background */
   --swui-checkbox-unchecked-bg-color: var(--swui-white);
-  --swui-checkbox-checked-bg-color: var(--swui-primary-action-color);
+  --swui-checkbox-checked-bg-color: var(--lhds-color-blue-500);
   --swui-checkbox-disabled-bg-color: var(--swui-field-bg-disabled);
   --swui-checkbox-disabled-checked-bg-color: var(--swui-field-bg-disabled);
 

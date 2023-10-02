@@ -1,7 +1,9 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";
 import { Row } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  stenaAngleDown,
+  stenaAngleRight,
+} from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
 import { CSSProperties } from "react";
@@ -123,7 +125,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             {showHeaderExpandCollapse && (
               <FlatButton
                 size={"small"}
-                leftIcon={allItemsAreExpanded ? faChevronDown : faChevronRight}
+                leftIcon={
+                  allItemsAreExpanded ? stenaAngleDown : stenaAngleRight
+                }
                 onClick={toggleExpanded}
               />
             )}

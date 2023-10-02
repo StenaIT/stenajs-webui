@@ -47,17 +47,9 @@
     --swui-nav-bar-notification-button-background-color-active
   );
 
-  --swui-button-border-radius: 16px;
-  --swui-button-border-radius-icon-only: 16px;
   --swui-nav-bar-notification-shake-count: 3;
 
   transition: 0.5s width;
-
-  width: 32px;
-
-  &.hasCount {
-    width: 56px;
-  }
 
   &.unread {
     --swui-flat-button-background-color: var(

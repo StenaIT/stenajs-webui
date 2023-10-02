@@ -3,11 +3,11 @@ import { MenuButtonLink } from "./MenuButtonLink";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { Column, Text, useBoolean } from "@stenajs-webui/core";
 import * as React from "react";
-import {
-  faChartBar,
-  faExternalLinkAlt,
-} from "@fortawesome/free-solid-svg-icons";
 import cx from "classnames";
+import {
+  stenaExternalLink,
+  stenaStatisticsBar,
+} from "../../../../icons/ui/IconsUi";
 
 export default {
   title: "elements/MenuButton",
@@ -23,7 +23,7 @@ export const Overview = () => {
     <Column width={"230px"} gap>
       <MenuButton label={"Just a button"} />
 
-      <MenuButton label={"I have icon"} leftIcon={faChartBar} />
+      <MenuButton label={"I have icon"} leftIcon={stenaStatisticsBar} />
 
       <MenuButton label={"I am selected"} selected />
 
@@ -35,7 +35,7 @@ export const Overview = () => {
         label={"Link to google"}
         href={"https://www.google.com"}
         target={"_blank"}
-        leftIcon={faExternalLinkAlt}
+        leftIcon={stenaExternalLink}
       />
 
       <MenuButtonLink
@@ -43,14 +43,14 @@ export const Overview = () => {
         href={"https://www.google.com"}
         target={"_blank"}
         selected
-        leftIcon={faExternalLinkAlt}
+        leftIcon={stenaExternalLink}
       />
 
       <MenuButtonLink
         label={"I am custom link"}
         href={"https://www.google.com"}
         target={"_blank"}
-        leftIcon={faExternalLinkAlt}
+        leftIcon={stenaExternalLink}
         renderLink={({ className, children, ...anchorProps }) => (
           <a
             {...anchorProps}
@@ -66,7 +66,7 @@ export const Overview = () => {
         label={"I am custom selected"}
         href={"https://www.google.com"}
         target={"_blank"}
-        leftIcon={faExternalLinkAlt}
+        leftIcon={stenaExternalLink}
         renderLink={(
           { className, children, ...anchorProps },
           activeClassName

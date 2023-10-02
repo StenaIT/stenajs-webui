@@ -4,9 +4,11 @@ import styles from "./TextInput.module.css";
 import cx from "classnames";
 import { TextInputProps } from "./TextInput";
 import { TextInputIcon } from "./TextInputIcon";
-import { stenaCheck } from "@stenajs-webui/elements";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { InputSpinner } from "@stenajs-webui/elements";
+import {
+  InputSpinner,
+  stenaCheck,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import { Row } from "@stenajs-webui/core";
 
 export interface TextInputBoxProps
@@ -49,7 +51,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
     variant === "success"
       ? stenaCheck
       : variant === "warning" || variant === "error"
-      ? faExclamationTriangle
+      ? stenaExclamationTriangle
       : iconRight;
 
   const currentContentRight =

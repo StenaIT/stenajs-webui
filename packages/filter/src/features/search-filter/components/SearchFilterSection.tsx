@@ -11,7 +11,7 @@ import {
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface SearchFilterSectionProps<TSectionKey extends string> {
   sectionId: TSectionKey;

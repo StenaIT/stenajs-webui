@@ -1,9 +1,8 @@
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons/faCaretDown";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons/faCaretUp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Column, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import styles from "./UpDownButtons.module.css";
+import { stenaAngleDown, stenaAngleUp } from "../../../icons/ui/IconsUi";
+import { Icon } from "../icon/Icon";
 
 export interface UpDownButtonsProps {
   onClickUp?: () => void;
@@ -21,9 +20,9 @@ export const UpDownButtons: React.FC<UpDownButtonsProps> = ({
   <Column className={styles.upDownButtons}>
     <button onClick={onClickUp} className={styles.button} disabled={disabled}>
       <Row justifyContent={"center"} alignItems={"center"}>
-        <FontAwesomeIcon
-          icon={faCaretUp}
-          size={"sm"}
+        <Icon
+          icon={stenaAngleUp}
+          size={16}
           color={
             disabled ? "var(--swui-textinput-text-color-disabled)" : iconColor
           }
@@ -32,9 +31,9 @@ export const UpDownButtons: React.FC<UpDownButtonsProps> = ({
     </button>
     <button onClick={onClickDown} className={styles.button} disabled={disabled}>
       <Row justifyContent={"center"} alignItems={"center"}>
-        <FontAwesomeIcon
-          icon={faCaretDown}
-          size={"sm"}
+        <Icon
+          icon={stenaAngleDown}
+          size={16}
           color={
             disabled ? "var(--swui-textinput-text-color-disabled)" : iconColor
           }

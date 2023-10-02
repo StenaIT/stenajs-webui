@@ -79,7 +79,7 @@
   --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
-  --swui-field-border-radius: 8px;
+  --swui-field-border-radius: 4px;
   --swui-field-icon-color: var(--swui-text-primary-color);
   --swui-field-icon-size: 13px;
   --swui-field-indicator-active-color: var(--swui-white);

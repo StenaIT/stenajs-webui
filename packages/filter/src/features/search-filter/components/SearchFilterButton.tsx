@@ -3,7 +3,7 @@ import * as React from "react";
 import { useCallback } from "react";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface SearchFilterDrawerButtonProps {
   label?: string;

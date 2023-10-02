@@ -1,10 +1,13 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { Heading, HeadingVariant, Row } from "@stenajs-webui/core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { CircledIcon } from "@stenajs-webui/elements";
 
 export type PageHeadingVariant = "compact" | "standard" | "relaxed";
 
 interface PageHeadingProps {
+  icon?: IconDefinition;
   contentLeft?: ReactNode;
   contentRight?: ReactNode;
   heading: string;
@@ -12,23 +15,26 @@ interface PageHeadingProps {
   variant?: PageHeadingVariant;
 }
 
-const variantToSpacing: Record<PageHeadingVariant, number> = {
-  compact: 1,
-  standard: 1.5,
-  relaxed: 2,
-};
-
 export const PageHeading: React.FC<PageHeadingProps> = ({
+  icon,
   heading,
   headingLevel = "h1",
-  variant = "standard",
   contentLeft,
   contentRight,
 }) => (
-  <Row spacing={variantToSpacing[variant]} alignItems={"center"} gap={2}>
-    <Heading variant={"h3"} as={headingLevel}>
-      {heading}
-    </Heading>
+  <Row alignItems={"center"} gap={2} height={"64px"}>
+    <Row alignItems={"center"}>
+      <Row width={"64px"} alignItems={"center"}>
+        {icon && (
+          <>
+            <CircledIcon icon={icon} />
+          </>
+        )}
+      </Row>
+      <Heading variant={"h3"} as={headingLevel}>
+        {heading}
+      </Heading>
+    </Row>
     <Row alignItems={"center"}>{contentLeft}</Row>
     <Row style={{ marginLeft: "auto" }} alignItems={"center"}>
       {contentRight}

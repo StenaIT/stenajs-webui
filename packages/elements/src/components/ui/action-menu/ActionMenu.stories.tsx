@@ -1,4 +1,3 @@
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
 import { useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import { action } from "@storybook/addon-actions";
 import { ActionMenuItem } from "./ActionMenuItem";
@@ -144,7 +143,7 @@ export const Standard = () => (
 );
 
 export const Outlined = () => (
-  <ActionMenu width={200}>
+  <ActionMenu width={220}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
@@ -201,7 +200,7 @@ export const AsyncItem = () => {
   };
 
   return (
-    <ActionMenu width={200}>
+    <ActionMenu width={220}>
       <ActionMenuItem
         id={"action-menu-item-open"}
         label={"Open"}
@@ -209,7 +208,7 @@ export const AsyncItem = () => {
       />
       <ActionMenuItem
         label={saved ? "Saved" : loading ? "Saving..." : "Save"}
-        leftIcon={faSave}
+        leftIcon={stenaSave}
         onClick={start}
       />
       <ActionMenuItem
@@ -220,7 +219,7 @@ export const AsyncItem = () => {
             ? "Saving with danger..."
             : "Save dangerously"
         }
-        leftIcon={isDangerOn ? faSave : faSadCry}
+        leftIcon={isDangerOn ? stenaSave : faSadCry}
         onClick={startDanger}
         variant={"danger"}
         disabled={!isDangerOn}
@@ -240,7 +239,7 @@ export const AsyncItem = () => {
             ? "Saving with success..."
             : "Save successfully"
         }
-        leftIcon={isSuccessOn ? faSave : faSadCry}
+        leftIcon={isSuccessOn ? stenaSave : faSadCry}
         onClick={startSuccess}
         disabled={!isSuccessOn}
       />

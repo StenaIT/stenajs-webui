@@ -8,6 +8,7 @@ import {
   PrimaryButton,
   SecondaryButton,
   stenaSliders,
+  stenaUser,
   Tab,
   TabMenu,
   Tag,
@@ -19,6 +20,9 @@ import { TextInput } from "@stenajs-webui/forms";
 import { NavBar } from "../nav-bar/NavBar";
 import { cssColor } from "@stenajs-webui/theme";
 import { PageHeaderRow } from "./PageHeaderRow";
+import { NavBarHeading } from "../nav-bar/NavBarHeading";
+import { NavBarButton } from "../nav-bar/NavBarButton";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export default {
   title: "panels/PageHeader",
@@ -28,59 +32,76 @@ export default {
   component: PageHeader,
 };
 
-export const Demo = () => {
+const Base: React.FC<{ icon?: IconDefinition }> = ({ icon }) => {
   const [tabId, setTabId] = useState(0);
   return (
-    <PageHeader
-      renderBreadCrumbs={() => (
-        <BreadCrumbs>
-          <Crumb label={"Home"} />
-          <Crumb label={"Customer"} />
-          <Crumb label={"Booking"} />
-        </BreadCrumbs>
-      )}
-      renderPageHeading={() => (
-        <PageHeading
-          heading={"Page Header"}
-          contentLeft={<Tag label={"56"} />}
-          contentRight={
-            <>
-              <SecondaryButton label={"Discard"} />
-              <Space />
-              <PrimaryButton label={"Save"} />
-            </>
-          }
-        />
-      )}
-      renderTabs={() => (
-        <TabMenu>
-          <Tab
-            label={"Selected"}
-            selected={tabId === 0}
-            onClick={() => setTabId(0)}
+    <>
+      <NavBar
+        showMenuButton
+        left={<NavBarHeading>Stena line</NavBarHeading>}
+        right={
+          <Row>
+            <NavBarButton label={"Profile"} selected />
+            <Space />
+            <NavBarButton label={"Settings"} />
+          </Row>
+        }
+      />
+      <PageHeader
+        renderBreadCrumbs={() => (
+          <BreadCrumbs>
+            <Crumb label={"Home"} />
+            <Crumb label={"Customer"} />
+            <Crumb label={"Booking"} />
+          </BreadCrumbs>
+        )}
+        renderPageHeading={() => (
+          <PageHeading
+            icon={icon}
+            heading={"Page Header"}
+            contentLeft={<Tag label={"56"} />}
+            contentRight={
+              <>
+                <SecondaryButton label={"Discard"} />
+                <Space />
+                <PrimaryButton label={"Save"} />
+              </>
+            }
           />
-          <Tab
-            label={"Something"}
-            selected={tabId === 1}
-            onClick={() => setTabId(1)}
-          />
-          <Tab
-            label={"Something else"}
-            selected={tabId === 2}
-            onClick={() => setTabId(2)}
-          />
-        </TabMenu>
-      )}
-    >
-      <PageHeaderRow gap={2}>
-        <Box>
-          <TextInput />
-        </Box>
-        <PrimaryButton label={"Action"} />
-      </PageHeaderRow>
-    </PageHeader>
+        )}
+        renderTabs={() => (
+          <TabMenu>
+            <Tab
+              label={"Selected"}
+              selected={tabId === 0}
+              onClick={() => setTabId(0)}
+            />
+            <Tab
+              label={"Something"}
+              selected={tabId === 1}
+              onClick={() => setTabId(1)}
+            />
+            <Tab
+              label={"Something else"}
+              selected={tabId === 2}
+              onClick={() => setTabId(2)}
+            />
+          </TabMenu>
+        )}
+      >
+        <PageHeaderRow gap={2}>
+          <Box>
+            <TextInput />
+          </Box>
+          <PrimaryButton label={"Action"} />
+        </PageHeaderRow>
+      </PageHeader>
+    </>
   );
 };
+
+export const Demo = () => <Base icon={stenaUser} />;
+export const NoIcon = () => <Base />;
 
 export const NoTabsOrHeadingContent = () => {
   return (
