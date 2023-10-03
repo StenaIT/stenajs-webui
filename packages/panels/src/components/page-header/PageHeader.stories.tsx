@@ -3,6 +3,8 @@ import { Fragment, useState } from "react";
 import { PageHeader } from "./PageHeader";
 import {
   BreadCrumbs,
+  Card,
+  CardBody,
   Chip,
   Crumb,
   PrimaryButton,
@@ -14,7 +16,7 @@ import {
   Tag,
 } from "@stenajs-webui/elements";
 import { PageHeading, PageHeadingVariant } from "./PageHeading";
-import { Box, Heading, Row, Space } from "@stenajs-webui/core";
+import { Box, Heading, Row, Space, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 
 import { NavBar } from "../nav-bar/NavBar";
@@ -23,6 +25,7 @@ import { PageHeaderRow } from "./PageHeaderRow";
 import { NavBarHeading } from "../nav-bar/NavBarHeading";
 import { NavBarButton } from "../nav-bar/NavBarButton";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { Story } from "@storybook/react";
 
 export default {
   title: "panels/PageHeader",
@@ -30,9 +33,18 @@ export default {
     layout: "fullscreen",
   },
   component: PageHeader,
+  decorators: [
+    (TheStory: Story) => (
+      <div style={{ height: "800px", background: "#f4f4f4" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
-const Base: React.FC<{ icon?: IconDefinition }> = ({ icon }) => {
+const Base: React.FC<{
+  icon?: IconDefinition;
+}> = ({ icon }) => {
   const [tabId, setTabId] = useState(0);
   return (
     <>
@@ -69,33 +81,39 @@ const Base: React.FC<{ icon?: IconDefinition }> = ({ icon }) => {
             }
           />
         )}
-        renderTabs={() => (
+      />
+      <Spacing />
+      <Card>
+        <CardBody>
           <TabMenu>
             <Tab
-              label={"Selected"}
+              label={"Route"}
               selected={tabId === 0}
               onClick={() => setTabId(0)}
             />
             <Tab
-              label={"Something"}
+              label={"Vehicles"}
               selected={tabId === 1}
               onClick={() => setTabId(1)}
             />
             <Tab
-              label={"Something else"}
+              label={"Sea area"}
               selected={tabId === 2}
               onClick={() => setTabId(2)}
             />
+            <Tab
+              label={"Hazardous goods"}
+              selected={tabId === 3}
+              onClick={() => setTabId(3)}
+            />
           </TabMenu>
-        )}
-      >
-        <PageHeaderRow gap={2}>
-          <Box>
-            <TextInput />
-          </Box>
-          <PrimaryButton label={"Action"} />
-        </PageHeaderRow>
-      </PageHeader>
+          <Spacing />
+          {tabId === 0 && <Text>Some nice content.</Text>}
+          {tabId === 1 && <Text>Second tab.</Text>}
+          {tabId === 2 && <Text>This is the final tab.</Text>}
+          {tabId === 3 && <Text>Danger danger!</Text>}
+        </CardBody>
+      </Card>
     </>
   );
 };
