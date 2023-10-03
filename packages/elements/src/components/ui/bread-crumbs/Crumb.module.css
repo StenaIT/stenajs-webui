@@ -4,7 +4,7 @@
   font-weight: var(--swui-font-weight-text-bold);
   letter-spacing: 0.1rem;
   text-decoration: none;
-  color: var(--lhds-color-ui-500);
+  color: var(--lhds-color-ui-600);
 
   &:not(:last-of-type) {
     cursor: pointer;

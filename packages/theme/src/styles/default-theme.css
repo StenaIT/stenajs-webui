@@ -88,12 +88,15 @@
 
   /* Borders */
   --swui-border-radius: 8px;
+  --swui-max-border-radius: 10000px;
 
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
   --swui-shadow-popover: 0 2px 4px -1px rgba(20, 62, 98, 0.15),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
-  --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
+  --swui-shadow-box: 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 0 4px 0 rgba(20, 62, 98, 0.15);
+  --swui-shadow-bottom: rgba(0, 0, 0, 0.2) 0 5px 5px -4px;
   --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
   --swui-field-focus-shadow-inverted: inset 0px 0px 3pt 0pt
     var(--lhds-color-blue-50);

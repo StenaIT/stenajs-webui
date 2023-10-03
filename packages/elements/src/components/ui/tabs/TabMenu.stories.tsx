@@ -3,9 +3,8 @@ import { useState } from "react";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
 import { Space } from "@stenajs-webui/core";
 import { Badge } from "../badge/Badge";
-import { Tab, TabProps } from "./Tab";
+import { Tab } from "./Tab";
 import { TabMenu } from "./TabMenu";
-import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
@@ -41,15 +40,6 @@ const demoTabs: Array<DemoTab> = [
   "Conditions",
   "Matrix",
 ];
-
-export const Demo: Story<TabProps> = (props) => (
-  <TabMenu>
-    <Tab {...props} />
-  </TabMenu>
-);
-Demo.args = {
-  label: "Some tab",
-};
 
 export const Overview = () => {
   const [tab, setTab] = useState<DemoTab>("Rates");

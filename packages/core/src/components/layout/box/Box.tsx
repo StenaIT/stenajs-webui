@@ -70,6 +70,7 @@ const shadows = {
   box: "var(--swui-shadow-box)",
   popover: "var(--swui-shadow-popover)",
   modal: "var(--swui-shadow-modal)",
+  bottom: "var(--swui-shadow-bottom)",
 };
 
 type ShadowType = keyof typeof shadows;
