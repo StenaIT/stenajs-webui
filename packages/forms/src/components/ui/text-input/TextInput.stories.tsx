@@ -20,7 +20,9 @@ export default {
   },
 };
 
-export const Demo: Story<TextInputProps> = (props) => <TextInput {...props} />;
+export const Demo: Story<TextInputProps> = (props) => (
+  <TextInput {...props} placeholder={"Enter some text"} />
+);
 
 export const Overview = () => (
   <Box width={"400px"}>

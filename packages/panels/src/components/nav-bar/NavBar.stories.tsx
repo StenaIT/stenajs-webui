@@ -57,7 +57,6 @@ import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoub
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
-import { NavBarSearchField } from "./NavBarSearchField";
 
 export default {
   title: "panels/NavBar",
@@ -218,14 +217,6 @@ export const WithButtonIcons = () => (
       <NavBarButton label={"Events"} leftIcon={faAddressCard} />
     </NavBar>
   </Column>
-);
-
-export const CenterContent = () => (
-  <NavBar center={<NavBarSearchField />}>
-    <NavBarButton label={"Customers"} selected />
-    <NavBarButton label={"Bookings"} />
-    <NavBarButton label={"Events"} />
-  </NavBar>
 );
 
 export const PopoverButton = () => (

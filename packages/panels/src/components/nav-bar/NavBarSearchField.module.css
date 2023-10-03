@@ -1,6 +1,9 @@
-.navBarSearchFieldInput {
+.navBarSearchFieldInput.navBarSearchFieldInput {
   --swui-textinput-line-height: 2.7rem;
   --swui-textinput-text-color: var(--lhds-color-ui-50);
+  --swui-textinput-placeholder-color: var(--lhds-color-blue-800);
+
+  padding: 1px var(--swui-metrics-indent);
 
   &:focus {
     --swui-textinput-text-color: var(--lhds-color-ui-800);
@@ -11,14 +14,17 @@
   --swui-textinput-animation-time: var(--swui-animation-time-fast);
 
   --swui-textinput-placeholder-color: var(--lhds-color-ui-500);
-  --swui-textinput-bg-color: var(--lhds-color-blue-50);
+  --swui-textinput-bg-color: var(--lhds-color-ui-200);
   --swui-textinput-border-color: transparent;
   --swui-textinput-border-color-hover: transparent;
+
+  padding: 1px var(--swui-metrics-indent) 0;
+
+  border-radius: var(--swui-max-border-radius);
 
   &:focus-within {
     --swui-textinput-text-color: var(--lhds-color-ui-800);
     --swui-field-text-color: var(--swui-field-text-color);
-    --swui-textinput-icon-color: var(--lhds-color-ui-500);
     --swui-textinput-bg-color: var(--lhds-color-ui-50);
   }
 }

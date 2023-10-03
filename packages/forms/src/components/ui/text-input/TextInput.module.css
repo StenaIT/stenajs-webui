@@ -9,6 +9,9 @@
   --swui-textinput-font-family: var(--swui-font-input);
   --swui-textinput-font-weight: var(--swui-font-weight-inputs);
   --swui-textinput-placeholder-color: var(--swui-field-placeholder-color);
+  --swui-textinput-placeholder-font-weight: var(
+    --swui-field-placeholder-font-weight
+  );
   --swui-textinput-animation-time: var(--swui-animation-time-medium);
   --swui-textinput-icon-color: var(--swui-field-icon-color);
   --swui-textinput-icon-hover-color: var(--swui-primary-action-color);
@@ -85,6 +88,11 @@
 
     &::placeholder {
       color: var(--swui-textinput-placeholder-color);
+      font-weight: var(--swui-textinput-placeholder-font-weight);
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
     }
 
     &:focus {
