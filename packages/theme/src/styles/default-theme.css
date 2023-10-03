@@ -85,6 +85,7 @@
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
   --swui-field-placeholder-color: var(--lhds-color-ui-500);
+  --swui-field-placeholder-font-weight: var(--swui-font-weight-text-bold);
 
   /* Borders */
   --swui-border-radius: 8px;
