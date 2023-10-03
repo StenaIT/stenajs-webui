@@ -21,11 +21,22 @@ import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
 import { CardBody } from "./CardBody";
 import { CardHeader } from "./CardHeader";
+import { Story } from "@storybook/react";
 
 export default {
   title: "elements/Card",
   component: Card,
   subcomponents: { CardHeader },
+  parameters: {
+    backgrounds: { default: "facebook" },
+  },
+  decorators: [
+    (TheStory: Story) => (
+      <div style={{ width: "500px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Demo = () => {
