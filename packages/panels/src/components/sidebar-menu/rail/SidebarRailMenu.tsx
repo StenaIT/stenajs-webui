@@ -1,29 +1,33 @@
 import * as React from "react";
-import { SidebarMenu, SidebarMenuVariant } from "../SidebarMenu";
-import { NavBarSideMenuButton } from "../../nav-bar/NavBarSideMenuButton";
 import { ReactNode } from "react";
+import { NavBarSideMenuButton } from "../../nav-bar/NavBarSideMenuButton";
+import { Box } from "@stenajs-webui/core";
+import { RailContext } from "./RailContext";
+import { cssColor } from "@stenajs-webui/theme";
 
 interface RailMenuProps {
-  variant?: SidebarMenuVariant;
   onClickMenuButton?: () => void;
   children?: ReactNode;
 }
 
 export const SidebarRailMenu: React.FC<RailMenuProps> = ({
-  variant,
   onClickMenuButton,
   children,
 }) => {
   return (
-    <SidebarMenu
-      collapsed
+    <Box
       position={"fixed"}
       left={0}
       top={0}
-      variant={variant}
+      bottom={0}
+      indent={1}
+      spacing={1}
+      gap={1}
+      shadow={"popover"}
+      background={cssColor("--lhds-color-ui-50")}
     >
       <NavBarSideMenuButton onClick={onClickMenuButton} />
-      {children}
-    </SidebarMenu>
+      <RailContext.Provider value={true}>{children}</RailContext.Provider>
+    </Box>
   );
 };

@@ -36,15 +36,15 @@ import { NavBarPopoverButton } from "./NavBarPopoverButton";
 import { cssColor } from "@stenajs-webui/theme";
 import { Drawer } from "@stenajs-webui/modal";
 import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
-import { SidebarMenuHeading } from "../sidebar-menu/SidebarMenuHeading";
-import { SidebarMenuLink } from "../sidebar-menu/SidebarMenuLink";
+import { SidebarMenuHeading } from "../sidebar-menu/items/SidebarMenuHeading";
+import { SidebarMenuLink } from "../sidebar-menu/items/SidebarMenuLink";
 import {
   faBook,
   faChartBar,
   faPaperPlane,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
-import { SidebarMenuCollapsible } from "../sidebar-menu/SidebarMenuCollapsible";
+import { SidebarMenuCollapsible } from "../sidebar-menu/items/SidebarMenuCollapsible";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
@@ -71,75 +71,76 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const [isOpen, open, close] = useBoolean(false);
   const onClick = () => {};
 
+  const sidebarMenuItems = (
+    <>
+      <SidebarMenuHeading label={"Freight portal"} />
+      <SidebarMenuLink
+        onClick={() => alert("Clicked Customers")}
+        leftIcon={stenaCalendar}
+        label={"Manage"}
+      />
+      <SidebarMenuLink
+        onClick={() => alert("Clicked Customers")}
+        label={"Book (selected)"}
+        leftIcon={stenaSailingTicket}
+        selected
+      />
+      <SidebarMenuLink
+        onClick={() => alert("Clicked Customers")}
+        label={"Statistics"}
+        leftIcon={stenaStatisticsLine}
+      />
+      <SidebarMenuHeading label={"Administration"} />
+      <SidebarMenuCollapsible
+        label={"Invoices"}
+        leftIcon={stenaBusinessInvoice}
+      >
+        <SidebarMenuLink label={"No show & late handling"} onClick={onClick} />
+        <SidebarMenuLink label={"Late payment"} onClick={onClick} />
+        <SidebarMenuLink
+          label={"Archive (selected)"}
+          onClick={onClick}
+          selected
+        />
+        <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
+        <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
+          <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
+          <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
+          <SidebarMenuCollapsible label={"Level 3.3"} leftIcon={faChartBar}>
+            <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
+            <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
+          </SidebarMenuCollapsible>
+        </SidebarMenuCollapsible>
+      </SidebarMenuCollapsible>
+
+      <SidebarMenuCollapsible label={"No icon"}>
+        <SidebarMenuLink label={"Level 2"} onClick={onClick} />
+      </SidebarMenuCollapsible>
+
+      <SidebarMenuHeading label={"Support"} />
+      <SidebarMenuLink
+        leftIcon={stenaBusinessClaim}
+        label={"Make a claim"}
+        onClick={() => alert("Click on quick guide")}
+      />
+      <SidebarMenuLink
+        leftIcon={stenaStatusNoShow}
+        label={"No show, late handling"}
+        onClick={() => alert("Click on contact")}
+      />
+    </>
+  );
+
   return (
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
         <Column width={"250px"}>
-          <SidebarMenu onCloseClick={close}>
-            <SidebarMenuHeading label={"Freight portal"} />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              leftIcon={stenaCalendar}
-              label={"Manage"}
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              label={"Book (selected)"}
-              leftIcon={stenaSailingTicket}
-              selected
-            />
-            <SidebarMenuLink
-              onClick={() => alert("Clicked Customers")}
-              label={"Statistics"}
-              leftIcon={stenaStatisticsLine}
-            />
-            <SidebarMenuHeading label={"Administration"} />
-            <SidebarMenuCollapsible
-              label={"Invoices"}
-              leftIcon={stenaBusinessInvoice}
-            >
-              <SidebarMenuLink
-                label={"No show & late handling"}
-                onClick={onClick}
-              />
-              <SidebarMenuLink label={"Late payment"} onClick={onClick} />
-              <SidebarMenuLink
-                label={"Archive (selected)"}
-                onClick={onClick}
-                selected
-              />
-              <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
-              <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
-                <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
-                <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
-                <SidebarMenuCollapsible
-                  label={"Level 3.3"}
-                  leftIcon={faChartBar}
-                >
-                  <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
-                  <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
-                </SidebarMenuCollapsible>
-              </SidebarMenuCollapsible>
-            </SidebarMenuCollapsible>
-
-            <SidebarMenuCollapsible label={"No icon"}>
-              <SidebarMenuLink label={"Level 2"} onClick={onClick} />
-            </SidebarMenuCollapsible>
-
-            <SidebarMenuHeading label={"Support"} />
-            <SidebarMenuLink
-              leftIcon={stenaBusinessClaim}
-              label={"Make a claim"}
-              onClick={() => alert("Click on quick guide")}
-            />
-            <SidebarMenuLink
-              leftIcon={stenaStatusNoShow}
-              label={"No show, late handling"}
-              onClick={() => alert("Click on contact")}
-            />
-          </SidebarMenu>
+          <SidebarMenu onCloseClick={close}>{sidebarMenuItems}</SidebarMenu>
         </Column>
       </Drawer>
+      <SidebarRailMenu onClickMenuButton={open}>
+        {sidebarMenuItems}
+      </SidebarRailMenu>
       <NavBar
         showMenuButton
         onClickMenuButton={open}

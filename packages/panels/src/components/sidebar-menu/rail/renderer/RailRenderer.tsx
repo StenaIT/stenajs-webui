@@ -1,9 +1,9 @@
-import { SidebarMenuLink } from "../../SidebarMenuLink";
+import { SidebarMenuLink } from "../../items/SidebarMenuLink";
 import * as React from "react";
 import { ReactNode } from "react";
-import { SidebarMenuHeading } from "../../SidebarMenuHeading";
-import { SidebarMenuSeparator } from "../../SidebarMenuSeparator";
-import { SidebarMenuCollapsible } from "../../SidebarMenuCollapsible";
+import { SidebarMenuHeading } from "../../items/SidebarMenuHeading";
+import { SidebarMenuSeparator } from "../../items/SidebarMenuSeparator";
+import { SidebarMenuCollapsible } from "../../items/SidebarMenuCollapsible";
 import { Box, exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
 import { Popover } from "@stenajs-webui/tooltip";
 import { SidebarItem } from "./types";

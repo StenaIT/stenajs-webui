@@ -1,5 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { SidebarMenuLinkProps } from "../../SidebarMenuLink";
+import { SidebarMenuLinkProps } from "../../items/SidebarMenuLink";
 
 export interface SidebarHeadingItem {
   type: "heading";

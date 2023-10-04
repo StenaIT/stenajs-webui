@@ -2,6 +2,8 @@ import * as React from "react";
 import { ReactNode, useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { MenuButton } from "@stenajs-webui/elements";
+import { useRailContext } from "../rail/RailContext";
+import { RailMenuCollapsible } from "./RailMenuCollapsible";
 
 export interface SidebarMenuCollapsibleProps {
   label: string;
@@ -21,6 +23,15 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
 }) => {
   const [expanded, setExpanded] = useState<boolean>(initialExpand);
 
+  const isRail = useRailContext();
+
+  if (isRail) {
+    return (
+      <RailMenuCollapsible label={label} leftIcon={leftIcon}>
+        {children}
+      </RailMenuCollapsible>
+    );
+  }
   return (
     <MenuButton
       label={label}
