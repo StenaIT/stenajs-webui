@@ -26,8 +26,6 @@ export * from "./components/page-header/PageHeaderRow";
 export * from "./components/page-header/PageHeading";
 export * from "./components/sidebar-menu/SidebarMenu";
 export * from "./components/sidebar-menu/rail/SidebarRailMenu";
-export * from "./components/sidebar-menu/rail/renderer/RailRenderer";
-export * from "./components/sidebar-menu/rail/renderer/types";
 export * from "./components/sidebar-menu/items/SidebarMenuHeading";
 export * from "./components/sidebar-menu/items/SidebarMenuLink";
 export * from "./components/sidebar-menu/items/SidebarMenuCollapsible";
