@@ -63,18 +63,18 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
     <>
       <SidebarMenuHeading label={"Freight portal"} />
       <SidebarMenuLink
-        onClick={() => alert("Clicked Customers")}
+        onClick={() => alert("Clicked Manage")}
         leftIcon={stenaCalendar}
         label={"Manage"}
       />
       <SidebarMenuLink
-        onClick={() => alert("Clicked Customers")}
+        onClick={() => alert("Clicked Book")}
         label={"Book (selected)"}
         leftIcon={stenaSailingTicket}
         selected
       />
       <SidebarMenuLink
-        onClick={() => alert("Clicked Customers")}
+        onClick={() => alert("Clicked Statistics")}
         label={"Statistics"}
         leftIcon={stenaStatisticsLine}
       />
