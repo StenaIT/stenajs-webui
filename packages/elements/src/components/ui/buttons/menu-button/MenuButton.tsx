@@ -46,6 +46,8 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
     },
     ref
   ) {
+    const iconOnly = !label && !expandable;
+
     return (
       <Box>
         <Box
@@ -61,6 +63,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
               selected && styles.selected,
               disabled && styles.disabled,
               styles[variant],
+              iconOnly && styles.iconOnly,
               className
             )}
             disabled={disabled}
@@ -68,7 +71,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
             {...buttonProps}
           >
             <Row
-              justifyContent={"space-between"}
+              justifyContent={iconOnly ? "center" : "space-between"}
               alignItems={"center"}
               indent={label ? 2 : 1}
             >

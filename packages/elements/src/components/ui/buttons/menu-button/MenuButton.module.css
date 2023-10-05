@@ -56,6 +56,7 @@
     padding: 0;
     background: var(--current-background-color);
     height: var(--swui-menu-button-item-height);
+    min-width: var(--swui-menu-button-item-height);
 
     &.danger {
       --current-text-color: var(--lhds-color-red-600);
@@ -92,6 +93,10 @@
 
     &:active {
       background: var(--current-background-color-active);
+    }
+
+    &.iconOnly {
+      justify-content: center;
     }
 
     &.selected {

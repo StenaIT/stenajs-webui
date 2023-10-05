@@ -56,8 +56,13 @@ export const MenuButtonLink = forwardRef<
   },
   ref
 ) {
+  const iconOnly = !label;
+
   const innerChildren = (
-    <Row justifyContent={"space-between"} indent={label ? 2 : 1}>
+    <Row
+      justifyContent={iconOnly ? "center" : "space-between"}
+      indent={label ? 2 : 1}
+    >
       <MenuButtonContent label={label} leftIcon={leftIcon} />
     </Row>
   );
@@ -70,6 +75,7 @@ export const MenuButtonLink = forwardRef<
     styles.buttonLink,
     disabled && styles.disabled,
     noRenderLinkProps?.selected && styles.selected,
+    iconOnly && styles.iconOnly,
     styles[variant],
     className
   );
