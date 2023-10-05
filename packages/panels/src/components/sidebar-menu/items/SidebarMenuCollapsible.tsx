@@ -26,6 +26,10 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
   const isRail = useRailContext();
 
   if (isRail) {
+    if (leftIcon == null) {
+      return null;
+    }
+
     return (
       <RailMenuCollapsible label={label} leftIcon={leftIcon}>
         {children}

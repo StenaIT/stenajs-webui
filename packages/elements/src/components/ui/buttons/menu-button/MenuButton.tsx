@@ -19,7 +19,7 @@ import { stenaAngleDown, stenaAngleUp } from "../../../../icons/ui/IconsUi";
 export type MenuButtonVariant = "standard" | "danger";
 
 export interface MenuButtonProps extends ButtonElementProps {
-  label: string;
+  label?: string;
   expanded?: boolean;
   expandable?: boolean;
   selected?: boolean;
@@ -70,7 +70,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
             <Row
               justifyContent={"space-between"}
               alignItems={"center"}
-              indent={2}
+              indent={label ? 2 : 1}
             >
               <MenuButtonContent label={label} leftIcon={leftIcon} />
               <Row gap={1} alignItems={"center"}>

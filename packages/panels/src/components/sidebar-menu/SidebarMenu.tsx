@@ -7,6 +7,7 @@ import {
   SidebarMenuCloseButtonRowProps,
 } from "./SidebarMenuCloseButtonRow";
 import { NavBarVariant } from "../nav-bar/NavBar";
+import { SidebarMenuPinButton } from "./SidebarMenuPinButton";
 
 export type SidebarMenuVariant = NavBarVariant;
 
@@ -14,6 +15,9 @@ export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonRowProps["onClick"];
   collapsed?: boolean;
   variant?: SidebarMenuVariant;
+  pinButtonVisible?: boolean;
+  isPinned?: boolean;
+  onClickPinButton?: () => void;
 }
 
 export const SidebarMenu: React.FC<SidebarMenuProps> = ({
@@ -22,6 +26,9 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   onCloseClick,
   collapsed = false,
   variant = "standard",
+  pinButtonVisible,
+  onClickPinButton,
+  isPinned,
   ...boxProps
 }) => {
   return (
@@ -46,8 +53,17 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         height={"100%"}
         background={"var(--current-background-color)"}
       >
-        <Column flex={1} gap={1}>
-          {children}
+        <Column justifyContent={"space-between"} flex={1} gap={1}>
+          <Column gap={1}>{children}</Column>
+          {pinButtonVisible && (
+            <Column>
+              <SidebarMenuPinButton
+                isPinned={isPinned}
+                onClick={onClickPinButton}
+              />
+              <Space />
+            </Column>
+          )}
         </Column>
       </Box>
     </Box>

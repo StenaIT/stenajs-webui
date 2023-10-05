@@ -15,7 +15,6 @@ import {
   ActionMenuItemContent,
   ActionMenuSeparator,
   FlatButton,
-  Icon,
   PrimaryButton,
   stenaBusinessClaim,
   stenaBusinessInvoice,
@@ -38,23 +37,11 @@ import { Drawer } from "@stenajs-webui/modal";
 import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
 import { SidebarMenuHeading } from "../sidebar-menu/items/SidebarMenuHeading";
 import { SidebarMenuLink } from "../sidebar-menu/items/SidebarMenuLink";
-import {
-  faBook,
-  faChartBar,
-  faPaperPlane,
-  faUserFriends,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/items/SidebarMenuCollapsible";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
-import { SidebarItem } from "../sidebar-menu/rail/renderer/types";
-import {
-  renderItemsExpanded,
-  renderItemsInRail,
-} from "../sidebar-menu/rail/renderer/RailRenderer";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import { faThumbtack } from "@fortawesome/free-solid-svg-icons/faThumbtack";
 import { NavBarUserButton } from "./NavBarUserButton";
 import { NavBarNotificationButton } from "./NavBarNotificationButton";
 
@@ -69,6 +56,7 @@ export default {
 
 export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const [isOpen, open, close] = useBoolean(false);
+  const [pinned, , unpin, togglePin] = useBoolean(false);
   const onClick = () => {};
 
   const sidebarMenuItems = (
@@ -135,12 +123,25 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
         <Column width={"250px"}>
-          <SidebarMenu onCloseClick={close}>{sidebarMenuItems}</SidebarMenu>
+          <SidebarMenu
+            onCloseClick={close}
+            pinButtonVisible
+            onClickPinButton={togglePin}
+            isPinned={pinned}
+          >
+            {sidebarMenuItems}
+          </SidebarMenu>
         </Column>
       </Drawer>
-      <SidebarRailMenu onClickMenuButton={open}>
-        {sidebarMenuItems}
-      </SidebarRailMenu>
+      {pinned && (
+        <SidebarRailMenu
+          onClickMenuButton={open}
+          closeButtonVisible
+          onClickCloseButton={unpin}
+        >
+          {sidebarMenuItems}
+        </SidebarRailMenu>
+      )}
       <NavBar
         showMenuButton
         onClickMenuButton={open}
@@ -331,93 +332,6 @@ export const NotificationButton = () => {
         <PrimaryButton label={"Toggle unread"} onClick={toggle} />
         <PrimaryButton label={"+"} onClick={() => setCount((c) => c + 1)} />
       </Row>
-    </>
-  );
-};
-
-const sidebarItems: SidebarItem[] = [
-  { type: "heading", label: "Product name" },
-  { type: "link", label: "Level 1.1", leftIcon: faUserFriends },
-  { type: "link", label: "No icon" },
-  { type: "link", label: "Selected", selected: true },
-  {
-    type: "grouped",
-    label: "Level 1.2",
-    leftIcon: faChartBar,
-    items: [
-      { type: "link", label: "Level 2.1" },
-      { type: "link", label: "Level 2.2" },
-      { type: "link", label: "Level 2.3" },
-      { type: "link", label: "Level 2.4" },
-    ],
-  },
-  { type: "separator" },
-  { type: "heading", label: "Support" },
-  { type: "link", label: "User manual", leftIcon: faBook },
-  { type: "link", label: "Contact", leftIcon: faPaperPlane },
-];
-
-export const DemoWithRail: Story = () => {
-  const [isOpen, open, close] = useBoolean(false);
-  const [railEnabled, enableRail, disableRail] = useBoolean(true);
-
-  const drawerWidth = "250px";
-
-  return (
-    <>
-      <Drawer
-        isOpen={isOpen}
-        onRequestClose={close}
-        width={drawerWidth}
-        background={"var(--lhds-color-blue-500)"}
-      >
-        <Column width={"100%"}>
-          <SidebarMenu onCloseClick={close}>
-            {renderItemsExpanded(sidebarItems)}
-            <Box>
-              <Box spacing={8}>
-                <Icon
-                  icon={faPaperPlane}
-                  color={"var(--swui-white)"}
-                  size={50}
-                  data-hover={true}
-                />
-              </Box>
-            </Box>
-            <SidebarMenuLink
-              style={{ marginTop: "auto" }}
-              leftIcon={railEnabled ? faAngleDoubleLeft : faThumbtack}
-              label={railEnabled ? "Unpin menu" : "Pin menu"}
-              onClick={() => {
-                if (railEnabled) {
-                  disableRail();
-                } else {
-                  enableRail();
-                }
-                close();
-              }}
-            />
-          </SidebarMenu>
-        </Column>
-      </Drawer>
-      <NavBar
-        showMenuButton
-        onClickMenuButton={open}
-        menuButtonVisibility={railEnabled ? "hidden" : "visible"}
-        left={<NavBarHeading>Stena line</NavBarHeading>}
-      />
-      {railEnabled && (
-        <SidebarRailMenu onClickMenuButton={open}>
-          {renderItemsInRail(sidebarItems, { popupMinWidth: drawerWidth })}
-          <SidebarMenuLink
-            style={{ marginTop: "auto" }}
-            title={"Unpin menu"}
-            label={"Unpin menu"}
-            leftIcon={faAngleDoubleLeft}
-            onClick={disableRail}
-          />
-        </SidebarRailMenu>
-      )}
     </>
   );
 };

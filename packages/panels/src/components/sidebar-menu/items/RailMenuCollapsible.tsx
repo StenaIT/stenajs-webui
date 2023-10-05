@@ -4,7 +4,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Popover } from "@stenajs-webui/tooltip";
 import { Box } from "@stenajs-webui/core";
 import { SidebarMenuHeading } from "./SidebarMenuHeading";
-import { FlatButtonLink } from "@stenajs-webui/elements";
+import { MenuButton } from "@stenajs-webui/elements";
 import { RailContext } from "../rail/RailContext";
 
 export interface RailMenuCollapsibleProps {
@@ -45,7 +45,7 @@ export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
         </Box>
       }
     >
-      <FlatButtonLink title={label} leftIcon={leftIcon} />
+      <MenuButton leftIcon={leftIcon} />
     </Popover>
   );
 };

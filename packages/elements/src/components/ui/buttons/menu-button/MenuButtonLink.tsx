@@ -18,7 +18,7 @@ export type MenuButtonLinkProps =
   | MenuButtonLinkWithRenderLinkProps;
 
 interface MenuButtonCommonProps extends AnchorElementProps {
-  label: string;
+  label?: string;
   leftIcon?: IconDefinition;
   variant?: MenuButtonVariant;
   disabled?: boolean;
@@ -57,7 +57,7 @@ export const MenuButtonLink = forwardRef<
   ref
 ) {
   const innerChildren = (
-    <Row justifyContent={"space-between"} indent={2}>
+    <Row justifyContent={"space-between"} indent={label ? 2 : 1}>
       <MenuButtonContent label={label} leftIcon={leftIcon} />
     </Row>
   );
