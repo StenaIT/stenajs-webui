@@ -31,7 +31,7 @@ export const SidebarMenuCollapsible: React.FC<SidebarMenuCollapsibleProps> = ({
     }
 
     return (
-      <RailMenuCollapsible label={label} leftIcon={leftIcon}>
+      <RailMenuCollapsible label={label} icon={leftIcon}>
         {children}
       </RailMenuCollapsible>
     );

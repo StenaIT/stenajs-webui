@@ -1,53 +1,49 @@
 import * as React from "react";
-import { forwardRef, ReactNode } from "react";
+import { forwardRef } from "react";
 import { AnchorElementProps, Box, Row } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { MenuButtonContent } from "./MenuButtonContent";
 import { MenuButtonVariant } from "./MenuButton";
+import { Icon } from "../../icon/Icon";
+import { MenuButtonLinkRenderer } from "./MenuButtonLink";
 
-export type MenuButtonLinkRenderer = (
-  anchorProps: AnchorElementProps,
-  activeClassName: string
-) => ReactNode;
+export type IconMenuButtonLinkProps =
+  | IconMenuButtonLinkNotSelectedProps
+  | IconMenuButtonLinkWithSelectedProps
+  | IconMenuButtonLinkWithRenderLinkProps;
 
-export type MenuButtonLinkProps =
-  | MenuButtonLinkNotSelectedProps
-  | MenuButtonLinkWithSelectedProps
-  | MenuButtonLinkWithRenderLinkProps;
-
-interface MenuButtonCommonProps extends AnchorElementProps {
-  label: string;
-  leftIcon?: IconDefinition;
+interface IconMenuButtonCommonProps extends AnchorElementProps {
+  icon: IconDefinition;
   variant?: MenuButtonVariant;
   disabled?: boolean;
 }
 
-export interface MenuButtonLinkNotSelectedProps extends MenuButtonCommonProps {
+export interface IconMenuButtonLinkNotSelectedProps
+  extends IconMenuButtonCommonProps {
   renderLink?: never;
   selected?: never;
 }
 
-export interface MenuButtonLinkWithSelectedProps extends MenuButtonCommonProps {
+export interface IconMenuButtonLinkWithSelectedProps
+  extends IconMenuButtonCommonProps {
   renderLink?: never;
   selected?: boolean;
 }
 
-export interface MenuButtonLinkWithRenderLinkProps
-  extends MenuButtonCommonProps {
+export interface IconMenuButtonLinkWithRenderLinkProps
+  extends IconMenuButtonCommonProps {
   renderLink?: MenuButtonLinkRenderer;
   selected?: never;
 }
 
-export const MenuButtonLink = forwardRef<
+export const IconMenuButtonLink = forwardRef<
   HTMLAnchorElement,
-  MenuButtonLinkProps
+  IconMenuButtonLinkProps
 >(function (
   {
-    label,
     className,
-    leftIcon,
+    icon,
     children,
     disabled,
     variant = "standard",
@@ -57,8 +53,15 @@ export const MenuButtonLink = forwardRef<
   ref
 ) {
   const innerChildren = (
-    <Row justifyContent={"space-between"} indent={label ? 2 : 1}>
-      <MenuButtonContent label={label} leftIcon={leftIcon} />
+    <Row justifyContent={"center"} indent={1}>
+      <Box alignItems={"center"} justifyContent={"center"} width={"20px"}>
+        <Icon
+          icon={icon}
+          size={20}
+          color={"var(--current-text-color)"}
+          data-hover={true}
+        />
+      </Box>
     </Row>
   );
 
@@ -70,6 +73,7 @@ export const MenuButtonLink = forwardRef<
     styles.buttonLink,
     disabled && styles.disabled,
     noRenderLinkProps?.selected && styles.selected,
+    styles.iconOnly,
     styles[variant],
     className
   );

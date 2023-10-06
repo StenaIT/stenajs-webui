@@ -6,7 +6,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface MenuButtonContentProps {
   leftIcon?: IconDefinition;
-  label?: string;
+  label: string;
 }
 
 export const MenuButtonContent: React.FC<MenuButtonContentProps> = ({

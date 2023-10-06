@@ -4,13 +4,13 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Popover } from "@stenajs-webui/tooltip";
 import { Box } from "@stenajs-webui/core";
 import { SidebarMenuHeading } from "./SidebarMenuHeading";
-import { MenuButton } from "@stenajs-webui/elements";
 import { RailContext } from "../rail/RailContext";
+import { IconMenuButton } from "@stenajs-webui/elements";
 
 export interface RailMenuCollapsibleProps {
   label: string;
   collapsed?: boolean;
-  leftIcon?: IconDefinition;
+  icon: IconDefinition;
   children?: ReactNode;
   popupMinWidth?: string;
 }
@@ -18,7 +18,7 @@ export interface RailMenuCollapsibleProps {
 export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
   children,
   label,
-  leftIcon,
+  icon,
   popupMinWidth = "200px",
 }) => {
   return (
@@ -45,7 +45,7 @@ export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
         </Box>
       }
     >
-      <MenuButton leftIcon={leftIcon} />
+      <IconMenuButton icon={icon} />
     </Popover>
   );
 };

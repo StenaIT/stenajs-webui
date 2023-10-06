@@ -19,7 +19,7 @@ import { stenaAngleDown, stenaAngleUp } from "../../../../icons/ui/IconsUi";
 export type MenuButtonVariant = "standard" | "danger";
 
 export interface MenuButtonProps extends ButtonElementProps {
-  label?: string;
+  label: string;
   expanded?: boolean;
   expandable?: boolean;
   selected?: boolean;

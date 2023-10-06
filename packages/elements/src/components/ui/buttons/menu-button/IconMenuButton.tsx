@@ -1,25 +1,15 @@
 import * as React from "react";
-import {
-  Box,
-  ButtonElementProps,
-  Indent,
-  Row,
-  Space,
-} from "@stenajs-webui/core";
+import { forwardRef } from "react";
+import { Box, ButtonElementProps, Row } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { forwardRef, ReactNode } from "react";
-import { MenuButtonProps, MenuButtonVariant } from "./MenuButton";
+import { MenuButtonVariant } from "./MenuButton";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
-import { MenuButtonContent } from "./MenuButtonContent";
 import { Icon } from "../../icon/Icon";
-import { stenaAngleDown, stenaAngleUp } from "../../../../icons/ui/IconsUi";
-import { cssColor } from "@stenajs-webui/theme";
-import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 
 export interface IconMenuButtonProps extends ButtonElementProps {
   selected?: boolean;
-  icon?: IconDefinition;
+  icon: IconDefinition;
   variant?: MenuButtonVariant;
 }
 
@@ -27,15 +17,7 @@ export const IconMenuButton = forwardRef<
   HTMLButtonElement,
   IconMenuButtonProps
 >(function (
-  {
-    selected,
-    className,
-    icon,
-    children,
-    disabled,
-    variant = "standard",
-    ...buttonProps
-  },
+  { selected, className, icon, disabled, variant = "standard", ...buttonProps },
   ref
 ) {
   return (
@@ -58,35 +40,18 @@ export const IconMenuButton = forwardRef<
           ref={ref}
           {...buttonProps}
         >
-          <Row
-            justifyContent={iconOnly ? "center" : "space-between"}
-            alignItems={"center"}
-            indent={1}
-          >
-            <MenuButtonContent label={label} leftIcon={leftIcon} />
-            <Row gap={1} alignItems={"center"}>
-              {right && <Row alignItems={"center"}>{right}</Row>}
-              {expandable && (
-                <Row>
-                  <Indent />
-                  <Icon
-                    icon={expanded ? stenaAngleUp : stenaAngleDown}
-                    size={18}
-                    color={cssColor("--lhds-color-blue-600")}
-                  />
-                </Row>
-              )}
-            </Row>
+          <Row justifyContent={"center"} alignItems={"center"} indent={1}>
+            <Box alignItems={"center"} justifyContent={"center"} width={"20px"}>
+              <Icon
+                icon={icon}
+                size={20}
+                color={"var(--current-text-color)"}
+                data-hover={true}
+              />
+            </Box>
           </Row>
         </button>
       </Box>
-
-      {expanded && (
-        <>
-          <Space />
-          <MenuButtonGroupBox>{children}</MenuButtonGroupBox>
-        </>
-      )}
     </Box>
   );
 });

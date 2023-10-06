@@ -1,6 +1,6 @@
 import * as React from "react";
 import {
-  MenuButtonLink,
+  IconMenuButtonLink,
   MenuButtonLinkNotSelectedProps,
   MenuButtonLinkWithRenderLinkProps,
   MenuButtonLinkWithSelectedProps,
@@ -16,15 +16,16 @@ export type RailMenuLinkProps =
 
 export const RailMenuLink: React.FC<RailMenuLinkProps> = ({
   label,
+  leftIcon,
   ...menuButtonLinkProps
 }) => {
-  if (menuButtonLinkProps.leftIcon == null) {
+  if (leftIcon == null) {
     return null;
   }
 
   return (
     <Tooltip label={label} placement={"right"} appendTo={document.body}>
-      <MenuButtonLink {...menuButtonLinkProps} />
+      <IconMenuButtonLink icon={leftIcon} {...menuButtonLinkProps} />
     </Tooltip>
   );
 };

@@ -4,7 +4,7 @@ import { Box, Column } from "@stenajs-webui/core";
 import { RailContext } from "./RailContext";
 import { cssColor } from "@stenajs-webui/theme";
 import {
-  MenuButton,
+  IconMenuButton,
   stenaAngleLeftDouble,
   stenaHamburger,
 } from "@stenajs-webui/elements";
@@ -34,14 +34,14 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
       shadow={"popover"}
       background={cssColor("--lhds-color-ui-50")}
     >
-      <MenuButton onClick={onClickMenuButton} leftIcon={stenaHamburger} />
+      <IconMenuButton onClick={onClickMenuButton} icon={stenaHamburger} />
       <Column justifyContent={"space-between"} flex={1} gap={1}>
         <Column gap={1}>
           <RailContext.Provider value={true}>{children}</RailContext.Provider>
         </Column>
         {closeButtonVisible && (
-          <MenuButton
-            leftIcon={stenaAngleLeftDouble}
+          <IconMenuButton
+            icon={stenaAngleLeftDouble}
             onClick={onClickCloseButton}
           />
         )}
