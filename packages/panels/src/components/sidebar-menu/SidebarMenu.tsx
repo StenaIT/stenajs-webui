@@ -13,7 +13,6 @@ export type SidebarMenuVariant = NavBarVariant;
 
 export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonRowProps["onClick"];
-  collapsed?: boolean;
   variant?: SidebarMenuVariant;
   pinButtonVisible?: boolean;
   isPinned?: boolean;
@@ -24,7 +23,6 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
-  collapsed = false,
   variant = "standard",
   pinButtonVisible,
   onClickPinButton,
@@ -34,15 +32,10 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   return (
     <Box
       indent={1}
-      className={cx(
-        styles.sidebarMenu,
-        collapsed ? styles.collapsed : null,
-        className
-      )}
+      className={cx(styles.sidebarMenu, className)}
       style={{
         ["--swui-sidebar-menu-item-height" as string]: "40px",
       }}
-      data-collapsed={collapsed || undefined}
       {...boxProps}
     >
       <Space num={1} />

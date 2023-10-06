@@ -22,6 +22,7 @@ import {
   stenaCog,
   stenaSailingTicket,
   stenaSignOut,
+  stenaStatisticsBar,
   stenaStatisticsLine,
   stenaStatusNoShow,
   stenaUserMultiple,
@@ -37,7 +38,6 @@ import { Drawer } from "@stenajs-webui/modal";
 import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
 import { SidebarMenuHeading } from "../sidebar-menu/items/SidebarMenuHeading";
 import { SidebarMenuLink } from "../sidebar-menu/items/SidebarMenuLink";
-import { faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { SidebarMenuCollapsible } from "../sidebar-menu/items/SidebarMenuCollapsible";
 import { Story } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
@@ -91,10 +91,16 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
           selected
         />
         <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
-        <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={faChartBar}>
+        <SidebarMenuCollapsible
+          label={"Level 2.5"}
+          leftIcon={stenaStatisticsBar}
+        >
           <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
           <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
-          <SidebarMenuCollapsible label={"Level 3.3"} leftIcon={faChartBar}>
+          <SidebarMenuCollapsible
+            label={"Level 3.3"}
+            leftIcon={stenaStatisticsBar}
+          >
             <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
             <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
           </SidebarMenuCollapsible>
@@ -143,7 +149,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
         </SidebarRailMenu>
       )}
       <NavBar
-        showMenuButton
+        showMenuButton={!pinned}
         onClickMenuButton={open}
         variant={variant}
         left={<NavBarHeading>Stena line</NavBarHeading>}
