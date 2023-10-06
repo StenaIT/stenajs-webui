@@ -1,29 +1,51 @@
 import * as React from "react";
-import { SidebarMenu, SidebarMenuVariant } from "../SidebarMenu";
-import { NavBarSideMenuButton } from "../../nav-bar/NavBarSideMenuButton";
 import { ReactNode } from "react";
+import { Box, Column } from "@stenajs-webui/core";
+import { RailContext } from "./RailContext";
+import { cssColor } from "@stenajs-webui/theme";
+import {
+  IconMenuButton,
+  stenaAngleLeftDouble,
+  stenaHamburger,
+} from "@stenajs-webui/elements";
 
-interface RailMenuProps {
-  variant?: SidebarMenuVariant;
+interface SidebarRailMenuProps {
+  closeButtonVisible?: boolean;
+  onClickCloseButton?: () => void;
   onClickMenuButton?: () => void;
   children?: ReactNode;
 }
 
-export const SidebarRailMenu: React.FC<RailMenuProps> = ({
-  variant,
+export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
+  closeButtonVisible,
+  onClickCloseButton,
   onClickMenuButton,
   children,
 }) => {
   return (
-    <SidebarMenu
-      collapsed
+    <Box
       position={"fixed"}
       left={0}
       top={0}
-      variant={variant}
+      bottom={0}
+      indent={0.5}
+      spacing={1}
+      gap={1}
+      shadow={"popover"}
+      background={cssColor("--lhds-color-ui-50")}
     >
-      <NavBarSideMenuButton onClick={onClickMenuButton} />
-      {children}
-    </SidebarMenu>
+      <IconMenuButton onClick={onClickMenuButton} icon={stenaHamburger} />
+      <Column justifyContent={"space-between"} flex={1} gap={1}>
+        <Column gap={1}>
+          <RailContext.Provider value={true}>{children}</RailContext.Provider>
+        </Column>
+        {closeButtonVisible && (
+          <IconMenuButton
+            icon={stenaAngleLeftDouble}
+            onClick={onClickCloseButton}
+          />
+        )}
+      </Column>
+    </Box>
   );
 };

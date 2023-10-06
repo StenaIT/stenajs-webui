@@ -10,11 +10,11 @@ import {
   stenaStatisticsLine,
   stenaStatusNoShow,
 } from "@stenajs-webui/elements";
-import { SidebarMenuHeading } from "./SidebarMenuHeading";
+import { SidebarMenuHeading } from "./items/SidebarMenuHeading";
 import { SidebarMenu } from "./SidebarMenu";
-import { SidebarMenuLink } from "./SidebarMenuLink";
-import { SidebarMenuCollapsible } from "./SidebarMenuCollapsible";
-import { SidebarMenuSeparator } from "./SidebarMenuSeparator";
+import { SidebarMenuLink } from "./items/SidebarMenuLink";
+import { SidebarMenuCollapsible } from "./items/SidebarMenuCollapsible";
+import { SidebarMenuSeparator } from "./items/SidebarMenuSeparator";
 
 export default {
   title: "panels/SidebarMenu",
