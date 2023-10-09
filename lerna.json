@@ -1,11 +1,10 @@
 {
-  "packages": ["packages/*"],
   "version": "18.12.0",
   "command": {
     "publish": {
       "verifyAccess": false
     }
   },
-  "useWorkspaces": true,
-  "exact": true
+  "exact": true,
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
