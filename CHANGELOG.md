@@ -1,3 +1,55 @@
+# v18.12.0 (Tue Sep 26 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Set line-height to 1.5 [#573](https://github.com/StenaIT/stenajs-webui/pull/573) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v18.11.1 (Thu Sep 14 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix color prop in Cardy. [#601](https://github.com/StenaIT/stenajs-webui/pull/601) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.11.0 (Thu Sep 14 2023)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/theme`
+  - New component: Cardy [#597](https://github.com/StenaIT/stenajs-webui/pull/597) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v18.10.1 (Wed Sep 13 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Update banner default height (spacing = 1) [#593](https://github.com/StenaIT/stenajs-webui/pull/593) ([@esepato](https://github.com/esepato))
+
+#### Authors: 1
+
+- Markus Patoka ([@esepato](https://github.com/esepato))
+
+---
+
 # v18.10.0 (Thu Sep 07 2023)
 
 #### 🚀 Enhancement

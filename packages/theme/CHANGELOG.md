@@ -1,3 +1,27 @@
+# v18.12.0 (Tue Sep 26 2023)
+
+#### 🚀 Enhancement
+
+- Set line-height to 1.5 [#573](https://github.com/StenaIT/stenajs-webui/pull/573) ([@juiceit](https://github.com/juiceit))
+
+#### Authors: 1
+
+- Josefina Andreasson ([@juiceit](https://github.com/juiceit))
+
+---
+
+# v18.11.0 (Thu Sep 14 2023)
+
+#### 🚀 Enhancement
+
+- New component: Cardy [#597](https://github.com/StenaIT/stenajs-webui/pull/597) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.0.0 (Mon Feb 13 2023)
 
 #### 🚀 Enhancement

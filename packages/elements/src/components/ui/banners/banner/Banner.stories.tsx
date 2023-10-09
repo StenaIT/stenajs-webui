@@ -11,10 +11,7 @@ export default {
 
 export const Standard = () => (
   <Box width={"500px"}>
-    <Banner
-      headerText={"This is working."}
-      text={"This is some generic information about something. Well done."}
-    />
+    <Banner headerText={"This is a single line very important message"} />
   </Box>
 );
 
