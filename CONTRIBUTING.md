@@ -4,7 +4,6 @@
 
 ```
 $ yarn
-$ yarn lerna link
 $ yarn build-all
 ```
 
