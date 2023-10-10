@@ -19,13 +19,7 @@ export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = (props) => {
   const isRail = useRailContext();
 
   if (isRail) {
-    return (
-      <RailMenuLink
-        leftIcon={props.leftIcon}
-        onClick={props.onClick}
-        label={props.label}
-      />
-    );
+    return <RailMenuLink {...props} />;
   }
 
   return <MenuButtonLink {...props} />;
