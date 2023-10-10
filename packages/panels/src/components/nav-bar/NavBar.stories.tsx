@@ -128,7 +128,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   return (
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
-        <Column width={"250px"}>
+        <Column>
           <SidebarMenu
             onCloseClick={close}
             pinButtonVisible
