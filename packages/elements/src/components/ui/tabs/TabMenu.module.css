@@ -1,17 +1,11 @@
 .tabMenu {
   --swui-tab-menu-border-color: var(--lhds-color-ui-200);
-  --swui-tab-menu-border-radius: var(--swui-max-border-radius);
-  --swui-tab-menu-border: 2px solid var(--silver-ui);
 
   /*
   Styling
    */
-  gap: var(--swui-metrics-indent);
+  gap: calc(var(--swui-metrics-indent) * 2);
   display: flex;
-  width: fit-content;
-  border-radius: var(--swui-tab-menu-border-radius);
-  border: var(--swui-tab-menu-border);
-  padding: calc(var(--swui-metrics-space) * 0.5);
 
   &.withBorder {
     border-bottom: 1px solid var(--swui-tab-menu-border-color);

@@ -1,12 +1,15 @@
 .tab {
   --swui-tab-height: 32px;
-  --swui-tab-border-radius: var(--swui-max-border-radius);
+  --swui-tab-border-radius: 0;
+  --swui-tab-border-color-hover: var(--lhds-color-ui-300);
+  --swui-tab-border-color-focus: var(--lhds-color-ui-300);
+  --swui-tab-border-color-selected: var(--lhds-color-blue-600);
   --swui-tab-background: var(--lhds-color-ui-200);
   --swui-tab-background-hover: var(--lhds-color-ui-400);
   --swui-tab-background-focus: var(--lhds-color-blue-100);
   --swui-tab-background-selected: var(--lhds-color-blue-200);
-  --swui-tab-label-color: var(--lhds-color-blue-600);
-  --swui-tab-label-color-hover: var(--lhds-color-blue-600);
+  --swui-tab-label-color: var(--lhds-color-ui-900);
+  --swui-tab-label-color-hover: var(--lhds-color-blue-900);
   --swui-tab-label-color-selected: var(--lhds-color-blue-600);
   --swui-tab-label-color-selected-hover: var(--lhds-color-blue-600);
   --swui-tab-outline-color-focus: var(--lhds-color-blue-400);
@@ -14,7 +17,7 @@
   /*
   State variables
    */
-  --current-background: transparent;
+  --current-outer-border-bottom-color: transparent;
   --current-inset-shadow: none;
   --current-label-color: var(--swui-tab-label-color);
 
@@ -35,16 +38,18 @@
   font-weight: var(--swui-font-weight-text-bold);
   border: none;
   cursor: pointer;
-  background-color: var(--current-background);
+  border-bottom: 2px solid var(--current-outer-border-bottom-color);
+  background-color: transparent;
   color: var(--current-label-color);
 
   &:focus-visible {
     outline: 2px solid var(--swui-tab-outline-color-focus);
-    border: none;
+    --current-outer-border-bottom-color: var(--swui-tab-border-color-focus);
+    padding-bottom: 4px;
   }
 
   &.selected {
-    --current-background: var(--swui-tab-background-selected);
+    --current-outer-border-bottom-color: var(--swui-tab-border-color-selected);
     --current-label-color: var(--swui-tab-label-color-selected);
   }
 
@@ -53,7 +58,7 @@
       color: var(--swui-tab-label-color-selected-hover);
     }
     &:not(.selected) {
-      --current-background: var(--swui-tab-background-hover);
+      --current-outer-border-bottom-color: var(--swui-tab-border-color-hover);
       color: var(--swui-tab-label-color-hover);
     }
   }

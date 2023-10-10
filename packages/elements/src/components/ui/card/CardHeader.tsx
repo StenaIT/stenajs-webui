@@ -3,7 +3,6 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "../icon/Icon";
-import { cssColor } from "@stenajs-webui/theme";
 
 export type CardHeaderVariant = "standard" | "compact";
 
@@ -34,7 +33,6 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
       height={variant === "compact" ? 40 : 56}
       justifyContent={"space-between"}
       indent={3}
-      borderBottom={`1px solid ${cssColor("--lhds-color-ui-300")}`}
       {...boxProps}
     >
       <Row alignItems={"center"} gap={variant === "compact" ? 1 : 2}>
@@ -43,10 +41,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
           <Icon icon={leftIcon} size={variant === "compact" ? 16 : 24} />
         )}
         {text && (
-          <Heading
-            variant={variant === "compact" ? "h5" : "h4"}
-            as={headingLevel}
-          >
+          <Heading variant={"h5"} as={headingLevel}>
             {text}
           </Heading>
         )}

@@ -39,8 +39,8 @@
   --lhds-color-red-300: #ff4e70;
   --lhds-color-red-400: #f1002e;
   --lhds-color-red-500: #d70029;
-  --lhds-color-red-600: #b00022;
-  --lhds-color-red-700: #8a0019;
+  --lhds-color-red-600: var(--sjobod);
+  --lhds-color-red-700: var(--tang);
   --lhds-color-red-800: #710015;
   --lhds-color-red-900: #570010;
 
