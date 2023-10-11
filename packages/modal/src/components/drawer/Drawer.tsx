@@ -41,6 +41,12 @@ interface DrawerBaseProps
     | "parentSelector"
   > {
   background?: string;
+
+  /**
+   * When true, there will be a gap between the drawer and the viewport.
+   */
+  floating?: boolean;
+
   zIndex?: number;
   onRequestClose?: () => void;
   /**
@@ -55,6 +61,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   children,
   slideFrom = "left",
   portalTarget,
+  floating,
   ...reactModalProps
 }) => {
   const { height, width } = reactModalProps as FlattenUnion<DrawerProps>;
@@ -69,7 +76,11 @@ export const Drawer: React.FC<DrawerProps> = ({
         beforeClose: styles.beforeClose,
       }}
       className={{
-        base: cx(styles.content, getClassNameForSlide(slideFrom)),
+        base: cx(
+          styles.content,
+          getClassNameForSlide(slideFrom),
+          floating && styles.floating
+        ),
         afterOpen: styles.afterOpen,
         beforeClose: styles.beforeClose,
       }}

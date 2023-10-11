@@ -12,6 +12,11 @@
     position: absolute;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
 
+    &.floating {
+      margin: var(--swui-metrics-space);
+      border-radius: var(--swui-border-radius);
+    }
+
     &:focus-visible {
       outline: unset;
     }

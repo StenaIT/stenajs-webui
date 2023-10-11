@@ -2,6 +2,7 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { FlatButton, stenaTimes } from "@stenajs-webui/elements";
 import { Heading, Row, Space, Spacing } from "@stenajs-webui/core";
+import { cssColor } from "@stenajs-webui/theme";
 
 interface SearchFilterPanelHeaderProps {
   onRequestClose: () => void;
@@ -13,7 +14,12 @@ export const SearchFilterPanelHeader: React.FC<
   SearchFilterPanelHeaderProps
 > = ({ onRequestClose, header = "Filter", contentRight }) => {
   return (
-    <Spacing>
+    <Spacing
+      position={"sticky"}
+      top={0}
+      background={cssColor("--lhds-color-ui-50")}
+      zIndex={100}
+    >
       <Row
         justifyContent={"space-between"}
         alignItems={"center"}
