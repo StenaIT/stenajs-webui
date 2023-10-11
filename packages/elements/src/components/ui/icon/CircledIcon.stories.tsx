@@ -1,17 +1,21 @@
 import * as React from "react";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { Column, Row, Text } from "@stenajs-webui/core";
 import {
-  faBicycle,
-  faCog,
-  faShip,
-  faSpinner,
-} from "@fortawesome/free-solid-svg-icons";
-import { Column, Row, Text, Txt } from "@stenajs-webui/core";
-import { CircledIcon, CircledIconProps } from "./CircledIcon";
+  CircledIcon,
+  CircledIconProps,
+  CircledIconSizeVariant,
+} from "./CircledIcon";
 import { Story } from "@storybook/react";
 import {
   colorListControl,
   disabledControl,
 } from "../../../storybook-helpers/storybook-controls";
+import {
+  stenaBusinessInvoice,
+  stenaCopyDocument,
+  stenaSailingShip,
+} from "../../../icons/ui/IconsUi";
 
 export default {
   title: "elements/CircledIcon",
@@ -23,12 +27,31 @@ export default {
 };
 
 export const Demo: Story<CircledIconProps> = (props) => (
-  <CircledIcon {...props} icon={faCog} />
+  <CircledIcon {...props} icon={stenaCopyDocument} />
 );
 
 export const WithColor = () => (
-  <CircledIcon icon={faCog} iconColor={"--modern-red"} />
+  <CircledIcon
+    icon={stenaCopyDocument}
+    iconColor={"--modern-red"}
+    backgroundColor={"--lhds-color-red-100"}
+  />
 );
+
+export const Sizes = () => {
+  const sizes: Array<CircledIconSizeVariant> = ["medium", "small", "smaller"];
+
+  return (
+    <Column gap={4}>
+      {sizes.map((size) => (
+        <Column gap={2}>
+          <Text>{size}</Text>
+          <CircledIcon icon={stenaCopyDocument} size={size} />
+        </Column>
+      ))}
+    </Column>
+  );
+};
 
 export const WithSpin = () => <CircledIcon icon={faSpinner} spin={true} />;
 
@@ -38,11 +61,11 @@ export const HorizontalFlip = () => (
   <Column gap={4}>
     <Row gap={2} alignItems={"center"}>
       <Text>Normal</Text>
-      <CircledIcon icon={faBicycle} />
+      <CircledIcon icon={stenaBusinessInvoice} />
     </Row>
     <Row gap={2} alignItems={"center"}>
       <Text>Flipped</Text>
-      <CircledIcon icon={faBicycle} flip={"horizontal"} />
+      <CircledIcon icon={stenaBusinessInvoice} flip={"horizontal"} />
     </Row>
   </Column>
 );
@@ -51,11 +74,11 @@ export const VerticalFlip = () => (
   <Column gap={4}>
     <Row gap={2} alignItems={"center"}>
       <Text>Normal</Text>
-      <CircledIcon icon={faBicycle} />
+      <CircledIcon icon={stenaSailingShip} />
     </Row>
     <Row gap={2} alignItems={"center"}>
       <Text>Flipped</Text>
-      <CircledIcon icon={faBicycle} flip={"vertical"} />
+      <CircledIcon icon={stenaSailingShip} flip={"vertical"} />
     </Row>
   </Column>
 );
@@ -64,34 +87,15 @@ export const WithRotation = () => (
   <Row gap={2}>
     <Column alignItems={"center"} gap={2}>
       <Text>90</Text>
-      <CircledIcon icon={faShip} rotation={90} />
+      <CircledIcon icon={stenaSailingShip} rotation={90} />
     </Column>
     <Column alignItems={"center"} gap={2}>
       <Text>180</Text>
-      <CircledIcon icon={faShip} rotation={180} />
+      <CircledIcon icon={stenaSailingShip} rotation={180} />
     </Column>
     <Column alignItems={"center"} gap={2}>
       <Text>270</Text>
-      <CircledIcon icon={faShip} rotation={270} />
+      <CircledIcon icon={stenaSailingShip} rotation={270} />
     </Column>
   </Row>
-);
-
-export const WithTransform = () => (
-  <CircledIcon icon={faBicycle} transform={{ flipX: true, rotate: 90 }} />
-);
-
-export const WithDisplay = () => (
-  <>
-    <p>
-      <Txt>This </Txt>
-      <CircledIcon icon={faBicycle} display={"inline"} />
-      <Txt> is inline</Txt>
-    </p>
-    <p style={{ display: "inline-block" }}>
-      <Txt>This </Txt>
-      <CircledIcon icon={faBicycle} />
-      <Txt> is not inline</Txt>
-    </p>
-  </>
 );

@@ -3,23 +3,22 @@ import * as React from "react";
 import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { Icon, IconProps } from "./Icon";
 
-type SizeVariant = "small" | "medium";
+export type CircledIconSizeVariant = "medium" | "small";
 
 export interface CircledIconProps extends Omit<IconProps, "size" | "color"> {
-  iconSize?: number;
   backgroundColor?: CssPropColor;
   iconColor?: CssPropColor;
-  sizeVariant?: SizeVariant;
+  size?: CircledIconSizeVariant;
 }
 
 export const CircledIcon: React.FC<CircledIconProps> = ({
   backgroundColor = "--lhds-color-ui-200",
   iconColor = "--swui-text-primary-color",
-  sizeVariant = "medium",
-  iconSize = 20,
+  size = "medium",
   ...iconProps
 }) => {
-  const backgroundSize = getBackgroundSize(sizeVariant);
+  const backgroundSize = getBackgroundSize(size);
+  const iconSize = getIconSize(size);
 
   return (
     <Box
@@ -35,12 +34,23 @@ export const CircledIcon: React.FC<CircledIconProps> = ({
   );
 };
 
-const getBackgroundSize = (size: SizeVariant): string => {
+const getBackgroundSize = (size: CircledIconSizeVariant): string => {
   switch (size) {
     case "small":
       return "32px";
     case "medium":
       return "40px";
+    default:
+      return exhaustSwitchCaseElseThrow(size);
+  }
+};
+
+const getIconSize = (size: CircledIconSizeVariant): number => {
+  switch (size) {
+    case "small":
+      return 16;
+    case "medium":
+      return 20;
     default:
       return exhaustSwitchCaseElseThrow(size);
   }

@@ -1,8 +1,9 @@
 import { Box, Heading, Row, useBoolean } from "@stenajs-webui/core";
 import * as React from "react";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import { PrimaryButton, stenaPlugin } from "@stenajs-webui/elements";
 import { Drawer } from "./Drawer";
 import { cssColor } from "@stenajs-webui/theme";
+import { DrawerHeader } from "./DrawerHeader";
 
 export default {
   title: "modal/Drawer",
@@ -15,6 +16,11 @@ export const Standard = () => {
   return (
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close}>
+        <DrawerHeader
+          onRequestClose={close}
+          header={"Heading"}
+          icon={stenaPlugin}
+        />
         <Box background={"#9198e5"} flexGrow={1} spacing={2} indent={2}>
           Drawer content
         </Box>
