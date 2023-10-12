@@ -1,21 +1,16 @@
-import { DivProps } from "@stenajs-webui/core";
-import cx from "classnames";
+import { Box, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import styles from "./Collapsible.module.css";
-import {
-  CollapsibleContent,
-  CollapsibleSimpleContentProps,
-} from "./CollapsibleContent";
 
-export interface CollapsibleGroupHeadingProps
-  extends CollapsibleSimpleContentProps,
-    DivProps {}
+export interface CollapsibleGroupHeadingProps {
+  children: string;
+}
 
 export const CollapsibleGroupHeading: React.FC<
   CollapsibleGroupHeadingProps
-> = ({ className, ...props }) => (
-  <CollapsibleContent
-    className={cx(styles.groupHeading, className)}
-    {...props}
-  />
+> = ({ children }) => (
+  <Box spacing indent>
+    <Text variant={"overline"} size={"smaller"}>
+      {children}
+    </Text>
+  </Box>
 );

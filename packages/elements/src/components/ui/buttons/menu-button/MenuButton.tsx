@@ -24,6 +24,7 @@ export interface MenuButtonProps extends ButtonElementProps {
   expandable?: boolean;
   selected?: boolean;
   leftIcon?: IconDefinition;
+  left?: ReactNode;
   right?: ReactNode;
   variant?: MenuButtonVariant;
   children?: ReactNode;
@@ -41,6 +42,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       children,
       disabled,
       variant = "standard",
+      left,
       right,
       ...buttonProps
     },
@@ -54,7 +56,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
           aria-expanded={expanded}
           className={cx(styles.menuButton)}
           width={"100%"}
-          borderRadius={"99rem"}
+          borderRadius={"var(--swui-max-border-radius)"}
           overflow={"hidden"}
         >
           <button
@@ -75,7 +77,11 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
               alignItems={"center"}
               indent={label ? 2 : 1}
             >
-              <MenuButtonContent label={label} leftIcon={leftIcon} />
+              <MenuButtonContent
+                label={label}
+                leftIcon={leftIcon}
+                left={left}
+              />
               <Row gap={1} alignItems={"center"}>
                 {right && <Row alignItems={"center"}>{right}</Row>}
                 {expandable && (
