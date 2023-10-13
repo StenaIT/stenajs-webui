@@ -1,8 +1,9 @@
 import * as React from "react";
+import { ReactNode } from "react";
 import { Heading, Row, Space, Spacing } from "@stenajs-webui/core";
 import { FlatButton, Icon, stenaTimes } from "@stenajs-webui/elements";
-import { ReactNode } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface DrawerHeaderProps {
   onRequestClose: () => void;
@@ -18,7 +19,12 @@ export const DrawerHeader: React.FC<DrawerHeaderProps> = ({
   icon,
 }) => {
   return (
-    <Spacing>
+    <Spacing
+      position={"sticky"}
+      top={0}
+      zIndex={100}
+      background={cssColor("--lhds-color-ui-50")}
+    >
       <Row
         justifyContent={"space-between"}
         alignItems={"center"}
