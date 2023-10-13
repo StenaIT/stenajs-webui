@@ -50,6 +50,48 @@ export const Overview = () => {
   return <StandardTable items={items} config={config} />;
 };
 
+export const DefaultTextSize = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    defaultTextSize: "smaller",
+    checkboxDisabledResolver: (item) => item.id === "125",
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
+};
+
+export const DefaultCellRenderer = () => {
+  const { items, onChangeNumPassengers } = useListState(mockedItems);
+
+  const config: StandardTableConfig<ListItem, keyof ListItem> = {
+    ...standardTableConfigForStories,
+    defaultCellRenderer: ({ label }) => (
+      <Indent>
+        <Tag label={label} variant={"success"} />
+      </Indent>
+    ),
+    checkboxDisabledResolver: (item) => item.id === "125",
+    columns: {
+      ...standardTableConfigForStories.columns,
+      numPassengers: {
+        ...standardTableConfigForStories.columns.numPassengers,
+        onChange: onChangeNumPassengers,
+      },
+    },
+  };
+
+  return <StandardTable items={items} config={config} />;
+};
+
 export const Variants = () => {
   const { items } = useListState(mockedItems);
 
