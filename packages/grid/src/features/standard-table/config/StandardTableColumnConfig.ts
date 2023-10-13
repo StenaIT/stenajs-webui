@@ -6,6 +6,7 @@ import {
 } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
 import { StandardTableOnKeyDownArgs } from "./StandardTableConfig";
+import { TextSize } from "@stenajs-webui/core";
 
 export type StandardTableColumnConfig<
   TItem,
@@ -211,6 +212,7 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
   gridCell: UseGridCellResult<string>;
   isEditable?: boolean;
   isSelected: boolean;
+  textSize?: TextSize;
   /**
    * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
    */
@@ -222,21 +224,8 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
  * Therefor, it can not know "value: TItemValue", since it has not been defined yet.
  */
 export type DefaultStandardTableCellRenderer<TItem> = (
-  arg: DefaultStandardTableCellRendererArgObject<TItem>
+  arg: StandardTableCellRendererArgObject<unknown, TItem>
 ) => ReactNode;
-
-export interface DefaultStandardTableCellRendererArgObject<TItem> {
-  label: string;
-  item: TItem;
-  itemKey: string;
-  gridCell: UseGridCellResult<string>;
-  isEditable?: boolean;
-  isSelected: boolean;
-  /**
-   * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
-   */
-  zIndex?: number | string;
-}
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
 
