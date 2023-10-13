@@ -58,6 +58,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     return selectedIds.indexOf(itemKey) >= 0;
   }, [itemKey, selectedIds]);
 
+  const { defaultCellRenderer, defaultTextSize } = useStandardTableConfig();
+
   const {
     itemValueResolver,
     itemLabelFormatter,
@@ -132,20 +134,25 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const content = useMemo(
     () =>
-      renderCell ? (
-        renderCell({
-          label,
-          value: itemValue,
-          item,
-          gridCell,
-          isEditable: editable,
-          isSelected,
-          zIndex: currentZIndex,
-          itemKey,
-        })
-      ) : (
-        <TextCell label={label} />
-      ),
+      renderCell?.({
+        label,
+        value: itemValue,
+        item,
+        gridCell,
+        isEditable: editable,
+        isSelected,
+        zIndex: currentZIndex,
+        itemKey,
+      }) ??
+      defaultCellRenderer?.({
+        label,
+        item,
+        gridCell,
+        isEditable: editable,
+        isSelected,
+        zIndex: currentZIndex,
+        itemKey,
+      }) ?? <TextCell label={label} size={defaultTextSize} />,
     [
       renderCell,
       label,
@@ -156,6 +163,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       isSelected,
       currentZIndex,
       itemKey,
+      defaultCellRenderer,
+      defaultTextSize,
     ]
   );
 
