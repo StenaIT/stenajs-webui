@@ -11,7 +11,7 @@ import {
 
 export interface ActionMenuItemContentProps
   extends DivProps,
-    MenuButtonContentProps {
+    Omit<MenuButtonContentProps, "left"> {
   leftIcon?: IconDefinition;
   disabled?: boolean;
   right?: ReactNode;

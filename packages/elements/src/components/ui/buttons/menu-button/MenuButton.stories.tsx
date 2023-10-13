@@ -8,7 +8,7 @@ import {
   stenaExternalLink,
   stenaStatisticsBar,
 } from "../../../../icons/ui/IconsUi";
-import { IconMenuButton } from "./IconMenuButton";
+import { InputSpinner } from "../../spinner/InputSpinner";
 
 export default {
   title: "elements/MenuButton",
@@ -92,7 +92,7 @@ export const Overview = () => {
         <Text>I am great really content!</Text>
       </MenuButton>
 
-      <IconMenuButton icon={stenaStatisticsBar} />
+      <MenuButton left={<InputSpinner />} label={"Content left"} />
     </Column>
   );
 };

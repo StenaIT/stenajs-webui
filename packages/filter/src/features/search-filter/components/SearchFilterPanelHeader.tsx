@@ -11,5 +11,14 @@ interface SearchFilterPanelHeaderProps {
 export const SearchFilterPanelHeader: React.FC<
   SearchFilterPanelHeaderProps
 > = ({ header = "Filter", ...props }) => {
-  return <DrawerHeader {...props} header={header} />;
+  return (
+    <Spacing
+      position={"sticky"}
+      top={0}
+      background={cssColor("--lhds-color-ui-50")}
+      zIndex={100}
+    >
+      <DrawerHeader {...props} header={header} />
+    </Spacing>
+  );
 };

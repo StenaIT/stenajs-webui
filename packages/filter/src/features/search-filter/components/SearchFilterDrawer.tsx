@@ -31,7 +31,12 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   }, [actions, dispatch]);
 
   return (
-    <Drawer isOpen={open} onRequestClose={closeDrawer} {...drawerProps}>
+    <Drawer
+      floating
+      isOpen={open}
+      onRequestClose={closeDrawer}
+      {...drawerProps}
+    >
       <Column
         height={"100%"}
         borderRadius={"var(--swui-border-radius)"}
