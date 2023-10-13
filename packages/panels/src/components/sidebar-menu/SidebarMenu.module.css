@@ -40,7 +40,7 @@
   /* Styling */
 
   background-color: var(--current-background-color);
-  height: 100vh;
+  height: 100dvh;
 
   button {
     --swui-button-text-color: var(--swui-white);
