@@ -15,7 +15,15 @@
     &.floating {
       margin: var(--swui-metrics-space);
       border-radius: var(--swui-border-radius);
+
+      @media (max-width: 768px) {
+        margin: 0;
+        border-radius: 0;
+      }
     }
+
+
+
 
     &:focus-visible {
       outline: unset;
