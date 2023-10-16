@@ -28,6 +28,17 @@
   --swui-button-border-radius: 16px;
   --swui-button-border-radius-icon-only: 16px;
 
+  &:not(.initials) {
+    @media (max-width: 512px) {
+      .iconWrapper {
+        margin-right: 0;
+      }
+      .label {
+        display: none;
+      }
+    }
+  }
+
   &.initials {
     width: 32px;
   }
