@@ -1,12 +1,11 @@
-import { ButtonElementProps, DivProps } from "@stenajs-webui/core";
+import { ButtonElementProps } from "@stenajs-webui/core";
 import { MenuButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { forwardRef } from "react";
 import { CollapsibleEmptyContent } from "./CollapsibleEmptyContent";
 
-export interface CollapsibleProps extends Omit<DivProps, "onClick"> {
+export interface CollapsibleProps extends Omit<ButtonElementProps, "value"> {
   label: string;
-  onClick?: ButtonElementProps["onClick"];
   contentLeft?: React.ReactNode;
   contentRight?: React.ReactNode;
   collapsed?: boolean;
@@ -25,11 +24,13 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
       disabled = false,
       children,
       autoFocus = false,
+      ...props
     },
     ref
   ) {
     return (
       <MenuButton
+        {...props}
         autoFocus={autoFocus}
         ref={ref}
         label={label}
