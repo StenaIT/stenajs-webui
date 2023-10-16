@@ -1,4 +1,4 @@
-import { Column, DivProps, Indent, Row, Spacing } from "@stenajs-webui/core";
+import { Column, DivProps, Indent, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import { forwardRef, ReactNode } from "react";
 
@@ -62,7 +62,6 @@ export const ActionMenuItemContent = forwardRef<
           </Row>
         )}
       </Column>
-      <Spacing />
     </>
   );
 });
