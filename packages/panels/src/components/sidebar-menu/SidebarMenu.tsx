@@ -51,13 +51,15 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       >
         <Column justifyContent={"space-between"} flex={1} gap={1}>
           <Column gap={1}>{children}</Column>
-          {pinButtonVisible && (
+          {(bottomItems || pinButtonVisible) && (
             <Column gap={1}>
               {bottomItems}
-              <SidebarMenuPinButton
-                isPinned={isPinned}
-                onClick={onClickPinButton}
-              />
+              {pinButtonVisible && (
+                <SidebarMenuPinButton
+                  isPinned={isPinned}
+                  onClick={onClickPinButton}
+                />
+              )}
               <Space />
             </Column>
           )}
