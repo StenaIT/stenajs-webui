@@ -38,6 +38,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
       spinnerClassName,
       leftWrapperClassName,
       rightWrapperClassName,
+      responsiveIconOnly,
       ...buttonProps
     },
     ref
@@ -87,6 +88,7 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
           leftWrapperClassName={leftWrapperClassName}
           rightWrapperClassName={rightWrapperClassName}
           size={size}
+          responsiveIconOnly={responsiveIconOnly}
         />
       </Button>
     );

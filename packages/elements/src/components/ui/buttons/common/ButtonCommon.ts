@@ -37,4 +37,6 @@ export interface CommonButtonProps {
   leftWrapperClassName?: string;
   /** Right wrapper class name */
   rightWrapperClassName?: string;
+  /** Show only icon when small screen */
+  responsiveIconOnly?: boolean;
 }
