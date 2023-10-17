@@ -10,11 +10,7 @@ export const SidebarMenuCloseButtonRow: React.FC<
   SidebarMenuCloseButtonRowProps
 > = ({ onClick }) => {
   return (
-    <Column
-      top={0}
-      position={"sticky"}
-      background={cssColor("--lhds-color-ui-50")}
-    >
+    <Column background={cssColor("--lhds-color-ui-50")}>
       <Space />
       <Row
         justifyContent={"space-between"}

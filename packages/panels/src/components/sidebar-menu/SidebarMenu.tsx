@@ -39,8 +39,11 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       {...boxProps}
     >
       <SidebarMenuCloseButtonRow onClick={onCloseClick} />
-
-      <Box height={"100%"} background={"var(--current-background-color)"}>
+      <Box
+        height={"100%"}
+        background={"var(--current-background-color)"}
+        overflow={"auto"}
+      >
         <Column justifyContent={"space-between"} flex={1} gap={1}>
           <Column gap={1}>{children}</Column>
           {pinButtonVisible && (
