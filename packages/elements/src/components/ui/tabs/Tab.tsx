@@ -24,6 +24,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(
     rightIcon,
     success = false,
     tabIndex = 0, // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
+    responsiveIconOnly,
     ...buttonProps
   },
   ref
@@ -53,6 +54,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(
         right={right}
         rightIcon={rightIcon}
         label={buttonLabel}
+        responsiveIconOnly={responsiveIconOnly}
       />
     </button>
   );

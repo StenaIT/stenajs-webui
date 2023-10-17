@@ -1,29 +1,33 @@
-import { Column, Space } from "@stenajs-webui/core";
+import { Column } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
   NotificationHeader,
   NotificationHeaderProps,
 } from "./NotificationHeader";
+import styles from "./Notification.module.css";
+import cx from "classnames";
+
+export type NotificationVariant = "standard" | "danger";
 
 export interface NotificationProps extends NotificationHeaderProps {
   children?: ReactNode;
 }
 
 export const Notification: React.FC<NotificationProps> = ({
+  variant = "standard",
   children,
+  unread,
   ...headerProps
 }) => (
-  <Column
-    background={"var(--lhds-color-ui-50)"}
-    borderRadius={"var(--swui-border-radius)"}
-  >
-    <NotificationHeader {...headerProps} />
-    {children && (
-      <Column indent={3}>
-        {children}
-        <Space num={2} />
-      </Column>
+  <div
+    className={cx(
+      styles.notification,
+      styles[variant],
+      unread && styles.unread
     )}
-  </Column>
+  >
+    <NotificationHeader {...headerProps} unread={unread} variant={variant} />
+    {children && <Column className={styles.body}>{children}</Column>}
+  </div>
 );

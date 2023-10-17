@@ -1,3 +1,4 @@
+import * as React from "react";
 import { ReactNode } from "react";
 import {
   UseGridCellOptions,
@@ -5,7 +6,7 @@ import {
 } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
 import { StandardTableOnKeyDownArgs } from "./StandardTableConfig";
-import * as React from "react";
+import { TextSize } from "@stenajs-webui/core";
 
 export type StandardTableColumnConfig<
   TItem,
@@ -211,11 +212,20 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
   gridCell: UseGridCellResult<string>;
   isEditable?: boolean;
   isSelected: boolean;
+  textSize?: TextSize;
   /**
    * The z-index used for that cell. Usable if the cell has a popover which should get same z-index for example.
    */
   zIndex?: number | string;
 }
+
+/**
+ * Default renderer. This is defined in config, not for a specific column.
+ * Therefor, it can not know "value: TItemValue", since it has not been defined yet.
+ */
+export type DefaultStandardTableCellRenderer<TItem> = (
+  arg: StandardTableCellRendererArgObject<unknown, TItem>
+) => ReactNode;
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
 

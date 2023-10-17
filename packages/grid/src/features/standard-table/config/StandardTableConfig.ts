@@ -2,10 +2,12 @@ import { ReactNode } from "react";
 import { UseGridCellOptions } from "../../grid-cell/hooks/UseGridCell";
 import { SortOrderIconVariant } from "../../table-ui/components/table/SortOrderIcon";
 import {
+  DefaultStandardTableCellRenderer,
   StandardTableColumnConfig,
   StandardTableColumnConfigWithGroups,
 } from "./StandardTableColumnConfig";
 import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
+import { TextSize } from "@stenajs-webui/core";
 
 export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
@@ -220,6 +222,20 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    * @default amount
    */
   sortOrderIconVariant?: SortOrderIconVariant;
+
+  /**
+   * This can be used to override default text renderer for the whole table.
+   * Column cellRenderer will still override this. Since this is global for the table, and not local to a column,
+   * the type of itemValue can not be known. It should use `label` as source of text instead.
+   * If omitted, TextCell is used as usual.
+   */
+  defaultCellRenderer?: DefaultStandardTableCellRenderer<TItem>;
+
+  /**
+   * This config specifies the text size to be used by the default TextCell component.
+   * If omitted, "normal" is used.
+   */
+  defaultTextSize?: TextSize;
 }
 
 export interface RowBackgroundResolverColorCombination {

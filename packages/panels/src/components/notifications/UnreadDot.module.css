@@ -1,0 +1,13 @@
+.unreadDot {
+  position: relative;
+
+  .dot {
+    top: 1px;
+    right: 1px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--swui-max-border-radius);
+    background: var(--lhds-color-blue-500);
+  }
+}

@@ -30,6 +30,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onValueChange,
       value = false,
       size = "standard",
+      className,
       ...inputProps
     },
     ref
@@ -71,7 +72,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <input
         type={"checkbox"}
-        className={cx(styles.checkbox, styles[size])}
+        className={cx(styles.checkbox, styles[size], className)}
         checked={value}
         onChange={handleInputChange}
         ref={setRef}

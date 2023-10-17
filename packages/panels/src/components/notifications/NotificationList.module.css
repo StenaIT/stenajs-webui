@@ -1,0 +1,6 @@
+.notificationList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--lhds-color-ui-200);
+}

@@ -29,6 +29,7 @@ export const PrimaryButtonLink = forwardRef<
     rightIcon,
     right,
     variant = "normal",
+    responsiveIconOnly,
     ...anchorProps
   },
   ref
@@ -68,6 +69,7 @@ export const PrimaryButtonLink = forwardRef<
         right={right}
         rightIcon={rightIcon}
         label={buttonLabel}
+        responsiveIconOnly={responsiveIconOnly}
       />
     </a>
   );
