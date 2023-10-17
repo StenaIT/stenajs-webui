@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Property } from "csstype";
 import * as React from "react";
 import { forwardRef } from "react";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface SeparatorLineProps {
   color?: Property.Color;
@@ -32,7 +33,7 @@ const SeparatorLineComponent = styled.hr<SeparatorLineComponentProps>`
 export const SeparatorLine = forwardRef<HTMLHRElement, SeparatorLineProps>(
   (
     {
-      color = "var(--lhds-color-ui-300)",
+      color = cssColor("--lhds-color-ui-300"),
       size = "100%",
       width = "1px",
       vertical = false,

@@ -1,6 +1,7 @@
 import { Box, BoxProps, Column, Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
+import { ReactNode } from "react";
 import styles from "./SidebarMenu.module.css";
 import {
   SidebarMenuCloseButtonRow,
@@ -16,6 +17,7 @@ export interface SidebarMenuProps extends BoxProps {
   variant?: SidebarMenuVariant;
   pinButtonVisible?: boolean;
   isPinned?: boolean;
+  bottomItems?: ReactNode;
   onClickPinButton?: () => void;
 }
 
@@ -26,6 +28,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   variant = "standard",
   pinButtonVisible,
   onClickPinButton,
+  bottomItems,
   isPinned,
   ...boxProps
 }) => {
@@ -49,7 +52,8 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         <Column justifyContent={"space-between"} flex={1} gap={1}>
           <Column gap={1}>{children}</Column>
           {pinButtonVisible && (
-            <Column>
+            <Column gap={1}>
+              {bottomItems}
               <SidebarMenuPinButton
                 isPinned={isPinned}
                 onClick={onClickPinButton}

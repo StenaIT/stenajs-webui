@@ -8,12 +8,15 @@ import {
   stenaAngleLeftDouble,
   stenaHamburger,
 } from "@stenajs-webui/elements";
+import { SidebarMenuLink } from "../items/SidebarMenuLink";
 
 interface SidebarRailMenuProps {
   closeButtonVisible?: boolean;
   onClickCloseButton?: () => void;
   onClickMenuButton?: () => void;
   children?: ReactNode;
+  bottomItems?: ReactNode;
+  unpinButtonTitle?: string;
 }
 
 export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
@@ -21,6 +24,8 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
   onClickCloseButton,
   onClickMenuButton,
   children,
+  bottomItems,
+  unpinButtonTitle = "Unpin menu",
 }) => {
   return (
     <Box
@@ -39,12 +44,20 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
         <Column gap={1}>
           <RailContext.Provider value={true}>{children}</RailContext.Provider>
         </Column>
-        {closeButtonVisible && (
-          <IconMenuButton
-            icon={stenaAngleLeftDouble}
-            onClick={onClickCloseButton}
-          />
-        )}
+        <Column gap={1}>
+          {(bottomItems || closeButtonVisible) && (
+            <RailContext.Provider value={true}>
+              {bottomItems}
+              {closeButtonVisible && (
+                <SidebarMenuLink
+                  leftIcon={stenaAngleLeftDouble}
+                  label={unpinButtonTitle}
+                  onClick={onClickCloseButton}
+                />
+              )}
+            </RailContext.Provider>
+          )}
+        </Column>
       </Column>
     </Box>
   );
