@@ -16,7 +16,7 @@ interface SidebarRailMenuProps {
   onClickMenuButton?: () => void;
   children?: ReactNode;
   bottomItems?: ReactNode;
-  unpinButtonTitle?: string;
+  closeButtonTitle?: string;
 }
 
 export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
@@ -25,7 +25,7 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
   onClickMenuButton,
   children,
   bottomItems,
-  unpinButtonTitle = "Unpin menu",
+  closeButtonTitle = "Unpin menu",
 }) => {
   return (
     <Box
@@ -51,7 +51,7 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
               {closeButtonVisible && (
                 <SidebarMenuLink
                   leftIcon={stenaAngleLeftDouble}
-                  label={unpinButtonTitle}
+                  label={closeButtonTitle}
                   onClick={onClickCloseButton}
                 />
               )}
