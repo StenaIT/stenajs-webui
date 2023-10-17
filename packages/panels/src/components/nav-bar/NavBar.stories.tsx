@@ -19,9 +19,12 @@ import {
   stenaBusinessClaim,
   stenaBusinessInvoice,
   stenaCalendar,
+  stenaClock,
   stenaCog,
+  stenaHelp,
   stenaSailingTicket,
   stenaSignOut,
+  stenaSlidersMini,
   stenaStatisticsBar,
   stenaStatisticsLine,
   stenaStatusNoShow,
@@ -125,6 +128,26 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
     </>
   );
 
+  const bottomItems = (
+    <>
+      <SidebarMenuLink
+        leftIcon={stenaClock}
+        label={"Timetable"}
+        onClick={() => alert("Click on quick guide")}
+      />
+      <SidebarMenuLink
+        leftIcon={stenaHelp}
+        label={"Help"}
+        onClick={() => alert("Click on contact")}
+      />
+      <SidebarMenuLink
+        leftIcon={stenaSlidersMini}
+        label={"Settings"}
+        onClick={() => alert("Click on contact")}
+      />
+    </>
+  );
+
   return (
     <div>
       <Drawer isOpen={isOpen} onRequestClose={close} width={"250px"}>
@@ -134,6 +157,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
             pinButtonVisible
             onClickPinButton={togglePin}
             isPinned={pinned}
+            bottomItems={bottomItems}
           >
             {sidebarMenuItems}
           </SidebarMenu>
@@ -144,6 +168,7 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
           onClickMenuButton={open}
           closeButtonVisible
           onClickCloseButton={unpin}
+          bottomItems={bottomItems}
         >
           {sidebarMenuItems}
         </SidebarRailMenu>
