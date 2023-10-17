@@ -27,6 +27,19 @@
   }
 }
 
+.responsiveIconOnly {
+  @media (max-width: 512px) {
+    &.leftWrapper {
+      margin-right: 0;
+    }
+
+    &.label,
+    &.rightWrapper {
+      display: none;
+    }
+  }
+}
+
 .spinnerLeft {
   display: flex;
   align-items: center;

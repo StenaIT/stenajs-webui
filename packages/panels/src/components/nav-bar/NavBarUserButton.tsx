@@ -21,6 +21,7 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
   initials,
   icon = stenaUserCircle,
   iconClassName,
+  responsiveIconOnly = initials == null,
   ...buttonProps
 }) => {
   return (
@@ -33,6 +34,7 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
       )}
       leftIcon={username != null ? icon : undefined}
       label={initials ?? username}
+      responsiveIconOnly={responsiveIconOnly}
       disableArrow
     />
   );

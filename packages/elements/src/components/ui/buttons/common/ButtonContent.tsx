@@ -22,6 +22,7 @@ export interface ButtonContentProps {
   leftWrapperClassName?: string;
   rightWrapperClassName?: string;
   size?: ButtonSize;
+  responsiveIconOnly?: boolean;
 }
 
 export const ButtonContent: React.FC<ButtonContentProps> = ({
@@ -38,12 +39,18 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
   leftWrapperClassName,
   rightWrapperClassName,
   size = "medium",
+  responsiveIconOnly = false,
 }) => {
   return (
     <>
       {(success || loading || leftIcon || left) && (
         <div
-          className={cx(styles.leftWrapper, styles[size], leftWrapperClassName)}
+          className={cx(
+            styles.leftWrapper,
+            styles[size],
+            leftWrapperClassName,
+            responsiveIconOnly && styles.responsiveIconOnly
+          )}
         >
           {success ? (
             <FontAwesomeIcon
@@ -72,7 +79,15 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
       )}
 
       {label && (
-        <span className={cx(styles.label, labelClassName)}>{label}</span>
+        <span
+          className={cx(
+            styles.label,
+            labelClassName,
+            responsiveIconOnly && styles.responsiveIconOnly
+          )}
+        >
+          {label}
+        </span>
       )}
 
       {(right || rightIcon) && (
@@ -80,7 +95,8 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           className={cx(
             styles.rightWrapper,
             styles[size],
-            rightWrapperClassName
+            rightWrapperClassName,
+            responsiveIconOnly && styles.responsiveIconOnly
           )}
         >
           {right ? (
