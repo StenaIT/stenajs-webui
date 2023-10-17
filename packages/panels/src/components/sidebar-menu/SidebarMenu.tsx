@@ -38,13 +38,11 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
       }}
       {...boxProps}
     >
-      <Space num={1} />
       <SidebarMenuCloseButtonRow onClick={onCloseClick} />
-
       <Box
-        className={styles.sidebarMenuContent}
         height={"100%"}
         background={"var(--current-background-color)"}
+        overflow={"auto"}
       >
         <Column justifyContent={"space-between"} flex={1} gap={1}>
           <Column gap={1}>{children}</Column>
