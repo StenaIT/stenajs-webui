@@ -54,6 +54,7 @@
   .button {
     border: 0;
     padding: 4px 0;
+    cursor: pointer;
     background: var(--current-background-color);
     min-height: var(--swui-menu-button-item-height);
     min-width: var(--swui-menu-button-item-height);
