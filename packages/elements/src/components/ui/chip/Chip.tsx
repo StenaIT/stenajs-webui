@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
 import { getDataProps } from "@stenajs-webui/core";
-import { stenaTimes } from "../../../icons/ui/IconsUi";
+import { stenaTimesThick } from "../../../icons/ui/IconsUi";
 
 export type ChipVariant = "primary" | "secondary";
 
@@ -57,7 +57,9 @@ export const Chip: React.FC<ChipProps> = ({
           className={cx(styles.chipCell, styles.close)}
           onClick={onClickRemove}
         >
-          <Icon icon={stenaTimes} size={10} />
+          <div className={styles.circle}>
+            <Icon icon={stenaTimesThick} size={8} />
+          </div>
         </button>
       )}
     </div>
