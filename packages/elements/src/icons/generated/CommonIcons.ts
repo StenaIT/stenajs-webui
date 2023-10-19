@@ -2460,7 +2460,7 @@ export const stenaStatusMissing: IconDefinition = {
   prefix: "fal",
 };
 
-export const stenaStatusNoshow: IconDefinition = {
+export const stenaStatusNoShow: IconDefinition = {
   icon: [
     24,
     24,

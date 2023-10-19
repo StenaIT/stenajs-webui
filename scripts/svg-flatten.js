@@ -53,9 +53,8 @@ async function readSvgFile(fullSvgFilePath) {
 }
 
 function getIconCategoryFileName(fullFilePath) {
-  const p = fullFilePath.split("scripts/icons/");
-  const p2 = p[1].split("/");
-  return upperFirst(camelCase(p2[0])) + ".ts";
+  const parentDir = path.basename(path.dirname(fullFilePath));
+  return upperFirst(camelCase(parentDir)) + ".ts";
 }
 
 async function createIconDefinition(svgString, basenameFile) {
