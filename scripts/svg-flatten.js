@@ -36,7 +36,8 @@ async function generateIcons() {
 
   const allGroupFileNames = Object.keys(byGroup);
 
-  emptyDir(baseTargetPath);
+  fs.rmSync(baseTargetPath, { recursive: true });
+  fs.mkdirSync(baseTargetPath);
 
   allGroupFileNames.forEach((categoryFileName) => {
     createIconCategoryFileIfNotExists(categoryFileName);
@@ -112,28 +113,6 @@ function joinChildPaths(children) {
     }
     return acc;
   }, "");
-}
-
-function emptyDir(dirPath) {
-  const dirContents = fs.readdirSync(dirPath);
-
-  for (const fileOrDirPath of dirContents) {
-    try {
-      const fullPath = path.join(dirPath, fileOrDirPath);
-      const stat = fs.statSync(fullPath);
-      if (stat.isDirectory()) {
-        if (fs.readdirSync(fullPath).length) {
-          emptyDir(fullPath);
-        }
-        fs.rmdirSync(fullPath);
-      } else {
-        fs.unlinkSync(fullPath);
-      }
-    } catch (e) {
-      console.error(e.message);
-      process.exit(1);
-    }
-  }
 }
 
 function createIconCategoryFileIfNotExists(categoryFileName) {
