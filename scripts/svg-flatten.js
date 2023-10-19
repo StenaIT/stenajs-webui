@@ -1,25 +1,49 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase } = require("lodash");
+const { camelCase, upperFirst } = require("lodash");
 const path = require("path");
 const glob = require("glob");
 
-const files = glob.sync(`${__dirname}/assets/**/*.svg`);
-process.stderr.write(`found ${files.length} files\n`);
+const baseTargetPath = "packages/elements/src/icons/generated/";
 
-console.log(
-  `import { IconDefinition } from "@fortawesome/fontawesome-svg-core";`
-);
+const sourceFileBase = `import { IconDefinition } from "@fortawesome/fontawesome-svg-core";`;
 
-files.forEach(async (file) => {
-  const svgString = fs.readFileSync(file, "utf8");
-  const basenameFile = path.basename(file, "svg");
-  const modifiedSvgString = await pathThatSvg(svgString);
+generateIcons();
 
-  const hasFillNone = modifiedSvgString.includes("fill:none");
+function generateIcons() {
+  const files = glob.sync(`${__dirname}/icons/**/*.svg`);
+  console.log(`Found ${files.length} SVG files.\n`);
 
-  const svg = await parse(modifiedSvgString, {
+  return;
+  emptyDir(baseTargetPath);
+
+  files.forEach(async (file) => {
+    const basenameFile = path.basename(file, "svg");
+    const svg = await readSvgFile(file);
+    const iconDefinition = await createIconDefinition(svg, basenameFile);
+    const iconCategoryFileName = getIconCategoryFileName(file);
+    createIconCategoryFileIfNotExists(iconCategoryFileName);
+    writeIconDefinitionToDisk(iconDefinition, iconCategoryFileName);
+  });
+}
+
+async function readSvgFile(fullSvgFilePath) {
+  const svgString = fs.readFileSync(fullSvgFilePath, "utf8");
+  const basenameFile = path.basename(fullSvgFilePath, "svg");
+  return await pathThatSvg(svgString);
+}
+
+function getIconCategoryFileName(fullFilePath) {
+  const p = fullFilePath.split("scripts/icons/");
+  const p2 = p[1].split("/");
+  return upperFirst(camelCase(p2[0])) + ".ts";
+}
+
+async function createIconDefinition(svgString, basenameFile) {
+  const hasFillNone = svgString.includes("fill:none");
+
+  const svg = await parse(svgString, {
     transformNode: (node) => {
       if (hasFillNone && node.attributes["class"] === "st0") {
         node.attributes.d = "";
@@ -38,13 +62,18 @@ files.forEach(async (file) => {
     prefix: "fal",
   };
 
-  console.log(
+  return (
     "export const " +
-      camelCase("stena " + basenameFile) +
-      ": IconDefinition = ",
-    JSON.stringify(iconDefinition) + ";"
+    camelCase("stena " + basenameFile) +
+    ": IconDefinition = " +
+    JSON.stringify(iconDefinition) +
+    ";"
   );
-});
+}
+
+function writeIconDefinitionToDisk(iconDefinition, categoryFileName) {
+  fs.appendFileSync(baseTargetPath + categoryFileName, iconDefinition + "\n");
+}
 
 function joinChildPaths(children) {
   return children.reduce((acc, child) => {
@@ -56,4 +85,35 @@ function joinChildPaths(children) {
     }
     return acc;
   }, "");
+}
+
+function emptyDir(dirPath) {
+  const dirContents = fs.readdirSync(dirPath);
+
+  for (const fileOrDirPath of dirContents) {
+    try {
+      const fullPath = path.join(dirPath, fileOrDirPath);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        if (fs.readdirSync(fullPath).length) {
+          emptyDir(fullPath);
+        }
+        fs.rmdirSync(fullPath);
+      } else {
+        fs.unlinkSync(fullPath);
+      }
+    } catch (e) {
+      console.error(e.message);
+      process.exit(1);
+    }
+  }
+}
+
+function createIconCategoryFileIfNotExists(categoryFileName) {
+  if (!fs.existsSync(baseTargetPath + categoryFileName)) {
+    fs.appendFileSync(
+      baseTargetPath + categoryFileName,
+      sourceFileBase + "\n\n"
+    );
+  }
 }

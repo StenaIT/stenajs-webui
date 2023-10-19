@@ -1,7 +1,10 @@
 import { Column, Row } from "@stenajs-webui/core";
 import * as React from "react";
 import styles from "./UpDownButtons.module.css";
-import { stenaAngleDown, stenaAngleUp } from "../../../icons/ui/IconsUi";
+import {
+  stenaAngleDown,
+  stenaAngleUp,
+} from "../../../icons/generated/CommonIcons";
 import { Icon } from "../icon/Icon";
 
 export interface UpDownButtonsProps {

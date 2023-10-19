@@ -15,7 +15,7 @@ import {
   stenaBusinessInvoice,
   stenaCopyDocument,
   stenaSailingShip,
-} from "../../../icons/ui/IconsUi";
+} from "../../../icons/generated/CommonIcons";
 
 export default {
   title: "elements/CircledIcon",

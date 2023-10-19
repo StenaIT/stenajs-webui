@@ -17,7 +17,7 @@
     "pre-build-check": "yarn check-deps-match && yarn check-imports && yarn lint && yarn check-prettier",
     "post-build-check": "yarn check-circular-deps && yarn check-circular-deps-stories && yarn test && yarn check-builds",
     "watch": "lerna exec --parallel -- yarn start",
-    "generate-svg-icons": "node scripts/svg-flatten.js > packages/elements/src/icons/ui/IconsUi.ts",
+    "generate-svg-icons": "node scripts/svg-flatten.js",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "lint": "eslint --ignore-path .gitignore \"packages/**/src/**/*.ts*\"",
     "test": "jest --config=jest.config.js",

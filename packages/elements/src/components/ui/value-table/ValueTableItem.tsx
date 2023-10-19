@@ -2,7 +2,7 @@ import { BoxProps, Row, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
 import { ReactNode, useMemo } from "react";
-import { stenaCheck } from "../../../icons/ui/IconsUi";
+import { stenaCheck } from "../../../icons/generated/CommonIcons";
 import { Icon } from "../icon/Icon";
 
 export interface ValueTableItemProps {
