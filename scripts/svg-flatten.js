@@ -73,8 +73,10 @@ async function createIconDefinition(svgString, basenameFile) {
     .replace(/[\n\r\t]/g, "")
     .trim();
 
+  const dimensions = getSvgDimensions(svg);
+
   const iconDefinition = {
-    icon: [24, 24, [], "", pathData],
+    icon: [dimensions.width, dimensions.height, [], "", pathData],
     iconName: "random",
     prefix: "fal",
   };
@@ -138,4 +140,15 @@ function createIconCategoryFileIfNotExists(categoryFileName) {
       sourceFileBase + "\n\n"
     );
   }
+}
+
+function getSvgDimensions(svg) {
+  const viewBox = svg.attributes.viewBox; // "0 0 24 24"
+  const parts = viewBox.split(" ");
+  const width = parseInt(parts[2], 10);
+  const height = parseInt(parts[3], 10);
+  return {
+    width,
+    height,
+  };
 }
