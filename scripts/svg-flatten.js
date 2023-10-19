@@ -38,16 +38,17 @@ async function generateIcons() {
 
   emptyDir(baseTargetPath);
 
-  allGroupFileNames.forEach((groupFileName) => {
-    createIconCategoryFileIfNotExists(groupFileName);
-    const iconDefinitions = byGroup[groupFileName].map((p) => p.iconDefinition);
-    writeIconDefinitionsForGroupToDisk(iconDefinitions, groupFileName);
+  allGroupFileNames.forEach((categoryFileName) => {
+    createIconCategoryFileIfNotExists(categoryFileName);
+    const iconDefinitions = byGroup[categoryFileName].map(
+      (p) => p.iconDefinition
+    );
+    writeIconDefinitionsForCategoryToDisk(iconDefinitions, categoryFileName);
   });
 }
 
 async function readSvgFile(fullSvgFilePath) {
   const svgString = fs.readFileSync(fullSvgFilePath, "utf8");
-  const basenameFile = path.basename(fullSvgFilePath, "svg");
   return await pathThatSvg(svgString);
 }
 
@@ -90,7 +91,10 @@ async function createIconDefinition(svgString, basenameFile) {
   );
 }
 
-function writeIconDefinitionsForGroupToDisk(iconDefinitions, categoryFileName) {
+function writeIconDefinitionsForCategoryToDisk(
+  iconDefinitions,
+  categoryFileName
+) {
   const fileContent = iconDefinitions.join("\n\n");
 
   fs.appendFileSync(
