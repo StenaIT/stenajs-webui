@@ -9,7 +9,7 @@ import {
   stenaSailingTicket,
   stenaSailingTrain,
   stenaSupport,
-} from "../../../icons/ui/IconsUi";
+} from "../../../icons/generated/CommonIcons";
 
 export default {
   title: "elements/ButtonGroup",

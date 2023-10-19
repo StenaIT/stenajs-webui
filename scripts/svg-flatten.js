@@ -1,25 +1,67 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase } = require("lodash");
+const { camelCase, upperFirst, groupBy } = require("lodash");
 const path = require("path");
 const glob = require("glob");
+const prettier = require("prettier");
 
-const files = glob.sync(`${__dirname}/assets/**/*.svg`);
-process.stderr.write(`found ${files.length} files\n`);
+const baseTargetPath = "packages/elements/src/icons/generated/";
 
-console.log(
-  `import { IconDefinition } from "@fortawesome/fontawesome-svg-core";`
-);
+const sourceFileBase = `import { IconDefinition } from "@fortawesome/fontawesome-svg-core";`;
 
-files.forEach(async (file) => {
-  const svgString = fs.readFileSync(file, "utf8");
-  const basenameFile = path.basename(file, "svg");
-  const modifiedSvgString = await pathThatSvg(svgString);
+generateIcons();
 
-  const hasFillNone = modifiedSvgString.includes("fill:none");
+async function generateIcons() {
+  const files = glob.sync(`${__dirname}/icons/**/*.svg`);
+  console.log(`Found ${files.length} SVG files.\n`);
 
-  const svg = await parse(modifiedSvgString, {
+  const allIconDefinitions = await Promise.all(
+    files.map(async (file) => {
+      const iconCategoryFileName = getIconCategoryFileName(file);
+      const basenameFile = path.basename(file, "svg");
+      const svg = await readSvgFile(file);
+      const iconDefinition = await createIconDefinition(svg, basenameFile);
+      return {
+        iconCategoryFileName,
+        iconDefinition,
+      };
+    })
+  );
+
+  const byGroup = groupBy(
+    allIconDefinitions,
+    (item) => item.iconCategoryFileName
+  );
+
+  const allGroupFileNames = Object.keys(byGroup);
+
+  fs.rmSync(baseTargetPath, { recursive: true });
+  fs.mkdirSync(baseTargetPath);
+
+  allGroupFileNames.forEach((categoryFileName) => {
+    createIconCategoryFileIfNotExists(categoryFileName);
+    const iconDefinitions = byGroup[categoryFileName].map(
+      (p) => p.iconDefinition
+    );
+    writeIconDefinitionsForCategoryToDisk(iconDefinitions, categoryFileName);
+  });
+}
+
+async function readSvgFile(fullSvgFilePath) {
+  const svgString = fs.readFileSync(fullSvgFilePath, "utf8");
+  return await pathThatSvg(svgString);
+}
+
+function getIconCategoryFileName(fullFilePath) {
+  const parentDir = path.basename(path.dirname(fullFilePath));
+  return upperFirst(camelCase(parentDir)) + ".ts";
+}
+
+async function createIconDefinition(svgString, basenameFile) {
+  const hasFillNone = svgString.includes("fill:none");
+
+  const svg = await parse(svgString, {
     transformNode: (node) => {
       if (hasFillNone && node.attributes["class"] === "st0") {
         node.attributes.d = "";
@@ -32,19 +74,34 @@ files.forEach(async (file) => {
     .replace(/[\n\r\t]/g, "")
     .trim();
 
+  const dimensions = getSvgDimensions(svg);
+
   const iconDefinition = {
-    icon: [24, 24, [], "", pathData],
+    icon: [dimensions.width, dimensions.height, [], "", pathData],
     iconName: "random",
     prefix: "fal",
   };
 
-  console.log(
+  return (
     "export const " +
-      camelCase("stena " + basenameFile) +
-      ": IconDefinition = ",
-    JSON.stringify(iconDefinition) + ";"
+    camelCase("stena " + basenameFile) +
+    ": IconDefinition = " +
+    JSON.stringify(iconDefinition) +
+    ";"
   );
-});
+}
+
+function writeIconDefinitionsForCategoryToDisk(
+  iconDefinitions,
+  categoryFileName
+) {
+  const fileContent = iconDefinitions.join("\n\n");
+
+  fs.appendFileSync(
+    baseTargetPath + categoryFileName,
+    prettier.format(fileContent, { parser: "typescript" })
+  );
+}
 
 function joinChildPaths(children) {
   return children.reduce((acc, child) => {
@@ -56,4 +113,24 @@ function joinChildPaths(children) {
     }
     return acc;
   }, "");
+}
+
+function createIconCategoryFileIfNotExists(categoryFileName) {
+  if (!fs.existsSync(baseTargetPath + categoryFileName)) {
+    fs.appendFileSync(
+      baseTargetPath + categoryFileName,
+      sourceFileBase + "\n\n"
+    );
+  }
+}
+
+function getSvgDimensions(svg) {
+  const viewBox = svg.attributes.viewBox; // "0 0 24 24"
+  const parts = viewBox.split(" ");
+  const width = parseInt(parts[2], 10);
+  const height = parseInt(parts[3], 10);
+  return {
+    width,
+    height,
+  };
 }

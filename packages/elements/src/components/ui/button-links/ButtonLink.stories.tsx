@@ -6,7 +6,7 @@ import { PrimaryButtonLink } from "./PrimaryButtonLink";
 import { SecondaryButtonLink } from "./SecondaryButtonLink";
 import { FlatButtonLink } from "./FlatButtonLink";
 import { Icon } from "../icon/Icon";
-import { stenaCheck } from "../../../icons/ui/IconsUi";
+import { stenaCheck } from "../../../icons/generated/CommonIcons";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
 

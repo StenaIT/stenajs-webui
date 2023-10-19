@@ -7,7 +7,7 @@ import {
   stenaCheckCircle,
   stenaSailingShip,
   stenaSailingTrain,
-} from "../../../icons/ui/IconsUi";
+} from "../../../icons/generated/CommonIcons";
 
 export type ModeOfTransport = "ship" | "rail";
 export type RouteLegSize = "standard" | "compact" | "relaxed";

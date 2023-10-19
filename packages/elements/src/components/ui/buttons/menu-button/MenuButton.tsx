@@ -14,7 +14,10 @@ import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "../../icon/Icon";
 import { MenuButtonContent } from "./MenuButtonContent";
-import { stenaAngleDown, stenaAngleUp } from "../../../../icons/ui/IconsUi";
+import {
+  stenaAngleDown,
+  stenaAngleUp,
+} from "../../../../icons/generated/CommonIcons";
 
 export type MenuButtonVariant = "standard" | "danger";
 

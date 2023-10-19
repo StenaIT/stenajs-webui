@@ -3,7 +3,7 @@ import { Row, Txt } from "@stenajs-webui/core";
 import { Icon } from "../icon/Icon";
 import styles from "./TimeTag.module.css";
 import cx from "classnames";
-import { stenaClock } from "../../../icons/ui/IconsUi";
+import { stenaClock } from "../../../icons/generated/CommonIcons";
 
 export type TimeTagVariant = "waiting" | "total";
 

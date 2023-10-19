@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>check-thick</title>
+    <g id="check-thick" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3.5,13 L9.14644661,18.6464466 C9.34170876,18.8417088 9.65829124,18.8417088 9.85355339,18.6464466 L21,7.5 C21.5522847,6.94771525 21.5522847,6.05228475 21,5.5 C20.4477153,4.94771525 19.5522847,4.94771525 19,5.5 L9.5,15 L5.5,11 C4.94771525,10.4477153 4.05228475,10.4477153 3.5,11 C2.94771525,11.5522847 2.94771525,12.4477153 3.5,13 Z" id="Path-2" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

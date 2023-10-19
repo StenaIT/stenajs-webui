@@ -18,7 +18,7 @@ import {
   stenaSearch,
   stenaSlidersMini,
   stenaTrash,
-} from "../../../icons/ui/IconsUi";
+} from "../../../icons/generated/CommonIcons";
 import * as React from "react";
 import { useState } from "react";
 import { ToggleButton } from "../toggle-button/ToggleButton";

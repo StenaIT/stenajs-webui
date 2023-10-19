@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>keyboard</title>
+    <g id="keyboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M21,3 C22.6568542,3 24,4.34314575 24,6 L24,18 C24,19.6568542 22.6568542,21 21,21 L3,21 C1.34314575,21 0,19.6568542 0,18 L0,6 C0,4.34314575 1.34314575,3 3,3 L21,3 Z M21,5 L3,5 C2.44771525,5 2,5.44771525 2,6 L2,18 C2,18.5522847 2.44771525,19 3,19 L21,19 C21.5522847,19 22,18.5522847 22,18 L22,6 C22,5.44771525 21.5522847,5 21,5 Z M19,15 C19.5522847,15 20,15.4477153 20,16 C20,16.5522847 19.5522847,17 19,17 L5,17 C4.44771525,17 4,16.5522847 4,16 C4,15.4477153 4.44771525,15 5,15 L19,15 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

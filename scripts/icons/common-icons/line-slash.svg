@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>line-slash</title>
+    <g id="line-slash" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M16,5.07179677 C16.4782926,5.34793914 16.6421678,5.95952955 16.3660254,6.43782217 L9.3660254,18.5621778 C9.08988303,19.0404704 8.47829262,19.2043456 8,18.9282032 C7.52170738,18.6520609 7.35783222,18.0404704 7.6339746,17.5621778 L14.6339746,5.43782217 C14.910117,4.95952955 15.5217074,4.79565439 16,5.07179677 Z" id="Rectangle" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

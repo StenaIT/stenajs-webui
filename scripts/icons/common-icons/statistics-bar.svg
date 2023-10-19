@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>statistics-bar</title>
+    <g id="statistics-bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5,12 C5.55228475,12 6,12.4477153 6,13 L6,23 C6,23.5522847 5.55228475,24 5,24 C4.44771525,24 4,23.5522847 4,23 L4,13 C4,12.4477153 4.44771525,12 5,12 Z M12,7.2 C12.5522847,7.2 13,7.64771525 13,8.2 L13,23 C13,23.5522847 12.5522847,24 12,24 C11.4477153,24 11,23.5522847 11,23 L11,8.2 C11,7.64771525 11.4477153,7.2 12,7.2 Z M19,0 C19.5522847,0 20,0.44771525 20,1 L20,23 C20,23.5522847 19.5522847,24 19,24 C18.4477153,24 18,23.5522847 18,23 L18,1 C18,0.44771525 18.4477153,0 19,0 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

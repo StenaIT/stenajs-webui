@@ -21,7 +21,7 @@ import {
   stenaExclamationTriangle,
   stenaInfoMegaphone,
   stenaInfoSpeech,
-} from "../../../../icons/ui/IconsUi";
+} from "../../../../icons/generated/CommonIcons";
 
 export type BannerVariant =
   | "standard"

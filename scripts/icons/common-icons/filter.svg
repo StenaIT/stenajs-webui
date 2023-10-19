@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>filter</title>
+    <g id="filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M23,0 L16,11 L16,23 L9,18 L9,11 L1,0 L23,0 Z M19,2 L5,2 L11,10 L11,17 L14,19 L14,10 L19,2 Z" id="Path" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

@@ -7,7 +7,7 @@ import cx from "classnames";
 import {
   stenaExternalLink,
   stenaStatisticsBar,
-} from "../../../../icons/ui/IconsUi";
+} from "../../../../icons/generated/CommonIcons";
 import { InputSpinner } from "../../spinner/InputSpinner";
 
 export default {
