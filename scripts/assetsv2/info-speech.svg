@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>info-speech</title>
+    <g id="info-speech" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20,3 C21.6568542,3 23,4.34314575 23,6 L23,17 C23,18.6568542 21.6568542,20 20,20 L5.96,20 L2.57506335,22.3793325 C2.1232343,22.6969312 1.49948984,22.588116 1.18189112,22.1362869 C1.06352039,21.9678879 1,21.7670631 1,21.5612236 L1,6 C1,4.34314575 2.34314575,3 4,3 L20,3 Z M20,5 L4,5 C3.44771525,5 3,5.44771525 3,6 L3,20 L5.42,18 L20,18 C20.5522847,18 21,17.5522847 21,17 L21,6 C21,5.44771525 20.5522847,5 20,5 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

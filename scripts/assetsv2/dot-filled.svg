@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>dot-filled</title>
+    <g id="dot-filled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,0.5 C18.3512746,0.5 23.5,5.64872538 23.5,12 C23.5,18.3512746 18.3512746,23.5 12,23.5 C5.64872538,23.5 0.5,18.3512746 0.5,12 C0.5,5.64872538 5.64872538,0.5 12,0.5 Z" id="Path" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>
