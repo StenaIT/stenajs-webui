@@ -1,17 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export const ticketIcon: IconDefinition = {
-  icon: [
-    32,
-    32,
-    [],
-    "",
-    "M1.333 5.333h29.333c0.736 0 1.333 0.597 1.333 1.333v18.667c0 0.736-0.597 1.333-1.333 1.333h-29.333c-0.736 0-1.333-0.597-1.333-1.333v-7.333h0.667c1.105 0 2-0.895 2-2s-0.895-2-2-2h-0.667v-7.333c0-0.736 0.597-1.333 1.333-1.333zM30.667 6.667h-29.333v6.067l0.186 0.043c1.36 0.359 2.38 1.555 2.474 3.004l0.007 0.219c0 1.546-1.053 2.847-2.481 3.223l-0.186 0.042v6.068h29.333v-18.667zM18 15.333c0.368 0 0.667 0.299 0.667 0.667 0 0.327-0.236 0.599-0.547 0.656l-0.12 0.011h-9.333c-0.368 0-0.667-0.299-0.667-0.667 0-0.327 0.236-0.599 0.547-0.656l0.12-0.011h9.333zM18.667 19.333c0-0.368-0.299-0.667-0.667-0.667h-9.333l-0.12 0.011c-0.311 0.056-0.547 0.329-0.547 0.656 0 0.368 0.298 0.667 0.667 0.667h9.333l0.12-0.011c0.311-0.056 0.547-0.329 0.547-0.656zM18 12c0.368 0 0.667 0.298 0.667 0.667 0 0.327-0.236 0.599-0.547 0.656l-0.12 0.011h-9.333c-0.368 0-0.667-0.298-0.667-0.667 0-0.327 0.236-0.599 0.547-0.656l0.12-0.011h9.333zM23.989 8.547c-0.056-0.311-0.329-0.547-0.656-0.547-0.368 0-0.667 0.298-0.667 0.667v14.667l0.011 0.12c0.056 0.311 0.329 0.547 0.656 0.547 0.368 0 0.667-0.299 0.667-0.667v-14.667l-0.011-0.12z",
-  ],
-  iconName: "random",
-  prefix: "fal",
-};
-
 export const stenaAccount: IconDefinition = {
   icon: [
     24,
@@ -23,6 +11,7 @@ export const stenaAccount: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleDown2: IconDefinition = {
   icon: [
     24,
@@ -34,6 +23,7 @@ export const stenaAngleDown2: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleDownDouble: IconDefinition = {
   icon: [
     24,
@@ -45,6 +35,7 @@ export const stenaAngleDownDouble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleDown: IconDefinition = {
   icon: [
     24,
@@ -68,6 +59,7 @@ export const stenaAngleLeftDouble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleLeft: IconDefinition = {
   icon: [
     24,
@@ -79,6 +71,7 @@ export const stenaAngleLeft: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleRightDouble: IconDefinition = {
   icon: [
     24,
@@ -90,6 +83,7 @@ export const stenaAngleRightDouble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleRight: IconDefinition = {
   icon: [
     24,
@@ -101,6 +95,7 @@ export const stenaAngleRight: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleUpDouble: IconDefinition = {
   icon: [
     24,
@@ -112,6 +107,7 @@ export const stenaAngleUpDouble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAngleUp: IconDefinition = {
   icon: [
     24,
@@ -123,6 +119,7 @@ export const stenaAngleUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaAnimals: IconDefinition = {
   icon: [
     24,
@@ -134,6 +131,7 @@ export const stenaAnimals: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowCircleDown: IconDefinition = {
   icon: [
     24,
@@ -145,6 +143,7 @@ export const stenaArrowCircleDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowCircleLeft: IconDefinition = {
   icon: [
     24,
@@ -156,6 +155,7 @@ export const stenaArrowCircleLeft: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowCircleRight: IconDefinition = {
   icon: [
     24,
@@ -167,6 +167,7 @@ export const stenaArrowCircleRight: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowCircleUp: IconDefinition = {
   icon: [
     24,
@@ -178,6 +179,7 @@ export const stenaArrowCircleUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowDown: IconDefinition = {
   icon: [
     24,
@@ -189,6 +191,7 @@ export const stenaArrowDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowLeft: IconDefinition = {
   icon: [
     24,
@@ -200,6 +203,7 @@ export const stenaArrowLeft: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowPath: IconDefinition = {
   icon: [
     24,
@@ -211,6 +215,7 @@ export const stenaArrowPath: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowRightAngle: IconDefinition = {
   icon: [
     24,
@@ -222,6 +227,7 @@ export const stenaArrowRightAngle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowRight: IconDefinition = {
   icon: [
     24,
@@ -233,6 +239,7 @@ export const stenaArrowRight: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowUp: IconDefinition = {
   icon: [
     24,
@@ -244,6 +251,7 @@ export const stenaArrowUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowWideDown: IconDefinition = {
   icon: [
     24,
@@ -255,6 +263,7 @@ export const stenaArrowWideDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowWideLeft: IconDefinition = {
   icon: [
     24,
@@ -266,6 +275,7 @@ export const stenaArrowWideLeft: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowWideRight: IconDefinition = {
   icon: [
     24,
@@ -277,6 +287,7 @@ export const stenaArrowWideRight: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaArrowWideUp: IconDefinition = {
   icon: [
     24,
@@ -288,6 +299,7 @@ export const stenaArrowWideUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBackspace: IconDefinition = {
   icon: [
     24,
@@ -299,6 +311,7 @@ export const stenaBackspace: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBan: IconDefinition = {
   icon: [
     24,
@@ -310,6 +323,7 @@ export const stenaBan: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBellFilled: IconDefinition = {
   icon: [
     24,
@@ -321,6 +335,7 @@ export const stenaBellFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBell: IconDefinition = {
   icon: [
     24,
@@ -332,6 +347,7 @@ export const stenaBell: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBookmark: IconDefinition = {
   icon: [
     24,
@@ -343,6 +359,7 @@ export const stenaBookmark: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessAgreement: IconDefinition = {
   icon: [
     24,
@@ -354,6 +371,7 @@ export const stenaBusinessAgreement: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessArticle: IconDefinition = {
   icon: [
     24,
@@ -365,6 +383,7 @@ export const stenaBusinessArticle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessCard: IconDefinition = {
   icon: [
     24,
@@ -376,6 +395,7 @@ export const stenaBusinessCard: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessClaim: IconDefinition = {
   icon: [
     24,
@@ -387,6 +407,7 @@ export const stenaBusinessClaim: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessInvoice: IconDefinition = {
   icon: [
     24,
@@ -398,6 +419,7 @@ export const stenaBusinessInvoice: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessNslh: IconDefinition = {
   icon: [
     24,
@@ -409,6 +431,7 @@ export const stenaBusinessNslh: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBusinessSignature: IconDefinition = {
   icon: [
     24,
@@ -420,6 +443,7 @@ export const stenaBusinessSignature: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaBuy: IconDefinition = {
   icon: [
     24,
@@ -431,6 +455,7 @@ export const stenaBuy: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalculate: IconDefinition = {
   icon: [
     24,
@@ -442,6 +467,7 @@ export const stenaCalculate: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalendarFilled: IconDefinition = {
   icon: [
     24,
@@ -453,6 +479,7 @@ export const stenaCalendarFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalendarManage: IconDefinition = {
   icon: [
     24,
@@ -464,6 +491,7 @@ export const stenaCalendarManage: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalendarSortDown: IconDefinition = {
   icon: [
     24,
@@ -475,6 +503,7 @@ export const stenaCalendarSortDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalendarSortUp: IconDefinition = {
   icon: [
     24,
@@ -486,6 +515,7 @@ export const stenaCalendarSortUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCalendar: IconDefinition = {
   icon: [
     24,
@@ -497,6 +527,7 @@ export const stenaCalendar: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCargoConstruction: IconDefinition = {
   icon: [
     24,
@@ -508,6 +539,7 @@ export const stenaCargoConstruction: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCargoMetal: IconDefinition = {
   icon: [
     24,
@@ -519,6 +551,7 @@ export const stenaCargoMetal: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCheckCircleFilled: IconDefinition = {
   icon: [
     24,
@@ -530,6 +563,7 @@ export const stenaCheckCircleFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCheckCircle: IconDefinition = {
   icon: [
     24,
@@ -541,6 +575,7 @@ export const stenaCheckCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCheckDouble: IconDefinition = {
   icon: [
     24,
@@ -552,6 +587,7 @@ export const stenaCheckDouble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCheckThick: IconDefinition = {
   icon: [
     24,
@@ -563,6 +599,7 @@ export const stenaCheckThick: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCheck: IconDefinition = {
   icon: [
     24,
@@ -574,6 +611,7 @@ export const stenaCheck: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaClean: IconDefinition = {
   icon: [
     24,
@@ -585,6 +623,7 @@ export const stenaClean: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaClearRow: IconDefinition = {
   icon: [
     24,
@@ -596,6 +635,7 @@ export const stenaClearRow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaClear: IconDefinition = {
   icon: [
     24,
@@ -607,6 +647,7 @@ export const stenaClear: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaClockFilled: IconDefinition = {
   icon: [
     24,
@@ -618,6 +659,7 @@ export const stenaClockFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaClock: IconDefinition = {
   icon: [
     24,
@@ -629,6 +671,7 @@ export const stenaClock: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCloudArrow: IconDefinition = {
   icon: [
     24,
@@ -640,6 +683,7 @@ export const stenaCloudArrow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCloud: IconDefinition = {
   icon: [
     24,
@@ -651,6 +695,7 @@ export const stenaCloud: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCog: IconDefinition = {
   icon: [
     24,
@@ -662,6 +707,7 @@ export const stenaCog: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCompress: IconDefinition = {
   icon: [
     24,
@@ -673,6 +719,7 @@ export const stenaCompress: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCookies: IconDefinition = {
   icon: [
     24,
@@ -684,6 +731,7 @@ export const stenaCookies: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCopyDocument: IconDefinition = {
   icon: [
     24,
@@ -695,6 +743,7 @@ export const stenaCopyDocument: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaCopy: IconDefinition = {
   icon: [
     24,
@@ -706,6 +755,7 @@ export const stenaCopy: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDetails: IconDefinition = {
   icon: [
     24,
@@ -717,6 +767,7 @@ export const stenaDetails: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDotFilled: IconDefinition = {
   icon: [
     24,
@@ -728,6 +779,7 @@ export const stenaDotFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDotOutline: IconDefinition = {
   icon: [
     24,
@@ -739,6 +791,7 @@ export const stenaDotOutline: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDotsVertical: IconDefinition = {
   icon: [
     24,
@@ -750,6 +803,7 @@ export const stenaDotsVertical: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDots: IconDefinition = {
   icon: [
     24,
@@ -761,6 +815,7 @@ export const stenaDots: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDownloadPdf: IconDefinition = {
   icon: [
     24,
@@ -772,6 +827,7 @@ export const stenaDownloadPdf: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDownload: IconDefinition = {
   icon: [
     24,
@@ -783,6 +839,7 @@ export const stenaDownload: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaDrag: IconDefinition = {
   icon: [
     24,
@@ -794,6 +851,7 @@ export const stenaDrag: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEditColumns: IconDefinition = {
   icon: [
     24,
@@ -805,6 +863,7 @@ export const stenaEditColumns: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEdit: IconDefinition = {
   icon: [
     24,
@@ -816,6 +875,7 @@ export const stenaEdit: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEmptyRead: IconDefinition = {
   icon: [
     24,
@@ -827,6 +887,7 @@ export const stenaEmptyRead: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExclamationCircleFilled: IconDefinition = {
   icon: [
     24,
@@ -838,6 +899,7 @@ export const stenaExclamationCircleFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExclamationCircle: IconDefinition = {
   icon: [
     24,
@@ -849,6 +911,7 @@ export const stenaExclamationCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExclamationTriangleFilled: IconDefinition = {
   icon: [
     24,
@@ -860,6 +923,7 @@ export const stenaExclamationTriangleFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExclamationTriangle: IconDefinition = {
   icon: [
     24,
@@ -871,6 +935,7 @@ export const stenaExclamationTriangle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExpand: IconDefinition = {
   icon: [
     24,
@@ -882,6 +947,7 @@ export const stenaExpand: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExternalLink: IconDefinition = {
   icon: [
     24,
@@ -893,6 +959,7 @@ export const stenaExternalLink: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaExtra: IconDefinition = {
   icon: [
     24,
@@ -904,6 +971,7 @@ export const stenaExtra: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEyeClose: IconDefinition = {
   icon: [
     24,
@@ -915,6 +983,7 @@ export const stenaEyeClose: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEyeHide: IconDefinition = {
   icon: [
     24,
@@ -926,6 +995,7 @@ export const stenaEyeHide: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEyeOpen: IconDefinition = {
   icon: [
     24,
@@ -937,6 +1007,7 @@ export const stenaEyeOpen: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaEyeShow: IconDefinition = {
   icon: [
     24,
@@ -948,6 +1019,7 @@ export const stenaEyeShow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFavorites: IconDefinition = {
   icon: [
     24,
@@ -959,6 +1031,7 @@ export const stenaFavorites: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFileCsvLabel: IconDefinition = {
   icon: [
     24,
@@ -970,6 +1043,7 @@ export const stenaFileCsvLabel: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFileCsv: IconDefinition = {
   icon: [
     24,
@@ -981,6 +1055,7 @@ export const stenaFileCsv: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFilePdfLabel: IconDefinition = {
   icon: [
     24,
@@ -992,6 +1067,7 @@ export const stenaFilePdfLabel: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFilePdf: IconDefinition = {
   icon: [
     24,
@@ -1003,6 +1079,7 @@ export const stenaFilePdf: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFileXlsLabel: IconDefinition = {
   icon: [
     24,
@@ -1014,6 +1091,7 @@ export const stenaFileXlsLabel: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFileXls: IconDefinition = {
   icon: [
     24,
@@ -1025,6 +1103,7 @@ export const stenaFileXls: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFilter: IconDefinition = {
   icon: [
     24,
@@ -1036,6 +1115,7 @@ export const stenaFilter: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinancePaid: IconDefinition = {
   icon: [
     24,
@@ -1047,6 +1127,7 @@ export const stenaFinancePaid: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinancePay: IconDefinition = {
   icon: [
     24,
@@ -1058,6 +1139,7 @@ export const stenaFinancePay: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinanceRaise: IconDefinition = {
   icon: [
     24,
@@ -1069,6 +1151,7 @@ export const stenaFinanceRaise: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinanceRebate: IconDefinition = {
   icon: [
     24,
@@ -1080,6 +1163,7 @@ export const stenaFinanceRebate: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinanceUnpaid: IconDefinition = {
   icon: [
     24,
@@ -1091,6 +1175,7 @@ export const stenaFinanceUnpaid: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaFinanceWallet: IconDefinition = {
   icon: [
     24,
@@ -1102,6 +1187,7 @@ export const stenaFinanceWallet: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHamburger: IconDefinition = {
   icon: [
     24,
@@ -1113,6 +1199,7 @@ export const stenaHamburger: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHandicapped: IconDefinition = {
   icon: [
     24,
@@ -1124,6 +1211,7 @@ export const stenaHandicapped: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHazardous: IconDefinition = {
   icon: [
     24,
@@ -1135,6 +1223,7 @@ export const stenaHazardous: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHelp: IconDefinition = {
   icon: [
     24,
@@ -1146,6 +1235,7 @@ export const stenaHelp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHistory: IconDefinition = {
   icon: [
     24,
@@ -1157,6 +1247,7 @@ export const stenaHistory: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHotelBed: IconDefinition = {
   icon: [
     24,
@@ -1168,6 +1259,7 @@ export const stenaHotelBed: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaHotel: IconDefinition = {
   icon: [
     24,
@@ -1179,6 +1271,7 @@ export const stenaHotel: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaInfoCircleFilled: IconDefinition = {
   icon: [
     24,
@@ -1190,6 +1283,7 @@ export const stenaInfoCircleFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaInfoCircle: IconDefinition = {
   icon: [
     24,
@@ -1201,6 +1295,7 @@ export const stenaInfoCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaInfoMegaphone: IconDefinition = {
   icon: [
     24,
@@ -1212,6 +1307,7 @@ export const stenaInfoMegaphone: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaInfoSpeechAlert: IconDefinition = {
   icon: [
     24,
@@ -1223,6 +1319,7 @@ export const stenaInfoSpeechAlert: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaInfoSpeech: IconDefinition = {
   icon: [
     24,
@@ -1234,6 +1331,7 @@ export const stenaInfoSpeech: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaIntermodal: IconDefinition = {
   icon: [
     24,
@@ -1245,6 +1343,7 @@ export const stenaIntermodal: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaKeyboard: IconDefinition = {
   icon: [
     24,
@@ -1256,6 +1355,7 @@ export const stenaKeyboard: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLanguage: IconDefinition = {
   icon: [
     24,
@@ -1267,6 +1367,7 @@ export const stenaLanguage: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLightbulb: IconDefinition = {
   icon: [
     24,
@@ -1278,6 +1379,7 @@ export const stenaLightbulb: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLightning: IconDefinition = {
   icon: [
     24,
@@ -1289,6 +1391,7 @@ export const stenaLightning: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLineDotted: IconDefinition = {
   icon: [
     24,
@@ -1300,6 +1403,7 @@ export const stenaLineDotted: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLineSlash: IconDefinition = {
   icon: [
     24,
@@ -1311,6 +1415,7 @@ export const stenaLineSlash: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLineStraight: IconDefinition = {
   icon: [
     24,
@@ -1322,6 +1427,7 @@ export const stenaLineStraight: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLink: IconDefinition = {
   icon: [
     24,
@@ -1333,6 +1439,7 @@ export const stenaLink: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLockClosed: IconDefinition = {
   icon: [
     24,
@@ -1344,6 +1451,7 @@ export const stenaLockClosed: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLockOpen: IconDefinition = {
   icon: [
     24,
@@ -1355,6 +1463,7 @@ export const stenaLockOpen: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaLogout: IconDefinition = {
   icon: [
     24,
@@ -1366,6 +1475,7 @@ export const stenaLogout: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMail: IconDefinition = {
   icon: [
     24,
@@ -1377,6 +1487,7 @@ export const stenaMail: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMapNavigation: IconDefinition = {
   icon: [
     24,
@@ -1388,6 +1499,7 @@ export const stenaMapNavigation: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMerge: IconDefinition = {
   icon: [
     24,
@@ -1399,6 +1511,7 @@ export const stenaMerge: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMinusCircle: IconDefinition = {
   icon: [
     24,
@@ -1410,6 +1523,7 @@ export const stenaMinusCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMinus: IconDefinition = {
   icon: [
     24,
@@ -1421,6 +1535,7 @@ export const stenaMinus: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMobile: IconDefinition = {
   icon: [
     24,
@@ -1432,6 +1547,7 @@ export const stenaMobile: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMouse: IconDefinition = {
   icon: [
     24,
@@ -1443,6 +1559,7 @@ export const stenaMouse: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMoveIn: IconDefinition = {
   icon: [
     24,
@@ -1454,6 +1571,7 @@ export const stenaMoveIn: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMoveOut: IconDefinition = {
   icon: [
     24,
@@ -1465,6 +1583,7 @@ export const stenaMoveOut: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaMove: IconDefinition = {
   icon: [
     24,
@@ -1476,6 +1595,7 @@ export const stenaMove: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaOverview: IconDefinition = {
   icon: [
     24,
@@ -1487,6 +1607,7 @@ export const stenaOverview: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPen: IconDefinition = {
   icon: [
     24,
@@ -1498,6 +1619,7 @@ export const stenaPen: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPercentage: IconDefinition = {
   icon: [
     24,
@@ -1509,6 +1631,7 @@ export const stenaPercentage: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPets: IconDefinition = {
   icon: [
     24,
@@ -1520,6 +1643,7 @@ export const stenaPets: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPhone: IconDefinition = {
   icon: [
     24,
@@ -1531,6 +1655,7 @@ export const stenaPhone: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPhoto: IconDefinition = {
   icon: [
     24,
@@ -1542,6 +1667,7 @@ export const stenaPhoto: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPin: IconDefinition = {
   icon: [
     24,
@@ -1553,6 +1679,7 @@ export const stenaPin: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPluginCheck: IconDefinition = {
   icon: [
     24,
@@ -1564,6 +1691,7 @@ export const stenaPluginCheck: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPlugin: IconDefinition = {
   icon: [
     24,
@@ -1575,6 +1703,7 @@ export const stenaPlugin: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPlusCircle: IconDefinition = {
   icon: [
     24,
@@ -1586,6 +1715,7 @@ export const stenaPlusCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPlus: IconDefinition = {
   icon: [
     24,
@@ -1597,6 +1727,7 @@ export const stenaPlus: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaPrint: IconDefinition = {
   icon: [
     24,
@@ -1608,6 +1739,7 @@ export const stenaPrint: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaQuestionBubble: IconDefinition = {
   icon: [
     24,
@@ -1619,6 +1751,7 @@ export const stenaQuestionBubble: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaQuestionCircle: IconDefinition = {
   icon: [
     24,
@@ -1630,6 +1763,7 @@ export const stenaQuestionCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaRateThumbDown: IconDefinition = {
   icon: [
     24,
@@ -1641,6 +1775,7 @@ export const stenaRateThumbDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaRateThumbUp: IconDefinition = {
   icon: [
     24,
@@ -1652,6 +1787,7 @@ export const stenaRateThumbUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaRefresh: IconDefinition = {
   icon: [
     24,
@@ -1663,6 +1799,7 @@ export const stenaRefresh: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaRobot: IconDefinition = {
   icon: [
     24,
@@ -1674,6 +1811,7 @@ export const stenaRobot: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingBus: IconDefinition = {
   icon: [
     24,
@@ -1685,6 +1823,7 @@ export const stenaSailingBus: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingCar: IconDefinition = {
   icon: [
     24,
@@ -1696,6 +1835,7 @@ export const stenaSailingCar: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingCargo: IconDefinition = {
   icon: [
     24,
@@ -1707,6 +1847,7 @@ export const stenaSailingCargo: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingCrane: IconDefinition = {
   icon: [
     24,
@@ -1718,6 +1859,7 @@ export const stenaSailingCrane: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingGate: IconDefinition = {
   icon: [
     24,
@@ -1729,6 +1871,7 @@ export const stenaSailingGate: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingImportExport: IconDefinition = {
   icon: [
     24,
@@ -1740,6 +1883,7 @@ export const stenaSailingImportExport: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingLocation: IconDefinition = {
   icon: [
     24,
@@ -1751,7 +1895,8 @@ export const stenaSailingLocation: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaSailingNoShow: IconDefinition = {
+
+export const stenaSailingNoshow: IconDefinition = {
   icon: [
     24,
     24,
@@ -1762,6 +1907,7 @@ export const stenaSailingNoShow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingOffpeak: IconDefinition = {
   icon: [
     24,
@@ -1773,6 +1919,7 @@ export const stenaSailingOffpeak: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingOnQuay: IconDefinition = {
   icon: [
     24,
@@ -1784,6 +1931,7 @@ export const stenaSailingOnQuay: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingOnRoute: IconDefinition = {
   icon: [
     24,
@@ -1795,6 +1943,7 @@ export const stenaSailingOnRoute: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingPeak: IconDefinition = {
   icon: [
     24,
@@ -1806,6 +1955,7 @@ export const stenaSailingPeak: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingRoundTrip: IconDefinition = {
   icon: [
     24,
@@ -1817,6 +1967,7 @@ export const stenaSailingRoundTrip: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingRouteAlt: IconDefinition = {
   icon: [
     24,
@@ -1828,6 +1979,7 @@ export const stenaSailingRouteAlt: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingRoute: IconDefinition = {
   icon: [
     24,
@@ -1839,6 +1991,7 @@ export const stenaSailingRoute: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingShip: IconDefinition = {
   icon: [
     24,
@@ -1850,6 +2003,7 @@ export const stenaSailingShip: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingShoulder: IconDefinition = {
   icon: [
     24,
@@ -1861,6 +2015,7 @@ export const stenaSailingShoulder: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTicketFilled: IconDefinition = {
   icon: [
     24,
@@ -1872,6 +2027,7 @@ export const stenaSailingTicketFilled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTicket: IconDefinition = {
   icon: [
     24,
@@ -1883,6 +2039,7 @@ export const stenaSailingTicket: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTrailer: IconDefinition = {
   icon: [
     24,
@@ -1894,6 +2051,7 @@ export const stenaSailingTrailer: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTrain: IconDefinition = {
   icon: [
     24,
@@ -1905,6 +2063,7 @@ export const stenaSailingTrain: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTruckAlt: IconDefinition = {
   icon: [
     24,
@@ -1916,6 +2075,7 @@ export const stenaSailingTruckAlt: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingTruckSide: IconDefinition = {
   icon: [
     24,
@@ -1927,6 +2087,7 @@ export const stenaSailingTruckSide: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSailingVehicle: IconDefinition = {
   icon: [
     24,
@@ -1938,6 +2099,7 @@ export const stenaSailingVehicle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSave: IconDefinition = {
   icon: [
     24,
@@ -1949,6 +2111,7 @@ export const stenaSave: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSearchError: IconDefinition = {
   icon: [
     24,
@@ -1960,6 +2123,7 @@ export const stenaSearchError: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSearchMinus: IconDefinition = {
   icon: [
     24,
@@ -1971,6 +2135,7 @@ export const stenaSearchMinus: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSearchPlus: IconDefinition = {
   icon: [
     24,
@@ -1982,6 +2147,7 @@ export const stenaSearchPlus: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSearch: IconDefinition = {
   icon: [
     24,
@@ -1993,6 +2159,7 @@ export const stenaSearch: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSendPlane: IconDefinition = {
   icon: [
     24,
@@ -2004,6 +2171,7 @@ export const stenaSendPlane: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaShare: IconDefinition = {
   icon: [
     24,
@@ -2015,6 +2183,7 @@ export const stenaShare: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaShield: IconDefinition = {
   icon: [
     24,
@@ -2026,6 +2195,7 @@ export const stenaShield: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSignIn: IconDefinition = {
   icon: [
     24,
@@ -2037,6 +2207,7 @@ export const stenaSignIn: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSignOut: IconDefinition = {
   icon: [
     24,
@@ -2048,6 +2219,7 @@ export const stenaSignOut: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSlidersMini: IconDefinition = {
   icon: [
     24,
@@ -2059,6 +2231,7 @@ export const stenaSlidersMini: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSliders: IconDefinition = {
   icon: [
     24,
@@ -2070,6 +2243,7 @@ export const stenaSliders: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSms: IconDefinition = {
   icon: [
     24,
@@ -2081,6 +2255,7 @@ export const stenaSms: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSortDownMini: IconDefinition = {
   icon: [
     24,
@@ -2092,6 +2267,7 @@ export const stenaSortDownMini: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSortDown: IconDefinition = {
   icon: [
     24,
@@ -2103,6 +2279,7 @@ export const stenaSortDown: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSortUpMini: IconDefinition = {
   icon: [
     24,
@@ -2114,6 +2291,7 @@ export const stenaSortUpMini: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSortUp: IconDefinition = {
   icon: [
     24,
@@ -2125,6 +2303,7 @@ export const stenaSortUp: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStackCheck: IconDefinition = {
   icon: [
     24,
@@ -2136,6 +2315,7 @@ export const stenaStackCheck: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStack: IconDefinition = {
   icon: [
     24,
@@ -2147,6 +2327,7 @@ export const stenaStack: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStar: IconDefinition = {
   icon: [
     24,
@@ -2158,6 +2339,7 @@ export const stenaStar: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatisticsBar: IconDefinition = {
   icon: [
     24,
@@ -2169,6 +2351,7 @@ export const stenaStatisticsBar: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatisticsLine: IconDefinition = {
   icon: [
     24,
@@ -2180,6 +2363,7 @@ export const stenaStatisticsLine: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatisticsPie: IconDefinition = {
   icon: [
     24,
@@ -2191,6 +2375,7 @@ export const stenaStatisticsPie: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusActive: IconDefinition = {
   icon: [
     24,
@@ -2202,6 +2387,7 @@ export const stenaStatusActive: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusBlock: IconDefinition = {
   icon: [
     24,
@@ -2213,6 +2399,7 @@ export const stenaStatusBlock: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusCanceled: IconDefinition = {
   icon: [
     24,
@@ -2224,6 +2411,7 @@ export const stenaStatusCanceled: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusConfirmed: IconDefinition = {
   icon: [
     24,
@@ -2235,6 +2423,7 @@ export const stenaStatusConfirmed: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusDone: IconDefinition = {
   icon: [
     24,
@@ -2246,7 +2435,8 @@ export const stenaStatusDone: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaStatusInProgress: IconDefinition = {
+
+export const stenaStatusInprogress: IconDefinition = {
   icon: [
     24,
     24,
@@ -2257,6 +2447,7 @@ export const stenaStatusInProgress: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusMissing: IconDefinition = {
   icon: [
     24,
@@ -2268,7 +2459,8 @@ export const stenaStatusMissing: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
-export const stenaStatusNoShow: IconDefinition = {
+
+export const stenaStatusNoshow: IconDefinition = {
   icon: [
     24,
     24,
@@ -2279,6 +2471,7 @@ export const stenaStatusNoShow: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaStatusTodo: IconDefinition = {
   icon: [
     24,
@@ -2290,6 +2483,7 @@ export const stenaStatusTodo: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSupport: IconDefinition = {
   icon: [
     24,
@@ -2301,6 +2495,7 @@ export const stenaSupport: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSwitch: IconDefinition = {
   icon: [
     24,
@@ -2312,6 +2507,7 @@ export const stenaSwitch: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaSync: IconDefinition = {
   icon: [
     24,
@@ -2323,6 +2519,7 @@ export const stenaSync: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTag: IconDefinition = {
   icon: [
     24,
@@ -2334,6 +2531,7 @@ export const stenaTag: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTags: IconDefinition = {
   icon: [
     24,
@@ -2345,6 +2543,7 @@ export const stenaTags: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTimesCircle: IconDefinition = {
   icon: [
     24,
@@ -2356,6 +2555,7 @@ export const stenaTimesCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTimesSmall: IconDefinition = {
   icon: [
     24,
@@ -2367,6 +2567,7 @@ export const stenaTimesSmall: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTimesThick: IconDefinition = {
   icon: [
     24,
@@ -2378,6 +2579,7 @@ export const stenaTimesThick: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTimes: IconDefinition = {
   icon: [
     24,
@@ -2389,6 +2591,7 @@ export const stenaTimes: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTodoCreate: IconDefinition = {
   icon: [
     24,
@@ -2400,6 +2603,7 @@ export const stenaTodoCreate: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTodoDone: IconDefinition = {
   icon: [
     24,
@@ -2411,6 +2615,7 @@ export const stenaTodoDone: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTodoList: IconDefinition = {
   icon: [
     24,
@@ -2422,6 +2627,7 @@ export const stenaTodoList: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTrash: IconDefinition = {
   icon: [
     24,
@@ -2433,6 +2639,7 @@ export const stenaTrash: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTravelEnjoyHygge: IconDefinition = {
   icon: [
     24,
@@ -2444,6 +2651,7 @@ export const stenaTravelEnjoyHygge: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaTurnOff: IconDefinition = {
   icon: [
     24,
@@ -2455,6 +2663,7 @@ export const stenaTurnOff: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUndo: IconDefinition = {
   icon: [
     24,
@@ -2466,6 +2675,7 @@ export const stenaUndo: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUnlink: IconDefinition = {
   icon: [
     24,
@@ -2477,6 +2687,7 @@ export const stenaUnlink: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUpload: IconDefinition = {
   icon: [
     24,
@@ -2488,6 +2699,7 @@ export const stenaUpload: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserAdd: IconDefinition = {
   icon: [
     24,
@@ -2499,6 +2711,7 @@ export const stenaUserAdd: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserCircle: IconDefinition = {
   icon: [
     24,
@@ -2510,6 +2723,7 @@ export const stenaUserCircle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserGroupLarge: IconDefinition = {
   icon: [
     24,
@@ -2521,6 +2735,7 @@ export const stenaUserGroupLarge: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserGroupSmall: IconDefinition = {
   icon: [
     24,
@@ -2532,6 +2747,7 @@ export const stenaUserGroupSmall: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserMultiple: IconDefinition = {
   icon: [
     24,
@@ -2543,6 +2759,7 @@ export const stenaUserMultiple: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUserSingle: IconDefinition = {
   icon: [
     24,
@@ -2554,6 +2771,7 @@ export const stenaUserSingle: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUser: IconDefinition = {
   icon: [
     24,
@@ -2565,6 +2783,7 @@ export const stenaUser: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaUsers: IconDefinition = {
   icon: [
     24,
@@ -2576,6 +2795,7 @@ export const stenaUsers: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaWarehouse: IconDefinition = {
   icon: [
     24,
@@ -2587,6 +2807,7 @@ export const stenaWarehouse: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaWeather: IconDefinition = {
   icon: [
     24,
@@ -2598,6 +2819,7 @@ export const stenaWeather: IconDefinition = {
   iconName: "random",
   prefix: "fal",
 };
+
 export const stenaWifi: IconDefinition = {
   icon: [
     24,

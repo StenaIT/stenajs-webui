@@ -1,9 +1,10 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase, upperFirst } = require("lodash");
+const { camelCase, upperFirst, groupBy } = require("lodash");
 const path = require("path");
 const glob = require("glob");
+const prettier = require("prettier");
 
 const baseTargetPath = "packages/elements/src/icons/generated/";
 
@@ -11,20 +12,36 @@ const sourceFileBase = `import { IconDefinition } from "@fortawesome/fontawesome
 
 generateIcons();
 
-function generateIcons() {
+async function generateIcons() {
   const files = glob.sync(`${__dirname}/icons/**/*.svg`);
   console.log(`Found ${files.length} SVG files.\n`);
 
-  return;
+  const allIconDefinitions = await Promise.all(
+    files.map(async (file) => {
+      const iconCategoryFileName = getIconCategoryFileName(file);
+      const basenameFile = path.basename(file, "svg");
+      const svg = await readSvgFile(file);
+      const iconDefinition = await createIconDefinition(svg, basenameFile);
+      return {
+        iconCategoryFileName,
+        iconDefinition,
+      };
+    })
+  );
+
+  const byGroup = groupBy(
+    allIconDefinitions,
+    (item) => item.iconCategoryFileName
+  );
+
+  const allGroupFileNames = Object.keys(byGroup);
+
   emptyDir(baseTargetPath);
 
-  files.forEach(async (file) => {
-    const basenameFile = path.basename(file, "svg");
-    const svg = await readSvgFile(file);
-    const iconDefinition = await createIconDefinition(svg, basenameFile);
-    const iconCategoryFileName = getIconCategoryFileName(file);
-    createIconCategoryFileIfNotExists(iconCategoryFileName);
-    writeIconDefinitionToDisk(iconDefinition, iconCategoryFileName);
+  allGroupFileNames.forEach((groupFileName) => {
+    createIconCategoryFileIfNotExists(groupFileName);
+    const iconDefinitions = byGroup[groupFileName].map((p) => p.iconDefinition);
+    writeIconDefinitionsForGroupToDisk(iconDefinitions, groupFileName);
   });
 }
 
@@ -71,8 +88,13 @@ async function createIconDefinition(svgString, basenameFile) {
   );
 }
 
-function writeIconDefinitionToDisk(iconDefinition, categoryFileName) {
-  fs.appendFileSync(baseTargetPath + categoryFileName, iconDefinition + "\n");
+function writeIconDefinitionsForGroupToDisk(iconDefinitions, categoryFileName) {
+  const fileContent = iconDefinitions.join("\n\n");
+
+  fs.appendFileSync(
+    baseTargetPath + categoryFileName,
+    prettier.format(fileContent, { parser: "typescript" })
+  );
 }
 
 function joinChildPaths(children) {
