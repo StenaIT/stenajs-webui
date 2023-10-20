@@ -1944,18 +1944,6 @@ export const stenaSailingLocation: IconDefinition = {
   prefix: "fal",
 };
 
-export const stenaSailingNoshow: IconDefinition = {
-  icon: [
-    24,
-    24,
-    [],
-    "",
-    "M12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 Z M21.9506147,13.0001009 L2.04938526,13.0001009 C2.55115644,18.0533752 6.81468642,22 12,22 C17.1853136,22 21.4488436,18.0533752 21.9506147,13.0001009 Z M12,2 C6.81502805,2 2.55171825,5.94610473 2.04948449,10.9989003 L21.9505155,10.9989003 C21.4482817,5.94610473 17.1849719,2 12,2 Z",
-  ],
-  iconName: "random",
-  prefix: "fal",
-};
-
 export const stenaSailingOffpeak: IconDefinition = {
   icon: [
     24,
@@ -2484,7 +2472,7 @@ export const stenaStatusDone: IconDefinition = {
   prefix: "fal",
 };
 
-export const stenaStatusInprogress: IconDefinition = {
+export const stenaStatusInProgress: IconDefinition = {
   icon: [
     24,
     24,
