@@ -8,9 +8,9 @@ export default {
 };
 
 export const CommonIcons = () => {
-  return <IconDemoList icons={Object.values(commonIcons)} />;
+  return <IconDemoList icons={commonIcons} />;
 };
 
 export const VehicleTypeIcons = () => {
-  return <IconDemoList icons={Object.values(vehicleTypeIcons)} />;
+  return <IconDemoList icons={vehicleTypeIcons} />;
 };

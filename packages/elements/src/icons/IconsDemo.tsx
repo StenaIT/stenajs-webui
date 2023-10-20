@@ -12,7 +12,7 @@ import { stenaArrowRight } from "./generated/CommonIcons";
 import { Banner } from "../components/ui/banners/banner/Banner";
 
 export const IconDemoList: React.FC<{
-  icons: Array<IconDefinition>;
+  icons: Record<string, IconDefinition>;
 }> = ({ icons }) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
   return (
