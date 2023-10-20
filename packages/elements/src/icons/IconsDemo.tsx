@@ -8,7 +8,6 @@ import { PrimaryButton } from "../components/ui/buttons/PrimaryButton";
 import { SecondaryButton } from "../components/ui/buttons/SecondaryButton";
 import { FlatButton } from "../components/ui/buttons/FlatButton";
 import { Tag } from "../components/ui/tag/Tag";
-import * as allIcons from "./generated/CommonIcons";
 import { stenaArrowRight } from "./generated/CommonIcons";
 import { Banner } from "../components/ui/banners/banner/Banner";
 
@@ -37,7 +36,7 @@ export const IconDemoList: React.FC<{
           background: cssColor("--lhds-color-ui-100"),
         }}
       >
-        {Object.keys(allIcons).map((iconName) => {
+        {Object.keys(icons).map((iconName) => {
           const readableName = iconName
             .replace(/[A-Z]/g, (match) => "-" + match.toLowerCase())
             .replace("stena-", "");
@@ -53,10 +52,10 @@ export const IconDemoList: React.FC<{
               hoverBackground={"rgb(255, 212, 59)"}
               onClick={() => {
                 navigator.clipboard.writeText(iconName);
-                setSelectedIcon(allIcons[iconName]);
+                setSelectedIcon(icons[iconName]);
               }}
             >
-              <Icon key={iconName} icon={allIcons[iconName]} size={24} />
+              <Icon key={iconName} icon={icons[iconName]} size={24} />
               <Txt
                 size={"small"}
                 wordBreak={"break-word"}
