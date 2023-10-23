@@ -1,20 +1,8 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, fireEvent } from "@testing-library/react";
 import { useRef } from "react";
 import { useMultiOnClickOutside } from "../UseMultiOnClickOutside";
 
 describe("useOnClickOutside", () => {
-  const options = {
-    altKey: true,
-    bubbles: true,
-    button: 1,
-    cancelable: true,
-    ctrlKey: true,
-    metaKey: true,
-    pointerX: 1,
-    pointerY: 1,
-    shiftKey: true,
-  };
-
   it("is not called when any element is clicked", () => {
     const button = document.createElement("button");
     const button2 = document.createElement("button");
@@ -24,30 +12,13 @@ describe("useOnClickOutside", () => {
     const {
       result: { current: ref2 },
     } = renderHook(() => useRef<EventTarget | null>(button2));
-    const handler = jest.fn();
-    const event = document.createEvent("MouseEvent");
-    event.initMouseEvent(
-      "mousedown",
-      options.bubbles,
-      options.cancelable,
-      document.defaultView!,
-      options.button,
-      options.pointerX,
-      options.pointerY,
-      options.pointerX,
-      options.pointerY,
-      options.ctrlKey,
-      options.altKey,
-      options.shiftKey,
-      options.metaKey,
-      options.button,
-      null
-    );
+    const handler = vi.fn();
+
     renderHook(() => useMultiOnClickOutside([ref, ref2], handler));
     document.body.appendChild(button);
     document.body.appendChild(button2);
-    button.dispatchEvent(event);
-    button2.dispatchEvent(event);
+    fireEvent.mouseDown(button);
+    fireEvent.mouseDown(button2);
     expect(handler).not.toHaveBeenCalled();
   });
 
@@ -63,29 +34,12 @@ describe("useOnClickOutside", () => {
     const {
       result: { current: nullRef },
     } = renderHook(() => useRef<EventTarget | null>(null));
-    const handler = jest.fn();
-    const event = document.createEvent("MouseEvent");
-    event.initMouseEvent(
-      "mousedown",
-      options.bubbles,
-      options.cancelable,
-      document.defaultView!,
-      options.button,
-      options.pointerX,
-      options.pointerY,
-      options.pointerX,
-      options.pointerY,
-      options.ctrlKey,
-      options.altKey,
-      options.shiftKey,
-      options.metaKey,
-      options.button,
-      null
-    );
+    const handler = vi.fn();
+
     renderHook(() => useMultiOnClickOutside([ref, ref2, nullRef], handler));
     document.body.appendChild(button);
     document.body.appendChild(button2);
-    document.dispatchEvent(event);
+    fireEvent.mouseDown(document);
     expect(handler).toHaveBeenCalled();
   });
 });

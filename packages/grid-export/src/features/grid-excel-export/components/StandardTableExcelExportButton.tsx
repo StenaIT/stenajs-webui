@@ -7,7 +7,7 @@ import { faFileDownload } from "@fortawesome/free-solid-svg-icons/faFileDownload
 import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 interface StandardTableExcelExportButtonProps<
-  TItem,
+  TItem extends object,
   TColumnKey extends string,
   TColumnGroupKey extends string
 > extends Pick<
@@ -21,7 +21,7 @@ interface StandardTableExcelExportButtonProps<
 
 export const StandardTableExcelExportButton =
   function StandardTableExcelExportButton<
-    TItem,
+    TItem extends object,
     TColumnKey extends string,
     TColumnGroupKey extends string
   >({

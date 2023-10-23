@@ -27,7 +27,7 @@ describe("entity-list-reducer", () => {
     const { setList, actionByFieldsMatch, actionByIndex } =
       createEntityListActions<User, EntityAction<User>>();
 
-    describe("actionByFieldsMatch", () => {
+    it("actionByFieldsMatch", () => {
       let s: EntityListState<EntityState<User>> = [];
       s = reducer(
         s,
@@ -51,7 +51,7 @@ describe("entity-list-reducer", () => {
       expect(s[2].b).toBe("bbb");
     });
 
-    describe("actionByIndex", () => {
+    it("actionByIndex", () => {
       let s: EntityListState<EntityState<User>> = [];
       s = reducer(
         s,
@@ -71,8 +71,6 @@ describe("entity-list-reducer", () => {
       expect(s[1].b).toBe("bbb");
       expect(s[2].b).toBe("b3");
     });
-
-    describe("actionByIndex", () => {});
   });
   describe("with no reducer argument", () => {
     const stringReducer = createEntityListReducer<string>();

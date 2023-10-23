@@ -19,7 +19,7 @@ const ariaLabel = "Some input";
 
 describe("useGridCell", () => {
   it("setValueMock  gets called when text is entered", async () => {
-    const setValueMock = jest.fn();
+    const setValueMock = vi.fn();
     const { getByLabelText } = render(
       <TextInputWithGridCell
         value={""}

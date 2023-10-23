@@ -1,10 +1,10 @@
-import { act, renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react";
 import { useDebounce } from "../UseDebounce";
 
 describe("useDebounce", () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
   afterEach(() => {
-    jest.clearAllTimers();
+    vi.clearAllTimers();
   });
 
   it("debounces", async () => {
@@ -22,7 +22,7 @@ describe("useDebounce", () => {
     act(() => rerender({ value: newValue }));
     expect(result.current).toBe(firstValue);
     act(() => {
-      jest.runAllTimers();
+      vi.runAllTimers();
     });
     expect(result.current).not.toBe(firstValue);
     expect(result.current).not.toBe(notValue);

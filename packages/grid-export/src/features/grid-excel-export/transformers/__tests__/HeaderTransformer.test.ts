@@ -24,7 +24,7 @@ describe("HeaderTransformer", () => {
       });
     });
   });
-  describe("transformGroupHeaders", () => {
+  it("transformGroupHeaders", () => {
     const r = transformGroupHeaders(testGroupConfigsWithGroups);
     expect(r[0].type).toBe("string");
     expect(r[0].value).toBe("Name");

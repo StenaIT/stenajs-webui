@@ -21,7 +21,7 @@ import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
 
-export interface StandardTableCellProps<TItem> {
+export interface StandardTableCellProps<TItem extends object> {
   columnId: string;
   item: TItem;
   rowIndex: number;
@@ -31,7 +31,9 @@ export interface StandardTableCellProps<TItem> {
   disableBorderLeft?: boolean;
 }
 
-export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
+export const StandardTableCell = React.memo(function StandardTableCell<
+  TItem extends object
+>({
   columnId,
   item,
   colIndex,

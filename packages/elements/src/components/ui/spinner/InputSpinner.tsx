@@ -1,6 +1,6 @@
 import { ClassNames, keyframes } from "@emotion/react";
 import * as React from "react";
-import { ReactComponent as SpinnerSvg } from "./spinner-small.svg";
+import SpinnerSvg from "./spinner-small.svg?react";
 
 export interface InputSpinnerProps {
   color?: string;

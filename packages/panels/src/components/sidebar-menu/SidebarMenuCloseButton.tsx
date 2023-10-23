@@ -2,7 +2,7 @@ import * as React from "react";
 import cx from "classnames";
 import styles from "./SidebarMenuCloseButton.module.css";
 import { Box, ButtonElementProps } from "@stenajs-webui/core";
-import { ReactComponent as CloseIcon } from "./svg/close.svg";
+import CloseIcon from "./svg/close.svg?react";
 
 export interface SidebarMenuCloseButtonProps extends ButtonElementProps {}
 

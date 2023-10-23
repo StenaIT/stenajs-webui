@@ -1,23 +1,3 @@
-/**
- * Default CSS definition for typescript,
- * will be overridden with file-specific definitions by rollup
- */
-declare module "*.css" {
-  const content: { [className: string]: string };
-  export default content;
-}
-
-interface SvgrComponent
-  extends React.FunctionComponent<React.SVGAttributes<SVGElement>> {}
-
-declare module "*.svg" {
-  const svgUrl: string;
-  const svgComponent: SvgrComponent;
-  export default svgUrl;
-  export { svgComponent as ReactComponent };
-}
-
-declare module "*.md" {
-  const value: any;
-  export default value;
-}
+/// <reference types="vite/client" />
+/// <reference types="vite-plugin-svgr/client" />
+/// <reference types="vitest/globals" />

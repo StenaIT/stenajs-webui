@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import { addDays } from "date-fns";
 import { createDay } from "../../../../util/calendar/CalendarDataFactory";
 import { useMultiDateSelection } from "../UseMultiDateSelection";
@@ -8,7 +8,7 @@ describe("useMultiDateSelection", () => {
     describe("when clicking on a day", () => {
       it("should run onChange", () => {
         const now = new Date();
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         const {
           result: {
             current: { onClickDay },
@@ -27,7 +27,7 @@ describe("useMultiDateSelection", () => {
       describe("when clicking on a day", () => {
         it("should be added", () => {
           const now = new Date();
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const {
             result: {
               current: { onClickDay },
@@ -49,7 +49,7 @@ describe("useMultiDateSelection", () => {
         it("should be removed", () => {
           const now = new Date();
           const tomorrow = addDays(new Date(), 1);
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const {
             result: {
               current: { onClickDay },

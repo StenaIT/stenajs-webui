@@ -1,6 +1,6 @@
 import { reducerIdGate, reducerIdGateAction } from "../reducer-id-gate";
 import { combineReducers } from "redux";
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook } from "@testing-library/react";
 import { useReducer } from "react";
 import {
   createEntityReducer,
@@ -36,7 +36,7 @@ describe("reducer-id-gate", () => {
     describe("when receiving other actions", () => {
       describe("and state is not set", () => {
         it("calls internal reducer with empty action", () => {
-          const innerReducer = jest.fn();
+          const innerReducer = vi.fn();
           const reducer = reducerIdGate("test", innerReducer);
           reducer(undefined, { type: "@@INIT" } as any);
           expect(innerReducer).toHaveBeenCalledWith(undefined, {});
@@ -44,7 +44,7 @@ describe("reducer-id-gate", () => {
       });
       describe("and state is set", () => {
         it("just returns state", () => {
-          const innerReducer = jest.fn();
+          const innerReducer = vi.fn();
           const state = { hello: "world" };
           const reducer = reducerIdGate("test", innerReducer);
           const r = reducer(state, { type: "@@INIT" } as any);

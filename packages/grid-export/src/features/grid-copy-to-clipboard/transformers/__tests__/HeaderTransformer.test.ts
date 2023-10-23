@@ -26,7 +26,7 @@ describe("HeaderTransformer", () => {
       });
     });
   });
-  describe("transformGroupHeaders", () => {
+  it("transformGroupHeaders", () => {
     const r = transformGroupHeaders(testGroupConfigsWithGroups);
     expect(r[0]).toBe('<th style="text-align: left" colspan="2">Name</th>');
     expect(r[1]).toBe('<th style="text-align: left" colspan="1">Info</th>');

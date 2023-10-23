@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactComponent as SpinnerSvg } from "./spinner-large.svg";
+import SpinnerSvg from "./spinner-large.svg?react";
 import cx from "classnames";
 import styles from "./Spinner.module.css";
 import { getDataProps } from "@stenajs-webui/core";
