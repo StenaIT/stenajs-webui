@@ -6,6 +6,10 @@
   text-decoration: none;
   color: var(--lhds-color-ui-600);
 
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+  }
+
   &:not(:last-of-type) {
     cursor: pointer;
 

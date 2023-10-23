@@ -89,6 +89,7 @@
   --swui-button-border-color-disabled: transparent;
   --swui-button-border-radius-icon-only: 50%;
 
+  /* Danger */
   --swui-button-danger-border-color: var(--swui-button-border-color);
   --swui-button-danger-border-color-hover: var(
     --swui-button-border-color-hover
@@ -99,6 +100,9 @@
   --swui-button-danger-border-color-active: var(
     --swui-button-border-color-disabled
   );
+  --swui-button-danger-outline-color: var(--lhds-color-red-600);
+
+  /* Success */
 
   --swui-button-success-border-color: var(--swui-button-border-color);
   --swui-button-success-border-color-hover: var(
@@ -110,6 +114,7 @@
   --swui-button-success-border-color-active: var(
     --swui-button-border-color-disabled
   );
+  --swui-button-success-outline-color: var(--lhds-color-green-700);
 
   /* Shadow */
   --swui-button-box-shadow: none;

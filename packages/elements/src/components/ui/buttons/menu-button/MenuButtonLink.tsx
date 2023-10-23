@@ -99,8 +99,6 @@ export const MenuButtonLink = forwardRef<
     <Box
       className={cx(styles.menuButton)}
       width={"100%"}
-      borderRadius={"99rem"}
-      overflow={"hidden"}
       justifyContent={"space-between"}
     >
       {link}

@@ -59,8 +59,6 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
           aria-expanded={expanded}
           className={cx(styles.menuButton)}
           width={"100%"}
-          borderRadius={"var(--swui-max-border-radius)"}
-          overflow={"hidden"}
         >
           <button
             className={cx(

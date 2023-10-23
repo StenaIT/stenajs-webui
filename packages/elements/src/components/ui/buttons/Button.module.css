@@ -99,6 +99,9 @@
   --swui-button-danger-border-color-focus: var(
     --swui-button-danger-background-color-focus
   );
+  --swui-button-danger-outline-color: var(
+    --swui-button-danger-background-color-focus
+  );
   --swui-button-danger-border-color-hover: var(
     --swui-button-danger-background-color-hover
   );
@@ -110,6 +113,9 @@
     --swui-button-success-background-color
   );
   --swui-button-success-border-color-focus: var(
+    --swui-button-success-background-color-focus
+  );
+  --swui-button-success-outline-color: var(
     --swui-button-success-background-color-focus
   );
   --swui-button-success-border-color-hover: var(
@@ -145,6 +151,8 @@
   border: 1px solid var(--current-border-color);
   background-color: var(--current-background-color);
   border-radius: var(--swui-button-border-radius);
+  outline: var(--current-outline);
+  outline-offset: 2px;
   box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
   color: var(--current-text-color);
   font-size: var(--current-text-size, var(--swui-button-text-size));
@@ -255,7 +263,7 @@
     --current-box-shadow: var(--swui-button-box-shadow-hover);
   }
 
-  &:focus {
+  &:focus&:not(:focus-visible) {
     outline: 0;
   }
 
@@ -265,6 +273,7 @@
     --current-icon-color: var(--swui-button-icon-color-focus);
     --current-text-color: var(--swui-button-text-color-focus);
     --current-box-shadow: var(--swui-button-box-shadow-focus);
+    --current-outline: var(--swui-focus-outline);
   }
 
   &:active {
@@ -302,10 +311,6 @@
       --current-icon-color: var(--swui-button-danger-icon-color-hover);
     }
 
-    &:focus {
-      outline: 0;
-    }
-
     &:focus-visible {
       --current-background-color: var(
         --swui-button-danger-background-color-focus
@@ -313,6 +318,7 @@
       --current-border-color: var(--swui-button-danger-border-color-focus);
       --current-text-color: var(--swui-button-danger-text-color-focus);
       --current-icon-color: var(--swui-button-danger-icon-color-focus);
+      --current-outline: 3px solid var(--swui-button-danger-outline-color);
     }
 
     &:active {
@@ -340,10 +346,6 @@
       --current-icon-color: var(--swui-button-success-icon-color-hover);
     }
 
-    &:focus {
-      outline: 0;
-    }
-
     &:focus-visible {
       --current-background-color: var(
         --swui-button-success-background-color-focus
@@ -351,6 +353,7 @@
       --current-border-color: var(--swui-button-success-border-color-focus);
       --current-text-color: var(--swui-button-success-text-color-focus);
       --current-icon-color: var(--swui-button-success-icon-color-focus);
+      --current-outline: 3px solid var(--swui-button-success-outline-color);
     }
 
     &:active {

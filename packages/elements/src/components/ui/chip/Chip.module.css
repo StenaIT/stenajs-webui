@@ -57,6 +57,10 @@
       outline: none;
     }
 
+    &:focus-visible {
+      outline: var(--swui-focus-outline);
+    }
+
     &:active {
       background-color: var(--current-bg-color-active);
     }

@@ -65,19 +65,15 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const sidebarMenuItems = (
     <>
       <SidebarMenuHeading label={"Freight portal"} />
+      <SidebarMenuLink href={"#"} leftIcon={stenaCalendar} label={"Manage"} />
       <SidebarMenuLink
-        onClick={() => alert("Clicked Manage")}
-        leftIcon={stenaCalendar}
-        label={"Manage"}
-      />
-      <SidebarMenuLink
-        onClick={() => alert("Clicked Book")}
+        href={"#"}
         label={"Book (selected)"}
         leftIcon={stenaSailingTicket}
         selected
       />
       <SidebarMenuLink
-        onClick={() => alert("Clicked Statistics")}
+        href={"#"}
         label={"Statistics"}
         leftIcon={stenaStatisticsLine}
       />
@@ -118,32 +114,24 @@ export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
       <SidebarMenuLink
         leftIcon={stenaBusinessClaim}
         label={"Make a claim"}
-        onClick={() => alert("Click on quick guide")}
+        href={"#"}
       />
       <SidebarMenuLink
         leftIcon={stenaStatusNoShow}
         label={"No show, late handling"}
-        onClick={() => alert("Click on contact")}
+        href={"#"}
       />
     </>
   );
 
   const bottomItems = (
     <>
-      <SidebarMenuLink
-        leftIcon={stenaClock}
-        label={"Timetable"}
-        onClick={() => alert("Click on quick guide")}
-      />
-      <SidebarMenuLink
-        leftIcon={stenaHelp}
-        label={"Help"}
-        onClick={() => alert("Click on contact")}
-      />
+      <SidebarMenuLink leftIcon={stenaClock} label={"Timetable"} href={"#"} />
+      <SidebarMenuLink leftIcon={stenaHelp} label={"Help"} href={"#"} />
       <SidebarMenuLink
         leftIcon={stenaSlidersMini}
         label={"Settings"}
-        onClick={() => alert("Click on contact")}
+        href={"#"}
       />
     </>
   );
