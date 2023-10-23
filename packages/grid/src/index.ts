@@ -1,3 +1,5 @@
+import type {} from "@emotion/react"; // <- Needed for TS to correctly resolve inferred types for Box when using PNPM.
+
 export * from "./components/GridHooksTable";
 
 export * from "./features/table-ui/components/CrudStatusIndicator";

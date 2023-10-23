@@ -18,10 +18,9 @@
     "npm": ">=5"
   },
   "scripts": {
-    "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
-    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
-    "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn build"
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "start": "tsc -p tsconfig.build.json && vite build --watch",
+    "clean": "rimraf dist"
   },
   "peerDependencies": {
     "@emotion/react": ">=11.1.5",
@@ -60,7 +59,7 @@
   "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961",
   "dependencies": {
     "@emotion/is-prop-valid": "^1.1.0",
-    "@stenajs-webui/theme": "18.12.0",
+    "@stenajs-webui/theme": "workspace:*",
     "classnames": "^2.3.1"
   }
 }

@@ -1,3 +1,4 @@
+import type {} from "@emotion/react"; // <- Needed for TS to correctly resolve inferred types for Box when using PNPM.
 import "@stenajs-webui/theme";
 
 export * from "./components/decorators/separatorline/SeparatorLine";

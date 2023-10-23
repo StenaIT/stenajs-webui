@@ -6,16 +6,15 @@
   "scripts": {
     "start-storybook": "storybook dev -p 6006",
     "build-storybook": "rimraf build && storybook build -o build",
-    "build-packages": "lerna run build",
-    "build-packages-and-storybook": "lerna run build && storybook build",
-    "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
-    "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
-    "clean-all": "lerna run clean",
-    "publish-all": "lerna publish --exact --force-publish && yarn build-storybook && yarn deploy-built-storybook",
+    "build-packages": "pnpm -r build",
+    "build-packages-and-storybook": "pnpm -r build && storybook build",
+    "build-all": "yarn pre-build-check && yarn clean-all && pnpm -r build && yarn post-build-check",
+    "build-all-no-clean": "yarn check-deps-match && yarn check-imports && pnpm -r build && yarn check-builds",
+    "clean-all": "pnpm --parallel clean",
     "check-all": "yarn lint && yarn check-deps-match && yarn check-imports && yarn check-circular-deps && yarn check-circular-deps-stories && yarn check-builds && yarn check-prettier && yarn test",
     "pre-build-check": "yarn check-deps-match && yarn check-imports && yarn lint && yarn check-prettier",
     "post-build-check": "yarn check-circular-deps && yarn check-circular-deps-stories && yarn test && yarn check-builds",
-    "watch": "lerna exec --parallel -- yarn start",
+    "watch": "pnpm -r start",
     "generate-svg-icons": "node scripts/svg-flatten.js > packages/elements/src/icons/ui/IconsUi.ts",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "lint": "eslint --ignore-path .gitignore \"packages/**/src/**/*.ts*\"",
@@ -39,7 +38,7 @@
   },
   "homepage": "https://github.com/StenaIT/stenajs-webui#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
+    "@babel/core": "7.23.2",
     "@fortawesome/free-brands-svg-icons": ">=5.15.3",
     "@storybook/addon-a11y": "^7.4.0",
     "@storybook/addon-actions": "^7.4.0",
@@ -57,19 +56,19 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",
     "@types/jest": "^28.1.1",
-    "@types/node": "^12.0.0",
+    "@types/node": "^20.8.7",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "@vitejs/plugin-react": "^4.0.4",
     "auto": "^10.32.6",
-    "autoprefixer": "^9.7.2",
-    "babel-eslint": "10.1.0",
+    "autoprefixer": "^10.4.16",
+    "@babel/eslint-parser": "7.22.15",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.4.0",
     "cross-env": "^5.2.0",
     "dpdm": "^3.5.0",
     "eslint": "7.9.0",
-    "eslint-config-react-app": "5.2.1",
+    "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "4.2.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.3.1",
@@ -80,7 +79,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
-    "lerna": "^7.3.0",
+    "lerna": "^7.4.1",
     "lint-staged": "^12.1.2",
     "path-that-svg": "1.2.4",
     "postcss-loader": "^4.3.0",
@@ -90,6 +89,7 @@
     "react": "^18.2.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
     "storybook": "^7.4.0",
     "svgson": "4.1.0",
     "ts-jest": "^28.0.5",
@@ -112,14 +112,6 @@
       "prettier --write"
     ]
   },
-  "resolutions": {
-    "react": "18.2.0",
-    "@babel/core": "7.13.15",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.5",
-    "tslib": "2.3.1",
-    "ts-node": "10.9.1"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -130,5 +122,11 @@
     "plugins": [
       "npm"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "glob-parent@<5.1.2": ">=5.1.2",
+      "postcss@<8.4.31": ">=8.4.31"
+    }
   }
 }

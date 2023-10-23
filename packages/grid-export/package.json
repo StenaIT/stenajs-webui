@@ -18,18 +18,16 @@
     "npm": ">=5"
   },
   "scripts": {
-    "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
-    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "start": "tsc -p tsconfig.build.json && vite build --watch",
     "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
-    "@stenajs-webui/core": "18.12.0",
-    "@stenajs-webui/elements": "18.12.0",
-    "@stenajs-webui/grid": "18.12.0",
+    "@stenajs-webui/core": "workspace:*",
+    "@stenajs-webui/elements": "workspace:*",
+    "@stenajs-webui/grid": "workspace:*",
     "@types/zipcelx": "^1.5.0",
     "clipboard-polyfill": "^3.0.2",
     "date-fns": "2.26.0",

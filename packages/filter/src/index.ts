@@ -1,6 +1,4 @@
-/**
- * Search filter
- **/
+import type {} from "@emotion/react"; // <- Needed for TS to correctly resolve inferred types for Box when using PNPM.
 
 export * from "./features/search-filter/components/SearchFilterDrawer";
 export * from "./features/search-filter/components/SearchFilterButton";

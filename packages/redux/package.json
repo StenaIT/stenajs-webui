@@ -18,11 +18,9 @@
     "npm": ">=5"
   },
   "scripts": {
-    "build": "yarn tsc -p tsconfig.build.json && yarn vite build",
-    "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "start": "tsc -p tsconfig.build.json && vite build --watch",
     "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
