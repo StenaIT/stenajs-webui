@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Row, Text } from "@stenajs-webui/core";
-import { Icon } from "../../icon/Icon";
-import styles from "./MenuButton.module.css";
+import { Icon } from "../../../icon/Icon";
+import styles from "../MenuButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ReactNode } from "react";
 

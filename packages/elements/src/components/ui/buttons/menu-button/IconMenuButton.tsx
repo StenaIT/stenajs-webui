@@ -21,37 +21,35 @@ export const IconMenuButton = forwardRef<
   ref
 ) {
   return (
-    <Box>
-      <Box
-        className={cx(styles.menuButton)}
-        width={"100%"}
-        borderRadius={"99rem"}
-        overflow={"hidden"}
+    <Box
+      className={cx(styles.menuButton)}
+      width={"100%"}
+      borderRadius={"99rem"}
+      overflow={"hidden"}
+    >
+      <button
+        className={cx(
+          styles.button,
+          selected && styles.selected,
+          disabled && styles.disabled,
+          styles[variant],
+          className
+        )}
+        disabled={disabled}
+        ref={ref}
+        {...buttonProps}
       >
-        <button
-          className={cx(
-            styles.button,
-            selected && styles.selected,
-            disabled && styles.disabled,
-            styles[variant],
-            className
-          )}
-          disabled={disabled}
-          ref={ref}
-          {...buttonProps}
-        >
-          <Row justifyContent={"center"} alignItems={"center"} indent={1}>
-            <Box alignItems={"center"} justifyContent={"center"} width={"20px"}>
-              <Icon
-                icon={icon}
-                size={20}
-                color={"var(--current-text-color)"}
-                data-hover={true}
-              />
-            </Box>
-          </Row>
-        </button>
-      </Box>
+        <Row justifyContent={"center"} alignItems={"center"} indent={1}>
+          <Box alignItems={"center"} justifyContent={"center"} width={"20px"}>
+            <Icon
+              icon={icon}
+              size={20}
+              color={"var(--current-text-color)"}
+              data-hover={true}
+            />
+          </Box>
+        </Row>
+      </button>
     </Box>
   );
 });

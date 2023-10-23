@@ -7,7 +7,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
   MenuButtonContent,
   MenuButtonContentProps,
-} from "../buttons/menu-button/MenuButtonContent";
+} from "../buttons/menu-button/internal/MenuButtonContent";
 
 export interface ActionMenuItemContentProps
   extends DivProps,

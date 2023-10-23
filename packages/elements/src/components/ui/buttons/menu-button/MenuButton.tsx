@@ -13,7 +13,7 @@ import { cssColor } from "@stenajs-webui/theme";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "../../icon/Icon";
-import { MenuButtonContent } from "./MenuButtonContent";
+import { MenuButtonContent } from "./internal/MenuButtonContent";
 import {
   stenaAngleDown,
   stenaAngleUp,

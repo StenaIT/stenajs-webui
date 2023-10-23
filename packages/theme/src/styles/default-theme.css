@@ -109,4 +109,7 @@
   --swui-metrics-space: 8px;
 
   --swui-default-item-height: 40px;
+
+  /* Focus outline */
+  --swui-focus-outline: 2px solid var(--modern-blue);
 }
