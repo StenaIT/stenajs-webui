@@ -1,0 +1,25 @@
+.contentMenuButton {
+  --current-outline: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-radius: var(--swui-max-border-radius);
+  min-height: 40px;
+  padding: 4px 0;
+  outline: none;
+
+  &:hover {
+    background: var(--lhds-color-ui-400);
+  }
+
+  &:focus {
+    background: var(--lhds-color-ui-500);
+  }
+
+  &:active {
+    background: var(--lhds-color-ui-500);
+  }
+}

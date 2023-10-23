@@ -4,7 +4,7 @@ import { AnchorElementProps, Box, Row } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { MenuButtonContent } from "./MenuButtonContent";
+import { MenuButtonContent } from "./internal/MenuButtonContent";
 import { MenuButtonVariant } from "./MenuButton";
 
 export type MenuButtonLinkRenderer = (

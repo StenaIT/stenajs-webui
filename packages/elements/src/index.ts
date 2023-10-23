@@ -19,6 +19,7 @@ export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
 export * from "./components/ui/buttons/common/ButtonContent";
 export * from "./components/ui/buttons/menu-button/MenuButton";
+export * from "./components/ui/buttons/menu-button/ContentMenuButton";
 export * from "./components/ui/buttons/menu-button/IconMenuButton";
 export * from "./components/ui/buttons/menu-button/MenuButtonLink";
 export * from "./components/ui/buttons/menu-button/IconMenuButtonLink";

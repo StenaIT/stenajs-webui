@@ -21,6 +21,8 @@ export type H1Props = ComponentPropsWithoutRef<"h1">;
 
 export type ButtonElementProps = ComponentPropsWithoutRef<"button">;
 
+export type LabelElementProps = ComponentPropsWithoutRef<"label">;
+
 export type InputElementProps = ComponentPropsWithoutRef<"input">;
 
 export type AnchorElementProps = ComponentPropsWithoutRef<"a">;

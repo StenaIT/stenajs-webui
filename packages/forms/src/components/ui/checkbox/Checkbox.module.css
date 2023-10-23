@@ -163,12 +163,7 @@
   }
 
   &:focus-visible {
-    &:checked {
-      box-shadow: var(--swui-checkbox-checked-focus-shadow);
-    }
-    &:not(:checked) {
-      box-shadow: var(--swui-checkbox-unchecked-focus-shadow);
-    }
+    outline: var(--swui-focus-outline);
   }
 
   & + label {

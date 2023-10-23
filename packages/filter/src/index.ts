@@ -17,6 +17,8 @@ export * from "./features/search-filter/context/SearchFilterDispatchContext";
 export * from "./features/search-filter/hooks/UseLocalSearchFilterState";
 export * from "./features/search-filter/redux/SearchFilterRedux";
 export * from "./features/search-filter/types/FilterEntity";
+export * from "./features/search-filter/features/filter-checkbox/FilterCheckbox";
+export * from "./features/search-filter/features/filter-checkbox/FilterCheckboxList";
 export * from "./features/search-filter/features/chips/SearchFilterChips";
 export * from "./features/search-filter/features/chips/SectionChips";
 export * from "./features/search-filter/features/chips/SearchFilterChip";
