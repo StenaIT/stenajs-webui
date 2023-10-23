@@ -125,6 +125,8 @@
     --swui-button-success-background-color-active
   );
 
+  --swui-button-outline-offset: 2px;
+
   /* Shadow */
   --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
   --swui-button-box-shadow-hover: 0 1px 1px 1px rgba(29, 100, 171, 0.16),
@@ -152,7 +154,7 @@
   background-color: var(--current-background-color);
   border-radius: var(--swui-button-border-radius);
   outline: var(--current-outline);
-  outline-offset: 2px;
+  outline-offset: var(--swui-button-outline-offset);
   box-shadow: var(--current-box-shadow, var(--swui-button-box-shadow));
   color: var(--current-text-color);
   font-size: var(--current-text-size, var(--swui-button-text-size));

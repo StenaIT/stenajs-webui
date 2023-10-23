@@ -34,7 +34,7 @@
   );
 
   --swui-button-danger-text-color: var(--lhds-color-red-500);
-  --swui-button-success-text-color: var(--lhds-color-green-600);
+  --swui-button-success-text-color: var(--lhds-color-green-800);
 
   /* Icon */
   --swui-button-icon-color: var(--swui-flat-button-icon-color);
@@ -46,7 +46,7 @@
   );
 
   --swui-button-danger-icon-color: var(--lhds-color-red-500);
-  --swui-button-success-icon-color: var(--lhds-color-green-600);
+  --swui-button-success-icon-color: var(--lhds-color-green-800);
 
   /* Background */
   --swui-button-background-color: var(--swui-flat-button-background-color);
@@ -122,4 +122,6 @@
   --swui-button-box-shadow-focus: var(--swui-flat-box-shadow-focus);
   --swui-button-box-shadow-active: none;
   --swui-button-box-shadow-disabled: none;
+
+  --swui-button-outline-offset: 0;
 }

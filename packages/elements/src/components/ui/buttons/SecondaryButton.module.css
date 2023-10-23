@@ -53,20 +53,22 @@
   /* Border */
   --swui-button-border-color: var(--lhds-color-ui-400);
   --swui-button-border-color-hover: var(--lhds-color-blue-400);
-  --swui-button-border-color-focus: var(--lhds-color-blue-600);
+  --swui-button-border-color-focus: transparent;
   --swui-button-border-color-active: var(--lhds-color-blue-500);
   --swui-button-border-color-disabled: var(--swui-button-background-color);
   --swui-button-danger-border-color: var(--swui-button-border-color);
   --swui-button-danger-border-color-hover: var(--lhds-color-red-400);
-  --swui-button-danger-border-color-focus: var(--lhds-color-red-600);
+  --swui-button-danger-border-color-focus: transparent;
   --swui-button-danger-border-color-active: var(--lhds-color-red-500);
   --swui-button-danger-outline-color: var(--lhds-color-red-600);
 
   --swui-button-success-border-color: var(--swui-button-border-color);
   --swui-button-success-border-color-hover: var(--lhds-color-green-500);
-  --swui-button-success-border-color-focus: var(--lhds-color-green-700);
+  --swui-button-success-border-color-focus: transparent;
   --swui-button-success-border-color-active: var(--lhds-color-green-600);
   --swui-button-success-outline-color: var(--lhds-color-green-700);
+
+  --swui-button-outline-offset: 0;
 
   /* Shadow */
   --swui-button-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.06),
