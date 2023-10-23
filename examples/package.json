@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@stenajs-webui/core": "workspace:*",
+    "@stenajs-webui/elements": "workspace:*",
+    "@stenajs-webui/forms": "workspace:*",
+    "@stenajs-webui/panels": "workspace:*",
+    "@stenajs-webui/redux": "workspace:*",
+    "@stenajs-webui/theme": "workspace:*",
+    "@stenajs-webui/tooltip": "workspace:*"
+  }
+}
