@@ -69,7 +69,7 @@ const getInvalidInternalDeps = packages => {
       deps.forEach(dep => {
         if (dep.startsWith("@stenajs-webui/")) {
           const version = packageJson.dependencies[dep];
-          const expectedVersion = getPackageVersion(packages, dep);
+          const expectedVersion = "workspace:*";
           if (expectedVersion !== version) {
             console.error(
               packageJson.name +
