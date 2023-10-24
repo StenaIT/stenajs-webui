@@ -8,7 +8,7 @@ import { PrimaryButton } from "../components/ui/buttons/PrimaryButton";
 import { SecondaryButton } from "../components/ui/buttons/SecondaryButton";
 import { FlatButton } from "../components/ui/buttons/FlatButton";
 import { Tag } from "../components/ui/tag/Tag";
-import { stenaArrowRight } from "./generated/CommonIcons";
+import { stenaArrowRight } from "./generated/ArrowIcons";
 import { Banner } from "../components/ui/banners/banner/Banner";
 
 export const IconDemoList: React.FC<{
