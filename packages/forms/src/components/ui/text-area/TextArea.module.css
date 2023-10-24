@@ -39,12 +39,10 @@
   --swui-textarea-border-color-disabled: var(
     --swui-field-border-color-disabled
   );
-  /* Shadow */
-  --swui-textarea-focus-shadow: var(--swui-field-focus-shadow);
 
   /*
-   * Styling
-   */
+     * Styling
+     */
   max-width: 100%;
   letter-spacing: var(--swui-textarea-letter-spacing);
   line-height: var(--swui-textarea-line-height);
@@ -61,11 +59,17 @@
   transition: border var(--swui-textarea-animation-time);
   --current-icon-color: var(--swui-textarea-icon-color);
 
-  &:focus {
+  &:focus:not(:focus-visible) {
     outline: none;
-    box-shadow: var(--swui-textarea-focus-shadow);
+  }
+
+  &:focus {
     --current-border-color: var(--swui-textarea-border-color-hover);
     --current-bg: var(--swui-textarea-bg-color);
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
   }
 
   &:disabled {

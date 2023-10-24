@@ -20,10 +20,6 @@
   --swui-checkbox-border-hover-color: var(--swui-field-border-color-hover);
   --swui-checkbox-disabled-border-color: var(--swui-checkbox-disabled-bg-color);
 
-  /* Shadow */
-  --swui-checkbox-checked-focus-shadow: var(--swui-field-focus-shadow-inverted);
-  --swui-checkbox-unchecked-focus-shadow: var(--swui-field-focus-shadow);
-
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: var(--swui-checkbox-border-radius);
@@ -37,8 +33,7 @@
     var(--current-border-color, var(--swui-checkbox-border-color));
   background: var(--current-bg-color, var(--swui-checkbox-unchecked-bg-color));
   transition: background var(--swui-checkbox-animation-time),
-    border-color var(--swui-checkbox-animation-time),
-    box-shadow var(--swui-checkbox-animation-time);
+    border-color var(--swui-checkbox-animation-time);
   flex-shrink: 0;
 
   &.standard {
