@@ -4,7 +4,7 @@ import styles from "./UpDownButtons.module.css";
 import {
   stenaAngleDown,
   stenaAngleUp,
-} from "../../../icons/generated/CommonIcons";
+} from "../../../icons/generated/ArrowIcons";
 import { Icon } from "../icon/Icon";
 
 export interface UpDownButtonsProps {
