@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "../../../styled";
 
 export const TrWithHoverBackground = styled.tr<{
   borderLeft?: string;

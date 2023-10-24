@@ -1,6 +1,5 @@
-import { StylesConfig } from "react-select";
+import { GroupBase, StylesConfig } from "react-select";
 import { defaultSelectTheme, SelectTheme } from "../SelectTheme";
-import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export type SelectVariant = "standard" | "warning" | "error" | "success";
 

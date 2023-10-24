@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { Box, Clickable, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import {
@@ -7,6 +6,7 @@ import {
   DayStateHighlight,
 } from "../../../types/CalendarTypes";
 import { dayHighlightSelect } from "../../../util/calendar/StateHelper";
+import { styled } from "../../../styled";
 
 export const CalendarDay = function CalendarDay<T>({
   day,

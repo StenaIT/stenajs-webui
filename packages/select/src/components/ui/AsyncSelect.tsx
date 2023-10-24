@@ -5,8 +5,7 @@ import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { mergeStyles } from "react-select";
-import { GroupBase } from "react-select/dist/declarations/src/types";
+import { GroupBase, mergeStyles } from "react-select";
 
 export interface AsyncSelectProps<T = { label: string; value: string }>
   extends AsyncProps<T, false, GroupBase<T>> {

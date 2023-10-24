@@ -1,12 +1,11 @@
 import * as React from "react";
 import { useMemo } from "react";
-import { mergeStyles } from "react-select";
+import { GroupBase, mergeStyles } from "react-select";
 import AsyncComponent, { AsyncProps } from "react-select/async";
 import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export interface AsyncMultiSelectProps<T = { label: string; value: string }>
   extends AsyncProps<T, true, GroupBase<T>> {

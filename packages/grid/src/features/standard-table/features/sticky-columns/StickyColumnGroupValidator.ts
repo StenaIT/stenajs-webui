@@ -2,6 +2,7 @@ import {
   StandardTableConfig,
   StandardTableConfigWithGroups,
 } from "../../config/StandardTableConfig";
+import { StandardTableColumnOptionsWithNoGroups } from "../../config/StandardTableColumnConfig";
 
 export const ensureConfigHasValidSticky = <TItem, TColumnKey extends string>(
   config: StandardTableConfig<TItem, TColumnKey>
@@ -29,10 +30,10 @@ export const ensureConfigHasValidSticky = <TItem, TColumnKey extends string>(
 export const ensureNoColumnsAreSticky = <TItem, TColumnKey extends string>(
   config: StandardTableConfig<TItem, TColumnKey>
 ): void => {
-  const columnIds = Object.keys(config.columns);
+  const columnIds = Object.keys(config.columns) as TColumnKey[];
   columnIds.forEach((columnId) => {
     const columnConfig = config.columns[columnId];
-    if (columnConfig.sticky) {
+    if ((columnConfig as StandardTableColumnOptionsWithNoGroups).sticky) {
       throw new Error(
         "Columns can not be sticky when column groups are used. columnId: " +
           columnId

@@ -11,7 +11,7 @@ import { DateRange } from "../../../types/DateRange";
 export const useDateRangeOnClickDayHandler = <T>(
   value: DateRange | undefined,
   onValueChange: ((dateRange: DateRange) => void) | undefined,
-  focusedInput: DateRangeFocusedInput,
+  focusedInput: DateRangeFocusedInput | undefined,
   setFocusedInput: (focusedInput: DateRangeFocusedInput) => void
 ): OnClickDay<T> => {
   return useCallback(

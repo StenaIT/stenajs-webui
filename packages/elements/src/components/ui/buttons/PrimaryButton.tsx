@@ -6,8 +6,8 @@ import styles from "./Button.module.css";
 import { CommonButtonProps } from "./common/ButtonCommon";
 import { getButtonLabel } from "./common/ButtonLabelFactory";
 import { ButtonContent } from "./common/ButtonContent";
-import styled from "@emotion/styled";
 import { width, WidthProps } from "styled-system";
+import { styled } from "../../../styled";
 
 export interface PrimaryButtonProps
   extends CommonButtonProps,

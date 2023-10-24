@@ -5,12 +5,12 @@ import { InternalPanelAndFocusStateProps } from "../../../types/InternalPanelAnd
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { DateRange } from "../../../types/DateRange";
 
-export type DateRangeFocusedInput = "startDate" | "endDate" | undefined;
+export type DateRangeFocusedInput = "startDate" | "endDate";
 
 export interface DateRangeCalendarProps<T>
   extends InternalPanelAndFocusStateProps<T>,
     ValueAndOnValueChangeProps<DateRange> {
-  focusedInput?: DateRangeFocusedInput;
+  focusedInput?: DateRangeFocusedInput | undefined;
   setFocusedInput: (focusedInput: DateRangeFocusedInput) => void;
   initialDateInFocus?: Date;
 }

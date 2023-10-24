@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
 import { ButtonElementProps, Text } from "@stenajs-webui/core";
 import { forwardRef, useCallback } from "react";
 import * as React from "react";
 import cx from "classnames";
 import { width, WidthProps } from "styled-system";
 import styles from "./ToggleButton.module.css";
+import { styled } from "../../../styled";
 
 export type ToggleButtonSize = "small" | "medium" | "large";
 

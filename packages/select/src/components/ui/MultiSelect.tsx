@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useMemo } from "react";
 import SelectComponent, {
+  GroupBase,
   mergeStyles,
   Props,
   SelectComponentsConfig,
@@ -9,7 +10,6 @@ import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { GroupBase } from "react-select/dist/declarations/src/types";
 
 export interface MultiSelectProps<TOption = { label: string; value: string }>
   extends Props<TOption, true> {

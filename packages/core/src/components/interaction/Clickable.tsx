@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
 import * as React from "react";
 import { CSSProperties, forwardRef, MouseEventHandler } from "react";
 import { ButtonElementProps } from "../../types/ElementProps";
+import { styled } from "../../styled";
 
 export interface ClickableProps extends ButtonElementProps {
   /** Callback function called when clicking on click area. */

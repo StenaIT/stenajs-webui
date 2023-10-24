@@ -1,5 +1,3 @@
-import isPropValid from "@emotion/is-prop-valid";
-import styled from "@emotion/styled";
 import { Property } from "csstype";
 
 import {
@@ -47,6 +45,7 @@ import {
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
 import { booleanOrNumberToNumber } from "../../../utils/BooleanOrNumberToNumber";
+import { isPropValid, styled } from "../../../styled";
 
 interface StyledSystemProps
   extends BorderRadiusProps,
@@ -181,7 +180,7 @@ const box = system({
   },
   shadow: {
     property: "boxShadow",
-    transform: (value) => shadows[value] ?? value,
+    transform: (value: ShadowType) => shadows[value] ?? value,
   },
 });
 

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "../../../../styled";
 
 export const ChipSpacer = styled.div`
   padding: calc(var(--swui-metrics-spacing) / 2)
