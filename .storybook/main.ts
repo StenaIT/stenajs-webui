@@ -4,7 +4,7 @@ import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  core: { builder: "@storybook/builder-vite" },
+  core: {},
   stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
   typescript: {
     reactDocgen:
