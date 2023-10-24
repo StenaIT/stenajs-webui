@@ -23,12 +23,6 @@
     --swui-radiobutton-checked-disabled-bg-color
   );
 
-  /* Shadow */
-  --swui-radiobutton-checked-focus-shadow: var(
-    --swui-field-focus-shadow-inverted
-  );
-  --swui-radiobutton-unchecked-focus-shadow: var(--swui-field-focus-shadow);
-
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
@@ -46,8 +40,7 @@
     var(--swui-radiobutton-unchecked-bg-color)
   );
   transition: background var(--swui-radiobutton-animation-time),
-    border-color var(--swui-radiobutton-animation-time),
-    box-shadow var(--swui-radiobutton-animation-time);
+    border-color var(--swui-radiobutton-animation-time);
 
   &.standard {
     height: var(--swui-radiobutton-size-standard);

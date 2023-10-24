@@ -110,7 +110,7 @@ export const defaultSelectTheme: SelectTheme = {
     warningBorderColor: "var(--swui-state-alert-color)",
     errorBorderColor: "var(--swui-state-error-color)",
     successBorderColor: "var(--swui-state-success-color)",
-    boxShadowFocused: "var(--swui-field-focus-shadow)",
+    boxShadowFocused: "none",
     fontFamily: "var(--swui-font-primary)",
     fontSize: "var(--swui-font-size-inputs)",
     height: "32px",
