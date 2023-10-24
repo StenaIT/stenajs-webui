@@ -85,7 +85,7 @@
       background: var(--current-background-color-hover);
     }
 
-    &:focus&:not(:focus-visible) {
+    &:focus:not(:focus-visible) {
       outline: none;
     }
 

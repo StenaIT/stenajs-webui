@@ -265,7 +265,7 @@
     --current-box-shadow: var(--swui-button-box-shadow-hover);
   }
 
-  &:focus&:not(:focus-visible) {
+  &:focus:not(:focus-visible) {
     outline: 0;
   }
 
