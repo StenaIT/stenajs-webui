@@ -46,7 +46,7 @@
   --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
 
   /* Shadow */
-  --swui-textinput-focus-shadow: var(--swui-field-focus-shadow);
+  --swui-textinput-focus-shadow: none;
 
   /* Current vars */
   --current-bg: var(--swui-textinput-bg-color);
@@ -60,10 +60,12 @@
   background: var(--current-bg);
   border: 1px solid var(--current-border-color);
   border-radius: var(--swui-textinput-border-radius);
-  transition: all var(--swui-textinput-animation-time);
+  outline: none;
 
   &&:focus-within:not(.disabled) {
     box-shadow: var(--swui-textinput-focus-shadow);
+    border: 1px solid transparent;
+    outline: var(--swui-focus-outline);
     --current-border-color: var(--swui-textinput-border-color-hover);
     --current-bg: var(--swui-textinput-bg-color);
   }
@@ -81,6 +83,7 @@
     border: none;
     min-width: 0; /* https://stackoverflow.com/a/43361500 */
     margin: 0; /* Safari */
+    outline: none;
 
     &:disabled {
       color: var(--swui-textinput-text-color-disabled);
@@ -93,10 +96,6 @@
 
     &:focus::placeholder {
       opacity: 0;
-    }
-
-    &:focus {
-      outline: none;
     }
 
     &::-webkit-calendar-picker-indicator {

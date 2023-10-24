@@ -12,7 +12,6 @@
   --swui-tab-label-color-hover: var(--lhds-color-blue-900);
   --swui-tab-label-color-selected: var(--lhds-color-blue-600);
   --swui-tab-label-color-selected-hover: var(--lhds-color-blue-600);
-  --swui-tab-outline-color-focus: var(--lhds-color-blue-400);
 
   /*
   State variables
@@ -43,7 +42,7 @@
   color: var(--current-label-color);
 
   &:focus-visible {
-    outline: 2px solid var(--swui-tab-outline-color-focus);
+    outline: var(--swui-focus-outline);
     --current-outer-border-bottom-color: var(--swui-tab-border-color-focus);
     padding-bottom: 4px;
   }
@@ -57,6 +56,7 @@
     &.selected {
       color: var(--swui-tab-label-color-selected-hover);
     }
+
     &:not(.selected) {
       --current-outer-border-bottom-color: var(--swui-tab-border-color-hover);
       color: var(--swui-tab-label-color-hover);

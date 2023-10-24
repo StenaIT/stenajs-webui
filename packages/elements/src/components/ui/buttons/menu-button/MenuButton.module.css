@@ -5,7 +5,7 @@
   --swui-menu-button-icon-color: var(--lhds-color-ui-900);
   --swui-menu-button-background-color: transparent;
   --swui-menu-button-background-color-hover: var(--lhds-color-ui-300);
-  --swui-menu-button-background-color-focus: var(--lhds-color-ui-400);
+  --swui-menu-button-background-color-focus: var(--lhds-color-ui-300);
   --swui-menu-button-background-color-active: var(--lhds-color-ui-400);
   --swui-menu-button-background-selected: var(--lhds-color-blue-100);
   --swui-menu-button-background-selected-hover: var(--lhds-color-blue-200);
@@ -55,6 +55,7 @@
     border: 0;
     padding: 4px 0;
     cursor: pointer;
+    border-radius: var(--swui-max-border-radius);
     background: var(--current-background-color);
     min-height: var(--swui-menu-button-item-height);
     min-width: var(--swui-menu-button-item-height);
@@ -84,12 +85,14 @@
       background: var(--current-background-color-hover);
     }
 
-    &:focus {
+    &:focus:not(:focus-visible) {
       outline: none;
     }
 
     &:focus-visible {
-      background: var(--current-background-color-active);
+      background: var(--current-background-color-focus);
+      outline: var(--swui-focus-outline);
+      outline-offset: 0;
     }
 
     &:active {

@@ -34,7 +34,6 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
 }) => {
   return (
     <Box
-      indent={1}
       className={cx(styles.sidebarMenu, className)}
       style={{
         ["--swui-sidebar-menu-item-height" as string]: "40px",
@@ -47,7 +46,7 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
         background={"var(--current-background-color)"}
         overflow={"auto"}
       >
-        <Column justifyContent={"space-between"} flex={1} gap={1}>
+        <Column justifyContent={"space-between"} flex={1} gap={1} indent={1}>
           <Column gap={1}>{children}</Column>
           {(bottomItems || pinButtonVisible) && (
             <Column gap={1}>

@@ -2,7 +2,7 @@
   display: inline-flex;
   flex-direction: row;
   padding: 2px;
-  gap: 2px;
+  gap: 4px;
   border: 2px solid var(--lhds-color-ui-300);
   width: fit-content;
 
