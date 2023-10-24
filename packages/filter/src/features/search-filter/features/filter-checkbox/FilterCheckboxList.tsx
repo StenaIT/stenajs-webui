@@ -14,7 +14,6 @@ export const FilterCheckboxList: React.FC<FilterCheckboxListProps> = ({
     <Column
       maxHeight={maxHeight}
       overflowY={maxHeight ? "auto" : undefined}
-      gap={1}
       spacing={1}
     >
       {children}

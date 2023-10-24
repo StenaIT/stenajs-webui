@@ -17,7 +17,7 @@ import { MenuButtonContent } from "./internal/MenuButtonContent";
 import {
   stenaAngleDown,
   stenaAngleUp,
-} from "../../../../icons/generated/CommonIcons";
+} from "../../../../icons/generated/ArrowIcons";
 
 export type MenuButtonVariant = "standard" | "danger";
 
