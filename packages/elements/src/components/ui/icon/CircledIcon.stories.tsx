@@ -12,10 +12,10 @@ import {
   disabledControl,
 } from "../../../storybook-helpers/storybook-controls";
 import {
-  stenaBusinessInvoice,
   stenaCopyDocument,
   stenaSailingShip,
 } from "../../../icons/generated/CommonIcons";
+import { stenaBusinessInvoice } from "../../../icons/generated/BusinessIcons";
 
 export default {
   title: "elements/CircledIcon",
@@ -39,7 +39,7 @@ export const WithColor = () => (
 );
 
 export const Sizes = () => {
-  const sizes: Array<CircledIconSizeVariant> = ["medium", "small", "smaller"];
+  const sizes: Array<CircledIconSizeVariant> = ["medium", "small"];
 
   return (
     <Column gap={4}>
