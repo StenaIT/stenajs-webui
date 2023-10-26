@@ -9,7 +9,7 @@
   --swui-tag-height-small: 16px;
   --swui-tag-border-radius: var(--swui-border-radius);
   --swui-tag-bg-color: var(--lhds-color-blue-100);
-  --swui-tag-text-color: var(--lhds-color-blue-800);
+  --swui-tag-text-color: var(--black);
   --swui-tag-icon-label-indent: var(--swui-metrics-indent);
   --swui-tag-indent-normal: calc(var(--swui-metrics-indent) * 2);
   --swui-tag-indent-small: var(--swui-metrics-indent);
@@ -52,21 +52,21 @@
 
   &.error {
     --current-bg-color: var(--lhds-color-red-100);
-    --current-text-color: var(--lhds-color-red-800);
+    --current-text-color: var(--black);
   }
 
   &.warning {
     --current-bg-color: var(--lhds-color-orange-100);
-    --current-text-color: var(--lhds-color-orange-900);
+    --current-text-color: var(--black);
   }
 
   &.success {
     --current-bg-color: var(--lhds-color-green-100);
-    --current-text-color: var(--lhds-color-green-900);
+    --current-text-color: var(--black);
   }
 
   &.passive {
     --current-bg-color: var(--lhds-color-ui-300);
-    --current-text-color: var(--lhds-color-ui-900);
+    --current-text-color: var(--black);
   }
 }
