@@ -42,6 +42,7 @@ export const SeparatorLine = forwardRef<HTMLHRElement, SeparatorLineProps>(
   ) => {
     return (
       <SeparatorLineComponent
+        aria-hidden={true}
         color={color}
         size={size}
         width={width}
