@@ -5,6 +5,7 @@
       "verifyAccess": false
     }
   },
+  "packages": ["packages/*"],
   "exact": true,
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
