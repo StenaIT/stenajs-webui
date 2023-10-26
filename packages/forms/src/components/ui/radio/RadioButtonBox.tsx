@@ -10,14 +10,19 @@ export type RadioButtonBoxVariant = "normal" | "danger";
 
 export interface RadioButtonBoxProps extends RadioButtonProps {
   label?: string;
-  screenReaderOnlyLabelPrefix?: string;
+  /**
+   * If set, this label is used by screen readers instead of label prop.
+   * For example, label could be "male", while screenReaderLabel is "Gender male".
+   * If not set, screen readers will use label prop.
+   */
+  screenReaderLabel?: string;
   variant?: RadioButtonBoxVariant;
   icon?: IconDefinition;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   label,
-  screenReaderOnlyLabelPrefix,
+  screenReaderLabel,
   variant = "normal",
   icon,
   className,
@@ -33,12 +38,10 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
         <Row alignItems={"center"}>
           <RadioButton {...radioButtonProps} />
           <Space />
-          {screenReaderOnlyLabelPrefix ? (
-            <ScreenReaderOnlyText>
-              {screenReaderOnlyLabelPrefix}{" "}
-            </ScreenReaderOnlyText>
+          {screenReaderLabel ? (
+            <ScreenReaderOnlyText>{screenReaderLabel}</ScreenReaderOnlyText>
           ) : null}
-          <Text>{label}</Text>
+          <Text aria-hidden={Boolean(screenReaderLabel)}>{label}</Text>
         </Row>
         <Row alignItems={"center"} width={"48px"} justifyContent={"center"}>
           {icon && <Icon icon={icon} size={24} />}
