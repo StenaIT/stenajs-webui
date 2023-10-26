@@ -1,3 +1,15 @@
+# v18.12.1 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- Add originalDateTime to RouteLeg [#641](https://github.com/StenaIT/stenajs-webui/pull/641) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v18.11.1 (Thu Sep 14 2023)
 
 #### 🐛 Bug Fix
