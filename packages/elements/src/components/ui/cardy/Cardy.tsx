@@ -6,7 +6,7 @@ import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { Spinner } from "../spinner/Spinner";
 import cx from "classnames";
 
-interface CardyProps extends Pick<BoxProps, "minWidth"> {
+export interface CardyProps extends Pick<BoxProps, "minWidth"> {
   color?: CssPropColor;
   loading?: boolean;
   className?: string;

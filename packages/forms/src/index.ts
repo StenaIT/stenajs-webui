@@ -3,6 +3,7 @@ export * from "./components/ui/switch/SwitchWithLabel";
 export * from "./components/ui/checkbox/CheckboxWithLabel";
 export * from "./components/ui/checkbox/Checkbox";
 export * from "./components/ui/radio/RadioButton";
+export * from "./components/ui/radio/RadioButtonBox";
 export * from "./components/ui/radio/RadioButtonWithLabel";
 export * from "./components/ui/numeric-text-input/NumericTextInput";
 export * from "./components/ui/numeric-text-input/hooks/UseNumericInputValue";

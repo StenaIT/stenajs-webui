@@ -13,6 +13,7 @@ export * from "./components/layout/spacing/Spacing";
 export * from "./components/layout/space/Space";
 export * from "./components/util/Nest";
 
+export * from "./components/accessibility/ScreenReaderOnlyText";
 export * from "./components/text/Text";
 
 export * from "./components/deprecated-text/SmallText";
