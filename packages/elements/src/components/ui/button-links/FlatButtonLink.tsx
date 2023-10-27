@@ -1,21 +1,20 @@
-import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
-import { PrimaryButtonLink, PrimaryButtonLinkProps } from "./PrimaryButtonLink";
+import cx from "classnames";
+import { BaseButtonLink, BaseButtonLinkProps } from "./common/BaseButtonLink";
 import styles from "../buttons/FlatButton.module.css";
 
-export interface FlatButtonLinkProps extends PrimaryButtonLinkProps {
-  inverted?: boolean;
-}
+export interface FlatButtonLinkProps extends BaseButtonLinkProps {}
 
 export const FlatButtonLink = forwardRef<
   HTMLAnchorElement,
   FlatButtonLinkProps
->(function FlatButtonLink({ className, inverted, ...props }, ref) {
+>(function FlatButtonLink({ className, variant = "normal", ...props }, ref) {
   return (
-    <PrimaryButtonLink
+    <BaseButtonLink
       ref={ref}
-      className={cx(styles.flatButton, inverted && styles.inverted, className)}
+      variant={variant}
+      className={cx(styles.flatButton, styles[variant], className)}
       {...props}
     />
   );

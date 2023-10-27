@@ -1,13 +1,13 @@
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { ButtonSize, ButtonVariant } from "./common/ButtonCommon";
-import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
-import { SecondaryButton } from "./SecondaryButton";
-import { FlatButton } from "./FlatButton";
-import { Icon } from "../icon/Icon";
+import { ButtonSize, ButtonVariant } from "../common/ButtonCommon";
+import { PrimaryButton, PrimaryButtonProps } from "../PrimaryButton";
+import { SecondaryButton } from "../SecondaryButton";
+import { FlatButton } from "../FlatButton";
+import { Icon } from "../../icon/Icon";
 import { Story } from "@storybook/react";
-import { stenaCheck } from "../../../icons/generated/CommonIcons";
+import { stenaCheck } from "../../../../icons/generated/CommonIcons";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large", "larger"];
 
@@ -178,14 +178,6 @@ export const Variants = () => (
   </>
 );
 
-export const FlatButtonInverted = () => (
-  <Row background={"#2e4662"} spacing={2} indent={2}>
-    <FlatButton inverted label={"Submit"} />
-    <Space num={2} />
-    <FlatButton inverted label={"Disabled"} disabled />
-  </Row>
-);
-
 export const WithGenericContentToRight = () => (
   <>
     {[
@@ -217,14 +209,4 @@ export const WithGenericContentToRight = () => (
       </Column>
     ))}
   </>
-);
-
-export const WithResponsiveWidth = () => (
-  <Column spacing>
-    <Text>Resize viewport to see button with width 100%</Text>
-    <Space />
-    <Row>
-      <PrimaryButton width={["100%", "auto"]} label={"Button content"} />
-    </Row>
-  </Column>
 );

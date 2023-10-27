@@ -1,17 +1,18 @@
 import cx from "classnames";
 import * as React from "react";
 import { forwardRef } from "react";
-import { PrimaryButton, PrimaryButtonProps } from "./PrimaryButton";
+import { BaseButton, BaseButtonProps } from "./common/BaseButton";
 import styles from "./FlatButton.module.css";
 
-export interface FlatButtonProps extends PrimaryButtonProps {}
+export interface FlatButtonProps extends BaseButtonProps {}
 
 export const FlatButton = forwardRef<HTMLButtonElement, FlatButtonProps>(
-  function FlatButton({ className, ...props }, ref) {
+  function FlatButton({ className, variant = "normal", ...props }, ref) {
     return (
-      <PrimaryButton
+      <BaseButton
         ref={ref}
-        className={cx(styles.flatButton, className)}
+        className={cx(styles.flatButton, styles[variant], className)}
+        variant={variant}
         {...props}
       />
     );

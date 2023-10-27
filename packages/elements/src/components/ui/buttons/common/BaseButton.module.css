@@ -1,0 +1,126 @@
+.button {
+  /* Size */
+  --swui-button-height-small: 24px;
+  --swui-button-height-medium: 36px;
+  --swui-button-height-large: 48px;
+  --swui-button-height-larger: 72px;
+
+  /* Icon */
+  --swui-button-icon-height-small: 1.2rem;
+  --swui-button-icon-height-small-icon-only: 1.2rem;
+  --swui-button-icon-height-medium: 2rem;
+  --swui-button-icon-height-medium-icon-only: 2rem;
+  --swui-button-icon-height-large: 2rem;
+  --swui-button-icon-height-large-icon-only: 2rem;
+  --swui-button-icon-height-larger: 2rem;
+  --swui-button-icon-height-larger-icon-only: 2.4rem;
+
+  /*
+   * Styling
+   */
+  --swui-button-padding-vertical: 6px;
+  --swui-button-padding-horizontal: calc(var(--swui-metrics-spacing) * 2 - 1px);
+  --swui-button-padding-horizontal-label-only: calc(
+    var(--swui-metrics-spacing) * 3 - 1px
+  );
+
+  box-sizing: border-box;
+  min-height: var(--swui-button-height-medium);
+  height: var(--swui-button-height-medium);
+  letter-spacing: var(--swui-field-letter-spacing);
+  text-decoration: none;
+  padding: var(--swui-button-padding-vertical)
+    var(--swui-button-padding-horizontal);
+  border-radius: var(--swui-max-border-radius);
+  outline: none;
+  font-size: var(--swui-font-size-medium);
+  line-height: var(--swui-line-height);
+  font-weight: var(--swui-font-weight-text-bold);
+  font-family: var(--swui-font-buttons);
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.labelOnly {
+    padding: var(--swui-button-padding-vertical)
+      var(--swui-button-padding-horizontal-label-only);
+  }
+
+  &.iconOnly {
+    padding: var(--swui-button-padding-vertical);
+    flex: none;
+
+    width: var(--swui-button-height-medium);
+    height: var(--swui-button-height-medium);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    &.small {
+      width: var(--swui-button-height-small);
+      height: var(--swui-button-height-small);
+    }
+
+    &.medium {
+      width: var(--swui-button-height-medium);
+      height: var(--swui-button-height-medium);
+    }
+
+    &.large {
+      width: var(--swui-button-height-large);
+      height: var(--swui-button-height-large);
+    }
+
+    &.larger {
+      width: var(--swui-button-height-larger);
+      height: var(--swui-button-height-larger);
+    }
+  }
+
+  /*
+   * State and variants
+   */
+
+  &.small {
+    --swui-button-padding-vertical: 3px;
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 2 - 1px
+    );
+    font-size: 1.2rem;
+    min-height: var(--swui-button-height-small);
+    height: var(--swui-button-height-small);
+  }
+
+  &.large {
+    --swui-button-padding-vertical: 8px;
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 3 - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 3 - 1px
+    );
+    font-size: 1.8rem;
+    min-height: var(--swui-button-height-large);
+    height: var(--swui-button-height-large);
+  }
+
+  &.larger {
+    --swui-button-padding-vertical: 8px;
+    --swui-button-padding-horizontal: calc(var(--swui-metrics-space) * 6 - 1px);
+    --swui-button-padding-horizontal-label-only: calc(
+      var(--swui-metrics-space) * 6 - 1px
+    );
+    min-height: var(--swui-button-height-larger);
+    height: var(--swui-button-height-larger);
+    font-size: 2rem;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

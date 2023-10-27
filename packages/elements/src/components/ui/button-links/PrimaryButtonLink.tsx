@@ -1,76 +1,21 @@
 import * as React from "react";
 import { forwardRef } from "react";
 import cx from "classnames";
-import styles from "../buttons/Button.module.css";
-import buttonLinkStyles from "./ButtonLink.module.css";
-import { AnchorElementProps } from "@stenajs-webui/core";
-import { CommonButtonProps } from "../buttons/common/ButtonCommon";
-import { getButtonLabel } from "../buttons/common/ButtonLabelFactory";
-import { ButtonContent } from "../buttons/common/ButtonContent";
+import { BaseButtonLink, BaseButtonLinkProps } from "./common/BaseButtonLink";
+import styles from "../buttons/PrimaryButton.module.css";
 
-export interface PrimaryButtonLinkProps
-  extends CommonButtonProps,
-    AnchorElementProps {}
+export interface PrimaryButtonLinkProps extends BaseButtonLinkProps {}
 
 export const PrimaryButtonLink = forwardRef<
   HTMLAnchorElement,
   PrimaryButtonLinkProps
->(function PrimaryButtonLink(
-  {
-    label,
-    className,
-    size = "medium",
-    loadingLabel,
-    loading = false,
-    success = false,
-    successLabel,
-    leftIcon,
-    left,
-    rightIcon,
-    right,
-    variant = "normal",
-    responsiveIconOnly,
-    ...anchorProps
-  },
-  ref
-) {
-  const buttonLabel = getButtonLabel(
-    label,
-    success,
-    successLabel,
-    loading,
-    loadingLabel
-  );
-
-  const hasLabel = Boolean(
-    (label && !success && !loading) ||
-      (success && successLabel) ||
-      (loading && loadingLabel)
-  );
-
+>(function PrimaryButtonLink({ className, variant = "normal", ...props }, ref) {
   return (
-    <a
+    <BaseButtonLink
       ref={ref}
-      className={cx(
-        buttonLinkStyles.buttonLink,
-        styles.button,
-        styles[size],
-        styles[variant],
-        !hasLabel && styles.iconButton,
-        className
-      )}
-      {...anchorProps}
-    >
-      <ButtonContent
-        success={success}
-        loading={loading}
-        leftIcon={leftIcon}
-        left={left}
-        right={right}
-        rightIcon={rightIcon}
-        label={buttonLabel}
-        responsiveIconOnly={responsiveIconOnly}
-      />
-    </a>
+      variant={variant}
+      className={cx(styles.primaryButton, styles[variant], className)}
+      {...props}
+    />
   );
 });

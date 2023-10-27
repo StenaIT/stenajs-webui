@@ -9,7 +9,7 @@
   --swui-toggle-button-background-active: var(--lhds-color-blue-100);
   --swui-toggle-button-background-disabled: var(--lhds-color-ui-500);
 
-  --swui-toggle-button-text-color: var(--swui-button-text-color);
+  --swui-toggle-button-text-color: var(--black);
   --swui-toggle-button-text-color-disabled: var(--lhds-color-ui-50);
 
   /* State */
