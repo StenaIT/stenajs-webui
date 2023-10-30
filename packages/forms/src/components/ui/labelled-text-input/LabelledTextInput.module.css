@@ -1,0 +1,79 @@
+.textInput {
+  position: relative;
+  background: var(--moln);
+  overflow: hidden;
+  cursor: text;
+  border: 1px solid var(--silver-light);
+  border-radius: var(--swui-field-border-radius);
+
+  input {
+    outline: none;
+    border: none;
+    margin: 0;
+    color: var(--swui-text-primary-color);
+    background-color: transparent;
+    line-height: calc(var(--swui-font-size-inputs) * 1.5);
+    width: 100%;
+    box-sizing: border-box;
+    cursor: text;
+    padding-top: calc(var(--swui-metrics-space) * 5);
+    padding-bottom: calc(var(--swui-metrics-space) * 2);
+    padding-left: calc(var(--swui-metrics-space) * 2);
+    padding-right: calc(var(--swui-metrics-space) * 2);
+  }
+
+  &.medium {
+    input {
+      font-size: var(--swui-font-size-inputs);
+    }
+  }
+
+  &.large {
+    input {
+      font-size: 2rem;
+    }
+  }
+
+  &.disabled {
+    background-color: var(--silver-lighter);
+
+    input {
+      color: var(--silver);
+    }
+  }
+
+  &.error {
+    border-color: var(--modern-red);
+
+    input {
+      background-color: var(--snackskal);
+    }
+  }
+
+  &.onlyTop {
+    border-radius: var(--swui-field-border-radius)
+      var(--swui-field-border-radius) 0 0;
+  }
+
+  &.onlyBottom {
+    border-radius: 0 0 var(--swui-field-border-radius)
+      var(--swui-field-border-radius);
+  }
+
+  &:focus-within {
+    outline: var(--swui-focus-outline);
+    border-color: transparent;
+  }
+
+  &:hover:not(:focus-within) {
+    border-color: var(--hav);
+  }
+
+  label {
+    display: flex;
+    position: absolute;
+    top: var(--swui-metrics-space);
+    left: calc(var(--swui-metrics-space) * 2);
+    cursor: text;
+  }
+}
