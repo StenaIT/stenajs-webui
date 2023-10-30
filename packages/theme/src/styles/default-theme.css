@@ -89,6 +89,7 @@
 
   /* Borders */
   --swui-border-radius: 8px;
+  --swui-border-radius-large: 16px;
   --swui-max-border-radius: 10000px;
 
   /* Shadows */

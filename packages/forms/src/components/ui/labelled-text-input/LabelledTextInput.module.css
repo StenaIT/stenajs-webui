@@ -1,10 +1,10 @@
-.textInput {
+.labelledTextInput {
   position: relative;
   background: var(--moln);
   overflow: hidden;
   cursor: text;
   border: 1px solid var(--silver-light);
-  border-radius: var(--swui-field-border-radius);
+  border-radius: var(--swui-border-radius);
 
   input {
     outline: none;
@@ -16,22 +16,27 @@
     width: 100%;
     box-sizing: border-box;
     cursor: text;
-    padding-top: calc(var(--swui-metrics-space) * 5);
-    padding-bottom: calc(var(--swui-metrics-space) * 2);
-    padding-left: calc(var(--swui-metrics-space) * 2);
-    padding-right: calc(var(--swui-metrics-space) * 2);
   }
 
-  &.medium {
-    input {
-      font-size: var(--swui-font-size-inputs);
-    }
+  &&.onlyTop {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
   }
 
-  &.large {
-    input {
-      font-size: 2rem;
-    }
+  &&.onlyBottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &:focus-within {
+    outline: var(--swui-focus-outline);
+    outline-offset: -1px;
+    border-color: transparent;
+  }
+
+  &:hover:not(:focus-within) {
+    border-color: var(--hav);
   }
 
   &.disabled {
@@ -42,31 +47,42 @@
     }
   }
 
-  &.error {
-    border-color: var(--modern-red);
+  &.medium {
+    &:focus-within {
+      outline-width: 2px;
+    }
 
     input {
-      background-color: var(--snackskal);
+      font-size: var(--swui-font-size-inputs);
+      padding: calc(var(--swui-metrics-space) * 4)
+        calc(var(--swui-metrics-space) * 2) calc(var(--swui-metrics-space) * 1);
     }
   }
 
-  &.onlyTop {
-    border-radius: var(--swui-field-border-radius)
-      var(--swui-field-border-radius) 0 0;
+  &.large {
+    border-radius: var(--swui-border-radius-large);
+
+    &:focus-within {
+      outline-width: 3px;
+    }
+
+    input {
+      font-size: 2rem;
+      padding: calc(var(--swui-metrics-space) * 5)
+        calc(var(--swui-metrics-space) * 2) calc(var(--swui-metrics-space) * 2);
+    }
   }
 
-  &.onlyBottom {
-    border-radius: 0 0 var(--swui-field-border-radius)
-      var(--swui-field-border-radius);
-  }
+  &.error {
+    border-color: var(--swui-state-error-light-color);
 
-  &:focus-within {
-    outline: var(--swui-focus-outline);
-    border-color: transparent;
-  }
+    &:hover:not(:focus-within) {
+      border-color: var(--modern-red);
+    }
 
-  &:hover:not(:focus-within) {
-    border-color: var(--hav);
+    input {
+      background-color: var(--swui-state-error-light-color);
+    }
   }
 
   label {

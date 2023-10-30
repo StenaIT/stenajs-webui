@@ -1,7 +1,7 @@
 import * as React from "react";
+import { useState } from "react";
 import { Story } from "@storybook/react";
 import { LabelledTextInput, LabelledTextInputProps } from "./LabelledTextInput";
-import { useState } from "react";
 import { Column, Heading } from "@stenajs-webui/core";
 
 export default {
@@ -29,6 +29,15 @@ const Example = () => (
     <ExampleItem size={"large"} id={"testlarge"} />
     <Heading>Error</Heading>
     <ExampleItem variant={"error"} id={"testlarge"} />
+    <Heading>Combined</Heading>
+    <Column>
+      <ExampleItem id={"testto"} label={"To"} borderRadiusVariant={"onlyTop"} />
+      <ExampleItem
+        id={"testfrom"}
+        label={"From"}
+        borderRadiusVariant={"onlyBottom"}
+      />
+    </Column>
   </Column>
 );
 

@@ -36,7 +36,7 @@ export const LabelledTextInput = React.forwardRef<
       label,
       id,
       screenReaderLabel,
-      size = "normal",
+      size = "medium",
       value,
       onChange,
       disabled,
@@ -58,7 +58,7 @@ export const LabelledTextInput = React.forwardRef<
     return (
       <div
         className={cx(
-          styles.textInput,
+          styles.labelledTextInput,
           styles[variant],
           styles[borderRadiusVariant],
           styles[size],
