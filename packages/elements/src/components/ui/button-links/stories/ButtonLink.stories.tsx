@@ -1,14 +1,17 @@
-import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
+import { Column, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
-import { ButtonSize, ButtonVariant } from "../buttons/common/ButtonCommon";
-import { PrimaryButtonLink } from "./PrimaryButtonLink";
-import { SecondaryButtonLink } from "./SecondaryButtonLink";
-import { FlatButtonLink } from "./FlatButtonLink";
-import { Icon } from "../icon/Icon";
-import { stenaCheck } from "../../../icons/generated/CommonIcons";
+import { ButtonSize, ButtonVariant } from "../../buttons/common/ButtonCommon";
+import { PrimaryButtonLink } from "../PrimaryButtonLink";
+import { SecondaryButtonLink } from "../SecondaryButtonLink";
+import { FlatButtonLink } from "../FlatButtonLink";
+import { Icon } from "../../icon/Icon";
+import {
+  stenaCheck,
+  stenaExternalLink,
+} from "../../../../icons/generated/CommonIcons";
 
-const buttonSizes: Array<ButtonSize> = ["small", "medium", "large"];
+const buttonSizes: Array<ButtonSize> = ["small", "medium", "large", "larger"];
 
 export default {
   title: "elements/ButtonLinks",
@@ -116,28 +119,34 @@ export const Overview = () => (
 
 export const Variants = () => (
   <>
-    {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
-      (variant) => (
-        <Column>
-          <Text size={"large"}>{variant}</Text>
-          <Space />
-          <Row alignItems={"flex-start"} indent spacing>
-            {buttonSizes.map((size) => (
-              <Indent>
-                <PrimaryButtonLink
-                  key={size}
-                  size={size}
+    {[
+      { ButtonVariant: PrimaryButtonLink, label: "PrimaryButtonLink" },
+      { ButtonVariant: SecondaryButtonLink, label: "SecondaryButtonLink" },
+      { ButtonVariant: FlatButtonLink, label: "FlatButtonLink" },
+    ].map(({ label, ButtonVariant }) => (
+      <Column>
+        <Text size={"large"}>{label}</Text>
+        <Space />
+        {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
+          (variant) => (
+            <Column>
+              <Text size={"large"}>{variant}</Text>
+              <Space />
+              <Row alignItems={"flex-start"} indent spacing>
+                <ButtonVariant
                   variant={variant}
                   label={"google.com"}
                   href={"https://google.com"}
                   target={"_blank"}
+                  leftIcon={stenaExternalLink}
                 />
-              </Indent>
-            ))}
-          </Row>
-        </Column>
-      )
-    )}
+              </Row>
+            </Column>
+          )
+        )}
+        <Space num={8} />
+      </Column>
+    ))}
   </>
 );
 

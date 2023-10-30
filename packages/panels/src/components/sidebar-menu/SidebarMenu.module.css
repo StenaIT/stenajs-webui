@@ -41,11 +41,4 @@
 
   background-color: var(--current-background-color);
   height: 100dvh;
-
-  button {
-    --swui-button-text-color: var(--swui-white);
-    --swui-button-background-color-hover: var(
-      --swui-sidebar-menu-background-color-hover
-    );
-  }
 }
