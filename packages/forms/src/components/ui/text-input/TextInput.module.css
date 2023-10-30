@@ -1,22 +1,16 @@
 .textInput {
-  /* Current vars */
-  --current-border-color: var(--swui-field-border-color);
-  --current-icon-color: var(--swui-field-icon-color);
-
-  /* Styling */
   display: flex;
   height: 36px;
   width: 100%;
   align-items: center;
   background: var(--swui-field-bg-enabled);
-  border: 1px solid var(--current-border-color);
+  border: 1px solid var(--swui-field-border-color);
   border-radius: var(--swui-field-border-radius);
   outline: none;
 
   &&:focus-within:not(.disabled) {
-    border: 1px solid transparent;
     outline: var(--swui-focus-outline);
-    --current-border-color: var(--swui-field-border-color-hover);
+    border-color: transparent;
   }
 
   .input {
@@ -52,65 +46,78 @@
     }
   }
 
+  .icon {
+    transition: color var(--swui-animation-time-medium);
+    color: var(--swui-field-icon-color);
+    font-size: var(--swui-field-icon-size);
+  }
+
   /*
    * States
    */
 
   &.standard,
   &.success {
-    &:hover {
-      &:not(.disabled) {
-        --current-border-color: var(--swui-field-border-color-hover);
-      }
+    &:hover:not(:focus-within):not(.disabled) {
+      border-color: var(--swui-field-border-color-hover);
     }
   }
 
   &.success {
-    --current-icon-color: var(--swui-state-success-color);
+    .icon {
+      color: var(--swui-state-success-color);
+    }
   }
 
   &.loading {
     background: var(--swui-state-loading-light-color);
-    --current-border-color: var(--swui-state-loading-color);
+    border-color: var(--swui-state-loading-color);
   }
 
   &.modified {
     background: var(--swui-state-modified-light-color);
-    --current-border-color: var(--swui-state-modified-light-color);
-    --current-icon-color: var(--lhds-color-blue-300);
+    border-color: var(--swui-state-modified-light-color);
+
+    .icon {
+      color: var(--lhds-color-blue-300);
+    }
   }
 
   &.error {
     background: var(--swui-state-error-light-color);
-    --current-border-color: var(--swui-state-error-light-color);
-    --current-icon-color: var(--swui-state-error-light-color);
+    border-color: var(--swui-state-error-light-color);
+
+    .icon {
+      color: var(--swui-state-error-light-color);
+    }
   }
 
   &.warning {
     background: var(--swui-state-alert-light-color);
-    --current-border-color: var(--swui-state-alert-light-color);
-    --current-icon-color: var(--swui-state-alert-light-color);
+    border-color: var(--swui-state-alert-light-color);
+
+    .icon {
+      color: var(--swui-state-alert-light-color);
+    }
   }
 
   &.disabled {
     background: var(--swui-field-bg-disabled);
-    --current-border-color: var(--swui-field-bg-disabled);
+    border-color: var(--swui-field-bg-disabled);
   }
 
   &&.hideBorder {
     border: none;
     box-shadow: none;
     background: none;
+    outline: none;
   }
 
   .clickable:hover {
-    --current-icon-color: var(--swui-primary-action-color);
     cursor: pointer;
-  }
 
-  .icon {
-    transition: color var(--swui-animation-time-medium);
-    color: var(--current-icon-color);
-    font-size: var(--swui-field-icon-size);
+    .icon {
+      color: var(--swui-primary-action-color);
+    }
   }
 }
