@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { Story } from "@storybook/react";
 import { LabelledTextInput, LabelledTextInputProps } from "./LabelledTextInput";
 import { Column, Heading } from "@stenajs-webui/core";
@@ -9,30 +8,37 @@ export default {
   component: LabelledTextInput,
 };
 
-const ExampleItem: React.FC<LabelledTextInputProps> = (props) => {
-  const [text, setText] = useState<string>("");
-  return (
-    <LabelledTextInput
-      label={props.label ?? "Input field"}
-      value={text}
-      onValueChange={setText}
-      placeholder={props.placeholder ?? "Input field"}
-      {...props}
-    />
-  );
-};
 const Example = () => (
   <Column gap={2}>
     <Heading>Medium</Heading>
-    <ExampleItem size={"medium"} id={"testmedium"} />
+    <LabelledTextInput
+      label={"Input field"}
+      placeholder={"Input field"}
+      size={"medium"}
+      id={"testmedium"}
+    />
     <Heading>Large</Heading>
-    <ExampleItem size={"large"} id={"testlarge"} />
+    <LabelledTextInput
+      label={"Input field"}
+      placeholder={"Input field"}
+      size={"large"}
+      id={"testlarge"}
+    />
     <Heading>Error</Heading>
-    <ExampleItem variant={"error"} id={"testlarge"} />
+    <LabelledTextInput
+      label={"Input field"}
+      placeholder={"Input field"}
+      variant={"error"}
+      id={"testlarge"}
+    />
     <Heading>Combined</Heading>
     <Column>
-      <ExampleItem id={"testto"} label={"To"} borderRadiusVariant={"onlyTop"} />
-      <ExampleItem
+      <LabelledTextInput
+        id={"testto"}
+        label={"To"}
+        borderRadiusVariant={"onlyTop"}
+      />
+      <LabelledTextInput
         id={"testfrom"}
         label={"From"}
         borderRadiusVariant={"onlyBottom"}
