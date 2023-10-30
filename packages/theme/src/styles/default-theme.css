@@ -24,7 +24,7 @@
   --swui-state-success-color: var(--lhds-color-green-600);
   --swui-state-success-light-color: var(--lhds-color-green-50);
   --swui-state-modified-color: var(--lhds-color-blue-500);
-  --swui-state-modified-light-color: var(--lhds-color-blue-200);
+  --swui-state-modified-light-color: var(--lhds-color-blue-100);
   --swui-state-loading-color: var(--lhds-color-ui-400);
   --swui-state-loading-light-color: var(--lhds-color-ui-100);
 
@@ -68,11 +68,10 @@
   /* Form fields */
   --swui-field-text-color: #0c0e10;
   --swui-field-text-color-disabled: #0c0e10;
-  --swui-field-text-spacing: 6px;
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: var(--swui-line-height);
   --swui-field-bg-enabled: var(--swui-white);
-  --swui-field-bg-disabled: var(--lhds-color-ui-400);
+  --swui-field-bg-disabled: var(--lhds-color-ui-300);
   --swui-field-border-color: var(--lhds-color-ui-400);
   --swui-field-border-color-hover: var(--lhds-color-blue-500);
   --swui-field-border-color-disabled: var(--lhds-color-ui-400);
