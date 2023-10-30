@@ -101,8 +101,8 @@ export const WithContentAndNoContentPadding = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}
@@ -120,8 +120,8 @@ export const WithContentAndNoContentPaddingRight = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}
@@ -139,8 +139,8 @@ export const WithContentAndNoContentPaddingLeft = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}

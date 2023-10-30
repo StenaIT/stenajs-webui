@@ -1,84 +1,33 @@
 .textInput {
-  --swui-textinput-text-color: var(--swui-field-text-color);
-  --swui-textinput-text-color-disabled: var(--swui-field-text-color-disabled);
-  --swui-textinput-letter-spacing: var(--swui-field-letter-spacing);
-  --swui-textinput-line-height: var(--swui-field-text-line-height);
-  --swui-textinput-indent: var(--swui-metrics-indent);
-  --swui-textinput-spacing: calc(var(--swui-field-text-spacing) - 1px);
-  --swui-textinput-font-size: var(--swui-font-size-inputs);
-  --swui-textinput-font-family: var(--swui-font-input);
-  --swui-textinput-font-weight: var(--swui-font-weight-inputs);
-  --swui-textinput-placeholder-color: var(--swui-field-placeholder-color);
-  --swui-textinput-placeholder-font-weight: var(
-    --swui-field-placeholder-font-weight
-  );
-  --swui-textinput-animation-time: var(--swui-animation-time-medium);
-  --swui-textinput-icon-color: var(--swui-field-icon-color);
-  --swui-textinput-icon-hover-color: var(--swui-primary-action-color);
-  --swui-textinput-icon-size: var(--swui-field-icon-size);
-
-  /* Variants */
-  --swui-textinput-icon-color-success: var(--swui-state-success-color);
-
-  --swui-textinput-bg-loading: var(--swui-state-loading-light-color);
-  --swui-textinput-border-color-loading: var(--swui-state-loading-color);
-
-  --swui-textinput-bg-modified: var(--swui-state-modified-light-color);
-  --swui-textinput-border-color-modified: var(
-    --swui-state-modified-light-color
-  );
-
-  --swui-textinput-bg-warning: var(--swui-state-alert-light-color);
-  --swui-textinput-border-color-warning: var(--swui-state-alert-light-color);
-
-  --swui-textinput-bg-error: var(--swui-state-error-light-color);
-  --swui-textinput-border-color-error: var(--swui-state-error-light-color);
-
-  --swui-textinput-bg-color-disabled: var(--swui-field-bg-disabled);
-  --swui-textinput-border-color-disabled: var(--swui-field-bg-disabled);
-
-  /* Background */
-  --swui-textinput-bg-color: var(--swui-field-bg-enabled);
-
-  /* Border */
-  --swui-textinput-border-radius: var(--swui-field-border-radius);
-  --swui-textinput-border-color: var(--swui-field-border-color);
-  --swui-textinput-border-color-hover: var(--swui-field-border-color-hover);
-
-  /* Shadow */
-  --swui-textinput-focus-shadow: none;
-
   /* Current vars */
-  --current-bg: var(--swui-textinput-bg-color);
-  --current-border-color: var(--swui-textinput-border-color);
-  --current-icon-color: var(--swui-textinput-icon-color);
+  --current-border-color: var(--swui-field-border-color);
+  --current-icon-color: var(--swui-field-icon-color);
 
   /* Styling */
   display: flex;
+  height: 36px;
   width: 100%;
   align-items: center;
-  background: var(--current-bg);
+  background: var(--swui-field-bg-enabled);
   border: 1px solid var(--current-border-color);
-  border-radius: var(--swui-textinput-border-radius);
+  border-radius: var(--swui-field-border-radius);
   outline: none;
 
   &&:focus-within:not(.disabled) {
-    box-shadow: var(--swui-textinput-focus-shadow);
     border: 1px solid transparent;
     outline: var(--swui-focus-outline);
-    --current-border-color: var(--swui-textinput-border-color-hover);
-    --current-bg: var(--swui-textinput-bg-color);
+    --current-border-color: var(--swui-field-border-color-hover);
   }
 
   .input {
-    letter-spacing: var(--swui-textinput-letter-spacing);
-    line-height: var(--swui-textinput-line-height);
+    letter-spacing: var(--swui-field-letter-spacing);
+    line-height: var(--swui-field-text-line-height);
     width: 100%;
-    padding: var(--swui-textinput-spacing) var(--swui-textinput-indent);
-    color: var(--swui-textinput-text-color);
-    font-size: var(--swui-textinput-font-size);
-    font-family: var(--swui-textinput-font-family);
-    font-weight: var(--swui-textinput-font-weight);
+    padding: 2px var(--swui-metrics-indent);
+    color: var(--swui-field-text-color);
+    font-size: var(--swui-font-size-inputs);
+    font-family: var(--swui-font-input);
+    font-weight: var(--swui-font-weight-inputs);
     background: var(--swui-hidden);
     border: none;
     min-width: 0; /* https://stackoverflow.com/a/43361500 */
@@ -86,12 +35,12 @@
     outline: none;
 
     &:disabled {
-      color: var(--swui-textinput-text-color-disabled);
+      color: var(--swui-field-text-color-disabled);
     }
 
     &::placeholder {
-      color: var(--swui-textinput-placeholder-color);
-      font-weight: var(--swui-textinput-placeholder-font-weight);
+      color: var(--swui-field-placeholder-color);
+      font-weight: var(--swui-field-placeholder-font-weight);
     }
 
     &:focus::placeholder {
@@ -111,41 +60,41 @@
   &.success {
     &:hover {
       &:not(.disabled) {
-        --current-border-color: var(--swui-textinput-border-color-hover);
+        --current-border-color: var(--swui-field-border-color-hover);
       }
     }
   }
 
   &.success {
-    --current-icon-color: var(--swui-textinput-icon-color-success);
+    --current-icon-color: var(--swui-state-success-color);
   }
 
   &.loading {
-    --current-bg: var(--swui-textinput-bg-loading);
-    --current-border-color: var(--swui-textinput-border-color-loading);
+    background: var(--swui-state-loading-light-color);
+    --current-border-color: var(--swui-state-loading-color);
   }
 
   &.modified {
-    --current-bg: var(--swui-textinput-bg-modified);
-    --current-border-color: var(--swui-textinput-border-color-modified);
+    background: var(--swui-state-modified-light-color);
+    --current-border-color: var(--swui-state-modified-light-color);
     --current-icon-color: var(--lhds-color-blue-300);
   }
 
   &.error {
-    --current-bg: var(--swui-textinput-bg-error);
-    --current-border-color: var(--swui-textinput-border-color-error);
-    --current-icon-color: var(--swui-textinput-border-color-error);
+    background: var(--swui-state-error-light-color);
+    --current-border-color: var(--swui-state-error-light-color);
+    --current-icon-color: var(--swui-state-error-light-color);
   }
 
   &.warning {
-    --current-bg: var(--swui-textinput-bg-warning);
-    --current-border-color: var(--swui-textinput-border-color-warning);
-    --current-icon-color: var(--swui-textinput-border-color-warning);
+    background: var(--swui-state-alert-light-color);
+    --current-border-color: var(--swui-state-alert-light-color);
+    --current-icon-color: var(--swui-state-alert-light-color);
   }
 
   &.disabled {
-    --current-bg: var(--swui-textinput-bg-color-disabled);
-    --current-border-color: var(--swui-textinput-border-color-disabled);
+    background: var(--swui-field-bg-disabled);
+    --current-border-color: var(--swui-field-bg-disabled);
   }
 
   &&.hideBorder {
@@ -155,13 +104,13 @@
   }
 
   .clickable:hover {
-    --current-icon-color: var(--swui-textinput-icon-hover-color);
+    --current-icon-color: var(--swui-primary-action-color);
     cursor: pointer;
   }
 
   .icon {
-    transition: color var(--swui-textinput-animation-time);
+    transition: color var(--swui-animation-time-medium);
     color: var(--current-icon-color);
-    font-size: var(--swui-textinput-icon-size);
+    font-size: var(--swui-field-icon-size);
   }
 }
