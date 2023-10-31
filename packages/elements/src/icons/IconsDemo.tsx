@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState } from "react";
-import { sortBy } from "lodash";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Column, Row, Txt } from "@stenajs-webui/core";
@@ -16,6 +15,7 @@ export const IconDemoList: React.FC<{
   icons: Record<string, IconDefinition>;
 }> = ({ icons }) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
+  const iconNames = Object.keys(icons).concat().sort();
   return (
     <Box gap>
       <Banner variant={"info"} text={"Click an icon to copy its code name."}>
@@ -37,7 +37,7 @@ export const IconDemoList: React.FC<{
           background: cssColor("--lhds-color-ui-100"),
         }}
       >
-        {sortBy(Object.keys(icons)).map((iconName) => {
+        {iconNames.map((iconName) => {
           const readableName = iconName
             .replace(/[A-Z]/g, (match) => "-" + match.toLowerCase())
             .replace("stena-", "");
