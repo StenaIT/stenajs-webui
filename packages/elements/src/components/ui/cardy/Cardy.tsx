@@ -5,12 +5,12 @@ import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { Spinner } from "../spinner/Spinner";
 import cx from "classnames";
 
-export interface CardyProps extends BoxProps {
+export interface CardyProps extends Omit<BoxProps, "background" | "position"> {
   color?: CssPropColor;
   loading?: boolean;
 }
 
-export const Cardy: React.FC<Omit<CardyProps, "background" | "position">> = ({
+export const Cardy: React.FC<CardyProps> = ({
   children,
   color = "--lhds-color-ui-200",
   loading,
