@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import { sortBy } from "lodash";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Column, Row, Txt } from "@stenajs-webui/core";
@@ -36,7 +37,7 @@ export const IconDemoList: React.FC<{
           background: cssColor("--lhds-color-ui-100"),
         }}
       >
-        {Object.keys(icons).map((iconName) => {
+        {sortBy(Object.keys(icons)).map((iconName) => {
           const readableName = iconName
             .replace(/[A-Z]/g, (match) => "-" + match.toLowerCase())
             .replace("stena-", "");
