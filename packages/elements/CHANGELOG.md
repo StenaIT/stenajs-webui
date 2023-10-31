@@ -1,3 +1,15 @@
+# v18.12.2 (Tue Oct 31 2023)
+
+#### 🐛 Bug Fix
+
+- Cardy props fix [#651](https://github.com/StenaIT/stenajs-webui/pull/651) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.12.1 (Thu Oct 26 2023)
 
 #### 🐛 Bug Fix
