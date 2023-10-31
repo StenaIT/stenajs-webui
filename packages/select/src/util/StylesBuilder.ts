@@ -154,6 +154,9 @@ export const createStylesFromTheme = <
       false,
       variant
     ),
+    outline: isFocused ? "var(--swui-focus-outline)" : undefined,
+    outlineOffset: isFocused ? "-1px" : undefined,
+    transition: "none",
     boxShadow: isFocused ? input.boxShadowFocused : undefined,
     "&:hover": {
       "--swui-select-border-color": resolveInputBorderColor(
@@ -178,6 +181,7 @@ export const createStylesFromTheme = <
   }),
   input: (base) => ({
     ...base,
+    minHeight: input.minHeight,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
     color: input.textColor,

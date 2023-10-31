@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
-import { GroupedMultiSelect, OnChange } from "./GroupedMultiSelect";
-import { DropdownOption } from "./GroupedMultiSelectTypes";
+import { GroupedMultiSelect, OnChange } from "../ui/GroupedMultiSelect";
+import { DropdownOption } from "../ui/GroupedMultiSelectTypes";
 
 export default {
   title: "select/GroupedMultiSelect",
