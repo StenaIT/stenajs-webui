@@ -2,6 +2,7 @@ const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
 const { camelCase, upperFirst, groupBy } = require("lodash");
+const svgpath = require("svgpath");
 const path = require("path");
 const glob = require("glob");
 const prettier = require("prettier");
@@ -106,7 +107,11 @@ function writeIconDefinitionsForCategoryToDisk(
 function joinChildPaths(children) {
   return children.reduce((acc, child) => {
     if (child.name === "path" && child.attributes.d) {
-      acc += " " + child.attributes.d;
+      let path = svgpath(child.attributes.d);
+      if (child.attributes.transform) {
+        path = path.transform(child.attributes.transform);
+      }
+      acc += " " + path.round(2).toString();
     }
     if (child.children.length > 0) {
       acc += " " + joinChildPaths(child.children);
