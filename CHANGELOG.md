@@ -1,3 +1,29 @@
+# v18.12.1 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add originalDateTime to RouteLeg [#641](https://github.com/StenaIT/stenajs-webui/pull/641) ([@lindskogen](https://github.com/lindskogen))
+
+#### ⚠️ Pushed to `master`
+
+- Add packages to lerna.json ([@lindskogen](https://github.com/lindskogen))
+
+#### 🏠 Internal
+
+- Bump lerna to 7 [#614](https://github.com/StenaIT/stenajs-webui/pull/614) ([@lindskogen](https://github.com/lindskogen))
+
+#### 📝 Documentation
+
+- Bump storybook and related dependencies [#581](https://github.com/StenaIT/stenajs-webui/pull/581) ([@lindskogen](https://github.com/lindskogen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.12.0 (Tue Sep 26 2023)
 
 #### 🚀 Enhancement

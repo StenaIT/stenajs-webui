@@ -14,25 +14,32 @@ export type RouteLegSize = "standard" | "compact" | "relaxed";
 
 interface LocationAndTimeProps {
   location: string;
-  date: string;
-  time: string;
+  originalDateTime?: string;
+  dateTime: string;
 }
 
 const LocationAndTime: React.FC<
   LocationAndTimeProps & { size: RouteLegSize }
-> = ({ location, date, time, size }) => {
+> = ({ location, dateTime, originalDateTime, size }) => {
   if (size === "compact") {
     return (
       <Row gap={2} justifyContent={"space-between"}>
         <Txt size={"small"}>{location}</Txt>
-        <Row gap={0.5}>
+        <Column>
+          {originalDateTime && (
+            <Txt
+              size={"small"}
+              variant={"bold"}
+              color={cssColor("--lhds-color-ui-600")}
+              style={{ textDecoration: "line-through" }}
+            >
+              {originalDateTime}
+            </Txt>
+          )}
           <Txt size={"small"} variant={"bold"}>
-            {date}
+            {dateTime}
           </Txt>
-          <Txt size={"small"} variant={"bold"}>
-            {time}
-          </Txt>
-        </Row>
+        </Column>
       </Row>
     );
   }
@@ -42,24 +49,39 @@ const LocationAndTime: React.FC<
         <Txt size={"large"} variant={"bold"}>
           {location}
         </Txt>
-        <Row gap={0.5}>
+        <Column>
+          {originalDateTime && (
+            <Txt
+              size={"small"}
+              variant={"bold"}
+              color={cssColor("--lhds-color-ui-600")}
+              style={{ textDecoration: "line-through" }}
+            >
+              {originalDateTime}
+            </Txt>
+          )}
           <Txt size={"small"} variant={"bold"}>
-            {date}
+            {dateTime}
           </Txt>
-          <Txt size={"small"} variant={"bold"}>
-            {time}
-          </Txt>
-        </Row>
+        </Column>
       </Column>
     );
   }
   return (
     <Column gap={0.5}>
       <Txt>{location}</Txt>
-      <Row gap>
-        <Txt variant={"bold"}>{date}</Txt>
-        <Txt variant={"bold"}>{time}</Txt>
-      </Row>
+      <Column>
+        {originalDateTime && (
+          <Txt
+            variant={"bold"}
+            color={cssColor("--lhds-color-ui-600")}
+            style={{ textDecoration: "line-through" }}
+          >
+            {originalDateTime}
+          </Txt>
+        )}
+        <Txt variant={"bold"}>{dateTime}</Txt>
+      </Column>
     </Column>
   );
 };
@@ -121,18 +143,8 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
           />
         </Column>
         <Column gap={size === "standard" ? 3 : 2}>
-          <LocationAndTime
-            location={departure.location}
-            date={departure.date}
-            time={departure.time}
-            size={size}
-          />
-          <LocationAndTime
-            location={arrival.location}
-            date={arrival.date}
-            time={arrival.time}
-            size={size}
-          />
+          <LocationAndTime {...departure} size={size} />
+          <LocationAndTime {...arrival} size={size} />
         </Column>
         {children && (
           <>
