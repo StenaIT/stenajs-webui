@@ -15,6 +15,7 @@ export const IconDemoList: React.FC<{
   icons: Record<string, IconDefinition>;
 }> = ({ icons }) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
+  const iconNames = Object.keys(icons).concat().sort();
   return (
     <Box gap>
       <Banner variant={"info"} text={"Click an icon to copy its code name."}>
@@ -36,7 +37,7 @@ export const IconDemoList: React.FC<{
           background: cssColor("--lhds-color-ui-100"),
         }}
       >
-        {Object.keys(icons).map((iconName) => {
+        {iconNames.map((iconName) => {
           const readableName = iconName
             .replace(/[A-Z]/g, (match) => "-" + match.toLowerCase())
             .replace("stena-", "");
