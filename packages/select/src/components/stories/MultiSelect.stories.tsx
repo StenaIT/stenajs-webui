@@ -1,6 +1,6 @@
 import { Column, Indent, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
-import { MultiSelect } from "./MultiSelect";
+import { MultiSelect } from "../ui/MultiSelect";
 import { useState } from "react";
 
 export default {

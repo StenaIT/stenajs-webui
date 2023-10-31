@@ -25,7 +25,7 @@ export default {
   component: Modal,
 };
 
-ReactModal.setAppElement("#root");
+ReactModal.setAppElement("#storybook-root");
 
 export const ModalWithHeader = () => {
   const [isOpen, setOpen] = useState(false);

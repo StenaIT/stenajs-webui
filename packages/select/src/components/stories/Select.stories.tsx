@@ -1,15 +1,15 @@
-import { Column, Indent, Spacing } from "@stenajs-webui/core";
+import { Column, Heading, Indent, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
-import { OverflowingMultiSelect } from "./OverflowingMultiSelect";
+import { Select } from "../ui/Select";
 
 export default {
-  title: "select/OverflowingMultiSelect",
-  component: OverflowingMultiSelect,
+  title: "select/Select",
+  component: Select,
 };
 
 export const Standard = () => (
   <div style={{ width: "400px" }}>
-    <OverflowingMultiSelect
+    <Select
       options={[
         {
           value: "Mattias",
@@ -28,33 +28,36 @@ export const Standard = () => (
   </div>
 );
 
-export const WithVariant = () => (
-  <Column width={400} gap={2}>
+export const Variants = () => (
+  <Column width={400} gap={3}>
     {(["error", "warning", "success"] as const).map((variant) => (
-      <OverflowingMultiSelect
-        variant={variant}
-        options={[
-          {
-            value: "Mattias",
-            label: "Mattias",
-          },
-          {
-            value: "Johan",
-            label: "Johan",
-          },
-          {
-            value: "Dennis the menace",
-            label: "Dennis the menace",
-          },
-        ]}
-      />
+      <Column gap={1}>
+        <Heading variant={"h4"}>{variant}</Heading>
+        <Select
+          variant={variant}
+          options={[
+            {
+              value: "Mattias",
+              label: "Mattias",
+            },
+            {
+              value: "Johan",
+              label: "Johan",
+            },
+            {
+              value: "Dennis the menace",
+              label: "Dennis the menace",
+            },
+          ]}
+        />
+      </Column>
     ))}
   </Column>
 );
 
 export const LongLabels = () => (
   <div style={{ width: "400px" }}>
-    <OverflowingMultiSelect
+    <Select
       options={[
         {
           value: "lorem",
@@ -78,7 +81,7 @@ export const WithGroupHeadings = () => (
   <div style={{ width: "400px" }}>
     <Indent num={4}>
       <Spacing num={4}>
-        <OverflowingMultiSelect
+        <Select
           options={[
             {
               label: "Group heading 1",
@@ -115,7 +118,7 @@ export const WithGroupHeadings = () => (
 
 export const Disabled = () => (
   <div style={{ width: "400px" }}>
-    <OverflowingMultiSelect
+    <Select
       options={[
         {
           value: "Mattias",

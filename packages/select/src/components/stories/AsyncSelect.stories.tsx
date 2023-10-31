@@ -1,4 +1,4 @@
-import { AsyncSelect } from "./AsyncSelect";
+import { AsyncSelect } from "../ui/AsyncSelect";
 import * as React from "react";
 
 export default {
