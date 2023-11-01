@@ -1,3 +1,8 @@
+.buttonContent {
+  display: flex;
+  flex-direction: row;
+}
+
 .iconLeft,
 .iconRight {
   color: var(--current-icon-color);
@@ -9,22 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.leftWrapper:not(:last-child) {
-  margin-right: var(--swui-metrics-indent);
-
-  &.larger {
-    margin-right: calc(var(--swui-metrics-indent) * 2);
-  }
-}
-
-.rightWrapper:not(:first-child) {
-  margin-left: var(--swui-metrics-indent);
-
-  &.larger {
-    margin-left: calc(var(--swui-metrics-indent) * 2);
-  }
 }
 
 .responsiveIconOnly {

@@ -52,8 +52,14 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
         (loading && loadingLabel)
     );
 
-    const labelOnly = hasLabel && !left && !leftIcon && !right && !rightIcon;
-    const iconOnly = leftIcon && !hasLabel && !left && !right && !rightIcon;
+    const leftIconOnly = leftIcon && !hasLabel && !left && !right && !rightIcon;
+    const rightIconOnly =
+      rightIcon && !hasLabel && !left && !right && !leftIcon;
+    const loadingOnly = loading && !loadingLabel;
+    const successIconOnly = success && !successLabel;
+
+    const isRound =
+      leftIconOnly || rightIconOnly || loadingOnly || successIconOnly;
 
     return (
       <button
@@ -62,8 +68,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
         className={cx(
           buttonBaseStyles.button,
           buttonBaseStyles[size],
-          iconOnly && buttonBaseStyles.iconOnly,
-          labelOnly && buttonBaseStyles.labelOnly,
+          isRound && buttonBaseStyles.roundButton,
           className
         )}
         disabled={disabled}
