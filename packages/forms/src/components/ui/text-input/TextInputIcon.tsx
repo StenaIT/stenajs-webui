@@ -4,21 +4,21 @@ import cx from "classnames";
 import * as React from "react";
 import styles from "./TextInput.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FlatButton } from "@stenajs-webui/elements";
 
 export interface TextInputIconProps {
   iconClassName?: string;
   content?: React.ReactNode;
+  button?: React.ReactNode;
   icon?: IconDefinition;
   spaceOnRight?: boolean;
   spaceOnLeft?: boolean;
   disableContentPadding?: boolean;
   disableContentPaddingLeft?: boolean;
   disableContentPaddingRight?: boolean;
-  onClick?: () => void;
 }
 
 export const TextInputIcon: React.FC<TextInputIconProps> = ({
+  button,
   icon,
   iconClassName,
   content,
@@ -27,10 +27,19 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
   disableContentPadding,
   disableContentPaddingLeft,
   disableContentPaddingRight,
-  onClick,
 }) => {
-  if (!content && !icon) {
+  if (!content && !icon && !button) {
     return null;
+  }
+
+  if (button) {
+    return (
+      <>
+        {spaceOnLeft ? <Space num={0.25} /> : null}
+        {button}
+        {spaceOnRight ? <Space num={0.25} /> : null}
+      </>
+    );
   }
 
   if (content) {
@@ -40,14 +49,7 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
         !(disableContentPadding || disableContentPaddingLeft) ? (
           <Space />
         ) : null}
-        {onClick ? (
-          <span onClick={onClick} className={styles.clickable}>
-            {content || null}
-          </span>
-        ) : (
-          <>{content || null}</>
-        )}
-
+        {content || null}
         {spaceOnRight &&
         !(disableContentPadding || disableContentPaddingRight) ? (
           <Space />
@@ -60,21 +62,10 @@ export const TextInputIcon: React.FC<TextInputIconProps> = ({
     <>
       {spaceOnLeft ? <Space /> : null}
       {icon && (
-        <>
-          {onClick ? (
-            <FlatButton
-              type={"button"}
-              onClick={onClick}
-              leftIcon={icon}
-              size={"small"}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={icon}
-              className={cx(styles.icon, iconClassName)}
-            />
-          )}
-        </>
+        <FontAwesomeIcon
+          icon={icon}
+          className={cx(styles.icon, iconClassName)}
+        />
       )}
       {spaceOnRight ? <Space /> : null}
     </>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { NavBar } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarSearchField } from "./NavBarSearchField";
@@ -11,9 +12,21 @@ export default {
   },
 };
 
-export const CenterContent = () => (
-  <NavBar center={<NavBarSearchField />}>
-    <NavBarButton label={"Customers"} selected />
-    <NavBarButton label={"Bookings"} />
-  </NavBar>
-);
+export const CenterContent = () => {
+  const [text, setText] = useState("");
+  return (
+    <NavBar
+      center={
+        <NavBarSearchField
+          showClearButton
+          onClickClearButton={() => setText("")}
+          value={text}
+          onValueChange={setText}
+        />
+      }
+    >
+      <NavBarButton label={"Customers"} selected />
+      <NavBarButton label={"Bookings"} />
+    </NavBar>
+  );
+};

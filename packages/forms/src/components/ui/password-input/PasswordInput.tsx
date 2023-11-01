@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
 import { stenaEyeHide, stenaEyeShow } from "@stenajs-webui/elements";
+import { TextInputButton } from "../text-input/TextInputButton";
 
 export interface PasswordInputProps extends TextInputProps {
   visibleIcon?: IconDefinition;
@@ -18,8 +19,12 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
 
   return (
     <TextInput
-      iconRight={isPassword ? hiddenIcon : visibleIcon}
-      onClickRight={() => setIsPassword((x) => !x)}
+      buttonRight={
+        <TextInputButton
+          icon={isPassword ? hiddenIcon : visibleIcon}
+          onClick={() => setIsPassword((x) => !x)}
+        />
+      }
       type={isPassword ? "password" : "text"}
       {...props}
     />

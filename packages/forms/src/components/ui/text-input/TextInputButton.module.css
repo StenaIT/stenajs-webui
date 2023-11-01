@@ -1,0 +1,40 @@
+.textInputButton {
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: var(--swui-border-radius-small);
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--lhds-color-ui-200);
+  }
+
+  &.normal {
+    &:active {
+      background: var(--lhds-color-blue-200);
+    }
+
+    .icon {
+      color: var(--core-blue);
+    }
+  }
+
+  &.danger {
+    &:active {
+      background: var(--lhds-color-red-200);
+    }
+
+    .icon {
+      color: var(--modern-red);
+    }
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+  }
+}

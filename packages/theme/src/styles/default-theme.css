@@ -88,6 +88,7 @@
   --swui-field-placeholder-font-weight: var(--swui-font-weight-text-bold);
 
   /* Borders */
+  --swui-border-radius-small: 4px;
   --swui-border-radius: 8px;
   --swui-border-radius-large: 16px;
   --swui-max-border-radius: 10000px;
