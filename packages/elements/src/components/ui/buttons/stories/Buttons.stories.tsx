@@ -1,4 +1,3 @@
-import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import { ButtonSize, ButtonVariant } from "../common/ButtonCommon";
@@ -8,6 +7,10 @@ import { FlatButton } from "../FlatButton";
 import { Icon } from "../../icon/Icon";
 import { Story } from "@storybook/react";
 import { stenaCheck } from "../../../../icons/generated/CommonIcons";
+import {
+  stenaArrowRight,
+  stenaArrowShortRight,
+} from "../../../../icons/generated/ArrowIcons";
 
 const buttonSizes: Array<ButtonSize> = ["small", "medium", "large", "larger"];
 
@@ -82,23 +85,27 @@ export const Overview = () => (
                   <ButtonVariant size={size} label={"Submit"} disabled />
                 </td>
                 <td>
-                  <ButtonVariant size={size} leftIcon={faJedi} />
-                </td>
-                <td>
-                  <ButtonVariant size={size} leftIcon={faJedi} disabled />
+                  <ButtonVariant size={size} leftIcon={stenaArrowRight} />
                 </td>
                 <td>
                   <ButtonVariant
                     size={size}
-                    label={"Submit"}
-                    leftIcon={faJedi}
+                    leftIcon={stenaArrowRight}
+                    disabled
                   />
                 </td>
                 <td>
                   <ButtonVariant
                     size={size}
                     label={"Submit"}
-                    rightIcon={faJedi}
+                    leftIcon={stenaArrowRight}
+                  />
+                </td>
+                <td>
+                  <ButtonVariant
+                    size={size}
+                    label={"Submit"}
+                    rightIcon={stenaArrowShortRight}
                   />
                 </td>
                 <td>
@@ -106,7 +113,7 @@ export const Overview = () => (
                     size={size}
                     label={"Submit"}
                     leftIcon={stenaCheck}
-                    rightIcon={faJedi}
+                    rightIcon={stenaArrowShortRight}
                   />
                 </td>
                 <td>
