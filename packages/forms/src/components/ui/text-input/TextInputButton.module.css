@@ -10,13 +10,13 @@
   background: transparent;
   cursor: pointer;
 
-  &:hover {
-    background: var(--lhds-color-ui-200);
-  }
-
   &.normal {
+    &:hover {
+      background: var(--himmel-lighter);
+    }
+
     &:active {
-      background: var(--lhds-color-blue-200);
+      background: var(--himmel);
     }
 
     .icon {
@@ -24,9 +24,13 @@
     }
   }
 
-  &.danger {
+  &.error {
+    &:hover {
+      background: var(--snackskal-light);
+    }
+
     &:active {
-      background: var(--lhds-color-red-200);
+      background: var(--snackskal);
     }
 
     .icon {

@@ -82,8 +82,8 @@ export const Overview = () => (
       buttonLeft={
         <TextInputButton
           onClick={() => alert("click")}
-          icon={stenaAnimals}
-          variant={"danger"}
+          icon={stenaExclamationTriangle}
+          variant={"error"}
         />
       }
     />
