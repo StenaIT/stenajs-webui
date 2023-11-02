@@ -2,13 +2,31 @@ import { Box, exhaustSwitchCaseElseThrow } from "@stenajs-webui/core";
 import * as React from "react";
 import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { Icon, IconProps } from "./Icon";
+import { MediumIcon, XlIcon } from "../../../icons/IconSizes";
 
-export type CircledIconSizeVariant = "medium" | "small";
+export type CircledIconSizeVariant =
+  | CircledIconSizeStandardVariant
+  | CircledIconSizeXlVariant;
 
-export interface CircledIconProps extends Omit<IconProps, "size" | "color"> {
+export type CircledIconSizeStandardVariant = "medium" | "small";
+export type CircledIconSizeXlVariant = "xl";
+
+export type CircledIconProps = CircledIconNormalProps | CircledIconXlProps;
+
+export interface CircledIconCommonProps
+  extends Omit<IconProps, "size" | "color" | "icon"> {
   backgroundColor?: CssPropColor;
   iconColor?: CssPropColor;
-  size?: CircledIconSizeVariant;
+}
+
+export interface CircledIconNormalProps extends CircledIconCommonProps {
+  size?: CircledIconSizeStandardVariant;
+  icon: MediumIcon;
+}
+
+export interface CircledIconXlProps extends CircledIconCommonProps {
+  size: CircledIconSizeXlVariant;
+  icon: XlIcon;
 }
 
 export const CircledIcon: React.FC<CircledIconProps> = ({
@@ -34,23 +52,31 @@ export const CircledIcon: React.FC<CircledIconProps> = ({
   );
 };
 
-const getBackgroundSize = (size: CircledIconSizeVariant): string => {
+const getBackgroundSize = (
+  size: CircledIconSizeVariant | CircledIconSizeXlVariant
+): string => {
   switch (size) {
     case "small":
       return "32px";
     case "medium":
       return "40px";
+    case "xl":
+      return "88px";
     default:
       return exhaustSwitchCaseElseThrow(size);
   }
 };
 
-const getIconSize = (size: CircledIconSizeVariant): number => {
+const getIconSize = (
+  size: CircledIconSizeVariant | CircledIconSizeXlVariant
+): number => {
   switch (size) {
     case "small":
       return 16;
     case "medium":
       return 20;
+    case "xl":
+      return 44;
     default:
       return exhaustSwitchCaseElseThrow(size);
   }

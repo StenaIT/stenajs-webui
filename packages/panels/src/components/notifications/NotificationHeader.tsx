@@ -1,10 +1,10 @@
 import { Box, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { CircledIcon, FlatButton, stenaTimes } from "@stenajs-webui/elements";
 import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { UnreadDot } from "./UnreadDot";
 import { NotificationVariant } from "./Notification";
+import { MediumIcon } from "@stenajs-webui/elements";
 
 export interface NotificationHeaderProps {
   /** Text. */
@@ -12,7 +12,7 @@ export interface NotificationHeaderProps {
   /** Timestamp. */
   timestamp?: string;
   /** Icon. */
-  icon?: IconDefinition;
+  icon?: MediumIcon;
   /** Icon description for accessibility. */
   iconAriaLabel?: string;
   /** Left content instead of icon. */

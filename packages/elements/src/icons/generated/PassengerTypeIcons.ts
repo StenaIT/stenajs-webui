@@ -1,6 +1,6 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { MediumIcon } from "../IconSizes";
 
-export const stenaHumanAdult: IconDefinition = {
+export const stenaHumanAdult: MediumIcon = {
   icon: [
     32,
     24,
@@ -10,9 +10,10 @@ export const stenaHumanAdult: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaHumanChild: IconDefinition = {
+export const stenaHumanChild: MediumIcon = {
   icon: [
     32,
     24,
@@ -22,9 +23,10 @@ export const stenaHumanChild: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaHumanInfant: IconDefinition = {
+export const stenaHumanInfant: MediumIcon = {
   icon: [
     32,
     24,
@@ -34,9 +36,10 @@ export const stenaHumanInfant: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaHumanSenior: IconDefinition = {
+export const stenaHumanSenior: MediumIcon = {
   icon: [
     32,
     24,
@@ -46,9 +49,10 @@ export const stenaHumanSenior: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaHumanStudent: IconDefinition = {
+export const stenaHumanStudent: MediumIcon = {
   icon: [
     32,
     24,
@@ -58,4 +62,5 @@ export const stenaHumanStudent: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
