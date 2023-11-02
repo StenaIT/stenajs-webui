@@ -1,7 +1,7 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase, upperFirst, groupBy } = require("lodash");
+const { camelCase, upperFirst, groupBy, startCase } = require("lodash");
 const svgpath = require("svgpath");
 const path = require("path");
 const glob = require("glob");
@@ -87,7 +87,7 @@ async function createIconDefinition(svgString, basenameFile) {
     size: iconSize,
   };
 
-  const definitionType = basenameFile.endsWith("xl") ? "XlIcon" : "MediumIcon";
+  const definitionType = startCase(iconSize) + "Icon";
 
   return (
     "export const " +
@@ -156,7 +156,7 @@ function createImportStatement(iconFileNamesForGroup) {
     types.push("MediumIcon");
   }
 
-  return `import { ${types.join(", ")} } from "../XlIcons";`;
+  return `import { ${types.join(", ")} } from "../IconSizes";`;
 }
 
 function getSvgDimensions(svg) {
