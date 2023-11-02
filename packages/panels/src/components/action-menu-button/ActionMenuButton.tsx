@@ -101,32 +101,34 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   };
 
   return (
-    <Popover
-      disablePadding
-      visible={isOpen}
-      onClickOutside={close}
-      placement={placement}
-      content={
-        isOpen && (
-          <ActionMenu width={menuWidth} top={menuTop} trapFocus>
-            <ActionMenuContext.Provider value={contextValue}>
-              {renderItems(close)}
-            </ActionMenuContext.Provider>
-          </ActionMenu>
-        )
-      }
-      arrow={false}
-      appendTo={portalTarget}
-      zIndex={zIndex}
-      plugins={[focusManager]}
-      lazy
-    >
+    <>
       <Button
         rightIcon={disableArrow ? undefined : rightIcon}
         {...buttonProps}
         ref={buttonRef}
         onClick={handleClick}
       />
-    </Popover>
+      <Popover
+        disablePadding
+        visible={isOpen}
+        onClickOutside={close}
+        placement={placement}
+        content={
+          isOpen && (
+            <ActionMenu width={menuWidth} top={menuTop} trapFocus>
+              <ActionMenuContext.Provider value={contextValue}>
+                {renderItems(close)}
+              </ActionMenuContext.Provider>
+            </ActionMenu>
+          )
+        }
+        arrow={false}
+        appendTo={portalTarget}
+        zIndex={zIndex}
+        plugins={[focusManager]}
+        lazy
+        reference={buttonRef}
+      />
+    </>
   );
 };
