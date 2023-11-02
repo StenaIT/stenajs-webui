@@ -76,7 +76,7 @@ export const Popover: React.FC<PopoverProps> = ({
       plugins={plugins}
       {...tippyProps}
     >
-      <div ref={tippyRef}>{children}</div>
+      {children && <div ref={tippyRef}>{children}</div>}
     </TippyComponent>
   );
 };

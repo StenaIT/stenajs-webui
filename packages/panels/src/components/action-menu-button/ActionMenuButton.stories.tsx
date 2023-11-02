@@ -35,6 +35,53 @@ export default {
   component: ActionMenuPrimaryButton,
 };
 
+const renderContent = (close: () => void) => (
+  <>
+    <>
+      <ActionMenuItem label={"Open"} />
+      <ActionMenuItem label={"Save"} leftIcon={stenaSave} />
+      <ActionMenuItem
+        label={"Don't close on click"}
+        disableCloseOnClick
+        leftIcon={stenaBusinessClaim}
+      />
+      <ActionMenuItem
+        label={"Burn it"}
+        leftIcon={stenaTrash}
+        variant={"danger"}
+      />
+      <ActionMenuItem label={"Disabled"} disabled />
+      <ActionMenuItemContent
+        label={"Content right"}
+        right={
+          <ButtonGroup>
+            <ToggleButton value={true} size={"small"} label={"S"} />
+            <ToggleButton size={"small"} label={"M"} />
+            <ToggleButton size={"small"} label={"L"} />
+          </ButtonGroup>
+        }
+      />
+      <ActionMenuItemContent
+        label={"Content very much text"}
+        bottom={
+          <ButtonGroup>
+            <ToggleButton size={"small"} label={"25"} onClick={close} />
+            <ToggleButton
+              value={true}
+              size={"small"}
+              label={"50"}
+              onClick={close}
+            />
+            <ToggleButton size={"small"} label={"100"} onClick={close} />
+          </ButtonGroup>
+        }
+      />
+      <ActionMenuSeparator />
+      <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
+    </>
+  </>
+);
+
 export const Overview = () => (
   <Column>
     {[
@@ -49,57 +96,7 @@ export const Overview = () => (
       { ButtonVariant: ActionMenuFlatButton, label: "ActionMenuFlatButton" },
     ].map(({ label, ButtonVariant }) => (
       <Row spacing={2}>
-        <ButtonVariant
-          label={label}
-          renderItems={(close) => (
-            <>
-              <ActionMenuItem label={"Open"} />
-              <ActionMenuItem label={"Save"} leftIcon={stenaSave} />
-              <ActionMenuItem
-                label={"Don't close on click"}
-                disableCloseOnClick
-                leftIcon={stenaBusinessClaim}
-              />
-              <ActionMenuItem
-                label={"Burn it"}
-                leftIcon={stenaTrash}
-                variant={"danger"}
-              />
-              <ActionMenuItem label={"Disabled"} disabled />
-              <ActionMenuItemContent
-                label={"Content right"}
-                right={
-                  <ButtonGroup>
-                    <ToggleButton value={true} size={"small"} label={"S"} />
-                    <ToggleButton size={"small"} label={"M"} />
-                    <ToggleButton size={"small"} label={"L"} />
-                  </ButtonGroup>
-                }
-              />
-              <ActionMenuItemContent
-                label={"Content very much text"}
-                bottom={
-                  <ButtonGroup>
-                    <ToggleButton size={"small"} label={"25"} onClick={close} />
-                    <ToggleButton
-                      value={true}
-                      size={"small"}
-                      label={"50"}
-                      onClick={close}
-                    />
-                    <ToggleButton
-                      size={"small"}
-                      label={"100"}
-                      onClick={close}
-                    />
-                  </ButtonGroup>
-                }
-              />
-              <ActionMenuSeparator />
-              <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
-            </>
-          )}
-        />
+        <ButtonVariant label={label} renderItems={renderContent} />
       </Row>
     ))}
     <Spacing num={24} />
@@ -110,7 +107,7 @@ export const Disabled = () => (
   <ActionMenuPrimaryButton
     label={"Disabled"}
     disabled
-    renderItems={() => <></>}
+    renderItems={renderContent}
   />
 );
 
@@ -120,22 +117,42 @@ export const Icons = () => (
       <ActionMenuPrimaryButton
         label={"Custom icon"}
         rightIcon={faCoffee}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Left icon"}
         leftIcon={faCoffee}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         rightIcon={faEllipsisV}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
+  </Box>
+);
+
+export const Responsive = () => (
+  <Box gap={2} flexDirection={["column", null, "row"]}>
+    <ActionMenuPrimaryButton
+      label={"Small"}
+      size={"small"}
+      renderItems={renderContent}
+    />
+    <ActionMenuPrimaryButton
+      label={"Medium"}
+      size={"medium"}
+      renderItems={renderContent}
+    />
+    <ActionMenuPrimaryButton
+      label={"Large"}
+      size={"large"}
+      renderItems={renderContent}
+    />
   </Box>
 );
 
@@ -145,21 +162,21 @@ export const Sizes = () => (
       <ActionMenuPrimaryButton
         label={"Small"}
         size={"small"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Medium"}
         size={"medium"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Large"}
         size={"large"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
   </Box>
@@ -179,7 +196,7 @@ export const CustomContent = () => (
             So custom!
           </Txt>
         }
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
@@ -194,7 +211,7 @@ export const CustomContent = () => (
             So custom!
           </Txt>
         }
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
   </Box>
@@ -206,21 +223,21 @@ export const Variants = () => (
       <ActionMenuPrimaryButton
         label={"Normal"}
         variant={"normal"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Success"}
         variant={"success"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
     <Spacing>
       <ActionMenuPrimaryButton
         label={"Danger"}
         variant={"danger"}
-        renderItems={() => <></>}
+        renderItems={renderContent}
       />
     </Spacing>
   </Box>
