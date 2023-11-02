@@ -36,7 +36,7 @@ export const NavBarSearchField: React.FC<NavBarSearchFieldProps> = ({
           <TextInputButton
             className={styles.clearButton}
             icon={stenaTimes}
-            variant={"danger"}
+            variant={"error"}
             onClick={onClickClearButton}
           />
         ) : undefined
