@@ -4,7 +4,11 @@ import { Box, Space, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
-import { Badge, stenaAnimals } from "@stenajs-webui/elements";
+import {
+  stenaAnimals,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
+import { TextInputButton } from "./TextInputButton";
 
 export default {
   title: "forms/TextInput/TextInput",
@@ -45,16 +49,43 @@ export const Overview = () => (
       </React.Fragment>
     ))}
     <Text>Icon left</Text>
-    <TextInput value={"Some text"} iconLeft={stenaAnimals} />
+    <TextInput value={"Some text"} iconLeft={stenaExclamationTriangle} />
     <Space />
     <Text>Icon right</Text>
-    <TextInput value={"Some text"} iconRight={stenaAnimals} />
+    <TextInput value={"Some text"} iconRight={stenaExclamationTriangle} />
     <Space />
-    <Text>Icon clickable</Text>
+    <Text>Button left side</Text>
     <TextInput
       value={"Some text"}
-      iconLeft={stenaAnimals}
-      onClickLeft={() => alert("click")}
+      buttonLeft={
+        <TextInputButton
+          icon={stenaExclamationTriangle}
+          onClick={() => alert("click")}
+        />
+      }
+    />
+    <Space />
+    <Text>Button right side</Text>
+    <TextInput
+      value={"Some text"}
+      buttonRight={
+        <TextInputButton
+          icon={stenaExclamationTriangle}
+          onClick={() => alert("click")}
+        />
+      }
+    />
+    <Space />
+    <Text>Button left side danger</Text>
+    <TextInput
+      value={"Some text"}
+      buttonLeft={
+        <TextInputButton
+          onClick={() => alert("click")}
+          icon={stenaAnimals}
+          variant={"danger"}
+        />
+      }
     />
     <Space />
     <Text>Content left</Text>
@@ -185,14 +216,5 @@ export const DisabledWithContent = () => (
 export const TypeDate = () => (
   <Box width={"400px"}>
     <TextInput type={"date"} />
-  </Box>
-);
-
-export const WithClickableContent = () => (
-  <Box width={"400px"}>
-    <TextInput
-      contentRight={<Badge label={"2"} />}
-      onClickRight={() => alert("Clicked")}
-    />
   </Box>
 );
