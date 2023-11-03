@@ -1,6 +1,6 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { MediumIcon } from "../IconSizes";
 
-export const stenaUserAdd: IconDefinition = {
+export const stenaUserAdd: MediumIcon = {
   icon: [
     24,
     24,
@@ -10,9 +10,10 @@ export const stenaUserAdd: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUserCircle: IconDefinition = {
+export const stenaUserCircle: MediumIcon = {
   icon: [
     24,
     24,
@@ -22,9 +23,10 @@ export const stenaUserCircle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUserGroupLarge: IconDefinition = {
+export const stenaUserGroupLarge: MediumIcon = {
   icon: [
     24,
     24,
@@ -34,9 +36,10 @@ export const stenaUserGroupLarge: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUserGroupSmall: IconDefinition = {
+export const stenaUserGroupSmall: MediumIcon = {
   icon: [
     24,
     24,
@@ -46,9 +49,10 @@ export const stenaUserGroupSmall: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUserMultiple: IconDefinition = {
+export const stenaUserMultiple: MediumIcon = {
   icon: [
     24,
     24,
@@ -58,9 +62,10 @@ export const stenaUserMultiple: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUserSingle: IconDefinition = {
+export const stenaUserSingle: MediumIcon = {
   icon: [
     24,
     24,
@@ -70,9 +75,10 @@ export const stenaUserSingle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUser: IconDefinition = {
+export const stenaUser: MediumIcon = {
   icon: [
     24,
     24,
@@ -82,9 +88,10 @@ export const stenaUser: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaUsers: IconDefinition = {
+export const stenaUsers: MediumIcon = {
   icon: [
     24,
     24,
@@ -94,4 +101,5 @@ export const stenaUsers: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };

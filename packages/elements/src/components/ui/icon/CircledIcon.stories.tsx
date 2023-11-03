@@ -1,21 +1,17 @@
 import * as React from "react";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Column, Row, Text } from "@stenajs-webui/core";
-import {
-  CircledIcon,
-  CircledIconProps,
-  CircledIconSizeVariant,
-} from "./CircledIcon";
-import { Story } from "@storybook/react";
+import { CircledIcon } from "./CircledIcon";
 import {
   colorListControl,
   disabledControl,
 } from "../../../storybook-helpers/storybook-controls";
 import {
   stenaCopyDocument,
+  stenaLighthouseXl,
   stenaSailingShip,
 } from "../../../icons/generated/CommonIcons";
 import { stenaBusinessInvoice } from "../../../icons/generated/BusinessIcons";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "elements/CircledIcon",
@@ -26,36 +22,76 @@ export default {
   },
 };
 
-export const Demo: Story<CircledIconProps> = (props) => (
-  <CircledIcon {...props} icon={stenaCopyDocument} />
-);
-
-export const WithColor = () => (
-  <CircledIcon
-    icon={stenaCopyDocument}
-    iconColor={"--modern-red"}
-    backgroundColor={"--lhds-color-red-100"}
-  />
-);
-
-export const Sizes = () => {
-  const sizes: Array<CircledIconSizeVariant> = ["medium", "small"];
+export const Demo = () => {
+  const sizes = ["medium", "small", "xl"] as const;
 
   return (
     <Column gap={4}>
       {sizes.map((size) => (
         <Column gap={2}>
           <Text>{size}</Text>
-          <CircledIcon icon={stenaCopyDocument} size={size} />
+
+          <Row gap={2}>
+            <Column gap={2} spacing={2} indent={2}>
+              {size === "xl" ? (
+                <CircledIcon icon={stenaLighthouseXl} size={size} />
+              ) : (
+                <CircledIcon icon={stenaCopyDocument} size={size} />
+              )}
+            </Column>
+
+            <Column
+              background={cssColor("--lhds-color-ui-200")}
+              indent={2}
+              spacing={2}
+            >
+              {size === "xl" ? (
+                <CircledIcon
+                  icon={stenaLighthouseXl}
+                  size={size}
+                  backgroundColor={"--lhds-color-ui-50"}
+                />
+              ) : (
+                <CircledIcon
+                  icon={stenaCopyDocument}
+                  size={size}
+                  backgroundColor={"--lhds-color-ui-50"}
+                />
+              )}
+            </Column>
+          </Row>
         </Column>
       ))}
     </Column>
   );
 };
 
-export const WithSpin = () => <CircledIcon icon={faSpinner} spin={true} />;
+export const WithColor = () => (
+  <Row
+    gap={4}
+    indent={2}
+    spacing={2}
+    background={cssColor("--lhds-color-ui-200")}
+  >
+    <CircledIcon
+      icon={stenaCopyDocument}
+      backgroundColor={"--lhds-color-ui-50"}
+    />
+    <CircledIcon
+      icon={stenaCopyDocument}
+      iconColor={"--modern-red"}
+      backgroundColor={"--lhds-color-red-100"}
+    />
+  </Row>
+);
 
-export const WithPulse = () => <CircledIcon icon={faSpinner} pulse={true} />;
+export const WithSpin = () => (
+  <CircledIcon icon={stenaBusinessInvoice} spin={true} />
+);
+
+export const WithPulse = () => (
+  <CircledIcon icon={stenaBusinessInvoice} pulse={true} />
+);
 
 export const HorizontalFlip = () => (
   <Column gap={4}>

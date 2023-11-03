@@ -1,15 +1,13 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase, upperFirst, groupBy } = require("lodash");
+const { camelCase, upperFirst, groupBy, startCase } = require("lodash");
 const svgpath = require("svgpath");
 const path = require("path");
 const glob = require("glob");
 const prettier = require("prettier");
 
 const baseTargetPath = "packages/elements/src/icons/generated/";
-
-const sourceFileBase = `import { IconDefinition } from "@fortawesome/fontawesome-svg-core";`;
 
 generateIcons();
 
@@ -20,10 +18,11 @@ async function generateIcons() {
   const allIconDefinitions = await Promise.all(
     files.map(async (file) => {
       const iconCategoryFileName = getIconCategoryFileName(file);
-      const basenameFile = path.basename(file, "svg");
+      const basenameFile = path.basename(file, ".svg");
       const svg = await readSvgFile(file);
       const iconDefinition = await createIconDefinition(svg, basenameFile);
       return {
+        basenameFile,
         iconCategoryFileName,
         iconDefinition,
       };
@@ -41,7 +40,10 @@ async function generateIcons() {
   fs.mkdirSync(baseTargetPath);
 
   allGroupFileNames.forEach((categoryFileName) => {
-    createIconCategoryFileIfNotExists(categoryFileName);
+    const iconFileNamesForGroup = byGroup[categoryFileName].map(
+      (p) => p.basenameFile
+    );
+    createIconCategoryFileIfNotExists(categoryFileName, iconFileNamesForGroup);
     const iconDefinitions = byGroup[categoryFileName].map(
       (p) => p.iconDefinition
     );
@@ -76,17 +78,23 @@ async function createIconDefinition(svgString, basenameFile) {
     .trim();
 
   const dimensions = getSvgDimensions(svg);
+  const iconSize = basenameFile.endsWith("xl") ? "xl" : "medium";
 
   const iconDefinition = {
     icon: [dimensions.width, dimensions.height, [], "", pathData],
     iconName: "random",
     prefix: "fal",
+    size: iconSize,
   };
+
+  const definitionType = startCase(iconSize) + "Icon";
 
   return (
     "export const " +
     camelCase("stena " + basenameFile) +
-    ": IconDefinition = " +
+    ": " +
+    definitionType +
+    " = " +
     JSON.stringify(iconDefinition) +
     ";"
   );
@@ -120,13 +128,35 @@ function joinChildPaths(children) {
   }, "");
 }
 
-function createIconCategoryFileIfNotExists(categoryFileName) {
-  if (!fs.existsSync(baseTargetPath + categoryFileName)) {
+function createIconCategoryFileIfNotExists(
+  categoryFileName,
+  iconFileNamesForGroup
+) {
+  const targetFileFullPath = baseTargetPath + categoryFileName;
+  if (!fs.existsSync(targetFileFullPath)) {
     fs.appendFileSync(
-      baseTargetPath + categoryFileName,
-      sourceFileBase + "\n\n"
+      targetFileFullPath,
+      createImportStatement(iconFileNamesForGroup) + "\n\n"
     );
   }
+}
+
+function createImportStatement(iconFileNamesForGroup) {
+  let types = [];
+
+  const numXlIcons = iconFileNamesForGroup.filter((n) =>
+    n.endsWith("xl")
+  ).length;
+  const numMediumIcons = iconFileNamesForGroup.length - numXlIcons;
+
+  if (numXlIcons > 0) {
+    types.push("XlIcon");
+  }
+  if (numMediumIcons > 0) {
+    types.push("MediumIcon");
+  }
+
+  return `import { ${types.join(", ")} } from "../IconSizes";`;
 }
 
 function getSvgDimensions(svg) {

@@ -1,13 +1,12 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { Heading, HeadingVariant, Row } from "@stenajs-webui/core";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { CircledIcon } from "@stenajs-webui/elements";
+import { CircledIcon, MediumIcon } from "@stenajs-webui/elements";
 
 export type PageHeadingVariant = "compact" | "standard" | "relaxed";
 
 interface PageHeadingProps {
-  icon?: IconDefinition;
+  icon?: MediumIcon;
   contentLeft?: ReactNode;
   contentRight?: ReactNode;
   heading: string;

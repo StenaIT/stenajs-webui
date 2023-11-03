@@ -1,6 +1,6 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { MediumIcon } from "../IconSizes";
 
-export const stenaBusinessAgreement: IconDefinition = {
+export const stenaBusinessAgreement: MediumIcon = {
   icon: [
     24,
     24,
@@ -10,9 +10,10 @@ export const stenaBusinessAgreement: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessArticle: IconDefinition = {
+export const stenaBusinessArticle: MediumIcon = {
   icon: [
     24,
     24,
@@ -22,9 +23,10 @@ export const stenaBusinessArticle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessCard: IconDefinition = {
+export const stenaBusinessCard: MediumIcon = {
   icon: [
     24,
     24,
@@ -34,9 +36,10 @@ export const stenaBusinessCard: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessClaim: IconDefinition = {
+export const stenaBusinessClaim: MediumIcon = {
   icon: [
     24,
     24,
@@ -46,9 +49,10 @@ export const stenaBusinessClaim: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessInvoice: IconDefinition = {
+export const stenaBusinessInvoice: MediumIcon = {
   icon: [
     24,
     24,
@@ -58,9 +62,10 @@ export const stenaBusinessInvoice: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessNslh: IconDefinition = {
+export const stenaBusinessNslh: MediumIcon = {
   icon: [
     24,
     24,
@@ -70,9 +75,10 @@ export const stenaBusinessNslh: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessSignature: IconDefinition = {
+export const stenaBusinessSignature: MediumIcon = {
   icon: [
     24,
     24,
@@ -82,9 +88,10 @@ export const stenaBusinessSignature: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePaid: IconDefinition = {
+export const stenaFinancePaid: MediumIcon = {
   icon: [
     24,
     24,
@@ -94,9 +101,10 @@ export const stenaFinancePaid: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePayPartially: IconDefinition = {
+export const stenaFinancePayPartially: MediumIcon = {
   icon: [
     24,
     24,
@@ -106,9 +114,10 @@ export const stenaFinancePayPartially: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePay: IconDefinition = {
+export const stenaFinancePay: MediumIcon = {
   icon: [
     24,
     24,
@@ -118,9 +127,10 @@ export const stenaFinancePay: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceRaise: IconDefinition = {
+export const stenaFinanceRaise: MediumIcon = {
   icon: [
     24,
     24,
@@ -130,9 +140,10 @@ export const stenaFinanceRaise: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceRebate: IconDefinition = {
+export const stenaFinanceRebate: MediumIcon = {
   icon: [
     24,
     24,
@@ -142,9 +153,10 @@ export const stenaFinanceRebate: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceUnpaidAlt: IconDefinition = {
+export const stenaFinanceUnpaidAlt: MediumIcon = {
   icon: [
     24,
     24,
@@ -154,9 +166,10 @@ export const stenaFinanceUnpaidAlt: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceUnpaid: IconDefinition = {
+export const stenaFinanceUnpaid: MediumIcon = {
   icon: [
     24,
     24,
@@ -166,9 +179,10 @@ export const stenaFinanceUnpaid: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceWallet: IconDefinition = {
+export const stenaFinanceWallet: MediumIcon = {
   icon: [
     24,
     24,
@@ -178,4 +192,5 @@ export const stenaFinanceWallet: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };

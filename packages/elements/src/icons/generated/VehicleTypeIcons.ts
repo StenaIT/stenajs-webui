@@ -1,6 +1,6 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { MediumIcon } from "../IconSizes";
 
-export const stenaBicycle: IconDefinition = {
+export const stenaBicycle: MediumIcon = {
   icon: [
     24,
     24,
@@ -10,9 +10,10 @@ export const stenaBicycle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleCarLarge: IconDefinition = {
+export const stenaVehicleCarLarge: MediumIcon = {
   icon: [
     32,
     24,
@@ -22,9 +23,10 @@ export const stenaVehicleCarLarge: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleCarMpv: IconDefinition = {
+export const stenaVehicleCarMpv: MediumIcon = {
   icon: [
     32,
     24,
@@ -34,9 +36,10 @@ export const stenaVehicleCarMpv: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleCarStandard: IconDefinition = {
+export const stenaVehicleCarStandard: MediumIcon = {
   icon: [
     32,
     24,
@@ -46,9 +49,10 @@ export const stenaVehicleCarStandard: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleCaravan: IconDefinition = {
+export const stenaVehicleCaravan: MediumIcon = {
   icon: [
     32,
     24,
@@ -58,9 +62,10 @@ export const stenaVehicleCaravan: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleMotorcycle: IconDefinition = {
+export const stenaVehicleMotorcycle: MediumIcon = {
   icon: [
     32,
     24,
@@ -70,9 +75,10 @@ export const stenaVehicleMotorcycle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleMotorhomeExtraLarge: IconDefinition = {
+export const stenaVehicleMotorhomeExtraLarge: MediumIcon = {
   icon: [
     32,
     24,
@@ -82,9 +88,10 @@ export const stenaVehicleMotorhomeExtraLarge: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleMotorhomeLarge: IconDefinition = {
+export const stenaVehicleMotorhomeLarge: MediumIcon = {
   icon: [
     32,
     24,
@@ -94,9 +101,10 @@ export const stenaVehicleMotorhomeLarge: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleMotorhomeMedium: IconDefinition = {
+export const stenaVehicleMotorhomeMedium: MediumIcon = {
   icon: [
     32,
     24,
@@ -106,9 +114,10 @@ export const stenaVehicleMotorhomeMedium: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleMotorhomeStandard: IconDefinition = {
+export const stenaVehicleMotorhomeStandard: MediumIcon = {
   icon: [
     32,
     24,
@@ -118,9 +127,10 @@ export const stenaVehicleMotorhomeStandard: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaVehicleTrailer: IconDefinition = {
+export const stenaVehicleTrailer: MediumIcon = {
   icon: [
     32,
     24,
@@ -130,4 +140,5 @@ export const stenaVehicleTrailer: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
