@@ -1,5 +1,4 @@
 import * as React from "react";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Column, Row, Text } from "@stenajs-webui/core";
 import { CircledIcon } from "./CircledIcon";
 import {
@@ -23,28 +22,7 @@ export default {
   },
 };
 
-export const Demo = () => <CircledIcon icon={stenaCopyDocument} />;
-
-export const WithColor = () => (
-  <Row
-    gap={4}
-    indent={2}
-    spacing={2}
-    background={cssColor("--lhds-color-ui-200")}
-  >
-    <CircledIcon
-      icon={stenaCopyDocument}
-      backgroundColor={"--lhds-color-ui-50"}
-    />
-    <CircledIcon
-      icon={stenaCopyDocument}
-      iconColor={"--modern-red"}
-      backgroundColor={"--lhds-color-red-100"}
-    />
-  </Row>
-);
-
-export const Sizes = () => {
+export const Demo = () => {
   const sizes = ["medium", "small", "xl"] as const;
 
   return (
@@ -88,9 +66,32 @@ export const Sizes = () => {
   );
 };
 
-export const WithSpin = () => <CircledIcon icon={faSpinner} spin={true} />;
+export const WithColor = () => (
+  <Row
+    gap={4}
+    indent={2}
+    spacing={2}
+    background={cssColor("--lhds-color-ui-200")}
+  >
+    <CircledIcon
+      icon={stenaCopyDocument}
+      backgroundColor={"--lhds-color-ui-50"}
+    />
+    <CircledIcon
+      icon={stenaCopyDocument}
+      iconColor={"--modern-red"}
+      backgroundColor={"--lhds-color-red-100"}
+    />
+  </Row>
+);
 
-export const WithPulse = () => <CircledIcon icon={faSpinner} pulse={true} />;
+export const WithSpin = () => (
+  <CircledIcon icon={stenaBusinessInvoice} spin={true} />
+);
+
+export const WithPulse = () => (
+  <CircledIcon icon={stenaBusinessInvoice} pulse={true} />
+);
 
 export const HorizontalFlip = () => (
   <Column gap={4}>
