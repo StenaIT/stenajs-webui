@@ -5,7 +5,10 @@ import {
   stenaBusinessClaim,
   stenaBusinessInvoice,
   stenaCalendar,
+  stenaClock,
+  stenaHelp,
   stenaSailingTicket,
+  stenaSlidersMini,
   stenaStatisticsBar,
   stenaStatisticsLine,
   stenaStatusNoShow,
@@ -15,6 +18,7 @@ import { SidebarMenu } from "./SidebarMenu";
 import { SidebarMenuLink } from "./items/SidebarMenuLink";
 import { SidebarMenuCollapsible } from "./items/SidebarMenuCollapsible";
 import { SidebarMenuSeparator } from "./items/SidebarMenuSeparator";
+import { SidebarRailMenu } from "./rail/SidebarRailMenu";
 
 export default {
   title: "panels/SidebarMenu",
@@ -26,6 +30,74 @@ export default {
     SidebarMenuSeparator,
   },
 };
+
+const createSidebarMenuItems = (onClick: () => void) => (
+  <>
+    <SidebarMenuHeading label={"Freight portal"} />
+    <SidebarMenuLink href={"#"} leftIcon={stenaCalendar} label={"Manage"} />
+    <SidebarMenuLink
+      href={"#"}
+      label={"Book (selected)"}
+      leftIcon={stenaSailingTicket}
+      selected
+    />
+    <SidebarMenuLink
+      href={"#"}
+      label={"Statistics"}
+      leftIcon={stenaStatisticsLine}
+    />
+    <SidebarMenuHeading label={"Administration"} />
+    <SidebarMenuCollapsible label={"Invoices"} leftIcon={stenaBusinessInvoice}>
+      <SidebarMenuLink label={"No show & late handling"} onClick={onClick} />
+      <SidebarMenuLink label={"Late payment"} onClick={onClick} />
+      <SidebarMenuLink
+        label={"Archive (selected)"}
+        onClick={onClick}
+        selected
+      />
+      <SidebarMenuLink label={"Level 2.4"} onClick={onClick} />
+      <SidebarMenuCollapsible label={"Level 2.5"} leftIcon={stenaStatisticsBar}>
+        <SidebarMenuLink label={"Level 3.1"} onClick={onClick} />
+        <SidebarMenuLink label={"Level 3.2"} onClick={onClick} />
+        <SidebarMenuCollapsible
+          label={"Level 3.3"}
+          leftIcon={stenaStatisticsBar}
+        >
+          <SidebarMenuLink label={"Level 4.1"} onClick={onClick} />
+          <SidebarMenuLink label={"Level 4.2"} onClick={onClick} />
+        </SidebarMenuCollapsible>
+      </SidebarMenuCollapsible>
+    </SidebarMenuCollapsible>
+
+    <SidebarMenuCollapsible label={"No icon"}>
+      <SidebarMenuLink label={"Level 2"} onClick={onClick} />
+    </SidebarMenuCollapsible>
+
+    <SidebarMenuHeading label={"Support"} />
+    <SidebarMenuLink
+      leftIcon={stenaBusinessClaim}
+      label={"Make a claim"}
+      href={"#"}
+    />
+    <SidebarMenuLink
+      leftIcon={stenaStatusNoShow}
+      label={"No show, late handling"}
+      href={"#"}
+    />
+  </>
+);
+
+const bottomItems = (
+  <>
+    <SidebarMenuLink leftIcon={stenaClock} label={"Timetable"} href={"#"} />
+    <SidebarMenuLink leftIcon={stenaHelp} label={"Help"} href={"#"} />
+    <SidebarMenuLink
+      leftIcon={stenaSlidersMini}
+      label={"Settings"}
+      href={"#"}
+    />
+  </>
+);
 
 export const Overview = () => {
   const onClick = () => alert("Click");
@@ -102,6 +174,18 @@ export const Overview = () => {
   );
 };
 
+export const RailMenu = () => {
+  return (
+    <SidebarRailMenu
+      onClickMenuButton={() => alert("Open sidebar menu")}
+      closeButtonVisible
+      onClickCloseButton={() => alert("Unpin it")}
+      bottomItems={bottomItems}
+    >
+      {createSidebarMenuItems(() => alert("Clicked a link"))}
+    </SidebarRailMenu>
+  );
+};
 export const WithoutIcons = () => {
   const onClick = () => alert("Click");
   return (

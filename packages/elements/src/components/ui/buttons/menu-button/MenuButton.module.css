@@ -92,7 +92,7 @@
     &:focus-visible {
       background: var(--current-background-color-focus);
       outline: var(--swui-focus-outline);
-      outline-offset: 0;
+      outline-offset: var(--swui-focus-outline-width);
     }
 
     &:active {
