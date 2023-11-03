@@ -61,7 +61,7 @@ const getBackgroundSize = (
     case "medium":
       return "40px";
     case "xl":
-      return "88px";
+      return "160px";
     default:
       return exhaustSwitchCaseElseThrow(size);
   }
@@ -76,7 +76,7 @@ const getIconSize = (
     case "medium":
       return 20;
     case "xl":
-      return 44;
+      return 80;
     default:
       return exhaustSwitchCaseElseThrow(size);
   }
