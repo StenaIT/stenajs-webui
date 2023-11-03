@@ -18,7 +18,7 @@ async function generateIcons() {
   const allIconDefinitions = await Promise.all(
     files.map(async (file) => {
       const iconCategoryFileName = getIconCategoryFileName(file);
-      const basenameFile = path.basename(file, "svg").replace(".", "");
+      const basenameFile = path.basename(file, ".svg");
       const svg = await readSvgFile(file);
       const iconDefinition = await createIconDefinition(svg, basenameFile);
       return {
