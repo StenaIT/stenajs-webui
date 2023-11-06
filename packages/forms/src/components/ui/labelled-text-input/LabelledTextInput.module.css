@@ -67,7 +67,7 @@
     }
 
     input {
-      font-size: 2rem;
+      font-size: var(--swui-font-size-inputs-large);
       padding: calc(var(--swui-metrics-space) * 5)
         calc(var(--swui-metrics-space) * 2) calc(var(--swui-metrics-space) * 2);
     }
