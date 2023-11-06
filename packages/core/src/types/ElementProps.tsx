@@ -27,6 +27,8 @@ export type InputElementProps = ComponentPropsWithoutRef<"input">;
 
 export type AnchorElementProps = ComponentPropsWithoutRef<"a">;
 
+export type SelectElementProps = ComponentPropsWithoutRef<"select">;
+
 export interface WithInnerRef<TInputElement> {
   innerRef?: Ref<TInputElement>;
 }
