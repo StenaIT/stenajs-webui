@@ -6,6 +6,7 @@ import { InputLabel } from "../input-label/InputLabel";
 import styles from "./LabelledSelect.module.css";
 import { cssColor } from "@stenajs-webui/theme";
 import { ValueAndOnValueChangeProps } from "../types";
+import { SelectElementProps } from "@stenajs-webui/core";
 
 export type SelectBorderVariant =
   | "normalBorder"
@@ -14,7 +15,8 @@ export type SelectBorderVariant =
 
 export interface LabelledSelectProps
   extends ValueAndOnValueChangeProps<string>,
-    PropsWithChildren {
+    PropsWithChildren,
+    Omit<SelectElementProps, "value"> {
   id?: string;
   name: string;
   label?: string;
@@ -26,10 +28,9 @@ export interface LabelledSelectProps
 export type LabelledSelectVariant = "normal" | "error";
 
 export const LabelledSelect: React.FC<LabelledSelectProps> = ({
-  id,
-  name,
-  value,
+  onChange,
   onValueChange,
+  id,
   label,
   screenReaderLabel,
   borderVariant = "normalBorder",
@@ -41,12 +42,12 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
 
   const activeId = id ?? hookId;
 
-  const onChange = useCallback(
+  const onChangeHandler = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       onChange?.(e);
       onValueChange?.(e.target.value);
     },
-    [onValueChange]
+    [onChange, onValueChange]
   );
 
   return (
@@ -64,11 +65,9 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
         screenReaderLabel={screenReaderLabel}
       />
       <select
-        className={cx(styles.select, styles[variant])}
         id={activeId}
-        name={name}
-        value={value}
-        onChange={onChange}
+        onChange={onChangeHandler}
+        className={cx(styles.select, styles[variant])}
         {...inputProps}
       >
         {children}
