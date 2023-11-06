@@ -73,7 +73,7 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
       <div className={cx(styles.iconWrapper)}>
         <Icon
           icon={stenaAngleDown}
-          size={25}
+          size={24}
           color={cssColor("--modern-blue")}
         />
       </div>
