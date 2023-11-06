@@ -21,7 +21,6 @@ const options = (
 export const Desktop = () => (
   <Box width={"250px"}>
     <LabelledSelect
-      id={"isIsRequired"}
       label={"Who rocks?"}
       name={"thebest"}
       onValueChange={(v) => console.log("Changed to", v)}
@@ -34,7 +33,6 @@ export const Desktop = () => (
 export const Mobile = () => (
   <Box width={"250px"}>
     <LabelledSelect
-      id={"isIsRequired"}
       label={"Who rocks?"}
       name={"thebest"}
       onValueChange={(v) => console.log("Changed to", v)}

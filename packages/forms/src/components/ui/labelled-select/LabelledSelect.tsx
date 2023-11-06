@@ -1,7 +1,7 @@
 import * as React from "react";
+import { ChangeEvent, PropsWithChildren, useCallback, useId } from "react";
 import { Icon, stenaAngleDown } from "@stenajs-webui/elements";
 import cx from "classnames";
-import { ChangeEvent, PropsWithChildren, useCallback } from "react";
 import { InputLabel } from "../input-label/InputLabel";
 import styles from "./LabelledSelect.module.css";
 import { cssColor } from "@stenajs-webui/theme";
@@ -15,7 +15,7 @@ export type SelectBorderVariant =
 export interface LabelledSelectProps
   extends ValueAndOnValueChangeProps<string>,
     PropsWithChildren {
-  id: string;
+  id?: string;
   name: string;
   label?: string;
   screenReaderLabel?: string;
@@ -37,6 +37,10 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
   children,
   ...inputProps
 }) => {
+  const hookId = useId();
+
+  const activeId = id ?? hookId;
+
   const onChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       onChange?.(e);
@@ -54,14 +58,14 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
       )}
     >
       <InputLabel
-        htmlFor={id}
+        htmlFor={activeId}
         className={styles.label}
         label={label}
         screenReaderLabel={screenReaderLabel}
       />
       <select
         className={cx(styles.select, styles[variant])}
-        id={id}
+        id={activeId}
         name={name}
         value={value}
         onChange={onChange}
