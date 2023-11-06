@@ -71,17 +71,17 @@
   }
 
   .iconWrapper {
-    border-radius: 50%;
+    border-radius: var(--swui-max-border-radius);
+    width: 40px;
+    height: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: absolute;
     top: 0;
     bottom: 0;
     right: calc(var(--swui-metrics-space) * 2);
-    width: 40px;
-    height: 40px;
-    justify-content: center;
     margin-top: auto;
     margin-bottom: auto;
     padding: 0;
