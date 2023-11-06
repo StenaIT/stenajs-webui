@@ -1,5 +1,6 @@
 import * as React from "react";
 import { LabelledSelect } from "./LabelledSelect";
+import { Box } from "@stenajs-webui/core";
 
 export default {
   title: "forms/LabelledSelect",
@@ -18,23 +19,27 @@ const options = (
 );
 
 export const Desktop = () => (
-  <LabelledSelect
-    label={"Who rocks?"}
-    name={"thebest"}
-    onValueChange={(v) => console.log("Changed to", v)}
-  >
-    {options}
-  </LabelledSelect>
+  <Box width={"250px"}>
+    <LabelledSelect
+      label={"Who rocks?"}
+      name={"thebest"}
+      onValueChange={(v) => console.log("Changed to", v)}
+    >
+      {options}
+    </LabelledSelect>
+  </Box>
 );
 
 export const Mobile = () => (
-  <LabelledSelect
-    label={"Who rocks?"}
-    name={"thebest"}
-    onValueChange={(v) => console.log("Changed to", v)}
-  >
-    {options}
-  </LabelledSelect>
+  <Box width={"250px"}>
+    <LabelledSelect
+      label={"Who rocks?"}
+      name={"thebest"}
+      onValueChange={(v) => console.log("Changed to", v)}
+    >
+      {options}
+    </LabelledSelect>
+  </Box>
 );
 
 Mobile.parameters = {
