@@ -15,7 +15,7 @@ export type SelectBorderVariant =
 export interface LabelledSelectProps
   extends ValueAndOnValueChangeProps<string>,
     PropsWithChildren {
-  id?: string;
+  id: string;
   name: string;
   label?: string;
   screenReaderLabel?: string;
