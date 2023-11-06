@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChangeEventHandler, useCallback } from "react";
+import { ChangeEventHandler, useCallback, useId } from "react";
 import cx from "classnames";
 import { InputLabel } from "../input-label/InputLabel";
 import styles from "./LabelledTextInput.module.css";
@@ -17,7 +17,7 @@ export type LabelledTextInputBorderVariant =
 export interface LabelledTextInputProps
   extends Omit<InputElementProps, "value" | "size">,
     ValueAndOnValueChangeProps<string> {
-  id: string;
+  id?: string;
   label?: string;
   size?: LabelledTextInputSize;
   screenReaderLabel?: string;
@@ -47,6 +47,10 @@ export const LabelledTextInput = React.forwardRef<
     },
     ref
   ) => {
+    const hookId = useId();
+
+    const activeId = id ?? hookId;
+
     const onChangeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>(
       (ev) => {
         onChange?.(ev);
@@ -66,13 +70,13 @@ export const LabelledTextInput = React.forwardRef<
         )}
       >
         <InputLabel
-          htmlFor={id}
+          htmlFor={activeId}
           screenReaderLabel={screenReaderLabel}
           label={label}
         />
         <input
           ref={ref}
-          id={id}
+          id={activeId}
           autoComplete={autoComplete}
           type={"text"}
           value={value}

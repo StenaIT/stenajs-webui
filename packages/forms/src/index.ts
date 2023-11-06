@@ -10,6 +10,7 @@ export * from "./components/ui/numeric-text-input/hooks/UseNumericInputValue";
 export * from "./components/ui/password-input/PasswordInput";
 export * from "./components/ui/input-label/InputLabel";
 export * from "./components/ui/input-label/InputLabelText";
+export * from "./components/ui/labelled-select/LabelledSelect";
 export * from "./components/ui/labelled-text-input/LabelledTextInput";
 export * from "./components/ui/text-input/TextInput";
 export * from "./components/ui/text-input/TextInputBox";
