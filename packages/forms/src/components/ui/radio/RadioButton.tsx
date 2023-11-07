@@ -7,6 +7,7 @@ import {
 } from "react";
 import { FullOnChangeProps } from "../types";
 import styles from "./RadioButton.module.css";
+import cx from "classnames";
 
 export type RadioButtonSize = "standard" | "small";
 
@@ -18,7 +19,14 @@ export interface RadioButtonProps
 
 export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
   (
-    { onChange, onValueChange, size = "standard", name, ...inputProps },
+    {
+      onChange,
+      onValueChange,
+      size = "standard",
+      name,
+      className,
+      ...inputProps
+    },
     ref
   ) => {
     const handleInputChange = useCallback(
@@ -37,7 +45,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
       <input
         type={"radio"}
         name={name}
-        className={styles.radiobutton + " " + styles[size]}
+        className={cx(styles.radiobutton, styles[size], className)}
         onChange={handleInputChange}
         ref={ref}
         {...inputProps}
