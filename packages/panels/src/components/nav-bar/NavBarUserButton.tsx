@@ -27,13 +27,10 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
   return (
     <ActionMenuFlatButton
       {...buttonProps}
-      className={cx(
-        { [styles.initials]: initials != null },
-        styles.navBarUserButton,
-        className
-      )}
+      className={cx(styles.navBarUserButton, className)}
       leftIcon={username != null ? icon : undefined}
       label={initials ?? username}
+      forceRound={initials != null}
       responsiveIconOnly={responsiveIconOnly}
       disableArrow
     />

@@ -1,12 +1,9 @@
-import {
-  FlatButton,
-  FlatButtonProps,
-  stenaBellFilled,
-} from "@stenajs-webui/elements";
+import { FlatButtonProps, stenaBellFilled } from "@stenajs-webui/elements";
 import * as React from "react";
 import cx from "classnames";
 import styles from "./NavBarNotificationButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { BaseButton } from "@stenajs-webui/elements";
 
 export interface NavBarNotificationButtonProps
   extends Omit<FlatButtonProps, "leftIcon" | "rightIcon" | "label"> {
@@ -26,16 +23,16 @@ export const NavBarNotificationButton: React.FC<
   icon = stenaBellFilled,
   ...buttonProps
 }) => {
-  const hasCount = count > 0;
+  const hasCount = count > 1;
 
   return (
-    <FlatButton
+    <BaseButton
       {...buttonProps}
       leftIcon={icon}
       className={cx(
+        styles.navBarNotificationButton,
         unread && styles.unread,
         hasCount && styles.hasCount,
-        styles.navBarNotificationButton,
         className
       )}
       label={hasCount ? String(count) : undefined}

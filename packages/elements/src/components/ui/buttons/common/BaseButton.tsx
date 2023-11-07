@@ -7,9 +7,9 @@ import { CommonButtonProps } from "./ButtonCommon";
 import { getButtonLabel } from "./ButtonLabelFactory";
 import { ButtonContent } from "./ButtonContent";
 
-export interface BaseButtonProps
-  extends CommonButtonProps,
-    ButtonElementProps {}
+export interface BaseButtonProps extends CommonButtonProps, ButtonElementProps {
+  forceRound?: boolean;
+}
 
 export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
   function BaseButton(
@@ -34,6 +34,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
       leftWrapperClassName,
       rightWrapperClassName,
       responsiveIconOnly,
+      forceRound,
       ...buttonProps
     },
     ref
@@ -59,7 +60,11 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
     const successIconOnly = success && !successLabel;
 
     const isRound =
-      leftIconOnly || rightIconOnly || loadingOnly || successIconOnly;
+      forceRound ||
+      leftIconOnly ||
+      rightIconOnly ||
+      loadingOnly ||
+      successIconOnly;
 
     return (
       <button

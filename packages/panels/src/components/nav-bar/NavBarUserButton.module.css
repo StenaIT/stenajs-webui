@@ -24,8 +24,4 @@
   --swui-flat-button-background-color-active: var(
     --swui-nav-bar-user-button-background-color-active
   );
-
-  &.initials {
-    width: 32px;
-  }
 }

@@ -22,6 +22,7 @@ export * from "./components/ui/buttons/PrimaryButton";
 export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
 export * from "./components/ui/buttons/common/ButtonContent";
+export * from "./components/ui/buttons/common/BaseButton";
 export * from "./components/ui/buttons/menu-button/MenuButton";
 export * from "./components/ui/buttons/menu-button/ContentMenuButton";
 export * from "./components/ui/buttons/menu-button/IconMenuButton";
