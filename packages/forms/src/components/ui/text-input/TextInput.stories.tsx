@@ -7,6 +7,7 @@ import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 import {
   stenaAnimals,
   stenaExclamationTriangle,
+  stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import { TextInputButton } from "./TextInputButton";
 
@@ -49,28 +50,28 @@ export const Overview = () => (
       </React.Fragment>
     ))}
     <Text>Icon left</Text>
-    <TextInput value={"Some text"} iconLeft={stenaExclamationTriangle} />
+    <TextInput value={"Some text"} iconLeft={stenaInfoCircle} />
     <Space />
     <Text>Icon right</Text>
-    <TextInput value={"Some text"} iconRight={stenaExclamationTriangle} />
-    <Space />
-    <Text>Button left side</Text>
-    <TextInput
-      value={"Some text"}
-      buttonLeft={
-        <TextInputButton
-          icon={stenaExclamationTriangle}
-          onClick={() => alert("click")}
-        />
-      }
-    />
+    <TextInput value={"Some text"} iconRight={stenaInfoCircle} />
     <Space />
     <Text>Button right side</Text>
     <TextInput
       value={"Some text"}
       buttonRight={
         <TextInputButton
-          icon={stenaExclamationTriangle}
+          icon={stenaInfoCircle}
+          onClick={() => alert("click")}
+        />
+      }
+    />
+    <Space />
+    <Text>Button left side</Text>
+    <TextInput
+      value={"Some text"}
+      buttonLeft={
+        <TextInputButton
+          icon={stenaInfoCircle}
           onClick={() => alert("click")}
         />
       }
@@ -84,6 +85,18 @@ export const Overview = () => (
           onClick={() => alert("click")}
           icon={stenaExclamationTriangle}
           variant={"error"}
+        />
+      }
+    />
+    <Space />
+    <Text>Button left side warning</Text>
+    <TextInput
+      value={"Some text"}
+      buttonLeft={
+        <TextInputButton
+          onClick={() => alert("click")}
+          icon={stenaExclamationTriangle}
+          variant={"warning"}
         />
       }
     />

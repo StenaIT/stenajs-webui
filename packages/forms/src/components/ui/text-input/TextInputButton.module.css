@@ -11,10 +11,9 @@
   cursor: pointer;
 
   &.normal {
-    &:hover {
-      background: var(--himmel-lighter);
-    }
+    background: var(--himmel-lighter);
 
+    &:hover,
     &:active {
       background: var(--himmel);
     }
@@ -25,16 +24,28 @@
   }
 
   &.error {
-    &:hover {
-      background: var(--snackskal-light);
-    }
+    background: var(--snackskal-light);
 
+    &:hover,
     &:active {
       background: var(--snackskal);
     }
 
     .icon {
       color: var(--modern-red);
+    }
+  }
+
+  &.warning {
+    background: var(--lhds-color-orange-200);
+
+    &:hover,
+    &:active {
+      background: var(--lhds-color-orange-300);
+    }
+
+    .icon {
+      color: var(--tjara);
     }
   }
 

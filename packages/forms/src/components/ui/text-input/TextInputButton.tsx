@@ -5,7 +5,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@stenajs-webui/elements";
 import cx from "classnames";
 
-export type TextInputButtonVariant = "normal" | "error";
+export type TextInputButtonVariant = "normal" | "error" | "warning";
 
 export interface TextInputButtonProps extends ButtonElementProps {
   variant?: TextInputButtonVariant;
