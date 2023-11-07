@@ -1,5 +1,5 @@
 .textInputButton {
-  border: none;
+  --current-background: transparent;
   outline: none;
   width: 30px;
   height: 30px;
@@ -7,15 +7,19 @@
   border-radius: var(--swui-border-radius-small);
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: var(--current-background);
   cursor: pointer;
+  border: 1px solid var(--border-color, var(--current-background));
 
   &.normal {
-    background: var(--himmel-lighter);
+    --current-background: var(--himmel-lighter);
 
-    &:hover,
+    &:hover:not(&:active) {
+      --current-background: var(--himmel-light);
+    }
+
     &:active {
-      background: var(--himmel);
+      --border-color: var(--core-blue);
     }
 
     .icon {
@@ -24,11 +28,14 @@
   }
 
   &.error {
-    background: var(--snackskal-light);
+    --current-background: var(--snackskal-light);
 
-    &:hover,
+    &:hover:not(&:active) {
+      --current-background: var(--snackskal);
+    }
+
     &:active {
-      background: var(--snackskal);
+      --border-color: var(--modern-red);
     }
 
     .icon {
@@ -37,11 +44,30 @@
   }
 
   &.warning {
-    background: var(--lhds-color-orange-200);
+    --current-background: var(--lhds-color-orange-100);
 
-    &:hover,
+    &:hover:not(&:active) {
+      --current-background: var(--lhds-color-orange-200);
+    }
+
     &:active {
-      background: var(--lhds-color-orange-300);
+      --border-color: var(--lhds-color-orange-600);
+    }
+
+    .icon {
+      color: var(--tjara);
+    }
+  }
+
+  &.success {
+    --current-background: var(--lhds-color-green-100);
+
+    &:hover:not(&:active) {
+      --current-background: var(--lhds-color-green-200);
+    }
+
+    &:active {
+      --border-color: var(--lhds-color-green-600);
     }
 
     .icon {

@@ -2,19 +2,32 @@ import * as React from "react";
 import styles from "./TextInputButton.module.css";
 import { ButtonElementProps } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { Icon } from "@stenajs-webui/elements";
+import {
+  Icon,
+  MediumIcon,
+  stenaCheck,
+  stenaExclamationTriangle,
+  stenaInfoCircle,
+} from "@stenajs-webui/elements";
 import cx from "classnames";
 
-export type TextInputButtonVariant = "normal" | "error" | "warning";
+export type TextInputButtonVariant = "normal" | "error" | "warning" | "success";
 
 export interface TextInputButtonProps extends ButtonElementProps {
   variant?: TextInputButtonVariant;
-  icon: IconDefinition;
+  icon?: IconDefinition;
 }
+
+const variantToIcon: Record<TextInputButtonVariant, MediumIcon> = {
+  normal: stenaInfoCircle,
+  error: stenaExclamationTriangle,
+  warning: stenaExclamationTriangle,
+  success: stenaCheck,
+};
 
 export const TextInputButton: React.FC<TextInputButtonProps> = ({
   variant = "normal",
-  icon,
+  icon = variantToIcon[variant],
   className,
   ...buttonProps
 }) => {
