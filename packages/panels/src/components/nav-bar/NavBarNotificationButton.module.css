@@ -1,77 +1,50 @@
 .navBarNotificationButton {
-  /* Theme vars */
-  --swui-nav-bar-notification-button-text-color: var(--lhds-color-ui-50);
-  --swui-nav-bar-notification-button-background-color: var(--lhds-color-ui-400);
-  --swui-nav-bar-notification-button-background-color-hover: var(
-    --lhds-color-blue-900
-  );
-  --swui-nav-bar-notification-button-background-color-focus: var(
-    --lhds-color-blue-700
-  );
-  --swui-nav-bar-notification-button-background-color-active: var(
-    --lhds-color-blue-800
-  );
-  --swui-nav-bar-notification-button-background-color-unread: var(
-    --lhds-color-red-500
-  );
-  --swui-nav-bar-notification-button-background-color-unread-hover: var(
-    --lhds-color-red-700
-  );
-  --swui-nav-bar-notification-button-background-color-unread-focus: var(
-    --lhds-color-red-700
-  );
-  --swui-nav-bar-notification-button-background-color-unread-active: var(
-    --lhds-color-red-800
-  );
+  --current-background-color: var(--lhds-color-ui-400);
+  --current-outline-color: var(--modern-blue);
 
-  /* FlatButton overrides */
-  --swui-flat-button-text-color: var(
-    --swui-nav-bar-notification-button-text-color
-  );
-  --swui-flat-button-icon-color: var(
-    --swui-nav-bar-notification-button-text-color
-  );
-  --swui-flat-button-text-color-active: var(
-    --swui-nav-bar-notification-button-text-color
-  );
-  --swui-flat-button-background-color: var(
-    --swui-nav-bar-notification-button-background-color
-  );
-  --swui-flat-button-background-color-hover: var(
-    --swui-nav-bar-notification-button-background-color-hover
-  );
-  --swui-flat-button-background-color-focus: var(
-    --swui-nav-bar-notification-button-background-color-focus
-  );
-  --swui-flat-button-background-color-active: var(
-    --swui-nav-bar-notification-button-background-color-active
-  );
+  background-color: var(--current-background-color);
+  border-color: transparent;
+  color: var(--lhds-color-ui-50);
 
   --swui-nav-bar-notification-shake-count: 3;
 
   transition: 0.5s width;
 
-  &.unread {
-    --swui-flat-button-background-color: var(
-      --swui-nav-bar-notification-button-background-color-unread
-    );
-    --swui-flat-button-background-color-hover: var(
-      --swui-nav-bar-notification-button-background-color-unread-hover
-    );
-    --swui-flat-button-background-color-focus: var(
-      --swui-nav-bar-notification-button-background-color-unread-focus
-    );
-    --swui-flat-button-background-color-active: var(
-      --swui-nav-bar-notification-button-background-color-unread-active
-    );
+  &.unread,
+  &:hover {
+    --current-background-color: var(--lhds-color-red-500);
+    --current-outline-color: var(--lhds-color-red-500);
 
-    &.hasCount {
-      .icon {
-        transform-origin: top center;
-        animation: shake 1.5s ease-in-out
-          var(--swui-nav-bar-notification-shake-count);
-      }
+    &:active {
+      --current-background-color: var(--lhds-color-red-600);
+      --current-outline-color: var(--lhds-color-red-600);
     }
+  }
+
+  &.unread .icon {
+      transform-origin: top center;
+      animation: shake 1.5s ease-in-out
+        var(--swui-nav-bar-notification-shake-count);
+  }
+
+  &.unread.hasCount {
+    --current-background-color: var(--lhds-color-red-600);
+    --current-outline-color: var(--lhds-color-red-600);
+
+    &:hover {
+      --current-background-color: var(--lhds-color-red-700);
+      --current-outline-color: var(--lhds-color-red-700);
+    }
+    &:active {
+      --current-background-color: var(--lhds-color-red-800);
+      --current-outline-color: var(--lhds-color-red-800);
+    }
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+    outline-color: var(--current-outline-color);
+    outline-offset: var(--swui-focus-outline-width);
   }
 
   @keyframes shake {

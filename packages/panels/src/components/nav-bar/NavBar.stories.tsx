@@ -16,12 +16,15 @@ import {
   ActionMenuSeparator,
   FlatButton,
   PrimaryButton,
+  SecondaryButton,
   stenaBusinessClaim,
   stenaBusinessInvoice,
   stenaCalendar,
+  stenaClean,
   stenaClock,
   stenaCog,
   stenaHelp,
+  stenaPlus,
   stenaSailingTicket,
   stenaSignOut,
   stenaSlidersMini,
@@ -329,28 +332,40 @@ export const UserButton = () => (
 );
 
 export const NotificationButton = () => {
-  const [unread, setUnread, , toggle] = useBoolean(false);
+  const [unread, setUnread, clearUnread] = useBoolean(false);
   const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (count > 0) {
-      setUnread();
-    }
-  });
 
   return (
     <>
       <NavBar
         right={<NavBarNotificationButton count={count} unread={unread} />}
       />
-      <Row indent spacing gap justifyContent={"flex-end"}>
+      <Column indent spacing gap alignItems={"flex-end"}>
         <PrimaryButton
-          label={"-"}
-          onClick={() => setCount((c) => Math.max(c - 1, 0))}
+          leftIcon={stenaPlus}
+          label={"Trigger notification"}
+          onClick={() => {
+            setCount((c) => c + 1);
+            setUnread();
+          }}
         />
-        <PrimaryButton label={"Toggle unread"} onClick={toggle} />
-        <PrimaryButton label={"+"} onClick={() => setCount((c) => c + 1)} />
-      </Row>
+        <SecondaryButton
+          label={"Mark as read"}
+          disabled={!unread}
+          onClick={() => {
+            clearUnread();
+          }}
+        />
+        <SecondaryButton
+          leftIcon={stenaClean}
+          label={"Clear all"}
+          disabled={count === 0}
+          onClick={() => {
+            setCount(0);
+            clearUnread();
+          }}
+        />
+      </Column>
     </>
   );
 };
