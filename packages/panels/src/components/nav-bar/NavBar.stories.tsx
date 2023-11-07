@@ -35,7 +35,7 @@ import {
   WithBadge,
 } from "@stenajs-webui/elements";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavBar, NavBarProps } from "./NavBar";
 import { NavBarButton } from "./NavBarButton";
 import { NavBarPopoverButton } from "./NavBarPopoverButton";
