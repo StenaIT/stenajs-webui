@@ -22,9 +22,9 @@
   }
 
   &.unread .icon {
-      transform-origin: top center;
-      animation: shake 1.5s ease-in-out
-        var(--swui-nav-bar-notification-shake-count);
+    transform-origin: top center;
+    animation: shake 1.5s ease-in-out
+      var(--swui-nav-bar-notification-shake-count);
   }
 
   &.unread.hasCount {
