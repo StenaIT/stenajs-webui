@@ -13,7 +13,6 @@ import {
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { stenaTimes } from "../../../icons/generated/CommonIcons";
 import { FlatButton } from "../buttons/FlatButton";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
@@ -22,6 +21,7 @@ import { Card } from "./Card";
 import { CardBody } from "./CardBody";
 import { CardHeader } from "./CardHeader";
 import { Story } from "@storybook/react";
+import { CloseButton } from "../buttons/CloseButton";
 
 export default {
   title: "elements/Card",
@@ -120,7 +120,7 @@ export const Details = () => {
           <Row alignItems={"center"}>
             <SecondaryButton label={"Booking actions"} />
             <Indent />
-            <FlatButton leftIcon={stenaTimes} />
+            <CloseButton />
           </Row>
         }
       />
@@ -143,7 +143,7 @@ export const Unpaid = () => {
       <CardHeader
         text={"71338164"}
         contentLeft={<Tag label={"Unpaid"} variant={"error"} />}
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -171,7 +171,7 @@ export const Switch = () => {
             <Text>Confirmed</Text>
           </Row>
         }
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -199,7 +199,7 @@ export const Approved = () => {
             color={cssColor("--lhds-color-green-600")}
           />
         }
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
