@@ -4,15 +4,16 @@ import * as React from "react";
 import { forwardRef } from "react";
 import { BaseButtonProps } from "./common/BaseButton";
 
-export interface FlatButtonProps extends BaseButtonProps {}
+export interface CloseButtonProps extends BaseButtonProps {}
 
-export const CloseButton = forwardRef<HTMLButtonElement, FlatButtonProps>(
+export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
   function CloseButton(props, ref) {
     return (
       <FlatButton
         leftIcon={stenaTimes}
         variant={"danger"}
         ref={ref}
+        aria-label={"Close"}
         {...props}
       />
     );

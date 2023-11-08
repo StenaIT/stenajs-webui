@@ -19,6 +19,7 @@ export * from "./components/ui/bread-crumbs/BreadCrumbs";
 export * from "./components/ui/bread-crumbs/Crumb";
 export * from "./components/ui/buttons/FlatButton";
 export * from "./components/ui/buttons/PrimaryButton";
+export * from "./components/ui/buttons/CloseButton";
 export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
 export * from "./components/ui/buttons/common/ButtonContent";

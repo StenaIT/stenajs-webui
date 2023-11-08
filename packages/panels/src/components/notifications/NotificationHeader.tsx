@@ -1,10 +1,9 @@
 import { Box, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { CircledIcon, FlatButton, stenaTimes } from "@stenajs-webui/elements";
+import { CircledIcon, CloseButton, MediumIcon } from "@stenajs-webui/elements";
 import { cssColor, CssPropColor } from "@stenajs-webui/theme";
 import { UnreadDot } from "./UnreadDot";
 import { NotificationVariant } from "./Notification";
-import { MediumIcon } from "@stenajs-webui/elements";
 
 export interface NotificationHeaderProps {
   /** Text. */
@@ -79,12 +78,7 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
           justifyContent={"center"}
           height={"calc(20px + 2 * var(--swui-metrics-spacing))"}
         >
-          <FlatButton
-            leftIcon={stenaTimes}
-            onClick={onClose}
-            aria-label={"Close"}
-            variant={"danger"}
-          />
+          <CloseButton onClick={onClose} />
         </Box>
       )}
     </Row>
