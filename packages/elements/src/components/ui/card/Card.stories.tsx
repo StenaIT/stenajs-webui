@@ -13,7 +13,6 @@ import {
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { stenaTimes } from "../../../icons/generated/CommonIcons";
 import { FlatButton } from "../buttons/FlatButton";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
