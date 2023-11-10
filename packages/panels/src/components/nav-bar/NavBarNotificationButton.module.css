@@ -33,7 +33,6 @@
     &:hover {
       --current-background-color: var(--lhds-color-red-600);
       --current-outline-color: var(--lhds-color-red-600);
-
     }
     &:active {
       --current-background-color: var(--lhds-color-red-700);
