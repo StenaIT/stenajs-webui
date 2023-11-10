@@ -10,15 +10,14 @@
 
   transition: 0.5s width;
 
-  &.unread,
   &:hover {
     --current-background-color: var(--lhds-color-red-500);
     --current-outline-color: var(--lhds-color-red-500);
+  }
 
-    &:active {
-      --current-background-color: var(--lhds-color-red-600);
-      --current-outline-color: var(--lhds-color-red-600);
-    }
+  &:active {
+    --current-background-color: var(--lhds-color-red-600);
+    --current-outline-color: var(--lhds-color-red-600);
   }
 
   &.unread .icon {
@@ -27,17 +26,18 @@
       var(--swui-nav-bar-notification-shake-count);
   }
 
-  &.unread.hasCount {
-    --current-background-color: var(--lhds-color-red-600);
-    --current-outline-color: var(--lhds-color-red-600);
+  &.unread {
+    --current-background-color: var(--lhds-color-red-500);
+    --current-outline-color: var(--lhds-color-red-500);
 
     &:hover {
-      --current-background-color: var(--lhds-color-red-700);
-      --current-outline-color: var(--lhds-color-red-700);
+      --current-background-color: var(--lhds-color-red-600);
+      --current-outline-color: var(--lhds-color-red-600);
+
     }
     &:active {
-      --current-background-color: var(--lhds-color-red-800);
-      --current-outline-color: var(--lhds-color-red-800);
+      --current-background-color: var(--lhds-color-red-700);
+      --current-outline-color: var(--lhds-color-red-700);
     }
   }
 
