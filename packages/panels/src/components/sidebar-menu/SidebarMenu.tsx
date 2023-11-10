@@ -33,20 +33,16 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   ...boxProps
 }) => {
   return (
-    <Box
-      className={cx(styles.sidebarMenu, className)}
-      style={{
-        ["--swui-sidebar-menu-item-height" as string]: "40px",
-      }}
-      {...boxProps}
-    >
+    <Box {...boxProps} className={cx(styles.sidebarMenu, className)}>
       <SidebarMenuCloseButtonRow onClick={onCloseClick} />
-      <Box
-        height={"100%"}
-        background={"var(--current-background-color)"}
-        overflow={"auto"}
-      >
-        <Column justifyContent={"space-between"} flex={1} gap={1} indent={1}>
+      <Box className={styles.scrollContainer}>
+        <Column
+          className={styles.sidebarItems}
+          justifyContent={"space-between"}
+          flex={1}
+          gap={1}
+          indent={1}
+        >
           <Column gap={1}>{children}</Column>
           {(bottomItems || pinButtonVisible) && (
             <Column gap={1}>
