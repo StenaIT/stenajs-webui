@@ -10,12 +10,14 @@ import {
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import cx from "classnames";
+import { forwardRef } from "react";
 
 export type TextInputButtonVariant = "normal" | "error" | "warning" | "success";
 
 export interface TextInputButtonProps extends ButtonElementProps {
   variant?: TextInputButtonVariant;
   icon?: IconDefinition;
+  spin?: boolean;
 }
 
 const variantToIcon: Record<TextInputButtonVariant, MediumIcon> = {
@@ -25,18 +27,26 @@ const variantToIcon: Record<TextInputButtonVariant, MediumIcon> = {
   success: stenaCheck,
 };
 
-export const TextInputButton: React.FC<TextInputButtonProps> = ({
-  variant = "normal",
-  icon = variantToIcon[variant],
-  className,
-  ...buttonProps
-}) => {
+export const TextInputButton = forwardRef<
+  HTMLButtonElement,
+  TextInputButtonProps
+>(function TextInputButton(
+  {
+    variant = "normal",
+    icon = variantToIcon[variant],
+    className,
+    spin = false,
+    ...buttonProps
+  },
+  ref
+) {
   return (
     <button
       {...buttonProps}
+      ref={ref}
       className={cx(styles.textInputButton, styles[variant], className)}
     >
-      <Icon icon={icon} size={20} className={styles.icon} />
+      <Icon icon={icon} size={20} className={styles.icon} spin={spin} />
     </button>
   );
-};
+});
