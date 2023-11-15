@@ -385,7 +385,7 @@ const createSalesPerformanceStandardTableConfig = (
     ),
     rgaEcqfc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.revenueGains[1]?.value,
-      { columnLabel: "RGA ECQFC" }
+      { columnLabel: "RGA ECQFC EXTRA" }
     ),
     rpuEc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.futureRevenues[0]?.value,
