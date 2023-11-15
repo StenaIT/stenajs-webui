@@ -10,6 +10,7 @@ import { useColumnConfigById } from "../hooks/UseColumnConfigById";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
+import styles from "./StandardTableHeadItem.module.css";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -63,6 +64,7 @@ export const StandardTableHeadItem = React.memo(
 
     return (
       <th
+        className={styles.standardTableHeadTh}
         style={{
           background: background ?? "white",
           borderLeft: activeBorderLeft,
@@ -91,7 +93,6 @@ export const StandardTableHeadItem = React.memo(
             : stickyProps.sticky
             ? "var(--swui-sticky-group-header-z-index)"
             : zIndex) as CSSProperties["zIndex"],
-          height: 0, // CSS trick to force TableHeadItem to use 100% height
           width,
           minWidth,
         }}

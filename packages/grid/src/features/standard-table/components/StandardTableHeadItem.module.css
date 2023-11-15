@@ -1,0 +1,18 @@
+/**
+* Solution to make child div fill entire th/td parent
+* Height should be 1px in Webkit (Chrome), and 100% in Firefox.
+*
+* https://stackoverflow.com/a/36576083/823725
+*/
+
+.standardTableHeadTh {
+  height: 1px;
+
+  /**
+  * This is a CSS hack to only target Gecko (Mozilla Firefox).
+  * All other browsers will ignore the styles.
+  */
+  @-moz-document url-prefix() {
+    height: 100%;
+  }
+}
