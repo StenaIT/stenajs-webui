@@ -6,15 +6,6 @@
   --swui-button-height-large: 42px;
   --swui-button-height-larger: 66px;
 
-  --swui-button-icon-height-small: 1.6rem;
-  --swui-button-icon-height-small-icon-only: 1.6rem;
-  --swui-button-icon-height-medium: 2rem;
-  --swui-button-icon-height-medium-icon-only: 2rem;
-  --swui-button-icon-height-large: 2.4rem;
-  --swui-button-icon-height-large-icon-only: 2.4rem;
-  --swui-button-icon-height-larger: 3.2rem;
-  --swui-button-icon-height-larger-icon-only: 3.2rem;
-
   --current-background: transparent;
   outline: none;
   width: auto;
