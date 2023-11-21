@@ -32,7 +32,6 @@
     width: var(--current-icon-height);
   }
 
-
   &.normal {
     --current-background: var(--himmel-lighter);
 
