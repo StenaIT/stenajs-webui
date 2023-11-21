@@ -1,23 +1,27 @@
 import * as React from "react";
 import styles from "./TextInputButton.module.css";
+import baseButtonStyles from "./common/BaseButton.module.css";
 import { ButtonElementProps } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+import cx from "classnames";
+import { forwardRef } from "react";
+import { MediumIcon } from "../../../icons/IconSizes";
 import {
-  Icon,
-  MediumIcon,
   stenaCheck,
   stenaExclamationTriangle,
   stenaInfoCircle,
-} from "@stenajs-webui/elements";
-import cx from "classnames";
-import { forwardRef } from "react";
+} from "../../../icons/generated/CommonIcons";
+import { Icon } from "../icon/Icon";
 
 export type TextInputButtonVariant = "normal" | "error" | "warning" | "success";
+export type TextInputButtonSize = "medium" | "small";
 
 export interface TextInputButtonProps extends ButtonElementProps {
   variant?: TextInputButtonVariant;
   icon?: IconDefinition;
   spin?: boolean;
+  size?: TextInputButtonSize;
 }
 
 const variantToIcon: Record<TextInputButtonVariant, MediumIcon> = {
@@ -36,6 +40,7 @@ export const TextInputButton = forwardRef<
     icon = variantToIcon[variant],
     className,
     spin = false,
+    size = "medium",
     ...buttonProps
   },
   ref
@@ -44,9 +49,19 @@ export const TextInputButton = forwardRef<
     <button
       {...buttonProps}
       ref={ref}
-      className={cx(styles.textInputButton, styles[variant], className)}
+      className={cx(
+        styles.textInputButton,
+        baseButtonStyles[size],
+        styles[variant],
+        className
+      )}
     >
-      <Icon icon={icon} size={20} className={styles.icon} spin={spin} />
+      <Icon
+        icon={icon}
+        size={"var(--current-icon-height)"}
+        className={styles.icon}
+        spin={spin}
+      />
     </button>
   );
 });

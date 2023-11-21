@@ -1,15 +1,11 @@
 import * as React from "react";
-import {
-  TextInput,
-  TextInputButton,
-  TextInputProps,
-} from "@stenajs-webui/forms";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import cx from "classnames";
 import styles from "./NavBarSearchField.module.css";
 import { ButtonElementProps } from "@stenajs-webui/core";
-import { stenaTimes } from "@stenajs-webui/elements";
+import { stenaTimes, TextInputButton } from "@stenajs-webui/elements";
 
-interface NavBarSearchFieldProps extends TextInputProps {
+export interface NavBarSearchFieldProps extends TextInputProps {
   showClearButton?: boolean;
   onClickClearButton?: ButtonElementProps["onClick"];
 }

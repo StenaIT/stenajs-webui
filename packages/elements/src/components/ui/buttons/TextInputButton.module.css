@@ -1,8 +1,25 @@
 .textInputButton {
+  composes: button from "./common/BaseButton.module.css";
+
+  --swui-button-height-small: 18px;
+  --swui-button-height-medium: 30px;
+  --swui-button-height-large: 42px;
+  --swui-button-height-larger: 66px;
+
+  --swui-button-icon-height-small: 1.6rem;
+  --swui-button-icon-height-small-icon-only: 1.6rem;
+  --swui-button-icon-height-medium: 2rem;
+  --swui-button-icon-height-medium-icon-only: 2rem;
+  --swui-button-icon-height-large: 2.4rem;
+  --swui-button-icon-height-large-icon-only: 2.4rem;
+  --swui-button-icon-height-larger: 3.2rem;
+  --swui-button-icon-height-larger-icon-only: 3.2rem;
+
   --current-background: transparent;
   outline: none;
-  width: 30px;
-  height: 30px;
+  width: auto;
+  padding: 0;
+  aspect-ratio: 1;
   display: flex;
   border-radius: var(--swui-border-radius-small);
   justify-content: center;
@@ -10,6 +27,11 @@
   background: var(--current-background);
   cursor: pointer;
   border: 1px solid var(--border-color, var(--current-background));
+
+  .icon {
+    width: var(--current-icon-height);
+  }
+
 
   &.normal {
     --current-background: var(--himmel-lighter);
