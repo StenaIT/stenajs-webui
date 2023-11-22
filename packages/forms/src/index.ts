@@ -14,7 +14,6 @@ export * from "./components/ui/labelled-select/LabelledSelect";
 export * from "./components/ui/labelled-text-input/LabelledTextInput";
 export * from "./components/ui/text-input/TextInput";
 export * from "./components/ui/text-input/TextInputBox";
-export * from "./components/ui/text-input/TextInputButton";
 export * from "./components/ui/text-area/TextArea";
 export * from "./components/ui/types";
 export * from "./hooks/UseKeyboardNavigation";

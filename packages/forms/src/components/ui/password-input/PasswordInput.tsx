@@ -2,8 +2,11 @@ import * as React from "react";
 import { useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { TextInput, TextInputProps } from "../text-input/TextInput";
-import { stenaEyeHide, stenaEyeShow } from "@stenajs-webui/elements";
-import { TextInputButton } from "../text-input/TextInputButton";
+import {
+  stenaEyeHide,
+  stenaEyeShow,
+  TextInputButton,
+} from "@stenajs-webui/elements";
 
 export interface PasswordInputProps extends TextInputProps {
   visibleIcon?: IconDefinition;

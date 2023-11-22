@@ -4,8 +4,11 @@ import { Box, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
-import { stenaAnimals, stenaInfoCircle } from "@stenajs-webui/elements";
-import { TextInputButton } from "./TextInputButton";
+import {
+  stenaAnimals,
+  stenaInfoCircle,
+  TextInputButton,
+} from "@stenajs-webui/elements";
 
 export default {
   title: "forms/TextInput/TextInput",
@@ -94,6 +97,19 @@ export const Overview = () => (
         value={"Some text"}
         buttonLeft={
           <TextInputButton
+            onClick={() => action("click")}
+            variant={"success"}
+          />
+        }
+      />
+    </Box>
+    <Box>
+      <Text>Button left side small</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={
+          <TextInputButton
+            size={"small"}
             onClick={() => action("click")}
             variant={"success"}
           />

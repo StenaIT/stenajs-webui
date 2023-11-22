@@ -8,10 +8,10 @@ import {
   InputSpinner,
   stenaCheck,
   stenaExclamationTriangle,
+  TextInputButton,
 } from "@stenajs-webui/elements";
 import { ButtonElementProps, Row } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { TextInputButton } from "./TextInputButton";
 
 export interface TextInputBoxProps
   extends Pick<
