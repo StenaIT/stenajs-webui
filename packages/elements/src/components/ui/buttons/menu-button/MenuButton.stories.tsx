@@ -1,7 +1,13 @@
 import { MenuButton } from "./MenuButton";
 import { MenuButtonLink } from "./MenuButtonLink";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
-import { Column, Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
+import {
+  Column,
+  Text,
+  Txt,
+  useBoolean,
+  useTimeoutState,
+} from "@stenajs-webui/core";
 import * as React from "react";
 import cx from "classnames";
 import {
@@ -101,7 +107,8 @@ export const Overview = () => {
         <Text>I am great really content!</Text>
       </MenuButton>
 
-      <MenuButton loading label={"Content left"} />
+      <MenuButton loading label={"Loading"} />
+      <MenuButton left={<Txt>kg</Txt>} label={"Content left"} />
     </Column>
   );
 };
