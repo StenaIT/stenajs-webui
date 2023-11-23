@@ -60,6 +60,13 @@
     min-height: var(--swui-menu-button-item-height);
     min-width: var(--swui-menu-button-item-height);
 
+    &.success {
+      --current-text-color: var(--lhds-color-green-600);
+      --current-background-color-hover: var(--lhds-color-green-100);
+      --current-background-color-focus: var(--lhds-color-green-100);
+      --current-background-color-active: var(--lhds-color-ui-200);
+    }
+
     &.danger {
       --current-text-color: var(--lhds-color-red-600);
       --current-background-color-hover: var(--lhds-color-red-100);

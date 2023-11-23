@@ -18,8 +18,10 @@ import {
   stenaAngleDown,
   stenaAngleUp,
 } from "../../../../icons/generated/ArrowIcons";
+import { stenaCheck } from "../../../../icons/generated/CommonIcons";
+import { InputSpinner } from "../../spinner/InputSpinner";
 
-export type MenuButtonVariant = "standard" | "danger";
+export type MenuButtonVariant = "standard" | "danger" | "success";
 
 export interface MenuButtonProps extends ButtonElementProps {
   label: string;
@@ -31,6 +33,8 @@ export interface MenuButtonProps extends ButtonElementProps {
   right?: ReactNode;
   variant?: MenuButtonVariant;
   children?: ReactNode;
+  success?: boolean;
+  loading?: boolean;
 }
 
 export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
@@ -47,6 +51,8 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       variant = "standard",
       left,
       right,
+      success = false,
+      loading = false,
       ...buttonProps
     },
     ref
@@ -80,8 +86,8 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
             >
               <MenuButtonContent
                 label={label}
-                leftIcon={leftIcon}
-                left={left}
+                leftIcon={success ? stenaCheck : leftIcon}
+                left={loading ? <InputSpinner /> : left}
               />
               <Row gap={1} alignItems={"center"}>
                 {right && <Row alignItems={"center"}>{right}</Row>}
