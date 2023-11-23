@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ReactNode, useCallback } from "react";
 import { Row } from "@stenajs-webui/core";
-import { ChipSpacer } from "./ChipSpacer";
 import { FlatButton } from "@stenajs-webui/elements";
 import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../../context/SearchFilterActionsContext";
@@ -24,16 +23,14 @@ export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({
   );
 
   return (
-    <Row flexWrap={"wrap"}>
+    <Row flexWrap={"wrap"} alignItems={"center"} gap>
       {children}
       {!disableClearAllButton && (
-        <ChipSpacer>
-          <FlatButton
-            size={"small"}
-            label={"Clear all"}
-            onClick={onClickClearAll}
-          />
-        </ChipSpacer>
+        <FlatButton
+          size={"small"}
+          label={"Clear all"}
+          onClick={onClickClearAll}
+        />
       )}
     </Row>
   );

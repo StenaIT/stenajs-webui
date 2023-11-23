@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useCallback } from "react";
-import { ChipSpacer } from "./ChipSpacer";
 import { Chip } from "@stenajs-webui/elements";
 import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../../context/SearchFilterActionsContext";
@@ -42,12 +41,10 @@ export const SearchFilterChip = function SearchFilterChip<
   }, [actions, dispatch, sectionId]);
 
   return (
-    <ChipSpacer>
-      <Chip
-        label={label ?? sectionId}
-        onClick={onClickLabel}
-        onClickRemove={onClickRemove ? onClickRemoveHandler : undefined}
-      />
-    </ChipSpacer>
+    <Chip
+      label={label ?? sectionId}
+      onClick={onClickLabel}
+      onClickRemove={onClickRemove ? onClickRemoveHandler : undefined}
+    />
   );
 };
