@@ -70,7 +70,7 @@
     }
 
     &.success {
-      --current-text-color: var(--lhds-color-green-600);
+      --current-text-color: var(--swui-menu-button-text-color);
       --current-background-color-hover: var(--lhds-color-green-100);
       --current-background-color-focus: var(--lhds-color-green-100);
       --current-background-color-active: var(--lhds-color-ui-200);
