@@ -1,12 +1,6 @@
 import * as React from "react";
 import { forwardRef, ReactNode } from "react";
-import {
-  Box,
-  ButtonElementProps,
-  Indent,
-  Row,
-  Space,
-} from "@stenajs-webui/core";
+import { Box, ButtonElementProps, Space } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
 import { cssColor } from "@stenajs-webui/theme";
@@ -31,6 +25,7 @@ export interface MenuButtonProps extends ButtonElementProps {
   leftIcon?: IconDefinition;
   left?: ReactNode;
   right?: ReactNode;
+  rightIcon?: IconDefinition;
   variant?: MenuButtonVariant;
   children?: ReactNode;
   success?: boolean;
@@ -46,6 +41,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       selected,
       className,
       leftIcon,
+      rightIcon,
       children,
       disabled,
       variant = "standard",
@@ -72,6 +68,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
               selected && styles.selected,
               disabled && styles.disabled,
               styles[variant],
+              label ? styles.hasLabel : undefined,
               iconOnly && styles.iconOnly,
               className
             )}
@@ -79,30 +76,20 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
             ref={ref}
             {...buttonProps}
           >
-            <Row
-              justifyContent={iconOnly ? "center" : "space-between"}
-              alignItems={"center"}
-              indent={label ? 2 : 1}
-            >
-              <MenuButtonContent
-                label={label}
-                leftIcon={success ? stenaCheck : leftIcon}
-                left={loading ? <InputSpinner /> : left}
+            <MenuButtonContent
+              label={label}
+              leftIcon={leftIcon}
+              left={left}
+              right={loading ? <InputSpinner /> : right}
+              rightIcon={success ? stenaCheck : rightIcon}
+            />
+            {expandable && (
+              <Icon
+                icon={expanded ? stenaAngleUp : stenaAngleDown}
+                size={18}
+                color={cssColor("--lhds-color-blue-600")}
               />
-              <Row gap={1} alignItems={"center"}>
-                {right && <Row alignItems={"center"}>{right}</Row>}
-                {expandable && (
-                  <Row>
-                    <Indent />
-                    <Icon
-                      icon={expanded ? stenaAngleUp : stenaAngleDown}
-                      size={18}
-                      color={cssColor("--lhds-color-blue-600")}
-                    />
-                  </Row>
-                )}
-              </Row>
-            </Row>
+            )}
           </button>
         </Box>
 

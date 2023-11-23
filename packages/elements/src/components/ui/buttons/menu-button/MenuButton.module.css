@@ -42,23 +42,32 @@
   background-color: var(--current-background-color);
 
   .label {
+    text-align: start;
+    flex: 1;
     font-size: var(--current-text-size, var(--swui-font-size-medium));
   }
 
   .buttonLink {
-    display: flex;
-    align-items: center;
     text-decoration: none;
   }
 
   .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
     border: 0;
-    padding: 4px 0;
     cursor: pointer;
     border-radius: var(--swui-max-border-radius);
     background: var(--current-background-color);
     min-height: var(--swui-menu-button-item-height);
     min-width: var(--swui-menu-button-item-height);
+
+    padding: 0 calc(1 * var(--swui-metrics-indent));
+
+    &.hasLabel {
+      padding: 0 calc(2 * var(--swui-metrics-indent));
+    }
 
     &.success {
       --current-text-color: var(--lhds-color-green-600);

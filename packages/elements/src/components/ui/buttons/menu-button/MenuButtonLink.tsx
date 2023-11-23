@@ -1,6 +1,6 @@
 import * as React from "react";
 import { forwardRef, ReactNode } from "react";
-import { AnchorElementProps, Box, Row } from "@stenajs-webui/core";
+import { AnchorElementProps, Box } from "@stenajs-webui/core";
 import cx from "classnames";
 import styles from "./MenuButton.module.css";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -56,11 +56,7 @@ export const MenuButtonLink = forwardRef<
   },
   ref
 ) {
-  const innerChildren = (
-    <Row justifyContent={"space-between"} indent={label ? 2 : 1}>
-      <MenuButtonContent label={label} leftIcon={leftIcon} />
-    </Row>
-  );
+  const innerChildren = <MenuButtonContent label={label} leftIcon={leftIcon} />;
 
   const renderLinkProps = "renderLink" in linkProps ? linkProps : undefined;
   const noRenderLinkProps = "selected" in linkProps ? linkProps : undefined;
@@ -68,6 +64,7 @@ export const MenuButtonLink = forwardRef<
   const linkClassName = cx(
     styles.button,
     styles.buttonLink,
+    label ? styles.hasLabel : undefined,
     disabled && styles.disabled,
     noRenderLinkProps?.selected && styles.selected,
     styles[variant],
@@ -96,11 +93,7 @@ export const MenuButtonLink = forwardRef<
   );
 
   return (
-    <Box
-      className={cx(styles.menuButton)}
-      width={"100%"}
-      justifyContent={"space-between"}
-    >
+    <Box className={cx(styles.menuButton)} width={"100%"}>
       {link}
     </Box>
   );
