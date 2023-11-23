@@ -1,10 +1,12 @@
 import { MenuButton } from "./MenuButton";
 import { MenuButtonLink } from "./MenuButtonLink";
 import { MenuButtonGroupBox } from "./MenuButtonGroupBox";
-import { Column, Text, useBoolean } from "@stenajs-webui/core";
+import { Column, Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import * as React from "react";
 import cx from "classnames";
 import {
+  stenaCheck,
+  stenaCopy,
   stenaExternalLink,
   stenaStatisticsBar,
 } from "../../../../icons/generated/CommonIcons";
@@ -20,6 +22,7 @@ export default {
 
 export const Overview = () => {
   const [expanded, , , toggle] = useBoolean(false);
+  const [copyClicked, setCopyClicked] = useTimeoutState(false, 3000);
   return (
     <Column width={"230px"} gap>
       <MenuButton label={"Just a button"} />
@@ -31,6 +34,14 @@ export const Overview = () => {
       <MenuButton label={"I am disabled"} disabled />
 
       <MenuButton label={"I am dangerous"} variant={"danger"} />
+
+      <MenuButton
+        label={"Copy value"}
+        success={copyClicked}
+        variant={copyClicked ? "success" : undefined}
+        leftIcon={stenaCopy}
+        onClick={() => setCopyClicked(true)}
+      />
 
       <MenuButtonLink
         label={"Link to google"}
@@ -92,7 +103,7 @@ export const Overview = () => {
         <Text>I am great really content!</Text>
       </MenuButton>
 
-      <MenuButton left={<InputSpinner />} label={"Content left"} />
+      <MenuButton loading label={"Content left"} />
     </Column>
   );
 };
