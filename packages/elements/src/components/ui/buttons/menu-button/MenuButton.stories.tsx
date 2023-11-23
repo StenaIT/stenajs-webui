@@ -5,12 +5,10 @@ import { Column, Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import * as React from "react";
 import cx from "classnames";
 import {
-  stenaCheck,
   stenaCopy,
   stenaExternalLink,
   stenaStatisticsBar,
 } from "../../../../icons/generated/CommonIcons";
-import { InputSpinner } from "../../spinner/InputSpinner";
 
 export default {
   title: "elements/MenuButton",
