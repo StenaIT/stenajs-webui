@@ -116,6 +116,7 @@
     }
 
     &.iconOnly {
+      aspect-ratio: 1;
       justify-content: center;
     }
 
