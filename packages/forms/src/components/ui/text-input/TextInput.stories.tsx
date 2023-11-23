@@ -60,14 +60,14 @@ export const Overview = () => (
       <Text>Button right side</Text>
       <TextInput
         value={"Some text"}
-        buttonRight={<TextInputButton onClick={() => action("click")} />}
+        buttonRight={<TextInputButton onClick={action("click")} />}
       />
     </Box>
     <Box>
       <Text>Button left side</Text>
       <TextInput
         value={"Some text"}
-        buttonLeft={<TextInputButton onClick={() => action("click")} />}
+        buttonLeft={<TextInputButton onClick={action("click")} />}
       />
     </Box>
     <Box>
@@ -75,7 +75,7 @@ export const Overview = () => (
       <TextInput
         value={"Some text"}
         buttonLeft={
-          <TextInputButton onClick={() => action("click")} variant={"error"} />
+          <TextInputButton onClick={action("click")} variant={"error"} />
         }
       />
     </Box>
@@ -84,10 +84,7 @@ export const Overview = () => (
       <TextInput
         value={"Some text"}
         buttonLeft={
-          <TextInputButton
-            onClick={() => action("click")}
-            variant={"warning"}
-          />
+          <TextInputButton onClick={action("click")} variant={"warning"} />
         }
       />
     </Box>
@@ -96,10 +93,7 @@ export const Overview = () => (
       <TextInput
         value={"Some text"}
         buttonLeft={
-          <TextInputButton
-            onClick={() => action("click")}
-            variant={"success"}
-          />
+          <TextInputButton onClick={action("click")} variant={"success"} />
         }
       />
     </Box>
@@ -110,7 +104,7 @@ export const Overview = () => (
         buttonLeft={
           <TextInputButton
             size={"small"}
-            onClick={() => action("click")}
+            onClick={action("click")}
             variant={"success"}
           />
         }

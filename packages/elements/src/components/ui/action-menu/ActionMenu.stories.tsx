@@ -209,6 +209,8 @@ export const AsyncItem = () => {
       <ActionMenuItem
         label={saved ? "Saved" : loading ? "Saving..." : "Save"}
         leftIcon={stenaSave}
+        success={saved}
+        loading={loading}
         onClick={start}
       />
       <ActionMenuItem
@@ -219,6 +221,8 @@ export const AsyncItem = () => {
             ? "Saving with danger..."
             : "Save dangerously"
         }
+        success={savedDanger}
+        loading={loadingDanger}
         leftIcon={isDangerOn ? stenaSave : faSadCry}
         onClick={startDanger}
         variant={"danger"}
@@ -239,6 +243,8 @@ export const AsyncItem = () => {
             ? "Saving with success..."
             : "Save successfully"
         }
+        success={savedSuccess}
+        loading={loadingSuccess}
         leftIcon={isSuccessOn ? stenaSave : faSadCry}
         onClick={startSuccess}
         disabled={!isSuccessOn}
