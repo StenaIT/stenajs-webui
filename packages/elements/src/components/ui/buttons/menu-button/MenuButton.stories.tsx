@@ -39,6 +39,8 @@ export const Overview = () => {
 
       <MenuButton label={"I am dangerous"} variant={"danger"} />
 
+      <MenuButton label={"I am success"} variant={"success"} />
+
       <MenuButton
         label={"Copy value"}
         success={copyClicked}
