@@ -29,7 +29,7 @@
     color: var(--lhds-color-red-500);
 
     &:hover {
-      background: var(--lhds-color-red-50);
+      background: var(--snackskal-light);
     }
 
     &:focus-visible {

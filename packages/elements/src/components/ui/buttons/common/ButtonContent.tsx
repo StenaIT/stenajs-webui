@@ -108,7 +108,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           {label}
         </span>
       )}
-      {label ? <Space /> : null}
+      {label ? <Space half /> : null}
       {rightContent}
     </div>
   );

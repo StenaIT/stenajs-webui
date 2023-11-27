@@ -32,7 +32,7 @@
     color: var(--lhds-color-red-600);
 
     &:hover {
-      background-color: var(--lhds-color-red-50);
+      background-color: var(--snackskal-light);
       border: 1px solid var(--lhds-color-red-400);
     }
 
