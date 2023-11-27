@@ -126,20 +126,20 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
         />
       )}
       <div className={styles.grid}>
-        <Column alignItems={"center"} gap={0.5}>
-          <Icon icon={icon} fixedWidth size={24} />
+        <Column alignItems={"center"}>
+          <Icon icon={icon} fixedWidth size={20} />
+          <Space half />
           <Box
             flex={1}
-            border={`1px solid ${cssColor("--lhds-color-ui-300")}`}
+            border={`1px solid ${cssColor("--lhds-color-ui-900")}`}
             borderRadius={2}
           />
           <Box
-            flex={"none"}
-            border={`4px solid ${cssColor("--lhds-color-blue-100")}`}
-            background={cssColor("--lhds-color-blue-500")}
+            borderRadius={"50%"}
+            style={{ marginTop: -1 }}
+            border={`2px solid ${cssColor("--lhds-color-ui-900")}`}
             width={16}
             height={16}
-            borderRadius={8}
           />
         </Column>
         <Column gap={size === "standard" ? 3 : 2}>
