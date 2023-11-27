@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactNode, useCallback } from "react";
 import { Row } from "@stenajs-webui/core";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaClean } from "@stenajs-webui/elements";
 import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../../context/SearchFilterActionsContext";
 
@@ -28,7 +28,8 @@ export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({
       {!disableClearAllButton && (
         <FlatButton
           size={"small"}
-          label={"Clear all"}
+          leftIcon={stenaClean}
+          label={"Clear"}
           onClick={onClickClearAll}
         />
       )}
