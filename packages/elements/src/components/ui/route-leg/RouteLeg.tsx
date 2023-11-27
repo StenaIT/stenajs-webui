@@ -132,11 +132,10 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
           <Box
             flex={1}
             border={`1px solid ${cssColor("--lhds-color-ui-900")}`}
-            borderRadius={2}
+            borderRadius={"2px 2px 0 0"}
           />
           <Box
             borderRadius={"50%"}
-            style={{ marginTop: -1 }}
             border={`2px solid ${cssColor("--lhds-color-ui-900")}`}
             width={16}
             height={16}
