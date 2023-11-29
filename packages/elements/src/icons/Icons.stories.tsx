@@ -1,11 +1,12 @@
 import * as React from "react";
-import { IconDemoList } from "./IconsDemo";
+import { IconDemoList, XlIconDemo } from "./IconsDemo";
 import * as arrowIcons from "./generated/ArrowIcons";
 import * as businessIcons from "./generated/BusinessIcons";
 import * as commonIcons from "./generated/CommonIcons";
 import * as passengerTypeIcons from "./generated/PassengerTypeIcons";
 import * as vehicleTypeIcons from "./generated/VehicleTypeIcons";
 import * as userIcons from "./generated/UserIcons";
+import * as xlIcons from "./generated/XlIcons";
 
 export default {
   title: "elements/Icons",
@@ -33,4 +34,14 @@ export const VehicleTypeIcons = () => {
 
 export const UserIcons = () => {
   return <IconDemoList icons={userIcons} />;
+};
+
+export const XlIcons = () => {
+  return (
+    <IconDemoList
+      icons={xlIcons}
+      iconSize={80}
+      renderIconDemo={(selectedIcon) => <XlIconDemo icon={selectedIcon} />}
+    />
+  );
 };

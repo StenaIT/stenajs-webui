@@ -10,6 +10,7 @@ export type CircledIconSizeVariant =
 
 export type CircledIconSizeStandardVariant = "medium" | "small";
 export type CircledIconSizeXlVariant = "xl";
+export type CircledIconVariant = "normal" | "whiteBg";
 
 export type CircledIconProps = CircledIconNormalProps | CircledIconXlProps;
 
@@ -17,6 +18,7 @@ export interface CircledIconCommonProps
   extends Omit<IconProps, "size" | "color" | "icon"> {
   backgroundColor?: CssPropColor;
   iconColor?: CssPropColor;
+  variant?: CircledIconVariant;
 }
 
 export interface CircledIconNormalProps extends CircledIconCommonProps {
@@ -30,9 +32,10 @@ export interface CircledIconXlProps extends CircledIconCommonProps {
 }
 
 export const CircledIcon: React.FC<CircledIconProps> = ({
-  backgroundColor = "--lhds-color-ui-200",
+  backgroundColor,
   iconColor = "--swui-text-primary-color",
   size = "medium",
+  variant = "normal",
   ...iconProps
 }) => {
   const backgroundSize = getBackgroundSize(size);
@@ -41,7 +44,7 @@ export const CircledIcon: React.FC<CircledIconProps> = ({
   return (
     <Box
       borderRadius={"50%"}
-      background={cssColor(backgroundColor)}
+      background={cssColor(backgroundColor ?? getBgColorForVariant(variant))}
       width={backgroundSize}
       height={backgroundSize}
       justifyContent={"center"}
@@ -80,4 +83,8 @@ const getIconSize = (
     default:
       return exhaustSwitchCaseElseThrow(size);
   }
+};
+
+const getBgColorForVariant = (variant: CircledIconVariant): CssPropColor => {
+  return variant === "whiteBg" ? "--lhds-color-ui-50" : "--lhds-color-ui-200";
 };

@@ -7,11 +7,15 @@ import {
 } from "../../../storybook-helpers/storybook-controls";
 import {
   stenaCopyDocument,
-  stenaLighthouseXl,
   stenaSailingShip,
 } from "../../../icons/generated/CommonIcons";
 import { stenaBusinessInvoice } from "../../../icons/generated/BusinessIcons";
 import { cssColor } from "@stenajs-webui/theme";
+import {
+  stenaLighthouseXl,
+  stenaTripFerryXl,
+} from "../../../icons/generated/XlIcons";
+import { MediumIcon, XlIcon } from "../../../icons/IconSizes";
 
 export default {
   title: "elements/CircledIcon",
@@ -23,46 +27,81 @@ export default {
 };
 
 export const Demo = () => {
-  const sizes = ["medium", "small", "xl"] as const;
+  const normalIcons = [stenaCopyDocument];
+  const xlIcons = [stenaLighthouseXl, stenaTripFerryXl];
 
   return (
     <Column gap={4}>
-      {sizes.map((size) => (
-        <Column gap={2}>
-          <Text>{size}</Text>
-
-          <Row gap={2}>
-            <Column gap={2} spacing={2} indent={2}>
-              {size === "xl" ? (
-                <CircledIcon icon={stenaLighthouseXl} size={size} />
-              ) : (
-                <CircledIcon icon={stenaCopyDocument} size={size} />
-              )}
-            </Column>
-
-            <Column
-              background={cssColor("--lhds-color-ui-200")}
-              indent={2}
-              spacing={2}
-            >
-              {size === "xl" ? (
-                <CircledIcon
-                  icon={stenaLighthouseXl}
-                  size={size}
-                  backgroundColor={"--lhds-color-ui-50"}
-                />
-              ) : (
-                <CircledIcon
-                  icon={stenaCopyDocument}
-                  size={size}
-                  backgroundColor={"--lhds-color-ui-50"}
-                />
-              )}
-            </Column>
+      <Column gap={2}>
+        <Text>Small</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {normalIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"small"} />
+            ))}
           </Row>
-        </Column>
-      ))}
+        </Row>
+      </Column>
+
+      <Column gap={2}>
+        <Text>Medium</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {normalIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"medium"} />
+            ))}
+          </Row>
+        </Row>
+      </Column>
+
+      <Column gap={2}>
+        <Text>XL</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {xlIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"xl"} />
+            ))}
+          </Row>
+        </Row>
+      </Column>
     </Column>
+  );
+};
+
+const DemoRow: React.FC<
+  | { icon: XlIcon; iconSize: "xl" }
+  | { icon: MediumIcon; iconSize: "medium" | "small" }
+> = ({ icon, iconSize }) => {
+  return (
+    <Row>
+      {iconSize === "xl" ? (
+        <>
+          <Column indent={2} spacing={2}>
+            <CircledIcon icon={icon} size={iconSize} />
+          </Column>
+          <Column
+            indent={2}
+            spacing={2}
+            background={cssColor("--lhds-color-ui-200")}
+          >
+            <CircledIcon icon={icon} size={iconSize} variant={"whiteBg"} />
+          </Column>
+        </>
+      ) : (
+        <>
+          <Column indent={2} spacing={2}>
+            <CircledIcon icon={icon} size={iconSize} />
+          </Column>
+          <Column
+            background={cssColor("--lhds-color-ui-200")}
+            indent={2}
+            spacing={2}
+          >
+            <CircledIcon icon={icon} size={iconSize} variant={"whiteBg"} />
+          </Column>
+        </>
+      )}
+    </Row>
   );
 };
 
