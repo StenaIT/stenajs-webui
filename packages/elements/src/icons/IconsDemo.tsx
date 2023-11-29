@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Box, Column, Row, Txt } from "@stenajs-webui/core";
@@ -13,7 +13,13 @@ import { Banner } from "../components/ui/banners/banner/Banner";
 
 export const IconDemoList: React.FC<{
   icons: Record<string, IconDefinition>;
-}> = ({ icons }) => {
+  renderIconDemo?: (selectedIcon: IconDefinition) => ReactNode;
+  iconSize?: number;
+}> = ({
+  icons,
+  renderIconDemo = (selectedIcon) => <IconDemo icon={selectedIcon} />,
+  iconSize = 24,
+}) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
   const iconNames = Object.keys(icons).concat().sort();
   return (
@@ -56,7 +62,7 @@ export const IconDemoList: React.FC<{
                 setSelectedIcon(icons[iconName]);
               }}
             >
-              <Icon key={iconName} icon={icons[iconName]} size={24} />
+              <Icon key={iconName} icon={icons[iconName]} size={iconSize} />
               <Txt
                 size={"small"}
                 wordBreak={"break-word"}
@@ -68,7 +74,7 @@ export const IconDemoList: React.FC<{
           );
         })}
       </Box>
-      <IconDemo icon={selectedIcon} />
+      {renderIconDemo(selectedIcon)}
     </Box>
   );
 };
@@ -142,5 +148,51 @@ export const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
         )}
       </Column>
     </Row>
+  );
+};
+
+export const XlIconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
+  const sizes = [60, 80];
+  const colors = [
+    cssColor("--lhds-color-blue-600"),
+    cssColor("--lhds-color-ui-800"),
+    cssColor("--lhds-color-red-600"),
+    cssColor("--lhds-color-green-600"),
+  ];
+
+  return (
+    <Column>
+      <Row>
+        {sizes.map((size) => (
+          <Box
+            key={size}
+            indent
+            width={"100px"}
+            height={"100px"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Txt>{size}</Txt>
+          </Box>
+        ))}
+      </Row>
+
+      {colors.map((color) => (
+        <Row key={color}>
+          {sizes.map((size) => (
+            <Box
+              key={size}
+              indent
+              width={"100px"}
+              height={"100px"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Icon icon={icon} color={color} size={size} />
+            </Box>
+          ))}
+        </Row>
+      ))}
+    </Column>
   );
 };

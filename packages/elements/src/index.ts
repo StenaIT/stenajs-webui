@@ -7,6 +7,7 @@ export * from "./icons/generated/CommonIcons";
 export * from "./icons/generated/PassengerTypeIcons";
 export * from "./icons/generated/VehicleTypeIcons";
 export * from "./icons/generated/UserIcons";
+export * from "./icons/generated/XlIcons";
 export * from "./icons/IconSizes";
 export * from "./components/ui/banners/banner/Banner";
 export * from "./components/ui/banners/result-list-banner/ResultListBanner";
