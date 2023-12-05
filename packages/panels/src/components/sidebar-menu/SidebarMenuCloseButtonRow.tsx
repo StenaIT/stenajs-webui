@@ -22,7 +22,7 @@ export const SidebarMenuCloseButtonRow: React.FC<
         minHeight={"48px"}
       >
         <CloseButton onClick={onClick} />
-        <img src={stenaFlag} className={styles.stenaFlag} />
+        <img src={stenaFlag} alt={""} className={styles.stenaFlag} />
       </Row>
     </Column>
   );
