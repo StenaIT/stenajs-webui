@@ -1,15 +1,17 @@
 import * as React from "react";
 import { useMemo } from "react";
 import SelectComponent, {
+  ClearIndicatorProps,
   mergeStyles,
   Props,
+  GroupBase,
   SelectComponentsConfig,
 } from "react-select";
 import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { GroupBase } from "react-select/dist/declarations/src/types";
+import { stenaTimes, TextInputButton } from "@stenajs-webui/elements";
 
 export interface MultiSelectProps<TOption = { label: string; value: string }>
   extends Props<TOption, true> {
@@ -27,6 +29,7 @@ export function MultiSelect<TOption>({
   variant = "standard",
   styles,
   isMulti,
+  components,
   ...selectProps
 }: MultiSelectProps<TOption>) {
   const selectStyles = useMemo(() => {
@@ -35,7 +38,24 @@ export function MultiSelect<TOption>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
+  const ClearIndicator = (
+    props: ClearIndicatorProps<TOption, true, GroupBase<TOption>>
+  ) => {
+    return (
+      <TextInputButton
+        variant={"error"}
+        icon={stenaTimes}
+        onClick={props.clearValue}
+      />
+    );
+  };
+
   return (
-    <SelectComponent styles={selectStyles} {...selectProps} isMulti={true} />
+    <SelectComponent
+      styles={selectStyles}
+      components={{ ...components, ClearIndicator }}
+      {...selectProps}
+      isMulti={true}
+    />
   );
 }

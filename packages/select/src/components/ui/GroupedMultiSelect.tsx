@@ -1,15 +1,9 @@
 import { Row, Space, Text, TextSize } from "@stenajs-webui/core";
-import {
-  Icon,
-  stenaCheck,
-  stenaTimes,
-  TextInputButton,
-} from "@stenajs-webui/elements";
+import { Icon, stenaCheck } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
   ActionMeta,
-  ClearIndicatorProps,
   components,
   GroupBase,
   MultiValueProps,
@@ -135,22 +129,6 @@ export function GroupedMultiSelect<TData>({
     );
   };
 
-  const ClearIndicator = (
-    props: ClearIndicatorProps<
-      InternalDropdownOption<TData>,
-      true,
-      GroupBase<InternalDropdownOption<TData>>
-    >
-  ) => {
-    return (
-      <TextInputButton
-        variant={"error"}
-        icon={stenaTimes}
-        onClick={props.clearValue}
-      />
-    );
-  };
-
   const MultiValue = (
     props: MultiValueProps<
       InternalDropdownOption<TData>,
@@ -177,7 +155,6 @@ export function GroupedMultiSelect<TData>({
       hideSelectedOptions={false}
       components={{
         ...selectProps.components,
-        ClearIndicator,
         MultiValue,
         Option,
       }}
