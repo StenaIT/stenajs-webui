@@ -154,31 +154,31 @@ export const Variants = () => (
       <Column>
         <Text size={"large"}>{label}</Text>
         <Space />
-        {(["normal", "danger", "success"] as Array<ButtonVariant>).map(
-          (variant) => (
-            <Column>
-              <Text size={"large"}>{variant}</Text>
-              <Space />
-              <Row alignItems={"flex-start"} indent spacing>
-                <Indent>
-                  <ButtonVariant
-                    variant={variant}
-                    label={"Submit"}
-                    leftIcon={stenaCheck}
-                  />
-                </Indent>
-                <Indent>
-                  <ButtonVariant
-                    variant={variant}
-                    label={"Disabled"}
-                    leftIcon={stenaCheck}
-                    disabled
-                  />
-                </Indent>
-              </Row>
-            </Column>
-          )
-        )}
+        {(
+          ["normal", "danger", "success", "passive"] as Array<ButtonVariant>
+        ).map((variant) => (
+          <Column>
+            <Text size={"large"}>{variant}</Text>
+            <Space />
+            <Row alignItems={"flex-start"} indent spacing>
+              <Indent>
+                <ButtonVariant
+                  variant={variant}
+                  label={"Submit"}
+                  leftIcon={stenaCheck}
+                />
+              </Indent>
+              <Indent>
+                <ButtonVariant
+                  variant={variant}
+                  label={"Disabled"}
+                  leftIcon={stenaCheck}
+                  disabled
+                />
+              </Indent>
+            </Row>
+          </Column>
+        ))}
         <Space num={8} />
       </Column>
     ))}

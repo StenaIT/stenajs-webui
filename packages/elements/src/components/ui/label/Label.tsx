@@ -30,7 +30,7 @@ export const Label: React.FC<LabelProps> = React.memo(
       <Text
         color={cssColor("--lhds-color-ui-800")}
         variant={"caption"}
-        size={"small"}
+        size={"smaller"}
       >
         {extraInfoLabel}
       </Text>
@@ -40,12 +40,7 @@ export const Label: React.FC<LabelProps> = React.memo(
       <label htmlFor={htmlFor} className={labelClassName}>
         <Box {...boxProps} row={row} gap>
           <Row alignItems={"center"} width={textWidth}>
-            <Text
-              color={cssColor("--tjara")}
-              variant={"bold"}
-              size={"small"}
-              whiteSpace={"nowrap"}
-            >
+            <Text variant={"bold"} size={"smaller"} whiteSpace={"nowrap"}>
               {text}
             </Text>
             {!row && <Indent num={1.5}>{infoLabel}</Indent>}
