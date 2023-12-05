@@ -10,7 +10,7 @@ import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { stenaTimes, TextInputButton } from "@stenajs-webui/elements";
+import { CloseButton } from "@stenajs-webui/elements";
 
 export interface SelectProps<T = { label: string; value: string }>
   extends Props<T, false> {
@@ -33,15 +33,7 @@ export function Select<T>({
 
   const ClearIndicator = (
     props: ClearIndicatorProps<T, false, GroupBase<T>>
-  ) => {
-    return (
-      <TextInputButton
-        variant={"error"}
-        icon={stenaTimes}
-        onClick={props.clearValue}
-      />
-    );
-  };
+  ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
 
   return (
     <SelectComponent

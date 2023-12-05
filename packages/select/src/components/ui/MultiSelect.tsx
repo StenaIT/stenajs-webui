@@ -2,16 +2,16 @@ import * as React from "react";
 import { useMemo } from "react";
 import SelectComponent, {
   ClearIndicatorProps,
+  GroupBase,
   mergeStyles,
   Props,
-  GroupBase,
   SelectComponentsConfig,
 } from "react-select";
 import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { stenaTimes, TextInputButton } from "@stenajs-webui/elements";
+import { CloseButton } from "@stenajs-webui/elements";
 
 export interface MultiSelectProps<TOption = { label: string; value: string }>
   extends Props<TOption, true> {
@@ -40,15 +40,7 @@ export function MultiSelect<TOption>({
 
   const ClearIndicator = (
     props: ClearIndicatorProps<TOption, true, GroupBase<TOption>>
-  ) => {
-    return (
-      <TextInputButton
-        variant={"error"}
-        icon={stenaTimes}
-        onClick={props.clearValue}
-      />
-    );
-  };
+  ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
 
   return (
     <SelectComponent
