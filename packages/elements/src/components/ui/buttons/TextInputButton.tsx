@@ -56,6 +56,7 @@ export const TextInputButton = forwardRef<
       {...buttonProps}
       ref={ref}
       className={cx(
+        baseButtonStyles.button,
         styles.textInputButton,
         baseButtonStyles[size],
         styles[variant],

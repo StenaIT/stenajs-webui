@@ -1,8 +1,7 @@
 import * as React from "react";
 import styles from "./SidebarMenuCloseButtonRow.module.css";
 import { ButtonElementProps, Column, Row, Space } from "@stenajs-webui/core";
-import { CloseButton } from "@stenajs-webui/elements";
-import { ReactComponent as StenaFlag } from "./StenaFlag.svg";
+import { CloseButton, StenaFlag } from "@stenajs-webui/elements";
 
 import { cssColor } from "@stenajs-webui/theme";
 

@@ -1,3 +1,4 @@
+export { ReactComponent as StenaFlag } from "./icons/StenaFlag.svg";
 export * from "./icons/generated/ArrowIcons";
 export * from "./icons/generated/BusinessIcons";
 export * from "./icons/generated/CommonIcons";
