@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./SidebarMenuCloseButtonRow.module.css";
 import { ButtonElementProps, Column, Row, Space } from "@stenajs-webui/core";
 import { CloseButton } from "@stenajs-webui/elements";
-import stenaFlag from "@stenajs-webui/elements/src/icons/StenaFlag.svg";
+import { ReactComponent as StenaFlag } from "./StenaFlag.svg";
 
 import { cssColor } from "@stenajs-webui/theme";
 
@@ -22,7 +22,7 @@ export const SidebarMenuCloseButtonRow: React.FC<
         minHeight={"48px"}
       >
         <CloseButton onClick={onClick} />
-        <img src={stenaFlag} alt={""} className={styles.stenaFlag} />
+        <StenaFlag className={styles.stenaFlag} />
       </Row>
     </Column>
   );
