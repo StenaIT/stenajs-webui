@@ -2,7 +2,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ReactNode } from "react";
 
 export type ButtonSize = "medium" | "small" | "large" | "larger";
-export type ButtonVariant = "normal" | "danger" | "success";
+export type ButtonVariant = "normal" | "danger" | "success" | "passive";
 
 export interface CommonButtonProps {
   /** The text on the button. */

@@ -228,12 +228,20 @@ export const createStylesFromTheme = <
     ...base,
     padding: "0 8px",
   }),
-  dropdownIndicator: (base, { isFocused }) => ({
+  dropdownIndicator: (base, { isFocused, isDisabled }) => ({
     ...base,
     padding: "5px",
-    color: isFocused ? arrowColor.focused.standard : arrowColor.closed.standard,
+    color: isDisabled
+      ? arrowColor.disabled
+      : isFocused
+      ? arrowColor.focused.standard
+      : arrowColor.closed.standard,
     "&:hover": {
-      color: isFocused ? arrowColor.focused.hover : arrowColor.closed.hover,
+      color: isDisabled
+        ? arrowColor.disabled
+        : isFocused
+        ? arrowColor.focused.hover
+        : arrowColor.closed.hover,
     },
     svg: {
       width: 14,

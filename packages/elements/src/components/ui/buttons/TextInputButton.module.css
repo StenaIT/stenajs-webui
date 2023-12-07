@@ -1,6 +1,4 @@
-.textInputButton {
-  composes: button from "./common/BaseButton.module.css";
-
+.textInputButton.textInputButton {
   --swui-button-height-small: 20px;
   --swui-button-height-medium: 30px;
   --swui-button-height-large: 42px;

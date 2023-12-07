@@ -1,10 +1,16 @@
 import * as React from "react";
 import { useMemo } from "react";
-import SelectComponent, { mergeStyles, Props } from "react-select";
+import SelectComponent, {
+  ClearIndicatorProps,
+  GroupBase,
+  mergeStyles,
+  Props,
+} from "react-select";
 import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
+import { CloseButton } from "@stenajs-webui/elements";
 
 export interface SelectProps<T = { label: string; value: string }>
   extends Props<T, false> {
@@ -16,6 +22,7 @@ export function Select<T>({
   variant = "standard",
   styles,
   isMulti,
+  components,
   ...selectProps
 }: SelectProps<T>) {
   const selectStyles = useMemo(() => {
@@ -24,7 +31,16 @@ export function Select<T>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
+  const ClearIndicator = (
+    props: ClearIndicatorProps<T, false, GroupBase<T>>
+  ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
+
   return (
-    <SelectComponent styles={selectStyles} {...selectProps} isMulti={false} />
+    <SelectComponent
+      styles={selectStyles}
+      components={{ ...components, ClearIndicator }}
+      {...selectProps}
+      isMulti={false}
+    />
   );
 }

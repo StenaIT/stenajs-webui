@@ -14,7 +14,12 @@ import {
 } from "../../../icons/generated/CommonIcons";
 import { Icon } from "../icon/Icon";
 
-export type TextInputButtonVariant = "normal" | "error" | "warning" | "success";
+export type TextInputButtonVariant =
+  | "normal"
+  | "error"
+  | "warning"
+  | "success"
+  | "passive";
 export type TextInputButtonSize = "medium" | "small";
 
 export interface TextInputButtonProps extends ButtonElementProps {
@@ -29,6 +34,7 @@ const variantToIcon: Record<TextInputButtonVariant, MediumIcon> = {
   error: stenaExclamationTriangle,
   warning: stenaExclamationTriangle,
   success: stenaCheck,
+  passive: stenaInfoCircle,
 };
 
 export const TextInputButton = forwardRef<
@@ -50,6 +56,7 @@ export const TextInputButton = forwardRef<
       {...buttonProps}
       ref={ref}
       className={cx(
+        baseButtonStyles.button,
         styles.textInputButton,
         baseButtonStyles[size],
         styles[variant],
