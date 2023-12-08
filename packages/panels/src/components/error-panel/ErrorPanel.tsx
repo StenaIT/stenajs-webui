@@ -9,6 +9,7 @@ import {
 import {
   Card,
   CardBody,
+  CardProps,
   CircledIcon,
   stenaTripFerryXl,
   XlIcon,
@@ -16,7 +17,7 @@ import {
 import * as React from "react";
 import { PropsWithChildren, ReactNode } from "react";
 
-export interface ErrorPanelProps extends PropsWithChildren {
+export interface ErrorPanelProps extends CardProps, PropsWithChildren {
   text?: string;
   heading?: string;
   buttons?: ReactNode;
@@ -31,12 +32,13 @@ export const ErrorPanel: React.FC<ErrorPanelProps> = ({
   buttons,
   icon = stenaTripFerryXl,
   headingLevel = "h3",
+  ...cardProps
 }) => {
   const activeText =
     !text && !heading ? "Something unexpected happened." : text;
 
   return (
-    <Card>
+    <Card {...cardProps}>
       <CardBody>
         <Column spacing={1} gap={3} alignItems={"center"}>
           <Column alignItems={"center"}>
