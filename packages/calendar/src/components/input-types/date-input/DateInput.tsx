@@ -1,9 +1,6 @@
 import { Box } from "@stenajs-webui/core";
-import {
-  TextInput,
-  TextInputButton,
-  TextInputProps,
-} from "@stenajs-webui/forms";
+import { stenaCalendar, TextInputButton } from "@stenajs-webui/elements";
+import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
 import * as React from "react";
@@ -19,7 +16,6 @@ import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
-import { stenaCalendar } from "@stenajs-webui/elements";
 
 export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */

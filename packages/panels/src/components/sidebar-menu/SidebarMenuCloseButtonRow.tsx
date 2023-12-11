@@ -1,7 +1,8 @@
 import * as React from "react";
 import styles from "./SidebarMenuCloseButtonRow.module.css";
 import { ButtonElementProps, Column, Row, Space } from "@stenajs-webui/core";
-import { FlatButton, StenaFlag, stenaTimes } from "@stenajs-webui/elements";
+import { CloseButton, StenaFlag } from "@stenajs-webui/elements";
+
 import { cssColor } from "@stenajs-webui/theme";
 
 export interface SidebarMenuCloseButtonRowProps extends ButtonElementProps {}
@@ -19,11 +20,7 @@ export const SidebarMenuCloseButtonRow: React.FC<
         indent={1}
         minHeight={"48px"}
       >
-        <FlatButton
-          leftIcon={stenaTimes}
-          onClick={onClick}
-          variant={"danger"}
-        />
+        <CloseButton onClick={onClick} />
         <StenaFlag className={styles.stenaFlag} />
       </Row>
     </Column>

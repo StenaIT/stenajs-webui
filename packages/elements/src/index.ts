@@ -1,12 +1,12 @@
-import { ReactComponent as StenaFlagSvg } from "./icons/StenaFlag.svg";
-
-export const StenaFlag = StenaFlagSvg;
+export { ReactComponent as StenaFlag } from "./icons/StenaFlag.svg";
 export * from "./icons/generated/ArrowIcons";
 export * from "./icons/generated/BusinessIcons";
 export * from "./icons/generated/CommonIcons";
 export * from "./icons/generated/PassengerTypeIcons";
 export * from "./icons/generated/VehicleTypeIcons";
 export * from "./icons/generated/UserIcons";
+export * from "./icons/generated/XlIcons";
+export * from "./icons/IconSizes";
 export * from "./components/ui/banners/banner/Banner";
 export * from "./components/ui/banners/result-list-banner/ResultListBanner";
 export * from "./components/ui/banners/result-list-banner/hooks/UseResultListBannerState";
@@ -18,9 +18,12 @@ export * from "./components/ui/bread-crumbs/BreadCrumbs";
 export * from "./components/ui/bread-crumbs/Crumb";
 export * from "./components/ui/buttons/FlatButton";
 export * from "./components/ui/buttons/PrimaryButton";
+export * from "./components/ui/buttons/CloseButton";
 export * from "./components/ui/buttons/SecondaryButton";
 export * from "./components/ui/buttons/common/ButtonCommon";
 export * from "./components/ui/buttons/common/ButtonContent";
+export * from "./components/ui/buttons/common/BaseButton";
+export * from "./components/ui/buttons/TextInputButton";
 export * from "./components/ui/buttons/menu-button/MenuButton";
 export * from "./components/ui/buttons/menu-button/ContentMenuButton";
 export * from "./components/ui/buttons/menu-button/IconMenuButton";

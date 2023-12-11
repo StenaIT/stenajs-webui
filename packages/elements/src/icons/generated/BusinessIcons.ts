@@ -1,6 +1,6 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { MediumIcon } from "../IconSizes";
 
-export const stenaBusinessAgreement: IconDefinition = {
+export const stenaBusinessAgreement: MediumIcon = {
   icon: [
     24,
     24,
@@ -10,9 +10,10 @@ export const stenaBusinessAgreement: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessArticle: IconDefinition = {
+export const stenaBusinessArticle: MediumIcon = {
   icon: [
     24,
     24,
@@ -22,21 +23,23 @@ export const stenaBusinessArticle: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessCard: IconDefinition = {
+export const stenaBusinessCard: MediumIcon = {
   icon: [
     24,
     24,
     [],
     "",
-    "M21 3C22.66 3 24 4.34 24 6L24 18C24 19.66 22.66 21 21 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM2 11L2 18C2 18.55 2.45 19 3 19L21 19C21.55 19 22 18.55 22 18L22 11 2 11ZM2 9L22 9 22 6C22 5.45 21.55 5 21 5L3 5C2.45 5 2 5.45 2 6L2 9Z",
+    "M21 3C22.66 3 24 4.34 24 6L24 18C24 19.66 22.66 21 21 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM22 10L2 10 2 18C2 18.55 2.45 19 3 19L21 19C21.55 19 22 18.55 22 18L22 10ZM19 15C19.55 15 20 15.45 20 16 20 16.55 19.55 17 19 17L16 17C15.45 17 15 16.55 15 16 15 15.45 15.45 15 16 15L19 15ZM21 5L3 5C2.45 5 2 5.45 2 6L2 8 22 8 22 6C22 5.45 21.55 5 21 5Z",
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessClaim: IconDefinition = {
+export const stenaBusinessClaim: MediumIcon = {
   icon: [
     24,
     24,
@@ -46,9 +49,10 @@ export const stenaBusinessClaim: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessInvoice: IconDefinition = {
+export const stenaBusinessInvoice: MediumIcon = {
   icon: [
     24,
     24,
@@ -58,9 +62,10 @@ export const stenaBusinessInvoice: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessNslh: IconDefinition = {
+export const stenaBusinessNslh: MediumIcon = {
   icon: [
     24,
     24,
@@ -70,9 +75,10 @@ export const stenaBusinessNslh: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaBusinessSignature: IconDefinition = {
+export const stenaBusinessSignature: MediumIcon = {
   icon: [
     24,
     24,
@@ -82,45 +88,49 @@ export const stenaBusinessSignature: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePaid: IconDefinition = {
+export const stenaFinancePaid: MediumIcon = {
   icon: [
     24,
     24,
     [],
     "",
-    "M24 12C24 12.55 23.55 13 23 13 22.45 13 22 12.55 22 12L22 11 2 11 2 18C2 18.55 2.45 19 3 19L11 19C11.55 19 12 19.45 12 20 12 20.55 11.55 21 11 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3C22.66 3 24 4.34 24 6L24 12ZM21 5L3 5C2.45 5 2 5.45 2 6L2 9 22 9 22 6C22 5.45 21.55 5 21 5Z M23.1 15.29C23.49 15.68 23.49 16.32 23.1 16.71L17.98 21.83C17.77 22.04 17.48 22.14 17.2 22.12 16.92 22.14 16.63 22.04 16.41 21.83L13.29 18.71C12.9 18.32 12.9 17.68 13.29 17.29 13.68 16.9 14.32 16.9 14.71 17.29L17.2 19.78 21.69 15.29C22.08 14.9 22.71 14.9 23.1 15.29Z",
+    "M23.68 14.32C24.11 14.76 24.11 15.46 23.68 15.89L17.01 22.68C16.78 22.91 16.47 23.02 16.16 23 15.86 23.02 15.54 22.91 15.31 22.68L10.82 18.11C10.39 17.68 10.39 16.97 10.82 16.54 11.24 16.11 11.93 16.11 12.36 16.54L16.16 20.41 22.14 14.32C22.57 13.89 23.26 13.89 23.68 14.32ZM21 3C22.66 3 24 4.34 24 6L24 11C24 11.55 23.55 12 23 12 22.45 12 22 11.55 22 11L22 10 2 10 2 18C2 18.55 2.45 19 3 19L8 19C8.55 19 9 19.45 9 20 9 20.55 8.55 21 8 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM21 5L3 5C2.45 5 2 5.45 2 6L2 8 22 8 22 6C22 5.45 21.55 5 21 5Z",
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePayPartially: IconDefinition = {
+export const stenaFinancePayPartially: MediumIcon = {
   icon: [
     24,
     24,
     [],
     "",
-    "M19 13C21.76 13 24 15.24 24 18 24 20.76 21.76 23 19 23 18.45 23 18 22.55 18 22 18 21.49 18.39 21.06 18.88 21.01L19 21C20.66 21 22 19.66 22 18 22 16.34 20.66 15 19 15 17.34 15 16 16.34 16 18 16 18.55 15.55 19 15 19 14.45 19 14 18.55 14 18 14 15.24 16.24 13 19 13ZM21 3C22.66 3 24 4.34 24 6L24 12C24 12.55 23.55 13 23 13 22.45 13 22 12.55 22 12L22 11 2 11 2 18C2 18.55 2.45 19 3 19L12 19C12.55 19 13 19.45 13 20 13 20.55 12.55 21 12 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM21 5L3 5C2.45 5 2 5.45 2 6L2 9 22 9 22 6C22 5.45 21.55 5 21 5Z",
+    "M18 12C21.31 12 24 14.69 24 18 24 21.31 21.31 24 18 24 17.45 24 17 23.55 17 23 17 22.45 17.45 22 18 22 20.21 22 22 20.21 22 18 22 15.79 20.21 14 18 14 15.79 14 14 15.79 14 18 14 18.55 13.55 19 13 19 12.45 19 12 18.55 12 18 12 14.69 14.69 12 18 12ZM21 3C22.66 3 24 4.34 24 6L24 11C24 11.55 23.55 12 23 12 22.45 12 22 11.55 22 11L22 10 2 10 2 18C2 18.55 2.45 19 3 19L9 19C9.55 19 10 19.45 10 20 10 20.55 9.55 21 9 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM21 5L3 5C2.45 5 2 5.45 2 6L2 8 22 8 22 6C22 5.45 21.55 5 21 5Z",
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinancePay: IconDefinition = {
+export const stenaFinancePay: MediumIcon = {
   icon: [
     24,
     24,
     [],
     "",
-    "M19 13C19.55 13 20 13.45 20 14L20 17 23 17C23.55 17 24 17.45 24 18 24 18.55 23.55 19 23 19L20 19 20 22C20 22.55 19.55 23 19 23 18.45 23 18 22.55 18 22L18 19 15 19C14.45 19 14 18.55 14 18 14 17.45 14.45 17 15 17L18 17 18 14C18 13.45 18.45 13 19 13ZM24 12C24 12.55 23.55 13 23 13 22.45 13 22 12.55 22 12L22 11 2 11 2 18C2 18.55 2.45 19 3 19L12 19C12.55 19 13 19.45 13 20 13 20.55 12.55 21 12 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3C22.66 3 24 4.34 24 6L24 12ZM21 5L3 5C2.45 5 2 5.45 2 6L2 9 22 9 22 6C22 5.45 21.55 5 21 5Z",
+    "M18 12C18.55 12 19 12.45 19 13L19 17 23 17C23.55 17 24 17.45 24 18 24 18.55 23.55 19 23 19L19 19 19 23C19 23.55 18.55 24 18 24 17.45 24 17 23.55 17 23L17 19 13 19C12.45 19 12 18.55 12 18 12 17.45 12.45 17 13 17L17 17 17 13C17 12.45 17.45 12 18 12ZM24 12C24 12.55 23.55 13 23 13 22.45 13 22 12.55 22 12L22 10 2 10 2 18C2 18.55 2.45 19 3 19L9 19C9.55 19 10 19.45 10 20 10 20.55 9.55 21 9 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3C22.66 3 24 4.34 24 6L24 12ZM21 5L3 5C2.45 5 2 5.45 2 6L2 8 22 8 22 6C22 5.45 21.55 5 21 5Z",
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceRaise: IconDefinition = {
+export const stenaFinanceRaise: MediumIcon = {
   icon: [
     24,
     24,
@@ -130,9 +140,10 @@ export const stenaFinanceRaise: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceRebate: IconDefinition = {
+export const stenaFinanceRebate: MediumIcon = {
   icon: [
     24,
     24,
@@ -142,9 +153,10 @@ export const stenaFinanceRebate: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceUnpaidAlt: IconDefinition = {
+export const stenaFinanceUnpaidAlt: MediumIcon = {
   icon: [
     24,
     24,
@@ -154,21 +166,23 @@ export const stenaFinanceUnpaidAlt: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceUnpaid: IconDefinition = {
+export const stenaFinanceUnpaid: MediumIcon = {
   icon: [
     24,
     24,
     [],
     "",
-    "M16.59 15.17L19 17.59 21.41 15.17C21.8 14.78 22.44 14.78 22.83 15.17 23.22 15.56 23.22 16.2 22.83 16.59L20.41 19 22.83 21.41C23.22 21.8 23.22 22.44 22.83 22.83 22.44 23.22 21.8 23.22 21.41 22.83L19 20.41 16.59 22.83C16.2 23.22 15.56 23.22 15.17 22.83 14.78 22.44 14.78 21.8 15.17 21.41L17.59 19 15.17 16.59C14.78 16.2 14.78 15.56 15.17 15.17 15.56 14.78 16.2 14.78 16.59 15.17ZM21 3C22.66 3 24 4.34 24 6L24 11 22 11 22 6C22 5.45 21.55 5 21 5L3 5C2.45 5 2 5.45 2 6L2 18C2 18.55 2.45 19 3 19L12.2 19 12.2 19.02C12.66 19.11 13 19.52 13 20 13 20.55 12.55 21 12 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3Z M2 9H22V11H2V9z M22 12L22 11A1 1 0 0 1 23 10V10A1 1 0 0 1 24 11L24 12A1 1 0 0 1 23 13V13A1 1 0 0 1 22 12z",
+    "M15.59 14.17L19 17.59 22.41 14.17C22.8 13.78 23.44 13.78 23.83 14.17 24.22 14.56 24.22 15.2 23.83 15.59L20.41 19 23.83 22.41C24.22 22.8 24.22 23.44 23.83 23.83 23.44 24.22 22.8 24.22 22.41 23.83L19 20.41 15.59 23.83C15.2 24.22 14.56 24.22 14.17 23.83 13.78 23.44 13.78 22.8 14.17 22.41L17.59 19 14.17 15.59C13.78 15.2 13.78 14.56 14.17 14.17 14.56 13.78 15.2 13.78 15.59 14.17ZM21 3C22.66 3 24 4.34 24 6L24 11C24 11.55 23.55 12 23 12 22.45 12 22 11.55 22 11L22 10 2 10 2 18C2 18.55 2.45 19 3 19L10.2 19 10.2 19.02C10.66 19.11 11 19.52 11 20 11 20.55 10.55 21 10 21L3 21C1.34 21 0 19.66 0 18L0 6C0 4.34 1.34 3 3 3L21 3ZM21 5L3 5C2.45 5 2 5.45 2 6L2 8 22 8 22 6C22 5.45 21.55 5 21 5Z",
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };
 
-export const stenaFinanceWallet: IconDefinition = {
+export const stenaFinanceWallet: MediumIcon = {
   icon: [
     24,
     24,
@@ -178,4 +192,5 @@ export const stenaFinanceWallet: IconDefinition = {
   ],
   iconName: "random",
   prefix: "fal",
+  size: "medium",
 };

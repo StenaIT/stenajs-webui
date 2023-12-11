@@ -8,7 +8,7 @@ import {
   stenaAngleLeftDouble,
   stenaHamburger,
 } from "@stenajs-webui/elements";
-import { SidebarMenuLink } from "../items/SidebarMenuLink";
+import { RailMenuButton } from "../items/RailMenuButton";
 
 interface SidebarRailMenuProps {
   closeButtonVisible?: boolean;
@@ -49,8 +49,8 @@ export const SidebarRailMenu: React.FC<SidebarRailMenuProps> = ({
             <RailContext.Provider value={true}>
               {bottomItems}
               {closeButtonVisible && (
-                <SidebarMenuLink
-                  leftIcon={stenaAngleLeftDouble}
+                <RailMenuButton
+                  icon={stenaAngleLeftDouble}
                   label={closeButtonTitle}
                   onClick={onClickCloseButton}
                 />

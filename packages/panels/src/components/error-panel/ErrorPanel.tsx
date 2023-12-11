@@ -1,17 +1,61 @@
-import { Box } from "@stenajs-webui/core";
-import { Banner } from "@stenajs-webui/elements";
+import {
+  Box,
+  Column,
+  Heading,
+  HeadingProps,
+  Space,
+  Text,
+} from "@stenajs-webui/core";
+import {
+  Card,
+  CardBody,
+  CardProps,
+  CircledIcon,
+  stenaTripFerryXl,
+  XlIcon,
+} from "@stenajs-webui/elements";
 import * as React from "react";
+import { PropsWithChildren, ReactNode } from "react";
 
-export interface ErrorPanelProps {
+export interface ErrorPanelProps extends CardProps, PropsWithChildren {
   text?: string;
+  heading?: string;
+  buttons?: ReactNode;
+  icon?: XlIcon;
+  headingLevel?: HeadingProps["as"];
 }
 
 export const ErrorPanel: React.FC<ErrorPanelProps> = ({
-  text = "Something unexpected happened.",
+  text,
+  heading,
+  children,
+  buttons,
+  icon = stenaTripFerryXl,
+  headingLevel = "h3",
+  ...cardProps
 }) => {
+  const activeText =
+    !text && !heading ? "Something unexpected happened." : text;
+
   return (
-    <Box justifyContent={"center"} alignItems={"center"}>
-      <Banner variant={"error"} headerText={text} />
-    </Box>
+    <Card {...cardProps}>
+      <CardBody>
+        <Column spacing={1} gap={3} alignItems={"center"}>
+          <Column alignItems={"center"}>
+            <Space num={1} />
+            <CircledIcon icon={icon} size={"xl"} />
+          </Column>
+          {heading && <Heading as={headingLevel}>{heading}</Heading>}
+          {activeText && <Text>{activeText}</Text>}
+          {children}
+          {buttons && (
+            <Box>
+              <Space num={2} />
+              {buttons}
+            </Box>
+          )}
+        </Column>
+      </CardBody>
+    </Card>
   );
 };

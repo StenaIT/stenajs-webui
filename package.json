@@ -25,7 +25,7 @@
     "check-builds": "node scripts/check-builds.js",
     "check-imports": "node scripts/check-imports.js",
     "check-prettier": "prettier -l 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
-    "prettier": "prettier --write 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
+    "prettier": "prettier --write 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config --cache",
     "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
     "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
   },
@@ -63,7 +63,7 @@
     "@typescript-eslint/parser": "^4.4.0",
     "@vitejs/plugin-react": "^4.0.4",
     "auto": "^10.32.6",
-    "autoprefixer": "^9.7.2",
+    "autoprefixer": "^10.4.16",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.4.0",
@@ -84,9 +84,8 @@
     "lerna": "^7.3.0",
     "lint-staged": "^12.1.2",
     "path-that-svg": "1.2.4",
-    "postcss-loader": "^4.3.0",
-    "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^7.0.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.3.0",
     "prettier": "2.7.1",
     "react": "^18.2.0",
     "react-docgen-typescript-loader": "^3.1.0",
@@ -132,5 +131,6 @@
     "plugins": [
       "npm"
     ]
-  }
+  },
+  "dependencies": {}
 }

@@ -1,31 +1,13 @@
 .navBarUserButton {
-  /* Theme vars */
-  --swui-nav-bar-user-button-text-color: var(--lhds-color-blue-600);
-  --swui-nav-bar-user-button-background-color: var(--lhds-color-ui-50);
-  --swui-nav-bar-user-button-background-color-hover: var(--lhds-color-ui-100);
-  --swui-nav-bar-user-button-background-color-focus: var(--lhds-color-ui-100);
-  --swui-nav-bar-user-button-background-color-active: var(--lhds-color-ui-200);
+  &:hover {
+    background: var(--lhds-color-ui-100);
+  }
 
-  /* FlatButton overrides */
-  --swui-flat-button-text-color: var(--swui-nav-bar-user-button-text-color);
-  --swui-flat-button-icon-color: var(--swui-nav-bar-user-button-text-color);
-  --swui-flat-button-text-color-active: var(
-    --swui-nav-bar-user-button-text-color
-  );
-  --swui-flat-button-background-color: var(
-    --swui-nav-bar-user-button-background-color
-  );
-  --swui-flat-button-background-color-hover: var(
-    --swui-nav-bar-user-button-background-color-hover
-  );
-  --swui-flat-button-background-color-focus: var(
-    --swui-nav-bar-user-button-background-color-focus
-  );
-  --swui-flat-button-background-color-active: var(
-    --swui-nav-bar-user-button-background-color-active
-  );
+  &:focus-visible {
+    background: var(--lhds-color-ui-200);
+  }
 
-  &.initials {
-    width: 32px;
+  &:active {
+    background: var(--lhds-color-ui-200);
   }
 }

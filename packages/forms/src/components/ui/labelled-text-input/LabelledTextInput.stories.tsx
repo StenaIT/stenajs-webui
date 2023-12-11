@@ -3,7 +3,7 @@ import { LabelledTextInput } from "./LabelledTextInput";
 import { Column, Heading } from "@stenajs-webui/core";
 
 export default {
-  title: "forms/TextInput/LabelledTextInput",
+  title: "forms/LabelledTextInput",
   component: LabelledTextInput,
 };
 

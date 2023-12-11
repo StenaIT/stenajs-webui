@@ -30,7 +30,13 @@ export const Tag: React.FC<TagProps> = ({
 }) => {
   return (
     <div
-      className={cx(styles.tag, styles[variant], styles[size], className)}
+      className={cx(
+        styles.tag,
+        styles[variant],
+        styles[size],
+        icon && styles.withIcon,
+        className
+      )}
       style={style}
       {...getDataProps(rest)}
     >

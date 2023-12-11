@@ -1,7 +1,9 @@
 import { Property } from "csstype";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface SelectTheme {
   arrowColor: {
+    disabled: string;
     focused: {
       standard: string;
       hover: string;
@@ -84,18 +86,19 @@ export interface SelectTheme {
 
 export const defaultSelectTheme: SelectTheme = {
   arrowColor: {
+    disabled: cssColor("--silver-light"),
     focused: {
-      hover: "var(--lhds-color-blue-600)",
-      standard: "var(--lhds-color-blue-600)",
+      hover: cssColor("--lhds-color-blue-600"),
+      standard: cssColor("--lhds-color-blue-600"),
     },
     closed: {
-      hover: "var(--lhds-color-blue-600)",
-      standard: "var(--lhds-color-blue-600)",
+      hover: cssColor("--lhds-color-blue-600"),
+      standard: cssColor("--lhds-color-blue-600"),
     },
   },
   clearButtonColor: {
-    hover: "var(--lhds-color-red-600)",
-    standard: "var(--lhds-color-red-500)",
+    hover: cssColor("--lhds-color-red-600"),
+    standard: cssColor("--lhds-color-red-500"),
   },
   input: {
     backgroundColor: "var(--swui-field-bg-enabled)",
@@ -125,26 +128,26 @@ export const defaultSelectTheme: SelectTheme = {
     fontSize: "var(--swui-font-size-smaller)",
     lineHeight: "var(--swui-line-height-smaller)",
     fontWeight: "var(--swui-font-weight-text-bold)",
-    color: "var(--lhds-color-ui-600)",
+    color: cssColor("--lhds-color-ui-600"),
     letterSpacing: "0.1rem",
   },
   menu: {
-    activeBackgroundColor: "var(--lhds-color-blue-100)",
+    activeBackgroundColor: cssColor("--lhds-color-blue-100"),
     activeTextColor: "var(--swui-field-text-color)",
-    selectedItemActiveBackgroundColor: "var(--lhds-color-blue-500)",
-    selectedItemActiveTextColor: "var(--lhds-color-blue-50)",
+    selectedItemActiveBackgroundColor: cssColor("--lhds-color-blue-500"),
+    selectedItemActiveTextColor: cssColor("--lhds-color-blue-50"),
     disabledTextColor: "var(--swui-field-text-color-disabled)",
     disabledBackgroundColor: "var(--swui-field-bg-disabled)",
     textColor: "var(--swui-field-text-color)",
     backgroundColor: "var(--swui-field-bg-enabled)",
     hoverTextColor: "var(--swui-field-text-color)",
-    hoverBackgroundColor: "var(--lhds-color-blue-200)",
-    selectedItemTextColor: "var(--lhds-color-blue-500)",
-    selectedItemIconColor: "var(--lhds-color-blue-500)",
+    hoverBackgroundColor: cssColor("--lhds-color-blue-200"),
+    selectedItemTextColor: cssColor("--lhds-color-blue-500"),
+    selectedItemIconColor: cssColor("--lhds-color-blue-500"),
     selectedItemHoverTextColor: "var(--swui-field-text-color)",
     selectedItemHoverIconColor: "var(--swui-field-text-color)",
-    selectedItemBackgroundColor: "var(--lhds-color-blue-50)",
-    selectedItemHoverBackgroundColor: "var(--lhds-color-blue-50)",
+    selectedItemBackgroundColor: cssColor("--lhds-color-blue-50"),
+    selectedItemHoverBackgroundColor: cssColor("--lhds-color-blue-50"),
     zIndex: 1,
     width: "auto",
     minWidth: "100%",
@@ -155,7 +158,7 @@ export const defaultSelectTheme: SelectTheme = {
   },
   multiSelect: {
     backgroundColor: "var(--swui-primary-action-color)",
-    textColor: "var(--lhds-color-blue-50)",
+    textColor: cssColor("--lhds-color-blue-50"),
     removeButtonBackgroundColor: "transparent",
     removeButtonTextColor: "var(--swui-white)",
     removeButtonHoverBackgroundColor: "var(--swui-primary-action-color-hover)",

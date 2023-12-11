@@ -32,6 +32,7 @@ export const IconMenuButton = forwardRef<
           styles.button,
           selected && styles.selected,
           disabled && styles.disabled,
+          styles.iconOnly,
           styles[variant],
           className
         )}

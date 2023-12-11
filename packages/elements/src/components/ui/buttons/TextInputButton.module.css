@@ -1,0 +1,91 @@
+.textInputButton.textInputButton {
+  --swui-button-height-small: 20px;
+  --swui-button-height-medium: 30px;
+  --swui-button-height-large: 42px;
+  --swui-button-height-larger: 66px;
+
+  --current-background: transparent;
+  outline: none;
+  width: auto;
+  padding: 0;
+  aspect-ratio: 1;
+  display: flex;
+  border-radius: var(--swui-border-radius-small);
+  justify-content: center;
+  align-items: center;
+  background: var(--current-background);
+  cursor: pointer;
+  border: 1px solid var(--border-color, var(--current-background));
+
+  .icon {
+    width: var(--current-icon-height);
+  }
+
+  &.normal {
+    --current-background: var(--himmel-lighter);
+
+    &:hover:not(&:active) {
+      --current-background: var(--himmel-light);
+    }
+
+    &:active {
+      --border-color: var(--core-blue);
+    }
+
+    .icon {
+      color: var(--core-blue);
+    }
+  }
+
+  &.error {
+    --current-background: var(--snackskal-light);
+
+    &:hover:not(&:active) {
+      --current-background: var(--snackskal);
+    }
+
+    &:active {
+      --border-color: var(--modern-red);
+    }
+
+    .icon {
+      color: var(--modern-red);
+    }
+  }
+
+  &.warning {
+    --current-background: var(--lhds-color-orange-100);
+
+    &:hover:not(&:active) {
+      --current-background: var(--lhds-color-orange-200);
+    }
+
+    &:active {
+      --border-color: var(--lhds-color-orange-600);
+    }
+
+    .icon {
+      color: var(--tjara);
+    }
+  }
+
+  &.success {
+    --current-background: var(--lhds-color-green-100);
+
+    &:hover:not(&:active) {
+      --current-background: var(--lhds-color-green-200);
+    }
+
+    &:active {
+      --border-color: var(--lhds-color-green-600);
+    }
+
+    .icon {
+      color: var(--tjara);
+    }
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+  }
+}

@@ -18,6 +18,7 @@ export interface RadioButtonBoxProps extends RadioButtonProps {
   screenReaderLabel?: string;
   variant?: RadioButtonBoxVariant;
   icon?: IconDefinition;
+  radioButtonClassName?: string;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
@@ -27,6 +28,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   icon,
   className,
   style,
+  radioButtonClassName,
   ...radioButtonProps
 }) => {
   return (
@@ -36,7 +38,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
     >
       <Row justifyContent={"space-between"} flexGrow={1}>
         <Row alignItems={"center"}>
-          <RadioButton {...radioButtonProps} />
+          <RadioButton {...radioButtonProps} className={radioButtonClassName} />
           <Space />
           {screenReaderLabel ? (
             <ScreenReaderOnlyText>{screenReaderLabel}</ScreenReaderOnlyText>

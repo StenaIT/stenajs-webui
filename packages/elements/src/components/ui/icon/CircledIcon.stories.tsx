@@ -1,12 +1,6 @@
 import * as React from "react";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Column, Row, Text } from "@stenajs-webui/core";
-import {
-  CircledIcon,
-  CircledIconProps,
-  CircledIconSizeVariant,
-} from "./CircledIcon";
-import { Story } from "@storybook/react";
+import { CircledIcon } from "./CircledIcon";
 import {
   colorListControl,
   disabledControl,
@@ -16,6 +10,12 @@ import {
   stenaSailingShip,
 } from "../../../icons/generated/CommonIcons";
 import { stenaBusinessInvoice } from "../../../icons/generated/BusinessIcons";
+import { cssColor } from "@stenajs-webui/theme";
+import {
+  stenaLighthouseXl,
+  stenaTripFerryXl,
+} from "../../../icons/generated/XlIcons";
+import { MediumIcon, XlIcon } from "../../../icons/IconSizes";
 
 export default {
   title: "elements/CircledIcon",
@@ -26,36 +26,111 @@ export default {
   },
 };
 
-export const Demo: Story<CircledIconProps> = (props) => (
-  <CircledIcon {...props} icon={stenaCopyDocument} />
-);
-
-export const WithColor = () => (
-  <CircledIcon
-    icon={stenaCopyDocument}
-    iconColor={"--modern-red"}
-    backgroundColor={"--lhds-color-red-100"}
-  />
-);
-
-export const Sizes = () => {
-  const sizes: Array<CircledIconSizeVariant> = ["medium", "small"];
+export const Demo = () => {
+  const normalIcons = [stenaCopyDocument];
+  const xlIcons = [stenaLighthouseXl, stenaTripFerryXl];
 
   return (
     <Column gap={4}>
-      {sizes.map((size) => (
-        <Column gap={2}>
-          <Text>{size}</Text>
-          <CircledIcon icon={stenaCopyDocument} size={size} />
-        </Column>
-      ))}
+      <Column gap={2}>
+        <Text>Small</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {normalIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"small"} />
+            ))}
+          </Row>
+        </Row>
+      </Column>
+
+      <Column gap={2}>
+        <Text>Medium</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {normalIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"medium"} />
+            ))}
+          </Row>
+        </Row>
+      </Column>
+
+      <Column gap={2}>
+        <Text>XL</Text>
+        <Row gap={2}>
+          <Row gap={2} spacing={2} indent={2}>
+            {xlIcons.map((icon) => (
+              <DemoRow icon={icon} iconSize={"xl"} />
+            ))}
+          </Row>
+        </Row>
+      </Column>
     </Column>
   );
 };
 
-export const WithSpin = () => <CircledIcon icon={faSpinner} spin={true} />;
+const DemoRow: React.FC<
+  | { icon: XlIcon; iconSize: "xl" }
+  | { icon: MediumIcon; iconSize: "medium" | "small" }
+> = ({ icon, iconSize }) => {
+  return (
+    <Row>
+      {iconSize === "xl" ? (
+        <>
+          <Column indent={2} spacing={2}>
+            <CircledIcon icon={icon} size={iconSize} />
+          </Column>
+          <Column
+            indent={2}
+            spacing={2}
+            background={cssColor("--lhds-color-ui-200")}
+          >
+            <CircledIcon icon={icon} size={iconSize} variant={"whiteBg"} />
+          </Column>
+        </>
+      ) : (
+        <>
+          <Column indent={2} spacing={2}>
+            <CircledIcon icon={icon} size={iconSize} />
+          </Column>
+          <Column
+            background={cssColor("--lhds-color-ui-200")}
+            indent={2}
+            spacing={2}
+          >
+            <CircledIcon icon={icon} size={iconSize} variant={"whiteBg"} />
+          </Column>
+        </>
+      )}
+    </Row>
+  );
+};
 
-export const WithPulse = () => <CircledIcon icon={faSpinner} pulse={true} />;
+export const WithColor = () => (
+  <Row
+    gap={4}
+    indent={2}
+    spacing={2}
+    background={cssColor("--lhds-color-ui-200")}
+  >
+    <CircledIcon
+      icon={stenaCopyDocument}
+      backgroundColor={"--lhds-color-ui-50"}
+    />
+    <CircledIcon
+      icon={stenaCopyDocument}
+      iconColor={"--modern-red"}
+      backgroundColor={"--lhds-color-red-100"}
+    />
+  </Row>
+);
+
+export const WithSpin = () => (
+  <CircledIcon icon={stenaBusinessInvoice} spin={true} />
+);
+
+export const WithPulse = () => (
+  <CircledIcon icon={stenaBusinessInvoice} pulse={true} />
+);
 
 export const HorizontalFlip = () => (
   <Column gap={4}>

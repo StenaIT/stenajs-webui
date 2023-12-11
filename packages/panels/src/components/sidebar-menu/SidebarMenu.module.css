@@ -13,9 +13,6 @@
   --swui-sidebar-menu-background-selected-active: var(--lhds-color-blue-100);
 
   /* State vars */
-  --current-separator-color: var(--swui-sidebar-menu-separator-color);
-  --current-text-color: var(--swui-sidebar-menu-text-color);
-  --current-icon-color: var(--swui-sidebar-menu-icon-color);
   --current-background-color: var(--swui-sidebar-menu-background-color);
   --current-background-color-hover: var(
     --swui-sidebar-menu-background-color-hover
@@ -37,8 +34,20 @@
     --swui-sidebar-menu-background-selected-active
   );
 
-  /* Styling */
+  /* State vars for sidebar items */
+  .sidebarItems {
+    --current-separator-color: var(--swui-sidebar-menu-separator-color);
+    --current-text-color: var(--swui-sidebar-menu-text-color);
+    --current-icon-color: var(--swui-sidebar-menu-icon-color);
+  }
 
+  /* Styling */
   background-color: var(--current-background-color);
   height: 100dvh;
+
+  .scrollContainer {
+    background: var(--current-background-color);
+    height: 100%;
+    overflow: auto;
+  }
 }
