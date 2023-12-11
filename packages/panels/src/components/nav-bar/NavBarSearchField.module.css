@@ -31,8 +31,10 @@
     --swui-field-text-color: var(--swui-field-text-color);
     --swui-textinput-bg-color: var(--lhds-color-ui-50);
   }
+
+  .clearButton {
+    border-radius: var(--swui-max-border-radius);
+  }
 }
 
-.clearButton {
-  border-radius: var(--swui-max-border-radius);
-}
+
