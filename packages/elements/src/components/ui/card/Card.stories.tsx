@@ -4,6 +4,7 @@ import { faCreditCard } from "@fortawesome/free-solid-svg-icons/faCreditCard";
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import {
   Box,
+  Column,
   Heading,
   Indent,
   Row,
@@ -41,14 +42,28 @@ export default {
 
 export const Demo = () => {
   return (
-    <Card>
-      <CardHeader text={"Overview"} />
-      <CardBody>
-        <Heading variant={"h5"}>Subheader</Heading>
-        <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
-      </CardBody>
-    </Card>
+    <Column gap={4}>
+      <Column indent={4} spacing={4}>
+        <Card>
+          <CardHeader text={"Overview"} />
+          <CardBody>
+            <Heading variant={"h5"}>Subheader</Heading>
+            <Space />
+            <Text>Lorem ipsavablasfasofofa</Text>
+          </CardBody>
+        </Card>
+      </Column>
+      <Column indent={4} spacing={4} background={cssColor("--silver-lighter")}>
+        <Card>
+          <CardHeader text={"Overview"} />
+          <CardBody>
+            <Heading variant={"h5"}>Subheader</Heading>
+            <Space />
+            <Text>Lorem ipsavablasfasofofa</Text>
+          </CardBody>
+        </Card>
+      </Column>
+    </Column>
   );
 };
 

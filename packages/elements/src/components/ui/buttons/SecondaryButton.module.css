@@ -1,11 +1,11 @@
 .secondaryButton {
-  border: 1px solid var(--lhds-color-ui-400);
+  border: 1px solid var(--lhds-color-blue-600);
   background-color: var(--swui-white);
   color: var(--swui-text-action-color);
 
   &:hover {
     background-color: var(--lhds-color-blue-50);
-    border: 1px solid var(--lhds-color-blue-400);
+    border: 1px solid var(--lhds-color-blue-600);
   }
 
   &:focus-visible {
