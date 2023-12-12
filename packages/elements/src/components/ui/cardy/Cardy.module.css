@@ -1,11 +1,11 @@
 .cardy.cardy {
-  border-radius: 24px;
+  border-radius: var(--swui-border-radius-card);
 
   padding-top: 32px;
-  padding-bottom: 56px;
+  padding-bottom: 32px;
   @media (max-width: 768px) {
     padding-top: 24px;
-    padding-bottom: 48px;
+    padding-bottom: 24px;
   }
 }
 

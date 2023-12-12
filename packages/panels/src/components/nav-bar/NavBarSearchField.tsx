@@ -20,19 +20,21 @@ export const NavBarSearchField: React.FC<NavBarSearchFieldProps> = ({
   wrapperClassName,
   showClearButton,
   onClickClearButton,
+  value,
   ...textInputProps
 }) => {
   return (
     <TextInput
       wrapperClassName={cx(
-        styles.navBarSearchField,
+        styles.navBarSearchFieldWrapper,
         showClearButton ? styles.withButton : undefined,
         wrapperClassName
       )}
       className={cx(styles.navBarSearchFieldInput, className)}
       placeholder={placeholder}
+      value={value}
       buttonRight={
-        showClearButton ? (
+        value && showClearButton ? (
           <TextInputButton
             className={styles.clearButton}
             icon={stenaTimes}
