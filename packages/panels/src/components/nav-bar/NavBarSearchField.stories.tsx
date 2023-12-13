@@ -13,7 +13,7 @@ export default {
 };
 
 export const CenterContent = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
   return (
     <NavBar
       center={
