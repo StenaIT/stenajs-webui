@@ -10,7 +10,7 @@ export const Card: React.FC<CardProps> = ({
   <Column
     shadow={"box"}
     background={background}
-    borderRadius={"var(--swui-border-radius-card)"}
+    borderRadius={"var(--swui-border-radius)"}
     {...boxProps}
   />
 );
