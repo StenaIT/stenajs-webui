@@ -10,6 +10,7 @@ import { FlatButton } from "../components/ui/buttons/FlatButton";
 import { Tag } from "../components/ui/tag/Tag";
 import { stenaArrowRight } from "./generated/ArrowIcons";
 import { Banner } from "../components/ui/banners/banner/Banner";
+import { TextInput } from "@stenajs-webui/forms";
 
 export const IconDemoList: React.FC<{
   icons: Record<string, IconDefinition>;
@@ -21,7 +22,14 @@ export const IconDemoList: React.FC<{
   iconSize = 24,
 }) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
-  const iconNames = Object.keys(icons).concat().sort();
+  const [searchText, setSearchText] = useState("");
+  const iconNames = Object.keys(icons)
+    .concat()
+    .sort()
+    .filter((iconName) =>
+      !searchText ? true : iconName.indexOf(searchText) >= 0
+    );
+
   return (
     <Box gap>
       <Banner variant={"info"} text={"Click an icon to copy its code name."}>
@@ -33,6 +41,8 @@ export const IconDemoList: React.FC<{
           .
         </Txt>
       </Banner>
+      <TextInput value={searchText} onValueChange={setSearchText} />
+
       <Box
         indent
         spacing
