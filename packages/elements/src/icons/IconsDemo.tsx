@@ -10,7 +10,6 @@ import { FlatButton } from "../components/ui/buttons/FlatButton";
 import { Tag } from "../components/ui/tag/Tag";
 import { stenaArrowRight } from "./generated/ArrowIcons";
 import { Banner } from "../components/ui/banners/banner/Banner";
-import { TextInput } from "@stenajs-webui/forms";
 
 export const IconDemoList: React.FC<{
   icons: Record<string, IconDefinition>;
@@ -27,7 +26,9 @@ export const IconDemoList: React.FC<{
     .concat()
     .sort()
     .filter((iconName) =>
-      !searchText ? true : iconName.indexOf(searchText) >= 0
+      !searchText
+        ? true
+        : iconName.toLowerCase().indexOf(searchText.toLowerCase()) >= 0
     );
 
   return (
@@ -41,7 +42,17 @@ export const IconDemoList: React.FC<{
           .
         </Txt>
       </Banner>
-      <TextInput value={searchText} onValueChange={setSearchText} />
+      <input
+        value={searchText}
+        placeholder={"Search"}
+        onChange={(ev) => setSearchText(ev.target.value)}
+        style={{
+          width: "200px",
+          padding: "6px",
+          borderRadius: "8px",
+          borderWidth: "1px",
+        }}
+      />
 
       <Box
         indent
