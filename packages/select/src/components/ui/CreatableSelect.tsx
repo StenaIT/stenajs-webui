@@ -13,6 +13,7 @@ export interface CreatableSelectProps<T = { label: string; value: string }>
   extends CreatableProps<T, false, GroupBase<T>> {
   variant?: SelectVariant;
   isMulti?: false;
+  ariaLabelClear?: string;
 }
 
 export function CreatableSelect<T>({
@@ -20,6 +21,7 @@ export function CreatableSelect<T>({
   styles,
   isMulti,
   components,
+  ariaLabelClear = "Clear",
   ...selectProps
 }: CreatableSelectProps<T>) {
   const selectStyles = useMemo(() => {
@@ -30,7 +32,7 @@ export function CreatableSelect<T>({
 
   const ClearIndicator = (
     props: ClearIndicatorProps<T, false, GroupBase<T>>
-  ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
+  ) => <CloseButton aria-label={ariaLabelClear} onClick={props.clearValue} />;
 
   return (
     <CreatableComponent
