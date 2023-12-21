@@ -21,7 +21,16 @@ export const IconDemoList: React.FC<{
   iconSize = 24,
 }) => {
   const [selectedIcon, setSelectedIcon] = useState(icons[0]);
-  const iconNames = Object.keys(icons).concat().sort();
+  const [searchText, setSearchText] = useState("");
+  const iconNames = Object.keys(icons)
+    .concat()
+    .sort()
+    .filter((iconName) =>
+      !searchText
+        ? true
+        : iconName.toLowerCase().indexOf(searchText.toLowerCase()) >= 0
+    );
+
   return (
     <Box gap>
       <Banner variant={"info"} text={"Click an icon to copy its code name."}>
@@ -33,6 +42,18 @@ export const IconDemoList: React.FC<{
           .
         </Txt>
       </Banner>
+      <input
+        value={searchText}
+        placeholder={"Search"}
+        onChange={(ev) => setSearchText(ev.target.value)}
+        style={{
+          width: "200px",
+          padding: "6px",
+          borderRadius: "8px",
+          borderWidth: "1px",
+        }}
+      />
+
       <Box
         indent
         spacing
