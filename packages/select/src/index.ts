@@ -4,6 +4,7 @@ export * from "./components/ui/MultiSelect";
 export * from "./components/ui/OverflowingMultiSelect";
 export * from "./components/ui/Select";
 export * from "./components/ui/GroupedMultiSelect";
+export * from "./components/ui/CreatableSelect";
 export * from "./components/ui/ChipMultiSelect/ChipMultiSelect";
 export * from "./components/ui/ChipMultiSelect/GroupedChipMultiSelect";
 export * from "./SelectTheme";
