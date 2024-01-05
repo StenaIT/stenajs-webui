@@ -1,7 +1,7 @@
 {
   "author": {
-    "name": "github-actions[bot]",
-    "email": "41898282+github-actions[bot]@users.noreply.github.com"
+    "name": "stenajs-webui-bot",
+    "email": "webui-automated-publish@stenaline.com"
   },
   "plugins": [
     [
