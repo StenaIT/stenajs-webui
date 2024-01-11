@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "18.12.3",
+  "version": "19.0.0",
   "description": "",
   "author": "mattias800",
   "license": "MIT",
@@ -26,10 +26,10 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "18.12.3",
-    "@stenajs-webui/elements": "18.12.3",
-    "@stenajs-webui/tooltip": "18.12.3",
-    "@stenajs-webui/theme": "18.12.3",
+    "@stenajs-webui/core": "19.0.0",
+    "@stenajs-webui/elements": "19.0.0",
+    "@stenajs-webui/theme": "19.0.0",
+    "@stenajs-webui/tooltip": "19.0.0",
     "classnames": "^2.3.1",
     "date-fns": "2.26.0"
   },
