@@ -1,3 +1,29 @@
+# v18.12.3 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Add CSS hack to fix table header height in Firefox [#674](https://github.com/StenaIT/stenajs-webui/pull/674) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
+# v18.12.2 (Tue Oct 31 2023)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Cardy props fix [#651](https://github.com/StenaIT/stenajs-webui/pull/651) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v18.12.1 (Thu Oct 26 2023)
 
 #### 🐛 Bug Fix

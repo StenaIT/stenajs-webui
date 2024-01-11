@@ -1,3 +1,15 @@
+# v18.12.3 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Add CSS hack to fix table header height in Firefox [#674](https://github.com/StenaIT/stenajs-webui/pull/674) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 1
+
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+
+---
+
 # v18.9.3 (Thu Sep 07 2023)
 
 #### 🐛 Bug Fix
