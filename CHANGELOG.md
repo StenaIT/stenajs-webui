@@ -1,3 +1,166 @@
+# v19.0.0 (Thu Jan 11 2024)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Merge next branch to master [#699](https://github.com/StenaIT/stenajs-webui/pull/699) ([@mattias800](https://github.com/mattias800) [@AugustasFriend](https://github.com/AugustasFriend) [@lindskogen](https://github.com/lindskogen) [@esepato](https://github.com/esepato) [@yousiftouma](https://github.com/yousiftouma))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Some redesign fixes [#604](https://github.com/StenaIT/stenajs-webui/pull/604) ([@mattias800](https://github.com/mattias800))
+
+#### 🐛 Bug Fix
+
+- Add stenajs-webui-bot as release author [#698](https://github.com/StenaIT/stenajs-webui/pull/698) ([@lindskogen](https://github.com/lindskogen))
+- Add prerelease step for next branch [#602](https://github.com/StenaIT/stenajs-webui/pull/602) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`
+  - add two more icons [#696](https://github.com/StenaIT/stenajs-webui/pull/696) ([@yousiftouma](https://github.com/yousiftouma))
+  - Add ability to search in icons in stories [#694](https://github.com/StenaIT/stenajs-webui/pull/694) ([@mattias800](https://github.com/mattias800))
+  - Update icons [#693](https://github.com/StenaIT/stenajs-webui/pull/693) ([@yousiftouma](https://github.com/yousiftouma))
+  - Update Tag and button fix [#688](https://github.com/StenaIT/stenajs-webui/pull/688) ([@mattias800](https://github.com/mattias800))
+  - Change textinput button height [#685](https://github.com/StenaIT/stenajs-webui/pull/685) ([@lindskogen](https://github.com/lindskogen))
+  - Keycard icons [#684](https://github.com/StenaIT/stenajs-webui/pull/684) ([@mattias800](https://github.com/mattias800))
+  - Remove extra padding at the bottom of Cardy [#682](https://github.com/StenaIT/stenajs-webui/pull/682) ([@mattias800](https://github.com/mattias800))
+  - Make MenuButton iconOnly round [#678](https://github.com/StenaIT/stenajs-webui/pull/678) ([@lindskogen](https://github.com/lindskogen))
+  - Update Label design [#675](https://github.com/StenaIT/stenajs-webui/pull/675) ([@lindskogen](https://github.com/lindskogen))
+  - Set ValueTable label to bold [#673](https://github.com/StenaIT/stenajs-webui/pull/673) ([@lindskogen](https://github.com/lindskogen))
+  - Redesign ValueTable for Brand update [#672](https://github.com/StenaIT/stenajs-webui/pull/672) ([@lindskogen](https://github.com/lindskogen))
+  - Increase CircledIcon xl size [#660](https://github.com/StenaIT/stenajs-webui/pull/660) ([@mattias800](https://github.com/mattias800))
+  - Switch focus outline colors for buttons [#657](https://github.com/StenaIT/stenajs-webui/pull/657) ([@lindskogen](https://github.com/lindskogen))
+  - Update button icon sizes and visual center [#652](https://github.com/StenaIT/stenajs-webui/pull/652) ([@mattias800](https://github.com/mattias800))
+  - Arrow icon fix [#648](https://github.com/StenaIT/stenajs-webui/pull/648) ([@mattias800](https://github.com/mattias800))
+  - Update svg icon script to flatten transforms [#649](https://github.com/StenaIT/stenajs-webui/pull/649) ([@lindskogen](https://github.com/lindskogen))
+  - Some more icons [#646](https://github.com/StenaIT/stenajs-webui/pull/646) ([@mattias800](https://github.com/mattias800))
+  - Redesign tags [#643](https://github.com/StenaIT/stenajs-webui/pull/643) ([@mattias800](https://github.com/mattias800))
+  - More icons [#640](https://github.com/StenaIT/stenajs-webui/pull/640) ([@mattias800](https://github.com/mattias800))
+  - New icon: running person [#639](https://github.com/StenaIT/stenajs-webui/pull/639) ([@mattias800](https://github.com/mattias800))
+  - Redesign result list padding [#637](https://github.com/StenaIT/stenajs-webui/pull/637) ([@mattias800](https://github.com/mattias800))
+  - Remove duplicated icon and rename inprogress to in-progress [#633](https://github.com/StenaIT/stenajs-webui/pull/633) ([@lindskogen](https://github.com/lindskogen))
+  - Add passenger type icons [#632](https://github.com/StenaIT/stenajs-webui/pull/632) ([@mattias800](https://github.com/mattias800))
+  - Vehicle type icons [#631](https://github.com/StenaIT/stenajs-webui/pull/631) ([@mattias800](https://github.com/mattias800))
+  - Add icon categories support [#630](https://github.com/StenaIT/stenajs-webui/pull/630) ([@AugustasFriend](https://github.com/AugustasFriend) [@mattias800](https://github.com/mattias800))
+  - Redesign chip [#629](https://github.com/StenaIT/stenajs-webui/pull/629) ([@mattias800](https://github.com/mattias800))
+  - Restore menu button cursor pointer [#627](https://github.com/StenaIT/stenajs-webui/pull/627) ([@lindskogen](https://github.com/lindskogen))
+  - Add new icons and redesign some other ones [#625](https://github.com/StenaIT/stenajs-webui/pull/625) ([@AugustasFriend](https://github.com/AugustasFriend))
+  - Add new stena line slash icon [#610](https://github.com/StenaIT/stenajs-webui/pull/610) ([@AugustasFriend](https://github.com/AugustasFriend))
+  - Add new modified icons [#607](https://github.com/StenaIT/stenajs-webui/pull/607) ([@AugustasFriend](https://github.com/AugustasFriend) [@mattias800](https://github.com/mattias800))
+  - Prevent ButtonGroup to grow more than its content [#608](https://github.com/StenaIT/stenajs-webui/pull/608) ([@esepato](https://github.com/esepato))
+  - Add two new icons [#605](https://github.com/StenaIT/stenajs-webui/pull/605) ([@AugustasFriend](https://github.com/AugustasFriend))
+  - New CircledIcon component [#599](https://github.com/StenaIT/stenajs-webui/pull/599) ([@mattias800](https://github.com/mattias800))
+  - Brand redesign banner [#596](https://github.com/StenaIT/stenajs-webui/pull/596) ([@mattias800](https://github.com/mattias800))
+  - Add download pdf icon [#592](https://github.com/StenaIT/stenajs-webui/pull/592) ([@AugustasFriend](https://github.com/AugustasFriend))
+  - Add new stena icons [#590](https://github.com/StenaIT/stenajs-webui/pull/590) ([@AugustasFriend](https://github.com/AugustasFriend))
+- `@stenajs-webui/select`
+  - Add CreatableSelect for selecting custom options [#697](https://github.com/StenaIT/stenajs-webui/pull/697) ([@esepato](https://github.com/esepato))
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Card bottom padding and NavBarSearchField fixes [#692](https://github.com/StenaIT/stenajs-webui/pull/692) ([@mattias800](https://github.com/mattias800))
+  - Update design of ErrorPanel [#683](https://github.com/StenaIT/stenajs-webui/pull/683) ([@mattias800](https://github.com/mattias800))
+  - ActionMenuButton fixes [#680](https://github.com/StenaIT/stenajs-webui/pull/680) ([@lindskogen](https://github.com/lindskogen))
+  - Icon sizes and CircledIcon xl size [#656](https://github.com/StenaIT/stenajs-webui/pull/656) ([@mattias800](https://github.com/mattias800))
+  - Add rail menu focus outline [#658](https://github.com/StenaIT/stenajs-webui/pull/658) ([@mattias800](https://github.com/mattias800))
+  - Styling NavBarUserButton [#626](https://github.com/StenaIT/stenajs-webui/pull/626) ([@lindskogen](https://github.com/lindskogen))
+  - Redesign Collapsible [#620](https://github.com/StenaIT/stenajs-webui/pull/620) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/theme`
+  - Small update to SecondaryButton and Card [#691](https://github.com/StenaIT/stenajs-webui/pull/691) ([@mattias800](https://github.com/mattias800))
+  - Todays batch of redesign updates [#615](https://github.com/StenaIT/stenajs-webui/pull/615) ([@mattias800](https://github.com/mattias800))
+  - - Buttons are now round. [#583](https://github.com/StenaIT/stenajs-webui/pull/583) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/panels`
+  - Fix border radius for close button in search navbar [#690](https://github.com/StenaIT/stenajs-webui/pull/690) ([@AugustasFriend](https://github.com/AugustasFriend))
+  - ErrorPanel spread props into child Card [#689](https://github.com/StenaIT/stenajs-webui/pull/689) ([@mattias800](https://github.com/mattias800))
+  - Fix broken NavBarButton styles [#668](https://github.com/StenaIT/stenajs-webui/pull/668) ([@esepato](https://github.com/esepato))
+  - Adjust NotificationButton background color [#669](https://github.com/StenaIT/stenajs-webui/pull/669) ([@lindskogen](https://github.com/lindskogen))
+  - Fix SidebarMenu CloseButton being wrong color [#671](https://github.com/StenaIT/stenajs-webui/pull/671) ([@lindskogen](https://github.com/lindskogen))
+  - Sticky header in SidebarMenu [#617](https://github.com/StenaIT/stenajs-webui/pull/617) ([@mattias800](https://github.com/mattias800) [@lindskogen](https://github.com/lindskogen))
+  - Pass through props to menu button [#624](https://github.com/StenaIT/stenajs-webui/pull/624) ([@lindskogen](https://github.com/lindskogen))
+  - Spread all props into RailMenuLink [#618](https://github.com/StenaIT/stenajs-webui/pull/618) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`, `@stenajs-webui/select`
+  - Brand update - small changes [#686](https://github.com/StenaIT/stenajs-webui/pull/686) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/theme`
+  - Orange colors update [#687](https://github.com/StenaIT/stenajs-webui/pull/687) ([@mattias800](https://github.com/mattias800) [@lindskogen](https://github.com/lindskogen))
+  - Update UI colors to match brand [#600](https://github.com/StenaIT/stenajs-webui/pull/600) ([@mattias800](https://github.com/mattias800))
+  - Update mussla color [#598](https://github.com/StenaIT/stenajs-webui/pull/598) ([@mattias800](https://github.com/mattias800))
+  - - Use new blue colors. [#584](https://github.com/StenaIT/stenajs-webui/pull/584) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/filter`
+  - Danger button background, spacing and more! [#681](https://github.com/StenaIT/stenajs-webui/pull/681) ([@lindskogen](https://github.com/lindskogen))
+  - More icon categories [#638](https://github.com/StenaIT/stenajs-webui/pull/638) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/filter`
+  - Align SearchFilterChips [#679](https://github.com/StenaIT/stenajs-webui/pull/679) ([@lindskogen](https://github.com/lindskogen))
+  - Brand redesign SearchFilter [#595](https://github.com/StenaIT/stenajs-webui/pull/595) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`
+  - Re-implement (Action)MenuButton success and loading states [#677](https://github.com/StenaIT/stenajs-webui/pull/677) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`
+  - Add TextInputButton small size for compact table cells [#676](https://github.com/StenaIT/stenajs-webui/pull/676) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/forms`
+  - Add ref and spin props to TextInputButton [#670](https://github.com/StenaIT/stenajs-webui/pull/670) ([@lindskogen](https://github.com/lindskogen))
+  - RadioButton classname fix [#665](https://github.com/StenaIT/stenajs-webui/pull/665) ([@mattias800](https://github.com/mattias800))
+  - Add classname for radio button to RadioButtonBox [#664](https://github.com/StenaIT/stenajs-webui/pull/664) ([@mattias800](https://github.com/mattias800))
+  - New component: LabelledSelect [#662](https://github.com/StenaIT/stenajs-webui/pull/662) ([@mattias800](https://github.com/mattias800))
+  - Make checkbox forward className prop [#622](https://github.com/StenaIT/stenajs-webui/pull/622) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`, `@stenajs-webui/modal`, `@stenajs-webui/panels`
+  - Add CloseButton component to use in Cards, Modals, Popovers, SidebarMenu [#667](https://github.com/StenaIT/stenajs-webui/pull/667) ([@lindskogen](https://github.com/lindskogen))
+  - Nav bar and sidebar menu redesign [#588](https://github.com/StenaIT/stenajs-webui/pull/588) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`
+  - Add warning & success variant for TextInputButton, also fix broken NavBarButtons [#666](https://github.com/StenaIT/stenajs-webui/pull/666) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/core`, `@stenajs-webui/forms`
+  - LabelledSelect onChange handler fix [#663](https://github.com/StenaIT/stenajs-webui/pull/663) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/forms`, `@stenajs-webui/theme`
+  - Add font size input large [#661](https://github.com/StenaIT/stenajs-webui/pull/661) ([@mattias800](https://github.com/mattias800))
+  - New component: LabelledTextInput [#647](https://github.com/StenaIT/stenajs-webui/pull/647) ([@mattias800](https://github.com/mattias800))
+  - TextInput height increase to 36px [#645](https://github.com/StenaIT/stenajs-webui/pull/645) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Color fix for snackskal and TextInputButton [#654](https://github.com/StenaIT/stenajs-webui/pull/654) ([@mattias800](https://github.com/mattias800))
+  - Redesign NavBarSearchField [#612](https://github.com/StenaIT/stenajs-webui/pull/612) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Move Button in ActionMenuButton outside of Popover [#655](https://github.com/StenaIT/stenajs-webui/pull/655) ([@AugustasFriend](https://github.com/AugustasFriend))
+- `@stenajs-webui/calendar`, `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - New component: TextInputButton [#653](https://github.com/StenaIT/stenajs-webui/pull/653) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/modal`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - Update design of select [#650](https://github.com/StenaIT/stenajs-webui/pull/650) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Refactor buttons and fix height [#644](https://github.com/StenaIT/stenajs-webui/pull/644) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/theme`
+  - Add new RadioButtonBox [#642](https://github.com/StenaIT/stenajs-webui/pull/642) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - Add missing focus outline and remove inset shadows [#636](https://github.com/StenaIT/stenajs-webui/pull/636) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Redesign focus highlight [#635](https://github.com/StenaIT/stenajs-webui/pull/635) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/theme`
+  - Redesign filter checkbox [#634](https://github.com/StenaIT/stenajs-webui/pull/634) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`, `@stenajs-webui/panels`
+  - Bottom items in SidebarMenu [#628](https://github.com/StenaIT/stenajs-webui/pull/628) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/modal`, `@stenajs-webui/panels`
+  - Mobile improvements in Drawer [#623](https://github.com/StenaIT/stenajs-webui/pull/623) ([@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/grid`
+  - Update StandardTable to allow easy ways to reduce text size [#621](https://github.com/StenaIT/stenajs-webui/pull/621) ([@mattias800](https://github.com/mattias800) [@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/modal`, `@stenajs-webui/panels`
+  - Redesign notifications [#619](https://github.com/StenaIT/stenajs-webui/pull/619) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/filter`, `@stenajs-webui/modal`
+  - Floating SearchFilterDrawer [#616](https://github.com/StenaIT/stenajs-webui/pull/616) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/grid-export`, `@stenajs-webui/panels`
+  - New rail for SidebarMenu [#613](https://github.com/StenaIT/stenajs-webui/pull/613) ([@mattias800](https://github.com/mattias800) [@lindskogen](https://github.com/lindskogen))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - TabMenu and misc updates [#611](https://github.com/StenaIT/stenajs-webui/pull/611) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - More small redesign changes [#609](https://github.com/StenaIT/stenajs-webui/pull/609) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Lots of redesign updates [#606](https://github.com/StenaIT/stenajs-webui/pull/606) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Redesign ButtonGroup and ToggleButton [#603](https://github.com/StenaIT/stenajs-webui/pull/603) ([@mattias800](https://github.com/mattias800))
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Redesign ActionMenu and introduce MenuButton [#591](https://github.com/StenaIT/stenajs-webui/pull/591) ([@mattias800](https://github.com/mattias800))
+
+#### 🏠 Internal
+
+- Upgrade auto [#700](https://github.com/StenaIT/stenajs-webui/pull/700) ([@lindskogen](https://github.com/lindskogen))
+
+#### Authors: 5
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+- Johan Lindskogen ([@lindskogen](https://github.com/lindskogen))
+- Markus Patoka ([@esepato](https://github.com/esepato))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- Yousif Touma ([@yousiftouma](https://github.com/yousiftouma))
+
+---
+
 # v18.12.3 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
