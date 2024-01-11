@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 import styles from "./Chip.module.css";
 import { Icon } from "../icon/Icon";
 import { getDataProps } from "@stenajs-webui/core";
-import { stenaTimes } from "../../../icons/ui/IconsUi";
+import { stenaTimesThick } from "../../../icons/generated/CommonIcons";
 
 export type ChipVariant = "primary" | "secondary";
 
@@ -31,25 +31,25 @@ export const Chip: React.FC<ChipProps> = ({
       onClick();
     }
   };
+
+  const removableStyle = onClickRemove ? styles.removable : undefined;
+
   return (
     <div
-      className={cx(
-        styles.chip,
-        styles[variant],
-        onClickRemove ? styles.removable : undefined,
-        className
-      )}
+      className={cx(styles.chip, styles[variant], removableStyle, className)}
       {...getDataProps(rest)}
     >
       {onClick ? (
         <button
           onClick={onClickHandler}
-          className={cx(styles.chipCell, styles.label)}
+          className={cx(styles.chipCell, styles.label, removableStyle)}
         >
           {label}
         </button>
       ) : (
-        <div className={cx(styles.chipCell, styles.label)}>{label}</div>
+        <div className={cx(styles.chipCell, styles.label, removableStyle)}>
+          {label}
+        </div>
       )}
 
       {onClickRemove && (
@@ -57,7 +57,9 @@ export const Chip: React.FC<ChipProps> = ({
           className={cx(styles.chipCell, styles.close)}
           onClick={onClickRemove}
         >
-          <Icon icon={stenaTimes} size={10} />
+          <div className={styles.circle}>
+            <Icon icon={stenaTimesThick} size={8} />
+          </div>
         </button>
       )}
     </div>

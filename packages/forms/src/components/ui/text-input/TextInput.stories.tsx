@@ -1,11 +1,14 @@
 import * as React from "react";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons/faCoffee";
-import { faPaw } from "@fortawesome/free-solid-svg-icons/faPaw";
-import { Box, Space, Text } from "@stenajs-webui/core";
+import { action } from "@storybook/addon-actions";
+import { Box, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
 import { Story } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
-import { Badge } from "@stenajs-webui/elements";
+import {
+  stenaAnimals,
+  stenaInfoCircle,
+  TextInputButton,
+} from "@stenajs-webui/elements";
 
 export default {
   title: "forms/TextInput/TextInput",
@@ -21,13 +24,16 @@ export default {
   },
 };
 
-export const Demo: Story<TextInputProps> = (props) => <TextInput {...props} />;
+export const Demo: Story<TextInputProps> = (props) => (
+  <TextInput {...props} placeholder={"Enter some text"} />
+);
 
 export const Overview = () => (
-  <Box width={"400px"}>
-    <Text>Standard</Text>
-    <TextInput value={"Some nice text."} />
-    <Space />
+  <Box width={"400px"} gap={2}>
+    <Box>
+      <Text>Standard</Text>
+      <TextInput value={"Some nice text."} />
+    </Box>
     {(
       [
         "success",
@@ -37,36 +43,90 @@ export const Overview = () => (
         "modified",
       ] as Array<TextInputVariant>
     ).map((variant) => (
-      <React.Fragment key={variant}>
+      <Box key={variant}>
         <Text>Variant={variant}</Text>
         <TextInput value={"Some text"} variant={variant} />
-        <Space />
-      </React.Fragment>
+      </Box>
     ))}
-    <Text>Icon left</Text>
-    <TextInput value={"Some text"} iconLeft={faCoffee} />
-    <Space />
-    <Text>Icon right</Text>
-    <TextInput value={"Some text"} iconRight={faCoffee} />
-    <Space />
-    <Text>Icon clickable</Text>
-    <TextInput
-      value={"Some text"}
-      iconLeft={faCoffee}
-      onClickLeft={() => alert("click")}
-    />
-    <Space />
-    <Text>Content left</Text>
-    <TextInput value={"Some text"} contentLeft={<Text>ms</Text>} />
-    <Space />
-    <Text>Content right</Text>
-    <TextInput value={"Some text"} contentRight={<Text>ms</Text>} />
-    <Space />
-    <Text>Placeholder</Text>
-    <TextInput placeholder={"E-mail"} />
-    <Space />
-    <Text>Disabled</Text>
-    <TextInput value={"Some nice text."} disabled />
+    <Box>
+      <Text>Icon left</Text>
+      <TextInput value={"Some text"} iconLeft={stenaInfoCircle} />
+    </Box>
+    <Box>
+      <Text>Icon right</Text>
+      <TextInput value={"Some text"} iconRight={stenaInfoCircle} />
+    </Box>
+    <Box>
+      <Text>Button right side</Text>
+      <TextInput
+        value={"Some text"}
+        buttonRight={<TextInputButton onClick={action("click")} />}
+      />
+    </Box>
+    <Box>
+      <Text>Button left side</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={<TextInputButton onClick={action("click")} />}
+      />
+    </Box>
+    <Box>
+      <Text>Button left side danger</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={
+          <TextInputButton onClick={action("click")} variant={"error"} />
+        }
+      />
+    </Box>
+    <Box>
+      <Text>Button left side warning</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={
+          <TextInputButton onClick={action("click")} variant={"warning"} />
+        }
+      />
+    </Box>
+    <Box>
+      <Text>Button left side success</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={
+          <TextInputButton onClick={action("click")} variant={"success"} />
+        }
+      />
+    </Box>
+    <Box>
+      <Text>Button left side small</Text>
+      <TextInput
+        value={"Some text"}
+        buttonLeft={
+          <TextInputButton
+            size={"small"}
+            onClick={action("click")}
+            variant={"success"}
+          />
+        }
+      />
+    </Box>
+    <Box>
+      <Text>Content left</Text>
+      <TextInput value={"Some text"} contentLeft={<Text>ms</Text>} />
+    </Box>
+
+    <Box>
+      <Text>Content right</Text>
+      <TextInput value={"Some text"} contentRight={<Text>ms</Text>} />
+    </Box>
+    <Box>
+      <Text>Placeholder</Text>
+      <TextInput placeholder={"E-mail"} />
+    </Box>
+    <Box>
+      <Text>Disabled</Text>
+      <TextInput value={"Some nice text."} disabled />
+    </Box>
   </Box>
 );
 
@@ -77,11 +137,11 @@ export const Standard = () => (
 );
 
 export const WithIconLeft = () => (
-  <TextInput value={"some entered text"} iconLeft={faCoffee} />
+  <TextInput value={"some entered text"} iconLeft={stenaAnimals} />
 );
 
 export const WithIconRight = () => (
-  <TextInput value={"some entered text"} iconRight={faPaw} />
+  <TextInput value={"some entered text"} iconRight={stenaAnimals} />
 );
 
 export const WithContentLeft = () => (
@@ -100,8 +160,8 @@ export const WithContentAndNoContentPadding = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}
@@ -119,8 +179,8 @@ export const WithContentAndNoContentPaddingRight = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}
@@ -138,8 +198,8 @@ export const WithContentAndNoContentPaddingLeft = () => (
       <div
         style={{
           marginRight: "2px",
-          width: "32px",
-          height: "32px",
+          width: "36px",
+          height: "100%",
           backgroundColor: "red",
           borderRadius: "4px",
         }}
@@ -176,7 +236,7 @@ export const DisabledWithContent = () => (
       disabled={true}
       value={"some entered text"}
       contentRight={<Text>ms</Text>}
-      iconLeft={faCoffee}
+      iconLeft={stenaAnimals}
     />
   </Box>
 );
@@ -184,14 +244,5 @@ export const DisabledWithContent = () => (
 export const TypeDate = () => (
   <Box width={"400px"}>
     <TextInput type={"date"} />
-  </Box>
-);
-
-export const WithClickableContent = () => (
-  <Box width={"400px"}>
-    <TextInput
-      contentRight={<Badge label={"2"} />}
-      onClickRight={() => alert("Clicked")}
-    />
   </Box>
 );

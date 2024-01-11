@@ -3,10 +3,10 @@ import {
   SearchFilterSection,
   SearchFilterSectionProps,
 } from "../../../components/SearchFilterSection";
-import { Column, Text } from "@stenajs-webui/core";
-import { CollapsibleClickableContent } from "@stenajs-webui/panels";
-import { Checkbox, ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { BooleanRecord, BooleanRecordOptions } from "../BooleanRecordTypes";
+import { FilterCheckbox } from "../../../features/filter-checkbox/FilterCheckbox";
+import { FilterCheckboxList } from "../../../features/filter-checkbox/FilterCheckboxList";
 
 export interface SimpleCheckboxSectionProps<TSectionKey extends string>
   extends SearchFilterSectionProps<TSectionKey>,
@@ -21,24 +21,20 @@ export const SimpleCheckboxListSection = <TSectionKey extends string>({
   ...sectionProps
 }: SimpleCheckboxSectionProps<TSectionKey>): React.ReactElement => (
   <SearchFilterSection disableContentPadding {...sectionProps}>
-    <Column maxHeight={"400px"} overflowY={"auto"} flex={1}>
+    <FilterCheckboxList maxHeight={"400px"}>
       {options?.map((d) => (
-        <CollapsibleClickableContent
+        <FilterCheckbox
           key={d.value}
-          onClick={() => {
-            if (value && onValueChange) {
-              const sel = !value[d.value];
-              onValueChange({
-                ...value,
-                [d.value]: sel,
-              });
-            }
-          }}
-          contentLeft={<Checkbox tabIndex={-1} value={value?.[d.value]} />}
-        >
-          <Text>{d.label}</Text>
-        </CollapsibleClickableContent>
+          value={value?.[d.value]}
+          label={d.label}
+          onValueChange={(v) =>
+            onValueChange?.({
+              ...value,
+              [d.value]: v,
+            })
+          }
+        />
       ))}
-    </Column>
+    </FilterCheckboxList>
   </SearchFilterSection>
 );

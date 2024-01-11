@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactNode, useMemo, useRef } from "react";
+import { ReactNode, RefObject, useMemo, useRef } from "react";
 import {
   ActionMenu,
   ActionMenuContext,
@@ -34,6 +34,7 @@ export interface ActionMenuButtonProps
     | typeof SecondaryButton
     | typeof FlatButton;
   disableArrow?: boolean;
+  buttonRef?: RefObject<HTMLButtonElement>;
 }
 
 export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
@@ -47,11 +48,13 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   menuTop,
   onClick,
   disableArrow = false,
+  buttonRef,
   ...buttonProps
 }) => {
   const [isOpen, open, close, toggle] = useBoolean(false);
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const fallbackRef = useRef<HTMLButtonElement>(null);
+  const ref = buttonRef ?? fallbackRef;
 
   const focusManager: TippyPlugin<TippyProps> = {
     name: "focusManager",
@@ -83,8 +86,8 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
             ?.focus();
         },
         onHide() {
-          if (buttonRef.current && restoreFocus) {
-            buttonRef.current.focus();
+          if (ref.current && restoreFocus) {
+            ref.current.focus();
           }
         },
       };
@@ -101,37 +104,34 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   };
 
   return (
-    <Popover
-      disablePadding
-      visible={isOpen}
-      onClickOutside={close}
-      placement={placement}
-      content={
-        isOpen && (
-          <ActionMenu
-            variant={"outlined"}
-            width={menuWidth}
-            top={menuTop}
-            trapFocus
-          >
-            <ActionMenuContext.Provider value={contextValue}>
-              {renderItems(close)}
-            </ActionMenuContext.Provider>
-          </ActionMenu>
-        )
-      }
-      arrow={false}
-      appendTo={portalTarget}
-      zIndex={zIndex}
-      plugins={[focusManager]}
-      lazy
-    >
+    <>
       <Button
         rightIcon={disableArrow ? undefined : rightIcon}
         {...buttonProps}
-        ref={buttonRef}
+        ref={ref}
         onClick={handleClick}
       />
-    </Popover>
+      <Popover
+        disablePadding
+        visible={isOpen}
+        onClickOutside={close}
+        placement={placement}
+        content={
+          isOpen && (
+            <ActionMenu width={menuWidth} top={menuTop} trapFocus>
+              <ActionMenuContext.Provider value={contextValue}>
+                {renderItems(close)}
+              </ActionMenuContext.Provider>
+            </ActionMenu>
+          )
+        }
+        arrow={false}
+        appendTo={portalTarget}
+        zIndex={zIndex}
+        plugins={[focusManager]}
+        lazy
+        reference={ref}
+      />
+    </>
   );
 };

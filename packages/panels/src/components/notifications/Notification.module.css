@@ -1,0 +1,22 @@
+.notification {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--lhds-color-ui-50);
+
+  .body {
+    padding-left: 64px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+  }
+
+  &.standard {
+    &.unread {
+      background: var(--lhds-color-blue-50);
+    }
+  }
+
+  &.danger {
+    background: var(--lhds-color-red-100);
+  }
+}

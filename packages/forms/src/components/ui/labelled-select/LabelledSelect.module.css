@@ -1,0 +1,91 @@
+.labelledSelect {
+  border: 1px solid var(--swui-field-border-color);
+  border-radius: var(--swui-border-radius-large);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &&.onlyTopBorder {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+  }
+
+  &.onlyBottomBorder {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &.error {
+    border-color: var(--snackskal);
+    background-color: var(--snackskal);
+  }
+
+  &.normal {
+    border-color: var(--swui-field-border-color);
+    background-color: var(--moln);
+  }
+
+  &&:focus-within {
+    border-color: var(--swui-field-border-color-hover);
+    outline: var(--swui-focus-outline);
+    outline-offset: 0;
+    z-index: 10;
+  }
+
+  &&:hover {
+    border-color: var(--swui-field-border-color-hover);
+  }
+
+  .label {
+    display: flex;
+    position: absolute;
+    top: var(--swui-metrics-space);
+    left: calc(var(--swui-metrics-space) * 2);
+    cursor: pointer;
+  }
+
+  .select {
+    color: var(--swui-text-primary-color);
+    display: block;
+    margin: 0;
+    width: 100%;
+    appearance: none;
+    border: none;
+    outline: none;
+    font-size: var(--swui-font-size-inputs-large);
+    line-height: 1.5;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: calc(var(--swui-metrics-space) * 5)
+      calc(var(--swui-metrics-space) * 8) calc(var(--swui-metrics-space) * 2)
+      calc(var(--swui-metrics-space) * 2);
+
+    &.error {
+      background-color: var(--snackskal);
+    }
+
+    &.normal {
+      background-color: var(--moln);
+    }
+  }
+
+  .iconWrapper {
+    border-radius: var(--swui-max-border-radius);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(var(--swui-metrics-space) * 2);
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0;
+    background: var(--silver-lighter);
+    pointer-events: none;
+  }
+}

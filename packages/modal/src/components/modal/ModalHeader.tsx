@@ -1,4 +1,4 @@
-import { FlatButton, stenaTimes } from "@stenajs-webui/elements";
+import { CloseButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
 import {
@@ -36,11 +36,9 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
         {header}
       </Row>
       <Box alignSelf={"flex-start"}>
-        <FlatButton
+        <CloseButton
           className={closeButtonClassName}
           onClick={onRequestClose}
-          aria-label={"Close"}
-          leftIcon={stenaTimes}
         />
       </Box>
     </Row>

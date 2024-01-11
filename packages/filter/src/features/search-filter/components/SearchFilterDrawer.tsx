@@ -2,24 +2,21 @@ import * as React from "react";
 import { ReactNode, useCallback } from "react";
 import { Drawer, DrawerProps } from "@stenajs-webui/modal";
 import { cssColor } from "@stenajs-webui/theme";
-import { Column } from "@stenajs-webui/core";
+import { Box, Column } from "@stenajs-webui/core";
 import { SearchFilterPanelHeader } from "./SearchFilterPanelHeader";
 import { useSearchFilterState } from "../context/SearchFilterStateContext";
 import { useSearchFilterDispatch } from "../context/SearchFilterDispatchContext";
 import { useSearchFilterActions } from "../context/SearchFilterActionsContext";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 interface SearchFilterDrawerProps
   extends Omit<DrawerProps, "isOpen" | "onRequestClose"> {
   header?: string;
-  headerIcon?: IconDefinition;
   headerContentRight?: ReactNode;
 }
 
 export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
   children,
   header,
-  headerIcon,
   headerContentRight,
   ...drawerProps
 }) => {
@@ -35,20 +32,24 @@ export const SearchFilterDrawer: React.FC<SearchFilterDrawerProps> = ({
 
   return (
     <Drawer
-      background={cssColor("--lhds-color-ui-50")}
-      width={"370px"}
+      floating
       isOpen={open}
       onRequestClose={closeDrawer}
       {...drawerProps}
     >
-      <Column height={"100%"}>
+      <Column
+        height={"100%"}
+        borderRadius={"var(--swui-border-radius)"}
+        background={cssColor("--lhds-color-ui-50")}
+      >
         <SearchFilterPanelHeader
           onRequestClose={closeDrawer}
           header={header}
-          headerIcon={headerIcon}
           contentRight={headerContentRight}
         />
-        {children}
+        <Box spacing={1} indent={1} gap={1}>
+          {children}
+        </Box>
       </Column>
     </Drawer>
   );

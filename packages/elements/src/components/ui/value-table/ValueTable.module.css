@@ -5,7 +5,7 @@
   --swui-value-table-height: 40px;
   width: 100%;
 
-  .row:not(:first-child) td {
+  &.withBorder .row:not(:first-child) td {
     border-top: 1px solid var(--lhds-color-ui-300);
   }
 }

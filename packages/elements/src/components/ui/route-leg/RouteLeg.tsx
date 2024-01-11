@@ -7,7 +7,7 @@ import {
   stenaCheckCircle,
   stenaSailingShip,
   stenaSailingTrain,
-} from "../../../icons/ui/IconsUi";
+} from "../../../icons/generated/CommonIcons";
 
 export type ModeOfTransport = "ship" | "rail";
 export type RouteLegSize = "standard" | "compact" | "relaxed";
@@ -126,20 +126,19 @@ export const RouteLeg: React.FC<RouteLegProps> = ({
         />
       )}
       <div className={styles.grid}>
-        <Column alignItems={"center"} gap={0.5}>
-          <Icon icon={icon} fixedWidth size={24} />
+        <Column alignItems={"center"}>
+          <Icon icon={icon} fixedWidth size={20} />
+          <Space half />
           <Box
             flex={1}
-            border={`1px solid ${cssColor("--lhds-color-ui-300")}`}
-            borderRadius={2}
+            border={`1px solid ${cssColor("--lhds-color-ui-900")}`}
+            borderRadius={"2px 2px 0 0"}
           />
           <Box
-            flex={"none"}
-            border={`4px solid ${cssColor("--lhds-color-blue-100")}`}
-            background={cssColor("--lhds-color-blue-500")}
+            borderRadius={"50%"}
+            border={`2px solid ${cssColor("--lhds-color-ui-900")}`}
             width={16}
             height={16}
-            borderRadius={8}
           />
         </Column>
         <Column gap={size === "standard" ? 3 : 2}>

@@ -2,12 +2,12 @@
   /* Generic colors */
   --swui-white: #fff;
   --swui-hidden: rgba(0, 0, 0, 0);
-  --swui-primary-action-color: var(--lhds-color-blue-500);
-  --swui-primary-action-color-hover: var(--lhds-color-blue-600);
+  --swui-primary-action-color: var(--core-blue);
+  --swui-primary-action-color-hover: var(--mussla);
   --swui-primary-action-color-hover-light: var(--lhds-color-blue-100);
-  --swui-primary-action-color-focus: var(--lhds-color-blue-700);
+  --swui-primary-action-color-focus: var(--modern-blue);
   --swui-primary-action-color-focus-light: var(--lhds-color-blue-100);
-  --swui-primary-action-color-active: var(--lhds-color-blue-800);
+  --swui-primary-action-color-active: var(--lhds-color-blue-900);
   --swui-primary-action-color-disabled: var(--lhds-color-ui-300);
   --swui-separator-color: var(--lhds-color-ui-300);
   --swui-handle-bg-enabled-color: var(--swui-white);
@@ -18,13 +18,13 @@
 
   /* State colors */
   --swui-state-error-color: var(--lhds-color-red-300);
-  --swui-state-error-light-color: var(--lhds-color-red-50);
+  --swui-state-error-light-color: var(--lhds-color-red-100);
   --swui-state-alert-color: var(--lhds-color-orange-400);
-  --swui-state-alert-light-color: var(--lhds-color-orange-50);
+  --swui-state-alert-light-color: var(--lhds-color-orange-100);
   --swui-state-success-color: var(--lhds-color-green-600);
-  --swui-state-success-light-color: var(--lhds-color-green-50);
+  --swui-state-success-light-color: var(--lhds-color-green-100);
   --swui-state-modified-color: var(--lhds-color-blue-500);
-  --swui-state-modified-light-color: var(--lhds-color-blue-200);
+  --swui-state-modified-light-color: var(--lhds-color-blue-100);
   --swui-state-loading-color: var(--lhds-color-ui-400);
   --swui-state-loading-light-color: var(--lhds-color-ui-100);
 
@@ -36,14 +36,15 @@
   --swui-font-buttons: var(--swui-font-primary);
   --swui-font-input: var(--swui-font-primary);
   --swui-line-height: 1.5;
-  --swui-font-size-inputs: 1.4rem;
-  --swui-font-size-large: 1.6rem;
+  --swui-font-size-inputs: 1.6rem;
+  --swui-font-size-inputs-large: 2rem;
+  --swui-font-size-large: 1.8rem;
   --swui-line-height-large: var(--swui-line-height);
-  --swui-font-size-medium: 1.4rem;
+  --swui-font-size-medium: 1.6rem;
   --swui-line-height-medium: var(--swui-line-height);
-  --swui-font-size-small: 1.2rem;
+  --swui-font-size-small: 1.4rem;
   --swui-line-height-small: var(--swui-line-height);
-  --swui-font-size-smaller: 1rem;
+  --swui-font-size-smaller: 1.2rem;
   --swui-line-height-smaller: var(--swui-line-height);
   --swui-font-weight-inputs: 400;
 
@@ -66,41 +67,49 @@
   --swui-animation-time-slow: 0.5s;
 
   /* Form fields */
-  --swui-field-text-color: #424551;
-  --swui-field-text-color-disabled: var(--lhds-color-ui-600);
-  --swui-field-text-spacing: 6px;
+  --swui-field-text-color: #0c0e10;
+  --swui-field-text-color-disabled: #0c0e10;
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: var(--swui-line-height);
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: var(--lhds-color-ui-300);
   --swui-field-border-color: var(--lhds-color-ui-400);
   --swui-field-border-color-hover: var(--lhds-color-blue-500);
-  --swui-field-border-color-disabled: #b1b1b1;
+  --swui-field-border-color-disabled: var(--lhds-color-ui-400);
   --swui-field-shadow-color: rgba(0, 0, 0, 0.15);
   --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
   --swui-field-border-radius: 4px;
-  --swui-field-icon-color: var(--swui-text-primary-color);
-  --swui-field-icon-size: 13px;
+  --swui-field-icon-color: var(--lhds-color-ui-900);
+  --swui-field-icon-size: 20px;
   --swui-field-indicator-active-color: var(--swui-white);
   --swui-field-indicator-inactive-color: var(--swui-hidden);
   --swui-field-placeholder-color: var(--lhds-color-ui-500);
+  --swui-field-placeholder-font-weight: var(--swui-font-weight-text-bold);
 
   /* Borders */
-  --swui-border-radius: 4px;
+  --swui-border-radius-small: 4px;
+  --swui-border-radius: 8px;
+  --swui-border-radius-large: 16px;
+  --swui-max-border-radius: 10000px;
 
   /* Shadows */
   --swui-shadow-modal: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
   --swui-shadow-popover: 0 2px 4px -1px rgba(20, 62, 98, 0.15),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
-  --swui-shadow-box: rgba(0, 0, 0, 0.15) 0 2px 4px 0;
-  --swui-field-focus-shadow: inset 0px 0px 3pt 0pt rgba(0, 0, 100, 0.3);
-  --swui-field-focus-shadow-inverted: inset 0px 0px 3pt 0pt
-    var(--lhds-color-blue-50);
+  --swui-shadow-box: 0 3px 1px -2px rgba(0, 0, 0, 0.15),
+    0 0 4px 0 rgba(0, 0, 0, 0.15);
+  --swui-shadow-bottom: rgba(0, 0, 0, 0.2) 0 5px 5px -4px;
 
   /* Metrics */
   --swui-metrics-indent: 8px;
   --swui-metrics-spacing: 8px;
   --swui-metrics-space: 8px;
+
+  --swui-default-item-height: 40px;
+
+  /* Focus outline */
+  --swui-focus-outline-width: 2px;
+  --swui-focus-outline: var(--swui-focus-outline-width) solid var(--modern-blue);
 }

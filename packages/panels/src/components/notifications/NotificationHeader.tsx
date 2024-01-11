@@ -1,8 +1,9 @@
-import { Box, Row, Txt } from "@stenajs-webui/core";
+import { Box, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FlatButton, Icon, stenaTimes } from "@stenajs-webui/elements";
-import { cssColor } from "@stenajs-webui/theme";
+import { CircledIcon, CloseButton, MediumIcon } from "@stenajs-webui/elements";
+import { cssColor, CssPropColor } from "@stenajs-webui/theme";
+import { UnreadDot } from "./UnreadDot";
+import { NotificationVariant } from "./Notification";
 
 export interface NotificationHeaderProps {
   /** Text. */
@@ -10,17 +11,19 @@ export interface NotificationHeaderProps {
   /** Timestamp. */
   timestamp?: string;
   /** Icon. */
-  icon?: IconDefinition;
+  icon?: MediumIcon;
   /** Icon description for accessibility. */
   iconAriaLabel?: string;
-  /** Icon colour. */
-  iconColor?: string;
   /** Left content instead of icon. */
   contentLeft?: React.ReactNode;
   /** Right content. */
   contentRight?: React.ReactNode;
   /** What happens on clicking close. */
   onClose?: () => void;
+  /** Mark the notification as unread */
+  unread?: boolean;
+  /** Notification variant. Will affect icon bg color */
+  variant: NotificationVariant;
 }
 
 export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
@@ -28,50 +31,66 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
   timestamp,
   icon,
   iconAriaLabel,
-  iconColor,
   contentLeft,
   contentRight,
   onClose,
-}) => (
-  <Row alignItems={"flex-start"} indent spacing>
-    <Row indent={2} spacing gap={2} flex={1} alignItems={"flex-start"}>
-      {contentLeft && (
-        <Box minHeight={20} justifyContent={"center"}>
-          {contentLeft}
+  unread = false,
+  variant,
+}) => {
+  const circledIcon = icon ? (
+    <CircledIcon
+      size={"small"}
+      icon={icon}
+      aria-label={iconAriaLabel}
+      backgroundColor={getIconBgColor(unread, variant)}
+    />
+  ) : undefined;
+
+  return (
+    <Row alignItems={"flex-start"} indent={2} spacing>
+      <Row spacing gap={2} flex={1} alignItems={"flex-start"}>
+        {contentLeft && (
+          <Box minHeight={20} justifyContent={"center"}>
+            {contentLeft}
+          </Box>
+        )}
+        {!contentLeft &&
+          circledIcon &&
+          (unread ? <UnreadDot>{circledIcon}</UnreadDot> : circledIcon)}
+        <Box minHeight={20} justifyContent={"center"} flex={1} gap={0.5}>
+          <Text variant={"bold"}>{text}</Text>
+          {timestamp && (
+            <Text
+              size={"small"}
+              color={cssColor(
+                unread ? "--lhds-color-blue-600" : "--lhds-color-ui-600"
+              )}
+            >
+              {timestamp}
+            </Text>
+          )}
+        </Box>
+        {contentRight}
+      </Row>
+      {onClose && (
+        <Box
+          flex={"none"}
+          justifyContent={"center"}
+          height={"calc(20px + 2 * var(--swui-metrics-spacing))"}
+        >
+          <CloseButton onClick={onClose} />
         </Box>
       )}
-      {!contentLeft && icon && (
-        <Icon
-          icon={icon}
-          size={20}
-          color={iconColor}
-          aria-label={iconAriaLabel}
-        />
-      )}
-      <Box minHeight={20} justifyContent={"center"} flex={1} gap={0.5}>
-        <Txt variant={"bold"}>{text}</Txt>
-        {timestamp && (
-          <Txt size={"small"} color={cssColor("--lhds-color-ui-600")}>
-            {timestamp}
-          </Txt>
-        )}
-      </Box>
-      {contentRight}
     </Row>
-    {onClose && (
-      <Box
-        flex={"none"}
-        justifyContent={"center"}
-        style={{
-          height: "calc(20px + 2 * var(--swui-metrics-spacing))",
-        }}
-      >
-        <FlatButton
-          leftIcon={stenaTimes}
-          onClick={onClose}
-          aria-label={"Close"}
-        />
-      </Box>
-    )}
-  </Row>
-);
+  );
+};
+
+export const getIconBgColor = (
+  unread: boolean,
+  variant: NotificationVariant
+): CssPropColor | undefined => {
+  if (!unread && variant === "standard") {
+    return undefined;
+  }
+  return "--lhds-color-ui-50";
+};

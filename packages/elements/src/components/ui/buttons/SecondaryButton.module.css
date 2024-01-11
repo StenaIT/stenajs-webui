@@ -1,77 +1,68 @@
 .secondaryButton {
-  /* PrimaryButton overrides */
+  border: 1px solid var(--lhds-color-blue-600);
+  background-color: var(--swui-white);
+  color: var(--swui-text-action-color);
 
-  /* Text */
-  --swui-button-text-color: var(--swui-text-action-color);
+  &:hover {
+    background-color: var(--lhds-color-blue-50);
+    border: 1px solid var(--lhds-color-blue-600);
+  }
 
-  --swui-button-text-color-disabled: var(--swui-text-disabled-color);
+  &:focus-visible {
+    background-color: var(--swui-white);
+    border: 1px solid transparent;
+    outline: var(--swui-focus-outline);
+  }
 
-  --swui-button-text-color-focus: var(--swui-button-text-color);
-  --swui-button-text-color-hover: var(--swui-button-text-color);
-  --swui-button-text-color-active: var(--swui-button-text-color);
+  &:active {
+    background-color: var(--lhds-color-blue-100);
+    border: 1px solid var(--lhds-color-blue-500);
+  }
 
-  --swui-button-danger-text-color: var(--lhds-color-red-600);
-  --swui-button-danger-text-color-hover: var(--lhds-color-red-600);
-  --swui-button-danger-text-color-focus: var(--lhds-color-red-600);
-  --swui-button-danger-text-color-active: var(--lhds-color-red-600);
+  &:disabled {
+    background-color: var(--lhds-color-ui-300);
+    border: 1px solid var(--lhds-color-ui-300);
+    color: var(--swui-text-disabled-color);
+  }
 
-  --swui-button-success-text-color: var(--lhds-color-green-800);
-  --swui-button-success-text-color-active: var(--lhds-color-green-800);
-  --swui-button-success-text-color-focus: var(--lhds-color-green-800);
-  --swui-button-success-text-color-hover: var(--lhds-color-green-800);
+  &.normal {
+  }
 
-  /* Icon */
-  --swui-button-icon-color: var(--lhds-color-blue-600);
-  --swui-button-icon-color-hover: var(--lhds-color-blue-600);
-  --swui-button-icon-color-focus: var(--lhds-color-blue-600);
-  --swui-button-icon-color-active: var(--lhds-color-blue-600);
+  &.danger:not(:disabled) {
+    color: var(--lhds-color-red-600);
 
-  --swui-button-danger-icon-color: var(--lhds-color-red-600);
-  --swui-button-success-icon-color: var(--lhds-color-green-800);
+    &:hover {
+      background-color: var(--snackskal-light);
+      border: 1px solid var(--lhds-color-red-400);
+    }
 
-  /* Background */
-  --swui-button-background-color: var(--swui-white);
-  --swui-button-background-color-hover: var(--lhds-color-blue-50);
-  --swui-button-background-color-focus: var(--swui-white);
-  --swui-button-background-color-active: var(--lhds-color-blue-100);
-  --swui-button-background-color-disabled: var(--lhds-color-ui-300);
+    &:focus-visible {
+      border: 1px solid transparent;
+      outline: var(--swui-focus-outline-width) solid var(--lhds-color-red-600);
+    }
 
-  --swui-button-danger-background-color: var(--swui-button-background-color);
-  --swui-button-danger-background-color-hover: var(--lhds-color-red-50);
-  --swui-button-danger-background-color-focus: var(
-    --swui-button-background-color
-  );
-  --swui-button-danger-background-color-active: var(--lhds-color-red-100);
+    &:active {
+      background-color: var(--lhds-color-red-100);
+      border: 1px solid var(--lhds-color-red-500);
+    }
+  }
 
-  --swui-button-success-background-color: var(--swui-button-background-color);
-  --swui-button-success-background-color-hover: var(--lhds-color-green-50);
-  --swui-button-success-background-color-focus: var(
-    --swui-button-background-color
-  );
-  --swui-button-success-background-color-active: var(--lhds-color-green-100);
+  &.success:not(:disabled) {
+    color: var(--lhds-color-green-800);
 
-  /* Border */
-  --swui-button-border-color: var(--lhds-color-ui-400);
-  --swui-button-border-color-hover: var(--lhds-color-blue-400);
-  --swui-button-border-color-focus: var(--lhds-color-blue-600);
-  --swui-button-border-color-active: var(--lhds-color-blue-500);
-  --swui-button-border-color-disabled: var(--swui-button-background-color);
-  --swui-button-danger-border-color: var(--swui-button-border-color);
-  --swui-button-danger-border-color-hover: var(--lhds-color-red-400);
-  --swui-button-danger-border-color-focus: var(--lhds-color-red-600);
-  --swui-button-danger-border-color-active: var(--lhds-color-red-500);
+    &:hover {
+      background-color: var(--lhds-color-green-50);
+      border: 1px solid var(--lhds-color-green-500);
+    }
 
-  --swui-button-success-border-color: var(--swui-button-border-color);
-  --swui-button-success-border-color-hover: var(--lhds-color-green-500);
-  --swui-button-success-border-color-focus: var(--lhds-color-green-700);
-  --swui-button-success-border-color-active: var(--lhds-color-green-600);
+    &:focus-visible {
+      border: 1px solid transparent;
+      outline: var(--swui-focus-outline-width) solid var(--lhds-color-green-700);
+    }
 
-  /* Shadow */
-  --swui-button-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.06),
-    0 0 1px -1px rgba(0, 0, 0, 0.1);
-  --swui-button-box-shadow-hover: 0 0 1px 0 rgba(29, 100, 171, 0.16),
-    0 1px 1px 1px rgba(29, 100, 171, 0.16);
-  --swui-button-box-shadow-focus: 0 0 4px 0 var(--lhds-color-blue-300);
-  --swui-button-box-shadow-active: none;
-  --swui-button-box-shadow-disabled: none;
+    &:active {
+      background-color: var(--lhds-color-green-100);
+      border: 1px solid var(--lhds-color-green-600);
+    }
+  }
 }

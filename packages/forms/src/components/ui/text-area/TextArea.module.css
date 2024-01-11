@@ -4,7 +4,6 @@
   --swui-textarea-letter-spacing: var(--swui-field-letter-spacing);
   --swui-textarea-line-height: var(--swui-field-text-line-height);
   --swui-textarea-indent: var(--swui-metrics-indent);
-  --swui-textarea-spacing: calc(var(--swui-field-text-spacing) - 1px);
   --swui-textarea-font-size: var(--swui-font-size-inputs);
   --swui-textarea-font-family: var(--swui-font-input);
   --swui-textarea-font-weight: var(--swui-font-weight-inputs);
@@ -39,16 +38,14 @@
   --swui-textarea-border-color-disabled: var(
     --swui-field-border-color-disabled
   );
-  /* Shadow */
-  --swui-textarea-focus-shadow: var(--swui-field-focus-shadow);
 
   /*
-   * Styling
-   */
+     * Styling
+     */
   max-width: 100%;
   letter-spacing: var(--swui-textarea-letter-spacing);
   line-height: var(--swui-textarea-line-height);
-  padding: var(--swui-textarea-spacing) var(--swui-textarea-indent);
+  padding: 2px var(--swui-textarea-indent);
   color: var(--swui-textarea-text-color);
   font-size: var(--swui-textarea-font-size);
   font-family: var(--swui-textarea-font-family);
@@ -61,11 +58,17 @@
   transition: border var(--swui-textarea-animation-time);
   --current-icon-color: var(--swui-textarea-icon-color);
 
-  &:focus {
+  &:focus:not(:focus-visible) {
     outline: none;
-    box-shadow: var(--swui-textarea-focus-shadow);
+  }
+
+  &:focus {
     --current-border-color: var(--swui-textarea-border-color-hover);
     --current-bg: var(--swui-textarea-bg-color);
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
   }
 
   &:disabled {

@@ -1,0 +1,75 @@
+.primaryButton {
+  border: 1px solid var(--swui-primary-action-color);
+  background-color: var(--swui-primary-action-color);
+  color: var(--swui-white);
+
+  &:hover {
+    background-color: var(--swui-primary-action-color-hover);
+    border: 1px solid var(--swui-primary-action-color-hover);
+  }
+
+  &:focus-visible {
+    background-color: var(--swui-primary-action-color-focus);
+    border: 1px solid var(--swui-primary-action-color-focus);
+    outline: var(--swui-focus-outline);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: var(--swui-primary-action-color-active);
+    border: 1px solid var(--swui-primary-action-color-active);
+  }
+
+  &:disabled {
+    background-color: var(--swui-primary-action-color-disabled);
+    border: 1px solid var(--swui-primary-action-color-disabled);
+    color: var(--swui-text-disabled-color);
+  }
+
+  &.normal {
+  }
+
+  &.danger:not(:disabled) {
+    background-color: var(--lhds-color-red-500);
+    border: 1px solid var(--lhds-color-red-500);
+
+    &:hover {
+      background-color: var(--lhds-color-red-600);
+      border: 1px solid var(--lhds-color-red-600);
+    }
+
+    &:focus-visible {
+      background-color: var(--lhds-color-red-700);
+      border: 1px solid var(--lhds-color-red-700);
+      outline: var(--swui-focus-outline-width) solid var(--lhds-color-red-700);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: var(--lhds-color-red-900);
+      border: 1px solid var(--lhds-color-red-900);
+    }
+  }
+
+  &.success:not(:disabled) {
+    background-color: var(--lhds-color-green-600);
+    border: 1px solid var(--lhds-color-green-600);
+
+    &:hover {
+      background-color: var(--lhds-color-green-700);
+      border: 1px solid var(--lhds-color-green-700);
+    }
+
+    &:focus-visible {
+      background-color: var(--lhds-color-green-800);
+      border: 1px solid var(--lhds-color-green-800);
+      outline: var(--swui-focus-outline-width) solid var(--lhds-color-green-800);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: var(--lhds-color-green-900);
+      border: 1px solid var(--lhds-color-green-900);
+    }
+  }
+}

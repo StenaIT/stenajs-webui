@@ -9,6 +9,7 @@
     "build-packages": "lerna run build",
     "build-packages-and-storybook": "lerna run build && storybook build",
     "build-all": "yarn pre-build-check && yarn clean-all && lerna run build && yarn post-build-check",
+    "green": "yarn build-all",
     "build-all-no-clean": "yarn check-deps-match && yarn check-imports && lerna run build && yarn check-builds",
     "clean-all": "lerna run clean",
     "publish-all": "lerna publish --exact --force-publish && yarn build-storybook && yarn deploy-built-storybook",
@@ -16,17 +17,17 @@
     "pre-build-check": "yarn check-deps-match && yarn check-imports && yarn lint && yarn check-prettier",
     "post-build-check": "yarn check-circular-deps && yarn check-circular-deps-stories && yarn test && yarn check-builds",
     "watch": "lerna exec --parallel -- yarn start",
-    "generate-svg-icons": "node scripts/svg-flatten.js > packages/elements/src/icons/ui/IconsUi.ts",
+    "generate-svg-icons": "node scripts/generate-icons.js",
     "prerelease": "yarn build-all && yarn check-deps-match && yarn check-builds && yarn test",
     "lint": "eslint --ignore-path .gitignore \"packages/**/src/**/*.ts*\"",
     "test": "jest --config=jest.config.js",
     "check-deps-match": "node scripts/check-deps-match.js",
     "check-builds": "node scripts/check-builds.js",
     "check-imports": "node scripts/check-imports.js",
-    "check-prettier": "prettier -l 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
-    "prettier": "prettier --write 'packages/**/src/**/*.{ts,tsx,css}' --ignore-path .gitignore --no-config",
+    "check-prettier": "prettier -l \"packages/**/src/**/*.{ts,tsx,css}\" --ignore-path .gitignore --no-config",
+    "prettier": "prettier --write \"packages/**/src/**/*.{ts,tsx,css}\" --ignore-path .gitignore --no-config --cache",
     "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
-    "check-circular-deps-stories": "find ./packages -type f -name '*.stories.tsx' | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
+    "check-circular-deps-stories": "find ./packages -type f -name \"*.stories.tsx\" | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
   },
   "repository": {
     "type": "git",
@@ -57,12 +58,12 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",
     "@types/jest": "^28.1.1",
-    "@types/node": "^12.0.0",
+    "@types/node": "^20.8.7",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "@vitejs/plugin-react": "^4.0.4",
     "auto": "^10.32.6",
-    "autoprefixer": "^9.7.2",
+    "autoprefixer": "^10.4.16",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.4.0",
@@ -83,14 +84,14 @@
     "lerna": "^7.3.0",
     "lint-staged": "^12.1.2",
     "path-that-svg": "1.2.4",
-    "postcss-loader": "^4.3.0",
-    "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^7.0.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.3.0",
     "prettier": "2.7.1",
     "react": "^18.2.0",
     "react-docgen-typescript-loader": "^3.1.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.4.0",
+    "svgpath": "^2.6.0",
     "svgson": "4.1.0",
     "ts-jest": "^28.0.5",
     "tslib": "2.3.1",
@@ -130,5 +131,6 @@
     "plugins": [
       "npm"
     ]
-  }
+  },
+  "dependencies": {}
 }

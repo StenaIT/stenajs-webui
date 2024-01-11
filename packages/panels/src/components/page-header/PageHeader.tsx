@@ -1,4 +1,4 @@
-import { Box, Row, SeparatorLine, Space } from "@stenajs-webui/core";
+import { Box, Row, Space } from "@stenajs-webui/core";
 import * as React from "react";
 import { ReactNode } from "react";
 import { cssColor } from "@stenajs-webui/theme";
@@ -17,19 +17,19 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   children,
 }) => {
   return (
-    <Box shadow={"box"} background={cssColor("--lhds-color-ui-50")}>
+    <Box shadow={"bottom"} background={cssColor("--lhds-color-ui-50")} gap={2}>
       <Box indent={3}>
-        {renderBreadCrumbs && <Row spacing={1.25}>{renderBreadCrumbs()}</Row>}
+        {renderBreadCrumbs && (
+          <Row spacing={1} alignItems={"center"}>
+            <Row width={"64px"} height={"16px"} />
+            {renderBreadCrumbs()}
+          </Row>
+        )}
         {renderPageHeading?.()}
+        {renderTabs && <Space />}
         {renderTabs?.()}
       </Box>
-      {children && (
-        <>
-          {!renderTabs && renderBreadCrumbs && <Space />}
-          <SeparatorLine />
-          {children}
-        </>
-      )}
+      {children}
     </Box>
   );
 };

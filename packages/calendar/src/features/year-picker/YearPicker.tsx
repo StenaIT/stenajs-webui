@@ -3,9 +3,11 @@ import { useEffect, useMemo, useState } from "react";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Row } from "@stenajs-webui/core";
 import { YearPickerCell } from "./YearPickerCell";
-import { FlatButton } from "@stenajs-webui/elements";
-import { faCaretLeft } from "@fortawesome/free-solid-svg-icons/faCaretLeft";
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
+import {
+  FlatButton,
+  stenaArrowLeft,
+  stenaArrowRight,
+} from "@stenajs-webui/elements";
 import { chunk, range } from "lodash";
 
 export interface YearPickerProps extends ValueAndOnValueChangeProps<number> {
@@ -37,13 +39,13 @@ export const YearPicker: React.FC<YearPickerProps> = ({
     <Row>
       <Column justifyContent={"center"}>
         <FlatButton
-          leftIcon={faCaretLeft}
+          leftIcon={stenaArrowLeft}
           onClick={() => setLastYear(lastYear - 3)}
         />
       </Column>
-      <Column>
+      <Column gap={1}>
         {yearRows.map((yearRow) => (
-          <Row key={yearRow[0]}>
+          <Row key={yearRow[0]} gap={1}>
             {yearRow.map((year) => (
               <YearPickerCell
                 key={year}
@@ -57,7 +59,7 @@ export const YearPicker: React.FC<YearPickerProps> = ({
       </Column>
       <Column justifyContent={"center"}>
         <FlatButton
-          leftIcon={faCaretRight}
+          leftIcon={stenaArrowRight}
           onClick={() => setLastYear(lastYear + 3)}
         />
       </Column>

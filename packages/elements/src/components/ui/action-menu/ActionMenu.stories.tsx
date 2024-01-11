@@ -1,13 +1,10 @@
-import { faFire } from "@fortawesome/free-solid-svg-icons/faFire";
-import { faSave } from "@fortawesome/free-solid-svg-icons/faSave";
-import { Text, useBoolean, useTimeoutState } from "@stenajs-webui/core";
+import { useBoolean, useTimeoutState } from "@stenajs-webui/core";
 import { action } from "@storybook/addon-actions";
 import { ActionMenuItem } from "./ActionMenuItem";
 import { ActionMenu } from "./ActionMenu";
 import { ActionMenuSeparator } from "./ActionMenuSeparator";
 import markdown from "./ActionMenu.md?raw";
 import {
-  faExternalLinkAlt,
   faSadCry,
   faToggleOff,
   faToggleOn,
@@ -15,15 +12,19 @@ import {
 import { ActionMenuLink } from "./ActionMenuLink";
 import { ActionMenuItemContent } from "./ActionMenuItemContent";
 import { ButtonGroup } from "../button-group/ButtonGroup";
-import { faAirFreshener } from "@fortawesome/free-solid-svg-icons/faAirFreshener";
-import { SecondaryButton } from "../buttons/SecondaryButton";
-import { PrimaryButton } from "../buttons/PrimaryButton";
-import { stenaCheck, stenaSearch } from "../../../icons/ui/IconsUi";
-import { useState } from "react";
+import {
+  stenaExternalLink,
+  stenaSave,
+  stenaSearch,
+  stenaSlidersMini,
+  stenaTrash,
+} from "../../../icons/generated/CommonIcons";
 import * as React from "react";
+import { useState } from "react";
+import { ToggleButton } from "../toggle-button/ToggleButton";
 
 export default {
-  title: "elements/ActionMenu/ActionMenu",
+  title: "elements/ActionMenu",
   component: ActionMenu,
   subcomponents: { ActionMenuItem, ActionMenuSeparator },
   parameters: {
@@ -32,7 +33,7 @@ export default {
 };
 
 export const Standard = () => (
-  <ActionMenu width={200}>
+  <ActionMenu width={220}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
@@ -40,42 +41,40 @@ export const Standard = () => (
     />
     <ActionMenuItem
       label={"Save"}
-      leftIcon={faSave}
+      leftIcon={stenaSave}
       onClick={action("Saved")}
     />
     <ActionMenuLink
       label={"Open new window"}
-      leftIcon={faExternalLinkAlt}
+      leftIcon={stenaExternalLink}
       href={"https://www.google.com"}
       target={"_blank"}
     />
     <ActionMenuLink
-      label={"Open new window disabled"}
+      label={"Open disabled"}
       disabled
-      leftIcon={faExternalLinkAlt}
+      leftIcon={stenaExternalLink}
       href={"https://www.google.com"}
       target={"_blank"}
     />
     <ActionMenuItem
       label={"Burn it"}
-      leftIcon={faFire}
+      leftIcon={stenaTrash}
       onClick={action("It was burned!")}
       variant={"danger"}
     />
     <ActionMenuItem
       label={"Disabled danger"}
-      leftIcon={faFire}
+      leftIcon={stenaTrash}
       onClick={action("Oh noes how did you activate this!?")}
       variant={"danger"}
       disabled={true}
     />
     <ActionMenuItem
       label={"Save it"}
-      leftIcon={faSave}
+      leftIcon={stenaSave}
       onClick={action("It was saved!")}
-      variant={"success"}
     />
-    <ActionMenuItem label={"Loading"} loading onClick={action("Loading")} />
     <ActionMenuItem
       label={"Click doesn't close"}
       onClick={action("I didn't close the menu!")}
@@ -86,24 +85,13 @@ export const Standard = () => (
       disabled
       onClick={action("I can never happen!")}
     />
-    <ActionMenuItem
-      label={"Icon right"}
-      onClick={action("Icon right clicked")}
-      rightIcon={stenaCheck}
-    />
-    <ActionMenuItem
-      label={"Icon right disabled"}
-      onClick={action("I can never happen again!")}
-      rightIcon={stenaCheck}
-      disabled
-    />
     <ActionMenuItemContent
       label={"Content right"}
       right={
         <ButtonGroup>
-          <PrimaryButton size={"small"} label={"S"} />
-          <SecondaryButton size={"small"} label={"M"} />
-          <SecondaryButton size={"small"} label={"L"} />
+          <ToggleButton value={true} size={"small"} label={"S"} />
+          <ToggleButton size={"small"} label={"M"} />
+          <ToggleButton size={"small"} label={"L"} />
         </ButtonGroup>
       }
     />
@@ -112,23 +100,23 @@ export const Standard = () => (
       leftIcon={stenaSearch}
       bottom={
         <ButtonGroup>
-          <SecondaryButton size={"small"} label={"25"} />
-          <PrimaryButton size={"small"} label={"50"} />
-          <SecondaryButton size={"small"} label={"100"} />
+          <ToggleButton size={"small"} label={"25"} />
+          <ToggleButton value={true} size={"small"} label={"50"} />
+          <ToggleButton size={"small"} label={"100"} />
         </ButtonGroup>
       }
     />
     <ActionMenuItemContent
       label={"Bottom full width"}
-      leftIcon={faAirFreshener}
+      leftIcon={stenaSlidersMini}
       bottom={
         <ButtonGroup>
-          <SecondaryButton size={"small"} label={"10"} />
-          <PrimaryButton size={"small"} label={"20"} />
-          <SecondaryButton size={"small"} label={"30"} />
-          <SecondaryButton size={"small"} label={"40"} />
-          <SecondaryButton size={"small"} label={"50"} />
-          <SecondaryButton size={"small"} label={"60"} />
+          <ToggleButton size={"small"} label={"10"} />
+          <ToggleButton size={"small"} label={"20"} value={true} />
+          <ToggleButton size={"small"} label={"30"} />
+          <ToggleButton size={"small"} label={"40"} />
+          <ToggleButton size={"small"} label={"50"} />
+          <ToggleButton size={"small"} label={"60"} />
         </ButtonGroup>
       }
       fullWidthBottomContent
@@ -136,41 +124,33 @@ export const Standard = () => (
     <ActionMenuItemContent
       disabled
       label={"Bottom full width disabled"}
-      leftIcon={faAirFreshener}
+      leftIcon={stenaSlidersMini}
       bottom={
         <ButtonGroup>
-          <SecondaryButton size={"small"} label={"10"} disabled />
-          <PrimaryButton size={"small"} label={"20"} disabled />
-          <SecondaryButton size={"small"} label={"30"} disabled />
-          <SecondaryButton size={"small"} label={"40"} disabled />
-          <SecondaryButton size={"small"} label={"50"} disabled />
-          <SecondaryButton size={"small"} label={"60"} disabled />
+          <ToggleButton size={"small"} label={"10"} disabled />
+          <ToggleButton value={true} size={"small"} label={"20"} disabled />
+          <ToggleButton size={"small"} label={"30"} disabled />
+          <ToggleButton size={"small"} label={"40"} disabled />
+          <ToggleButton size={"small"} label={"50"} disabled />
+          <ToggleButton size={"small"} label={"60"} disabled />
         </ButtonGroup>
       }
       fullWidthBottomContent
     />
     <ActionMenuSeparator />
-    <ActionMenuItem
-      label={"Quit it"}
-      right={<Text size={"smaller"}>⌘ Q</Text>}
-      onClick={action("Quitting")}
-    />
+    <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
   </ActionMenu>
 );
 
 export const Outlined = () => (
-  <ActionMenu width={200} variant={"outlined"}>
+  <ActionMenu width={220}>
     <ActionMenuItem
       id={"action-menu-item-open"}
       label={"Open"}
       onClick={action("Opened")}
     />
     <ActionMenuSeparator />
-    <ActionMenuItem
-      label={"Quit it"}
-      right={<Text size={"smaller"}>⌘ Q</Text>}
-      onClick={action("Quitting")}
-    />
+    <ActionMenuItem label={"Quit it"} onClick={action("Quitting")} />
   </ActionMenu>
 );
 
@@ -178,7 +158,7 @@ export const AsyncItem = () => {
   const [loading, setLoading, clearLoading] = useBoolean(false);
   const [loadingDanger, setLoadingDanger, clearLoadingDanger] =
     useBoolean(false);
-  const [loadingSucess, setLoadingSuccess, clearLoadingSuccess] =
+  const [loadingSuccess, setLoadingSuccess, clearLoadingSuccess] =
     useBoolean(false);
 
   const [saved, setSaved] = useTimeoutState(false, 2000);
@@ -220,7 +200,7 @@ export const AsyncItem = () => {
   };
 
   return (
-    <ActionMenu width={200} variant={"outlined"}>
+    <ActionMenu width={220}>
       <ActionMenuItem
         id={"action-menu-item-open"}
         label={"Open"}
@@ -228,11 +208,10 @@ export const AsyncItem = () => {
       />
       <ActionMenuItem
         label={saved ? "Saved" : loading ? "Saving..." : "Save"}
-        leftIcon={faSave}
-        onClick={start}
-        variant={saved ? "success" : undefined}
+        leftIcon={stenaSave}
         success={saved}
         loading={loading}
+        onClick={start}
       />
       <ActionMenuItem
         label={
@@ -242,11 +221,11 @@ export const AsyncItem = () => {
             ? "Saving with danger..."
             : "Save dangerously"
         }
-        leftIcon={isDangerOn ? faSave : faSadCry}
-        onClick={startDanger}
-        variant={"danger"}
         success={savedDanger}
         loading={loadingDanger}
+        leftIcon={isDangerOn ? stenaSave : faSadCry}
+        onClick={startDanger}
+        variant={"danger"}
         disabled={!isDangerOn}
       />
 
@@ -260,15 +239,14 @@ export const AsyncItem = () => {
         label={
           savedSuccess
             ? "Saved with success"
-            : loadingSucess
+            : loadingSuccess
             ? "Saving with success..."
             : "Save successfully"
         }
-        leftIcon={isSuccessOn ? faSave : faSadCry}
-        onClick={startSuccess}
-        variant={"success"}
         success={savedSuccess}
-        loading={loadingSucess}
+        loading={loadingSuccess}
+        leftIcon={isSuccessOn ? stenaSave : faSadCry}
+        onClick={startSuccess}
         disabled={!isSuccessOn}
       />
 

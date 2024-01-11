@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>sort-up-mini</title>
+    <g id="sort-up-mini" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M7,16 L17,16 C17.5522847,16 18,16.4477153 18,17 C18,17.5522847 17.5522847,18 17,18 L7,18 C6.44771525,18 6,17.5522847 6,17 C6,16.4477153 6.44771525,16 7,16 Z M7,11 L15,11 C15.5522847,11 16,11.4477153 16,12 C16,12.5522847 15.5522847,13 15,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 Z M7,6 L13,6 C13.5522847,6 14,6.44771525 14,7 C14,7.55228475 13.5522847,8 13,8 L7,8 C6.44771525,8 6,7.55228475 6,7 C6,6.44771525 6.44771525,6 7,6 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

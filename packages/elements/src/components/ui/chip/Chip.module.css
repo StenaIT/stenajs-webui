@@ -2,11 +2,11 @@
   /* Theme vars */
   --swui-chip-font-size: var(--swui-font-size-small);
   --swui-chip-line-height: var(--swui-line-height-small);
-  --swui-chip-font-weight: var(--swui-font-weight-text);
+  --swui-chip-font-weight: var(--swui-font-weight-text-bold);
   --swui-chip-font-family: var(--swui-font-primary);
   --swui-chip-letter-spacing: var(--swui-text-letter-spacing);
   --swui-chip-height: 24px;
-  --swui-chip-border-radius: var(--swui-border-radius);
+  --swui-chip-border-radius: 99rem;
 
   /* State vars */
   --current-text-color: var(--swui-white);
@@ -35,7 +35,11 @@
 
   .label {
     white-space: nowrap;
-    padding: 0 var(--swui-metrics-space);
+    padding: 0 calc(var(--swui-metrics-space) * 2);
+
+    &.removable {
+      padding: 0 6px 0 var(--swui-metrics-indent);
+    }
   }
 
   button {
@@ -53,6 +57,10 @@
       outline: none;
     }
 
+    &:focus-visible {
+      outline: var(--swui-focus-outline);
+    }
+
     &:active {
       background-color: var(--current-bg-color-active);
     }
@@ -68,31 +76,44 @@
     }
   }
 
-  .clickable {
-  }
-
   .close {
-    padding-left: var(--swui-metrics-space);
-    padding-right: var(--swui-metrics-space);
+    padding-left: 2px;
+    padding-right: 2px;
+
+    .circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--lhds-color-ui-50);
+      border-radius: var(--swui-max-border-radius);
+      width: 20px;
+      height: 20px;
+    }
 
     svg {
-      color: var(--current-text-color);
+      color: var(--modern-blue);
+    }
+
+    &:hover {
+      svg {
+        color: var(--core-blue);
+      }
     }
   }
 
   &.primary {
-    --current-bg-color: var(--swui-primary-action-color);
-    --current-text-color: var(--swui-white);
-    --current-bg-color-hover: var(--lhds-color-blue-600);
-    --current-bg-color-focus: var(--lhds-color-blue-700);
-    --current-bg-color-active: var(--lhds-color-blue-800);
+    --current-bg-color: var(--himmel-light);
+    --current-text-color: var(--black);
+    --current-bg-color-hover: var(--himmel);
+    --current-bg-color-focus: var(--himmel);
+    --current-bg-color-active: var(--lhds-color-blue-300);
   }
 
   &.secondary {
-    --current-bg-color: var(--lhds-color-blue-100);
-    --current-text-color: var(--lhds-color-blue-800);
-    --current-bg-color-hover: var(--lhds-color-blue-200);
-    --current-bg-color-focus: var(--lhds-color-blue-200);
-    --current-bg-color-active: var(--lhds-color-blue-300);
+    --current-bg-color: var(--silver-ui);
+    --current-text-color: var(--black);
+    --current-bg-color-hover: var(--silver-light);
+    --current-bg-color-focus: var(--silver-light);
+    --current-bg-color-active: var(--silver);
   }
 }

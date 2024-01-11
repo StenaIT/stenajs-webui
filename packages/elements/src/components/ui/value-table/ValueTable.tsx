@@ -14,6 +14,7 @@ export type ValueTableVariant =
 export interface ValueTableProps {
   header?: string;
   footer?: string;
+  disableBorder?: boolean;
   variant?: ValueTableVariant;
   children?: ReactNode;
 }
@@ -22,6 +23,7 @@ export const ValueTable: React.FC<ValueTableProps> = ({
   children,
   header,
   footer,
+  disableBorder = false,
   variant = "standard",
 }) => {
   return (
@@ -34,7 +36,11 @@ export const ValueTable: React.FC<ValueTableProps> = ({
       <table
         cellPadding={0}
         cellSpacing={0}
-        className={cx(styles.valueTable, styles[variant])}
+        className={cx(
+          styles.valueTable,
+          !disableBorder && styles.withBorder,
+          styles[variant]
+        )}
       >
         <tbody>
           {Children.map(children, (child, index) => (

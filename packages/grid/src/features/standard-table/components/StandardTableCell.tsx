@@ -20,6 +20,7 @@ import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatValueLabel } from "../util/LabelFormatter";
 import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
+import { DefaultStandardTableCellRenderer } from "../config/StandardTableColumnConfig";
 
 export interface StandardTableCellProps<TItem> {
   columnId: string;
@@ -30,6 +31,11 @@ export interface StandardTableCellProps<TItem> {
   borderFromGroup?: boolean | string;
   disableBorderLeft?: boolean;
 }
+
+const fallbackCellRenderer: DefaultStandardTableCellRenderer<unknown> = ({
+  label,
+  textSize,
+}) => <TextCell label={label} size={textSize} />;
 
 export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
   columnId,
@@ -58,6 +64,9 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     return selectedIds.indexOf(itemKey) >= 0;
   }, [itemKey, selectedIds]);
 
+  const { defaultCellRenderer = fallbackCellRenderer, defaultTextSize } =
+    useStandardTableConfig();
+
   const {
     itemValueResolver,
     itemLabelFormatter,
@@ -65,7 +74,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
     minWidth,
     justifyContentCell = "flex-start",
     borderLeft,
-    renderCell,
+    renderCell = defaultCellRenderer,
     gridCellOptions: gridCellOptionsForColumn,
     isEditable,
     onChange,
@@ -132,20 +141,17 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
 
   const content = useMemo(
     () =>
-      renderCell ? (
-        renderCell({
-          label,
-          value: itemValue,
-          item,
-          gridCell,
-          isEditable: editable,
-          isSelected,
-          zIndex: currentZIndex,
-          itemKey,
-        })
-      ) : (
-        <TextCell label={label} />
-      ),
+      renderCell({
+        label,
+        value: itemValue,
+        item,
+        gridCell,
+        isEditable: editable,
+        isSelected,
+        zIndex: currentZIndex,
+        textSize: defaultTextSize,
+        itemKey,
+      }),
     [
       renderCell,
       label,
@@ -156,6 +162,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<TItem>({
       isSelected,
       currentZIndex,
       itemKey,
+      defaultTextSize,
     ]
   );
 

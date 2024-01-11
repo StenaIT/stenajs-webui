@@ -1,50 +1,29 @@
 .navBarButton {
-  /* Theme vars */
-  --swui-nav-bar-button-text-color: var(--lhds-color-ui-50);
-  --swui-nav-bar-button-background-color: transparent;
-  --swui-nav-bar-button-background-color-hover: var(--lhds-color-blue-900);
-  --swui-nav-bar-button-background-color-focus: var(--lhds-color-blue-700);
-  --swui-nav-bar-button-background-color-active: var(--lhds-color-blue-800);
-  --swui-nav-bar-button-background-color-selected: var(--lhds-color-blue-600);
-  --swui-nav-bar-button-background-color-selected-hover: var(
-    --lhds-color-blue-700
-  );
-  --swui-nav-bar-button-background-color-selected-focus: var(
-    --lhds-color-blue-700
-  );
-  --swui-nav-bar-button-background-color-selected-active: var(
-    --lhds-color-blue-800
-  );
+  &:hover {
+    background: var(--lhds-color-ui-100);
+  }
 
-  /* Flatbutton overrrides */
-  --swui-flat-button-text-color: var(--swui-nav-bar-button-text-color);
-  --swui-flat-button-icon-color: var(--swui-nav-bar-button-text-color);
-  --swui-flat-button-text-color-active: var(--swui-nav-bar-button-text-color);
-  --swui-flat-button-background-color: var(
-    --swui-nav-bar-button-background-color
-  );
-  --swui-flat-button-background-color-hover: var(
-    --swui-nav-bar-button-background-color-hover
-  );
-  --swui-flat-button-background-color-focus: var(
-    --swui-nav-bar-button-background-color-focus
-  );
-  --swui-flat-button-background-color-active: var(
-    --swui-nav-bar-button-background-color-active
-  );
+  &:focus-visible {
+    background: var(--lhds-color-ui-200);
+  }
+
+  &:active {
+    background: var(--lhds-color-ui-200);
+  }
 
   &.selected {
-    --swui-flat-button-background-color: var(
-      --swui-nav-bar-button-background-color-selected
-    );
-    --swui-flat-button-background-color-hover: var(
-      --swui-nav-bar-button-background-color-selected-hover
-    );
-    --swui-flat-button-background-color-focus: var(
-      --swui-nav-bar-button-background-color-selected-focus
-    );
-    --swui-flat-button-background-color-active: var(
-      --swui-nav-bar-button-background-color-selected-active
-    );
+    background: var(--lhds-color-blue-200);
+
+    &:hover {
+      background: var(--lhds-color-blue-100);
+    }
+
+    &:focus-visible {
+      background: var(--lhds-color-blue-300);
+    }
+
+    &:active {
+      background: var(--lhds-color-blue-200);
+    }
   }
 }

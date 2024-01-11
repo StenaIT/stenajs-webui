@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>mouse</title>
+    <g id="mouse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,0 C16.418278,0 20,3.581722 20,8 L20,16 C20,20.418278 16.418278,24 12,24 C7.581722,24 4,20.418278 4,16 L4,8 C4,3.581722 7.581722,0 12,0 Z M12,2 C8.6862915,2 6,4.6862915 6,8 L6,16 C6,19.3137085 8.6862915,22 12,22 C15.3137085,22 18,19.3137085 18,16 L18,8 C18,4.6862915 15.3137085,2 12,2 Z M12,4 C12.5522847,4 13,4.44771525 13,5 L13,9 C13,9.55228475 12.5522847,10 12,10 C11.4477153,10 11,9.55228475 11,9 L11,5 C11,4.44771525 11.4477153,4 12,4 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>

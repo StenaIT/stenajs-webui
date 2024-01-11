@@ -1,0 +1,139 @@
+.menuButton {
+  --swui-menu-button-item-height: 40px;
+  --swui-menu-button-separator-color: var(--swui-white);
+  --swui-menu-button-text-color: var(--lhds-color-ui-900);
+  --swui-menu-button-icon-color: var(--lhds-color-ui-900);
+  --swui-menu-button-background-color: transparent;
+  --swui-menu-button-background-color-hover: var(--lhds-color-ui-300);
+  --swui-menu-button-background-color-focus: var(--lhds-color-ui-300);
+  --swui-menu-button-background-color-active: var(--lhds-color-ui-400);
+  --swui-menu-button-background-selected: var(--lhds-color-blue-100);
+  --swui-menu-button-background-selected-hover: var(--lhds-color-blue-200);
+  --swui-menu-button-background-selected-focus: var(--lhds-color-blue-200);
+  --swui-menu-button-background-selected-active: var(--lhds-color-blue-100);
+
+  /* State vars */
+  --current-separator-color: var(--swui-menu-button-separator-color);
+  --current-text-color: var(--swui-menu-button-text-color);
+  --current-icon-color: var(--swui-menu-button-icon-color);
+  --current-background-color: var(--swui-menu-button-background-color);
+  --current-background-color-hover: var(
+    --swui-menu-button-background-color-hover
+  );
+  --current-background-color-focus: var(
+    --swui-menu-button-background-color-focus
+  );
+  --current-background-color-active: var(
+    --swui-menu-button-background-color-active
+  );
+  --current-background-selected: var(--swui-menu-button-background-selected);
+  --current-background-selected-hover: var(
+    --swui-menu-button-background-selected-hover
+  );
+  --current-background-selected-focus: var(
+    --swui-menu-button-background-selected-focus
+  );
+  --current-background-selected-active: var(
+    --swui-menu-button-background-selected-active
+  );
+
+  /* Styling */
+
+  background-color: var(--current-background-color);
+
+  .label {
+    text-align: start;
+    flex: 1;
+    font-size: var(--current-text-size, var(--swui-font-size-medium));
+  }
+
+  .buttonLink {
+    text-decoration: none;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 0;
+    cursor: pointer;
+    border-radius: var(--swui-max-border-radius);
+    background: var(--current-background-color);
+    min-height: var(--swui-menu-button-item-height);
+    min-width: var(--swui-menu-button-item-height);
+
+    padding: 0 calc(1 * var(--swui-metrics-indent));
+
+    &.hasLabel {
+      padding: 0 calc(2 * var(--swui-metrics-indent));
+    }
+
+    &.success {
+      --current-text-color: var(--swui-menu-button-text-color);
+      --current-background-color-hover: var(--lhds-color-green-100);
+      --current-background-color-focus: var(--lhds-color-green-100);
+      --current-background-color-active: var(--lhds-color-ui-200);
+    }
+
+    &.danger {
+      --current-text-color: var(--lhds-color-red-600);
+      --current-background-color-hover: var(--lhds-color-red-100);
+      --current-background-color-focus: var(--lhds-color-red-100);
+      --current-background-color-active: var(--lhds-color-ui-200);
+    }
+
+    &.disabled {
+      --current-text-color: var(--lhds-color-ui-500);
+      --current-background-color-hover: var(
+        --swui-menu-button-background-color
+      );
+      --current-background-color-focus: var(
+        --swui-menu-button-background-color
+      );
+      --current-background-color-active: var(
+        --swui-menu-button-background-color
+      );
+    }
+
+    [data-collapsed] [aria-expanded="true"] &,
+    &:hover {
+      background: var(--current-background-color-hover);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      background: var(--current-background-color-focus);
+      outline: var(--swui-focus-outline);
+      outline-offset: var(--swui-focus-outline-width);
+    }
+
+    &:active {
+      background: var(--current-background-color-active);
+    }
+
+    &.iconOnly {
+      aspect-ratio: 1;
+      justify-content: center;
+    }
+
+    &.selected {
+      background: var(--current-background-selected);
+
+      &:hover {
+        background: var(--current-background-selected-hover);
+      }
+
+      &:focus-visible {
+        background: var(--current-background-selected-focus);
+      }
+
+      &:active {
+        background: var(--current-background-selected-active);
+      }
+    }
+  }
+}

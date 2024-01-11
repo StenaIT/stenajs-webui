@@ -1,5 +1,8 @@
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { Icon, InputSpinner } from "@stenajs-webui/elements";
+import {
+  Icon,
+  InputSpinner,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import { CrudStatus } from "@stenajs-webui/redux";
 import { cssColor } from "@stenajs-webui/theme";
 import { Tooltip } from "@stenajs-webui/tooltip";
@@ -29,7 +32,7 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
   if (hasError) {
     const icon = (
       <Icon
-        icon={faExclamationTriangle}
+        icon={stenaExclamationTriangle}
         color={cssColor("--lhds-color-orange-600")}
         size={14}
       />

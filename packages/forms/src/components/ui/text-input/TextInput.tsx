@@ -24,6 +24,10 @@ interface ExtraContent {
   contentLeft?: React.ReactNode;
   /** React node to put to the right. Right icon is ignored if this is set. */
   contentRight?: React.ReactNode;
+  /** TextInputButton to the left. Left icon and content is ignored if this is set. */
+  buttonLeft?: React.ReactNode;
+  /** React node to put to the right. Right icon and content is ignored if this is set. */
+  buttonRight?: React.ReactNode;
   /** If true, there will be no padding between contentLeft/contentRight and the border. */
   disableContentPadding?: boolean;
   /** If true, there will be no padding between contentLeft and the border. */
@@ -34,10 +38,6 @@ interface ExtraContent {
   iconLeft?: IconDefinition;
   /** Icon on the right side. */
   iconRight?: IconDefinition;
-  /** On click left. */
-  onClickLeft?: () => void;
-  /** On click right. */
-  onClickRight?: () => void;
 }
 
 export interface TextInputProps
@@ -64,6 +64,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     inputRef,
     disabled,
     className,
+    buttonLeft,
+    buttonRight,
     contentLeft,
     contentRight,
     disableContentPadding,
@@ -71,8 +73,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     disableContentPaddingRight,
     iconLeft,
     iconRight,
-    onClickLeft,
-    onClickRight,
     moveCursorToEndOnMount,
     selectAllOnMount,
     autoFocus,
@@ -139,7 +139,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         disableContentPaddingRight={disableContentPaddingRight}
         icon={iconLeft}
         spaceOnLeft
-        onClick={onClickLeft}
+        button={buttonLeft}
       />
       <input
         className={cx(styles.input, className)}
@@ -157,7 +157,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         disableContentPaddingRight={disableContentPaddingRight}
         icon={currentIconRight}
         spaceOnRight
-        onClick={onClickRight}
+        button={buttonRight}
       />
     </div>
   );

@@ -30,7 +30,7 @@ jobs:
           build-script: "-v" # Will execute `yarn run -v` (essentially a no-op)
           pattern: "packages/*/dist/*.js"
       - name: Create Release
-        if: ${{ github.event_name == 'push' && github.ref_name == 'master' && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
+        if: ${{ github.event_name == 'push' && (github.ref_name == 'master' || github.ref_name == 'next')  && !contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') }}
         run: |
           yarn auto shipit
           rm $HOME/.npmrc || true

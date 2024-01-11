@@ -26,7 +26,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@react-aria/focus": "3.3.0",
+    "@react-aria/focus": "^3.15.0",
     "@stenajs-webui/core": "18.12.3",
     "@stenajs-webui/theme": "18.12.3",
     "classnames": "^2.3.1"

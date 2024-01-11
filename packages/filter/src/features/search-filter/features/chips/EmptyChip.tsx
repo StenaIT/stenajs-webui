@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ChipSpacer } from "./ChipSpacer";
 import { Chip } from "@stenajs-webui/elements";
 import { useCallback } from "react";
 import { useSearchFilterDispatch } from "../../context/SearchFilterDispatchContext";
@@ -23,9 +22,5 @@ export const EmptyChip = function EmptyChip<TSectionKey extends string>({
     dispatch(actions.openFilters());
   }, [actions, dispatch, sectionId]);
 
-  return (
-    <ChipSpacer>
-      <Chip label={label} variant={"secondary"} onClick={onClickLabel} />
-    </ChipSpacer>
-  );
+  return <Chip label={label} variant={"secondary"} onClick={onClickLabel} />;
 };

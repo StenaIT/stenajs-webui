@@ -3,23 +3,47 @@ import { useState } from "react";
 import {
   FlatButton,
   Link,
+  PrimaryButton,
+  SecondaryButton,
+  stenaBell,
   stenaCalendarManage,
   stenaCheck,
+  stenaCheckCircle,
+  stenaExclamationTriangle,
   stenaInfoCircle,
   stenaInfoMegaphone,
+  stenaMinus,
+  stenaPlugin,
+  stenaQuestionBubble,
   stenaSms,
+  Tab,
+  TabMenu,
   Tag,
 } from "@stenajs-webui/elements";
-import { Box, Column, Row, Space, Txt } from "@stenajs-webui/core";
+import {
+  Box,
+  Column,
+  Row,
+  Space,
+  Txt,
+  useBoolean,
+  Text,
+} from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Notification, NotificationProps } from "./Notification";
-import { Story } from "@storybook/react";
+
 import {
   colorListControl,
   hideControl,
   textControl,
 } from "../../storybook-helpers/storybook-controls";
-import { formatDistance } from "date-fns";
+import { formatDistance, subMinutes } from "date-fns";
+import { NavBar } from "../nav-bar/NavBar";
+import { NavBarNotificationButton } from "../nav-bar/NavBarNotificationButton";
+import { Drawer, DrawerHeader } from "@stenajs-webui/modal";
+import { NavBarHeading } from "../nav-bar/NavBarHeading";
+import { NotificationList } from "./NotificationList";
+import { Story } from "@storybook/react";
 
 export default {
   title: "panels/Notifications/Notification",
@@ -43,15 +67,131 @@ export default {
   },
 };
 
+export const Demo = () => {
+  const [isOpen, , close, toggle] = useBoolean(true);
+  const [tab, setTab] = useState(0);
+
+  return (
+    <>
+      <NavBar
+        right={
+          <NavBarNotificationButton count={3} unread={true} onClick={toggle} />
+        }
+        left={<NavBarHeading>Stena Line</NavBarHeading>}
+        showMenuButton={true}
+      />
+      <Drawer isOpen={isOpen} onRequestClose={close} slideFrom={"right"}>
+        <DrawerHeader
+          header={"Notifications"}
+          icon={stenaBell}
+          onRequestClose={close}
+        />
+        <TabMenu>
+          <Tab
+            label={"Bookings (24)"}
+            selected={tab === 0}
+            onClick={() => setTab(0)}
+          />
+          <Tab
+            label={"Urgent message (12)"}
+            selected={tab === 1}
+            onClick={() => setTab(1)}
+          />
+        </TabMenu>
+        <NotificationList>
+          <Notification
+            text={"Liverpool (Birkenhead) / Belfast service - Shared cabins"}
+            timestamp={`${formatDistance(
+              new Date(),
+              subMinutes(new Date(), 3)
+            )} ago`}
+            unread
+            icon={stenaQuestionBubble}
+            iconAriaLabel={"Information"}
+          >
+            <Text>Please be informed that on the 6th January CST open..</Text>
+            <Row justifyContent={"flex-end"}>
+              <FlatButton label={"Read more"} />
+            </Row>
+          </Notification>
+          <Notification
+            text={"Plug-ins"}
+            timestamp={`${formatDistance(
+              new Date(),
+              subMinutes(new Date(), 12)
+            )} ago`}
+            unread
+            icon={stenaPlugin}
+            iconAriaLabel={"Information"}
+          >
+            <Column gap={2}>
+              <Text>Do you want to add plugins to your booking?</Text>
+              <Row gap={2}>
+                <PrimaryButton label={"Yes"} />
+                <SecondaryButton label={"No"} />
+              </Row>
+            </Column>
+          </Notification>
+          <Notification
+            text={"1 booking confirmed"}
+            timestamp={`${formatDistance(
+              new Date(),
+              subMinutes(new Date(), 18)
+            )} ago`}
+            icon={stenaCheckCircle}
+            iconAriaLabel={"Information"}
+            onClose={() => {}}
+          >
+            <Column gap={2}>
+              <Link>GOFR 2022-09-06</Link>
+              <Link>45678976</Link>
+            </Column>
+          </Notification>
+          <Notification
+            text={"Booking 87654654 cancelled"}
+            timestamp={`${formatDistance(
+              new Date(),
+              subMinutes(new Date(), 18)
+            )} ago`}
+            icon={stenaMinus}
+            iconAriaLabel={"Information"}
+            onClose={() => {}}
+          >
+            <Column gap={2}>
+              <Link>GOFR 2022-09-06</Link>
+              <Link>45678976</Link>
+            </Column>
+          </Notification>
+          <Notification
+            unread
+            variant={"danger"}
+            text={"1 booking not added"}
+            timestamp={`${formatDistance(
+              new Date(),
+              subMinutes(new Date(), 8)
+            )} ago`}
+            icon={stenaExclamationTriangle}
+            iconAriaLabel={"Information"}
+            onClose={() => {}}
+          >
+            <Text>
+              There was a problem. Please review your information and try again.
+            </Text>
+          </Notification>
+        </NotificationList>
+      </Drawer>
+    </>
+  );
+};
+
 export const Overview: Story<NotificationProps> = (props) => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification {...props} />
   </Box>
 );
 Overview.args = {
   text: "1 booking confirmed",
   icon: stenaCheck,
-  iconColor: cssColor("--lhds-color-green-600"),
   timestamp: `${formatDistance(new Date(), new Date())} ago`,
   children: (
     <Column alignItems={"flex-start"}>
@@ -66,34 +206,23 @@ Overview.args = {
 };
 
 export const Minimal = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification text={"You need at least some text"} />
   </Box>
 );
 
 export const Icon = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
       iconAriaLabel={"Information"}
-    />
-  </Box>
-);
-
-export const IconColour = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
-    <Notification
-      text={"Hey, listen!"}
-      icon={stenaInfoMegaphone}
-      iconAriaLabel={"Information"}
-      iconColor={cssColor("--lhds-color-blue-500")}
     />
   </Box>
 );
 
 export const LongText = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={
         "Try to keep the text short but if it should need several rows it wraps like this"
@@ -105,7 +234,7 @@ export const LongText = () => (
 );
 
 export const Timestamp = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
@@ -116,7 +245,7 @@ export const Timestamp = () => (
 );
 
 export const LeftContent = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"Custom content"}
       contentLeft={
@@ -131,7 +260,7 @@ export const LeftContent = () => (
 );
 
 export const RightContent = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"24 nov 06:10"}
       icon={stenaCalendarManage}
@@ -142,7 +271,7 @@ export const RightContent = () => (
 );
 
 export const Content = () => (
-  <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+  <Box width={300}>
     <Notification
       text={"24 nov 06:10"}
       icon={stenaCalendarManage}
@@ -173,7 +302,7 @@ export const CloseFunction = () => {
 
   return (
     showNotification && (
-      <Box width={300} background={cssColor("--lhds-color-ui-50")}>
+      <Box width={300}>
         <Notification
           text={"Temporary timetable changes"}
           timestamp={`${formatDistance(new Date(), new Date())} ago`}

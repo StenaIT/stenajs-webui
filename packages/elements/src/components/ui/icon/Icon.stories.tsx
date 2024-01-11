@@ -5,7 +5,7 @@ import {
   faShip,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { Indent, Row, Space, Text, Txt } from "@stenajs-webui/core";
+import { Column, Row, Text, Txt } from "@stenajs-webui/core";
 import { Icon, IconProps } from "./Icon";
 import { Story } from "@storybook/react";
 import {
@@ -33,48 +33,45 @@ export const WithSpin = () => <Icon icon={faSpinner} spin={true} />;
 export const WithPulse = () => <Icon icon={faSpinner} pulse={true} />;
 
 export const HorizontalFlip = () => (
-  <>
-    <Row>
+  <Column gap={4}>
+    <Row gap={2} alignItems={"center"}>
       <Text>Normal</Text>
-      <Space />
       <Icon icon={faBicycle} />
     </Row>
-    <Row>
-      <Text>Flipped</Text> <Space />
+    <Row gap={2} alignItems={"center"}>
+      <Text>Flipped</Text>
       <Icon icon={faBicycle} flip={"horizontal"} />
     </Row>
-  </>
+  </Column>
 );
 
 export const VerticalFlip = () => (
-  <>
-    <Row>
+  <Column gap={4}>
+    <Row gap={2} alignItems={"center"}>
       <Text>Normal</Text>
-      <Space />
       <Icon icon={faBicycle} />
     </Row>
-    <Row>
-      <Text>Flipped</Text> <Space />
+    <Row gap={2} alignItems={"center"}>
+      <Text>Flipped</Text>
       <Icon icon={faBicycle} flip={"vertical"} />
     </Row>
-  </>
+  </Column>
 );
 
 export const WithRotation = () => (
-  <Row>
-    <Indent>
+  <Row gap={2}>
+    <Column alignItems={"center"} gap={2}>
       <Text>90</Text>
-      <Space />
       <Icon icon={faShip} rotation={90} />
-    </Indent>
-    <Indent>
-      <Text>180</Text> <Space />
+    </Column>
+    <Column alignItems={"center"} gap={2}>
+      <Text>180</Text>
       <Icon icon={faShip} rotation={180} />
-    </Indent>
-    <Indent>
-      <Text>270</Text> <Space />
+    </Column>
+    <Column alignItems={"center"} gap={2}>
+      <Text>270</Text>
       <Icon icon={faShip} rotation={270} />
-    </Indent>
+    </Column>
   </Row>
 );
 

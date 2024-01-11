@@ -1,4 +1,5 @@
-import { Box, Row } from "@stenajs-webui/core";
+import { Box } from "@stenajs-webui/core";
+import { stenaCalendar, TextInputButton } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
@@ -15,7 +16,6 @@ import { DateTextInputCalendarProps } from "../date-text-input/DateTextInput";
 import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
-import { FlatButton, stenaCalendar } from "@stenajs-webui/elements";
 
 export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
   /** The current value */
@@ -112,18 +112,10 @@ export const DateInput: React.FC<DateInputProps> = ({
       >
         <TextInput
           type={"date"}
-          contentRight={
-            <Row alignItems={"center"}>
-              <FlatButton
-                size={"small"}
-                disabled={disabled}
-                leftIcon={stenaCalendar}
-                onClick={showCalendar}
-              />
-            </Row>
-          }
           onFocus={showCalendar}
-          onClickRight={showCalendar}
+          buttonRight={
+            <TextInputButton onClick={showCalendar} icon={stenaCalendar} />
+          }
           value={value ? format(value, displayFormat) : ""}
           placeholder={placeholder}
           size={9}

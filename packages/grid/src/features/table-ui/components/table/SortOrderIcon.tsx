@@ -1,4 +1,4 @@
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faSortAlphaDown } from "@fortawesome/free-solid-svg-icons/faSortAlphaDown";
 import { faSortAlphaUp } from "@fortawesome/free-solid-svg-icons/faSortAlphaUp";
 import { faSortAmountDownAlt } from "@fortawesome/free-solid-svg-icons/faSortAmountDownAlt";

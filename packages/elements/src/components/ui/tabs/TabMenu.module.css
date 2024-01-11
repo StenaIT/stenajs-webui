@@ -1,12 +1,11 @@
 .tabMenu {
-  --swui-tab-menu-height: 40px;
   --swui-tab-menu-border-color: var(--lhds-color-ui-200);
 
   /*
   Styling
    */
+  gap: calc(var(--swui-metrics-indent) * 2);
   display: flex;
-  height: var(--swui-tab-menu-height);
 
   &.withBorder {
     border-bottom: 1px solid var(--swui-tab-menu-border-color);

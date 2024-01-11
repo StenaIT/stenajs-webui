@@ -154,6 +154,9 @@ export const createStylesFromTheme = <
       false,
       variant
     ),
+    outline: isFocused ? "var(--swui-focus-outline)" : undefined,
+    outlineOffset: isFocused ? "-1px" : undefined,
+    transition: "none",
     boxShadow: isFocused ? input.boxShadowFocused : undefined,
     "&:hover": {
       "--swui-select-border-color": resolveInputBorderColor(
@@ -178,6 +181,7 @@ export const createStylesFromTheme = <
   }),
   input: (base) => ({
     ...base,
+    minHeight: input.minHeight,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
     color: input.textColor,
@@ -224,12 +228,20 @@ export const createStylesFromTheme = <
     ...base,
     padding: "0 8px",
   }),
-  dropdownIndicator: (base, { isFocused }) => ({
+  dropdownIndicator: (base, { isFocused, isDisabled }) => ({
     ...base,
     padding: "5px",
-    color: isFocused ? arrowColor.focused.standard : arrowColor.closed.standard,
+    color: isDisabled
+      ? arrowColor.disabled
+      : isFocused
+      ? arrowColor.focused.standard
+      : arrowColor.closed.standard,
     "&:hover": {
-      color: isFocused ? arrowColor.focused.hover : arrowColor.closed.hover,
+      color: isDisabled
+        ? arrowColor.disabled
+        : isFocused
+        ? arrowColor.focused.hover
+        : arrowColor.closed.hover,
     },
     svg: {
       width: 14,

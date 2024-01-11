@@ -22,9 +22,9 @@ export const Demo = () => (
 
 export const Overview = () => {
   return (
-    <Box gap={5}>
+    <Box gap={5} alignItems={"flex-start"}>
       {routeLegSizes.map((size) => (
-        <Box width={220} gap={2} key={size}>
+        <Box gap={2} key={size}>
           <Heading as={"h4"}>{size}</Heading>
           <RouteLeg
             variant={"ship"}
@@ -68,7 +68,7 @@ export const WithChildren = () => (
 );
 
 export const Compact = () => (
-  <Box width={220}>
+  <Box alignItems={"flex-start"}>
     <RouteLeg
       variant={"ship"}
       departure={{ location: "Göteborg", dateTime: "23 Aug 09:10" }}
@@ -79,7 +79,7 @@ export const Compact = () => (
 );
 
 export const CompactWithChildren = () => (
-  <Box width={220}>
+  <Box alignItems={"flex-start"}>
     <RouteLeg
       variant={"ship"}
       departure={{ location: "Göteborg", dateTime: "23 Aug 09:10" }}
@@ -91,46 +91,42 @@ export const CompactWithChildren = () => (
   </Box>
 );
 export const StandardWithStrikethrough = () => (
-  <Box width={220}>
-    <RouteLeg
-      variant={"ship"}
-      departure={{
-        location: "Göteborg",
-        dateTime: "23 Aug 09:15",
-        originalDateTime: "23 Aug 09:10",
-      }}
-      arrival={{
-        location: "Frederikshavn",
-        dateTime: "23 Aug 12:50",
-        originalDateTime: "23 Aug 12:40",
-      }}
-      label={"1st route"}
-    />
-  </Box>
+  <RouteLeg
+    variant={"ship"}
+    departure={{
+      location: "Göteborg",
+      dateTime: "23 Aug 09:15",
+      originalDateTime: "23 Aug 09:10",
+    }}
+    arrival={{
+      location: "Frederikshavn",
+      dateTime: "23 Aug 12:50",
+      originalDateTime: "23 Aug 12:40",
+    }}
+    label={"1st route"}
+  />
 );
 
 export const RelaxedWithStrikethrough = () => (
-  <Box width={220}>
-    <RouteLeg
-      variant={"ship"}
-      departure={{
-        location: "Göteborg",
-        dateTime: "23 Aug 09:15",
-        originalDateTime: "23 Aug 09:10",
-      }}
-      arrival={{
-        location: "Frederikshavn",
-        dateTime: "23 Aug 12:50",
-        originalDateTime: "23 Aug 12:40",
-      }}
-      size={"relaxed"}
-      label={"1st route"}
-    />
-  </Box>
+  <RouteLeg
+    variant={"ship"}
+    departure={{
+      location: "Göteborg",
+      dateTime: "23 Aug 09:15",
+      originalDateTime: "23 Aug 09:10",
+    }}
+    arrival={{
+      location: "Frederikshavn",
+      dateTime: "23 Aug 12:50",
+      originalDateTime: "23 Aug 12:40",
+    }}
+    size={"relaxed"}
+    label={"1st route"}
+  />
 );
 
 export const CompactWithStrikethrough = () => (
-  <Box width={220}>
+  <Box alignItems={"flex-start"}>
     <RouteLeg
       variant={"ship"}
       departure={{
@@ -150,7 +146,7 @@ export const CompactWithStrikethrough = () => (
 );
 
 export const CompactWithLabel = () => (
-  <Box width={220}>
+  <Box alignItems={"flex-start"}>
     <RouteLeg
       variant={"ship"}
       departure={{ location: "Göteborg", dateTime: "23 Aug 09:10" }}
@@ -162,7 +158,7 @@ export const CompactWithLabel = () => (
 );
 
 export const CompactWithLabelSelected = () => (
-  <Box width={220}>
+  <Box width={250}>
     <RouteLeg
       variant={"ship"}
       departure={{ location: "Göteborg", dateTime: "23 Aug 09:10" }}
@@ -184,7 +180,7 @@ export const Relaxed = () => (
 );
 
 export const RelaxedSelected = () => (
-  <Box width={220}>
+  <Box width={250}>
     <RouteLeg
       variant={"rail"}
       departure={{ location: "Göteborg", dateTime: "23 Aug 09:10" }}
@@ -232,7 +228,7 @@ export const Multileg = () => (
 );
 
 export const MultilegCompact = () => (
-  <Box width={264} border={`1px solid ${cssColor("--lhds-color-ui-300")}`}>
+  <Box width={270} border={`1px solid ${cssColor("--lhds-color-ui-300")}`}>
     <Box indent={3} spacing={3}>
       <RouteLeg
         variant={"rail"}

@@ -4,6 +4,7 @@ import { faCreditCard } from "@fortawesome/free-solid-svg-icons/faCreditCard";
 import { faJedi } from "@fortawesome/free-solid-svg-icons/faJedi";
 import {
   Box,
+  Column,
   Heading,
   Indent,
   Row,
@@ -13,7 +14,6 @@ import {
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { stenaTimes } from "../../../icons/ui/IconsUi";
 import { FlatButton } from "../buttons/FlatButton";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { Icon } from "../icon/Icon";
@@ -21,23 +21,49 @@ import { Tag } from "../tag/Tag";
 import { Card } from "./Card";
 import { CardBody } from "./CardBody";
 import { CardHeader } from "./CardHeader";
+import { Story } from "@storybook/react";
+import { CloseButton } from "../buttons/CloseButton";
 
 export default {
   title: "elements/Card",
   component: Card,
   subcomponents: { CardHeader },
+  parameters: {
+    backgrounds: { default: "facebook" },
+  },
+  decorators: [
+    (TheStory: Story) => (
+      <div style={{ width: "500px" }}>
+        <TheStory />
+      </div>
+    ),
+  ],
 };
 
 export const Demo = () => {
   return (
-    <Card>
-      <CardHeader text={"Overview"} />
-      <CardBody>
-        <Heading variant={"h5"}>Subheader</Heading>
-        <Space />
-        <Text>Lorem ipsavablasfasofofa</Text>
-      </CardBody>
-    </Card>
+    <Column gap={4}>
+      <Column indent={4} spacing={4}>
+        <Card>
+          <CardHeader text={"Overview"} />
+          <CardBody>
+            <Heading variant={"h5"}>Subheader</Heading>
+            <Space />
+            <Text>Lorem ipsavablasfasofofa</Text>
+          </CardBody>
+        </Card>
+      </Column>
+      <Column indent={4} spacing={4} background={cssColor("--silver-lighter")}>
+        <Card>
+          <CardHeader text={"Overview"} />
+          <CardBody>
+            <Heading variant={"h5"}>Subheader</Heading>
+            <Space />
+            <Text>Lorem ipsavablasfasofofa</Text>
+          </CardBody>
+        </Card>
+      </Column>
+    </Column>
   );
 };
 
@@ -109,7 +135,7 @@ export const Details = () => {
           <Row alignItems={"center"}>
             <SecondaryButton label={"Booking actions"} />
             <Indent />
-            <FlatButton leftIcon={stenaTimes} />
+            <CloseButton />
           </Row>
         }
       />
@@ -132,7 +158,7 @@ export const Unpaid = () => {
       <CardHeader
         text={"71338164"}
         contentLeft={<Tag label={"Unpaid"} variant={"error"} />}
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -160,7 +186,7 @@ export const Switch = () => {
             <Text>Confirmed</Text>
           </Row>
         }
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>
@@ -188,7 +214,7 @@ export const Approved = () => {
             color={cssColor("--lhds-color-green-600")}
           />
         }
-        contentRight={<FlatButton leftIcon={stenaTimes} />}
+        contentRight={<CloseButton />}
       />
       <CardBody>
         <Heading variant={"h5"}>Subheader</Heading>

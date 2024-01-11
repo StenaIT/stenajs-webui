@@ -9,8 +9,6 @@
   --swui-link-color-active: var(--swui-text-action-color-active);
   --swui-link-color-focus: var(--swui-text-action-color-focus);
   --swui-link-color-disabled: var(--lhds-color-ui-600);
-  --swui-link-focus-highlight-color: var(--lhds-color-blue-300);
-  --swui-link-focus-highlight-color-disabled: var(--swui-link-color-disabled);
 
   /* Current */
   --current-color: var(--swui-link-color);
@@ -28,23 +26,22 @@
   font-weight: var(--current-font-weight);
 
   box-sizing: border-box;
-  outline: 1px dashed var(--current-focus-highlight-color);
   text-decoration: var(--swui-link-text-decoration);
 
   &:not(.disabled) {
     cursor: pointer;
   }
 
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+  }
+
   &:focus {
     &:not(:active) {
-      --current-focus-highlight-color: var(--swui-link-focus-highlight-color);
       cursor: pointer;
     }
 
     &.disabled {
-      --current-focus-highlight-color: var(
-        --swui-link-focus-highlight-color-disabled
-      );
       cursor: default;
     }
   }

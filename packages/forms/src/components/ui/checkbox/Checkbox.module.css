@@ -11,7 +11,7 @@
   );
   /* Background */
   --swui-checkbox-unchecked-bg-color: var(--swui-white);
-  --swui-checkbox-checked-bg-color: var(--swui-primary-action-color);
+  --swui-checkbox-checked-bg-color: var(--lhds-color-blue-500);
   --swui-checkbox-disabled-bg-color: var(--swui-field-bg-disabled);
   --swui-checkbox-disabled-checked-bg-color: var(--swui-field-bg-disabled);
 
@@ -19,10 +19,6 @@
   --swui-checkbox-border-color: var(--swui-field-border-color);
   --swui-checkbox-border-hover-color: var(--swui-field-border-color-hover);
   --swui-checkbox-disabled-border-color: var(--swui-checkbox-disabled-bg-color);
-
-  /* Shadow */
-  --swui-checkbox-checked-focus-shadow: var(--swui-field-focus-shadow-inverted);
-  --swui-checkbox-unchecked-focus-shadow: var(--swui-field-focus-shadow);
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -37,8 +33,7 @@
     var(--current-border-color, var(--swui-checkbox-border-color));
   background: var(--current-bg-color, var(--swui-checkbox-unchecked-bg-color));
   transition: background var(--swui-checkbox-animation-time),
-    border-color var(--swui-checkbox-animation-time),
-    box-shadow var(--swui-checkbox-animation-time);
+    border-color var(--swui-checkbox-animation-time);
   flex-shrink: 0;
 
   &.standard {
@@ -163,12 +158,7 @@
   }
 
   &:focus-visible {
-    &:checked {
-      box-shadow: var(--swui-checkbox-checked-focus-shadow);
-    }
-    &:not(:checked) {
-      box-shadow: var(--swui-checkbox-unchecked-focus-shadow);
-    }
+    outline: var(--swui-focus-outline);
   }
 
   & + label {

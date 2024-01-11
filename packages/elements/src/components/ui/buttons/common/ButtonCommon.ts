@@ -1,8 +1,8 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ReactNode } from "react";
 
-export type ButtonSize = "medium" | "small" | "large";
-export type ButtonVariant = "normal" | "danger" | "success";
+export type ButtonSize = "medium" | "small" | "large" | "larger";
+export type ButtonVariant = "normal" | "danger" | "success" | "passive";
 
 export interface CommonButtonProps {
   /** The text on the button. */
@@ -37,4 +37,6 @@ export interface CommonButtonProps {
   leftWrapperClassName?: string;
   /** Right wrapper class name */
   rightWrapperClassName?: string;
+  /** Show only icon when small screen */
+  responsiveIconOnly?: boolean;
 }

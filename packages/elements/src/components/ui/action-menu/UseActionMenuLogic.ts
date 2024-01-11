@@ -32,12 +32,12 @@ export const useActionMenuLogic = <TElement extends HTMLElement>(
       case "ArrowDown":
       case "ArrowRight":
         event.preventDefault();
-        focusManager.focusNext({ wrap: true });
+        focusManager?.focusNext({ wrap: true });
         break;
       case "ArrowUp":
       case "ArrowLeft":
         event.preventDefault();
-        focusManager.focusPrevious({ wrap: true });
+        focusManager?.focusPrevious({ wrap: true });
         break;
       case " ":
         event.preventDefault();

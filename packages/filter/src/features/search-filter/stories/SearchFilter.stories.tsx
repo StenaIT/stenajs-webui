@@ -1,5 +1,14 @@
 import { Box, Heading, Indent, Row, useBoolean } from "@stenajs-webui/core";
-import { Card, FlatButton, PrimaryButton, Tag } from "@stenajs-webui/elements";
+import {
+  FlatButton,
+  PrimaryButton,
+  stenaCalendar,
+  stenaClock,
+  stenaDetails,
+  stenaExclamationTriangle,
+  stenaSailingCargo,
+  Tag,
+} from "@stenajs-webui/elements";
 import * as React from "react";
 import { useState } from "react";
 import { ClearFiltersButton } from "../components/ClearFiltersButton";
@@ -22,6 +31,7 @@ import { SimpleCheckboxListSection } from "../section-factories/boolean-record/c
 import { DateRangeCalendarSection } from "../section-factories/date-range/components/DateRangeCalendarSection";
 import { createChipsPropsForDateRange } from "../section-factories/date-range/DateRangeChips";
 import { createDateRangeSectionProps } from "../section-factories/date-range/DateRangePropsFactory";
+import { SearchFilterClearButton } from "../components/SearchFilterClearButton";
 
 export default {
   title: "filter/SearchFilter",
@@ -321,57 +331,58 @@ export const Demo = () => {
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
-      <Card>
-        <Row
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          indent={2}
-          spacing
-          minHeight={"56px"}
-        >
-          <Row alignItems={"center"}>
-            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
-            <Indent />
-            <SearchFilterButton />
-            <Indent num={0.5} />
-            <SearchFilterChips>
-              <SectionChips
-                sectionId={"comparisonDate"}
-                emptyChipLabel={"No dates"}
-                {...createChipsPropsForDateRange(
-                  state.formModel,
-                  "startDate",
-                  "endDate"
-                )}
-              />
-              <SectionChips
-                sectionId={"divisions"}
-                emptyChipLabel={"All divisions"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "divisions",
-                  divisionOptions
-                )}
-              />
-              <SectionChips
-                sectionId={"categories"}
-                emptyChipLabel={"All categories"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "categories",
-                  categoryOptions
-                )}
-              />
-            </SearchFilterChips>
-          </Row>
+      <Row
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        indent={2}
+        spacing
+        minHeight={"56px"}
+        shadow={"box"}
+      >
+        <Row alignItems={"center"}>
+          <SearchFilterButton />
+          <Indent num={0.5} />
+          <SearchFilterChips>
+            <SectionChips
+              sectionId={"comparisonDate"}
+              emptyChipLabel={"No dates"}
+              {...createChipsPropsForDateRange(
+                state.formModel,
+                "startDate",
+                "endDate"
+              )}
+            />
+            <SectionChips
+              sectionId={"divisions"}
+              emptyChipLabel={"All divisions"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "divisions",
+                divisionOptions
+              )}
+            />
+            <SectionChips
+              sectionId={"categories"}
+              emptyChipLabel={"All categories"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "categories",
+                categoryOptions
+              )}
+            />
+          </SearchFilterChips>
         </Row>
-      </Card>
-      <SearchFilterDrawer>
+      </Row>
+
+      <SearchFilterDrawer headerContentRight={<SearchFilterClearButton />}>
         <DateRangeCalendarSection
+          label={"Date"}
+          leftIcon={stenaCalendar}
           contentRight={
             state.formModel.startDate &&
             state.formModel.endDate && (
               <Tag
+                size={"small"}
                 label={`${state.formModel.startDate} - ${state.formModel.endDate}`}
               />
             )
@@ -384,6 +395,7 @@ export const Demo = () => {
           )}
         />
         <ChipMultiSelectSection
+          leftIcon={stenaSailingCargo}
           contentRight={
             selectedDivisions > 0 && (
               <Tag label={selectedDivisions.toString()} />
@@ -399,6 +411,7 @@ export const Demo = () => {
           }
         />
         <SimpleCheckboxListSection
+          leftIcon={stenaDetails}
           contentRight={
             selectedCategories > 0 && (
               <Tag label={selectedCategories.toString()} />
@@ -412,8 +425,12 @@ export const Demo = () => {
           }
         />
 
-        <ErrorSection sectionId={"error"} />
-        <SearchFilterSection sectionId={"loading"} loading />
+        <ErrorSection leftIcon={stenaExclamationTriangle} sectionId={"error"} />
+        <SearchFilterSection
+          leftIcon={stenaClock}
+          sectionId={"loading"}
+          loading
+        />
       </SearchFilterDrawer>
     </SearchFilterContext>
   );
@@ -435,51 +452,51 @@ export const WithStickyFooter = () => {
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
-      <Card>
-        <Row
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          indent={2}
-          spacing
-          minHeight={"56px"}
-        >
-          <Row alignItems={"center"}>
-            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
-            <Indent />
-            <SearchFilterButton />
-            <Indent num={0.5} />
-            <SearchFilterChips>
-              <SectionChips
-                sectionId={"comparisonDate"}
-                emptyChipLabel={"No dates"}
-                {...createChipsPropsForDateRange(
-                  state.formModel,
-                  "startDate",
-                  "endDate"
-                )}
-              />
-              <SectionChips
-                sectionId={"divisions"}
-                emptyChipLabel={"All divisions"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "divisions",
-                  divisionOptions
-                )}
-              />
-              <SectionChips
-                sectionId={"categories"}
-                emptyChipLabel={"All categories"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "categories",
-                  categoryOptions
-                )}
-              />
-            </SearchFilterChips>
-          </Row>
+      <Row
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        indent={2}
+        spacing
+        minHeight={"56px"}
+        shadow={"box"}
+      >
+        <Row alignItems={"center"}>
+          <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
+          <Indent />
+          <SearchFilterButton />
+          <Indent num={0.5} />
+          <SearchFilterChips>
+            <SectionChips
+              sectionId={"comparisonDate"}
+              emptyChipLabel={"No dates"}
+              {...createChipsPropsForDateRange(
+                state.formModel,
+                "startDate",
+                "endDate"
+              )}
+            />
+            <SectionChips
+              sectionId={"divisions"}
+              emptyChipLabel={"All divisions"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "divisions",
+                divisionOptions
+              )}
+            />
+            <SectionChips
+              sectionId={"categories"}
+              emptyChipLabel={"All categories"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "categories",
+                categoryOptions
+              )}
+            />
+          </SearchFilterChips>
         </Row>
-      </Card>
+      </Row>
+
       <SearchFilterDrawer>
         <Box overflow={"auto"}>
           <DateRangeCalendarSection
@@ -555,51 +572,51 @@ export const WithClearFiltersInHeader = () => {
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
-      <Card>
-        <Row
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          indent={2}
-          spacing
-          minHeight={"56px"}
-        >
-          <Row alignItems={"center"}>
-            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
-            <Indent />
-            <SearchFilterButton />
-            <Indent num={0.5} />
-            <SearchFilterChips>
-              <SectionChips
-                sectionId={"comparisonDate"}
-                emptyChipLabel={"No dates"}
-                {...createChipsPropsForDateRange(
-                  state.formModel,
-                  "startDate",
-                  "endDate"
-                )}
-              />
-              <SectionChips
-                sectionId={"divisions"}
-                emptyChipLabel={"All divisions"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "divisions",
-                  divisionOptions
-                )}
-              />
-              <SectionChips
-                sectionId={"categories"}
-                emptyChipLabel={"All categories"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "categories",
-                  categoryOptions
-                )}
-              />
-            </SearchFilterChips>
-          </Row>
+      <Row
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        indent={2}
+        spacing
+        minHeight={"56px"}
+        shadow={"box"}
+      >
+        <Row alignItems={"center"}>
+          <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
+          <Indent />
+          <SearchFilterButton />
+          <Indent num={0.5} />
+          <SearchFilterChips>
+            <SectionChips
+              sectionId={"comparisonDate"}
+              emptyChipLabel={"No dates"}
+              {...createChipsPropsForDateRange(
+                state.formModel,
+                "startDate",
+                "endDate"
+              )}
+            />
+            <SectionChips
+              sectionId={"divisions"}
+              emptyChipLabel={"All divisions"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "divisions",
+                divisionOptions
+              )}
+            />
+            <SectionChips
+              sectionId={"categories"}
+              emptyChipLabel={"All categories"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "categories",
+                categoryOptions
+              )}
+            />
+          </SearchFilterChips>
         </Row>
-      </Card>
+      </Row>
+
       <SearchFilterDrawer headerContentRight={<ClearFiltersButton />}>
         <DateRangeCalendarSection
           contentRight={
@@ -689,34 +706,34 @@ export const ManyChips = () => {
 
   return (
     <SearchFilterContext state={state} actions={actions} dispatch={dispatch}>
-      <Card>
-        <Row
-          alignItems={"center"}
-          justifyContent={"space-between"}
-          indent={2}
-          spacing
-          minHeight={"56px"}
-        >
-          <Row alignItems={"center"}>
-            <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
-            <Indent />
-            <SearchFilterButton />
-            <Indent num={0.5} />
-            <SearchFilterChips>
-              <SectionChips
-                sectionId={"divisions"}
-                emptyChipLabel={"All divisions"}
-                {...createChipsPropsForBooleanRecord(
-                  state.formModel,
-                  "divisions",
-                  divisionOptions
-                )}
-                chips={divisionOptions}
-              />
-            </SearchFilterChips>
-          </Row>
+      <Row
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        indent={2}
+        spacing
+        minHeight={"56px"}
+        shadow={"box"}
+      >
+        <Row alignItems={"center"}>
+          <Heading style={{ whiteSpace: "nowrap" }}>App name</Heading>
+          <Indent />
+          <SearchFilterButton />
+          <Indent num={0.5} />
+          <SearchFilterChips>
+            <SectionChips
+              sectionId={"divisions"}
+              emptyChipLabel={"All divisions"}
+              {...createChipsPropsForBooleanRecord(
+                state.formModel,
+                "divisions",
+                divisionOptions
+              )}
+              chips={divisionOptions}
+            />
+          </SearchFilterChips>
         </Row>
-      </Card>
+      </Row>
+
       <SearchFilterDrawer>
         <ChipMultiSelectSection
           sectionId={"divisions"}

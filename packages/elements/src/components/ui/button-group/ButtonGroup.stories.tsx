@@ -1,11 +1,15 @@
-import { faAddressBook } from "@fortawesome/free-solid-svg-icons/faAddressBook";
-import { faAnchor } from "@fortawesome/free-solid-svg-icons/faAnchor";
-import { faEraser } from "@fortawesome/free-solid-svg-icons/faEraser";
-import { faRecycle } from "@fortawesome/free-solid-svg-icons/faRecycle";
 import { Row, Spacing } from "@stenajs-webui/core";
 import * as React from "react";
 import { SecondaryButton } from "../buttons/SecondaryButton";
 import { ButtonGroup } from "./ButtonGroup";
+import { FlatButton } from "../buttons/FlatButton";
+import {
+  stenaAccount,
+  stenaAnimals,
+  stenaSailingTicket,
+  stenaSailingTrain,
+  stenaSupport,
+} from "../../../icons/generated/CommonIcons";
 
 export default {
   title: "elements/ButtonGroup",
@@ -17,26 +21,26 @@ export const Overview = () => (
   <>
     <Row>
       <ButtonGroup>
-        <SecondaryButton leftIcon={faRecycle} />
-        <SecondaryButton leftIcon={faAddressBook} />
-        <SecondaryButton leftIcon={faAddressBook} />
-        <SecondaryButton leftIcon={faAddressBook} />
-        <SecondaryButton leftIcon={faAnchor} />
+        <FlatButton leftIcon={stenaAccount} />
+        <FlatButton leftIcon={stenaAnimals} />
+        <FlatButton leftIcon={stenaSailingTicket} />
+        <FlatButton leftIcon={stenaSailingTrain} />
+        <FlatButton leftIcon={stenaSupport} />
       </ButtonGroup>
     </Row>
     <Spacing />
     <Row>
       <ButtonGroup>
-        <SecondaryButton leftIcon={faRecycle} />
-        <SecondaryButton leftIcon={faAddressBook} />
-        <SecondaryButton leftIcon={faAnchor} />
+        <FlatButton leftIcon={stenaSailingTicket} />
+        <FlatButton leftIcon={stenaSailingTrain} />
+        <FlatButton leftIcon={stenaSupport} />
       </ButtonGroup>
     </Row>
     <Spacing />
     <Row>
       <ButtonGroup>
-        <SecondaryButton leftIcon={faEraser} />
-        <SecondaryButton leftIcon={faEraser} />
+        <FlatButton leftIcon={stenaSailingTicket} />
+        <FlatButton leftIcon={stenaSailingTrain} />
       </ButtonGroup>
     </Row>
   </>

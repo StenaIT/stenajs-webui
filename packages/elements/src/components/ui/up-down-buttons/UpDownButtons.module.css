@@ -1,5 +1,4 @@
 .upDownButtons {
-  --swui-stepper-button-focus-shadow: var(--swui-field-focus-shadow);
   --swui-stepper-button-width: 25px;
   align-self: stretch;
 
@@ -14,7 +13,7 @@
     }
 
     &:focus-visible {
-      box-shadow: var(--swui-stepper-button-focus-shadow);
+      outline: var(--swui-focus-outline);
     }
 
     &:disabled {

@@ -156,15 +156,18 @@ export const Overview = () => {
   );
 };
 
-export const CustomActionColorOnMultiple = () => (
-  <Column style={{ "--swui-primary-action-color": "#41ae33" } as any}>
-    <RadioButton name={"testing1"} />
-    <Space />
-    <RadioButton name={"testing2"} />
-    <Space />
-    <RadioButton name={"testing3"} />
-  </Column>
-);
+export const CustomActionColorOnMultiple = () => {
+  const style = { "--swui-radiobutton-checked-bg-color": "#41ae33" } as any;
+  return (
+    <Column>
+      <RadioButton name={"testing1"} style={style} />
+      <Space />
+      <RadioButton name={"testing2"} style={style} />
+      <Space />
+      <RadioButton name={"testing3"} style={style} />
+    </Column>
+  );
+};
 
 export const CustomCheckedBgColorOnSingle = () => (
   <Column>

@@ -1,0 +1,10 @@
+.menuButtonGroupBox {
+  background: var(--lhds-color-ui-200);
+  border-radius: var(--swui-border-radius);
+  gap: var(--swui-metrics-space);
+  display: flex;
+  flex-direction: column;
+  padding: var(--swui-metrics-space);
+
+  --current-text-size: var(--swui-font-size-small);
+}

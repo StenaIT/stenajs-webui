@@ -2,7 +2,7 @@
   --swui-switch-width: 50px;
   --swui-switch-height: var(--swui-field-box-size-medium);
   --swui-switch-animation-time: var(--swui-animation-time-medium);
-  --swui-switch-selected-highlight-color: var(--swui-primary-action-color);
+  --swui-switch-selected-highlight-color: var(--lhds-color-blue-500);
   --swui-switch-knob-width: calc(var(--swui-switch-height) - 2px);
   /* Backgrounds */
   --swui-switch-knob-bg-color-enabled: var(--swui-handle-bg-enabled-color);
@@ -39,8 +39,9 @@
   }
 
   &:focus-visible {
+    outline: var(--swui-focus-outline);
+    outline-offset: 2px;
     border: 1px solid var(--swui-switch-selected-highlight-color);
-    box-shadow: inset var(--swui-switch-selected-highlight-color) 0 0 4px 0;
   }
 
   &:hover {

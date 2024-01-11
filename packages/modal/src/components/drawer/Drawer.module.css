@@ -1,4 +1,6 @@
 .portal {
+  --drawer-width: 370px;
+
   .overlay {
     position: fixed;
     inset: 0;
@@ -9,6 +11,20 @@
     background: white;
     position: absolute;
     transition: transform var(--swui-animation-time-medium) ease-in-out;
+
+    &.floating {
+      margin: var(--swui-metrics-space);
+      border-radius: var(--swui-border-radius);
+
+      @media (max-width: 768px) {
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+
+    &:focus-visible {
+      outline: unset;
+    }
 
     &.slideFromLeft,
     &.slideFromRight {
@@ -44,25 +60,25 @@
 
     &.slideFromLeft {
       --translate-x-outside-screen: -100%;
-      width: 370px;
+      width: var(--drawer-width);
       left: 0;
     }
 
     &.slideFromRight {
       --translate-x-outside-screen: 100%;
-      width: 370px;
+      width: var(--drawer-width);
       right: 0;
     }
 
     &.slideFromTop {
       --translate-y-outside-screen: -100%;
-      height: 370px;
+      height: var(--drawer-width);
       top: 0;
     }
 
     &.slideFromBottom {
       --translate-y-outside-screen: 100%;
-      height: 370px;
+      height: var(--drawer-width);
       bottom: 0;
     }
   }

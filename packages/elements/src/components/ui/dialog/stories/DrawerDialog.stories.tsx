@@ -25,10 +25,19 @@ export const Overview: Story = () => {
   const [element, { show }] = useDrawerDialog(DrawerContent, "left");
 
   return (
-    <Row>
-      <PrimaryButton label={"Open drawer"} onClick={() => show()} />
+    <Column>
+      <Row>
+        <PrimaryButton label={"Open drawer"} onClick={() => show()} />
+      </Row>
       {element}
-    </Row>
+      <Column alignItems={"center"} spacing={3}>
+        <Text>This can still be clicked when drawer is open.</Text>
+        <PrimaryButton
+          label={"I am still clickable"}
+          onClick={() => alert("Click!")}
+        />
+      </Column>
+    </Column>
   );
 };
 

@@ -4,10 +4,14 @@ import styles from "./TextInput.module.css";
 import cx from "classnames";
 import { TextInputProps } from "./TextInput";
 import { TextInputIcon } from "./TextInputIcon";
-import { stenaCheck } from "@stenajs-webui/elements";
-import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons/faExclamationTriangle";
-import { InputSpinner } from "@stenajs-webui/elements";
-import { Row } from "@stenajs-webui/core";
+import {
+  InputSpinner,
+  stenaCheck,
+  stenaExclamationTriangle,
+  TextInputButton,
+} from "@stenajs-webui/elements";
+import { ButtonElementProps, Row } from "@stenajs-webui/core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface TextInputBoxProps
   extends Pick<
@@ -21,12 +25,12 @@ export interface TextInputBoxProps
     | "disableContentPadding"
     | "disableContentPaddingLeft"
     | "disableContentPaddingRight"
-    | "iconRight"
-    | "iconLeft"
-    | "onClickLeft"
-    | "onClickRight"
   > {
   children?: ReactNode;
+  iconRight?: IconDefinition;
+  iconLeft?: IconDefinition;
+  onClickLeft?: ButtonElementProps["onClick"];
+  onClickRight?: ButtonElementProps["onClick"];
 }
 
 export const TextInputBox: React.FC<TextInputBoxProps> = ({
@@ -49,7 +53,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
     variant === "success"
       ? stenaCheck
       : variant === "warning" || variant === "error"
-      ? faExclamationTriangle
+      ? stenaExclamationTriangle
       : iconRight;
 
   const currentContentRight =
@@ -73,9 +77,12 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
-        icon={iconLeft}
         spaceOnLeft
-        onClick={onClickLeft}
+        button={
+          iconLeft ? (
+            <TextInputButton onClick={onClickLeft} icon={iconLeft} />
+          ) : undefined
+        }
       />
       <Row alignItems={"center"}>{children}</Row>
       <TextInputIcon
@@ -83,9 +90,12 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         disableContentPadding={disableContentPadding}
         disableContentPaddingLeft={disableContentPaddingLeft}
         disableContentPaddingRight={disableContentPaddingRight}
-        icon={currentIconRight}
         spaceOnRight
-        onClick={onClickRight}
+        button={
+          currentIconRight ? (
+            <TextInputButton onClick={onClickRight} icon={currentIconRight} />
+          ) : undefined
+        }
       />
     </div>
   );

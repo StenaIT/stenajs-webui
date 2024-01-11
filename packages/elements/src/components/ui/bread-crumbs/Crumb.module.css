@@ -1,10 +1,14 @@
 .crumb {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: var(--swui-font-primary);
   font-weight: var(--swui-font-weight-text-bold);
   letter-spacing: 0.1rem;
   text-decoration: none;
-  color: var(--swui-text-action-color);
+  color: var(--lhds-color-ui-600);
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+  }
 
   &:not(:last-of-type) {
     cursor: pointer;
