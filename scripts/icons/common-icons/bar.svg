@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>bar</title>
+    <g id="bar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M11,12.92911 C7.60770164,12.4438768 5,9.52646906 5,6 L5,1 L19,1 L19,6 C19,9.5261219 16.3928118,12.4433024 13.0010101,12.9289666 L13,21 L16,21 C16.5522847,21 17,21.4477153 17,22 C17,22.5522847 16.5522847,23 16,23 L8,23 C7.44771525,23 7,22.5522847 7,22 C7,21.4477153 7.44771525,21 8,21 L11,21 L11,12.92911 Z M17,3 L7,3 L7,6 C7,8.6887547 9.12230671,10.8818181 11.7831104,10.9953805 L12,11 C14.7614237,11 17,8.76142375 17,6 L17,3 Z" id="Shape" fill="#0D0E10" fill-rule="nonzero"></path>
+    </g>
+</svg>
