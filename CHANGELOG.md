@@ -1,3 +1,16 @@
+# v19.0.2 (Mon Jan 22 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`
+  - Add support for columnGap and rowGap in Box [#701](https://github.com/StenaIT/stenajs-webui/pull/701) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v19.0.1 (Wed Jan 17 2024)
 
 #### 🐛 Bug Fix
