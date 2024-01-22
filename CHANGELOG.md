@@ -1,3 +1,16 @@
+# v19.0.3 (Mon Jan 22 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - New alert functionality [#703](https://github.com/StenaIT/stenajs-webui/pull/703) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v19.0.2 (Mon Jan 22 2024)
 
 #### 🐛 Bug Fix
