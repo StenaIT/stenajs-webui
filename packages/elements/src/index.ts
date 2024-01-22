@@ -63,6 +63,7 @@ export * from "./components/ui/route-leg/RouteLeg";
 export * from "./components/ui/route-leg/TimeTag";
 export * from "./components/ui/dialog/UseDialog";
 export * from "./components/ui/dialog/UseDialogPromise";
+export * from "./components/ui/dialog/alert/UseAlertDialog";
 export * from "./components/ui/dialog/drawer/UseDrawerDialog";
 export * from "./components/ui/dialog/modal/UseModalDialog";
 export * from "./components/ui/shimmer-box/ShimmerBox";

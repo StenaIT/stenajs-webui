@@ -1,5 +1,6 @@
 import cx from "classnames";
 import React, {
+  CSSProperties,
   ReactNode,
   RefObject,
   useCallback,
@@ -27,6 +28,7 @@ export interface DialogOptions {
   className: string;
   closingClassName: string;
   contentWrapperClassName: string;
+  dialogStyle?: CSSProperties;
   ref?: RefObject<HTMLDialogElement>;
   onResolve?: () => void;
   onReject?: () => void;
@@ -120,6 +122,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
             options?.className,
             closing && options?.closingClassName
           )}
+          style={options?.dialogStyle}
         >
           {options?.disableCloseOnClickOutside ? (
             <>
@@ -150,6 +153,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
       options?.disableCloseOnClickOutside,
       options?.className,
       options?.closingClassName,
+      options?.dialogStyle,
       options?.contentWrapperClassName,
       currentRef,
       closing,

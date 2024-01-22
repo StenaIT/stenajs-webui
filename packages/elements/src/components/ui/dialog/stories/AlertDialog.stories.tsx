@@ -7,14 +7,13 @@ import { PrimaryButton } from "../../buttons/PrimaryButton";
 import { SecondaryButton } from "../../buttons/SecondaryButton";
 import { Label } from "../../label/Label";
 import { useDialogPromise } from "../UseDialogPromise";
-import { useModalDialog } from "../modal/UseModalDialog";
-import { cssColor } from "@stenajs-webui/theme";
+import { useAlertDialog } from "../alert/UseAlertDialog";
 
 export default {
-  title: "elements/ModalDialog",
+  title: "elements/AlertDialog",
 };
 
-const ModalContent: React.FC = () => {
+const AlertContent: React.FC = () => {
   const { resolve } = useDialogPromise();
 
   return (
@@ -27,7 +26,7 @@ const ModalContent: React.FC = () => {
   );
 };
 export const Overview: StoryFn = () => {
-  const [element, { show }] = useModalDialog(ModalContent);
+  const [element, { show }] = useAlertDialog(AlertContent);
 
   return (
     <Row>
@@ -38,7 +37,7 @@ export const Overview: StoryFn = () => {
 };
 
 export const Mobile: StoryFn = () => {
-  const [element, { show }] = useModalDialog(ModalContent);
+  const [element, { show }] = useAlertDialog(AlertContent);
 
   return (
     <Row>
@@ -49,25 +48,6 @@ export const Mobile: StoryFn = () => {
 };
 
 Mobile.parameters = {
-  viewport: {
-    defaultViewport: "mobile1",
-  },
-};
-
-export const MobileWithBackground: StoryFn = () => {
-  const [element, { show }] = useModalDialog(ModalContent, {
-    dialogStyle: { background: cssColor("--himmel") },
-  });
-
-  return (
-    <Row>
-      <PrimaryButton label={"Open modal"} onClick={() => show()} />
-      {element}
-    </Row>
-  );
-};
-
-MobileWithBackground.parameters = {
   viewport: {
     defaultViewport: "mobile1",
   },
@@ -96,7 +76,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
 };
 
 export const ResolveReject: StoryFn = () => {
-  const [element, { show }] = useModalDialog<EmailFormProps, string>(EmailForm);
+  const [element, { show }] = useAlertDialog<EmailFormProps, string>(EmailForm);
   const [email, setEmail] = useState<string | undefined>(undefined);
 
   const onClickOpen = useCallback(async () => {
