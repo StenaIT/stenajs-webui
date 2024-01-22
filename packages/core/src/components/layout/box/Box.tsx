@@ -97,6 +97,16 @@ export interface BoxProps extends StyledSystemProps, DivProps {
   gap?: ResponsiveValue<boolean | TLengthStyledSystem>;
 
   /**
+   * Adds gap between columns.
+   */
+  columnGap?: ResponsiveValue<boolean | TLengthStyledSystem>;
+
+  /**
+   * Adds gap between rows.
+   */
+  rowGap?: ResponsiveValue<boolean | TLengthStyledSystem>;
+
+  /**
    * Adds a shadow around the box.
    */
   shadow?: ResponsiveValue<Property.BoxShadow | ShadowType>;
@@ -180,6 +190,16 @@ const box = system({
     property: "--current-gap",
     transform: booleanOrNumberToNumber,
   },
+  columnGap: {
+    // @ts-ignore
+    property: "--current-column-gap",
+    transform: booleanOrNumberToNumber,
+  },
+  rowGap: {
+    // @ts-ignore
+    property: "--current-row-gap",
+    transform: booleanOrNumberToNumber,
+  },
   shadow: {
     property: "boxShadow",
     transform: (value) => shadows[value] ?? value,
@@ -199,6 +219,8 @@ export const Box = styled("div", {
   --current-spacing: 0;
   --current-indent: 0;
   --current-gap: 0;
+  --current-column-gap: 0;
+  --current-row-gap: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -225,6 +247,8 @@ export const Box = styled("div", {
   ${bottom};
 
   gap: calc(var(--current-gap) * var(--swui-metrics-space));
+  column-gap: calc(var(--current-column-gap) * var(--swui-metrics-space));
+  row-gap: calc(var(--current-row-gap) * var(--swui-metrics-space));
 
   padding: calc(var(--current-spacing) * var(--swui-metrics-spacing))
     calc(var(--current-indent) * var(--swui-metrics-indent));
