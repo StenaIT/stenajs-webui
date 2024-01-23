@@ -9,3 +9,14 @@ export const booleanOrNumberToNumber = (
   }
   return num;
 };
+
+export const numberToMetricCalc = (num: number): string | undefined => {
+  if (num === 0) {
+    return undefined;
+  }
+  return `calc(${num} * var(--swui-metrics-space))`;
+};
+
+export const booleanOrNumberToMetricCalc = (
+  num: number | boolean | undefined
+): string | undefined => numberToMetricCalc(booleanOrNumberToNumber(num));

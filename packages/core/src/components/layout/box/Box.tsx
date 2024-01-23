@@ -46,7 +46,10 @@ import {
   ZIndexProps,
 } from "styled-system";
 import { DivProps } from "../../../types/ElementProps";
-import { booleanOrNumberToNumber } from "../../../utils/BooleanOrNumberToNumber";
+import {
+  booleanOrNumberToMetricCalc,
+  booleanOrNumberToNumber,
+} from "../../../utils/BooleanOrNumberToNumber";
 
 interface StyledSystemProps
   extends BorderRadiusProps,
@@ -191,14 +194,12 @@ const box = system({
     transform: booleanOrNumberToNumber,
   },
   columnGap: {
-    // @ts-ignore
-    property: "--current-column-gap",
-    transform: booleanOrNumberToNumber,
+    property: "columnGap",
+    transform: booleanOrNumberToMetricCalc,
   },
   rowGap: {
-    // @ts-ignore
-    property: "--current-row-gap",
-    transform: booleanOrNumberToNumber,
+    property: "rowGap",
+    transform: booleanOrNumberToMetricCalc,
   },
   shadow: {
     property: "boxShadow",
@@ -219,8 +220,6 @@ export const Box = styled("div", {
   --current-spacing: 0;
   --current-indent: 0;
   --current-gap: 0;
-  --current-column-gap: 0;
-  --current-row-gap: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -247,21 +246,22 @@ export const Box = styled("div", {
   ${bottom};
 
   gap: calc(var(--current-gap) * var(--swui-metrics-space));
-  column-gap: calc(var(--current-column-gap) * var(--swui-metrics-space));
-  row-gap: calc(var(--current-row-gap) * var(--swui-metrics-space));
 
   padding: calc(var(--current-spacing) * var(--swui-metrics-spacing))
     calc(var(--current-indent) * var(--swui-metrics-indent));
+
   :hover {
     ${({ hoverBackground }) =>
       hoverBackground ? `background: ${hoverBackground};` : ""}
     ${({ hoverBorder }) => (hoverBorder ? `border: ${hoverBorder};` : "")}
   }
+
   :focus {
     ${({ focusBackground }) =>
       focusBackground ? `background: ${focusBackground};` : ""}
     ${({ focusBorder }) => (focusBorder ? `border: ${focusBorder};` : "")}
   }
+
   :focus-within {
     ${({ focusWithinBackground }) =>
       focusWithinBackground ? `background: ${focusWithinBackground};` : ""}
