@@ -1,3 +1,16 @@
+# v19.0.4 (Tue Jan 23 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`
+  - Fix bug in Box causing columnGap and rowGap to overwrite gap [#704](https://github.com/StenaIT/stenajs-webui/pull/704) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v19.0.3 (Mon Jan 22 2024)
 
 #### 🐛 Bug Fix
