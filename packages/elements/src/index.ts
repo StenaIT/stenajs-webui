@@ -66,4 +66,8 @@ export * from "./components/ui/dialog/UseDialogPromise";
 export * from "./components/ui/dialog/alert/UseAlertDialog";
 export * from "./components/ui/dialog/drawer/UseDrawerDialog";
 export * from "./components/ui/dialog/modal/UseModalDialog";
+export * from "./components/ui/modal-types/InfoAlert";
+export * from "./components/ui/modal-types/parts/ModalHeader";
+export * from "./components/ui/modal-types/parts/ModalActionButtons";
+export * from "./components/ui/modal-types/parts/ModalHeading";
 export * from "./components/ui/shimmer-box/ShimmerBox";

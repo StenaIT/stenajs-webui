@@ -8,7 +8,7 @@ export type CircledIconSizeVariant =
   | CircledIconSizeStandardVariant
   | CircledIconSizeXlVariant;
 
-export type CircledIconSizeStandardVariant = "medium" | "small";
+export type CircledIconSizeStandardVariant = "medium" | "small" | "large";
 export type CircledIconSizeXlVariant = "xl";
 export type CircledIconVariant = "normal" | "whiteBg";
 
@@ -63,6 +63,8 @@ const getBackgroundSize = (
       return "32px";
     case "medium":
       return "40px";
+    case "large":
+      return "96px";
     case "xl":
       return "160px";
     default:
@@ -78,6 +80,8 @@ const getIconSize = (
       return 16;
     case "medium":
       return 20;
+    case "large":
+      return 48;
     case "xl":
       return 80;
     default:
