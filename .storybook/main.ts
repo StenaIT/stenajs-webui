@@ -1,34 +1,39 @@
+import { dirname, join } from "path";
 import { mergeConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  core: { builder: "@storybook/builder-vite" },
-  stories: ["../examples/**/*.stories.tsx", "../packages/**/*.stories.tsx"],
+  stories: [
+    "../examples/**/*.stories.tsx",
+    "../packages/**/*.stories.tsx",
+    "../packages/**/*.mdx",
+  ],
   typescript: {
     reactDocgen:
       process.env.NODE_ENV === "production" ? "react-docgen-typescript" : false,
   },
 
   addons: [
-    "@storybook/addon-viewport",
-    "@storybook/addon-backgrounds",
-    "@storybook/addon-storysource",
-    "@storybook/addon-a11y",
-    "@storybook/addon-actions",
-    "@storybook/addon-toolbars",
-    {
-      name: "@storybook/addon-docs",
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
+    getAbsolutePath("@storybook/addon-storysource"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    getAbsolutePath("@storybook/addon-mdx-gfm"),
   ],
   viteFinal(config, { configType }) {
-    let plugins = [svgr()];
+    let plugins = [
+      svgr({
+        svgrOptions: {
+          exportType: "named",
+          ref: true,
+          svgo: false,
+          titleProp: true,
+        },
+        include: "**/*.svg",
+      }),
+    ];
 
     if (configType !== "PRODUCTION") {
       plugins.push(cssInjectedByJsPlugin({ topExecutionPriority: false }));
@@ -38,13 +43,16 @@ const config: StorybookConfig = {
   },
 
   framework: {
-    name: "@storybook/react-vite",
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
-
   docs: {
-    autodocs: true,
+    autodocs: "tag",
   },
 };
 
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}
