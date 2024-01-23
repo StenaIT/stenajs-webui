@@ -6,7 +6,7 @@ import { useDrawerDialog } from "../drawer/UseDrawerDialog";
 import { useDialogPromise } from "../UseDialogPromise";
 
 export default {
-  title: "elements/ModalDrawer",
+  title: "elements/Dialog/DrawerDialog",
 };
 
 const DrawerContent: React.FC = () => {

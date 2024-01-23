@@ -11,7 +11,7 @@ import { useModalDialog } from "../modal/UseModalDialog";
 import { cssColor } from "@stenajs-webui/theme";
 
 export default {
-  title: "elements/ModalDialog",
+  title: "elements/Dialog/ModalDialog",
 };
 
 const ModalContent: React.FC = () => {
