@@ -76,7 +76,7 @@
     "eslint-plugin-react-hooks": "4.1.2",
     "eslint-plugin-storybook": "^0.6.15",
     "husky": "^8.0.3",
-    "jsdom": "^24.0.0",
+    "jsdom": "^22.1.0",
     "lerna": "^7.3.0",
     "lint-staged": "^12.1.2",
     "path-that-svg": "1.2.4",
