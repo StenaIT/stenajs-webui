@@ -1,7 +1,7 @@
 const {
   getPackageJsons,
   getPackageVersion
-} = require("./util/package-json-fetcher");
+} = require("./util/package-json-fetcher.cjs");
 
 const getInvalidDepVersion = (packages, depsType) => {
   const errors = [];

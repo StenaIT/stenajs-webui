@@ -37,18 +37,20 @@ describe("entity-list-reducer", () => {
           { a: "a3", b: "b3" },
         ])
       );
-      expect(s.length).toBe(3);
-      s = reducer(
-        s,
-        actionByFieldsMatch(
-          { a: "a3" },
-          entityActions.setEntityFields({ b: "bbb" })
-        )
-      );
-      expect(s.length).toBe(3);
-      expect(s[0].b).toBe("b");
-      expect(s[1].b).toBe("b2");
-      expect(s[2].b).toBe("bbb");
+      it("works", () => {
+        expect(s.length).toBe(3);
+        s = reducer(
+          s,
+          actionByFieldsMatch(
+            { a: "a3" },
+            entityActions.setEntityFields({ b: "bbb" })
+          )
+        );
+        expect(s.length).toBe(3);
+        expect(s[0].b).toBe("b");
+        expect(s[1].b).toBe("b2");
+        expect(s[2].b).toBe("bbb");
+      });
     });
 
     describe("actionByIndex", () => {
@@ -61,18 +63,18 @@ describe("entity-list-reducer", () => {
           { a: "a3", b: "b3" },
         ])
       );
-      expect(s.length).toBe(3);
-      s = reducer(
-        s,
-        actionByIndex(1, entityActions.setEntityFields({ b: "bbb" }))
-      );
-      expect(s.length).toBe(3);
-      expect(s[0].b).toBe("b");
-      expect(s[1].b).toBe("bbb");
-      expect(s[2].b).toBe("b3");
+      it("works", () => {
+        expect(s.length).toBe(3);
+        s = reducer(
+          s,
+          actionByIndex(1, entityActions.setEntityFields({ b: "bbb" }))
+        );
+        expect(s.length).toBe(3);
+        expect(s[0].b).toBe("b");
+        expect(s[1].b).toBe("bbb");
+        expect(s[2].b).toBe("b3");
+      });
     });
-
-    describe("actionByIndex", () => {});
   });
   describe("with no reducer argument", () => {
     const stringReducer = createEntityListReducer<string>();

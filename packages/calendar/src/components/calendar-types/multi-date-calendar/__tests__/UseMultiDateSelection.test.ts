@@ -2,13 +2,15 @@ import { renderHook } from "@testing-library/react-hooks";
 import { addDays } from "date-fns";
 import { createDay } from "../../../../util/calendar/CalendarDataFactory";
 import { useMultiDateSelection } from "../UseMultiDateSelection";
+import { vi } from "vitest";
+import { enGB } from "date-fns/locale";
 
 describe("useMultiDateSelection", () => {
   describe("onClickDay", () => {
     describe("when clicking on a day", () => {
       it("should run onChange", () => {
         const now = new Date();
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         const {
           result: {
             current: { onClickDay },
@@ -19,7 +21,7 @@ describe("useMultiDateSelection", () => {
             onChange,
           })
         );
-        onClickDay!(createDay(now), undefined, undefined as any);
+        onClickDay!(createDay(now, enGB), undefined, undefined as any);
         expect(onChange).toBeCalledTimes(1);
       });
     });
@@ -27,7 +29,7 @@ describe("useMultiDateSelection", () => {
       describe("when clicking on a day", () => {
         it("should be added", () => {
           const now = new Date();
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const {
             result: {
               current: { onClickDay },
@@ -38,7 +40,7 @@ describe("useMultiDateSelection", () => {
               onChange,
             })
           );
-          const clickedDay = createDay(now);
+          const clickedDay = createDay(now, enGB);
           onClickDay!(clickedDay, undefined, undefined as any);
           expect(onChange).toBeCalledWith([now]);
         });
@@ -49,7 +51,7 @@ describe("useMultiDateSelection", () => {
         it("should be removed", () => {
           const now = new Date();
           const tomorrow = addDays(new Date(), 1);
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const {
             result: {
               current: { onClickDay },
@@ -60,7 +62,7 @@ describe("useMultiDateSelection", () => {
               onChange,
             })
           );
-          const clickedDay = createDay(now);
+          const clickedDay = createDay(now, enGB);
           onClickDay!(clickedDay, undefined, undefined as any);
           expect(onChange).toBeCalledWith([tomorrow]);
         });

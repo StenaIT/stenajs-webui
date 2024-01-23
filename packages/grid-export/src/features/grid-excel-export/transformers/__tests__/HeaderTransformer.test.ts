@@ -26,11 +26,13 @@ describe("HeaderTransformer", () => {
   });
   describe("transformGroupHeaders", () => {
     const r = transformGroupHeaders(testGroupConfigsWithGroups);
-    expect(r[0].type).toBe("string");
-    expect(r[0].value).toBe("Name");
-    expect(r[1].type).toBe("string");
-    expect(r[1].value).toBe("");
-    expect(r[2].type).toBe("string");
-    expect(r[2].value).toBe("Info");
+    it("works", () => {
+      expect(r[0].type).toBe("string");
+      expect(r[0].value).toBe("Name");
+      expect(r[1].type).toBe("string");
+      expect(r[1].value).toBe("");
+      expect(r[2].type).toBe("string");
+      expect(r[2].value).toBe("Info");
+    });
   });
 });

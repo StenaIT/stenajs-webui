@@ -8,13 +8,13 @@ import {
   Txt,
 } from "@stenajs-webui/core";
 import { StandardTable } from "@stenajs-webui/grid";
-import { StandardTableConfig } from "@stenajs-webui/grid/src/features/standard-table/config/StandardTableConfig";
+import { StandardTableConfig } from "@stenajs-webui/grid";
 import {
   ListItem,
   mockedItems,
   standardTableConfigForStories,
   useListState,
-} from "@stenajs-webui/grid/src/features/standard-table/stories/StandardTableStoryHelper";
+} from "@stenajs-webui/grid";
 import { NavBar } from "@stenajs-webui/panels";
 import * as React from "react";
 
@@ -102,7 +102,6 @@ export const StickyViewAndTable = () => {
         >
           <Column left={0} position={"sticky"} width={getWidthWithoutScroll()}>
             <NavBar
-              variant={"dark"}
               showMenuButton
               left={
                 <Txt size="large" color={"#ffffff"}>

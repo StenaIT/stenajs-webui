@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import react from "@vitejs/plugin-react";
@@ -16,7 +17,19 @@ export const createViteConfig = (pkg: any) => {
   );
 
   return defineConfig({
-    plugins: [svgr(), react(), cssInjectedByJsPlugin()],
+    plugins: [
+      svgr({
+        svgrOptions: {
+          exportType: "named",
+          ref: true,
+          svgo: false,
+          titleProp: true,
+        },
+        include: "**/*.svg",
+      }),
+      react(),
+      cssInjectedByJsPlugin(),
+    ],
     build: {
       emptyOutDir: false,
       sourcemap: true,
@@ -29,6 +42,10 @@ export const createViteConfig = (pkg: any) => {
       rollupOptions: {
         external: regexesOfPackages,
       },
+    },
+    test: {
+      globals: true,
+      environment: "jsdom",
     },
   });
 };

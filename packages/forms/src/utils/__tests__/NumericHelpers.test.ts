@@ -1,8 +1,9 @@
 import { onStepValueChange, onTextValueChange } from "../NumericHelpers";
+import { vi } from "vitest";
 
 describe("NumericHelpers", () => {
   describe("onStepValueChange", () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     beforeEach(() => {
       onValueChange.mockClear();
     });
@@ -34,7 +35,7 @@ describe("NumericHelpers", () => {
   });
 
   describe("onTextValueChange", () => {
-    const onValueChange = jest.fn();
+    const onValueChange = vi.fn();
     beforeEach(() => {
       onValueChange.mockClear();
     });

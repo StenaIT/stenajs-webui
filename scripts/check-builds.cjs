@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const { getPackageFolderList } = require("./util/package-json-fetcher");
+const { getPackageFolderList } = require("./util/package-json-fetcher.cjs");
 
 getPackageFolderList().then(folderList => {
   const errors = [];
