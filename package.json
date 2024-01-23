@@ -41,7 +41,6 @@
   },
   "homepage": "https://github.com/StenaIT/stenajs-webui#readme",
   "devDependencies": {
-    "@babel/core": "^7.23.7",
     "@fortawesome/free-brands-svg-icons": ">=5.15.3",
     "@storybook/addon-a11y": "^7.6.10",
     "@storybook/addon-essentials": "^7.6.10",
