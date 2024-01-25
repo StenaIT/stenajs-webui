@@ -1,0 +1,266 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as ModalDialogStories from "./modal/ModalDialog.stories.tsx";
+
+<Meta title="modal/Dialog" />
+
+# Dialog
+
+`useModalDialog` is a hook that provides modal functionality.
+
+It uses the `<dialog>` element in the browser, with built-in modal API.
+
+The only visuals that this includes is the overlay above the page,
+a shadow and default white background.
+
+The content of the modal is provided as a component, and it is the first argument of the hook.
+If it suits you, you can use one of the pre-made modal panels (such as `InfoAlert`).
+
+This dialog hook API is imperative, which means it is opened and closed by calling a function.
+Instead of having a prop `isOpen={true}`, there is a call to `show()`.
+
+This makes it unsuitable for modals that are visible or hidden depending on state, for example
+showing when loading=true.
+
+If you need state-driven visibility, declarative modals are a better fit.
+
+## Promise-based API
+
+The modal hooks use a promise based API.
+
+A typical flow:
+
+1. The user clicks
+2. The modal opens with props as an argument.
+3. The user makes changes and clicks "Save"
+4. The promise is resolved with the changes from the user, typically a form model.
+5. The parent component awaits the promise in its onClick-handler and then applies whatever changes it receives from the promise.
+
+If the user clicks cancel, the promise is instead rejected with no result.
+
+The modal closes when the promise is resolved or rejected.
+
+See example below for how this logic might look in code.
+
+## Variants
+
+There are three variants of dialog.
+
+### Window
+
+`useModalDialog(..)`
+
+A normal modal. It fits with content when on desktop. It is full screen on mobile.
+The use-case is larger modal content, like forms, etc.
+
+### Alert
+
+`useAlertDialog(..)`
+
+A smaller modal. It fits with content always.
+The use-case is smaller modal, like alerts and notifications.
+
+### Drawer
+
+`useDrawerDialog(..)`
+
+A drawer modal. It expands from the side, instead of being centered.
+The use-case is filters, menus that are shown temporarily on the side.
+If you need the drawer to stay open, you should use `Drawer` component instead.
+
+## Usage
+
+### show()
+
+In your component that should show a modal
+
+```tsx
+const [element, { show, reject }] = useModalDialog(TheModalComponent, options);
+```
+
+`show` takes the props of `TheModalComponent` as argument.
+
+```tsx
+show({ userId: 123 });
+```
+
+If `TheModalComponent` has no props, `show` has no arguments.
+
+```tsx
+show();
+```
+
+### resolve() and reject()
+
+In the modal panel, use `useDialogPromise` to access the promise methods.
+
+```tsx
+const { resolve, resolve } = useDialogPromise();
+```
+
+```tsx
+<PrimaryButton label={"Cancel"} onClick={() => reject()} />
+<PrimaryButton label={"Save"} onClick={() => resolve()} />
+```
+
+Please note that you should pass an anonymous function `() => ...` and not just `onClick={reject}`.
+
+### Promise with return type
+
+If the promise returns data, you should add a type for it.
+
+```tsx
+export interface SomeModalResult {
+  someField: string;
+}
+```
+
+```tsx
+const [dialog, { show }] = useModalDialog<SomeModalProps, SomeModalResult>(
+  SomeModal
+);
+```
+
+And within the modal panel:
+
+```tsx
+<PrimaryButton label={"Save"} onClick={() => resolve(formModel)} />;
+```
+
+### Example with promise result
+
+```ts
+  const openModal = useCallback(async () => {
+    setError(undefined);
+    try {
+      const result = await show({ initialFormModel: formModel });
+      if (result) {
+        setLoading(true);
+        await sendUpdateToServer(result.updatedFormModel);
+        setLoading(false);
+      }
+    } catch (e) {
+      // Promise was rejected, the user clicked cancel or closed the modal.
+    }
+  }, [...]);
+```
+
+# Examples
+
+## Session expired alert
+
+```tsx
+import React from "react";
+import {
+  InfoAlert,
+  useAlertDialog,
+  useDialogPromise,
+} from "@stenajs-webui/modal";
+import { PrimaryButton } from "@stenajs-webui/elements";
+
+const SessionExpiredAlert: React.FC = () => {
+  const { resolve } = useDialogPromise();
+
+  return (
+    <InfoAlert
+      maxWidth={"384px"}
+      onRequestClose={resolve}
+      heading={heading}
+      text={text}
+      icon={stenaBell}
+      buttons={<PrimaryButton size={"larger"} label={"Restart"} />}
+    />
+  );
+};
+
+const Example: React.FC = () => {
+  const [element, { show }] = useAlertDialog(SessionExpiredAlert);
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open ModalDialog"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+```
+
+## Edit user modal
+
+```tsx
+import { useDialogPromise, useModalDialog } from "@stenajs-webui/modal";
+import React, { useCallback, useState } from "react";
+import { PrimaryButton } from "@stenajs-webui/elements";
+
+interface EditUserFormModel {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+interface EditUserModalProps {
+  initialFormModel: EditUserFormModel;
+}
+
+const EditUserModal: React.FC<EditUserModalProps> = ({ initialFormModel }) => {
+  const [formModel, setFormModel] =
+    useState<EditUserFormModel>(initialFormModel);
+  const { resolve, reject } = useDialogPromise<EditUserFormModel>();
+
+  return (
+    <UserForm
+      value={formModel}
+      onValueChange={setFormModel}
+      onSubmit={() => resolve(formModel)}
+      onClickCancel={() => reject()}
+    />
+  );
+};
+
+interface UserExampleProps {
+  user: User;
+}
+
+const UserExample: React.FC<UserExampleProps> = ({ user }) => {
+  const [element, { show }] = useModalDialog<
+    EditUserModalProps,
+    EditUserFormModel
+  >(EditUserModal);
+  const [loading, setLoading] = useState(false);
+  const [updateUser] = useUpdateUserMutation();
+
+  const onClickEditUser = useCallback(async () => {
+    try {
+      const updatedFormModel = await show({
+        formModel: createEditUserFormModel(user),
+      });
+      setLoading(true);
+      await updateUser({
+        variables: { input: createEditUserInput(updatedFormModel) },
+      })
+        .catch((e) => {
+          // Mutation error
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } catch (e) {
+      // User pressed cancel or closed the modal
+    }
+  }, [user, show, updateUser]);
+
+  return (
+    <Row>
+      <PrimaryButton
+        label={"Edit user"}
+        onClick={onClickEditUser}
+        loading={loading}
+      />
+      {element}
+    </Row>
+  );
+};
+```
+
+## Demo
+
+<Canvas of={ModalDialogStories.Overview} />

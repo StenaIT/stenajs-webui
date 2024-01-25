@@ -1,0 +1,54 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as LoadingModalStories from "./loading-modal/LoadingModal.stories";
+import * as ModalStories from "./modal/Modal.stories";
+import * as DrawerStories from "./drawer/Drawer.stories";
+import * as WindowStories from "./window/Window.stories";
+
+<Meta title="modal/Declarative modals" />
+
+# Declarative modals
+
+Declarative modals are React components with `isOpen={true}` prop.
+They are controlled by passing state and callbacks.
+
+If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
+you should use `useModalDialog` hooks instead.
+
+# Minimal inherent visuals
+
+Visually, these are identical to dialog hooks API.
+They provide:
+
+- Dark overlay
+- Shadow around the modal
+- White background
+- Round borders
+
+Everything else has to be provided in `children`.
+Either use one of the ready-made modals, or create a custom modal in your app.
+
+## Variants
+
+There is a collection of modal variants.
+
+### Modal
+
+This is the normal modal.
+It sizes itself as per content, unless on mobile. On mobile it is fullscreen.
+
+<Canvas of={ModalStories.Standard} />
+
+### LoadingModal
+
+This is a small loading spinner modal.
+This is usable when you want to prevent user input while some job is in progress.
+
+<Canvas of={LoadingModalStories.Standard} />
+
+### Drawer
+
+<Canvas of={DrawerStories.Standard} />
+
+## Window
+
+<Canvas of={WindowStories.DraggableWindow} />

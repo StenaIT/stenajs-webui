@@ -1,0 +1,46 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="modal/Building blocks/Docs" />
+
+# Building blocks
+
+When building a custom modal, you can use these components to ensure
+that your modal will look the same as other modals.
+
+The palette of building blocks will expand in the future.
+
+### ModalHeading
+
+This is a default heading for modals.
+
+### ModalHeader
+
+This is a default header for modals. It includes `ModalHeading`,
+but might include more things in the future. A close button for example.
+
+### ModalBody
+
+This component adds default padding. If you need something to reach the edge
+of the modal, a `SeparatorLine` for example, don't wrap it with `ModalBody`.
+
+It also adds a default gap between all children.
+
+All normal content should be wrapped with `ModalBody`.
+
+#### Custom modal example
+
+```tsx
+export const CustomModal: React.FC<CustomModalProps> = ({ heading, text }) => {
+  return (
+    <ModalBody
+      flexDirection={"column"}
+      alignItems={"center"}
+      maxWidth={maxWidth}
+      minWidth={minWidth}
+    >
+      <ModalHeader heading={heading} />
+      {text && <Text textAlign={"center"}>{text}</Text>}
+    </ModalBody>
+  );
+};
+```
