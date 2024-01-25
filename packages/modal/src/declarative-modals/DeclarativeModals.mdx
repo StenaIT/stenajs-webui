@@ -64,9 +64,21 @@ Also `shouldCloseOnOverlayClick` and `shouldCloseOnEsc` are false by default.
 
 ### Drawer
 
+Drawer is a modal that slides in from one of the sides.
+
+The typical use case is filters or menus that appear when the user wants to access it.
+
+It does not have an overlay like the other modals, since the user might want to
+keep it open while still accessing the main content of the page.
+
 <Canvas of={DrawerStories.Standard} />
 
 ## Window
+
+This is the only modal that has a visual design.
+It does not share visual identity with the other modals, and looks more like a window.
+
+It supports dragging, where the user can drag the modal to a different position on the screen.
 
 <Canvas of={WindowStories.DraggableWindow} />
 

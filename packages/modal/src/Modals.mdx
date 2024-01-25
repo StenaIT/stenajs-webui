@@ -25,6 +25,8 @@ Declarative modals are React components with `isOpen={true}` prop.
 
 These components receive state and callbacks as props and are controlled.
 
+These are appropriate to use when you have a state, `loading` flag for example.
+
 If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
 you should use dialog modals instead.
 
@@ -37,6 +39,8 @@ you should use dialog modals instead.
 
 Dialog modals use the `<dialog>` element and the dialog-API available in the browser.
 It is imperative, which means that you show the modal by calling a function, not as a reaction by state change.
+
+These are appropriate to use when you have callbacks, `onCompleted` for `useQuery` for example.
 
 <SecondaryButton
   label={"Go to dialog modals"}
