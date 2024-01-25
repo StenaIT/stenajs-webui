@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { TextInput } from "../TextInput";
+import { vi } from "vitest";
 
 describe("TextInput", () => {
   const ariaLabel = "Some input";
@@ -9,7 +10,7 @@ describe("TextInput", () => {
   describe("ariaLabel prop", () => {
     describe("is set on input DOM element", () => {
       it("works", async () => {
-        const setValueMock = jest.fn();
+        const setValueMock = vi.fn();
         const { getByLabelText } = render(
           <TextInput
             value={""}
@@ -27,7 +28,7 @@ describe("TextInput", () => {
   describe("onValueChange prop", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
-        const setValueMock = jest.fn();
+        const setValueMock = vi.fn();
         const { getByLabelText } = render(
           <TextInput
             value={""}
@@ -55,7 +56,7 @@ describe("TextInput", () => {
     describe("when onMove is used", () => {
       describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
-          const setValueMock = jest.fn();
+          const setValueMock = vi.fn();
           const { getByLabelText } = render(
             <TextInput
               value={""}
@@ -84,7 +85,7 @@ describe("TextInput", () => {
     describe("when onChange is used", () => {
       describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
-          const setValueMock = jest.fn();
+          const setValueMock = vi.fn();
           const { getByLabelText } = render(
             <TextInput
               value={""}
@@ -113,7 +114,7 @@ describe("TextInput", () => {
     describe("when onKeyDown is used", () => {
       describe("onValueChange gets called when text is entered", () => {
         it("works", async () => {
-          const setValueMock = jest.fn();
+          const setValueMock = vi.fn();
           const { getByLabelText } = render(
             <TextInput
               value={""}
@@ -142,7 +143,7 @@ describe("TextInput", () => {
   describe("onChange prop", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
-        const setValueMock = jest.fn();
+        const setValueMock = vi.fn();
         const { getByLabelText } = render(
           <TextInput
             value={""}
@@ -164,7 +165,7 @@ describe("TextInput", () => {
   describe("onKeyDown prop", () => {
     describe("gets called when text is entered", () => {
       it("works", async () => {
-        const setValueMock = jest.fn();
+        const setValueMock = vi.fn();
         const { getByLabelText } = render(
           <TextInput
             value={""}
@@ -186,8 +187,8 @@ describe("TextInput", () => {
   describe("onChange and onKeyDown prop combined", () => {
     describe("both gets called when text is entered", () => {
       it("works", async () => {
-        const setValueMock = jest.fn();
-        const setValueMock2 = jest.fn();
+        const setValueMock = vi.fn();
+        const setValueMock2 = vi.fn();
         const { getByLabelText } = render(
           <TextInput
             value={""}

@@ -1,6 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { useRef } from "react";
 import { useMultiOnClickOutside } from "../UseMultiOnClickOutside";
+import { vi } from "vitest";
 
 describe("useOnClickOutside", () => {
   const options = {
@@ -24,25 +25,9 @@ describe("useOnClickOutside", () => {
     const {
       result: { current: ref2 },
     } = renderHook(() => useRef<EventTarget | null>(button2));
-    const handler = jest.fn();
-    const event = document.createEvent("MouseEvent");
-    event.initMouseEvent(
-      "mousedown",
-      options.bubbles,
-      options.cancelable,
-      document.defaultView!,
-      options.button,
-      options.pointerX,
-      options.pointerY,
-      options.pointerX,
-      options.pointerY,
-      options.ctrlKey,
-      options.altKey,
-      options.shiftKey,
-      options.metaKey,
-      options.button,
-      null
-    );
+    const handler = vi.fn();
+    const event = new MouseEvent("mousedown", options);
+
     renderHook(() => useMultiOnClickOutside([ref, ref2], handler));
     document.body.appendChild(button);
     document.body.appendChild(button2);
@@ -63,25 +48,8 @@ describe("useOnClickOutside", () => {
     const {
       result: { current: nullRef },
     } = renderHook(() => useRef<EventTarget | null>(null));
-    const handler = jest.fn();
-    const event = document.createEvent("MouseEvent");
-    event.initMouseEvent(
-      "mousedown",
-      options.bubbles,
-      options.cancelable,
-      document.defaultView!,
-      options.button,
-      options.pointerX,
-      options.pointerY,
-      options.pointerX,
-      options.pointerY,
-      options.ctrlKey,
-      options.altKey,
-      options.shiftKey,
-      options.metaKey,
-      options.button,
-      null
-    );
+    const handler = vi.fn();
+    const event = new MouseEvent("mousedown", options);
     renderHook(() => useMultiOnClickOutside([ref, ref2, nullRef], handler));
     document.body.appendChild(button);
     document.body.appendChild(button2);

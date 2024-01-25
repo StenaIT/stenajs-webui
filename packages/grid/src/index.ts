@@ -42,6 +42,8 @@ export * from "./features/standard-table/types/StandardTableEvents";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCell";
 export * from "./features/standard-table/helpers/cell-renderers/editable-text-cell/EditableTextCellWithStatus";
 
+export * from "./features/standard-table/stories/StandardTableStoryHelper";
+
 export * from "./features/standard-table/hooks/UseCellBackground";
 export * from "./features/standard-table/hooks/UseColumnConfigById";
 export * from "./features/standard-table/hooks/UseColumnValueResolver";

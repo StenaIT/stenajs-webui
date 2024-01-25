@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
 import { useGridCell } from "../UseGridCell";
+import { vi } from "vitest";
 
 const TextInputWithGridCell: React.FC<TextInputProps> = (props) => {
   const { requiredProps } = useGridCell(props.value, {
@@ -18,8 +19,8 @@ const TextInputWithGridCell: React.FC<TextInputProps> = (props) => {
 const ariaLabel = "Some input";
 
 describe("useGridCell", () => {
-  it("setValueMock  gets called when text is entered", async () => {
-    const setValueMock = jest.fn();
+  it("setValueMock gets called when text is entered", async () => {
+    const setValueMock = vi.fn();
     const { getByLabelText } = render(
       <TextInputWithGridCell
         value={""}

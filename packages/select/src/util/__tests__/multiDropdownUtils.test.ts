@@ -16,13 +16,14 @@ import {
   GroupedOptionsType,
   InternalDropdownOption,
 } from "../multiDropdownUtils";
+import { vi } from "vitest";
 
 describe("multiDropdownUtils", () => {
   describe("createOnChange", () => {
     describe("select-option", () => {
       describe("when clicking option", () => {
         it("works", () => {
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
@@ -70,7 +71,7 @@ describe("multiDropdownUtils", () => {
       describe("when clicking optionsHeader", () => {
         describe("when no sub option is in selected", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -117,7 +118,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when any sub option is in selected", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -167,7 +168,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when all sub options is in selected", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -222,7 +223,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when all sub options in another is selected", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -277,7 +278,7 @@ describe("multiDropdownUtils", () => {
       describe("when clicking option", () => {
         describe("when option is in a selected group", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -331,7 +332,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when option is not in a selected group", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -378,7 +379,7 @@ describe("multiDropdownUtils", () => {
 
       describe("when clicking optionsHeader", () => {
         it("works", () => {
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
@@ -437,7 +438,7 @@ describe("multiDropdownUtils", () => {
         describe("when option is in a selected group", () => {
           describe("when removing item", () => {
             it("works", () => {
-              const onChange = jest.fn();
+              const onChange = vi.fn();
               const options: GroupedOptionsType<DropdownOption<string>> = [
                 {
                   label: "CA",
@@ -493,7 +494,7 @@ describe("multiDropdownUtils", () => {
 
           describe("when removing last item", () => {
             it("works", () => {
-              const onChange = jest.fn();
+              const onChange = vi.fn();
               const options: GroupedOptionsType<DropdownOption<string>> = [
                 {
                   label: "CA",
@@ -536,7 +537,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when option is not in a selected group", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -583,7 +584,7 @@ describe("multiDropdownUtils", () => {
 
       describe("when clicking optionsHeader", () => {
         it("works", () => {
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",
@@ -641,7 +642,7 @@ describe("multiDropdownUtils", () => {
       describe("when clicking option", () => {
         describe("when option is in a selected group", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -695,7 +696,7 @@ describe("multiDropdownUtils", () => {
 
         describe("when option is not in a selected group", () => {
           it("works", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const options: GroupedOptionsType<DropdownOption<string>> = [
               {
                 label: "CA",
@@ -742,7 +743,7 @@ describe("multiDropdownUtils", () => {
 
       describe("when clicking optionsHeader", () => {
         it("works", () => {
-          const onChange = jest.fn();
+          const onChange = vi.fn();
           const options: GroupedOptionsType<DropdownOption<string>> = [
             {
               label: "CA",

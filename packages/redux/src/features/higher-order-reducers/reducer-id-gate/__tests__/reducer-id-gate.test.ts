@@ -9,6 +9,7 @@ import {
 import { createSortOrderReducer } from "../../../reducer-factories/sort-order-reducer/sort-order-reducer";
 import { createSelectedIdsReducer } from "../../../reducer-factories/selected-ids-reducer/selected-ids-reducer";
 import { createSelectedIdsActions } from "../../../reducer-factories/selected-ids-reducer/selected-ids-action-creators";
+import { vi } from "vitest";
 
 interface User {
   id?: string;
@@ -36,7 +37,7 @@ describe("reducer-id-gate", () => {
     describe("when receiving other actions", () => {
       describe("and state is not set", () => {
         it("calls internal reducer with empty action", () => {
-          const innerReducer = jest.fn();
+          const innerReducer = vi.fn();
           const reducer = reducerIdGate("test", innerReducer);
           reducer(undefined, { type: "@@INIT" } as any);
           expect(innerReducer).toHaveBeenCalledWith(undefined, {});
@@ -44,7 +45,7 @@ describe("reducer-id-gate", () => {
       });
       describe("and state is set", () => {
         it("just returns state", () => {
-          const innerReducer = jest.fn();
+          const innerReducer = vi.fn();
           const state = { hello: "world" };
           const reducer = reducerIdGate("test", innerReducer);
           const r = reducer(state, { type: "@@INIT" } as any);

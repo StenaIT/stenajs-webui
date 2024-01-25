@@ -1,7 +1,7 @@
 const {
   getPackageFolderList,
   packagesPath,
-} = require("./util/package-json-fetcher");
+} = require("./util/package-json-fetcher.cjs");
 const glob = require("glob");
 const path = require("path");
 const fs = require("fs");

@@ -18,7 +18,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "suppressImplicitAnyIndexErrors": true,
-    "strict": true
+    "strict": true,
+    "types": ["vitest/globals"]
   },
   "ts-node": {
     "compilerOptions": {

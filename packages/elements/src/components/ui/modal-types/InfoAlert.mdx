@@ -1,0 +1,42 @@
+import { Canvas, Meta, Title } from "@storybook/blocks";
+import * as InfoAlertStories from "./InfoAlert.stories";
+
+<Meta of={InfoAlertStories} />
+
+<Title />
+
+`InfoAlert` is a modal panel. It contains no modal logic, but can be used together with `useAlertDialog`, `useModalDialog`, etc.
+
+```tsx
+const SessionExpiredAlert: React.FC = () => {
+  const { resolve } = useDialogPromise();
+
+  return (
+    <InfoAlert
+      maxWidth={"384px"}
+      onRequestClose={resolve}
+      heading={heading}
+      text={text}
+      icon={stenaBell}
+      buttons={<PrimaryButton size={"larger"} label={"Restart"} />}
+    />
+  );
+};
+
+const Example: React.FC = () => {
+  const [element, { show }] = useAlertDialog(SessionExpiredAlert);
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open InfoAlert"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+```
+
+<Canvas of={InfoAlertStories.OneButton} />
+
+`InfoAlert` is responsive. Buttons will be stacked in a column on mobile, but a row on desktop.
+
+<Canvas of={InfoAlertStories.TwoButtons} />
