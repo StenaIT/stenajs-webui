@@ -123,7 +123,7 @@ const [dialog, { show }] = useModalDialog<SomeModalProps, SomeModalResult>(
 And within the modal panel:
 
 ```tsx
-<PrimaryButton label={"Save"} onClick={() => resolve(formModel)} />;
+<PrimaryButton label={"Save"} onClick={() => resolve(formModel)} />
 ```
 
 ### Example with promise result
@@ -143,6 +143,8 @@ And within the modal panel:
     }
   }, [...]);
 ```
+
+<Canvas of={ModalDialogStories.ResolveReject} />
 
 # Examples
 

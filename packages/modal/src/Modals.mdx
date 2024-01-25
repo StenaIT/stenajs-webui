@@ -99,7 +99,7 @@ interface CustomModalProps {
 }
 
 export const CustomModal: React.FC<CustomModalProps> = ({ onRequestClose }) => {
-  const heading = useTranslation("Custom.PageHeader");
+  const heading = useTranslation("CustomModal.Header");
   const okButtonLabel = useTranslation("OkButton.Label");
 
   // If you are using dialog hooks, you should use useDialogPromise resolve/reject to close it.

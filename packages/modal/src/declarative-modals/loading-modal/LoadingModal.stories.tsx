@@ -22,7 +22,12 @@ export const Standard = () => {
           onClick={() => setOpen(true)}
         />
       </Row>
-      {open && <LoadingModal onRequestClose={() => setOpen(false)} shouldCloseOnEsc={true}/>}
+      {open && (
+        <LoadingModal
+          onRequestClose={() => setOpen(false)}
+          shouldCloseOnEsc={true}
+        />
+      )}
     </Column>
   );
 };
