@@ -45,6 +45,21 @@ It sizes itself as per content, unless on mobile. On mobile it is fullscreen.
 This is a small loading spinner modal.
 This is usable when you want to prevent user input while some job is in progress.
 
+This component does not use `isOpen` prop, if it is rendered in the DOM, it is visible.
+
+Also `shouldCloseOnOverlayClick` and `shouldCloseOnEsc` are false by default.
+
+### Example
+
+```tsx
+   return (
+     <SomePanel>
+        { loading && <LoadingModal /> }
+        // ... Other content
+     </SomePanel>
+   );
+```
+
 <Canvas of={LoadingModalStories.Standard} />
 
 ### Drawer
