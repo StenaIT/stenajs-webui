@@ -22,7 +22,7 @@ export const Standard = () => {
           onClick={() => setOpen(true)}
         />
       </Row>
-      {open && <LoadingModal onRequestClose={() => setOpen(false)} />}
+      {open && <LoadingModal onRequestClose={() => setOpen(false)} shouldCloseOnEsc={true}/>}
     </Column>
   );
 };
@@ -43,6 +43,7 @@ export const WithHeaderAndIcon = () => {
           headerText={"Saving agreement..."}
           headerIconLeft={faLock}
           onRequestClose={() => setOpen(false)}
+          shouldCloseOnEsc={true}
         />
       )}
     </Column>

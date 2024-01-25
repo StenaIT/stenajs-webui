@@ -20,12 +20,16 @@ export interface LoadingModalProps extends Omit<ReactModal.Props, "isOpen"> {
 export const LoadingModal: React.FC<LoadingModalProps> = ({
   headerIconLeft,
   headerText,
+  shouldCloseOnOverlayClick = false,
+  shouldCloseOnEsc = false,
   ...modalProps
 }) => {
   return (
     <ReactModal
       {...modalProps}
       isOpen
+      shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+      shouldCloseOnEsc={shouldCloseOnEsc}
       className={styles.modal}
       overlayClassName={styles.overlay}
     >
