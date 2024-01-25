@@ -18,7 +18,7 @@ export const Standard = () => {
       <Text>Press Esc to close modal in story.</Text>
       <Row>
         <PrimaryButton
-          label={"Show LoadingModal"}
+          label={"Open loading modal"}
           onClick={() => setOpen(true)}
         />
       </Row>
@@ -34,7 +34,7 @@ export const WithHeaderAndIcon = () => {
       <Text>Press Esc to close modal in story.</Text>
       <Row>
         <PrimaryButton
-          label={"Show LoadingModal"}
+          label={"Open loading modal"}
           onClick={() => setOpen(true)}
         />
       </Row>

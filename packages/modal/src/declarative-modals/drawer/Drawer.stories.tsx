@@ -25,7 +25,7 @@ export const Standard = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -40,7 +40,7 @@ export const CustomWidth = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -59,7 +59,7 @@ export const CustomBackground = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -74,7 +74,7 @@ export const FromRight = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -89,7 +89,7 @@ export const FromTop = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -104,7 +104,7 @@ export const FromBottom = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -124,7 +124,7 @@ export const CustomHeight = () => {
           Drawer content
         </Box>
       </Drawer>
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
@@ -145,7 +145,7 @@ export const WithScroll = () => {
         <Box background={"#9ce591"} height={"200px"} width={"100%"} />
       </Drawer>
 
-      <PrimaryButton label={"Open"} onClick={open} />
+      <PrimaryButton label={"Open drawer"} onClick={open} />
     </div>
   );
 };
