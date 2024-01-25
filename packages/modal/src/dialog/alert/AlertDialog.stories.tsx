@@ -10,7 +10,7 @@ import { useDialogPromise } from "../UseDialogPromise";
 import { useAlertDialog } from "./UseAlertDialog";
 
 export default {
-  title: "modal/Dialog/AlertDialog",
+  title: "modal/Dialog/Dialog/AlertDialog",
 };
 
 const AlertContent: React.FC = () => {
