@@ -25,8 +25,8 @@
     "check-deps-match": "node scripts/check-deps-match.cjs",
     "check-builds": "node scripts/check-builds.cjs",
     "check-imports": "node scripts/check-imports.cjs",
-    "check-prettier": "prettier -l \"packages/**/src/**/*.{ts,tsx,css}\" --ignore-path .gitignore --no-config",
-    "prettier": "prettier --write \"packages/**/src/**/*.{ts,tsx,css}\" --ignore-path .gitignore --no-config --cache",
+    "check-prettier": "prettier -l \"packages/**/src/**/*.{ts,tsx,css,mdx}\" --ignore-path .gitignore --no-config",
+    "prettier": "prettier --write \"packages/**/src/**/*.{ts,tsx,css,mdx}\" --ignore-path .gitignore --no-config --cache",
     "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
     "check-circular-deps-stories": "find ./packages -type f -name \"*.stories.tsx\" | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
   },
