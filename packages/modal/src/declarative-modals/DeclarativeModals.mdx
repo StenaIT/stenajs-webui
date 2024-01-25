@@ -14,6 +14,8 @@ They are controlled by passing state and callbacks.
 If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
 you should use `useModalDialog` hooks instead.
 
+These modals are based on the `react-modal` library.
+
 # Minimal inherent visuals
 
 Visually, these are identical to dialog hooks API.
@@ -52,3 +54,27 @@ This is usable when you want to prevent user input while some job is in progress
 ## Window
 
 <Canvas of={WindowStories.DraggableWindow} />
+
+# Common props
+
+These props are shared between all variants, and come from the `react-modal` library.
+
+## `isOpen`
+
+When true, modal is visible.
+
+## `onRequestClose`
+
+This function is called when user closes the modal by pressing Esc or clicking outside of modal.
+
+## `shouldCloseOnEsc`
+
+If true, modal will close when user presses Esc button.
+
+`Default: true`
+
+## `shouldCloseOnOverlayClick`
+
+If true, modal will close when user clicks outside of modal.
+
+`Default: true`
