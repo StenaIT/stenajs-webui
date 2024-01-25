@@ -1,4 +1,6 @@
 import { Meta } from "@storybook/blocks";
+import { SecondaryButton } from "@stenajs-webui/elements";
+import { linkTo } from "@storybook/addon-links";
 
 <Meta title="modal" />
 
@@ -26,10 +28,20 @@ These components receive state and callbacks as props and are controlled.
 If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
 you should use dialog modals instead.
 
+<SecondaryButton
+  label={"Go to declarative modals"}
+  onClick={linkTo("modal/Declarative modals", "Docs")}
+/>
+
 ## Dialog modals
 
 Dialog modals use the `<dialog>` element and the dialog-API available in the browser.
 It is imperative, which means that you the modal by calling a function, not as a reaction by state change.
+
+<SecondaryButton
+  label={"Go to dialog modals"}
+  onClick={linkTo("modal/Dialog", "Docs")}
+/>
 
 ## Minimal inherent visuals
 
@@ -55,9 +67,69 @@ that it looks consistent throughout your and other apps.
 These are small UI components that help ensure that, for example, a heading
 in modals look the same in all modals.
 
+<SecondaryButton
+  label={"Go to building blocks"}
+  onClick={linkTo("modal/Building blocks/Docs")}
+/>
+
 ## Ready-made modals
 
 If you have a common use-case, for example a "Session has expired" modal,
 you can use these ready-made modal components.
 
 They are complete and ready to use.
+
+<SecondaryButton
+  label={"Go to ready-made modals"}
+  onClick={linkTo("modal/Ready-made modals", "Docs")}
+/>
+
+# Custom modals
+
+Your app can create modals with any kind of content, using any components.
+
+It is encouraged to use the building blocks where appropriate, to ensure visual consistency.
+
+```tsx
+interface CustomModalProps {
+  // If you are using declarative modal components, pass onRequestClose callback to close it.
+  onRequestClose: () => void;
+}
+
+export const CustomModal: React.FC<CustomModalProps> = ({ onRequestClose }) => {
+  const heading = useTranslation("Custom.PageHeader");
+  const okButtonLabel = useTranslation("OkButton.Label");
+
+  // If you are using dialog hooks, you should use useDialogPromise resolve/reject to close it.
+  const { reject } = useDialogPromise();
+
+  return (
+    <ModalBody maxWidth={"680px"}>
+      <Spacing />
+      <Text>{text}</Text>
+      <Spacing num={3} />
+      <Row>
+        <PrimaryButton
+          size={"large"}
+          label={okButtonLabel}
+          onClick={() => reject()}
+        />
+      </Row>
+    </ModalBody>
+  );
+};
+```
+
+You can then use it with declarative modals or dialog hooks.
+
+```tsx
+<Modal isOpen={open} onRequestClose={() => setOpen(false)}>
+  <CustomModal onRequestClose={() => setOpen(false)}/>
+</Modal>
+```
+
+```tsx
+const [dialog, { show }] = useModalDialog(CustomModal);
+
+return <PrimaryButton onClick={() => show()} />;
+```
