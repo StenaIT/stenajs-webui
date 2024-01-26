@@ -1,3 +1,16 @@
+# v20.0.0 (Fri Jan 26 2024)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/elements`, `@stenajs-webui/modal`
+  - Modal refactor, now has no visual design [#706](https://github.com/StenaIT/stenajs-webui/pull/706) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v19.0.5 (Thu Jan 25 2024)
 
 #### 🐛 Bug Fix
