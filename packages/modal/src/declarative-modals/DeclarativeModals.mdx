@@ -1,0 +1,107 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as LoadingModalStories from "./loading-modal/LoadingModal.stories";
+import * as ModalStories from "./modal/Modal.stories";
+import * as DrawerStories from "./drawer/Drawer.stories";
+import * as WindowStories from "./window/Window.stories";
+
+<Meta title="modal/Declarative modals" />
+
+# Declarative modals
+
+Declarative modals are React components with `isOpen={true}` prop.
+They are controlled by passing state and callbacks.
+
+If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
+you should use `useModalDialog` hooks instead.
+
+These modals are based on the `react-modal` library.
+
+# Minimal inherent visuals
+
+Visually, these are identical to dialog hooks API.
+They provide:
+
+- Dark overlay
+- Shadow around the modal
+- White background
+- Round borders
+
+Everything else has to be provided in `children`.
+Either use one of the ready-made modals, or create a custom modal in your app.
+
+## Variants
+
+There is a collection of modal variants.
+
+### Modal
+
+This is the normal modal.
+It sizes itself as per content, unless on mobile. On mobile it is fullscreen.
+
+<Canvas of={ModalStories.Standard} />
+
+### LoadingModal
+
+This is a small loading spinner modal.
+This is usable when you want to prevent user input while some job is in progress.
+
+This component does not use `isOpen` prop, if it is rendered in the DOM, it is visible.
+
+Also `shouldCloseOnOverlayClick` and `shouldCloseOnEsc` are false by default.
+
+### Example
+
+```tsx
+return (
+  <SomePanel>
+    {loading && <LoadingModal />}
+    // ... Other content
+  </SomePanel>
+);
+```
+
+<Canvas of={LoadingModalStories.Standard} />
+
+### Drawer
+
+Drawer is a modal that slides in from one of the sides.
+
+The typical use case is filters or menus that appear when the user wants to access them.
+
+It does not have an overlay like the other modals, since the user might want to
+keep it open while still accessing the main content of the page.
+
+<Canvas of={DrawerStories.Standard} />
+
+## Window
+
+This is the only modal that has a visual design.
+It does not share visual identity with the other modals, and looks more like a window.
+
+It supports dragging, where the user can drag the modal to a different position on the screen.
+
+<Canvas of={WindowStories.DraggableWindow} />
+
+# Common props
+
+These props are shared between all variants, and come from the `react-modal` library.
+
+## `isOpen`
+
+When true, modal is visible.
+
+## `onRequestClose`
+
+This function is called when user closes the modal by pressing Esc or clicking outside of modal.
+
+## `shouldCloseOnEsc`
+
+If true, modal will close when user presses Esc button.
+
+`Default: true`
+
+## `shouldCloseOnOverlayClick`
+
+If true, modal will close when user clicks outside of modal.
+
+`Default: true`

@@ -1,0 +1,38 @@
+import * as InfoAlertStories from "./InfoAlert.stories.tsx";
+import { Canvas, Meta } from "@storybook/blocks";
+
+<Meta title="modal/Ready-made modals" />
+
+# Ready-made modals
+
+There is a collection of ready-made modals.
+To use them, just pass them as `children` to the modal.
+
+If you create custom modals, you can check the source if these for inspiration.
+
+Currently there is only one ready-made modal.
+There will be more in the future.
+
+### InfoAlert
+
+This is intended for alerts, such as "Session has expired" and similar.
+
+```tsx
+<Modal isOpen={open} onRequestClose={close}>
+  <InfoAlert
+    minWidth={"384px"}
+    heading={heading}
+    text={text}
+    icon={stenaBell}
+    buttons={
+      <PrimaryButton
+        size={"larger"}
+        label={"Close"}
+        onClick={() => setOpen(false)}
+      />
+    }
+  />
+</Modal>
+```
+
+<Canvas of={InfoAlertStories.OneButton} />

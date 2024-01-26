@@ -1,0 +1,137 @@
+import { Meta } from "@storybook/blocks";
+import { SecondaryButton } from "@stenajs-webui/elements";
+import { linkTo } from "@storybook/addon-links";
+
+<Meta title="modal" />
+
+# Modals
+
+This package contains everything needed to add modals to your app.
+
+It contains 4 categories:
+
+- Declarative modals
+- Dialog modals
+- Building-blocks
+- Ready-made modals
+
+Let's go over them.
+
+## Declarative modals
+
+Declarative modals are React components with `isOpen={true}` prop.
+
+These components receive state and callbacks as props and are controlled.
+
+These are appropriate to use when you have a state, `loading` flag for example.
+
+If you can trigger the modal with a function (such as when user clicks a button, or a mutation onCompleted),
+you should use dialog modals instead.
+
+<SecondaryButton
+  label={"Go to declarative modals"}
+  onClick={linkTo("modal/Declarative modals", "Docs")}
+/>
+
+## Dialog modals
+
+Dialog modals use the `<dialog>` element and the dialog-API available in the browser.
+It is imperative, which means that you show the modal by calling a function, not as a reaction by state change.
+
+These are appropriate to use when you have callbacks, `onCompleted` for `useQuery` for example.
+
+<SecondaryButton
+  label={"Go to dialog modals"}
+  onClick={linkTo("modal/Dialog", "Docs")}
+/>
+
+## Minimal inherent visuals
+
+Visually, declarative and dialog models are identical.
+
+They provide:
+
+- Dark overlay
+- Shadow around the modal
+- White background
+- Round borders
+
+Everything else has to be provided in `children`.
+Either use one of the ready-made modals, or create a custom modal in your app.
+
+# Help components
+
+These are components that help you create the content of a modal, and make sure
+that it looks consistent throughout your and other apps.
+
+## Building blocks
+
+These are small UI components that help ensure that, for example, a heading
+in modals look the same in all modals.
+
+<SecondaryButton
+  label={"Go to building blocks"}
+  onClick={linkTo("modal/Building blocks/Docs")}
+/>
+
+## Ready-made modals
+
+If you have a common use-case, for example a "Session has expired" modal,
+you can use these ready-made modal components.
+
+They are complete and ready to use.
+
+<SecondaryButton
+  label={"Go to ready-made modals"}
+  onClick={linkTo("modal/Ready-made modals", "Docs")}
+/>
+
+# Custom modals
+
+Your app can have modals with any kind of content, using any components.
+
+It is encouraged to use the building blocks where appropriate, to ensure visual consistency.
+
+```tsx
+interface CustomModalProps {
+  // If you are using declarative modal components, pass onRequestClose callback to close it.
+  onRequestClose: () => void;
+}
+
+export const CustomModal: React.FC<CustomModalProps> = ({ onRequestClose }) => {
+  const heading = useTranslation("CustomModal.Header");
+  const okButtonLabel = useTranslation("OkButton.Label");
+
+  // If you are using dialog hooks, you should use useDialogPromise resolve/reject to close it.
+  const { reject } = useDialogPromise();
+
+  return (
+    <ModalBody maxWidth={"680px"}>
+      <Spacing />
+      <Text>{text}</Text>
+      <Spacing num={3} />
+      <Row>
+        <PrimaryButton
+          size={"large"}
+          label={okButtonLabel}
+          onClick={() => reject()}
+        />
+      </Row>
+    </ModalBody>
+  );
+};
+```
+
+You can then use it with declarative modals or dialog hooks.
+
+```tsx
+<Modal isOpen={open} onRequestClose={() => setOpen(false)}>
+  <CustomModal onRequestClose={() => setOpen(false)} />
+</Modal>
+```
+
+```tsx
+const [dialog, { show }] = useModalDialog(CustomModal);
+
+return <PrimaryButton onClick={() => show()} />;
+```

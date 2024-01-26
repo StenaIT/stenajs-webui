@@ -1,0 +1,115 @@
+.overlay {
+  --swui-modal-animation-time: var(--swui-animation-time-fast);
+  --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
+  --swui-modal-content-bg-color: var(--swui-white);
+  --swui-modal-width: 960px;
+  --swui-modal-max-width: 100%;
+  --swui-modal-header-border-color: var(--lhds-color-ui-300);
+  --swui-modal-shadow: var(--swui-shadow-modal);
+  --swui-modal-footer-shadow: var(--swui-shadow-modal);
+
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--swui-modal-overlay-bg-color);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  animation: fadeIn var(--swui-modal-animation-time)
+    cubic-bezier(0.645, 0.045, 0.355, 1) both;
+
+  @media print {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .modal {
+    max-width: 100%;
+    outline: none;
+    pointer-events: none;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .content {
+    position: relative;
+    display: block;
+    background: var(--swui-modal-content-bg-color);
+    box-shadow: var(--swui-modal-shadow);
+    border-radius: var(--swui-border-radius-large);
+    pointer-events: all;
+
+    width: var(--swui-modal-width);
+    max-width: var(--swui-modal-max-width);
+
+    @media (max-width: 768px) {
+      border-radius: 0;
+      width: 100%;
+      max-width: 100%;
+      height: 100vh;
+    }
+
+    animation: appear var(--swui-animation-time-fast)
+      cubic-bezier(0.645, 0.045, 0.355, 1) both;
+
+    @media print {
+      box-shadow: none;
+      top: 0;
+    }
+
+    :focus {
+      outline: 0;
+    }
+
+    &.isDraggable {
+      :global(.draggable-modal-handle) {
+        cursor: move;
+
+        :global(.draggable-modal-cancel),
+        [role="tooltip"] {
+          cursor: initial;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: var(--swui-hidden);
+  }
+  100% {
+    background-color: var(--swui-modal-overlay-bg-color);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.footer {
+  background-color: var(--swui-modal-content-bg-color);
+}
+
+.stickyFooter {
+  position: sticky;
+  bottom: 0;
+  box-shadow: var(--swui-modal-footer-shadow);
+
+  @media print {
+    position: static;
+    box-shadow: none;
+  }
+}

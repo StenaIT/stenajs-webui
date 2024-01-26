@@ -1,0 +1,11 @@
+.modalActionButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: stretch;
+  }
+}
