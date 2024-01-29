@@ -1,3 +1,16 @@
+# v20.0.1 (Mon Jan 29 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Add section on migrating from earlier modal version [#707](https://github.com/StenaIT/stenajs-webui/pull/707) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.0.0 (Fri Jan 26 2024)
 
 #### 💥 Breaking Change
