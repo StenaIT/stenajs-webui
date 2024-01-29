@@ -135,3 +135,15 @@ const [dialog, { show }] = useModalDialog(CustomModal);
 
 return <PrimaryButton onClick={() => show()} />;
 ```
+
+# Migrating from webui 19 or earlier
+
+Migrating should be easy, you need to update what components you are using.
+If you were using `Modal`, change to `Window` instead.
+`Window` is identical to the old `Modal` component, with support for draggable, etc.
+
+Here are all components to switch to:
+
+- Modal -> Window
+- BaseModal -> BaseWindow
+- CenterModal -> Modal
