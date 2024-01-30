@@ -56,7 +56,7 @@
     align-items: center;
     justify-content: space-between;
 
-    gap: 8px;
+    gap: var(--swui-metrics-indent);
     border: 0;
     cursor: pointer;
     border-radius: var(--swui-max-border-radius);
