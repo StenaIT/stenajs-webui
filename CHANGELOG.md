@@ -1,3 +1,16 @@
+# v20.0.2 (Tue Jan 30 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add gap between content and arrow in Collapsible [#708](https://github.com/StenaIT/stenajs-webui/pull/708) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.0.1 (Mon Jan 29 2024)
 
 #### 🐛 Bug Fix
