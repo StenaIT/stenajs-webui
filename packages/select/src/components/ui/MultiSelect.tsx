@@ -36,12 +36,15 @@ const ClearIndicator = function <TOption>({
   clearValue,
 }: ClearIndicatorProps<TOption, true, GroupBase<TOption>>) {
   return (
-    <TextInputButton
-      aria-label={"Clear"}
-      onClick={clearValue}
-      icon={stenaTimes}
-      variant={"error"}
-    />
+    // stopPropagation is needed to prevent react-select from opening its menu when clicking on the button.
+    <div onMouseDown={(ev) => ev.stopPropagation()}>
+      <TextInputButton
+        aria-label={"Clear"}
+        onClick={clearValue}
+        icon={stenaTimes}
+        variant={"error"}
+      />
+    </div>
   );
 };
 
@@ -50,12 +53,17 @@ const MultiValue = function <TOption extends MultiSelectOption>({
   data,
 }: MultiValueProps<TOption, true, GroupBase<TOption>>) {
   return (
-    <Chip
-      onClickRemove={(ev) =>
-        removeProps.onClick?.(ev as unknown as React.MouseEvent<HTMLDivElement>)
-      }
-      label={data.label}
-    />
+    // stopPropagation is needed to prevent react-select from opening its menu when clicking on the button.
+    <div onMouseDown={(ev) => ev.stopPropagation()}>
+      <Chip
+        onClickRemove={(ev) =>
+          removeProps.onClick?.(
+            ev as unknown as React.MouseEvent<HTMLDivElement>
+          )
+        }
+        label={data.label}
+      />
+    </div>
   );
 };
 
