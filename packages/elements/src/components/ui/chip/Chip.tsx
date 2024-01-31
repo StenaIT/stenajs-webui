@@ -27,9 +27,13 @@ export const Chip: React.FC<ChipProps> = ({
   const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
     ev.stopPropagation();
     ev.preventDefault();
-    if (onClick) {
-      onClick(ev);
-    }
+    onClick?.(ev);
+  };
+
+  const onClickRemoveHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    ev.stopPropagation();
+    ev.preventDefault();
+    onClickRemove?.(ev);
   };
 
   const removableStyle = onClickRemove ? styles.removable : undefined;
@@ -55,7 +59,7 @@ export const Chip: React.FC<ChipProps> = ({
       {onClickRemove && (
         <button
           className={cx(styles.chipCell, styles.close)}
-          onClick={onClickRemove}
+          onClick={onClickRemoveHandler}
         >
           <div className={styles.circle}>
             <Icon icon={stenaTimesThick} size={8} />
