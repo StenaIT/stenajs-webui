@@ -9,8 +9,8 @@ import { stenaTimesThick } from "../../../icons/generated/CommonIcons";
 export type ChipVariant = "primary" | "secondary";
 
 export interface ChipProps {
-  onClick?: () => void;
-  onClickRemove?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClickRemove?: MouseEventHandler<HTMLButtonElement>;
   label?: string;
   variant?: ChipVariant;
   className?: string;
@@ -24,11 +24,11 @@ export const Chip: React.FC<ChipProps> = ({
   className,
   ...rest
 }) => {
-  const onClickHandler: MouseEventHandler<HTMLSpanElement> = (ev) => {
+  const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
     ev.stopPropagation();
     ev.preventDefault();
     if (onClick) {
-      onClick();
+      onClick(ev);
     }
   };
 

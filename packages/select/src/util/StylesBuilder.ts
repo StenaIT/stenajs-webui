@@ -138,7 +138,7 @@ export const createStylesFromTheme = <
     // none of react-selects styles are passed to <View />
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    minHeight: input.minHeight,
+    minHeight: "36px",
     backgroundColor: resolveInputBackgroundColor(
       input,
       isDisabled,
@@ -181,6 +181,8 @@ export const createStylesFromTheme = <
   }),
   input: (base) => ({
     ...base,
+    padding: 0,
+    margin: 0,
     minHeight: input.minHeight,
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
@@ -226,7 +228,8 @@ export const createStylesFromTheme = <
   }),
   valueContainer: (base) => ({
     ...base,
-    padding: "0 8px",
+    padding: "4px",
+    gap: "4px",
   }),
   dropdownIndicator: (base, { isFocused, isDisabled }) => ({
     ...base,
@@ -289,7 +292,8 @@ export const createStylesFromTheme = <
     fontSize: groupHeading.fontSize,
     alignItems: "center",
     margin: 0,
-    marginRight: 2,
+    borderRadius: "4px",
+    overflow: "hidden",
   }),
   loadingMessage: (base) => ({
     ...base,

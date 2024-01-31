@@ -4,6 +4,7 @@ import SelectComponent, {
   ClearIndicatorProps,
   GroupBase,
   mergeStyles,
+  MultiValueProps,
   Props,
   SelectComponentsConfig,
 } from "react-select";
@@ -11,10 +12,16 @@ import {
   createStylesFromVariant,
   SelectVariant,
 } from "../../util/StylesBuilder";
-import { CloseButton } from "@stenajs-webui/elements";
+import { Chip, stenaTimes, TextInputButton } from "@stenajs-webui/elements";
 
-export interface MultiSelectProps<TOption = { label: string; value: string }>
-  extends Props<TOption, true> {
+interface MultiSelectOption {
+  label: string;
+  value: string;
+}
+
+export interface MultiSelectProps<
+  TOption extends MultiSelectOption = MultiSelectOption
+> extends Props<TOption, true> {
   variant?: SelectVariant;
   isMulti?: true;
 }
@@ -25,7 +32,34 @@ export type MultiSelectComponentsConfig<TOption> = SelectComponentsConfig<
   GroupBase<TOption>
 >;
 
-export function MultiSelect<TOption>({
+const ClearIndicator = function <TOption>({
+  clearValue,
+}: ClearIndicatorProps<TOption, true, GroupBase<TOption>>) {
+  return (
+    <TextInputButton
+      aria-label={"Clear"}
+      onClick={clearValue}
+      icon={stenaTimes}
+      variant={"error"}
+    />
+  );
+};
+
+const MultiValue = function <TOption extends MultiSelectOption>({
+  removeProps,
+  data,
+}: MultiValueProps<TOption, true, GroupBase<TOption>>) {
+  return (
+    <Chip
+      onClickRemove={(ev) =>
+        removeProps.onClick?.(ev as unknown as React.MouseEvent<HTMLDivElement>)
+      }
+      label={data.label}
+    />
+  );
+};
+
+export function MultiSelect<TOption extends MultiSelectOption>({
   variant = "standard",
   styles,
   isMulti,
@@ -38,14 +72,10 @@ export function MultiSelect<TOption>({
     return styles ? mergeStyles(sourceStyles, styles) : sourceStyles;
   }, [variant, styles]);
 
-  const ClearIndicator = (
-    props: ClearIndicatorProps<TOption, true, GroupBase<TOption>>
-  ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
-
   return (
     <SelectComponent
       styles={selectStyles}
-      components={{ ...components, ClearIndicator }}
+      components={{ ...components, ClearIndicator, MultiValue }}
       {...selectProps}
       isMulti={true}
     />
