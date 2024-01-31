@@ -26,6 +26,7 @@ export const IconMenuButton = forwardRef<
       width={"100%"}
       borderRadius={"99rem"}
       overflow={"hidden"}
+      flexShrink={0}
     >
       <button
         className={cx(
