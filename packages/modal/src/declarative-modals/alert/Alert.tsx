@@ -1,15 +1,15 @@
 import * as React from "react";
 import ReactModal from "react-modal";
 
-import styles from "./Modal.module.css";
+import styles from "./Alert.module.css";
 
-export interface ModalProps extends ReactModal.Props {
+export interface AlertProps extends ReactModal.Props {
   onRequestClose?: () => void;
 }
 
 const style = { overlay: { justifyContent: "center" } };
 
-export const Modal: React.FC<ModalProps> = ({
+export const Alert: React.FC<AlertProps> = ({
   children,
   ...reactModalProps
 }) => {

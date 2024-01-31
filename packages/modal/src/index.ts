@@ -2,6 +2,7 @@ export * from "./common-types";
 export * from "./declarative-modals/window/BaseWindow";
 export * from "./declarative-modals/drawer/Drawer";
 export * from "./declarative-modals/drawer/DrawerHeader";
+export * from "./declarative-modals/alert/Alert";
 export * from "./declarative-modals/modal/Modal";
 export * from "./declarative-modals/loading-modal/LoadingModal";
 export * from "./declarative-modals/window/Window";
