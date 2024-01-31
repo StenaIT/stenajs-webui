@@ -1,6 +1,7 @@
 import { Canvas, Meta } from "@storybook/blocks";
 import * as LoadingModalStories from "./loading-modal/LoadingModal.stories";
 import * as ModalStories from "./modal/Modal.stories";
+import * as AlertStories from "./alert/Alert.stories";
 import * as DrawerStories from "./drawer/Drawer.stories";
 import * as WindowStories from "./window/Window.stories";
 
@@ -36,9 +37,22 @@ There is a collection of modal variants.
 ### Modal
 
 This is the normal modal.
+It is intended for larger content, such as forms, etc.
+
 It sizes itself as per content, unless on mobile. On mobile it is fullscreen.
 
 <Canvas of={ModalStories.Standard} />
+
+### Alert
+
+This is the alert modal.
+
+It is intended for smaller content, such as notifications, prompts or short information.
+
+It sizes itself as per content, it is never full screen.
+It will also never reach the edge of the browser. There is always at least 8px distance.
+
+<Canvas of={AlertStories.WithInfoAlert} />
 
 ### LoadingModal
 
