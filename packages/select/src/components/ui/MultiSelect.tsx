@@ -14,7 +14,7 @@ import {
 } from "../../util/StylesBuilder";
 import { Chip, stenaTimes, TextInputButton } from "@stenajs-webui/elements";
 
-interface MultiSelectOption {
+export interface MultiSelectOption {
   label: string;
   value: string;
 }

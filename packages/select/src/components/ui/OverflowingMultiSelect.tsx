@@ -1,9 +1,15 @@
 import * as React from "react";
-import { MultiSelect, MultiSelectProps } from "./MultiSelect";
 import { memo, ReactElement } from "react";
+import {
+  MultiSelect,
+  MultiSelectOption,
+  MultiSelectProps,
+} from "./MultiSelect";
 import { components, ValueContainerProps } from "react-select";
 
-export function OverflowingMultiSelect<T>(props: MultiSelectProps<T>) {
+export function OverflowingMultiSelect<T extends MultiSelectOption>(
+  props: MultiSelectProps<T>
+) {
   return (
     <MultiSelect
       hideSelectedOptions={false}
