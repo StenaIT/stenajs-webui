@@ -1,3 +1,16 @@
+# v20.1.0 (Wed Jan 31 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/modal`, `@stenajs-webui/select`, `@stenajs-webui/theme`
+  - Update padding, Chip and clear button in Select [#710](https://github.com/StenaIT/stenajs-webui/pull/710) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.0.3 (Wed Jan 31 2024)
 
 #### 🐛 Bug Fix
