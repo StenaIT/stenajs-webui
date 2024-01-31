@@ -1,3 +1,16 @@
+# v20.2.0 (Wed Jan 31 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`
+  - Add declarative Alert component [#711](https://github.com/StenaIT/stenajs-webui/pull/711) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.1.0 (Wed Jan 31 2024)
 
 #### 🚀 Enhancement
