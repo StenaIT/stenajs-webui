@@ -3,12 +3,11 @@ import { TextInput } from "@stenajs-webui/forms";
 import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { PrimaryButton } from "@stenajs-webui/elements";
-import { SecondaryButton } from "@stenajs-webui/elements";
-import { Label } from "@stenajs-webui/elements";
+import { Label, PrimaryButton, SecondaryButton } from "@stenajs-webui/elements";
 import { useDialogPromise } from "../UseDialogPromise";
 import { useModalDialog } from "./UseModalDialog";
 import { cssColor } from "@stenajs-webui/theme";
+import { useAlertDialog } from "../alert/UseAlertDialog";
 
 export default {
   title: "modal/Dialog/ModalDialog",
@@ -96,7 +95,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ currentEmail }) => {
 };
 
 export const ResolveReject: StoryFn = () => {
-  const [element, { show }] = useModalDialog<EmailFormProps, string>(EmailForm);
+  const [element, { show }] = useAlertDialog<EmailFormProps, string>(EmailForm);
   const [email, setEmail] = useState<string | undefined>(undefined);
 
   const onClickOpen = useCallback(async () => {

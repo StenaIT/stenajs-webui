@@ -3,30 +3,45 @@ import { TextInput } from "@stenajs-webui/forms";
 import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useCallback, useState } from "react";
-import { PrimaryButton } from "@stenajs-webui/elements";
-import { SecondaryButton } from "@stenajs-webui/elements";
-import { Label } from "@stenajs-webui/elements";
+import {
+  Label,
+  PrimaryButton,
+  SecondaryButton,
+  stenaBell,
+} from "@stenajs-webui/elements";
 import { useDialogPromise } from "../UseDialogPromise";
 import { useAlertDialog } from "./UseAlertDialog";
+import { InfoAlert } from "../../ready-made-modals/InfoAlert";
 
 export default {
   title: "modal/Dialog/AlertDialog",
 };
 
-const AlertContent: React.FC = () => {
+const heading = "Session has expired";
+const text =
+  "Since you've been inactive for more than 20 minutes, your session has expired. Restart and make a new booking.";
+
+const InfoAlertContent: React.FC = () => {
   const { resolve } = useDialogPromise();
 
   return (
-    <Column spacing={2} indent={2} gap={2}>
-      <Text>Some modal content</Text>
-      <Row gap={2}>
-        <PrimaryButton label={"Close"} onClick={() => resolve()} />
-      </Row>
-    </Column>
+    <InfoAlert
+      maxWidth={"384px"}
+      heading={heading}
+      text={text}
+      icon={stenaBell}
+      buttons={
+        <PrimaryButton
+          size={"larger"}
+          label={"Close"}
+          onClick={() => resolve()}
+        />
+      }
+    />
   );
 };
 export const Overview: StoryFn = () => {
-  const [element, { show }] = useAlertDialog(AlertContent);
+  const [element, { show }] = useAlertDialog(InfoAlertContent);
 
   return (
     <Row>
@@ -37,7 +52,7 @@ export const Overview: StoryFn = () => {
 };
 
 export const Mobile: StoryFn = () => {
-  const [element, { show }] = useAlertDialog(AlertContent);
+  const [element, { show }] = useAlertDialog(InfoAlertContent);
 
   return (
     <Row>
