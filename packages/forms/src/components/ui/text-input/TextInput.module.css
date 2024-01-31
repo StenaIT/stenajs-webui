@@ -1,6 +1,6 @@
 .textInput {
   display: flex;
-  height: 36px;
+  height: var(--swui-field-height);
   width: 100%;
   align-items: center;
   background: var(--swui-field-bg-enabled);

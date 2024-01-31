@@ -71,6 +71,7 @@
   --swui-field-text-color-disabled: #0c0e10;
   --swui-field-letter-spacing: 0;
   --swui-field-text-line-height: var(--swui-line-height);
+  --swui-field-height: 36px;
   --swui-field-bg-enabled: var(--swui-white);
   --swui-field-bg-disabled: var(--lhds-color-ui-300);
   --swui-field-border-color: var(--lhds-color-ui-400);
@@ -106,6 +107,7 @@
   --swui-metrics-indent: 8px;
   --swui-metrics-spacing: 8px;
   --swui-metrics-space: 8px;
+  --swui-metrics-space-half: 4px;
 
   --swui-default-item-height: 40px;
 

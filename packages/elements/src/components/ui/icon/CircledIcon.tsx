@@ -64,7 +64,7 @@ const getBackgroundSize = (
     case "medium":
       return "40px";
     case "large":
-      return "96px";
+      return "64px";
     case "xl":
       return "160px";
     default:
@@ -81,7 +81,7 @@ const getIconSize = (
     case "medium":
       return 20;
     case "large":
-      return 48;
+      return 32;
     case "xl":
       return 80;
     default:

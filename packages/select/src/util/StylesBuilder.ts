@@ -138,7 +138,7 @@ export const createStylesFromTheme = <
     // none of react-selects styles are passed to <View />
     fontFamily: input.fontFamily,
     fontSize: input.fontSize,
-    minHeight: "36px",
+    minHeight: "var(--swui-field-height)",
     backgroundColor: resolveInputBackgroundColor(
       input,
       isDisabled,
@@ -228,8 +228,8 @@ export const createStylesFromTheme = <
   }),
   valueContainer: (base) => ({
     ...base,
-    padding: "4px",
-    gap: "4px",
+    padding: "var(--swui-metrics-space-half)",
+    gap: "var(--swui-metrics-space-half)",
   }),
   dropdownIndicator: (base, { isFocused, isDisabled }) => ({
     ...base,
@@ -292,7 +292,7 @@ export const createStylesFromTheme = <
     fontSize: groupHeading.fontSize,
     alignItems: "center",
     margin: 0,
-    borderRadius: "4px",
+    borderRadius: "var(--swui-border-radius-small)",
     overflow: "hidden",
   }),
   loadingMessage: (base) => ({
