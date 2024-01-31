@@ -116,7 +116,7 @@ export const defaultSelectTheme: SelectTheme = {
     boxShadowFocused: "none",
     fontFamily: "var(--swui-font-primary)",
     fontSize: "var(--swui-font-size-inputs)",
-    minHeight: "30px",
+    minHeight: "24px",
     placeholderColor: "var(--swui-field-text-color)",
     textColor: "var(--swui-field-text-color)",
     borderRadius: "var(--swui-field-border-radius)",
@@ -125,7 +125,7 @@ export const defaultSelectTheme: SelectTheme = {
     textColor: "var(--swui-field-text-color)",
   },
   groupHeading: {
-    fontSize: "var(--swui-font-size-smaller)",
+    fontSize: "var(--swui-font-size-small)",
     lineHeight: "var(--swui-line-height-smaller)",
     fontWeight: "var(--swui-font-weight-text-bold)",
     color: cssColor("--lhds-color-ui-600"),

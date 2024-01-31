@@ -1,6 +1,10 @@
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import * as React from "react";
-import { MultiSelect, MultiSelectProps } from "../MultiSelect";
+import {
+  MultiSelect,
+  MultiSelectOption,
+  MultiSelectProps,
+} from "../MultiSelect";
 import { ChipRow, ChipRowItem } from "./ChipRow";
 
 export interface ChipMultiSelectOption extends ChipRowItem {}
@@ -10,8 +14,9 @@ export interface ChipMultiSelectOption extends ChipRowItem {}
  */
 export type ChipMultiSelectValue = ChipMultiSelectOption;
 
-export interface ChipMultiSelectProps<TOption>
-  extends Omit<MultiSelectProps<TOption>, "value" | "onChange" | "isLoading">,
+export interface ChipMultiSelectProps<
+  TOption extends MultiSelectOption = MultiSelectOption
+> extends Omit<MultiSelectProps<TOption>, "value" | "onChange" | "isLoading">,
     ValueAndOnValueChangeProps<Array<TOption>> {
   loading?: boolean;
   inputValue?: string;

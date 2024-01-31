@@ -3,11 +3,9 @@ import { Chip, FlatButton } from "@stenajs-webui/elements";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import * as React from "react";
 import { PropsWithChildren } from "react";
+import { MultiSelectOption } from "../MultiSelect";
 
-export interface ChipRowItem {
-  label: string;
-  value: string;
-}
+export interface ChipRowItem extends MultiSelectOption {}
 
 export interface ChipRowProps<TValue>
   extends ValueAndOnValueChangeProps<TValue> {

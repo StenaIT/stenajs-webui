@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Row } from "@stenajs-webui/core";
 import type { Meta, StoryObj } from "@storybook/react";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  stenaBell,
+} from "@stenajs-webui/elements";
 import { InfoAlert } from "./InfoAlert";
-import { stenaBell } from "@stenajs-webui/elements";
 import { useDialogPromise } from "../dialog/UseDialogPromise";
 import { useAlertDialog } from "../dialog/alert/UseAlertDialog";
-import { SecondaryButton } from "@stenajs-webui/elements";
 
 const meta: Meta<typeof InfoAlert> = {
   title: "modal/Ready-made modals/InfoAlert",
@@ -39,7 +41,7 @@ const OneButtonAlert: React.FC = () => {
       heading={heading}
       text={text}
       icon={stenaBell}
-      buttons={<PrimaryButton size={"larger"} label={"Restart"} />}
+      buttons={<PrimaryButton size={"large"} label={"Restart"} />}
     />
   );
 };
@@ -67,8 +69,8 @@ const TwoButtonsAlert: React.FC = () => {
       icon={stenaBell}
       buttons={
         <>
-          <SecondaryButton size={"larger"} label={"Cancel"} />
-          <PrimaryButton size={"larger"} label={"Restart"} />
+          <SecondaryButton size={"large"} label={"Cancel"} />
+          <PrimaryButton size={"large"} label={"Restart"} />
         </>
       }
     />

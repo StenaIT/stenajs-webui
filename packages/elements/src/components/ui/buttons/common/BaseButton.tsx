@@ -1,7 +1,7 @@
 import { ButtonElementProps } from "@stenajs-webui/core";
 import cx from "classnames";
 import * as React from "react";
-import { forwardRef } from "react";
+import { forwardRef, MouseEventHandler } from "react";
 import buttonBaseStyles from "./BaseButton.module.css";
 import { CommonButtonProps } from "./ButtonCommon";
 import { getButtonLabel } from "./ButtonLabelFactory";
@@ -66,10 +66,19 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
       loadingOnly ||
       successIconOnly;
 
+    const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
+      ev.stopPropagation();
+      ev.preventDefault();
+      if (disabled || success || loading) {
+        return;
+      }
+      onClick?.(ev);
+    };
+
     return (
       <button
         ref={ref}
-        onClick={disabled || success || loading ? undefined : onClick}
+        onClick={onClickHandler}
         className={cx(
           buttonBaseStyles.button,
           buttonBaseStyles[size],
