@@ -45,7 +45,7 @@ import { SidebarMenu } from "../sidebar-menu/SidebarMenu";
 import { SidebarMenuHeading } from "../sidebar-menu/items/SidebarMenuHeading";
 import { SidebarMenuLink } from "../sidebar-menu/items/SidebarMenuLink";
 import { SidebarMenuCollapsible } from "../sidebar-menu/items/SidebarMenuCollapsible";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { NavBarHeading } from "./NavBarHeading";
 import { SidebarRailMenu } from "../sidebar-menu/rail/SidebarRailMenu";
 import { NavBarUserButton } from "./NavBarUserButton";
@@ -60,7 +60,7 @@ export default {
   subcomponents: { NavBarButton, NavBarMenuButton: NavBarPopoverButton },
 };
 
-export const Demo: Story<Pick<NavBarProps, "variant">> = ({ variant }) => {
+export const Demo: StoryFn<Pick<NavBarProps, "variant">> = ({ variant }) => {
   const [isOpen, open, close] = useBoolean(false);
   const [pinned, , unpin, togglePin] = useBoolean(false);
   const onClick = () => {};
