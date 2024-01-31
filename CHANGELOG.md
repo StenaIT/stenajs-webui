@@ -1,3 +1,16 @@
+# v20.0.3 (Wed Jan 31 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`, `@stenajs-webui/panels`
+  - Fix rail menu hamburger button not visible when window is small [#709](https://github.com/StenaIT/stenajs-webui/pull/709) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.0.2 (Tue Jan 30 2024)
 
 #### 🐛 Bug Fix
