@@ -1,3 +1,16 @@
+# v20.3.0 (Thu Feb 01 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`, `@stenajs-webui/panels`, `@stenajs-webui/theme`
+  - Redesign SelectedItemsActionsPanel [#712](https://github.com/StenaIT/stenajs-webui/pull/712) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.2.0 (Wed Jan 31 2024)
 
 #### 🚀 Enhancement
