@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/panels",
-  "version": "20.2.0",
+  "version": "20.3.0",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,11 +33,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "20.2.0",
-    "@stenajs-webui/elements": "20.2.0",
-    "@stenajs-webui/forms": "20.2.0",
-    "@stenajs-webui/theme": "20.2.0",
-    "@stenajs-webui/tooltip": "20.2.0",
+    "@stenajs-webui/core": "20.3.0",
+    "@stenajs-webui/elements": "20.3.0",
+    "@stenajs-webui/forms": "20.3.0",
+    "@stenajs-webui/theme": "20.3.0",
+    "@stenajs-webui/tooltip": "20.3.0",
     "classnames": "^2.3.1",
     "date-fns": "2.26.0",
     "react-transition-group": "^4.3.0",
