@@ -1,3 +1,16 @@
+# v20.3.1 (Thu Feb 01 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Add setup function for declarative modals [#713](https://github.com/StenaIT/stenajs-webui/pull/713) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.3.0 (Thu Feb 01 2024)
 
 #### 🚀 Enhancement
