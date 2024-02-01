@@ -1,4 +1,5 @@
 export * from "./common-types";
+export * from "./declarative-modals/DeclarativeModalSetup";
 export * from "./declarative-modals/window/BaseWindow";
 export * from "./declarative-modals/drawer/Drawer";
 export * from "./declarative-modals/drawer/DrawerHeader";
