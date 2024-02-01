@@ -81,7 +81,7 @@
   --swui-field-box-size-large: 32px;
   --swui-field-box-size-medium: 24px;
   --swui-field-box-size-small: 16px;
-  --swui-field-border-radius: 4px;
+  --swui-field-border-radius: var(--swui-border-radius-small);
   --swui-field-icon-color: var(--lhds-color-ui-900);
   --swui-field-icon-size: 20px;
   --swui-field-indicator-active-color: var(--swui-white);

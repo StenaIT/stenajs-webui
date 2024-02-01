@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Box, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { ReactNode } from "react";
+import { Row, Space, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 
 interface SelectedItemsActionsProps {
@@ -9,8 +9,6 @@ interface SelectedItemsActionsProps {
   afterLabelContent?: ReactNode;
   rightContent?: ReactNode;
 }
-
-const borderTop = `1px solid ${cssColor("--lhds-color-orange-400")}`;
 
 export const SelectedItemsActionsPanel: React.FC<SelectedItemsActionsProps> = ({
   numItemsSelected,
@@ -21,33 +19,30 @@ export const SelectedItemsActionsPanel: React.FC<SelectedItemsActionsProps> = ({
   <Row
     indent={3}
     spacing
+    gap={3}
     minHeight={"56px"}
     justifyContent={"space-between"}
     alignItems={"center"}
-    borderTop={borderTop}
-    background={cssColor("--lhds-color-orange-50")}
+    background={cssColor("--silver-lighter")}
+    flex={1}
+    borderRadius={"var(--swui-border-radius)"}
   >
-    <Row alignItems={"center"}>
+    <Row alignItems={"center"} gap={2}>
       {numItemsSelected != null || label != null ? (
-        <>
+        <Row alignItems={"center"}>
           {numItemsSelected != null ? (
             <>
-              <Text variant={"bold"}>{numItemsSelected}</Text>
+              <Text>{numItemsSelected}</Text>
               <Space />
               <Text>item{numItemsSelected === 1 ? "" : "s"} selected</Text>
             </>
           ) : label != null ? (
             <>{typeof label === "string" ? <Text>{label}</Text> : label}</>
           ) : null}
-        </>
+        </Row>
       ) : null}
-      {afterLabelContent ? (
-        <>
-          <Indent />
-          <Box>{afterLabelContent}</Box>
-        </>
-      ) : null}
+      {afterLabelContent && <Row>{afterLabelContent}</Row>}
     </Row>
-    <Box>{rightContent}</Box>
+    <Row gap={2}>{rightContent}</Row>
   </Row>
 );
