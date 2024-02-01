@@ -1,0 +1,76 @@
+import * as SelectedItemsActionsPanelStories from "./SelectedItemsActionsPanel.stories";
+import { Canvas, Meta } from "@storybook/blocks";
+
+<Meta of={SelectedItemsActionsPanelStories} />
+
+# SelectedItemsActionsPanel
+
+Use SelectedItemsActionsPanel to show actions that can be made to selected items.
+
+<Canvas of={SelectedItemsActionsPanelStories.Demo} />
+
+## Adding buttons
+
+Add buttons in `afterLabelContent` and `rightContent`.
+
+Any components placed in these props are wrapped by `Row` with correct gap, so there is no need to add it.
+
+`afterLabelContent` should contain `FlatButton` components.
+There is no gap between the buttons here, so only `FlatButton` looks good.
+
+`rightContent`should contain `SecondaryButton` components primarily, and there is a gap.
+
+```tsx
+<SelectedItemsActionsPanel
+  afterLabelContent={
+    <>
+      <FlatButton label={"Clear all"} leftIcon={stenaClearRow} />
+      <FlatButton label={"Delete"} leftIcon={stenaTrash} />
+      <FlatButton label={"Edit"} leftIcon={stenaPen} />
+    </>
+  }
+/>
+```
+
+## In a Card
+
+When rendering `SelectedItemsActionsPanel` in a `Card` (or any other container), please wrap
+it in a `SelectedItemsActionsPadding`.
+
+`SelectedItemsActionsPadding` ensures that there is consistent padding between the
+parent container border and `SelectedItemsActionsPanel`.
+
+## StandardTable
+
+The typical use-case for SelectedItemsActionsPanel is in combination with StandardTable.
+
+Please note that z-index is required for the `Card`. This is caused by `sticky` features in `StandardTable`.
+
+```tsx
+<Card zIndex={100}>
+  <CardBody>
+    <Heading>7 / 49 invoices</Heading>
+  </CardBody>
+  <SelectedItemsActionsPadding>
+    <SelectedItemsActionsPanel
+      numItemsSelected={3}
+      afterLabelContent={
+        <>
+          <FlatButton label={"Clear all"} leftIcon={stenaClearRow} />
+          <FlatButton label={"Delete"} leftIcon={stenaTrash} />
+          <FlatButton label={"Edit"} leftIcon={stenaPen} />
+        </>
+      }
+      rightContent={
+        <>
+          <SecondaryButton label={"Download"} />
+          <SecondaryButton label={"Export"} />
+        </>
+      }
+    />
+  </SelectedItemsActionsPadding>
+</Card>
+<StandardTable config={config} items={items} />
+```
+
+<Canvas of={SelectedItemsActionsPanelStories.WithStandardTable} />
