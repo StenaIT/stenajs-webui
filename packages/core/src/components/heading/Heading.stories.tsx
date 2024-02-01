@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Heading, HeadingProps, HeadingVariant } from "./Heading";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { Column } from "../layout/column/Column";
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: Heading,
 };
 
-export const Overview: Story<HeadingProps> = () => {
+export const Overview: StoryFn<HeadingProps> = () => {
   const headings: Array<HeadingVariant> = ["h1", "h2", "h3", "h4", "h5", "h6"];
   return (
     <Column gap={4}>
