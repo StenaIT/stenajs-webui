@@ -17,6 +17,22 @@ you should use `useModalDialog` hooks instead.
 
 These modals are based on the `react-modal` library.
 
+# Setup
+
+To use declarative modals, you need to set up `react-modal`.
+
+Just call `setupDeclarativeModals(..)` with application root div as argument.
+
+```
+setupDeclarativeModals("root")
+```
+
+or
+
+```
+setupDeclarativeModals(document.getElementById("root")!)
+```
+
 # Minimal inherent visuals
 
 Visually, these are identical to dialog hooks API.
