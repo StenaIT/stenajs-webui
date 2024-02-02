@@ -1,3 +1,16 @@
+# v20.4.0 (Fri Feb 02 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add some travel icons [#714](https://github.com/StenaIT/stenajs-webui/pull/714) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.3.1 (Thu Feb 01 2024)
 
 #### 🐛 Bug Fix
