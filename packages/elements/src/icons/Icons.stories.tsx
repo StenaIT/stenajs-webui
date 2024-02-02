@@ -4,6 +4,7 @@ import * as arrowIcons from "./generated/ArrowIcons";
 import * as businessIcons from "./generated/BusinessIcons";
 import * as commonIcons from "./generated/CommonIcons";
 import * as passengerTypeIcons from "./generated/PassengerTypeIcons";
+import * as travelIcons from "./generated/TravelIcons";
 import * as vehicleTypeIcons from "./generated/VehicleTypeIcons";
 import * as userIcons from "./generated/UserIcons";
 import * as xlIcons from "./generated/XlIcons";
@@ -26,6 +27,16 @@ export const BusinessIcons = () => {
 
 export const PassengerTypeIcons = () => {
   return <IconDemoList icons={passengerTypeIcons} />;
+};
+
+export const TravelIcons = () => {
+  return (
+    <IconDemoList
+      icons={travelIcons}
+      iconSize={80}
+      renderIconDemo={(selectedIcon) => <XlIconDemo icon={selectedIcon} />}
+    />
+  );
 };
 
 export const VehicleTypeIcons = () => {

@@ -3,6 +3,7 @@ export * from "./icons/generated/ArrowIcons";
 export * from "./icons/generated/BusinessIcons";
 export * from "./icons/generated/CommonIcons";
 export * from "./icons/generated/PassengerTypeIcons";
+export * from "./icons/generated/TravelIcons";
 export * from "./icons/generated/VehicleTypeIcons";
 export * from "./icons/generated/UserIcons";
 export * from "./icons/generated/XlIcons";
