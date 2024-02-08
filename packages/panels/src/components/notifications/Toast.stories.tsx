@@ -56,16 +56,6 @@ export const Icon = () => (
   />
 );
 
-export const IconColour = () => (
-  <Toast
-    text={"Hey, listen!"}
-    icon={stenaInfoMegaphone}
-    iconAriaLabel={"Information"}
-    iconColor={cssColor("--lhds-color-blue-500")}
-    onClose={() => {}}
-  />
-);
-
 export const CloseFunction = () => {
   const [showToast, setShowToast] = useState(true);
 
