@@ -25,9 +25,9 @@ import {
   Column,
   Row,
   Space,
+  Text,
   Txt,
   useBoolean,
-  Text,
 } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import { Notification, NotificationProps } from "./Notification";
@@ -217,6 +217,42 @@ export const Icon = () => (
       text={"Hey, listen!"}
       icon={stenaInfoMegaphone}
       iconAriaLabel={"Information"}
+    />
+  </Box>
+);
+
+export const IconWithCustomBackgroundColor = () => (
+  <Box width={300} gap>
+    <Notification
+      text={"Sucess"}
+      icon={stenaCheck}
+      iconAriaLabel={"Sucess"}
+      iconBackgroundColor={"--lhds-color-green-100"}
+    />
+    <Notification
+      text={"Information"}
+      icon={stenaInfoCircle}
+      iconAriaLabel={"Information"}
+      iconBackgroundColor={"--lhds-color-blue-100"}
+    />
+    <Notification
+      text={"Warning"}
+      icon={stenaExclamationTriangle}
+      iconAriaLabel={"Warning"}
+      iconBackgroundColor={"--lhds-color-orange-100"}
+    />
+    <Notification
+      text={"Error"}
+      icon={stenaExclamationTriangle}
+      iconAriaLabel={"Error"}
+      iconBackgroundColor={"--lhds-color-red-100"}
+    />
+    <Notification
+      text={"Unread Error"}
+      icon={stenaExclamationTriangle}
+      iconAriaLabel={"Error"}
+      iconBackgroundColor={"--lhds-color-red-100"}
+      unread={true}
     />
   </Box>
 );

@@ -23,7 +23,9 @@ export interface NotificationHeaderProps {
   /** Mark the notification as unread */
   unread?: boolean;
   /** Notification variant. Will affect icon bg color */
-  variant: NotificationVariant;
+  variant?: NotificationVariant;
+  /** Icon background color. Will override other icon bg color */
+  iconBackgroundColor?: CssPropColor;
 }
 
 export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
@@ -36,13 +38,14 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
   onClose,
   unread = false,
   variant,
+  iconBackgroundColor,
 }) => {
   const circledIcon = icon ? (
     <CircledIcon
       size={"small"}
       icon={icon}
       aria-label={iconAriaLabel}
-      backgroundColor={getIconBgColor(unread, variant)}
+      backgroundColor={getIconBgColor(unread, variant, iconBackgroundColor)}
     />
   ) : undefined;
 
@@ -87,9 +90,14 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
 
 export const getIconBgColor = (
   unread: boolean,
-  variant: NotificationVariant
+  variant?: NotificationVariant,
+  bgColor?: CssPropColor
 ): CssPropColor | undefined => {
-  if (!unread && variant === "standard") {
+  if (bgColor) {
+    return bgColor;
+  }
+
+  if (!unread && (!variant || variant === "standard")) {
     return undefined;
   }
   return "--lhds-color-ui-50";
