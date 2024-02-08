@@ -1,3 +1,16 @@
+# v20.4.1 (Thu Feb 08 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Introduce custom background color for icon on NotificationHeader (AB#141508) [#715](https://github.com/StenaIT/stenajs-webui/pull/715) ([@Luddelito](https://github.com/Luddelito))
+
+#### Authors: 1
+
+- Ludvig Lignell ([@Luddelito](https://github.com/Luddelito))
+
+---
+
 # v20.4.0 (Fri Feb 02 2024)
 
 #### 🚀 Enhancement
