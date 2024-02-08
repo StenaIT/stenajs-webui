@@ -45,7 +45,11 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
       size={"small"}
       icon={icon}
       aria-label={iconAriaLabel}
-      backgroundColor={getIconBgColor(unread, variant, iconBackgroundColor)}
+      backgroundColor={
+        iconBackgroundColor
+          ? iconBackgroundColor
+          : getIconBgColorFromVariant(unread, variant)
+      }
     />
   ) : undefined;
 
@@ -88,16 +92,11 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
   );
 };
 
-export const getIconBgColor = (
+export const getIconBgColorFromVariant = (
   unread: boolean,
-  variant?: NotificationVariant,
-  bgColor?: CssPropColor
+  variant?: NotificationVariant
 ): CssPropColor | undefined => {
-  if (bgColor) {
-    return bgColor;
-  }
-
-  if (!unread && (!variant || variant === "standard")) {
+  if (!unread && variant === "standard") {
     return undefined;
   }
   return "--lhds-color-ui-50";

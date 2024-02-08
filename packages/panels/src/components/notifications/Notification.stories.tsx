@@ -224,9 +224,9 @@ export const Icon = () => (
 export const IconWithCustomBackgroundColor = () => (
   <Box width={300} gap>
     <Notification
-      text={"Sucess"}
+      text={"Success"}
       icon={stenaCheck}
-      iconAriaLabel={"Sucess"}
+      iconAriaLabel={"Success"}
       iconBackgroundColor={"--lhds-color-green-100"}
     />
     <Notification
