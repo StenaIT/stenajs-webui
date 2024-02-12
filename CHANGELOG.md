@@ -1,3 +1,16 @@
+# v20.4.2 (Mon Feb 12 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Update package.json exports field to use relative paths. [#716](https://github.com/StenaIT/stenajs-webui/pull/716) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.4.1 (Thu Feb 08 2024)
 
 #### 🐛 Bug Fix
