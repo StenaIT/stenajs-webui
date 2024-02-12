@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/select",
-  "version": "20.4.1",
+  "version": "20.4.2",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,10 +33,10 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "20.4.1",
-    "@stenajs-webui/elements": "20.4.1",
-    "@stenajs-webui/forms": "20.4.1",
-    "@stenajs-webui/theme": "20.4.1",
+    "@stenajs-webui/core": "20.4.2",
+    "@stenajs-webui/elements": "20.4.2",
+    "@stenajs-webui/forms": "20.4.2",
+    "@stenajs-webui/theme": "20.4.2",
     "react-select": "^5.2.1"
   },
   "peerDependencies": {
