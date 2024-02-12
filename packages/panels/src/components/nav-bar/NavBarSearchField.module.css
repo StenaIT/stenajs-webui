@@ -3,7 +3,7 @@
   color: var(--lhds-color-ui-800);
 
   &::placeholder {
-    color: var(--lhds-color-blue-800);
+    color: var(--lhds-color-blue-600);
   }
 
   padding: 0 var(--swui-metrics-indent);
