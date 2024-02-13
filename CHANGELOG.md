@@ -1,3 +1,16 @@
+# v20.4.3 (Tue Feb 13 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Fix border color in RadioButtonBox [#718](https://github.com/StenaIT/stenajs-webui/pull/718) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.4.2 (Mon Feb 12 2024)
 
 #### 🐛 Bug Fix
