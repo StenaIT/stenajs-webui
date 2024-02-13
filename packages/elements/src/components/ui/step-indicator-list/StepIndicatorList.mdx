@@ -1,0 +1,37 @@
+import * as StepIndicatorListStories from "./StepIndicatorList.stories";
+import { Canvas, Meta } from "@storybook/blocks";
+
+<Meta of={StepIndicatorListStories} />
+
+# StepIndicatorList
+
+This is used to show progress in steps, such as progress in the booking funnel.
+
+### Example
+
+```tsx
+<StepIndicatorList>
+  <StepIndicatorItem
+    id={"1"}
+    stepHeader={"Passengers"}
+    screenReaderCurrentStepText={"Current:"}
+    screenReaderPassedStepText={"Completed:"}
+    status={"passed"}
+  />
+  <StepIndicatorItem
+    id={"2"}
+    stepHeader={"Departures"}
+    screenReaderCurrentStepText={"Current:"}
+    screenReaderPassedStepText={"Completed:"}
+    status={"current"}
+  />
+  <StepIndicatorItem
+    id={"3"}
+    stepHeader={"Add-ons"}
+    screenReaderCurrentStepText={"Current:"}
+    screenReaderPassedStepText={"Completed:"}
+  />
+</StepIndicatorList>
+```
+
+<Canvas of={StepIndicatorListStories.Desktop} />

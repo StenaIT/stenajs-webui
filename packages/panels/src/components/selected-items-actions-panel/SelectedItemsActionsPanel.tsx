@@ -3,19 +3,16 @@ import { ReactNode } from "react";
 import { Row, Space, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 
-interface SelectedItemsActionsProps {
+export interface SelectedItemsActionsPanelProps {
   numItemsSelected?: number;
   label?: ReactNode | string;
   afterLabelContent?: ReactNode;
   rightContent?: ReactNode;
 }
 
-export const SelectedItemsActionsPanel: React.FC<SelectedItemsActionsProps> = ({
-  numItemsSelected,
-  label,
-  afterLabelContent,
-  rightContent,
-}) => (
+export const SelectedItemsActionsPanel: React.FC<
+  SelectedItemsActionsPanelProps
+> = ({ numItemsSelected, label, afterLabelContent, rightContent }) => (
   <Row
     indent={3}
     spacing
