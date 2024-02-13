@@ -12,7 +12,7 @@ import { Status } from "./StepIndicatorStatus";
 
 export interface StepIndicatorItemProps {
   id: string;
-  stepHeader: string;
+  label: string;
   screenReaderCurrentStepText: string;
   screenReaderPassedStepText: string;
   status?: Status;
@@ -23,7 +23,7 @@ export interface StepIndicatorItemProps {
 
 export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
   id,
-  stepHeader,
+  label,
   status,
   className,
   screenReaderCurrentStepText,
@@ -56,7 +56,7 @@ export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
           textClassName
         )}
       >
-        {stepHeader}
+        {label}
       </Text>
     </li>
   );

@@ -12,21 +12,21 @@ export const Desktop: StoryFn<StepIndicatorListProps> = () => (
   <StepIndicatorList>
     <StepIndicatorItem
       id={"1"}
-      stepHeader={"Passengers"}
+      label={"Passengers"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
       status={"passed"}
     />
     <StepIndicatorItem
       id={"2"}
-      stepHeader={"Departures"}
+      label={"Departures"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
       status={"current"}
     />
     <StepIndicatorItem
       id={"3"}
-      stepHeader={"Add-ons"}
+      label={"Add-ons"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
     />
@@ -37,21 +37,21 @@ export const Mobile: StoryFn<StepIndicatorListProps> = () => (
   <StepIndicatorList>
     <StepIndicatorItem
       id={"1"}
-      stepHeader={"Passengers"}
+      label={"Passengers"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
       status={"passed"}
     />
     <StepIndicatorItem
       id={"2"}
-      stepHeader={"Departures"}
+      label={"Departures"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
       status={"current"}
     />
     <StepIndicatorItem
       id={"3"}
-      stepHeader={"Add-ons"}
+      label={"Add-ons"}
       screenReaderCurrentStepText={"Current:"}
       screenReaderPassedStepText={"Completed:"}
     />
