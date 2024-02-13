@@ -1,0 +1,35 @@
+.text {
+  --swui-step-indicator-text-active-color: var(--lhds-color-blue-600);
+  --swui-step-indicator-text-inactive-color: var(--swui-text-primary-color);
+  --swui-step-indicator-text-passed-color: var(--lhds-color-blue-600);
+
+  /*
+  State
+  */
+  --current-color: var(--swui-step-indicator-text-inactive-color);
+
+  &.currentStep {
+    --current-color: var(--swui-step-indicator-text-active-color);
+  }
+
+  &.passedStep {
+    --current-color: var(--swui-step-indicator-text-passed-color);
+  }
+
+  /*
+  Styling
+  */
+  text-align: center;
+  color: var(--current-color);
+  font-size: var(--swui-font-size-medium);
+  line-height: var(--swui-line-height-large);
+  font-family: var(--swui-font-buttons);
+  font-weight: var(--swui-font-weight-text-bold);
+}
+
+.item {
+  flex: 1;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+}

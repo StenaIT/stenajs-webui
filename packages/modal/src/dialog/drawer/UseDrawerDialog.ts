@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { DialogOptions, useDialog, UseDialogResult } from "../UseDialog";
 import cx from "classnames";
 import styles from "./DrawerDialog.module.css";

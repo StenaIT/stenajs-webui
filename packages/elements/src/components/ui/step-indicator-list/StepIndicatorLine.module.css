@@ -1,0 +1,26 @@
+.line {
+  --swui-step-indicator-line-height: 4px;
+  --swui-step-indicator-line-active-color: var(--lhds-color-blue-600);
+  --swui-step-indicator-line-inactive-color: var(--lhds-color-ui-300);
+  --swui-step-indicator-line-border-radius: var(--swui-border-radius);
+  --swui-step-indicator-line-passed-color: var(--lhds-color-blue-600);
+
+  /*
+  State
+  */
+  --current-background-color: var(--swui-step-indicator-line-inactive-color);
+
+  &.currentStep {
+    --current-background-color: var(--swui-step-indicator-line-active-color);
+  }
+
+  &.passedStep {
+    --current-background-color: var(--swui-step-indicator-line-passed-color);
+  }
+  /*
+   Styling
+  */
+  height: var(--swui-step-indicator-line-height);
+  border-radius: var(--swui-step-indicator-line-border-radius);
+  background-color: var(--current-background-color);
+}
