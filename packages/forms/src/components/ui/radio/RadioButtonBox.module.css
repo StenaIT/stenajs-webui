@@ -1,18 +1,8 @@
 .radioButtonBox {
-  --swui-radio-button-box-background: var(--lhds-color-ui-200);
-  --swui-radio-button-box-background-danger: var(--snackskal-light);
-
-  --swui-radio-button-box-border-color: var(--snackskal-light);
-  --swui-radio-button-box-border-color-hover: var(--hav);
-  --swui-radio-button-box-border-color-danger: var(--snackskal-light);
-  --swui-radio-button-box-border-color-danger-hover: var(--lhds-color-red-500);
-
-  --current-border-color: var(--swui-radio-button-box-border-color);
-
   box-sizing: border-box;
-  background-color: var(--swui-radio-button-box-background);
+  background-color: var(--lhds-color-ui-200);
   position: relative;
-  border: 1px solid var(--current-border-color);
+  border: 1px solid var(--silver-ui);
   width: 100%;
   border-radius: 16px;
   padding: var(--swui-metrics-space);
@@ -23,17 +13,15 @@
   outline: none;
 
   &:hover {
-    --current-border-color: var(--swui-radio-button-box-border-color-hover);
+    border-color: var(--hav);
   }
 
   &.danger {
-    background-color: var(--swui-radio-button-box-background-danger);
-    --current-border-color: var(--swui-radio-button-box-border-color-danger);
+    background-color: var(--snackskal-light);
+    border-color: var(--snackskal-light);
 
     &:hover {
-      --current-border-color: var(
-        --swui-radio-button-box-border-color-danger-hover
-      );
+      border-color: var(--lhds-color-red-500);
     }
   }
 }
