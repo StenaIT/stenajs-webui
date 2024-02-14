@@ -1,7 +1,7 @@
 .flatButton {
   color: var(--swui-text-action-color);
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
 
   &:hover {
     background: var(--lhds-color-blue-100);
