@@ -1,3 +1,16 @@
+# v20.5.1 (Wed Feb 14 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix bug that causes FlatButton to change width when being disabled [#719](https://github.com/StenaIT/stenajs-webui/pull/719) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.5.0 (Tue Feb 13 2024)
 
 #### 🚀 Enhancement
