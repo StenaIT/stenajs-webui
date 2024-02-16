@@ -25,10 +25,6 @@
   &.normal {
   }
 
-  &.passive:not(:disabled) {
-    color: var(--silver);
-  }
-
   &.danger:not(:disabled) {
     color: var(--lhds-color-red-500);
 

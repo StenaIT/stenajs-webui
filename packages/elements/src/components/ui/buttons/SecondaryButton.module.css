@@ -29,6 +29,7 @@
   }
 
   &.danger:not(:disabled) {
+    border: 1px solid var(--lhds-color-red-500);
     color: var(--lhds-color-red-600);
 
     &:hover {
@@ -48,6 +49,7 @@
   }
 
   &.success:not(:disabled) {
+    border: 1px solid var(--lhds-color-green-500);
     color: var(--lhds-color-green-800);
 
     &:hover {
