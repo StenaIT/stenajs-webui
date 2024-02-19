@@ -5,7 +5,7 @@ import { PrimaryButton, PrimaryButtonProps } from "../PrimaryButton";
 import { SecondaryButton } from "../SecondaryButton";
 import { FlatButton } from "../FlatButton";
 import { Icon } from "../../icon/Icon";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { stenaCheck } from "../../../../icons/generated/CommonIcons";
 import {
   stenaArrowRight,
@@ -20,7 +20,7 @@ export default {
   subcomponents: { SecondaryButton, FlatButton },
 };
 
-export const Demo: Story<PrimaryButtonProps> = (props) => (
+export const Demo: StoryFn<PrimaryButtonProps> = (props) => (
   <PrimaryButton {...props} />
 );
 Demo.args = {

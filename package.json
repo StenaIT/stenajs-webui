@@ -5,6 +5,9 @@
   ],
   "type": "module",
   "scripts": {
+    "b": "yarn build-all",
+    "s": "yarn start-storybook",
+    "bs": "yarn build-all && yarn start-storybook",
     "start-storybook": "storybook dev -p 6006",
     "build-storybook": "rimraf build && storybook build -o build",
     "build-packages": "lerna run build",
