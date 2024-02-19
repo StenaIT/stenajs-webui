@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/core",
-  "version": "20.5.1",
+  "version": "20.5.2",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -67,7 +67,7 @@
   "gitHead": "8bc14a340ae5996f9755c4d435a5d46ffe392961",
   "dependencies": {
     "@emotion/is-prop-valid": "^1.1.0",
-    "@stenajs-webui/theme": "20.5.1",
+    "@stenajs-webui/theme": "20.5.2",
     "classnames": "^2.3.1"
   }
 }
