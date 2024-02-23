@@ -228,7 +228,7 @@ export const createStylesFromTheme = <
   }),
   valueContainer: (base) => ({
     ...base,
-    padding: "var(--swui-metrics-space-half)",
+    padding: "var(--swui-metrics-space-half) var(--swui-metrics-space)",
     gap: "var(--swui-metrics-space-half)",
   }),
   dropdownIndicator: (base, { isFocused, isDisabled }) => ({
