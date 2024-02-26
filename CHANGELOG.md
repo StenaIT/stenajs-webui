@@ -1,3 +1,18 @@
+# v20.5.3 (Mon Feb 26 2024)
+
+#### 🐛 Bug Fix
+
+- Upgrade auto to unbreak builds [#722](https://github.com/StenaIT/stenajs-webui/pull/722) ([@nikteg](https://github.com/nikteg))
+- `@stenajs-webui/select`
+  - Update indent in Select input to 8px, same as TextInput [#721](https://github.com/StenaIT/stenajs-webui/pull/721) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v20.5.2 (Mon Feb 19 2024)
 
 #### 🐛 Bug Fix
