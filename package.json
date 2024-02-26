@@ -64,7 +64,7 @@
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "auto": "^10.46.0",
+    "auto": "^11.1.1",
     "autoprefixer": "^10.4.16",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
