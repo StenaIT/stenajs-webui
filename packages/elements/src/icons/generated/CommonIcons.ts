@@ -754,19 +754,6 @@ export const stenaExclamationTriangle: MediumIcon = {
   size: "medium",
 };
 
-export const stenaExpand: MediumIcon = {
-  icon: [
-    24,
-    24,
-    [],
-    "",
-    "M2 16C2 15.45 2.45 15 3 15 3.55 15 4 15.45 4 16L4 18.64 9.31 13.29C9.7 12.9 10.33 12.9 10.71 13.29 11.1 13.67 11.1 14.3 10.71 14.69L5.36 20 8 20C8.55 20 9 20.45 9 21 9 21.55 8.55 22 8 22L3 22C2.45 22 2 21.55 2 21L2 16ZM21 2C21.55 2 22 2.45 22 3L22 8C22 8.55 21.55 9 21 9 20.45 9 20 8.55 20 8L20 5.36 14.69 10.71C14.3 11.1 13.67 11.1 13.29 10.71 12.9 10.33 12.9 9.7 13.29 9.31L18.64 4 16 4C15.45 4 15 3.55 15 3 15 2.45 15.45 2 16 2L21 2Z",
-  ],
-  iconName: "random",
-  prefix: "fal",
-  size: "medium",
-};
-
 export const stenaExternalLink: MediumIcon = {
   icon: [
     24,
