@@ -1,3 +1,16 @@
+# v20.5.4 (Fri Mar 01 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add new icons: camera-error, camera-ok, dimensions, food-drink. [#723](https://github.com/StenaIT/stenajs-webui/pull/723) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.5.3 (Mon Feb 26 2024)
 
 #### 🐛 Bug Fix
