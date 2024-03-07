@@ -15,7 +15,16 @@ export interface TagProps {
   icon?: IconDefinition;
 }
 
-export type TagVariant = "info" | "error" | "warning" | "success" | "passive";
+export type TagVariant =
+  | "info"
+  | "info-strong"
+  | "error"
+  | "error-strong"
+  | "warning"
+  | "warning-strong"
+  | "success"
+  | "success-strong"
+  | "passive";
 
 export type TagSize = "medium" | "small";
 

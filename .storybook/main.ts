@@ -22,6 +22,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-mdx-gfm")
   ],
   viteFinal(config, { configType }) {
     let plugins = [
