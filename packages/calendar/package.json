@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/calendar",
-  "version": "20.5.4",
+  "version": "20.5.5",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,11 +33,11 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "20.5.4",
-    "@stenajs-webui/elements": "20.5.4",
-    "@stenajs-webui/forms": "20.5.4",
-    "@stenajs-webui/theme": "20.5.4",
-    "@stenajs-webui/tooltip": "20.5.4",
+    "@stenajs-webui/core": "20.5.5",
+    "@stenajs-webui/elements": "20.5.5",
+    "@stenajs-webui/forms": "20.5.5",
+    "@stenajs-webui/theme": "20.5.5",
+    "@stenajs-webui/tooltip": "20.5.5",
     "date-fns": "2.26.0"
   },
   "peerDependencies": {
