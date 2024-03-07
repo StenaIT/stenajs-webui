@@ -1,3 +1,16 @@
+# v20.5.5 (Thu Mar 07 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - New and updated sailing icons [#724](https://github.com/StenaIT/stenajs-webui/pull/724) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.5.4 (Fri Mar 01 2024)
 
 #### 🐛 Bug Fix
