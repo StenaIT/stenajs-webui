@@ -2,9 +2,9 @@ import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { CSSProperties } from "react";
-import { stenaSailingOnQuay } from "../../../icons/generated/CommonIcons";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 import { Tag, TagProps, TagVariant } from "./Tag";
+import { stenaSailingOnQuay } from "../../../icons/generated/CommonIcons";
 
 export default {
   title: "elements/Tag",
@@ -17,38 +17,48 @@ export default {
   },
 };
 
-export const Demo: Story<TagProps> = (props) => <Tag {...props} />;
-
 export const Overview = () => (
-  <Column>
+  <>
     {(
-      ["info", "error", "warning", "success", "passive"] as Array<TagVariant>
-    ).map((variant) => (
-      <>
-        <Text size={"large"}>{variant}</Text>
-        <Space />
-        {(["medium", "small"] as const).map((size) => (
-          <Row spacing={0.5}>
-            <Row alignItems={"center"} width={"65px"}>
-              <Text>{size}</Text>
-            </Row>
-            <Indent />
+      [
+        ["info", "info-strong"],
+        ["error", "error-strong"],
+        ["warning", "warning-strong"],
+        ["success", "success-strong"],
+        ["passive"],
+      ] as Array<Array<TagVariant>>
+    ).map((tuple) => (
+      <Row gap={4}>
+        {tuple.map((variant) => (
+          <Column>
+            <>
+              <Text size={"large"}>{variant}</Text>
+              <Space />
+              {(["medium", "small"] as const).map((size) => (
+                <Row spacing={0.5}>
+                  <Row alignItems={"center"} width={"65px"}>
+                    <Text>{size}</Text>
+                  </Row>
+                  <Indent />
 
-            <Tag size={size} variant={variant} label={"Default"} />
-            <Indent />
-            <Tag
-              size={size}
-              variant={variant}
-              label={"Default"}
-              icon={stenaSailingOnQuay}
-            />
-          </Row>
+                  <Tag size={size} variant={variant} label={"Default"} />
+                  <Indent />
+                  <Tag
+                    size={size}
+                    variant={variant}
+                    label={"Default"}
+                    icon={stenaSailingOnQuay}
+                  />
+                </Row>
+              ))}
+
+              <Space num={3} />
+            </>
+          </Column>
         ))}
-
-        <Space num={3} />
-      </>
+      </Row>
     ))}
-  </Column>
+  </>
 );
 
 export const CustomTheme: Story<TagProps> = () => (
