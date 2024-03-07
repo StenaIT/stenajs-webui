@@ -26,9 +26,12 @@
   }
 
   &.small {
-    --current-height: 16px;
-    --current-icon-size: 1.4rem;
+    min-height: 16px;
     padding: 0 var(--swui-metrics-indent);
+
+    .icon {
+      font-size: 1.4rem;
+    }
   }
 
   &.info {
