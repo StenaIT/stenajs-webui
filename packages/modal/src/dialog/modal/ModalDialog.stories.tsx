@@ -8,6 +8,7 @@ import { useDialogPromise } from "../UseDialogPromise";
 import { useModalDialog } from "./UseModalDialog";
 import { cssColor } from "@stenajs-webui/theme";
 import { useAlertDialog } from "../alert/UseAlertDialog";
+import { ModalBody } from "../../building-blocks/ModalBody";
 
 export default {
   title: "modal/Dialog/ModalDialog",
@@ -17,12 +18,12 @@ const ModalContent: React.FC = () => {
   const { resolve } = useDialogPromise();
 
   return (
-    <Column spacing={2} indent={2} gap={2}>
+    <ModalBody>
       <Text>Some modal content</Text>
       <Row gap={2}>
         <PrimaryButton label={"Close"} onClick={() => resolve()} />
       </Row>
-    </Column>
+    </ModalBody>
   );
 };
 export const Overview: StoryFn = () => {

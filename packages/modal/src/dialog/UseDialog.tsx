@@ -28,6 +28,7 @@ export interface DialogOptions {
   className: string;
   closingClassName: string;
   contentWrapperClassName: string;
+  contentWrapperStyle?: CSSProperties;
   dialogStyle?: CSSProperties;
   ref?: RefObject<HTMLDialogElement>;
   onResolve?: () => void;
@@ -62,14 +63,14 @@ export function useDialog<TProps, TPromiseResolve = void>(
       setContentVisible(true);
       forceRerender();
       modalComponentProps.current = props;
-      if (options?.modal) {
+      if (options.modal) {
         currentRef.current?.showModal();
       } else {
         currentRef.current?.show();
       }
       return promiseRef.current;
     },
-    [currentRef, options?.modal]
+    [currentRef, options.modal]
   );
 
   const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
@@ -83,7 +84,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           currentRef.current?.close();
           resolveRef.current?.(value);
           modalComponentProps.current = undefined;
-          options?.onResolve?.();
+          options.onResolve?.();
         },
         { once: true }
       );
@@ -101,7 +102,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           setContentVisible(false);
           currentRef.current?.close();
           rejectRef.current?.(error);
-          options?.onReject?.();
+          options.onReject?.();
           modalComponentProps.current = undefined;
         },
         { once: true }
@@ -115,16 +116,13 @@ export function useDialog<TProps, TPromiseResolve = void>(
       <DialogContext.Provider value={{ resolve, reject }}>
         <dialog
           onClick={
-            options?.disableCloseOnClickOutside ? undefined : () => reject()
+            options.disableCloseOnClickOutside ? undefined : () => reject()
           }
           ref={currentRef}
-          className={cx(
-            options?.className,
-            closing && options?.closingClassName
-          )}
-          style={options?.dialogStyle}
+          className={cx(options.className, closing && options.closingClassName)}
+          style={options.dialogStyle}
         >
-          {options?.disableCloseOnClickOutside ? (
+          {options.disableCloseOnClickOutside ? (
             <>
               {contentVisible && (
                 <Comp {...(modalComponentProps.current as TProps)} key={key} />
@@ -132,9 +130,10 @@ export function useDialog<TProps, TPromiseResolve = void>(
             </>
           ) : (
             <div
-              className={options?.contentWrapperClassName}
+              style={options.contentWrapperStyle}
+              className={options.contentWrapperClassName}
               onClick={
-                options?.disableCloseOnClickOutside
+                options.disableCloseOnClickOutside
                   ? undefined
                   : (ev) => ev.stopPropagation()
               }
@@ -150,11 +149,12 @@ export function useDialog<TProps, TPromiseResolve = void>(
     [
       resolve,
       reject,
-      options?.disableCloseOnClickOutside,
-      options?.className,
-      options?.closingClassName,
-      options?.dialogStyle,
-      options?.contentWrapperClassName,
+      options.disableCloseOnClickOutside,
+      options.className,
+      options.closingClassName,
+      options.dialogStyle,
+      options.contentWrapperStyle,
+      options.contentWrapperClassName,
       currentRef,
       closing,
       contentVisible,
