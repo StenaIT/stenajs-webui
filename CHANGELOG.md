@@ -1,3 +1,16 @@
+# v20.6.1 (Fri Mar 08 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Modal inner content is 100% height on mobile [#726](https://github.com/StenaIT/stenajs-webui/pull/726) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.0 (Thu Mar 07 2024)
 
 #### 🚀 Enhancement
