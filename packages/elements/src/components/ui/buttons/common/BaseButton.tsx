@@ -67,12 +67,14 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
       successIconOnly;
 
     const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
-      ev.stopPropagation();
-      ev.preventDefault();
-      if (disabled || success || loading) {
-        return;
+      if (onClick) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        if (disabled || success || loading) {
+          return;
+        }
+        onClick(ev);
       }
-      onClick?.(ev);
     };
 
     return (
