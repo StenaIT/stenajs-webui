@@ -1,3 +1,16 @@
+# v20.6.2 (Mon Mar 25 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Stop onClick event propagation from TextInputButton [#727](https://github.com/StenaIT/stenajs-webui/pull/727) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.1 (Fri Mar 08 2024)
 
 #### 🐛 Bug Fix
