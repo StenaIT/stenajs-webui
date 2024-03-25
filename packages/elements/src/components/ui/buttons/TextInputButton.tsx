@@ -1,5 +1,5 @@
 import * as React from "react";
-import { forwardRef, MouseEventHandler } from "react";
+import { forwardRef } from "react";
 import styles from "./TextInputButton.module.css";
 import baseButtonStyles from "./common/BaseButton.module.css";
 import { ButtonElementProps } from "@stenajs-webui/core";
@@ -47,21 +47,15 @@ export const TextInputButton = forwardRef<
     className,
     spin = false,
     size = "medium",
-    onClick,
     ...buttonProps
   },
   ref
 ) {
-  const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
-    ev.stopPropagation();
-    onClick?.(ev);
-  };
-
   return (
     <button
       {...buttonProps}
-      onClick={onClickHandler}
       ref={ref}
+      type={"button"}
       className={cx(
         baseButtonStyles.button,
         styles.textInputButton,
