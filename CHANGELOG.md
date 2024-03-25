@@ -1,3 +1,16 @@
+# v20.6.3 (Mon Mar 25 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Only prevent event propagation on buttons if onClick is set. [#728](https://github.com/StenaIT/stenajs-webui/pull/728) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.2 (Mon Mar 25 2024)
 
 #### 🐛 Bug Fix
