@@ -73,7 +73,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
         if (disabled || success || loading) {
           return;
         }
-        onClick?.(ev);
+        onClick(ev);
       }
     };
 
