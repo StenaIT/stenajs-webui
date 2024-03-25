@@ -1,11 +1,11 @@
 import * as React from "react";
+import { forwardRef, MouseEventHandler } from "react";
 import styles from "./TextInputButton.module.css";
 import baseButtonStyles from "./common/BaseButton.module.css";
 import { ButtonElementProps } from "@stenajs-webui/core";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 import cx from "classnames";
-import { forwardRef } from "react";
 import { MediumIcon } from "../../../icons/IconSizes";
 import {
   stenaCheck,
@@ -47,13 +47,20 @@ export const TextInputButton = forwardRef<
     className,
     spin = false,
     size = "medium",
+    onClick,
     ...buttonProps
   },
   ref
 ) {
+  const onClickHandler: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    ev.stopPropagation();
+    onClick?.(ev);
+  };
+
   return (
     <button
       {...buttonProps}
+      onClick={onClickHandler}
       ref={ref}
       className={cx(
         baseButtonStyles.button,
