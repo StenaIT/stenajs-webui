@@ -1,3 +1,16 @@
+# v20.6.4 (Fri Apr 12 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Reduce padding for large togglebutton (AB#146400) [#729](https://github.com/StenaIT/stenajs-webui/pull/729) ([@Luddelito](https://github.com/Luddelito))
+
+#### Authors: 1
+
+- Ludvig Lignell ([@Luddelito](https://github.com/Luddelito))
+
+---
+
 # v20.6.3 (Mon Mar 25 2024)
 
 #### 🐛 Bug Fix
