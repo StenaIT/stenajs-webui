@@ -72,7 +72,7 @@
 
   &.large {
     --swui-toggle-button-height: 40px;
-    padding: 0 calc(2 * var(--swui-metrics-space));
+    padding: 0 var(--swui-metrics-space);
   }
 
   &:not(.disabled) {
