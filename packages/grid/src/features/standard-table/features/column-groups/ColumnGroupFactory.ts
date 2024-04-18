@@ -1,4 +1,4 @@
-import { compact } from "lodash";
+import compact from "lodash/compact";
 import { StandardTableColumnGroupConfig } from "../../config/StandardTableColumnGroupConfig";
 import {
   StandardTableConfigWithGroups,

@@ -1,7 +1,7 @@
 import { Row, Space, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear, parse } from "date-fns";
 import { enGB } from "date-fns/locale";
-import { chunk } from "lodash";
+import chunk from "lodash/chunk";
 import * as React from "react";
 import { useMemo } from "react";
 import { useHighlightToday } from "../../features/today-state/UseHighlightToday";

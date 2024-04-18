@@ -2,7 +2,7 @@ import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { MutableRefObject, RefObject, useEffect, useRef } from "react";
-import { padStart } from "lodash";
+import padStart from "lodash/padStart";
 
 export interface TimePickerCellProps {
   item: number;

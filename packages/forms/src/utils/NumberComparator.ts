@@ -1,4 +1,4 @@
-import { isNil } from "lodash";
+import isNil from "lodash/isNil";
 import { parseFloatElseUndefined } from "@stenajs-webui/core";
 
 export const isMinReached = (

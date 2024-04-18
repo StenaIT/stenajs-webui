@@ -1,4 +1,4 @@
-import { startCase } from "lodash";
+import startCase from "lodash/startCase";
 import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
