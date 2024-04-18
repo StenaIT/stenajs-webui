@@ -1,6 +1,6 @@
 import { Indent, Row } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { range } from "lodash";
+import range from "lodash/range";
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {

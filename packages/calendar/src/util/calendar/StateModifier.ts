@@ -12,7 +12,7 @@ import {
   startOfMonth,
   subDays,
 } from "date-fns";
-import { last } from "lodash";
+import last from "lodash/last";
 import {
   CalendarState,
   CalendarUserData,

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { PropsWithChildren, useCallback } from "react";
 import { Row, Space } from "@stenajs-webui/core";
-import { lowerCase, upperFirst } from "lodash";
+import lowerCase from "lodash/lowerCase";
+import upperFirst from "lodash/upperFirst";
 import {
   Banner,
   FlatButton,

@@ -24,7 +24,8 @@ import {
   standardTableConfigForStories,
   useListState,
 } from "./StandardTableStoryHelper";
-import { sortBy, sumBy } from "lodash";
+import sortBy from "lodash/sortBy";
+import sumBy from "lodash/sumBy";
 import { Tag } from "@stenajs-webui/elements";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";
 

@@ -2,7 +2,7 @@ import {
   StandardTableColumnGroupConfig,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
-import { flatten } from "lodash";
+import flatten from "lodash/flatten";
 import { transformItemToCell } from "./CellTransformer";
 import { CustomCellFormatters } from "../../../common/CellFormatters";
 
