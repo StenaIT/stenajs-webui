@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/tooltip",
-  "version": "20.6.6",
+  "version": "20.6.7",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,9 +33,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "20.6.6",
-    "@stenajs-webui/elements": "20.6.6",
-    "@stenajs-webui/theme": "20.6.6",
+    "@stenajs-webui/core": "20.6.7",
+    "@stenajs-webui/elements": "20.6.7",
+    "@stenajs-webui/theme": "20.6.7",
     "@tippyjs/react": "^4.1.0",
     "classnames": "^2.3.1",
     "tippy.js": "^6.2.6"
