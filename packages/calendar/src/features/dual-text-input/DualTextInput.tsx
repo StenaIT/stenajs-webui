@@ -19,7 +19,7 @@ import {
   TextInputBoxProps,
   TextInputProps,
 } from "@stenajs-webui/forms";
-import debounce from "lodash/debounce";
+import { debounce } from "lodash-es";
 import * as React from "react";
 import { FocusEventHandler, useCallback, useMemo, useRef } from "react";
 import { cssColor } from "@stenajs-webui/theme";

@@ -1,7 +1,4 @@
-import differenceWith from "lodash/differenceWith";
-import intersectionWith from "lodash/intersectionWith";
-import isEqual from "lodash/isEqual";
-import uniqWith from "lodash/uniqWith";
+import { differenceWith, intersectionWith, isEqual, uniqWith } from "lodash-es";
 import { ActionMeta, GroupBase, OnChangeValue, Options } from "react-select";
 import { OnChange } from "../components/ui/GroupedMultiSelect";
 import { DropdownOption } from "../components/ui/GroupedMultiSelectTypes";

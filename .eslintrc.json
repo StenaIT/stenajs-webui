@@ -2,6 +2,6 @@
   "plugins": ["lodash"],
   "extends": ["react-app", "plugin:storybook/recommended"],
   "rules": {
-    "lodash/import-scope": [2, "method"]
+    "lodash/import-scope": [2, "member"]
   }
 }

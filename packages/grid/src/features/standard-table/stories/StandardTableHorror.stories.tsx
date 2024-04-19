@@ -11,7 +11,7 @@ import {
 import { cssColor } from "@stenajs-webui/theme";
 import { Popover } from "@stenajs-webui/tooltip";
 import { format, parseISO } from "date-fns";
-import round from "lodash/round";
+import { round } from "lodash-es";
 import * as React from "react";
 import { StandardTable } from "../components/StandardTable";
 import { createColumnConfig } from "../config/StandardTableColumnConfig";

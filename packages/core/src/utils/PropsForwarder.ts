@@ -1,4 +1,4 @@
-import pickBy from "lodash/pickBy";
+import { pickBy } from "lodash-es";
 
 export const getDataProps = <T extends Record<string, unknown>>(
   props: Record<string, unknown> | {}

@@ -14,7 +14,7 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
-import startCase from "lodash/startCase";
+import { startCase } from "lodash-es";
 import { DateFormats } from "../date/DateFormats";
 
 export enum Month {

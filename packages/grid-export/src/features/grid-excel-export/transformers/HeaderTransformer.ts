@@ -2,7 +2,7 @@ import {
   formatColumnIdToHeaderCellLabel,
   StandardTableConfig,
 } from "@stenajs-webui/grid";
-import flatten from "lodash/flatten";
+import { flatten } from "lodash-es";
 import { ZipCelXRow } from "zipcelx";
 import { StandardTableColumnGroupConfig } from "@stenajs-webui/grid";
 

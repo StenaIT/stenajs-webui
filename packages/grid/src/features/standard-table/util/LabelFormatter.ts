@@ -1,5 +1,4 @@
-import lowerCase from "lodash/lowerCase";
-import upperFirst from "lodash/upperFirst";
+import { lowerCase, upperFirst } from "lodash-es";
 
 export const formatValueLabel = <T>(itemValue: T) => {
   if (itemValue == null) {
