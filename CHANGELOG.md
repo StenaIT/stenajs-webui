@@ -1,3 +1,16 @@
+# v20.6.7 (Fri Apr 19 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Upgrade emotion to latest [#732](https://github.com/StenaIT/stenajs-webui/pull/732) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.6 (Fri Apr 19 2024)
 
 #### 🐛 Bug Fix
