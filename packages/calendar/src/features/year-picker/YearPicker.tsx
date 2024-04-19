@@ -8,8 +8,7 @@ import {
   stenaArrowLeft,
   stenaArrowRight,
 } from "@stenajs-webui/elements";
-import chunk from "lodash/chunk";
-import range from "lodash/range";
+import { chunk, range } from "lodash-es";
 
 export interface YearPickerProps extends ValueAndOnValueChangeProps<number> {
   initialLastYear?: number;
