@@ -42,7 +42,7 @@
     "react-modal": "^3.14.3"
   },
   "peerDependencies": {
-    "@emotion/react": ">=11.1.5",
+    "@emotion/react": ">=11.11.4",
     "@fortawesome/fontawesome-svg-core": ">=1.2.35",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
     "@fortawesome/react-fontawesome": ">=0.1.14",
@@ -52,7 +52,7 @@
     "react-dom": ">=18.2.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.1.5",
+    "@emotion/react": "^11.11.4",
     "@fortawesome/fontawesome-svg-core": "1.2.35",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "0.1.14",

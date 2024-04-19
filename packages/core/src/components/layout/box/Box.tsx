@@ -1,4 +1,3 @@
-import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
 import { Property } from "csstype";
 
@@ -50,6 +49,7 @@ import {
   booleanOrNumberToMetricCalc,
   booleanOrNumberToNumber,
 } from "../../../utils/BooleanOrNumberToNumber";
+import { isPropValid } from "../../util/IsPropValid";
 
 interface StyledSystemProps
   extends BorderRadiusProps,
