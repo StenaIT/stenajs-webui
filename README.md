@@ -77,7 +77,6 @@ For example, to use `@stenajs-webui/core` you must add the following dependencie
 $ yarn add @emotion/react \
            @emotion/styled \
            csstype \
-           lodash \
            prop-types \
            react \
            react-dom \
@@ -88,7 +87,6 @@ If you are using Typescript, you must also add the following dependencies:
 
 ```shell
 $ yarn add typescript
-           @types/lodash \
            @types/react \
            @types/react-dom \
            @types/styled-system
