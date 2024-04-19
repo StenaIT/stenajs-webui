@@ -1,3 +1,16 @@
+# v20.6.6 (Fri Apr 19 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/select`
+  - Update webui to use lodash-es instead of lodash. [#731](https://github.com/StenaIT/stenajs-webui/pull/731) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.5 (Thu Apr 18 2024)
 
 #### 🐛 Bug Fix
