@@ -1,3 +1,16 @@
+# v20.6.8 (Fri Apr 19 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`
+  - Fix isValidProp [#733](https://github.com/StenaIT/stenajs-webui/pull/733) ([@nikteg](https://github.com/nikteg))
+
+#### Authors: 1
+
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v20.6.7 (Fri Apr 19 2024)
 
 #### 🐛 Bug Fix
