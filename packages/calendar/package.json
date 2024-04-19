@@ -42,8 +42,8 @@
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
-    "@emotion/react": ">=11.1.5",
-    "@emotion/styled": ">=11.3.0",
+    "@emotion/react": ">=11.11.4",
+    "@emotion/styled": ">=11.11.5",
     "@fortawesome/fontawesome-svg-core": ">=1.2.35",
     "@fortawesome/free-regular-svg-icons": ">=5.15.3",
     "@fortawesome/free-solid-svg-icons": ">=5.15.3",
@@ -57,8 +57,8 @@
     "styled-system": ">=5.1.5"
   },
   "devDependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@fortawesome/fontawesome-svg-core": "1.2.35",
     "@fortawesome/free-regular-svg-icons": "5.15.3",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
