@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/forms",
-  "version": "20.6.5",
+  "version": "20.6.6",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,10 +33,10 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "20.6.5",
-    "@stenajs-webui/elements": "20.6.5",
-    "@stenajs-webui/theme": "20.6.5",
-    "@stenajs-webui/tooltip": "20.6.5",
+    "@stenajs-webui/core": "20.6.6",
+    "@stenajs-webui/elements": "20.6.6",
+    "@stenajs-webui/theme": "20.6.6",
+    "@stenajs-webui/tooltip": "20.6.6",
     "classnames": "^2.3.1",
     "date-fns": "2.26.0",
     "lodash-es": "^4.17.21"
