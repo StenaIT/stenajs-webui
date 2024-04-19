@@ -492,9 +492,9 @@ const validPropsRecord = {
   autofocus: true,
 };
 
-const validProps = `/^((${Object.keys(validPropsRecord).join(
+const validProps = `^((${Object.keys(validPropsRecord).join(
   "|"
-)})|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/`;
+)})|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$`;
 
 const r = new RegExp(validProps);
 
