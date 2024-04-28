@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRef } from "react";
 import ReactModal from "react-modal";
 import Draggable from "react-draggable";
 import cx from "classnames";
@@ -21,6 +22,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
   children,
   ...reactModalProps
 }) => {
+  const nodRef = useRef(null);
   return (
     <ReactModal
       overlayClassName={styles.overlay}
@@ -32,6 +34,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
         cancel={`.${DRAGGABLE_CANCEL_CLASSNAME}, button, [role="tooltip"]`}
         bounds=".ReactModal__Overlay"
         disabled={!draggable}
+        nodeRef={nodRef}
       >
         <div
           style={{
@@ -41,6 +44,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
           className={cx(styles.content, {
             [styles.isDraggable]: draggable,
           })}
+          ref={nodRef}
         >
           {children}
         </div>
