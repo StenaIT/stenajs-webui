@@ -1,3 +1,16 @@
+# v20.6.9 (Mon Apr 29 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Use a ref between draggable and the child div [#734](https://github.com/StenaIT/stenajs-webui/pull/734) ([@ohritz](https://github.com/ohritz))
+
+#### Authors: 1
+
+- Sohan Fernando ([@ohritz](https://github.com/ohritz))
+
+---
+
 # v20.6.8 (Fri Apr 19 2024)
 
 #### 🐛 Bug Fix
