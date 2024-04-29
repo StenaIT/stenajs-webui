@@ -22,7 +22,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
   children,
   ...reactModalProps
 }) => {
-  const nodRef = useRef(null);
+  const nodeRef = useRef(null);
   return (
     <ReactModal
       overlayClassName={styles.overlay}
@@ -34,7 +34,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
         cancel={`.${DRAGGABLE_CANCEL_CLASSNAME}, button, [role="tooltip"]`}
         bounds=".ReactModal__Overlay"
         disabled={!draggable}
-        nodeRef={nodRef}
+        nodeRef={nodeRef}
       >
         <div
           style={{
@@ -44,7 +44,7 @@ export const BaseWindow: React.FC<BaseWindowProps> = ({
           className={cx(styles.content, {
             [styles.isDraggable]: draggable,
           })}
-          ref={nodRef}
+          ref={nodeRef}
         >
           {children}
         </div>
