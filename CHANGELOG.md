@@ -1,3 +1,16 @@
+# v20.6.10 (Tue Apr 30 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Make drawer dialog scrollable in y direction, if content is too high. [#735](https://github.com/StenaIT/stenajs-webui/pull/735) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.9 (Mon Apr 29 2024)
 
 #### 🐛 Bug Fix
