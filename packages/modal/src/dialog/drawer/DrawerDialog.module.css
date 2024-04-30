@@ -5,6 +5,7 @@
   outline: 0;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
   overscroll-behavior: contain;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 10px 4px;
   position: fixed;
