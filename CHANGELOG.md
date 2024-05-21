@@ -1,3 +1,16 @@
+# v20.7.0 (Tue May 21 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid`
+  - Add contentRight prop to RadioButtonBox [#737](https://github.com/StenaIT/stenajs-webui/pull/737) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.11 (Tue May 21 2024)
 
 #### 🐛 Bug Fix
