@@ -1,3 +1,16 @@
+# v20.6.11 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - New and updated icons [#736](https://github.com/StenaIT/stenajs-webui/pull/736) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.6.10 (Tue Apr 30 2024)
 
 #### 🐛 Bug Fix
