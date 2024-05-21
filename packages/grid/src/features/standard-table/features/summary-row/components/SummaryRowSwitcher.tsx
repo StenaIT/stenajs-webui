@@ -4,13 +4,13 @@ import { isSummaryRowVisible } from "../SummaryRowVisibilityCalculator";
 import { useStandardTableConfig } from "../../../hooks/UseStandardTableConfig";
 import { StandardTableSummaryRow } from "./StandardTableSummaryRow";
 
-interface SummaryRowSwitcherProps<TItem> {
+interface SummaryRowSwitcherProps<TItem extends {}> {
   items: Array<TItem>;
 }
 
-export const SummaryRowSwitcher = function SummaryRowSwitcher<TItem>({
-  items,
-}: SummaryRowSwitcherProps<TItem>) {
+export const SummaryRowSwitcher = function SummaryRowSwitcher<
+  TItem extends {}
+>({ items }: SummaryRowSwitcherProps<TItem>) {
   const { columns } = useStandardTableConfig();
   const visible = useMemo(() => isSummaryRowVisible(columns), [columns]);
 

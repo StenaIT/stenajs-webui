@@ -155,7 +155,7 @@ export type StandardTableVariant =
   | "compact";
 
 export const StandardTable = function StandardTable<
-  TItem,
+  TItem extends {},
   TColumnKey extends string,
   TColumnGroupKey extends string
 >({

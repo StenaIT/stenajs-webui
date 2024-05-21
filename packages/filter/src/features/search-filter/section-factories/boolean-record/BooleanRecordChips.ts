@@ -46,6 +46,7 @@ export const createOnClickRemoveOnChipForBooleanRecord = <
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields, value }) => {
     const newRecord = { ...formModel[fieldName] };
+    // @ts-ignore
     newRecord[value] = false;
     setFormModelFields({
       [fieldName]: newRecord,

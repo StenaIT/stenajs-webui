@@ -3,12 +3,18 @@ import { Row, ScreenReaderOnlyText, Space, Text } from "@stenajs-webui/core";
 import { Icon } from "@stenajs-webui/elements";
 import cx from "classnames";
 import * as React from "react";
+import { ReactNode } from "react";
 import styles from "./RadioButtonBox.module.css";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
 
 export type RadioButtonBoxVariant = "normal" | "danger";
 
-export interface RadioButtonBoxProps extends RadioButtonProps {
+export type RadioButtonBoxProps =
+  | RadioButtonBoxNoRightProps
+  | RadioButtonBoxIconProps
+  | RadioButtonBoxContentRightProps;
+
+interface RadioButtonBoxCommonProps extends RadioButtonProps {
   label?: string;
   /**
    * If set, this label is used by screen readers instead of label prop.
@@ -17,15 +23,26 @@ export interface RadioButtonBoxProps extends RadioButtonProps {
    */
   screenReaderLabel?: string;
   variant?: RadioButtonBoxVariant;
-  icon?: IconDefinition;
   radioButtonClassName?: string;
+}
+
+export interface RadioButtonBoxNoRightProps extends RadioButtonBoxCommonProps {}
+
+export interface RadioButtonBoxIconProps extends RadioButtonBoxCommonProps {
+  icon: IconDefinition;
+  contentRight?: never;
+}
+
+export interface RadioButtonBoxContentRightProps
+  extends RadioButtonBoxCommonProps {
+  icon?: never;
+  contentRight: ReactNode;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   label,
   screenReaderLabel,
   variant = "normal",
-  icon,
   className,
   style,
   radioButtonClassName,
@@ -46,7 +63,10 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
           <Text aria-hidden={Boolean(screenReaderLabel)}>{label}</Text>
         </Row>
         <Row alignItems={"center"} width={"48px"} justifyContent={"center"}>
-          {icon && <Icon icon={icon} size={24} />}
+          {"icon" in radioButtonProps && radioButtonProps.icon && (
+            <Icon icon={radioButtonProps.icon} size={24} />
+          )}
+          {"contentRight" in radioButtonProps && radioButtonProps.contentRight}
         </Row>
       </Row>
     </label>
