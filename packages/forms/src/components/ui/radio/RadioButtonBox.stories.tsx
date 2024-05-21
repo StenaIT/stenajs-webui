@@ -1,6 +1,6 @@
 import * as React from "react";
 import { RadioButtonBox } from "./RadioButtonBox";
-import { Column } from "@stenajs-webui/core";
+import { Column, Text } from "@stenajs-webui/core";
 import {
   stenaAnimals,
   stenaRunningPerson,
@@ -32,6 +32,13 @@ export const Overview = () => (
       value={"withSharks"}
       variant={"danger"}
       icon={stenaAnimals}
+    />
+    <RadioButtonBox
+      label={"With sharks"}
+      name={"meansOfTravel"}
+      value={"withSharks"}
+      variant={"danger"}
+      contentRight={<Text>Hello</Text>}
     />
     <RadioButtonBox
       label={"With styling"}

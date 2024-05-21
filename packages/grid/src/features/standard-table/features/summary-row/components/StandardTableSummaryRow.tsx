@@ -7,12 +7,12 @@ import { SummaryCell } from "./SummaryCell";
 import { getColumnsLimitedWithColSpan } from "../SummaryCellColSpanCalculator";
 import { Indent } from "@stenajs-webui/core";
 
-interface StandardTableSummaryRowProps<TItem> {
+interface StandardTableSummaryRowProps<TItem extends {}> {
   items: Array<TItem>;
 }
 
 export const StandardTableSummaryRow = React.memo(
-  function StandardTableSummaryRow<TItem>({
+  function StandardTableSummaryRow<TItem extends {}>({
     items,
   }: StandardTableSummaryRowProps<TItem>) {
     const groupConfigsAndIds = useGroupConfigsAndIdsForRows();

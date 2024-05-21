@@ -45,10 +45,10 @@ export const createOnClickRemoveOnChipForBooleanRecord = <
   fieldName: TField
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields, value }) => {
-    const newRecord = { ...formModel[fieldName] };
-    newRecord[value] = false;
+    const newBooleanRecord = { ...formModel[fieldName] } as BooleanRecord;
+    newBooleanRecord[value] = false;
     setFormModelFields({
-      [fieldName]: newRecord,
+      [fieldName]: newBooleanRecord,
     } as unknown as Partial<TFormModel>);
   };
 };

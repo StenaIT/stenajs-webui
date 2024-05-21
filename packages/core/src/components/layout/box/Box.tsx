@@ -203,7 +203,7 @@ const box = system({
   },
   shadow: {
     property: "boxShadow",
-    transform: (value) => shadows[value] ?? value,
+    transform: (value: ShadowType) => shadows[value] ?? value,
   },
 });
 
