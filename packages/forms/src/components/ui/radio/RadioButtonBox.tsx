@@ -32,14 +32,14 @@ export interface RadioButtonBoxNoRightProps extends RadioButtonBoxCommonProps {
 }
 
 export interface RadioButtonBoxIconProps extends RadioButtonBoxCommonProps {
-  icon: IconDefinition;
+  icon?: IconDefinition;
   contentRight?: never;
 }
 
 export interface RadioButtonBoxContentRightProps
   extends RadioButtonBoxCommonProps {
   icon?: never;
-  contentRight: ReactNode;
+  contentRight?: ReactNode;
 }
 
 export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
