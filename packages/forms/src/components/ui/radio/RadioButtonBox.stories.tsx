@@ -34,11 +34,10 @@ export const Overview = () => (
       icon={stenaAnimals}
     />
     <RadioButtonBox
-      label={"With sharks"}
+      label={"With content right"}
       name={"meansOfTravel"}
-      value={"withSharks"}
-      variant={"danger"}
-      contentRight={<Text>Hello</Text>}
+      value={"withContentRight"}
+      contentRight={<Text>Hello world</Text>}
     />
     <RadioButtonBox
       label={"With styling"}

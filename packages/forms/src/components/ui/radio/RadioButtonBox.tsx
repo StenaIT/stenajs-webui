@@ -14,7 +14,7 @@ export type RadioButtonBoxProps =
   | RadioButtonBoxIconProps
   | RadioButtonBoxContentRightProps;
 
-interface RadioButtonBoxCommonProps extends RadioButtonProps {
+export interface RadioButtonBoxCommonProps extends RadioButtonProps {
   label?: string;
   /**
    * If set, this label is used by screen readers instead of label prop.
@@ -26,7 +26,10 @@ interface RadioButtonBoxCommonProps extends RadioButtonProps {
   radioButtonClassName?: string;
 }
 
-export interface RadioButtonBoxNoRightProps extends RadioButtonBoxCommonProps {}
+export interface RadioButtonBoxNoRightProps extends RadioButtonBoxCommonProps {
+  icon?: never;
+  contentRight?: never;
+}
 
 export interface RadioButtonBoxIconProps extends RadioButtonBoxCommonProps {
   icon: IconDefinition;
@@ -44,6 +47,8 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   screenReaderLabel,
   variant = "normal",
   className,
+  icon,
+  contentRight,
   style,
   radioButtonClassName,
   ...radioButtonProps
@@ -61,12 +66,16 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
             <ScreenReaderOnlyText>{screenReaderLabel}</ScreenReaderOnlyText>
           ) : null}
           <Text aria-hidden={Boolean(screenReaderLabel)}>{label}</Text>
-        </Row>
-        <Row alignItems={"center"} width={"48px"} justifyContent={"center"}>
-          {"icon" in radioButtonProps && radioButtonProps.icon && (
-            <Icon icon={radioButtonProps.icon} size={24} />
+          {icon && (
+            <Row alignItems={"center"} width={"48px"} justifyContent={"center"}>
+              <Icon icon={icon} size={24} />
+            </Row>
           )}
-          {"contentRight" in radioButtonProps && radioButtonProps.contentRight}
+          {contentRight && (
+            <Row alignItems={"center"} justifyContent={"center"}>
+              {contentRight}
+            </Row>
+          )}
         </Row>
       </Row>
     </label>
