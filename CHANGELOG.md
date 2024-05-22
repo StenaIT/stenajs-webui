@@ -1,3 +1,16 @@
+# v20.7.1 (Wed May 22 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Remove static width from RadioButtonBox contentRight [#738](https://github.com/StenaIT/stenajs-webui/pull/738) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.7.0 (Tue May 21 2024)
 
 #### 🚀 Enhancement
