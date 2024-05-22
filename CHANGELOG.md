@@ -1,3 +1,16 @@
+# v20.7.2 (Wed May 22 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Fix bug where contentRight was incorrectly required [#739](https://github.com/StenaIT/stenajs-webui/pull/739) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.7.1 (Wed May 22 2024)
 
 #### 🐛 Bug Fix
