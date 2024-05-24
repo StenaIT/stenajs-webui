@@ -1,3 +1,16 @@
+# v20.7.3 (Fri May 24 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - RadioButtonBox icon was not right aligned [#740](https://github.com/StenaIT/stenajs-webui/pull/740) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.7.2 (Wed May 22 2024)
 
 #### 🐛 Bug Fix
