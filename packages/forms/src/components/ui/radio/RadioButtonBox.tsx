@@ -71,11 +71,14 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
               <Icon icon={icon} size={24} />
             </Row>
           )}
-          {contentRight && (
-            <Row alignItems={"center"} justifyContent={"center"}>
-              {contentRight}
-            </Row>
-          )}
+        </Row>
+        <Row
+          alignItems={"center"}
+          width={icon ? "48px" : undefined}
+          justifyContent={"center"}
+        >
+          {icon && <Icon icon={icon} size={24} />}
+          {contentRight}
         </Row>
       </Row>
     </label>
