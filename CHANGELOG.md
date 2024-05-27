@@ -1,3 +1,16 @@
+# v20.7.4 (Mon May 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add new icon empty-read-alt [#741](https://github.com/StenaIT/stenajs-webui/pull/741) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v20.7.3 (Fri May 24 2024)
 
 #### 🐛 Bug Fix
