@@ -1,3 +1,16 @@
+# v20.7.5 (Wed May 29 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Fix double icons on RadioButtonBox [#742](https://github.com/StenaIT/stenajs-webui/pull/742) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.7.4 (Mon May 27 2024)
 
 #### 🐛 Bug Fix
