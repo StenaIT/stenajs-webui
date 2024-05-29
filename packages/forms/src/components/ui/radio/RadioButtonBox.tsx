@@ -66,11 +66,6 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
             <ScreenReaderOnlyText>{screenReaderLabel}</ScreenReaderOnlyText>
           ) : null}
           <Text aria-hidden={Boolean(screenReaderLabel)}>{label}</Text>
-          {icon && (
-            <Row alignItems={"center"} width={"48px"} justifyContent={"center"}>
-              <Icon icon={icon} size={24} />
-            </Row>
-          )}
         </Row>
         <Row
           alignItems={"center"}
@@ -78,7 +73,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
           justifyContent={"center"}
         >
           {icon && <Icon icon={icon} size={24} />}
-          {contentRight}
+          {!icon && contentRight}
         </Row>
       </Row>
     </label>
