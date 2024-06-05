@@ -1,3 +1,16 @@
+# v20.8.0 (Wed Jun 05 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Upgrade Font Awesome [#743](https://github.com/StenaIT/stenajs-webui/pull/743) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.7.5 (Wed May 29 2024)
 
 #### 🐛 Bug Fix
