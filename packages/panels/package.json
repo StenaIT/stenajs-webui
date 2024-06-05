@@ -46,8 +46,8 @@
   "peerDependencies": {
     "@emotion/react": ">=11.11.4",
     "@emotion/styled": ">=11.11.5",
-    "@fortawesome/fontawesome-svg-core": ">=1.2.35",
-    "@fortawesome/free-solid-svg-icons": ">=5.15.3",
+    "@fortawesome/fontawesome-svg-core": ">=6.5.2",
+    "@fortawesome/free-solid-svg-icons": ">=6.5.2",
     "@types/react": ">=18.0.14",
     "@types/react-dom": ">=18.0.5",
     "@types/react-transition-group": ">=4.2.3",
@@ -58,8 +58,8 @@
   "devDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@fortawesome/fontawesome-svg-core": "1.2.35",
-    "@fortawesome/free-solid-svg-icons": "5.15.3",
+    "@fortawesome/fontawesome-svg-core": "6.5.2",
+    "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@types/jest": "^23.1.5",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",

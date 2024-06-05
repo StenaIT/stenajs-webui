@@ -15,7 +15,7 @@ export interface IconProps
   size?: number | string;
 }
 
-export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
+export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
   {
     className,
     color = "var(--swui-text-primary-color)",
@@ -39,12 +39,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
   const fontSize = typeof size === "string" ? size : size / 10 + "rem";
 
   return (
-    <Box
-      justifyContent={"center"}
-      alignItems={"center"}
-      display={display}
-      ref={ref}
-    >
+    <Box justifyContent={"center"} alignItems={"center"} display={display}>
       <FontAwesomeIcon
         className={className}
         color={color}
@@ -54,6 +49,7 @@ export const Icon = forwardRef<HTMLDivElement, IconProps>(function Icon(
         rotation={rotation}
         spin={spin}
         style={{ fontSize, ...style }}
+        ref={ref}
         transform={transform}
         {...props}
       />
