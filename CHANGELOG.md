@@ -1,3 +1,16 @@
+# v20.8.1 (Thu Jun 13 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Upgrade React to latest version, and fix broken Icon props [#744](https://github.com/StenaIT/stenajs-webui/pull/744) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.8.0 (Wed Jun 05 2024)
 
 #### 🚀 Enhancement
