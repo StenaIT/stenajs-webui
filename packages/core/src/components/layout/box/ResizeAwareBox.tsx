@@ -6,7 +6,7 @@ import {
   useElementDimensions,
 } from "../../../hooks/UseElementDimensions";
 
-export interface ResizeAwareBoxProps extends BoxProps {
+export interface ResizeAwareBoxProps extends Omit<BoxProps, "onResize"> {
   onResize?: (dimensions: ElementDimensions) => void;
 }
 

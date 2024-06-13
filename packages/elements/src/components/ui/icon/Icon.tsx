@@ -29,7 +29,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
     transform,
     display,
     ...props
-  }: IconProps,
+  },
   ref
 ) {
   if (!icon) {
