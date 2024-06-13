@@ -11,7 +11,7 @@ interface RenderPropArgs {
 }
 
 export interface NavBarPopoverButtonProps
-  extends Omit<NavBarButtonProps, "onClick"> {
+  extends Omit<NavBarButtonProps, "onClick" | "content"> {
   content?: RenderProp;
 }
 
