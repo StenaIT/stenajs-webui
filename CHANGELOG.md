@@ -1,3 +1,16 @@
+# v20.9.0 (Wed Jun 19 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Update design of calendar [#745](https://github.com/StenaIT/stenajs-webui/pull/745) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.8.1 (Thu Jun 13 2024)
 
 #### 🐛 Bug Fix
