@@ -1,7 +1,7 @@
 .calendar {
-  --swui-calendar-day-width: 40px;
-  --swui-calendar-day-height: 38px;
-  --swui-calendar-day-border-radius: 4px;
+  --swui-calendar-day-width: 48px;
+  --swui-calendar-day-height: 48px;
+  --swui-calendar-day-border-radius: var(--swui-max-border-radius);
 
   /* Week number */
 
@@ -16,12 +16,12 @@
 
   /* Wrapper */
 
-  --swui-calendar-wrapper-selected-border: var(--swui-primary-action-color);
-  --swui-calendar-wrapper-selected-background: var(--swui-primary-action-color);
-  --swui-calendar-wrapper-range-border: var(--lhds-color-blue-100);
-  --swui-calendar-wrapper-range-background: var(--lhds-color-blue-100);
+  --swui-calendar-wrapper-selected-border: var(--modern-red);
+  --swui-calendar-wrapper-selected-background: var(--modern-red);
+  --swui-calendar-wrapper-range-border: var(--lhds-color-red-100);
+  --swui-calendar-wrapper-range-background: var(--lhds-color-red-100);
   --swui-calendar-wrapper-today-border: var(--lhds-color-ui-200);
-  --swui-calendar-wrapper-today-background: var(--lhds-color-ui-200);
+  --swui-calendar-wrapper-today-background: var(--lhds-color-ui-50);
 
   /* Text */
 
@@ -33,16 +33,13 @@
     border-spacing: 0 4px;
   }
 
-  span {
-    line-height: 100%;
-  }
-
   tr td:last-child {
     border-top-right-radius: var(--swui-calendar-day-border-radius);
     border-bottom-right-radius: var(--swui-calendar-day-border-radius);
   }
 
-  tr td:nth-child(2) {
+  &.weekNumberVisible tr td:nth-child(2),
+  &:not(.weekNumberVisible) tr td:first-child {
     border-top-left-radius: var(--swui-calendar-day-border-radius);
     border-bottom-left-radius: var(--swui-calendar-day-border-radius);
   }

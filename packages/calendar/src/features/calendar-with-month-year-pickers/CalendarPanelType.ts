@@ -1,1 +1,1 @@
-export type CalendarPanelType = "calendar" | "year" | "month" | "presets";
+export type CalendarPanelType = "calendar" | "month" | "presets";

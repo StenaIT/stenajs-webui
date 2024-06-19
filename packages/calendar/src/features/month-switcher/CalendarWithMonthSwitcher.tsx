@@ -1,20 +1,22 @@
-import { Column, Row, Space } from "@stenajs-webui/core";
+import { Column, Row } from "@stenajs-webui/core";
 import {
-  FlatButton,
-  stenaAngleLeft,
-  stenaAngleLeftDouble,
-  stenaAngleRight,
-  stenaAngleRightDouble,
+  SecondaryButton,
+  stenaArrowLeft,
+  stenaArrowRight,
 } from "@stenajs-webui/elements";
 import * as React from "react";
 import { Calendar } from "../../components/calendar/Calendar";
 import { defaultCalendarTheme } from "../../components/calendar/CalendarTheme";
-import { CalendarProps } from "../../types/CalendarTypes";
+import {
+  CalendarProps,
+  RenderMonthPickerArgs,
+} from "../../types/CalendarTypes";
 import { CalendarPanelType } from "../calendar-with-month-year-pickers/CalendarPanelType";
 import { CalendarWithMonthYearPickers } from "../calendar-with-month-year-pickers/CalendarWithMonthYearPickers";
 import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { useSelectedMonthStepperLogic } from "./hooks/UseSelectedMonthStepperLogic";
 import { WithMonthSwitcherBelow } from "./MonthSwitcherBelow";
+import { ReactNode } from "react";
 
 export type MonthSwitcherPlacement = "header" | "below";
 
@@ -25,7 +27,7 @@ export interface CalendarWithMonthSwitcherProps<T> extends CalendarProps<T> {
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
   onSelectPreset?: (preset: CalendarPreset) => void;
-  hideYearPagination?: boolean;
+  renderMonthPicker?: (args: RenderMonthPickerArgs) => ReactNode;
 }
 
 const noop = () => {};
@@ -38,7 +40,7 @@ export function CalendarWithMonthSwitcher<T>({
   currentPanel,
   setCurrentPanel,
   onSelectPreset = noop,
-  hideYearPagination = false,
+  renderMonthPicker,
   ...calendarProps
 }: CalendarWithMonthSwitcherProps<T>) {
   const { nextMonth, prevMonth, nextYear, prevYear } =
@@ -74,33 +76,22 @@ export function CalendarWithMonthSwitcher<T>({
           <CalendarWithMonthYearPickers<T>
             {...calendarProps}
             theme={theme}
+            renderMonthPicker={renderMonthPicker}
             dateInFocus={dateInFocus}
             setDateInFocus={setDateInFocus}
             currentPanel={currentPanel}
             setCurrentPanel={setCurrentPanel}
             onSelectPreset={onSelectPreset}
-            headerLeftContent={
-              <Row alignItems={"center"}>
-                {!hideYearPagination && (
-                  <FlatButton
-                    onClick={prevYear}
-                    leftIcon={stenaAngleLeftDouble}
-                  />
-                )}
-                <Space />
-                <FlatButton onClick={prevMonth} leftIcon={stenaAngleLeft} />
-              </Row>
-            }
             headerRightContent={
-              <Row alignItems={"center"}>
-                <FlatButton onClick={nextMonth} leftIcon={stenaAngleRight} />
-                <Space />
-                {!hideYearPagination && (
-                  <FlatButton
-                    onClick={nextYear}
-                    leftIcon={stenaAngleRightDouble}
-                  />
-                )}
+              <Row alignItems={"center"} gap={1}>
+                <SecondaryButton
+                  onClick={prevMonth}
+                  leftIcon={stenaArrowLeft}
+                />
+                <SecondaryButton
+                  onClick={nextMonth}
+                  leftIcon={stenaArrowRight}
+                />
               </Row>
             }
           />

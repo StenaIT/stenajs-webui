@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Clickable, Text } from "@stenajs-webui/core";
+import { Box, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -83,8 +83,12 @@ export const CalendarDay = function CalendarDay<T>({
     position: "relative",
   });
 
+  const disabled = isDisabled(defaultHighlights, dayState);
+
   return (
-    <WrapperTd>
+    <WrapperTd
+      onClick={disabled ? undefined : (ev) => onClickDay?.(day, userData, ev)}
+    >
       <InnerWrapperDiv>
         <CellWrapperDiv>
           {day.month === month.monthInYear && (
@@ -99,17 +103,7 @@ export const CalendarDay = function CalendarDay<T>({
                   userData={userData}
                 />
               )}
-              {onClickDay && isClickable(defaultHighlights, dayState) ? (
-                <Clickable
-                  onClick={(ev) => onClickDay(day, userData, ev)}
-                  style={{ width: "100%", height: "100%" }}
-                  borderRadius={"var(--swui-calendar-day-border-radius)"}
-                >
-                  {content}
-                </Clickable>
-              ) : (
-                <>{content}</>
-              )}
+              {content}
             </>
           )}
         </CellWrapperDiv>
@@ -118,14 +112,14 @@ export const CalendarDay = function CalendarDay<T>({
   );
 };
 
-const isClickable = (
+const isDisabled = (
   defaultHighlights: Array<DayStateHighlight> | undefined,
   dayState: DayState | undefined
 ): boolean =>
   !!dayHighlightSelect<boolean>(
     dayState,
     defaultHighlights,
-    ["enabled", "disabled"],
-    [true, false],
-    true
+    ["disabled"],
+    [true],
+    false
   );

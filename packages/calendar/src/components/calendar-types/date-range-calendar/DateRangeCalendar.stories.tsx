@@ -1,7 +1,7 @@
 import { addDays, format } from "date-fns";
-import { sv, enUS } from "date-fns/locale";
-import { useState } from "react";
+import { enUS, sv } from "date-fns/locale";
 import * as React from "react";
+import { useState } from "react";
 import { DateRange } from "../../../types/DateRange";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
 import { DateRangeCalendar } from "./DateRangeCalendar";
@@ -74,6 +74,20 @@ export const WeekStartAtSunday = () => {
   );
 };
 
+export const ShowWeekNumbers = () => {
+  const props = useDateRangeCalendarState();
+  const [dateRange, setDateRange] = useState<DateRange>();
+  return (
+    <DateRangeCalendar
+      value={dateRange}
+      onValueChange={setDateRange}
+      {...props}
+      locale={sv}
+      showWeekNumber
+    />
+  );
+};
+
 export const WithTodayHighlighted = () => {
   const props = useDateRangeCalendarState();
   const [dateRange, setDateRange] = useState<DateRange>();
@@ -138,19 +152,6 @@ export const WithMultipleRows = () => {
       {...props}
       numMonths={6}
       monthsPerRow={3}
-    />
-  );
-};
-
-export const WithHiddenYearPagination = () => {
-  const props = useDateRangeCalendarState();
-  const [dateRange, setDateRange] = useState<DateRange>();
-  return (
-    <DateRangeCalendar
-      value={dateRange}
-      onValueChange={setDateRange}
-      {...props}
-      hideYearPagination={true}
     />
   );
 };

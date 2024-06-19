@@ -1,4 +1,4 @@
-import { Row, Space, Spacing } from "@stenajs-webui/core";
+import { Row, Spacing } from "@stenajs-webui/core";
 import { getMonth, getYear, parse } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { chunk } from "lodash-es";
@@ -18,6 +18,7 @@ import {
   getMonthsInYear,
   MonthData,
 } from "../../util/calendar/CalendarDataFactory";
+import cx from "classnames";
 import styles from "./Calendar.module.css";
 
 import { CalendarMonth } from "./CalendarMonth";
@@ -49,13 +50,12 @@ function CalendarPanel<T>({
   onClickWeekDay,
   onClickWeek,
   onClickMonth,
-  onClickYear,
   renderWeekDay,
   renderWeekNumber,
-  headerLeftContent,
   headerRightContent,
   extraDayContent,
   defaultHighlights,
+  showWeekNumber,
   theme = defaultCalendarTheme,
 }: CalendarPanelProps<T>) {
   const minDateObj = useMemo(
@@ -69,38 +69,38 @@ function CalendarPanel<T>({
   );
 
   return (
-    <div className={styles.calendar}>
+    <div
+      className={cx(
+        styles.calendar,
+        showWeekNumber && styles.weekNumberVisible
+      )}
+    >
       {monthRows.map((monthRow, rowIndex) => (
         <Spacing key={rowIndex}>
-          <Row>
-            {monthRow.map((month, index) => (
-              <React.Fragment key={month.name}>
-                {index > 0 && <Space />}
-                <CalendarMonth<T>
-                  month={month}
-                  dayComponent={dayComponent}
-                  userDataPerWeek={
-                    userDataPerMonth && userDataPerMonth[month.monthString]
-                  }
-                  statePerWeek={
-                    statePerMonth && statePerMonth[month.monthString]
-                  }
-                  onClickDay={onClickDay}
-                  onClickWeekDay={onClickWeekDay}
-                  onClickWeek={onClickWeek}
-                  onClickMonth={onClickMonth}
-                  onClickYear={onClickYear}
-                  theme={theme}
-                  renderWeekNumber={renderWeekNumber}
-                  renderWeekDay={renderWeekDay}
-                  headerLeftContent={headerLeftContent}
-                  headerRightContent={headerRightContent}
-                  extraDayContent={extraDayContent}
-                  defaultHighlights={defaultHighlights}
-                  minDate={minDateObj}
-                  maxDate={maxDateObj}
-                />
-              </React.Fragment>
+          <Row gap={2}>
+            {monthRow.map((month) => (
+              <CalendarMonth<T>
+                key={month.name}
+                month={month}
+                dayComponent={dayComponent}
+                userDataPerWeek={
+                  userDataPerMonth && userDataPerMonth[month.monthString]
+                }
+                statePerWeek={statePerMonth && statePerMonth[month.monthString]}
+                onClickDay={onClickDay}
+                onClickWeekDay={onClickWeekDay}
+                onClickWeek={onClickWeek}
+                onClickMonth={onClickMonth}
+                theme={theme}
+                renderWeekNumber={renderWeekNumber}
+                renderWeekDay={renderWeekDay}
+                headerRightContent={headerRightContent}
+                extraDayContent={extraDayContent}
+                defaultHighlights={defaultHighlights}
+                minDate={minDateObj}
+                maxDate={maxDateObj}
+                showWeekNumber={showWeekNumber ?? false}
+              />
             ))}
           </Row>
         </Spacing>

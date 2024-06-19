@@ -1,10 +1,10 @@
 import { Indent, Row, Space } from "@stenajs-webui/core";
 import {
-  FlatButton,
-  stenaAngleLeft,
+  SecondaryButton,
   stenaAngleLeftDouble,
-  stenaAngleRight,
   stenaAngleRightDouble,
+  stenaArrowLeft,
+  stenaArrowRight,
 } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode } from "react";
@@ -29,14 +29,12 @@ export const WithMonthSwitcherBelow: React.FC<WithMonthSwitcherBelowProps> = ({
   <div>
     {children}
     <Indent>
-      <Row>
-        <FlatButton onClick={prevYear} leftIcon={stenaAngleLeftDouble} />
-        <Space />
-        <FlatButton onClick={prevMonth} leftIcon={stenaAngleLeft} />
+      <Row gap={1}>
+        <SecondaryButton onClick={prevYear} leftIcon={stenaAngleLeftDouble} />
+        <SecondaryButton onClick={prevMonth} leftIcon={stenaArrowLeft} />
         <Indent num={2} />
-        <FlatButton onClick={nextMonth} leftIcon={stenaAngleRight} />
-        <Space />
-        <FlatButton onClick={nextYear} leftIcon={stenaAngleRightDouble} />
+        <SecondaryButton onClick={nextMonth} leftIcon={stenaArrowRight} />
+        <SecondaryButton onClick={nextYear} leftIcon={stenaAngleRightDouble} />
       </Row>
     </Indent>
     <Space />

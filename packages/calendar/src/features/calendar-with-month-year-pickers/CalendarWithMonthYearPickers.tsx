@@ -1,14 +1,19 @@
 import { Box } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import { useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { Calendar } from "../../components/calendar/Calendar";
-import { CalendarProps } from "../../types/CalendarTypes";
-import { Month } from "../../util/calendar/CalendarDataFactory";
-import { MonthPicker } from "../month-picker/MonthPicker";
+import {
+  CalendarProps,
+  RenderMonthPickerArgs,
+} from "../../types/CalendarTypes";
+import {
+  createFirstDate,
+  MonthPicker,
+  MonthPickerValue,
+} from "../month-picker/MonthPicker";
 import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { PresetPicker } from "../preset-picker/PresetPicker";
-import { YearPicker } from "../year-picker/YearPicker";
 import { CalendarPanelType } from "./CalendarPanelType";
 
 interface CalendarWithMonthYearPickersProps<T>
@@ -18,6 +23,7 @@ interface CalendarWithMonthYearPickersProps<T>
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
   onSelectPreset: (preset: CalendarPreset) => void;
+  renderMonthPicker?: (args: RenderMonthPickerArgs) => ReactNode;
 }
 
 export const CalendarWithMonthYearPickers =
@@ -27,12 +33,14 @@ export const CalendarWithMonthYearPickers =
     setDateInFocus,
     currentPanel,
     setCurrentPanel,
+    renderMonthPicker,
     ...props
   }: CalendarWithMonthYearPickersProps<T>) {
     const onChangeSelectedMonth = useCallback(
-      (selectedMonth: Month) => {
+      (selectedMonth: MonthPickerValue) => {
         const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
-        newDate.setMonth(selectedMonth);
+        newDate.setMonth(selectedMonth.month);
+        newDate.setFullYear(selectedMonth.year);
         if (setDateInFocus) {
           setDateInFocus(newDate);
         }
@@ -40,22 +48,6 @@ export const CalendarWithMonthYearPickers =
       },
       [dateInFocus, setDateInFocus, setCurrentPanel]
     );
-
-    const onChangeSelectedYear = useCallback(
-      (selectedYear: number) => {
-        const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
-        newDate.setFullYear(selectedYear);
-        if (setDateInFocus) {
-          setDateInFocus(newDate);
-        }
-        setCurrentPanel("calendar");
-      },
-      [dateInFocus, setDateInFocus, setCurrentPanel]
-    );
-
-    const onClickYear = useCallback(() => {
-      setCurrentPanel("year");
-    }, [setCurrentPanel]);
 
     const onClickMonth = useCallback(() => {
       setCurrentPanel("month");
@@ -64,29 +56,30 @@ export const CalendarWithMonthYearPickers =
     switch (currentPanel) {
       case "calendar":
         return (
-          <>
-            <Calendar<T>
-              {...props}
-              date={dateInFocus}
-              onClickYear={onClickYear}
-              onClickMonth={onClickMonth}
-              locale={locale}
-            />
-          </>
-        );
-      case "month":
-        return (
-          <MonthPicker
-            value={dateInFocus.getMonth()}
-            onValueChange={onChangeSelectedMonth}
+          <Calendar<T>
+            {...props}
+            date={dateInFocus}
+            onClickMonth={onClickMonth}
             locale={locale}
           />
         );
-      case "year":
-        return (
-          <YearPicker
-            value={dateInFocus.getFullYear()}
-            onValueChange={onChangeSelectedYear}
+      case "month":
+        return renderMonthPicker ? (
+          renderMonthPicker({
+            value: createFirstDate(dateInFocus),
+            onValueChange: onChangeSelectedMonth,
+            locale: locale,
+            firstMonth: new Date(),
+            numMonths: 24,
+            dateInFocus,
+          })
+        ) : (
+          <MonthPicker
+            value={createFirstDate(dateInFocus)}
+            onValueChange={onChangeSelectedMonth}
+            locale={locale}
+            firstMonth={new Date()}
+            numMonths={24}
           />
         );
       case "presets":
