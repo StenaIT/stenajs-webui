@@ -27,7 +27,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   const input = createMonths(firstMonth, numMonths);
 
   return (
-    <Column gap={1} width={"400px"}>
+    <Column gap={1} maxWidth={"336px"}>
       {input.years.map(({ year, months }) => (
         <>
           <Heading variant={"h4"}>{year}</Heading>
