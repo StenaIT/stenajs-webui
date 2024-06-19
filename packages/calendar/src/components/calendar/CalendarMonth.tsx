@@ -34,7 +34,7 @@ export interface CalendarMonthProps<T>
   headerRightContent?: React.ReactElement<{}>;
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   defaultHighlights?: Array<DayStateHighlight>;
-  weekNumberVisible: boolean;
+  showWeekNumber: boolean;
 }
 
 export function CalendarMonth<T>({
@@ -54,7 +54,7 @@ export function CalendarMonth<T>({
   theme = defaultCalendarTheme,
   extraDayContent,
   defaultHighlights,
-  weekNumberVisible,
+  showWeekNumber,
 }: CalendarMonthProps<T>) {
   return (
     <>
@@ -85,7 +85,7 @@ export function CalendarMonth<T>({
         <table>
           <tbody>
             <tr>
-              {weekNumberVisible && (
+              {showWeekNumber && (
                 <td>
                   <Box width={theme.width} height={theme.height} />
                 </td>
@@ -107,7 +107,7 @@ export function CalendarMonth<T>({
             {month.weeks.map((week: WeekData) => (
               <>
                 <tr key={week.weekNumber}>
-                  {weekNumberVisible && (
+                  {showWeekNumber && (
                     <td>
                       {renderWeekNumber ? (
                         renderWeekNumber(week, theme, onClickWeek)

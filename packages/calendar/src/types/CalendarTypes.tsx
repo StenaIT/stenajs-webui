@@ -107,7 +107,7 @@ export interface CalendarProps<T>
   theme?: CalendarTheme;
 
   /** If true, show week numbers. */
-  weekNumberVisible?: boolean;
+  showWeekNumber?: boolean;
 }
 
 export interface CalendarHeaderContentProps {

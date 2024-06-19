@@ -83,7 +83,7 @@ export const ShowWeekNumbers = () => {
       onValueChange={setDateRange}
       {...props}
       locale={sv}
-      weekNumberVisible
+      showWeekNumber
     />
   );
 };

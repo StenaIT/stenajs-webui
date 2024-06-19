@@ -55,7 +55,7 @@ function CalendarPanel<T>({
   headerRightContent,
   extraDayContent,
   defaultHighlights,
-  weekNumberVisible,
+  showWeekNumber,
   theme = defaultCalendarTheme,
 }: CalendarPanelProps<T>) {
   const minDateObj = useMemo(
@@ -72,7 +72,7 @@ function CalendarPanel<T>({
     <div
       className={cx(
         styles.calendar,
-        weekNumberVisible && styles.weekNumberVisible
+        showWeekNumber && styles.weekNumberVisible
       )}
     >
       {monthRows.map((monthRow, rowIndex) => (
@@ -99,7 +99,7 @@ function CalendarPanel<T>({
                 defaultHighlights={defaultHighlights}
                 minDate={minDateObj}
                 maxDate={maxDateObj}
-                weekNumberVisible={weekNumberVisible ?? false}
+                showWeekNumber={showWeekNumber ?? false}
               />
             ))}
           </Row>
