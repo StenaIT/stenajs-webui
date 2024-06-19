@@ -23,7 +23,6 @@ export interface WeekNumberTheme {
   backgroundColor: string;
   textColor?: string;
   clickableTextColor?: string;
-  show?: boolean;
 }
 
 export interface CalendarMonthTheme {
@@ -81,8 +80,6 @@ export const defaultWrapperStyleProvider =
     borderColor = "transparent",
   }: CalendarDefaultWrapperColors): CalendarWrapperStyleProvider<unknown> =>
   (defaultHighlights, dayState, day, _, month) => {
-    let style = {};
-
     const backgroundColor = dayHighlightSelect(
       dayState,
       defaultHighlights,
@@ -92,47 +89,65 @@ export const defaultWrapperStyleProvider =
     );
 
     return {
-      ...style,
       backgroundColor,
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: dayHighlightSelect(
+        dayState,
+        defaultHighlights,
+        ["selectedStart", "selectedEnd", "singleSelected", "range", "today"],
+        [
+          "var(--swui-calendar-wrapper-range-background)",
+          "var(--swui-calendar-wrapper-range-background)",
+          "var(--swui-calendar-wrapper-range-background)",
+          "var(--swui-calendar-wrapper-range-border)",
+          "var(--lhds-color-ui-500)",
+        ],
+        borderColor
+      ),
       borderTopLeftRadius: dayHighlightSelect(
         dayState,
         defaultHighlights,
-        ["selectedStart", "singleSelected"],
+        ["selectedStart", "singleSelected", "today"],
         [
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
         ],
-        borderColor
+        "unset"
       ),
       borderBottomLeftRadius: dayHighlightSelect(
         dayState,
         defaultHighlights,
-        ["selectedStart", "singleSelected"],
+        ["selectedStart", "singleSelected", "today"],
         [
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
         ],
-        borderColor
+        "unset"
       ),
       borderTopRightRadius: dayHighlightSelect(
         dayState,
         defaultHighlights,
-        ["selectedEnd", "singleSelected"],
+        ["selectedEnd", "singleSelected", "today"],
         [
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
         ],
-        borderColor
+        "unset"
       ),
       borderBottomRightRadius: dayHighlightSelect(
         dayState,
         defaultHighlights,
-        ["selectedEnd", "singleSelected"],
+        ["selectedEnd", "singleSelected", "today"],
         [
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
+          "var(--swui-calendar-day-border-radius)",
         ],
-        borderColor
+        "unset"
       ),
       boxSizing: "border-box",
     };
@@ -178,7 +193,6 @@ export const defaultCalendarTheme: CalendarTheme = {
     backgroundColor: "var(--swui-calendar-week-number-bg-color)",
     textColor: "var(--swui-calendar-week-number-text-color)",
     clickableTextColor: "var(--swui-calendar-week-number-clickable-text-color)",
-    show: true,
   },
   WeekDay: {
     textColor: "var(--swui-calendar-week-day-text-color)",

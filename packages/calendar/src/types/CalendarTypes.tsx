@@ -5,6 +5,7 @@ import {
   MonthData,
   WeekData,
 } from "../util/calendar/CalendarDataFactory";
+import { MonthPickerValue } from "../features/month-picker/MonthPicker";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
@@ -30,8 +31,6 @@ export interface CalendarOnClicks<T> {
   onClickDay?: OnClickDay<T>;
   /** onClick for the month in the calendar header */
   onClickMonth?: OnClickMonth;
-  /** onClick for the year in the calendar header */
-  onClickYear?: OnClickYear;
 }
 
 export type RenderWeekNumber = (
@@ -50,6 +49,15 @@ export interface Renderers {
   renderWeekNumber?: RenderWeekNumber;
   /** Render function for week day names over the days in the month. */
   renderWeekDay?: RenderWeekDay;
+}
+
+export interface RenderMonthPickerArgs {
+  value: MonthPickerValue;
+  onValueChange: (value: MonthPickerValue) => void;
+  locale: Locale | undefined;
+  firstMonth: Date;
+  numMonths: number;
+  dateInFocus: Date;
 }
 
 export interface CalendarProps<T>
@@ -97,11 +105,12 @@ export interface CalendarProps<T>
 
   /** The theme to use. */
   theme?: CalendarTheme;
+
+  /** If true, show week numbers. */
+  weekNumberVisible?: boolean;
 }
 
 export interface CalendarHeaderContentProps {
-  /** Content to put left of the month header text. */
-  headerLeftContent?: React.ReactElement<{}>;
   /** Content to put right of the month header text. */
   headerRightContent?: React.ReactElement<{}>;
 }
@@ -157,7 +166,7 @@ export type DayState = HighlightsState;
 export type OnClickDay<T> = (
   day: DayData,
   data: T | undefined,
-  ev: React.MouseEvent<HTMLButtonElement>
+  ev: React.MouseEvent<HTMLTableDataCellElement>
 ) => void;
 export type OnClickWeekDay = (
   weekDay: number,

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { MonthPicker } from "./MonthPicker";
-import { Month } from "../../util/calendar/CalendarDataFactory";
+import { MonthPicker, MonthPickerValue } from "./MonthPicker";
 
 export default {
   title: "calendar/Pickers/MonthPicker",
@@ -9,11 +8,16 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<Month | undefined>(undefined);
+  const [value, setValue] = useState<MonthPickerValue | undefined>(undefined);
 
   return (
     <div style={{ display: "inline-block" }}>
-      <MonthPicker value={value} onValueChange={setValue} />
+      <MonthPicker
+        value={value}
+        onValueChange={setValue}
+        numMonths={24}
+        firstMonth={new Date(2024, 0)}
+      />
     </div>
   );
 };

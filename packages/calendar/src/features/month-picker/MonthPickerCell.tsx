@@ -3,38 +3,35 @@ import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
-import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { Month } from "../../util/calendar/CalendarDataFactory";
 import { format } from "date-fns";
+import { Month } from "../../util/calendar/CalendarDataFactory";
 
-interface Props extends ValueAndOnValueChangeProps<Month> {
+interface MonthPickerCellProps {
+  year: number;
   month: Month;
+  onClick: () => void;
+  selected: boolean;
   locale: Locale;
 }
 
-export const MonthPickerCell: React.FC<Props> = ({
-  value,
-  onValueChange,
+export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   month,
+  year,
+  onClick,
+  selected,
   locale,
 }) => {
   const label = useMemo(() => {
-    const now = new Date(2000, month, 1);
+    const now = new Date(year, month, 1);
     return startCase(format(now, "MMM", { locale }));
-  }, [locale, month]);
+  }, [locale, year, month]);
 
   return (
     <Row justifyContent={"center"}>
-      {value === month ? (
-        <PrimaryButton
-          label={label}
-          onClick={() => onValueChange && onValueChange(month)}
-        />
+      {selected ? (
+        <PrimaryButton label={label} onClick={onClick} />
       ) : (
-        <FlatButton
-          label={label}
-          onClick={() => onValueChange && onValueChange(month)}
-        />
+        <FlatButton label={label} onClick={onClick} />
       )}
     </Row>
   );

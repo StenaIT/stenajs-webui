@@ -1,4 +1,4 @@
-import { Box, Row, Space, Text } from "@stenajs-webui/core";
+import { Box, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
 import {
   CalendarDayProps,
@@ -16,10 +16,11 @@ import {
   WeekData,
 } from "../../util/calendar/CalendarDataFactory";
 import { CalendarTheme, defaultCalendarTheme } from "./CalendarTheme";
-import { CalendarWeek } from "./CalendarWeek";
 import { WeekDayCell } from "./renderers/WeekDayCell";
 import { CalendarDay } from "./renderers/CalendarDay";
-import { FlatButton } from "@stenajs-webui/elements";
+import { FlatButton, stenaAngleDown } from "@stenajs-webui/elements";
+import { WeekNumberCell } from "./renderers/WeekNumberCell";
+import { DisabledDayWrapper } from "./DisabledDayWrapper";
 
 export interface CalendarMonthProps<T>
   extends CalendarOnClicks<T>,
@@ -30,10 +31,10 @@ export interface CalendarMonthProps<T>
   userDataPerWeek?: CalendarUserMonthData<T>;
   statePerWeek?: CalendarUserMonthData<DayState>;
   theme?: CalendarTheme;
-  headerLeftContent?: React.ReactElement<{}>;
   headerRightContent?: React.ReactElement<{}>;
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   defaultHighlights?: Array<DayStateHighlight>;
+  weekNumberVisible: boolean;
 }
 
 export function CalendarMonth<T>({
@@ -47,58 +48,44 @@ export function CalendarMonth<T>({
   onClickWeek,
   onClickWeekDay,
   onClickMonth,
-  onClickYear,
   renderWeekNumber,
   renderWeekDay,
-  headerLeftContent,
   headerRightContent,
   theme = defaultCalendarTheme,
   extraDayContent,
   defaultHighlights,
+  weekNumberVisible,
 }: CalendarMonthProps<T>) {
-  const showWeekNumber = theme.WeekNumber.show;
-
   return (
     <>
       <Box alignItems={"stretch"}>
         <Row
-          justifyContent={"space-between"}
+          justifyContent={headerRightContent ? "space-between" : "center"}
           alignItems={"center"}
-          height={"32px"}
         >
-          <Box alignItems={"center"}>{headerLeftContent}</Box>
-
-          <Row alignItems={"center"}>
-            <Row width={"104px"} justifyContent={"center"}>
-              {onClickMonth ? (
-                <FlatButton
-                  onClick={() => onClickMonth(month)}
-                  label={month.name}
-                />
-              ) : (
-                <Text>{month.name}</Text>
-              )}
-            </Row>
-            <Space />
-            <Row width={"64px"} justifyContent={"center"}>
-              {onClickYear ? (
-                <FlatButton
-                  onClick={() => onClickYear(month.year)}
-                  label={String(month.year)}
-                />
-              ) : (
-                <Text>{month.year}</Text>
-              )}
-            </Row>
+          <Row justifyContent={"center"} alignItems={"center"}>
+            {onClickMonth ? (
+              <FlatButton
+                onClick={() => onClickMonth(month)}
+                label={month.name + " " + String(month.year)}
+                rightIcon={stenaAngleDown}
+              />
+            ) : (
+              <Text whiteSpace={"nowrap"}>
+                {month.name} {month.year}
+              </Text>
+            )}
           </Row>
 
-          <Box alignItems={"center"}>{headerRightContent}</Box>
+          {headerRightContent && (
+            <Box alignItems={"center"}>{headerRightContent}</Box>
+          )}
         </Row>
 
         <table>
           <tbody>
             <tr>
-              {showWeekNumber && (
+              {weekNumberVisible && (
                 <td>
                   <Box width={theme.width} height={theme.height} />
                 </td>
@@ -118,24 +105,48 @@ export function CalendarMonth<T>({
               ))}
             </tr>
             {month.weeks.map((week: WeekData) => (
-              <CalendarWeek<T>
-                key={week.weekNumber}
-                month={month}
-                week={week}
-                dayComponent={dayComponent}
-                statePerWeekDay={statePerWeek && statePerWeek[week.weekNumber]}
-                userDataPerWeekDay={
-                  userDataPerWeek && userDataPerWeek[week.weekNumber]
-                }
-                onClickDay={onClickDay}
-                onClickWeek={onClickWeek}
-                theme={theme}
-                renderWeekNumber={renderWeekNumber}
-                extraDayContent={extraDayContent}
-                defaultHighlights={defaultHighlights}
-                minDate={minDate}
-                maxDate={maxDate}
-              />
+              <>
+                <tr key={week.weekNumber}>
+                  {weekNumberVisible && (
+                    <td>
+                      {renderWeekNumber ? (
+                        renderWeekNumber(week, theme, onClickWeek)
+                      ) : (
+                        <WeekNumberCell
+                          week={week}
+                          onClickWeek={onClickWeek}
+                          theme={theme}
+                        />
+                      )}
+                    </td>
+                  )}
+                  {week.days.map((day) => (
+                    <DisabledDayWrapper
+                      dayComponent={dayComponent}
+                      key={day.dateString}
+                      day={day}
+                      week={week}
+                      month={month}
+                      dayState={
+                        statePerWeek &&
+                        statePerWeek[week.weekNumber] &&
+                        statePerWeek[week.weekNumber][day.dayOfMonth]
+                      }
+                      userData={
+                        userDataPerWeek &&
+                        userDataPerWeek[week.weekNumber] &&
+                        userDataPerWeek[week.weekNumber][day.dayOfMonth]
+                      }
+                      onClickDay={onClickDay}
+                      theme={theme}
+                      extraDayContent={extraDayContent}
+                      defaultHighlights={defaultHighlights}
+                      minDate={minDate}
+                      maxDate={maxDate}
+                    />
+                  ))}
+                </tr>
+              </>
             ))}
           </tbody>
         </table>
