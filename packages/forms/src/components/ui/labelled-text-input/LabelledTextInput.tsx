@@ -12,7 +12,9 @@ export type LabelledTextInputSize = "medium" | "large";
 export type LabelledTextInputBorderVariant =
   | "normalBorder"
   | "onlyTop"
-  | "onlyBottom";
+  | "onlyBottom"
+  | "onlyLeft"
+  | "onlyRight";
 
 export interface LabelledTextInputProps
   extends Omit<InputElementProps, "value" | "size">,
