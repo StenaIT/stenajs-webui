@@ -1,9 +1,7 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
-import { TravelDateInput } from "./TravelDateInput";
-import { Row } from "@stenajs-webui/core";
-import { LabelledTextInput } from "@stenajs-webui/forms";
+import { TravelDateInput, TravelDateInputValue } from "./TravelDateInput";
 
 export default {
   title: "calendar/Input/TravelDateInput",
@@ -18,14 +16,13 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<Date | undefined>(undefined);
+  const [value, setValue] = useState<TravelDateInputValue | undefined>(
+    undefined
+  );
 
   return (
     <div style={{ display: "inline-block" }}>
-      <TravelDateInput />
-      <Row>
-        <LabelledTextInput borderRadiusVariant={""} />
-      </Row>
+      <TravelDateInput value={value} onValueChange={setValue} />
     </div>
   );
 };
