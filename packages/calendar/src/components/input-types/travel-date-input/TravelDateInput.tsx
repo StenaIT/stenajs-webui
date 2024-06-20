@@ -97,6 +97,9 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       onNoHoverDay={() =>
                         setHoverDay((p) => (p === day ? undefined : p))
                       }
+                      value={value}
+                      onValueChange={onValueChange}
+                      hoverDay={hoverDay}
                     />
                   ))}
                 </tr>
