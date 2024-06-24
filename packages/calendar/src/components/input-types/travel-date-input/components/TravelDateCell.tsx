@@ -9,7 +9,7 @@ import { TravelDateInputValue } from "../TravelDateInput";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
-import { isAfter, isBefore, isSameDay } from "date-fns";
+import { isBefore, isSameDay } from "date-fns";
 import { getCellBackgroundColors } from "../util/CellBgColors";
 
 export interface TravelDateCellProps
@@ -73,29 +73,11 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   const isSelectionStart = startDate ? isSameDay(startDate, day.date) : false;
   const isSelectionEnd = endDate ? isSameDay(endDate, day.date) : false;
 
-  const isInSelectionRange =
-    startDate && endDate
-      ? isAfter(day.date, startDate) &&
-        isBefore(day.date, endDate) &&
-        !isSameDay(day.date, startDate) &&
-        !isSameDay(day.date, endDate)
-      : false;
-
-  const isInHoverRange =
-    startDate && hoverDate
-      ? isAfter(day.date, startDate) &&
-        isBefore(day.date, hoverDate) &&
-        !isSameDay(day.date, startDate) &&
-        !isSameDay(day.date, hoverDate)
-      : false;
-
   const bgColors = getCellBackgroundColors(
     day.date,
     startDate,
     endDate,
-    hoverDate,
-    isInHoverRange,
-    isInSelectionRange
+    hoverDate
   );
 
   return (
@@ -114,6 +96,9 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         <div
           className={cx(
             styles.contentWrapper,
+            startDate ? styles.startSelected : undefined,
+            endDate ? styles.endSelected : undefined,
+            hoverDay?.dateString === day.dateString ? styles.hover : undefined,
             isSelectionStart && styles.isSelectionStart,
             isSelectionEnd && styles.isSelectionEnd
           )}

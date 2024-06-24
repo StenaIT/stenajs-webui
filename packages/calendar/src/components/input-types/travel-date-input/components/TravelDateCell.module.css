@@ -40,5 +40,9 @@
     &.isSelectionEnd {
       background: white;
     }
+
+    &.hover:not(.isSelectionEnd):not(.isSelectionStart) {
+      background: var(--lhds-color-red-200);
+    }
   }
 }

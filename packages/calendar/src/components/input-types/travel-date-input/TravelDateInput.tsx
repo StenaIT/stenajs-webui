@@ -49,7 +49,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
 
   return (
-    <Column gap={2} className={styles.travelDateInput}>
+    <Column gap={3} className={styles.travelDateInput}>
       <Heading variant={"h2"}>Select dates</Heading>
       <TravelDateTextInputs value={value} onValueChange={onValueChange} />
       <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
@@ -64,7 +64,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
             )
           }
         />
-        <Row alignSelf={"center"} gap={2}>
+        <Row alignItems={"center"} gap={2}>
           <SecondaryButton
             leftIcon={stenaArrowLeft}
             onClick={() => setMonth((p) => getPrevMonth(p, locale))}

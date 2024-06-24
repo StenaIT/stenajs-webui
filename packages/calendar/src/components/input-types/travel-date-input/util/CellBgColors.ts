@@ -1,14 +1,28 @@
 import { cssColor } from "@stenajs-webui/theme";
-import { isAfter, isSameDay } from "date-fns";
+import { isAfter, isBefore, isSameDay } from "date-fns";
 
 export const getCellBackgroundColors = (
   date: Date,
   selectedStartDate: Date | undefined,
   selectedEndDate: Date | undefined,
-  hoverDate: Date | undefined,
-  isInHoverRange: boolean,
-  isInSelectionRange: boolean
+  hoverDate: Date | undefined
 ): { left: string; right: string } => {
+  const isInSelectionRange =
+    selectedStartDate && selectedEndDate
+      ? isAfter(date, selectedStartDate) &&
+        isBefore(date, selectedEndDate) &&
+        !isSameDay(date, selectedStartDate) &&
+        !isSameDay(date, selectedEndDate)
+      : false;
+
+  const isInHoverRange =
+    selectedStartDate && hoverDate
+      ? isAfter(date, selectedStartDate) &&
+        isBefore(date, hoverDate) &&
+        !isSameDay(date, selectedStartDate) &&
+        !isSameDay(date, hoverDate)
+      : false;
+
   if (isInSelectionRange) {
     return {
       left: cssColor("--lhds-color-red-200"),
