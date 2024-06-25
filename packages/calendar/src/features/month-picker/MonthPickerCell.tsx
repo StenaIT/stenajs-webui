@@ -3,7 +3,7 @@ import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
-import { format } from "date-fns";
+import { format, Locale } from "date-fns";
 import { Month } from "../../util/calendar/CalendarDataFactory";
 
 interface MonthPickerCellProps {
