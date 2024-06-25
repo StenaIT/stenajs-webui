@@ -2,6 +2,18 @@
   position: relative;
   width: 48px;
   height: 48px;
+  cursor: pointer;
+
+  border-radius: var(--swui-max-border-radius);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--swui-focus-outline);
+    outline-width: var(--swui-focus-outline-width);
+  }
 
   .splitBgWrapper {
   }
@@ -41,8 +53,16 @@
       background: white;
     }
 
-    &.hover:not(.isSelectionEnd):not(.isSelectionStart) {
-      background: var(--lhds-color-red-200);
+    &.hover {
+      border-color: var(--modern-red);
+
+      &.startSelected:not(.endSelected) {
+        background: var(--lhds-color-red-200);
+
+        span {
+          color: var(--swui-text-primary-color);
+        }
+      }
     }
   }
 }

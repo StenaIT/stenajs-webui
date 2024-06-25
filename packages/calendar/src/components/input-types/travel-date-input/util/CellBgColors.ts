@@ -5,8 +5,16 @@ export const getCellBackgroundColors = (
   date: Date,
   selectedStartDate: Date | undefined,
   selectedEndDate: Date | undefined,
-  hoverDate: Date | undefined
+  hoverDate: Date | undefined,
+  dayIsInMonth: boolean
 ): { left: string; right: string } => {
+  if (!dayIsInMonth) {
+    return {
+      left: "transparent",
+      right: "transparent",
+    };
+  }
+
   const isInSelectionRange =
     selectedStartDate && selectedEndDate
       ? isAfter(date, selectedStartDate) &&

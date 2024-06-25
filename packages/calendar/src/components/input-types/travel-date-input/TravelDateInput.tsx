@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
@@ -22,6 +22,7 @@ import styles from "./TravelDateInput.module.css";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { getNextMonth, getPrevMonth } from "./util/MonthStepper";
 import { TravelDateCell } from "./components/TravelDateCell";
+import { useToday } from "./util/UseToday";
 
 type VisiblePanel = "calendar" | "month-picker";
 
@@ -40,21 +41,46 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   onValueChange,
   locale = enGB,
 }) => {
-  const [month, setMonth] = useState<MonthData>(() =>
+  const [visibleMonth, setVisibleMonth] = useState<MonthData>(() =>
     getMonthInYear(2024, 5, locale)
   );
+
+  const today = useToday();
 
   const [hoverDay, setHoverDay] = useState<DayData | undefined>();
 
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
 
+  const setVisibleMonthDate = useCallback(
+    (d: Date) => {
+      setVisibleMonth(getMonthInYear(d.getFullYear(), d.getMonth(), locale));
+    },
+    [locale]
+  );
+
+  const onValueChangeHandler = useCallback<
+    (value: TravelDateInputValue) => void
+  >(
+    (v) => {
+      if (!value?.startDate && !value?.endDate && v.startDate?.length === 10) {
+        const d = new Date(v.startDate);
+        setVisibleMonth(getMonthInYear(d.getFullYear(), d.getMonth(), locale));
+      }
+      onValueChange?.(v);
+    },
+    [value?.startDate, value?.endDate]
+  );
+
   return (
     <Column gap={3} className={styles.travelDateInput}>
       <Heading variant={"h2"}>Select dates</Heading>
-      <TravelDateTextInputs value={value} onValueChange={onValueChange} />
+      <TravelDateTextInputs
+        value={value}
+        onValueChange={onValueChangeHandler}
+      />
       <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
         <FlatButton
-          label={month.name + " " + month.year}
+          label={visibleMonth.name + " " + visibleMonth.year}
           rightIcon={
             visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp
           }
@@ -67,11 +93,11 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         <Row alignItems={"center"} gap={2}>
           <SecondaryButton
             leftIcon={stenaArrowLeft}
-            onClick={() => setMonth((p) => getPrevMonth(p, locale))}
+            onClick={() => setVisibleMonth((p) => getPrevMonth(p, locale))}
           />
           <SecondaryButton
             leftIcon={stenaArrowRight}
-            onClick={() => setMonth((p) => getNextMonth(p, locale))}
+            onClick={() => setVisibleMonth((p) => getNextMonth(p, locale))}
           />
         </Row>
       </Row>
@@ -80,18 +106,19 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         <table>
           <tbody>
             <tr>
-              {month.weeks[0].days.map((day: DayData) => (
+              {visibleMonth.weeks[0].days.map((day: DayData) => (
                 <th key={day.name}>
                   <Text>{day.name}</Text>
                 </th>
               ))}
             </tr>
-            {month.weeks.map((week: WeekData) => (
+            {visibleMonth.weeks.map((week: WeekData) => (
               <>
                 <tr key={week.weekNumber}>
                   {week.days.map((day) => (
                     <TravelDateCell
-                      visibleMonth={month}
+                      visibleMonth={visibleMonth}
+                      onChangeVisibleMonth={setVisibleMonthDate}
                       day={day}
                       onHoverDay={(d) => setHoverDay(d)}
                       onNoHoverDay={() =>
@@ -100,6 +127,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       value={value}
                       onValueChange={onValueChange}
                       hoverDay={hoverDay}
+                      inputInFocus={"startDate"}
+                      today={today}
                     />
                   ))}
                 </tr>
@@ -113,9 +142,9 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         <MonthPicker
           firstMonth={new Date()}
           numMonths={12}
-          value={{ month: month.monthInYear, year: month.year }}
+          value={{ month: visibleMonth.monthInYear, year: visibleMonth.year }}
           onValueChange={(v) => {
-            setMonth(getMonthInYear(v.year, v.month, enGB));
+            setVisibleMonth(getMonthInYear(v.year, v.month, enGB));
             setVisiblePanel("calendar");
           }}
         />

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { KeyboardEventHandler, useCallback, useMemo } from "react";
 import { Box, Row, Text } from "@stenajs-webui/core";
 import {
   DayData,
@@ -9,27 +9,48 @@ import { TravelDateInputValue } from "../TravelDateInput";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
-import { isBefore, isSameDay } from "date-fns";
+import { isBefore, isSameDay, isSameMonth } from "date-fns";
 import { getCellBackgroundColors } from "../util/CellBgColors";
+import { TravelDateInput } from "../TravelDateInputTypes";
+import { createDayId, getDateToFocusOn } from "../util/KeyboardNavigation";
 
 export interface TravelDateCellProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
   day: DayData;
   visibleMonth: MonthData;
+  onChangeVisibleMonth: (visibleMonth: Date) => void;
   onHoverDay: (day: DayData) => void;
   onNoHoverDay: (day: DayData) => void;
   hoverDay: DayData | undefined;
+  today: Date;
+  inputInFocus: TravelDateInput;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   visibleMonth,
+  onChangeVisibleMonth,
   day,
   value,
   onValueChange,
   onHoverDay,
   onNoHoverDay,
   hoverDay,
+  inputInFocus,
+  today,
 }) => {
+  const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
+    async (e) => {
+      const nextDate = getDateToFocusOn(day.date, e.key);
+      if (nextDate) {
+        if (!isSameMonth(day.date, nextDate)) {
+          onChangeVisibleMonth(nextDate);
+        }
+        document.getElementById(createDayId(nextDate))?.focus();
+      }
+    },
+    [day.date]
+  );
+
   const startDate = useMemo(
     () => (value?.startDate ? new Date(value.startDate) : undefined),
     [value?.startDate]
@@ -47,10 +68,11 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
 
   const onClickDate = () => {
     if (dayIsInMonth) {
-      if (startDate) {
+      if (startDate && endDate == null) {
         if (isBefore(day.date, startDate)) {
           onValueChangeHandler({
             startDate: day.dateString,
+            endDate: undefined,
           });
         } else {
           onValueChangeHandler({
@@ -60,6 +82,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       } else {
         onValueChangeHandler({
           startDate: day.dateString,
+          endDate: undefined,
         });
       }
     }
@@ -77,7 +100,8 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     day.date,
     startDate,
     endDate,
-    hoverDate
+    hoverDate,
+    dayIsInMonth
   );
 
   return (
@@ -86,6 +110,9 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       onClick={onClickDate}
       onMouseOver={() => dayIsInMonth && onHoverDay(day)}
       onMouseOut={() => dayIsInMonth && onNoHoverDay(day)}
+      tabIndex={getTabIndex(inputInFocus, day, startDate, endDate, today)}
+      id={day.dateString}
+      onKeyDown={onKeyDown}
     >
       <Row>
         <Box height={"48px"} width={"24px"} background={bgColors.left}></Box>
@@ -108,4 +135,35 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       )}
     </td>
   );
+};
+
+const getTabIndex = (
+  inputInFocus: TravelDateInput,
+  day: DayData,
+  startDate: Date | undefined,
+  endDate: Date | undefined,
+  today: Date
+): number => {
+  /**
+   * If date has been selected (for current input), that date should be tabIndex = 0.
+   * If no date has been selected, today's date should be tabIndex = 0.
+   * All else should be 1.
+   */
+  if (
+    inputInFocus === "startDate" && startDate
+      ? isSameDay(day.date, startDate)
+      : isSameDay(day.date, today)
+  ) {
+    return 0;
+  }
+
+  if (
+    inputInFocus === "endDate" && endDate
+      ? isSameDay(day.date, endDate)
+      : isSameDay(day.date, today)
+  ) {
+    return 0;
+  }
+
+  return -1;
 };

@@ -36,6 +36,7 @@
     "@stenajs-webui/core": "20.9.0",
     "@stenajs-webui/elements": "20.9.0",
     "@stenajs-webui/forms": "20.9.0",
+    "@stenajs-webui/input-mask": "20.9.0",
     "@stenajs-webui/theme": "20.9.0",
     "@stenajs-webui/tooltip": "20.9.0",
     "classnames": "^2.3.1",
