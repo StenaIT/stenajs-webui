@@ -122,7 +122,9 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
               <Row onClick={(ev) => ev.stopPropagation()}>
                 <Tooltip
                   label={infoIconTooltipText}
-                  zIndex={"var(--swui-sticky-popover-z-index)" as any}
+                  zIndex={
+                    "var(--swui-sticky-popover-z-index)" as unknown as number
+                  }
                   appendTo={appendTooltipTo}
                 >
                   <Icon

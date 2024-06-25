@@ -40,7 +40,7 @@ export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
     status
   );
   return (
-    <li className={cx(styles.item, className)} {...getDataProps(rest)}>
+    <li id={id} className={cx(styles.item, className)} {...getDataProps(rest)}>
       <StepIndicatorLine status={status} className={lineClassName} />
       <Space />
       {screenReaderStepStatusText == null ? null : (

@@ -20,7 +20,6 @@ export const Standard = () => (
 export const WithReactRouter = () => {
   const FakeReactRouterLink: React.FC<{ to: string; className: string }> = (
     props
-    // eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid
   ) => <a href={"#"} {...props} />;
 
   interface Props {

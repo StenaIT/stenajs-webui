@@ -7,14 +7,10 @@ import {
   SidebarMenuCloseButtonRow,
   SidebarMenuCloseButtonRowProps,
 } from "./SidebarMenuCloseButtonRow";
-import { NavBarVariant } from "../nav-bar/NavBar";
 import { SidebarMenuPinButton } from "./SidebarMenuPinButton";
-
-export type SidebarMenuVariant = NavBarVariant;
 
 export interface SidebarMenuProps extends BoxProps {
   onCloseClick?: SidebarMenuCloseButtonRowProps["onClick"];
-  variant?: SidebarMenuVariant;
   pinButtonVisible?: boolean;
   isPinned?: boolean;
   bottomItems?: ReactNode;
@@ -25,7 +21,6 @@ export const SidebarMenu: React.FC<SidebarMenuProps> = ({
   className,
   children,
   onCloseClick,
-  variant = "standard",
   pinButtonVisible,
   onClickPinButton,
   bottomItems,

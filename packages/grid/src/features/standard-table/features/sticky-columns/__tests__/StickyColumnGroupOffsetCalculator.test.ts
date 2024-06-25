@@ -5,6 +5,8 @@ import {
   getColumnIdsForRightSideStickyGroup,
 } from "../StickyColumnGroupOffsetCalculator";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 describe("StickyColumnGroupOffsetCalculator", () => {
   describe("calculateOffsetForColumnInStickyColumnGroups", () => {
     const config = {

@@ -4,5 +4,9 @@ export const filterItemsOnEnabledCheckboxes =
   <TItem>(
     checkboxDisabledResolver?: (item: TItem) => boolean
   ): ItemFilterFunc<TItem> =>
-  (item: TItem) =>
-    checkboxDisabledResolver?.(item) ? false : true ?? true;
+  (item: TItem) => {
+    if (checkboxDisabledResolver == null) {
+      return true;
+    }
+    return !checkboxDisabledResolver(item);
+  };

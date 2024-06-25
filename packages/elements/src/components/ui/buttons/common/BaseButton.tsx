@@ -25,7 +25,6 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
       left,
       rightIcon,
       right,
-      variant = "normal",
       disabled,
       onClick,
       iconClassName,

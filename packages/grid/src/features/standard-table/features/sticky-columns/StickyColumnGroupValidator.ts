@@ -4,7 +4,7 @@ import {
 } from "../../config/StandardTableConfig";
 
 export const ensureConfigHasValidSticky = <
-  TItem extends {},
+  TItem extends object,
   TColumnKey extends string
 >(
   config: StandardTableConfig<TItem, TColumnKey>
@@ -30,7 +30,7 @@ export const ensureConfigHasValidSticky = <
 };
 
 export const ensureNoColumnsAreSticky = <
-  TItem extends {},
+  TItem extends object,
   TColumnKey extends string
 >(
   config: StandardTableConfig<TItem, TColumnKey>

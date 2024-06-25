@@ -1,6 +1,9 @@
 import * as React from "react";
 import { useEffect, useMemo, useRef } from "react";
-import { multitypeComparator } from "../features/sorting/MultitypeComparator";
+import {
+  ComparableType,
+  multitypeComparator,
+} from "../features/sorting/MultitypeComparator";
 import { useColumnValueResolver } from "../hooks/UseColumnValueResolver";
 import {
   useStandardTableConfig,
@@ -11,7 +14,7 @@ import { StandardTableRow } from "./StandardTableRow";
 import { SummaryRowSwitcher } from "../features/summary-row/components/SummaryRowSwitcher";
 import { filterItemsOnEnabledCheckboxes } from "../util/FilterItemsOnEnabledCheckboxes";
 
-interface StandardTableContentProps<TItem extends {}> {
+interface StandardTableContentProps<TItem extends Record<string, never>> {
   items?: Array<TItem>;
   colIndexOffset?: number;
   rowIndexOffset?: number;
@@ -19,7 +22,7 @@ interface StandardTableContentProps<TItem extends {}> {
 }
 
 export const StandardTableRowList = React.memo(function StandardTableRowList<
-  TItem extends {}
+  TItem extends Record<string, never>
 >({
   items,
   colIndexOffset = 0,
@@ -59,7 +62,10 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
 
     const sortedList = [...items];
     sortedList.sort((a, b) =>
-      multitypeComparator(valueResolver(a) as any, valueResolver(b) as any)
+      multitypeComparator(
+        valueResolver(a) as ComparableType,
+        valueResolver(b) as ComparableType
+      )
     );
     if (desc) {
       sortedList.reverse();

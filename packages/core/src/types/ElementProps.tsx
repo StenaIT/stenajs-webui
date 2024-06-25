@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, Ref, RefObject } from "react";
 
-export interface InputProps<T = any>
+export interface InputProps<T = never>
   extends Omit<ComponentPropsWithoutRef<"input">, "value" | "onChange"> {
   /** This is a RefObject since the input components use ref.current which Ref type doesn't have. */
   inputRef?: RefObject<HTMLInputElement>;

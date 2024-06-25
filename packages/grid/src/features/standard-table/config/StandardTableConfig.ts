@@ -36,6 +36,7 @@ export interface StandardTableConfigWithGroups<
    */
   columns: Record<
     TColumnKey,
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     StandardTableColumnConfigWithGroups<TItem, any, TColumnKey>
   >;
 
@@ -69,6 +70,7 @@ export interface StandardTableConfigWithNoGroups<
    */
   columns: Record<
     TColumnKey,
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     StandardTableColumnConfig<TItem, any, TColumnKey>
   >;
 

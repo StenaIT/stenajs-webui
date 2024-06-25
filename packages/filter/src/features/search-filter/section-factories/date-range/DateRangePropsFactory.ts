@@ -17,6 +17,7 @@ export const createDateRangeSectionProps = <
     startDate: formModel[startDateFieldName] as unknown as string | undefined,
     endDate: formModel[endDateFieldName] as unknown as string | undefined,
   },
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   onValueChange: (value, { dispatch, actions }) => {
     const fields: Partial<TFormModel> = {
       [startDateFieldName]: value.startDate,

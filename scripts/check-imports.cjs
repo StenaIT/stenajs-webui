@@ -106,6 +106,7 @@ const checkImport = (
       checkIfImportGoesToPackagesFolder(filePath, packageJson, imported);
     }
   } else if (isTest) {
+    /* empty */
   } else {
     if (imported === packageJson.name) {
       console.log(

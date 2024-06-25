@@ -17,7 +17,8 @@ import { useDateInput } from "./UseDateInput";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 
-export interface DateInputProps<T = {}> extends OptionalMinMaxDatesAsString {
+export interface DateInputProps<T = unknown>
+  extends OptionalMinMaxDatesAsString {
   /** The current value */
   value?: Date;
   /** onChange handler for when the user selects a date. */

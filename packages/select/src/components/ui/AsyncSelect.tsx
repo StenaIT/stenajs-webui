@@ -17,7 +17,6 @@ export interface AsyncSelectProps<T = { label: string; value: string }>
 export function AsyncSelect<T>({
   variant = "standard",
   styles,
-  isMulti,
   ...selectProps
 }: AsyncSelectProps<T>) {
   const selectStyles = useMemo(() => {

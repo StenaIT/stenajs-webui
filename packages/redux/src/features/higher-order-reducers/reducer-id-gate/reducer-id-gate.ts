@@ -17,7 +17,8 @@ export const reducerIdGate =
     reducer: Reducer<TState, TInnerAction>
   ): ReducerIdGateReducer<TState, TInnerAction> =>
   (state, action) => {
-    let newState = state == null ? reducer(undefined, {} as any) : state;
+    const newState =
+      state == null ? reducer(undefined, {} as TInnerAction) : state;
 
     if (!isValidReducerIdGateAction(action)) {
       return newState;
@@ -40,6 +41,8 @@ export const reducerIdGateAction = <TInnerAction>(
   action,
   reducerId,
 });
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const isValidReducerIdGateAction = (action: any): boolean =>
   !!action.action &&

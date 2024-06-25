@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I
 ) => void
@@ -8,7 +9,8 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
 // i.e. FlattenUnion<{ a: number, c: number } | { b: string, c: number }> = { a?: number, b?: string, c: number }
 export type FlattenUnion<T> = {
   [K in keyof UnionToIntersection<T>]: K extends keyof T
-    ? T[K] extends any[]
+    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      T[K] extends any[]
       ? T[K]
       : T[K] extends object
       ? FlattenUnion<T[K]>

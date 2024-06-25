@@ -29,7 +29,7 @@ export interface DateRangeCalendarSectionProps<
       "label" | "onRetry" | "error" | "loading"
     >,
     Omit<
-      DateRangeCalendarProps<{}>,
+      DateRangeCalendarProps<unknown>,
       "value" | "onValueChange" | "focusedInput" | "setFocusedInput"
     > {
   value: DateStringRange;

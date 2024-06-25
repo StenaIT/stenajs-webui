@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect, useRef } from "react";
 
 export const useOnClickOutside = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: React.RefObject<any>,
   handler: (event: TouchEvent | MouseEvent) => void,
   options?: AddEventListenerOptions
