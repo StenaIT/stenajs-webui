@@ -1,3 +1,16 @@
+# v20.10.0 (Tue Jun 25 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/panels`
+  - Update date-fns to 3.6.0 [#746](https://github.com/StenaIT/stenajs-webui/pull/746) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.9.0 (Wed Jun 19 2024)
 
 #### 🚀 Enhancement
