@@ -1,4 +1,4 @@
-import { setWeek, startOfWeek } from "date-fns";
+import { Locale, setWeek, startOfWeek } from "date-fns";
 import { enGB } from "date-fns/locale";
 import { useCallback, useMemo, useState } from "react";
 import { useInternalPanelState } from "../../../features/internal-panel-state/UseInternalPanelState";

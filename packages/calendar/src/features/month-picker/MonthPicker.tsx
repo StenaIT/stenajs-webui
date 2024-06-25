@@ -4,6 +4,7 @@ import { Month } from "../../util/calendar/CalendarDataFactory";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Heading, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
+import { Locale } from "date-fns";
 
 export interface MonthPickerValue {
   month: Month;

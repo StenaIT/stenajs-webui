@@ -6,6 +6,7 @@ import {
   WeekData,
 } from "../util/calendar/CalendarDataFactory";
 import { MonthPickerValue } from "../features/month-picker/MonthPicker";
+import { Locale } from "date-fns";
 
 export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
