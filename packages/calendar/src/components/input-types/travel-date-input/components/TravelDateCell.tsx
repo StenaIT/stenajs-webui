@@ -48,7 +48,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         document.getElementById(createDayId(nextDate))?.focus();
       }
     },
-    [day.date]
+    [day.date, onChangeVisibleMonth]
   );
 
   const startDate = useMemo(

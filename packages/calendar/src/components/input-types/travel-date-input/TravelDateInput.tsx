@@ -68,7 +68,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
       }
       onValueChange?.(v);
     },
-    [value?.startDate, value?.endDate]
+    [value?.startDate, value?.endDate, onValueChange, locale]
   );
 
   return (
