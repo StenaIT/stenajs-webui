@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
@@ -23,7 +23,10 @@ import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { getNextMonth, getPrevMonth } from "./util/MonthStepper";
 import { TravelDateCell } from "./components/TravelDateCell";
 import { useToday } from "./util/UseToday";
-import { Locale } from "date-fns";
+import { getLocaleForLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
+import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
+import { isBefore } from "date-fns";
+import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
 
 type VisiblePanel = "calendar" | "month-picker";
 
@@ -34,21 +37,23 @@ export interface TravelDateInputValue {
 
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
-  locale?: Locale;
+  localeCode?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   value,
   onValueChange,
-  locale = enGB,
+  localeCode = "sv",
 }) => {
+  const locale = getLocaleForLocaleCode(localeCode);
+
   const [visibleMonth, setVisibleMonth] = useState<MonthData>(() =>
     getMonthInYear(2024, 5, locale)
   );
 
   const today = useToday();
 
-  const [hoverDay, setHoverDay] = useState<DayData | undefined>();
+  const [hoverDate, setHoverDate] = useState<Date | undefined>();
 
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
 
@@ -64,7 +69,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   >(
     (v) => {
       if (!value?.startDate && !value?.endDate && v.startDate?.length === 10) {
-        const d = new Date(v.startDate);
+        const d = parseLocalizedDateString(v.startDate, localeCode);
         setVisibleMonth(getMonthInYear(d.getFullYear(), d.getMonth(), locale));
       }
       onValueChange?.(v);
@@ -72,16 +77,60 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     [value?.startDate, value?.endDate, onValueChange, locale]
   );
 
+  const selectedStartDate = useMemo(
+    () =>
+      value?.startDate
+        ? parseLocalizedDateString(value.startDate, localeCode)
+        : undefined,
+    [value?.startDate]
+  );
+
+  const selectedEndDate = useMemo(
+    () =>
+      value?.endDate
+        ? parseLocalizedDateString(value.endDate, localeCode)
+        : undefined,
+    [value?.endDate]
+  );
+
+  const onClickDate = (date: Date) => {
+    const isSameMonthAndYear =
+      date.getFullYear() === visibleMonth.year &&
+      date.getMonth() === visibleMonth.monthInYear;
+
+    if (isSameMonthAndYear) {
+      if (selectedStartDate && selectedEndDate == null) {
+        if (isBefore(date, selectedStartDate)) {
+          onValueChange?.({
+            startDate: formatLocalizedDate(date, localeCode),
+            endDate: undefined,
+          });
+        } else {
+          onValueChange?.({
+            startDate: value?.startDate,
+            endDate: formatLocalizedDate(date, localeCode),
+          });
+        }
+      } else {
+        onValueChange?.({
+          startDate: formatLocalizedDate(date, localeCode),
+          endDate: undefined,
+        });
+      }
+    }
+  };
+
   return (
     <Column gap={3} className={styles.travelDateInput}>
       <Heading variant={"h2"}>Select dates</Heading>
       <TravelDateTextInputs
         value={value}
         onValueChange={onValueChangeHandler}
+        localeCode={localeCode}
       />
       <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
         <FlatButton
-          label={visibleMonth.name + " " + visibleMonth.year}
+          label={"TODO format: " + visibleMonth.name + " " + visibleMonth.year}
           rightIcon={
             visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp
           }
@@ -114,26 +163,28 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
               ))}
             </tr>
             {visibleMonth.weeks.map((week: WeekData) => (
-              <>
+              <React.Fragment key={week.weekNumber}>
                 <tr key={week.weekNumber}>
                   {week.days.map((day) => (
                     <TravelDateCell
+                      onClick={() => onClickDate(day.date)}
+                      key={day.dateString}
                       visibleMonth={visibleMonth}
                       onChangeVisibleMonth={setVisibleMonthDate}
                       day={day}
-                      onHoverDay={(d) => setHoverDay(d)}
-                      onNoHoverDay={() =>
-                        setHoverDay((p) => (p === day ? undefined : p))
+                      onStartHover={() => setHoverDate(day.date)}
+                      onEndHover={() =>
+                        setHoverDate((p) => (p === day.date ? undefined : p))
                       }
-                      value={value}
-                      onValueChange={onValueChange}
-                      hoverDay={hoverDay}
+                      selectedStartDate={selectedStartDate}
+                      selectedEndDate={selectedEndDate}
+                      hoverDate={hoverDate}
                       inputInFocus={"startDate"}
                       today={today}
                     />
                   ))}
                 </tr>
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>

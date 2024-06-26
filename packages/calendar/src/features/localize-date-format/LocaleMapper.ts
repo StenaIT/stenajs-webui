@@ -32,8 +32,12 @@ const locales: LocalesMap = {
   nb,
 };
 
-export const getLocaleForLocaleCode = (
-  localeCode: string
-): Locale | undefined => {
-  return locales[localeCode];
+export const getLocaleForLocaleCode = (localeCode: string): Locale => {
+  const locale = locales[localeCode];
+  if (locale == null) {
+    // To prevent apps from crashing, this defaults to Swedish,
+    // since it is using ISO standard for dates.
+    return sv;
+  }
+  return locale;
 };

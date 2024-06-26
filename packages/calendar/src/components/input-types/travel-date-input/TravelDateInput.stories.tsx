@@ -22,7 +22,27 @@ export const Standard = () => {
 
   return (
     <div style={{ display: "inline-block" }}>
-      <TravelDateInput value={value} onValueChange={setValue} />
+      <TravelDateInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+      />
+    </div>
+  );
+};
+
+export const UnitedKingdom = () => {
+  const [value, setValue] = useState<TravelDateInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"en-GB"}
+      />
     </div>
   );
 };

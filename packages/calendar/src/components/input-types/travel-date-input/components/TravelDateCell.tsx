@@ -1,40 +1,41 @@
 import * as React from "react";
-import { KeyboardEventHandler, useCallback, useMemo } from "react";
+import { KeyboardEventHandler, useCallback } from "react";
 import { Box, Row, Text } from "@stenajs-webui/core";
 import {
   DayData,
   MonthData,
 } from "../../../../util/calendar/CalendarDataFactory";
-import { TravelDateInputValue } from "../TravelDateInput";
-import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
-import { isBefore, isSameDay, isSameMonth } from "date-fns";
+import { isSameDay, isSameMonth } from "date-fns";
 import { getCellBackgroundColors } from "../util/CellBgColors";
 import { TravelDateInput } from "../TravelDateInputTypes";
 import { createDayId, getDateToFocusOn } from "../util/KeyboardNavigation";
 
-export interface TravelDateCellProps
-  extends ValueAndOnValueChangeProps<TravelDateInputValue> {
+export interface TravelDateCellProps {
+  onClick: () => void;
   day: DayData;
   visibleMonth: MonthData;
+  selectedStartDate: Date | undefined;
+  selectedEndDate: Date | undefined;
   onChangeVisibleMonth: (visibleMonth: Date) => void;
-  onHoverDay: (day: DayData) => void;
-  onNoHoverDay: (day: DayData) => void;
-  hoverDay: DayData | undefined;
+  onStartHover: () => void;
+  onEndHover: () => void;
+  hoverDate: Date | undefined;
   today: Date;
   inputInFocus: TravelDateInput;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
+  onClick,
   visibleMonth,
   onChangeVisibleMonth,
   day,
-  value,
-  onValueChange,
-  onHoverDay,
-  onNoHoverDay,
-  hoverDay,
+  selectedStartDate,
+  selectedEndDate,
+  onStartHover,
+  onEndHover,
+  hoverDate,
   inputInFocus,
   today,
 }) => {
@@ -51,55 +52,18 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     [day.date, onChangeVisibleMonth]
   );
 
-  const startDate = useMemo(
-    () => (value?.startDate ? new Date(value.startDate) : undefined),
-    [value?.startDate]
-  );
-
-  const endDate = useMemo(
-    () => (value?.endDate ? new Date(value.endDate) : undefined),
-    [value?.endDate]
-  );
-
-  const hoverDate = useMemo(
-    () => (hoverDay ? new Date(hoverDay.dateString) : undefined),
-    [hoverDay]
-  );
-
-  const onClickDate = () => {
-    if (dayIsInMonth) {
-      if (startDate && endDate == null) {
-        if (isBefore(day.date, startDate)) {
-          onValueChangeHandler({
-            startDate: day.dateString,
-            endDate: undefined,
-          });
-        } else {
-          onValueChangeHandler({
-            endDate: day.dateString,
-          });
-        }
-      } else {
-        onValueChangeHandler({
-          startDate: day.dateString,
-          endDate: undefined,
-        });
-      }
-    }
-  };
-
-  const onValueChangeHandler = (v: Partial<TravelDateInputValue>) => {
-    onValueChange?.({ ...value, ...v });
-  };
-
   const dayIsInMonth = day.month === visibleMonth.monthInYear;
-  const isSelectionStart = startDate ? isSameDay(startDate, day.date) : false;
-  const isSelectionEnd = endDate ? isSameDay(endDate, day.date) : false;
+  const isSelectionStart = selectedStartDate
+    ? isSameDay(selectedStartDate, day.date)
+    : false;
+  const isSelectionEnd = selectedEndDate
+    ? isSameDay(selectedEndDate, day.date)
+    : false;
 
   const bgColors = getCellBackgroundColors(
     day.date,
-    startDate,
-    endDate,
+    selectedStartDate,
+    selectedEndDate,
     hoverDate,
     dayIsInMonth
   );
@@ -107,10 +71,16 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   return (
     <td
       className={styles.travelDateCell}
-      onClick={onClickDate}
-      onMouseOver={() => dayIsInMonth && onHoverDay(day)}
-      onMouseOut={() => dayIsInMonth && onNoHoverDay(day)}
-      tabIndex={getTabIndex(inputInFocus, day, startDate, endDate, today)}
+      onClick={onClick}
+      onMouseOver={() => dayIsInMonth && onStartHover()}
+      onMouseOut={() => dayIsInMonth && onEndHover()}
+      tabIndex={getTabIndex(
+        inputInFocus,
+        day,
+        selectedStartDate,
+        selectedEndDate,
+        today
+      )}
       id={day.dateString}
       onKeyDown={onKeyDown}
     >
@@ -123,9 +93,11 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         <div
           className={cx(
             styles.contentWrapper,
-            startDate ? styles.startSelected : undefined,
-            endDate ? styles.endSelected : undefined,
-            hoverDay?.dateString === day.dateString ? styles.hover : undefined,
+            selectedStartDate ? styles.startSelected : undefined,
+            selectedEndDate ? styles.endSelected : undefined,
+            hoverDate && isSameDay(hoverDate, day.date)
+              ? styles.hover
+              : undefined,
             isSelectionStart && styles.isSelectionStart,
             isSelectionEnd && styles.isSelectionEnd
           )}
