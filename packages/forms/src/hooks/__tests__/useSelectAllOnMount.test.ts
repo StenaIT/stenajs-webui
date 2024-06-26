@@ -35,6 +35,7 @@ describe("useSelectAllOnMount", () => {
     describe("for other tags", () => {
       it("should never allow", () => {
         expect(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           elementHasSelectionRange(document.createElement("span") as any)
         ).toBe(false);
       });

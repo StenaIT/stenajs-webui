@@ -1,9 +1,9 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import { RadioButtonWithLabel } from "./RadioButtonWithLabel";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 
 export default {
@@ -20,7 +20,7 @@ export default {
   },
 };
 
-export const Demo: Story<RadioButtonProps> = (props) => (
+export const Demo: StoryFn<RadioButtonProps> = (props) => (
   <RadioButton {...props} />
 );
 
@@ -157,7 +157,9 @@ export const Overview = () => {
 };
 
 export const CustomActionColorOnMultiple = () => {
-  const style = { "--swui-radiobutton-checked-bg-color": "#41ae33" } as any;
+  const style = {
+    "--swui-radiobutton-checked-bg-color": "#41ae33",
+  } as CSSProperties;
   return (
     <Column>
       <RadioButton name={"testing1"} style={style} />
@@ -173,7 +175,9 @@ export const CustomCheckedBgColorOnSingle = () => (
   <Column>
     <RadioButton
       name={"testing"}
-      style={{ "--swui-radiobutton-checked-bg-color": "#41ae33" } as any}
+      style={
+        { "--swui-radiobutton-checked-bg-color": "#41ae33" } as CSSProperties
+      }
     />
     <Space />
     <RadioButton name={"testing"} />

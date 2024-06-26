@@ -21,6 +21,7 @@ import { CalendarDay } from "./renderers/CalendarDay";
 import { FlatButton, stenaAngleDown } from "@stenajs-webui/elements";
 import { WeekNumberCell } from "./renderers/WeekNumberCell";
 import { DisabledDayWrapper } from "./DisabledDayWrapper";
+import { ReactNode } from "react";
 
 export interface CalendarMonthProps<T>
   extends CalendarOnClicks<T>,
@@ -31,7 +32,7 @@ export interface CalendarMonthProps<T>
   userDataPerWeek?: CalendarUserMonthData<T>;
   statePerWeek?: CalendarUserMonthData<DayState>;
   theme?: CalendarTheme;
-  headerRightContent?: React.ReactElement<{}>;
+  headerRightContent?: ReactNode;
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   defaultHighlights?: Array<DayStateHighlight>;
   showWeekNumber: boolean;

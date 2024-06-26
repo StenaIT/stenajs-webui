@@ -155,13 +155,12 @@ export type StandardTableVariant =
   | "compact";
 
 export const StandardTable = function StandardTable<
-  TItem extends {},
+  TItem extends Record<string, never>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >({
   tableContext,
   config,
-  columnOrder,
   columnGroupOrder,
   tableId,
   variant = "standard",

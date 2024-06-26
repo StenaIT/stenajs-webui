@@ -48,7 +48,6 @@ export const MenuButtonLink = forwardRef<
     label,
     className,
     leftIcon,
-    children,
     disabled,
     variant = "standard",
     href,
@@ -71,6 +70,7 @@ export const MenuButtonLink = forwardRef<
     className
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { renderLink, selected, ...anchorProps } = linkProps;
 
   const link = renderLinkProps?.renderLink?.(

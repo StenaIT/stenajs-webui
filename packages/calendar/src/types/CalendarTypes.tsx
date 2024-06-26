@@ -8,13 +8,14 @@ import {
 import { MonthPickerValue } from "../features/month-picker/MonthPicker";
 import { Locale } from "date-fns";
 
-export interface CalendarDayProps<T = {}> extends ExtraDayContentProps<T> {
+export interface CalendarDayProps<T = Record<string, never>>
+  extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   onClickDay?: OnClickDay<T>;
   defaultHighlights?: Array<DayStateHighlight>;
 }
 
-export interface ExtraDayContentProps<T = {}> {
+export interface ExtraDayContentProps<T = Record<string, never>> {
   month: MonthData;
   week: WeekData;
   day: DayData;
@@ -113,7 +114,7 @@ export interface CalendarProps<T>
 
 export interface CalendarHeaderContentProps {
   /** Content to put right of the month header text. */
-  headerRightContent?: React.ReactElement<{}>;
+  headerRightContent?: React.ReactElement;
 }
 
 export interface CalendarPropsWithDateSet<T> {

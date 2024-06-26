@@ -41,15 +41,7 @@ export const IconMenuButtonLink = forwardRef<
   HTMLAnchorElement,
   IconMenuButtonLinkProps
 >(function (
-  {
-    className,
-    icon,
-    children,
-    disabled,
-    variant = "standard",
-    href,
-    ...linkProps
-  },
+  { className, icon, disabled, variant = "standard", href, ...linkProps },
   ref
 ) {
   const innerChildren = (
@@ -78,6 +70,7 @@ export const IconMenuButtonLink = forwardRef<
     className
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { renderLink, selected, ...anchorProps } = linkProps;
 
   const link = renderLinkProps?.renderLink?.(

@@ -184,7 +184,7 @@ export const convertDropdownOptionToInternalOption = <TData>(
   value: option.value,
 });
 
-// TODO: can this be done `any` other way
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const convertGroupedDropdownOptionToInternalOption = <TData>(
   option: GroupBase<DropdownOption<TData>>
 ): InternalDropdownOption<TData> => ({

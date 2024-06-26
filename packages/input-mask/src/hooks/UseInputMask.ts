@@ -33,6 +33,7 @@ export const useMaskedInput = (
       showMask,
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (textMask.current as any).update(initialValue);
   }, [
     inputRef,
@@ -48,6 +49,7 @@ export const useMaskedInput = (
   return {
     onChange: (event: ChangeEvent<HTMLInputElement>) => {
       if (textMask.current) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (textMask.current as any).update();
       }
 

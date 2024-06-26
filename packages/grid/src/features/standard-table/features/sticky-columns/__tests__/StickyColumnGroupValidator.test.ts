@@ -3,6 +3,8 @@ import {
   ensureNoColumnsAreSticky,
 } from "../StickyColumnGroupValidator";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 describe("StickyColumnGroupValidator", () => {
   describe("ensureNoColumnsAreSticky", () => {
     describe("if no columns are sticky", () => {

@@ -8,7 +8,9 @@ export const parseFloatElseUndefined = (s: string): number | undefined => {
       return undefined;
     }
     return f;
-  } catch (e) {}
+  } catch (e) {
+    /* empty */
+  }
   return undefined;
 };
 
@@ -22,6 +24,8 @@ export const parseIntElseUndefined = (s: string): number | undefined => {
       return undefined;
     }
     return f;
-  } catch (e) {}
+  } catch (e) {
+    /* empty */
+  }
   return undefined;
 };

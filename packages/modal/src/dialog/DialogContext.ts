@@ -6,6 +6,8 @@ export interface DialogContextValue<TResolveValue> {
   reject: RejectCommand;
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export const DialogContext = createContext<DialogContextValue<any> | undefined>(
   undefined
 );

@@ -21,7 +21,6 @@ export interface SelectProps<T = { label: string; value: string }>
 export function Select<T>({
   variant = "standard",
   styles,
-  isMulti,
   components,
   ...selectProps
 }: SelectProps<T>) {

@@ -47,7 +47,7 @@ export interface DateTextInputProps<T>
   calendarTheme?: CalendarTheme;
 }
 
-export const DateTextInput: React.FC<DateTextInputProps<{}>> = ({
+export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
   calendarProps,
   closeOnCalendarSelectDate = true,
   dateFormat = DateFormats.fullDate,

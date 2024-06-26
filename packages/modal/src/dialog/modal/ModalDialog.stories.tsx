@@ -105,7 +105,9 @@ export const ResolveReject: StoryFn = () => {
       if (result != null) {
         setEmail(result);
       }
-    } catch (e) {}
+    } catch (e) {
+      /* empty */
+    }
   }, [email, show]);
   return (
     <Column gap={2}>

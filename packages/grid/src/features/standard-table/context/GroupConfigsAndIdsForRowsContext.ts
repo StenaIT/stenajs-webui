@@ -2,6 +2,8 @@ import { createContext, useContext, useMemo } from "react";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { GroupConfigAndId } from "../features/column-groups/ColumnGroupFactory";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export const GroupConfigsAndIdsForRowsContext = createContext<
   Array<GroupConfigAndId<any>>
 >([]);

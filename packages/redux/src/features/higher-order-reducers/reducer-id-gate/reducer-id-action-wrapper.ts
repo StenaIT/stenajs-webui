@@ -1,5 +1,6 @@
 import { ReducerIdGateAction } from "./reducer-id-gate";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ActionCreator = (...args: any) => any;
 
 export type ActionCreatorCreator<TActionCreator extends ActionCreator> = (
@@ -15,6 +16,7 @@ export const wrapActionWithReducerIdGate =
     return {
       type: "REDUCER_ID_GATE:ACTION",
       reducerId,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       action: actionCreator(...(args as any)),
     };
   };

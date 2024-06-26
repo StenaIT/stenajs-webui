@@ -26,7 +26,7 @@ export const calculateColumnIndexPerColumnId = <
     "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
     "columnOrder" in config ? config.columnOrder : undefined
   );
-  let columnIndexPerColumnId = {} as ColumnIndexPerColumnId<TColumnKey>;
+  const columnIndexPerColumnId = {} as ColumnIndexPerColumnId<TColumnKey>;
   let currentIndex = 0;
   if (config.showRowCheckbox) {
     currentIndex++;

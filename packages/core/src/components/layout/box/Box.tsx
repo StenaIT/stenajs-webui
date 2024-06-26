@@ -179,17 +179,17 @@ const box = system({
     transform: (row: boolean) => (row ? "row" : "column"),
   },
   indent: {
-    // @ts-ignore
+    // @ts-expect-error Sets a CSS property.
     property: "--current-indent",
     transform: booleanOrNumberToNumber,
   },
   spacing: {
-    // @ts-ignore
+    // @ts-expect-error Sets a CSS property.
     property: "--current-spacing",
     transform: booleanOrNumberToNumber,
   },
   gap: {
-    // @ts-ignore
+    // @ts-expect-error Sets a CSS property.
     property: "--current-gap",
     transform: booleanOrNumberToNumber,
   },
