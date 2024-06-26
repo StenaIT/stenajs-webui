@@ -22,7 +22,6 @@ export const NewBlockConfig = () => (
     <Box
       shadow={"box"}
       background={"white"}
-      display={"inline-block"}
       spacing={2}
       gap={2}
     >
@@ -37,7 +36,7 @@ export const NewBlockConfig = () => (
 
       <SeparatorLine />
 
-      <Indent num={2}>
+      <Indent num={2} gap={2}>
         <Row>
           <Column>
             <Text>Customer</Text>
