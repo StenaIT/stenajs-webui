@@ -38,11 +38,15 @@ export interface TravelDateInputValue {
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
   localeCode?: string;
+  startDateLabel?: string;
+  endDateLabel?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   value,
   onValueChange,
+  startDateLabel,
+  endDateLabel,
   localeCode = "sv",
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
@@ -127,6 +131,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         value={value}
         onValueChange={onValueChangeHandler}
         localeCode={localeCode}
+        startDateLabel={startDateLabel}
+        endDateLabel={endDateLabel}
       />
       <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
         <FlatButton

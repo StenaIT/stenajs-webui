@@ -10,12 +10,16 @@ import { getDateFormatForLocaleCode } from "../../../../features/localize-date-f
 export interface TravelDateTextInputsProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
   localeCode: string;
+  startDateLabel?: string;
+  endDateLabel?: string;
 }
 
 export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
   value,
   onValueChange,
   localeCode,
+  startDateLabel = "From",
+  endDateLabel = "To",
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -33,7 +37,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
         onValueChange={(v) =>
           onValueChange?.({ startDate: v, endDate: value?.endDate })
         }
-        label={"To"}
+        label={startDateLabel}
         borderRadiusVariant={"onlyLeft"}
         placeholder={placeholder}
       />
@@ -43,7 +47,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
         onValueChange={(v) =>
           onValueChange?.({ startDate: value?.startDate, endDate: v })
         }
-        label={"From"}
+        label={endDateLabel}
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}
       />
