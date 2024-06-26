@@ -21,6 +21,8 @@ export default {
   title: "grid/StandardTable/Horror",
 };
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface SalesPerformanceTableRowItem {
   info: any;
   pricingPath: any;

@@ -70,7 +70,6 @@ const MultiValue = function <TOption extends MultiSelectOption>({
 export function MultiSelect<TOption extends MultiSelectOption>({
   variant = "standard",
   styles,
-  isMulti,
   components,
   ...selectProps
 }: MultiSelectProps<TOption>) {

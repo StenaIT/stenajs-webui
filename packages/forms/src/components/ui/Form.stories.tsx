@@ -230,6 +230,8 @@ const CheckboxTable: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
   );
 };
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export const Overview = () => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [value, setValue] = useState("");
@@ -322,7 +324,6 @@ export const Overview = () => {
               },
             ]}
             value={selected as any}
-            width={"200px"}
           />
         </Box>
       </div>

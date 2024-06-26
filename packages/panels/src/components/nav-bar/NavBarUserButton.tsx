@@ -20,7 +20,6 @@ export const NavBarUserButton: React.FC<NavBarUserButtonProps> = ({
   username,
   initials,
   icon = stenaUserCircle,
-  iconClassName,
   responsiveIconOnly = initials == null,
   ...buttonProps
 }) => {

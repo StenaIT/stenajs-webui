@@ -1,6 +1,7 @@
 import { StylesConfig } from "react-select";
 import { defaultSelectTheme, SelectTheme } from "../SelectTheme";
 import { GroupBase } from "react-select/dist/declarations/src/types";
+import { Property } from "csstype";
 
 export type SelectVariant = "standard" | "warning" | "error" | "success";
 
@@ -193,7 +194,7 @@ export const createStylesFromTheme = <
     fontFamily: input.fontFamily,
     fontSize: groupHeading.fontSize,
     lineHeight: groupHeading.lineHeight,
-    fontWeight: groupHeading.fontWeight as any,
+    fontWeight: groupHeading.fontWeight as Property.FontWeight,
     color: groupHeading.color,
     letterSpacing: groupHeading.letterSpacing,
   }),

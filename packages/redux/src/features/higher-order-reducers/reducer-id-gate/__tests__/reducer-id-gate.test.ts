@@ -39,6 +39,7 @@ describe("reducer-id-gate", () => {
         it("calls internal reducer with empty action", () => {
           const innerReducer = vi.fn();
           const reducer = reducerIdGate("test", innerReducer);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           reducer(undefined, { type: "@@INIT" } as any);
           expect(innerReducer).toHaveBeenCalledWith(undefined, {});
         });
@@ -48,6 +49,7 @@ describe("reducer-id-gate", () => {
           const innerReducer = vi.fn();
           const state = { hello: "world" };
           const reducer = reducerIdGate("test", innerReducer);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const r = reducer(state, { type: "@@INIT" } as any);
           expect(innerReducer).not.toHaveBeenCalled();
           expect(r === state).toBe(true);

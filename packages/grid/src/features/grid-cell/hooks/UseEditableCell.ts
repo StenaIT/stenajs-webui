@@ -81,7 +81,7 @@ const createKeyDownEvent = (event: React.KeyboardEvent): KeyDownEvent => ({
   which: event.which,
 });
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const defaultTransformEnteredValue = (value: any) => value;
 
 export const useEditableCell = <TValue>(

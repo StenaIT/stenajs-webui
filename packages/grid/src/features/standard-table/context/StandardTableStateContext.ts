@@ -25,6 +25,8 @@ export interface TableContext<TColumnKey extends string> {
 
 export const StandardTableTableIdContext = createContext<string>("");
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export const StandardTableStateContext = createContext<StandardTableState<any>>(
   undefined as any
 );

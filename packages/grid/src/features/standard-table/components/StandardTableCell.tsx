@@ -22,7 +22,7 @@ import { StandardTableCellUi } from "./StandardTableCellUi";
 import { TextCell } from "./TextCell";
 import { DefaultStandardTableCellRenderer } from "../config/StandardTableColumnConfig";
 
-export interface StandardTableCellProps<TItem extends {}> {
+export interface StandardTableCellProps<TItem extends Record<string, never>> {
   columnId: string;
   item: TItem;
   rowIndex: number;
@@ -38,7 +38,7 @@ const fallbackCellRenderer: DefaultStandardTableCellRenderer<unknown> = ({
 }) => <TextCell label={label} size={textSize} />;
 
 export const StandardTableCell = React.memo(function StandardTableCell<
-  TItem extends {}
+  TItem extends Record<string, never>
 >({
   columnId,
   item,
@@ -91,7 +91,7 @@ export const StandardTableCell = React.memo(function StandardTableCell<
       return itemValueResolver(item);
     }
     if (columnId in item) {
-      return (item as any)[columnId];
+      return item[columnId];
     }
     return "";
   }, [itemValueResolver, item, columnId]);

@@ -1,6 +1,6 @@
 const {
   getPackageJsons,
-  getPackageVersion
+  getPackageVersion,
 } = require("./util/package-json-fetcher.cjs");
 
 const getInvalidDepVersion = (packages, depsType) => {
@@ -15,12 +15,12 @@ const getInvalidDepVersion = (packages, depsType) => {
           dep: e.message,
           packageA: {
             name: packages[i].name,
-            depVersion: packages[i][depsType][e.message]
+            depVersion: packages[i][depsType][e.message],
           },
           packageB: {
             name: packages[j].name,
-            depVersion: packages[j][depsType][e.message]
-          }
+            depVersion: packages[j][depsType][e.message],
+          },
         });
       }
     }
@@ -48,9 +48,9 @@ const ensureKeysAreSameOrUndefined = (obj, containsSame) => {
   }
 };
 
-const getInvalidDevDeps = packages => {
+const getInvalidDevDeps = (packages) => {
   let success = true;
-  packages.forEach(packageJson => {
+  packages.forEach((packageJson) => {
     try {
       ensureDevDepsIncludesAllPeerDeps(packageJson);
     } catch (e) {
@@ -61,12 +61,12 @@ const getInvalidDevDeps = packages => {
   return success;
 };
 
-const getInvalidInternalDeps = packages => {
+const getInvalidInternalDeps = (packages) => {
   let success = true;
-  packages.forEach(packageJson => {
+  packages.forEach((packageJson) => {
     if (packageJson.dependencies) {
       const deps = Object.keys(packageJson.dependencies);
-      deps.forEach(dep => {
+      deps.forEach((dep) => {
         if (dep.startsWith("@stenajs-webui/")) {
           const version = packageJson.dependencies[dep];
           const expectedVersion = getPackageVersion(packages, dep);
@@ -87,12 +87,14 @@ const getInvalidInternalDeps = packages => {
     }
     try {
       ensureDevDepsIncludesAllPeerDeps(packageJson);
-    } catch (e) {}
+    } catch (e) {
+      /* empty */
+    }
   });
   return success;
 };
 
-const ensureDevDepsIncludesAllPeerDeps = packageJson => {
+const ensureDevDepsIncludesAllPeerDeps = (packageJson) => {
   if (!packageJson.peerDependencies) {
     return;
   }
@@ -143,7 +145,7 @@ const ensureDevDepsIncludesAllPeerDeps = packageJson => {
   }
 };
 
-const reduceToVersion = dep => {
+const reduceToVersion = (dep) => {
   const chars = [];
   for (let i = 0; i < dep.length; i++) {
     const ch = dep[i];
@@ -155,12 +157,12 @@ const reduceToVersion = dep => {
   return chars.join("");
 };
 
-getPackageJsons().then(packages => {
+getPackageJsons().then((packages) => {
   let success = true;
   const errors = [
     ...getInvalidDepVersion(packages, "peerDependencies"),
     ...getInvalidDepVersion(packages, "dependencies"),
-    ...getInvalidDepVersion(packages, "devDependencies")
+    ...getInvalidDepVersion(packages, "devDependencies"),
   ];
   if (errors.length) {
     if (errors.length === 1) {
@@ -169,11 +171,9 @@ getPackageJsons().then(packages => {
       console.log(`There are ${errors.length} dependency mismatches.`);
     }
 
-    errors.forEach(error => {
+    errors.forEach((error) => {
       console.log(
-        `${error.depsType} ${error.dep} ${error.packageA.name} is @${
-          error.packageA.depVersion
-        } ${error.packageB.name} is @${error.packageB.depVersion}`
+        `${error.depsType} ${error.dep} ${error.packageA.name} is @${error.packageA.depVersion} ${error.packageB.name} is @${error.packageB.depVersion}`
       );
     });
     success = false;

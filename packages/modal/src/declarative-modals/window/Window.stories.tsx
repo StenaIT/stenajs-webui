@@ -191,7 +191,7 @@ export const WindowWithScroll = () => {
   );
 };
 
-export const _BaseWindow = () => {
+export const BaseWindowDemo = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <>

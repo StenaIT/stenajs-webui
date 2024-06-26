@@ -73,7 +73,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
     switch (time.length) {
       case 1:
         return { time: `0${time}:00`, success: true };
-      case 2:
+      case 2: {
         const timeNumber = parseInt(arr[0], 10);
         if (timeNumber >= 0 && timeNumber < 24) {
           return { time: `${time}:00`, success: true };
@@ -81,18 +81,19 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
           return { time: `00:${time}`, success: true };
         }
         return { time, success: false };
+      }
       case 3:
-        minutes = parseInt(time.substr(1, 2), 10);
+        minutes = parseInt(time.substring(1, 3), 10);
         if (minutes >= 0 && minutes <= 59) {
           return {
-            time: `0${time.substr(0, 1)}:${time.substr(1, 2)}`,
+            time: `0${time.substring(0, 1)}:${time.substring(1, 3)}`,
             success: true,
           };
         }
         return { time, success: false };
       case 4:
-        hours = parseInt(time.substr(0, 2), 10);
-        minutes = parseInt(time.substr(2, 2), 10);
+        hours = parseInt(time.substring(0, 2), 10);
+        minutes = parseInt(time.substring(2, 4), 10);
         if (hours < 0 || hours > 23) {
           return { time, success: false };
         }
@@ -100,7 +101,7 @@ export const formatTimeString = (time: string): FormatTimeStringResult => {
           return { time, success: false };
         }
         return {
-          time: `${time.substr(0, 2)}:${time.substr(2, 2)}`,
+          time: `${time.substring(0, 2)}:${time.substring(2, 4)}`,
           success: true,
         };
       default:

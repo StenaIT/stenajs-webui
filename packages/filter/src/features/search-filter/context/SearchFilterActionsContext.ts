@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { SearchFilterActions } from "../redux/SearchFilterRedux";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const SearchFilterActionsContext = createContext<
   SearchFilterActions<unknown, any>
 >(null as unknown as SearchFilterActions<unknown, any>);

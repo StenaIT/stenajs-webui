@@ -528,6 +528,7 @@ describe("multiDropdownUtils", () => {
                 removedValue: options[1].options[0],
               };
 
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               newOnChange(undefined as any, meta);
               const expected: ValueType<DropdownOption<string>, true> = [];
               expect(onChange).toHaveBeenCalledWith(expected, meta);
@@ -826,7 +827,7 @@ describe("multiDropdownUtils", () => {
           ],
         },
       ];
-      let expected: InternalDropdownOption<string>[] = [
+      const expected: Array<InternalDropdownOption<string>> = [
         {
           value: "CA",
           label: "CA",

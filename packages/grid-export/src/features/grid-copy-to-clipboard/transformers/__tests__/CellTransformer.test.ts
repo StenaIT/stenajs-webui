@@ -69,7 +69,7 @@ describe("CellTransformer", () => {
     });
     describe("when there is an itemLabelFormatter", () => {
       it("returns label", () => {
-        let date = new Date(2020, 4, 9, 12, 0, 0);
+        const date = new Date(2020, 4, 9, 12, 0, 0);
         expect(
           transformItemToCell(
             { x: date },
@@ -83,7 +83,7 @@ describe("CellTransformer", () => {
     describe("with custom format", () => {
       describe("custom format is string", () => {
         it("returns custom format", () => {
-          let date = new Date(2020, 4, 9, 12, 0, 0);
+          const date = new Date(2020, 4, 9, 12, 0, 0);
           expect(
             transformItemToCell(
               date,
@@ -97,7 +97,7 @@ describe("CellTransformer", () => {
       });
       describe("custom format is number", () => {
         it("returns custom format", () => {
-          let date = new Date(2020, 4, 9, 12, 0, 0);
+          const date = new Date(2020, 4, 9, 12, 0, 0);
           expect(
             transformItemToCell(
               date,

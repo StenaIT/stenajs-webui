@@ -29,7 +29,6 @@ export const BaseButtonLink = forwardRef<
     left,
     rightIcon,
     right,
-    variant = "normal",
     responsiveIconOnly,
     ...anchorProps
   },

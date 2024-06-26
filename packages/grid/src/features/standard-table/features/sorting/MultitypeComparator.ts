@@ -1,4 +1,10 @@
-type ComparableType = number | string | boolean | Date | null | undefined;
+export type ComparableType =
+  | number
+  | string
+  | boolean
+  | Date
+  | null
+  | undefined;
 
 export const multitypeComparator = (
   a: ComparableType,

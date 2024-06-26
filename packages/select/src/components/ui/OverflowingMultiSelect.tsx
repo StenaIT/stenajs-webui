@@ -22,6 +22,8 @@ export function OverflowingMultiSelect<T extends MultiSelectOption>(
   );
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 const FirstValueOnlyValueContainer = memo(
   (props: ValueContainerProps<any, true>) => {
     const [prevOptions, ...restChildren] = props.children as [
@@ -43,6 +45,7 @@ const FirstValueOnlyValueContainer = memo(
 const getOptionsToRender = (
   optionElements: ReactElement[] | null | undefined,
   {
+    /* eslint-disable @typescript-eslint/no-unused-vars */
     children,
     innerProps,
     className,

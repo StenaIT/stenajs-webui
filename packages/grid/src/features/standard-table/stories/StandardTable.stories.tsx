@@ -186,7 +186,7 @@ export const ExternalSorting = () => {
   const { sortOrder } = tableContext.state;
 
   const sortedItems = useMemo(() => {
-    let listItems = sortBy(items, sortOrder.sortBy ?? "id");
+    const listItems = sortBy(items, sortOrder.sortBy ?? "id");
     if (sortOrder.desc) {
       listItems.reverse();
     }

@@ -1,15 +1,15 @@
 import { Column, Heading, Row, Space, Text } from "@stenajs-webui/core";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { Switch, SwitchProps } from "./Switch";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 export default {
   title: "forms/Switch",
   component: Switch,
 };
 
-export const Demo: Story<SwitchProps> = (props) => <Switch {...props} />;
+export const Demo: StoryFn<SwitchProps> = (props) => <Switch {...props} />;
 
 export const Overview = () => {
   const [enabled, setEnabled] = useState(false);
@@ -79,7 +79,7 @@ export const Standard = () => {
 export const CustomActionColor = () => {
   const [value, setValue] = useState(false);
   return (
-    <div style={{ "--swui-primary-action-color": "#41ae33" } as any}>
+    <div style={{ "--swui-primary-action-color": "#41ae33" } as CSSProperties}>
       <Switch value={value} onValueChange={setValue} />
     </div>
   );

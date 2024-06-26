@@ -26,6 +26,8 @@ import {
   MultiSelectProps,
 } from "./MultiSelect";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type OnChange<TData> = (
   value: OnChangeValue<DropdownOption<TData>, true>,
   action: ActionMeta<any>
@@ -97,6 +99,7 @@ export function GroupedMultiSelect<TData>({
   options,
   value,
   variant = "standard",
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   formatGroupLabel,
   formatOptionLabel,
   ...selectProps

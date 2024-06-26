@@ -21,6 +21,7 @@ describe("useMultiDateSelection", () => {
             onChange,
           })
         );
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClickDay!(createDay(now, enGB), undefined, undefined as any);
         expect(onChange).toBeCalledTimes(1);
       });
@@ -41,6 +42,7 @@ describe("useMultiDateSelection", () => {
             })
           );
           const clickedDay = createDay(now, enGB);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onClickDay!(clickedDay, undefined, undefined as any);
           expect(onChange).toBeCalledWith([now]);
         });
@@ -63,6 +65,7 @@ describe("useMultiDateSelection", () => {
             })
           );
           const clickedDay = createDay(now, enGB);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onClickDay!(clickedDay, undefined, undefined as any);
           expect(onChange).toBeCalledWith([tomorrow]);
         });

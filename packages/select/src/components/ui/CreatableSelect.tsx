@@ -19,7 +19,6 @@ export interface CreatableSelectProps<T = { label: string; value: string }>
 export function CreatableSelect<T>({
   variant = "standard",
   styles,
-  isMulti,
   components,
   ariaLabelClear = "Clear",
   ...selectProps
