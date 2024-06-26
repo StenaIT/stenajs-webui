@@ -7,7 +7,7 @@ import { TableHeadRow } from "../components/table/TableHeadRow";
 import { TableHeadItem } from "../components/table/TableHeadItem";
 import { TableCell } from "../components/table/TableCell";
 import { cssColor } from "@stenajs-webui/theme";
-import { ActionMenuItem } from "@stenajs-webui/elements";
+import { ActionMenu, ActionMenuItem } from "@stenajs-webui/elements";
 
 export default {
   title: "grid/TableUi",
@@ -34,11 +34,11 @@ export const Overview = () => {
           selected={selectedNr === 1}
           arrow={(selectedNr === 1 && "down") || undefined}
           popoverContent={
-            <Column>
+            <ActionMenu>
               <ActionMenuItem label={"Rename"} />
               <ActionMenuItem label={"Ban"} />
               <ActionMenuItem label={"Delete"} />
-            </Column>
+            </ActionMenu>
           }
           infoIconTooltipText={"This is the username."}
         />
