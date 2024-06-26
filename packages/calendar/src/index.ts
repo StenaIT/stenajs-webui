@@ -31,3 +31,4 @@ export * from "./components/input-types/date-range-dual-text-input/DateRangeDual
 export * from "./features/localize-date-format/LocalizedDateFormatter";
 export * from "./features/localize-date-format/LocalizedDateParser";
 export * from "./features/localize-date-format/DateFormatProvider";
+export * from "./features/localize-date-format/LocaleMapper";
