@@ -1,5 +1,17 @@
 import { Locale } from "date-fns";
-import { da, de, enGB, enUS, es, fr, nb, nl, pl, sv, deAT } from "date-fns/locale";
+import {
+  da,
+  de,
+  enGB,
+  enUS,
+  es,
+  fr,
+  nb,
+  nl,
+  pl,
+  sv,
+  deAT,
+} from "date-fns/locale";
 
 type LocalesMap = {
   [key: string]: Locale;
