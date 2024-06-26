@@ -23,6 +23,7 @@ import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { getNextMonth, getPrevMonth } from "./util/MonthStepper";
 import { TravelDateCell } from "./components/TravelDateCell";
 import { useToday } from "./util/UseToday";
+import { Locale } from "date-fns";
 
 type VisiblePanel = "calendar" | "month-picker";
 
