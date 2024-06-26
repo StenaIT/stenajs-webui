@@ -1,3 +1,16 @@
+# v20.11.2 (Wed Jun 26 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Add helper functions for localized date strings [#749](https://github.com/StenaIT/stenajs-webui/pull/749) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.11.1 (Wed Jun 26 2024)
 
 #### 🐛 Bug Fix
