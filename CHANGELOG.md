@@ -1,3 +1,16 @@
+# v20.11.1 (Wed Jun 26 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`, `@stenajs-webui/tooltip`
+  - Fix invalid styling for Popover in StandardTable [#748](https://github.com/StenaIT/stenajs-webui/pull/748) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.11.0 (Wed Jun 26 2024)
 
 #### 🚀 Enhancement
