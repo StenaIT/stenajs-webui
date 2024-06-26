@@ -2,8 +2,21 @@
   padding: 0;
 }
 
+:global(.tippy-box) {
+  position: relative;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: 0;
+  transition-property: transform, visibility, opacity;
+}
+
 :global(.tippy-box[data-theme~="light"]) {
   box-shadow: var(--swui-shadow-popover);
+  color: #26323d;
+  background-color: #fff;
 }
 
 :global(.tippy-box[data-theme~="outlined"]) {
