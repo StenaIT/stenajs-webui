@@ -27,7 +27,7 @@ import { StandardTableCell } from "./StandardTableCell";
 import { StandardTableRowExpansion } from "./StandardTableRowExpansion";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
 
-export interface StandardTableRowProps<TItem extends Record<string, unknown>> {
+export interface StandardTableRowProps<TItem extends object> {
   item: TItem;
   idListForEnabledItems: Array<string>;
   rowIndex: number;
@@ -38,7 +38,7 @@ export interface StandardTableRowProps<TItem extends Record<string, unknown>> {
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<
-  TItem extends Record<string, unknown>
+  TItem extends object
 >({
   item,
   idListForEnabledItems,

@@ -42,7 +42,7 @@ import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 
 export interface StandardTableProps<
-  TItem extends Record<string, unknown>,
+  TItem extends object,
   TColumnKey extends string,
   TColumnGroupKey extends string
 > {
@@ -155,7 +155,7 @@ export type StandardTableVariant =
   | "compact";
 
 export const StandardTable = function StandardTable<
-  TItem extends Record<string, unknown>,
+  TItem extends object,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >({
