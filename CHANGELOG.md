@@ -1,3 +1,16 @@
+# v20.11.5 (Thu Jun 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`
+  - StandardType type fix [#752](https://github.com/StenaIT/stenajs-webui/pull/752) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.11.4 (Thu Jun 27 2024)
 
 #### 🐛 Bug Fix
