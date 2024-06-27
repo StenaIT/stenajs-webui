@@ -40,6 +40,8 @@ export interface TravelDateInputProps
   startDateLabel?: string;
   endDateLabel?: string;
   initialMonthInFocus?: Date;
+  previousMonthButtonAriaLabel?: string;
+  nextMonthButtonAriaLabel?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
@@ -49,6 +51,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   endDateLabel,
   localeCode = "sv",
   initialMonthInFocus,
+  previousMonthButtonAriaLabel = "Previous month",
+  nextMonthButtonAriaLabel = "Next month",
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
 
@@ -193,10 +197,12 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           <SecondaryButton
             leftIcon={stenaArrowLeft}
             onClick={() => setVisibleMonth((p) => subMonths(p, 1))}
+            aria-label={previousMonthButtonAriaLabel}
           />
           <SecondaryButton
             leftIcon={stenaArrowRight}
             onClick={() => setVisibleMonth((p) => addMonths(p, 1))}
+            aria-label={nextMonthButtonAriaLabel}
           />
         </Row>
       </Row>
