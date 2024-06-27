@@ -6,7 +6,7 @@ import { copyContentToClipboard } from "../util/CopyContentToClipboard";
 import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 export interface StandardTableHtmlCopyToClipboardButtonProps<
-  TItem,
+  TItem extends Record<string, unknown>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 > extends Pick<
@@ -22,7 +22,7 @@ export interface StandardTableHtmlCopyToClipboardButtonProps<
 }
 
 export function StandardTableHtmlCopyToClipboardButton<
-  TItem,
+  TItem extends Record<string, unknown>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >({

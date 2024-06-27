@@ -10,7 +10,7 @@ import {
 import { CustomCellFormatters } from "../../../common/CellFormatters";
 
 interface StandardTableExcelExportButtonProps<
-  TItem,
+  TItem extends Record<string, unknown>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 > extends Pick<
@@ -24,7 +24,7 @@ interface StandardTableExcelExportButtonProps<
 
 export const StandardTableExcelExportButton =
   function StandardTableExcelExportButton<
-    TItem,
+    TItem extends Record<string, unknown>,
     TColumnKey extends string,
     TColumnGroupKey extends string
   >({
