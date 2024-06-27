@@ -37,9 +37,9 @@ export interface TravelDateInputValue {
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
   localeCode?: string;
+  initialMonthInFocus?: Date;
   startDateLabel?: string;
   endDateLabel?: string;
-  initialMonthInFocus?: Date;
   previousMonthButtonAriaLabel?: string;
   nextMonthButtonAriaLabel?: string;
 }

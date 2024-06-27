@@ -54,7 +54,7 @@
       border-color: var(--modern-red);
 
       &.startSelected:not(.endSelected) {
-        background: var(--lhds-color-red-200);
+        background: white;
 
         span {
           color: var(--swui-text-primary-color);
