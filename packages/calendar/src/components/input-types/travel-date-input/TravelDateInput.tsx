@@ -199,15 +199,17 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                 <tr key={week.weekNumber}>
                   {week.days.map((day) => (
                     <TravelDateCell
-                      onClick={() => onClickDate(day.date)}
+                      onClick={(d) => onClickDate(d)}
                       key={day.dateString}
                       visibleMonth={visibleMonth}
                       onChangeVisibleMonth={setVisibleMonthDate}
                       isValidDateRange={isValidDateRange}
                       day={day}
-                      onStartHover={() => setHoverDate(day.date)}
-                      onEndHover={() =>
-                        setHoverDate((p) => (p === day.date ? undefined : p))
+                      onStartHover={(d) => setHoverDate(d)}
+                      onEndHover={(d) =>
+                        setHoverDate((p) =>
+                          p && isSameDay(p, d) ? undefined : p
+                        )
                       }
                       selectedStartDate={selectedStartDate}
                       selectedEndDate={selectedEndDate}
