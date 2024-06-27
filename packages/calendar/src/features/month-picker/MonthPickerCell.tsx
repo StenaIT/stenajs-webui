@@ -29,7 +29,7 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   return (
     <Row justifyContent={"center"}>
       {selected ? (
-        <PrimaryButton label={label} onClick={onClick} />
+        <PrimaryButton label={label} onClick={onClick} aria-selected={true} />
       ) : (
         <FlatButton label={label} onClick={onClick} />
       )}

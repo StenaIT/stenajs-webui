@@ -212,7 +212,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           <tbody>
             <tr>
               {visibleMonthData.weeks[0].days.map((day: DayData) => (
-                <th key={day.name}>
+                <th key={day.name} abbr={day.fullName}>
                   <Text>{day.name}</Text>
                 </th>
               ))}

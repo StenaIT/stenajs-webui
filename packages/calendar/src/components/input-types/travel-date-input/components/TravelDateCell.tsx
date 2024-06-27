@@ -80,6 +80,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       tabIndex={getTabIndex(day, selectedStartDate, today)}
       id={day.dateString}
       onKeyDown={onKeyDown}
+      aria-selected={isSelectionStart || isSelectionEnd}
     >
       <div className={styles.outline} />
 
