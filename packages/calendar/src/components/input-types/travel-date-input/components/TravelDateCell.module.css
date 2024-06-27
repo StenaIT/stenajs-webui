@@ -11,8 +11,18 @@
   }
 
   &:focus-visible {
-    outline: var(--swui-focus-outline);
-    outline-width: var(--swui-focus-outline-width);
+    .outline {
+      outline: var(--swui-focus-outline);
+      outline-width: var(--swui-focus-outline-width);
+      background: transparent;
+      position: absolute;
+      border-radius: var(--swui-max-border-radius);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
 
     .contentWrapper.contentWrapper.contentWrapper {
       border-color: transparent;
@@ -53,7 +63,7 @@
     &.hover {
       border-color: var(--modern-red);
 
-      &.startSelected:not(.endSelected) {
+      &.startSelected:not(.endSelected):not(.isSelectionStart) {
         background: white;
 
         span {

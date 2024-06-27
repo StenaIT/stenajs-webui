@@ -81,6 +81,8 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       id={day.dateString}
       onKeyDown={onKeyDown}
     >
+      <div className={styles.outline} />
+
       <Row>
         <Box height={"48px"} width={"24px"} background={bgColors.left}></Box>
         <Box height={"48px"} width={"24px"} background={bgColors.right}></Box>
