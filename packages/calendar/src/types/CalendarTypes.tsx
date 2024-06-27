@@ -8,14 +8,13 @@ import {
 import { MonthPickerValue } from "../features/month-picker/MonthPicker";
 import { Locale } from "date-fns";
 
-export interface CalendarDayProps<T = Record<string, unknown>>
-  extends ExtraDayContentProps<T> {
+export interface CalendarDayProps<T = object> extends ExtraDayContentProps<T> {
   extraDayContent?: React.ComponentType<ExtraDayContentProps<T>>;
   onClickDay?: OnClickDay<T>;
   defaultHighlights?: Array<DayStateHighlight>;
 }
 
-export interface ExtraDayContentProps<T = Record<string, unknown>> {
+export interface ExtraDayContentProps<T = object> {
   month: MonthData;
   week: WeekData;
   day: DayData;

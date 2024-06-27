@@ -14,7 +14,7 @@ import { StandardTableRow } from "./StandardTableRow";
 import { SummaryRowSwitcher } from "../features/summary-row/components/SummaryRowSwitcher";
 import { filterItemsOnEnabledCheckboxes } from "../util/FilterItemsOnEnabledCheckboxes";
 
-interface StandardTableContentProps<TItem extends Record<string, unknown>> {
+interface StandardTableContentProps<TItem extends object> {
   items?: Array<TItem>;
   colIndexOffset?: number;
   rowIndexOffset?: number;
@@ -22,7 +22,7 @@ interface StandardTableContentProps<TItem extends Record<string, unknown>> {
 }
 
 export const StandardTableRowList = React.memo(function StandardTableRowList<
-  TItem extends Record<string, unknown>
+  TItem extends object
 >({
   items,
   colIndexOffset = 0,
