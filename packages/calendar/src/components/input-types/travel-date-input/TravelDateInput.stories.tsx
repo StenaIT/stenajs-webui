@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateInput, TravelDateInputValue } from "./TravelDateInput";
@@ -9,7 +9,7 @@ export default {
   title: "calendar/Input/TravelDateInput",
   component: TravelDateInput,
   decorators: [
-    (TheStory: Story) => (
+    (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>
