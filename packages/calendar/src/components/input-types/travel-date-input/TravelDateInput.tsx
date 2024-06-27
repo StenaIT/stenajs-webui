@@ -214,7 +214,6 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       selectedStartDate={selectedStartDate}
                       selectedEndDate={selectedEndDate}
                       hoverDate={hoverDate}
-                      inputInFocus={"startDate"}
                       today={today}
                     />
                   ))}
