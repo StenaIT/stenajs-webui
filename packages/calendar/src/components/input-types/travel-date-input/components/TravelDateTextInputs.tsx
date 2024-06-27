@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
-import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateInputValue } from "../TravelDateInput";
 import { TravelDateTextInput } from "./TravelDateTextInput";
 import { createInputMaskForDateFormat } from "../../../../features/localize-date-format/InputMaskProvider";
 import { getDateFormatForLocaleCode } from "../../../../features/localize-date-format/DateFormatProvider";
 
-export interface TravelDateTextInputsProps
-  extends ValueAndOnValueChangeProps<TravelDateInputValue> {
+export interface TravelDateTextInputsProps {
+  value: TravelDateInputValue | undefined;
+  onValueChange: (value: Partial<TravelDateInputValue>) => void;
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;
@@ -34,9 +34,10 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
       <TravelDateTextInput
         mask={mask}
         value={value?.startDate}
-        onValueChange={(v) =>
-          onValueChange?.({ startDate: v, endDate: value?.endDate })
-        }
+        onValueChange={(v) => {
+          console.log("v", v);
+          onValueChange?.({ startDate: v });
+        }}
         label={startDateLabel}
         borderRadiusVariant={"onlyLeft"}
         placeholder={placeholder}
@@ -44,9 +45,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
       <TravelDateTextInput
         mask={mask}
         value={value?.endDate}
-        onValueChange={(v) =>
-          onValueChange?.({ startDate: value?.startDate, endDate: v })
-        }
+        onValueChange={(v) => onValueChange?.({ endDate: v })}
         label={endDateLabel}
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}

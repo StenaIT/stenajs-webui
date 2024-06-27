@@ -101,16 +101,33 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     setVisibleMonth(d);
   }, []);
 
-  const onValueChangeHandler = useCallback<
+  const onValueChangeByInputs = useCallback<
     (value: TravelDateInputValue) => void
   >(
     (v) => {
-      if (!value?.startDate && !value?.endDate && v.startDate?.length === 10) {
-        setVisibleMonth(parseLocalizedDateString(v.startDate, localeCode));
+      console.log("value", v);
+      const startDate =
+        v?.startDate?.length === dateFormat.length
+          ? parseLocalizedDateString(v.startDate, localeCode)
+          : undefined;
+
+      const endDate =
+        v?.endDate?.length === dateFormat.length
+          ? parseLocalizedDateString(v.endDate, localeCode)
+          : undefined;
+
+      if (startDate) {
+        setVisibleMonth(startDate);
+      } else if (endDate) {
+        setVisibleMonth(endDate);
       }
-      onValueChange?.(v);
+
+      onValueChange?.({
+        ...value,
+        ...v,
+      });
     },
-    [value?.startDate, value?.endDate, onValueChange, localeCode]
+    [dateFormat.length, localeCode, onValueChange, value]
   );
 
   const isValidDateRange = useMemo(
@@ -155,7 +172,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
       <Heading variant={"h2"}>Select dates</Heading>
       <TravelDateTextInputs
         value={value}
-        onValueChange={onValueChangeHandler}
+        onValueChange={onValueChangeByInputs}
         localeCode={localeCode}
         startDateLabel={startDateLabel}
         endDateLabel={endDateLabel}
