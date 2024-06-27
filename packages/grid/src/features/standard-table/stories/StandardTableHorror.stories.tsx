@@ -4,9 +4,9 @@ import {
   Chip,
   FlatButton,
   Icon,
-  Tag,
   stenaAngleLeft,
   stenaAngleRight,
+  Tag,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
 import { Popover } from "@stenajs-webui/tooltip";
@@ -23,7 +23,7 @@ export default {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export interface SalesPerformanceTableRowItem extends Record<string, unknown> {
+export interface SalesPerformanceTableRowItem {
   info: any;
   pricingPath: any;
   automation?: any;
