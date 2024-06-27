@@ -1,10 +1,7 @@
 import * as React from "react";
 import { KeyboardEventHandler, useCallback } from "react";
 import { Box, Row, Text } from "@stenajs-webui/core";
-import {
-  DayData,
-  MonthData,
-} from "../../../../util/calendar/CalendarDataFactory";
+import { DayData } from "../../../../util/calendar/CalendarDataFactory";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
 import { isSameDay, isSameMonth } from "date-fns";
@@ -15,7 +12,7 @@ import { createDayId, getDateToFocusOn } from "../util/KeyboardNavigation";
 export interface TravelDateCellProps {
   onClick: () => void;
   day: DayData;
-  visibleMonth: MonthData;
+  visibleMonth: Date;
   selectedStartDate: Date | undefined;
   selectedEndDate: Date | undefined;
   onChangeVisibleMonth: (visibleMonth: Date) => void;
@@ -52,7 +49,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     [day.date, onChangeVisibleMonth]
   );
 
-  const dayIsInMonth = day.month === visibleMonth.monthInYear;
+  const dayIsInMonth = day.month === visibleMonth.getMonth();
   const isSelectionStart = selectedStartDate
     ? isSameDay(selectedStartDate, day.date)
     : false;
@@ -102,7 +99,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
             isSelectionEnd && styles.isSelectionEnd
           )}
         >
-          <Text>{day.dayOfMonth}</Text>
+          <Text variant={"bold"}>{day.dayOfMonth}</Text>
         </div>
       )}
     </td>
