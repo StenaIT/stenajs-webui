@@ -2,7 +2,6 @@
   position: relative;
   width: 48px;
   height: 48px;
-  cursor: pointer;
 
   border-radius: var(--swui-max-border-radius);
 
@@ -30,6 +29,7 @@
   }
 
   .contentWrapper {
+    cursor: pointer;
     border-radius: var(--swui-max-border-radius);
     border-width: 2px;
     border-style: solid;
