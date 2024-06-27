@@ -1,3 +1,16 @@
+# v20.11.4 (Thu Jun 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`
+  - Fix invalid generic constraints in StandardTable [#751](https://github.com/StenaIT/stenajs-webui/pull/751) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.11.3 (Wed Jun 26 2024)
 
 #### 🐛 Bug Fix
