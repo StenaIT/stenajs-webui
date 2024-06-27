@@ -23,7 +23,7 @@ export default {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export interface SalesPerformanceTableRowItem {
+export interface SalesPerformanceTableRowItem extends Record<string, unknown> {
   info: any;
   pricingPath: any;
   automation?: any;

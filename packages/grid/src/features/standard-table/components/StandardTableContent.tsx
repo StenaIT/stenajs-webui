@@ -7,7 +7,7 @@ import { StandardTableProps, StandardTableVariant } from "./StandardTable";
 import { StandardTableRowList } from "./StandardTableRowList";
 
 interface Props<
-  TItem extends object,
+  TItem extends Record<string, unknown>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 > extends Omit<
@@ -18,7 +18,7 @@ interface Props<
 }
 
 export const StandardTableContent = React.memo(function StandardTableContent<
-  TItem extends Record<string, never>,
+  TItem extends Record<string, unknown>,
   TColumnKey extends string,
   TColumnGroupKey extends string
 >({
