@@ -51,6 +51,7 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
       {...inputProps}
       ref={inputRef}
       onChange={maskedOnChange}
+      width={"168px"}
     />
   );
 };
