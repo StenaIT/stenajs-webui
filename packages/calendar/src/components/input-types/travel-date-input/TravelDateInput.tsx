@@ -109,7 +109,6 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     (value: TravelDateInputValue) => void
   >(
     (v) => {
-      console.log("value", v);
       const startDate =
         v?.startDate?.length === dateFormat.length
           ? parseLocalizedDateString(v.startDate, localeCode)
@@ -183,6 +182,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
       />
       <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
         <FlatButton
+          aria-live={"polite"}
           label={monthPickerButtonLabel}
           rightIcon={
             visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp
