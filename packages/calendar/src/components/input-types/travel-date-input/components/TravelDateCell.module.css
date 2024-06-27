@@ -49,7 +49,7 @@
       }
     }
 
-    &.isSelectionEnd {
+    &.isSelectionEnd:not(.isSelectionStart) {
       background: white;
     }
 

@@ -6,9 +6,28 @@ export const getCellBackgroundColors = (
   selectedStartDate: Date | undefined,
   selectedEndDate: Date | undefined,
   hoverDate: Date | undefined,
-  dayIsInMonth: boolean
+  dayIsInMonth: boolean,
+  isValidDateRange: boolean
 ): { left: string; right: string } => {
   if (!dayIsInMonth) {
+    return {
+      left: "transparent",
+      right: "transparent",
+    };
+  }
+
+  if (
+    selectedStartDate &&
+    selectedEndDate &&
+    isSameDay(selectedStartDate, selectedEndDate)
+  ) {
+    return {
+      left: "transparent",
+      right: "transparent",
+    };
+  }
+
+  if (selectedStartDate && selectedEndDate && !isValidDateRange) {
     return {
       left: "transparent",
       right: "transparent",

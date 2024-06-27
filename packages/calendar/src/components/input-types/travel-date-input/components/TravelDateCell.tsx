@@ -15,6 +15,7 @@ export interface TravelDateCellProps {
   visibleMonth: Date;
   selectedStartDate: Date | undefined;
   selectedEndDate: Date | undefined;
+  isValidDateRange: boolean;
   onChangeVisibleMonth: (visibleMonth: Date) => void;
   onStartHover: () => void;
   onEndHover: () => void;
@@ -28,6 +29,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   visibleMonth,
   onChangeVisibleMonth,
   day,
+  isValidDateRange,
   selectedStartDate,
   selectedEndDate,
   onStartHover,
@@ -50,9 +52,11 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   );
 
   const dayIsInMonth = day.month === visibleMonth.getMonth();
+
   const isSelectionStart = selectedStartDate
     ? isSameDay(selectedStartDate, day.date)
     : false;
+
   const isSelectionEnd = selectedEndDate
     ? isSameDay(selectedEndDate, day.date)
     : false;
@@ -62,7 +66,8 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     selectedStartDate,
     selectedEndDate,
     hoverDate,
-    dayIsInMonth
+    dayIsInMonth,
+    isValidDateRange
   );
 
   return (

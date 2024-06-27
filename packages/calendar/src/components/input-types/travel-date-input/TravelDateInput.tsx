@@ -22,9 +22,10 @@ import { TravelDateCell } from "./components/TravelDateCell";
 import { useToday } from "./util/UseToday";
 import { getLocaleForLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
-import { addMonths, format, isBefore, subMonths } from "date-fns";
+import { addMonths, format, isBefore, isSameDay, subMonths } from "date-fns";
 import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
 import { startCase } from "lodash-es";
+import { getDateFormatForLocaleCode } from "../../../features/localize-date-format/DateFormatProvider";
 
 type VisiblePanel = "calendar" | "month-picker";
 
@@ -51,20 +52,25 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
 
+  const dateFormat = useMemo(
+    () => getDateFormatForLocaleCode(localeCode),
+    [localeCode]
+  );
+
   const selectedStartDate = useMemo(
     () =>
-      value?.startDate
+      value?.startDate?.length === dateFormat.length
         ? parseLocalizedDateString(value.startDate, localeCode)
         : undefined,
-    [localeCode, value?.startDate]
+    [dateFormat.length, localeCode, value?.startDate]
   );
 
   const selectedEndDate = useMemo(
     () =>
-      value?.endDate
+      value?.endDate?.length === dateFormat.length
         ? parseLocalizedDateString(value.endDate, localeCode)
         : undefined,
-    [localeCode, value?.endDate]
+    [dateFormat.length, localeCode, value?.endDate]
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
@@ -104,7 +110,17 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
       }
       onValueChange?.(v);
     },
-    [value?.startDate, value?.endDate, onValueChange, localeCode, locale]
+    [value?.startDate, value?.endDate, onValueChange, localeCode]
+  );
+
+  const isValidDateRange = useMemo(
+    () =>
+      (selectedStartDate &&
+        selectedEndDate &&
+        (isSameDay(selectedStartDate, selectedEndDate) ||
+          isBefore(selectedStartDate, selectedEndDate))) ??
+      false,
+    [selectedEndDate, selectedStartDate]
   );
 
   const onClickDate = (date: Date) => {
@@ -187,6 +203,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       key={day.dateString}
                       visibleMonth={visibleMonth}
                       onChangeVisibleMonth={setVisibleMonthDate}
+                      isValidDateRange={isValidDateRange}
                       day={day}
                       onStartHover={() => setHoverDate(day.date)}
                       onEndHover={() =>
