@@ -19,13 +19,6 @@
     }
   }
 
-  .splitBgWrapper {
-  }
-  .leftBg {
-  }
-  .rightBg {
-  }
-
   .contentWrapper {
     border-radius: var(--swui-max-border-radius);
     border-width: 2px;

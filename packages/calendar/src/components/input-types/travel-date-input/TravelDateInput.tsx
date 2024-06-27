@@ -253,6 +253,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
             setVisibleMonth(new Date(v.year, v.month));
             setVisiblePanel("calendar");
           }}
+          onCancel={() => setVisiblePanel("calendar")}
         />
       )}
     </Column>
