@@ -22,7 +22,14 @@ import { TravelDateCell } from "./components/TravelDateCell";
 import { useToday } from "./util/UseToday";
 import { getLocaleForLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
-import { addMonths, format, isBefore, isSameDay, subMonths } from "date-fns";
+import {
+  addMonths,
+  format,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  subMonths,
+} from "date-fns";
 import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
 import { startCase } from "lodash-es";
 import { getDateFormatForLocaleCode } from "../../../features/localize-date-format/DateFormatProvider";
@@ -99,13 +106,13 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 
   const today = useToday();
 
+  const todayIsInVisibleMonth = useMemo(() => {
+    return isSameMonth(today, visibleMonth);
+  }, [today, visibleMonth]);
+
   const [hoverDate, setHoverDate] = useState<Date | undefined>();
 
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
-
-  const setVisibleMonthDate = useCallback((d: Date) => {
-    setVisibleMonth(d);
-  }, []);
 
   const onValueChangeByInputs = useCallback<
     (value: TravelDateInputValue) => void
@@ -228,7 +235,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       onClick={(d) => onClickDate(d)}
                       key={day.dateString}
                       visibleMonth={visibleMonth}
-                      onChangeVisibleMonth={setVisibleMonthDate}
+                      onChangeVisibleMonth={setVisibleMonth}
                       isValidDateRange={isValidDateRange}
                       day={day}
                       onStartHover={(d) => setHoverDate(d)}
@@ -241,6 +248,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       selectedEndDate={selectedEndDate}
                       hoverDate={hoverDate}
                       today={today}
+                      todayIsInVisibleMonth={todayIsInVisibleMonth}
                     />
                   ))}
                 </tr>
@@ -254,12 +262,9 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         <MonthPicker
           firstMonth={new Date()}
           numMonths={12}
-          value={{
-            month: visibleMonth.getMonth(),
-            year: visibleMonth.getFullYear(),
-          }}
+          value={visibleMonth}
           onValueChange={(v) => {
-            setVisibleMonth(new Date(v.year, v.month));
+            setVisibleMonth(v);
             setVisiblePanel("calendar");
             monthPickerButtonRef.current?.focus();
           }}

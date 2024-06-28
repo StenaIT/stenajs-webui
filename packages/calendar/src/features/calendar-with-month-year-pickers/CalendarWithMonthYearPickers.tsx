@@ -7,11 +7,7 @@ import {
   CalendarProps,
   RenderMonthPickerArgs,
 } from "../../types/CalendarTypes";
-import {
-  createFirstDate,
-  MonthPicker,
-  MonthPickerValue,
-} from "../month-picker/MonthPicker";
+import { MonthPicker } from "../month-picker/MonthPicker";
 import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { PresetPicker } from "../preset-picker/PresetPicker";
 import { CalendarPanelType } from "./CalendarPanelType";
@@ -37,16 +33,13 @@ export const CalendarWithMonthYearPickers =
     ...props
   }: CalendarWithMonthYearPickersProps<T>) {
     const onChangeSelectedMonth = useCallback(
-      (selectedMonth: MonthPickerValue) => {
-        const newDate = dateInFocus ? new Date(dateInFocus) : new Date();
-        newDate.setMonth(selectedMonth.month);
-        newDate.setFullYear(selectedMonth.year);
+      (selectedMonth: Date) => {
         if (setDateInFocus) {
-          setDateInFocus(newDate);
+          setDateInFocus(selectedMonth);
         }
         setCurrentPanel("calendar");
       },
-      [dateInFocus, setDateInFocus, setCurrentPanel]
+      [setDateInFocus, setCurrentPanel]
     );
 
     const onClickMonth = useCallback(() => {
@@ -66,7 +59,7 @@ export const CalendarWithMonthYearPickers =
       case "month":
         return renderMonthPicker ? (
           renderMonthPicker({
-            value: createFirstDate(dateInFocus),
+            value: dateInFocus,
             onValueChange: onChangeSelectedMonth,
             locale: locale,
             firstMonth: new Date(),
@@ -75,7 +68,7 @@ export const CalendarWithMonthYearPickers =
           })
         ) : (
           <MonthPicker
-            value={createFirstDate(dateInFocus)}
+            value={dateInFocus}
             onValueChange={onChangeSelectedMonth}
             locale={locale}
             firstMonth={new Date()}

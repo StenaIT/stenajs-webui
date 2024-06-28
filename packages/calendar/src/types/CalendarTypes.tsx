@@ -5,7 +5,6 @@ import {
   MonthData,
   WeekData,
 } from "../util/calendar/CalendarDataFactory";
-import { MonthPickerValue } from "../features/month-picker/MonthPicker";
 import { Locale } from "date-fns";
 
 export interface CalendarDayProps<T = object> extends ExtraDayContentProps<T> {
@@ -53,8 +52,8 @@ export interface Renderers {
 }
 
 export interface RenderMonthPickerArgs {
-  value: MonthPickerValue;
-  onValueChange: (value: MonthPickerValue) => void;
+  value: Date;
+  onValueChange: (value: Date) => void;
   locale: Locale | undefined;
   firstMonth: Date;
   numMonths: number;

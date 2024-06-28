@@ -1,19 +1,20 @@
 import { enGB } from "date-fns/locale";
 import * as React from "react";
-import { KeyboardEventHandler, useCallback, useEffect, useState } from "react";
-import { Month } from "../../util/calendar/CalendarDataFactory";
+import {
+  KeyboardEventHandler,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Heading, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
-import { Locale } from "date-fns";
+import { addMonths, isSameMonth, Locale } from "date-fns";
+import { createMonths } from "./MonthPickerDataFactory";
 
-export interface MonthPickerValue {
-  month: Month;
-  year: number;
-}
-
-export interface MonthPickerProps
-  extends ValueAndOnValueChangeProps<MonthPickerValue> {
+export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
   locale?: Locale;
   firstMonth: Date;
   numMonths: number;
@@ -28,9 +29,17 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   numMonths,
   onCancel,
 }) => {
+  const monthPickerId = useId();
+
+  const clampedNumMonths = numMonths > 0 ? numMonths : 12;
+
   const [inited, setInited] = useState(false);
 
-  const input = createMonths(firstMonth, numMonths);
+  const input = createMonths(firstMonth, clampedNumMonths, 4);
+
+  const lastMonth = useMemo(() => {
+    return addMonths(firstMonth, clampedNumMonths);
+  }, [clampedNumMonths, firstMonth]);
 
   useEffect(() => {
     setInited(true);
@@ -49,64 +58,41 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
 
   return (
     <Column gap={1} maxWidth={"336px"} onKeyDown={onKeyDown}>
-      {input.years.map(({ year, months }) => (
-        <React.Fragment key={year}>
-          <Heading variant={"h4"}>{year}</Heading>
-          <Row gap={1} flexWrap={"wrap"}>
-            {months.map((month) => (
-              <Row width={"78px"} justifyContent={"center"}>
-                <MonthPickerCell
-                  key={month}
-                  month={month}
-                  year={year}
-                  locale={locale}
-                  selected={value?.month === month && value?.year === year}
-                  autoFocus={inited}
-                  onClick={() => onValueChange?.({ month, year })}
-                />
-              </Row>
-            ))}
-          </Row>
-        </React.Fragment>
-      ))}
+      {input.yearOrder.map((year) => {
+        const { rows } = input.years[year];
+        return (
+          <React.Fragment key={year}>
+            <Heading variant={"h4"}>{year}</Heading>
+            {rows.map((r) => {
+              const { columns } = input.rows[r];
+              return (
+                <Row gap={1}>
+                  {columns.map(({ month, colIndex, rowIndex }) => (
+                    <Row
+                      key={month.getMonth()}
+                      width={"78px"}
+                      justifyContent={"center"}
+                    >
+                      <MonthPickerCell
+                        month={month}
+                        firstAvailableMonth={firstMonth}
+                        lastAvailableMonth={lastMonth}
+                        locale={locale}
+                        selected={value ? isSameMonth(value, month) : false}
+                        autoFocus={inited}
+                        onClick={() => onValueChange?.(month)}
+                        monthPickerId={monthPickerId}
+                        columnIndex={colIndex}
+                        rowIndex={rowIndex}
+                      />
+                    </Row>
+                  ))}
+                </Row>
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
     </Column>
   );
-};
-
-interface MonthInput {
-  years: Array<YearInput>;
-}
-
-interface YearInput {
-  year: number;
-  months: Array<Month>;
-}
-
-const createMonths = (firstMonth: Date, numMonths: number): MonthInput => {
-  let currentYear = firstMonth.getFullYear();
-  let currentMonth = firstMonth.getMonth();
-
-  const input: MonthInput = {
-    years: [{ year: currentYear, months: [currentMonth] }],
-  };
-
-  for (let i = 1; i < numMonths; i++) {
-    if (currentMonth === Month.DECEMBER) {
-      currentYear++;
-      currentMonth = 0;
-      input.years.push({ year: currentYear, months: [currentMonth] });
-    } else {
-      currentMonth++;
-      input.years[input.years.length - 1].months.push(currentMonth);
-    }
-  }
-
-  return input;
-};
-
-export const createFirstDate = (date: Date): MonthPickerValue => {
-  return {
-    year: date.getFullYear(),
-    month: date.getMonth(),
-  };
 };

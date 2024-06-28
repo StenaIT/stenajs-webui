@@ -20,6 +20,7 @@ export interface TravelDateCellProps {
   onEndHover: (date: Date) => void;
   hoverDate: Date | undefined;
   today: Date;
+  todayIsInVisibleMonth: boolean;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
@@ -34,6 +35,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   onEndHover,
   hoverDate,
   today,
+  todayIsInVisibleMonth,
 }) => {
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
     async (e) => {
@@ -79,7 +81,13 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       onClick={() => onClick(day.date)}
       onMouseOver={() => dayIsInMonth && onStartHover(day.date)}
       onMouseOut={() => dayIsInMonth && onEndHover(day.date)}
-      tabIndex={getTabIndex(day, selectedStartDate, isToday)}
+      tabIndex={getTabIndex(
+        day,
+        selectedStartDate,
+        isToday,
+        visibleMonth,
+        todayIsInVisibleMonth
+      )}
       id={day.dateString}
       onKeyDown={onKeyDown}
       aria-selected={isSelectionStart || isSelectionEnd}
@@ -114,15 +122,33 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
 
 const getTabIndex = (
   day: DayData,
-  startDate: Date | undefined,
-  isToday: boolean
+  selectedStartDate: Date | undefined,
+  isToday: boolean,
+  visibleMonth: Date,
+  todayIsInVisibleMonth: boolean
 ): number => {
+  const selectedStartDateIsVisible = selectedStartDate
+    ? isSameMonth(selectedStartDate, visibleMonth)
+    : false;
+
   /**
    * If date has been selected that date should be tabIndex = 0.
    * If no date has been selected, today's date should be tabIndex = 0.
    * All else should be 1.
    */
-  if (startDate ? isSameDay(day.date, startDate) : isToday) {
+  if (
+    selectedStartDate && selectedStartDateIsVisible
+      ? isSameDay(day.date, selectedStartDate)
+      : isToday
+  ) {
+    return 0;
+  }
+
+  if (
+    !selectedStartDateIsVisible &&
+    !todayIsInVisibleMonth &&
+    day.date.getDate() === 1
+  ) {
     return 0;
   }
 
