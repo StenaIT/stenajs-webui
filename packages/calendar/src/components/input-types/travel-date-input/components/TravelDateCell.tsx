@@ -62,6 +62,8 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     ? isSameDay(selectedEndDate, day.date)
     : false;
 
+  const isToday = isSameDay(day.date, today);
+
   const bgColors = getCellBackgroundColors(
     day.date,
     selectedStartDate,
@@ -77,7 +79,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       onClick={() => onClick(day.date)}
       onMouseOver={() => dayIsInMonth && onStartHover(day.date)}
       onMouseOut={() => dayIsInMonth && onEndHover(day.date)}
-      tabIndex={getTabIndex(day, selectedStartDate, today)}
+      tabIndex={getTabIndex(day, selectedStartDate, isToday)}
       id={day.dateString}
       onKeyDown={onKeyDown}
       aria-selected={isSelectionStart || isSelectionEnd}
@@ -93,6 +95,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         <div
           className={cx(
             styles.contentWrapper,
+            isToday ? styles.isToday : undefined,
             selectedStartDate ? styles.startSelected : undefined,
             selectedEndDate ? styles.endSelected : undefined,
             hoverDate && isSameDay(hoverDate, day.date)
@@ -112,14 +115,14 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
 const getTabIndex = (
   day: DayData,
   startDate: Date | undefined,
-  today: Date
+  isToday: boolean
 ): number => {
   /**
    * If date has been selected that date should be tabIndex = 0.
    * If no date has been selected, today's date should be tabIndex = 0.
    * All else should be 1.
    */
-  if (startDate ? isSameDay(day.date, startDate) : isSameDay(day.date, today)) {
+  if (startDate ? isSameDay(day.date, startDate) : isToday) {
     return 0;
   }
 

@@ -44,6 +44,10 @@
     top: 0;
     bottom: 0;
 
+    &.isToday {
+      border-color: var(--lhds-color-ui-400);
+    }
+
     &.isSelectionStart,
     &.isSelectionEnd {
       border-color: var(--modern-red);
