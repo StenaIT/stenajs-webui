@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
@@ -55,6 +55,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   nextMonthButtonAriaLabel = "Next month",
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
+
+  const monthPickerButtonRef = useRef<HTMLButtonElement>(null);
 
   const dateFormat = useMemo(
     () => getDateFormatForLocaleCode(localeCode),
@@ -192,6 +194,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
               p === "calendar" ? "month-picker" : "calendar"
             )
           }
+          ref={monthPickerButtonRef}
         />
         <Row alignItems={"center"} gap={2}>
           <SecondaryButton
@@ -258,8 +261,12 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           onValueChange={(v) => {
             setVisibleMonth(new Date(v.year, v.month));
             setVisiblePanel("calendar");
+            monthPickerButtonRef.current?.focus();
           }}
-          onCancel={() => setVisiblePanel("calendar")}
+          onCancel={() => {
+            setVisiblePanel("calendar");
+            monthPickerButtonRef.current?.focus();
+          }}
         />
       )}
     </Column>

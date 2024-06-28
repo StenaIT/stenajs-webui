@@ -1,6 +1,6 @@
 import { enGB } from "date-fns/locale";
 import * as React from "react";
-import { KeyboardEventHandler, useCallback } from "react";
+import { KeyboardEventHandler, useCallback, useEffect, useState } from "react";
 import { Month } from "../../util/calendar/CalendarDataFactory";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, Heading, Row } from "@stenajs-webui/core";
@@ -28,7 +28,13 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   numMonths,
   onCancel,
 }) => {
+  const [inited, setInited] = useState(false);
+
   const input = createMonths(firstMonth, numMonths);
+
+  useEffect(() => {
+    setInited(true);
+  }, []);
 
   const onKeyDown = useCallback<KeyboardEventHandler>(
     (ev) => {
@@ -44,21 +50,24 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   return (
     <Column gap={1} maxWidth={"336px"} onKeyDown={onKeyDown}>
       {input.years.map(({ year, months }) => (
-        <>
+        <React.Fragment key={year}>
           <Heading variant={"h4"}>{year}</Heading>
           <Row gap={1} flexWrap={"wrap"}>
             {months.map((month) => (
-              <MonthPickerCell
-                key={month}
-                month={month}
-                year={year}
-                locale={locale}
-                selected={value?.month === month && value?.year === year}
-                onClick={() => onValueChange?.({ month, year })}
-              />
+              <Row width={"78px"} justifyContent={"center"}>
+                <MonthPickerCell
+                  key={month}
+                  month={month}
+                  year={year}
+                  locale={locale}
+                  selected={value?.month === month && value?.year === year}
+                  autoFocus={inited}
+                  onClick={() => onValueChange?.({ month, year })}
+                />
+              </Row>
             ))}
           </Row>
-        </>
+        </React.Fragment>
       ))}
     </Column>
   );
