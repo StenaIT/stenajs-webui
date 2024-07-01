@@ -44,10 +44,14 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         onStartHover(nextDate);
         if (!isSameMonth(day.date, nextDate)) {
           onChangeVisibleMonth(nextDate);
+          setTimeout(() => {
+            document.getElementById(createDayId(nextDate))?.focus();
+          }, 10);
+        } else {
+          document.getElementById(createDayId(nextDate))?.focus();
         }
-        document.getElementById(createDayId(nextDate))?.focus();
       }
-      if (e.key === "Enter") {
+      if (e.key === "Enter" || e.key === "Space") {
         onClick(day.date);
       }
     },
