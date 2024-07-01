@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
@@ -62,6 +62,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   nextMonthButtonAriaLabel = "Next month",
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
+  const calendarId = useId();
 
   const monthPickerButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -249,6 +250,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       hoverDate={hoverDate}
                       today={today}
                       todayIsInVisibleMonth={todayIsInVisibleMonth}
+                      calendarId={calendarId}
                     />
                   ))}
                 </tr>

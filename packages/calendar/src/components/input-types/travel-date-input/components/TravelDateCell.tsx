@@ -6,7 +6,8 @@ import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
 import { isSameDay, isSameMonth } from "date-fns";
 import { getCellBackgroundColors } from "../util/CellBgColors";
-import { createDayId, getDateToFocusOn } from "../util/KeyboardNavigation";
+import { getDateToFocusOn } from "../util/KeyboardNavigation";
+import { createDayId } from "../util/DayIdGenerator";
 
 export interface TravelDateCellProps {
   onClick: (date: Date) => void;
@@ -21,6 +22,7 @@ export interface TravelDateCellProps {
   hoverDate: Date | undefined;
   today: Date;
   todayIsInVisibleMonth: boolean;
+  calendarId: string;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
@@ -36,6 +38,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   hoverDate,
   today,
   todayIsInVisibleMonth,
+  calendarId,
 }) => {
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
     async (e) => {
@@ -45,17 +48,17 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         if (!isSameMonth(day.date, nextDate)) {
           onChangeVisibleMonth(nextDate);
           setTimeout(() => {
-            document.getElementById(createDayId(nextDate))?.focus();
+            document.getElementById(createDayId(nextDate, calendarId))?.focus();
           }, 10);
         } else {
-          document.getElementById(createDayId(nextDate))?.focus();
+          document.getElementById(createDayId(nextDate, calendarId))?.focus();
         }
       }
       if (e.key === "Enter" || e.key === "Space") {
         onClick(day.date);
       }
     },
-    [day.date, onChangeVisibleMonth, onClick, onStartHover]
+    [calendarId, day.date, onChangeVisibleMonth, onClick, onStartHover]
   );
 
   const dayIsInMonth = day.month === visibleMonth.getMonth();
@@ -92,7 +95,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         visibleMonth,
         todayIsInVisibleMonth
       )}
-      id={day.dateString}
+      id={createDayId(day.date, calendarId)}
       onKeyDown={onKeyDown}
       aria-selected={isSelectionStart || isSelectionEnd}
     >

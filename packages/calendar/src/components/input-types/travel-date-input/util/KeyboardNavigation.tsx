@@ -1,17 +1,4 @@
-import {
-  addDays,
-  addHours,
-  addMonths,
-  format,
-  startOfWeek,
-  subDays,
-  subMonths,
-} from "date-fns";
-import { DateFormats } from "../../../../util/date/DateFormats";
-
-export const createDayId = (date: Date) => {
-  return format(addHours(date, 12), DateFormats.fullDate);
-};
+import { addDays, addMonths, startOfWeek, subDays, subMonths } from "date-fns";
 
 export const getDateToFocusOn = (
   currentDate: Date,
