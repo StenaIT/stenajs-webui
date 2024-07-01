@@ -13,6 +13,7 @@ import { Column, Heading, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 import { addMonths, isSameMonth, Locale } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
+import { useToday } from "../../components/input-types/travel-date-input/util/UseToday";
 
 export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
   locale?: Locale;
@@ -30,6 +31,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   onCancel,
 }) => {
   const monthPickerId = useId();
+  const today = useToday();
 
   const clampedNumMonths = numMonths > 0 ? numMonths : 12;
 
@@ -58,21 +60,19 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
 
   return (
     <Column gap={1} maxWidth={"336px"} onKeyDown={onKeyDown}>
-      {input.yearOrder.map((year) => {
+      {input.yearOrder.map((year, yearIndex) => {
         const { rows } = input.years[year];
         return (
           <React.Fragment key={year}>
-            <Heading variant={"h4"}>{year}</Heading>
+            {(yearIndex !== 0 || year !== today.getFullYear()) && (
+              <Heading variant={"h4"}>{year}</Heading>
+            )}
             {rows.map((r) => {
               const { columns } = input.rows[r];
               return (
                 <Row gap={1} key={r}>
                   {columns.map(({ month, position }) => (
-                    <Row
-                      key={month.getMonth()}
-                      width={"78px"}
-                      justifyContent={"center"}
-                    >
+                    <Column key={month.getMonth()} width={"78px"}>
                       <MonthPickerCell
                         month={month}
                         firstAvailableMonth={firstMonth}
@@ -84,7 +84,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
                         monthPickerId={monthPickerId}
                         position={position}
                       />
-                    </Row>
+                    </Column>
                   ))}
                 </Row>
               );
