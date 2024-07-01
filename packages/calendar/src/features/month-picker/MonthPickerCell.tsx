@@ -14,6 +14,7 @@ import {
   getDomIdForKeyboardKey,
   getDomIdForMonth,
 } from "./MonthPickerKeyboardNavigation";
+import { Position } from "./Position";
 
 interface MonthPickerCellProps {
   month: Date;
@@ -24,8 +25,7 @@ interface MonthPickerCellProps {
   monthPickerId: string;
   firstAvailableMonth: Date;
   lastAvailableMonth: Date;
-  rowIndex: number;
-  columnIndex: number;
+  position: Position;
 }
 
 export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
@@ -35,8 +35,7 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   locale,
   autoFocus,
   monthPickerId,
-  columnIndex,
-  rowIndex,
+  position,
 }) => {
   const label = useMemo(
     () => startCase(format(month, "MMM", { locale })),
@@ -50,7 +49,7 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
 
   const ref = useRef<HTMLButtonElement>(null);
 
-  const domId = getDomIdForMonth(rowIndex, columnIndex, monthPickerId);
+  const domId = getDomIdForMonth(position, monthPickerId);
 
   useEffect(() => {
     ref.current?.focus();
@@ -60,15 +59,15 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
     (ev) => {
       const nextDomId = getDomIdForKeyboardKey(
         ev.key,
-        rowIndex,
-        columnIndex,
-        monthPickerId
+        position,
+        monthPickerId,
+        4
       );
       if (nextDomId) {
         document.getElementById(nextDomId)?.focus();
       }
     },
-    [columnIndex, monthPickerId, rowIndex]
+    [monthPickerId, position]
   );
 
   return (

@@ -1,31 +1,36 @@
+import { Position } from "./Position";
+
 export const getDomIdForMonth = (
-  row: number,
-  column: number,
+  position: Position,
   monthPickerId: string
 ): string => {
-  return `${row}-${column}-${monthPickerId}`;
+  return `${position.row}-${position.column}-${monthPickerId}`;
 };
 
 export const getDomIdForKeyboardKey = (
   key: string,
-  currentRow: number,
-  currentColumn: number,
-  monthPickerId: string
+  currentPosition: Position,
+  monthPickerId: string,
+  numColumnsPerRow: number
 ): string | undefined => {
-  const next = getRowAndColumnToFocusOn(currentRow, currentColumn, key);
-  if (next == null) {
-    return undefined;
+  let next = currentPosition;
+  for (let i = 0; i < numColumnsPerRow; i++) {
+    next = movePositionByKey(next, key, numColumnsPerRow);
+    const id = getDomIdForMonth(next, monthPickerId);
+    if (document.getElementById(id)) {
+      return id;
+    }
   }
-  return getDomIdForMonth(next.row, next.column, monthPickerId);
+  return undefined;
 };
 
-export const getRowAndColumnToFocusOn = (
-  currentRow: number,
-  currentColumn: number,
-  key: string
-): { row: number; column: number } | undefined => {
-  let row = currentRow;
-  let column = currentColumn;
+export const movePositionByKey = (
+  currentPosition: Position,
+  key: string,
+  numColumnsPerRow: number
+): Position => {
+  let row = currentPosition.row;
+  let column = currentPosition.column;
   if (key === "ArrowLeft") {
     column--;
   } else if (key === "ArrowUp") {
@@ -34,16 +39,14 @@ export const getRowAndColumnToFocusOn = (
     column++;
   } else if (key === "ArrowDown") {
     row++;
-  } else {
-    return undefined;
   }
 
   if (column < 0) {
-    column += 4;
+    column = numColumnsPerRow - 1;
     row--;
   }
-  if (column > 4) {
-    column -= 4;
+  if (column > numColumnsPerRow - 1) {
+    column = 0;
     row++;
   }
 

@@ -66,8 +66,8 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
             {rows.map((r) => {
               const { columns } = input.rows[r];
               return (
-                <Row gap={1}>
-                  {columns.map(({ month, colIndex, rowIndex }) => (
+                <Row gap={1} key={r}>
+                  {columns.map(({ month, position }) => (
                     <Row
                       key={month.getMonth()}
                       width={"78px"}
@@ -82,8 +82,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
                         autoFocus={inited}
                         onClick={() => onValueChange?.(month)}
                         monthPickerId={monthPickerId}
-                        columnIndex={colIndex}
-                        rowIndex={rowIndex}
+                        position={position}
                       />
                     </Row>
                   ))}

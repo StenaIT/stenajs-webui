@@ -1,4 +1,5 @@
 import { addMonths } from "date-fns";
+import { Position } from "./Position";
 
 export interface MonthInput {
   yearOrder: Array<number>;
@@ -19,8 +20,7 @@ export interface RowInput {
 }
 
 export interface Columns {
-  rowIndex: number;
-  colIndex: number;
+  position: Position;
   month: Date;
 }
 
@@ -54,8 +54,10 @@ export const createMonths = (
     };
 
     input.rows[currentRow].columns[currentColumn] = {
-      colIndex: currentColumn,
-      rowIndex: currentRow,
+      position: {
+        column: currentColumn,
+        row: currentRow,
+      },
       month: currentMonth,
     };
 
