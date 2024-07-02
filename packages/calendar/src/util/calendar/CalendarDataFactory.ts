@@ -15,8 +15,8 @@ import {
   startOfMonth,
   startOfWeek,
 } from "date-fns";
-import { startCase } from "lodash-es";
-import { DateFormats } from "../date/DateFormats";
+import {startCase} from "lodash-es";
+import {DateFormats} from "../date/DateFormats";
 
 export enum Month {
   JANUARY = 0,
@@ -95,6 +95,9 @@ export const getMonthInYear = (
   month: number,
   locale: Locale
 ): MonthData => {
+  if (isNaN(year) || isNaN(month)) {
+    throw new Error("getMonthInYear() received NaN.");
+  }
   const yearToUse = year + Math.floor(month / 12);
   const monthToUse = month % 12;
   const firstDayOfMonth = new Date(yearToUse, monthToUse, 1);
