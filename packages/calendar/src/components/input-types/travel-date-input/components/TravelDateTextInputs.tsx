@@ -13,6 +13,7 @@ export interface TravelDateTextInputsProps {
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;
+  setCalendarVisible: (v: boolean) => void;
 }
 
 export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
@@ -21,6 +22,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
   localeCode,
   startDateLabel = "From",
   endDateLabel = "To",
+  setCalendarVisible,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -47,6 +49,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
             onValueChange?.({ startDate });
           }
         }}
+        onFocus={() => setCalendarVisible(true)}
         label={startDateLabel}
         borderRadiusVariant={"onlyLeft"}
         placeholder={placeholder}
@@ -64,6 +67,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
             onValueChange?.({ endDate });
           }
         }}
+        onFocus={() => setCalendarVisible(true)}
         label={endDateLabel}
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}

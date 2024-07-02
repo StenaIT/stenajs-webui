@@ -23,7 +23,7 @@ export const Standard = () => {
   );
 
   return (
-    <div style={{ display: "inline-block" }}>
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
       <TravelDateInput
         value={value}
         onValueChange={setValue}

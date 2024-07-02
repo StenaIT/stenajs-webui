@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
-import { Column, Row, Text } from "@stenajs-webui/core";
+import { Box, Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
 import {
+  Card,
+  CardBody,
   FlatButton,
   SecondaryButton,
   stenaAngleDown,
@@ -67,6 +69,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 }) => {
   const locale =
     getLocaleForLocaleCode(localeCode) ?? getDefaultLocaleForFormatting();
+
+  const [calendarVisible, setCalendarVisible] = useState(false);
 
   const calendarId = useId();
   const today = useToday();
@@ -213,102 +217,129 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   };
 
   return (
-    <Column gap={3} className={styles.travelDateInput}>
-      <TravelDateTextInputs
-        value={value}
-        onValueChange={onValueChangeByInputs}
-        localeCode={localeCode}
-        startDateLabel={startDateLabel}
-        endDateLabel={endDateLabel}
-      />
-      <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
-        <FlatButton
-          aria-live={"polite"}
-          label={monthPickerButtonLabel}
-          rightIcon={
-            visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp
-          }
-          onClick={() =>
-            setVisiblePanel((p) =>
-              p === "calendar" ? "month-picker" : "calendar"
-            )
-          }
-          ref={monthPickerButtonRef}
-        />
-        <Row alignItems={"center"} gap={2}>
-          <SecondaryButton
-            leftIcon={stenaArrowLeft}
-            onClick={() => setVisibleMonth((p) => subMonths(p, 1))}
-            disabled={prevMonthDisabled}
-            aria-label={previousMonthButtonAriaLabel}
-          />
-          <SecondaryButton
-            leftIcon={stenaArrowRight}
-            onClick={() => setVisibleMonth((p) => addMonths(p, 1))}
-            aria-label={nextMonthButtonAriaLabel}
-          />
-        </Row>
-      </Row>
+    <Box position={"relative"} border={"red"}>
+      <Box
+        position={"absolute"}
+        left={-24}
+        top={-80}
+        display={calendarVisible ? undefined : "none"}
+      >
+        <Box
+          background={"white"}
+          shadow={"popover"}
+          borderRadius={"var(--swui-border-radius-large)"}
+        >
+          <CardBody>
+            <Column gap={3} className={styles.travelDateInput}>
+              <Heading variant={"h2"}>Select dates</Heading>
+              <Box height={"68px"} />
+              <Row
+                alignSelf={"center"}
+                justifyContent={"space-between"}
+                width={"100%"}
+              >
+                <FlatButton
+                  aria-live={"polite"}
+                  label={monthPickerButtonLabel}
+                  rightIcon={
+                    visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp
+                  }
+                  onClick={() =>
+                    setVisiblePanel((p) =>
+                      p === "calendar" ? "month-picker" : "calendar"
+                    )
+                  }
+                  ref={monthPickerButtonRef}
+                />
+                <Row alignItems={"center"} gap={2}>
+                  <SecondaryButton
+                    leftIcon={stenaArrowLeft}
+                    onClick={() => setVisibleMonth((p) => subMonths(p, 1))}
+                    disabled={prevMonthDisabled}
+                    aria-label={previousMonthButtonAriaLabel}
+                  />
+                  <SecondaryButton
+                    leftIcon={stenaArrowRight}
+                    onClick={() => setVisibleMonth((p) => addMonths(p, 1))}
+                    aria-label={nextMonthButtonAriaLabel}
+                  />
+                </Row>
+              </Row>
 
-      {visiblePanel === "calendar" && (
-        <table>
-          <tbody>
-            <tr>
-              {visibleMonthData.weeks[0].days.map((day: DayData) => (
-                <th key={day.name} abbr={day.fullName}>
-                  <Text>{day.name}</Text>
-                </th>
-              ))}
-            </tr>
-            {visibleMonthData.weeks.map((week: WeekData) => (
-              <React.Fragment key={week.weekNumber}>
-                <tr key={week.weekNumber}>
-                  {week.days.map((day) => (
-                    <TravelDateCell
-                      onClick={(d) => onClickDate(d)}
-                      key={day.dateString}
-                      visibleMonth={visibleMonth}
-                      onChangeVisibleMonth={setVisibleMonth}
-                      isValidDateRange={isValidDateRange}
-                      day={day}
-                      onStartHover={(d) => setHoverDate(d)}
-                      onEndHover={(d) =>
-                        setHoverDate((p) =>
-                          p && isSameDay(p, d) ? undefined : p
-                        )
-                      }
-                      selectedStartDate={selectedStartDate}
-                      selectedEndDate={selectedEndDate}
-                      hoverDate={hoverDate}
-                      today={today}
-                      todayIsInVisibleMonth={todayIsInVisibleMonth}
-                      calendarId={calendarId}
-                      isDateDisabled={isDateDisabled}
-                    />
-                  ))}
-                </tr>
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
-      )}
+              {visiblePanel === "calendar" && (
+                <table>
+                  <tbody>
+                    <tr>
+                      {visibleMonthData.weeks[0].days.map((day: DayData) => (
+                        <th key={day.name} abbr={day.fullName}>
+                          <Text>{day.name}</Text>
+                        </th>
+                      ))}
+                    </tr>
+                    {visibleMonthData.weeks.map((week: WeekData) => (
+                      <React.Fragment key={week.weekNumber}>
+                        <tr key={week.weekNumber}>
+                          {week.days.map((day) => (
+                            <TravelDateCell
+                              onClick={(d) => onClickDate(d)}
+                              key={day.dateString}
+                              visibleMonth={visibleMonth}
+                              onChangeVisibleMonth={setVisibleMonth}
+                              isValidDateRange={isValidDateRange}
+                              day={day}
+                              onStartHover={(d) => setHoverDate(d)}
+                              onEndHover={(d) =>
+                                setHoverDate((p) =>
+                                  p && isSameDay(p, d) ? undefined : p
+                                )
+                              }
+                              selectedStartDate={selectedStartDate}
+                              selectedEndDate={selectedEndDate}
+                              hoverDate={hoverDate}
+                              today={today}
+                              todayIsInVisibleMonth={todayIsInVisibleMonth}
+                              calendarId={calendarId}
+                              isDateDisabled={isDateDisabled}
+                            />
+                          ))}
+                        </tr>
+                      </React.Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              )}
 
-      {visiblePanel === "month-picker" && (
-        <MonthPicker
-          firstMonth={new Date()}
-          numMonths={12}
-          value={visibleMonth}
-          onValueChange={(v) => {
-            setVisibleMonth(v);
-            setVisiblePanel("calendar");
-            monthPickerButtonRef.current?.focus();
-          }}
-          onCancel={() => {
-            setVisiblePanel("calendar");
-            monthPickerButtonRef.current?.focus();
-          }}
+              {visiblePanel === "month-picker" && (
+                <MonthPicker
+                  firstMonth={new Date()}
+                  numMonths={12}
+                  value={visibleMonth}
+                  onValueChange={(v) => {
+                    setVisibleMonth(v);
+                    setVisiblePanel("calendar");
+                    monthPickerButtonRef.current?.focus();
+                  }}
+                  onCancel={() => {
+                    setVisiblePanel("calendar");
+                    monthPickerButtonRef.current?.focus();
+                  }}
+                />
+              )}
+            </Column>
+          </CardBody>
+        </Box>
+      </Box>
+
+      <Box position={"absolute"}>
+        <TravelDateTextInputs
+          value={value}
+          onValueChange={onValueChangeByInputs}
+          localeCode={localeCode}
+          startDateLabel={startDateLabel}
+          endDateLabel={endDateLabel}
+          setCalendarVisible={setCalendarVisible}
         />
-      )}
-    </Column>
+      </Box>
+    </Box>
   );
 };
