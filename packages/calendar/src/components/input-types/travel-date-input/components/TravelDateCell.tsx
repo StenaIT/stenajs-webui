@@ -54,7 +54,8 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
           document.getElementById(createDayId(nextDate, calendarId))?.focus();
         }
       }
-      if (e.key === "Enter" || e.key === "Space") {
+
+      if (e.key === "Enter" || e.code === "Space") {
         onClick(day.date);
       }
     },
