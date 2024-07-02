@@ -2,18 +2,13 @@ import * as React from "react";
 import { useState } from "react";
 import { Box, Column, Heading } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
+import { TravelDateTextInputs } from "../../../features/travel-calendar/components/TravelDateTextInputs";
 import { CardBody } from "@stenajs-webui/elements";
-import styles from "./TravelDateInput.module.css";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
-import { useTravelDateInput } from "./UseTravelDateInput";
-import { MonthHeader } from "./components/MonthHeader";
-import { TravelCalendar } from "./components/TravelCalendar";
-
-export interface TravelDateInputValue {
-  startDate?: string;
-  endDate?: string;
-}
+import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
+import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
+import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
+import { TravelDateInputValue } from "../../../features/travel-calendar/types";
 
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
@@ -73,7 +68,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           borderRadius={"var(--swui-border-radius-large)"}
         >
           <CardBody>
-            <Column gap={3} className={styles.travelDateInput}>
+            <Column gap={3}>
               <Heading variant={"h2"}>Select dates</Heading>
               <Box height={"68px"} />
               <MonthHeader
@@ -133,7 +128,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           localeCode={localeCode}
           startDateLabel={startDateLabel}
           endDateLabel={endDateLabel}
-          setCalendarVisible={setCalendarVisible}
+          onFocus={() => setCalendarVisible(true)}
         />
       </Box>
     </Box>

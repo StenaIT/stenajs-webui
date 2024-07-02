@@ -3,11 +3,12 @@ import {
   DayData,
   MonthData,
   WeekData,
-} from "../../../../util/calendar/CalendarDataFactory";
+} from "../../../util/calendar/CalendarDataFactory";
 import { Text } from "@stenajs-webui/core";
 import { TravelDateCell } from "./TravelDateCell";
 import { isSameDay } from "date-fns";
 import { Dispatch, SetStateAction } from "react";
+import styles from "./TravelCalendar.module.css";
 
 export interface TravelCalendarProps {
   visibleMonthData: MonthData;
@@ -41,7 +42,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
   todayIsInVisibleMonth,
 }) => {
   return (
-    <table>
+    <table className={styles.travelCalendar}>
       <tbody>
         <tr>
           {visibleMonthData.weeks[0].days.map((day: DayData) => (

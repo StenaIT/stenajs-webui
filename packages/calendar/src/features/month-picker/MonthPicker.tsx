@@ -13,7 +13,7 @@ import { Column, Heading, Row } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 import { addMonths, isSameMonth, Locale } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
-import { useToday } from "../../components/input-types/travel-date-input/util/UseToday";
+import { useToday } from "../travel-calendar/util/UseToday";
 
 export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
   locale?: Locale;

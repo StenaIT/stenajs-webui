@@ -1,16 +1,16 @@
 import {
   getDefaultLocaleForFormatting,
   getLocaleForLocaleCode,
-} from "../../../features/localize-date-format/LocaleMapper";
+} from "../../localize-date-format/LocaleMapper";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
-import { useToday } from "./util/UseToday";
-import { getDateFormatForLocaleCode } from "../../../features/localize-date-format/DateFormatProvider";
-import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
+import { useToday } from "../util/UseToday";
+import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
+import { parseLocalizedDateString } from "../../localize-date-format/LocalizedDateParser";
 import { format, isAfter, isBefore, isSameDay, isSameMonth } from "date-fns";
 import { getMonthInYear } from "../../../util/calendar/CalendarDataFactory";
 import { startCase } from "lodash-es";
-import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
-import { TravelDateInputValue } from "./TravelDateInput";
+import { formatLocalizedDate } from "../../localize-date-format/LocalizedDateFormatter";
+import { TravelDateInputValue } from "../types";
 
 export type VisiblePanel = "calendar" | "month-picker";
 

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useMemo } from "react";
 import { Row } from "@stenajs-webui/core";
-import { TravelDateInputValue } from "../TravelDateInput";
 import { TravelDateTextInput } from "./TravelDateTextInput";
-import { createInputMaskForDateFormat } from "../../../../features/localize-date-format/InputMaskProvider";
-import { getDateFormatForLocaleCode } from "../../../../features/localize-date-format/DateFormatProvider";
-import { reformatLocalizedDateString } from "../../../../features/localize-date-format/LocalizedDateReformatter";
+import { createInputMaskForDateFormat } from "../../localize-date-format/InputMaskProvider";
+import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
+import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
+import { TravelDateInputValue } from "../types";
 
 export interface TravelDateTextInputsProps {
   value: TravelDateInputValue | undefined;
@@ -13,7 +13,7 @@ export interface TravelDateTextInputsProps {
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;
-  setCalendarVisible: (v: boolean) => void;
+  onFocus?: () => void;
 }
 
 export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
@@ -22,7 +22,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
   localeCode,
   startDateLabel = "From",
   endDateLabel = "To",
-  setCalendarVisible,
+  onFocus,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -49,7 +49,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
             onValueChange?.({ startDate });
           }
         }}
-        onFocus={() => setCalendarVisible(true)}
+        onFocus={onFocus}
         label={startDateLabel}
         borderRadiusVariant={"onlyLeft"}
         placeholder={placeholder}
@@ -67,7 +67,7 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
             onValueChange?.({ endDate });
           }
         }}
-        onFocus={() => setCalendarVisible(true)}
+        onFocus={onFocus}
         label={endDateLabel}
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}

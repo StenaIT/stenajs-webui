@@ -1,5 +1,5 @@
 import { getDateToFocusOn } from "../KeyboardNavigation";
-import { Month } from "../../../../../util/calendar/CalendarDataFactory";
+import { Month } from "../../../../util/calendar/CalendarDataFactory";
 
 describe("KeyboardNavigation", () => {
   describe("getDateToFocusOn", () => {

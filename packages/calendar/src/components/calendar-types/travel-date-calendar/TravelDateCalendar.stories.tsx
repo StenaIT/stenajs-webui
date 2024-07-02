@@ -1,14 +1,14 @@
 import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
-import { TravelDateInput } from "./TravelDateInput";
+import { TravelDateCalendar } from "./TravelDateCalendar";
 import { Column, Row } from "@stenajs-webui/core";
 import { Banner } from "@stenajs-webui/elements";
 import { TravelDateInputValue } from "../../../features/travel-calendar/types";
 
 export default {
-  title: "calendar/Input/TravelDateInput",
-  component: TravelDateInput,
+  title: "calendar/Calendar/TravelDateCalendar",
+  component: TravelDateCalendar,
   decorators: [
     (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
@@ -25,7 +25,7 @@ export const Standard = () => {
 
   return (
     <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateInput
+      <TravelDateCalendar
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
@@ -70,7 +70,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
         <Banner headerText={"Locale: " + localeCode} variant={"info"} />
       </Row>
       <Row>
-        <TravelDateInput
+        <TravelDateCalendar
           value={value}
           onValueChange={setValue}
           localeCode={localeCode}

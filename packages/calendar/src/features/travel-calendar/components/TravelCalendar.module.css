@@ -1,5 +1,5 @@
-.travelDateInput {
-  table {
+.travelCalendar {
+  &table {
     border-spacing: 0 4px;
     width: fit-content;
 

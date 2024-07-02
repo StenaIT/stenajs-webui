@@ -1,7 +1,7 @@
 import * as React from "react";
 import { KeyboardEventHandler, useCallback } from "react";
 import { Box, Row, Text } from "@stenajs-webui/core";
-import { DayData } from "../../../../util/calendar/CalendarDataFactory";
+import { DayData } from "../../../util/calendar/CalendarDataFactory";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
 import { isSameDay, isSameMonth } from "date-fns";
