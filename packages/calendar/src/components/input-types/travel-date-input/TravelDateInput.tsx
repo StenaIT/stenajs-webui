@@ -9,6 +9,8 @@ import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseT
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
 import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
 import { TravelDateInputValue } from "../../../features/travel-calendar/types";
+import styles from "./TravelDateInput.module.css";
+import cx from "classnames";
 
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<TravelDateInputValue> {
@@ -18,6 +20,7 @@ export interface TravelDateInputProps
   endDateLabel?: string;
   previousMonthButtonAriaLabel?: string;
   nextMonthButtonAriaLabel?: string;
+  heading?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
@@ -29,6 +32,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
+  heading = "Select dates",
 }) => {
   const [calendarVisible, setCalendarVisible] = useState(false);
 
@@ -55,12 +59,15 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   } = useTravelDateInput(value, onValueChange, localeCode, initialMonthInFocus);
 
   return (
-    <Box position={"relative"} border={"red"}>
+    <Box position={"relative"} className={styles.travelDateInput}>
       <Box
         position={"absolute"}
         left={-24}
         top={-80}
-        display={calendarVisible ? undefined : "none"}
+        className={cx(
+          styles.overlay,
+          calendarVisible && styles.calendarVisible
+        )}
       >
         <Box
           background={"white"}
@@ -69,7 +76,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         >
           <CardBody>
             <Column gap={3}>
-              <Heading variant={"h2"}>Select dates</Heading>
+              <Heading variant={"h2"}>{heading}</Heading>
               <Box height={"68px"} />
               <MonthHeader
                 setVisibleMonth={setVisibleMonth}

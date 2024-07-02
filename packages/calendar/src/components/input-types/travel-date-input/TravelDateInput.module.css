@@ -1,0 +1,9 @@
+.travelDateInput {
+  &:not(:focus-within) {
+    .overlay {
+      :not(&.calendarVisible) {
+        display: none;
+      }
+    }
+  }
+}
