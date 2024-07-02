@@ -1,8 +1,8 @@
 import * as React from "react";
-import {useCallback, useId, useMemo, useRef, useState} from "react";
-import {Column, Heading, Row, Text} from "@stenajs-webui/core";
-import {ValueAndOnValueChangeProps} from "@stenajs-webui/forms";
-import {TravelDateTextInputs} from "./components/TravelDateTextInputs";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
+import { Column, Row, Text } from "@stenajs-webui/core";
+import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
+import { TravelDateTextInputs } from "./components/TravelDateTextInputs";
 import {
   FlatButton,
   SecondaryButton,
@@ -11,17 +11,28 @@ import {
   stenaArrowLeft,
   stenaArrowRight,
 } from "@stenajs-webui/elements";
-import {DayData, getMonthInYear, WeekData,} from "../../../util/calendar/CalendarDataFactory";
+import {
+  DayData,
+  getMonthInYear,
+  WeekData,
+} from "../../../util/calendar/CalendarDataFactory";
 import styles from "./TravelDateInput.module.css";
-import {MonthPicker} from "../../../features/month-picker/MonthPicker";
-import {TravelDateCell} from "./components/TravelDateCell";
-import {useToday} from "./util/UseToday";
-import {getLocaleForLocaleCode} from "../../../features/localize-date-format/LocaleMapper";
-import {parseLocalizedDateString} from "../../../features/localize-date-format/LocalizedDateParser";
-import {addMonths, format, isBefore, isSameDay, isSameMonth, subMonths,} from "date-fns";
-import {formatLocalizedDate} from "../../../features/localize-date-format/LocalizedDateFormatter";
-import {startCase} from "lodash-es";
-import {getDateFormatForLocaleCode} from "../../../features/localize-date-format/DateFormatProvider";
+import { MonthPicker } from "../../../features/month-picker/MonthPicker";
+import { TravelDateCell } from "./components/TravelDateCell";
+import { useToday } from "./util/UseToday";
+import { getLocaleForLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
+import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
+import {
+  addMonths,
+  format,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  subMonths,
+} from "date-fns";
+import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
+import { startCase } from "lodash-es";
+import { getDateFormatForLocaleCode } from "../../../features/localize-date-format/DateFormatProvider";
 
 type VisiblePanel = "calendar" | "month-picker";
 
@@ -180,7 +191,6 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 
   return (
     <Column gap={3} className={styles.travelDateInput}>
-      <Heading variant={"h2"}>Select dates</Heading>
       <TravelDateTextInputs
         value={value}
         onValueChange={onValueChangeByInputs}
