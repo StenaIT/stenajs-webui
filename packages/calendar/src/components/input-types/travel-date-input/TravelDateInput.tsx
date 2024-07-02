@@ -20,11 +20,15 @@ import styles from "./TravelDateInput.module.css";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { TravelDateCell } from "./components/TravelDateCell";
 import { useToday } from "./util/UseToday";
-import { getLocaleForLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
+import {
+  getDefaultLocaleForFormatting,
+  getLocaleForLocaleCode,
+} from "../../../features/localize-date-format/LocaleMapper";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 import {
   addMonths,
   format,
+  isAfter,
   isBefore,
   isSameDay,
   isSameMonth,
@@ -61,7 +65,9 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
 }) => {
-  const locale = getLocaleForLocaleCode(localeCode);
+  const locale =
+    getLocaleForLocaleCode(localeCode) ?? getDefaultLocaleForFormatting();
+
   const calendarId = useId();
   const today = useToday();
 
@@ -90,6 +96,17 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
     initialMonthInFocus ?? selectedStartDate ?? new Date()
+  );
+
+  const setVisibleMonthClamped = useCallback(
+    (month: Date) => {
+      if (isSameMonth(month, today) || isAfter(month, today)) {
+        setVisibleMonth(month);
+      } else {
+        setVisibleMonth(today);
+      }
+    },
+    [today]
   );
 
   const visibleMonthData = useMemo(
@@ -128,10 +145,10 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           ? parseLocalizedDateString(v.endDate, localeCode)
           : undefined;
 
-      if (startDate && !isNaN(startDate.getTime())) {
-        setVisibleMonth(startDate);
-      } else if (endDate && !isNaN(endDate.getTime())) {
-        setVisibleMonth(endDate);
+      if (startDate) {
+        setVisibleMonthClamped(startDate);
+      } else if (endDate) {
+        setVisibleMonthClamped(endDate);
       }
 
       onValueChange?.({
@@ -139,7 +156,13 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         ...v,
       });
     },
-    [dateFormat.length, localeCode, onValueChange, value]
+    [
+      dateFormat.length,
+      localeCode,
+      onValueChange,
+      setVisibleMonthClamped,
+      value,
+    ]
   );
 
   const prevMonthDisabled = useMemo(

@@ -6,7 +6,25 @@ export const parseLocalizedDateString = (
   dateString: string,
   localeCode: string,
   referenceDate: Date = new Date()
-): Date =>
-  parse(dateString, getDateFormatForLocaleCode(localeCode), referenceDate, {
-    locale: getLocaleForLocaleCode(localeCode),
-  });
+): Date | undefined => {
+  const locale = getLocaleForLocaleCode(localeCode);
+
+  if (locale == null) {
+    return undefined;
+  }
+
+  const date = parse(
+    dateString,
+    getDateFormatForLocaleCode(localeCode),
+    referenceDate,
+    {
+      locale: locale,
+    }
+  );
+
+  if (isNaN(date.getTime())) {
+    return undefined;
+  }
+
+  return date;
+};

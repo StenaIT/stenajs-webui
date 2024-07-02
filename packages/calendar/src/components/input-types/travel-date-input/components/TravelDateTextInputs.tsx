@@ -5,6 +5,7 @@ import { TravelDateInputValue } from "../TravelDateInput";
 import { TravelDateTextInput } from "./TravelDateTextInput";
 import { createInputMaskForDateFormat } from "../../../../features/localize-date-format/InputMaskProvider";
 import { getDateFormatForLocaleCode } from "../../../../features/localize-date-format/DateFormatProvider";
+import { reformatLocalizedDateString } from "../../../../features/localize-date-format/LocalizedDateReformatter";
 
 export interface TravelDateTextInputsProps {
   value: TravelDateInputValue | undefined;
@@ -35,8 +36,16 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
         mask={mask}
         value={value?.startDate}
         onValueChange={(v) => {
-          console.log("v", v);
           onValueChange?.({ startDate: v });
+        }}
+        onBlur={(ev) => {
+          const startDate = reformatLocalizedDateString(
+            ev.target.value,
+            localeCode
+          );
+          if (startDate && startDate !== value?.startDate) {
+            onValueChange?.({ startDate });
+          }
         }}
         label={startDateLabel}
         borderRadiusVariant={"onlyLeft"}
@@ -46,6 +55,15 @@ export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
         mask={mask}
         value={value?.endDate}
         onValueChange={(v) => onValueChange?.({ endDate: v })}
+        onBlur={(ev) => {
+          const endDate = reformatLocalizedDateString(
+            ev.target.value,
+            localeCode
+          );
+          if (endDate && endDate !== value?.endDate) {
+            onValueChange?.({ endDate });
+          }
+        }}
         label={endDateLabel}
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}
