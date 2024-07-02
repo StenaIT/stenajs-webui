@@ -44,6 +44,9 @@
     top: 0;
     bottom: 0;
 
+    &.disabled {
+      cursor: not-allowed;
+    }
     &.isToday {
       border-color: var(--lhds-color-ui-400);
     }

@@ -8,6 +8,7 @@ import { isSameDay, isSameMonth } from "date-fns";
 import { getCellBackgroundColors } from "../util/CellBgColors";
 import { getDateToFocusOn } from "../util/KeyboardNavigation";
 import { createDayId } from "../util/DayIdGenerator";
+import { cssColor } from "@stenajs-webui/theme";
 
 export interface TravelDateCellProps {
   onClick: (date: Date) => void;
@@ -23,6 +24,7 @@ export interface TravelDateCellProps {
   today: Date;
   todayIsInVisibleMonth: boolean;
   calendarId: string;
+  isDateDisabled: (date: Date) => boolean;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
@@ -39,11 +41,12 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   today,
   todayIsInVisibleMonth,
   calendarId,
+  isDateDisabled,
 }) => {
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
     async (e) => {
       const nextDate = getDateToFocusOn(day.date, e.key);
-      if (nextDate) {
+      if (nextDate && !isDateDisabled(nextDate)) {
         onStartHover(nextDate);
         if (!isSameMonth(day.date, nextDate)) {
           onChangeVisibleMonth(nextDate);
@@ -59,10 +62,19 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
         onClick(day.date);
       }
     },
-    [calendarId, day.date, onChangeVisibleMonth, onClick, onStartHover]
+    [
+      calendarId,
+      day.date,
+      isDateDisabled,
+      onChangeVisibleMonth,
+      onClick,
+      onStartHover,
+    ]
   );
 
   const dayIsInMonth = day.month === visibleMonth.getMonth();
+
+  const disabled = isDateDisabled(day.date);
 
   const isSelectionStart = selectedStartDate
     ? isSameDay(selectedStartDate, day.date)
@@ -86,18 +98,26 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   return (
     <td
       className={styles.travelDateCell}
-      onClick={() => onClick(day.date)}
-      onMouseOver={() => dayIsInMonth && onStartHover(day.date)}
-      onMouseOut={() => dayIsInMonth && onEndHover(day.date)}
-      tabIndex={getTabIndex(
-        day,
-        selectedStartDate,
-        isToday,
-        visibleMonth,
-        todayIsInVisibleMonth
-      )}
-      id={createDayId(day.date, calendarId)}
-      onKeyDown={onKeyDown}
+      onClick={disabled ? undefined : () => onClick(day.date)}
+      onMouseOver={
+        disabled ? undefined : () => dayIsInMonth && onStartHover(day.date)
+      }
+      onMouseOut={
+        disabled ? undefined : () => dayIsInMonth && onEndHover(day.date)
+      }
+      tabIndex={
+        disabled
+          ? undefined
+          : getTabIndex(
+              day,
+              selectedStartDate,
+              isToday,
+              visibleMonth,
+              todayIsInVisibleMonth
+            )
+      }
+      id={disabled ? undefined : createDayId(day.date, calendarId)}
+      onKeyDown={disabled ? undefined : onKeyDown}
       aria-selected={isSelectionStart || isSelectionEnd}
     >
       <div className={styles.outline} />
@@ -118,10 +138,16 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
               ? styles.hover
               : undefined,
             isSelectionStart && styles.isSelectionStart,
-            isSelectionEnd && styles.isSelectionEnd
+            isSelectionEnd && styles.isSelectionEnd,
+            disabled && styles.disabled
           )}
         >
-          <Text variant={"bold"}>{day.dayOfMonth}</Text>
+          <Text
+            variant={"bold"}
+            color={disabled ? cssColor("--lhds-color-ui-500") : undefined}
+          >
+            {day.dayOfMonth}
+          </Text>
         </div>
       )}
     </td>

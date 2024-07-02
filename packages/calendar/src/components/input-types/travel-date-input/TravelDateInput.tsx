@@ -63,6 +63,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
 }) => {
   const locale = getLocaleForLocaleCode(localeCode);
   const calendarId = useId();
+  const today = useToday();
 
   const monthPickerButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -105,8 +106,6 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     return startCase(format(visibleMonth, "MMMM yyyy", { locale }));
   }, [locale, visibleMonth]);
 
-  const today = useToday();
-
   const todayIsInVisibleMonth = useMemo(() => {
     return isSameMonth(today, visibleMonth);
   }, [today, visibleMonth]);
@@ -143,6 +142,11 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     [dateFormat.length, localeCode, onValueChange, value]
   );
 
+  const prevMonthDisabled = useMemo(
+    () => isSameMonth(today, visibleMonth) || isBefore(visibleMonth, today),
+    [today, visibleMonth]
+  );
+
   const isValidDateRange = useMemo(
     () =>
       (selectedStartDate &&
@@ -151,6 +155,11 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           isBefore(selectedStartDate, selectedEndDate))) ??
       false,
     [selectedEndDate, selectedStartDate]
+  );
+
+  const isDateDisabled = useCallback<(date: Date) => boolean>(
+    (date) => !isSameDay(date, today) && isBefore(date, today),
+    [today]
   );
 
   const onClickDate = (date: Date) => {
@@ -208,6 +217,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           <SecondaryButton
             leftIcon={stenaArrowLeft}
             onClick={() => setVisibleMonth((p) => subMonths(p, 1))}
+            disabled={prevMonthDisabled}
             aria-label={previousMonthButtonAriaLabel}
           />
           <SecondaryButton
@@ -251,6 +261,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                       today={today}
                       todayIsInVisibleMonth={todayIsInVisibleMonth}
                       calendarId={calendarId}
+                      isDateDisabled={isDateDisabled}
                     />
                   ))}
                 </tr>
