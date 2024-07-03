@@ -14,7 +14,7 @@ import { TravelDateRangeInputValue } from "../types";
 
 export type VisiblePanel = "calendar" | "month-picker";
 
-export const useTravelDateInput = (
+export const useTravelDateRangeInput = (
   value: TravelDateRangeInputValue | undefined,
   onValueChange: ((value: TravelDateRangeInputValue) => void) | undefined,
   localeCode: string,

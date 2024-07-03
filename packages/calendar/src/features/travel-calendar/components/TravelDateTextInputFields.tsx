@@ -7,16 +7,20 @@ import { getDateFormatForLocaleCode } from "../../localize-date-format/DateForma
 import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
 import { TravelDateRangeInputValue } from "../types";
 
-export interface TravelDateTextInputsProps {
+export interface TravelDateTextInputFieldsProps {
   value: TravelDateRangeInputValue | undefined;
-  onValueChange: ((value: Partial<TravelDateRangeInputValue>) => void) | undefined;
+  onValueChange:
+    | ((value: Partial<TravelDateRangeInputValue>) => void)
+    | undefined;
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;
   onFocus?: () => void;
 }
 
-export const TravelDateTextInputs: React.FC<TravelDateTextInputsProps> = ({
+export const TravelDateTextInputFields: React.FC<
+  TravelDateTextInputFieldsProps
+> = ({
   value,
   onValueChange,
   localeCode,

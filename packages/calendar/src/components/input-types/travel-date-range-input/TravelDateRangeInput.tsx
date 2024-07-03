@@ -8,10 +8,10 @@ import {
 } from "react";
 import { Box, Column, Heading, useOnClickOutside } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { TravelDateTextInputs } from "../../../features/travel-calendar/components/TravelDateTextInputs";
+import { TravelDateTextInputFields } from "../../../features/travel-calendar/components/TravelDateTextInputFields";
 import { CardBody } from "@stenajs-webui/elements";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
-import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
+import { useTravelDateRangeInput } from "../../../features/travel-calendar/hooks/UseTravelDateRangeInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
 import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
@@ -89,27 +89,21 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
     }
   }, [size.height, size.width]);
 
+  const inputProps = useTravelDateRangeInput(
+    value,
+    onValueChange,
+    localeCode,
+    initialMonthInFocus
+  );
+
   const {
-    monthPickerButtonRef,
-    isDateDisabled,
-    onClickDate,
-    prevMonthDisabled,
-    isValidDateRange,
-    calendarId,
-    onValueChangeByInputs,
-    monthPickerButtonLabel,
-    setVisiblePanel,
     visiblePanel,
-    visibleMonthData,
-    setVisibleMonth,
-    setHoverDate,
-    hoverDate,
-    todayIsInVisibleMonth,
-    selectedStartDate,
-    selectedEndDate,
-    today,
     visibleMonth,
-  } = useTravelDateInput(value, onValueChange, localeCode, initialMonthInFocus);
+    onValueChangeByInputs,
+    setVisibleMonth,
+    setVisiblePanel,
+    monthPickerButtonRef,
+  } = inputProps;
 
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>(
     (ev) => {
@@ -130,7 +124,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
       width={size.width}
     >
       <Box position={"absolute"} ref={sizeSourceRef} zIndex={zIndex}>
-        <TravelDateTextInputs
+        <TravelDateTextInputFields
           value={value}
           onValueChange={onValueChangeByInputs}
           localeCode={localeCode}
@@ -158,32 +152,13 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                 <Heading variant={"h2"}>{heading}</Heading>
                 <Box height={"68px"} />
                 <MonthHeader
-                  setVisibleMonth={setVisibleMonth}
-                  setVisiblePanel={setVisiblePanel}
-                  visiblePanel={visiblePanel}
+                  {...inputProps}
                   previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
-                  monthPickerButtonLabel={monthPickerButtonLabel}
-                  monthPickerButtonRef={monthPickerButtonRef}
                   nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
-                  prevMonthDisabled={prevMonthDisabled}
                 />
 
                 {visiblePanel === "calendar" && (
-                  <TravelCalendar
-                    calendarId={calendarId}
-                    isDateDisabled={isDateDisabled}
-                    hoverDate={hoverDate}
-                    today={today}
-                    setHoverDate={setHoverDate}
-                    onClickDate={onClickDate}
-                    visibleMonthData={visibleMonthData}
-                    setVisibleMonth={setVisibleMonth}
-                    isValidDateRange={isValidDateRange}
-                    selectedEndDate={selectedEndDate}
-                    selectedStartDate={selectedStartDate}
-                    todayIsInVisibleMonth={todayIsInVisibleMonth}
-                    visibleMonth={visibleMonth}
-                  />
+                  <TravelCalendar {...inputProps} />
                 )}
 
                 {visiblePanel === "month-picker" && (

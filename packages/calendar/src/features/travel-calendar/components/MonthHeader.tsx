@@ -10,7 +10,7 @@ import {
 } from "@stenajs-webui/elements";
 import { Row } from "@stenajs-webui/core";
 import { addMonths, subMonths } from "date-fns";
-import { VisiblePanel } from "../hooks/UseTravelDateInput";
+import { VisiblePanel } from "../hooks/UseTravelDateRangeInput";
 
 export interface MonthHeaderProps {
   monthPickerButtonLabel: string;

@@ -24,7 +24,7 @@ export const Standard = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block" }}>
       <TravelDateRangeCalendar
         value={value}
         onValueChange={setValue}
