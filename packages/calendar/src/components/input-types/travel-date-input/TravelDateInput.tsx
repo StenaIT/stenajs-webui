@@ -1,6 +1,12 @@
 import * as React from "react";
-import { useState } from "react";
-import { Box, Column, Heading } from "@stenajs-webui/core";
+import {
+  KeyboardEventHandler,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { Box, Column, Heading, useOnClickOutside } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputs } from "../../../features/travel-calendar/components/TravelDateTextInputs";
 import { CardBody } from "@stenajs-webui/elements";
@@ -34,7 +40,52 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   nextMonthButtonAriaLabel = "Next month",
   heading = "Select dates",
 }) => {
-  const [calendarVisible, setCalendarVisible] = useState(false);
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const [calendarInDom, setCalendarInDom] = useState(false);
+  const [size, setSize] = useState<{ height: number; width: number }>({
+    // Sane defaults, this will be updated with actual data from DOM.
+    width: 336,
+    height: 66,
+  });
+
+  const calendarOpenRef = useRef(false);
+
+  const showCalendar = useCallback(() => {
+    calendarOpenRef.current = true;
+    setCalendarInDom(true);
+    setTimeout(() => {
+      setCalendarOpen(true);
+    }, 10);
+  }, []);
+
+  const hideCalendar = useCallback(() => {
+    if (!calendarInDom) {
+      return;
+    }
+
+    setCalendarOpen(false);
+    calendarOpenRef.current = false;
+    setTimeout(() => {
+      if (!calendarOpenRef.current) {
+        setCalendarInDom(false);
+      }
+    }, 300);
+  }, [calendarInDom]);
+
+  const ref = useRef<HTMLDivElement>(null);
+  const sizeSourceRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(ref, hideCalendar);
+
+  useLayoutEffect(() => {
+    const width = sizeSourceRef.current?.offsetWidth;
+    const height = sizeSourceRef.current?.offsetHeight;
+    if (width != null && height != null) {
+      if (size.height !== height || size.width !== width) {
+        setSize({ width, height });
+      }
+    }
+  }, [size.height, size.width]);
 
   const {
     monthPickerButtonRef,
@@ -58,84 +109,99 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     visibleMonth,
   } = useTravelDateInput(value, onValueChange, localeCode, initialMonthInFocus);
 
+  const onKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>(
+    (ev) => {
+      if (ev.key === "Escape") {
+        hideCalendar();
+      }
+    },
+    [hideCalendar]
+  );
+
   return (
-    <Box position={"relative"} className={styles.travelDateInput}>
-      <Box
-        position={"absolute"}
-        left={-24}
-        top={-80}
-        className={cx(
-          styles.overlay,
-          calendarVisible && styles.calendarVisible
-        )}
-      >
+    <Box
+      position={"relative"}
+      className={styles.travelDateInput}
+      ref={ref}
+      onKeyDown={onKeyDown}
+      height={size.height}
+      width={size.width}
+    >
+      {calendarInDom && (
         <Box
-          background={"white"}
-          shadow={"popover"}
-          borderRadius={"var(--swui-border-radius-large)"}
+          position={"absolute"}
+          left={-24}
+          top={-80}
+          className={cx(styles.overlay, calendarOpen && styles.calendarVisible)}
         >
-          <CardBody>
-            <Column gap={3}>
-              <Heading variant={"h2"}>{heading}</Heading>
-              <Box height={"68px"} />
-              <MonthHeader
-                setVisibleMonth={setVisibleMonth}
-                setVisiblePanel={setVisiblePanel}
-                visiblePanel={visiblePanel}
-                previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
-                monthPickerButtonLabel={monthPickerButtonLabel}
-                monthPickerButtonRef={monthPickerButtonRef}
-                nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
-                prevMonthDisabled={prevMonthDisabled}
-              />
-
-              {visiblePanel === "calendar" && (
-                <TravelCalendar
-                  calendarId={calendarId}
-                  isDateDisabled={isDateDisabled}
-                  hoverDate={hoverDate}
-                  today={today}
-                  setHoverDate={setHoverDate}
-                  onClickDate={onClickDate}
-                  visibleMonthData={visibleMonthData}
+          <Box
+            background={"white"}
+            shadow={"popover"}
+            borderRadius={"var(--swui-border-radius-large)"}
+          >
+            <CardBody>
+              <Column gap={3}>
+                <Heading variant={"h2"}>{heading}</Heading>
+                <Box height={"68px"} />
+                <MonthHeader
                   setVisibleMonth={setVisibleMonth}
-                  isValidDateRange={isValidDateRange}
-                  selectedEndDate={selectedEndDate}
-                  selectedStartDate={selectedStartDate}
-                  todayIsInVisibleMonth={todayIsInVisibleMonth}
-                  visibleMonth={visibleMonth}
+                  setVisiblePanel={setVisiblePanel}
+                  visiblePanel={visiblePanel}
+                  previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
+                  monthPickerButtonLabel={monthPickerButtonLabel}
+                  monthPickerButtonRef={monthPickerButtonRef}
+                  nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+                  prevMonthDisabled={prevMonthDisabled}
                 />
-              )}
 
-              {visiblePanel === "month-picker" && (
-                <MonthPicker
-                  firstMonth={new Date()}
-                  numMonths={12}
-                  value={visibleMonth}
-                  onValueChange={(v) => {
-                    setVisibleMonth(v);
-                    setVisiblePanel("calendar");
-                    monthPickerButtonRef.current?.focus();
-                  }}
-                  onCancel={() => {
-                    setVisiblePanel("calendar");
-                    monthPickerButtonRef.current?.focus();
-                  }}
-                />
-              )}
-            </Column>
-          </CardBody>
+                {visiblePanel === "calendar" && (
+                  <TravelCalendar
+                    calendarId={calendarId}
+                    isDateDisabled={isDateDisabled}
+                    hoverDate={hoverDate}
+                    today={today}
+                    setHoverDate={setHoverDate}
+                    onClickDate={onClickDate}
+                    visibleMonthData={visibleMonthData}
+                    setVisibleMonth={setVisibleMonth}
+                    isValidDateRange={isValidDateRange}
+                    selectedEndDate={selectedEndDate}
+                    selectedStartDate={selectedStartDate}
+                    todayIsInVisibleMonth={todayIsInVisibleMonth}
+                    visibleMonth={visibleMonth}
+                  />
+                )}
+
+                {visiblePanel === "month-picker" && (
+                  <MonthPicker
+                    firstMonth={new Date()}
+                    numMonths={12}
+                    value={visibleMonth}
+                    onValueChange={(v) => {
+                      setVisibleMonth(v);
+                      setVisiblePanel("calendar");
+                      monthPickerButtonRef.current?.focus();
+                    }}
+                    onCancel={() => {
+                      setVisiblePanel("calendar");
+                      monthPickerButtonRef.current?.focus();
+                    }}
+                  />
+                )}
+              </Column>
+            </CardBody>
+          </Box>
         </Box>
-      </Box>
+      )}
 
-      <Box position={"absolute"}>
+      <Box position={"absolute"} ref={sizeSourceRef}>
         <TravelDateTextInputs
           value={value}
           onValueChange={onValueChangeByInputs}
           localeCode={localeCode}
           startDateLabel={startDateLabel}
           endDateLabel={endDateLabel}
-          onFocus={() => setCalendarVisible(true)}
+          onFocus={showCalendar}
         />
       </Box>
     </Box>

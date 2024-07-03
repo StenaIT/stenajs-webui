@@ -1,9 +1,10 @@
 .travelDateInput {
-  &:not(:focus-within) {
-    .overlay {
-      :not(&.calendarVisible) {
-        display: none;
-      }
+  .overlay {
+    transition: opacity var(--swui-animation-time-medium) ease-in-out;
+
+    opacity: 1;
+    &:not(&.calendarVisible) {
+      opacity: 0;
     }
   }
 }

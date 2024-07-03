@@ -9,7 +9,7 @@ import { TravelDateInputValue } from "../types";
 
 export interface TravelDateTextInputsProps {
   value: TravelDateInputValue | undefined;
-  onValueChange: (value: Partial<TravelDateInputValue>) => void;
+  onValueChange: ((value: Partial<TravelDateInputValue>) => void) | undefined;
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;
