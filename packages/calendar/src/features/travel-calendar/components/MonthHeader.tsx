@@ -19,6 +19,7 @@ export interface MonthHeaderProps {
   visiblePanel: VisiblePanel;
   setVisiblePanel: (panel: VisiblePanel) => void;
   monthPickerButtonRef: Ref<HTMLButtonElement>;
+  visibleMonth: Date;
   setVisibleMonth: (date: Date) => void;
   prevMonthDisabled: boolean;
 }
@@ -31,6 +32,7 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
   setVisiblePanel,
   monthPickerButtonRef,
   setVisibleMonth,
+  visibleMonth,
   prevMonthDisabled,
 }) => {
   return (
@@ -49,13 +51,13 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
       <Row alignItems={"center"} gap={2}>
         <SecondaryButton
           leftIcon={stenaArrowLeft}
-          onClick={() => setVisibleMonth(subMonths(visiblePanel, 1))}
+          onClick={() => setVisibleMonth(subMonths(visibleMonth, 1))}
           disabled={prevMonthDisabled}
           aria-label={previousMonthButtonAriaLabel}
         />
         <SecondaryButton
           leftIcon={stenaArrowRight}
-          onClick={() => setVisibleMonth(addMonths(visiblePanel, 1))}
+          onClick={() => setVisibleMonth(addMonths(visibleMonth, 1))}
           aria-label={nextMonthButtonAriaLabel}
         />
       </Row>
