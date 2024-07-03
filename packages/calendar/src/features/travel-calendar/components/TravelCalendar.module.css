@@ -1,13 +1,11 @@
 .travelCalendar {
-  &table {
-    border-spacing: 0 4px;
-    width: fit-content;
+  border-spacing: 0 4px;
+  width: fit-content;
 
-    th {
-    }
+  th {
+  }
 
-    td {
-      padding: 0;
-    }
+  td {
+    padding: 0;
   }
 }

@@ -6,10 +6,10 @@ import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
 import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
-import { TravelDateInputValue } from "../../../features/travel-calendar/types";
+import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 
-export interface TravelDateCalendarProps
-  extends ValueAndOnValueChangeProps<TravelDateInputValue> {
+export interface TravelDateRangeCalendarProps
+  extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
   localeCode?: string;
   initialMonthInFocus?: Date;
   startDateLabel?: string;
@@ -18,7 +18,7 @@ export interface TravelDateCalendarProps
   nextMonthButtonAriaLabel?: string;
 }
 
-export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
+export const TravelDateRangeCalendar: React.FC<TravelDateRangeCalendarProps> = ({
   value,
   onValueChange,
   startDateLabel,

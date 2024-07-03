@@ -1,0 +1,10 @@
+.travelDateRangeInput {
+  .overlay {
+    transition: opacity var(--swui-animation-time-fast) ease-in-out;
+
+    opacity: 1;
+    &:not(&.calendarVisible) {
+      opacity: 0;
+    }
+  }
+}

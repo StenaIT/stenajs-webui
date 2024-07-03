@@ -5,11 +5,11 @@ import { TravelDateTextInput } from "./TravelDateTextInput";
 import { createInputMaskForDateFormat } from "../../localize-date-format/InputMaskProvider";
 import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
 import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
-import { TravelDateInputValue } from "../types";
+import { TravelDateRangeInputValue } from "../types";
 
 export interface TravelDateTextInputsProps {
-  value: TravelDateInputValue | undefined;
-  onValueChange: ((value: Partial<TravelDateInputValue>) => void) | undefined;
+  value: TravelDateRangeInputValue | undefined;
+  onValueChange: ((value: Partial<TravelDateRangeInputValue>) => void) | undefined;
   localeCode: string;
   startDateLabel?: string;
   endDateLabel?: string;

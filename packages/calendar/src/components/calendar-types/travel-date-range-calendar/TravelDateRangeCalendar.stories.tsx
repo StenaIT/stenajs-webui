@@ -1,14 +1,14 @@
 import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
-import { TravelDateCalendar } from "./TravelDateCalendar";
+import { TravelDateRangeCalendar } from "./TravelDateRangeCalendar";
 import { Column, Row } from "@stenajs-webui/core";
 import { Banner } from "@stenajs-webui/elements";
-import { TravelDateInputValue } from "../../../features/travel-calendar/types";
+import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 
 export default {
-  title: "calendar/Calendar/TravelDateCalendar",
-  component: TravelDateCalendar,
+  title: "calendar/Calendar/TravelDateRangeCalendar",
+  component: TravelDateRangeCalendar,
   decorators: [
     (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
@@ -19,13 +19,13 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<TravelDateInputValue | undefined>(
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
     undefined
   );
 
   return (
     <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateCalendar
+      <TravelDateRangeCalendar
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
@@ -60,7 +60,7 @@ export const Locales = () => {
 };
 
 const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
-  const [value, setValue] = useState<TravelDateInputValue | undefined>(
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
     undefined
   );
 
@@ -70,7 +70,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
         <Banner headerText={"Locale: " + localeCode} variant={"info"} />
       </Row>
       <Row>
-        <TravelDateCalendar
+        <TravelDateRangeCalendar
           value={value}
           onValueChange={setValue}
           localeCode={localeCode}

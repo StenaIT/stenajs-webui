@@ -10,13 +10,13 @@ import { format, isAfter, isBefore, isSameDay, isSameMonth } from "date-fns";
 import { getMonthInYear } from "../../../util/calendar/CalendarDataFactory";
 import { startCase } from "lodash-es";
 import { formatLocalizedDate } from "../../localize-date-format/LocalizedDateFormatter";
-import { TravelDateInputValue } from "../types";
+import { TravelDateRangeInputValue } from "../types";
 
 export type VisiblePanel = "calendar" | "month-picker";
 
 export const useTravelDateInput = (
-  value: TravelDateInputValue | undefined,
-  onValueChange: ((value: TravelDateInputValue) => void) | undefined,
+  value: TravelDateRangeInputValue | undefined,
+  onValueChange: ((value: TravelDateRangeInputValue) => void) | undefined,
   localeCode: string,
   initialMonthInFocus: Date | undefined
 ) => {
@@ -87,7 +87,7 @@ export const useTravelDateInput = (
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
 
   const onValueChangeByInputs = useCallback<
-    (value: TravelDateInputValue) => void
+    (value: TravelDateRangeInputValue) => void
   >(
     (v) => {
       const startDate =

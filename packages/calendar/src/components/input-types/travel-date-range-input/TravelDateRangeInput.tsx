@@ -14,12 +14,12 @@ import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
 import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
-import { TravelDateInputValue } from "../../../features/travel-calendar/types";
-import styles from "./TravelDateInput.module.css";
+import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
+import styles from "./TravelDateRangeInput.module.css";
 import cx from "classnames";
 
-export interface TravelDateInputProps
-  extends ValueAndOnValueChangeProps<TravelDateInputValue> {
+export interface TravelDateRangeInputProps
+  extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
   localeCode?: string;
   initialMonthInFocus?: Date;
   startDateLabel?: string;
@@ -27,9 +27,10 @@ export interface TravelDateInputProps
   previousMonthButtonAriaLabel?: string;
   nextMonthButtonAriaLabel?: string;
   heading?: string;
+  zIndex?: number;
 }
 
-export const TravelDateInput: React.FC<TravelDateInputProps> = ({
+export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   value,
   onValueChange,
   startDateLabel,
@@ -39,6 +40,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
   heading = "Select dates",
+  zIndex = 1000,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -69,7 +71,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
       if (!calendarOpenRef.current) {
         setCalendarInDom(false);
       }
-    }, 300);
+    }, 120);
   }, [calendarInDom]);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -121,15 +123,27 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   return (
     <Box
       position={"relative"}
-      className={styles.travelDateInput}
+      className={styles.travelDateRangeInput}
       ref={ref}
       onKeyDown={onKeyDown}
       height={size.height}
       width={size.width}
     >
+      <Box position={"absolute"} ref={sizeSourceRef} zIndex={zIndex}>
+        <TravelDateTextInputs
+          value={value}
+          onValueChange={onValueChangeByInputs}
+          localeCode={localeCode}
+          startDateLabel={startDateLabel}
+          endDateLabel={endDateLabel}
+          onFocus={showCalendar}
+        />
+      </Box>
+
       {calendarInDom && (
         <Box
           position={"absolute"}
+          zIndex={zIndex - 1}
           left={-24}
           top={-80}
           className={cx(styles.overlay, calendarOpen && styles.calendarVisible)}
@@ -193,17 +207,6 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           </Box>
         </Box>
       )}
-
-      <Box position={"absolute"} ref={sizeSourceRef}>
-        <TravelDateTextInputs
-          value={value}
-          onValueChange={onValueChangeByInputs}
-          localeCode={localeCode}
-          startDateLabel={startDateLabel}
-          endDateLabel={endDateLabel}
-          onFocus={showCalendar}
-        />
-      </Box>
     </Box>
   );
 };
