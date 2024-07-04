@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   KeyboardEventHandler,
+  ReactNode,
   useCallback,
   useLayoutEffect,
   useRef,
@@ -8,7 +9,6 @@ import {
 } from "react";
 import {
   Box,
-  Column,
   Heading,
   HeadingVariant,
   useOnClickOutside,
@@ -24,6 +24,10 @@ import { TravelDateRangeInputValue } from "../../../features/travel-calendar/typ
 import styles from "./TravelDateRangeInput.module.css";
 import cx from "classnames";
 
+export interface RenderBelowCalendarArgs {
+  hideCalendar: () => void;
+}
+
 export interface TravelDateRangeInputProps
   extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
   localeCode?: string;
@@ -34,8 +38,12 @@ export interface TravelDateRangeInputProps
   nextMonthButtonAriaLabel?: string;
   heading?: string;
   headingLevel?: HeadingVariant;
+  firstMonthInMonthPicker?: Date;
+  numMonthsInMonthPicker?: number;
   zIndex?: number;
   zIndexWhenClosed?: number;
+  onHideCalendar?: () => void;
+  renderBelowCalendar?: (args: RenderBelowCalendarArgs) => ReactNode;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -49,8 +57,12 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   nextMonthButtonAriaLabel = "Next month",
   heading,
   headingLevel,
+  numMonthsInMonthPicker = 12,
+  firstMonthInMonthPicker = new Date(),
   zIndex = 1000,
   zIndexWhenClosed,
+  onHideCalendar,
+  renderBelowCalendar,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -77,12 +89,14 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
 
     setCalendarOpen(false);
     calendarOpenRef.current = false;
+    onHideCalendar?.();
+
     setTimeout(() => {
       if (!calendarOpenRef.current) {
         setCalendarInDom(false);
       }
     }, 120);
-  }, [calendarInDom]);
+  }, [calendarInDom, onHideCalendar]);
 
   const ref = useRef<HTMLDivElement>(null);
   const sizeSourceRef = useRef<HTMLDivElement>(null);
@@ -152,8 +166,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
         <Box
           position={"absolute"}
           zIndex={zIndex - 1}
-          left={-24}
-          top={heading ? -80 : -24}
+          left={"-2.4rem"}
+          top={heading ? "-8.0rem" : "-2.4rem"}
           className={cx(styles.overlay, calendarOpen && styles.calendarVisible)}
         >
           <Box
@@ -161,41 +175,40 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
             shadow={"popover"}
             borderRadius={"var(--swui-border-radius-large)"}
           >
-            <CardBody>
-              <Column gap={3}>
-                {heading && (
-                  <Heading variant={"h2"} as={headingLevel}>
-                    {heading}
-                  </Heading>
-                )}
-                <Box height={"68px"} />
-                <MonthHeader
-                  {...inputProps}
-                  previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
-                  nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+            <CardBody gap={3}>
+              {heading && (
+                <Heading variant={"h2"} as={headingLevel}>
+                  {heading}
+                </Heading>
+              )}
+              <Box height={"6.8rem"} />
+              <MonthHeader
+                {...inputProps}
+                previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
+                nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+              />
+
+              {visiblePanel === "calendar" && (
+                <TravelCalendar {...inputProps} />
+              )}
+
+              {visiblePanel === "month-picker" && (
+                <MonthPicker
+                  firstMonth={firstMonthInMonthPicker}
+                  numMonths={numMonthsInMonthPicker}
+                  value={visibleMonth}
+                  onValueChange={(v) => {
+                    setVisibleMonth(v);
+                    setVisiblePanel("calendar");
+                    monthPickerButtonRef.current?.focus();
+                  }}
+                  onCancel={() => {
+                    setVisiblePanel("calendar");
+                    monthPickerButtonRef.current?.focus();
+                  }}
                 />
-
-                {visiblePanel === "calendar" && (
-                  <TravelCalendar {...inputProps} />
-                )}
-
-                {visiblePanel === "month-picker" && (
-                  <MonthPicker
-                    firstMonth={new Date()}
-                    numMonths={12}
-                    value={visibleMonth}
-                    onValueChange={(v) => {
-                      setVisibleMonth(v);
-                      setVisiblePanel("calendar");
-                      monthPickerButtonRef.current?.focus();
-                    }}
-                    onCancel={() => {
-                      setVisiblePanel("calendar");
-                      monthPickerButtonRef.current?.focus();
-                    }}
-                  />
-                )}
-              </Column>
+              )}
+              {renderBelowCalendar?.({ hideCalendar })}
             </CardBody>
           </Box>
         </Box>

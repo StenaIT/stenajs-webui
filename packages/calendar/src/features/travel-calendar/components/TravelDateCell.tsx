@@ -168,7 +168,7 @@ const getTabIndex = (
   /**
    * If date has been selected that date should be tabIndex = 0.
    * If no date has been selected, today's date should be tabIndex = 0.
-   * All else should be 1.
+   * All else should be -1.
    */
   if (
     selectedStartDate && selectedStartDateIsVisible

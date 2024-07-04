@@ -18,6 +18,8 @@ export interface TravelDateRangeCalendarProps
   nextMonthButtonAriaLabel?: string;
   heading?: string;
   headingLevel?: HeadingVariant;
+  firstMonthInMonthPicker?: Date;
+  numMonthsInMonthPicker?: number;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -33,6 +35,8 @@ export const TravelDateRangeCalendar: React.FC<
   nextMonthButtonAriaLabel = "Next month",
   heading,
   headingLevel,
+  numMonthsInMonthPicker = 12,
+  firstMonthInMonthPicker = new Date(),
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -75,8 +79,8 @@ export const TravelDateRangeCalendar: React.FC<
 
       {visiblePanel === "month-picker" && (
         <MonthPicker
-          firstMonth={new Date()}
-          numMonths={12}
+          firstMonth={firstMonthInMonthPicker}
+          numMonths={numMonthsInMonthPicker}
           value={visibleMonth}
           onValueChange={(v) => {
             setVisibleMonth(v);
