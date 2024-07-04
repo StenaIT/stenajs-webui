@@ -45,6 +45,7 @@ export enum WeekDay {
 
 export interface DayData {
   name: string;
+  fullName: string;
   date: Date; // YYYY-MM
   dateString: string; // YYYY-MM
   weekNumber: number;
@@ -94,6 +95,9 @@ export const getMonthInYear = (
   month: number,
   locale: Locale
 ): MonthData => {
+  if (isNaN(year) || isNaN(month)) {
+    throw new Error("getMonthInYear() received NaN.");
+  }
   const yearToUse = year + Math.floor(month / 12);
   const monthToUse = month % 12;
   const firstDayOfMonth = new Date(yearToUse, monthToUse, 1);
@@ -151,6 +155,7 @@ export const createDay = (date: Date, locale: Locale): DayData => {
   return {
     date,
     name: format(date, "EEE", locale ? { locale } : undefined),
+    fullName: format(date, "EEEE", locale ? { locale } : undefined),
     dateString: format(addHours(date, 12), DateFormats.fullDate),
     weekNumber: getWeek(date, { locale }),
     year: getYear(date),

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { LabelledTextInput } from "./LabelledTextInput";
-import { Column, Heading } from "@stenajs-webui/core";
+import { Column, Heading, Row } from "@stenajs-webui/core";
 
 export default {
   title: "forms/LabelledTextInput",
@@ -30,19 +30,26 @@ export const Demo = () => (
       variant={"error"}
       id={"testlarge"}
     />
-    <Heading>Combined</Heading>
-    <Column>
-      <LabelledTextInput
-        id={"testto"}
-        label={"To"}
-        borderRadiusVariant={"onlyTop"}
-      />
-      <LabelledTextInput
-        id={"testfrom"}
-        label={"From"}
-        borderRadiusVariant={"onlyBottom"}
-      />
-    </Column>
+    <Heading>Combined vertical</Heading>
+    <Row>
+      <Column>
+        <LabelledTextInput
+          id={"testto"}
+          label={"To"}
+          borderRadiusVariant={"onlyTop"}
+        />
+        <LabelledTextInput
+          id={"testfrom"}
+          label={"From"}
+          borderRadiusVariant={"onlyBottom"}
+        />
+      </Column>
+    </Row>
+    <Heading>Combined horizontal</Heading>
+    <Row>
+      <LabelledTextInput label={"To"} borderRadiusVariant={"onlyLeft"} />
+      <LabelledTextInput label={"From"} borderRadiusVariant={"onlyRight"} />
+    </Row>
   </Column>
 );
 

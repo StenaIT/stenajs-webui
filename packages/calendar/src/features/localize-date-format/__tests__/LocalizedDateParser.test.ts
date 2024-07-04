@@ -3,9 +3,9 @@ import { parseLocalizedDateString } from "../LocalizedDateParser";
 describe("LocalizedDateParser", () => {
   describe("parseLocalizedDateStringElseUndefined", () => {
     describe("for invalid localeCode", () => {
-      it("returns invalid date", () => {
+      it("returns undefined", () => {
         const d = parseLocalizedDateString("2024-03-12", "hejhej");
-        expect(isNaN(d.getTime())).toBe(true);
+        expect(d).toBeUndefined();
       });
     });
     describe("for Sweden", () => {

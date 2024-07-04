@@ -29,6 +29,17 @@
     border-top-right-radius: 0;
   }
 
+  &&.onlyLeft {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-color: transparent;
+  }
+
+  &&.onlyRight {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
   &:focus-within {
     outline: var(--swui-focus-outline);
     outline-offset: -1px;

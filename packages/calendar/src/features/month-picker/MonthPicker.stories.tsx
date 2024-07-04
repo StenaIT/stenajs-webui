@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { MonthPicker, MonthPickerValue } from "./MonthPicker";
+import { MonthPicker } from "./MonthPicker";
 
 export default {
   title: "calendar/Pickers/MonthPicker",
@@ -8,7 +8,7 @@ export default {
 };
 
 export const Standard = () => {
-  const [value, setValue] = useState<MonthPickerValue | undefined>(undefined);
+  const [value, setValue] = useState<Date | undefined>(undefined);
 
   return (
     <div style={{ display: "inline-block" }}>

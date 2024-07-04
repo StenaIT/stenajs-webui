@@ -1,0 +1,82 @@
+.travelDateCell {
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+  border-radius: var(--swui-max-border-radius);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    .outline {
+      outline: var(--swui-focus-outline);
+      outline-width: var(--swui-focus-outline-width);
+      background: transparent;
+      position: absolute;
+      border-radius: var(--swui-max-border-radius);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .contentWrapper.contentWrapper.contentWrapper {
+      border-color: transparent;
+    }
+  }
+
+  .contentWrapper {
+    cursor: pointer;
+    border-radius: var(--swui-max-border-radius);
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    background: transparent;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+    &.isToday {
+      border-color: var(--lhds-color-ui-400);
+    }
+
+    &.isSelectionStart,
+    &.isSelectionEnd {
+      border-color: var(--modern-red);
+    }
+
+    &.isSelectionStart {
+      background: var(--modern-red);
+      span {
+        color: white;
+      }
+    }
+
+    &.isSelectionEnd:not(.isSelectionStart) {
+      background: white;
+    }
+
+    &.hover {
+      border-color: var(--modern-red);
+
+      &.startSelected:not(.endSelected):not(.isSelectionStart) {
+        background: white;
+
+        span {
+          color: var(--swui-text-primary-color);
+        }
+      }
+    }
+  }
+}

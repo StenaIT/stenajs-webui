@@ -12,7 +12,9 @@ export type LabelledTextInputSize = "medium" | "large";
 export type LabelledTextInputBorderVariant =
   | "normalBorder"
   | "onlyTop"
-  | "onlyBottom";
+  | "onlyBottom"
+  | "onlyLeft"
+  | "onlyRight";
 
 export interface LabelledTextInputProps
   extends Omit<InputElementProps, "value" | "size">,
@@ -43,6 +45,7 @@ export const LabelledTextInput = React.forwardRef<
       onValueChange,
       borderRadiusVariant = "normalBorder",
       variant = "normal",
+      width,
       ...inputProps
     },
     ref
@@ -68,6 +71,7 @@ export const LabelledTextInput = React.forwardRef<
           styles[size],
           disabled && styles.disabled
         )}
+        style={width ? { width } : undefined}
       >
         <InputLabel
           htmlFor={activeId}

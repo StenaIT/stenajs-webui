@@ -2,6 +2,7 @@ import { Locale } from "date-fns";
 import {
   da,
   de,
+  deAT,
   enGB,
   enUS,
   es,
@@ -10,7 +11,6 @@ import {
   nl,
   pl,
   sv,
-  deAT,
 } from "date-fns/locale";
 
 type LocalesMap = {
@@ -36,4 +36,8 @@ export const getLocaleForLocaleCode = (
   localeCode: string
 ): Locale | undefined => {
   return locales[localeCode];
+};
+
+export const getDefaultLocaleForFormatting = (): Locale => {
+  return locales["sv"];
 };
