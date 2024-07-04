@@ -24,3 +24,5 @@ build
 lerna-debug.log
 .vscode/settings.json
 
+ti-*.log
+.log*
