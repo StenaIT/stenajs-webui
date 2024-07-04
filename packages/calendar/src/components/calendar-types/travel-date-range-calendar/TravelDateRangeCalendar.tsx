@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Column } from "@stenajs-webui/core";
+import { Column, Heading, HeadingVariant } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputFields } from "../../../features/travel-calendar/components/TravelDateTextInputFields";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
@@ -16,6 +16,8 @@ export interface TravelDateRangeCalendarProps
   endDateLabel?: string;
   previousMonthButtonAriaLabel?: string;
   nextMonthButtonAriaLabel?: string;
+  heading?: string;
+  headingLevel?: HeadingVariant;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -29,6 +31,8 @@ export const TravelDateRangeCalendar: React.FC<
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
+  heading,
+  headingLevel,
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -48,6 +52,11 @@ export const TravelDateRangeCalendar: React.FC<
 
   return (
     <Column gap={3}>
+      {heading && (
+        <Heading variant={"h2"} as={headingLevel}>
+          {heading}
+        </Heading>
+      )}
       <TravelDateTextInputFields
         value={value}
         onValueChange={onValueChangeByInputs}

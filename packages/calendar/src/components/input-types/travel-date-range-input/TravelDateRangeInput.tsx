@@ -6,7 +6,13 @@ import {
   useRef,
   useState,
 } from "react";
-import { Box, Column, Heading, useOnClickOutside } from "@stenajs-webui/core";
+import {
+  Box,
+  Column,
+  Heading,
+  HeadingVariant,
+  useOnClickOutside,
+} from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { TravelDateTextInputFields } from "../../../features/travel-calendar/components/TravelDateTextInputFields";
 import { CardBody } from "@stenajs-webui/elements";
@@ -27,7 +33,9 @@ export interface TravelDateRangeInputProps
   previousMonthButtonAriaLabel?: string;
   nextMonthButtonAriaLabel?: string;
   heading?: string;
+  headingLevel?: HeadingVariant;
   zIndex?: number;
+  zIndexWhenClosed?: number;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -39,8 +47,10 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
-  heading = "Select dates",
+  heading,
+  headingLevel,
   zIndex = 1000,
+  zIndexWhenClosed,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -123,7 +133,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
       height={size.height}
       width={size.width}
     >
-      <Box position={"absolute"} ref={sizeSourceRef} zIndex={zIndex}>
+      <Box
+        position={"absolute"}
+        ref={sizeSourceRef}
+        zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
+      >
         <TravelDateTextInputFields
           value={value}
           onValueChange={onValueChangeByInputs}
@@ -139,7 +153,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           position={"absolute"}
           zIndex={zIndex - 1}
           left={-24}
-          top={-80}
+          top={heading ? -80 : -24}
           className={cx(styles.overlay, calendarOpen && styles.calendarVisible)}
         >
           <Box
@@ -149,7 +163,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           >
             <CardBody>
               <Column gap={3}>
-                <Heading variant={"h2"}>{heading}</Heading>
+                {heading && (
+                  <Heading variant={"h2"} as={headingLevel}>
+                    {heading}
+                  </Heading>
+                )}
                 <Box height={"68px"} />
                 <MonthHeader
                   {...inputProps}

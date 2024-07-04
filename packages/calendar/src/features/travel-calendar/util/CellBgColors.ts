@@ -1,6 +1,8 @@
 import { cssColor } from "@stenajs-webui/theme";
 import { isAfter, isBefore, isSameDay } from "date-fns";
 
+const rangeBgColor = cssColor("--lhds-color-red-100");
+
 export const getCellBackgroundColors = (
   date: Date,
   selectedStartDate: Date | undefined,
@@ -52,8 +54,8 @@ export const getCellBackgroundColors = (
 
   if (isInSelectionRange) {
     return {
-      left: cssColor("--lhds-color-red-200"),
-      right: cssColor("--lhds-color-red-200"),
+      left: rangeBgColor,
+      right: rangeBgColor,
     };
   }
 
@@ -61,13 +63,13 @@ export const getCellBackgroundColors = (
     if (isSameDay(date, selectedStartDate)) {
       return {
         left: "transparent",
-        right: cssColor("--lhds-color-red-200"),
+        right: rangeBgColor,
       };
     }
 
     if (isSameDay(date, selectedEndDate)) {
       return {
-        left: cssColor("--lhds-color-red-200"),
+        left: rangeBgColor,
         right: "transparent",
       };
     }
@@ -82,13 +84,13 @@ export const getCellBackgroundColors = (
     if (isSameDay(date, selectedStartDate)) {
       return {
         left: "transparent",
-        right: cssColor("--lhds-color-red-200"),
+        right: rangeBgColor,
       };
     }
 
     if (isSameDay(date, hoverDate)) {
       return {
-        left: cssColor("--lhds-color-red-200"),
+        left: rangeBgColor,
         right: "transparent",
       };
     }
@@ -96,8 +98,8 @@ export const getCellBackgroundColors = (
 
   if (isInHoverRange) {
     return {
-      left: cssColor("--lhds-color-red-200"),
-      right: cssColor("--lhds-color-red-200"),
+      left: rangeBgColor,
+      right: rangeBgColor,
     };
   }
 

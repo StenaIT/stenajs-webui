@@ -34,6 +34,23 @@ export const Standard = () => {
   );
 };
 
+export const WithHeading = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+      <TravelDateRangeInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        heading={"Select dates"}
+      />
+    </div>
+  );
+};
+
 export const Locales = () => {
   const locales = [
     "sv",
@@ -65,7 +82,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
   );
 
   return (
-    <Column gap={2}>
+    <Column gap={2} indent={5}>
       <Row>
         <Banner headerText={"Locale: " + localeCode} variant={"info"} />
       </Row>
@@ -74,6 +91,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
           value={value}
           onValueChange={setValue}
           localeCode={localeCode}
+          heading={"Select dates"}
         />
       </Row>
     </Column>

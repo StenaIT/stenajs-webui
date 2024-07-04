@@ -34,6 +34,23 @@ export const Standard = () => {
   );
 };
 
+export const WithHeading = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        heading={"Select dates"}
+      />
+    </div>
+  );
+};
+
 export const Locales = () => {
   const locales = [
     "sv",
