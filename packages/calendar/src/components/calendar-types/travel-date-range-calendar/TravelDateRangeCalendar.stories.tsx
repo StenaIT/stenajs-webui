@@ -2,9 +2,10 @@ import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateRangeCalendar } from "./TravelDateRangeCalendar";
-import { Column, Row } from "@stenajs-webui/core";
-import { Banner } from "@stenajs-webui/elements";
+import { Column, Row, Spacing } from "@stenajs-webui/core";
+import { Banner, Label } from "@stenajs-webui/elements";
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
+import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 
 export default {
   title: "calendar/Calendar/TravelDateRangeCalendar",
@@ -94,5 +95,41 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
         />
       </Row>
     </Column>
+  );
+};
+
+export const ParseDate = () => {
+  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
+
+  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  const setValueHandler = (value: TravelDateRangeInputValue) => {
+    setValue(value);
+    if (value.startDate) {
+      setStartDate(parseLocalizedDateString(value.startDate, "sv"));
+    }
+    if (value.endDate) {
+      setEndDate(parseLocalizedDateString(value.endDate, "sv"));
+    }
+  };
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValueHandler}
+        localeCode={"sv"}
+        heading={"Select dates"}
+      />
+      <Spacing num={2} />
+      <Row gap={4}>
+        <Label text={"Start date"}>{startDate?.toDateString() ?? "-"}</Label>
+        <Label text={"End date"}>{endDate?.toDateString() ?? "-"}</Label>
+      </Row>
+    </div>
   );
 };
