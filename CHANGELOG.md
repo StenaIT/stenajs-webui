@@ -1,3 +1,16 @@
+# v20.12.0 (Thu Jul 04 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/forms`
+  - New travel calendar [#753](https://github.com/StenaIT/stenajs-webui/pull/753) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.11.6 (Thu Jun 27 2024)
 
 #### 🐛 Bug Fix
