@@ -41,7 +41,7 @@ export const WithHeading = () => {
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
       />
     </div>
   );
@@ -109,7 +109,7 @@ export const ParseDate = () => {
         value={value}
         onValueChange={setValueHandler}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
       />
       <Spacing num={2} />
       <Row gap={4}>
