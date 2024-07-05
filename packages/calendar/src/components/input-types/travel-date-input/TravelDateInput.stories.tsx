@@ -48,7 +48,7 @@ export const WithHeading = () => {
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
       />
     </div>
   );
@@ -77,7 +77,7 @@ export const ParseDate = () => {
         value={value}
         onValueChange={setValueHandler}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
       />
       <Spacing num={4} />
       <Row gap={4}>
@@ -126,7 +126,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
           value={value}
           onValueChange={setValue}
           localeCode={localeCode}
-          heading={"Select dates"}
+          heading={"Select date"}
         />
       </Row>
     </Column>
@@ -142,7 +142,7 @@ export const WithValidationAndCloseButton = () => {
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
         renderBelowCalendar={({ hideCalendar }) => {
           return (
             <Column gap={2}>
@@ -165,7 +165,7 @@ export const WithPresets = () => {
         value={value}
         onValueChange={setValue}
         localeCode={"sv"}
-        heading={"Select dates"}
+        heading={"Select date"}
         renderBelowCalendar={() => {
           return (
             <Column gap={2}>
