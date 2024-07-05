@@ -1,3 +1,16 @@
+# v20.13.0 (Fri Jul 05 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - New components: TravelDateCalendar and TravelDateInput [#755](https://github.com/StenaIT/stenajs-webui/pull/755) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.12.0 (Thu Jul 04 2024)
 
 #### 🚀 Enhancement
