@@ -10,11 +10,11 @@ import { format, isAfter, isBefore, isSameDay, isSameMonth } from "date-fns";
 import { getMonthInYear } from "../../../util/calendar/CalendarDataFactory";
 import { startCase } from "lodash-es";
 import { formatLocalizedDate } from "../../localize-date-format/LocalizedDateFormatter";
-import { TravelDateRangeInputValue, VisiblePanel } from "../types";
+import { VisiblePanel } from "../types";
 
-export const useTravelDateRangeInput = (
-  value: TravelDateRangeInputValue | undefined,
-  onValueChange: ((value: TravelDateRangeInputValue) => void) | undefined,
+export const useTravelDateInput = (
+  value: string | undefined,
+  onValueChange: ((value: string) => void) | undefined,
   localeCode: string,
   initialMonthInFocus: Date | undefined
 ) => {
@@ -31,24 +31,16 @@ export const useTravelDateRangeInput = (
     [localeCode]
   );
 
-  const selectedStartDate = useMemo(
+  const selectedDate = useMemo(
     () =>
-      value?.startDate?.length === dateFormat.length
-        ? parseLocalizedDateString(value.startDate, localeCode)
+      value?.length === dateFormat.length
+        ? parseLocalizedDateString(value, localeCode)
         : undefined,
-    [dateFormat.length, localeCode, value?.startDate]
-  );
-
-  const selectedEndDate = useMemo(
-    () =>
-      value?.endDate?.length === dateFormat.length
-        ? parseLocalizedDateString(value.endDate, localeCode)
-        : undefined,
-    [dateFormat.length, localeCode, value?.endDate]
+    [dateFormat.length, localeCode, value]
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
-    initialMonthInFocus ?? selectedStartDate ?? new Date()
+    initialMonthInFocus ?? selectedDate ?? new Date()
   );
 
   const setVisibleMonthClamped = useCallback(
@@ -84,53 +76,25 @@ export const useTravelDateRangeInput = (
 
   const [visiblePanel, setVisiblePanel] = useState<VisiblePanel>("calendar");
 
-  const onValueChangeByInputs = useCallback<
-    (value: TravelDateRangeInputValue) => void
-  >(
+  const onValueChangeByInputs = useCallback<(value: string) => void>(
     (v) => {
       const startDate =
-        v?.startDate?.length === dateFormat.length
-          ? parseLocalizedDateString(v.startDate, localeCode)
-          : undefined;
-
-      const endDate =
-        v?.endDate?.length === dateFormat.length
-          ? parseLocalizedDateString(v.endDate, localeCode)
+        v?.length === dateFormat.length
+          ? parseLocalizedDateString(v, localeCode)
           : undefined;
 
       if (startDate) {
         setVisibleMonthClamped(startDate);
-      } else if (endDate) {
-        setVisibleMonthClamped(endDate);
       }
 
-      onValueChange?.({
-        ...value,
-        ...v,
-      });
+      onValueChange?.(v);
     },
-    [
-      dateFormat.length,
-      localeCode,
-      onValueChange,
-      setVisibleMonthClamped,
-      value,
-    ]
+    [dateFormat.length, localeCode, onValueChange, setVisibleMonthClamped]
   );
 
   const prevMonthDisabled = useMemo(
     () => isSameMonth(today, visibleMonth) || isBefore(visibleMonth, today),
     [today, visibleMonth]
-  );
-
-  const isValidDateRange = useMemo(
-    () =>
-      (selectedStartDate &&
-        selectedEndDate &&
-        (isSameDay(selectedStartDate, selectedEndDate) ||
-          isBefore(selectedStartDate, selectedEndDate))) ??
-      false,
-    [selectedEndDate, selectedStartDate]
   );
 
   const isDateDisabled = useCallback<(date: Date) => boolean>(
@@ -139,37 +103,13 @@ export const useTravelDateRangeInput = (
   );
 
   const onClickDate = (date: Date) => {
-    const isSameMonthAndYear =
-      date.getFullYear() === visibleMonth.getFullYear() &&
-      date.getMonth() === visibleMonth.getMonth();
-
-    if (isSameMonthAndYear) {
-      if (selectedStartDate && selectedEndDate == null) {
-        if (isBefore(date, selectedStartDate)) {
-          onValueChange?.({
-            startDate: formatLocalizedDate(date, localeCode),
-            endDate: undefined,
-          });
-        } else {
-          onValueChange?.({
-            startDate: value?.startDate,
-            endDate: formatLocalizedDate(date, localeCode),
-          });
-        }
-      } else {
-        onValueChange?.({
-          startDate: formatLocalizedDate(date, localeCode),
-          endDate: undefined,
-        });
-      }
-    }
+    onValueChange?.(formatLocalizedDate(date, localeCode));
   };
 
   return {
     isDateDisabled,
     onClickDate,
     onValueChangeByInputs,
-    isValidDateRange,
     prevMonthDisabled,
     monthPickerButtonRef,
     calendarId,
@@ -181,8 +121,7 @@ export const useTravelDateRangeInput = (
     todayIsInVisibleMonth,
     hoverDate,
     setHoverDate,
-    selectedStartDate,
-    selectedEndDate,
+    selectedDate,
     today,
     visibleMonth,
   };

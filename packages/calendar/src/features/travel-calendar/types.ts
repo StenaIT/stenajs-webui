@@ -6,3 +6,5 @@ export interface TravelDateRangeInputValue {
   startDate?: string;
   endDate?: string;
 }
+
+export type VisiblePanel = "calendar" | "month-picker";
