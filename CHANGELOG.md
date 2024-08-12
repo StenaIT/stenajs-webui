@@ -1,3 +1,16 @@
+# v20.13.1 (Mon Aug 12 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - New rain icon [#756](https://github.com/StenaIT/stenajs-webui/pull/756) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.13.0 (Fri Jul 05 2024)
 
 #### 🚀 Enhancement
