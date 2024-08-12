@@ -1742,6 +1742,19 @@ export const stenaQuestionCircle: MediumIcon = {
   size: "medium",
 };
 
+export const stenaRain: MediumIcon = {
+  icon: [
+    24,
+    24,
+    [],
+    "",
+    "M3.67 14.93C3.67 19.53 7.4 23.26 12 23.26 16.6 23.26 20.33 19.53 20.33 14.93 20.33 12 18.07 7.83 13.58 2.04L12 0 10.11 2.44C5.82 8.03 3.67 12.07 3.67 14.93ZM18.33 14.93C18.33 18.43 15.5 21.26 12 21.26 8.5 21.26 5.67 18.43 5.67 14.93 5.67 12.71 7.58 9.08 11.41 4.03L12 3.26C16.22 8.71 18.33 12.6 18.33 14.93Z",
+  ],
+  iconName: "random",
+  prefix: "fal",
+  size: "medium",
+};
+
 export const stenaRateThumbDown: MediumIcon = {
   icon: [
     24,
