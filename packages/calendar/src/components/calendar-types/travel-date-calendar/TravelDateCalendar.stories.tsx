@@ -95,7 +95,7 @@ export const Sizes = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <Column gap={4}>
+    <Column gap={4} indent={4}>
       {(["small", "medium", "large"] as const).map((size) => (
         <Column gap={2}>
           <Heading>{size}</Heading>
