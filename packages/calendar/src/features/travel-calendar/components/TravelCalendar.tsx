@@ -10,6 +10,8 @@ import { isSameDay } from "date-fns";
 import { Dispatch, SetStateAction } from "react";
 import styles from "./TravelCalendar.module.css";
 
+export type TravelCalendarSizeVariant = "small" | "medium" | "large";
+
 export interface TravelCalendarProps {
   visibleMonthData: MonthData;
   onClickDate: (date: Date) => void;
@@ -24,6 +26,7 @@ export interface TravelCalendarProps {
   isDateDisabled: (date: Date) => boolean;
   calendarId: string;
   todayIsInVisibleMonth: boolean;
+  size?: TravelCalendarSizeVariant;
 }
 
 export const TravelCalendar: React.FC<TravelCalendarProps> = ({
@@ -40,6 +43,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
   calendarId,
   isDateDisabled,
   todayIsInVisibleMonth,
+  size = "medium",
 }) => {
   return (
     <table className={styles.travelCalendar}>
@@ -56,6 +60,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
             <tr key={week.weekNumber}>
               {week.days.map((day) => (
                 <TravelDateCell
+                  size={size}
                   onClick={(d) => onClickDate(d)}
                   key={day.dateString}
                   visibleMonth={visibleMonth}

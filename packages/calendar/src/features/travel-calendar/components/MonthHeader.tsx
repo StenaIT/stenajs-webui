@@ -11,6 +11,7 @@ import {
 import { Row } from "@stenajs-webui/core";
 import { addMonths, subMonths } from "date-fns";
 import { VisiblePanel } from "../types";
+import { TravelCalendarSizeVariant } from "./TravelCalendar";
 
 export interface MonthHeaderProps {
   monthPickerButtonLabel: string;
@@ -22,6 +23,7 @@ export interface MonthHeaderProps {
   visibleMonth: Date;
   setVisibleMonth: (date: Date) => void;
   prevMonthDisabled: boolean;
+  calendarSize: TravelCalendarSizeVariant;
 }
 
 export const MonthHeader: React.FC<MonthHeaderProps> = ({
@@ -34,6 +36,7 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
   setVisibleMonth,
   visibleMonth,
   prevMonthDisabled,
+  calendarSize,
 }) => {
   return (
     <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
@@ -47,6 +50,7 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
           )
         }
         ref={monthPickerButtonRef}
+        size={calendarSize === "large" ? "large" : "medium"}
       />
       <Row alignItems={"center"} gap={2}>
         <SecondaryButton
@@ -54,11 +58,13 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
           onClick={() => setVisibleMonth(subMonths(visibleMonth, 1))}
           disabled={prevMonthDisabled}
           aria-label={previousMonthButtonAriaLabel}
+          size={calendarSize === "large" ? "large" : "medium"}
         />
         <SecondaryButton
           leftIcon={stenaArrowRight}
           onClick={() => setVisibleMonth(addMonths(visibleMonth, 1))}
           aria-label={nextMonthButtonAriaLabel}
+          size={calendarSize === "large" ? "large" : "medium"}
         />
       </Row>
     </Row>

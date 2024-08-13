@@ -1,0 +1,16 @@
+.travelDateCellBackground {
+  &.small {
+    width: 20px;
+    height: 40px;
+  }
+
+  &.medium {
+    width: 24px;
+    height: 48px;
+  }
+
+  &.large {
+    width: 32px;
+    height: 64px;
+  }
+}

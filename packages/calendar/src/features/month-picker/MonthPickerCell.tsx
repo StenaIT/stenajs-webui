@@ -15,6 +15,7 @@ import {
   getDomIdForMonth,
 } from "./MonthPickerKeyboardNavigation";
 import { Position } from "./Position";
+import { MonthPickerSizeVariant } from "./MonthPicker";
 
 interface MonthPickerCellProps {
   month: Date;
@@ -26,6 +27,7 @@ interface MonthPickerCellProps {
   firstAvailableMonth: Date;
   lastAvailableMonth: Date;
   position: Position;
+  size: MonthPickerSizeVariant;
 }
 
 export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
@@ -36,6 +38,7 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   autoFocus,
   monthPickerId,
   position,
+  size,
 }) => {
   const label = useMemo(
     () => startCase(format(month, "MMM", { locale })),
@@ -50,6 +53,7 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   const ref = useRef<HTMLButtonElement>(null);
 
   const domId = getDomIdForMonth(position, monthPickerId);
+  const tabIndex = selected ? 0 : -1;
 
   useEffect(() => {
     ref.current?.focus();
@@ -81,6 +85,8 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
           aria-selected={true}
           autoFocus={autoFocus}
           ref={ref}
+          size={size === "large" ? "large" : "medium"}
+          tabIndex={tabIndex}
         />
       ) : (
         <FlatButton
@@ -88,6 +94,8 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
           label={label}
           aria-label={abbr}
           onClick={onClick}
+          size={size === "large" ? "large" : "medium"}
+          tabIndex={tabIndex}
         />
       )}
     </Row>

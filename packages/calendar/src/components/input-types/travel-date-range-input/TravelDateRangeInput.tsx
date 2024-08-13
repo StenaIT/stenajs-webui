@@ -19,7 +19,10 @@ import { CardBody } from "@stenajs-webui/elements";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateRangeInput } from "../../../features/travel-calendar/hooks/UseTravelDateRangeInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
-import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
+import {
+  TravelCalendar,
+  TravelCalendarSizeVariant,
+} from "../../../features/travel-calendar/components/TravelCalendar";
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 import styles from "./TravelDateRangeInput.module.css";
 import cx from "classnames";
@@ -44,6 +47,7 @@ export interface TravelDateRangeInputProps
   zIndexWhenClosed?: number;
   onHideCalendar?: () => void;
   renderBelowCalendar?: (args: RenderBelowCalendarArgs) => ReactNode;
+  size?: TravelCalendarSizeVariant;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -63,10 +67,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   zIndexWhenClosed,
   onHideCalendar,
   renderBelowCalendar,
+  size = "medium",
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
-  const [size, setSize] = useState<{ height: number; width: number }>({
+  const [boxSize, setBoxSize] = useState<{ height: number; width: number }>({
     // Sane defaults, this will be updated with actual data from DOM.
     width: 336,
     height: 66,
@@ -107,11 +112,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
     const width = sizeSourceRef.current?.offsetWidth;
     const height = sizeSourceRef.current?.offsetHeight;
     if (width != null && height != null) {
-      if (size.height !== height || size.width !== width) {
-        setSize({ width, height });
+      if (boxSize.height !== height || boxSize.width !== width) {
+        setBoxSize({ width, height });
       }
     }
-  }, [size.height, size.width]);
+  }, [boxSize.height, boxSize.width]);
 
   const inputProps = useTravelDateRangeInput(
     value,
@@ -144,8 +149,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
       className={styles.travelDateRangeInput}
       ref={ref}
       onKeyDown={onKeyDown}
-      height={size.height}
-      width={size.width}
+      height={boxSize.height}
+      width={boxSize.width}
     >
       <Box
         position={"absolute"}
@@ -159,6 +164,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           startDateLabel={startDateLabel}
           endDateLabel={endDateLabel}
           onFocus={showCalendar}
+          calendarSize={size}
         />
       </Box>
 
@@ -186,10 +192,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                 {...inputProps}
                 previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
                 nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+                calendarSize={size}
               />
 
               {visiblePanel === "calendar" && (
-                <TravelCalendar {...inputProps} />
+                <TravelCalendar {...inputProps} size={size} />
               )}
 
               {visiblePanel === "month-picker" && (
@@ -197,6 +204,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                   firstMonth={firstMonthInMonthPicker}
                   numMonths={numMonthsInMonthPicker}
                   value={visibleMonth}
+                  size={size}
                   onValueChange={(v) => {
                     setVisibleMonth(v);
                     setVisiblePanel("calendar");

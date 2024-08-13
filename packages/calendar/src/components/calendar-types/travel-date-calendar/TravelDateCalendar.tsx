@@ -3,7 +3,10 @@ import { Column, Heading, HeadingVariant } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
-import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
+import {
+  TravelCalendar,
+  TravelCalendarSizeVariant,
+} from "../../../features/travel-calendar/components/TravelCalendar";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
 import { TravelDateSingleTextInputField } from "../../../features/travel-calendar/components/TravelDateSingleTextInputField";
 
@@ -18,6 +21,7 @@ export interface TravelDateCalendarProps
   headingLevel?: HeadingVariant;
   firstMonthInMonthPicker?: Date;
   numMonthsInMonthPicker?: number;
+  size?: TravelCalendarSizeVariant;
 }
 
 export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
@@ -32,6 +36,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
   headingLevel,
   numMonthsInMonthPicker = 12,
   firstMonthInMonthPicker = new Date(),
+  size = "medium",
 }) => {
   const inputProps = useTravelDateInput(
     value,
@@ -62,17 +67,20 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
         onValueChange={onValueChangeByInputs}
         localeCode={localeCode}
         label={label}
+        calendarSize={size}
       />
 
       <MonthHeader
         {...inputProps}
         previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
         nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+        calendarSize={size}
       />
 
       {visiblePanel === "calendar" && (
         <TravelCalendar
           {...inputProps}
+          size={size}
           selectedStartDate={selectedDate}
           selectedEndDate={selectedDate}
           isValidDateRange={Boolean(selectedDate)}
@@ -84,6 +92,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
           firstMonth={firstMonthInMonthPicker}
           numMonths={numMonthsInMonthPicker}
           value={visibleMonth}
+          size={size}
           onValueChange={(v) => {
             setVisibleMonth(v);
             setVisiblePanel("calendar");

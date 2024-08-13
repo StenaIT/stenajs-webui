@@ -5,7 +5,10 @@ import { TravelDateTextInputFields } from "../../../features/travel-calendar/com
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateRangeInput } from "../../../features/travel-calendar/hooks/UseTravelDateRangeInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
-import { TravelCalendar } from "../../../features/travel-calendar/components/TravelCalendar";
+import {
+  TravelCalendar,
+  TravelCalendarSizeVariant,
+} from "../../../features/travel-calendar/components/TravelCalendar";
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 
 export interface TravelDateRangeCalendarProps
@@ -20,6 +23,7 @@ export interface TravelDateRangeCalendarProps
   headingLevel?: HeadingVariant;
   firstMonthInMonthPicker?: Date;
   numMonthsInMonthPicker?: number;
+  size?: TravelCalendarSizeVariant;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -37,6 +41,7 @@ export const TravelDateRangeCalendar: React.FC<
   headingLevel,
   numMonthsInMonthPicker = 12,
   firstMonthInMonthPicker = new Date(),
+  size = "medium",
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -67,21 +72,26 @@ export const TravelDateRangeCalendar: React.FC<
         localeCode={localeCode}
         startDateLabel={startDateLabel}
         endDateLabel={endDateLabel}
+        calendarSize={size}
       />
 
       <MonthHeader
         {...inputProps}
         previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
         nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
+        calendarSize={size}
       />
 
-      {visiblePanel === "calendar" && <TravelCalendar {...inputProps} />}
+      {visiblePanel === "calendar" && (
+        <TravelCalendar {...inputProps} size={size} />
+      )}
 
       {visiblePanel === "month-picker" && (
         <MonthPicker
           firstMonth={firstMonthInMonthPicker}
           numMonths={numMonthsInMonthPicker}
           value={visibleMonth}
+          size={size}
           onValueChange={(v) => {
             setVisibleMonth(v);
             setVisiblePanel("calendar");
