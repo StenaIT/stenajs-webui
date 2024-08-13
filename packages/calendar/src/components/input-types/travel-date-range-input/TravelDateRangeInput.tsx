@@ -77,6 +77,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
     height: 66,
   });
 
+  const inputFieldsHeight = size === "large" ? "8.8rem" : "6.6rem";
+
   const calendarOpenRef = useRef(false);
 
   const showCalendar = useCallback(() => {
@@ -187,7 +189,9 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                   {heading}
                 </Heading>
               )}
-              <Box height={"6.8rem"} />
+
+              <Box height={inputFieldsHeight} />
+
               <MonthHeader
                 {...inputProps}
                 previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
