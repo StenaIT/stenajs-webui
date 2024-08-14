@@ -34,6 +34,8 @@ export const StandardTableContent = React.memo(function StandardTableContent<
   rowIndexOffset,
   variant,
   errorLabel,
+  renderExtraRowTop,
+  renderExtraRowBottom,
 }: Props<TItem, TColumnKey, TColumnGroupKey>) {
   const totalNumColumns = useTotalNumColumns();
 
@@ -111,12 +113,14 @@ export const StandardTableContent = React.memo(function StandardTableContent<
 
   return (
     <tbody>
+      {renderExtraRowTop?.()}
       <StandardTableRowList
         variant={variant}
         items={items}
         colIndexOffset={colIndexOffset}
         rowIndexOffset={rowIndexOffset}
       />
+      {renderExtraRowBottom?.()}
     </tbody>
   );
 });

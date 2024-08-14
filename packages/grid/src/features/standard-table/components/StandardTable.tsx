@@ -146,6 +146,22 @@ export interface StandardTableProps<
    * This is triggered when user clicks on the table headers, even if using external sorting.
    */
   onSortOrderChange?: StandardTableOnSortOrderChange<TColumnKey>;
+
+  /**
+   * If set, this will always show below <th> and above first <tr>.
+   * This row is 100% custom, and inherits no design or functionality from StandardTable.
+   * You must make sure that extraHeaderRow root is a <tr> and contains <td> elements.
+   * You must also make sure that it has correct number of cells, with correct padding, etc.
+   */
+  renderExtraRowTop?: () => ReactNode;
+
+  /**
+   * If set, this will always show below last <tr>.
+   * This row is 100% custom, and inherits no design or functionality from StandardTable.
+   * You must make sure that extraHeaderRow root is a <tr> and contains <td> elements.
+   * You must also make sure that it has correct number of cells, with correct padding, etc.
+   */
+  renderExtraRowBottom?: () => ReactNode;
 }
 
 export type StandardTableVariant =
