@@ -11,7 +11,7 @@ export interface LabelHighlightProps extends PropsWithChildren {
 }
 
 export const LabelHighlight: React.FC<LabelHighlightProps> = ({
-  variant = "warning",
+  variant = "none",
   label,
   children,
 }) => {
