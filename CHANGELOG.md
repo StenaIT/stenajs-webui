@@ -1,3 +1,16 @@
+# v20.14.2 (Wed Aug 14 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Add ability to have custom row in top and/or bottom of StandardTable [#760](https://github.com/StenaIT/stenajs-webui/pull/760) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.14.1 (Wed Aug 14 2024)
 
 #### 🐛 Bug Fix
