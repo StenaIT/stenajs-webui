@@ -83,7 +83,7 @@ export const TravelDateRangeCalendar: React.FC<
       />
 
       {visiblePanel === "calendar" && (
-        <TravelCalendar {...inputProps} size={size} />
+        <TravelCalendar {...inputProps} size={size} multiSelectable={true} />
       )}
 
       {visiblePanel === "month-picker" && (

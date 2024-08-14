@@ -27,6 +27,7 @@ export interface TravelCalendarProps {
   calendarId: string;
   todayIsInVisibleMonth: boolean;
   size?: TravelCalendarSizeVariant;
+  multiSelectable: boolean;
 }
 
 export const TravelCalendar: React.FC<TravelCalendarProps> = ({
@@ -44,9 +45,14 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
   isDateDisabled,
   todayIsInVisibleMonth,
   size = "medium",
+  multiSelectable,
 }) => {
   return (
-    <table className={styles.travelCalendar}>
+    <table
+      className={styles.travelCalendar}
+      role="grid"
+      {...(multiSelectable ? { "aria-multiselectable": true } : undefined)}
+    >
       <tbody>
         <tr>
           {visibleMonthData.weeks[0].days.map((day: DayData) => (

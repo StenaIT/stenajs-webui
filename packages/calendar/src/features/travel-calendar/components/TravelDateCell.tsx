@@ -122,7 +122,9 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       }
       id={disabled ? undefined : createDayId(day.date, calendarId)}
       onKeyDown={disabled ? undefined : onKeyDown}
-      aria-selected={isSelectionStart || isSelectionEnd}
+      {...(disabled
+        ? undefined
+        : { "aria-selected": isSelectionStart || isSelectionEnd })}
     >
       <div className={styles.outline} />
 
