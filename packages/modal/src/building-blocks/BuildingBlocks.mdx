@@ -9,6 +9,17 @@ that your modal will look the same as other modals.
 
 The palette of building blocks will expand in the future.
 
+### ModalContainer
+
+This component ensures that the modal is full height when switching
+to full screen on mobile phones.
+
+When you make a modal component, this should be the root.
+Everything else should be placed inside of ModalContainer.
+
+If you are making a modal that is never full screen, this is not needed.
+Instead, you can use `ModalBody` as root.
+
 ### ModalHeading
 
 This is a default heading for modals.
@@ -18,6 +29,8 @@ This is a default heading for modals.
 This is a default header for modals. It includes `ModalHeading`,
 but might include more things in the future. A close button for example.
 
+Should be placed in `ModalBody`.
+
 ### ModalBody
 
 This component adds default padding. If you need something to reach the edge
@@ -25,22 +38,40 @@ of the modal, a `SeparatorLine` for example, don't wrap it with `ModalBody`.
 
 It also adds a default gap between all children.
 
-All normal content should be wrapped with `ModalBody`.
+Most content should be wrapped with `ModalBody`.
+
+### ModalFooter
+
+This is a footer for modals. It can be made sticky.
+It will be glued to the bottom of the modal, with no padding under it.
+So if the modal is higher than the content, the footer will be at
+the bottom of the modal, not immediately after the content.
+
+This should be outside of `ModalBody`.
+
+### ModalActionButtons
+
+This component takes buttons as prop, and places them in a row on
+desktop and iPads, but in a column on phones.
+
+This should be placed inside `ModalBody`.
 
 #### Custom modal example
 
 ```tsx
 export const CustomModal: React.FC<CustomModalProps> = ({ heading, text }) => {
   return (
-    <ModalBody
-      flexDirection={"column"}
-      alignItems={"center"}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-    >
-      <ModalHeader heading={heading} />
-      {text && <Text textAlign={"center"}>{text}</Text>}
-    </ModalBody>
+    <ModalContainer>
+      <ModalBody
+        flexDirection={"column"}
+        alignItems={"center"}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+      >
+        <ModalHeader heading={heading} />
+        {text && <Text textAlign={"center"}>{text}</Text>}
+      </ModalBody>
+    <ModalContainer>
   );
 };
 ```

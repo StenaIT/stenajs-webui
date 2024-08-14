@@ -1,10 +1,9 @@
 import * as React from "react";
 import { PropsWithChildren, ReactNode } from "react";
-import { Box, Spacing, Text } from "@stenajs-webui/core";
+import { Text } from "@stenajs-webui/core";
 import { ModalHeading } from "../building-blocks/ModalHeading";
 import { ModalActionButtons } from "../building-blocks/ModalActionButtons";
-import { MediumIcon } from "@stenajs-webui/elements";
-import { CircledIcon } from "@stenajs-webui/elements";
+import { CircledIcon, MediumIcon } from "@stenajs-webui/elements";
 import { ModalBody } from "../building-blocks/ModalBody";
 
 export interface InfoAlertProps extends PropsWithChildren {
@@ -37,14 +36,7 @@ export const InfoAlert: React.FC<InfoAlertProps> = ({
       <ModalHeading>{heading}</ModalHeading>
       {text && <Text textAlign={"center"}>{text}</Text>}
       {children}
-      {buttons && (
-        <>
-          <Box width={"100%"}>
-            <Spacing />
-            <ModalActionButtons buttons={buttons} />
-          </Box>
-        </>
-      )}
+      {buttons && <ModalActionButtons buttons={buttons} />}
     </ModalBody>
   );
 };

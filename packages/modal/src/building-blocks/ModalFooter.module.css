@@ -1,0 +1,14 @@
+.modalFooter.modalFooter {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--silver-lighter);
+  border-radius: 24px 24px 0 0;
+  padding: 0 calc((var(--swui-metrics-indent) * 5));
+  flex-shrink: 0;
+
+  &.sticky {
+    position: sticky;
+    bottom: 0;
+  }
+}

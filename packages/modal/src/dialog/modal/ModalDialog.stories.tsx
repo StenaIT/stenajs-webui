@@ -26,6 +26,7 @@ const ModalContent: React.FC = () => {
     </ModalBody>
   );
 };
+
 export const Overview: StoryFn = () => {
   const [element, { show }] = useModalDialog(ModalContent);
 
@@ -109,6 +110,7 @@ export const ResolveReject: StoryFn = () => {
       /* empty */
     }
   }, [email, show]);
+
   return (
     <Column gap={2}>
       <Row>
