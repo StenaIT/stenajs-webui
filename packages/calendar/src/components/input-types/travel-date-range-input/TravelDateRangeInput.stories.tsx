@@ -2,7 +2,7 @@ import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateRangeInput } from "./TravelDateRangeInput";
-import { Column, Row, Spacing } from "@stenajs-webui/core";
+import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import {
   Banner,
   Label,
@@ -56,6 +56,30 @@ export const WithHeading = () => {
         heading={"Select dates"}
       />
     </div>
+  );
+};
+
+export const Sizes = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <Column gap={4} indent={4}>
+      {(["small", "medium", "large"] as const).map((size) => (
+        <Column gap={2}>
+          <Heading>{size}</Heading>
+          <Row>
+            <TravelDateRangeInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              size={size}
+            />
+          </Row>
+        </Column>
+      ))}
+    </Column>
   );
 };
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { KeyboardEventHandler, useCallback } from "react";
-import { Box, Row, Text } from "@stenajs-webui/core";
+import { Text } from "@stenajs-webui/core";
 import { DayData } from "../../../util/calendar/CalendarDataFactory";
 import styles from "./TravelDateCell.module.css";
 import cx from "classnames";
@@ -9,6 +9,8 @@ import { getCellBackgroundColors } from "../util/CellBgColors";
 import { getDateToFocusOn } from "../util/KeyboardNavigation";
 import { createDayId } from "../util/DayIdGenerator";
 import { cssColor } from "@stenajs-webui/theme";
+import { TravelCalendarSizeVariant } from "./TravelCalendar";
+import { TravelDateCellBackground } from "./TravelDateCellBackground";
 
 export interface TravelDateCellProps {
   onClick: (date: Date) => void;
@@ -25,6 +27,7 @@ export interface TravelDateCellProps {
   todayIsInVisibleMonth: boolean;
   calendarId: string;
   isDateDisabled: (date: Date) => boolean;
+  size: TravelCalendarSizeVariant;
 }
 
 export const TravelDateCell: React.FC<TravelDateCellProps> = ({
@@ -42,6 +45,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   todayIsInVisibleMonth,
   calendarId,
   isDateDisabled,
+  size,
 }) => {
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
     async (e) => {
@@ -97,7 +101,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
 
   return (
     <td
-      className={styles.travelDateCell}
+      className={cx(styles.travelDateCell, styles[size])}
       onClick={disabled ? undefined : () => onClick(day.date)}
       onMouseOver={
         disabled ? undefined : () => dayIsInMonth && onStartHover(day.date)
@@ -122,10 +126,11 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     >
       <div className={styles.outline} />
 
-      <Row>
-        <Box height={"48px"} width={"24px"} background={bgColors.left}></Box>
-        <Box height={"48px"} width={"24px"} background={bgColors.right}></Box>
-      </Row>
+      <TravelDateCellBackground
+        calendarSize={size}
+        bgColorLeft={bgColors.left}
+        bgColorRight={bgColors.right}
+      />
 
       {dayIsInMonth && (
         <div

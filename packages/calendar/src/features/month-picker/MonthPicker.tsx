@@ -9,17 +9,20 @@ import {
   useState,
 } from "react";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { Column, Heading, Row } from "@stenajs-webui/core";
+import { Column, exhaustSwitchCase, Heading } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 import { addMonths, isSameMonth, Locale } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
 import { useToday } from "../travel-calendar/util/UseToday";
+
+export type MonthPickerSizeVariant = "small" | "medium" | "large";
 
 export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
   locale?: Locale;
   firstMonth: Date;
   numMonths: number;
   onCancel?: () => void;
+  size?: MonthPickerSizeVariant;
 }
 
 export const MonthPicker: React.FC<MonthPickerProps> = ({
@@ -29,6 +32,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   firstMonth,
   numMonths,
   onCancel,
+  size = "medium",
 }) => {
   const monthPickerId = useId();
   const today = useToday();
@@ -37,7 +41,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
 
   const [inited, setInited] = useState(false);
 
-  const input = createMonths(firstMonth, clampedNumMonths, 4);
+  const input = createMonths(firstMonth, clampedNumMonths, getNumColumns(size));
 
   const lastMonth = useMemo(() => {
     return addMonths(firstMonth, clampedNumMonths);
@@ -59,7 +63,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
   );
 
   return (
-    <Column gap={1} maxWidth={"336px"} onKeyDown={onKeyDown}>
+    <Column gap={1} maxWidth={getWidth(size)} onKeyDown={onKeyDown}>
       {input.yearOrder.map((year, yearIndex) => {
         const { rows } = input.years[year];
         return (
@@ -67,31 +71,63 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
             {(yearIndex !== 0 || year !== today.getFullYear()) && (
               <Heading variant={"h4"}>{year}</Heading>
             )}
-            {rows.map((r) => {
-              const { columns } = input.rows[r];
-              return (
-                <Row gap={1} key={r}>
-                  {columns.map(({ month, position }) => (
-                    <Column key={month.getMonth()} width={"78px"}>
-                      <MonthPickerCell
-                        month={month}
-                        firstAvailableMonth={firstMonth}
-                        lastAvailableMonth={lastMonth}
-                        locale={locale}
-                        selected={value ? isSameMonth(value, month) : false}
-                        autoFocus={inited}
-                        onClick={() => onValueChange?.(month)}
-                        monthPickerId={monthPickerId}
-                        position={position}
-                      />
-                    </Column>
-                  ))}
-                </Row>
-              );
-            })}
+            <table style={{ borderSpacing: "0 8px" }}>
+              <tbody>
+                {rows.map((r) => {
+                  const { columns } = input.rows[r];
+                  return (
+                    <tr key={r}>
+                      {columns.map(({ month, position }) => (
+                        <td key={month.getMonth()}>
+                          <MonthPickerCell
+                            month={month}
+                            firstAvailableMonth={firstMonth}
+                            lastAvailableMonth={lastMonth}
+                            locale={locale}
+                            selected={value ? isSameMonth(value, month) : false}
+                            autoFocus={inited}
+                            onClick={() => onValueChange?.(month)}
+                            monthPickerId={monthPickerId}
+                            position={position}
+                            size={size}
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </React.Fragment>
         );
       })}
     </Column>
   );
+};
+
+const getWidth = (size: MonthPickerSizeVariant) => {
+  // For cell size = 48px, 48*7 = 336px
+  switch (size) {
+    case "small":
+      return "280px";
+    case "medium":
+      return "336px";
+    case "large":
+      return "448px";
+    default:
+      return exhaustSwitchCase(size, "336px");
+  }
+};
+
+const getNumColumns = (size: MonthPickerSizeVariant): number => {
+  switch (size) {
+    case "small":
+      return 3;
+    case "medium":
+      return 4;
+    case "large":
+      return 5;
+    default:
+      return exhaustSwitchCase(size, 4);
+  }
 };

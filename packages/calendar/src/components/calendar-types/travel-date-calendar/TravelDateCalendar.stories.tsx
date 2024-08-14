@@ -2,7 +2,7 @@ import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateCalendar } from "./TravelDateCalendar";
-import { Column, Row, Spacing } from "@stenajs-webui/core";
+import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import { Banner, Label } from "@stenajs-webui/elements";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 
@@ -87,6 +87,28 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
           localeCode={localeCode}
         />
       </Row>
+    </Column>
+  );
+};
+
+export const Sizes = () => {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <Column gap={4} indent={4}>
+      {(["small", "medium", "large"] as const).map((size) => (
+        <Column gap={2}>
+          <Heading>{size}</Heading>
+          <Row>
+            <TravelDateCalendar
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              size={size}
+            />
+          </Row>
+        </Column>
+      ))}
     </Column>
   );
 };
