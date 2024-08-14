@@ -1,3 +1,16 @@
+# v20.14.0 (Wed Aug 14 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add size variants to travel calendar [#757](https://github.com/StenaIT/stenajs-webui/pull/757) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.13.1 (Mon Aug 12 2024)
 
 #### 🐛 Bug Fix
