@@ -3,7 +3,12 @@ import { PropsWithChildren, ReactNode } from "react";
 import { cssColor } from "@stenajs-webui/theme";
 import { Column } from "@stenajs-webui/core";
 
-export type LabelHighlightVariant = "none" | "warning" | "success" | "error";
+export type LabelHighlightVariant =
+  | "none"
+  | "info"
+  | "warning"
+  | "success"
+  | "error";
 
 export interface LabelHighlightProps extends PropsWithChildren {
   variant?: LabelHighlightVariant;
@@ -33,6 +38,8 @@ const getColor = (variant: LabelHighlightVariant): string | undefined => {
   switch (variant) {
     case "none":
       return undefined;
+    case "info":
+      return cssColor("--lhds-color-blue-100");
     case "error":
       return cssColor("--lhds-color-red-100");
     case "warning":

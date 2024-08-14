@@ -12,7 +12,7 @@ export default {
 };
 
 export const Overview: StoryFn = () => {
-  const variants = ["none", "warning", "success", "error"] as const;
+  const variants = ["none", "info", "warning", "success", "error"] as const;
 
   return (
     <Column width={300} gap={4}>
