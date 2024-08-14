@@ -1,3 +1,16 @@
+# v20.14.1 (Wed Aug 14 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - TravelCalendar has role, aria-selected and aria-multiselectable set properly [#759](https://github.com/StenaIT/stenajs-webui/pull/759) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.14.0 (Wed Aug 14 2024)
 
 #### 🚀 Enhancement
