@@ -84,6 +84,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
           selectedStartDate={selectedDate}
           selectedEndDate={selectedDate}
           isValidDateRange={Boolean(selectedDate)}
+          multiSelectable={false}
         />
       )}
 

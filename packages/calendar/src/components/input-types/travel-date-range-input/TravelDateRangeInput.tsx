@@ -200,7 +200,11 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
               />
 
               {visiblePanel === "calendar" && (
-                <TravelCalendar {...inputProps} size={size} />
+                <TravelCalendar
+                  {...inputProps}
+                  size={size}
+                  multiSelectable={true}
+                />
               )}
 
               {visiblePanel === "month-picker" && (
