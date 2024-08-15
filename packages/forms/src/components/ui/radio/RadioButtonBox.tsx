@@ -8,13 +8,15 @@ import styles from "./RadioButtonBox.module.css";
 import { RadioButton, RadioButtonProps } from "./RadioButton";
 
 export type RadioButtonBoxVariant = "normal" | "danger";
+export type RadioButtonBoxSizeVariant = "medium" | "large";
 
 export type RadioButtonBoxProps =
   | RadioButtonBoxNoRightProps
   | RadioButtonBoxIconProps
   | RadioButtonBoxContentRightProps;
 
-export interface RadioButtonBoxCommonProps extends RadioButtonProps {
+export interface RadioButtonBoxCommonProps
+  extends Omit<RadioButtonProps, "size"> {
   label?: string;
   /**
    * If set, this label is used by screen readers instead of label prop.
@@ -23,6 +25,7 @@ export interface RadioButtonBoxCommonProps extends RadioButtonProps {
    */
   screenReaderLabel?: string;
   variant?: RadioButtonBoxVariant;
+  size?: RadioButtonBoxSizeVariant;
   radioButtonClassName?: string;
 }
 
@@ -46,6 +49,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
   label,
   screenReaderLabel,
   variant = "normal",
+  size = "medium",
   className,
   icon,
   contentRight,
@@ -55,7 +59,12 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
 }) => {
   return (
     <label
-      className={cx(styles.radioButtonBox, styles[variant], className)}
+      className={cx(
+        styles.radioButtonBox,
+        styles[variant],
+        styles[size],
+        className
+      )}
       style={style}
     >
       <Row justifyContent={"space-between"} flexGrow={1}>
