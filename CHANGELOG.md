@@ -1,3 +1,16 @@
+# v20.15.0 (Thu Aug 15 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - New component: LabelHighlight [#758](https://github.com/StenaIT/stenajs-webui/pull/758) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.14.2 (Wed Aug 14 2024)
 
 #### 🐛 Bug Fix
