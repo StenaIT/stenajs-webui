@@ -50,7 +50,7 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
           )
         }
         ref={monthPickerButtonRef}
-        size={calendarSize === "large" ? "large" : "medium"}
+        size={calendarSize === "small" ? "medium" : "large"}
       />
       <Row alignItems={"center"} gap={2}>
         <SecondaryButton
@@ -58,13 +58,13 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
           onClick={() => setVisibleMonth(subMonths(visibleMonth, 1))}
           disabled={prevMonthDisabled}
           aria-label={previousMonthButtonAriaLabel}
-          size={calendarSize === "large" ? "large" : "medium"}
+          size={calendarSize === "small" ? "medium" : "large"}
         />
         <SecondaryButton
           leftIcon={stenaArrowRight}
           onClick={() => setVisibleMonth(addMonths(visibleMonth, 1))}
           aria-label={nextMonthButtonAriaLabel}
-          size={calendarSize === "large" ? "large" : "medium"}
+          size={calendarSize === "small" ? "medium" : "large"}
         />
       </Row>
     </Row>

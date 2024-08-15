@@ -12,8 +12,8 @@
   }
 
   &.large {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 28px;
   }
 
   border-radius: var(--swui-max-border-radius);
