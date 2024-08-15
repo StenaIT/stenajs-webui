@@ -1,3 +1,16 @@
+# v20.17.0 (Thu Aug 15 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/forms`
+  - Add size variant prop to RadioButtonBox [#764](https://github.com/StenaIT/stenajs-webui/pull/764) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.16.2 (Thu Aug 15 2024)
 
 #### 🐛 Bug Fix
