@@ -1,3 +1,16 @@
+# v20.16.0 (Thu Aug 15 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`, `@stenajs-webui/theme`
+  - Add more building blocks for modals [#761](https://github.com/StenaIT/stenajs-webui/pull/761) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.15.0 (Thu Aug 15 2024)
 
 #### 🚀 Enhancement
