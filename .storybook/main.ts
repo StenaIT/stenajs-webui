@@ -22,7 +22,8 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-mdx-gfm")
+    getAbsolutePath("@storybook/addon-mdx-gfm"),
+    "@chromatic-com/storybook"
   ],
   viteFinal(config, { configType }) {
     let plugins = [
@@ -48,9 +49,7 @@ const config: StorybookConfig = {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
 };
 
 export default config;
