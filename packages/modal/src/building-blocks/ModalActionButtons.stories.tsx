@@ -27,7 +27,7 @@ const ModalContent: React.FC = () => {
           buttons={
             <>
               <SecondaryButton label={"Cancel"} onClick={() => reject()} />
-              <PrimaryButton label={"Cancel"} onClick={() => resolve()} />
+              <PrimaryButton label={"Save"} onClick={() => resolve()} />
             </>
           }
         />

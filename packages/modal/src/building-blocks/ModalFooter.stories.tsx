@@ -35,7 +35,7 @@ const ModalContent: React.FC<{ sticky: boolean }> = ({ sticky }) => {
       <ModalFooter sticky={sticky}>
         <Row gap={2} spacing={2}>
           <SecondaryButton label={"Cancel"} onClick={() => reject()} />
-          <PrimaryButton label={"Cancel"} onClick={() => resolve()} />
+          <PrimaryButton label={"Save"} onClick={() => resolve()} />
         </Row>
       </ModalFooter>
     </ModalContainer>
