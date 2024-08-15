@@ -1,3 +1,15 @@
+# v20.16.1 (Thu Aug 15 2024)
+
+#### 🐛 Bug Fix
+
+- Upgrade Storybook to 8.2.9 (new major) [#762](https://github.com/StenaIT/stenajs-webui/pull/762) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.16.0 (Thu Aug 15 2024)
 
 #### 🚀 Enhancement
