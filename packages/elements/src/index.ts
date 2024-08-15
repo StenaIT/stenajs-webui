@@ -45,6 +45,7 @@ export * from "./components/ui/cardy/CardyHeader";
 export * from "./components/ui/cardy/CardyBody";
 export * from "./components/ui/chip/Chip";
 export * from "./components/ui/label/Label";
+export * from "./components/ui/label/LabelHighlight";
 export * from "./components/ui/link/Link";
 export * from "./components/ui/badge/Badge";
 export * from "./components/ui/badge/WithBadge";
