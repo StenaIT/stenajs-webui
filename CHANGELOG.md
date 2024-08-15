@@ -1,3 +1,16 @@
+# v20.16.2 (Thu Aug 15 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Some sizes updates to travel calendar. [#763](https://github.com/StenaIT/stenajs-webui/pull/763) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.16.1 (Thu Aug 15 2024)
 
 #### 🐛 Bug Fix
