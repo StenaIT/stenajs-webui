@@ -1,3 +1,16 @@
+# v20.17.1 (Fri Aug 16 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Fix width of inputs in travel calendar for size=large [#765](https://github.com/StenaIT/stenajs-webui/pull/765) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.0 (Thu Aug 15 2024)
 
 #### 🚀 Enhancement
