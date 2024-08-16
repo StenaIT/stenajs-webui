@@ -1,3 +1,16 @@
+# v20.17.2 (Fri Aug 16 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Add screen reader support to several form inputs [#766](https://github.com/StenaIT/stenajs-webui/pull/766) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.1 (Fri Aug 16 2024)
 
 #### 🐛 Bug Fix
