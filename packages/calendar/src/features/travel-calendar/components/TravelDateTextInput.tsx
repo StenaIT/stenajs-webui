@@ -69,7 +69,7 @@ const getWidth = (calenderSize: TravelCalendarSizeVariant) => {
     case "medium":
       return "168px";
     case "large":
-      return "224px";
+      return "196px";
     default:
       return exhaustSwitchCase(calenderSize, "168px");
   }
