@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid-export",
-  "version": "20.17.0",
+  "version": "20.17.1",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -34,9 +34,9 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": ">=6.5.2",
-    "@stenajs-webui/core": "20.17.0",
-    "@stenajs-webui/elements": "20.17.0",
-    "@stenajs-webui/grid": "20.17.0",
+    "@stenajs-webui/core": "20.17.1",
+    "@stenajs-webui/elements": "20.17.1",
+    "@stenajs-webui/grid": "20.17.1",
     "@types/zipcelx": "^1.5.0",
     "clipboard-polyfill": "^3.0.2",
     "date-fns": "3.6.0",
