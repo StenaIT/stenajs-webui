@@ -1,3 +1,16 @@
+# v20.17.3 (Fri Aug 16 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Add large heading size variant to ModalHeading [#767](https://github.com/StenaIT/stenajs-webui/pull/767) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.2 (Fri Aug 16 2024)
 
 #### 🐛 Bug Fix
