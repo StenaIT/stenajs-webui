@@ -24,23 +24,29 @@ import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
+  numberOfRowsBefore?: number;
   appendTooltipTo?: TableHeadProps["appendTooltipTo"];
+  shadow: boolean;
+  topBorder: boolean;
+  renderHeadItem?: (columnId: string, index: number) => React.ReactNode;
 }
 
 const getTopPosition = (
   headerRowOffsetTop: string | undefined,
   columnGroupOrder: Array<string> | undefined,
   height: string,
-  stickyHeader: boolean | undefined
+  stickyHeader: boolean | undefined,
+  numberOfRowsBefore: number
 ): CSSProperties["top"] => {
+  // todo: having fixed row heights comes in handy in this case, but we can't rely on them being correct because of line-wrapped column headers.
   if (headerRowOffsetTop && columnGroupOrder !== undefined) {
-    return `calc(${headerRowOffsetTop} + ${height})`;
+    return `calc(${headerRowOffsetTop} + ${height} + (${numberOfRowsBefore} * var(--current-row-height)))`;
   } else if (stickyHeader && columnGroupOrder) {
-    return `calc(0px + ${height})`;
+    return `calc((${numberOfRowsBefore} * var(--current-row-height)) + ${height})`;
   } else if (headerRowOffsetTop) {
-    return headerRowOffsetTop;
+    return `calc((${numberOfRowsBefore} * var(--current-row-height)) + ${headerRowOffsetTop})`;
   } else if (stickyHeader) {
-    return 0;
+    return `calc(${numberOfRowsBefore} * var(--current-row-height))`;
   }
   return undefined;
 };
@@ -50,7 +56,11 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 >({
   items,
   appendTooltipTo,
+  numberOfRowsBefore = 0,
   height = defaultTableRowHeight,
+  shadow,
+  topBorder,
+  renderHeadItem,
 }: StandardTableHeaderProps<TItem>) {
   const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
 
@@ -87,18 +97,22 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       headerRowOffsetTop,
       columnGroupOrder,
       height,
-      stickyHeader
+      stickyHeader,
+      numberOfRowsBefore // todo: Mattias: Nowadays we don't have to set position: sticky on the th elements. We can set it on the whole thead element instead. That would remove the need to add offset to each subsequent row.
     ),
     background: stickyHeader || stickyCheckboxColumn ? "white" : undefined,
+    // todo: I added a check to only set position to sticky if media matches "screen only" since we don't want them sticky when printing, but then I reverted that because I noticed that users can't really print these tables anyway, since most of the rows are just empty, probably because of virtualization. Is this something we wanna address at some point?
     position: stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
-    boxShadow:
-      stickyHeader && stickyCheckboxColumn
+    boxShadow: shadow
+      ? stickyHeader && stickyCheckboxColumn
         ? "var(--swui-sticky-header-shadow-and-right)"
         : stickyCheckboxColumn
         ? "var(--swui-sticky-column-shadow-right)"
         : stickyHeader
         ? "var(--swui-sticky-header-shadow)"
-        : undefined,
+        : undefined
+      : undefined,
+    borderTop: topBorder ? "1px solid var(--lhds-color-ui-300)" : "none",
   };
 
   return (
@@ -169,7 +183,11 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
         return (
           <React.Fragment key={groupId}>
             {groupConfig.columnOrder.map((columnId, index) => {
-              return (
+              return renderHeadItem ? (
+                <th style={stickyHeaderStyle}>
+                  {renderHeadItem(columnId, index)}
+                </th>
+              ) : (
                 <StandardTableHeadItem
                   columnId={columnId}
                   key={columnId}

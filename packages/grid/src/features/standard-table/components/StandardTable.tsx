@@ -191,7 +191,12 @@ export const StandardTable = function StandardTable<
     initialSortOrder,
     enableExpandCollapse,
     stickyCheckboxColumn,
+    additionalHeaderRows,
   } = config;
+
+  console.log({
+    additionalHeaderRows,
+  });
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
     tableId ?? generatedTableId,
@@ -321,7 +326,23 @@ export const StandardTable = function StandardTable<
                                     items={props.items}
                                     height={"var(--current-row-height)"}
                                     appendTooltipTo={appendTooltipTo}
+                                    shadow={!additionalHeaderRows}
+                                    topBorder={false}
                                   />
+                                  {additionalHeaderRows
+                                    ? additionalHeaderRows.map((row, index) => (
+                                        <StandardTableHeadRow
+                                          shadow
+                                          topBorder
+                                          height={"var(--current-row-height)"}
+                                          items={props.items}
+                                          renderHeadItem={(columnId) =>
+                                            row[columnId]
+                                          }
+                                          numberOfRowsBefore={index + 1}
+                                        />
+                                      ))
+                                    : null}
                                 </thead>
                                 <StandardTableContent
                                   variant={variant}
