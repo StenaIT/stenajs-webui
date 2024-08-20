@@ -1,5 +1,4 @@
 import * as React from "react";
-import { CSSProperties } from "react";
 import {
   TableHeadItem,
   TableHeadProps,
@@ -18,101 +17,76 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
+  topBorder: boolean;
   appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
-export const StandardTableHeadItem = React.memo(
-  function StandardTableHeaderItem({
-    columnId,
+export const StandardTableHeadItem = React.memo(function StandardTableHeaderItem({
+  columnId,
+  borderFromGroup,
+  disableBorderLeft,
+  stickyHeader,
+  appendTooltipTo,
+  topBorder
+}: StandardTableHeaderItemProps) {
+  const {
+    justifyContentHeader,
+    columnLabel,
+    borderLeft,
+    infoIconTooltipText,
+    background,
+    sortOrderIconVariant,
+    width,
+    minWidth,
+  } = useColumnConfigById(columnId);
+  const { disableSorting, sortOrderIconVariant: defaultSortOrderIconVariant } =
+    useStandardTableConfig();
+  const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
+
+  const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
+
+  const label =
+    typeof columnLabel === "string"
+      ? columnLabel
+      : formatColumnIdToHeaderCellLabel(columnId);
+
+  const activeBorderLeft = getCellBorder(
     borderFromGroup,
     disableBorderLeft,
-    stickyHeader,
-    top,
-    appendTooltipTo,
-  }: StandardTableHeaderItemProps) {
-    const {
-      justifyContentHeader,
-      columnLabel,
-      borderLeft,
-      infoIconTooltipText,
-      background,
-      zIndex,
-      sortOrderIconVariant,
-      width,
-      minWidth,
-    } = useColumnConfigById(columnId);
-    const {
-      disableSorting,
-      sortOrderIconVariant: defaultSortOrderIconVariant,
-    } = useStandardTableConfig();
-    const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
+    borderLeft
+  );
 
-    const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
+  const stickyProps = stickyPropsPerColumnContext[columnId];
 
-    const label =
-      typeof columnLabel === "string"
-        ? columnLabel
-        : formatColumnIdToHeaderCellLabel(columnId);
-
-    const activeBorderLeft = getCellBorder(
-      borderFromGroup,
-      disableBorderLeft,
-      borderLeft
-    );
-
-    const stickyProps = stickyPropsPerColumnContext[columnId];
-
-    return (
-      <th
-        className={styles.standardTableHeadTh}
-        style={{
-          background: background ?? "white",
-          borderLeft: activeBorderLeft,
-          position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
-          left: stickyProps.left,
-          right: stickyProps.right,
-          top: top,
-          boxShadow:
-            stickyProps.sticky &&
-            stickyProps.isFirstColumnInLastGroup &&
-            stickyHeader
-              ? "var(--swui-sticky-header-shadow-and-left)"
-              : stickyProps.sticky && stickyProps.isFirstColumnInLastGroup
-              ? "var(--swui-sticky-column-shadow-left)"
-              : stickyHeader && stickyProps.sticky
-              ? "var(--swui-sticky-header-shadow-and-right)"
-              : stickyHeader
-              ? "var(--swui-sticky-header-shadow)"
-              : stickyProps.sticky
-              ? "var(--swui-sticky-column-shadow-right)"
-              : undefined,
-          zIndex: (stickyHeader && stickyProps.sticky
-            ? "var(--swui-sticky-header-in-sticky-column-z-index)"
-            : stickyHeader
-            ? "var(--swui-sticky-header-z-index)"
-            : stickyProps.sticky
-            ? "var(--swui-sticky-group-header-z-index)"
-            : zIndex) as CSSProperties["zIndex"],
-          width,
-          minWidth,
-        }}
-      >
-        <TableHeadItem
-          width={"inherit"}
-          minWidth={"inherit"}
-          arrow={!disableSorting && label ? arrow : undefined}
-          onClick={!disableSorting ? onClickColumnHead : undefined}
-          label={label}
-          infoIconTooltipText={infoIconTooltipText}
-          alignRight={justifyContentHeader === "flex-end"}
-          sortOrderIconVariant={
-            sortOrderIconVariant ?? defaultSortOrderIconVariant
-          }
-          appendTooltipTo={appendTooltipTo}
-          selected={selected}
-          height={"100%"}
-        />
-      </th>
-    );
-  }
-);
+  return (
+    <th
+      className={styles.standardTableHeadTh}
+      style={{
+        background: background ?? "white",
+        borderLeft: activeBorderLeft,
+        position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
+        left: stickyProps.left,
+        right: stickyProps.right,
+        width,
+        minWidth,
+        borderTop: topBorder ? "1px solid var(--lhds-color-ui-300)" : "none",
+      }}
+    >
+      <TableHeadItem
+        width={"inherit"}
+        minWidth={"inherit"}
+        arrow={!disableSorting && label ? arrow : undefined}
+        onClick={!disableSorting ? onClickColumnHead : undefined}
+        label={label}
+        infoIconTooltipText={infoIconTooltipText}
+        alignRight={justifyContentHeader === "flex-end"}
+        sortOrderIconVariant={
+          sortOrderIconVariant ?? defaultSortOrderIconVariant
+        }
+        appendTooltipTo={appendTooltipTo}
+        selected={selected}
+        height={"100%"}
+      />
+    </th>
+  );
+});
