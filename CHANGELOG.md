@@ -1,3 +1,16 @@
+# v20.17.4 (Tue Aug 20 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Click outside to close modal now only reacts to onMouseDown. [#768](https://github.com/StenaIT/stenajs-webui/pull/768) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.3 (Fri Aug 16 2024)
 
 #### 🐛 Bug Fix
