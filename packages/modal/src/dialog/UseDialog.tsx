@@ -115,7 +115,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
     () => (
       <DialogContext.Provider value={{ resolve, reject }}>
         <dialog
-          onClick={
+          onMouseDown={
             options.disableCloseOnClickOutside ? undefined : () => reject()
           }
           ref={currentRef}
@@ -132,7 +132,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
             <div
               style={options.contentWrapperStyle}
               className={options.contentWrapperClassName}
-              onClick={
+              onMouseDown={
                 options.disableCloseOnClickOutside
                   ? undefined
                   : (ev) => ev.stopPropagation()
