@@ -129,7 +129,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
           <React.Fragment key={groupId}>
             {groupConfig.columnOrder.map((columnId, index) => {
               return renderHeadItem ? (
-                <th style={commonStyle}>{renderHeadItem(columnId, index)}</th>
+                <th key={columnId} style={commonStyle}>
+{renderHeadItem(columnId, index)}
+</th>
               ) : (
                 <StandardTableHeadItem
                   columnId={columnId}

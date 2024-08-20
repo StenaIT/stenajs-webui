@@ -358,6 +358,7 @@ export const StandardTable = function StandardTable<
                                             row[columnId]
                                           }
                                           numberOfRowsBefore={index + 1}
+                                          key={`additional-header-${index}`}
                                         />
                                       ))
                                     : null}
