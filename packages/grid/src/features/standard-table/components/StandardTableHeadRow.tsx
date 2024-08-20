@@ -130,8 +130,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             {groupConfig.columnOrder.map((columnId, index) => {
               return renderHeadItem ? (
                 <th key={columnId} style={commonStyle}>
-{renderHeadItem(columnId, index)}
-</th>
+                  {renderHeadItem(columnId, index)}
+                </th>
               ) : (
                 <StandardTableHeadItem
                   columnId={columnId}

@@ -195,6 +195,7 @@ export const StandardTable = function StandardTable<
     headerRowOffsetTop,
     stickyHeader,
     zIndex,
+    columns,
   } = config;
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
@@ -205,6 +206,9 @@ export const StandardTable = function StandardTable<
   const currentTableContext = tableContext || localTableContext;
 
   const { state, actions, dispatch } = currentTableContext;
+
+  const isValidColumnId = (candidate: string): candidate is TColumnKey =>
+    Object.keys(columns).includes(candidate);
 
   const actionsContext = useMemo<
     StandardTableInternalActionsContext<TColumnKey>
@@ -355,7 +359,9 @@ export const StandardTable = function StandardTable<
                                           height={"var(--current-row-height)"}
                                           items={props.items}
                                           renderHeadItem={(columnId) =>
-                                            row[columnId]
+                                            isValidColumnId(columnId)
+                                              ? row[columnId]
+                                              : null
                                           }
                                           numberOfRowsBefore={index + 1}
                                           key={`additional-header-${index}`}

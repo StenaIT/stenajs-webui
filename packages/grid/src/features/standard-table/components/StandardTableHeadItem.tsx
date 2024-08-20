@@ -21,72 +21,76 @@ export interface StandardTableHeaderItemProps {
   appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
-export const StandardTableHeadItem = React.memo(function StandardTableHeaderItem({
-  columnId,
-  borderFromGroup,
-  disableBorderLeft,
-  stickyHeader,
-  appendTooltipTo,
-  topBorder
-}: StandardTableHeaderItemProps) {
-  const {
-    justifyContentHeader,
-    columnLabel,
-    borderLeft,
-    infoIconTooltipText,
-    background,
-    sortOrderIconVariant,
-    width,
-    minWidth,
-  } = useColumnConfigById(columnId);
-  const { disableSorting, sortOrderIconVariant: defaultSortOrderIconVariant } =
-    useStandardTableConfig();
-  const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
-
-  const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
-
-  const label =
-    typeof columnLabel === "string"
-      ? columnLabel
-      : formatColumnIdToHeaderCellLabel(columnId);
-
-  const activeBorderLeft = getCellBorder(
+export const StandardTableHeadItem = React.memo(
+  function StandardTableHeaderItem({
+    columnId,
     borderFromGroup,
     disableBorderLeft,
-    borderLeft
-  );
+    stickyHeader,
+    appendTooltipTo,
+    topBorder,
+  }: StandardTableHeaderItemProps) {
+    const {
+      justifyContentHeader,
+      columnLabel,
+      borderLeft,
+      infoIconTooltipText,
+      background,
+      sortOrderIconVariant,
+      width,
+      minWidth,
+    } = useColumnConfigById(columnId);
+    const {
+      disableSorting,
+      sortOrderIconVariant: defaultSortOrderIconVariant,
+    } = useStandardTableConfig();
+    const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
 
-  const stickyProps = stickyPropsPerColumnContext[columnId];
+    const { arrow, selected, onClickColumnHead } = useTableSortHeader(columnId);
 
-  return (
-    <th
-      className={styles.standardTableHeadTh}
-      style={{
-        background: background ?? "white",
-        borderLeft: activeBorderLeft,
-        position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
-        left: stickyProps.left,
-        right: stickyProps.right,
-        width,
-        minWidth,
-        borderTop: topBorder ? "1px solid var(--lhds-color-ui-300)" : "none",
-      }}
-    >
-      <TableHeadItem
-        width={"inherit"}
-        minWidth={"inherit"}
-        arrow={!disableSorting && label ? arrow : undefined}
-        onClick={!disableSorting ? onClickColumnHead : undefined}
-        label={label}
-        infoIconTooltipText={infoIconTooltipText}
-        alignRight={justifyContentHeader === "flex-end"}
-        sortOrderIconVariant={
-          sortOrderIconVariant ?? defaultSortOrderIconVariant
-        }
-        appendTooltipTo={appendTooltipTo}
-        selected={selected}
-        height={"100%"}
-      />
-    </th>
-  );
-});
+    const label =
+      typeof columnLabel === "string"
+        ? columnLabel
+        : formatColumnIdToHeaderCellLabel(columnId);
+
+    const activeBorderLeft = getCellBorder(
+      borderFromGroup,
+      disableBorderLeft,
+      borderLeft
+    );
+
+    const stickyProps = stickyPropsPerColumnContext[columnId];
+
+    return (
+      <th
+        className={styles.standardTableHeadTh}
+        style={{
+          background: background ?? "white",
+          borderLeft: activeBorderLeft,
+          position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
+          left: stickyProps.left,
+          right: stickyProps.right,
+          width,
+          minWidth,
+          borderTop: topBorder ? "1px solid var(--lhds-color-ui-300)" : "none",
+        }}
+      >
+        <TableHeadItem
+          width={"inherit"}
+          minWidth={"inherit"}
+          arrow={!disableSorting && label ? arrow : undefined}
+          onClick={!disableSorting ? onClickColumnHead : undefined}
+          label={label}
+          infoIconTooltipText={infoIconTooltipText}
+          alignRight={justifyContentHeader === "flex-end"}
+          sortOrderIconVariant={
+            sortOrderIconVariant ?? defaultSortOrderIconVariant
+          }
+          appendTooltipTo={appendTooltipTo}
+          selected={selected}
+          height={"100%"}
+        />
+      </th>
+    );
+  }
+);
