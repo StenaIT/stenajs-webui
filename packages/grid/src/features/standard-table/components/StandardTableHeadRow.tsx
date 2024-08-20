@@ -104,13 +104,17 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                 : stickyCheckboxColumn
                 ? "0px"
                 : undefined,
+            verticalAlign: "bottom",
           }}
         >
           <Row
             width={"var(--swui-checkbox-cell-width)"}
             minWidth={"var(--swui-checkbox-cell-width)"}
-            alignItems={"center"}
+            alignItems={"flex-end"}
             justifyContent={"center"}
+            style={{
+              marginBottom: "calc((var(--current-row-height) - 16px) / 2)", // Hack: find better way. 16px is the height that the checkbox happens to be, but we don't want code like this
+            }}
           >
             {showHeaderCheckbox && (
               <Checkbox
@@ -130,8 +134,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
             {groupConfig.columnOrder.map((columnId, index) => {
               return renderHeadItem ? (
                 <th key={columnId} style={commonStyle}>
-{renderHeadItem(columnId, index)}
-</th>
+                  {renderHeadItem(columnId, index)}
+                </th>
               ) : (
                 <StandardTableHeadItem
                   columnId={columnId}

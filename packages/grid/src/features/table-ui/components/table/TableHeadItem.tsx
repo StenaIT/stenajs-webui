@@ -61,7 +61,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     return (
       <Row
         height={"100%"}
-        alignItems={"center"}
+        alignItems={"flex-end"}
         ref={containerRef}
         overflow={overflow}
         justifyContent={alignRight ? "flex-end" : "flex-start"}
@@ -69,6 +69,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         borderBottom={`2px solid ${
           selected ? cssColor("--lhds-color-blue-500") : "transparent"
         }`}
+        style={{ paddingBottom: "6px", paddingTop: "6px" }}
         {...boxProps}
       >
         <Row alignItems={"center"} indent>
@@ -99,7 +100,13 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
                 </>
               )}
               {label && (
-                <Heading variant={"h6"} style={{ textAlign: "left" }}>
+                <Heading
+                  variant={"h6"}
+                  style={{
+                    textAlign: "left",
+                    lineHeight: "calc(2 * var(--swui-metrics-space))",
+                  }}
+                >
                   {label}
                 </Heading>
               )}
