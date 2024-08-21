@@ -11,7 +11,6 @@
     padding: calc(var(--swui-metrics-spacing) * 0.5);
     padding-right: calc(var(--swui-metrics-indent) * 2);
   }
-
 }
 
 .iconWrapper {
