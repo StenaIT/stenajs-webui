@@ -25,9 +25,13 @@ import {
 
 export interface TooltipProps extends PropsWithChildren {
   placement?: Placement;
+  visible?: boolean;
   label: string;
   variant?: TooltipVariant;
   maxWidth?: CSSProperties["maxWidth"];
+  // Remove
+  appendTo?: HTMLElement;
+  zIndex?: number | string;
 }
 
 type TooltipVariant = "info" | "warning" | "error";
@@ -46,6 +50,7 @@ export type Placement = "top" | "right" | "bottom" | "left";
 
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
+  visible,
   placement,
   label,
   variant,
@@ -57,7 +62,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   const { refs, floatingStyles, context } = useFloating({
     placement,
-    open: isOpen,
+    open: visible ?? isOpen,
     onOpenChange: setIsOpen,
     middleware: [
       offset(ARROW_HEIGHT + GAP),
@@ -115,6 +120,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               context={context}
               width={ARROW_WIDTH}
               height={ARROW_HEIGHT}
+              fill={"#333"}
             />
           </div>
         </div>
