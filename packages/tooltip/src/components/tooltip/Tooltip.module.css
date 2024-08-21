@@ -1,7 +1,9 @@
-.tooltip {
+.floating {
   display: flex;
-  width: fit-content;
+  flex-direction: row;
   align-items: center;
+  background: #333;
+  color: white;
   border-radius: var(--swui-border-radius);
   padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-indent) * 2);
 
@@ -9,6 +11,7 @@
     padding: calc(var(--swui-metrics-spacing) * 0.5);
     padding-right: calc(var(--swui-metrics-indent) * 2);
   }
+
 }
 
 .iconWrapper {
