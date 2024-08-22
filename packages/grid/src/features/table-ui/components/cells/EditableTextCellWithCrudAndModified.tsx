@@ -194,7 +194,7 @@ export const EditableTextCellWithCrudAndModified =
                 {warningOnEmpty &&
                 modifiedField?.modified &&
                 modifiedField?.newValue === "" ? (
-                  <Tooltip label={warningOnEmpty} zIndex={100}>
+                  <Tooltip label={warningOnEmpty}>
                     <Icon
                       icon={stenaExclamationTriangle}
                       color={"var(--ui-alert1)"}

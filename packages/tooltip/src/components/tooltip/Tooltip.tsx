@@ -29,9 +29,6 @@ export interface TooltipProps extends PropsWithChildren {
   label: string;
   variant?: TooltipVariant;
   maxWidth?: CSSProperties["maxWidth"];
-  // Remove
-  appendTo?: HTMLElement;
-  zIndex?: number | string;
 }
 
 type TooltipVariant = "info" | "warning" | "error";
@@ -130,7 +127,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
 };
 
 const TooltipText: React.FC<{ label: string }> = ({ label }) => (
-  <Text color={cssColor("--lhds-color-ui-50")} size={"small"} variant="bold">
+  <Text
+    color={cssColor("--lhds-color-ui-50")}
+    size={"small"}
+    variant={"bold"}
+    whiteSpace={"nowrap"}
+  >
     {label}
   </Text>
 );

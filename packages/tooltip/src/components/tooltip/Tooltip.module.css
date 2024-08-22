@@ -1,11 +1,11 @@
 .floating {
   display: flex;
-  flex-direction: row;
   align-items: center;
   background: #333;
   color: white;
   border-radius: var(--swui-border-radius);
   padding: var(--swui-metrics-spacing) calc(var(--swui-metrics-indent) * 2);
+  width: fit-content;
 
   &.withIcon {
     padding: calc(var(--swui-metrics-spacing) * 0.5);

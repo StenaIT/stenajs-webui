@@ -7,14 +7,9 @@ import {
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
-import {
-  ButtonWithPopoverProps,
-  Popover,
-  Tooltip,
-  TooltipProps,
-} from "@stenajs-webui/tooltip";
+import { Popover, Tooltip } from "@stenajs-webui/tooltip";
 import * as React from "react";
-import { CSSProperties, useRef } from "react";
+import { CSSProperties, ReactNode, useRef } from "react";
 import {
   SortOrderDirection,
   SortOrderIcon,
@@ -24,14 +19,13 @@ import {
 export interface TableHeadProps extends BoxProps {
   label?: string;
   infoIconTooltipText?: string;
-  popoverContent?: ButtonWithPopoverProps["children"];
+  popoverContent?: ReactNode;
   loading?: boolean;
   arrow?: SortOrderDirection;
   onClick?: () => void;
   selected?: boolean;
   alignRight?: boolean;
   sortOrderIconVariant?: SortOrderIconVariant;
-  appendTooltipTo?: TooltipProps["appendTo"];
 }
 
 export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
@@ -47,7 +41,6 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     overflow = "hidden",
     alignRight,
     sortOrderIconVariant,
-    appendTooltipTo,
     ...boxProps
   }) => {
     const containerRef = useRef(null);
@@ -120,13 +113,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             <>
               <Space />
               <Row onClick={(ev) => ev.stopPropagation()}>
-                <Tooltip
-                  label={infoIconTooltipText}
-                  zIndex={
-                    "var(--swui-sticky-popover-z-index)" as unknown as number
-                  }
-                  appendTo={appendTooltipTo}
-                >
+                <Tooltip label={infoIconTooltipText}>
                   <Icon
                     icon={stenaInfoCircle}
                     size={14}
@@ -144,12 +131,17 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             <InputSpinner />
           ) : popoverContent ? (
             <Popover
-              content={popoverContent}
+              renderTrigger={(props) => (
+                <FlatButton
+                  leftIcon={stenaDotsVertical}
+                  size={"small"}
+                  {...props}
+                />
+              )}
               trigger={"click"}
-              zIndex={1000}
               disablePadding
             >
-              <FlatButton leftIcon={stenaDotsVertical} size={"small"} />
+              {popoverContent}
             </Popover>
           ) : null}
         </Row>

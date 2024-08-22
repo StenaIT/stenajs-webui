@@ -1,5 +1,6 @@
 import { Box, Row, Text } from "@stenajs-webui/core";
 import * as React from "react";
+import { ReactNode } from "react";
 import {
   CalendarDayProps,
   CalendarOnClicks,
@@ -21,7 +22,6 @@ import { CalendarDay } from "./renderers/CalendarDay";
 import { FlatButton, stenaAngleDown } from "@stenajs-webui/elements";
 import { WeekNumberCell } from "./renderers/WeekNumberCell";
 import { DisabledDayWrapper } from "./DisabledDayWrapper";
-import { ReactNode } from "react";
 
 export interface CalendarMonthProps<T>
   extends CalendarOnClicks<T>,
@@ -106,48 +106,46 @@ export function CalendarMonth<T>({
               ))}
             </tr>
             {month.weeks.map((week: WeekData) => (
-              <>
-                <tr key={week.weekNumber}>
-                  {showWeekNumber && (
-                    <td>
-                      {renderWeekNumber ? (
-                        renderWeekNumber(week, theme, onClickWeek)
-                      ) : (
-                        <WeekNumberCell
-                          week={week}
-                          onClickWeek={onClickWeek}
-                          theme={theme}
-                        />
-                      )}
-                    </td>
-                  )}
-                  {week.days.map((day) => (
-                    <DisabledDayWrapper
-                      dayComponent={dayComponent}
-                      key={day.dateString}
-                      day={day}
-                      week={week}
-                      month={month}
-                      dayState={
-                        statePerWeek &&
-                        statePerWeek[week.weekNumber] &&
-                        statePerWeek[week.weekNumber][day.dayOfMonth]
-                      }
-                      userData={
-                        userDataPerWeek &&
-                        userDataPerWeek[week.weekNumber] &&
-                        userDataPerWeek[week.weekNumber][day.dayOfMonth]
-                      }
-                      onClickDay={onClickDay}
-                      theme={theme}
-                      extraDayContent={extraDayContent}
-                      defaultHighlights={defaultHighlights}
-                      minDate={minDate}
-                      maxDate={maxDate}
-                    />
-                  ))}
-                </tr>
-              </>
+              <tr key={week.weekNumber}>
+                {showWeekNumber && (
+                  <td>
+                    {renderWeekNumber ? (
+                      renderWeekNumber(week, theme, onClickWeek)
+                    ) : (
+                      <WeekNumberCell
+                        week={week}
+                        onClickWeek={onClickWeek}
+                        theme={theme}
+                      />
+                    )}
+                  </td>
+                )}
+                {week.days.map((day) => (
+                  <DisabledDayWrapper
+                    dayComponent={dayComponent}
+                    key={day.dateString}
+                    day={day}
+                    week={week}
+                    month={month}
+                    dayState={
+                      statePerWeek &&
+                      statePerWeek[week.weekNumber] &&
+                      statePerWeek[week.weekNumber][day.dayOfMonth]
+                    }
+                    userData={
+                      userDataPerWeek &&
+                      userDataPerWeek[week.weekNumber] &&
+                      userDataPerWeek[week.weekNumber][day.dayOfMonth]
+                    }
+                    onClickDay={onClickDay}
+                    theme={theme}
+                    extraDayContent={extraDayContent}
+                    defaultHighlights={defaultHighlights}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                  />
+                ))}
+              </tr>
             ))}
           </tbody>
         </table>

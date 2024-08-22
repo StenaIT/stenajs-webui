@@ -8,8 +8,13 @@ export const RailMenuButton: React.FC<RailMenuButtonProps> = ({
   label,
   ...menuButtonLinkProps
 }) => {
+  const label2 =
+    '    <Tooltip label={label2} placement={"right"} visible>\n' +
+    "      <IconMenuButton {...menuButtonLinkProps} />\n" +
+    "    </Tooltip>\n";
+
   return (
-    <Tooltip label={label} placement={"right"} appendTo={document.body}>
+    <Tooltip label={label + label2} placement={"right"} visible>
       <IconMenuButton {...menuButtonLinkProps} />
     </Tooltip>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ReactNode } from "react";
-import { Box, Column, Indent, Row, useBoolean } from "@stenajs-webui/core";
+import { Column, Indent, Row } from "@stenajs-webui/core";
 import {
   ActionMenu,
   FlatButton,
@@ -15,39 +15,39 @@ export interface CheckboxMenuProps extends CheckboxProps {
 
 const border = `1px solid var(--lhds-color-ui-300)`;
 
+// TODO POPOVER placement={"bottom-start"}
+
 export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
   renderMenu,
   ...checkboxProps
 }) => {
-  const [isOpen, open, close] = useBoolean(false);
   return (
     <Popover
-      onClickOutside={close}
-      arrow={false}
-      visible={isOpen}
-      disablePadding
-      content={
-        renderMenu ? (
-          <Column>
-            <ActionMenu>{renderMenu(close)}</ActionMenu>
-          </Column>
-        ) : undefined
-      }
-      placement={"bottom-start"}
-    >
-      <Box display={"inline-block"}>
-        <Row
-          spacing={0.5}
-          indent
-          alignItems={"center"}
-          border={border}
-          borderRadius={"4px"}
-        >
-          <Checkbox {...checkboxProps} />
-          <Indent num={0.5} />
-          <FlatButton size={"small"} onClick={open} leftIcon={stenaAngleDown} />
+      trigger={"click"}
+      renderTrigger={(props) => (
+        <Row>
+          <Row
+            spacing={0.5}
+            indent
+            alignItems={"center"}
+            border={border}
+            borderRadius={"4px"}
+          >
+            <Checkbox {...checkboxProps} />
+            <Indent num={0.5} />
+            <FlatButton size={"small"} leftIcon={stenaAngleDown} {...props} />
+          </Row>
         </Row>
-      </Box>
+      )}
+      hideArrow
+      disablePadding
+      placement={"bottom"}
+    >
+      {({ onRequestClose }) => (
+        <Column>
+          <ActionMenu>{renderMenu(onRequestClose)}</ActionMenu>
+        </Column>
+      )}
     </Popover>
   );
 };

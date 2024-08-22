@@ -55,7 +55,7 @@ export const ModifiedField: React.FC<Props> = ({
       )}
       {hasRightIcon && <Space />}
       {showEmptyFieldWarning ? (
-        <Tooltip label={warningOnEmpty!} zIndex={100}>
+        <Tooltip label={warningOnEmpty!}>
           <Icon
             icon={stenaExclamationTriangle}
             color={cssColor("--lhds-color-orange-600")}

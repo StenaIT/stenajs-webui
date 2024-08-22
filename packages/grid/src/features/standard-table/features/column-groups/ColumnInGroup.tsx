@@ -110,11 +110,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
             {loading ? (
               <InputSpinner />
             ) : error ? (
-              <Tooltip
-                label={error}
-                placement={"bottom"}
-                appendTo={document.body}
-              >
+              <Tooltip label={error} placement={"bottom"}>
                 <Icon
                   icon={stenaExclamationTriangle}
                   color={cssColor("--lhds-color-red-500")}
