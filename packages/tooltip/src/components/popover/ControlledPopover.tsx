@@ -7,6 +7,7 @@ import {
   flip,
   FloatingArrow,
   FloatingFocusManager,
+  FloatingPortal,
   offset,
   shift,
   useDismiss,
@@ -87,37 +88,39 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
       {isMounted && (
-        <FloatingFocusManager
-          context={context}
-          modal={false}
-          restoreFocus={restoreFocus}
-          returnFocus={returnFocus}
-        >
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps}
+        <FloatingPortal>
+          <FloatingFocusManager
+            context={context}
+            modal={false}
+            restoreFocus={restoreFocus}
+            returnFocus={returnFocus}
           >
             <div
-              style={transitionStyles}
-              className={cx(
-                moduleStyles.floating,
-                disablePadding && moduleStyles.disablePadding
-              )}
+              ref={refs.setFloating}
+              style={floatingStyles}
+              {...getFloatingProps}
             >
-              {children}
-              {!hideArrow && (
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  width={ARROW_WIDTH}
-                  height={ARROW_HEIGHT}
-                  fill={"white"}
-                />
-              )}
+              <div
+                style={transitionStyles}
+                className={cx(
+                  moduleStyles.floating,
+                  disablePadding && moduleStyles.disablePadding
+                )}
+              >
+                {children}
+                {!hideArrow && (
+                  <FloatingArrow
+                    ref={arrowRef}
+                    context={context}
+                    width={ARROW_WIDTH}
+                    height={ARROW_HEIGHT}
+                    fill={"white"}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        </FloatingFocusManager>
+          </FloatingFocusManager>
+        </FloatingPortal>
       )}
     </>
   );

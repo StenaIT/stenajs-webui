@@ -6,6 +6,7 @@ import {
   autoUpdate,
   flip,
   FloatingArrow,
+  FloatingPortal,
   offset,
   shift,
   useFloating,
@@ -87,40 +88,42 @@ export const Tooltip: React.FC<TooltipProps> = ({
       </div>
 
       {isMounted && (
-        <div ref={refs.setFloating} style={floatingStyles}>
-          <div
-            style={{ maxWidth, ...styles }}
-            className={cx(
-              moduleStyles.floating,
-              variant && moduleStyles.withIcon
-            )}
-          >
-            {variant ? (
-              <>
-                <div
-                  className={cx(
-                    moduleStyles.iconWrapper,
-                    moduleStyles[variant]
-                  )}
-                >
-                  <Icon icon={variantIcons[variant]} size={16} />
-                </div>
-                <Space />
+        <FloatingPortal>
+          <div ref={refs.setFloating} style={floatingStyles}>
+            <div
+              style={{ maxWidth, ...styles }}
+              className={cx(
+                moduleStyles.floating,
+                variant && moduleStyles.withIcon
+              )}
+            >
+              {variant ? (
+                <>
+                  <div
+                    className={cx(
+                      moduleStyles.iconWrapper,
+                      moduleStyles[variant]
+                    )}
+                  >
+                    <Icon icon={variantIcons[variant]} size={16} />
+                  </div>
+                  <Space />
+                  <TooltipText label={label} />
+                </>
+              ) : (
                 <TooltipText label={label} />
-              </>
-            ) : (
-              <TooltipText label={label} />
-            )}
+              )}
 
-            <FloatingArrow
-              ref={arrowRef}
-              context={context}
-              width={ARROW_WIDTH}
-              height={ARROW_HEIGHT}
-              fill={"#333"}
-            />
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                width={ARROW_WIDTH}
+                height={ARROW_HEIGHT}
+                fill={"#333"}
+              />
+            </div>
           </div>
-        </div>
+        </FloatingPortal>
       )}
     </>
   );

@@ -7,6 +7,7 @@ import {
   flip,
   FloatingArrow,
   FloatingFocusManager,
+  FloatingPortal,
   offset,
   safePolygon,
   shift,
@@ -124,35 +125,37 @@ export const Popover: React.FC<PopoverProps> = ({
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
       {isMounted && (
-        <FloatingFocusManager context={context} modal={false}>
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps}
-          >
+        <FloatingPortal>
+          <FloatingFocusManager context={context} modal={false}>
             <div
-              style={transitionStyles}
-              className={cx(
-                moduleStyles.floating,
-                disablePadding && moduleStyles.disablePadding,
-                variant && moduleStyles.withIcon
-              )}
+              ref={refs.setFloating}
+              style={floatingStyles}
+              {...getFloatingProps}
             >
-              {typeof children === "function"
-                ? children({ onRequestClose })
-                : children}
-              {!hideArrow && (
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  width={ARROW_WIDTH}
-                  height={ARROW_HEIGHT}
-                  fill={"white"}
-                />
-              )}
+              <div
+                style={transitionStyles}
+                className={cx(
+                  moduleStyles.floating,
+                  disablePadding && moduleStyles.disablePadding,
+                  variant && moduleStyles.withIcon
+                )}
+              >
+                {typeof children === "function"
+                  ? children({ onRequestClose })
+                  : children}
+                {!hideArrow && (
+                  <FloatingArrow
+                    ref={arrowRef}
+                    context={context}
+                    width={ARROW_WIDTH}
+                    height={ARROW_HEIGHT}
+                    fill={"white"}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        </FloatingFocusManager>
+          </FloatingFocusManager>
+        </FloatingPortal>
       )}
     </>
   );

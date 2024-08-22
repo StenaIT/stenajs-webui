@@ -13,7 +13,7 @@ import { ActionPrompt } from "./ActionPrompt";
 import { Popover } from "./Popover";
 
 export default {
-  title: "tooltip/Popover2",
+  title: "tooltip/Popover",
   component: Popover,
   subcomponents: { ActionPrompt },
 };
