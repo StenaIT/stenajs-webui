@@ -1,3 +1,16 @@
+# v21.0.0 (Fri Aug 23 2024)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/grid`, `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Migrate popovers and tooltips to Floating UI [#770](https://github.com/StenaIT/stenajs-webui/pull/770) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.4 (Tue Aug 20 2024)
 
 #### 🐛 Bug Fix
