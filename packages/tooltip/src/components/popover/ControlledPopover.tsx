@@ -1,6 +1,5 @@
 import * as React from "react";
 import { PropsWithChildren, ReactNode, useCallback, useRef } from "react";
-import { Placement } from "../tooltip/Tooltip";
 import {
   arrow,
   autoUpdate,
@@ -18,6 +17,7 @@ import {
 } from "@floating-ui/react";
 import cx from "classnames";
 import moduleStyles from "./Popover.module.css";
+import { Placement } from "../../types/Placement";
 
 export interface ControlledPopoverProps extends PropsWithChildren {
   open: boolean;

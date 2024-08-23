@@ -15,8 +15,6 @@ export interface CheckboxMenuProps extends CheckboxProps {
 
 const border = `1px solid var(--lhds-color-ui-300)`;
 
-// TODO POPOVER placement={"bottom-start"}
-
 export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
   renderMenu,
   ...checkboxProps
@@ -41,7 +39,7 @@ export const CheckboxMenu: React.FC<CheckboxMenuProps> = ({
       )}
       hideArrow
       disablePadding
-      placement={"bottom"}
+      placement={"bottom-start"}
     >
       {({ onRequestClose }) => (
         <Column>

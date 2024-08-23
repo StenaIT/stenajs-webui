@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ReactNode, useCallback, useRef, useState } from "react";
-import { Placement } from "../tooltip/Tooltip";
 import {
   arrow,
   autoUpdate,
@@ -22,6 +21,7 @@ import {
 } from "@floating-ui/react";
 import cx from "classnames";
 import moduleStyles from "./Popover.module.css";
+import { Placement } from "../../types/Placement";
 
 export type PopoverVariant =
   | "standard"
@@ -58,13 +58,6 @@ export interface PopoverProps {
 const ARROW_WIDTH = 12;
 const ARROW_HEIGHT = 8;
 const GAP = 2;
-
-/*
-  TODO
-  onRequestClose
-  theme?
-  variant
- */
 
 export const Popover: React.FC<PopoverProps> = ({
   children,

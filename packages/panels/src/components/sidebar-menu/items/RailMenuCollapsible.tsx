@@ -15,7 +15,6 @@ export interface RailMenuCollapsibleProps {
   popupMinWidth?: string;
 }
 
-// TODO POPOVER placement={"right-start"}
 export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
   children,
   label,
@@ -25,7 +24,7 @@ export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
   return (
     <Popover
       renderTrigger={(props) => <IconMenuButton icon={icon} {...props} />}
-      placement={"right"}
+      placement={"right-start"}
       trigger={["hover", "focus"]}
       disablePadding
     >

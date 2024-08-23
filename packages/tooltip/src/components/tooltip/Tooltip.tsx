@@ -23,6 +23,7 @@ import {
   stenaExclamationTriangle,
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
+import { Placement } from "../../types/Placement";
 
 export interface TooltipProps extends PropsWithChildren {
   placement?: Placement;
@@ -44,8 +45,6 @@ const ARROW_WIDTH = 12;
 const ARROW_HEIGHT = 8;
 const GAP = 2;
 
-export type Placement = "top" | "right" | "bottom" | "left";
-
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
   visible,
@@ -59,7 +58,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const arrowRef = useRef(null);
 
   const { refs, floatingStyles, context } = useFloating({
-    placement,
+    placement: placement,
     open: visible ?? isOpen,
     onOpenChange: setIsOpen,
     middleware: [
