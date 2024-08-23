@@ -1,9 +1,6 @@
 import * as React from "react";
 import { CSSProperties } from "react";
-import {
-  TableHeadItem,
-  TableHeadProps,
-} from "../../table-ui/components/table/TableHeadItem";
+import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
 import { useColumnConfigById } from "../hooks/UseColumnConfigById";
@@ -18,7 +15,6 @@ export interface StandardTableHeaderItemProps {
   borderFromGroup?: boolean | string;
   stickyHeader?: boolean;
   top?: string | number;
-  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -28,7 +24,6 @@ export const StandardTableHeadItem = React.memo(
     disableBorderLeft,
     stickyHeader,
     top,
-    appendTooltipTo,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -108,7 +103,6 @@ export const StandardTableHeadItem = React.memo(
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant
           }
-          appendTooltipTo={appendTooltipTo}
           selected={selected}
           height={"100%"}
         />

@@ -1,10 +1,10 @@
-import { Box, useDelayedFalse } from "@stenajs-webui/core";
+import { Box } from "@stenajs-webui/core";
 import { stenaArrowRight } from "@stenajs-webui/elements";
 import {
   TextInputProps,
   ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
-import { Popover } from "@stenajs-webui/tooltip";
+import { ControlledPopover } from "@stenajs-webui/tooltip";
 import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
@@ -115,63 +115,61 @@ export function DateRangeDualTextInput<TData>({
     [calendarProps?.statePerMonth, startDate, endDate, dateInFocus]
   );
 
-  const delayedIsCalendarVisible = useDelayedFalse(isCalendarVisible, 300);
-
   return (
     <Box onKeyDown={onKeyDownHandler}>
-      <Popover
-        arrow={false}
-        lazy
-        disabled={disabled}
-        placement={defaultPopoverPlacement}
-        onClickOutside={hideCalendar}
-        visible={isCalendarVisible}
-        content={
-          delayedIsCalendarVisible && (
-            <CalendarWithMonthSwitcher
-              onClickDay={onClickDay}
-              dateInFocus={dateInFocus}
-              setDateInFocus={setDateInFocus}
-              currentPanel={currentPanel}
-              setCurrentPanel={setCurrentPanel}
-              minDate={minDate}
-              maxDate={maxDate}
-              {...calendarProps}
-              statePerMonth={statePerMonth}
+      <ControlledPopover
+        hideArrow
+        restoreFocus={false}
+        returnFocus={false}
+        renderTrigger={(props) => (
+          <Box {...props}>
+            <DualTextInput
+              autoFocusLeft={autoFocus}
+              onEsc={onEsc}
+              onEnter={onEnter}
+              onBlur={onBlur}
+              disabled={disabled}
+              separatorIcon={stenaArrowRight}
+              typeLeft={"date"}
+              typeRight={"date"}
+              placeholderLeft={"Start date"}
+              placeholderRight={"End date"}
+              onChangeLeft={inputLeftChangeHandler}
+              onChangeRight={inputRightChangeHandler}
+              onClickArrowDown={onClickArrowButton}
+              onClickCalendar={onClickCalendarButton}
+              onFocusLeft={onFocusLeft}
+              onFocusRight={onFocusRight}
+              onClickLeft={onFocusLeft}
+              onClickRight={onFocusRight}
+              inputRefLeft={startDateInputRef}
+              inputRefRight={endDateInputRef}
+              variant={startDateIsAfterEnd ? "error" : variant}
+              widthLeft={widthLeft}
+              widthRight={widthRight}
+              minLeft={minDate}
+              maxLeft={maxDate}
+              minRight={minDate}
+              maxRight={maxDate}
             />
-          )
-        }
+          </Box>
+        )}
+        placement={defaultPopoverPlacement}
+        onRequestClose={hideCalendar}
+        open={isCalendarVisible}
       >
-        <DualTextInput
-          autoFocusLeft={autoFocus}
-          onEsc={onEsc}
-          onEnter={onEnter}
-          onBlur={onBlur}
-          disabled={disabled}
-          separatorIcon={stenaArrowRight}
-          typeLeft={"date"}
-          typeRight={"date"}
-          placeholderLeft={"Start date"}
-          placeholderRight={"End date"}
-          onChangeLeft={inputLeftChangeHandler}
-          onChangeRight={inputRightChangeHandler}
-          onClickArrowDown={onClickArrowButton}
-          onClickCalendar={onClickCalendarButton}
-          onFocusLeft={onFocusLeft}
-          onFocusRight={onFocusRight}
-          onClickLeft={onFocusLeft}
-          onClickRight={onFocusRight}
-          inputRefLeft={startDateInputRef}
-          inputRefRight={endDateInputRef}
-          variant={startDateIsAfterEnd ? "error" : variant}
-          widthLeft={widthLeft}
-          widthRight={widthRight}
-          minLeft={minDate}
-          maxLeft={maxDate}
-          minRight={minDate}
-          maxRight={maxDate}
+        <CalendarWithMonthSwitcher
+          onClickDay={onClickDay}
+          dateInFocus={dateInFocus}
+          setDateInFocus={setDateInFocus}
+          currentPanel={currentPanel}
+          setCurrentPanel={setCurrentPanel}
+          minDate={minDate}
+          maxDate={maxDate}
+          {...calendarProps}
+          statePerMonth={statePerMonth}
         />
-      </Popover>
+      </ControlledPopover>
     </Box>
   );
 }

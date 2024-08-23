@@ -39,13 +39,7 @@ export const CrudStatusIndicator: React.FC<Props> = ({ crudStatus }) => {
     );
     return (
       <>
-        {errorMessage ? (
-          <Tooltip label={errorMessage} zIndex={100}>
-            {icon}
-          </Tooltip>
-        ) : (
-          icon
-        )}
+        {errorMessage ? <Tooltip label={errorMessage}>{icon}</Tooltip> : icon}
       </>
     );
   }

@@ -1,8 +1,6 @@
-import { Column, Row, Spacing, Text, useBoolean } from "@stenajs-webui/core";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import { Column, Row, Text } from "@stenajs-webui/core";
 import { cssColor } from "@stenajs-webui/theme";
 import * as React from "react";
-import { useEffect } from "react";
 import { Tooltip } from "./Tooltip";
 
 export default {
@@ -29,22 +27,6 @@ export const Standard = () => (
       </Tooltip>
     </Row>
   </>
-);
-
-export const ClickTrigger = () => (
-  <Row justifyContent={"space-between"} spacing={10}>
-    <Tooltip label={"Way to go!"} trigger={"click"}>
-      <Text>Click me</Text>
-    </Tooltip>
-  </Row>
-);
-
-export const WithButton = () => (
-  <Column justifyContent={"flex-start"} width={"fit-content"} spacing={10}>
-    <Tooltip label={"Big success!"} trigger={"click"}>
-      <PrimaryButton label={"Click me"} />
-    </Tooltip>
-  </Column>
 );
 
 export const Variants = () => (
@@ -115,22 +97,3 @@ export const Variants = () => (
     </Tooltip>
   </Column>
 );
-
-export const Disabled = () => {
-  const [disabled, , , toggle] = useBoolean(false);
-
-  useEffect(() => {
-    const r = setInterval(toggle, 2000);
-    return () => clearInterval(r);
-  }, [toggle]);
-
-  return (
-    <Column justifyContent={"flex-start"} width={"fit-content"} spacing={10}>
-      <Tooltip label={"Big success!"} disabled={disabled}>
-        <PrimaryButton label={"Hover me"} />
-      </Tooltip>
-      <Spacing />
-      <Text>Disabled={disabled ? "true" : "false"}</Text>
-    </Column>
-  );
-};

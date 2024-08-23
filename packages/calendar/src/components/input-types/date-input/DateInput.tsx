@@ -1,11 +1,10 @@
 import { Box } from "@stenajs-webui/core";
 import { stenaCalendar, TextInputButton } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
-import { Popover } from "@stenajs-webui/tooltip";
+import { ControlledPopover } from "@stenajs-webui/tooltip";
 import { format } from "date-fns";
 import * as React from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
-import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import { SingleDateCalendar } from "../../calendar-types/single-date-calendar/SingleDateCalendar";
 import {
@@ -42,16 +41,6 @@ export interface DateInputProps<T = unknown>
   /**
    *  Portal target, HTML element. If not set, portal is not used.
    */
-  portalTarget?: HTMLElement | null;
-  /**
-   * Z-index of the calendar overlay.
-   * @default 100
-   */
-  zIndex?: number;
-  /**
-   * Width of the input element.
-   * * @default 125px
-   */
   width?: string;
   /**
    * The calendar theme to use.
@@ -69,13 +58,11 @@ export const DateInput: React.FC<DateInputProps> = ({
   displayFormat = DateFormats.fullDate,
   placeholder = "Enter date",
   value,
-  zIndex = 100,
   calendarTheme = defaultCalendarTheme,
   calendarProps,
   openOnMount,
   onClose,
   onChange,
-  portalTarget,
   variant,
   width,
   minDate,
@@ -85,48 +72,42 @@ export const DateInput: React.FC<DateInputProps> = ({
   const { hideCalendar, showingCalendar, onSelectDate, showCalendar } =
     useDateInput(onChange, onClose, openOnMount);
 
-  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
-
   return (
     <Box width={width}>
-      <Popover
-        arrow={false}
-        lazy
-        visible={showingCalendar}
-        onClickOutside={hideCalendar}
+      <ControlledPopover
+        hideArrow
+        open={showingCalendar}
+        onRequestClose={hideCalendar}
+        renderTrigger={(props) => (
+          <Box {...props}>
+            <TextInput
+              type={"date"}
+              onFocus={showCalendar}
+              buttonRight={
+                <TextInputButton onClick={showCalendar} icon={stenaCalendar} />
+              }
+              value={value ? format(value, displayFormat) : ""}
+              placeholder={placeholder}
+              size={9}
+              disabled={disabled}
+              autoFocus={openOnMount}
+              variant={variant}
+              min={minDate}
+              max={maxDate}
+            />
+          </Box>
+        )}
         placement={defaultPopoverPlacement}
-        zIndex={zIndex}
-        appendTo={portalTarget ?? "parent"}
-        tippyRef={tippyRef}
-        disabled={disabled}
-        content={
-          <SingleDateCalendar
-            {...calendarProps}
-            onChange={onSelectDate}
-            value={value}
-            theme={calendarTheme}
-            onChangePanel={onChangePanel}
-            minDate={minDate}
-            maxDate={maxDate}
-          />
-        }
       >
-        <TextInput
-          type={"date"}
-          onFocus={showCalendar}
-          buttonRight={
-            <TextInputButton onClick={showCalendar} icon={stenaCalendar} />
-          }
-          value={value ? format(value, displayFormat) : ""}
-          placeholder={placeholder}
-          size={9}
-          disabled={disabled}
-          autoFocus={openOnMount}
-          variant={variant}
-          min={minDate}
-          max={maxDate}
+        <SingleDateCalendar
+          {...calendarProps}
+          onChange={onSelectDate}
+          value={value}
+          theme={calendarTheme}
+          minDate={minDate}
+          maxDate={maxDate}
         />
-      </Popover>
+      </ControlledPopover>
     </Box>
   );
 };

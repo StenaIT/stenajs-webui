@@ -23,29 +23,23 @@ export const RailMenuCollapsible: React.FC<RailMenuCollapsibleProps> = ({
 }) => {
   return (
     <Popover
-      appendTo={"parent"}
-      arrow={false}
-      offset={[0, 0]}
+      renderTrigger={(props) => <IconMenuButton icon={icon} {...props} />}
       placement={"right-start"}
-      trigger={"focusin mouseenter click"}
+      trigger={["hover", "focus"]}
       disablePadding
-      lazy
-      content={
-        <Box
-          minWidth={popupMinWidth}
-          shadow={"popover"}
-          spacing={1}
-          indent={1}
-          gap={2}
-        >
-          <RailContext.Provider value={false}>
-            <SidebarMenuHeading label={label} />
-            {children}
-          </RailContext.Provider>
-        </Box>
-      }
     >
-      <IconMenuButton icon={icon} />
+      <Box
+        minWidth={popupMinWidth}
+        shadow={"popover"}
+        spacing={1}
+        indent={1}
+        gap={2}
+      >
+        <RailContext.Provider value={false}>
+          <SidebarMenuHeading label={label} />
+          {children}
+        </RailContext.Provider>
+      </Box>
     </Popover>
   );
 };

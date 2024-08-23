@@ -24,7 +24,7 @@ export const RailMenuLink: React.FC<RailMenuLinkProps> = ({
   }
 
   return (
-    <Tooltip label={label} placement={"right"} appendTo={document.body}>
+    <Tooltip label={label} placement={"right"}>
       <IconMenuButtonLink icon={leftIcon} {...menuButtonLinkProps} />
     </Tooltip>
   );

@@ -9,8 +9,8 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
-import { Popover } from "./Popover";
 import { ActionPrompt } from "./ActionPrompt";
+import { Popover } from "./Popover";
 
 export default {
   title: "tooltip/Popover",
@@ -20,24 +20,45 @@ export default {
 
 export const Standard = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<ActionPrompt />}>
-      <FlatButton leftIcon={stenaTrash} />
+    <Popover
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
+    >
+      <ActionPrompt />
+    </Popover>
+  </Box>
+);
+
+export const CloseAfterEvent = () => (
+  <Box indent={10} spacing={10} display={"inline-block"}>
+    <Popover
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
+    >
+      {({ onRequestClose }) => (
+        <ActionPrompt onNo={onRequestClose} onYes={onRequestClose} />
+      )}
     </Popover>
   </Box>
 );
 
 export const OnClick = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<ActionPrompt />} trigger={"click"}>
-      <FlatButton leftIcon={stenaTrash} />
+    <Popover
+      trigger={"click"}
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
+    >
+      <ActionPrompt />
     </Popover>
   </Box>
 );
 
 export const NoArrow = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<ActionPrompt />} trigger={"click"} arrow={false}>
-      <FlatButton leftIcon={stenaTrash} />
+    <Popover
+      trigger={"click"}
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
+      hideArrow
+    >
+      <ActionPrompt />
     </Popover>
   </Box>
 );
@@ -46,82 +67,59 @@ export const NoPadding = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover
       disablePadding
-      content={
-        <Column>
-          <Indent spacing>
-            <Text>The line has</Text>
-          </Indent>
-          <SeparatorLine />
-          <Indent spacing>
-            <Text>no padding</Text>
-          </Indent>
-        </Column>
-      }
       trigger={"click"}
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
     >
-      <FlatButton leftIcon={stenaTrash} />
+      <Column>
+        <Indent spacing>
+          <Text>The line has</Text>
+        </Indent>
+        <SeparatorLine />
+        <Indent spacing>
+          <Text>no padding</Text>
+        </Indent>
+      </Column>
     </Popover>
   </Box>
 );
 
 export const Variants = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<ActionPrompt />} trigger={"click"}>
-      <FlatButton label={"standard"} />
-    </Popover>
-
-    <Spacing />
-
-    <Popover content={<ActionPrompt />} trigger={"click"} variant={"info"}>
-      <FlatButton label={"info"} />
+    <Popover
+      renderTrigger={(props) => <FlatButton label={"standard"} {...props} />}
+    >
+      <ActionPrompt />
     </Popover>
 
     <Spacing />
 
     <Popover
-      content={<Text>Some warning.</Text>}
+      renderTrigger={(props) => <FlatButton label={"info"} {...props} />}
+      variant={"info"}
+    >
+      <ActionPrompt />
+    </Popover>
+
+    <Spacing />
+
+    <Popover
       variant={"warning"}
-      trigger={"click"}
+      renderTrigger={(props) => <FlatButton label={"warning"} {...props} />}
     >
-      <FlatButton label={"warning"} />
+      <Text>Some warning.</Text>
     </Popover>
 
     <Spacing />
 
     <Popover
-      content={
-        <Row>
-          <Icon icon={stenaTrash} />
-          <Indent />
-          <Text>Something went wrong.</Text>
-        </Row>
-      }
-      trigger={"click"}
       variant={"error"}
+      renderTrigger={(props) => <FlatButton label={"error"} {...props} />}
     >
-      <FlatButton label={"error"} />
-    </Popover>
-  </Box>
-);
-
-export const ControlOpen = () => (
-  <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<ActionPrompt />} visible>
-      <FlatButton leftIcon={stenaTrash} />
-    </Popover>
-  </Box>
-);
-
-const Alerter = () => {
-  alert("I was rendered.");
-
-  return <Text>I alert when I am rendered.</Text>;
-};
-
-export const Lazy = () => (
-  <Box indent={10} spacing={10} display={"inline-block"}>
-    <Popover content={<Alerter />} trigger={"click"} lazy>
-      <FlatButton leftIcon={stenaTrash} />
+      <Row>
+        <Icon icon={stenaTrash} />
+        <Indent />
+        <Text>Something went wrong.</Text>
+      </Row>
     </Popover>
   </Box>
 );

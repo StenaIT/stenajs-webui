@@ -1,3 +1,1 @@
-import { PopoverPlacement } from "@stenajs-webui/tooltip";
-
-export const defaultPopoverPlacement: PopoverPlacement = "bottom";
+export const defaultPopoverPlacement = "bottom";
