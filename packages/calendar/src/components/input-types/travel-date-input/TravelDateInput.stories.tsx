@@ -54,7 +54,7 @@ export const WithHeading = () => {
   );
 };
 
-export const WithTestId = () => {
+export const WithTestIds = () => {
   const [value, setValue] = useState<string>("");
 
   const testId = (date: Date) => {

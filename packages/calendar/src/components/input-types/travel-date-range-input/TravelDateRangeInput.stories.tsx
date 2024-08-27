@@ -59,7 +59,7 @@ export const WithHeading = () => {
   );
 };
 
-export const WithTestId = () => {
+export const WithTestIds = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
     undefined
   );
