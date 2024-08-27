@@ -64,6 +64,9 @@ export const WithTestId = () => {
     return undefined;
   };
 
+  const previousMonthButtonTestId = "prev-month-button";
+  const nextMonthButtonTestId = "next-month-button";
+
   return (
     <div style={{ display: "inline-block", padding: "150px 80px" }}>
       <TravelDateInput
@@ -71,6 +74,8 @@ export const WithTestId = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         dateTestId={testId}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
     </div>
   );

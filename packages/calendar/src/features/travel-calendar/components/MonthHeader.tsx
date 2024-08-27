@@ -24,6 +24,8 @@ export interface MonthHeaderProps {
   setVisibleMonth: (date: Date) => void;
   prevMonthDisabled: boolean;
   calendarSize: TravelCalendarSizeVariant;
+  previousMonthButtonTestId?: string | undefined;
+  nextMonthButtonTestId?: string | undefined;
 }
 
 export const MonthHeader: React.FC<MonthHeaderProps> = ({
@@ -37,6 +39,8 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
   visibleMonth,
   prevMonthDisabled,
   calendarSize,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
 }) => {
   return (
     <Row alignSelf={"center"} justifyContent={"space-between"} width={"100%"}>
@@ -59,12 +63,14 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
           disabled={prevMonthDisabled}
           aria-label={previousMonthButtonAriaLabel}
           size={calendarSize === "small" ? "medium" : "large"}
+          data-testid={previousMonthButtonTestId}
         />
         <SecondaryButton
           leftIcon={stenaArrowRight}
           onClick={() => setVisibleMonth(addMonths(visibleMonth, 1))}
           aria-label={nextMonthButtonAriaLabel}
           size={calendarSize === "small" ? "medium" : "large"}
+          data-testid={nextMonthButtonTestId}
         />
       </Row>
     </Row>

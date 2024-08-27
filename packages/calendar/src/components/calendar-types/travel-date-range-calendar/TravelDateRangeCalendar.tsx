@@ -25,6 +25,8 @@ export interface TravelDateRangeCalendarProps
   numMonthsInMonthPicker?: number;
   size?: TravelCalendarSizeVariant;
   dateTestId?: (date: Date) => string | undefined;
+  previousMonthButtonTestId?: string | undefined;
+  nextMonthButtonTestId?: string | undefined;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -44,6 +46,8 @@ export const TravelDateRangeCalendar: React.FC<
   firstMonthInMonthPicker = new Date(),
   size = "medium",
   dateTestId,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -82,6 +86,8 @@ export const TravelDateRangeCalendar: React.FC<
         previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
         nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
         calendarSize={size}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
 
       {visiblePanel === "calendar" && (

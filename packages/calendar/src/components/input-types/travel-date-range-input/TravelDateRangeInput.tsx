@@ -49,6 +49,8 @@ export interface TravelDateRangeInputProps
   renderBelowCalendar?: (args: RenderBelowCalendarArgs) => ReactNode;
   size?: TravelCalendarSizeVariant;
   dateTestId?: (date: Date) => string | undefined;
+  previousMonthButtonTestId?: string | undefined;
+  nextMonthButtonTestId?: string | undefined;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -70,6 +72,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   renderBelowCalendar,
   size = "medium",
   dateTestId,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -199,6 +203,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                 previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
                 nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
                 calendarSize={size}
+                previousMonthButtonTestId={previousMonthButtonTestId}
+                nextMonthButtonTestId={nextMonthButtonTestId}
               />
 
               {visiblePanel === "calendar" && (
