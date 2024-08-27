@@ -22,6 +22,7 @@ export interface TravelDateCalendarProps
   firstMonthInMonthPicker?: Date;
   numMonthsInMonthPicker?: number;
   size?: TravelCalendarSizeVariant;
+  dateTestId?: (date: Date) => string | undefined;
 }
 
 export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
@@ -36,6 +37,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
   headingLevel,
   numMonthsInMonthPicker = 12,
   firstMonthInMonthPicker = new Date(),
+  dateTestId,
   size = "medium",
 }) => {
   const inputProps = useTravelDateInput(
@@ -85,6 +87,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
           selectedEndDate={selectedDate}
           isValidDateRange={Boolean(selectedDate)}
           multiSelectable={false}
+          dateTestId={dateTestId}
         />
       )}
 

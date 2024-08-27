@@ -8,12 +8,11 @@ import {
 import { useRailContext } from "../rail/RailContext";
 import { RailMenuLink } from "./RailMenuLink";
 
-export type SidebarMenuLinkProps =
-  | (
-      | MenuButtonLinkNotSelectedProps
-      | MenuButtonLinkWithSelectedProps
-      | MenuButtonLinkWithRenderLinkProps
-    ) & { label: string };
+export type SidebarMenuLinkProps = (
+  | MenuButtonLinkNotSelectedProps
+  | MenuButtonLinkWithSelectedProps
+  | MenuButtonLinkWithRenderLinkProps
+) & { label: string };
 
 export const SidebarMenuLink: React.FC<SidebarMenuLinkProps> = (props) => {
   const isRail = useRailContext();
