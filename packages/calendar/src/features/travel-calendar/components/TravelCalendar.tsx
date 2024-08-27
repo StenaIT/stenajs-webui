@@ -47,7 +47,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
   todayIsInVisibleMonth,
   size = "medium",
   multiSelectable,
-  dateTestId
+  dateTestId,
 }) => {
   return (
     <table
