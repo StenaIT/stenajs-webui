@@ -27,6 +27,7 @@ export interface TravelDateCellProps {
   todayIsInVisibleMonth: boolean;
   calendarId: string;
   isDateDisabled: (date: Date) => boolean;
+  dateTestId?: (date: Date) => string | undefined;
   size: TravelCalendarSizeVariant;
 }
 
@@ -46,6 +47,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
   calendarId,
   isDateDisabled,
   size,
+  dateTestId,
 }) => {
   const onKeyDown = useCallback<KeyboardEventHandler<HTMLTableDataCellElement>>(
     async (e) => {
@@ -125,6 +127,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       {...(disabled
         ? undefined
         : { "aria-selected": isSelectionStart || isSelectionEnd })}
+      data-testid={dateTestId?.(day.date)}
     >
       <div className={styles.outline} />
 

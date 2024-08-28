@@ -24,6 +24,7 @@ export interface TravelCalendarProps {
   hoverDate: Date | undefined;
   today: Date;
   isDateDisabled: (date: Date) => boolean;
+  dateTestId?: (date: Date) => string | undefined;
   calendarId: string;
   todayIsInVisibleMonth: boolean;
   size?: TravelCalendarSizeVariant;
@@ -46,6 +47,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
   todayIsInVisibleMonth,
   size = "medium",
   multiSelectable,
+  dateTestId,
 }) => {
   return (
     <table
@@ -84,6 +86,7 @@ export const TravelCalendar: React.FC<TravelCalendarProps> = ({
                   todayIsInVisibleMonth={todayIsInVisibleMonth}
                   calendarId={calendarId}
                   isDateDisabled={isDateDisabled}
+                  dateTestId={dateTestId}
                 />
               ))}
             </tr>

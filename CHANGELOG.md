@@ -1,3 +1,16 @@
+# v21.0.1 (Tue Aug 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/panels`
+  - Add test ids to travel calendar days [#771](https://github.com/StenaIT/stenajs-webui/pull/771) ([@Yoorkevich](https://github.com/Yoorkevich))
+
+#### Authors: 1
+
+- [@Yoorkevich](https://github.com/Yoorkevich)
+
+---
+
 # v21.0.0 (Fri Aug 23 2024)
 
 #### 💥 Breaking Change

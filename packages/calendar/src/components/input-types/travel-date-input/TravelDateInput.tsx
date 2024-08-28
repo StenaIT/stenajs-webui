@@ -46,6 +46,7 @@ export interface TravelDateInputProps
   onHideCalendar?: () => void;
   renderBelowCalendar?: (args: RenderBelowSingleDateCalendarArgs) => ReactNode;
   size?: TravelCalendarSizeVariant;
+  dateTestId?: (date: Date) => string | undefined;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
@@ -65,6 +66,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   onHideCalendar,
   renderBelowCalendar,
   size = "medium",
+  dateTestId,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -204,6 +206,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                   selectedStartDate={selectedDate}
                   selectedEndDate={selectedDate}
                   multiSelectable={false}
+                  dateTestId={dateTestId}
                 />
               )}
 

@@ -11,7 +11,7 @@ import {
 } from "@stenajs-webui/elements";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
-import { addDays } from "date-fns";
+import { addDays, isToday } from "date-fns";
 
 export default {
   title: "calendar/Input/TravelDateInput",
@@ -49,6 +49,28 @@ export const WithHeading = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         heading={"Select date"}
+      />
+    </div>
+  );
+};
+
+export const WithTestId = () => {
+  const [value, setValue] = useState<string>("");
+
+  const testId = (date: Date) => {
+    if (isToday(date)) {
+      return "today";
+    }
+    return undefined;
+  };
+
+  return (
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+      <TravelDateInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        dateTestId={testId}
       />
     </div>
   );
