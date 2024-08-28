@@ -47,8 +47,8 @@ export interface TravelDateInputProps
   renderBelowCalendar?: (args: RenderBelowSingleDateCalendarArgs) => ReactNode;
   size?: TravelCalendarSizeVariant;
   dateTestId?: (date: Date) => string | undefined;
-  previousMonthButtonTestId?: string | undefined;
-  nextMonthButtonTestId?: string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({

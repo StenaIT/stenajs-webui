@@ -24,8 +24,8 @@ export interface MonthHeaderProps {
   setVisibleMonth: (date: Date) => void;
   prevMonthDisabled: boolean;
   calendarSize: TravelCalendarSizeVariant;
-  previousMonthButtonTestId?: string | undefined;
-  nextMonthButtonTestId?: string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
 }
 
 export const MonthHeader: React.FC<MonthHeaderProps> = ({

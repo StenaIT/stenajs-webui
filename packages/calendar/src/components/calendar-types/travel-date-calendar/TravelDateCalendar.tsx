@@ -23,8 +23,8 @@ export interface TravelDateCalendarProps
   numMonthsInMonthPicker?: number;
   size?: TravelCalendarSizeVariant;
   dateTestId?: (date: Date) => string | undefined;
-  previousMonthButtonTestId?: string | undefined;
-  nextMonthButtonTestId?: string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
 }
 
 export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
