@@ -48,7 +48,7 @@ export const WithHeading = () => {
   );
 };
 
-export const WithTestId = () => {
+export const WithTestIds = () => {
   const [value, setValue] = useState<string>("");
 
   const testId = (date: Date) => {
@@ -57,6 +57,10 @@ export const WithTestId = () => {
     }
     return undefined;
   };
+
+  const previousMonthButtonTestId = "prev-month-button";
+  const nextMonthButtonTestId = "next-month-button";
+
   return (
     <div style={{ display: "inline-block" }}>
       <TravelDateCalendar
@@ -64,6 +68,8 @@ export const WithTestId = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         dateTestId={testId}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
     </div>
   );
