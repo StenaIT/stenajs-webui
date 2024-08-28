@@ -1,3 +1,16 @@
+# v21.0.3 (Wed Aug 28 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Add data test ids for travel calendar month buttons [#773](https://github.com/StenaIT/stenajs-webui/pull/773) ([@Yoorkevich](https://github.com/Yoorkevich))
+
+#### Authors: 1
+
+- [@Yoorkevich](https://github.com/Yoorkevich)
+
+---
+
 # v21.0.2 (Wed Aug 28 2024)
 
 #### 🐛 Bug Fix
