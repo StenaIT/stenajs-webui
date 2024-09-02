@@ -20,6 +20,8 @@ export interface TravelDateTextInputFieldsProps {
   calendarSize: TravelCalendarSizeVariant;
   placeholderWhenBlurredStartDate: string | undefined;
   placeholderWhenBlurredEndDate: string | undefined;
+  valueWhenBlurredStartDate: string | undefined;
+  valueWhenBlurredEndDate: string | undefined;
 }
 
 export const TravelDateTextInputFields: React.FC<
@@ -34,6 +36,8 @@ export const TravelDateTextInputFields: React.FC<
   calendarSize,
   placeholderWhenBlurredStartDate,
   placeholderWhenBlurredEndDate,
+  valueWhenBlurredStartDate,
+  valueWhenBlurredEndDate,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -65,6 +69,7 @@ export const TravelDateTextInputFields: React.FC<
         borderRadiusVariant={"onlyLeft"}
         placeholder={placeholder}
         placeholderWhenBlurred={placeholderWhenBlurredStartDate}
+        valueWhenBlurred={valueWhenBlurredStartDate}
         calendarSize={calendarSize}
       />
       <TravelDateTextInput
@@ -85,6 +90,7 @@ export const TravelDateTextInputFields: React.FC<
         borderRadiusVariant={"onlyRight"}
         placeholder={placeholder}
         placeholderWhenBlurred={placeholderWhenBlurredEndDate}
+        valueWhenBlurred={valueWhenBlurredEndDate}
         calendarSize={calendarSize}
       />
     </Row>

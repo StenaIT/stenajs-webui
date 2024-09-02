@@ -71,6 +71,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
         </Heading>
       )}
       <TravelDateSingleTextInputField
+        {...inputProps}
         value={value}
         onValueChange={onValueChangeByInputs}
         localeCode={localeCode}

@@ -22,6 +22,7 @@ export interface TravelDateTextInputProps extends LabelledTextInputProps {
   showMask?: boolean;
   calendarSize: TravelCalendarSizeVariant;
   placeholderWhenBlurred: string | undefined;
+  valueWhenBlurred: string | undefined;
 }
 
 export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
@@ -39,6 +40,7 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
   onBlur,
   placeholderWhenBlurred,
   placeholder,
+  valueWhenBlurred,
   ...inputProps
 }) => {
   const inputRef = useRef(null);
@@ -54,7 +56,8 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
     guide,
     keepCharPositions,
     placeholderChar,
-    showMask
+    showMask,
+    isFocused
   );
 
   const onFocusHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -80,6 +83,8 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
   return (
     <LabelledTextInput
       {...inputProps}
+      aria-live={"polite"}
+      value={!isFocused ? valueWhenBlurred : undefined}
       ref={inputRef}
       placeholder={activePlaceholder}
       onFocus={onFocusHandler}

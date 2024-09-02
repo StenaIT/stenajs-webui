@@ -16,7 +16,8 @@ export const useMaskedInput = (
   guide: boolean = false,
   keepCharPositions: boolean = false,
   placeholderChar: string = "\u2000",
-  showMask: boolean = true
+  showMask: boolean = true,
+  enabled: boolean = true
 ) => {
   const textMask = useRef(null);
 
@@ -33,8 +34,10 @@ export const useMaskedInput = (
       showMask,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (textMask.current as any).update(initialValue);
+    if (enabled) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (textMask.current as any).update(initialValue);
+    }
   }, [
     inputRef,
     guide,
@@ -44,6 +47,7 @@ export const useMaskedInput = (
     placeholderChar,
     showMask,
     initialValue,
+    enabled,
   ]);
 
   return {

@@ -170,6 +170,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
         zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
       >
         <TravelDateTextInputFields
+          {...inputProps}
           value={value}
           onValueChange={onValueChangeByInputs}
           localeCode={localeCode}

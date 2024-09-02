@@ -15,6 +15,7 @@ export interface TravelDateSingleTextInputFieldProps {
   onFocus?: () => void;
   calendarSize: TravelCalendarSizeVariant;
   placeholderWhenBlurred: string | undefined;
+  valueWhenBlurred: string | undefined;
 }
 
 export const TravelDateSingleTextInputField: React.FC<
@@ -27,6 +28,7 @@ export const TravelDateSingleTextInputField: React.FC<
   onFocus,
   calendarSize,
   placeholderWhenBlurred,
+  valueWhenBlurred,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -53,6 +55,7 @@ export const TravelDateSingleTextInputField: React.FC<
         placeholder={placeholder}
         calendarSize={calendarSize}
         placeholderWhenBlurred={placeholderWhenBlurred}
+        valueWhenBlurred={valueWhenBlurred}
       />
     </Row>
   );
