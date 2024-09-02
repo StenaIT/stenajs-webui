@@ -1,3 +1,16 @@
+# v21.1.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Add renderExtraHeadRows prop to StandardTable, allows one or severa… [#774](https://github.com/StenaIT/stenajs-webui/pull/774) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.0.3 (Wed Aug 28 2024)
 
 #### 🐛 Bug Fix
