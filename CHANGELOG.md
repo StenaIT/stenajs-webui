@@ -1,3 +1,16 @@
+# v21.2.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add travel calendar text input placeholder when not in focus [#775](https://github.com/StenaIT/stenajs-webui/pull/775) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.1.0 (Mon Sep 02 2024)
 
 #### 🚀 Enhancement
