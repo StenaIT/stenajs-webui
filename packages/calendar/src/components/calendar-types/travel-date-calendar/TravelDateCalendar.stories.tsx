@@ -168,3 +168,18 @@ export const ParseDate = () => {
     </div>
   );
 };
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurred={"Gimme date"}
+      />
+    </div>
+  );
+};

@@ -186,3 +186,21 @@ export const ParseDate = () => {
     </div>
   );
 };
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurredStartDate={"Gimme start"}
+        placeholderWhenBlurredEndDate={"Gimme end"}
+      />
+    </div>
+  );
+};
