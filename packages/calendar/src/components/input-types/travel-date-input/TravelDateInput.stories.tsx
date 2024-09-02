@@ -237,3 +237,18 @@ export const WithPresets = () => {
     </div>
   );
 };
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+      <TravelDateInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurred={"Gimme date"}
+      />
+    </div>
+  );
+};

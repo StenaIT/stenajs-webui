@@ -27,6 +27,8 @@ export interface TravelDateRangeCalendarProps
   dateTestId?: (date: Date) => string | undefined;
   previousMonthButtonTestId?: string;
   nextMonthButtonTestId?: string;
+  placeholderWhenBlurredStartDate?: string;
+  placeholderWhenBlurredEndDate?: string;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -48,6 +50,8 @@ export const TravelDateRangeCalendar: React.FC<
   dateTestId,
   previousMonthButtonTestId,
   nextMonthButtonTestId,
+  placeholderWhenBlurredStartDate,
+  placeholderWhenBlurredEndDate,
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -79,6 +83,8 @@ export const TravelDateRangeCalendar: React.FC<
         startDateLabel={startDateLabel}
         endDateLabel={endDateLabel}
         calendarSize={size}
+        placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
+        placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
       />
 
       <MonthHeader

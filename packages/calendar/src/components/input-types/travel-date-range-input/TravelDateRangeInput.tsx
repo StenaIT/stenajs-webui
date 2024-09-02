@@ -51,6 +51,8 @@ export interface TravelDateRangeInputProps
   dateTestId?: (date: Date) => string | undefined;
   previousMonthButtonTestId?: string;
   nextMonthButtonTestId?: string;
+  placeholderWhenBlurredStartDate?: string;
+  placeholderWhenBlurredEndDate?: string;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -62,6 +64,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
+  placeholderWhenBlurredStartDate,
+  placeholderWhenBlurredEndDate,
   heading,
   headingLevel,
   numMonthsInMonthPicker = 12,
@@ -173,6 +177,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           endDateLabel={endDateLabel}
           onFocus={showCalendar}
           calendarSize={size}
+          placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
+          placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
         />
       </Box>
 
