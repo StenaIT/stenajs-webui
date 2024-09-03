@@ -51,7 +51,7 @@ export const useTravelDateRangeInput = (
   const valueWhenBlurredStartDate = useMemo(
     () =>
       selectedStartDate != null
-        ? formatDateDescription(selectedStartDate, locale)
+        ? formatDateDescription(selectedStartDate, today, locale)
         : undefined,
     [locale, selectedStartDate]
   );
@@ -59,7 +59,7 @@ export const useTravelDateRangeInput = (
   const valueWhenBlurredEndDate = useMemo(
     () =>
       selectedEndDate != null
-        ? formatDateDescription(selectedEndDate, locale)
+        ? formatDateDescription(selectedEndDate, today, locale)
         : undefined,
     [locale, selectedEndDate]
   );

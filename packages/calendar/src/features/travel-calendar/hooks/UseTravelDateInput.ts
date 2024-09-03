@@ -43,9 +43,9 @@ export const useTravelDateInput = (
   const valueWhenBlurred = useMemo(
     () =>
       selectedDate != null
-        ? formatDateDescription(selectedDate, locale)
+        ? formatDateDescription(selectedDate, today, locale)
         : undefined,
-    [locale, selectedDate]
+    [locale, selectedDate, today]
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
