@@ -1,8 +1,8 @@
 import * as React from "react";
 import { action } from "@storybook/addon-actions";
-import { Box, Text } from "@stenajs-webui/core";
+import { Box, Column, Heading, Row, Text } from "@stenajs-webui/core";
 import { TextInput, TextInputProps, TextInputVariant } from "./TextInput";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
 import {
   stenaAnimals,
@@ -24,7 +24,7 @@ export default {
   },
 };
 
-export const Demo: Story<TextInputProps> = (props) => (
+export const Demo: StoryFn<TextInputProps> = (props) => (
   <TextInput {...props} placeholder={"Enter some text"} />
 );
 
@@ -245,4 +245,23 @@ export const TypeDate = () => (
   <Box width={"400px"}>
     <TextInput type={"date"} />
   </Box>
+);
+
+export const DualInput = () => (
+  <Column gap={4}>
+    <Column>
+      <Heading>Input row</Heading>
+      <Row width={"300px"}>
+        <TextInput borderRadiusVariant={"onlyLeft"} />
+        <TextInput borderRadiusVariant={"onlyRight"} />
+      </Row>
+    </Column>
+    <Column>
+      <Heading>Input column</Heading>
+      <Column width={"300px"}>
+        <TextInput borderRadiusVariant={"onlyTop"} />
+        <TextInput borderRadiusVariant={"onlyBottom"} />
+      </Column>
+    </Column>
+  </Column>
 );
