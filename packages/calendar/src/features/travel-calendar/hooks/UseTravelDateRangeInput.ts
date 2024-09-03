@@ -11,6 +11,7 @@ import { getMonthInYear } from "../../../util/calendar/CalendarDataFactory";
 import { startCase } from "lodash-es";
 import { formatLocalizedDate } from "../../localize-date-format/LocalizedDateFormatter";
 import { TravelDateRangeInputValue, VisiblePanel } from "../types";
+import { formatDateDescription } from "../util/DateDescriptionFormatter";
 
 export const useTravelDateRangeInput = (
   value: TravelDateRangeInputValue | undefined,
@@ -45,6 +46,22 @@ export const useTravelDateRangeInput = (
         ? parseLocalizedDateString(value.endDate, localeCode)
         : undefined,
     [dateFormat.length, localeCode, value?.endDate]
+  );
+
+  const valueWhenBlurredStartDate = useMemo(
+    () =>
+      selectedStartDate != null
+        ? formatDateDescription(selectedStartDate, today, locale)
+        : undefined,
+    [locale, selectedStartDate, today]
+  );
+
+  const valueWhenBlurredEndDate = useMemo(
+    () =>
+      selectedEndDate != null
+        ? formatDateDescription(selectedEndDate, today, locale)
+        : undefined,
+    [locale, selectedEndDate, today]
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
@@ -185,5 +202,7 @@ export const useTravelDateRangeInput = (
     selectedEndDate,
     today,
     visibleMonth,
+    valueWhenBlurredStartDate,
+    valueWhenBlurredEndDate,
   };
 };
