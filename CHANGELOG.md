@@ -1,3 +1,16 @@
+# v21.4.0 (Tue Sep 03 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/forms`
+  - Add support for border variants in TextInput, just like LabelledTextInput [#777](https://github.com/StenaIT/stenajs-webui/pull/777) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.3.0 (Tue Sep 03 2024)
 
 #### 🚀 Enhancement
