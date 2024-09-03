@@ -5,10 +5,10 @@ import { TravelDateTextInput } from "./TravelDateTextInput";
 import { createInputMaskForDateFormat } from "../../localize-date-format/InputMaskProvider";
 import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
 import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
-import { TravelDateRangeInputValue } from "../types";
+import { DateTextInputVariant, TravelDateRangeInputValue } from "../types";
 import { TravelCalendarSizeVariant } from "./TravelCalendar";
 
-export interface TravelDateTextInputFieldsProps {
+export interface TravelDateRangeTextInputFieldsProps {
   value: TravelDateRangeInputValue | undefined;
   onValueChange:
     | ((value: Partial<TravelDateRangeInputValue>) => void)
@@ -22,10 +22,11 @@ export interface TravelDateTextInputFieldsProps {
   placeholderWhenBlurredEndDate: string | undefined;
   valueWhenBlurredStartDate: string | undefined;
   valueWhenBlurredEndDate: string | undefined;
+  variant: DateTextInputVariant;
 }
 
-export const TravelDateTextInputFields: React.FC<
-  TravelDateTextInputFieldsProps
+export const TravelDateRangeTextInputFields: React.FC<
+  TravelDateRangeTextInputFieldsProps
 > = ({
   value,
   onValueChange,
@@ -38,6 +39,7 @@ export const TravelDateTextInputFields: React.FC<
   placeholderWhenBlurredEndDate,
   valueWhenBlurredStartDate,
   valueWhenBlurredEndDate,
+  variant,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -71,6 +73,7 @@ export const TravelDateTextInputFields: React.FC<
         placeholderWhenBlurred={placeholderWhenBlurredStartDate}
         valueWhenBlurred={valueWhenBlurredStartDate}
         calendarSize={calendarSize}
+        variant={variant}
       />
       <TravelDateTextInput
         mask={mask}
@@ -92,6 +95,7 @@ export const TravelDateTextInputFields: React.FC<
         placeholderWhenBlurred={placeholderWhenBlurredEndDate}
         valueWhenBlurred={valueWhenBlurredEndDate}
         calendarSize={calendarSize}
+        variant={variant}
       />
     </Row>
   );

@@ -2,7 +2,7 @@ import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateInput } from "./TravelDateInput";
-import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
+import { Box, Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import {
   Banner,
   Label,
@@ -29,13 +29,21 @@ export const Standard = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "30px" }}>
+            <TravelDateInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };
 
@@ -43,14 +51,22 @@ export const WithHeading = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-        heading={"Select date"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "50px 30px" }}>
+            <TravelDateInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              heading={"Select date"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };
 
@@ -85,21 +101,27 @@ export const Sizes = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <Column gap={4} indent={4}>
-      {(["small", "medium", "large"] as const).map((size) => (
-        <Column gap={2}>
-          <Heading>{size}</Heading>
-          <Row>
-            <TravelDateInput
-              value={value}
-              onValueChange={setValue}
-              localeCode={"sv"}
-              size={size}
-            />
-          </Row>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Column gap={4} indent={4}>
+          <Heading>{variant}</Heading>
+          {(["small", "medium", "large"] as const).map((size) => (
+            <Column gap={2}>
+              <Heading>{size}</Heading>
+              <Row>
+                <TravelDateInput
+                  value={value}
+                  onValueChange={setValue}
+                  localeCode={"sv"}
+                  size={size}
+                  textInputVariant={variant}
+                />
+              </Row>
+            </Column>
+          ))}
         </Column>
       ))}
-    </Column>
+    </Row>
   );
 };
 

@@ -67,6 +67,7 @@ export interface TextInputProps
   /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
   onMove?: (direction: MoveDirection) => void;
   borderRadiusVariant?: TextInputBorderVariant;
+  alwaysShowPlaceholder?: boolean;
 }
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
@@ -100,6 +101,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     onFocus,
     onBlur,
     borderRadiusVariant = "normalBorder",
+    width,
+    alwaysShowPlaceholder,
     ...inputProps
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -143,7 +146,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         },
         wrapperClassName
       )}
-      style={wrapperStyle}
+      style={{ width, ...wrapperStyle }}
     >
       <TextInputIcon
         content={contentLeft}
@@ -155,7 +158,13 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         button={buttonLeft}
       />
       <input
-        className={cx(styles.input, className)}
+        className={cx(
+          styles.input,
+          {
+            [styles.alwaysShowPlaceholder]: alwaysShowPlaceholder,
+          },
+          className
+        )}
         type={"text"}
         disabled={disabled}
         ref={refToUse}

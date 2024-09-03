@@ -8,3 +8,5 @@ export interface TravelDateRangeInputValue {
 }
 
 export type VisiblePanel = "calendar" | "month-picker";
+
+export type DateTextInputVariant = "standard" | "labelled";

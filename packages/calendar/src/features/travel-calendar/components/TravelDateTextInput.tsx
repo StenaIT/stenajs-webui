@@ -3,6 +3,7 @@ import { FocusEventHandler, useCallback, useRef, useState } from "react";
 import {
   LabelledTextInput,
   LabelledTextInputProps,
+  TextInput,
 } from "@stenajs-webui/forms";
 import {
   InputMask,
@@ -12,8 +13,21 @@ import {
 } from "@stenajs-webui/input-mask";
 import { TravelCalendarSizeVariant } from "./TravelCalendar";
 import { exhaustSwitchCase } from "@stenajs-webui/core";
+import { Label } from "@stenajs-webui/elements";
+import { DateTextInputVariant } from "../types";
 
-export interface TravelDateTextInputProps extends LabelledTextInputProps {
+export interface TravelDateTextInputProps
+  extends Pick<
+    LabelledTextInputProps,
+    | "onChange"
+    | "onValueChange"
+    | "value"
+    | "onFocus"
+    | "onBlur"
+    | "placeholder"
+    | "label"
+    | "borderRadiusVariant"
+  > {
   mask: InputMask | InputMaskProvider;
   pipe?: InputMaskPipe;
   guide?: boolean;
@@ -23,6 +37,7 @@ export interface TravelDateTextInputProps extends LabelledTextInputProps {
   calendarSize: TravelCalendarSizeVariant;
   placeholderWhenBlurred: string | undefined;
   valueWhenBlurred: string | undefined;
+  variant: DateTextInputVariant;
 }
 
 export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
@@ -41,6 +56,8 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
   placeholderWhenBlurred,
   placeholder,
   valueWhenBlurred,
+  label,
+  variant,
   ...inputProps
 }) => {
   const inputRef = useRef(null);
@@ -80,20 +97,40 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
     ? placeholder
     : placeholderWhenBlurred ?? placeholder;
 
-  return (
-    <LabelledTextInput
-      {...inputProps}
-      aria-live={"polite"}
-      value={(!isFocused ? valueWhenBlurred : value) ?? ""}
-      ref={inputRef}
-      placeholder={activePlaceholder}
-      onFocus={onFocusHandler}
-      onBlur={onBlurHandler}
-      onChange={maskedOnChange}
-      width={getWidth(calendarSize)}
-      size={calendarSize === "large" ? "large" : "medium"}
-    />
-  );
+  if (variant === "standard") {
+    return (
+      <Label text={label ?? ""}>
+        <TextInput
+          {...inputProps}
+          aria-live={"polite"}
+          value={(!isFocused ? valueWhenBlurred : value) ?? ""}
+          inputRef={inputRef}
+          placeholder={activePlaceholder}
+          onFocus={onFocusHandler}
+          onBlur={onBlurHandler}
+          onChange={maskedOnChange}
+          width={getWidth(calendarSize)}
+          alwaysShowPlaceholder
+        />
+      </Label>
+    );
+  } else {
+    return (
+      <LabelledTextInput
+        {...inputProps}
+        label={label}
+        aria-live={"polite"}
+        value={(!isFocused ? valueWhenBlurred : value) ?? ""}
+        ref={inputRef}
+        placeholder={activePlaceholder}
+        onFocus={onFocusHandler}
+        onBlur={onBlurHandler}
+        onChange={maskedOnChange}
+        width={getWidth(calendarSize)}
+        size={calendarSize === "large" ? "large" : "medium"}
+      />
+    );
+  }
 };
 
 const getWidth = (calenderSize: TravelCalendarSizeVariant) => {

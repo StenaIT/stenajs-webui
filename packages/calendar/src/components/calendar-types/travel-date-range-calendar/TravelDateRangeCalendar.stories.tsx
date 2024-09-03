@@ -53,6 +53,24 @@ export const WithHeading = () => {
   );
 };
 
+export const WithLabelledInput = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        heading={"Select dates"}
+        textInputVariant={"labelled"}
+      />
+    </div>
+  );
+};
+
 export const WithTestIds = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
     undefined
@@ -133,21 +151,27 @@ export const Sizes = () => {
   );
 
   return (
-    <Column gap={4} indent={4}>
-      {(["small", "medium", "large"] as const).map((size) => (
-        <Column gap={2}>
-          <Heading>{size}</Heading>
-          <Row>
-            <TravelDateRangeCalendar
-              value={value}
-              onValueChange={setValue}
-              localeCode={"sv"}
-              size={size}
-            />
-          </Row>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Column gap={4} indent={4}>
+          <Heading>{variant}</Heading>
+          {(["small", "medium", "large"] as const).map((size) => (
+            <Column gap={2}>
+              <Heading>{size}</Heading>
+              <Row>
+                <TravelDateRangeCalendar
+                  value={value}
+                  onValueChange={setValue}
+                  localeCode={"sv"}
+                  size={size}
+                  textInputVariant={variant}
+                />
+              </Row>
+            </Column>
+          ))}
         </Column>
       ))}
-    </Column>
+    </Row>
   );
 };
 
