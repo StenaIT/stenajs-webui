@@ -1,9 +1,9 @@
 import * as React from "react";
+import { FocusEventHandler, useCallback, useRef, useState } from "react";
 import {
   LabelledTextInput,
   LabelledTextInputProps,
 } from "@stenajs-webui/forms";
-import { FocusEventHandler, useCallback, useRef, useState } from "react";
 import {
   InputMask,
   InputMaskPipe,
@@ -84,7 +84,7 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
     <LabelledTextInput
       {...inputProps}
       aria-live={"polite"}
-      value={!isFocused ? valueWhenBlurred : undefined}
+      value={(!isFocused ? valueWhenBlurred : value) ?? ""}
       ref={inputRef}
       placeholder={activePlaceholder}
       onFocus={onFocusHandler}

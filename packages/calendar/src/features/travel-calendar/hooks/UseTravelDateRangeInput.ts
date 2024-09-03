@@ -53,7 +53,7 @@ export const useTravelDateRangeInput = (
       selectedStartDate != null
         ? formatDateDescription(selectedStartDate, today, locale)
         : undefined,
-    [locale, selectedStartDate]
+    [locale, selectedStartDate, today]
   );
 
   const valueWhenBlurredEndDate = useMemo(
@@ -61,7 +61,7 @@ export const useTravelDateRangeInput = (
       selectedEndDate != null
         ? formatDateDescription(selectedEndDate, today, locale)
         : undefined,
-    [locale, selectedEndDate]
+    [locale, selectedEndDate, today]
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
