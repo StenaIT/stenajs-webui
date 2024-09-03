@@ -181,6 +181,8 @@ export interface StandardTableColumnOptions<
    * Col span for the summary cell.
    */
   summaryCellColSpan?: number;
+
+  additionalHeader?: ReactNode;
 }
 
 export type StandardTableSummaryTextProvider<TItem> = (

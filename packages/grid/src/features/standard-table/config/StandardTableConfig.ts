@@ -238,8 +238,6 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    * If omitted, "normal" is used.
    */
   defaultTextSize?: TextSize;
-
-  additionalHeaderRow?: Partial<Record<TColumnKey, ReactNode>>;
 }
 
 export interface RowBackgroundResolverColorCombination {

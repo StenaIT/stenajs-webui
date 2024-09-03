@@ -40,6 +40,7 @@ import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
 import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
+import { StandardTableColumnConfig } from "../config/StandardTableColumnConfig";
 
 export interface StandardTableProps<
   TItem extends object,
@@ -191,7 +192,6 @@ export const StandardTable = function StandardTable<
     initialSortOrder,
     enableExpandCollapse,
     stickyCheckboxColumn,
-    additionalHeaderRow,
     headerRowOffsetTop,
     stickyHeader,
     zIndex,
@@ -291,6 +291,15 @@ export const StandardTable = function StandardTable<
     return <ErrorScreen text={validationError.message} />;
   }
 
+  const showAdditionalHeaderRow = Object.values(config.columns).some(
+    (x) =>
+      (x as StandardTableColumnConfig<TItem, unknown, TColumnKey>)
+        .additionalHeader
+  );
+
+  const getAdditionalHeaderCellRenderer = (columnId: TColumnKey) =>
+    config.columns[columnId].additionalHeader;
+
   return (
     <table
       className={cx(styles.standardTable, styles[variant])}
@@ -352,14 +361,16 @@ export const StandardTable = function StandardTable<
                                     appendTooltipTo={appendTooltipTo}
                                     topBorder={false}
                                   />
-                                  {additionalHeaderRow ? (
+                                  {showAdditionalHeaderRow ? (
                                     <StandardTableHeadRow
                                       topBorder
                                       height={"var(--current-row-height)"}
                                       items={props.items}
                                       renderHeadItem={(columnId) =>
                                         isValidColumnId(columnId)
-                                          ? additionalHeaderRow[columnId]
+                                          ? getAdditionalHeaderCellRenderer(
+                                              columnId
+                                            )
                                           : null
                                       }
                                       key={`additional-header`}
