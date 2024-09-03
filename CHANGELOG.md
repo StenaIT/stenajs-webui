@@ -1,3 +1,16 @@
+# v21.3.0 (Tue Sep 03 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/input-mask`
+  - Unfocused calendar inputs show date description [#776](https://github.com/StenaIT/stenajs-webui/pull/776) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.2.0 (Mon Sep 02 2024)
 
 #### 🚀 Enhancement
