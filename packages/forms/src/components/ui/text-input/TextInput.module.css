@@ -8,6 +8,40 @@
   border-radius: var(--swui-field-border-radius);
   outline: none;
 
+  &&.onlyTop {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+    &:focus-within:not(.disabled) {
+      z-index: 1;
+    }
+  }
+
+  &&.onlyBottom {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    &:focus-within:not(.disabled) {
+      z-index: 1;
+    }
+  }
+
+  &&.onlyLeft {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-color: transparent;
+    &:focus-within:not(.disabled) {
+      z-index: 1;
+    }
+  }
+
+  &&.onlyRight {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    &:focus-within:not(.disabled) {
+      z-index: 1;
+    }
+  }
+
   &&:focus-within:not(.disabled) {
     outline: var(--swui-focus-outline);
     border-color: transparent;
