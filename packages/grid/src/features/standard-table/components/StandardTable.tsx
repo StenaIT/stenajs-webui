@@ -191,7 +191,7 @@ export const StandardTable = function StandardTable<
     initialSortOrder,
     enableExpandCollapse,
     stickyCheckboxColumn,
-    additionalHeaderRows,
+    additionalHeaderRow,
     headerRowOffsetTop,
     stickyHeader,
     zIndex,
@@ -352,22 +352,19 @@ export const StandardTable = function StandardTable<
                                     appendTooltipTo={appendTooltipTo}
                                     topBorder={false}
                                   />
-                                  {additionalHeaderRows
-                                    ? additionalHeaderRows.map((row, index) => (
-                                        <StandardTableHeadRow
-                                          topBorder
-                                          height={"var(--current-row-height)"}
-                                          items={props.items}
-                                          renderHeadItem={(columnId) =>
-                                            isValidColumnId(columnId)
-                                              ? row[columnId]
-                                              : null
-                                          }
-                                          numberOfRowsBefore={index + 1}
-                                          key={`additional-header-${index}`}
-                                        />
-                                      ))
-                                    : null}
+                                  {additionalHeaderRow ? (
+                                    <StandardTableHeadRow
+                                      topBorder
+                                      height={"var(--current-row-height)"}
+                                      items={props.items}
+                                      renderHeadItem={(columnId) =>
+                                        isValidColumnId(columnId)
+                                          ? additionalHeaderRow[columnId]
+                                          : null
+                                      }
+                                      key={`additional-header`}
+                                    />
+                                  ) : null}
                                 </thead>
                                 <StandardTableContent
                                   variant={variant}

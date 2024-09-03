@@ -22,7 +22,6 @@ import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
-  numberOfRowsBefore?: number;
   appendTooltipTo?: TableHeadProps["appendTooltipTo"];
   topBorder: boolean;
   renderHeadItem?: (columnId: string, index: number) => React.ReactNode;
