@@ -1,3 +1,16 @@
+# v21.4.1 (Wed Sep 04 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add new loading-pref icon [#779](https://github.com/StenaIT/stenajs-webui/pull/779) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.4.0 (Tue Sep 03 2024)
 
 #### 🚀 Enhancement
