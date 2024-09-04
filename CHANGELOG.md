@@ -1,3 +1,16 @@
+# v21.5.0 (Wed Sep 04 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`
+  - Add useLatest hook [#781](https://github.com/StenaIT/stenajs-webui/pull/781) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.4.1 (Wed Sep 04 2024)
 
 #### 🐛 Bug Fix

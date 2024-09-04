@@ -37,6 +37,7 @@ export * from "./hooks/UseDomId";
 export * from "./hooks/UseElementDimensions";
 export * from "./hooks/UseElementFocus";
 export * from "./hooks/UseEventListener";
+export * from "./hooks/UseLatest";
 export * from "./hooks/UseMouseIsOver";
 export * from "./hooks/UseMouseIsEntered";
 export * from "./hooks/UseMultiOnClickOutside";
