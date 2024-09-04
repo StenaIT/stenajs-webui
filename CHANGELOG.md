@@ -1,3 +1,16 @@
+# v21.7.0 (Wed Sep 04 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/forms`
+  - Travel calendars support standard text inputs [#778](https://github.com/StenaIT/stenajs-webui/pull/778) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.6.0 (Wed Sep 04 2024)
 
 #### 🚀 Enhancement
