@@ -2,7 +2,7 @@ import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { TravelDateRangeInput } from "./TravelDateRangeInput";
-import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
+import { Box, Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import {
   Banner,
   Label,
@@ -32,13 +32,21 @@ export const Standard = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateRangeInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
+            <TravelDateRangeInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };
 
@@ -48,14 +56,22 @@ export const WithHeading = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateRangeInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-        heading={"Select dates"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
+            <TravelDateRangeInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              heading={"Select dates"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };
 
@@ -74,7 +90,7 @@ export const WithTestIds = () => {
   const nextMonthButtonTestId = "next-month-button";
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -94,21 +110,27 @@ export const Sizes = () => {
   );
 
   return (
-    <Column gap={4} indent={4}>
-      {(["small", "medium", "large"] as const).map((size) => (
-        <Column gap={2}>
-          <Heading>{size}</Heading>
-          <Row>
-            <TravelDateRangeInput
-              value={value}
-              onValueChange={setValue}
-              localeCode={"sv"}
-              size={size}
-            />
-          </Row>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Column gap={4} indent={4}>
+          <Heading>{variant}</Heading>
+          {(["small", "medium", "large"] as const).map((size) => (
+            <Column gap={2}>
+              <Heading>{size}</Heading>
+              <Row>
+                <TravelDateRangeInput
+                  value={value}
+                  onValueChange={setValue}
+                  localeCode={"sv"}
+                  size={size}
+                  textInputVariant={variant}
+                />
+              </Row>
+            </Column>
+          ))}
         </Column>
       ))}
-    </Column>
+    </Row>
   );
 };
 
@@ -132,7 +154,7 @@ export const ParseDate = () => {
   };
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValueHandler}
@@ -201,7 +223,7 @@ export const WithValidationAndCloseButton = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -226,7 +248,7 @@ export const WithPresets = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -267,14 +289,22 @@ export const WithBlurPlaceholders = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateRangeInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-        placeholderWhenBlurredStartDate={"Gimme start"}
-        placeholderWhenBlurredEndDate={"Gimme end"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
+            <TravelDateRangeInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              placeholderWhenBlurredStartDate={"Gimme start"}
+              placeholderWhenBlurredEndDate={"Gimme end"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };

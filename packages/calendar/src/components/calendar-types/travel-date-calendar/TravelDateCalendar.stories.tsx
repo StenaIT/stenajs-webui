@@ -48,6 +48,22 @@ export const WithHeading = () => {
   );
 };
 
+export const WithLabelledInput = () => {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        heading={"Select date"}
+        textInputVariant={"labelled"}
+      />
+    </div>
+  );
+};
+
 export const WithTestIds = () => {
   const [value, setValue] = useState<string>("");
 
@@ -123,21 +139,27 @@ export const Sizes = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <Column gap={4} indent={4}>
-      {(["small", "medium", "large"] as const).map((size) => (
-        <Column gap={2}>
-          <Heading>{size}</Heading>
-          <Row>
-            <TravelDateCalendar
-              value={value}
-              onValueChange={setValue}
-              localeCode={"sv"}
-              size={size}
-            />
-          </Row>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Column gap={4} indent={4}>
+          <Heading>{variant}</Heading>
+          {(["small", "medium", "large"] as const).map((size) => (
+            <Column gap={2}>
+              <Heading>{size}</Heading>
+              <Row>
+                <TravelDateCalendar
+                  value={value}
+                  onValueChange={setValue}
+                  localeCode={"sv"}
+                  size={size}
+                  textInputVariant={variant}
+                />
+              </Row>
+            </Column>
+          ))}
         </Column>
       ))}
-    </Column>
+    </Row>
   );
 };
 

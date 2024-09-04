@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Column, Heading, HeadingVariant } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { TravelDateTextInputFields } from "../../../features/travel-calendar/components/TravelDateTextInputFields";
+import { TravelDateRangeTextInputFields } from "../../../features/travel-calendar/components/TravelDateRangeTextInputFields";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateRangeInput } from "../../../features/travel-calendar/hooks/UseTravelDateRangeInput";
 import { MonthHeader } from "../../../features/travel-calendar/components/MonthHeader";
@@ -9,7 +9,10 @@ import {
   TravelCalendar,
   TravelCalendarSizeVariant,
 } from "../../../features/travel-calendar/components/TravelCalendar";
-import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
+import {
+  DateTextInputVariant,
+  TravelDateRangeInputValue,
+} from "../../../features/travel-calendar/types";
 
 export interface TravelDateRangeCalendarProps
   extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
@@ -29,6 +32,7 @@ export interface TravelDateRangeCalendarProps
   nextMonthButtonTestId?: string;
   placeholderWhenBlurredStartDate?: string;
   placeholderWhenBlurredEndDate?: string;
+  textInputVariant?: DateTextInputVariant;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -52,6 +56,7 @@ export const TravelDateRangeCalendar: React.FC<
   nextMonthButtonTestId,
   placeholderWhenBlurredStartDate,
   placeholderWhenBlurredEndDate,
+  textInputVariant = "standard",
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -76,7 +81,7 @@ export const TravelDateRangeCalendar: React.FC<
           {heading}
         </Heading>
       )}
-      <TravelDateTextInputFields
+      <TravelDateRangeTextInputFields
         {...inputProps}
         value={value}
         onValueChange={onValueChangeByInputs}
@@ -86,6 +91,7 @@ export const TravelDateRangeCalendar: React.FC<
         calendarSize={size}
         placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
         placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
+        variant={textInputVariant}
       />
 
       <MonthHeader

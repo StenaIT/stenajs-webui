@@ -71,8 +71,10 @@
       font-weight: var(--swui-field-placeholder-font-weight);
     }
 
-    &:focus::placeholder {
-      opacity: 0;
+    &:not(.alwaysShowPlaceholder) {
+      &:focus::placeholder {
+        opacity: 0;
+      }
     }
 
     &::-webkit-calendar-picker-indicator {
