@@ -1,3 +1,16 @@
+# v21.6.0 (Wed Sep 04 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/core`
+  - Add invariant method [#780](https://github.com/StenaIT/stenajs-webui/pull/780) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.5.0 (Wed Sep 04 2024)
 
 #### 🚀 Enhancement
