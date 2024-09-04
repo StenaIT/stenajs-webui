@@ -84,7 +84,7 @@ export const WithTestIds = () => {
   const nextMonthButtonTestId = "next-month-button";
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateInput
         value={value}
         onValueChange={setValue}
@@ -143,7 +143,7 @@ export const ParseDate = () => {
   };
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateInput
         value={value}
         onValueChange={setValueHandler}
@@ -208,7 +208,7 @@ export const WithValidationAndCloseButton = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateInput
         value={value}
         onValueChange={setValue}
@@ -231,7 +231,7 @@ export const WithPresets = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateInput
         value={value}
         onValueChange={setValue}
@@ -264,13 +264,21 @@ export const WithBlurPlaceholders = () => {
   const [value, setValue] = useState<string>("");
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-        placeholderWhenBlurred={"Gimme date"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
+            <TravelDateInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              placeholderWhenBlurred={"Gimme date"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };

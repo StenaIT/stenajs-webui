@@ -36,7 +36,7 @@ export const Standard = () => {
       {(["standard", "labelled"] as const).map((variant) => (
         <Box>
           <Heading>{variant}</Heading>
-          <div style={{ display: "inline-block", padding: "150px 80px" }}>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
             <TravelDateRangeInput
               value={value}
               onValueChange={setValue}
@@ -60,7 +60,7 @@ export const WithHeading = () => {
       {(["standard", "labelled"] as const).map((variant) => (
         <Box>
           <Heading>{variant}</Heading>
-          <div style={{ display: "inline-block", padding: "150px 80px" }}>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
             <TravelDateRangeInput
               value={value}
               onValueChange={setValue}
@@ -90,7 +90,7 @@ export const WithTestIds = () => {
   const nextMonthButtonTestId = "next-month-button";
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -154,7 +154,7 @@ export const ParseDate = () => {
   };
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValueHandler}
@@ -223,7 +223,7 @@ export const WithValidationAndCloseButton = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -248,7 +248,7 @@ export const WithPresets = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+    <div style={{ display: "inline-block", padding: "80px 50px" }}>
       <TravelDateRangeInput
         value={value}
         onValueChange={setValue}
@@ -289,14 +289,22 @@ export const WithBlurPlaceholders = () => {
   );
 
   return (
-    <div style={{ display: "inline-block", padding: "150px 80px" }}>
-      <TravelDateRangeInput
-        value={value}
-        onValueChange={setValue}
-        localeCode={"sv"}
-        placeholderWhenBlurredStartDate={"Gimme start"}
-        placeholderWhenBlurredEndDate={"Gimme end"}
-      />
-    </div>
+    <Row gap={4}>
+      {(["standard", "labelled"] as const).map((variant) => (
+        <Box>
+          <Heading>{variant}</Heading>
+          <div style={{ display: "inline-block", padding: "80px 50px" }}>
+            <TravelDateRangeInput
+              value={value}
+              onValueChange={setValue}
+              localeCode={"sv"}
+              placeholderWhenBlurredStartDate={"Gimme start"}
+              placeholderWhenBlurredEndDate={"Gimme end"}
+              textInputVariant={variant}
+            />
+          </div>
+        </Box>
+      ))}
+    </Row>
   );
 };
