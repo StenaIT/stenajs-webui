@@ -1,9 +1,9 @@
 import * as React from "react";
+import { FocusEventHandler, useCallback, useRef, useState } from "react";
 import {
   LabelledTextInput,
   LabelledTextInputProps,
 } from "@stenajs-webui/forms";
-import { useRef } from "react";
 import {
   InputMask,
   InputMaskPipe,
@@ -21,6 +21,8 @@ export interface TravelDateTextInputProps extends LabelledTextInputProps {
   placeholderChar?: string;
   showMask?: boolean;
   calendarSize: TravelCalendarSizeVariant;
+  placeholderWhenBlurred: string | undefined;
+  valueWhenBlurred: string | undefined;
 }
 
 export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
@@ -34,9 +36,16 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
   placeholderChar,
   showMask,
   calendarSize,
+  onFocus,
+  onBlur,
+  placeholderWhenBlurred,
+  placeholder,
+  valueWhenBlurred,
   ...inputProps
 }) => {
   const inputRef = useRef(null);
+  const [isFocused, setIsFocused] = useState(false);
+
   const { onChange: maskedOnChange } = useMaskedInput(
     inputRef,
     onChange,
@@ -47,13 +56,39 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
     guide,
     keepCharPositions,
     placeholderChar,
-    showMask
+    showMask,
+    isFocused
   );
+
+  const onFocusHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
+    (ev) => {
+      onFocus?.(ev);
+      setIsFocused(true);
+    },
+    [onFocus]
+  );
+
+  const onBlurHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
+    (ev) => {
+      onBlur?.(ev);
+      setIsFocused(false);
+    },
+    [onBlur]
+  );
+
+  const activePlaceholder = isFocused
+    ? placeholder
+    : placeholderWhenBlurred ?? placeholder;
 
   return (
     <LabelledTextInput
       {...inputProps}
+      aria-live={"polite"}
+      value={(!isFocused ? valueWhenBlurred : value) ?? ""}
       ref={inputRef}
+      placeholder={activePlaceholder}
+      onFocus={onFocusHandler}
+      onBlur={onBlurHandler}
       onChange={maskedOnChange}
       width={getWidth(calendarSize)}
       size={calendarSize === "large" ? "large" : "medium"}

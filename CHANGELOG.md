@@ -1,3 +1,107 @@
+# v21.4.0 (Tue Sep 03 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/forms`
+  - Add support for border variants in TextInput, just like LabelledTextInput [#777](https://github.com/StenaIT/stenajs-webui/pull/777) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.3.0 (Tue Sep 03 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/input-mask`
+  - Unfocused calendar inputs show date description [#776](https://github.com/StenaIT/stenajs-webui/pull/776) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.2.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Add travel calendar text input placeholder when not in focus [#775](https://github.com/StenaIT/stenajs-webui/pull/775) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.1.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/grid`
+  - Add renderExtraHeadRows prop to StandardTable, allows one or severa… [#774](https://github.com/StenaIT/stenajs-webui/pull/774) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.0.3 (Wed Aug 28 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`
+  - Add data test ids for travel calendar month buttons [#773](https://github.com/StenaIT/stenajs-webui/pull/773) ([@Yoorkevich](https://github.com/Yoorkevich))
+
+#### Authors: 1
+
+- [@Yoorkevich](https://github.com/Yoorkevich)
+
+---
+
+# v21.0.2 (Wed Aug 28 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - New and updated icons [#772](https://github.com/StenaIT/stenajs-webui/pull/772) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.0.1 (Tue Aug 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/panels`
+  - Add test ids to travel calendar days [#771](https://github.com/StenaIT/stenajs-webui/pull/771) ([@Yoorkevich](https://github.com/Yoorkevich))
+
+#### Authors: 1
+
+- [@Yoorkevich](https://github.com/Yoorkevich)
+
+---
+
+# v21.0.0 (Fri Aug 23 2024)
+
+#### 💥 Breaking Change
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/grid`, `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Migrate popovers and tooltips to Floating UI [#770](https://github.com/StenaIT/stenajs-webui/pull/770) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v20.17.4 (Tue Aug 20 2024)
 
 #### 🐛 Bug Fix

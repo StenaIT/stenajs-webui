@@ -12,7 +12,7 @@ import {
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
-import { addWeeks } from "date-fns";
+import { addWeeks, isToday } from "date-fns";
 
 export default {
   title: "calendar/Input/TravelDateRangeInput",
@@ -54,6 +54,35 @@ export const WithHeading = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         heading={"Select dates"}
+      />
+    </div>
+  );
+};
+
+export const WithTestIds = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+  const testId = (date: Date) => {
+    if (isToday(date)) {
+      return "today";
+    }
+    return undefined;
+  };
+
+  const previousMonthButtonTestId = "prev-month-button";
+  const nextMonthButtonTestId = "next-month-button";
+
+  return (
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+      <TravelDateRangeInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        heading={"Select dates"}
+        dateTestId={testId}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
     </div>
   );
@@ -227,6 +256,24 @@ export const WithPresets = () => {
             </Column>
           );
         }}
+      />
+    </div>
+  );
+};
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block", padding: "150px 80px" }}>
+      <TravelDateRangeInput
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurredStartDate={"Gimme start"}
+        placeholderWhenBlurredEndDate={"Gimme end"}
       />
     </div>
   );

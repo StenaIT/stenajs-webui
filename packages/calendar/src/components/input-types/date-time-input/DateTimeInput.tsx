@@ -1,10 +1,10 @@
 import { Box, Column, Row, Space, useDelayedFalse } from "@stenajs-webui/core";
-import { PrimaryButton } from "@stenajs-webui/elements";
+import { PrimaryButton, stenaClock } from "@stenajs-webui/elements";
 import {
   TextInputProps,
   ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
-import { Popover } from "@stenajs-webui/tooltip";
+import { ControlledPopover } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
@@ -22,7 +22,6 @@ import { useInputStates } from "./hooks/UseInputStates";
 import { useUserInputHandlers } from "./hooks/UseUserInputHandlers";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { defaultMaxDate } from "../../../config/DefaultMaxDate";
-import { stenaClock } from "@stenajs-webui/elements";
 
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
@@ -118,74 +117,74 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
 
   return (
     <Box onKeyDown={onKeyDownHandler}>
-      <Popover
-        arrow={false}
-        lazy
-        disabled={disabled}
+      <ControlledPopover
+        hideArrow
+        renderTrigger={(props) => (
+          <Box {...props}>
+            <DualTextInput
+              autoFocusLeft={autoFocus}
+              onEsc={onEsc}
+              onEnter={onEnter}
+              onBlur={onBlur}
+              disabled={disabled}
+              separatorIcon={stenaClock}
+              typeLeft={"date"}
+              typeRight={"time"}
+              placeholderLeft={"yyyy-mm-dd"}
+              placeholderRight={"hh:mm"}
+              onChangeLeft={inputLeftChangeHandler}
+              onChangeRight={inputRightChangeHandler}
+              onClickArrowDown={onClickArrowButton}
+              onClickCalendar={onClickCalendarButton}
+              onFocusLeft={onFocusLeft}
+              onFocusRight={onFocusRight}
+              onClickLeft={onFocusLeft}
+              onClickRight={onFocusRight}
+              inputRefLeft={dateInputRef}
+              inputRefRight={timeInputRef}
+              valueRight={timeValue ?? ""}
+              widthLeft={widthLeft}
+              widthRight={widthRight}
+              minLeft={minDate}
+              maxLeft={maxDate}
+              variant={variant}
+            />
+          </Box>
+        )}
         placement={defaultPopoverPlacement}
-        visible={isCalendarVisible || isTimePickerVisible}
-        onClickOutside={hideAll}
-        content={
-          (delayedIsCalendarVisible || delayedIsTimePickerVisible) && (
-            <Column>
-              {delayedIsCalendarVisible ? (
-                <CalendarWithMonthSwitcher
-                  statePerMonth={statePerMonth}
-                  onClickDay={onClickDay}
-                  dateInFocus={dateInFocus}
-                  setDateInFocus={setDateInFocus}
-                  currentPanel={currentPanel}
-                  setCurrentPanel={setCurrentPanel}
-                  minDate={minDate}
-                  maxDate={maxDate}
-                />
-              ) : delayedIsTimePickerVisible ? (
-                <Column>
-                  <Column overflow={"hidden"} height={"250px"}>
-                    <TimePicker
-                      value={timeValue ?? ""}
-                      onValueChange={onChangeTime}
-                    />
-                  </Column>
-                  <Space />
-                  <Row justifyContent={"flex-end"}>
-                    <PrimaryButton label={"Done"} onClick={hideTimePicker} />
-                  </Row>
-                </Column>
-              ) : null}
-            </Column>
-          )
-        }
+        open={isCalendarVisible || isTimePickerVisible}
+        onRequestClose={hideAll}
       >
-        <DualTextInput
-          autoFocusLeft={autoFocus}
-          onEsc={onEsc}
-          onEnter={onEnter}
-          onBlur={onBlur}
-          disabled={disabled}
-          separatorIcon={stenaClock}
-          typeLeft={"date"}
-          typeRight={"time"}
-          placeholderLeft={"yyyy-mm-dd"}
-          placeholderRight={"hh:mm"}
-          onChangeLeft={inputLeftChangeHandler}
-          onChangeRight={inputRightChangeHandler}
-          onClickArrowDown={onClickArrowButton}
-          onClickCalendar={onClickCalendarButton}
-          onFocusLeft={onFocusLeft}
-          onFocusRight={onFocusRight}
-          onClickLeft={onFocusLeft}
-          onClickRight={onFocusRight}
-          inputRefLeft={dateInputRef}
-          inputRefRight={timeInputRef}
-          valueRight={timeValue ?? ""}
-          widthLeft={widthLeft}
-          widthRight={widthRight}
-          minLeft={minDate}
-          maxLeft={maxDate}
-          variant={variant}
-        />
-      </Popover>
+        {(delayedIsCalendarVisible || delayedIsTimePickerVisible) && (
+          <Column>
+            {delayedIsCalendarVisible ? (
+              <CalendarWithMonthSwitcher
+                statePerMonth={statePerMonth}
+                onClickDay={onClickDay}
+                dateInFocus={dateInFocus}
+                setDateInFocus={setDateInFocus}
+                currentPanel={currentPanel}
+                setCurrentPanel={setCurrentPanel}
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            ) : delayedIsTimePickerVisible ? (
+              <Column>
+                <Column overflow={"hidden"} height={"250px"}>
+                  <TimePicker
+                    value={timeValue ?? ""}
+                    onValueChange={onChangeTime}
+                  />
+                </Column>
+                <Space />
+                <Row justifyContent={"flex-end"}>
+                  <PrimaryButton label={"Done"} onClick={hideTimePicker} />
+                </Row>
+              </Column>
+            ) : null}
+          </Column>
+        )}
+      </ControlledPopover>
     </Box>
   );
 };

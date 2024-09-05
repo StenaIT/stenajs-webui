@@ -19,7 +19,7 @@ import {
 } from "@stenajs-webui/elements";
 import { CalendarWithMonthSwitcher } from "../../../features/month-switcher/CalendarWithMonthSwitcher";
 import { CalendarPanelType } from "../../../features/calendar-with-month-year-pickers/CalendarPanelType";
-import { Popover } from "@stenajs-webui/tooltip";
+import { ControlledPopover } from "@stenajs-webui/tooltip";
 import { buildDayStateForDateRange } from "../../../util/calendar/StateModifier";
 import { OptionalMinMaxDatesAsString } from "../../../types/CalendarTypes";
 import { DateRange } from "../../../types/DateRange";
@@ -45,16 +45,6 @@ export interface DateRangeInputProps<T>
    * @default End date
    */
   placeholderEndDate?: string;
-  /**
-   * Portal target, HTML element. If not set, portal is not used.
-   */
-  portalTarget?: HTMLElement | null;
-
-  /**
-   * Z-index of the calendar overlay.
-   * @default 100
-   */
-  zIndex?: number;
 
   /**
    * Width of the input element.
@@ -83,10 +73,8 @@ export function DateRangeInput<T>({
   displayFormat = DateFormats.fullDate,
   placeholderStartDate = "Start date",
   placeholderEndDate = "End date",
-  portalTarget,
   value,
   onValueChange,
-  zIndex = 100,
   width,
   calendarTheme = defaultCalendarTheme,
   calendarProps,
@@ -119,61 +107,59 @@ export function DateRangeInput<T>({
   );
 
   return (
-    <Popover
-      arrow={false}
-      lazy
-      disabled={disabled}
-      visible={showingCalendar}
-      zIndex={zIndex}
+    <ControlledPopover
+      hideArrow
+      renderTrigger={(props) => (
+        <Row alignItems={"center"} {...props}>
+          <TextInput
+            iconLeft={stenaCalendar}
+            onFocus={showCalendarStartDate}
+            value={
+              value?.startDate ? format(value.startDate, displayFormat) : ""
+            }
+            placeholder={placeholderStartDate}
+            width={width}
+            disabled={disabled}
+            inputRef={startDateInputRef}
+            size={9}
+            variant={startDateIsAfterEnd ? "error" : undefined}
+          />
+          <Space />
+          <Icon
+            icon={stenaArrowWideRight}
+            color={cssColor("--lhds-color-ui-500")}
+            size={14}
+          />
+          <Space />
+          <TextInput
+            iconLeft={stenaCalendar}
+            onFocus={showCalendarEndDate}
+            value={value?.endDate ? format(value.endDate, displayFormat) : ""}
+            placeholder={placeholderEndDate}
+            width={width}
+            disabled={disabled}
+            inputRef={endDateInputRef}
+            size={9}
+            variant={startDateIsAfterEnd ? "error" : undefined}
+          />
+        </Row>
+      )}
+      open={showingCalendar}
       placement={defaultPopoverPlacement}
-      appendTo={portalTarget ?? "parent"}
-      onClickOutside={hideCalendar}
-      content={
-        <CalendarWithMonthSwitcher
-          {...calendarProps}
-          dateInFocus={dateInFocus}
-          setDateInFocus={setDateInFocus}
-          statePerMonth={statePerMonth}
-          theme={calendarTheme}
-          onClickDay={onClickDay}
-          currentPanel={currentPanel}
-          setCurrentPanel={setCurrentPanel}
-          minDate={minDate}
-          maxDate={maxDate}
-        />
-      }
+      onRequestClose={hideCalendar}
     >
-      <Row alignItems={"center"}>
-        <TextInput
-          iconLeft={stenaCalendar}
-          onFocus={showCalendarStartDate}
-          value={value?.startDate ? format(value.startDate, displayFormat) : ""}
-          placeholder={placeholderStartDate}
-          width={width}
-          disabled={disabled}
-          inputRef={startDateInputRef}
-          size={9}
-          variant={startDateIsAfterEnd ? "error" : undefined}
-        />
-        <Space />
-        <Icon
-          icon={stenaArrowWideRight}
-          color={cssColor("--lhds-color-ui-500")}
-          size={14}
-        />
-        <Space />
-        <TextInput
-          iconLeft={stenaCalendar}
-          onFocus={showCalendarEndDate}
-          value={value?.endDate ? format(value.endDate, displayFormat) : ""}
-          placeholder={placeholderEndDate}
-          width={width}
-          disabled={disabled}
-          inputRef={endDateInputRef}
-          size={9}
-          variant={startDateIsAfterEnd ? "error" : undefined}
-        />
-      </Row>
-    </Popover>
+      <CalendarWithMonthSwitcher
+        {...calendarProps}
+        dateInFocus={dateInFocus}
+        setDateInFocus={setDateInFocus}
+        statePerMonth={statePerMonth}
+        theme={calendarTheme}
+        onClickDay={onClickDay}
+        currentPanel={currentPanel}
+        setCurrentPanel={setCurrentPanel}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
+    </ControlledPopover>
   );
 }

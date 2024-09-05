@@ -6,6 +6,7 @@ import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import { Banner, Label } from "@stenajs-webui/elements";
 import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
+import { isToday } from "date-fns";
 
 export default {
   title: "calendar/Calendar/TravelDateRangeCalendar",
@@ -47,6 +48,34 @@ export const WithHeading = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         heading={"Select dates"}
+      />
+    </div>
+  );
+};
+
+export const WithTestIds = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+  const testId = (date: Date) => {
+    if (isToday(date)) {
+      return "today";
+    }
+    return undefined;
+  };
+
+  const previousMonthButtonTestId = "prev-month-button";
+  const nextMonthButtonTestId = "next-month-button";
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        dateTestId={testId}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
     </div>
   );
@@ -154,6 +183,24 @@ export const ParseDate = () => {
         <Label text={"Start date"}>{startDate?.toDateString() ?? "-"}</Label>
         <Label text={"End date"}>{endDate?.toDateString() ?? "-"}</Label>
       </Row>
+    </div>
+  );
+};
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
+    undefined
+  );
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateRangeCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurredStartDate={"Gimme start"}
+        placeholderWhenBlurredEndDate={"Gimme end"}
+      />
     </div>
   );
 };

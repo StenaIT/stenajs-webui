@@ -48,6 +48,11 @@ export interface TravelDateRangeInputProps
   onHideCalendar?: () => void;
   renderBelowCalendar?: (args: RenderBelowCalendarArgs) => ReactNode;
   size?: TravelCalendarSizeVariant;
+  dateTestId?: (date: Date) => string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
+  placeholderWhenBlurredStartDate?: string;
+  placeholderWhenBlurredEndDate?: string;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -59,6 +64,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
+  placeholderWhenBlurredStartDate,
+  placeholderWhenBlurredEndDate,
   heading,
   headingLevel,
   numMonthsInMonthPicker = 12,
@@ -68,6 +75,9 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   onHideCalendar,
   renderBelowCalendar,
   size = "medium",
+  dateTestId,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -160,6 +170,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
         zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
       >
         <TravelDateTextInputFields
+          {...inputProps}
           value={value}
           onValueChange={onValueChangeByInputs}
           localeCode={localeCode}
@@ -167,6 +178,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           endDateLabel={endDateLabel}
           onFocus={showCalendar}
           calendarSize={size}
+          placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
+          placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
         />
       </Box>
 
@@ -197,6 +210,8 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                 previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
                 nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
                 calendarSize={size}
+                previousMonthButtonTestId={previousMonthButtonTestId}
+                nextMonthButtonTestId={nextMonthButtonTestId}
               />
 
               {visiblePanel === "calendar" && (
@@ -204,6 +219,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                   {...inputProps}
                   size={size}
                   multiSelectable={true}
+                  dateTestId={dateTestId}
                 />
               )}
 

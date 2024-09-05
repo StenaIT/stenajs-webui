@@ -1,12 +1,11 @@
 import { Box, Omit, Row } from "@stenajs-webui/core";
 import { FlatButton, stenaCalendar } from "@stenajs-webui/elements";
 import { TextInput, TextInputProps } from "@stenajs-webui/forms";
-import { Popover } from "@stenajs-webui/tooltip";
+import { ControlledPopover } from "@stenajs-webui/tooltip";
 import { format, isValid, parse } from "date-fns";
 import * as React from "react";
 import { useCallback, useState } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
-import { useCalendarPopoverUpdater } from "../../../features/internal-panel-state/UseCalendarPopoverUpdater";
 import { DateFormats } from "../../../util/date/DateFormats";
 import {
   SingleDateCalendar,
@@ -39,10 +38,6 @@ export interface DateTextInputProps<T>
   hideCalenderIcon?: boolean;
   /** Placeholder for the input, @default YYYY-MM-DD */
   placeholder?: string;
-  /** Portal target, HTML element. If not set, portal is not used. */
-  portalTarget?: HTMLElement | null;
-  /**  Z-index of the calendar overlay, @default 100 */
-  zIndex?: number;
   /** The date text input theme to use. */
   calendarTheme?: CalendarTheme;
 }
@@ -54,10 +49,8 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
   disableCalender = false,
   onValueChange,
   placeholder = "yyyy-mm-dd",
-  portalTarget,
   value,
   width = "130px",
-  zIndex = 100,
   calendarTheme = defaultCalendarTheme,
   hideCalenderIcon = false,
   minDate,
@@ -66,7 +59,6 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
   ...props
 }) => {
   const [open, setOpen] = useState(false);
-  const { tippyRef, onChangePanel } = useCalendarPopoverUpdater();
 
   const toggleCalendar = useCallback(() => {
     setOpen(!open);
@@ -108,55 +100,51 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
 
   return (
     <Box width={width}>
-      <Popover
-        arrow={false}
-        lazy
-        visible={open}
-        zIndex={zIndex}
-        appendTo={portalTarget ?? "parent"}
-        placement={defaultPopoverPlacement}
-        onClickOutside={hideCalendar}
-        tippyRef={tippyRef}
-        content={
-          <SingleDateCalendar
-            {...calendarProps}
-            onChange={onCalendarSelectDate}
-            onChangePanel={onChangePanel}
-            value={
-              value && dateIsValid
-                ? parse(value, dateFormat, new Date())
-                : undefined
+      <ControlledPopover
+        renderTrigger={(popoverProps) => (
+          <TextInput
+            {...props}
+            variant={invalid ? "error" : variant}
+            disableContentPaddingRight
+            contentRight={
+              !hideCalenderIcon ? (
+                <Row alignItems={"center"} indent={0.5}>
+                  <FlatButton
+                    size={"small"}
+                    disabled={props.disabled || disableCalender}
+                    leftIcon={stenaCalendar}
+                    onClick={toggleCalendar}
+                  />
+                </Row>
+              ) : undefined
             }
-            minDate={minDate}
-            maxDate={maxDate}
-            theme={calendarTheme}
+            onValueChange={onValueChangeHandler}
+            placeholder={placeholder}
+            value={value || ""}
+            min={minDate}
+            max={maxDate}
+            size={10}
+            {...popoverProps}
           />
-        }
+        )}
+        hideArrow
+        open={open}
+        placement={defaultPopoverPlacement}
+        onRequestClose={hideCalendar}
       >
-        <TextInput
-          {...props}
-          variant={invalid ? "error" : variant}
-          disableContentPaddingRight
-          contentRight={
-            !hideCalenderIcon ? (
-              <Row alignItems={"center"} indent={0.5}>
-                <FlatButton
-                  size={"small"}
-                  disabled={props.disabled || disableCalender}
-                  leftIcon={stenaCalendar}
-                  onClick={toggleCalendar}
-                />
-              </Row>
-            ) : undefined
+        <SingleDateCalendar
+          {...calendarProps}
+          onChange={onCalendarSelectDate}
+          value={
+            value && dateIsValid
+              ? parse(value, dateFormat, new Date())
+              : undefined
           }
-          onValueChange={onValueChangeHandler}
-          placeholder={placeholder}
-          value={value || ""}
-          min={minDate}
-          max={maxDate}
-          size={10}
+          minDate={minDate}
+          maxDate={maxDate}
+          theme={calendarTheme}
         />
-      </Popover>
+      </ControlledPopover>
     </Box>
   );
 };

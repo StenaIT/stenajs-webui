@@ -7,12 +7,11 @@ import {
 } from "@stenajs-webui/elements";
 import { Tooltip } from "@stenajs-webui/tooltip";
 
-export type RailMenuLinkProps =
-  | (
-      | MenuButtonLinkNotSelectedProps
-      | MenuButtonLinkWithSelectedProps
-      | MenuButtonLinkWithRenderLinkProps
-    ) & { label: string };
+export type RailMenuLinkProps = (
+  | MenuButtonLinkNotSelectedProps
+  | MenuButtonLinkWithSelectedProps
+  | MenuButtonLinkWithRenderLinkProps
+) & { label: string };
 
 export const RailMenuLink: React.FC<RailMenuLinkProps> = ({
   label,
@@ -24,7 +23,7 @@ export const RailMenuLink: React.FC<RailMenuLinkProps> = ({
   }
 
   return (
-    <Tooltip label={label} placement={"right"} appendTo={document.body}>
+    <Tooltip label={label} placement={"right"}>
       <IconMenuButtonLink icon={leftIcon} {...menuButtonLinkProps} />
     </Tooltip>
   );

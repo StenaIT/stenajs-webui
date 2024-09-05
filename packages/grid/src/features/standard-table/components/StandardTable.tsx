@@ -39,7 +39,6 @@ import { ColGroups } from "./ColGroups";
 import styles from "./StandardTable.module.css";
 import { StandardTableContent } from "./StandardTableContent";
 import { StandardTableHeadRow } from "./StandardTableHeadRow";
-import { TableHeadProps } from "../../table-ui/components/table/TableHeadItem";
 import { StandardTableColumnConfig } from "../config/StandardTableColumnConfig";
 
 export interface StandardTableProps<
@@ -76,12 +75,6 @@ export interface StandardTableProps<
    * Config for the table. Required.
    */
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>;
-
-  /**
-   * Append tooltip to HTML element. This prop is passed to Tippy.
-   * This is useful to solve z-index problems.
-   */
-  appendTooltipTo?: TableHeadProps["appendTooltipTo"];
 
   /**
    * Items to list in the table.
@@ -149,17 +142,25 @@ export interface StandardTableProps<
   onSortOrderChange?: StandardTableOnSortOrderChange<TColumnKey>;
 
   /**
-   * If set, this will always show below <th> and above first <tr>.
-   * This row is 100% custom, and inherits no design or functionality from StandardTable.
-   * You must make sure that extraHeaderRow root is a <tr> and contains <td> elements.
+   * If set, this will always show inside <thead>, below last <th>.
+   * This row is 100% custom, shown as is, and inherits no design or functionality from StandardTable.
+   * You must make sure that renderExtraHeadRows root is one or several <th> elements.
+   * You must also make sure that it has correct number of cells, with correct padding, etc.
+   */
+  renderExtraHeadRows?: () => ReactNode;
+
+  /**
+   * If set, this will always show inside <tbody>, above first <tr>.
+   * This row is 100% custom, shown as is, and inherits no design or functionality from StandardTable.
+   * You must make sure that extraHeaderRow root is a <tr>.
    * You must also make sure that it has correct number of cells, with correct padding, etc.
    */
   renderExtraRowTop?: () => ReactNode;
 
   /**
    * If set, this will always show below last <tr>.
-   * This row is 100% custom, and inherits no design or functionality from StandardTable.
-   * You must make sure that extraHeaderRow root is a <tr> and contains <td> elements.
+   * This row is 100% custom, shown as is, and inherits no design or functionality from StandardTable.
+   * You must make sure that extraHeaderRow root is a <tr>.
    * You must also make sure that it has correct number of cells, with correct padding, etc.
    */
   renderExtraRowBottom?: () => ReactNode;
@@ -183,7 +184,7 @@ export const StandardTable = function StandardTable<
   variant = "standard",
   onKeyDown,
   onSortOrderChange,
-  appendTooltipTo,
+  renderExtraHeadRows,
   ...props
 }: StandardTableProps<TItem, TColumnKey, TColumnGroupKey>) {
   const generatedTableId = useId();
@@ -358,7 +359,6 @@ export const StandardTable = function StandardTable<
                                   <StandardTableHeadRow
                                     items={props.items}
                                     height={"var(--current-row-height)"}
-                                    appendTooltipTo={appendTooltipTo}
                                     topBorder={false}
                                   />
                                   {showAdditionalHeaderRow ? (
@@ -376,6 +376,7 @@ export const StandardTable = function StandardTable<
                                       key={`additional-header`}
                                     />
                                   ) : null}
+                                  {renderExtraHeadRows?.()}
                                 </thead>
                                 <StandardTableContent
                                   variant={variant}

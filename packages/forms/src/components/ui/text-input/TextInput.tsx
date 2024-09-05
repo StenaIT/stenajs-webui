@@ -1,7 +1,10 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { InputProps } from "@stenajs-webui/core";
-import { InputSpinner } from "@stenajs-webui/elements";
-import { stenaCheck, stenaExclamationTriangle } from "@stenajs-webui/elements";
+import {
+  InputSpinner,
+  stenaCheck,
+  stenaExclamationTriangle,
+} from "@stenajs-webui/elements";
 import cx from "classnames";
 import * as React from "react";
 import { ChangeEvent, CSSProperties, useRef } from "react";
@@ -10,6 +13,13 @@ import { useTextInput } from "../../../hooks/UseTextInput";
 import { FullOnChangeProps } from "../types";
 import styles from "./TextInput.module.css";
 import { TextInputIcon } from "./TextInputIcon";
+
+export type TextInputBorderVariant =
+  | "normalBorder"
+  | "onlyTop"
+  | "onlyBottom"
+  | "onlyLeft"
+  | "onlyRight";
 
 export type TextInputVariant =
   | "standard"
@@ -56,6 +66,7 @@ export interface TextInputProps
   autoFocus?: boolean;
   /** onMove callback, triggered when user tries to move outside of field using arrow keys, tab or shift+tab. */
   onMove?: (direction: MoveDirection) => void;
+  borderRadiusVariant?: TextInputBorderVariant;
 }
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
@@ -88,6 +99,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     hideBorder,
     onFocus,
     onBlur,
+    borderRadiusVariant = "normalBorder",
     ...inputProps
   } = props;
   const localRef = useRef<HTMLInputElement>(null);
@@ -122,6 +134,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
       className={cx(
         styles.textInput,
         styles[variant],
+        styles[borderRadiusVariant],
         {
           [styles.disabled]: disabled,
         },

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactNode, useCallback, useRef, useState } from "react";
+import { PropsWithChildren, ReactNode, useCallback, useRef } from "react";
 import {
   arrow,
   autoUpdate,
@@ -8,13 +8,9 @@ import {
   FloatingFocusManager,
   FloatingPortal,
   offset,
-  safePolygon,
   shift,
-  useClick,
   useDismiss,
   useFloating,
-  useFocus,
-  useHover,
   useInteractions,
   useRole,
   useTransitionStyles,
@@ -23,58 +19,46 @@ import cx from "classnames";
 import moduleStyles from "./Popover.module.css";
 import { Placement } from "../../types/Placement";
 
-export type PopoverVariant =
-  | "standard"
-  | "info"
-  | "warning"
-  | "error"
-  | "outlined";
-
-export type PopoverTheme = "light" | "dark";
-export type PopoverTrigger = "click" | "hover" | "focus";
-
-export type PopoverChildren =
-  | ReactNode
-  | ((args: PopoverChildrenArgs) => ReactNode);
-
-export interface PopoverChildrenArgs {
+export interface ControlledPopoverProps extends PropsWithChildren {
+  open: boolean;
+  renderTrigger: (props: Record<string, unknown>) => ReactNode;
   onRequestClose: () => void;
-}
-
-type TriggerProp = PopoverTrigger | Array<PopoverTrigger>;
-
-export interface PopoverProps {
-  children?: PopoverChildren;
-  onRequestClose?: () => void;
   placement?: Placement;
-  trigger?: TriggerProp;
   hideArrow?: boolean;
   disablePadding?: boolean;
-  variant?: PopoverVariant;
-  theme?: PopoverTheme;
-  renderTrigger: (props: Record<string, unknown>) => ReactNode;
+  restoreFocus?: boolean;
+  returnFocus?: boolean;
 }
 
 const ARROW_WIDTH = 12;
 const ARROW_HEIGHT = 8;
 const GAP = 2;
 
-export const Popover: React.FC<PopoverProps> = ({
+export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   children,
-  variant,
-  trigger = "hover",
   placement = "bottom",
   hideArrow,
   renderTrigger,
   disablePadding,
+  open,
+  onRequestClose,
+  restoreFocus,
+  returnFocus,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const arrowRef = useRef(null);
 
+  const onOpenChange = useCallback(
+    (open: boolean) => {
+      if (!open) {
+        onRequestClose();
+      }
+    },
+    [onRequestClose]
+  );
+
   const { refs, floatingStyles, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
+    open,
+    onOpenChange,
     placement,
     middleware: [
       offset(ARROW_HEIGHT + GAP),
@@ -91,24 +75,10 @@ export const Popover: React.FC<PopoverProps> = ({
     },
   });
 
-  const onRequestClose = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
   const dismiss = useDismiss(context);
   const role = useRole(context);
-  const onFocus = useFocus(context, { enabled: hasTrigger(trigger, "focus") });
-  const onClick = useClick(context, { enabled: hasTrigger(trigger, "click") });
-  const onHover = useHover(context, {
-    enabled: hasTrigger(trigger, "hover"),
-    handleClose: safePolygon(),
-    restMs: 100,
-  });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
-    onFocus,
-    onClick,
-    onHover,
     dismiss,
     role,
   ]);
@@ -119,7 +89,12 @@ export const Popover: React.FC<PopoverProps> = ({
 
       {isMounted && (
         <FloatingPortal>
-          <FloatingFocusManager context={context} modal={false}>
+          <FloatingFocusManager
+            context={context}
+            modal={false}
+            restoreFocus={restoreFocus}
+            returnFocus={returnFocus}
+          >
             <div
               ref={refs.setFloating}
               style={floatingStyles}
@@ -129,13 +104,10 @@ export const Popover: React.FC<PopoverProps> = ({
                 style={transitionStyles}
                 className={cx(
                   moduleStyles.floating,
-                  disablePadding && moduleStyles.disablePadding,
-                  variant && moduleStyles.withIcon
+                  disablePadding && moduleStyles.disablePadding
                 )}
               >
-                {typeof children === "function"
-                  ? children({ onRequestClose })
-                  : children}
+                {children}
                 {!hideArrow && (
                   <FloatingArrow
                     ref={arrowRef}
@@ -152,14 +124,4 @@ export const Popover: React.FC<PopoverProps> = ({
       )}
     </>
   );
-};
-
-const hasTrigger = (
-  triggerProp: TriggerProp,
-  triggerToCheck: PopoverTrigger
-): boolean => {
-  if (typeof triggerProp === "string") {
-    return triggerProp === triggerToCheck;
-  }
-  return triggerProp.includes(triggerToCheck);
 };

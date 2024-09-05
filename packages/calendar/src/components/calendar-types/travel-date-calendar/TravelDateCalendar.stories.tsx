@@ -5,6 +5,7 @@ import { TravelDateCalendar } from "./TravelDateCalendar";
 import { Column, Heading, Row, Spacing } from "@stenajs-webui/core";
 import { Banner, Label } from "@stenajs-webui/elements";
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
+import { isToday } from "date-fns";
 
 export default {
   title: "calendar/Calendar/TravelDateCalendar",
@@ -42,6 +43,33 @@ export const WithHeading = () => {
         onValueChange={setValue}
         localeCode={"sv"}
         heading={"Select date"}
+      />
+    </div>
+  );
+};
+
+export const WithTestIds = () => {
+  const [value, setValue] = useState<string>("");
+
+  const testId = (date: Date) => {
+    if (isToday(date)) {
+      return "today";
+    }
+    return undefined;
+  };
+
+  const previousMonthButtonTestId = "prev-month-button";
+  const nextMonthButtonTestId = "next-month-button";
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        dateTestId={testId}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
     </div>
   );
@@ -137,6 +165,21 @@ export const ParseDate = () => {
       <Row gap={4}>
         <Label text={"Date"}>{date?.toDateString() ?? "-"}</Label>
       </Row>
+    </div>
+  );
+};
+
+export const WithBlurPlaceholders = () => {
+  const [value, setValue] = useState<string>("");
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <TravelDateCalendar
+        value={value}
+        onValueChange={setValue}
+        localeCode={"sv"}
+        placeholderWhenBlurred={"Gimme date"}
+      />
     </div>
   );
 };

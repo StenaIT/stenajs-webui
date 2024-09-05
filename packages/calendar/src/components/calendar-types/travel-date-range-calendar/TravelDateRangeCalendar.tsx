@@ -24,6 +24,11 @@ export interface TravelDateRangeCalendarProps
   firstMonthInMonthPicker?: Date;
   numMonthsInMonthPicker?: number;
   size?: TravelCalendarSizeVariant;
+  dateTestId?: (date: Date) => string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
+  placeholderWhenBlurredStartDate?: string;
+  placeholderWhenBlurredEndDate?: string;
 }
 
 export const TravelDateRangeCalendar: React.FC<
@@ -42,6 +47,11 @@ export const TravelDateRangeCalendar: React.FC<
   numMonthsInMonthPicker = 12,
   firstMonthInMonthPicker = new Date(),
   size = "medium",
+  dateTestId,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
+  placeholderWhenBlurredStartDate,
+  placeholderWhenBlurredEndDate,
 }) => {
   const inputProps = useTravelDateRangeInput(
     value,
@@ -67,12 +77,15 @@ export const TravelDateRangeCalendar: React.FC<
         </Heading>
       )}
       <TravelDateTextInputFields
+        {...inputProps}
         value={value}
         onValueChange={onValueChangeByInputs}
         localeCode={localeCode}
         startDateLabel={startDateLabel}
         endDateLabel={endDateLabel}
         calendarSize={size}
+        placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
+        placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
       />
 
       <MonthHeader
@@ -80,10 +93,17 @@ export const TravelDateRangeCalendar: React.FC<
         previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
         nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
         calendarSize={size}
+        previousMonthButtonTestId={previousMonthButtonTestId}
+        nextMonthButtonTestId={nextMonthButtonTestId}
       />
 
       {visiblePanel === "calendar" && (
-        <TravelCalendar {...inputProps} size={size} multiSelectable={true} />
+        <TravelCalendar
+          {...inputProps}
+          size={size}
+          multiSelectable={true}
+          dateTestId={dateTestId}
+        />
       )}
 
       {visiblePanel === "month-picker" && (

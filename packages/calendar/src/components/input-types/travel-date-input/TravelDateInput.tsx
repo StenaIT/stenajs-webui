@@ -46,6 +46,10 @@ export interface TravelDateInputProps
   onHideCalendar?: () => void;
   renderBelowCalendar?: (args: RenderBelowSingleDateCalendarArgs) => ReactNode;
   size?: TravelCalendarSizeVariant;
+  dateTestId?: (date: Date) => string | undefined;
+  previousMonthButtonTestId?: string;
+  nextMonthButtonTestId?: string;
+  placeholderWhenBlurred?: string;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
@@ -56,6 +60,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   initialMonthInFocus,
   previousMonthButtonAriaLabel = "Previous month",
   nextMonthButtonAriaLabel = "Next month",
+  placeholderWhenBlurred,
   heading,
   headingLevel,
   numMonthsInMonthPicker = 12,
@@ -65,6 +70,9 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   onHideCalendar,
   renderBelowCalendar,
   size = "medium",
+  dateTestId,
+  previousMonthButtonTestId,
+  nextMonthButtonTestId,
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -158,12 +166,14 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
       >
         <TravelDateSingleTextInputField
+          {...inputProps}
           value={value}
           onValueChange={onValueChangeByInputs}
           localeCode={localeCode}
           label={label}
           onFocus={showCalendar}
           calendarSize={size}
+          placeholderWhenBlurred={placeholderWhenBlurred}
         />
       </Box>
 
@@ -194,6 +204,8 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                 previousMonthButtonAriaLabel={previousMonthButtonAriaLabel}
                 nextMonthButtonAriaLabel={nextMonthButtonAriaLabel}
                 calendarSize={size}
+                previousMonthButtonTestId={previousMonthButtonTestId}
+                nextMonthButtonTestId={nextMonthButtonTestId}
               />
 
               {visiblePanel === "calendar" && (
@@ -204,6 +216,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
                   selectedStartDate={selectedDate}
                   selectedEndDate={selectedDate}
                   multiSelectable={false}
+                  dateTestId={dateTestId}
                 />
               )}
 
