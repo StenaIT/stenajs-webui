@@ -98,6 +98,24 @@ useEventListener(ref, "mouseover", setMouseIsOver);
 useEventListener(ref, "mouseout", setMouseIsNotOver);
 ```
 
+### useLatest
+
+Creates a ref with the value passed to it.
+Usable when you don't want deps to trigger hook updates.
+
+Returns: The ref object.
+
+#### Example
+
+```js
+const ref = useLatest(o);
+
+const onClick = useCallback(() => {
+  // This callback will not be updated because o is updated.
+  // ...
+}, [ref])
+```
+
 ### useMouseIsOver
 
 Returns true if mouse is over DOM element passed by ref.

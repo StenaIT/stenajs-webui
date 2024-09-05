@@ -6,8 +6,9 @@ import { createInputMaskForDateFormat } from "../../localize-date-format/InputMa
 import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
 import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
 import { TravelCalendarSizeVariant } from "./TravelCalendar";
+import { DateTextInputVariant } from "../types";
 
-export interface TravelDateSingleTextInputFieldProps {
+export interface TravelDateTextInputFieldProps {
   value: string | undefined;
   onValueChange: ((value: string) => void) | undefined;
   localeCode: string;
@@ -16,10 +17,11 @@ export interface TravelDateSingleTextInputFieldProps {
   calendarSize: TravelCalendarSizeVariant;
   placeholderWhenBlurred: string | undefined;
   valueWhenBlurred: string | undefined;
+  variant: DateTextInputVariant;
 }
 
-export const TravelDateSingleTextInputField: React.FC<
-  TravelDateSingleTextInputFieldProps
+export const TravelDateTextInputField: React.FC<
+  TravelDateTextInputFieldProps
 > = ({
   value,
   onValueChange,
@@ -29,6 +31,7 @@ export const TravelDateSingleTextInputField: React.FC<
   calendarSize,
   placeholderWhenBlurred,
   valueWhenBlurred,
+  variant,
 }) => {
   const { mask, placeholder } = useMemo(() => {
     const dateFormatForLocaleCode = getDateFormatForLocaleCode(localeCode);
@@ -56,6 +59,7 @@ export const TravelDateSingleTextInputField: React.FC<
         calendarSize={calendarSize}
         placeholderWhenBlurred={placeholderWhenBlurred}
         valueWhenBlurred={valueWhenBlurred}
+        variant={variant}
       />
     </Row>
   );

@@ -23,8 +23,9 @@ import {
 } from "../../../features/travel-calendar/components/TravelCalendar";
 import styles from "./TravelDateInput.module.css";
 import cx from "classnames";
-import { TravelDateSingleTextInputField } from "../../../features/travel-calendar/components/TravelDateSingleTextInputField";
+import { TravelDateTextInputField } from "../../../features/travel-calendar/components/TravelDateTextInputField";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
+import { DateTextInputVariant } from "../../../features/travel-calendar/types";
 
 export interface RenderBelowSingleDateCalendarArgs {
   hideCalendar: () => void;
@@ -50,6 +51,7 @@ export interface TravelDateInputProps
   previousMonthButtonTestId?: string;
   nextMonthButtonTestId?: string;
   placeholderWhenBlurred?: string;
+  textInputVariant?: DateTextInputVariant;
 }
 
 export const TravelDateInput: React.FC<TravelDateInputProps> = ({
@@ -73,6 +75,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
   dateTestId,
   previousMonthButtonTestId,
   nextMonthButtonTestId,
+  textInputVariant = "standard",
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -165,7 +168,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         ref={sizeSourceRef}
         zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
       >
-        <TravelDateSingleTextInputField
+        <TravelDateTextInputField
           {...inputProps}
           value={value}
           onValueChange={onValueChangeByInputs}
@@ -174,6 +177,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
           onFocus={showCalendar}
           calendarSize={size}
           placeholderWhenBlurred={placeholderWhenBlurred}
+          variant={textInputVariant}
         />
       </Box>
 

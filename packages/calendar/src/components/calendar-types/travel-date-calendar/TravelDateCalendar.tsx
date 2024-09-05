@@ -8,7 +8,8 @@ import {
   TravelCalendarSizeVariant,
 } from "../../../features/travel-calendar/components/TravelCalendar";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
-import { TravelDateSingleTextInputField } from "../../../features/travel-calendar/components/TravelDateSingleTextInputField";
+import { TravelDateTextInputField } from "../../../features/travel-calendar/components/TravelDateTextInputField";
+import { DateTextInputVariant } from "../../../features/travel-calendar/types";
 
 export interface TravelDateCalendarProps
   extends ValueAndOnValueChangeProps<string> {
@@ -26,6 +27,7 @@ export interface TravelDateCalendarProps
   previousMonthButtonTestId?: string;
   nextMonthButtonTestId?: string;
   placeholderWhenBlurred?: string;
+  textInputVariant?: DateTextInputVariant;
 }
 
 export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
@@ -45,6 +47,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
   size = "medium",
   previousMonthButtonTestId,
   nextMonthButtonTestId,
+  textInputVariant = "standard",
 }) => {
   const inputProps = useTravelDateInput(
     value,
@@ -70,7 +73,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
           {heading}
         </Heading>
       )}
-      <TravelDateSingleTextInputField
+      <TravelDateTextInputField
         {...inputProps}
         value={value}
         onValueChange={onValueChangeByInputs}
@@ -78,6 +81,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
         label={label}
         calendarSize={size}
         placeholderWhenBlurred={placeholderWhenBlurred}
+        variant={textInputVariant}
       />
 
       <MonthHeader

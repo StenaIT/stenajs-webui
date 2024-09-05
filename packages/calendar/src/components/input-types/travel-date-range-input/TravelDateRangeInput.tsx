@@ -14,7 +14,7 @@ import {
   useOnClickOutside,
 } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { TravelDateTextInputFields } from "../../../features/travel-calendar/components/TravelDateTextInputFields";
+import { TravelDateRangeTextInputFields } from "../../../features/travel-calendar/components/TravelDateRangeTextInputFields";
 import { CardBody } from "@stenajs-webui/elements";
 import { MonthPicker } from "../../../features/month-picker/MonthPicker";
 import { useTravelDateRangeInput } from "../../../features/travel-calendar/hooks/UseTravelDateRangeInput";
@@ -23,7 +23,10 @@ import {
   TravelCalendar,
   TravelCalendarSizeVariant,
 } from "../../../features/travel-calendar/components/TravelCalendar";
-import { TravelDateRangeInputValue } from "../../../features/travel-calendar/types";
+import {
+  DateTextInputVariant,
+  TravelDateRangeInputValue,
+} from "../../../features/travel-calendar/types";
 import styles from "./TravelDateRangeInput.module.css";
 import cx from "classnames";
 
@@ -53,6 +56,7 @@ export interface TravelDateRangeInputProps
   nextMonthButtonTestId?: string;
   placeholderWhenBlurredStartDate?: string;
   placeholderWhenBlurredEndDate?: string;
+  textInputVariant?: DateTextInputVariant;
 }
 
 export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
@@ -78,6 +82,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
   dateTestId,
   previousMonthButtonTestId,
   nextMonthButtonTestId,
+  textInputVariant = "standard",
 }) => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   const [calendarInDom, setCalendarInDom] = useState(false);
@@ -169,7 +174,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
         ref={sizeSourceRef}
         zIndex={calendarInDom ? zIndex : zIndexWhenClosed}
       >
-        <TravelDateTextInputFields
+        <TravelDateRangeTextInputFields
           {...inputProps}
           value={value}
           onValueChange={onValueChangeByInputs}
@@ -180,6 +185,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
           calendarSize={size}
           placeholderWhenBlurredStartDate={placeholderWhenBlurredStartDate}
           placeholderWhenBlurredEndDate={placeholderWhenBlurredEndDate}
+          variant={textInputVariant}
         />
       </Box>
 
