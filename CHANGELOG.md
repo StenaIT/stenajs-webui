@@ -1,3 +1,16 @@
+# v21.7.1 (Mon Sep 09 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Export NumericStepper [#782](https://github.com/StenaIT/stenajs-webui/pull/782) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.7.0 (Wed Sep 04 2024)
 
 #### 🚀 Enhancement
