@@ -31,6 +31,8 @@ export interface TooltipProps extends PropsWithChildren {
   label: string;
   variant?: TooltipVariant;
   maxWidth?: CSSProperties["maxWidth"];
+  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
+  zIndex?: number;
 }
 
 type TooltipVariant = "info" | "warning" | "error";
@@ -52,6 +54,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   label,
   variant,
   maxWidth = "500px",
+  appendTo,
+  zIndex,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -87,8 +91,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
       </div>
 
       {isMounted && (
-        <FloatingPortal>
-          <div ref={refs.setFloating} style={floatingStyles}>
+        <FloatingPortal root={appendTo}>
+          <div ref={refs.setFloating} style={{ zIndex, ...floatingStyles }}>
             <div
               style={{ maxWidth, ...styles }}
               className={cx(
