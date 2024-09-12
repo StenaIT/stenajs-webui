@@ -1,3 +1,16 @@
+# v21.8.0 (Thu Sep 12 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/tooltip`
+  - Restore support for zIndex and appendTo props to Popover and Tooltip [#783](https://github.com/StenaIT/stenajs-webui/pull/783) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.7.1 (Mon Sep 09 2024)
 
 #### 🐛 Bug Fix
