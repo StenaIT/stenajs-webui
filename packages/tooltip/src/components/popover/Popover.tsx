@@ -53,6 +53,8 @@ export interface PopoverProps {
   variant?: PopoverVariant;
   theme?: PopoverTheme;
   renderTrigger: (props: Record<string, unknown>) => ReactNode;
+  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
+  zIndex?: number;
 }
 
 const ARROW_WIDTH = 12;
@@ -67,6 +69,8 @@ export const Popover: React.FC<PopoverProps> = ({
   hideArrow,
   renderTrigger,
   disablePadding,
+  appendTo,
+  zIndex,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -118,11 +122,11 @@ export const Popover: React.FC<PopoverProps> = ({
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
       {isMounted && (
-        <FloatingPortal>
+        <FloatingPortal root={appendTo}>
           <FloatingFocusManager context={context} modal={false}>
             <div
               ref={refs.setFloating}
-              style={floatingStyles}
+              style={{ zIndex, ...floatingStyles }}
               {...getFloatingProps}
             >
               <div
