@@ -129,12 +129,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 };
 
 const TooltipText: React.FC<{ label: string }> = ({ label }) => (
-  <Text
-    color={cssColor("--lhds-color-ui-50")}
-    size={"small"}
-    variant={"bold"}
-    whiteSpace={"nowrap"}
-  >
+  <Text color={cssColor("--lhds-color-ui-50")} size={"small"} variant={"bold"}>
     {label}
   </Text>
 );
