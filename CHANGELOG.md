@@ -1,3 +1,16 @@
+# v21.8.1 (Fri Sep 13 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/tooltip`
+  - Fix tooltip never breaking row [#784](https://github.com/StenaIT/stenajs-webui/pull/784) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.0 (Thu Sep 12 2024)
 
 #### 🚀 Enhancement
