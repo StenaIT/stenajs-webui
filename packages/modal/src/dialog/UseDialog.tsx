@@ -1,6 +1,7 @@
 import cx from "classnames";
 import React, {
   CSSProperties,
+  MouseEventHandler,
   ReactNode,
   RefObject,
   useCallback,
@@ -59,6 +60,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           rejectRef.current = reject;
         }
       );
+      console.log("SHOW");
       setClosing(false);
       setContentVisible(true);
       forceRerender();
@@ -75,6 +77,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
 
   const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
     (value) => {
+      // Trigger closing animation.
       setClosing(true);
       currentRef.current?.addEventListener(
         "animationend",
@@ -92,8 +95,18 @@ export function useDialog<TProps, TPromiseResolve = void>(
     [currentRef, options]
   );
 
+  const onClose = useCallback(() => {
+    // Remove content immediately, since it cannot be animated when closed by browser.
+    setClosing(false);
+    setContentVisible(false);
+    rejectRef.current?.();
+    options.onReject?.();
+    modalComponentProps.current = undefined;
+  }, [options]);
+
   const reject = useCallback<RejectCommand>(
     (error) => {
+      // Trigger closing animation.
       setClosing(true);
       currentRef.current?.addEventListener(
         "animationend",
@@ -111,53 +124,62 @@ export function useDialog<TProps, TPromiseResolve = void>(
     [currentRef, options]
   );
 
+  const onClick = useCallback<MouseEventHandler<HTMLDialogElement>>(
+    (e) => {
+      if (e.target !== currentRef.current) {
+        return;
+      }
+
+      const rect = currentRef.current.getBoundingClientRect();
+
+      const clickedInsideDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+
+      if (!clickedInsideDialog) {
+        reject();
+      }
+    },
+    [currentRef, reject]
+  );
+
   const dialogElement = useMemo<ReactNode>(
     () => (
-      <DialogContext.Provider value={{ resolve, reject }}>
-        <dialog
-          onMouseDown={
-            options.disableCloseOnClickOutside ? undefined : () => reject()
-          }
-          ref={currentRef}
-          className={cx(options.className, closing && options.closingClassName)}
-          style={options.dialogStyle}
+      <dialog
+        onClick={options.disableCloseOnClickOutside ? undefined : onClick}
+        onClose={onClose}
+        ref={currentRef}
+        className={cx(options.className, closing && options.closingClassName)}
+        style={options.dialogStyle}
+      >
+        <div
+          style={options.contentWrapperStyle}
+          className={options.contentWrapperClassName}
         >
-          {options.disableCloseOnClickOutside ? (
-            <>
-              {contentVisible && (
-                <Comp {...(modalComponentProps.current as TProps)} key={key} />
-              )}
-            </>
-          ) : (
-            <div
-              style={options.contentWrapperStyle}
-              className={options.contentWrapperClassName}
-              onMouseDown={
-                options.disableCloseOnClickOutside
-                  ? undefined
-                  : (ev) => ev.stopPropagation()
-              }
-            >
-              {contentVisible && (
-                <Comp {...(modalComponentProps.current as TProps)} key={key} />
-              )}
-            </div>
+          {contentVisible && (
+            <DialogContext.Provider value={{ resolve, reject }}>
+              <Comp {...(modalComponentProps.current as TProps)} key={key} />
+            </DialogContext.Provider>
           )}
-        </dialog>
-      </DialogContext.Provider>
+        </div>
+      </dialog>
     ),
     [
-      resolve,
-      reject,
       options.disableCloseOnClickOutside,
       options.className,
       options.closingClassName,
       options.dialogStyle,
       options.contentWrapperStyle,
       options.contentWrapperClassName,
+      onClick,
+      onClose,
       currentRef,
       closing,
       contentVisible,
+      resolve,
+      reject,
       Comp,
       key,
     ]
