@@ -60,7 +60,6 @@ export function useDialog<TProps, TPromiseResolve = void>(
           rejectRef.current = reject;
         }
       );
-      console.log("SHOW");
       setClosing(false);
       setContentVisible(true);
       forceRerender();
