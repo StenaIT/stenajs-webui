@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useMultiOnClickOutside } from "../UseMultiOnClickOutside";
 import { vi } from "vitest";
 
-describe("useOnClickOutside", () => {
+describe("useMultiOnClickOutside", () => {
   const options = {
     altKey: true,
     bubbles: true,
