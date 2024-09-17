@@ -1,3 +1,16 @@
+# v21.8.2 (Tue Sep 17 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Click on modal scrollbar no longer closes modal [#785](https://github.com/StenaIT/stenajs-webui/pull/785) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.1 (Fri Sep 13 2024)
 
 #### 🐛 Bug Fix
