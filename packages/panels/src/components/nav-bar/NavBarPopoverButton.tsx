@@ -1,7 +1,10 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { NavBarButton, NavBarButtonProps } from "./NavBarButton";
-import { ControlledPopover } from "@stenajs-webui/tooltip";
+import {
+  ControlledPopover,
+  ControlledPopoverProps,
+} from "@stenajs-webui/tooltip";
 import { Box, useBoolean } from "@stenajs-webui/core";
 
 type RenderProp = (args: RenderPropArgs) => ReactNode;
@@ -11,13 +14,16 @@ interface RenderPropArgs {
 }
 
 export interface NavBarPopoverButtonProps
-  extends Omit<NavBarButtonProps, "onClick" | "content"> {
+  extends Omit<NavBarButtonProps, "onClick" | "content">,
+    Pick<ControlledPopoverProps, "zIndex" | "appendTo"> {
   content?: RenderProp;
 }
 
 export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
   content,
   children,
+  appendTo,
+  zIndex,
   ...navBarButtonProps
 }) => {
   const [isOpen, , close, toggle] = useBoolean(false);
@@ -29,6 +35,8 @@ export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
       )}
       open={isOpen}
       onRequestClose={close}
+      zIndex={zIndex}
+      appendTo={appendTo}
     >
       <Box>
         {content && content({ close })}
