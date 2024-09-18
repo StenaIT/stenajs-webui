@@ -4,7 +4,10 @@ import {
   TextInputProps,
   ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
-import { ControlledPopover } from "@stenajs-webui/tooltip";
+import {
+  ControlledPopover,
+  ControlledPopoverProps,
+} from "@stenajs-webui/tooltip";
 import { isAfter } from "date-fns";
 import * as React from "react";
 import { useMemo, useRef } from "react";
@@ -27,7 +30,8 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 export interface DateRangeDualTextInputProps<TData = unknown>
   extends ValueAndOnValueChangeProps<DateRange>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant">,
+    Pick<ControlledPopoverProps, "zIndex" | "appendTo"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -50,6 +54,8 @@ export function DateRangeDualTextInput<TData>({
   widthRight = 128,
   variant,
   disabled,
+  zIndex,
+  appendTo,
 }: DateRangeDualTextInputProps<TData>) {
   const { startDate, endDate } = value || {};
 
@@ -121,6 +127,8 @@ export function DateRangeDualTextInput<TData>({
         hideArrow
         restoreFocus={false}
         returnFocus={false}
+        zIndex={zIndex}
+        appendTo={appendTo}
         renderTrigger={(props) => (
           <Box {...props}>
             <DualTextInput

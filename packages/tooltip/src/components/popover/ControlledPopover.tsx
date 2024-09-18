@@ -28,6 +28,8 @@ export interface ControlledPopoverProps extends PropsWithChildren {
   disablePadding?: boolean;
   restoreFocus?: boolean;
   returnFocus?: boolean;
+  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
+  zIndex?: number;
 }
 
 const ARROW_WIDTH = 12;
@@ -44,6 +46,8 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   onRequestClose,
   restoreFocus,
   returnFocus,
+  appendTo,
+  zIndex,
 }) => {
   const arrowRef = useRef(null);
 
@@ -88,7 +92,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
       {isMounted && (
-        <FloatingPortal>
+        <FloatingPortal root={appendTo}>
           <FloatingFocusManager
             context={context}
             modal={false}
@@ -97,7 +101,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
           >
             <div
               ref={refs.setFloating}
-              style={floatingStyles}
+              style={{ zIndex, ...floatingStyles }}
               {...getFloatingProps}
             >
               <div

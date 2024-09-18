@@ -1,8 +1,11 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { NavBarButton, NavBarButtonProps } from "./NavBarButton";
-import { Popover } from "@stenajs-webui/tooltip";
-import { Box, Row } from "@stenajs-webui/core";
+import {
+  ControlledPopover,
+  ControlledPopoverProps,
+} from "@stenajs-webui/tooltip";
+import { Box, useBoolean } from "@stenajs-webui/core";
 
 type RenderProp = (args: RenderPropArgs) => ReactNode;
 
@@ -11,30 +14,34 @@ interface RenderPropArgs {
 }
 
 export interface NavBarPopoverButtonProps
-  extends Omit<NavBarButtonProps, "onClick" | "content"> {
+  extends Omit<NavBarButtonProps, "onClick" | "content">,
+    Pick<ControlledPopoverProps, "zIndex" | "appendTo"> {
   content?: RenderProp;
 }
 
 export const NavBarPopoverButton: React.FC<NavBarPopoverButtonProps> = ({
   content,
   children,
+  appendTo,
+  zIndex,
   ...navBarButtonProps
 }) => {
+  const [isOpen, , close, toggle] = useBoolean(false);
+
   return (
-    <Popover
+    <ControlledPopover
       renderTrigger={(props) => (
-        <Row {...props}>
-          <NavBarButton {...navBarButtonProps} />
-        </Row>
+        <NavBarButton {...navBarButtonProps} {...props} onClick={toggle} />
       )}
-      trigger={"click"}
+      open={isOpen}
+      onRequestClose={close}
+      zIndex={zIndex}
+      appendTo={appendTo}
     >
-      {({ onRequestClose }) => (
-        <Box>
-          {content && content({ close: onRequestClose })}
-          {children}
-        </Box>
-      )}
-    </Popover>
+      <Box>
+        {content && content({ close })}
+        {children}
+      </Box>
+    </ControlledPopover>
   );
 };
