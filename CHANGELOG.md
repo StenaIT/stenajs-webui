@@ -1,3 +1,16 @@
+# v21.8.3 (Wed Sep 18 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Fixes for popover in nav bar and z-index on ControlledPopover [#786](https://github.com/StenaIT/stenajs-webui/pull/786) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.2 (Tue Sep 17 2024)
 
 #### 🐛 Bug Fix
