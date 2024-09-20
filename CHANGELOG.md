@@ -1,3 +1,16 @@
+# v21.8.4 (Fri Sep 20 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/panels`
+  - Add zIndex and appendTo to ActionMenuButton components [#787](https://github.com/StenaIT/stenajs-webui/pull/787) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.3 (Wed Sep 18 2024)
 
 #### 🐛 Bug Fix
