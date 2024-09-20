@@ -11,7 +11,11 @@ import {
   stenaAngleDown,
 } from "@stenajs-webui/elements";
 import { useBoolean } from "@stenajs-webui/core";
-import { ControlledPopover, PopoverProps } from "@stenajs-webui/tooltip";
+import {
+  ControlledPopover,
+  ControlledPopoverProps,
+  PopoverProps,
+} from "@stenajs-webui/tooltip";
 
 export interface ActionMenuButtonProps
   extends Omit<
@@ -22,6 +26,10 @@ export interface ActionMenuButtonProps
   renderItems: (close: () => void) => ReactNode;
   /** The placement of the Action Menu. */
   placement?: PopoverProps["placement"];
+  /**  Z-index of the Action Menu */
+  zIndex?: number;
+  /** Portal target, HTML element. If not set, portal is not used. */
+  appendTo?: ControlledPopoverProps["appendTo"];
   menuWidth?: ActionMenuProps["width"];
   menuTop?: ActionMenuProps["top"];
   buttonComponent:
@@ -42,6 +50,8 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   onClick,
   disableArrow = false,
   buttonRef,
+  appendTo,
+  zIndex,
   ...buttonProps
 }) => {
   const [isOpen, open, close, toggle] = useBoolean(false);
@@ -75,6 +85,8 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
         open={isOpen}
         onRequestClose={close}
         placement={placement}
+        appendTo={appendTo}
+        zIndex={zIndex}
       >
         {isOpen && (
           <ActionMenu width={menuWidth} top={menuTop} trapFocus>
