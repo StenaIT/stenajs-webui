@@ -50,7 +50,7 @@ export const Tag: React.FC<TagProps> = ({
       {...getDataProps(rest)}
     >
       {icon && <FontAwesomeIcon icon={icon} className={styles.icon} />}
-      <span>{label}</span>
+      {label && <span>{label}</span>}
     </div>
   );
 };
