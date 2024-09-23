@@ -1,3 +1,16 @@
+# v21.8.5 (Mon Sep 23 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix gap in Tag with icon but no label [#788](https://github.com/StenaIT/stenajs-webui/pull/788) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.4 (Fri Sep 20 2024)
 
 #### 🐛 Bug Fix
