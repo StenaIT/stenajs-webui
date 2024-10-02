@@ -53,6 +53,9 @@ export interface PopoverProps {
   variant?: PopoverVariant;
   theme?: PopoverTheme;
   renderTrigger: (props: Record<string, unknown>) => ReactNode;
+  restoreFocus?: boolean;
+  returnFocus?: boolean;
+  initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
 }
@@ -69,6 +72,9 @@ export const Popover: React.FC<PopoverProps> = ({
   hideArrow,
   renderTrigger,
   disablePadding,
+  restoreFocus,
+  returnFocus,
+  initialFocus,
   appendTo,
   zIndex,
 }) => {
@@ -123,7 +129,13 @@ export const Popover: React.FC<PopoverProps> = ({
 
       {isMounted && (
         <FloatingPortal root={appendTo}>
-          <FloatingFocusManager context={context} modal={false}>
+          <FloatingFocusManager
+            context={context}
+            modal={false}
+            restoreFocus={restoreFocus}
+            returnFocus={returnFocus}
+            initialFocus={initialFocus}
+          >
             <div
               ref={refs.setFloating}
               style={{ zIndex, ...floatingStyles }}

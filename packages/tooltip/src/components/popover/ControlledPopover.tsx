@@ -28,6 +28,7 @@ export interface ControlledPopoverProps extends PropsWithChildren {
   disablePadding?: boolean;
   restoreFocus?: boolean;
   returnFocus?: boolean;
+  initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
 }
@@ -46,6 +47,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   onRequestClose,
   restoreFocus,
   returnFocus,
+  initialFocus,
   appendTo,
   zIndex,
 }) => {
@@ -98,6 +100,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
             modal={false}
             restoreFocus={restoreFocus}
             returnFocus={returnFocus}
+            initialFocus={initialFocus}
           >
             <div
               ref={refs.setFloating}
