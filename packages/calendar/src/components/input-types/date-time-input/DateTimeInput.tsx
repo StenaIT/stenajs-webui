@@ -4,7 +4,10 @@ import {
   TextInputProps,
   ValueAndOnValueChangeProps,
 } from "@stenajs-webui/forms";
-import { ControlledPopover } from "@stenajs-webui/tooltip";
+import {
+  ControlledPopover,
+  ControlledPopoverProps,
+} from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { useCallback, useMemo, useRef } from "react";
 import { defaultPopoverPlacement } from "../../../config/DefaultPopoverPlacement";
@@ -26,7 +29,8 @@ import { defaultMaxDate } from "../../../config/DefaultMaxDate";
 export interface DateTimeInputProps
   extends ValueAndOnValueChangeProps<Date | null>,
     OptionalMinMaxDatesAsString,
-    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant"> {
+    Pick<DualTextInputProps, "widthLeft" | "widthRight" | "variant">,
+    Pick<ControlledPopoverProps, "zIndex" | "appendTo"> {
   onEsc?: () => void;
   onEnter?: () => void;
   onBlur?: () => void;
@@ -47,6 +51,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
   maxDate = defaultMaxDate,
   variant,
   disabled,
+  zIndex,
+  appendTo,
 }) => {
   const dateInputRef: TextInputProps["inputRef"] = useRef(null);
   const timeInputRef: TextInputProps["inputRef"] = useRef(null);
@@ -119,6 +125,8 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
     <Box onKeyDown={onKeyDownHandler}>
       <ControlledPopover
         hideArrow
+        zIndex={zIndex}
+        appendTo={appendTo}
         renderTrigger={(props) => (
           <Box {...props}>
             <DualTextInput
