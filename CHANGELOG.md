@@ -1,3 +1,16 @@
+# v21.9.0 (Tue Oct 08 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/tooltip`
+  - Add appendTo and zIndex props to DateTimeInput [#789](https://github.com/StenaIT/stenajs-webui/pull/789) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.8.5 (Mon Sep 23 2024)
 
 #### 🐛 Bug Fix
