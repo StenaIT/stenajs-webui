@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
-    "@chromatic-com/storybook"
+    getAbsolutePath("@chromatic-com/storybook")
   ],
   viteFinal(config, { configType }) {
     let plugins = [
@@ -39,7 +39,7 @@ const config: StorybookConfig = {
     ];
 
     if (configType !== "PRODUCTION") {
-      plugins.push(cssInjectedByJsPlugin({ topExecutionPriority: false }));
+      plugins.concat(cssInjectedByJsPlugin({ topExecutionPriority: false }));
     }
 
     return mergeConfig(config, { plugins });

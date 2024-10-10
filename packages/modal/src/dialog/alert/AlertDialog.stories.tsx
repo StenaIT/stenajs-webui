@@ -100,7 +100,7 @@ export const ResolveReject: StoryFn = () => {
       if (result != null) {
         setEmail(result);
       }
-    } catch (e) {
+    } catch {
       /* empty */
     }
   }, [email, show]);

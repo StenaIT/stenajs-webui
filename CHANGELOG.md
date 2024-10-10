@@ -1,3 +1,42 @@
+# v21.10.1 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Update to latest Storybook [#793](https://github.com/StenaIT/stenajs-webui/pull/793) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.10.0 (Thu Oct 10 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Upgrade lots of deps [#792](https://github.com/StenaIT/stenajs-webui/pull/792) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.9.1 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Prevent row breaks in label of LabelledTextInput and LabelledSelect [#791](https://github.com/StenaIT/stenajs-webui/pull/791) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.9.0 (Tue Oct 08 2024)
 
 #### 🚀 Enhancement

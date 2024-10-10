@@ -67,7 +67,7 @@ export const isValidTimeString = (time: string | undefined): boolean => {
   try {
     transformTimeStringToNumber(time);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 };

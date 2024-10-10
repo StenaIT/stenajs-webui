@@ -41,7 +41,7 @@ export const useDateRangeInput = (
         });
         if (!value?.endDate) {
           setFocusedInput("endDate");
-          endDateInputRef.current && endDateInputRef.current.focus();
+          endDateInputRef.current?.focus();
         } else {
           setTimeout(hideCalendar, 150);
         }
@@ -52,7 +52,7 @@ export const useDateRangeInput = (
         });
         if (!value?.startDate) {
           setFocusedInput("startDate");
-          startDateInputRef.current && startDateInputRef.current.focus();
+          startDateInputRef.current?.focus();
         } else {
           setTimeout(hideCalendar, 150);
         }

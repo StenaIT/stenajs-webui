@@ -8,7 +8,7 @@ export default {
 };
 
 export const Demo = () => (
-  <Column gap={2}>
+  <Column gap={2} width={"250px"}>
     <Heading>Medium</Heading>
     <LabelledTextInput
       label={"Input field"}
