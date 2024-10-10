@@ -2,7 +2,7 @@ const {
   getPackageFolderList,
   packagesPath,
 } = require("./util/package-json-fetcher.cjs");
-const glob = require("glob");
+const { glob } = require("glob");
 const path = require("path");
 const fs = require("fs");
 const ts = require("typescript");
