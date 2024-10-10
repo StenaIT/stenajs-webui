@@ -80,7 +80,7 @@
     "husky": "^8.0.3",
     "jsdom": "^24.0.0",
     "lerna": "8.1.8",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
     "path-that-svg": "1.2.4",
     "postcss-nested": "^6.0.1",
