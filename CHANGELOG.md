@@ -1,3 +1,16 @@
+# v21.9.1 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Prevent row breaks in label of LabelledTextInput and LabelledSelect [#791](https://github.com/StenaIT/stenajs-webui/pull/791) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.9.0 (Tue Oct 08 2024)
 
 #### 🚀 Enhancement
