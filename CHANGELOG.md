@@ -1,3 +1,16 @@
+# v21.10.0 (Thu Oct 10 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/modal`
+  - Upgrade lots of deps [#792](https://github.com/StenaIT/stenajs-webui/pull/792) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.9.1 (Thu Oct 10 2024)
 
 #### 🐛 Bug Fix
