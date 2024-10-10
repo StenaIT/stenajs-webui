@@ -1,3 +1,16 @@
+# v21.10.1 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/forms`
+  - Update to latest Storybook [#793](https://github.com/StenaIT/stenajs-webui/pull/793) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.10.0 (Thu Oct 10 2024)
 
 #### 🚀 Enhancement
