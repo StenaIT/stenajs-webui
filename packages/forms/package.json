@@ -63,7 +63,7 @@
     "@emotion/styled": "^11.11.5",
     "@fortawesome/fontawesome-svg-core": "6.5.2",
     "@fortawesome/free-regular-svg-icons": "5.15.3",
-    "@fortawesome/free-solid-svg-icons": "6.5.2",
+    "@fortawesome/free-solid-svg-icons": "6.6.0",
     "@fortawesome/react-fontawesome": "0.2.2",
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.1.5",
