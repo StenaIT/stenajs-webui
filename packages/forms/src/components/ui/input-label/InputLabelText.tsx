@@ -17,6 +17,7 @@ export const InputLabelText: React.FC<InputLabelTextProps> = ({
       variant={"bold"}
       color={cssColor(disabled ? "--silver" : "--tjara")}
       size={"small"}
+      whiteSpace={"nowrap"}
       {...getDataProps(props)}
     >
       {text}
