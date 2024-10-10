@@ -42,7 +42,7 @@
     "@stenajs-webui/redux": "21.10.1",
     "@stenajs-webui/select": "21.10.1",
     "@stenajs-webui/theme": "21.10.1",
-    "date-fns": "3.6.0",
+    "date-fns": "4.1.0",
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
