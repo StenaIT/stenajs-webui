@@ -25,7 +25,7 @@ jobs:
         env:
           CI: true
       - name: "Compressed Size"
-        uses: preactjs/compressed-size-action@8a15fc9a36a94c8c3f7835af11a4924da7e95c7c
+        uses: preactjs/compressed-size-action@6fa0e7ca017120c754863b31123c5ee2860fd434
         with:
           build-script: "-v" # Will execute `yarn run -v` (essentially a no-op)
           pattern: "packages/*/dist/*.js"
