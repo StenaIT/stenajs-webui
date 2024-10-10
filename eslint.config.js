@@ -39,6 +39,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   }
 );
