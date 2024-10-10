@@ -1,0 +1,86 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/calendar
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/core
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/elements
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/filter
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/forms
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/grid-export
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/grid
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/input-mask
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/modal
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/panels
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/redux
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/select
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/theme
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/tooltip
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /template
+    schedule:
+      interval: daily
