@@ -23,6 +23,10 @@ export interface NumericTextInputProps
   hideButtons?: boolean;
 }
 
+/**
+ * @deprecated Please use NumericStepper instead.
+ * This is used internally, and should not be used by apps.
+ */
 export const NumericTextInput: React.FC<NumericTextInputProps> = ({
   value,
   onValueChange,
