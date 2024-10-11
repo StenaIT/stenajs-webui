@@ -25,6 +25,7 @@ import {
   CrudStatusIndicator,
   hasIndicatorContent,
 } from "../CrudStatusIndicator";
+import { Action, Dispatch } from "redux";
 
 interface Props<TStoreState> {
   value?: string;
@@ -58,7 +59,7 @@ export const EditableTextCellWithCrudAndModified =
   }: Props<TStoreState>) {
     const enableGridCell = true;
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch() as Dispatch<Action>;
 
     const modifiedFieldsState = useSelector(
       modifiedFieldsRedux.selectors.getState,
@@ -71,7 +72,7 @@ export const EditableTextCellWithCrudAndModified =
     const onChangeHandler = useCallback(
       (newValue: string | undefined = "") => {
         if (newValue === value) {
-          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId) as never);
+          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
         } else {
           dispatch(
             modifiedFieldsRedux.actions.setEntity({
@@ -79,7 +80,7 @@ export const EditableTextCellWithCrudAndModified =
               originalValue: value,
               newValue,
               modified: true,
-            }) as never,
+            }),
           );
         }
       },
@@ -109,12 +110,12 @@ export const EditableTextCellWithCrudAndModified =
     const onKeyDownHandler = useCallback<KeyboardEventHandler>(
       (ev) => {
         if (ev.key === "Delete") {
-          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId) as never);
+          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
           dispatch(
             crudStatusRedux.actions.setEntityFields(entityId, {
               hasError: false,
               errorMessage: undefined,
-            }) as never,
+            }),
           );
         } else {
           onKeyDown(ev);
