@@ -1,3 +1,27 @@
+# v21.12.1 (Fri Oct 11 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid-export`
+  - Update clipboard-polyfill. [#853](https://github.com/StenaIT/stenajs-webui/pull/853) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- Bump eslint-plugin-react-hooks from 5.1.0-rc-fb9a90fa48-20240614 to 5.1.0-rc.0 [#820](https://github.com/StenaIT/stenajs-webui/pull/820) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump preactjs/compressed-size-action from 8a15fc9a36a94c8c3f7835af11a4924da7e95c7c to 6fa0e7ca017120c754863b31123c5ee2860fd434 [#796](https://github.com/StenaIT/stenajs-webui/pull/796) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump ossf/scorecard-action from 2.3.3 to 2.4.0 [#795](https://github.com/StenaIT/stenajs-webui/pull/795) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump actions/upload-artifact from 4.4.1 to 4.4.3 [#794](https://github.com/StenaIT/stenajs-webui/pull/794) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump actions/setup-node from 3 to 4 [#797](https://github.com/StenaIT/stenajs-webui/pull/797) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@stenajs-webui/core`
+  - Update @testing-library/react-hooks and react-test-renderer [#852](https://github.com/StenaIT/stenajs-webui/pull/852) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.12.0 (Fri Oct 11 2024)
 
 #### 🚀 Enhancement
