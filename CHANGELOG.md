@@ -1,3 +1,21 @@
+# v21.12.0 (Fri Oct 11 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/filter`, `@stenajs-webui/grid`, `@stenajs-webui/redux`
+  - Update redux to latest version [#851](https://github.com/StenaIT/stenajs-webui/pull/851) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/tooltip`
+  - Update prettier to latest [#850](https://github.com/StenaIT/stenajs-webui/pull/850) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.11.1 (Fri Oct 11 2024)
 
 #### 🐛 Bug Fix
