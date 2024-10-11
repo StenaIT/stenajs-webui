@@ -1,3 +1,15 @@
+# v21.11.1 (Fri Oct 11 2024)
+
+#### 🐛 Bug Fix
+
+- Bump react-draggable from 4.4.5 to 4.4.6 [#824](https://github.com/StenaIT/stenajs-webui/pull/824) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v21.11.0 (Fri Oct 11 2024)
 
 #### 🚀 Enhancement
