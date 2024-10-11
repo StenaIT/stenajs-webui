@@ -43,8 +43,7 @@
   },
   "peerDependencies": {
     "@emotion/react": ">=11.11.4",
-    "@fortawesome/fontawesome-svg-core": ">=6.5.2",
-    "@fortawesome/free-solid-svg-icons": ">=6.5.2",
+    "@fortawesome/fontawesome-svg-core": ">=6.6.0",
     "@fortawesome/react-fontawesome": ">=0.2.2",
     "@types/react": ">=18.3.3",
     "@types/react-dom": ">=18.3.0",
@@ -53,10 +52,8 @@
   },
   "devDependencies": {
     "@emotion/react": "^11.11.4",
-    "@fortawesome/fontawesome-svg-core": "6.5.2",
-    "@fortawesome/free-solid-svg-icons": "6.5.2",
+    "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/react-fontawesome": "0.2.2",
-    "@types/jest": "^23.1.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "react": "^18.3.1",
