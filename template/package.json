@@ -34,7 +34,7 @@
   "dependencies": {
     "@stenajs-webui/calendar": "21.10.1",
     "@stenajs-webui/elements": "21.10.1",
-    "@stenajs-webui/forms": "21.10.1"
+    "@stenajs-webui/forms": "21.12.1"
   },
   "peerDependencies": {
     "prop-types": ">=15.5.4",
