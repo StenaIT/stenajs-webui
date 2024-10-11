@@ -25,6 +25,7 @@ import {
   CrudStatusIndicator,
   hasIndicatorContent,
 } from "../CrudStatusIndicator";
+import { Action, Dispatch } from "redux";
 
 interface Props<TStoreState> {
   value?: string;
@@ -58,7 +59,7 @@ export const EditableTextCellWithCrudAndModified =
   }: Props<TStoreState>) {
     const enableGridCell = true;
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch() as Dispatch<Action>;
 
     const modifiedFieldsState = useSelector(
       modifiedFieldsRedux.selectors.getState,
