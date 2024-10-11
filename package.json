@@ -86,7 +86,7 @@
     "path-that-svg": "1.2.4",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.3.0",
-    "prettier": "2.7.1",
+    "prettier": "3.3.3",
     "react": "18.3.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "18.3.1",
