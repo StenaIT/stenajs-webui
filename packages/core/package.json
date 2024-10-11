@@ -46,7 +46,7 @@
   "devDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@testing-library/react-hooks": "^2.0.1",
+    "@testing-library/react-hooks": "8.0.1",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -55,7 +55,7 @@
     "prop-types": "^15.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-test-renderer": "^18.2.0",
+    "react-test-renderer": "18.3.1",
     "styled-system": "^5.1.5"
   },
   "files": [
