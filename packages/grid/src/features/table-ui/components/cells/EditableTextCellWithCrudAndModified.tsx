@@ -71,7 +71,7 @@ export const EditableTextCellWithCrudAndModified =
     const onChangeHandler = useCallback(
       (newValue: string | undefined = "") => {
         if (newValue === value) {
-          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
+          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId) as never);
         } else {
           dispatch(
             modifiedFieldsRedux.actions.setEntity({
@@ -79,7 +79,7 @@ export const EditableTextCellWithCrudAndModified =
               originalValue: value,
               newValue,
               modified: true,
-            }),
+            }) as never,
           );
         }
       },
@@ -109,12 +109,12 @@ export const EditableTextCellWithCrudAndModified =
     const onKeyDownHandler = useCallback<KeyboardEventHandler>(
       (ev) => {
         if (ev.key === "Delete") {
-          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId));
+          dispatch(modifiedFieldsRedux.actions.clearEntity(entityId) as never);
           dispatch(
             crudStatusRedux.actions.setEntityFields(entityId, {
               hasError: false,
               errorMessage: undefined,
-            }),
+            }) as never,
           );
         } else {
           onKeyDown(ev);
