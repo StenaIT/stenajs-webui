@@ -17,7 +17,7 @@ export const useTravelDateInput = (
   value: string | undefined,
   onValueChange: ((value: string) => void) | undefined,
   localeCode: string,
-  initialMonthInFocus: Date | undefined
+  initialMonthInFocus: Date | undefined,
 ) => {
   const locale =
     getLocaleForLocaleCode(localeCode) ?? getDefaultLocaleForFormatting();
@@ -29,7 +29,7 @@ export const useTravelDateInput = (
 
   const dateFormat = useMemo(
     () => getDateFormatForLocaleCode(localeCode),
-    [localeCode]
+    [localeCode],
   );
 
   const selectedDate = useMemo(
@@ -37,7 +37,7 @@ export const useTravelDateInput = (
       value?.length === dateFormat.length
         ? parseLocalizedDateString(value, localeCode)
         : undefined,
-    [dateFormat.length, localeCode, value]
+    [dateFormat.length, localeCode, value],
   );
 
   const valueWhenBlurred = useMemo(
@@ -45,11 +45,11 @@ export const useTravelDateInput = (
       selectedDate != null
         ? formatDateDescription(selectedDate, today, locale)
         : undefined,
-    [locale, selectedDate, today]
+    [locale, selectedDate, today],
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
-    initialMonthInFocus ?? selectedDate ?? new Date()
+    initialMonthInFocus ?? selectedDate ?? new Date(),
   );
 
   const setVisibleMonthClamped = useCallback(
@@ -60,7 +60,7 @@ export const useTravelDateInput = (
         setVisibleMonth(today);
       }
     },
-    [today]
+    [today],
   );
 
   const visibleMonthData = useMemo(
@@ -68,9 +68,9 @@ export const useTravelDateInput = (
       getMonthInYear(
         visibleMonth.getFullYear(),
         visibleMonth.getMonth(),
-        locale
+        locale,
       ),
-    [locale, visibleMonth]
+    [locale, visibleMonth],
   );
 
   const monthPickerButtonLabel = useMemo(() => {
@@ -98,17 +98,17 @@ export const useTravelDateInput = (
 
       onValueChange?.(v);
     },
-    [dateFormat.length, localeCode, onValueChange, setVisibleMonthClamped]
+    [dateFormat.length, localeCode, onValueChange, setVisibleMonthClamped],
   );
 
   const prevMonthDisabled = useMemo(
     () => isSameMonth(today, visibleMonth) || isBefore(visibleMonth, today),
-    [today, visibleMonth]
+    [today, visibleMonth],
   );
 
   const isDateDisabled = useCallback<(date: Date) => boolean>(
     (date) => !isSameDay(date, today) && isBefore(date, today),
-    [today]
+    [today],
   );
 
   const onClickDate = (date: Date) => {

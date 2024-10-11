@@ -4,7 +4,7 @@ import { CellIndices } from "./DirectionCalculator";
 export const clampPos = (
   pos: CellIndices,
   numRows: number,
-  numCols: number
+  numCols: number,
 ): CellIndices => {
   return {
     rowIndex: limitRange(pos.rowIndex, 0, numRows),
@@ -15,7 +15,7 @@ export const clampPos = (
 export const wrapPos = (
   pos: CellIndices,
   numRows: number,
-  numCols: number
+  numCols: number,
 ): CellIndices => {
   const wrapped = wrapBounds(pos.colIndex, pos.rowIndex, numCols, numRows);
   return {

@@ -10,13 +10,13 @@ import {
 
 export interface EditableEntityActions<T> {
   setEntityId: (
-    entityId: string | undefined
+    entityId: string | undefined,
   ) => EditableEntitySetEntityIdAction;
   setEntity: (entity: T) => EditableEntitySetEntityAction<T>;
   setPersistedEntity: (entity: T) => EditableEntitySetPersistedEntityAction<T>;
   setEditableEntity: (entity: T) => EditableEntitySetEditableEntityAction<T>;
   setEditableEntityFields: (
-    fields: Partial<T>
+    fields: Partial<T>,
   ) => EditableEntitySetEditableEntityFieldsAction<T>;
   revertEditableEntity: () => EditableEntityRevertEditableEntityAction;
   commitEditableEntityToPersisted: () => EditableEntityCommitEditableEntityToPersistedAction;

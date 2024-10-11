@@ -3,9 +3,9 @@ import { StandardTableConfig } from "../config/StandardTableConfig";
 export const getTotalNumColumns = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = string
+  TColumnGroupKey extends string = string,
 >(
-  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
+  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
 ): number =>
   (config.rowIndent ? 2 : 0) +
   (config.enableExpandCollapse ? 1 : 0) +
@@ -15,9 +15,9 @@ export const getTotalNumColumns = <
 const getNumUserColumns = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = string
+  TColumnGroupKey extends string = string,
 >(
-  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
+  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
 ): number => {
   if ("columnGroupOrder" in config) {
     return config.columnGroupOrder.reduce<number>((sum, groupId) => {

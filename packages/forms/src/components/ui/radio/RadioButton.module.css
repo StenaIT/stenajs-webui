@@ -39,7 +39,8 @@
     --current-bg-color,
     var(--swui-radiobutton-unchecked-bg-color)
   );
-  transition: background var(--swui-radiobutton-animation-time),
+  transition:
+    background var(--swui-radiobutton-animation-time),
     border-color var(--swui-radiobutton-animation-time);
 
   &.standard {
@@ -66,7 +67,8 @@
     content: "";
     display: block;
     position: absolute;
-    transition: transform
+    transition:
+      transform
         var(--current-transform-time, var(--swui-radiobutton-animation-time))
         var(--current-transform-type, ease),
       opacity

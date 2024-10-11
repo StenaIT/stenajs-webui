@@ -31,7 +31,7 @@ export const InputSpinner: React.FC<InputSpinnerProps> = ({
               height: ${size};
               fill: currentColor;
               animation: ${loadingCircle} 1s infinite linear;
-            `
+            `,
           )}
         />
       )}

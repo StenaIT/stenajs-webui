@@ -4,7 +4,7 @@ import { addDayStateHighlights } from "../../util/calendar/StateModifier";
 
 export const useHighlightToday = (
   enabled: boolean | undefined,
-  statePerMonth: CalendarState | undefined
+  statePerMonth: CalendarState | undefined,
 ) => {
   return useMemo(() => {
     return enabled

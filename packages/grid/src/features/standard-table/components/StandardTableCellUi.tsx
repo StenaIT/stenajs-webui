@@ -61,5 +61,5 @@ export const StandardTableCellUi = React.memo<Props>(
         </Row>
       </Row>
     );
-  }
+  },
 );

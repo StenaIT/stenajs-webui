@@ -48,12 +48,12 @@ export function CalendarWithMonthSwitcher<T>({
       dateInFocus,
       setDateInFocus,
       calendarProps.monthsPerRow,
-      calendarProps.numMonths
+      calendarProps.numMonths,
     );
 
   const placement = fallbackIfNoPlacement(
     monthSwitcherPlacement,
-    calendarProps.numMonths
+    calendarProps.numMonths,
   );
 
   switch (placement) {
@@ -108,7 +108,7 @@ export function CalendarWithMonthSwitcher<T>({
 
 const fallbackIfNoPlacement = (
   monthSwitcherPlacement: MonthSwitcherPlacement | undefined,
-  numMonths: number | undefined
+  numMonths: number | undefined,
 ): MonthSwitcherPlacement => {
   return monthSwitcherPlacement || (numMonths || 1) > 1 ? "below" : "header";
 };

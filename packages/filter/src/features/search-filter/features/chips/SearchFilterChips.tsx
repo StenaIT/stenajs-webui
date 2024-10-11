@@ -19,7 +19,7 @@ export const SearchFilterChips: React.FC<SearchFilterChipsProps> = ({
 
   const onClickClearAll = useCallback(
     () => dispatch(actions.clearFormModel()),
-    [actions, dispatch]
+    [actions, dispatch],
   );
 
   return (

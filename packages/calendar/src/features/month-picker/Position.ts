@@ -5,7 +5,7 @@ export interface Position {
 
 export const moveLeft = (
   position: Position,
-  numColumnsPerRow: number
+  numColumnsPerRow: number,
 ): Position => {
   if (position.column === 0 && position.row === 0) {
     return position;
@@ -19,7 +19,7 @@ export const moveLeft = (
 
 export const moveRight = (
   position: Position,
-  numColumnsPerRow: number
+  numColumnsPerRow: number,
 ): Position => ({
   column: (position.column + 1) % numColumnsPerRow,
   row:

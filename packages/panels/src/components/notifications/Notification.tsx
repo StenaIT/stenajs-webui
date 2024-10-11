@@ -24,7 +24,7 @@ export const Notification: React.FC<NotificationProps> = ({
     className={cx(
       styles.notification,
       styles[variant],
-      unread && styles.unread
+      unread && styles.unread,
     )}
   >
     <NotificationHeader {...headerProps} unread={unread} variant={variant} />

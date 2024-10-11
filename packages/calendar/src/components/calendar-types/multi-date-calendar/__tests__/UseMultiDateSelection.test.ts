@@ -19,7 +19,7 @@ describe("useMultiDateSelection", () => {
           useMultiDateSelection({
             value: [],
             onChange,
-          })
+          }),
         );
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClickDay!(createDay(now, enGB), undefined, undefined as any);
@@ -39,7 +39,7 @@ describe("useMultiDateSelection", () => {
             useMultiDateSelection({
               value: [],
               onChange,
-            })
+            }),
           );
           const clickedDay = createDay(now, enGB);
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -62,7 +62,7 @@ describe("useMultiDateSelection", () => {
             useMultiDateSelection({
               value: [now, tomorrow],
               onChange,
-            })
+            }),
           );
           const clickedDay = createDay(now, enGB);
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

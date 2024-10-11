@@ -92,7 +92,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
     dateInputRef,
     showCalendar,
     hideCalendar,
-    states
+    states,
   );
 
   useDateRangeEffects(value, setDateInFocus, dateInputRef);
@@ -115,7 +115,7 @@ export const DateTimeInput: React.FC<DateTimeInputProps> = ({
 
   const timeValue = useMemo<string | undefined>(
     () => (value ? transformTimeInDateToTimeString(value) : localTime),
-    [value, localTime]
+    [value, localTime],
   );
 
   const delayedIsCalendarVisible = useDelayedFalse(isCalendarVisible, 300);

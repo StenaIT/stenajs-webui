@@ -35,7 +35,7 @@ export const SortOrderIcon: React.FC<Props> = ({
 
 export const getIcon = (
   arrow: SortOrderDirection,
-  iconType: SortOrderIconVariant
+  iconType: SortOrderIconVariant,
 ): IconDefinition => {
   switch (iconType) {
     case "alpha":

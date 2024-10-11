@@ -11,7 +11,7 @@ import { TextSize } from "@stenajs-webui/core";
 export type StandardTableColumnConfig<
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 > = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
   StandardTableColumnOptionsWithNoGroups &
   ItemValueResolver<TItem, TItemValue>;
@@ -19,7 +19,7 @@ export type StandardTableColumnConfig<
 export type StandardTableColumnConfigWithGroups<
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 > = StandardTableColumnOptions<TItem, TItemValue, TColumnKey> &
   ItemValueResolver<TItem, TItemValue>;
 
@@ -49,7 +49,7 @@ export interface StandardTableColumnOptionsWithNoGroups {
 export interface StandardTableColumnOptions<
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 > {
   /**
    * The header label of the column.
@@ -128,7 +128,7 @@ export interface StandardTableColumnOptions<
    */
   onKeyDown?: (
     ev: React.KeyboardEvent<HTMLDivElement>,
-    args: StandardTableOnKeyDownArgs<TItem, TColumnKey>
+    args: StandardTableOnKeyDownArgs<TItem, TColumnKey>,
   ) => void;
 
   /**
@@ -184,7 +184,7 @@ export interface StandardTableColumnOptions<
 }
 
 export type StandardTableSummaryTextProvider<TItem> = (
-  arg: StandardTableSummaryTextProviderArgObject<TItem>
+  arg: StandardTableSummaryTextProviderArgObject<TItem>,
 ) => string;
 
 export interface StandardTableSummaryTextProviderArgObject<TItem> {
@@ -192,7 +192,7 @@ export interface StandardTableSummaryTextProviderArgObject<TItem> {
 }
 
 export type StandardTableSummaryCellRenderer<TItem> = (
-  arg: StandardTableSummaryCellRendererArgObject<TItem>
+  arg: StandardTableSummaryCellRendererArgObject<TItem>,
 ) => ReactNode;
 
 export interface StandardTableSummaryCellRendererArgObject<TItem> {
@@ -201,7 +201,7 @@ export interface StandardTableSummaryCellRendererArgObject<TItem> {
 }
 
 export type StandardTableCellRenderer<TItemValue, TItem> = (
-  arg: StandardTableCellRendererArgObject<TItemValue, TItem>
+  arg: StandardTableCellRendererArgObject<TItemValue, TItem>,
 ) => ReactNode;
 
 export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
@@ -224,7 +224,7 @@ export interface StandardTableCellRendererArgObject<TItemValue, TItem> {
  * Therefor, it can not know "value: TItemValue", since it has not been defined yet.
  */
 export type DefaultStandardTableCellRenderer<TItem> = (
-  arg: StandardTableCellRendererArgObject<unknown, TItem>
+  arg: StandardTableCellRendererArgObject<unknown, TItem>,
 ) => ReactNode;
 
 export type BackgroundResolver<TItem> = (item: TItem) => string | undefined;
@@ -236,10 +236,10 @@ export interface ItemValueResolver<TItem, TItemValue> {
 export const createColumnConfig = <
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
   itemValueResolver: (item: TItem) => TItemValue,
-  options?: StandardTableColumnOptions<TItem, TItemValue, TColumnKey>
+  options?: StandardTableColumnOptions<TItem, TItemValue, TColumnKey>,
 ): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> => {
   return {
     ...options,

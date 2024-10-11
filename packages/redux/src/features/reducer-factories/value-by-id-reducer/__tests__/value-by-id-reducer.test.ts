@@ -20,7 +20,7 @@ describe("value-by-id-reducer", () => {
               "1": true,
             },
           },
-          actions.setValue("1", false)
+          actions.setValue("1", false),
         );
         expect(s.values["1"]).toBe(false);
       });
@@ -42,7 +42,7 @@ describe("value-by-id-reducer", () => {
               "1": true,
             },
           },
-          actions.clearAllValues()
+          actions.clearAllValues(),
         );
         expect(Object.keys(s.values).length).toBe(0);
       });
@@ -58,7 +58,7 @@ describe("value-by-id-reducer", () => {
               "1": true,
             },
           },
-          actions.clearValue("2")
+          actions.clearValue("2"),
         );
         expect(Object.keys(s.values).length).toBe(1);
       });
@@ -71,7 +71,7 @@ describe("value-by-id-reducer", () => {
               "1": true,
             },
           },
-          actions.clearValue("1")
+          actions.clearValue("1"),
         );
         expect(s.values["1"]).toBeUndefined();
       });

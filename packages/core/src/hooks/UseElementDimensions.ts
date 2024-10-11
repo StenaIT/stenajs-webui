@@ -29,7 +29,7 @@ export const getDimensionObject = (node: HTMLElement): ElementDimensions => {
 
 const isEqualDimensions = (
   a: ElementDimensions,
-  b: ElementDimensions
+  b: ElementDimensions,
 ): boolean =>
   a.x === b.x &&
   a.y === b.y &&
@@ -42,7 +42,7 @@ const isEqualDimensions = (
 
 export const useElementDimensions = (
   ref: RefObject<HTMLElement>,
-  onResizeElement?: (dimensions: ElementDimensions) => void
+  onResizeElement?: (dimensions: ElementDimensions) => void,
 ) => {
   const [dimensions, setDimensions] = useState<ElementDimensions | undefined>();
 

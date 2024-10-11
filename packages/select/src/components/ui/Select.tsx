@@ -31,7 +31,7 @@ export function Select<T>({
   }, [variant, styles]);
 
   const ClearIndicator = (
-    props: ClearIndicatorProps<T, false, GroupBase<T>>
+    props: ClearIndicatorProps<T, false, GroupBase<T>>,
   ) => <CloseButton aria-label={"Clear"} onClick={props.clearValue} />;
 
   return (

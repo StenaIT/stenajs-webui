@@ -29,7 +29,7 @@ export const useMultiDateSelection = <T>({
         onChange([...(value || []), day.date]);
       }
     },
-    [onChange, value]
+    [onChange, value],
   );
   const statePerMonthWithSelectedDate = useMemo(() => {
     if (!value) {
@@ -37,7 +37,7 @@ export const useMultiDateSelection = <T>({
     }
     return value.reduce(
       (stateSum, date) => addDayStateHighlights(stateSum, date, ["selected"]),
-      statePerMonth
+      statePerMonth,
     );
   }, [statePerMonth, value]);
 

@@ -27,7 +27,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
       className,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const handleInputChange = useCallback(
       (ev: ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +38,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
           onValueChange(ev.target.value);
         }
       },
-      [onChange, onValueChange]
+      [onChange, onValueChange],
     );
 
     return (
@@ -51,5 +51,5 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
         {...inputProps}
       />
     );
-  }
+  },
 );

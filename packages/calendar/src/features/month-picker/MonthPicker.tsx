@@ -59,7 +59,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
         ev.stopPropagation();
       }
     },
-    [onCancel]
+    [onCancel],
   );
 
   return (

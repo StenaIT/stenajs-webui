@@ -14,7 +14,7 @@ export const Standard = () => {
   >(undefined);
 
   const onChange: OnChange<string> = (
-    options: readonly DropdownOption<string>[] | undefined
+    options: readonly DropdownOption<string>[] | undefined,
   ) => {
     setValue(options);
   };
@@ -62,7 +62,7 @@ export const WithVariant = () => {
   >(undefined);
 
   const onChange: OnChange<string> = (
-    options: readonly DropdownOption<string>[] | undefined
+    options: readonly DropdownOption<string>[] | undefined,
   ) => {
     setValue(options);
   };

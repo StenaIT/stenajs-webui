@@ -10,11 +10,11 @@ export const isDateRangeInvalid = ({
     startDate &&
       endDate &&
       !isSameDay(startDate, endDate) &&
-      isAfter(startDate, endDate)
+      isAfter(startDate, endDate),
   );
 
 export const toggleDatesIfEndIsEarlierThanStart = (
-  dateRange: DateRange
+  dateRange: DateRange,
 ): DateRange => {
   if (isDateRangeInvalid(dateRange)) {
     return {
@@ -26,11 +26,11 @@ export const toggleDatesIfEndIsEarlierThanStart = (
 };
 
 export const toggleDateStringsIfEndIsEarlierThanStart = (
-  dateRange: DateStringRange
+  dateRange: DateStringRange,
 ): DateStringRange => {
   if (dateRange.startDate && dateRange.endDate) {
     return dateRangeToStrings(
-      toggleDatesIfEndIsEarlierThanStart(stringsToDateRange(dateRange))
+      toggleDatesIfEndIsEarlierThanStart(stringsToDateRange(dateRange)),
     );
   }
   return dateRange;

@@ -7,7 +7,7 @@ import {
 } from "../util/ActionsFactory";
 
 export interface StandardTableInternalActionsContext<
-  TColumnKey extends string
+  TColumnKey extends string,
 > {
   dispatch: Dispatch<StandardTableAction<TColumnKey>>;
   actions: StandardTableActions<TColumnKey>;
@@ -28,7 +28,7 @@ export const StandardTableTableIdContext = createContext<string>("");
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const StandardTableStateContext = createContext<StandardTableState<any>>(
-  undefined as any
+  undefined as any,
 );
 
 export const StandardTableActionsContext = createContext<

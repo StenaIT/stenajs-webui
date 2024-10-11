@@ -22,27 +22,27 @@ export interface EntityListActions<T, TInnerAction> {
   removeLast: () => EntityListRemoveLastAction;
   removeAtIndex: (index: number) => EntityListRemoveAtIndexAction;
   removeByFieldMatch: (
-    fields: Partial<T>
+    fields: Partial<T>,
   ) => EntityListRemoveByFieldMatchAction<T>;
   remove: (entity: T) => EntityListRemoveAction<T>;
   setList: (list: Array<T>) => EntityListSetListAction<T>;
   toggle: (entity: T) => EntityListToggleAction<T>;
   actionByFieldsMatch: (
     fields: Partial<T>,
-    action: TInnerAction
+    action: TInnerAction,
   ) => EntityListActionByFieldsMatchAction<T, TInnerAction>;
   actionByIndex: (
     index: number,
-    action: TInnerAction
+    action: TInnerAction,
   ) => EntityListActionByIndexAction<TInnerAction>;
   actionOnAll: (
-    action: TInnerAction
+    action: TInnerAction,
   ) => EntityListActionOnAllAction<TInnerAction>;
 }
 
 export const createEntityListActions = <
   T,
-  TInnerAction = unknown
+  TInnerAction = unknown,
 >(): EntityListActions<T, TInnerAction> => {
   return {
     addAtEnd: (entity) => ({ type: "ENTITY_LIST:ADD_AT_END", entity }),

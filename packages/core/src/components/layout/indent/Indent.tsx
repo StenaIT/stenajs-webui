@@ -9,7 +9,7 @@ export interface IndentProps extends BoxProps {
 
 export const Indent = forwardRef<HTMLDivElement, IndentProps>(function Indent(
   { num = 1, ...props },
-  ref
+  ref,
 ) {
   return <Box indent={num} ref={ref} {...props} />;
 });

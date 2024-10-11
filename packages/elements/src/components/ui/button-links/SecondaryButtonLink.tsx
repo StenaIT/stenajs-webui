@@ -11,7 +11,7 @@ export const SecondaryButtonLink = forwardRef<
   SecondaryButtonLinkProps
 >(function SecondaryButtonLink(
   { className, variant = "normal", ...props },
-  ref
+  ref,
 ) {
   return (
     <BaseButtonLink

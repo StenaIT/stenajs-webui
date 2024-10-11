@@ -6,7 +6,7 @@ import { transformJustifyContentToTextAlign } from "./AlignmentTransformer";
 export const transformItemToCell = <
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
   item: TItem,
   itemValueResolver: StandardTableColumnConfig<
@@ -26,7 +26,7 @@ export const transformItemToCell = <
         TColumnKey
       >["itemLabelFormatter"]
     | undefined,
-  formatter?: CustomCellFormatter<TItem>
+  formatter?: CustomCellFormatter<TItem>,
 ): string => {
   if (formatter) {
     return createCell(formatter(item), justifyContentCell);
@@ -60,7 +60,7 @@ export const transformItemToCell = <
 
 const createCell = (
   value: string | number,
-  justifyContentCell: string | undefined
+  justifyContentCell: string | undefined,
 ): string => {
   if (justifyContentCell) {
     const styleProperty =

@@ -6,7 +6,7 @@ import styles from "./Cardy.module.css";
 export interface CardyBodyProps extends Pick<BoxProps, "gap"> {}
 
 export const CardyBody: React.FC<PropsWithChildren<CardyBodyProps>> = (
-  boxProps
+  boxProps,
 ) => {
   return <Box className={styles.cardyIndent} {...boxProps} />;
 };

@@ -33,7 +33,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
       style,
       ...spanProps
     },
-    ref
+    ref,
   ) => {
     return (
       <span
@@ -52,7 +52,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>(
         {children}
       </span>
     );
-  }
+  },
 );
 
 export const Txt = Text;

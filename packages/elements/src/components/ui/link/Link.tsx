@@ -34,7 +34,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       href,
       ...anchorProps
     },
-    ref
+    ref,
   ) => {
     return (
       <a
@@ -44,7 +44,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
           styles[variant],
           styles[size],
           disabled && styles.disabled,
-          className
+          className,
         )}
         ref={ref}
         href={disabled ? undefined : href}
@@ -64,5 +64,5 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         )}
       </a>
     );
-  }
+  },
 );

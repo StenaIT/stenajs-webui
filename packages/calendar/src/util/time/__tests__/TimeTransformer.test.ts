@@ -45,36 +45,36 @@ describe("TimeTransformer", () => {
     });
     it("should throw if hours is too short", () => {
       expect(() => transformTimeStringToNumber("129:00")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
     it("should throw if time is too long", () => {
       expect(() => transformTimeStringToNumber("9:000")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
 
     it("should throw if invalid hours", () => {
       expect(() => transformTimeStringToNumber("a9:00")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
 
     it("should throw if invalid minutes", () => {
       expect(() => transformTimeStringToNumber("9:aa")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
 
     it("should throw if hours too large", () => {
       expect(() => transformTimeStringToNumber("89:40")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
 
     it("should throw if minutes too large", () => {
       expect(() => transformTimeStringToNumber("9:60")).toThrow(
-        "Invalid time."
+        "Invalid time.",
       );
     });
 
@@ -84,12 +84,12 @@ describe("TimeTransformer", () => {
 
     it("should throw if null", () => {
       expect(() => transformTimeStringToNumber(null)).toThrow(
-        "Time is not set."
+        "Time is not set.",
       );
     });
     it("should throw if undefined", () => {
       expect(() => transformTimeStringToNumber(undefined)).toThrow(
-        "Time is not set."
+        "Time is not set.",
       );
     });
   });

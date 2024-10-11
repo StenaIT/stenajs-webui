@@ -9,7 +9,7 @@ describe("KeyboardNavigation", () => {
           it("selects last day of month", () => {
             const r = getDateToFocusOn(
               new Date(2023, Month.MARCH, 30),
-              "PageUp"
+              "PageUp",
             );
             expect(r?.getFullYear()).toBe(2023);
             expect(r?.getMonth()).toBe(Month.FEBRUARY);
@@ -20,7 +20,7 @@ describe("KeyboardNavigation", () => {
           it("selects last day of month", () => {
             const r = getDateToFocusOn(
               new Date(2024, Month.MARCH, 30),
-              "PageUp"
+              "PageUp",
             );
             expect(r?.getFullYear()).toBe(2024);
             expect(r?.getMonth()).toBe(Month.FEBRUARY);
@@ -34,7 +34,7 @@ describe("KeyboardNavigation", () => {
         it("selects last day of month", () => {
           const r = getDateToFocusOn(
             new Date(2023, Month.MARCH, 31),
-            "PageDown"
+            "PageDown",
           );
           expect(r?.getFullYear()).toBe(2023);
           expect(r?.getMonth()).toBe(Month.APRIL);

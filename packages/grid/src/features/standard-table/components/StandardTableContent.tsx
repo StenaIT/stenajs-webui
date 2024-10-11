@@ -9,7 +9,7 @@ import { StandardTableRowList } from "./StandardTableRowList";
 interface Props<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 > extends Omit<
     StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
     "tableContext" | "config"
@@ -20,7 +20,7 @@ interface Props<
 export const StandardTableContent = React.memo(function StandardTableContent<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >({
   error,
   bannerError,

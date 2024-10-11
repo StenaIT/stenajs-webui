@@ -22,7 +22,7 @@ export default {
 
 export const Standard = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -38,7 +38,7 @@ export const Standard = () => {
 
 export const WithHeading = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -55,7 +55,7 @@ export const WithHeading = () => {
 
 export const WithLabelledInput = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -73,7 +73,7 @@ export const WithLabelledInput = () => {
 
 export const WithTestIds = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
   const testId = (date: Date) => {
     if (isToday(date)) {
@@ -126,7 +126,7 @@ export const Locales = () => {
 
 const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -147,7 +147,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
 
 export const Sizes = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -181,7 +181,7 @@ export const ParseDate = () => {
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   const setValueHandler = (value: TravelDateRangeInputValue) => {
@@ -213,7 +213,7 @@ export const ParseDate = () => {
 
 export const WithBlurPlaceholders = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (

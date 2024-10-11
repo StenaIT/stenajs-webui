@@ -43,13 +43,13 @@ export const NumericTextInput: React.FC<NumericTextInputProps> = ({
     (numSteps: number) => {
       onStepValueChange({ onValueChange, value, numSteps, min, max });
     },
-    [value, max, min, onValueChange]
+    [value, max, min, onValueChange],
   );
   const onChange = useCallback(
     (newValue: string) => {
       onTextValueChange({ onValueChange, newValue, min, max });
     },
-    [max, min, onValueChange]
+    [max, min, onValueChange],
   );
 
   const contentRightToUse = hideButtons ? (

@@ -8,7 +8,7 @@ import { CustomCellFormatters } from "../../../common/CellFormatters";
 export interface StandardTableHtmlCopyToClipboardButtonProps<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 > extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
@@ -24,7 +24,7 @@ export interface StandardTableHtmlCopyToClipboardButtonProps<
 export function StandardTableHtmlCopyToClipboardButton<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >({
   config,
   renderContent,

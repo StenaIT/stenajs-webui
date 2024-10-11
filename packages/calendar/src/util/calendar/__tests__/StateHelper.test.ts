@@ -9,7 +9,7 @@ describe("StateHelper", () => {
         dayState,
         undefined,
         [true],
-        ["transparent"]
+        ["transparent"],
       );
       expect(selected).toBe("transparent");
     });
@@ -19,7 +19,7 @@ describe("StateHelper", () => {
         dayState,
         undefined,
         [false],
-        ["transparent"]
+        ["transparent"],
       );
       expect(selected).toBe(undefined);
     });
@@ -31,7 +31,7 @@ describe("StateHelper", () => {
         dayState,
         undefined,
         ["disabled"],
-        ["transparent"]
+        ["transparent"],
       );
       expect(selected).toBe("transparent");
     });
@@ -43,7 +43,7 @@ describe("StateHelper", () => {
         dayState,
         ["enabled"],
         ["enabled"],
-        ["transparent"]
+        ["transparent"],
       );
       expect(selected).toBe("transparent");
     });
@@ -57,7 +57,7 @@ describe("StateHelper", () => {
       undefined,
       [false, false, "disabled"],
       ["a", "b", "c"],
-      "fallback"
+      "fallback",
     );
     expect(selected).toBe("fallback");
   });
@@ -68,7 +68,7 @@ describe("StateHelper", () => {
       undefined,
       [],
       [],
-      "fallback"
+      "fallback",
     );
     expect(selected).toBe("fallback");
   });
@@ -78,7 +78,7 @@ describe("StateHelper", () => {
       dayState,
       undefined,
       [true, "selected", "disabled"],
-      ["transparent", "white", "grey"]
+      ["transparent", "white", "grey"],
     );
 
     expect(selected).toBe("transparent");

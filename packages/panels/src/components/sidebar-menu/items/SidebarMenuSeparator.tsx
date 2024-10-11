@@ -5,7 +5,7 @@ import * as React from "react";
 export interface SidebarMenuSeparatorProps extends SeparatorLineProps {}
 
 export const SidebarMenuSeparator: React.FC<SidebarMenuSeparatorProps> = (
-  separatorLineProps
+  separatorLineProps,
 ) => (
   <SeparatorLine
     color={cssColor("--lhds-color-ui-400")}

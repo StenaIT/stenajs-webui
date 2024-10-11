@@ -9,7 +9,7 @@ export interface EditableEntityState<T> {
 
 export const createEditableEntityReducer = <T>(
   initialEntity: T,
-  initialId?: string
+  initialId?: string,
 ): Reducer<EditableEntityState<T>, EditableEntityAction<T>> => {
   const initialState: EditableEntityState<T> = {
     id: initialId,

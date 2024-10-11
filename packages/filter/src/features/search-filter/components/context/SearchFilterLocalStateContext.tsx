@@ -9,13 +9,13 @@ interface SearchFilterLocalScopeProps<TFormModel> {
 }
 
 export const SearchFilterLocalStateContext = function SearchFilterLocalScope<
-  TFormModel
+  TFormModel,
 >({
   initialFormModel,
   children,
 }: PropsWithChildren<SearchFilterLocalScopeProps<TFormModel>>) {
   const { state, actions, dispatch } = useLocalSearchFilterState(
-    createSearchFilterInitialState(initialFormModel)
+    createSearchFilterInitialState(initialFormModel),
   );
 
   return (

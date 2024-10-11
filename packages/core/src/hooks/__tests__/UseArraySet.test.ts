@@ -15,8 +15,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(0);
           result.current.add({ id: "hello" });
@@ -31,8 +31,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(1);
           result.current.add({ id: "hello" });
@@ -48,8 +48,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(1);
           result.current.remove({ id: "hello" });
@@ -64,8 +64,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(1);
           result.current.remove({ id: "hello" });
@@ -81,8 +81,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(1);
           result.current.toggle({ id: "world" });
@@ -97,8 +97,8 @@ describe("useArraySet", () => {
             useArraySet<Entity>(
               list,
               (l) => (list = l),
-              (a, b) => a.id === b.id
-            )
+              (a, b) => a.id === b.id,
+            ),
           );
           expect(list.length).toBe(1);
           result.current.toggle({ id: "hello" });
@@ -113,7 +113,7 @@ describe("useArraySet", () => {
         it("adds it to the list", () => {
           let list: Array<string> = [];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(0);
           result.current.add("hello");
@@ -125,7 +125,7 @@ describe("useArraySet", () => {
         it("does not change the list", () => {
           let list: Array<string> = ["hello"];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(1);
           result.current.add("hello");
@@ -137,7 +137,7 @@ describe("useArraySet", () => {
       it("adds missing elements to list", () => {
         let list: Array<string> = ["hello"];
         const { result } = renderHook(() =>
-          useArraySet<string>(list, (l) => (list = l))
+          useArraySet<string>(list, (l) => (list = l)),
         );
         expect(list.length).toBe(1);
         result.current.addMultiple(["hello", "world"]);
@@ -151,7 +151,7 @@ describe("useArraySet", () => {
         it("does not change the list", () => {
           let list: Array<string> = ["world"];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(1);
           result.current.remove("hello");
@@ -163,7 +163,7 @@ describe("useArraySet", () => {
         it("removes it from the list", () => {
           let list: Array<string> = ["hello"];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(1);
           result.current.remove("hello");
@@ -175,7 +175,7 @@ describe("useArraySet", () => {
       it("adds missing elements to list", () => {
         let list: Array<string> = ["hello", "world", "bye"];
         const { result } = renderHook(() =>
-          useArraySet<string>(list, (l) => (list = l))
+          useArraySet<string>(list, (l) => (list = l)),
         );
         expect(list.length).toBe(3);
         result.current.removeMultiple(["hello", "world"]);
@@ -188,7 +188,7 @@ describe("useArraySet", () => {
         it("adds it", () => {
           let list: Array<string> = ["hello"];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(1);
           result.current.toggle("world");
@@ -200,7 +200,7 @@ describe("useArraySet", () => {
         it("removes it", () => {
           let list: Array<string> = ["hello"];
           const { result } = renderHook(() =>
-            useArraySet<string>(list, (l) => (list = l))
+            useArraySet<string>(list, (l) => (list = l)),
           );
           expect(list.length).toBe(1);
           result.current.toggle("hello");

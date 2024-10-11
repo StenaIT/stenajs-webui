@@ -11,7 +11,7 @@ describe("sort-order-reducer", () => {
       it("sets sort order with desc true", () => {
         const s = reduce(
           { sortBy: "username", desc: false },
-          actions.sortBy("email", true)
+          actions.sortBy("email", true),
         );
         expect(s.sortBy).toBe("email");
         expect(s.desc).toBe(true);
@@ -21,7 +21,7 @@ describe("sort-order-reducer", () => {
       it("sets sort order with desc true", () => {
         const s = reduce(
           { sortBy: "username", desc: true },
-          actions.sortBy("email", false)
+          actions.sortBy("email", false),
         );
         expect(s.sortBy).toBe("email");
         expect(s.desc).toBe(false);
@@ -32,7 +32,7 @@ describe("sort-order-reducer", () => {
     it("clears the sort order", () => {
       const s = reduce(
         { sortBy: "username", desc: true },
-        actions.clearSortOrder()
+        actions.clearSortOrder(),
       );
       expect(s.sortBy).toBeUndefined();
       expect(s.desc).toBe(false);

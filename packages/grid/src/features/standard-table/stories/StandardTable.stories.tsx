@@ -180,7 +180,7 @@ export const ExternalSorting = () => {
 
   const { tableContext } = useLocalStateTableContext<keyof ListItem>(
     "test",
-    createStandardTableInitialState("id")
+    createStandardTableInitialState("id"),
   );
 
   const { sortOrder } = tableContext.state;

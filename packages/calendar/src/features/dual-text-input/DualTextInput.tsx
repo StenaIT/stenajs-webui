@@ -112,7 +112,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
           onBlur?.();
         }
       }, 10),
-    [onBlur]
+    [onBlur],
   );
 
   const focusLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -123,7 +123,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         onFocusLeft(ev);
       }
     },
-    [onFocusLeft, focusCounter, tryTriggerOnBlur]
+    [onFocusLeft, focusCounter, tryTriggerOnBlur],
   );
 
   const focusRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -134,7 +134,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         onFocusRight(ev);
       }
     },
-    [onFocusRight, focusCounter, tryTriggerOnBlur]
+    [onFocusRight, focusCounter, tryTriggerOnBlur],
   );
 
   const blurLeftHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -145,7 +145,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         onBlurLeft(ev);
       }
     },
-    [onBlurLeft, focusCounter, tryTriggerOnBlur]
+    [onBlurLeft, focusCounter, tryTriggerOnBlur],
   );
 
   const blurRightHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -156,7 +156,7 @@ export const DualTextInput: React.FC<DualTextInputProps> = ({
         onBlurRight(ev);
       }
     },
-    [onBlurRight, focusCounter, tryTriggerOnBlur]
+    [onBlurRight, focusCounter, tryTriggerOnBlur],
   );
 
   return (

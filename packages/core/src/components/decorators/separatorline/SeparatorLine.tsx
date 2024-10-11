@@ -19,7 +19,7 @@ export const SeparatorLine = forwardRef<HTMLHRElement, SeparatorLineProps>(
       width = "1px",
       vertical = false,
     },
-    ref
+    ref,
   ) => {
     return (
       <hr
@@ -34,5 +34,5 @@ export const SeparatorLine = forwardRef<HTMLHRElement, SeparatorLineProps>(
         ref={ref}
       />
     );
-  }
+  },
 );

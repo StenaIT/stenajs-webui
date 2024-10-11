@@ -51,7 +51,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
       loading = false,
       ...buttonProps
     },
-    ref
+    ref,
   ) {
     const iconOnly = !label && !expandable;
 
@@ -70,7 +70,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
               styles[variant],
               label ? styles.hasLabel : undefined,
               iconOnly && styles.iconOnly,
-              className
+              className,
             )}
             disabled={disabled}
             ref={ref}
@@ -101,5 +101,5 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonProps>(
         )}
       </Box>
     );
-  }
+  },
 );

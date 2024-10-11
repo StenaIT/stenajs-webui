@@ -5,7 +5,7 @@ export const createStickyHeaderProps = (
   stickyHeader: boolean | undefined,
   stickyColumn: boolean | undefined,
   headerRowOffsetTop: string | undefined,
-  zIndexFromConfig: number | undefined
+  zIndexFromConfig: number | undefined,
 ): CSSProperties => ({
   top: stickyHeader
     ? getTopPosition(stickyHeader, headerRowOffsetTop)
@@ -17,14 +17,14 @@ export const createStickyHeaderProps = (
     : undefined,
   zIndex:
     stickyHeader || stickyColumn
-      ? zIndexFromConfig ??
-        ("var(--swui-sticky-header-z-index)" as Property.ZIndex)
+      ? (zIndexFromConfig ??
+        ("var(--swui-sticky-header-z-index)" as Property.ZIndex))
       : zIndexFromConfig,
 });
 
 const getTopPosition = (
   stickyHeader: boolean | undefined,
-  headerRowOffsetTop: string | undefined
+  headerRowOffsetTop: string | undefined,
 ) => {
   if (stickyHeader && headerRowOffsetTop) {
     return headerRowOffsetTop;

@@ -6,7 +6,7 @@ import {
 } from "../../hooks/UseStandardTableConfig";
 
 export const useTableHeadExpandCollapse = <TItem>(
-  items: Array<TItem> | undefined
+  items: Array<TItem> | undefined,
 ) => {
   const { keyResolver } = useStandardTableConfig();
   const {

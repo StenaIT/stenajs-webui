@@ -30,7 +30,7 @@ import {
 
 export type OnChange<TData> = (
   value: OnChangeValue<DropdownOption<TData>, true>,
-  action: ActionMeta<any>
+  action: ActionMeta<any>,
 ) => void;
 
 export interface GroupedMultiSelectProps<TData>
@@ -61,7 +61,7 @@ export interface GroupedMultiSelectProps<TData>
 
 const resolveIconColor = (
   theme: SelectTheme,
-  isFocused: boolean
+  isFocused: boolean,
 ): string | undefined =>
   isFocused
     ? theme.menu.selectedItemHoverIconColor
@@ -72,7 +72,7 @@ function formatInnerOptionLabel<TData>(
     InternalDropdownOption<TData>,
     true,
     GroupBase<InternalDropdownOption<TData>>
-  >
+  >,
 ) {
   const { formatGroupLabel, formatOptionLabel } = props.selectProps;
 
@@ -111,7 +111,7 @@ export function GroupedMultiSelect<TData>({
       InternalDropdownOption<TData>,
       true,
       GroupBase<InternalDropdownOption<TData>>
-    >
+    >,
   ) => {
     const label = formatInnerOptionLabel(props);
     const isGroupOption = "internalOptions" in props.data;
@@ -137,7 +137,7 @@ export function GroupedMultiSelect<TData>({
       InternalDropdownOption<TData>,
       true,
       GroupBase<InternalDropdownOption<TData>>
-    >
+    >,
   ) => {
     return !("internalOptions" in props.data) ? (
       <components.MultiValue {...props} />

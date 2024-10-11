@@ -62,7 +62,7 @@ export const ActionMenuButton: React.FC<ActionMenuButtonProps> = ({
   const contextValue = useMemo(() => ({ open, close }), [open, close]);
 
   const handleClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     onClick?.(event);
     toggle();

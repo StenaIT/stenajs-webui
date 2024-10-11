@@ -8,8 +8,8 @@ describe("DateMinMaxValidator", () => {
           isDateInMinMaxRange(
             new Date(1989, 6, 9, 12, 12, 12, 12),
             new Date(1989, 6, 8, 12, 12, 12, 12),
-            new Date(1989, 6, 10, 12, 12, 12, 12)
-          )
+            new Date(1989, 6, 10, 12, 12, 12, 12),
+          ),
         ).toBeTruthy();
       });
     });
@@ -19,8 +19,8 @@ describe("DateMinMaxValidator", () => {
           isDateInMinMaxRange(
             new Date(1989, 6, 8, 1, 12, 12, 12),
             new Date(1989, 6, 8, 12, 12, 12, 12),
-            new Date(1989, 6, 10, 12, 12, 12, 12)
-          )
+            new Date(1989, 6, 10, 12, 12, 12, 12),
+          ),
         ).toBeTruthy();
       });
     });
@@ -30,8 +30,8 @@ describe("DateMinMaxValidator", () => {
           isDateInMinMaxRange(
             new Date(1989, 6, 10, 21, 12, 12, 12),
             new Date(1989, 6, 8, 12, 12, 12, 12),
-            new Date(1989, 6, 10, 12, 12, 12, 12)
-          )
+            new Date(1989, 6, 10, 12, 12, 12, 12),
+          ),
         ).toBeTruthy();
       });
     });
@@ -41,8 +41,8 @@ describe("DateMinMaxValidator", () => {
           isDateInMinMaxRange(
             new Date(1989, 6, 7, 21, 12, 12, 12),
             new Date(1989, 6, 8, 12, 12, 12, 12),
-            new Date(1989, 6, 10, 12, 12, 12, 12)
-          )
+            new Date(1989, 6, 10, 12, 12, 12, 12),
+          ),
         ).toBeFalsy();
       });
     });
@@ -52,8 +52,8 @@ describe("DateMinMaxValidator", () => {
           isDateInMinMaxRange(
             new Date(1989, 6, 17, 21, 12, 12, 12),
             new Date(1989, 6, 8, 12, 12, 12, 12),
-            new Date(1989, 6, 10, 12, 12, 12, 12)
-          )
+            new Date(1989, 6, 10, 12, 12, 12, 12),
+          ),
         ).toBeFalsy();
       });
     });

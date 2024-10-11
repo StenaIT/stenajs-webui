@@ -9,7 +9,7 @@ import { getIdsBetweenSelected } from "../../util/IdListPartial";
 
 export const useRowCheckbox = <TItem>(
   item: TItem,
-  idListForEnabledItems: Array<string>
+  idListForEnabledItems: Array<string>,
 ) => {
   const { keyResolver } = useStandardTableConfig();
 
@@ -26,12 +26,12 @@ export const useRowCheckbox = <TItem>(
 
   const isSelected = useMemo(
     () => selectedIds.includes(itemKey),
-    [selectedIds, itemKey]
+    [selectedIds, itemKey],
   );
 
   const { toggle, addMultiple, removeMultiple } = useArraySet(
     selectedIds,
-    (ids: Array<string>) => dispatch(setSelectedIds(ids))
+    (ids: Array<string>) => dispatch(setSelectedIds(ids)),
   );
 
   const shiftAndToggleSelected = useCallback(() => {
@@ -39,7 +39,7 @@ export const useRowCheckbox = <TItem>(
       const idList = getIdsBetweenSelected(
         idListForEnabledItems,
         lastSelectedId,
-        itemKey
+        itemKey,
       );
       if (idList?.length) {
         if (isSelected) {

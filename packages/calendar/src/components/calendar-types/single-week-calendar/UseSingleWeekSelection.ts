@@ -34,7 +34,7 @@ export const useSingleWeekSelection = <T>({
         onChange(getWeekStringFromWeekData(getWeekForDate(day.date, locale)));
       }
     },
-    [locale, onChange]
+    [locale, onChange],
   );
   const onClickWeek = useCallback<OnClickWeek>(
     (week) => {
@@ -42,7 +42,7 @@ export const useSingleWeekSelection = <T>({
         onChange(getWeekStringFromWeekData(week));
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const statePerMonthWithSelection = useMemo(() => {
@@ -73,7 +73,7 @@ export const useSingleWeekSelection = <T>({
 };
 
 const getWeekStringFromWeekData = (
-  week: WeekData | undefined
+  week: WeekData | undefined,
 ): string | undefined => {
   if (!week) {
     return undefined;
@@ -83,7 +83,7 @@ const getWeekStringFromWeekData = (
 
 const getWeekDataFromWeekString = (
   week: string | undefined,
-  locale: Locale
+  locale: Locale,
 ): WeekData | undefined => {
   if (!week) {
     return undefined;

@@ -24,7 +24,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
     className={cx(
       styles.spinner,
       styles[size],
-      color ? styles.customColor : styles[variant]
+      color ? styles.customColor : styles[variant],
     )}
     style={{ stroke: color }}
     {...getDataProps(rest)}

@@ -7,7 +7,7 @@ describe("selected-ids-reducer", () => {
       it("sets the selected ids", () => {
         const s = selectedIdsReducer(
           { selectedIds: [] },
-          selectedIdsActions.setSelectedIds(["1", "2"])
+          selectedIdsActions.setSelectedIds(["1", "2"]),
         );
         expect(s.selectedIds).toStrictEqual(["1", "2"]);
       });
@@ -16,7 +16,7 @@ describe("selected-ids-reducer", () => {
       it("replaces the old selection with the new", () => {
         const s = selectedIdsReducer(
           { selectedIds: ["3", "4"] },
-          selectedIdsActions.setSelectedIds(["1", "2"])
+          selectedIdsActions.setSelectedIds(["1", "2"]),
         );
         expect(s.selectedIds).toStrictEqual(["1", "2"]);
       });
@@ -26,7 +26,7 @@ describe("selected-ids-reducer", () => {
     it("clears the selected ids", () => {
       const s = selectedIdsReducer(
         { selectedIds: ["1", "2"] },
-        selectedIdsActions.clearSelectedIds()
+        selectedIdsActions.clearSelectedIds(),
       );
       expect(s.selectedIds).toStrictEqual([]);
     });

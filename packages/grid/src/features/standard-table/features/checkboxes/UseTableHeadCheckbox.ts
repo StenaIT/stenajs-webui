@@ -7,7 +7,7 @@ import {
 import { filterItemsOnEnabledCheckboxes } from "../../util/FilterItemsOnEnabledCheckboxes";
 
 export const useTableHeadCheckbox = <TItem>(
-  items: Array<TItem> | undefined
+  items: Array<TItem> | undefined,
 ) => {
   const { keyResolver, checkboxDisabledResolver } = useStandardTableConfig();
   const {
@@ -31,8 +31,8 @@ export const useTableHeadCheckbox = <TItem>(
           setSelectedIds(
             items
               .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
-              .map((item) => keyResolver(item))
-          )
+              .map((item) => keyResolver(item)),
+          ),
         );
       } else {
         dispatch(clearSelection());

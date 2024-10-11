@@ -15,7 +15,7 @@ export interface SectionChipsProps<TFormModel, TSectionKey extends string> {
 
 export const SectionChips = function SectionChips<
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >({
   sectionId,
   chips,

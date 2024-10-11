@@ -38,7 +38,7 @@ export interface StandardTableRowProps<TItem extends object> {
 }
 
 export const StandardTableRow = React.memo(function StandardTableRow<
-  TItem extends object
+  TItem extends object,
 >({
   item,
   idListForEnabledItems,
@@ -65,7 +65,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<
   const { isExpanded } = useExpandCollapseActions(item);
   const { isSelected, toggleSelected, shiftAndToggleSelected } = useRowCheckbox(
     item,
-    idListForEnabledItems
+    idListForEnabledItems,
   );
 
   const visible = useOnScreen(trRef, {
@@ -75,41 +75,41 @@ export const StandardTableRow = React.memo(function StandardTableRow<
 
   const resolvedBackgroundResult = useMemo(
     () => rowBackgroundResolver?.(item, isSelected),
-    [isSelected, item, rowBackgroundResolver]
+    [isSelected, item, rowBackgroundResolver],
   );
 
   const background = getBackgroundColor(
     resolvedBackgroundResult,
     isSelected,
-    isExpanded
+    isExpanded,
   );
 
   const hoverBackground = getHoverBackgroundColor(
     resolvedBackgroundResult,
     isSelected,
-    isExpanded
+    isExpanded,
   );
 
   const focusBackground = getFocusBackgroundColor(
     resolvedBackgroundResult,
     isSelected,
-    hoverBackground
+    hoverBackground,
   );
 
   const disabled = useMemo(
     () => checkboxDisabledResolver?.(item),
-    [item, checkboxDisabledResolver]
+    [item, checkboxDisabledResolver],
   );
 
   const firstColumn = useFirstColumnConfig();
   const firstColumnBackground = useCellBackgroundByColumnConfig(
     firstColumn,
-    item
+    item,
   );
   const lastColumn = useLastColumnConfig();
   const lastColumnBackground = useCellBackgroundByColumnConfig(
     lastColumn,
-    item
+    item,
   );
 
   const content = useMemo(
@@ -166,8 +166,8 @@ export const StandardTableRow = React.memo(function StandardTableRow<
                     enableExpandCollapse && stickyCheckboxColumn
                       ? "var(--swui-expand-cell-width)"
                       : stickyCheckboxColumn
-                      ? "0px"
-                      : undefined,
+                        ? "0px"
+                        : undefined,
                   textAlign: "center",
                   boxShadow: stickyCheckboxColumn
                     ? "var(--swui-sticky-column-shadow-right)"
@@ -210,7 +210,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<
                   borderFromGroup={getCellBorderFromGroup(
                     groupIndex,
                     index,
-                    groupConfig.borderLeft
+                    groupConfig.borderLeft,
                   )}
                   disableBorderLeft={groupIndex === 0 && index === 0}
                 />
@@ -249,7 +249,7 @@ export const StandardTableRow = React.memo(function StandardTableRow<
       showRowCheckbox,
       stickyCheckboxColumn,
       toggleSelected,
-    ]
+    ],
   );
 
   return (
@@ -281,7 +281,7 @@ const getBackgroundColor = (
     | undefined
     | RowBackgroundResolverColorCombination,
   isSelected: boolean,
-  isExpanded: boolean
+  isExpanded: boolean,
 ): string => {
   if (resolvedBackground) {
     return typeof resolvedBackground === "string"
@@ -303,7 +303,7 @@ const getHoverBackgroundColor = (
     | undefined
     | RowBackgroundResolverColorCombination,
   isSelected: boolean,
-  isExpanded: boolean
+  isExpanded: boolean,
 ): string | undefined => {
   if (resolvedBackground) {
     return typeof resolvedBackground === "string"
@@ -325,7 +325,7 @@ const getFocusBackgroundColor = (
     | undefined
     | RowBackgroundResolverColorCombination,
   isSelected: boolean,
-  hoverBackground: string | undefined
+  hoverBackground: string | undefined,
 ): string | undefined => {
   if (isSelected) {
     return cssColor("--lhds-color-blue-200");

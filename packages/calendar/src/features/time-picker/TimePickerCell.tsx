@@ -34,7 +34,7 @@ export const TimePickerCell: React.FC<TimePickerCellProps> = ({
         canScrollRef.current = false;
       }
     },
-    [columnRef, item, selected, canScrollRef]
+    [columnRef, item, selected, canScrollRef],
   );
 
   return (

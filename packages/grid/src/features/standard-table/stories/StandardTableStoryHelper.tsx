@@ -191,7 +191,7 @@ export const createItemsMocks = (): Array<ListItem> => [
 export const setListItemFields = (
   items: Array<ListItem>,
   id: string,
-  fields: Partial<ListItem>
+  fields: Partial<ListItem>,
 ) => items.map((item) => (item.id === id ? { ...item, ...fields } : item));
 
 export const standardTableConfigForStories: StandardTableConfig<
@@ -251,10 +251,10 @@ export const useListState = (initialItems: Array<ListItem>) => {
       setItems(
         setListItemFields(items, item.id, {
           numPassengers: numPassengers ? parseInt(numPassengers) : undefined,
-        })
+        }),
       );
     },
-    [items, setItems]
+    [items, setItems],
   );
 
   const onChangeActive = useCallback(
@@ -262,10 +262,10 @@ export const useListState = (initialItems: Array<ListItem>) => {
       setItems(
         setListItemFields(items, item.id, {
           active,
-        })
+        }),
       );
     },
-    [items, setItems]
+    [items, setItems],
   );
 
   return {

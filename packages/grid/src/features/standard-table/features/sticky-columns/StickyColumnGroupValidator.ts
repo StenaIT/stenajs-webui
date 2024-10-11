@@ -5,9 +5,9 @@ import {
 
 export const ensureConfigHasValidSticky = <
   TItem extends object,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfig<TItem, TColumnKey>,
 ): void => {
   if ("columnGroupOrder" in config) {
     ensureNoColumnsAreSticky(config);
@@ -23,7 +23,7 @@ export const ensureConfigHasValidSticky = <
     ) {
       ensureAllColumnsInGroupHasFixedWidth(
         config,
-        config.columnGroupOrder.length - 1
+        config.columnGroupOrder.length - 1,
       );
     }
   }
@@ -31,9 +31,9 @@ export const ensureConfigHasValidSticky = <
 
 export const ensureNoColumnsAreSticky = <
   TItem extends object,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfig<TItem, TColumnKey>,
 ): void => {
   const columnIds = Object.keys(config.columns) as Array<TColumnKey>;
   columnIds.forEach((columnId) => {
@@ -41,7 +41,7 @@ export const ensureNoColumnsAreSticky = <
     if ("sticky" in columnConfig && columnConfig.sticky) {
       throw new Error(
         "Columns can not be sticky when column groups are used. columnId: " +
-          columnId
+          columnId,
       );
     }
   });
@@ -49,14 +49,14 @@ export const ensureNoColumnsAreSticky = <
 
 export const ensureAllColumnsInGroupHasFixedWidth = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
   config: StandardTableConfigWithGroups<TItem, TColumnKey>,
-  columnGroupIndex: number
+  columnGroupIndex: number,
 ): void => {
   if (!config.columnGroupOrder || config.columnGroupOrder.length === 0) {
     throw new Error(
-      "columnGroupOrder required when validating column group fixed width."
+      "columnGroupOrder required when validating column group fixed width.",
     );
   }
 
@@ -65,7 +65,7 @@ export const ensureAllColumnsInGroupHasFixedWidth = <
 
   if (!columnGroupConfig) {
     throw new Error(
-      "Column group does not exist. Column group id = " + columnGroupId
+      "Column group does not exist. Column group id = " + columnGroupId,
     );
   }
 
@@ -73,7 +73,7 @@ export const ensureAllColumnsInGroupHasFixedWidth = <
     const columnConfig = config.columns[columnId];
     if (columnConfig.width == null) {
       throw new Error(
-        "All columns in sticky column group must have width set."
+        "All columns in sticky column group must have width set.",
       );
     }
   });

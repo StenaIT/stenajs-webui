@@ -32,20 +32,20 @@ export const BaseButtonLink = forwardRef<
     responsiveIconOnly,
     ...anchorProps
   },
-  ref
+  ref,
 ) {
   const buttonLabel = getButtonLabel(
     label,
     success,
     successLabel,
     loading,
-    loadingLabel
+    loadingLabel,
   );
 
   const hasLabel = Boolean(
     (label && !success && !loading) ||
       (success && successLabel) ||
-      (loading && loadingLabel)
+      (loading && loadingLabel),
   );
 
   const labelOnly = hasLabel && !left && !leftIcon && !right && !rightIcon;
@@ -60,7 +60,7 @@ export const BaseButtonLink = forwardRef<
         baseButtonStyles[size],
         iconOnly && buttonBaseStyles.iconOnly,
         labelOnly && buttonBaseStyles.labelOnly,
-        className
+        className,
       )}
       {...anchorProps}
     >

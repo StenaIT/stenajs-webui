@@ -6,7 +6,7 @@ export interface SelectedIdsState {
 }
 
 export const createSelectedIdsReducerInitialState = (
-  initialSelection: string[] = []
+  initialSelection: string[] = [],
 ): SelectedIdsState => ({
   selectedIds: initialSelection,
 });

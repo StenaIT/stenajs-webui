@@ -68,15 +68,15 @@ describe("reducer-id-gate", () => {
 
         const sortOrder = reducerIdGate(
           "sortOrder",
-          createSortOrderReducer<"a">()
+          createSortOrderReducer<"a">(),
         );
         const selectedIds = reducerIdGate(
           "selectedIds",
-          createSelectedIdsReducer()
+          createSelectedIdsReducer(),
         );
         const expandedRows = reducerIdGate(
           "expandedRows",
-          createSelectedIdsReducer()
+          createSelectedIdsReducer(),
         );
 
         const y = combineReducers({
@@ -102,11 +102,11 @@ describe("reducer-id-gate", () => {
           it("passes the action to the reducer", () => {
             const selectedIdsReducer = reducerIdGate(
               "selectedIds",
-              createSelectedIdsReducer()
+              createSelectedIdsReducer(),
             );
             const action = reducerIdGateAction(
               "selectedIds",
-              createSelectedIdsActions().setSelectedIds(["123"])
+              createSelectedIdsActions().setSelectedIds(["123"]),
             );
             const r = selectedIdsReducer(undefined, action);
             expect(r.selectedIds.length).toBe(1);
@@ -117,11 +117,11 @@ describe("reducer-id-gate", () => {
           it("lets internal reducer set initial state", () => {
             const selectedIdsReducer = reducerIdGate(
               "selectedIds",
-              createSelectedIdsReducer()
+              createSelectedIdsReducer(),
             );
             const action = reducerIdGateAction(
               "wrongId",
-              createSelectedIdsActions().setSelectedIds(["123"])
+              createSelectedIdsActions().setSelectedIds(["123"]),
             );
             const r = selectedIdsReducer(undefined, action);
             expect(r.selectedIds.length).toBe(0);

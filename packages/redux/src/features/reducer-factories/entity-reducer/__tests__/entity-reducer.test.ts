@@ -17,7 +17,7 @@ describe("entity-reducer", () => {
           username: "lolo",
           email: "hejsan",
         },
-        actions.setEntity({ username: "lala" })
+        actions.setEntity({ username: "lala" }),
       );
       expect(s.username).toBe("lala");
       expect(s.email).toBeUndefined();
@@ -30,7 +30,7 @@ describe("entity-reducer", () => {
           username: "lolo",
           email: "hejsan",
         },
-        actions.setEntityFields({ username: "lala" })
+        actions.setEntityFields({ username: "lala" }),
       );
       expect(s.username).toBe("lala");
       expect(s.email).toBe("hejsan");

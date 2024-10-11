@@ -18,7 +18,7 @@ interface SearchFilterScopeProps<TFormModel, TSectionKey extends string> {
 
 export const SearchFilterContext = function SearchFilterScope<
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >({
   state,
   dispatch,

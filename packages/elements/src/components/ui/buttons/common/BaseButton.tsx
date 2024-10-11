@@ -36,20 +36,20 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
       forceRound,
       ...buttonProps
     },
-    ref
+    ref,
   ) {
     const buttonLabel = getButtonLabel(
       label,
       success,
       successLabel,
       loading,
-      loadingLabel
+      loadingLabel,
     );
 
     const hasLabel = Boolean(
       (label && !success && !loading) ||
         (success && successLabel) ||
-        (loading && loadingLabel)
+        (loading && loadingLabel),
     );
 
     const leftIconOnly = leftIcon && !hasLabel && !left && !right && !rightIcon;
@@ -84,7 +84,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
           buttonBaseStyles.button,
           buttonBaseStyles[size],
           isRound && buttonBaseStyles.roundButton,
-          className
+          className,
         )}
         disabled={disabled}
         {...buttonProps}
@@ -107,5 +107,5 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
         />
       </button>
     );
-  }
+  },
 );

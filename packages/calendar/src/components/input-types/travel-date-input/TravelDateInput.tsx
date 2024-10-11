@@ -132,7 +132,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
     value,
     onValueChange,
     localeCode,
-    initialMonthInFocus
+    initialMonthInFocus,
   );
 
   const {
@@ -151,7 +151,7 @@ export const TravelDateInput: React.FC<TravelDateInputProps> = ({
         hideCalendar();
       }
     },
-    [hideCalendar]
+    [hideCalendar],
   );
 
   return (

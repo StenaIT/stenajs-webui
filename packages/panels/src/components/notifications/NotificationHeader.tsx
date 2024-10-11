@@ -70,7 +70,7 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
             <Text
               size={"small"}
               color={cssColor(
-                unread ? "--lhds-color-blue-600" : "--lhds-color-ui-600"
+                unread ? "--lhds-color-blue-600" : "--lhds-color-ui-600",
               )}
             >
               {timestamp}
@@ -94,7 +94,7 @@ export const NotificationHeader: React.FC<NotificationHeaderProps> = ({
 
 export const getIconBgColorFromVariant = (
   unread: boolean,
-  variant?: NotificationVariant
+  variant?: NotificationVariant,
 ): CssPropColor | undefined => {
   if (!unread && variant === "standard") {
     return undefined;

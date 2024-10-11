@@ -48,7 +48,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
         styles.leftWrapper,
         styles[size],
         leftWrapperClassName,
-        responsiveIconOnly && styles.responsiveIconOnly
+        responsiveIconOnly && styles.responsiveIconOnly,
       )}
     >
       {success ? (
@@ -79,7 +79,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
         styles.rightWrapper,
         styles[size],
         rightWrapperClassName,
-        responsiveIconOnly && styles.responsiveIconOnly
+        responsiveIconOnly && styles.responsiveIconOnly,
       )}
     >
       {right ? (
@@ -102,7 +102,7 @@ export const ButtonContent: React.FC<ButtonContentProps> = ({
           className={cx(
             styles.label,
             labelClassName,
-            responsiveIconOnly && styles.responsiveIconOnly
+            responsiveIconOnly && styles.responsiveIconOnly,
           )}
         >
           {label}

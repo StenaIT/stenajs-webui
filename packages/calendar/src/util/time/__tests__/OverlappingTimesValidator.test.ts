@@ -9,8 +9,8 @@ describe("OverlappingTimeValidator", () => {
       expect(
         timesOverlap(
           { startTime: 900, endTime: 1100 },
-          { startTime: 1000, endTime: 1200 }
-        )
+          { startTime: 1000, endTime: 1200 },
+        ),
       ).toBe(true);
     });
 
@@ -18,8 +18,8 @@ describe("OverlappingTimeValidator", () => {
       expect(
         timesOverlap(
           { startTime: 900, endTime: 1100 },
-          { startTime: 800, endTime: 1000 }
-        )
+          { startTime: 800, endTime: 1000 },
+        ),
       ).toBe(true);
     });
 
@@ -27,8 +27,8 @@ describe("OverlappingTimeValidator", () => {
       expect(
         timesOverlap(
           { startTime: 900, endTime: 1100 },
-          { startTime: 800, endTime: 1200 }
-        )
+          { startTime: 800, endTime: 1200 },
+        ),
       ).toBe(true);
     });
 
@@ -36,8 +36,8 @@ describe("OverlappingTimeValidator", () => {
       expect(
         timesOverlap(
           { startTime: 900, endTime: 1100 },
-          { startTime: 1200, endTime: 1300 }
-        )
+          { startTime: 1200, endTime: 1300 },
+        ),
       ).toBe(false);
     });
 
@@ -45,8 +45,8 @@ describe("OverlappingTimeValidator", () => {
       expect(() =>
         timesOverlap(
           { startTime: 900, endTime: null },
-          { startTime: 1000, endTime: 1300 }
-        )
+          { startTime: 1000, endTime: 1300 },
+        ),
       ).toThrow();
     });
   });

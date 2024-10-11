@@ -9,7 +9,7 @@ export type NumericInputValueProps = ValueAndOnValueChangeProps<
 
 export const useNumericInputValue = (
   value: number | undefined,
-  onValueChange?: (value: number | undefined) => void
+  onValueChange?: (value: number | undefined) => void,
 ): Partial<NumericTextInputProps> => {
   const onValueChangeString = useCallback(
     (newValue: string) => {
@@ -24,7 +24,7 @@ export const useNumericInputValue = (
         }
       }
     },
-    [onValueChange]
+    [onValueChange],
   );
 
   const valueString = useMemo(() => {

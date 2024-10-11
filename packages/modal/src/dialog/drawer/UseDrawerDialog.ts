@@ -10,7 +10,7 @@ interface DrawerOptions
 export function useDrawerDialog<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
   slideFrom: SlideFrom = "left",
-  options?: DrawerOptions
+  options?: DrawerOptions,
 ): UseDialogResult<TProps, TPromiseResolve> {
   return useDialog<TProps, TPromiseResolve>(component, {
     ...options,
@@ -19,7 +19,7 @@ export function useDrawerDialog<TProps, TPromiseResolve = void>(
     closingClassName: cx(options?.closingClassName, styles.closing),
     contentWrapperClassName: cx(
       options?.contentWrapperClassName,
-      styles.contentWrapper
+      styles.contentWrapper,
     ),
     className: cx(options?.className, styles.drawerDialog, styles[slideFrom]),
   });

@@ -10,7 +10,7 @@ export type ActionCreatorCreator<TActionCreator extends ActionCreator> = (
 export const wrapActionWithReducerIdGate =
   <TActionCreator extends ActionCreator>(
     reducerId: string,
-    actionCreator: TActionCreator
+    actionCreator: TActionCreator,
   ): ActionCreatorCreator<TActionCreator> =>
   (...args) => {
     return {
@@ -26,16 +26,16 @@ export interface ActionCreatorsMapObject {
 }
 
 export type ReducerIdGatedActionCreator<
-  TActionCreators extends ActionCreatorsMapObject
+  TActionCreators extends ActionCreatorsMapObject,
 > = {
   [K in keyof TActionCreators]: ActionCreatorCreator<TActionCreators[K]>;
 };
 
 export const wrapActionsWithReducerIdGate = <
-  TActionCreators extends ActionCreatorsMapObject
+  TActionCreators extends ActionCreatorsMapObject,
 >(
   reducerId: string,
-  actionCreators: TActionCreators
+  actionCreators: TActionCreators,
 ): ReducerIdGatedActionCreator<TActionCreators> => {
   const boundActionCreators =
     {} as ReducerIdGatedActionCreator<TActionCreators>;
@@ -43,7 +43,7 @@ export const wrapActionsWithReducerIdGate = <
     const actionCreator = actionCreators[key];
     boundActionCreators[key] = wrapActionWithReducerIdGate(
       reducerId,
-      actionCreator
+      actionCreator,
     );
   }
   return boundActionCreators;

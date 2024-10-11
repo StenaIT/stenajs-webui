@@ -5,11 +5,11 @@ export interface EntitySelectors<TStoreState, TEntity> {
 }
 
 export type EntityStateSelector<TStoreState, TEntity> = (
-  state: TStoreState
+  state: TStoreState,
 ) => EntityState<TEntity>;
 
 export const createEntitySelectors = <TStoreState, TEntity>(
-  stateSelector: EntityStateSelector<TStoreState, TEntity>
+  stateSelector: EntityStateSelector<TStoreState, TEntity>,
 ): EntitySelectors<TStoreState, TEntity> => ({
   getEntity: (state) => stateSelector(state),
 });

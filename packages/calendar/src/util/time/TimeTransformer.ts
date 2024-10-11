@@ -2,7 +2,7 @@ import { parseIntElseUndefined } from "@stenajs-webui/core";
 import { formatHours, formatMinutes } from "./TimeStringFormatValidator";
 
 export const transformNumberTimeToString = (
-  time: number | undefined | null
+  time: number | undefined | null,
 ): string | undefined => {
   if (time == null) {
     return undefined;
@@ -24,7 +24,7 @@ export const transformNumberTimeToString = (
 };
 
 export const transformTimeStringToNumber = (
-  time: string | undefined | null
+  time: string | undefined | null,
 ): number | null => {
   if (time == null) {
     throw new Error("Time is not set.");
@@ -73,7 +73,7 @@ export const isValidTimeString = (time: string | undefined): boolean => {
 };
 
 export const getHoursAndMinutesFromTimeString = (
-  value: string | undefined
+  value: string | undefined,
 ): {
   hour: number | undefined;
   minute: number | undefined;
@@ -93,5 +93,5 @@ export const getHoursAndMinutesFromTimeString = (
 
 export const transformTimeInDateToTimeString = (date: Date): string =>
   `${formatHours(String(date.getHours()))}:${formatMinutes(
-    String(date.getMinutes())
+    String(date.getMinutes()),
   )}`;

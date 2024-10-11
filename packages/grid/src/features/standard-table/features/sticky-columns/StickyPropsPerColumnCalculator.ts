@@ -7,7 +7,7 @@ import { calculateOffsetForColumnInStickyColumnGroups } from "./StickyColumnGrou
 import { StickyPropsPerColumn } from "./types";
 
 export const getStickyPropsPerColumn = <TItem, TColumnKey extends string>(
-  config: StandardTableConfig<TItem, TColumnKey>
+  config: StandardTableConfig<TItem, TColumnKey>,
 ): StickyPropsPerColumn<TColumnKey> => {
   if ("columnGroups" in config) {
     return getStickyPropsPerColumnWithGroups(config);
@@ -18,9 +18,9 @@ export const getStickyPropsPerColumn = <TItem, TColumnKey extends string>(
 
 export const getStickyPropsPerColumnWithNoGroups = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfigWithNoGroups<TItem, TColumnKey>
+  config: StandardTableConfigWithNoGroups<TItem, TColumnKey>,
 ): StickyPropsPerColumn<TColumnKey> => {
   const columnIds = Object.keys(config.columns) as Array<TColumnKey>;
 
@@ -43,9 +43,9 @@ export const getStickyPropsPerColumnWithNoGroups = <
 
 export const getStickyPropsPerColumnWithGroups = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfigWithGroups<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>,
 ): StickyPropsPerColumn<TColumnKey> => {
   const r = {} as StickyPropsPerColumn<TColumnKey>;
   const columnGroupIds = config.columnGroupOrder;
@@ -81,8 +81,8 @@ export const getStickyPropsPerColumnWithGroups = <
         type: isStickyFirst
           ? "first-group"
           : isStickyLast
-          ? "last-group"
-          : undefined,
+            ? "last-group"
+            : undefined,
         isFirstColumnInLastGroup,
         isLastColumnInFirstGroup,
       };

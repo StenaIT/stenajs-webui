@@ -218,8 +218,8 @@ export const AsyncItem = () => {
           savedDanger
             ? "Saved with danger"
             : loadingDanger
-            ? "Saving with danger..."
-            : "Save dangerously"
+              ? "Saving with danger..."
+              : "Save dangerously"
         }
         success={savedDanger}
         loading={loadingDanger}
@@ -240,8 +240,8 @@ export const AsyncItem = () => {
           savedSuccess
             ? "Saved with success"
             : loadingSuccess
-            ? "Saving with success..."
-            : "Save successfully"
+              ? "Saving with success..."
+              : "Save successfully"
         }
         success={savedSuccess}
         loading={loadingSuccess}

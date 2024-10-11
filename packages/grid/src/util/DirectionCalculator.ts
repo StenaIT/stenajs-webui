@@ -15,7 +15,7 @@ export const getNextPositionWrappedOrClamped = (
   numRows: number,
   numCols: number,
   direction: MoveDirection,
-  edgeMode: TableEdgeMoveMode = "clamped"
+  edgeMode: TableEdgeMoveMode = "clamped",
 ): CellIndices => {
   const posNotWrapped = getNextPosition(rowIndex, colIndex, direction);
   if (edgeMode === "clamped") {
@@ -30,7 +30,7 @@ export const getNextPositionWrappedOrClamped = (
 export const getNextPosition = (
   rowIndex: number,
   colIndex: number,
-  direction: MoveDirection
+  direction: MoveDirection,
 ): CellIndices => {
   if (direction === "up") {
     return {

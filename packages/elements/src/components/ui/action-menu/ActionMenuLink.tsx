@@ -20,11 +20,11 @@ export const ActionMenuLink = forwardRef<
   ActionMenuLinkProps
 >(function ActionMenuLink(
   { disabled, onClick, disableCloseOnClick, ...props },
-  ref: React.Ref<HTMLAnchorElement>
+  ref: React.Ref<HTMLAnchorElement>,
 ) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
     { disableCloseOnClick, onClick },
-    ref
+    ref,
   );
 
   return (

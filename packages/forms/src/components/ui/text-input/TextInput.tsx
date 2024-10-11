@@ -126,8 +126,8 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
     variant === "success"
       ? stenaCheck
       : variant === "warning" || variant === "error"
-      ? stenaExclamationTriangle
-      : iconRight;
+        ? stenaExclamationTriangle
+        : iconRight;
 
   const currentContentRight =
     variant === "loading" ? <InputSpinner /> : contentRight;
@@ -144,7 +144,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         {
           [styles.hideBorder]: hideBorder,
         },
-        wrapperClassName
+        wrapperClassName,
       )}
       style={{ width, ...wrapperStyle }}
     >
@@ -163,7 +163,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
           {
             [styles.alwaysShowPlaceholder]: alwaysShowPlaceholder,
           },
-          className
+          className,
         )}
         type={"text"}
         disabled={disabled}

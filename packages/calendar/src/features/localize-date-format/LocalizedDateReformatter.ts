@@ -3,7 +3,7 @@ import { formatLocalizedDate } from "./LocalizedDateFormatter";
 
 export const reformatLocalizedDateString = (
   dateString: string,
-  locale: string
+  locale: string,
 ): string | undefined => {
   const d = parseLocalizedDateString(dateString, locale);
   if (d == null) {

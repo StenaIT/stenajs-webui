@@ -42,7 +42,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       disabled,
       ...textAreaProps
     },
-    ref
+    ref,
   ) => {
     const onChangeHandler: ChangeEventHandler<HTMLTextAreaElement> =
       useCallback(
@@ -54,7 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             onValueChange(ev.target.value);
           }
         },
-        [onChange, onValueChange]
+        [onChange, onValueChange],
       );
 
     return (
@@ -70,5 +70,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {...textAreaProps}
       />
     );
-  }
+  },
 );

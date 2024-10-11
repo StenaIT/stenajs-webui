@@ -29,7 +29,7 @@ export const NavBarNotificationButton = forwardRef<
     icon = stenaBellFilled,
     ...buttonProps
   },
-  ref
+  ref,
 ) {
   const hasCount = count > 1;
 
@@ -42,7 +42,7 @@ export const NavBarNotificationButton = forwardRef<
         styles.navBarNotificationButton,
         unread && styles.unread,
         hasCount && styles.hasCount,
-        className
+        className,
       )}
       label={hasCount ? String(count) : undefined}
       labelClassName={cx(labelClassName, styles.label)}

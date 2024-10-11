@@ -69,7 +69,7 @@ export const YearPicker: React.FC<YearPickerProps> = ({
 
 const calculateLastYearInFocus = (
   value: number | undefined,
-  lastYear: number
+  lastYear: number,
 ): number => {
   if (value == null) {
     return lastYear;

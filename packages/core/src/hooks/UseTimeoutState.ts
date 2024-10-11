@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 export const useTimeoutState = <S>(
   initialValue: S,
   defaultTimeout: number,
-  clearTimeoutOnSetValue = true
+  clearTimeoutOnSetValue = true,
 ): [S, (v: S) => void] => {
   const [value, setValue] = useState<S>(initialValue);
   const timeoutRef = useRef<NodeJS.Timeout>();
@@ -16,7 +16,7 @@ export const useTimeoutState = <S>(
       }
       timeoutRef.current = setTimeout(() => setValue(initialValue), timeout);
     },
-    [defaultTimeout, clearTimeoutOnSetValue, initialValue]
+    [defaultTimeout, clearTimeoutOnSetValue, initialValue],
   );
 
   useEffect(() => {

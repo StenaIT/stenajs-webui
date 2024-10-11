@@ -20,7 +20,7 @@ interface ClearValuesAction {
 }
 
 export type SetFilterValuesActionCreator<TState> = (
-  values: Partial<TState>
+  values: Partial<TState>,
 ) => SetValuesAction<TState>;
 
 export type CommitFilterValuesActionCreator = () => CommitValuesAction;

@@ -24,20 +24,20 @@ interface InternalParentDropdownOption<TData> {
 
 const removeGroupedOptionsType = <TData>(
   removedValue: InternalParentDropdownOption<TData>,
-  selectedInternalOptions: Options<InternalDropdownOption<TData>>
+  selectedInternalOptions: Options<InternalDropdownOption<TData>>,
 ): Options<InternalDropdownOption<TData>> =>
   differenceWith(
     selectedInternalOptions,
     [...removedValue.internalOptions, removedValue],
-    isEqual
+    isEqual,
   ).map(convertInternalOptionToDropdownOption);
 
 const removeInternalOptions = <TData>(
-  selectedInternalOption: InternalDropdownOption<TData>
+  selectedInternalOption: InternalDropdownOption<TData>,
 ): boolean => !("internalOptions" in selectedInternalOption);
 
 const removeOptionHeaders = <TData>(
-  selectedInternalOptions: Options<InternalDropdownOption<TData>>
+  selectedInternalOptions: Options<InternalDropdownOption<TData>>,
 ): Options<InternalDropdownOption<TData>> =>
   selectedInternalOptions
     .filter(removeInternalOptions)
@@ -50,7 +50,7 @@ export const createOnChange =
       InternalDropdownOption<TData>,
       true
     >,
-    meta: ActionMeta<InternalDropdownOption<TData>>
+    meta: ActionMeta<InternalDropdownOption<TData>>,
   ) => {
     const selectedInternalOptions = incomingSelectedInternalOptions ?? [];
     switch (meta.action) {
@@ -71,9 +71,9 @@ export const createOnChange =
                   ];
                 }
               },
-              []
+              [],
             ),
-            isEqual
+            isEqual,
           );
 
           onChange(selectedOptions, meta);
@@ -86,9 +86,9 @@ export const createOnChange =
           onChange(
             removeGroupedOptionsType(
               meta.option,
-              removeOptionHeaders(selectedInternalOptions)
+              removeOptionHeaders(selectedInternalOptions),
             ),
-            meta
+            meta,
           );
         } else {
           onChange(removeOptionHeaders(selectedInternalOptions), meta);
@@ -100,9 +100,9 @@ export const createOnChange =
           onChange(
             removeGroupedOptionsType(
               meta.removedValue,
-              removeOptionHeaders(selectedInternalOptions)
+              removeOptionHeaders(selectedInternalOptions),
             ),
-            meta
+            meta,
           );
         } else {
           onChange(removeOptionHeaders(selectedInternalOptions), meta);
@@ -111,13 +111,13 @@ export const createOnChange =
       case "clear":
         onChange(
           selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-          meta
+          meta,
         );
         break;
       case "create-option":
         onChange(
           selectedInternalOptions.map(convertInternalOptionToDropdownOption),
-          meta
+          meta,
         );
         break;
       default:
@@ -126,7 +126,7 @@ export const createOnChange =
   };
 
 export const convertGroupedDropdownOptionsToInternalOptions = <TData>(
-  options: GroupedOptionsType<DropdownOption<TData>>
+  options: GroupedOptionsType<DropdownOption<TData>>,
 ): InternalDropdownOption<TData>[] => {
   return options.reduce<InternalDropdownOption<TData>[]>(
     (previousValue, currentValue) => {
@@ -136,13 +136,13 @@ export const convertGroupedDropdownOptionsToInternalOptions = <TData>(
         ...currentValue.options.map(convertDropdownOptionToInternalOption),
       ];
     },
-    []
+    [],
   );
 };
 
 export const convertValueToInternalValue = <TData>(
   options: GroupedOptionsType<DropdownOption<TData>>,
-  values: Options<DropdownOption<TData>> | undefined
+  values: Options<DropdownOption<TData>> | undefined,
 ): InternalDropdownOption<TData>[] => {
   if (!values) {
     return [];
@@ -151,13 +151,13 @@ export const convertValueToInternalValue = <TData>(
   options.forEach((option) => {
     if (allOptionsExists(option.options, values)) {
       selectedOptions.push(
-        convertGroupedDropdownOptionToInternalOption(option)
+        convertGroupedDropdownOptionToInternalOption(option),
       );
     }
     selectedOptions.push(
       ...intersectionWith(option.options, values, isEqual).map((option) =>
-        convertDropdownOptionToInternalOption(option)
-      )
+        convertDropdownOptionToInternalOption(option),
+      ),
     );
   });
   return selectedOptions;
@@ -165,7 +165,7 @@ export const convertValueToInternalValue = <TData>(
 
 export const allOptionsExists = <TData>(
   options: Options<DropdownOption<TData>>,
-  selectedValues: Options<DropdownOption<TData>> | undefined
+  selectedValues: Options<DropdownOption<TData>> | undefined,
 ): boolean => {
   if (!selectedValues) {
     return false;
@@ -177,7 +177,7 @@ export const allOptionsExists = <TData>(
 };
 
 export const convertDropdownOptionToInternalOption = <TData>(
-  option: DropdownOption<TData>
+  option: DropdownOption<TData>,
 ): InternalDropdownOption<TData> => ({
   data: option.data,
   label: option.label,
@@ -186,7 +186,7 @@ export const convertDropdownOptionToInternalOption = <TData>(
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const convertGroupedDropdownOptionToInternalOption = <TData>(
-  option: GroupBase<DropdownOption<TData>>
+  option: GroupBase<DropdownOption<TData>>,
 ): InternalDropdownOption<TData> => ({
   data: option.label as any,
   label: option.label as any,
@@ -195,7 +195,7 @@ export const convertGroupedDropdownOptionToInternalOption = <TData>(
 });
 
 export const convertInternalOptionToDropdownOption = <TData>(
-  option: InternalDropdownOption<TData>
+  option: InternalDropdownOption<TData>,
 ): DropdownOption<TData> => ({
   data: option.data,
   label: option.label,

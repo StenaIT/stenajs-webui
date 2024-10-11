@@ -7,7 +7,7 @@ describe("sort-order-by-id-reducer", () => {
       it("replaces the ids", () => {
         const s = sortOrderByIdReducer(
           { ids: ["1", "2"] },
-          sortOrderByIdActions.setSortOrder(["2", "3"])
+          sortOrderByIdActions.setSortOrder(["2", "3"]),
         );
         expect(s.ids).toStrictEqual(["2", "3"]);
       });
@@ -16,7 +16,7 @@ describe("sort-order-by-id-reducer", () => {
       it("sets the ids", () => {
         const s = sortOrderByIdReducer(
           { ids: undefined },
-          sortOrderByIdActions.setSortOrder(["2", "3"])
+          sortOrderByIdActions.setSortOrder(["2", "3"]),
         );
         expect(s.ids).toStrictEqual(["2", "3"]);
       });
@@ -26,7 +26,7 @@ describe("sort-order-by-id-reducer", () => {
     it("clears the sort order ids", () => {
       const s = sortOrderByIdReducer(
         { ids: ["1", "2"] },
-        sortOrderByIdActions.clearSortOrder()
+        sortOrderByIdActions.clearSortOrder(),
       );
       expect(s.ids).toBeUndefined();
     });

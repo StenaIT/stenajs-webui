@@ -49,7 +49,7 @@ export const TextInputButton = forwardRef<
     size = "medium",
     ...buttonProps
   },
-  ref
+  ref,
 ) {
   return (
     <button
@@ -61,7 +61,7 @@ export const TextInputButton = forwardRef<
         styles.textInputButton,
         baseButtonStyles[size],
         styles[variant],
-        className
+        className,
       )}
     >
       <Icon

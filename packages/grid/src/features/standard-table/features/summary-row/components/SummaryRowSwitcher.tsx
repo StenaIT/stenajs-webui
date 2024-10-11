@@ -9,7 +9,7 @@ interface SummaryRowSwitcherProps<TItem extends object> {
 }
 
 export const SummaryRowSwitcher = function SummaryRowSwitcher<
-  TItem extends object
+  TItem extends object,
 >({ items }: SummaryRowSwitcherProps<TItem>) {
   const { columns } = useStandardTableConfig();
   const visible = useMemo(() => isSummaryRowVisible(columns), [columns]);

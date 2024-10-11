@@ -3,9 +3,9 @@ import { useStandardTableConfig } from "./UseStandardTableConfig";
 export const useColumnValueResolver = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
-  columnId: TColumnKey | undefined
+  columnId: TColumnKey | undefined,
 ) => {
   const { columns } = useStandardTableConfig<
     TItem,

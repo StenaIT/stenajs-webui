@@ -12,7 +12,7 @@ import { CustomCellFormatters } from "../../../common/CellFormatters";
 interface StandardTableExcelExportButtonProps<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 > extends Pick<
       StandardTableProps<TItem, TColumnKey, TColumnGroupKey>,
       "config" | "items"
@@ -26,7 +26,7 @@ export const StandardTableExcelExportButton =
   function StandardTableExcelExportButton<
     TItem extends object,
     TColumnKey extends string,
-    TColumnGroupKey extends string
+    TColumnGroupKey extends string,
   >({
     config,
     size,
@@ -40,7 +40,7 @@ export const StandardTableExcelExportButton =
           filename,
           config,
           items,
-          formatters
+          formatters,
         );
       }
     }, [config, items, filename, formatters]);

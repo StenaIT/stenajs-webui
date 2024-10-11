@@ -2,7 +2,7 @@ export const wrapBounds = (
   x: number,
   y: number,
   maxX: number,
-  maxY: number
+  maxY: number,
 ): { realX: number; realY: number } => {
   let realX = x;
   let realY = y;
@@ -28,7 +28,7 @@ export const wrapBoundsNextLine = (
   x: number,
   y: number,
   maxX: number,
-  maxY: number
+  maxY: number,
 ): { realX: number; realY: number } => {
   let realX = x;
   let realY = y;

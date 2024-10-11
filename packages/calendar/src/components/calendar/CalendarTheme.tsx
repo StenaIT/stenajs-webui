@@ -43,7 +43,7 @@ export type CalendarStyleProvider<TUserData, TResult> = (
   day: DayData,
   week: WeekData,
   month: MonthData,
-  userData?: TUserData
+  userData?: TUserData,
 ) => TResult;
 
 export type CalendarWrapperStyleProvider<TUserData> = CalendarStyleProvider<
@@ -85,7 +85,7 @@ export const defaultWrapperStyleProvider =
       defaultHighlights,
       ["selected", "range", "today", day.month === month.monthInYear],
       [selectedBackground, rangeBackground, todayBackground, "#fff"],
-      "transparent"
+      "transparent",
     );
 
     return {
@@ -103,7 +103,7 @@ export const defaultWrapperStyleProvider =
           "var(--swui-calendar-wrapper-range-border)",
           "var(--lhds-color-ui-500)",
         ],
-        borderColor
+        borderColor,
       ),
       borderTopLeftRadius: dayHighlightSelect(
         dayState,
@@ -114,7 +114,7 @@ export const defaultWrapperStyleProvider =
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
         ],
-        "unset"
+        "unset",
       ),
       borderBottomLeftRadius: dayHighlightSelect(
         dayState,
@@ -125,7 +125,7 @@ export const defaultWrapperStyleProvider =
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
         ],
-        "unset"
+        "unset",
       ),
       borderTopRightRadius: dayHighlightSelect(
         dayState,
@@ -136,7 +136,7 @@ export const defaultWrapperStyleProvider =
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
         ],
-        "unset"
+        "unset",
       ),
       borderBottomRightRadius: dayHighlightSelect(
         dayState,
@@ -147,7 +147,7 @@ export const defaultWrapperStyleProvider =
           "var(--swui-calendar-day-border-radius)",
           "var(--swui-calendar-day-border-radius)",
         ],
-        "unset"
+        "unset",
       ),
       boxSizing: "border-box",
     };
@@ -178,7 +178,7 @@ export const defaultTextPropsProvider = ({
         rangeTextColor,
         undefined,
         disabledColor,
-      ]
+      ],
     );
     return {
       color,

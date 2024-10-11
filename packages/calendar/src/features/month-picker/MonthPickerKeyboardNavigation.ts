@@ -2,7 +2,7 @@ import { Position } from "./Position";
 
 export const getDomIdForMonth = (
   position: Position,
-  monthPickerId: string
+  monthPickerId: string,
 ): string => {
   return `${position.row}-${position.column}-${monthPickerId}`;
 };
@@ -11,7 +11,7 @@ export const getDomIdForKeyboardKey = (
   key: string,
   currentPosition: Position,
   monthPickerId: string,
-  numColumnsPerRow: number
+  numColumnsPerRow: number,
 ): string | undefined => {
   let next = currentPosition;
   for (let i = 0; i < numColumnsPerRow; i++) {
@@ -27,7 +27,7 @@ export const getDomIdForKeyboardKey = (
 export const movePositionByKey = (
   currentPosition: Position,
   key: string,
-  numColumnsPerRow: number
+  numColumnsPerRow: number,
 ): Position => {
   let row = currentPosition.row;
   let column = currentPosition.column;

@@ -31,7 +31,7 @@ for (let i = 1; i < 7; i++) {
     addDays(new Date(), i),
     {
       highlights: ["enabled"],
-    }
+    },
   );
 }
 for (let i = 10; i < 14; i++) {
@@ -40,7 +40,7 @@ for (let i = 10; i < 14; i++) {
     addDays(new Date(), i),
     {
       highlights: ["enabled"],
-    }
+    },
   );
 }
 
@@ -142,7 +142,7 @@ export const WithCustomWeekContent = () => {
   const renderWeekNumber: RenderWeekNumber = (
     week: WeekData,
     theme: CalendarTheme,
-    onClick?: OnClickWeek
+    onClick?: OnClickWeek,
   ) => {
     const now = new Date();
     return (

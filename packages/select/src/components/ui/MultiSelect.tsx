@@ -20,7 +20,7 @@ export interface MultiSelectOption {
 }
 
 export interface MultiSelectProps<
-  TOption extends MultiSelectOption = MultiSelectOption
+  TOption extends MultiSelectOption = MultiSelectOption,
 > extends Props<TOption, true> {
   variant?: SelectVariant;
   isMulti?: true;
@@ -58,7 +58,7 @@ const MultiValue = function <TOption extends MultiSelectOption>({
       <Chip
         onClickRemove={(ev) =>
           removeProps.onClick?.(
-            ev as unknown as React.MouseEvent<HTMLDivElement>
+            ev as unknown as React.MouseEvent<HTMLDivElement>,
           )
         }
         label={data.label}

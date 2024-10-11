@@ -48,7 +48,7 @@ export const LabelledTextInput = React.forwardRef<
       width,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const hookId = useId();
 
@@ -59,7 +59,7 @@ export const LabelledTextInput = React.forwardRef<
         onChange?.(ev);
         onValueChange?.(ev.target.value);
       },
-      [onChange, onValueChange]
+      [onChange, onValueChange],
     );
 
     return (
@@ -69,7 +69,7 @@ export const LabelledTextInput = React.forwardRef<
           styles[variant],
           styles[borderRadiusVariant],
           styles[size],
-          disabled && styles.disabled
+          disabled && styles.disabled,
         )}
         style={width ? { width } : undefined}
       >
@@ -90,5 +90,5 @@ export const LabelledTextInput = React.forwardRef<
         />
       </div>
     );
-  }
+  },
 );

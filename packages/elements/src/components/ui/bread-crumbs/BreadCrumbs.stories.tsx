@@ -19,7 +19,7 @@ export const Standard = () => (
 
 export const WithReactRouter = () => {
   const FakeReactRouterLink: React.FC<{ to: string; className: string }> = (
-    props
+    props,
   ) => <a href={"#"} {...props} />;
 
   interface Props {

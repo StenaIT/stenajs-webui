@@ -27,7 +27,7 @@ export interface Columns {
 export const createMonths = (
   firstMonth: Date,
   numMonths: number,
-  numColumnsPerRow: number
+  numColumnsPerRow: number,
 ): MonthInput => {
   let currentYear = firstMonth.getFullYear();
   let currentRow = 0;

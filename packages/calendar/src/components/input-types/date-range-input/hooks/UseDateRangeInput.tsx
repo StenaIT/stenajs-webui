@@ -6,7 +6,7 @@ import { DateRange } from "../../../../types/DateRange";
 
 export const useDateRangeInput = (
   value: DateRange | undefined,
-  onValueChange: ((dateRange: DateRange) => void) | undefined
+  onValueChange: ((dateRange: DateRange) => void) | undefined,
 ) => {
   const startDateInputRef = useRef<HTMLInputElement>(null);
   const endDateInputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +58,7 @@ export const useDateRangeInput = (
         }
       }
     },
-    [focusedInput, onValueChange, setFocusedInput, hideCalendar, value]
+    [focusedInput, onValueChange, setFocusedInput, hideCalendar, value],
   );
 
   const startDateIsAfterEnd = useMemo(
@@ -66,7 +66,7 @@ export const useDateRangeInput = (
       value?.startDate &&
       value?.endDate &&
       isAfter(value.startDate, value.endDate),
-    [value?.startDate, value?.endDate]
+    [value?.startDate, value?.endDate],
   );
 
   return {

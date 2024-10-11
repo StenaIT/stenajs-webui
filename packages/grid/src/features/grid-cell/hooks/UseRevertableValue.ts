@@ -10,7 +10,7 @@ export interface RevertableValue<TValue> {
 }
 
 export const useRevertableValue = <TValue>(
-  initialValue: TValue
+  initialValue: TValue,
 ): RevertableValue<TValue> => {
   const [value, setValueInternal] = useState<TValue>(initialValue);
   const revertValue = useRef<TValue>(initialValue);
@@ -21,7 +21,7 @@ export const useRevertableValue = <TValue>(
       setValueInternal(value);
       valueRef.current = value;
     },
-    [setValueInternal, valueRef]
+    [setValueInternal, valueRef],
   );
 
   useEffect(() => {
@@ -41,12 +41,12 @@ export const useRevertableValue = <TValue>(
         setValue(commitValue);
       }
     },
-    [value, setValue]
+    [value, setValue],
   );
 
   const setRevertValue = useCallback(
     (value: TValue) => (revertValue.current = value),
-    [revertValue]
+    [revertValue],
   );
 
   const getValue = useCallback(() => valueRef.current, [valueRef]);

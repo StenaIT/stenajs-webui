@@ -43,7 +43,7 @@ import { StandardTableHeadRow } from "./StandardTableHeadRow";
 export interface StandardTableProps<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 > {
   /**
    * Variant of table
@@ -174,7 +174,7 @@ export type StandardTableVariant =
 export const StandardTable = function StandardTable<
   TItem extends object,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >({
   tableContext,
   config,
@@ -196,7 +196,7 @@ export const StandardTable = function StandardTable<
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
     tableId ?? generatedTableId,
-    createStandardTableInitialState(initialSortOrder, initialSortOrderDesc)
+    createStandardTableInitialState(initialSortOrder, initialSortOrderDesc),
   );
 
   const currentTableContext = tableContext || localTableContext;
@@ -210,11 +210,11 @@ export const StandardTable = function StandardTable<
       actions,
       dispatch,
     }),
-    [actions, dispatch]
+    [actions, dispatch],
   );
 
   const usingColumnGroups = Boolean(
-    columnGroupOrder ?? "columnGroupOrder" in config
+    columnGroupOrder ?? "columnGroupOrder" in config,
   );
 
   const columnGroupsFromConfig =
@@ -229,21 +229,21 @@ export const StandardTable = function StandardTable<
       createGroupConfigAndIdsForRows<TItem, TColumnKey, TColumnGroupKey>(
         columnGroupsFromConfig,
         columnGroupOrderFromConfig,
-        columnOrderFromConfig
+        columnOrderFromConfig,
       ),
-    [columnGroupsFromConfig, columnGroupOrderFromConfig, columnOrderFromConfig]
+    [columnGroupsFromConfig, columnGroupOrderFromConfig, columnOrderFromConfig],
   );
 
   const columnIndexPerColumnId = useMemo(
     () => calculateColumnIndexPerColumnId(config),
-    [config]
+    [config],
   );
 
   const totalNumColumns = useMemo(() => getTotalNumColumns(config), [config]);
 
   const stickyPropsPerColumnContext = useMemo(
     () => getStickyPropsPerColumn(config),
-    [config]
+    [config],
   );
 
   const validationError = useMemo(() => {
@@ -274,10 +274,10 @@ export const StandardTable = function StandardTable<
             enableExpandCollapse && stickyCheckboxColumn
               ? "calc(var(--swui-expand-cell-width) + var(--swui-checkbox-cell-width))"
               : stickyCheckboxColumn
-              ? "var(--swui-checkbox-cell-width)"
-              : enableExpandCollapse
-              ? "var(--swui-expand-cell-width)"
-              : "0px",
+                ? "var(--swui-checkbox-cell-width)"
+                : enableExpandCollapse
+                  ? "var(--swui-expand-cell-width)"
+                  : "0px",
         } as CSSProperties
       }
     >
@@ -302,7 +302,7 @@ export const StandardTable = function StandardTable<
                           <StandardTableColumnGroupOrderContext.Provider
                             value={
                               "columnGroupOrder" in config
-                                ? columnGroupOrder ?? config.columnGroupOrder
+                                ? (columnGroupOrder ?? config.columnGroupOrder)
                                 : columnGroupOrder
                             }
                           >

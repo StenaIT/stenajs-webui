@@ -17,7 +17,7 @@ export const useDateRangeHandlers = (
     localDate,
     setLocalDate,
   }: UseInputStatesResult,
-  dateInputRef: RefObject<HTMLInputElement>
+  dateInputRef: RefObject<HTMLInputElement>,
 ) => {
   const onChangeDate = useCallback(
     (incomingDate: Date | null) => {
@@ -50,11 +50,22 @@ export const useDateRangeHandlers = (
       setDateInFocus(newDate);
       if (dateInputRef.current) {
         dateInputRef.current.valueAsDate = new Date(
-          Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate())
+          Date.UTC(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            newDate.getDate(),
+          ),
         );
       }
     },
-    [date, dateInputRef, localTime, onValueChange, setDateInFocus, setLocalDate]
+    [
+      date,
+      dateInputRef,
+      localTime,
+      onValueChange,
+      setDateInFocus,
+      setLocalDate,
+    ],
   );
 
   const onChangeTime = useCallback(
@@ -88,7 +99,7 @@ export const useDateRangeHandlers = (
         setLocalTime(time);
       }
     },
-    [onValueChange, date, localDate, setLocalTime]
+    [onValueChange, date, localDate, setLocalTime],
   );
 
   const inputLeftChangeHandler = useCallback(
@@ -97,12 +108,12 @@ export const useDateRangeHandlers = (
         onChangeDate(ev.target.valueAsDate);
       }
     },
-    [onChangeDate]
+    [onChangeDate],
   );
 
   const inputRightChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => onChangeTime(ev.target.value),
-    [onChangeTime]
+    [onChangeTime],
   );
 
   const showCalendar = useCallback(() => {

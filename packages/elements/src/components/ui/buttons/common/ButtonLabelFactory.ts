@@ -3,7 +3,7 @@ export const getButtonLabel = (
   success: boolean,
   successLabel: string | undefined,
   loading: boolean,
-  loadingLabel: string | undefined
+  loadingLabel: string | undefined,
 ): string | undefined => {
   if (success) {
     return successLabel;

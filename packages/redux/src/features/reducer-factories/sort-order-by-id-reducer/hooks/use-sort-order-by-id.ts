@@ -4,7 +4,7 @@ import { SortOrderByIdState } from "../sort-order-by-id-reducer";
 
 export const useSortOrderById = <TItem extends EntityWithId>(
   list: Array<TItem> | undefined,
-  sortOrderByIdState: SortOrderByIdState
+  sortOrderByIdState: SortOrderByIdState,
 ): Array<TItem> =>
   useMemo(() => {
     if (!list) {
@@ -22,7 +22,7 @@ export const useSortOrderById = <TItem extends EntityWithId>(
       const item = list.find((l) => l.id === id);
       if (!item) {
         throw new Error(
-          "Trying to order list, but id was not found in data set."
+          "Trying to order list, but id was not found in data set.",
         );
       }
       return item;

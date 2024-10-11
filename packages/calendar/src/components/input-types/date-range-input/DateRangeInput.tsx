@@ -98,12 +98,12 @@ export function DateRangeInput<T>({
   } = useDateRangeInput(value, onValueChange);
 
   const [dateInFocus, setDateInFocus] = useState(
-    () => (focusedInput && value?.[focusedInput]) ?? new Date()
+    () => (focusedInput && value?.[focusedInput]) ?? new Date(),
   );
   const statePerMonth = useMemo(
     () =>
       buildDayStateForDateRange(undefined, value?.startDate, value?.endDate),
-    [value]
+    [value],
   );
 
   return (

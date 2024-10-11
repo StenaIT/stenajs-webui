@@ -29,7 +29,7 @@ const getTopPosition = (
   headerRowOffsetTop: string | undefined,
   columnGroupOrder: Array<string> | undefined,
   height: string,
-  stickyHeader: boolean | undefined
+  stickyHeader: boolean | undefined,
 ): CSSProperties["top"] => {
   if (headerRowOffsetTop && columnGroupOrder !== undefined) {
     return `calc(${headerRowOffsetTop} + ${height})`;
@@ -44,7 +44,7 @@ const getTopPosition = (
 };
 
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
-  TItem
+  TItem,
 >({ items, height = defaultTableRowHeight }: StandardTableHeaderProps<TItem>) {
   const groupConfigsAndIds = useGroupConfigsAndIdsForRows();
 
@@ -73,15 +73,15 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     zIndex: (stickyHeader && stickyCheckboxColumn
       ? "var(--swui-sticky-header-in-sticky-column-z-index)"
       : stickyCheckboxColumn
-      ? "var(--swui-sticky-group-header-z-index)"
-      : stickyHeader
-      ? "var(--swui-sticky-header-z-index)"
-      : zIndex) as CSSProperties["zIndex"],
+        ? "var(--swui-sticky-group-header-z-index)"
+        : stickyHeader
+          ? "var(--swui-sticky-header-z-index)"
+          : zIndex) as CSSProperties["zIndex"],
     top: getTopPosition(
       headerRowOffsetTop,
       columnGroupOrder,
       height,
-      stickyHeader
+      stickyHeader,
     ),
     background: stickyHeader || stickyCheckboxColumn ? "white" : undefined,
     position: stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
@@ -89,10 +89,10 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       stickyHeader && stickyCheckboxColumn
         ? "var(--swui-sticky-header-shadow-and-right)"
         : stickyCheckboxColumn
-        ? "var(--swui-sticky-column-shadow-right)"
-        : stickyHeader
-        ? "var(--swui-sticky-header-shadow)"
-        : undefined,
+          ? "var(--swui-sticky-column-shadow-right)"
+          : stickyHeader
+            ? "var(--swui-sticky-header-shadow)"
+            : undefined,
   };
 
   return (
@@ -137,8 +137,8 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
               stickyCheckboxColumn && enableExpandCollapse
                 ? "var(--swui-expand-cell-width)"
                 : stickyCheckboxColumn
-                ? "0px"
-                : undefined,
+                  ? "0px"
+                  : undefined,
           }}
         >
           <Row
@@ -170,7 +170,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                   borderFromGroup={getCellBorderFromGroup(
                     groupIndex,
                     index,
-                    groupConfig.borderLeft
+                    groupConfig.borderLeft,
                   )}
                   disableBorderLeft={groupIndex === 0 && index === 0}
                   stickyHeader={stickyHeader}

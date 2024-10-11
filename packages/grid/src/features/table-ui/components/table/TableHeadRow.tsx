@@ -10,5 +10,5 @@ export interface TableHeadRowProps extends BoxProps {
 export const TableHeadRow: React.FC<TableHeadRowProps> = React.memo(
   ({ style, height = defaultTableHeadRowHeight, ...boxProps }) => {
     return <Row style={style} height={height} {...boxProps} />;
-  }
+  },
 );

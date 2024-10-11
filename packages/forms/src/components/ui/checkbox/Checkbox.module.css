@@ -32,7 +32,8 @@
   border: 1px solid
     var(--current-border-color, var(--swui-checkbox-border-color));
   background: var(--current-bg-color, var(--swui-checkbox-unchecked-bg-color));
-  transition: background var(--swui-checkbox-animation-time),
+  transition:
+    background var(--swui-checkbox-animation-time),
     border-color var(--swui-checkbox-animation-time);
   flex-shrink: 0;
 
@@ -64,7 +65,8 @@
     content: "";
     display: block;
     position: absolute;
-    transition: transform var(--swui-checkbox-animation-time) var(--d-t-e, ease),
+    transition:
+      transform var(--swui-checkbox-animation-time) var(--d-t-e, ease),
       opacity var(--swui-checkbox-animation-time),
       width var(--swui-checkbox-animation-time),
       top var(--swui-checkbox-animation-time);

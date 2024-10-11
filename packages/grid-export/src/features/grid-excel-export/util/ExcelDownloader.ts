@@ -6,12 +6,12 @@ import { createZipcelxConfig } from "../transformers/ConfigTransformer";
 export const downloadExcelForStandardTable = async <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   filename: string,
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   items: Array<TItem>,
-  formatters?: CustomCellFormatters<TItem, TColumnKey>
+  formatters?: CustomCellFormatters<TItem, TColumnKey>,
 ) => {
   const excelConfig = createZipcelxConfig(filename, config, items, formatters);
   await zipcelx(excelConfig);

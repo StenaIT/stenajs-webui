@@ -8,7 +8,7 @@ import {
 import { components, ValueContainerProps } from "react-select";
 
 export function OverflowingMultiSelect<T extends MultiSelectOption>(
-  props: MultiSelectProps<T>
+  props: MultiSelectProps<T>,
 ) {
   return (
     <MultiSelect
@@ -28,7 +28,7 @@ const FirstValueOnlyValueContainer = memo(
   (props: ValueContainerProps<any, true>) => {
     const [prevOptions, ...restChildren] = props.children as [
       ReactElement[] | null | undefined,
-      ReactElement[] | null | undefined
+      ReactElement[] | null | undefined,
     ];
 
     const options = getOptionsToRender(prevOptions, props);
@@ -39,7 +39,7 @@ const FirstValueOnlyValueContainer = memo(
         {restChildren}
       </components.ValueContainer>
     );
-  }
+  },
 );
 
 const getOptionsToRender = (
@@ -50,7 +50,7 @@ const getOptionsToRender = (
     innerProps,
     className,
     ...spreadProps
-  }: ValueContainerProps<any, true>
+  }: ValueContainerProps<any, true>,
 ) => {
   if (!optionElements) {
     return null;

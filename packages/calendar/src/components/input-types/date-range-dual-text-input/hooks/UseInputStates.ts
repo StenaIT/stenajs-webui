@@ -7,7 +7,7 @@ export type UseInputStatesResult = ReturnType<typeof useInputStates>;
 
 export const useInputStates = (
   startDate: Date | undefined,
-  endDate: Date | undefined
+  endDate: Date | undefined,
 ) => {
   const [isCalendarVisible, showCalendarInternal, hideCalendarInternal] =
     useBoolean(false);
@@ -24,8 +24,8 @@ export const useInputStates = (
       focusedInput === "startDate"
         ? startDate
         : focusedInput === "endDate"
-        ? endDate
-        : undefined;
+          ? endDate
+          : undefined;
 
     return fromValue ?? new Date();
   });

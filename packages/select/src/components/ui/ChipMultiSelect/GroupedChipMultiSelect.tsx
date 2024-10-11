@@ -55,5 +55,5 @@ function _GroupedChipMultiSelect<TData>({
 }
 
 export const GroupedChipMultiSelect = React.memo(
-  _GroupedChipMultiSelect
+  _GroupedChipMultiSelect,
 ) as typeof _GroupedChipMultiSelect;

@@ -15,15 +15,15 @@ export const useStandardTableId = (): string =>
 export const useStandardTableConfig = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(): StandardTableConfig<TItem, TColumnKey, TColumnGroupKey> =>
   useContext(StandardTableConfigContext);
 
 export const useStandardTableState = <
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): StandardTableState<TColumnKey> => useContext(StandardTableStateContext);
 
 export const useStandardTableActions = <
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): StandardTableInternalActionsContext<TColumnKey> =>
   useContext(StandardTableActionsContext);

@@ -28,7 +28,7 @@ export default {
 
 export const Standard = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -52,7 +52,7 @@ export const Standard = () => {
 
 export const WithHeading = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -77,7 +77,7 @@ export const WithHeading = () => {
 
 export const WithTestIds = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
   const testId = (date: Date) => {
     if (isToday(date)) {
@@ -106,7 +106,7 @@ export const WithTestIds = () => {
 
 export const Sizes = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -140,7 +140,7 @@ export const ParseDate = () => {
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   const setValueHandler = (value: TravelDateRangeInputValue) => {
@@ -197,7 +197,7 @@ export const Locales = () => {
 
 const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -219,7 +219,7 @@ const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
 
 export const WithValidationAndCloseButton = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -244,7 +244,7 @@ export const WithValidationAndCloseButton = () => {
 
 export const WithPresets = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (
@@ -285,7 +285,7 @@ export const WithPresets = () => {
 
 export const WithBlurPlaceholders = () => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
-    undefined
+    undefined,
   );
 
   return (

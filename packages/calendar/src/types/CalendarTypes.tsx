@@ -36,12 +36,12 @@ export interface CalendarOnClicks<T> {
 export type RenderWeekNumber = (
   week: WeekData,
   theme: CalendarTheme,
-  onClick?: OnClickWeek
+  onClick?: OnClickWeek,
 ) => JSX.Element;
 export type RenderWeekDay = (
   weekDayName: string,
   theme: CalendarTheme,
-  onClick?: OnClickWeekDay
+  onClick?: OnClickWeekDay,
 ) => JSX.Element;
 
 export interface Renderers {
@@ -166,15 +166,15 @@ export type DayState = HighlightsState;
 export type OnClickDay<T> = (
   day: DayData,
   data: T | undefined,
-  ev: React.MouseEvent<HTMLTableDataCellElement>
+  ev: React.MouseEvent<HTMLTableDataCellElement>,
 ) => void;
 export type OnClickWeekDay = (
   weekDay: number,
-  ev: React.MouseEvent<HTMLButtonElement>
+  ev: React.MouseEvent<HTMLButtonElement>,
 ) => void;
 export type OnClickWeek = (
   week: WeekData,
-  ev: React.MouseEvent<HTMLButtonElement>
+  ev: React.MouseEvent<HTMLButtonElement>,
 ) => void;
 export type OnClickMonth = (month: MonthData) => void;
 export type OnClickYear = (year: number) => void;

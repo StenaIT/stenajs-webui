@@ -52,7 +52,7 @@ export const StandardTableHeadItem = React.memo(
     const activeBorderLeft = getCellBorder(
       borderFromGroup,
       disableBorderLeft,
-      borderLeft
+      borderLeft,
     );
 
     const stickyProps = stickyPropsPerColumnContext[columnId];
@@ -73,21 +73,21 @@ export const StandardTableHeadItem = React.memo(
             stickyHeader
               ? "var(--swui-sticky-header-shadow-and-left)"
               : stickyProps.sticky && stickyProps.isFirstColumnInLastGroup
-              ? "var(--swui-sticky-column-shadow-left)"
-              : stickyHeader && stickyProps.sticky
-              ? "var(--swui-sticky-header-shadow-and-right)"
-              : stickyHeader
-              ? "var(--swui-sticky-header-shadow)"
-              : stickyProps.sticky
-              ? "var(--swui-sticky-column-shadow-right)"
-              : undefined,
+                ? "var(--swui-sticky-column-shadow-left)"
+                : stickyHeader && stickyProps.sticky
+                  ? "var(--swui-sticky-header-shadow-and-right)"
+                  : stickyHeader
+                    ? "var(--swui-sticky-header-shadow)"
+                    : stickyProps.sticky
+                      ? "var(--swui-sticky-column-shadow-right)"
+                      : undefined,
           zIndex: (stickyHeader && stickyProps.sticky
             ? "var(--swui-sticky-header-in-sticky-column-z-index)"
             : stickyHeader
-            ? "var(--swui-sticky-header-z-index)"
-            : stickyProps.sticky
-            ? "var(--swui-sticky-group-header-z-index)"
-            : zIndex) as CSSProperties["zIndex"],
+              ? "var(--swui-sticky-header-z-index)"
+              : stickyProps.sticky
+                ? "var(--swui-sticky-group-header-z-index)"
+                : zIndex) as CSSProperties["zIndex"],
           width,
           minWidth,
         }}
@@ -108,5 +108,5 @@ export const StandardTableHeadItem = React.memo(
         />
       </th>
     );
-  }
+  },
 );

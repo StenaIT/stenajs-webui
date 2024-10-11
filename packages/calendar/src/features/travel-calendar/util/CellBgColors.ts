@@ -9,7 +9,7 @@ export const getCellBackgroundColors = (
   selectedEndDate: Date | undefined,
   hoverDate: Date | undefined,
   dayIsInMonth: boolean,
-  isValidDateRange: boolean
+  isValidDateRange: boolean,
 ): { left: string; right: string } => {
   if (!dayIsInMonth) {
     return {

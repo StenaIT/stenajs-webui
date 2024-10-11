@@ -14,9 +14,9 @@ export type OffsetPerColumn<TColumnKey extends string> = Record<
  */
 export const calculateOffsetForColumnInStickyColumnGroups = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfigWithGroups<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>,
 ): OffsetPerColumn<TColumnKey> => {
   const left =
     config.stickyColumnGroups === "first" ||
@@ -24,7 +24,7 @@ export const calculateOffsetForColumnInStickyColumnGroups = <
       ? calculateOffsetForColumns(
           getColumnIdsForLeftSideStickyGroup(config),
           config.columns,
-          true
+          true,
         )
       : undefined;
 
@@ -33,7 +33,7 @@ export const calculateOffsetForColumnInStickyColumnGroups = <
       ? calculateOffsetForColumns(
           getColumnIdsForRightSideStickyGroup(config),
           config.columns,
-          false
+          false,
         )
       : undefined;
 
@@ -46,7 +46,7 @@ export const calculateOffsetForColumnInStickyColumnGroups = <
 export const calculateOffsetForColumns = <TItem, TColumnKey extends string>(
   columnIds: Array<TColumnKey>,
   columns: StandardTableConfig<TItem, TColumnKey>["columns"],
-  includeOffsetForCheckboxAndExpand: boolean
+  includeOffsetForCheckboxAndExpand: boolean,
 ): OffsetPerColumn<TColumnKey> => {
   const r = {} as OffsetPerColumn<TColumnKey>;
   const widths: Array<string> = [
@@ -73,9 +73,9 @@ const getCalcForWidths = (widths: Array<string>): string => {
 
 export const getColumnIdsForLeftSideStickyGroup = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfigWithGroups<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>,
 ): Array<TColumnKey> => {
   const columnGroupId = config.columnGroupOrder?.[0];
   if (!columnGroupId) {
@@ -87,9 +87,9 @@ export const getColumnIdsForLeftSideStickyGroup = <
 
 export const getColumnIdsForRightSideStickyGroup = <
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  config: StandardTableConfigWithGroups<TItem, TColumnKey>
+  config: StandardTableConfigWithGroups<TItem, TColumnKey>,
 ): Array<TColumnKey> => {
   const columnGroupId =
     config.columnGroupOrder?.[config.columnGroupOrder?.length - 1];

@@ -59,12 +59,12 @@ export const Label: React.FC<LabelProps> = React.memo(
         )}
       </label>
     );
-  }
+  },
 );
 
 const getExtraInfoLabel = (
   optional: boolean,
-  maxCharacters: number | undefined
+  maxCharacters: number | undefined,
 ): string | undefined => {
   const list: Array<string> = [];
   if (optional) {

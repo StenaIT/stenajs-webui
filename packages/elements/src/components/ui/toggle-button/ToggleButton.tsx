@@ -35,7 +35,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
     disabled,
     ...inputProps
   },
-  ref
+  ref,
 ) {
   const id = useId();
 
@@ -46,7 +46,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
       onChange?.(ev);
       onValueChange?.(!value);
     },
-    [onChange, onValueChange, value]
+    [onChange, onValueChange, value],
   );
 
   return (
@@ -55,7 +55,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = forwardRef<
         styles.toggleButton,
         styles[size],
         value && styles.selected,
-        disabled && styles.disabled
+        disabled && styles.disabled,
       )}
     >
       <input

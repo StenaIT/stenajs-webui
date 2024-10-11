@@ -493,7 +493,7 @@ const validPropsRecord = {
 };
 
 const validProps = `^((${Object.keys(validPropsRecord).join(
-  "|"
+  "|",
 )})|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$`;
 
 const r = new RegExp(validProps);
@@ -503,5 +503,5 @@ export const isPropValid: (prop: string) => boolean = memoize(
     r.test(prop) ||
     (prop.charCodeAt(0) === 111 /* o */ &&
       prop.charCodeAt(1) === 110 /* n */ &&
-      prop.charCodeAt(2) < 91) /* Z+1 */
+      prop.charCodeAt(2) < 91) /* Z+1 */,
 );

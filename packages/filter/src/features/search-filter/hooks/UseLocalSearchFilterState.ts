@@ -7,19 +7,19 @@ import { useReducer, useState } from "react";
 
 export const useLocalSearchFilterState = <
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >(
-  initialState: SearchFilterState<TFormModel>
+  initialState: SearchFilterState<TFormModel>,
 ) => {
   const [reducer] = useState(() =>
-    createSearchFilterReducer<TFormModel>("local", initialState)
+    createSearchFilterReducer<TFormModel>("local", initialState),
   );
 
   const [actions] = useState(() =>
     createSearchFilterActions<TFormModel, TSectionKey>(
       "local",
-      initialState.formModel
-    )
+      initialState.formModel,
+    ),
   );
 
   const [state, dispatch] = useReducer(reducer, initialState);

@@ -28,7 +28,7 @@ export const IconDemoList: React.FC<{
     .filter((iconName) =>
       !searchText
         ? true
-        : iconName.toLowerCase().indexOf(searchText.toLowerCase()) >= 0
+        : iconName.toLowerCase().indexOf(searchText.toLowerCase()) >= 0,
     );
 
   return (
@@ -165,7 +165,7 @@ export const IconDemo: React.FC<{ icon: IconDefinition }> = ({ icon }) => {
                 label={"Tag"}
               />
             </Row>
-          )
+          ),
         )}
       </Column>
     </Row>

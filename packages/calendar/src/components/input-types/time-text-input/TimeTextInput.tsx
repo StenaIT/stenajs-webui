@@ -57,7 +57,7 @@ export const TimeTextInput: React.FC<TimeTextInputProps> = ({
         onValueChange(time);
       }
     },
-    [onValueChange, setValid]
+    [onValueChange, setValid],
   );
 
   return (

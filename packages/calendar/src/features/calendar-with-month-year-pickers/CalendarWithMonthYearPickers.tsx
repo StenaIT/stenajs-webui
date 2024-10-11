@@ -39,7 +39,7 @@ export const CalendarWithMonthYearPickers =
         }
         setCurrentPanel("calendar");
       },
-      [setDateInFocus, setCurrentPanel]
+      [setDateInFocus, setCurrentPanel],
     );
 
     const onClickMonth = useCallback(() => {

@@ -41,7 +41,7 @@ export default {
 function xor(...values: boolean[]) {
   const sum = values.reduce(
     (acc: number, value: boolean) => acc + Number(value),
-    0
+    0,
   );
   return sum > 0 && sum < values.length;
 }

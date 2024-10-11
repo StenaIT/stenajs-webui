@@ -9,10 +9,10 @@ export const GroupConfigsAndIdsForRowsContext = createContext<
 >([]);
 
 export const useGroupConfigsAndIdsForRows = <
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): Array<GroupConfigAndId<TColumnKey>> =>
   useContext<Array<GroupConfigAndId<TColumnKey>>>(
-    GroupConfigsAndIdsForRowsContext
+    GroupConfigsAndIdsForRowsContext,
   );
 
 export const useTotalNumColumnsForRows = () => {
@@ -32,7 +32,7 @@ export const useTotalNumColumnsForRows = () => {
         groupConfigsAndIds
           .map((c) => c.groupConfig.columnOrder.length)
           .reduce((sum, item) => sum + item, 0),
-      [groupConfigsAndIds]
+      [groupConfigsAndIds],
     )
   );
 };

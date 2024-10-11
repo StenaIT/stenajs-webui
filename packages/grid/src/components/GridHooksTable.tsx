@@ -35,7 +35,7 @@ export const GridHooksTable: React.FC<GridHooksTableProps> = ({
 }) => {
   const contextProps = useMemo<GridHooksContextValue>(
     () => ({ numCols, numRows, tableId, wrap }),
-    [numCols, numRows, tableId, wrap]
+    [numCols, numRows, tableId, wrap],
   );
 
   return (

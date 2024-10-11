@@ -47,7 +47,7 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
       onChange?.(e);
       onValueChange?.(e.target.value);
     },
-    [onChange, onValueChange]
+    [onChange, onValueChange],
   );
 
   return (
@@ -55,7 +55,7 @@ export const LabelledSelect: React.FC<LabelledSelectProps> = ({
       className={cx(
         styles.labelledSelect,
         styles[variant],
-        styles[borderVariant]
+        styles[borderVariant],
       )}
     >
       <InputLabel

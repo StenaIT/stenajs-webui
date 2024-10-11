@@ -38,7 +38,7 @@ const fallbackCellRenderer: DefaultStandardTableCellRenderer<unknown> = ({
 }) => <TextCell label={label} size={textSize} />;
 
 export const StandardTableCell = React.memo(function StandardTableCell<
-  TItem extends object
+  TItem extends object,
 >({
   columnId,
   item,
@@ -101,22 +101,22 @@ export const StandardTableCell = React.memo(function StandardTableCell<
       itemLabelFormatter
         ? itemLabelFormatter(itemValue, item)
         : formatValueLabel(itemValue),
-    [itemValue, itemLabelFormatter, item]
+    [itemValue, itemLabelFormatter, item],
   );
 
   const editable =
     typeof isEditable === "boolean"
       ? isEditable
       : isEditable
-      ? isEditable(item)
-      : undefined;
+        ? isEditable(item)
+        : undefined;
 
   const onKeyDownHandler = useCallback<KeyboardEventHandler<HTMLDivElement>>(
     (ev) => {
       onKeyDownCell?.(ev, { columnId, item });
       onKeyDownTable?.(ev, { columnId, item });
     },
-    [onKeyDownTable, columnId, item, onKeyDownCell]
+    [onKeyDownTable, columnId, item, onKeyDownCell],
   );
 
   const gridCell = useGridCell<string>(label, {
@@ -138,8 +138,8 @@ export const StandardTableCell = React.memo(function StandardTableCell<
   const background = useCellBackgroundByColumnId(columnId, item) ?? "inherit";
 
   const currentZIndex = stickyProps.sticky
-    ? zIndex ?? "var(--swui-sticky-column-z-index)"
-    : zIndex ?? 1;
+    ? (zIndex ?? "var(--swui-sticky-column-z-index)")
+    : (zIndex ?? 1);
 
   const content = useMemo(
     () =>
@@ -165,13 +165,13 @@ export const StandardTableCell = React.memo(function StandardTableCell<
       currentZIndex,
       itemKey,
       defaultTextSize,
-    ]
+    ],
   );
 
   const activeBorderLeft = getCellBorder(
     borderFromGroup,
     disableBorderLeft,
-    borderLeft
+    borderLeft,
   );
 
   const shadow =
@@ -180,10 +180,10 @@ export const StandardTableCell = React.memo(function StandardTableCell<
     stickyProps.isFirstColumnInLastGroup
       ? "var(--swui-sticky-column-shadow-left)"
       : stickyProps.sticky && stickyProps.type === "column" && stickyProps.right
-      ? "var(--swui-sticky-column-shadow-left)"
-      : stickyProps.sticky
-      ? "var(--swui-sticky-column-shadow-right)"
-      : undefined;
+        ? "var(--swui-sticky-column-shadow-left)"
+        : stickyProps.sticky
+          ? "var(--swui-sticky-column-shadow-right)"
+          : undefined;
 
   return (
     <td

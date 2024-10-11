@@ -7,18 +7,18 @@ import {
 } from "./record-object-actions";
 
 export interface RecordObjectActions<
-  TInnerAction extends RecordObjectWrappedAction
+  TInnerAction extends RecordObjectWrappedAction,
 > {
   recordAction: (
     recordId: RecordObjectKey,
-    action: TInnerAction
+    action: TInnerAction,
   ) => RecordObjectRecordAction<TInnerAction>;
   clearRecord: (recordId: RecordObjectKey) => RecordObjectClearRecordAction;
   clearAllRecords: () => RecordObjectClearAllRecordsAction;
 }
 
 export const createRecordObjectActions = <
-  TInnerAction extends RecordObjectWrappedAction
+  TInnerAction extends RecordObjectWrappedAction,
 >(): RecordObjectActions<TInnerAction> => ({
   recordAction: (recordId, action) => ({
     type: "RECORD_OBJECT:ACTION",

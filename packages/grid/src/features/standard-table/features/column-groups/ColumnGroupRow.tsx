@@ -34,7 +34,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
     stickyHeader,
     stickyCheckboxColumn,
     headerRowOffsetTop,
-    zIndex
+    zIndex,
   );
 
   const zIndexForCells = (
@@ -69,8 +69,8 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
               stickyCheckboxColumn && enableExpandCollapse
                 ? "var(--swui-expand-cell-width)"
                 : stickyCheckboxColumn
-                ? "0px"
-                : undefined,
+                  ? "0px"
+                  : undefined,
             zIndex: zIndexForCells,
           }}
         />
@@ -86,7 +86,7 @@ export const ColumnGroupRow = React.memo(function ColumnGroupRow({
           borderFromGroup={getCellBorderFromGroup(
             groupIndex,
             0,
-            groupConfig.borderLeft
+            groupConfig.borderLeft,
           )}
         />
       ))}

@@ -17,7 +17,7 @@ export const useTravelDateRangeInput = (
   value: TravelDateRangeInputValue | undefined,
   onValueChange: ((value: TravelDateRangeInputValue) => void) | undefined,
   localeCode: string,
-  initialMonthInFocus: Date | undefined
+  initialMonthInFocus: Date | undefined,
 ) => {
   const locale =
     getLocaleForLocaleCode(localeCode) ?? getDefaultLocaleForFormatting();
@@ -29,7 +29,7 @@ export const useTravelDateRangeInput = (
 
   const dateFormat = useMemo(
     () => getDateFormatForLocaleCode(localeCode),
-    [localeCode]
+    [localeCode],
   );
 
   const selectedStartDate = useMemo(
@@ -37,7 +37,7 @@ export const useTravelDateRangeInput = (
       value?.startDate?.length === dateFormat.length
         ? parseLocalizedDateString(value.startDate, localeCode)
         : undefined,
-    [dateFormat.length, localeCode, value?.startDate]
+    [dateFormat.length, localeCode, value?.startDate],
   );
 
   const selectedEndDate = useMemo(
@@ -45,7 +45,7 @@ export const useTravelDateRangeInput = (
       value?.endDate?.length === dateFormat.length
         ? parseLocalizedDateString(value.endDate, localeCode)
         : undefined,
-    [dateFormat.length, localeCode, value?.endDate]
+    [dateFormat.length, localeCode, value?.endDate],
   );
 
   const valueWhenBlurredStartDate = useMemo(
@@ -53,7 +53,7 @@ export const useTravelDateRangeInput = (
       selectedStartDate != null
         ? formatDateDescription(selectedStartDate, today, locale)
         : undefined,
-    [locale, selectedStartDate, today]
+    [locale, selectedStartDate, today],
   );
 
   const valueWhenBlurredEndDate = useMemo(
@@ -61,11 +61,11 @@ export const useTravelDateRangeInput = (
       selectedEndDate != null
         ? formatDateDescription(selectedEndDate, today, locale)
         : undefined,
-    [locale, selectedEndDate, today]
+    [locale, selectedEndDate, today],
   );
 
   const [visibleMonth, setVisibleMonth] = useState<Date>(
-    initialMonthInFocus ?? selectedStartDate ?? new Date()
+    initialMonthInFocus ?? selectedStartDate ?? new Date(),
   );
 
   const setVisibleMonthClamped = useCallback(
@@ -76,7 +76,7 @@ export const useTravelDateRangeInput = (
         setVisibleMonth(today);
       }
     },
-    [today]
+    [today],
   );
 
   const visibleMonthData = useMemo(
@@ -84,9 +84,9 @@ export const useTravelDateRangeInput = (
       getMonthInYear(
         visibleMonth.getFullYear(),
         visibleMonth.getMonth(),
-        locale
+        locale,
       ),
-    [locale, visibleMonth]
+    [locale, visibleMonth],
   );
 
   const monthPickerButtonLabel = useMemo(() => {
@@ -132,12 +132,12 @@ export const useTravelDateRangeInput = (
       onValueChange,
       setVisibleMonthClamped,
       value,
-    ]
+    ],
   );
 
   const prevMonthDisabled = useMemo(
     () => isSameMonth(today, visibleMonth) || isBefore(visibleMonth, today),
-    [today, visibleMonth]
+    [today, visibleMonth],
   );
 
   const isValidDateRange = useMemo(
@@ -147,12 +147,12 @@ export const useTravelDateRangeInput = (
         (isSameDay(selectedStartDate, selectedEndDate) ||
           isBefore(selectedStartDate, selectedEndDate))) ??
       false,
-    [selectedEndDate, selectedStartDate]
+    [selectedEndDate, selectedStartDate],
   );
 
   const isDateDisabled = useCallback<(date: Date) => boolean>(
     (date) => !isSameDay(date, today) && isBefore(date, today),
-    [today]
+    [today],
   );
 
   const onClickDate = (date: Date) => {

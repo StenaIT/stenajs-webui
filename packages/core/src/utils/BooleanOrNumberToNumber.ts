@@ -1,5 +1,5 @@
 export const booleanOrNumberToNumber = (
-  num: number | boolean | undefined
+  num: number | boolean | undefined,
 ): number => {
   if (num == null) {
     return 0;
@@ -18,5 +18,5 @@ export const numberToMetricCalc = (num: number): string | undefined => {
 };
 
 export const booleanOrNumberToMetricCalc = (
-  num: number | boolean | undefined
+  num: number | boolean | undefined,
 ): string | undefined => numberToMetricCalc(booleanOrNumberToNumber(num));

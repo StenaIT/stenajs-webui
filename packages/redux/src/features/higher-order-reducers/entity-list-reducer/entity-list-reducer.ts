@@ -6,11 +6,11 @@ export type EntityListState<TListItem> = Array<TListItem>;
 
 export const createEntityListReducer =
   <TListItem, TListItemAction extends Action = AnyAction>(
-    reducer?: Reducer<TListItem, TListItemAction>
+    reducer?: Reducer<TListItem, TListItemAction>,
   ) =>
   (
     state: EntityListState<TListItem> = [],
-    action: EntityListAction<TListItem, TListItemAction>
+    action: EntityListAction<TListItem, TListItemAction>,
   ): EntityListState<TListItem> => {
     switch (action.type) {
       case "ENTITY_LIST:SET_LIST": {
@@ -71,7 +71,7 @@ export const createEntityListReducer =
       case "ENTITY_LIST:TOGGLE": {
         const { entity } = action;
         const index = state.findIndex(
-          (item) => item === entity || fieldsMatch(item, entity)
+          (item) => item === entity || fieldsMatch(item, entity),
         );
 
         if (index >= 0) {
@@ -88,11 +88,11 @@ export const createEntityListReducer =
         const { fields, action: innerAction } = action;
         if (!reducer) {
           throw new Error(
-            "No reducer specified, unable to handle 'actionByFieldsMatch'."
+            "No reducer specified, unable to handle 'actionByFieldsMatch'.",
           );
         }
         return state.map((item) =>
-          fieldsMatch(item, fields) ? reducer(item, innerAction) : item
+          fieldsMatch(item, fields) ? reducer(item, innerAction) : item,
         );
       }
 
@@ -100,11 +100,11 @@ export const createEntityListReducer =
         const { index, action: innerAction } = action;
         if (!reducer) {
           throw new Error(
-            "No reducer specified, unable to handle 'actionByIndex'."
+            "No reducer specified, unable to handle 'actionByIndex'.",
           );
         }
         return state.map((item, i) =>
-          index === i ? reducer(item, innerAction) : item
+          index === i ? reducer(item, innerAction) : item,
         );
       }
 
@@ -112,7 +112,7 @@ export const createEntityListReducer =
         const { action: innerAction } = action;
         if (!reducer) {
           throw new Error(
-            "No reducer specified, unable to handle 'actionByIndex'."
+            "No reducer specified, unable to handle 'actionByIndex'.",
           );
         }
         return state.map((item) => reducer(item, innerAction));

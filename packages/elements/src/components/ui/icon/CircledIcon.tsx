@@ -56,7 +56,7 @@ export const CircledIcon: React.FC<CircledIconProps> = ({
 };
 
 const getBackgroundSize = (
-  size: CircledIconSizeVariant | CircledIconSizeXlVariant
+  size: CircledIconSizeVariant | CircledIconSizeXlVariant,
 ): string => {
   switch (size) {
     case "small":
@@ -73,7 +73,7 @@ const getBackgroundSize = (
 };
 
 const getIconSize = (
-  size: CircledIconSizeVariant | CircledIconSizeXlVariant
+  size: CircledIconSizeVariant | CircledIconSizeXlVariant,
 ): number => {
   switch (size) {
     case "small":

@@ -1,7 +1,7 @@
 export const getIdsBetweenSelected = (
   idList: Array<string> | undefined,
   selected1: string | undefined,
-  selected2: string | undefined
+  selected2: string | undefined,
 ): Array<string> | undefined => {
   if (selected1 == null || selected2 == null || idList == null) {
     return undefined;

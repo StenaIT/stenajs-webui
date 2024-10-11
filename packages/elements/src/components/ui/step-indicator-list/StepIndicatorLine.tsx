@@ -20,7 +20,7 @@ export const StepIndicatorLine: React.FC<StepIndicatorLineProps> = ({
         styles.line,
         isCurrentStep && styles.currentStep,
         isPassedStep && styles.passedStep,
-        className
+        className,
       )}
     />
   );

@@ -12,7 +12,7 @@ interface Props<TItem> {
 }
 
 export const StandardTableRowExpansion = function StandardTableRowExpansion<
-  TItem
+  TItem,
 >({ item }: Props<TItem>) {
   const { renderRowExpansion, enableExpandCollapse } = useStandardTableConfig();
   const { isExpanded, toggleRowExpanded } = useExpandCollapseActions(item);

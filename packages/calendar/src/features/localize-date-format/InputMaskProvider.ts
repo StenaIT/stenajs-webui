@@ -3,7 +3,7 @@ export const monthMask = [/[0-1]/, /\d/];
 export const dayMask = [/[0-3]/, /\d/];
 
 export const createInputMaskForDateFormat = (
-  dateFormat: string // For example: yyyy-MM-dd
+  dateFormat: string, // For example: yyyy-MM-dd
 ): Array<string | RegExp> => {
   const l = splitByNewLetter(dateFormat);
   return l.flatMap(tokenToMask);

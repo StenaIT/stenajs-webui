@@ -30,7 +30,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(function Icon(
     display,
     ...props
   },
-  ref
+  ref,
 ) {
   if (!icon) {
     return null;

@@ -12,16 +12,16 @@ import { CustomCellFormatters } from "../../../common/CellFormatters";
 export const createHtmlConfig = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   items: Array<TItem>,
-  formatters?: CustomCellFormatters<TItem, TColumnKey>
+  formatters?: CustomCellFormatters<TItem, TColumnKey>,
 ): string => {
   const groupConfigsAndIds = createGroupConfigAndIdsForRows(
     "columnGroups" in config ? config.columnGroups : undefined,
     "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
-    "columnOrder" in config ? config.columnOrder : undefined
+    "columnOrder" in config ? config.columnOrder : undefined,
   );
 
   const headerRows: Array<string> = [];

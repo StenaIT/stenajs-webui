@@ -10,8 +10,8 @@ describe("CellTransformer", () => {
               { x: "hej" },
               (item) => item.x,
               undefined,
-              undefined
-            )
+              undefined,
+            ),
           ).toStrictEqual("<td>hej</td>");
         });
       });
@@ -22,8 +22,8 @@ describe("CellTransformer", () => {
               { x: 123 },
               (item) => item.x,
               undefined,
-              undefined
-            )
+              undefined,
+            ),
           ).toStrictEqual("<td>123</td>");
         });
       });
@@ -35,8 +35,8 @@ describe("CellTransformer", () => {
                 { x: true },
                 (item) => item.x,
                 undefined,
-                undefined
-              )
+                undefined,
+              ),
             ).toStrictEqual("<td>Y</td>");
           });
         });
@@ -47,8 +47,8 @@ describe("CellTransformer", () => {
                 { x: false },
                 (item) => item.x,
                 undefined,
-                undefined
-              )
+                undefined,
+              ),
             ).toStrictEqual("<td></td>");
           });
         });
@@ -61,8 +61,8 @@ describe("CellTransformer", () => {
               { x: date },
               (item) => item.x,
               undefined,
-              undefined
-            )
+              undefined,
+            ),
           ).toStrictEqual("<td>2020-05-09 12:00</td>");
         });
       });
@@ -75,8 +75,8 @@ describe("CellTransformer", () => {
             { x: date },
             (item) => item.x,
             undefined,
-            () => "hello"
-          )
+            () => "hello",
+          ),
         ).toStrictEqual("<td>hello</td>");
       });
     });
@@ -90,8 +90,8 @@ describe("CellTransformer", () => {
               () => null,
               undefined,
               undefined,
-              () => "custom"
-            )
+              () => "custom",
+            ),
           ).toStrictEqual("<td>custom</td>");
         });
       });
@@ -104,8 +104,8 @@ describe("CellTransformer", () => {
               () => null,
               undefined,
               undefined,
-              () => 3
-            )
+              () => 3,
+            ),
           ).toStrictEqual("<td>3</td>");
         });
       });

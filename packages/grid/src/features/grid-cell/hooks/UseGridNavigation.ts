@@ -91,7 +91,7 @@ export interface OnCellNavigationEvent extends OnCellMoveEvent {
 }
 
 export const useGridNavigation = (
-  options: UseGridNavigationOptions
+  options: UseGridNavigationOptions,
 ): UseGridNavigationResult => {
   const {
     rowIndex,
@@ -114,7 +114,7 @@ export const useGridNavigation = (
         numCols,
         edgeMode,
         onCellMove,
-        onCellNavigation
+        onCellNavigation,
       ),
     [
       tableId,
@@ -125,17 +125,17 @@ export const useGridNavigation = (
       edgeMode,
       onCellMove,
       onCellNavigation,
-    ]
+    ],
   );
 
   const onKeyDown = useMemo(
     () => createKeyDownHandler(moveHandler),
-    [moveHandler]
+    [moveHandler],
   );
 
   const id = useMemo(
     () => createCellId(tableId, rowIndex, colIndex),
-    [tableId, rowIndex, colIndex]
+    [tableId, rowIndex, colIndex],
   );
 
   const requiredProps = useMemo(
@@ -144,7 +144,7 @@ export const useGridNavigation = (
       onKeyDown,
       id,
     }),
-    [onKeyDown, id]
+    [onKeyDown, id],
   );
 
   return {
@@ -165,7 +165,7 @@ const createMoveHandler =
     numCols: number,
     edgeMode?: TableEdgeMoveMode,
     onCellMove?: CellMoveHandler,
-    onCellNavigation?: CellNavigationHandler
+    onCellNavigation?: CellNavigationHandler,
   ): MoveHandler =>
   (direction) => {
     const pos = getNextPositionWrappedOrClamped(
@@ -174,7 +174,7 @@ const createMoveHandler =
       numRows,
       numCols,
       direction,
-      edgeMode
+      edgeMode,
     );
 
     const colDidChange = colIndex !== pos.colIndex;
@@ -212,7 +212,7 @@ const createMoveHandler =
 const createCellId = (
   tableId: string,
   rowIndex: number,
-  colIndex: number
+  colIndex: number,
 ): string => ensureDomIdIsCorrect(`table-${tableId}-${rowIndex}-${colIndex}`);
 
 const createKeyDownHandler =
@@ -247,7 +247,7 @@ type FocusOnCellFunc = (tableId: string, pos: CellIndices) => void;
 
 export const focusOnCell: FocusOnCellFunc = (tableId, pos) => {
   const el = document.getElementById(
-    createCellId(tableId, pos.rowIndex, pos.colIndex)
+    createCellId(tableId, pos.rowIndex, pos.colIndex),
   );
   if (el) {
     el.focus();

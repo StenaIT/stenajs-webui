@@ -12,7 +12,7 @@ export const useDateRangeHandlers = (
     hideCalendarInternal,
     setFirstFocusedInput,
     setCurrentPanel,
-  }: UseInputStatesResult
+  }: UseInputStatesResult,
 ) => {
   const inputLeftChangeHandler = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ export const useDateRangeHandlers = (
         });
       }
     },
-    [onValueChange, endDate]
+    [onValueChange, endDate],
   );
 
   const inputRightChangeHandler = useCallback(
@@ -35,7 +35,7 @@ export const useDateRangeHandlers = (
         });
       }
     },
-    [onValueChange, startDate]
+    [onValueChange, startDate],
   );
 
   const showCalendar = useCallback(() => {

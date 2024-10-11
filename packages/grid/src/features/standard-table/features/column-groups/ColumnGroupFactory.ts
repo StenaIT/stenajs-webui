@@ -13,7 +13,7 @@ export interface GroupConfigAndId<TColumnKey extends string> {
 export const createGroupConfigAndIdsForRows = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   columnGroups:
     | StandardTableConfigWithGroups<
@@ -31,7 +31,7 @@ export const createGroupConfigAndIdsForRows = <
     | undefined,
   columnOrder:
     | StandardTableConfigWithNoGroups<TItem, TColumnKey>["columnOrder"]
-    | undefined
+    | undefined,
 ): Array<GroupConfigAndId<TColumnKey>> => {
   if (columnGroups) {
     return compact(
@@ -41,11 +41,11 @@ export const createGroupConfigAndIdsForRows = <
           groupId,
           groupConfig,
         };
-      }) ?? []
+      }) ?? [],
     )
       .filter((item) => (item.groupConfig?.columnOrder.length ?? 0) > 0)
       .map<GroupConfigAndId<TColumnKey>>(
-        (p) => p as GroupConfigAndId<TColumnKey>
+        (p) => p as GroupConfigAndId<TColumnKey>,
       );
   }
   return [

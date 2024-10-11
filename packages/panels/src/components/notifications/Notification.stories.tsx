@@ -103,7 +103,7 @@ export const Demo = () => {
             text={"Liverpool (Birkenhead) / Belfast service - Shared cabins"}
             timestamp={`${formatDistance(
               new Date(),
-              subMinutes(new Date(), 3)
+              subMinutes(new Date(), 3),
             )} ago`}
             unread
             icon={stenaQuestionBubble}
@@ -118,7 +118,7 @@ export const Demo = () => {
             text={"Plug-ins"}
             timestamp={`${formatDistance(
               new Date(),
-              subMinutes(new Date(), 12)
+              subMinutes(new Date(), 12),
             )} ago`}
             unread
             icon={stenaPlugin}
@@ -136,7 +136,7 @@ export const Demo = () => {
             text={"1 booking confirmed"}
             timestamp={`${formatDistance(
               new Date(),
-              subMinutes(new Date(), 18)
+              subMinutes(new Date(), 18),
             )} ago`}
             icon={stenaCheckCircle}
             iconAriaLabel={"Information"}
@@ -151,7 +151,7 @@ export const Demo = () => {
             text={"Booking 87654654 cancelled"}
             timestamp={`${formatDistance(
               new Date(),
-              subMinutes(new Date(), 18)
+              subMinutes(new Date(), 18),
             )} ago`}
             icon={stenaMinus}
             iconAriaLabel={"Information"}
@@ -168,7 +168,7 @@ export const Demo = () => {
             text={"1 booking not added"}
             timestamp={`${formatDistance(
               new Date(),
-              subMinutes(new Date(), 8)
+              subMinutes(new Date(), 8),
             )} ago`}
             icon={stenaExclamationTriangle}
             iconAriaLabel={"Information"}

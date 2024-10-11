@@ -20,7 +20,7 @@ type UseDialogCallbacks<TProps, TPromiseResolve> = {
 
 export type UseDialogResult<TProps, TPromiseResolve> = [
   ReactNode,
-  UseDialogCallbacks<TProps, TPromiseResolve>
+  UseDialogCallbacks<TProps, TPromiseResolve>,
 ];
 
 export interface DialogOptions {
@@ -38,7 +38,7 @@ export interface DialogOptions {
 
 export function useDialog<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
-  options: DialogOptions
+  options: DialogOptions,
 ): UseDialogResult<TProps, TPromiseResolve> {
   const localRef = useRef<HTMLDialogElement>(null);
   const currentRef = options.ref ?? localRef;
@@ -58,7 +58,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
         (resolve, reject) => {
           resolveRef.current = resolve;
           rejectRef.current = reject;
-        }
+        },
       );
       setClosing(false);
       setContentVisible(true);
@@ -71,7 +71,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
       }
       return promiseRef.current;
     },
-    [currentRef, options.modal]
+    [currentRef, options.modal],
   );
 
   const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
@@ -88,10 +88,10 @@ export function useDialog<TProps, TPromiseResolve = void>(
           modalComponentProps.current = undefined;
           options.onResolve?.();
         },
-        { once: true }
+        { once: true },
       );
     },
-    [currentRef, options]
+    [currentRef, options],
   );
 
   const onClose = useCallback(() => {
@@ -117,10 +117,10 @@ export function useDialog<TProps, TPromiseResolve = void>(
           options.onReject?.();
           modalComponentProps.current = undefined;
         },
-        { once: true }
+        { once: true },
       );
     },
-    [currentRef, options]
+    [currentRef, options],
   );
 
   const onClick = useCallback<MouseEventHandler<HTMLDialogElement>>(
@@ -141,7 +141,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
         reject();
       }
     },
-    [currentRef, reject]
+    [currentRef, reject],
   );
 
   const dialogElement = useMemo<ReactNode>(
@@ -181,7 +181,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
       reject,
       Comp,
       key,
-    ]
+    ],
   );
 
   return [dialogElement, { show, reject }];

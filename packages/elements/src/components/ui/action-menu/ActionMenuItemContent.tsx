@@ -32,7 +32,7 @@ export const ActionMenuItemContent = forwardRef<
     fullWidthBottomContent,
     ...props
   },
-  ref
+  ref,
 ) {
   const { onKeyDown, innerRef } = useActionMenuLogic(props, ref);
 

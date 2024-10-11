@@ -3,7 +3,7 @@ import { useBoolean } from "./UseBoolean";
 import { useEventListener } from "./UseEventListener";
 
 export const useMouseIsEntered = <TElement extends HTMLElement>(
-  ref: RefObject<TElement>
+  ref: RefObject<TElement>,
 ) => {
   const [mouseIsEntered, setMouseIsEntered, setMouseIsNotEntered] =
     useBoolean(false);

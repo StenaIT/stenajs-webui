@@ -37,7 +37,7 @@ export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
   const screenReaderStepStatusText = getCurrentScreenReaderStepStatus(
     screenReaderCurrentStepText,
     screenReaderPassedStepText,
-    status
+    status,
   );
   return (
     <li id={id} className={cx(styles.item, className)} {...getDataProps(rest)}>
@@ -53,7 +53,7 @@ export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
           styles.text,
           isCurrentStep && styles.currentStep,
           isPassedStep && styles.passedStep,
-          textClassName
+          textClassName,
         )}
       >
         {label}
@@ -65,7 +65,7 @@ export const StepIndicatorItem: React.FC<StepIndicatorItemProps> = ({
 const getCurrentScreenReaderStepStatus = (
   screenReaderCurrentStepText: string,
   screenReaderPassedStepText: string,
-  status?: Status
+  status?: Status,
 ): string | undefined => {
   if (status === "current") {
     return screenReaderCurrentStepText;

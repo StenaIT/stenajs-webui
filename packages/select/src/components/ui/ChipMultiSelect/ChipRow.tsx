@@ -28,7 +28,7 @@ export function ChipRow<TValue extends ChipRowItem>({
                 label={v.label}
                 onClickRemove={() =>
                   onValueChange?.(
-                    value?.filter((f) => f.value !== v.value) ?? []
+                    value?.filter((f) => f.value !== v.value) ?? [],
                   )
                 }
               />

@@ -8,7 +8,7 @@ export type ColumnIndexPerColumnId<TColumnKey extends string> = Record<
 >;
 
 export interface ColumnIndexPerColumnIdCalculationResult<
-  TColumnKey extends string
+  TColumnKey extends string,
 > {
   columnIndexPerColumnId: ColumnIndexPerColumnId<TColumnKey>;
   numNavigableColumns: number;
@@ -17,14 +17,14 @@ export interface ColumnIndexPerColumnIdCalculationResult<
 export const calculateColumnIndexPerColumnId = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
-  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>
+  config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
 ): ColumnIndexPerColumnIdCalculationResult<TColumnKey> => {
   const groupConfigs = createGroupConfigAndIdsForRows(
     "columnGroups" in config ? config.columnGroups : undefined,
     "columnGroupOrder" in config ? config.columnGroupOrder : undefined,
-    "columnOrder" in config ? config.columnOrder : undefined
+    "columnOrder" in config ? config.columnOrder : undefined,
   );
   const columnIndexPerColumnId = {} as ColumnIndexPerColumnId<TColumnKey>;
   let currentIndex = 0;
@@ -48,5 +48,5 @@ export const calculateColumnIndexPerColumnId = <
 };
 
 const isColumnNavigable = <TItem, TColumnKey extends string>(
-  columnConfig: StandardTableColumnConfig<TItem, unknown, TColumnKey>
+  columnConfig: StandardTableColumnConfig<TItem, unknown, TColumnKey>,
 ): boolean => !columnConfig.disableGridCell;

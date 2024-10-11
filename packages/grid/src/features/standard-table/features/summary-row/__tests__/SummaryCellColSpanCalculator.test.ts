@@ -10,7 +10,7 @@ describe("SummaryCellColSpanCalculator", () => {
             b: { summaryCellColSpan: 2 },
             c: {},
             d: {},
-          })
+          }),
         ).toEqual([
           { columnId: "a", colSpan: 1 },
           { columnId: "b", colSpan: 2 },
@@ -26,7 +26,7 @@ describe("SummaryCellColSpanCalculator", () => {
             b: {},
             c: {},
             d: {},
-          })
+          }),
         ).toEqual([
           { columnId: "a", colSpan: 3 },
           { columnId: "d", colSpan: 1 },
@@ -41,7 +41,7 @@ describe("SummaryCellColSpanCalculator", () => {
             b: {},
             c: { summaryCellColSpan: 3 },
             d: {},
-          })
+          }),
         ).toEqual([
           { columnId: "a", colSpan: 1 },
           { columnId: "b", colSpan: 1 },
@@ -54,7 +54,7 @@ describe("SummaryCellColSpanCalculator", () => {
             c: { summaryCellColSpan: 8 },
             d: {},
             e: {},
-          })
+          }),
         ).toEqual([
           { columnId: "a", colSpan: 1 },
           { columnId: "b", colSpan: 1 },

@@ -14,7 +14,7 @@ interface SearchFilterChipProps<TFormModel, TSectionKey> {
 
 export const SearchFilterChip = function SearchFilterChip<
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >({
   sectionId,
   label,
@@ -27,7 +27,7 @@ export const SearchFilterChip = function SearchFilterChip<
   const setFormModelFields = useCallback(
     (fields: Partial<TFormModel>) =>
       dispatch(actions.setFormModelFields(fields)),
-    [dispatch, actions]
+    [dispatch, actions],
   );
 
   const onClickRemoveHandler = useCallback(() => {

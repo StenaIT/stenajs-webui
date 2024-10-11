@@ -60,7 +60,7 @@ export const TravelDateRangeTextInputFields: React.FC<
         onBlur={(ev) => {
           const startDate = reformatLocalizedDateString(
             ev.target.value,
-            localeCode
+            localeCode,
           );
           if (startDate && startDate !== value?.startDate) {
             onValueChange?.({ startDate });
@@ -82,7 +82,7 @@ export const TravelDateRangeTextInputFields: React.FC<
         onBlur={(ev) => {
           const endDate = reformatLocalizedDateString(
             ev.target.value,
-            localeCode
+            localeCode,
           );
           if (endDate && endDate !== value?.endDate) {
             onValueChange?.({ endDate });

@@ -6,11 +6,11 @@ interface SortOrderByIdSelectors<TStoreState> {
 }
 
 type SortOrderByIdStateProvider<TStoreState> = (
-  state: TStoreState
+  state: TStoreState,
 ) => SortOrderByIdState;
 
 export const createSortOrderByIdSelectors = <TStoreState>(
-  rootStateProvider: SortOrderByIdStateProvider<TStoreState>
+  rootStateProvider: SortOrderByIdStateProvider<TStoreState>,
 ): SortOrderByIdSelectors<TStoreState> => {
   return {
     getSortOrderByIdState: (state) => {

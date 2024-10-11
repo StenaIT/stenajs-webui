@@ -79,7 +79,7 @@ export interface GridCellRequiredProps
  */
 export const useGridCell = <TValue>(
   value: TValue,
-  options: UseGridCellOptions<TValue>
+  options: UseGridCellOptions<TValue>,
 ): UseGridCellResult<TValue> => {
   const { tableId } = useGridNavigationOptionsFromContext(options);
   const nav = useGridNavigation(options);
@@ -90,7 +90,7 @@ export const useGridCell = <TValue>(
       rowIndex: options.rowIndex,
       colIndex: options.colIndex,
     }),
-    [options.rowIndex, options.colIndex]
+    [options.rowIndex, options.colIndex],
   );
 
   const startEditing = useCallback(() => {
@@ -113,14 +113,14 @@ export const useGridCell = <TValue>(
       edit.stopEditing();
       nav.moveHandler(direction);
     },
-    [edit, nav]
+    [edit, nav],
   );
 
   const move = useCallback(
     (direction: MoveDirection) => {
       nav.moveHandler(direction);
     },
-    [nav]
+    [nav],
   );
 
   const onKeyDown = useCallback<KeyboardEventHandler>(
@@ -132,7 +132,7 @@ export const useGridCell = <TValue>(
         }
       }
     },
-    [edit, nav.requiredProps]
+    [edit, nav.requiredProps],
   );
 
   const requiredProps = useMemo(
@@ -141,7 +141,7 @@ export const useGridCell = <TValue>(
       onKeyDown,
       onDoubleClick: edit.onDoubleClick,
     }),
-    [onKeyDown, edit.onDoubleClick, nav.requiredProps]
+    [onKeyDown, edit.onDoubleClick, nav.requiredProps],
   );
 
   return {

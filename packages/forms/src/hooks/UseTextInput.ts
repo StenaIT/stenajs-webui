@@ -58,7 +58,7 @@ export const useTextInput = <TElement extends TextInputElement>(
     onBlur,
     onKeyDown,
     autoFocus,
-  }: UseTextInputOptions<TElement>
+  }: UseTextInputOptions<TElement>,
 ): UseTextInputHookResult<TElement> => {
   useSelectAllOnMount(ref, !!moveCursorToEndOnMount, !!selectAllOnMount);
 
@@ -71,7 +71,7 @@ export const useTextInput = <TElement extends TextInputElement>(
       onMove,
       onDone,
       onBlur,
-      onFocus
+      onFocus,
     );
 
   const onChangeHandler = useCallback<ChangeEventHandler<TElement>>(
@@ -79,7 +79,7 @@ export const useTextInput = <TElement extends TextInputElement>(
       onChange?.(ev);
       onValueChange?.(ev.target.value);
     },
-    [onChange, onValueChange]
+    [onChange, onValueChange],
   );
 
   return {

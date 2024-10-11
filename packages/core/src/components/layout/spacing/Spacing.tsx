@@ -10,5 +10,5 @@ export interface SpacingProps extends BoxProps {
 export const Spacing = forwardRef<HTMLDivElement, SpacingProps>(
   function Spacing({ num = 1, ...props }, ref) {
     return <Box spacing={num} ref={ref} {...props} />;
-  }
+  },
 );

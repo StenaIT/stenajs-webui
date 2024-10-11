@@ -10,14 +10,14 @@ export interface EntityByIdActions<T extends EntityWithId> {
   setEntity: (entity: T) => EntityByIdSetEntityAction<T>;
   setEntityFields: (
     id: string,
-    fields: Partial<T>
+    fields: Partial<T>,
   ) => EntityByIdSetEntityFieldsAction<T>;
   clearEntity: (id: string) => EntityByIdClearEntityAction;
   clearAllEntities: () => EntityByIdClearAllEntitiesAction;
 }
 
 export const createEntityByIdActions = <
-  T extends EntityWithId
+  T extends EntityWithId,
 >(): EntityByIdActions<T> => ({
   setEntity: (entity) => ({
     type: "ENTITY_BY_ID:SET_ENTITY",

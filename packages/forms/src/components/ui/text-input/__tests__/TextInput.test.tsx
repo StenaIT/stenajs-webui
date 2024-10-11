@@ -16,7 +16,7 @@ describe("TextInput", () => {
             value={""}
             onValueChange={setValueMock}
             aria-label={ariaLabel}
-          />
+          />,
         );
 
         const input = getByLabelText(ariaLabel);
@@ -34,7 +34,7 @@ describe("TextInput", () => {
             value={""}
             onValueChange={setValueMock}
             aria-label={ariaLabel}
-          />
+          />,
         );
 
         const input = getByLabelText(ariaLabel);
@@ -63,7 +63,7 @@ describe("TextInput", () => {
               onValueChange={setValueMock}
               onMove={() => {}}
               aria-label={ariaLabel}
-            />
+            />,
           );
 
           const input = getByLabelText(ariaLabel);
@@ -92,7 +92,7 @@ describe("TextInput", () => {
               onValueChange={setValueMock}
               onChange={() => {}}
               aria-label={ariaLabel}
-            />
+            />,
           );
 
           const input = getByLabelText(ariaLabel);
@@ -121,7 +121,7 @@ describe("TextInput", () => {
               onValueChange={setValueMock}
               onKeyDown={() => {}}
               aria-label={ariaLabel}
-            />
+            />,
           );
 
           const input = getByLabelText(ariaLabel);
@@ -149,7 +149,7 @@ describe("TextInput", () => {
             value={""}
             onChange={setValueMock}
             aria-label={ariaLabel}
-          />
+          />,
         );
 
         const input = getByLabelText(ariaLabel);
@@ -171,7 +171,7 @@ describe("TextInput", () => {
             value={""}
             onKeyDown={setValueMock}
             aria-label={ariaLabel}
-          />
+          />,
         );
 
         const input = getByLabelText(ariaLabel);
@@ -195,7 +195,7 @@ describe("TextInput", () => {
             onChange={setValueMock2}
             onKeyDown={setValueMock}
             aria-label={ariaLabel}
-          />
+          />,
         );
 
         const input = getByLabelText(ariaLabel);

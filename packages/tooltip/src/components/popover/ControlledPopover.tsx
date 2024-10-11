@@ -59,7 +59,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
         onRequestClose();
       }
     },
-    [onRequestClose]
+    [onRequestClose],
   );
 
   const { refs, floatingStyles, context } = useFloating({
@@ -111,7 +111,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
                 style={transitionStyles}
                 className={cx(
                   moduleStyles.floating,
-                  disablePadding && moduleStyles.disablePadding
+                  disablePadding && moduleStyles.disablePadding,
                 )}
               >
                 {children}

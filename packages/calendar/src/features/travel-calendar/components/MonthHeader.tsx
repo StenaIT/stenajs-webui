@@ -50,7 +50,7 @@ export const MonthHeader: React.FC<MonthHeaderProps> = ({
         rightIcon={visiblePanel === "calendar" ? stenaAngleDown : stenaAngleUp}
         onClick={() =>
           setVisiblePanel(
-            visiblePanel === "calendar" ? "month-picker" : "calendar"
+            visiblePanel === "calendar" ? "month-picker" : "calendar",
           )
         }
         ref={monthPickerButtonRef}

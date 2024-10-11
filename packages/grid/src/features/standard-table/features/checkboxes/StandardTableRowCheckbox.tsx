@@ -45,7 +45,7 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
           onValueChange?.(value);
         }
       },
-      [onValueChange, onValueChangeAndShift, shiftPressedRef]
+      [onValueChange, onValueChangeAndShift, shiftPressedRef],
     );
 
     return (
@@ -57,5 +57,5 @@ export const StandardTableRowCheckbox: React.FC<Props> = React.memo(
         {...requiredProps}
       />
     );
-  }
+  },
 );

@@ -18,7 +18,7 @@ export const useOnNoMouseMovement = (callback: () => void, delay: number) => {
 
     return () => {
       events.forEach((event) =>
-        window.removeEventListener(event, onIdleChange)
+        window.removeEventListener(event, onIdleChange),
       );
     };
   }, [delay]);
