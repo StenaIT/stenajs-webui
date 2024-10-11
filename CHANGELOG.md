@@ -1,3 +1,22 @@
+# v21.11.0 (Fri Oct 11 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Update and clear out unused deps [#849](https://github.com/StenaIT/stenajs-webui/pull/849) ([@mattias800](https://github.com/mattias800))
+
+#### 🐛 Bug Fix
+
+- Apply security best practices [#790](https://github.com/StenaIT/stenajs-webui/pull/790) ([@step-security-bot](https://github.com/step-security-bot) [@pethers](https://github.com/pethers))
+
+#### Authors: 3
+
+- James Pether Sörling ([@pethers](https://github.com/pethers))
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- StepSecurity Bot ([@step-security-bot](https://github.com/step-security-bot))
+
+---
+
 # v21.10.1 (Thu Oct 10 2024)
 
 #### 🐛 Bug Fix
