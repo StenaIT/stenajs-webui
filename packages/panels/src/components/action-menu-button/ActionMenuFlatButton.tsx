@@ -6,7 +6,7 @@ export interface ActionMenuFlatButtonProps
   extends Omit<ActionMenuButtonProps, "buttonComponent"> {}
 
 export const ActionMenuFlatButton: React.FC<ActionMenuFlatButtonProps> = (
-  props
+  props,
 ) => {
   return <ActionMenuButton buttonComponent={FlatButton} {...props} />;
 };

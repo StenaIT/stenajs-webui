@@ -6,7 +6,7 @@ describe("CellTransformer", () => {
       describe("and value is string", () => {
         it("returns value and type string", () => {
           expect(
-            transformItemToCell({ x: "hej" }, (item) => item.x, undefined)
+            transformItemToCell({ x: "hej" }, (item) => item.x, undefined),
           ).toStrictEqual({
             value: "hej",
             type: "string",
@@ -16,7 +16,7 @@ describe("CellTransformer", () => {
       describe("and value is number", () => {
         it("returns value and type number", () => {
           expect(
-            transformItemToCell({ x: 123 }, (item) => item.x, undefined)
+            transformItemToCell({ x: 123 }, (item) => item.x, undefined),
           ).toStrictEqual({
             value: 123,
             type: "number",
@@ -27,7 +27,7 @@ describe("CellTransformer", () => {
         describe("and value is true", () => {
           it("returns Y and type string", () => {
             expect(
-              transformItemToCell({ x: true }, (item) => item.x, undefined)
+              transformItemToCell({ x: true }, (item) => item.x, undefined),
             ).toStrictEqual({
               value: "Y",
               type: "string",
@@ -37,7 +37,7 @@ describe("CellTransformer", () => {
         describe("and value is false", () => {
           it("returns empty and type string", () => {
             expect(
-              transformItemToCell({ x: false }, (item) => item.x, undefined)
+              transformItemToCell({ x: false }, (item) => item.x, undefined),
             ).toStrictEqual({
               value: "",
               type: "string",
@@ -49,7 +49,7 @@ describe("CellTransformer", () => {
         it("returns formatted date and type string", () => {
           const date = new Date(2020, 4, 9, 12, 0, 0);
           expect(
-            transformItemToCell({ x: date }, (item) => item.x, undefined)
+            transformItemToCell({ x: date }, (item) => item.x, undefined),
           ).toStrictEqual({
             value: "2020-05-09 12:00",
             type: "string",
@@ -64,8 +64,8 @@ describe("CellTransformer", () => {
           transformItemToCell(
             { x: date },
             (item) => item.x,
-            () => "hello"
-          )
+            () => "hello",
+          ),
         ).toStrictEqual({
           value: "hello",
           type: "string",
@@ -81,8 +81,8 @@ describe("CellTransformer", () => {
               date,
               () => null,
               undefined,
-              () => "custom"
-            )
+              () => "custom",
+            ),
           ).toStrictEqual({
             value: "custom",
             type: "string",
@@ -97,8 +97,8 @@ describe("CellTransformer", () => {
               date,
               () => null,
               undefined,
-              () => 3
-            )
+              () => 3,
+            ),
           ).toStrictEqual({
             value: 3,
             type: "number",

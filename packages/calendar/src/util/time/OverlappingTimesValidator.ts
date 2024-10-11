@@ -11,7 +11,7 @@ export interface TimeIntervalNumber {
 }
 
 export const transformTimeIntervalToNumbers = (
-  interval: TimeInterval
+  interval: TimeInterval,
 ): TimeIntervalNumber => ({
   startTime: transformTimeStringToNumber(interval.startTime),
   endTime: transformTimeStringToNumber(interval.endTime),
@@ -19,7 +19,7 @@ export const transformTimeIntervalToNumbers = (
 
 export const timesOverlap = (
   i1: TimeIntervalNumber,
-  i2: TimeIntervalNumber
+  i2: TimeIntervalNumber,
 ): boolean => {
   if (
     i1.startTime == null ||
@@ -33,7 +33,7 @@ export const timesOverlap = (
 };
 
 export const hasOverlappingTimes = (
-  intervals: Array<TimeIntervalNumber>
+  intervals: Array<TimeIntervalNumber>,
 ): boolean => {
   for (let i = 0; i < intervals.length - 1; i++) {
     for (let j = i + 1; j < intervals.length; j++) {

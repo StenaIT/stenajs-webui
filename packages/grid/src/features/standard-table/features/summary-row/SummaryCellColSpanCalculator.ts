@@ -5,14 +5,14 @@ export interface ColumnIdAndColSpan<TColumnKey extends string> {
 
 export const getColumnsLimitedWithColSpan = <TColumnKey extends string>(
   columnOrder: Array<TColumnKey>,
-  columns: Record<TColumnKey, { summaryCellColSpan?: number }>
+  columns: Record<TColumnKey, { summaryCellColSpan?: number }>,
 ): Array<ColumnIdAndColSpan<TColumnKey>> => {
   const list: Array<ColumnIdAndColSpan<TColumnKey>> = [];
   for (let i = 0; i < columnOrder.length; i++) {
     const { summaryCellColSpan } = columns[columnOrder[i]];
     const realColSpan = Math.min(
       summaryCellColSpan ?? 1,
-      columnOrder.length - i
+      columnOrder.length - i,
     );
     list.push({ columnId: columnOrder[i], colSpan: realColSpan });
     const colSpan = summaryCellColSpan ?? 1;

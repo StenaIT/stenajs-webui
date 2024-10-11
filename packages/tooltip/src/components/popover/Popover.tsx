@@ -146,7 +146,7 @@ export const Popover: React.FC<PopoverProps> = ({
                 className={cx(
                   moduleStyles.floating,
                   disablePadding && moduleStyles.disablePadding,
-                  variant && moduleStyles.withIcon
+                  variant && moduleStyles.withIcon,
                 )}
               >
                 {typeof children === "function"
@@ -172,7 +172,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
 const hasTrigger = (
   triggerProp: TriggerProp,
-  triggerToCheck: PopoverTrigger
+  triggerToCheck: PopoverTrigger,
 ): boolean => {
   if (typeof triggerProp === "string") {
     return triggerProp === triggerToCheck;

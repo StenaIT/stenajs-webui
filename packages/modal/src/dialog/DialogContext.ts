@@ -9,5 +9,5 @@ export interface DialogContextValue<TResolveValue> {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const DialogContext = createContext<DialogContextValue<any> | undefined>(
-  undefined
+  undefined,
 );

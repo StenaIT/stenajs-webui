@@ -12,7 +12,7 @@ describe("StickyColumnGroupValidator", () => {
         expect(() =>
           ensureNoColumnsAreSticky({
             columns: { test: { sticky: false } },
-          } as any)
+          } as any),
         ).not.toThrow();
       });
     });
@@ -21,7 +21,7 @@ describe("StickyColumnGroupValidator", () => {
         expect(() =>
           ensureNoColumnsAreSticky({
             columns: { test: { sticky: true } },
-          } as any)
+          } as any),
         ).toThrow();
       });
     });
@@ -30,7 +30,7 @@ describe("StickyColumnGroupValidator", () => {
     describe("columnGroupOrder is missing", () => {
       it("throws", () => {
         expect(() =>
-          ensureAllColumnsInGroupHasFixedWidth({} as any, 0)
+          ensureAllColumnsInGroupHasFixedWidth({} as any, 0),
         ).toThrow();
       });
     });
@@ -41,8 +41,8 @@ describe("StickyColumnGroupValidator", () => {
             {
               columnGroupOrder: [],
             } as any,
-            0
-          )
+            0,
+          ),
         ).toThrow();
       });
     });
@@ -53,8 +53,8 @@ describe("StickyColumnGroupValidator", () => {
             {
               columnGroupOrder: ["first"],
             } as any,
-            0
-          )
+            0,
+          ),
         ).toThrow();
       });
     });
@@ -74,8 +74,8 @@ describe("StickyColumnGroupValidator", () => {
               },
               columnGroupOrder: ["first"],
             } as any,
-            0
-          )
+            0,
+          ),
         ).toThrow();
       });
     });
@@ -97,8 +97,8 @@ describe("StickyColumnGroupValidator", () => {
               },
               columnGroupOrder: ["first"],
             } as any,
-            0
-          )
+            0,
+          ),
         ).not.toThrow();
       });
     });

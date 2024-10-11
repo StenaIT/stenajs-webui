@@ -30,7 +30,7 @@ export function CreatableSelect<T>({
   }, [variant, styles]);
 
   const ClearIndicator = (
-    props: ClearIndicatorProps<T, false, GroupBase<T>>
+    props: ClearIndicatorProps<T, false, GroupBase<T>>,
   ) => <CloseButton aria-label={ariaLabelClear} onClick={props.clearValue} />;
 
   return (

@@ -11,7 +11,7 @@ export interface UseResultListBannerStateResult {
 }
 
 export const useResultListBannerState = (
-  initialState?: ResultListBannerState | undefined
+  initialState?: ResultListBannerState | undefined,
 ): UseResultListBannerStateResult => {
   const [bannerState, setBannerState] = useState(initialState);
 
@@ -22,14 +22,14 @@ export const useResultListBannerState = (
         items: listTexts.map<ResultItem>((text) => ({ text })),
       }));
     },
-    [setBannerState]
+    [setBannerState],
   );
 
   const setBannerResultWithErrors = useCallback(
     (errors: Array<Error>) => {
       setBannerResultWithTexts(errors.map((e) => e.message));
     },
-    [setBannerResultWithTexts]
+    [setBannerResultWithTexts],
   );
 
   const clearBannerResult = useCallback(() => {

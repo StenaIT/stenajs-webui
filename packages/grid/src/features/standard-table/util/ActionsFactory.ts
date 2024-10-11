@@ -21,53 +21,53 @@ export interface StandardTableActions<TColumnKey extends string> {
   collapseAll: () => StandardTableAction<TColumnKey>;
   sortBy: (
     columnId: TColumnKey,
-    desc?: boolean
+    desc?: boolean,
   ) => StandardTableAction<TColumnKey>;
   clearSortOrder: () => StandardTableAction<TColumnKey>;
   setLastSelectedId: (
-    lastSelectedId: string
+    lastSelectedId: string,
   ) => StandardTableAction<TColumnKey>;
 }
 
 export const createStandardTableActions = <TColumnKey extends string>(
   tableId: string,
-  actions: InternalStandardTableActions<TColumnKey>
+  actions: InternalStandardTableActions<TColumnKey>,
 ): StandardTableActions<TColumnKey> => {
   return {
     setSelectedIds: (ids) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "selectedIds"),
-        actions.selectedIds.setSelectedIds(ids)
+        actions.selectedIds.setSelectedIds(ids),
       ),
     clearSelection: () =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "selectedIds"),
-        actions.selectedIds.clearSelectedIds()
+        actions.selectedIds.clearSelectedIds(),
       ),
     expandByIds: (ids) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "expandedRows"),
-        actions.expandedRows.setSelectedIds(ids)
+        actions.expandedRows.setSelectedIds(ids),
       ),
     collapseAll: () =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "expandedRows"),
-        actions.expandedRows.clearSelectedIds()
+        actions.expandedRows.clearSelectedIds(),
       ),
     sortBy: (columnId: TColumnKey, desc?: boolean) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "sortOrder"),
-        actions.sortOrder.sortBy(columnId, desc ?? false)
+        actions.sortOrder.sortBy(columnId, desc ?? false),
       ),
     clearSortOrder: () =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "sortOrder"),
-        actions.sortOrder.clearSortOrder()
+        actions.sortOrder.clearSortOrder(),
       ),
     setLastSelectedId: (lastSelectedId: string) =>
       reducerIdGateAction(
         getReducerIdFor(tableId, "fields"),
-        actions.fields.setEntityFields({ lastSelectedId })
+        actions.fields.setEntityFields({ lastSelectedId }),
       ),
   };
 };

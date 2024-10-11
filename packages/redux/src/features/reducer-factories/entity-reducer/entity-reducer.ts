@@ -4,13 +4,13 @@ import { Reducer } from "redux";
 export type EntityState<T> = T;
 
 export const createEntityReducer = <T>(
-  initialEntity: T
+  initialEntity: T,
 ): Reducer<EntityState<T>, EntityAction<T>> => {
   const INITIAL_STATE = initialEntity;
 
   return (
     state: EntityState<T> = INITIAL_STATE,
-    action: EntityAction<T>
+    action: EntityAction<T>,
   ): EntityState<T> => {
     switch (action.type) {
       case "ENTITY:SET_ENTITY": {

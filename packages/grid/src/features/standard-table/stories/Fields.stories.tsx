@@ -81,7 +81,7 @@ export const ModifiedFields = () => {
             id: item.id,
             modified: true,
             newValue: "789",
-          })
+          }),
         ),
         onChange: onChangeNumPassengers,
       },
@@ -110,7 +110,7 @@ export const WarningWhenModifiedFieldIsEmpty = () => {
             id: item.id,
             modified: true,
             newValue: "",
-          })
+          }),
         ),
         onChange: onChangeNumPassengers,
       },

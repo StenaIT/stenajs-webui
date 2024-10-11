@@ -9,10 +9,10 @@ import { StandardTableColumnGroupConfig } from "@stenajs-webui/grid";
 export const transformTableHeaders = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
-  groupConfigs: Array<StandardTableColumnGroupConfig<TColumnKey>>
+  groupConfigs: Array<StandardTableColumnGroupConfig<TColumnKey>>,
 ): ZipCelXRow => {
   return flatten(
     groupConfigs.map((groupConfig) =>
@@ -24,22 +24,22 @@ export const transformTableHeaders = <
             columnConfig.columnLabel ??
             formatColumnIdToHeaderCellLabel(String(columnId)),
         };
-      })
-    )
+      }),
+    ),
   );
 };
 
 export const transformGroupHeaders = <TColumnKey extends string>(
-  groupConfigs: Array<StandardTableColumnGroupConfig<TColumnKey>>
+  groupConfigs: Array<StandardTableColumnGroupConfig<TColumnKey>>,
 ): ZipCelXRow => {
   return flatten(
     groupConfigs.map((groupConfig) =>
       groupConfig.columnOrder.map((_, index) => {
         return {
           type: "string",
-          value: index === 0 ? groupConfig.label ?? "" : "",
+          value: index === 0 ? (groupConfig.label ?? "") : "",
         };
-      })
-    )
+      }),
+    ),
   );
 };

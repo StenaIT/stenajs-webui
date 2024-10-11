@@ -17,13 +17,13 @@ describe("CalendarDataFactory", () => {
     });
     it("should return correct monthFormat", () => {
       expect(getMonthInYear(2018, Month.JANUARY, enGB).monthString).toBe(
-        "2018-01"
+        "2018-01",
       );
       expect(getMonthInYear(2018, Month.FEBRUARY, enGB).monthString).toBe(
-        "2018-02"
+        "2018-02",
       );
       expect(getMonthInYear(2018, Month.DECEMBER, enGB).monthString).toBe(
-        "2018-12"
+        "2018-12",
       );
     });
   });

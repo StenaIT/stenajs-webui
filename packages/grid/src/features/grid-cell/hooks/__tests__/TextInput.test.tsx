@@ -27,7 +27,7 @@ describe("useGridCell", () => {
         onValueChange={setValueMock}
         onMove={() => {}}
         aria-label={ariaLabel}
-      />
+      />,
     );
 
     const input = getByLabelText(ariaLabel);

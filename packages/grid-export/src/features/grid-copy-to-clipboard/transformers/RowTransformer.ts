@@ -9,31 +9,31 @@ import { CustomCellFormatters } from "../../../common/CellFormatters";
 export const transformTableRow = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   item: TItem,
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   groupConfigs: Array<StandardTableColumnGroupConfig<TColumnKey>>,
-  formatters?: CustomCellFormatters<TItem, TColumnKey>
+  formatters?: CustomCellFormatters<TItem, TColumnKey>,
 ): string => {
   return flatten(
     groupConfigs.map((groupConfig) =>
       groupConfig.columnOrder.map<string>((columnId) =>
-        transformCell(item, columnId, config, formatters)
-      )
-    )
+        transformCell(item, columnId, config, formatters),
+      ),
+    ),
   ).join("");
 };
 
 export const transformCell = <
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   item: TItem,
   columnId: TColumnKey,
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
-  formatters?: CustomCellFormatters<TItem, TColumnKey>
+  formatters?: CustomCellFormatters<TItem, TColumnKey>,
 ): string => {
   const columnConfig = config.columns[columnId];
   const formatter = formatters?.[columnId];
@@ -42,6 +42,6 @@ export const transformCell = <
     columnConfig.itemValueResolver,
     columnConfig.justifyContentCell,
     columnConfig.itemLabelFormatter,
-    formatter
+    formatter,
   );
 };

@@ -44,7 +44,7 @@ export const Tag: React.FC<TagProps> = ({
         styles[variant],
         styles[size],
         icon && styles.withIcon,
-        className
+        className,
       )}
       style={style}
       {...getDataProps(rest)}

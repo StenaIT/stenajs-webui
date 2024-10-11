@@ -3,7 +3,7 @@ import { format, isSameYear, Locale } from "date-fns";
 export const formatDateDescription = (
   date: Date,
   today: Date,
-  locale: Locale
+  locale: Locale,
 ) => {
   const year = isSameYear(date, today) ? "" : " y";
   if (locale.code.startsWith("en")) {
@@ -16,7 +16,7 @@ export const formatDateDescription = (
 export const formatDateDescriptionLong = (
   date: Date,
   today: Date,
-  locale: Locale
+  locale: Locale,
 ) => {
   const year = isSameYear(date, today) ? "" : " y";
   if (locale.code.startsWith("en")) {

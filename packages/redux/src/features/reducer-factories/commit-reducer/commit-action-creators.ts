@@ -11,7 +11,7 @@ export interface CommitReducerActions<TState> {
 }
 
 export const createCommitReducerActions = <TState>(
-  id: string
+  id: string,
 ): CommitReducerActions<TState> => {
   return {
     setValues: (values) => ({

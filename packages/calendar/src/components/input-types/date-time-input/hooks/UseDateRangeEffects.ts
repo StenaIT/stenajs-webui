@@ -3,7 +3,7 @@ import { RefObject, useEffect } from "react";
 export const useDateRangeEffects = (
   date: Date | undefined | null,
   setDateInFocus: (date: Date) => void,
-  dateInputRef: RefObject<HTMLInputElement>
+  dateInputRef: RefObject<HTMLInputElement>,
 ) => {
   useEffect(
     function moveFocusedDateWhenDateChanges() {
@@ -11,7 +11,7 @@ export const useDateRangeEffects = (
         setDateInFocus(date);
       }
     },
-    [date, setDateInFocus]
+    [date, setDateInFocus],
   );
 
   useEffect(
@@ -19,13 +19,13 @@ export const useDateRangeEffects = (
       if (dateInputRef.current) {
         if (date) {
           dateInputRef.current.valueAsDate = new Date(
-            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
           );
         } else {
           dateInputRef.current.valueAsDate = null;
         }
       }
     },
-    [date, dateInputRef]
+    [date, dateInputRef],
   );
 };

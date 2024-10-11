@@ -10,5 +10,5 @@ export const ColumnIndexPerColumnIdContext = createContext<
 
 export const useColumnIndexPerColumnIdContext = <TColumnKey extends string>() =>
   useContext(
-    ColumnIndexPerColumnIdContext
+    ColumnIndexPerColumnIdContext,
   ) as ColumnIndexPerColumnIdCalculationResult<TColumnKey>;

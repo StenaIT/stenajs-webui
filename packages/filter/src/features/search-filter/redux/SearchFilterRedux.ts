@@ -34,7 +34,7 @@ export type SearchFilterAction<TFormModel> =
   | ReducerIdGateAction<EntityAction<SearchFilterSettings>>;
 
 export const createSearchFilterInitialState = <TFormModel>(
-  initialFormModel: TFormModel
+  initialFormModel: TFormModel,
 ): SearchFilterState<TFormModel> => ({
   settings: {
     open: false,
@@ -45,20 +45,20 @@ export const createSearchFilterInitialState = <TFormModel>(
 
 export const createSearchFilterReducer = <TFormModel>(
   reducerId: string,
-  initialState: SearchFilterState<TFormModel>
+  initialState: SearchFilterState<TFormModel>,
 ) =>
   combineReducers({
     expandedSections: reducerIdGate(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdReducer<boolean>(initialState.expandedSections)
+      createValueByIdReducer<boolean>(initialState.expandedSections),
     ),
     formModel: reducerIdGate(
       getReducerIdFor(reducerId, "formModel"),
-      createEntityReducer<TFormModel>(initialState.formModel)
+      createEntityReducer<TFormModel>(initialState.formModel),
     ),
     settings: reducerIdGate(
       getReducerIdFor(reducerId, "settings"),
-      createEntityReducer<SearchFilterSettings>(initialState.settings)
+      createEntityReducer<SearchFilterSettings>(initialState.settings),
     ),
   });
 
@@ -66,72 +66,72 @@ export interface SearchFilterActions<TFormModel, TSectionKey extends string> {
   openFilters: () => SearchFilterAction<TFormModel>;
   closeFilters: () => SearchFilterAction<TFormModel>;
   setFormModelFields: (
-    fields: Partial<TFormModel>
+    fields: Partial<TFormModel>,
   ) => SearchFilterAction<TFormModel>;
   clearFormModel: () => SearchFilterAction<TFormModel>;
   expandSection: (section: TSectionKey) => SearchFilterAction<TFormModel>;
   collapseSection: (section: TSectionKey) => SearchFilterAction<TFormModel>;
   setSectionExpanded: (
     section: TSectionKey,
-    expanded: boolean
+    expanded: boolean,
   ) => SearchFilterAction<TFormModel>;
   clearExpandedSections: () => SearchFilterAction<TFormModel>;
 }
 
 export const createSearchFilterActions = <
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >(
   reducerId: string,
-  initialFormModel: TFormModel
+  initialFormModel: TFormModel,
 ): SearchFilterActions<TFormModel, TSectionKey> => ({
   openFilters: () =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "settings"),
       createEntityActions<SearchFilterSettings>().setEntityFields({
         open: true,
-      })
+      }),
     ),
   closeFilters: () =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "settings"),
       createEntityActions<SearchFilterSettings>().setEntityFields({
         open: false,
-      })
+      }),
     ),
   setFormModelFields: (fields: Partial<TFormModel>) =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "formModel"),
-      createEntityActions<TFormModel>().setEntityFields(fields)
+      createEntityActions<TFormModel>().setEntityFields(fields),
     ),
   clearFormModel: () =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "formModel"),
-      createEntityActions<TFormModel>().setEntity(initialFormModel)
+      createEntityActions<TFormModel>().setEntity(initialFormModel),
     ),
   expandSection: (section: TSectionKey) =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdActions<boolean>().setValue(section, true)
+      createValueByIdActions<boolean>().setValue(section, true),
     ),
   collapseSection: (section: TSectionKey) =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdActions<boolean>().setValue(section, false)
+      createValueByIdActions<boolean>().setValue(section, false),
     ),
   setSectionExpanded: (section: TSectionKey, expanded: boolean) =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdActions<boolean>().setValue(section, expanded)
+      createValueByIdActions<boolean>().setValue(section, expanded),
     ),
   clearExpandedSections: () =>
     reducerIdGateAction(
       getReducerIdFor(reducerId, "expandedSections"),
-      createValueByIdActions<boolean>().clearAllValues()
+      createValueByIdActions<boolean>().clearAllValues(),
     ),
 });
 
 export const getReducerIdFor = (
   reducerId: string,
-  reducerIdSuffix: keyof SearchFilterState<unknown>
+  reducerIdSuffix: keyof SearchFilterState<unknown>,
 ): string => `${reducerId}.${reducerIdSuffix}`;

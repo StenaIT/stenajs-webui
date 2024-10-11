@@ -34,14 +34,14 @@ export const SummaryCell = React.memo(function SummaryCell<TItem>({
   const activeBorderLeft = getCellBorder(
     borderFromGroup,
     disableBorderLeft,
-    borderLeft
+    borderLeft,
   );
 
   const stickyProps = stickyPropsPerColumnContext[columnId];
 
   const currentZIndex = stickyProps.sticky
-    ? zIndex ?? "var(--swui-sticky-column-z-index)"
-    : zIndex ?? 1;
+    ? (zIndex ?? "var(--swui-sticky-column-z-index)")
+    : (zIndex ?? 1);
 
   const shadow =
     stickyProps.sticky &&
@@ -49,15 +49,15 @@ export const SummaryCell = React.memo(function SummaryCell<TItem>({
     stickyProps.isFirstColumnInLastGroup
       ? "var(--swui-sticky-column-shadow-left)"
       : stickyProps.sticky && stickyProps.type === "column" && stickyProps.right
-      ? "var(--swui-sticky-column-shadow-left)"
-      : stickyProps.sticky
-      ? "var(--swui-sticky-column-shadow-right)"
-      : undefined;
+        ? "var(--swui-sticky-column-shadow-left)"
+        : stickyProps.sticky
+          ? "var(--swui-sticky-column-shadow-right)"
+          : undefined;
 
   const text = useMemo(() => summaryText?.({ items }), [items, summaryText]);
   const renderResult = useMemo(
     () => renderSummaryCell?.({ items, text }),
-    [items, renderSummaryCell, text]
+    [items, renderSummaryCell, text],
   );
 
   return (

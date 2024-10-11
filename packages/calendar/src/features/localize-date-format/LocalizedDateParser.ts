@@ -5,7 +5,7 @@ import { getLocaleForLocaleCode } from "./LocaleMapper";
 export const parseLocalizedDateString = (
   dateString: string,
   localeCode: string,
-  referenceDate?: Date
+  referenceDate?: Date,
 ): Date | undefined => {
   const locale = getLocaleForLocaleCode(localeCode);
 
@@ -19,7 +19,7 @@ export const parseLocalizedDateString = (
     referenceDate ?? new Date(),
     {
       locale: locale,
-    }
+    },
   );
 
   if (isNaN(date.getTime())) {

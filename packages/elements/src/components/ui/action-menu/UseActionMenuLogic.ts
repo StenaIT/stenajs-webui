@@ -11,7 +11,7 @@ interface Props extends Pick<ActionMenuItemProps, "disableCloseOnClick"> {
 
 export const useActionMenuLogic = <TElement extends HTMLElement>(
   { disableCloseOnClick, onClick }: Props,
-  ref: React.Ref<TElement>
+  ref: React.Ref<TElement>,
 ) => {
   const { close } = useContext(ActionMenuContext);
   const innerRef = useForwardedRef<TElement | null>(ref);
@@ -23,7 +23,7 @@ export const useActionMenuLogic = <TElement extends HTMLElement>(
       }
       onClick?.(ev);
     },
-    [onClick, close, disableCloseOnClick]
+    [onClick, close, disableCloseOnClick],
   );
 
   const focusManager = useFocusManager();

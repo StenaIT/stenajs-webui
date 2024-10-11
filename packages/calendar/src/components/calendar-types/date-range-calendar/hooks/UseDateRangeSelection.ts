@@ -17,14 +17,14 @@ export const useDateRangeSelection = <T>({
   const { currentPanel, setCurrentPanel } =
     useInternalPanelState(onChangePanel);
   const [dateInFocus, setDateInFocus] = useState(
-    () => initialDateInFocus ?? new Date()
+    () => initialDateInFocus ?? new Date(),
   );
 
   const onClickDay = useDateRangeOnClickDayHandler(
     value,
     onValueChange,
     focusedInput,
-    setFocusedInput
+    setFocusedInput,
   );
 
   const statePerMonthWithSelection = useMemo(
@@ -32,9 +32,9 @@ export const useDateRangeSelection = <T>({
       buildDayStateForDateRange(
         statePerMonth,
         value?.startDate,
-        value?.endDate
+        value?.endDate,
       ),
-    [statePerMonth, value?.endDate, value?.startDate]
+    [statePerMonth, value?.endDate, value?.startDate],
   );
 
   return {

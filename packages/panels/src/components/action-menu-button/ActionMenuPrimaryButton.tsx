@@ -7,7 +7,7 @@ export interface ActionMenuPrimaryButtonProps
     Pick<PrimaryButtonProps, "variant"> {}
 
 export const ActionMenuPrimaryButton: React.FC<ActionMenuPrimaryButtonProps> = (
-  props
+  props,
 ) => {
   return <ActionMenuButton buttonComponent={PrimaryButton} {...props} />;
 };

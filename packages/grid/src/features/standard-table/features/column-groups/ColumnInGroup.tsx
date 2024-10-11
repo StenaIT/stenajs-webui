@@ -22,7 +22,7 @@ interface ColumnGroupColumnItemProps<TColumnKey extends string> {
 }
 
 export const ColumnInGroup = function ColumnGroupColumnItem<
-  TColumnKey extends string
+  TColumnKey extends string,
 >({
   columnId,
   groupConfig,
@@ -63,21 +63,21 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
           background: isSticky ? "white" : "transparent",
           left: isStickyFirstGroup ? `var(--current-left-offset)` : undefined,
           right: isStickyLastGroup ? `0px` : undefined,
-          top: stickyHeader ? headerRowOffsetTop ?? "0px" : undefined,
+          top: stickyHeader ? (headerRowOffsetTop ?? "0px") : undefined,
           borderLeft: activeBorder,
           zIndex:
             stickyHeader && isStickyGroup
               ? "var(--swui-sticky-column-group-label-z-index)"
               : isStickyGroup
-              ? "var(--swui-sticky-group-group-z-index)"
-              : stickyHeader
-              ? zIndex ?? "var(--swui-sticky-header-column-group-z-index)"
-              : zIndex ?? 1,
+                ? "var(--swui-sticky-group-group-z-index)"
+                : stickyHeader
+                  ? (zIndex ?? "var(--swui-sticky-header-column-group-z-index)")
+                  : (zIndex ?? 1),
           boxShadow: isStickyFirstGroup
             ? "var(--swui-sticky-column-shadow-right)"
             : isStickyLastGroup
-            ? "var(--swui-sticky-column-shadow-left)"
-            : undefined,
+              ? "var(--swui-sticky-column-shadow-left)"
+              : undefined,
         } as CSSProperties
       }
     >
@@ -127,7 +127,7 @@ export const ColumnInGroup = function ColumnGroupColumnItem<
 
 const getActiveBorder = (
   borderFromGroup: string | undefined,
-  borderFromColumn: string | boolean | undefined
+  borderFromColumn: string | boolean | undefined,
 ): string | undefined => {
   if (borderFromGroup) {
     return borderFromGroup;

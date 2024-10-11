@@ -21,7 +21,7 @@ export interface StandardTableOnKeyDownArgs<TItem, TColumnKey extends string> {
 export type StandardTableConfig<
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = string
+  TColumnGroupKey extends string = string,
 > =
   | StandardTableConfigWithGroups<TItem, TColumnKey, TColumnGroupKey>
   | StandardTableConfigWithNoGroups<TItem, TColumnKey>;
@@ -29,7 +29,7 @@ export type StandardTableConfig<
 export interface StandardTableConfigWithGroups<
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string = string
+  TColumnGroupKey extends string = string,
 > extends StandardTableConfigBase<TItem, TColumnKey> {
   /**
    * Configs for the columns available in the table.
@@ -63,7 +63,7 @@ export interface StandardTableConfigWithGroups<
 
 export interface StandardTableConfigWithNoGroups<
   TItem,
-  TColumnKey extends string
+  TColumnKey extends string,
 > extends StandardTableConfigBase<TItem, TColumnKey> {
   /**
    * Configs for the columns available in the table.
@@ -136,7 +136,7 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    */
   renderRowExpansion?: (
     item: TItem,
-    args: RowExpansionArgs
+    args: RowExpansionArgs,
   ) => ReactNode | undefined;
 
   /**
@@ -152,7 +152,7 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    */
   rowBackgroundResolver?: (
     item: TItem,
-    selected: boolean
+    selected: boolean,
   ) => string | RowBackgroundResolverColorCombination | undefined;
 
   /**

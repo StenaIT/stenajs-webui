@@ -5,11 +5,11 @@ export interface SortOrderSelectors<TStoreState, TSortBy> {
 }
 
 export type SortOrderStateSelector<TStoreState, TSortBy> = (
-  state: TStoreState
+  state: TStoreState,
 ) => SortOrderState<TSortBy>;
 
 export const createSortOrderSelectors = <TStoreState, TSortBy>(
-  stateProvider: SortOrderStateSelector<TStoreState, TSortBy>
+  stateProvider: SortOrderStateSelector<TStoreState, TSortBy>,
 ): SortOrderSelectors<TStoreState, TSortBy> => ({
   getState: stateProvider,
 });

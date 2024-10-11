@@ -14,7 +14,7 @@ interface Result {
 export const useSortOrderColumnHead = <TSortBy extends string>(
   state: SortOrderState<TSortBy>,
   actions: StandardTableActions<TSortBy>,
-  sortByForColumn: TSortBy
+  sortByForColumn: TSortBy,
 ): Result => {
   const { dispatch } = useStandardTableActions<TSortBy>();
   return useMemo(() => {
@@ -25,7 +25,7 @@ export const useSortOrderColumnHead = <TSortBy extends string>(
       desc: state.desc,
       onClickColumnHead: () => {
         dispatch(
-          actions.sortBy(sortByForColumn, selected ? !state.desc : false)
+          actions.sortBy(sortByForColumn, selected ? !state.desc : false),
         );
       },
     };

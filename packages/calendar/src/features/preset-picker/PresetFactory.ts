@@ -2,7 +2,7 @@ import { PresetPage } from "./CalendarPreset";
 import { addDays, subDays } from "date-fns";
 
 export const createStandardDateRangePresets = (
-  now: Date
+  now: Date,
 ): Array<PresetPage> => [
   {
     label: "Past",

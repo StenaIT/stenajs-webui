@@ -23,12 +23,12 @@ describe("RowTransformer", () => {
           testItems[0],
           testConfig,
           testGroupConfigs,
-          formatters
+          formatters,
         );
 
         it("uses the custom formatter", () => {
           expect(transformCustomFormatterRow).toBe(
-            "<td>Johan</td><td>Rocketman</td><td>21 years</td>"
+            "<td>Johan</td><td>Rocketman</td><td>21 years</td>",
           );
         });
       });
@@ -40,11 +40,11 @@ describe("RowTransformer", () => {
           testItems[0],
           testConfig,
           testGroupConfigs,
-          formatters
+          formatters,
         );
         it("uses the custom formatter", () => {
           expect(transformCustomFormatterNumberRow).toBe(
-            "<td>Johan</td><td>Rocketman</td><td>121</td>"
+            "<td>Johan</td><td>Rocketman</td><td>121</td>",
           );
         });
       });

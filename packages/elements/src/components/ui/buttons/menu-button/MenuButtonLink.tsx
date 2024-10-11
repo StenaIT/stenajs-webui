@@ -9,7 +9,7 @@ import { MenuButtonVariant } from "./MenuButton";
 
 export type MenuButtonLinkRenderer = (
   anchorProps: AnchorElementProps,
-  activeClassName: string
+  activeClassName: string,
 ) => ReactNode;
 
 export type MenuButtonLinkProps =
@@ -53,7 +53,7 @@ export const MenuButtonLink = forwardRef<
     href,
     ...linkProps
   },
-  ref
+  ref,
 ) {
   const innerChildren = <MenuButtonContent label={label} leftIcon={leftIcon} />;
 
@@ -67,7 +67,7 @@ export const MenuButtonLink = forwardRef<
     disabled && styles.disabled,
     noRenderLinkProps?.selected && styles.selected,
     styles[variant],
-    className
+    className,
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -80,7 +80,7 @@ export const MenuButtonLink = forwardRef<
       href: disabled ? undefined : href,
       children: innerChildren,
     },
-    styles.selected
+    styles.selected,
   ) ?? (
     <a
       className={linkClassName}

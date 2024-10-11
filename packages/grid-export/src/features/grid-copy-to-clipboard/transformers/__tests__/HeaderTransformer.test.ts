@@ -18,7 +18,7 @@ describe("HeaderTransformer", () => {
   describe("transformTableHeaders", () => {
     const tableHeaders = transformTableHeaders(
       testConfig,
-      testGroupConfigs
+      testGroupConfigs,
     ).join("");
     describe("when column has label", () => {
       it("uses columnLabel", () => {

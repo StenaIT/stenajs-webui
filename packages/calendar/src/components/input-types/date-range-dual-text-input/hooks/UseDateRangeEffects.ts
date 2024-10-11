@@ -5,7 +5,7 @@ export const useDateRangeEffects = (
   endDate: Date | undefined,
   setDateInFocus: (date: Date) => void,
   startDateInputRef: RefObject<HTMLInputElement>,
-  endDateInputRef: RefObject<HTMLInputElement>
+  endDateInputRef: RefObject<HTMLInputElement>,
 ) => {
   useEffect(
     function moveFocusedDateWhenStartDateChanges() {
@@ -13,7 +13,7 @@ export const useDateRangeEffects = (
         setDateInFocus(startDate);
       }
     },
-    [startDate, setDateInFocus]
+    [startDate, setDateInFocus],
   );
 
   useEffect(
@@ -22,7 +22,7 @@ export const useDateRangeEffects = (
         setDateInFocus(endDate);
       }
     },
-    [endDate, setDateInFocus]
+    [endDate, setDateInFocus],
   );
 
   useEffect(
@@ -33,15 +33,15 @@ export const useDateRangeEffects = (
             Date.UTC(
               startDate.getFullYear(),
               startDate.getMonth(),
-              startDate.getDate()
-            )
+              startDate.getDate(),
+            ),
           );
         } else {
           startDateInputRef.current.valueAsDate = null;
         }
       }
     },
-    [startDate, startDateInputRef]
+    [startDate, startDateInputRef],
   );
 
   useEffect(
@@ -52,14 +52,14 @@ export const useDateRangeEffects = (
             Date.UTC(
               endDate.getFullYear(),
               endDate.getMonth(),
-              endDate.getDate()
-            )
+              endDate.getDate(),
+            ),
           );
         } else {
           endDateInputRef.current.valueAsDate = null;
         }
       }
     },
-    [endDate, endDateInputRef]
+    [endDate, endDateInputRef],
   );
 };

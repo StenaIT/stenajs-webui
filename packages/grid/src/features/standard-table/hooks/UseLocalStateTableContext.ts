@@ -11,20 +11,20 @@ import { createStandardTableActions } from "../util/ActionsFactory";
 
 export const useLocalStateTableContext = <TColumnKey extends string>(
   tableId: string,
-  initialState: StandardTableState<TColumnKey> = createStandardTableInitialState<TColumnKey>()
+  initialState: StandardTableState<TColumnKey> = createStandardTableInitialState<TColumnKey>(),
 ) => {
   const [state, dispatch] = useReducer<StandardTableReducer<TColumnKey>>(
     createStandardTableReducer<TColumnKey>(tableId),
-    initialState
+    initialState,
   );
 
   const actions = useMemo(
     () =>
       createStandardTableActions(
         tableId,
-        createInternalStandardTableActions<TColumnKey>()
+        createInternalStandardTableActions<TColumnKey>(),
       ),
-    [tableId]
+    [tableId],
   );
 
   const tableContext = useMemo<TableContext<TColumnKey>>(
@@ -33,7 +33,7 @@ export const useLocalStateTableContext = <TColumnKey extends string>(
       actions,
       state,
     }),
-    [state, actions, dispatch]
+    [state, actions, dispatch],
   );
 
   return {

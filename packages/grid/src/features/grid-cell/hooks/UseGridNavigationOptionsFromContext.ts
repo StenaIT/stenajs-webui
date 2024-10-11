@@ -7,7 +7,7 @@ import {
 } from "./UseGridNavigation";
 
 export const useGridNavigationOptionsFromContext = (
-  options: UseGridNavigationOptions
+  options: UseGridNavigationOptions,
 ): ValidatedUseGridNavigationOptions => {
   const context = useContext(GridHooksContext);
 
@@ -17,6 +17,6 @@ export const useGridNavigationOptionsFromContext = (
         ...context,
         ...options,
       }),
-    [context, options]
+    [context, options],
   );
 };

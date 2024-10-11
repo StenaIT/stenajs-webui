@@ -93,11 +93,11 @@ export const useEditableCell = <TValue>(
     onStartEditing,
     onStopEditing,
     transformEnteredValue = defaultTransformEnteredValue,
-  }: UseEditableCellOptions<TValue>
+  }: UseEditableCellOptions<TValue>,
 ): UseEditableCellResult<TValue> => {
   const [isEditing, setIsEditing] = useState(false);
   const [lastKeyEvent, setLastKeyEvent] = useState<KeyDownEvent | undefined>(
-    undefined
+    undefined,
   );
   const revertableValue = useRevertableValue<TValue>(value);
   const { getValue, revert, setValue, setRevertValue } = revertableValue;
@@ -113,7 +113,7 @@ export const useEditableCell = <TValue>(
         }
       }
     },
-    [isEditable, onStartEditing, setRevertValue, setValue, value]
+    [isEditable, onStartEditing, setRevertValue, setValue, value],
   );
 
   const stopEditing = useCallback(() => {
@@ -147,7 +147,7 @@ export const useEditableCell = <TValue>(
         setLastKeyEvent,
         allowedInputType,
         transformEnteredValue,
-        revertableValue
+        revertableValue,
       ),
     [
       isEditing,
@@ -157,7 +157,7 @@ export const useEditableCell = <TValue>(
       allowedInputType,
       transformEnteredValue,
       revertableValue,
-    ]
+    ],
   );
 
   return {
@@ -193,7 +193,7 @@ const createKeyDownHandler =
     setLastKeyEvent: (lastKeyEvent: KeyDownEvent | undefined) => void,
     allowedInputType: AllowedInputType,
     transformEnteredValue: TransformEnteredValueFunc<TValue>,
-    revertableValue: RevertableValue<TValue>
+    revertableValue: RevertableValue<TValue>,
   ): React.KeyboardEventHandler =>
   (e) => {
     if (e.ctrlKey || e.metaKey || e.shiftKey) {

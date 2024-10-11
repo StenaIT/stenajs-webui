@@ -6,7 +6,7 @@ interface CalendarMonthWithMonthTextHeaderProps<T>
   extends CalendarMonthProps<T> {}
 
 export function CalendarMonthWithMonthTextHeader<T>(
-  props: CalendarMonthWithMonthTextHeaderProps<T>
+  props: CalendarMonthWithMonthTextHeaderProps<T>,
 ) {
   return (
     <Column>

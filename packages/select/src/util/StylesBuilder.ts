@@ -9,7 +9,7 @@ const resolveOptionBackgroundColor = (
   colors: SelectTheme["menu"],
   isDisabled: boolean,
   isSelected: boolean,
-  isFocused: boolean
+  isFocused: boolean,
 ): string | undefined => {
   if (isDisabled) {
     return colors.disabledBackgroundColor;
@@ -28,7 +28,7 @@ const resolveOptionColor = (
   colors: SelectTheme["menu"],
   isDisabled: boolean,
   isSelected: boolean,
-  isFocused: boolean
+  isFocused: boolean,
 ): string | undefined => {
   if (isDisabled) {
     return colors.disabledTextColor;
@@ -47,7 +47,7 @@ const resolveInputBackgroundColor = (
   colors: SelectTheme["input"],
   isDisabled: boolean,
   isFocused: boolean,
-  variant: SelectVariant | undefined
+  variant: SelectVariant | undefined,
 ): string | undefined => {
   if (isDisabled) {
     return colors.disabledBackgroundColor;
@@ -69,7 +69,7 @@ const resolveInputBorderColor = (
   isDisabled: boolean,
   isFocused: boolean,
   isHovered: boolean,
-  variant: SelectVariant | undefined
+  variant: SelectVariant | undefined,
 ): string | undefined => {
   if (isDisabled) {
     return colors.disabledBorderColor;
@@ -94,7 +94,7 @@ const resolveInputBorderColor = (
 export const createStylesFromTheme = <
   OptionType,
   IsMulti extends boolean,
-  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
+  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>,
 >(
   {
     menu,
@@ -106,7 +106,7 @@ export const createStylesFromTheme = <
     groupHeading,
     loadingIndicator,
   }: SelectTheme,
-  variant: SelectVariant | undefined
+  variant: SelectVariant | undefined,
 ): StylesConfig<OptionType, IsMulti, TGroup> => ({
   option: (base, { isDisabled, isFocused, isSelected }) => ({
     ...base,
@@ -116,7 +116,7 @@ export const createStylesFromTheme = <
       menu,
       isDisabled,
       isSelected,
-      isFocused
+      isFocused,
     ),
     color: resolveOptionColor(menu, isDisabled, isSelected, isFocused),
     cursor: isDisabled ? "not-allowed" : "default",
@@ -125,13 +125,13 @@ export const createStylesFromTheme = <
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-        ? menu.selectedItemActiveBackgroundColor
-        : menu.activeBackgroundColor,
+          ? menu.selectedItemActiveBackgroundColor
+          : menu.activeBackgroundColor,
       color: isDisabled
         ? undefined
         : isSelected
-        ? menu.selectedItemActiveTextColor
-        : menu.activeTextColor,
+          ? menu.selectedItemActiveTextColor
+          : menu.activeTextColor,
     },
   }),
   control: (base, { isFocused, isDisabled, menuIsOpen }) => ({
@@ -144,7 +144,7 @@ export const createStylesFromTheme = <
       input,
       isDisabled,
       isFocused,
-      variant
+      variant,
     ),
     borderRadius: input.borderRadius,
     border: input.border,
@@ -153,7 +153,7 @@ export const createStylesFromTheme = <
       isDisabled,
       isFocused || menuIsOpen,
       false,
-      variant
+      variant,
     ),
     outline: isFocused ? "var(--swui-focus-outline)" : undefined,
     outlineOffset: isFocused ? "-1px" : undefined,
@@ -165,7 +165,7 @@ export const createStylesFromTheme = <
         false,
         isFocused || menuIsOpen,
         true,
-        variant
+        variant,
       ),
     },
   }),
@@ -238,14 +238,14 @@ export const createStylesFromTheme = <
     color: isDisabled
       ? arrowColor.disabled
       : isFocused
-      ? arrowColor.focused.standard
-      : arrowColor.closed.standard,
+        ? arrowColor.focused.standard
+        : arrowColor.closed.standard,
     "&:hover": {
       color: isDisabled
         ? arrowColor.disabled
         : isFocused
-        ? arrowColor.focused.hover
-        : arrowColor.closed.hover,
+          ? arrowColor.focused.hover
+          : arrowColor.closed.hover,
     },
     svg: {
       width: 14,
@@ -307,8 +307,8 @@ export const createStylesFromTheme = <
 export const createStylesFromVariant = <
   OptionType,
   IsMulti extends boolean,
-  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>
+  TGroup extends GroupBase<OptionType> = GroupBase<OptionType>,
 >(
-  variant: SelectVariant
+  variant: SelectVariant,
 ): StylesConfig<OptionType, IsMulti, TGroup> =>
   createStylesFromTheme(defaultSelectTheme, variant);

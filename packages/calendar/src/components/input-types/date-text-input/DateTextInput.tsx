@@ -74,7 +74,7 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
         onValueChange(value);
       }
     },
-    [onValueChange]
+    [onValueChange],
   );
 
   const onCalendarSelectDate = useCallback(
@@ -86,7 +86,13 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
         }
       }
     },
-    [onValueChangeHandler, dateFormat, closeOnCalendarSelectDate, setOpen, open]
+    [
+      onValueChangeHandler,
+      dateFormat,
+      closeOnCalendarSelectDate,
+      setOpen,
+      open,
+    ],
   );
 
   const inValidInput = !!value && !/^[-/\\.0-9]+$/.test(value);

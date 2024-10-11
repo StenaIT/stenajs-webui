@@ -3,7 +3,7 @@ export type ShowCommand<TProps, TPromiseResolve> = keyof TProps extends never
   : (props: TProps) => Promise<TPromiseResolve | undefined>;
 
 export type ResolveCommand<TPromiseResolve> = (
-  resolveValue: TPromiseResolve
+  resolveValue: TPromiseResolve,
 ) => void;
 
 export type RejectCommand = (error?: Error) => void;

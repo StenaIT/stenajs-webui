@@ -248,7 +248,7 @@ const items = createItems(500);
 
 const createSalesPerformanceStandardTableConfig = (
   stickyGroups: boolean,
-  loadingState: SalesPerformanceLoadingState
+  loadingState: SalesPerformanceLoadingState,
 ): StandardTableConfig<SalesPerformanceTableRowItem, Column, ColumnGroup> => ({
   keyResolver: (item) => item.info.id,
   showHeaderCheckbox: true,
@@ -279,7 +279,7 @@ const createSalesPerformanceStandardTableConfig = (
         columnLabel: "Day",
         width: "60px",
         minWidth: "60px",
-      }
+      },
     ),
     departureDateTime: createColumnConfig(
       (item) => item.info.departureDateTime.local,
@@ -290,14 +290,14 @@ const createSalesPerformanceStandardTableConfig = (
           }`,
         width: "140px",
         minWidth: "140px",
-      }
+      },
     ),
     timeToDeparture: createColumnConfig(
       (item) => item.info.extraData.timeToDepartureString,
       {
         width: "90px",
         minWidth: "90px",
-      }
+      },
     ),
     ship: createColumnConfig((item) => item.info.shipCode, {
       width: "60px",
@@ -372,7 +372,7 @@ const createSalesPerformanceStandardTableConfig = (
       ),
     }),
     forecast: createColumnConfig(
-      (item) => item.efpVehicles?.salesPerformance.forecast
+      (item) => item.efpVehicles?.salesPerformance.forecast,
     ),
     fcUtil: createColumnConfig((item) => item.efpVehicles?.salesPerformance, {
       columnLabel: "FC util",
@@ -383,19 +383,19 @@ const createSalesPerformanceStandardTableConfig = (
     }),
     rgaEc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.revenueGains[0]?.value,
-      { columnLabel: "RGA EC" }
+      { columnLabel: "RGA EC" },
     ),
     rgaEcqfc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.revenueGains[1]?.value,
-      { columnLabel: "RGA ECQFC EXTRA" }
+      { columnLabel: "RGA ECQFC EXTRA" },
     ),
     rpuEc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.futureRevenues[0]?.value,
-      { columnLabel: "RPU EC" }
+      { columnLabel: "RPU EC" },
     ),
     rpuEcqfc: createColumnConfig(
       (item) => item.fareClassRecommendationRevenue?.futureRevenues[1]?.value,
-      { columnLabel: "RPU ECQFC" }
+      { columnLabel: "RPU ECQFC" },
     ),
     efpHistoryMinus1: createColumnConfig(
       (item) =>
@@ -413,7 +413,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     efpHistoryMinus3: createColumnConfig(
       (item) =>
@@ -431,7 +431,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     efpHistoryMinus7: createColumnConfig(
       (item) =>
@@ -449,7 +449,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     efpHistoryMinus30: createColumnConfig(
       (item) =>
@@ -467,7 +467,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     efpHistoryMinus45: createColumnConfig(
       (item) =>
@@ -485,19 +485,19 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     /**
      * Price
      */
     fareClass: createColumnConfig(
-      (item) => item.price?.travelPricing?.fareClass
+      (item) => item.price?.travelPricing?.fareClass,
     ),
     price: createColumnConfig(
       (item) => item.price?.travelPricing?.fareClassPrice,
       {
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-      }
+      },
     ),
     lastYear: createColumnConfig(
       (item) =>
@@ -506,14 +506,14 @@ const createSalesPerformanceStandardTableConfig = (
       {
         columnLabel: "LY",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-      }
+      },
     ),
     friend: createColumnConfig(
       (item) => item.price?.travelPricing?.mainCompetitor?.local?.priceFare,
       {
         columnLabel: "Comp.",
         itemLabelFormatter: (value) => (value ? String(round(value, 0)) : ""),
-      }
+      },
     ),
     /**
      * Guests
@@ -541,7 +541,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     guestsHistoryMinus3: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[1].diff,
@@ -558,7 +558,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     guestsHistoryMinus7: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[2].diff,
@@ -575,7 +575,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     guestsHistoryMinus30: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[3].diff,
@@ -592,7 +592,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
     guestsHistoryMinus45: createColumnConfig(
       (item) => item.guestsHistory?.guestsPerformance?.[4].diff,
@@ -611,7 +611,7 @@ const createSalesPerformanceStandardTableConfig = (
             </Text>
           </Indent>
         ),
-      }
+      },
     ),
   },
   columnGroups: {

@@ -84,8 +84,8 @@ export const WithDataFetch = () => {
         optionMocks.filter(
           (o) =>
             t.length > 0 &&
-            o.label.toLocaleLowerCase().indexOf(t.toLocaleLowerCase()) >= 0
-        )
+            o.label.toLocaleLowerCase().indexOf(t.toLocaleLowerCase()) >= 0,
+        ),
       );
       setNotLoading();
     }, 500);

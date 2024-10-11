@@ -4,7 +4,7 @@ export interface SearchFilterSectionChipModel {
 }
 
 export type SearchFilterSectionOnClickRemoveOnChip<TFormModel> = (
-  arg: OnClickRemoveOnChipArg<TFormModel>
+  arg: OnClickRemoveOnChipArg<TFormModel>,
 ) => void;
 
 export interface ChipsArg<TSearchFilterModel> {
@@ -12,7 +12,7 @@ export interface ChipsArg<TSearchFilterModel> {
 }
 
 export type FormFieldsSetter<TFormModel> = (
-  fields: Partial<TFormModel>
+  fields: Partial<TFormModel>,
 ) => void;
 
 export interface OnClickRemoveOnChipArg<TFormModel> {

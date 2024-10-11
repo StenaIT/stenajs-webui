@@ -2,7 +2,7 @@ import { CommitReducerState } from "./commit-state";
 
 export type CommitReducerStateSelector<TStoreState, TState> = (
   state: TStoreState,
-  id: string
+  id: string,
 ) => CommitReducerState<TState>;
 
 export interface CommitReducerSelectors<TStoreState, TState> {
@@ -12,7 +12,7 @@ export interface CommitReducerSelectors<TStoreState, TState> {
 
 export const createCommitReducerSelectors = <TStoreState, TState>(
   id: string,
-  stateSelector: CommitReducerStateSelector<TStoreState, TState>
+  stateSelector: CommitReducerStateSelector<TStoreState, TState>,
 ): CommitReducerSelectors<TStoreState, TState> => {
   return {
     getWorkspaceValues: (state) => stateSelector(state, id).workspace,

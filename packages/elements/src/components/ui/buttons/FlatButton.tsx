@@ -16,5 +16,5 @@ export const FlatButton = forwardRef<HTMLButtonElement, FlatButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );

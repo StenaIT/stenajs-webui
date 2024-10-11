@@ -8,7 +8,7 @@ export const SearchFilterActionsContext = createContext<
 
 export const useSearchFilterActions = <
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >() => {
   const c = useContext(SearchFilterActionsContext);
   if (!c) {

@@ -34,7 +34,7 @@ export const CalendarDay = function CalendarDay<T>({
             day,
             week,
             month,
-            userData
+            userData,
           ))}
       >
         {day.dayOfMonth}
@@ -50,7 +50,7 @@ export const CalendarDay = function CalendarDay<T>({
         day,
         week,
         month,
-        userData
+        userData,
       )),
   });
 
@@ -62,7 +62,7 @@ export const CalendarDay = function CalendarDay<T>({
         day,
         week,
         month,
-        userData
+        userData,
       )),
     width: "100%",
     height: "100%",
@@ -76,7 +76,7 @@ export const CalendarDay = function CalendarDay<T>({
         day,
         week,
         month,
-        userData
+        userData,
       )),
     width: "100%",
     height: "100%",
@@ -114,12 +114,12 @@ export const CalendarDay = function CalendarDay<T>({
 
 const isDisabled = (
   defaultHighlights: Array<DayStateHighlight> | undefined,
-  dayState: DayState | undefined
+  dayState: DayState | undefined,
 ): boolean =>
   !!dayHighlightSelect<boolean>(
     dayState,
     defaultHighlights,
     ["disabled"],
     [true],
-    false
+    false,
   );

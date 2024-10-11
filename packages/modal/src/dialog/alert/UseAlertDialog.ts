@@ -5,7 +5,7 @@ import styles from "./AlertDialog.module.css";
 
 export function useAlertDialog<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
-  options?: Partial<DialogOptions>
+  options?: Partial<DialogOptions>,
 ): UseDialogResult<TProps, TPromiseResolve> {
   return useDialog<TProps, TPromiseResolve>(component, {
     ...options,
@@ -13,7 +13,7 @@ export function useAlertDialog<TProps, TPromiseResolve = void>(
     closingClassName: cx(options?.closingClassName, styles.closing),
     contentWrapperClassName: cx(
       options?.contentWrapperClassName,
-      styles.contentWrapper
+      styles.contentWrapper,
     ),
     className: cx(options?.className, styles.alertDialog),
   });

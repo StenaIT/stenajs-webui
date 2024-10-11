@@ -33,7 +33,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       className,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const localRef = useRef<HTMLInputElement>();
 
@@ -60,7 +60,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           onValueChange(ev.target.checked);
         }
       },
-      [onChange, onValueChange]
+      [onChange, onValueChange],
     );
 
     useEffect(() => {
@@ -79,5 +79,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {...inputProps}
       />
     );
-  }
+  },
 );

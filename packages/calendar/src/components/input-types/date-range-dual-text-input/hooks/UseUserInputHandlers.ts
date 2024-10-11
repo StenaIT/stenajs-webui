@@ -20,7 +20,7 @@ export const useUserInputHandlers = (
     setFocusedInput,
     focusedInput,
     setCurrentPanel,
-  }: UseInputStatesResult
+  }: UseInputStatesResult,
 ) => {
   const onFocusLeft = useCallback(() => {
     if (firstFocusedInput == null) {
@@ -110,7 +110,7 @@ export const useUserInputHandlers = (
       hideCalendar,
       startDate,
       startDateInputRef,
-    ]
+    ],
   );
 
   const onClickArrowButton = useCallback(() => {
@@ -144,7 +144,7 @@ export const useUserInputHandlers = (
         hideCalendar();
       }
     },
-    [hideCalendar]
+    [hideCalendar],
   );
 
   return {

@@ -8,7 +8,7 @@ export interface UseInternalPanelStateProps {
 }
 
 export const useInternalPanelState = (
-  onChangePanel: OnChangePanel | undefined
+  onChangePanel: OnChangePanel | undefined,
 ) => {
   const [currentPanel, _setCurrentPanel] =
     useState<CalendarPanelType>("calendar");
@@ -18,7 +18,7 @@ export const useInternalPanelState = (
       _setCurrentPanel(currentPanel);
       onChangePanel?.(currentPanel);
     },
-    [onChangePanel]
+    [onChangePanel],
   );
 
   return {

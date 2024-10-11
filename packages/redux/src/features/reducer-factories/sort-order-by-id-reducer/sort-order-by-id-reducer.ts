@@ -12,7 +12,7 @@ export const createSortOrderByIdReducer =
   () =>
   (
     state: SortOrderByIdState = INITIAL_STATE,
-    action: SortOrderByIdAction
+    action: SortOrderByIdAction,
   ): SortOrderByIdState => {
     switch (action.type) {
       case "SORT_ORDER_BY_ID:SET_SORT_ORDER":

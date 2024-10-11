@@ -9,7 +9,7 @@ export const createEditableTextCellWithStatus =
   <TItemValue, TItem>(
     warningOnEmpty?: string | ((item: TItem) => string),
     crudStatusProvider?: (item: TItem) => EntityCrudStatus | undefined,
-    modifiedFieldProvider?: (item: TItem) => ModifiedFieldItemState | undefined
+    modifiedFieldProvider?: (item: TItem) => ModifiedFieldItemState | undefined,
   ): StandardTableCellRenderer<TItemValue, TItem> =>
   ({
     label,

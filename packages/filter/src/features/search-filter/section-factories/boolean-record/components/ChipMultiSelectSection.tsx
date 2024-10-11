@@ -33,14 +33,14 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
             return { value: key, label: option?.label ?? key };
           })
         : [],
-    [options, value]
+    [options, value],
   );
 
   const filteredOptions = useMemo(() => {
     return options?.filter(
       (p) =>
         p.value.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) > -1 ||
-        p.label.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) > -1
+        p.label.toLocaleLowerCase().indexOf(text.toLocaleLowerCase()) > -1,
     );
   }, [options, text]);
 
@@ -48,7 +48,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
     (value: Array<ChipMultiSelectValue>) => {
       onValueChange?.(createBooleanRecordFromValue(value));
     },
-    [onValueChange]
+    [onValueChange],
   );
 
   return (
@@ -67,7 +67,7 @@ export const ChipMultiSelectSection = <TSectionKey extends string>({
 };
 
 const createBooleanRecordFromValue = (
-  value: Array<ChipMultiSelectValue>
+  value: Array<ChipMultiSelectValue>,
 ): BooleanRecord => {
   return value.reduce<BooleanRecord>((sum, item) => {
     sum[item.value] = true;

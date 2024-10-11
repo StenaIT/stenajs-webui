@@ -8,7 +8,7 @@ export type ComparableType =
 
 export const multitypeComparator = (
   a: ComparableType,
-  b: ComparableType
+  b: ComparableType,
 ): number => {
   if (a != null && b == null) {
     return -1;
@@ -34,5 +34,5 @@ export const multitypeComparator = (
 const isBothOfType = (
   a: ComparableType,
   b: ComparableType,
-  type: string
+  type: string,
 ): boolean => typeof a === type && typeof b === type;

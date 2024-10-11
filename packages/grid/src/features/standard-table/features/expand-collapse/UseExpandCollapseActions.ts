@@ -20,11 +20,11 @@ export const useExpandCollapseActions = <TItem>(item: TItem) => {
 
   const isExpanded = useMemo(
     () => selectedIds.includes(itemKey),
-    [selectedIds, itemKey]
+    [selectedIds, itemKey],
   );
 
   const { toggle } = useArraySet(selectedIds, (ids: Array<string>) =>
-    dispatch(expandByIds(ids))
+    dispatch(expandByIds(ids)),
   );
 
   const toggleRowExpanded = useCallback(() => {

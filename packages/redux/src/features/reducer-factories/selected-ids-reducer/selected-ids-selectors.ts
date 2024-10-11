@@ -5,11 +5,11 @@ export interface SelectedIdsSelectors<TStoreState> {
 }
 
 export type SelectedIdsStateSelector<TStoreState> = (
-  state: TStoreState
+  state: TStoreState,
 ) => SelectedIdsState;
 
 export const createSelectedIdsSelectors = <TStoreState>(
-  stateSelector: SelectedIdsStateSelector<TStoreState>
+  stateSelector: SelectedIdsStateSelector<TStoreState>,
 ): SelectedIdsSelectors<TStoreState> => ({
   getState: stateSelector,
 });

@@ -17,7 +17,7 @@ export const useMaskedInput = (
   keepCharPositions: boolean = false,
   placeholderChar: string = "\u2000",
   showMask: boolean = true,
-  enabled: boolean = true
+  enabled: boolean = true,
 ) => {
   const textMask = useRef(null);
 

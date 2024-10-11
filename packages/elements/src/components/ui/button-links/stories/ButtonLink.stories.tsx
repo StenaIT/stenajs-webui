@@ -142,7 +142,7 @@ export const Variants = () => (
                 />
               </Row>
             </Column>
-          )
+          ),
         )}
         <Space num={8} />
       </Column>

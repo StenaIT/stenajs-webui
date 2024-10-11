@@ -26,7 +26,7 @@ import { WeekData } from "./CalendarDataFactory";
 export const buildDayStateForDateRange = (
   statePerMonth: CalendarUserData<DayState> = {},
   start?: Date,
-  end?: Date
+  end?: Date,
 ): CalendarUserData<DayState> | undefined => {
   if (start && end && isAfter(end, start)) {
     return eachDayOfInterval({ start, end }).reduce(
@@ -36,11 +36,11 @@ export const buildDayStateForDateRange = (
         const highlights = isFirstInRange
           ? ["selected", "selectedStart", "range"]
           : isLastInRange
-          ? ["selected", "selectedEnd", "range"]
-          : ["range"];
+            ? ["selected", "selectedEnd", "range"]
+            : ["range"];
         return addDayStateHighlights(result, date, highlights);
       },
-      statePerMonth
+      statePerMonth,
     );
   }
 
@@ -61,14 +61,14 @@ export const buildDayStateForSingleMonth = (
   statePerMonth: CalendarUserData<DayState> = {},
   start: Date | undefined,
   end: Date | undefined,
-  dateInFocus: Date
+  dateInFocus: Date,
 ): CalendarUserData<DayState> | undefined =>
   buildDayStateForRange(
     statePerMonth,
     start,
     end,
     startOfMonth(dateInFocus),
-    endOfMonth(dateInFocus)
+    endOfMonth(dateInFocus),
   );
 
 export const buildDayStateForRange = (
@@ -76,13 +76,13 @@ export const buildDayStateForRange = (
   start: Date | undefined,
   end: Date | undefined,
   startLimit: Date,
-  endLimit: Date
+  endLimit: Date,
 ): CalendarUserData<DayState> | undefined => {
   if (start && end) {
     return buildDayStateForDateRange(
       statePerMonth,
       max([start, subDays(startLimit, 1)]),
-      min([end, addDays(endLimit, 1)])
+      min([end, addDays(endLimit, 1)]),
     );
   } else {
     return buildDayStateForDateRange(statePerMonth, start, end);
@@ -92,7 +92,7 @@ export const buildDayStateForRange = (
 export const setDayStateValue = (
   state: CalendarUserData<DayState> | undefined,
   date: Date,
-  values: Partial<DayState>
+  values: Partial<DayState>,
 ): CalendarUserData<DayState> => {
   const monthString = format(date, DateFormats.yearAndMonth);
   const weekNumber = getISOWeek(date);
@@ -118,7 +118,7 @@ export const setDayStateValue = (
 export const setDayStateValueFunction = (
   state: CalendarUserData<DayState> | undefined,
   date: Date,
-  setter: (dayState: DayState | undefined) => Partial<DayState>
+  setter: (dayState: DayState | undefined) => Partial<DayState>,
 ): CalendarUserData<DayState> => {
   const monthString = format(date, DateFormats.yearAndMonth);
   const weekNumber = getISOWeek(date);
@@ -138,7 +138,7 @@ export const setDayStateValueFunction = (
             state &&
               state[monthString] &&
               state[monthString][weekNumber] &&
-              state[monthString][weekNumber][dayInMonth]
+              state[monthString][weekNumber][dayInMonth],
           ),
         },
       },
@@ -149,7 +149,7 @@ export const setDayStateValueFunction = (
 export const addDayStateHighlights = (
   calendarState: CalendarState | undefined,
   date: Date,
-  highlights: Array<DayStateHighlight>
+  highlights: Array<DayStateHighlight>,
 ): CalendarUserData<DayState> => {
   const month = date.getMonth() + 1;
   const monthString = `${date.getFullYear()}-${month < 10 ? "0" : ""}${month}`;
@@ -177,7 +177,7 @@ export const addDayStateHighlights = (
 
 export const addDayStateHighlightsOnSingleDay = (
   dayState: DayState | undefined,
-  highlights: Array<DayStateHighlight>
+  highlights: Array<DayStateHighlight>,
 ): DayState => {
   return {
     ...dayState,
@@ -188,7 +188,7 @@ export const addDayStateHighlightsOnSingleDay = (
 export const addWeekStateHighlights = (
   calendarState: CalendarState | undefined,
   week: WeekData,
-  highlights: Array<DayStateHighlight>
+  highlights: Array<DayStateHighlight>,
 ): CalendarUserData<DayState> => {
   const date = week.days[0].date;
   const month = date.getMonth() + 1;
@@ -224,7 +224,7 @@ export const addWeekStateHighlights = (
 
 export const addWeekRangeHighlights = (
   calendarState: CalendarState | undefined,
-  week: WeekData
+  week: WeekData,
 ): CalendarUserData<DayState> => {
   if (!week.days.length) {
     return { ...calendarState };

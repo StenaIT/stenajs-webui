@@ -119,7 +119,7 @@ describe("MultitypeComparator", () => {
     describe("a and b are equal by value", () => {
       it("returns 0", () => {
         expect(
-          multitypeComparator(earlyDate, earlyDateCopy) === 0
+          multitypeComparator(earlyDate, earlyDateCopy) === 0,
         ).toBeTruthy();
       });
     });

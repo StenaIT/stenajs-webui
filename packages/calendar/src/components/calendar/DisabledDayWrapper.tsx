@@ -26,7 +26,7 @@ export const DisabledDayWrapper = function DisabledDayWrapper<T>({
       !isDateInMinMaxRange(day.date, minDate, maxDate)
         ? addDayStateHighlightsOnSingleDay(dayState, ["disabled"])
         : dayState,
-    [day.date, dayState, maxDate, minDate]
+    [day.date, dayState, maxDate, minDate],
   );
 
   return <DayComponent day={day} {...props} dayState={activeDayState} />;

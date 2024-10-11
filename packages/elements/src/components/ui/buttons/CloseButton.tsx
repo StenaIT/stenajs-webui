@@ -17,5 +17,5 @@ export const CloseButton = forwardRef<HTMLButtonElement, CloseButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );

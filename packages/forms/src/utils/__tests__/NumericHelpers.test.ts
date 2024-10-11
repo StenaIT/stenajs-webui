@@ -30,7 +30,7 @@ describe("NumericHelpers", () => {
           });
           expect(onValueChange).toHaveBeenCalledWith(expected);
         });
-      }
+      },
     );
   });
 
@@ -60,7 +60,7 @@ describe("NumericHelpers", () => {
           });
           expect(onValueChange).toHaveBeenCalledWith(expected);
         });
-      }
+      },
     );
   });
 });

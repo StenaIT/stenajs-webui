@@ -35,7 +35,7 @@ describe("entity-list-reducer", () => {
           { a: "a", b: "b" },
           { a: "a2", b: "b2" },
           { a: "a3", b: "b3" },
-        ])
+        ]),
       );
       it("works", () => {
         expect(s.length).toBe(3);
@@ -43,8 +43,8 @@ describe("entity-list-reducer", () => {
           s,
           actionByFieldsMatch(
             { a: "a3" },
-            entityActions.setEntityFields({ b: "bbb" })
-          )
+            entityActions.setEntityFields({ b: "bbb" }),
+          ),
         );
         expect(s.length).toBe(3);
         expect(s[0].b).toBe("b");
@@ -61,13 +61,13 @@ describe("entity-list-reducer", () => {
           { a: "a", b: "b" },
           { a: "a2", b: "b2" },
           { a: "a3", b: "b3" },
-        ])
+        ]),
       );
       it("works", () => {
         expect(s.length).toBe(3);
         s = reducer(
           s,
-          actionByIndex(1, entityActions.setEntityFields({ b: "bbb" }))
+          actionByIndex(1, entityActions.setEntityFields({ b: "bbb" })),
         );
         expect(s.length).toBe(3);
         expect(s[0].b).toBe("b");
@@ -100,7 +100,7 @@ describe("entity-list-reducer", () => {
             { a: "a1", b: "b1" },
             { a: "a2", b: "b2" },
           ],
-          setList([{ a: "a3", b: "b3" }])
+          setList([{ a: "a3", b: "b3" }]),
         );
         expect(r.length).toBe(1);
         expect(r[0].a).toBe("a3");
@@ -113,7 +113,7 @@ describe("entity-list-reducer", () => {
             { a: "a1", b: "b1" },
             { a: "a2", b: "b2" },
           ],
-          clearList()
+          clearList(),
         );
         expect(r.length).toBe(0);
       });
@@ -122,7 +122,7 @@ describe("entity-list-reducer", () => {
       it("adds entity at start of list", () => {
         const r = reducer(
           [{ a: "a1", b: "b1" }],
-          addAtStart({ a: "a2", b: "b2" })
+          addAtStart({ a: "a2", b: "b2" }),
         );
         expect(r.length).toBe(2);
         expect(r[0].a).toBe("a2");
@@ -133,7 +133,7 @@ describe("entity-list-reducer", () => {
       it("adds entity at end of list", () => {
         const r = reducer(
           [{ a: "a1", b: "b1" }],
-          addAtEnd({ a: "a2", b: "b2" })
+          addAtEnd({ a: "a2", b: "b2" }),
         );
         expect(r.length).toBe(2);
         expect(r[0].a).toBe("a1");
@@ -147,7 +147,7 @@ describe("entity-list-reducer", () => {
             { a: "a1", b: "b1" },
             { a: "a2", b: "b2" },
           ],
-          removeFirst()
+          removeFirst(),
         );
         expect(r.length).toBe(1);
         expect(r[0].a).toBe("a2");
@@ -160,7 +160,7 @@ describe("entity-list-reducer", () => {
             { a: "a1", b: "b1" },
             { a: "a2", b: "b2" },
           ],
-          removeLast()
+          removeLast(),
         );
         expect(r.length).toBe(1);
         expect(r[0].a).toBe("a1");
@@ -175,7 +175,7 @@ describe("entity-list-reducer", () => {
                 { a: "a1", b: "b1" },
                 { a: "a2", b: "b2" },
               ],
-              removeAtIndex(0)
+              removeAtIndex(0),
             );
             expect(r.length).toBe(1);
             expect(r[0].a).toBe("a2");
@@ -189,7 +189,7 @@ describe("entity-list-reducer", () => {
                   { a: "a1", b: "b1" },
                   { a: "a2", b: "b2" },
                 ],
-                removeAtIndex(2)
+                removeAtIndex(2),
               );
             }).toThrow();
           });
@@ -202,7 +202,7 @@ describe("entity-list-reducer", () => {
                   { a: "a1", b: "b1" },
                   { a: "a2", b: "b2" },
                 ],
-                removeAtIndex(-1)
+                removeAtIndex(-1),
               );
             }).toThrow();
           });
@@ -218,7 +218,7 @@ describe("entity-list-reducer", () => {
                 { a: "a1", b: "b1" },
                 { a: "a2", b: "b2" },
               ],
-              removeByFieldMatch({ a: "a1" })
+              removeByFieldMatch({ a: "a1" }),
             );
             expect(r.length).toBe(1);
             expect(r[0].a).toBe("a2");
@@ -264,7 +264,7 @@ describe("entity-list-reducer", () => {
                 { a: "a1", b: "b1" },
                 { a: "a2", b: "b2" },
               ],
-              toggle({ a: "a2", b: "b2" })
+              toggle({ a: "a2", b: "b2" }),
             );
             expect(r.length).toBe(1);
             expect(r[0].a).toBe("a1");
@@ -277,7 +277,7 @@ describe("entity-list-reducer", () => {
                 { a: "a1", b: "b1" },
                 { a: "a2", b: "b2" },
               ],
-              toggle({ a: "a3", b: "b3" })
+              toggle({ a: "a3", b: "b3" }),
             );
             expect(r.length).toBe(3);
             expect(r[0].a).toBe("a1");

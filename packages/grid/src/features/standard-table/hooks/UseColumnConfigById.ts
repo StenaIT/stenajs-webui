@@ -5,9 +5,9 @@ import { useStandardTableConfig } from "./UseStandardTableConfig";
 export const useColumnConfigById = <
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(
-  columnId: string
+  columnId: string,
 ): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> => {
   const { columns } = useStandardTableConfig();
   const column = columns[columnId];
@@ -20,7 +20,7 @@ export const useColumnConfigById = <
 export const useFirstColumnConfig = <
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> | undefined => {
   const config = useStandardTableConfig();
   const columnId =
@@ -31,7 +31,7 @@ export const useFirstColumnConfig = <
 export const useLastColumnConfig = <
   TItem,
   TItemValue,
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): StandardTableColumnConfig<TItem, TItemValue, TColumnKey> | undefined => {
   const config = useStandardTableConfig();
   const groupConfigsAndIds = useGroupConfigsAndIdsForRows();

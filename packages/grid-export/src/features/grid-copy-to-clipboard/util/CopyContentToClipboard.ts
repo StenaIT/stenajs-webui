@@ -6,14 +6,14 @@ import { CustomCellFormatter } from "../../../common/CellFormatters";
 export async function copyContentToClipboard<
   TItem,
   TColumnKey extends string,
-  TColumnGroupKey extends string
+  TColumnGroupKey extends string,
 >(
   items: TItem[] | undefined,
   config: StandardTableConfig<TItem, TColumnKey, TColumnGroupKey>,
   formatters?:
     | Partial<Record<TColumnKey, CustomCellFormatter<TItem>>>
     | undefined,
-  renderContent?: (content: string) => string | null
+  renderContent?: (content: string) => string | null,
 ) {
   let htmlToCopy: string | null = "";
 

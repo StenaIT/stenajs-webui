@@ -22,7 +22,7 @@ interface StandardTableContentProps<TItem extends object> {
 }
 
 export const StandardTableRowList = React.memo(function StandardTableRowList<
-  TItem extends object
+  TItem extends object,
 >({
   items,
   colIndexOffset = 0,
@@ -64,8 +64,8 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
     sortedList.sort((a, b) =>
       multitypeComparator(
         valueResolver(a) as ComparableType,
-        valueResolver(b) as ComparableType
-      )
+        valueResolver(b) as ComparableType,
+      ),
     );
     if (desc) {
       sortedList.reverse();
@@ -81,7 +81,7 @@ export const StandardTableRowList = React.memo(function StandardTableRowList<
       sortedItems
         .filter(filterItemsOnEnabledCheckboxes(checkboxDisabledResolver))
         .map((l) => keyResolver(l)),
-    [sortedItems, checkboxDisabledResolver, keyResolver]
+    [sortedItems, checkboxDisabledResolver, keyResolver],
   );
 
   useEffect(() => {

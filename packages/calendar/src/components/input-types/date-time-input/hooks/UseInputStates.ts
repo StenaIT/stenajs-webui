@@ -20,7 +20,7 @@ export const useInputStates = (date: Date | undefined | null) => {
   >(undefined);
 
   const [dateInFocus, setDateInFocus] = useState<Date>(
-    () => date ?? new Date()
+    () => date ?? new Date(),
   );
 
   const [currentPanel, setCurrentPanel] =

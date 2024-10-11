@@ -18,7 +18,7 @@ export const IconMenuButton = forwardRef<
   IconMenuButtonProps
 >(function (
   { selected, className, icon, disabled, variant = "standard", ...buttonProps },
-  ref
+  ref,
 ) {
   return (
     <Box
@@ -35,7 +35,7 @@ export const IconMenuButton = forwardRef<
           disabled && styles.disabled,
           styles.iconOnly,
           styles[variant],
-          className
+          className,
         )}
         disabled={disabled}
         ref={ref}

@@ -3,7 +3,7 @@ import { parseFloatElseUndefined } from "@stenajs-webui/core";
 
 export const isMinReached = (
   value: string | undefined,
-  min: number | undefined
+  min: number | undefined,
 ) => {
   if (!isNil(value)) {
     const numericValue = parseFloatElseUndefined(value);
@@ -15,7 +15,7 @@ export const isMinReached = (
 
 export const isMaxReached = (
   value: string | undefined,
-  max: number | undefined
+  max: number | undefined,
 ) => {
   if (!isNil(value)) {
     const numericValue = parseFloatElseUndefined(value);

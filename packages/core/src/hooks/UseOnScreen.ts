@@ -2,7 +2,7 @@ import { RefObject, useEffect, useMemo, useState } from "react";
 
 export const useOnScreen = (
   ref: RefObject<Element>,
-  options?: IntersectionObserverInit
+  options?: IntersectionObserverInit,
 ) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,7 +15,7 @@ export const useOnScreen = (
         rootMargin,
         root,
         threshold,
-      }
+      },
     );
   }, [setIsVisible, rootMargin, root, threshold]);
 

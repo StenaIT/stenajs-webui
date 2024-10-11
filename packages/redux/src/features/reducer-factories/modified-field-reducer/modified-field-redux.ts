@@ -30,7 +30,7 @@ export type ModifiedFieldsSelectors<TStoreState> = EntityByIdSelectors<
 >;
 
 export type ModifiedFieldStateSelector<TStoreState> = (
-  state: TStoreState
+  state: TStoreState,
 ) => ModifiedFieldState;
 
 export type ModifiedStateReducer = Reducer<
@@ -45,13 +45,13 @@ export interface ModifiedFieldRedux<TStoreState> {
 }
 
 export const createModifiedFieldRedux = <TStoreState>(
-  stateSelector: ModifiedFieldStateSelector<TStoreState>
+  stateSelector: ModifiedFieldStateSelector<TStoreState>,
 ): ModifiedFieldRedux<TStoreState> => {
   const reducer = createEntityByIdReducer<ModifiedFieldItemState>();
 
   const selectors: ModifiedFieldsSelectors<TStoreState> =
     createEntityByIdSelectors<TStoreState, ModifiedFieldItemState>(
-      stateSelector
+      stateSelector,
     );
 
   const actions = createEntityByIdActions<ModifiedFieldItemState>();

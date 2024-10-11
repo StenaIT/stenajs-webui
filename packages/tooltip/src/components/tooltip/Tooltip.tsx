@@ -97,7 +97,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               style={{ maxWidth, ...styles }}
               className={cx(
                 moduleStyles.floating,
-                variant && moduleStyles.withIcon
+                variant && moduleStyles.withIcon,
               )}
             >
               {variant ? (
@@ -105,7 +105,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
                   <div
                     className={cx(
                       moduleStyles.iconWrapper,
-                      moduleStyles[variant]
+                      moduleStyles[variant],
                     )}
                   >
                     <Icon icon={variantIcons[variant]} size={16} />

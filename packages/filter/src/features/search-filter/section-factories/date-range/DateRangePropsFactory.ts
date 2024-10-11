@@ -4,11 +4,11 @@ import { DateRangeCalendarSectionProps } from "./components/DateRangeCalendarSec
 export const createDateRangeSectionProps = <
   TFormModel,
   TField extends keyof PickByValue<TFormModel, string | undefined>,
-  TSectionKey extends string
+  TSectionKey extends string,
 >(
   formModel: TFormModel,
   startDateFieldName: TField,
-  endDateFieldName: TField
+  endDateFieldName: TField,
 ): Pick<
   DateRangeCalendarSectionProps<TFormModel, TSectionKey>,
   "value" | "onValueChange"

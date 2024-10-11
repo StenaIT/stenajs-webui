@@ -16,14 +16,14 @@ describe("ConfigTransformer", () => {
     describe("when table has no column groups", () => {
       it("includes all rows and header", () => {
         expect(createHtmlConfig(testConfig, testItems)).toBe(
-          fullTableNoColumnGroups
+          fullTableNoColumnGroups,
         );
       });
     });
     describe("when table has column groups", () => {
       it("includes all rows and header and groups", () => {
         expect(createHtmlConfig(testConfigWithGroups, testItems)).toBe(
-          fullTable
+          fullTable,
         );
       });
     });

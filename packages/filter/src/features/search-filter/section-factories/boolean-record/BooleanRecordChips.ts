@@ -9,28 +9,28 @@ import { SectionChipsProps } from "../../features/chips/SectionChips";
 export const createChipsPropsForBooleanRecord = <
   TFormModel,
   TSectionKey extends string,
-  TField extends keyof PickByValue<TFormModel, BooleanRecord>
+  TField extends keyof PickByValue<TFormModel, BooleanRecord>,
 >(
   formModel: TFormModel,
   fieldName: TField,
-  options?: BooleanRecordOptions
+  options?: BooleanRecordOptions,
 ): Pick<
   SectionChipsProps<TFormModel, TSectionKey>,
   "chips" | "onClickRemoveOnChip"
 > => ({
   chips: createChipsForBooleanRecord(
     formModel[fieldName] as unknown as BooleanRecord,
-    options
+    options,
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForBooleanRecord(
     formModel,
-    fieldName
+    fieldName,
   ),
 });
 
 export const createChipsForBooleanRecord = (
   booleanRecord: BooleanRecord,
-  options?: BooleanRecordOptions
+  options?: BooleanRecordOptions,
 ): Array<SearchFilterSectionChipModel> =>
   truthyKeysAsList(booleanRecord).map((key) => {
     const option = options?.find((o) => o.value === key);
@@ -39,10 +39,10 @@ export const createChipsForBooleanRecord = (
 
 export const createOnClickRemoveOnChipForBooleanRecord = <
   TFormModel,
-  TField extends keyof PickByValue<TFormModel, BooleanRecord>
+  TField extends keyof PickByValue<TFormModel, BooleanRecord>,
 >(
   formModel: TFormModel,
-  fieldName: TField
+  fieldName: TField,
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields, value }) => {
     const newBooleanRecord = { ...formModel[fieldName] } as BooleanRecord;

@@ -80,7 +80,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         base: cx(
           styles.content,
           getClassNameForSlide(slideFrom),
-          floating && styles.floating
+          floating && styles.floating,
         ),
         afterOpen: styles.afterOpen,
         beforeClose: styles.beforeClose,

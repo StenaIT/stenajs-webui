@@ -322,11 +322,11 @@ export const Demo = () => {
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
 
   const selectedCategories = Object.values(state.formModel.categories).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   const selectedDivisions = Object.values(state.formModel.divisions).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   return (
@@ -349,7 +349,7 @@ export const Demo = () => {
               {...createChipsPropsForDateRange(
                 state.formModel,
                 "startDate",
-                "endDate"
+                "endDate",
               )}
             />
             <SectionChips
@@ -358,7 +358,7 @@ export const Demo = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "divisions",
-                divisionOptions
+                divisionOptions,
               )}
             />
             <SectionChips
@@ -367,7 +367,7 @@ export const Demo = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "categories",
-                categoryOptions
+                categoryOptions,
               )}
             />
           </SearchFilterChips>
@@ -391,7 +391,7 @@ export const Demo = () => {
           {...createDateRangeSectionProps(
             state.formModel,
             "startDate",
-            "endDate"
+            "endDate",
           )}
         />
         <ChipMultiSelectSection
@@ -443,11 +443,11 @@ export const WithStickyFooter = () => {
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
 
   const selectedCategories = Object.values(state.formModel.categories).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   const selectedDivisions = Object.values(state.formModel.divisions).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   return (
@@ -472,7 +472,7 @@ export const WithStickyFooter = () => {
               {...createChipsPropsForDateRange(
                 state.formModel,
                 "startDate",
-                "endDate"
+                "endDate",
               )}
             />
             <SectionChips
@@ -481,7 +481,7 @@ export const WithStickyFooter = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "divisions",
-                divisionOptions
+                divisionOptions,
               )}
             />
             <SectionChips
@@ -490,7 +490,7 @@ export const WithStickyFooter = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "categories",
-                categoryOptions
+                categoryOptions,
               )}
             />
           </SearchFilterChips>
@@ -512,7 +512,7 @@ export const WithStickyFooter = () => {
             {...createDateRangeSectionProps(
               state.formModel,
               "startDate",
-              "endDate"
+              "endDate",
             )}
           />
           <ChipMultiSelectSection
@@ -563,11 +563,11 @@ export const WithClearFiltersInHeader = () => {
   >(createSearchFilterInitialState({ divisions: {}, categories: {} }));
 
   const selectedCategories = Object.values(state.formModel.categories).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   const selectedDivisions = Object.values(state.formModel.divisions).filter(
-    (value) => value
+    (value) => value,
   ).length;
 
   return (
@@ -592,7 +592,7 @@ export const WithClearFiltersInHeader = () => {
               {...createChipsPropsForDateRange(
                 state.formModel,
                 "startDate",
-                "endDate"
+                "endDate",
               )}
             />
             <SectionChips
@@ -601,7 +601,7 @@ export const WithClearFiltersInHeader = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "divisions",
-                divisionOptions
+                divisionOptions,
               )}
             />
             <SectionChips
@@ -610,7 +610,7 @@ export const WithClearFiltersInHeader = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "categories",
-                categoryOptions
+                categoryOptions,
               )}
             />
           </SearchFilterChips>
@@ -631,7 +631,7 @@ export const WithClearFiltersInHeader = () => {
           {...createDateRangeSectionProps(
             state.formModel,
             "startDate",
-            "endDate"
+            "endDate",
           )}
         />
         <ChipMultiSelectSection
@@ -676,7 +676,7 @@ type FilterSectionProps =
 const ErrorSection: React.FC<FilterSectionProps> = (props) => {
   const [loading, startLoading, stopLoading] = useBoolean(false);
   const [error, setError] = useState<string | undefined>(
-    "Something went wrong"
+    "Something went wrong",
   );
 
   const onRetry = () => {
@@ -726,7 +726,7 @@ export const ManyChips = () => {
               {...createChipsPropsForBooleanRecord(
                 state.formModel,
                 "divisions",
-                divisionOptions
+                divisionOptions,
               )}
               chips={divisionOptions}
             />

@@ -2,7 +2,7 @@ import { addDays, addMonths, startOfWeek, subDays, subMonths } from "date-fns";
 
 export const getDateToFocusOn = (
   currentDate: Date,
-  key: string
+  key: string,
 ): Date | undefined => {
   switch (key) {
     case "PageUp":

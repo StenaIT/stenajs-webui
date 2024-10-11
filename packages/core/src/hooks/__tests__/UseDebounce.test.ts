@@ -15,7 +15,7 @@ describe("useDebounce", () => {
       ({ value }) => useDebounce(value, delay),
       {
         initialProps: { value: firstValue },
-      }
+      },
     );
     const notValue = "not value";
     const newValue = "new value";

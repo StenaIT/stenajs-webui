@@ -63,7 +63,7 @@ export const RadioButtonBox: React.FC<RadioButtonBoxProps> = ({
         styles.radioButtonBox,
         styles[variant],
         styles[size],
-        className
+        className,
       )}
       style={style}
     >

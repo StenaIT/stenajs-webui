@@ -17,9 +17,9 @@ export const NavBarButton = forwardRef<HTMLButtonElement, NavBarButtonProps>(
         className={cx(
           styles.navBarButton,
           selected && styles.selected,
-          className
+          className,
         )}
       />
     );
-  }
+  },
 );

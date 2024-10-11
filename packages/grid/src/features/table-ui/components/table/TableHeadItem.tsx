@@ -155,5 +155,5 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
         )}
       </Row>
     );
-  }
+  },
 );

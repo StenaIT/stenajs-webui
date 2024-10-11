@@ -8,13 +8,13 @@ export interface ReducerIdGateAction<TInnerAction> {
 
 export type ReducerIdGateReducer<
   TState,
-  TInnerAction extends Action = AnyAction
+  TInnerAction extends Action = AnyAction,
 > = Reducer<TState, ReducerIdGateAction<TInnerAction>>;
 
 export const reducerIdGate =
   <TState, TInnerAction extends Action = AnyAction>(
     reducerId: string,
-    reducer: Reducer<TState, TInnerAction>
+    reducer: Reducer<TState, TInnerAction>,
   ): ReducerIdGateReducer<TState, TInnerAction> =>
   (state, action) => {
     const newState =
@@ -35,7 +35,7 @@ export const reducerIdGate =
 
 export const reducerIdGateAction = <TInnerAction>(
   reducerId: string,
-  action: TInnerAction
+  action: TInnerAction,
 ): ReducerIdGateAction<TInnerAction> => ({
   type: "REDUCER_ID_GATE:ACTION",
   action,

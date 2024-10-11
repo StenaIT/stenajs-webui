@@ -23,12 +23,12 @@ describe("field-matcher", () => {
       });
       it("returns false when some fields match", () => {
         expect(fieldsMatch(u("123", "ma"), { a: "123", b: "matt" })).toBe(
-          false
+          false,
         );
       });
       it("returns false when no fields match", () => {
         expect(fieldsMatch(u("123", "ma"), { a: "1234", b: "matt" })).toBe(
-          false
+          false,
         );
       });
       it("returns false when no fields are provided", () => {

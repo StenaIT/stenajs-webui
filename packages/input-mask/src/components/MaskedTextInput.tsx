@@ -40,7 +40,7 @@ export const MaskedTextInput: React.FC<MaskedTextInputProps> = ({
     guide,
     keepCharPositions,
     placeholderChar,
-    showMask
+    showMask,
   );
 
   return (

@@ -109,7 +109,7 @@ export const Clickable = forwardRef<HTMLButtonElement, ClickableProps>(
       type = "button",
       ...restProps
     },
-    ref
+    ref,
   ) => {
     const hasClickHandler = !!(onClick || onDblClick);
 
@@ -133,5 +133,5 @@ export const Clickable = forwardRef<HTMLButtonElement, ClickableProps>(
         {children}
       </ClickableElement>
     );
-  }
+  },
 );

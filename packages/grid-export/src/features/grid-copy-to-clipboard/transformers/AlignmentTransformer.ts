@@ -1,5 +1,5 @@
 export const transformJustifyContentToTextAlign = (
-  justifyContent: string | undefined
+  justifyContent: string | undefined,
 ): string | undefined => {
   switch (justifyContent?.toLowerCase()) {
     case "left":

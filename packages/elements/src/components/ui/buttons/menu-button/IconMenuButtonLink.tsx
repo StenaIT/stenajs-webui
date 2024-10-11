@@ -42,7 +42,7 @@ export const IconMenuButtonLink = forwardRef<
   IconMenuButtonLinkProps
 >(function (
   { className, icon, disabled, variant = "standard", href, ...linkProps },
-  ref
+  ref,
 ) {
   const innerChildren = (
     <Row justifyContent={"center"} indent={1}>
@@ -67,7 +67,7 @@ export const IconMenuButtonLink = forwardRef<
     noRenderLinkProps?.selected && styles.selected,
     styles.iconOnly,
     styles[variant],
-    className
+    className,
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -80,7 +80,7 @@ export const IconMenuButtonLink = forwardRef<
       href: disabled ? undefined : href,
       children: innerChildren,
     },
-    styles.selected
+    styles.selected,
   ) ?? (
     <a
       className={linkClassName}

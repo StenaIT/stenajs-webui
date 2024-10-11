@@ -1,13 +1,13 @@
 import { RefObject, useEffect, useRef } from "react";
 
 type EventHandler<TEventName extends keyof HTMLElementEventMap> = (
-  event: HTMLElementEventMap[TEventName]
+  event: HTMLElementEventMap[TEventName],
 ) => void;
 
 export const useEventListener = <TEventName extends keyof HTMLElementEventMap>(
   ref: RefObject<HTMLElement>,
   eventName: TEventName,
-  handler: EventHandler<TEventName>
+  handler: EventHandler<TEventName>,
 ) => {
   // Create a ref that stores handler
   const savedHandler = useRef<EventHandler<TEventName>>();

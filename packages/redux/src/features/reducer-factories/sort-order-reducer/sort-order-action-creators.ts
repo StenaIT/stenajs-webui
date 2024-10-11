@@ -9,7 +9,7 @@ export interface SortOrderActions<TSortBy> {
 }
 
 export const createSortOrderActions = <
-  TSortBy
+  TSortBy,
 >(): SortOrderActions<TSortBy> => ({
   sortBy: (sortBy, desc) => ({
     desc,

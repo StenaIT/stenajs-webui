@@ -63,7 +63,7 @@ export const testConfig: StandardTableConfig<
 export const testGroupConfigs = createGroupConfigAndIdsForRows(
   undefined,
   undefined,
-  testConfig.columnOrder
+  testConfig.columnOrder,
 ).map((p) => p.groupConfig);
 
 export const testConfigWithGroups: StandardTableConfig<
@@ -96,5 +96,5 @@ export const testConfigWithGroups: StandardTableConfig<
 export const testGroupConfigsWithGroups = createGroupConfigAndIdsForRows(
   testConfigWithGroups.columnGroups,
   testConfigWithGroups.columnGroupOrder,
-  undefined
+  undefined,
 ).map((p) => p.groupConfig);

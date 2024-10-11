@@ -7,7 +7,7 @@ const defaultComparator = <T>(a: T, b: T) => a === b;
 export const useArraySet = <T>(
   list: Array<T>,
   setList: (list: Array<T>) => void,
-  comparator: ArrayItemEqualsComparator<T> = defaultComparator
+  comparator: ArrayItemEqualsComparator<T> = defaultComparator,
 ) => {
   const add = useCallback(
     (item: T) => {
@@ -15,7 +15,7 @@ export const useArraySet = <T>(
         setList([...list, item]);
       }
     },
-    [list, setList, comparator]
+    [list, setList, comparator],
   );
 
   const addMultiple = useCallback(
@@ -26,10 +26,10 @@ export const useArraySet = <T>(
             return [...list, item];
           }
           return list;
-        }, list)
+        }, list),
       );
     },
-    [list, setList, comparator]
+    [list, setList, comparator],
   );
 
   const remove = useCallback(
@@ -39,14 +39,14 @@ export const useArraySet = <T>(
         setList(list.filter((_, i) => i !== index));
       }
     },
-    [list, setList, comparator]
+    [list, setList, comparator],
   );
 
   const removeMultiple = useCallback(
     (items: Array<T>) => {
       setList(list.filter((item) => !items.some((l) => comparator(l, item))));
     },
-    [list, setList, comparator]
+    [list, setList, comparator],
   );
 
   const toggle = useCallback(
@@ -58,7 +58,7 @@ export const useArraySet = <T>(
         add(item);
       }
     },
-    [list, add, remove, comparator]
+    [list, add, remove, comparator],
   );
 
   return {

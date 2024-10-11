@@ -49,7 +49,7 @@ export const onTextValueChange = ({
 const limitWithinRange = (
   value: number,
   min?: number,
-  max?: number
+  max?: number,
 ): number => {
   let v = value;
   if (min != null) {

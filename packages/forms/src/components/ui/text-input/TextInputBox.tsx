@@ -53,8 +53,8 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
     variant === "success"
       ? stenaCheck
       : variant === "warning" || variant === "error"
-      ? stenaExclamationTriangle
-      : iconRight;
+        ? stenaExclamationTriangle
+        : iconRight;
 
   const currentContentRight =
     variant === "loading" ? <InputSpinner /> : contentRight;
@@ -68,7 +68,7 @@ export const TextInputBox: React.FC<TextInputBoxProps> = ({
         {
           [styles.disabled]: disabled,
         },
-        wrapperClassName
+        wrapperClassName,
       )}
       style={wrapperStyle}
     >

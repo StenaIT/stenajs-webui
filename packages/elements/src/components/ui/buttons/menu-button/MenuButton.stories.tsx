@@ -87,7 +87,7 @@ export const Overview = () => {
         leftIcon={stenaExternalLink}
         renderLink={(
           { className, children, ...anchorProps },
-          activeClassName
+          activeClassName,
         ) => (
           <a
             {...anchorProps}

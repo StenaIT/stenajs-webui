@@ -4,7 +4,7 @@ import { useBoolean } from "./UseBoolean";
 import { useEventListener } from "./UseEventListener";
 
 export const useElementFocus = <TElement extends HTMLElement>(
-  ref: RefObject<TElement>
+  ref: RefObject<TElement>,
 ) => {
   const [isInFocus, setIsInFocus, setIsNotInFocus] = useBoolean(false);
 

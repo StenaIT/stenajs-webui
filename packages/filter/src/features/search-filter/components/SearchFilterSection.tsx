@@ -25,7 +25,7 @@ export interface SearchFilterSectionProps<TSectionKey extends string> {
 }
 
 export const SearchFilterSection = function SearchFilterSection<
-  TSectionKey extends string
+  TSectionKey extends string,
 >({
   sectionId,
   label,

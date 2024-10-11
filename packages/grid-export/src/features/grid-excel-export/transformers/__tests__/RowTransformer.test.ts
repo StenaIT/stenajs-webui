@@ -27,7 +27,7 @@ describe("RowTransformer", () => {
           testItems[0],
           testConfig,
           testGroupConfigs,
-          formatters
+          formatters,
         );
 
         it("uses the custom formatter", () => {
@@ -43,7 +43,7 @@ describe("RowTransformer", () => {
           testItems[0],
           testConfig,
           testGroupConfigs,
-          formatters
+          formatters,
         );
         it("uses the custom formatter", () => {
           expect(r[2].type).toBe("number");

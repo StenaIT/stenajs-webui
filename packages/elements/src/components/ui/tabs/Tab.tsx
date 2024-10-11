@@ -27,14 +27,14 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(
     responsiveIconOnly,
     ...buttonProps
   },
-  ref
+  ref,
 ) {
   const buttonLabel = getButtonLabel(
     label,
     success,
     undefined,
     loading,
-    undefined
+    undefined,
   );
 
   return (

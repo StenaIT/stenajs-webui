@@ -13,7 +13,7 @@ export const useUserInputHandlers = (
     setCurrentPanel,
     showTimePicker,
     hideTimePicker,
-  }: UseInputStatesResult
+  }: UseInputStatesResult,
 ) => {
   const onFocusLeft = useCallback(() => {
     if (!isCalendarVisible) {
@@ -34,7 +34,7 @@ export const useUserInputHandlers = (
       hideCalendar();
       showTimePicker();
     },
-    [onChangeDate, hideCalendar, showTimePicker]
+    [onChangeDate, hideCalendar, showTimePicker],
   );
 
   const onClickArrowButton = useCallback(() => {
@@ -64,7 +64,7 @@ export const useUserInputHandlers = (
         hideCalendar();
       }
     },
-    [hideCalendar]
+    [hideCalendar],
   );
 
   return {

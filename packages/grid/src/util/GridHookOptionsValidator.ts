@@ -2,7 +2,7 @@ import { UseGridCellOptions } from "../features/grid-cell/hooks/UseGridCell";
 import { ValidatedUseGridNavigationOptions } from "../features/grid-cell/hooks/UseGridNavigation";
 
 export const validateGridHookOptions = <TValue>(
-  options: UseGridCellOptions<TValue>
+  options: UseGridCellOptions<TValue>,
 ): ValidatedUseGridNavigationOptions => {
   if (!options.tableId) {
     throw new Error("tableId is required.");

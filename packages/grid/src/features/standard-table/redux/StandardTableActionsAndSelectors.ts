@@ -20,7 +20,7 @@ export interface InternalStandardTableActions<TColumnKey extends string> {
 
 export interface StandardTableSelectors<
   TStoreState,
-  TColumnKey extends string
+  TColumnKey extends string,
 > {
   sortOrder: SortOrderSelectors<TStoreState, TColumnKey>;
   selectedIds: SelectedIdsSelectors<TStoreState>;
@@ -30,14 +30,14 @@ export interface StandardTableSelectors<
 
 export interface StandardTableActionsAndSelectors<
   TStoreState,
-  TColumnKey extends string
+  TColumnKey extends string,
 > {
   actions: InternalStandardTableActions<TColumnKey>;
   selectors: StandardTableSelectors<TStoreState, TColumnKey>;
 }
 
 export const createInternalStandardTableActions = <
-  TColumnKey extends string
+  TColumnKey extends string,
 >(): InternalStandardTableActions<TColumnKey> => ({
   sortOrder: createSortOrderActions<TColumnKey>(),
   selectedIds: createSelectedIdsActions(),

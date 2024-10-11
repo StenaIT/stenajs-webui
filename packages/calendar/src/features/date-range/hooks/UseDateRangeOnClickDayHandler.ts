@@ -12,7 +12,7 @@ export const useDateRangeOnClickDayHandler = <T>(
   value: DateRange | undefined,
   onValueChange: ((dateRange: DateRange) => void) | undefined,
   focusedInput: DateRangeFocusedInput,
-  setFocusedInput: (focusedInput: DateRangeFocusedInput) => void
+  setFocusedInput: (focusedInput: DateRangeFocusedInput) => void,
 ): OnClickDay<T> => {
   return useCallback(
     (day: DayData) => {
@@ -32,6 +32,6 @@ export const useDateRangeOnClickDayHandler = <T>(
       setFocusedInput,
       value?.endDate,
       value?.startDate,
-    ]
+    ],
   );
 };

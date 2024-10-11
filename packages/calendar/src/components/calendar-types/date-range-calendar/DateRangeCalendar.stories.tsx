@@ -23,7 +23,7 @@ for (let i = 1; i < 7; i++) {
     addDays(new Date(), i),
     {
       highlights: ["enabled"],
-    }
+    },
   );
 }
 for (let i = 10; i < 14; i++) {
@@ -32,7 +32,7 @@ for (let i = 10; i < 14; i++) {
     addDays(new Date(), i),
     {
       highlights: ["enabled"],
-    }
+    },
   );
 }
 

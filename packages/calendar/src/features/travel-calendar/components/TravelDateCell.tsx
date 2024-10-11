@@ -75,7 +75,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
       onChangeVisibleMonth,
       onClick,
       onStartHover,
-    ]
+    ],
   );
 
   const dayIsInMonth = day.month === visibleMonth.getMonth();
@@ -98,7 +98,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
     selectedEndDate,
     hoverDate,
     dayIsInMonth,
-    isValidDateRange
+    isValidDateRange,
   );
 
   return (
@@ -119,7 +119,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
               selectedStartDate,
               isToday,
               visibleMonth,
-              todayIsInVisibleMonth
+              todayIsInVisibleMonth,
             )
       }
       id={disabled ? undefined : createDayId(day.date, calendarId)}
@@ -149,7 +149,7 @@ export const TravelDateCell: React.FC<TravelDateCellProps> = ({
               : undefined,
             isSelectionStart && styles.isSelectionStart,
             isSelectionEnd && styles.isSelectionEnd,
-            disabled && styles.disabled
+            disabled && styles.disabled,
           )}
         >
           <Text
@@ -169,7 +169,7 @@ const getTabIndex = (
   selectedStartDate: Date | undefined,
   isToday: boolean,
   visibleMonth: Date,
-  todayIsInVisibleMonth: boolean
+  todayIsInVisibleMonth: boolean,
 ): number => {
   const selectedStartDateIsVisible = selectedStartDate
     ? isSameMonth(selectedStartDate, visibleMonth)

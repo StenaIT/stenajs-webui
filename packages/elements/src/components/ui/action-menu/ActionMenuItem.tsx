@@ -17,7 +17,7 @@ export const ActionMenuItem = forwardRef<
 >(function ActionMenuItem({ disableCloseOnClick, onClick, ...props }, ref) {
   const { onClickHandler, onKeyDown, innerRef } = useActionMenuLogic(
     { disableCloseOnClick, onClick },
-    ref
+    ref,
   );
 
   return (

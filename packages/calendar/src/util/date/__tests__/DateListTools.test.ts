@@ -17,7 +17,7 @@ describe("DateListTool", () => {
     describe("when date does not exists in list", () => {
       it("it should return new list with date added", () => {
         expect(
-          addDateIfNotExists(dateList, addDays(new Date(), 14)).length
+          addDateIfNotExists(dateList, addDays(new Date(), 14)).length,
         ).toBe(4);
       });
     });
@@ -32,7 +32,7 @@ describe("DateListTool", () => {
     describe("when date does not exists in list", () => {
       it("it should return unmodified list", () => {
         expect(
-          removeDateIfExist(dateList, addDays(new Date(), 14)).length
+          removeDateIfExist(dateList, addDays(new Date(), 14)).length,
         ).toBe(3);
       });
     });

@@ -41,12 +41,12 @@ export const StandardTableSummaryRow = React.memo(
                     borderFromGroup={getCellBorderFromGroup(
                       groupIndex,
                       index,
-                      groupConfig.borderLeft
+                      groupConfig.borderLeft,
                     )}
                     disableBorderLeft={groupIndex === 0 && index === 0}
                   />
                 );
-              }
+              },
             )}
           </React.Fragment>
         ))}
@@ -58,5 +58,5 @@ export const StandardTableSummaryRow = React.memo(
         <td />
       </tr>
     );
-  }
+  },
 );

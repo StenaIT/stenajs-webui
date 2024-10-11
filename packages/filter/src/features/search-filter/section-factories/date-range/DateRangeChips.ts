@@ -8,28 +8,28 @@ import { SectionChipsProps } from "../../features/chips/SectionChips";
 export const createChipsPropsForDateRange = <
   TFormModel,
   TSectionKey extends string,
-  TField extends keyof PickByValue<TFormModel, string | undefined>
+  TField extends keyof PickByValue<TFormModel, string | undefined>,
 >(
   formModel: TFormModel,
   startDateFieldName: TField,
-  endDateFieldName: TField
+  endDateFieldName: TField,
 ): Pick<
   SectionChipsProps<TFormModel, TSectionKey>,
   "chips" | "onClickRemoveOnChip"
 > => ({
   chips: createChipsForDateRange(
     formModel[startDateFieldName] as unknown as string | undefined,
-    formModel[endDateFieldName] as unknown as string | undefined
+    formModel[endDateFieldName] as unknown as string | undefined,
   ),
   onClickRemoveOnChip: createOnClickRemoveOnChipForDateRange(
     startDateFieldName,
-    endDateFieldName
+    endDateFieldName,
   ),
 });
 
 export const createChipsForDateRange = (
   startDate: string | undefined,
-  endDate: string | undefined
+  endDate: string | undefined,
 ): Array<SearchFilterSectionChipModel> => {
   if (!startDate && !endDate) {
     return [];
@@ -41,10 +41,10 @@ export const createChipsForDateRange = (
 
 export const createOnClickRemoveOnChipForDateRange = <
   TFormModel,
-  TField extends keyof PickByValue<TFormModel, string | undefined>
+  TField extends keyof PickByValue<TFormModel, string | undefined>,
 >(
   startDateFieldName: TField,
-  endDateFieldName: TField
+  endDateFieldName: TField,
 ): SearchFilterSectionOnClickRemoveOnChip<TFormModel> => {
   return ({ setFormModelFields }) => {
     setFormModelFields({

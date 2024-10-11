@@ -15,7 +15,7 @@ export interface ChipMultiSelectOption extends ChipRowItem {}
 export type ChipMultiSelectValue = ChipMultiSelectOption;
 
 export interface ChipMultiSelectProps<
-  TOption extends MultiSelectOption = MultiSelectOption
+  TOption extends MultiSelectOption = MultiSelectOption,
 > extends Omit<MultiSelectProps<TOption>, "value" | "onChange" | "isLoading">,
     ValueAndOnValueChangeProps<Array<TOption>> {
   loading?: boolean;
@@ -60,5 +60,5 @@ function _ChipMultiSelect<TOption extends ChipMultiSelectOption>({
 }
 
 export const ChipMultiSelect = React.memo(
-  _ChipMultiSelect
+  _ChipMultiSelect,
 ) as typeof _ChipMultiSelect;

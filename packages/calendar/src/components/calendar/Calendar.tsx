@@ -60,19 +60,19 @@ function CalendarPanel<T>({
 }: CalendarPanelProps<T>) {
   const minDateObj = useMemo(
     () => (minDate ? parse(minDate, "yyyy-MM-dd", new Date()) : undefined),
-    [minDate]
+    [minDate],
   );
 
   const maxDateObj = useMemo(
     () => (maxDate ? parse(maxDate, "yyyy-MM-dd", new Date()) : undefined),
-    [maxDate]
+    [maxDate],
   );
 
   return (
     <div
       className={cx(
         styles.calendar,
-        showWeekNumber && styles.weekNumberVisible
+        showWeekNumber && styles.weekNumberVisible,
       )}
     >
       {monthRows.map((monthRow, rowIndex) => (
@@ -113,19 +113,19 @@ export function Calendar<T>(props: CalendarProps<T>) {
   const initialDate = getInitialDate(props.year, props.month, props.date);
   const { year, month } = calculateOverflowingMonth(
     initialDate.year,
-    initialDate.month
+    initialDate.month,
   );
   const monthRows = getMonthRows(
     year,
     month,
     props.locale ?? enGB,
     props.numMonths,
-    props.monthsPerRow
+    props.monthsPerRow,
   );
 
   const statePerMonth = useHighlightToday(
     props.highlightToday,
-    props.statePerMonth
+    props.statePerMonth,
   );
 
   return (
@@ -164,7 +164,7 @@ const getMonthRows = (
   month: number,
   locale: Locale,
   numMonths?: number,
-  monthsPerRow?: number
+  monthsPerRow?: number,
 ): Array<Array<MonthData>> => {
   if (numMonths == null) {
     return [[getMonthInYear(year, month, locale)]];

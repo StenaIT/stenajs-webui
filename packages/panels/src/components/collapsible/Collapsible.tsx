@@ -26,7 +26,7 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
       autoFocus = false,
       ...props
     },
-    ref
+    ref,
   ) {
     return (
       <MenuButton
@@ -45,5 +45,5 @@ export const Collapsible = forwardRef<HTMLButtonElement, CollapsibleProps>(
         {children ?? <CollapsibleEmptyContent />}
       </MenuButton>
     );
-  }
+  },
 );

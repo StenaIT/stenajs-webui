@@ -74,7 +74,7 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
     keepCharPositions,
     placeholderChar,
     showMask,
-    isFocused
+    isFocused,
   );
 
   const onFocusHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -82,7 +82,7 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
       onFocus?.(ev);
       setIsFocused(true);
     },
-    [onFocus]
+    [onFocus],
   );
 
   const onBlurHandler = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -90,12 +90,12 @@ export const TravelDateTextInput: React.FC<TravelDateTextInputProps> = ({
       onBlur?.(ev);
       setIsFocused(false);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const activePlaceholder = isFocused
     ? placeholder
-    : placeholderWhenBlurred ?? placeholder;
+    : (placeholderWhenBlurred ?? placeholder);
 
   if (variant === "standard") {
     return (

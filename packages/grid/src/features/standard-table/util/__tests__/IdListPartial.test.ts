@@ -44,7 +44,7 @@ describe("IdListPartial", () => {
     describe("when list is incomplete", () => {
       it("returns undefined", () => {
         expect(
-          getIdsBetweenSelected(["a", "c", "d"], "b", "e")
+          getIdsBetweenSelected(["a", "c", "d"], "b", "e"),
         ).toBeUndefined();
       });
     });

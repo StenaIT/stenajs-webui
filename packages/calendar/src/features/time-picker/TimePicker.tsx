@@ -36,20 +36,20 @@ export const TimePicker: React.FC<TimePickerProps> = ({
     (h: number) => {
       setHour(h);
       onValueChange?.(
-        `${formatHours(String(h ?? 0))}:${formatMinutes(String(minute ?? 0))}`
+        `${formatHours(String(h ?? 0))}:${formatMinutes(String(minute ?? 0))}`,
       );
     },
-    [minute, onValueChange]
+    [minute, onValueChange],
   );
 
   const onClickMinutes = useCallback(
     (m: number) => {
       setMinute(m);
       onValueChange?.(
-        `${formatHours(String(hour ?? 0))}:${formatMinutes(String(m ?? 0))}`
+        `${formatHours(String(hour ?? 0))}:${formatMinutes(String(m ?? 0))}`,
       );
     },
-    [hour, onValueChange]
+    [hour, onValueChange],
   );
 
   return (

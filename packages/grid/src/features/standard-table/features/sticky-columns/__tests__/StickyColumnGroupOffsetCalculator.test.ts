@@ -53,13 +53,13 @@ describe("StickyColumnGroupOffsetCalculator", () => {
       it("includes offset for both", () => {
         config.stickyColumnGroups = "both";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
-          config as any
+          config as any,
         );
         expect(Object.keys(offsets).length).toBe(6);
         expect(offsets.link).toBe("var(--current-left-offset)");
         expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
         expect(offsets.dayOfWeek).toBe(
-          "calc(var(--current-left-offset) + 48px + 60px)"
+          "calc(var(--current-left-offset) + 48px + 60px)",
         );
 
         expect(offsets.ship).toBe("0px");
@@ -72,13 +72,13 @@ describe("StickyColumnGroupOffsetCalculator", () => {
       it("includes offset for first only", () => {
         config.stickyColumnGroups = "first";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
-          config as any
+          config as any,
         );
         expect(Object.keys(offsets).length).toBe(3);
         expect(offsets.link).toBe("var(--current-left-offset)");
         expect(offsets.leg).toBe("calc(var(--current-left-offset) + 48px)");
         expect(offsets.dayOfWeek).toBe(
-          "calc(var(--current-left-offset) + 48px + 60px)"
+          "calc(var(--current-left-offset) + 48px + 60px)",
         );
       });
     });
@@ -87,7 +87,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
       it("includes offset for last", () => {
         config.stickyColumnGroups = "last";
         const offsets = calculateOffsetForColumnInStickyColumnGroups(
-          config as any
+          config as any,
         );
         expect(Object.keys(offsets).length).toBe(3);
         expect(offsets.ship).toBe("0px");
@@ -143,20 +143,20 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         const offsets = calculateOffsetForColumns(
           columnIds,
           config.columns as any,
-          false
+          false,
         );
         expect(Object.keys(offsets).length).toBe(6);
         expect(offsets.link).toBe("0px");
         expect(offsets.leg).toBe("calc(0px + 48px)");
         expect(offsets.dayOfWeek).toBe("calc(0px + 48px + 60px)");
         expect(offsets.departureDateTime).toBe(
-          "calc(0px + 48px + 60px + 60px)"
+          "calc(0px + 48px + 60px + 60px)",
         );
         expect(offsets.timeToDeparture).toBe(
-          "calc(0px + 48px + 60px + 60px + 140px)"
+          "calc(0px + 48px + 60px + 60px + 140px)",
         );
         expect(offsets.ship).toBe(
-          "calc(0px + 48px + 60px + 60px + 140px + 90px)"
+          "calc(0px + 48px + 60px + 60px + 140px + 90px)",
         );
       });
     });
@@ -166,7 +166,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         const offsets = calculateOffsetForColumns(
           columnIds,
           config.columns as any,
-          false
+          false,
         );
         expect(Object.keys(offsets).length).toBe(6);
 
@@ -176,7 +176,7 @@ describe("StickyColumnGroupOffsetCalculator", () => {
         expect(offsets.dayOfWeek).toBe("calc(0px + 60px + 90px + 140px)");
         expect(offsets.leg).toBe("calc(0px + 60px + 90px + 140px + 60px)");
         expect(offsets.link).toBe(
-          "calc(0px + 60px + 90px + 140px + 60px + 60px)"
+          "calc(0px + 60px + 90px + 140px + 60px + 60px)",
         );
       });
     });

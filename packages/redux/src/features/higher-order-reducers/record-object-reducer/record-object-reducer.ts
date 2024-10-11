@@ -13,7 +13,7 @@ export type RecordObjectState<TInnerState> = Record<
 
 export const createRecordObjectReducer =
   <TInnerAction extends RecordObjectWrappedAction, TInnerState = unknown>(
-    reducer: Reducer<TInnerState, TInnerAction>
+    reducer: Reducer<TInnerState, TInnerAction>,
   ): Reducer<
     RecordObjectState<TInnerState>,
     RecordObjectAction<TInnerAction>

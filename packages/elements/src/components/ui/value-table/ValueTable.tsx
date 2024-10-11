@@ -39,7 +39,7 @@ export const ValueTable: React.FC<ValueTableProps> = ({
         className={cx(
           styles.valueTable,
           !disableBorder && styles.withBorder,
-          styles[variant]
+          styles[variant],
         )}
       >
         <tbody>

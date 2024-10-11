@@ -5,7 +5,7 @@ describe("useSelectAllOnMount", () => {
     describe("for textarea", () => {
       it("should always allow", () => {
         expect(
-          elementHasSelectionRange(document.createElement("textarea"))
+          elementHasSelectionRange(document.createElement("textarea")),
         ).toBe(true);
       });
     });
@@ -36,7 +36,7 @@ describe("useSelectAllOnMount", () => {
       it("should never allow", () => {
         expect(
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          elementHasSelectionRange(document.createElement("span") as any)
+          elementHasSelectionRange(document.createElement("span") as any),
         ).toBe(false);
       });
     });

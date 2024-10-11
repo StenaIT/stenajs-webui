@@ -33,7 +33,7 @@ const locales: LocalesMap = {
 };
 
 export const getLocaleForLocaleCode = (
-  localeCode: string
+  localeCode: string,
 ): Locale | undefined => {
   return locales[localeCode];
 };

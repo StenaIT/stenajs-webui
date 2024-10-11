@@ -5,7 +5,7 @@ import { StandardTableCellRenderer } from "../../../config/StandardTableColumnCo
 
 export const createStandardEditableTextCell =
   <TItemValue, TItem>(
-    textSize?: TextSize
+    textSize?: TextSize,
   ): StandardTableCellRenderer<TItemValue, TItem> =>
   ({
     label,

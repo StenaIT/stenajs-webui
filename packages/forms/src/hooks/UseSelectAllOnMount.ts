@@ -23,7 +23,7 @@ export function elementHasSelectionRange(element: TextInputElement): boolean {
 export const useSelectAllOnMount = (
   ref: RefObject<TextInputElement>,
   moveCursorToEnd: boolean,
-  enabled: boolean
+  enabled: boolean,
 ) => {
   useEffect(() => {
     if (!ref.current) {
@@ -44,7 +44,7 @@ export const useSelectAllOnMount = (
     } else if (moveCursorToEnd) {
       ref.current.setSelectionRange(
         ref.current.value.length,
-        ref.current.value.length
+        ref.current.value.length,
       );
     }
   }, [moveCursorToEnd, ref, enabled]);

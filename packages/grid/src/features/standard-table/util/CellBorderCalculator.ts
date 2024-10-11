@@ -3,7 +3,7 @@ import { tableBorder } from "../../../config/TableConfig";
 export const getCellBorder = (
   borderFromGroup: string | boolean | undefined,
   disableBorderLeft: boolean | undefined,
-  borderLeft: string | boolean | undefined
+  borderLeft: string | boolean | undefined,
 ): string | undefined => {
   if (borderFromGroup) {
     if (borderFromGroup === true) {
@@ -27,7 +27,7 @@ export const getCellBorder = (
 export const getCellBorderFromGroup = (
   groupIndex: number,
   columnIndexInGroup: number,
-  groupBorderLeft: string | boolean | undefined
+  groupBorderLeft: string | boolean | undefined,
 ): string | undefined => {
   if (groupIndex === 0 || columnIndexInGroup !== 0) {
     return undefined;

@@ -5,7 +5,7 @@ export const useSelectedMonthStepperLogic = (
   dateInFocus: Date,
   setDateInFocus?: (dateInFocus: Date) => void,
   monthsPerRow?: number,
-  numMonths?: number
+  numMonths?: number,
 ) => {
   const nextMonth = useCallback(() => {
     const d = addMonths(dateInFocus, monthsPerRow ?? numMonths ?? 1);

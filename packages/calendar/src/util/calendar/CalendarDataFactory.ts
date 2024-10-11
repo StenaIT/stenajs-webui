@@ -81,7 +81,7 @@ export const getMonthsInYear = (
   year: number,
   startMonth: number,
   numMonths: number,
-  locale: Locale
+  locale: Locale,
 ): Array<MonthData> => {
   const months = [];
   for (let i = 0; i < numMonths; i++) {
@@ -93,7 +93,7 @@ export const getMonthsInYear = (
 export const getMonthInYear = (
   year: number,
   month: number,
-  locale: Locale
+  locale: Locale,
 ): MonthData => {
   if (isNaN(year) || isNaN(month)) {
     throw new Error("getMonthInYear() received NaN.");
@@ -104,7 +104,7 @@ export const getMonthInYear = (
   return {
     monthString: format(firstDayOfMonth, DateFormats.yearAndMonth),
     name: startCase(
-      format(firstDayOfMonth, DateFormats.fullMonthName, { locale })
+      format(firstDayOfMonth, DateFormats.fullMonthName, { locale }),
     ),
     year: yearToUse,
     monthInYear: monthToUse,
@@ -116,7 +116,7 @@ export const getWeeksForMonth = (
   year: number,
   month: number,
   locale: Locale,
-  forceSixWeeks: boolean = true
+  forceSixWeeks: boolean = true,
 ): Array<WeekData> => {
   const firstDayOfMonth = new Date(year, month, 1);
   const firstDayOfFirstWeek = startOfWeek(firstDayOfMonth, { locale });
@@ -135,7 +135,7 @@ export const getWeeksForMonth = (
 
 export const getWeekForDate = (
   firstDayOfWeek: Date,
-  locale: Locale
+  locale: Locale,
 ): WeekData => {
   const isLastWeekOfMonth =
     getMonth(addDays(firstDayOfWeek, 7)) !== getMonth(firstDayOfWeek);
@@ -171,7 +171,7 @@ export const createDay = (date: Date, locale: Locale): DayData => {
 
 export const getDaysForWeekForDate = (
   firstDayOfWeek: Date,
-  locale: Locale
+  locale: Locale,
 ): Array<DayData> => {
   return eachDayOfInterval({
     start: firstDayOfWeek,
@@ -181,7 +181,7 @@ export const getDaysForWeekForDate = (
 
 export const calculateOverflowingMonth = (
   year: number,
-  month: number
+  month: number,
 ): { year: number; month: number } => {
   if (month > Month.DECEMBER) {
     return { year: year + Math.floor(month / 12), month: month % 12 };

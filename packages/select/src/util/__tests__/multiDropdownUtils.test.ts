@@ -156,7 +156,7 @@ describe("multiDropdownUtils", () => {
 
             newOnChange(
               [selectedOptions[1], selectedOptions[2], selectedOptions[3]],
-              meta
+              meta,
             );
             const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
@@ -211,7 +211,7 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[3],
                 selectedOptions[4],
               ],
-              meta
+              meta,
             );
             const expected: ValueType<DropdownOption<string>, true> = [
               options[0].options[0],
@@ -261,7 +261,7 @@ describe("multiDropdownUtils", () => {
 
             newOnChange(
               [selectedOptions[0], selectedOptions[1], selectedOptions[3]],
-              meta
+              meta,
             );
 
             const expected: ValueType<DropdownOption<string>, true> = [
@@ -320,7 +320,7 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[2],
                 selectedOptions[4],
               ],
-              meta
+              meta,
             );
             const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
@@ -423,7 +423,7 @@ describe("multiDropdownUtils", () => {
               selectedOptions[3],
               selectedOptions[4],
             ],
-            meta
+            meta,
           );
           const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
@@ -482,7 +482,7 @@ describe("multiDropdownUtils", () => {
                   selectedOptions[2],
                   selectedOptions[4],
                 ],
-                meta
+                meta,
               );
               const expected: ValueType<DropdownOption<string>, true> = [
                 convertDropdownOptionToInternalOption(options[0].options[0]),
@@ -629,7 +629,7 @@ describe("multiDropdownUtils", () => {
               selectedOptions[3],
               selectedOptions[4],
             ],
-            meta
+            meta,
           );
           const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
@@ -685,7 +685,7 @@ describe("multiDropdownUtils", () => {
                 selectedOptions[2],
                 selectedOptions[4],
               ],
-              meta
+              meta,
             );
             const expected: ValueType<DropdownOption<string>, true> = [
               convertDropdownOptionToInternalOption(options[0].options[0]),
@@ -787,7 +787,7 @@ describe("multiDropdownUtils", () => {
               selectedOptions[3],
               selectedOptions[4],
             ],
-            meta
+            meta,
           );
           const expected: ValueType<DropdownOption<string>, true> = [
             options[0].options[0],
@@ -858,7 +858,7 @@ describe("multiDropdownUtils", () => {
       ];
 
       expect(convertGroupedDropdownOptionsToInternalOptions(input)).toEqual(
-        expected
+        expected,
       );
     });
   });
@@ -895,7 +895,7 @@ describe("multiDropdownUtils", () => {
     describe("when value is undefined", () => {
       it("returns empty array", () => {
         expect(convertValueToInternalValue(groupOptions, undefined)).toEqual(
-          []
+          [],
         );
       });
     });
@@ -922,7 +922,7 @@ describe("multiDropdownUtils", () => {
           },
         ];
         expect(convertValueToInternalValue(groupOptions, selected)).toEqual(
-          expected
+          expected,
         );
       });
     });
@@ -938,7 +938,7 @@ describe("multiDropdownUtils", () => {
           },
         ];
         expect(convertValueToInternalValue(groupOptions, selected)).toEqual(
-          expected
+          expected,
         );
       });
     });
@@ -966,8 +966,8 @@ describe("multiDropdownUtils", () => {
         expect(
           allOptionsExists(
             [selectedOption, notSelectedOption],
-            [selectedOption]
-          )
+            [selectedOption],
+          ),
         ).toBe(false);
       });
     });
@@ -987,8 +987,8 @@ describe("multiDropdownUtils", () => {
         expect(
           allOptionsExists(
             [selectedOption, selectedOption2],
-            [selectedOption, selectedOption2]
-          )
+            [selectedOption, selectedOption2],
+          ),
         ).toBe(true);
       });
     });
@@ -1009,7 +1009,7 @@ describe("multiDropdownUtils", () => {
       };
 
       expect(convertDropdownOptionToInternalOption(option)).toEqual(
-        internalOption
+        internalOption,
       );
     });
   });
@@ -1039,7 +1039,7 @@ describe("multiDropdownUtils", () => {
       };
 
       expect(convertGroupedDropdownOptionToInternalOption(option)).toEqual(
-        internalOption
+        internalOption,
       );
     });
   });
@@ -1060,7 +1060,7 @@ describe("multiDropdownUtils", () => {
       };
 
       expect(convertInternalOptionToDropdownOption(internalOption)).toEqual(
-        option
+        option,
       );
     });
   });

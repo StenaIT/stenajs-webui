@@ -237,7 +237,7 @@ export const Overview = () => {
   const [value, setValue] = useState("");
   const [numeric, setNumeric] = useState("");
   const [selected, setSelected] = useState<string | undefined | null>(
-    undefined
+    undefined,
   );
   const [grouped, setGrouped] = useState<
     readonly DropdownOption<string>[] | undefined

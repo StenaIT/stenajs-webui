@@ -17,5 +17,5 @@ export const ResizeAwareBox = forwardRef<HTMLDivElement, ResizeAwareBoxProps>(
     useElementDimensions(currentRef, onResize);
 
     return <Box {...boxProps} ref={ref} />;
-  }
+  },
 );

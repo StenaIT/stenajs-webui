@@ -42,12 +42,12 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
 }) => {
   const label = useMemo(
     () => startCase(format(month, "MMM", { locale })),
-    [locale, month]
+    [locale, month],
   );
 
   const abbr = useMemo(
     () => startCase(format(month, "MMMM", { locale })),
-    [locale, month]
+    [locale, month],
   );
 
   const ref = useRef<HTMLButtonElement>(null);
@@ -65,13 +65,13 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
         ev.key,
         position,
         monthPickerId,
-        4
+        4,
       );
       if (nextDomId) {
         document.getElementById(nextDomId)?.focus();
       }
     },
-    [monthPickerId, position]
+    [monthPickerId, position],
   );
 
   return (

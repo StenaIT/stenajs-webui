@@ -61,7 +61,7 @@ export const EditableTextCellWithCrudAndModified =
     const dispatch = useDispatch();
 
     const modifiedFieldsState = useSelector(
-      modifiedFieldsRedux.selectors.getState
+      modifiedFieldsRedux.selectors.getState,
     );
     const crudStatusState = useSelector(crudStatusRedux.selectors.getState);
 
@@ -79,11 +79,11 @@ export const EditableTextCellWithCrudAndModified =
               originalValue: value,
               newValue,
               modified: true,
-            })
+            }),
           );
         }
       },
-      [dispatch, entityId, modifiedFieldsRedux.actions, value]
+      [dispatch, entityId, modifiedFieldsRedux.actions, value],
     );
 
     const {
@@ -114,7 +114,7 @@ export const EditableTextCellWithCrudAndModified =
             crudStatusRedux.actions.setEntityFields(entityId, {
               hasError: false,
               errorMessage: undefined,
-            })
+            }),
           );
         } else {
           onKeyDown(ev);
@@ -126,7 +126,7 @@ export const EditableTextCellWithCrudAndModified =
         dispatch,
         modifiedFieldsRedux.actions,
         crudStatusRedux.actions,
-      ]
+      ],
     );
 
     return (

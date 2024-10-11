@@ -16,5 +16,5 @@ export const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );

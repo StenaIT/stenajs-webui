@@ -42,12 +42,12 @@ type WaitlistCapacityColumnKey =
 const createWaitlistCapacityTableConfig = (
   onEnterDepartureTotalsCapacity: (
     item: WaitlistCapacityRowItem,
-    value: string | undefined
+    value: string | undefined,
   ) => void,
   onEnterDepartureTotalsMaxOverbook: (
     item: WaitlistCapacityRowItem,
-    value: string | undefined
-  ) => void
+    value: string | undefined,
+  ) => void,
 ): StandardTableConfig<WaitlistCapacityRowItem, WaitlistCapacityColumnKey> => ({
   keyResolver: (item) => item.id,
   enableGridCell: true,
@@ -65,7 +65,7 @@ const createWaitlistCapacityTableConfig = (
         onChange: onEnterDepartureTotalsCapacity,
         isEditable: true,
         borderLeft,
-      }
+      },
     ),
     maxOverbook: createColumnConfig<
       WaitlistCapacityRowItem,
@@ -105,7 +105,7 @@ const createWaitlistCapacityTableConfig = (
 });
 
 const numberToStringElseUndefined = (
-  num: number | undefined | null
+  num: number | undefined | null,
 ): string | undefined => {
   if (num == null) {
     return undefined;
@@ -175,7 +175,7 @@ const items = [
 export const WaitlistTable = () => {
   const config = createWaitlistCapacityTableConfig(
     () => {},
-    () => {}
+    () => {},
   );
   return <StandardTable config={config} items={items} />;
 };

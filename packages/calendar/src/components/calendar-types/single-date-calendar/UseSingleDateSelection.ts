@@ -22,7 +22,7 @@ export const useSingleDateSelection = <T>({
         onChange(day.date);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const statePerMonthWithSelectedDate = useMemo(
@@ -33,7 +33,7 @@ export const useSingleDateSelection = <T>({
             "singleSelected",
           ])
         : statePerMonth,
-    [statePerMonth, value]
+    [statePerMonth, value],
   );
 
   return {

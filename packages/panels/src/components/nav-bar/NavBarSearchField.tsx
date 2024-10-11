@@ -24,7 +24,7 @@ export const NavBarSearchField: React.FC<NavBarSearchFieldProps> = ({
       wrapperClassName={cx(
         styles.navBarSearchFieldWrapper,
         showClearButton ? styles.withButton : undefined,
-        wrapperClassName
+        wrapperClassName,
       )}
       className={cx(styles.navBarSearchFieldInput, className)}
       placeholder={placeholder}

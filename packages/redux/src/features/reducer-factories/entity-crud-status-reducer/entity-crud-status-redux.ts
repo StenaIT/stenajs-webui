@@ -55,11 +55,11 @@ export type EntityCrudStatusSelectors<TStoreState> = EntityByIdSelectors<
 >;
 
 export const createEntityCrudStatusSelectors = <TStoreState>(
-  stateSelector: EntityByIdStateSelector<TStoreState, EntityCrudStatus>
+  stateSelector: EntityByIdStateSelector<TStoreState, EntityCrudStatus>,
 ) => createEntityByIdSelectors<TStoreState, EntityCrudStatus>(stateSelector);
 
 export const createEntityCrudStatusRedux = <TStoreState>(
-  stateSelector: EntityByIdStateSelector<TStoreState, EntityCrudStatus>
+  stateSelector: EntityByIdStateSelector<TStoreState, EntityCrudStatus>,
 ): EntityCrudStatusRedux<TStoreState> => {
   const reducer = createEntityCrudStatusReducer();
   const actions = createEntityCrudStatusActions();

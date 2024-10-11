@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 export const useMultiOnClickOutside = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refs: Array<React.RefObject<any>>,
-  handler: (event: TouchEvent | MouseEvent) => void
+  handler: (event: TouchEvent | MouseEvent) => void,
 ) => {
   const eventHandler = useRef<(event: TouchEvent | MouseEvent) => void>(() => {
     return;

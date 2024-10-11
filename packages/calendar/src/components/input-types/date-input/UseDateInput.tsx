@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 export const useDateInput = (
   onChange?: (date: Date | undefined) => void,
   onClose?: () => void,
-  openOnMount?: boolean
+  openOnMount?: boolean,
 ) => {
   const [showingCalendar, setShowingCalendar] = useState(openOnMount || false);
 
@@ -26,7 +26,7 @@ export const useDateInput = (
       }
       setTimeout(hideCalendar, 150);
     },
-    [onChange, hideCalendar]
+    [onChange, hideCalendar],
   );
 
   return {

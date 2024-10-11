@@ -94,7 +94,7 @@ export function DateRangeDualTextInput<TData>({
     endDateInputRef,
     showCalendar,
     hideCalendar,
-    states
+    states,
   );
 
   useDateRangeEffects(
@@ -102,12 +102,12 @@ export function DateRangeDualTextInput<TData>({
     endDate,
     setDateInFocus,
     startDateInputRef,
-    endDateInputRef
+    endDateInputRef,
   );
 
   const startDateIsAfterEnd = useMemo(
     () => startDate && endDate && isAfter(startDate, endDate),
-    [startDate, endDate]
+    [startDate, endDate],
   );
 
   const statePerMonth = useMemo(
@@ -116,9 +116,9 @@ export function DateRangeDualTextInput<TData>({
         calendarProps?.statePerMonth,
         startDate,
         endDate,
-        dateInFocus
+        dateInFocus,
       ),
-    [calendarProps?.statePerMonth, startDate, endDate, dateInFocus]
+    [calendarProps?.statePerMonth, startDate, endDate, dateInFocus],
   );
 
   return (

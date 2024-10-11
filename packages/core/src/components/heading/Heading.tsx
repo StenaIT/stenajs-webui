@@ -27,7 +27,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       as,
       ...hProps
     },
-    ref
+    ref,
   ) => {
     const Element = as ?? variant;
     return (
@@ -40,5 +40,5 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         {children}
       </Element>
     );
-  }
+  },
 );

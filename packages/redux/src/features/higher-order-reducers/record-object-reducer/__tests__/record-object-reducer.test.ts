@@ -31,8 +31,8 @@ describe("record-object-reducer", () => {
           {},
           actions.recordAction(
             "id1",
-            innerActions.setEntity({ id: "id1", email: "johan" })
-          )
+            innerActions.setEntity({ id: "id1", email: "johan" }),
+          ),
         );
 
         expect(r.id1.email).toBe("johan");
@@ -44,8 +44,8 @@ describe("record-object-reducer", () => {
           {},
           actions.recordAction(
             "id1",
-            innerActions.setEntity({ id: "id1", email: "johan" })
-          )
+            innerActions.setEntity({ id: "id1", email: "johan" }),
+          ),
         );
 
         expect(r.id1.email).toBe("johan");
@@ -61,15 +61,15 @@ describe("record-object-reducer", () => {
           r,
           actions.recordAction(
             "id1",
-            innerActions.setEntity({ id: "id1", email: "johan" })
-          )
+            innerActions.setEntity({ id: "id1", email: "johan" }),
+          ),
         );
         r = reducer(
           r,
           actions.recordAction(
             "id2",
-            innerActions.setEntity({ id: "id2", email: "mattias" })
-          )
+            innerActions.setEntity({ id: "id2", email: "mattias" }),
+          ),
         );
         expect(Object.keys(r).length).toBe(2);
         expect(r.id1.email).toBe("johan");

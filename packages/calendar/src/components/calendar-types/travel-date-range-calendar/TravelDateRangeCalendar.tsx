@@ -62,7 +62,7 @@ export const TravelDateRangeCalendar: React.FC<
     value,
     onValueChange,
     localeCode,
-    initialMonthInFocus
+    initialMonthInFocus,
   );
 
   const {

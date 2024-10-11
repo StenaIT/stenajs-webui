@@ -28,7 +28,7 @@ export const createStandardTableInitialState = <TColumnKey extends string>(
   sortBy: TColumnKey | undefined = undefined,
   desc: boolean = false,
   selectedIds: string[] = [],
-  expandedRows: string[] = []
+  expandedRows: string[] = [],
 ): StandardTableState<TColumnKey> => ({
   sortOrder: createSortOrderReducerInitialState(sortBy, desc),
   selectedIds: createSelectedIdsReducerInitialState(selectedIds),
@@ -43,23 +43,23 @@ export type StandardTableReducer<TColumnKey extends string> = Reducer<
 
 export const createStandardTableReducer = <TColumnKey extends string>(
   reducerId: string,
-  initialState?: Partial<StandardTableState<TColumnKey>>
+  initialState?: Partial<StandardTableState<TColumnKey>>,
 ): StandardTableReducer<TColumnKey> => {
   const sortOrder = reducerIdGate(
     getReducerIdFor(reducerId, "sortOrder"),
-    createSortOrderReducer<TColumnKey>(initialState?.sortOrder)
+    createSortOrderReducer<TColumnKey>(initialState?.sortOrder),
   );
   const selectedIds = reducerIdGate(
     getReducerIdFor(reducerId, "selectedIds"),
-    createSelectedIdsReducer(initialState?.selectedIds)
+    createSelectedIdsReducer(initialState?.selectedIds),
   );
   const expandedRows = reducerIdGate(
     getReducerIdFor(reducerId, "expandedRows"),
-    createSelectedIdsReducer(initialState?.expandedRows)
+    createSelectedIdsReducer(initialState?.expandedRows),
   );
   const fields = reducerIdGate(
     getReducerIdFor(reducerId, "fields"),
-    createEntityReducer<StandardTableStateFields>(initialState?.fields ?? {})
+    createEntityReducer<StandardTableStateFields>(initialState?.fields ?? {}),
   );
 
   return combineReducers({

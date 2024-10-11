@@ -17,7 +17,7 @@ describe("entity-by-id-reducer", () => {
       it("adds the entity", () => {
         const s = reduce(
           { entities: {} },
-          actions.setEntity({ id: "1", username: "lala" })
+          actions.setEntity({ id: "1", username: "lala" }),
         );
         expect(s.entities["1"]).toBeDefined();
         expect(s.entities["1"].username).toBe("lala");
@@ -31,7 +31,7 @@ describe("entity-by-id-reducer", () => {
               "1": { id: "1", username: "lolo", password: "123" },
             },
           },
-          actions.setEntity({ id: "1", username: "lala" })
+          actions.setEntity({ id: "1", username: "lala" }),
         );
         expect(s.entities["1"].username).toBe("lala");
         expect(s.entities["1"].password).toBeUndefined();
@@ -43,7 +43,7 @@ describe("entity-by-id-reducer", () => {
       it("adds the entity", () => {
         const s = reduce(
           { entities: {} },
-          actions.setEntityFields("1", { id: "1", username: "lala" })
+          actions.setEntityFields("1", { id: "1", username: "lala" }),
         );
         expect(s.entities["1"]).toBeDefined();
         expect(s.entities["1"].username).toBe("lala");
@@ -57,7 +57,7 @@ describe("entity-by-id-reducer", () => {
               "1": { id: "1", username: "lolo", password: "123" },
             },
           },
-          actions.setEntityFields("1", { id: "1", username: "lala" })
+          actions.setEntityFields("1", { id: "1", username: "lala" }),
         );
         expect(s.entities["1"].username).toBe("lala");
         expect(s.entities["1"].password).toBe("123");
@@ -80,7 +80,7 @@ describe("entity-by-id-reducer", () => {
               "1": { id: "1", username: "lolo", password: "123" },
             },
           },
-          actions.clearAllEntities()
+          actions.clearAllEntities(),
         );
         expect(Object.keys(s.entities).length).toBe(0);
       });
@@ -96,7 +96,7 @@ describe("entity-by-id-reducer", () => {
               "1": { id: "1", username: "lolo", password: "123" },
             },
           },
-          actions.clearEntity("2")
+          actions.clearEntity("2"),
         );
         expect(Object.keys(s.entities).length).toBe(1);
       });
@@ -109,7 +109,7 @@ describe("entity-by-id-reducer", () => {
               "1": { id: "1", username: "lolo", password: "123" },
             },
           },
-          actions.clearEntity("1")
+          actions.clearEntity("1"),
         );
         expect(s.entities["1"]).toBeUndefined();
       });

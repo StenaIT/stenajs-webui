@@ -23,7 +23,7 @@ import { useSearchFilterActions } from "../../../context/SearchFilterActionsCont
 
 export interface DateRangeCalendarSectionProps<
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 > extends Omit<
       SearchFilterSectionProps<TSectionKey>,
       "label" | "onRetry" | "error" | "loading"
@@ -35,7 +35,7 @@ export interface DateRangeCalendarSectionProps<
   value: DateStringRange;
   onValueChange: (
     value: DateStringRange,
-    options: SetDateOptions<TFormModel, TSectionKey>
+    options: SetDateOptions<TFormModel, TSectionKey>,
   ) => void;
   label?: string;
 }
@@ -47,7 +47,7 @@ export interface SetDateOptions<TFormModel, TSectionKey extends string> {
 
 export const DateRangeCalendarSection = <
   TFormModel,
-  TSectionKey extends string
+  TSectionKey extends string,
 >({
   value,
   onValueChange,
@@ -63,7 +63,7 @@ export const DateRangeCalendarSection = <
 
   const options = useMemo<SetDateOptions<TFormModel, TSectionKey>>(
     () => ({ dispatch, actions }),
-    [actions, dispatch]
+    [actions, dispatch],
   );
   const [focusedInput, setFocusedInput] =
     useState<DateRangeFocusedInput>("startDate");
@@ -74,7 +74,7 @@ export const DateRangeCalendarSection = <
     (value: DateRange) => {
       onValueChange(dateRangeToStrings(value), options);
     },
-    [onValueChange, options]
+    [onValueChange, options],
   );
 
   return (

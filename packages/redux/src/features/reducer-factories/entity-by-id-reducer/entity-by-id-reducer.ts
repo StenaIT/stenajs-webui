@@ -10,7 +10,7 @@ export const entityByIdInitialState = { entities: {} };
 export const createEntityByIdReducer = <T extends EntityWithId>() => {
   return (
     state: EntityByIdState<T> = entityByIdInitialState,
-    action: EntityByIdAction<T>
+    action: EntityByIdAction<T>,
   ): EntityByIdState<T> => {
     switch (action.type) {
       case "ENTITY_BY_ID:SET_ENTITY": {

@@ -2,7 +2,7 @@ import { isSameDay } from "date-fns";
 
 export const addDateIfNotExists = (
   list: Array<Date>,
-  date: Date
+  date: Date,
 ): Array<Date> => {
   if (list.filter((item) => isSameDay(item, date)).length >= 1) {
     return list;
