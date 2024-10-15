@@ -6,6 +6,7 @@ import styles from "./LabelledTextInput.module.css";
 import { InputElementProps } from "@stenajs-webui/core";
 import { ValueAndOnValueChangeProps } from "../types";
 
+export type LabelledTextInputHighlightVariant = "changeReceiver";
 export type LabelledTextInputVariant = "normal" | "error";
 export type LabelledTextInputSize = "medium" | "large";
 
@@ -26,6 +27,7 @@ export interface LabelledTextInputProps
   pattern?: string;
   borderRadiusVariant?: LabelledTextInputBorderVariant;
   variant?: LabelledTextInputVariant;
+  highlightVariant?: LabelledTextInputHighlightVariant;
 }
 
 export const LabelledTextInput = React.forwardRef<
@@ -45,6 +47,7 @@ export const LabelledTextInput = React.forwardRef<
       onValueChange,
       borderRadiusVariant = "normalBorder",
       variant = "normal",
+      highlightVariant,
       width,
       ...inputProps
     },
@@ -67,6 +70,7 @@ export const LabelledTextInput = React.forwardRef<
         className={cx(
           styles.labelledTextInput,
           styles[variant],
+          highlightVariant && styles[highlightVariant],
           styles[borderRadiusVariant],
           styles[size],
           disabled && styles.disabled,

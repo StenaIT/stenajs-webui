@@ -96,6 +96,11 @@
     }
   }
 
+  &.changeReceiver {
+    border-width: 2px;
+    border-color: var(--silver-dark);
+  }
+
   &.error {
     border-color: var(--swui-state-error-light-color);
 
