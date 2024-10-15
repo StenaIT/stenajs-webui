@@ -50,7 +50,7 @@ export const Demo = () => (
       <LabelledTextInput label={"To"} borderRadiusVariant={"onlyLeft"} />
       <LabelledTextInput label={"From"} borderRadiusVariant={"onlyRight"} />
     </Row>
-    <Heading>Medium</Heading>
+    <Heading>Highlight variant = changeReceiver</Heading>
     <LabelledTextInput
       label={"Input field"}
       placeholder={"Input field"}
