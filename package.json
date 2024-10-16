@@ -30,8 +30,12 @@
     "check-imports": "node scripts/check-imports.cjs",
     "check-prettier": "prettier -l \"packages/**/src/**/*.{ts,tsx,css,mdx}\" --ignore-path .gitignore --no-config",
     "prettier": "prettier --write \"packages/**/src/**/*.{ts,tsx,css,mdx}\" --ignore-path .gitignore --no-config --cache",
-    "check-circular-deps": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
-    "check-circular-deps-stories": "find ./packages -type f -name \"*.stories.tsx\" | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1"
+    "check-circular-deps": "run-script-os",
+    "check-circular-deps:default": "find ./packages -type d -name dist | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
+    "check-circular-deps:windows": "pwsh -command \"ls -Path ./packages -Directory -Recurse -Filter dist | % { & yarn dpdm --transform --warning false --tree false --exit-code circular:1 $_.FullName }\"",
+    "check-circular-deps-stories": "run-script-os",
+    "check-circular-deps-stories:default": "find ./packages -type f -name \"*.stories.tsx\" | xargs yarn dpdm --transform --warning false --tree false --exit-code circular:1",
+    "check-circular-deps-stories:windows": "pwsh -command \"ls -Path ./packages -File -Recurse -Filter '*.stories.tsx' | % { & yarn dpdm --transform --warning false --tree false --exit-code circular:1 $_.FullName }\""
   },
   "repository": {
     "type": "git",
@@ -90,6 +94,7 @@
     "react": "18.3.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "18.3.1",
+    "run-script-os": "^1.1.6",
     "storybook": "^8.3.5",
     "svgpath": "2.6.0",
     "svgson": "5.3.1",
