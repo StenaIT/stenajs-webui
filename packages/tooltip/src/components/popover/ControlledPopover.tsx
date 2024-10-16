@@ -6,11 +6,13 @@ import {
   flip,
   FloatingArrow,
   FloatingFocusManager,
+  FloatingNode,
   FloatingPortal,
   offset,
   shift,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
   useInteractions,
   useRole,
   useTransitionStyles,
@@ -18,6 +20,7 @@ import {
 import cx from "classnames";
 import moduleStyles from "./Popover.module.css";
 import { Placement } from "../../types/Placement";
+import { FloatingTreeFallback } from "./FloatingTreeFallback";
 
 export interface ControlledPopoverProps extends PropsWithChildren {
   open: boolean;
@@ -29,7 +32,11 @@ export interface ControlledPopoverProps extends PropsWithChildren {
   restoreFocus?: boolean;
   returnFocus?: boolean;
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
-  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
+  appendTo?:
+    | HTMLElement
+    | null
+    | React.MutableRefObject<HTMLElement | null>
+    | "parent";
   zIndex?: number;
 }
 
@@ -51,6 +58,7 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   appendTo,
   zIndex,
 }) => {
+  const parentRef = useRef(null);
   const arrowRef = useRef(null);
 
   const onOpenChange = useCallback(
@@ -62,7 +70,10 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
     [onRequestClose],
   );
 
+  const nodeId = useFloatingNodeId();
+
   const { refs, floatingStyles, context } = useFloating({
+    nodeId,
     open,
     onOpenChange,
     placement,
@@ -90,45 +101,49 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   ]);
 
   return (
-    <>
+    <FloatingTreeFallback>
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
-      {isMounted && (
-        <FloatingPortal root={appendTo}>
-          <FloatingFocusManager
-            context={context}
-            modal={false}
-            restoreFocus={restoreFocus}
-            returnFocus={returnFocus}
-            initialFocus={initialFocus}
-          >
-            <div
-              ref={refs.setFloating}
-              style={{ zIndex, ...floatingStyles }}
-              {...getFloatingProps}
-            >
-              <div
-                style={transitionStyles}
-                className={cx(
-                  moduleStyles.floating,
-                  disablePadding && moduleStyles.disablePadding,
-                )}
+      <FloatingNode id={nodeId}>
+        {isMounted && (
+          <div ref={parentRef} style={{ position: "relative" }}>
+            <FloatingPortal root={appendTo === "parent" ? parentRef : appendTo}>
+              <FloatingFocusManager
+                context={context}
+                modal={false}
+                restoreFocus={restoreFocus}
+                returnFocus={returnFocus}
+                initialFocus={initialFocus}
               >
-                {children}
-                {!hideArrow && (
-                  <FloatingArrow
-                    ref={arrowRef}
-                    context={context}
-                    width={ARROW_WIDTH}
-                    height={ARROW_HEIGHT}
-                    fill={"white"}
-                  />
-                )}
-              </div>
-            </div>
-          </FloatingFocusManager>
-        </FloatingPortal>
-      )}
-    </>
+                <div
+                  ref={refs.setFloating}
+                  style={{ zIndex, ...floatingStyles }}
+                  {...getFloatingProps}
+                >
+                  <div
+                    style={transitionStyles}
+                    className={cx(
+                      moduleStyles.floating,
+                      disablePadding && moduleStyles.disablePadding,
+                    )}
+                  >
+                    {children}
+                    {!hideArrow && (
+                      <FloatingArrow
+                        ref={arrowRef}
+                        context={context}
+                        width={ARROW_WIDTH}
+                        height={ARROW_HEIGHT}
+                        fill={"white"}
+                      />
+                    )}
+                  </div>
+                </div>
+              </FloatingFocusManager>
+            </FloatingPortal>
+          </div>
+        )}
+      </FloatingNode>
+    </FloatingTreeFallback>
   );
 };

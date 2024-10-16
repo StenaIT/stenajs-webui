@@ -11,6 +11,7 @@ import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ActionPrompt } from "./ActionPrompt";
 import { Popover } from "./Popover";
+import { Checkbox } from "@stenajs-webui/forms";
 
 export default {
   title: "tooltip/Popover",
@@ -47,6 +48,27 @@ export const OnClick = () => (
       renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
     >
       <ActionPrompt />
+    </Popover>
+  </Box>
+);
+
+export const NestedPopovers = () => (
+  <Box indent={10} spacing={10} display={"inline-block"}>
+    <Popover
+      trigger={"click"}
+      renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
+    >
+      <Popover
+        trigger={"click"}
+        renderTrigger={(props) => (
+          <FlatButton label={"Open another"} {...props} />
+        )}
+      >
+        <Column gap={2}>
+          <Text>Checkbox should be clickable</Text>
+          <Checkbox />
+        </Column>
+      </Popover>
     </Popover>
   </Box>
 );
