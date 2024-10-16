@@ -33,7 +33,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.22",
+    "@floating-ui/react": "0.26.25",
     "@stenajs-webui/core": "21.12.1",
     "@stenajs-webui/elements": "21.12.1",
     "@stenajs-webui/theme": "21.12.1",

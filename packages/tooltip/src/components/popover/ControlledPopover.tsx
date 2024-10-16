@@ -32,11 +32,7 @@ export interface ControlledPopoverProps extends PropsWithChildren {
   restoreFocus?: boolean;
   returnFocus?: boolean;
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
-  appendTo?:
-    | HTMLElement
-    | null
-    | React.MutableRefObject<HTMLElement | null>
-    | "parent";
+  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
 }
 
@@ -58,7 +54,6 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
   appendTo,
   zIndex,
 }) => {
-  const parentRef = useRef(null);
   const arrowRef = useRef(null);
 
   const onOpenChange = useCallback(
@@ -106,42 +101,40 @@ export const ControlledPopover: React.FC<ControlledPopoverProps> = ({
 
       <FloatingNode id={nodeId}>
         {isMounted && (
-          <div ref={parentRef} style={{ position: "relative" }}>
-            <FloatingPortal root={appendTo === "parent" ? parentRef : appendTo}>
-              <FloatingFocusManager
-                context={context}
-                modal={false}
-                restoreFocus={restoreFocus}
-                returnFocus={returnFocus}
-                initialFocus={initialFocus}
+          <FloatingPortal root={appendTo}>
+            <FloatingFocusManager
+              context={context}
+              modal={false}
+              restoreFocus={restoreFocus}
+              returnFocus={returnFocus}
+              initialFocus={initialFocus}
+            >
+              <div
+                ref={refs.setFloating}
+                style={{ zIndex, ...floatingStyles }}
+                {...getFloatingProps}
               >
                 <div
-                  ref={refs.setFloating}
-                  style={{ zIndex, ...floatingStyles }}
-                  {...getFloatingProps}
+                  style={transitionStyles}
+                  className={cx(
+                    moduleStyles.floating,
+                    disablePadding && moduleStyles.disablePadding,
+                  )}
                 >
-                  <div
-                    style={transitionStyles}
-                    className={cx(
-                      moduleStyles.floating,
-                      disablePadding && moduleStyles.disablePadding,
-                    )}
-                  >
-                    {children}
-                    {!hideArrow && (
-                      <FloatingArrow
-                        ref={arrowRef}
-                        context={context}
-                        width={ARROW_WIDTH}
-                        height={ARROW_HEIGHT}
-                        fill={"white"}
-                      />
-                    )}
-                  </div>
+                  {children}
+                  {!hideArrow && (
+                    <FloatingArrow
+                      ref={arrowRef}
+                      context={context}
+                      width={ARROW_WIDTH}
+                      height={ARROW_HEIGHT}
+                      fill={"white"}
+                    />
+                  )}
                 </div>
-              </FloatingFocusManager>
-            </FloatingPortal>
-          </div>
+              </div>
+            </FloatingFocusManager>
+          </FloatingPortal>
         )}
       </FloatingNode>
     </FloatingTreeFallback>

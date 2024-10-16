@@ -8,6 +8,7 @@ import {
   FloatingFocusManager,
   FloatingNode,
   FloatingPortal,
+  FloatingTree,
   offset,
   safePolygon,
   shift,
@@ -15,6 +16,8 @@ import {
   useDismiss,
   useFloating,
   useFloatingNodeId,
+  useFloatingParentNodeId,
+  useFloatingTree,
   useFocus,
   useHover,
   useInteractions,
@@ -59,11 +62,7 @@ export interface PopoverProps {
   restoreFocus?: boolean;
   returnFocus?: boolean;
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
-  appendTo?:
-    | HTMLElement
-    | null
-    | React.MutableRefObject<HTMLElement | null>
-    | "parent";
+  appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
 }
 
@@ -71,7 +70,24 @@ const ARROW_WIDTH = 12;
 const ARROW_HEIGHT = 8;
 const GAP = 2;
 
-export const Popover: React.FC<PopoverProps> = ({
+export const Popover: React.FC<PopoverProps> = (props) => {
+  const parentId = useFloatingParentNodeId();
+
+  console.log("parentId");
+  console.log(parentId);
+
+  if (parentId == null) {
+    return (
+      <FloatingTree>
+        <InnerPopover {...props} />
+      </FloatingTree>
+    );
+  }
+
+  return <InnerPopover {...props} />;
+};
+
+const InnerPopover: React.FC<PopoverProps> = ({
   children,
   variant,
   trigger = "hover",
@@ -87,7 +103,6 @@ export const Popover: React.FC<PopoverProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const parentRef = useRef(null);
   const arrowRef = useRef(null);
 
   const nodeId = useFloatingNodeId();
@@ -95,7 +110,13 @@ export const Popover: React.FC<PopoverProps> = ({
   const { refs, floatingStyles, context } = useFloating({
     nodeId,
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange: (open, event, reason) => {
+      console.log("----onOpenChange");
+      console.log({ open });
+      console.log({ event });
+      console.log({ reason });
+      setIsOpen(open);
+    },
     placement,
     middleware: [
       offset(ARROW_HEIGHT + GAP),
@@ -115,6 +136,9 @@ export const Popover: React.FC<PopoverProps> = ({
   const onRequestClose = useCallback(() => {
     setIsOpen(false);
   }, []);
+
+  const tree = useFloatingTree();
+  console.log(tree?.nodesRef);
 
   const dismiss = useDismiss(context);
   const role = useRole(context);
@@ -140,45 +164,43 @@ export const Popover: React.FC<PopoverProps> = ({
 
       <FloatingNode id={nodeId}>
         {isMounted && (
-          <div ref={parentRef} style={{ position: "relative" }}>
-            <FloatingPortal root={appendTo === "parent" ? parentRef : appendTo}>
-              <FloatingFocusManager
-                context={context}
-                modal={false}
-                restoreFocus={restoreFocus}
-                returnFocus={returnFocus}
-                initialFocus={initialFocus}
+          <FloatingPortal root={appendTo}>
+            <FloatingFocusManager
+              context={context}
+              modal={false}
+              restoreFocus={restoreFocus}
+              returnFocus={returnFocus}
+              initialFocus={initialFocus}
+            >
+              <div
+                ref={refs.setFloating}
+                style={{ zIndex, ...floatingStyles }}
+                {...getFloatingProps}
               >
                 <div
-                  ref={refs.setFloating}
-                  style={{ zIndex, ...floatingStyles }}
-                  {...getFloatingProps}
+                  style={transitionStyles}
+                  className={cx(
+                    moduleStyles.floating,
+                    disablePadding && moduleStyles.disablePadding,
+                    variant && moduleStyles.withIcon,
+                  )}
                 >
-                  <div
-                    style={transitionStyles}
-                    className={cx(
-                      moduleStyles.floating,
-                      disablePadding && moduleStyles.disablePadding,
-                      variant && moduleStyles.withIcon,
-                    )}
-                  >
-                    {typeof children === "function"
-                      ? children({ onRequestClose })
-                      : children}
-                    {!hideArrow && (
-                      <FloatingArrow
-                        ref={arrowRef}
-                        context={context}
-                        width={ARROW_WIDTH}
-                        height={ARROW_HEIGHT}
-                        fill={"white"}
-                      />
-                    )}
-                  </div>
+                  {typeof children === "function"
+                    ? children({ onRequestClose })
+                    : children}
+                  {!hideArrow && (
+                    <FloatingArrow
+                      ref={arrowRef}
+                      context={context}
+                      width={ARROW_WIDTH}
+                      height={ARROW_HEIGHT}
+                      fill={"white"}
+                    />
+                  )}
                 </div>
-              </FloatingFocusManager>
-            </FloatingPortal>
-          </div>
+              </div>
+            </FloatingFocusManager>
+          </FloatingPortal>
         )}
       </FloatingNode>
     </FloatingTreeFallback>
