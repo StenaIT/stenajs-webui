@@ -7,6 +7,7 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 import styles from "./StandardTableHeadItem.module.css";
+import { CSSProperties } from "react";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
@@ -57,8 +58,21 @@ export const StandardTableHeadItem = React.memo(
         style={{
           background: background ?? "white",
           borderLeft: activeBorderLeft,
+          position: stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
           right: stickyProps.right,
+          boxShadow:
+            stickyProps.sticky &&
+            stickyProps.isFirstColumnInLastGroup &&
+            stickyProps.sticky &&
+            stickyProps.isFirstColumnInLastGroup
+              ? "var(--swui-sticky-column-shadow-left)"
+              : stickyProps.sticky
+                ? "var(--swui-sticky-column-shadow-right)"
+                : undefined,
+          zIndex: (stickyProps.sticky
+            ? "var(--swui-sticky-group-header-z-index)"
+            : undefined) as CSSProperties["zIndex"],
           width,
           minWidth,
         }}

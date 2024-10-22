@@ -282,7 +282,7 @@ export const StandardTable = function StandardTable<
       : stickyCheckboxColumn
         ? "var(--swui-sticky-group-header-z-index)"
         : stickyHeader
-          ? "var(--swui-sticky-header-z-index)"
+          ? "var(--swui-sticky-head-z-index)"
           : zIndex) as CSSProperties["zIndex"],
   };
 

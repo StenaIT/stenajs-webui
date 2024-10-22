@@ -7,8 +7,9 @@
     var(--swui-sticky-column-shadow-left);
   --swui-sticky-column-shadow-right: 4px 2px 4px 0 rgba(0, 0, 0, 0.05);
   --swui-sticky-column-shadow-left: -4px 2px 4px 0 rgba(0, 0, 0, 0.05);
-  --swui-sticky-header-z-index: 10;
+
   --swui-sticky-column-z-index: 20;
+  --swui-sticky-head-z-index: 22;
   --swui-sticky-group-group-z-index: 25;
   --swui-sticky-group-header-z-index: 26;
   --swui-sticky-header-column-group-z-index: 30;
