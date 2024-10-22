@@ -1,5 +1,4 @@
 import * as React from "react";
-import { CSSProperties } from "react";
 import { TableHeadItem } from "../../table-ui/components/table/TableHeadItem";
 import { useStickyPropsPerColumnContext } from "../context/StickyPropsPerColumnContext";
 import { useTableSortHeader } from "../features/sorting/UseTableSortHeader";
@@ -8,13 +7,12 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorder } from "../util/CellBorderCalculator";
 import { formatColumnIdToHeaderCellLabel } from "../util/LabelFormatter";
 import styles from "./StandardTableHeadItem.module.css";
+import { CSSProperties } from "react";
 
 export interface StandardTableHeaderItemProps {
   columnId: string;
   disableBorderLeft?: boolean;
   borderFromGroup?: boolean | string;
-  stickyHeader?: boolean;
-  top?: string | number;
 }
 
 export const StandardTableHeadItem = React.memo(
@@ -22,8 +20,6 @@ export const StandardTableHeadItem = React.memo(
     columnId,
     borderFromGroup,
     disableBorderLeft,
-    stickyHeader,
-    top,
   }: StandardTableHeaderItemProps) {
     const {
       justifyContentHeader,
@@ -31,7 +27,6 @@ export const StandardTableHeadItem = React.memo(
       borderLeft,
       infoIconTooltipText,
       background,
-      zIndex,
       sortOrderIconVariant,
       width,
       minWidth,
@@ -63,31 +58,21 @@ export const StandardTableHeadItem = React.memo(
         style={{
           background: background ?? "white",
           borderLeft: activeBorderLeft,
-          position: stickyHeader || stickyProps.sticky ? "sticky" : undefined,
+          position: stickyProps.sticky ? "sticky" : undefined,
           left: stickyProps.left,
           right: stickyProps.right,
-          top: top,
           boxShadow:
             stickyProps.sticky &&
             stickyProps.isFirstColumnInLastGroup &&
-            stickyHeader
-              ? "var(--swui-sticky-header-shadow-and-left)"
-              : stickyProps.sticky && stickyProps.isFirstColumnInLastGroup
-                ? "var(--swui-sticky-column-shadow-left)"
-                : stickyHeader && stickyProps.sticky
-                  ? "var(--swui-sticky-header-shadow-and-right)"
-                  : stickyHeader
-                    ? "var(--swui-sticky-header-shadow)"
-                    : stickyProps.sticky
-                      ? "var(--swui-sticky-column-shadow-right)"
-                      : undefined,
-          zIndex: (stickyHeader && stickyProps.sticky
-            ? "var(--swui-sticky-header-in-sticky-column-z-index)"
-            : stickyHeader
-              ? "var(--swui-sticky-header-z-index)"
+            stickyProps.sticky &&
+            stickyProps.isFirstColumnInLastGroup
+              ? "var(--swui-sticky-column-shadow-left)"
               : stickyProps.sticky
-                ? "var(--swui-sticky-group-header-z-index)"
-                : zIndex) as CSSProperties["zIndex"],
+                ? "var(--swui-sticky-column-shadow-right)"
+                : undefined,
+          zIndex: (stickyProps.sticky
+            ? "var(--swui-sticky-group-header-z-index)"
+            : undefined) as CSSProperties["zIndex"],
           width,
           minWidth,
         }}
