@@ -24,6 +24,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-mdx-gfm"),
     getAbsolutePath("@chromatic-com/storybook"),
+    getAbsolutePath("@storybook/addon-mdx-gfm")
   ],
   viteFinal(config, { configType }) {
     let plugins = [
