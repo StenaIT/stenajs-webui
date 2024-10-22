@@ -17,6 +17,7 @@ import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
+import { CSSProperties } from "react";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
@@ -44,6 +45,17 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
 
   const checkboxDisabled = !items || items.length === 0;
 
+  const stickyHeaderStyle: CSSProperties = {
+    zIndex: (stickyCheckboxColumn
+      ? "var(--swui-sticky-group-header-z-index)"
+      : undefined) as CSSProperties["zIndex"],
+    background: stickyCheckboxColumn ? "white" : undefined,
+    position: stickyCheckboxColumn ? "sticky" : undefined,
+    boxShadow: stickyCheckboxColumn
+      ? "var(--swui-sticky-column-shadow-right)"
+      : undefined,
+  };
+
   return (
     <TrWithHoverBackground height={height} borderLeft={tableBorderLeft}>
       {rowIndent && (
@@ -54,6 +66,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       {enableExpandCollapse && (
         <th
           style={{
+            ...stickyHeaderStyle,
             left: "0px",
             textAlign: "left",
           }}
@@ -79,6 +92,7 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
       {(showRowCheckbox || showHeaderCheckbox) && (
         <th
           style={{
+            ...stickyHeaderStyle,
             overflow: "hidden",
             left:
               stickyCheckboxColumn && enableExpandCollapse
