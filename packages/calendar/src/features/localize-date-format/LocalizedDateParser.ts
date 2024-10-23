@@ -1,13 +1,30 @@
 import { parse } from "date-fns";
 import { getDateFormatForLocaleCode } from "./DateFormatProvider";
-import { getLocaleForLocaleCode } from "./LocaleMapper";
+import {
+  fallbackLocaleCode,
+  getLocaleForLocaleCode,
+  getSupportedLocaleCode,
+  SupportedLocaleCode,
+} from "./LocaleMapper";
+
+interface ParseLocalizedDateStringOptions {
+  matchLanguage?: boolean;
+  fallbackLocaleCode?: SupportedLocaleCode;
+  referenceDate?: Date;
+}
 
 export const parseLocalizedDateString = (
   dateString: string,
   localeCode: string,
-  referenceDate?: Date,
+  options?: ParseLocalizedDateStringOptions,
 ): Date | undefined => {
-  const locale = getLocaleForLocaleCode(localeCode);
+  const supportedLocaleCode = getSupportedLocaleCode(
+    localeCode,
+    options?.matchLanguage ?? false,
+    options?.fallbackLocaleCode ?? fallbackLocaleCode,
+  );
+
+  const locale = getLocaleForLocaleCode(supportedLocaleCode);
 
   if (locale == null) {
     return undefined;
@@ -15,8 +32,8 @@ export const parseLocalizedDateString = (
 
   const date = parse(
     dateString,
-    getDateFormatForLocaleCode(localeCode),
-    referenceDate ?? new Date(),
+    getDateFormatForLocaleCode(supportedLocaleCode),
+    options?.referenceDate ?? new Date(),
     {
       locale: locale,
     },

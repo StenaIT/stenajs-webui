@@ -11,7 +11,10 @@ import { MonthPicker } from "../month-picker/MonthPicker";
 import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { PresetPicker } from "../preset-picker/PresetPicker";
 import { CalendarPanelType } from "./CalendarPanelType";
-import { getLocaleCodeForLocale } from "../localize-date-format/LocaleMapper";
+import {
+  getLocaleCodeForLocale,
+  SupportedLocaleCode,
+} from "../localize-date-format/LocaleMapper";
 
 interface CalendarWithMonthYearPickersProps<T>
   extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
@@ -33,7 +36,7 @@ export const CalendarWithMonthYearPickers =
     renderMonthPicker,
     ...props
   }: CalendarWithMonthYearPickersProps<T>) {
-    const localeCode = useMemo(
+    const localeCode = useMemo<SupportedLocaleCode>(
       () =>
         locale == null ? "en-GB" : (getLocaleCodeForLocale(locale) ?? "en-GB"),
       [locale],

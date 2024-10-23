@@ -1,6 +1,6 @@
 import {
-  getDefaultLocaleForFormatting,
   getLocaleForLocaleCode,
+  SupportedLocaleCode,
 } from "../../localize-date-format/LocaleMapper";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { useToday } from "../util/UseToday";
@@ -16,11 +16,10 @@ import { formatDateDescription } from "../util/DateDescriptionFormatter";
 export const useTravelDateRangeInput = (
   value: TravelDateRangeInputValue | undefined,
   onValueChange: ((value: TravelDateRangeInputValue) => void) | undefined,
-  localeCode: string,
+  localeCode: SupportedLocaleCode,
   initialMonthInFocus: Date | undefined,
 ) => {
-  const locale =
-    getLocaleForLocaleCode(localeCode) ?? getDefaultLocaleForFormatting();
+  const locale = getLocaleForLocaleCode(localeCode);
 
   const calendarId = useId();
   const today = useToday();

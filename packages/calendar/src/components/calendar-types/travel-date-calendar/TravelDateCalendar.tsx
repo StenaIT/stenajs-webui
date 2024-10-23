@@ -10,10 +10,11 @@ import {
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
 import { TravelDateTextInputField } from "../../../features/travel-calendar/components/TravelDateTextInputField";
 import { DateTextInputVariant } from "../../../features/travel-calendar/types";
+import { SupportedLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 
 export interface TravelDateCalendarProps
   extends ValueAndOnValueChangeProps<string> {
-  localeCode?: string;
+  localeCode?: SupportedLocaleCode;
   initialMonthInFocus?: Date;
   label?: string;
   previousMonthButtonAriaLabel?: string;

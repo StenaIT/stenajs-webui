@@ -26,6 +26,7 @@ import cx from "classnames";
 import { TravelDateTextInputField } from "../../../features/travel-calendar/components/TravelDateTextInputField";
 import { useTravelDateInput } from "../../../features/travel-calendar/hooks/UseTravelDateInput";
 import { DateTextInputVariant } from "../../../features/travel-calendar/types";
+import { SupportedLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 
 export interface RenderBelowSingleDateCalendarArgs {
   hideCalendar: () => void;
@@ -33,7 +34,7 @@ export interface RenderBelowSingleDateCalendarArgs {
 
 export interface TravelDateInputProps
   extends ValueAndOnValueChangeProps<string> {
-  localeCode?: string;
+  localeCode?: SupportedLocaleCode;
   initialMonthInFocus?: Date;
   label?: string;
   previousMonthButtonAriaLabel?: string;
