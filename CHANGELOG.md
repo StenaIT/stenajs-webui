@@ -1,3 +1,16 @@
+# v21.15.0 (Wed Oct 23 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Improve type and run-time safety for locale codes [#871](https://github.com/StenaIT/stenajs-webui/pull/871) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.14.0 (Wed Oct 23 2024)
 
 #### 🚀 Enhancement
