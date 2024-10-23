@@ -22,6 +22,8 @@ const locales: LocalesMap = {
   "en-GB": enGB,
   "de-AT": deAT,
   "de-DE": de,
+  "sv-SE": sv,
+  "da-DK": da,
   fr,
   de,
   es,
@@ -35,7 +37,34 @@ const locales: LocalesMap = {
 export const getLocaleForLocaleCode = (
   localeCode: string,
 ): Locale | undefined => {
-  return locales[localeCode];
+  const exactMatch = locales[localeCode];
+  if (exactMatch != null) {
+    return exactMatch;
+  }
+
+  const languageCode = getMappedLocaleCodeMatchingLanguage(localeCode);
+
+  if (languageCode != null) {
+    const languageMatch = locales[languageCode];
+    if (languageMatch != null) {
+      return languageMatch;
+    }
+  }
+
+  return undefined;
+};
+
+export const getMappedLocaleCodeMatchingLanguage = (
+  localeCode: string,
+): string | undefined => {
+  const [lang] = localeCode.split("-");
+  const localeCodes = Object.keys(locales);
+  for (const l of localeCodes) {
+    if (l.startsWith(lang)) {
+      return l;
+    }
+  }
+  return undefined;
 };
 
 export const getDefaultLocaleForFormatting = (): Locale => {
