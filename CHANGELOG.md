@@ -1,3 +1,16 @@
+# v21.14.0 (Wed Oct 23 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Locale mapping falls back to language match only [#870](https://github.com/StenaIT/stenajs-webui/pull/870) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.13.0 (Wed Oct 23 2024)
 
 #### 🚀 Enhancement
