@@ -32,7 +32,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/calendar": "21.10.1",
+    "@stenajs-webui/calendar": "21.15.0",
     "@stenajs-webui/elements": "21.10.1",
     "@stenajs-webui/forms": "21.10.1"
   },
