@@ -4,11 +4,14 @@ import {
   de,
   deAT,
   enGB,
+  enIE,
   enUS,
   es,
   fr,
+  lv,
   nb,
   nl,
+  nlBE,
   pl,
   sv,
 } from "date-fns/locale";
@@ -19,16 +22,20 @@ type LocalesMap = {
 
 export type SupportedLocaleCode =
   | "en-US"
+  | "en-IE"
   | "en-GB"
   | "de-AT"
   | "de-DE"
   | "sv-SE"
   | "da-DK"
+  | "nl-BE"
+  | "lv-LV"
   | "fr"
   | "de"
   | "es"
   | "sv"
   | "pl"
+  | "lv"
   | "da"
   | "nl"
   | "nb";
@@ -36,10 +43,13 @@ export type SupportedLocaleCode =
 const locales: LocalesMap = {
   "en-US": enUS,
   "en-GB": enGB,
+  "en-IE": enIE,
   "de-AT": deAT,
   "de-DE": de,
   "sv-SE": sv,
   "da-DK": da,
+  "nl-BE": nlBE,
+  "lv-LV": lv,
   fr,
   de,
   es,
@@ -47,6 +57,7 @@ const locales: LocalesMap = {
   pl,
   da,
   nl,
+  lv,
   nb,
 };
 
