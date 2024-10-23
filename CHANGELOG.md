@@ -1,3 +1,26 @@
+# v21.13.0 (Wed Oct 23 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`
+  - Fix MonthPicker having wrong locale [#868](https://github.com/StenaIT/stenajs-webui/pull/868) ([@mattias800](https://github.com/mattias800))
+
+#### 📝 Documentation
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/elements`, `@stenajs-webui/filter`, `@stenajs-webui/forms`, `@stenajs-webui/grid-export`, `@stenajs-webui/grid`, `@stenajs-webui/input-mask`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/redux`, `@stenajs-webui/select`, `@stenajs-webui/theme`, `@stenajs-webui/tooltip`
+  - Upgrade Storybook to 8.3.6 [#865](https://github.com/StenaIT/stenajs-webui/pull/865) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- Bump jsdom from 24.0.0 to 25.0.1 [#854](https://github.com/StenaIT/stenajs-webui/pull/854) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.12.1 (Fri Oct 11 2024)
 
 #### 🐛 Bug Fix
