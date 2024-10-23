@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/grid-export",
-  "version": "21.13.0",
+  "version": "21.14.0",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,9 +33,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/core": "21.13.0",
-    "@stenajs-webui/elements": "21.13.0",
-    "@stenajs-webui/grid": "21.13.0",
+    "@stenajs-webui/core": "21.14.0",
+    "@stenajs-webui/elements": "21.14.0",
+    "@stenajs-webui/grid": "21.14.0",
     "@types/zipcelx": "^1.5.0",
     "clipboard-polyfill": "4.1.0",
     "date-fns": "4.1.0",
