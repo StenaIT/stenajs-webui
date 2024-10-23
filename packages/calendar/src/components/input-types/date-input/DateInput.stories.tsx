@@ -4,13 +4,13 @@ import * as React from "react";
 import { useState } from "react";
 import { setDayStateValue } from "../../../util/calendar/StateModifier";
 import { DateInput } from "./DateInput";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 export default {
   title: "calendar/Input/DateInput",
   component: DateInput,
   decorators: [
-    (TheStory: Story) => (
+    (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>

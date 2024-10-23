@@ -64,6 +64,12 @@ export interface DateRangeInputProps<T>
    * Disables the Popover and both TextInputs.
    */
   disabled?: boolean;
+
+  /**
+   *  Portal target, HTML element. If not set, window.body is used.
+   */
+  portalTarget?: HTMLElement;
+  zIndex?: number;
 }
 
 /**
@@ -81,6 +87,8 @@ export function DateRangeInput<T>({
   minDate,
   maxDate = defaultMaxDate,
   disabled,
+  portalTarget,
+  zIndex,
 }: DateRangeInputProps<T>): React.ReactElement<DateRangeInputProps<T>> {
   const [currentPanel, setCurrentPanel] =
     useState<CalendarPanelType>("calendar");
@@ -109,6 +117,8 @@ export function DateRangeInput<T>({
   return (
     <ControlledPopover
       hideArrow
+      appendTo={portalTarget}
+      zIndex={zIndex}
       renderTrigger={(props) => (
         <Row alignItems={"center"} {...props}>
           <TextInput

@@ -40,6 +40,11 @@ export interface DateTextInputProps<T>
   placeholder?: string;
   /** The date text input theme to use. */
   calendarTheme?: CalendarTheme;
+  /**
+   *  Portal target for the popover, HTML element. If not set, window.body is used.
+   */
+  portalTarget?: HTMLElement;
+  zIndex?: number;
 }
 
 export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
@@ -56,6 +61,8 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
   minDate,
   maxDate = defaultMaxDate,
   variant,
+  portalTarget,
+  zIndex,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -107,6 +114,8 @@ export const DateTextInput: React.FC<DateTextInputProps<unknown>> = ({
   return (
     <Box width={width}>
       <ControlledPopover
+        appendTo={portalTarget}
+        zIndex={zIndex}
         renderTrigger={(popoverProps) => (
           <TextInput
             {...props}

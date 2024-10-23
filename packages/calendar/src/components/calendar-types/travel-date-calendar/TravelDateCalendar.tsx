@@ -110,6 +110,7 @@ export const TravelDateCalendar: React.FC<TravelDateCalendarProps> = ({
           firstMonth={firstMonthInMonthPicker}
           numMonths={numMonthsInMonthPicker}
           value={visibleMonth}
+          localeCode={localeCode}
           size={size}
           onValueChange={(v) => {
             setVisibleMonth(v);

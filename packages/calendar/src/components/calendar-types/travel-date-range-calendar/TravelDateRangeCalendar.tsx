@@ -118,6 +118,7 @@ export const TravelDateRangeCalendar: React.FC<
           numMonths={numMonthsInMonthPicker}
           value={visibleMonth}
           size={size}
+          localeCode={localeCode}
           onValueChange={(v) => {
             setVisibleMonth(v);
             setVisiblePanel("calendar");

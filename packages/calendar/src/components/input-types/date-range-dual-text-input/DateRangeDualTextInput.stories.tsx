@@ -1,5 +1,5 @@
 import { Column, Txt } from "@stenajs-webui/core";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { addDays, format } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
@@ -11,7 +11,7 @@ export default {
   title: "calendar/Input/DateRangeDualTextInput",
   component: DateRangeDualTextInput,
   decorators: [
-    (TheStory: Story) => (
+    (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>
@@ -118,24 +118,6 @@ export const RangeSelected = () => {
       <DateRangeDualTextInput
         value={value}
         onValueChange={setValue}
-        {...props}
-      />
-    </div>
-  );
-};
-
-export const WithHiddenYearPagination = () => {
-  const [value, setValue] = useState<DateRange | undefined>(undefined);
-  const props = useDateRangeCalendarState();
-
-  return (
-    <div style={{ display: "inline-block" }}>
-      <DateRangeDualTextInput
-        value={value}
-        onValueChange={setValue}
-        calendarProps={{
-          hideYearPagination: true,
-        }}
         {...props}
       />
     </div>
