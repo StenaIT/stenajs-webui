@@ -16,13 +16,16 @@ import {
 } from "./MonthPickerKeyboardNavigation";
 import { Position } from "./Position";
 import { MonthPickerSizeVariant } from "./MonthPicker";
-import { getLocaleForLocaleCode } from "../localize-date-format/LocaleMapper";
+import {
+  getLocaleForLocaleCode,
+  SupportedLocaleCode,
+} from "../localize-date-format/LocaleMapper";
 
 interface MonthPickerCellProps {
   month: Date;
   onClick: () => void;
   selected: boolean;
-  localeCode: string;
+  localeCode: SupportedLocaleCode;
   autoFocus: boolean;
   monthPickerId: string;
   firstAvailableMonth: Date;

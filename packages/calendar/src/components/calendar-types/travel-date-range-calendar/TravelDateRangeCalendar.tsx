@@ -13,10 +13,11 @@ import {
   DateTextInputVariant,
   TravelDateRangeInputValue,
 } from "../../../features/travel-calendar/types";
+import { SupportedLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 
 export interface TravelDateRangeCalendarProps
   extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
-  localeCode?: string;
+  localeCode?: SupportedLocaleCode;
   initialMonthInFocus?: Date;
   startDateLabel?: string;
   endDateLabel?: string;

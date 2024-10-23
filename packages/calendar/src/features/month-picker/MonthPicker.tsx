@@ -13,11 +13,12 @@ import { MonthPickerCell } from "./MonthPickerCell";
 import { addMonths, isSameMonth } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
 import { useToday } from "../travel-calendar/util/UseToday";
+import { SupportedLocaleCode } from "../localize-date-format/LocaleMapper";
 
 export type MonthPickerSizeVariant = "small" | "medium" | "large";
 
 export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
-  localeCode: string;
+  localeCode: SupportedLocaleCode;
   firstMonth: Date;
   numMonths: number;
   onCancel?: () => void;

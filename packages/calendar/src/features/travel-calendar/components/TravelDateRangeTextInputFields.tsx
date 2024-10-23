@@ -7,13 +7,14 @@ import { getDateFormatForLocaleCode } from "../../localize-date-format/DateForma
 import { reformatLocalizedDateString } from "../../localize-date-format/LocalizedDateReformatter";
 import { DateTextInputVariant, TravelDateRangeInputValue } from "../types";
 import { TravelCalendarSizeVariant } from "./TravelCalendar";
+import { SupportedLocaleCode } from "../../localize-date-format/LocaleMapper";
 
 export interface TravelDateRangeTextInputFieldsProps {
   value: TravelDateRangeInputValue | undefined;
   onValueChange:
     | ((value: Partial<TravelDateRangeInputValue>) => void)
     | undefined;
-  localeCode: string;
+  localeCode: SupportedLocaleCode;
   startDateLabel?: string;
   endDateLabel?: string;
   onFocus?: () => void;

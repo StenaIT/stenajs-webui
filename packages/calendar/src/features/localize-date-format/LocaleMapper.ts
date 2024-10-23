@@ -17,6 +17,22 @@ type LocalesMap = {
   [key: string]: Locale;
 };
 
+export type SupportedLocaleCode =
+  | "en-US"
+  | "en-GB"
+  | "de-AT"
+  | "de-DE"
+  | "sv-SE"
+  | "da-DK"
+  | "fr"
+  | "de"
+  | "es"
+  | "sv"
+  | "pl"
+  | "da"
+  | "nl"
+  | "nb";
+
 const locales: LocalesMap = {
   "en-US": enUS,
   "en-GB": enGB,
@@ -34,34 +50,45 @@ const locales: LocalesMap = {
   nb,
 };
 
-export const getLocaleForLocaleCode = (
+export const fallbackLocaleCode: SupportedLocaleCode = "en-GB";
+export const fallbackLocaleCodeForFormatting: SupportedLocaleCode = "sv";
+
+export const getSupportedLocaleCode = (
   localeCode: string,
-): Locale | undefined => {
-  const exactMatch = locales[localeCode];
-  if (exactMatch != null) {
-    return exactMatch;
+  matchLanguage: boolean,
+  fallback: SupportedLocaleCode,
+): SupportedLocaleCode => {
+  if (locales[localeCode]) {
+    return localeCode as SupportedLocaleCode;
   }
-
-  const languageCode = getMappedLocaleCodeMatchingLanguage(localeCode);
-
-  if (languageCode != null) {
-    const languageMatch = locales[languageCode];
-    if (languageMatch != null) {
-      return languageMatch;
+  if (matchLanguage) {
+    const languageCode = getMappedLocaleCodeMatchingLanguage(localeCode);
+    if (languageCode) {
+      return languageCode;
     }
   }
+  return fallback;
+};
 
-  return undefined;
+export interface GetLocaleForLocaleCodeOptions {
+  matchLanguage?: boolean;
+  fallbackLocaleCode?: SupportedLocaleCode;
+}
+
+export const getLocaleForLocaleCode = (
+  localeCode: SupportedLocaleCode,
+): Locale => {
+  return locales[localeCode];
 };
 
 export const getMappedLocaleCodeMatchingLanguage = (
   localeCode: string,
-): string | undefined => {
+): SupportedLocaleCode | undefined => {
   const [lang] = localeCode.split("-");
   const localeCodes = Object.keys(locales);
   for (const l of localeCodes) {
     if (l.startsWith(lang)) {
-      return l;
+      return l as SupportedLocaleCode;
     }
   }
   return undefined;
@@ -76,11 +103,13 @@ export const getDefaultLocaleForFormatting = (): Locale => {
  * All updated calendar components just take localeCode, for example "en-GB", since that is what the browser provides,
  * and is not library dependent.
  */
-export const getLocaleCodeForLocale = (locale: Locale): string | undefined => {
+export const getLocaleCodeForLocale = (
+  locale: Locale,
+): SupportedLocaleCode | undefined => {
   const localeCodes = Object.keys(locales);
   for (const localeCode of localeCodes) {
     if (locales[localeCode].code === locale.code) {
-      return localeCode;
+      return localeCode as SupportedLocaleCode;
     }
   }
   return undefined;
