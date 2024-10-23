@@ -1,6 +1,6 @@
 import {
   getLocaleForLocaleCode,
-  getMappedLocaleCodeMatchingLanguage,
+  getSupportedLocaleCodeMatchingLanguage,
   getSupportedLocaleCode,
 } from "../LocaleMapper";
 import { enUS, sv } from "date-fns/locale";
@@ -19,7 +19,7 @@ describe("LocaleMapper", () => {
   describe("getMappedLocaleCodeMatchingLanguage", () => {
     describe("when locale with same language exists", () => {
       it("returns that locale code", () => {
-        expect(getMappedLocaleCodeMatchingLanguage("sv-FI")).toBe("sv-SE");
+        expect(getSupportedLocaleCodeMatchingLanguage("sv-FI")).toBe("sv-SE");
       });
     });
   });

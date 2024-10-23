@@ -62,7 +62,7 @@ export const getSupportedLocaleCode = (
     return localeCode as SupportedLocaleCode;
   }
   if (matchLanguage) {
-    const languageCode = getMappedLocaleCodeMatchingLanguage(localeCode);
+    const languageCode = getSupportedLocaleCodeMatchingLanguage(localeCode);
     if (languageCode) {
       return languageCode;
     }
@@ -76,7 +76,7 @@ export const getLocaleForLocaleCode = (
   return locales[localeCode];
 };
 
-export const getMappedLocaleCodeMatchingLanguage = (
+export const getSupportedLocaleCodeMatchingLanguage = (
   localeCode: string,
 ): SupportedLocaleCode | undefined => {
   const [lang] = localeCode.split("-");
