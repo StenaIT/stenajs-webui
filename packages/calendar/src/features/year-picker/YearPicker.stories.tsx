@@ -1,14 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
 import { YearPicker, YearPickerProps } from "./YearPicker";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 
 export default {
   title: "calendar/Pickers/YearPicker",
   component: YearPicker,
 };
 
-export const Demo: Story<YearPickerProps> = (props) => {
+export const Demo: StoryFn<YearPickerProps> = (props) => {
   const [value, setValue] = useState<number | undefined>(undefined);
   return (
     <div style={{ display: "inline-block" }}>

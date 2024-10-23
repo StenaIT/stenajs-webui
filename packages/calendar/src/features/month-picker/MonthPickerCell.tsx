@@ -9,19 +9,20 @@ import {
 } from "react";
 import { Row } from "@stenajs-webui/core";
 import { FlatButton, PrimaryButton } from "@stenajs-webui/elements";
-import { format, Locale } from "date-fns";
+import { format } from "date-fns";
 import {
   getDomIdForKeyboardKey,
   getDomIdForMonth,
 } from "./MonthPickerKeyboardNavigation";
 import { Position } from "./Position";
 import { MonthPickerSizeVariant } from "./MonthPicker";
+import { getLocaleForLocaleCode } from "../localize-date-format/LocaleMapper";
 
 interface MonthPickerCellProps {
   month: Date;
   onClick: () => void;
   selected: boolean;
-  locale: Locale;
+  localeCode: string;
   autoFocus: boolean;
   monthPickerId: string;
   firstAvailableMonth: Date;
@@ -34,12 +35,17 @@ export const MonthPickerCell: React.FC<MonthPickerCellProps> = ({
   month,
   onClick,
   selected,
-  locale,
+  localeCode,
   autoFocus,
   monthPickerId,
   position,
   size,
 }) => {
+  const locale = useMemo(
+    () => getLocaleForLocaleCode(localeCode) ?? getLocaleForLocaleCode("en-GB"),
+    [localeCode],
+  );
+
   const label = useMemo(
     () => startCase(format(month, "MMM", { locale })),
     [locale, month],

@@ -39,8 +39,10 @@ export interface DateInputProps<T = unknown>
    */
   placeholder?: string;
   /**
-   *  Portal target, HTML element. If not set, portal is not used.
+   *  Portal target, HTML element. If not set, window.body is used.
    */
+  portalTarget?: HTMLElement;
+  zIndex?: number;
   width?: string;
   /**
    * The calendar theme to use.
@@ -68,6 +70,8 @@ export const DateInput: React.FC<DateInputProps> = ({
   minDate,
   maxDate = defaultMaxDate,
   disabled,
+  portalTarget,
+  zIndex,
 }) => {
   const { hideCalendar, showingCalendar, onSelectDate, showCalendar } =
     useDateInput(onChange, onClose, openOnMount);
@@ -78,6 +82,8 @@ export const DateInput: React.FC<DateInputProps> = ({
         hideArrow
         open={showingCalendar}
         onRequestClose={hideCalendar}
+        appendTo={portalTarget}
+        zIndex={zIndex}
         renderTrigger={(props) => (
           <Box {...props}>
             <TextInput

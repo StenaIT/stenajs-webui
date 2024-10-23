@@ -235,6 +235,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                   numMonths={numMonthsInMonthPicker}
                   value={visibleMonth}
                   size={size}
+                  localeCode={localeCode}
                   onValueChange={(v) => {
                     setVisibleMonth(v);
                     setVisiblePanel("calendar");

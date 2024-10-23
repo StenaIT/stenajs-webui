@@ -1,5 +1,5 @@
 import { Column } from "@stenajs-webui/core";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import { addDays, format, subDays } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
@@ -10,7 +10,7 @@ export default {
   title: "calendar/Input/DateRangeInput",
   component: DateRangeInput,
   decorators: [
-    (TheStory: Story) => (
+    (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px" }}>
         <TheStory />
       </div>
