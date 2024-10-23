@@ -70,11 +70,6 @@ export const getSupportedLocaleCode = (
   return fallback;
 };
 
-export interface GetLocaleForLocaleCodeOptions {
-  matchLanguage?: boolean;
-  fallbackLocaleCode?: SupportedLocaleCode;
-}
-
 export const getLocaleForLocaleCode = (
   localeCode: SupportedLocaleCode,
 ): Locale => {
