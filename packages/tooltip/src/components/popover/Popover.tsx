@@ -45,7 +45,6 @@ type TriggerProp = PopoverTrigger | Array<PopoverTrigger>;
 
 export interface PopoverProps {
   children?: PopoverChildren;
-  onRequestClose?: () => void;
   placement?: Placement;
   trigger?: TriggerProp;
   hideArrow?: boolean;
@@ -58,6 +57,8 @@ export interface PopoverProps {
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
 const ARROW_WIDTH = 12;
@@ -77,6 +78,7 @@ export const Popover: React.FC<PopoverProps> = ({
   initialFocus,
   appendTo,
   zIndex,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -84,7 +86,17 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    onOpenChange(open) {
+      setIsOpen(open);
+
+      if (open) {
+        setIsOpen(true);
+        props.onOpen?.();
+      } else {
+        setIsOpen(false);
+        props.onClose?.();
+      }
+    },
     placement,
     middleware: [
       offset(ARROW_HEIGHT + GAP),
