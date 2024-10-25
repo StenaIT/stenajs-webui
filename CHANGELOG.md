@@ -1,3 +1,16 @@
+# v21.16.1 (Fri Oct 25 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - Update horror story to work with new popover [#876](https://github.com/StenaIT/stenajs-webui/pull/876) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.16.0 (Fri Oct 25 2024)
 
 #### 🚀 Enhancement
