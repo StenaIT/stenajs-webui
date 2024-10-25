@@ -337,6 +337,7 @@ const createSalesPerformanceStandardTableConfig = (
       renderCell: () => (
         <Indent>
           <Popover
+            trigger={"click"}
             renderTrigger={(props) => (
               <Icon
                 {...props}
@@ -346,7 +347,9 @@ const createSalesPerformanceStandardTableConfig = (
               />
             )}
           >
-            <Box indent={1} spacing={1} tabIndex={-1} />
+            <Box indent={1} spacing={1} tabIndex={-1}>
+              <Text>Some info</Text>
+            </Box>
           </Popover>
         </Indent>
       ),
@@ -355,6 +358,7 @@ const createSalesPerformanceStandardTableConfig = (
       renderCell: () => (
         <Indent>
           <Popover
+            trigger={"click"}
             renderTrigger={(props) => (
               <Icon
                 {...props}
@@ -364,7 +368,9 @@ const createSalesPerformanceStandardTableConfig = (
               />
             )}
           >
-            <Box indent={1} spacing={1} tabIndex={-1} />
+            <Box indent={1} spacing={1} tabIndex={-1}>
+              <Text>Some more info</Text>
+            </Box>
           </Popover>
         </Indent>
       ),

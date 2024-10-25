@@ -38,7 +38,7 @@
     "@stenajs-webui/forms": "21.16.2",
     "@stenajs-webui/theme": "21.16.2",
     "@stenajs-webui/tooltip": "21.16.2",
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "date-fns": "4.1.0",
     "react-transition-group": "^4.3.0",
     "tippy.js": "^6.2.6"
