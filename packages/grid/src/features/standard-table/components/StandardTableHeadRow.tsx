@@ -6,42 +6,23 @@ import {
 } from "@stenajs-webui/elements";
 import { Checkbox } from "@stenajs-webui/forms";
 import * as React from "react";
-import { CSSProperties } from "react";
 import {
   defaultTableRowHeight,
   tableBorderLeft,
 } from "../../../config/TableConfig";
 import { useGroupConfigsAndIdsForRows } from "../context/GroupConfigsAndIdsForRowsContext";
-import { useColumnGroupOrderContext } from "../context/StandardTableColumnOrderContext";
 import { useTableHeadCheckbox } from "../features/checkboxes/UseTableHeadCheckbox";
 import { useTableHeadExpandCollapse } from "../features/expand-collapse/UseTableHeadExpandCollapse";
 import { useStandardTableConfig } from "../hooks/UseStandardTableConfig";
 import { getCellBorderFromGroup } from "../util/CellBorderCalculator";
 import { StandardTableHeadItem } from "./StandardTableHeadItem";
 import { TrWithHoverBackground } from "./TrWithHoverBackground";
+import { CSSProperties } from "react";
 
 interface StandardTableHeaderProps<TItem> {
   items?: Array<TItem>;
   height?: string;
 }
-
-const getTopPosition = (
-  headerRowOffsetTop: string | undefined,
-  columnGroupOrder: Array<string> | undefined,
-  height: string,
-  stickyHeader: boolean | undefined,
-): CSSProperties["top"] => {
-  if (headerRowOffsetTop && columnGroupOrder !== undefined) {
-    return `calc(${headerRowOffsetTop} + ${height})`;
-  } else if (stickyHeader && columnGroupOrder) {
-    return `calc(0px + ${height})`;
-  } else if (headerRowOffsetTop) {
-    return headerRowOffsetTop;
-  } else if (stickyHeader) {
-    return 0;
-  }
-  return undefined;
-};
 
 export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   TItem,
@@ -53,14 +34,9 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
     showHeaderExpandCollapse,
     enableExpandCollapse,
     rowIndent,
-    headerRowOffsetTop,
-    zIndex,
-    stickyHeader,
     stickyCheckboxColumn,
     showRowCheckbox,
   } = useStandardTableConfig();
-
-  const columnGroupOrder = useColumnGroupOrderContext();
 
   const { allItemsAreExpanded, toggleExpanded } =
     useTableHeadExpandCollapse(items);
@@ -70,35 +46,20 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
   const checkboxDisabled = !items || items.length === 0;
 
   const stickyHeaderStyle: CSSProperties = {
-    zIndex: (stickyHeader && stickyCheckboxColumn
-      ? "var(--swui-sticky-header-in-sticky-column-z-index)"
-      : stickyCheckboxColumn
-        ? "var(--swui-sticky-group-header-z-index)"
-        : stickyHeader
-          ? "var(--swui-sticky-header-z-index)"
-          : zIndex) as CSSProperties["zIndex"],
-    top: getTopPosition(
-      headerRowOffsetTop,
-      columnGroupOrder,
-      height,
-      stickyHeader,
-    ),
-    background: stickyHeader || stickyCheckboxColumn ? "white" : undefined,
-    position: stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
-    boxShadow:
-      stickyHeader && stickyCheckboxColumn
-        ? "var(--swui-sticky-header-shadow-and-right)"
-        : stickyCheckboxColumn
-          ? "var(--swui-sticky-column-shadow-right)"
-          : stickyHeader
-            ? "var(--swui-sticky-header-shadow)"
-            : undefined,
+    zIndex: (stickyCheckboxColumn
+      ? "var(--swui-sticky-group-header-z-index)"
+      : undefined) as CSSProperties["zIndex"],
+    background: stickyCheckboxColumn ? "white" : undefined,
+    position: stickyCheckboxColumn ? "sticky" : undefined,
+    boxShadow: stickyCheckboxColumn
+      ? "var(--swui-sticky-column-shadow-right)"
+      : undefined,
   };
 
   return (
     <TrWithHoverBackground height={height} borderLeft={tableBorderLeft}>
       {rowIndent && (
-        <th style={stickyHeaderStyle}>
+        <th>
           <Row indent={rowIndent} />
         </th>
       )}
@@ -173,8 +134,6 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
                     groupConfig.borderLeft,
                   )}
                   disableBorderLeft={groupIndex === 0 && index === 0}
-                  stickyHeader={stickyHeader}
-                  top={stickyHeaderStyle.top}
                 />
               );
             })}
@@ -182,11 +141,11 @@ export const StandardTableHeadRow = React.memo(function StandardTableHeadRow<
         );
       })}
       {rowIndent && (
-        <th style={stickyHeaderStyle}>
+        <th>
           <Row indent={rowIndent} />
         </th>
       )}
-      <th style={stickyHeaderStyle} />
+      <th />
     </TrWithHoverBackground>
   );
 });

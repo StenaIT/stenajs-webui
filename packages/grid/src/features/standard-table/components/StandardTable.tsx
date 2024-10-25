@@ -192,6 +192,9 @@ export const StandardTable = function StandardTable<
     initialSortOrder,
     enableExpandCollapse,
     stickyCheckboxColumn,
+    headerRowOffsetTop,
+    stickyHeader,
+    zIndex,
   } = config;
 
   const { tableContext: localTableContext } = useLocalStateTableContext(
@@ -259,6 +262,30 @@ export const StandardTable = function StandardTable<
     }
   }, [config]);
 
+  const stickyHeadStyle: CSSProperties = {
+    background: stickyHeader || stickyCheckboxColumn ? "white" : undefined,
+    position: stickyHeader || stickyCheckboxColumn ? "sticky" : undefined,
+    top:
+      stickyHeader || stickyCheckboxColumn
+        ? (headerRowOffsetTop ?? 0)
+        : undefined,
+    boxShadow:
+      stickyHeader && stickyCheckboxColumn
+        ? "var(--swui-sticky-header-shadow-and-right)"
+        : stickyCheckboxColumn
+          ? "var(--swui-sticky-column-shadow-right)"
+          : stickyHeader
+            ? "var(--swui-sticky-header-shadow)"
+            : undefined,
+    zIndex: (stickyHeader && stickyCheckboxColumn
+      ? "var(--swui-sticky-header-in-sticky-column-z-index)"
+      : stickyCheckboxColumn
+        ? "var(--swui-sticky-group-header-z-index)"
+        : stickyHeader
+          ? "var(--swui-sticky-head-z-index)"
+          : zIndex) as CSSProperties["zIndex"],
+  };
+
   if (validationError) {
     return <ErrorScreen text={validationError.message} />;
   }
@@ -311,7 +338,7 @@ export const StandardTable = function StandardTable<
                               <OnSortOrderChangeContext.Provider
                                 value={onSortOrderChange}
                               >
-                                <thead>
+                                <thead style={stickyHeadStyle}>
                                   {(columnGroupOrder ||
                                     "columnGroupOrder" in config) && (
                                     <ColumnGroupRow
