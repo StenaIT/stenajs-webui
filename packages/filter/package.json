@@ -39,7 +39,7 @@
     "@stenajs-webui/forms": "21.16.2",
     "@stenajs-webui/modal": "21.16.2",
     "@stenajs-webui/panels": "21.16.2",
-    "@stenajs-webui/redux": "21.16.2",
+    "@stenajs-webui/redux": "21.16.3",
     "@stenajs-webui/select": "21.16.2",
     "@stenajs-webui/theme": "21.16.2",
     "date-fns": "4.1.0",
