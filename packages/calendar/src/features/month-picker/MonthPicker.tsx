@@ -1,4 +1,3 @@
-import { enGB } from "date-fns/locale";
 import * as React from "react";
 import {
   KeyboardEventHandler,
@@ -11,14 +10,15 @@ import {
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
 import { Column, exhaustSwitchCase, Heading } from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
-import { addMonths, isSameMonth, Locale } from "date-fns";
+import { addMonths, isSameMonth } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
 import { useToday } from "../travel-calendar/util/UseToday";
+import { SupportedLocaleCode } from "../localize-date-format/LocaleMapper";
 
 export type MonthPickerSizeVariant = "small" | "medium" | "large";
 
 export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
-  locale?: Locale;
+  localeCode: SupportedLocaleCode;
   firstMonth: Date;
   numMonths: number;
   onCancel?: () => void;
@@ -28,8 +28,8 @@ export interface MonthPickerProps extends ValueAndOnValueChangeProps<Date> {
 export const MonthPicker: React.FC<MonthPickerProps> = ({
   value,
   onValueChange,
-  locale = enGB,
   firstMonth,
+  localeCode,
   numMonths,
   onCancel,
   size = "medium",
@@ -83,7 +83,7 @@ export const MonthPicker: React.FC<MonthPickerProps> = ({
                             month={month}
                             firstAvailableMonth={firstMonth}
                             lastAvailableMonth={lastMonth}
-                            locale={locale}
+                            localeCode={localeCode}
                             selected={value ? isSameMonth(value, month) : false}
                             autoFocus={inited}
                             onClick={() => onValueChange?.(month)}

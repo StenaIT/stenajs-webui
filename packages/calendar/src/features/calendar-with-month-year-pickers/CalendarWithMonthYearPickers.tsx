@@ -1,7 +1,7 @@
 import { Box } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
-import { ReactNode, useCallback } from "react";
+import { ReactNode, useCallback, useMemo } from "react";
 import { Calendar } from "../../components/calendar/Calendar";
 import {
   CalendarProps,
@@ -11,6 +11,10 @@ import { MonthPicker } from "../month-picker/MonthPicker";
 import { CalendarPreset } from "../preset-picker/CalendarPreset";
 import { PresetPicker } from "../preset-picker/PresetPicker";
 import { CalendarPanelType } from "./CalendarPanelType";
+import {
+  getLocaleCodeForLocale,
+  SupportedLocaleCode,
+} from "../localize-date-format/LocaleMapper";
 
 interface CalendarWithMonthYearPickersProps<T>
   extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
@@ -32,6 +36,12 @@ export const CalendarWithMonthYearPickers =
     renderMonthPicker,
     ...props
   }: CalendarWithMonthYearPickersProps<T>) {
+    const localeCode = useMemo<SupportedLocaleCode>(
+      () =>
+        locale == null ? "en-GB" : (getLocaleCodeForLocale(locale) ?? "en-GB"),
+      [locale],
+    );
+
     const onChangeSelectedMonth = useCallback(
       (selectedMonth: Date) => {
         if (setDateInFocus) {
@@ -70,7 +80,7 @@ export const CalendarWithMonthYearPickers =
           <MonthPicker
             value={dateInFocus}
             onValueChange={onChangeSelectedMonth}
-            locale={locale}
+            localeCode={localeCode}
             firstMonth={new Date()}
             numMonths={24}
           />

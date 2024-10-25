@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/theme",
-  "version": "21.12.1",
+  "version": "21.16.1",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -28,8 +28,8 @@
     "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
     "test": "vitest run",
     "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
+    "prepare": "yarn clean && yarn build",
+    "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {

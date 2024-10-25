@@ -1,6 +1,6 @@
 import { Column, Indent, Row } from "@stenajs-webui/core";
 import { FlatButton, stenaTrash } from "@stenajs-webui/elements";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { useState } from "react";
 import { DateTimeInput } from "./DateTimeInput";
@@ -10,7 +10,7 @@ export default {
   title: "calendar/Input/DateTimeInput",
   component: DateTimeInput,
   decorators: [
-    (TheStory: Story) => (
+    (TheStory: StoryFn) => (
       <div style={{ marginBottom: "400px", display: "inline-block" }}>
         <TheStory />
       </div>

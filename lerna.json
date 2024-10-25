@@ -1,5 +1,5 @@
 {
-  "version": "21.12.1",
+  "version": "21.16.1",
   "command": {
     "publish": {
       "verifyAccess": false

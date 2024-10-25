@@ -13,6 +13,7 @@ export const Standard = () => {
   return (
     <div style={{ display: "inline-block" }}>
       <MonthPicker
+        localeCode={"en-GB"}
         value={value}
         onValueChange={setValue}
         numMonths={24}

@@ -29,6 +29,7 @@ import {
 } from "../../../features/travel-calendar/types";
 import styles from "./TravelDateRangeInput.module.css";
 import cx from "classnames";
+import { SupportedLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 
 export interface RenderBelowCalendarArgs {
   hideCalendar: () => void;
@@ -36,7 +37,7 @@ export interface RenderBelowCalendarArgs {
 
 export interface TravelDateRangeInputProps
   extends ValueAndOnValueChangeProps<TravelDateRangeInputValue> {
-  localeCode?: string;
+  localeCode?: SupportedLocaleCode;
   initialMonthInFocus?: Date;
   startDateLabel?: string;
   endDateLabel?: string;
@@ -235,6 +236,7 @@ export const TravelDateRangeInput: React.FC<TravelDateRangeInputProps> = ({
                   numMonths={numMonthsInMonthPicker}
                   value={visibleMonth}
                   size={size}
+                  localeCode={localeCode}
                   onValueChange={(v) => {
                     setVisibleMonth(v);
                     setVisiblePanel("calendar");

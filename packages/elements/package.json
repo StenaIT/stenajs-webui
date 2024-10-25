@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/elements",
-  "version": "21.12.1",
+  "version": "21.16.1",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -28,14 +28,14 @@
     "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
     "test": "vitest run --passWithNoTests",
     "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
+    "prepare": "yarn clean && yarn build",
+    "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
     "@react-aria/focus": "^3.15.0",
-    "@stenajs-webui/core": "21.12.1",
-    "@stenajs-webui/theme": "21.12.1",
+    "@stenajs-webui/core": "21.16.1",
+    "@stenajs-webui/theme": "21.16.1",
     "classnames": "^2.3.1"
   },
   "peerDependencies": {

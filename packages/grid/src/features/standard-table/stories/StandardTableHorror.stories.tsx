@@ -336,12 +336,17 @@ const createSalesPerformanceStandardTableConfig = (
     status: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
-          <Popover content={<Box indent={1} spacing={1} />}>
-            <Icon
-              icon={faCoffee}
-              color={cssColor("--lhds-color-blue-300")}
-              size={14}
-            />
+          <Popover
+            renderTrigger={(props) => (
+              <Icon
+                {...props}
+                icon={faCoffee}
+                color={cssColor("--lhds-color-blue-300")}
+                size={14}
+              />
+            )}
+          >
+            <Box indent={1} spacing={1} tabIndex={-1} />
           </Popover>
         </Indent>
       ),
@@ -349,12 +354,17 @@ const createSalesPerformanceStandardTableConfig = (
     flags: createColumnConfig((item) => item.automation, {
       renderCell: () => (
         <Indent>
-          <Popover content={<Box indent={1} spacing={1} />}>
-            <Icon
-              icon={faCoffee}
-              color={cssColor("--lhds-color-blue-300")}
-              size={14}
-            />
+          <Popover
+            renderTrigger={(props) => (
+              <Icon
+                {...props}
+                icon={faCoffee}
+                color={cssColor("--lhds-color-blue-300")}
+                size={14}
+              />
+            )}
+          >
+            <Box indent={1} spacing={1} tabIndex={-1} />
           </Popover>
         </Indent>
       ),

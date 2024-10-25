@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/input-mask",
-  "version": "21.12.1",
+  "version": "21.16.1",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -28,12 +28,12 @@
     "start": "yarn tsc -p tsconfig.build.json && yarn vite build --watch",
     "test": "vitest run --passWithNoTests",
     "clean": "rimraf dist",
-    "prepare": "yarn clean && yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
+    "prepare": "yarn clean && yarn build",
+    "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/forms": "21.12.1",
+    "@stenajs-webui/forms": "21.16.1",
     "text-mask-core": "^5.1.2"
   },
   "peerDependencies": {
