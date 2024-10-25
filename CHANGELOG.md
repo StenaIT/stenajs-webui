@@ -1,3 +1,16 @@
+# v21.16.2 (Fri Oct 25 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - StandardTable: Move stickiness from th to thead [#864](https://github.com/StenaIT/stenajs-webui/pull/864) ([@johnknoop](https://github.com/johnknoop))
+
+#### Authors: 1
+
+- John Knoop ([@johnknoop](https://github.com/johnknoop))
+
+---
+
 # v21.16.1 (Fri Oct 25 2024)
 
 #### 🐛 Bug Fix
