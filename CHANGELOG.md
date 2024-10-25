@@ -1,3 +1,17 @@
+# v21.16.0 (Fri Oct 25 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/tooltip`
+  - Add onOpened and onClosed props to Popover [#875](https://github.com/StenaIT/stenajs-webui/pull/875) ([@Luddelito](https://github.com/Luddelito) [@nikteg](https://github.com/nikteg))
+
+#### Authors: 2
+
+- Ludvig Lignell ([@Luddelito](https://github.com/Luddelito))
+- Niklas ([@nikteg](https://github.com/nikteg))
+
+---
+
 # v21.15.0 (Wed Oct 23 2024)
 
 #### 🚀 Enhancement
