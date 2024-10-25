@@ -4,13 +4,16 @@ import {
   Indent,
   Row,
   SeparatorLine,
+  Space,
   Spacing,
   Text,
+  Txt,
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ActionPrompt } from "./ActionPrompt";
 import { Popover } from "./Popover";
+import { useState } from "react";
 
 export default {
   title: "tooltip/Popover",
@@ -50,6 +53,27 @@ export const OnClick = () => (
     </Popover>
   </Box>
 );
+
+export const OnPopoverStatus = () => {
+  const [value, setValue] = useState("");
+
+  return (
+    <Box indent={10} spacing={10} display={"inline-block"}>
+      <Txt variant={"bold"}>Popover status: {value}</Txt>
+      <Space num={3} />
+      <Popover
+        trigger={"click"}
+        renderTrigger={(props) => (
+          <FlatButton leftIcon={stenaTrash} {...props} />
+        )}
+        onOpened={() => setValue("Opened")}
+        onClosed={() => setValue("Closed")}
+      >
+        <ActionPrompt />
+      </Popover>
+    </Box>
+  );
+};
 
 export const NoArrow = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
