@@ -1,3 +1,16 @@
+# v21.16.3 (Fri Oct 25 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`, `@stenajs-webui/elements`, `@stenajs-webui/forms`, `@stenajs-webui/grid`, `@stenajs-webui/modal`, `@stenajs-webui/panels`, `@stenajs-webui/tooltip`
+  - Remove template folder from dependabot [#877](https://github.com/StenaIT/stenajs-webui/pull/877) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.16.2 (Fri Oct 25 2024)
 
 #### 🐛 Bug Fix
