@@ -66,8 +66,8 @@ export const OnPopoverStatus = () => {
         renderTrigger={(props) => (
           <FlatButton leftIcon={stenaTrash} {...props} />
         )}
-        onOpen={() => setValue("Opened")}
-        onClose={() => setValue("Closed")}
+        onOpened={() => setValue("Opened")}
+        onClosed={() => setValue("Closed")}
       >
         <ActionPrompt />
       </Popover>

@@ -57,8 +57,8 @@ export interface PopoverProps {
   initialFocus?: number | React.MutableRefObject<HTMLElement | null>;
   appendTo?: HTMLElement | null | React.MutableRefObject<HTMLElement | null>;
   zIndex?: number;
-  onOpen?: () => void;
-  onClose?: () => void;
+  onOpened?: () => void;
+  onClosed?: () => void;
 }
 
 const ARROW_WIDTH = 12;
@@ -78,25 +78,29 @@ export const Popover: React.FC<PopoverProps> = ({
   initialFocus,
   appendTo,
   zIndex,
-  ...props
+  onOpened,
+  onClosed,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const arrowRef = useRef(null);
 
-  const { refs, floatingStyles, context } = useFloating({
-    open: isOpen,
-    onOpenChange(open) {
+  const onOpenChange = useCallback(
+    (open: boolean) => {
       setIsOpen(open);
 
       if (open) {
-        setIsOpen(true);
-        props.onOpen?.();
+        onOpened?.();
       } else {
-        setIsOpen(false);
-        props.onClose?.();
+        onClosed?.();
       }
     },
+    [onClosed, onOpened],
+  );
+
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    onOpenChange,
     placement,
     middleware: [
       offset(ARROW_HEIGHT + GAP),
