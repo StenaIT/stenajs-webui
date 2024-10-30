@@ -1,7 +1,13 @@
 const { pathThatSvg } = require("path-that-svg");
 const fs = require("fs");
 const { parse } = require("svgson");
-const { camelCase, upperFirst, groupBy, startCase } = require("lodash");
+const {
+  camelCase,
+  upperFirst,
+  groupBy,
+  startCase,
+  orderBy,
+} = require("lodash");
 const svgpath = require("svgpath");
 const path = require("path");
 const glob = require("glob");
@@ -15,23 +21,26 @@ async function generateIcons() {
   const files = glob.sync(`${__dirname}/icons/**/*.svg`);
   console.log(`Found ${files.length} SVG files.\n`);
 
-  const allIconDefinitions = await Promise.all(
-    files.map(async (file) => {
-      const iconCategoryFileName = getIconCategoryFileName(file);
-      const basenameFile = path.basename(file, ".svg");
-      const svg = await readSvgFile(file);
-      const iconDefinition = await createIconDefinition(svg, basenameFile);
-      return {
-        basenameFile,
-        iconCategoryFileName,
-        iconDefinition,
-      };
-    })
+  const allIconDefinitions = orderBy(
+    await Promise.all(
+      files.map(async (file) => {
+        const iconCategoryFileName = getIconCategoryFileName(file);
+        const basenameFile = path.basename(file, ".svg");
+        const svg = await readSvgFile(file);
+        const iconDefinition = await createIconDefinition(svg, basenameFile);
+        return {
+          basenameFile,
+          iconCategoryFileName,
+          iconDefinition,
+        };
+      }),
+    ),
+    (def) => def.iconDefinition,
   );
 
   const byGroup = groupBy(
     allIconDefinitions,
-    (item) => item.iconCategoryFileName
+    (item) => item.iconCategoryFileName,
   );
 
   const allGroupFileNames = Object.keys(byGroup);
@@ -41,11 +50,11 @@ async function generateIcons() {
 
   allGroupFileNames.forEach((categoryFileName) => {
     const iconFileNamesForGroup = byGroup[categoryFileName].map(
-      (p) => p.basenameFile
+      (p) => p.basenameFile,
     );
     createIconCategoryFileIfNotExists(categoryFileName, iconFileNamesForGroup);
     const iconDefinitions = byGroup[categoryFileName].map(
-      (p) => p.iconDefinition
+      (p) => p.iconDefinition,
     );
     writeIconDefinitionsForCategoryToDisk(iconDefinitions, categoryFileName);
   });
@@ -100,15 +109,15 @@ async function createIconDefinition(svgString, basenameFile) {
   );
 }
 
-function writeIconDefinitionsForCategoryToDisk(
+async function writeIconDefinitionsForCategoryToDisk(
   iconDefinitions,
-  categoryFileName
+  categoryFileName,
 ) {
   const fileContent = iconDefinitions.join("\n\n");
 
   fs.appendFileSync(
     baseTargetPath + categoryFileName,
-    prettier.format(fileContent, { parser: "typescript" })
+    await prettier.format(fileContent, { parser: "typescript" }),
   );
 }
 
@@ -130,13 +139,13 @@ function joinChildPaths(children) {
 
 function createIconCategoryFileIfNotExists(
   categoryFileName,
-  iconFileNamesForGroup
+  iconFileNamesForGroup,
 ) {
   const targetFileFullPath = baseTargetPath + categoryFileName;
   if (!fs.existsSync(targetFileFullPath)) {
     fs.appendFileSync(
       targetFileFullPath,
-      createImportStatement(iconFileNamesForGroup) + "\n\n"
+      createImportStatement(iconFileNamesForGroup) + "\n\n",
     );
   }
 }
@@ -145,7 +154,7 @@ function createImportStatement(iconFileNamesForGroup) {
   let types = [];
 
   const numXlIcons = iconFileNamesForGroup.filter((n) =>
-    n.endsWith("xl")
+    n.endsWith("xl"),
   ).length;
   const numMediumIcons = iconFileNamesForGroup.length - numXlIcons;
 
