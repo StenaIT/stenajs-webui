@@ -86,7 +86,6 @@
 
     &.selected {
       --current-background: var(--swui-toggle-button-background-selected);
-      z-index: 1;
     }
   }
 
