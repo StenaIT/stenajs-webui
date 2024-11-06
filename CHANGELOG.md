@@ -1,3 +1,25 @@
+# v21.16.4 (Wed Nov 06 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Remove z-index from ToggleButton when selected [#888](https://github.com/StenaIT/stenajs-webui/pull/888) ([@Limpaan](https://github.com/Limpaan))
+  - Fix `generate-svg-icons` script [#885](https://github.com/StenaIT/stenajs-webui/pull/885) ([@nikteg](https://github.com/nikteg))
+
+#### 🔩 Dependency Updates
+
+- Bump actions/dependency-review-action from 4.3.5 to 4.4.0 [#883](https://github.com/StenaIT/stenajs-webui/pull/883) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump actions/dependency-review-action from 4.3.4 to 4.3.5 [#867](https://github.com/StenaIT/stenajs-webui/pull/867) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump github/codeql-action from 3.26.12 to 3.27.0 [#866](https://github.com/StenaIT/stenajs-webui/pull/866) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Niklas ([@nikteg](https://github.com/nikteg))
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v21.16.3 (Fri Oct 25 2024)
 
 #### 🐛 Bug Fix
