@@ -1,3 +1,16 @@
+# v21.16.5 (Thu Nov 07 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add kraken xl icon [#889](https://github.com/StenaIT/stenajs-webui/pull/889) ([@AugustasFriend](https://github.com/AugustasFriend))
+
+#### Authors: 1
+
+- Augustas Eidikis ([@AugustasFriend](https://github.com/AugustasFriend))
+
+---
+
 # v21.16.4 (Wed Nov 06 2024)
 
 #### 🐛 Bug Fix
