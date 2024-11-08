@@ -1,4 +1,4 @@
-import { Box } from "@stenajs-webui/core";
+import { Box, useToday } from "@stenajs-webui/core";
 import { PrimaryButton } from "@stenajs-webui/elements";
 import * as React from "react";
 import { ReactNode, useCallback, useMemo } from "react";
@@ -19,6 +19,7 @@ import {
 interface CalendarWithMonthYearPickersProps<T>
   extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
   dateInFocus: Date;
+  firstMonth?: Date;
   setDateInFocus: (dateInFocus: Date) => void;
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
@@ -30,6 +31,7 @@ export const CalendarWithMonthYearPickers =
   function CalendarWithMonthYearPickers<T>({
     locale,
     dateInFocus,
+    firstMonth,
     setDateInFocus,
     currentPanel,
     setCurrentPanel,
@@ -41,6 +43,7 @@ export const CalendarWithMonthYearPickers =
         locale == null ? "en-GB" : (getLocaleCodeForLocale(locale) ?? "en-GB"),
       [locale],
     );
+    const today = useToday();
 
     const onChangeSelectedMonth = useCallback(
       (selectedMonth: Date) => {
@@ -72,7 +75,7 @@ export const CalendarWithMonthYearPickers =
             value: dateInFocus,
             onValueChange: onChangeSelectedMonth,
             locale: locale,
-            firstMonth: new Date(),
+            firstMonth: firstMonth ?? today,
             numMonths: 24,
             dateInFocus,
           })
@@ -81,7 +84,7 @@ export const CalendarWithMonthYearPickers =
             value={dateInFocus}
             onValueChange={onChangeSelectedMonth}
             localeCode={localeCode}
-            firstMonth={new Date()}
+            firstMonth={firstMonth ?? today}
             numMonths={24}
           />
         );

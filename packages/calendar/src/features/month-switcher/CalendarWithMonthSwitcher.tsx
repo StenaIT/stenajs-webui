@@ -24,6 +24,7 @@ export interface CalendarWithMonthSwitcherProps<T> extends CalendarProps<T> {
   monthSwitcherPlacement?: MonthSwitcherPlacement;
   dateInFocus: Date;
   setDateInFocus: (dateInFocus: Date) => void;
+  firstMonth?: Date;
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
   onSelectPreset?: (preset: CalendarPreset) => void;
@@ -38,6 +39,7 @@ export function CalendarWithMonthSwitcher<T>({
   dateInFocus,
   setDateInFocus,
   currentPanel,
+  firstMonth,
   setCurrentPanel,
   onSelectPreset = noop,
   renderMonthPicker,
@@ -78,6 +80,7 @@ export function CalendarWithMonthSwitcher<T>({
             theme={theme}
             renderMonthPicker={renderMonthPicker}
             dateInFocus={dateInFocus}
+            firstMonth={firstMonth}
             setDateInFocus={setDateInFocus}
             currentPanel={currentPanel}
             setCurrentPanel={setCurrentPanel}

@@ -72,6 +72,22 @@ export const Disabled = () => {
   );
 };
 
+export const UseDateInFocusForCalendarMonth = () => {
+  const [value, setValue] = useState<DateRange | undefined>(undefined);
+  const props = useDateRangeCalendarState();
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <DateRangeDualTextInput
+        value={value}
+        onValueChange={setValue}
+        useDateInFocusForCalendarMonth
+        {...props}
+      />
+    </div>
+  );
+};
+
 export const StartSelected = () => {
   const [value, setValue] = useState<DateRange | undefined>({
     startDate: new Date(),
