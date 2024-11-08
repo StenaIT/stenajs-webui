@@ -1,3 +1,16 @@
+# v21.16.6 (Fri Nov 08 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Fix asymmetric padding in Tag when there is no label. [#890](https://github.com/StenaIT/stenajs-webui/pull/890) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.16.5 (Thu Nov 07 2024)
 
 #### 🐛 Bug Fix
