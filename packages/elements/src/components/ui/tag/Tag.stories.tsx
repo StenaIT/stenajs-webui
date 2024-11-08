@@ -1,5 +1,5 @@
 import { Column, Indent, Row, Space, Text } from "@stenajs-webui/core";
-import { Story } from "@storybook/react";
+import { StoryFn } from "@storybook/react";
 import * as React from "react";
 import { CSSProperties } from "react";
 import { disabledControl } from "../../../storybook-helpers/storybook-controls";
@@ -49,6 +49,12 @@ export const Overview = () => (
                     label={"Default"}
                     icon={stenaSailingOnQuay}
                   />
+                  <Indent />
+                  <Tag
+                    size={size}
+                    variant={variant}
+                    icon={stenaSailingOnQuay}
+                  />
                 </Row>
               ))}
 
@@ -61,7 +67,7 @@ export const Overview = () => (
   </>
 );
 
-export const CustomTheme: Story<TagProps> = () => (
+export const CustomTheme: StoryFn<TagProps> = () => (
   <Tag
     style={
       {

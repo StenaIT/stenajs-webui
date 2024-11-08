@@ -22,6 +22,10 @@
   &.medium {
     &.withIcon {
       padding-left: var(--swui-metrics-indent);
+
+      &.noLabel {
+        padding-right: var(--swui-metrics-indent);
+      }
     }
   }
 

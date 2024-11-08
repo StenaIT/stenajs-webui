@@ -44,6 +44,7 @@ export const Tag: React.FC<TagProps> = ({
         styles[variant],
         styles[size],
         icon && styles.withIcon,
+        !label && styles.noLabel,
         className,
       )}
       style={style}
