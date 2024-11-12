@@ -1,3 +1,17 @@
+# v21.16.7 (Tue Nov 12 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/core`
+  - Add DateRangeDualTextInput props to control months in month-picker [#891](https://github.com/StenaIT/stenajs-webui/pull/891) ([@Looooooopy](https://github.com/Looooooopy) [@Looooopy](https://github.com/Looooopy))
+
+#### Authors: 2
+
+- [@Looooopy](https://github.com/Looooopy)
+- Giorgio Salmi ([@Looooooopy](https://github.com/Looooooopy))
+
+---
+
 # v21.16.6 (Fri Nov 08 2024)
 
 #### 🐛 Bug Fix
