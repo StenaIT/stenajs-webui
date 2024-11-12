@@ -40,7 +40,6 @@ export const useDateRangeHandlers = (
 
   const showCalendar = useCallback(
     (dateInFocus?: Date) => {
-      console.log("dateInFocus", dateInFocus);
       if (dateInFocus != null) {
         setDateInFocus(dateInFocus);
       } else if (startDate) {
