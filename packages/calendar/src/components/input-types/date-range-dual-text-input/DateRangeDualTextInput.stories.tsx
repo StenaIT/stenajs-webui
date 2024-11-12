@@ -1,6 +1,6 @@
 import { Column, Txt } from "@stenajs-webui/core";
 import { StoryFn } from "@storybook/react";
-import { addDays, format, isBefore, subYears } from "date-fns";
+import { addDays, format, isBefore } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { useDateRangeCalendarState } from "../../calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
