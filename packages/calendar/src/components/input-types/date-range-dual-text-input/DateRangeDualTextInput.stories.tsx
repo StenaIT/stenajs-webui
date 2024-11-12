@@ -1,6 +1,6 @@
 import { Column, Txt } from "@stenajs-webui/core";
 import { StoryFn } from "@storybook/react";
-import { addDays, format } from "date-fns";
+import { addDays, format, isBefore, subYears } from "date-fns";
 import * as React from "react";
 import { useState } from "react";
 import { useDateRangeCalendarState } from "../../calendar-types/date-range-calendar/hooks/UseDateRangeCalendarState";
@@ -72,7 +72,7 @@ export const Disabled = () => {
   );
 };
 
-export const UseDateInFocusForCalendarMonth = () => {
+export const FirstMonthInMonthPicker = () => {
   const [value, setValue] = useState<DateRange | undefined>(undefined);
   const props = useDateRangeCalendarState();
 
@@ -81,7 +81,11 @@ export const UseDateInFocusForCalendarMonth = () => {
       <DateRangeDualTextInput
         value={value}
         onValueChange={setValue}
-        useDateInFocusForCalendarMonth
+        firstMonthInMonthPicker={
+          value?.startDate && isBefore(value?.startDate, new Date())
+            ? value?.startDate
+            : new Date()
+        }
         {...props}
       />
     </div>

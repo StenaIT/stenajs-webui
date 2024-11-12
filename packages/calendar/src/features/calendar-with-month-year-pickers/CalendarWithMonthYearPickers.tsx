@@ -19,7 +19,7 @@ import {
 interface CalendarWithMonthYearPickersProps<T>
   extends Omit<CalendarProps<T>, "date" | "year" | "month"> {
   dateInFocus: Date;
-  firstMonth?: Date;
+  firstMonthInMonthPicker?: Date;
   setDateInFocus: (dateInFocus: Date) => void;
   currentPanel: CalendarPanelType;
   setCurrentPanel: (currentPanel: CalendarPanelType) => void;
@@ -31,7 +31,7 @@ export const CalendarWithMonthYearPickers =
   function CalendarWithMonthYearPickers<T>({
     locale,
     dateInFocus,
-    firstMonth,
+    firstMonthInMonthPicker,
     setDateInFocus,
     currentPanel,
     setCurrentPanel,
@@ -75,7 +75,7 @@ export const CalendarWithMonthYearPickers =
             value: dateInFocus,
             onValueChange: onChangeSelectedMonth,
             locale: locale,
-            firstMonth: firstMonth ?? today,
+            firstMonth: firstMonthInMonthPicker ?? today,
             numMonths: 24,
             dateInFocus,
           })
@@ -84,7 +84,7 @@ export const CalendarWithMonthYearPickers =
             value={dateInFocus}
             onValueChange={onChangeSelectedMonth}
             localeCode={localeCode}
-            firstMonth={firstMonth ?? today}
+            firstMonth={firstMonthInMonthPicker ?? today}
             numMonths={24}
           />
         );
