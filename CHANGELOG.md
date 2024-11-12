@@ -1,3 +1,16 @@
+# v21.17.0 (Tue Nov 12 2024)
+
+#### 🚀 Enhancement
+
+- Bump github/codeql-action from 3.27.0 to 3.27.1 [#892](https://github.com/StenaIT/stenajs-webui/pull/892) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.16.7 (Tue Nov 12 2024)
 
 #### 🐛 Bug Fix
