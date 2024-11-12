@@ -11,7 +11,7 @@ export const useUserInputHandlers = (
   onValueChange: DateRangeDualTextInputProps["onValueChange"],
   startDateInputRef: RefObject<HTMLInputElement>,
   endDateInputRef: RefObject<HTMLInputElement>,
-  showCalendar: () => void,
+  showCalendar: (dateInFocus?: Date) => void,
   hideCalendar: () => void,
   {
     firstFocusedInput,
@@ -20,6 +20,7 @@ export const useUserInputHandlers = (
     setFocusedInput,
     focusedInput,
     setCurrentPanel,
+    setDateInFocus,
   }: UseInputStatesResult,
 ) => {
   const onFocusLeft = useCallback(() => {
@@ -28,14 +29,18 @@ export const useUserInputHandlers = (
     }
     setFocusedInput("startDate");
     if (!isCalendarVisible) {
-      showCalendar();
+      showCalendar(startDate);
+    } else if (startDate != null) {
+      setDateInFocus(startDate);
     }
   }, [
-    isCalendarVisible,
-    setFocusedInput,
-    showCalendar,
-    setFirstFocusedInput,
     firstFocusedInput,
+    setFocusedInput,
+    isCalendarVisible,
+    startDate,
+    setFirstFocusedInput,
+    showCalendar,
+    setDateInFocus,
   ]);
 
   const onFocusRight = useCallback(() => {
@@ -44,14 +49,18 @@ export const useUserInputHandlers = (
     }
     setFocusedInput("endDate");
     if (!isCalendarVisible) {
-      showCalendar();
+      showCalendar(endDate);
+    } else if (endDate != null) {
+      setDateInFocus(endDate);
     }
   }, [
-    isCalendarVisible,
-    setFocusedInput,
-    showCalendar,
-    setFirstFocusedInput,
     firstFocusedInput,
+    setFocusedInput,
+    isCalendarVisible,
+    endDate,
+    setFirstFocusedInput,
+    showCalendar,
+    setDateInFocus,
   ]);
 
   const onClickDay = useCallback(

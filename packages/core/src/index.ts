@@ -46,6 +46,7 @@ export * from "./hooks/UseOnNoMouseInput";
 export * from "./hooks/UseOnScreen";
 export * from "./hooks/UseForwardedRef";
 export * from "./hooks/UseTimeoutState";
+export * from "./hooks/UseToday";
 
 export * from "./utils/SwitchCaseExhauster";
 export * from "./utils/TruthyKeysAsList";
