@@ -3,7 +3,7 @@ import {
   SupportedLocaleCode,
 } from "../../localize-date-format/LocaleMapper";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
-import { useToday } from "../util/UseToday";
+import { useToday } from "@stenajs-webui/core";
 import { getDateFormatForLocaleCode } from "../../localize-date-format/DateFormatProvider";
 import { parseLocalizedDateString } from "../../localize-date-format/LocalizedDateParser";
 import { format, isAfter, isBefore, isSameDay, isSameMonth } from "date-fns";

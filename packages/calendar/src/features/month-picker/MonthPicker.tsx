@@ -8,11 +8,15 @@ import {
   useState,
 } from "react";
 import { ValueAndOnValueChangeProps } from "@stenajs-webui/forms";
-import { Column, exhaustSwitchCase, Heading } from "@stenajs-webui/core";
+import {
+  Column,
+  exhaustSwitchCase,
+  Heading,
+  useToday,
+} from "@stenajs-webui/core";
 import { MonthPickerCell } from "./MonthPickerCell";
 import { addMonths, isSameMonth } from "date-fns";
 import { createMonths } from "./MonthPickerDataFactory";
-import { useToday } from "../travel-calendar/util/UseToday";
 import { SupportedLocaleCode } from "../localize-date-format/LocaleMapper";
 
 export type MonthPickerSizeVariant = "small" | "medium" | "large";

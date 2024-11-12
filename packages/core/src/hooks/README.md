@@ -73,6 +73,9 @@ const id = useDomId();
 const idForCheckbox = useDomId("checkbox");
 ```
 
+### useElementDimensions
+
+
 ### useElementFocus
 
 Helper for checking and changing focus on elements.
@@ -98,6 +101,9 @@ useEventListener(ref, "mouseover", setMouseIsOver);
 useEventListener(ref, "mouseout", setMouseIsNotOver);
 ```
 
+### useForwardRef
+
+
 ### useLatest
 
 Creates a ref with the value passed to it.
@@ -115,6 +121,9 @@ const onClick = useCallback(() => {
   // ...
 }, [ref])
 ```
+
+### useMouseIsEntered
+
 
 ### useMouseIsOver
 
@@ -163,3 +172,12 @@ Returns: Nothing.
 ```js
 useOnNoMouseMovement(hideModal, 10000);
 ```
+
+### useOnScreen
+
+### useTimoutState
+
+### useToday
+
+Returns the current date.
+Should be used instead of new Date().

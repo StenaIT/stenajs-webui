@@ -38,23 +38,22 @@ export const useDateRangeHandlers = (
     [onValueChange, startDate],
   );
 
-  const showCalendar = useCallback(() => {
-    if (startDate) {
-      setDateInFocus(startDate);
-    } else if (endDate) {
-      setDateInFocus(endDate);
-    } else {
-      setDateInFocus(new Date());
-    }
-    setCurrentPanel("calendar");
-    showCalendarInternal();
-  }, [
-    startDate,
-    endDate,
-    setCurrentPanel,
-    showCalendarInternal,
-    setDateInFocus,
-  ]);
+  const showCalendar = useCallback(
+    (dateInFocus?: Date) => {
+      if (dateInFocus != null) {
+        setDateInFocus(dateInFocus);
+      } else if (startDate) {
+        setDateInFocus(startDate);
+      } else if (endDate) {
+        setDateInFocus(endDate);
+      } else {
+        setDateInFocus(new Date());
+      }
+      setCurrentPanel("calendar");
+      showCalendarInternal();
+    },
+    [startDate, endDate, setCurrentPanel, showCalendarInternal, setDateInFocus],
+  );
 
   const hideCalendar = useCallback(() => {
     setFirstFocusedInput(undefined);

@@ -38,6 +38,7 @@ export interface DateRangeDualTextInputProps<TData = unknown>
   autoFocus?: boolean;
   calendarProps?: DateRangeInputCalendarProps<TData>;
   disabled?: boolean;
+  firstMonthInMonthPicker?: Date;
 }
 
 export function DateRangeDualTextInput<TData>({
@@ -52,6 +53,7 @@ export function DateRangeDualTextInput<TData>({
   calendarProps,
   widthLeft = 128,
   widthRight = 128,
+  firstMonthInMonthPicker,
   variant,
   disabled,
   zIndex,
@@ -169,6 +171,7 @@ export function DateRangeDualTextInput<TData>({
         <CalendarWithMonthSwitcher
           onClickDay={onClickDay}
           dateInFocus={dateInFocus}
+          firstMonthInMonthPicker={firstMonthInMonthPicker}
           setDateInFocus={setDateInFocus}
           currentPanel={currentPanel}
           setCurrentPanel={setCurrentPanel}
