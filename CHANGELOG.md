@@ -1,3 +1,23 @@
+# v21.17.1 (Fri Nov 15 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Export DialogContext, in case someone creates custom modals in their apps [#897](https://github.com/StenaIT/stenajs-webui/pull/897) ([@mattias800](https://github.com/mattias800))
+
+#### 🔩 Dependency Updates
+
+- Bump github/codeql-action from 3.27.2 to 3.27.4 [#896](https://github.com/StenaIT/stenajs-webui/pull/896) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @stenajs-webui/elements from 21.10.1 to 21.15.0 in /template [#872](https://github.com/StenaIT/stenajs-webui/pull/872) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump github/codeql-action from 3.27.1 to 3.27.2 [#894](https://github.com/StenaIT/stenajs-webui/pull/894) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.17.0 (Tue Nov 12 2024)
 
 #### 🚀 Enhancement
