@@ -12,6 +12,7 @@ export * from "./declarative-modals/window/WindowFooter";
 export * from "./dialog/UseDialog";
 export * from "./dialog/UseDialogPromise";
 export * from "./dialog/DialogCommands";
+export * from "./dialog/DialogContext";
 export * from "./dialog/alert/UseAlertDialog";
 export * from "./dialog/drawer/UseDrawerDialog";
 export * from "./dialog/modal/UseModalDialog";
