@@ -12,6 +12,9 @@ import {
 import { useDialogPromise } from "../UseDialogPromise";
 import { useAlertDialog } from "./UseAlertDialog";
 import { InfoAlert } from "../../ready-made-modals/InfoAlert";
+import ReactModal from "react-modal";
+
+ReactModal.setAppElement("#storybook-root");
 
 export default {
   title: "modal/Dialog/AlertDialog",
