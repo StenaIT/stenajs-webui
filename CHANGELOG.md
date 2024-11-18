@@ -1,3 +1,16 @@
+# v21.18.0 (Mon Nov 18 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`
+  - Add ability to use useDialog hook without dialog element [#899](https://github.com/StenaIT/stenajs-webui/pull/899) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.17.1 (Fri Nov 15 2024)
 
 #### 🐛 Bug Fix
