@@ -11,7 +11,8 @@ import React, {
   useState,
 } from "react";
 import { RejectCommand, ResolveCommand, ShowCommand } from "./DialogCommands";
-import { DialogContext } from "./DialogContext";
+import { DialogContext, DialogContextValue } from "./DialogContext";
+import { Modal } from "../declarative-modals/modal/Modal";
 
 type UseDialogCallbacks<TProps, TPromiseResolve> = {
   show: ShowCommand<TProps, TPromiseResolve>;
@@ -24,6 +25,8 @@ export type UseDialogResult<TProps, TPromiseResolve> = [
 ];
 
 export interface DialogOptions {
+  divInsteadOfDialog?: boolean;
+  background?: string;
   disableCloseOnClickOutside?: boolean;
   modal: boolean;
   className: string;
@@ -38,10 +41,23 @@ export interface DialogOptions {
 
 export function useDialog<TProps, TPromiseResolve = void>(
   component: React.FC<TProps>,
-  options: DialogOptions,
+  {
+    ref,
+    modal,
+    contentWrapperClassName,
+    closingClassName,
+    contentWrapperStyle,
+    dialogStyle,
+    divInsteadOfDialog,
+    disableCloseOnClickOutside,
+    onResolve,
+    onReject,
+    className,
+    background,
+  }: DialogOptions,
 ): UseDialogResult<TProps, TPromiseResolve> {
   const localRef = useRef<HTMLDialogElement>(null);
-  const currentRef = options.ref ?? localRef;
+  const currentRef = ref ?? localRef;
   const [key, forceRerender] = useReducer((x) => x + 1, 0);
   const promiseRef = useRef<Promise<TPromiseResolve | undefined>>();
   const resolveRef = useRef<ResolveCommand<TPromiseResolve> | undefined>();
@@ -64,34 +80,42 @@ export function useDialog<TProps, TPromiseResolve = void>(
       setContentVisible(true);
       forceRerender();
       modalComponentProps.current = props;
-      if (options.modal) {
+      if (modal) {
         currentRef.current?.showModal();
       } else {
         currentRef.current?.show();
       }
       return promiseRef.current;
     },
-    [currentRef, options.modal],
+    [currentRef, modal],
   );
 
   const resolve = useCallback<ResolveCommand<TPromiseResolve>>(
     (value) => {
       // Trigger closing animation.
       setClosing(true);
-      currentRef.current?.addEventListener(
-        "animationend",
-        () => {
-          setClosing(false);
-          setContentVisible(false);
-          currentRef.current?.close();
-          resolveRef.current?.(value);
-          modalComponentProps.current = undefined;
-          options.onResolve?.();
-        },
-        { once: true },
-      );
+      if (!divInsteadOfDialog) {
+        currentRef.current?.addEventListener(
+          "animationend",
+          () => {
+            setClosing(false);
+            setContentVisible(false);
+            currentRef.current?.close();
+            resolveRef.current?.(value);
+            modalComponentProps.current = undefined;
+            onResolve?.();
+          },
+          { once: true },
+        );
+      } else {
+        setClosing(false);
+        setContentVisible(false);
+        resolveRef.current?.(value);
+        modalComponentProps.current = undefined;
+        onResolve?.();
+      }
     },
-    [currentRef, options],
+    [currentRef, onResolve, divInsteadOfDialog],
   );
 
   const onClose = useCallback(() => {
@@ -99,28 +123,36 @@ export function useDialog<TProps, TPromiseResolve = void>(
     setClosing(false);
     setContentVisible(false);
     rejectRef.current?.();
-    options.onReject?.();
+    onReject?.();
     modalComponentProps.current = undefined;
-  }, [options]);
+  }, [onReject]);
 
   const reject = useCallback<RejectCommand>(
     (error) => {
       // Trigger closing animation.
       setClosing(true);
-      currentRef.current?.addEventListener(
-        "animationend",
-        () => {
-          setClosing(false);
-          setContentVisible(false);
-          currentRef.current?.close();
-          rejectRef.current?.(error);
-          options.onReject?.();
-          modalComponentProps.current = undefined;
-        },
-        { once: true },
-      );
+      if (!divInsteadOfDialog) {
+        currentRef.current?.addEventListener(
+          "animationend",
+          () => {
+            setClosing(false);
+            setContentVisible(false);
+            currentRef.current?.close();
+            rejectRef.current?.(error);
+            onReject?.();
+            modalComponentProps.current = undefined;
+          },
+          { once: true },
+        );
+      } else {
+        setClosing(false);
+        setContentVisible(false);
+        rejectRef.current?.(error);
+        onReject?.();
+        modalComponentProps.current = undefined;
+      }
     },
-    [currentRef, options],
+    [currentRef, divInsteadOfDialog, onReject],
   );
 
   const onClick = useCallback<MouseEventHandler<HTMLDialogElement>>(
@@ -144,45 +176,67 @@ export function useDialog<TProps, TPromiseResolve = void>(
     [currentRef, reject],
   );
 
-  const dialogElement = useMemo<ReactNode>(
-    () => (
-      <dialog
-        onClick={options.disableCloseOnClickOutside ? undefined : onClick}
-        onClose={onClose}
-        ref={currentRef}
-        className={cx(options.className, closing && options.closingClassName)}
-        style={options.dialogStyle}
-      >
-        <div
-          style={options.contentWrapperStyle}
-          className={options.contentWrapperClassName}
+  const contextValue = useMemo(
+    () => ({ resolve, reject }) as DialogContextValue<unknown>,
+    [reject, resolve],
+  );
+
+  const element = useMemo<ReactNode>(
+    () =>
+      divInsteadOfDialog ? (
+        <Modal
+          isOpen={contentVisible}
+          onRequestClose={reject}
+          background={background}
         >
-          {contentVisible && (
-            <DialogContext.Provider value={{ resolve, reject }}>
-              <Comp {...(modalComponentProps.current as TProps)} key={key} />
-            </DialogContext.Provider>
-          )}
-        </div>
-      </dialog>
-    ),
+          <DialogContext.Provider value={contextValue}>
+            <div
+              style={contentWrapperStyle}
+              className={contentWrapperClassName}
+            >
+              {contentVisible && (
+                <Comp {...(modalComponentProps.current as TProps)} key={key} />
+              )}
+            </div>
+          </DialogContext.Provider>
+        </Modal>
+      ) : (
+        <dialog
+          onClick={disableCloseOnClickOutside ? undefined : onClick}
+          onClose={onClose}
+          ref={currentRef}
+          className={cx(className, closing && closingClassName)}
+          style={{ background: background, ...dialogStyle }}
+        >
+          <div style={contentWrapperStyle} className={contentWrapperClassName}>
+            {contentVisible && (
+              <DialogContext.Provider value={contextValue}>
+                <Comp {...(modalComponentProps.current as TProps)} key={key} />
+              </DialogContext.Provider>
+            )}
+          </div>
+        </dialog>
+      ),
     [
-      options.disableCloseOnClickOutside,
-      options.className,
-      options.closingClassName,
-      options.dialogStyle,
-      options.contentWrapperStyle,
-      options.contentWrapperClassName,
+      divInsteadOfDialog,
+      background,
+      contentWrapperStyle,
+      contentWrapperClassName,
+      disableCloseOnClickOutside,
+      className,
+      closingClassName,
+      dialogStyle,
+      contentVisible,
+      reject,
+      contextValue,
+      Comp,
+      key,
       onClick,
       onClose,
       currentRef,
       closing,
-      contentVisible,
-      resolve,
-      reject,
-      Comp,
-      key,
     ],
   );
 
-  return [dialogElement, { show, reject }];
+  return [element, { show, reject }];
 }

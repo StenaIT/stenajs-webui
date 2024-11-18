@@ -7,7 +7,7 @@ import * as ModalDialogStories from "./modal/ModalDialog.stories.tsx";
 
 `useModalDialog` is a hook that provides modal functionality.
 
-It uses the `<dialog>` element in the browser, with built-in modal API.
+The default behaviour is to use the `<dialog>` element in the browser, with built-in modal API.
 
 The only visuals that this includes is the overlay above the page,
 a shadow and default white background.
@@ -66,6 +66,22 @@ The use-case is smaller modal, like alerts and notifications.
 A drawer modal. It expands from the side, instead of being centered.
 The use-case is filters, menus that are shown temporarily on the side.
 If you need the drawer to stay open, you should use `Drawer` component instead.
+
+## dialog element compatibility
+
+`<dialog>` is supported by all majors browsers, but there might be reasons not to use it.
+
+The dialog element is placed in the top-layer in the DOM, which means that it overrides stacking contexts.
+This means that you can't render anything in front of the dialog element.
+It also means that some tracking libraries, like Mouseflow, cannot track user interactions.
+
+If you want to use `useModalDialog`'s promise-based API, but not use the top-layer, you can
+pass the `divInsteadOfDialog` option to `useModalDialog` (and the other dialog hooks) to turn off the dialog element.
+
+Under the hood, this will use the ordinary `<Modal>` component, but wrapped with the same promise-based API as usual.
+
+The only caveats are that you will lose the animations that are applied to the dialog elements,
+and you might have to deal with stacking contexts (z-index) manually, depending on your application.
 
 ## Usage
 

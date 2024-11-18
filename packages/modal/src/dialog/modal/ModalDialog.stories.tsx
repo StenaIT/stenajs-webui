@@ -9,10 +9,13 @@ import { useModalDialog } from "./UseModalDialog";
 import { cssColor } from "@stenajs-webui/theme";
 import { useAlertDialog } from "../alert/UseAlertDialog";
 import { ModalBody } from "../../building-blocks/ModalBody";
+import ReactModal from "react-modal";
 
 export default {
   title: "modal/Dialog/ModalDialog",
 };
+
+ReactModal.setAppElement("#storybook-root");
 
 const ModalContent: React.FC = () => {
   const { resolve } = useDialogPromise();
@@ -49,6 +52,32 @@ export const Mobile: StoryFn = () => {
   );
 };
 
+export const DivInsteadOfDialog: StoryFn = () => {
+  const [element, { show }] = useModalDialog(ModalContent, {
+    divInsteadOfDialog: true,
+  });
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open modal"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
+export const DivInsteadOfDialogMobile: StoryFn = () => {
+  const [element, { show }] = useModalDialog(ModalContent, {
+    divInsteadOfDialog: true,
+  });
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open modal"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
 Mobile.parameters = {
   viewport: {
     defaultViewport: "mobile1",
@@ -57,7 +86,7 @@ Mobile.parameters = {
 
 export const MobileWithBackground: StoryFn = () => {
   const [element, { show }] = useModalDialog(ModalContent, {
-    dialogStyle: { background: cssColor("--himmel") },
+    background: cssColor("--himmel"),
   });
 
   return (
@@ -69,6 +98,26 @@ export const MobileWithBackground: StoryFn = () => {
 };
 
 MobileWithBackground.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
+};
+
+export const MobileWithBackgroundWithDiv: StoryFn = () => {
+  const [element, { show }] = useModalDialog(ModalContent, {
+    divInsteadOfDialog: true,
+    background: cssColor("--himmel"),
+  });
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open modal"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
+};
+
+MobileWithBackgroundWithDiv.parameters = {
   viewport: {
     defaultViewport: "mobile1",
   },

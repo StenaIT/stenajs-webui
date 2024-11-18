@@ -5,11 +5,15 @@ import { PrimaryButton, stenaBell } from "@stenajs-webui/elements";
 import { Modal } from "./Modal";
 import { ModalBody } from "../../building-blocks/ModalBody";
 import { InfoAlert } from "../../ready-made-modals/InfoAlert";
+import ReactModal from "react-modal";
+import { cssColor } from "@stenajs-webui/theme";
 
 export default {
   title: "modal/Declarative modals/Modal",
   component: Modal,
 };
+
+ReactModal.setAppElement("#storybook-root");
 
 const heading = "Session has expired";
 const text =
@@ -22,6 +26,26 @@ export const Standard = () => {
     <div style={{ display: "inline-block" }}>
       <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
       <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
+        <ModalBody>
+          <Text>Some modal stuff</Text>
+          <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+};
+
+export const Background = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
+      <Modal
+        isOpen={open}
+        onRequestClose={() => setOpen(false)}
+        background={cssColor("--himmel")}
+      >
         <ModalBody>
           <Text>Some modal stuff</Text>
           <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
