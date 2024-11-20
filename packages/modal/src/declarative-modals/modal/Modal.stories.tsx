@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Text } from "@stenajs-webui/core";
+import { Heading, Spacing, Text } from "@stenajs-webui/core";
 import { PrimaryButton, stenaBell } from "@stenajs-webui/elements";
 import { Modal } from "./Modal";
 import { ModalBody } from "../../building-blocks/ModalBody";
@@ -75,6 +75,40 @@ export const WithInfoAlert = () => {
             />
           }
         />
+      </Modal>
+    </div>
+  );
+};
+
+export const ScrollableContent = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
+      <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
+        <ModalBody>
+          <Heading>Start of modal</Heading>
+          {Array.from({ length: 20 }, (_, i) => i).map((m) => (
+            <Spacing>
+              <Text>Some random stuff</Text>
+            </Spacing>
+          ))}
+          <InfoAlert
+            minWidth={"384px"}
+            heading={heading}
+            text={text}
+            icon={stenaBell}
+            buttons={
+              <PrimaryButton
+                size={"larger"}
+                label={"Close"}
+                onClick={() => setOpen(false)}
+              />
+            }
+          />
+          <Heading>End of modal</Heading>
+        </ModalBody>
       </Modal>
     </div>
   );
