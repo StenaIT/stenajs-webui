@@ -130,6 +130,19 @@ export const stenaBookmark: MediumIcon = {
   size: "medium",
 };
 
+export const stenaBookmarkFilled: MediumIcon = {
+  icon: [
+    24,
+    24,
+    [],
+    "",
+    "M18 1a3 3 0 0 1 3 3v16.91a2.5 2.5 0 0 1-4.13 1.9L12 18.63l-4.87 4.18a2.5 2.5 0 0 1-3.41-0.14l-0.12-0.13A2.5 2.5 0 0 1 3 20.91V4a3 3 0 0 1 3-3h12Z",
+  ],
+  iconName: "random",
+  prefix: "fal",
+  size: "medium",
+};
+
 export const stenaBunkBed: MediumIcon = {
   icon: [
     24,
