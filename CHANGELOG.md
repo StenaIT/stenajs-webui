@@ -1,3 +1,29 @@
+# v21.19.0 (Wed Nov 20 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Add some icons for cabin amenities. [#910](https://github.com/StenaIT/stenajs-webui/pull/910) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
+# v21.18.1 (Wed Nov 20 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Add icons for cabin windows and moon [#900](https://github.com/StenaIT/stenajs-webui/pull/900) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.18.0 (Mon Nov 18 2024)
 
 #### 🚀 Enhancement
