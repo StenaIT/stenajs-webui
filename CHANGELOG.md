@@ -1,3 +1,16 @@
+# v21.20.0 (Wed Nov 20 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`
+  - Update Modal to look and feel like ModalDialog [#911](https://github.com/StenaIT/stenajs-webui/pull/911) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.19.0 (Wed Nov 20 2024)
 
 #### 🚀 Enhancement
