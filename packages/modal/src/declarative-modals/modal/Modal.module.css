@@ -32,11 +32,12 @@
     max-width: 100%;
     outline: none;
     pointer-events: none;
-    padding: 16px;
+    padding: calc(var(--swui-metrics-space) * 2);
     box-sizing: border-box;
     height: 100%;
 
     @media (max-width: 768px) {
+      padding: 0;
       width: 100%;
     }
   }
@@ -61,6 +62,22 @@
       width: 100%;
       max-width: 100%;
       min-height: 100vh;
+    }
+
+    @media (min-width: 769px) {
+      /* This styling ensures border radius even with scroll bars. */
+      border-radius: var(--swui-border-radius-large);
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--lhds-color-ui-400);
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+      }
+
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
     }
 
     animation: appear var(--swui-animation-time-medium)
