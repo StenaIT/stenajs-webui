@@ -15,7 +15,7 @@
   right: 0;
   bottom: 0;
   background-color: var(--swui-modal-overlay-bg-color);
-  overflow: auto;
+  /* overflow: auto; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,11 +32,9 @@
     max-width: 100%;
     outline: none;
     pointer-events: none;
-    max-height: 100vh;
     padding: 16px;
     box-sizing: border-box;
-    overflow: hidden;
-    overflow-y: auto;
+    height: 100%;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -53,6 +51,10 @@
 
     width: var(--swui-modal-width);
     max-width: var(--swui-modal-max-width);
+
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
 
     @media (max-width: 768px) {
       border-radius: 0;
@@ -81,7 +83,6 @@
   }
   100% {
     background-color: var(--swui-modal-overlay-bg-color);
-
   }
 }
 

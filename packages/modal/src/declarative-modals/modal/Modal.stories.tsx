@@ -89,7 +89,7 @@ export const ScrollableContent = () => {
       <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
         <ModalBody>
           <Heading>Start of modal</Heading>
-          {Array.from({ length: 20 }, (_, i) => i).map((m) => (
+          {Array.from({ length: 20 }, (_, i) => i).map(() => (
             <Spacing>
               <Text>Some random stuff</Text>
             </Spacing>
