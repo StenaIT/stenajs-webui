@@ -1,5 +1,5 @@
 .overlay {
-  --swui-modal-animation-time: var(--swui-animation-time-fast);
+  --swui-modal-animation-time: var(--swui-animation-time-medium);
   --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
   --swui-modal-content-bg-color: var(--swui-white);
   --swui-modal-width: 960px;
@@ -15,14 +15,19 @@
   right: 0;
   bottom: 0;
   background-color: var(--swui-modal-overlay-bg-color);
-  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  opacity: 0;
 
-  animation: fadeIn var(--swui-modal-animation-time)
-    cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  &.afterOpen:not(.beforeClose) {
+    animation: fadeIn var(--swui-modal-animation-time) forwards;
+  }
+
+  &.beforeClose {
+    animation: fadeOut var(--swui-modal-animation-time) forwards;
+  }
 
   @media print {
     background-color: rgba(255, 255, 255, 1);
@@ -32,9 +37,22 @@
     max-width: 100%;
     outline: none;
     pointer-events: none;
+    padding: calc(var(--swui-metrics-space) * 2);
+    box-sizing: border-box;
+    max-height: 100%;
+    transform: translateY(-100%);
 
     @media (max-width: 768px) {
+      padding: 0;
       width: 100%;
+    }
+
+    &.afterOpen:not(.beforeClose) {
+      animation: slideIn var(--swui-modal-animation-time) forwards;
+    }
+
+    &.beforeClose {
+      animation: slideOut var(--swui-modal-animation-time) forwards;
     }
   }
 
@@ -49,15 +67,32 @@
     width: var(--swui-modal-width);
     max-width: var(--swui-modal-max-width);
 
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+
     @media (max-width: 768px) {
       border-radius: 0;
       width: 100%;
       max-width: 100%;
-      height: 100vh;
+      min-height: 100vh;
     }
 
-    animation: appear var(--swui-animation-time-fast)
-      cubic-bezier(0.645, 0.045, 0.355, 1) both;
+    @media (min-width: 769px) {
+      /* This styling ensures border radius even with scroll bars. */
+      border-radius: var(--swui-border-radius-large);
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--lhds-color-ui-400);
+        border: 4px solid transparent;
+        border-radius: 8px;
+        background-clip: padding-box;
+      }
+
+      &::-webkit-scrollbar {
+        width: 16px;
+      }
+    }
 
     @media print {
       box-shadow: none;
@@ -67,35 +102,46 @@
     :focus {
       outline: 0;
     }
-
-    &.isDraggable {
-      :global(.draggable-modal-handle) {
-        cursor: move;
-
-        :global(.draggable-modal-cancel),
-        [role="tooltip"] {
-          cursor: initial;
-        }
-      }
-    }
   }
 }
 
 @keyframes fadeIn {
-  0% {
-    background-color: var(--swui-hidden);
+  from {
+    opacity: 0;
   }
-  100% {
-    background-color: var(--swui-modal-overlay-bg-color);
+  to {
+    opacity: 1;
   }
 }
 
-@keyframes appear {
-  0% {
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
     opacity: 0;
   }
-  100% {
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
 
