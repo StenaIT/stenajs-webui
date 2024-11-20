@@ -30,7 +30,7 @@
   }
 
   &.small {
-    min-height: 16px;
+    min-height: 22px;
     padding: 0 var(--swui-metrics-indent);
 
     .icon {
