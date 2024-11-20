@@ -1,5 +1,5 @@
 .overlay {
-  --swui-modal-animation-time: var(--swui-animation-time-fast);
+  --swui-modal-animation-time: var(--swui-animation-time-medium);
   --swui-modal-overlay-bg-color: var(--swui-overlay-bg-color);
   --swui-modal-content-bg-color: var(--swui-white);
   --swui-modal-width: 960px;
@@ -19,9 +19,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  opacity: 0;
 
-  animation: fadeIn var(--swui-modal-animation-time)
-    cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  &.afterOpen:not(.beforeClose) {
+    animation: fadeIn var(--swui-modal-animation-time) forwards;
+  }
+
+  &.beforeClose {
+    animation: fadeOut var(--swui-modal-animation-time) forwards;
+  }
 
   @media print {
     background-color: rgba(255, 255, 255, 1);
@@ -33,11 +39,20 @@
     pointer-events: none;
     padding: calc(var(--swui-metrics-space) * 2);
     box-sizing: border-box;
-    height: 100%;
+    max-height: 100%;
+    transform: translateY(-100%);
 
     @media (max-width: 768px) {
       padding: 0;
       width: 100%;
+    }
+
+    &.afterOpen:not(.beforeClose) {
+      animation: slideIn var(--swui-modal-animation-time) forwards;
+    }
+
+    &.beforeClose {
+      animation: slideOut var(--swui-modal-animation-time) forwards;
     }
   }
 
@@ -79,9 +94,6 @@
       }
     }
 
-    animation: appear var(--swui-animation-time-medium)
-      cubic-bezier(0.645, 0.045, 0.355, 1) both;
-
     @media print {
       box-shadow: none;
       top: 0;
@@ -94,22 +106,42 @@
 }
 
 @keyframes fadeIn {
-  0% {
-    background-color: var(--swui-hidden);
+  from {
+    opacity: 0;
   }
-  100% {
-    background-color: var(--swui-modal-overlay-bg-color);
+  to {
+    opacity: 1;
   }
 }
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  100% {
+@keyframes fadeOut {
+  from {
     opacity: 1;
-    transform: translateY(0%);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
 

@@ -21,9 +21,18 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <ReactModal
-      overlayClassName={styles.overlay}
-      className={styles.modal}
+      overlayClassName={{
+        base: styles.overlay,
+        beforeClose: styles.beforeClose,
+        afterOpen: styles.afterOpen,
+      }}
+      className={{
+        base: styles.modal,
+        beforeClose: styles.beforeClose,
+        afterOpen: styles.afterOpen,
+      }}
       style={style}
+      closeTimeoutMS={250}
       {...reactModalProps}
     >
       <div
