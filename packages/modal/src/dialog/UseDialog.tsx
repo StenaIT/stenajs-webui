@@ -190,14 +190,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           background={background}
         >
           <DialogContext.Provider value={contextValue}>
-            <div
-              style={contentWrapperStyle}
-              className={contentWrapperClassName}
-            >
-              {contentVisible && (
-                <Comp {...(modalComponentProps.current as TProps)} key={key} />
-              )}
-            </div>
+            <Comp {...(modalComponentProps.current as TProps)} key={key} />
           </DialogContext.Provider>
         </Modal>
       ) : (
