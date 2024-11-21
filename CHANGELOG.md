@@ -1,3 +1,17 @@
+# v21.21.0 (Thu Nov 21 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/elements`
+  - Added filled icon versions [#923](https://github.com/StenaIT/stenajs-webui/pull/923) ([@MadeleineLexen](https://github.com/MadeleineLexen) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- [@MadeleineLexen](https://github.com/MadeleineLexen)
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.20.1 (Thu Nov 21 2024)
 
 #### 🐛 Bug Fix
