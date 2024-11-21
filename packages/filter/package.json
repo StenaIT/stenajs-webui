@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/filter",
-  "version": "21.21.1",
+  "version": "21.21.2",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,15 +33,15 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/calendar": "21.21.1",
-    "@stenajs-webui/core": "21.21.1",
-    "@stenajs-webui/elements": "21.21.1",
-    "@stenajs-webui/forms": "21.21.1",
-    "@stenajs-webui/modal": "21.21.1",
-    "@stenajs-webui/panels": "21.21.1",
-    "@stenajs-webui/redux": "21.21.1",
-    "@stenajs-webui/select": "21.21.1",
-    "@stenajs-webui/theme": "21.21.1",
+    "@stenajs-webui/calendar": "21.21.2",
+    "@stenajs-webui/core": "21.21.2",
+    "@stenajs-webui/elements": "21.21.2",
+    "@stenajs-webui/forms": "21.21.2",
+    "@stenajs-webui/modal": "21.21.2",
+    "@stenajs-webui/panels": "21.21.2",
+    "@stenajs-webui/redux": "21.21.2",
+    "@stenajs-webui/select": "21.21.2",
+    "@stenajs-webui/theme": "21.21.2",
     "date-fns": "4.1.0",
     "lodash-es": "^4.17.21"
   },
