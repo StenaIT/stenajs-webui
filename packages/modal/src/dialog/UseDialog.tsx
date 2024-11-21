@@ -63,7 +63,17 @@ export function useDialog<TProps, TPromiseResolve = void>(
   const resolveRef = useRef<ResolveCommand<TPromiseResolve> | undefined>();
   const modalComponentProps = useRef<TProps>();
   const rejectRef = useRef<RejectCommand | undefined>();
+  /**
+   * Used by Modal to control open/close with animation.
+   */
+  const [isOpen, setIsOpen] = useState(false);
+  /**
+   * Used by both Modal and dialog to decide if content is visible. When props is cleared, we can not render content that requires props.
+   */
   const [contentVisible, setContentVisible] = useState(false);
+  /**
+   * Used by dialog to know if it is currently animating to closed state.
+   */
   const [closing, setClosing] = useState(false);
 
   const Comp = component;
@@ -77,6 +87,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
         },
       );
       setClosing(false);
+      setIsOpen(true);
       setContentVisible(true);
       forceRerender();
       modalComponentProps.current = props;
@@ -94,6 +105,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
     (value) => {
       // Trigger closing animation.
       setClosing(true);
+      setIsOpen(false);
       if (!divInsteadOfDialog) {
         currentRef.current?.addEventListener(
           "animationend",
@@ -108,11 +120,13 @@ export function useDialog<TProps, TPromiseResolve = void>(
           { once: true },
         );
       } else {
-        setClosing(false);
-        setContentVisible(false);
-        resolveRef.current?.(value);
-        modalComponentProps.current = undefined;
-        onResolve?.();
+        setTimeout(() => {
+          setClosing(false);
+          setContentVisible(false);
+          resolveRef.current?.(value);
+          modalComponentProps.current = undefined;
+          onResolve?.();
+        }, 300);
       }
     },
     [currentRef, onResolve, divInsteadOfDialog],
@@ -121,6 +135,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
   const onClose = useCallback(() => {
     // Remove content immediately, since it cannot be animated when closed by browser.
     setClosing(false);
+    setIsOpen(false);
     setContentVisible(false);
     rejectRef.current?.();
     onReject?.();
@@ -131,6 +146,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
     (error) => {
       // Trigger closing animation.
       setClosing(true);
+      setIsOpen(false);
       if (!divInsteadOfDialog) {
         currentRef.current?.addEventListener(
           "animationend",
@@ -145,11 +161,13 @@ export function useDialog<TProps, TPromiseResolve = void>(
           { once: true },
         );
       } else {
-        setClosing(false);
-        setContentVisible(false);
-        rejectRef.current?.(error);
-        onReject?.();
-        modalComponentProps.current = undefined;
+        setTimeout(() => {
+          setClosing(false);
+          setContentVisible(false);
+          rejectRef.current?.(error);
+          onReject?.();
+          modalComponentProps.current = undefined;
+        }, 300);
       }
     },
     [currentRef, divInsteadOfDialog, onReject],
@@ -184,13 +202,11 @@ export function useDialog<TProps, TPromiseResolve = void>(
   const element = useMemo<ReactNode>(
     () =>
       divInsteadOfDialog ? (
-        <Modal
-          isOpen={contentVisible}
-          onRequestClose={reject}
-          background={background}
-        >
+        <Modal isOpen={isOpen} onRequestClose={reject} background={background}>
           <DialogContext.Provider value={contextValue}>
-            <Comp {...(modalComponentProps.current as TProps)} key={key} />
+            {contentVisible && (
+              <Comp {...(modalComponentProps.current as TProps)} key={key} />
+            )}
           </DialogContext.Provider>
         </Modal>
       ) : (
