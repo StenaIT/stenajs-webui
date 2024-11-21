@@ -1,3 +1,16 @@
+# v21.21.2 (Thu Nov 21 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Fix bug where modal content was rerendered without props [#925](https://github.com/StenaIT/stenajs-webui/pull/925) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.21.1 (Thu Nov 21 2024)
 
 #### 🐛 Bug Fix
