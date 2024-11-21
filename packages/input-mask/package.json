@@ -1,6 +1,6 @@
 {
   "name": "@stenajs-webui/input-mask",
-  "version": "21.20.0",
+  "version": "21.20.1",
   "type": "module",
   "description": "",
   "author": "mattias800",
@@ -33,7 +33,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/forms": "21.20.0",
+    "@stenajs-webui/forms": "21.20.1",
     "text-mask-core": "^5.1.2"
   },
   "peerDependencies": {
