@@ -1,4 +1,4 @@
-import { Column, Row, Text } from "@stenajs-webui/core";
+import { Column, Heading, Row, Spacing, Text } from "@stenajs-webui/core";
 import { TextInput } from "@stenajs-webui/forms";
 import { StoryFn } from "@storybook/react";
 import * as React from "react";
@@ -23,6 +23,24 @@ const ModalContent: React.FC = () => {
   return (
     <ModalBody>
       <Text>Some modal content</Text>
+      <Row gap={2}>
+        <PrimaryButton label={"Close"} onClick={() => resolve()} />
+      </Row>
+    </ModalBody>
+  );
+};
+
+const ScrollableContent: React.FC = () => {
+  const { resolve } = useDialogPromise();
+
+  return (
+    <ModalBody>
+      <Heading>Start of modal</Heading>
+      {Array.from({ length: 20 }, (_, i) => i).map(() => (
+        <Spacing>
+          <Text>Some random stuff</Text>
+        </Spacing>
+      ))}
       <Row gap={2}>
         <PrimaryButton label={"Close"} onClick={() => resolve()} />
       </Row>
@@ -82,6 +100,17 @@ Mobile.parameters = {
   viewport: {
     defaultViewport: "mobile1",
   },
+};
+
+export const Scrollable: StoryFn = () => {
+  const [element, { show }] = useModalDialog(ScrollableContent);
+
+  return (
+    <Row>
+      <PrimaryButton label={"Open scrollable modal"} onClick={() => show()} />
+      {element}
+    </Row>
+  );
 };
 
 export const MobileWithBackground: StoryFn = () => {
