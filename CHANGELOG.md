@@ -1,3 +1,16 @@
+# v21.20.1 (Thu Nov 21 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/elements`
+  - Increase min-height since label increases size of tag [#912](https://github.com/StenaIT/stenajs-webui/pull/912) ([@Yoorkevich](https://github.com/Yoorkevich))
+
+#### Authors: 1
+
+- [@Yoorkevich](https://github.com/Yoorkevich)
+
+---
+
 # v21.20.0 (Wed Nov 20 2024)
 
 #### 🚀 Enhancement
