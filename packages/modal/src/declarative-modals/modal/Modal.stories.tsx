@@ -1,12 +1,18 @@
 import * as React from "react";
 import { useState } from "react";
-import { Heading, Spacing, Text } from "@stenajs-webui/core";
-import { PrimaryButton, stenaBell } from "@stenajs-webui/elements";
+import { Heading, Row, Spacing, Text } from "@stenajs-webui/core";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  stenaBell,
+} from "@stenajs-webui/elements";
 import { Modal } from "./Modal";
 import { ModalBody } from "../../building-blocks/ModalBody";
 import { InfoAlert } from "../../ready-made-modals/InfoAlert";
 import ReactModal from "react-modal";
 import { cssColor } from "@stenajs-webui/theme";
+import { ModalFooter } from "../../building-blocks/ModalFooter";
+import { ModalContainer } from "../../building-blocks/ModalContainer";
 
 export default {
   title: "modal/Declarative modals/Modal",
@@ -75,6 +81,32 @@ export const WithInfoAlert = () => {
             />
           }
         />
+      </Modal>
+    </div>
+  );
+};
+
+export const WithStickyModalFooter = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ display: "inline-block" }}>
+      <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
+      <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
+        <ModalContainer>
+          <ModalBody>
+            <Text>Some modal stuff</Text>
+          </ModalBody>
+          <ModalFooter sticky>
+            <Row gap={2} spacing={2}>
+              <SecondaryButton
+                label={"Cancel"}
+                onClick={() => setOpen(false)}
+              />
+              <PrimaryButton label={"Save"} onClick={() => setOpen(false)} />
+            </Row>
+          </ModalFooter>
+        </ModalContainer>
       </Modal>
     </div>
   );
