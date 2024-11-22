@@ -9,42 +9,24 @@ import {
   Text,
   Txt,
 } from "@stenajs-webui/core";
-import {FlatButton, Icon, stenaTrash} from "@stenajs-webui/elements";
+import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
-import {ActionPrompt} from "./ActionPrompt";
-import {Popover} from "./Popover";
-import {useState} from "react";
+import { ActionPrompt } from "./ActionPrompt";
+import { Popover } from "./Popover";
+import { useState } from "react";
 
 export default {
   title: "tooltip/Popover",
   component: Popover,
-  subcomponents: {ActionPrompt},
+  subcomponents: { ActionPrompt },
 };
-
-export const PopoverInPopover = () => (
-  <Box display={"inline-block"}>
-    <Popover renderTrigger={(props) => <FlatButton label={"Open"} {...props} />} trigger={"hover"}>
-      <Column>
-        <Popover
-          renderTrigger={(props) => (
-            <FlatButton label={"Open inner"} {...props} />
-          )}
-          trigger={"hover"}
-          placement={"right"}
-        >
-          <FlatButton label={"I can be clicked"}/>
-        </Popover>
-      </Column>
-    </Popover>
-  </Box>
-)
 
 export const Standard = () => (
   <Box indent={10} spacing={10} display={"inline-block"}>
     <Popover
       renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
     >
-      <ActionPrompt/>
+      <ActionPrompt />
     </Popover>
   </Box>
 );
@@ -54,8 +36,8 @@ export const CloseAfterEvent = () => (
     <Popover
       renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
     >
-      {({onRequestClose}) => (
-        <ActionPrompt onNo={onRequestClose} onYes={onRequestClose}/>
+      {({ onRequestClose }) => (
+        <ActionPrompt onNo={onRequestClose} onYes={onRequestClose} />
       )}
     </Popover>
   </Box>
@@ -67,7 +49,7 @@ export const OnClick = () => (
       trigger={"click"}
       renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
     >
-      <ActionPrompt/>
+      <ActionPrompt />
     </Popover>
   </Box>
 );
@@ -78,7 +60,7 @@ export const OnPopoverStatus = () => {
   return (
     <Box indent={10} spacing={10} display={"inline-block"}>
       <Txt variant={"bold"}>Popover status: {value}</Txt>
-      <Space num={3}/>
+      <Space num={3} />
       <Popover
         trigger={"click"}
         renderTrigger={(props) => (
@@ -87,7 +69,7 @@ export const OnPopoverStatus = () => {
         onOpened={() => setValue("Opened")}
         onClosed={() => setValue("Closed")}
       >
-        <ActionPrompt/>
+        <ActionPrompt />
       </Popover>
     </Box>
   );
@@ -100,7 +82,7 @@ export const NoArrow = () => (
       renderTrigger={(props) => <FlatButton leftIcon={stenaTrash} {...props} />}
       hideArrow
     >
-      <ActionPrompt/>
+      <ActionPrompt />
     </Popover>
   </Box>
 );
@@ -116,7 +98,7 @@ export const NoPadding = () => (
         <Indent spacing>
           <Text>The line has</Text>
         </Indent>
-        <SeparatorLine/>
+        <SeparatorLine />
         <Indent spacing>
           <Text>no padding</Text>
         </Indent>
@@ -130,19 +112,19 @@ export const Variants = () => (
     <Popover
       renderTrigger={(props) => <FlatButton label={"standard"} {...props} />}
     >
-      <ActionPrompt/>
+      <ActionPrompt />
     </Popover>
 
-    <Spacing/>
+    <Spacing />
 
     <Popover
       renderTrigger={(props) => <FlatButton label={"info"} {...props} />}
       variant={"info"}
     >
-      <ActionPrompt/>
+      <ActionPrompt />
     </Popover>
 
-    <Spacing/>
+    <Spacing />
 
     <Popover
       variant={"warning"}
@@ -151,17 +133,40 @@ export const Variants = () => (
       <Text>Some warning.</Text>
     </Popover>
 
-    <Spacing/>
+    <Spacing />
 
     <Popover
       variant={"error"}
       renderTrigger={(props) => <FlatButton label={"error"} {...props} />}
     >
       <Row>
-        <Icon icon={stenaTrash}/>
-        <Indent/>
+        <Icon icon={stenaTrash} />
+        <Indent />
         <Text>Something went wrong.</Text>
       </Row>
+    </Popover>
+  </Box>
+);
+
+export const PopoverInPopover = () => (
+  <Box display={"inline-block"}>
+    <Popover
+      renderTrigger={(props) => (
+        <FlatButton label={"Open on hover"} {...props} />
+      )}
+      placement={"right"}
+    >
+      <Column>
+        <Popover
+          renderTrigger={(props) => (
+            <FlatButton label={"Open on click"} {...props} />
+          )}
+          trigger={"click"}
+          placement={"right"}
+        >
+          <FlatButton label={"I can be clicked"} />
+        </Popover>
+      </Column>
     </Popover>
   </Box>
 );
