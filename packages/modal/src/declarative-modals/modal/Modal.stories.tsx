@@ -32,10 +32,12 @@ export const Standard = () => {
     <div style={{ display: "inline-block" }}>
       <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
       <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
-        <ModalBody>
-          <Text>Some modal stuff</Text>
-          <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
-        </ModalBody>
+        <ModalContainer>
+          <ModalBody>
+            <Text>Some modal stuff</Text>
+            <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
+          </ModalBody>
+        </ModalContainer>
       </Modal>
     </div>
   );
@@ -52,10 +54,12 @@ export const Background = () => {
         onRequestClose={() => setOpen(false)}
         background={cssColor("--himmel")}
       >
-        <ModalBody>
-          <Text>Some modal stuff</Text>
-          <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
-        </ModalBody>
+        <ModalContainer>
+          <ModalBody>
+            <Text>Some modal stuff</Text>
+            <PrimaryButton label={"Close"} onClick={() => setOpen(false)} />
+          </ModalBody>
+        </ModalContainer>
       </Modal>
     </div>
   );
@@ -119,28 +123,30 @@ export const ScrollableContent = () => {
     <div style={{ display: "inline-block" }}>
       <PrimaryButton label={"Open modal"} onClick={() => setOpen(true)} />
       <Modal isOpen={open} onRequestClose={() => setOpen(false)}>
-        <ModalBody>
-          <Heading>Start of modal</Heading>
-          {Array.from({ length: 20 }, (_, i) => i).map(() => (
-            <Spacing>
-              <Text>Some random stuff</Text>
-            </Spacing>
-          ))}
-          <InfoAlert
-            minWidth={"384px"}
-            heading={heading}
-            text={text}
-            icon={stenaBell}
-            buttons={
-              <PrimaryButton
-                size={"larger"}
-                label={"Close"}
-                onClick={() => setOpen(false)}
-              />
-            }
-          />
-          <Heading>End of modal</Heading>
-        </ModalBody>
+        <ModalContainer>
+          <ModalBody>
+            <Heading>Start of modal</Heading>
+            {Array.from({ length: 20 }, (_, i) => i).map(() => (
+              <Spacing>
+                <Text>Some random stuff</Text>
+              </Spacing>
+            ))}
+            <InfoAlert
+              minWidth={"384px"}
+              heading={heading}
+              text={text}
+              icon={stenaBell}
+              buttons={
+                <PrimaryButton
+                  size={"larger"}
+                  label={"Close"}
+                  onClick={() => setOpen(false)}
+                />
+              }
+            />
+            <Heading>End of modal</Heading>
+          </ModalBody>
+        </ModalContainer>
       </Modal>
     </div>
   );

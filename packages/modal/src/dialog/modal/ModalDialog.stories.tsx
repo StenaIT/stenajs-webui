@@ -10,6 +10,7 @@ import { cssColor } from "@stenajs-webui/theme";
 import { useAlertDialog } from "../alert/UseAlertDialog";
 import { ModalBody } from "../../building-blocks/ModalBody";
 import ReactModal from "react-modal";
+import { ModalContainer } from "../../building-blocks/ModalContainer";
 
 export default {
   title: "modal/Dialog/ModalDialog",
@@ -21,12 +22,14 @@ const ModalContent: React.FC = () => {
   const { resolve } = useDialogPromise();
 
   return (
-    <ModalBody>
-      <Text>Some modal content</Text>
-      <Row gap={2}>
-        <PrimaryButton label={"Close"} onClick={() => resolve()} />
-      </Row>
-    </ModalBody>
+    <ModalContainer>
+      <ModalBody>
+        <Text>Some modal content</Text>
+        <Row gap={2}>
+          <PrimaryButton label={"Close"} onClick={() => resolve()} />
+        </Row>
+      </ModalBody>
+    </ModalContainer>
   );
 };
 
@@ -34,17 +37,19 @@ const ScrollableContent: React.FC = () => {
   const { resolve } = useDialogPromise();
 
   return (
-    <ModalBody>
-      <Heading>Start of modal</Heading>
-      {Array.from({ length: 20 }, (_, i) => i).map(() => (
-        <Spacing>
-          <Text>Some random stuff</Text>
-        </Spacing>
-      ))}
-      <Row gap={2}>
-        <PrimaryButton label={"Close"} onClick={() => resolve()} />
-      </Row>
-    </ModalBody>
+    <ModalContainer>
+      <ModalBody>
+        <Heading>Start of modal</Heading>
+        {Array.from({ length: 20 }, (_, i) => i).map(() => (
+          <Spacing>
+            <Text>Some random stuff</Text>
+          </Spacing>
+        ))}
+        <Row gap={2}>
+          <PrimaryButton label={"Close"} onClick={() => resolve()} />
+        </Row>
+      </ModalBody>
+    </ModalContainer>
   );
 };
 
