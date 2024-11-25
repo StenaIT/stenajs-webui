@@ -136,7 +136,7 @@ const ControlledPopoverComponent: React.FC<ControlledPopoverProps> = ({
               <div
                 ref={refs.setFloating}
                 style={{ zIndex, ...floatingStyles }}
-                {...getFloatingProps}
+                {...getFloatingProps()}
               >
                 <div
                   style={transitionStyles}
