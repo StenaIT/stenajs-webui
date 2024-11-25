@@ -215,6 +215,11 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
   zIndex?: number;
 
   /**
+   * Set a custom z index for the header tooltips
+   */
+  infoIconTooltipZIndex?: number;
+
+  /**
    * Offset header row from top (top css property)
    */
   headerRowOffsetTop?: string;

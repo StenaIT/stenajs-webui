@@ -33,6 +33,7 @@ export const StandardTableHeadItem = React.memo(
     } = useColumnConfigById(columnId);
     const {
       disableSorting,
+      infoIconTooltipZIndex,
       sortOrderIconVariant: defaultSortOrderIconVariant,
     } = useStandardTableConfig();
     const stickyPropsPerColumnContext = useStickyPropsPerColumnContext();
@@ -84,6 +85,7 @@ export const StandardTableHeadItem = React.memo(
           onClick={!disableSorting ? onClickColumnHead : undefined}
           label={label}
           infoIconTooltipText={infoIconTooltipText}
+          infoIconTooltipZIndex={infoIconTooltipZIndex}
           alignRight={justifyContentHeader === "flex-end"}
           sortOrderIconVariant={
             sortOrderIconVariant ?? defaultSortOrderIconVariant

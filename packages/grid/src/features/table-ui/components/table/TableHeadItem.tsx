@@ -19,6 +19,7 @@ import {
 export interface TableHeadProps extends BoxProps {
   label?: string;
   infoIconTooltipText?: string;
+  infoIconTooltipZIndex?: number;
   popoverContent?: ReactNode;
   loading?: boolean;
   arrow?: SortOrderDirection;
@@ -38,6 +39,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     popoverContent,
     loading,
     infoIconTooltipText,
+    infoIconTooltipZIndex,
     overflow = "hidden",
     alignRight,
     sortOrderIconVariant,
@@ -113,7 +115,10 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             <>
               <Space />
               <Row onClick={(ev) => ev.stopPropagation()}>
-                <Tooltip label={infoIconTooltipText}>
+                <Tooltip
+                  label={infoIconTooltipText}
+                  zIndex={infoIconTooltipZIndex}
+                >
                   <Icon
                     icon={stenaInfoCircle}
                     size={14}
