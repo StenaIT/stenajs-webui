@@ -7,12 +7,17 @@ import {
   enIE,
   enUS,
   es,
+  cs,
+  it,
+  fi,
   fr,
   lv,
   nb,
   nl,
+  et,
   nlBE,
   pl,
+  lt,
   sv,
 } from "date-fns/locale";
 
@@ -21,44 +26,76 @@ type LocalesMap = {
 };
 
 export type SupportedLocaleCode =
+  | "en"
   | "en-US"
-  | "en-IE"
   | "en-GB"
+  | "en-IE"
   | "de-AT"
+  | "nl-BE"
+  | "nl-NL"
   | "de-DE"
+  | "nb-NO"
   | "sv-SE"
   | "da-DK"
-  | "nl-BE"
   | "lv-LV"
-  | "fr"
-  | "de"
-  | "es"
-  | "sv"
-  | "pl"
-  | "lv"
-  | "da"
+  | "lt-LT"
+  | "it-IT"
+  | "et-EE"
+  | "fi-FI"
+  | "cs-CZ"
+  | "es-ES"
+  | "fr-FR"
+  | "pl-PL"
   | "nl"
-  | "nb";
+  | "de"
+  | "nb"
+  | "sv"
+  | "da"
+  | "lv"
+  | "lt"
+  | "it"
+  | "et"
+  | "fi"
+  | "cs"
+  | "es"
+  | "fr"
+  | "pl";
 
 const locales: LocalesMap = {
+  en: enGB,
   "en-US": enUS,
   "en-GB": enGB,
   "en-IE": enIE,
   "de-AT": deAT,
+  "nl-BE": nlBE,
+  "nl-NL": nl,
   "de-DE": de,
+  "nb-NO": nb,
   "sv-SE": sv,
   "da-DK": da,
-  "nl-BE": nlBE,
   "lv-LV": lv,
-  fr,
-  de,
-  es,
-  sv,
-  pl,
-  da,
+  "lt-LT": lt,
+  "it-IT": it,
+  "et-EE": et,
+  "fi-FI": fi,
+  "cs-CZ": cs,
+  "es-ES": es,
+  "fr-FR": fr,
+  "pl-PL": pl,
   nl,
-  lv,
+  de,
   nb,
+  sv,
+  da,
+  lv,
+  lt,
+  it,
+  et,
+  fi,
+  cs,
+  es,
+  fr,
+  pl,
 };
 
 export const fallbackLocaleCode: SupportedLocaleCode = "en-GB";
