@@ -1,3 +1,17 @@
+# v21.23.0 (Tue Nov 26 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/tooltip`
+  - Add support for nested popovers [#928](https://github.com/StenaIT/stenajs-webui/pull/928) ([@Limpaan](https://github.com/Limpaan) [@mattias800](https://github.com/mattias800))
+
+#### Authors: 2
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v21.22.0 (Tue Nov 26 2024)
 
 #### 🚀 Enhancement
