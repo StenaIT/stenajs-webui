@@ -11,9 +11,10 @@ import {
 } from "@stenajs-webui/core";
 import { FlatButton, Icon, stenaTrash } from "@stenajs-webui/elements";
 import * as React from "react";
+import { useState } from "react";
 import { ActionPrompt } from "./ActionPrompt";
 import { Popover } from "./Popover";
-import { useState } from "react";
+import { ControlledPopover } from "./ControlledPopover";
 
 export default {
   title: "tooltip/Popover",
@@ -144,6 +145,53 @@ export const Variants = () => (
         <Indent />
         <Text>Something went wrong.</Text>
       </Row>
+    </Popover>
+  </Box>
+);
+
+export const ControlledPopoverInPopover = () => {
+  const [outerOpen, setOuterOpen] = useState(false);
+  const [innerOpen, setInnerOpen] = useState(false);
+
+  return (
+    <Row alignItems={"center"}>
+      <FlatButton label={"Open outer"} onClick={() => setOuterOpen(true)} />
+      <Space />
+      <ControlledPopover
+        renderTrigger={(props) => <Text {...props}>Outer</Text>}
+        open={outerOpen}
+        onRequestClose={() => setOuterOpen(false)}
+      >
+        <FlatButton label={"Open inner"} onClick={() => setInnerOpen(true)} />
+        <Space />
+        <ControlledPopover
+          renderTrigger={(props) => <Text {...props}>Inner</Text>}
+          open={innerOpen}
+          onRequestClose={() => setInnerOpen(false)}
+        >
+          <FlatButton label={"I can be clicked"} />
+        </ControlledPopover>
+      </ControlledPopover>
+    </Row>
+  );
+};
+
+export const PopoverInPopover = () => (
+  <Box display={"inline-block"}>
+    <Popover
+      renderTrigger={(props) => <FlatButton label={"Open outer"} {...props} />}
+      placement={"right"}
+    >
+      <Column>
+        <Popover
+          renderTrigger={(props) => (
+            <FlatButton label={"Open inner"} {...props} />
+          )}
+          placement={"right"}
+        >
+          <FlatButton label={"I can be clicked"} />
+        </Popover>
+      </Column>
     </Popover>
   </Box>
 );

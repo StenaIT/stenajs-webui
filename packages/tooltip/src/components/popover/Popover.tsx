@@ -1,26 +1,30 @@
-import * as React from "react";
-import { ReactNode, useCallback, useRef, useState } from "react";
 import {
   arrow,
   autoUpdate,
   flip,
   FloatingArrow,
   FloatingFocusManager,
+  FloatingNode,
   FloatingPortal,
+  FloatingTree,
   offset,
   safePolygon,
   shift,
   useClick,
   useDismiss,
   useFloating,
+  useFloatingNodeId,
+  useFloatingParentNodeId,
   useFocus,
   useHover,
   useInteractions,
   useRole,
   useTransitionStyles,
 } from "@floating-ui/react";
+import * as React from "react";
+import { ReactNode, useCallback, useRef, useState } from "react";
 import cx from "classnames";
-import moduleStyles from "./Popover.module.css";
+import moduleStyles from "../popover/Popover.module.css";
 import { Placement } from "../../types/Placement";
 
 export type PopoverVariant =
@@ -65,7 +69,21 @@ const ARROW_WIDTH = 12;
 const ARROW_HEIGHT = 8;
 const GAP = 2;
 
-export const Popover: React.FC<PopoverProps> = ({
+export const Popover: React.FC<PopoverProps> = ({ children, ...props }) => {
+  const parentNodeId = useFloatingParentNodeId();
+
+  if (parentNodeId == null) {
+    return (
+      <FloatingTree>
+        <PopoverComponent {...props}>{children}</PopoverComponent>
+      </FloatingTree>
+    );
+  }
+
+  return <PopoverComponent {...props}>{children}</PopoverComponent>;
+};
+
+const PopoverComponent: React.FC<PopoverProps> = ({
   children,
   variant,
   trigger = "hover",
@@ -83,6 +101,8 @@ export const Popover: React.FC<PopoverProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const nodeId = useFloatingNodeId();
+
   const arrowRef = useRef(null);
 
   const onOpenChange = useCallback(
@@ -99,6 +119,7 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   const { refs, floatingStyles, context } = useFloating({
+    nodeId,
     open: isOpen,
     onOpenChange,
     placement,
@@ -143,45 +164,47 @@ export const Popover: React.FC<PopoverProps> = ({
     <>
       {renderTrigger({ ref: refs.setReference, ...getReferenceProps() })}
 
-      {isMounted && (
-        <FloatingPortal root={appendTo}>
-          <FloatingFocusManager
-            context={context}
-            modal={false}
-            restoreFocus={restoreFocus}
-            returnFocus={returnFocus}
-            initialFocus={initialFocus}
-          >
-            <div
-              ref={refs.setFloating}
-              style={{ zIndex, ...floatingStyles }}
-              {...getFloatingProps}
+      <FloatingNode id={nodeId}>
+        {isMounted && (
+          <FloatingPortal root={appendTo}>
+            <FloatingFocusManager
+              context={context}
+              modal={false}
+              restoreFocus={restoreFocus}
+              returnFocus={returnFocus}
+              initialFocus={initialFocus}
             >
               <div
-                style={transitionStyles}
-                className={cx(
-                  moduleStyles.floating,
-                  disablePadding && moduleStyles.disablePadding,
-                  variant && moduleStyles.withIcon,
-                )}
+                ref={refs.setFloating}
+                style={{ zIndex, ...floatingStyles }}
+                {...getFloatingProps()}
               >
-                {typeof children === "function"
-                  ? children({ onRequestClose })
-                  : children}
-                {!hideArrow && (
-                  <FloatingArrow
-                    ref={arrowRef}
-                    context={context}
-                    width={ARROW_WIDTH}
-                    height={ARROW_HEIGHT}
-                    fill={"white"}
-                  />
-                )}
+                <div
+                  style={transitionStyles}
+                  className={cx(
+                    moduleStyles.floating,
+                    disablePadding && moduleStyles.disablePadding,
+                    variant && moduleStyles.withIcon,
+                  )}
+                >
+                  {typeof children === "function"
+                    ? children({ onRequestClose })
+                    : children}
+                  {!hideArrow && (
+                    <FloatingArrow
+                      ref={arrowRef}
+                      context={context}
+                      width={ARROW_WIDTH}
+                      height={ARROW_HEIGHT}
+                      fill={"white"}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-          </FloatingFocusManager>
-        </FloatingPortal>
-      )}
+            </FloatingFocusManager>
+          </FloatingPortal>
+        )}
+      </FloatingNode>
     </>
   );
 };
