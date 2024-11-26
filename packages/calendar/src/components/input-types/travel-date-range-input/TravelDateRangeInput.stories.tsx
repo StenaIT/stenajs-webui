@@ -13,6 +13,7 @@ import { TravelDateRangeInputValue } from "../../../features/travel-calendar/typ
 import { parseLocalizedDateString } from "../../../features/localize-date-format/LocalizedDateParser";
 import { formatLocalizedDate } from "../../../features/localize-date-format/LocalizedDateFormatter";
 import { addWeeks, isToday } from "date-fns";
+import { SupportedLocaleCode } from "../../../features/localize-date-format/LocaleMapper";
 
 export default {
   title: "calendar/Input/TravelDateRangeInput",
@@ -171,19 +172,26 @@ export const ParseDate = () => {
 };
 
 export const Locales = () => {
-  const locales = [
-    "sv",
-    "da",
-    "en-GB",
-    "pl",
-    "nl",
+  const locales: Array<SupportedLocaleCode> = [
     "en-US",
+    "en-GB",
+    "en-IE",
     "de-AT",
+    "nl-BE",
+    "nl-NL",
     "de-DE",
-    "fr",
-    "de",
-    "es",
-    "nb",
+    "nb-NO",
+    "sv-SE",
+    "da-DK",
+    "lv-LV",
+    "lt-LT",
+    "it-IT",
+    "et-EE",
+    "fi-FI",
+    "cs-CZ",
+    "es-ES",
+    "fr-FR",
+    "pl-PL",
   ];
 
   return (
@@ -195,7 +203,7 @@ export const Locales = () => {
   );
 };
 
-const LocaleDemo = ({ localeCode }: { localeCode: string }) => {
+const LocaleDemo = ({ localeCode }: { localeCode: SupportedLocaleCode }) => {
   const [value, setValue] = useState<TravelDateRangeInputValue | undefined>(
     undefined,
   );

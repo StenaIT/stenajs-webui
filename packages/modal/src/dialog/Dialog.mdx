@@ -83,6 +83,11 @@ Under the hood, this will use the ordinary `<Modal>` component, but wrapped with
 The only caveats are that you will lose the animations that are applied to the dialog elements,
 and you might have to deal with stacking contexts (z-index) manually, depending on your application.
 
+### This is for modal only
+
+Since `divInsteadOfDialog` will use `<Modal>`, it will get the behaviour and design of `<Modal>`.
+If you need for example `<Alert>`, just use `<Alert>`. Do not use `useAlertDialog` with `divInsteadOfDialog` set to true.
+
 ## Usage
 
 ### show()
