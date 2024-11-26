@@ -8,6 +8,7 @@ import {
 } from "./StandardTableColumnConfig";
 import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 import { TextSize } from "@stenajs-webui/core";
+import { TooltipProps } from "@stenajs-webui/tooltip";
 
 export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
@@ -213,6 +214,16 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    * Set a custom z index
    */
   zIndex?: number;
+
+  /**
+   * Sets the target to append to for the header row tooltips
+   */
+  infoIconTooltipAppendTo?: TooltipProps["appendTo"];
+
+  /**
+   * Set a custom z index for the header tooltips
+   */
+  infoIconTooltipZIndex?: number;
 
   /**
    * Offset header row from top (top css property)

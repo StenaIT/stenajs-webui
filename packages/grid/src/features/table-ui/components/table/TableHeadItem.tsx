@@ -7,7 +7,7 @@ import {
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
-import { Popover, Tooltip } from "@stenajs-webui/tooltip";
+import { Popover, Tooltip, TooltipProps } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { CSSProperties, ReactNode, useRef } from "react";
 import {
@@ -18,7 +18,9 @@ import {
 
 export interface TableHeadProps extends BoxProps {
   label?: string;
+  infoIconTooltipAppendTo?: TooltipProps["appendTo"];
   infoIconTooltipText?: string;
+  infoIconTooltipZIndex?: number;
   popoverContent?: ReactNode;
   loading?: boolean;
   arrow?: SortOrderDirection;
@@ -37,7 +39,9 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     selected,
     popoverContent,
     loading,
+    infoIconTooltipAppendTo,
     infoIconTooltipText,
+    infoIconTooltipZIndex,
     overflow = "hidden",
     alignRight,
     sortOrderIconVariant,
@@ -113,7 +117,11 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
             <>
               <Space />
               <Row onClick={(ev) => ev.stopPropagation()}>
-                <Tooltip label={infoIconTooltipText}>
+                <Tooltip
+                  appendTo={infoIconTooltipAppendTo}
+                  label={infoIconTooltipText}
+                  zIndex={infoIconTooltipZIndex}
+                >
                   <Icon
                     icon={stenaInfoCircle}
                     size={14}
