@@ -1,3 +1,16 @@
+# v21.22.0 (Tue Nov 26 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/calendar`, `@stenajs-webui/modal`
+  - Add support for more locales [#930](https://github.com/StenaIT/stenajs-webui/pull/930) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.21.3 (Fri Nov 22 2024)
 
 #### 🐛 Bug Fix
