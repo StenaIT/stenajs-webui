@@ -5,6 +5,7 @@ import { ModalHeading } from "../building-blocks/ModalHeading";
 import { ModalActionButtons } from "../building-blocks/ModalActionButtons";
 import { CircledIcon, MediumIcon } from "@stenajs-webui/elements";
 import { ModalBody } from "../building-blocks/ModalBody";
+import { ModalContainer } from "../building-blocks/ModalContainer";
 
 export interface InfoAlertProps extends PropsWithChildren {
   heading: string;
@@ -26,17 +27,19 @@ export const InfoAlert: React.FC<InfoAlertProps> = ({
   minWidth,
 }) => {
   return (
-    <ModalBody
-      flexDirection={"column"}
-      alignItems={"center"}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
-    >
-      {icon && <CircledIcon icon={icon} size={"large"} />}
-      <ModalHeading>{heading}</ModalHeading>
-      {text && <Text textAlign={"center"}>{text}</Text>}
-      {children}
-      {buttons && <ModalActionButtons buttons={buttons} />}
-    </ModalBody>
+    <ModalContainer>
+      <ModalBody
+        flexDirection={"column"}
+        alignItems={"center"}
+        maxWidth={maxWidth}
+        minWidth={minWidth}
+      >
+        {icon && <CircledIcon icon={icon} size={"large"} />}
+        <ModalHeading>{heading}</ModalHeading>
+        {text && <Text textAlign={"center"}>{text}</Text>}
+        {children}
+        {buttons && <ModalActionButtons buttons={buttons} />}
+      </ModalBody>
+    </ModalContainer>
   );
 };

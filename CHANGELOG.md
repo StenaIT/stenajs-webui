@@ -1,3 +1,16 @@
+# v21.21.3 (Fri Nov 22 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - - Add ModalContainer to InfoAlert. [#927](https://github.com/StenaIT/stenajs-webui/pull/927) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.21.2 (Thu Nov 21 2024)
 
 #### 🐛 Bug Fix
