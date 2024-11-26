@@ -8,6 +8,7 @@ import {
 } from "./StandardTableColumnConfig";
 import { StandardTableColumnGroupConfig } from "./StandardTableColumnGroupConfig";
 import { TextSize } from "@stenajs-webui/core";
+import * as React from "react";
 
 export interface RowExpansionArgs {
   onRequestCollapse?: () => void;
@@ -213,6 +214,14 @@ export interface StandardTableConfigBase<TItem, TColumnKey extends string> {
    * Set a custom z index
    */
   zIndex?: number;
+
+  /**
+   * Sets the target to append to for the header row tooltips
+   */
+  infoIconTooltipAppendTo?:
+    | HTMLElement
+    | null
+    | React.MutableRefObject<HTMLElement | null>;
 
   /**
    * Set a custom z index for the header tooltips

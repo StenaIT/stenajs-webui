@@ -33,6 +33,7 @@ export const StandardTableHeadItem = React.memo(
     } = useColumnConfigById(columnId);
     const {
       disableSorting,
+      infoIconTooltipAppendTo,
       infoIconTooltipZIndex,
       sortOrderIconVariant: defaultSortOrderIconVariant,
     } = useStandardTableConfig();
@@ -84,6 +85,7 @@ export const StandardTableHeadItem = React.memo(
           arrow={!disableSorting && label ? arrow : undefined}
           onClick={!disableSorting ? onClickColumnHead : undefined}
           label={label}
+          infoIconTooltipAppendTo={infoIconTooltipAppendTo}
           infoIconTooltipText={infoIconTooltipText}
           infoIconTooltipZIndex={infoIconTooltipZIndex}
           alignRight={justifyContentHeader === "flex-end"}

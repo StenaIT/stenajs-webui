@@ -18,6 +18,10 @@ import {
 
 export interface TableHeadProps extends BoxProps {
   label?: string;
+  infoIconTooltipAppendTo?:
+    | HTMLElement
+    | null
+    | React.MutableRefObject<HTMLElement | null>;
   infoIconTooltipText?: string;
   infoIconTooltipZIndex?: number;
   popoverContent?: ReactNode;
@@ -38,6 +42,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
     selected,
     popoverContent,
     loading,
+    infoIconTooltipAppendTo,
     infoIconTooltipText,
     infoIconTooltipZIndex,
     overflow = "hidden",
@@ -116,6 +121,7 @@ export const TableHeadItem: React.FC<TableHeadProps> = React.memo(
               <Space />
               <Row onClick={(ev) => ev.stopPropagation()}>
                 <Tooltip
+                  appendTo={infoIconTooltipAppendTo}
                   label={infoIconTooltipText}
                   zIndex={infoIconTooltipZIndex}
                 >
