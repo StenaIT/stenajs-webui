@@ -1,3 +1,16 @@
+# v21.23.1 (Tue Nov 26 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/grid`
+  - New StandardTable prop to control header Tooltip z-index [#929](https://github.com/StenaIT/stenajs-webui/pull/929) ([@Limpaan](https://github.com/Limpaan))
+
+#### Authors: 1
+
+- Viktor Lindblom ([@Limpaan](https://github.com/Limpaan))
+
+---
+
 # v21.23.0 (Tue Nov 26 2024)
 
 #### 🚀 Enhancement
