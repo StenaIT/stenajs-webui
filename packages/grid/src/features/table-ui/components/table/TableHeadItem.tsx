@@ -7,7 +7,7 @@ import {
   stenaInfoCircle,
 } from "@stenajs-webui/elements";
 import { cssColor } from "@stenajs-webui/theme";
-import { Popover, Tooltip } from "@stenajs-webui/tooltip";
+import { Popover, Tooltip, TooltipProps } from "@stenajs-webui/tooltip";
 import * as React from "react";
 import { CSSProperties, ReactNode, useRef } from "react";
 import {
@@ -18,10 +18,7 @@ import {
 
 export interface TableHeadProps extends BoxProps {
   label?: string;
-  infoIconTooltipAppendTo?:
-    | HTMLElement
-    | null
-    | React.MutableRefObject<HTMLElement | null>;
+  infoIconTooltipAppendTo?: TooltipProps["appendTo"];
   infoIconTooltipText?: string;
   infoIconTooltipZIndex?: number;
   popoverContent?: ReactNode;
