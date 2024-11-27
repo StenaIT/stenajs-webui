@@ -1,3 +1,16 @@
+# v21.24.1 (Wed Nov 27 2024)
+
+#### 🐛 Bug Fix
+
+- `@stenajs-webui/modal`
+  - Add aria-label option to useDialog [#932](https://github.com/StenaIT/stenajs-webui/pull/932) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.24.0 (Wed Nov 27 2024)
 
 #### 🚀 Enhancement
