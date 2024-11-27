@@ -37,6 +37,8 @@ export interface DialogOptions {
   ref?: RefObject<HTMLDialogElement>;
   onResolve?: () => void;
   onReject?: () => void;
+  labelledby?: string;
+  describedby?: string;
 }
 
 export function useDialog<TProps, TPromiseResolve = void>(
@@ -54,6 +56,8 @@ export function useDialog<TProps, TPromiseResolve = void>(
     onReject,
     className,
     background,
+    labelledby,
+    describedby,
   }: DialogOptions,
 ): UseDialogResult<TProps, TPromiseResolve> {
   const localRef = useRef<HTMLDialogElement>(null);
@@ -202,7 +206,12 @@ export function useDialog<TProps, TPromiseResolve = void>(
   const element = useMemo<ReactNode>(
     () =>
       divInsteadOfDialog ? (
-        <Modal isOpen={isOpen} onRequestClose={reject} background={background}>
+        <Modal
+          isOpen={isOpen}
+          onRequestClose={reject}
+          background={background}
+          aria={{ modal: true, labelledby, describedby }}
+        >
           <DialogContext.Provider value={contextValue}>
             {contentVisible && (
               <Comp {...(modalComponentProps.current as TProps)} key={key} />
@@ -215,6 +224,8 @@ export function useDialog<TProps, TPromiseResolve = void>(
           onClose={onClose}
           ref={currentRef}
           className={cx(className, closing && closingClassName)}
+          aria-labelledby={labelledby}
+          aria-describedby={describedby}
           style={{ background: background, ...dialogStyle }}
         >
           <div style={contentWrapperStyle} className={contentWrapperClassName}>
@@ -231,6 +242,8 @@ export function useDialog<TProps, TPromiseResolve = void>(
       isOpen,
       reject,
       background,
+      labelledby,
+      describedby,
       contextValue,
       contentVisible,
       Comp,
