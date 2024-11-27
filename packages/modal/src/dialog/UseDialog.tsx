@@ -242,6 +242,8 @@ export function useDialog<TProps, TPromiseResolve = void>(
       isOpen,
       reject,
       background,
+      labelledby,
+      describedby,
       contextValue,
       contentVisible,
       Comp,
