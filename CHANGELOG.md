@@ -1,3 +1,16 @@
+# v21.24.0 (Wed Nov 27 2024)
+
+#### 🚀 Enhancement
+
+- `@stenajs-webui/modal`
+  - Add aria options to useDialog. [#931](https://github.com/StenaIT/stenajs-webui/pull/931) ([@mattias800](https://github.com/mattias800))
+
+#### Authors: 1
+
+- Mattias Andersson ([@mattias800](https://github.com/mattias800))
+
+---
+
 # v21.23.1 (Tue Nov 26 2024)
 
 #### 🐛 Bug Fix
