@@ -37,7 +37,17 @@ export interface DialogOptions {
   ref?: RefObject<HTMLDialogElement>;
   onResolve?: () => void;
   onReject?: () => void;
+  /**
+   * Sets aria-label on modal or dialog element.
+   */
+  label?: string;
+  /**
+   * Sets aria-labelledby on modal or dialog element.
+   */
   labelledby?: string;
+  /**
+   * Sets aria-describedby on modal or dialog element.
+   */
   describedby?: string;
 }
 
@@ -56,6 +66,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
     onReject,
     className,
     background,
+    label,
     labelledby,
     describedby,
   }: DialogOptions,
@@ -210,6 +221,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           isOpen={isOpen}
           onRequestClose={reject}
           background={background}
+          contentLabel={label}
           aria={{ modal: true, labelledby, describedby }}
         >
           <DialogContext.Provider value={contextValue}>
@@ -224,6 +236,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
           onClose={onClose}
           ref={currentRef}
           className={cx(className, closing && closingClassName)}
+          aria-label={label}
           aria-labelledby={labelledby}
           aria-describedby={describedby}
           style={{ background: background, ...dialogStyle }}
@@ -242,6 +255,7 @@ export function useDialog<TProps, TPromiseResolve = void>(
       isOpen,
       reject,
       background,
+      label,
       labelledby,
       describedby,
       contextValue,
