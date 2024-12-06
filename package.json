@@ -91,7 +91,7 @@
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.3.0",
     "prettier": "3.3.3",
-    "react": "18.3.1",
+    "react": "19.0.0",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "18.3.1",
     "run-script-os": "^1.1.6",
@@ -120,7 +120,7 @@
     ]
   },
   "resolutions": {
-    "react": "18.3.1",
+    "react": "19.0.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "tslib": "2.7.0"
