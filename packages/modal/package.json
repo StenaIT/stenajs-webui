@@ -39,7 +39,7 @@
     "@types/react-modal": "^3.16.3",
     "classnames": "^2.5.1",
     "react-draggable": "4.4.6",
-    "react-modal": "3.16.1"
+    "react-modal": "3.16.3"
   },
   "peerDependencies": {
     "@emotion/react": ">=11.11.4",
