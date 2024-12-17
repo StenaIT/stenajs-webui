@@ -61,7 +61,7 @@
   "devDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@fortawesome/fontawesome-svg-core": "6.6.0",
+    "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-solid-svg-icons": "6.6.0",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.3",
