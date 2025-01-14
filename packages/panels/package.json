@@ -35,7 +35,7 @@
   "dependencies": {
     "@stenajs-webui/core": "21.24.1",
     "@stenajs-webui/elements": "21.24.1",
-    "@stenajs-webui/forms": "21.24.1",
+    "@stenajs-webui/forms": "21.24.4",
     "@stenajs-webui/theme": "21.24.1",
     "@stenajs-webui/tooltip": "21.24.1",
     "classnames": "^2.5.1",
