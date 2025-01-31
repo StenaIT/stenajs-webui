@@ -36,7 +36,7 @@
     "@stenajs-webui/calendar": "21.24.1",
     "@stenajs-webui/core": "21.24.1",
     "@stenajs-webui/elements": "21.24.1",
-    "@stenajs-webui/forms": "21.24.1",
+    "@stenajs-webui/forms": "21.29.6",
     "@stenajs-webui/modal": "21.24.1",
     "@stenajs-webui/panels": "21.24.1",
     "@stenajs-webui/redux": "21.24.1",
