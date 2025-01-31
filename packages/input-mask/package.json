@@ -33,7 +33,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
-    "@stenajs-webui/forms": "21.24.1",
+    "@stenajs-webui/forms": "21.29.6",
     "text-mask-core": "^5.1.2"
   },
   "peerDependencies": {
