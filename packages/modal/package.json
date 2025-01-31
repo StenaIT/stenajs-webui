@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@stenajs-webui/core": "21.24.1",
-    "@stenajs-webui/elements": "21.24.1",
+    "@stenajs-webui/elements": "21.29.6",
     "@stenajs-webui/theme": "21.24.1",
     "@types/react-modal": "^3.16.3",
     "classnames": "^2.5.1",
