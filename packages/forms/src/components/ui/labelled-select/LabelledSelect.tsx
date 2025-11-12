@@ -11,7 +11,9 @@ import { SelectElementProps } from "@stenajs-webui/core";
 export type SelectBorderVariant =
   | "normalBorder"
   | "onlyTopBorder"
-  | "onlyBottomBorder";
+  | "onlyBottomBorder"
+  | "onlyLeftBorder"
+  | "onlyRightBorder";
 
 export interface LabelledSelectProps
   extends ValueAndOnValueChangeProps<string>,
