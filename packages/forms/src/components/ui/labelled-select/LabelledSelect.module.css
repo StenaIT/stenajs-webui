@@ -15,6 +15,16 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+  
+  &.onlyLeftBorder {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.onlyRightBorder {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
   &.error {
     border-color: var(--snackskal);
